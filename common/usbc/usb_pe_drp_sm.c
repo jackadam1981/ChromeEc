@@ -4474,6 +4474,14 @@ static void pe_send_alert_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 		pe_clear_ado(port);
 		pe_set_ready_state(port);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_DISCARDED);
+		pd_dpm_request(port, DPM_REQUEST_SEND_ALERT);
+		pe_set_ready_state(port);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
+		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		pe_clear_ado(port);
+		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
 	}
 }
 
