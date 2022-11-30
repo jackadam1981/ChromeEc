@@ -15,7 +15,9 @@
 void bc12_interrupt(enum gpio_signal signal);
 #endif
 void ppc_interrupt(enum gpio_signal signal);
+#ifdef CONFIG_USBC_RETIMER_INTEL_BB
 void retimer_interrupt(enum gpio_signal signal);
+#endif
 void tcpc_alert_event(enum gpio_signal signal);
 
 #endif /* __CROS_EC_BASEBOARD_USBC_CONFIG_H */
