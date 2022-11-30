@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dced5b2b_da9e2342",
+        "filename": "util/zephyr_to_resultdb.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1392253
+      },
+      "writtenOn": "2022-11-30T05:37:27Z",
+      "side": 1,
+      "message": "Does this work in the LED testing? Please make sure the variant can be ingested correctly by ResultSink before submitting.",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 48
+      },
+      "revId": "81f0af813b4d418bf40d0d9a06a95232593af456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
