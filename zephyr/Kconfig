@@ -10,6 +10,14 @@ rsource "mock/Kconfig"
 rsource "subsys/Kconfig"
 rsource "subsys/emul/Kconfig"
 
+config ZEPHYR_PIGWEED_MODULE
+	bool "Pigweed module"
+	default y
+
+config PIGWEED_LOG
+	bool "Pigweed log"
+	default y
+
 if ZTEST
 
 config HAS_TEST_TASKS

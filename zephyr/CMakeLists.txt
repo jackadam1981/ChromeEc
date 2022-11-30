@@ -114,6 +114,9 @@ if (DEFINED CONFIG_PLATFORM_EC)
     "${PLATFORM_EC}/third_party")
 endif()
 
+get_filename_component(PW_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../../third_party/pigweed" ABSOLUTE)
+add_subdirectory(${PW_ROOT} pigweed)
+
 add_subdirectory("subsys")
 
 # Creates a phony target all.libraries in case you only want to build the
