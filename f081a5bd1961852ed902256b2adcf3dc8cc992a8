@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1793bdd_2001bd88",
+        "filename": "zephyr/program/skyrim/winterhold/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-30T18:11:35Z",
+      "side": 1,
+      "message": "Out of curiosity, what is your board able to sink safely?  It looks like winterhold is currently using the Kconfig defaults of 60W for CONFIG_PLATFORM_EC_PD_MAX_POWER_MW, but you can set this higher if you can safely sink more.",
+      "revId": "f081a5bd1961852ed902256b2adcf3dc8cc992a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
