@@ -16,6 +16,24 @@
       "message": "if this patch does not merge, the EC will be crash when unit use the lis2dw12 and enable the body detection function.\n\nSo add the low coverage reason fisrt to merge this patch.",
       "revId": "cd60f914c918d39bd21a5d3dbe4c464f8a516b8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a6a936_61e2e340",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-30T16:22:09Z",
+      "side": 1,
+      "message": "The low coverage reason should be fine to get the patch merged, but I don\u0027t quite understand why patchset #4 appears to be removing the changes introduced by Gwendal in patchset #3.  Did that patchset not work?",
+      "parentUuid": "937c3dd6_7eeafdc5",
+      "revId": "cd60f914c918d39bd21a5d3dbe4c464f8a516b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
