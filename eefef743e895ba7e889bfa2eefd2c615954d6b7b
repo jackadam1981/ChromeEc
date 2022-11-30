@@ -51,6 +51,24 @@
       "message": "Adding `CONFIG_WATCHDOG` to `config_allowed.txt` fixed the build error for `emerge-drallion chromeos-ish` but broke the the standard `make BOARD\u003dxyz` ECOS build method:\n\n```\nThe following options are now in Kconfig:\n\nCONFIG_WATCHDOG\n\nPlease run this to update the list of allowed ad-hoc CONFIGs and include this\nupdate in your CL:\n\n   cp /tmp/new_config_allowed.txt util/config_allowed.txt\n```\n\nCopying over `new_config_allowed.txt` simply reverts the change that adds `CONFIG_WATCHDOG` to `config_allowed.txt`. :-(",
       "revId": "eefef743e895ba7e889bfa2eefd2c615954d6b7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7b1677_e50ebe9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-11-30T23:13:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9578f82_49c5da7b",
+      "revId": "eefef743e895ba7e889bfa2eefd2c615954d6b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
