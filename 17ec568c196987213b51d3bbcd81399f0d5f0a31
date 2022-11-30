@@ -68,6 +68,30 @@
       },
       "revId": "17ec568c196987213b51d3bbcd81399f0d5f0a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c00eb7b6_1f2366f4",
+        "filename": "zephyr/program/skyrim/src/winterhold/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-11-30T06:47:16Z",
+      "side": 1,
+      "message": "EC_HOST_EVENT_THERMAL(11) will be sent in the following situations:\n1.[smi_sensor_failure_warning](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/thermal.c;l\u003d163?q\u003dsmi_sensor_failure_warning\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2F) : notify host that EC can’t read any temp sensors.\n2.[fan stalled](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fan.c;l\u003d538?q\u003dEC_HOST_EVENT_THERMAL\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2F)\nEC_HOST_EVENT_THERMAL_THRESHOLD(9) will be sent in the following situations:\n1.[dptf thermal control](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/dptf.c;l\u003d168?q\u003dEC_HOST_EVENT_THERMAL_THRESHOLD\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2F)",
+      "parentUuid": "cb857d8c_6c8c33bd",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "17ec568c196987213b51d3bbcd81399f0d5f0a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
