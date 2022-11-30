@@ -18,6 +18,8 @@ typedef long clock_t;
 #include "common.h"
 #include "task_id.h"
 
+#include <unistd.h>
+
 /* Time units in microseconds */
 #define MSEC 1000
 #define SECOND 1000000
@@ -79,19 +81,6 @@ int timestamp_expired(timestamp_t deadline, const timestamp_t *now);
 void udelay(unsigned us);
 
 /**
- * Sleep.
- *
- * The current task will be de-scheduled for at least the specified delay (and
- * perhaps longer, if a higher-priority task is running when the delay
- * expires).
- *
- * This may only be called from a task function, with interrupts enabled.
- *
- * @param us		Number of microseconds to sleep.
- */
-void usleep(unsigned us);
-
-/**
  * Sleep for milliseconds.
  *
  * Otherwise the same as usleep().
@@ -101,18 +90,6 @@ void usleep(unsigned us);
 static inline void msleep(unsigned ms)
 {
 	usleep(ms * MSEC);
-}
-
-/**
- * Sleep for seconds
- *
- * Otherwise the same as usleep().
- *
- * @param sec		Number of seconds to sleep.
- */
-static inline void sleep(unsigned sec)
-{
-	usleep(sec * SECOND);
 }
 
 /**
