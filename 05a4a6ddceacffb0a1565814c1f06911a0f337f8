@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef6dacc6_a1b71a2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-30T17:42:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15e14478_46180a69",
+      "range": {
+        "startLine": 19,
+        "startChar": 72,
+        "endLine": 19,
+        "endChar": 73
+      },
+      "revId": "05a4a6ddceacffb0a1565814c1f06911a0f337f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02ebffef_56015090",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-30T06:15:20Z",
       "side": 1,
       "message": "I am not sure on herobrine, how the AP side knows which DP port to output (does it check gpio_dp_mux_sel?). On corsola, only one of the DP ports can be muxed at a time, and it is determined by the USB virtual mux.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 46
+      },
+      "revId": "05a4a6ddceacffb0a1565814c1f06911a0f337f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbcc0747_36c847e4",
+        "filename": "zephyr/program/herobrine/src/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-30T17:42:53Z",
+      "side": 1,
+      "message": "The SoC has a single DP-capable port. On the board only one port is muxed to this DP-capable port, which happens when the EC receives the HPD high VDO, and the EC reconstructs the analog HPD waveform to signal the SoC. The kernel driver listens the analog HPD signal and doesn\u0027t know which port is muxed. So this USB mux state doesn\u0027t matter.",
+      "parentUuid": "02ebffef_56015090",
       "range": {
         "startLine": 123,
         "startChar": 0,
