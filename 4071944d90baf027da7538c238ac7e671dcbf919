@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74ab2766_229d04e7",
+        "filename": "zephyr/program/geralt/i2c.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-11-30T09:08:58Z",
+      "side": 1,
+      "message": "Should we align the naming style to either use \u0027-\u0027 or \u0027_\u0027? e.g. usb_c and detachable_base, or usb-c and detachable-base?",
+      "range": {
+        "startLine": 29,
+        "startChar": 23,
+        "endLine": 29,
+        "endChar": 38
+      },
+      "revId": "4071944d90baf027da7538c238ac7e671dcbf919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
