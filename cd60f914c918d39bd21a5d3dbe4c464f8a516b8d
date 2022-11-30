@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ec69d5_e1248542",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-30T17:33:28Z",
+      "side": 1,
+      "message": "Can this be tested on a board to verify things are working correctly?\n\nIt appears that step was missing for a previous CL if the device is rebooting with the functionality enabled.",
+      "revId": "cd60f914c918d39bd21a5d3dbe4c464f8a516b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "937c3dd6_7eeafdc5",
