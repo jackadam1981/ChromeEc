@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e14478_46180a69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-11-30T06:15:20Z",
+      "side": 1,
+      "message": "nit: Re-flow the message to 72 columns per line.\n\nAlso below.",
+      "range": {
+        "startLine": 19,
+        "startChar": 72,
+        "endLine": 19,
+        "endChar": 73
+      },
+      "revId": "05a4a6ddceacffb0a1565814c1f06911a0f337f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ebffef_56015090",
+        "filename": "zephyr/program/herobrine/src/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-11-30T06:15:20Z",
+      "side": 1,
+      "message": "I am not sure on herobrine, how the AP side knows which DP port to output (does it check gpio_dp_mux_sel?). On corsola, only one of the DP ports can be muxed at a time, and it is determined by the USB virtual mux.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 46
+      },
+      "revId": "05a4a6ddceacffb0a1565814c1f06911a0f337f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
