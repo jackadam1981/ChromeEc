@@ -13,6 +13,8 @@
 #include "math_util.h"
 #include "test_util.h"
 
+#include <unistd.h>
+
 extern "C" {
 #include "timer.h"
 #include "watchdog.h"

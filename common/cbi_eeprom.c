@@ -10,9 +10,10 @@
 #include "gpio.h"
 #include "i2c.h"
 #include "system.h"
-#include "timer.h"
 #include "util.h"
 #include "write_protect.h"
+
+#include <unistd.h>
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, "CBI " format, ##args)
 
