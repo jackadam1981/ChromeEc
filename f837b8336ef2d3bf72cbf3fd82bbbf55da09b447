@@ -33,6 +33,23 @@
       "message": "I have created a CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4059932 to add sub-board support to be optional.\nFor yaviks, you can set CONFIG_NISSA_SUB_BOARD\u003dn in the yaviks project.conf\nThis will disable sub-board support.",
       "revId": "f837b8336ef2d3bf72cbf3fd82bbbf55da09b447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aae4884e_2e5752d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-30T02:39:17Z",
+      "side": 1,
+      "message": "You may have to add the appropriate init code into the yaviks specific source.",
+      "revId": "f837b8336ef2d3bf72cbf3fd82bbbf55da09b447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
