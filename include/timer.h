@@ -18,6 +18,11 @@ typedef long clock_t;
 #include "common.h"
 #include "task_id.h"
 
+/* Host uses glibc version of usleep() and sleep() */
+#ifdef BOARD_HOST
+#include <unistd.h>
+#endif
+
 /* Time units in microseconds */
 #define MSEC 1000
 #define SECOND 1000000
@@ -78,6 +83,8 @@ int timestamp_expired(timestamp_t deadline, const timestamp_t *now);
  */
 void udelay(unsigned us);
 
+/* Host uses glibc version of usleep */
+#ifndef BOARD_HOST
 /**
  * Sleep.
  *
@@ -90,6 +97,7 @@ void udelay(unsigned us);
  * @param us		Number of microseconds to sleep.
  */
 void usleep(unsigned us);
+#endif /* BOARD_HOST */
 
 /**
  * Sleep for milliseconds.
@@ -103,6 +111,8 @@ static inline void msleep(unsigned ms)
 	usleep(ms * MSEC);
 }
 
+/* Host uses glibc version of sleep */
+#ifndef BOARD_HOST
 /**
  * Sleep for seconds
  *
@@ -114,6 +124,7 @@ static inline void sleep(unsigned sec)
 {
 	usleep(sec * SECOND);
 }
+#endif /* BOARD_HOST */
 
 /**
  * Get the current timestamp from the system timer.
