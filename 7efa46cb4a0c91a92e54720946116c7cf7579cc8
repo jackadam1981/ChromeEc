@@ -46,6 +46,53 @@
       },
       "revId": "7efa46cb4a0c91a92e54720946116c7cf7579cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c992ad2_8369cf51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-01T20:26:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1059bb0d_1a43c37f",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "7efa46cb4a0c91a92e54720946116c7cf7579cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89867198_a340ff8c",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-01T20:26:47Z",
+      "side": 1,
+      "message": "pls add a comment here (from commit message)",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 7
+      },
+      "revId": "7efa46cb4a0c91a92e54720946116c7cf7579cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
