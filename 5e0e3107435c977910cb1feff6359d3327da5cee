@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fed79bb0_2744b2b6",
+        "filename": "zephyr/program/geralt/interrupts.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-12-01T08:09:23Z",
+      "side": 1,
+      "message": "I wonder if GPIO_INT_RISING is enough already. @Dino.Li@ite.com.tw",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 30
+      },
+      "revId": "5e0e3107435c977910cb1feff6359d3327da5cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96864604_39660b2a",
+        "filename": "zephyr/program/geralt/program.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-12-01T08:09:23Z",
+      "side": 1,
+      "message": "Do we still need this restriction? @parkerlin@google.com",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 43
+      },
+      "revId": "5e0e3107435c977910cb1feff6359d3327da5cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c7bcff_d4f86d46",
+        "filename": "zephyr/program/geralt/program.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-12-01T08:09:23Z",
+      "side": 1,
+      "message": "This defaults to 1, so we can drop it.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 34
+      },
+      "revId": "5e0e3107435c977910cb1feff6359d3327da5cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
