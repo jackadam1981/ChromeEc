@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb484817_acc85442",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-01T18:33:38Z",
+      "side": 1,
+      "message": "Yes, that would look quite nice.  I\u0027m not sure if it would also help readability to just reuse the struct ec_thermal_config as well, rather than making a different structure with the same information",
+      "parentUuid": "b3058884_efe35dce",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "9f96042b6e08d3ceaa3dbf26bb44177e3d1aea6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ec3d316f_ba519b2d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-01T16:00:26Z",
       "side": 1,
       "message": "Wish there was interface for the OS to control the fan...",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "9f96042b6e08d3ceaa3dbf26bb44177e3d1aea6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c45545_0edd66fa",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-01T18:33:38Z",
+      "side": 1,
+      "message": "I assume we\u0027d always need an EC-level of fan control though, since it\u0027s a question of safety and we assume the EC is always on/responsive whereas the AP sometimes hangs/crashes",
+      "parentUuid": "ec3d316f_ba519b2d",
       "range": {
         "startLine": 42,
         "startChar": 12,
