@@ -22,6 +22,30 @@
       },
       "revId": "4071944d90baf027da7538c238ac7e671dcbf919",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d758e7b_2f545d54",
+        "filename": "zephyr/program/geralt/i2c.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-01T04:05:18Z",
+      "side": 1,
+      "message": "Seems like the convention is to use hyphen in node names, and underscore in labels.\n\nFixed the gpio and interrupt namings.",
+      "parentUuid": "74ab2766_229d04e7",
+      "range": {
+        "startLine": 29,
+        "startChar": 23,
+        "endLine": 29,
+        "endChar": 38
+      },
+      "revId": "4071944d90baf027da7538c238ac7e671dcbf919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
