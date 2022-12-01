@@ -118,3 +118,8 @@ void ap_power_exit_hardoff(void)
 void ap_power_init_reset_log(void)
 {
 }
+
+__weak bool board_ap_power_is_startup_ok(void)
+{
+	return true;
+}
