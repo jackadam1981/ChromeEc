@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91e882d0_72023022",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-12-01T00:11:10Z",
+      "side": 1,
+      "message": "Initially I had it combined, but there wasn\u0027t much common code shared, so I separated them to simplify the initial implementation. I will revisit combining common code in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4063817",
+      "parentUuid": "45b2931c_17edea80",
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c05ab5c_ab8865a8",
         "filename": "zephyr/shim/src/rw_safe_mode.c",
         "patchSetId": 9
