@@ -22,6 +22,30 @@
       },
       "revId": "7efa46cb4a0c91a92e54720946116c7cf7579cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1059bb0d_1a43c37f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-12-01T19:55:15Z",
+      "side": 1,
+      "message": "actually\nGPIO_SEL_1P8V is used in common file\n\nin:\n/platform/ec/driver/ioexpander/ccgxxf.c\nif ((flags \u0026 GPIO_OUTPUT) \u0026\u0026 (flags \u0026 GPIO_SEL_1P8V) \u0026\u0026",
+      "parentUuid": "d3c350d1_d22a618d",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "7efa46cb4a0c91a92e54720946116c7cf7579cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
