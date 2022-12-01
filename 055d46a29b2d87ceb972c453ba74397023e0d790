@@ -34,6 +34,24 @@
       "parentUuid": "d20570b2_ac1164be",
       "revId": "055d46a29b2d87ceb972c453ba74397023e0d790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e230291_d6adca48",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-01T18:36:38Z",
+      "side": 1,
+      "message": "ECOS (CPRINTS) is mostly oriented around channels.  So you either want to see everything from a channel, or nothing from it (in this case, CC_THERMAL channel) using the `chan` command. \n\nIf we use zephyr logging, we can use a different log level.  There\u0027s no way to change the level in runtime right now, but you could configure it in your own build. (I want to say the runtime option would consume more of our precious flash).",
+      "parentUuid": "c33fb982_74711ab4",
+      "revId": "055d46a29b2d87ceb972c453ba74397023e0d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
