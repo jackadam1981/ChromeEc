@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10f4ac86_6b384eeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-12-01T10:22:11Z",
+      "side": 1,
+      "message": "This CL chain needs depend on:\nhttps://github.com/zephyrproject-rtos/zephyr/pull/50399\nOnce third-party cherry-pick zephyr pull 50399, then we need to merge this chain, or ite platform keyboard function may broken.",
+      "revId": "d8bd4d266afb8daa454f27491d04b6fbc246e26d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
