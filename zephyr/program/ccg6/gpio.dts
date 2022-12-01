@@ -130,6 +130,12 @@
 		gpio_fan_control: therm-sen-mecc-r {
 			gpios = <&gpioc 0 GPIO_OUTPUT_LOW>;
 		};
+
+		/* KBD IOEX configuration */
+		ec-h1-packet-mode {
+			gpios = <&ioex_it8801_port0 4 GPIO_OUTPUT_LOW>;
+			enum-name = "GPIO_PACKET_MODE_EN";
+		};
 	};
 };
 
