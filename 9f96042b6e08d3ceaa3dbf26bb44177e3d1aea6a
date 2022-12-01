@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3058884_efe35dce",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-12-01T16:00:26Z",
+      "side": 1,
+      "message": "Can you rewrite this as follow:\n\n```\nstatic const struct thermal_setting thermal_table[] \u003d {\n\t[DESKTOP_LID_OPEN_MODE] \u003d { .warn \u003d 50, .release_warn \u003d 45, .fan_off \u003d 31, .fan_max \u003d 38 },\n\t[DESKTOP_LID_CLOSE_MODE] \u003d { .warn \u003d 55, .release_warn \u003d 50, .fan_off \u003d 32, .fan_max \u003d 39 },\n\t[LAPTOP_MODE] \u003d { .warn \u003d 45, .release_warn \u003d 40, .fan_off \u003d 30, .fan_max \u003d 38 },\n};\n```\n\nThis will make it easier to reason about.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "9f96042b6e08d3ceaa3dbf26bb44177e3d1aea6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec3d316f_ba519b2d",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-12-01T16:00:26Z",
+      "side": 1,
+      "message": "Wish there was interface for the OS to control the fan...",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "9f96042b6e08d3ceaa3dbf26bb44177e3d1aea6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
