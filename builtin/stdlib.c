@@ -482,9 +482,9 @@ __stdlib_compat int strncmp(const char *s1, const char *s2, size_t n)
 }
 
 #ifndef CONFIG_HW_SPECIFIC_UDELAY
-static void udelay(unsigned us)
+static void udelay(unsigned int us)
 {
-	unsigned t0 = __hw_clock_source_read();
+	unsigned int t0 = __hw_clock_source_read();
 
 	/*
 	 * udelay() may be called with interrupts disabled, so we can't rely on
@@ -507,7 +507,7 @@ static void udelay(unsigned us)
  * probability of delay longer than 2*us (and possibly infinite delay)
  * increases.
  */
-void usleep(unsigned us)
+void usleep(unsigned int us)
 {
 	uint32_t evt = 0;
 	uint32_t t0;
