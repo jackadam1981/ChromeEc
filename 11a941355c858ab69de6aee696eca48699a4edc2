@@ -46,6 +46,30 @@
       },
       "revId": "11a941355c858ab69de6aee696eca48699a4edc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "161b55fa_21ab566a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-01T00:37:16Z",
+      "side": 1,
+      "message": "Ah, looking at http://b/260723169 more closely, I see it was when building tests for the \"host\". In that case we link against the host\u0027s `glibc`, which should have `usleep`. The newlib version must not.\n\nI need to think about the best way to handle this. It would probably work if you surrounded the definition with `#ifndef BOARD_HOST`, but then we also need an implementation in `libc/syscalls.c`.",
+      "parentUuid": "f35abc09_68d87ad0",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "11a941355c858ab69de6aee696eca48699a4edc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
