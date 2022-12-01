@@ -28,6 +28,7 @@
 		en_pp3300_a: ec-ds3-r {
 			gpios = <&gpioc 4 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_EN_PP3300_A";
+			alias = "GPIO_TEMP_SENSOR_POWER";
 		};
 		rsmrst_pwrgd: rsmrst-pwrgd {
 			gpios = <&gpio6 6 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
@@ -125,6 +126,9 @@
 		};
 		gpio_ec_pch_wake_odl: pch-wake-n {
 			gpios = <&gpio7 4 GPIO_ODR_HIGH>;
+		};
+		gpio_fan_control: therm-sen-mecc-r {
+			gpios = <&gpioc 0 GPIO_OUTPUT_LOW>;
 		};
 	};
 };
