@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b637e553_0d2f8eb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-12-01T06:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12156c3d_103e3fe7",
+      "revId": "52c1ea64235369ace423fd648d580c857db72c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1b8f36e_6136ccce",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-29T14:57:33Z",
       "side": 1,
       "message": "Please keep any register references inside the driver code.  That way, read/modify/write accesses can be properly mutexed to avoid issues where multiple tasks may attempt to read/modify/write a register in parallel and overwrite each other\u0027s changes.",
+      "revId": "52c1ea64235369ace423fd648d580c857db72c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b31a54e6_23cf5f66",
+        "filename": "board/banshee/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-12-01T06:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1b8f36e_6136ccce",
       "revId": "52c1ea64235369ace423fd648d580c857db72c6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
