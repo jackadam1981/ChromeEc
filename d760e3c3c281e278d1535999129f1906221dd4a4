@@ -334,6 +334,24 @@
       "parentUuid": "72f0a364_392926d1",
       "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1058e46_24e1254d",
+        "filename": "test/fan.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-01T00:29:57Z",
+      "side": 1,
+      "message": "If it\u0027s ignored, why don\u0027t you set both to zero (for simplicity)? e.g. .decreasing_temp_ratio_threshold \u003d 0\n\n\u003e If the first element is unused, then maybe we should do some more refactoring. But I\u0027d say that\u0027s out of scope for this CL.\n\n+1",
+      "parentUuid": "72f0a364_392926d1",
+      "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
