@@ -20,7 +20,7 @@
  *
  * @param us		Number of microseconds to sleep.
  */
-void usleep(unsigned us);
+void usleep(unsigned int us);
 
 /**
  * Sleep for seconds
@@ -29,7 +29,7 @@ void usleep(unsigned us);
  *
  * @param sec		Number of seconds to sleep.
  */
-static inline void sleep(unsigned sec)
+static inline void sleep(unsigned int sec)
 {
 	usleep(sec * SECOND);
 }
