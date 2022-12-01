@@ -70,6 +70,30 @@
       },
       "revId": "11a941355c858ab69de6aee696eca48699a4edc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2350baa_7142ebdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-01T21:28:11Z",
+      "side": 1,
+      "message": "Yes, the build error was only happening on the host.\n\n\nIf I understand correctly your suggestion, we would need something like https://crrev.com/c/4072132 ?",
+      "parentUuid": "161b55fa_21ab566a",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "11a941355c858ab69de6aee696eca48699a4edc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
