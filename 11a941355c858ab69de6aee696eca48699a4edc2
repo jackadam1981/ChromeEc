@@ -22,6 +22,30 @@
       },
       "revId": "11a941355c858ab69de6aee696eca48699a4edc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35abc09_68d87ad0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-01T00:30:46Z",
+      "side": 1,
+      "message": "Hmm, that seems weird given that we originally tried this because it looked like `libc`\u0027s `usleep` was conflicting in http://b/260723169.\n\nIs the `usleep` symbol listed if you run `nm` on the `libc.a` we\u0027re linking against?\n\n```\narmv7m-cros-eabi-nm /usr/armv7m-cros-eabi/lib/libc.a | grep usleep\n```",
+      "parentUuid": "b3dd3519_3f8df637",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "11a941355c858ab69de6aee696eca48699a4edc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
