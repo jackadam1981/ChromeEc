@@ -16,6 +16,23 @@
       "message": "Hi Diana and Abe, can you take a look at this CL?\n\nI was seeing an intermittent issue booting with a PD 3.1 dock connected. The Chromebook sometimes had trouble sending multiple alerts within about 30 ms and discarded the second Alert message.  pe_send_alert_run does not have a check for this type of error, so the policy engine never returned to PE_SNK_Ready. This change looks for protocol errors and discarded messages in pe_send_alert_run, and if it finds one, bails out by sending a soft reset and clearing the ADO held by the PE. This prevents the PE from getting stuck sending an Alert when booting with a PD 3.1 device attached. Let me know if you have any questions.",
       "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a40b0c_3bece4f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-01T17:59:05Z",
+      "side": 1,
+      "message": "I would have thought that our existing synchronization at the PE layers and above would avoid an Alert conflicting with a previous Alert. The PE shouldn\u0027t return to the ready state to accept a new DPM request until the Alert message has been GoodCRCed, and `pd_send_alert_msg` shouldn\u0027t send a new DPM request until the ADO has been cleared for the previous one.\n\nAre we getting a protocol error because conflict with the incoming Get_Status message? (I would have thought that collision avoidance would take care of this too.)\n\nIf either of those things are happening anyway, what I would hope that the PE would do is just try again to handle the old DPM request. We should still send an Alert for the power state change if we can. This CL clears the ADO, but I don\u0027t see where the DPM request gets cleared, so it seems like the PE would just come back around and try the DPM request again, this time with an empty ADO.\n\nIs that what happens now?",
+      "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
