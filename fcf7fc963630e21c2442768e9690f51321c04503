@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5c78ea_fa45420f",
+        "filename": "board/banshee/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-01T18:25:21Z",
+      "side": 1,
+      "message": "Does this function also need to differ based on the VID/PID of the port partner?  I had thought we\u0027d only need to apply special behaviors when we\u0027ve established that the port partner is the framework VID/PID combination.  Otherwise, the main driver should represent the code we want running for all other partners",
+      "revId": "fcf7fc963630e21c2442768e9690f51321c04503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
