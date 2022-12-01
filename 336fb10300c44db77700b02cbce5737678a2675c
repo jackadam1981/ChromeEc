@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d04b8780_93ec49c3",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-12-01T10:27:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68fc864a_01170d41",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "336fb10300c44db77700b02cbce5737678a2675c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36a918f2_1445cabd",
@@ -61,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce73ee6d_70441a3e",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-12-01T10:27:12Z",
+      "side": 1,
+      "message": "I add the error message for temp_sensor_read().",
+      "parentUuid": "75cebfaa_1ac4ab51",
+      "revId": "336fb10300c44db77700b02cbce5737678a2675c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4648aa3_fb8e7ebb",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 6
@@ -72,6 +114,30 @@
       "writtenOn": "2022-11-30T17:07:32Z",
       "side": 1,
       "message": "We actually have a `HOOK_PRIO_TEMP_SENSOR_DONE` you can use here to ensure you\u0027re running right after the most recent temperature update.",
+      "range": {
+        "startLine": 30,
+        "startChar": 46,
+        "endLine": 30,
+        "endChar": 63
+      },
+      "revId": "336fb10300c44db77700b02cbce5737678a2675c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28aef17_d763139b",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-12-01T10:27:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4648aa3_fb8e7ebb",
       "range": {
         "startLine": 30,
         "startChar": 46,
