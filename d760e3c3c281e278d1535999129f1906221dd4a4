@@ -316,6 +316,24 @@
       "parentUuid": "5f2c1104_83159af7",
       "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af381795_6d5ca61a",
+        "filename": "test/fan.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-01T00:08:13Z",
+      "side": 1,
+      "message": "Regarding obsolete comment, for example: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4004441/13/board/fizz/board.c#b610\n\nRegarding the other refactoring, agreed to do that in a separate CL. Essentially, the function would need to have a special carve-out to set rpm \u003d 0.",
+      "parentUuid": "72f0a364_392926d1",
+      "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
