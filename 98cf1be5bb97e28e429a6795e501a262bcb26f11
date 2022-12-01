@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df646530_696a7f07",
+        "filename": "zephyr/program/skyrim/src/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-12-01T00:09:14Z",
+      "side": 1,
+      "message": "Drive-by nit:\n\n`set_ac_prochot` and `charger_prochot_init` are variations of a function name that are both doing essentially the same thing.\n\n1. If only a single `CONFIG_CHARGER_` value can be enabled at a time, then these functions should all have the same name, for consistency-sake. I don\u0027t have strong feelings either way which name we should adopt.\n\n2. If multiple `CONFIG_CHARGER_` values can be enabled for the same build (which means the function names can\u0027t collide), then we should adopt a naming convention to prevent what we\u0027re seeing here. I suggest something like: `charger_prochot_init\u003ccharger name\u003e`. For the chargers we have here, the function names would be:\n    - `charger_prochot_init_ISL9241`\n    - `charger_prochot_init_ISL9238`\n\nThoughts?",
+      "range": {
+        "startLine": 234,
+        "startChar": 12,
+        "endLine": 234,
+        "endChar": 32
+      },
+      "revId": "98cf1be5bb97e28e429a6795e501a262bcb26f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
