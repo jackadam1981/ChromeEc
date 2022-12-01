@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa68c9d_5ce7b65a",
+        "filename": "common/rw_safe_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-12-01T20:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2b4688b_45fc01d1",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "a75d4dce8ce64e546a63a38f9e75b0a460983322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdc53a2c_fb00315a",
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "My current thinking is it will be simpler and more scalable to just restart critical tasks as necessary. \n\nJumping to RW will cause a lot of memory to be overwritten. As we\u0027ve discussed, we can work around this by copying initialized memory to uninitialized memory before jumping, but this adds a lot of complexity.",
       "parentUuid": "bdc53a2c_fb00315a",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 50
+      },
+      "revId": "a75d4dce8ce64e546a63a38f9e75b0a460983322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40753066_5fee60f9",
+        "filename": "common/rw_safe_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-12-01T20:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c364e07_3b855c49",
       "range": {
         "startLine": 94,
         "startChar": 3,

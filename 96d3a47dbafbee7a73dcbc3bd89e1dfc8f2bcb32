@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c1afbc0d_0ef7088e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-12-01T20:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7f20e6e_4c9c6445",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "40b2a1fd_eaab271b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 9
@@ -143,6 +167,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80bed87b_4818aec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-12-01T20:33:39Z",
+      "side": 1,
+      "message": "Recombined. Sharing most logic. Can share more after improving ec_tasks zephyr shim.",
+      "parentUuid": "91e882d0_72023022",
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c05ab5c_ab8865a8",
@@ -204,6 +246,30 @@
       "side": 1,
       "message": "Lgtm. PANIC_DATA_FLAG_SAFE_MODE_STARTED can be used to detect a back-to-back panic.",
       "parentUuid": "c6b01eb5_8dc25e75",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb81e8ff_46663ae8",
+        "filename": "zephyr/shim/src/rw_safe_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-12-01T20:33:39Z",
+      "side": 1,
+      "message": "We only have 8 bits of panic flags atm. Maybe space to add 8 bits more from reserved field. \n\nThe CL was updated with PANIC_DATA_FLAG_SAFE_MODE_STARTED and PANIC_DATA_FLAG_SAFE_MODE_FAIL_PRECONDITIONS. These can both be set if safe mode started twice. \n\nPlanning to implement the double fault flag independently of safe mode since it applies generally.",
+      "parentUuid": "24e4875c_47c492e4",
       "range": {
         "startLine": 99,
         "startChar": 0,
