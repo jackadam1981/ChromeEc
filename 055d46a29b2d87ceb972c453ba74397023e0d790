@@ -16,6 +16,24 @@
       "message": "As written, I suspect you\u0027ll see this print once per second on the EC console when in the G3 power state.  Is that the behavior you\u0027d like?",
       "revId": "055d46a29b2d87ceb972c453ba74397023e0d790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c33fb982_74711ab4",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-12-01T18:30:42Z",
+      "side": 1,
+      "message": "Is there a debug/verbose version we can use instead? Or is it all or nothing?",
+      "parentUuid": "d20570b2_ac1164be",
+      "revId": "055d46a29b2d87ceb972c453ba74397023e0d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
