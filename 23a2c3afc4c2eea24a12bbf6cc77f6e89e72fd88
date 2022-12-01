@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c21f95a_67adfcda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-12-01T00:04:37Z",
+      "side": 1,
+      "message": "Hi Diana and Abe, can you take a look at this CL?\n\nI was seeing an intermittent issue booting with a PD 3.1 dock connected. The Chromebook sometimes had trouble sending multiple alerts within about 30 ms and discarded the second Alert message.  pe_send_alert_run does not have a check for this type of error, so the policy engine never returned to PE_SNK_Ready. This change looks for protocol errors and discarded messages in pe_send_alert_run, and if it finds one, bails out by sending a soft reset and clearing the ADO held by the PE. This prevents the PE from getting stuck sending an Alert when booting with a PD 3.1 device attached. Let me know if you have any questions.",
+      "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
