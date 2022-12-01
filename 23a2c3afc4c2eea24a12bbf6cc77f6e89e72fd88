@@ -33,6 +33,41 @@
       "message": "I would have thought that our existing synchronization at the PE layers and above would avoid an Alert conflicting with a previous Alert. The PE shouldn\u0027t return to the ready state to accept a new DPM request until the Alert message has been GoodCRCed, and `pd_send_alert_msg` shouldn\u0027t send a new DPM request until the ADO has been cleared for the previous one.\n\nAre we getting a protocol error because conflict with the incoming Get_Status message? (I would have thought that collision avoidance would take care of this too.)\n\nIf either of those things are happening anyway, what I would hope that the PE would do is just try again to handle the old DPM request. We should still send an Alert for the power state change if we can. This CL clears the ADO, but I don\u0027t see where the DPM request gets cleared, so it seems like the PE would just come back around and try the DPM request again, this time with an empty ADO.\n\nIs that what happens now?",
       "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ef948b5_ec73d9af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-01T18:11:42Z",
+      "side": 1,
+      "message": "I\u0027d like to see traces of what\u0027s on the CC line here, if that\u0027s possible.  If you\u0027re seeing the `PE_FLAGS_MSG_DISCARDED` flag, that usually means the partner sent something before we could send our thing.  \n\nThat would make sense if we\u0027re the sink and the partner is in control of collision avoidance, and the partner had an immediate response to our alert.",
+      "parentUuid": "c2a40b0c_3bece4f5",
+      "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b46ef1c9_d279f536",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4482,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-01T18:11:42Z",
+      "side": 1,
+      "message": "Discard shouldn\u0027t be a soft reset case.  We\u0027ll just have to try the message again later.\n\nThere\u0027s a chart in the PD spec `6.11 Message Discarding` you can read to get a sense of how the discarding works.  Since this is the first message of an AMS, it\u0027s okay if the partner interrupted to send something of its own.  We should just try starting our AMS again later.\n\nFor protocol error, usually the `pe_report_error()` function handles that for most states with exceptions for states where something special is necessary.",
+      "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
