@@ -46,6 +46,30 @@
       },
       "revId": "be8792b874ab947162141987ed5b2268434b78a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fade7be_ab373476",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-01T19:35:14Z",
+      "side": 1,
+      "message": "thank you. If MEC doesn\u0027t support 1.8V at runtime do we need this config for MEC?\nmay be we should add #error and print necessary error message if the board uses GPIO_VOLTAGE_1P8",
+      "parentUuid": "950ba653_78596954",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "be8792b874ab947162141987ed5b2268434b78a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
