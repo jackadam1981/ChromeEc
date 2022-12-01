@@ -46,6 +46,30 @@
       },
       "revId": "c7b5c4a6c4f997db39ff2ad2b54d260f838ecee6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9efce594_5bd73860",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-01T01:21:07Z",
+      "side": 1,
+      "message": "Alternatively, since `fan_step_1_1` is new, we could decide to specify the `fan_step_1_1` thresholds as temperatures, and convert to/from ratios in the body of the `temp_ratio_to_fan_rpm_hysteresis` function.  That might be the clearest.  Let me know if you think otherwise?",
+      "parentUuid": "6fa5b81c_89e4ce5b",
+      "range": {
+        "startLine": 454,
+        "startChar": 42,
+        "endLine": 454,
+        "endChar": 68
+      },
+      "revId": "c7b5c4a6c4f997db39ff2ad2b54d260f838ecee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
