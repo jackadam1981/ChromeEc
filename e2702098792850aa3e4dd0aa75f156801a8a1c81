@@ -46,6 +46,30 @@
       },
       "revId": "e2702098792850aa3e4dd0aa75f156801a8a1c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b40a0a_ab2c05b2",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-01T23:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d358603d_7c7930a4",
+      "range": {
+        "startLine": 27,
+        "startChar": 30,
+        "endLine": 27,
+        "endChar": 32
+      },
+      "revId": "e2702098792850aa3e4dd0aa75f156801a8a1c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
