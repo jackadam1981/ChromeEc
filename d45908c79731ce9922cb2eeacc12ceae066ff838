@@ -52,6 +52,24 @@
       "parentUuid": "21a42ca3_837c2be9",
       "revId": "d45908c79731ce9922cb2eeacc12ceae066ff838",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf3baa0_a7443007",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-12-01T04:07:02Z",
+      "side": 1,
+      "message": "Yes! Depends on where you add the tests:\n1. In `ec/zephyr/test` (the preferable way) - please follow this guide to run twister with `--coverage` https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr/ztest.md\n2. In legacy `ec/test` - then `make buildall` should run those tests, but I don\u0027t know how to see the coverage besides uploading your changes to this CL and starting the dry run",
+      "parentUuid": "ef8f32ee_21cd7b78",
+      "revId": "d45908c79731ce9922cb2eeacc12ceae066ff838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
