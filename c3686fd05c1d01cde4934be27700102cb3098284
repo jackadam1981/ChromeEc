@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c3d87b9_cae2be2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-01T21:27:09Z",
+      "side": 1,
+      "message": "All the builds are now passing, however the host unittest `timer` fails because it doesn\u0027t seem to actually sleep for expected delay:\n\n```\nRunning test_usleep...\ntest/timer.cc:28: ASSERTION failed: ABS((expected_duration) - (sleep_duration)) \u003c 10\n                EVAL: 12344 \u003c 10\nFail\nFail! (1 tests)\n```\n\nIs it because I missing the changes to `libc/syscalls.c` mentioned in [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4068498/comment/b3dd3519_3f8df637/)?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "c3686fd05c1d01cde4934be27700102cb3098284",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
