@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29789b9b_76ef6788",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-01T00:25:49Z",
+      "side": 1,
+      "message": "These comments can be wrong or stale. We probably want to use a macro which takes a temperature and returns temp_ratio:\n\n    #define TEMP_FAN_MAX 55\n    #define TEMP_FAN_OFF 30\n    #define TEMP_TO_RATIO(c) \\\n            ((c - TEMP_FAN_OFF) * 100 / (TEMP_FAN_MAX - TEMP_FAN_OFF))\n\nThen, we\u0027ll use:\n\n    .decreasing_temp_ratio_threshold \u003d TEMP_TO_RATIO(30),\n    .increasing_temp_ratio_threshold \u003d TEMP_TO_RATIO(37),\n\nA drawback is a bad value is not as obvious. For example, TEMP_TO_RATIO(60) is invalid since it exceeds 100%. I can\u0027t think of a smart way to catch it at compile time.\n\nWDYT?",
+      "range": {
+        "startLine": 454,
+        "startChar": 42,
+        "endLine": 454,
+        "endChar": 68
+      },
+      "revId": "c7b5c4a6c4f997db39ff2ad2b54d260f838ecee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
