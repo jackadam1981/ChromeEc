@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "934a2b55_4bae8ad9",
+        "filename": "zephyr/program/nissa/src/sub_board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-02T06:19:04Z",
+      "side": 1,
+      "message": "I think this function needs to stay in src/common.c",
+      "revId": "b91d0c7b0309b670545b046dada3927f26a3622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef68b62c_b67aeb00",
+        "filename": "zephyr/program/nissa/src/sub_board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-02T06:19:04Z",
+      "side": 1,
+      "message": "Likely this function needs to be split so that the callback setup for\nboard_power_change is in src/common.c, and the setting of the port count\nis in src/sub_board.c",
+      "revId": "b91d0c7b0309b670545b046dada3927f26a3622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
