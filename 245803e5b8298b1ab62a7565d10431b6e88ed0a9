@@ -22,6 +22,30 @@
       },
       "revId": "245803e5b8298b1ab62a7565d10431b6e88ed0a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ab9f03_56a0439c",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/interrupts.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-12-02T19:37:53Z",
+      "side": 1,
+      "message": "both files are identical, easier for maintenance, thanks!\ndone in Patchset 13",
+      "parentUuid": "dbafd111_37196ba6",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "245803e5b8298b1ab62a7565d10431b6e88ed0a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
