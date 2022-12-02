@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "143a4df9_8cf59ca1",
+        "filename": "zephyr/program/geralt/interrupts.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2022-12-02T04:24:39Z",
+      "side": 1,
+      "message": "@tim2.lin@ite.corp-partner.google.com\nThe shi driver does not have the sleepmask feature enabled:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/drivers/cros_shi/cros_shi_it8xxx2.c#290\nCan this feature be enabled now?",
+      "parentUuid": "25162486_a99ac332",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 30
+      },
+      "revId": "5e0e3107435c977910cb1feff6359d3327da5cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96864604_39660b2a",
         "filename": "zephyr/program/geralt/program.conf",
         "patchSetId": 9
