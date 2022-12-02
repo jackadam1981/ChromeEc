@@ -18,10 +18,18 @@
 			i2c-port = <&i2c1_0>;
 			enum-names = "I2C_PORT_TYPEC_AIC_2";
 		};
+		i2c_ec_i2c_sensor: ec_i2c_sensor {
+			i2c-port = <&i2c6_0>;
+			enum-names = "I2C_PORT_SENSOR";
+		};
 	};
 };
 
 &i2c_ctrl1 {
+	status = "okay";
+};
+
+&i2c_ctrl6 {
 	status = "okay";
 };
 
@@ -75,4 +83,12 @@
 		compatible = "cypress,ccgxxf";
 		reg = <0x1b>;
 	};
+};
+
+&i2c6_0 {
+	label = "I2C_SENSOR";
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	pinctrl-0 = <&i2c6_0_sda_scl_gpc1_c2>;
+	pinctrl-names = "default";
 };

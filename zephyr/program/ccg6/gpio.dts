@@ -106,6 +106,26 @@
 		usbc-tcpc-i2c-data-aic2 {
 			gpios = <&gpio8 7 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
+		/* Need to designate 1.8V for I2C buses on the 1800mV rail */
+		ec-i2c-sensor-scl {
+			gpios = <&gpioc 2 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+		ec-i2c-sensor-sda {
+			gpios = <&gpioc 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+		gpio_ec_accel_int_r_l: ec_accel_int_r_l {
+			gpios = <&gpio5 0 GPIO_INPUT>;
+		};
+		gpio_ec_als_rgb_int_r_l: ec_als_rgb_int_r_l {
+			gpios = <&gpio5 6 GPIO_INPUT_PULL_UP>;
+		};
+		gpio_ec_imu_int_r_l: ec_imu_int_r_l {
+			gpios = <&gpio5 7 GPIO_INPUT_PULL_UP>;
+		};
+		slate-mode-indication {
+			gpios = <&gpio9 4 GPIO_INPUT>; /* 1.8V */
+			enum-name = "GPIO_TABLET_MODE_L";
+		};
 
 		/* unimplemented GPIOs */
 		entering-rw {

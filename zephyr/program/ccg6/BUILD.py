@@ -16,6 +16,7 @@ register_npcx_project(
         here / "ioex.dts",
         here / "interrupts.dts",
         here / "keyboard.dts",
+        here / "motionsense.dts",
         here / "temp_sensor.dts",
         here / "power_signals.dts",
         here / "usbc.dts",
