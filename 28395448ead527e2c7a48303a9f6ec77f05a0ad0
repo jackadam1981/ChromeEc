@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f92f0ce_ab95e466",
+        "filename": "util/zephyr_to_resultdb.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1392253
+      },
+      "writtenOn": "2022-12-02T05:14:42Z",
+      "side": 1,
+      "message": "Why do you need to pass a duplicate tag for suite here since you\u0027ve already pass it to the variant?",
+      "range": {
+        "startLine": 117,
+        "startChar": 21,
+        "endLine": 117,
+        "endChar": 31
+      },
+      "revId": "28395448ead527e2c7a48303a9f6ec77f05a0ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
