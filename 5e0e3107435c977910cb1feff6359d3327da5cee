@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e08f3544_23a12350",
+        "filename": "zephyr/program/geralt/program.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-02T04:32:52Z",
+      "side": 1,
+      "message": "yes I think so (asked this in internal chat)",
+      "parentUuid": "96864604_39660b2a",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 43
+      },
+      "revId": "5e0e3107435c977910cb1feff6359d3327da5cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4c7bcff_d4f86d46",
@@ -155,6 +179,30 @@
       "writtenOn": "2022-12-01T08:09:23Z",
       "side": 1,
       "message": "This defaults to 1, so we can drop it.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 34
+      },
+      "revId": "5e0e3107435c977910cb1feff6359d3327da5cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba6ae2f_44ea0e44",
+        "filename": "zephyr/program/geralt/program.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-02T04:32:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4c7bcff_d4f86d46",
       "range": {
         "startLine": 167,
         "startChar": 0,
