@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb63dca3_119e6712",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-12-02T15:56:27Z",
+      "side": 1,
+      "message": "Why the macro? I would just make it real code.",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "0a41021a29b1fd40ba9a4b49c216a5efd88826b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
