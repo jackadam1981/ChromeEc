@@ -16,6 +16,24 @@
       "message": "Hi google team, \n\nI cannot access this weblink. May I ask what failure occurred?\nhttps://cr-buildbucket.appspot.com/build/8795996042888794625",
       "revId": "6cbac2dfea68269da35413bb6cf8e942268cea62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee1c724c_7633d8c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-12-02T01:03:10Z",
+      "side": 1,
+      "message": "Here is the error:\n\nERROR:root:All C source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/board/gaelin/board.c:66:44: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        rv \u003d ps8811_i2c_read(me, PS8811_REG_PAGE1,\nERROR:root:                                                  ^\nERROR:root:/mnt/host/source/src/platform/ec/board/gaelin/board.c:67:35: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:                             PS8811_REG1_USB_BEQ_LEVEL, \u0026val);\nERROR:root:                                                       ^",
+      "parentUuid": "82a0c0a3_1005cf48",
+      "revId": "6cbac2dfea68269da35413bb6cf8e942268cea62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
