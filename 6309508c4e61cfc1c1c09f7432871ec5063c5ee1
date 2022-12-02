@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb0972b9_e3fbade7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-12-02T05:33:45Z",
+      "side": 1,
+      "message": "Hi Tom,\n\nI suppose that this should be done in another CL before CL:4022082 merges. As I commented in CL:4022082, `CC\u003dclang make BOARD\u003dgladios` has already compiled successfully. Could you help to review this CL?\n\nThanks!",
+      "revId": "6309508c4e61cfc1c1c09f7432871ec5063c5ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
