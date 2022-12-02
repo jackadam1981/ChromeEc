@@ -16,6 +16,24 @@
       "message": "So perhaps this should be called ap_power_is_startup_ok(), since the function isn\u0027t really a board specific function - it has a default function that can be overridden.\n\nIt\u0027s not clear to me when this default instance is actually used;\nisn\u0027t the other function always used? Is there a need to have a default stub?\nUsing __weak should be avoided if possible.",
       "revId": "533b6bfce39958bd69f9b1c4cf0fb5cfcb6aaf89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f63b1d_9cd0277b",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-02T02:40:16Z",
+      "side": 1,
+      "message": "I wanted to avoid coupling this to the EC application so provided something to make it work when separate, but if you think that\u0027s not necessary then I\u0027ve removed it.",
+      "parentUuid": "8d73d0b9_c20cd07c",
+      "revId": "533b6bfce39958bd69f9b1c4cf0fb5cfcb6aaf89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
