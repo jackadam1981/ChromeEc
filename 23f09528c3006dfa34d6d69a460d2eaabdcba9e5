@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e1d05d_c912062f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-02T20:10:24Z",
+      "side": 1,
+      "message": "I think 0x82 (and 0x83) is used by EC_MEMMAP_ALS (as indicated by the comment above).",
+      "range": {
+        "startLine": 178,
+        "startChar": 26,
+        "endLine": 178,
+        "endChar": 30
+      },
+      "revId": "23f09528c3006dfa34d6d69a460d2eaabdcba9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
