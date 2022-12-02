@@ -8,7 +8,9 @@
 #include "chipset.h"
 #include "console.h"
 #include "gpio/gpio_int.h"
+#include "hooks.h"
 #include "host_command.h"
+#include "system.h"
 
 #include <errno.h>
 
@@ -265,9 +267,8 @@ static void shi_ite_int_handler(const void *arg)
 		/*
 		 * Once there is no SPI active, enable idle task deep
 		 * sleep bit of SPI in S3 or lower.
-		 * TODO(b:185176098): enable_sleep(SLEEP_MASK_SPI);
 		 */
-
+		enable_sleep(SLEEP_MASK_SPI);
 		/* CS# is deasserted, so write clear all slave status */
 		IT83XX_SPI_ISR = 0xff;
 	}
@@ -293,7 +294,7 @@ void spi_event(enum gpio_signal signal)
 		/* Move to processing state */
 		spi_set_state(SPI_STATE_PROCESSING);
 		/* Disable idle task deep sleep bit of SPI in S0. */
-		/* TODO(b:185176098): disable_sleep(SLEEP_MASK_SPI); */
+		disable_sleep(SLEEP_MASK_SPI);
 	}
 }
 
@@ -375,6 +376,13 @@ static int cros_shi_ite_init(const struct device *dev)
 
 	return 0;
 }
+
+/* Disable SHI bus */
+static void shi_disable(void)
+{
+	enable_sleep(SLEEP_MASK_SPI);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND_COMPLETE, shi_disable, HOOK_PRIO_DEFAULT);
 
 PINCTRL_DT_INST_DEFINE(0);
 
