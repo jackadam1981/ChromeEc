@@ -34,6 +34,24 @@
       "parentUuid": "82a0c0a3_1005cf48",
       "revId": "6cbac2dfea68269da35413bb6cf8e942268cea62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658e442e_eca48ca9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-12-02T01:13:06Z",
+      "side": 1,
+      "message": "Do you use `repo upload` with `--no-verify` or `--ignore-hooks`? The presubmit script should prompt the warning",
+      "parentUuid": "ee1c724c_7633d8c6",
+      "revId": "6cbac2dfea68269da35413bb6cf8e942268cea62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
