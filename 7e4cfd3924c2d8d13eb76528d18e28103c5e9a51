@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c26a808_fe0fe3e8",
+        "filename": "zephyr/program/nissa/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-12-02T06:12:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f75dc3d_a094c1f3",
+      "range": {
+        "startLine": 83,
+        "startChar": 15,
+        "endLine": 83,
+        "endChar": 24
+      },
+      "revId": "7e4cfd3924c2d8d13eb76528d18e28103c5e9a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7979c5fc_4a60f3bb",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-12-02T05:44:03Z",
       "side": 1,
       "message": "drop \u0027sub-board\u0027",
+      "revId": "7e4cfd3924c2d8d13eb76528d18e28103c5e9a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "555c1761_c3c5dc90",
+        "filename": "zephyr/program/nissa/yaviks/src/sub_board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-12-02T06:12:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7979c5fc_4a60f3bb",
       "revId": "7e4cfd3924c2d8d13eb76528d18e28103c5e9a51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
