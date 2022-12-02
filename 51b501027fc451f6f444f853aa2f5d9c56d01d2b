@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ddb5167_30290ca6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-12-02T00:00:14Z",
+      "side": 1,
+      "message": "Tested on a Lzaor. It is able to detect whether the AC adapter is plugged in and charges the battery when plugged in.",
+      "parentUuid": "222832cf_1ce915b1",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 4
+      },
+      "revId": "51b501027fc451f6f444f853aa2f5d9c56d01d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ae019b7_48641efd",
