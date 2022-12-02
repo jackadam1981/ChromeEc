@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d25f1ab8_283afa02",
+        "filename": "zephyr/program/geralt/BUILD.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-12-02T00:43:48Z",
+      "side": 1,
+      "message": "There are two cx version changes under review:\nhttps://github.com/zephyrproject-rtos/zephyr/pull/52655\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3834910\nOnce the changes are merged, we will be able to change the variant to the cx version to get the full memory space to use. @tim2.lin@ite.corp-partner.google.com",
+      "range": {
+        "startLine": 14,
+        "startChar": 22,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "5e0e3107435c977910cb1feff6359d3327da5cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fed79bb0_2744b2b6",
         "filename": "zephyr/program/geralt/interrupts.dtsi",
         "patchSetId": 9
@@ -14,6 +37,30 @@
       "writtenOn": "2022-12-01T08:09:23Z",
       "side": 1,
       "message": "I wonder if GPIO_INT_RISING is enough already. @Dino.Li@ite.com.tw",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 30
+      },
+      "revId": "5e0e3107435c977910cb1feff6359d3327da5cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0637c320_56669406",
+        "filename": "zephyr/program/geralt/interrupts.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-12-02T00:43:48Z",
+      "side": 1,
+      "message": "GPIO_INT_EDGE_FALLING is required to support low power s0 config option. Enabling GPIO_INT_EDGE_RISING will make sleepmask of SPI communication in wrong state.",
+      "parentUuid": "fed79bb0_2744b2b6",
       "range": {
         "startLine": 86,
         "startChar": 12,
