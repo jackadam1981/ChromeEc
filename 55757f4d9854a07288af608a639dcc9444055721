@@ -16,6 +16,24 @@
       "message": "Tom: What should be the correct testing for this. Is compare_build + CQ enough?",
       "revId": "55757f4d9854a07288af608a639dcc9444055721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01af4035_812590d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-02T21:07:56Z",
+      "side": 1,
+      "message": "Yes, these would fail at compile time, so CQ should verify that. Thanks for following up on these.",
+      "parentUuid": "57f80a26_46b8ba84",
+      "revId": "55757f4d9854a07288af608a639dcc9444055721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
