@@ -22,6 +22,30 @@
       },
       "revId": "960bd1cfb9af0ab0f1a7a8abfd03fdc24e2daff7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01fd7f17_f251dca8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-12-02T18:09:19Z",
+      "side": 1,
+      "message": "It appears that the phandle values for some nodes will change with this refactor, but otherwise the nodes are the same. This results in not being able to ensure the binaries are bit exact.\n\nI tested with this CL locally and verified basic operation. I think this is fine to sbumit.",
+      "parentUuid": "e8551a0f_cc764953",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "960bd1cfb9af0ab0f1a7a8abfd03fdc24e2daff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
