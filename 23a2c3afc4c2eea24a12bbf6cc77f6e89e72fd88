@@ -55,6 +55,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "961296a2_acb3edb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-12-02T02:05:31Z",
+      "side": 1,
+      "message": "\u003e Are we getting a protocol error because conflict with the incoming Get_Status message? (I would have thought that collision avoidance would take care of this too.)\n\nI suspect this is it, the second Alert collides with Get_Status/Status from the first Alert. I setup an EC image with a console command that sent 2 Alerts 30 ms apart to test this. When connected to a PD 3.1 Dock which responds to Alert with Get_Status, I was able to reproduce the issue. When connected to a PD 3.1 charger which responds to Alert with Not_Supported, there was no issue.\n\n\u003e Is that what happens now?\n\nNo, it looks like with this soft reset we end up hard resetting and the second Alert gets lost. (https://drive.google.com/file/d/1hdiOwnF0Lo500Mppg02eoTy1P3vIt9mR/view?usp\u003dsharing). I\u0027ll take a closer look at how to avoid this and attempt to resend the Alert, then followup with a patchset.\n\n\u003e That would make sense if we\u0027re the sink and the partner is in control of collision avoidance, and the partner had an immediate response to our alert.\n\nWe are the sink and the partner does immediately respond to the Alert. I attached a trace to the bug, they respond in about 23ms.",
+      "parentUuid": "6ef948b5_ec73d9af",
+      "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f564e012_e16dc250",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-12-02T02:05:31Z",
+      "side": 1,
+      "message": "Hi, thanks for taking a look! I haven\u0027t had time to setup and test a followup patchset yet, but here are my initial responses to your comments. I\u0027ll followup with a patchset shortly.",
+      "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b46ef1c9_d279f536",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -66,6 +101,24 @@
       "writtenOn": "2022-12-01T18:11:42Z",
       "side": 1,
       "message": "Discard shouldn\u0027t be a soft reset case.  We\u0027ll just have to try the message again later.\n\nThere\u0027s a chart in the PD spec `6.11 Message Discarding` you can read to get a sense of how the discarding works.  Since this is the first message of an AMS, it\u0027s okay if the partner interrupted to send something of its own.  We should just try starting our AMS again later.\n\nFor protocol error, usually the `pe_report_error()` function handles that for most states with exceptions for states where something special is necessary.",
+      "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8afadbe2_dc22e4c4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4482,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-12-02T02:05:31Z",
+      "side": 1,
+      "message": "Thanks! So with Table 6-74, it looks like our protocol layer is throwing out the Alert because we are receiving a Get_Status message. I\u0027ll look for a way to resend the message after it\u0027s discarded and separate handling for protocol errors.",
+      "parentUuid": "b46ef1c9_d279f536",
       "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
