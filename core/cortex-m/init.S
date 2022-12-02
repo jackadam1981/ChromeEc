@@ -98,6 +98,9 @@ data_loop:
 	isb                 /* Reset pipeline */
 #endif /* CONFIG_DEBUG_DISABLE_WRITE_BUFFER */
 
+	/* Constructors of global objects. */
+	bl init_array
+
 	/* Jump to C code */
 	bl main
 

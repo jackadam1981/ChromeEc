@@ -102,3 +102,16 @@ void cpu_disable_caches(void)
 }
 DECLARE_HOOK(HOOK_SYSJUMP, cpu_disable_caches, HOOK_PRIO_LAST);
 #endif /* CONFIG_ARMV7M_CACHE */
+
+extern void (*__init_array_start[])(void) __attribute__((weak));
+extern void (*__init_array_end[])(void) __attribute__((weak));
+
+void init_array(void)
+{
+	int count;
+	int i;
+	count = __init_array_end - __init_array_start;
+	for (i = 0; i < count; i++) {
+		__init_array_start[i]();
+	}
+}
