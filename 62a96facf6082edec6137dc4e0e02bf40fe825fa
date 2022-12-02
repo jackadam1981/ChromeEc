@@ -16,6 +16,24 @@
       "message": "Is the register set for the ISL9538C sufficiently close to the ISL9238C that it can be treated as the same chip as far as the driver code goes?",
       "revId": "62a96facf6082edec6137dc4e0e02bf40fe825fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "316ec1c1_b48d881b",
+        "filename": "zephyr/program/skyrim/winterhold/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-12-02T02:47:41Z",
+      "side": 1,
+      "message": "Yes, ISL9238C has OTG function(0x49/0x4A) but it\u0027s not used in ISL9538C. Expect OTG function, other registers are same with ISL9238C.",
+      "parentUuid": "4d3b1235_4d675a66",
+      "revId": "62a96facf6082edec6137dc4e0e02bf40fe825fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
