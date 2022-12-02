@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e171e47a_103c464c",
+        "filename": "board/banshee/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-12-02T22:25:55Z",
+      "side": 1,
+      "message": "I would also suggest to split this CL in 2 separate CLs:\n1. Adding the functionality to the driver\n2. banshee-specific CL, calling the function from banshee/board.c",
+      "parentUuid": "b00d7679_8bdd948c",
+      "revId": "fcf7fc963630e21c2442768e9690f51321c04503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc5c78ea_fa45420f",
         "filename": "board/banshee/usbc_config.c",
         "patchSetId": 4
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Are there still USB-C ports on this platform which can have type-c monitors and dongles plugged into them? \n\nFrom the Display Port alternate mode specification, we need to ensure we attach the SBU lines before the port partner will send us HPD.  We can make an exception for the framework cards since we know they behave differently than the spec dictates (they send HPD without SBU lines connected), but I don\u0027t think we should assume other port partners will be the same.",
       "parentUuid": "412469ec_ec622658",
+      "revId": "fcf7fc963630e21c2442768e9690f51321c04503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5aa3b55_d83f0044",
+        "filename": "board/banshee/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-12-02T22:25:55Z",
+      "side": 1,
+      "message": "Re: `Because DP CONNECTION bit is 0 on non-HDMI/DP CARD port.`\n - Bit `BB_RETIMER_DP_CONNECTION` is set in `retimer_set_state`, so changing it to 0 for all the cases will affect other cards.",
+      "parentUuid": "46d5e764_4e88627b",
       "revId": "fcf7fc963630e21c2442768e9690f51321c04503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
