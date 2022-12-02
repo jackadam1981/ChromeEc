@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbafd111_37196ba6",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/interrupts.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-02T19:14:27Z",
+      "side": 1,
+      "message": "remove this file and add the one in mtlrvp_npcx in build file",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "245803e5b8298b1ab62a7565d10431b6e88ed0a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
