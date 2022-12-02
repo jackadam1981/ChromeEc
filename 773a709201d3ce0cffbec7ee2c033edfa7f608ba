@@ -16,6 +16,24 @@
       "message": "The CQ is failing with:\n\n```\nThe following boards are missing and must be added to BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG or BOARDS_THAT_FAIL_WITH_CLANG:\ngladios\n```\n\nPlease make sure that this new board compiles with clang. You can test locally with: `CC\u003dclang make BOARD\u003dgladios`. Once it compiles successfully, you can add it to the `BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG` list in `util/build_with_clang.py`.",
       "revId": "773a709201d3ce0cffbec7ee2c033edfa7f608ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9190c4b_73747ff5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-12-02T01:31:27Z",
+      "side": 1,
+      "message": "Hi Tom,\n\nThanks for your comment. I have run locally with `CC\u003dclang make BOARD\u003dgladios` and it compiled successfully.",
+      "parentUuid": "2ea0a6f4_0e156aa4",
+      "revId": "773a709201d3ce0cffbec7ee2c033edfa7f608ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
