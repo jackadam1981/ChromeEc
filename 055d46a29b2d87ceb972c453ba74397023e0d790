@@ -52,6 +52,24 @@
       "parentUuid": "c33fb982_74711ab4",
       "revId": "055d46a29b2d87ceb972c453ba74397023e0d790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd28933_932f4e4e",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-12-02T16:25:56Z",
+      "side": 1,
+      "message": "That\u0027s not the behavior I expected. Maybe we can ignore the log? \nSince the sensor ID is well defined, unless the node of the dtsi is deleted or renamed, the chances of sending an invalid ID are very low.",
+      "parentUuid": "7e230291_d6adca48",
+      "revId": "055d46a29b2d87ceb972c453ba74397023e0d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
