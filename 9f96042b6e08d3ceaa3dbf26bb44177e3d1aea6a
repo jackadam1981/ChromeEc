@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "00e18461_2c309d72",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-12-02T15:32:27Z",
+      "side": 1,
+      "message": "I use the struct ec_thermal_config to save the thermal tabel.",
+      "parentUuid": "cb484817_acc85442",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "9f96042b6e08d3ceaa3dbf26bb44177e3d1aea6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ec3d316f_ba519b2d",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 3
