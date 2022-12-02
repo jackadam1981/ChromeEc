@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f2e394f_c638cc8a",
+        "filename": "zephyr/test/drivers/dps/src/dps_selection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-12-02T04:45:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7417aae2_d6fd947c",
+      "revId": "2222f9ae7f27cca3f458f0e8ae23524c1b52c4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "499f65b4_11a220a5",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-30T03:34:04Z",
       "side": 1,
       "message": "Not sure how sleep works in test environment, does this really sleep for 20 secs?\n\nIf yes, maybe you can ues `hook_notify(HOOK_SECOND)` 20 times instead.",
+      "revId": "2222f9ae7f27cca3f458f0e8ae23524c1b52c4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c2c694d_6a882c67",
+        "filename": "zephyr/test/drivers/dps/src/dps_selection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-12-02T04:45:17Z",
+      "side": 1,
+      "message": "The actual running time for the whole test is about 1 second, so this should be fine.",
+      "parentUuid": "499f65b4_11a220a5",
       "revId": "2222f9ae7f27cca3f458f0e8ae23524c1b52c4ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
