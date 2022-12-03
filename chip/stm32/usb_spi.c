@@ -438,7 +438,11 @@ void usb_spi_deferred(struct usb_spi_config const *config)
 			read_count = SPI_READBACK_ALL;
 		}
 #endif
-		status_code = spi_transaction(
+
+		status_code = (current_device->port &
+					       USB_SPI_CUSTOM_SPI_DEVICE_MASK ?
+				       usb_spi_board_transaction :
+				       spi_transaction)(
 			current_device, config->state->spi_write_ctx.buffer,
 			config->state->spi_write_ctx.transfer_size,
 			config->state->spi_read_ctx.buffer, read_count);
@@ -658,4 +662,12 @@ int usb_spi_interface(struct usb_spi_config const *config, usb_uint *rx_buf,
 	btable_ep[0].tx_count = 0;
 	STM32_TOGGLE_EP(0, EP_TX_RX_MASK, EP_TX_RX_VALID, EP_STATUS_OUT);
 	return 0;
+}
+
+__overridable int
+usb_spi_board_transaction(const struct spi_device_t *spi_device,
+			  const uint8_t *txdata, int txlen, uint8_t *rxdata,
+			  int rxlen)
+{
+	return EC_ERROR_UNIMPLEMENTED;
 }
