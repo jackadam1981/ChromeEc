@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e63112_6ca0b79e",
+        "filename": "board/endeavour/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-03T18:51:02Z",
+      "side": 0,
+      "message": "11% of the original 19 C to 74 C range is 25 C for turn-on, with 19 C for turn-off.\nThis change moves that turn-on temperature to 41 C, with 35 C for turn-off.",
+      "range": {
+        "startLine": 332,
+        "startChar": 9,
+        "endLine": 332,
+        "endChar": 11
+      },
+      "revId": "dbb70dd7c342ff7a3eb505bbe4a936cb400db150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e51a1f_33fba860",
+        "filename": "board/endeavour/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-03T18:51:02Z",
+      "side": 0,
+      "message": "38% of the original 19 C to 74 C range is 40 C for step-up, with 35 C for step-down. This change moves those thresholds to 44 C and 40 C, with a lower speed: 2900 rpm.",
+      "range": {
+        "startLine": 333,
+        "startChar": 9,
+        "endLine": 333,
+        "endChar": 11
+      },
+      "revId": "dbb70dd7c342ff7a3eb505bbe4a936cb400db150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c17973ff_5475e859",
+        "filename": "board/endeavour/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-03T18:51:02Z",
+      "side": 0,
+      "message": "65% of the original 19 C to 74 C range is 55 C for step-up, with 39 C for step-down. This is where the new table is more aggressive, going to 3400 rpm at 46 C and decreasing at 42 C.",
+      "range": {
+        "startLine": 334,
+        "startChar": 9,
+        "endLine": 334,
+        "endChar": 11
+      },
+      "revId": "dbb70dd7c342ff7a3eb505bbe4a936cb400db150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d183e7fc_cfb53886",
+        "filename": "board/endeavour/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-03T18:51:02Z",
+      "side": 0,
+      "message": "76% of the original 19 C to 74 C range is 61 C for step-up with 54 C for step-down. This level would normally never be reached, even when the CPU was above 90 C. The new table moves those thresholds for 3900 rpm to 48 C and 44 C.",
+      "range": {
+        "startLine": 335,
+        "startChar": 9,
+        "endLine": 335,
+        "endChar": 11
+      },
+      "revId": "dbb70dd7c342ff7a3eb505bbe4a936cb400db150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
