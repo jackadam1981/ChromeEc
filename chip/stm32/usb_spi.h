@@ -351,7 +351,8 @@ enum chip_select_flags {
 
 struct usb_spi_chip_select_command {
 	uint16_t packet_id;
-	uint16_t flags;
+	uint8_t flags;
+	uint8_t spi_device_idx;
 } __packed;
 
 struct usb_spi_chip_select_response {
@@ -397,6 +398,8 @@ enum usb_spi_error {
 	USB_SPI_RX_UNEXPECTED_PACKET = 0x0008,
 	/* The device does not support full duplex mode. */
 	USB_SPI_UNSUPPORTED_FULL_DUPLEX = 0x0009,
+	/* Requested SPI device out of range. */
+	USB_SPI_INVALID_DEVICE = 0x000A,
 	USB_SPI_UNKNOWN_ERROR = 0x8000,
 };
 
