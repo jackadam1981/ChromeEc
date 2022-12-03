@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "814ef291_cd8823a3",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-03T18:40:02Z",
+      "side": 0,
+      "message": "36% of the original 4 C to 76 C range corresponded to 30 C; the instant change moves that turn-on point to 34 C. Thu turn-off point was 4 C; the instant change moves the turn-off point to 25 C.",
+      "range": {
+        "startLine": 613,
+        "startChar": 9,
+        "endLine": 613,
+        "endChar": 11
+      },
+      "revId": "66f1c8822d5eebf4a73686a8420fb9f605c18830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01aad5d4_5036d887",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-03T18:40:02Z",
+      "side": 0,
+      "message": "58% of the original 4 C to 76 C range is at 46 C. The instant change moves that step-up point to 40 C.",
+      "range": {
+        "startLine": 614,
+        "startChar": 9,
+        "endLine": 614,
+        "endChar": 11
+      },
+      "revId": "66f1c8822d5eebf4a73686a8420fb9f605c18830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
