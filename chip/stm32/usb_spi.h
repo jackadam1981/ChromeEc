@@ -232,7 +232,10 @@
  *
  *     packet id:         2 byte enum USB_SPI_PKT_ID_CMD_RESTART_RESPONSE
  *
- * Command chip select Packet (Host to Device):
+ * Command device select Packet (Host to Device):
+ *
+ *     Selects which SPI device/bus is to be used for subsequent transfers.
+ *     Also asserts/deasserts the chip select for the given device.
  *
  *     +----------------+-------------+
  *     | packet id : 2B | action : 2B |
@@ -240,7 +243,7 @@
  *
  *     packet id:         2 byte enum USB_SPI_PKT_ID_CMD_CHIP_SELECT
  *
- *     action:            2 byte, current options:
+ *     flags:             2 bytes, current options:
  *                            0: Deassert chip select
  *                            1: Assert chip select
  *
@@ -305,7 +308,8 @@ enum packet_id_type {
 	/* Additional packets containing read payload. */
 	USB_SPI_PKT_ID_RSP_TRANSFER_CONTINUE = 6,
 	/*
-	 * Request assertion or deassertion of chip select
+	 * Request selection of SPI bus, and assertion or deassertion of chip
+	 * select
 	 */
 	USB_SPI_PKT_ID_CMD_CHIP_SELECT = 7,
 	/* Response to above request. */
@@ -397,6 +401,8 @@ enum usb_spi_error {
 	USB_SPI_RX_UNEXPECTED_PACKET = 0x0008,
 	/* The device does not support full duplex mode. */
 	USB_SPI_UNSUPPORTED_FULL_DUPLEX = 0x0009,
+	/* Requested SPI device out of range. */
+	USB_SPI_INVALID_DEVICE = 0x000A,
 	USB_SPI_UNKNOWN_ERROR = 0x8000,
 };
 
@@ -457,8 +463,8 @@ struct usb_spi_state {
 	 * control endpoint.  The enabled_device flag is set by calling
 	 * usb_spi_enable.
 	 */
-	int enabled_host;
-	int enabled_device;
+	uint8_t enabled_host;
+	uint8_t enabled_device;
 
 	/*
 	 * The current enabled state.  This is only updated in the deferred
@@ -470,7 +476,13 @@ struct usb_spi_state {
 	 * specific state update routines are only called from the deferred
 	 * callback.
 	 */
-	int enabled;
+	uint8_t enabled;
+
+	/*
+	 * The index of the SPI port currently receiving forwarded transactions,
+	 * default is zero.
+	 */
+	uint8_t current_spi_device_idx;
 
 	/* Mark the current operating mode. */
 	enum usb_spi_mode mode;
@@ -554,6 +566,7 @@ struct usb_spi_config {
 		.enabled_host = 0,                                          \
 		.enabled_device = 0,                                        \
 		.enabled = 0,                                               \
+		.current_spi_device_idx = 0,                                \
 		.spi_write_ctx.buffer = (uint8_t *)CONCAT2(NAME, _buffer_), \
 		.spi_read_ctx.buffer = (uint8_t *)CONCAT2(NAME, _buffer_),  \
 	};                                                                  \

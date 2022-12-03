@@ -55,13 +55,6 @@ extern
 extern const unsigned int spi_devices_used;
 
 /*
- * The first port in spi_devices defines the port to access the SPI flash.
- * The first gpio defines the CS GPIO to access the flash,
- * if used.
- */
-#define SPI_FLASH_DEVICE (&spi_devices[0])
-
-/*
  * Enable / disable the SPI port.  When the port is disabled, all its I/O lines
  * are high-Z so the EC won't interfere with other devices on the SPI bus.
  *
