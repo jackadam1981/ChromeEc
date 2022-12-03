@@ -24,7 +24,7 @@ void update_ap_boot_time(enum boot_time_param param)
 	}
 	if (param < RESET_CNT) {
 		ap_boot_time.timestamp[param] = get_time().val;
-		ccprintf("Boot Time: %d, %lld\n", param,
+		ccprintf("Boot Time: %d, %" PRIu64 "\n", param,
 			 ap_boot_time.timestamp[param]);
 	}
 
