@@ -21,6 +21,9 @@ static void usb_spi_read_packet(struct usb_spi_config const *config,
 static void usb_spi_write_packet(struct usb_spi_config const *config,
 				 struct usb_spi_packet_ctx *packet);
 
+static uint8_t current_spi_device_idx = 0;
+static uint16_t device_select_status_code;
+
 /*
  * Map EC error codes to USB_SPI error codes.
  *
@@ -187,7 +190,7 @@ static void create_spi_chip_select_response(struct usb_spi_config const *config,
 {
 	/* Construct the response packet. */
 	packet->rsp_cs.packet_id = USB_SPI_PKT_ID_RSP_CHIP_SELECT;
-	packet->rsp_cs.status_code = 0;
+	packet->rsp_cs.status_code = device_select_status_code;
 	packet->packet_size = sizeof(packet->rsp_cs);
 }
 
@@ -345,15 +348,23 @@ static void usb_spi_process_rx_packet(struct usb_spi_config const *config,
 		 * The host is requesting the chip select line be
 		 * asserted or deasserted.
 		 */
-		uint16_t flags = packet->cmd_cs.flags;
+		uint8_t flags = packet->cmd_cs.flags;
+
+		if (packet->cmd_cs.spi_device_idx > spi_devices_used) {
+			device_select_status_code = USB_SPI_INVALID_DEVICE;
+			config->state->mode = USB_SPI_MODE_SEND_CHIP_SELECT_RESPONSE;
+			break;
+		}
+		current_spi_device_idx = packet->cmd_cs.spi_device_idx;
 
 		if (flags & USB_SPI_CHIP_SELECT) {
 			/* Set chip select low (asserted). */
-			gpio_set_level(SPI_FLASH_DEVICE->gpio_cs, 0);
+			gpio_set_level(spi_devices[current_spi_device_idx].gpio_cs, 0);
 		} else {
 			/* Set chip select high (adesserted). */
-			gpio_set_level(SPI_FLASH_DEVICE->gpio_cs, 1);
+			gpio_set_level(spi_devices[current_spi_device_idx].gpio_cs, 1);
 		}
+		device_select_status_code = USB_SPI_SUCCESS;
 		config->state->mode = USB_SPI_MODE_SEND_CHIP_SELECT_RESPONSE;
 		break;
 	}
@@ -435,8 +446,12 @@ void usb_spi_deferred(struct usb_spi_config const *config)
 			read_count = SPI_READBACK_ALL;
 		}
 #endif
-		status_code = spi_transaction(
-			SPI_FLASH_DEVICE, config->state->spi_write_ctx.buffer,
+
+		status_code = (spi_devices[current_spi_device_idx].port
+			       & USB_SPI_CUSTOM_SPI_DEVICE_MASK
+			       ? usb_spi_board_transaction : spi_transaction)(
+			&spi_devices[current_spi_device_idx],
+			config->state->spi_write_ctx.buffer,
 			config->state->spi_write_ctx.transfer_size,
 			config->state->spi_read_ctx.buffer, read_count);
 
@@ -653,4 +668,11 @@ int usb_spi_interface(struct usb_spi_config const *config, usb_uint *rx_buf,
 	btable_ep[0].tx_count = 0;
 	STM32_TOGGLE_EP(0, EP_TX_RX_MASK, EP_TX_RX_VALID, EP_STATUS_OUT);
 	return 0;
+}
+
+__overridable int usb_spi_board_transaction(
+	const struct spi_device_t *spi_device,
+	const uint8_t *txdata, int txlen,
+	uint8_t *rxdata, int rxlen) {
+	return EC_ERROR_UNIMPLEMENTED;
 }

@@ -280,6 +280,8 @@
 
 #define USB_SPI_MIN_PACKET_SIZE (2)
 
+#define USB_SPI_CUSTOM_SPI_DEVICE_MASK 0x80
+
 enum packet_id_type {
 	/* Request USB SPI configuration data from device. */
 	USB_SPI_PKT_ID_CMD_GET_USB_SPI_CONFIG = 0,
@@ -351,7 +353,8 @@ enum chip_select_flags {
 
 struct usb_spi_chip_select_command {
 	uint16_t packet_id;
-	uint16_t flags;
+	uint8_t flags;
+	uint8_t spi_device_idx;
 } __packed;
 
 struct usb_spi_chip_select_response {
@@ -397,6 +400,8 @@ enum usb_spi_error {
 	USB_SPI_RX_UNEXPECTED_PACKET = 0x0008,
 	/* The device does not support full duplex mode. */
 	USB_SPI_UNSUPPORTED_FULL_DUPLEX = 0x0009,
+	/* Requested SPI device out of range. */
+	USB_SPI_INVALID_DEVICE = 0x000A,
 	USB_SPI_UNKNOWN_ERROR = 0x8000,
 };
 
@@ -649,5 +654,10 @@ int usb_spi_interface(struct usb_spi_config const *config, usb_uint *rx_buf,
  */
 void usb_spi_board_enable(struct usb_spi_config const *config);
 void usb_spi_board_disable(struct usb_spi_config const *config);
+
+int usb_spi_board_transaction(
+	const struct spi_device_t *spi_device,
+	const uint8_t *txdata, int txlen,
+	uint8_t *rxdata, int rxlen);
 
 #endif /* __CROS_EC_USB_SPI_H */
