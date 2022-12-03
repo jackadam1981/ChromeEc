@@ -21,6 +21,9 @@ static void usb_spi_read_packet(struct usb_spi_config const *config,
 static void usb_spi_write_packet(struct usb_spi_config const *config,
 				 struct usb_spi_packet_ctx *packet);
 
+static uint8_t current_spi_device_idx = 0;
+static uint16_t device_select_status_code;
+
 /*
  * Map EC error codes to USB_SPI error codes.
  *
@@ -182,12 +185,12 @@ static void create_spi_config_response(struct usb_spi_config const *config,
 	packet->packet_size = sizeof(struct usb_spi_response_configuration_v2);
 }
 
-static void create_spi_chip_select_response(struct usb_spi_config const *config,
-					    struct usb_spi_packet_ctx *packet)
+static void create_spi_device_select_response(struct usb_spi_config const *config,
+					      struct usb_spi_packet_ctx *packet)
 {
 	/* Construct the response packet. */
-	packet->rsp_cs.packet_id = USB_SPI_PKT_ID_RSP_CHIP_SELECT;
-	packet->rsp_cs.status_code = 0;
+	packet->rsp_cs.packet_id = USB_SPI_PKT_ID_RSP_DEVICE_SELECT;
+	packet->rsp_cs.status_code = device_select_status_code;
 	packet->packet_size = sizeof(packet->rsp_cs);
 }
 
@@ -340,21 +343,29 @@ static void usb_spi_process_rx_packet(struct usb_spi_config const *config,
 
 		break;
 	}
-	case USB_SPI_PKT_ID_CMD_CHIP_SELECT: {
+	case USB_SPI_PKT_ID_CMD_DEVICE_SELECT: {
 		/*
 		 * The host is requesting the chip select line be
 		 * asserted or deasserted.
 		 */
-		uint16_t flags = packet->cmd_cs.flags;
+		uint8_t flags = packet->cmd_cs.flags;
+
+		if (packet->cmd_cs.spi_device_idx > spi_devices_used) {
+			device_select_status_code = USB_SPI_INVALID_DEVICE;
+			config->state->mode = USB_SPI_MODE_SEND_DEVICE_SELECT_RESPONSE;
+			break;
+		}
+		current_spi_device_idx = packet->cmd_cs.spi_device_idx;
 
 		if (flags & USB_SPI_CHIP_SELECT) {
 			/* Set chip select low (asserted). */
-			gpio_set_level(SPI_FLASH_DEVICE->gpio_cs, 0);
+			gpio_set_level(spi_devices[current_spi_device_idx].gpio_cs, 0);
 		} else {
 			/* Set chip select high (adesserted). */
-			gpio_set_level(SPI_FLASH_DEVICE->gpio_cs, 1);
+			gpio_set_level(spi_devices[current_spi_device_idx].gpio_cs, 1);
 		}
-		config->state->mode = USB_SPI_MODE_SEND_CHIP_SELECT_RESPONSE;
+		device_select_status_code = USB_SPI_SUCCESS;
+		config->state->mode = USB_SPI_MODE_SEND_DEVICE_SELECT_RESPONSE;
 		break;
 	}
 	default: {
@@ -413,8 +424,8 @@ void usb_spi_deferred(struct usb_spi_config const *config)
 		return;
 	}
 	/* Need to send response to USB SPI chip select. */
-	if (config->state->mode == USB_SPI_MODE_SEND_CHIP_SELECT_RESPONSE) {
-		create_spi_chip_select_response(config, transmit_packet);
+	if (config->state->mode == USB_SPI_MODE_SEND_DEVICE_SELECT_RESPONSE) {
+		create_spi_device_select_response(config, transmit_packet);
 		usb_spi_write_packet(config, transmit_packet);
 		config->state->mode = USB_SPI_MODE_IDLE;
 		return;
@@ -436,7 +447,8 @@ void usb_spi_deferred(struct usb_spi_config const *config)
 		}
 #endif
 		status_code = spi_transaction(
-			SPI_FLASH_DEVICE, config->state->spi_write_ctx.buffer,
+			&spi_devices[current_spi_device_idx],
+			config->state->spi_write_ctx.buffer,
 			config->state->spi_write_ctx.transfer_size,
 			config->state->spi_read_ctx.buffer, read_count);
 
