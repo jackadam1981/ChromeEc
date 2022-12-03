@@ -129,19 +129,22 @@ USB_STREAM_CONFIG(usart5_usb, USB_IFACE_USART5_STREAM,
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
 	{ 1 /* SPI2 */, 7, GPIO_CN9_25, USB_SPI_ENABLED },
+	{ -1 /* OCTO_SPI */, -1, GPIO_CN10_6,
+	  USB_SPI_ENABLED | USB_SPI_CUSTOM_SPI_DEVICE },
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
+struct spi_device_ext_t {
+	const char *name;
+};
+
+const struct spi_device_ext_t spi_devices_ext[ARRAY_SIZE(spi_devices)] = {
+	{ "SPI2" },
+	{ "QSPI" }
+};
+
 void usb_spi_board_enable(struct usb_spi_config const *config)
 {
-	/* Set all SPI pins to high speed */
-	STM32_GPIO_OSPEEDR(GPIO_F) |= 0xFFF00000;
-	STM32_GPIO_OSPEEDR(GPIO_D) |= 0x000000C3;
-	STM32_GPIO_OSPEEDR(GPIO_C) |= 0x000000F0;
-
-	/* Enable clocks to SPI2 module */
-	STM32_RCC_APB1ENR1 |= STM32_RCC_APB1ENR1_SPI2EN;
-
 	/* Reset SPI2 */
 	STM32_RCC_APB1RSTR1 |= STM32_RCC_APB1RSTR1_SPI2RST;
 	STM32_RCC_APB1RSTR1 &= ~STM32_RCC_APB1RSTR1_SPI2RST;
@@ -152,9 +155,6 @@ void usb_spi_board_enable(struct usb_spi_config const *config)
 void usb_spi_board_disable(struct usb_spi_config const *config)
 {
 	spi_enable(&spi_devices[0], 0);
-
-	/* Disable clocks to SPI2 module */
-	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
 }
 
 USB_SPI_CONFIG(usb_spi, USB_IFACE_SPI, USB_EP_SPI, 0);
@@ -199,6 +199,121 @@ const void *const usb_strings[] = {
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 
+
+int usb_spi_board_transaction(const struct spi_device_t *spi_device,
+			      const uint8_t *txdata, int txlen, uint8_t *rxdata,
+			      int rxlen) {
+	int rv = EC_SUCCESS;
+	bool spi_chip_select_already_asserted;
+
+	spi_chip_select_already_asserted = !gpio_get_level(spi_device->gpio_cs);
+
+	/* Drive SS low */
+	gpio_set_level(spi_device->gpio_cs, 0);
+
+	if (!rxlen && !txlen) {
+		/* No operation. */
+	} else if (rxlen == SPI_READBACK_ALL) {
+		ccprintf("Full duplex not supported by OctoSPI hardware\n");
+		rv = EC_ERROR_BUSY;
+	} else if (!rxlen) {
+		/* Enable OCTOSPI, indirect write mode. */
+		STM32_OCTOSPI_CR = STM32_OCTOSPI_CR_FMODE_IND_WRITE
+			| STM32_OCTOSPI_CR_EN;
+		while (STM32_OCTOSPI_SR & STM32_OCTOSPI_SR_BUSY);
+
+		/* Data length. */
+		STM32_OCTOSPI_DLR = txlen - 1;
+		/* No instruction or address, only data. */
+		STM32_OCTOSPI_CCR = STM32_OCTOSPI_CCR_IMODE_NONE
+			| STM32_OCTOSPI_CCR_ADMODE_NONE
+			| STM32_OCTOSPI_CCR_ABMODE_NONE
+			| STM32_OCTOSPI_CCR_DMODE_1WIRE;
+
+		/* Transmit data, four bytes at a time. */
+		for (int i = 0; i < txlen; i += 4) {
+			uint32_t value = 0;
+			for (int j = 0; j < 4; j++) {
+				if (i + j < txlen)
+					value |= txdata[i + j] << (j * 8);
+			}
+			STM32_OCTOSPI_DR = value;
+		}
+		
+		/* Wait for transaction complete, and then clear the flag. */
+		while (!(STM32_OCTOSPI_SR & STM32_OCTOSPI_SR_TCF));
+		STM32_OCTOSPI_FCR = STM32_OCTOSPI_FCR_CTCF;
+	} else if (txlen == 0) {
+		ccprintf("Unhandled: tx=%d rx=%d\n", txlen, rxlen);
+		rv = EC_ERROR_BUSY;
+	} else if (txlen <= 8) {
+		uint32_t instruction = 0, address = 0;
+		/* Enable OCTOSPI, indirect read mode. */
+		STM32_OCTOSPI_CR = STM32_OCTOSPI_CR_FMODE_IND_READ
+			| STM32_OCTOSPI_CR_EN;
+		while (STM32_OCTOSPI_SR & STM32_OCTOSPI_SR_BUSY);
+
+		/* Data length. */
+		STM32_OCTOSPI_DLR = rxlen - 1;
+		if (txlen == 0) {
+		} else if (txlen <= 4) {
+			/* One to four bytes of instruction, no address, then
+			 * read data. */
+			STM32_OCTOSPI_CCR = STM32_OCTOSPI_CCR_IMODE_1WIRE
+				| (txlen - 1) << STM32_OCTOSPI_CCR_ISIZE_POS
+				| STM32_OCTOSPI_CCR_ADMODE_NONE
+				| STM32_OCTOSPI_CCR_ABMODE_NONE
+				| STM32_OCTOSPI_CCR_DMODE_1WIRE;
+			for (int i = 0; i < txlen; i++) {
+				instruction <<= 8;
+				instruction |= txdata[i];
+			}
+		} else {
+			/* One to four bytes of instruction, four bytes of
+			 * address, then read data. */
+			STM32_OCTOSPI_CCR = STM32_OCTOSPI_CCR_IMODE_1WIRE
+				| (txlen - 1) << STM32_OCTOSPI_CCR_ISIZE_POS
+				| STM32_OCTOSPI_CCR_ADMODE_1WIRE
+				| STM32_OCTOSPI_CCR_ADSIZE_4BYTES
+				| STM32_OCTOSPI_CCR_ABMODE_NONE
+				| STM32_OCTOSPI_CCR_DMODE_1WIRE;
+			for (int i = 0; i < txlen - 4; i++) {
+				instruction <<= 8;
+				instruction |= txdata[i];
+			}
+			for (int i = 0; i < 4; i++) {
+				address <<= 8;
+				address |= txdata[txlen - 4 + i];
+			}
+		}
+		/* Set instruction and address registers, triggering the start
+		 * of the write+read transaction. */
+		STM32_OCTOSPI_IR = instruction;
+		STM32_OCTOSPI_AR = address;
+
+		/* Receive data, four bytes at a time. */
+		for (int i = 0; i < rxlen; i += 4) {
+			uint32_t value = STM32_OCTOSPI_DR;;
+			for (int j = 0; j < 4; j++) {
+				if (i + j < rxlen)
+					rxdata[i + j] = value >> (j * 8);
+			}
+		}
+
+		/* Wait for transaction complete, and then clear the flag. */
+		while (!(STM32_OCTOSPI_SR & STM32_OCTOSPI_SR_TCF));
+		STM32_OCTOSPI_FCR = STM32_OCTOSPI_FCR_CTCF;
+	} else {
+		ccprintf("Unhandled: tx=%d rx=%d\n", txlen, rxlen);
+		rv = EC_ERROR_BUSY;
+	}
+	if (!spi_chip_select_already_asserted) {
+		/* Drive SS high */
+		gpio_set_level(spi_device->gpio_cs, 1);
+	}
+	return rv;
+}
+
 /******************************************************************************
  * Initialize board.
  */
@@ -233,6 +348,29 @@ static void board_init(void)
 
 	/* Configure SPI GPIOs */
 	gpio_config_module(MODULE_SPI, 1);
+
+	/* Set all SPI pins to high speed */
+	STM32_GPIO_OSPEEDR(GPIO_F) |= 0xFFF00000;
+	STM32_GPIO_OSPEEDR(GPIO_D) |= 0x000000C3;
+	STM32_GPIO_OSPEEDR(GPIO_C) |= 0x000000F0;
+
+	/* Enable clocks to SPI2 module */
+	STM32_RCC_APB1ENR1 |= STM32_RCC_APB1ENR1_SPI2EN;
+	
+	/* Enable OCTOSPI */
+	STM32_RCC_AHB3ENR |= STM32_RCC_AHB3ENR_QSPIEN;
+	while (STM32_OCTOSPI_SR & STM32_OCTOSPI_SR_BUSY);
+
+	/* Declare that a "Standard" SPI flash device, maximum size is
+	 * connected.  This allows the controller to send arbitrary 32-bit
+	 * addresses, which is needed as we use the instruction and address
+	 * bytes as arbitrary data to send via SPI. */
+	STM32_OCTOSPI_DCR1 = STM32_OCTOSPI_DCR1_MTYP_STANDARD
+		| STM32_OCTOSPI_DCR1_DEVSIZE_MSK;
+	/* Clock prescaler (max value 255) */
+	STM32_OCTOSPI_DCR2 = 63;
+	/* Zero dummy cycles */
+	STM32_OCTOSPI_TCR = 0;
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -303,6 +441,8 @@ static int command_gpio_mode(int argc, const char **argv)
 		flags |= GPIO_OUTPUT | GPIO_OPEN_DRAIN;
 	else if (strcasecmp(argv[2], "pushpull") == 0)
 		flags |= GPIO_OUTPUT;
+	else if (strcasecmp(argv[2], "alternate") == 0)
+		flags |= GPIO_ALTERNATE;
 	else
 		return EC_ERROR_PARAM2;
 
@@ -311,7 +451,7 @@ static int command_gpio_mode(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND_FLAGS(gpiomode, command_gpio_mode,
-			      "name <input | opendrain | pushpull>",
+			      "name <input | opendrain | pushpull | alternate>",
 			      "Set a GPIO mode", CMD_FLAG_RESTRICTED);
 
 /*
@@ -347,3 +487,53 @@ static int command_gpio_pull_mode(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND_FLAGS(gpiopullmode, command_gpio_pull_mode,
 			      "name <none | up | down>",
 			      "Set a GPIO weak pull mode", CMD_FLAG_RESTRICTED);
+
+
+
+static void print_spi_info(int index)
+{
+	uint32_t bits_per_second = 424242;
+	ccprintf("  %d %s %d\n",
+		 index, spi_devices_ext[index].name, bits_per_second);
+
+	/* Flush console to avoid truncating output */
+	cflush();
+}
+
+/*
+ * Get information about one or all SPI ports.
+ */
+static int command_spi_get(int argc, const char **argv)
+{
+	int i;
+
+	/* If a signal is specified, print only that one */
+	if (argc == 2) {
+		if (argv[1][0] >= '0' && argv[1][0] <= '9'
+		    && argv[1][1] == '\0'
+		    && argv[1][0] - '0' < spi_devices_used) {
+			print_spi_info(argv[1][0] - '0');
+			return EC_SUCCESS;
+		}
+
+		
+		for (i = 0; i < spi_devices_used; i++) {
+			if (!strcasecmp(argv[1], spi_devices_ext[i].name)) {
+				print_spi_info(i);
+				return EC_SUCCESS;
+			}
+		}
+		/* Not found */
+		return EC_ERROR_PARAM1;
+	}
+
+	/* Otherwise print them all */
+	for (i = 0; i < spi_devices_used; i++) {
+		print_spi_info(i);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND_FLAGS(spiget, command_spi_get,
+			      "[name]",
+			      "Get SPI configuration", CMD_FLAG_RESTRICTED);
