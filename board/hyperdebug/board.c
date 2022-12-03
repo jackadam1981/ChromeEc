@@ -145,6 +145,7 @@ const struct spi_device_ext_t spi_devices_ext[ARRAY_SIZE(spi_devices)] = {
 
 void usb_spi_board_enable(struct usb_spi_config const *config)
 {
+	/* All initialization already done in board_init(). */
 }
 
 void usb_spi_board_disable(struct usb_spi_config const *config)
@@ -497,3 +498,120 @@ static int command_gpio_pull_mode(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND_FLAGS(gpiopullmode, command_gpio_pull_mode,
 			      "name <none | up | down>",
 			      "Set a GPIO weak pull mode", CMD_FLAG_RESTRICTED);
+
+static int find_spi_by_name(const char *name)
+{
+	int i;
+	if (name[0] >= '0' && name[0] <= '9' && name[1] == '\0' &&
+	    name[0] - '0' < spi_devices_used) {
+		return name[0] - '0';
+	}
+
+	for (i = 0; i < spi_devices_used; i++) {
+		if (!strcasecmp(name, spi_devices_ext[i].name)) {
+			return i;
+		}
+	}
+
+	/* Not found */
+	return -1;
+}
+
+#define SPI_CLOCK (16000000UL)
+#define OCTOSPI_CLOCK (16000000UL)
+
+static void print_spi_info(int index)
+{
+	uint32_t bits_per_second = 424242;
+
+	if (spi_devices[index].port == 0xFF) {
+		// OCTOSPI has special logic
+		bits_per_second = OCTOSPI_CLOCK / (spi_devices[index].div + 1);
+	} else {
+		bits_per_second = SPI_CLOCK / (2 << spi_devices[index].div);
+	}
+
+	ccprintf("  %d %s %d\n", index, spi_devices_ext[index].name,
+		 bits_per_second);
+
+	/* Flush console to avoid truncating output */
+	cflush();
+}
+
+/*
+ * Get information about one or all SPI ports.
+ */
+static int command_spi_get(int argc, const char **argv)
+{
+	int i;
+
+	/* If a SPI target is specified, print only that one */
+	if (argc == 2) {
+		int index = find_spi_by_name(argv[1]);
+		if (index < 0) {
+			/* Not found */
+			return EC_ERROR_PARAM1;
+		}
+
+		print_spi_info(index);
+		return EC_SUCCESS;
+	}
+
+	/* Otherwise print them all */
+	for (i = 0; i < spi_devices_used; i++) {
+		print_spi_info(i);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND_FLAGS(spiget, command_spi_get, "[name]",
+			      "Get SPI configuration", CMD_FLAG_RESTRICTED);
+
+static int command_spi_set_speed(int argc, const char **argv)
+{
+	int index;
+	uint32_t desired_speed;
+	char *e;
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	index = find_spi_by_name(argv[1]);
+	if (index < 0)
+		return EC_ERROR_PARAM1;
+
+	desired_speed = strtoi(argv[2], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	if (spi_devices[index].port == 0xFF) {
+		spi_devices[index].div =
+			(OCTOSPI_CLOCK + desired_speed - 1) / desired_speed - 1;
+		STM32_OCTOSPI_DCR2 = spi_devices[index].div;
+	} else {
+		int divisor = 7;
+		/*
+		 * Find the smallest divisor that result in a speed not faster
+		 * than what was requested.
+		 */
+		while (divisor > 0) {
+			if (SPI_CLOCK / (2 << (divisor - 1)) > desired_speed) {
+				/* One step further would make the clock too
+				 * fast, stop here. */
+				break;
+			}
+			divisor--;
+		}
+
+		/* Re-initialize spi controller to apply the new clock divisor.
+		 */
+		spi_enable(&spi_devices[index], 0);
+		spi_devices[index].div = divisor;
+		spi_enable(&spi_devices[index], 1);
+	}
+
+	print_spi_info(index);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND_FLAGS(spisetspeed, command_spi_set_speed, "[name]",
+			      "Get SPI configuration", CMD_FLAG_RESTRICTED);
