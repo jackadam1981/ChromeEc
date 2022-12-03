@@ -94,6 +94,30 @@
       },
       "revId": "c7b5c4a6c4f997db39ff2ad2b54d260f838ecee6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2ff7cf_7c66739b",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-03T18:31:29Z",
+      "side": 1,
+      "message": "Done, with this and the similar code changes for the other boards. Thank you!",
+      "parentUuid": "f7fbc3d5_9760bf37",
+      "range": {
+        "startLine": 454,
+        "startChar": 42,
+        "endLine": 454,
+        "endChar": 68
+      },
+      "revId": "c7b5c4a6c4f997db39ff2ad2b54d260f838ecee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
