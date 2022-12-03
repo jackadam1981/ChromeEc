@@ -280,6 +280,8 @@
 
 #define USB_SPI_MIN_PACKET_SIZE (2)
 
+#define USB_SPI_CUSTOM_SPI_DEVICE_MASK 0x80
+
 enum packet_id_type {
 	/* Request USB SPI configuration data from device. */
 	USB_SPI_PKT_ID_CMD_GET_USB_SPI_CONFIG = 0,
@@ -652,5 +654,10 @@ int usb_spi_interface(struct usb_spi_config const *config, usb_uint *rx_buf,
  */
 void usb_spi_board_enable(struct usb_spi_config const *config);
 void usb_spi_board_disable(struct usb_spi_config const *config);
+
+int usb_spi_board_transaction(
+	const struct spi_device_t *spi_device,
+	const uint8_t *txdata, int txlen,
+	uint8_t *rxdata, int rxlen);
 
 #endif /* __CROS_EC_USB_SPI_H */
