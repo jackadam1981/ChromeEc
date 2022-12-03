@@ -457,8 +457,8 @@ struct usb_spi_state {
 	 * control endpoint.  The enabled_device flag is set by calling
 	 * usb_spi_enable.
 	 */
-	int enabled_host;
-	int enabled_device;
+	uint8_t enabled_host;
+	uint8_t enabled_device;
 
 	/*
 	 * The current enabled state.  This is only updated in the deferred
@@ -470,7 +470,13 @@ struct usb_spi_state {
 	 * specific state update routines are only called from the deferred
 	 * callback.
 	 */
-	int enabled;
+	uint8_t enabled;
+
+	/*
+	 * The index of the SPI port currently receiving forwarded transactions,
+	 * default is zero.
+	 */
+	uint8_t current_spi_device_idx;
 
 	/* Mark the current operating mode. */
 	enum usb_spi_mode mode;
@@ -554,6 +560,7 @@ struct usb_spi_config {
 		.enabled_host = 0,                                          \
 		.enabled_device = 0,                                        \
 		.enabled = 0,                                               \
+		.current_spi_device_idx = 0,                                \
 		.spi_write_ctx.buffer = (uint8_t *)CONCAT2(NAME, _buffer_), \
 		.spi_read_ctx.buffer = (uint8_t *)CONCAT2(NAME, _buffer_),  \
 	};                                                                  \
