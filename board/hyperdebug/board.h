@@ -98,6 +98,9 @@
 #define CONFIG_USB_SPI_BUFFER_SIZE 2048
 #define CONFIG_SPI_CONTROLLER
 
+/* Strange define, in order to get mutable spi_devices[]. */
+#define CONFIG_FINGERPRINT_MCU
+
 /* Enable control of I2C over USB */
 #define CONFIG_USB_I2C
 #define CONFIG_I2C
