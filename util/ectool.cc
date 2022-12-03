@@ -8315,13 +8315,13 @@ int cmd_boottime(int argc, char *argv[])
 	if (rv < 0)
 		return rv;
 
-	printf("arail: %ld\n", response.timestamp[ARAIL]);
-	printf("rsmrst: %ld\n", response.timestamp[RSMRST]);
-	printf("espirst: %ld\n", response.timestamp[ESPIRST]);
-	printf("pltrst_low: %ld\n", response.timestamp[PLTRST_LOW]);
-	printf("pltrst_high: %ld\n", response.timestamp[PLTRST_HIGH]);
-	printf("cnt: %d\n", response.cnt);
-	printf("ec_cur_time: %ld\n", response.timestamp[EC_CUR_TIME]);
+	printf("arail: %" PRIu64 "\n", response.timestamp[ARAIL]);
+	printf("rsmrst: %" PRIu64 "\n", response.timestamp[RSMRST]);
+	printf("espirst: %" PRIu64 "\n", response.timestamp[ESPIRST]);
+	printf("pltrst_low: %" PRIu64 "\n", response.timestamp[PLTRST_LOW]);
+	printf("pltrst_high: %" PRIu64 "\n", response.timestamp[PLTRST_HIGH]);
+	printf("cnt: %" PRIu16 "\n", response.cnt);
+	printf("ec_cur_time: %" PRIu64 "\n", response.timestamp[EC_CUR_TIME]);
 	return rv;
 }
 

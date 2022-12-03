@@ -13,10 +13,10 @@
 #include "lpc.h"
 #include "port80.h"
 #include "power.h"
+#include "system_boot_time.h"
 #include "task.h"
 #include "timer.h"
 #include "zephyr_espi_shim.h"
-#include "system_boot_time.h"
 
 #include <stdint.h>
 

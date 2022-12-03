@@ -5,6 +5,7 @@
 
 #include "gpio/gpio.h"
 #include "gpio_signal.h"
+#include "system_boot_time.h"
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
@@ -16,8 +17,6 @@
 #include <ap_power_override_functions.h>
 #include <power_signals.h>
 #include <x86_power_signals.h>
-
-#include "system_boot_time.h"
 
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 

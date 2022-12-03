@@ -3,8 +3,8 @@
  * found in the LICENSE file.
  */
 
-#include "host_command.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "system.h"
 #include "system_boot_time.h"
 
@@ -35,11 +35,11 @@ ZTEST(host_cmd_get_boot_time, test_get_boot_time)
 
 	zassert_equal(ret, EC_SUCCESS, "Unexpected return value: %d", ret);
 
-	ccprintf("arail: %llu\n", r.timestamp[ARAIL]);
-	ccprintf("rsmrst: %llu\n", r.timestamp[RSMRST]);
-	ccprintf("espirst: %llu\n", r.timestamp[ESPIRST]);
-	ccprintf("pltrst_low: %llu\n", r.timestamp[PLTRST_LOW]);
-	ccprintf("pltrst_high: %llu\n", r.timestamp[PLTRST_HIGH]);
-	ccprintf("cnt: %d\n", r.cnt);
-	ccprintf("ec_cur_time: %llu\n", r.timestamp[EC_CUR_TIME]);
+	ccprintf("arail: " PRIu64 "\n", r.timestamp[ARAIL]);
+	ccprintf("rsmrst: " PRIu64 "\n", r.timestamp[RSMRST]);
+	ccprintf("espirst: " PRIu64 "\n", r.timestamp[ESPIRST]);
+	ccprintf("pltrst_low: " PRIu64 "\n", r.timestamp[PLTRST_LOW]);
+	ccprintf("pltrst_high: " PRIu64 "\n", r.timestamp[PLTRST_HIGH]);
+	ccprintf("cnt: %" PRIu16 "\n", r.cnt);
+	ccprintf("ec_cur_time: " PRIu64 "\n", r.timestamp[EC_CUR_TIME]);
 }
