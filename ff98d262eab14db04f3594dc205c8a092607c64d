@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc871f9a_86360636",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 4538,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-03T02:01:54Z",
+      "side": 1,
+      "message": "This doesn\u0027t look used.",
+      "range": {
+        "startLine": 4538,
+        "startChar": 5,
+        "endLine": 4538,
+        "endChar": 31
+      },
+      "revId": "ff98d262eab14db04f3594dc205c8a092607c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4bc8585_04858ef3",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-03T02:01:54Z",
+      "side": 1,
+      "message": "Why do you need this? This should have alraedy been done by is_latest_power_source_with_battery. May is_latest_power_source_with_battery be not working as expected? This looks like a hack to workaround the timing issues of calling charge_manager APIs from various hooks.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "ff98d262eab14db04f3594dc205c8a092607c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac90b24f_03cd75c4",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-03T02:01:54Z",
+      "side": 1,
+      "message": "Do you want to cancel a previously scheduled prochot call?\n\n    hook_call_deferred(\u0026deassert_prochot_data, -1);",
+      "range": {
+        "startLine": 153,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "ff98d262eab14db04f3594dc205c8a092607c64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
