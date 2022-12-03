@@ -17,6 +17,7 @@
 #include "charger.h"
 #include "common.h"
 #include "console.h"
+#include "driver/tcpm/tcpci.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "stddef.h"

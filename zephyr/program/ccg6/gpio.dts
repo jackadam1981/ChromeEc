@@ -156,6 +156,14 @@
 			gpios = <&ioex_it8801_port0 4 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_PACKET_MODE_EN";
 		};
+		gpio_usb_c0_bc12_int_odl: usb_c0_bc12_int_odl {
+			gpios = <&gpio6 3 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C0_BC12_INT_ODL";
+		};
+		gpio_usb_c1_bc12_int_odl: usb_c1_bc12_int_odl {
+			gpios = <&gpio6 7 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C1_BC12_INT_ODL";
+		};
 	};
 };
 

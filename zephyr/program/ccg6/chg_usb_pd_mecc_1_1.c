@@ -11,6 +11,7 @@
 #include "include/gpio.h"
 #include "system.h"
 #include "tcpm/tcpci.h"
+#include "usb_charge.h"
 #include "usbc_ppc.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
@@ -63,5 +64,19 @@ void board_charging_enable(int port, int enable)
 	if (rv) {
 		CPRINTS("C%d: sink path %s failed", port,
 			enable ? "en" : "dis");
+	}
+}
+
+void bc12_interrupt(enum gpio_signal signal)
+{
+	switch (signal) {
+	case GPIO_USB_C0_BC12_INT_ODL:
+		usb_charger_task_set_event(0, USB_CHG_EVENT_BC12);
+		break;
+	case GPIO_USB_C1_BC12_INT_ODL:
+		usb_charger_task_set_event(1, USB_CHG_EVENT_BC12);
+		break;
+	default:
+		break;
 	}
 }

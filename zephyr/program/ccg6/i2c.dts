@@ -83,6 +83,20 @@
 		compatible = "cypress,ccgxxf";
 		reg = <0x1b>;
 	};
+
+	bc12_port0: pi3usb9201@5f {
+		compatible = "pericom,pi3usb9201";
+		status = "okay";
+		reg = <0x5f>;
+		irq = <&int_usb_c0_bc12>;
+	};
+
+	bc12_port1: pi3usb9201@4f {
+		compatible = "pericom,pi3usb9201";
+		status = "okay";
+		reg = <0x4f>;
+		irq = <&int_usb_c1_bc12>;
+	};
 };
 
 &i2c6_0 {

@@ -20,4 +20,5 @@ void board_charging_enable(int port, int enable);
 void board_vbus_enable(int port, int enable);
 void board_set_vbus_source_current_limit(int port, enum tcpc_rp_value rp);
 void tcpc_alert_event(enum gpio_signal signal);
+void bc12_interrupt(enum gpio_signal signal);
 #endif /* __CCG6_BOARD_H */
