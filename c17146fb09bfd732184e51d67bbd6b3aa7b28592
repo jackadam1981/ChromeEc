@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe434f9f_a60f3101",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-04T04:21:53Z",
+      "side": 0,
+      "message": "30% of the original 4 C temp_fan_off to 76 C temp_fan_max range is 26 C for turn-on at fan_min_rpm, 8 C for turn-off.",
+      "range": {
+        "startLine": 455,
+        "startChar": 9,
+        "endLine": 455,
+        "endChar": 11
+      },
+      "revId": "c17146fb09bfd732184e51d67bbd6b3aa7b28592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53226469_9c555567",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-04T04:21:53Z",
+      "side": 0,
+      "message": "49% of the original 4 C to 72 C range is 39 C for stepping up to the next fan speed, 37 C for stepping down.",
+      "range": {
+        "startLine": 456,
+        "startChar": 9,
+        "endLine": 456,
+        "endChar": 11
+      },
+      "revId": "c17146fb09bfd732184e51d67bbd6b3aa7b28592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36203f4c_555647d0",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-04T04:21:53Z",
+      "side": 0,
+      "message": "53% -\u003e 42 C; 50% -\u003e 40 C",
+      "range": {
+        "startLine": 457,
+        "startChar": 9,
+        "endLine": 457,
+        "endChar": 11
+      },
+      "revId": "c17146fb09bfd732184e51d67bbd6b3aa7b28592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2759025_df7fc365",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-04T04:21:53Z",
+      "side": 0,
+      "message": "58% -\u003e 46 C; 54% -\u003e 43 C. At this point, this code change goes to this level at 1 degree C lower.",
+      "range": {
+        "startLine": 458,
+        "startChar": 9,
+        "endLine": 458,
+        "endChar": 11
+      },
+      "revId": "c17146fb09bfd732184e51d67bbd6b3aa7b28592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d897f571_d9db7f58",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-04T04:21:53Z",
+      "side": 0,
+      "message": "63% -\u003e 49 C, 59% -\u003e 46 C. New fan table is 2 degrees C lower.",
+      "range": {
+        "startLine": 459,
+        "startChar": 9,
+        "endLine": 459,
+        "endChar": 11
+      },
+      "revId": "c17146fb09bfd732184e51d67bbd6b3aa7b28592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c31c92e_ee0f7fe5",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-04T04:21:53Z",
+      "side": 0,
+      "message": "68% -\u003e 53 C; 64% -\u003e 50 C. New fan table is 4 degrees C lower.",
+      "range": {
+        "startLine": 460,
+        "startChar": 9,
+        "endLine": 460,
+        "endChar": 11
+      },
+      "revId": "c17146fb09bfd732184e51d67bbd6b3aa7b28592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86739de9_7e1e7cd5",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-04T04:21:53Z",
+      "side": 0,
+      "message": "75% -\u003e 58 C; 70% -\u003e 54 C. New fan table is 3 degrees C lower.",
+      "range": {
+        "startLine": 461,
+        "startChar": 9,
+        "endLine": 461,
+        "endChar": 11
+      },
+      "revId": "c17146fb09bfd732184e51d67bbd6b3aa7b28592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
