@@ -34,6 +34,24 @@
       "parentUuid": "c34fddd0_4773c2a0",
       "revId": "c8325ba18b9f4d5b1f3f3bc739e83d8f591308cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c284c7a0_145cd6b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-12-05T19:26:29Z",
+      "side": 1,
+      "message": "@aaronyu@google.com Thanks!\n\nI didn\u0027t see those errors in my local builds. Looks like those platforms are not being build when we do \"buidall\".\n\nIs your fix is enough to fix build failure or do we need additional fixes apart from your changes  and how to build those failed platform to test those build failures ?",
+      "parentUuid": "088d6e41_8aa8bf45",
+      "revId": "c8325ba18b9f4d5b1f3f3bc739e83d8f591308cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
