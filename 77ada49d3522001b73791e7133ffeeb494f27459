@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9a0ad66_e1f8dd54",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-05T21:13:08Z",
+      "side": 1,
+      "message": "Spec-wise, we should never expect an unsolicited response.  Practically speaking, we get some occasionally on a weird partner.  Usually the times where we\u0027ve seen what look like unsolicited ACKs they\u0027re actually weirdly delayed replies to something we sent 100\u0027s of ms earlier.  I can\u0027t recall any others off the top of my head",
+      "parentUuid": "4eb0beb3_454fe824",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23a12cdd_12eb4e4a",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
