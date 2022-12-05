@@ -49,6 +49,8 @@ enum charge_state {
 	PWR_STATE_CHARGE_NEAR_FULL,
 	/* Charging state machine error */
 	PWR_STATE_ERROR,
+
+	PWR_STATE_CHARGE_IDLE_FULL,
 	/*  Count of total states */
 	PWR_STATE_COUNT
 };

@@ -43,6 +43,7 @@ child-binding:
                 - PWR_STATE_IDLE
                 - PWR_STATE_FORCED_IDLE
                 - PWR_STATE_CHARGE_NEAR_FULL
+                - PWR_STATE_CHARGE_IDLE_FULL
 
         charge-port:
             description: |

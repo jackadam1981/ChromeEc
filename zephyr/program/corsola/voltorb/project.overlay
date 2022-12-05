@@ -97,13 +97,22 @@
 					(BATTERY_LEVEL_NEAR_FULL - 1)>;
 
 			color-0 {
-				led-color = <&color_blue>;
+				led-color = <&color_amber>;
 			};
 		};
 
 		/* Voltorb LED bat charge near full */
 		bat-power-state-charge-near-full {
 			charge-state = "PWR_STATE_CHARGE_NEAR_FULL";
+
+			color-0 {
+				led-color = <&color_amber>;
+			};
+		};
+
+		/* Voltorb LED bat charge idle full */
+		bat-power-state-charge-idle-full {
+			charge-state = "PWR_STATE_CHARGE_IDLE_FULL";
 
 			color-0 {
 				led-color = <&color_blue>;
