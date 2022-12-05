@@ -61,6 +61,16 @@ child-binding:
                 - POWER_S3
                 - POWER_S5
 
+        batt-state:
+            description: |
+              If the LED color depends on battery state, this property is used
+              to describe it.
+            type: string
+            required: false
+            enum:
+                - STATUS_DISCHARGING
+                - STATUS_INITIALIZED
+
         batt-lvl:
             description: |
               If the LED color depends on current battery level, this property

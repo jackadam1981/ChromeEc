@@ -61,6 +61,7 @@ DT_FOREACH_CHILD(DT_COMPAT_GET_ANY_STATUS_OKAY(cros_ec_gpio_led_pins),
 struct node_prop_t {
 	enum charge_state pwr_state;
 	enum power_state chipset_state;
+	int batt_state_mask;
 	int8_t batt_lvl[2];
 	int8_t charge_port;
 	struct led_color_node_t led_colors[MAX_COLOR];
@@ -105,6 +106,7 @@ struct node_prop_t {
 #define SET_LED_VALUES(state_id)                                              \
 	{ .pwr_state = GET_PROP(state_id, charge_state),                      \
 	  .chipset_state = GET_PROP(state_id, chipset_state),                 \
+	  .batt_state_mask = GET_PROP(state_id, batt_state),				\
 	  .batt_lvl = COND_CODE_1(DT_NODE_HAS_PROP(state_id, batt_lvl),       \
 				  (DT_PROP(state_id, batt_lvl)),              \
 				  ({ -1, -1 })),                              \
@@ -190,7 +192,7 @@ static void set_color(int node_idx, uint32_t ticks)
 }
 
 static int match_node(int node_idx)
-{
+{	
 	/* Check if this node depends on power state */
 	if (node_array[node_idx].pwr_state != PWR_STATE_UNCHANGE) {
 		enum charge_state pwr_state = charge_get_state();
@@ -221,6 +223,16 @@ static int match_node(int node_idx)
 
 		if ((curr_batt_lvl < node_array[node_idx].batt_lvl[0]) ||
 		    (curr_batt_lvl > node_array[node_idx].batt_lvl[1]))
+			return -1;
+	}
+
+	/* check if this node depends on battery status */
+	if (node_array[node_idx].batt_state_mask != 0) {
+		int batt_state;
+
+		battery_status(&batt_state);
+		if ((node_array[node_idx].batt_state_mask & batt_state) !=
+			node_array[node_idx].batt_state_mask)
 			return -1;
 	}
 
