@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4eb0beb3_454fe824",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-12-05T21:03:41Z",
+      "side": 1,
+      "message": "\u003e So I suppose I could be convinced either way. I\u0027ll cc Prashant for his AP API opinions.\n\nI\u0027d move towards keeping the API as flexible as possible (without making it unwieldy). So, that means sending the VDM response up to the AP and letting it figure out what to do with it (it can drop it if necessary); of course, will defer to the EC experts regarding code complexity/maintenance burden in making that possible.\n\nHow often do we expect unsolicited VDM responses?",
+      "parentUuid": "16ae3f76_ae6cfbe3",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23a12cdd_12eb4e4a",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
