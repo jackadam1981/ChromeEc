@@ -56,6 +56,7 @@ static void update_vbus_supplier(int port, int vbus_level)
 		charge.current = USB_CHARGER_MIN_CURR_MA;
 	}
 
+	ccprints("%s %dmA/%dmV", __func__, charge.current, charge.voltage);
 	charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, port, &charge);
 }
 

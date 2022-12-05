@@ -1144,6 +1144,8 @@ static void tcpci_check_vbus_changed(int port, int alert, uint32_t *pd_event)
 		if (ext_status & TCPC_REG_EXT_STATUS_SAFE0V)
 			/* Safe0V=1 and Present=0 */
 			tcpc_vbus[port] = BIT(VBUS_SAFE0V);
+		CPRINTS("TCPC_REG_ALERT_EXT_STATUS tcpc_vbus[%d]=0x%x", port,
+			tcpc_vbus[port]);
 	}
 
 	if (alert & TCPC_REG_ALERT_POWER_STATUS) {
@@ -1176,6 +1178,8 @@ static void tcpci_check_vbus_changed(int port, int alert, uint32_t *pd_event)
 			if (pd_event)
 				*pd_event |= TASK_EVENT_WAKE;
 		}
+		CPRINTS("TCPC_REG_ALERT_POWER_STATUS tcpc_vbus[%d]=0x%x", port,
+			tcpc_vbus[port]);
 	}
 }
 
