@@ -16,6 +16,24 @@
       "message": "Maybe this doesn\u0027t make a difference in readability, but if you\u0027re already going to define a variable here, then maybe just call it `vdm_header` and set it to `((uint32_t*)rx_emsg[port].buf)[0]` if the message was a control message and 0 otherwise. Then call `dpm_vdm_naked(..., vdm_header)` unconditionally.",
       "revId": "9c109434c40abbad6b8c4d4cdcb3b965d6bc23e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "592673a9_dab9305b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6155,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-05T20:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "276d288a_44572176",
+      "revId": "9c109434c40abbad6b8c4d4cdcb3b965d6bc23e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
