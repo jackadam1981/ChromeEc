@@ -17,4 +17,7 @@
 #define BATTERY_LEVEL_NEAR_FULL 97
 #define BATTERY_LEVEL_FULL 100
 
+/* Battery status */
+#define STATUS_DISCHARGING BIT(6)
+
 #endif /* DT_BINDINGS_BATTERY_H_ */
