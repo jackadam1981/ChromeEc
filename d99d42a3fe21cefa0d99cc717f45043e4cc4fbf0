@@ -16,6 +16,24 @@
       "message": "Despite the precedent here, I\u0027d prefer that this function be declared in utils.h and defined in utils.c. Debugging code that calls `static inline` functions gets weird.",
       "revId": "d99d42a3fe21cefa0d99cc717f45043e4cc4fbf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62b2975_77ad7ca1",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-05T20:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6094ea71_c8290c42",
+      "revId": "d99d42a3fe21cefa0d99cc717f45043e4cc4fbf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
