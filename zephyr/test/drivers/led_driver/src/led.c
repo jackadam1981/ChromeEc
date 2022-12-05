@@ -3,15 +3,27 @@
  * found in the LICENSE file.
  */
 
+#include "battery.h"
+#include "battery_smart.h"
+#include "common.h"
+#include "console.h"
 #include "ec_commands.h"
+#include "emul/emul_common_i2c.h"
+#include "emul/emul_smart_battery.h"
 #include "gpio.h"
+#include "i2c.h"
 #include "include/power.h"
 #include "led.h"
 #include "led_common.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 
+#include <zephyr/kernel.h>
 #include <zephyr/ztest.h>
+
+#include <dt-bindings/battery.h>
+
+#define BATTERY_NODE DT_NODELABEL(battery)
 
 #define VERIFY_LED_COLOR(color, led_id)                                    \
 	{                                                                  \
@@ -91,4 +103,18 @@ ZTEST(led_driver, test_get_chipset_state)
 	pwr_state = get_chipset_state();
 	zassert_equal(pwr_state, POWER_S3, "expected=%d, returned=%d", POWER_S3,
 		      pwr_state);
+}
+
+ZTEST(led_driver, test_get_battery_state)
+{
+	struct sbat_emul_bat_data *bat;
+	const struct emul *emul = EMUL_DT_GET(BATTERY_NODE);
+	int status;
+
+	set_ac_enabled(true);
+
+	bat = sbat_emul_get_bat_data(emul);
+
+	zassert_equal(EC_SUCCESS, battery_status(&status));
+	zassert_ok(!status, "Battery status: %d", status);
 }
