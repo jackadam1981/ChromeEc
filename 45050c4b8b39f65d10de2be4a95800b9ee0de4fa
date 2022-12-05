@@ -52,6 +52,24 @@
       "parentUuid": "79c384ff_fc178ac1",
       "revId": "45050c4b8b39f65d10de2be4a95800b9ee0de4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4992350_b1b4f904",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-05T16:48:29Z",
+      "side": 1,
+      "message": "It looks like https://crrev.com/c/4022082 was merged, so I guess this can be abandoned.",
+      "parentUuid": "dd246025_82be9cc2",
+      "revId": "45050c4b8b39f65d10de2be4a95800b9ee0de4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
