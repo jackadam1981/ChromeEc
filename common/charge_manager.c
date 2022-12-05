@@ -1223,6 +1223,8 @@ void charge_manager_update_charge(int supplier, int port,
 	struct charge_port_info zero = { 0 };
 	if (!charge)
 		charge = &zero;
+	CPRINTS("%s supplier=%d %dmA/%dmV", __func__, supplier, charge->current,
+		charge->voltage);
 	charge_manager_make_change(CHANGE_CHARGE, supplier, port, charge);
 }
 
