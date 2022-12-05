@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e04ca22b_3542fd1f",
+        "filename": "common/fan.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-05T18:55:25Z",
+      "side": 1,
+      "message": "A problem with this function is that it\u0027s generic with respect to fan_table but it keeps these values for a particular fan_table. The logic makes sense only if \u003cfan_table\u003e points to the same table. If we assume there is only one fan table, why don\u0027t you make the function internally reference it?\n\nThe same problem applies to fan_index. For example, you can infer fan_stopped from fan_get_rpm_target(FAN_CH(fan_index)) to get rid of the assumption that fan_index is always the same.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "552be44e86a5d00ecf5232641a4936c399c769ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "022aea24_9aecf24e",
+        "filename": "test/fan.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-05T18:55:25Z",
+      "side": 1,
+      "message": "Can you add spaces to align the columns?",
+      "range": {
+        "startLine": 152,
+        "startChar": 35,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "552be44e86a5d00ecf5232641a4936c399c769ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
