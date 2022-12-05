@@ -16,6 +16,24 @@
       "message": "Hi Rajesh, there is a compilation error in ectool. Not sure how it slipped through CQ. Here is the build log:\n```\nec-utils-0.0.2-r14683:   HOSTCXX  util/ectool\nec-utils-0.0.2-r14683: util/ectool.cc:8318:25: error: format specifies type \u0027long\u0027 but the argument has\nec-utils-0.0.2-r14683:       type \u0027uint64_t\u0027 (aka \u0027unsigned long long\u0027) [-Werror,-Wformat]\nec-utils-0.0.2-r14683:         printf(\"arail: %ld\\n\", response.timestamp[ARAIL]);\nec-utils-0.0.2-r14683:                        ~~~     ^~~~~~~~~~~~~~~~~~~~~~~~~\nec-utils-0.0.2-r14683:                        %llu\nec-utils-0.0.2-r14683: util/ectool.cc:8319:26: error: format specifies type \u0027long\u0027 but the argument has\nec-utils-0.0.2-r14683:       type \u0027uint64_t\u0027 (aka \u0027unsigned long long\u0027) [-Werror,-Wformat]\nec-utils-0.0.2-r14683:         printf(\"rsmrst: %ld\\n\", response.timestamp[RSMRST]);\nec-utils-0.0.2-r14683:                         ~~~     ^~~~~~~~~~~~~~~~~~~~~~~~~~\nec-utils-0.0.2-r14683:                         %llu\nec-utils-0.0.2-r14683: util/ectool.cc:8320:27: error: format specifies type \u0027long\u0027 but the argument has\nec-utils-0.0.2-r14683:       type \u0027uint64_t\u0027 (aka \u0027unsigned long long\u0027) [-Werror,-Wformat]\nec-utils-0.0.2-r14683:         printf(\"espirst: %ld\\n\", response.timestamp[ESPIRST]);\nec-utils-0.0.2-r14683:                          ~~~     ^~~~~~~~~~~~~~~~~~~~~~~~~~~\nec-utils-0.0.2-r14683:                          %llu\nec-utils-0.0.2-r14683: util/ectool.cc:8321:30: error: format specifies type \u0027long\u0027 but the argument has\nec-utils-0.0.2-r14683:       type \u0027uint64_t\u0027 (aka \u0027unsigned long long\u0027) [-Werror,-Wformat]\nec-utils-0.0.2-r14683:         printf(\"pltrst_low: %ld\\n\", response.timestamp[PLTRST_LOW]);\nec-utils-0.0.2-r14683:                             ~~~     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nec-utils-0.0.2-r14683:                             %llu\nec-utils-0.0.2-r14683: util/ectool.cc:8322:31: error: format specifies type \u0027long\u0027 but the argument has\nec-utils-0.0.2-r14683:       type \u0027uint64_t\u0027 (aka \u0027unsigned long long\u0027) [-Werror,-Wformat]\nec-utils-0.0.2-r14683:         printf(\"pltrst_high: %ld\\n\", response.timestamp[PLTRST_HIGH]);\nec-utils-0.0.2-r14683:                              ~~~     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nec-utils-0.0.2-r14683:                              %llu\nec-utils-0.0.2-r14683: util/ectool.cc:8324:31: error: format specifies type \u0027long\u0027 but the argument has\nec-utils-0.0.2-r14683:       type \u0027uint64_t\u0027 (aka \u0027unsigned long long\u0027) [-Werror,-Wformat]\nec-utils-0.0.2-r14683:         printf(\"ec_cur_time: %ld\\n\", response.timestamp[EC_CUR_TIME]);\nec-utils-0.0.2-r14683:                              ~~~     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nec-utils-0.0.2-r14683:                              %llu\nec-utils-0.0.2-r14683: 6 errors generated.\nec-utils-0.0.2-r14683\n```\nPlease fix and re-submit",
       "revId": "c8325ba18b9f4d5b1f3f3bc739e83d8f591308cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "088d6e41_8aa8bf45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-12-05T09:22:24Z",
+      "side": 1,
+      "message": "It slip through CQ because we only run firmware-ec-cq firmware-zephyr-cov-cq firmware-zephyr-cq for EC.\nhttps://issuetracker.google.com/issues/261258378\n\nRajesh, for the format string, feel free to pick up my fix at https://crrev.com/c/4075846",
+      "parentUuid": "c34fddd0_4773c2a0",
+      "revId": "c8325ba18b9f4d5b1f3f3bc739e83d8f591308cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
