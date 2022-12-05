@@ -97,7 +97,7 @@
 					(BATTERY_LEVEL_NEAR_FULL - 1)>;
 
 			color-0 {
-				led-color = <&color_blue>;
+				led-color = <&color_amber>;
 			};
 		};
 
@@ -106,7 +106,7 @@
 			charge-state = "PWR_STATE_CHARGE_NEAR_FULL";
 
 			color-0 {
-				led-color = <&color_blue>;
+				led-color = <&color_amber>;
 			};
 		};
 
