@@ -364,6 +364,17 @@ static struct pd_message {
 struct extended_msg rx_emsg[CONFIG_USB_PD_PORT_MAX_COUNT];
 struct extended_msg tx_emsg[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+enum prl_event_log_state_kind {
+	/* Identifies uninitialized entries */
+	PRL_EVENT_LOG_STATE_NONE,
+	PRL_EVENT_LOG_STATE_TX,
+	PRL_EVENT_LOG_STATE_HR,
+	PRL_EVENT_LOG_STATE_RCH,
+	PRL_EVENT_LOG_STATE_TCH,
+};
+
+static void prl_event_log_append(enum prl_event_log_state_kind kind, int port);
+
 /* Common Protocol Layer Message Transmission */
 static void prl_tx_construct_message(int port);
 static void prl_rx_wait_for_phy_message(const int port, int evt);
@@ -430,6 +441,7 @@ test_export_static enum usb_prl_tx_state prl_tx_get_state(const int port)
 /* Print the protocol transmit statemachine's current state. */
 static void print_current_prl_tx_state(const int port)
 {
+	prl_event_log_append(PRL_EVENT_LOG_STATE_TX, port);
 	if (prl_debug_level >= DEBUG_LEVEL_3)
 		CPRINTS("C%d: %s", port,
 			prl_tx_state_names[prl_tx_get_state(port)]);
@@ -451,6 +463,7 @@ enum usb_prl_hr_state prl_hr_get_state(const int port)
 /* Print the hard reset statemachine's current state. */
 static void print_current_prl_hr_state(const int port)
 {
+	prl_event_log_append(PRL_EVENT_LOG_STATE_HR, port);
 	if (prl_debug_level >= DEBUG_LEVEL_3)
 		CPRINTS("C%d: %s", port,
 			prl_hr_state_names[prl_hr_get_state(port)]);
@@ -473,6 +486,7 @@ test_export_static enum usb_rch_state rch_get_state(const int port)
 /* Print the chunked Rx statemachine's current state. */
 static void print_current_rch_state(const int port)
 {
+	prl_event_log_append(PRL_EVENT_LOG_STATE_RCH, port);
 	if (prl_debug_level >= DEBUG_LEVEL_3)
 		CPRINTS("C%d: %s", port, rch_state_names[rch_get_state(port)]);
 }
@@ -498,6 +512,7 @@ test_export_static enum usb_tch_state tch_get_state(const int port)
 /* Print the chunked Tx statemachine's current state. */
 static void print_current_tch_state(const int port)
 {
+	prl_event_log_append(PRL_EVENT_LOG_STATE_TCH, port);
 	if (prl_debug_level >= DEBUG_LEVEL_3)
 		CPRINTS("C%d: %s", port, tch_state_names[tch_get_state(port)]);
 }
@@ -2425,6 +2440,105 @@ __maybe_unused static const struct usb_state tch_states[] = {
 	},
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 };
+
+#define CONFIG_USB_PRL_EVENT_LOG
+#define CONFIG_USB_PRL_EVENT_LOG_DEPTH 128
+
+#ifdef CONFIG_USB_PRL_EVENT_LOG
+struct prl_event_log_entry {
+	timestamp_t timestamp;
+	uint16_t flags;
+	uint8_t port;
+	enum prl_event_log_state_kind kind;
+	union {
+		enum usb_prl_tx_state tx;
+		enum usb_prl_hr_state hr;
+		enum usb_rch_state rch;
+		enum usb_tch_state tch;
+	};
+};
+BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT <= UINT8_MAX);
+
+static struct prl_event_log_entry
+	prl_event_log_buffer[CONFIG_USB_PRL_EVENT_LOG_DEPTH];
+static atomic_t prl_event_log_next;
+
+static void prl_event_log_append(enum prl_event_log_state_kind kind, int port)
+{
+	struct prl_event_log_entry entry = {
+		.timestamp = get_time(),
+		.port = port,
+		.kind = kind,
+	};
+
+	switch (kind) {
+	case PRL_EVENT_LOG_STATE_TX:
+		entry.flags = prl_tx[port].flags;
+		entry.tx = prl_tx_get_state(port);
+		break;
+	case PRL_EVENT_LOG_STATE_HR:
+		entry.flags = prl_hr[port].flags;
+		entry.hr = prl_hr_get_state(port);
+		break;
+	case PRL_EVENT_LOG_STATE_RCH:
+		entry.flags = rch[port].flags;
+		entry.rch = rch_get_state(port);
+		break;
+	case PRL_EVENT_LOG_STATE_TCH:
+		entry.flags = tch[port].flags;
+		entry.tch = tch_get_state(port);
+		break;
+	case PRL_EVENT_LOG_STATE_NONE:
+		/* Should never be written to the log */
+		return;
+	}
+
+	prl_event_log_buffer[atomic_add(&prl_event_log_next, 1) %
+			     ARRAY_SIZE(prl_event_log_buffer)] = entry;
+}
+
+static int command_prllog(int argc, const char **argv)
+{
+	for (int i = 0; i < ARRAY_SIZE(prl_event_log_buffer); i++) {
+		const struct prl_event_log_entry *entry =
+			&prl_event_log_buffer[i];
+
+		if (entry->kind == PRL_EVENT_LOG_STATE_NONE) {
+			continue;
+		}
+
+		CPRINTF("%lld C%d ", entry->timestamp.val, entry->port);
+		switch (entry->kind) {
+		case PRL_EVENT_LOG_STATE_TX:
+			CPRINTF("%s ", prl_tx_state_names[entry->tx]);
+			print_flag("PRL_TX", 1, entry->flags);
+			break;
+		case PRL_EVENT_LOG_STATE_HR:
+			CPRINTF("%s ", prl_hr_state_names[entry->hr]);
+			print_flag("PRL_HR", 1, entry->flags);
+			break;
+		case PRL_EVENT_LOG_STATE_RCH:
+			CPRINTF("%s ", rch_state_names[entry->rch]);
+			print_flag("RCH", 1, entry->flags);
+			break;
+		case PRL_EVENT_LOG_STATE_TCH:
+			CPRINTF("%s ", tch_state_names[entry->tch]);
+			print_flag("TCH", 1, entry->flags);
+			break;
+		default:
+			CPRINTF("unrecognized event kind\n");
+			continue;
+		}
+	}
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(prllog, command_prllog, NULL,
+			"Dump USB-PD PRL state log");
+#else
+static void prl_event_log_append(struct prl_event_log_entry *entry)
+{
+}
+#endif
 
 #ifdef TEST_BUILD
 
