@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdcfc01a_4dd15594",
+        "filename": "zephyr/program/geralt/adc.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2022-12-05T02:41:44Z",
+      "side": 1,
+      "message": "we will add temperature monitoring for charger (net:EC_TEMP_CHARGER) on ADC6 per ODM\u0027s request.",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "45757828c86dfe31cd5738654f71442c83b990ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc8d7c1e_fc4531aa",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2022-12-05T02:41:44Z",
+      "side": 1,
+      "message": "en_pp4200_z1 -\u003e en_pp4200_s4 to align with latest naming in the schematic.",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "45757828c86dfe31cd5738654f71442c83b990ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3837795f_9a805bd0",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2022-12-05T02:41:44Z",
+      "side": 1,
+      "message": "en_pp5000_z2_l -\u003e en_pp5000_z1_l to align with latest naming in the schematic.",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 16
+      },
+      "revId": "45757828c86dfe31cd5738654f71442c83b990ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c00a31d6_3c6a7070",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2022-12-05T02:41:44Z",
+      "side": 1,
+      "message": "pg_pp5000_z2_od -\u003e pg_pp5000_z1_od",
+      "range": {
+        "startLine": 183,
+        "startChar": 6,
+        "endLine": 183,
+        "endChar": 21
+      },
+      "revId": "45757828c86dfe31cd5738654f71442c83b990ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90c5f0d0_64b96112",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2022-12-05T02:41:44Z",
+      "side": 1,
+      "message": "en_pp4200_z1 -\u003e en_pp4200_s5",
+      "range": {
+        "startLine": 185,
+        "startChar": 6,
+        "endLine": 185,
+        "endChar": 21
+      },
+      "revId": "45757828c86dfe31cd5738654f71442c83b990ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
