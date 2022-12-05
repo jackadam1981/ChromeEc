@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e226bcd_ab4dd1b4",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-05T20:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f16411e_ccb02e0f",
+      "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5d66156_60304e78",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-23T18:39:33Z",
       "side": 1,
       "message": "It seems like each test rifs on the discovery contents and relies on the previous test to have left them in a basically normal state. It would probably make more sense to do this in the `before` function.",
+      "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a59a6101_2a033bd8",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-05T20:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5d66156_60304e78",
       "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3888f57_822442ad",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-05T20:55:49Z",
+      "side": 1,
+      "message": "I envision that we _could_ make them responsible for discovery.  Certain TBT port partners that change their SVIDs based on their power allocation would complicate the issue though.  And our discovery time would definitely increase.  \n\nBut that was tied to my thinking behind using DiscoverIdentity as a test message",
+      "parentUuid": "a138b1c0_748fdd19",
+      "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e469e86_6357bfe4",
         "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
         "patchSetId": 1
@@ -65,6 +119,24 @@
       "writtenOn": "2022-11-23T18:39:33Z",
       "side": 1,
       "message": "This doesn\u0027t seem like that informative of an error message. In fact, I suspect that it might be confusing to the reader. I don\u0027t think it\u0027s necessarily worth coming up with a better one, but note that assert error messages are now optional.",
+      "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b09aa96c_99522584",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-05T20:55:49Z",
+      "side": 1,
+      "message": "I took a shot at a less bad error message.  If that\u0027s still pretty meh, then I\u0027ll remove it.",
+      "parentUuid": "9e469e86_6357bfe4",
       "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
