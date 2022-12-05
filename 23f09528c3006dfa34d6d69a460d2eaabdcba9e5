@@ -22,6 +22,30 @@
       },
       "revId": "23f09528c3006dfa34d6d69a460d2eaabdcba9e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d80be0_e52d1297",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-12-05T07:56:58Z",
+      "side": 1,
+      "message": "@sumeet.r.pawnikar@intel.com, If this memory needs to be updated by AP to EC, it must be under ERAM address 0x16 and not under EMEM. and corresponding memory update is required for CFSP under CB in  src/ec/google/chromeec/acpi/ec.asl  with 16 bit at 0x16 and under https://review.coreboot.org/c/coreboot/+/62789/9/src/ec/google/chromeec/acpi/emem.asl",
+      "parentUuid": "81e1d05d_c912062f",
+      "range": {
+        "startLine": 178,
+        "startChar": 26,
+        "endLine": 178,
+        "endChar": 30
+      },
+      "revId": "23f09528c3006dfa34d6d69a460d2eaabdcba9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
