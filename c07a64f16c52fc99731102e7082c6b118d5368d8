@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c337a3fa_1ce8f40e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-12-05T22:22:51Z",
+      "side": 1,
+      "message": "Changed `int-pin` property to be optional to support projects that may not use `schedule_deferred_pd_interrupt` for tcpc alert handling (e.g. nissa).",
+      "revId": "c07a64f16c52fc99731102e7082c6b118d5368d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
