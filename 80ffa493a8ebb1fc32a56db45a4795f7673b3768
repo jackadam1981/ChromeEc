@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03cd8c08_64024cec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-12-05T09:29:49Z",
+      "side": 1,
+      "message": "I use IS_ENABLED() macro, instead of #if, it seems that this can solve coverage error.",
+      "revId": "80ffa493a8ebb1fc32a56db45a4795f7673b3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
