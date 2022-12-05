@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f10da6e_6a80c81a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-05T21:07:55Z",
+      "side": 1,
+      "message": "Is this still WIP?",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "dfe544766487a05ae1327e9759437e15fcb0e22c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11184d8e_7a8f6de5",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-05T21:07:55Z",
+      "side": 1,
+      "message": "pwm_fan_second already exists and updates EC_MEMMAP_FAN (0x10). Is it not suitable?",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 61
+      },
+      "revId": "dfe544766487a05ae1327e9759437e15fcb0e22c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
