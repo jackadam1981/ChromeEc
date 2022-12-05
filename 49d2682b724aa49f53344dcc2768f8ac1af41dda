@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df46251_ef4535b6",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1564202
+      },
+      "writtenOn": "2022-12-05T06:27:43Z",
+      "side": 1,
+      "message": "This gives an error using GCC-12:\n\nchip/stm32/dma.c:309:16: error: array subscript 8 is above array bounds of \u0027struct [7]\u0027 [-Werror\u003darray-bounds]\n      \n ( https://qa.coreboot.org/job/coreboot-toolchain/1338/consoleFull )",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 41
+      },
+      "revId": "49d2682b724aa49f53344dcc2768f8ac1af41dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
