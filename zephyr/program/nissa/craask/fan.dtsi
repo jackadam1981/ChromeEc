@@ -10,8 +10,114 @@
 			tach = <&tach2>;
 			rpm_min = <2500>;
 			rpm_start = <2500>;
-			rpm_max = <4100>;
+			rpm_max = <6000>;
 			enable_gpio = <&gpio_fan_enable>;
+		};
+	};
+	fan_steps_6w {
+		compatible = "cros-ec,fan-steps";
+		level_0 {
+			temp_on = <25 0 0>;
+			temp_off = <99 0 0>;
+			rpm_target = <0>;
+		};
+		level_1 {
+			temp_on = <40 0 0>;
+			temp_off = <35 0 0>;
+			rpm_target = <2500>;
+		};
+		level_2 {
+			temp_on = <44 0 0>;
+			temp_off = <41 0 0>;
+			rpm_target = <2800>;
+		};
+		level_3 {
+			temp_on = <48 0 0>;
+			temp_off = <45 0 0>;
+			rpm_target = <3000>;
+		};
+		level_4 {
+			temp_on = <52 0 0>;
+			temp_off = <49 0 0>;
+			rpm_target = <3200>;
+		};
+		level_5 {
+			temp_on = <60 0 0>;
+			temp_off = <54 0 0>;
+			rpm_target = <3600>;
+		};
+		level_6 {
+			temp_on = <64 0 0>;
+			temp_off = <58 0 0>;
+			rpm_target = <4000>;
+		};
+		level_7 {
+			temp_on = <67 0 0>;
+			temp_off = <62 0 0>;
+			rpm_target = <4600>;
+		};
+		level_8 {
+			temp_on = <71 0 0>;
+			temp_off = <66 0 0>;
+			rpm_target = <5000>;
+		};
+		level_9 {
+			temp_on = <74 0 0>;
+			temp_off = <70 0 0>;
+			rpm_target = <5500>;
+		};
+	};
+	fan_steps_15w {
+		compatible = "cros-ec,fan-steps";
+		level_0 {
+			temp_on = <25 0 0>;
+			temp_off = <99 0 0>;
+			rpm_target = <0>;
+		};
+		level_1 {
+			temp_on = <37 0 0>;
+			temp_off = <34 0 0>;
+			rpm_target = <2500>;
+		};
+		level_2 {
+			temp_on = <42 0 0>;
+			temp_off = <39 0 0>;
+			rpm_target = <2800>;
+		};
+		level_3 {
+			temp_on = <46 0 0>;
+			temp_off = <43 0 0>;
+			rpm_target = <3000>;
+		};
+		level_4 {
+			temp_on = <51 0 0>;
+			temp_off = <48 0 0>;
+			rpm_target = <3200>;
+		};
+		level_5 {
+			temp_on = <55 0 0>;
+			temp_off = <52 0 0>;
+			rpm_target = <3600>;
+		};
+		level_6 {
+			temp_on = <59 0 0>;
+			temp_off = <56 0 0>;
+			rpm_target = <4000>;
+		};
+		level_7 {
+			temp_on = <66 0 0>;
+			temp_off = <63 0 0>;
+			rpm_target = <4600>;
+		};
+		level_8 {
+			temp_on = <72 0 0>;
+			temp_off = <69 0 0>;
+			rpm_target = <5000>;
+		};
+		level_9 {
+			temp_on = <74 0 0>;
+			temp_off = <71 0 0>;
+			rpm_target = <5500>;
 		};
 	};
 };
