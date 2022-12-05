@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b6ad04a_26062507",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-05T20:55:30Z",
+      "side": 1,
+      "message": "The slight elegance gained by having it as a STATIC_IF structure rather than ifdef-ing out fields primarily.  I\u0027d definitely prefer to not add space to boards which aren\u0027t using the feature, it\u0027s just a matter of the best way to achieve that.",
+      "parentUuid": "a13f4867_7dc007c5",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70c878da_773cbcd5",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 5
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5d4c959_ac81c8c1",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-05T20:55:30Z",
+      "side": 1,
+      "message": "Possibly.  I feel like I reasoned myself into thinking that the DPM flag would essentially be serving as an indicator for when the reply is read-safe.  But I could be reasoned into something more precise.",
+      "parentUuid": "70c878da_773cbcd5",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "806ac62f_416070c4",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 5
@@ -48,6 +84,24 @@
       "writtenOn": "2022-11-23T17:14:57Z",
       "side": 1,
       "message": "Can you think of a reason that the EC would want to tell the AP about an unsolicited VDM response?",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ae3f76_ae6cfbe3",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-05T20:55:30Z",
+      "side": 1,
+      "message": "Mayhaps.  A random unsolicited VDM response feels like it would be a pretty basic protocol error on the one hand (firmware domain issue), but on the other it could have resulted from something the AP did with this API (ex. those port partners we\u0027ve seen that take 1 second to reply to DiscoverIdentity sometimes). \n\nSo I suppose I could be convinced either way. I\u0027ll cc Prashant for his AP API opinions.",
+      "parentUuid": "806ac62f_416070c4",
       "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
