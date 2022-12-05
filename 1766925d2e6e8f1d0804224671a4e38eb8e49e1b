@@ -16,6 +16,24 @@
       "message": "Please run clang-format and re-submit.",
       "revId": "1766925d2e6e8f1d0804224671a4e38eb8e49e1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf2a7e0a_b5c6352e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-12-05T03:11:08Z",
+      "side": 1,
+      "message": "Hi Andrew\nI run ./util/check_clang_format.py and fix the format error on the other CL.",
+      "parentUuid": "6c60efd9_ca1649a9",
+      "revId": "1766925d2e6e8f1d0804224671a4e38eb8e49e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
