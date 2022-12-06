@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c2739c0_87957aa7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4476,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-12-06T23:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b2b6c59_424c935c",
+      "revId": "26f0d5189f37cfdb2252835129cdc910567718bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e62efa2_fc0a8b84",
@@ -102,6 +120,24 @@
       "writtenOn": "2022-12-06T21:18:09Z",
       "side": 1,
       "message": "I think the protocol error clause can be left out because the generic error handling code can take care of sending the soft reset when the partner fails to GoodCRC.\n\nAs a side note, it\u0027s probably not the best phrased thing from the spec, but ErrorRecovery is actually only used in pretty limited cases.  Most recovery with messages going slightly askew takes place via Soft Reset.  ErrorRecovery removes Vbus and tends to be used more for cases where Vbus is transitioning (ex. FRS)",
+      "revId": "26f0d5189f37cfdb2252835129cdc910567718bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0911c4b8_2ad6efeb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4481,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-12-06T23:06:55Z",
+      "side": 1,
+      "message": "Oh, thanks for the heads up on error recovery. Ya, very generic name for a particular case.\n\nI\u0027ve removed the protocol error handling in patchset 4.",
+      "parentUuid": "5d71fc70_a92ba3bc",
       "revId": "26f0d5189f37cfdb2252835129cdc910567718bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
