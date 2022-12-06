@@ -58,4 +58,8 @@
 			};
 		};
 	};
+	added-states {
+		compatible = "ap-pwrseq-sub-states";
+		chipset = "AP_POWER_STATE_S0IX";
+	};
 };
