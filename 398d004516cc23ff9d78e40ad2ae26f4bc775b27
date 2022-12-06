@@ -52,6 +52,24 @@
       "parentUuid": "44da4178_e3f42791",
       "revId": "398d004516cc23ff9d78e40ad2ae26f4bc775b27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b367010b_656915f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-12-06T19:59:24Z",
+      "side": 1,
+      "message": "I see compilation error with above commands and it seems not related to this change:  I didn\u0027t find \"libusb.h\" file in my workspace\n\ncross-pkg-config: error: pkg-config is too old ... upgrade to at least v0.24\nmake: *** ../../third_party/cryptoc: No such file or directory.  Stop.\n  HOSTCC  util/cbi-util\n  HOSTCC  util/iteflash\n  VERSION ec_version.h\nIn file included from util/iteflash.c:12:\nutil/usb_if.h:10:10: fatal error: \u0027libusb.h\u0027 file not found\n#include \u003clibusb.h\u003e\n         ^~~~~~~~~~\n  HOSTCXX  util/ec_parse_panicinfo\n  HOSTCXX  util/lbplay\n1 error generated.\n  HOSTCXX  util/ec_sb_firmware_update\nIn file included from util/usb_if.c:7:\nutil/usb_if.h:10:10: fatal error: \u0027libusb.h\u0027 file not found\n#include \u003clibusb.h\u003e\n         ^~~~~~~~~~\n  HOSTCXX  util/stm32mon\n1 error generated.\nmake: *** [Makefile.rules:688: build/host/util/iteflash] Error 1\nmake: *** Waiting for unfinished jobs....\nutil/comm-usb.cc:9:10: fatal error: \u0027libusb.h\u0027 file not found\n#include \u003clibusb.h\u003e\n         ^~~~~~~~~~\nutil/comm-usb.cc:9:10: fatal error: \u0027libusb.h\u0027 file not found\n#include \u003clibusb.h\u003e\n         ^~~~~~~~~~\n1 error generated.",
+      "parentUuid": "8e52210e_12324902",
+      "revId": "398d004516cc23ff9d78e40ad2ae26f4bc775b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
