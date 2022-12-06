@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a89b31_68630b0d",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-06T16:45:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e3888f57_822442ad",
+      "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e469e86_6357bfe4",
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "I took a shot at a less bad error message.  If that\u0027s still pretty meh, then I\u0027ll remove it.",
       "parentUuid": "9e469e86_6357bfe4",
+      "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4039c436_70240ab4",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-06T16:45:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b09aa96c_99522584",
       "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
