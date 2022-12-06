@@ -4,6 +4,7 @@
  */
 
 #include <ap_power/ap_power_interface.h>
+#include <ap_power/ap_power_events.h>
 #include <ap_power/ap_pwrseq.h>
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
