@@ -10,8 +10,6 @@
 #include <zephyr/kernel.h>
 #include <zephyr/types.h>
 
-#include <ap_power/ap_power.h>
-#include <ap_power/ap_power_events.h>
 #include <ap_power/ap_pwrseq.h>
 #include <ap_power_host_sleep.h>
 #include <x86_common_pwrseq.h>
