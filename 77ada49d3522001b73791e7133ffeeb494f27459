@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "316c164f_25089bee",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-06T16:42:09Z",
+      "side": 1,
+      "message": "I think the more of these that there end up being, the higher my aversion will be.\n\nWe could probably come up with something similar to this idiom for declaring or not defining a struct member, if the `#ifdef` guards are too messy. Maybe Zephyr already has one.",
+      "parentUuid": "2b6ad04a_26062507",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70c878da_773cbcd5",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 5
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Possibly.  I feel like I reasoned myself into thinking that the DPM flag would essentially be serving as an indicator for when the reply is read-safe.  But I could be reasoned into something more precise.",
       "parentUuid": "70c878da_773cbcd5",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c026238a_22d3e651",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-06T16:42:09Z",
+      "side": 1,
+      "message": "I agree that, as is, the DPM flag is sufficient synchronization. It would probably be good to comment that that\u0027s how it needs to be used.",
+      "parentUuid": "a5d4c959_ac81c8c1",
       "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
