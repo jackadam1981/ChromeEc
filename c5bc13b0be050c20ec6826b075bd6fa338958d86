@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d7733e9_224573c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-12-06T21:59:40Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually work. I see the error now: \n\nWARNING: Couldn\u0027t create \u0027parsetab\u0027. [Errno 2] No such file or directory: \u0027/mnt/host/source/src/platform/ec/twister-out/parsetab.py\u0027\n\ntwister tries to create the parsetab.py file before it creates the twister-out dir. Sigh.",
+      "revId": "c5bc13b0be050c20ec6826b075bd6fa338958d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
