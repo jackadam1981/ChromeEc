@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "139905c7_78fc5728",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-12-06T23:51:06Z",
+      "side": 1,
+      "message": "Where did the error logging go?",
+      "parentUuid": "ce73ee6d_70441a3e",
+      "revId": "336fb10300c44db77700b02cbce5737678a2675c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4648aa3_fb8e7ebb",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 6
