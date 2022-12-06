@@ -278,6 +278,30 @@
       },
       "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95987b43_8b09506e",
+        "filename": "zephyr/shim/src/rw_safe_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-12-06T02:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb81e8ff_46663ae8",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

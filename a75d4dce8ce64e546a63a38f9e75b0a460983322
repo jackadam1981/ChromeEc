@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c7c20e_9df1cc1a",
+        "filename": "common/rw_safe_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-12-06T02:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7842cccd_f702fd45",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 38
+      },
+      "revId": "a75d4dce8ce64e546a63a38f9e75b0a460983322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "526a4970_93407eac",
