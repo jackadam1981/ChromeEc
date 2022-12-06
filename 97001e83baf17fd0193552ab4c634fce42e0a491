@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a847ca_97c58890",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-06T06:16:16Z",
+      "side": 1,
+      "message": "Just check Nivviks/Craask to ensure we still have enough flash space.",
+      "revId": "97001e83baf17fd0193552ab4c634fce42e0a491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "372ef573_da166d12",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4724,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-06T06:16:16Z",
+      "side": 1,
+      "message": "LOG_ENTRIES rather than LOG_DEPTH ?",
+      "revId": "97001e83baf17fd0193552ab4c634fce42e0a491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b6d3ee_675ab790",
+        "filename": "zephyr/program/nissa/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-06T06:16:16Z",
+      "side": 1,
+      "message": "Move the Nissa specific change to another CL.",
+      "revId": "97001e83baf17fd0193552ab4c634fce42e0a491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
