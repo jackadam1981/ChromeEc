@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc700cb4_9cea8edf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4479,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-06T21:43:05Z",
+      "side": 1,
+      "message": "Usually `pe_set_dpm_curr_request()`, right? If this were any kind of sender response type situation, then that and the sender response functions would be interacting nicely together to restore the flag on discard.  I suppose this could be an example warranting an expansion of the helper functions beyond the sender response domain",
+      "parentUuid": "2e62efa2_fc0a8b84",
+      "revId": "26f0d5189f37cfdb2252835129cdc910567718bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d71fc70_a92ba3bc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
