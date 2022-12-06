@@ -3577,6 +3577,18 @@
 #undef CONFIG_PERIPHERAL_CHARGER
 
 /*
+ * Enable RF charge for peripheral device charger. This allows the board to
+ * give a chance to a peripheral device wrongly detected as a foreign object
+ * a chance to recover.
+ */
+#undef CONFIG_PCHG_RF_CHARGE
+
+/*
+ * The duration of RF charge to be applied on each device detection in seconds.
+ */
+#define CONFIG_PCHG_RF_CHARGE_SEC 5
+
+/*
  * Enable CTN730 driver
  *
  * CTN730 is NXP's NFC/WLC power transmitter (a.k.a. poller).
