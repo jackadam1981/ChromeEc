@@ -351,6 +351,7 @@ def main():
             str(ec_base / "zephyr") if is_in_chroot else str(zephyr_base),
         ),
         "ZEPHYR_TOOLCHAIN_VARIANT": intercepted_args.toolchain,
+        "PARSETAB_DIR": intercepted_args.outdir,
     }
     gcov_tool = None
     if intercepted_args.toolchain == "host":
