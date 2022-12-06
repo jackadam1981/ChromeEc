@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3c5f698_13cfc3bc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4479,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-12-06T22:31:37Z",
+      "side": 1,
+      "message": "In this case, it looks like the DPM request gets cleared by `pe_snk_ready_entry` on L3614. `pe_set_dpm_curr_request` is only every being run in response to the Alert requests, it\u0027s not clearing them. To prevent looping caused by message discarding, I added the `pe_set_ready_state` call in Patchset 3 which looks responsible for the DPM requests being cleared. In the EC console log image attached to the bug, the states go PE_Send_Alert-\u003ePE_SNK_Ready-\u003ePE_Send_Alert(message gets discarded here due to \"Get_Status\", so it\u0027s never sent)-\u003ePE_SNK_Ready(DPM cleared here)-\u003ePE_Give_Status-\u003ePE_SNK_Ready.\n\n\u003e\t/* Clear DPM Current Request */\n\u003e\tpe[port].dpm_curr_request \u003d 0;",
+      "parentUuid": "21773e41_025fed0f",
+      "revId": "26f0d5189f37cfdb2252835129cdc910567718bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d71fc70_a92ba3bc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
