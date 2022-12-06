@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92374dae_ddaea3a1",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-06T06:17:41Z",
+      "side": 1,
+      "message": "Given that we now have prllog, do we need these other prints as well?",
+      "range": {
+        "startLine": 446,
+        "startChar": 4,
+        "endLine": 446,
+        "endChar": 5
+      },
+      "revId": "97001e83baf17fd0193552ab4c634fce42e0a491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "372ef573_da166d12",
         "filename": "include/config.h",
         "patchSetId": 2
