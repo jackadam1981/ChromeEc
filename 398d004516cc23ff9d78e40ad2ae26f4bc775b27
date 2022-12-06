@@ -34,6 +34,24 @@
       "parentUuid": "e48b60d7_1f7028c1",
       "revId": "398d004516cc23ff9d78e40ad2ae26f4bc775b27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e52210e_12324902",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-12-06T03:56:12Z",
+      "side": 1,
+      "message": "I can reproduce the build failure in CL:3794612 with BOARD\u003darm-generic\n\n```\nbuild_packages --board\u003d$BOARD\ncros-workon-$BOARD start ec-utils\nemerge-$BOARD ec-utils\n```\n\nI think if you tried with BOARD\u003darm-generic, arm64-generic, amd64-generic then it\u0027s good to go.",
+      "parentUuid": "44da4178_e3f42791",
+      "revId": "398d004516cc23ff9d78e40ad2ae26f4bc775b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
