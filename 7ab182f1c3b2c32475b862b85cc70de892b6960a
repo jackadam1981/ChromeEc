@@ -16,6 +16,24 @@
       "message": "I executed \"pre-upload.py / clang-format.py\" and encountered the following situation:\n```\nERROR: space prohibited before that close parenthesis \u0027)\u0027\nIn FILE: zephyr/shim/include/hook_types.h:48:\n  +                       HOOK_CHIPSET_SUSPEND_COMPLETE, ))               \\\n```\n \nBut if I remove the space, the error message becomes:\n```\nERROR: space required after that \u0027,\u0027 (ctx:VxB)\n    #244: FILE: zephyr/shim/include/hook_types.h:48:\n    +                       HOOK_CHIPSET_SUSPEND_COMPLETE,))               \\\n``` \nThese two conditions seem to be mutually exclusive, how can I fix this situation?\nIs this the reason why the patch build failed?\n \nError message for executed \"pre-upload.py”:\n```\n[COMMIT 1/1 7ab182f1c3b2] hooks: Add HOOK_BODY_DETECT_CHANGE\n[FAILED] chromiumos/platform/ec: checkpatch_check\n    /home/leila/trunk/src/repohooks/checkpatch.pl errors/warnings\n \n    ERROR: space prohibited before that close parenthesis \u0027)\u0027\n    #244: FILE: zephyr/shim/include/hook_types.h:48:\n    +                       HOOK_CHIPSET_SUSPEND_COMPLETE, ))               \\\n \n    total: 1 errors, 0 warnings, 169 lines checked\n \n    NOTE: For some of the reported defects, checkpatch may be able to\n          mechanically convert to the typical style using --fix or --fix-inplace.\n \n    Your patch has style problems, please review.\n \n    NOTE: Ignored message types: BRACES C99_COMMENT_TOLERANCE ENOSYS FILE_PATH_CHANGES GERRIT_CHANGE_ID GIT_COMMIT_ID MSLEEP PRINTK_WITHOUT_KERN_LEVEL SPDX_LICENSE_TAG SPLIT_STRING VOLATILE VSPRINTF_POINTER_EXTENSION\n \n    NOTE: If any of the errors are false positives, please report\n          them to the maintainer, see CHECKPATCH in MAINTAINERS.\n \n[FAILED] chromiumos/platform/ec: migrated_files\n    Hook script \"util/migrated_files.sh ${PRESUBMIT_FILES}\" failed with code 1:\n      WARNING: common/hooks.c is not used in Zephyr EC. Do not edit this unless you also find the zephyr copy and fix the same code there.\n```",
       "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a05e892a_dc0e0fc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-06T17:45:02Z",
+      "side": 1,
+      "message": "Yes, the build failure was the clang format one.  \n\nGenerally, since clang format runs during the build phase of the CQ, I go with the option it wants if it conflicts with other upload hooks.",
+      "parentUuid": "a855b3c2_3e72ae4c",
+      "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
