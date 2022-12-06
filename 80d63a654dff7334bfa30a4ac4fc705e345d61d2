@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c7b31e_99d96e16",
+        "filename": "zephyr/boards/riscv/it8xxx2/it81202cx.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-06T21:33:02Z",
+      "side": 1,
+      "message": "Is this file still needed?  Can the contents of `zephyr/include/cros/ite/it8xxx2.dtsi` get moved into `zephyr/boards/riscv/it8xxx2/it8xxx2.dtsi` instead?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 32
+      },
+      "revId": "80d63a654dff7334bfa30a4ac4fc705e345d61d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
