@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b2b6c59_424c935c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4476,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-06T21:18:09Z",
+      "side": 1,
+      "message": "Probably add a \"return\" after both ready state sets.  It\u0027s just generally a best practice to ensure we don\u0027t set state and then accidentally run other code (ex. another set_state which we shouldn\u0027t have done)",
+      "revId": "26f0d5189f37cfdb2252835129cdc910567718bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d71fc70_a92ba3bc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4481,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-06T21:18:09Z",
+      "side": 1,
+      "message": "I think the protocol error clause can be left out because the generic error handling code can take care of sending the soft reset when the partner fails to GoodCRC.\n\nAs a side note, it\u0027s probably not the best phrased thing from the spec, but ErrorRecovery is actually only used in pretty limited cases.  Most recovery with messages going slightly askew takes place via Soft Reset.  ErrorRecovery removes Vbus and tends to be used more for cases where Vbus is transitioning (ex. FRS)",
+      "revId": "26f0d5189f37cfdb2252835129cdc910567718bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
