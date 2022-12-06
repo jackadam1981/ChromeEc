@@ -234,4 +234,11 @@ __test_only bool charging_progress_displayed(void);
  */
 int board_should_charger_bypass(void);
 
+enum charge_state charge_get_state(void);
+enum ec_charge_control_mode get_chg_ctrl_mode(void);
+uint32_t charge_get_flags(void);
+test_export_static int battery_near_full(void);
+test_export_static int set_chg_ctrl_mode(enum ec_charge_control_mode mode);
+test_export_static void set_charge_state(enum charge_state_v2 state);
+
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */

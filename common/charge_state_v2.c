@@ -1085,7 +1085,7 @@ void chgstate_set_manual_voltage(int volt_mv)
 }
 
 /* Force charging off before the battery is full. */
-static int set_chg_ctrl_mode(enum ec_charge_control_mode mode)
+test_export_static int set_chg_ctrl_mode(enum ec_charge_control_mode mode)
 {
 	bool discharge_on_ac = false;
 	int current, voltage;
@@ -1306,7 +1306,7 @@ static void notify_host_of_low_battery_charge(void)
 #endif
 }
 
-static void set_charge_state(enum charge_state_v2 state)
+test_export_static void set_charge_state(enum charge_state_v2 state)
 {
 	prev_state = curr.state;
 	curr.state = state;
@@ -2194,7 +2194,7 @@ bool charge_prevent_power_on(bool power_button_pressed)
 	return prevent_power_on != 0;
 }
 
-static int battery_near_full(void)
+test_export_static int battery_near_full(void)
 {
 	if (charge_get_percent() < BATTERY_LEVEL_NEAR_FULL)
 		return 0;
