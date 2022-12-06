@@ -34,6 +34,24 @@
       "parentUuid": "a855b3c2_3e72ae4c",
       "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "834a9715_3d91396b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-12-06T21:25:55Z",
+      "side": 1,
+      "message": "This appears to be `checkpatch.pl`, not `clang-format` giving you troubles. We should ignore this message type from checkpatch.pl if it\u0027s known to be buggy.",
+      "parentUuid": "a05e892a_dc0e0fc6",
+      "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
