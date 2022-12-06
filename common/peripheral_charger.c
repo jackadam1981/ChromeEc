@@ -61,6 +61,7 @@ static const char *_text_mode(enum pchg_mode mode)
 		[PCHG_MODE_NORMAL] = "NORMAL",
 		[PCHG_MODE_DOWNLOAD] = "DOWNLOAD",
 		[PCHG_MODE_PASSTHRU] = "PASSTHRU",
+		[PCHG_MODE_BIST] = "BIST",
 	};
 	BUILD_ASSERT(ARRAY_SIZE(mode_names) == PCHG_MODE_COUNT);
 
@@ -196,6 +197,13 @@ static void _clear_port(struct pchg *ctx)
 	ctx->update.data_ready = 0;
 }
 
+static void reset_bist_cmd(struct pchg *ctx)
+{
+	ctx->bist_cmd = IS_ENABLED(CONFIG_PCHG_RF_CHARGE)
+			? PCHG_BIST_CMD_RF_CHARGE_ON
+			: PCHG_BIST_CMD_NONE;
+}
+
 __overridable void board_pchg_power_on(int port, bool on)
 {
 }
@@ -211,7 +219,7 @@ static enum pchg_state pchg_reset(struct pchg *ctx)
 	 */
 	_clear_port(ctx);
 
-	if (ctx->mode == PCHG_MODE_NORMAL) {
+	if (ctx->mode == PCHG_MODE_NORMAL || ctx->mode == PCHG_MODE_BIST) {
 		rv = ctx->cfg->drv->init(ctx);
 		if (rv == EC_SUCCESS) {
 			state = PCHG_STATE_INITIALIZED;
@@ -228,6 +236,28 @@ static enum pchg_state pchg_reset(struct pchg *ctx)
 
 	return state;
 }
+
+static enum pchg_state reset_to_normal(struct pchg *ctx)
+{
+	ctx->mode = PCHG_MODE_NORMAL;
+	reset_bist_cmd(ctx);
+	return pchg_reset(ctx);
+}
+
+static void rf_charge_off(void)
+{
+	struct pchg *ctx;
+	int i;
+
+	for (i = 0; i < pchg_count; i++) {
+		ctx = &pchgs[i];
+		if (ctx->state == PCHG_STATE_BIST)
+			break;
+	}
+	if (i < pchg_count)
+		pchg_queue_event(ctx, PCHG_EVENT_RF_CHARGE_OFF);
+}
+DECLARE_DEFERRED(rf_charge_off);
 
 static void pchg_state_reset(struct pchg *ctx)
 {
@@ -253,6 +283,22 @@ static void pchg_state_initialized(struct pchg *ctx)
 		ctx->state = pchg_reset(ctx);
 		break;
 	case PCHG_EVENT_ENABLE:
+		if (ctx->mode == PCHG_MODE_BIST) {
+			switch (ctx->bist_cmd) {
+			case PCHG_BIST_CMD_RF_CHARGE_ON:
+				ctx->state = PCHG_STATE_BIST;
+				pchg_queue_event(ctx, PCHG_EVENT_RF_CHARGE_ON);
+				break;
+			case PCHG_BIST_CMD_NONE:
+				__fallthrough;
+			default:
+				ctx->mode = PCHG_MODE_NORMAL;
+			}
+			if (ctx->mode == PCHG_MODE_BIST)
+				break;
+			/* Fall through to normal mode */
+		}
+
 		rv = ctx->cfg->drv->enable(ctx, true);
 		if (rv == EC_SUCCESS)
 			ctx->state = PCHG_STATE_ENABLED;
@@ -264,6 +310,43 @@ static void pchg_state_initialized(struct pchg *ctx)
 		break;
 	case PCHG_EVENT_ENABLED:
 		ctx->state = PCHG_STATE_ENABLED;
+		break;
+	default:
+		break;
+	}
+}
+
+static void pchg_state_bist(struct pchg *ctx)
+{
+	int rv;
+
+	switch (ctx->event) {
+	case PCHG_EVENT_RF_CHARGE_ON:
+		if (!ctx->cfg->drv->bist) {
+			CPRINTS("WARN: RF charge not implemented");
+			ctx->state = reset_to_normal(ctx);
+			break;
+		}
+		rv = ctx->cfg->drv->bist(ctx, ctx->bist_cmd);
+		if (rv != EC_SUCCESS) {
+			CPRINTS("ERR: Failed to turn on RF charge");
+			ctx->state = reset_to_normal(ctx);
+			break;
+		}
+		CPRINTS("INFO: RF charge turned on");
+		/* Schedule timer for RF_CHARGE_OFF. */
+		hook_call_deferred(&rf_charge_off_data, 5 * SECOND);
+		break;
+	case PCHG_EVENT_RF_CHARGE_OFF:
+		/* Exit BIST mode. */
+		CPRINTS("INFO: Resetting to turn off RF charge");
+		ctx->state = reset_to_normal(ctx);
+		break;
+	case PCHG_EVENT_DEVICE_LOST:
+		/* Device lost during BIST. */
+		__fallthrough;
+	case PCHG_EVENT_RESET:
+		ctx->state = reset_to_normal(ctx);
 		break;
 	default:
 		break;
@@ -292,7 +375,12 @@ static void pchg_state_enabled(struct pchg *ctx)
 		ctx->state = PCHG_STATE_INITIALIZED;
 		break;
 	case PCHG_EVENT_DEVICE_DETECTED:
-		ctx->state = PCHG_STATE_DETECTED;
+		if (ctx->bist_cmd != PCHG_BIST_CMD_NONE) {
+			ctx->mode = PCHG_MODE_BIST;
+			ctx->state = pchg_reset(ctx);
+		} else {
+			ctx->state = PCHG_STATE_DETECTED;
+		}
 		break;
 	case PCHG_EVENT_DEVICE_CONNECTED:
 		/*
@@ -339,6 +427,7 @@ static void pchg_state_detected(struct pchg *ctx)
 	case PCHG_EVENT_DEVICE_LOST:
 		ctx->battery_percent = 0;
 		ctx->state = PCHG_STATE_ENABLED;
+		reset_bist_cmd(ctx);
 		break;
 	default:
 		break;
@@ -372,6 +461,7 @@ static void pchg_state_connected(struct pchg *ctx)
 	case PCHG_EVENT_DEVICE_LOST:
 		ctx->battery_percent = 0;
 		ctx->state = PCHG_STATE_ENABLED;
+		reset_bist_cmd(ctx);
 		break;
 	default:
 		break;
@@ -404,6 +494,7 @@ static void pchg_state_charging(struct pchg *ctx)
 	case PCHG_EVENT_DEVICE_LOST:
 		ctx->battery_percent = 0;
 		ctx->state = PCHG_STATE_ENABLED;
+		reset_bist_cmd(ctx);
 		break;
 	case PCHG_EVENT_CHARGE_ENDED:
 	case PCHG_EVENT_CHARGE_STOPPED:
@@ -566,6 +657,9 @@ static int pchg_run(struct pchg *ctx)
 	case PCHG_STATE_INITIALIZED:
 		pchg_state_initialized(ctx);
 		break;
+	case PCHG_STATE_BIST:
+		pchg_state_bist(ctx);
+		break;
 	case PCHG_STATE_ENABLED:
 		pchg_state_enabled(ctx);
 		break;
@@ -650,6 +744,7 @@ static void pchg_startup(void)
 		ctx = &pchgs[p];
 		_clear_port(ctx);
 		ctx->mode = PCHG_MODE_NORMAL;
+		reset_bist_cmd(ctx);
 		gpio_disable_interrupt(ctx->cfg->irq_pin);
 		board_pchg_power_on(p, 1);
 		ctx->cfg->drv->reset(ctx);

@@ -86,6 +86,41 @@
  *              UPDATE_WRITE
  */
 
+/*
+ * BIST Mode
+ *
+ * BIST mode is implemented as follows. Note == means comparison (i.e. mode
+ * check) and = means assignment (i.e. mode change).
+ *
+ *
+ *                  +---------------+
+ *   +------------->|     RESET     |<-----------------------+
+ *   |              +-------+-------+                        |
+ *   |                      |                                |
+ *   |                      | INITIALIZED                    |
+ *   |                      v                                |
+ *   |              +---------------+  mode==BIST            |
+ *   |              |  INITIALIZED  |---------------+        |
+ *   |              +------+--+-----+               |        |
+ *   |              mode== |  | mode==BIST          |        |
+ *   |              NORMAL |  | && bist_cmd==NONE   |        | mode=NORMAL
+ *   |                     |  | mode=NORMAL         |        | bist_cmd=NONE
+ *   |                     |  |                     |        |
+ *   | DEVICE_DETECTED     |  |                     |        |
+ *   | && bist_cmd!=NONE   V  V                     V        |
+ *   | mode=BIST    +---------------+         +-----------+  |
+ *   +--------------|    ENABLED    |         |    BIST   |--+
+ *   +------------->+------+--------+         +-----------+
+ *   |                     |
+ *   |                     | DEVICE_DETECTED
+ *   |                     |
+ *   | DEVICE_LOST         |
+ *   | bist_cmd=RF_CHARGE  V
+ *   |               +----------+
+ *   +---------------+ DETECTED |
+ *                   +----------+
+ */
+
 /* Size of event queue. Use it to initialize struct pchg.events. */
 #define PCHG_EVENT_QUEUE_SIZE 8
 
@@ -119,6 +154,8 @@ enum pchg_event {
 	/* Internal (a.k.a. Host) Events */
 	PCHG_EVENT_ENABLE,
 	PCHG_EVENT_DISABLE,
+	PCHG_EVENT_RF_CHARGE_ON,
+	PCHG_EVENT_RF_CHARGE_OFF,
 	PCHG_EVENT_UPDATE_OPEN,
 	PCHG_EVENT_UPDATE_WRITE,
 	PCHG_EVENT_UPDATE_CLOSE,
@@ -157,8 +194,16 @@ enum pchg_mode {
 	PCHG_MODE_NORMAL = 0,
 	PCHG_MODE_DOWNLOAD,
 	PCHG_MODE_PASSTHRU,
+	PCHG_MODE_BIST,
 	/* Add no more entries below here. */
 	PCHG_MODE_COUNT
+};
+
+enum pchg_bist_cmd {
+	PCHG_BIST_CMD_ANTENNA = 0x00,
+	PCHG_BIST_CMD_RF_CHARGE_ON = 0x01,
+	PCHG_BIST_CMD_RF_CHARGE_OFF = 0x02,
+	PCHG_BIST_CMD_NONE = 0xff,
 };
 
 enum pchg_chipset_state {
@@ -236,6 +281,8 @@ struct pchg {
 	uint32_t dropped_host_event_count;
 	/* enum pchg_mode */
 	uint8_t mode;
+	/* enum pchg_bist_cmd */
+	uint8_t bist_cmd;
 	/* FW version */
 	uint32_t fw_version;
 	/* Context related to FW update */
@@ -279,6 +326,8 @@ struct pchg_drv {
 	int (*update_close)(struct pchg *ctx);
 	/* Toggle pass-through mode. */
 	int (*passthru)(struct pchg *ctx, bool enable);
+	/* Control BIST commands. */
+	int (*bist)(struct pchg *ctx, uint8_t id);
 };
 
 /**
