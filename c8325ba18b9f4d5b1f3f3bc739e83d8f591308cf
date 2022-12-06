@@ -52,6 +52,24 @@
       "parentUuid": "088d6e41_8aa8bf45",
       "revId": "c8325ba18b9f4d5b1f3f3bc739e83d8f591308cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db0a38ae_dfdcdc31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-12-06T03:56:40Z",
+      "side": 1,
+      "message": "Yes buildall does not catch those problems. See my other comment https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4081566/comments/e48b60d7_1f7028c1",
+      "parentUuid": "c284c7a0_145cd6b4",
+      "revId": "c8325ba18b9f4d5b1f3f3bc739e83d8f591308cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
