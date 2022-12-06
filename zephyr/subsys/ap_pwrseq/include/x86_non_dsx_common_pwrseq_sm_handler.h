@@ -10,12 +10,13 @@
 #include <zephyr/kernel.h>
 #include <zephyr/types.h>
 
-#include <ap_power/ap_power.h>
-#include <ap_power/ap_power_events.h>
 #include <ap_power_host_sleep.h>
 #include <x86_common_pwrseq.h>
 #ifdef CONFIG_AP_PWRSEQ_DRIVE
 #include <ap_power/ap_pwrseq.h>
+#else
+#include <ap_power/ap_power.h>
+#include <ap_power/ap_power_events.h>
 #endif
 
 /* The wait time is ~150 msec, allow for safety margin. */
