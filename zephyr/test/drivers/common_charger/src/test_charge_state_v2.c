@@ -4,9 +4,11 @@
  */
 
 #include "battery.h"
+#include "charge_state.h"
 #include "charge_state_v2.h"
 #include "math_util.h"
 #include "test/drivers/test_state.h"
+#include "test/drivers/utils.h"
 
 #include <zephyr/ztest.h>
 
@@ -40,6 +42,7 @@ static void after(void *f)
 ZTEST_SUITE(charge_state_v2, drivers_predicate_post_main, setup, before, after,
 	    NULL);
 
+#if 0
 ZTEST(charge_state_v2, test_battery_flag_bad_temperature)
 {
 	struct charge_state_data *curr = charge_get_status();
@@ -126,4 +129,74 @@ ZTEST(charge_state_v2, test_minimum_current_limit)
 		      " but current limit is %d (capped to %d)",
 		      96, charger_current_limit,
 		      CONFIG_PLATFORM_EC_CHARGER_MIN_INPUT_CURRENT_LIMIT);
+}
+#endif
+extern int charge_port;
+
+void charge_manager_set_active_charge_port(int port)
+{
+	charge_port = port;
+}
+
+
+ZTEST(charge_state_v2, test_charge_get_state)
+{
+	struct charge_state_data *curr = charge_get_status();
+
+	set_ac_enabled(true);
+
+	set_charge_state(ST_IDLE);
+	//PWR_STATE_ERROR -- 10
+	curr->batt.is_present = BP_NO;
+	//printf("\n\n---charge_get_state = %d---\n\n",charge_get_state());
+	zassert_equal(PWR_STATE_ERROR, charge_get_state(), NULL);
+
+	//PWR_STATE_FORCED_IDLE -- 5
+	curr->batt.is_present = BP_YES;
+	set_chg_ctrl_mode(CHARGE_CONTROL_IDLE);
+	//printf("\n\n---charge_get_state = %d---\n\n",charge_get_state());
+	zassert_equal(PWR_STATE_FORCED_IDLE, charge_get_state(), NULL);
+
+	//PWR_STATE_IDLE -- 4
+	set_chg_ctrl_mode(CHARGE_CONTROL_NORMAL);
+	//printf("\n\n---charge_get_state = %d---\n\n",charge_get_state());
+	zassert_equal(PWR_STATE_IDLE, charge_get_state(), NULL);
+
+	set_charge_state(ST_DISCHARGE);
+	//PWR_STATE_DISCHARGE -- 6
+	//printf("\n\n---charge_get_state = %d---\n\n",charge_get_state());
+	zassert_equal(PWR_STATE_DISCHARGE, charge_get_state(), NULL);
+
+	set_charge_state(ST_CHARGE);
+	charge_manager_set_active_charge_port(-1);
+	//PWR_STATE_DISCHARGE -- 6
+	//printf("\n\n---charge_get_state = %d---\n\n",charge_get_state());
+	zassert_equal(PWR_STATE_DISCHARGE, charge_get_state(), NULL);
+
+	charge_manager_set_active_charge_port(0);
+	curr->batt.state_of_charge = 100;
+	//PWR_STATE_CHARGE_NEAR_FULL -- 9
+	//printf("\n\n---charge_get_state = %d---\n\n",charge_get_state());
+	zassert_equal(PWR_STATE_CHARGE_NEAR_FULL, charge_get_state(), NULL);
+
+	curr->batt.state_of_charge = 50;
+	//PWR_STATE_CHARGE -- 8
+	//printf("\n\n---charge_get_state = %d---\n\n",charge_get_state());
+	zassert_equal(PWR_STATE_CHARGE, charge_get_state(), NULL);
+
+	set_charge_state(ST_PRECHARGE);
+	//PWR_STATE_FORCED_IDLE -- 5
+	set_chg_ctrl_mode(CHARGE_CONTROL_IDLE);
+	//printf("\n\n---charge_get_state = %d---\n\n",charge_get_state());
+	zassert_equal(PWR_STATE_FORCED_IDLE, charge_get_state(), NULL);
+
+	//PWR_STATE_IDLE -- 4
+	set_chg_ctrl_mode(CHARGE_CONTROL_NORMAL);
+	//printf("\n\n---charge_get_state = %d---\n\n",charge_get_state());
+	zassert_equal(PWR_STATE_IDLE, charge_get_state(), NULL);
+
+	//defalut case
+	set_charge_state(NUM_STATES_V2);
+	zassert_equal(PWR_STATE_ERROR, charge_get_state(), NULL);
+
 }
