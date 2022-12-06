@@ -30,49 +30,6 @@
 void board_ap_power_force_shutdown(void);
 
 /**
- * @brief Called to transition from G3 to S5
- *
- * Action to start transition from G3 to S5.
- * Usually involves enabling the main power rails.
- */
-void board_ap_power_action_g3_s5(void);
-
-/**
- * @brief Called to transition from S3 to S0
- *
- * Action to start transition from S3 to S0.
- */
-void board_ap_power_action_s3_s0(void);
-
-/* @brief Called to transition from S0 to S3
- *
- * Action to start transition from S0 to S3.
- */
-void board_ap_power_action_s0_s3(void);
-
-/* @brief Called on S0 state
- *
- * Action to handle S0 state.
- */
-void board_ap_power_action_s0(void);
-
-/**
- * @brief Assert PCH power OK signal to AP
- *
- * @return 0 Success
- * @return -1 Timeout or error
- */
-int board_ap_power_assert_pch_power_ok(void);
-
-/**
- * @brief Check board power rails enabled or not
- *
- * @return true Enabled
- * @return false Not enabled
- */
-bool board_ap_power_check_power_rails_enabled(void);
-
-/**
  * @brief macro to access configuration properties from DTS
  */
 #define AP_PWRSEQ_DT_VALUE(p) \
