@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21773e41_025fed0f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4479,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-12-06T22:02:45Z",
+      "side": 1,
+      "message": "Thanks for pointing out this possibility, I\u0027ll check to see if this is the case.",
+      "parentUuid": "bc700cb4_9cea8edf",
+      "revId": "26f0d5189f37cfdb2252835129cdc910567718bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d71fc70_a92ba3bc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3

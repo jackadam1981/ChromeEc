@@ -139,6 +139,24 @@
       "parentUuid": "8afadbe2_dc22e4c4",
       "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3523e43_d518a300",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4482,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-12-06T22:02:45Z",
+      "side": 1,
+      "message": "That isn\u0027t really what I\u0027m seeing here. If we don\u0027t actively call `pe_set_ready_state` to return to the ready state when the message is discarded, then the PE just loops and repeatedly calls pe_send_alert_run.\n\nIf we just call `pe_set_ready_state` without also calling `pd_dpm_request(port, DPM_REQUEST_SEND_ALERT);` after the message is discarded, the PE never sends the second Alert and we get wedged somewhere else where the `pd_send_alert_msg` function stops working (see https://drive.google.com/file/d/1DfUOrH3PMqPc_KO8jx1Bltm3rhNioEAR/view?usp\u003dshare_link).\n\nI\u0027ll try checking if `pe_set_dpm_curr_request` is clearing the request and followup.",
+      "parentUuid": "fcd65daf_8bd07831",
+      "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
