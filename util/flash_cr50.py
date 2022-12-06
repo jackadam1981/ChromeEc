@@ -20,14 +20,13 @@ import os
 import pprint
 import re
 import select
+import serial
 import shutil
 import subprocess
 import sys
 import tempfile
 import threading
 import time
-
-import serial
 
 # No GSC updaters take anywhere close to 2 minutes to run.
 CMD_TIMEOUT = 120
@@ -99,7 +98,7 @@ def run_command(cmd, check_error=True):
     return result.returncode, msg.strip()
 
 
-class Cr50Image(object):
+class Cr50Image():
     """Class to handle cr50 image conversions."""
 
     SUFFIX_LEN = 6
@@ -157,7 +156,7 @@ class Cr50Image(object):
         return os.path.basename(self._original_image)
 
 
-class Servo(object):
+class Servo():
     """Class to interact with servo."""
 
     # Wait 3 seconds for device to settle after running the dut control command.
@@ -207,7 +206,7 @@ class Servo(object):
         return self.dut_control('cr50_version')[1]
 
 
-class Cr50Reset(object):
+class Cr50Reset():
     """Class to enter and exit cr50 reset."""
 
     # A list of requirements for the setup. The requirement strings must match
