@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c73cce00_988891e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-06T17:18:12Z",
+      "side": 1,
+      "message": "The test on bloonchipper is currently failing.\n\nThis is probably related to some known issues around initialization of global variables.",
+      "revId": "215267ffd471b625df77301e93ca24946da13272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
