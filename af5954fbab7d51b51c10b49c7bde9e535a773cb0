@@ -16,6 +16,24 @@
       "message": "I don\u0027t have permission to access the CQ error, could anyone help? Thanks!",
       "revId": "af5954fbab7d51b51c10b49c7bde9e535a773cb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c43fadcb_fad865cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-06T05:14:51Z",
+      "side": 1,
+      "message": "Using `IS_ENABLED` makes the RISC-V-specific `csr_read` function visible to all targets, which causes all ARM boards to fail to build.\n\n```\n/mnt/host/source/src/platform/ec/zephyr/shim/src/watchdog.c: In function \u0027wdt_warning_handler\u0027:\n/mnt/host/source/src/platform/ec/zephyr/shim/src/watchdog.c:29:32: error: implicit declaration of function \u0027csr_read\u0027 [-Werror\u003dimplicit-function-declaration]\n   29 |                        (void *)csr_read(mepc), thread_name);\n      |                                ^~~~~~~~\n/mnt/host/source/src/platform/ec/zephyr/shim/src/watchdog.c:29:41: error: \u0027mepc\u0027 undeclared (first use in this function)\n   29 |                        (void *)csr_read(mepc), thread_name);\n      |                                         ^~~~\n/mnt/host/source/src/platform/ec/zephyr/shim/src/watchdog.c:29:41: note: each undeclared identifier is reported only once for each function it appears in\n...\nFailed projects: [\u0027npcx9\u0027, \u0027winterhold\u0027, \u0027brya\u0027, \u0027evoker\u0027, \u0027kingler\u0027, \u0027npcx7\u0027, \u0027zombie\u0027, \u0027frostflow\u0027, \u0027zoglin\u0027, \u0027xivu\u0027, \u0027adlrvp_mchp\u0027, \u0027villager\u0027, \u0027rex\u0027, \u0027mtlrvpp_npcx\u0027, \u0027adlrvp_npcx\u0027, \u0027morthal\u0027, \u0027pujjo\u0027, \u0027xivur\u0027, \u0027herobrine\u0027, \u0027nivviks\u0027, \u0027minimal-npcx9\u0027, \u0027skyrim\u0027, \u0027lazor\u0027, \u0027steelix\u0027, \u0027hoglin\u0027, \u0027craask\u0027, \u0027voltorb\u0027, \u0027crystaldrift\u0027]\n```",
+      "parentUuid": "4f96fe39_f492739d",
+      "revId": "af5954fbab7d51b51c10b49c7bde9e535a773cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
