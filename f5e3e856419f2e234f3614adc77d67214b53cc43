@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e398e935_bb84005c",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-06T17:48:39Z",
+      "side": 1,
+      "message": "Today, EC\u0027s PLATFORM_EC_BATT_HOST_FULL_FACTOR is the source of truth. Powerd gets the value from the EC over EC_CMD_DISPLAY_SOC.",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 42
+      },
+      "revId": "f5e3e856419f2e234f3614adc77d67214b53cc43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
