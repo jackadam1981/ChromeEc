@@ -5,6 +5,7 @@
 
 #ifdef CONFIG_AP_PWRSEQ_DRIVER
 #include <ap_power/ap_pwrseq_sm.h>
+#include <ap_power/ap_power_events.h>
 #endif
 #include <x86_common_pwrseq.h>
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
@@ -94,11 +95,53 @@ enum power_states_ndsx chipset_pwr_seq_get_state(void)
 	return SYS_POWER_STATE_G3;
 }
 #else
+static void x86_non_dsx_chipset_state_entry_cb(const struct device *dev,
+					       enum ap_pwrseq_state state);
+
+static void x86_non_dsx_chipset_state_exit_cb(const struct device *dev,
+					      enum ap_pwrseq_state state);
+
+static int x86_non_dsx_chipset_register_events(void *data)
+{
+	static struct ap_pwrseq_state_callback ap_pwrseq_entry_cb;
+	static struct ap_pwrseq_state_callback ap_pwrseq_exit_cb;
+	const struct device *dev = ap_pwrseq_get_instance();
+
+	ap_pwrseq_entry_cb.cb = x86_non_dsx_chipset_state_entry_cb;
+	ap_pwrseq_entry_cb.states_bit_mask = (BIT(AP_POWER_STATE_G3)
+					    | BIT(AP_POWER_STATE_S3)
+					    | BIT(AP_POWER_STATE_S0)
+#if CONFIG_AP_PWRSEQ_S0IX
+					    | BIT(AP_POWER_STATE_S0IX)
+#endif
+					     );
+
+	ap_pwrseq_register_entry_state_callback(dev, &ap_pwrseq_entry_cb);
+
+	ap_pwrseq_exit_cb.cb = x86_non_dsx_chipset_state_exit_cb;
+	ap_pwrseq_exit_cb.states_bit_mask = (BIT(AP_POWER_STATE_G3)
+					   | BIT(AP_POWER_STATE_S5)
+					   | BIT(AP_POWER_STATE_S4)
+					   | BIT(AP_POWER_STATE_S3)
+					   | BIT(AP_POWER_STATE_S0)
+#if CONFIG_AP_PWRSEQ_S0IX
+					   | BIT(AP_POWER_STATE_S0IX)
+#endif
+					    );
+
+	ap_pwrseq_register_exit_state_callback(dev, &ap_pwrseq_exit_cb);
+
+	ap_power_ev_send_callbacks(AP_POWER_INITIALIZED);
+	return 0;
+}
+
 enum ap_pwrseq_state ap_pwrseq_board_sm_init(void *dev)
 {
 	power_signal_mask_t sig;
 
 	power_signal_init();
+
+	x86_non_dsx_chipset_register_events(dev);
 
 	sig = power_get_signals();
 	/*
@@ -172,6 +215,89 @@ enum ap_pwrseq_state ap_pwrseq_board_sm_init(void *dev)
 	 */
 	LOG_INF("Unable to determine CPU state (%#x), forcing shutdown", sig);
 	ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
+
 	return AP_POWER_STATE_G3;
+}
+
+static void x86_non_dsx_chipset_state_entry_cb(const struct device *dev,
+					       enum ap_pwrseq_state state)
+{
+	switch(state) {
+	case AP_POWER_STATE_G3:
+		ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN);
+		ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN_COMPLETE);
+		break;
+
+	case AP_POWER_STATE_S3:
+		ap_power_ev_send_callbacks(AP_POWER_STARTUP);
+		break;
+
+	case AP_POWER_STATE_S0:
+		/* Notify power event rails are up */
+		ap_power_ev_send_callbacks(AP_POWER_RESUME);
+		break;
+
+#if CONFIG_AP_PWRSEQ_S0IX
+	case AP_POWER_STATE_S0IX:
+		ap_power_ev_send_callbacks(AP_POWER_S0IX_SUSPEND);
+#if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
+		ap_power_ev_send_callbacks(AP_POWER_SUSPEND_COMPLETE);
+#endif
+		break;
+#endif
+
+	default:
+		break;
+	}
+}
+
+static void x86_non_dsx_chipset_state_exit_cb(const struct device *dev,
+					      enum ap_pwrseq_state state)
+{
+	switch(state) {
+	case AP_POWER_STATE_G3:
+		ap_power_ev_send_callbacks(AP_POWER_PRE_INIT);
+		break;
+
+	case AP_POWER_STATE_S3:
+#if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
+		if (ap_pwrseq_get_current_state(dev) == AP_POWER_STATE_S0) {
+			/* Notify power event before resume */
+			ap_power_ev_send_callbacks(AP_POWER_RESUME_INIT);
+			break;
+		}
+#endif
+
+	__fallthrough;
+	case AP_POWER_STATE_S5:
+	case AP_POWER_STATE_S4:
+		if (ap_pwrseq_get_current_state(dev) == AP_POWER_STATE_G3) {
+			ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
+		}
+		break;
+
+#if CONFIG_AP_PWRSEQ_S0IX
+	case AP_POWER_STATE_S0IX:
+		ap_power_ev_send_callbacks(AP_POWER_S0IX_RESUME
+#if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
+					   | AP_POWER_RESUME_INIT
+#endif
+		);
+		break;
+#endif
+
+	case AP_POWER_STATE_S0:
+		if (ap_pwrseq_get_current_state(dev) == AP_POWER_STATE_S3) {
+			ap_power_ev_send_callbacks(AP_POWER_SUSPEND);
+#if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
+			/* Notify power event after suspend */
+			ap_power_ev_send_callbacks(AP_POWER_SUSPEND_COMPLETE);
+#endif
+		}
+		break;
+
+	default:
+		break;
+	}
 }
 #endif // CONFIG_AP_PWRSEQ_DRIVER
