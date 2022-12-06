@@ -15,6 +15,7 @@
 #include "tcpm/tcpci.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
+#include "usb_common.h"
 
 #define DEFAULT_R_AC 20
 #define R_AC CONFIG_CHARGER_SENSE_RESISTOR_AC
@@ -135,11 +136,22 @@ int raa489000_init(int port)
 	}
 
 	if ((vbus_mv > 3900) &&
-	    charge_manager_get_active_charge_port() == CHARGE_PORT_NONE &&
-	    !pd_is_battery_capable()) {
-		chg.current = 500;
+	    charge_manager_get_active_charge_port() == CHARGE_PORT_NONE) {
+		enum tcpc_cc_voltage_status cc1, cc2;
+		enum tcpc_cc_polarity polarity;
+
+		rv = tcpm_get_cc(port, &cc1, &cc2);
+		if (rv) {
+			CPRINTS("c%d: failed to get cc value", port);
+			chg.current = 500;
+		} else {
+			polarity = get_snk_polarity(cc1, cc2);
+			chg.current = usb_get_typec_current_limit(polarity, cc1,
+								  cc2) &
+				      ~TYPEC_CURRENT_DTS_MASK;
+		}
 		chg.voltage = 5000;
-		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, port, &chg);
+		charge_manager_update_charge(CHARGE_SUPPLIER_TYPEC, port, &chg);
 		board_set_active_charge_port(port);
 	}
 
