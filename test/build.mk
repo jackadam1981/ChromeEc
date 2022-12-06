@@ -201,6 +201,7 @@ fpsensor_hw-y=fpsensor_hw.o
 fpsensor_state-y=fpsensor_state.o
 ftrapv-y=ftrapv.o
 gettimeofday-y=gettimeofday.o
+global_initialization-y=global_initialization.o
 gyro_cal-y=gyro_cal.o gyro_cal_init_for_test.o
 hooks-y=hooks.o
 host_command-y=host_command.o
