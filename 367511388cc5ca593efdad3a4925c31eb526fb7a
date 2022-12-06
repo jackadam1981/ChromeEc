@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55b7db02_95532c17",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-06T21:46:41Z",
+      "side": 1,
+      "message": "Use `ap_power_ev_add_callback()` instead of `DECLARE_HOOK`.  Example here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/chip/npcx/shi.c;l\u003d80",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 12
+      },
+      "revId": "367511388cc5ca593efdad3a4925c31eb526fb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
