@@ -289,6 +289,7 @@ void __hw_timer_enable_clock(int n, int enable)
 { /* Done in hardware init */
 }
 
-void usleep(unsigned us)
+int usleep(unsigned us)
 { /* Used only as a workaround */
+	return 0;
 }
