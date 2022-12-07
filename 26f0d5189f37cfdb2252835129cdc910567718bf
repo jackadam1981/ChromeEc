@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9448eb82_305c9adf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4479,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-07T22:30:46Z",
+      "side": 1,
+      "message": "Are you thinking we should be checking \"if (dpm_request)\" before restoring the request?  We could do that if we\u0027re concerned that we\u0027ll sometimes be using this function without the DPM request trigger.  Otherwise, the hard-coded alert DPM set seems pretty reasonable.",
+      "parentUuid": "069ce758_de5196fc",
+      "revId": "26f0d5189f37cfdb2252835129cdc910567718bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d71fc70_a92ba3bc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
