@@ -106,6 +106,23 @@
       "parentUuid": "e2712d4c_012f415e",
       "revId": "398d004516cc23ff9d78e40ad2ae26f4bc775b27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef06e985_87ff5e06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-12-07T18:39:05Z",
+      "side": 1,
+      "message": "Boris,\nectool compilation issue is fixed.. We are good to merge this, please review and mark +2 if everything looks good.",
+      "revId": "398d004516cc23ff9d78e40ad2ae26f4bc775b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
