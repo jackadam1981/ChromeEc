@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72bdac7a_e5c67ad5",
+        "filename": "common/fan.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-07T16:50:02Z",
+      "side": 1,
+      "message": "You\u0027re right that the first four arguments {fan_table, num_fan_levels, temp_fan_off, temp_fan_max} will never change at run time; and most boards have only one fan_index (and most implementations of fan_percent_to_rpm don\u0027t even reference fan_index). Really, only the temp_ratio argument might change at run time. The on_change function pointer was to support refactoring an implementation that I am no longer including in this change, so I could take it out, by the yagni principle.\n\nWhen you say to make the function internally reference the fan table, do you mean something like: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/jinlon/thermal.c;l\u003d154?q\u003dfan_table_to_rpm ?\n\nHow would I do that in a common implementation applied to different boards with different fan tables?  (I guess I could reference an extern pointer or getter function, but it\u0027s not clear that that would be strictly better than providing the fan_table as a function argument, which is also easier to test.  Happy to take advice here!)\n\nA similar function is used in boards with multiple sensors or multiple fans, such as osiris, jinlon, redrix (https://source.chromium.org/search?q\u003df:src%2Fplatform%2Fec%2Fboard%20fan_step%20-f:board.c\u0026sq\u003d).  In those implementations, for a given board, only a single table is ever used, and also just a single fan_table_index is used.  The previous_temperature variable becomes an array, to store the previous value for each sensor.  They adjust the fan when all the sensors are below the decreasing thresholds, or if any single sensor (sometimes a hard-coded pair of sensors) exceeds the corresponding increasing thresholds.  That logic works in normal circumstances but can fail if you have large temperature differences or changes in opposite directions.\n\nI will take your advice on using fan_index to calculate fan_stopped, and get rid of that extra static variable.",
+      "parentUuid": "e04ca22b_3542fd1f",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "552be44e86a5d00ecf5232641a4936c399c769ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "022aea24_9aecf24e",
         "filename": "test/fan.c",
         "patchSetId": 15
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-05T18:55:25Z",
       "side": 1,
       "message": "Can you add spaces to align the columns?",
+      "range": {
+        "startLine": 152,
+        "startChar": 35,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "552be44e86a5d00ecf5232641a4936c399c769ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ad0cfef_f792ead6",
+        "filename": "test/fan.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-07T16:50:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "022aea24_9aecf24e",
       "range": {
         "startLine": 152,
         "startChar": 35,
