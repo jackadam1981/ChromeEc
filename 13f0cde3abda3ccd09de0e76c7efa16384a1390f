@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb5bd96f_7fc10e9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-07T05:26:05Z",
+      "side": 1,
+      "message": "add TCPC interrupts as hibernate wake pins",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "13f0cde3abda3ccd09de0e76c7efa16384a1390f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "908e6dd5_8aa30079",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
