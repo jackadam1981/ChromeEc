@@ -10,12 +10,23 @@
 		cros,rtc = &mtc;
 	};
 
+	/* EC doesn't wakes from hibernate when Type-C charger is connected
+	 * on any of the port.
+	 * Its noticed that while bc_acok is not toggling we are seeing the
+	 * Type-C interrupts toggle. Configuring tcpc interrupt as hibernate
+	 * wake pin works and EC is coming out of hibernate state.
+	 * Adding this workaround until actual fix is added in the hardware.
+	 */
+
 	hibernate-wake-pins {
 		compatible = "cros-ec,hibernate-wake-pins";
 		wakeup-irqs = <
 			&int_ac_present
 			&int_lid_open
 			&int_power_button
+			&int_usb_c0_c1_tcpc
+			&int_usb_c2_tcpc
+			&int_usb_c3_tcpc
 		>;
 	};
 
