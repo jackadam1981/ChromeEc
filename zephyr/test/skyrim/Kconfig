@@ -2,7 +2,6 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# Baseboard tests
 config TEST_BOARD_BASEBOARD
 	bool "Enable baseboard-specific tests"
 	default n
@@ -57,6 +56,10 @@ config TEST_BOARD_USB_PD_POLICY
 	default n
 
 endif # TEST_BOARD_BASEBOARD
+
+config TEST_BOARD_PPC_CONFIG
+	bool "Enable PPC config tests"
+	default n
 
 config TEST_ENABLE_USB_PD_HOST_CMD
 	bool "Fake config to enable this feature"
