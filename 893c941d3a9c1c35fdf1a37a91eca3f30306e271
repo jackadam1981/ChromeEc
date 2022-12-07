@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "addeb6ef_ac4e317a",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2500,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-07T23:02:26Z",
+      "side": 1,
+      "message": "Do we care if prl_event_log_next changes during the execution of the console command? And should the function mark the oldest entry with a special character, just to make the human reading a bit easier?",
+      "revId": "893c941d3a9c1c35fdf1a37a91eca3f30306e271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b51ab9b8_ce76469c",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2505,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-07T23:02:26Z",
+      "side": 1,
+      "message": "Break?  Or could there be useful entries after the None?",
+      "revId": "893c941d3a9c1c35fdf1a37a91eca3f30306e271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a13745_511c7070",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2531,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-07T23:02:26Z",
+      "side": 1,
+      "message": "nit: is this an EC_SUCCESS technically?",
+      "revId": "893c941d3a9c1c35fdf1a37a91eca3f30306e271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
