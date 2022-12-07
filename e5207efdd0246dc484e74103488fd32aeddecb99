@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ecb7dc_bc544e54",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-07T23:44:50Z",
+      "side": 1,
+      "message": "This build error on host is addressed on follow-up CL:\n\n```\ncore/host/timer.c:20:6: error: conflicting types for ‘usleep’\n   20 | void usleep(unsigned us)\n      |      ^~~~~~\nIn file included from include/timer.h:23,\n                 from core/host/timer.c:11:\n/usr/include/unistd.h:480:12: note: previous declaration of ‘usleep’ was here\n  480 | extern int usleep (__useconds_t __useconds);\n      |            ^~~~~~\nmake[1]: *** [Makefile.rules:619: build/host/timer/RO/core/host/timer.o] Error 1\nmake[1]: *** Waiting for unfinished jobs....\nmake: *** [Makefile.rules:356: host-timer] Error 2\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "e5207efdd0246dc484e74103488fd32aeddecb99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2667a026_ac625b1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-07T23:44:50Z",
+      "side": 1,
+      "message": "I haven\u0027t tried this yet. Is it useful for this CL? Is it even expected to pass?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "e5207efdd0246dc484e74103488fd32aeddecb99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
