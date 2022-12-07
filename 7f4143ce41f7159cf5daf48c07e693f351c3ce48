@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27940ad1_f14cfe86",
+        "filename": "test/global_initialization.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-07T00:34:09Z",
+      "side": 1,
+      "message": "Thanks for adding the comment with additional context and info about this test.\n\nI am not sure I fully understand this last part. With \"call to call constructors\" it referring to [this](https://crrev.com/c/4081571/3/core/cortex-m/init.S#106)?",
+      "range": {
+        "startLine": 27,
+        "startChar": 52,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "7f4143ce41f7159cf5daf48c07e693f351c3ce48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
