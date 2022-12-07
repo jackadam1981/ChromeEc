@@ -16,6 +16,24 @@
       "message": "Since the only bit changing is the DP connection bit, I\u0027d suggest something like: \n\nint bb_retimer_set_dp_connection(struct usb_mux *me, bool enable)\n\nThat API could be used by both the HPD update and mux set interfaces.  The logic for how/when to change the bit should be in the board code.\n\nSo for example, the board\u0027s hpd update would have:\n``` \nbb_retimer_hpd_update()\n\nif (hpd_state \u0026 USB_PD_MUX_HPD_LVL)\n    bb_retimer_set_dp_connection(me, true)\nelse if (framework check)\n    bb_retimer_set_dp_connection(me, false)\n```\n\nThe board\u0027s mux set would have: \n```\nif (framework check) \n    bb_retimer_set_dp_connection(me, false)\n```\n\nYou could also choose to structure with a guard clause, such that both functions call `if(!framework) return` once you get to the card specific behaviors, ex. \n```\nbb_retimer_hpd_update()\n\nif (!framework)\n   return;\n   \nif (hpd_state \u0026 USB_PD_MUX_HPD_LVL)\n    bb_retimer_set_dp_connection(me, true)\nelse\n    bb_retimer_set_dp_connection(me, false)\n```",
       "revId": "890e75405afe2ad1dd731a68f6a8619e77fbd130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "478af96d_b2a257f9",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-12-07T12:57:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "497970a5_3a8fdd8d",
+      "revId": "890e75405afe2ad1dd731a68f6a8619e77fbd130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
