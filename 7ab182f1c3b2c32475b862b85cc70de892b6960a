@@ -69,6 +69,24 @@
       "message": "Is the error still caused by clang?",
       "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f133f834_fe3a8576",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-07T16:15:46Z",
+      "side": 1,
+      "message": "It seems like a different, but possibly clang-related, error: \n```\nclang-15: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[2]: *** [Makefile.rules:607: build/host/pchg_fuzz/pchg_fuzz.exe] Error 1\nmake[1]: *** [Makefile.rules:391: host-pchg_fuzz] Error 2\nmake[1]: *** Waiting for unfinished jobs....\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real: cannot find ifdef\nclang-15: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[2]: *** [Makefile.rules:607: build/host/host_command_fuzz/host_command_fuzz.exe] Error 1\nmake[1]: *** [Makefile.rules:391: host-host_command_fuzz] Error 2\n```\n\nI\u0027ll check into it",
+      "parentUuid": "204fd744_3e8f73d0",
+      "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
