@@ -174,19 +174,19 @@ void timer_cancel(task_id_t tskid)
  * probability of delay longer than 2*us (and possibly infinite delay)
  * increases.
  */
-void usleep(unsigned us)
+int usleep(unsigned us)
 {
 	uint32_t evt = 0;
 	uint32_t t0;
 
 	/* If a wait is 0, return immediately. */
 	if (!us)
-		return;
+		return 0;
 
 	if (IS_ENABLED(CONFIG_ZEPHYR)) {
 		while (us)
 			us = k_usleep(us);
-		return;
+		return 0;
 	}
 
 	t0 = __hw_clock_source_read();
@@ -194,14 +194,14 @@ void usleep(unsigned us)
 	/* If task scheduling has not started, just delay */
 	if (!task_start_called()) {
 		udelay(us);
-		return;
+		return 0;
 	}
 
 	/* If in interrupt context or interrupts are disabled, use udelay() */
 	if (!is_interrupt_enabled() || in_interrupt_context()) {
 		CPRINTS("Sleeping not allowed");
 		udelay(us);
-		return;
+		return 0;
 	}
 
 	do {
@@ -213,6 +213,7 @@ void usleep(unsigned us)
 	if (evt)
 		atomic_or(task_get_event_bitmap(task_get_current()),
 			  evt & ~TASK_EVENT_TIMER);
+	return 0;
 }
 
 #ifdef CONFIG_ZTEST
