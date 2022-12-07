@@ -51,6 +51,24 @@
       "parentUuid": "d921f50f_ef218386",
       "revId": "70c13ba84de9a0168eed5eef1c2d54e0f4e3749c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "137ca4c1_6080ed39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-07T15:58:15Z",
+      "side": 1,
+      "message": "The failure I see in the build logs is that lazor and gelarshie ran out of flash space.  However, they seem to have a lot of flash free when I compile this CL on ToT.  I\u0027ll check with the other EC engineers and see if this is a common issue we can get fixed.",
+      "parentUuid": "23cb14d8_ec3b5cb6",
+      "revId": "70c13ba84de9a0168eed5eef1c2d54e0f4e3749c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
