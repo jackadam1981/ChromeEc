@@ -34,6 +34,24 @@
       "parentUuid": "02f75c79_24cefb8a",
       "revId": "4c48fd119d32588c80a38a77774e457bd1f87680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29704411_eb2d28f8",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-12-07T17:06:58Z",
+      "side": 1,
+      "message": "See the code line I linked, use the RESCUE env variable.  But that can be done in a follow up if needed.",
+      "parentUuid": "5ac5020c_f3407d29",
+      "revId": "4c48fd119d32588c80a38a77774e457bd1f87680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
