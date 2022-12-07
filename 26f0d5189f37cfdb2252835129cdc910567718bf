@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "069ce758_de5196fc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4479,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-07T17:58:34Z",
+      "side": 1,
+      "message": "OK, I forgot how `pe_set_dpm_curr_request` worked. It looks like we basically assume that if we enter the state to handle the DPM request, it\u0027s as good as handled and clear the flag while setting `dpm_request`. But if we get a discard in that state, `pe_sender_response_msg_run` usually restores the DPM request flag from `dpm_request`, before the ready state clears `dpm_request`. That doesn\u0027t help in this case, because _Alert_ doesn\u0027t use _SenderResponseTimer_.\n\nI think what you need to do here is replicate the discard/DPM request logic in `pe_sender_response_msg_run` inside `pe_send_alert_run`.",
+      "parentUuid": "c3c5f698_13cfc3bc",
+      "revId": "26f0d5189f37cfdb2252835129cdc910567718bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d71fc70_a92ba3bc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3

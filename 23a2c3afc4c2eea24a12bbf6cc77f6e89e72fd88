@@ -157,6 +157,24 @@
       "parentUuid": "fcd65daf_8bd07831",
       "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a097da_55294df3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4482,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-07T17:58:34Z",
+      "side": 1,
+      "message": "I was wrong. You do need to set the DPM request flag again before leaving. See the other thread.",
+      "parentUuid": "d3523e43_d518a300",
+      "revId": "23a2c3afc4c2eea24a12bbf6cc77f6e89e72fd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
