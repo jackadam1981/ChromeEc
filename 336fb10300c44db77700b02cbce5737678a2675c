@@ -139,6 +139,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7467e324_23aef6f3",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-12-07T17:09:27Z",
+      "side": 1,
+      "message": "Just because the code is correct today doesn\u0027t mean there won\u0027t be errors in the future on new boards/platforms.\n\nWe should have error logging that indicates a failure, if it doesn\u0027t spam the logs during periods where errors are expected.",
+      "parentUuid": "d19ef8a2_5e6a68ae",
+      "revId": "336fb10300c44db77700b02cbce5737678a2675c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4648aa3_fb8e7ebb",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 6
