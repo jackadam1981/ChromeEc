@@ -22,6 +22,30 @@
       },
       "revId": "e840a928d8261c25a9fd203476af41aca509d7e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e05be03_cf16379d",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-12-07T00:23:08Z",
+      "side": 1,
+      "message": "See CL:4084082",
+      "parentUuid": "d7fec410_183dcc10",
+      "range": {
+        "startLine": 544,
+        "startChar": 20,
+        "endLine": 544,
+        "endChar": 33
+      },
+      "revId": "e840a928d8261c25a9fd203476af41aca509d7e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
