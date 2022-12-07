@@ -64,6 +64,9 @@ ZTEST(ap_pwrseq, test_ap_pwrseq_0)
 		      power_signal_emul_load(
 			      EMUL_POWER_SIGNAL_TEST_PLATFORM(tp_sys_g3_to_s0)),
 		      "Unable to load test platfform `tp_sys_g3_to_s0`");
+	k_msleep(200);
+	ap_pwrseq_post_event(ap_pwrseq_get_instance(),
+			     AP_PWRSEQ_EVENT_POWER_STARTUP);
 
 	k_msleep(500);
 
@@ -79,12 +82,9 @@ ZTEST(ap_pwrseq, test_ap_pwrseq_1)
 		      power_signal_emul_load(EMUL_POWER_SIGNAL_TEST_PLATFORM(
 			      tp_sys_s0_power_fail)),
 		      "Unable to load test platfform `tp_sys_s0_power_fail`");
+	ap_pwrseq_post_event(ap_pwrseq_get_instance(),
+			     AP_PWRSEQ_EVENT_POWER_STARTUP);
 
-	/*
-	 * Once emulated power signals are loaded, we need to wake AP power
-	 * Sequence thread up to start executing new set of power signals
-	 */
-	ap_pwrseq_wake();
 	k_msleep(500);
 	zassert_equal(1, power_shutdown_count,
 		      "AP_POWER_SHUTDOWN event not generated");
@@ -104,9 +104,9 @@ ZTEST(ap_pwrseq, test_ap_pwrseq_2)
 
 	ap_power_exit_hardoff();
 	k_msleep(2000);
-	zassert_equal(3, power_shutdown_count,
+	zassert_equal(2, power_shutdown_count,
 		      "AP_POWER_SHUTDOWN event not generated");
-	zassert_equal(3, power_shutdown_complete_count,
+	zassert_equal(2, power_shutdown_complete_count,
 		      "AP_POWER_SHUTDOWN_COMPLETE event not generated");
 	zassert_equal(1, power_suspend_count,
 		      "AP_POWER_SUSPEND event generated");
