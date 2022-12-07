@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c157553_6c40a505",
+        "filename": "test/timer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-07T19:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7c8f0e0_1d3bf203",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "b10bb8ed54854a8eb141e3a72619dba8fa06a805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b228a6f_8c36fff5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-07T00:28:51Z",
       "side": 1,
       "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "b10bb8ed54854a8eb141e3a72619dba8fa06a805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06adc05c_55aa2efa",
+        "filename": "test/timer.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-07T19:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b228a6f_8c36fff5",
       "range": {
         "startLine": 1,
         "startChar": 13,
