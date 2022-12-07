@@ -16,4 +16,6 @@ typedef long clock_t;
 typedef __SIZE_TYPE__ ssize_t;
 #undef unsigned
 
+typedef unsigned int __useconds_t;
+
 #endif /* __CROS_EC_SYS_TYPES_H__ */
