@@ -23,7 +23,7 @@ test_static int test_usleep(void)
 	constexpr int expected_duration = 12345;
 
 	timestamp_t start_time = get_time();
-	usleep(expected_duration);
+	TEST_EQ(usleep(expected_duration), 0, "%d");
 	int sleep_duration = time_since32(start_time);
 
 	TEST_NEAR(expected_duration, sleep_duration, 20, "%d");
