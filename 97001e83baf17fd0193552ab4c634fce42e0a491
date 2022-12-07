@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a44d1879_2c915ba3",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-07T02:05:18Z",
+      "side": 1,
+      "message": "I think they should be retained, since that\u0027s expected to be built into most images and this is intended to be turned on only when needed.",
+      "parentUuid": "92374dae_ddaea3a1",
+      "range": {
+        "startLine": 446,
+        "startChar": 4,
+        "endLine": 446,
+        "endChar": 5
+      },
+      "revId": "97001e83baf17fd0193552ab4c634fce42e0a491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "372ef573_da166d12",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16b77538_43144789",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4724,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-07T02:05:18Z",
+      "side": 1,
+      "message": "I think _CAPACITY is clearer yet.",
+      "parentUuid": "372ef573_da166d12",
+      "revId": "97001e83baf17fd0193552ab4c634fce42e0a491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65b6d3ee_675ab790",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-12-06T06:16:16Z",
       "side": 1,
       "message": "Move the Nissa specific change to another CL.",
+      "revId": "97001e83baf17fd0193552ab4c634fce42e0a491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a7614f4_612655b7",
+        "filename": "zephyr/program/nissa/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-07T02:05:18Z",
+      "side": 1,
+      "message": "Didn\u0027t even mean to upload that, I\u0027m just using it to debug FRS on Nereid.",
+      "parentUuid": "65b6d3ee_675ab790",
       "revId": "97001e83baf17fd0193552ab4c634fce42e0a491",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
