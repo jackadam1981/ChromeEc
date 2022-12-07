@@ -473,7 +473,7 @@ __stdlib_compat int strncmp(const char *s1, const char *s2, size_t n)
 }
 #endif /* !CONFIG_ZEPHYR */
 
-unsigned int sleep(unsigned sec)
+unsigned int sleep(unsigned int sec)
 {
 	usleep(sec * SECOND);
 	return 0;

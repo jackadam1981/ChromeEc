@@ -21,7 +21,7 @@
  *
  * @param us		Number of microseconds to sleep.
  */
-int usleep(unsigned us);
+int usleep(unsigned int us);
 
 /**
  * Sleep for seconds
@@ -30,7 +30,7 @@ int usleep(unsigned us);
  *
  * @param sec		Number of seconds to sleep.
  */
-unsigned int sleep(unsigned sec);
+unsigned int sleep(unsigned int sec);
 #endif /* BOARD_HOST */
 
 #endif /* __CROS_EC_UNISTD_H__ */
