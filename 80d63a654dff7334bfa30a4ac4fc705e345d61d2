@@ -46,6 +46,30 @@
       },
       "revId": "80d63a654dff7334bfa30a4ac4fc705e345d61d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "531ee5e8_6731dbb5",
+        "filename": "zephyr/boards/riscv/it8xxx2/it81202cx.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-07T19:04:02Z",
+      "side": 1,
+      "message": "This looks like a bigger cleanup.  The various .dtsi files found under zephyr/include/cros should be moved over to zephyr/dts/ to follow the convention of Zephyr upstream.\n\nSo for now, can you cleanup the #includes of the upstream dtsi files?  For instance `#include \u003cite/it8xxx2.dtsi\u003e` is done in two locations:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/include/cros/ite/it8xxx2.dtsi;l\u003d7\n\nand\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/boards/riscv/it8xxx2/it8xxx2.dts;l\u003d11\n\nThe upstream includes should only be in the 2nd file found under zephyr/boards.",
+      "parentUuid": "bc58f5a2_172d6367",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 32
+      },
+      "revId": "80d63a654dff7334bfa30a4ac4fc705e345d61d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
