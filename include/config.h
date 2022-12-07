@@ -4730,6 +4730,17 @@
  */
 #define CONFIG_USB_PD_PRL_EVENT_LOG_CAPACITY 128
 
+/*
+ * Record Policy Engine (PE) state transitions in a ring buffer, readable via
+ * the `pelog` console command.
+ */
+#undef CONFIG_USB_PD_PE_EVENT_LOG
+/*
+ * Number of events that can be stored in the PE log (after this many, the
+ * oldest entries will be replaced with new ones).
+ */
+#define CONFIG_USB_PD_PE_EVENT_LOG_CAPACITY 128
+
 /* The size in bytes of the FIFO used for event logging */
 #define CONFIG_EVENT_LOG_SIZE 512
 

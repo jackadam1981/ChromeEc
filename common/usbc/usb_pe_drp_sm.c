@@ -1775,8 +1775,12 @@ static enum usb_pe_state get_last_state_pe(const int port)
 	return pe[port].ctx.previous - &pe_states[0];
 }
 
+static void pe_event_log_append(int port, enum usb_pe_state state);
+
 static void print_current_state(const int port)
 {
+	pe_event_log_append(port, get_state_pe(port));
+
 	const char *mode = "";
 
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) && pe_in_frs_mode(port))
@@ -8280,6 +8284,68 @@ static __const_data const struct usb_state pe_states[] = {
 #endif /* CONFIG_USB_PD_DATA_RESET_MSG */
 #endif /* CONFIG_USB_PD_REV30 */
 };
+
+#ifdef CONFIG_USB_PD_PE_EVENT_LOG
+struct pe_event_log_entry {
+	timestamp_t timestamp;
+	uint32_t flags;
+	uint8_t port;
+	enum usb_pe_state state;
+};
+BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT <= UINT8_MAX);
+
+static struct pe_event_log_entry
+	pe_event_log_buffer[CONFIG_USB_PD_PE_EVENT_LOG_CAPACITY];
+static atomic_t pe_event_log_next;
+
+static void pe_event_log_append(int port, enum usb_pe_state state)
+{
+	struct pe_event_log_entry entry = {
+		.timestamp = get_time(),
+		.flags = pe[port].flags_a[0],
+		.port = port,
+		.state = state,
+	};
+
+	pe_event_log_buffer[atomic_add(&pe_event_log_next, 1) %
+			    ARRAY_SIZE(pe_event_log_buffer)] = entry;
+}
+
+static int command_pelog(int argc, const char **argv)
+{
+	if (argc == 2 && strcmp("clear", argv[1]) == 0) {
+		/* Clear buffer contents */
+		for (int i = 0; i < ARRAY_SIZE(pe_event_log_buffer); i++) {
+			memset(pe_event_log_buffer, 0,
+			       sizeof(pe_event_log_buffer));
+		}
+		return EC_SUCCESS;
+	} else if (argc != 1) {
+		return EC_ERROR_PARAM1;
+	}
+
+	for (int i = 0; i < ARRAY_SIZE(pe_event_log_buffer); i++) {
+		const struct pe_event_log_entry *entry =
+			&pe_event_log_buffer[i];
+
+		if (entry->timestamp.val == 0) {
+			/* Ignore uninitialized entries */
+			continue;
+		}
+
+		CPRINTF("%lld C%d %" PRIx32 " %s\n", entry->timestamp.val,
+			entry->port, entry->flags,
+			pe_state_names[entry->state]);
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(pelog, command_pelog, "[clear]",
+			"Dump USB-PD PE state log");
+#else
+static void pe_event_log_append(int port, enum usb_pe_state state)
+{
+}
+#endif
 
 #ifdef TEST_BUILD
 /* TODO(b/173791979): Unit tests shouldn't need to access internal states */
