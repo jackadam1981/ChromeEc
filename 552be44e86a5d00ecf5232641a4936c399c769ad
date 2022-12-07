@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66257c86_96a24718",
+        "filename": "common/fan.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-07T18:04:38Z",
+      "side": 1,
+      "message": "I was able to remove the `static int fan_table_index` as well.  Let me know if you think we need to work on this some more in this changeset?",
+      "parentUuid": "72bdac7a_e5c67ad5",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "552be44e86a5d00ecf5232641a4936c399c769ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "022aea24_9aecf24e",
