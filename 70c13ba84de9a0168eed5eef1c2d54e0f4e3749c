@@ -16,6 +16,23 @@
       "message": "Add tracking test coverage tracker: b/261517939.",
       "revId": "70c13ba84de9a0168eed5eef1c2d54e0f4e3749c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d921f50f_ef218386",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-12-07T09:30:17Z",
+      "side": 1,
+      "message": "Hi Diana,\nWe run \"make buildall\" and found that the nocturne_fp board will fail to build.\n\n  CXX     RW/common/fpsensor/fpsensor.o\nIn file included from common/fpsensor/fpsensor.cc:6:\ninclude/compile_time_macros.h:12:10: fatal error: \u0027type_traits\u0027 file not found\n#include \u003ctype_traits\u003e\n         ^~~~~~~~~~~~~\n1 error generated.\nmake: *** [Makefile.rules:631: build/nocturne_fp/RW/common/fpsensor/fpsensor.o] Error 1",
+      "revId": "70c13ba84de9a0168eed5eef1c2d54e0f4e3749c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
