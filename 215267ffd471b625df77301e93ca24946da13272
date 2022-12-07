@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30dda036_da7b1d1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-07T18:53:53Z",
+      "side": 1,
+      "message": "I haven\u0027t tested it explicitly on dartmonkey, but I understand the root cause of the original issue was in the toolchain. This is common between dartmonkey and bloonchipper so I would expect the two boards to behave in the same way. I\u0027ll give it a try when all the CLs from Tom have landed.",
+      "parentUuid": "6fba1048_5ce07769",
+      "revId": "215267ffd471b625df77301e93ca24946da13272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d06eeebc_643b08c3",
         "filename": "test/std_vector.cc",
         "patchSetId": 1
@@ -94,6 +112,54 @@
         "startChar": 21,
         "endLine": 45,
         "endChar": 31
+      },
+      "revId": "215267ffd471b625df77301e93ca24946da13272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0db055d5_15afc2d9",
+        "filename": "test/std_vector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-07T18:53:53Z",
+      "side": 1,
+      "message": "Do you mean if I declare another variable as `constexpr` before this one? Should I try with any specific type?\n\nLet me know if you have a code snippet I can refer to.",
+      "parentUuid": "cdb1985e_c021ddc5",
+      "range": {
+        "startLine": 45,
+        "startChar": 21,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "215267ffd471b625df77301e93ca24946da13272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d1dc3f5_1e472b8d",
+        "filename": "test/std_vector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-07T18:53:53Z",
+      "side": 1,
+      "message": "I haven\u0027t tested with other types and don\u0027t expect differences, but I\u0027ll run a quick test just to be sure and post the results.",
+      "parentUuid": "d06eeebc_643b08c3",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 19
       },
       "revId": "215267ffd471b625df77301e93ca24946da13272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
