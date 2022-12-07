@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d52f5ec9_15811d8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-07T01:00:14Z",
+      "side": 1,
+      "message": "Usually when I find one of these types of failures, there are many more. Can you create another CL to clean up the remaining instances? Something like this should make it easier, but you\u0027ll have to check for some of the false positives:\n\n```\ngit grep --name-only -P  \u0027unsigned (?!int|short|long|char)\u0027 | xargs perl -i -pe \u0027s/unsigned (?!int|short|long|char)/unsigned int /g\u0027\n```",
+      "revId": "6162c8efd06b5a592250c654115384f136020661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
