@@ -16,6 +16,24 @@
       "message": "Do we not care about SUPPORTED_RESETS check anymore?",
       "revId": "4e5ddf101b08f485a932b93fd0afe6b74505e5e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d48c6a0c_746b37ec",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-12-07T05:22:17Z",
+      "side": 0,
+      "message": "It\u0027s enforced by the reset-type arg definition. choices is set to SUPPORTED_RESETS, so only SUPPORTED_RESETS can be used.",
+      "parentUuid": "7c2eec17_e90d4dfb",
+      "revId": "4e5ddf101b08f485a932b93fd0afe6b74505e5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
