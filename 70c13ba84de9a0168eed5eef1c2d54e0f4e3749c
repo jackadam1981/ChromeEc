@@ -69,6 +69,24 @@
       "parentUuid": "23cb14d8_ec3b5cb6",
       "revId": "70c13ba84de9a0168eed5eef1c2d54e0f4e3749c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd50847c_1c70be26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-07T22:18:09Z",
+      "side": 1,
+      "message": "I put in a CL to remove these boards from clang for now.  You can watch its progress here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4086967",
+      "parentUuid": "137ca4c1_6080ed39",
+      "revId": "70c13ba84de9a0168eed5eef1c2d54e0f4e3749c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
