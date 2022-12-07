@@ -17,6 +17,8 @@
 #include "util.h"
 #include "watchdog.h"
 
+#include <sys/types.h>
+
 #ifdef CONFIG_ZEPHYR
 #include <zephyr/kernel.h> /* For k_usleep() */
 #else
@@ -174,7 +176,7 @@ void timer_cancel(task_id_t tskid)
  * probability of delay longer than 2*us (and possibly infinite delay)
  * increases.
  */
-int usleep(unsigned us)
+int usleep(__useconds_t us)
 {
 	uint32_t evt = 0;
 	uint32_t t0;
