@@ -16,6 +16,24 @@
       "message": "The test on bloonchipper is currently failing.\n\nThis is probably related to some known issues around initialization of global variables.",
       "revId": "215267ffd471b625df77301e93ca24946da13272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5884d7d_244d270a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-07T00:23:29Z",
+      "side": 1,
+      "message": "It should pass if tested with https://crrev.com/c/4081571 (note that CL now has a `Cq-Depend`).",
+      "parentUuid": "c73cce00_988891e5",
+      "revId": "215267ffd471b625df77301e93ca24946da13272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
