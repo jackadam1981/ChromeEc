@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f75c79_24cefb8a",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-12-07T01:06:54Z",
+      "side": 1,
+      "message": "May want to introduce a --use-brescue\u003d[path] option so that both the cr50 rescue and brescue paths can be specified if needed. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/cr50/util/brescue.sh;l\u003d27",
+      "revId": "4c48fd119d32588c80a38a77774e457bd1f87680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
