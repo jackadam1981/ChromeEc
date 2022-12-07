@@ -163,6 +163,30 @@
       },
       "revId": "215267ffd471b625df77301e93ca24946da13272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31928aa6_373f63dc",
+        "filename": "test/std_vector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-12-07T19:07:12Z",
+      "side": 1,
+      "message": "this is what I declared in my test\nconstexpr uint8_t test1_image_block[17][17] \u003d {...",
+      "parentUuid": "0db055d5_15afc2d9",
+      "range": {
+        "startLine": 45,
+        "startChar": 21,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "215267ffd471b625df77301e93ca24946da13272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
