@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed275d1e_7bd29dba",
+        "filename": "zephyr/program/skyrim/prj.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-07T22:14:33Z",
+      "side": 1,
+      "message": "It occurs to me we have boards setting this to \"n\" (ex. winterhold).  We might need to limit this to the skyrim board and anyone else using this charger chip. \n\nWe might be able to do that through Kconfig?  The other way could be to add a charger driver function for a general prochot_debug and it would run a NULL check in case the driver doesn\u0027t define a prochot_debug.\n\nActually, now that I\u0027ve typed that one out, what do you think?  A general Kconfig for CHARGER_PROCHOT_DEBUG or such, and a driver field that an API can dereference if present?",
+      "revId": "8936dc50bf7fb4b34ffbf7dfd7e3a5a6d595c77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
