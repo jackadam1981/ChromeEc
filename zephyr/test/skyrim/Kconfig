@@ -61,6 +61,10 @@ config TEST_BOARD_PPC_CONFIG
 	bool "Enable PPC config tests"
 	default n
 
+config TEST_BOARD_USB_MUX_CONFIG
+	bool "Enable USB mux config tests"
+	default n
+
 config TEST_ENABLE_USB_PD_HOST_CMD
 	bool "Fake config to enable this feature"
 	default n
