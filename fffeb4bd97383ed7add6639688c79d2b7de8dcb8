@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d82ef45_87248aa1",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-12-07T16:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "454269d9_718c9fed",
+      "revId": "fffeb4bd97383ed7add6639688c79d2b7de8dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a2e277b_9f012b10",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-29T23:02:55Z",
       "side": 1,
       "message": "Unlock?",
+      "revId": "fffeb4bd97383ed7add6639688c79d2b7de8dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28370141_8a97d597",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-12-07T16:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a2e277b_9f012b10",
       "revId": "fffeb4bd97383ed7add6639688c79d2b7de8dcb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
