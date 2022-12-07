@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba6645e_d75d7424",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-12-07T15:54:31Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "8f10da6e_6a80c81a",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "dfe544766487a05ae1327e9759437e15fcb0e22c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11184d8e_7a8f6de5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-05T21:07:55Z",
       "side": 1,
       "message": "pwm_fan_second already exists and updates EC_MEMMAP_FAN (0x10). Is it not suitable?",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 61
+      },
+      "revId": "dfe544766487a05ae1327e9759437e15fcb0e22c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b8106d_bcb57ef0",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-12-07T15:54:31Z",
+      "side": 1,
+      "message": "We are seeing this issue https://partnerissuetracker.corp.google.com/issues/261701530",
+      "parentUuid": "11184d8e_7a8f6de5",
       "range": {
         "startLine": 475,
         "startChar": 0,
