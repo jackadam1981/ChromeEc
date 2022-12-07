@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c8f0e0_1d3bf203",
+        "filename": "test/timer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-07T00:28:51Z",
+      "side": 1,
+      "message": "nit: Could you put it in a doxygen comment? (It will need its own comment to use the special doxygen format `/**`\n\ne.g.,\n\n```\n/** @brief Test functions defined in timer.h, like usleep().\n *\n * This test only validates the functionality of code in timer.h and is not\n * expected to accurately measure/check the timing.\n */\n```",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "b10bb8ed54854a8eb141e3a72619dba8fa06a805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b228a6f_8c36fff5",
+        "filename": "test/timer.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-07T00:28:51Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "b10bb8ed54854a8eb141e3a72619dba8fa06a805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
