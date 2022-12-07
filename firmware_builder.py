@@ -13,6 +13,7 @@ import argparse
 import multiprocessing
 import os
 import pathlib
+import re
 import subprocess
 import sys
 
@@ -30,6 +31,21 @@ DEFAULT_BUNDLE_METADATA_FILE = "/tmp/artifact_bundle_metadata"
 BOARDS_UNIT_TEST = [
     "bloonchipper",
     "dartmonkey",
+]
+
+# Interesting regions to show in gerrit
+BINARY_SIZE_REGIONS = ["RW_FLASH", "RW_IRAM"]
+
+# The most recently edited boards that should show binary size changes in gerrit
+BINARY_SIZE_BOARDS = [
+    "dibbi",
+    "gaelin",
+    "gladios",
+    "lisbon",
+    "marasov",
+    "moli",
+    "prism",
+    "shotzo",
 ]
 
 
@@ -91,12 +107,22 @@ def build(opts):
     print(f"# Running {' '.join(cmd)}.")
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
+    baseboard_re = re.compile(r"^BASEBOARD\s*:=\s*(\S+)\s*$")
+
     ec_dir = os.path.dirname(__file__)
     build_dir = os.path.join(ec_dir, "build")
     for build_target in sorted(os.listdir(build_dir)):
         metric = metric_list.value.add()
         metric.target_name = build_target
-        metric.platform_name = "ec"
+        metric.platform_name = build_target
+        board_make = pathlib.Path(ec_dir) / "board" / build_target / "build.mk"
+        if board_make.exists():
+            with open(board_make, "r") as board_make_file:
+                for line in board_make_file.readlines():
+                    match = baseboard_re.match(line)
+                    if match:
+                        metric.platform_name = match[1]
+
         for variant in ["RO", "RW"]:
             memsize_file = (
                 pathlib.Path(build_dir)
@@ -105,7 +131,12 @@ def build(opts):
                 / f"ec.{variant}.elf.memsize.txt"
             )
             if memsize_file.exists():
-                parse_memsize(memsize_file, metric, variant)
+                parse_memsize(
+                    memsize_file,
+                    metric,
+                    variant,
+                    build_target in BINARY_SIZE_BOARDS,
+                )
     with open(opts.metrics, "w") as file:
         file.write(json_format.MessageToJson(metric_list))
 
@@ -124,7 +155,7 @@ UNITS = {
 }
 
 
-def parse_memsize(filename, metric, variant):
+def parse_memsize(filename, metric, variant, track_on_gerrit):
     """Parse the output of the build to extract the image size."""
     with open(filename, "r") as infile:
         # Skip header line
@@ -135,7 +166,10 @@ def parse_memsize(filename, metric, variant):
             fw_section.region = variant + "_" + parts[0][:-1]
             fw_section.used = int(parts[1]) * UNITS[parts[2]]
             fw_section.total = int(parts[3]) * UNITS[parts[4]]
-            fw_section.track_on_gerrit = False
+            if track_on_gerrit and fw_section.region in BINARY_SIZE_REGIONS:
+                fw_section.track_on_gerrit = True
+            else:
+                fw_section.track_on_gerrit = False
 
 
 def bundle(opts):
