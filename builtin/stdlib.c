@@ -12,6 +12,8 @@
 
 #include <stdio.h>
 
+#include <unistd.h>
+
 /*
  * The following macros are defined in stdlib.h in the C standard library, which
  * conflict with the definitions in this file.
@@ -22,6 +24,9 @@
 #undef isupper
 #undef isprint
 #undef tolower
+
+/* Time units in microseconds */
+#define SECOND 1000000
 
 /* Context for snprintf() */
 struct snprintf_context {
@@ -460,6 +465,12 @@ __stdlib_compat int strncmp(const char *s1, const char *s2, size_t n)
 		s1++;
 		s2++;
 	}
+	return 0;
+}
+
+unsigned int sleep(unsigned sec)
+{
+	usleep(sec * SECOND);
 	return 0;
 }
 #endif /* !CONFIG_ZEPHYR */
