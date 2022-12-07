@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f5cd09_7162b583",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-07T19:15:20Z",
+      "side": 1,
+      "message": "The logic for this function should live in the banshee board code.  The idea of the API is that it can be used from the board code to change state on the BB retimer through the driver.\n\nSo the driver\u0027s role here is to correctly serialize access to this register.  You can think of it as the thing that has the responsibility to know all the registers and bits and how they interact with other APIs that access those registers and bits. \n\nThe board\u0027s role here is to run the logic it needs for its special case.  You can think of it as the thing that knows there\u0027s a power issue and is running the higher-level logic to fix it. \n\nDoes that make sense?",
+      "revId": "76e7baba5c3f9469180d9bc7728b7e1542f7cd90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bedd70d_37a1f557",
+        "filename": "include/driver/retimer/bb_retimer_public.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-07T19:15:20Z",
+      "side": 1,
+      "message": "Read and write can to back to being static to the BB retimer driver code",
+      "revId": "76e7baba5c3f9469180d9bc7728b7e1542f7cd90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
