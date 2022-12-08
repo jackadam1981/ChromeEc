@@ -16,6 +16,24 @@
       "message": "I wonder if it would be better to move the tablet relevant config items and move them into a common include (e.g zephyr/program/nissa/npcx_tablet.dtsi)\nBut this can be a later refactor that perhaps I should do.",
       "revId": "05cef34831a5400fd8d386884f03361b97371f95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca5b004_24b8d8a6",
+        "filename": "zephyr/program/nissa/xivur/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-12-08T02:16:25Z",
+      "side": 1,
+      "message": "I think that a great idea, it can reduce unnecessary error.",
+      "parentUuid": "24051142_42031411",
+      "revId": "05cef34831a5400fd8d386884f03361b97371f95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
