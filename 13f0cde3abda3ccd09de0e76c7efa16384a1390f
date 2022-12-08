@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5412e2bc_d51fb355",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-12-08T01:26:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb5bd96f_7fc10e9e",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "13f0cde3abda3ccd09de0e76c7efa16384a1390f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "908e6dd5_8aa30079",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-07T05:15:44Z",
       "side": 1,
       "message": "Type-C everywhere",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "13f0cde3abda3ccd09de0e76c7efa16384a1390f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "592fea6e_e150022b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-12-08T01:26:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "908e6dd5_8aa30079",
       "range": {
         "startLine": 9,
         "startChar": 37,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "661172ea_9e149d83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-12-08T01:26:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "096d05f4_686e916e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "13f0cde3abda3ccd09de0e76c7efa16384a1390f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7133799b_caf79ea8",
@@ -83,6 +155,24 @@
       "writtenOn": "2022-12-07T05:15:44Z",
       "side": 1,
       "message": "nit: add comments from commit msg",
+      "revId": "13f0cde3abda3ccd09de0e76c7efa16384a1390f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff1f7ca_38c91f33",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-12-08T01:26:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7133799b_caf79ea8",
       "revId": "13f0cde3abda3ccd09de0e76c7efa16384a1390f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
