@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd2c60ca_ee896ff3",
+        "filename": "include/spi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-08T02:02:33Z",
+      "side": 0,
+      "message": "This looks referenced by other modules.",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "2fc6c41fccc215b5b91423b6de3361d0dcfa2620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
