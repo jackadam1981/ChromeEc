@@ -34,6 +34,24 @@
       "parentUuid": "4f96fe39_f492739d",
       "revId": "af5954fbab7d51b51c10b49c7bde9e535a773cb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "045d7e62_5913fc5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-12-08T01:49:49Z",
+      "side": 1,
+      "message": "Because the coverage was 50% (fail, shall \u003e80%) when I used #if, I changed it to IS_ENABLED() macro, but now all ARM based board build fail. So shall I \n1) use #if and separate it to two CLs (one for RISCV changes, one for !RISCV changes)? not sure if this work for coverage \n2) or use IS_ENABLED() and add dummy csr_read() function?",
+      "parentUuid": "c43fadcb_fad865cb",
+      "revId": "af5954fbab7d51b51c10b49c7bde9e535a773cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
