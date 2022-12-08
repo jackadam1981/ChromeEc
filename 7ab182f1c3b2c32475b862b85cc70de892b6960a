@@ -104,6 +104,24 @@
       "message": "It looks like #ifdefs don\u0027t work in this file.  You can recreate the build failure by running `make -j host-usb_tcpm_v2_rev30_fuzz` locally.\n\n```\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real:core/host/host_exe.lds:88: ignoring invalid character `#\u0027 in script\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real:core/host/host_exe.lds:92: ignoring invalid character `#\u0027 in script\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real: cannot find ifdef\nclang-15: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[1]: *** [Makefile.rules:607: build/host/usb_tcpm_v2_rev30_fuzz/usb_tcpm_v2_rev30_fuzz.exe] Error 1\n```\n\nI would guess you could unconditionally include the hook since we don\u0027t worry about flash space on the host board build",
       "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67489358_4f19876c",
+        "filename": "core/host/host_exe.lds",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-12-08T09:18:10Z",
+      "side": 1,
+      "message": "The host_exe.lds file doesn\u0027t allow the #ifdef clause. Refer to the other CL remove it. [url1](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2321875),[url2](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/897067)",
+      "parentUuid": "53c3286a_f83bb905",
+      "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
