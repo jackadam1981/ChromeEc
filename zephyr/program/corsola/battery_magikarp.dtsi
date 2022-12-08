@@ -4,9 +4,4 @@
  */
 
 / {
-	batteries {
-		default_battery: smp_c31n1915 {
-			compatible = "smp,c31n1915", "battery-smart";
-		};
-	};
 };
