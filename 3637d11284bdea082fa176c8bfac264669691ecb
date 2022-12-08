@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d499686_e7bc8640",
+        "filename": "common/fan.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-08T01:46:53Z",
+      "side": 1,
+      "message": "The thermal task computes temp_ratio for each sensor and passes the maximum temp_ratio to fan_percent_to_rpm. Each sensor can have its temp_fan_off\u0026max. It doesn\u0027t make sense to revert this max value using one particular pair of temp_fan_off\u0026max.\n\nSo, I think this function better not take these. We probably should use temp_ratio to describe fan_table using TEMP_TO_RATIO macros as suggested in crrev/c/4060608.",
+      "range": {
+        "startLine": 77,
+        "startChar": 25,
+        "endLine": 78,
+        "endChar": 21
+      },
+      "revId": "3637d11284bdea082fa176c8bfac264669691ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aead9a08_973178db",
+        "filename": "common/fan.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-08T01:46:53Z",
+      "side": 1,
+      "message": "So, this should be previous_temp_ratio.",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "3637d11284bdea082fa176c8bfac264669691ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
