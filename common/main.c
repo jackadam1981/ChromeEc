@@ -224,7 +224,7 @@ test_mockable __keep int main(void)
 	keyboard_scan_init();
 #endif /* HAS_TASK_KEYSCAN */
 
-#if defined(CONFIG_DEDICATED_RECOVERY_BUTTON) || defined(CONFIG_VOLUME_BUTTONS)
+#if defined(CONFIG_DEDICATED_RECOVERY_BUTTON) || defined(CONFIG_VOLUME_BUTTONS) || defined(CONFIG_BRIGHTNESS_BUTTONS)
 	button_init();
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON | CONFIG_VOLUME_BUTTONS) */
 
