@@ -4,6 +4,8 @@
  */
 
 #include "ec_commands.h"
+#include "hooks.h"
+#include "keyboard_backlight.h"
 
 static const struct ec_response_keybd_config pujjo_kb = {
 	.num_top_row_keys = 10,
@@ -23,7 +25,14 @@ static const struct ec_response_keybd_config pujjo_kb = {
 };
 
 __override const struct ec_response_keybd_config *
+
 board_vivaldi_keybd_config(void)
 {
 	return &pujjo_kb;
 }
+
+static void reset_keyboard_backlight(void)
+{
+	kblight_set(0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESET, reset_keyboard_backlight, HOOK_PRIO_DEFAULT);
