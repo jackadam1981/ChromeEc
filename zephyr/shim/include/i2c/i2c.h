@@ -134,7 +134,7 @@
  *
  *     &i2c2_0 {
  *         bc12_port0: pi3usb9201@5f {
- *             compatible = "pericom,pi3usb9201";
+ *             compatible = "cros,pi3usb9201";
  *             status = "okay";
  *             reg = <0x5f>;
  *             irq = <&int_usb_c0_bc12>;

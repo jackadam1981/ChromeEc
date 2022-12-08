@@ -13,7 +13,7 @@
 #include <zephyr/drivers/i2c_emul.h>
 #include <zephyr/logging/log.h>
 
-#define DT_DRV_COMPAT pericom_pi3usb9201
+#define DT_DRV_COMPAT cros_pi3usb9201
 
 LOG_MODULE_REGISTER(emul_pi3usb9201, LOG_LEVEL_DBG);
 

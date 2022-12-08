@@ -842,7 +842,7 @@
 		reg = <0x500 4>;
 
 		pi3usb9201_emul0: pi3usb9201@5f {
-			compatible = "pericom,pi3usb9201";
+			compatible = "cros,pi3usb9201";
 			reg = <0x5f>;
 			irq = <&int_usb_c0_bc12>;
 		};
@@ -870,7 +870,7 @@
 		reg = <0x600 4>;
 
 		pi3usb9201_emul1: pi3usb9201@5d {
-			compatible = "pericom,pi3usb9201";
+			compatible = "cros,pi3usb9201";
 			reg = <0x5d>;
 			irq = <&int_usb_c1_bc12>;
 		};

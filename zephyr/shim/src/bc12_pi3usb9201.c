@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#define DT_DRV_COMPAT pericom_pi3usb9201
+#define DT_DRV_COMPAT PI3USB9201_COMPAT
 
 #include "bc12/pi3usb9201_public.h"
 #include "gpio/gpio_int.h"
@@ -12,6 +12,7 @@
 #include "task.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
+#include "usbc/bc12_pi3usb9201.h"
 #include "usbc/utils.h"
 
 #include <zephyr/devicetree.h>
@@ -22,8 +23,8 @@
 		.i2c_addr_flags = DT_REG_ADDR(bc12_id), \
 	},
 
-#define PI3SUSB9201_CHECK(usbc_id, bc12_id)                          \
-	COND_CODE_1(DT_NODE_HAS_COMPAT(bc12_id, pericom_pi3usb9201), \
+#define PI3SUSB9201_CHECK(usbc_id, bc12_id)                     \
+	COND_CODE_1(DT_NODE_HAS_COMPAT(bc12_id, DT_DRV_COMPAT), \
 		    (USBC_PORT_BC12(usbc_id, bc12_id)), ())
 
 #define BC12_CHIP(usbc_id)                                                   \

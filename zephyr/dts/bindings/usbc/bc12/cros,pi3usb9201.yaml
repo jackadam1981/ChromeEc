@@ -1,0 +1,15 @@
+# Copyright 2022 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Legacy ECOS Pericom PI3USB9201
+
+compatible: "cros,pi3usb9201"
+
+include: base.yaml
+
+properties:
+    irq:
+      type: phandles
+      description: |
+        Legacy GPIO interrupt from BC1.2.

@@ -5,7 +5,7 @@
 
 #include "driver/bc12/pi3usb9201_public.h"
 
-#define PI3USB9201_COMPAT pericom_pi3usb9201
+#define PI3USB9201_COMPAT cros_pi3usb9201
 
 #define BC12_CHIP_PI3USB9201(id)        \
 	{                               \

@@ -40,7 +40,7 @@ defining which GPIO receives interrupts from the RT9490.
 
 ### Pericom PI3USB9201
 
-The Pericom PI3USB9201 is described by [pericom,pi3usb9201.yaml]. It allows
+The Pericom PI3USB9201 is described by [cros,pi3usb9201.yaml]. It allows
 defining which GPIO receives interrupts from the PI3USB9201. The DTS node
 contains information about I2C bus and address.
 
@@ -74,7 +74,7 @@ gpio-interrupts {
 
 &i2c2_0 {
 	bc12_port0: pi3usb9201@5f {
-		compatible = "pericom,pi3usb9201";
+		compatible = "cros,pi3usb9201";
 		status = "okay";
 		reg = <0x5f>;
 		irq = <&int_usb_c0_bc12>;
@@ -88,7 +88,7 @@ port0@0 {
 };
 ```
 
-`bc12_port0` is a BC1.2 device node ("pericom,pi3usb9201" is a compatible that
+`bc12_port0` is a BC1.2 device node ("cros,pi3usb9201" is a compatible that
 is used by one of the BC1.2 devices). The `bc12_port0` is child of the `i2c2_0`
 which is an I2C controller device. Each "named-usbc-port" node can point one
 BC1.2 device node.
@@ -97,7 +97,7 @@ BC1.2 device node.
 [richtek,rt1739-bc12.yaml]: https://source.chromium.org/chromium/chromiumos/platform/ec/+/HEAD:zephyr/dts/bindings/usbc/richtek,rt1739-bc12.yaml
 [richtek,rt1739-ppc.yaml]: https://source.chromium.org/chromium/chromiumos/platform/ec/+/HEAD:zephyr/dts/bindings/usbc/richtek,rt1739-ppc.yaml
 [richtek,rt9490-bc12.yaml]: https://source.chromium.org/chromium/chromiumos/platform/ec/+/HEAD:zephyr/dts/bindings/usbc/richtek,rt9490-bc12.yaml
-[pericom,pi3usb9201.yaml]: https://source.chromium.org/chromium/chromiumos/platform/ec/+/HEAD:zephyr/dts/bindings/usbc/pericom,pi3usb9201.yaml
+[cros,pi3usb9201.yaml]: https://source.chromium.org/chromium/chromiumos/platform/ec/+/HEAD:zephyr/dts/bindings/usbc/cros,pi3usb9201.yaml
 [shimmed_task_id.h]: https://source.chromium.org/chromium/chromiumos/platform/ec/+/HEAD:zephyr/shim/include/shimmed_task_id.h
 [CONFIG_PLATFORM_EC_USB_PD_5V_EN_CUSTOM]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig.pd?q=%22PLATFORM_EC_USB_PD_5V_EN_CUSTOM%22
 [board_vbus_sink_enable()]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/usb_charge.h?q=%22board_vbus_sink_enable%22

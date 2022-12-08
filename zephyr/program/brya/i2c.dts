@@ -148,7 +148,7 @@
 	};
 
 	bc12_port0: pi3usb9201@5f {
-		compatible = "pericom,pi3usb9201";
+		compatible = "cros,pi3usb9201";
 		status = "okay";
 		reg = <0x5f>;
 		irq = <&int_usb_c0_bc12>;
@@ -162,7 +162,7 @@
 	};
 
 	bc12_port2: pi3usb9201@5d {
-		compatible = "pericom,pi3usb9201";
+		compatible = "cros,pi3usb9201";
 		status = "okay";
 		reg = <0x5d>;
 		irq = <&int_usb_c2_bc12>;
@@ -244,7 +244,7 @@
 	};
 
 	bc12_port1: pi3usb9201@5f {
-		compatible = "pericom,pi3usb9201";
+		compatible = "cros,pi3usb9201";
 		status = "okay";
 		reg = <0x5f>;
 		irq = <&int_usb_c1_bc12>;
