@@ -33,6 +33,29 @@
       "message": "Hi Keith \u0026 Tristan,\nPlease help to review this mtlrvpp_mchp project files, or help to move this CL to next state CR+2 if all are good.",
       "revId": "73c980194d90d20c7aa8a62895f98f2c1044174b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb32bc1_99be45df",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/gpio.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-08T21:28:06Z",
+      "side": 1,
+      "message": "not related to this CL.\nAs these are octal numbers developers need to carefully define GPIOs.\nHave you explored options like writing a macros in mchp headers?\n#define GPIO175 gpio_140_176 29\nusage would be simple: gpios \u003d \u003c\u0026GPIO175 GPIO_INPUT\u003e;",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "73c980194d90d20c7aa8a62895f98f2c1044174b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
