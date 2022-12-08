@@ -1,5 +1,5 @@
 # -*- makefile -*-
-# Copyright 2020 The ChromiumOS Authors
+# Copyright 2022 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -28,5 +28,6 @@ board-ro+=usb_pd_policy.o
 board-ro+=fusb302b.o
 board-ro+=usb_sm.o
 board-ro+=usb_tc_snk_sm.o
+board-ro+=injector.o
 
 all_deps=$(patsubst ro,,$(def_all_deps))
