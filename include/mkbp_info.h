@@ -1,4 +1,4 @@
-/* Copyright 2022 The ChromiumOS Authors.
+/* Copyright 2022 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -18,6 +18,17 @@
  * @return 1 if volume buttons supported else 0
  */
 __override_proto int mkbp_support_volume_buttons(void);
+
+/**
+ * Board specific function to set support brightness buttons.
+ *
+ * Although we're able to define CONFIG_BRIGHTNESS_BUTTONS for ec brightness
+ * buttons, some boards might need to configure this settings at run time
+ * by several cases such as sharing the firmware with different designs.
+ *
+ * @return 1 if brightness buttons supported else 0
+ */
+__override_proto int mkbp_support_brightness_buttons(void);
 
 #ifdef TEST_BUILD
 uint32_t get_supported_buttons(void);
