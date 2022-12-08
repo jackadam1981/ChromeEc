@@ -107,23 +107,25 @@ static int x86_non_dsx_init(void *data)
 
 	ap_pwrseq_entry_cb.cb = x86_non_dsx_chipset_state_entry_cb;
 	ap_pwrseq_entry_cb.states_bit_mask = (BIT(AP_POWER_STATE_G3)
-					      | BIT(AP_POWER_STATE_S3)
-					      | BIT(AP_POWER_STATE_S0)
+					    | BIT(AP_POWER_STATE_S3)
+					    | BIT(AP_POWER_STATE_S0)
 #if CONFIG_AP_PWRSEQ_S0IX
-					      | BIT(AP_POWER_STATE_S0IX)
+					    | BIT(AP_POWER_STATE_S0IX)
 #endif
-					      );
+					     );
 
 	ap_pwrseq_register_entry_state_callback(dev, &ap_pwrseq_entry_cb);
 
 	ap_pwrseq_exit_cb.cb = x86_non_dsx_chipset_state_exit_cb;
 	ap_pwrseq_exit_cb.states_bit_mask = (BIT(AP_POWER_STATE_G3)
-					      | BIT(AP_POWER_STATE_S3)
-					     | BIT(AP_POWER_STATE_S4)
+					   | BIT(AP_POWER_STATE_S5)
+					   | BIT(AP_POWER_STATE_S4)
+					   | BIT(AP_POWER_STATE_S3)
+					   | BIT(AP_POWER_STATE_S0)
 #if CONFIG_AP_PWRSEQ_S0IX
-					     | BIT(AP_POWER_STATE_S0IX)
+					   | BIT(AP_POWER_STATE_S0IX)
 #endif
-					     );
+					    );
 
 	ap_pwrseq_register_exit_state_callback(dev, &ap_pwrseq_exit_cb);
 
@@ -138,7 +140,8 @@ static void x86_non_dsx_chipset_state_entry_cb(const struct device *dev,
 {
 	switch(state) {
 	case AP_POWER_STATE_G3:
-		ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
+		ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN);
+		ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN_COMPLETE);
 		break;
 
 	case AP_POWER_STATE_S3:
@@ -158,6 +161,7 @@ static void x86_non_dsx_chipset_state_entry_cb(const struct device *dev,
 #endif
 		break;
 #endif
+
 	default:
 		break;
 	}
@@ -170,23 +174,21 @@ static void x86_non_dsx_chipset_state_exit_cb(const struct device *dev,
 	case AP_POWER_STATE_G3:
 		ap_power_ev_send_callbacks(AP_POWER_PRE_INIT);
 		break;
+
 	case AP_POWER_STATE_S3:
 #if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
 		if (ap_pwrseq_get_current_state(dev) == AP_POWER_STATE_S0) {
 			/* Notify power event before resume */
 			ap_power_ev_send_callbacks(AP_POWER_RESUME_INIT);
+			break;
 		}
 #endif
 
 	__fallthrough;
+	case AP_POWER_STATE_S5:
 	case AP_POWER_STATE_S4:
-		if (ap_pwrseq_get_current_state(dev) == AP_POWER_STATE_S5) {
-			/* Moving from S4 to S5 */
-			ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN);
-		} else if (ap_pwrseq_get_current_state(dev) ==
-			   AP_POWER_STATE_G3) {
-			/* Moving from S4 to G3 */
-			ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN_COMPLETE);
+		if (ap_pwrseq_get_current_state(dev) == AP_POWER_STATE_G3) {
+			ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
 		}
 		break;
 
@@ -199,6 +201,17 @@ static void x86_non_dsx_chipset_state_exit_cb(const struct device *dev,
 		);
 		break;
 #endif
+
+	case AP_POWER_STATE_S0:
+		if (ap_pwrseq_get_current_state(dev) == AP_POWER_STATE_S3) {
+			ap_power_ev_send_callbacks(AP_POWER_SUSPEND);
+#if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
+			/* Notify power event after suspend */
+			ap_power_ev_send_callbacks(AP_POWER_SUSPEND_COMPLETE);
+#endif
+		}
+		break;
+
 	default:
 		break;
 	}
