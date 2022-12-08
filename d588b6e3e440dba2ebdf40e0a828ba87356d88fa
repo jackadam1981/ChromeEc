@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476c2838_07f7374d",
+        "filename": "board/banshee/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-08T18:23:39Z",
+      "side": 1,
+      "message": "nit: board_ prefix would make more sense here",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 25
+      },
+      "revId": "d588b6e3e440dba2ebdf40e0a828ba87356d88fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
