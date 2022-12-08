@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a8bcb59_da45f53e",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-08T17:20:20Z",
+      "side": 1,
+      "message": "I did not want to increase the memory footprint for all EC devices.  However, it occurs to me that I can make the new \"flags\" field conditional on CONFIG_USB_SPI, and that way, only uServo and a few other devices will carry the burden.  I have added that flag to the previous CL in the stack, with another bit to control whether USB forwarding is enabled or not.  (Previously it was only available on the first SPI device on the list.  If some board wants to keep it that way, it can set the flag only on the first SPI device on the list.)",
+      "parentUuid": "7c60284c_ffa177af",
+      "range": {
+        "startLine": 430,
+        "startChar": 19,
+        "endLine": 430,
+        "endChar": 56
+      },
+      "revId": "78de1c78de7d6d10b9365ae2b88fedd32f5ce4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c13d7ce_82d37432",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-12-08T02:11:54Z",
       "side": 1,
       "message": "nit: Custom board overrides usually start with board_ prefix in this repo.",
+      "range": {
+        "startLine": 669,
+        "startChar": 4,
+        "endLine": 669,
+        "endChar": 29
+      },
+      "revId": "78de1c78de7d6d10b9365ae2b88fedd32f5ce4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cb964fa_fe169845",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-08T17:20:20Z",
+      "side": 1,
+      "message": "I see, but the two existing board methods above are called usb_spi_board_... rather than board_usb_spi_..., I think this third methdos should be consistent with the other two.  Should I rather fix the two existing methods as part of this CL?",
+      "parentUuid": "0c13d7ce_82d37432",
       "range": {
         "startLine": 669,
         "startChar": 4,
