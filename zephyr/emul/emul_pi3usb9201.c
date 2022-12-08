@@ -13,7 +13,11 @@
 #include <zephyr/drivers/i2c_emul.h>
 #include <zephyr/logging/log.h>
 
+#ifdef CONFIG_USB_BC12
+#define DT_DRV_COMPAT pericom_pi3usb9201
+#else
 #define DT_DRV_COMPAT cros_pi3usb9201
+#endif
 
 LOG_MODULE_REGISTER(emul_pi3usb9201, LOG_LEVEL_DBG);
 
@@ -178,4 +182,6 @@ static int pi3usb9201_emul_init(const struct emul *emul,
 
 DT_INST_FOREACH_STATUS_OKAY(PI3USB9201_EMUL)
 
+#ifndef CONFIG_USB_BC12
 DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);
+#endif

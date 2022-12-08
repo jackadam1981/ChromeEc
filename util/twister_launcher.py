@@ -121,7 +121,12 @@ def find_paths():
 
     if cros_checkout:
         ec_base = cros_checkout / "src" / "platform" / "ec"
-        zephyr_base = cros_checkout / "src" / "third_party" / "zephyr" / "main"
+        try:
+            zephyr_base = Path(os.environ["ZEPHYR_BASE"]).resolve()
+        except KeyError as err:
+            zephyr_base = (
+                cros_checkout / "src" / "third_party" / "zephyr" / "main"
+            )
         zephyr_modules_dir = cros_checkout / "src" / "third_party" / "zephyr"
     else:
         try:

@@ -17,6 +17,11 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
+
+#ifdef CONFIG_USB_BC12
+#include <zephyr/drivers/usb/usb_bc12.h>
+#endif
+
 LOG_MODULE_REGISTER(test_drivers_bc12, LOG_LEVEL_DBG);
 
 #define EMUL_NODE DT_NODELABEL(pi3usb9201_emul0)
@@ -63,6 +68,27 @@ struct bc12_status {
 	int current_limit;
 };
 
+#ifdef CONFIG_BC12
+static const struct bc12_status bc12_chg_limits[] = {
+	[CHG_2_4A] = { .supplier = CHARGE_SUPPLIER_PROPRIETARY,
+		       .current_limit = BC12_CURR_MA(2400) },
+	[CHG_2_0A] = { .supplier = CHARGE_SUPPLIER_PROPRIETARY,
+		       .current_limit = BC12_CURR_MA(2000) },
+	[CHG_1_0A] = { .supplier = CHARGE_SUPPLIER_PROPRIETARY,
+		       .current_limit = BC12_CURR_MA(1000) },
+	[CHG_CDP] = { .supplier = CHARGE_SUPPLIER_BC12_CDP,
+		      .current_limit = BC12_CURR_MA(1500) },
+	[CHG_SDP] = { .supplier = CHARGE_SUPPLIER_BC12_SDP,
+		      .current_limit = BC12_CURR_MA(500) },
+#if defined(CONFIG_CHARGE_RAMP_SW) || defined(CONFIG_CHARGE_RAMP_HW)
+	[CHG_DCP] = { .supplier = CHARGE_SUPPLIER_BC12_DCP,
+		      .current_limit = USB_CHARGER_MAX_CURR_MA },
+#else
+	[CHG_DCP] = { .supplier = CHARGE_SUPPLIER_BC12_DCP,
+		      .current_limit = BC12_CURR_MA(1500) },
+#endif
+};
+#else
 static const struct bc12_status bc12_chg_limits[] = {
 	[CHG_OTHER] = { .supplier = CHARGE_SUPPLIER_OTHER,
 			.current_limit = 500 },
@@ -88,9 +114,36 @@ static const struct bc12_status bc12_chg_limits[] = {
 		      .current_limit = 500 },
 #endif
 };
+#endif /* CONFIG_BC12 */
 
 #define GPIO_BATT_PRES_ODL_PATH DT_PATH(named_gpios, ec_batt_pres_odl)
 #define GPIO_BATT_PRES_ODL_PORT DT_GPIO_PIN(GPIO_BATT_PRES_ODL_PATH, gpios)
+
+#ifdef CONFIG_USB_BC12
+const struct device *bc12_gpio_dev =
+	DEVICE_DT_GET(DT_GPIO_CTLR(EMUL_NODE, intb_gpios));
+#define USBC0_GPIO_PORT DT_GPIO_PIN(EMUL_NODE, intb_gpios)
+
+static void toggle_gpio(const struct device *dev, gpio_pin_t pin)
+{
+	static const int values[] = { 1, 0, 1 };
+
+	for (int i = 0; i < ARRAY_SIZE(values); ++i) {
+		gpio_emul_input_set(dev, pin, values[i]);
+	}
+}
+#endif
+
+static void trigger_bc12_interrupt()
+{
+#ifdef CONFIG_USB_BC12
+	toggle_gpio(bc12_gpio_dev, USBC0_GPIO_PORT);
+	msleep(1);
+#else
+	usb_charger_task_set_event(0, USB_CHG_EVENT_BC12);
+	msleep(1);
+#endif
+}
 
 static void test_bc12_pi3usb9201_host_mode(void)
 {
@@ -115,20 +168,22 @@ static void test_bc12_pi3usb9201_host_mode(void)
 	msleep(500);
 	pi3usb9201_emul_set_reg(emul, PI3USB9201_REG_HOST_STS,
 				PI3USB9201_REG_HOST_STS_DEV_PLUG);
-	usb_charger_task_set_event(0, USB_CHG_EVENT_BC12);
-	msleep(1);
+	trigger_bc12_interrupt();
+
 	/* Expect the pi3usb9201 driver to configure SDP host mode. */
 	pi3usb9201_emul_get_reg(emul, PI3USB9201_REG_CTRL_1, &a);
 	b = PI3USB9201_SDP_HOST_MODE << PI3USB9201_REG_CTRL_1_MODE_SHIFT;
-	zassert_equal(a, b);
+	zassert_equal(a, b, "Actual host mode %d, expected mode %d",
+		      a >> PI3USB9201_REG_CTRL_1_MODE_SHIFT,
+		      b >> PI3USB9201_REG_CTRL_1_MODE_SHIFT);
 	pi3usb9201_emul_set_reg(emul, PI3USB9201_REG_HOST_STS, 0);
 
 	/* Pretend that a device has been unplugged. */
 	msleep(500);
 	pi3usb9201_emul_set_reg(emul, PI3USB9201_REG_HOST_STS,
 				PI3USB9201_REG_HOST_STS_DEV_UNPLUG);
-	usb_charger_task_set_event(0, USB_CHG_EVENT_BC12);
-	msleep(1);
+	trigger_bc12_interrupt();
+
 	/* Expect the pi3usb9201 driver to configure CDP host mode. */
 	pi3usb9201_emul_get_reg(emul, PI3USB9201_REG_CTRL_1, &a);
 	b = PI3USB9201_CDP_HOST_MODE << PI3USB9201_REG_CTRL_1_MODE_SHIFT;
@@ -168,8 +223,8 @@ test_bc12_pi3usb9201_client_mode(enum pi3usb9201_client_sts detect_result,
 	msleep(500);
 	pi3usb9201_emul_set_reg(emul, PI3USB9201_REG_CLIENT_STS,
 				1 << detect_result);
-	usb_charger_task_set_event(0, USB_CHG_EVENT_BC12);
-	msleep(1);
+	trigger_bc12_interrupt();
+
 	/* Expect the pi3usb9201 driver to clear the start bit. */
 	pi3usb9201_emul_get_reg(emul, PI3USB9201_REG_CTRL_2, &a);
 	zassert_equal(a, 0);
@@ -186,7 +241,9 @@ test_bc12_pi3usb9201_client_mode(enum pi3usb9201_client_sts detect_result,
 	/* Wait for the charge port to update. */
 	msleep(500);
 	zassert_equal(charge_manager_get_active_charge_port(), port);
-	zassert_equal(charge_manager_get_supplier(), supplier);
+	zassert_equal(charge_manager_get_supplier(), supplier,
+		      "Supplier actual %d, expected %d",
+		      charge_manager_get_supplier(), supplier);
 	zassert_equal(charge_manager_get_charger_current(), current_limit,
 		      NULL);
 	zassert_equal(charge_manager_get_charger_voltage(), voltage);
@@ -205,7 +262,10 @@ test_bc12_pi3usb9201_client_mode(enum pi3usb9201_client_sts detect_result,
 	pi3usb9201_emul_get_reg(emul, PI3USB9201_REG_CTRL_1, &a);
 	b = PI3USB9201_POWER_DOWN << PI3USB9201_REG_CTRL_1_MODE_SHIFT;
 	b |= PI3USB9201_REG_CTRL_1_INT_MASK;
-	zassert_equal(a, b);
+	zassert_equal(a, b,
+		      "Actual CTRL_1 0x%02x, expected 0x%02x\n"
+		      "Supplier %d, current %d",
+		      a, b, supplier, current_limit);
 	/* Expect the charge manager to have no active supplier. */
 	zassert_equal(charge_manager_get_active_charge_port(), CHARGE_PORT_NONE,
 		      NULL);
@@ -261,6 +321,10 @@ ZTEST_USER(bc12, test_bc12_pi3usb9201)
 	test_bc12_pi3usb9201_host_mode();
 
 	for (int c = CHG_OTHER; c <= CHG_DCP; c++) {
+		if (IS_ENABLED(CONFIG_USB_BC12) && (c == CHG_OTHER) ||
+		    (c == CHG_RESERVED)) {
+			continue;
+		}
 		LOG_INF("Test client mode supplier %d", c);
 		test_bc12_pi3usb9201_client_mode(
 			c, bc12_chg_limits[c].supplier,
