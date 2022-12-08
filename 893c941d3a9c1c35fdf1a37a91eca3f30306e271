@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f887bd_604d5af6",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2500,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-08T01:55:48Z",
+      "side": 1,
+      "message": "I don\u0027t think this needs to synchronize with writes, since the timestamp being out of order should be enough of a hint if output races with new events.\n\nIt seemed easier to always make output start at the oldest entry rather than mark it specially, so I\u0027ve done that.",
+      "parentUuid": "addeb6ef_ac4e317a",
+      "revId": "893c941d3a9c1c35fdf1a37a91eca3f30306e271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b51ab9b8_ce76469c",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de32f964_93352482",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2505,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-08T01:55:48Z",
+      "side": 1,
+      "message": "With starting at the oldest entry we now know the log is empty past the first blank one.",
+      "parentUuid": "b51ab9b8_ce76469c",
+      "revId": "893c941d3a9c1c35fdf1a37a91eca3f30306e271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89a13745_511c7070",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-12-07T23:02:26Z",
       "side": 1,
       "message": "nit: is this an EC_SUCCESS technically?",
+      "revId": "893c941d3a9c1c35fdf1a37a91eca3f30306e271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e900cc1_2934026b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2531,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-08T01:55:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89a13745_511c7070",
       "revId": "893c941d3a9c1c35fdf1a37a91eca3f30306e271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
