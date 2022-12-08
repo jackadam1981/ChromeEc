@@ -22,6 +22,30 @@
       },
       "revId": "2fc6c41fccc215b5b91423b6de3361d0dcfa2620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01cb3bb2_2c3409d8",
+        "filename": "include/spi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-08T17:20:07Z",
+      "side": 0,
+      "message": "How could I miss that, reverted.",
+      "parentUuid": "bd2c60ca_ee896ff3",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "2fc6c41fccc215b5b91423b6de3361d0dcfa2620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

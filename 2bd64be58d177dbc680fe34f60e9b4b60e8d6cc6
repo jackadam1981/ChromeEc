@@ -39,6 +39,30 @@
       },
       "revId": "2bd64be58d177dbc680fe34f60e9b4b60e8d6cc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08d881bf_e494b3cd",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-08T17:20:07Z",
+      "side": 1,
+      "message": "My thoughts were that whatever existing code would run on USB_SPI_REQ_DISABLE followed by USB_SPI_REQ_ENABLE would be the same that we needed when switching.  Among those are usb_spi_reset_interface() below in this method, which clears out any partially received data.\n\nOne thing one could wish for, would be for usb_spi_board_disable() / _enable() to be invoked in the next callback after switching, possibly adding an integer parameter to indicate which SPI device it is that is now being addressed via USB.  But achieving this would require more plumbing, and is not required for my use case, so I skipped it.",
+      "parentUuid": "cd297857_da284f42",
+      "range": {
+        "startLine": 636,
+        "startChar": 9,
+        "endLine": 636,
+        "endChar": 14
+      },
+      "revId": "2bd64be58d177dbc680fe34f60e9b4b60e8d6cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
