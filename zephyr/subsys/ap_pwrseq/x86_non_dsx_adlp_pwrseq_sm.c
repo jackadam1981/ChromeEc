@@ -14,7 +14,7 @@ static int check_pch_out_of_suspend(void)
 	/*
 	 * Wait for SLP_SUS deasserted.
 	 */
-	ret = power_wait_signals_timeout(POWER_SIGNAL_MASK(PWR_SLP_SUS),
+	ret = power_wait_mask_signals_timeout(POWER_SIGNAL_MASK(PWR_SLP_SUS), 0,
 					      IN_PCH_SLP_SUS_WAIT_TIME_MS);
 	if (ret == 0) {
 		LOG_DBG("SLP_SUS now %d", power_signal_get(PWR_SLP_SUS));
