@@ -34,6 +34,24 @@
       "parentUuid": "29688c5a_23737be5",
       "revId": "50f6c07ece53ff4aa485d5bdd88276617a3e8db7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c52b79f5_3474b4d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-12-08T18:10:08Z",
+      "side": 1,
+      "message": "Yes we can use that. should we use this only in ec app or we can use %llu throughout the changes including ectool.cc(https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4081566/2/util/ectool.cc) ?",
+      "parentUuid": "53a0cc11_4edbf82b",
+      "revId": "50f6c07ece53ff4aa485d5bdd88276617a3e8db7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
