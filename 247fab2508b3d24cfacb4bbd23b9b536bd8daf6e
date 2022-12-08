@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4584252_19f518fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-08T21:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f54bdf2_6fe52270",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "247fab2508b3d24cfacb4bbd23b9b536bd8daf6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1873553a_0d61fb71",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-08T21:43:27Z",
       "side": 1,
       "message": "With smart discharge config",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "247fab2508b3d24cfacb4bbd23b9b536bd8daf6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f18d941_d88cd136",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-08T21:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1873553a_0d61fb71",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75fb8c02_653cc363",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-08T21:56:23Z",
+      "side": 1,
+      "message": "Details added.",
+      "parentUuid": "87709ef5_d28b3a61",
+      "revId": "247fab2508b3d24cfacb4bbd23b9b536bd8daf6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c34231f_944fc8dc",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-12-08T21:43:27Z",
       "side": 1,
       "message": "hence disabling config smart discharge",
+      "revId": "247fab2508b3d24cfacb4bbd23b9b536bd8daf6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1588d71b_dfa62374",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-08T21:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c34231f_944fc8dc",
       "revId": "247fab2508b3d24cfacb4bbd23b9b536bd8daf6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
