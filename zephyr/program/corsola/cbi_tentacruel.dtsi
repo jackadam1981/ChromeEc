@@ -10,25 +10,63 @@
 		/*
 		 * FW_CONFIG field to describe mainboard orientation in chassis.
 		 */
-		base-gyro {
-			enum-name = "FW_BASE_GYRO";
+		form_factor {
+			enum-name = "FORM_FACTOR";
+			start = <7>;
+			size = <1>;
+
+			clamshell {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "CLAMSHELL";
+				value = <0>;
+			};
+			convertible {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "CONVERTIBLE";
+				value = <1>;
+			};
+		};
+		base-sensor {
+			enum-name = "BASE_SENSOR";
 			start = <8>;
 			size = <2>;
 
-			None {
+			none {
 				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_BASE_NONE";
+				enum-name = "BASE_NONE";
 				value = <0>;
+				default;
 			};
 			icm42607 {
 				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_BASE_ICM42607";
+				enum-name = "BASE_ICM42607";
 				value = <1>;
-				default;
 			};
 			bmi323 {
 				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_BASE_BMI323";
+				enum-name = "BASE_BMI323";
+				value = <2>;
+			};
+		};
+		lid-sensor {
+			enum-name = "LID_SENSOR";
+			start = <10>;
+			size = <2>;
+
+			none {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "LID_NONE";
+				value = <0>;
+				default;
+			};
+			lis2dwltr {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "LID_LIS2DWLTR";
+				value = <1>;
+			};
+			bma422 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "LID_BMA422";
 				value = <2>;
 			};
 		};
