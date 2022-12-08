@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c8b367b_bdfd0951",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 2693,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-08T23:10:20Z",
+      "side": 1,
+      "message": "You also need to delete `CONFIG_LOW_POWER_S0` from here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/util/config_allowed.txt;l\u003d592",
+      "range": {
+        "startLine": 2693,
+        "startChar": 8,
+        "endLine": 2693,
+        "endChar": 27
+      },
+      "revId": "a63240eccc02acb4b8735f2e4eb9d233c7db9f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
