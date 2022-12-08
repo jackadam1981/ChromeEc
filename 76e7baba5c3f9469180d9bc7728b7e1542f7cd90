@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f734a17_95ac39b9",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-12-08T10:39:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9f5cd09_7162b583",
+      "revId": "76e7baba5c3f9469180d9bc7728b7e1542f7cd90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bedd70d_37a1f557",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-07T19:15:20Z",
       "side": 1,
       "message": "Read and write can to back to being static to the BB retimer driver code",
+      "revId": "76e7baba5c3f9469180d9bc7728b7e1542f7cd90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "386e0fa5_4f1bbd13",
+        "filename": "include/driver/retimer/bb_retimer_public.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-12-08T10:39:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bedd70d_37a1f557",
       "revId": "76e7baba5c3f9469180d9bc7728b7e1542f7cd90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
