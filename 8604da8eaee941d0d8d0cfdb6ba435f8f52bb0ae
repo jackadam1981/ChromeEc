@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c7311ba_113f182d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-08T21:36:46Z",
+      "side": 1,
+      "message": "I suspect you could pretty easily get your coverage by adding to `zephyr/test/drivers/default/src/bb_retimer.c` in either this CL or a follow-up. Contact zephyr-test-eng@google.com if you have questions about how adding to that module works. \n\nFor the banshee board code, that\u0027ll likely depend on whether that program has an established unit test you could add to.",
+      "revId": "8604da8eaee941d0d8d0cfdb6ba435f8f52bb0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
