@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb2a6ca_4623b1c1",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-12-08T19:21:56Z",
+      "side": 1,
+      "message": "Done, added Kconfig in previous CL.",
+      "parentUuid": "c6f61c09_56b5b266",
+      "range": {
+        "startLine": 1211,
+        "startChar": 7,
+        "endLine": 1211,
+        "endChar": 42
+      },
+      "revId": "3bbae058131e24ccaae96f464af3c1a1f3ecfc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b2bf2c6_4e89243f",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-12-08T18:47:21Z",
       "side": 1,
       "message": "One more follow-up... obsolete now?",
+      "revId": "3bbae058131e24ccaae96f464af3c1a1f3ecfc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e14ade8f_351e3d85",
+        "filename": "include/driver/charger/isl9241_public.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-12-08T19:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b2bf2c6_4e89243f",
       "revId": "3bbae058131e24ccaae96f464af3c1a1f3ecfc13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
