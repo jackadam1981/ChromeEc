@@ -16,6 +16,92 @@
       "message": "This CL chain depends on upstream PR:\nhttps://github.com/zephyrproject-rtos/zephyr/pull/52847",
       "revId": "17437d6abb0a3172c52b1f206dc2ff7c49d78223",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0609e7dd_67ba9d08",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-08T23:26:56Z",
+      "side": 1,
+      "message": "No need to duplicate this part of the declaration, just make the attribute optional.\n\n```\nstatic\n#ifdef CONFIG_SOC_IT...\n__attribute__((...))\n#endif\nstruct sha256_ctx ctx;\n```",
+      "range": {
+        "startLine": 52,
+        "startChar": 55,
+        "endLine": 52,
+        "endChar": 77
+      },
+      "revId": "17437d6abb0a3172c52b1f206dc2ff7c49d78223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5cef8b_1adc1dbc",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-08T23:26:56Z",
+      "side": 1,
+      "message": "This won\u0027t work for non-zephyr builds; it looks like the accelerator is big-endian so you should use `htobe32` here.",
+      "range": {
+        "startLine": 82,
+        "startChar": 15,
+        "endLine": 82,
+        "endChar": 25
+      },
+      "revId": "17437d6abb0a3172c52b1f206dc2ff7c49d78223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "356ac5d3_a6d1e2f4",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-08T23:26:56Z",
+      "side": 1,
+      "message": "As above, but this converts from accelerator to CPU endianness so `be32toh`.",
+      "range": {
+        "startLine": 121,
+        "startChar": 14,
+        "endLine": 121,
+        "endChar": 24
+      },
+      "revId": "17437d6abb0a3172c52b1f206dc2ff7c49d78223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aeea337_2b719ebe",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-08T23:26:56Z",
+      "side": 1,
+      "message": "build.mk should be updated for EC-OS as well, if you intend to support those builds (the conditional include for `CONFIG_ZEPHYR` suggests you intend to).",
+      "revId": "17437d6abb0a3172c52b1f206dc2ff7c49d78223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
