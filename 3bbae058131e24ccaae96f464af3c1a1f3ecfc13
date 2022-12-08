@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6f61c09_56b5b266",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-08T18:43:26Z",
+      "side": 1,
+      "message": "nit: should we generalize the Kconfig to just a PROCHOT_DUMP that other boards can use?",
+      "range": {
+        "startLine": 1211,
+        "startChar": 7,
+        "endLine": 1211,
+        "endChar": 42
+      },
+      "revId": "3bbae058131e24ccaae96f464af3c1a1f3ecfc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
