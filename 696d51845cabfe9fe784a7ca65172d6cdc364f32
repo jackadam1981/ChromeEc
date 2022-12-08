@@ -16,6 +16,24 @@
       "message": "why upload hook didn\u0027t catch this...\n\n```\nNFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/program/geralt/src/backlight.c:6:1: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#include \u003cap_power/ap_power.h\u003e\nERROR:root:^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/program/geralt/src/ccd_mode.c:6:1: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#include \"console.h\"\nERROR:root:^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/program/geralt/src/dp_alt_mode.c:6:1: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#include \"atomic.h\"\nERROR:root:^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/program/geralt/src/hibernate.c:5:1: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#include \u003czephyr/drivers/gpio.h\u003e\nERROR:root:^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/program/geralt/src/hooks.c:6:1: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#include \u003czephyr/init.h\u003e\nERROR:root:^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/program/geralt/src/i2c.c:6:1: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#include \"i2c/i2c.h\"\nERROR:root:^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/program/geralt/src/ppc.c:6:1: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#include \u003czephyr/init.h\u003e\nERROR:root:^\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/program/geralt/src/usbc_config.c:8:1: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#include \u003cap_power/ap_power.h\u003e\nERROR:root:^\n```",
       "revId": "696d51845cabfe9fe784a7ca65172d6cdc364f32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae8d9cb5_a4b5cae4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-12-08T14:50:03Z",
+      "side": 1,
+      "message": "This is a new clang-format rules, so you have to rebase to the ToT to get the latest config.",
+      "parentUuid": "b7a31b60_739d34f6",
+      "revId": "696d51845cabfe9fe784a7ca65172d6cdc364f32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
