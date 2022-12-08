@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b50de031_a936892e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-08T22:48:55Z",
+      "side": 1,
+      "message": "I have two main comments, but I\u0027m not going to block this CL from merging.\n1. This is a lot of functionality to add all at once.  It is preferred that you add functionality more incrementally.  For instance, UART console, battery/charger, AP power sequencing, etc.\n2. We have recently specified a new program/project layout that helps minimize code/devicetree duplication.  Details are here https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/docs/zephyr/project_config.md.  However, the intelrvp program hasn\u0027t yet been converted to the new format, so you\u0027re following the existing design pattern.",
+      "revId": "73c980194d90d20c7aa8a62895f98f2c1044174b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bb32bc1_99be45df",
@@ -53,6 +70,53 @@
         "startChar": 13,
         "endLine": 15,
         "endChar": 28
+      },
+      "revId": "73c980194d90d20c7aa8a62895f98f2c1044174b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ff72fe1_4c3d5727",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/gpio.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-08T22:48:55Z",
+      "side": 1,
+      "message": "+1 to this suggestion.",
+      "parentUuid": "7bb32bc1_99be45df",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "73c980194d90d20c7aa8a62895f98f2c1044174b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6009e415_faf466ee",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/mtlrvp_mchp.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-08T22:48:55Z",
+      "side": 1,
+      "message": "Not related to this CL, but it seems like `port_sel` and `pinctrl-0` properties provide redundant information.  Would it possible to eliminate the `port_sel` property upstream?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 16
       },
       "revId": "73c980194d90d20c7aa8a62895f98f2c1044174b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
