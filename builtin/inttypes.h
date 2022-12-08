@@ -10,5 +10,6 @@
 
 #define PRIx64 "llx"
 #define PRId64 "lld"
+#define PRIu64 "llu"
 
 #endif /* __CROS_EC_INTTYPES_H__ */
