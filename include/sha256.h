@@ -18,7 +18,7 @@
  * The chip's header file must implement the SHA256 context structure and
  * specific functions for its hardware accelerator module.
  */
-#include "sha256_chip.h"
+#include "sha256_hw.h"
 #else
 /* SHA256 context */
 struct sha256_ctx {
