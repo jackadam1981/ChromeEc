@@ -58,7 +58,7 @@ GPIO(EN_SCLR_RAILS,                  PIN(0, 4), GPIO_INPUT)
 GPIO(HDMI_5V_IN,                     PIN(9, 3), GPIO_INPUT)
 GPIO(HDMI0_CABLE_DET,                PIN(9, 6), GPIO_INPUT)
 GPIO(WP_EC,                          PIN(C, 3), GPIO_INPUT)
-GPIO(OSD_INT,                        PIN(0, 5), GPIO_INPUT)
+GPIO_INT(OSD_INT,                    PIN(0, 5), GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH, osd_int_interrupt)
 
 /* Audio */
 /* TODO(b/260063632): the gpio pin control is wip, setting to level high
@@ -156,6 +156,11 @@ ALTERNATE(PIN_MASK(C, 0x18), 0, MODULE_PWM, 0)               /* GPIOC4/PWM2, GPI
 ALTERNATE(PIN_MASK(3, 0x10), 0, MODULE_ADC, 0)               /* GPIO34/PS2_DAT2/ADC6 */
 ALTERNATE(PIN_MASK(4, 0x38), 0, MODULE_ADC, 0)               /* GPIO45/ADC0, GPIO44/ADC1, GPIO43/ADC2 */
 ALTERNATE(PIN_MASK(E, 0x02), 0, MODULE_ADC, 0)               /* GPIOE1/ADC7 */
+
+UNIMPLEMENTED(VOLUP_BTN_ODL)
+UNIMPLEMENTED(VOLDN_BTN_ODL)
+UNIMPLEMENTED(BRIGHTNESSUP_BTN_ODL)
+UNIMPLEMENTED(BRIGHTNESSDN_BTN_ODL)
 
 /* Unused Pins */
 UNUSED(PIN(D, 6))       /* GPOD6/CR_SOUT3/SHDF_ESPI_L */
