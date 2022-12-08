@@ -33,6 +33,52 @@
       "message": "Please review this proposal for how to allow special SPI busses to have driver implementation in the board directory, yet still be exposed through the USB interface on devices similar to uServo.",
       "revId": "78de1c78de7d6d10b9365ae2b88fedd32f5ce4eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c60284c_ffa177af",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-08T02:11:54Z",
+      "side": 1,
+      "message": "Not sure if using the MSB is a good idea or not. Why don\u0027t you add a new field in spi_device_t (e.g. uint8_t flags)?",
+      "range": {
+        "startLine": 430,
+        "startChar": 19,
+        "endLine": 430,
+        "endChar": 56
+      },
+      "revId": "78de1c78de7d6d10b9365ae2b88fedd32f5ce4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c13d7ce_82d37432",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-08T02:11:54Z",
+      "side": 1,
+      "message": "nit: Custom board overrides usually start with board_ prefix in this repo.",
+      "range": {
+        "startLine": 669,
+        "startChar": 4,
+        "endLine": 669,
+        "endChar": 29
+      },
+      "revId": "78de1c78de7d6d10b9365ae2b88fedd32f5ce4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
