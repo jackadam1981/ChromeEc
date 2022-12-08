@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce257481_9b7a254a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-08T23:52:54Z",
+      "side": 1,
+      "message": "I think this might be better implemented as a crypto driver upstream (then add a shim here that uses the crypto API), since this already depends on upstream support.",
+      "revId": "17437d6abb0a3172c52b1f206dc2ff7c49d78223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0609e7dd_67ba9d08",
         "filename": "common/vboot_hash.c",
         "patchSetId": 14
