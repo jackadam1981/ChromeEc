@@ -61,6 +61,17 @@ void mkbp_button_update(enum keyboard_button_type button, int is_pressed)
 		mkbp_button_state |= (is_pressed << EC_MKBP_RECOVERY);
 		break;
 
+/* bb_debug */
+	case KEYBOARD_BUTTON_BRIGHTNESS_UP:
+		mkbp_button_state &= ~BIT(EC_MKBP_BRIGHTNESS_UP);
+		mkbp_button_state |= (is_pressed << EC_MKBP_BRIGHTNESS_UP);
+		break;
+
+	case KEYBOARD_BUTTON_BRIGHTNESS_DOWN:
+		mkbp_button_state &= ~BIT(EC_MKBP_BRIGHTNESS_DOWN);
+		mkbp_button_state |= (is_pressed << EC_MKBP_BRIGHTNESS_DOWN);
+		break;
+/* bb_debug */
 	default:
 		/* ignored. */
 		return;

@@ -37,6 +37,12 @@ enum button {
 	BUTTON_RECOVERY_2,
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON_2) */
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
+/* bb_debug */
+#ifdef CONFIG_BRIGHTNESS_BUTTONS
+	BUTTON_BRIGHTNESS_UP,
+	BUTTON_BRIGHTNESS_DOWN,
+#endif /* CONFIG_BRIGHTNESS_BUTTONS */
+/* bb_debug */
 	BUTTON_COUNT,
 };
 
@@ -101,6 +107,24 @@ int button_is_adc_detected(enum gpio_signal gpio);
  * Returns the physical state of the button.
  */
 int adc_to_physical_value(enum gpio_signal gpio);
+
+/* bb_debug */
+/*
+ * Is this button using logical value to detect state?
+ *
+ * @param gpio	The GPIO of interest.
+ * Returns 1 if button state is detected by logical value, 0 if not.
+ */
+int button_is_pseudo_detected(enum gpio_signal gpio);
+
+/*
+ * Sample the logical value and convert to a physical pressed/not pressed state.
+ *
+ * @param gpio logical value detected GPIO.
+ * Returns the physical state of the button.
+ */
+int pseudo_to_physical_value(enum gpio_signal gpio);
+/* bb_debug */
 
 /* Public for testing purposes only, undocumented. */
 enum debug_state {

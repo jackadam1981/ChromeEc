@@ -119,6 +119,23 @@
 /* Include math_util for bitmask_uint64 used in pd_timers */
 #define CONFIG_MATH_UTIL
 
+/* bb_debug */
+#define CONFIG_MKBP_INPUT_DEVICES /* //for scaler test //raymondchung: ??? */
+#define CONFIG_VOLUME_BUTTONS /* //for scaler test //raymondchung: ??? */
+#define CONFIG_BRIGHTNESS_BUTTONS /* //for scaler test //raymondchung: ??? */
+#define CONFIG_PSEUDO_BUTTONS /* //for scaler test //raymondchung: ??? */
+#define SCALER_NAV_KEY_REG 0x0381
+#define SCALER_VOL_UP 0x01
+#define SCALER_VOL_DOWN 0x02
+#define SCALER_BRIGHTNESS_UP 0x04
+#define SCALER_BRIGHTNESS_DOWN 0x08
+
+#define GPIO_VOLUME_DOWN_L		GPIO_VOLDN_BTN_ODL
+#define GPIO_VOLUME_UP_L		GPIO_VOLUP_BTN_ODL
+#define GPIO_BRIGHTNESS_DOWN_L	GPIO_BRIGHTNESSDN_BTN_ODL
+#define GPIO_BRIGHTNESS_UP_L		GPIO_BRIGHTNESSUP_BTN_ODL
+/* bb_debug */
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h" /* needed by registers.h */
@@ -162,6 +179,8 @@ enum fan_channel { FAN_CH_0 = 0, FAN_CH_COUNT };
 enum mft_channel { MFT_CH_0 = 0, MFT_CH_COUNT };
 
 extern void adp_connect_interrupt(enum gpio_signal signal);
+extern void osd_int_interrupt(enum gpio_signal signal);
+extern int pseudo_to_physical_value(enum gpio_signal gpio);
 
 #endif /* !__ASSEMBLER__ */
 
