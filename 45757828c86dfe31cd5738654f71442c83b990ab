@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9240844e_9d839e0a",
+        "filename": "zephyr/program/geralt/adc.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-08T04:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdcfc01a_4dd15594",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "45757828c86dfe31cd5738654f71442c83b990ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc8d7c1e_fc4531aa",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-05T02:41:44Z",
       "side": 1,
       "message": "en_pp4200_z1 -\u003e en_pp4200_s4 to align with latest naming in the schematic.",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "45757828c86dfe31cd5738654f71442c83b990ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda22720_dd3d9ec7",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-08T04:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc8d7c1e_fc4531aa",
       "range": {
         "startLine": 131,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0156b1f_1816e032",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-08T04:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3837795f_9a805bd0",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 16
+      },
+      "revId": "45757828c86dfe31cd5738654f71442c83b990ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c00a31d6_3c6a7070",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b6c0cb1_4002cf13",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-08T04:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c00a31d6_3c6a7070",
+      "range": {
+        "startLine": 183,
+        "startChar": 6,
+        "endLine": 183,
+        "endChar": 21
+      },
+      "revId": "45757828c86dfe31cd5738654f71442c83b990ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90c5f0d0_64b96112",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-12-05T02:41:44Z",
       "side": 1,
       "message": "en_pp4200_z1 -\u003e en_pp4200_s5",
+      "range": {
+        "startLine": 185,
+        "startChar": 6,
+        "endLine": 185,
+        "endChar": 21
+      },
+      "revId": "45757828c86dfe31cd5738654f71442c83b990ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3be78e0e_08cbdb29",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-08T04:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90c5f0d0_64b96112",
       "range": {
         "startLine": 185,
         "startChar": 6,
