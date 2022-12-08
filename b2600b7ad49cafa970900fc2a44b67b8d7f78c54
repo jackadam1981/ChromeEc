@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d2f8a7a_385dd844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2022-12-08T07:27:29Z",
+      "side": 1,
+      "message": "Hi all,\n\nUploaded Flash_ec_script_Release01.zip into gerrit : https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3939345/2/Flash_ec_script_Release01.zip\n\nIt contains the directory\n\nlocal -\u003e python script to download the secondary loader and to program the ec image into the device\nflash_ec -\u003e scripts to check teh ec.bin in the ~/chromiumos/src/platform/ec/build/adrlvpp_mchp1727/ec.bin , run our scripts to download the secondary loader and program the ecfw image into the flash/\nscreenshots of the ec.bin / compilation steps\nsuccessful_logs.txt -\u003e steps how it compiled and programmed into the internal flash\nRegards,\nPrabhakar V",
+      "revId": "b2600b7ad49cafa970900fc2a44b67b8d7f78c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
