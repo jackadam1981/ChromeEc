@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab2b1132_d21e9ba5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-08T23:30:46Z",
+      "side": 1,
+      "message": "I think this should be turned on by default in the SoC\u0027s Kconfig, since I can\u0027t imagine a situation you wouldn\u0027t want to use hardware acceleration if it\u0027s implemented.",
+      "revId": "09b94ca316dc420435257ee4543e38956001e1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
