@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29688c5a_23737be5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-12-08T01:07:21Z",
+      "side": 1,
+      "message": "Boris,\nPRIu64 is not defined in legacy EC. This will cause build failure if any platform wants to enable CONFIG_SYSTEM_BOOT_TIME_LOGGING. CL (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4086980) defines PRIu64 format specifier for legacy EC, Please review and mark your vote.",
+      "revId": "50f6c07ece53ff4aa485d5bdd88276617a3e8db7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
