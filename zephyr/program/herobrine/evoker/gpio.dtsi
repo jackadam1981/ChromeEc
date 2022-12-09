@@ -98,7 +98,7 @@
 			gpios = <&gpio6 3 GPIO_INPUT>;
 			enum-name = "GPIO_CCD_MODE_ODL";
 		};
-		ec_batt_pres_odl {
+		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
 			gpios = <&gpioe 5 GPIO_INPUT>;
 			enum-name = "GPIO_BATT_PRES_ODL";
 		};
@@ -123,7 +123,7 @@
 			enum-name = "GPIO_SWITCHCAP_ON";
 		};
 		gpio_en_pp5000_s5: en_pp5000_s5 {
-			gpios = <&gpio7 3 GPIO_OUTPUT_HIGH>;
+			gpios = <&gpio7 3 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_EN_PP5000";
 		};
 		ec_bl_disable_l {
