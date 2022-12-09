@@ -16,6 +16,41 @@
       "message": "Does CONFIG_CMD_GPIO_EXTENDED (in common/gpio_commands.c) work?",
       "revId": "f53ec2cb2117481222084f06e8206bad8be507b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f6342f6_14be17dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-09T19:45:08Z",
+      "side": 1,
+      "message": "I originally considered that, and remember having some conversation during or before review, though I cannot find it.\n\nAs far as I recall, there were issues, possibly lack of ability to switch between push/pull and open drain without touching the high/low output value or changing the pullup settings.\n\nMy conclusion was that what was provided by CONFIG_CMD_GPIO_EXTENDED could not be used to implement the OpenTitan tool interface that I need to:\nhttps://github.com/lowRISC/opentitan/blob/master/sw/host/opentitanlib/src/io/gpio.rs#L62",
+      "parentUuid": "08dcaf9c_76a13d5f",
+      "revId": "f53ec2cb2117481222084f06e8206bad8be507b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "290b1fa7_f11f0540",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-09T19:45:08Z",
+      "side": 1,
+      "message": "Thanks for all these thorough reviews.",
+      "revId": "f53ec2cb2117481222084f06e8206bad8be507b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
