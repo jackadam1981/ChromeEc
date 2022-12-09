@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f9e4933_11572b2a",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-12-09T21:55:40Z",
+      "side": 1,
+      "message": "`make BOARD\u003d... print-make-vars` can also get you this variable.\n\nOK with the \"good enough\" regex tho.",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 61
+      },
+      "revId": "283d719377763f42c4df8d9cc313038b84f01434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "017925a2_e83dc00c",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-12-09T21:55:40Z",
+      "side": 1,
+      "message": "splitting the `build.mk` parsing into a function could be useful",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 55
+      },
+      "revId": "283d719377763f42c4df8d9cc313038b84f01434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
