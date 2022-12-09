@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9981871_0f55c598",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-12-09T02:40:54Z",
+      "side": 1,
+      "message": "In issue tracker b:242474986 #41:\nThis issue will block tentacruel fw qualification and fw qual test will be started on 12/23.\n\nSo could we merge this cros-ec version (test pass in #37) for fw qual test, then start another PR for moving to upstream crypto driver?",
+      "parentUuid": "ce257481_9b7a254a",
+      "revId": "17437d6abb0a3172c52b1f206dc2ff7c49d78223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0609e7dd_67ba9d08",
         "filename": "common/vboot_hash.c",
         "patchSetId": 14
