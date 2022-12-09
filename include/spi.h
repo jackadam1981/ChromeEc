@@ -30,6 +30,9 @@ enum spi_clock_mode {
 };
 
 struct spi_device_t {
+	/* Port name */
+	const char *name;
+
 	/*
 	 * SPI port the device is connected to.
 	 * On some architecture, this is SPI controller port index,
