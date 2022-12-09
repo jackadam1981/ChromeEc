@@ -46,6 +46,9 @@ struct spi_device_t {
 	/* gpio used for chip selection. */
 	enum gpio_signal gpio_cs;
 
+	/* Port name */
+	const char *name;
+
 #ifdef CONFIG_USB_SPI
 	/*
 	 * Flags used by usb_spi.c
