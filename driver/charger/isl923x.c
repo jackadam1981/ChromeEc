@@ -705,6 +705,14 @@ static void isl923x_init(int chgnum)
 
 		if (raw_write16(chgnum, ISL9238C_REG_CONTROL6, reg))
 			goto init_fail;
+
+		if (raw_read16(chgnum, ISL923X_REG_CONTROL0, &reg))
+			goto init_fail;
+
+		reg |= ISL923X_C0_ENABLE_BUCK;
+
+		if (raw_write16(chgnum, ISL923X_REG_CONTROL0, reg))
+			goto init_fail;
 	}
 
 	if (IS_ENABLED(CONFIG_CHARGER_RAA489000)) {
@@ -743,6 +751,7 @@ static void isl923x_init(int chgnum)
 		if (raw_read16(chgnum, ISL9238_REG_CONTROL3, &reg))
 			goto init_fail;
 		reg |= ISL9238_C3_NO_RELOAD_ACLIM_ON_ACIN;
+		reg |= ISL9238_C3_BB_SWITCHING_PERIOD;
 		if (!IS_ENABLED(CONFIG_CHARGER_RAA489000))
 			reg |= ISL9238_C3_NO_REREAD_PROG_PIN;
 
