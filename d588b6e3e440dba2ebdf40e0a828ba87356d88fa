@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b601afb1_4d252822",
+        "filename": "board/banshee/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-12-09T08:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "476c2838_07f7374d",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 25
+      },
+      "revId": "d588b6e3e440dba2ebdf40e0a828ba87356d88fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d46f4617_734eff12",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-08T19:01:13Z",
       "side": 1,
       "message": "Please extract this to a `is_framework_dp_hdmi_card(int port)` helper function",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 36
+      },
+      "revId": "d588b6e3e440dba2ebdf40e0a828ba87356d88fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83695381_8e357614",
+        "filename": "board/banshee/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-12-09T08:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d46f4617_734eff12",
       "range": {
         "startLine": 139,
         "startChar": 0,
