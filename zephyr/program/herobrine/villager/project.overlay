@@ -8,13 +8,13 @@
 #include "../common.dtsi"
 #include "../i2c.dtsi"
 #include "../interrupts.dtsi"
-#include "../keyboard.dtsi"
 #include "../default_gpio_pinctrl.dtsi"
 #include "../switchcap.dtsi"
 #include "../usbc.dtsi"
 
 /* Villager project DTS includes*/
 #include "gpio.dtsi"
+#include "keyboard.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
 #include "motionsense.dtsi"
