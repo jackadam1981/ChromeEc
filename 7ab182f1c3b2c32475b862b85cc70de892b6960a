@@ -158,6 +158,24 @@
       "parentUuid": "78020d7d_d0a1d8e7",
       "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd91c4c_fea1d652",
+        "filename": "core/host/host_exe.lds",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-09T22:26:16Z",
+      "side": 1,
+      "message": "Running locally on my workstation, you should be able to unconditionally include the BODY_DETECTION hook in the host file to make the unit testing work.",
+      "parentUuid": "db9af348_08e0879b",
+      "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
