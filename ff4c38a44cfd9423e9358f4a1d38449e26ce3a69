@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08014499_08ebb406",
+        "filename": "zephyr/boards/riscv/it8xxx2/Kconfig.defconfig",
+        "patchSetId": 15
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-12-09T10:07:47Z",
+      "side": 1,
+      "message": "Hi Peter,\n\nDo you mean default on in the SoC\u0027s Kconfig, like this?\nThis zmake shows: default on the choice symbol PLATFORM_EC_SHA256_HW_ACCELERATE will have no effect, as defaults do not affect choice symbols\nit seems that setting y takes effect only after declare in ec/zephyr/kconfig:589, so do we set the config like patchset#14? \n \n\u003cp.s\u003e on it8xxx2_evb prj.conf, PLATFORM_EC_VBOOT_HASH default is n, so it needs SOC_IT8XXX2_SHA256_HW_ACCELERATE\u003dn and PLATFORM_EC_SHA256_HW_ACCELERATE\u003dn.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 30
+      },
+      "revId": "ff4c38a44cfd9423e9358f4a1d38449e26ce3a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
