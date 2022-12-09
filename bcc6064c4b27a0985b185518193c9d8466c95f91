@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6133e91f_14ab2c7f",
+        "filename": "zephyr/program/herobrine/villager/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-12-09T23:28:10Z",
+      "side": 1,
+      "message": "Looks like most of the definitions are the same. Can it be done by overwriting the some of nodes/properties in this file, instead of redefining the entire things?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "bcc6064c4b27a0985b185518193c9d8466c95f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
