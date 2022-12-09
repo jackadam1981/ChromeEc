@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b3de13b_0579079c",
+        "filename": "zephyr/program/nissa/pujjo/src/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-09T01:56:25Z",
+      "side": 1,
+      "message": "These hooks are deprecated for Zephyr based boards.\nUse the AP_POWER notify API - a good example is in nissa/src/common.c\nIn fact, you could even add this call into the board_power_change() function\nand add AP_POWER_RESET to the bitmask of events.",
+      "revId": "69ffec3a91b99d611d2a6dcb14892ff3b77a667a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
