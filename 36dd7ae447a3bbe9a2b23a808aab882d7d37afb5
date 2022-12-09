@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a163f20f_41364387",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-09T02:22:49Z",
+      "side": 1,
+      "message": "nit: bool looks slightly more readable to me.",
+      "range": {
+        "startLine": 429,
+        "startChar": 2,
+        "endLine": 429,
+        "endChar": 5
+      },
+      "revId": "36dd7ae447a3bbe9a2b23a808aab882d7d37afb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ecfafe2_e1f1bfbb",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-09T02:22:49Z",
+      "side": 1,
+      "message": "nit: BIT(1) makes it look like a bit mask.",
+      "range": {
+        "startLine": 291,
+        "startChar": 35,
+        "endLine": 291,
+        "endChar": 39
+      },
+      "revId": "36dd7ae447a3bbe9a2b23a808aab882d7d37afb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
