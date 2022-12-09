@@ -331,7 +331,7 @@ struct pchg_drv {
 	/* Toggle pass-through mode. */
 	int (*passthru)(struct pchg *ctx, bool enable);
 	/* Control BIST commands. */
-	int (*bist)(struct pchg *ctx, uint8_t id);
+	int (*bist)(struct pchg *ctx, uint8_t test_id);
 };
 
 /**
