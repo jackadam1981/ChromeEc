@@ -33,6 +33,24 @@
       "message": "Enabling these commented pins look more significant than renaming. It would be difficult to attribute a bug to this patch by looking at the pathch description.",
       "revId": "530821d2cd5e23882b8fb4d7fef24c0bf7aa0f5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78800fb_5fe1a48b",
+        "filename": "board/hyperdebug/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-09T22:10:52Z",
+      "side": 1,
+      "message": "I see what you mean.  In the diff, it might look like I am enabling new pins, e.g. CN7_2, which was previously commented out.\n\nHowever, if you look closely, PIN(B, 8) was already enabled under the name of TPM_I2C1_HOST_SCL further down in the file, a declaration that is being removed now.  So this CL does not add or remove pins, it only moves around the code that declares them while changing their symbolic names.\n\nTo be pedantic, I do in fact change some of the pins to be declared as GPIO_ALTERNATE, rather than GPIO_INPUT or GPIO_OUTPUT | GPIO_OPEN_DRAIN.  I am not entirely sure what difference it makes, but I felt that it was more clear to be consistent, and declare all of the pins that are used for something other than GPIO in the default configuration to be declared as such.",
+      "parentUuid": "4edfc95d_35c771c1",
+      "revId": "530821d2cd5e23882b8fb4d7fef24c0bf7aa0f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
