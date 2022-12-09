@@ -63,6 +63,30 @@
       },
       "revId": "2bd64be58d177dbc680fe34f60e9b4b60e8d6cc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e85698bc_3a3b0dbf",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-09T02:28:52Z",
+      "side": 1,
+      "message": "Sorry I don\u0027t entirely understand your comment but if there is any assumption the host needs to follow, please document it.",
+      "parentUuid": "08d881bf_e494b3cd",
+      "range": {
+        "startLine": 636,
+        "startChar": 9,
+        "endLine": 636,
+        "endChar": 14
+      },
+      "revId": "2bd64be58d177dbc680fe34f60e9b4b60e8d6cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
