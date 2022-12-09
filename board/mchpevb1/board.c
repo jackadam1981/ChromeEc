@@ -273,9 +273,9 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
-	{ QMSPI0_PORT, 4, GPIO_QMSPI_CS0 },
+	{ .port = QMSPI0_PORT, .div = 4, .gpio_cs = GPIO_QMSPI_CS0 },
 #if defined(CONFIG_SPI_ACCEL_PORT)
-	{ GPSPI0_PORT, 2, GPIO_SPI0_CS0 },
+	{ .port = GPSPI0_PORT, .div = 2, .gpio_cs = GPIO_SPI0_CS0 },
 #endif
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
