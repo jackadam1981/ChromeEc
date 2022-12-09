@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21d4bb98_55a9ac48",
+        "filename": "include/timer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-09T19:55:14Z",
+      "side": 1,
+      "message": "If I remove it I\u0027ll get a build error:\n\n```\nIn file included from board/bloonchipper/fpsensor_detect.c:8:\ninclude/timer.h:99:6: error: conflicting types for \u0027usleep\u0027\nvoid usleep(unsigned us);\n     ^\n/usr/armv7m-cros-eabi/include/sys/unistd.h:240:6: note: previous declaration is here\nint     usleep (useconds_t __useconds);\n        ^\nIn file included from board/bloonchipper/fpsensor_detect.c:8:\ninclude/timer.h:123:20: error: static declaration of \u0027sleep\u0027 follows non-static declaration\nstatic inline void sleep(unsigned sec)\n                   ^\n/usr/armv7m-cros-eabi/include/sys/unistd.h:229:10: note: previous declaration is here\nunsigned sleep (unsigned int __seconds);\n         ^\n```",
+      "parentUuid": "09a8cfbd_7f74b319",
+      "revId": "e5207efdd0246dc484e74103488fd32aeddecb99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f887f86_0f7b5e62",
         "filename": "include/timer.h",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "writtenOn": "2022-12-09T18:05:12Z",
       "side": 1,
       "message": "Shouldn\u0027t we move these definitions into `builtin/unistd.h` and so we don\u0027t need these checks?",
+      "revId": "e5207efdd0246dc484e74103488fd32aeddecb99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b22bc8e_acffe47c",
+        "filename": "include/timer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-09T19:55:14Z",
+      "side": 1,
+      "message": "We tried it in https://crrev.com/c/4068498 but it didn\u0027t work because newlib does not have an implementation of `usleep()`.\n\nSee more details in this [comment thread](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4068498/comment/b3dd3519_3f8df637/)",
+      "parentUuid": "4f887f86_0f7b5e62",
       "revId": "e5207efdd0246dc484e74103488fd32aeddecb99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
