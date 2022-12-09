@@ -29,7 +29,7 @@
 #define K_SAMPLE 1
 #define K_WINDOW 3
 #define T_REQUEST_STABLE_TIME (10 * SECOND)
-#define T_NEXT_CHECK_TIME (5 * SECOND)
+#define T_NEXT_CHECK_TIME (20 * SECOND)
 
 #define DPS_FLAG_STOP_EVENTS \
 	(DPS_FLAG_DISABLED | DPS_FLAG_NO_SRCCAP | DPS_FLAG_NO_BATTERY)
@@ -42,7 +42,7 @@ BUILD_ASSERT(K_MORE_PWR > K_LESS_PWR && 100 >= K_MORE_PWR && 100 >= K_LESS_PWR);
 /* lock for updating timeout value */
 static mutex_t dps_lock;
 static timestamp_t timeout;
-static bool is_enabled = true;
+static bool is_enabled = false;
 static int debug_level;
 static bool fake_enabled;
 static int fake_mv, fake_ma;
@@ -152,11 +152,9 @@ static bool is_near_limit(int val, int limit)
 bool is_more_efficient(int curr_mv, int prev_mv, int batt_mv, int batt_mw,
 		       int input_mw)
 {
-	if (dps_config.is_more_efficient)
-		return dps_config.is_more_efficient(curr_mv, prev_mv, batt_mv,
-						    batt_mw, input_mw);
-
-	return ABS(curr_mv - batt_mv) < ABS(prev_mv - batt_mv);
+	// Oscillate between 12V and 15V forever
+	return (curr_mv == 12000 && prev_mv == 15000) ||
+	       (curr_mv == 15000 && prev_mv == 12000);
 }
 
 /*
@@ -410,48 +408,10 @@ test_mockable_static bool has_new_power_request(struct pdo_candidate *cand)
 			efficient = is_more_efficient(mv, cand->mv, batt_mv,
 						      batt_pwr, input_pwr_avg);
 
-			if (flag & DPS_FLAG_NEED_MORE_PWR) {
-				/* the insufficient case.*/
-				if (input_pwr_avg > cand->mw &&
-				    (mw > cand->mw ||
-				     (mw == cand->mw && efficient))) {
-					UPDATE_CANDIDATE(i, mv, mw);
-				} else if (input_pwr_avg <= mw && efficient) {
-					UPDATE_CANDIDATE(i, mv, mw);
-				}
-			} else {
-				int adjust_pwr =
-					mw * dps_config.k_less_pwr / 100;
-				int adjust_cand_mw =
-					cand->mw * dps_config.k_less_pwr / 100;
-
-				/* Pick if we don't have a candidate yet. */
-				if (!cand->mw) {
-					UPDATE_CANDIDATE(i, mv, mw);
-					/*
-					 * if the candidate is insufficient, and
-					 * we get one provides more.
-					 */
-				} else if ((adjust_cand_mw < input_pwr_avg &&
-					    cand->mw < mw) ||
-					   /*
-					    * if the candidate is sufficient,
-					    * and we pick a more efficient one.
-					    */
-					   (adjust_cand_mw >= input_pwr_avg &&
-					    adjust_pwr >= input_pwr_avg &&
-					    efficient)) {
-					UPDATE_CANDIDATE(i, mv, mw);
-				}
-			}
-
-			/*
-			 * if the candidate is the same as the current one, pick
-			 * the one at active charge port.
-			 */
-			if (mw == cand->mw && mv == cand->mv &&
-			    i == active_port)
+			if (efficient) {
 				UPDATE_CANDIDATE(i, mv, mw);
+				return true;
+			}
 		}
 	}
 
@@ -479,6 +439,8 @@ void dps_update_stabilized_time(int port)
 
 void dps_task(void *u)
 {
+	const struct gpio_dt_spec *const debug_gpio_spec =
+		GPIO_DT_FROM_NODELABEL(sm5803_stress_trigger);
 	struct pdo_candidate last_cand = { CHARGE_PORT_NONE, 0, 0 };
 	int sample_count = 0;
 	int rv;
@@ -541,7 +503,10 @@ void dps_task(void *u)
 		if (sample_count == dps_config.k_sample) {
 			dynamic_mv = curr_cand.mv;
 			dps_port = curr_cand.port;
+
+			gpio_pin_set_dt(debug_gpio_spec, 1);
 			pd_dpm_request(dps_port, DPM_REQUEST_NEW_POWER_LEVEL);
+			gpio_pin_set_dt(debug_gpio_spec, 1);
 			sample_count = 0;
 			atomic_clear_bits(&flag, (DPS_FLAG_SAMPLED |
 						  DPS_FLAG_NEED_MORE_PWR));

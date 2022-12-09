@@ -90,7 +90,6 @@
 			       <&gpioi 6 0>,
 			       <&gpioi 7 0>,
 			       <&gpioj 0 0>,
-			       <&gpioj 3 0>,
 			       <&gpiok 7 GPIO_OUTPUT>;
 	};
 
@@ -105,6 +104,10 @@
 		gpio_fan_enable: fan-enable {
 			gpios = <&gpioa 1 GPIO_OUTPUT>;
 			no-auto-init;
+		};
+
+		sm5803_stress_trigger: hack {
+			gpios = <&gpioj 3 GPIO_OUTPUT>;
 		};
 	};
 
