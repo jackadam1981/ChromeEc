@@ -560,6 +560,11 @@ enum nvmem_users {
 
 /* Enable hardware backed brute force resistance feature */
 #define CONFIG_PINWEAVER
+/*
+ * Pinweaver needs to track time through deep sleep. Store it in PWRDN
+ * scratch
+ */
+#define CONFIG_COLD_BOOT_TIME
 
 /*
  * Disabling p256 will result in RMA Auth falling back to the x25519 curve

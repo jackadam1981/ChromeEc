@@ -4,10 +4,12 @@
  */
 
 #include "common.h"
+#include "ec_commands.h"
 #include "hooks.h"
 #include "hwtimer.h"
 #include "init_chip.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -60,6 +62,14 @@ uint32_t __hw_clock_event_get(void)
 	return __hw_clock_source_read() +
 		ticks_to_usecs(GREG32(TIMELS, EVENT(VALUE)));
 }
+
+#ifdef CONFIG_COLD_BOOT_TIME
+uint32_t get_seconds_since_cold_boot(void)
+{
+	return (GREG32(PMU, PWRDN_SCRATCH23) +
+		(__hw_clock_source_read() / SECOND));
+}
+#endif
 
 void __hw_clock_event_clear(void)
 {
@@ -149,6 +159,13 @@ int __hw_clock_source_init(uint32_t start_t)
 	GWRITE_FIELD(TIMELS, EVENT(CONTROL), WRAP, 1);
 	GWRITE_FIELD(TIMELS, EVENT(CONTROL), RELOAD, 0);
 	GWRITE_FIELD(TIMELS, EVENT(CONTROL), ENABLE, 0);
+
+
+#ifdef CONFIG_COLD_BOOT_TIME
+	/* Save time since deep sleep before resetting the SOURCE timer. */
+	if (system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE)
+		GREG32(PMU, PWRDN_SCRATCH23) = get_seconds_since_cold_boot();
+#endif
 
 	/* Configure timer0 */
 	GREG32(TIMELS, SOURCE(RELOADVAL)) = TIMELS_MAX;

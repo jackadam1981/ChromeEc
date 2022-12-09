@@ -1190,6 +1190,9 @@
 /* Provide common core code to handle the operating system timers. */
 #define CONFIG_COMMON_TIMER
 
+/* Track time since cold boot */
+#undef CONFIG_COLD_BOOT_TIME
+
 /*****************************************************************************/
 
 /*
