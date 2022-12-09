@@ -29,6 +29,9 @@ elseif(DEFINED CONFIG_BOARD_HOGLIN)
 	project(hoglin)
 elseif(DEFINED CONFIG_BOARD_VILLAGER)
 	project(villager)
+	zephyr_library_sources(
+					"villager/src/keyboard.c"
+	)
 elseif(DEFINED CONFIG_BOARD_ZOGLIN)
 	project(zoglin)
 elseif(DEFINED CONFIG_BOARD_ZOMBIE)
