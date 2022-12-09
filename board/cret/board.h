@@ -11,8 +11,13 @@
 #define VARIANT_DEDEDE_EC_NPCX796FC
 #include "baseboard.h"
 
+/*
+ * The RAM and flash size combination on the the NPCX797FC does not leave
+ * any unused flash space that can be used to store the .init_rom section.
+ */
+#undef CONFIG_CHIP_INIT_ROM_REGION
+
 /* Save some flash space */
-#define CONFIG_CHIP_INIT_ROM_REGION
 #define CONFIG_DEBUG_ASSERT_BRIEF
 
 /* EC console commands */
