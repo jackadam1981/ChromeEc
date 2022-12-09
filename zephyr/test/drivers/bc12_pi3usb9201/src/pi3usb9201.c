@@ -19,6 +19,7 @@
 #include <zephyr/ztest.h>
 
 #ifdef CONFIG_USB_BC12
+#include <zephyr/drivers/usb/emul_bc12_pi3usb9201.h>
 #include <zephyr/drivers/usb/usb_bc12.h>
 #endif
 
