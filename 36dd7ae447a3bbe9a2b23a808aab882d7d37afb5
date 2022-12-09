@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48dc65e5_07fff184",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-09T05:33:48Z",
+      "side": 1,
+      "message": "As a C++ coder at heart, I could not agree more.  I was not aware that we could use the `bool` type in our C code, as I have seen `int` used many places where I think `bool` would be appropriate.\nDone.",
+      "parentUuid": "a163f20f_41364387",
+      "range": {
+        "startLine": 429,
+        "startChar": 2,
+        "endLine": 429,
+        "endChar": 5
+      },
+      "revId": "36dd7ae447a3bbe9a2b23a808aab882d7d37afb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ecfafe2_e1f1bfbb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-09T02:22:49Z",
       "side": 1,
       "message": "nit: BIT(1) makes it look like a bit mask.",
+      "range": {
+        "startLine": 291,
+        "startChar": 35,
+        "endLine": 291,
+        "endChar": 39
+      },
+      "revId": "36dd7ae447a3bbe9a2b23a808aab882d7d37afb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "180e369e_f7d593ce",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-09T05:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ecfafe2_e1f1bfbb",
       "range": {
         "startLine": 291,
         "startChar": 35,
