@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f71634_0fd16464",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-09T21:20:09Z",
+      "side": 1,
+      "message": "looks like there is no Type-C port-1, HDMI is directly connected to TCSS-1 on SOC",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "80fa294f5c91278409b1705ee2958fcf063069eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "335fba00_4fa381df",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-09T21:20:09Z",
+      "side": 1,
+      "message": "pls add changes to MCHP too",
+      "revId": "80fa294f5c91278409b1705ee2958fcf063069eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
