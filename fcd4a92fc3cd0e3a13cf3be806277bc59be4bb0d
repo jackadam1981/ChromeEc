@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d162a2_40f76f1a",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-09T10:47:55Z",
+      "side": 1,
+      "message": "You can drop the comment, does not make much sense to describe the reason for every line in the dts file, the file would become a gigantic mess of uncorrelated. We can easily git blame it if needed, plus as it stands one can\u0027t tell it refer to the int_usb_... lines anyway.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "fcd4a92fc3cd0e3a13cf3be806277bc59be4bb0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
