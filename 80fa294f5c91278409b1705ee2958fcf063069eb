@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "768a5da2_9133ad77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-09T21:31:22Z",
+      "side": 1,
+      "message": "this is 20G retimer.\nneed to limit the cable speed too",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "80fa294f5c91278409b1705ee2958fcf063069eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "335fba00_4fa381df",
         "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
         "patchSetId": 4
