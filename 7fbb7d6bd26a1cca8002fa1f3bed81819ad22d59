@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e23d94_763b2e5a",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "Should update this so port count isn\u0027t 1",
+      "range": {
+        "startLine": 394,
+        "startChar": 15,
+        "endLine": 394,
+        "endChar": 53
+      },
+      "revId": "7fbb7d6bd26a1cca8002fa1f3bed81819ad22d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
