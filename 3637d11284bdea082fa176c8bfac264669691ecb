@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "110d7371_459cf1ab",
+        "filename": "common/fan.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-09T23:33:09Z",
+      "side": 1,
+      "message": "Right again. Added a TEMP_TO_RATIO macro to fan.h at line 82.\n\nI wish I could have called the function in common/thermal.c for thermal_fan_percent, but I could not get the build.mk config right.\nIn any case, all of the fan tables are defined at file scope, and I would have needed to wrap them into initializer/getter functions to call that function.",
+      "parentUuid": "9d499686_e7bc8640",
+      "range": {
+        "startLine": 77,
+        "startChar": 25,
+        "endLine": 78,
+        "endChar": 21
+      },
+      "revId": "3637d11284bdea082fa176c8bfac264669691ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aead9a08_973178db",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-08T01:46:53Z",
       "side": 1,
       "message": "So, this should be previous_temp_ratio.",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "3637d11284bdea082fa176c8bfac264669691ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b1862b_c392b698",
+        "filename": "common/fan.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-09T23:33:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aead9a08_973178db",
       "range": {
         "startLine": 81,
         "startChar": 12,
