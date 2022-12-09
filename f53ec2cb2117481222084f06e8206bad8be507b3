@@ -22,6 +22,30 @@
       },
       "revId": "f53ec2cb2117481222084f06e8206bad8be507b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbdc3c35_052e5072",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-09T19:55:58Z",
+      "side": 0,
+      "message": "Correct, none of the ALTERNATE() declarations in the gpio.inc mentions MODULE_SPI_FLASH.\n\nThis HyperDebug board has several SPI busses, but does not itself attempt to initiate SPI communicate to flash or otherwise.  It forwards USB requests to the various SPI targets, and do not need to differentiate between them, or have a special \"flash\" SPI port.",
+      "parentUuid": "fda42a0b_ecb878b1",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 41
+      },
+      "revId": "f53ec2cb2117481222084f06e8206bad8be507b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
