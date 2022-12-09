@@ -215,6 +215,10 @@ static void print_battery_info(void)
 	if (check_print_error(battery_design_capacity(&value)))
 		ccprintf("%d mAh\n", value);
 
+	print_item_name("Charge Cycle:");
+	if (check_print_error(battery_cycle_count(&value)))
+		ccprintf("%d\n", value);
+
 	print_item_name("Time-full:");
 	if (check_print_error(battery_time_to_full(&value))) {
 		if (value == 65535) {
