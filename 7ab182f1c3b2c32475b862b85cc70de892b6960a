@@ -140,6 +140,24 @@
       "parentUuid": "67489358_4f19876c",
       "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9af348_08e0879b",
+        "filename": "core/host/host_exe.lds",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-09T16:53:23Z",
+      "side": 1,
+      "message": "I\u0027ll give a few things a try on my end.  If the ifdef doesn\u0027t work, then perhaps we should unconditionally include the hook and define `CONFIG_BODY_DETECTION` for all the tests using the host",
+      "parentUuid": "78020d7d_d0a1d8e7",
+      "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
