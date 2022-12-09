@@ -61,6 +61,20 @@ uint32_t __hw_clock_event_get(void)
 		ticks_to_usecs(GREG32(TIMELS, EVENT(VALUE)));
 }
 
+#ifdef CONFIG_TIMER_COLD_BOOT
+void __hw_clock_update_time_since_cold_boot(void)
+{
+	/* Use PWRDN scratch so it will only survive deep sleep resets. */
+	GREG32(PMU, PWRDN_SCRATCH23) = get_seconds_since_cold_boot();
+}
+
+uint32_t get_seconds_since_cold_boot(void)
+{
+	return (GREG32(PMU, PWRDN_SCRATCH23) +
+		(__hw_clock_source_read() / SECOND));
+}
+#endif
+
 void __hw_clock_event_clear(void)
 {
 	/* one-shot, 32-bit, timer & interrupts disabled, 1:1 prescale */
@@ -133,6 +147,11 @@ DECLARE_IRQ(GC_IRQNUM_TIMELS0_TIMINT0, __hw_clock_source_irq, 1);
 
 int __hw_clock_source_init(uint32_t start_t)
 {
+
+#ifdef CONFIG_TIMER_COLD_BOOT
+	/* Save time since deep sleep before resetting the SOURCE timer. */
+	__hw_clock_update_time_since_cold_boot();
+#endif
 
 	if (runlevel_is_high()) {
 		/* Verify the contents of CC_TRIM are valid */
