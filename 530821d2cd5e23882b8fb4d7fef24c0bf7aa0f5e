@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e29ee7a0_d8a86496",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-09T21:04:04Z",
+      "side": 1,
+      "message": "reluctantly +2",
+      "revId": "530821d2cd5e23882b8fb4d7fef24c0bf7aa0f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4edfc95d_35c771c1",
+        "filename": "board/hyperdebug/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-09T21:04:04Z",
+      "side": 1,
+      "message": "Enabling these commented pins look more significant than renaming. It would be difficult to attribute a bug to this patch by looking at the pathch description.",
+      "revId": "530821d2cd5e23882b8fb4d7fef24c0bf7aa0f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
