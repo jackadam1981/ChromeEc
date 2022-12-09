@@ -87,6 +87,30 @@
       },
       "revId": "2bd64be58d177dbc680fe34f60e9b4b60e8d6cc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd211fa2_2ea84cfd",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-09T05:33:24Z",
+      "side": 1,
+      "message": "What I am saying is that the code as is adequately resets its state when this method is called.\n\nOnly if we want to allow the board file usb_spi_board_disable() / _enable() methods to know which particular SPI device is being addressed, so that the board.c code can take steps to enable that one SPI controller, and not others, then we need to add a parameter to those methods, and take steps that first _disable() then _enable() is to be invoked upon a switch.  I have not need for that, I enable all the SPI controllers upfront in my board.c, and since above methods do not have a parameter, there can be no confusion.",
+      "parentUuid": "e85698bc_3a3b0dbf",
+      "range": {
+        "startLine": 636,
+        "startChar": 9,
+        "endLine": 636,
+        "endChar": 14
+      },
+      "revId": "2bd64be58d177dbc680fe34f60e9b4b60e8d6cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
