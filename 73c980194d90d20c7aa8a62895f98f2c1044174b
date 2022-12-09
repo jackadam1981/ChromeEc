@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e6b4264_82defe9c",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/gpio.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-12-09T22:38:12Z",
+      "side": 1,
+      "message": "Hi VJ and Keith,\n\nPer evaluation, yes, MCHP will add one macro file “xec_gpio_dt_macros” in upstream, then gpio can be simplified,\ngpios \u003d \u003c\u0026GPIO175 GPIO_INPUT\u003e;\nwhich makes developer easier and less mistakes. will take effect in next development or program.\nThanks your valuable inputs.",
+      "parentUuid": "1ff72fe1_4c3d5727",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "73c980194d90d20c7aa8a62895f98f2c1044174b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6009e415_faf466ee",
@@ -112,6 +136,30 @@
       "writtenOn": "2022-12-08T22:48:55Z",
       "side": 1,
       "message": "Not related to this CL, but it seems like `port_sel` and `pinctrl-0` properties provide redundant information.  Would it possible to eliminate the `port_sel` property upstream?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "73c980194d90d20c7aa8a62895f98f2c1044174b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8b616d5_2a9d5120",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/mtlrvp_mchp.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-12-09T22:38:12Z",
+      "side": 1,
+      "message": "Hi Keith,\nSince MCHP any I2C controller can map to any of 16 GPIO ports on runtime, so these 2 properties are still required by MCHP:\nport_sel: select port of any 16 ports;\npinctrl-0: select respective pair GPIOs;",
+      "parentUuid": "6009e415_faf466ee",
       "range": {
         "startLine": 66,
         "startChar": 0,
