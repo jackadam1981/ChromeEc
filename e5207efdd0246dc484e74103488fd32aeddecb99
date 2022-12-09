@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ab21c2_11cbea46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-09T23:20:02Z",
+      "side": 1,
+      "message": "I ran the script and the verdict is MATCH.\nI think the host is not tested by the script because I agree we should have seen a mismatch there.\n\nHere is the full output: http://go/paste/6332868161699840",
+      "parentUuid": "eff50978_d755a65f",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "e5207efdd0246dc484e74103488fd32aeddecb99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09a8cfbd_7f74b319",
