@@ -22,6 +22,30 @@
       },
       "revId": "7fbb7d6bd26a1cca8002fa1f3bed81819ad22d59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba53cec9_b987075c",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-09T22:54:14Z",
+      "side": 1,
+      "message": "hey good point, updated",
+      "parentUuid": "94e23d94_763b2e5a",
+      "range": {
+        "startLine": 394,
+        "startChar": 15,
+        "endLine": 394,
+        "endChar": 53
+      },
+      "revId": "7fbb7d6bd26a1cca8002fa1f3bed81819ad22d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
