@@ -26,12 +26,12 @@
 #define CONFIG_I2C
 #define CONFIG_I2C_CONTROLLER
 
-/* Host command over HECI */
-#define CONFIG_HOST_INTERFACE_HECI
-
 #ifdef BOARD_TGLRVP_ISH
 #define CONFIG_ACCELGYRO_LSM6DSM /* For LSM6DS3 */
 #define CONFIG_ACCEL_FORCE_MODE_MASK BIT(BASE_ACCEL)
+
+/* Host command over HECI */
+#define CONFIG_HOST_INTERFACE_HECI
 
 /* I2C ports */
 #define I2C_PORT_SENSOR ISH_I2C1
@@ -42,6 +42,10 @@
 #define CONFIG_CMD_TIMERINFO
 #define CONFIG_CMD_I2C_XFER
 #endif /* BOARD_TGLRVP_ISH */
+
+#ifdef BOARD_ADL_ISH_LITE
+#define CC_DEFAULT 0
+#endif
 
 /* Undefined features */
 #undef CONFIG_CMD_HASH
