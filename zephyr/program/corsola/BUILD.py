@@ -9,14 +9,14 @@
 
 def register_corsola_project(
     project_name,
-    chip="it81202bx",
+    chip="it81202cx",
 ):
     """Register a variant of corsola."""
     register_func = register_binman_project
     if chip.startswith("npcx"):
         register_func = register_npcx_project
 
-    chip_kconfig = {"it81202bx": "ite", "npcx9m3f": "npcx"}[chip]
+    chip_kconfig = {"it81202cx": "ite", "npcx9m3f": "npcx"}[chip]
 
     register_func(
         project_name=project_name,
