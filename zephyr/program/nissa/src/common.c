@@ -158,9 +158,11 @@ __override int pd_is_valid_input_voltage(int mv)
 	 * that other problematic PD voltages (near to, but not exactly 12V)
 	 * will rarely occur.
 	 */
+	/*
 	if (battery_cells == 3 && mv == 12000) {
 		return false;
 	}
+	*/
 	return true;
 }
 #endif
