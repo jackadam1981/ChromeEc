@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "407dd1fc_6f606fed",
+        "filename": "include/fan.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-10T03:56:32Z",
+      "side": 1,
+      "message": "Oh, good catch! Thank you!",
+      "parentUuid": "710482c2_51cf4eb3",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 27
+      },
+      "revId": "acccbe1aa958f6e989a6b503c6a0d825718dc3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc4b7c30_4a70a58c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-10T00:56:09Z",
       "side": 1,
       "message": "Alignment is broken again?",
+      "range": {
+        "startLine": 150,
+        "startChar": 35,
+        "endLine": 150,
+        "endChar": 36
+      },
+      "revId": "acccbe1aa958f6e989a6b503c6a0d825718dc3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34d8a59_b6abedcb",
+        "filename": "test/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-12-10T03:56:32Z",
+      "side": 1,
+      "message": "Fixed!\n\n(clang-format \"fixed\" these comments to have only a single space after the semicolon, but left spaces within the comments untouched, so I moved the space into the comment. This time, I changed to use a four-character variable ZERO and now the comments all align and have no extra space.)",
+      "parentUuid": "fc4b7c30_4a70a58c",
       "range": {
         "startLine": 150,
         "startChar": 35,
