@@ -16,6 +16,24 @@
       "message": "How does this relate to https://crrev.com/c/4050000, where enabling this seemed to correct misbehavior in some cases?",
       "revId": "466eaf94e3e17ae1f85ae8b4e406822f932866e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d5733ad_a48a6227",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-11T23:58:57Z",
+      "side": 1,
+      "message": "Prashant and Diana seemed quite clear in the bug that this should only be on with USB4/TBT ports.\nI can test it with some hubs and see if there is a regression.",
+      "parentUuid": "69e4e166_301631ca",
+      "revId": "466eaf94e3e17ae1f85ae8b4e406822f932866e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
