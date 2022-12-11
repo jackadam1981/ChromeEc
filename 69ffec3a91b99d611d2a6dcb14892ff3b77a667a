@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1c285aa_da54b603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-11T23:34:30Z",
+      "side": 1,
+      "message": "The backlight should already be disabled on AP suspend by `kblight_suspend`. Rather than adding more code, it should be determined why that doesn\u0027t work. (Perhaps because the `gpio_en_kb_bl` GPIO is misconfigured?)",
+      "revId": "69ffec3a91b99d611d2a6dcb14892ff3b77a667a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b3de13b_0579079c",
         "filename": "zephyr/program/nissa/pujjo/src/keyboard.c",
         "patchSetId": 2
