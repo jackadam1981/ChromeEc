@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_BASEBOARD_USBC_CONFIG_H
 #define __CROS_EC_BASEBOARD_USBC_CONFIG_H
 
-#include "gpio.h"
+#include "gpio_signal.h"
 
 #ifdef CONFIG_PLATFORM_EC_USB_PD_TCPM_RT1718S
 #define GPIO_EN_USB_C1_SINK RT1718S_GPIO1
