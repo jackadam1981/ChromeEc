@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81518148_2ce24bf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-11T23:48:57Z",
+      "side": 1,
+      "message": "This looks like it might be a bug in `cros_kblight/pwm_kblight.c`, where calling `kblight_pwm_set` will turn on the backlight even if it\u0027s disabled because `kblight_enabled` is not checked.",
+      "parentUuid": "a1c285aa_da54b603",
+      "revId": "69ffec3a91b99d611d2a6dcb14892ff3b77a667a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b3de13b_0579079c",
         "filename": "zephyr/program/nissa/pujjo/src/keyboard.c",
         "patchSetId": 2
