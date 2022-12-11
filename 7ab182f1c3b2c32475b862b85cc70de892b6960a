@@ -176,6 +176,24 @@
       "parentUuid": "db9af348_08e0879b",
       "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15e3a992_ab0bc7ae",
+        "filename": "core/host/host_exe.lds",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-12-11T08:55:41Z",
+      "side": 1,
+      "message": "Thanks for your suggestion, I added the BODY_DETECTION hook into host_exe.lds file.",
+      "parentUuid": "cdd91c4c_fea1d652",
+      "revId": "7ab182f1c3b2c32475b862b85cc70de892b6960a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
