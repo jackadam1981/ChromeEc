@@ -45,6 +45,30 @@
       },
       "revId": "c90abe45f0e9e163f1b36347db2be602e66de013",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45466bfb_b3973971",
+        "filename": "common/timer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T18:09:59Z",
+      "side": 1,
+      "message": "Update: I tested `make buildall` and this does not work on other EC boards:\n\n```\ncommon/timer.c:178:12: error: unknown type name \u0027__useconds_t\u0027\n  178 | int usleep(__useconds_t us)\n```",
+      "parentUuid": "7a68afca_e9cf0d13",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 23
+      },
+      "revId": "c90abe45f0e9e163f1b36347db2be602e66de013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
