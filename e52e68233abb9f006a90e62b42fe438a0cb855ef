@@ -154,6 +154,97 @@
       },
       "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f39976b7_2b0b5a05",
+        "filename": "driver/tcs3410/ams_tcs3410_mcu_driver/devices/tcs3410/tcs3410_fd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-12-12T17:21:44Z",
+      "side": 1,
+      "message": "NIT - alphabetize includes",
+      "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ffc28e8_e5606550",
+        "filename": "driver/tcs3410/ams_tcs3410_mcu_driver/devices/tcs3410/tcs3410_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-12-12T17:21:44Z",
+      "side": 1,
+      "message": "Should this be after the 0 like the others?",
+      "range": {
+        "startLine": 35,
+        "startChar": 21,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36a650d_f459b6b7",
+        "filename": "driver/tcs3410/ams_tcs3410_mcu_driver/devices/tcs3410/tcs3410_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-12-12T17:21:44Z",
+      "side": 1,
+      "message": "Is there additional code needed here?  If not, can delete this else block.",
+      "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2890b667_bad636a2",
+        "filename": "driver/tcs3410/ams_tcs3410_mcu_driver/devices/tcs3410/tcs3410_irq.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-12-12T17:21:44Z",
+      "side": 1,
+      "message": "nit - delete extra line",
+      "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a31299a_b91e8551",
+        "filename": "driver/tcs3410/ams_tcs3410_mcu_driver/devices/tcs3410/tcs3410_irq.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-12-12T17:21:44Z",
+      "side": 1,
+      "message": "nit - remove blank line",
+      "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
