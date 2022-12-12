@@ -34,6 +34,24 @@
       "parentUuid": "1f158358_adcd7eba",
       "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3539f01d_0d9b37d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-12T22:43:59Z",
+      "side": 1,
+      "message": "I suspect there is a configuration issue here, possibly with the [CONFIG_ARCH_POSIX](http://cs/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/include/config_chip.h?l\u003d971) flag. I ran an experiment by adding `#include \u003cunistd.h\u003e` to `system.h` and got the same compilation error. I then replaced that with the following and the compilation error went away.\n```\n#ifdef CONFIG_ARCH_POSIX\n#include \u003cunistd.h\u003e\n#endif\n```\n\nI don\u0027t know if this is the correct solution but it is at least a clue. \n\nNote: There are [other places](http://source/search?q\u003dunistd.h%20f:platform%2Fec%2F\u0026sq\u003d\u0026ss\u003dh%2Fchromium%2Fchromiumos%2Fcodesearch%2F%2B%2Fmain) where `unistd.h` is included so digging into the config files of builds using them will likely be helpful.",
+      "parentUuid": "2accfadd_b2fd3785",
+      "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
