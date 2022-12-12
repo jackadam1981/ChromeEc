@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f158358_adcd7eba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T20:48:03Z",
+      "side": 1,
+      "message": "Investigating build error with Zephyr:\n\n```\nFAILED: modules/ec/zephyr/CMakeFiles/ec_shim.dir/app/ec/ec_app_main.c.obj \nccache /opt/coreboot-sdk/bin/arm-eabi-gcc -DCHROMIUM_EC -DCONFIG_ZEPHYR -DKERNEL -D__PROGRAM_START -D__REQUIRE_ZEPHYR_GPIOS__ -D__ZEPHYR__\u003d1 -I../../../../zephyr/include -I../modules/ec/zephyr/shim/include -I../modules/ec/fuzz -I../modules/ec/test -I../modules/ec -I../modules/ec/include -I../modules/ec/include/driver -I../modules/ec/third_party -I../../../../zephyr/app/ec/include -I../../../../zephyr/fake/include -I../../../../zephyr/mock/include -I../../../../zephyr/shim/chip/npcx/include -I../../../../zephyr/program/herobrine/include -I/mnt/host/source/src/third_party/zephyr/main/include -Izephyr/include/generated -I/mnt/host/source/src/third_party/zephyr/main/soc/arm/nuvoton_npcx/npcx9 -I/mnt/host/source/src/third_party/zephyr/main/soc/arm/nuvoton_npcx/common/. -I/mnt/host/source/src/third_party/zephyr/main/drivers -I/mnt/host/source/src/third_party/zephyr/cmsis/CMSIS/Core/Include -I../include -Imodules/ec/zephyr/include -I../../../../common/spi/flash_reg/public -isystem /mnt/host/source/src/third_party/zephyr/main/lib/libc/minimal/include -isystem /opt/coreboot-sdk/lib/gcc/arm-eabi/11.2.0/include -isystem /opt/coreboot-sdk/lib/gcc/arm-eabi/11.2.0/include-fixed -flto -fno-fat-lto-objects -fno-PIC -fno-strict-aliasing -O0 -imacros /mnt/host/source/src/platform/ec/build/zephyr/hoglin/build-ro/zephyr/include/generated/autoconf.h -ffreestanding -fno-common -g -gdwarf-4 -fdiagnostics-color\u003dalways -mcpu\u003dcortex-m4 -mthumb -mabi\u003daapcs -mfp16-format\u003dieee -imacros /mnt/host/source/src/third_party/zephyr/main/include/zephyr/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wno-main -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-unused-but-set-variable -Werror\u003dimplicit-int -fno-pic -fno-pie -fno-asynchronous-unwind-tables -fno-reorder-functions -fno-defer-pop -fmacro-prefix-map\u003d/mnt/host/source/src/platform/ec/zephyr/program/herobrine\u003dCMAKE_SOURCE_DIR -fmacro-prefix-map\u003d/mnt/host/source/src/third_party/zephyr/main\u003dZEPHYR_BASE -ffunction-sections -fdata-sections -fprofile-arcs -ftest-coverage -fno-inline -fmacro-prefix-map\u003d/mnt/host/source/src/platform/ec/build/zephyr/hoglin/modules/ec\u003dEC_BASE -fmacro-prefix-map\u003d/mnt/host/source/src/platform\u003dEC_BASE -Werror -mno-unaligned-access -Wimplicit-fallthrough -std\u003dc99 -nostdinc -MD -MT modules/ec/zephyr/CMakeFiles/ec_shim.dir/app/ec/ec_app_main.c.obj -MF modules/ec/zephyr/CMakeFiles/ec_shim.dir/app/ec/ec_app_main.c.obj.d -o modules/ec/zephyr/CMakeFiles/ec_shim.dir/app/ec/ec_app_main.c.obj -c /mnt/host/source/src/platform/ec/zephyr/app/ec/ec_app_main.c\nIn file included from ../modules/ec/include/system.h:16,\n                 from ../modules/ec/include/cros_version.h:12,\n                 from ../modules/ec/zephyr/shim/include/zephyr_hooks_shim.h:12,\n                 from ../modules/ec/include/hooks.h:305,\n                 from /mnt/host/source/src/platform/ec/zephyr/app/ec/ec_app_main.c:12:\n../modules/ec/include/timer.h:21:10: fatal error: unistd.h: No such file or directory\n   21 | #include \u003cunistd.h\u003e\n      |          ^~~~~~~~~~\ncompilation terminated.\n```",
+      "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
