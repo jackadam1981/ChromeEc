@@ -22,6 +22,30 @@
       },
       "revId": "cbf484c805ba0838f62b4939df5b456fb4caba11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1102c32_e6bbe543",
+        "filename": "include/timer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-12T17:28:46Z",
+      "side": 1,
+      "message": "Also, although we don\u0027t appear to have a symbol for `usleep` from newlib, the headers do look like they have the declaration.",
+      "parentUuid": "a03c2795_d71cabdb",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "cbf484c805ba0838f62b4939df5b456fb4caba11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
