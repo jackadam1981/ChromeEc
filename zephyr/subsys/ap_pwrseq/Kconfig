@@ -23,6 +23,11 @@ module = AP_PWRSEQ
 module-str = AP power sequencing
 source "subsys/logging/Kconfig.template.log_config"
 
+config AP_PWRSEQ_DRIVER
+	bool "AP Power sequencing driver support"
+	help
+	  Enable using AP power sequence driver.
+
 config AP_PWRSEQ_SIGNAL_ADC
 	bool
 	default y
