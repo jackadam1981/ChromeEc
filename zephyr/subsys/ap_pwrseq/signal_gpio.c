@@ -10,12 +10,12 @@
 
 #include <power_signals.h>
 
-#define MY_COMPAT intel_ap_pwrseq_gpio
+#define DT_DRV_COMPAT intel_ap_pwrseq_gpio
 
 #define INIT_GPIO_SPEC(id) GPIO_DT_SPEC_GET(id, gpios),
 
-const static struct gpio_dt_spec spec[] = { DT_FOREACH_STATUS_OKAY(
-	MY_COMPAT, INIT_GPIO_SPEC) };
+const static struct gpio_dt_spec spec[] = { DT_INST_FOREACH_STATUS_OKAY(
+	INIT_GPIO_SPEC) };
 
 /*
  * Configuration for GPIO inputs.
@@ -35,8 +35,8 @@ struct ps_gpio_int {
 		.output = DT_PROP(id, output),               \
 	},
 
-const static struct ps_gpio_int gpio_config[] = { DT_FOREACH_STATUS_OKAY(
-	MY_COMPAT, INIT_GPIO_CONFIG) };
+const static struct ps_gpio_int gpio_config[] = { DT_INST_FOREACH_STATUS_OKAY(
+	INIT_GPIO_CONFIG) };
 
 static struct gpio_callback int_cb[ARRAY_SIZE(gpio_config)];
 

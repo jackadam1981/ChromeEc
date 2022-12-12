@@ -12,7 +12,7 @@
 
 #include <power_signals.h>
 
-#define MY_COMPAT intel_ap_pwrseq_adc
+#define DT_DRV_COMPAT intel_ap_pwrseq_adc
 
 LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
@@ -41,8 +41,8 @@ struct adc_config {
 		.signal = PWR_SIGNAL_ENUM(id),                                \
 	},
 
-static const struct adc_config config[] = { DT_FOREACH_STATUS_OKAY(
-	MY_COMPAT, INIT_ADC_CONFIG) };
+static const struct adc_config config[] = { DT_INST_FOREACH_STATUS_OKAY(
+	INIT_ADC_CONFIG) };
 
 /*
  * Bit allocations for atomic state
@@ -149,8 +149,8 @@ int power_signal_adc_disable(enum pwr_sig_adc adc)
 		trigger_##lev(PWR_ADC_ENUM(id));                          \
 	}
 
-DT_FOREACH_STATUS_OKAY_VARGS(MY_COMPAT, ADC_CB_DEFINE, high)
-DT_FOREACH_STATUS_OKAY_VARGS(MY_COMPAT, ADC_CB_DEFINE, low)
+DT_INST_FOREACH_STATUS_OKAY_VARGS(ADC_CB_DEFINE, high)
+DT_INST_FOREACH_STATUS_OKAY_VARGS(ADC_CB_DEFINE, low)
 
 #define ADC_CB_COMMA(id, lev) ADC_CB(id, lev),
 
@@ -158,10 +158,11 @@ void power_signal_adc_init(void)
 {
 	struct sensor_trigger trig = { .type = SENSOR_TRIG_THRESHOLD,
 				       .chan = SENSOR_CHAN_VOLTAGE };
-	sensor_trigger_handler_t low_cb[] = { DT_FOREACH_STATUS_OKAY_VARGS(
-		MY_COMPAT, ADC_CB_COMMA, low) };
-	sensor_trigger_handler_t high_cb[] = { DT_FOREACH_STATUS_OKAY_VARGS(
-		MY_COMPAT, ADC_CB_COMMA, high) };
+	sensor_trigger_handler_t low_cb[] = { DT_INST_FOREACH_STATUS_OKAY_VARGS(
+		ADC_CB_COMMA, low) };
+	sensor_trigger_handler_t high_cb[] = {
+		DT_INST_FOREACH_STATUS_OKAY_VARGS(ADC_CB_COMMA, high)
+	};
 	int i, rv;
 	int32_t val = 0;
 
