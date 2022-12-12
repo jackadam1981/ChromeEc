@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d99e57_0ab92f88",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-12T23:29:55Z",
+      "side": 1,
+      "message": "Can this be more selective? It looks like the only thing that doesn\u0027t otherwise get initialized is `w`, which might be left uninitialized if `SHA256_final` is called without any `SHA256_update` first.",
+      "revId": "876aedba9bd305445f530a98a05e50b2c87ba6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f9758d_fbd40bf7",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-12T23:29:55Z",
+      "side": 1,
+      "message": "It would be less error prone to use `ARRAY_SIZE(sha256_h0)` (and similar in the following `k` loop).",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "876aedba9bd305445f530a98a05e50b2c87ba6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

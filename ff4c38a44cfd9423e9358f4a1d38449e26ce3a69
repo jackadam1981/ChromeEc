@@ -70,6 +70,30 @@
       },
       "revId": "ff4c38a44cfd9423e9358f4a1d38449e26ce3a69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4664970_a0d51010",
+        "filename": "zephyr/boards/riscv/it8xxx2/Kconfig.defconfig",
+        "patchSetId": 15
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-12T23:29:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e31a2c6_adf6cc58",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 30
+      },
+      "revId": "ff4c38a44cfd9423e9358f4a1d38449e26ce3a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
