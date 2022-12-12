@@ -164,9 +164,35 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
+<<<<<<< PATCH SET (a46b75 dratini: Set TCPC_AUX_SWITCH to 0xC on Port 0 on mux set)
+/* Set aux switch to 0xc when CCD enabled on port C0 */
+static int board_anx7447_mux_set_c0(const struct usb_mux *me,
+				    mux_state_t mux_state)
+{
+	int port = me->usb_port;
+	int rv = EC_SUCCESS;
+
+	if (port != USB_PD_PORT_TCPC_0)
+		return rv;
+
+	if (gpio_get_level(GPIO_CCD_MODE_ODL))
+		return rv;
+
+	CPRINTS("C%d: set AUX_SW_SEL=0x%x", port, 0xc);
+	rv = tcpc_write(port, ANX7447_REG_TCPC_AUX_SWITCH, 0xc);
+	if (rv)
+		CPRINTS("C%d: Setting AUX_SW_SEL failed", port);
+
+	return rv;
+}
+
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+=======
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+>>>>>>> BASE      (903889 usb_mux: add board_set callback)
 	[USB_PD_PORT_TCPC_0] = {
 		.driver = &anx7447_usb_mux_driver,
+		.board_set = &board_anx7447_mux_set_c0,
 		.hpd_update = &anx7447_tcpc_update_hpd_status,
 	},
 	[USB_PD_PORT_TCPC_1] = {
