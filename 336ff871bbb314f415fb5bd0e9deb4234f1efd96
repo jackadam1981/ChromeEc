@@ -94,6 +94,30 @@
       },
       "revId": "336ff871bbb314f415fb5bd0e9deb4234f1efd96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba74016f_f27559c7",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-12-12T07:11:48Z",
+      "side": 0,
+      "message": "CHARGE_SUPPLIER_VBUS is replaced with CHARGE_SUPPLIER_TYPEC supplier in raa489000.c",
+      "parentUuid": "41dbac4f_50590106",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "336ff871bbb314f415fb5bd0e9deb4234f1efd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
