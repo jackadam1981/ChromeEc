@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a74f4e_c6797edc",
+        "filename": "zephyr/test/krabby/src/fwconfig_tentacruel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-12T08:49:22Z",
+      "side": 1,
+      "message": "reset these variables to 0 in setup()",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 1
+      },
+      "revId": "672363eef5c20af25fe9fb73a9547fee1e5caca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ad6965_2a6ce57b",
+        "filename": "zephyr/test/krabby/src/fwconfig_tentacruel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-12T08:49:22Z",
+      "side": 1,
+      "message": "trigger base_imu_int_l/lid_accel_int_l and verify both base_interrupt_id and lid_interrupt_id are 0.",
+      "revId": "672363eef5c20af25fe9fb73a9547fee1e5caca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6eb95cb_69cd0b12",
+        "filename": "zephyr/test/krabby/testcase.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-12T08:49:22Z",
+      "side": 1,
+      "message": "Merge krabby.tentacruel_fwconfig into krabby.tentacruel, no need to create a new test case.",
+      "revId": "672363eef5c20af25fe9fb73a9547fee1e5caca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
