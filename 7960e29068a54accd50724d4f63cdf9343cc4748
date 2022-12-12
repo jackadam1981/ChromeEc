@@ -52,6 +52,24 @@
       "parentUuid": "2accfadd_b2fd3785",
       "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a1807ed_8fa109d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T22:55:11Z",
+      "side": 1,
+      "message": "Thanks Bobby for looking into this!\n\nTo replicate your experiment, were you able to compile with `zmake build herobrine` after adding adding these lines to `include/system.h`?\n\n```\n#ifdef CONFIG_ARCH_POSIX\n#include \u003cunistd.h\u003e\n#endif\n```\n\nOr was it a standalone experiment?\n\nUnfortunately these issues are blocking the Eigen upgrade in https://crrev.com/c/4053470",
+      "parentUuid": "3539f01d_0d9b37d5",
+      "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
