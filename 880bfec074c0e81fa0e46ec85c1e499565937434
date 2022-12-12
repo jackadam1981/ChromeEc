@@ -16,6 +16,24 @@
       "message": "The timing is probably tricky, but you might be able to get a discard in the unit testing if you send something \"from the partner\" right after causing the alert to be requested.  Abe, feel free to chime in if you have a more precise approach than that.",
       "revId": "880bfec074c0e81fa0e46ec85c1e499565937434",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d8094fe_8df7fbcf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4479,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-12T18:15:00Z",
+      "side": 1,
+      "message": "To do this in the most natural way with our partner emulator, you\u0027d need to configure the partner to send `Get_Status` at the right time, and that might be kind of flaky without explicit synchronization. To synchronize it, you could have a hook in the partner when it\u0027s about to send _Get_Status_, and that could call back into the test code to change the power state again.\n\nThe most natural way to add that kind of hook might be to add a new type of fault to the faulty partner extension, although this isn\u0027t really a fault from a protocol POV.\n\nFor testing purposes, you don\u0027t necessarily care what the interrupting message is, and you might be able to avoid some emulator complexity by just directly poking the TCPC emulator to interrupt at the right time, but I can\u0027t immediately see how that would save you any plumbing work.",
+      "parentUuid": "64f33a34_589c9de5",
+      "revId": "880bfec074c0e81fa0e46ec85c1e499565937434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
