@@ -52,6 +52,24 @@
       "parentUuid": "6d5733ad_a48a6227",
       "revId": "466eaf94e3e17ae1f85ae8b4e406822f932866e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "444007fc_8f1f1bfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-12T20:31:41Z",
+      "side": 1,
+      "message": "I\u0027ll take a look at the bug.  In general, we should expect EC-driven mode entry to work with all port partners since that\u0027s what a majority of boards use.  AP-driven mode entry will expand to DP-only when tidal flow is finished, but that\u0027s still some time out.",
+      "parentUuid": "b294726d_913e73aa",
+      "revId": "466eaf94e3e17ae1f85ae8b4e406822f932866e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
