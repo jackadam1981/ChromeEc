@@ -35,6 +35,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba1a670e_09cb9a3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T17:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c377584d_34287d26",
+      "revId": "2fc8dadd8d68c06d887903bceecd41fe8a8fd340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d59b54b_5f4e4ee4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T17:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8297d0b6_58082309",
+      "revId": "2fc8dadd8d68c06d887903bceecd41fe8a8fd340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a67b20b_888dcb11",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-12-12T17:04:45Z",
       "side": 1,
       "message": "It looks like in this case it is successfully sleeping for the requested amount of time, so I think this should return `0`.",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "2fc8dadd8d68c06d887903bceecd41fe8a8fd340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f75f55_d8883ea9",
+        "filename": "core/host/timer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T17:58:12Z",
+      "side": 1,
+      "message": "You are right, I got confused by the word `INVALID` in the if condition and incorrectly assumed this was an error condition.\n\nDone.",
+      "parentUuid": "0a67b20b_888dcb11",
       "range": {
         "startLine": 24,
         "startChar": 8,
