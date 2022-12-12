@@ -43,6 +43,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26b5ed27_31964642",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-12-12T19:09:43Z",
+      "side": 1,
+      "message": "Its where EC_RESET_FLAG_HIBERNATE is defined. Do we normally use something else?",
+      "parentUuid": "85243204_1a5089cc",
+      "revId": "72e1d3f76d420c3a16afb836ba2b7912b4639f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f193a5c_52f73fcd",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-12-12T19:09:43Z",
+      "side": 1,
+      "message": "I just realized I need to update the PWRDN_SCRATCH23 value here too.",
+      "revId": "72e1d3f76d420c3a16afb836ba2b7912b4639f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e77d136a_d0d815f0",
         "filename": "chip/g/hwtimer.c",
         "patchSetId": 2
@@ -54,6 +89,30 @@
       "writtenOn": "2022-12-12T18:57:18Z",
       "side": 1,
       "message": "I don\u0027t understand how this works: here essentially the value in SCRATCH23 is incremented by `__hw_clock_source_read() / SECOND`, right?\n\nWHat does `__hw_clock_source_read()` return - isn\u0027t it time since resume from deep sleep?",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 63
+      },
+      "revId": "72e1d3f76d420c3a16afb836ba2b7912b4639f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919f46f2_f0abf53f",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-12-12T19:09:43Z",
+      "side": 1,
+      "message": "\u003e here essentially the value in SCRATCH23 is incremented by __hw_clock_source_read() / SECOND, right?\n\nRight.\n\n\u003e WHat does __hw_clock_source_read() return - isn\u0027t it time since resume from deep sleep?\n\nThis is before H1 reset the source timer, so it\u0027s the time since H1 last reset the timer. So it\u0027s the time H1 was up before deep sleep + the time in deep sleep.",
+      "parentUuid": "e77d136a_d0d815f0",
       "range": {
         "startLine": 167,
         "startChar": 2,
