@@ -33,6 +33,24 @@
       "message": "Hi Tommy,\nHere are some clang-format error, please run below command and update cl.\nclang-format -i board/lisbon/usbc_config.h\nclang-format -i board/lisbon/usbc_config.c",
       "revId": "77590afc4817dc41cd14ea7a4a3db16e3255ab3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a32d7eff_906902a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-12-12T06:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10df0fbe_fcec6029",
+      "revId": "77590afc4817dc41cd14ea7a4a3db16e3255ab3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
