@@ -50,6 +50,13 @@ test_mockable int sb_read(int cmd, int *param)
 
 #ifdef CONFIG_BATTERY_CUT_OFF
 	/*
+	 * Ship mode command need to set continuously, can't be interfered
+	 * by another command.
+	 */
+	if (battery_cutoff_in_progress())
+		return EC_RES_IN_PROGRESS;
+
+	/*
 	 * Some batteries would wake up after cut-off if we talk to it.
 	 */
 	if (battery_is_cut_off())
@@ -84,6 +91,13 @@ int sb_read_string(int offset, uint8_t *data, int len)
 
 #ifdef CONFIG_BATTERY_CUT_OFF
 	/*
+	 * Ship mode command need to set continuously, can't be interfered
+	 * by another command.
+	 */
+	if (battery_cutoff_in_progress())
+		return EC_RES_IN_PROGRESS;
+
+	/*
 	 * Some batteries would wake up after cut-off if we talk to it.
 	 */
 	if (battery_is_cut_off())
@@ -101,6 +115,13 @@ int sb_read_sized_block(int offset, uint8_t *data, int len)
 	int read_len = 0;
 
 	if (IS_ENABLED(CONFIG_BATTERY_CUT_OFF)) {
+		/*
+		 * Ship mode command need to set continuously, can't be
+		 * interfered by another command.
+		 */
+		if (battery_cutoff_in_progress())
+			return EC_RES_IN_PROGRESS;
+
 		/*
 		 * Some batteries would wake up after cut-off if we talk to it.
 		 */
