@@ -1,0 +1,253 @@
+/*
+ * Copyright 2022 Intel Corporation.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+#include <zephyr/logging/log.h>
+#include <zephyr/kernel.h>
+#include <zephyr/sys/atomic.h>
+
+#include "ap_power/ap_pwrseq.h"
+
+#define DT_DRV_COMPAT ap_pwrseq_state
+
+LOG_MODULE_REGISTER(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
+
+static K_KERNEL_STACK_DEFINE(ap_pwrseq_thread_stack,
+			     CONFIG_AP_PWRSEQ_STACK_SIZE);
+
+#define AP_PWRSEQ_EVENT_MASK	(BIT(AP_PWRSEQ_EVENT_COUNT) - 1)
+#define AP_PWRSEQ_STATES_MASK	(BIT(AP_POWER_STATE_COUNT) - 1)
+
+struct ap_pwrseq_cb_list {
+	uint32_t states;
+	sys_slist_t list;
+	struct k_spinlock lock;
+};
+
+struct ap_pwrseq_data {
+	void *sm_data;
+	struct k_thread thread;
+	struct k_event evt;
+	struct ap_pwrseq_cb_list entry_list;
+	struct ap_pwrseq_cb_list exit_list;
+};
+
+static struct ap_pwrseq_data ap_pwrseq_task_data;
+
+void ap_pwrseq_post_event(const struct device *dev,
+			 enum ap_pwrseq_event event)
+{
+	struct ap_pwrseq_data *const data = dev->data;
+
+	LOG_DBG("Posting Event: 0x%lX", BIT(event));
+	k_event_post(&data->evt, BIT(event));
+}
+
+enum ap_pwrseq_state ap_pwrseq_get_current_state(const struct device *dev)
+{
+	struct ap_pwrseq_data *const data = dev->data;
+
+	/* TODO: Call function to get current state from state machine */
+	(void)data;
+	return AP_POWER_STATE_UNDEF;
+}
+
+const char *const ap_pwrseq_get_state_str(enum ap_pwrseq_state state)
+{
+	/* TODO: Call function to get state string from state machine */
+	return NULL;
+}
+
+static int ap_pwrseq_add_state_callback(struct ap_pwrseq_cb_list *cb_list, sys_snode_t *node)
+{
+	if (!sys_slist_is_empty(&cb_list->list)) {
+		if (!sys_slist_find_and_remove(&cb_list->list, node)) {
+			return -EINVAL;
+		}
+	}
+
+	sys_slist_prepend(&cb_list->list, node);
+
+	return 0;
+}
+
+static int ap_pwrseq_register_state_callback(struct ap_pwrseq_state_callback
+					     *state_cb,
+					     struct ap_pwrseq_cb_list *cb_list)
+{
+	if (!(state_cb->states_bit_mask & AP_PWRSEQ_STATES_MASK)) {
+		return -EINVAL;
+	}
+
+	k_spinlock_key_t key = k_spin_lock(&cb_list->lock);
+	if (ap_pwrseq_add_state_callback(cb_list, &state_cb->node)) {
+		return -EINVAL;
+	} else {
+		cb_list->states |=
+			AP_PWRSEQ_STATES_MASK & state_cb->states_bit_mask;
+	}
+	k_spin_unlock(&cb_list->lock, key);
+
+	return 0;
+}
+
+int ap_pwrseq_register_entry_state_callback(const struct device *dev,
+					    struct ap_pwrseq_state_callback
+					    *state_cb)
+{
+	struct ap_pwrseq_data *data = dev->data;
+
+	return ap_pwrseq_register_state_callback(state_cb, &data->entry_list);
+}
+
+int ap_pwrseq_register_exit_state_callback(const struct device *dev,
+					   struct ap_pwrseq_state_callback
+					   *state_cb)
+{
+	struct ap_pwrseq_data *data = dev->data;
+
+	return ap_pwrseq_register_state_callback(state_cb, &data->exit_list);
+}
+
+static void ap_pwrseq_send_callbacks(const struct device *dev,
+				     enum ap_pwrseq_state state,
+				     struct ap_pwrseq_cb_list *cb_list)
+{
+	struct ap_pwrseq_state_callback *state_cb, *tmp;
+
+	if (!(cb_list->states & BIT(state))) {
+		return;
+	}
+	SYS_SLIST_FOR_EACH_CONTAINER_SAFE(&cb_list->list, state_cb, tmp, node) {
+		if (state_cb->states_bit_mask & BIT(state) &&
+		    state_cb->cb) {
+			state_cb->cb(dev, state);
+		}
+	}
+}
+
+static uint32_t ap_pwrseq_wait_event(const struct device *dev, k_timeout_t timeout)
+{
+	struct ap_pwrseq_data *const data = dev->data;
+	uint32_t events;
+
+	events = k_event_wait(&data->evt, AP_PWRSEQ_EVENT_MASK, false, timeout);
+	/* Reset all events posted */
+	k_spinlock_key_t  key = k_spin_lock(&data->evt.lock);
+	data->evt.events &= ~events;
+	k_spin_unlock(&data->evt.lock, key);
+
+	return events;
+}
+
+static void ap_pwrseq_thread(void *arg, void *unused1, void *unused2)
+{
+	struct device *const dev = (struct device *)arg;
+	struct ap_pwrseq_data *const data = dev->data;
+	enum ap_pwrseq_state cur_state = AP_POWER_STATE_UNDEF;
+	k_timeout_t timeout = K_NO_WAIT;
+
+	LOG_INF("Power Sequence thread start");
+	while(true) {
+		uint32_t events = ap_pwrseq_wait_event(dev, timeout);
+		if (events) {
+			LOG_DBG("Events posted: 0x%X", events);
+		}
+
+		/**
+		 * TODO: Get current state from state machine and store it in
+		 * `cur_state`
+		 **/
+
+		/**
+		 * TODO: Call state machine function to execute current state
+		 * action handler.
+		 **/
+
+		if (cur_state !=
+		   /**
+		    * TODO: Call function to get current state from state
+		    * machine.
+		    **/
+		    AP_POWER_STATE_UNDEF) {
+			/* Previous state generates callbacks for exit actions */
+			ap_pwrseq_send_callbacks(dev,
+				/**
+				 * TODO: Call function to get current state from
+				 * state machine.
+				 **/
+				AP_POWER_STATE_UNDEF,
+				&data->exit_list);
+
+			/* New state generates callbacks for entry actions */
+			ap_pwrseq_send_callbacks(dev,
+				/**
+				 * TODO: Call function to get previous state
+				 * from state machine.
+				 **/
+				AP_POWER_STATE_UNDEF,
+				&data->entry_list);
+			timeout = K_NO_WAIT;
+		} else {
+			/* No state transition, wait for any event */
+			timeout = K_FOREVER;
+		}
+	}
+}
+
+static int ap_pwrseq_driver_init(const struct device *dev)
+{
+	struct ap_pwrseq_data *const data = dev->data;
+	int ret = 0;
+	k_tid_t tid;
+
+	/* TODO: Obtain state machine data reference. */
+	k_event_init(&data->evt);
+
+	tid = k_thread_create(&data->thread,
+		ap_pwrseq_thread_stack,
+		K_KERNEL_STACK_SIZEOF(ap_pwrseq_thread_stack),
+		(k_thread_entry_t)ap_pwrseq_thread,
+		(void *)dev, NULL, NULL,
+		CONFIG_AP_PWRSEQ_THREAD_PRIORITY, 0, K_FOREVER);
+
+	k_thread_name_set(&data->thread, "ap_pwrseq_task");
+
+	/**
+	 * TODO: Call function to initialize state machine, and store result on
+	 * `ret`.
+	 **/
+	if (ret) {
+		/* Something is wrong, abort thread execution. */
+		k_thread_abort(tid);
+		return ret;
+	}
+
+	if (IS_ENABLED(CONFIG_AP_PWRSEQ_AUTOSTART)) {
+		k_thread_start(tid);
+	}
+
+	return 0;
+}
+
+void ap_pwrseq_thread_start(const struct device *dev)
+{
+	struct ap_pwrseq_data *const data = dev->data;
+
+	if (!IS_ENABLED(CONFIG_AP_PWRSEQ_AUTOSTART)) {
+		k_thread_start(&data->thread);
+	}
+}
+
+DEVICE_DEFINE(ap_pwrseq_dev, "ap_pwrseq_drv",
+		      ap_pwrseq_driver_init, NULL,
+		      &ap_pwrseq_task_data, NULL,
+		      APPLICATION,
+		      CONFIG_APPLICATION_INIT_PRIORITY, NULL);
+
+const struct device * ap_pwrseq_get_instance(void)
+{
+	return DEVICE_GET(ap_pwrseq_dev);
+}
