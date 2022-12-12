@@ -78,6 +78,7 @@ FORWARD_DECLARE_ENUM(battery_present){
 
 enum battery_cutoff_states {
 	BATTERY_CUTOFF_STATE_NORMAL = 0,
+	BATTERY_CUTOFF_STATE_START_CUT_OFF,
 	BATTERY_CUTOFF_STATE_CUT_OFF,
 	BATTERY_CUTOFF_STATE_PENDING,
 };
@@ -437,6 +438,11 @@ int battery_imbalance_mv(void);
  * @return EC_RES_INVALID_COMMAND if the battery doesn't support.
  */
 int board_cut_off_battery(void);
+
+/**
+ * Return if the battery start cut off.
+ */
+int battery_start_cut_off(void);
 
 /**
  * Return if the battery has been cut off.
