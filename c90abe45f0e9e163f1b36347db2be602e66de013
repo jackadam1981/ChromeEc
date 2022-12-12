@@ -24,6 +24,53 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7378a050_cb583677",
+        "filename": "builtin/stdlib.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-12T19:17:51Z",
+      "side": 1,
+      "message": "I think it\u0027s okay here, although it would be nicer defined in a common location that could be used throughout the codebase. For example, this is already defined as `SEC_UL` in [timer.h](http://cs/chromeos_public/src/platform/ec/include/timer.h?rcl\u003de1cfeb867cc7c8a853198ceff80c375051598f60\u0026l\u003d24), but including `timer.h` here would make an odd dependency. If both files referenced common `constants.h` file it would make more sense.\n\nI don\u0027t think this is required for this CL though.",
+      "parentUuid": "69ebd484_fb2da837",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "c90abe45f0e9e163f1b36347db2be602e66de013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5000b598_22e07029",
+        "filename": "builtin/unistd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-12T19:17:51Z",
+      "side": 1,
+      "message": "Just to be clear, what happens if `BOARD_HOST` is defined? Is the expectation that this file isn\u0027t included in `BOARD_HOST` because the standard one will? If so, then maybe this should look like this:\n\n```\n#ifdef BOARD_HOST\n#error This file shouldn\u0027t be included by BOARD_HOST, please check your build configuration\n#else\n...\n#endif\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "c90abe45f0e9e163f1b36347db2be602e66de013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a68afca_e9cf0d13",
@@ -61,6 +108,30 @@
       "side": 1,
       "message": "Update: I tested `make buildall` and this does not work on other EC boards:\n\n```\ncommon/timer.c:178:12: error: unknown type name \u0027__useconds_t\u0027\n  178 | int usleep(__useconds_t us)\n```",
       "parentUuid": "7a68afca_e9cf0d13",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 23
+      },
+      "revId": "c90abe45f0e9e163f1b36347db2be602e66de013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6fabea4_82e71058",
+        "filename": "common/timer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-12T19:17:51Z",
+      "side": 1,
+      "message": "Technically speaking it is more correct to use `__useconds_t` for [usleep](https://man7.org/linux/man-pages/man3/usleep.3.html) so I think it would make sense to just add a typedef for `__useconds_t` to `builtins/sys/types.h` (if you map it to `unsigned` then it shouldn\u0027t change any behavior).",
+      "parentUuid": "45466bfb_b3973971",
       "range": {
         "startLine": 178,
         "startChar": 11,
