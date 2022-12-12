@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a03c2795_d71cabdb",
+        "filename": "include/timer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-12T17:21:52Z",
+      "side": 1,
+      "message": "I think you can remove the `#ifdef` here and then remove the declaration of `usleep` below. You may need to add `ifndef BOARD_HOST` in `builtin/unistd.h`. It\u0027s a little weird to have `ifdef`s in `builtin`, but I think it\u0027s better to have a single place for the declaration than multiple.\n\nI think the same thing will work for `sleep`, but you\u0027ll have to move the definition out of the `timer.h` header and into the C file.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "cbf484c805ba0838f62b4939df5b456fb4caba11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
