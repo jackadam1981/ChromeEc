@@ -16,6 +16,23 @@
       "message": "Found that I forgot to remove `THROT_TYPE_C1` and `THROT_TYPE_C2`. Update from PS#23 to PS#24.",
       "revId": "77590afc4817dc41cd14ea7a4a3db16e3255ab3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10df0fbe_fcec6029",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524952
+      },
+      "writtenOn": "2022-12-12T05:41:28Z",
+      "side": 1,
+      "message": "Hi Tommy,\nHere are some clang-format error, please run below command and update cl.\nclang-format -i board/lisbon/usbc_config.h\nclang-format -i board/lisbon/usbc_config.c",
+      "revId": "77590afc4817dc41cd14ea7a4a3db16e3255ab3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
