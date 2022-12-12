@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b0e0d7_e59cc7c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-12T17:57:42Z",
+      "side": 1,
+      "message": "Hi Arther, this patch makes sense. My commnets are mostly on naming. Thanks,",
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500d4c46_a0af2068",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-12T17:57:42Z",
+      "side": 1,
+      "message": "How about BATTERY_CUTOFF_STATE_STARTED or BATTERY_CUTOFF_STATE_IN_PROGRESS?",
+      "range": {
+        "startLine": 316,
+        "startChar": 33,
+        "endLine": 316,
+        "endChar": 67
+      },
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1912b6d6_9d825790",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-12T17:57:42Z",
+      "side": 1,
+      "message": "I think we should return EC_RES_IN_PROGRESS.",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 29
+      },
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e719b460_09697d0a",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-12T17:57:42Z",
+      "side": 1,
+      "message": "nit: interfered?",
+      "range": {
+        "startLine": 94,
+        "startChar": 57,
+        "endLine": 94,
+        "endChar": 65
+      },
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b3618ef_c92c3b51",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-12T17:57:42Z",
+      "side": 1,
+      "message": "Please describe this state (especially in comparison with PENDING).",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 35
+      },
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae73b8f3_b57cd4af",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-12T17:57:42Z",
+      "side": 1,
+      "message": "nit: This looks like an API which kicks off (\u003dstart) cutoff. How about battery_cutoff_started or battery_cutoff_in_progress?",
+      "range": {
+        "startLine": 445,
+        "startChar": 4,
+        "endLine": 445,
+        "endChar": 25
+      },
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
