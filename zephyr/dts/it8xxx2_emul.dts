@@ -9,6 +9,7 @@
 
 #include <dt-bindings/gpio_defines.h>
 #include <dt-bindings/native-posix-gpio.h>
+#include <freq.h>
 
 #define GPIO_VOLTAGE_1P8 NATIVE_POSIX_GPIO_VOLTAGE_1P8
 
@@ -191,5 +192,10 @@
 		nchannels = <6>;
 		ref-internal-mv = <3300>;
 		#io-channel-cells = <1>;
+	};
+
+	clock: clock {
+		compatible = "cros,clock-control-emul";
+		clock-frequency = <DT_FREQ_M(100)>; /* 100 MHz */
 	};
 };
