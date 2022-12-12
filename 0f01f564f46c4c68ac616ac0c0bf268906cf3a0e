@@ -16,6 +16,98 @@
       "message": "Sam, please take a look.",
       "revId": "0f01f564f46c4c68ac616ac0c0bf268906cf3a0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1644b89a_6cde61b4",
+        "filename": "zephyr/program/herobrine/evoker/src/charger_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-12-12T19:13:04Z",
+      "side": 1,
+      "message": "nit:\n  int on_temp;\n  int off_temp;",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 8
+      },
+      "revId": "0f01f564f46c4c68ac616ac0c0bf268906cf3a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c8e475_145211e4",
+        "filename": "zephyr/program/herobrine/evoker/src/charger_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-12-12T19:13:04Z",
+      "side": 1,
+      "message": "check if curr \u003d\u003d NULL and return EC_ERROR_PARAM1",
+      "range": {
+        "startLine": 41,
+        "startChar": 72,
+        "endLine": 41,
+        "endChar": 76
+      },
+      "revId": "0f01f564f46c4c68ac616ac0c0bf268906cf3a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be522bb8_cc2d2a4e",
+        "filename": "zephyr/program/herobrine/evoker/src/charger_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-12-12T19:13:04Z",
+      "side": 1,
+      "message": "nit\nstatic int current_temp;\nstatic int previous_temp;",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 40
+      },
+      "revId": "0f01f564f46c4c68ac616ac0c0bf268906cf3a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b84b614_e331d199",
+        "filename": "zephyr/program/herobrine/evoker/src/charger_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-12-12T19:13:04Z",
+      "side": 1,
+      "message": "should you return here if (current_temp \u003d\u003d previous_temp) ?",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "0f01f564f46c4c68ac616ac0c0bf268906cf3a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
