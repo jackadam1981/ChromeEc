@@ -15,3 +15,15 @@ tests:
     extra_configs:
       - CONFIG_TEST_TENTACRUEL=y
       - CONFIG_PLATFORM_EC_CHARGER_PROFILE_OVERRIDE=y
+  krabby.tentacruel_fwconfig:
+    extra_args: DTC_OVERLAY_FILE="common.dts;../program/corsola/ite_interrupts.dtsi;../program/corsola/ite_gpio.dtsi;../program/corsola/ite_motionsense.dtsi;../program/corsola/tentacruel/cbi.dtsi;pinctrl.dts;cbi_sensor.dts"
+    extra_configs:
+      - CONFIG_TEST_FWCONFIG=y
+      - CONFIG_EEPROM=y
+      - CONFIG_EEPROM_SIMULATOR=n
+      - CONFIG_EMUL_EEPROM_AT2X=y
+      - CONFIG_PLATFORM_EC_MOTIONSENSE=y
+      - CONFIG_PLATFORM_EC_DYNAMIC_MOTION_SENSOR_COUNT=y
+      - CONFIG_PLATFORM_EC_GMR_TABLET_MODE=y
+      - CONFIG_PLATFORM_EC_TABLET_MODE=y
+      - CONFIG_PLATFORM_EC_LID_ANGLE=y

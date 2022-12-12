@@ -22,6 +22,12 @@ config TEST_TENTACRUEL
 	  Include temp_tentacruel test into the binary to test temperature
 	  threshold trigger current control.
 
+config TEST_FWCONFIG
+	bool "Run the tests intended for alt sensor probe"
+	help
+	  Include sensor_tentacruel.c into the binary to test the alt sensor probe via
+	  FW config.
+
 endchoice
 
 source "Kconfig.zephyr"
