@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9f9a3c2_f97c62b8",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-12T23:51:42Z",
+      "side": 1,
+      "message": "Okay, see what you think of the `ifdef` version",
+      "parentUuid": "316c164f_25089bee",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70c878da_773cbcd5",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 5
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "I agree that, as is, the DPM flag is sufficient synchronization. It would probably be good to comment that that\u0027s how it needs to be used.",
       "parentUuid": "a5d4c959_ac81c8c1",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9af96210_7be40e69",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-12T23:51:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c026238a_22d3e651",
       "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -178,6 +214,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d67cfd5_dbdbd89f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-12T23:51:42Z",
+      "side": 1,
+      "message": "Okay, cleared the way to let unsolicited replies notify the AP",
+      "parentUuid": "a9a0ad66_e1f8dd54",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23a12cdd_12eb4e4a",
@@ -191,6 +245,24 @@
       "writtenOn": "2022-11-23T17:14:57Z",
       "side": 1,
       "message": "Nit: Since this isn\u0027t a number of bytes, I wouldn\u0027t call it \"size.\" Maybe `vdm_response_num_objects`?",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf9307f1_025f99d8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 7352,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-12T23:51:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23a12cdd_12eb4e4a",
       "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
