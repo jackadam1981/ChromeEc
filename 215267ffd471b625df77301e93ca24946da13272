@@ -124,6 +124,60 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f5016b6_adb83971",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T21:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5884d7d_244d270a",
+      "revId": "215267ffd471b625df77301e93ca24946da13272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f37bd1_a06992c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T21:52:57Z",
+      "side": 1,
+      "message": "Yep! It worked with that CL. I added an explicit dependency in the commit message.",
+      "parentUuid": "f9fbee68_5af1382a",
+      "revId": "215267ffd471b625df77301e93ca24946da13272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d6cc937_fd7e5a3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T21:52:57Z",
+      "side": 1,
+      "message": "Tested also on Dartmonkey and it works.\n\nNote: in my test I also cherry-picked https://crrev.com/c/4081572",
+      "parentUuid": "30dda036_da7b1d1c",
+      "revId": "215267ffd471b625df77301e93ca24946da13272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d06eeebc_643b08c3",
@@ -232,6 +286,54 @@
       "side": 1,
       "message": "this is what I declared in my test\nconstexpr uint8_t test1_image_block[17][17] \u003d {...",
       "parentUuid": "0db055d5_15afc2d9",
+      "range": {
+        "startLine": 45,
+        "startChar": 21,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "215267ffd471b625df77301e93ca24946da13272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1505431a_66ae317b",
+        "filename": "test/std_vector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T21:52:57Z",
+      "side": 1,
+      "message": "Tested with float and it passes:\n\n\n```\n\nstd::vector\u003cfloat\u003e global_vec{ 30, 31, 32, 33, 34 };\ntest_static int global_init_elements()\n{\n\tTEST_EQ(static_cast\u003cint32_t\u003e(global_vec.size()), 5, \"%d\");\n\tTEST_EQ(global_vec[0], 30.f, \"%f\");\n\tTEST_EQ(global_vec[1], 31.f, \"%f\");\n\tTEST_EQ(global_vec[2], 32.f, \"%f\");\n\tTEST_EQ(global_vec[3], 33.f, \"%f\");\n\tTEST_EQ(global_vec[4], 34.f, \"%f\");\n\n\treturn EC_SUCCESS;\n}\n```\n\nNote: in my test I also cherry-picked https://crrev.com/c/4081572",
+      "parentUuid": "8d1dc3f5_1e472b8d",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "215267ffd471b625df77301e93ca24946da13272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28f8e30_d6d61f77",
+        "filename": "test/std_vector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T21:52:57Z",
+      "side": 1,
+      "message": "I declared the variable `test1_image_block` right before the `std::vector` and the test passed as expected.\n\nNote: in my test I also cherry-picked https://crrev.com/c/4081572",
+      "parentUuid": "31928aa6_373f63dc",
       "range": {
         "startLine": 45,
         "startChar": 21,
