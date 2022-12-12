@@ -81,14 +81,14 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 #endif /* CONFIG_ZEPHYR */
 
 /* indicate MT8186 is processing a chipset reset. */
-static bool is_resetting;
+test_export_static bool is_resetting;
 /* indicate MT8186 is processing a AP shutdown. */
-static bool is_shutdown;
+test_export_static bool is_shutdown;
 /*
  * indicate exiting off state, and don't respect the power signals until chipset
  * on.
  */
-static bool is_exiting_off = true;
+test_export_static bool is_exiting_off = true;
 
 static void reset_request_interrupt_deferred(void)
 {
@@ -296,6 +296,7 @@ enum power_state power_chipset_init(void)
 			gpio_enable_interrupt(GPIO_AP_EC_WARM_RST_REQ);
 			disable_sleep(SLEEP_MASK_AP_RUN);
 		}
+		is_exiting_off = false;
 
 		return init_state;
 	}
@@ -315,6 +316,8 @@ enum power_state power_chipset_init(void)
 		} else {
 			is_exiting_off = false;
 		}
+	} else {
+		is_exiting_off = false;
 	}
 
 	if (init_state != POWER_G3 && !exit_hard_off)
