@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c377584d_34287d26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-12T17:05:53Z",
+      "side": 1,
+      "message": "Looks like there is another instance:\n\n```\nchip/mchp/lfw/ec_lfw.c:206:6: error: conflicting types for \u0027usleep\u0027; have \u0027void(unsigned int)\u0027\n  206 | void usleep(unsigned int us)\n      |      ^~~~~~\nIn file included from include/system.h:16,\n                 from include/cros_version.h:12,\n                 from chip/mchp/lfw/ec_lfw.c:12:\ninclude/timer.h:99:5: note: previous declaration of \u0027usleep\u0027 with type \u0027int(unsigned int)\u0027\n   99 | int usleep(unsigned us);\n      |     ^~~~~~\n```",
+      "revId": "2fc8dadd8d68c06d887903bceecd41fe8a8fd340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a67b20b_888dcb11",
         "filename": "core/host/timer.c",
         "patchSetId": 4
