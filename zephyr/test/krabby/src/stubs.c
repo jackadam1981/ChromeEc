@@ -22,3 +22,18 @@ int board_get_adjusted_usb_pd_port_count(int port)
 {
 	return 2;
 }
+
+int lid_is_open(void)
+{
+	return 1;
+}
+
+uint16_t tcpc_get_alert_status(void)
+{
+	return 0;
+}
+
+__attribute__((weak)) bool in_interrupt_context(void)
+{
+	return false;
+}
