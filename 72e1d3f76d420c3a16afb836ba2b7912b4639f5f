@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ad755c_924022ad",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-12-12T18:57:18Z",
+      "side": 1,
+      "message": "This whole config stuff made sence when we were one of many boards built from the same codebase. Ever since Cr50 moved to its own branch there is no real need to gate features by config flags. Let\u0027s just not add new ones.",
+      "range": {
+        "startLine": 563,
+        "startChar": 1,
+        "endLine": 567,
+        "endChar": 29
+      },
+      "revId": "72e1d3f76d420c3a16afb836ba2b7912b4639f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85243204_1a5089cc",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-12-12T18:57:18Z",
+      "side": 1,
+      "message": "why is ec_commands.h inclusion required? I thought we got rid of this include along with the rest of EC command support.",
+      "revId": "72e1d3f76d420c3a16afb836ba2b7912b4639f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e77d136a_d0d815f0",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-12-12T18:57:18Z",
+      "side": 1,
+      "message": "I don\u0027t understand how this works: here essentially the value in SCRATCH23 is incremented by `__hw_clock_source_read() / SECOND`, right?\n\nWHat does `__hw_clock_source_read()` return - isn\u0027t it time since resume from deep sleep?",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 63
+      },
+      "revId": "72e1d3f76d420c3a16afb836ba2b7912b4639f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
