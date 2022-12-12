@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca668414_bc6d65f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-12-12T16:53:00Z",
+      "side": 1,
+      "message": "Just some nits.",
+      "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9797faa4_29691854",
+        "filename": "driver/tcs3410/ams_fft/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-12-12T16:53:00Z",
+      "side": 1,
+      "message": "Are these extra spaces?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 1
+      },
+      "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7913865f_a81e0d18",
+        "filename": "driver/tcs3410/ams_fft/src/ams_fft.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-12-12T16:53:00Z",
+      "side": 1,
+      "message": "NIT- remove extra spaces at EOL",
+      "range": {
+        "startLine": 760,
+        "startChar": 67,
+        "endLine": 760,
+        "endChar": 68
+      },
+      "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bce8c3c_6e758827",
+        "filename": "driver/tcs3410/ams_fifo_compression_decode/src/ams_fifo_decode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-12-12T16:53:00Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa6e0cdd_66eb2c94",
+        "filename": "driver/tcs3410/ams_fifo_compression_decode/src/ams_fifo_decode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-12-12T16:53:00Z",
+      "side": 1,
+      "message": "NIT - remove excess spaces throughout all files",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 1
+      },
+      "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961e4c29_6f63b904",
+        "filename": "driver/tcs3410/ams_fifo_compression_decode/src/ams_fifo_decode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-12-12T16:53:00Z",
+      "side": 1,
+      "message": "tab instead of spaces",
+      "range": {
+        "startLine": 314,
+        "startChar": 3,
+        "endLine": 314,
+        "endChar": 7
+      },
+      "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89bfce0a_d27a7ed0",
+        "filename": "driver/tcs3410/ams_tcs3410_mcu_driver/devices/ams_device.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-12-12T16:53:00Z",
+      "side": 1,
+      "message": "Some of these align all the commas, some do not.  Can you make these consistent one way or the other?",
+      "range": {
+        "startLine": 126,
+        "startChar": 14,
+        "endLine": 126,
+        "endChar": 15
+      },
+      "revId": "e52e68233abb9f006a90e62b42fe438a0cb855ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
