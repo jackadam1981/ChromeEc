@@ -46,6 +46,30 @@
       },
       "revId": "cbf484c805ba0838f62b4939df5b456fb4caba11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d7ebbc9_81428bc5",
+        "filename": "include/timer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T17:58:05Z",
+      "side": 1,
+      "message": "Thanks for the instructions. Bobby had a similar thought, but I missed the part where I have to make changes to `unistd.h`.\n\n\u003e  the headers do look like they have the declaration.\n\nYes, I think that declaration is causing a conflict with the types. See other comment.",
+      "parentUuid": "d1102c32_e6bbe543",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "cbf484c805ba0838f62b4939df5b456fb4caba11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

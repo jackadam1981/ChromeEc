@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ebd484_fb2da837",
+        "filename": "builtin/stdlib.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T17:58:05Z",
+      "side": 1,
+      "message": "Let me know if I should move this `#define` next to the function declaration that uses it.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "c90abe45f0e9e163f1b36347db2be602e66de013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a68afca_e9cf0d13",
+        "filename": "common/timer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T17:58:05Z",
+      "side": 1,
+      "message": "I had to change this to fix the following error in the `bloonchipper` build:\n\n```\ncommon/timer.c:177:5: error: conflicting types for \u0027usleep\u0027\nint usleep(unsigned us)\n    ^\n/usr/armv7m-cros-eabi/include/sys/unistd.h:240:6: note: previous declaration is here\nint     usleep (useconds_t __useconds);\n        ^\n1 error generated.\n```\n\nDo you think it\u0027s okay to use this type?\n\nFYI, I tried also using `uint32_t` but it didn\u0027t work.",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 23
+      },
+      "revId": "c90abe45f0e9e163f1b36347db2be602e66de013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
