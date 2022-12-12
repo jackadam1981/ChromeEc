@@ -70,6 +70,24 @@
       "parentUuid": "3539f01d_0d9b37d5",
       "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "216c2abc_5c1355f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-12T23:45:44Z",
+      "side": 1,
+      "message": "I haven\u0027t looked to see if these are actually used, but there are [several `libc` implementations in the zephyr source](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/lib/libc/), none of which have `unistd.h`.\n\nHere\u0027s what looks like the [source of `unistd.h` in Zephyr](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/include/zephyr/posix/unistd.h;l\u003d52-53;drc\u003d221f7bfbef557d27d0f43135b20916384f1203ce).\n\nAlso, there is a `CONFIG_ZEPHYR` define that can be used for zephyr-specific things in the EC code (but would be nice if we didn\u0027t have to do that).",
+      "parentUuid": "0a1807ed_8fa109d2",
+      "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
