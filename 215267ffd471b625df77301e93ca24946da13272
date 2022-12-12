@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2d6f514_a0c654e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-12T19:27:57Z",
+      "side": 1,
+      "message": "Thanks for the heads up! \n\nI have just done `repo sync` and `./update_chroot` but it is still failing:\n\n```\nDEBUG:root:b\u0027Running global_init_elements...\\r\\n\u0027\nDEBUG:root:b\u0027Pass: static_cast\u003cint32_t\u003e(global_vec.size()) \u003d\u003d 5\\r\\n\u0027\nDEBUG:root:b\u0027test/std_vector.cc:49: ASSERTION failed: global_vec[0] \u003d\u003d 30\\r\\n\u0027\nDEBUG:root:b\u0027\\t\\tEVAL: 24 \u003d\u003d 30\\r\\n\u0027\nDEBUG:root:b\u0027Fail\\r\\n\u0027\n```\n\nI\u0027ll retry again later to make sure I have all the dependencies.",
+      "parentUuid": "a206f424_e3e4f2e3",
+      "revId": "215267ffd471b625df77301e93ca24946da13272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d06eeebc_643b08c3",
         "filename": "test/std_vector.cc",
         "patchSetId": 1
