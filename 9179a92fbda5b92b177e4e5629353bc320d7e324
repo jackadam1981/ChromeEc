@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96768328_00185446",
+        "filename": "zephyr/test/ap_power/src/ap_pwrseq.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-12-12T19:05:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cb2d119f_7407ed91",
+      "range": {
+        "startLine": 123,
+        "startChar": 40,
+        "endLine": 123,
+        "endChar": 55
+      },
+      "revId": "9179a92fbda5b92b177e4e5629353bc320d7e324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f3947cc_f1afc248",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-11T23:56:36Z",
       "side": 1,
       "message": "Depending on test execution order like this is fragile; changing one test might require changing all of them. These counts should be zeroed before each test (but maybe change that in another commit).",
+      "range": {
+        "startLine": 128,
+        "startChar": 15,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "9179a92fbda5b92b177e4e5629353bc320d7e324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de037c9_d9f658cb",
+        "filename": "zephyr/test/ap_power/src/ap_pwrseq.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-12-12T19:05:41Z",
+      "side": 1,
+      "message": "I can implement this on this patch, I also found a false positive that I am fixing on this patch as well.",
+      "parentUuid": "3f3947cc_f1afc248",
       "range": {
         "startLine": 128,
         "startChar": 15,
