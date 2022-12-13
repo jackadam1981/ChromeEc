@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30eca9af_71a8586c",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2022-12-13T23:22:15Z",
+      "side": 1,
+      "message": "Do we also need to handle PCHG_BIST_CMD_RF_CHARGE_OFF ?",
+      "revId": "db9c5d70e6f7be360682bf9649ffbed8508907f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
