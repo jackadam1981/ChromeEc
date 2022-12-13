@@ -16,6 +16,24 @@
       "message": "What if the battery is requesting less than 1A?  Does the temperature need to be taken into account here as well?  How does this affect the time to charge fully in S0?",
       "revId": "87b0193a7fe12f8a0dd9f1dd50fac8ea5468942c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "433b2d4d_8e273490",
+        "filename": "zephyr/program/skyrim/winterhold/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-12-13T02:56:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96ef0b1c_a83dd09d",
+      "revId": "87b0193a7fe12f8a0dd9f1dd50fac8ea5468942c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
