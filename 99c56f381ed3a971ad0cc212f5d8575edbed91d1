@@ -52,6 +52,24 @@
       "parentUuid": "6f5b3772_60da9d53",
       "revId": "99c56f381ed3a971ad0cc212f5d8575edbed91d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97afc1de_1e87dfed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-13T22:55:19Z",
+      "side": 1,
+      "message": "I had assumed that most boards put the battery on its own bus, but on review that\u0027s not true; many share a bus with the charger, and some other things like sensors.\n\nAs such, I think adding a lock to the battery is the better way to go; it shouldn\u0027t be very complex because all the I2C accesses go through only a few `sb_` functions.",
+      "parentUuid": "c27a07d6_ff637a4b",
+      "revId": "99c56f381ed3a971ad0cc212f5d8575edbed91d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
