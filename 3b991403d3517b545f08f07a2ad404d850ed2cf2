@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "225a06ed_60894a0b",
+        "filename": "test/gettimeofday.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-13T00:37:17Z",
+      "side": 1,
+      "message": "TODO: I need to add a comment that these tests only work on the host. If you try to mock the timer on the device, it won\u0027t boot since it needs a working timer for that.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 1
+      },
+      "revId": "3b991403d3517b545f08f07a2ad404d850ed2cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
