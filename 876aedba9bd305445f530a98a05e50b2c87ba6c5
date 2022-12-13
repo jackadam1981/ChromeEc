@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d68c7701_2e6ac529",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-12-13T06:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5d99e57_0ab92f88",
+      "revId": "876aedba9bd305445f530a98a05e50b2c87ba6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19f9758d_fbd40bf7",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-12-12T23:29:55Z",
       "side": 1,
       "message": "It would be less error prone to use `ARRAY_SIZE(sha256_h0)` (and similar in the following `k` loop).",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "876aedba9bd305445f530a98a05e50b2c87ba6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c9670c2_641b0d7b",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-12-13T06:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f9758d_fbd40bf7",
       "range": {
         "startLine": 41,
         "startChar": 17,
