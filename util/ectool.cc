@@ -36,6 +36,8 @@
 #include "tablet_mode.h"
 #include "usb_pd.h"
 
+#include <libec/add_entropy_command.h>
+
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
 
@@ -567,39 +569,24 @@ int cmd_adc_read(int argc, char *argv[])
 
 int cmd_add_entropy(int argc, char *argv[])
 {
-	struct ec_params_rollback_add_entropy p;
-	int rv;
-	int tries = 100; /* Wait for 10 seconds at most */
-
+	bool reset = false;
 	if (argc >= 2 && !strcmp(argv[1], "reset"))
-		p.action = ADD_ENTROPY_RESET_ASYNC;
-	else
-		p.action = ADD_ENTROPY_ASYNC;
+		reset = true;
 
-	rv = ec_command(EC_CMD_ADD_ENTROPY, 0, &p, sizeof(p), NULL, 0);
-
-	if (rv != EC_RES_SUCCESS)
-		goto out;
-
-	while (tries--) {
-		usleep(100000);
-
-		p.action = ADD_ENTROPY_GET_RESULT;
-		rv = ec_command(EC_CMD_ADD_ENTROPY, 0, &p, sizeof(p), NULL, 0);
-
-		if (rv == EC_RES_SUCCESS) {
-			printf("Entropy added successfully\n");
-			return EC_RES_SUCCESS;
-		}
-
-		/* Abort if EC returns an error other than EC_RES_BUSY. */
-		if (rv <= -EECRESULT && rv != -EECRESULT - EC_RES_BUSY)
-			goto out;
+	ec::AddEntropyCommand add_entropy_command(reset);
+	if (!add_entropy_command.Run(comm_get_fd())) {
+		fprintf(stderr, "Failed to run addentropy command\n");
+		return -1;
 	}
 
-	rv = -EECRESULT - EC_RES_TIMEOUT;
-out:
-	fprintf(stderr, "Failed to add entropy: %d\n", rv);
+	int rv = add_entropy_command.Result();
+	if (rv != EC_RES_SUCCESS) {
+		rv = -EECRESULT - add_entropy_command.Result();
+		fprintf(stderr, "Failed to add entropy: %d\n", rv);
+		return rv;
+	}
+
+	printf("Entropy added successfully\n");
 	return rv;
 }
 
@@ -8318,6 +8305,26 @@ int cmd_board_version(int argc, char *argv[])
 	return rv;
 }
 
+int cmd_boottime(int argc, char *argv[])
+{
+	struct ap_boot_time_data response;
+	int rv;
+
+	rv = ec_command(EC_CMD_GET_BOOT_TIME, 0, NULL, 0, &response,
+			sizeof(response));
+	if (rv < 0)
+		return rv;
+
+	printf("arail: %" PRIu64 "\n", response.timestamp[ARAIL]);
+	printf("rsmrst: %" PRIu64 "\n", response.timestamp[RSMRST]);
+	printf("espirst: %" PRIu64 "\n", response.timestamp[ESPIRST]);
+	printf("pltrst_low: %" PRIu64 "\n", response.timestamp[PLTRST_LOW]);
+	printf("pltrst_high: %" PRIu64 "\n", response.timestamp[PLTRST_HIGH]);
+	printf("cnt: %" PRIu16 "\n", response.cnt);
+	printf("ec_cur_time: %" PRIu64 "\n", response.timestamp[EC_CUR_TIME]);
+	return rv;
+}
+
 static void cmd_cbi_help(char *cmd)
 {
 	fprintf(stderr,
@@ -10948,6 +10955,7 @@ const struct command commands[] = {
 	{ "batterycutoff", cmd_battery_cut_off },
 	{ "batteryparam", cmd_battery_vendor_param },
 	{ "boardversion", cmd_board_version },
+	{ "boottime", cmd_boottime },
 	{ "button", cmd_button },
 	{ "cbi", cmd_cbi },
 	{ "chargecurrentlimit", cmd_charge_current_limit },
