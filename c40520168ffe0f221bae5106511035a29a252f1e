@@ -232,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c29f1a3e_09dfbae7",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T23:05:19Z",
+      "side": 1,
+      "message": "Marking as unresolved.",
+      "parentUuid": "7387dc6c_7c93495d",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 35
+      },
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae73b8f3_b57cd4af",
         "filename": "include/battery.h",
         "patchSetId": 1
