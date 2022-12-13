@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa4cb02_836b74ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-12-13T21:10:02Z",
+      "side": 1,
+      "message": "ectool build failed:\n```\nec-utils-0.0.2-r11938:   HOSTCXX  util/ectool\nec-utils-0.0.2-r11938: util/ectool.cc:39:10: fatal error: \u0027libec/add_entropy_command.h\u0027 file not found\nec-utils-0.0.2-r11938: #include \u003clibec/add_entropy_command.h\u003e\nec-utils-0.0.2-r11938:          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nec-utils-0.0.2-r11938: 1 error generated.\nec-utils-0.0.2-r11938: make: *** [Makefile.rules:691: build/host/util/ectool] Error 1\n```\nThere might be a fix for ectool that is not included here",
+      "revId": "76a7887d511de365d205cb3d826994c01eb68848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
