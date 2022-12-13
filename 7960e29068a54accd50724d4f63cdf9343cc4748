@@ -160,6 +160,29 @@
       "parentUuid": "ad464e2d_dab34d79",
       "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d6f697_5ade6086",
+        "filename": "common/timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-13T15:33:38Z",
+      "side": 1,
+      "message": "This might be outside the scope of this CL, or it may just simplify it (I\u0027m honestly not sure!) but if FPMCU will be using the `sleep` and `usleep` implementations from `newlib` and all other EC targets are already Zephyr based then maybe we\u0027d be better off porting the Zephyr targets to use the [Zephyr implementation](http://go/gh/youvedeep/zephyr-1/blob/706e66c86191d78ba50e4d0aca1fec7a336247c5/kernel/posix/sleep.c) and just deleting the EC versions.",
+      "range": {
+        "startLine": 179,
+        "startChar": 4,
+        "endLine": 179,
+        "endChar": 10
+      },
+      "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
