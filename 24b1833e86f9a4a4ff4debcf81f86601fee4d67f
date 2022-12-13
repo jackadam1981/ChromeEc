@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b177e2b_78fc2843",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-13T22:59:18Z",
+      "side": 1,
+      "message": "Andrew, would you mind taking a look at this and ensuring it makes sense for your drivers?  We currently send polarity to the SAFE mode sets for the virtual mux, I believe",
+      "revId": "24b1833e86f9a4a4ff4debcf81f86601fee4d67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
