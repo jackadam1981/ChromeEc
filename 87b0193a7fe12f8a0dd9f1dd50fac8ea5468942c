@@ -34,6 +34,24 @@
       "parentUuid": "96ef0b1c_a83dd09d",
       "revId": "87b0193a7fe12f8a0dd9f1dd50fac8ea5468942c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1291be9d_dea64073",
+        "filename": "zephyr/program/skyrim/winterhold/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-12-13T03:02:59Z",
+      "side": 1,
+      "message": "If the battery is requesting less than 1A, will follow battery request. The 1A can be reduce the the temperature, so if less 1A, it\u0027s no impact.\n\nAbout the charge time, please refer the result we tested: b/257851736#comment18.\nThe charging time around 3.5hrs with 0.3C charge current.",
+      "parentUuid": "433b2d4d_8e273490",
+      "revId": "87b0193a7fe12f8a0dd9f1dd50fac8ea5468942c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
