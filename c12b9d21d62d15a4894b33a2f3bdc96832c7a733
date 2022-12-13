@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c89e07_661f3623",
+        "filename": "board/marasov/fw_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-12-13T04:14:10Z",
+      "side": 1,
+      "message": "Is it a typo? Should be \u0027ufc\u0027.",
+      "range": {
+        "startLine": 26,
+        "startChar": 11,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "c12b9d21d62d15a4894b33a2f3bdc96832c7a733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
