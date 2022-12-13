@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a83abe64_97560486",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-12-13T03:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "500d4c46_a0af2068",
+      "range": {
+        "startLine": 316,
+        "startChar": 33,
+        "endLine": 316,
+        "endChar": 67
+      },
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1912b6d6_9d825790",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-12-12T17:57:42Z",
       "side": 1,
       "message": "I think we should return EC_RES_IN_PROGRESS.",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 29
+      },
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6f93288_bcbe04d2",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-12-13T03:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1912b6d6_9d825790",
       "range": {
         "startLine": 57,
         "startChar": 9,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ed0b73_c2622ef6",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-12-13T03:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e719b460_09697d0a",
+      "range": {
+        "startLine": 94,
+        "startChar": 57,
+        "endLine": 94,
+        "endChar": 65
+      },
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b3618ef_c92c3b51",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf713f5_3253a313",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-12-13T03:03:25Z",
+      "side": 1,
+      "message": "BATTERY_CUTOFF_STATE_IN_PROGRESS \u003d\u003e let other function to know that cut off state is beginning but not completely. \nDon\u0027t to read battery data between cut off process, avoid battery FW cut off fail. \nb:260684835 FR is low but it exist risk really.",
+      "parentUuid": "0b3618ef_c92c3b51",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 35
+      },
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae73b8f3_b57cd4af",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-12-12T17:57:42Z",
       "side": 1,
       "message": "nit: This looks like an API which kicks off (\u003dstart) cutoff. How about battery_cutoff_started or battery_cutoff_in_progress?",
+      "range": {
+        "startLine": 445,
+        "startChar": 4,
+        "endLine": 445,
+        "endChar": 25
+      },
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c471115_c69a6520",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-12-13T03:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae73b8f3_b57cd4af",
       "range": {
         "startLine": 445,
         "startChar": 4,
