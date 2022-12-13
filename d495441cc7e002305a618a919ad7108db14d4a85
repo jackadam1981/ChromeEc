@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "74af670f_f86e114e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-12-13T18:32:12Z",
+      "side": 1,
+      "message": "Please check the following link about how to write a test: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr/ztest.md\n\nThere are some existing board-specific tests, you can also refer to, like: \n  zephyr/test/herobrine/src/board_chipset.c\n\nLet me know if you have any question.",
+      "parentUuid": "22aed8b7_eae68400",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "d495441cc7e002305a618a919ad7108db14d4a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "957eea31_64a9ce42",
