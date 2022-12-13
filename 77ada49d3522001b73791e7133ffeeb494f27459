@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b66ada_5a4e9c02",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-13T17:17:58Z",
+      "side": 1,
+      "message": "That looks OK to me. For the functions that are non-trivial in both cases, I could see it looking more elegant if you had helper functions with the `#ifdef`s outside and then chose which one to call with an `IS_ENABLED` in the outer function. But you don\u0027t need to try that unless you feel like it.",
+      "parentUuid": "a9f9a3c2_f97c62b8",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70c878da_773cbcd5",
