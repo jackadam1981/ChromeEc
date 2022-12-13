@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bbeb26f_38970116",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:08:16Z",
+      "side": 1,
+      "message": "nit: Can you use \u0027.field_name \u003d value\u0027 format?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 49
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb0fdb83_7ea0eaab",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:08:16Z",
+      "side": 1,
+      "message": "Why do you need this? It\u0027s just const char*.\n\n    const char *spi_devices_ext[] \u003d {\"SPI2\", \"QSPI\"};",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a2f9a1_e2eb8020",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:08:16Z",
+      "side": 1,
+      "message": "This may better fit in chip/stm32?",
+      "range": {
+        "startLine": 208,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 25
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d34d661_204c35c3",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:08:16Z",
+      "side": 1,
+      "message": "Can you add timeout? If this is stuck, currently the whole system crash.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 3
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c0c53b_8444c0c3",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:08:16Z",
+      "side": 1,
+      "message": "Comment please?",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 44
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e85baeee_582220cc",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:08:16Z",
+      "side": 1,
+      "message": "How about octospi_xfer or something because it does write as well?",
+      "range": {
+        "startLine": 241,
+        "startChar": 12,
+        "endLine": 241,
+        "endChar": 24
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d14fd31_87d98452",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:08:16Z",
+      "side": 1,
+      "message": "Do we need to validate it?",
+      "range": {
+        "startLine": 320,
+        "startChar": 36,
+        "endLine": 320,
+        "endChar": 41
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cdf46ac_ee07b93c",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:08:16Z",
+      "side": 1,
+      "message": "nit: Isn\u0027t it just the \u0027previous_cs\u0027?\n\n    326: previous_cs \u003d gpio_get_level(spi_device-\u003egpio_cs);\n    ...\n    370\n    371: /* Restore previous CS */\n    372: gpio_set_level(spi_device-\u003egpio_cs, previous_cs);",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 33
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d05e41_901c4435",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:08:16Z",
+      "side": 1,
+      "message": "cprints is commontly used in the repo.\n\n    cprints(CC_SPI, ...",
+      "range": {
+        "startLine": 341,
+        "startChar": 2,
+        "endLine": 341,
+        "endChar": 10
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920a5860_6b6fbb47",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:08:16Z",
+      "side": 1,
+      "message": "Why do we need this restriction (instead of 12)?",
+      "range": {
+        "startLine": 353,
+        "startChar": 16,
+        "endLine": 353,
+        "endChar": 30
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc10600_cbbc8c79",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:08:16Z",
+      "side": 1,
+      "message": "If txlen \u003c\u003d 8, txdata is handled as instructions and if txlen \u003e 8, txdata is handled as raw data?",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 39
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68dbdd40_7101ca4d",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:08:16Z",
+      "side": 1,
+      "message": "This doesn\u0027t match the help text (at line 679). Can you update the help?",
+      "range": {
+        "startLine": 634,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 30
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
