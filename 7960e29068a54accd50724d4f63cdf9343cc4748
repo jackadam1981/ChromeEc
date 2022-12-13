@@ -106,6 +106,24 @@
       "tag": "mailMessageId\u003d\u003cCAOEK_iwd9SDR6TpUQCQLg6T1ufTdixtmEwzgLbwr+2vhu5xvsQ@mail.gmail.com\u003e",
       "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac604650_90cee6e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-13T00:01:59Z",
+      "side": 1,
+      "message": "If you still have the changes in your git repo, would you mind sharing the output of `git diff`? Just want to make sure I am adding these lines in the correct place.\n\nI tried this but I am still getting a build error:\n\n```\ndiff --git i/include/system.h w/include/system.h\nindex c7884199e1..81bc0262b4 100644\n--- i/include/system.h\n+++ w/include/system.h\n@@ -17,6 +17,10 @@\n \n #include \u003cstdnoreturn.h\u003e\n \n+#ifdef CONFIG_ARCH_POSIX\n+#include \u003cunistd.h\u003e\n+#endif\n+\n #ifdef CONFIG_ZEPHYR\n #ifdef CONFIG_CPU_CORTEX_M\n /*\n```",
+      "parentUuid": "47ab4012_621f64e5",
+      "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
