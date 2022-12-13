@@ -181,6 +181,30 @@
       },
       "revId": "e759eff1609d21e667eb70403028c4262dd3940c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc4e90a8_0ce13d06",
+        "filename": "zephyr/program/herobrine/villager/src/keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-12-13T19:09:21Z",
+      "side": 1,
+      "message": "OK. Have to use tabs to pass the `clang-format.py`.",
+      "parentUuid": "ecb976f9_954231a5",
+      "range": {
+        "startLine": 15,
+        "startChar": 22,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "e759eff1609d21e667eb70403028c4262dd3940c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
