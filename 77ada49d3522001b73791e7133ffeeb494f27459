@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9825a4e_1f1fe67f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-13T21:03:00Z",
+      "side": 1,
+      "message": "I wonder if we\u0027ll end up wanting a separate common/usbc file for tidal flow after we get the last few bits in.  We\u0027ll see in the next week or two",
+      "parentUuid": "e4b66ada_5a4e9c02",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70c878da_773cbcd5",
