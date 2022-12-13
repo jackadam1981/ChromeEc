@@ -34,6 +34,24 @@
       "parentUuid": "589ad79f_f777065d",
       "revId": "99c56f381ed3a971ad0cc212f5d8575edbed91d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27a07d6_ff637a4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-13T20:21:40Z",
+      "side": 1,
+      "message": "Hmm... that\u0027s interesting but i2c_lock locks the entire port. We need to make it lock per port+address. (I\u0027m glad to review such a patch.)",
+      "parentUuid": "6f5b3772_60da9d53",
+      "revId": "99c56f381ed3a971ad0cc212f5d8575edbed91d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
