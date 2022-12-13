@@ -85,6 +85,24 @@
       "message": "10% -\u003e 13%",
       "revId": "c2fa263b47644f4fa6e5a0ddca9c57353bceb149",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc0c2bc4_14384a7d",
+        "filename": "zephyr/program/nissa/xivu/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1548949
+      },
+      "writtenOn": "2022-12-13T17:05:23Z",
+      "side": 1,
+      "message": "Because I want the SOC to read 10%, but the actual battery needs to read 13%, how should I modify it, the zephyr architecture seems to read the actual value of the battery, not the value read by the SOC. See b/237224850#comment9",
+      "parentUuid": "d73cef5c_2d990a91",
+      "revId": "c2fa263b47644f4fa6e5a0ddca9c57353bceb149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
