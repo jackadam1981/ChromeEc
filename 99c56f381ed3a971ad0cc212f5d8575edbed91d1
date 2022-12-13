@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "589ad79f_f777065d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-13T03:15:09Z",
+      "side": 1,
+      "message": "It seems better to me if we instead added a lock for the battery, or possibly even take advantage of the I2C port locks that already exist by calling `i2c_lock` on the bus: that will naturally block other battery accesses with a change only to cutoff and expresses clearly that nothing else should touch that bus.\n\nThat does mean that cutoff will need to ensure that it uses the `_unlocked` I2C functions, but that seems okay.",
+      "revId": "99c56f381ed3a971ad0cc212f5d8575edbed91d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
