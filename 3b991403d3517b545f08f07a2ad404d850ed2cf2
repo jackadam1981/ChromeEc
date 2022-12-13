@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "803ed25f_7862d428",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-13T18:32:59Z",
+      "side": 1,
+      "message": "Waiting for completion of TODO comment about tests running only on host to approve with CR+2.",
+      "revId": "3b991403d3517b545f08f07a2ad404d850ed2cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a09dbd_d1803720",
+        "filename": "test/gettimeofday.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-13T18:32:59Z",
+      "side": 1,
+      "message": "Out of curiosity, does the test rely on the assumption there is \"zero\" time passing between these two instructions?\n\nOr I can add an arbitrary delay between these lines and it will always work?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 55
+      },
+      "revId": "3b991403d3517b545f08f07a2ad404d850ed2cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "225a06ed_60894a0b",
