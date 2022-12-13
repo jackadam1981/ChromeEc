@@ -142,6 +142,24 @@
       "parentUuid": "ac604650_90cee6e1",
       "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f256fe35_f80c3930",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-13T15:20:33Z",
+      "side": 1,
+      "message": "Sorry for multiple comments, but I meant to include some references to what led me down the path of considering configurations. First, I looked around moma for references to Zephyr and `unistd.h` and found go/cl-c/4047098, which wasn\u0027t completely related but did show files that include `unistd.h` being modified and tested in a Zephyr context. This led me to believe that the file must exist somewhere in the build chain and got me considering build time configurations. \n\nI then found [Zephyr issue #6719](http://go/gh/zephyrproject-rtos/zephyr/issues/6719) which seems to be complaining of a similar issue and pointed to a potential conflict between the `posix/unistd.h` and `unistd.h`. That issue was resolved in go/gh/zephyrproject-rtos/zephyr/pull/6820 and the comments recommend using `#include \u003cunistd.h\u003e` over `#include \u003cposix/unistd.h\u003e`. There is also some discussion in the review about potential interactions between the POSIX config and the NEWLIB config so we should be careful, deliberate, and consistent about which `sleep` implementation are using.",
+      "parentUuid": "ad464e2d_dab34d79",
+      "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
