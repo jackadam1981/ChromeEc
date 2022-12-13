@@ -317,6 +317,10 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	if (uw < (1000 * PD_OPERATING_POWER_MW))
 		flags |= RDO_CAP_MISMATCH;
 
+	/* b:271612382S has more details. */
+	if (IS_ENABLED(CONFIG_USB_PD_EPR))
+		flags |= RDO_EPR_MODE_CAPABLE;
+
 #ifdef CONFIG_USB_PD_GIVE_BACK
 	/* Tell source we are give back capable. */
 	flags |= RDO_GIVE_BACK;
