@@ -33,6 +33,24 @@
       "message": "nit: this seems like it should be its own CL",
       "revId": "de470da5502208e7516395b458cfdb944e077973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94fa948e_4538b55c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-12-13T06:05:13Z",
+      "side": 1,
+      "message": "Separate the changes to its own CL: https://crrev.com/c/4099988",
+      "parentUuid": "1b43a1c5_11833094",
+      "revId": "de470da5502208e7516395b458cfdb944e077973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
