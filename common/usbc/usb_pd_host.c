@@ -181,7 +181,7 @@ DECLARE_HOST_COMMAND(EC_CMD_TYPEC_CONTROL, hc_typec_control, EC_VER_MASK(0));
 static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_typec_status *p = args->params;
-	struct ec_response_typec_status *r = args->response;
+	struct ec_response_typec_status_v1 *r = args->response;
 	const char *tc_state_name;
 
 	if (p->port >= board_get_usb_pd_port_count())
@@ -190,7 +190,10 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 	if (args->response_max < sizeof(*r))
 		return EC_RES_RESPONSE_TOO_BIG;
 
-	args->response_size = sizeof(*r);
+	if (args->version == 0)
+		args->response_size = sizeof(struct ec_response_typec_status);
+	else
+		args->response_size = sizeof(*r);
 
 	r->pd_enabled = pd_comm_is_enabled(p->port);
 	r->dev_connected = pd_is_connected(p->port);
@@ -234,17 +237,32 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 				pd_get_rev(p->port, TCPCI_MSG_SOP_PRIME)) :
 			0;
 
-	r->source_cap_count = pd_get_src_cap_cnt(p->port);
-	memcpy(r->source_cap_pdos, pd_get_src_caps(p->port),
-	       r->source_cap_count * sizeof(uint32_t));
+	if (args->version == 0) {
+		struct ec_response_typec_status *r0 = args->response;
 
-	r->sink_cap_count = pd_get_snk_cap_cnt(p->port);
-	memcpy(r->sink_cap_pdos, pd_get_snk_caps(p->port),
-	       r->sink_cap_count * sizeof(uint32_t));
+		/* Copy v1 to v0. */
+		memcpy(r0, r, sizeof(*r0));
+
+		/* Version 0 supports up to 7 PDOs. */
+		r0->source_cap_count = MIN(pd_get_src_cap_cnt(p->port), 7);
+		memcpy(r0->source_cap_pdos, pd_get_src_caps(p->port),
+		       r0->source_cap_count * sizeof(uint32_t));
+		r0->sink_cap_count = MIN(pd_get_snk_cap_cnt(p->port), 7);
+		memcpy(r0->sink_cap_pdos, pd_get_snk_caps(p->port),
+		       r0->sink_cap_count * sizeof(uint32_t));
+	} else {
+		r->source_cap_count = pd_get_src_cap_cnt(p->port);
+		memcpy(r->source_cap_pdos, pd_get_src_caps(p->port),
+		       r->source_cap_count * sizeof(uint32_t));
+		r->sink_cap_count = pd_get_snk_cap_cnt(p->port);
+		memcpy(r->sink_cap_pdos, pd_get_snk_caps(p->port),
+		       r->sink_cap_count * sizeof(uint32_t));
+	}
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_TYPEC_STATUS, hc_typec_status, EC_VER_MASK(0));
+DECLARE_HOST_COMMAND(EC_CMD_TYPEC_STATUS, hc_typec_status,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 #ifdef CONFIG_USB_PD_VDM_AP_CONTROL
 static enum ec_status hc_typec_vdm_response(struct host_cmd_handler_args *args)
