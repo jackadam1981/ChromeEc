@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf5b513_b8d89bba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-13T05:45:12Z",
+      "side": 1,
+      "message": "error message from buildbot:\n\n```\nFAILED: modules/ec/zephyr/CMakeFiles/ec_shim.dir/shim/src/motionsense_sensors.c.obj \nccache /usr/bin/x86_64-pc-linux-gnu-gcc -DCHROMIUM_EC -DCONFIG_ZEPHYR -DKERNEL -DTC_RUNID\u003d87505bb337afc4881a56c7d707fedcb0 -D_POSIX_C_SOURCE\u003d200809 -D_XOPEN_SOURCE\u003d600 -D_XOPEN_SOURCE_EXTENDED -D__REQUIRE_ZEPHYR_GPIOS__ -D__ZEPHYR__\u003d1 -I../../../../../../../../../zephyr/include -I../../../../../../../../../zephyr/shim/include -I../../../../../../../../../fuzz -I../../../../../../../../../test -I../../../../../../../../../ -I../../../../../../../../../include -I../../../../../../../../../include/driver -I../../../../../../../../../third_party -I../../../../../../../../../zephyr/app/ec/include -I../../../../../../../../../zephyr/fake/include -I../../../../../../../../../zephyr/mock/include -I/mnt/host/source/src/third_party/zephyr/main/include -Izephyr/include/generated -I/mnt/host/source/src/third_party/zephyr/main/soc/posix/inf_clock -I/mnt/host/source/src/third_party/zephyr/main/boards/posix/native_posix -I/mnt/host/source/src/third_party/zephyr/main/subsys/testsuite/include -I/mnt/host/source/src/third_party/zephyr/main/subsys/testsuite/ztest/include -Imodules/ec/zephyr/include -I../../../../../../../../../zephyr/program/corsola/include -fno-PIC -fno-strict-aliasing -Os -imacros /mnt/host/source/src/platform/ec/twister-out-host/native_posix/external/platform/ec/zephyr/test/krabby/krabby.tentacruel/zephyr/include/generated/autoconf.h -ffreestanding -fno-common -g -gdwarf-4 -fdiagnostics-color\u003dalways -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wno-main -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-unused-but-set-variable -Werror\u003dimplicit-int -fno-pic -fno-pie -fno-asynchronous-unwind-tables -fno-reorder-functions -fno-defer-pop -fmacro-prefix-map\u003d/mnt/host/source/src/platform/ec/zephyr/test/krabby\u003dCMAKE_SOURCE_DIR -fmacro-prefix-map\u003d/mnt/host/source/src/third_party/zephyr/main\u003dZEPHYR_BASE -ffunction-sections -fdata-sections -m32 -include /mnt/host/source/src/third_party/zephyr/main/arch/posix/include/posix_cheats.h -fno-freestanding -fmacro-prefix-map\u003d/mnt/host/source/src/platform/ec\u003dEC_BASE -fmacro-prefix-map\u003d/mnt/host/source/src/platform\u003dEC_BASE -Werror -msse -mfpmath\u003dsse -Wimplicit-fallthrough -std\u003dc11 -MD -MT modules/ec/zephyr/CMakeFiles/ec_shim.dir/shim/src/motionsense_sensors.c.obj -MF modules/ec/zephyr/CMakeFiles/ec_shim.dir/shim/src/motionsense_sensors.c.obj.d -o modules/ec/zephyr/CMakeFiles/ec_shim.dir/shim/src/motionsense_sensors.c.obj -c /mnt/host/source/src/platform/ec/zephyr/shim/src/motionsense_sensors.c\nIn file included from /mnt/host/source/src/third_party/zephyr/main/include/zephyr/sys/util_macro.h:34,\n                 from /mnt/host/source/src/third_party/zephyr/main/include/zephyr/sys/util.h:17,\n                 from ../../../../../../../../../include/compile_time_macros.h:17,\n                 from ../../../../../../../../../include/common.h:18,\n                 from ../../../../../../../../../include/accelgyro.h:9,\n                 from /mnt/host/source/src/platform/ec/zephyr/shim/src/motionsense_sensors.c:6:\n/mnt/host/source/src/platform/ec/zephyr/shim/src/motionsense_sensors.c: In function ‘motion_sense_probe’:\n/mnt/host/source/src/platform/ec/zephyr/shim/src/motionsense_sensors.c:410:21: error: array subscript alt_idx is outside array bounds of ‘struct motion_sensor_t[0]’ [-Werror\u003darray-bounds]\n```",
+      "revId": "76773641181310716b421942a0c29beb3bdc3290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
