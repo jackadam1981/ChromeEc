@@ -16,6 +16,24 @@
       "message": "The fw_config setting in this CL doesn\u0027t match the settings in config.star.\n\nPlease check the following items:\n1. Update https://issuetracker.google.com/256374573 with the latest FW_CONFIG configuration.\n1. The storage configuration for NVMe/UFS should exist in fw_config.\n1. Create CL for config.star.",
       "revId": "c3828ba67838d835199779ed8ee8c36a6a3fc300",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8764dce_e09c4cd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-12-13T01:55:38Z",
+      "side": 1,
+      "message": "Modify fw_config struct. Thanks",
+      "parentUuid": "f028f4c0_5d37b43c",
+      "revId": "c3828ba67838d835199779ed8ee8c36a6a3fc300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
