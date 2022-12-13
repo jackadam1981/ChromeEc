@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57c85414_f7cd8f14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-12-13T21:34:30Z",
+      "side": 1,
+      "message": "Can you verify the EC sets up the mux correctly when there\u0027s a short disconnect? Cr50 won\u0027t pulse CCD_MODE_L. It shouldn\u0027t print anything. The EC should print those AUX_SW_SEL messages.\n\ndut-control servo_v4_uart_cmd:\u0027fakedisconnect 200 200\u0027",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "648f4c2d36c66b7de403abdb7eb1194b9455029d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
