@@ -181,8 +181,10 @@ DECLARE_HOST_COMMAND(EC_CMD_TYPEC_CONTROL, hc_typec_control, EC_VER_MASK(0));
 static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_typec_status *p = args->params;
-	struct ec_response_typec_status *r = args->response;
+	struct ec_response_typec_status_v1 *r = args->response;
+	struct ec_response_typec_status *r0 = args->response;
 	const char *tc_state_name;
+	uint32_t *src_pdo, *snk_pdo;
 
 	if (p->port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
@@ -190,7 +192,7 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 	if (args->response_max < sizeof(*r))
 		return EC_RES_RESPONSE_TOO_BIG;
 
-	args->response_size = sizeof(*r);
+	args->response_size = args->version == 0 ? sizeof(*r0) : sizeof(*r);
 
 	r->pd_enabled = pd_comm_is_enabled(p->port);
 	r->dev_connected = pd_is_connected(p->port);
@@ -234,14 +236,29 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 				pd_get_rev(p->port, TCPCI_MSG_SOP_PRIME)) :
 			0;
 
-	r->source_cap_count = pd_get_src_cap_cnt(p->port);
-	memcpy(r->source_cap_pdos, pd_get_src_caps(p->port),
-	       r->source_cap_count * sizeof(uint32_t));
+	r->source_cap_count = MIN(pd_get_src_cap_cnt(p->port),
+				  args->version == 0 ?
+					ARRAY_SIZE(r0->source_cap_pdos) :
+					ARRAY_SIZE(r->source_cap_pdos));
+	r->sink_cap_count = MIN(pd_get_snk_cap_cnt(p->port),
+				  args->version == 0 ?
+					ARRAY_SIZE(r0->sink_cap_pdos) :
+					ARRAY_SIZE(r->sink_cap_pdos));
 
-	r->sink_cap_count = pd_get_snk_cap_cnt(p->port);
-	memcpy(r->sink_cap_pdos, pd_get_snk_caps(p->port),
+	if (args->version == 0) {
+		src_pdo = r0->source_cap_pdos;
+		snk_pdo = r0->sink_cap_pdos;
+	} else {
+		src_pdo = r->source_cap_pdos;
+		snk_pdo = r->sink_cap_pdos;
+	}
+
+	memcpy(src_pdo, pd_get_src_caps(p->port),
+	       r->source_cap_count * sizeof(uint32_t));
+	memcpy(snk_pdo, pd_get_snk_caps(p->port),
 	       r->sink_cap_count * sizeof(uint32_t));
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_TYPEC_STATUS, hc_typec_status, EC_VER_MASK(0));
+DECLARE_HOST_COMMAND(EC_CMD_TYPEC_STATUS, hc_typec_status,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
