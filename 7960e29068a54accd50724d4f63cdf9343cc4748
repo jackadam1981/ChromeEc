@@ -164,6 +164,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99aea4e9_9e16da9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-13T21:44:04Z",
+      "side": 1,
+      "message": "Thanks Bobby for the detailed answer!\n\nI tested some of the ideas that we discussed in our 1:1 and the latest patchset is *almost* fully working.\n\nThe error I am debugging now is on Zephyr board `minimal-posix`.\n\nI used `CONFIG_ARCH_POSIX` in combination with `CONFIG_ZEPHYR` and I am not sure why it\u0027s complaining about conflicting type declarations for `clockid_t`. The conflict seems to be between 2 files that I didn\u0027t modify, so maybe I accidentally started to include one of them?\n\n\nOther boards are building okay, including `herobrine`, `bloonchipper` and host.\n\n### Failure Log\n\n```\nzmake build minimal-posix\n\n...\n\nFAILED: modules/ec/zephyr/CMakeFiles/ec_shim.dir/app/ec/ec_app_main.c.obj \nIn file included from /mnt/host/source/src/platform/ec/zephyr/app/ec/ec_app_main.c:16:\nIn file included from ../modules/ec/include/vboot.h:10:\nIn file included from ../modules/ec/include/rsa.h:42:\nIn file included from ../modules/ec/include/util.h:17:\nExecution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/minimal-posix/build-singleimage\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/multiproc.py\", line 345, in _run_fn\n    result \u003d func()\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 806, in _build_one_dir\n    raise OSError(get_process_failure_msg(proc))\nOSError: Execution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/minimal-posix/build-singleimage\n\nIn file included from /usr/include/stdlib.h:395:\nIn file included from /usr/include/sys/types.h:128:\n/usr/include/bits/types/clockid_t.h:7:21: error: typedef redefinition with different types (\u0027__clockid_t\u0027 (aka \u0027int\u0027) vs \u0027uint32_t\u0027 (aka \u0027unsigned int\u0027))\ntypedef __clockid_t clockid_t;\n                    ^\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/posix/posix_types.h:27:18: note: previous definition is here\ntypedef uint32_t clockid_t;\n                 ^\nIn file included from /mnt/host/source/src/platform/ec/zephyr/app/ec/ec_app_main.c:16:\nIn file included from ../modules/ec/include/vboot.h:10:\nIn file included from ../modules/ec/include/rsa.h:42:\nIn file included from ../modules/ec/include/util.h:17:\nIn file included from /usr/include/stdlib.h:395:\nIn file included from /usr/include/sys/types.h:130:\n/usr/include/bits/types/timer_t.h:7:19: error: typedef redefinition with different types (\u0027__timer_t\u0027 (aka \u0027void *\u0027) vs \u0027unsigned long\u0027)\ntypedef __timer_t timer_t;\n                  ^\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/posix/posix_types.h:31:23: note: previous definition is here\ntypedef unsigned long timer_t;\n                      ^\nIn file included from /mnt/host/source/src/platform/ec/zephyr/app/ec/ec_app_main.c:16:\nIn file included from ../modules/ec/include/vboot.h:10:\nIn file included from ../modules/ec/include/rsa.h:42:\nIn file included from ../modules/ec/include/util.h:17:\nIn file included from /usr/include/stdlib.h:395:\n/usr/include/sys/types.h:134:22: error: typedef redefinition with different types (\u0027__useconds_t\u0027 (aka \u0027unsigned int\u0027) vs \u0027unsigned long\u0027)\ntypedef __useconds_t useconds_t;\n                     ^\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/posix/posix_types.h:21:23: note: previous definition is here\ntypedef unsigned long useconds_t;\n                      ^\n3 errors generated.\n```",
+      "parentUuid": "f256fe35_f80c3930",
+      "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35d6f697_5ade6086",
         "filename": "common/timer.c",
         "patchSetId": 5
