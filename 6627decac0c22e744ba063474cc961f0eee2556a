@@ -16,6 +16,47 @@
       "message": "Tests are implemented separately in https://crrev.com/c/4062464",
       "revId": "6627decac0c22e744ba063474cc961f0eee2556a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bbc5e37_672d0319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-13T18:26:37Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "0c331d34_0a09da1e",
+      "revId": "6627decac0c22e744ba063474cc961f0eee2556a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "231bb19e_b429cb65",
+        "filename": "include/gettimeofday.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-13T18:26:37Z",
+      "side": 1,
+      "message": "According to the [official doc](https://man7.org/linux/man-pages/man2/settimeofday.2.html) this should return:\n\n\u003e the number of seconds and microseconds **since the Epoch**\n\nI haven\u0027t looked at [`get_time()`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/core/host/timer.c;l\u003d33;drc\u003dd4aa274081c99f3443886977f004721670cc3b35) in details, but is this function a simplified version that returns the number of seconds **since the MCU started**?\n\nIn that case we could add a big disclaimer in the comments to avoid confusion.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "6627decac0c22e744ba063474cc961f0eee2556a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
