@@ -108,6 +108,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb3da51e_31c952d4",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-13T22:34:40Z",
+      "side": 1,
+      "message": "I originally conceived of the DPM as something that would have different implementations for different policies.",
+      "parentUuid": "c9825a4e_1f1fe67f",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70c878da_773cbcd5",
