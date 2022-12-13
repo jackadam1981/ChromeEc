@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2048f0b_daeb53dd",
+        "filename": "test/gettimeofday.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-13T20:03:18Z",
+      "side": 1,
+      "message": "Yes, it should always work because this is using the timer implementation from `timer_mock.c` (note the contents of`test/gettimeofday.mocklist`)  which will cause `get_time` to always return the value specified in `set_time`.",
+      "parentUuid": "21a09dbd_d1803720",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 55
+      },
+      "revId": "3b991403d3517b545f08f07a2ad404d850ed2cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "225a06ed_60894a0b",
         "filename": "test/gettimeofday.c",
         "patchSetId": 8
@@ -54,6 +78,30 @@
       "writtenOn": "2022-12-13T00:37:17Z",
       "side": 1,
       "message": "TODO: I need to add a comment that these tests only work on the host. If you try to mock the timer on the device, it won\u0027t boot since it needs a working timer for that.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 1
+      },
+      "revId": "3b991403d3517b545f08f07a2ad404d850ed2cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc1c46f_53b1b970",
+        "filename": "test/gettimeofday.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-13T20:03:18Z",
+      "side": 1,
+      "message": "You could (as a followup CL) set the mock up to return the actual clock time until a flag is set. That would allow the boot logic to work properly (although may still mess with some other task behaviors).",
+      "parentUuid": "225a06ed_60894a0b",
       "range": {
         "startLine": 79,
         "startChar": 0,
