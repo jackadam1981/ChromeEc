@@ -9,6 +9,14 @@
 
 #define FUSB302_TCPC_COMPAT fairchild_fusb302
 
+#define INT_PIN_CONFIG_FUSB302(id)                                           \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, int_pin),                           \
+		    (.gpio_port = DEVICE_DT_GET(                             \
+			     DT_GPIO_CTLR(DT_PHANDLE(id, int_pin), gpios)),  \
+		     .interrupt_pin =                                        \
+			     DT_GPIO_PIN(DT_PHANDLE(id, int_pin), gpios), ), \
+		    ())
+
 #define TCPC_CONFIG_FUSB302(id) \
 	{                                                                      \
 		.bus_type = EC_BUS_TYPE_I2C,                                   \
@@ -17,7 +25,11 @@
 			.addr_flags = DT_REG_ADDR(id),                         \
 		},                                                             \
 		.drv = &fusb302_tcpm_drv,                                      \
-		.alert_signal = COND_CODE_1(DT_NODE_HAS_PROP(id, int_pin),     \
-			(GPIO_SIGNAL(DT_PHANDLE(id, int_pin))),                \
-			(GPIO_LIMIT)),                                         \
+		INT_PIN_CONFIG_FUSB302(id)                                     \
 	},
+
+#define FUSB302_CHECK_FLAGS(id) \
+	BUILD_ASSERT(           \
+		(DT_PROP(id, tcpc_flags) & TCPC_FLAGS_ALERT_ACTIVE_HIGH) == 0)
+
+DT_FOREACH_STATUS_OKAY(FUSB302_TCPC_COMPAT, FUSB302_CHECK_FLAGS)

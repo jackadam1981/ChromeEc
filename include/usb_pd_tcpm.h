@@ -578,7 +578,12 @@ struct tcpc_config_t {
 	const struct tcpm_drv *drv;
 	/* See TCPC_FLAGS_* above */
 	uint32_t flags;
+#ifdef CONFIG_ZEPHYR
+	const struct device *gpio_port;
+	gpio_port_pins_t interrupt_pin;
+#else
 	enum gpio_signal alert_signal;
+#endif
 };
 
 #ifndef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
