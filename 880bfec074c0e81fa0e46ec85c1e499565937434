@@ -52,6 +52,24 @@
       "parentUuid": "6d8094fe_8df7fbcf",
       "revId": "880bfec074c0e81fa0e46ec85c1e499565937434",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a92e07d_ca1cf5cc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4479,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-12-14T18:35:24Z",
+      "side": 1,
+      "message": "I went ahead and added a new test in patchset 5, but wasn\u0027t really seeing a good way to add a check that a message was discarded as part of the test.\n\nThis test just requests an alert from the PE and sends Get_Status from the partner emulator at the same time. It checks that the PE responds to Get_Status, sends the Alert and returns to a ready state. Previously this test would fail, but now it passes and provides full coverage for the updates to usb_pe_drp_sm.c. \n\nSo testing this locally, it does cause a message discard but that is not required for the test to pass. The PE just needs to be able to handle both the incoming message and DPM request for the test to pass. Let me know what you think.",
+      "parentUuid": "7096f903_e309d558",
+      "revId": "880bfec074c0e81fa0e46ec85c1e499565937434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
