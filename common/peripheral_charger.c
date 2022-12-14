@@ -100,6 +100,9 @@ static const char *_text_event(enum pchg_event event)
 		[PCHG_EVENT_UPDATE_OPEN] = "UPDATE_OPEN",
 		[PCHG_EVENT_UPDATE_WRITE] = "UPDATE_WRITE",
 		[PCHG_EVENT_UPDATE_CLOSE] = "UPDATE_CLOSE",
+		[PCHG_EVENT_UPDATE_OPEN_NO_IRQ] = "UPDATE_OPEN_NO_IRQ",
+		[PCHG_EVENT_UPDATE_WRITE_NO_IRQ] = "UPDATE_WRITE_NO_IRQ",
+		[PCHG_EVENT_UPDATE_CLOSE_NO_IRQ] = "UPDATE_CLOSE_NO_IRQ",
 		[PCHG_EVENT_UPDATE_ERROR] = "UPDATE_ERROR",
 	};
 	BUILD_ASSERT(ARRAY_SIZE(event_names) == PCHG_EVENT_COUNT);
@@ -282,6 +285,12 @@ static void pchg_state_reset(struct pchg *ctx)
 		ctx->state = PCHG_STATE_INITIALIZED;
 		pchg_queue_event(ctx, PCHG_EVENT_ENABLE);
 		break;
+	case PCHG_EVENT_UPDATE_OPEN_NO_IRQ:
+		if (ctx->mode == PCHG_MODE_DOWNLOAD) {
+			ctx->state = PCHG_STATE_DOWNLOAD;
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_OPEN_NO_IRQ);
+		}
+		break;
 	default:
 		break;
 	}
@@ -412,6 +421,12 @@ static void pchg_state_enabled(struct pchg *ctx)
 			}
 		}
 		break;
+	case PCHG_EVENT_UPDATE_OPEN_NO_IRQ:
+		if (ctx->mode == PCHG_MODE_DOWNLOAD) {
+			ctx->state = PCHG_STATE_DOWNLOAD;
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_OPEN_NO_IRQ);
+		}
+		break;
 	default:
 		break;
 	}
@@ -451,6 +466,12 @@ static void pchg_state_detected(struct pchg *ctx)
 		ctx->state = PCHG_STATE_ENABLED;
 		reset_bist_cmd(ctx);
 		break;
+	case PCHG_EVENT_UPDATE_OPEN_NO_IRQ:
+		if (ctx->mode == PCHG_MODE_DOWNLOAD) {
+			ctx->state = PCHG_STATE_DOWNLOAD;
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_OPEN_NO_IRQ);
+		}
+		break;
 	default:
 		break;
 	}
@@ -484,6 +505,12 @@ static void pchg_state_connected(struct pchg *ctx)
 		ctx->battery_percent = 0;
 		ctx->state = PCHG_STATE_ENABLED;
 		reset_bist_cmd(ctx);
+		break;
+	case PCHG_EVENT_UPDATE_OPEN_NO_IRQ:
+		if (ctx->mode == PCHG_MODE_DOWNLOAD) {
+			ctx->state = PCHG_STATE_DOWNLOAD;
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_OPEN_NO_IRQ);
+		}
 		break;
 	default:
 		break;
@@ -522,6 +549,12 @@ static void pchg_state_charging(struct pchg *ctx)
 	case PCHG_EVENT_CHARGE_STOPPED:
 		ctx->state = PCHG_STATE_CONNECTED;
 		break;
+	case PCHG_EVENT_UPDATE_OPEN_NO_IRQ:
+		if (ctx->mode == PCHG_MODE_DOWNLOAD) {
+			ctx->state = PCHG_STATE_DOWNLOAD;
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_OPEN_NO_IRQ);
+		}
+		break;
 	default:
 		break;
 	}
@@ -536,9 +569,13 @@ static void pchg_state_download(struct pchg *ctx)
 		ctx->state = pchg_reset(ctx);
 		break;
 	case PCHG_EVENT_UPDATE_OPEN:
+	case PCHG_EVENT_UPDATE_OPEN_NO_IRQ:
 		rv = ctx->cfg->drv->update_open(ctx);
 		if (rv == EC_SUCCESS) {
-			ctx->state = PCHG_STATE_DOWNLOADING;
+			if (ctx->event == PCHG_EVENT_UPDATE_OPEN_NO_IRQ)
+				pchg_queue_event(ctx, PCHG_EVENT_UPDATE_OPENED);
+			else
+				ctx->state = PCHG_STATE_DOWNLOADING;
 		} else if (rv != EC_SUCCESS_IN_PROGRESS) {
 			pchg_queue_host_event(ctx, EC_MKBP_PCHG_UPDATE_ERROR);
 			CPRINTS("ERR: Failed to open");
@@ -565,12 +602,17 @@ static void pchg_state_downloading(struct pchg *ctx)
 		ctx->state = pchg_reset(ctx);
 		break;
 	case PCHG_EVENT_UPDATE_WRITE:
+	case PCHG_EVENT_UPDATE_WRITE_NO_IRQ:
 		if (ctx->update.data_ready == 0)
 			break;
 		rv = ctx->cfg->drv->update_write(ctx);
 		if (rv != EC_SUCCESS && rv != EC_SUCCESS_IN_PROGRESS) {
 			pchg_queue_host_event(ctx, EC_MKBP_PCHG_UPDATE_ERROR);
 			CPRINTS("ERR: Failed to write");
+		} else if (rv == EC_SUCCESS &&
+			   ctx->event == PCHG_EVENT_UPDATE_WRITE_NO_IRQ) {
+			ctx->update.data_ready = 0;
+			pchg_queue_host_event(ctx, EC_MKBP_PCHG_WRITE_COMPLETE);
 		}
 		break;
 	case PCHG_EVENT_UPDATE_WRITTEN:
@@ -578,9 +620,16 @@ static void pchg_state_downloading(struct pchg *ctx)
 		pchg_queue_host_event(ctx, EC_MKBP_PCHG_WRITE_COMPLETE);
 		break;
 	case PCHG_EVENT_UPDATE_CLOSE:
+	case PCHG_EVENT_UPDATE_CLOSE_NO_IRQ:
 		rv = ctx->cfg->drv->update_close(ctx);
 		if (rv == EC_SUCCESS) {
 			ctx->state = PCHG_STATE_DOWNLOAD;
+			if (ctx->event == PCHG_EVENT_UPDATE_CLOSE_NO_IRQ) {
+				gpio_enable_interrupt(ctx->cfg->irq_pin);
+				ctx->state = reset_to_normal(ctx);
+				pchg_queue_host_event(
+					ctx, EC_MKBP_PCHG_UPDATE_CLOSED);
+			}
 		} else if (rv != EC_SUCCESS_IN_PROGRESS) {
 			pchg_queue_host_event(ctx, EC_MKBP_PCHG_UPDATE_ERROR);
 			CPRINTS("ERR: Failed to close");
@@ -931,19 +980,29 @@ static enum ec_status hc_pchg_update(struct host_cmd_handler_args *args)
 		break;
 
 	case EC_PCHG_UPDATE_CMD_OPEN:
-		HCPRINTS("Resetting to download mode");
+	case EC_PCHG_UPDATE_CMD_OPEN_NO_IRQ:
+		if (p->cmd == EC_PCHG_UPDATE_CMD_OPEN)
+			HCPRINTS("Resetting to download mode");
+		else
+			HCPRINTS("Switching to download mode");
 
-		gpio_disable_interrupt(ctx->cfg->irq_pin);
-		_clear_port(ctx);
-		ctx->mode = PCHG_MODE_DOWNLOAD;
-		ctx->cfg->drv->reset(ctx);
-		gpio_enable_interrupt(ctx->cfg->irq_pin);
-
+		if (p->cmd == EC_PCHG_UPDATE_CMD_OPEN) {
+			gpio_disable_interrupt(ctx->cfg->irq_pin);
+			_clear_port(ctx);
+			ctx->mode = PCHG_MODE_DOWNLOAD;
+			ctx->cfg->drv->reset(ctx);
+			gpio_enable_interrupt(ctx->cfg->irq_pin);
+		} else {
+			gpio_disable_interrupt(ctx->cfg->irq_pin);
+			ctx->mode = PCHG_MODE_DOWNLOAD;
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_OPEN_NO_IRQ);
+		}
 		ctx->update.version = p->version;
 		r->block_size = ctx->cfg->block_size;
 		args->response_size = sizeof(*r);
 		break;
 
+	case EC_PCHG_UPDATE_CMD_WRITE_NO_IRQ:
 	case EC_PCHG_UPDATE_CMD_WRITE:
 		if (ctx->state != PCHG_STATE_DOWNLOADING)
 			return EC_RES_ERROR;
@@ -956,10 +1015,14 @@ static enum ec_status hc_pchg_update(struct host_cmd_handler_args *args)
 		ctx->update.addr = p->addr;
 		ctx->update.size = p->size;
 		memcpy(ctx->update.data, p->data, p->size);
-		pchg_queue_event(ctx, PCHG_EVENT_UPDATE_WRITE);
+		if (p->cmd == EC_PCHG_UPDATE_CMD_WRITE)
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_WRITE);
+		else
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_WRITE_NO_IRQ);
 		ctx->update.data_ready = 1;
 		break;
 
+	case EC_PCHG_UPDATE_CMD_CLOSE_NO_IRQ:
 	case EC_PCHG_UPDATE_CMD_CLOSE:
 		if (ctx->state != PCHG_STATE_DOWNLOADING)
 			return EC_RES_ERROR;
@@ -968,7 +1031,10 @@ static enum ec_status hc_pchg_update(struct host_cmd_handler_args *args)
 
 		HCPRINTS("Closing update session (crc=0x%x)", p->crc32);
 		ctx->update.crc32 = p->crc32;
-		pchg_queue_event(ctx, PCHG_EVENT_UPDATE_CLOSE);
+		if (p->cmd == EC_PCHG_UPDATE_CMD_CLOSE)
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_CLOSE);
+		else
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_CLOSE_NO_IRQ);
 		break;
 
 	case EC_PCHG_UPDATE_CMD_RESET:
