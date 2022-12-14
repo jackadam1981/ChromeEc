@@ -17,6 +17,7 @@
 #include "ppc/sn5s330_public.h"
 #include "ppc/syv682x_public.h"
 #include "system.h"
+#include "tcpc.h"
 #include "tcpm/ps8xxx_public.h"
 #include "tcpm/tcpci.h"
 #include "timer.h"
@@ -131,8 +132,7 @@ void board_tcpc_init(void)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1_swctl));
 
 	/* Enable TCPC interrupts */
-	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_pd));
-	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1_pd));
+	tcpc_enable_interrupt();
 
 	/*
 	 * Initialize HPD to low; after sysjump SOC needs to see
