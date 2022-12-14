@@ -221,11 +221,11 @@ static int tcpci_emul_alert_changed(const struct emul *emul)
 	bool alert_is_active = tcpci_emul_check_int(ctx);
 
 	/** Trigger GPIO. */
-	if (ctx->alert_gpio_port != NULL) {
+	if (ctx->alert_config.port != NULL) {
 		/* Triggers on edge falling, so set to 0 when there is an alert.
 		 */
-		rc = gpio_emul_input_set(ctx->alert_gpio_port,
-					 ctx->alert_gpio_pin,
+		rc = gpio_emul_input_set(ctx->alert_config.port,
+					 ctx->alert_config.pin,
 					 alert_is_active ? 0 : 1);
 		if (rc != 0)
 			return rc;
