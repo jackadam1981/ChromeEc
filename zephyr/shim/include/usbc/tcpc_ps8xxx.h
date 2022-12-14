@@ -18,7 +18,12 @@
 		},                                                             \
 		.drv = &ps8xxx_tcpm_drv,                                       \
 		.flags = DT_PROP(id, tcpc_flags),                              \
-		.alert_signal = COND_CODE_1(DT_NODE_HAS_PROP(id, int_pin),     \
-			(GPIO_SIGNAL(DT_PHANDLE(id, int_pin))),                \
-			(GPIO_LIMIT)),                                         \
+		.int_cfg = GPIO_DT_SPEC_GET_OR(id, irq_gpios, {}),             \
 	},
+
+#define PS8XXX_CHECK_FLAGS(id)                            \
+	BUILD_ASSERT((DT_PROP(id, tcpc_flags) &           \
+		      TCPC_FLAGS_ALERT_ACTIVE_HIGH) == 0, \
+		     "incorrect tcpc interrupt configuration for PS8XXX")
+
+DT_FOREACH_STATUS_OKAY(PS8XXX_COMPAT, PS8XXX_CHECK_FLAGS;)

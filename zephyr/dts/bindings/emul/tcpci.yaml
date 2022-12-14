@@ -12,3 +12,7 @@ properties:
       required: false
       description:
         Reference to Alert# GPIO.
+    irq-gpios:
+      type: phandle-array
+      required: false
+      description: Interrupt from TCPC

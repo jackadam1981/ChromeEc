@@ -59,13 +59,6 @@ void board_tcpc_init(void)
 		board_reset_pd_mcu();
 	}
 
-	/* Enable TCPC interrupts */
-	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_tcpc));
-	if (corsola_get_db_type() == CORSOLA_DB_TYPEC) {
-		gpio_enable_dt_interrupt(
-			GPIO_INT_FROM_NODELABEL(int_usb_c1_tcpc));
-	}
-
 	/* Enable BC1.2 interrupts. */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_bc12));
 

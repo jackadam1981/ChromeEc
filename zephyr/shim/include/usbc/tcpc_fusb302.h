@@ -17,7 +17,12 @@
 			.addr_flags = DT_REG_ADDR(id),                         \
 		},                                                             \
 		.drv = &fusb302_tcpm_drv,                                      \
-		.alert_signal = COND_CODE_1(DT_NODE_HAS_PROP(id, int_pin),     \
-			(GPIO_SIGNAL(DT_PHANDLE(id, int_pin))),                \
-			(GPIO_LIMIT)),                                         \
+		.int_cfg = GPIO_DT_SPEC_GET_OR(id, irq_gpios, {}),             \
 	},
+
+#define FUSB302_CHECK_FLAGS(id)                           \
+	BUILD_ASSERT((DT_PROP(id, tcpc_flags) &           \
+		      TCPC_FLAGS_ALERT_ACTIVE_HIGH) == 0, \
+		     "incorrect tcpc interrupt configuration for FUSB302")
+
+DT_FOREACH_STATUS_OKAY(FUSB302_TCPC_COMPAT, FUSB302_CHECK_FLAGS;)
