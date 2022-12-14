@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f0e553e_6321e64e",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-12-14T06:26:11Z",
+      "side": 1,
+      "message": "Add bit 1 and  fills 0 to the rest bits.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "ff6899de296a623784963507d5be14daaac68c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

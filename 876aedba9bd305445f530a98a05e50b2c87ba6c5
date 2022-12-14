@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6125ee2d_16532b3e",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-12-14T06:26:11Z",
+      "side": 1,
+      "message": "In message \u003c 60bytes case, SHA256_update() add bit 1 and fills 0 to the rest bits in for loop (line 83 ~ 88).",
+      "parentUuid": "8810accd_2a98493c",
+      "revId": "876aedba9bd305445f530a98a05e50b2c87ba6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19f9758d_fbd40bf7",
         "filename": "driver/sha256/sha256_it8xxx2.c",
         "patchSetId": 16
