@@ -243,6 +243,8 @@ struct pchg {
 	uint32_t fw_version;
 	/* Context related to FW update */
 	struct pchg_update update;
+	/* Peripheral port number */
+	int port;
 };
 
 /**
