@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "hooks.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "usbc/tcpc_anx7447.h"
@@ -77,22 +78,57 @@
 MAYBE_CONST struct tcpc_config_t tcpc_config[] = { DT_FOREACH_STATUS_OKAY(
 	named_usbc_port, TCPC_CHIP) };
 
-/* TCPC GPIO Interrupt Handlers */
-void tcpc_alert_event(enum gpio_signal signal)
-{
-	for (int i = 0; i < ARRAY_SIZE(tcpc_config); i++) {
-		/* No alerts for embedded TCPC */
-		/* No alerts if the alert pin is not set in the devicetree */
-		if (tcpc_config[i].bus_type == EC_BUS_TYPE_EMBEDDED ||
-		    tcpc_config[i].alert_signal == GPIO_LIMIT) {
-			continue;
-		}
+struct gpio_callback int_gpio_cb[DT_NUM_INST_STATUS_OKAY(named_usbc_port)];
 
-		if (signal == tcpc_config[i].alert_signal) {
-			schedule_deferred_pd_interrupt(i);
-			break;
+static void tcpc_int_gpio_callback(const struct device *dev,
+				   struct gpio_callback *cb, uint32_t pins)
+{
+	/*
+	 * Retrieve the array index from the callback pointer, and
+	 * use that to get the port number.
+	 */
+	int port = cb - &int_gpio_cb[0];
+
+	schedule_deferred_pd_interrupt(port);
+}
+
+/*
+ * Enable all tcpc interrupts from devicetree bindings.
+ * Check whether the callback is already installed, and if
+ * not, init and add the callback before enabling the
+ * interrupt.
+ */
+void tcpc_enable_interrupt(void)
+{
+	gpio_flags_t flags;
+
+	for (int i = 0; i < ARRAY_SIZE(tcpc_config); i++) {
+		/*
+		 * Check whether the interrupt pin has been configured
+		 * by the devicetree.
+		 */
+		if (!tcpc_config[i].int_cfg.port)
+			continue;
+		/*
+		 * Check whether callback has been initialised
+		 */
+		if (!int_gpio_cb[i].handler) {
+			/*
+			 * Initialise and add the callback.
+			 */
+			gpio_init_callback(&int_gpio_cb[i],
+					   tcpc_int_gpio_callback,
+					   BIT(tcpc_config[i].int_cfg.pin));
+			gpio_add_callback(tcpc_config[i].int_cfg.port,
+					  &int_gpio_cb[i]);
 		}
+		flags = tcpc_config[i].flags & TCPC_FLAGS_ALERT_ACTIVE_HIGH ?
+				GPIO_INT_EDGE_RISING :
+				GPIO_INT_EDGE_FALLING;
+		flags = (flags | GPIO_INT_ENABLE) & ~GPIO_INT_DISABLE;
+		gpio_pin_interrupt_configure_dt(&tcpc_config[i].int_cfg, flags);
 	}
 }
+DECLARE_HOOK(HOOK_INIT, tcpc_enable_interrupt, HOOK_PRIO_POST_I2C);
 
 #endif /* DT_HAS_COMPAT_STATUS_OKAY */
