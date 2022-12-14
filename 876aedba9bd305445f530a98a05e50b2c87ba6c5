@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad64cb93_a8f94f09",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-12-14T07:01:34Z",
+      "side": 1,
+      "message": "We will add padding bits to the message in SHA256_update() function. The first bit will be one, and the rest of it should be filled with zeroes.",
+      "parentUuid": "6125ee2d_16532b3e",
+      "revId": "876aedba9bd305445f530a98a05e50b2c87ba6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19f9758d_fbd40bf7",
         "filename": "driver/sha256/sha256_it8xxx2.c",
         "patchSetId": 16
