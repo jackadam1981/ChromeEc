@@ -3,11 +3,12 @@
  * found in the LICENSE file.
  */
 
+#include "adc.h"
+#include "zephyr_adc.h"
+
 #include <zephyr/devicetree/io-channels.h>
 #include <zephyr/drivers/adc.h>
 #include <zephyr/logging/log.h>
-#include "adc.h"
-#include "zephyr_adc.h"
 
 LOG_MODULE_REGISTER(shim_adc, LOG_LEVEL_ERR);
 
@@ -61,7 +62,7 @@ static int init_device_bindings(const struct device *device)
 }
 SYS_INIT(init_device_bindings, POST_KERNEL, 51);
 
-int adc_read_channel(enum adc_channel ch)
+test_mockable int adc_read_channel(enum adc_channel ch)
 {
 	int ret = 0, rv;
 	struct adc_sequence seq = {

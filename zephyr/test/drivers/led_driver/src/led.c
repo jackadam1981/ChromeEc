@@ -3,7 +3,6 @@
  * found in the LICENSE file.
  */
 
-#include <zephyr/ztest.h>
 #include "ec_commands.h"
 #include "gpio.h"
 #include "include/power.h"
@@ -11,6 +10,8 @@
 #include "led_common.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
+
+#include <zephyr/ztest.h>
 
 #define VERIFY_LED_COLOR(color, led_id)                                    \
 	{                                                                  \
@@ -64,8 +65,8 @@ ZTEST(led_driver, test_led_brightness)
 	 * brightness array.
 	 */
 	led_get_brightness_range(EC_LED_ID_SYSRQ_DEBUG_LED, brightness);
-	zassert_equal(brightness[EC_LED_COLOR_BLUE], 1, NULL);
-	zassert_equal(brightness[EC_LED_COLOR_WHITE], 1, NULL);
+	zassert_equal(brightness[EC_LED_COLOR_BLUE], 1);
+	zassert_equal(brightness[EC_LED_COLOR_WHITE], 1);
 
 	/* Verify LED set to WHITE */
 	led_set_brightness(EC_LED_ID_SYSRQ_DEBUG_LED, brightness);

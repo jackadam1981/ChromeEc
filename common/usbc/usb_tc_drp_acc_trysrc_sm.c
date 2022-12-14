@@ -17,7 +17,7 @@
 #include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
-#include "usb_pd_dpm.h"
+#include "usb_pd_dpm_sm.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pd_timer.h"
 #include "usb_pe_sm.h"
@@ -1284,7 +1284,12 @@ void typec_select_src_current_limit_rp(int port, enum tcpc_rp_value rp)
 }
 __overridable int typec_get_default_current_limit_rp(int port)
 {
-	return CONFIG_USB_PD_PULLUP;
+	int rp = CONFIG_USB_PD_PULLUP;
+
+	if (pd_get_bist_share_mode())
+		rp = TYPEC_RP_3A0;
+
+	return rp;
 }
 void typec_select_src_collision_rp(int port, enum tcpc_rp_value rp)
 {
@@ -1555,6 +1560,9 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 void tc_state_init(int port)
 {
 	enum usb_tc_state first_state;
+
+	if (port >= CONFIG_USB_PD_PORT_MAX_COUNT)
+		return;
 
 	/* For test builds, replicate static initialization */
 	if (IS_ENABLED(TEST_BUILD)) {
@@ -3744,6 +3752,13 @@ __maybe_unused static void tc_ct_attached_snk_entry(int port)
 
 	/* The port shall reject a VCONN swap request. */
 	TC_SET_FLAG(port, TC_FLAGS_REJECT_VCONN_SWAP);
+
+	/*
+	 * Type-C r 2.2: The Host shall not advertise dual-role data or
+	 * dual-role power in its SourceCapability or SinkCapability messages -
+	 * Host changes its advertised capabilities to UFP role/sink only role.
+	 */
+	tc_set_data_role(port, PD_ROLE_UFP);
 }
 
 __maybe_unused static void tc_ct_attached_snk_run(int port)
