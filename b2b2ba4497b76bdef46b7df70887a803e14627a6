@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3e43e46_1b898aa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-12-14T19:53:37Z",
+      "side": 1,
+      "message": "I would send it through CQ+1 which will not merge the changes.  Then while that is running put it on a Hatch and try it out. The overlap would reduce the time if you then decide to CQ+2 on positive verification and lose nothing if you have to make changes.",
+      "parentUuid": "8fd5d3bd_98864069",
+      "revId": "b2b2ba4497b76bdef46b7df70887a803e14627a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d34696ea_d00de64c",
         "filename": "board/atlas/board.c",
         "patchSetId": 3
