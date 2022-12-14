@@ -254,6 +254,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86fa54e1_4b0b3866",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-12-14T02:51:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c29f1a3e_09dfbae7",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 35
+      },
+      "revId": "c40520168ffe0f221bae5106511035a29a252f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae73b8f3_b57cd4af",
