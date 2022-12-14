@@ -175,6 +175,24 @@
       "parentUuid": "d73cef5c_2d990a91",
       "revId": "c2fa263b47644f4fa6e5a0ddca9c57353bceb149",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41722973_6ba31e65",
+        "filename": "zephyr/program/nissa/xivu/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-14T00:54:08Z",
+      "side": 1,
+      "message": "Ah, I see - I am not familiar with the \u0027RSOC\u0027 acronym, so I found it confusing.\nThe EC actually uses the term \u0027Display\u0027 for these adjusted values.\n\nI suggest you put a larger comment at the top of this block that says something like:\n\n  The EC modifies the raw battery level to a \u0027Display\u0027 level that is then sent to the AP.\n  The battery percentages that the LED driver uses for comparison is the raw level,\n  but the Display values are the ones used to determine the LED thresholds.\n  The Display values map to raw values as:\n      Display        Raw\n       10             13\n       11             14\n       94             91\n       95             92\n   The raw values are used in the device tree, the comment contains the Display value.\n   \nI would drop the use of \u0027RSOC\u0027.",
+      "parentUuid": "fc0c2bc4_14384a7d",
+      "revId": "c2fa263b47644f4fa6e5a0ddca9c57353bceb149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
