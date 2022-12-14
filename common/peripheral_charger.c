@@ -554,7 +554,7 @@ static void pchg_state_download(struct pchg *ctx)
 	case PCHG_EVENT_UPDATE_OPEN:
 		rv = ctx->cfg->drv->update_open(ctx);
 		if (rv == EC_SUCCESS) {
-			ctx->state = PCHG_STATE_DOWNLOADING;
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_OPENED);
 		} else if (rv != EC_SUCCESS_IN_PROGRESS) {
 			pchg_queue_host_event(ctx, EC_MKBP_PCHG_UPDATE_ERROR);
 			CPRINTS("ERR: Failed to open");
@@ -587,6 +587,9 @@ static void pchg_state_downloading(struct pchg *ctx)
 		if (rv != EC_SUCCESS && rv != EC_SUCCESS_IN_PROGRESS) {
 			pchg_queue_host_event(ctx, EC_MKBP_PCHG_UPDATE_ERROR);
 			CPRINTS("ERR: Failed to write");
+		} else if (rv == EC_SUCCESS) {
+			ctx->update.data_ready = 0;
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_WRITTEN);
 		}
 		break;
 	case PCHG_EVENT_UPDATE_WRITTEN:
@@ -596,7 +599,10 @@ static void pchg_state_downloading(struct pchg *ctx)
 	case PCHG_EVENT_UPDATE_CLOSE:
 		rv = ctx->cfg->drv->update_close(ctx);
 		if (rv == EC_SUCCESS) {
-			ctx->state = PCHG_STATE_DOWNLOAD;
+			if (ctx->cfg->flags & PCHG_CFG_FW_UPDATE_SYNC)
+				pchg_queue_event(ctx, PCHG_EVENT_UPDATE_CLOSED);
+			else
+				ctx->state = PCHG_STATE_DOWNLOAD;
 		} else if (rv != EC_SUCCESS_IN_PROGRESS) {
 			pchg_queue_host_event(ctx, EC_MKBP_PCHG_UPDATE_ERROR);
 			CPRINTS("ERR: Failed to close");
@@ -604,6 +610,10 @@ static void pchg_state_downloading(struct pchg *ctx)
 		break;
 	case PCHG_EVENT_UPDATE_CLOSED:
 		ctx->state = PCHG_STATE_DOWNLOAD;
+		if (ctx->cfg->flags & PCHG_CFG_FW_UPDATE_SYNC) {
+			gpio_enable_interrupt(ctx->cfg->irq_pin);
+			ctx->state = reset_to_normal(ctx);
+		}
 		pchg_queue_host_event(ctx, EC_MKBP_PCHG_UPDATE_CLOSED);
 		break;
 	case PCHG_EVENT_UPDATE_ERROR:
@@ -953,8 +963,11 @@ static enum ec_status hc_pchg_update(struct host_cmd_handler_args *args)
 		_clear_port(ctx);
 		ctx->mode = PCHG_MODE_DOWNLOAD;
 		ctx->cfg->drv->reset(ctx);
-		gpio_enable_interrupt(ctx->cfg->irq_pin);
-
+		if (ctx->cfg->flags & PCHG_CFG_FW_UPDATE_SYNC) {
+			pchg_queue_event(ctx, PCHG_EVENT_RESET);
+		} else {
+			gpio_enable_interrupt(ctx->cfg->irq_pin);
+		}
 		ctx->update.version = p->version;
 		r->block_size = ctx->cfg->block_size;
 		args->response_size = sizeof(*r);

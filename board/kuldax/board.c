@@ -50,6 +50,7 @@ struct pchg pchgs[] = {
 			.irq_pin = GPIO_QI_INT_ODL,
 			.full_percent = 96,
 			.block_size = 128,
+			.flags = PCHG_CFG_FW_UPDATE_SYNC,
 		},
 		.policy = {
 			[PCHG_CHIPSET_STATE_ON] = &pchg_policy_on,
