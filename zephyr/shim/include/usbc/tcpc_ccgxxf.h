@@ -18,7 +18,5 @@
 		},                                                             \
 		.drv = &ccgxxf_tcpm_drv,                                       \
 		.flags = TCPC_FLAGS_TCPCI_REV2_0,                              \
-		.alert_signal = COND_CODE_1(DT_NODE_HAS_PROP(id, int_pin),     \
-			(GPIO_SIGNAL(DT_PHANDLE(id, int_pin))),                \
-			(GPIO_LIMIT)),                                         \
+		.int_cfg = GPIO_DT_SPEC_GET_OR(id, irq_gpios, {}),             \
 	},
