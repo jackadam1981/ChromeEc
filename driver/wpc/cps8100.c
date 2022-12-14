@@ -6,6 +6,8 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "cps8200_bootloader.h"
+#include "crc.h"
 #include "gpio.h"
 #include "i2c.h"
 #include "peripheral_charger.h"
@@ -56,11 +58,34 @@
 #define CPS8200_REG_I2C_ENABLE 0xFFFFFF00
 #define CPS8200_REG_PASSWORD 0x400140FC
 
+/* Firmware update */
+#define CPS8200_ADDR_SRAM 0x20000000
+#define CPS8200_ADDR_BUFFER0 0x20002800
+#define CPS8200_ADDR_BUFFER1 0x20003000
+#define CPS8200_ADDR_CMD 0x200038F8
+#define CPS8200_ADDR_CMD_STATUS 0x200038FC
+#define CPS8200_ADDR_BUF_SIZE 0x200038F4
+#define CFG_BUFF_SIZE 128
+#define CPS8200_CMD_TIMEOUT (3 * SECOND)
+/* CMD and CMD status. Lower 4 bits are for command ID */
+#define CMD_PGM_BUFFER0 (0x1 << 4)
+#define CMD_PGM_BUFFER1 (0x2 << 4)
+#define CMD_PGM_WR_FLAG (0x8 << 4)
+#define CMD_CACL_CRC_APP (0x9 << 4)
+#define CMD_CACL_CRC_BOOT (0xB << 4)
+#define CMD_STATUS_RUNNING (0x1 << 4)
+#define CMD_STATUS_PASS (0x2 << 4)
+#define CMD_STATUS_FAIL (0x3 << 4)
+#define CMD_STATUS_ILLEGAL (0x4 << 4)
+
 #define CPS8100_STATUS_PROFILE(r) (((r)&GENMASK(5, 4)) >> 4)
 #define CPS8100_STATUS_CHARGE(r) ((r)&BIT(6))
 #define CPS8100_STATUS_DEVICE(r) ((r)&BIT(7))
 #define CPS8100_STATUS_BATTERY(r) (((r)&GENMASK(15, 8)) >> 8)
 #define CPS8100_IRQ_TYPE(r) (((r)&GENMASK(23, 20)) >> 20)
+#define CPS8200_CMD_STATUS(flag) ((flag)&GENMASK(7, 4))
+#define CPS8X00_GET_FW_VER(value) ((value)&GENMASK(7, 0))
+#define CPS8X00_BAD_FW_VERSION 0xff
 
 /* Status flags in ALERT_INFO register */
 #define CPS8100_STATUS_FOD BIT(0)
@@ -305,6 +330,23 @@ static int cps8100_read32(int port, uint32_t reg, uint32_t *val)
 			sizeof(*val));
 }
 
+static int cps8200_write32(int port, uint32_t reg, uint32_t val)
+{
+	uint8_t buf[8];
+
+	buf[0] = (reg >> 24) & 0xff;
+	buf[1] = (reg >> 16) & 0xff;
+	buf[2] = (reg >> 8) & 0xff;
+	buf[3] = (reg >> 0) & 0xff;
+
+	buf[4] = (val >> 0) & 0xff;
+	buf[5] = (val >> 8) & 0xff;
+	buf[6] = (val >> 16) & 0xff;
+	buf[7] = (val >> 24) & 0xff;
+
+	return cps8100_i2c_write(port, CPS8200_I2C_ADDR, buf, sizeof(buf));
+}
+
 static int cps8200_read32(int port, uint32_t reg, uint32_t *val)
 {
 	uint8_t buf[4];
@@ -314,8 +356,34 @@ static int cps8200_read32(int port, uint32_t reg, uint32_t *val)
 	buf[2] = (reg >> 8) & 0xff;
 	buf[3] = (reg >> 0) & 0xff;
 
-	return i2c_xfer(port, CPS8200_I2C_ADDR, buf, 4, (void *)val,
+	return i2c_xfer(port, CPS8200_I2C_ADDR, buf, sizeof(buf), (void *)val,
 			sizeof(*val));
+}
+
+static int cps8200_write_mem(int port, uint32_t addr, uint8_t *data, size_t len)
+{
+	int rv;
+	uint8_t buf[4];
+
+	buf[0] = (addr >> 24) & 0xff;
+	buf[1] = (addr >> 16) & 0xff;
+	buf[2] = (addr >> 8) & 0xff;
+	buf[3] = (addr >> 0) & 0xff;
+
+	i2c_lock(port, 1);
+	/* Addr */
+	rv = i2c_xfer_unlocked(port, CPS8200_I2C_ADDR, buf, sizeof(buf), NULL,
+			       0, I2C_XFER_START);
+	if (rv) {
+		i2c_lock(port, 0);
+		return rv;
+	}
+	/* Data */
+	rv = i2c_xfer_unlocked(port, CPS8200_I2C_ADDR, data, len, NULL, 0,
+			       I2C_XFER_STOP);
+	i2c_lock(port, 0);
+
+	return rv;
 }
 
 static int cps8100_unlock(int port)
@@ -334,7 +402,79 @@ static int cps8200_unlock(int port)
 	return rv ? rv : cps8200_set_unlock(port);
 }
 
-static int cps8100_reset(struct pchg *ctx)
+/*
+ * Send command to CPS8200 by writing command to CPS8200_ADDR_CMD register.
+ * command = cmd (higher 4 bits) + id (lower 4 bits), id needs to be increased
+ * every time.
+ */
+static uint8_t cps8200_send_cmd(struct pchg *ctx, uint32_t cmd, uint8_t *id)
+{
+	uint8_t port = ctx->cfg->i2c_port;
+	struct cps8x00_update *upd = &(ctx->update.driver_data.cps8200_update);
+
+	*id = upd->cmd_id;
+	cmd |= *id;
+	upd->cmd_id++;
+	upd->cmd_id &= 0x0f;
+
+	return cps8200_write32(port, CPS8200_ADDR_CMD, cmd);
+}
+
+/*
+ * Read the response of command by reading CPS8200_ADDR_CMD_STATUS register.
+ * Return EC_SUCCESS if the status is CMD_STATUS_PASS and the id matches to
+ * the id which is expected.
+ */
+static int cps8200_wait_cmd_done(int port, uint8_t id)
+{
+	int rv;
+	uint32_t u32;
+	timestamp_t deadline;
+
+	deadline.val = get_time().val + CPS8200_CMD_TIMEOUT;
+	while (1) {
+		msleep(10);
+		rv = cps8200_read32(port, CPS8200_ADDR_CMD_STATUS, &u32);
+		if (rv)
+			return EC_ERROR_UNKNOWN;
+
+		if ((CMD_STATUS_PASS | id) == (u32 & 0x00ff))
+			break;
+		if (CPS8200_CMD_STATUS(u32) == CMD_STATUS_FAIL ||
+		    CPS8200_CMD_STATUS(u32) == CMD_STATUS_ILLEGAL) {
+			CPRINTS("Command failed or illegal: %02x",
+				CPS8200_CMD_STATUS(u32));
+			return EC_ERROR_UNKNOWN;
+		}
+
+		rv = timestamp_expired(deadline, NULL);
+		if (rv) {
+			CPRINTS("Command timeout!");
+			return EC_ERROR_TIMEOUT;
+		}
+	}
+	return EC_SUCCESS;
+}
+
+static int cps8x00_read_firmware_ver(struct pchg *ctx)
+{
+	uint32_t u32;
+	int port = ctx->cfg->i2c_port;
+	int rv;
+
+	rv = cps8x00_read32(port, CPS8100_REG_FW_INFO, &u32);
+	if (!rv) {
+		ctx->fw_version = CPS8X00_GET_FW_VER(u32);
+	} else {
+		ctx->fw_version = CPS8X00_BAD_FW_VERSION;
+		CPRINTS("Failed to read FW info: %d", rv);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
+}
+
+static int cps8x00_reset(struct pchg *ctx)
 {
 	gpio_set_level(GPIO_QI_RESET_L, 0);
 	cps8100_status_update(ctx, 0);
@@ -344,7 +484,7 @@ static int cps8100_reset(struct pchg *ctx)
 	return EC_SUCCESS;
 }
 
-static int cps8100_init(struct pchg *ctx)
+static int cps8x00_init(struct pchg *ctx)
 {
 	int port = ctx->cfg->i2c_port;
 
@@ -357,7 +497,7 @@ static int cps8100_init(struct pchg *ctx)
 		return EC_ERROR_UNKNOWN;
 }
 
-static int cps8100_enable(struct pchg *ctx, bool enable)
+static int cps8x00_enable(struct pchg *ctx, bool enable)
 {
 	return EC_SUCCESS;
 }
@@ -375,7 +515,7 @@ static int cps8100_get_alert_info(struct pchg *ctx, uint32_t *reg)
 	return EC_SUCCESS;
 }
 
-static int cps8100_get_chip_info(struct pchg *ctx)
+static int cps8x00_get_chip_info(struct pchg *ctx)
 {
 	uint32_t u32;
 	int port = ctx->cfg->i2c_port;
@@ -409,7 +549,7 @@ static int cps8100_get_chip_info(struct pchg *ctx)
 		return rv;
 	}
 
-	/* Probe */;
+	/* Probe */
 	CPRINTS("IC=0x%08x", u32);
 	if ((u32 & 0xffff) == CPS8100_CHIPID) {
 		cps8x00_read32 = cps8100_read32;
@@ -422,12 +562,9 @@ static int cps8100_get_chip_info(struct pchg *ctx)
 		return EC_ERROR_UNKNOWN;
 	}
 
-	if (!cps8x00_read32(port, CPS8100_REG_FW_INFO, &u32)) {
-		CPRINTS("FW=0x%08x", u32);
-	} else {
-		CPRINTS("Failed to read FW info!");
-		return EC_ERROR_UNKNOWN;
-	}
+	rv = cps8x00_read_firmware_ver(ctx);
+	if (!rv)
+		CPRINTS("FW=0x%02x", ctx->fw_version);
 
 	return EC_SUCCESS;
 }
@@ -445,7 +582,7 @@ static void cps8100_print_alert_info(uint32_t reg)
 	CPRINTFP("Battery: %d%%\n", CPS8100_STATUS_BATTERY(reg));
 }
 
-static int cps8100_get_event(struct pchg *ctx)
+static int cps8x00_get_event(struct pchg *ctx)
 {
 	uint32_t r1, r2;
 	int rv;
@@ -486,38 +623,291 @@ static int cps8100_get_event(struct pchg *ctx)
 	return EC_SUCCESS;
 }
 
-static int cps8100_get_soc(struct pchg *ctx)
+static int cps8x00_get_soc(struct pchg *ctx)
 {
 	ctx->battery_percent = CPS8100_STATUS_BATTERY(cps8100_state.reg);
 
 	return EC_SUCCESS;
 }
 
-static int cps8100_update_open(struct pchg *ctx)
+/*
+ * This function does the preparation for firmware update, the steps are:
+ * 1. Enable i2c and unlock.
+ * 2. Reset MCU, reset watchdog, disable DCDC and reset MCU clock.
+ * 3. Program bootloader to SRAM.
+ * 4. Run bootloader.
+ * 5. Check CRC of bootloader.
+ * 6. Ready for firmware download. Configure buffer size for firmware download.
+ */
+static int cps8200_update_open(struct pchg *ctx)
 {
-	return EC_ERROR_UNIMPLEMENTED;
+	uint32_t u32;
+	uint8_t id;
+	int port = ctx->cfg->i2c_port;
+	int rv;
+	struct cps8x00_update *upd = &(ctx->update.driver_data.cps8200_update);
+
+	upd->cmd_id = 0;
+	upd->crc = 0;
+	upd->firmware_len = 0;
+
+	/* enable i2c and unlock */
+	rv = cps8200_unlock(port);
+	if (rv)
+		return rv;
+
+	/* Reset MCU and halt */
+	rv = cps8200_write32(port, 0x40014028, 0x00010000);
+	if (rv)
+		return rv;
+	msleep(50);
+
+	/* Reset watchdog */
+	rv = cps8200_write32(port, 0x40008400, 0x1ACCE551);
+	if (rv)
+		return rv;
+	msleep(2);
+	rv = cps8200_write32(port, 0x40008008, 0x0);
+	if (rv)
+		return rv;
+	msleep(2);
+
+	/* Disable DCDC module */
+	rv = cps8200_write32(port, 0x4000F0A4, 0x0);
+	if (rv)
+		return rv;
+	msleep(50);
+
+	/* Reset MCU clock */
+	rv = cps8200_write32(port, 0x40014020, 0x0);
+	if (rv)
+		return rv;
+	msleep(2);
+	rv = cps8200_write32(port, 0x40014024, 0x0);
+	if (rv)
+		return rv;
+	msleep(2);
+	rv = cps8200_write32(port, 0x400140A8, 0x0);
+	if (rv)
+		return rv;
+	msleep(2);
+
+	/* Program bootloader to SRAM */
+	CPRINTS("Loading bootloader hex!");
+	if (cps8200_write_mem(port, CPS8200_ADDR_SRAM, (uint8_t *)&boot_hex,
+			      boot_hex_len * 4)) {
+		CPRINTS("Failed to write bootloader!");
+		return EC_ERROR_UNKNOWN;
+	}
+	msleep(2);
+
+	/* disable trim */
+	rv = cps8200_write32(port, 0x4001F01C, 0x0);
+	if (rv)
+		return rv;
+	msleep(2);
+
+	/* enable address remap */
+	rv = cps8200_write32(port, 0x4001F030, 0xFFFFFF00);
+	if (rv)
+		return rv;
+	msleep(2);
+	rv = cps8200_write32(port, 0x4001F034, 0xFFFFFFFF);
+	if (rv)
+		return rv;
+	msleep(2);
+	rv = cps8200_write32(port, 0x4001F038, 0xFFFFFFFF);
+	if (rv)
+		return rv;
+	msleep(2);
+	rv = cps8200_write32(port, 0x4001F03C, 0xFFFFFFFF);
+	if (rv)
+		return rv;
+	msleep(2);
+
+	/* disable mcu halt, run bootloader */
+	rv = cps8200_write32(port, 0x40014028, 0x101);
+	if (rv)
+		return rv;
+	msleep(2);
+
+	/* enable i2c and unlock */
+	rv = cps8200_i2c_enable(port);
+	if (rv)
+		return rv;
+	msleep(2);
+
+	/* write bootloader length */
+	rv = cps8200_write32(port, CPS8200_ADDR_BUFFER0, boot_hex_len * 4);
+	if (rv)
+		return rv;
+	msleep(2);
+
+	/* calculate CRC of bootloader */
+	rv = cps8200_send_cmd(ctx, CMD_CACL_CRC_BOOT, &id);
+	if (rv)
+		return rv;
+	msleep(2);
+
+	/* check command status */
+	rv = cps8200_wait_cmd_done(port, id);
+	if (rv)
+		return rv;
+	msleep(100);
+
+	/* check CRC */
+	rv = cps8200_read32(port, CPS8200_ADDR_BUFFER0, &u32);
+	if (rv)
+		return rv;
+	upd->crc = crc16_update((uint8_t *)boot_hex, boot_hex_len * 4, 0);
+	if (upd->crc != (u32 & 0x0000ffff)) {
+		CPRINTS("crc = %04x, expect %04x", u32, upd->crc);
+		CPRINTS("CRC of bootloader is wroing!");
+		return EC_ERROR_UNKNOWN;
+	}
+	CPRINTS("Successfully load bootloader!");
+
+	upd->crc = 0x0000;
+	/* Prepare to download firmware and program flash, change buffer size */
+	rv = cps8200_write32(port, CPS8200_ADDR_BUF_SIZE,
+			     ctx->cfg->block_size / 4);
+	if (rv) {
+		CPRINTS("Failed to change buffer size (%d)", rv);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
 }
 
-static int cps8100_update_write(struct pchg *ctx)
+/*
+ * This function writes the firmware block to the chip and returns only after
+ * the write is complete. The steps are:
+ * 1. Write firmware block to the chip buffer.
+ * 2. Send command to the chip.
+ * 3. The chip program the flash.
+ * 4. Calculate and update CRC.
+ */
+static int cps8200_update_write(struct pchg *ctx)
 {
-	return EC_ERROR_UNIMPLEMENTED;
+	int port = ctx->cfg->i2c_port;
+	int rv;
+	uint8_t id;
+	uint8_t *buf = ctx->update.data;
+	struct cps8x00_update *upd = &(ctx->update.driver_data.cps8200_update);
+
+	/* Write data to buffer */
+	if (cps8200_write_mem(port, CPS8200_ADDR_BUFFER0, buf,
+			      ctx->update.size))
+		return EC_ERROR_UNKNOWN;
+	msleep(10);
+
+	/* Write buffer to flash */
+	rv = cps8200_send_cmd(ctx, CMD_PGM_BUFFER0, &id);
+	if (rv)
+		return rv;
+	msleep(10);
+
+	/* Check the program result */
+	if (cps8200_wait_cmd_done(port, id)) {
+		CPRINTS("Failed to write flash!");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	/* Calculate and update CRC */
+	upd->firmware_len += ctx->update.size;
+	upd->crc = crc16_update(ctx->update.data, ctx->update.size, upd->crc);
+
+	return EC_SUCCESS;
 }
 
-static int cps8100_update_close(struct pchg *ctx)
+/*
+ * This function checks firmware update result, power on and power off the chip
+ * if firmware update is successful. The steps are:
+ * 1. Send command to the chip to calculate the firmware CRC.
+ * 2. Read the CRC value from the chip and compare.
+ * 3. If CRC is correct, power off and power on the chip.
+ */
+static int cps8200_update_close(struct pchg *ctx)
 {
-	return EC_ERROR_UNIMPLEMENTED;
+	int port = ctx->cfg->i2c_port;
+	int rv;
+	uint32_t u32;
+	uint8_t id;
+	struct cps8x00_update *upd = &(ctx->update.driver_data.cps8200_update);
+	uint32_t len = upd->firmware_len;
+
+	/* Write firmware length */
+	rv = cps8200_write32(port, CPS8200_ADDR_BUFFER0, len);
+	if (rv)
+		return rv;
+	msleep(10);
+
+	/* Check firmware CRC */
+	CPRINTS("Checking Firmware CRC...");
+	rv = cps8200_send_cmd(ctx, CMD_CACL_CRC_APP, &id);
+	if (rv)
+		return rv;
+	msleep(10);
+	if (cps8200_wait_cmd_done(port, id)) {
+		CPRINTS("Command to calculate CRC timeout or failed");
+		return EC_ERROR_UNKNOWN;
+	}
+	msleep(100);
+
+	cps8200_read32(port, CPS8200_ADDR_BUFFER0, &u32);
+	if (upd->crc != (u32 & 0x0000ffff)) {
+		CPRINTS("crc = %04x, expect %04x", u32, upd->crc);
+		CPRINTS("CRC of firmware is wroing!");
+		return EC_ERROR_UNKNOWN;
+	}
+	CPRINTS("Firmware CRC is correct!");
+	CPRINTS("Successfully update the firmware");
+
+	rv = cps8200_send_cmd(ctx, CMD_PGM_WR_FLAG, &id);
+	if (rv)
+		return rv;
+	msleep(10);
+	if (cps8200_wait_cmd_done(port, id))
+		return EC_ERROR_UNKNOWN;
+
+	/* power off MCU */
+	board_pchg_power_on(PCHG_CTX_TO_PORT(ctx), 0);
+	msleep(50);
+	/* power on MCU */
+	board_pchg_power_on(PCHG_CTX_TO_PORT(ctx), 1);
+	msleep(100);
+	/* Update the information of firmware version */
+	cps8200_unlock(port);
+	rv = cps8x00_read_firmware_ver(ctx);
+	if (rv) {
+		CPRINTS("Failed to read FW info after firmware update!");
+		ctx->fw_version = CPS8X00_BAD_FW_VERSION;
+	} else {
+		CPRINTS("FW=0x%02x", ctx->fw_version);
+	}
+
+	return EC_SUCCESS;
 }
 
 const struct pchg_drv cps8100_drv = {
-	.reset = cps8100_reset,
-	.init = cps8100_init,
-	.enable = cps8100_enable,
-	.get_chip_info = cps8100_get_chip_info,
-	.get_event = cps8100_get_event,
-	.get_soc = cps8100_get_soc,
-	.update_open = cps8100_update_open,
-	.update_write = cps8100_update_write,
-	.update_close = cps8100_update_close,
+	.reset = cps8x00_reset,
+	.init = cps8x00_init,
+	.enable = cps8x00_enable,
+	.get_chip_info = cps8x00_get_chip_info,
+	.get_event = cps8x00_get_event,
+	.get_soc = cps8x00_get_soc,
+};
+
+const struct pchg_drv cps8200_drv = {
+	.reset = cps8x00_reset,
+	.init = cps8x00_init,
+	.enable = cps8x00_enable,
+	.get_chip_info = cps8x00_get_chip_info,
+	.get_event = cps8x00_get_event,
+	.get_soc = cps8x00_get_soc,
+	.update_open = cps8200_update_open,
+	.update_write = cps8200_update_write,
+	.update_close = cps8200_update_close,
 };
 
 static void cps8100_dump(struct pchg *ctx)
@@ -555,8 +945,8 @@ static int cc_cps8100(int argc, const char **argv)
 	}
 
 	if (!strcasecmp(argv[2], "reset")) {
-		cps8100_reset(ctx);
-		cps8100_init(ctx);
+		cps8x00_reset(ctx);
+		cps8x00_init(ctx);
 	} else {
 		return EC_ERROR_PARAM3;
 	}
