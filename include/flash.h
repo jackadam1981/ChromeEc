@@ -52,6 +52,8 @@ int crec_flash_bank_erase_size(int bank);
 
 void crec_flash_print_region_info(void);
 
+int crec_flash_total_banks(void);
+
 /* Number of physical flash banks */
 #define PHYSICAL_BANKS CONFIG_FLASH_MULTIPLE_REGION
 
