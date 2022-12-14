@@ -9,6 +9,14 @@
 
 #define CCGXXF_TCPC_COMPAT cypress_ccgxxf
 
+#define INT_PIN_CONFIG_CCGXXF(id)                                            \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, int_pin),                           \
+		    (.gpio_port = DEVICE_DT_GET(                             \
+			     DT_GPIO_CTLR(DT_PHANDLE(id, int_pin), gpios)),  \
+		     .interrupt_pin =                                        \
+			     DT_GPIO_PIN(DT_PHANDLE(id, int_pin), gpios), ), \
+		    ())
+
 #define TCPC_CONFIG_CCGXXF(id) \
 	{                                                                      \
 		.bus_type = EC_BUS_TYPE_I2C,                                   \
@@ -18,7 +26,5 @@
 		},                                                             \
 		.drv = &ccgxxf_tcpm_drv,                                       \
 		.flags = TCPC_FLAGS_TCPCI_REV2_0,                              \
-		.alert_signal = COND_CODE_1(DT_NODE_HAS_PROP(id, int_pin),     \
-			(GPIO_SIGNAL(DT_PHANDLE(id, int_pin))),                \
-			(GPIO_LIMIT)),                                         \
+		INT_PIN_CONFIG_CCGXXF(id)                                      \
 	},
