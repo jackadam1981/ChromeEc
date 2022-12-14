@@ -46,6 +46,30 @@
       },
       "revId": "1566c01dab9d014ec133eda4a40f6de7de6665b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33ccad0d_09505df0",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6505,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-12-14T22:58:22Z",
+      "side": 1,
+      "message": "Alternatively, i tried enabling CONFIG_CHIPSET_ICELAKE from zephyr nissa but did not help.\n\nCONFIG_CHIPSET_METEORLAKE is enabled for zephyr mtlrvp but when i compile the code for mtlrvp, i see the part of code under CONFIG_POWER_COMMON file usb_tc_drp_acc_trysrc_sm.c was not compiled.",
+      "parentUuid": "67afd741_f07f932b",
+      "range": {
+        "startLine": 6505,
+        "startChar": 0,
+        "endLine": 6505,
+        "endChar": 27
+      },
+      "revId": "1566c01dab9d014ec133eda4a40f6de7de6665b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
