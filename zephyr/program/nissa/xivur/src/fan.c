@@ -15,9 +15,6 @@
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
-/*
- * Nirwen fan support
- */
 static void fan_init(void)
 {
 	int ret;
@@ -30,11 +27,15 @@ static void fan_init(void)
 		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", FW_FAN);
 		return;
 	}
-	if (val != FW_FAN_PRESENT) {
+	if (val == FW_FAN_NOT_PRESENT) {
 		/* Disable the fan */
+		ccprintf("FAN_NOT_PRESENT\n");
 		fan_set_count(0);
-	} else {
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_fan_enable),
+				      GPIO_OUTPUT_LOW);
+	} else if (val == FW_FAN_PRESENT) {
 		/* Configure the fan enable GPIO */
+		ccprintf("FAN_PRESENT\n");
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_fan_enable),
 				      GPIO_OUTPUT);
 	}
