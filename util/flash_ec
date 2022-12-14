@@ -268,10 +268,6 @@ function dut_control_get_or_die {
 
 : "${BOARD:=${FLAGS_board}}"
 
-if [ "${BOARD}" == "" ]; then
-  die "Must specify board."
-fi
-
 in_array() {
 	local n=$#
 	local value=${!n}
@@ -735,7 +731,7 @@ fi
 function ec_image() {
 	# No image specified on the command line, try default ones
 	if [[ -n "${FLAGS_image}" ]] ; then
-		if [ -f "${FLAGS_image}" ] || \
+		if [ -e "${FLAGS_image}" ] || \
 		   [ "${FLAGS_image}" == "-" ]; then
 			echo "${FLAGS_image}"
 			return
@@ -1613,10 +1609,6 @@ function flash_npcx_spi() {
 }
 
 function flash_npcx_int_spi() {
-	flash_flashrom
-}
-
-function flash_mec1322() {
 	flash_flashrom
 }
 

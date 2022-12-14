@@ -3,13 +3,13 @@
  * found in the LICENSE file.
  */
 
-#include <zephyr/ztest_assert.h>
-#include <zephyr/ztest_test_new.h>
-#include <zephyr/shell/shell_dummy.h>
-
 #include "ec_app_main.h"
 #include "hooks.h"
 #include "task.h"
+
+#include <zephyr/shell/shell_dummy.h>
+#include <zephyr/ztest_assert.h>
+#include <zephyr/ztest_test_new.h>
 
 #ifdef CONFIG_CMD_AP_RESET_LOG
 ZTEST(ec_app_tests, test_init_reset_log)
@@ -46,7 +46,7 @@ ZTEST(ec_app_tests, test_setup_espi)
 }
 #endif
 
-#ifdef CONFIG_PLATFORM_EC_WATCHDOG
+#ifdef CONFIG_WATCHDOG
 ZTEST(ec_app_tests, test_watchdog_init)
 {
 	zassert_unreachable("TODO: Implement this test.");

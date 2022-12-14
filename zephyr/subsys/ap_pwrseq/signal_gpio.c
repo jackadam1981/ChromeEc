@@ -3,14 +3,14 @@
  * found in the LICENSE file.
  */
 
-#include <power_signals.h>
-#include <signal_gpio.h>
-#include <zephyr/drivers/gpio.h>
+#include "signal_gpio.h"
 #include "system.h"
 
-#define MY_COMPAT intel_ap_pwrseq_gpio
+#include <zephyr/drivers/gpio.h>
 
-#if HAS_GPIO_SIGNALS
+#include <power_signals.h>
+
+#define MY_COMPAT intel_ap_pwrseq_gpio
 
 #define INIT_GPIO_SPEC(id) GPIO_DT_SPEC_GET(id, gpios),
 
@@ -173,5 +173,3 @@ void power_signal_gpio_init(void)
 		}
 	}
 }
-
-#endif /*  HAS_GPIO_SIGNALS */

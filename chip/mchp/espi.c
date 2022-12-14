@@ -5,29 +5,27 @@
 
 /* ESPI module for Chrome EC */
 
-#include "common.h"
 #include "acpi.h"
+#include "chipset.h"
+#include "common.h"
 #include "console.h"
+#include "espi.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "keyboard_protocol.h"
-#include "port80.h"
-#include "util.h"
-#include "chipset.h"
-
-#include "registers.h"
-#include "espi.h"
 #include "lpc.h"
 #include "lpc_chip.h"
+#include "port80.h"
+#include "power.h"
+#include "registers.h"
 #include "system.h"
+#include "system_boot_time.h"
 #include "task.h"
-#include "console.h"
+#include "tfdp_chip.h"
+#include "timer.h"
 #include "uart.h"
 #include "util.h"
-#include "power.h"
-#include "timer.h"
-#include "tfdp_chip.h"
 
 /* Console output macros */
 #ifdef CONFIG_MCHP_ESPI_DEBUG
@@ -836,6 +834,7 @@ int espi_vw_disable_wire_int(enum espi_vw_signal signal)
 static void espi_chipset_reset(void)
 {
 	hook_notify(HOOK_CHIPSET_RESET);
+	update_ap_boot_time(ESPIRST);
 }
 DECLARE_DEFERRED(espi_chipset_reset);
 #endif
@@ -870,12 +869,15 @@ void espi_vw_evt_pltrst_n(uint32_t wire_state, uint32_t bpos)
 {
 	CPRINTS("VW PLTRST#: %d", wire_state);
 
-	if (wire_state) /* Platform Reset de-assertion */
+	if (wire_state) { /* Platform Reset de-assertion */
 		espi_host_init();
-	else /* assertion */
+		update_ap_boot_time(PLTRST_HIGH);
+	} else { /* assertion */
 #ifdef CONFIG_CHIPSET_RESET_HOOK
 		hook_call_deferred(&espi_chipset_reset_data, MSEC);
 #endif
+		update_ap_boot_time(PLTRST_LOW);
+	}
 }
 
 /* OOB Reset Warn event handler */

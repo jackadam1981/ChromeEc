@@ -3,18 +3,19 @@
  * found in the LICENSE file.
  */
 
-#include <zephyr/arch/arm/aarch32/cortex_m/cmsis.h>
-#include <drivers/cros_system.h>
-#include <zephyr/drivers/watchdog.h>
-#include <zephyr/logging/log.h>
-#include <soc.h>
-#include <soc/microchip_xec/reg_def_cros.h>
-#include <zephyr/sys/util.h>
-
+#include "gpio/gpio_int.h"
 #include "system.h"
 #include "system_chip.h"
+
+#include <zephyr/arch/arm/aarch32/cortex_m/cmsis.h>
 #include <zephyr/drivers/interrupt_controller/intc_mchp_xec_ecia.h>
-#include "gpio/gpio_int.h"
+#include <zephyr/drivers/watchdog.h>
+#include <zephyr/logging/log.h>
+#include <zephyr/sys/util.h>
+
+#include <drivers/cros_system.h>
+#include <soc.h>
+#include <soc/microchip_xec/reg_def_cros.h>
 
 LOG_MODULE_REGISTER(cros_system, LOG_LEVEL_ERR);
 
@@ -285,15 +286,25 @@ noreturn static int cros_system_xec_hibernate(const struct device *dev,
 					      uint32_t microseconds)
 {
 	struct pcr_regs *const pcr = HAL_PCR_INST(dev);
+#ifdef CONFIG_ADC_XEC_V2
 	struct adc_regs *adc0 = STRUCT_ADC_REG_BASE_ADDR;
+#endif
+#ifdef CONFIG_UART_XEC
 	struct uart_regs *uart0 = STRUCT_UART_REG_BASE_ADDR;
+#endif
 	struct ecs_regs *ecs = STRUCT_ECS_REG_BASE_ADDR;
 	struct btmr_regs *btmr4 = STRUCT_TIMER4_REG_BASE_ADDR;
 	struct espi_iom_regs *espi0 = STRUCT_ESPI_REG_BASE_ADDR;
+#ifdef CONFIG_CROS_KB_RAW_XEC
 	struct kscan_regs *kbd = STRUCT_KBD_REG_BASE_ADDR;
+#endif
 	struct qmspi_regs *qmspi0 = STRUCT_QMSPI_REG_BASE_ADDR;
+#if defined(CONFIG_PWM_XEC)
 	struct pwm_regs *pwm0 = STRUCT_PWM_REG_BASE_ADDR;
+#endif
+#if defined(CONFIG_TACH_XEC)
 	struct tach_regs *tach0 = STRUCT_TACH_REG_BASE_ADDR;
+#endif
 	struct ecia_regs *ecia = (struct ecia_regs *)(ECIA_BASE_ADDR);
 	int i;
 
