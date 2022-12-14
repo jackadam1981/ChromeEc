@@ -219,6 +219,14 @@ enum pchg_chipset_state {
 	PCHG_CHIPSET_STATE_COUNT
 };
 
+enum pchg_cfg {
+	/*
+	 * IRQ is not required for firmware update, update_open, update_write
+	 * and update_close may block and must return after completion.
+	 */
+	PCHG_CFG_FW_UPDATE_SYNC = BIT(0),
+};
+
 /**
  * Data struct describing the configuration of a peripheral charging port.
  */
@@ -235,6 +243,13 @@ struct pchg_config {
 	uint32_t block_size;
 	/* RF charge duration in msec. Set it to 0 to disable RF charge. */
 	uint16_t rf_charge_msec;
+	enum pchg_cfg flags;
+};
+
+struct cps8x00_update {
+	uint8_t cmd_id;
+	uint16_t crc;
+	uint32_t firmware_len;
 };
 
 struct pchg_update {
@@ -250,6 +265,11 @@ struct pchg_update {
 	uint8_t data_ready;
 	/* Partial data of new firmware */
 	uint8_t data[128];
+	/* Driver data for firmware update */
+	union {
+		struct cps8x00_update cps8200_update;
+		/* other driver data follows in the future */
+	} driver_data;
 };
 
 struct pchg_policy_t {
