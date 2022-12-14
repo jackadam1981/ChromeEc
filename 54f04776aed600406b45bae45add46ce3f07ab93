@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4400440e_435803c4",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bbeb26f_38970116",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 49
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb0fdb83_7ea0eaab",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-13T20:08:16Z",
       "side": 1,
       "message": "Why do you need this? It\u0027s just const char*.\n\n    const char *spi_devices_ext[] \u003d {\"SPI2\", \"QSPI\"};",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f92945_5f56a781",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb0fdb83_7ea0eaab",
       "range": {
         "startLine": 141,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66901eb_58b05c76",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "I think I would like to get some more experience.  There are several modes in which the OCTOSPI controller can be used, these methods implement only what the documentation calls \"indirect read\" and \"indirect write\" (I think I will rename the methods to make that clear.)\n\nOther boards may want to use a memory mapped mode, in which the content of a spi flash chip can be directly accessed, or maybe something else.  I think it would want to keep these methods in this board directory at first, where they do not need to be quite as polished and generally useful.",
+      "parentUuid": "48a2f9a1_e2eb8020",
+      "range": {
+        "startLine": 208,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 25
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d34d661_204c35c3",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-12-13T20:08:16Z",
       "side": 1,
       "message": "Can you add timeout? If this is stuck, currently the whole system crash.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 3
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "628ed5f8_297ece4f",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "Done.  I also added timeout before accessing the FIFO register, which according to the documentation will stall instruction execution until data is available.",
+      "parentUuid": "3d34d661_204c35c3",
       "range": {
         "startLine": 232,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43e79107_198ccbad",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "It was covered by the \"...and then clear the flag\" comment above.  Now it has its own comment.",
+      "parentUuid": "63c0c53b_8444c0c3",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 44
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e85baeee_582220cc",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-12-13T20:08:16Z",
       "side": 1,
       "message": "How about octospi_xfer or something because it does write as well?",
+      "range": {
+        "startLine": 241,
+        "startChar": 12,
+        "endLine": 241,
+        "endChar": 24
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c647ce98_132b4bad",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "I have renamed to \"octospi indirect read\", as that is what the combined operation is called in the STM documentation.",
+      "parentUuid": "e85baeee_582220cc",
       "range": {
         "startLine": 241,
         "startChar": 12,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f188bf8b_99797e49",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "Not in my opinion.  If we some day add a second device to spi_devices which has the USB_SPI_CUSTOM_SPI_DEVICE flag, then it will be obvious that we need an if statement or other kind of lookup here.",
+      "parentUuid": "1d14fd31_87d98452",
+      "range": {
+        "startLine": 320,
+        "startChar": 36,
+        "endLine": 320,
+        "endChar": 41
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cdf46ac_ee07b93c",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-12-13T20:08:16Z",
       "side": 1,
       "message": "nit: Isn\u0027t it just the \u0027previous_cs\u0027?\n\n    326: previous_cs \u003d gpio_get_level(spi_device-\u003egpio_cs);\n    ...\n    370\n    371: /* Restore previous CS */\n    372: gpio_set_level(spi_device-\u003egpio_cs, previous_cs);",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 33
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72648f36_841043cd",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cdf46ac_ee07b93c",
       "range": {
         "startLine": 326,
         "startChar": 1,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f0e097_9df3d05f",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "49d05e41_901c4435",
+      "range": {
+        "startLine": 341,
+        "startChar": 2,
+        "endLine": 341,
+        "endChar": 10
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "920a5860_6b6fbb47",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-12-13T20:08:16Z",
       "side": 1,
       "message": "Why do we need this restriction (instead of 12)?",
+      "range": {
+        "startLine": 353,
+        "startChar": 16,
+        "endLine": 353,
+        "endChar": 30
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceefe053_14739514",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "The hardware supports up to 12 bytes being sent in the initial phase of an \"indirect read\" operation.  For my use case, I needed at most 5 bytes, so I implemented up to 8.  I have now added handling of up to 12 bytes, for good measure.",
+      "parentUuid": "920a5860_6b6fbb47",
       "range": {
         "startLine": 353,
         "startChar": 16,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd2a5cb5_a73064c5",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "Yes, this OCTOSPI controller is designed to communicate with SPI flash chips efficiently.  Often, when you want to read a kilobyte of data, you do so by sending 5-6 bytes of instruction+address, and then read the data.  Because of that, the controller has special support for sending a few bytes before reading a lot.  I want to make use of that, in the common case that the USB host requests a transaction consisting of a few bytes to write followed by a lot to read.",
+      "parentUuid": "8dc10600_cbbc8c79",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 39
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68dbdd40_7101ca4d",
@@ -267,6 +531,30 @@
       "writtenOn": "2022-12-13T20:08:16Z",
       "side": 1,
       "message": "This doesn\u0027t match the help text (at line 679). Can you update the help?",
+      "range": {
+        "startLine": 634,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 30
+      },
+      "revId": "54f04776aed600406b45bae45add46ce3f07ab93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5180f8bd_c984ec40",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68dbdd40_7101ca4d",
       "range": {
         "startLine": 634,
         "startChar": 0,

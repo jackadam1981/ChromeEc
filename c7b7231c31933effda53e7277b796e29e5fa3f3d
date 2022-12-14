@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a0d300_bc561378",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:54:43Z",
+      "side": 1,
+      "message": "Thank you for the thorough review.  I have addressed all your comments, and additionally moved the code for runtime change to SPI speed into a separate CL, which I had originally intended. (I must have accidentally botched a git rebase at some point, co-mingling the changes.)",
+      "revId": "c7b7231c31933effda53e7277b796e29e5fa3f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
