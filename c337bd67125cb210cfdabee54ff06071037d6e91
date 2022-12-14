@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c093a718_c8d78725",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-14T16:33:36Z",
+      "side": 1,
+      "message": "If you run the merge again after https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4104563 merges, it has a fix for the safe mode unification CL",
+      "revId": "c337bd67125cb210cfdabee54ff06071037d6e91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "00e527e8_e25e7191",
