@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8810accd_2a98493c",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-14T05:54:33Z",
+      "side": 1,
+      "message": "It looks like `w` can now be left uninitialized when hashing a message of less than 60 bytes? I think that still needs to be zeroed.",
+      "parentUuid": "d68c7701_2e6ac529",
+      "revId": "876aedba9bd305445f530a98a05e50b2c87ba6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19f9758d_fbd40bf7",
         "filename": "driver/sha256/sha256_it8xxx2.c",
         "patchSetId": 16
