@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fd5d3bd_98864069",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-12-14T19:47:19Z",
+      "side": 1,
+      "message": "Before sending to CQ I want to build and test it on a real hatch device.",
+      "revId": "b2b2ba4497b76bdef46b7df70887a803e14627a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d34696ea_d00de64c",
         "filename": "board/atlas/board.c",
         "patchSetId": 3
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "This is a cherry pick of an early 2020 CL.  I think it is fine as it is for this cherry pick.",
       "parentUuid": "d34696ea_d00de64c",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "b2b2ba4497b76bdef46b7df70887a803e14627a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9f8b68e_1caea84e",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-12-14T19:47:19Z",
+      "side": 1,
+      "message": "Good point, but I\u0027m just trying to keep this cherry pick as close to the original CL as we can",
+      "parentUuid": "0506b084_77cef1bb",
       "range": {
         "startLine": 182,
         "startChar": 0,
