@@ -9597,7 +9597,8 @@ static void cmd_pchg_help(char *cmd)
 		"  Usage3: %s <port> reset [mode]\n"
 		"          Reset <port> to [mode]. [mode]: 'normal'.\n"
 		"\n"
-		"  Usage4: %s <port> update <version> <addr1> <file1> <addr2> <file2> ...\n"
+		"  Usage4: %s <port> update <version> <no_irq:0/1>"
+		"<addr1> <file1> <addr2> <file2> ...\n"
 		"          Update firmware of <port>.\n"
 		"\n"
 		"  Usage5: %s <port> passthru <on/off> ...\n"
@@ -9648,7 +9649,7 @@ static int cmd_pchg_wait_event(int port, uint32_t expected)
 }
 
 static int cmd_pchg_update_open(int port, uint32_t version,
-				uint32_t *block_size, uint32_t *crc)
+				uint32_t *block_size, uint32_t *crc, int no_irq)
 {
 	struct ec_params_pchg_update *pu =
 		(struct ec_params_pchg_update *)(ec_outbuf);
@@ -9660,7 +9661,10 @@ static int cmd_pchg_update_open(int port, uint32_t version,
 
 	/* Open session. */
 	pu->port = port;
-	pu->cmd = EC_PCHG_UPDATE_CMD_OPEN;
+	if (!no_irq)
+		pu->cmd = EC_PCHG_UPDATE_CMD_OPEN;
+	else
+		pu->cmd = EC_PCHG_UPDATE_CMD_OPEN_NO_IRQ;
 	pu->version = version;
 	rv = ec_command(EC_CMD_PCHG_UPDATE, 0, pu, sizeof(*pu), r, sizeof(*r));
 	if (rv < 0) {
@@ -9674,23 +9678,28 @@ static int cmd_pchg_update_open(int port, uint32_t version,
 		return -1;
 	}
 
-	rv = cmd_pchg_wait_event(port, EC_MKBP_PCHG_DEVICE_EVENT);
-	if (rv)
-		return rv;
+	if (!no_irq) {
+		rv = cmd_pchg_wait_event(port, EC_MKBP_PCHG_DEVICE_EVENT);
+		if (rv)
+			return rv;
 
-	p.port = port;
-	rv = ec_command(EC_CMD_PCHG, 2, &p, sizeof(p), &rv2, sizeof(rv2));
-	if (rv == -EC_RES_INVALID_VERSION - EECRESULT)
-		/* We can use v2 because it's a superset of v1. */
-		rv = ec_command(EC_CMD_PCHG, 1, &p, sizeof(p), &rv2,
-				sizeof(struct ec_response_pchg));
-	if (rv < 0) {
-		fprintf(stderr, "EC_CMD_PCHG failed: %d\n", rv);
-		return rv;
-	}
-	if (rv2.state != PCHG_STATE_DOWNLOAD) {
-		fprintf(stderr, "Failed to reset to download mode: %d\n", rv);
-		return -1;
+		p.port = port;
+		rv = ec_command(EC_CMD_PCHG, 2, &p, sizeof(p), &rv2,
+				sizeof(rv2));
+		if (rv == -EC_RES_INVALID_VERSION - EECRESULT)
+			/* We can use v2 because it's a superset of v1. */
+			rv = ec_command(EC_CMD_PCHG, 1, &p, sizeof(p), &rv2,
+					sizeof(struct ec_response_pchg));
+		if (rv < 0) {
+			fprintf(stderr, "EC_CMD_PCHG failed: %d\n", rv);
+			return rv;
+		}
+		if (rv2.state != PCHG_STATE_DOWNLOAD) {
+			fprintf(stderr,
+				"Failed to reset to download mode: %d\n", rv);
+			fprintf(stderr, "Current state: %d\n", rv2.state);
+			return -1;
+		}
 	}
 
 	rv = cmd_pchg_wait_event(port, EC_MKBP_PCHG_UPDATE_OPENED);
@@ -9708,7 +9717,7 @@ static int cmd_pchg_update_open(int port, uint32_t version,
 
 static int cmd_pchg_update_write(int port, uint32_t address,
 				 const char *filename, uint32_t block_size,
-				 uint32_t *crc)
+				 uint32_t *crc, int no_irq)
 {
 	struct ec_params_pchg_update *p =
 		(struct ec_params_pchg_update *)(ec_outbuf);
@@ -9729,7 +9738,10 @@ static int cmd_pchg_update_write(int port, uint32_t address,
 	rewind(fp);
 	printf("Writing %s (%zu bytes).\n", filename, total);
 
-	p->cmd = EC_PCHG_UPDATE_CMD_WRITE;
+	if (!no_irq)
+		p->cmd = EC_PCHG_UPDATE_CMD_WRITE;
+	else
+		p->cmd = EC_PCHG_UPDATE_CMD_WRITE_NO_IRQ;
 	p->addr = address;
 
 	/* Write firmware in blocks. */
@@ -9768,13 +9780,16 @@ static int cmd_pchg_update_write(int port, uint32_t address,
 	return 0;
 }
 
-static int cmd_pchg_update_close(int port, uint32_t *crc)
+static int cmd_pchg_update_close(int port, uint32_t *crc, int no_irq)
 {
 	struct ec_params_pchg_update *p =
 		(struct ec_params_pchg_update *)(ec_outbuf);
 	int rv;
 
-	p->cmd = EC_PCHG_UPDATE_CMD_CLOSE;
+	if (!no_irq)
+		p->cmd = EC_PCHG_UPDATE_CMD_CLOSE;
+	else
+		p->cmd = EC_PCHG_UPDATE_CMD_CLOSE_NO_IRQ;
 	p->crc32 = crc32_ctx_result(crc);
 	rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p, sizeof(*p), NULL, 0);
 
@@ -9860,13 +9875,14 @@ static int cmd_pchg(int argc, char *argv[])
 		/*
 		 * Usage.4:
 		 * argv[3]: <version>
-		 * argv[4]: <addr1>
-		 * argv[5]: <file1>
-		 * argv[6]: <addr2>
-		 * argv[7]: <file2>
+		 * argv[4]: <no_irq>
+		 * argv[5]: <addr1>
+		 * argv[6]: <file1>
+		 * argv[7]: <addr2>
+		 * argv[8]: <file2>
 		 * ...
 		 */
-		uint32_t address, version;
+		uint32_t address, version, no_irq;
 		uint32_t block_size = 0;
 		uint32_t crc;
 		int i;
@@ -9883,7 +9899,16 @@ static int cmd_pchg(int argc, char *argv[])
 			return -1;
 		}
 
-		rv = cmd_pchg_update_open(port, version, &block_size, &crc);
+		no_irq = strtol(argv[4], &e, 0);
+		if ((e && *e) || no_irq > 1) {
+			fprintf(stderr, "\nBad value of no_irq: %s.\n",
+				argv[4]);
+			cmd_pchg_help(argv[0]);
+			return -1;
+		}
+
+		rv = cmd_pchg_update_open(port, version, &block_size, &crc,
+					  no_irq);
 		if (rv < 0 || block_size == 0) {
 			fprintf(stderr, "\nFailed to open update session: %d\n",
 				rv);
@@ -9891,7 +9916,7 @@ static int cmd_pchg(int argc, char *argv[])
 		}
 
 		/* Write files one by one. */
-		for (i = 4; i + 1 < argc; i += 2) {
+		for (i = 5; i + 1 < argc; i += 2) {
 			address = strtol(argv[i], &e, 0);
 			if (e && *e) {
 				fprintf(stderr, "\nBad address: %s\n", argv[i]);
@@ -9899,7 +9924,7 @@ static int cmd_pchg(int argc, char *argv[])
 				return -1;
 			}
 			rv = cmd_pchg_update_write(port, address, argv[i + 1],
-						   block_size, &crc);
+						   block_size, &crc, no_irq);
 			if (rv < 0) {
 				fprintf(stderr,
 					"\nFailed to write file '%s': %d",
@@ -9908,7 +9933,7 @@ static int cmd_pchg(int argc, char *argv[])
 			}
 		}
 
-		rv = cmd_pchg_update_close(port, &crc);
+		rv = cmd_pchg_update_close(port, &crc, no_irq);
 		if (rv < 0) {
 			fprintf(stderr, "\nFailed to close update session: %d",
 				rv);
