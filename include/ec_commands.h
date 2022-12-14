@@ -7179,6 +7179,13 @@ enum ec_pchg_update_cmd {
 	EC_PCHG_UPDATE_CMD_WRITE,
 	/* Close update session. */
 	EC_PCHG_UPDATE_CMD_CLOSE,
+	/*
+	 * Put a chip in update (a.k.a. download) mode. No IRQ from the chip
+	 * during the operation
+	 */
+	EC_PCHG_UPDATE_CMD_OPEN_NO_IRQ,
+	/* Close update session. No IRQ from the chip during the operation */
+	EC_PCHG_UPDATE_CMD_CLOSE_NO_IRQ,
 	/* Reset chip (without mode change). */
 	EC_PCHG_UPDATE_CMD_RESET,
 	/* Enable pass-through mode. */
