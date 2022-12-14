@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67208091_27968c35",
+        "filename": "zephyr/program/rex/program.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-12-14T21:08:30Z",
+      "side": 0,
+      "message": "Do we know what impact removing this config will have on VBUS discharge?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 51
+      },
+      "revId": "c938b3b56ec256684eba58977b7f7ac539540217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
