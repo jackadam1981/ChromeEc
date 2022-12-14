@@ -404,6 +404,7 @@
 		compatible = "parade,ps8xxx";
 		reg = <0xb>;
 		tcpc-flags = <(TCPC_FLAGS_TCPCI_REV2_0)>;
+		irq-gpios = <&gpioe 6 GPIO_ACTIVE_LOW>;
 	};
 };
 
