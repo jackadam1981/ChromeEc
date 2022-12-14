@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a77175be_913ec2a7",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6505,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-14T19:00:53Z",
+      "side": 1,
+      "message": "This isn\u0027t needed here as it overrides the CONFIG_PLATFORM_EC_POWER_COMMON setting unconditionally.",
+      "range": {
+        "startLine": 6505,
+        "startChar": 0,
+        "endLine": 6505,
+        "endChar": 27
+      },
+      "revId": "1566c01dab9d014ec133eda4a40f6de7de6665b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
