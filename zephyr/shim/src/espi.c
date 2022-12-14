@@ -603,6 +603,14 @@ void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 {
 	uint32_t kb_char = chr;
 	int rv;
+	struct kbc_regs *const kbc_reg =
+		(struct kbc_regs *)DT_REG_ADDR_BY_IDX(DT_NODELABEL(espi0), 5);
+
+	if (send_irq) {
+		kbc_reg->KBHICR |= KBC_KBHICR_OBFKIE;
+	} else {
+		kbc_reg->KBHICR &= ~KBC_KBHICR_OBFKIE;
+	}
 
 	rv = espi_write_lpc_request(espi_dev, E8042_WRITE_KB_CHAR, &kb_char);
 	if (rv) {
