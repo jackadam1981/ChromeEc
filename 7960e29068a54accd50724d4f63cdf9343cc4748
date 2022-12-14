@@ -182,6 +182,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba38fc9f_89a51a41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-14T16:33:42Z",
+      "side": 1,
+      "message": "It\u0027s interesting that `/usr/include/sys/types.h` is being included, as this appears to be a Linux path. Maybe that\u0027s intentional (i.e. a host test build)?\n\nAlso, reading between the lines here a bit it appears that `CONFIG_ARCH_POSIX` is _not_ defined when [posix_types.h](http://cs/chromeos_public/src/third_party/zephyr/main/include/zephyr/posix/posix_types.h?rcl\u003d233b56d5e3711c824b88aa055f8c1d10fec2b7b0\u0026l\u003d10) is included, although I would expect it to be. If it had been defined then we would not have included `sys/types.h` and, presumably this error would not have occurred. \n\nOn a related note, the symbol `__useconds_t_defined` is not defined which results in `posix_types.h` attempting to define `useconds_t` but I\u0027m not seeing who would have defined that symbol anyway. Should it come from a cmake file?",
+      "parentUuid": "99aea4e9_9e16da9d",
+      "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35d6f697_5ade6086",
         "filename": "common/timer.c",
         "patchSetId": 5
@@ -193,6 +211,30 @@
       "writtenOn": "2022-12-13T15:33:38Z",
       "side": 1,
       "message": "This might be outside the scope of this CL, or it may just simplify it (I\u0027m honestly not sure!) but if FPMCU will be using the `sleep` and `usleep` implementations from `newlib` and all other EC targets are already Zephyr based then maybe we\u0027d be better off porting the Zephyr targets to use the [Zephyr implementation](http://go/gh/youvedeep/zephyr-1/blob/706e66c86191d78ba50e4d0aca1fec7a336247c5/kernel/posix/sleep.c) and just deleting the EC versions.",
+      "range": {
+        "startLine": 179,
+        "startChar": 4,
+        "endLine": 179,
+        "endChar": 10
+      },
+      "revId": "7960e29068a54accd50724d4f63cdf9343cc4748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea4a219_78d9d95f",
+        "filename": "common/timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-14T16:33:42Z",
+      "side": 1,
+      "message": "Disregard this. Although `newlib` does have a sleep definition in [newlib/libc/posix/sleep.c](http://go/gh/eblot/newlib/blob/master/newlib/libc/posix/sleep.c) it doesn\u0027t seem to be compiled into our build and wouldn\u0027t buy us much anyway as we would have to have a `nanosleep` definition as well.",
+      "parentUuid": "35d6f697_5ade6086",
       "range": {
         "startLine": 179,
         "startChar": 4,

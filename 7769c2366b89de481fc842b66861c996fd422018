@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a28519_5010a382",
+        "filename": "include/timer.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-14T16:33:42Z",
+      "side": 1,
+      "message": "I wonder if there is something going on here related to `CONFIG_ZEPHYR` and `CONFIG_ARCH_POSIX`. Although it shouldn\u0027t make a difference, from poking around the code I would expect that if `CONFIG_ARCH_POSIX` were defined then we would want to use `#include \u003cunistd.h\u003e` directly rather than including the path. It probably won\u0027t fix anything but it\u0027s probably better to be more explicit. Something like this:\n\n```\n#if defined(CONFIG_ZEPHYR) \u0026\u0026 !defined(CONFIG_ARCH_POSIX) \n#include \u003czephyr/posix/unistd.h\u003e\n#else\n#include \u003cunistd.h\u003e\n#endif\n\n#ifndef CONFIG_ARCH_POSIX\ntypedef long unsigned int __useconds_t;\n#endif\n```",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "7769c2366b89de481fc842b66861c996fd422018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
