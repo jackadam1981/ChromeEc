@@ -70,6 +70,30 @@
       },
       "revId": "1566c01dab9d014ec133eda4a40f6de7de6665b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddaeb543_682180c1",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6505,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-14T23:16:46Z",
+      "side": 1,
+      "message": "Note that the options `CONFIG_CHIPSET_ICELAKE` and `CONFIG_CHIPSET_METEORLAKE` are not compatible with `CONFIG_AP_PWRSEQ`, which is used by the mtlrvpp_npcx and nissa boards.\n\n`CONFIG_AP_PWRSEQ` enables the new Zephyr based AP power sequence code https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/ap_power/src/ap_pwrseq.c;l\u003d1.\n\nNon-intel platforms use `CONFIG_PLATFORM_EC_POWERSEQ` to use the legacy power sequence code: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/power/common.c;l\u003d1\n\nYou shouldn\u0027t need any changes to this file, as your change to Kconfig should force `CONFIG_PLATFORM_EC_POWER_COMMON\u003dy`.  This code in the Zephyr shim should then automatically enable `CONFIG_POWER_COMMON`.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/include/config_chip.h;l\u003d2724",
+      "parentUuid": "33ccad0d_09505df0",
+      "range": {
+        "startLine": 6505,
+        "startChar": 0,
+        "endLine": 6505,
+        "endChar": 27
+      },
+      "revId": "1566c01dab9d014ec133eda4a40f6de7de6665b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
