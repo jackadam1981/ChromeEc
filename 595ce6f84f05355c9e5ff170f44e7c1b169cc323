@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb6fad2_054a3cbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-14T18:59:09Z",
+      "side": 1,
+      "message": "The bulk of this change was previously accidentally included in the dependent CL.\n\nI am using CONFIG_FINGERPRINT_MCU in order to get mutable spi_devices[].  Maybe that define should be renamed to CONFIG_MUTABLE_SPI_DEVICES, as it seems that it is not affecting anything else.",
+      "revId": "595ce6f84f05355c9e5ff170f44e7c1b169cc323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
