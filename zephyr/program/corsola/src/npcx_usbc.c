@@ -59,11 +59,10 @@ void board_tcpc_init(void)
 		board_reset_pd_mcu();
 	}
 
-	/* Enable TCPC interrupts */
-	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_tcpc));
-	if (corsola_get_db_type() == CORSOLA_DB_TYPEC) {
-		gpio_enable_dt_interrupt(
-			GPIO_INT_FROM_NODELABEL(int_usb_c1_tcpc));
+	/* Do not enable TCPC interrupt on port 1 if not type-c */
+	if (corsola_get_db_type() != CORSOLA_DB_TYPEC) {
+		tcpc_config[USBC_PORT_C1] =
+			(const struct tcpc_config_t){ .int_cfg = {} };
 	}
 
 	/* Enable BC1.2 interrupts. */
