@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b14c09b_612b3d50",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-14T23:51:36Z",
+      "side": 1,
+      "message": "I don\u0027t think we can assume that `SHA256_update` will ever be called for a given context: it\u0027s legal to hash a zero-byte message without ever calling `update`.\n\nThe software implementation in sha256.c looks like it does what I\u0027m saying, by doing padding only in `SHA256_final`; it looks almost like this implementation makes a number of assumptions about the usage (regarding the pattern of blocks passed to `update`) that are true for the vboot use case, but aren\u0027t generally true.",
+      "parentUuid": "ad64cb93_a8f94f09",
+      "revId": "876aedba9bd305445f530a98a05e50b2c87ba6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19f9758d_fbd40bf7",
         "filename": "driver/sha256/sha256_it8xxx2.c",
         "patchSetId": 16
