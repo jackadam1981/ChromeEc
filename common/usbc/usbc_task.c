@@ -178,6 +178,10 @@ void pd_task(void *u)
 		pd_timer_init(port);
 		pd_task_init(port);
 
+		while (1) {
+			msleep(1000);
+		}
+
 		/* As long as pd_task_loop returns true, keep running the loop.
 		 * pd_task_loop returns false when the code needs to re-init
 		 * the task, so once the code breaks out of the inner while
