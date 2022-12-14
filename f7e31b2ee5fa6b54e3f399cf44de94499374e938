@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "428d89cd_e2faf097",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2022-12-14T17:53:05Z",
+      "side": 0,
+      "message": "why are we removing this config?  Are we not supporting this TCPC anymore?\n\nSo my understanding (coming from a non-EC person), is that we are restructuring the code to make things more generic for future extensibility.  Are we doing functional changes as well?\n\nI guess also this is in zork for hatch FW branch, so maybe it doesn\u0027t matter :).",
+      "range": {
+        "startLine": 132,
+        "startChar": 8,
+        "endLine": 132,
+        "endChar": 33
+      },
+      "revId": "f7e31b2ee5fa6b54e3f399cf44de94499374e938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
