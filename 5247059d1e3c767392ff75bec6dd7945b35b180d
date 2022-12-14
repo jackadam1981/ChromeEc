@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0e538c_5d1801bb",
+        "filename": "zephyr/program/nissa/xivur/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-14T04:40:35Z",
+      "side": 0,
+      "message": "You likely shouldn\u0027t include the common cbi include\nif you are redefining the fw_config fields.",
+      "revId": "5247059d1e3c767392ff75bec6dd7945b35b180d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

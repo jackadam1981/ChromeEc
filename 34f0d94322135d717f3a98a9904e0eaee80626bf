@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed372fb_f1f82025",
+        "filename": "zephyr/program/nissa/xivur/cbi.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-14T04:40:35Z",
+      "side": 1,
+      "message": "If there is no sub-board, this field can be discarded.",
+      "revId": "34f0d94322135d717f3a98a9904e0eaee80626bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f65615f_86f6feb8",
+        "filename": "zephyr/program/nissa/xivur/overlay.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-14T04:40:35Z",
+      "side": 1,
+      "message": "maybe this should drop the \u0027_sub_\u0027 portion of the name.",
+      "revId": "34f0d94322135d717f3a98a9904e0eaee80626bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
