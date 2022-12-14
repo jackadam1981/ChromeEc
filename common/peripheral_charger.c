@@ -554,7 +554,7 @@ static void pchg_state_download(struct pchg *ctx)
 	case PCHG_EVENT_UPDATE_OPEN:
 		rv = ctx->cfg->drv->update_open(ctx);
 		if (rv == EC_SUCCESS) {
-			ctx->state = PCHG_STATE_DOWNLOADING;
+			pchg_queue_event(ctx, PCHG_EVENT_UPDATE_OPENED);
 		} else if (rv != EC_SUCCESS_IN_PROGRESS) {
 			pchg_queue_host_event(ctx, EC_MKBP_PCHG_UPDATE_ERROR);
 			CPRINTS("ERR: Failed to open");
@@ -587,6 +587,9 @@ static void pchg_state_downloading(struct pchg *ctx)
 		if (rv != EC_SUCCESS && rv != EC_SUCCESS_IN_PROGRESS) {
 			pchg_queue_host_event(ctx, EC_MKBP_PCHG_UPDATE_ERROR);
 			CPRINTS("ERR: Failed to write");
+		} else if (rv == EC_SUCCESS) {
+			ctx->update.data_ready = 0;
+			pchg_queue_host_event(ctx, EC_MKBP_PCHG_WRITE_COMPLETE);
 		}
 		break;
 	case PCHG_EVENT_UPDATE_WRITTEN:
@@ -597,6 +600,12 @@ static void pchg_state_downloading(struct pchg *ctx)
 		rv = ctx->cfg->drv->update_close(ctx);
 		if (rv == EC_SUCCESS) {
 			ctx->state = PCHG_STATE_DOWNLOAD;
+			if (ctx->cfg->fwupd_no_irq) {
+				gpio_enable_interrupt(ctx->cfg->irq_pin);
+				ctx->state = reset_to_normal(ctx);
+				pchg_queue_host_event(
+					ctx, EC_MKBP_PCHG_UPDATE_CLOSED);
+			}
 		} else if (rv != EC_SUCCESS_IN_PROGRESS) {
 			pchg_queue_host_event(ctx, EC_MKBP_PCHG_UPDATE_ERROR);
 			CPRINTS("ERR: Failed to close");
@@ -792,6 +801,7 @@ static void pchg_startup(void)
 		if (rv == EC_SUCCESS) {
 			gpio_enable_interrupt(ctx->cfg->irq_pin);
 			active_pchg_count++;
+			ctx->port = p;
 		} else {
 			CPRINTS("ERR: Failed to probe P%d", p);
 			board_pchg_power_on(p, 0);
@@ -953,8 +963,11 @@ static enum ec_status hc_pchg_update(struct host_cmd_handler_args *args)
 		_clear_port(ctx);
 		ctx->mode = PCHG_MODE_DOWNLOAD;
 		ctx->cfg->drv->reset(ctx);
-		gpio_enable_interrupt(ctx->cfg->irq_pin);
-
+		if (ctx->cfg->fwupd_no_irq) {
+			pchg_queue_event(ctx, PCHG_EVENT_RESET);
+		} else {
+			gpio_enable_interrupt(ctx->cfg->irq_pin);
+		}
 		ctx->update.version = p->version;
 		r->block_size = ctx->cfg->block_size;
 		args->response_size = sizeof(*r);

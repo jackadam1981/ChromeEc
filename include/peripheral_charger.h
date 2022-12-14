@@ -235,6 +235,11 @@ struct pchg_config {
 	uint32_t block_size;
 	/* RF charge duration in msec. Set it to 0 to disable RF charge. */
 	uint16_t rf_charge_msec;
+	/*
+	 * Firmware update mode. Set it to 1 if IRQ is not required for firmware
+	 * update
+	 */
+	uint8_t fwupd_no_irq;
 };
 
 struct pchg_update {
@@ -295,6 +300,8 @@ struct pchg {
 	uint32_t fw_version;
 	/* Context related to FW update */
 	struct pchg_update update;
+	/* Peripheral port number */
+	int port;
 };
 
 /**
