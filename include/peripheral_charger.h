@@ -219,6 +219,14 @@ enum pchg_chipset_state {
 	PCHG_CHIPSET_STATE_COUNT
 };
 
+enum pchg_cfg {
+	/*
+	 * IRQ is not required for firmware update, update_open, update_write
+	 * and update_close may block and must return after completion.
+	 */
+	PCHG_CFG_FW_UPDATE_SYNC = BIT(0),
+};
+
 /**
  * Data struct describing the configuration of a peripheral charging port.
  */
@@ -235,6 +243,7 @@ struct pchg_config {
 	uint32_t block_size;
 	/* RF charge duration in msec. Set it to 0 to disable RF charge. */
 	uint16_t rf_charge_msec;
+	enum pchg_cfg flags;
 };
 
 struct pchg_update {
