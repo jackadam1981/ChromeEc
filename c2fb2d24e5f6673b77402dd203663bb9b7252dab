@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74121b7d_e92e6fa7",
+        "filename": "common/main.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-12-14T01:54:43Z",
+      "side": 1,
+      "message": "debug.h seems only to be supported in a few chips, I wonder if including this will break the build of some boards.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "c2fb2d24e5f6673b77402dd203663bb9b7252dab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
