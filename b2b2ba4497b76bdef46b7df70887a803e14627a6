@@ -22,6 +22,30 @@
       },
       "revId": "b2b2ba4497b76bdef46b7df70887a803e14627a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0506b084_77cef1bb",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-12-14T18:19:30Z",
+      "side": 1,
+      "message": "This is a cherry pick of an early 2020 CL.  I think it is fine as it is for this cherry pick.",
+      "parentUuid": "d34696ea_d00de64c",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "b2b2ba4497b76bdef46b7df70887a803e14627a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
