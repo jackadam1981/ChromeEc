@@ -6490,6 +6490,7 @@
 #define CONFIG_CHIPSET_X86_RSMRST_AFTER_S5
 #endif
 
+#if !defined(CONFIG_ZEPHYR)
 #if defined(CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540) ||  \
 	defined(CONFIG_CHIPSET_APOLLOLAKE) ||         \
 	defined(CONFIG_CHIPSET_CANNONLAKE) ||         \
@@ -6500,6 +6501,9 @@
 	defined(CONFIG_CHIPSET_METEORLAKE) || defined(CONFIG_CHIPSET_SKYLAKE)
 #define CONFIG_POWER_COMMON
 #endif
+#else
+#define CONFIG_POWER_COMMON
+#endif /* !defined(CONFIG_ZEPHYR) */
 
 #if defined(CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540) || \
 	defined(CONFIG_CHIPSET_CANNONLAKE) ||        \
