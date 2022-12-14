@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9116d129_cfc2d6e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-14T06:46:34Z",
+      "side": 1,
+      "message": "Finally figured out what\u0027s wrong.\n\nCONFIG_PLATFORM_EC_ACCELGYRO_BMI3XX and CONFIG_PLATFORM_EC_ACCEL_BMA4XX is not enabled, so the motion_sensors_alt[] is an empty array.\n\n```\n__maybe_unused struct motion_sensor_t motion_sensors_alt[] \u003d {\n#if DT_NODE_EXISTS(SENSOR_ALT_NODE)\n#include \"motionsense_driver/sensor_drv_list.inc\"\n#endif\n};\n```\n\nand there\u0027s a ifdef guard inside sensor_drv_list.inc \n```\n#ifdef CONFIG_PLATFORM_EC_ACCEL_BMA4XX\n#include \"bma4xx-drvinfo.inc\"\n#endif\n#ifdef CONFIG_PLATFORM_EC_ACCELGYRO_BMI3XX\n#include \"bmi3xx-drvinfo.inc\"\n#endif\n```",
+      "revId": "c80fca07b35a513b14cb88cd2cee60abf86fd2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
