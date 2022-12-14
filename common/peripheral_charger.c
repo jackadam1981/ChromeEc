@@ -825,6 +825,7 @@ static void pchg_startup(void)
 		if (rv == EC_SUCCESS) {
 			gpio_enable_interrupt(ctx->cfg->irq_pin);
 			active_pchg_count++;
+			ctx->port = p;
 		} else {
 			CPRINTS("ERR: Failed to probe P%d", p);
 			board_pchg_power_on(p, 0);
