@@ -5,6 +5,7 @@
 
 #include "../cbi.dtsi"
 
+#include "cbi.dtsi"
 #include "generated.dtsi"
 #include "keyboard.dtsi"
 #include "overlay.dtsi"
