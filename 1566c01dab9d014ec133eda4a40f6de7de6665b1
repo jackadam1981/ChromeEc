@@ -94,6 +94,30 @@
       },
       "revId": "1566c01dab9d014ec133eda4a40f6de7de6665b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d53b7d35_904138c2",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6505,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-15T00:33:16Z",
+      "side": 1,
+      "message": "ICELAKE is not nissa. Nissa is ADL-N, selected in zephyr/subsys/ap_pwrseq/Kconfig as CONFIG_X86_NON_DSX_PWRSEQ_ADL\n\nNote that CONFIG_PLATFORM_EC_POWER_COMMON is only set for legacy power sequence code.\nThe new (ADL-N) power sequence code does not define that.\n\nIt may be that code or functionality from the legacy power code has not been ported to the new power sequence code - exactly what code from power/common.c is being referenced that is needed?",
+      "parentUuid": "ddaeb543_682180c1",
+      "range": {
+        "startLine": 6505,
+        "startChar": 0,
+        "endLine": 6505,
+        "endChar": 27
+      },
+      "revId": "1566c01dab9d014ec133eda4a40f6de7de6665b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
