@@ -3,22 +3,23 @@
  * found in the LICENSE file.
  */
 
-#include <stdint.h>
-#include <zephyr/sys/byteorder.h>
-#include <zephyr/ztest.h>
-
 #include "battery_smart.h"
 #include "emul/emul_isl923x.h"
 #include "emul/emul_smart_battery.h"
 #include "emul/tcpc/emul_tcpci_partner_faulty_ext.h"
 #include "emul/tcpc/emul_tcpci_partner_snk.h"
 #include "tcpm/tcpci.h"
+#include "test/drivers/stubs.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
-#include "test/drivers/stubs.h"
+#include "timer.h"
 #include "usb_pd.h"
 #include "usb_tc_sm.h"
-#include "timer.h"
+
+#include <stdint.h>
+
+#include <zephyr/sys/byteorder.h>
+#include <zephyr/ztest.h>
 
 /* USB-C port used to connect port partner in this testsuite */
 #define TEST_PORT 0
@@ -97,9 +98,9 @@ ZTEST_F(usb_malfunction_sink, test_fail_source_cap_and_pd_disable)
 	typec_status = host_cmd_typec_status(0);
 
 	/* Device is connected, but PD wasn't able to establish contract */
-	zassert_true(typec_status.pd_enabled, NULL);
-	zassert_true(typec_status.dev_connected, NULL);
-	zassert_false(typec_status.sop_connected, NULL);
+	zassert_true(typec_status.pd_enabled);
+	zassert_true(typec_status.dev_connected);
+	zassert_false(typec_status.sop_connected);
 }
 
 ZTEST_F(usb_malfunction_sink, test_fail_source_cap_and_pd_connect)
@@ -121,9 +122,9 @@ ZTEST_F(usb_malfunction_sink, test_fail_source_cap_and_pd_connect)
 
 	typec_status = host_cmd_typec_status(0);
 
-	zassert_true(typec_status.pd_enabled, NULL);
-	zassert_true(typec_status.dev_connected, NULL);
-	zassert_true(typec_status.sop_connected, NULL);
+	zassert_true(typec_status.pd_enabled);
+	zassert_true(typec_status.dev_connected);
+	zassert_true(typec_status.sop_connected);
 
 	info = host_cmd_power_info(0);
 
@@ -234,6 +235,8 @@ ZTEST_F(usb_malfunction_sink, test_hard_reset_disconnect)
 		zassert_equal(typec_status.vconn_role, PD_ROLE_VCONN_OFF,
 			      "Vconn should be disabled at power sequence (%d)",
 			      try_count);
+		zassert_true(typec_status.events & PD_STATUS_EVENT_HARD_RESET,
+			     "Hard reset status should be set (%d)", try_count);
 
 		/* Disconnect partner at the middle of power sequence */
 		disconnect_sink_from_port(fixture->tcpci_emul);
@@ -263,7 +266,7 @@ ZTEST_F(usb_malfunction_sink, test_ignore_source_cap_and_pd_disable)
 	typec_status = host_cmd_typec_status(0);
 
 	/* Device is connected, but PD wasn't able to establish contract */
-	zassert_true(typec_status.pd_enabled, NULL);
-	zassert_true(typec_status.dev_connected, NULL);
-	zassert_false(typec_status.sop_connected, NULL);
+	zassert_true(typec_status.pd_enabled);
+	zassert_true(typec_status.dev_connected);
+	zassert_false(typec_status.sop_connected);
 }

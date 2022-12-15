@@ -3,18 +3,19 @@
  * found in the LICENSE file.
  */
 
-#include <zephyr/drivers/emul.h>
-#include <zephyr/drivers/gpio.h>
-#include <zephyr/drivers/gpio/gpio_emul.h>
-#include <zephyr/kernel.h>
-#include <zephyr/ztest.h>
-
 #include "ec_commands.h"
 #include "emul/emul_flash.h"
 #include "flash.h"
 #include "host_command.h"
 #include "system.h"
 #include "test/drivers/test_state.h"
+
+#include <zephyr/drivers/emul.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/drivers/gpio/gpio_emul.h>
+#include <zephyr/kernel.h>
+#include <zephyr/shell/shell_dummy.h>
+#include <zephyr/ztest.h>
 
 #define WP_L_GPIO_PATH DT_PATH(named_gpios, wp_l)
 
@@ -134,6 +135,17 @@ ZTEST_USER(flash, test_hostcmd_flash_protect_wp_deasserted)
 		      response.flags);
 }
 
+ZTEST_USER(flash, test_hostcmd_flash_read__overflow)
+{
+	struct ec_params_flash_read params = {
+		.size = 32,
+	};
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND_PARAMS(EC_CMD_FLASH_READ, 0, params);
+
+	zassert_equal(EC_RES_OVERFLOW, host_command_process(&args));
+}
+
 #define TEST_BUF_SIZE 0x100
 
 ZTEST_USER(flash, test_hostcmd_flash_write_and_erase)
@@ -251,7 +263,7 @@ ZTEST_USER(flash, test_hostcmd_flash_region_info_active_invalid)
 	zassert_equal(host_command_process(&args), EC_RES_INVALID_PARAM, NULL);
 }
 
-ZTEST_USER(flash, test_hostcmd_flash_info)
+ZTEST_USER(flash, test_hostcmd_flash_info_1)
 {
 	struct ec_response_flash_info_1 response;
 	struct host_cmd_handler_args args =
@@ -277,6 +289,90 @@ ZTEST_USER(flash, test_hostcmd_flash_info)
 		(args.response_max - sizeof(struct ec_params_flash_write)) &
 			~(CONFIG_FLASH_WRITE_SIZE - 1),
 		"response.write_ideal_size = %d", response.write_ideal_size);
+}
+
+ZTEST_USER(flash, test_hostcmd_flash_info_2)
+{
+	uint8_t response_buffer[sizeof(struct ec_response_flash_info_2) +
+				sizeof(struct ec_flash_bank)];
+	struct ec_response_flash_info_2 *response =
+		(struct ec_response_flash_info_2 *)response_buffer;
+	struct ec_params_flash_info_2 params = {
+		.num_banks_desc = 1,
+	};
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_FLASH_INFO, 2, *response, params);
+
+	/* Get the flash info. */
+	zassert_ok(host_command_process(&args), NULL);
+	zassert_equal(response->flash_size,
+		      CONFIG_FLASH_SIZE_BYTES - EC_FLASH_REGION_START, "got %d",
+		      response->flash_size);
+	zassert_equal(response->flags, 0, "got %d", response->flags);
+	zassert_equal(
+		response->write_ideal_size,
+		(args.response_max - sizeof(struct ec_params_flash_write)) &
+			~(CONFIG_FLASH_WRITE_SIZE - 1),
+		"got %d", response->write_ideal_size);
+	zassert_equal(response->num_banks_total, 1, "got %d",
+		      response->num_banks_total);
+	zassert_equal(response->num_banks_desc, 1, "got %d",
+		      response->num_banks_desc);
+	zassert_equal(response->banks[0].count,
+		      CONFIG_FLASH_SIZE_BYTES / CONFIG_FLASH_BANK_SIZE,
+		      "got %d", response->banks[0].count);
+	zassert_equal(response->banks[0].size_exp,
+		      __fls(CONFIG_FLASH_BANK_SIZE), "got %d",
+		      response->banks[0].size_exp);
+	zassert_equal(response->banks[0].write_size_exp,
+		      __fls(CONFIG_FLASH_WRITE_SIZE), "got %d",
+		      response->banks[0].write_size_exp);
+	zassert_equal(response->banks[0].erase_size_exp,
+		      __fls(CONFIG_FLASH_ERASE_SIZE), "got %d",
+		      response->banks[0].erase_size_exp);
+	zassert_equal(response->banks[0].protect_size_exp,
+		      __fls(CONFIG_FLASH_BANK_SIZE), "got %d",
+		      response->banks[0].protect_size_exp);
+}
+
+ZTEST_USER(flash, test_console_cmd_flash_info)
+{
+	const struct shell *shell_zephyr = get_ec_shell();
+	const char *outbuffer;
+	size_t buffer_size;
+	/* Arbitrary array size for sprintf should not need this amount */
+	char format_buffer[100];
+
+	shell_backend_dummy_clear_output(shell_zephyr);
+
+	zassert_ok(shell_execute_cmd(shell_zephyr, "flashinfo"));
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
+
+	zassert_true(buffer_size > 0, NULL);
+
+	sprintf(format_buffer, "Usable:  %4d KB",
+		CONFIG_FLASH_SIZE_BYTES / 1024);
+	zassert_not_null(strstr(outbuffer, format_buffer));
+
+	sprintf(format_buffer, "Write:   %4d B (ideal %d B)",
+		CONFIG_FLASH_WRITE_SIZE, CONFIG_FLASH_WRITE_IDEAL_SIZE);
+	zassert_not_null(strstr(outbuffer, format_buffer));
+
+	sprintf(format_buffer, "Erase:   %4d B", CONFIG_FLASH_ERASE_SIZE);
+	zassert_not_null(strstr(outbuffer, format_buffer));
+
+	sprintf(format_buffer, "Protect: %4d B", CONFIG_FLASH_BANK_SIZE);
+	zassert_not_null(strstr(outbuffer, format_buffer));
+
+	zassert_not_null(strstr(outbuffer, "wp_gpio_asserted: ON"));
+	zassert_not_null(strstr(outbuffer, "ro_at_boot: OFF"));
+	zassert_not_null(strstr(outbuffer, "all_at_boot: OFF"));
+	zassert_not_null(strstr(outbuffer, "ro_now: OFF"));
+	zassert_not_null(strstr(outbuffer, "all_now: OFF"));
+	zassert_not_null(strstr(outbuffer, "STUCK: OFF"));
+	zassert_not_null(strstr(outbuffer, "INCONSISTENT: OFF"));
+	zassert_not_null(strstr(outbuffer, "UNKNOWN_ERROR: OFF"));
+	zassert_not_null(strstr(outbuffer, "Protected now"));
 }
 
 ZTEST_USER(flash, test_console_cmd_flashwp__invalid)
@@ -373,8 +469,10 @@ static void setup_flash_region_helper(uint32_t offset, uint32_t size,
 	};
 	struct host_cmd_handler_args erase_args =
 		BUILD_HOST_COMMAND_PARAMS(EC_CMD_FLASH_ERASE, 0, erase_params);
+	int rv;
 
-	zassume_ok(host_command_process(&erase_args), NULL);
+	rv = host_command_process(&erase_args);
+	zassert_ok(rv, "Got %d", rv);
 
 	if (make_write) {
 		/* Sized for flash_write header plus one byte of data */
@@ -394,7 +492,7 @@ static void setup_flash_region_helper(uint32_t offset, uint32_t size,
 		/* Write one byte at start of region */
 		out_buf[sizeof(*write_params)] = 0xec;
 
-		zassume_ok(host_command_process(&write_args), NULL);
+		zassert_ok(host_command_process(&write_args), NULL);
 	}
 }
 
@@ -402,18 +500,20 @@ ZTEST_USER(flash, test_crec_flash_is_erased__happy)
 {
 	uint32_t offset = 0x10000;
 
-	setup_flash_region_helper(offset, TEST_BUF_SIZE, false);
+	setup_flash_region_helper(offset, CONFIG_FLASH_ERASE_SIZE, false);
 
-	zassert_true(crec_flash_is_erased(offset, TEST_BUF_SIZE), NULL);
+	zassert_true(crec_flash_is_erased(offset, CONFIG_FLASH_ERASE_SIZE),
+		     NULL);
 }
 
 ZTEST_USER(flash, test_crec_flash_is_erased__not_erased)
 {
 	uint32_t offset = 0x10000;
 
-	setup_flash_region_helper(offset, TEST_BUF_SIZE, true);
+	setup_flash_region_helper(offset, CONFIG_FLASH_ERASE_SIZE, true);
 
-	zassert_true(!crec_flash_is_erased(offset, TEST_BUF_SIZE), NULL);
+	zassert_true(!crec_flash_is_erased(offset, CONFIG_FLASH_ERASE_SIZE),
+		     NULL);
 }
 
 static void flash_reset(void)
