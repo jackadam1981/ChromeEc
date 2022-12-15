@@ -7790,6 +7790,8 @@ struct ec_params_usb_pd_mux_ack {
 
 /* Get boot time */
 #define EC_CMD_GET_BOOT_TIME 0x0604
+/* Do not set AP_IDLE flag */
+#define EC_CMD_NO_AP_IDLE 0x0605
 
 enum boot_time_param {
 	ARAIL = 0,

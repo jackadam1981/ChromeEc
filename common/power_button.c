@@ -126,6 +126,8 @@ DECLARE_HOOK(HOOK_INIT, power_button_init, HOOK_PRIO_INIT_POWER_BUTTON);
  * shuts down, it boots immediately. If the system shuts down gracefully,
  * it'll stay at S5 and wait for power button press.
  */
+static bool no_ap_idle;
+
 static void pb_chipset_startup(void)
 {
 	chip_save_reset_flags(chip_read_reset_flags() & ~EC_RESET_FLAG_AP_IDLE);
@@ -136,9 +138,15 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pb_chipset_startup, HOOK_PRIO_DEFAULT);
 
 static void pb_chipset_shutdown(void)
 {
-	/* Don't set AP_IDLE if shutting down due to power failure. */
-	if (chipset_get_shutdown_reason() == CHIPSET_SHUTDOWN_POWERFAIL)
+	/*
+	 * Don't set AP_IDLE if no_ap_idle is set or shutting down due to
+	 * power failure.
+	 */
+	if (chipset_get_shutdown_reason() == CHIPSET_SHUTDOWN_POWERFAIL ||
+	    no_ap_idle) {
+		no_ap_idle = false;
 		return;
+	}
 
 	chip_save_reset_flags(chip_read_reset_flags() | EC_RESET_FLAG_AP_IDLE);
 	system_set_reset_flags(EC_RESET_FLAG_AP_IDLE);
@@ -150,6 +158,16 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pb_chipset_shutdown,
 	      * it may clear AP_IDLE flag.
 	      */
 	     HOOK_PRIO_PRE_DEFAULT);
+
+static enum ec_status
+host_command_no_ap_idle(struct host_cmd_handler_args *args)
+{
+	no_ap_idle = true;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_NO_AP_IDLE, host_command_no_ap_idle,
+		     EC_VER_MASK(0));
 #endif
 
 /**
