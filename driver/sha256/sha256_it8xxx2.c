@@ -38,6 +38,7 @@ void SHA256_init(struct sha256_ctx *ctx)
 
 	/* Clear total len */
 	ctx->total_len = 0;
+	ctx->w_index = 0;
 
 	for (i = 0; i < ARRAY_SIZE(sha256_h0); i++)
 		ctx->h[i] = sha256_h0[i];
@@ -48,7 +49,7 @@ void SHA256_init(struct sha256_ctx *ctx)
 	IT8XXX2_GCTRL_SHA2HBADDR = ((uint32_t)&ctx->k >> 6) & 0xffc;
 }
 
-static void SHA256_chip_calculation(void)
+static void SHA256_chip_calculation(struct sha256_ctx *ctx)
 {
 	volatile uint8_t hash_ctrl __unused;
 	uint32_t key;
@@ -56,49 +57,34 @@ static void SHA256_chip_calculation(void)
 	key = irq_lock();
 	IT8XXX2_GCTRL_SHA1HASHCTRLR |= BIT(1);
 	hash_ctrl = IT8XXX2_GCTRL_SHA1HASHCTRLR;
+	ctx->w_index = 0;
 	irq_unlock(key);
 }
 
 void SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)
 {
-	uint32_t cal_len, rem_len = len, w_index = 0;
+	uint32_t cal_len, rem_len = len, data_index = 0;
 	uint32_t *p = (uint32_t *)data;
-	bool cal_needed = false, block_aligned = false;
+	bool cal_needed = false;
 
 	/* Requires 4-byte alignment */
 	ASSERT(len % 4 == 0);
 
 	while (rem_len) {
-		int i;
-
 		cal_len = rem_len < SHA256_BLOCK_SIZE ? rem_len :
 							SHA256_BLOCK_SIZE;
-		cal_needed = (cal_len >= 56) ? true : false;
-		block_aligned = (cal_len == SHA256_BLOCK_SIZE) ? true : false;
-
-		for (i = 0; (i * 4) < cal_len; i++, w_index++) {
-			ctx->w[i] = htobe32(p[w_index]);
-		}
-
-		if (cal_len < SHA256_BLOCK_SIZE) {
-			ctx->w[i++] = 0x80000000;
-			for (; (i * 4) < SHA256_BLOCK_SIZE; i++) {
-				ctx->w[i] = 0;
-			}
+		cal_needed = (cal_len == SHA256_BLOCK_SIZE) ? true : false;
+		ctx->w_index = 0;
+		for (; (ctx->w_index * 4) < cal_len; ctx->w_index++) {
+			ctx->w[ctx->w_index] = htobe32(p[data_index]);
+			data_index++;
 		}
 
 		rem_len -= cal_len;
 		ctx->total_len += cal_len;
 
 		if (cal_needed) {
-			SHA256_chip_calculation();
-		}
-	}
-
-	if (cal_needed) {
-		memset(ctx->w, 0, SHA256_BLOCK_SIZE);
-		if (block_aligned) {
-			ctx->w[0] = 0x80000000;
+			SHA256_chip_calculation(ctx);
 		}
 	}
 }
@@ -112,8 +98,19 @@ uint8_t *SHA256_final(struct sha256_ctx *ctx)
 {
 	int i;
 
-	ctx->w[15] = ctx->total_len * 8;
-	SHA256_chip_calculation();
+	memset(&ctx->w[ctx->w_index], 0, SHA256_BLOCK_SIZE - ctx->w_index * 4);
+	ctx->w[ctx->w_index] = 0x80000000;
+
+	if (ctx->w_index < 14) {
+		ctx->w[15] = ctx->total_len * 8;
+		SHA256_chip_calculation(ctx);
+	} else {
+		SHA256_chip_calculation(ctx);
+		memset(&ctx->w[ctx->w_index], 0,
+			SHA256_BLOCK_SIZE - ctx->w_index * 4);
+		ctx->w[15] = ctx->total_len * 8;
+		SHA256_chip_calculation(ctx);
+	}
 
 	for (i = 0; i < 8; i++) {
 		ctx->h[i] = be32toh(ctx->h[i]);

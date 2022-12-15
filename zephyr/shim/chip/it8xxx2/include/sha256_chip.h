@@ -16,7 +16,8 @@ struct sha256_ctx {
 	/* H[0] ~ H[7] */
 	uint32_t h[8];
 	/* reserved */
-	uint32_t reserved2[31];
+	uint32_t reserved2[30];
+	uint32_t w_index;
 	uint32_t total_len;
 	/* K[0] ~ K[63] */
 	uint32_t k[64];
