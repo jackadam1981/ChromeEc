@@ -5,6 +5,74 @@
 
 #include <ap_power_host_sleep.h>
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
+#include "util.h"
+#include "gpio.h"
+
+
+static void fake_rtc_alarm(struct k_work *work)
+{
+	ccprintf("[CS] %s: Firing kaedbg fake RTC alarm (EC_HOST_EVENT_LID_OPEN)\n", __func__);
+	host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+}
+
+static K_WORK_DELAYABLE_DEFINE(fake_rtc_alarm_data,
+			       fake_rtc_alarm);
+
+static enum ec_status host_command_fake_rtc_alarm(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_rtc *p = args->params;
+
+	if (p->time < 1) {
+		ccprintf("[CS] %s: Cancelling fake RTC alarm\n", __func__);
+
+		// XXX:
+		struct k_work_sync work_sync;
+		k_work_cancel_delayable_sync(&fake_rtc_alarm_data, &work_sync);
+		//k_work_cancel_delayable(&fake_rtc_alarm_data);
+	} else {
+		ccprintf("[CS] %s: Setting fake RTC alarm to %ds\n", __func__, p->time);
+
+		k_work_schedule(&fake_rtc_alarm_data, K_SECONDS(p->time));
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_RTC_SET_ALARM, host_command_fake_rtc_alarm,
+		     EC_VER_MASK(0));
+
+/**
+ * Test the RTC alarm by setting an interrupt on RTC match.
+ */
+static int console_command_fake_rtc_alarm(int argc, const char **argv)
+{
+	int s = 1;
+	char *e;
+
+	if (argc > 1) {
+		s = strtoi(argv[1], &e, 10);
+		if (*e)
+			return EC_ERROR_PARAM1;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	if (s < 1) {
+		ccprintf("[CS] %s: Cancelling fake RTC alarm\n", __func__);
+
+		// XXX:
+		struct k_work_sync work_sync;
+		k_work_cancel_delayable_sync(&fake_rtc_alarm_data, &work_sync);
+		//k_work_cancel_delayable(&fake_rtc_alarm_data);
+	} else {
+		ccprintf("[CS] %s: Setting fake RTC alarm to %ds\n", __func__, s);
+
+		k_work_schedule(&fake_rtc_alarm_data, K_SECONDS(s));
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fake_rtc_alarm, console_command_fake_rtc_alarm,
+			"[seconds]", "Fake RTC alarm");
 
 static uint16_t sleep_signal_timeout;
 static uint16_t host_sleep_timeout_default = CONFIG_SLEEP_TIMEOUT_MS;
@@ -27,6 +95,18 @@ enum sleep_hang_type {
 
 void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 {
+
+	// SLP_S0_L did toggle
+	ccprintf("kaedbg %s: Detected sleep hang\n", __func__);
+	ccprintf("kaedbg %s: Cancelling fake RTC alarm if any\n", __func__);
+
+	// XXX:
+	//struct k_work_sync work_sync;
+	//k_work_cancel_delayable_sync(&fake_rtc_alarm_data, &work_sync);
+	k_work_cancel_delayable(&fake_rtc_alarm_data);
+
+	return;
+
 	/*
 	 * Wake up the AP so they don't just chill in a non-suspended state and
 	 * burn power. Overload a vaguely related event bit since event bits are
@@ -79,6 +159,7 @@ static void sleep_increment_transition(void)
 void sleep_suspend_transition(void)
 {
 	sleep_increment_transition();
+	ccprintf("kaedbg sleep_suspend_transition\n");
 	k_work_cancel_delayable(&sleep_transition_timeout_data);
 }
 
@@ -118,7 +199,8 @@ void sleep_start_suspend(void)
 	if (timeout == EC_HOST_SLEEP_TIMEOUT_DEFAULT) {
 		timeout = host_sleep_timeout_default;
 	}
-
+	timeout = 4500;
+	ccprintf("kaedbg : timeout is hard code to %d\n", timeout);
 	sleep_signal_timeout = timeout;
 	timeout_hang_type = SLEEP_HANG_S0IX_SUSPEND;
 	k_work_schedule(&sleep_transition_timeout_data, K_MSEC(timeout));
