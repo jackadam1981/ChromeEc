@@ -9,4 +9,10 @@ config TEST_BOARD_CHIPSET
 	  different combinations: good battery vs low battery, normal boot
 	  vs delayed boot, etc.
 
+config TEST_EVOKER_CHARGER_OVERRIDE
+	bool "Run the tests intended for board_charger_override of evoker"
+	help
+	  Check the evoker board_charger_profile_override function can
+	  override battery requested_current.
+
 source "Kconfig.zephyr"

@@ -34,6 +34,7 @@ int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
 
 static void update_mapped_memory(void)
 {
+#ifndef CONFIG_ZTEST
 	int i, t;
 	uint8_t *mptr = host_get_memmap(EC_MEMMAP_TEMP_SENSOR);
 
@@ -61,12 +62,14 @@ static void update_mapped_memory(void)
 			*mptr = EC_TEMP_SENSOR_ERROR;
 		}
 	}
+#endif
 }
 /* Run after other TEMP tasks, so sensors will have updated first. */
 DECLARE_HOOK(HOOK_SECOND, update_mapped_memory, HOOK_PRIO_TEMP_SENSOR_DONE);
 
 static void temp_sensor_init(void)
 {
+#ifndef CONFIG_ZTEST
 	int i;
 	uint8_t *base, *base_b;
 
@@ -96,6 +99,7 @@ static void temp_sensor_init(void)
 
 	/* Temp sensor data is present, with B range supported. */
 	*host_get_memmap(EC_MEMMAP_THERMAL_VERSION) = 2;
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, temp_sensor_init, HOOK_PRIO_DEFAULT);
 
