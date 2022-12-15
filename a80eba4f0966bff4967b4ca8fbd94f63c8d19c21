@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37125d80_34a74ba6",
+        "filename": "zephyr/program/intelrvp/mtlrvp/usbc.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-15T00:32:49Z",
+      "side": 1,
+      "message": "usb-muxes is required, can\u0027t remove this.",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "a80eba4f0966bff4967b4ca8fbd94f63c8d19c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

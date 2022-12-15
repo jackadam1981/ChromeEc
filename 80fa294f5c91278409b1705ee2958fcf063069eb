@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "512a2943_de5a5232",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-15T00:32:49Z",
+      "side": 1,
+      "message": "Yes, there is no port 1. ideally we should remove PD task 1. Since board ID is read during run time; and PD task is already created; there is no straightforward way to skip creating PD task 1. Let\u0027s fix this in separate CL.",
+      "parentUuid": "38f71634_0fd16464",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "80fa294f5c91278409b1705ee2958fcf063069eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "768a5da2_9133ad77",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0160213e_67862ee8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-15T00:32:49Z",
+      "side": 1,
+      "message": "Added board_get_max_tbt_speed. This is used by USB4 flow too, get_usb4_cable_speed-\u003eget_tbt_cable_speed-\u003eboard_get_max_tbt_speed.",
+      "parentUuid": "768a5da2_9133ad77",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "80fa294f5c91278409b1705ee2958fcf063069eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "335fba00_4fa381df",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-12-09T21:20:09Z",
       "side": 1,
       "message": "pls add changes to MCHP too",
+      "revId": "80fa294f5c91278409b1705ee2958fcf063069eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4abfb55d_1900471e",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-15T00:32:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "335fba00_4fa381df",
       "revId": "80fa294f5c91278409b1705ee2958fcf063069eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
