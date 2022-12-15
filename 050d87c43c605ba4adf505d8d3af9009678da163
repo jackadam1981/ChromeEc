@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0ef5101_09f597c2",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-12-15T17:55:58Z",
+      "side": 1,
+      "message": "The problem is that in our case `__ec_align4` doesn\u0027t align structure to 4 bytes. Who could expect that 😄? So `struct ec_response_flash_info_2` is `packed` and it could be placed at any address. The trick with passing `uint8_t` was really bad. The compiler didn\u0027t complain about casting `uint8_t` back to the `struct ec_flash_bank`, but the generated assembly was wrong! The compiler trusts that the address is aligned. I found that the best way to solve this problem is to pass the whole `struct ec_response_flash_info_2`. This way, the compiler knows that we are dealing with a packed structure and `struct ec_flash_bank` (member of response) can be placed at any address. Now, the generated assembly is correct. I added a comment in `crec_flash_response_fill_banks()` about it.",
+      "parentUuid": "1810fca4_b1723500",
+      "range": {
+        "startLine": 237,
+        "startChar": 30,
+        "endLine": 237,
+        "endChar": 37
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cf9f2ef_6e7f6951",
@@ -89,6 +113,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd57a366_71fbf0ca",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-12-15T17:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cf9f2ef_6e7f6951",
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cb4b540_a612ab35",
@@ -102,6 +144,30 @@
       "writtenOn": "2022-10-04T19:06:09Z",
       "side": 1,
       "message": "Why uint8_t* rather than `struct ec_flash_bank *` and `buf_size` rather than `max_banks`?",
+      "range": {
+        "startLine": 259,
+        "startChar": 30,
+        "endLine": 259,
+        "endChar": 37
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4decb35_abe6ca80",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-12-15T17:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb4b540_a612ab35",
       "range": {
         "startLine": 259,
         "startChar": 30,
@@ -244,6 +310,30 @@
       "side": 1,
       "message": "\u003e No. r_2-\u003enum_banks_total is the total number of regions (flash_bank_array size).\nr_2-\u003enum_banks_desc is the number of regions included in the response, because the response buffer might not have enough space to store all flash_bank_array entries.\n\nRight, that makes sense.\n\n\u003e Actually this line is wrong. There should be division instead of multiplication\n\nI may not have had the right issue but at least I picked a line with a bug! 😊",
       "parentUuid": "c3ce5d7d_54a89f41",
+      "range": {
+        "startLine": 1323,
+        "startChar": 4,
+        "endLine": 1323,
+        "endChar": 45
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d69d191_bbf536fa",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-12-15T17:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0c756ce_3b7f4d8b",
       "range": {
         "startLine": 1323,
         "startChar": 4,
