@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03e6152_1a1c86c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-15T20:35:13Z",
+      "side": 1,
+      "message": "If that\u0027s the case, why don\u0027t we leave CONFIG_CHARGER_INPUT_CURRENT_DERATE_PCT undefined in config.h and break a build or print a warning if it\u0027s not defined?\n\n    #include \"board.h\"\n    ...\n    #ifndef CONFIG_CHARGER_INPUT_CURRENT_DERATE_PCT\n    #ifdef CONFIG_SYSTEM_UNLOCKED\n    #WARN CHARGER_INPUT_CURRENT_DERATE_PCT not defined.\n    #else\n    #ERROR CHARGER_INPUT_CURRENT_DERATE_PCT or board_set_charge_limit must be defined.\n    #endif\n    #endif\n\nYou can probably find a smarter way to handle both CHARGER_INPUT_CURRENT_DERATE_PCT or board_set_charge_limit.",
+      "range": {
+        "startLine": 24,
+        "startChar": 35,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "eacacdd07736694f4e0de08c33822e1660977215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "38fe8569_2ff5ef03",
@@ -31,6 +54,24 @@
       "writtenOn": "2022-12-15T07:01:09Z",
       "side": 1,
       "message": "For boards with 5% - there is no need to re-define the default value (5) with the new value (5), right?",
+      "revId": "eacacdd07736694f4e0de08c33822e1660977215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a3a4e9e_ef4acd28",
+        "filename": "board/anahera/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-15T20:35:13Z",
+      "side": 1,
+      "message": "Looks like this is intentional (but I also have a question, posted above).",
+      "parentUuid": "7eba82c3_4784d1d8",
       "revId": "eacacdd07736694f4e0de08c33822e1660977215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
