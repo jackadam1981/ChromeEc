@@ -22,6 +22,30 @@
       },
       "revId": "9a99de19aa6953c85e27b1c6d400b9eebee2a4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce243cfe_5f30c299",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 43
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-15T19:03:45Z",
+      "side": 1,
+      "message": "This only happened when I tried to build on my gLinux laptop.\n\nUnless I missed something, I repeated the exact same steps on my cloudtop and the build worked correctly.\n\nI\u0027ll try once more on my laptop to see if I missed anything.",
+      "parentUuid": "7ef66b10_0c507620",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "9a99de19aa6953c85e27b1c6d400b9eebee2a4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
