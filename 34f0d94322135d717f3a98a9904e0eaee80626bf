@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15236a37_ae2c1049",
+        "filename": "zephyr/program/nissa/xivur/cbi.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-15T01:09:39Z",
+      "side": 1,
+      "message": "The change has landed to fix this, so please rebase and you should be able to\ndelete the sub-board fields.",
+      "parentUuid": "6dbcf7f5_9619b926",
+      "revId": "34f0d94322135d717f3a98a9904e0eaee80626bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f65615f_86f6feb8",
         "filename": "zephyr/program/nissa/xivur/overlay.dtsi",
         "patchSetId": 3
