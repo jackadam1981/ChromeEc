@@ -16,6 +16,24 @@
       "message": "I think the change is OK, but I\u0027m curious what the exact difference would be.\nI presume the 5V rail is off during S5?",
       "revId": "6b2aba4a16deb8ac8b5a7f96bb55f8b128c1e7ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b40429_950dbf49",
+        "filename": "zephyr/program/nissa/src/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-12-15T01:01:54Z",
+      "side": 1,
+      "message": "The PD state machine performs hard reset during S5 if Vconn swap is not possible in this power state. I observed Kernel mux driver configures SoC mux to disconnected state due to this hard reset leading to device enumeration failure.",
+      "parentUuid": "4efd0b0f_b3e03fdd",
+      "revId": "6b2aba4a16deb8ac8b5a7f96bb55f8b128c1e7ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
