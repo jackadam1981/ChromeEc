@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "common.h"
 #include <zephyr/kernel.h>
 
 #include <ap_power/ap_power.h>
@@ -59,7 +60,7 @@ void ap_power_ev_add_events(struct ap_power_ev_callback *cb,
 /*
  * Run the callback list
  */
-void ap_power_ev_send_callbacks(enum ap_power_events event)
+test_mockable void ap_power_ev_send_callbacks(enum ap_power_events event)
 {
 	struct ap_power_ev_data data;
 	struct ap_power_ev_callback *cb, *tmp;
