@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2357a09_7ae8d2c5",
+        "filename": "zephyr/program/herobrine/evoker/src/charger_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-12-15T11:40:53Z",
+      "side": 1,
+      "message": "Hi Tam\nIt looks like I can\u0027t get the correct temperature from temp_sensor_read in ztest.. \nAny help would be greatly appreciated!\nhandler.log:\n\nSTART - test_board_charger_profile_override\nrv: 1, charger_temp: -16\n aim: 5000, curr.requested_current: 5000\nrv: 1, charger_temp: -12\n aim: 5000, curr.requested_current: 5000\nrv: 1, charger_temp: -8\n aim: 2000, curr.requested_current: 5000\n\n    Assertion failed at CMAKE_SOURCE_DIR/src/board_charger_override.c:70: board_charger_override_test_board_charger_profile_override: (aim_curr[i] not equal to curr.requested_current)\nrequested_current not expected\n FAIL - test_board_charger_profile_override in 0.000 seconds",
+      "revId": "f10e1ad6a1d38ff9455f5b16c9101305304fd5f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
