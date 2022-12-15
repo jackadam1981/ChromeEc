@@ -263,4 +263,14 @@ config PLATFORM_EC_CONSOLE_CMD_S5_TIMEOUT
 	  transitioning to the G3 state. This command is useful for power
 	  testing.
 
+config PLATFORM_EC_SLP_S0_DEBUG
+	bool "Console command: SLP_S0 debug"
+	depends on PLATFORM_EC_POWERSEQ_S0IX
+	depends on PLATFORM_EC_POWERSEQ_HOST_SLEEP
+	default y
+	help
+	  Enable the console command 'slp_s0_debug_alarm'. This command is used to
+	  set the alarm and wake up host by given time. The alarm will be canceled
+	  when SLP_S0 sleep timeout happens so that developers can debug in failure.
+
 endif # PLATFORM_EC_POWERSEQ
