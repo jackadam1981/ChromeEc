@@ -47,6 +47,7 @@
 		};
 		gpio_cpu_c10_gate_l: cpu_c10_gate_l {
 			gpios = <&gpiog 1 GPIO_INPUT>;
+			enum-name = "GPIO_CPU_C10";
 		};
 		gpio_ec_battery_pres_odl: ec_battery_pres_odl {
 			gpios = <&gpioi 4 GPIO_INPUT>;
