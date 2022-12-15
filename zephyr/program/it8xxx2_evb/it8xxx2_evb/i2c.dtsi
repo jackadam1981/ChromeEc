@@ -4,6 +4,11 @@
  */
 
 / {
+	aliases {
+		i2c-1 = &i2c1;
+
+	};
+
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
@@ -40,6 +45,7 @@
 	pinctrl-0 = <&i2c1_clk_gpc1_default
 		     &i2c1_data_gpc2_default>;
 	pinctrl-names = "default";
+
 };
 
 &i2c2 {
@@ -48,12 +54,43 @@
 	pinctrl-0 = <&i2c2_clk_gpf6_default
 		     &i2c2_data_gpf7_default>;
 	pinctrl-names = "default";
+
 };
 
 &i2c4 {
 	status = "okay";
-	clock-frequency = <I2C_BITRATE_STANDARD>;
+	clock-frequency = <I2C_BITRATE_FAST>;
 	pinctrl-0 = <&i2c4_clk_gpe0_default
 		     &i2c4_data_gpe7_default>;
 	pinctrl-names = "default";
+};
+
+
+&pinctrl {
+	/* I2C property setting */
+	i2c5_clk_gpa4_sleep: i2c5_clk_gpa4_sleep {
+		pinmuxs = <&pinctrla 4 IT8XXX2_ALT_DEFAULT>;
+		bias-pull-down;
+	};
+	i2c5_data_gpa5_sleep: i2c5_data_gpa5_sleep {
+		pinmuxs = <&pinctrla 5 IT8XXX2_ALT_DEFAULT>;
+		bias-pull-down;
+	};
+};
+
+
+&i2c5 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	pinctrl-0 = <&i2c5_clk_gpa4_default
+			 &i2c5_data_gpa5_default>;
+	pinctrl-1 = <&i2c5_clk_gpa4_sleep
+		     &i2c5_data_gpa5_sleep>;
+	pinctrl-names = "default", "sleep";
+	target-enable;
+
+	i2c5_target: target@52 {
+		compatible = "ite,target-i2c";
+		reg = <0x52>;
+	};
 };
