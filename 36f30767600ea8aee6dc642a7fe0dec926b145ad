@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d377753_237c42b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-15T00:49:23Z",
+      "side": 1,
+      "message": "20G HB",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "36f30767600ea8aee6dc642a7fe0dec926b145ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cbf0f20_de4f9414",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-15T00:49:23Z",
+      "side": 1,
+      "message": "40G HB",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "36f30767600ea8aee6dc642a7fe0dec926b145ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d3e65e_832e5e57",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-15T00:49:23Z",
+      "side": 1,
+      "message": "nit: remove",
+      "revId": "36f30767600ea8aee6dc642a7fe0dec926b145ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8fb6971_7c5ccd28",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-15T00:49:23Z",
+      "side": 1,
+      "message": "default assign TBT_SS_TBT_GEN3 to a variable and modify the variable, line 328 to 334 can be removed",
+      "revId": "36f30767600ea8aee6dc642a7fe0dec926b145ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39b03dfe_43de5477",
+        "filename": "zephyr/program/intelrvp/mtlrvp/usbc.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-15T00:49:23Z",
+      "side": 1,
+      "message": "we should not send events for Port-1",
+      "range": {
+        "startLine": 45,
+        "startChar": 18,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "36f30767600ea8aee6dc642a7fe0dec926b145ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
