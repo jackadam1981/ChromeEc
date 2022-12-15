@@ -37,6 +37,7 @@ tests:
       - CONFIG_POWER_SEQUENCE_MOCK=y
       - CONFIG_PLATFORM_EC_USB_PD_DPS=y
       - CONFIG_PLATFORM_EC_I2C_PASSTHRU_RESTRICTED=y
+      - CONFIG_PLATFORM_EC_CHARGER_INPUT_CURRENT_DERATE_PCT=0
   drivers.anx7447:
     extra_args: CONF_FILE="prj.conf;anx7447/prj.conf" DTC_OVERLAY_FILE="./boards/native_posix.overlay;./anx7447/tcpc_policy.dts"
     extra_configs:
