@@ -998,6 +998,13 @@ int system_is_manual_recovery(void)
 static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 {
 	switch (cmd) {
+	case EC_REBOOT_CLEAR_AP_OFF:
+		if (IS_ENABLED(CONFIG_POWER_BUTTON_INIT_IDLE)) {
+			CPRINTS("Clearing AP_IDLE");
+			chip_save_reset_flags(chip_read_reset_flags() &
+					      ~EC_RESET_FLAG_AP_IDLE);
+		}
+		return EC_SUCCESS;
 	case EC_REBOOT_CANCEL:
 		return EC_SUCCESS;
 	case EC_REBOOT_JUMP_RO:
@@ -1743,7 +1750,8 @@ static enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 #endif
 	}
-	if (p.flags & EC_REBOOT_FLAG_ON_AP_SHUTDOWN) {
+	if (p.flags & EC_REBOOT_FLAG_ON_AP_SHUTDOWN ||
+	    p.cmd == EC_REBOOT_CLEAR_AP_OFF) {
 		/* Store request for processing at chipset shutdown */
 		reboot_at_shutdown = p.cmd;
 		return EC_RES_SUCCESS;
