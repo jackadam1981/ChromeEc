@@ -118,6 +118,30 @@
       },
       "revId": "1566c01dab9d014ec133eda4a40f6de7de6665b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1aaf41c_4e83570f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6505,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-12-15T00:54:17Z",
+      "side": 1,
+      "message": "Below is the problem seen while enabling CONFIG_POWER_COMMON using CONFIG_PLATFORM_EC_POWER_COMMON\u003dy in zephyr.\n\nin \"include/config.h\" file\nLine 5763 #include \"config_chip.h\"   \u003e\u003e zephyr configs are enabled here\nLine 6307 #undef CONFIG_POWER_COMMON \u003e\u003e this will override the zephyr configs enabled at line 5763 !!\n\nHence zephyr config CONFIG_PLATFORM_EC_POWER_COMMON\u003dy is overwritten by config.h file.",
+      "parentUuid": "d53b7d35_904138c2",
+      "range": {
+        "startLine": 6505,
+        "startChar": 0,
+        "endLine": 6505,
+        "endChar": 27
+      },
+      "revId": "1566c01dab9d014ec133eda4a40f6de7de6665b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
