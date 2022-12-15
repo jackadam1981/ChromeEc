@@ -16,6 +16,75 @@
       "message": "Not a completed commit. Just looking for feedback on the general approach.\nOnly changes to herobrine implemented. \nusb-c charging working correctly on Villager.",
       "revId": "892a25bf3af33f88b528f2aa2c824ccb04695946",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f67e8e85_3492b524",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-15T15:59:25Z",
+      "side": 1,
+      "message": "Try to use `struct gpio_dt_spec` here instead.\nhttp://cs/chromeos_public/src/third_party/zephyr/main/include/zephyr/drivers/gpio.h?rcl\u003d930b0543032bd8c657fa0b0a61bf3766988e64f9\u0026l\u003d271",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 0
+      },
+      "revId": "892a25bf3af33f88b528f2aa2c824ccb04695946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb00d87_47283eab",
+        "filename": "zephyr/shim/include/usbc/tcpc_anx7447.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-15T15:59:25Z",
+      "side": 1,
+      "message": "What does your yaml schema look like for the TCPCs?  It\u0027s not clear why you  have both an `int_pin` property and a `gpios` property.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 71
+      },
+      "revId": "892a25bf3af33f88b528f2aa2c824ccb04695946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6818204b_32e82f1a",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-15T15:59:25Z",
+      "side": 1,
+      "message": "Add this directly to a SYS_INIT or HOOK_INIT call.  This avoids each project having to manually call tcpc_enable_interrupt().",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 31
+      },
+      "revId": "892a25bf3af33f88b528f2aa2c824ccb04695946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
