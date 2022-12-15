@@ -15,11 +15,13 @@
 #include "gpio/gpio_int.h"
 #include "power_signals.h"
 #include "test_state.h"
+#include "vcmp_mock.h"
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/espi.h>
 #include <zephyr/drivers/espi_emul.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
+#include <zephyr/drivers/sensor.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
@@ -400,6 +402,49 @@ ZTEST(signals, test_espi_vw)
 	zassert_equal(1, power_signal_get(PWR_SLP_S5), "VW SLP_S5 should be 1");
 	emul_espi_host_send_vw(espi, ESPI_VWIRE_SIGNAL_SLP_S5, 1);
 	zassert_equal(0, power_signal_get(PWR_SLP_S5), "VW SLP_S5 should be 0");
+}
+
+ZTEST(signals, test_adc_get)
+{
+	const struct device *trigger_high =
+		DEVICE_DT_GET(DT_NODELABEL(mock_cmp_high));
+	const struct device *trigger_low =
+		DEVICE_DT_GET(DT_NODELABEL(mock_cmp_low));
+	struct sensor_value val_high;
+	struct sensor_value val_low;
+
+	sensor_attr_get(trigger_high, SENSOR_CHAN_VOLTAGE, SENSOR_ATTR_ALERT,
+			&val_high);
+	sensor_attr_get(trigger_low, SENSOR_CHAN_VOLTAGE, SENSOR_ATTR_ALERT,
+			&val_low);
+	zassert_equal(1, val_high.val1, "high trigger should be enabled");
+	zassert_equal(0, val_low.val1, "low trigger should be disabled");
+	zassert_equal(0, power_signal_get(PWR_PG_PP1P05),
+		      "power_signal_get of PWR_PG_PP1P05 should be 0");
+
+	/* Signal goes up... */
+	vcmp_mock_trigger(trigger_high);
+
+	sensor_attr_get(trigger_high, SENSOR_CHAN_VOLTAGE, SENSOR_ATTR_ALERT,
+			&val_high);
+	sensor_attr_get(trigger_low, SENSOR_CHAN_VOLTAGE, SENSOR_ATTR_ALERT,
+			&val_low);
+	zassert_equal(0, val_high.val1, "high trigger should be disabled");
+	zassert_equal(1, val_low.val1, "low trigger should be enabled");
+	zassert_equal(1, power_signal_get(PWR_PG_PP1P05),
+		      "power_signal_get of PWR_PG_PP1P05 should be 1");
+
+	/* ...signal goes down. */
+	vcmp_mock_trigger(trigger_low);
+
+	sensor_attr_get(trigger_high, SENSOR_CHAN_VOLTAGE, SENSOR_ATTR_ALERT,
+			&val_high);
+	sensor_attr_get(trigger_low, SENSOR_CHAN_VOLTAGE, SENSOR_ATTR_ALERT,
+			&val_low);
+	zassert_equal(1, val_high.val1, "high trigger should be enabled");
+	zassert_equal(0, val_low.val1, "low trigger should be disabled");
+	zassert_equal(0, power_signal_get(PWR_PG_PP1P05),
+		      "power_signal_get of PWR_PG_PP1P05 should be 0");
 }
 
 static void *init_dev(void)
