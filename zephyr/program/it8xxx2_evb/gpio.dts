@@ -61,10 +61,6 @@
 			<&gpioa 2 GPIO_INPUT_PULL_DOWN>,
 			/* gpioa3 */
 			<&gpioa 3 GPIO_INPUT_PULL_DOWN>,
-			/* gpioa4 */
-			<&gpioa 4 GPIO_INPUT_PULL_DOWN>,
-			/* gpioa5 */
-			<&gpioa 5 GPIO_INPUT_PULL_DOWN>,
 
 			/* gpiob2 */
 			<&gpiob 2 GPIO_INPUT_PULL_DOWN>,
