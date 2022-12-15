@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4efd0b0f_b3e03fdd",
+        "filename": "zephyr/program/nissa/src/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-15T00:17:14Z",
+      "side": 1,
+      "message": "I think the change is OK, but I\u0027m curious what the exact difference would be.\nI presume the 5V rail is off during S5?",
+      "revId": "6b2aba4a16deb8ac8b5a7f96bb55f8b128c1e7ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
