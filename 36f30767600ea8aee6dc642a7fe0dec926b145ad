@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1d50b2d_e048606f",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-15T00:50:23Z",
+      "side": 1,
+      "message": "similar logic needed for USB4?",
+      "range": {
+        "startLine": 322,
+        "startChar": 39,
+        "endLine": 322,
+        "endChar": 62
+      },
+      "revId": "36f30767600ea8aee6dc642a7fe0dec926b145ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8fb6971_7c5ccd28",
         "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
         "patchSetId": 9
