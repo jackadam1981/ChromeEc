@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6b1e653_48b61d8e",
+        "filename": "zephyr/program/nissa/xivur/src/fan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-12-15T02:32:58Z",
+      "side": 1,
+      "message": "Don\u0027t need the trailing newline.\nAlso make it a sentence like \"Fan not present\".\nAnd below as well.",
+      "revId": "5a4486ba44175d30150ea9e453d71674df8acb72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
