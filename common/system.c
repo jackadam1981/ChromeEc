@@ -1052,6 +1052,13 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 					      ~EC_RESET_FLAG_AP_IDLE);
 		}
 		__fallthrough;
+	case EC_REBOOT_CLEAR_AP_OFF:
+		if (IS_ENABLED(CONFIG_POWER_BUTTON_INIT_IDLE)) {
+			CPRINTS("Clearing AP_IDLE");
+			chip_save_reset_flags(chip_read_reset_flags() &
+					      ~EC_RESET_FLAG_AP_IDLE);
+		}
+		return EC_SUCCESS;
 	case EC_REBOOT_HIBERNATE:
 		if (!IS_ENABLED(CONFIG_HIBERNATE))
 			return EC_ERROR_INVAL;
@@ -1732,6 +1739,12 @@ static enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 	if (p.cmd == EC_REBOOT_CANCEL) {
 		/* Cancel pending reboot */
 		reboot_at_shutdown = EC_REBOOT_CANCEL;
+		return EC_RES_SUCCESS;
+	}
+
+	if (p.cmd == EC_REBOOT_CLEAR_AP_OFF) {
+		/* Clear AP_IDLE flag */
+		reboot_at_shutdown = p.cmd;
 		return EC_RES_SUCCESS;
 	}
 
