@@ -50,6 +50,24 @@
       "message": "Does Marasov not support TBT?\n\nThen it should not be running AP-driven alternate mode entry. The EC should be handling that...",
       "revId": "8843e5b3b2b89e1ee76b8de304c47adfe481423e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "048bfc5f_71dc2316",
+        "filename": "board/marasov/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-12-15T04:35:50Z",
+      "side": 1,
+      "message": "Yes, Marasov not support TBT.\nI remove CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY. Thanks",
+      "parentUuid": "38f25501_193ec4a5",
+      "revId": "8843e5b3b2b89e1ee76b8de304c47adfe481423e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
