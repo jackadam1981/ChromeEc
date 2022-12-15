@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ddc08b_3c8a2f49",
+        "filename": "zephyr/program/nissa/xivur/src/fan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-12-15T02:25:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ab9bc0a_ef7d11e8",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "07c6cc5b11b4b6b6e2db7800f37bdd37c6727af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e75abe13_e367021d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-15T02:00:39Z",
       "side": 1,
       "message": "Use LOG_INFO",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "07c6cc5b11b4b6b6e2db7800f37bdd37c6727af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ec583e_d2d2a4ee",
+        "filename": "zephyr/program/nissa/xivur/src/fan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-12-15T02:25:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e75abe13_e367021d",
       "range": {
         "startLine": 37,
         "startChar": 6,
