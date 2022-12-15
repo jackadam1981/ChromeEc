@@ -92,6 +92,18 @@ enum scancode_set_list {
  */
 static mutex_t to_host_mutex;
 
+#ifdef CONFIG_ZEPHYR
+static int init_to_host_mutex(const struct device *dev)
+{
+	ARG_UNUSED(dev);
+
+	k_mutex_init(&to_host_mutex);
+
+	return 0;
+}
+SYS_INIT(init_to_host_mutex, POST_KERNEL, 50);
+#endif /* CONFIG_ZEPHYR */
+
 /* Queue command/data to the host */
 enum {
 	CHAN_KBD = 0,
