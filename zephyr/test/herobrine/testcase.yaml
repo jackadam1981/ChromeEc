@@ -8,3 +8,7 @@ tests:
   herobrine.board_chipset:
     extra_configs:
       - CONFIG_TEST_BOARD_CHIPSET=y
+  herobrine.board_charger_override:
+    extra_args: DTC_OVERLAY_FILE="boards/native_posix.overlay";
+    extra_configs:
+      - CONFIG_TEST_EVOKER_CHARGER_OVERRIDE=y
