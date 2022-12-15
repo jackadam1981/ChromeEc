@@ -5747,6 +5747,7 @@ struct ec_params_memory_dump_read_memory {
 	uint32_t size;
 } __ec_align4;
 
+#define EC_CMD_SET_ALARM_SLP_S0_DBG 0x00E0
 /*
  * EC_CMD_MEMORY_DUMP_READ_MEMORY response buffer is written directly into
  * host_cmd_handler_args.response and host_cmd_handler_args.response_size.
