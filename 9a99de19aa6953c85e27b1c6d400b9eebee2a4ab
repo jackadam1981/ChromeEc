@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef66b10_0c507620",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 43
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-15T18:52:15Z",
+      "side": 1,
+      "message": "I am running into a build error when I run this command:\n\n```\ntest/fpsensor_hw.cc:14:10: fatal error: \u0027gtest/gtest.h\u0027 file not found\n#include \u003cgtest/gtest.h\u003e\n         ^~~~~~~~~~~~~~~\n1 error generated.\n```\n\nIn `build.mk` I see we are updating the include path:\n\n```\nCFLAGS+\u003d-I~/chromiumos/src/third_party/tmp/include\n```\n\nand I verified the folder exists and includes all the files:\n\n```\n(inside) ls -la ~/chromiumos/src/third_party/tmp/include/gtest\ntotal 300\ndrwxr-xr-x 3 agrandi primarygroup  4096 Dec 15 10:37 .\ndrwxr-xr-x 4 agrandi primarygroup  4096 Dec 15 10:37 ..\n-rw-r--r-- 1 agrandi primarygroup  8502 Dec 15 10:36 gtest-assertion-result.h\n-rw-r--r-- 1 agrandi primarygroup 14886 Dec 15 10:36 gtest-death-test.h\n-rw-r--r-- 1 agrandi primarygroup 90392 Dec 15 10:36 gtest.h\n-rw-r--r-- 1 agrandi primarygroup 33614 Dec 15 10:36 gtest-matchers.h\n-rw-r--r-- 1 agrandi primarygroup  8109 Dec 15 10:36 gtest-message.h\n-rw-r--r-- 1 agrandi primarygroup 23927 Dec 15 10:36 gtest-param-test.h\n-rw-r--r-- 1 agrandi primarygroup 12783 Dec 15 10:36 gtest_pred_impl.h\n-rw-r--r-- 1 agrandi primarygroup 39528 Dec 15 10:36 gtest-printers.h\n-rw-r--r-- 1 agrandi primarygroup  2502 Dec 15 10:36 gtest_prod.h\n-rw-r--r-- 1 agrandi primarygroup 12824 Dec 15 10:36 gtest-spi.h\n-rw-r--r-- 1 agrandi primarygroup  7111 Dec 15 10:36 gtest-test-part.h\n-rw-r--r-- 1 agrandi primarygroup 15921 Dec 15 10:36 gtest-typed-test.h\ndrwxr-xr-x 3 agrandi primarygroup  4096 Dec 15 10:37 internal\n```\n\nI also compiled with `V\u003d1` and I see the `-I` argument as expected:\n\n```\narmv7m-cros-eabi-clang++ -std\u003dgnu++17 -DOUTDIR\u003dbuild/bloonchipper/fpsensor_hw/RW -DCHIP\u003dstm32 -DBOARD_TASKFILE\u003dec.tasklist -DBOARD\u003dbloonchipper -DCORE\u003dcortex-m -DPROJECT\u003dfpsensor_hw -DCHIP_VARIANT\u003dstm32f412 -DCHIP_FAMILY\u003dSTM32F4 -DBOARD_BLOONCHIPPER\u003d -DCHIP_STM32\u003d -DCORE_CORTEX_M\u003d -DCHIP_VARIANT_STM32F412\u003d -DCHIP_FAMILY_STM32F4\u003d -DFINAL_OUTDIR\u003dbuild/bloonchipper/fpsensor_hw -DPROTOBUF_MIN_PROTOC_VERSION\u003d0  -Iinclude  -Icore/cortex-m/include  -Iinclude/driver  -Icore/cortex-m  -Ichip/stm32  -Iboard/bloonchipper  -Iboard/bloonchipper  -Icommon  -Ifuzz  -Ipower  -Itest  -Icts/common  -Icts/  -Ibuild/bloonchipper/fpsensor_hw/gen  -Iprivate  -Iprivate-kandou  -Icommon  -Icommon/fpsensor  -Icommon/vboot  -Icommon/mock  -Icommon/spi  -Icommon/spi/flash_reg  -Icommon/spi/flash_reg/src  -Icommon/spi/flash_reg/public  -Icommon/spi/flash_reg/private  -Icommon/usbc  -Idriver  -Idriver/bc12  -Idriver/ioexpander  -Idriver/tcpm  -Idriver/fingerprint  -Idriver/fingerprint/elan  -Idriver/fingerprint/fpc  -Idriver/fingerprint/fpc/libfp  -Idriver/fingerprint/fpc/bep  -Idriver/led  -Idriver/ppc  -Idriver/retimer  -Idriver/temp_sensor  -Idriver/usb_mux  -Idriver/nfc  -Idriver/charger  -Idriver/wpc  -Idriver/battery  -Ilibc  -Ibuild/bloonchipper/fpsensor_hw  -Ifuzz  -Itest  -Ithird_party  -Ispi/flash_regpublic  -I. -DTEST_BUILD\u003d -DTEST_LEGACY_BUILD\u003d -DTEST_TASKFILE\u003dfpsensor_hw.tasklist   -DTEST_fpsensor_hw\u003d -DTEST_FPSENSOR_HW\u003d        -Iinclude/driver  -DSECTION_IS_RW\u003d -DSECTION\u003dRW -DHAS_TASK_FPSENSOR\u003d -DHAS_TASK_RWSIG_RO\u003d -fno-PIC -DCHROMIUM_EC\u003d -DHAS_TASK_HOOKS\u003d -DHAS_TASK_HOSTCMD\u003d -DHAS_TASK_CONSOLE\u003d  -DHAVE_PRIVATE -DHAVE_PRIVATE -I../../third_party/cryptoc/include -mcpu\u003dcortex-m4 -mcpu\u003dcortex-m4 -mthumb -Oz               -mno-unaligned-access -mfloat-abi\u003dhard -g  -ftrapv -Wall -Wundef -Wno-trigraphs -Wno-format-security -Wno-address-of-packed-member -fno-common -fno-strict-aliasing -fno-strict-overflow -Wimplicit-fallthrough -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -Werror -Werror\u003duninitialized -Wno-unused-function  -ffunction-sections -fshort-wchar -fno-delete-null-pointer-checks -fno-PIC -Iprivate/fingerprint/google-fpalg/mcutest/../ -Iprivate/fingerprint/google-fpalg/mcutest/..//mcu -Iprivate/fingerprint/google-fpalg/mcutest/..//mcutest -DBLOONCHIPPER_TARGET -DFP_ALLOW_HEAP_ALLOC\u003d0 -I~/chromiumos/src/third_party/tmp/include -ftrapv -Wall -Wundef -Wno-trigraphs -Wno-format-security -Wno-address-of-packed-member -fno-common -fno-strict-aliasing -fno-strict-overflow -Wimplicit-fallthrough -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -Werror -Werror\u003duninitialized -Wno-unused-function -DPROTOBUF_INLINE_NOT_IN_HEADERS\u003d0 -MMD -MP -MF build/bloonchipper/fpsensor_hw/RW/test/fpsensor_hw.o.d -c test/fpsensor_hw.cc -MT build/bloonchipper/fpsensor_hw/RW/test/fpsensor_hw.o -o build/bloonchipper/fpsensor_hw/RW/test/fpsensor_hw.o\ntest/fpsensor_hw.cc:14:10: fatal error: \u0027gtest/gtest.h\u0027 file not found\n#include \u003cgtest/gtest.h\u003e\n```",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "9a99de19aa6953c85e27b1c6d400b9eebee2a4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
