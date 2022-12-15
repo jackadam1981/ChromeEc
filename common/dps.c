@@ -128,6 +128,9 @@ test_export_static int dps_init(void)
 {
 	int rc = EC_SUCCESS;
 
+#ifdef CONFIG_ZEPHYR
+	k_mutex_init(&dps_lock);
+#endif
 	dps_reset();
 
 	if (dps_config.k_window > MAX_MOVING_AVG_WINDOW) {
