@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76bf148b_43b68678",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-15T17:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bbc5e37_672d0319",
+      "revId": "6627decac0c22e744ba063474cc961f0eee2556a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb5e1394_55ca06e6",
@@ -72,6 +90,54 @@
       "writtenOn": "2022-12-13T19:53:54Z",
       "side": 1,
       "message": "nit: I understand why it might make sense to use `enum ec_error_list` as a return type but it might make more sense to just return an `int` here so the prototype matches the standard `gettimeofday` function.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "6627decac0c22e744ba063474cc961f0eee2556a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a114841_8a05bf05",
+        "filename": "common/gettimeofday.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-15T17:01:06Z",
+      "side": 1,
+      "message": "Oh, I see: https://pubs.opengroup.org/onlinepubs/9699919799/functions/gettimeofday.html\n\nUpdated.",
+      "parentUuid": "eb5e1394_55ca06e6",
+      "range": {
+        "startLine": 11,
+        "startChar": 55,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "6627decac0c22e744ba063474cc961f0eee2556a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcebaa02_93972507",
+        "filename": "common/gettimeofday.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-15T17:01:06Z",
+      "side": 1,
+      "message": "I\u0027m going to keep it as an `enum` type so that the compiler can check the type (The \n type check will only work in files that are compiled with the C++ compiler though).",
+      "parentUuid": "b65b1d48_6d16a8d5",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -119,6 +185,30 @@
       "side": 1,
       "message": "If I recall correctly (and I may not!) the AP sends the \"time since epoch\" down to the FPMCU (for all EC targets?) at startup so `get_time` should have a reasonable proxy for `now`. However, if queried before that time is set then the time may be reported from MCU starting",
       "parentUuid": "231bb19e_b429cb65",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "6627decac0c22e744ba063474cc961f0eee2556a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "913e4ae9_9f346bec",
+        "filename": "include/gettimeofday.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-15T17:01:06Z",
+      "side": 1,
+      "message": "I don\u0027t recall seeing code that sets the time. The `force_time` command mentions the caveat that [changing the time can cause problems](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/timer.c;l\u003d397-401;drc\u003d599c438e80c634a580c33bfb431472cf36c1cad5).\n\nI\u0027ll add a warning.",
+      "parentUuid": "8a93b099_1c17da30",
       "range": {
         "startLine": 14,
         "startChar": 0,
