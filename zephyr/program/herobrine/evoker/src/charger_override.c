@@ -45,8 +45,14 @@ __override int board_charger_profile_override(struct charge_state_data *curr)
 	if (curr->state != ST_CHARGE)
 		return 0;
 
+#ifndef CONFIG_ZTEST
 	temp_sensor_read(TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_charger)),
 			 &charger_temp);
+#else
+	int rv;
+	rv = temp_sensor_read(TEMP_SENSOR_ID(DT_NODELABEL(temp_charger)), &charger_temp);
+	printk("rv: %d, charger_temp: %d\n", rv, charger_temp);
+#endif
 
 	charger_temp_c = K_TO_C(charger_temp);
 

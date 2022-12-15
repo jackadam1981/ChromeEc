@@ -7,8 +7,13 @@ find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 project(herobrine)
 
 zephyr_include_directories("${PLATFORM_EC_PROGRAM_DIR}/herobrine/include")
+zephyr_include_directories("${PLATFORM_EC}/zephyr/program/herobrine/evoker/src")
 
 target_sources_ifdef(CONFIG_TEST_BOARD_CHIPSET
 	app PRIVATE src/board_chipset.c)
 target_sources_ifdef(CONFIG_TEST_BOARD_CHIPSET
 	app PRIVATE ${PLATFORM_EC_PROGRAM_DIR}/herobrine/src/board_chipset.c)
+target_sources_ifdef(CONFIG_TEST_EVOKER_CHARGER_OVERRIDE
+	app PRIVATE src/board_charger_override.c)
+target_sources_ifdef(CONFIG_TEST_EVOKER_CHARGER_OVERRIDE
+	app PRIVATE ${PLATFORM_EC}/zephyr/program/herobrine/evoker/src/charger_override.c)
