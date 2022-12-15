@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c6df9a_902f1543",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3582,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-15T23:49:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d720e22_ee9d590e",
+      "range": {
+        "startLine": 3580,
+        "startChar": 1,
+        "endLine": 3582,
+        "endChar": 23
+      },
+      "revId": "3af818ce0d5b0df8830f23b0abace6caa44353ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bff840ea_1965c955",
@@ -71,6 +95,24 @@
       "writtenOn": "2022-12-15T18:23:22Z",
       "side": 1,
       "message": "I see other enums in this struct, so I\u0027m assuming it\u0027s not directly used in a host command. If that\u0027s the case, I\u0027d just make `bist_cmd` (and probably `mode` and `error`) have the types of the enum values they contain.",
+      "revId": "3af818ce0d5b0df8830f23b0abace6caa44353ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "491ccfa3_b0705415",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-15T23:49:26Z",
+      "side": 1,
+      "message": "Thanks for pointing it out. I\u0027ll keep it as uint8_t to be easy on the RAM. I may change it to a pointer to struct bist_cmd when we support more advanced bist commands. I want to change other enums to uint8_t, actually.\n\nAdded a delimiter to enum pchg_bist_cmd.",
+      "parentUuid": "bff840ea_1965c955",
       "revId": "3af818ce0d5b0df8830f23b0abace6caa44353ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
