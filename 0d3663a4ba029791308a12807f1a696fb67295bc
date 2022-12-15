@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d757661a_85175c04",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-15T23:25:05Z",
+      "side": 1,
+      "message": "I think we can even filter out disabled --\u003e disabled cases. The scanner doesn\u0027t care how it\u0027s disabled.",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 58
+      },
+      "revId": "0d3663a4ba029791308a12807f1a696fb67295bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
