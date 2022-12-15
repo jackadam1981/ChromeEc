@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5b8fb3_f6365afc",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-12-15T21:08:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f67e8e85_3492b524",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 0
+      },
+      "revId": "892a25bf3af33f88b528f2aa2c824ccb04695946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eb00d87_47283eab",
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ada0d8aa_b247e731",
+        "filename": "zephyr/shim/include/usbc/tcpc_anx7447.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-12-15T21:08:56Z",
+      "side": 1,
+      "message": "`int_pin` is a phandle pointing to a `named-gpios` node. `int-pin` is a property of *chip*.yaml. `gpios` is a property of the `named-gpios` node that stores all the gpio specs. \n\nHere\u0027s an example of how they\u0027re used in the .dts:\n\n```\n\\* fragment from i2c.dts *\\\ntcpc_port0: ps8xxx@b {\n\tcompatible \u003d \"parade,ps8xxx\";\n\treg \u003d \u003c0xb\u003e;\n\tint-pin \u003d \u003c\u0026gpio_usb_c0_pd_int_odl\u003e;\n};\n\n\\* fragment from gpio.dts *\\\nnamed-gpios {\n\tcompatible \u003d \"named-gpios\";\n\n\tgpio_usb_c0_pd_int_odl: usb_c0_pd_int_odl {\n\t\tgpios \u003d \u003c\u0026gpioe 0 GPIO_INPUT\u003e;\n\t\tenum-name \u003d \"GPIO_USB_C0_PD_INT_ODL\";\n\t};\n};\n```",
+      "parentUuid": "8eb00d87_47283eab",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 71
+      },
+      "revId": "892a25bf3af33f88b528f2aa2c824ccb04695946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6818204b_32e82f1a",
         "filename": "zephyr/shim/src/tcpc.c",
         "patchSetId": 1
@@ -77,6 +125,30 @@
       "writtenOn": "2022-12-15T15:59:25Z",
       "side": 1,
       "message": "Add this directly to a SYS_INIT or HOOK_INIT call.  This avoids each project having to manually call tcpc_enable_interrupt().",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 31
+      },
+      "revId": "892a25bf3af33f88b528f2aa2c824ccb04695946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28092d86_c0e9a4b0",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-12-15T21:08:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6818204b_32e82f1a",
       "range": {
         "startLine": 100,
         "startChar": 0,
