@@ -58,6 +58,25 @@ config TEST_PROGRAM_USB_PD_POLICY
 	help
 	  Include usb_pd_policy.c into the binary and test their functions.
 
+config TEST_PROGRAM_USB_PD_UFP
+	bool "Run the tests intended for Rex as TBT UFP"
+	help
+	  Include usb_pd_ufp.c and test functions that Rex responds to
+	  TBT VDM requests like Discover Identity, Discover SVIDs, Discover
+	  Modes, and Enter Mode as UFP.
+
+config TEST_ENABLE_PD_TBT_COMPAT_MODE
+	bool "Enable PD TBT alternate mode"
+	help
+	  Used to define CONFIG_USB_PD_TBT_COMPAT_MODE directly for testing
+	  purpose.
+
+config TEST_ENABLE_PD_ALT_MODE_UFP
+	bool "Enable PD TBT alternate mode as UFP"
+	help
+	  Used to define CONFIG_USB_PD_ALT_MODE_UFP directly for testing
+	  purpose.
+
 config TEST_ENABLE_USB_PD_DISCHARGE
 	bool "Enable CONFIG_USB_PD_DISCHARGE"
 	help
