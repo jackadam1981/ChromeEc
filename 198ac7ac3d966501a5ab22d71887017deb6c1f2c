@@ -16,6 +16,23 @@
       "message": "In this way, there is no task created for port 1.",
       "revId": "198ac7ac3d966501a5ab22d71887017deb6c1f2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9b765ab_9ca10c5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-15T05:23:05Z",
+      "side": 1,
+      "message": "try check when the tasks are enabled and if can dynamically enable or disable tasks",
+      "revId": "198ac7ac3d966501a5ab22d71887017deb6c1f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
