@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab11bd7b_d9254cde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-15T21:05:06Z",
+      "side": 1,
+      "message": "We\u0027d better fix other host commands as well. For example, we should return RES_IN_PROGRESS for EC_CMD_BATTERY_CUT_OFF.",
+      "revId": "53a6f7da3f8de6483483224deb7e7fdbf9ddfa65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12346526_da0b62a3",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-15T21:05:06Z",
+      "side": 1,
+      "message": "This is an external response code. Please change it to EC_ERROR_ACCESS_DENIED (not EC_RES_ACCESS_DENIED). We don\u0027t have EC_ERROR_IN_PROGRESS.",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 27
+      },
+      "revId": "53a6f7da3f8de6483483224deb7e7fdbf9ddfa65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63a11b6_48cf328f",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-15T21:05:06Z",
+      "side": 1,
+      "message": "Let\u0027s return EC_RES_ACCESS_DENIED if rv \u003d\u003d EC_ERROR_ACCESS_DENIED.",
+      "range": {
+        "startLine": 692,
+        "startChar": 0,
+        "endLine": 693,
+        "endChar": 22
+      },
+      "revId": "53a6f7da3f8de6483483224deb7e7fdbf9ddfa65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ab5bcf_b8d027a1",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-15T21:05:06Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 712,
+        "startChar": 0,
+        "endLine": 713,
+        "endChar": 22
+      },
+      "revId": "53a6f7da3f8de6483483224deb7e7fdbf9ddfa65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
