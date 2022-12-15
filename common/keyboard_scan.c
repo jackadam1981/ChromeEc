@@ -5,6 +5,11 @@
 
 /* Keyboard scanner module for Chrome EC */
 
+<<<<<<< HEAD   (f7a5b6 dratini: Set TCPC_AUX_SWITCH to 0xC on Port 0 on mux set)
+=======
+#include "adc.h"
+#include "atomic_bit.h"
+>>>>>>> CHANGE (37c75a keyboard: Wake up key scanner only if there are changes)
 #include "chipset.h"
 #include "clock.h"
 #include "common.h"
@@ -130,16 +135,29 @@ static int keyboard_scan_is_enabled(void)
 
 void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask)
 {
+	atomic_val_t old;
 	/* Access atomically */
 	if (enable) {
+<<<<<<< HEAD   (f7a5b6 dratini: Set TCPC_AUX_SWITCH to 0xC on Port 0 on mux set)
 		atomic_clear((uint32_t *)&disable_scanning_mask, mask);
+=======
+		old = atomic_clear_bits((atomic_t *)&disable_scanning_mask,
+					mask);
+>>>>>>> CHANGE (37c75a keyboard: Wake up key scanner only if there are changes)
 	} else {
+<<<<<<< HEAD   (f7a5b6 dratini: Set TCPC_AUX_SWITCH to 0xC on Port 0 on mux set)
 		atomic_or((uint32_t *)&disable_scanning_mask, mask);
+=======
+		old = atomic_or((atomic_t *)&disable_scanning_mask, mask);
+>>>>>>> CHANGE (37c75a keyboard: Wake up key scanner only if there are changes)
 		clear_typematic_key();
 	}
 
-	/* Let the task figure things out */
-	task_wake(TASK_ID_KEYSCAN);
+	/* Using atomic_get() causes build errors on some archs */
+	if (old != disable_scanning_mask) {
+		/* If the mask has changed, let the task figure things out */
+		task_wake(TASK_ID_KEYSCAN);
+	}
 }
 
 /**
