@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c01e2a3a_ed76f92e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-15T01:42:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d377753_237c42b0",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "36f30767600ea8aee6dc642a7fe0dec926b145ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cbf0f20_de4f9414",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-15T00:49:23Z",
       "side": 1,
       "message": "40G HB",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "36f30767600ea8aee6dc642a7fe0dec926b145ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac2df4ba_5a106e56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-15T01:42:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cbf0f20_de4f9414",
       "range": {
         "startLine": 14,
         "startChar": 10,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06b46ce_b32446b1",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-15T01:42:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11d3e65e_832e5e57",
+      "revId": "36f30767600ea8aee6dc642a7fe0dec926b145ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1d50b2d_e048606f",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-12-15T00:50:23Z",
       "side": 1,
       "message": "similar logic needed for USB4?",
+      "range": {
+        "startLine": 322,
+        "startChar": 39,
+        "endLine": 322,
+        "endChar": 62
+      },
+      "revId": "36f30767600ea8aee6dc642a7fe0dec926b145ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f49db06f_a5b98b26",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-15T01:42:52Z",
+      "side": 1,
+      "message": "usb4 flow eventually will call this function too.",
+      "parentUuid": "e1d50b2d_e048606f",
       "range": {
         "startLine": 322,
         "startChar": 39,
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b887ebf_9f18b7f9",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-15T01:42:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8fb6971_7c5ccd28",
+      "revId": "36f30767600ea8aee6dc642a7fe0dec926b145ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39b03dfe_43de5477",
@@ -117,6 +225,30 @@
       "writtenOn": "2022-12-15T00:49:23Z",
       "side": 1,
       "message": "we should not send events for Port-1",
+      "range": {
+        "startLine": 45,
+        "startChar": 18,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "36f30767600ea8aee6dc642a7fe0dec926b145ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65fefe8c_073b605a",
+        "filename": "zephyr/program/intelrvp/mtlrvp/usbc.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-15T01:42:52Z",
+      "side": 1,
+      "message": "I tried to remove this usb-muxes, but it\u0027s required. For a clean way, we need to remove PD_C1 task. will address this in separate CL.",
+      "parentUuid": "39b03dfe_43de5477",
       "range": {
         "startLine": 45,
         "startChar": 18,
