@@ -57,10 +57,8 @@ CR50_LOAD_GEN_CMD = "while [[ -f %s ]]; do   %s; done &" % (
 class ChargenTestError(Exception):
     """Exception for Uart Stress Test Error"""
 
-    pass
 
-
-class UartSerial(object):
+class UartSerial:
     """Test Object for a single UART serial device
 
     Attributes:
@@ -92,18 +90,27 @@ class UartSerial(object):
                 "touch " + FLAG_FILENAME,  # Create a temp file
             ],
             "cleanup_cmd": [
+                "\x03",
                 "rm -f " + FLAG_FILENAME,  # Remove the temp file
                 "dmesg -E",  # Enable console message
                 "logout",  # Logout
             ],
             "end_of_input": LF,
         },
-        # EC
+        # EC legacy
         {
-            "prompt": "> ",
-            "device_type": "EC",
+            "prompt": ">",
+            "device_type": "EC(legacy)",
             "prepare_cmd": ["chan save", "chan 0"],  # Disable console message
             "cleanup_cmd": ["", "chan restore"],
+            "end_of_input": CRLF,
+        },
+        # EC Zephyr
+        {
+            "prompt": "ec:~$",
+            "device_type": "EC(Zephyr)",
+            "prepare_cmd": ["chan save", "chan 0"],  # Disable console message
+            "cleanup_cmd": ["x", "", "chan restore"],
             "end_of_input": CRLF,
         },
     )
@@ -209,8 +216,8 @@ class UartSerial(object):
 
             self.get_output()  # drain data
 
-            # Give a couple of line feeds, and capture the prompt text
-            self.run_command(["", ""])
+            # Send a couple of line feeds, and capture the prompt text.
+            self.run_command(["", ""], delay=1)
             prompt_txt = self.get_output()
 
             # Detect the device source: EC or AP?
@@ -228,11 +235,10 @@ class UartSerial(object):
                         "Check manually whether %s is available."
                         % (self.serial.port, prompt_txt, self.serial.port)
                     )
-                else:
-                    raise ChargenTestError(
-                        "%s: Got no input. Close any other connections"
-                        " to this port, and try it again." % self.serial.port
-                    )
+                raise ChargenTestError(
+                    "%s: Got no input. Close any other connections"
+                    " to this port, and try it again." % self.serial.port
+                )
 
             self.logger.info(
                 "Detected as %s UART", self.dev_prof["device_type"]
@@ -260,7 +266,7 @@ class UartSerial(object):
             chargen_cmd = "chargen 1 4"
             if self.usb_output:
                 chargen_cmd += " usb"
-            self.run_command([chargen_cmd])
+            self.run_command([chargen_cmd], delay=1)
             tmp_txt = self.get_output()
 
             # Check whether chargen command is available.
@@ -301,7 +307,7 @@ class UartSerial(object):
             # Run the command 'chargen', one time
             self.run_command([""])  # Give a line feed
             self.get_output()  # Drain the output
-            self.run_command(self.test_cli)
+            self.run_command(self.test_cli, delay=1)
             self.serial.readline()  # Drain the echoed command line.
 
             err_msg = "%s: Expected %r but got %s after %d char received"
@@ -311,17 +317,21 @@ class UartSerial(object):
             self.char_loss_occurrences = 0
             data_starve_count = 0
 
-            total_num_ch = (
-                self.num_ch_exp
-            )  # Expected number of characters in total
+            # Expected number of characters in total
+            total_num_ch = self.num_ch_exp
             ch_exp = CHARGEN_TXT[0]
-            ch_cap = (
-                "z"  # any character value is ok for loop initial condition.
-            )
+            # Any character value is ok for loop initial condition.
+            ch_cap = "z"
+
             while self.num_ch_cap < total_num_ch:
                 captured = self.get_output()
 
                 if captured:
+                    if self.num_ch_cap == 0:
+                        # Strip prompt on first read (if it's there)
+                        start = captured.find("0123")
+                        if start > 0:
+                            captured = captured[start:]
                     # There is some output data. Reset the data starvation count.
                     data_starve_count = 0
                 else:
@@ -333,27 +343,18 @@ class UartSerial(object):
 
                 for ch_cap in captured:
                     if ch_cap not in CHARGEN_TXT:
-                        # If it is not alpha-numeric, terminate the test.
-                        if ch_cap not in CRLF:
-                            # If it is neither a CR nor LF, then it is an error case.
-                            self.logger.error(
-                                "Whole captured characters: %r", captured
+                        self.logger.error(
+                            "Whole captured characters: %r", captured
+                        )
+                        raise ChargenTestError(
+                            err_msg
+                            % (
+                                "Broken char captured",
+                                ch_exp,
+                                hex(ord(ch_cap)),
+                                self.num_ch_cap,
                             )
-                            raise ChargenTestError(
-                                err_msg
-                                % (
-                                    "Broken char captured",
-                                    ch_exp,
-                                    hex(ord(ch_cap)),
-                                    self.num_ch_cap,
-                                )
-                            )
-
-                        # Set the loop termination condition true.
-                        total_num_ch = self.num_ch_cap
-
-                    if self.num_ch_cap >= total_num_ch:
-                        break
+                        )
 
                     if ch_exp != ch_cap:
                         # If it is alpha-numeric but not continuous, then some characters
@@ -378,6 +379,8 @@ class UartSerial(object):
                         total_num_ch -= idx_ch_cap - idx_ch_exp
 
                     self.num_ch_cap += 1
+                    if self.num_ch_cap >= total_num_ch:
+                        break
 
                     # Determine What character is expected next?
                     ch_exp = CHARGEN_TXT[
@@ -426,7 +429,7 @@ class UartSerial(object):
         return char_lost, self.num_ch_exp, self.char_loss_occurrences
 
 
-class ChargenTest(object):
+class ChargenTest:
     """UART stress tester
 
     Attributes:
