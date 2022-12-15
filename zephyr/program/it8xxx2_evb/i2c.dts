@@ -57,3 +57,17 @@
 		     &i2c4_data_gpe7_default>;
 	pinctrl-names = "default";
 };
+
+&i2c5 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	pinctrl-0 = <&i2c5_clk_gpa4_default
+			 &i2c5_data_gpa5_default>;
+	pinctrl-names = "default";
+	target-enable;
+	i2c5_target: target@52 {
+		compatible = "ite,target-i2c";
+		reg = <0x52>;
+		size = <0x100>;
+	};
+};
