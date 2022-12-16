@@ -118,6 +118,30 @@
       },
       "revId": "9a99de19aa6953c85e27b1c6d400b9eebee2a4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87766a45_f6931dcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 43
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-16T22:51:44Z",
+      "side": 1,
+      "message": "The new version worked also my gLinux laptop!\n\nFYI, the test is failing on my Icetower v3, but it has nothing to do with GoogleTest because I see the same issue also with the original version currently in `main`. I\u0027ll file a separate bug.",
+      "parentUuid": "57d577ad_a213b9c3",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "9a99de19aa6953c85e27b1c6d400b9eebee2a4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
