@@ -87,6 +87,30 @@
       },
       "revId": "7efbc3fbd90a346b4c47e84a839383295cd6e36f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ded529b_d135ee9f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-12-16T07:26:17Z",
+      "side": 1,
+      "message": "Got it. I will add some code to only affect when SVID is 0x0502 and avoid to change original flow of 0xFF01/ 0x8087.",
+      "parentUuid": "ad3017ad_a8baf888",
+      "range": {
+        "startLine": 1041,
+        "startChar": 0,
+        "endLine": 1052,
+        "endChar": 6
+      },
+      "revId": "7efbc3fbd90a346b4c47e84a839383295cd6e36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
