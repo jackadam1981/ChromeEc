@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d19ca8_3b11f3d4",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-12-16T08:36:17Z",
+      "side": 1,
+      "message": "build fail if not disable host_get_memmap:\nld.lld: error: undefined symbol: host_get_memmap\n\u003e\u003e\u003e referenced by temp_sensor.c:81 (/home/ec/chromiumos/src/platform/ec/common/temp_sensor.c:81)\n\u003e\u003e\u003e               temp_sensor.c.obj:(temp_sensor_init) in archive app/libapp.a\n\u003e\u003e\u003e referenced by temp_sensor.c:82 (/home/ec/chromiumos/src/platform/ec/common/temp_sensor.c:82)\n\u003e\u003e\u003e               temp_sensor.c.obj:(temp_sensor_init) in archive app/libapp.a\n\u003e\u003e\u003e referenced by temp_sensor.c:101 (/home/ec/chromiumos/src/platform/ec/common/temp_sensor.c:101)\n\u003e\u003e\u003e               temp_sensor.c.obj:(temp_sensor_init) in archive app/libapp.a\nclang-15: error: linker command failed with exit code 1 (use -v to see invocation)\nninja: build stopped: subcommand failed.",
+      "revId": "e73e0ecd068434831a1c0d3f21c25d6e659e7f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3458fe1_9b1a91cc",
+        "filename": "zephyr/program/herobrine/evoker/src/charger_override.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-12-16T08:36:17Z",
+      "side": 1,
+      "message": "how about this one? test can pass now\nlog:\n\nSUITE PASS - 100.00% [board_charger_override]: pass \u003d 1, fail \u003d 0, skip \u003d 0, total \u003d 1 duration \u003d 0.000 seconds\n - PASS - [board_charger_override.test_board_charger_profile_override] duration \u003d 0.000 seconds\n\n------ TESTSUITE SUMMARY END ------",
+      "revId": "e73e0ecd068434831a1c0d3f21c25d6e659e7f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
