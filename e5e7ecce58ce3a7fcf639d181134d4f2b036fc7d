@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f783de69_c98ac68a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-12-16T17:44:03Z",
+      "side": 1,
+      "message": "this needs some editing",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "e5e7ecce58ce3a7fcf639d181134d4f2b036fc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf655dd_5555fe35",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-12-16T17:44:03Z",
+      "side": 1,
+      "message": "the intention of this was to make sure that at least one of the two utilities is available, not that all of them were available.",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 48
+      },
+      "revId": "e5e7ecce58ce3a7fcf639d181134d4f2b036fc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69481af3_aac3ac9e",
         "filename": "util/flash_cr50.py",
         "patchSetId": 1
@@ -14,6 +60,47 @@
       "writtenOn": "2022-12-16T17:33:29Z",
       "side": 1,
       "message": "nit, this logic to figure out image type is more robust: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/cr50/util/brescue.sh;l\u003d99",
+      "revId": "e5e7ecce58ce3a7fcf639d181134d4f2b036fc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81adb0b1_218696a6",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-12-16T17:44:03Z",
+      "side": 1,
+      "message": "I agree, and it is simpler to use too.",
+      "parentUuid": "69481af3_aac3ac9e",
+      "revId": "e5e7ecce58ce3a7fcf639d181134d4f2b036fc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "865f4b52_f59cbd9d",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-12-16T17:44:03Z",
+      "side": 1,
+      "message": "why does it have to be a different command line option - this script should be able to tell which rescue invocation is required",
+      "range": {
+        "startLine": 842,
+        "startChar": 2,
+        "endLine": 845,
+        "endChar": 78
+      },
       "revId": "e5e7ecce58ce3a7fcf639d181134d4f2b036fc7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
