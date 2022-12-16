@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18c022d3_500f996b",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-16T22:15:16Z",
+      "side": 1,
+      "message": "It\u0027s hard to interpret call sites for a function that takes two `bool` params. What I would probably suggest here is to return something like\n```\nstruct trigger_check {\n  bool high_enabled;\n  bool low_enabled;\n};\n```\nand assert on the values of the fields in the test function.\n\nNit, since this is a test helper and will probably only be used in this file.",
+      "revId": "3bfdb0415022e5f010fd9383406db975bf074569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
