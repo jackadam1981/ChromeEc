@@ -16,6 +16,24 @@
       "message": "Here\u0027s where requested_current is coming down to 2000 in the next CL\u0027s test charge override test.",
       "revId": "5c230ded924c1fcd5b69781ab62dd3647cb48eff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d6f2d7a_86f7e3ac",
+        "filename": "zephyr/program/herobrine/evoker/src/charger_override.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-12-16T19:15:36Z",
+      "side": 1,
+      "message": "Bah nvm, saw the earlier comment.",
+      "parentUuid": "898164b5_d3e682fc",
+      "revId": "5c230ded924c1fcd5b69781ab62dd3647cb48eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
