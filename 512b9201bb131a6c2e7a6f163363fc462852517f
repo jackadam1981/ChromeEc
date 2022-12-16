@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c426ff8f_abd8cbd4",
+        "filename": "board/endeavour/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-12-16T21:40:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c3a7eda_e32a50f1",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 205,
+        "endChar": 47
+      },
+      "revId": "512b9201bb131a6c2e7a6f163363fc462852517f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c739efe_183c2dc3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-16T20:43:45Z",
       "side": 1,
       "message": "is this qualification still needed here and below?",
+      "range": {
+        "startLine": 830,
+        "startChar": 1,
+        "endLine": 830,
+        "endChar": 21
+      },
+      "revId": "512b9201bb131a6c2e7a6f163363fc462852517f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c07560_608998c4",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-12-16T21:40:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c739efe_183c2dc3",
       "range": {
         "startLine": 830,
         "startChar": 1,
