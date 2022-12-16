@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e4cc2b2_adb2156f",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-16T21:51:57Z",
+      "side": 1,
+      "message": "Does this mean it shouldn\u0027t do anything if there\u0027s an error, and there was no BIST command?",
+      "revId": "e42d702affbd517f5f2b7c2db29205ab92308bc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3adc0761_5d134f45",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-16T21:51:57Z",
+      "side": 1,
+      "message": "Out of scope since it was already like this, but it seems odd to have a struct with all `const` members. Wouldn\u0027t it be more natural to make the instance of this struct `const`?",
+      "revId": "e42d702affbd517f5f2b7c2db29205ab92308bc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
