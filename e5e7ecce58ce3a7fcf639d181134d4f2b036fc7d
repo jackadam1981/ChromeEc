@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69481af3_aac3ac9e",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-12-16T17:33:29Z",
+      "side": 1,
+      "message": "nit, this logic to figure out image type is more robust: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/cr50/util/brescue.sh;l\u003d99",
+      "revId": "e5e7ecce58ce3a7fcf639d181134d4f2b036fc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
