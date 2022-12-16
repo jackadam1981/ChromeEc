@@ -70,6 +70,30 @@
       },
       "revId": "9a99de19aa6953c85e27b1c6d400b9eebee2a4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ec6971_c7cb79d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 43
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-12-16T00:53:05Z",
+      "side": 1,
+      "message": "It does seem like it should be working. If you add a `-v` to the failing compile command (e.g., `armv7m-cros-eabi-clang++  -v`), it will print out the search path. When you do that, does it look correct?",
+      "parentUuid": "7c53ad3e_9aa1d94b",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "9a99de19aa6953c85e27b1c6d400b9eebee2a4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
