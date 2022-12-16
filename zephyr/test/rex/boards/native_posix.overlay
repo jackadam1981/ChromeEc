@@ -4,3 +4,24 @@
  */
 
 #include <board-overlays/native_posix.dts>
+#include <npcx_emul.dts>
+
+/ {
+        /*
+         * Keep these GPIOs in pin order.
+         * If you need to add one, make sure you increase
+         * ngpios in the gpio0 node further down.
+         */
+        named-gpios {
+                compatible = "named-gpios";
+
+                gpio_en_pp5000_fan: en_pp5000_fan {
+			gpios = <&gpio6 1 GPIO_OUTPUT_LOW>;
+			no-auto-init;
+		};
+	};
+};
+
+&gpio0 {
+        ngpios = <3>;
+};
