@@ -16,6 +16,29 @@
       "message": "Peter, are you OK with this?",
       "revId": "a67e42b9f3ed3ba29d3f3c6294093f3bd234d662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2889dbf3_6261e439",
+        "filename": "zephyr/program/nissa/craask/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-16T04:02:31Z",
+      "side": 1,
+      "message": "Since these are now board-specific, I\u0027d like to make the comment specify which. Something like:\n\n\u003e Both ports use a \u003cchip\u003e smart switch with CTL1..3 fixed high, for SDP2 or CDP only.\n\nSLGC55545: craask, joxer, nivviks, xivu, yaviks\nPI5USB2546: nereid\n\nI can\u0027t tell if pujjo uses either one, so we can leave the comment as-is for pujjo.",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "a67e42b9f3ed3ba29d3f3c6294093f3bd234d662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
