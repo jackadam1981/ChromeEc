@@ -33,6 +33,24 @@
       "message": "Hi Prabhakar, thanks!\nHi All, please skip this zip file, MCHP will upload all files on proper locations for review.",
       "revId": "b2600b7ad49cafa970900fc2a44b67b8d7f78c54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7848f0a6_25b50331",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2022-12-16T08:34:07Z",
+      "side": 1,
+      "message": "Hi all,\n\nUploaded the Flash_ec_script_Release02.zip package.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3939345/3/Flash_ec_script_Release02.zip\n\nIt contains the directory\n\n   mchp -\u003e python script to download the secondary loader and to program the ec image into the device\n    copy into the ~/chromiumos/src/platform/ec/\n    flash_ec -\u003e Before compile the mchp1727 mmodule\n\n     using the command ALLOW_CONFIG\u003d1 make BOARD\u003dadlrvpp_mchp1727 in the ~/chromiumos/src/platform/ec,\n     scripts to check the ec.bin in the ~/chromiumos/src/platform/ec/build/adrlvpp_mchp1727/ec.bin ,\n     Run our scripts to download the secondary loader and program the ecfw image into the flash/\n     sudo bash flash_ec\n\n   \n    Release02_successful_logs.txt -\u003e steps how it compiled and programmed into the internal flash\n   \n Note:\n Run the flash_ec in bash mode in the ~/chromiumos/src/platform/ec/util directory\n Command:\n sudo bash flash_ec --board\u003dmtlrvpp_mchp --image ../build/adlrvpp_mchp1727/ec.bin\n\nRegards,\nPrabhakar V",
+      "parentUuid": "e8c7b8ba_0d7ff242",
+      "revId": "b2600b7ad49cafa970900fc2a44b67b8d7f78c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
