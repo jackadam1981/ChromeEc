@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "705fa34e_3b999335",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-12-16T23:27:31Z",
+      "side": 1,
+      "message": "we\u0027ll have to move to the Cyrillic alphabet soon :)\n\nCould also use nonprintable characters here whcih would result in long option only.",
+      "range": {
+        "startLine": 523,
+        "startChar": 39,
+        "endLine": 523,
+        "endChar": 40
+      },
+      "revId": "418901ec5b6336c13fcd5fa0e60d2dc1f9af2dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b485306_e9399319",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3732,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-12-16T23:27:31Z",
+      "side": 1,
+      "message": "why does this have to be a structure? If we want to send something more sophisticated in this command later - then it would be the time to introduce a structure, not likely to happen though.",
+      "range": {
+        "startLine": 3726,
+        "startChar": 0,
+        "endLine": 3732,
+        "endChar": 0
+      },
+      "revId": "418901ec5b6336c13fcd5fa0e60d2dc1f9af2dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e3d93e4_0ef425ac",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4219,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-12-16T23:27:31Z",
+      "side": 1,
+      "message": "extra tab",
+      "range": {
+        "startLine": 4218,
+        "startChar": 0,
+        "endLine": 4219,
+        "endChar": 1
+      },
+      "revId": "418901ec5b6336c13fcd5fa0e60d2dc1f9af2dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
