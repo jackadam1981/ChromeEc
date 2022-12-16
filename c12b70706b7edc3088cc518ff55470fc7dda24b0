@@ -16,6 +16,24 @@
       "message": "check if { } are needed for all the ifs",
       "revId": "c12b70706b7edc3088cc518ff55470fc7dda24b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba9cec33_d8b1f12a",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-16T05:39:26Z",
+      "side": 1,
+      "message": "According to coding style guide, not use braces for single statement. I also checked with clang-format, there is some changes applied in other places.",
+      "parentUuid": "96b8bede_1818f113",
+      "revId": "c12b70706b7edc3088cc518ff55470fc7dda24b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
