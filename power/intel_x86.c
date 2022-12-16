@@ -189,6 +189,9 @@ __override void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 	 * wake mask to pretend it did, so that the hang detect event wakes the
 	 * system.
 	 */
+	CPRINTS("Warning: kaedbg sleep hang!!!");
+	
+	return;
 	if (power_get_state() == POWER_S0) {
 		host_event_t sleep_wake_mask;
 
