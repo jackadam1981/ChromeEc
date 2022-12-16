@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71df8dd8_3c044eac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-16T19:32:08Z",
+      "side": 1,
+      "message": "Hi Abe, I made a few changes. Most significant ones are:\n\n- Handle FOREIGN_OBJECT\n- Remove CONFIG_PCHG_RF_CHARGE\n\nOther changes are minor. Ptal.",
+      "revId": "e8ca440752f22bf41ff3ba02c7d4d9c3de1f8887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
