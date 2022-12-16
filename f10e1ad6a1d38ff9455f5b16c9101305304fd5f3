@@ -74,6 +74,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e84d6034_a72f2f2e",
+        "filename": "zephyr/test/herobrine/boards/native_posix.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-12-16T21:43:09Z",
+      "side": 1,
+      "message": "Actually, the adc emulator seems to be working as intended. This should be:\n\n`io-channels \u003d \u003c\u0026adc0 0\u003e;` since we only have a single channel.",
+      "revId": "f10e1ad6a1d38ff9455f5b16c9101305304fd5f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "215d468c_3145e6e9",
         "filename": "zephyr/test/herobrine/src/board_charger_override.c",
         "patchSetId": 1
