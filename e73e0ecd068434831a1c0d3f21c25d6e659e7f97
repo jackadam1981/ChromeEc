@@ -33,6 +33,24 @@
       "message": "how about this one? test can pass now\nlog:\n\nSUITE PASS - 100.00% [board_charger_override]: pass \u003d 1, fail \u003d 0, skip \u003d 0, total \u003d 1 duration \u003d 0.000 seconds\n - PASS - [board_charger_override.test_board_charger_profile_override] duration \u003d 0.000 seconds\n\n------ TESTSUITE SUMMARY END ------",
       "revId": "e73e0ecd068434831a1c0d3f21c25d6e659e7f97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "860af51f_0a3b0725",
+        "filename": "zephyr/program/herobrine/evoker/src/charger_override.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-12-16T19:34:27Z",
+      "side": 1,
+      "message": "Since this is the function being tested, we should modify it.",
+      "parentUuid": "e3458fe1_9b1a91cc",
+      "revId": "e73e0ecd068434831a1c0d3f21c25d6e659e7f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
