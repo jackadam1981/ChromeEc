@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ae33875_5074ac8b",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 7009,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-16T20:00:48Z",
+      "side": 1,
+      "message": "nit: This seems just for a convenience. Can we define it per (FP) board? There is no logical neccessity: FPMCU -\u003e SPI mutability, right?",
+      "range": {
+        "startLine": 7009,
+        "startChar": 0,
+        "endLine": 7009,
+        "endChar": 38
+      },
+      "revId": "1c39feea2055d9db50632d4a8f223ebad59480fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
