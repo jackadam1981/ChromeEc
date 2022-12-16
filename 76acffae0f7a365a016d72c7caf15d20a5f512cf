@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8af7612_c98687ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-16T22:18:10Z",
+      "side": 1,
+      "message": "Per our previous conversation, this CL adds an explicit request to exist from host tests rather than simply killing it.",
+      "revId": "76acffae0f7a365a016d72c7caf15d20a5f512cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
