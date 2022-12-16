@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc98adc_d3077dec",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-16T20:22:13Z",
+      "side": 1,
+      "message": "Can you give it a different name (e.g. control_data/len)? txdata is a bit misleading since it accepts specifically instruction, address, and alternate.",
+      "range": {
+        "startLine": 265,
+        "startChar": 33,
+        "endLine": 265,
+        "endChar": 54
+      },
+      "revId": "60f4f7f4c1f3df308307667bbffb4d8d22976401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8b593b7_03bda036",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-16T20:22:13Z",
+      "side": 1,
+      "message": "nit: rv \u003d\u003d EC_SUCCESS is a bit more readable, I believe.",
+      "range": {
+        "startLine": 424,
+        "startChar": 7,
+        "endLine": 424,
+        "endChar": 9
+      },
+      "revId": "60f4f7f4c1f3df308307667bbffb4d8d22976401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef1fa706_7dfa94c4",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-16T20:22:13Z",
+      "side": 1,
+      "message": "Do we need timeout here? It\u0027s probably not fair to brick the entire board because of this loop.",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 3
+      },
+      "revId": "60f4f7f4c1f3df308307667bbffb4d8d22976401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
