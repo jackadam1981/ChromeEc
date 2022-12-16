@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03161b3_306e509c",
+        "filename": "zephyr/program/nissa/xivur/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-12-16T03:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6383f0f5_ef371d20",
+      "range": {
+        "startLine": 32,
+        "startChar": 19,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "457f20fca137cc3deb13737cc2c2f681cc1b6024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0f47c0f_6341d2dc",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-12-16T03:18:23Z",
       "side": 1,
       "message": "You should be able to remove the .._POWER_SMART.. entries.\nThese will not be on by default.",
+      "revId": "457f20fca137cc3deb13737cc2c2f681cc1b6024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54eb8b90_95c308b7",
+        "filename": "zephyr/program/nissa/xivur/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-12-16T03:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f47c0f_6341d2dc",
       "revId": "457f20fca137cc3deb13737cc2c2f681cc1b6024",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
