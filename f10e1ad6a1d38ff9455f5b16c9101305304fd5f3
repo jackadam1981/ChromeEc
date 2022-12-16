@@ -70,6 +70,29 @@
       "parentUuid": "29c5dd8c_f7b04dcc",
       "revId": "f10e1ad6a1d38ff9455f5b16c9101305304fd5f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "215d468c_3145e6e9",
+        "filename": "zephyr/test/herobrine/src/board_charger_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-12-16T19:36:06Z",
+      "side": 1,
+      "message": "I think something is wrong here or in the devicetree but I\u0027m still investigating.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 24
+      },
+      "revId": "f10e1ad6a1d38ff9455f5b16c9101305304fd5f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
