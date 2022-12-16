@@ -253,6 +253,14 @@ static void board_handle_hard_sleep_hang(void)
 	chipset_reset(CHIPSET_RESET_HANG_REBOOT);
 }
 
+static void fake_rtc_alarm(void);
+DECLARE_DEFERRED(fake_rtc_alarm);
+static void fake_rtc_alarm(void)
+{
+	ccprintf("[CS] %s: Firing fake RTC alarm (EC_HOST_EVENT_RTC)\n", __func__);
+	host_set_single_event(EC_HOST_EVENT_RTC);
+}
+
 void power_sleep_hang_recovery(enum sleep_hang_type hang_type)
 {
 	soft_sleep_hang_count += 1;
@@ -262,8 +270,13 @@ void power_sleep_hang_recovery(enum sleep_hang_type hang_type)
 
 	if (hang_type == SLEEP_HANG_S0IX_SUSPEND)
 		ccprints("S0ix suspend sleep hang detected!");
-	else if (hang_type == SLEEP_HANG_S0IX_RESUME)
-		ccprints("S0ix resume sleep hang detected!");
+	else if (hang_type == SLEEP_HANG_S0IX_RESUME) {
+		ccprints("S0ix resume sleep hang detected!, don't wake up system for debug");
+		ccprintf("kaedbg %s: Cancelling fake RTC alarm for debug\n", __func__);
+
+		hook_call_deferred(&fake_rtc_alarm_data, -1);
+		return;
+	}
 
 	ccprints("Consecutive sleep hang count: soft=%d hard=%d",
 		 soft_sleep_hang_count, hard_sleep_hang_count);
@@ -343,6 +356,59 @@ void sleep_resume_transition(void)
 	}
 }
 
+
+/**
+ * Test the RTC alarm by setting an interrupt on RTC match.
+ */
+static int console_command_fake_rtc_alarm(int argc, const char **argv)
+{
+	int s = 1;
+	char *e;
+
+	if (argc > 1) {
+		s = strtoi(argv[1], &e, 10);
+		if (*e)
+			return EC_ERROR_PARAM1;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	if (s < 1) {
+		ccprintf("[CS] %s: Cancelling fake RTC alarm\n", __func__);
+
+
+		hook_call_deferred(&fake_rtc_alarm_data, -1);
+	} else {
+		ccprintf("[CS] %s: Setting fake RTC alarm to %ds\n", __func__, s);
+
+		hook_call_deferred(&fake_rtc_alarm_data,
+				   10* 1000);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fake_rtc_alarm, console_command_fake_rtc_alarm,
+			"[seconds]", "Fake RTC alarm");
+
+static enum ec_status host_command_fake_rtc_alarm(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_rtc *p = args->params;
+
+	if (p->time < 1) {
+		ccprintf("[CS] %s: Cancelling fake RTC alarm\n", __func__);
+
+		hook_call_deferred(&fake_rtc_alarm_data, -1);
+	} else {
+		ccprintf("[CS] %s: Setting fake RTC alarm to %ds\n", __func__, p->time);
+		hook_call_deferred(&fake_rtc_alarm_data,
+				   p->time * 1000 * 1000);
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_RTC_SET_ALARM, host_command_fake_rtc_alarm,
+		     EC_VER_MASK(0));
+
 static void sleep_transition_timeout(void)
 {
 	/* Mark the timeout. */
@@ -379,6 +445,8 @@ void sleep_start_suspend(struct host_sleep_event_context *ctx)
 		return;
 	}
 
+	timeout = 4500;
+	ccprintf("[CS] %s: kaedbg timeout 4.5s \n", __func__);
 	sleep_signal_timeout = timeout;
 	timeout_hang_type = SLEEP_HANG_S0IX_SUSPEND;
 	hook_call_deferred(&sleep_transition_timeout_data,
