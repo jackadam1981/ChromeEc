@@ -63,6 +63,30 @@
       },
       "revId": "7efbc3fbd90a346b4c47e84a839383295cd6e36f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad3017ad_a8baf888",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2022-12-16T07:18:15Z",
+      "side": 1,
+      "message": "Then you need to take different behavior depending on whether the SVID of the mode you are evaluating is 0xFF01 (DP Alt mode), 0x8087 (Thunderbolt), or 0x0502 (Acer proprietary button mode).\n\nYour code regresses a serious old bug.",
+      "parentUuid": "93ef3bef_8628180d",
+      "range": {
+        "startLine": 1041,
+        "startChar": 0,
+        "endLine": 1052,
+        "endChar": 6
+      },
+      "revId": "7efbc3fbd90a346b4c47e84a839383295cd6e36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
