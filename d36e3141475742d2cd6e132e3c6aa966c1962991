@@ -16,6 +16,24 @@
       "message": "Hi Derek,\n\nHave you considered extending EC_CMD_REBOOT_EC? EC_REBOOT_HIBERNATE_CLEAR_AP_OFF or something similar may work for you?",
       "revId": "d36e3141475742d2cd6e132e3c6aa966c1962991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "442fb609_5e2def03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-12-17T03:46:16Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\nLet me try if I understanding your question correctly.  \n\nThe issue is when AP boots up after Cr50 firmware update and reboot, coreboot will reset Cr50 to let Cr50 to pick the new firmware, before triggering Cr50 reset, coreboot power-off the system and expects system will boot automatically after Cr50 reset. EC set AP_IDLE flag in shutdown hook when system is shutdown by coreboot. It cause the issue in that users need to press power button to power on the system after Cr50 firmware update. I don\u0027t find any way that EC_CMD_REBOOT_EC or EC_REBOOT_HIBERNATE_CLEAR_AP_OFF can work, any thoughts? \n\nCurrently I am trying to fix the issue with below coreboot CLs:\nhttps://review.coreboot.org/c/coreboot/+/70772\nhttps://review.coreboot.org/c/coreboot/+/70773",
+      "parentUuid": "df6b2d40_899740d0",
+      "revId": "d36e3141475742d2cd6e132e3c6aa966c1962991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
