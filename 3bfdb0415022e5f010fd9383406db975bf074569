@@ -52,6 +52,24 @@
       "parentUuid": "821ff63b_f4d285c4",
       "revId": "3bfdb0415022e5f010fd9383406db975bf074569",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "586ac2a7_f64d79dc",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-17T00:43:24Z",
+      "side": 1,
+      "message": "I actually meant to take no arguments and return that struct with the results of the gets. But this works too.",
+      "parentUuid": "b1534798_6d914702",
+      "revId": "3bfdb0415022e5f010fd9383406db975bf074569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
