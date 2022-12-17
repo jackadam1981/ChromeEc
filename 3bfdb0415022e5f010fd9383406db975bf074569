@@ -34,6 +34,24 @@
       "parentUuid": "18c022d3_500f996b",
       "revId": "3bfdb0415022e5f010fd9383406db975bf074569",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1534798_6d914702",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-17T00:09:22Z",
+      "side": 1,
+      "message": "Changed to the enum... I think it\u0027s a lot better!",
+      "parentUuid": "821ff63b_f4d285c4",
+      "revId": "3bfdb0415022e5f010fd9383406db975bf074569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
