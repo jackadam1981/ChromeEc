@@ -160,6 +160,9 @@ static void board_hdmi_handler(struct ap_power_ev_callback *cb,
 
 static void tasks_init_deferred(void)
 {
+	if (tasks_inited)
+		return ;
+
 	tasks_inited = true;
 	if (corsola_get_db_type() == CORSOLA_DB_HDMI) {
 		/* If the HDMI port is plugged on-boot, and the usb_mux won't
@@ -169,6 +172,7 @@ static void tasks_init_deferred(void)
 		ps185_hdmi_hpd_mux_set();
 	}
 }
+DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, tasks_init_deferred, HOOK_PRIO_PRE_DEFAULT);
 DECLARE_DEFERRED(tasks_init_deferred);
 
 static void baseboard_x_ec_gpio2_init(void)
@@ -215,8 +219,11 @@ static void baseboard_x_ec_gpio2_init(void)
 	 * After C1 port tasks finished, we intentionally increase the port
 	 * count by 1 for usb_mux to access the C1 virtual mux for notifying
 	 * mainlink direction.
+	 * The current delay is set to 1 second. cros-ec-typec module will
+	 * be getting the exact type-c port count, which is not what we need
+	 * that emulating the HDMI MUX config on the existing type-c stack.
 	 */
-	hook_call_deferred(&tasks_init_deferred_data, 2 * SECOND);
+	hook_call_deferred(&tasks_init_deferred_data, SECOND);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_x_ec_gpio2_init, HOOK_PRIO_DEFAULT);
 
