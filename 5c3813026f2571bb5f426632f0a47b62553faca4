@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed6dc099_57406001",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-18T23:22:10Z",
+      "side": 1,
+      "message": "This won\u0027t work correctly if blocks smaller than 512 bits are used at any point: those short blocks will be skipped. This needs to fill `w` starting from `w_index` and run `SHA256_chip_calculation` when `w` is full instead of assuming input data always arrives as whole hash blocks.",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "5c3813026f2571bb5f426632f0a47b62553faca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
