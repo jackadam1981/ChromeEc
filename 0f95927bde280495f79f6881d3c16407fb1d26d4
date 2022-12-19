@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42699e22_96dda819",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-12-19T20:25:34Z",
+      "side": 1,
+      "message": "Seems reasonable to me.  Deferring to EC group for approval.",
+      "revId": "0f95927bde280495f79f6881d3c16407fb1d26d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd13f725_0e0880ca",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-12-19T20:25:34Z",
+      "side": 1,
+      "message": "I assume that this 10ms delay is acceptable for boot time reasons.",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "0f95927bde280495f79f6881d3c16407fb1d26d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
