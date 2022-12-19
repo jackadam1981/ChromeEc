@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe27f7f_3850ccd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-19T17:28:46Z",
+      "side": 1,
+      "message": "For example, we can add a test in zephyr/test/drivers/host_cmd/src/battery_cut_off.c and check whether the second call of EC_CMD_BATTERY_CUT_OFF fails or not.",
+      "parentUuid": "63f5da99_b7f227e4",
+      "revId": "65ec60e48c436b2c130a2cb0f8296b3e35ca6573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03f1b318_1bd0bde8",
