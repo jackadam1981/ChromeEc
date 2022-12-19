@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf2afea_77595c48",
+        "filename": "zephyr/program/herobrine/evoker/src/charger_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-12-19T06:08:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66519bf6_1d2716ae",
+      "revId": "f10e1ad6a1d38ff9455f5b16c9101305304fd5f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e84d6034_a72f2f2e",
@@ -89,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f1fdc2f_16aefa3c",
+        "filename": "zephyr/test/herobrine/boards/native_posix.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-12-19T06:08:01Z",
+      "side": 1,
+      "message": "It is working now.",
+      "parentUuid": "e84d6034_a72f2f2e",
+      "revId": "f10e1ad6a1d38ff9455f5b16c9101305304fd5f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "215d468c_3145e6e9",
@@ -102,6 +138,30 @@
       "writtenOn": "2022-12-16T19:36:06Z",
       "side": 1,
       "message": "I think something is wrong here or in the devicetree but I\u0027m still investigating.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 24
+      },
+      "revId": "f10e1ad6a1d38ff9455f5b16c9101305304fd5f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e54766d1_cdc574f7",
+        "filename": "zephyr/test/herobrine/src/board_charger_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-12-19T06:08:01Z",
+      "side": 1,
+      "message": "My adc channel setting is wrong, it is fixed now.",
+      "parentUuid": "215d468c_3145e6e9",
       "range": {
         "startLine": 45,
         "startChar": 0,
