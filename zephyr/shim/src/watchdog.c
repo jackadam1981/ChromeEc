@@ -14,7 +14,48 @@
 
 LOG_MODULE_REGISTER(watchdog_shim, LOG_LEVEL_ERR);
 
-#define wdt DEVICE_DT_GET(DT_CHOSEN(cros_ec_watchdog))
+struct watchdog_info {
+	const struct device *wdt_dev;
+	struct wdt_timeout_cfg config;
+};
+
+static void wdt_warning_handler(const struct device *wdt_dev, int channel_id);
+
+const struct watchdog_info wdt_info[] = {
+	{
+		.wdt_dev = DEVICE_DT_GET(DT_CHOSEN(cros_ec_watchdog)),
+		.config = {
+#if DT_NODE_HAS_COMPAT(DT_CHOSEN(cros_ec_watchdog), st_stm32_watchdog)
+			.flags = WDT_FLAG_RESET_SOC,
+			.window.min = 0U,
+			.window.max = CONFIG_WATCHDOG_PERIOD_MS,
+			.callback = NULL,
+#else
+			.flags = WDT_FLAG_RESET_SOC,
+			.window.min = 0U,
+			.window.max = CONFIG_AUX_TIMER_PERIOD_MS,
+			.callback = wdt_warning_handler,
+#endif
+		},
+	},
+#ifdef CONFIG_PLATFORM_EC_WATCHDOG_HELPER
+	{
+		.wdt_dev = DEVICE_DT_GET(DT_CHOSEN(cros_ec_watchdog_helper)),
+		.config = {
+			.flags = 0U,
+			.window.min = 0U,
+			.window.max = CONFIG_AUX_TIMER_PERIOD_MS,
+			.callback = wdt_warning_handler,
+		},
+	},
+#endif
+};
+
+/* Array to keep channel used to implement watchdog */
+int wdt_chan[ARRAY_SIZE(wdt_info)];
+
+/* Array to keep information if watchdog is enabled */
+bool wdt_enabled[ARRAY_SIZE(wdt_info)];
 
 #ifdef TEST_BUILD
 extern bool wdt_warning_triggered;
@@ -39,56 +80,87 @@ static void wdt_warning_handler(const struct device *wdt_dev, int channel_id)
 					  int channel_id);
 	cros_chip_wdt_handler(wdt_dev, channel_id);
 #endif
+
+	/*
+	 * Watchdog is disabled after calling handler. Mark it as disabled so we
+	 * can re-enable it on next reload.
+	 */
+	for (int i = 0; i < ARRAY_SIZE(wdt_info); i++) {
+		if (wdt_info[i].wdt_dev == wdt_dev) {
+			wdt_enabled[i] = false;
+			break;
+		}
+	}
 }
 
-int watchdog_init(void)
+static int watchdog_run(const struct device *wdt_dev,
+			const struct wdt_timeout_cfg *config)
 {
-	int err;
-	struct wdt_timeout_cfg wdt_config;
+	int chan, err;
 
-	if (!device_is_ready(wdt)) {
-		LOG_ERR("Error: device %s is not ready", wdt->name);
+	if (!device_is_ready(wdt_dev)) {
+		LOG_ERR("Error: device %s is not ready", wdt_dev->name);
 		return -1;
 	}
 
-	/* Reset SoC when watchdog timer expires. */
-	wdt_config.flags = WDT_FLAG_RESET_SOC;
-
-	/*
-	 * Set the Warning timer as CONFIG_AUX_TIMER_PERIOD_MS.
-	 * Then the watchdog reset time = CONFIG_WATCHDOG_PERIOD_MS.
-	 */
-	wdt_config.window.min = 0U;
-	wdt_config.window.max = CONFIG_AUX_TIMER_PERIOD_MS;
-	wdt_config.callback = wdt_warning_handler;
-
-	err = wdt_install_timeout(wdt, &wdt_config);
+	chan = wdt_install_timeout(wdt_dev, config);
 
 	/* If watchdog is running, reinstall it. */
-	if (err == -EBUSY) {
-		wdt_disable(wdt);
-		err = wdt_install_timeout(wdt, &wdt_config);
+	if (chan == -EBUSY) {
+		wdt_disable(wdt_dev);
+		chan = wdt_install_timeout(wdt_dev, config);
 	}
 
-	if (err < 0) {
+	if (chan < 0) {
 		LOG_ERR("Watchdog install error");
-		return err;
+		return chan;
 	}
 
-	err = wdt_setup(wdt, 0);
+	err = wdt_setup(wdt_dev, 0);
 	if (err < 0) {
 		LOG_ERR("Watchdog setup error");
 		return err;
 	}
 
-	return EC_SUCCESS;
+	return chan;
+}
+
+int watchdog_init(void)
+{
+	int err = EC_SUCCESS;
+
+	for (int i = 0; i < ARRAY_SIZE(wdt_info); i++) {
+		wdt_chan[i] =
+			watchdog_run(wdt_info[i].wdt_dev, &wdt_info[i].config);
+		if (wdt_chan[i] >= 0)
+			wdt_enabled[i] = true;
+		else {
+			wdt_enabled[i] = false;
+			err = wdt_chan[i];
+		}
+	}
+
+	return err;
 }
 
 void watchdog_reload(void)
 {
-	if (!device_is_ready(wdt))
-		LOG_ERR("Error: device %s is not ready", wdt->name);
+	for (int i = 0; i < ARRAY_SIZE(wdt_info); i++) {
+		if (!device_is_ready(wdt_info[i].wdt_dev)) {
+			LOG_ERR("Error: device %s is not ready",
+				wdt_info[i].wdt_dev->name);
+			continue;
+		}
 
-	wdt_feed(wdt, 0);
+		if (wdt_chan[i] < 0)
+			continue;
+
+		if (!wdt_enabled[i]) {
+			wdt_setup(wdt_info[i].wdt_dev, 0);
+			wdt_enabled[i] = true;
+		}
+
+		wdt_feed(wdt_info[i].wdt_dev, wdt_chan[i]);
+	}
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
