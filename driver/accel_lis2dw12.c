@@ -544,11 +544,21 @@ err_unlock:
 	return ret;
 }
 
+#ifdef CONFIG_BODY_DETECTION
+int lis2dw12_get_resolution(const struct motion_sensor_t *s)
+{
+	/* Due to raw data already doing the normalize */
+	return 16;
+}
+#endif
+
 const struct accelgyro_drv lis2dw12_drv = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,
+#ifndef CONFIG_BODY_DETECTION
 	.get_resolution = st_get_resolution,
+#endif
 	.set_data_rate = set_data_rate,
 	.get_data_rate = st_get_data_rate,
 	.set_offset = st_set_offset,
@@ -558,5 +568,6 @@ const struct accelgyro_drv lis2dw12_drv = {
 #endif /* ACCEL_LIS2DW12_INT_ENABLE */
 #ifdef CONFIG_BODY_DETECTION
 	.get_rms_noise = get_rms_noise,
+	.get_resolution = lis2dw12_get_resolution,
 #endif
 };
