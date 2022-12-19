@@ -63,7 +63,7 @@ static uint32_t reset_flags; /* EC_RESET_FLAG_* */
 static int jumped_to_image;
 static int disable_jump; /* Disable ALL jumps if system is locked */
 static int force_locked; /* Force system locked even if WP isn't enabled */
-static enum ec_reboot_cmd reboot_at_shutdown;
+static struct ec_params_reboot_ec reboot_at_shutdown;
 
 static enum sysinfo_flags system_info_flags;
 
@@ -964,10 +964,18 @@ int system_is_manual_recovery(void)
 /**
  * Handle a pending reboot command.
  */
-static int handle_pending_reboot(enum ec_reboot_cmd cmd)
+static int handle_pending_reboot(struct ec_params_reboot_ec p)
 {
-	switch (cmd) {
+	if (IS_ENABLED(CONFIG_POWER_BUTTON_INIT_IDLE) &&
+	    (p.flags & EC_REBOOT_FLAG_CLEAR_AP_IDLE)) {
+		CPRINTS("Clearing AP_IDLE");
+		chip_save_reset_flags(chip_read_reset_flags() &
+				      ~EC_RESET_FLAG_AP_IDLE);
+	}
+
+	switch (p.cmd) {
 	case EC_REBOOT_CANCEL:
+	case EC_REBOOT_NO_OP:
 		return EC_SUCCESS;
 	case EC_REBOOT_JUMP_RO:
 		return system_run_image_copy_with_flags(
@@ -1001,7 +1009,7 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 			board_reset_pd_mcu();
 
 		cflush();
-		if (cmd == EC_REBOOT_COLD_AP_OFF)
+		if (p.cmd == EC_REBOOT_COLD_AP_OFF)
 			system_reset(SYSTEM_RESET_HARD |
 				     SYSTEM_RESET_LEAVE_AP_OFF);
 		else
@@ -1011,16 +1019,6 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	case EC_REBOOT_DISABLE_JUMP:
 		system_disable_jump();
 		return EC_SUCCESS;
-	case EC_REBOOT_HIBERNATE_CLEAR_AP_OFF:
-		if (!IS_ENABLED(CONFIG_HIBERNATE))
-			return EC_ERROR_INVAL;
-
-		if (IS_ENABLED(CONFIG_POWER_BUTTON_INIT_IDLE)) {
-			CPRINTS("Clearing AP_IDLE");
-			chip_save_reset_flags(chip_read_reset_flags() &
-					      ~EC_RESET_FLAG_AP_IDLE);
-		}
-		__fallthrough;
 	case EC_REBOOT_HIBERNATE:
 		if (!IS_ENABLED(CONFIG_HIBERNATE))
 			return EC_ERROR_INVAL;
@@ -1069,7 +1067,7 @@ test_mockable void system_enter_hibernate(uint32_t seconds,
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		system_hibernate(seconds, microseconds);
 	else {
-		reboot_at_shutdown = EC_REBOOT_HIBERNATE;
+		reboot_at_shutdown.cmd = EC_REBOOT_HIBERNATE;
 		hibernate_seconds = seconds;
 		hibernate_microseconds = microseconds;
 
@@ -1083,8 +1081,8 @@ test_mockable void system_enter_hibernate(uint32_t seconds,
 static void system_common_shutdown(void)
 {
 	system_exit_manual_recovery();
-	if (reboot_at_shutdown)
-		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown);
+	if (reboot_at_shutdown.cmd)
+		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown.cmd);
 	handle_pending_reboot(reboot_at_shutdown);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, system_common_shutdown,
@@ -1113,7 +1111,7 @@ static int sysinfo(struct ec_response_sysinfo *info)
 			system_info_flags |= SYSTEM_JUMP_ENABLED;
 	}
 
-	if (reboot_at_shutdown)
+	if (reboot_at_shutdown.cmd)
 		system_info_flags |= SYSTEM_REBOOT_AT_SHUTDOWN;
 
 	info->flags = system_info_flags;
@@ -1412,7 +1410,7 @@ static int command_reboot(int argc, const char **argv)
 		} else if (!strcasecmp(argv[i], "ro")) {
 			flags |= SYSTEM_RESET_STAY_IN_RO;
 		} else if (!strcasecmp(argv[i], "cancel")) {
-			reboot_at_shutdown = EC_REBOOT_CANCEL;
+			reboot_at_shutdown.cmd = EC_REBOOT_CANCEL;
 			return EC_SUCCESS;
 		} else if (!strcasecmp(argv[i], "preserve")) {
 			flags |= SYSTEM_RESET_PRESERVE_FLAGS;
@@ -1697,7 +1695,8 @@ static enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 
 	if (p.cmd == EC_REBOOT_CANCEL) {
 		/* Cancel pending reboot */
-		reboot_at_shutdown = EC_REBOOT_CANCEL;
+		reboot_at_shutdown.cmd = EC_REBOOT_CANCEL;
+		reboot_at_shutdown.flags = 0;
 		return EC_RES_SUCCESS;
 	}
 
@@ -1711,7 +1710,8 @@ static enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 	}
 	if (p.flags & EC_REBOOT_FLAG_ON_AP_SHUTDOWN) {
 		/* Store request for processing at chipset shutdown */
-		reboot_at_shutdown = p.cmd;
+		p.flags &= ~(EC_REBOOT_FLAG_ON_AP_SHUTDOWN);
+		reboot_at_shutdown = p;
 		return EC_RES_SUCCESS;
 	}
 
@@ -1726,7 +1726,7 @@ static enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 #endif
 
 	CPRINTS("Executing host reboot command %d", p.cmd);
-	switch (handle_pending_reboot(p.cmd)) {
+	switch (handle_pending_reboot(p)) {
 	case EC_SUCCESS:
 		return EC_RES_SUCCESS;
 	case EC_ERROR_INVAL:
@@ -1832,9 +1832,9 @@ __test_only void system_common_reset_state(void)
 
 __test_only enum ec_reboot_cmd system_common_get_reset_reboot_at_shutdown(void)
 {
-	int ret = reboot_at_shutdown;
+	int ret = reboot_at_shutdown.cmd;
 
-	reboot_at_shutdown = 0;
+	reboot_at_shutdown.cmd = EC_REBOOT_CANCEL;
 
 	return ret;
 }
