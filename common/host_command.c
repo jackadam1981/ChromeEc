@@ -432,6 +432,50 @@ static void host_command_init(void)
 #endif
 }
 
+struct latency {
+	int command;
+	/* Latency from eSPI interrupt to data read completely from peripheral */
+	uint32_t lpc_read_us;
+	/* Latency from peripheral read to task wakeup */
+	uint32_t wakeup_us;
+	/* Task wakeup to processing complete */
+	uint32_t processing_us;
+	/* Processing complete to LPC write complete */
+	uint32_t responding_us;
+};
+
+static struct latency hostcmd_latency[64];
+static int last_latency;
+
+/* Timestamp of host write interrupt */
+uint32_t hclatency_curr_interrupt_usec;
+/* Timestamp of espi_read_lpc_request completion */
+uint32_t hclatency_read_lpc_request_done_usec;
+
+static void record_latency(int command, uint32_t start, uint32_t responding) {
+	hostcmd_latency[last_latency++ % ARRAY_SIZE(hostcmd_latency)] = (struct latency){
+		.command = command,
+		.lpc_read_us = __atomic_load_n(&hclatency_read_lpc_request_done_usec, __ATOMIC_RELAXED)
+			       - __atomic_load_n(&hclatency_curr_interrupt_usec, __ATOMIC_RELAXED),
+		.wakeup_us = start - __atomic_load_n(&hclatency_read_lpc_request_done_usec, __ATOMIC_RELAXED),
+		.processing_us = responding - start,
+		.responding_us = get_time().val - responding,
+	};
+}
+
+static int console_hclatency(int argc, const char **argv) {
+	for (int i = 0; i < ARRAY_SIZE(hostcmd_latency); i++) {
+		cprints(CC_SYSTEM, "%04x %08" PRIu32 " %08" PRIu32 " %08" PRIu32 " %08" PRIu32,
+			hostcmd_latency[i].command,
+			hostcmd_latency[i].lpc_read_us,
+			hostcmd_latency[i].wakeup_us,
+			hostcmd_latency[i].processing_us,
+			hostcmd_latency[i].responding_us);
+	}
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(hclatency, console_hclatency, NULL, "Show recorded host command latency");
+
 void host_command_task(void *u)
 {
 	timestamp_t t0, t1, t_recess;
@@ -449,7 +493,23 @@ void host_command_task(void *u)
 		if ((evt & TASK_EVENT_CMD_PENDING) && pending_args) {
 			pending_args->result =
 				host_command_process(pending_args);
+			uint32_t responding = get_time().val;
 			host_send_response(pending_args);
+
+			switch (pending_args->command) {
+			case EC_CMD_HOST_EVENT:
+			case EC_CMD_VSTORE_INFO:
+			case EC_CMD_VSTORE_WRITE:
+			case EC_CMD_USB_PD_PORTS:
+			case EC_CMD_GET_CMD_VERSIONS:
+			case EC_CMD_GET_PD_PORT_CAPS:
+			case EC_CMD_CONFIG_POWER_BUTTON:
+			case EC_CMD_GET_VERSION:
+			case EC_CMD_VBOOT_HASH:
+			case EC_CMD_FLASH_PROTECT:
+			case EC_REBOOT_DISABLE_JUMP:
+				record_latency(pending_args->command, t0.val, responding);
+			}
 		}
 
 		/* reset rate limiting if we have slept enough */

@@ -483,8 +483,10 @@ static void lpc_send_response_packet(struct host_packet *pkt)
 static void handle_host_write(uint32_t data)
 {
 	uint32_t shm_mem_host_cmd;
+	extern uint32_t hclatency_curr_interrupt_usec, hclatency_read_lpc_request_done_usec;
 	int rv;
 
+	__atomic_store_n(&hclatency_curr_interrupt_usec, get_time().val, __ATOMIC_RELAXED);
 	if (EC_COMMAND_PROTOCOL_3 != (data & 0xff)) {
 		LOG_ERR("Don't support this version of the host command");
 		/* TODO:(b/175217186): error response for other versions */
@@ -497,6 +499,7 @@ static void handle_host_write(uint32_t data)
 		LOG_ERR("ESPI read failed: EACPI_READ_STS = %d", rv);
 		return;
 	}
+	__atomic_store_n(&hclatency_read_lpc_request_done_usec, get_time().val, __ATOMIC_RELAXED);
 	lpc_packet.send_response = lpc_send_response_packet;
 
 	lpc_packet.request = (const void *)shm_mem_host_cmd;
