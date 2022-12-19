@@ -141,6 +141,30 @@
       },
       "revId": "5c3813026f2571bb5f426632f0a47b62553faca4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b6b8e44_69a69505",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-19T22:53:03Z",
+      "side": 1,
+      "message": "This looks a lot better now; thanks!",
+      "parentUuid": "7404a698_dd7fcf64",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "5c3813026f2571bb5f426632f0a47b62553faca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
