@@ -34,6 +34,24 @@
       "parentUuid": "df6b2d40_899740d0",
       "revId": "d36e3141475742d2cd6e132e3c6aa966c1962991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c31a498_6675b3f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-19T17:36:37Z",
+      "side": 1,
+      "message": "What I\u0027m saying is, you may be able to extend EC_CMD_REBOOT_EC to do the same. It allows you to make the EC take some action after shutdown. You probably need to add a new flag (e.g. EC_REBOOT_FLAG_CLEAR_AP_IDLE). I don\u0027t think you need a new command.",
+      "parentUuid": "442fb609_5e2def03",
+      "revId": "d36e3141475742d2cd6e132e3c6aa966c1962991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
