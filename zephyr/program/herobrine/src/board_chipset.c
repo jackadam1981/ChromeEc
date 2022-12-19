@@ -14,6 +14,7 @@
 #include "hooks.h"
 #include "timer.h"
 #include "usb_pd.h"
+#include "usbc_ppc.h"
 
 #define CPRINTS(format, args...) cprints(CC_HOOK, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_HOOK, format, ##args)
@@ -70,6 +71,7 @@ static void wait_pd_ready(void)
 /* Called on AP S5 -> S3 transition */
 static void board_chipset_pre_init(void)
 {
+	int port;
 	if (!pp5000_inited) {
 		if (pd_ready_timeout.val) {
 			wait_pd_ready();
@@ -77,6 +79,9 @@ static void board_chipset_pre_init(void)
 		CPRINTS("Enable 5V rail");
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_pp5000_s5), 1);
 		pp5000_inited = true;
+		msleep(10);
+		for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
+			ppc_init(port);
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, board_chipset_pre_init, HOOK_PRIO_DEFAULT);
