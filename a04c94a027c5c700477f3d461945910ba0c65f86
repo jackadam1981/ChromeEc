@@ -16,6 +16,24 @@
       "message": "I currently only have a nipperkin. Can I apply these same changes to the guybrush conf and have it work?",
       "revId": "a04c94a027c5c700477f3d461945910ba0c65f86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68cbf063_50473336",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-19T16:23:50Z",
+      "side": 1,
+      "message": "Nipperkin\u0027s equivalent will be the DNS nipperkin patch currently up, plus another `#define CONFIG_USB_PD_VDM_AP_CONTROL` in the board.h file.  I can update the DNS patch for that today or tomorrow too",
+      "parentUuid": "e39eba55_543feceb",
+      "revId": "a04c94a027c5c700477f3d461945910ba0c65f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
