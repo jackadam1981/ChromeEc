@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c6c282_5d1fc4a2",
+        "filename": "chip/npcx/sha256_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-19T10:28:49Z",
+      "side": 1,
+      "message": "May be worth setting the others explicitly as well, just to remove ambiguity, up to you, does not like they are checked anywhere here anyway.",
+      "revId": "88d1edfa1eb5d4f1c2f6841447a94fb2ba3f3d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
