@@ -22,6 +22,29 @@
       },
       "revId": "5c3813026f2571bb5f426632f0a47b62553faca4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d76288d4_4ef7869d",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-12-19T03:44:39Z",
+      "side": 1,
+      "message": "We should be able simplify these code as the below:\n\tif (ctx-\u003ew_index \u003e\u003d 14) {\n\t\tSHA256_chip_calculation(ctx);\n\t\tmemset(\u0026ctx-\u003ew[ctx-\u003ew_index], 0,\n\t\t       SHA256_BLOCK_SIZE - ctx-\u003ew_index * 4);\n\t}\n\tctx-\u003ew[15] \u003d ctx-\u003etotal_len * 8;\n\tSHA256_chip_calculation(ctx);",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "5c3813026f2571bb5f426632f0a47b62553faca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
