@@ -5,6 +5,7 @@
 
 #include "board_chipset.h"
 #include "hooks.h"
+#include "usb_pd.h"
 
 #include <zephyr/kernel.h>
 #include <zephyr/ztest.h>
@@ -33,7 +34,8 @@ ZTEST_USER(board_chipset, test_good_battery_normal_boot)
 	hook_notify(HOOK_CHIPSET_PRE_INIT);
 	time_diff_us = get_time().val - start_time.val;
 
-	zassert_true(time_diff_us < 10, "CHIPSET_PRE_INIT hook delayed", NULL);
+	zassert_true(time_diff_us <= 20000, "CHIPSET_PRE_INIT hook delayed",
+		     NULL);
 }
 
 ZTEST_USER(board_chipset, test_low_battery_normal_boot)
@@ -47,7 +49,8 @@ ZTEST_USER(board_chipset, test_low_battery_normal_boot)
 	hook_notify(HOOK_CHIPSET_PRE_INIT);
 	time_diff_us = get_time().val - start_time.val;
 
-	zassert_true(time_diff_us < 10, "CHIPSET_PRE_INIT hook delayed", NULL);
+	zassert_true(time_diff_us <= 20000, "CHIPSET_PRE_INIT hook delayed",
+		     NULL);
 }
 
 ZTEST_USER(board_chipset, test_low_battery_delayed_boot)
