@@ -531,3 +531,15 @@ host_command_vboot_hash(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_VBOOT_HASH, host_command_vboot_hash,
 		     EC_VER_MASK(0));
+
+static int command_rw_hash(int argc, const char **argv)
+{
+	const uint8_t *rw_hash;
+	uint64_t timestamp = get_time().val;
+
+	vboot_get_rw_hash(&rw_hash);
+	timestamp = get_time().val - timestamp;
+	ccprintf("Time Used(block): %d us\n", (uint32_t)timestamp);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(rw_hash, command_rw_hash, "", "");

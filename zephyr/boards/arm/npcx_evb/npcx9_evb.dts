@@ -28,3 +28,7 @@
 &power_ctrl_psl {
 	enable-gpios = <&gpio8 5 0>;
 };
+
+&sha0 {
+	status = "okay";
+};
