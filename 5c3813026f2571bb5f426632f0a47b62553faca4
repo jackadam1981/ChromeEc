@@ -45,6 +45,30 @@
       },
       "revId": "5c3813026f2571bb5f426632f0a47b62553faca4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4670c92b_aa6b2a99",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-12-19T04:10:36Z",
+      "side": 1,
+      "message": "Btw, I run cmd hash 0x0 0x44 (68bytes message) and the result is right.",
+      "parentUuid": "d76288d4_4ef7869d",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "5c3813026f2571bb5f426632f0a47b62553faca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
