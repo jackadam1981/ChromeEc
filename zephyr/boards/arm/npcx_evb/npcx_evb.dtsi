@@ -170,3 +170,7 @@
 		     >;
 	pinctrl-names = "default";
 };
+
+&sha0 {
+	status = "okay";
+};
