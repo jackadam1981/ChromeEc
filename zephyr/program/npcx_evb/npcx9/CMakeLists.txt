@@ -5,6 +5,9 @@
 cmake_minimum_required(VERSION 3.13.1)
 
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
+
+zephyr_library_sources("src/test_sha256.c")
+
 project(npcx9)
 
 zephyr_include_directories(include)
