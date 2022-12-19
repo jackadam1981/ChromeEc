@@ -69,6 +69,30 @@
       },
       "revId": "5c3813026f2571bb5f426632f0a47b62553faca4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a568f6_76e2e459",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-19T04:37:20Z",
+      "side": 1,
+      "message": "The `hash` console command won\u0027t exercise the problematic handling of sub-block sizes because it always calls `SHA256_update` with 512-bit blocks except for the last one.\n\nI believe this would be incorrect:\n```\nSHA256_update(ctx, \"abcd\", 4); // Update with less than a whole block\nSHA256_update(ctx, \"efgh\", 4); // Followed by another update\nSHA256_final(ctx);\n```\n\n..because the result would not be equal to `SHA256(\"abcdefgh\")`.",
+      "parentUuid": "4670c92b_aa6b2a99",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "5c3813026f2571bb5f426632f0a47b62553faca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
