@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43d6912b_977bf2c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540967
+      },
+      "writtenOn": "2022-12-20T07:09:25Z",
+      "side": 1,
+      "message": "Modifying the title has been completed.",
+      "parentUuid": "3a985746_c1804265",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "6a4f5d410128cc59bf2c32896c6a14880229bdbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d66f4aab_47539ed5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-20T03:08:53Z",
       "side": 1,
       "message": "Applying tuning parameters recommended by retimer vendor.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "6a4f5d410128cc59bf2c32896c6a14880229bdbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c02c76c_04173194",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1540967
+      },
+      "writtenOn": "2022-12-20T07:09:25Z",
+      "side": 1,
+      "message": "Modification of description content has been completed.",
+      "parentUuid": "d66f4aab_47539ed5",
       "range": {
         "startLine": 9,
         "startChar": 0,
