@@ -5542,6 +5542,58 @@ struct ec_params_reboot_ec {
  */
 #define EC_CMD_VERSION0 0x00DC
 
+/*
+ * Memory Dump Commands
+ *
+ * Since the HOSTCMD response size is limited to <256 bytes, retrieving
+ * a memory dump is split into 3 commands. If there's no memory dump available
+ * these commands will return EC_RES_UNAVAILABLE.
+ *
+ * 1. EC_CMD_GET_MEMORY_DUMP_METADATA returns the number of memory dump entries,
+ *    the base address offset that must be added to all of the addresses in the
+ *    other responses, and the timestamp of the memory dump.
+ * 2. EC_CMD_GET_MEMORY_DUMP_ENTRY_INFO returns the address and size for a given
+ *    memory dump entry index.
+ * 3. EC_CMD_READ_MEMORY_DUMP returns the actual memory at a given address. The
+ *    address and size must be within the bounds of the given memory dump entry
+ *    index. Each response is limited to EC_MAX_MEMORY_DUMP_READ_SIZE, so this
+ *    will need to be called repeatedly to retrieve the entire memory dump
+ *    entry.
+ */
+#define EC_CMD_GET_MEMORY_DUMP_METADATA 0x00DD
+struct ec_response_get_memory_dump_metadata {
+	uint16_t memory_dump_entry_count;
+	uint32_t memory_dump_address_offset;
+	uint32_t memory_dump_timestamp;
+	uint32_t memory_dump_total_size;
+} __ec_align4;
+
+#define EC_CMD_GET_MEMORY_DUMP_ENTRY_INFO 0x00DE
+struct ec_params_get_memory_dump_entry_info {
+	uint16_t memory_dump_info_index;
+} __ec_align4;
+
+struct ec_response_get_memory_dump_entry_info {
+	uint32_t address;
+	uint32_t size;
+} __ec_align4;
+
+#define EC_CMD_READ_MEMORY_DUMP 0x00DF
+
+struct ec_params_read_memory_dump {
+	uint16_t memory_dump_info_index;
+	uint32_t address;
+	uint32_t size;
+} __ec_align4;
+
+/* 256 - sizeof(ec_host_response) - sizeof(size), 4 byte aligned */
+#define EC_MAX_MEMORY_DUMP_READ_SIZE 244
+
+struct ec_response_read_memory_dump {
+	uint16_t size;
+	uint8_t mem[EC_MAX_MEMORY_DUMP_READ_SIZE];
+} __ec_align4;
+
 /*****************************************************************************/
 /*
  * PD commands
