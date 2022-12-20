@@ -402,6 +402,28 @@ void gpio_reset(enum gpio_signal signal);
 #ifdef CONFIG_ZEPHYR
 
 /**
+ * @brief Save gpio state of IO expander
+ *
+ * This function saves all pins current state from selected port.
+ *
+ * @param port	Port to save
+ * @param flags	Buffer to hold gpio flags
+ */
+int ioex_save_gpio_config(const struct device *port,
+			gpio_flags_t *flags, int buff_size);
+
+/**
+ * @brief Restore gpio state of IO expander
+ *
+ * This function restore all pins current state from selected port.
+ *
+ * @param port	Port to restore
+ * @param flags	Buffer with gpio flags saved by ioex_save_gpio_config
+ */
+int ioex_restore_gpio_config(const struct device *port,
+			gpio_flags_t *flags, int buff_size);
+
+/**
  * @brief Reset all the GPIOs to default state
  *
  * This returns all pins from selected port to default state. The default flags
