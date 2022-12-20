@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5ec6da1e_bf78f710",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-20T19:11:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea9b5bad_9db05c1e",
+      "range": {
+        "startLine": 24,
+        "startChar": 35,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "eacacdd07736694f4e0de08c33822e1660977215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "38fe8569_2ff5ef03",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -96,6 +120,29 @@
       "side": 1,
       "message": "Looks like this is intentional (but I also have a question, posted above).",
       "parentUuid": "7eba82c3_4784d1d8",
+      "revId": "eacacdd07736694f4e0de08c33822e1660977215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e984c9_99d3d87f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-20T19:11:47Z",
+      "side": 1,
+      "message": "A piggy back question: This implies the derating percentages follow the charger chips. Have you considered setting the default values per charger?",
+      "range": {
+        "startLine": 1074,
+        "startChar": 3,
+        "endLine": 1074,
+        "endChar": 43
+      },
       "revId": "eacacdd07736694f4e0de08c33822e1660977215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
