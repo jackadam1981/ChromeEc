@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ad619ee_fcfe2da4",
+        "filename": "zephyr/program/rex/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-20T10:53:31Z",
+      "side": 1,
+      "message": "Well now you may as well use `if (val \u003d\u003d FW_FAN_NOT_PRESENT)`",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "eafcdb72ceb00eb1b8625bf56865de7d9ae3d9ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

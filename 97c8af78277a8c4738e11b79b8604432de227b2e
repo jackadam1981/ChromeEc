@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8dca47_a75c706f",
+        "filename": "zephyr/program/rex/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-20T10:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee2a31d8_9645d2d8",
+      "revId": "97c8af78277a8c4738e11b79b8604432de227b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35be1285_1dab8658",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I actually removed the if fan exists part from code because right now we are not using CBI, and we are not clear what we need in fan_init method, other than detecting fan present status from CBI.",
       "parentUuid": "35be1285_1dab8658",
+      "revId": "97c8af78277a8c4738e11b79b8604432de227b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b02f46_035d243c",
+        "filename": "zephyr/program/rex/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-20T10:53:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f57178d5_8701e2ed",
       "revId": "97c8af78277a8c4738e11b79b8604432de227b2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
