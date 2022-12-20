@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "877d1f92_fb9f4b7a",
+        "filename": "zephyr/shim/src/sha256_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-20T12:17:33Z",
+      "side": 1,
+      "message": "Should this use `CONFIG_CRYPTO_LOG_LEVEL` like the upstream driver?",
+      "revId": "a3580f36eab492f874f09bd6f2bd665cda0a5f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26537b88_f64436a6",
+        "filename": "zephyr/shim/src/sha256_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-20T12:17:33Z",
+      "side": 1,
+      "message": "s/fucntion/function/",
+      "revId": "a3580f36eab492f874f09bd6f2bd665cda0a5f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8a3f6e0_9eb5bffe",
+        "filename": "zephyr/shim/src/sha256_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-20T12:17:33Z",
+      "side": 1,
+      "message": "Hey I may be overthinking but these memset with no reference to the target structure scares me a bit. How about doing `memset(hmac_ctx.buf, mask, sizeof(hmac_ctx.buf));` instead?",
+      "revId": "a3580f36eab492f874f09bd6f2bd665cda0a5f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba157efb_35ab6ccf",
+        "filename": "zephyr/shim/src/sha256_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-20T12:17:33Z",
+      "side": 1,
+      "message": "This is even scarier, maybe use `hmac_ctx.buf` as src instead of tmp and add a build check to ensure `SHA256_DIGEST_SIZE \u003e sizeof(hmac_ctx.buf)`?",
+      "revId": "a3580f36eab492f874f09bd6f2bd665cda0a5f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
