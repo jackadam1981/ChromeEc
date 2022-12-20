@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb1684f_b1d1367f",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-20T20:55:59Z",
+      "side": 1,
+      "message": "Do we also need to feed the watchdog during erase operations?  The legacy EC driver is doing this (the comment about msleep() doesn\u0027t appear to apply anymore).\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/chip/npcx/flash.c;l\u003d569",
+      "revId": "c51bd3ed2eed21b9a7015740e0fcf757fe7e7cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
