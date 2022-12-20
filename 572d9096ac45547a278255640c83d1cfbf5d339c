@@ -16,6 +16,24 @@
       "message": "Hi Peter,\nHow can I make Zoss happy? (I included LOW_COVERAGE_REASON in the commit message)",
       "revId": "572d9096ac45547a278255640c83d1cfbf5d339c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd774965_527bf143",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-20T05:43:22Z",
+      "side": 1,
+      "message": "Try also adding `Disallow-Recycled-Builds: all` to force it to rerun coverage even though the code hasn\u0027t changed.",
+      "parentUuid": "2c501906_e83bf491",
+      "revId": "572d9096ac45547a278255640c83d1cfbf5d339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
