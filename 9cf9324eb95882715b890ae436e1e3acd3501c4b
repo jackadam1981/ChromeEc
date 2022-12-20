@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9351b25e_ad47c5d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-20T18:54:08Z",
+      "side": 1,
+      "message": "For the name, the scope is `skyrim:` here.  Thank you for fixing this up for all the boards",
+      "revId": "9cf9324eb95882715b890ae436e1e3acd3501c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f6abecf_9fc3e709",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-12-20T18:54:08Z",
+      "side": 1,
+      "message": "You\u0027ll want LOW_COVERAGE_REASON on this CL.  \n\nI believe you should be able to write a quick test for the shim CL in `zephyr/test/drivers/default/src/gpio.c`",
+      "revId": "9cf9324eb95882715b890ae436e1e3acd3501c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1df4e13_400a1eaa",
         "filename": "zephyr/program/skyrim/src/usbc_config.c",
         "patchSetId": 1
