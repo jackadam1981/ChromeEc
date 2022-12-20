@@ -278,3 +278,7 @@ tests:
   drivers.memmap:
     extra_configs:
       - CONFIG_LINK_TEST_SUITE_MEMMAP=y
+  drivers.memory_dump_hostcmds:
+    extra_configs:
+      - CONFIG_LINK_TEST_SUITE_HOSTCMD_MEMORY_DUMP=y
+      - CONFIG_PLATFORM_EC_HOSTCMD_MEMORY_DUMP=y

@@ -219,6 +219,7 @@ common-$(HAS_TASK_KEYSCAN)+=keyboard_scan.o
 common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 common-$(CONFIG_SYSTEM_SAFE_MODE)+=system_safe_mode.o
+common-$(CONFIG_HOSTCMD_MEMORY_DUMP)+=memory_dump_hostcmds.o
 
 ifneq ($(HAVE_PRIVATE_AUDIO_CODEC_WOV_LIBS),y)
 common-$(CONFIG_AUDIO_CODEC_WOV)+=hotword_dsp_api.o
