@@ -257,6 +257,8 @@ static void reset_nct38xx_port(int port)
 		/* Invalid port: do nothing */
 		return;
 	}
+	gpio_port_get_config(ioex_port0);
+	gpio_port_get_config(ioex_port1);
 
 	gpio_pin_set_dt(reset_gpio_l, 0);
 	msleep(NCT38XX_RESET_HOLD_DELAY_MS);
@@ -266,8 +268,8 @@ static void reset_nct38xx_port(int port)
 		msleep(NCT3807_RESET_POST_DELAY_MS);
 
 	/* Re-enable the IO expander pins */
-	gpio_reset_port(ioex_port0);
-	gpio_reset_port(ioex_port1);
+	gpio_port_set_config(ioex_port0);
+	gpio_port_set_config(ioex_port1);
 }
 
 void board_reset_pd_mcu(void)
