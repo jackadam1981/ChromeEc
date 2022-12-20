@@ -145,6 +145,30 @@
       },
       "revId": "eacacdd07736694f4e0de08c33822e1660977215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d3f6a8c_03060c3c",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-20T22:52:55Z",
+      "side": 1,
+      "message": "An interesting idea; that would be pretty easy to set in Kconfig, but more difficult in this file. Comments from some boards implied they derated for this reason, but I\u0027m not confident enough in any charger\u0027s behavior to make such a change for specific chargers: that\u0027s probably design-dependent and requires much more detailed measurement than I\u0027m prepared to do.",
+      "parentUuid": "85e984c9_99d3d87f",
+      "range": {
+        "startLine": 1074,
+        "startChar": 3,
+        "endLine": 1074,
+        "endChar": 43
+      },
+      "revId": "eacacdd07736694f4e0de08c33822e1660977215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
