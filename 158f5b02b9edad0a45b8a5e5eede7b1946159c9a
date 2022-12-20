@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e254912_fdb1333d",
+        "filename": "common/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-20T21:13:26Z",
+      "side": 1,
+      "message": "nit: is there any reason that this shouldn\u0027t be unsigned? It appears that the value should always be \u003e\u003d 0.",
+      "range": {
+        "startLine": 243,
+        "startChar": 8,
+        "endLine": 243,
+        "endChar": 11
+      },
+      "revId": "158f5b02b9edad0a45b8a5e5eede7b1946159c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
