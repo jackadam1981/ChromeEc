@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "keyboard_scan.h"
 #include "lpc.h"
+#include "register_memory_dump.h"
 #include "system.h"
 #include "vboot.h"
 #include "watchdog.h"
@@ -46,6 +47,13 @@ void ec_app_main(void)
 	if (IS_ENABLED(CONFIG_WATCHDOG) &&
 	    !IS_ENABLED(CONFIG_WDT_DISABLE_AT_BOOT)) {
 		watchdog_init();
+	}
+
+	/*
+	 * Register memory for dumping.
+	 */
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOST_COMMAND_MEMORY_DUMP)) {
+		register_thread_memory_dump();
 	}
 
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_BOOT_NO_SLEEP)) {
