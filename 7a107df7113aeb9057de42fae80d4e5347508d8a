@@ -16,6 +16,24 @@
       "message": "Could we test on a Cret device by uprev-ing RW only?",
       "revId": "7a107df7113aeb9057de42fae80d4e5347508d8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704c5ccd_4461440b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-12-20T02:12:34Z",
+      "side": 1,
+      "message": "RO version 13606.426.0\nRW version local build this CL\nWhen the system jumps to RW it keeps rebooting.\nIt seems that the RO/RW version cannot use different chips.",
+      "parentUuid": "df9547d5_717eab25",
+      "revId": "7a107df7113aeb9057de42fae80d4e5347508d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
