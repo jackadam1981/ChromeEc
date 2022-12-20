@@ -47,6 +47,7 @@ test-list-host += fp
 test-list-host += fpsensor
 test-list-host += fpsensor_crypto
 test-list-host += fpsensor_state
+test-list-host += gettimeofday
 test-list-host += gyro_cal
 test-list-host += hooks
 test-list-host += host_command
@@ -101,6 +102,7 @@ test-list-host += stdlib
 test-list-host += std_vector
 test-list-host += system
 test-list-host += thermal
+test-list-host += timer
 test-list-host += timer_dos
 test-list-host += uptime
 test-list-host += usb_common
@@ -196,6 +198,12 @@ fpsensor-y=fpsensor.o
 fpsensor_crypto-y=fpsensor_crypto.o
 fpsensor_hw-y=fpsensor_hw.o
 fpsensor_state-y=fpsensor_state.o
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+ftrapv-y=ftrapv.o
+gettimeofday-y=gettimeofday.o
+global_initialization-y=global_initialization.o
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 gyro_cal-y=gyro_cal.o gyro_cal_init_for_test.o
 hooks-y=hooks.o
 host_command-y=host_command.o
@@ -221,6 +229,13 @@ online_calibration-y=online_calibration.o
 online_calibration_spoof-y=online_calibration_spoof.o gyro_cal_init_for_test.o
 rgb_keyboard-y=rgb_keyboard.o
 kasa-y=kasa.o
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+ifeq ($(USE_BUILTIN_STDLIB), 0)
+libc_printf-y=libc_printf.o
+endif
+libcxx-y=libcxx.o
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 mpu-y=mpu.o
 mutex-y=mutex.o
 newton_fit-y=newton_fit.o
@@ -253,6 +268,7 @@ system_is_locked-y=system_is_locked.o
 thermal-y=thermal.o
 timer_calib-y=timer_calib.o
 timer_dos-y=timer_dos.o
+timer-y=timer.o
 uptime-y=uptime.o
 usb_common-y=usb_common_test.o fake_battery.o
 usb_pd_int-y=usb_pd_int.o

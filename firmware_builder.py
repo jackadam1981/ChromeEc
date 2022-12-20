@@ -32,6 +32,22 @@ BOARDS_UNIT_TEST = [
     "dartmonkey",
 ]
 
+# Interesting regions to show in gerrit
+BINARY_SIZE_REGIONS = ["RW_FLASH", "RW_IRAM"]
+
+# The most recently edited boards that should show binary size changes in
+# gerrit
+BINARY_SIZE_BOARDS = [
+    "dibbi",
+    "gaelin",
+    "gladios",
+    "lisbon",
+    "marasov",
+    "moli",
+    "prism",
+    "shotzo",
+]
+
 
 def build(opts):
     """Builds all EC firmware targets
@@ -77,12 +93,42 @@ def build(opts):
     cmd = ["make", "buildall_only", f"-j{opts.cpus}"]
     print(f"# Running {' '.join(cmd)}.")
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+
+    # extra/rma_reset is used in chromeos-base/ec-utils-test
+    cmd = ["make", "-C", "extra/rma_reset", "clean"]
+    print(f"# Running {' '.join(cmd)}.")
+    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
+
+    cmd = ["make", "-C", "extra/rma_reset", f"-j{opts.cpus}"]
+    print(f"# Running {' '.join(cmd)}.")
+    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
+
+    cmd = ["make", "print-all-baseboards", f"-j{opts.cpus}"]
+    print(f"# Running {' '.join(cmd)}.")
+    baseboards = {}
+    for line in subprocess.run(
+        cmd,
+        cwd=os.path.dirname(__file__),
+        check=True,
+        universal_newlines=True,
+        stdout=subprocess.PIPE,
+    ).stdout.splitlines():
+        parts = line.split("=")
+        if len(parts) > 1:
+            baseboards[parts[0]] = parts[1]
+
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
     ec_dir = os.path.dirname(__file__)
     build_dir = os.path.join(ec_dir, "build")
     for build_target in sorted(os.listdir(build_dir)):
         metric = metric_list.value.add()
         metric.target_name = build_target
-        metric.platform_name = "ec"
+        metric.platform_name = build_target
+        if build_target in baseboards and baseboards[build_target]:
+            metric.platform_name = baseboards[build_target]
+
         for variant in ["RO", "RW"]:
             memsize_file = (
                 pathlib.Path(build_dir)
@@ -91,7 +137,12 @@ def build(opts):
                 / f"ec.{variant}.elf.memsize.txt"
             )
             if memsize_file.exists():
-                parse_memsize(memsize_file, metric, variant)
+                parse_memsize(
+                    memsize_file,
+                    metric,
+                    variant,
+                    build_target in BINARY_SIZE_BOARDS,
+                )
     with open(opts.metrics, "w") as file:
         file.write(json_format.MessageToJson(metric_list))
 
@@ -110,7 +161,7 @@ UNITS = {
 }
 
 
-def parse_memsize(filename, metric, variant):
+def parse_memsize(filename, metric, variant, track_on_gerrit):
     """Parse the output of the build to extract the image size."""
     with open(filename, "r") as infile:
         # Skip header line
@@ -121,7 +172,10 @@ def parse_memsize(filename, metric, variant):
             fw_section.region = variant + "_" + parts[0][:-1]
             fw_section.used = int(parts[1]) * UNITS[parts[2]]
             fw_section.total = int(parts[3]) * UNITS[parts[4]]
-            fw_section.track_on_gerrit = False
+            if track_on_gerrit and fw_section.region in BINARY_SIZE_REGIONS:
+                fw_section.track_on_gerrit = True
+            else:
+                fw_section.track_on_gerrit = False
 
 
 def bundle(opts):

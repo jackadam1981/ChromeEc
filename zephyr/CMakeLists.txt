@@ -146,6 +146,7 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC
                                                 "${PLATFORM_EC}/common/queue.c"
                                                 "${PLATFORM_EC}/common/shared_mem.c"
                                                 "${PLATFORM_EC}/common/system.c"
+                                                "${PLATFORM_EC}/common/system_boot_time.c"
                                                 "${PLATFORM_EC}/common/uart_printf.c"
                                                 "${PLATFORM_EC}/common/util.c"
                                                 "${PLATFORM_EC}/common/version.c")
@@ -182,7 +183,13 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCELGYRO_LSM6DSM
                                                 "${PLATFORM_EC}/driver/accelgyro_lsm6dsm.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_FIFO
                                                 "${PLATFORM_EC}/common/motion_sense_fifo.c")
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
 zephyr_library_sources_ifdef(CONFIG_ADC
+=======
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BODY_DETECTION
+                                                "${PLATFORM_EC}/common/body_detection.c")
+zephyr_library_sources_ifdef(CONFIG_NAMED_ADC_CHANNELS
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
                                                 "${PLATFORM_EC}/common/adc.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ALS_TCS3400
                                                 "${PLATFORM_EC}/driver/als_tcs3400.c")
@@ -546,6 +553,9 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_MAX695X_SEVEN_SEGMENT_DISPLAY
 						"${PLATFORM_EC}/driver/led/max695x.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_DRIVER_TLC59116F
                                                 "${PLATFORM_EC}/driver/led/tlc59116f.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SYSTEM_SAFE_MODE
+                                                "${PLATFORM_EC}/common/system_safe_mode.c")
+
 # Switch to ec_shim library for all Zephyr sources
 set(ZEPHYR_CURRENT_LIBRARY ec_shim)
 

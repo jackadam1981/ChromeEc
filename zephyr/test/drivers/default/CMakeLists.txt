@@ -92,3 +92,15 @@ target_sources(app PRIVATE
     src/vstore.c
     src/watchdog.c
 )
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+
+add_subdirectory(
+    ${PLATFORM_EC}/zephyr/test/drivers/mock_panic_output
+    mock_panic_output
+)
+
+# This test does not work when power functions are mocked, so only run it for
+# the plain `drivers.default` test case.
+zephyr_library_sources_ifndef(CONFIG_POWER_SEQUENCE_MOCK src/chipset.c)
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)

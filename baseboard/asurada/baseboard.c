@@ -42,6 +42,10 @@
 #include "timer.h"
 #include "uart.h"
 
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+/* Must come after other header files and interrupt handler declarations */
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 #include "gpio_list.h"
 
 /* Wake-up pins for hibernate */

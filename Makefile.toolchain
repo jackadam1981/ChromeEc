@@ -203,10 +203,13 @@ CXXFLAGS=$(CXXFLAGS_WARN)
 CXXFLAGS+=-DPROTOBUF_INLINE_NOT_IN_HEADERS=0
 ifeq ($(USE_BUILTIN_STDLIB), 1)
 CPPFLAGS+=-DUSE_BUILTIN_STDLIB
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
 else
 # TODO(https://issuetracker.google.com/234507656#comment19): C++ include path
 # should not be necessary.
 CXXFLAGS+=-I/usr/armv7m-cros-eabi/usr/include/c++/v1
+=======
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 endif
 
 ifeq ($(LIBFTDI_NAME),)

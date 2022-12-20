@@ -81,6 +81,11 @@ config PLATFORM_EC_FAN
 	bool "Fan support"
 	default y
 	depends on DT_HAS_CROS_EC_FANS_ENABLED
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+	select PWM
+	select SENSOR
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 	help
 	  Enables support for fans. Allows periodic thermal task to
 	  automatically set the fan speed (control temperature).

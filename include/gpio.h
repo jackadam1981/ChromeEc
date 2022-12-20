@@ -80,6 +80,26 @@
 /* GPIO_INT_SHARED         not supported by Zephyr */
 
 #define GPIO_SEL_1P8V GPIO_VOLTAGE_1P8
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+#elif DT_HAS_COMPAT_STATUS_OKAY(ite_it8xxx2_gpio)
+#define GPIO_VOLTAGE_1P8 IT8XXX2_GPIO_VOLTAGE_1P8
+#define GPIO_SEL_1P8V GPIO_VOLTAGE_1P8
+#elif DT_HAS_COMPAT_STATUS_OKAY(zephyr_gpio_emul)
+#define GPIO_VOLTAGE_1P8 NATIVE_POSIX_GPIO_VOLTAGE_1P8
+#define GPIO_SEL_1P8V GPIO_VOLTAGE_1P8
+#elif DT_HAS_COMPAT_STATUS_OKAY(microchip_xec_gpio_v2)
+/*
+ * Add GPIO_VOLTAGE_1P8 and GPIO_SEL_1P8V used in common code.
+ * In MEC1727, GPIO_VOLTAGE_1P8 feature is not supported in GPIO control
+ * register, GPIO driver will skip this bit configuration, but MEC1727
+ * supports a group of GPIOs with 1.8V power rail, 1.8V design will be
+ * considered and supported in board circuit design state.
+ */
+#define GPIO_VOLTAGE_1P8 (1U << 11)
+#define GPIO_SEL_1P8V GPIO_VOLTAGE_1P8
+#endif
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 /* GPIO_ALTERNATE          not supported by Zephyr */
 /* GPIO_LOCKED             not supported by Zephyr */
 /* GPIO_HIB_WAKE_HIGH      not supported by Zephyr */

@@ -39,6 +39,13 @@ test-list-y=\
        flash_write_protect \
        fpsensor \
        fpsensor_hw \
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+       ftrapv \
+       global_initialization \
+       libc_printf \
+       libcxx \
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
        mpu \
        mutex \
        panic \
@@ -57,6 +64,7 @@ test-list-y=\
        stdlib \
        std_vector \
        system_is_locked \
+       timer \
        timer_dos \
        utils \
        utils_str \

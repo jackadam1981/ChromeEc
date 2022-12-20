@@ -3,14 +3,23 @@
  * found in the LICENSE file.
  */
 
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+#include "signal_gpio.h"
+#include "system.h"
+
+#include <zephyr/drivers/gpio.h>
+
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 #include <power_signals.h>
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
 #include <signal_gpio.h>
 #include <zephyr/drivers/gpio.h>
 #include "system.h"
+=======
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 
 #define MY_COMPAT intel_ap_pwrseq_gpio
-
-#if HAS_GPIO_SIGNALS
 
 #define INIT_GPIO_SPEC(id) GPIO_DT_SPEC_GET(id, gpios),
 
@@ -173,5 +182,3 @@ void power_signal_gpio_init(void)
 		}
 	}
 }
-
-#endif /*  HAS_GPIO_SIGNALS */

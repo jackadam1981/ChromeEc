@@ -237,6 +237,7 @@ class Zmake:
         clobber=False,
         bringup=False,
         coverage=False,
+        cmake_defs=None,
         allow_warnings=False,
         all_projects=False,
         extra_cflags=None,
@@ -267,6 +268,7 @@ class Zmake:
                     clobber=clobber,
                     bringup=bringup,
                     coverage=coverage,
+                    cmake_defs=cmake_defs,
                     allow_warnings=allow_warnings,
                     extra_cflags=extra_cflags,
                     multiproject=len(projects) > 1,
@@ -438,6 +440,7 @@ class Zmake:
         clobber=False,
         bringup=False,
         coverage=False,
+        cmake_defs=None,
         allow_warnings=False,
         extra_cflags=None,
         multiproject=False,
@@ -528,6 +531,10 @@ class Zmake:
                         "CMAKE_CXX_COMPILER_LAUNCHER": self.gomacc,
                     },
                 )
+                if cmake_defs:
+                    base_config |= zmake.build_config.BuildConfig.from_args(
+                        cmake_defs
+                    )
 
             if not build_dir.exists():
                 build_dir.mkdir()

@@ -8,6 +8,19 @@
 #ifndef __CROS_EC_COMMON_H
 #define __CROS_EC_COMMON_H
 
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+/*
+ * I don't know why but gcc's preprocessor doesn't like the autoconf.h file,
+ * sometimes. Adding a #line directive anywhere in this file seems to fix the
+ * problem. #line marks the *next* line, so it is off by one.
+ */
+#line 17
+
+#include "compile_time_macros.h"
+
+#include <inttypes.h>
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 #include <stdint.h>
 #include <inttypes.h>
 

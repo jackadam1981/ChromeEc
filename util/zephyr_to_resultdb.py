@@ -5,8 +5,9 @@
 """ Upload twister results to ResultDB
 
     Usage:
-    $ rdb stream -new -realm chromium:public -- ./util/zephyr_to_resultdb.py
-      --results=twister-out/twister.json --upload=True
+    $ rdb stream -new -realm chromium:public -var builder_name:${HOSTNAME%%.*}
+      -- ./util/zephyr_to_resultdb.py --results=twister-out/twister.json
+      --upload=True
 """
 
 import argparse
@@ -27,6 +28,9 @@ def translate_status(status):
         ret_status = "FAIL"
     elif status in ["skipped", "filtered"]:
         ret_status = "SKIP"
+    elif status == "blocked":
+        # Twister status for tests that didn't run due to test suite timeout
+        ret_status = "ABORT"
 
     return ret_status
 
@@ -99,6 +103,9 @@ def testcase_to_result(testsuite, testcase):
             {"key": "category", "value": "ChromeOS/EC"},
             {"key": "platform", "value": testsuite["platform"]},
         ],
+        "variant": {
+            "def": {"suite": testsuite["name"]},
+        },
         "duration": translate_duration(testcase),
         "testMetadata": {"name": testcase["identifier"]},
     }
@@ -125,10 +132,10 @@ def json_to_resultdb(result_file):
 class BytesEncoder(json.JSONEncoder):
     """Encoder for ResultDB format"""
 
-    def default(self, obj):
-        if isinstance(obj, bytes):
-            return obj.decode("utf-8")
-        return json.JSONEncoder.default(self, obj)
+    def default(self, o):
+        if isinstance(o, bytes):
+            return o.decode("utf-8")
+        return json.JSONEncoder.default(self, o)
 
 
 def upload_results(results):
@@ -161,7 +168,7 @@ def main():
     args = parser.parse_args()
 
     if args.results:
-        print("Converting:", args.results)
+        print(f"Converting: {args.results}")
         rdb_results = json_to_resultdb(args.results)
         if args.upload:
             upload_results(rdb_results)

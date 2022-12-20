@@ -15,11 +15,18 @@
 #include "task.h"
 #include "timer.h"
 #include "usart-stm32l5.h"
+#include "usb-stream.h"
 #include "usb_hw.h"
 #include "usb_spi.h"
-#include "usb-stream.h"
+
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+#include <stdio.h>
+
+/* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
 
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 void board_config_pre_init(void)
 {
 	/* enable SYSCFG clock */
@@ -124,16 +131,12 @@ USB_STREAM_CONFIG(usart5_usb, USB_IFACE_USART5_STREAM,
 
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
-	{ 1 /* SPI2 */, 7, GPIO_SPI2_CS },
+	{ 1 /* SPI2 */, 7, GPIO_CN9_25, USB_SPI_ENABLED },
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
 void usb_spi_board_enable(struct usb_spi_config const *config)
 {
-	/* Configure SPI GPIOs */
-	gpio_config_module(MODULE_SPI, 1);
-	gpio_config_module(MODULE_SPI_FLASH, 1);
-
 	/* Set all SPI pins to high speed */
 	STM32_GPIO_OSPEEDR(GPIO_F) |= 0xFFF00000;
 	STM32_GPIO_OSPEEDR(GPIO_D) |= 0x000000C3;
@@ -155,9 +158,6 @@ void usb_spi_board_disable(struct usb_spi_config const *config)
 
 	/* Disable clocks to SPI2 module */
 	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
-
-	/* Release SPI GPIOs */
-	gpio_config_module(MODULE_SPI_FLASH, 0);
 }
 
 USB_SPI_CONFIG(usb_spi, USB_IFACE_SPI, USB_EP_SPI, 0);
@@ -171,8 +171,8 @@ const struct i2c_port_t i2c_ports[] = {
 	{ .name = "controller",
 	  .port = I2C_PORT_CONTROLLER,
 	  .kbps = 100,
-	  .scl = GPIO_TPM_I2C1_HOST_SCL,
-	  .sda = GPIO_TPM_I2C1_HOST_SDA },
+	  .scl = GPIO_CN7_2,
+	  .sda = GPIO_CN7_4 },
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -233,6 +233,9 @@ static void board_init(void)
 	/* Structured endpoints */
 	usb_spi_enable(&usb_spi, 1);
 	STM32_GPIO_BSRR(STM32_GPIOE_BASE) |= 0xF0000000;
+
+	/* Configure SPI GPIOs */
+	gpio_config_module(MODULE_SPI, 1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -261,7 +264,7 @@ static enum gpio_signal find_signal_by_name(const char *name)
 }
 
 /*
- * Set the mode of a GPIO pin: input/opendrain/pushpull.
+ * Set the mode of a GPIO pin: input/opendrain/pushpull/alternate.
  */
 static int command_gpio_mode(int argc, const char **argv)
 {
@@ -283,6 +286,8 @@ static int command_gpio_mode(int argc, const char **argv)
 		flags |= GPIO_OUTPUT | GPIO_OPEN_DRAIN;
 	else if (strcasecmp(argv[2], "pushpull") == 0)
 		flags |= GPIO_OUTPUT;
+	else if (strcasecmp(argv[2], "alternate") == 0)
+		flags |= GPIO_ALTERNATE;
 	else
 		return EC_ERROR_PARAM2;
 
@@ -291,7 +296,7 @@ static int command_gpio_mode(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND_FLAGS(gpiomode, command_gpio_mode,
-			      "name <input | opendrain | pushpull>",
+			      "name <input | opendrain | pushpull | alternate>",
 			      "Set a GPIO mode", CMD_FLAG_RESTRICTED);
 
 /*

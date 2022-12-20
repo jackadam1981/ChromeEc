@@ -129,6 +129,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "gaelin",
     "genesis",
     "gimble",
+    "gladios",
     "grunt",
     "gumboz",
     "guybrush",
@@ -145,7 +146,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "kohaku",
     "kuldax",
     "lalala",
-    "lazor",
     "liara",
     "lick",
     "lindar",
@@ -292,6 +292,10 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     # Boards that use CHIP:=npcx
     "garg",  # overflows flash
     "gelarshie",  # overflows flash
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+    "lazor",  # overflows flash
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
     "mushu",  # overflows flash
     "nocturne",  # overflows flash
     "terrador",  # overflows flash

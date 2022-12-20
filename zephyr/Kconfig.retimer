@@ -6,6 +6,12 @@ if PLATFORM_EC_USBC
 
 config PLATFORM_EC_USBC_RETIMER_INTEL_BB
 	bool "Support Intel Burnside Bridge retimer"
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+	default y
+	depends on PLATFORM_EC_USB_MUX
+	depends on DT_HAS_INTEL_JHL8040R_ENABLED
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 	select PLATFORM_EC_USB_PD_USB4
 	select PLATFORM_EC_USB_PD_TBT_COMPAT_MODE
 	help
@@ -29,6 +35,12 @@ config PLATFORM_EC_USBC_RETIMER_INTEL_BB
 
 config PLATFORM_EC_USBC_RETIMER_INTEL_HB
 	bool "Support Intel Hayden Bridge retimer"
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+	default y
+	depends on PLATFORM_EC_USB_MUX
+	depends on DT_HAS_INTEL_JHL9040R_ENABLED
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 	select PLATFORM_EC_USB_PD_USB4
 	select PLATFORM_EC_USB_PD_TBT_COMPAT_MODE
 	help
@@ -82,6 +94,8 @@ config PLATFORM_EC_USBC_RETIMER_ANX7451
 
 config PLATFORM_EC_USBC_RETIMER_ANX7483
 	bool "Support Analogix ANX7483 10G Active Retimer"
+	default y
+	depends on DT_HAS_ANALOGIX_ANX7483_ENABLED
 	help
 	  ANX7483 is a 4x4 re-driver capable of switching DisplayPort and
 	  USB3.2 Gen 2 10Gbps signals to support type-C (USB-C) ports with
@@ -97,6 +111,8 @@ config PLATFORM_EC_USBC_RETIMER_PS8811
 
 config PLATFORM_EC_USBC_RETIMER_PS8818
 	bool "Parade PS8818 USB Type-C Retimer for USB and DP Alternate Mode"
+	default y
+	depends on DT_HAS_PARADE_PS8818_ENABLED
 	help
 	  PS8818 is a 10Gbps retimer for Type-C applications with the
 	  integrated USB3.1 and DisplayPort alternate mode port.

@@ -3,11 +3,15 @@
  * found in the LICENSE file.
  */
 
-/dts-v1/;
-
+#include <ite/it8xxx2.dtsi>
+#include <cros/ite/it8xxx2.dtsi>
 #include <dt-bindings/gpio_defines.h>
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
 #include <cros/ite/it8xxx2.dtsi>
 #include <ite/it8xxx2.dtsi>
+=======
+#include <dt-bindings/gpio/ite-it8xxx2-gpio.h>
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 
 / {
 	model = "Google IT8XXX2 Baseboard";

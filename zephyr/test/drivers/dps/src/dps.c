@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
 /* Copyright 2022 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -260,3 +261,5 @@ ZTEST(dps, console_cmd__invalid)
 
 ZTEST_SUITE(dps, drivers_predicate_pre_main, dps_config_setup,
 	    dps_config_before, dps_config_after, NULL);
+=======
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)

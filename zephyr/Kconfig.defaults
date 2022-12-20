@@ -34,4 +34,16 @@ config SHELL_THREAD_PRIORITY
 config EXTRA_EXCEPTION_INFO
 	default y if ARCH_HAS_EXTRA_EXCEPTION_INFO
 
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+config EEPROM_SHELL
+	default n
+
+config PWM_SHELL
+	default n
+
+config SENSOR_SHELL
+	default n
+
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 orsource "Kconfig.defaults-$(ARCH)"

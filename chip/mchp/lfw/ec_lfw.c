@@ -11,6 +11,11 @@
 #include "config.h"
 #include "cros_version.h"
 #include "gpio.h"
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+#include "hwtimer.h"
+#include "registers.h"
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 #include "spi.h"
 #include "spi_flash.h"
 #include "util.h"
@@ -29,6 +34,9 @@
 #endif
 
 #include "ec_lfw.h"
+
+/* Must come after other header files and interrupt handler declarations */
+#include "gpio_list.h"
 
 /*
  * Check if LFW build is pulling in GPSPI which is not

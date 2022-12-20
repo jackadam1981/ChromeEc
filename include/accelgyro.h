@@ -6,6 +6,11 @@
 #ifndef __CROS_EC_ACCELGYRO_H
 #define __CROS_EC_ACCELGYRO_H
 
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+#include "common.h"
+#include "math_util.h"
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 #include "motion_sense.h"
 #include "math_util.h"
 

@@ -13,7 +13,11 @@ zephyr_include_directories("${PLATFORM_EC}/zephyr/projects/corsola/include")
 target_sources(app PRIVATE src/fakes.c)
 
 target_sources_ifdef(CONFIG_TEST_STEELIX_RUSTY
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
 app PRIVATE ${PLATFORM_EC}/zephyr/projects/corsola/src/kingler/board_steelix.c)
+=======
+app PRIVATE ${PLATFORM_EC_PROGRAM_DIR}/corsola/steelix/src/board.c)
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 target_sources_ifdef(CONFIG_TEST_FORM_FACTOR_CONVERTIBLE
 			app PRIVATE src/tablet.c)
 target_sources_ifdef(CONFIG_TEST_FORM_FACTOR_CLAMSHELL

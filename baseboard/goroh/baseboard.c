@@ -46,6 +46,10 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+/* Must come after other header files and interrupt handler declarations */
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 #include "gpio_list.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)

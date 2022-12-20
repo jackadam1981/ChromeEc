@@ -6,6 +6,12 @@
 #ifndef ZEPHYR_SHIM_INCLUDE_TEMP_SENSOR_TEMP_SENSOR_H_
 #define ZEPHYR_SHIM_INCLUDE_TEMP_SENSOR_TEMP_SENSOR_H_
 
+<<<<<<< HEAD   (c8af73 Revert "Merge remote-tracking branch cros/main into factory-)
+=======
+#include "charger/chg_rt9490.h"
+#include "temp_sensor.h"
+
+>>>>>>> BRANCH (2c3025 PCHG: Print next event in pchg console command)
 #include <zephyr/devicetree.h>
 #include "include/temp_sensor.h"
 #include "charger/chg_rt9490.h"
