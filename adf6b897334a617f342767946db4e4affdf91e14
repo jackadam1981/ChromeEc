@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c691e4c_cf984c98",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-12-20T17:45:35Z",
+      "side": 1,
+      "message": "Maybe there isn\u0027t a config with C2 and not C3, but wouldn\u0027t it be more correct to guard `usb_mux_alt_mchain_2` with `HAS_TASK_PD_C2` and 3 with C3?",
+      "revId": "adf6b897334a617f342767946db4e4affdf91e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
