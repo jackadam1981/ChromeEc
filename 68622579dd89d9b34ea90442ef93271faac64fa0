@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d0eba7_2f7fa7b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-12-20T01:49:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "041d58e5_2a57242f",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 70
+      },
+      "revId": "68622579dd89d9b34ea90442ef93271faac64fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63ca97d8_355705b6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-13T19:08:48Z",
       "side": 1,
       "message": "looks like few of these new macros are not used in this CL",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "68622579dd89d9b34ea90442ef93271faac64fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99916e25_75bb0194",
+        "filename": "zephyr/include/ap_power/ap_pwrseq_sm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-12-20T01:49:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63ca97d8_355705b6",
       "range": {
         "startLine": 30,
         "startChar": 8,
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd729f8_5bc85d20",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-12-20T01:49:46Z",
+      "side": 1,
+      "message": "Yes, this seems better.",
+      "parentUuid": "78856ab0_a23d96ae",
+      "range": {
+        "startLine": 179,
+        "startChar": 6,
+        "endLine": 179,
+        "endChar": 7
+      },
+      "revId": "68622579dd89d9b34ea90442ef93271faac64fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b8bea04_f2296539",
@@ -106,6 +178,30 @@
       "writtenOn": "2022-12-13T19:08:48Z",
       "side": 1,
       "message": "how about combing both init_func \u0026 get_init_state_func and make single function?\nAre these expected to board specific functions?",
+      "range": {
+        "startLine": 184,
+        "startChar": 5,
+        "endLine": 184,
+        "endChar": 24
+      },
+      "revId": "68622579dd89d9b34ea90442ef93271faac64fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4911ce4_95e880a7",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-12-20T01:49:46Z",
+      "side": 1,
+      "message": "I was thinking of having one initialization function for each power sequence handler level: application, chipset and architecture. That way each implementation level can run independently.\n\nIn the case of \u0027get_init_state_func\u0027 it will be board specific.",
+      "parentUuid": "2b8bea04_f2296539",
       "range": {
         "startLine": 184,
         "startChar": 5,
