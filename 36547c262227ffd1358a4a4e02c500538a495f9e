@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c5eb4df_a46f210d",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-20T21:54:06Z",
+      "side": 1,
+      "message": "Ah, thanks for the response, that clarifies a lot of things! I didn\u0027t notice that the application was running out of RAM in this case. I\u0027m a little concerned about the impact on free RAM space. Based on present numbers it looks like we should be okay but we\u0027ll need to keep an eye on that. \n\nHow significant do you anticipate the impact of running from FLASH would be?",
+      "parentUuid": "cf53419d_712c6e77",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 54
+      },
+      "revId": "36547c262227ffd1358a4a4e02c500538a495f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93a7d908_8f1cc66d",
         "filename": "chip/npcx/config_chip-npcx9.h",
         "patchSetId": 1
