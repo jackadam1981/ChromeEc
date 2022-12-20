@@ -220,6 +220,8 @@ const char help_str[] =
 	"      Various lightbar control commands\n"
 	"  locatechip <type> <index>\n"
 	"      Get the addresses and ports of i2c connected and embedded chips\n"
+	"  memory_dump\n"
+	"      Outputs the memory dump in hexdump canonical format.\n"
 	"  mkbpget <buttons|switches>\n"
 	"      Get MKBP buttons/switches supported mask and current state\n"
 	"  mkbpwakemask <get|set> <event|hostevent> [mask]\n"
@@ -9126,6 +9128,131 @@ static int cmd_keyconfig(int argc, char *argv[])
 	return 0;
 }
 
+static int cmd_memory_dump(int argc, char *argv[])
+{
+	int rv;
+	int response_max;
+	void *read_mem_response = NULL;
+	/* Simple local structs for storing a memory dump */
+	struct mem_segment {
+		uint32_t addr;
+		uint32_t size;
+		uint8_t *mem;
+	};
+	struct mem_dump {
+		uint16_t count;
+		struct mem_segment *segments;
+	} dump;
+	struct ec_response_memory_dump_get_metadata metadata_response;
+	struct ec_response_get_protocol_info protocol_info_response;
+
+	rv = ec_command(EC_CMD_GET_PROTOCOL_INFO, 0, NULL, 0,
+			&protocol_info_response,
+			sizeof(protocol_info_response));
+	if (rv < 0) {
+		fprintf(stderr, "Protocol info unavailable.\n");
+		goto cmd_memory_dump_cleanup;
+	}
+	response_max = protocol_info_response.max_response_packet_size;
+	read_mem_response = malloc(response_max);
+
+	rv = ec_command(EC_CMD_MEMORY_DUMP_GET_METADATA, 0, NULL, 0,
+			&metadata_response, sizeof(metadata_response));
+	if (rv < 0) {
+		fprintf(stderr, "Failed to get memory dump metadata.\n");
+		goto cmd_memory_dump_cleanup;
+	}
+
+	dump.count = metadata_response.memory_dump_entry_count;
+	dump.segments = (struct mem_segment *)malloc(
+		sizeof(struct mem_segment) *
+		metadata_response.memory_dump_entry_count);
+
+	if (dump.count == 0) {
+		fprintf(stderr, "Memory dump is empty.\n");
+		goto cmd_memory_dump_cleanup;
+	}
+
+	for (uint16_t seg_index = 0;
+	     seg_index < metadata_response.memory_dump_entry_count;
+	     seg_index++) {
+		struct mem_segment *seg = &dump.segments[seg_index];
+		struct ec_params_memory_dump_get_entry_info entry_info_params = {
+			.memory_dump_entry_index = seg_index
+		};
+		struct ec_response_memory_dump_get_entry_info
+			entry_info_response;
+
+		rv = ec_command(EC_CMD_MEMORY_DUMP_GET_ENTRY_INFO, 0,
+				&entry_info_params, sizeof(entry_info_params),
+				&entry_info_response,
+				sizeof(entry_info_response));
+		if (rv < 0) {
+			fprintf(stderr,
+				"Failed to get memory dump info for entry %d.\n",
+				seg_index);
+			goto cmd_memory_dump_cleanup;
+		}
+
+		seg->addr = entry_info_response.address;
+		seg->size = entry_info_response.size;
+		seg->mem = (uint8_t *)malloc(entry_info_response.size);
+
+		uint32_t offset = 0;
+		while (offset < entry_info_response.size) {
+			struct ec_params_memory_dump_read_memory
+				read_mem_params = {
+					.memory_dump_entry_index = seg_index,
+					.address = seg->addr + offset,
+					.size = seg->size - offset,
+				};
+
+			rv = ec_command(EC_CMD_MEMORY_DUMP_READ_MEMORY, 0,
+					&read_mem_params,
+					sizeof(read_mem_params),
+					read_mem_response, response_max);
+
+			if (rv <= 0) {
+				fprintf(stderr,
+					"Failed to read memory at %x.\n",
+					read_mem_params.address);
+				goto cmd_memory_dump_cleanup;
+			}
+
+			memcpy(seg->mem + offset, read_mem_response, rv);
+
+			offset += rv;
+		};
+
+		/* Print dump in hexdump cononical format */
+		for (int i = 0; i < seg->size; i += 16) {
+			printf("%08x  ", i + seg->addr);
+			for (int j = 0; j < 8 && i + j < seg->size; j++)
+				printf("%02x ", seg->mem[i + j]);
+			printf(" ");
+			for (int j = 8; j < 16 && i + j < seg->size; j++)
+				printf("%02x ", seg->mem[i + j]);
+			printf(" |");
+			for (int j = 0; j < 16 && i + j < seg->size; j++)
+				/* Skip non-printable characters */
+				if (isprint(seg->mem[i + j])
+					printf("%c", seg->mem[i + j]);
+				else
+					printf(".");
+			printf("|\n");
+		}
+		/* Double newline to delinate segments */
+		printf("%08x\n\n", seg->addr + seg->size);
+	}
+cmd_memory_dump_cleanup:
+	free(read_mem_response);
+	if (dump.segments)
+		for (int i = 0; i < dump.count; i++)
+			free(dump.segments[i].mem);
+	free(dump.segments);
+	return rv;
+}
+
 static const char *const mkbp_button_strings[] = {
 	[EC_MKBP_POWER_BUTTON] = "Power",
 	[EC_MKBP_VOL_UP] = "Volume up",
@@ -11163,6 +11290,7 @@ const struct command commands[] = {
 	{ "kbpress", cmd_kbpress },
 	{ "keyconfig", cmd_keyconfig },
 	{ "keyscan", cmd_keyscan },
+	{ "memory_dump", cmd_memory_dump },
 	{ "mkbpget", cmd_mkbp_get },
 	{ "mkbpwakemask", cmd_mkbp_wake_mask },
 	{ "motionsense", cmd_motionsense },
