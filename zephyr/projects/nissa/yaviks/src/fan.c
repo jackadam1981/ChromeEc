@@ -9,7 +9,10 @@
 #include "fan.h"
 #include "gpio/gpio.h"
 #include "hooks.h"
-#include "nissa_common.h"
+
+#include <zephyr/devicetree.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
 static void fan_init(void)

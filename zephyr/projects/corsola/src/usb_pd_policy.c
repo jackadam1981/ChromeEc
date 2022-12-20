@@ -3,16 +3,15 @@
  * found in the LICENSE file.
  */
 
-#include "atomic.h"
+#include "baseboard_usbc_config.h"
+#include "chipset.h"
 #include "console.h"
 #include "chipset.h"
 #include "hooks.h"
 #include "timer.h"
 #include "typec_control.h"
-#include "usb_dp_alt_mode.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
-#include "usbc_ppc.h"
 
 #include "baseboard_usbc_config.h"
 

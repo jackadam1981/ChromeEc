@@ -79,8 +79,11 @@ import json
 import os
 import re
 import shlex
+import shutil
+import socket
 import subprocess
 import sys
+import tempfile
 import time
 from pathlib import Path
 from shutil import which
@@ -172,29 +175,37 @@ def upload_results(ec_base):
     flag = False
 
     if is_rdb_login():
-        json_path = ec_base / "twister-out" / "twister.json"
-        cmd = [
-            "rdb",
-            "stream",
-            "-new",
-            "-realm",
-            "chromium:public",
-            "--",
-            str(ec_base / "util/zephyr_to_resultdb.py"),
-            "--result=" + str(json_path),
-            "--upload=True",
-        ]
+        json_path = pathlib.Path(outdir) / "twister.json"
 
-        start_time = time.time()
-        ret = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        end_time = time.time()
+        if json_path.exists():
+            hostname = socket.gethostname().split(".")[0]
+            cmd = [
+                "rdb",
+                "stream",
+                "-new",
+                "-realm",
+                "chromium:public",
+                "-var",
+                "builder_name:" + hostname,
+                "--",
+                "vpython3",
+                str(ec_base / "util/zephyr_to_resultdb.py"),
+                "--result=" + str(json_path),
+                "--upload=True",
+            ]
 
-        # Extract URL to test report from captured output
-        rdb_url = re.search(
-            r"(?P<url>https?://[^\s]+)", ret.stderr.split("\n")[0]
-        ).group("url")
-        print(f"\nTEST RESULTS ({end_time - start_time:.3f}s): {rdb_url}\n")
-        flag = ret.returncode == 0
+            start_time = time.time()
+            ret = subprocess.run(
+                cmd, capture_output=True, text=True, check=True
+            )
+            end_time = time.time()
+
+            # Extract URL to test report from captured output
+            rdb_url = re.search(
+                r"(?P<url>https?://[^\s]+)", ret.stderr.split("\n")[0]
+            ).group("url")
+            print(f"\nTEST RESULTS ({end_time - start_time:.3f}s): {rdb_url}\n")
+            flag = ret.returncode == 0
     else:
         print("Unable to upload test results, please run 'rdb auth-login'\n")
 
@@ -316,36 +327,71 @@ def main():
         twister_cli.extend(["-p", "native_posix"])
         twister_cli.extend(["-p", "unit_testing"])
 
-    # Append additional user-supplied args
-    twister_cli.extend(other_args)
+    twister_cli.extend(["--outdir", intercepted_args.outdir])
 
-    # Print exact CLI args and environment variables depending on verbosity.
-    if intercepted_args.verbose > 0:
-        print("Calling:", " ".join(shlex.quote(str(x)) for x in twister_cli))
-        print(
-            "With environment overrides:",
-            " ".join(
-                f"{name}={shlex.quote(val)}"
-                for name, val in extra_env_vars.items()
+    # Prepare environment variables for export to Twister. Inherit the parent
+    # process's environment, but set some default values if not already set.
+    twister_env = dict(os.environ)
+    with tempfile.TemporaryDirectory() as parsetab_dir:
+        extra_env_vars = {
+            "TOOLCHAIN_ROOT": os.environ.get(
+                "TOOLCHAIN_ROOT",
+                str(ec_base / "zephyr") if is_in_chroot else str(zephyr_base),
             ),
+            "ZEPHYR_TOOLCHAIN_VARIANT": intercepted_args.toolchain,
+            "PARSETAB_DIR": parsetab_dir,
+        }
+        gcov_tool = None
+        if intercepted_args.toolchain == "host":
+            gcov_tool = "gcov"
+        elif intercepted_args.toolchain == "llvm":
+            gcov_tool = str(ec_base / "util" / "llvm-gcov.sh")
+        else:
+            print("Unknown toolchain specified:", intercepted_args.toolchain)
+        if intercepted_args.gcov_tool:
+            gcov_tool = intercepted_args.gcov_tool
+        if gcov_tool:
+            twister_cli.extend(["--gcov-tool", gcov_tool])
+
+        twister_env.update(extra_env_vars)
+
+        # Append additional user-supplied args
+        twister_cli.extend(other_args)
+
+        # Print exact CLI args and environment variables depending on verbosity.
+        if intercepted_args.verbose > 0:
+            print(
+                "Calling:", " ".join(shlex.quote(str(x)) for x in twister_cli)
+            )
+            print(
+                "With environment overrides:",
+                " ".join(
+                    f"{name}={shlex.quote(val)}"
+                    for name, val in extra_env_vars.items()
+                ),
+            )
+            sys.stdout.flush()
+
+        # Invoke Twister and wait for it to exit.
+        result = subprocess.run(
+            twister_cli,
+            env=twister_env,
+            check=False,
+            close_fds=False,  # For GNUMakefile jobserver
         )
-        sys.stdout.flush()
 
-    # Invoke Twister and wait for it to exit.
-    result = subprocess.run(twister_cli, env=twister_env, check=False)
+        if check_for_skipped_tests(intercepted_args.outdir):
+            result.returncode = 1
 
-    if check_for_skipped_tests(ec_base):
-        result.returncode = 1
+        if result.returncode == 0:
+            print("TEST EXECUTION SUCCESSFUL")
+        else:
+            print("TEST EXECUTION FAILED")
 
-    if result.returncode == 0:
-        print("TEST EXECUTION SUCCESSFUL")
-    else:
-        print("TEST EXECUTION FAILED")
+        if is_tool("rdb") and intercepted_args.upload_cros_rdb:
+            upload_results(ec_base, intercepted_args.outdir)
 
-    if is_tool("rdb") and intercepted_args.upload_cros_rdb:
-        upload_results(ec_base)
-
-    sys.exit(result.returncode)
+        sys.exit(result.returncode)
 
 
 if __name__ == "__main__":

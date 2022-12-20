@@ -129,6 +129,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "gaelin",
     "genesis",
     "gimble",
+    "gladios",
     "grunt",
     "gumboz",
     "guybrush",
@@ -145,7 +146,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "kohaku",
     "kuldax",
     "lalala",
-    "lazor",
     "liara",
     "lick",
     "lindar",
@@ -292,6 +292,7 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     # Boards that use CHIP:=npcx
     "garg",  # overflows flash
     "gelarshie",  # overflows flash
+    "lazor",  # overflows flash
     "mushu",  # overflows flash
     "nocturne",  # overflows flash
     "terrador",  # overflows flash

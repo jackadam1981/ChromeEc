@@ -5,6 +5,9 @@
 
 /* Corsola baseboard-chipset specific configuration */
 
+#include "gpio_signal.h"
+
+#include <zephyr/drivers/gpio.h>
 #include <zephyr/init.h>
 #include <ap_power/ap_power.h>
 #include <zephyr/drivers/gpio.h>

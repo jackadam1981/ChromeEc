@@ -39,6 +39,10 @@ test-list-y=\
        flash_write_protect \
        fpsensor \
        fpsensor_hw \
+       ftrapv \
+       global_initialization \
+       libc_printf \
+       libcxx \
        mpu \
        mutex \
        panic \
@@ -58,6 +62,7 @@ test-list-y=\
        std_vector \
        stm32f_rtc \
        system_is_locked \
+       timer \
        timer_dos \
        utils \
        utils_str \

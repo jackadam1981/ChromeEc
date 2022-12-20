@@ -15,6 +15,11 @@
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/ps8xxx_public.h"
 #include "driver/tcpm/tcpci.h"
+#include "hooks.h"
+#include "system.h"
+#include "usb_mux.h"
+
+#include <zephyr/logging/log.h>
 
 #include "nissa_common.h"
 
@@ -176,9 +181,8 @@ uint16_t tcpc_get_alert_status(void)
 	uint16_t status = 0;
 	int regval;
 
-	/* Is the C1 port present and its IRQ line asserted? */
-	if (board_get_usb_pd_port_count() == 2 &&
-	    !gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl))) {
+	/* Is the C1 port IRQ line asserted? */
+	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c1_int_odl))) {
 		/*
 		 * C1 IRQ is shared between BC1.2 and TCPC; poll TCPC to see if
 		 * it asserted the IRQ.
@@ -323,7 +327,7 @@ static void check_c1_line(void)
 	 * If line is still being held low, see if there's more to process from
 	 * one of the chips.
 	 */
-	if (!gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl))) {
+	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c1_int_odl))) {
 		notify_c1_chips();
 		hook_call_deferred(&check_c1_line_data, INT_RECHECK_US);
 	}
@@ -378,7 +382,7 @@ void board_process_pd_alert(int port)
 	 * this special handling.
 	 */
 	if (port == 1 &&
-	    !gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl))) {
+	    !gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c1_int_odl))) {
 		sm5803_handle_interrupt(port);
 	}
 }

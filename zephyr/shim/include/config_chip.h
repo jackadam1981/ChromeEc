@@ -6,14 +6,6 @@
 #ifndef __CROS_EC_CONFIG_CHIP_H
 #define __CROS_EC_CONFIG_CHIP_H
 
-/*
- * I don't know why but gcc's preprocessor doesn't like the autoconf.h file,
- * sometimes. It seems to happen to brya RO. Adding a #line directive anywhere
- * in this file seems to fix the problem. #line marks the *next* line, so it is
- * off by one.
- */
-#line 16
-
 #include <zephyr/devicetree.h>
 #include <autoconf.h>
 
@@ -141,6 +133,16 @@
 #undef CONFIG_THROTTLE_AP
 #ifdef CONFIG_PLATFORM_EC_THROTTLE_AP
 #define CONFIG_THROTTLE_AP
+#endif
+
+#undef CONFIG_THROTTLE_AP_SINGLE_PIN
+#ifdef CONFIG_PLATFORM_EC_THROTTLE_AP_SINGLE_PIN
+#define CONFIG_THROTTLE_AP_SINGLE_PIN
+#endif
+
+#undef CONFIG_THROTTLE_AP_NO_FAN
+#ifdef CONFIG_PLATFORM_EC_THROTTLE_AP_NO_FAN
+#define CONFIG_THROTTLE_AP_NO_FAN
 #endif
 
 #undef CONFIG_CHIPSET_CAN_THROTTLE
@@ -353,6 +355,21 @@
 #define CONFIG_ISL9238C_DISABLE_CMOUT_LATCH
 #endif
 
+#undef CONFIG_AC_PROCHOT_CURRENT_MA
+#ifdef CONFIG_PLATFORM_EC_AC_PROCHOT_CURRENT_MA
+#define CONFIG_AC_PROCHOT_CURRENT_MA CONFIG_PLATFORM_EC_AC_PROCHOT_CURRENT_MA
+#endif
+
+#undef CONFIG_DC_PROCHOT_CURRENT_MA
+#ifdef CONFIG_PLATFORM_EC_DC_PROCHOT_CURRENT_MA
+#define CONFIG_DC_PROCHOT_CURRENT_MA CONFIG_PLATFORM_EC_DC_PROCHOT_CURRENT_MA
+#endif
+
+#undef CONFIG_CHARGER_DUMP_PROCHOT
+#ifdef CONFIG_PLATFORM_EC_CHARGER_DUMP_PROCHOT
+#define CONFIG_CHARGER_DUMP_PROCHOT
+#endif
+
 #undef CONFIG_CHARGER_RAA489000
 #ifdef CONFIG_PLATFORM_EC_CHARGER_RAA489000
 #define CONFIG_CHARGER_RAA489000
@@ -531,7 +548,13 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #undef CONFIG_MAPPED_STORAGE
 #undef CONFIG_FLASH_PSTATE
 #ifdef CONFIG_PLATFORM_EC_FLASH_CROS
+
+#ifdef CONFIG_BOARD_NATIVE_POSIX
+#include "flash_chip_native_posix.h"
+#else
 #include "flash_chip.h"
+#endif
+
 #define CONFIG_FLASH_CROS
 
 /* Internal, don't use outside this header */
@@ -1254,6 +1277,17 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #undef CONFIG_USB_PD_LOGGING
 #ifdef CONFIG_PLATFORM_EC_USB_PD_LOGGING
 #define CONFIG_USB_PD_LOGGING
+#endif
+
+#undef CONFIG_USB_PD_PRL_EVENT_LOG
+#ifdef CONFIG_PLATFORM_EC_USB_PD_PRL_EVENT_LOG
+#define CONFIG_USB_PD_PRL_EVENT_LOG
+#endif
+
+#undef CONFIG_USB_PD_PRL_EVENT_LOG_CAPACITY
+#ifdef CONFIG_PLATFORM_EC_USB_PD_PRL_EVENT_LOG_CAPACITY
+#define CONFIG_USB_PD_PRL_EVENT_LOG_CAPACITY \
+	CONFIG_PLATFORM_EC_USB_PD_PRL_EVENT_LOG_CAPACITY
 #endif
 
 #undef CONFIG_USBC_OCP
@@ -2575,6 +2609,11 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #define CONFIG_LOW_POWER_IDLE
 #endif
 
+#undef CONFIG_LOW_POWER_S0
+#ifdef CONFIG_PLATFORM_EC_LOW_POWER_S0
+#define CONFIG_LOW_POWER_S0
+#endif
+
 #undef CONFIG_POWER_COMMON
 #ifdef CONFIG_PLATFORM_EC_POWER_COMMON
 #define CONFIG_POWER_COMMON
@@ -2702,6 +2741,22 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #undef CONFIG_CPS8100
 #ifdef CONFIG_PLATFORM_EC_CPS8100
 #define CONFIG_CPS8100
+#endif
+
+#undef CONFIG_SYSTEM_SAFE_MODE
+#ifdef CONFIG_PLATFORM_EC_SYSTEM_SAFE_MODE
+#define CONFIG_SYSTEM_SAFE_MODE
+#endif
+
+#undef CONFIG_SYSTEM_SAFE_MODE_TIMEOUT_MSEC
+#ifdef CONFIG_PLATFORM_EC_SYSTEM_SAFE_MODE_TIMEOUT_MSEC
+#define CONFIG_SYSTEM_SAFE_MODE_TIMEOUT_MSEC \
+	CONFIG_PLATFORM_EC_SYSTEM_SAFE_MODE_TIMEOUT_MSEC
+#endif
+
+#undef CONFIG_BATT_HOST_FULL_FACTOR
+#ifdef CONFIG_PLATFORM_EC_BATT_HOST_FULL_FACTOR
+#define CONFIG_BATT_HOST_FULL_FACTOR CONFIG_PLATFORM_EC_BATT_HOST_FULL_FACTOR
 #endif
 
 #endif /* __CROS_EC_CONFIG_CHIP_H */

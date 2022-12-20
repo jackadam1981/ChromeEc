@@ -13,7 +13,9 @@
 #include "driver/charger/isl923x_public.h"
 #include "driver/retimer/anx7483_public.h"
 #include "driver/tcpm/tcpci.h"
-#include "driver/tcpm/raa489000.h"
+#include "hooks.h"
+#include "system.h"
+#include "usb_mux.h"
 
 #include "nissa_common.h"
 

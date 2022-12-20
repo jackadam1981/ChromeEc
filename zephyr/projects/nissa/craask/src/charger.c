@@ -10,6 +10,7 @@
 #include "charger/isl923x_public.h"
 #include "console.h"
 #include "extpower.h"
+#include "usb_mux.h"
 #include "usb_pd.h"
 #include "nissa_common.h"
 

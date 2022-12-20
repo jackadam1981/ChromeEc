@@ -337,6 +337,8 @@ const char help_str[] =
 	"      Get discovery information for port and type\n"
 	"  typecstatus <port>\n"
 	"      Get status information for port\n"
+	"  typecvdmresponse <port>\n"
+	"      Get last VDM response for AP-requested VDM\n"
 	"  uptimeinfo\n"
 	"      Get info about how long the EC has been running and the most\n"
 	"      recent AP resets\n"
@@ -8284,6 +8286,26 @@ int cmd_board_version(int argc, char *argv[])
 	return rv;
 }
 
+int cmd_boottime(int argc, char *argv[])
+{
+	struct ap_boot_time_data response;
+	int rv;
+
+	rv = ec_command(EC_CMD_GET_BOOT_TIME, 0, NULL, 0, &response,
+			sizeof(response));
+	if (rv < 0)
+		return rv;
+
+	printf("arail: %" PRIu64 "\n", response.timestamp[ARAIL]);
+	printf("rsmrst: %" PRIu64 "\n", response.timestamp[RSMRST]);
+	printf("espirst: %" PRIu64 "\n", response.timestamp[ESPIRST]);
+	printf("pltrst_low: %" PRIu64 "\n", response.timestamp[PLTRST_LOW]);
+	printf("pltrst_high: %" PRIu64 "\n", response.timestamp[PLTRST_HIGH]);
+	printf("cnt: %" PRIu16 "\n", response.cnt);
+	printf("ec_cur_time: %" PRIu64 "\n", response.timestamp[EC_CUR_TIME]);
+	return rv;
+}
+
 static void cmd_cbi_help(char *cmd)
 {
 	fprintf(stderr,
@@ -10527,6 +10549,45 @@ int cmd_typec_status(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_typec_vdm_response(int argc, char *argv[])
+{
+	struct ec_params_typec_vdm_response p;
+	struct ec_response_typec_vdm_response *r =
+		(ec_response_typec_vdm_response *)ec_inbuf;
+	char *endptr;
+	int rv, i;
+
+	if (argc != 2) {
+		fprintf(stderr,
+			"Usage: %s <port>\n"
+			"  <port> is the type-c port to query\n",
+			argv[0]);
+		return -1;
+	}
+
+	p.port = strtol(argv[1], &endptr, 0);
+	if (endptr && *endptr) {
+		fprintf(stderr, "Bad port\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_TYPEC_VDM_RESPONSE, 0, &p, sizeof(p), ec_inbuf,
+			ec_max_insize);
+	if (rv < 0)
+		return -1;
+
+	if (r->vdm_data_objects > 0) {
+		printf("VDM response from partner: %d", r->partner_type);
+		for (i = 0; i < r->vdm_data_objects; i++)
+			printf("\n  0x%08x", r->vdm_response[i]);
+		printf("\n");
+	} else {
+		printf("No VDM response found\n");
+	}
+
+	return 0;
+}
+
 int cmd_tp_self_test(int argc, char *argv[])
 {
 	int rv;
@@ -10882,6 +10943,7 @@ const struct command commands[] = {
 	{ "batterycutoff", cmd_battery_cut_off },
 	{ "batteryparam", cmd_battery_vendor_param },
 	{ "boardversion", cmd_board_version },
+	{ "boottime", cmd_boottime },
 	{ "button", cmd_button },
 	{ "cbi", cmd_cbi },
 	{ "chargecurrentlimit", cmd_charge_current_limit },
@@ -11003,6 +11065,7 @@ const struct command commands[] = {
 	{ "typeccontrol", cmd_typec_control },
 	{ "typecdiscovery", cmd_typec_discovery },
 	{ "typecstatus", cmd_typec_status },
+	{ "typecvdmresponse", cmd_typec_vdm_response },
 	{ "uptimeinfo", cmd_uptimeinfo },
 	{ "usbchargemode", cmd_usb_charge_set_mode },
 	{ "usbmux", cmd_usb_mux },

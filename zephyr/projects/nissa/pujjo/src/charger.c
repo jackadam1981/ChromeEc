@@ -12,6 +12,7 @@
 #include "driver/charger/isl923x.h"
 #include "console.h"
 #include "extpower.h"
+#include "hooks.h"
 #include "usb_pd.h"
 #include "nissa_common.h"
 #include "hooks.h"

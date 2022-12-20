@@ -3,5 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* remove pinctrl to avoid pull in too many unwanted dependency */
-/delete-node/ &pinctrl;
+/**
+ * See CONFIG_TASK_LIST in config.h for details.
+ */
+#define CONFIG_TEST_TASK_LIST  /* No test task */

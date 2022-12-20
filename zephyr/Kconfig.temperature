@@ -81,6 +81,8 @@ config PLATFORM_EC_FAN
 	bool "Fan support"
 	default y
 	depends on DT_HAS_CROS_EC_FANS_ENABLED
+	select PWM
+	select SENSOR
 	help
 	  Enables support for fans. Allows periodic thermal task to
 	  automatically set the fan speed (control temperature).

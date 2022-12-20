@@ -3,22 +3,17 @@
  * found in the LICENSE file.
  */
 
-#include <zephyr/devicetree.h>
-#include <zephyr/drivers/gpio.h>
-#include <zephyr/logging/log.h>
-
 #include "cros_cbi.h"
 #include "fan.h"
 #include "gpio/gpio.h"
 #include "hooks.h"
 
-#include "nissa_common.h"
+#include <zephyr/devicetree.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/logging/log.h>
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
-/*
- * Nirwen fan support
- */
 static void fan_init(void)
 {
 	int ret;
@@ -31,11 +26,15 @@ static void fan_init(void)
 		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", FW_FAN);
 		return;
 	}
-	if (val != FW_FAN_PRESENT) {
+	if (val == FW_FAN_NOT_PRESENT) {
 		/* Disable the fan */
+		LOG_INF("Fan not present");
 		fan_set_count(0);
-	} else {
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_fan_enable),
+				      GPIO_OUTPUT_LOW);
+	} else if (val == FW_FAN_PRESENT) {
 		/* Configure the fan enable GPIO */
+		LOG_INF("Fan present");
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_fan_enable),
 				      GPIO_OUTPUT);
 	}

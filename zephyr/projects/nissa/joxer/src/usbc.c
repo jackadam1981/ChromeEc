@@ -15,6 +15,11 @@
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/ps8xxx_public.h"
 #include "driver/tcpm/tcpci.h"
+#include "hooks.h"
+#include "system.h"
+#include "usb_mux.h"
+
+#include <zephyr/logging/log.h>
 
 #include "nissa_common.h"
 

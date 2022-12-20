@@ -46,6 +46,7 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
+/* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)

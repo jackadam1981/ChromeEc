@@ -12,7 +12,6 @@
 #include "gpio/gpio.h"
 #include "hooks.h"
 #include "keyboard_8042_sharedlib.h"
-#include "nissa_common.h"
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 

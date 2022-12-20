@@ -3,7 +3,9 @@
 # found in the LICENSE file.
 
 menuconfig PLATFORM_EC_LED_DT
-	bool "LED Support"
+	bool "DT LED Support"
+	default y
+	depends on DT_HAS_CROS_EC_LED_POLICY_ENABLED
 	help
 	  Enable devicetree based LED module supporting automatic control of the
 	  battery and power LEDs.

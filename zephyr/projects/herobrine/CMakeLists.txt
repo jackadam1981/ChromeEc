@@ -22,6 +22,9 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_I2C
 
 if(DEFINED CONFIG_BOARD_EVOKER)
 	project(evoker)
+	zephyr_library_sources(
+		"evoker/src/charger_override.c"
+	)
 elseif(DEFINED CONFIG_BOARD_HEROBRINE)
 	project(herobrine)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
@@ -29,6 +32,9 @@ elseif(DEFINED CONFIG_BOARD_HEROBRINE)
 elseif(DEFINED CONFIG_BOARD_HOGLIN)
 	project(hoglin)
 elseif(DEFINED CONFIG_BOARD_VILLAGER)
+	zephyr_library_sources(
+		"villager/src/keyboard.c"
+	)
 	project(villager)
 elseif(DEFINED CONFIG_BOARD_ZOGLIN)
 	project(zoglin)

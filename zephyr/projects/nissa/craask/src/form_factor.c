@@ -15,7 +15,7 @@
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "motionsense_sensors.h"
-#include "motion_sense.h"
+#include "nissa_sub_board.h"
 #include "tablet_mode.h"
 
 #include "nissa_common.h"
