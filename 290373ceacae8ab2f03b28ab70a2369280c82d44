@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef9287c_31b9afc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-12-20T18:47:20Z",
+      "side": 1,
+      "message": "Just some nits.",
+      "revId": "290373ceacae8ab2f03b28ab70a2369280c82d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc182607_5ccae3e4",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-12-20T18:47:20Z",
+      "side": 1,
+      "message": "Move the comma to the previous line.",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "290373ceacae8ab2f03b28ab70a2369280c82d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc3251a4_f9e2f991",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-12-20T18:47:20Z",
+      "side": 1,
+      "message": "Move this comment to the below line 92.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "290373ceacae8ab2f03b28ab70a2369280c82d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4fde66b_cf5fdd19",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-12-20T18:47:20Z",
+      "side": 1,
+      "message": "Add a newline after the variable declaration.",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "290373ceacae8ab2f03b28ab70a2369280c82d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
