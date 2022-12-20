@@ -8000,6 +8000,7 @@ struct ec_response_battery_dynamic_info {
 	int16_t flags;
 	int16_t desired_voltage;
 	int16_t desired_current;
+	int16_t temperature;
 } __ec_align2;
 
 /*
