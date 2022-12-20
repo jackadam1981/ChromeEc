@@ -58,7 +58,7 @@ struct gpio_config {
 #define GPIO_IMPL_CONFIG(id) \
 	COND_CODE_1(DT_NODE_HAS_PROP(id, gpios), (GPIO_CONFIG(id)), ())
 
-static const struct gpio_config configs[] = {
+static struct gpio_config configs[] = {
 #if DT_NODE_EXISTS(DT_PATH(named_gpios))
 	DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_IMPL_CONFIG)
 #endif
@@ -320,6 +320,26 @@ void gpio_reset(enum gpio_signal signal)
 
 	gpio_pin_configure_dt(&configs[signal].spec,
 			      configs[signal].init_flags);
+}
+
+void gpio_port_get_config(const struct device *port)
+{
+	for (size_t i = 0; i < ARRAY_SIZE(configs); ++i) {
+		if (port == configs[i].spec.port) {
+			gpio_pin_get_config_dt(&configs[i].spec,
+					       &configs[i].init_flags);
+		}
+	}
+}
+
+void gpio_port_set_config(const struct device *port)
+{
+	for (size_t i = 0; i < ARRAY_SIZE(configs); ++i) {
+		if (port == configs[i].spec.port) {
+			gpio_pin_configure_dt(&configs[i].spec,
+					      configs[i].init_flags);
+		}
+	}
 }
 
 void gpio_reset_port(const struct device *port)

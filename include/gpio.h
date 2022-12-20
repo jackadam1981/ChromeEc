@@ -402,6 +402,24 @@ void gpio_reset(enum gpio_signal signal);
 #ifdef CONFIG_ZEPHYR
 
 /**
+ * @brief Save all the GPIOs current state
+ *
+ * This function saves all pins current state from selected port.
+ *
+ * @param port	Port to save
+ */
+void gpio_port_get_config(const struct device *port);
+
+/**
+ * @brief Restore all the GPIOs
+ *
+ * This function restore all pins current state from selected port.
+ *
+ * @param port	Port to restore
+ */
+void gpio_port_set_config(const struct device *port);
+
+/**
  * @brief Reset all the GPIOs to default state
  *
  * This returns all pins from selected port to default state. The default flags
