@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9b5bad_9db05c1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-20T05:42:59Z",
+      "side": 1,
+      "message": "I\u0027ve tried to make it warn if unset, but doing that in a reasonable way is difficult:\n\n1. Warnings fail the build by default, so we need to fix existing ones and it\u0027s difficult to automatically find the ones that need fixing.\n2. Boards that do their own derating in `board_set_charge_limit` need to opt out of the warning, which involves making the default implementation of that function gated by a config option instead (and ideally also changing every user to remove the `__override`). Some boards use both a default derating and custom `board_set_charge_limit`.\n\nI\u0027m inclined to skip trying to do anything very fancy with this, and keep the default value which gets overridden by boards that want to: the Kconfig approach which I expect to be used for new boards makes it more straighforward to express the default and has no meaningful way to express the same sort of \"you need to configure this number\" unless we were to add some kind of `CONFIG_I_PROMISE_I_CONFIGURED_CHARGER_DERATING_APPROPRIATELY` (or I suppose default it to an obviously-invalid number).\nEven then I\u0027d usually expect somebody to make up a number during bring-up then forget about it, never actually characterizing the system to improve the guess: many boards currently have abandoned TODOs regarding charger characterization (where the bug was closed and it seems nobody ever improved the initial guess or removed the TODO), and I further assume that many other boards lack those only because nobody filed a bug in the first place.",
+      "parentUuid": "e03e6152_1a1c86c1",
+      "range": {
+        "startLine": 24,
+        "startChar": 35,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "eacacdd07736694f4e0de08c33822e1660977215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "38fe8569_2ff5ef03",
