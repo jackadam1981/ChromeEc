@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba69445_680528bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-20T21:36:02Z",
+      "side": 1,
+      "message": "This LGTM but I\u0027m not very familiar with the Zephyr infrastructure. I also had a couple of questions that are only tangentially related to this CL.",
+      "revId": "4e7b0254608ece1172bf352bfe05d40a602397d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59453ec2_d4cadf53",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-20T21:36:02Z",
+      "side": 1,
+      "message": "Similar to my question below, I presume this is only called from [ec_app_main.c](http://cs/chromeos_public/src/platform/ec/zephyr/app/ec/ec_app_main.c?l\u003d42) but the return code is never checked. Could this leave the application running without watchdog? \n\nI don\u0027t think this gates this CL because it\u0027s not a new issue, just an observation.",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 17
+      },
+      "revId": "4e7b0254608ece1172bf352bfe05d40a602397d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61b77ded_3455aeb3",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-12-20T21:36:02Z",
+      "side": 1,
+      "message": "If an error occurs in one of these continues then `wdt_enabled[i]` is never set and `wdt_feed` never happens but is this guaranteed to result in a detectable response. I\u0027m not sure what the appropriate response would be (reboot?) but this failing might leave us in a state where the watchdog isn\u0027t running.\n\nI don\u0027t think this is a blocker for this CL because it doesn\u0027t appear to be new behavior (and may not be an issue, I\u0027m not certain).",
+      "range": {
+        "startLine": 150,
+        "startChar": 3,
+        "endLine": 150,
+        "endChar": 11
+      },
+      "revId": "4e7b0254608ece1172bf352bfe05d40a602397d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
