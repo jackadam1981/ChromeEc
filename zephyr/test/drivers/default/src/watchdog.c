@@ -62,6 +62,17 @@ static void watchdog_before(void *state)
 static void watchdog_after(void *state)
 {
 	ARG_UNUSED(state);
+
+	/*
+	 * Watchdog needs to trigger before initializing it again, otherwise
+	 * initialization will fail and watchdog can trigger in unexpected way.
+	 */
+	if (!wdt_warning_triggered) {
+		k_timer_start(&ktimer, K_MSEC(DEFAULT_WDT_EXPIRY_MS),
+			      K_NO_WAIT);
+		k_busy_wait(DEFAULT_WDT_EXPIRY_MS * 1000);
+		k_timer_stop(&ktimer);
+	}
 	wdt_warning_triggered = false;
 }
 
