@@ -8157,6 +8157,7 @@ static int get_battery_command_print_info(
 		goto cmd_error;
 	printf("  Desired current         %u mA\n", dynamic_r.desired_current);
 
+	printf("  Temperature             %.1f °C\n", (double)(dynamic_r.temperature - 2731) / 10);
 	print_battery_flags(dynamic_r.flags);
 	return 0;
 
