@@ -8,6 +8,7 @@
 #include "../drivers/flash/spi_nor.h"
 #include "flash.h"
 #include "spi_flash_reg.h"
+#include "watchdog.h"
 #include "write_protect.h"
 
 #include <zephyr/drivers/flash.h>
@@ -442,6 +443,14 @@ static int cros_flash_npcx_write(const struct device *dev, int offset, int size,
 	if (src_data == 0) {
 		return -EINVAL;
 	}
+
+	/*
+	 * If the AP sends a sequence of write commands, we may not have time to
+	 * reload the watchdog normally.  Force a reload here to avoid the
+	 * watchdog triggering in the middle of flashing.
+	 */
+	if (IS_ENABLED(CONFIG_WATCHDOG))
+		watchdog_reload();
 
 	/* Lock physical flash operations */
 	crec_flash_lock_mapped_storage(1);
