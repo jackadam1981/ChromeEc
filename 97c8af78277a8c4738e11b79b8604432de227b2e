@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee2a31d8_9645d2d8",
+        "filename": "zephyr/program/rex/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-12-20T10:27:11Z",
+      "side": 1,
+      "message": "I modified it to switch, do let me know if it\u0027s not a good thing to do",
+      "parentUuid": "f899fa01_9c347175",
+      "revId": "97c8af78277a8c4738e11b79b8604432de227b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35be1285_1dab8658",
         "filename": "zephyr/program/rex/src/fan.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-19T11:26:26Z",
       "side": 1,
       "message": "Well that\u0027s a weird way of doing it, the `fan_0` node has a phandle for this, `fan.c` should be the only code that controls this GPIO, using it in various places is asking for troubles down the road, and generally avoid skipping the specific node and use the gpio directly.\n\nHow about this: for the moment, avoid referring to the GPIO directly from the nodelabel: we have nodes with properties, find the pin going through `cros-ec,fans` compatible, child 0, enable_gpio property (yes you\u0027ll have to add the node to the tests as well).\n\nThen the longer term plan, if you have time to follow up on this, would be:\n\n- refactor the fan node yaml file (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/dts/bindings/fan/cros-ec,fans.yaml) to convert the underscores to dashes (https://docs.zephyrproject.org/latest/build/dts/bindings.html#general-rules)\n- add an API to the fan driver so that the fan enable control code lives there, convert all of these project fan.c to use it.\n- convert the enable_gpio property to an enable-gpios one, referring to the gpio directly with the Zephyr GPIO APIs (i.e. not through named gpios)",
+      "revId": "97c8af78277a8c4738e11b79b8604432de227b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57178d5_8701e2ed",
+        "filename": "zephyr/program/rex/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-12-20T10:27:11Z",
+      "side": 1,
+      "message": "I actually removed the if fan exists part from code because right now we are not using CBI, and we are not clear what we need in fan_init method, other than detecting fan present status from CBI.",
+      "parentUuid": "35be1285_1dab8658",
       "revId": "97c8af78277a8c4738e11b79b8604432de227b2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
