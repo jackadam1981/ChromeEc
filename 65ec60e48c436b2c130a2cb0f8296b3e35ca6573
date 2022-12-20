@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb80fac0_f6b32ad6",
+        "filename": "common/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-12-20T02:52:03Z",
+      "side": 1,
+      "message": "Done\n\"If cutoff is already in progress, line 360 fails and we get here\" \u003d\u003e yes, in this case, it shouldn\u0027t reset cutoff state. I remover it.  \nOriginal intention is reset cutoff state to normal when return error just like line 331.",
+      "parentUuid": "03f1b318_1bd0bde8",
+      "range": {
+        "startLine": 366,
+        "startChar": 2,
+        "endLine": 366,
+        "endChar": 53
+      },
+      "revId": "65ec60e48c436b2c130a2cb0f8296b3e35ca6573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88cfd165_faf224c5",
@@ -72,6 +96,30 @@
       "writtenOn": "2022-12-19T16:53:42Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 405,
+        "startChar": 2,
+        "endLine": 405,
+        "endChar": 53
+      },
+      "revId": "65ec60e48c436b2c130a2cb0f8296b3e35ca6573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d57fbd8b_c1b52634",
+        "filename": "common/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-12-20T02:52:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88cfd165_faf224c5",
       "range": {
         "startLine": 405,
         "startChar": 2,
