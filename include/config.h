@@ -2604,6 +2604,9 @@
 /* Include host command to control I2C busses (get, set speed, etc.) */
 #undef CONFIG_HOSTCMD_I2C_CONTROL
 
+/* Host commands for dumping memory */
+#undef CONFIG_HOST_COMMAND_MEMORY_DUMP
+
 /*
  * List of host commands whose debug output will be suppressed
  * By default remove periodic commands and commands called often (SENSE).
