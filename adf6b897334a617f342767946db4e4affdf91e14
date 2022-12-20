@@ -16,6 +16,24 @@
       "message": "Maybe there isn\u0027t a config with C2 and not C3, but wouldn\u0027t it be more correct to guard `usb_mux_alt_mchain_2` with `HAS_TASK_PD_C2` and 3 with C3?",
       "revId": "adf6b897334a617f342767946db4e4affdf91e14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "814f4a42_e9e99273",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-12-20T18:01:49Z",
+      "side": 1,
+      "message": "I think that depends on how we define this check...we might not even need this at all since LP5 RVP will always have C2 and C3. I think during RVP Power On I only added it cause we were disabling ports on RVP to bring up the board. \n\nWe will probably want to either add them all C0-C3 or remove them in my opinion",
+      "parentUuid": "6c691e4c_cf984c98",
+      "revId": "adf6b897334a617f342767946db4e4affdf91e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
