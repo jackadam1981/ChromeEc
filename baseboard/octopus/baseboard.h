@@ -38,6 +38,8 @@
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
 
+#define CONFIG_SYSTEM_SAFE_MODE
+
 /* I2C Bus Configuration */
 #define I2C_PORT_BATTERY NPCX_I2C_PORT0_0
 #define I2C_PORT_TCPC0 NPCX_I2C_PORT1_0
