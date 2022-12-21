@@ -780,6 +780,11 @@ void pd_request_data_swap(int port)
 	}
 }
 
+bool pd_data_swap_in_progress(int port)
+{
+	return TC_CHK_FLAG(port, TC_FLAGS_REQUEST_DR_SWAP);
+}
+
 /* Return true if partner port is known to be PD capable. */
 bool pd_capable(int port)
 {
