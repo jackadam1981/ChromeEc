@@ -244,7 +244,7 @@ static int anx7483_set(const struct usb_mux *me, mux_state_t mux_state,
 	 * Always ensure i2c control is set and state machine is enabled
 	 * (setting ANX7483_CTRL_REG_BYPASS_EN disables state machine)
 	 */
-	reg = ANX7483_CTRL_REG_EN;
+	reg = ANX7483_CTRL_REG_EN | ANX7483_CTRL_REG_BYPASS_EN;
 	if (mux_state & USB_PD_MUX_USB_ENABLED)
 		reg |= ANX7483_CTRL_USB_EN;
 	if (mux_state & USB_PD_MUX_DP_ENABLED)
