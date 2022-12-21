@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f58388f_a9e96ddf",
+        "filename": "zephyr/program/rex/src/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-21T10:41:13Z",
+      "side": 1,
+      "message": "Would suggest dropping the comment, it\u0027s somewhat redundant and somewhat incorrect (there\u0027s no fan to disable at this point). Bit of a nitpick but since this is going to get copypasted everywhere we may as well.",
+      "revId": "51c51e434017b51689a7afb98b5eafc75549298f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "066e8409_824191be",
+        "filename": "zephyr/program/rex/src/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-21T10:41:13Z",
+      "side": 1,
+      "message": "This is somewhat redundant now since the function does not hing else, may as well drop the return.",
+      "revId": "51c51e434017b51689a7afb98b5eafc75549298f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2842c07d_450a44cf",
+        "filename": "zephyr/test/rex/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-12-21T10:41:13Z",
+      "side": 1,
+      "message": "This should fit on a single line. Actually the ones above as well, can you reformat them while you are at it?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "51c51e434017b51689a7afb98b5eafc75549298f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
