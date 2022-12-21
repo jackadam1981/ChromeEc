@@ -120,6 +120,7 @@ __maybe_unused static void print_flag(const char *group, int set_or_clear,
 #define PRL_FLAGS_ABORT BIT(9)
 /* Flag to note current TX message uses chunking */
 #define PRL_FLAGS_CHUNKING BIT(10)
+#define PRL_FLAGS_IGNORE_DATA_ROLE BIT(11)
 
 struct bit_name {
 	int value;
@@ -557,6 +558,14 @@ void prl_execute_hard_reset(int port)
 	PRL_HR_SET_FLAG(port, PRL_FLAGS_PE_HARD_RESET);
 	set_state_prl_hr(port, PRL_HR_RESET_LAYER);
 	task_wake(PD_PORT_TO_TASK_ID(port));
+}
+
+void prl_set_data_role_check(int port, bool enable)
+{
+	if (enable)
+		RCH_CLR_FLAG(port, PRL_FLAGS_IGNORE_DATA_ROLE);
+	else
+		RCH_SET_FLAG(port, PRL_FLAGS_IGNORE_DATA_ROLE);
 }
 
 int prl_is_running(int port)
@@ -2202,7 +2211,8 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	 * processing this requirement in the PRL RX.
 	 */
 	if (PD_HEADER_GET_SOP(header) == TCPCI_MSG_SOP &&
-	    PD_HEADER_DROLE(header) == pd_get_data_role(port)) {
+	    PD_HEADER_DROLE(header) == pd_get_data_role(port) &&
+	    !RCH_CHK_FLAG(port, PRL_FLAGS_IGNORE_DATA_ROLE)) {
 		CPRINTS("C%d Error: Data role mismatch (0x%08x)", port, header);
 		tc_start_error_recovery(port);
 		return;

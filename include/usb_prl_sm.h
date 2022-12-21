@@ -143,4 +143,6 @@ void prl_hard_reset_complete(int port);
  */
 void prl_execute_hard_reset(int port);
 
+void prl_set_data_role_check(int port, bool enable);
+
 #endif /* __CROS_EC_USB_PRL_H */

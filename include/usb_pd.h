@@ -2981,6 +2981,8 @@ void pd_try_vconn_src(int port);
  */
 void pd_request_data_swap(int port);
 
+bool pd_data_swap_in_progress(int port);
+
 /**
  * Set the PD communication enabled flag. When communication is disabled,
  * the port can still detect connection and source power but will not

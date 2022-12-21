@@ -4514,6 +4514,7 @@ static void pe_drs_evaluate_swap_entry(int port)
 		 * PE_DRS_DFP_UFP_Accept_Swap states embedded here.
 		 */
 		send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_ACCEPT);
+		prl_set_data_role_check(port, false);
 	} else {
 		/*
 		 * PE_DRS_UFP_DFP_Reject_Swap and PE_DRS_DFP_UFP_Reject_Swap
@@ -4565,6 +4566,7 @@ static void pe_drs_change_run(int port)
 
 	/* Update the data role */
 	pe[port].data_role = pd_get_data_role(port);
+	prl_set_data_role_check(port, true);
 
 	if (pe[port].data_role == PD_ROLE_DFP)
 		PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
