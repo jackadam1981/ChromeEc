@@ -22,6 +22,30 @@
       },
       "revId": "158f5b02b9edad0a45b8a5e5eede7b1946159c9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6482f7b1_ec807827",
+        "filename": "common/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-12-21T17:14:49Z",
+      "side": 1,
+      "message": "I looked at the code around, it looks like using `int` for sector id, number of sectors, sizes is common here. I tried `size_t`, but it seems to be not defined here. I would leave it as it is.",
+      "parentUuid": "5e254912_fdb1333d",
+      "range": {
+        "startLine": 243,
+        "startChar": 8,
+        "endLine": 243,
+        "endChar": 11
+      },
+      "revId": "158f5b02b9edad0a45b8a5e5eede7b1946159c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
