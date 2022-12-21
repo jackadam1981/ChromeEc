@@ -37,7 +37,7 @@ Run the script on the remote machine:
                 --jlink_port 19020 --console_port 10000
 """
 # pylint: enable=line-too-long
-# TODO(267800058): refactor into multiple modules
+# TODO(267803007): refactor into multiple modules
 # pylint: disable=too-many-lines
 
 import argparse
@@ -101,6 +101,8 @@ SERVO_MICRO_FLASH_SCRIPT = os.path.join(EC_DIR, "util/flash_ec")
 
 ALL_TESTS_PASSED_REGEX = re.compile(r"Pass!\r\n")
 ALL_TESTS_FAILED_REGEX = re.compile(r"Fail! \(\d+ tests\)\r\n")
+
+RW_APP_READY_REGEX = re.compile(r".*Sensor create: 0x0.*")
 
 SINGLE_CHECK_PASSED_REGEX = re.compile(r"Pass: .*")
 SINGLE_CHECK_FAILED_REGEX = re.compile(r".*failed:.*")
@@ -174,12 +176,122 @@ def run_subprocess(command, stdout=None, check=False):
     return proc.returncode
 
 
+@call_logger
+def verify_power_utilization(
+    fp_expected: Tuple[float, float], mcu_expected: Tuple[float, float]
+) -> bool:
+    """Get the name of the console for a given board."""
+    cmd = [
+        "dut-control",
+        "--value_only",  # only the summary will print the field names
+        "-t",
+        "10",  # sample time in seconds
+        "pp3300_dx_mcu_mw",
+        "pp3300_dx_fp_mw",
+    ]
+    logging.debug('Running command: "%s"', " ".join(cmd))
+
+    pp3300_dx_fp_mw = None
+    pp3300_dx_mcu_mw = None
+    with subprocess.Popen(cmd, stdout=subprocess.PIPE) as proc:
+        for line in io.TextIOWrapper(proc.stdout):  # type: ignore[arg-type]
+            # Only the summary is required and those lines start with @@ and have 6 other fields
+            # (NAME, COUNT, AVERAGE, STDDEV, MAX, MIN)
+            response = line.split()
+            if len(response) != 7 or response[0] != "@@":
+                continue
+
+            resp_name, _, resp_avg, _, _, _ = response[1:]
+
+            if resp_name == "pp3300_dx_fp_mw":
+                pp3300_dx_fp_mw = float(resp_avg.strip())
+            elif resp_name == "pp3300_dx_mcu_mw":
+                pp3300_dx_mcu_mw = float(resp_avg.strip())
+
+            if pp3300_dx_fp_mw is not None and pp3300_dx_mcu_mw is not None:
+                fp_mw_expected, fp_mw_range = fp_expected
+                mcu_mw_expected, mcu_mw_range = mcu_expected
+
+                fp_mw_delta = abs(pp3300_dx_fp_mw - fp_mw_expected)
+                mcu_mw_delta = abs(pp3300_dx_mcu_mw - mcu_mw_expected)
+
+                logging.info(
+                    "pp3300_dx_fp_mw\t"
+                    "actual: %0.2f expected: %0.2f threshold: +/-%0.2f",
+                    pp3300_dx_fp_mw,
+                    fp_mw_expected,
+                    fp_mw_range,
+                )
+                logging.info(
+                    "pp3300_dx_mcu_mw:\t"
+                    "actual: %0.2f expected: %0.2f threshold: +/-%0.2f",
+                    pp3300_dx_mcu_mw,
+                    mcu_mw_expected,
+                    mcu_mw_range,
+                )
+
+                return (
+                    fp_mw_delta <= fp_mw_range and mcu_mw_delta <= mcu_mw_range
+                )
+    return False
+
+
+@call_logger
+def set_sleep_mode(enter_sleep: bool) -> bool:
+    """Enters or exists sleep mode based on enter_sleep parameter"""
+    sleep_mode = "on" if enter_sleep else "off"
+    cmd = [
+        "dut-control",
+        f"fpmcu_slp_alt:{sleep_mode}",
+    ]
+    return run_subprocess(cmd) == 0
+
+
+@call_logger
+def verify_idle_power_utilization(build_board: str) -> bool:
+    """Verifies that idle power utilization is within range for the specified board"""
+    # TODO(b/267800058): Include the power utilization constants into board config
+
+    ret = False
+    # Values for Icetower v0.1 and Dragonclaw v0.2 are taken from the documentation in
+    #   ec/docs/fingerprint/fingerprint.md (rounded to nearest 0.1 mw)
+    if build_board == DARTMONKEY:  # Icetower
+        ret = verify_power_utilization((0.0, 0.1), (43.9, 8.8))
+    elif build_board == BLOONCHIPPER:  # Dragonclaw
+        # TODO(267804744): Official numbers list mcu power as 21.8 mW with
+        # stddev of 0.06 but tests are showing consistent results of 16.2 mW
+        # with stddev of 0.05. This range was made wide enough to support both
+        ret = verify_power_utilization((0.0, 0.1), (21.8, 6.5))
+
+    return ret
+
+
+@call_logger
+def verify_sleep_power_utilization(build_board: str) -> bool:
+    """Verifies that sleep power utilization is within range for the specified board"""
+    ret = False
+
+    # Values for Icetower v0.1 and Dragonclaw v0.2 are taken from the documentation in
+    #   ec/docs/fingerprint/fingerprint.md (rounded to nearest 0.1 mw)
+    if build_board == DARTMONKEY:  # Icetower
+        ret = verify_power_utilization((0.0, 0.1), (5.7, 1.6))
+    elif build_board == BLOONCHIPPER:  # Dragonclaw
+        # TODO(267804744): Official numbers list mcu power as 1.6 mW with stddev
+        # of 0.6 but tests are showing consistent results of 0.3 mW with stddev
+        # of 0.3. This range was made wide enough to support both.
+        ret = verify_power_utilization((0.0, 0.1), (1.6, 1.3))
+
+    # Make sure to exit sleep mode!
+    set_sleep_mode(False)
+    return ret
+
+
 class ImageType(Enum):
     """EC Image type to use for the test."""
 
     TEST_RO = 1
     TEST_RW = 2
-    APP = 3
+    PRODUCTION_RW = 3
 
 
 @dataclass
@@ -265,8 +377,8 @@ class AllTests:
         tests = [
             TestConfig(
                 test_name="standard_app_test",
-                finish_regexes=[re.compile(r".*RW verify OK.*")],
-                image_to_use=ImageType.APP,
+                finish_regexes=[RW_APP_READY_REGEX],
+                image_to_use=ImageType.PRODUCTION_RW,
             ),
             TestConfig(test_name="abort"),
             TestConfig(test_name="aes"),
@@ -373,6 +485,23 @@ class AllTests:
             TestConfig(test_name="timer_dos"),
             TestConfig(test_name="utils", timeout_secs=20),
             TestConfig(test_name="utils_str"),
+            TestConfig(
+                config_name="power_utilization_idle",
+                test_name="power_utilization",
+                image_to_use=ImageType.PRODUCTION_RW,
+                toggle_power=True,
+                post_test_callback=verify_idle_power_utilization,
+                finish_regexes=[RW_APP_READY_REGEX],
+            ),
+            TestConfig(
+                config_name="power_utilization_sleep",
+                test_name="power_utilization",
+                image_to_use=ImageType.PRODUCTION_RW,
+                toggle_power=True,
+                pre_test_callback=lambda config=None: set_sleep_mode(True),
+                post_test_callback=verify_sleep_power_utilization,
+                finish_regexes=[RW_APP_READY_REGEX],
+            ),
         ]
 
         if board_config.name == BLOONCHIPPER:
@@ -599,7 +728,7 @@ def build(
     ]
 
     # If the image type is a test image, then apply test- prefix to the target name
-    if image_type != ImageType.APP:
+    if image_type != ImageType.PRODUCTION_RW:
         cmd = cmd + [
             "test-" + test_name,
         ]
@@ -706,7 +835,7 @@ def run_test(
         time.sleep(1)
 
     # Skip runtest if using standard app image
-    if test.image_to_use != ImageType.APP:
+    if test.image_to_use != ImageType.PRODUCTION_RW:
         test_cmd = "runtest " + " ".join(test.test_args) + "\n"
         console.write(test_cmd.encode())
 
@@ -788,7 +917,7 @@ def flash_and_run_test(
     # build test binary
     build(test.test_name, build_board, args.compiler, test.image_to_use)
 
-    if test.image_to_use == ImageType.APP:
+    if test.image_to_use == ImageType.PRODUCTION_RW:
         image_path = os.path.join(EC_DIR, "build", build_board, "ec.bin")
     else:
         image_path = os.path.join(
