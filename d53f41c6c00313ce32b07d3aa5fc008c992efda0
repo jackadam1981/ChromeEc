@@ -22,6 +22,30 @@
       },
       "revId": "d53f41c6c00313ce32b07d3aa5fc008c992efda0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6bc464a_b0881bf3",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1749,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-12-21T01:34:57Z",
+      "side": 1,
+      "message": "system_common_shutdown is hooked at HOOK_CHIPSET_SHUTDOWN_COMPLETE. system_common_shutdown calls handle_pending_reboot, handle_pending_reboot clears AP_IDLE flag if the cmd is EC_REBOOT_CLEAR_OFF. Wouldn\u0027t this work?",
+      "parentUuid": "4fef20ba_ce330686",
+      "range": {
+        "startLine": 1745,
+        "startChar": 0,
+        "endLine": 1749,
+        "endChar": 2
+      },
+      "revId": "d53f41c6c00313ce32b07d3aa5fc008c992efda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
