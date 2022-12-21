@@ -44,6 +44,7 @@ from concurrent.futures.thread import ThreadPoolExecutor
 from dataclasses import dataclass
 from dataclasses import field
 from enum import Enum
+from functools import wraps
 import io
 import logging
 import os
@@ -53,7 +54,7 @@ import socket
 import subprocess
 import sys
 import time
-from typing import BinaryIO, Dict, List, Optional, Tuple
+from typing import BinaryIO, Callable, Dict, List, Optional, Tuple
 
 # pylint: disable=import-error
 import colorama  # type: ignore[import]
@@ -62,6 +63,35 @@ import fmap
 
 
 # pylint: enable=import-error
+
+
+def call_logger(unwrapped_fn, alias=None):
+    """Wrap a function in printouts for debugging"""
+
+    def _as_truncated_str(value):
+        maxlen = 32
+        strvalue = str(value)
+        strvalue_len = len(strvalue)
+        ret = strvalue[:maxlen] + ("..." if strvalue_len > maxlen else "")
+        return ret
+
+    @wraps(unwrapped_fn)
+    def wrapper(*args, **kwds):
+        if alias:
+            name = alias
+        else:
+            name = unwrapped_fn.__name__
+        logging.debug(
+            "Calling function <%s> with args %s and kwargs %s", name, args, kwds
+        )
+        ret = unwrapped_fn(*args, **kwds)
+        logging.debug(
+            "Function <%s> returned <%s>", name, _as_truncated_str(ret)
+        )
+        return ret
+
+    return wrapper
+
 
 EC_DIR = Path(os.path.dirname(os.path.realpath(__file__))).parent
 JTRACE_FLASH_SCRIPT = os.path.join(EC_DIR, "util/flash_jlink.py")
@@ -168,6 +198,8 @@ class TestConfig:
     passed: bool = field(init=False, default=False)
     num_passes: int = field(init=False, default=0)
     num_fails: int = field(init=False, default=0)
+    pre_test_callback: Callable = field(init=True, default=lambda board: True)
+    post_test_callback: Callable = field(init=True, default=lambda board: True)
 
     def __post_init__(self):
         if self.finish_regexes is None:
@@ -183,6 +215,12 @@ class TestConfig:
             ]
         if self.config_name is None:
             self.config_name = self.test_name
+        self.pre_test_callback = call_logger(
+            self.pre_test_callback, alias="pre_test_callback"
+        )
+        self.post_test_callback = call_logger(
+            self.post_test_callback, alias="post_test_callback"
+        )
 
 
 # All possible tests.
@@ -643,7 +681,10 @@ def process_console_output_line(line: bytes, test: TestConfig):
 
 
 def run_test(
-    test: TestConfig, console: io.FileIO, executor: ThreadPoolExecutor
+    test: TestConfig,
+    build_board: str,
+    console: io.FileIO,
+    executor: ThreadPoolExecutor,
 ) -> bool:
     """Run specified test."""
     start = time.time()
@@ -659,6 +700,8 @@ def run_test(
     if test.image_to_use != ImageType.APP:
         test_cmd = "runtest " + " ".join(test.test_args) + "\n"
         console.write(test_cmd.encode())
+
+    pre_cb_passed = test.pre_test_callback(build_board)
 
     while True:
         console.flush()
@@ -692,7 +735,8 @@ def run_test(
                 for line in lines:
                     process_console_output_line(line, test)
 
-                return test.num_fails == 0
+                post_cb_passed = test.post_test_callback(build_board)
+                return pre_cb_passed and test.num_fails == 0 and post_cb_passed
 
 
 def get_test_list(
@@ -754,6 +798,7 @@ def flash_and_run_test(
             logging.warning(
                 "An exception occurred while patching image: %s", exception
             )
+            test.passed = False
             return False
 
     # flash test binary
@@ -795,7 +840,7 @@ def flash_and_run_test(
                 open(get_console(board_config), "wb+", buffering=0)
             )
 
-        return run_test(test, console, executor=executor)
+        return run_test(test, build_board, console, executor=executor)
 
 
 def parse_remote_arg(remote: str) -> str:
