@@ -46,6 +46,30 @@
       },
       "revId": "d53f41c6c00313ce32b07d3aa5fc008c992efda0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5302979_49f1859c",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1749,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-21T02:15:00Z",
+      "side": 1,
+      "message": "Ah, I see it now... EC_REBOOT_CLEAR_AP_OFF implies EC_REBOOT_FLAG_ON_AP_SHUTDOWN. I think you should make it explicit. That is you don\u0027t need line 1745 ~ 1749.",
+      "parentUuid": "a6bc464a_b0881bf3",
+      "range": {
+        "startLine": 1745,
+        "startChar": 0,
+        "endLine": 1749,
+        "endChar": 2
+      },
+      "revId": "d53f41c6c00313ce32b07d3aa5fc008c992efda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
