@@ -41,6 +41,7 @@ Run the script on the remote machine:
 # pylint: disable=too-many-lines
 
 import argparse
+from collections import namedtuple
 import concurrent
 from concurrent.futures.thread import ThreadPoolExecutor
 from dataclasses import dataclass
@@ -137,6 +138,135 @@ BLOONCHIPPER_V5938_IMAGE_PATH = os.path.join(
     TEST_ASSETS_BUCKET, "bloonchipper_v2.0.5938-197506c1.bin"
 )
 
+RangedValue = namedtuple("RangedValue", "nominal range")
+PowerUtilization = namedtuple("PowerUtilization", "idle sleep")
+
+
+def verify_power_utilization(
+    fp_expected: RangedValue, mcu_expected: RangedValue
+) -> bool:
+    """Get the name of the console for a given board."""
+    fp_power_signal = "ppvar_fp_mw"
+    mcu_power_signal = "ppvar_mcu_mw"
+    cmd = [
+        "dut-control",
+        "--value_only",  # only the summary will print the field names
+        "-t",
+        "10",  # sample time in seconds
+        fp_power_signal,
+        mcu_power_signal,
+    ]
+    logging.debug('Running command: "%s"', " ".join(cmd))
+
+    fp_power_mw = None
+    mcu_power_mw = None
+    with subprocess.Popen(cmd, stdout=subprocess.PIPE) as proc:
+        for line in io.TextIOWrapper(proc.stdout):  # type: ignore[arg-type]
+            # Only the summary is required and those lines start with @@ and have 6 other fields
+            # (NAME, COUNT, AVERAGE, STDDEV, MAX, MIN)
+            response = line.split()
+            if len(response) != 7 or response[0] != "@@":
+                continue
+
+            resp_name, _, resp_avg, _, _, _ = response[1:]
+
+            if resp_name == fp_power_signal:
+                fp_power_mw = float(resp_avg.strip())
+            elif resp_name == mcu_power_signal:
+                mcu_power_mw = float(resp_avg.strip())
+
+            logging.debug(
+                "fp_power_mw:%s \t mcu_power_mw:%s", fp_power_mw, mcu_power_mw
+            )
+            if fp_power_mw is not None and mcu_power_mw is not None:
+                fp_mw_delta = abs(fp_power_mw - fp_expected.nominal)
+                mcu_mw_delta = abs(mcu_power_mw - mcu_expected.nominal)
+
+                logging.info(
+                    "%s\tactual: %0.2f expected: %0.2f threshold: +/-%0.2f",
+                    fp_power_signal,
+                    fp_power_mw,
+                    fp_expected.nominal,
+                    fp_expected.range,
+                )
+                logging.info(
+                    "%s:\tactual: %0.2f expected: %0.2f threshold: +/-%0.2f",
+                    mcu_power_signal,
+                    mcu_power_mw,
+                    mcu_expected.nominal,
+                    mcu_expected.range,
+                )
+
+                return (
+                    fp_mw_delta <= fp_expected.range
+                    and mcu_mw_delta <= mcu_expected.range
+                )
+
+    logging.error("Failed to receive required power data from FPMCU")
+    return False
+
+
+def set_sleep_mode(enter_sleep: bool) -> bool:
+    """Enters or exists sleep mode based on enter_sleep parameter"""
+    sleep_mode = "on" if enter_sleep else "off"
+    cmd = [
+        "dut-control",
+        f"fpmcu_slp_alt:{sleep_mode}",
+    ]
+
+    logging.debug('Running command: "%s"', cmd)
+    proc = subprocess.run(cmd, check=False)
+    return proc.returncode == 0
+
+
+def verify_idle_power_utilization(build_board: str) -> bool:
+    """Verifies that idle power utilization is within range for the specified board"""
+    # TODO(b/267800058): Include the power utilization constants into board config
+
+    ret = False
+    if build_board == DARTMONKEY:  # Icetower
+        board_config = DARTMONKEY_CONFIG
+    elif build_board == BLOONCHIPPER:  # Dragonclaw
+        board_config = BLOONCHIPPER_CONFIG
+    elif build_board == HELIPILOT:  # Quincy
+        board_config = HELIPILOT_CONFIG
+    else:
+        logging.error("Invalid build_board:%s", build_board)
+        return False
+
+    ret = verify_power_utilization(
+        board_config.expected_fp_power.idle,
+        board_config.expected_mcu_power.idle,
+    )
+
+    return ret
+
+
+def verify_sleep_power_utilization(build_board: str) -> bool:
+    """Verifies that sleep power utilization is within range for the specified board"""
+    ret = False
+
+    # Values for Icetower and Dragonclaw are taken from the documentation in
+    #   ec/docs/fingerprint/fingerprint.md (rounded to nearest 0.1 mw)
+    if build_board == DARTMONKEY:  # Icetower
+        board_config = DARTMONKEY_CONFIG
+    elif build_board == BLOONCHIPPER:  # Dragonclaw
+        board_config = BLOONCHIPPER_CONFIG
+    elif build_board == HELIPILOT:  # Quincy
+        board_config = HELIPILOT_CONFIG
+    else:
+        logging.error("Invalid build_board:%s", build_board)
+        return False
+
+    ret = verify_power_utilization(
+        board_config.expected_fp_power.sleep,
+        board_config.expected_mcu_power.sleep,
+    )
+
+    # Make sure to exit sleep mode!
+    set_sleep_mode(False)
+    return ret
+
 
 class ImageType(Enum):
     """EC Image type to use for the test."""
@@ -155,7 +285,7 @@ class ApplicationType(Enum):
 
 
 @dataclass
-class BoardConfig:
+class BoardConfig:  # pylint: disable=too-many-instance-attributes
     """Board-specific configuration."""
 
     name: str
@@ -164,6 +294,8 @@ class BoardConfig:
     rollback_region0_regex: object
     rollback_region1_regex: object
     mpu_regex: object
+    expected_fp_power: PowerUtilization
+    expected_mcu_power: PowerUtilization
     variants: Dict
 
 
@@ -359,6 +491,23 @@ class AllTests:
             TestConfig(test_name="tpm_seed_clear"),
             TestConfig(test_name="utils", timeout_secs=20),
             TestConfig(test_name="utils_str"),
+            TestConfig(
+                config_name="power_utilization_idle",
+                test_name="power_utilization",
+                apptype_to_use=ApplicationType.PRODUCTION,
+                toggle_power=True,
+                post_test_callback=verify_idle_power_utilization,
+                finish_regexes=[RW_IMAGE_BOOTED_REGEX],
+            ),
+            TestConfig(
+                config_name="power_utilization_sleep",
+                test_name="power_utilization",
+                apptype_to_use=ApplicationType.PRODUCTION,
+                toggle_power=True,
+                pre_test_callback=lambda config=None: set_sleep_mode(True),
+                post_test_callback=verify_sleep_power_utilization,
+                finish_regexes=[RW_IMAGE_BOOTED_REGEX],
+            ),
         ]
 
         # Run panic data tests for all boards and RO versions.
@@ -410,6 +559,15 @@ BLOONCHIPPER_CONFIG = BoardConfig(
     rollback_region0_regex=DATA_ACCESS_VIOLATION_8020000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_8040000_REGEX,
     mpu_regex=DATA_ACCESS_VIOLATION_20000000_REGEX,
+    # TODO(b/267804744): Official numbers list mcu power as 21.8 mW with
+    # stddev of 0.06 but tests are showing consistent results of 16.2 mW
+    # with stddev of 0.05. This range was made wide enough to support both
+    expected_fp_power=PowerUtilization(
+        idle=RangedValue(0.0, 0.1), sleep=RangedValue(0.0, 0.1)
+    ),
+    expected_mcu_power=PowerUtilization(
+        idle=RangedValue(21.8, 6.5), sleep=RangedValue(1.6, 1.3)
+    ),
     variants={
         "bloonchipper_v2.0.4277": {
             "ro_image_path": BLOONCHIPPER_V4277_IMAGE_PATH
@@ -427,6 +585,12 @@ DARTMONKEY_CONFIG = BoardConfig(
     rollback_region0_regex=DATA_ACCESS_VIOLATION_80C0000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_80E0000_REGEX,
     mpu_regex=DATA_ACCESS_VIOLATION_24000000_REGEX,
+    expected_fp_power=PowerUtilization(
+        idle=RangedValue(0.0, 0.1), sleep=RangedValue(0.0, 0.1)
+    ),
+    expected_mcu_power=PowerUtilization(
+        idle=RangedValue(43.9, 8.8), sleep=RangedValue(5.7, 1.6)
+    ),
     # For dartmonkey board, run panic data test also on nocturne_fp and
     # nami_fp boards with appropriate RO image.
     variants={
@@ -450,6 +614,14 @@ HELIPILOT_CONFIG = BoardConfig(
     rollback_region0_regex=DATA_ACCESS_VIOLATION_64020000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_64040000_REGEX,
     mpu_regex=DATA_ACCESS_VIOLATION_20000000_REGEX,
+    # TODO(bobbycasey): power utilization numbers copied from bloonchipper until
+    #                   values are defined
+    expected_fp_power=PowerUtilization(
+        idle=RangedValue(0.0, 0.1), sleep=RangedValue(0.0, 0.1)
+    ),
+    expected_mcu_power=PowerUtilization(
+        idle=RangedValue(21.8, 6.5), sleep=RangedValue(1.6, 1.3)
+    ),
     variants={},
 )
 
