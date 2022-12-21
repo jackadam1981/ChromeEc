@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79435626_2b16a56b",
+        "filename": "zephyr/program/rex/src/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-12-21T11:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f58388f_a9e96ddf",
+      "revId": "51c51e434017b51689a7afb98b5eafc75549298f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "066e8409_824191be",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca9c00d_9730f37c",
+        "filename": "zephyr/program/rex/src/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-12-21T11:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "066e8409_824191be",
+      "revId": "51c51e434017b51689a7afb98b5eafc75549298f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2842c07d_450a44cf",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-12-21T10:41:13Z",
       "side": 1,
       "message": "This should fit on a single line. Actually the ones above as well, can you reformat them while you are at it?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "51c51e434017b51689a7afb98b5eafc75549298f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28370cde_ef6883b9",
+        "filename": "zephyr/test/rex/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-12-21T11:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2842c07d_450a44cf",
       "range": {
         "startLine": 26,
         "startChar": 0,
