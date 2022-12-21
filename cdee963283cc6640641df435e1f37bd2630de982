@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab13d131_00e7d429",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-21T19:46:34Z",
+      "side": 1,
+      "message": "Let\u0027s simply do:\n\n    pchg_queue_event(ctx, PCHG_EVENT_UPDATE_OPENED);\n    \nrv \u003d\u003d EC_SUCCESS means the chip immediately switched to update mode. ctn730 won\u0027t be affected because it returns EC_SUCCESS_IN_PROGRESS.",
+      "range": {
+        "startLine": 575,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 40
+      },
+      "revId": "cdee963283cc6640641df435e1f37bd2630de982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4bc090_22dfa610",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-21T19:46:34Z",
+      "side": 1,
+      "message": "Similar here. You don\u0027t need this check. rv \u003d\u003d EC_SUCCESS means data has been written.",
+      "range": {
+        "startLine": 613,
+        "startChar": 6,
+        "endLine": 613,
+        "endChar": 50
+      },
+      "revId": "cdee963283cc6640641df435e1f37bd2630de982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed808d75_24648f52",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-21T19:46:34Z",
+      "side": 1,
+      "message": "This is redundant.",
+      "range": {
+        "startLine": 614,
+        "startChar": 3,
+        "endLine": 614,
+        "endChar": 30
+      },
+      "revId": "cdee963283cc6640641df435e1f37bd2630de982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "952e4135_c2aad8f6",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-21T19:46:34Z",
+      "side": 1,
+      "message": "Can we use drv-\u003ereset() to enter download mode? It\u0027s a good practice to start an update session with a reset. It\u0027ll make the process robust and free from corner cases. I\u0027m wishing we simply do:\n\n    gpio_disable_interrupt(ctx-\u003ecfg-\u003eirq_pin);\n    _clear_port(ctx);\n    ctx-\u003emode \u003d PCHG_MODE_DOWNLOAD;\n    ctx-\u003ecfg-\u003edrv-\u003ereset(ctx);\n    if (p-\u003ecmd \u003d\u003d EC_PCHG_UPDATE_CMD_OPEN)\n        gpio_enable_interrupt(ctx-\u003ecfg-\u003eirq_pin);\n\nCan you explain what behavior of cps8200 is blocking you from doing so?",
+      "range": {
+        "startLine": 989,
+        "startChar": 0,
+        "endLine": 999,
+        "endChar": 3
+      },
+      "revId": "cdee963283cc6640641df435e1f37bd2630de982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d6d2aa_61af2712",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-21T19:46:34Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this.",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 31
+      },
+      "revId": "cdee963283cc6640641df435e1f37bd2630de982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
