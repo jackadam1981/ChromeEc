@@ -1546,6 +1546,8 @@ enum bram_ec_logs_status { EC_LOG_SAVED_IN_FLASH = 1, EC_LOG_SAVED_IN_MEMORY };
 #define IT83XX_I2C_IDR(ch) REG8(IT83XX_I2C_BASE + 0x06 + (ch << 7))
 #define IT83XX_I2C_TOS(ch) REG8(IT83XX_I2C_BASE + 0x07 + (ch << 7))
 #define IT83XX_I2C_CLK_STR (1 << 7)
+#define IT83XX_I2C_SLV_NUM_H(ch) REG8(IT83XX_I2C_BASE + 0x10 + (ch << 7))
+#define IT83XX_I2C_SLV_NUM_L(ch) REG8(IT83XX_I2C_BASE + 0x11 + (ch << 7))
 #define IT83XX_I2C_STR2(ch) REG8(IT83XX_I2C_BASE + 0x12 + (ch << 7))
 #define IT83XX_I2C_NST(ch) REG8(IT83XX_I2C_BASE + 0x13 + (ch << 7))
 #define IT83XX_I2C_NST_CNS BIT(7)

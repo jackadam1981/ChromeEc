@@ -162,6 +162,7 @@ void i2c_peripheral_read_write_data(int port)
 		if (IT83XX_I2C_STR(ch) & IT83XX_I2C_INTPEND) {
 			periph_status = IT83XX_I2C_IRQ_ST(ch);
 
+			ccprints("[slave]periph_status=%x\n",periph_status);
 			/* Controller to read data */
 			if (periph_status & IT83XX_I2C_IDR_CLR) {
 				/*
@@ -176,6 +177,9 @@ void i2c_peripheral_read_write_data(int port)
 			if (periph_status & IT83XX_I2C_IDW_CLR) {
 				/* Controller to write data finish flag */
 				wr_done[idx] = 1;
+			}
+			if (periph_status & IT83XX_I2C_SLVDATAFLG) {
+				CPRINTS("[slave]SLV_NUM_H=%x,SLV_NUM_L=%x\n", IT83XX_I2C_SLV_NUM_H(ch),IT83XX_I2C_SLV_NUM_L(ch));
 			}
 			/* Peripheral finish */
 			if (periph_status & IT83XX_I2C_P_CLR) {
@@ -303,6 +307,8 @@ void i2c_peripheral_enable(int port, uint8_t periph_addr)
 			out_data_addr = (uint32_t)out_data[idx] & 0xfff;
 		}
 
+		ccprints("[slave]in_data_addr=%x",in_data_addr);
+		ccprints("[slave]out_data_addr=%x",out_data_addr);
 		/* DMA write target address register */
 		IT83XX_I2C_RAMHA(ch) = in_data_addr >> 8;
 		IT83XX_I2C_RAMLA(ch) = in_data_addr;

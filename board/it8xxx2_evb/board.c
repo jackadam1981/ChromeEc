@@ -84,6 +84,6 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* I2C slave ports */
 const struct i2c_periph_port_t i2c_periph_ports[] = {
-	{"evb-a", IT83XX_I2C_CH_A, I2C_SLAVE_ADDRA},
+	{"opt-4", IT83XX_I2C_CH_E, I2C_SLAVE_ADDRA},
 };
 const unsigned int i2c_periphs_used = ARRAY_SIZE(i2c_periph_ports);

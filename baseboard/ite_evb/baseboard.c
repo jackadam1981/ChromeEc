@@ -171,7 +171,7 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_I2C_C_SCL,
 		.sda = GPIO_I2C_C_SDA,
 	},
-#if 0
+#if 1
 	{
 		.name = "evb-1",
 		.port = IT83XX_I2C_CH_A,
@@ -187,6 +187,7 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_I2C_B_SCL,
 		.sda = GPIO_I2C_B_SDA,
 	},
+#if 0
 	{
 		.name = "opt-4",
 		.port = IT83XX_I2C_CH_E,
@@ -194,5 +195,6 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_I2C_E_SCL,
 		.sda = GPIO_I2C_E_SDA,
 	},
+#endif
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
