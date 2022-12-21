@@ -129,8 +129,9 @@ BLOONCHIPPER_V5938_IMAGE_PATH = os.path.join(
 class ImageType(Enum):
     """EC Image type to use for the test."""
 
-    RO = 1
-    RW = 2
+    TEST_RO = 1
+    TEST_RW = 2
+    APP = 3
 
 
 @dataclass
@@ -152,7 +153,7 @@ class TestConfig:
 
     # pylint: disable=too-many-instance-attributes
     test_name: str
-    image_to_use: ImageType = ImageType.RW
+    image_to_use: ImageType = ImageType.TEST_RW
     finish_regexes: List = None
     fail_regexes: List = None
     toggle_power: bool = False
@@ -206,6 +207,11 @@ class AllTests:
     def get_public_tests(board_config: BoardConfig) -> List[TestConfig]:
         """Return public test configs for the specified board."""
         tests = [
+            TestConfig(
+                test_name="standard_app_test",
+                finish_regexes=[re.compile(r".*RW verify OK.*")],
+                image_to_use=ImageType.APP,
+            ),
             TestConfig(test_name="abort"),
             TestConfig(test_name="aes"),
             TestConfig(test_name="always_memset"),
@@ -216,12 +222,12 @@ class AllTests:
             TestConfig(test_name="exception"),
             TestConfig(
                 test_name="flash_physical",
-                image_to_use=ImageType.RO,
+                image_to_use=ImageType.TEST_RO,
                 toggle_power=True,
             ),
             TestConfig(
                 test_name="flash_write_protect",
-                image_to_use=ImageType.RO,
+                image_to_use=ImageType.TEST_RO,
                 toggle_power=True,
                 enable_hw_write_protect=True,
             ),
@@ -229,7 +235,7 @@ class AllTests:
             TestConfig(
                 config_name="fpsensor_spi_ro",
                 test_name="fpsensor",
-                image_to_use=ImageType.RO,
+                image_to_use=ImageType.TEST_RO,
                 test_args=["spi"],
             ),
             TestConfig(
@@ -240,7 +246,7 @@ class AllTests:
             TestConfig(
                 config_name="fpsensor_uart_ro",
                 test_name="fpsensor",
-                image_to_use=ImageType.RO,
+                image_to_use=ImageType.TEST_RO,
                 test_args=["uart"],
             ),
             TestConfig(
@@ -258,7 +264,7 @@ class AllTests:
             TestConfig(
                 config_name="mpu_ro",
                 test_name="mpu",
-                image_to_use=ImageType.RO,
+                image_to_use=ImageType.TEST_RO,
                 finish_regexes=[board_config.mpu_regex],
             ),
             TestConfig(
@@ -284,7 +290,9 @@ class AllTests:
                 finish_regexes=[board_config.rollback_region1_regex],
                 test_args=["region1"],
             ),
-            TestConfig(test_name="rollback_entropy", image_to_use=ImageType.RO),
+            TestConfig(
+                test_name="rollback_entropy", image_to_use=ImageType.TEST_RO
+            ),
             TestConfig(test_name="rtc"),
             TestConfig(test_name="sha256"),
             TestConfig(test_name="sha256_unrolled"),
@@ -526,7 +534,9 @@ def hw_write_protect(enable: bool) -> None:
     subprocess.run(cmd, check=False).check_returncode()
 
 
-def build(test_name: str, board_name: str, compiler: str) -> None:
+def build(
+    test_name: str, board_name: str, compiler: str, image_type: ImageType
+) -> None:
     """Build specified test for specified board."""
     cmd = ["make"]
 
@@ -535,9 +545,14 @@ def build(test_name: str, board_name: str, compiler: str) -> None:
 
     cmd = cmd + [
         "BOARD=" + board_name,
-        "test-" + test_name,
         "-j",
     ]
+
+    # If the image type is a test image, then apply test- prefix to the target name
+    if image_type != ImageType.APP:
+        cmd = cmd + [
+            "test-" + test_name,
+        ]
 
     logging.debug('Running command: "%s"', " ".join(cmd))
     subprocess.run(cmd, check=False).check_returncode()
@@ -636,12 +651,14 @@ def run_test(
     # Wait for boot to finish
     time.sleep(1)
     console.write("\n".encode())
-    if test.image_to_use == ImageType.RO:
+    if test.image_to_use == ImageType.TEST_RO:
         console.write("reboot ro\n".encode())
         time.sleep(1)
 
-    test_cmd = "runtest " + " ".join(test.test_args) + "\n"
-    console.write(test_cmd.encode())
+    # Skip runtest if using standard app image
+    if test.image_to_use != ImageType.APP:
+        test_cmd = "runtest " + " ".join(test.test_args) + "\n"
+        console.write(test_cmd.encode())
 
     while True:
         console.flush()
@@ -716,11 +733,19 @@ def flash_and_run_test(
         build_board = test.build_board
 
     # build test binary
-    build(test.test_name, build_board, args.compiler)
+    build(test.test_name, build_board, args.compiler, test.image_to_use)
 
-    image_path = os.path.join(
-        EC_DIR, "build", build_board, test.test_name, test.test_name + ".bin"
-    )
+    if test.image_to_use == ImageType.APP:
+        image_path = os.path.join(EC_DIR, "build", build_board, "ec.bin")
+    else:
+        image_path = os.path.join(
+            EC_DIR,
+            "build",
+            build_board,
+            test.test_name,
+            test.test_name + ".bin",
+        )
+    logging.debug("image_path: %s", image_path)
 
     if test.ro_image is not None:
         try:
