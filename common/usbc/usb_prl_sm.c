@@ -535,6 +535,7 @@ void pd_transmit_complete(int port, int status)
 	if (status == TCPC_TX_COMPLETE_SUCCESS)
 		set_tcpc_tx_success_ts(port);
 	prl_tx[port].xmit_status = status;
+	task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE);
 }
 
 void pd_execute_hard_reset(int port)
