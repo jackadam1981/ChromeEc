@@ -16,6 +16,24 @@
       "message": "I can\u0027t find a proper (cmd, flag) if the caller just want to clear AP_IDLE flag at SHUTDOWN_COMPLETE hook and do not hibernate/reboot EC. \n\nWhat I can think is the caller can send (EC_REBOOT_CANCE, EC_REBOOT_FLAG_CLEAR_AP_IDLE) but it needs to add below in line 1731:\nreboot_at_shutdown.flags \u003d  p.flags;",
       "revId": "09df7471e0a508ddeb42c239b8bcb795b2c416c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dabe8a71_d17e0f6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-22T19:59:22Z",
+      "side": 1,
+      "message": "Yeah, we can be clever and make CANCLE work as NO_OP but that\u0027ll need the callers to send (CANCEL,ON_AP_SHUTDOWN) instead of (CANCEL,0). I don\u0027t know what host programs sending (CANCEL,0) currently.\n\n2nd option is to add a new NO_OP command (which I did in PS2).\n\nYou can go back to your CL and send (CLEAR_AP_IDLE, ON_AP_SHUTDOWN) if you think that\u0027s cleaner.",
+      "parentUuid": "bf3376f6_4f28bdd9",
+      "revId": "09df7471e0a508ddeb42c239b8bcb795b2c416c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
