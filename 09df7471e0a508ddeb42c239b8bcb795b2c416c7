@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf3376f6_4f28bdd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-12-22T15:04:00Z",
+      "side": 1,
+      "message": "I can\u0027t find a proper (cmd, flag) if the caller just want to clear AP_IDLE flag at SHUTDOWN_COMPLETE hook and do not hibernate/reboot EC. \n\nWhat I can think is the caller can send (EC_REBOOT_CANCE, EC_REBOOT_FLAG_CLEAR_AP_IDLE) but it needs to add below in line 1731:\nreboot_at_shutdown.flags \u003d  p.flags;",
+      "revId": "09df7471e0a508ddeb42c239b8bcb795b2c416c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
