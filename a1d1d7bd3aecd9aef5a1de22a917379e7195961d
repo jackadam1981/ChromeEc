@@ -16,6 +16,29 @@
       "message": "Please update the description to provide a full explanation of the change, why it is needed, and what the change does.\nThe comments above the change explicitly state that the state machine must be enabled.\nThis change disables it.\nSo also update the comments.",
       "revId": "a1d1d7bd3aecd9aef5a1de22a917379e7195961d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e44af93_3017bc4b",
+        "filename": "driver/retimer/anx7483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-12-22T03:28:38Z",
+      "side": 1,
+      "message": "This change makes us do the opposite of what the comment says, so I don\u0027t think this is the correct solution (though I don\u0027t really understand what it does either, so it might be that this is correct and the comment needs to be changed too).",
+      "range": {
+        "startLine": 244,
+        "startChar": 42,
+        "endLine": 244,
+        "endChar": 65
+      },
+      "revId": "a1d1d7bd3aecd9aef5a1de22a917379e7195961d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
