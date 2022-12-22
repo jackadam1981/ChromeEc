@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bb6c1a6_72f49afc",
+        "filename": "zephyr/shim/src/sha256_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-12-22T03:20:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "877d1f92_fb9f4b7a",
+      "revId": "a3580f36eab492f874f09bd6f2bd665cda0a5f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26537b88_f64436a6",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-20T12:17:33Z",
       "side": 1,
       "message": "s/fucntion/function/",
+      "revId": "a3580f36eab492f874f09bd6f2bd665cda0a5f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c21d2adb_50689536",
+        "filename": "zephyr/shim/src/sha256_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-12-22T03:20:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26537b88_f64436a6",
       "revId": "a3580f36eab492f874f09bd6f2bd665cda0a5f61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3471a616_991da55f",
+        "filename": "zephyr/shim/src/sha256_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-12-22T03:20:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8a3f6e0_9eb5bffe",
+      "revId": "a3580f36eab492f874f09bd6f2bd665cda0a5f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba157efb_35ab6ccf",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-12-20T12:17:33Z",
       "side": 1,
       "message": "This is even scarier, maybe use `hmac_ctx.buf` as src instead of tmp and add a build check to ensure `SHA256_DIGEST_SIZE \u003e sizeof(hmac_ctx.buf)`?",
+      "revId": "a3580f36eab492f874f09bd6f2bd665cda0a5f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24722e22_0443c96c",
+        "filename": "zephyr/shim/src/sha256_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-12-22T03:20:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba157efb_35ab6ccf",
       "revId": "a3580f36eab492f874f09bd6f2bd665cda0a5f61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
