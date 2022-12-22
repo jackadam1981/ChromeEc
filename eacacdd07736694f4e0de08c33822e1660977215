@@ -89,6 +89,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e1ad049_5bd8e526",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-22T02:44:21Z",
+      "side": 1,
+      "message": "Peter, we need to fix redrix:\n\n    board/redrix/board.h:69: error: \"CONFIG_CHARGER_INPUT_CURRENT_DERATE_PCT\" redefined [-Werror]",
+      "revId": "eacacdd07736694f4e0de08c33822e1660977215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7eba82c3_4784d1d8",
