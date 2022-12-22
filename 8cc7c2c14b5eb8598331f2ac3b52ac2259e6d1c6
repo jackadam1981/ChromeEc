@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9405d38_a5a09316",
+        "filename": "include/gpio.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-22T17:36:31Z",
+      "side": 1,
+      "message": "\"Save state of a GPIO controller port\".  This function can be used on GPIO controllers an I/O expanders",
+      "range": {
+        "startLine": 405,
+        "startChar": 10,
+        "endLine": 405,
+        "endChar": 40
+      },
+      "revId": "8cc7c2c14b5eb8598331f2ac3b52ac2259e6d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e76aa4c9_11bafca7",
+        "filename": "include/gpio.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-22T17:36:31Z",
+      "side": 1,
+      "message": "Note - the CQ failure is because you need to run clang-format on the files in the CL.",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 52
+      },
+      "revId": "8cc7c2c14b5eb8598331f2ac3b52ac2259e6d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "483cdef9_ca31b312",
+        "filename": "include/gpio.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-22T17:36:31Z",
+      "side": 1,
+      "message": "Restore state of a GPIO controller",
+      "range": {
+        "startLine": 416,
+        "startChar": 10,
+        "endLine": 416,
+        "endChar": 43
+      },
+      "revId": "8cc7c2c14b5eb8598331f2ac3b52ac2259e6d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "046372c7_26cd261c",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-22T17:36:31Z",
+      "side": 1,
+      "message": "Run clang-format on all files.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 0
+      },
+      "revId": "8cc7c2c14b5eb8598331f2ac3b52ac2259e6d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
