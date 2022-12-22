@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9cb6f4b_87ab0610",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-12-22T09:08:47Z",
+      "side": 1,
+      "message": "nit. add blank space before \u0027*\u0027",
+      "range": {
+        "startLine": 63,
+        "startChar": 70,
+        "endLine": 63,
+        "endChar": 71
+      },
+      "revId": "278f4a13975ff275d47a4d73f08c74df6fd866c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1147adeb_04ddd68e",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-12-22T09:08:47Z",
+      "side": 1,
+      "message": "It should be `CHIP_VARIANT_NPCX9M8S` because not all npcx9 chips support DRNG.",
+      "range": {
+        "startLine": 124,
+        "startChar": 7,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "278f4a13975ff275d47a4d73f08c74df6fd866c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
