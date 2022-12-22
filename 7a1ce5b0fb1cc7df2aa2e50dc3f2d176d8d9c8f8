@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf57444_f2cc0d16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-12-22T02:09:41Z",
+      "side": 1,
+      "message": "All tests passed.\n\nintelrvp disables and re-enables the tcpc pin for hibernation, nissa has its own custom handler instead of using gpio-int for its TCPC interrupt. Both require non-trivial changes to their code to use this tcpc driver and will be modified later.\n\nAlso, Corsola checks a condition at runtime to determine whether to enable the port 1 tcpc interrupt. I\u0027ve had to make a slight work around to accommodate that. Let me know if the work around is appropriate.",
+      "revId": "7a1ce5b0fb1cc7df2aa2e50dc3f2d176d8d9c8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

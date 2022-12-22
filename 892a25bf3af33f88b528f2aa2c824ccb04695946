@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68861599_8c2d5881",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-12-22T02:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f60f2fae_dcf53dcd",
+      "revId": "892a25bf3af33f88b528f2aa2c824ccb04695946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f67e8e85_3492b524",
@@ -102,6 +120,30 @@
       "side": 1,
       "message": "`int_pin` is a phandle pointing to a `named-gpios` node. `int-pin` is a property of *chip*.yaml. `gpios` is a property of the `named-gpios` node that stores all the gpio specs. \n\nHere\u0027s an example of how they\u0027re used in the .dts:\n\n```\n\\* fragment from i2c.dts *\\\ntcpc_port0: ps8xxx@b {\n\tcompatible \u003d \"parade,ps8xxx\";\n\treg \u003d \u003c0xb\u003e;\n\tint-pin \u003d \u003c\u0026gpio_usb_c0_pd_int_odl\u003e;\n};\n\n\\* fragment from gpio.dts *\\\nnamed-gpios {\n\tcompatible \u003d \"named-gpios\";\n\n\tgpio_usb_c0_pd_int_odl: usb_c0_pd_int_odl {\n\t\tgpios \u003d \u003c\u0026gpioe 0 GPIO_INPUT\u003e;\n\t\tenum-name \u003d \"GPIO_USB_C0_PD_INT_ODL\";\n\t};\n};\n```",
       "parentUuid": "8eb00d87_47283eab",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 71
+      },
+      "revId": "892a25bf3af33f88b528f2aa2c824ccb04695946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "920ffad9_99f0033c",
+        "filename": "zephyr/shim/include/usbc/tcpc_anx7447.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-12-22T02:09:41Z",
+      "side": 1,
+      "message": "the TCPC now have their own `irq-gpios` property.",
+      "parentUuid": "ada0d8aa_b247e731",
       "range": {
         "startLine": 13,
         "startChar": 0,
