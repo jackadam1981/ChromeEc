@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55a82066_dac91094",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-12-22T10:25:42Z",
+      "side": 1,
+      "message": "Hi Keith,\n\nhttps://github.com/zephyrproject-rtos/zephyr/pull/50399\nPR moves pinctrl_kscan_ite_it8xxx2.c to kscan folder, and cros_ec platform doesn\u0027t enable upstream CONFIG_KSCAN, then we won\u0027t have pinctrl_kscan_ite_it8xxx2.c.obj (but CONFIG_PINCTRL_KSCAN_ITE_IT8XXX2 is y) when zmake build, so I add pinctrl_kscan_ite_it8xxx2.c.",
+      "revId": "6e6a28df54db86fc724873a82b1cfa53c400c5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
