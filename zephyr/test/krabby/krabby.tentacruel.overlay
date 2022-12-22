@@ -87,6 +87,18 @@
 		int_lid_imu: lid_imu {
 			handler = "lid_sensor_interrupt";
 		};
+
+		int_usb_c0_ppc: usb_c0_ppc {
+			irq-pin = <&usb_c0_ppc_int_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "ppc_interrupt";
+		};
+
+		int_usb_c0_bc12: usb_c0_bc12 {
+			 irq-pin = <&usb_c0_bc12_int_odl>;
+			 flags = <GPIO_INT_EDGE_FALLING>;
+			 handler = "bc12_interrupt";
+		 };
 	};
 
 	/*
@@ -142,6 +154,14 @@
 			mutex = <&base_mutex>;
 		};
 	};
+
+	usbc {
+		port0@0 {
+			status = "okay";
+			ppc = <&bc12_ppc_port0>;
+			ppc_alt = <&ppc_port0>;
+		};
+	};
 };
 
 &i2c_ctrl0 {
@@ -154,6 +174,19 @@
 		pagesize = <16>;
 		address-width = <8>;
 		timeout = <5>;
+	};
+
+	ppc_port0: syv682x@44 {
+		compatible = "silergy,syv682x", "cros,i2c-mock";
+		status = "okay";
+		reg = <0x44>;
+	};
+
+	bc12_ppc_port0: rt1739@70 {
+		compatible = "richtek,rt1739-ppc", "richtek,rt1739-bc12",
+			     "cros,i2c-mock";
+		status = "okay";
+		reg = <0x70>;
 	};
 };
 
