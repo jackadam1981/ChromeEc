@@ -97,6 +97,7 @@
 #define ISL9237_C0_VREG_REF_MASK 0x03
 
 /* Control0: disable adapter voltaqe regulation */
+#define ISL923X_C0_ENABLE_BUCK BIT(1)
 #define ISL923X_C0_DISABLE_VREG BIT(2)
 
 /* Control0: battery DCHOT reference for RS2 == 20mOhm */
@@ -264,6 +265,9 @@
 
 /* Control4: Ignores BATGONE input */
 #define RAA489000_C4_BATGONE_DISABLE BIT(15)
+
+/* Control6: enables the CMOUT latch function. */
+#define ISL9238C_C6_CMOUT_LATCH BIT(3)
 
 /* Control6: charger current and maximum system voltage slew rate control. */
 #define ISL9238C_C6_SLEW_RATE_CONTROL BIT(6)
