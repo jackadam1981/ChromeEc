@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "042716c4_72384041",
+        "filename": "include/gpio.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-12-23T00:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9405d38_a5a09316",
+      "range": {
+        "startLine": 405,
+        "startChar": 10,
+        "endLine": 405,
+        "endChar": 40
+      },
+      "revId": "8cc7c2c14b5eb8598331f2ac3b52ac2259e6d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e76aa4c9_11bafca7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-22T17:36:31Z",
       "side": 1,
       "message": "Note - the CQ failure is because you need to run clang-format on the files in the CL.",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 52
+      },
+      "revId": "8cc7c2c14b5eb8598331f2ac3b52ac2259e6d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e797633d_2f318ebd",
+        "filename": "include/gpio.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-12-23T00:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e76aa4c9_11bafca7",
       "range": {
         "startLine": 412,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "605f9752_a69981ec",
+        "filename": "include/gpio.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-12-23T00:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "483cdef9_ca31b312",
+      "range": {
+        "startLine": 416,
+        "startChar": 10,
+        "endLine": 416,
+        "endChar": 43
+      },
+      "revId": "8cc7c2c14b5eb8598331f2ac3b52ac2259e6d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "046372c7_26cd261c",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-12-22T17:36:31Z",
       "side": 1,
       "message": "Run clang-format on all files.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 0
+      },
+      "revId": "8cc7c2c14b5eb8598331f2ac3b52ac2259e6d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "480b2610_523dfac0",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-12-23T00:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "046372c7_26cd261c",
       "range": {
         "startLine": 325,
         "startChar": 0,
