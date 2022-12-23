@@ -21,3 +21,6 @@ pytest util "$@"
 # Run shell tests
 cd util
 ./test-inject-keys.sh
+
+# Run the Zephyr config tests
+./check_zephyr_project_config_unittest.py
