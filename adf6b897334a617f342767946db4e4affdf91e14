@@ -34,6 +34,24 @@
       "parentUuid": "6c691e4c_cf984c98",
       "revId": "adf6b897334a617f342767946db4e4affdf91e14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b00b5171_0eaffd66",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-12-23T02:24:33Z",
+      "side": 1,
+      "message": "Port 2\u00263 are enabled by same AIC. Either we have both ports or none. HAS_TASK_C2 should be good enough to guard both ports on MTL RVP.",
+      "parentUuid": "814f4a42_e9e99273",
+      "revId": "adf6b897334a617f342767946db4e4affdf91e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
