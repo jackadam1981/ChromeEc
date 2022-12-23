@@ -34,6 +34,24 @@
       "parentUuid": "7a9d8176_a53eea98",
       "revId": "26a981074770d07cf52e6b0401fcb60e130c914a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f22627_c2a255e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-12-23T07:17:38Z",
+      "side": 1,
+      "message": "Check with the ToT repo, CONFIG_PLATFORM_EC_SHA256_HW_ACCELERATE is enabled [here](\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/boards/riscv/it8xxx2/Kconfig.defconfig;l\u003d66).\nIt seems that the other EC vendor implemented the SHA hardware driver in the different way from what we did.\nThis shim driver could not be merged if the conflict/diverge is not resolved,",
+      "parentUuid": "3c37f456_2ac2bec4",
+      "revId": "26a981074770d07cf52e6b0401fcb60e130c914a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
