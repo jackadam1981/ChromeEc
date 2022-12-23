@@ -16,6 +16,24 @@
       "message": "CQ error:\n```\n                 from /mnt/host/source/src/platform/ec/zephyr/shim/src/sha256_hw.c:8:\n/mnt/host/source/src/platform/ec/zephyr/shim/src/sha256_hw.c:14:37: error: \u0027CONFIG_CRYPTO_LOG_LEVEL\u0027 undeclared here (not in a function); did you mean \u0027CONFIG_GPIO_LOG_LEVEL\u0027?\n   14 | LOG_MODULE_REGISTER(sha256_hw_shim, CONFIG_CRYPTO_LOG_LEVEL);\n```",
       "revId": "26a981074770d07cf52e6b0401fcb60e130c914a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c37f456_2ac2bec4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-12-23T02:20:58Z",
+      "side": 1,
+      "message": "Do you know what is the board got the build error?\nThe file sha256_hw.c should not be compiled in any board as there is no one enable \n`CONFIG_PLATFORM_EC_SHA256_HW_ACCELERATE`.",
+      "parentUuid": "7a9d8176_a53eea98",
+      "revId": "26a981074770d07cf52e6b0401fcb60e130c914a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
