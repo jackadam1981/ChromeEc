@@ -122,7 +122,7 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	board_after_rsmrst(0);
 
 	/* Turn off S5 rails */
-	GPIO_SET_LEVEL(GPIO_EN_S5_RAILS, 0);
+	//GPIO_SET_LEVEL(GPIO_EN_S5_RAILS, 0);
 
 	/*
 	 * TODO(b/179519791): Replace this wait with
