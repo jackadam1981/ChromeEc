@@ -16,6 +16,98 @@
       "message": "All tests passed.\n\nintelrvp disables and re-enables the tcpc pin for hibernation, nissa has its own custom handler instead of using gpio-int for its TCPC interrupt. Both require non-trivial changes to their code to use this tcpc driver and will be modified later.\n\nAlso, Corsola checks a condition at runtime to determine whether to enable the port 1 tcpc interrupt. I\u0027ve had to make a slight work around to accommodate that. Let me know if the work around is appropriate.",
       "revId": "7a1ce5b0fb1cc7df2aa2e50dc3f2d176d8d9c8f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "026b74ae_4915604f",
+        "filename": "zephyr/dts/bindings/emul/tcpci.yaml",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-23T00:04:27Z",
+      "side": 1,
+      "message": "Delete the references to alert_gpio from the emulator and use irq-gpios instead.  Then you can delete this property.",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "7a1ce5b0fb1cc7df2aa2e50dc3f2d176d8d9c8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aae7986_6edfc21a",
+        "filename": "zephyr/dts/bindings/usbc/tcpc/richtek,rt1718s-tcpc.yaml",
+        "patchSetId": 16
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-23T00:04:27Z",
+      "side": 1,
+      "message": "In a follow up CL, the `tcpc-flags` and `irq-gpios` should get moved into a common file `tcpc-device.yaml` and then each driver should include the common file.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "7a1ce5b0fb1cc7df2aa2e50dc3f2d176d8d9c8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a34dcd_6150f90d",
+        "filename": "zephyr/program/corsola/src/npcx_usbc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-23T00:04:27Z",
+      "side": 1,
+      "message": "You can just overwrite the .int_cfg directly.\n```\ntcpc_config[USBC_PORT_C1].int_cfg.port \u003d NULL;\n```",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 49
+      },
+      "revId": "7a1ce5b0fb1cc7df2aa2e50dc3f2d176d8d9c8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39155fb8_ea81c50f",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-12-23T00:04:27Z",
+      "side": 1,
+      "message": "Add a check here \n```\nif (!gpio_is_ready_dt(\u0026tcpc_config[i].int_cfg))\n    LOG_ERR();\n```",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 4
+      },
+      "revId": "7a1ce5b0fb1cc7df2aa2e50dc3f2d176d8d9c8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
