@@ -52,6 +52,24 @@
       "parentUuid": "dabe8a71_d17e0f6a",
       "revId": "09df7471e0a508ddeb42c239b8bcb795b2c416c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1029b6c6_f363aa9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-12-23T03:48:48Z",
+      "side": 1,
+      "message": "2nd option also makes sense to me, caller can send (EC_REBOOT_NO_OP, EC_REBOOT_FLAG_CLEAR_AP_IDLE | EC_REBOOT_FLAG_ON_AP_SHUTDOWN) to simply clear AP_IDLE flag at shutdown, I will go for 2nd 😊. I have verified with my local build EC and Coreboot, it works as expected:\n\n```\n22-12-23 11:39:47.588 [64.559799 Saved AP_IDLE flag]\n22-12-23 11:39:47.591 [64.560597 PD:S3-\u003eS5]\n22-12-23 11:39:47.595 [64.561030 PCHG: pchg_shutdown]\n22-12-23 11:39:47.595 Unhandled DPM Request 800000 received\n22-12-23 11:39:47.601 Reboot at shutdown: 9\n22-12-23 11:39:47.601 [64.605089 Clearing AP_IDLE]\n```",
+      "parentUuid": "65b17f80_2a82f95d",
+      "revId": "09df7471e0a508ddeb42c239b8bcb795b2c416c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
