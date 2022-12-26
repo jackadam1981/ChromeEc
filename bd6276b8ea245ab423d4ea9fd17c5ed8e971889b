@@ -33,6 +33,23 @@
       "message": "```\nec-utils-0.0.2-r8639: util/ectool.cc:39:10: fatal error: \u0027libec/add_entropy_command.h\u0027 file not found\nec-utils-0.0.2-r8639: #include \u003clibec/add_entropy_command.h\u003e\nec-utils-0.0.2-r8639:          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nec-utils-0.0.2-r8639: 1 error generated.\nec-utils-0.0.2-r8639: make: *** [Makefile.rules:691: build/host/util/ectool] Error 1\nec-utils-0.0.2-r8639:  * ERROR: chromeos-base/ec-utils-0.0.2-r8639::chromiumos failed (compile phase):\nec-utils-0.0.2-r8639:  *   emake failed\n```\nMight because of CL:3938416, cherry-picked CL:4113545 for test, however we don\u0027t have libec folder in dedede firmeware branch, not sure it works.",
       "revId": "bd6276b8ea245ab423d4ea9fd17c5ed8e971889b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "693cc91c_e9da0eae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2022-12-26T00:33:46Z",
+      "side": 1,
+      "message": "It seems we need to fix the merge conflict..",
+      "revId": "bd6276b8ea245ab423d4ea9fd17c5ed8e971889b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
