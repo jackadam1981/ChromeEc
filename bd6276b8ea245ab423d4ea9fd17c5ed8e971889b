@@ -50,6 +50,24 @@
       "message": "It seems we need to fix the merge conflict..",
       "revId": "bd6276b8ea245ab423d4ea9fd17c5ed8e971889b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95422f68_fe984dbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2022-12-26T05:27:15Z",
+      "side": 1,
+      "message": "Ah we can abandon this one, I created a new merge, pending on ebuild uprev-ed by ci-bot.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4122058",
+      "parentUuid": "693cc91c_e9da0eae",
+      "revId": "bd6276b8ea245ab423d4ea9fd17c5ed8e971889b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
