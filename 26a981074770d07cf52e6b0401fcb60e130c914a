@@ -70,6 +70,24 @@
       "parentUuid": "a0f22627_c2a255e2",
       "revId": "26a981074770d07cf52e6b0401fcb60e130c914a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9858b73e_18c45511",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-12-26T08:03:56Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. The new patch set adopts your suggestion with minor change:\n1. add PLATFORM_EC_SHA256_HW_ZEPHYR in `zephyr/Kconfig`\n   * it is enabled and select `CRYPTO` if `$(dt_chosen_enabled,$(DT_CHOSEN_CROS_EC_SHA))` is true.\n   * it also makes the sha256_hw.h/sha256_hw.c included and compiled. \n2. PLATFORM_EC_SHA256_HW_ACCELERATE is also enabled if `$(dt_chosen_enabled,$(DT_CHOSEN_CROS_EC_SHA))` is true.\n    Note: we also need to enable PLATFORM_EC_SHA256_HW_ACCELERATE because [common/vboot_hash.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/vboot_hash.c;l\u003d74) refers to it.\n\nWith the change, it can pass `zmake build --all --clobber`",
+      "parentUuid": "643d2836_a0e02744",
+      "revId": "26a981074770d07cf52e6b0401fcb60e130c914a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
