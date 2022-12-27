@@ -462,6 +462,7 @@ void battery_get_params(struct batt_params *batt)
 	 * will be preserved.
 	 */
 	memcpy(&batt_new, batt, sizeof(*batt));
+
 	batt_new.flags = 0;
 
 	if (sb_read(SB_TEMPERATURE, &batt_new.temperature) &&
@@ -556,6 +557,15 @@ void battery_get_params(struct batt_params *batt)
 
 	if (IS_ENABLED(CONFIG_CMD_BATTFAKE))
 		apply_fake_state_of_charge(&batt_new);
+
+	if (IS_ENABLED(CONFIG_BATTERY_LOW_VOLTAGE_PROTECTION)) {
+		/* restore BATT_FLAG_DEEP_CHARGE bit flag */
+		if (batt->flags & BATT_FLAG_DEEP_CHARGE) {
+			batt_new.flags |= BATT_FLAG_DEEP_CHARGE;
+		} else {
+			batt_new.flags &= ~BATT_FLAG_DEEP_CHARGE;
+		}
+	}
 
 	/* Update visible battery parameters */
 	memcpy(batt, &batt_new, sizeof(*batt));
