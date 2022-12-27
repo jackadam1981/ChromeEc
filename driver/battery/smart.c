@@ -462,6 +462,7 @@ void battery_get_params(struct batt_params *batt)
 	 * will be preserved.
 	 */
 	memcpy(&batt_new, batt, sizeof(*batt));
+
 	batt_new.flags = 0;
 
 	if (sb_read(SB_TEMPERATURE, &batt_new.temperature) &&
