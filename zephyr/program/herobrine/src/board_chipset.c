@@ -71,6 +71,12 @@ static void wait_pd_ready(void)
 static void board_chipset_pre_init(void)
 {
 	if (!pp5000_inited) {
+		if (battery_get_disconnect_state() !=
+		    BATTERY_NOT_DISCONNECTED) {
+			pd_ready_timeout = get_time();
+			pd_ready_timeout.val += PD_READY_TIMEOUT;
+			CPRINTS("Delay 5V due to battery disconnect");
+		}
 		if (pd_ready_timeout.val) {
 			wait_pd_ready();
 		}
