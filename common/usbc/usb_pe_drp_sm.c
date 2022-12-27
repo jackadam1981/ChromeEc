@@ -2915,16 +2915,16 @@ static void pe_src_ready_run(int port)
 		pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
 
 		/*
-		 * Handle Device Policy Manager Requests
-		 */
-		if (source_dpm_requests(port))
-			return;
-
-		/*
 		 * Attempt discovery if possible, and return if state was
 		 * changed for that discovery.
 		 */
 		if (pe_attempt_port_discovery(port))
+			return;
+
+		/*
+		 * Handle Device Policy Manager Requests
+		 */
+		if (source_dpm_requests(port))
 			return;
 
 		/* Inform DPM state machine that PE is set for messages */
