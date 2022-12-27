@@ -5,6 +5,8 @@
 
 /* Drawcia board-specific configuration */
 
+/*hello world!*/
+
 #include "adc_chip.h"
 #include "button.h"
 #include "cbi_fw_config.h"
