@@ -1556,7 +1556,9 @@ __test_only enum charge_state_v2 charge_get_state_v2(void)
 
 static void deep_charge_battery(int *need_static)
 {
-	if (curr.state == ST_IDLE) {
+	static int need_precharge_flag = 1;
+
+	if ((curr.state == ST_IDLE) && (need_precharge_flag == 0)) {
 		/* Deep charge time out , do nothing */
 		curr.requested_voltage = 0;
 		curr.requested_current = 0;
@@ -1579,6 +1581,7 @@ static void deep_charge_battery(int *need_static)
 		set_charge_state(ST_PRECHARGE);
 		curr.requested_voltage = batt_info->voltage_max;
 		curr.requested_current = batt_info->precharge_current;
+		need_precharge_flag = 0;
 	}
 }
 
