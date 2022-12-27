@@ -498,7 +498,7 @@ void print_battery_debug(void);
 /**
  * Get the disconnect state of the battery.
  */
-enum battery_disconnect_state battery_get_disconnect_state(void);
+test_mockable enum battery_disconnect_state battery_get_disconnect_state(void);
 
 #ifdef CONFIG_BATTERY_V2
 /**
