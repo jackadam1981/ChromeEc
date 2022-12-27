@@ -70,12 +70,30 @@ static void wait_pd_ready(void)
 
 #define PPC_WAIT_5V_DELAY_MS 5
 
+test_export_static int test_disconnect_state = -1;
+
+__test_only enum battery_disconnect_state
+test_battery_get_disconnect_state(void)
+{
+	return test_disconnect_state;
+}
+
 /* Called on AP S5 -> S3 transition */
 static void board_chipset_pre_init(void)
 {
 	int port;
 
 	if (!pp5000_inited) {
+#ifdef CONFIG_ZTEST
+		if (test_battery_get_disconnect_state() !=
+#else
+		if (battery_get_disconnect_state() !=
+#endif
+		    BATTERY_NOT_DISCONNECTED) {
+			pd_ready_timeout = get_time();
+			pd_ready_timeout.val += PD_READY_TIMEOUT;
+			CPRINTS("Delay 5V due to battery disconnect");
+		}
 		if (pd_ready_timeout.val) {
 			wait_pd_ready();
 		}
