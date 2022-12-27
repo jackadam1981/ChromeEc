@@ -784,6 +784,10 @@ void board_hibernate(void)
 	 */
 	ppc_vbus_source_enable(0, 0);
 	ppc_vbus_sink_enable(0, 1);
+#ifndef CONFIG_HIBERNATE_PSL
+	ppc_vbus_source_enable(1, 0);
+	ppc_vbus_sink_enable(1, 1);
+#endif
 
 	/*
 	 * If CCD not active, set port 0 SBU_EN=0 to avoid power leakage during
