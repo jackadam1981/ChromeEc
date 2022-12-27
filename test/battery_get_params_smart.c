@@ -86,6 +86,151 @@ static int test_param_failures(void)
 	return EC_SUCCESS;
 }
 
+<<<<<<< HEAD   (4df964 utils: remove ectool from dedede firmware branch)
+=======
+/**
+ * Test if battery_get_params sets a flag properly for a SB command.
+ *
+ * @param cmd   SB command to fail.
+ * @param flag  Flag expected to be set when <cmd> fails.
+ * @return  EC_SUCCESS
+ */
+static int test_flag(int cmd, int flag)
+{
+	reset_and_fail_on(0, 0, cmd);
+	battery_get_params(&batt);
+	TEST_ASSERT(batt.flags & flag);
+	TEST_ASSERT(!((batt.flags & ~flag) & BATT_FLAG_BAD_ANY));
+	TEST_ASSERT(batt.flags & BATT_FLAG_RESPONSIVE);
+
+	/*
+	 * When SB_CHARGING_VOLTAGE, SB_CHARGING_CURRENT, or
+	 * SB_RELATIVE_STATE_OF_CHARGE fails, WANT_CHARGE should be cleared.
+	 */
+	switch (cmd) {
+	case SB_RELATIVE_STATE_OF_CHARGE:
+	case SB_CHARGING_VOLTAGE:
+	case SB_CHARGING_CURRENT:
+		TEST_ASSERT(!(batt.flags & BATT_FLAG_WANT_CHARGE));
+		TEST_ASSERT(batt.desired_voltage == 0);
+		TEST_ASSERT(batt.desired_current == 0);
+		break;
+	default:
+		TEST_ASSERT(batt.flags & BATT_FLAG_WANT_CHARGE);
+		TEST_ASSERT(batt.desired_voltage == 100);
+		TEST_ASSERT(batt.desired_current == 100);
+	}
+
+	/*
+	 * Failure is recovered. <flag> should be cleared. WANT_CHARGE should be
+	 * set.
+	 */
+	cmd_to_fail = -1;
+	battery_get_params(&batt);
+	TEST_ASSERT(!(batt.flags & flag));
+	TEST_ASSERT(batt.flags & BATT_FLAG_WANT_CHARGE);
+
+	return EC_SUCCESS;
+}
+
+static int test_flags(void)
+{
+	sb_write(SB_CHARGING_VOLTAGE, 100);
+	sb_write(SB_CHARGING_CURRENT, 100);
+	sb_write(SB_RELATIVE_STATE_OF_CHARGE, 50);
+
+	/* Test each command-flag pair. */
+	test_flag(SB_TEMPERATURE, BATT_FLAG_BAD_TEMPERATURE);
+	test_flag(SB_RELATIVE_STATE_OF_CHARGE, BATT_FLAG_BAD_STATE_OF_CHARGE);
+	test_flag(SB_VOLTAGE, BATT_FLAG_BAD_VOLTAGE);
+	test_flag(SB_CURRENT, BATT_FLAG_BAD_CURRENT);
+	test_flag(SB_AVERAGE_CURRENT, BATT_FLAG_BAD_AVERAGE_CURRENT);
+	test_flag(SB_CHARGING_VOLTAGE, BATT_FLAG_BAD_DESIRED_VOLTAGE);
+	test_flag(SB_CHARGING_CURRENT, BATT_FLAG_BAD_DESIRED_CURRENT);
+	test_flag(SB_REMAINING_CAPACITY, BATT_FLAG_BAD_REMAINING_CAPACITY);
+	test_flag(SB_FULL_CHARGE_CAPACITY, BATT_FLAG_BAD_FULL_CAPACITY);
+	test_flag(SB_BATTERY_STATUS, BATT_FLAG_BAD_STATUS);
+
+	/*
+	 * Volatile flags should be cleared and other flags should be preserved.
+	 */
+	reset_and_fail_on(0, 0, -1);
+	batt.flags |= BATT_FLAG_BAD_TEMPERATURE;
+	batt.flags |= BATT_FLAG_DEEP_CHARGE;
+	battery_get_params(&batt);
+	TEST_ASSERT(batt.flags & BATT_FLAG_DEEP_CHARGE);
+	TEST_ASSERT(!(batt.flags & BATT_FLAG_BAD_ANY));
+
+	/*
+	 * All reads succeed. BATT_FLAG_RESPONSIVE should be set. Then, all
+	 * reads fail. BATT_FLAG_RESPONSIVE should be cleared.
+	 */
+	reset_and_fail_on(0, 0, -1);
+	battery_get_params(&batt);
+	TEST_ASSERT(batt.flags & BATT_FLAG_RESPONSIVE);
+
+	reset_counters(1, read_count);
+	battery_get_params(&batt);
+	TEST_ASSERT(!(batt.flags & BATT_FLAG_RESPONSIVE));
+
+	/* Test WANT_CHARGE is explicitly cleared. */
+	reset_and_fail_on(0, 0, SB_RELATIVE_STATE_OF_CHARGE);
+	batt.flags |= BATT_FLAG_WANT_CHARGE;
+	battery_get_params(&batt);
+	TEST_ASSERT(!(batt.flags & BATT_FLAG_WANT_CHARGE));
+
+	return EC_SUCCESS;
+}
+
+static int test_full_state_of_charge(void)
+{
+	/*
+	 * When SoC is full, BATT_FLAG_WANT_CHARGE should be cleared and
+	 * desired voltage and current are also cleared.
+	 */
+	sb_write(SB_CHARGING_VOLTAGE, 100);
+	sb_write(SB_CHARGING_CURRENT, 100);
+	sb_write(SB_RELATIVE_STATE_OF_CHARGE, 100);
+
+	reset_and_fail_on(0, 0, -1);
+	battery_get_params(&batt);
+	TEST_ASSERT(!(batt.flags & BATT_FLAG_WANT_CHARGE));
+	TEST_ASSERT(batt.desired_voltage == 0);
+	TEST_ASSERT(batt.desired_current == 0);
+	TEST_ASSERT(batt.state_of_charge == 100);
+
+	return EC_SUCCESS;
+}
+
+static int test_voltage(void)
+{
+	sb_write(SB_VOLTAGE, 100);
+	reset_and_fail_on(0, 0, -1);
+
+	battery_get_params(&batt);
+	TEST_ASSERT(batt.voltage == 100);
+
+	return EC_SUCCESS;
+}
+
+static int test_current(void)
+{
+	/* Test positive (charge) current. */
+	sb_write(SB_CURRENT, 100);
+	reset_and_fail_on(0, 0, -1);
+	battery_get_params(&batt);
+	TEST_ASSERT(batt.current == 100);
+
+	/* Test negative (discharge) current. */
+	sb_write(SB_CURRENT, -100);
+	reset_and_fail_on(0, 0, -1);
+	battery_get_params(&batt);
+	TEST_ASSERT(batt.current == -100);
+
+	return EC_SUCCESS;
+}
+
+>>>>>>> CHANGE (f0436f chgstv2: optimization battery protection for low voltage)
 void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_param_failures);
