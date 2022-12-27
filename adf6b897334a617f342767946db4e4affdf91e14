@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27d52e09_f65849cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-12-27T23:36:23Z",
+      "side": 1,
+      "message": "LOW_COVERAGE_REASON\u003dBoard level code change",
+      "revId": "adf6b897334a617f342767946db4e4affdf91e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c691e4c_cf984c98",
         "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
         "patchSetId": 12
