@@ -314,7 +314,7 @@ int battery_is_charge_fet_disabled(void)
  * the battery is able to provide power and thus prevent a brownout when the
  * AP is powered on by the EC.
  */
-enum battery_disconnect_state battery_get_disconnect_state(void)
+test_mockable enum battery_disconnect_state battery_get_disconnect_state(void)
 {
 	int reg;
 	int type = get_battery_type();
