@@ -1563,6 +1563,106 @@ static int get_desired_input_current(enum battery_present batt_present,
 	}
 }
 
+<<<<<<< HEAD   (1bd808 Clear OWNERS for factory/firmware branch)
+=======
+static void wakeup_battery(int *need_static)
+{
+	if (battery_seems_dead || battery_is_cut_off()) {
+		/* It's dead, do nothing */
+		set_charge_state(ST_IDLE);
+		curr.requested_voltage = 0;
+		curr.requested_current = 0;
+	} else if (curr.state == ST_PRECHARGE &&
+		   (get_time().val >
+		    precharge_start_time.val + PRECHARGE_TIMEOUT_US)) {
+		/* We've tried long enough, give up */
+		CPRINTS("battery seems to be dead");
+		battery_seems_dead = 1;
+		set_charge_state(ST_IDLE);
+		curr.requested_voltage = 0;
+		curr.requested_current = 0;
+	} else {
+		/* See if we can wake it up */
+		if (curr.state != ST_PRECHARGE) {
+			CPRINTS("try to wake battery");
+			precharge_start_time = get_time();
+			*need_static = 1;
+		}
+		set_charge_state(ST_PRECHARGE);
+		curr.requested_voltage = batt_info->voltage_max;
+		curr.requested_current = batt_info->precharge_current;
+	}
+}
+
+__test_only enum charge_state_v2 charge_get_state_v2(void)
+{
+	return curr.state;
+}
+
+static void deep_charge_battery(int *need_static)
+{
+	if ((curr.state == ST_IDLE) &&
+	    (curr.batt.flags & BATT_FLAG_DEEP_CHARGE)) {
+		/* Deep charge time out , do nothing */
+		curr.requested_voltage = 0;
+		curr.requested_current = 0;
+	} else if (curr.state == ST_PRECHARGE &&
+		   (get_time().val >
+		    precharge_start_time.val +
+			    CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT)) {
+		/* We've tried long enough, give up */
+		CPRINTS("Precharge for low voltage timed out");
+		set_charge_state(ST_IDLE);
+		curr.requested_voltage = 0;
+		curr.requested_current = 0;
+	} else {
+		/* See if we can wake it up */
+		if (curr.state != ST_PRECHARGE) {
+			CPRINTS("Start precharge for low voltage");
+			precharge_start_time = get_time();
+			*need_static = 1;
+		}
+		set_charge_state(ST_PRECHARGE);
+		curr.requested_voltage = batt_info->voltage_max;
+		curr.requested_current = batt_info->precharge_current;
+		curr.batt.flags |= BATT_FLAG_DEEP_CHARGE;
+	}
+}
+
+static void revive_battery(int *need_static)
+{
+	if (IS_ENABLED(CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD) &&
+	    curr.requested_voltage == 0 && curr.requested_current == 0 &&
+	    curr.batt.state_of_charge == 0) {
+		/*
+		 * Battery is dead, give precharge current
+		 * TODO (crosbug.com/p/29467): remove this workaround
+		 * for dead battery that requests no voltage/current
+		 */
+		curr.requested_voltage = batt_info->voltage_max;
+		curr.requested_current = batt_info->precharge_current;
+	} else if (IS_ENABLED(CONFIG_BATTERY_REVIVE_DISCONNECT) &&
+		   curr.requested_voltage == 0 && curr.requested_current == 0 &&
+		   battery_seems_disconnected) {
+		/*
+		 * Battery is in disconnect state. Apply a
+		 * current to kick it out of this state.
+		 */
+		CPRINTS("found battery in disconnect state");
+		curr.requested_voltage = batt_info->voltage_max;
+		curr.requested_current = batt_info->precharge_current;
+	} else if (curr.state == ST_PRECHARGE || battery_seems_dead ||
+		   battery_was_removed) {
+		CPRINTS("battery woke up");
+		/* Update the battery-specific values */
+		batt_info = battery_get_info();
+		*need_static = 1;
+	}
+
+	battery_seems_dead = battery_was_removed = 0;
+}
+
+>>>>>>> CHANGE (f0436f chgstv2: optimization battery protection for low voltage)
 /* Main loop */
 void charger_task(void *u)
 {
@@ -1834,9 +1934,49 @@ void charger_task(void *u)
 			set_charge_state(ST_CHARGE);
 		}
 
+<<<<<<< HEAD   (1bd808 Clear OWNERS for factory/firmware branch)
 wait_for_it:
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
 		if (chg_ctl_mode == CHARGE_CONTROL_NORMAL) {
+=======
+		/*
+		 * When the battery voltage is lower than voltage_min,precharge
+		 * first to protect the battery
+		 */
+		if (IS_ENABLED(CONFIG_BATTERY_LOW_VOLTAGE_PROTECTION)) {
+			if (!(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE) &&
+			    (curr.batt.voltage <= batt_info->voltage_min)) {
+				deep_charge_battery(&need_static);
+				goto wait_for_it;
+			}
+
+			/*
+			 * Finished deep charge before timeout. Clear the flag
+			 * so that we can do deep charge again (when it's deeply
+			 * discharged again).
+			 */
+			if ((curr.batt.flags & BATT_FLAG_DEEP_CHARGE)) {
+				curr.batt.flags &= ~BATT_FLAG_DEEP_CHARGE;
+			}
+		}
+		/* The battery is responding. Yay. Try to use it. */
+
+		/*
+		 * Always check the disconnect state.  This is because
+		 * the battery disconnect state is one of the items used
+		 * to decide whether or not to leave safe mode.
+		 */
+		battery_seems_disconnected = battery_get_disconnect_state() ==
+					     BATTERY_DISCONNECTED;
+
+		revive_battery(&need_static);
+
+		set_charge_state(ST_CHARGE);
+
+	wait_for_it:
+		if (IS_ENABLED(CONFIG_CHARGER_PROFILE_OVERRIDE) &&
+		    get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL) {
+>>>>>>> CHANGE (f0436f chgstv2: optimization battery protection for low voltage)
 			sleep_usec = charger_profile_override(&curr);
 			if (sleep_usec < 0)
 				problem(PR_CUSTOM, sleep_usec);
