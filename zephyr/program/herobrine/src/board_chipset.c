@@ -49,9 +49,10 @@ static void board_usb_pd_connect(void)
 {
 	int soc = -1;
 
-	/* First boot, battery unattached or low SOC */
+	/* First boot, battery unattached, battery disconnect or low SOC */
 	if (!pp5000_inited &&
-	    ((battery_state_of_charge_abs(&soc) != EC_SUCCESS ||
+	    ((battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED) ||
+	     (battery_state_of_charge_abs(&soc) != EC_SUCCESS ||
 	      soc < charger_get_min_bat_pct_for_power_on()))) {
 		pd_ready_timeout = get_time();
 		pd_ready_timeout.val += PD_READY_TIMEOUT;
