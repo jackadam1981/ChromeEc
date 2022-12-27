@@ -70,6 +70,24 @@
       "parentUuid": "65b17f80_2a82f95d",
       "revId": "09df7471e0a508ddeb42c239b8bcb795b2c416c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2844fd36_ccffa925",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-27T17:21:18Z",
+      "side": 1,
+      "message": "Can you also check if (EC_REBOOT_HIBERNATE,EC_REBOOT_FLAG_CLEAR_AP_IDLE) as HIBERNATE_CLEAR_AP_OFF?",
+      "parentUuid": "1029b6c6_f363aa9f",
+      "revId": "09df7471e0a508ddeb42c239b8bcb795b2c416c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

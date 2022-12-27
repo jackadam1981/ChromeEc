@@ -16,6 +16,24 @@
       "message": "EC_REBOOT_NO_OP \u003d 9",
       "revId": "83cfe398bc786d209140fbcfd9e333df7a5fe5f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0ad1ebe_8a21bb51",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5483,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-12-27T17:21:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50ad15fe_9704c0cf",
+      "revId": "83cfe398bc786d209140fbcfd9e333df7a5fe5f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
