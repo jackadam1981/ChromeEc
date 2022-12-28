@@ -232,6 +232,13 @@ static int flash_range_ok(int offset, int size_req, int align)
 }
 
 #ifdef CONFIG_MAPPED_STORAGE
+
+/**
+ * A test public variable allowing us to override the base address of
+ * flash_physical_dataptr().
+ */
+test_export_static const char *flash_physical_dataptr_override;
+
 /**
  * Get the physical memory address of a flash offset
  *
@@ -245,6 +252,9 @@ static int flash_range_ok(int offset, int size_req, int align)
  */
 static const char *flash_physical_dataptr(int offset)
 {
+	if (IS_ENABLED(TEST_BUILD) && flash_physical_dataptr_override != NULL) {
+		return flash_physical_dataptr_override + offset;
+	}
 	return (char *)((uintptr_t)CONFIG_MAPPED_STORAGE_BASE + offset);
 }
 
@@ -974,18 +984,11 @@ static void flash_erase_deferred(void)
 DECLARE_DEFERRED(flash_erase_deferred);
 #endif
 
-/*****************************************************************************/
-/* Console commands */
-
-#ifdef CONFIG_CMD_FLASHINFO
-static int command_flash_info(int argc, const char **argv)
+void crec_flash_print_region_info(void)
 {
-	int i, flags;
-
-	ccprintf("Usable:  %4d KB\n", CONFIG_FLASH_SIZE_BYTES / 1024);
-	ccprintf("Write:   %4d B (ideal %d B)\n", CONFIG_FLASH_WRITE_SIZE,
-		 CONFIG_FLASH_WRITE_IDEAL_SIZE);
 #ifdef CONFIG_FLASH_MULTIPLE_REGION
+	int i;
+
 	ccprintf("Regions:\n");
 	for (i = 0; i < ARRAY_SIZE(flash_bank_array); i++) {
 		ccprintf(" %d region%s:\n", flash_bank_array[i].count,
@@ -1001,37 +1004,52 @@ static int command_flash_info(int argc, const char **argv)
 		 CONFIG_FLASH_ERASED_VALUE32 ? 1 : 0);
 	ccprintf("Protect: %4d B\n", CONFIG_FLASH_BANK_SIZE);
 #endif
+}
+
+/*****************************************************************************/
+/* Console commands */
+
+#ifdef CONFIG_CMD_FLASHINFO
+#define BIT_TO_ON_OFF(value, mask) \
+	((((value) & (mask)) == (mask)) ? "ON" : "OFF")
+static int command_flash_info(int argc, const char **argv)
+{
+	int i, flags;
+
+	ccprintf("Usable:  %4d KB\n", CONFIG_FLASH_SIZE_BYTES / 1024);
+	ccprintf("Write:   %4d B (ideal %d B)\n", CONFIG_FLASH_WRITE_SIZE,
+		 CONFIG_FLASH_WRITE_IDEAL_SIZE);
+	crec_flash_print_region_info();
 	flags = crec_flash_get_protect();
-	ccprintf("Flags:  ");
-	if (flags & EC_FLASH_PROTECT_GPIO_ASSERTED)
-		ccputs(" wp_gpio_asserted");
-	if (flags & EC_FLASH_PROTECT_RO_AT_BOOT)
-		ccputs(" ro_at_boot");
-	if (flags & EC_FLASH_PROTECT_ALL_AT_BOOT)
-		ccputs(" all_at_boot");
-	if (flags & EC_FLASH_PROTECT_RO_NOW)
-		ccputs(" ro_now");
-	if (flags & EC_FLASH_PROTECT_ALL_NOW)
-		ccputs(" all_now");
+	ccprintf("Flags:\n");
+	ccprintf("  wp_gpio_asserted: %s\n",
+		 BIT_TO_ON_OFF(flags, EC_FLASH_PROTECT_GPIO_ASSERTED));
+	ccprintf("  ro_at_boot: %s\n",
+		 BIT_TO_ON_OFF(flags, EC_FLASH_PROTECT_RO_AT_BOOT));
+	ccprintf("  all_at_boot: %s\n",
+		 BIT_TO_ON_OFF(flags, EC_FLASH_PROTECT_ALL_AT_BOOT));
+	ccprintf("  ro_now: %s\n",
+		 BIT_TO_ON_OFF(flags, EC_FLASH_PROTECT_RO_NOW));
+	ccprintf("  all_now: %s\n",
+		 BIT_TO_ON_OFF(flags, EC_FLASH_PROTECT_ALL_NOW));
 #ifdef CONFIG_FLASH_PROTECT_RW
-	if (flags & EC_FLASH_PROTECT_RW_AT_BOOT)
-		ccputs(" rw_at_boot");
-	if (flags & EC_FLASH_PROTECT_RW_NOW)
-		ccputs(" rw_now");
+	ccprintf("  rw_at_boot: %s\n",
+		 BIT_TO_ON_OFF(flags, EC_FLASH_PROTECT_RW_AT_BOOT));
+	ccprintf("  rw_now: %s\n",
+		 BIT_TO_ON_OFF(flags, EC_FLASH_PROTECT_RW_NOW));
 #endif
-	if (flags & EC_FLASH_PROTECT_ERROR_STUCK)
-		ccputs(" STUCK");
-	if (flags & EC_FLASH_PROTECT_ERROR_INCONSISTENT)
-		ccputs(" INCONSISTENT");
-	if (flags & EC_FLASH_PROTECT_ERROR_UNKNOWN)
-		ccputs(" UNKNOWN_ERROR");
+	ccprintf("  STUCK: %s\n",
+		 BIT_TO_ON_OFF(flags, EC_FLASH_PROTECT_ERROR_STUCK));
+	ccprintf("  INCONSISTENT: %s\n",
+		 BIT_TO_ON_OFF(flags, EC_FLASH_PROTECT_ERROR_INCONSISTENT));
+	ccprintf("  UNKNOWN_ERROR: %s\n",
+		 BIT_TO_ON_OFF(flags, EC_FLASH_PROTECT_ERROR_UNKNOWN));
 #ifdef CONFIG_ROLLBACK
-	if (flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)
-		ccputs(" rollback_at_boot");
-	if (flags & EC_FLASH_PROTECT_ROLLBACK_NOW)
-		ccputs(" rollback_now");
+	ccprintf("  rollback_at_boot: %s\n",
+		 BIT_TO_ON_OFF(flags, EC_FLASH_PROTECT_ROLLBACK_AT_BOOT));
+	ccprintf("  rollback_now: %s\n",
+		 BIT_TO_ON_OFF(flags, EC_FLASH_PROTECT_ROLLBACK_NOW));
 #endif
-	ccputs("\n");
 
 	ccputs("Protected now:");
 	for (i = 0; i < PHYSICAL_BANKS; i++) {

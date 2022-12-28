@@ -5,8 +5,8 @@
 
 /* Type-C port manager */
 
-#include "atomic.h"
 #include "anx74xx.h"
+#include "atomic.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "ec_commands.h"
@@ -1167,14 +1167,16 @@ static void tcpci_check_vbus_changed(int port, int alert, uint32_t *pd_event)
 			tcpc_vbus[port] = BIT(VBUS_SAFE0V);
 		}
 
-		if ((get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_TCPC) &&
-		    IS_ENABLED(CONFIG_USB_CHARGER)) {
+		if (get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_TCPC) {
 			/* Update charge manager with new VBUS state */
-			usb_charger_vbus_change(port, !!(tcpc_vbus[port] &
-							 BIT(VBUS_PRESENT)));
+			if (IS_ENABLED(CONFIG_USB_CHARGER))
+				usb_charger_vbus_change(port,
+							!!(tcpc_vbus[port] &
+							   BIT(VBUS_PRESENT)));
 
-			if (pd_event)
+			if (pd_event) {
 				*pd_event |= TASK_EVENT_WAKE;
+			}
 		}
 	}
 }
@@ -1192,6 +1194,7 @@ void tcpci_tcpc_alert(int port)
 	int failed_attempts;
 	uint32_t pd_event = 0;
 	int retval = 0;
+	bool bist_mode;
 
 	/* Read the Alert register from the TCPC */
 	if (tcpm_alert_status(port, &alert)) {
@@ -1223,9 +1226,20 @@ void tcpci_tcpc_alert(int port)
 						   TCPC_TX_COMPLETE_SUCCESS :
 						   TCPC_TX_COMPLETE_FAILED);
 
+	tcpc_get_bist_test_mode(port, &bist_mode);
+
 	/* Pull all RX messages from TCPC into EC memory */
 	failed_attempts = 0;
 	while (alert & TCPC_REG_ALERT_RX_STATUS) {
+		/*
+		 * Some TCPCs do not properly disable interrupts during BIST
+		 * test mode. For reducing I2C access time,
+		 * there is no need to read out BIST data, just break.
+		 * (see b/229812911).
+		 */
+		if (bist_mode)
+			break;
+
 		retval = tcpm_enqueue_message(port);
 		if (retval)
 			++failed_attempts;
@@ -1319,8 +1333,12 @@ void tcpci_tcpc_alert(int port)
 	/*
 	 * Check registers to see if we can tell that the TCPC has reset. If
 	 * so, perform a tcpc_init.
+	 *
+	 * Some TCPCs do not properly disable interrupts during BIST test mode.
+	 * As TCPC not reset at this moment, no need to check pd reset status to
+	 * reduce I2C access time.(see b/229812911)
 	 */
-	if (register_mask_reset(port))
+	if (!bist_mode && register_mask_reset(port))
 		pd_event |= PD_EVENT_TCPC_RESET;
 
 	/*
@@ -1588,6 +1606,10 @@ int tcpci_tcpm_mux_set(const struct usb_mux *me, mux_state_t mux_state,
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
 
+	/* This driver treats safe mode as none */
+	if (mux_state == USB_PD_MUX_SAFE_MODE)
+		mux_state = USB_PD_MUX_NONE;
+
 	/* Parameter is port only */
 	rv = mux_read(me, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
 	if (rv != EC_SUCCESS)
@@ -1828,7 +1850,7 @@ static const struct tcpc_reg_dump_map tcpc_regs[] = {
 /*
  * Dump standard TCPC registers.
  */
-void tcpc_dump_std_registers(int port)
+test_mockable void tcpc_dump_std_registers(int port)
 {
 	tcpc_dump_registers(port, tcpc_regs, ARRAY_SIZE(tcpc_regs));
 }
@@ -1869,6 +1891,9 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 	.set_src_ctrl = &tcpci_tcpm_set_src_ctrl,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode = &tcpci_enter_low_power_mode,
+#endif
+#ifdef CONFIG_USB_PD_FRS_TCPC
+	.set_frs_enable = &tcpci_tcpc_fast_role_swap_enable,
 #endif
 	.set_bist_test_mode = &tcpci_set_bist_test_mode,
 	.get_bist_test_mode = &tcpci_get_bist_test_mode,

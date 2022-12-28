@@ -73,6 +73,20 @@
 extern "C" {
 #endif
 
+/**
+ * Constant for creation of flexible array members that work in both C and
+ * C++. Flexible array members were added in C99 and are not part of the C++
+ * standard. However, clang++ supports them for C++.
+ * When compiling with gcc, flexible array members are not allowed to appear
+ * in an otherwise empty struct, so we use the GCC zero-length array
+ * extension that works with both clang/gcc/g++.
+ */
+#if defined(__cplusplus) && defined(__clang__)
+#define FLEXIBLE_ARRAY_MEMBER_SIZE
+#else
+#define FLEXIBLE_ARRAY_MEMBER_SIZE 0
+#endif
+
 /*
  * Current version of this protocol
  *
@@ -402,6 +416,7 @@ extern "C" {
 /*
  * Report device orientation
  *  Bits       Definition
+ *  4          Off Body/On Body status: 0 = Off Body.
  *  3:1        Device DPTF Profile Number (DDPN)
  *               0   = Reserved for backward compatibility (indicates no valid
  *                     profile number. Host should fall back to using TBMD).
@@ -414,6 +429,8 @@ extern "C" {
 #define EC_ACPI_MEM_TBMD_MASK 0x1
 #define EC_ACPI_MEM_DDPN_SHIFT 1
 #define EC_ACPI_MEM_DDPN_MASK 0x7
+#define EC_ACPI_MEM_STTB_SHIFT 4
+#define EC_ACPI_MEM_STTB_MASK 0x1
 
 /*
  * Report device features. Uses the same format as the host command, except:
@@ -738,6 +755,7 @@ enum host_event_code {
 	 *
 	 * - TABLET/LAPTOP mode
 	 * - detachable base attach/detach event
+	 * - on body/off body transition event
 	 */
 	EC_HOST_EVENT_MODE_CHANGE = 29,
 
@@ -1195,15 +1213,6 @@ struct ec_response_hello {
 /* Get version number */
 #define EC_CMD_GET_VERSION 0x0002
 
-#if !defined(CHROMIUM_EC) && !defined(__KERNEL__)
-/*
- * enum ec_current_image is deprecated and replaced by enum ec_image. This
- * macro exists for backwards compatibility of external projects until they
- * have been updated: b/149987779.
- */
-#define ec_current_image ec_image
-#endif
-
 enum ec_image {
 	EC_IMAGE_UNKNOWN = 0,
 	EC_IMAGE_RO,
@@ -1248,26 +1257,8 @@ struct ec_response_get_version_v1 {
 	char cros_fwid_rw[32]; /* Added in version 1 */
 } __ec_align4;
 
-/* Read test */
+/* Read test - DEPRECATED */
 #define EC_CMD_READ_TEST 0x0003
-
-/**
- * struct ec_params_read_test - Parameters for the read test command.
- * @offset: Starting value for read buffer.
- * @size: Size to read in bytes.
- */
-struct ec_params_read_test {
-	uint32_t offset;
-	uint32_t size;
-} __ec_align4;
-
-/**
- * struct ec_response_read_test - Response to the read test command.
- * @data: Data returned by the read test command.
- */
-struct ec_response_read_test {
-	uint32_t data[32];
-} __ec_align4;
 
 /*
  * Get build information
@@ -1574,6 +1565,10 @@ enum ec_feature_code {
 	 * The EC supports the AP directing mux sets for the board.
 	 */
 	EC_FEATURE_TYPEC_AP_MUX_SET = 45,
+	/*
+	 * The EC supports the AP composing VDMs for us to send.
+	 */
+	EC_FEATURE_TYPEC_AP_VDM_SEND = 46,
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)
@@ -1740,19 +1735,22 @@ struct ec_params_flash_read {
  * struct ec_params_flash_write - Parameters for the flash write command.
  * @offset: Byte offset to write.
  * @size: Size to write in bytes.
+ * @data: Data to write.
+ * @data.words32: uint32_t data to write.
+ * @data.bytes: uint8_t data to write.
  */
 struct ec_params_flash_write {
 	uint32_t offset;
 	uint32_t size;
 	/* Followed by data to write. This union allows accessing an
-	 * underlying buffer as uint32s or uint8s for convenience. This does not
-	 * increase the size of the struct.
+	 * underlying buffer as uint32s or uint8s for convenience.
 	 */
 	union {
-		uint32_t words32[0];
-		uint8_t bytes[0];
+		uint32_t words32[FLEXIBLE_ARRAY_MEMBER_SIZE];
+		uint8_t bytes[FLEXIBLE_ARRAY_MEMBER_SIZE];
 	} data;
 } __ec_align4;
+BUILD_ASSERT(member_size(struct ec_params_flash_write, data) == 0);
 
 /* Erase flash */
 #define EC_CMD_FLASH_ERASE 0x0013
@@ -1970,18 +1968,12 @@ struct ec_params_rand_num {
 
 struct ec_response_rand_num {
 	/**
-	 * generated random numbers in the range of 1 to EC_MAX_INSIZE. The size
-	 * of this is set to 1 in order to support C++ compilation. The true
+	 * generated random numbers in the range of 1 to EC_MAX_INSIZE. The true
 	 * size of rand is determined by ec_params_rand_num's num_rand_bytes.
 	 */
-	uint8_t rand[1];
+	uint8_t rand[FLEXIBLE_ARRAY_MEMBER_SIZE];
 } __ec_align1;
-
-/* C++ requires all structs to be at least 1 byte long. Since struct
- * ec_response_rand_num will never be used with num_rand_bytes == 0 (from
- * ec_params_rand_num) it is set to always be at least 1.
- */
-BUILD_ASSERT(sizeof(struct ec_response_rand_num) == 1);
+BUILD_ASSERT(sizeof(struct ec_response_rand_num) == 0);
 
 /**
  * Get information about the key used to sign the RW firmware.
@@ -2047,7 +2039,7 @@ enum sysinfo_flags {
 
 struct ec_response_sysinfo {
 	uint32_t reset_flags; /**< EC_RESET_FLAG_* flags */
-	uint32_t current_image; /**< enum ec_current_image */
+	uint32_t current_image; /**< enum ec_image */
 	uint32_t flags; /**< enum sysinfo_flags */
 } __ec_align4;
 
@@ -2848,8 +2840,8 @@ struct ec_motion_sense_activity {
 	uint8_t activity; /* one of enum motionsensor_activity */
 	uint8_t enable; /* 1: enable, 0: disable */
 	uint8_t reserved;
-	uint16_t parameters[3]; /* activity dependent parameters */
-} __ec_todo_unpacked;
+	uint16_t parameters[4]; /* activity dependent parameters */
+} __ec_todo_packed;
 
 /* Module flag masks used for the dump sub-command. */
 #define MOTIONSENSE_MODULE_FLAG_ACTIVE BIT(0)
@@ -2876,7 +2868,7 @@ struct ec_motion_sense_activity {
  */
 #define EC_MOTION_SENSE_NO_VALUE -1
 
-#define EC_MOTION_SENSE_INVALID_CALIB_TEMP 0x8000
+#define EC_MOTION_SENSE_INVALID_CALIB_TEMP INT16_MIN
 
 /* MOTIONSENSE_CMD_SENSOR_OFFSET subcommand flag */
 /* Set Calibration information */
@@ -3063,7 +3055,7 @@ struct ec_params_motion_sense {
 					/* spoof activity state */
 					uint8_t activity_state;
 				};
-			};
+			} __ec_todo_packed;
 		} spoof;
 
 		/* Used for MOTIONSENSE_CMD_TABLET_MODE_LID_ANGLE. */
@@ -3099,7 +3091,7 @@ struct ec_params_motion_sense {
 			uint8_t sensor_num;
 			uint8_t activity; /* enum motionsensor_activity */
 		} get_activity;
-	};
+	} __ec_todo_packed;
 } __ec_todo_packed;
 
 enum motion_sense_cmd_info_flags {
@@ -3318,6 +3310,22 @@ struct ec_params_usb_charge_set_mode {
 } __ec_align1;
 
 /*****************************************************************************/
+/* Tablet mode commands */
+
+/* Set tablet mode */
+#define EC_CMD_SET_TABLET_MODE 0x0031
+
+enum tablet_mode_override {
+	TABLET_MODE_DEFAULT,
+	TABLET_MODE_FORCE_TABLET,
+	TABLET_MODE_FORCE_CLAMSHELL,
+};
+
+struct ec_params_set_tablet_mode {
+	uint8_t tablet_mode; /* enum tablet_mode_override */
+} __ec_align1;
+
+/*****************************************************************************/
 /* Persistent storage for host */
 
 /* Maximum bytes that can be read/written in a single command */
@@ -3399,7 +3407,7 @@ struct ec_params_port80_read {
 			uint32_t offset;
 			uint32_t num_entries;
 		} read_buffer;
-	};
+	} __ec_todo_packed;
 } __ec_todo_packed;
 
 struct ec_response_port80_read {
@@ -4733,7 +4741,7 @@ struct ec_params_charge_state {
 			uint32_t param; /* param to set */
 			uint32_t value; /* value to set */
 		} set_param;
-	};
+	} __ec_todo_packed;
 	uint8_t chgnum; /* Version 1 supports chgnum */
 } __ec_todo_packed;
 
@@ -6047,7 +6055,7 @@ struct ec_response_pd_chip_info {
 	union {
 		uint8_t fw_version_string[8];
 		uint64_t fw_version_number;
-	};
+	} __ec_align2;
 } __ec_align2;
 
 struct ec_response_pd_chip_info_v1 {
@@ -6057,11 +6065,11 @@ struct ec_response_pd_chip_info_v1 {
 	union {
 		uint8_t fw_version_string[8];
 		uint64_t fw_version_number;
-	};
+	} __ec_align2;
 	union {
 		uint8_t min_req_fw_version_string[8];
 		uint64_t min_req_fw_version_number;
-	};
+	} __ec_align2;
 } __ec_align2;
 
 /* Run RW signature verification and get status */
@@ -6731,6 +6739,7 @@ struct ec_response_regulator_get_voltage {
 enum typec_partner_type {
 	TYPEC_PARTNER_SOP = 0,
 	TYPEC_PARTNER_SOP_PRIME = 1,
+	TYPEC_PARTNER_SOP_PRIME_PRIME = 2,
 };
 
 struct ec_params_typec_discovery {
@@ -6761,6 +6770,8 @@ enum typec_control_command {
 	TYPEC_CONTROL_COMMAND_ENTER_MODE,
 	TYPEC_CONTROL_COMMAND_TBT_UFP_REPLY,
 	TYPEC_CONTROL_COMMAND_USB_MUX_SET,
+	TYPEC_CONTROL_COMMAND_BIST_SHARE_MODE,
+	TYPEC_CONTROL_COMMAND_SEND_VDM_REQ,
 };
 
 /* Modes (USB or alternate) that a type-C port may enter. */
@@ -6786,6 +6797,17 @@ struct typec_usb_mux_set {
 	uint8_t mux_flags;
 } __ec_align1;
 
+#define VDO_MAX_SIZE 7
+
+struct typec_vdm_req {
+	/* VDM data, including VDM header */
+	uint32_t vdm_data[VDO_MAX_SIZE];
+	/* Number of 32-bit fields filled in */
+	uint8_t vdm_data_objects;
+	/* Partner to address - see enum typec_partner_type */
+	uint8_t partner_type;
+} __ec_align1;
+
 struct ec_params_typec_control {
 	uint8_t port;
 	uint8_t command; /* enum typec_control_command */
@@ -6805,6 +6827,10 @@ struct ec_params_typec_control {
 		uint8_t tbt_ufp_reply;
 		/* Used for USB_MUX_SET */
 		struct typec_usb_mux_set mux_params;
+		/* Used for BIST_SHARE_MODE */
+		uint8_t bist_share_mode;
+		/* Used for VMD_REQ */
+		struct typec_vdm_req vdm_req_params;
 		uint8_t placeholder[128];
 	};
 } __ec_align1;
@@ -6894,6 +6920,8 @@ enum tcpc_cc_polarity {
 #define PD_STATUS_EVENT_DISCONNECTED BIT(3)
 #define PD_STATUS_EVENT_MUX_0_SET_DONE BIT(4)
 #define PD_STATUS_EVENT_MUX_1_SET_DONE BIT(5)
+#define PD_STATUS_EVENT_VDM_REQ_REPLY BIT(6)
+#define PD_STATUS_EVENT_VDM_REQ_FAILED BIT(7)
 
 /*
  * Encode and decode for BCD revision response
@@ -7041,10 +7069,22 @@ struct ec_response_pchg_count {
  */
 #define EC_CMD_PCHG 0x0135
 
+/* For v1 and v2 */
 struct ec_params_pchg {
 	uint8_t port;
 } __ec_align1;
 
+struct ec_params_pchg_v3 {
+	uint8_t port;
+	/* Below are new in v3. */
+	uint8_t reserved1;
+	uint8_t reserved2;
+	uint8_t reserved3;
+	/* Errors acked by the host (thus to be cleared) */
+	uint32_t error;
+} __ec_align1;
+
+/* For v1 */
 struct ec_response_pchg {
 	uint32_t error; /* enum pchg_error */
 	uint8_t state; /* enum pchg_state state */
@@ -7056,6 +7096,7 @@ struct ec_response_pchg {
 	uint32_t dropped_event_count;
 } __ec_align4;
 
+/* For v2 and v3 */
 struct ec_response_pchg_v2 {
 	uint32_t error; /* enum pchg_error */
 	uint8_t state; /* enum pchg_state state */
@@ -7088,6 +7129,8 @@ enum pchg_state {
 	PCHG_STATE_DOWNLOADING,
 	/* Device is ready for data communication. */
 	PCHG_STATE_CONNECTED,
+	/* Charger is in Built-In Self Test mode. */
+	PCHG_STATE_BIST,
 	/* Put no more entry below */
 	PCHG_STATE_COUNT,
 };
@@ -7104,6 +7147,7 @@ enum pchg_state {
 		[PCHG_STATE_DOWNLOAD] = "DOWNLOAD",       \
 		[PCHG_STATE_DOWNLOADING] = "DOWNLOADING", \
 		[PCHG_STATE_CONNECTED] = "CONNECTED",     \
+		[PCHG_STATE_BIST] = "BIST",               \
 	}
 /* clang-format on */
 
@@ -7135,6 +7179,10 @@ enum ec_pchg_update_cmd {
 	EC_PCHG_UPDATE_CMD_WRITE,
 	/* Close update session. */
 	EC_PCHG_UPDATE_CMD_CLOSE,
+	/* Reset chip (without mode change). */
+	EC_PCHG_UPDATE_CMD_RESET,
+	/* Enable pass-through mode. */
+	EC_PCHG_UPDATE_CMD_ENABLE_PASSTHRU,
 	/* End of commands */
 	EC_PCHG_UPDATE_CMD_COUNT,
 };
@@ -7291,6 +7339,26 @@ struct ec_params_rgbkbd_set_color {
 	uint8_t length;
 	/* RGB color data array of length up to MAX_KEY_COUNT. */
 	struct rgb_s color[];
+} __ec_align1;
+
+/*
+ * Gather the response to the most recent VDM REQ from the AP
+ */
+#define EC_CMD_TYPEC_VDM_RESPONSE 0x013C
+
+struct ec_params_typec_vdm_response {
+	uint8_t port;
+} __ec_align1;
+
+struct ec_response_typec_vdm_response {
+	/* Number of 32-bit fields filled in */
+	uint8_t vdm_data_objects;
+	/* Partner to address - see enum typec_partner_type */
+	uint8_t partner_type;
+	/* Reserved */
+	uint16_t reserved;
+	/* VDM data, including VDM header */
+	uint32_t vdm_response[VDO_MAX_SIZE];
 } __ec_align1;
 
 /*****************************************************************************/
@@ -7722,6 +7790,24 @@ struct ec_params_charger_control {
 struct ec_params_usb_pd_mux_ack {
 	uint8_t port; /* USB-C port number */
 } __ec_align1;
+
+/* Get boot time */
+#define EC_CMD_GET_BOOT_TIME 0x0604
+
+enum boot_time_param {
+	ARAIL = 0,
+	RSMRST,
+	ESPIRST,
+	PLTRST_LOW,
+	PLTRST_HIGH,
+	EC_CUR_TIME,
+	RESET_CNT,
+};
+
+struct ap_boot_time_data {
+	uint64_t timestamp[RESET_CNT];
+	uint16_t cnt;
+} __ec_align4;
 
 /*****************************************************************************/
 /*
