@@ -5,8 +5,6 @@
 description: |
    Battery fuel gauge parameters
 
-compatible: "battery-fuel-gauge"
-
 properties:
    manuf_name:
       description: |
@@ -54,6 +52,14 @@ properties:
          to read the OperationStatus (0x54) register.
          The fet_reg_mask and fet_disconnect_val properties must still be
          defined.
+         Value must be either 0 or 1.
+      type: int
+   fet_mfgacc_smb_block:
+      description: |
+         Battery supports manufacturer access command.
+         If enabled, Write command by the SMB block protocol.
+         FET status is read using the ManufacturerBlockAccess (0x44)
+         to read the OperationStatus (0x54) register.
          Value must be either 0 or 1.
       type: int
    fet_reg_addr:
