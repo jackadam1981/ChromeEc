@@ -19,6 +19,13 @@
 #define __CROS_EC_CONFIG_H
 
 /*
+ * I don't know why but gcc's preprocessor doesn't like the autoconf.h file,
+ * sometimes. Adding a #line directive anywhere in this file seems to fix the
+ * problem. #line marks the *next* line, so it is off by one.
+ */
+#line 27
+
+/*
  * When building for Zephyr tests, a shimmed_tasks.h header is defined
  * to create all the HAS_TASK_* definitions.  Since those are used in
  * config.h, we need to include that header first.
@@ -221,6 +228,12 @@
 /* The threshold duration to change to off_body */
 #undef CONFIG_BODY_DETECTION_STATIONARY_DURATION
 
+/* Send the SCI event to notify host when body status change */
+#undef CONFIG_BODY_DETECTION_NOTIFY_MODE_CHANGE
+
+/* Always enable the body detection function in S0 */
+#undef CONFIG_BODY_DETECTION_ALWAYS_ENABLE_IN_S0
+
 /*
  * Use the old standard reference frame for accelerometers. The old
  * reference frame is:
@@ -370,6 +383,7 @@
 #undef CONFIG_ACCELGYRO_BMI3XX_INT_EVENT
 #undef CONFIG_ACCELGYRO_ICM426XX_INT_EVENT
 #undef CONFIG_ACCELGYRO_ICM42607_INT_EVENT
+#undef CONFIG_ACCEL_BMA4XX_INT_EVENT
 #undef CONFIG_ACCEL_LSM6DSM_INT_EVENT
 #undef CONFIG_ACCEL_LSM6DSO_INT_EVENT
 #undef CONFIG_ACCEL_LIS2DS_INT_EVENT
@@ -871,6 +885,9 @@
  */
 #undef CONFIG_SIMULATED_BUTTON
 
+/* Set the default button debounce time in us */
+#define CONFIG_BUTTON_DEBOUNCE (30 * MSEC)
+
 /*
  * Capsense chip has buttons, too.
  */
@@ -1031,7 +1048,38 @@
  * this should be set to 512 mA in order to not brown-out low-current USB
  * charge ports in accordance with USB-PD r3.0 Sec. 7.3
  */
-#undef CONFIG_CHARGER_INPUT_CURRENT
+#undef CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT
+
+/*
+ * Minimum current limit that will ever be set for chargers, even if a lower
+ * limit is requested. This will allow the charger to draw more power than
+ * the requested limit.
+ *
+ * If set, this should usually be set to no more than 2.5W divided by the
+ * maximum supported input voltage in order to satisfy USB-PD pSnkStdby
+ * requirements. Higher values may help devices stay alive under low-battery
+ * conditions at the cost of violating standby power limits.
+ *
+ * Many boards set this to large values, since historically this number was
+ * usually equal to CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT. New boards should
+ * avoid doing so if possible.
+ */
+#undef CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT
+
+/*
+ * Percentage derating factor applied to charger input current limits.
+ *
+ * Desired charger current is reduced by this many percent when programming
+ * chargers via the charge manager, which is usually used to account for
+ * chargers that draw slightly more current than the programmed limit or to
+ * provide some margin for accuracy. For example, if this value is set to 4
+ * and input current is limited to 1000 mA, the charger will be given a limit
+ * of 960 mA.
+ *
+ * Boards requiring more complex control over input current should leave this
+ * undefined and override board_set_charge_limit instead.
+ */
+#undef CONFIG_CHARGER_INPUT_CURRENT_DERATE_PCT
 
 /*
  * This config option is used to enable IDCHG trigger for prochot. This macro
@@ -1329,8 +1377,14 @@
  */
 #undef CONFIG_OCPC_DEF_RBATT_MOHMS
 
+/* Set a default OCPC drive limit for legacy boards */
+#define CONFIG_OCPC_DEF_DRIVELIMIT_MILLIVOLTS 10
+
 /* Enable trickle charging */
 #undef CONFIG_TRICKLE_CHARGING
+
+/* Set trickle charge current by taking integer value */
+#define CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT 128
 
 /* Wireless chargers */
 #undef CONFIG_CPS8100
@@ -1670,12 +1724,6 @@
 #define CONFIG_COMMON_PANIC_OUTPUT
 
 /*
- * Store a panic log and halt the system for a software-related reasons, such as
- * stack overflow or assertion failure.
- */
-#undef CONFIG_SOFTWARE_PANIC
-
-/*
  * Certain platforms(e.g. eve, poppy) cannot retain panic info in data ram since
  * VCC is powered down on EC reset. On such platforms, panic data needs to be
  * saved/restored to persistent storage by using chip specific
@@ -1692,6 +1740,13 @@
 
 /* When defined, it enables build assert for panic data structure size */
 #undef CONFIG_RO_PANIC_DATA_SIZE
+
+/*
+ * When defined, it enables system safe mode. System safe mode allows the AP to
+ * capture the EC state after a panic.
+ */
+#undef CONFIG_SYSTEM_SAFE_MODE
+#define CONFIG_SYSTEM_SAFE_MODE_TIMEOUT_MSEC 2000
 
 /*
  * Provide the default GPIO abstraction layer.
@@ -2415,8 +2470,11 @@
 #undef CONFIG_HOST_COMMAND_STATUS
 
 /* clear bit(s) to mask reporting of an EC_HOST_EVENT_XXX event(s) */
+#ifdef CONFIG_HOST_EVENT64
+#define CONFIG_HOST_EVENT_REPORT_MASK 0xffffffffffffffffULL
+#else
 #define CONFIG_HOST_EVENT_REPORT_MASK 0xffffffff
-#define CONFIG_HOST_EVENT64_REPORT_MASK 0xffffffffffffffffULL
+#endif
 
 /* Config option to support 64-bit hostevents and wake-masks. */
 #define CONFIG_HOST_EVENT64
@@ -3424,6 +3482,16 @@
  */
 #undef CONFIG_ISL9241_SWITCHING_FREQ
 
+/*
+ * ISL9238C disable the CMOUT latch function.
+ */
+#undef CONFIG_ISL9238C_DISABLE_CMOUT_LATCH
+
+/*
+ * ISL9238C enable Force Buck mode.
+ */
+#undef CONFIG_ISL9238C_ENABLE_BUCK_MODE
+
 /* Support MKBP event */
 #undef CONFIG_MKBP_EVENT
 
@@ -3989,9 +4057,6 @@
 /* Default stack size to use for tasks, in bytes */
 #undef CONFIG_STACK_SIZE
 
-/* Use 32-bit timer for clock source on stm32. */
-#undef CONFIG_STM_HWTIMER32
-
 /* Compile charger detect for STM32 */
 #undef CONFIG_STM32_CHARGER_DETECT
 
@@ -4465,16 +4530,20 @@
  * TYPEC_SM - Type-C deals with CC lines voltage level connections
  * PRL_SM - Protocol handles flow and chunking TX and RX messages
  * PE - Policy Engine handles PD communication flow
+ * DPM - Device Policy Manager layer is used to determine port policy
  */
 #define CONFIG_USB_TYPEC_SM
 #define CONFIG_USB_PRL_SM
 #define CONFIG_USB_PE_SM
+#define CONFIG_USB_DPM_SM
 
 /* Enables PD Console commands */
 #define CONFIG_USB_PD_CONSOLE_CMD
 
 /* Enables PD Host commands */
+#ifdef HAS_TASK_HOSTCMD
 #define CONFIG_USB_PD_HOST_CMD
+#endif
 
 /* Support for USB PD alternate mode */
 #undef CONFIG_USB_PD_ALT_MODE
@@ -4490,6 +4559,9 @@
  * direct the EC to enter a mode. This requires AP software support.
  */
 #undef CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
+
+/* Allow the AP to compose VDMs for us to send */
+#undef CONFIG_USB_PD_VDM_AP_CONTROL
 
 /* Supports DP as UFP-D and requires HPD to DP_ATTEN converter */
 #undef CONFIG_USB_PD_ALT_MODE_UFP_DP
@@ -4651,6 +4723,17 @@
 
 /* Record main PD events in a circular buffer */
 #undef CONFIG_USB_PD_LOGGING
+
+/*
+ * Record PRL state transitions in a ring buffer, readable via the `prllog`
+ * console command.
+ */
+#undef CONFIG_USB_PD_PRL_EVENT_LOG
+/*
+ * Number of events that can be stored in the PRL log (after this many, the
+ * oldest entries will be replaced with new ones).
+ */
+#define CONFIG_USB_PD_PRL_EVENT_LOG_CAPACITY 128
 
 /* The size in bytes of the FIFO used for event logging */
 #define CONFIG_EVENT_LOG_SIZE 512
@@ -5718,6 +5801,9 @@
  */
 #undef CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT
 
+/* Define this to enable system boot time logging */
+#undef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+
 /*
  * The USB port used for CCD. Defaults to 0/C0.
  */
@@ -5747,13 +5833,17 @@
 #endif
 
 #include "config_chip.h"
+#ifdef CONFIG_ZEPHYR
+#include "zephyr_shim.h"
+#else
 #include "board.h"
+#endif
 
 /*
  * Define CONFIG_HOST_ESPI_VW_POWER_SIGNAL if any power signals from the host
  * are configured as virtual wires.
  */
-#if defined(CONFIG_HOSTCMD_ESPI_VW_SLP_S3) ||            \
+#if defined(CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S3) ||     \
 	defined(CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S4) || \
 	defined(CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S5)
 #define CONFIG_HOST_ESPI_VW_POWER_SIGNAL
@@ -6684,6 +6774,7 @@
  * and CONFIG_USB_PD_PORT_MAX_COUNT, CONFIG_USB_PD_DISCHARGE_TCPC, or
  * CONFIG_USB_PD_DISCHARGE_PPC is defined.
  */
+#ifndef CONFIG_TEST_ENABLE_USB_PD_DISCHARGE
 #ifdef CONFIG_USB_PD_DISCHARGE
 #ifdef CONFIG_USB_PD_DISCHARGE_GPIO
 #if !defined(CONFIG_USB_PD_PORT_MAX_COUNT)
@@ -6696,6 +6787,7 @@
 #endif
 #endif /* CONFIG_USB_PD_DISCHARGE_GPIO */
 #endif /* CONFIG_USB_PD_DISCHARGE */
+#endif /* CONFIG_TEST_ENABLE_USB_PD_DISCHARGE */
 
 /* Chargesplash defaults */
 #ifdef CONFIG_CHARGESPLASH
@@ -6905,6 +6997,11 @@
 /* HAS_GPU_DRIVER enables D-Notify and throttling. */
 #if defined(CONFIG_GPU_NVIDIA)
 #define HAS_GPU_DRIVER
+#endif
+
+/* Default to 1024 for end of ram data (panic and jump data) */
+#ifndef CONFIG_PRESERVED_END_OF_RAM_SIZE
+#define CONFIG_PRESERVED_END_OF_RAM_SIZE 1024
 #endif
 
 #endif /* __CROS_EC_CONFIG_H */

@@ -11,9 +11,9 @@
 #include "builtin/assert.h"
 #include "charge_state_v2.h"
 #include "charger.h"
+#include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
-#include "common.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "isl923x.h"
@@ -699,8 +699,22 @@ static void isl923x_init(int chgnum)
 
 		reg |= ISL9238C_C6_SLEW_RATE_CONTROL;
 
+		if (IS_ENABLED(CONFIG_ISL9238C_DISABLE_CMOUT_LATCH)) {
+			reg |= ISL9238C_C6_CMOUT_LATCH;
+		}
+
 		if (raw_write16(chgnum, ISL9238C_REG_CONTROL6, reg))
 			goto init_fail;
+
+		if (IS_ENABLED(CONFIG_ISL9238C_ENABLE_BUCK_MODE)) {
+			if (raw_read16(chgnum, ISL923X_REG_CONTROL0, &reg))
+				goto init_fail;
+
+			reg |= ISL923X_C0_ENABLE_BUCK;
+
+			if (raw_write16(chgnum, ISL923X_REG_CONTROL0, reg))
+				goto init_fail;
+		}
 	}
 
 	if (IS_ENABLED(CONFIG_CHARGER_RAA489000)) {
@@ -712,6 +726,17 @@ static void isl923x_init(int chgnum)
 			goto init_fail;
 		reg &= ~RAA489000_C1_BGATE_FORCE_OFF;
 		if (raw_write16(chgnum, ISL923X_REG_CONTROL1, reg))
+			goto init_fail;
+	}
+
+	if (IS_ENABLED(CONFIG_CHARGER_RAA489000)) {
+		if (raw_read16(chgnum, ISL923X_REG_CONTROL2, &reg))
+			goto init_fail;
+		/* Set trickle charge current bits. */
+		reg &= ~GENMASK(13, 15);
+		reg |= ((CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT - 32) / 32)
+		       << 13;
+		if (raw_write16(chgnum, ISL923X_REG_CONTROL2, reg))
 			goto init_fail;
 	}
 
@@ -757,7 +782,7 @@ static void isl923x_init(int chgnum)
 		 * Initialize the input current limit to the board's default.
 		 */
 		if (isl923x_set_input_current_limit(
-			    chgnum, CONFIG_CHARGER_INPUT_CURRENT))
+			    chgnum, CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT))
 			goto init_fail;
 	}
 
@@ -850,7 +875,7 @@ enum ec_error_list raa489000_is_acok(int chgnum, bool *acok)
 {
 	int regval, rv;
 
-	if ((chgnum < 0) || (chgnum > board_get_charger_chip_count())) {
+	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
 		CPRINTS("%s: Invalid chgnum! (%d)", __func__, chgnum);
 		return EC_ERROR_INVAL;
 	}
@@ -875,7 +900,7 @@ void raa489000_hibernate(int chgnum, bool disable_adc)
 {
 	int rv, regval;
 
-	if ((chgnum < 0) || (chgnum > board_get_charger_chip_count())) {
+	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
 		CPRINTS("%s: Invalid chgnum! (%d)", __func__, chgnum);
 		return;
 	}
@@ -1002,7 +1027,7 @@ enum ec_error_list isl9238c_resume(int chgnum)
 /* Hardware current ramping */
 
 #ifdef CONFIG_CHARGE_RAMP_HW
-static int isl923x_ramp_is_stable(int chgnum)
+test_mockable_static int isl923x_ramp_is_stable(int chgnum)
 {
 	/*
 	 * Since ISL cannot read the current limit that the ramp has settled
@@ -1012,7 +1037,7 @@ static int isl923x_ramp_is_stable(int chgnum)
 	return 0;
 }
 
-static int isl923x_ramp_is_detected(int chgnum)
+test_mockable_static int isl923x_ramp_is_detected(int chgnum)
 {
 	return 1;
 }
