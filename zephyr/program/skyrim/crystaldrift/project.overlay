@@ -15,7 +15,6 @@
 /* Crystaldrift project DTS includes*/
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
-#include "motionsense.dtsi"
 
 /* Crystaldrift overrides follow... */
 / {
@@ -137,26 +136,8 @@
 		};
 	};
 
-	/* Rotation matrices for motion sensors. */
-	motionsense-rotation-ref {
-		compatible = "cros-ec,motionsense-rotation-ref";
-		lid_rot_ref: lid-rotation-ref {
-			mat33 = <0 (-1) 0
-				 1 0 0
-				 0 0 1>;
-		};
-
-		lid_rot_ref1: lid-rotation-ref1 {
-			mat33 = <0 1 0
-				 (-1) 0 0
-				 0 0 1>;
-		};
-
-		base_rot_ref: base-rotation-ref {
-			mat33 = <0 1 0
-				 (-1) 0 0
-				 0 0 1>;
-		};
+	gpio-interrupts {
+		/delete-node/ accel_gyro;
 	};
 
 	ppc_port0: aoz1380 {
@@ -168,4 +149,11 @@
 /* i2c overrides */
 &i2c0_0 {
 	/delete-node/ nx20p348x@71;
+	/delete-node/ anx7483@3e;
+};
+/* usbc overrides */
+&usbc_port0 {
+	usb-mux-chain-0 {
+		usb-muxes = <&amd_fp6_port0>;
+	};
 };
