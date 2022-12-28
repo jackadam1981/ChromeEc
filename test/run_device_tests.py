@@ -138,6 +138,21 @@ BLOONCHIPPER_V5938_IMAGE_PATH = os.path.join(
 )
 
 
+def run_subprocess(command, stdout=None, check=False):
+    """
+    Call command as a subprocess
+    If stdout == subprocess.PIPE then the contents of stdout is returned, otherwise the process
+    return code is returned
+    If check == True then a non-zero return code will result in a subprocess.CalledProcessError
+    exception being raised
+    """
+    logging.debug('Running command: "%s"', command)
+    proc = subprocess.run(command, stdout=stdout, check=check)
+    if stdout == subprocess.PIPE:
+        return proc.stdout
+    return proc.returncode
+
+
 class ImageType(Enum):
     """EC Image type to use for the test."""
 
@@ -489,12 +504,7 @@ BOARD_CONFIGS = {
 def read_file_gsutil(path: str) -> bytes:
     """Get data from bucket, using gsutil tool"""
     cmd = ["gsutil", "cat", path]
-
-    logging.debug('Running command: "%s"', " ".join(cmd))
-    gsutil = subprocess.run(cmd, stdout=subprocess.PIPE, check=False)
-    gsutil.check_returncode()
-
-    return gsutil.stdout
+    return run_subprocess(cmd, stdout=subprocess.PIPE, check=True)
 
 
 def find_section_offset_size(section: str, image: bytes) -> Tuple[int, int]:
@@ -584,8 +594,7 @@ def power(board_config: BoardConfig, power_on: bool) -> None:
         "dut-control",
         board_config.servo_power_enable + ":" + state,
     ]
-    logging.debug('Running command: "%s"', " ".join(cmd))
-    subprocess.run(cmd, check=False).check_returncode()
+    run_subprocess(cmd, check=True)
 
 
 def power_cycle(board_config: BoardConfig) -> None:
@@ -608,8 +617,7 @@ def hw_write_protect(enable: bool) -> None:
         "dut-control",
         "fw_wp_state:" + state,
     ]
-    logging.debug('Running command: "%s"', " ".join(cmd))
-    subprocess.run(cmd, check=False).check_returncode()
+    run_subprocess(cmd, check=True)
 
 
 def build(
@@ -631,9 +639,7 @@ def build(
         cmd = cmd + [
             "test-" + test_name,
         ]
-
-    logging.debug('Running command: "%s"', " ".join(cmd))
-    subprocess.run(cmd, check=False).check_returncode()
+    run_subprocess(cmd, check=True)
 
 
 def flash(
@@ -660,9 +666,8 @@ def flash(
             image_path,
         ]
     )
-    logging.debug('Running command: "%s"', " ".join(cmd))
-    completed_process = subprocess.run(cmd, check=False)
-    return completed_process.returncode == 0
+    returncode = run_subprocess(cmd, check=False)
+    return returncode == 0
 
 
 def patch_image(test: TestConfig, image_path: str):
