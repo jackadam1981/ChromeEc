@@ -16,6 +16,24 @@
       "message": "Seems we have new toolchain issues:\n```\nchromeos-ec-0.0.2-r8701:  * pkg-config: ERROR: Do not call unprefixed tools directly.\nchromeos-ec-0.0.2-r8701:  * pkg-config: ERROR: For board tools, use `tc-export PKG_CONFIG` (or ${CHOST}-pkg-config).\nchromeos-ec-0.0.2-r8701:  * pkg-config: ERROR: For build-time-only tools, `tc-export BUILD_PKG_CONFIG` (or ${CBUILD}-pkg-config).\nchromeos-ec-0.0.2-r8701:  * python3 /b/s/w/ir/x/w/recipe_cleanup/chromiumos_workspace/chromite/bin/cros_sdk --log-level debug --chroot /b/s/w/ir/x/w/recipe_cleanup/tmpr7wl1cnk/chroot USE\u003dchrome_internal -cros-debug chromeless_tty -- ./build_packages --board\u003ddedede --accept_licenses\u003d@CHROMEOS --skip_chroot_upgrade --withdebugsymbols virtual/chromeos-firmware\nchromeos-ec-0.0.2-r8701:  *   `-python3 /b/s/w/ir/x/w/recipe_cleanup/chromiumos_workspace/chromite/bin/cros_sdk --log-level debug --chroot /b/s/w/ir/x/w/recipe_cleanup/tmpr7wl1cnk/chroot USE\u003dchrome_internal -cros-debug chromeless_tty -- ./build_packages --board\u003ddedede --accept_licenses\u003d@CHROMEOS --skip_chroot_upgrade --withdebugsymbols virtual/chromeos-firmware\nchromeos-ec-0.0.2-r8701:  *       `-build_packages ./build_packages --board\u003ddedede --accept_licenses\u003d@CHROMEOS --skip_chroot_upgrade --withdebugsymbols virtual/chromeos-firmware\nchromeos-ec-0.0.2-r8701:  *           `-build_packages ./build_packages --board\u003ddedede --accept_licenses\u003d@CHROMEOS --skip_chroot_upgrade --withdebugsymbols virtual/chromeos-firmware\nchromeos-ec-0.0.2-r8701:  *               `-emerge -b /usr/lib/python-exec/python3.6/emerge -uDNv --backtrack\u003d30 --newrepo --getbinpkg --with-bdeps y --usepkg --rebuild-if-new-rev --reinstall-atoms\u003dchromeos-base/chromeos-config chromeos-base/chromeos-config chromeos-base/chromeos-config-bsp-dedede-private sys-boot/coreboot-private-files-baseboard-dedede virtual/chromeos-config-bsp virtual/coreboot-private-files --usepkg-exclude\u003dchromeos-base/chromeos-config chromeos-base/chromeos-config chromeos-base/chromeos-config-bsp-dedede-private sys-boot/coreboot-private-files-baseboard-dedede virtual/chromeos-config-bsp virtual/coreboot-private-files virtual/chromeos-firmware --useoldpkg-atoms\u003ddev-lang/rust sys-libs/glibc sys-devel/gcc --rebuild-exclude\u003ddev-lang/rust sys-libs/glibc sys-devel/gcc --sysroot /build/dedede --useoldpkg-atoms\u003dchromeos-base/chromeos-chrome chromeos-base/chrome-icu --root-deps --jobs\u003d16 --rebuild-exclude\u003dchromeos-base/chromeos-chrome --rebuild-exclude\u003dchromeos-base/chromium-source --rebuild-exclude\u003dchromeos-base/chrome-icu\nchromeos-ec-0.0.2-r8701:  *                   `-sandbox /usr/lib/portage/python3.6/ebuild.sh compile\nchromeos-ec-0.0.2-r8701:  *                       `-ebuild.sh /usr/lib/portage/python3.6/ebuild.sh compile\nchromeos-ec-0.0.2-r8701:  *                           `-ebuild.sh /usr/lib/portage/python3.6/ebuild.sh compile\nchromeos-ec-0.0.2-r8701:  *                               `-emake /usr/lib/portage/python3.6/ebuild-helpers/emake ALLOW_CONFIG\u003d1 clean\nchromeos-ec-0.0.2-r8701:  *                                   `-make -j16 ALLOW_CONFIG\u003d1 clean\nchromeos-ec-0.0.2-r8701:  *                                       `-x86_64-cros-lin /usr/bin/x86_64-cros-linux-gnu-pkg-config --cflags libftdi1 libusb-1.0\nchromeos-ec-0.0.2-r8701:  *                                           `-pkg-config /build/dedede/tmp/portage/chromeos-base/chromeos-ec-0.0.2-r8701/temp/build-toolchain-wrappers/pkg-config --atleast-pkgconfig-version 0.24\nchromeos-ec-0.0.2-r8701:  *                                               `-pstree -a -A -s -l 904\nchromeos-ec-0.0.2-r8701:  * ERROR: chromeos-base/chromeos-ec-0.0.2-r8701::chromiumos failed (compile phase):\nchromeos-ec-0.0.2-r8701:  *   Bad pkg-config [--atleast-pkgconfig-version 0.24] invocation\n\n```",
       "revId": "2442d211f6a7c1c90411effa5af6fcf7e91980cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bd76b3_a44982eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2022-12-28T09:13:22Z",
+      "side": 1,
+      "message": "Might need CL:4127501",
+      "parentUuid": "ea61fb18_dfe07145",
+      "revId": "2442d211f6a7c1c90411effa5af6fcf7e91980cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
