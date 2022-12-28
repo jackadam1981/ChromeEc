@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c514fabe_f52cfcb5",
+        "filename": "zephyr/test/krabby/src/power_seq.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-12-28T14:11:44Z",
+      "side": 1,
+      "message": "Can also check if chipset_reset_request_interrupt is called when the signal is set to 1.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 0
+      },
+      "revId": "c3d9c8438f8ee42cd9d3c3b137d78106525eba6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "308eed91_07e5a605",
+        "filename": "zephyr/test/krabby/src/power_seq.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-12-28T14:11:44Z",
+      "side": 1,
+      "message": "This hook is currently unused on mt8186. If you really want to test it, maybe you can be added in the mt8186.c chipset_reset().",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 33
+      },
+      "revId": "c3d9c8438f8ee42cd9d3c3b137d78106525eba6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
