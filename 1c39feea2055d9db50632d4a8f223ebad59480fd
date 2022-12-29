@@ -22,6 +22,30 @@
       },
       "revId": "1c39feea2055d9db50632d4a8f223ebad59480fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30b96cf_7799e344",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 7009,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-12-29T01:51:07Z",
+      "side": 1,
+      "message": "That is very true.  I was lazy, and wanted to avoid touching more files than necessary.\n\nIt turns of that several existing fingerprint boards do not make use of mutable spi_devices, and should not have CONFIG_SPI_MUTABLE_DEVICE_LIST.",
+      "parentUuid": "2ae33875_5074ac8b",
+      "range": {
+        "startLine": 7009,
+        "startChar": 0,
+        "endLine": 7009,
+        "endChar": 38
+      },
+      "revId": "1c39feea2055d9db50632d4a8f223ebad59480fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
