@@ -45,6 +45,30 @@
       },
       "revId": "c3d9c8438f8ee42cd9d3c3b137d78106525eba6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17978f59_1039a473",
+        "filename": "zephyr/test/krabby/src/power_seq.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-12-29T05:04:53Z",
+      "side": 1,
+      "message": "No I don\u0027t want to change ec\u0027s behavior at this stage lol\n\nIf it\u0027s never used, should we remove the function at https://chromium.googlesource.com/chromiumos/platform/ec/+/dda779df/power/mt8186.c#208?",
+      "parentUuid": "308eed91_07e5a605",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 33
+      },
+      "revId": "c3d9c8438f8ee42cd9d3c3b137d78106525eba6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
