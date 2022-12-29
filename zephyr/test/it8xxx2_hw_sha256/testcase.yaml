@@ -1,0 +1,4 @@
+common:
+  platform_allow: native_posix
+tests:
+  it8xxx2_hw_sha256.default: {}
