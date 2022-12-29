@@ -12,6 +12,7 @@
 #include "driver/bc12/pi3usb9201_public.h"
 #include "driver/ppc/syv682x_public.h"
 #include "driver/retimer/ps8818_public.h"
+#include "driver/tcpm/anx7406.h"
 #include "driver/tcpm/rt1715.h"
 #include "driver/tcpm/tcpci.h"
 #include "ec_commands.h"
@@ -50,9 +51,9 @@ const struct tcpc_config_t tcpc_config[] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C2_TCPC,
-			.addr_flags = RT1715_I2C_ADDR_FLAGS,
+			.addr_flags = ANX7406_TCPC0_I2C_ADDR_FLAGS,
 		},
-		.drv = &rt1715_tcpm_drv,
+		.drv = &anx7406_tcpm_drv,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == USBC_PORT_COUNT);
@@ -77,10 +78,10 @@ struct ppc_config_t ppc_chips[] = {
 		.drv = &syv682x_drv,
 	},
 	[USBC_PORT_C2] = {
-		.i2c_port = I2C_PORT_USB_C2_PPC,
-		.i2c_addr_flags = SYV682X_ADDR2_FLAGS,
+		.i2c_port = I2C_PORT_USB_C2_TCPC,
+		.i2c_addr_flags = ANX7406_TCPC0_I2C_ADDR_FLAGS,
 		.frs_en = GPIO_USB_C2_FRS_EN,
-		.drv = &syv682x_drv,
+		.drv = &anx7406_ppc_drv,
 	},
 };
 
@@ -188,39 +189,13 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
 
-#ifdef CONFIG_CHARGE_RAMP_SW
-
-#define BC12_MIN_VOLTAGE 4400
-
-/**
- * Return true if VBUS is too low
- */
-int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
-{
-	int voltage;
-
-	if (charger_get_vbus_voltage(port, &voltage))
-		voltage = 0;
-
-	if (voltage == 0) {
-		CPRINTS("%s: must be disconnected", __func__);
-		return 1;
-	}
-
-	if (voltage < BC12_MIN_VOLTAGE) {
-		CPRINTS("%s: port %d: vbus %d lower than %d", __func__, port,
-			voltage, BC12_MIN_VOLTAGE);
-		return 1;
-	}
-
-	return 0;
-}
-
-#endif /* CONFIG_CHARGE_RAMP_SW */
-
 void board_reset_pd_mcu(void)
 {
 	/* There's no reset pin on TCPC */
+	gpio_set_level(GPIO_USB_C2_TCPC_RST, 1);
+	msleep(20);
+	gpio_set_level(GPIO_USB_C2_TCPC_RST, 0);
+	msleep(50);
 }
 
 static void board_tcpc_init(void)
@@ -231,7 +206,6 @@ static void board_tcpc_init(void)
 
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C2_PPC_INT_ODL);
 
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
@@ -260,9 +234,6 @@ int ppc_get_alert_status(int port)
 {
 	if (port == USBC_PORT_C0)
 		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
-
-	if (port == USBC_PORT_C2)
-		return gpio_get_level(GPIO_USB_C2_PPC_INT_ODL) == 0;
 
 	return 0;
 }
@@ -300,9 +271,6 @@ void ppc_interrupt(enum gpio_signal signal)
 	switch (signal) {
 	case GPIO_USB_C0_PPC_INT_ODL:
 		syv682x_interrupt(USBC_PORT_C0);
-		break;
-	case GPIO_USB_C2_PPC_INT_ODL:
-		syv682x_interrupt(USBC_PORT_C2);
 		break;
 	default:
 		break;

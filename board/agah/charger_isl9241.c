@@ -64,6 +64,8 @@ BUILD_ASSERT(ARRAY_SIZE(chg_chips) == CHARGER_NUM);
 
 static int board_enable_bj_port(bool enable)
 {
+	/* HW design issue on P1 board, always disable BJ path */
+/*
 	if (enable) {
 		if (gpio_get_level(GPIO_BJ_ADP_PRESENT_ODL))
 			return EC_ERROR_INVAL;
@@ -71,7 +73,7 @@ static int board_enable_bj_port(bool enable)
 	} else {
 		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
 	}
-
+*/
 	CPRINTS("BJ power is %sabled", enable ? "en" : "dis");
 
 	return EC_SUCCESS;

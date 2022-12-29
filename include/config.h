@@ -4874,6 +4874,7 @@
 #undef CONFIG_USB_PD_TCPM_FUSB302
 #undef CONFIG_USB_PD_TCPM_ITE_ON_CHIP
 #undef CONFIG_USB_PD_TCPM_ANX3429
+#undef CONFIG_USB_PD_TCPM_ANX7406
 #undef CONFIG_USB_PD_TCPM_ANX740X
 #undef CONFIG_USB_PD_TCPM_ANX741X
 #undef CONFIG_USB_PD_TCPM_ANX7447
@@ -5138,6 +5139,7 @@
 
 /* USB Type-C Power Path Controllers (PPC) */
 #undef CONFIG_USBC_PPC_AOZ1380
+#undef CONFIG_USBC_PPC_ANX7406
 #undef CONFIG_USBC_PPC_KTU1125
 #undef CONFIG_USBC_PPC_NX20P3481
 #undef CONFIG_USBC_PPC_NX20P3483
@@ -6155,13 +6157,13 @@
 /*****************************************************************************/
 /* Define CONFIG_USBC_PPC if board has a USB Type-C Power Path Controller. */
 #if defined(CONFIG_USBC_PPC_AOZ1380) || defined(CONFIG_USBC_PPC_NX20P3483) || \
-	defined(CONFIG_USBC_PPC_SN5S330)
+	defined(CONFIG_USBC_PPC_SN5S330) || defined(CONFIG_USBC_PPC_ANX7406)
 #define CONFIG_USBC_PPC
 #endif /* "has a PPC" */
 
 /* Following chips use Power Path Control information from TCPC chip */
 #if defined(CONFIG_USBC_PPC_AOZ1380) || defined(CONFIG_USBC_PPC_NX20P3481) || \
-	defined(CONFIG_USBC_PPC_NX20P3483)
+	defined(CONFIG_USBC_PPC_NX20P3483) || defined(CONFIG_USBC_PPC_ANX7406)
 #define CONFIG_USB_PD_PPC
 #endif
 
@@ -6209,7 +6211,7 @@
 /*****************************************************************************/
 /* Define CONFIG_USBC_OCP if a component can detect overcurrent */
 #if defined(CONFIG_USBC_PPC_AOZ1380) || defined(CONFIG_USBC_PPC_KTU1125) ||   \
-	defined(CONFIG_USBC_PPC_NX20P3481) ||                                 \
+	defined(CONFIG_USBC_PPC_ANX7406) || defined(CONFIG_USBC_PPC_NX20P3481) || \
 	defined(CONFIG_USBC_PPC_NX20P3483) ||                                 \
 	defined(CONFIG_USBC_PPC_SN5S330) ||                                   \
 	defined(CONFIG_USBC_PPC_SYV682X) || defined(CONFIG_CHARGER_SM5803) || \
