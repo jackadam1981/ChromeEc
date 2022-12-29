@@ -46,6 +46,30 @@
       },
       "revId": "723d2d98d7255eaacc2fc15bf8b7b439bbe09539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f11bfa34_b97eade8",
+        "filename": "common/cec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-12-29T04:10:36Z",
+      "side": 1,
+      "message": "Got it. For \"Moli power on CEC TV\", I will try it and I will also modify hdmi_cec_ctrl.sh for Moli (it only for brask now).",
+      "parentUuid": "b39f0b5d_58e6f3e0",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 18
+      },
+      "revId": "723d2d98d7255eaacc2fc15bf8b7b439bbe09539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
