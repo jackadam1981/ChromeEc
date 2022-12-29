@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9a47cf_604e9f57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-29T17:10:21Z",
+      "side": 1,
+      "message": "To be on the safe side, since the intent is to not change the fingerprint boards, could we also include the following tests?\n\n```\nTEST\u003d./util/compare_build.sh -b hatch_fp\nTEST\u003d./util/compare_build.sh -b nocturne_fp\n```",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "5f995149113b6b18609704606c8571d5f9306163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fac6c460_e3134cd2",
@@ -14,6 +37,29 @@
       "writtenOn": "2022-12-29T17:00:51Z",
       "side": 1,
       "message": "Lgtm. Holding +2 in case Andrea have a say.",
+      "revId": "5f995149113b6b18609704606c8571d5f9306163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6866a291_11a74e85",
+        "filename": "board/hatch_fp/board_rw.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-12-29T17:10:21Z",
+      "side": 1,
+      "message": "I understand this CL replaces the macro `CONFIG_FINGERPRINT_MCU` with a more generic `CONFIG_SPI_MUTABLE_DEVICE_LIST`.\n\nIs this change also required?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
       "revId": "5f995149113b6b18609704606c8571d5f9306163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
