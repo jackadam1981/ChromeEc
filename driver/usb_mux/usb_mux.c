@@ -445,8 +445,11 @@ static void enter_low_power_mode(int port)
 static int exit_low_power_mode(int port)
 {
 	/* If we are in low power, initialize device (which clears LPM flag) */
-	if (flags[port] & USB_MUX_FLAG_IN_LPM)
+	if (flags[port] & USB_MUX_FLAG_IN_LPM) {
+		/* Force initialization */
+		atomic_clear_bits(&flags[port], USB_MUX_FLAG_INIT);
 		usb_mux_init(port);
+	}
 
 	if (!(flags[port] & USB_MUX_FLAG_INIT)) {
 		CPRINTS("C%d: USB_MUX_FLAG_INIT not set", port);
@@ -467,7 +470,9 @@ void usb_mux_init(int port)
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
-	if (port >= board_get_usb_pd_port_count()) {
+	/* If already initialized, skip initialization. */
+	if (port >= board_get_usb_pd_port_count() ||
+	    (flags[port] & USB_MUX_FLAG_INIT)) {
 		return;
 	}
 
