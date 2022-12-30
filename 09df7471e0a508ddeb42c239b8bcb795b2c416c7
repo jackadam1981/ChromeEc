@@ -88,6 +88,24 @@
       "parentUuid": "1029b6c6_f363aa9f",
       "revId": "09df7471e0a508ddeb42c239b8bcb795b2c416c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f37a29_f3a7070c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-12-30T07:20:17Z",
+      "side": 1,
+      "message": "I ran \"ectool reboot_ec hibernate clear-ap-idle\" on my Kuldax and got below:\n```\n22-12-30 15:07:31.131 [293.220551 Executing host reboot command 6]                                         \n22-12-30 15:07:31.135 [293.220964 Clearing AP_IDLE]   \n```\nEC didn\u0027t hibernate because kuldax EC doesn\u0027t enable CONFIG_HIBERNATE, but it did clear AP_IDLE flag",
+      "parentUuid": "2844fd36_ccffa925",
+      "revId": "09df7471e0a508ddeb42c239b8bcb795b2c416c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
