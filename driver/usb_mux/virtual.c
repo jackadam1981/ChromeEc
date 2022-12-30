@@ -31,6 +31,13 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state,
 {
 	mux_state_t previous_mux_state = virtual_mux_state[port];
 
+	/*
+	 * If there is no state change, and the mux status is
+	 * clear, do not send a host event.
+	 */
+	if (mux_state == 0 && previous_mux_state == 0)
+		return;
+
 	virtual_mux_state[port] = mux_state;
 
 	/*
