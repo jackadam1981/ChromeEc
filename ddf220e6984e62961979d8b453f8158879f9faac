@@ -16,6 +16,24 @@
       "message": "What\u0027s the point of this one? I would think the check below covers everything. Eventually, for the other TCPCs, you\u0027ll add other node checks. For now, I\u0027d think you could just default this unconditionally.",
       "revId": "ddf220e6984e62961979d8b453f8158879f9faac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e92bfdc3_c43e56fa",
+        "filename": "zephyr/Kconfig.tcpm",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2023-01-02T17:37:37Z",
+      "side": 1,
+      "message": "It\u0027s made as a choice option, so I wanted to prepare the values for future addition of other choices. If there won\u0027t be any, then we could just remove the choice symbol and leave only TCPCI as normal config.",
+      "parentUuid": "40bf46e3_34ea84e5",
+      "revId": "ddf220e6984e62961979d8b453f8158879f9faac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
