@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc74e2a_5f7a335a",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-02T14:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab13d131_00e7d429",
+      "range": {
+        "startLine": 575,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 40
+      },
+      "revId": "cdee963283cc6640641df435e1f37bd2630de982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f4bc090_22dfa610",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-21T19:46:34Z",
       "side": 1,
       "message": "Similar here. You don\u0027t need this check. rv \u003d\u003d EC_SUCCESS means data has been written.",
+      "range": {
+        "startLine": 613,
+        "startChar": 6,
+        "endLine": 613,
+        "endChar": 50
+      },
+      "revId": "cdee963283cc6640641df435e1f37bd2630de982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "671f5a90_1f41f3e7",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-02T14:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f4bc090_22dfa610",
       "range": {
         "startLine": 613,
         "startChar": 6,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a686a44_01fa4ee6",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-02T14:39:15Z",
+      "side": 1,
+      "message": "I think data_ready should be 0 when the data has been written.",
+      "parentUuid": "ed808d75_24648f52",
+      "range": {
+        "startLine": 614,
+        "startChar": 3,
+        "endLine": 614,
+        "endChar": 30
+      },
+      "revId": "cdee963283cc6640641df435e1f37bd2630de982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "952e4135_c2aad8f6",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "493bdaf4_a2889b84",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-02T14:39:15Z",
+      "side": 1,
+      "message": "CPS8200 can do so. updated.",
+      "parentUuid": "952e4135_c2aad8f6",
+      "range": {
+        "startLine": 989,
+        "startChar": 0,
+        "endLine": 999,
+        "endChar": 3
+      },
+      "revId": "cdee963283cc6640641df435e1f37bd2630de982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59d6d2aa_61af2712",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-12-21T19:46:34Z",
       "side": 1,
       "message": "I don\u0027t think you need this.",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 31
+      },
+      "revId": "cdee963283cc6640641df435e1f37bd2630de982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98681799_21756537",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-02T14:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59d6d2aa_61af2712",
       "range": {
         "startLine": 167,
         "startChar": 1,
