@@ -16,6 +16,24 @@
       "message": "You may have already done this, but make sure to check all of the automated testing to ensure that they\u0027re not keying off of this format. Console command output changes might have an effect on regex parsing done in tests.",
       "revId": "a7412099c7a2c5a134294ecdc312e096f7a6490a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ff95c9a_8e070c0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-01-02T09:08:28Z",
+      "side": 1,
+      "message": "I ran firmware.ECBattery and firmware.Fixutre.normal TAST tests on Lazor, they are successful.",
+      "parentUuid": "cdfb2dfb_cb50b55a",
+      "revId": "a7412099c7a2c5a134294ecdc312e096f7a6490a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
