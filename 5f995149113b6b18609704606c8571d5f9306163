@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c388e508_37aaf3f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-02T01:31:55Z",
+      "side": 1,
+      "message": "There is something about my chroot such that I am not able to compile hatch_fp (or the other fingerprint images).  It seems to be related to the third_party crypto library used by these.  This means that I have not been able to run compare_build.sh yet.\n\n```\n(cr) ((24e6269130...)) jbk@jbk0 ~/chromiumos/src/platform/ec $ make BOARD\u003dhatch_fp\n  VERSION ec_version.h\n  MAKE    cryptoc/libcryptoc.a\n  MKDIR   /mnt/host/source/src/platform/ec/build/hatch_fp/cryptoc\n  CC      hmac.c\nhmac.c:17:10: fatal error: \u0027string.h\u0027 file not found\n#include \u003cstring.h\u003e\n         ^~~~~~~~~~\n1 error generated.\n```",
+      "parentUuid": "fb9a47cf_604e9f57",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "5f995149113b6b18609704606c8571d5f9306163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fac6c460_e3134cd2",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-12-29T17:10:21Z",
       "side": 1,
       "message": "I understand this CL replaces the macro `CONFIG_FINGERPRINT_MCU` with a more generic `CONFIG_SPI_MUTABLE_DEVICE_LIST`.\n\nIs this change also required?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "5f995149113b6b18609704606c8571d5f9306163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf7ae0c_d825792a",
+        "filename": "board/hatch_fp/board_rw.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-02T01:31:55Z",
+      "side": 1,
+      "message": "It is not required.  But I figure that whoever created this hatch_fp/board.h looked at nocturne_fp/board.h, and assumed that `CONFIG_FINGERPRINT_MCU` should be copied over, since hatch_fp is also a fingerprint MCU.  They may not have realized that the only effect was to have a mutable spi_devices[], and since this board does not at any point in fact modify the elements of spi_devices[], there it really should from the start not have been mutable.",
+      "parentUuid": "6866a291_11a74e85",
       "range": {
         "startLine": 21,
         "startChar": 0,
