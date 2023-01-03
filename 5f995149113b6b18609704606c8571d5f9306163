@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d71ee1ed_3a681416",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-03T16:28:47Z",
+      "side": 1,
+      "message": "I don\u0027t remember this particular error, but we made several changes to the toolchains recently. These build errors are generally resolved by running `repo sync` and `update_chroot`.\n\nLet me know if this doesn\u0027t fix the issue.\n\nFYI, builds are checked by the CQ and should be guaranteed to pass.",
+      "parentUuid": "c388e508_37aaf3f0",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "5f995149113b6b18609704606c8571d5f9306163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fac6c460_e3134cd2",
@@ -61,6 +85,23 @@
       "writtenOn": "2022-12-29T17:00:51Z",
       "side": 1,
       "message": "Lgtm. Holding +2 in case Andrea have a say.",
+      "revId": "5f995149113b6b18609704606c8571d5f9306163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4db4694_1267c810",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-03T16:28:47Z",
+      "side": 1,
+      "message": "Looks good to me! Hopefully `repo sync` will resolve the build errors.",
       "revId": "5f995149113b6b18609704606c8571d5f9306163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -102,6 +143,30 @@
       "side": 1,
       "message": "It is not required.  But I figure that whoever created this hatch_fp/board.h looked at nocturne_fp/board.h, and assumed that `CONFIG_FINGERPRINT_MCU` should be copied over, since hatch_fp is also a fingerprint MCU.  They may not have realized that the only effect was to have a mutable spi_devices[], and since this board does not at any point in fact modify the elements of spi_devices[], there it really should from the start not have been mutable.",
       "parentUuid": "6866a291_11a74e85",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "5f995149113b6b18609704606c8571d5f9306163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96b994fd_239f4734",
+        "filename": "board/hatch_fp/board_rw.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-03T16:28:47Z",
+      "side": 1,
+      "message": "Sounds good! Thanks for the clarification.",
+      "parentUuid": "5cf7ae0c_d825792a",
       "range": {
         "startLine": 21,
         "startChar": 0,
