@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcba511e_5df6559a",
+        "filename": "test/benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-03T17:03:06Z",
+      "side": 1,
+      "message": "nit: It would be a bit cleaner if `num_calls` were reset to zero prior to running `benchmark2` so that this test would be `TEST_EQ(num_calls, 3, \"%d\");`",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "9e9054d434429188affc72c4acf5ced9fedd9612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
