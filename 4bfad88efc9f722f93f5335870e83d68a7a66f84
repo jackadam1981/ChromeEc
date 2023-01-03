@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d6908f_ab9557a7",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-03T17:42:30Z",
+      "side": 1,
+      "message": "Do you still need this? Your entry point to download session is now only through pchg_state_reset, right?",
+      "range": {
+        "startLine": 439,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 8
+      },
+      "revId": "4bfad88efc9f722f93f5335870e83d68a7a66f84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80beef58_39fbf3dd",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-03T17:42:30Z",
+      "side": 1,
+      "message": "cps8200 blocks on this? That is, cps8200 returns only after a write is complete? If so, can you update the comment for cps8200_update_write? If not, how are you dealing with another write request while cps8200 is still writing?",
+      "range": {
+        "startLine": 619,
+        "startChar": 22,
+        "endLine": 619,
+        "endChar": 34
+      },
+      "revId": "4bfad88efc9f722f93f5335870e83d68a7a66f84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
