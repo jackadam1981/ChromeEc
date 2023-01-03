@@ -16,6 +16,29 @@
       "message": "Sam -  Would you be able to look at this while Wai-Hong is out?",
       "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9244695_9bee0d02",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-03T18:41:33Z",
+      "side": 1,
+      "message": "Instead, can you add a flag in curr.batt.flags?\n\nIt\u0027ll allow us to retry precharge when a battery, AC, or a charge port is changed. Also, it\u0027ll allow us to report a precharge error to the host.",
+      "range": {
+        "startLine": 1561,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 8
+      },
+      "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
