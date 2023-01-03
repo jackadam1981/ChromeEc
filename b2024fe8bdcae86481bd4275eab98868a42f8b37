@@ -39,6 +39,29 @@
       },
       "revId": "b2024fe8bdcae86481bd4275eab98868a42f8b37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d4e668d_92d7e45f",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-01-03T22:45:45Z",
+      "side": 1,
+      "message": "This value of 5ms seems to be causing test failures. Could the delay be reduced?\n\nError log:\nSTART - test_low_battery_normal_boot\n\n    Assertion failed at CMAKE_SOURCE_DIR/src/board_chipset.c:50: board_chipset_test_low_battery_normal_boot: (time_diff_us \u003c 10 is false)\nCHIPSET_PRE_INIT hook delayed\n FAIL - test_low_battery_normal_boot in 0.020 seconds",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 30
+      },
+      "revId": "b2024fe8bdcae86481bd4275eab98868a42f8b37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
