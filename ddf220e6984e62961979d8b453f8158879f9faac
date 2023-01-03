@@ -34,6 +34,24 @@
       "parentUuid": "40bf46e3_34ea84e5",
       "revId": "ddf220e6984e62961979d8b453f8158879f9faac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71137ab5_b180a042",
+        "filename": "zephyr/Kconfig.tcpm",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-03T19:31:21Z",
+      "side": 1,
+      "message": "I\u0027m not exactly sure how we\u0027ll want to do this going forward. The way that the ECOS configs work right now, the drivers for the real TCPCs (that we use in real boards) each have their own config, and that config depends on the TCPCI driver config if the TCPC is based on TCPCI (most of them). It\u0027s also not uncommon for a board to use two different TCPCs for different ports, in which case a `choice` here wouldn\u0027t make sense. I don\u0027t know what the most natural way to encode that relationship in Kconfig/devicetree is. Ideally, the config for each driver would be based on the presence of a DT node for that TCPC, and the configs for the TCPCI-based TCPCs would somehow enable the base TCPCI driver config.\n\nFor now, this is fine.",
+      "parentUuid": "e92bfdc3_c43e56fa",
+      "revId": "ddf220e6984e62961979d8b453f8158879f9faac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
