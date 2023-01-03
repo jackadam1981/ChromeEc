@@ -17,6 +17,11 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_AMD_STT
 	"src/stt.c")
 
+if(DEFINED CONFIG_BOARD_MARKARTH)
+	project(markarth)
+	add_subdirectory(markarth)
+endif()
+
 if(DEFINED CONFIG_BOARD_MORTHAL)
 	project(morthal)
 	add_subdirectory(morthal)
