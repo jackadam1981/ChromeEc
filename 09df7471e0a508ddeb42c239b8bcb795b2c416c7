@@ -106,6 +106,24 @@
       "parentUuid": "2844fd36_ccffa925",
       "revId": "09df7471e0a508ddeb42c239b8bcb795b2c416c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfdd4a50_e14deb0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-03T17:48:47Z",
+      "side": 1,
+      "message": "If CONFIG_HIBERNATE isn\u0027t enabled, the board should return error. Anyway, that\u0027s a pre-existing bug. So, we can proceed.",
+      "parentUuid": "42f37a29_f3a7070c",
+      "revId": "09df7471e0a508ddeb42c239b8bcb795b2c416c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
