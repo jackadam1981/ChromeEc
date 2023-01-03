@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d3df8b_9bdc4099",
+        "filename": "zephyr/include/dt-bindings/battery.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-01-03T06:49:50Z",
+      "side": 1,
+      "message": "The current dt binding design is not able to match error status, remove these to prevent confusion.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 38
+      },
+      "revId": "3d8ea875d8e5e5fbe4b0a63605302be1b21a02bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
