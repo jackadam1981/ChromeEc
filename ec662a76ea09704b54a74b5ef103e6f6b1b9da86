@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb90488_dcabb73b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-01-04T01:46:46Z",
+      "side": 1,
+      "message": "Does wake on mux change still work with this CL?",
+      "revId": "ec662a76ea09704b54a74b5ef103e6f6b1b9da86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7f3fd796_81bb47da",
@@ -31,6 +48,40 @@
       "writtenOn": "2023-01-04T01:30:30Z",
       "side": 1,
       "message": "Liam,\nCan you review this EC change?",
+      "revId": "ec662a76ea09704b54a74b5ef103e6f6b1b9da86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96232f9d_1dc2f5c5",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-01-04T01:46:46Z",
+      "side": 1,
+      "message": "Why is a state of 0 special? It\u0027s not clear to me why a host event is sent at all when `previous_mux_state \u003d\u003d mux_state`.",
+      "revId": "ec662a76ea09704b54a74b5ef103e6f6b1b9da86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aa3b2af_87234671",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-01-04T01:46:46Z",
+      "side": 1,
+      "message": "This should execute for all paths through this function.",
       "revId": "ec662a76ea09704b54a74b5ef103e6f6b1b9da86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
