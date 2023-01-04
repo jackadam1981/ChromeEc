@@ -18,6 +18,7 @@
 static int fail_on_first, fail_on_last;
 static int read_count, write_count;
 struct batt_params batt;
+static int cmd_to_fail;
 
 void battery_compensate_params(struct batt_params *batt)
 {
@@ -27,13 +28,14 @@ void board_battery_compensate_params(struct batt_params *batt)
 {
 }
 
-static void reset_and_fail_on(int first, int last)
+static void reset_and_fail_on(int first, int last, int cmd)
 {
 	/* We're not initializing the fake battery, so everything reads zero */
 	memset(&batt, 0, sizeof(typeof(batt)));
 	read_count = write_count = 0;
 	fail_on_first = first;
 	fail_on_last = last;
+	cmd_to_fail = cmd;
 }
 
 /* Mocked functions */
@@ -43,8 +45,12 @@ int sb_read(int cmd, int *param)
 	if (read_count >= fail_on_first && read_count <= fail_on_last)
 		return EC_ERROR_UNKNOWN;
 
+	if (cmd == cmd_to_fail)
+		return EC_ERROR_UNKNOWN;
+
 	return i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS, cmd, param);
 }
+
 int sb_write(int cmd, int param)
 {
 	write_count++;
@@ -57,7 +63,7 @@ static int test_param_failures(void)
 	int i, num_reads;
 
 	/* No failures */
-	reset_and_fail_on(0, 0);
+	reset_and_fail_on(0, 0, -1);
 	battery_get_params(&batt);
 	TEST_ASSERT(batt.flags & BATT_FLAG_RESPONSIVE);
 	TEST_ASSERT(!(batt.flags & BATT_FLAG_BAD_ANY));
@@ -65,7 +71,7 @@ static int test_param_failures(void)
 
 	/* Just a single failure */
 	for (i = 1; i <= num_reads; i++) {
-		reset_and_fail_on(i, i);
+		reset_and_fail_on(i, i, -1);
 		battery_get_params(&batt);
 		TEST_ASSERT(batt.flags & BATT_FLAG_BAD_ANY);
 		TEST_ASSERT(batt.flags & BATT_FLAG_RESPONSIVE);
@@ -73,7 +79,7 @@ static int test_param_failures(void)
 
 	/* Once it fails, it keeps failing */
 	for (i = 1; i <= num_reads; i++) {
-		reset_and_fail_on(i, num_reads);
+		reset_and_fail_on(i, num_reads, -1);
 		battery_get_params(&batt);
 		TEST_ASSERT(batt.flags & BATT_FLAG_BAD_ANY);
 		if (i == 1)
@@ -86,9 +92,55 @@ static int test_param_failures(void)
 	return EC_SUCCESS;
 }
 
+/**
+ * Test if battery_get_params sets a flag properly for a SB command.
+ *
+ * @param cmd   SB command to fail.
+ * @param flag  Flag expected to be set when <cmd> fails.
+ * @return  EC_SUCCESS
+ */
+static int test_flag(int cmd, int flag)
+{
+	reset_and_fail_on(0, 0, cmd);
+	battery_get_params(&batt);
+	TEST_ASSERT(batt.flags & flag);
+	TEST_ASSERT(!((batt.flags & ~flag) & BATT_FLAG_BAD_ANY));
+
+	return EC_SUCCESS;
+}
+
+static int test_flags(void)
+{
+	/* Test each command-flag pair. */
+	test_flag(SB_TEMPERATURE, BATT_FLAG_BAD_TEMPERATURE);
+	test_flag(SB_RELATIVE_STATE_OF_CHARGE, BATT_FLAG_BAD_STATE_OF_CHARGE);
+	test_flag(SB_VOLTAGE, BATT_FLAG_BAD_VOLTAGE);
+	test_flag(SB_CURRENT, BATT_FLAG_BAD_CURRENT);
+	test_flag(SB_AVERAGE_CURRENT, BATT_FLAG_BAD_AVERAGE_CURRENT);
+	test_flag(SB_CHARGING_VOLTAGE, BATT_FLAG_BAD_DESIRED_VOLTAGE);
+	test_flag(SB_CHARGING_CURRENT, BATT_FLAG_BAD_DESIRED_CURRENT);
+	test_flag(SB_REMAINING_CAPACITY, BATT_FLAG_BAD_REMAINING_CAPACITY);
+	test_flag(SB_FULL_CHARGE_CAPACITY, BATT_FLAG_BAD_FULL_CAPACITY);
+	test_flag(SB_BATTERY_STATUS, BATT_FLAG_BAD_STATUS);
+
+	/*
+	 * Access failure flags (e.g. BATT_FLAG_BAD_TEMPERATURE) should be
+	 * cleared and irrelevant flags should be preserved.
+	 */
+	reset_and_fail_on(0, 0, -1);
+	batt.flags |= BATT_FLAG_BAD_TEMPERATURE;
+	batt.flags |= BIT(31);
+	battery_get_params(&batt);
+	TEST_ASSERT(batt.flags & BIT(31));
+	TEST_ASSERT(!(batt.flags & BATT_FLAG_BAD_ANY));
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_param_failures);
+	RUN_TEST(test_flags);
 
 	test_print_result();
 }
