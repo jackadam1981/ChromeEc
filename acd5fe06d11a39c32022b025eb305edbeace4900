@@ -39,6 +39,30 @@
       },
       "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed301c02_82fc55d0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-01-04T02:59:34Z",
+      "side": 1,
+      "message": "Dear Nojiri:\nSince the status of curr.batt.flags will be read from battery_get_params(\u0026curr.batt) every time, its previous status will change,\nIt is difficult to control the process in deep_charge_battery through curr.batt.flags,\nCan we add a state ST_PRECHARGE_TIMEROUT for curr.state, and use this state to distinguish the different stages of precharge?",
+      "parentUuid": "f9244695_9bee0d02",
+      "range": {
+        "startLine": 1561,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 8
+      },
+      "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
