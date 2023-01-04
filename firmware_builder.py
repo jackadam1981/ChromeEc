@@ -83,6 +83,7 @@ def build(opts):
             "When --code-coverage is selected, 'build' is a no-op. "
             "Run 'test' with --code-coverage instead."
         )
+        sys.stdout.flush()
         with open(opts.metrics, "w") as file:
             file.write(json_format.MessageToJson(metric_list))
         return
@@ -92,23 +93,28 @@ def build(opts):
 
     cmd = ["make", "clobber"]
     print(f"# Running {' '.join(cmd)}.")
+    sys.stdout.flush()
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
     cmd = ["make", "buildall_only", f"-j{opts.cpus}"]
     print(f"# Running {' '.join(cmd)}.")
+    sys.stdout.flush()
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
     # extra/rma_reset is used in chromeos-base/ec-utils-test
     cmd = ["make", "-C", "extra/rma_reset", "clean"]
     print(f"# Running {' '.join(cmd)}.")
+    sys.stdout.flush()
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
     cmd = ["make", "-C", "extra/rma_reset", f"-j{opts.cpus}"]
     print(f"# Running {' '.join(cmd)}.")
+    sys.stdout.flush()
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
     cmd = ["make", "print-all-baseboards", f"-j{opts.cpus}"]
     print(f"# Running {' '.join(cmd)}.")
+    sys.stdout.flush()
     baseboards = {}
     for line in subprocess.run(
         cmd,
@@ -151,6 +157,7 @@ def build(opts):
     # with clang: b/172020503.
     cmd = ["./util/build_with_clang.py"]
     print(f'# Running {" ".join(cmd)}.')
+    sys.stdout.flush()
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
 
@@ -291,6 +298,7 @@ def test(opts):
     target = "coverage" if opts.code_coverage else "runtests"
     cmd = ["make", target, f"-j{opts.cpus}"]
     print(f"# Running {' '.join(cmd)}.")
+    sys.stdout.flush()
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
     if not opts.code_coverage:
@@ -300,11 +308,18 @@ def test(opts):
         cmd = ["make", f"-j{opts.cpus}"]
         cmd.extend(["tests-" + b for b in BOARDS_UNIT_TEST])
         print(f"# Running {' '.join(cmd)}.")
+        sys.stdout.flush()
         subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
         # Verify the tests pass with ASan also
+        cmd = ["make", "clobber", f"-j{opts.cpus}"]
+        print(f"# Running {' '.join(cmd)}.")
+        sys.stdout.flush()
+        subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
+
         cmd = ["make", "TEST_ASAN=y", target, f"-j{opts.cpus}"]
         print(f"# Running {' '.join(cmd)}.")
+        sys.stdout.flush()
         subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
 
@@ -317,6 +332,7 @@ def main(args):
 
     if not hasattr(opts, "func"):
         print("Must select a valid sub command!")
+        sys.stdout.flush()
         return -1
 
     # Run selected sub command function
