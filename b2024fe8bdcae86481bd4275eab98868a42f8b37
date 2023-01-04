@@ -62,6 +62,78 @@
       },
       "revId": "b2024fe8bdcae86481bd4275eab98868a42f8b37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5795f1a_16f6fdac",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-01-04T01:35:37Z",
+      "side": 1,
+      "message": "It comes from the waveform. The time between EN_PP5000_S5 turning on until PP5000_S5 ready is 2.3 ms. Considering the margin of capacitance, I think 5ms is reasonable. See b/260192201#46",
+      "parentUuid": "8c7013d5_83e86c60",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 30
+      },
+      "revId": "b2024fe8bdcae86481bd4275eab98868a42f8b37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219465a3_eb3db7a3",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-01-04T01:35:37Z",
+      "side": 1,
+      "message": "the delay of EN_PP5000_S5 enable util PP5000_S5 ready is 2.3 ms,",
+      "parentUuid": "8c7013d5_83e86c60",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 30
+      },
+      "revId": "b2024fe8bdcae86481bd4275eab98868a42f8b37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d301f8c5_897520a9",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-01-04T01:35:37Z",
+      "side": 1,
+      "message": "In this CL we added an extra delay to waiting for the PPC powered, So I think the 10 us test is not reasonable anymore?",
+      "parentUuid": "2d4e668d_92d7e45f",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 30
+      },
+      "revId": "b2024fe8bdcae86481bd4275eab98868a42f8b37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
