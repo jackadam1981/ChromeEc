@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af16bd2_75d07a31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-04T02:24:01Z",
+      "side": 1,
+      "message": "My testing doesn\u0027t show any different behaviour (except for\nthe corrected suspend).",
+      "parentUuid": "6cb90488_dcabb73b",
+      "revId": "ec662a76ea09704b54a74b5ef103e6f6b1b9da86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7f3fd796_81bb47da",
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f24bf70_9dd1023e",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-04T02:24:01Z",
+      "side": 1,
+      "message": "The main issue I see here is the unknown state that is held on the AP side.\nI see potentially where the EC doesn\u0027t send an event but the AP side may have been re-initialized or otherwise reset, and so the event doesn\u0027t get sent when perhaps it should.\nOnly checking when the status is 0 means that this matches the initial state of the AP, and also the case when no hub is connected, so it\u0027s the minimal state required to not send an event (in terms of potential side-effects).",
+      "parentUuid": "96232f9d_1dc2f5c5",
+      "revId": "ec662a76ea09704b54a74b5ef103e6f6b1b9da86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8aa3b2af_87234671",
         "filename": "driver/usb_mux/virtual.c",
         "patchSetId": 3
@@ -82,6 +118,24 @@
       "writtenOn": "2023-01-04T01:46:46Z",
       "side": 1,
       "message": "This should execute for all paths through this function.",
+      "revId": "ec662a76ea09704b54a74b5ef103e6f6b1b9da86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd55407f_c98d7d9a",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-04T02:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aa3b2af_87234671",
       "revId": "ec662a76ea09704b54a74b5ef103e6f6b1b9da86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
