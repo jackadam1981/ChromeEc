@@ -118,6 +118,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a1af0de_5c71459b",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-04T22:48:58Z",
+      "side": 1,
+      "message": "Nit \"program\"",
+      "range": {
+        "startLine": 138,
+        "startChar": 37,
+        "endLine": 138,
+        "endChar": 45
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91c2ffd7_fdab4d77",
         "filename": "util/check_zephyr_project_config.py",
         "patchSetId": 6
