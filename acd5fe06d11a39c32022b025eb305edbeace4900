@@ -87,6 +87,30 @@
       },
       "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d96c5c1a_5fbeb7dc",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-04T23:12:12Z",
+      "side": 1,
+      "message": "http://crrev.com/c/4136966 should allow you to add a new flag, which won\u0027t be cleared by battery_get_params. Please try it.",
+      "parentUuid": "1fcb839c_3e22fcca",
+      "range": {
+        "startLine": 1561,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 8
+      },
+      "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
