@@ -63,6 +63,30 @@
       },
       "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fcb839c_3e22fcca",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-01-04T03:57:41Z",
+      "side": 1,
+      "message": "Dear Nojiri:\n     if add a state ST_PRECHARGE_TIMEROUT to curr.state , the change list as following , please help to check it \n\ninclude/charge_state_v2.h:\n\nenum charge_state_v2 {\n\tST_IDLE \u003d 0,\n\tST_DISCHARGE,\n\tST_CHARGE,\n\tST_PRECHARGE,\n\tST_PRECHARGE_TIMEROUT,\n\tNUM_STATES_V2\n};\n\ncommon/charge_state_v2.c:\n\nstatic const char *const state_list[] \u003d { \"idle\", \"discharge\", \"charge\",\n\t\t\t\t\t  \"precharge\",\"precharge_timerout\" };\n\nstatic void deep_charge_battery(int *need_static)\n{\n\tif (curr.state \u003d\u003d ST_PRECHARGE_TIMEROUT) {\n\t\t/* Deep charge time out , do nothing */\n\t\tcurr.requested_voltage \u003d 0;\n\t\tcurr.requested_current \u003d 0;\n\t} else if (curr.state \u003d\u003d ST_PRECHARGE \u0026\u0026\n\t\t   (get_time().val \u003e\n\t\t    precharge_start_time.val +\n\t\t\t    CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT)) {\n\t\t/* We\u0027ve tried long enough, give up */\n\t\tCPRINTS(\"Precharge for low voltage timed out\");\n\t\tset_charge_state(ST_PRECHARGE_TIMEROUT);\n\t\tcurr.requested_voltage \u003d 0;\n\t\tcurr.requested_current \u003d 0;\n\t} else {\n\t\t/* See if we can wake it up */\n\t\tif (curr.state !\u003d ST_PRECHARGE) {\n\t\t\tCPRINTS(\"Start precharge for low voltage\");\n\t\t\tprecharge_start_time \u003d get_time();\n\t\t\t*need_static \u003d 1;\n\t\t}\n\t\tset_charge_state(ST_PRECHARGE);\n\t\tcurr.requested_voltage \u003d batt_info-\u003evoltage_max;\n\t\tcurr.requested_current \u003d batt_info-\u003eprecharge_current;\n\t}\n}",
+      "parentUuid": "ed301c02_82fc55d0",
+      "range": {
+        "startLine": 1561,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 8
+      },
+      "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
