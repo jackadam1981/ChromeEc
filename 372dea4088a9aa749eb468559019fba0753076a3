@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89fa3531_c2749cdb",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-04T22:48:08Z",
+      "side": 1,
+      "message": "`if not ZEPHYR_BASE`",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8f41f79_d24f5a74",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-04T22:48:08Z",
+      "side": 1,
+      "message": "`.parent.parent` might be cleaner",
+      "range": {
+        "startLine": 39,
+        "startChar": 32,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85834dc4_7dc4deaa",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-04T22:48:08Z",
+      "side": 1,
+      "message": "`description\u003d__doc__`",
+      "range": {
+        "startLine": 43,
+        "startChar": 36,
+        "endLine": 43,
+        "endChar": 38
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85932c48_4f842a36",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-04T22:48:08Z",
+      "side": 1,
+      "message": "Can we parse argv outside of the constructor for this object (in main) and pass in the appropriate options here?",
+      "range": {
+        "startLine": 85,
+        "startChar": 23,
+        "endLine": 85,
+        "endChar": 27
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceeb6d27_e2bf734c",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-04T22:48:08Z",
+      "side": 1,
+      "message": "should all of these be `os.environ.setdefault(...)` so that the caller of this script can pass in env vars?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 50
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c2ffd7_fdab4d77",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-04T22:48:08Z",
+      "side": 1,
+      "message": "`EC_BASE / \"zephyr\" / \"program\"`\n\n(that way we don\u0027t depend on the cwd)",
+      "range": {
+        "startLine": 151,
+        "startChar": 23,
+        "endLine": 151,
+        "endChar": 66
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757a750c_d2298dec",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-04T22:48:08Z",
+      "side": 1,
+      "message": "remove extra blank line",
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0db557_001d0bf7",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-04T22:48:08Z",
+      "side": 1,
+      "message": "`for line_num, line in enumerate(file.readlines(), start\u003d1)`",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 28
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98e3bdae_ce1e4c74",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-04T22:48:08Z",
+      "side": 1,
+      "message": "`list` is not necessary here as you iterate thru it below",
+      "range": {
+        "startLine": 234,
+        "startChar": 23,
+        "endLine": 234,
+        "endChar": 27
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cbdfae6_7c1646b4",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-04T22:48:08Z",
+      "side": 1,
+      "message": "unit tests?",
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
