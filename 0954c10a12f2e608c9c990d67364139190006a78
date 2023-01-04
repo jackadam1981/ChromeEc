@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "259dbe51_348fa670",
+        "filename": "zephyr/test/drivers/flash/src/flash_bank_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2023-01-04T17:53:17Z",
+      "side": 1,
+      "message": "crec_flash_bank_erase_size",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "0954c10a12f2e608c9c990d67364139190006a78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e285e286_27f6f45a",
+        "filename": "zephyr/test/drivers/flash/src/flash_bank_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2023-01-04T17:53:17Z",
+      "side": 1,
+      "message": "crec_flash_bank_erase_size",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "0954c10a12f2e608c9c990d67364139190006a78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
