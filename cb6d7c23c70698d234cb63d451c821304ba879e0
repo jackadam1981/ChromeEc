@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d45f1b7_26bbca27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-04T16:57:33Z",
+      "side": 1,
+      "message": "What\u0027s the difference between sectors and banks? flush.h uses only banks.",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "cb6d7c23c70698d234cb63d451c821304ba879e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a54978b9_8861bcfa",
+        "filename": "include/flash.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-04T16:57:33Z",
+      "side": 1,
+      "message": "Please add a function descriptor (i.e. /** ... */).",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 26
+      },
+      "revId": "cb6d7c23c70698d234cb63d451c821304ba879e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
