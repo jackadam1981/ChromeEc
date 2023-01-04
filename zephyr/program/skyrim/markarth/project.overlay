@@ -31,6 +31,10 @@
 
 	named-gpios {
 		/* Markarth-specific GPIO customizations */
+		gpio_lid_sw: lid_sw {
+			gpios = <&gpio0 1 GPIO_INPUT>;
+			enum-name = "GPIO_LID_SW";
+		};
 	};
 
 	named-temp-sensors {
