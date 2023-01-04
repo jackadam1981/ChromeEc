@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d9e4104_42c40dde",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-04T15:23:15Z",
+      "side": 1,
+      "message": "It would if I had declared that option correctly, which I did not, but now I did, so yes. :-)",
+      "parentUuid": "e797dda5_75f98813",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 85
+      },
+      "revId": "1fe5cffd0fbf0c391b42608a623b51fd46622b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9156b970_b0e25af4",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-03T22:01:38Z",
       "side": 1,
       "message": "What about the program Kconfig file (e.g. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/rex/Kconfig;l\u003d1).\n\nDoes this file need to be included by `kconfiglib.Kconfig()`?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 51
+      },
+      "revId": "1fe5cffd0fbf0c391b42608a623b51fd46622b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a7d4b9_a4bb6980",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-04T15:23:15Z",
+      "side": 1,
+      "message": "Yeah great point, reworked the code to infer the program based on the file path, load the corresponding Kconfig and keep a cached copy of the already loaded Kconfig objects so that it does not have to reload it every time (take few seconds).\n\nNow config files under a program directory use the correct Kconfig if any is defined, fallback to the upstream one otherwise.\n\nDoes not really make a difference at this stage, but good time to add it, who knows what will end up in those configs in the future.",
+      "parentUuid": "9156b970_b0e25af4",
       "range": {
         "startLine": 35,
         "startChar": 0,
