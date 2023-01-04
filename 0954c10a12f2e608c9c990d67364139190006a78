@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "362b8b8a_44fdfe14",
+        "filename": "zephyr/test/drivers/flash/src/flash_bank_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-01-04T21:21:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "259dbe51_348fa670",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "0954c10a12f2e608c9c990d67364139190006a78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e285e286_27f6f45a",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-04T17:53:17Z",
       "side": 1,
       "message": "crec_flash_bank_erase_size",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "0954c10a12f2e608c9c990d67364139190006a78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8021f34_95bed80a",
+        "filename": "zephyr/test/drivers/flash/src/flash_bank_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-01-04T21:21:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e285e286_27f6f45a",
       "range": {
         "startLine": 25,
         "startChar": 9,
