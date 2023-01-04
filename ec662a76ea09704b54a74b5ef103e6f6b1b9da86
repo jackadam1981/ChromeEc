@@ -16,6 +16,23 @@
       "message": "I suspect that this status update is triggered by the AP suspend\nand the port 1 TCPC being initialized and then put into low power mode,\nbut it seems safe to avoid skipping the host event when it hasn\u0027t changed.",
       "revId": "ec662a76ea09704b54a74b5ef103e6f6b1b9da86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71740126_28d7415b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-04T01:30:30Z",
+      "side": 1,
+      "message": "Liam,\nCan you review this EC change?",
+      "revId": "ec662a76ea09704b54a74b5ef103e6f6b1b9da86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
