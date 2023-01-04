@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bccd57be_53b94a8a",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-04T15:18:51Z",
+      "side": 1,
+      "message": "The above comment above explains why this is needed for port 0. Please add a short comment here explaining why it\u0027s also needed for port 1 when HIBERNATE_PSL is disabled.",
+      "revId": "44be4e028e2b797a0a2bde2769fbf50eb156661a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e54015_445e3e51",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-04T15:18:51Z",
+      "side": 1,
+      "message": "`if (!IS_ENABLED(CONFIG_HIBERNATE_PSL))` is preferred.",
+      "revId": "44be4e028e2b797a0a2bde2769fbf50eb156661a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
