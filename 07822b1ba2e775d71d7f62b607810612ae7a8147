@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf7368c6_095ffb8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-04T23:50:47Z",
+      "side": 1,
+      "message": "I probably need to take a look at this again.",
+      "revId": "07822b1ba2e775d71d7f62b607810612ae7a8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d1a7f8c_671a7bea",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-04T23:50:47Z",
+      "side": 1,
+      "message": "You don\u0027t check num_banks (or banks_to_copy)?",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 8
+      },
+      "revId": "07822b1ba2e775d71d7f62b607810612ae7a8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
