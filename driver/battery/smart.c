@@ -451,6 +451,34 @@ static void apply_fake_state_of_charge(struct batt_params *batt)
 	batt->flags &= ~BATT_FLAG_BAD_REMAINING_CAPACITY;
 }
 
+static bool battery_want_charge(struct batt_params *batt)
+{
+	if (batt->flags &
+	    (BATT_FLAG_BAD_DESIRED_VOLTAGE | BATT_FLAG_BAD_DESIRED_CURRENT |
+	     BATT_FLAG_BAD_STATE_OF_CHARGE))
+		return false;
+
+	/*
+	 * Charging allowed if both desired voltage and current are nonzero
+	 * and battery isn't full (and we read them all correctly).
+	 */
+	if (batt->desired_voltage && batt->desired_current &&
+	    batt->state_of_charge < BATTERY_LEVEL_FULL)
+		return true;
+
+	/*
+	 * TODO (crosbug.com/p/29467): remove this workaround for dead battery
+	 * that requests no voltage/current
+	 */
+	if (IS_ENABLED(CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD)) {
+		if (batt->desired_voltage == 0 && batt->desired_current == 0 &&
+		    batt->state_of_charge == 0)
+			return true;
+	}
+
+	return false;
+}
+
 void battery_get_params(struct batt_params *batt)
 {
 	struct batt_params batt_new;
@@ -462,53 +490,55 @@ void battery_get_params(struct batt_params *batt)
 	 * will be preserved.
 	 */
 	memcpy(&batt_new, batt, sizeof(*batt));
-	batt_new.flags = 0;
 
-	if (sb_read(SB_TEMPERATURE, &batt_new.temperature) &&
-	    fake_temperature < 0)
-		batt_new.flags |= BATT_FLAG_BAD_TEMPERATURE;
+	WRITE_MASK(batt_new.flags, BATT_FLAG_BAD_TEMPERATURE,
+		   sb_read(SB_TEMPERATURE, &batt_new.temperature) &&
+			   fake_temperature < 0);
 
 	/* If temperature is faked, override with faked data */
 	if (fake_temperature >= 0)
 		batt_new.temperature = fake_temperature;
 
-	if (sb_read(SB_RELATIVE_STATE_OF_CHARGE, &batt_new.state_of_charge) &&
-	    fake_state_of_charge < 0)
-		batt_new.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
+	WRITE_MASK(batt_new.flags, BATT_FLAG_BAD_STATE_OF_CHARGE,
+		   sb_read(SB_RELATIVE_STATE_OF_CHARGE,
+			   &batt_new.state_of_charge) &&
+			   fake_state_of_charge < 0);
 
-	if (sb_read(SB_VOLTAGE, &batt_new.voltage))
-		batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
+	WRITE_MASK(batt_new.flags, BATT_FLAG_BAD_VOLTAGE,
+		   sb_read(SB_VOLTAGE, &batt_new.voltage));
 
 	/* This is a signed 16-bit value. */
-	if (sb_read(SB_CURRENT, &v))
-		batt_new.flags |= BATT_FLAG_BAD_CURRENT;
-	else
+	WRITE_MASK(batt_new.flags, BATT_FLAG_BAD_CURRENT,
+		   sb_read(SB_CURRENT, &v));
+
+	if (!(batt_new.flags & BATT_FLAG_BAD_CURRENT))
 		batt_new.current = (int16_t)v;
 
-	if (sb_read(SB_AVERAGE_CURRENT, &v))
-		batt_new.flags |= BATT_FLAG_BAD_AVERAGE_CURRENT;
-	if (sb_read(SB_CHARGING_VOLTAGE, &batt_new.desired_voltage))
-		batt_new.flags |= BATT_FLAG_BAD_DESIRED_VOLTAGE;
+	WRITE_MASK(batt_new.flags, BATT_FLAG_BAD_AVERAGE_CURRENT,
+		   sb_read(SB_AVERAGE_CURRENT, &v));
 
-	if (sb_read(SB_CHARGING_CURRENT, &batt_new.desired_current))
-		batt_new.flags |= BATT_FLAG_BAD_DESIRED_CURRENT;
+	WRITE_MASK(batt_new.flags, BATT_FLAG_BAD_DESIRED_VOLTAGE,
+		   sb_read(SB_CHARGING_VOLTAGE, &batt_new.desired_voltage));
 
-	if (battery_remaining_capacity(&batt_new.remaining_capacity))
-		batt_new.flags |= BATT_FLAG_BAD_REMAINING_CAPACITY;
+	WRITE_MASK(batt_new.flags, BATT_FLAG_BAD_DESIRED_CURRENT,
+		   sb_read(SB_CHARGING_CURRENT, &batt_new.desired_current));
 
-	if (battery_full_charge_capacity(&batt_new.full_capacity))
-		batt_new.flags |= BATT_FLAG_BAD_FULL_CAPACITY;
+	WRITE_MASK(batt_new.flags, BATT_FLAG_BAD_REMAINING_CAPACITY,
+		   battery_remaining_capacity(&batt_new.remaining_capacity));
 
-	if (battery_status(&batt_new.status))
-		batt_new.flags |= BATT_FLAG_BAD_STATUS;
+	WRITE_MASK(batt_new.flags, BATT_FLAG_BAD_FULL_CAPACITY,
+		   battery_full_charge_capacity(&batt_new.full_capacity));
+
+	WRITE_MASK(batt_new.flags, BATT_FLAG_BAD_STATUS,
+		   battery_status(&batt_new.status));
 
 	/* If any of those reads worked, the battery is responsive */
-	if ((batt_new.flags & BATT_FLAG_BAD_ANY) != BATT_FLAG_BAD_ANY)
-		batt_new.flags |= BATT_FLAG_RESPONSIVE;
+	WRITE_MASK(batt_new.flags, BATT_FLAG_RESPONSIVE,
+		   (batt_new.flags & BATT_FLAG_BAD_ANY) != BATT_FLAG_BAD_ANY);
 
 #ifdef CONFIG_BATTERY_MEASURE_IMBALANCE
-	if (battery_imbalance_mv() > CONFIG_BATTERY_MAX_IMBALANCE_MV)
-		batt_new.flags |= BATT_FLAG_IMBALANCED_CELL;
+	WRITE_MASK(batt_new.flags, BATT_FLAG_IMBALANCED_CELL,
+		   battery_imbalance_mv() > CONFIG_BATTERY_MAX_IMBALANCE_MV);
 #endif
 
 #if defined(CONFIG_BATTERY_PRESENT_CUSTOM) || \
@@ -523,28 +553,10 @@ void battery_get_params(struct batt_params *batt)
 		batt_new.is_present = BP_NOT_SURE;
 #endif
 
-	/*
-	 * Charging allowed if both desired voltage and current are nonzero
-	 * and battery isn't full (and we read them all correctly).
-	 */
-	if (!(batt_new.flags &
-	      (BATT_FLAG_BAD_DESIRED_VOLTAGE | BATT_FLAG_BAD_DESIRED_CURRENT |
-	       BATT_FLAG_BAD_STATE_OF_CHARGE)) &&
-#ifdef CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD
-	    /*
-	     * TODO (crosbug.com/p/29467): remove this workaround
-	     * for dead battery that requests no voltage/current
-	     */
-	    ((batt_new.desired_voltage && batt_new.desired_current &&
-	      batt_new.state_of_charge < BATTERY_LEVEL_FULL) ||
-	     (batt_new.desired_voltage == 0 && batt_new.desired_current == 0 &&
-	      batt_new.state_of_charge == 0)))
-#else
-	    batt_new.desired_voltage && batt_new.desired_current &&
-	    batt_new.state_of_charge < BATTERY_LEVEL_FULL)
-#endif
-		batt_new.flags |= BATT_FLAG_WANT_CHARGE;
-	else
+	WRITE_MASK(batt_new.flags, BATT_FLAG_WANT_CHARGE,
+		   battery_want_charge(&batt_new));
+
+	if (!(batt_new.flags & BATT_FLAG_WANT_CHARGE))
 		/* Force both to zero */
 		batt_new.desired_voltage = batt_new.desired_current = 0;
 
