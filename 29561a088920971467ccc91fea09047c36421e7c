@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40b1662c_7f35a463",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-04T23:08:14Z",
+      "side": 1,
+      "message": "I\u0027m okay with this pattern for now.  We will eventually drop this Kconfig in favor of the upstream `CONFIG_RTCC` option once this PR merges: https://github.com/zephyrproject-rtos/zephyr/pull/52618.\n\nI created b:264463872 to track this effort.",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 572,
+        "endChar": 51
+      },
+      "revId": "29561a088920971467ccc91fea09047c36421e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -46,6 +46,30 @@
       },
       "revId": "c36b7af95bce1e9ca217153c49e1b1dc0d0f9a35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0480e371_b84ad182",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-04T23:08:14Z",
+      "side": 1,
+      "message": "Look like we should start using `select \u003cBUS\u003e` to match the upstream pattern.  The rationale seems to be described here:\nhttps://github.com/zephyrproject-rtos/zephyr/commit/df81fef94483da9f2811d48088affbcfd61ab18c",
+      "parentUuid": "3753f253_bed67a79",
+      "range": {
+        "startLine": 570,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 0
+      },
+      "revId": "c36b7af95bce1e9ca217153c49e1b1dc0d0f9a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
