@@ -60,8 +60,7 @@ int sb_read(int cmd, int *param)
 int sb_write(int cmd, int param)
 {
 	write_count++;
-	return i2c_write16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
-			   cmd, param);
+	return i2c_write16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS, cmd, param);
 }
 
 
@@ -164,6 +163,16 @@ static int test_flags(void)
 	test_flag(SB_REMAINING_CAPACITY, BATT_FLAG_BAD_REMAINING_CAPACITY);
 	test_flag(SB_FULL_CHARGE_CAPACITY, BATT_FLAG_BAD_FULL_CAPACITY);
 	test_flag(SB_BATTERY_STATUS, BATT_FLAG_BAD_STATUS);
+
+	/*
+	 * Volatile flags should be cleared and other flags should be preserved.
+	 */
+	reset_and_fail_on(0, 0, -1);
+	batt.flags |= BATT_FLAG_BAD_TEMPERATURE;
+	batt.flags |= BIT(31);
+	battery_get_params(&batt);
+	TEST_ASSERT(batt.flags & BIT(31));
+	TEST_ASSERT(!(batt.flags & BATT_FLAG_BAD_ANY));
 
 	/*
 	 * All reads succeed. BATT_FLAG_RESPONSIVE should be set. Then, all
