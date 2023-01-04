@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2784112c_abbc89ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-01-04T17:19:40Z",
+      "side": 1,
+      "message": "There is no difference between them. I will change the description to banks only.",
+      "parentUuid": "3d45f1b7_26bbca27",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "cb6d7c23c70698d234cb63d451c821304ba879e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a54978b9_8861bcfa",
         "filename": "include/flash.h",
         "patchSetId": 5
