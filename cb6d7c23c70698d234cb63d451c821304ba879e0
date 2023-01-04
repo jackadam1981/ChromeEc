@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "097d9d2a_4f7de021",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-01-04T18:42:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2784112c_abbc89ea",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "cb6d7c23c70698d234cb63d451c821304ba879e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a54978b9_8861bcfa",
@@ -61,6 +85,30 @@
       "writtenOn": "2023-01-04T16:57:33Z",
       "side": 1,
       "message": "Please add a function descriptor (i.e. /** ... */).",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 26
+      },
+      "revId": "cb6d7c23c70698d234cb63d451c821304ba879e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4611b98f_2cc06436",
+        "filename": "include/flash.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-01-04T18:42:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a54978b9_8861bcfa",
       "range": {
         "startLine": 76,
         "startChar": 4,
