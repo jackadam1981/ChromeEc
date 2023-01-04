@@ -22,6 +22,30 @@
       },
       "revId": "4a486b55b527ff692c430c6a5f1dd2b10afda827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f53a801c_e8d53d51",
+        "filename": "common/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-01-04T17:17:14Z",
+      "side": 1,
+      "message": "This is the same as `crec_flash_total_banks()`. I can change it for better readability.",
+      "parentUuid": "b27d3216_645d4344",
+      "range": {
+        "startLine": 244,
+        "startChar": 21,
+        "endLine": 244,
+        "endChar": 69
+      },
+      "revId": "4a486b55b527ff692c430c6a5f1dd2b10afda827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
