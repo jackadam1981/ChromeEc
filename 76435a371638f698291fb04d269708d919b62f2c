@@ -33,6 +33,24 @@
       "message": "Is this a duplicate of CL:3902098?",
       "revId": "76435a371638f698291fb04d269708d919b62f2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "054b1fe3_9bd08016",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2023-01-05T02:21:00Z",
+      "side": 1,
+      "message": "No, there are differents, in CL:3902098 cros_kb driver set KSI/KSO to kbs mode by upstream pinctrl_kscan driver. This CL set them by upstream extended pinctrl driver. (different dependency PR)\n\nI\u0027m not sure which upstream pinctrl driver changes will be merged. Once the one of pinctrl driver is merged, then the other one will be abandoned.",
+      "parentUuid": "7214422c_a01c499a",
+      "revId": "76435a371638f698291fb04d269708d919b62f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
