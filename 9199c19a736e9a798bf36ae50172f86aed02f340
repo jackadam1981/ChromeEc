@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e0b940b_6b932757",
+        "filename": "zephyr/test/drivers/usbc_ctvpd/include/test_usbc_ctvpd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-05T20:11:35Z",
+      "side": 1,
+      "message": "If you\u0027re going to do this, it should be in a .c file.",
+      "revId": "9199c19a736e9a798bf36ae50172f86aed02f340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

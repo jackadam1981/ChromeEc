@@ -106,6 +106,24 @@
       "parentUuid": "720cfd1a_8a889a4a",
       "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ccd2b30_010ec5d1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-05T20:11:35Z",
+      "side": 1,
+      "message": "1. I think overriding this function in general is a reasonable approach to testing this code, but you also need to have a test assertion to check that your code worked.\n2. I\u0027d prefer that you create a new, small test for this purpose. Adding this to an existing test presumably changes the code path that it takes and might decrease coverage somewhere else.\n3. There might be an existing test that would make sense to change for this purpose. However, I don\u0027t think that `usbc_ctvpd` is that test. It is meant to cover a weird edge case of the TC that isn\u0027t related to this change. I can\u0027t immediately think of an existing test that would be a good fit for this change.",
+      "parentUuid": "76b1e663_a5287dff",
+      "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
