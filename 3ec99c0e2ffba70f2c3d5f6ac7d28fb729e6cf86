@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46518712_c12b873a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-05T22:49:06Z",
+      "side": 1,
+      "message": "please split the CL into multiple readable chunks.\ntry name the files with meaningful names",
+      "revId": "3ec99c0e2ffba70f2c3d5f6ac7d28fb729e6cf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4b07be7_01d72670",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-05T22:49:06Z",
+      "side": 1,
+      "message": "how about BOARDS_MCHP_INT_SPI",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 11
+      },
+      "revId": "3ec99c0e2ffba70f2c3d5f6ac7d28fb729e6cf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71466b90_1194e55a",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-05T22:49:06Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 383,
+        "startChar": 23,
+        "endLine": 383,
+        "endChar": 36
+      },
+      "revId": "3ec99c0e2ffba70f2c3d5f6ac7d28fb729e6cf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43744cad_13acea7e",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-05T22:49:06Z",
+      "side": 1,
+      "message": "nit: echo not needed",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 709,
+        "endChar": 35
+      },
+      "revId": "3ec99c0e2ffba70f2c3d5f6ac7d28fb729e6cf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48eedf5c_d0ea1a8c",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-05T22:49:06Z",
+      "side": 1,
+      "message": "create a function for mchp and add these there",
+      "revId": "3ec99c0e2ffba70f2c3d5f6ac7d28fb729e6cf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "debc3b5d_9891ef3c",
+        "filename": "util/mchp/mchp_download.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-05T22:49:06Z",
+      "side": 1,
+      "message": "move these to flash_ec file under mchp",
+      "revId": "3ec99c0e2ffba70f2c3d5f6ac7d28fb729e6cf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d697b68f_86758053",
+        "filename": "util/mchp/mchp_flash.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-05T22:49:06Z",
+      "side": 1,
+      "message": "move these to flash_ec file",
+      "revId": "3ec99c0e2ffba70f2c3d5f6ac7d28fb729e6cf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
