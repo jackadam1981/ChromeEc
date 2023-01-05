@@ -569,6 +569,24 @@
       "parentUuid": "25997f60_d4712864",
       "revId": "372dea4088a9aa749eb468559019fba0753076a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ed90767_5d0ebe8a",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-05T18:45:08Z",
+      "side": 1,
+      "message": "you can still use `pytest`, just run as `pytest test_kconfig_check.py`.",
+      "parentUuid": "1a5a1843_966083bc",
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
