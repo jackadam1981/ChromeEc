@@ -31,6 +31,14 @@
 
 	named-gpios {
 		/* Markarth-specific GPIO customizations */
+		/delete-node/ usb_c0_bc12_int_odl;
+		/delete-node/ usb_c1_bc12_int_odl;
+	};
+
+	/* gpio-interrupts overrides */
+	gpio-interrupts {
+		/delete-node/ usb_c0_bc12;
+		/delete-node/ usb_c1_bc12;
 	};
 
 	named-temp-sensors {
@@ -168,4 +176,18 @@
 /* i2c overrides */
 &i2c0_0 {
 	/delete-node/ nx20p348x@71;
+	/delete-node/ pi3usb9201@5f;
+};
+
+&i2c1_0 {
+	/delete-node/ pi3usb9201@5f;
+};
+
+/* usbc overrides */
+&usbc_port0 {
+	/delete-property/ bc12;
+};
+
+&usbc_port1 {
+	/delete-property/ bc12;
 };
