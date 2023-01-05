@@ -183,6 +183,30 @@
       },
       "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64de6da4_b85ed2a0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-01-05T13:09:01Z",
+      "side": 1,
+      "message": "Dear Nojiri:\n     I found that CL:4136966 will cause run-sbs_charging_v2 to fail although the flag will not be cleared.\nCan we modify it as follows, so that the flag will not be cleared, and run-sbs_charging_v2 is also successful.\nIf it can be modified like this, I will submit it.\n\n--- a/driver/battery/smart.c\n+++ b/driver/battery/smart.c\n@@ -557,6 +557,15 @@ void battery_get_params(struct batt_params *batt)\n        if (IS_ENABLED(CONFIG_CMD_BATTFAKE))\n                apply_fake_state_of_charge(\u0026batt_new);\n \n+ if (IS_ENABLED(CONFIG_BATTERY_LOW_VOLTAGE_PROTECTION)) {\n+    /* restore BATT_FLAG_DEEP_CHARGE bit flag */\n+    if (batt-\u003eflags \u0026 BATT_FLAG_DEEP_CHARGE) {\n+        batt_new.flags |\u003d BATT_FLAG_DEEP_CHARGE;\n+    } else {\n+        batt_new.flags \u0026\u003d ~BATT_FLAG_DEEP_CHARGE;\n+    }\n+}\n+\n        /* Update visible battery parameters */\n        memcpy(batt, \u0026batt_new, sizeof(*batt));\n }",
+      "parentUuid": "c7b86f45_bacbfa1c",
+      "range": {
+        "startLine": 1561,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 8
+      },
+      "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
