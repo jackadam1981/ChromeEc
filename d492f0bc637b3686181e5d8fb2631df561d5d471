@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a359ee8_cefa913e",
+        "filename": "test/battery_get_params_smart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-05T21:35:20Z",
+      "side": 1,
+      "message": "Yes. This will/can be BATT_FLAG_DEEP_CHARGE (CL:4125706), which hasn\u0027t been submitted because it needs this patch. It\u0027s chiken \u0026 egg.",
+      "parentUuid": "ed41568e_010ce6c2",
+      "range": {
+        "startLine": 170,
+        "startChar": 14,
+        "endLine": 170,
+        "endChar": 23
+      },
+      "revId": "d492f0bc637b3686181e5d8fb2631df561d5d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00525ccc_7b2c1c5a",
         "filename": "test/battery_get_params_smart.c",
         "patchSetId": 12
