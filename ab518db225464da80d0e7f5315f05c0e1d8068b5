@@ -16,6 +16,24 @@
       "message": "Is this CL obsolete?",
       "revId": "ab518db225464da80d0e7f5315f05c0e1d8068b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25b6e54f_02823767",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2023-01-05T02:21:10Z",
+      "side": 1,
+      "message": "No, this CL and CL:4128271 have different dependency PR.\nI\u0027m not sure which upstream pinctrl driver changes will be merged. Once the one of pinctrl driver is merged, then the other one will be abandoned.",
+      "parentUuid": "84e577f3_b0647962",
+      "revId": "ab518db225464da80d0e7f5315f05c0e1d8068b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
