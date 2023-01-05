@@ -159,6 +159,30 @@
       },
       "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b86f45_bacbfa1c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-01-05T05:28:04Z",
+      "side": 1,
+      "message": "Dear nojiri:\n     After cherry-pick  http://crrev.com/c/4136966 and http://crrev.com/c/4136965 , \nand it compile succeed. The new flag don\u0027t be cleared by battery_get_params again.\n     I have added the new flag BATT_FLAG_DEEP_CHARGE for the function by your suggestion.\n     Please check it.\n     Thanks",
+      "parentUuid": "f644966a_d07477fa",
+      "range": {
+        "startLine": 1561,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 8
+      },
+      "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
