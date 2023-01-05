@@ -16,6 +16,23 @@
       "message": "Per our previous conversation, this CL adds an explicit request to exist from host tests rather than simply killing it.",
       "revId": "76acffae0f7a365a016d72c7caf15d20a5f512cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc65159_a06c63e7",
+        "filename": "util/run_host_test",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-05T19:15:26Z",
+      "side": 1,
+      "message": "There appears to be a race condition that is causing some tests to fail. Apparently under some conditions the I/O pipes close prior to transmitting writing the \"exit\" command. This didn\u0027t appear in any of my testing but it appears real. I suspect it would be okay to wrap the write/flush in a try block and, if it fails the behavior should be the same as it previously was anyway.\n\nHere is a sample log:\n```\nkb_scan passed! (0.154 seconds)\n  CC      RO/common/inductive_charging.o\n  TEST    run-kb_scan_strict\nTraceback (most recent call last):\n  File \"./util/run_host_test\", line 141, in \u003cmodule\u003e\n    sys.exit(main(sys.argv[1:]))\n  File \"./util/run_host_test\", line 127, in main\n    result, output \u003d run_test(exec_path, timeout\u003dopts.timeout)\n  File \"./util/run_host_test\", line 83, in run_test\n    proc.stdin.write(\"exit\\n\")\nBrokenPipeError: [Errno 32] Broken pipe\n```",
+      "revId": "76acffae0f7a365a016d72c7caf15d20a5f512cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
