@@ -685,11 +685,6 @@ static void sm5803_init(int chgnum)
 		rv |= main_write8(chgnum, 0x1F, 0x0);
 	}
 
-	/* Enable LDO bits */
-	rv |= main_read8(chgnum, SM5803_REG_REFERENCE, &reg);
-	reg &= ~(BIT(0) | BIT(1));
-	rv |= main_write8(chgnum, SM5803_REG_REFERENCE, reg);
-
 	/* Enable Psys DAC */
 	rv |= meas_read8(chgnum, SM5803_REG_PSYS1, &reg);
 	reg |= SM5803_PSYS1_DAC_EN;
@@ -845,12 +840,6 @@ void sm5803_hibernate(int chgnum)
 		CPRINTS("%s %d: Failed to read REFERENCE reg", CHARGER_NAME,
 			chgnum);
 		return;
-	}
-
-	/* Disable LDO bits - note the primary LDO should not be disabled */
-	if (chgnum != CHARGER_PRIMARY) {
-		reg |= (BIT(0) | BIT(1));
-		rv |= main_write8(chgnum, SM5803_REG_REFERENCE, reg);
 	}
 
 	/* Slow the clock speed */
