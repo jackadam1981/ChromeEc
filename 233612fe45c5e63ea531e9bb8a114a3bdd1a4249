@@ -92,6 +92,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe2edcef_fc5f586b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1449,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-05T00:03:34Z",
+      "side": 1,
+      "message": "Added these back in for now. This object is 4 bytes, and these assignments are probably like 1 instruction. We could save more space by getting rid of the PE codes that uses this, so we might want to revisit this later.",
+      "parentUuid": "5a71db7c_f3104112",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "577c4f0a_0440ebc1",
@@ -241,6 +259,24 @@
       "writtenOn": "2022-10-13T23:24:52Z",
       "side": 1,
       "message": "Nit: Were these new line breaks intentional? A few more scattered throughout the CL.",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "100f1113_a7574047",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-05T00:03:34Z",
+      "side": 1,
+      "message": "Removed the new line breaks that I didn\u0027t get.",
+      "parentUuid": "6a53b9d6_f18d978c",
       "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

@@ -105,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6889d587_d88053e5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1429,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-05T00:03:34Z",
+      "side": 1,
+      "message": "Evidently, this was removed because it doesn\u0027t link as Servo is currently linked in this patchset. But it still needs to be here for CrOS devices.",
+      "parentUuid": "34093293_09fa7d97",
+      "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46b30d1b_3a52da98",
