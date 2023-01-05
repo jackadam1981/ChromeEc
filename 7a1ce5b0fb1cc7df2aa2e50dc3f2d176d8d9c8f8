@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daaea945_608ee580",
+        "filename": "zephyr/dts/bindings/emul/tcpci.yaml",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-01-05T23:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "026b74ae_4915604f",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "7a1ce5b0fb1cc7df2aa2e50dc3f2d176d8d9c8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9aae7986_6edfc21a",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-12-23T00:04:27Z",
       "side": 1,
       "message": "In a follow up CL, the `tcpc-flags` and `irq-gpios` should get moved into a common file `tcpc-device.yaml` and then each driver should include the common file.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "7a1ce5b0fb1cc7df2aa2e50dc3f2d176d8d9c8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6170c0d_322ef0ac",
+        "filename": "zephyr/dts/bindings/usbc/tcpc/richtek,rt1718s-tcpc.yaml",
+        "patchSetId": 16
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-01-05T23:00:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9aae7986_6edfc21a",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b512746_e755636f",
+        "filename": "zephyr/program/corsola/src/npcx_usbc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-01-05T23:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4a34dcd_6150f90d",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 49
+      },
+      "revId": "7a1ce5b0fb1cc7df2aa2e50dc3f2d176d8d9c8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39155fb8_ea81c50f",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-12-23T00:04:27Z",
       "side": 1,
       "message": "Add a check here \n```\nif (!gpio_is_ready_dt(\u0026tcpc_config[i].int_cfg))\n    LOG_ERR();\n```",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 4
+      },
+      "revId": "7a1ce5b0fb1cc7df2aa2e50dc3f2d176d8d9c8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e7ab81d_9fa569b1",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-01-05T23:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39155fb8_ea81c50f",
       "range": {
         "startLine": 112,
         "startChar": 0,

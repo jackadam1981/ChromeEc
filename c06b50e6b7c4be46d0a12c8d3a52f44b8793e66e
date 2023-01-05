@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51151533_19384c8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-01-05T23:00:45Z",
+      "side": 1,
+      "message": "Not sure why, but the terrador project seems to be throwing an error despite not being a Zephyr project.\n\nThe low test coverage is due to the excluded nissa and intel programs not being tested. Once they\u0027re refactored I\u0027ll push both as a stacked CL.",
+      "revId": "c06b50e6b7c4be46d0a12c8d3a52f44b8793e66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
