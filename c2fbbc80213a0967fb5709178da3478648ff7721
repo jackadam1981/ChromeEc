@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e8dbb9_9573a036",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-05T17:12:19Z",
+      "side": 1,
+      "message": "one more thing, if you move `EC_BASE` above this, you can get this relative to `EC_BASE`",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "c2fbbc80213a0967fb5709178da3478648ff7721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
