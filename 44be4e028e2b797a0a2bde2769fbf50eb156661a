@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0edd7a90_c152e094",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2023-01-05T02:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bccd57be_53b94a8a",
+      "revId": "44be4e028e2b797a0a2bde2769fbf50eb156661a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06e54015_445e3e51",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-01-04T15:18:51Z",
       "side": 1,
       "message": "`if (!IS_ENABLED(CONFIG_HIBERNATE_PSL))` is preferred.",
+      "revId": "44be4e028e2b797a0a2bde2769fbf50eb156661a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00692750_c732b355",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2023-01-05T02:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06e54015_445e3e51",
       "revId": "44be4e028e2b797a0a2bde2769fbf50eb156661a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
