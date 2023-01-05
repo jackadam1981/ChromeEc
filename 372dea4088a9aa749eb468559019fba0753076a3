@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5498d5_198efd6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T11:46:51Z",
+      "side": 1,
+      "message": "Yeah valid followup, let\u0027s do it at a later stage if this holds up, I\u0027m working on adding some tests from the Zephyr CI compliance as well.",
+      "parentUuid": "850d83c7_ff774862",
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89fa3531_c2749cdb",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-01-04T22:48:08Z",
       "side": 1,
       "message": "`if not ZEPHYR_BASE`",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c403f6e8_3dbc808a",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T11:46:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89fa3531_c2749cdb",
       "range": {
         "startLine": 18,
         "startChar": 3,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f135c5f_2d3fa682",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T11:46:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f41f79_d24f5a74",
+      "range": {
+        "startLine": 39,
+        "startChar": 32,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85834dc4_7dc4deaa",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-01-04T22:48:08Z",
       "side": 1,
       "message": "`description\u003d__doc__`",
+      "range": {
+        "startLine": 43,
+        "startChar": 36,
+        "endLine": 43,
+        "endChar": 38
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b151cc0_7ca573f0",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T11:46:51Z",
+      "side": 1,
+      "message": "Fancy!",
+      "parentUuid": "85834dc4_7dc4deaa",
       "range": {
         "startLine": 43,
         "startChar": 36,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf6a6b9f_ce9cfdc8",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T11:46:51Z",
+      "side": 1,
+      "message": "Sure we can.",
+      "parentUuid": "85932c48_4f842a36",
+      "range": {
+        "startLine": 85,
+        "startChar": 23,
+        "endLine": 85,
+        "endChar": 27
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ceeb6d27_e2bf734c",
@@ -123,6 +237,30 @@
       "writtenOn": "2023-01-04T22:48:08Z",
       "side": 1,
       "message": "should all of these be `os.environ.setdefault(...)` so that the caller of this script can pass in env vars?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 50
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "302bae9a_38c1b8a8",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T11:46:51Z",
+      "side": 1,
+      "message": "I don\u0027t think we want that, imagine having one of these in the environment for whatever reason (thinking `ARCH` mainly), then this would start misbehaving. Actually the opposite, I think ideally they should be arguments of `kconfiglib.Kconfig()`.",
+      "parentUuid": "ceeb6d27_e2bf734c",
       "range": {
         "startLine": 121,
         "startChar": 0,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b6026a4_8b212ff3",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T11:46:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a1af0de_5c71459b",
+      "range": {
+        "startLine": 138,
+        "startChar": 37,
+        "endLine": 138,
+        "endChar": 45
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91c2ffd7_fdab4d77",
@@ -169,6 +331,30 @@
       "writtenOn": "2023-01-04T22:48:08Z",
       "side": 1,
       "message": "`EC_BASE / \"zephyr\" / \"program\"`\n\n(that way we don\u0027t depend on the cwd)",
+      "range": {
+        "startLine": 151,
+        "startChar": 23,
+        "endLine": 151,
+        "endChar": 66
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a8b69ba_09527a50",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T11:46:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91c2ffd7_fdab4d77",
       "range": {
         "startLine": 151,
         "startChar": 23,
@@ -196,6 +382,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68d55010_b643de0e",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T11:46:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "757a750c_d2298dec",
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e0db557_001d0bf7",
@@ -209,6 +413,30 @@
       "writtenOn": "2023-01-04T22:48:08Z",
       "side": 1,
       "message": "`for line_num, line in enumerate(file.readlines(), start\u003d1)`",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 28
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bfb3109_e4907d8e",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T11:46:51Z",
+      "side": 1,
+      "message": "Done, removed readlines() as well, magic.",
+      "parentUuid": "8e0db557_001d0bf7",
       "range": {
         "startLine": 217,
         "startChar": 0,
@@ -242,6 +470,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "584e8a53_bb59540b",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T11:46:51Z",
+      "side": 1,
+      "message": "Yeah I remember adding it because I wanted the info messages from `_filter_config_files` to get processed immediately instead of being mixed with the warning, but now I can\u0027t remember why I wanted that to happen in the first place. Removed.",
+      "parentUuid": "98e3bdae_ce1e4c74",
+      "range": {
+        "startLine": 234,
+        "startChar": 23,
+        "endLine": 234,
+        "endChar": 27
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cbdfae6_7c1646b4",
@@ -255,6 +507,24 @@
       "writtenOn": "2023-01-04T22:48:08Z",
       "side": 1,
       "message": "unit tests?",
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25997f60_d4712864",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T11:46:51Z",
+      "side": 1,
+      "message": "Two words, and there goes my Thursday afternoon 😂",
+      "parentUuid": "9cbdfae6_7c1646b4",
       "revId": "372dea4088a9aa749eb468559019fba0753076a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
