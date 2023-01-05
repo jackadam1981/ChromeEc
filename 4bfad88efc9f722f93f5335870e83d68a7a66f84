@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5922a74e_80ea2aec",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-05T08:46:37Z",
+      "side": 1,
+      "message": "I don\u0027t need this anymore, removed it. I think there is a clearer implementation to support cps8200 (PS12). I added one flag called `fwupd_no_irq` in pcgh_config to specify if IRQ is required for firmware update. If this flag is set, pchg driver will queue the event to transit to different states without the help of IRQ. \n\nI don\u0027t need to change ectool.cc, I just need to set `fwupd_no_irq` in `board/kuldax/borad.c`",
+      "parentUuid": "c8d6908f_ab9557a7",
+      "range": {
+        "startLine": 439,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 8
+      },
+      "revId": "4bfad88efc9f722f93f5335870e83d68a7a66f84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80beef58_39fbf3dd",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-03T17:42:30Z",
       "side": 1,
       "message": "cps8200 blocks on this? That is, cps8200 returns only after a write is complete? If so, can you update the comment for cps8200_update_write? If not, how are you dealing with another write request while cps8200 is still writing?",
+      "range": {
+        "startLine": 619,
+        "startChar": 22,
+        "endLine": 619,
+        "endChar": 34
+      },
+      "revId": "4bfad88efc9f722f93f5335870e83d68a7a66f84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96700c75_c12edfe5",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-05T08:46:37Z",
+      "side": 1,
+      "message": "Yes, cps8200 blocks on this and only returns after a write is completed. I have updated the comment for cps8200_update_write.",
+      "parentUuid": "80beef58_39fbf3dd",
       "range": {
         "startLine": 619,
         "startChar": 22,
