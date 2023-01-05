@@ -135,6 +135,30 @@
       },
       "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f644966a_d07477fa",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-01-05T02:55:41Z",
+      "side": 1,
+      "message": "Dear nojiri:\n     By your idea,we can restore the tag value int battery_get_params.\n\n\tif (IS_ENABLED(CONFIG_BATTERY_LOW_VOLTAGE_PROTECTION)) {\n\t\t/* restore BATT_FLAG_DEEP_CHARGE bit flag */\n\t\tif (batt-\u003eflags \u0026 BATT_FLAG_DEEP_CHARGE) {\n\t\t\tbatt_new.flags |\u003d BATT_FLAG_DEEP_CHARGE;\n\t\t} else {\n\t\t\tbatt_new.flags \u0026\u003d ~BATT_FLAG_DEEP_CHARGE;\n\t\t}\n\t}\n     \n    And we have change the code , add a flag in curr.batt.flags.\n    \n    Please check it again .\n    Thanks",
+      "parentUuid": "f479f238_a0a43809",
+      "range": {
+        "startLine": 1561,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 8
+      },
+      "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
