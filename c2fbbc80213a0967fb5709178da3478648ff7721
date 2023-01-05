@@ -22,6 +22,30 @@
       },
       "revId": "c2fbbc80213a0967fb5709178da3478648ff7721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e66dca4c_27636911",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T18:19:00Z",
+      "side": 1,
+      "message": "Sure thing, went full .parent.parent there as well :-) Dropped a comment, it sounded obvious anyway.",
+      "parentUuid": "66e8dbb9_9573a036",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "c2fbbc80213a0967fb5709178da3478648ff7721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

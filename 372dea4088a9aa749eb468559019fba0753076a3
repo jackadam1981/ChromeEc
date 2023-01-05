@@ -447,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a708b00f_728cd8b8",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T18:19:00Z",
+      "side": 1,
+      "message": "NVM added back readlines(), was causing flakyness in tests, must be some python version dependent behavior.",
+      "parentUuid": "3bfb3109_e4907d8e",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 28
+      },
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98e3bdae_ce1e4c74",
@@ -525,6 +549,24 @@
       "side": 1,
       "message": "Two words, and there goes my Thursday afternoon 😂",
       "parentUuid": "9cbdfae6_7c1646b4",
+      "revId": "372dea4088a9aa749eb468559019fba0753076a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5a1843_966083bc",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-05T18:19:00Z",
+      "side": 1,
+      "message": "Added a testsuite. Did not make it run with pytest and listed it explicitly `util/run_tests.sh`. Tried pytest but then it was putting on a fight with `test_kconfig_check.py` as they are using two different version of kconfiglib and this one leaks the include path, breaking the other. Guess it\u0027s something to fix down the road if we standardize to the Zephyr kconfiglib.",
+      "parentUuid": "25997f60_d4712864",
       "revId": "372dea4088a9aa749eb468559019fba0753076a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
