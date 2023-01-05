@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a1efac_afc87621",
+        "filename": "common/flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-05T19:50:24Z",
+      "side": 1,
+      "message": "nit: In this repo, this kind of check is omitted (because it\u0027s coming from the host command handler thus redundant).",
+      "range": {
+        "startLine": 241,
+        "startChar": 5,
+        "endLine": 241,
+        "endChar": 8
+      },
+      "revId": "1c49c2c46be5d00b756b9e83d2d9bfb790a88693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549d16e5_098b0d66",
+        "filename": "common/flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-05T19:50:24Z",
+      "side": 1,
+      "message": "Can you move this to flash.h?",
+      "range": {
+        "startLine": 1322,
+        "startChar": 42,
+        "endLine": 1332,
+        "endChar": 63
+      },
+      "revId": "1c49c2c46be5d00b756b9e83d2d9bfb790a88693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca8e481_03c3b049",
+        "filename": "common/flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-05T19:50:24Z",
+      "side": 1,
+      "message": "You can validate this before calling crec_flash_response_fill_banks and return an error to the host (or make crec_flash_response_fill_banks return an error).",
+      "range": {
+        "startLine": 1334,
+        "startChar": 38,
+        "endLine": 1334,
+        "endChar": 57
+      },
+      "revId": "1c49c2c46be5d00b756b9e83d2d9bfb790a88693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
