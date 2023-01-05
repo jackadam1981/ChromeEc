@@ -111,6 +111,30 @@
       },
       "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f479f238_a0a43809",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-01-05T01:25:58Z",
+      "side": 1,
+      "message": "Dear Nojiri:\n     Try it and it has some error as following:\nmake run-battery_get_params_smart\n  BUILD   host-battery_get_params_smart\n  CC      RO/driver/battery/smart.o\ndriver/battery/smart.c: In function ‘battery_get_params’:\ndriver/battery/smart.c:496:2: error: implicit declaration of function ‘WRITE_MASK’ [-Werror\u003dimplicit-function-declaration]\n  496 |  WRITE_MASK(batt_new.flags, BATT_FLAG_BAD_TEMPERATURE,\n      |  ^~~~~~~~~~\ncc1: all warnings being treated as errors\nmake[1]: *** [Makefile.rules:619: build/host/battery_get_params_smart/RO/driver/battery/smart.o] Error 1\nmake: *** [Makefile.rules:356: host-battery_get_params_smart] Error 2\n\n     Please help check\n     Thanks",
+      "parentUuid": "d96c5c1a_5fbeb7dc",
+      "range": {
+        "startLine": 1561,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 8
+      },
+      "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
