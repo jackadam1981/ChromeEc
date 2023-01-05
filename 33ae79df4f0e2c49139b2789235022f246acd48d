@@ -70,6 +70,24 @@
       "parentUuid": "09e7dc83_cdcc1055",
       "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "720cfd1a_8a889a4a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-01-05T17:57:38Z",
+      "side": 1,
+      "message": "Sorry about the delay to look this further. I was busy with other priority tasks, as this change was relevant to RVP only and later was on vacation.\nTried experimenting with pd_set_dual_role() to set dual role as FORCE_SRC at different existing test places under zephyr/test/.\nBut, it don\u0027t seem to getting into right pd states as pd_update_dual_role_config() is getting updated \u0026 causing test failures.\nWithout adding any new test cases, On  just returning  pd_get_drp_state_in_s0() as force_source is seeming to help hit the coverage for these code line changes in verify_no_vconn_swap test under test suite \u0027usbc_ctvpd\u0027. So i have overwritten the default  dual role in S0 just for this file. Also, Even afterchanging the default dual role -toggle_ON to force_source, this test suite is a pass. So, i didn\u0027t further try adding any new test case.\nDo you think, overriding function just for this test is ok, so that this CL can get merged? Infact , i am also wondering on, if this overriding function change must fall under board specific change ?",
+      "parentUuid": "04697072_8e6408ec",
+      "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
