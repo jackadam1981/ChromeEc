@@ -88,6 +88,24 @@
       "parentUuid": "04697072_8e6408ec",
       "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76b1e663_a5287dff",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-01-05T18:09:02Z",
+      "side": 1,
+      "message": "Note: function override is written in patch set 6, in file zephyr/test/drivers/usbc_ctvpd/include/test_usbc_ctvpd.h.\n\nWith this change, test - verify_no_vconn_swap under test suite \u0027usbc_ctvpd\u0027 is able to hit the code change added in common/usbc/usb_tc_drp_acc_trysrc_sm.c.\n\n C0: Unattached.SNK]\n2023-01-05 19:40:37,810 - twister - DEBUG - OUTPUT: [18.343900 PTOM-unattached_test_src]   -----\u003e\u003e\u003e debug print confirmed the entry here.\n2023-01-05 19:40:37,810 - twister - DEBUG - OUTPUT: [18.343900 C0: LowPowerMode]\n2023-01-05 19:40:37,811 - twister - DEBUG - OUTPUT: [18.354000 C0: TCPC Enter Low Power Mode]\n\nAlso,observed +1 in usb_tc_drp_acc_trysrc_sm.c.gcov.html for the added code lines.",
+      "parentUuid": "720cfd1a_8a889a4a",
+      "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
