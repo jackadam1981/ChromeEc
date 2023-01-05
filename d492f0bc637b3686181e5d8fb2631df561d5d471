@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c5e1666_d42240cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2023-01-05T21:17:17Z",
+      "side": 1,
+      "message": "Couple of nits",
+      "revId": "d492f0bc637b3686181e5d8fb2631df561d5d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed41568e_010ce6c2",
+        "filename": "test/battery_get_params_smart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2023-01-05T21:17:17Z",
+      "side": 1,
+      "message": "Should this be an additional BATT_FLAG_... insead of the magic number BIT(31) ?",
+      "range": {
+        "startLine": 170,
+        "startChar": 14,
+        "endLine": 170,
+        "endChar": 23
+      },
+      "revId": "d492f0bc637b3686181e5d8fb2631df561d5d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00525ccc_7b2c1c5a",
+        "filename": "test/battery_get_params_smart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2023-01-05T21:17:17Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 172,
+        "startChar": 26,
+        "endLine": 172,
+        "endChar": 33
+      },
+      "revId": "d492f0bc637b3686181e5d8fb2631df561d5d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
