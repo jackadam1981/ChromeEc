@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8411609_0dd4e88e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-01-05T23:21:18Z",
+      "side": 1,
+      "message": "I\u0027m questioning this cl now. Maybe instead of clobbering, we should pass a flag to make to write to a different build directory.",
+      "revId": "91ea220a1dd80193bcdff9c9bc1655b5f31c2033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c5f547d_4c73500a",
