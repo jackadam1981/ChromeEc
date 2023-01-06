@@ -5,7 +5,7 @@
 
 #if defined(CONFIG_CPU_CORTEX_M) || defined(CONFIG_CPU_CORTEX_R) || \
 	defined(CONFIG_CPU_CORTEX_A)
-__image_size = _flash_used;
+__image_size = CONFIG_PLATFORM_EC_RW_TOTAL_IMAGE_SIZE - 32;
 #elif defined(CONFIG_RISCV)
 __image_size = __rom_region_size;
 #else

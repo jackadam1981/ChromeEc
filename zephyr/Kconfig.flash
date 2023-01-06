@@ -76,6 +76,12 @@ config PLATFORM_EC_INTERNAL_STORAGE
 
 endchoice
 
+config PLATFORM_EC_RW_TOTAL_IMAGE_SIZE
+	hex "RW image size"
+	default $(dt_node_int_prop_hex,/binman/ec-rw,size)
+	help
+	  Total size of the EC RW image.
+
 # Workaround for not being able to have commas in macro arguments
 DT_CHOSEN_CROS_FLASH := cros-ec,flash
 
