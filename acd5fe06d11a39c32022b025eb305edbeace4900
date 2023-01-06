@@ -279,6 +279,30 @@
       },
       "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebf5887f_f1d88e9b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-06T02:47:30Z",
+      "side": 1,
+      "message": "CL:4136966 breaks virtual_battery test:\n```\nSTART - test_read_regs\n\n    Assertion failed at EC_BASE/ec/zephyr/test/drivers/default/src/virtual_battery.c:156: virtual_battery_test_read_regs: (expected not equal to word)\n50 !\u003d 65\n```\nI don\u0027t know how to fix it yet.",
+      "parentUuid": "033f8a69_543fcfca",
+      "range": {
+        "startLine": 1561,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 8
+      },
+      "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
