@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "90cf80f6_dcc57591",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-01-06T18:50:20Z",
+      "side": 1,
+      "message": "You need a signed-off by line. Can you use `repo upload` to upload the CL and fix any errors?",
+      "revId": "2d662959846421596f3845c8e0e78fda6ee6f361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f49bd31a_4576a468",
