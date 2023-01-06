@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85da331c_1f12acc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-06T19:22:56Z",
+      "side": 1,
+      "message": "Fixed CL:4136966. Please wait until it\u0027s submitted.",
+      "revId": "45b9670cf17e6e984d0f4d59fffdb8ef63338ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d0c34a_28d0293c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-06T19:22:56Z",
+      "side": 1,
+      "message": "nit: Please add /* Finished deep charge before timeout. */",
+      "revId": "45b9670cf17e6e984d0f4d59fffdb8ef63338ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
