@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba9b8815_a1d65f6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-06T22:20:38Z",
+      "side": 1,
+      "message": "The plan was for this to be a \"quick patch\" because we have tests failing and to have a follow up CL with that \"real solution\". However, given recent events (see my other comment) this \"quick patch\" didn\u0027t work for all cases. I managed to pass bloonchipper tests once but failed on subsequent runs. \n\nI\u0027d be in favor of either reverting or patching go/cl-c/4126660 (which didn\u0027t \"cause\" the issue but made it visible) and replace this with the \"not complete but more permanent\" solution.",
+      "parentUuid": "5b96ae40_8e3dc3ab",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "b64b1f629a69e9d2b6739d2a78ffc1e861a3e566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d0b9f01a_de24e8d2",
