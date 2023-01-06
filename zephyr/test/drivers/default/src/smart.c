@@ -508,6 +508,12 @@ ZTEST_USER(smart_battery, test_battery_fake_charge)
 		      batt.remaining_capacity);
 }
 
+static void reset_rule_after(const struct ztest_unit_test *test, void *data)
+{
+	shell_execute_cmd(get_ec_shell(), "battfake -1");
+}
+ZTEST_RULE(smart_battery_reset_rule, NULL, reset_rule_after);
+
 /** Test battery fake temperature set and read */
 ZTEST_USER(smart_battery, test_battery_fake_temperature)
 {
