@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "312fa0fe_4474b979",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-06T21:07:44Z",
+      "side": 1,
+      "message": "Do you plan to have follow-up CLs that enable this support on specific boards?\n\nAs is, I think this might cause test coverage to drop on herobrine because you have the test configured to cover shim/buttons.c, but the EC image built on herobrine still compiles in common/power_button.c",
+      "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461ec592_40149995",
+        "filename": "zephyr/shim/src/buttons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-06T21:07:44Z",
+      "side": 1,
+      "message": "Do you anticipate the volume buttons will also get added to this file? If not, I\u0027d recommend calling this \"power_button.c\"",
+      "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "191dad0c_64a9ce19",
+        "filename": "zephyr/shim/src/buttons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-06T21:07:44Z",
+      "side": 1,
+      "message": "What about the other public APIs from power_button.h?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0dfc88b_b22b4fdf",
+        "filename": "zephyr/shim/src/buttons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-06T21:07:44Z",
+      "side": 1,
+      "message": "Static?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 4
+      },
+      "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e156f6d0_a96ba949",
+        "filename": "zephyr/shim/src/buttons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-06T21:07:44Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 4
+      },
+      "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6961689d_fe73b1bf",
+        "filename": "zephyr/test/qcom_power/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-06T21:07:44Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed.  The devicetree entry will cause `CONFIG_GPIO_KEYS_ZEPHYR\u003dy`, which in turn should disable `CONFIG_PLATFORM_EC_POWER_BUTTON` because a dependency isn\u0027t met.",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 39
+      },
+      "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
