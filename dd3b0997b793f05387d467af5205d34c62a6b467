@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39bc85b_8fcab5ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-01-06T10:42:12Z",
+      "side": 1,
+      "message": "Dear Nojiri:\n     I synchronized to the latest code, then cherry-pick CL(4136966) and CL(4125706), and run twister in the zombie project environment, There is no error, as follows:\n\n$ git log --oneline\n898fe4ae9c (HEAD -\u003e main) chgstv2: optimization battery protection for low voltage\ne67d7b5aec SBS: Make battery_get_params clear flags selectively\nde7513c852 (m/main, cros/main) zephyr: Kconfig: Add CONFIG_FLASH for npcx\nad5b935629 zephyr/test/drivers: add it8xxx2_hw_sha256 test\n950c21ed4d baseboard: enable powered of PP1 and PP2 for port 1\n\n\n$ ./twister -T zephyr/test/drivers/\nZEPHYR_BASE unset, using \"/mnt/host/source/src/third_party/zephyr/main\"\nWest is not installed. Using ZEPHYR_BASE /mnt/host/source/src/third_party/zephyr/main as project\u0027s top directory\nInstall tabulate python module with pip to use --device-testing option.\nINFO    - Using Ninja..\nwarning: tag \u0027upstream/v2.7.99\u0027 is externally known as \u0027v2.7.99\u0027\nINFO    - Zephyr version: v2.7.99-17365-g7ca73a8b832b\nINFO    - Using \u0027llvm\u0027 toolchain.\nINFO    - Building initial testsuite list...\nINFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out/testplan.json\nINFO    - JOBS: 4\nINFO    - Adding tasks to the queue...\nINFO    - Added initial list of jobs to queue\nINFO    - Total complete:   56/  56  100%  skipped:    0, failed:    0\nINFO    - 56 test scenarios (56 test instances) selected, 0 configurations skipped (0 by static filter, 0 at runtime).\nINFO    - 56 of 56 test configurations passed (100.00%), 0 failed, 0 skipped with 0 warnings in 1227.69 seconds\nINFO    - In total 3185 test cases were executed, 0 skipped on 1 out of total 529 platforms (0.19%)\nINFO    - 56 test configurations executed on platforms, 0 test configurations were only built.\nINFO    - Saving reports...\nINFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out/twister.json\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister.xml...\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister_report.xml...\nINFO    - Run completed\nTEST EXECUTION SUCCESSFUL",
+      "parentUuid": "dfcc6bd9_7c4d2213",
+      "revId": "dd3b0997b793f05387d467af5205d34c62a6b467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f948d39_bd27d1ad",
