@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e077beb9_fe7cff1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-06T02:51:44Z",
+      "side": 1,
+      "message": "Have you run zephyr tests (e.g. twister)?",
+      "revId": "dd3b0997b793f05387d467af5205d34c62a6b467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f948d39_bd27d1ad",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-06T02:51:44Z",
+      "side": 1,
+      "message": "Can you combine these if sentences?",
+      "range": {
+        "startLine": 1836,
+        "startChar": 0,
+        "endLine": 1846,
+        "endChar": 3
+      },
+      "revId": "dd3b0997b793f05387d467af5205d34c62a6b467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2bc18f4_b30b9a79",
+        "filename": "include/battery.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-06T02:51:44Z",
+      "side": 1,
+      "message": "Please add a comment to describe this.",
+      "range": {
+        "startLine": 169,
+        "startChar": 8,
+        "endLine": 169,
+        "endChar": 29
+      },
+      "revId": "dd3b0997b793f05387d467af5205d34c62a6b467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
