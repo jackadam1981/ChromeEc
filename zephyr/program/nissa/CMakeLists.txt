@@ -38,6 +38,7 @@ if(DEFINED CONFIG_BOARD_CRAASK)
 			"craask/src/form_factor.c"
 			"craask/src/keyboard.c"
 			"craask/src/kb_backlight.c"
+			"craask/src/storage.c"
 			"craask/src/led.c"
 	)
 	project(craask)

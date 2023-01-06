@@ -127,6 +127,9 @@
 			gpios = <&gpio6 3 GPIO_OUTPUT>;
 			no-auto-init;
 		};
+		gpio_ec_emmc_det: ec_emmc_det {
+			gpios = <&gpio8 6 GPIO_INPUT>;
+		};
 		ec-i2c-sensor-scl {
 			gpios = <&gpio9 0 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
@@ -280,7 +283,6 @@
 			<&gpio6 6 0>,
 			<&gpio7 3 0>,
 			<&gpio8 3 0>,
-			<&gpio8 6 0>,
 			<&gpiob 1 0>,
 			<&gpiob 7 0>,
 			<&gpioc 7 0>,

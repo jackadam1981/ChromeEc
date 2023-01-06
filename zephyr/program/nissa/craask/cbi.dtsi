@@ -119,6 +119,32 @@
 				value = <1>;
 			};
 		};
+
+
+		/*
+		 * FW_CONFIG field to setting storage type.
+		 */
+		storge {
+			enum-name = "FW_STORAGE";
+			start = <30>;
+			size = <2>;
+
+			storge-emmc {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_STORAGE_EMMC";
+				value = <0>;
+			};
+			storge-nvme {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_STORAGE_NVME";
+				value = <1>;
+			};
+			storge-ufs {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_STORAGE_UFS";
+				value = <2>;
+			};
+		};
 	};
 	/* Craask-specific ssfc fields. */
 	cbi-ssfc {
