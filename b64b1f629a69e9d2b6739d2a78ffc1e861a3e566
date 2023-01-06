@@ -39,6 +39,29 @@
       "message": "Adding cros-ec-reviewers since this change will affect other boards.",
       "revId": "b64b1f629a69e9d2b6739d2a78ffc1e861a3e566",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8f66cca_d7fdbba7",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-06T22:13:09Z",
+      "side": 1,
+      "message": "The first set of tests passed without issue, subsequent tests had some failures. I suspected it would be timing dependent but it appears that the UART wasn\u0027t disabled in other reboot methods so there are cases where the EC is still trying to print while rebooting, which results in the same issue.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 7
+      },
+      "revId": "b64b1f629a69e9d2b6739d2a78ffc1e861a3e566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
