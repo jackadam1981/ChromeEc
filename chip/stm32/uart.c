@@ -62,6 +62,28 @@ static int dma_rx_len; /* Size of receive DMA circular buffer */
 static int init_done; /* Initialization done? */
 static int should_stop; /* Last TX control action */
 
+/* TODO: Remove this comment!
+ * There are a few underlying issues here.
+ *   1. Bytes are not guaranteed to have been written between flush and reboot
+ *   2. On a reboot request from test_utils, it is possible for other processes
+ * to continue writing after the request
+ *
+ * To handle the first case the goal is to utilize STM32_USART_SR_TC to esnure
+ * the messages have been written to the bus, not just to the TD register. For
+ * the second case the goal is to stop writing to the UART buffer and disable
+ * the UART peripheral prior to reboot.
+ *
+ * NOTE: This is a quote from the reference manual regarding TC:
+ *  After writing the last data into the USART_DR register, it is mandatory to
+ *  wait for TC=1 before disabling the USART or causing the microcontroller to
+ *  enter the low power mode (see Figure 248: TC/TXE behavior when
+ *  transmitting).
+ *
+ * TODO: Exception test is failing intermittently. It seems like this existed
+ * before the change to run_device_tests.py and this change.
+ */
+int uart_stop_writing; /* TODO find a better solution */
+
 int uart_init_done(void)
 {
 	return init_done;
@@ -91,8 +113,20 @@ void uart_tx_stop(void)
 
 void uart_tx_flush(void)
 {
+	__maybe_unused uint32_t uart_sr;
+
 	while (!(STM32_USART_SR(UARTN_BASE) & STM32_USART_SR_TXE))
 		;
+
+	/* STM32_USART_SR_TC is cleared by reading STM32_USART_SR then writing
+	 * to STM32_USART_TDR Reading SR here serves the first half, and any
+	 * future attempts to write other data satisfies the second half. If no
+	 * writes come after this than TC shouldn't be cleared.
+	 *
+	 * Technically the above STM32_USART_SR read should be enough. Need to
+	 * consider.
+	 */
+	uart_sr = STM32_USART_SR(UARTN_BASE);
 }
 
 int uart_tx_ready(void)
@@ -148,6 +182,9 @@ int uart_rx_dma_head(void)
 
 void uart_write_char(char c)
 {
+	if (uart_stop_writing)
+		return;
+
 	/* Wait for space */
 	while (!uart_tx_ready())
 		;
@@ -174,6 +211,13 @@ static void uart_interrupt(void)
 			enable_sleep(SLEEP_MASK_UART);
 		}
 #if defined(CHIP_FAMILY_STM32F4)
+		/* TODO: This isn't the correct way to clear SR_TC. According to
+		 * the Reference Manual, it "is cleared by a software sequence
+		 * (a read from the USART_SR register followed by a write to the
+		 * USART_DR register). The TC bit can also be cleared by writing
+		 * a '0' to it. This clearing sequence is recommended only for
+		 * multibuffer communication.
+		 */
 		STM32_USART_SR(UARTN_BASE) &= ~STM32_USART_SR_TC;
 #else
 		/*
@@ -182,6 +226,9 @@ static void uart_interrupt(void)
 		 * datasheet listing the bits as "keep at reset value", (which
 		 * we assume is due to copying from the description of
 		 * reserved bits in read/write registers.)
+		 */
+		/* TODO: I believe that clearing STM32_USART_ISR should be done
+		 * using STM32_USART_CR_TCIE
 		 */
 		STM32_USART_ICR(UARTN_BASE) = STM32_USART_SR_TC;
 #endif
@@ -405,6 +452,36 @@ void uart_init(void)
 #endif
 
 	init_done = 1;
+}
+
+void uart_deinit(int disable_uart)
+{
+	/* send whatever data is left in the queue */
+	uart_flush_output();
+	uart_stop_writing = 1;
+
+	/* On some targets (observed on STM32F4) some data may not be printed
+	 * properly prior to reset because uart_flush ensures the last bytes are
+	 * loaded into the TX data register but not that the data has been
+	 * transmitted. If we're doing a hard reset we can disable the UART
+	 * prior rebooting but we cannot do that on other reset types. so the
+	 * sleep is a workaround to resolve tests that are failing as a result.
+	 */
+
+	if (!(STM32_USART_SR(UARTN_BASE) & STM32_USART_SR_TXE)) {
+		/* Wait for TC to be set to confirm completion
+		 * TODO: should probably time out after some duration!
+		 */
+		while (!(STM32_USART_SR(UARTN_BASE) & STM32_USART_SR_TC))
+			;
+	}
+	msleep(1);
+
+	/* TODO there are probably other required settings */
+	if (disable_uart)
+		STM32_USART_CR1(UARTN_BASE) &=
+			~(STM32_USART_CR1_UE | STM32_USART_CR1_TE |
+			  STM32_USART_CR1_RE);
 }
 
 #ifdef CONFIG_FORCE_CONSOLE_RESUME
