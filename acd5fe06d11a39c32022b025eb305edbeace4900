@@ -231,6 +231,30 @@
       },
       "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f9bedf_01008f86",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-01-06T02:02:06Z",
+      "side": 1,
+      "message": "Dear Nojiri:\n     Thank you for your fix.  \n     After cherr-pick cl:4125706 and cl:4136966 , the test result is the flag will not be cleared , run-sbs_charging_v2 pass ;\n$ git log --oneline\n360925882c (HEAD -\u003e main) chgstv2: optimization battery protection for low voltage\nc00800773b SBS: Make battery_get_params clear flags selectively\ned8fee77c9 (m/main, cros/main) test: Disable always_memset test with ASAN\n\n$ make run-sbs_charging_v2\n  BUILD   host-sbs_charging_v2\n  VERSION ec_version.h\n  CC      RO/common/charge_state_v2.o\n  CC      RO/common/version.o\n  EXE     sbs_charging_v2.exe\n  TEST    run-sbs_charging_v2\nNo flash storage found. Initializing to 0xff.\nNo RAM data found. Initializing to 0x00.\nStack trace of task 1 (HOOKS):\nCan\u0027t print backtrace: 1 \u003c 3\nsbs_charging_v2 passed! (0.105 seconds)\n     \n     Please help to continue review this CL(412706)\n     Thanks",
+      "parentUuid": "13369c32_679e128b",
+      "range": {
+        "startLine": 1561,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 8
+      },
+      "revId": "acd5fe06d11a39c32022b025eb305edbeace4900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
