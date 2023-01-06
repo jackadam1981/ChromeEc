@@ -16,6 +16,52 @@
       "message": "Please see the log file in issuetracker if need",
       "revId": "533fc1dff72d7921d4659b09d98e49ab13d02157",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "218de008_7affe02b",
+        "filename": "zephyr/test/herobrine/src/board_chipset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2023-01-06T17:23:46Z",
+      "side": 1,
+      "message": "Should these timeout requirements take battery disconnect into account?",
+      "range": {
+        "startLine": 40,
+        "startChar": 29,
+        "endLine": 40,
+        "endChar": 34
+      },
+      "revId": "533fc1dff72d7921d4659b09d98e49ab13d02157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b61a8a05_4a33e519",
+        "filename": "zephyr/test/herobrine/src/board_chipset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2023-01-06T17:23:46Z",
+      "side": 1,
+      "message": "This is half of the total boot time budget!",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 35
+      },
+      "revId": "533fc1dff72d7921d4659b09d98e49ab13d02157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
