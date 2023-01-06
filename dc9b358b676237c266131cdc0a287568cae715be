@@ -34,6 +34,24 @@
       "message": "Is this supposed to be en_pp4200_s5?",
       "revId": "dc9b358b676237c266131cdc0a287568cae715be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d871f97_7ee2ec64",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 13
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-01-06T05:03:41Z",
+      "side": 1,
+      "message": "does it changed again?\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4042170/comment/fc8d7c1e_fc4531aa/",
+      "parentUuid": "5f93efa6_bf03c89f",
+      "revId": "dc9b358b676237c266131cdc0a287568cae715be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
