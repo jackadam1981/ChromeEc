@@ -9,6 +9,8 @@
 #include "task.h"
 #include "tcpm/tcpm.h"
 #include "usb_pd.h"
+#include "uart.h"
+#include "console.h"
 
 void chip_pd_irq(enum usbpd_port port)
 {
@@ -81,6 +83,8 @@ void chip_pd_irq(enum usbpd_port port)
 			/* clear type-c device plug in/out detect interrupt */
 			IT83XX_USBPD_TCDCR(port) |=
 				USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+			ccprintf("=== tcpc[%d] plug in/out. reg=0x%x ===\n",
+					port, IT83XX_USBPD_TCDCR(port));
 			task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC);
 		}
 	}

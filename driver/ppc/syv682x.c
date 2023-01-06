@@ -581,9 +581,11 @@ static void syv682x_handle_interrupt(int port)
 
 	/* Both interrupt registers are clear on read */
 	read_reg(port, SYV682X_CONTROL_4_REG, &control4);
+	ccprintf("!!! ISR of ppc[p%d]: reg control4 = 0x%x\n", port, control4);
 	syv682x_handle_control_4_interrupt(port, control4);
 
 	read_reg(port, SYV682X_STATUS_REG, &status);
+	ccprintf("!!! ISR of ppc[p%d]: reg status = 0x%x\n", port, status);
 	syv682x_handle_status_interrupt(port, status);
 
 	/*

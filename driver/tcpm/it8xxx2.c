@@ -419,6 +419,16 @@ static int it8xxx2_set_cc(enum usbpd_port port, int pull)
 {
 	int enable_cc = 1;
 
+	enum tcpc_cc_voltage_status cc2 = it8xxx2_get_cc(port, USBPD_CC_PIN_2);
+	enum tcpc_cc_voltage_status cc1 = it8xxx2_get_cc(port, USBPD_CC_PIN_1);
+	if (((cc2 != TYPEC_CC_VOLT_OPEN) && (cc2 != TYPEC_CC_VOLT_RA)) ||
+		((cc1 != TYPEC_CC_VOLT_OPEN) && (cc1 != TYPEC_CC_VOLT_RA))) {
+		ccprintf("=== %s: p:%d pull:%d cc1:%x cc2:%x ===\n",
+				__func__, port, pull, cc1, cc2);
+		ccprintf("=== %x %x %x ===\n", IT83XX_USBPD_BMCDR0(port),
+			IT83XX_USBPD_MHSR1(port), IT83XX_USBPD_CCCSR(port));
+	}
+
 	switch (pull) {
 	case TYPEC_CC_RD:
 		it8xxx2_set_power_role(port, PD_ROLE_SINK);
@@ -762,6 +772,8 @@ static void it8xxx2_init(enum usbpd_port port, int role)
 	uint8_t cc_config = (port == USBPD_PORT_C ?
 				     IT83XX_USBPD_CC_PIN_CONFIG2 :
 				     IT83XX_USBPD_CC_PIN_CONFIG);
+
+	ccprintf("=== %s: p:%d role:%d ===\n", __func__, port, role);
 
 	if (IS_ENABLED(CONFIG_IT83XX_TUNE_CC_PHY)) {
 		/* Tune cc Tx pre-driving time */
