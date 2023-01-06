@@ -93,6 +93,15 @@
 		ec-rw {
 			offset = <0x60000>;
 			size = <0x60000>;
+			rw-fw {
+				/* Fix the size of the RW image so that the FWID
+				 * is always located in the last 32 bytes of
+				 * the image.  This ensures the RW entries in
+				 * the binary never move and that FMAP stored in
+				 * RO is always correct.
+				 */
+				 size = <(0x60000 - 32)>;
+			};
 		};
 		pad-byte = <0xff>;
 		pad-after = <0x40000>;
