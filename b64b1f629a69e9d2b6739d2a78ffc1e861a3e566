@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b96ae40_8e3dc3ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-01-06T21:50:30Z",
+      "side": 1,
+      "message": "Even though it doesn\u0027t completely fix this issue, from your description it sounds like it is a more correct implementation than the current register. Can you create an additional CL with that change?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "b64b1f629a69e9d2b6739d2a78ffc1e861a3e566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0b9f01a_de24e8d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-01-06T21:50:30Z",
+      "side": 1,
+      "message": "Adding cros-ec-reviewers since this change will affect other boards.",
+      "revId": "b64b1f629a69e9d2b6739d2a78ffc1e861a3e566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
