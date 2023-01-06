@@ -33,6 +33,24 @@
       "message": "nit: Please add /* Finished deep charge before timeout. */",
       "revId": "45b9670cf17e6e984d0f4d59fffdb8ef63338ca5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ecaa8cb_8582712b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-06T19:26:31Z",
+      "side": 1,
+      "message": "nit:\n\n    /*\n     * Finished deep charge before timeout. Clear the flag so that we can \n     * do deep charge again (when it\u0027s deeply discharged again).\n     */",
+      "parentUuid": "39d0c34a_28d0293c",
+      "revId": "45b9670cf17e6e984d0f4d59fffdb8ef63338ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
