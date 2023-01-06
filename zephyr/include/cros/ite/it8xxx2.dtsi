@@ -93,6 +93,9 @@
 		ec-rw {
 			offset = <0x60000>;
 			size = <0x60000>;
+			rw-fwid {
+				offset = <(0x60000 - 32)>;
+			};
 		};
 		pad-byte = <0xff>;
 		pad-after = <0x40000>;

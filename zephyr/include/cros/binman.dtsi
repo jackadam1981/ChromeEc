@@ -41,6 +41,7 @@
 			};
 			rw-fwid {
 				type = "text";
+				offset = <(0x40000 - 32)>;
 				size = <32>;
 				text-label = "version";
 			};
