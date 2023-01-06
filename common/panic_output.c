@@ -115,6 +115,13 @@ void panic_printf(const char *format, ...)
 void panic_reboot(void)
 {
 	panic_puts("\n\nRebooting...\n");
+	/* TODO(264674276): On some targets (observed on STM32F4) the string
+	 * above may not complete printing before the reset below because
+	 * uart_flush ensures the last bytes are loaded into the TX data
+	 * register but not that the data has been transmitted. The sleep is a
+	 * workaround to resolve tests that are failing as a result.
+	 */
+	msleep(1);
 	system_reset(0);
 }
 
