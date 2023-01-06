@@ -134,6 +134,30 @@
       },
       "revId": "b2024fe8bdcae86481bd4275eab98868a42f8b37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c302750_ad486f21",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-01-06T05:26:01Z",
+      "side": 1,
+      "message": "I changed the test code to make sure twister passes.",
+      "parentUuid": "d301f8c5_897520a9",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 30
+      },
+      "revId": "b2024fe8bdcae86481bd4275eab98868a42f8b37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
