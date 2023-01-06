@@ -52,6 +52,24 @@
       "parentUuid": "5f93efa6_bf03c89f",
       "revId": "dc9b358b676237c266131cdc0a287568cae715be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3838c0af_0a32f720",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 13
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2023-01-06T05:11:08Z",
+      "side": 1,
+      "message": "oh, sorry. _S4 is my typo, should be _S5",
+      "parentUuid": "2d871f97_7ee2ec64",
+      "revId": "dc9b358b676237c266131cdc0a287568cae715be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
