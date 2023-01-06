@@ -373,9 +373,14 @@ void system_pre_init(void)
 #endif
 }
 
+/* TODO Move this to a useful header file and make common? */
+extern void uart_deinit(int);
+
 void system_reset(int flags)
 {
 	uint32_t save_flags = 0;
+
+	uart_deinit(flags & SYSTEM_RESET_HARD);
 
 	/* Disable interrupts to avoid task swaps during reboot */
 	interrupt_disable();
