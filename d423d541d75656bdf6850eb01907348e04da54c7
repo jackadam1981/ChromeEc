@@ -16,6 +16,24 @@
       "message": "Does the cq call cr50 firmware_builder.py?",
       "revId": "d423d541d75656bdf6850eb01907348e04da54c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb08ca5_61120442",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-01-07T00:32:54Z",
+      "side": 1,
+      "message": "Yep. It\u0027s at the end of the log now:\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8792674078480874529/+/u/build_firmware/stdout",
+      "parentUuid": "ffd18fe3_6f63d384",
+      "revId": "d423d541d75656bdf6850eb01907348e04da54c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
