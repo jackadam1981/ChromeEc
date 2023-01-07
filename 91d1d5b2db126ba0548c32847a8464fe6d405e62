@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a39d1f_1dbffaac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-07T10:15:36Z",
+      "side": 1,
+      "message": "ybe",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99334328_509d5a63",
+        "filename": "zephyr/program/nissa/craask/cbi.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-07T10:15:36Z",
+      "side": 1,
+      "message": "May declare this to be the default.",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ce062af_5b8227b1",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-07T10:15:36Z",
+      "side": 1,
+      "message": "The FW_CONFIG field size is 3 bits, so I suggest making this a uint8_t, and just\nassigning the value of the field to this static.",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ddc2136_73fb5e54",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-07T10:15:36Z",
+      "side": 1,
+      "message": "So I note only the first temperature sensor is used. Perhaps the array size should be set to 1.",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b3bd2f_3c047e59",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-07T10:15:36Z",
+      "side": 1,
+      "message": "It may be better for this to be a DT_NODELABEL rather than rely on the order of the node.",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbca2881_4ee6598b",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-07T10:15:36Z",
+      "side": 1,
+      "message": "So locking the size of each of the tables to the same value seems unnecessary.\nThis could be assigned to a variable in fan_table_to_rpm as part of the\ncheck for the thermal_solution.",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b690463_48012419",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-07T10:15:36Z",
+      "side": 1,
+      "message": "here could also assign fan_step_size to the appropriate table size.",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3726948_de9221af",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-07T10:15:36Z",
+      "side": 1,
+      "message": "Here I would just have:\n\n  thermal_solution \u003d val;",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
