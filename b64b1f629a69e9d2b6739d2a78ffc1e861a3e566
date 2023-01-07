@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "79815ba7_85f560a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-07T01:20:53Z",
+      "side": 1,
+      "message": "I\u0027ll submit a patch for https://crrev.com/c/4126660 to handle decode errors more gracefully on Monday.",
+      "parentUuid": "ba9b8815_a1d65f6d",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "b64b1f629a69e9d2b6739d2a78ffc1e861a3e566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d0b9f01a_de24e8d2",
