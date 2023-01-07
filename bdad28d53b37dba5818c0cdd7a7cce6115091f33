@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbad4719_a35996ef",
+        "filename": "driver/retimer/anx7483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-07T01:21:50Z",
+      "side": 1,
+      "message": "turn -\u003e turns\n\nPlease add some more comments about why this is being selected even though it is not recommended.",
+      "revId": "bdad28d53b37dba5818c0cdd7a7cce6115091f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2934b3ad_af796248",
+        "filename": "driver/retimer/anx7483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-07T01:21:50Z",
+      "side": 1,
+      "message": "Since this is a multi-bit field, you need to clear the field before setting:\n\nval \u0026\u003d ~ANX7483_LFPS_TIMER_MASK;\nval |\u003d ANX7483_LFPS_TIMER_SLUMBER_TIME_H \u003c\u003c ANX7483_LFPS_TIMER_SHIFT;",
+      "revId": "bdad28d53b37dba5818c0cdd7a7cce6115091f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb67d37_5f4ac371",
+        "filename": "driver/retimer/anx7483.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-07T01:21:50Z",
+      "side": 1,
+      "message": "Add:\n\n#define ANX7483_LFPS_TIMER_SHIFT 0\n#define ANX7483_LFPS_TIMER_MASK  GENMASK(3,0)",
+      "revId": "bdad28d53b37dba5818c0cdd7a7cce6115091f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
