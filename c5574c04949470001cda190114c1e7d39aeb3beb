@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6172be81_d5534171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-07T00:24:51Z",
+      "side": 1,
+      "message": "EC sync works, but this needs an update for ITE chips.\n\nHowever, the RW_FWID doesn\u0027t appear to get programmed as part of software sync.  The RW_FWID area at the end of flash shows 0xFF.",
+      "revId": "c5574c04949470001cda190114c1e7d39aeb3beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
