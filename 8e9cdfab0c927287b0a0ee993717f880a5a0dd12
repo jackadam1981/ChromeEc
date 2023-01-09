@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f4dcc3e_0a4a4100",
+        "filename": "board/kuldax/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-09T22:35:17Z",
+      "side": 1,
+      "message": ".flags \u003d PCHG_CFG_FW_UPDATE_SYNC,",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "8e9cdfab0c927287b0a0ee993717f880a5a0dd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "767cf4f3_fc2d8054",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-09T22:35:17Z",
+      "side": 1,
+      "message": "Can you call pchg_queue_event(ctx, PCHG_EVENT_UPDATE_WRITTEN), instead?",
+      "range": {
+        "startLine": 591,
+        "startChar": 0,
+        "endLine": 592,
+        "endChar": 59
+      },
+      "revId": "8e9cdfab0c927287b0a0ee993717f880a5a0dd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4e60fa0_e7be9309",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-09T22:35:17Z",
+      "side": 1,
+      "message": "Can we do:\n\n    if (ctx-\u003ecfg-\u003efwupd_no_irq)\n        pchg_queue_host_event(ctx, EC_MKBP_PCHG_UPDATE_CLOSED);\n    else\n        ctx-\u003estate \u003d PCHG_STATE_DOWNLOAD;\n\nAnd to the stuff below in PCHG_EVENT_UPDATE_CLOSED?\n\nActually, we may be able to unconditionally do:\n\n    pchg_queue_host_event(ctx, EC_MKBP_PCHG_UPDATE_CLOSED);\n\nbecause ctn730 returns IN_PROGRESS for update_close.",
+      "range": {
+        "startLine": 602,
+        "startChar": 3,
+        "endLine": 602,
+        "endChar": 36
+      },
+      "revId": "8e9cdfab0c927287b0a0ee993717f880a5a0dd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c800c95a_8b6db8e9",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-09T22:35:17Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 804,
+        "startChar": 3,
+        "endLine": 804,
+        "endChar": 17
+      },
+      "revId": "8e9cdfab0c927287b0a0ee993717f880a5a0dd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be3e3544_6f488022",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-09T22:35:17Z",
+      "side": 1,
+      "message": "Let\u0027s add a \u0027flags\u0027 field and\n\n    enum pchg_cfg {\n        PCHG_CFG_FW_UPDATE_SYNC \u003d BIT(0),\n    };\n\nfwupd causes a name conflict.",
+      "range": {
+        "startLine": 242,
+        "startChar": 9,
+        "endLine": 242,
+        "endChar": 21
+      },
+      "revId": "8e9cdfab0c927287b0a0ee993717f880a5a0dd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74cad17c_429dbf5a",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-09T22:35:17Z",
+      "side": 1,
+      "message": "You can get port by PCHG_CTX_TO_PORT(ctx).",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 10
+      },
+      "revId": "8e9cdfab0c927287b0a0ee993717f880a5a0dd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
