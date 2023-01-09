@@ -33,6 +33,24 @@
       "message": "Does `#!/usr/bin/env -S python3 -u` work inside builder?\n\n(ref: https://stackoverflow.com/a/21433197)",
       "revId": "91ea220a1dd80193bcdff9c9bc1655b5f31c2033",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba70477_a2804898",
+        "filename": "firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-01-09T20:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c5f547d_4c73500a",
+      "revId": "91ea220a1dd80193bcdff9c9bc1655b5f31c2033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
