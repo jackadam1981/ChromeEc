@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9621e9dd_9b30320f",
+        "filename": "zephyr/test/drivers/default/src/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-01-09T21:16:44Z",
+      "side": 1,
+      "message": "Based on some quick searches, it appears the only place we call the `battfake` console command is within the `smart_battery` suite, so I think it\u0027d be better to make this an after function within just that suite since this might add a lot of runtime.",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 61
+      },
+      "revId": "2aa9a7888fd84bd09785b2fa5e863cd89e35ae83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
