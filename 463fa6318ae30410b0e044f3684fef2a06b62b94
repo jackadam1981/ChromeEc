@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa62197e_04b35c97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-09T21:51:22Z",
+      "side": 1,
+      "message": "Note that this solution appears to resolve the issue on most tests but still fails intermittently with the utf-8 decode failure on the following tests:\n        flash_physical\n        flash_write_protect\n        system_is_locked_wp_on\n        \nI suspect this has something to do with jumping between RO and RW but I\u0027m not entirely certain. There may be other tests that will fail intermittently as well but after 10-15 test iterations I have not observed any others.",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "463fa6318ae30410b0e044f3684fef2a06b62b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
