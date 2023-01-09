@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4a18ddd0_17d7675c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-09T21:16:57Z",
+      "side": 1,
+      "message": "I am not worried about builds not passing, but the compare_build.sh script relies on compiling locally, which I could not do for the FPMCU boards.\n\nupdate_chroot solve the problem, and I have been able to verify that the nocturne_fp image does not change as a result of this CL.  (The hatch_fp image does change, because I am moving spi_devices[] from RAM into flash ROM.)",
+      "parentUuid": "d71ee1ed_3a681416",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "5f995149113b6b18609704606c8571d5f9306163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fac6c460_e3134cd2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 9
