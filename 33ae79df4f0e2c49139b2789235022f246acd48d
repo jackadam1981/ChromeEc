@@ -124,6 +124,24 @@
       "parentUuid": "76b1e663_a5287dff",
       "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aa1540e_46d03866",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-09T20:19:38Z",
+      "side": 1,
+      "message": "I\u0027d second Abe\u0027s suggestion to create a new test for this change.  It could be a test named for the case of a FORCE_SOURCE port and live in a separate binary from the main tests.  To start with, it could just test this specific case, but in the future it could test any other forced source specific changes.",
+      "parentUuid": "7ccd2b30_010ec5d1",
+      "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
