@@ -33,6 +33,24 @@
       "message": "Did you do anything to fix the build failure?",
       "revId": "89d0bcf62893b0c068d957bda2681cd774448f23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "982a5f76_01d759e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-01-09T22:00:56Z",
+      "side": 1,
+      "message": "Yeah. When I fixed the formatting because a few lines were over 80 characters, I dropped a `(` at the start of line 3578. That\u0027s fixed now.",
+      "parentUuid": "2b6c4756_eef551d3",
+      "revId": "89d0bcf62893b0c068d957bda2681cd774448f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
