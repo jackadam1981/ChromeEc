@@ -22,6 +22,75 @@
       },
       "revId": "463fa6318ae30410b0e044f3684fef2a06b62b94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30fc43c_1fef722b",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-09T22:07:57Z",
+      "side": 1,
+      "message": "I should have removed changes to this function. I don\u0027t believe they are doing anything useful as the only place we really need the TC flag is at reboot / sleep.",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 15
+      },
+      "revId": "463fa6318ae30410b0e044f3684fef2a06b62b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a2b7c2_d86c9524",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-09T22:07:57Z",
+      "side": 1,
+      "message": "I don\u0027t believe it is related to this issue but I think we are clearing the TC flag incorrectly here for STM32F4 given that we are not using multibuffer mode. I\u0027m not sure what the implications are though.\n\nI\u0027ll separate this comment into a separate CL but I included in here for the time-being.",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 9
+      },
+      "revId": "463fa6318ae30410b0e044f3684fef2a06b62b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc59a8bb_bfa62560",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-09T22:07:57Z",
+      "side": 1,
+      "message": "Similarly, I don\u0027t think this is related to the issue at hand but it can be confusing so I added a TODO.\n\nI can resolve as a separate commit.",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 9
+      },
+      "revId": "463fa6318ae30410b0e044f3684fef2a06b62b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
