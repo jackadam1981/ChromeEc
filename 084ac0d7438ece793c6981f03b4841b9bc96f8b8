@@ -39,6 +39,30 @@
       },
       "revId": "084ac0d7438ece793c6981f03b4841b9bc96f8b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb3def57_9b636447",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-09T22:40:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "366d3045_cd149c16",
+      "range": {
+        "startLine": 217,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 54
+      },
+      "revId": "084ac0d7438ece793c6981f03b4841b9bc96f8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

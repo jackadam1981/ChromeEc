@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb79ea5b_1569a921",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-09T22:40:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afc98adc_d3077dec",
+      "range": {
+        "startLine": 265,
+        "startChar": 33,
+        "endLine": 265,
+        "endChar": 54
+      },
+      "revId": "60f4f7f4c1f3df308307667bbffb4d8d22976401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8b593b7_03bda036",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "250e6baf_b0e3d5e7",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-09T22:40:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8b593b7_03bda036",
+      "range": {
+        "startLine": 424,
+        "startChar": 7,
+        "endLine": 424,
+        "endChar": 9
+      },
+      "revId": "60f4f7f4c1f3df308307667bbffb4d8d22976401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef1fa706_7dfa94c4",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-12-16T20:22:13Z",
       "side": 1,
       "message": "Do we need timeout here? It\u0027s probably not fair to brick the entire board because of this loop.",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 3
+      },
+      "revId": "60f4f7f4c1f3df308307667bbffb4d8d22976401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50469d9f_e19a9e26",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-09T22:40:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef1fa706_7dfa94c4",
       "range": {
         "startLine": 483,
         "startChar": 0,
