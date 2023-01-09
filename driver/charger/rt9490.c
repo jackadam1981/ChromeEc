@@ -31,10 +31,10 @@
 
 /* Charger parameters */
 #define CHARGER_NAME "rt9490"
-#define CHARGE_V_MAX 18800
+#define CHARGE_V_MAX 12600
 #define CHARGE_V_MIN 3000
 #define CHARGE_V_STEP 10
-#define CHARGE_I_MAX 5000
+#define CHARGE_I_MAX 3500
 
 /* b/238980988
  * RT9490 can't measure the 50mA charge current precisely due to insufficient
@@ -164,8 +164,11 @@ static enum ec_error_list rt9490_set_current(int chgnum, int current)
 	if (current == 0)
 		current = info->current_min;
 
-	if (!IN_RANGE(current, info->current_min, info->current_max))
+	if (!IN_RANGE(current, info->current_min, info->current_max)) {
+		CPRINTS("=== %s: %d %d %d", __func__,
+			current, info->current_min, info->current_max);
 		return EC_ERROR_PARAM2;
+	}
 	reg_ichg = current / info->current_step;
 
 	return rt9490_write16(chgnum, RT9490_REG_ICHG_CTRL, reg_ichg);
@@ -193,8 +196,11 @@ static enum ec_error_list rt9490_set_voltage(int chgnum, int voltage)
 	if (voltage == 0)
 		voltage = info->voltage_min;
 
-	if (!IN_RANGE(voltage, info->voltage_min, info->voltage_max))
+	if (!IN_RANGE(voltage, info->voltage_min, info->voltage_max)) {
+		CPRINTS("=== %s: %d %d %d", __func__,
+			voltage, info->voltage_min, info->voltage_max);
 		return EC_ERROR_PARAM2;
+	}
 	reg_cv = voltage / info->voltage_step;
 
 	return rt9490_write16(chgnum, RT9490_REG_VCHG_CTRL, reg_cv);
@@ -481,6 +487,11 @@ static enum ec_error_list rt9490_set_input_current_limit(int chgnum,
 							 int input_current)
 {
 	uint16_t reg_val;
+
+	if (!IN_RANGE(input_current, RT9490_AICR_MIN, RT9490_AICR_MAX)) {
+		CPRINTS("=== %s: %d", __func__, input_current);
+		return EC_ERROR_PARAM2;
+	}
 
 	input_current = CLAMP(input_current, RT9490_AICR_MIN, RT9490_AICR_MAX);
 	reg_val = input_current / RT9490_AICR_STEP;
