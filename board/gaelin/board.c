@@ -303,6 +303,25 @@ static void adp_state_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, adp_state_init, HOOK_PRIO_INIT_CHARGE_MANAGER + 1);
 
+static void board_chipset_resume(void)
+{
+	gpio_set_level(GPIO_EC_12VSC_EN, 1);
+	gpio_set_level(GPIO_EC_AMP_SD, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+static void board_chipset_suspend(void)
+{
+	if (!gpio_get_level(GPIO_HDMI0_CABLE_DET)) {
+		gpio_set_level(GPIO_EC_12VSC_EN, 1);
+		gpio_set_level(GPIO_EC_AMP_SD, 1);
+	} else {
+		gpio_set_level(GPIO_EC_AMP_SD, 0);
+		gpio_set_level(GPIO_EC_12VSC_EN, 0);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
 static void board_init(void)
 {
 	gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_ODL);
