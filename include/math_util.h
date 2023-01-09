@@ -160,7 +160,7 @@ typedef fp_t mat33_fp_t[3][3];
 typedef int intv3_t[3];
 
 /* For vectors, define which coordinates are in which location. */
-enum { X, Y, Z, W };
+enum { X, Y, Z, U, W };
 /*
  * Return absolute value of x.  Note that as a macro expansion, this may have
  * side effects if x includes function calls, which is why inline functions
