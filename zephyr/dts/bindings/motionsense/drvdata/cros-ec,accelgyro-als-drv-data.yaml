@@ -25,6 +25,10 @@ child-binding:
       type: int
       required: true
       description: offset
+    atime:
+      type: int
+      required: true
+      description: offset
 
 #
 # examples:
