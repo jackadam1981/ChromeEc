@@ -22,6 +22,30 @@
       },
       "revId": "2aa9a7888fd84bd09785b2fa5e863cd89e35ae83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44136103_daba82e9",
+        "filename": "zephyr/test/drivers/default/src/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-09T21:30:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9621e9dd_9b30320f",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 61
+      },
+      "revId": "2aa9a7888fd84bd09785b2fa5e863cd89e35ae83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
