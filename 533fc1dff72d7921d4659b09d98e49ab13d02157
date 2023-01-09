@@ -62,6 +62,30 @@
       },
       "revId": "533fc1dff72d7921d4659b09d98e49ab13d02157",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8e832e_34f540a8",
+        "filename": "zephyr/test/herobrine/src/board_chipset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-01-09T11:16:14Z",
+      "side": 1,
+      "message": "It is the same delay time as test_low_battery_delayed_boot. since the battery can not provide enough power to turn on 5V in both cases.",
+      "parentUuid": "b61a8a05_4a33e519",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 35
+      },
+      "revId": "533fc1dff72d7921d4659b09d98e49ab13d02157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
