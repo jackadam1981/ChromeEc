@@ -16,6 +16,23 @@
       "message": "Confirmed gsctool got built this time: https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8792416709054447617/+/u/build_firmware/stdout",
       "revId": "89d0bcf62893b0c068d957bda2681cd774448f23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b6c4756_eef551d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-01-09T21:00:42Z",
+      "side": 1,
+      "message": "Did you do anything to fix the build failure?",
+      "revId": "89d0bcf62893b0c068d957bda2681cd774448f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
