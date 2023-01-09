@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "055eb27b_721aaf97",
+        "filename": "zephyr/shim/src/buttons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-09T15:18:00Z",
+      "side": 1,
+      "message": "I do anticipate volume buttons to be added at some point.  Mainly because all gpio_keys under `gpio_keys0` share the same `buttons_cb_handler` callback.  I could split off the power_button specific code into its own file and have a directory structure like\n```\nzephyr/shim/buttons/buttons.c\nzephyr/shim/buttons/power_button.c\nzephyr/shim/buttons/recovery_button.c\nzephyr/shim/buttons/volume_buttons.c\n```\n\nWhen new button support is needed we add to `buttons_cb_handler`. Is there any expectation to handle a lot of buttons?  If so I can update the buttons.c code to dynamically register handlers per `zephyr_code`.\n\nThoughts?",
+      "parentUuid": "461ec592_40149995",
+      "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "191dad0c_64a9ce19",
         "filename": "zephyr/shim/src/buttons.c",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2023-01-06T21:07:44Z",
       "side": 1,
       "message": "What about the other public APIs from power_button.h?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f9cbae5_b00d7be2",
+        "filename": "zephyr/shim/src/buttons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-09T15:18:00Z",
+      "side": 1,
+      "message": "Looking into those.",
+      "parentUuid": "191dad0c_64a9ce19",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7e74663_c25d1ff7",
+        "filename": "zephyr/shim/src/buttons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-09T15:18:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0dfc88b_b22b4fdf",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 4
+      },
+      "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e156f6d0_a96ba949",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e71aeeb_3933f9e0",
+        "filename": "zephyr/shim/src/buttons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-09T15:18:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e156f6d0_a96ba949",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 4
+      },
+      "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6961689d_fe73b1bf",
@@ -117,6 +207,30 @@
       "writtenOn": "2023-01-06T21:07:44Z",
       "side": 1,
       "message": "This shouldn\u0027t be needed.  The devicetree entry will cause `CONFIG_GPIO_KEYS_ZEPHYR\u003dy`, which in turn should disable `CONFIG_PLATFORM_EC_POWER_BUTTON` because a dependency isn\u0027t met.",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 39
+      },
+      "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3fa9e49_fd0376fc",
+        "filename": "zephyr/test/qcom_power/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-09T15:18:00Z",
+      "side": 1,
+      "message": "I wanted to eliminate this warning in the build.log. While it still builds and runs fine without this.  Do we care about preventing these warnings?\n\n```\nwarning: PLATFORM_EC_POWER_BUTTON (defined at /mnt/host/source/src/platform/ec/zephyr/Kconfig:535)\nwas assigned the value \u0027y\u0027 but got the value \u0027n\u0027. Check these unsatisfied dependencies:\n(!GPIO_KEYS_ZEPHYR) (\u003dn).\n```",
+      "parentUuid": "6961689d_fe73b1bf",
       "range": {
         "startLine": 8,
         "startChar": 8,
