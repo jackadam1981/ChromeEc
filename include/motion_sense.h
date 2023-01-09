@@ -167,6 +167,7 @@ struct motion_sensor_t {
 	uint8_t port;
 	/* i2c address or SPI port */
 	uint16_t i2c_spi_addr_flags;
+	uint8_t deltaP;
 
 	/*
 	 * Various flags, see MOTIONSENSE_FLAG_*
