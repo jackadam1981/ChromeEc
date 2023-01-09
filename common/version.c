@@ -32,6 +32,20 @@ const struct image_data __keep current_image_data FIXED_SECTION("ver") = {
 BUILD_ASSERT(sizeof(CROS_EC_VERSION32) <= 32);
 BUILD_ASSERT(sizeof(CROS_FWID32) <= 32);
 
+const int __keep current_image_data2 FIXED_SECTION("ver") = 1234;
+
+/**
+ * binman_symname() - Internal function to get a binman symbol name
+ *
+ * @entry_name: Name of the entry to look for (e.g. 'u_boot_spl')
+ * @_prop_name: Property value to get from that entry (e.g. 'pos')
+ * @returns name of the symbol for that entry and property
+ */
+#define binman_symname(_entry_name, _prop_name) \
+	_binman_ ## _entry_name ## _prop_ ## _prop_name
+
+const uint32_t __keep FIXED_SECTION("ver") binman_symname(ec_rw, offset);
+
 #ifdef CONFIG_CROS_FWID_VERSION
 const char build_info[] __keep __attribute__((section(".rodata.buildinfo"))) =
 	VERSION " " CROS_FWID32 " " DATE " " BUILDER;

@@ -8,7 +8,7 @@
 	#size-cells = <1>;
 	binman {
 		filename = "ec.bin";
-		pad-byte = <0x1d>;
+		pad-byte = <0xff>;
 		wp-ro {
 			compatible = "cros-ec,flash-layout";
 			type = "section";
@@ -36,13 +36,17 @@
 			offset = <0x40000>;
 			size = <0x40000>;
 			rw-fw {
-				type = "blob";
-				filename = "zephyr_rw.bin";
-			};
-			rw-fwid {
-				type = "text";
-				size = <32>;
-				text-label = "version";
+				type = "section";
+				zephyr {
+					type = "blob";
+					filename = "zephyr_rw.bin";
+				};
+				rw-fwid {
+					offset = <(0x40000 - 32)>;
+					type = "text";
+					size = <32>;
+					text-label = "version";
+				};
 			};
 		};
 	};
