@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34e04b4_dd9216cb",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-10T23:23:20Z",
+      "side": 1,
+      "message": "I think you should have separate counts for each table size and use a\nvariable in the function below to hold it e.g\n\nint table_size;\n\nif (thermal_solution \u003d\u003d FW_THERMAL_6W) {\n\tfan_step_table \u003d fan_step_table_6w;\n\ttable_size \u003d ARRAY_SIZE(fan_step_table_6w);\n} else {\n\tfan_step_table \u003d fan_step_table_15w;\n\ttable_size \u003d ARRAY_SIZE(fan_step_table_15w);\n}\n\nThen use table_size instead of NUM_FAN_LEVELS.\nOtherwise there is an unchecked requirement that the 2 tables must be the same\nsize, which may not be the case.",
+      "revId": "943b8d43bf464f57a52b8e4233694407c9fbfd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
