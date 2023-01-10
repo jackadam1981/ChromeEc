@@ -106,6 +106,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2c567a0_ba01c1ea",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1638,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-01-10T11:10:11Z",
+      "side": 1,
+      "message": "is it needed to start the servo here, kindly check",
+      "revId": "3ec99c0e2ffba70f2c3d5f6ac7d28fb729e6cf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "422e9ccd_8f51f697",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1644,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-01-10T11:10:11Z",
+      "side": 1,
+      "message": "check if this is right, mchp is in \u0027ec/util/\u0027",
+      "revId": "3ec99c0e2ffba70f2c3d5f6ac7d28fb729e6cf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "debc3b5d_9891ef3c",
         "filename": "util/mchp/mchp_download.sh",
         "patchSetId": 4
