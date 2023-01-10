@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6332b1_e42fe1b1",
+        "filename": "zephyr/test/skyrim/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2023-01-10T11:51:02Z",
+      "side": 1,
+      "message": "Are all of the above configs mutually exclusive? If so, please use `choice`.",
+      "revId": "db500b93ff0545cb1d6ba25b8bb6ab0e01a43cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
