@@ -3,7 +3,9 @@
  * found in the LICENSE file.
  */
 
+#ifndef CONFIG_ZEPHYR
 #include "byteorder.h"
+#endif
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -811,9 +813,11 @@ void touchpad_task(void *u)
 	elan_tp_init();
 	touchpad_power_control();
 
+	CPRINTS("\x1b[1;31m%s\x1b[m", __func__);
 	while (1) {
 		event = task_wait_event(-1);
 
+		CPRINTS("\x1b[1;31mwake\x1b[m");
 		if (event & TASK_EVENT_WAKE)
 			elan_tp_read_report_retry();
 

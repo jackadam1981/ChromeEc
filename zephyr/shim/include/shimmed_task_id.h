@@ -26,6 +26,7 @@ typedef uint8_t task_id_t;
 enum {
 	EC_TASK_PRIO_LOWEST = 0,
 	EC_SYSWORKQ_PRIO = EC_TASK_PRIO_LOWEST,
+	EC_TASK_TOUCHPAD_PRIO,
 	EC_TASK_CHG_RAMP_PRIO,
 	EC_TASK_USB_CHG_PRIO,
 	EC_TASK_DPS_PRIO,
@@ -158,6 +159,11 @@ enum {
 		    (CROS_EC_TASK(PD_INT_C3, pd_interrupt_handler_task, 3, \
 				  CONFIG_TASK_PD_INT_STACK_SIZE,           \
 				  EC_TASK_PD_INT_C3_PRIO)),                \
+		    ())                                                    \
+	COND_CODE_1(CONFIG_PLATFORM_EC_TOUCHPAD,                           \
+		    (CROS_EC_TASK(TOUCHPAD, touchpad_task, 0,              \
+				  CONFIG_TASK_PD_INT_STACK_SIZE,           \
+				  EC_TASK_TOUCHPAD_PRIO)),                 \
 		    ())
 #elif defined(CONFIG_HAS_TEST_TASKS)
 #include "shimmed_test_tasks.h"
