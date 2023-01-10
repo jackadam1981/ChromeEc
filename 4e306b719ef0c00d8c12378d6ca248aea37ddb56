@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db39cba9_b3a132d6",
+        "filename": "zephyr/program/skyrim/winterhold/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-01-10T18:58:05Z",
+      "side": 1,
+      "message": "The variance threshold to enter on body is 8x time higher than default. Is it really necessary?",
+      "revId": "4e306b719ef0c00d8c12378d6ca248aea37ddb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5e22f83_0cd9d4af",
+        "filename": "zephyr/program/skyrim/winterhold/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-01-10T18:58:05Z",
+      "side": 1,
+      "message": "It means we need to be at least 85% confident to enter |on body| state. Can we choose a lower value?",
+      "revId": "4e306b719ef0c00d8c12378d6ca248aea37ddb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
