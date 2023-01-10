@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50f23672_b6378b58",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T18:43:35Z",
+      "side": 1,
+      "message": "This isn\u0027t populated.",
+      "range": {
+        "startLine": 755,
+        "startChar": 42,
+        "endLine": 755,
+        "endChar": 47
+      },
+      "revId": "5f8af10a245a40f58e807c9a2bbd92c8be8e8694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c69e5b64_750a3fe8",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T18:43:35Z",
+      "side": 1,
+      "message": "Please create a cps8200_drv. Common functions (e.g. cps8100_reset) can be renamed (e.g cps8x00_reset).",
+      "range": {
+        "startLine": 871,
+        "startChar": 22,
+        "endLine": 871,
+        "endChar": 33
+      },
+      "revId": "5f8af10a245a40f58e807c9a2bbd92c8be8e8694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
