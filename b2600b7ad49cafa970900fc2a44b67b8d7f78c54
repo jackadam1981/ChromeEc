@@ -51,6 +51,24 @@
       "parentUuid": "e8c7b8ba_0d7ff242",
       "revId": "b2600b7ad49cafa970900fc2a44b67b8d7f78c54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d97c24f_19373ab3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-01-10T11:14:37Z",
+      "side": 1,
+      "message": "Using Flash_ec_script_Release02.zip, flashing works.\ncommand used:\nsudo bash flash_ec --board\u003dmtlrvpp_mchp --image ec.bin",
+      "parentUuid": "7848f0a6_25b50331",
+      "revId": "b2600b7ad49cafa970900fc2a44b67b8d7f78c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
