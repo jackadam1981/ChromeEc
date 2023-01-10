@@ -94,6 +94,7 @@ void board_chipset_startup(void)
 
 	for (i = 0; i < USBA_PORT_COUNT; i++)
 		usba_retimer_init(i);
+	gpio_set_level(GPIO_OS_STS, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -302,6 +303,12 @@ static void adp_state_init(void)
 	adp_connect_deferred();
 }
 DECLARE_HOOK(HOOK_INIT, adp_state_init, HOOK_PRIO_INIT_CHARGE_MANAGER + 1);
+
+static void board_chipset_shutdown(void)
+{
+	gpio_set_level(GPIO_OS_STS, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
 static void board_init(void)
 {
