@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b11a966d_8523479f",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-10T21:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc2825d_b745d763",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 57
+      },
+      "revId": "69076ef31b937b13aae0686fa431ee3d5f125798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34285082_60b451ee",
@@ -368,6 +392,30 @@
       "side": 1,
       "message": "Can you add that as a comment? (i.e. We deliberately ignore the timeout error in init.)",
       "parentUuid": "819e1759_6942842e",
+      "range": {
+        "startLine": 505,
+        "startChar": 3,
+        "endLine": 505,
+        "endChar": 8
+      },
+      "revId": "69076ef31b937b13aae0686fa431ee3d5f125798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da0045c5_7cb6e6ca",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-10T21:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3876faaf_01fb5fc4",
       "range": {
         "startLine": 505,
         "startChar": 3,

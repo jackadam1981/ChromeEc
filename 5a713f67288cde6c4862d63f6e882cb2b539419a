@@ -22,6 +22,30 @@
       },
       "revId": "5a713f67288cde6c4862d63f6e882cb2b539419a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69477814_fd5356c5",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-10T21:51:29Z",
+      "side": 1,
+      "message": "I do not want to burden every single EC board with an additional pointer and character string for each SPI bus.\n\nI could add a `CONFIG_SPI_DEVICE_LIST_WITH_NAME` and `#ifdef` around the new field of `spi_device_t`.  It would certainly make my hyperdebug code nicer, in that we would not have two separate arrays, that must be kept the same length.  But I thought that it was a little too special case to warrant such additional complexity in the common code.",
+      "parentUuid": "93ba34a1_01a25799",
+      "range": {
+        "startLine": 147,
+        "startChar": 12,
+        "endLine": 147,
+        "endChar": 28
+      },
+      "revId": "5a713f67288cde6c4862d63f6e882cb2b539419a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
