@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da8f4e0_fac7e7d1",
+        "filename": "zephyr/program/nissa/craask/cbi.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-10T05:41:54Z",
+      "side": 1,
+      "message": "update it.",
+      "parentUuid": "99334328_509d5a63",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ce062af_5b8227b1",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-01-07T10:15:36Z",
       "side": 1,
       "message": "The FW_CONFIG field size is 3 bits, so I suggest making this a uint8_t, and just\nassigning the value of the field to this static.",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f55248_11580466",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-10T05:41:54Z",
+      "side": 1,
+      "message": "update it.",
+      "parentUuid": "9ce062af_5b8227b1",
       "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e9ee51_a67e17bb",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-10T05:41:54Z",
+      "side": 1,
+      "message": "update it.",
+      "parentUuid": "5ddc2136_73fb5e54",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8b3bd2f_3c047e59",
@@ -82,6 +136,24 @@
       "writtenOn": "2023-01-07T10:15:36Z",
       "side": 1,
       "message": "It may be better for this to be a DT_NODELABEL rather than rely on the order of the node.",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9240d199_f8244948",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-10T05:41:54Z",
+      "side": 1,
+      "message": "update it.",
+      "parentUuid": "e8b3bd2f_3c047e59",
       "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9543888c_38deb0ce",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-10T05:41:54Z",
+      "side": 1,
+      "message": "update it.",
+      "parentUuid": "cbca2881_4ee6598b",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b690463_48012419",
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7bc268c_1f73ea94",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-10T05:41:54Z",
+      "side": 1,
+      "message": "remove it, update it.",
+      "parentUuid": "1b690463_48012419",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3726948_de9221af",
@@ -133,6 +241,24 @@
       "writtenOn": "2023-01-07T10:15:36Z",
       "side": 1,
       "message": "Here I would just have:\n\n  thermal_solution \u003d val;",
+      "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb7d69e_8b41b6c6",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-10T05:41:54Z",
+      "side": 1,
+      "message": "update it.",
+      "parentUuid": "c3726948_de9221af",
       "revId": "91d1d5b2db126ba0548c32847a8464fe6d405e62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
