@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f43850f5_b7f75be5",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-01-10T20:03:16Z",
+      "side": 1,
+      "message": "Can you create a quick CL for this one? It\u0027s nice to try to clean these things up when we find them, even if they aren\u0027t the source of the issue we\u0027re looking at.",
+      "parentUuid": "c2a2b7c2_d86c9524",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 9
+      },
+      "revId": "463fa6318ae30410b0e044f3684fef2a06b62b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc59a8bb_bfa62560",
         "filename": "chip/stm32/uart.c",
         "patchSetId": 2
@@ -83,6 +107,30 @@
       "writtenOn": "2023-01-09T22:07:57Z",
       "side": 1,
       "message": "Similarly, I don\u0027t think this is related to the issue at hand but it can be confusing so I added a TODO.\n\nI can resolve as a separate commit.",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 9
+      },
+      "revId": "463fa6318ae30410b0e044f3684fef2a06b62b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2b997b_d5a45685",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-01-10T20:03:16Z",
+      "side": 1,
+      "message": "Can you create a quick CL for this one? It\u0027s nice to try to clean these things up when we find them, even if they aren\u0027t the source of the issue we\u0027re looking at.",
+      "parentUuid": "dc59a8bb_bfa62560",
       "range": {
         "startLine": 230,
         "startChar": 5,
