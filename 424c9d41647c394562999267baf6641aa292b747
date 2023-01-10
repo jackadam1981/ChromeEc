@@ -16,6 +16,23 @@
       "message": "Please hold submission until CL:4136966 is merged.",
       "revId": "424c9d41647c394562999267baf6641aa292b747",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb6c6fc7_71997ba6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T00:19:03Z",
+      "side": 1,
+      "message": "Can you replace BIT(31) with BATT_FLAG_DEEP_CHARGE?\n\nhttps://source.corp.google.com/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/test/battery_get_params_smart.c;l\u003d170?q\u003dtest%2Fbattery_get_params_smart.c",
+      "revId": "424c9d41647c394562999267baf6641aa292b747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
