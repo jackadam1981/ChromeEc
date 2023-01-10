@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37c314c6_68a4893f",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T23:57:23Z",
+      "side": 1,
+      "message": "Can you put these commands in common/spi_command.c?",
+      "revId": "63ff8a02df6f7e0776bd693a1ac58a0684c961fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "117ff0a4_01212f96",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T23:57:23Z",
+      "side": 1,
+      "message": "spiinfo? spiget sounds like reading some data through the bus.",
+      "range": {
+        "startLine": 708,
+        "startChar": 30,
+        "endLine": 708,
+        "endChar": 36
+      },
+      "revId": "63ff8a02df6f7e0776bd693a1ac58a0684c961fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64b107e_804dd3fd",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T23:57:23Z",
+      "side": 1,
+      "message": "It would be nice if we have one \u0027spi\u0027 command with \u0027speed\u0027, \u0027info\u0027, etc. subcommands.",
+      "range": {
+        "startLine": 761,
+        "startChar": 30,
+        "endLine": 761,
+        "endChar": 41
+      },
+      "revId": "63ff8a02df6f7e0776bd693a1ac58a0684c961fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
