@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e9e240_6db40c2f",
+        "filename": "zephyr/test/skyrim/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-10T21:55:52Z",
+      "side": 1,
+      "message": "Nit: These are conditioned on the same thing. You can just have one `target_sources_ifdef` line.",
+      "revId": "4c92aa28fbfda1b55305a2fdbfa7535623125f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6965f991_1b1b36be",
+        "filename": "zephyr/test/skyrim/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-10T21:55:52Z",
+      "side": 1,
+      "message": "What do these do if they\u0027re only available if `CONFIG_TEST_BOARD_BASEBOARD` is set, but they\u0027re off by default? Why not just get rid of the `CONFIG_TEST_BOARD_BASEBOARD` check and control them entirely from `testcase.yaml`?",
+      "revId": "4c92aa28fbfda1b55305a2fdbfa7535623125f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4812cd94_851855ae",
+        "filename": "zephyr/test/skyrim/src/baseboard/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-10T21:55:52Z",
+      "side": 1,
+      "message": "Since you\u0027re only using these in this file, you can just have one call to `FAKE_VALUE_FUNC`, which will declare and define.",
+      "revId": "4c92aa28fbfda1b55305a2fdbfa7535623125f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b73bb1_2868469e",
+        "filename": "zephyr/test/skyrim/src/baseboard/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-10T21:55:52Z",
+      "side": 1,
+      "message": "You don\u0027t need to set the return values and capture the arguments in your own mocks. FFF will do that for you: https://github.com/meekrosoft/fff",
+      "revId": "4c92aa28fbfda1b55305a2fdbfa7535623125f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a8d15a1_f127aad0",
+        "filename": "zephyr/test/skyrim/src/baseboard/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-10T21:55:52Z",
+      "side": 1,
+      "message": "Formatting",
+      "revId": "4c92aa28fbfda1b55305a2fdbfa7535623125f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
