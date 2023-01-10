@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "577a5189_49678a10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-01-10T04:12:41Z",
+      "side": 1,
+      "message": "Please apply the change below:\n```\ndiff --git a/util/build_with_clang.py b/util/build_with_clang.py\nindex ff138c83d3..cc4397cab1 100755\n--- a/util/build_with_clang.py\n+++ b/util/build_with_clang.py\n@@ -187,6 +187,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG \u003d [\n     \"npcx_evb\",\n     \"npcx_evb_arm\",\n     \"nuwani\",\n+    \"omnigul\",\n     \"osiris\",\n     \"palkia\",\n     \"pazquel\",\n\n```",
+      "revId": "051e7519a27f207890779cd3409c02da954b9ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
