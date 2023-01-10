@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e1f2bf_95d1ebec",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T00:14:43Z",
+      "side": 1,
+      "message": "nit: You don\u0027t need this if you do deadline.val \u003d get_time().val + ...",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 30
+      },
+      "revId": "69076ef31b937b13aae0686fa431ee3d5f125798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9089481_d7c710b8",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T00:14:43Z",
+      "side": 1,
+      "message": "This should be placed right before octospi_wait_for calls?",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 57
+      },
+      "revId": "69076ef31b937b13aae0686fa431ee3d5f125798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34285082_60b451ee",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T00:14:43Z",
+      "side": 1,
+      "message": "Don\u0027t you want to update deadline in each iteration?",
+      "range": {
+        "startLine": 371,
+        "startChar": 51,
+        "endLine": 371,
+        "endChar": 59
+      },
+      "revId": "69076ef31b937b13aae0686fa431ee3d5f125798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a995234_25c8885b",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T00:14:43Z",
+      "side": 1,
+      "message": "Is this correct?",
+      "range": {
+        "startLine": 436,
+        "startChar": 9,
+        "endLine": 436,
+        "endChar": 11
+      },
+      "revId": "69076ef31b937b13aae0686fa431ee3d5f125798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "073a8cd0_f5578e03",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T00:14:43Z",
+      "side": 1,
+      "message": "Do we need msleep?",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 490,
+        "endChar": 53
+      },
+      "revId": "69076ef31b937b13aae0686fa431ee3d5f125798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd0193e_0714218a",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T00:14:43Z",
+      "side": 1,
+      "message": "nit: deadline.val \u003d get_time().val + OCTOSPI_INIT_TIMEOUT_US; Then, you can put timestamp_t now in the while loop scope.",
+      "range": {
+        "startLine": 497,
+        "startChar": 0,
+        "endLine": 498,
+        "endChar": 50
+      },
+      "revId": "69076ef31b937b13aae0686fa431ee3d5f125798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8594b83_d5e8c787",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T00:14:43Z",
+      "side": 1,
+      "message": "Should we call spi_enable(\u0026spi_devices[0], 0) before break?",
+      "range": {
+        "startLine": 505,
+        "startChar": 3,
+        "endLine": 505,
+        "endChar": 8
+      },
+      "revId": "69076ef31b937b13aae0686fa431ee3d5f125798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
