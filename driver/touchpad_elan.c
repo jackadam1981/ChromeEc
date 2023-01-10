@@ -3,7 +3,12 @@
  * found in the LICENSE file.
  */
 
+#ifdef CONFIG_ZEPHYR
+#include <zephyr/devicetree.h>
+#else
 #include "byteorder.h"
+#endif
+
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -93,6 +98,14 @@
 /* The actual FW_SIZE depends on IC. */
 #define FW_SIZE CONFIG_TOUCHPAD_VIRTUAL_SIZE
 #endif
+
+#ifdef CONFIG_ZEPHYR
+#if DT_HAS_COMPAT_STATUS_OKAY(elan_ekth3000)
+#define GPIO_TOUCHPAD_INT GPIO_LID_OPEN
+#define CONFIG_TOUCHPAD_I2C_ADDR_FLAGS 0x15
+#define CONFIG_TOUCHPAD_I2C_PORT 3
+#endif /* DT_HAS_COMPAT_STATUS_OKAY(elan_ekth3000) */
+#endif /* CONFIG_ZEPHYR */
 
 struct {
 	/* Max X/Y position */
@@ -811,9 +824,11 @@ void touchpad_task(void *u)
 	elan_tp_init();
 	touchpad_power_control();
 
+	CPRINTS("\x1b[1;31m%s\x1b[m", __func__);
 	while (1) {
 		event = task_wait_event(-1);
 
+		CPRINTS("\x1b[1;31mwake\x1b[m");
 		if (event & TASK_EVENT_WAKE)
 			elan_tp_read_report_retry();
 
