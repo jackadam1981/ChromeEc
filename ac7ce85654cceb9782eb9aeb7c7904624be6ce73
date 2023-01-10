@@ -34,6 +34,23 @@
       "message": "This fails on gitlab for `zmake build it8xxx2_evb`\n\n```\nIn file included from \u003ccommand-line\u003e:\n/builds/zephyr-ec/ec/ec_dir/build/it8xxx2_evb/modules/ec/zephyr/boards/riscv/it8xxx2/it81302bx.dts:8:10: fatal error: ite/it81xx2.dtsi: No such file or directory\n    8 | #include \u003cite/it81xx2.dtsi\u003e\n      |          ^~~~~~~~~~~~~~~~~~\n```",
       "revId": "ac7ce85654cceb9782eb9aeb7c7904624be6ce73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5008f19c_bc147aaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-01-10T23:29:39Z",
+      "side": 1,
+      "message": "https://gitlab.com/zephyr-ec/ec/-/pipelines/743501856",
+      "revId": "ac7ce85654cceb9782eb9aeb7c7904624be6ce73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
