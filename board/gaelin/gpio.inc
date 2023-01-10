@@ -51,7 +51,7 @@ GPIO(EC_OVERRIDE_SCLR_EN,            PIN(D, 4), GPIO_OUT_HIGH)
                       to enable the backlight by default */
 GPIO(EC_12VSC_EN,                    PIN(D, 2), GPIO_OUT_HIGH)
 
-GPIO(OSD_STS,                        PIN(4, 1), GPIO_INPUT)
+GPIO(OS_STS,                         PIN(4, 1), GPIO_OUT_LOW)
 GPIO(DISP_MODE,                      PIN(A, 0), GPIO_INPUT)
 GPIO(PANEL_PWR_STS,                  PIN(9, 5), GPIO_INPUT)
 GPIO(EN_SCLR_RAILS,                  PIN(0, 4), GPIO_INPUT)
