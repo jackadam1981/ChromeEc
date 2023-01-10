@@ -46,6 +46,30 @@
       },
       "revId": "5a713f67288cde6c4862d63f6e882cb2b539419a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7beb913a_9174161b",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-10T23:54:35Z",
+      "side": 1,
+      "message": "It\u0027s only 4 bytes for most boards. CONFIG_SPI_DEVICE_LIST_WITH_NAME sounds ok to me. i2c_port_t has \u0027name\u0027 field.\n\nI\u0027ll leave it to you.",
+      "parentUuid": "69477814_fd5356c5",
+      "range": {
+        "startLine": 147,
+        "startChar": 12,
+        "endLine": 147,
+        "endChar": 28
+      },
+      "revId": "5a713f67288cde6c4862d63f6e882cb2b539419a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
