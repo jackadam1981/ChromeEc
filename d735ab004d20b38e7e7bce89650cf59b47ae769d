@@ -39,6 +39,30 @@
       },
       "revId": "d735ab004d20b38e7e7bce89650cf59b47ae769d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f4b50e8_489932c5",
+        "filename": "board/mchpevb1/board.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-11T21:40:26Z",
+      "side": 1,
+      "message": "I am not sure what PS.25 format is, but I have decided to move my new field to the end of the struct declaration, in order to avoid having to touch a number of board files.  (I mistakenly believed that this file was the only one that did not explicitly name each field being initialized.)",
+      "parentUuid": "0d426bed_f9ba53d5",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 35
+      },
+      "revId": "d735ab004d20b38e7e7bce89650cf59b47ae769d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
