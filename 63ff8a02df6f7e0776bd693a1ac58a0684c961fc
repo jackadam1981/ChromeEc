@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30be5908_9f98e765",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-11T00:41:52Z",
+      "side": 1,
+      "message": "I am a little hesitant, as the communication protocol between the USB host computer and the HyperDebug board is still being developed.  It is possible that we want to switch away from text console commands, and instead use a binary protocol via USB.  It is certain that some extensions is going to be required to support the various modes of Quad-SPI.  In short, I would like to be able to make modifications to the convention without worrying about other boards possibly having started to rely on what I have added.",
+      "parentUuid": "37c314c6_68a4893f",
+      "revId": "63ff8a02df6f7e0776bd693a1ac58a0684c961fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "117ff0a4_01212f96",
         "filename": "board/hyperdebug/board.c",
         "patchSetId": 40
@@ -31,6 +49,30 @@
       "writtenOn": "2023-01-10T23:57:23Z",
       "side": 1,
       "message": "spiinfo? spiget sounds like reading some data through the bus.",
+      "range": {
+        "startLine": 708,
+        "startChar": 30,
+        "endLine": 708,
+        "endChar": 36
+      },
+      "revId": "63ff8a02df6f7e0776bd693a1ac58a0684c961fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa19256_4bcbafaa",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-11T00:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "117ff0a4_01212f96",
       "range": {
         "startLine": 708,
         "startChar": 30,
@@ -54,6 +96,30 @@
       "writtenOn": "2023-01-10T23:57:23Z",
       "side": 1,
       "message": "It would be nice if we have one \u0027spi\u0027 command with \u0027speed\u0027, \u0027info\u0027, etc. subcommands.",
+      "range": {
+        "startLine": 761,
+        "startChar": 30,
+        "endLine": 761,
+        "endChar": 41
+      },
+      "revId": "63ff8a02df6f7e0776bd693a1ac58a0684c961fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a111c424_4378266f",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-11T00:41:52Z",
+      "side": 1,
+      "message": "I do not see precedent for doing so, e.g. existing gpioget/gpioset, i2cscan/i2cxfer.  Also, I have not found support for such multi-level dispatching in the common console code.  If I implement my own command_spi(), then I guess that there will be no help text for the individual sub-commands.",
+      "parentUuid": "c64b107e_804dd3fd",
       "range": {
         "startLine": 761,
         "startChar": 30,

@@ -22,6 +22,30 @@
       },
       "revId": "d8e2a7a2614455c79cacee3e12b8491c3ea5a7a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66eff9a0_9e63f569",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-11T00:41:52Z",
+      "side": 1,
+      "message": "I have changed the condition to inspect a named bit of usb_flags instead.",
+      "parentUuid": "f982dd99_ffd7fc53",
+      "range": {
+        "startLine": 718,
+        "startChar": 32,
+        "endLine": 718,
+        "endChar": 36
+      },
+      "revId": "d8e2a7a2614455c79cacee3e12b8491c3ea5a7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
