@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19fd852e_5dbacdd7",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-11T01:02:27Z",
+      "side": 1,
+      "message": "\u0027%d bps\u0027?",
+      "range": {
+        "startLine": 674,
+        "startChar": 19,
+        "endLine": 674,
+        "endChar": 21
+      },
+      "revId": "b3434b521083974bef1e4d5661f3f20c2690b2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f877227_0e267808",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-11T01:02:27Z",
+      "side": 1,
+      "message": "you might also want to print a message (ccprintf(\"device not found\\n\")).",
+      "range": {
+        "startLine": 693,
+        "startChar": 10,
+        "endLine": 693,
+        "endChar": 25
+      },
+      "revId": "b3434b521083974bef1e4d5661f3f20c2690b2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
