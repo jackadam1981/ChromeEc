@@ -64,3 +64,8 @@ void ec_bj_power(uint32_t *voltage, uint32_t *current)
 	*voltage = bj_power[bj].voltage;
 	*current = bj_power[bj].current;
 }
+
+enum ec_cfg_fvm_support get_cbi_fw_config_fvm_support(void)
+{
+	return fw_config.fvm_support;
+}
