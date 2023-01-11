@@ -31,7 +31,7 @@
 
 /* Charger parameters */
 #define CHARGER_NAME "rt9490"
-#define CHARGE_V_MAX 18800
+#define CHARGE_V_MAX 12600
 #define CHARGE_V_MIN 3000
 #define CHARGE_V_STEP 10
 #define CHARGE_I_MAX 5000
@@ -151,7 +151,11 @@ static enum ec_error_list rt9490_get_current(int chgnum, int *current)
 
 	val = (val & RT9490_ICHG_MASK) >> RT9490_ICHG_SHIFT;
 	val *= info->current_step;
-	*current = CLAMP(val, info->current_min, info->current_max);
+	//*current = CLAMP(val, info->current_min, info->current_max);
+	*current = val;
+	if (!IN_RANGE(*current, info->current_min, info->current_max)) {
+		CPRINTS("=== %s: %d", __func__, *current);
+	}
 
 	return EC_SUCCESS;
 }
@@ -164,8 +168,11 @@ static enum ec_error_list rt9490_set_current(int chgnum, int current)
 	if (current == 0)
 		current = info->current_min;
 
-	if (!IN_RANGE(current, info->current_min, info->current_max))
+	if (!IN_RANGE(current, info->current_min, info->current_max)) {
+		CPRINTS("=== %s: %d %d %d", __func__,
+			current, info->current_min, info->current_max);
 		return EC_ERROR_PARAM2;
+	}
 	reg_ichg = current / info->current_step;
 
 	return rt9490_write16(chgnum, RT9490_REG_ICHG_CTRL, reg_ichg);
@@ -180,7 +187,11 @@ static enum ec_error_list rt9490_get_voltage(int chgnum, int *voltage)
 
 	val = val & RT9490_CV_MASK;
 	val *= info->voltage_step;
-	*voltage = CLAMP(val, info->voltage_min, info->voltage_max);
+	//*voltage = CLAMP(val, info->voltage_min, info->voltage_max);
+	*voltage = val;
+	if (!IN_RANGE(*voltage, info->voltage_min, info->voltage_max)) {
+		CPRINTS("=== %s: %d", __func__, *voltage);
+	}
 
 	return EC_SUCCESS;
 }
@@ -193,8 +204,11 @@ static enum ec_error_list rt9490_set_voltage(int chgnum, int voltage)
 	if (voltage == 0)
 		voltage = info->voltage_min;
 
-	if (!IN_RANGE(voltage, info->voltage_min, info->voltage_max))
+	if (!IN_RANGE(voltage, info->voltage_min, info->voltage_max)) {
+		CPRINTS("=== %s: %d %d %d", __func__,
+			voltage, info->voltage_min, info->voltage_max);
 		return EC_ERROR_PARAM2;
+	}
 	reg_cv = voltage / info->voltage_step;
 
 	return rt9490_write16(chgnum, RT9490_REG_VCHG_CTRL, reg_cv);
@@ -482,6 +496,10 @@ static enum ec_error_list rt9490_set_input_current_limit(int chgnum,
 {
 	uint16_t reg_val;
 
+	if (!IN_RANGE(input_current, RT9490_AICR_MIN, RT9490_AICR_MAX)) {
+		CPRINTS("=== %s: %d", __func__, input_current);
+	}
+
 	input_current = CLAMP(input_current, RT9490_AICR_MIN, RT9490_AICR_MAX);
 	reg_val = input_current / RT9490_AICR_STEP;
 	return rt9490_write16(chgnum, RT9490_REG_AICR_CTRL, reg_val);
@@ -495,7 +513,12 @@ static enum ec_error_list rt9490_get_input_current_limit(int chgnum,
 	RETURN_ERROR(rt9490_read16(chgnum, RT9490_REG_AICR_CTRL, &val));
 	val = (val & RT9490_AICR_MASK) >> RT9490_AICR_SHIFT;
 	val *= RT9490_AICR_STEP;
-	*input_current = CLAMP(val, RT9490_AICR_MIN, RT9490_AICR_MAX);
+	//*input_current = CLAMP(val, RT9490_AICR_MIN, RT9490_AICR_MAX);
+	*input_current = val;
+	if (!IN_RANGE(*input_current, RT9490_AICR_MIN, RT9490_AICR_MAX)) {
+		CPRINTS("=== %s: %d", __func__, *input_current);
+	}
+
 	return EC_SUCCESS;
 }
 
@@ -750,6 +773,8 @@ void rt9490_deferred_interrupt(void)
 {
 	atomic_t current = atomic_clear(&pending_events);
 
+	CPRINTS("=== %s:", __func__);
+
 	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port) {
 		int ret, irq_flag;
 
@@ -762,6 +787,7 @@ void rt9490_deferred_interrupt(void)
 		/* IRQ flag is read clear, no need to write back */
 		ret = rt9490_read8(CHARGER_SOLO, RT9490_REG_CHG_IRQ_FLAG1,
 				   &irq_flag);
+		CPRINTS("=== %s: %x ret:%d", __func__, irq_flag, ret);
 		if (ret)
 			return;
 
