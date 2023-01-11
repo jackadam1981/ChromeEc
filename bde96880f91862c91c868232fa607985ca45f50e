@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbcfca3f_f7862f57",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-11T08:11:59Z",
+      "side": 1,
+      "message": "update it",
+      "parentUuid": "982003f3_ac8c1156",
+      "revId": "bde96880f91862c91c868232fa607985ca45f50e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18b6f20b_ac067932",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-01-11T06:48:12Z",
       "side": 1,
       "message": "On second thoughts, the danger here is that fan_step_table will not be initialised if there is an error retrieving the CBI value.\nMaybe better storing the retrieved CBI value and then moving this block to the start of fan_table_to_rpm. Then they can use local variables, and avoid the use\nof statics with this pointer and table size.",
+      "range": {
+        "startLine": 128,
+        "startChar": 12,
+        "endLine": 128,
+        "endChar": 13
+      },
+      "revId": "bde96880f91862c91c868232fa607985ca45f50e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ebf184f_dd2a8d61",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-11T08:11:59Z",
+      "side": 1,
+      "message": "update to fan_table_to_rpm, use local variables,",
+      "parentUuid": "18b6f20b_ac067932",
       "range": {
         "startLine": 128,
         "startChar": 12,
