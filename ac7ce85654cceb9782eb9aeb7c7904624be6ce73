@@ -87,6 +87,42 @@
       "parentUuid": "93b399a5_87410c53",
       "revId": "ac7ce85654cceb9782eb9aeb7c7904624be6ce73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86e83291_593a6331",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-01-11T18:05:18Z",
+      "side": 1,
+      "message": "Ah it might just be because cq-depend isn\u0027t honored there. Let\u0027s see if it resolves.",
+      "parentUuid": "93b399a5_87410c53",
+      "revId": "ac7ce85654cceb9782eb9aeb7c7904624be6ce73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e77f338_1aaad5e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-01-11T18:05:18Z",
+      "side": 1,
+      "message": "Yes, that is correct. Since the CLs got submitted at the same time, gitlab processed this in the wrong order. Nothing to see here.",
+      "parentUuid": "f627432e_f4c6c010",
+      "revId": "ac7ce85654cceb9782eb9aeb7c7904624be6ce73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
