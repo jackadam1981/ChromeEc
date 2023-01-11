@@ -267,6 +267,7 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	usbc_overcurrent = is_overcurrented;
 	update_5v_usage();
 }
+
 /*
  * Power monitoring and management.
  *
