@@ -51,6 +51,24 @@
       "message": "https://gitlab.com/zephyr-ec/ec/-/pipelines/743501856",
       "revId": "ac7ce85654cceb9782eb9aeb7c7904624be6ce73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f627432e_f4c6c010",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-11T00:26:19Z",
+      "side": 1,
+      "message": "The CQ depend shows the downstream CL that created ite/it81xx2.dtsi. https://crrev.com/c/4147373\n\nDid gitlab fail to sync the third_party/zephyr/main repo?",
+      "tag": "mailMessageId\u003d\u003cCAPu8gQGBtmwcUBu_O5OSQksU1Uu0tJsheuSeju_dEwqc+m\u003dZxA@mail.gmail.com\u003e",
+      "revId": "ac7ce85654cceb9782eb9aeb7c7904624be6ce73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
