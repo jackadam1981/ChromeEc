@@ -151,6 +151,11 @@ void hook_notify(enum hook_type type)
 		/* Call each handler with the located priority */
 		for (const struct zephyr_shim_hook_info *p = start; p != end;
 		     p++) {
+			if (type == HOOK_CHIPSET_RESUME) {
+			cprints(CC_HOOK,
+				"hook func: 0x%x ",
+				(uint32_t)p->routine);
+			}
 			if (p->priority == prio)
 				p->routine();
 		}

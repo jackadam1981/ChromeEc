@@ -147,6 +147,8 @@ static int syv682x_is_sourcing_vbus(int port)
 
 static int syv682x_discharge_vbus(int port, int enable)
 {
+	CPRINTS("%s", __func__);
+
 #ifndef CONFIG_USBC_PPC_SYV682X_SMART_DISCHARGE
 	int regval;
 	int rv;
@@ -173,6 +175,8 @@ static int syv682x_vbus_source_enable(int port, int enable)
 {
 	int regval;
 	int rv;
+
+	CPRINTS("%s", __func__);
 	/*
 	 * For source mode need to make sure 5V power path is connected
 	 * and source mode is selected.
@@ -436,6 +440,8 @@ static int syv682x_is_vbus_present(int port)
 	int val;
 	int vbus = 0;
 
+	CPRINTS("%s", __func__);
+
 	if (read_reg(port, SYV682X_STATUS_REG, &val))
 		return vbus;
 	/*
@@ -473,6 +479,8 @@ static int syv682x_set_vbus_source_current_limit(int port,
 	int limit;
 	int regval;
 
+	CPRINTS("%s", __func__);
+
 	rv = read_reg(port, SYV682X_CONTROL_1_REG, &regval);
 	if (rv)
 		return rv;
@@ -502,6 +510,7 @@ static int syv682x_set_vbus_source_current_limit(int port,
 #ifdef CONFIG_USBC_PPC_POLARITY
 static int syv682x_set_polarity(int port, int polarity)
 {
+	CPRINTS("%s", __func__);
 	/*
 	 * The SYV682x does not explicitly set CC polarity. However, if VCONN is
 	 * being used then the polarity is required to connect 5V to the correct
@@ -524,6 +533,8 @@ static int syv682x_set_vconn(int port, int enable)
 {
 	int regval;
 	int rv;
+
+	//CPRINTS("%s port:%x en:%d", __func__, port, enable);
 
 	rv = read_reg(port, SYV682X_CONTROL_4_REG, &regval);
 	if (rv)
@@ -619,6 +630,7 @@ static void syv682x_interrupt_delayed(int port, int delay)
 
 void syv682x_interrupt(int port)
 {
+	CPRINTS("%s", __func__);
 	/* FRS timings require <15ms response to an FRS event */
 	syv682x_interrupt_delayed(port, 0);
 }
@@ -631,6 +643,8 @@ void syv682x_interrupt(int port)
 static int syv682x_set_frs_enable(int port, int enable)
 {
 	int regval;
+
+	CPRINTS("%s", __func__);
 
 	read_reg(port, SYV682X_CONTROL_4_REG, &regval);
 	syv682x_handle_control_4_interrupt(port, regval);
@@ -675,6 +689,7 @@ static int syv682x_set_frs_enable(int port, int enable)
 #ifndef CONFIG_USBC_PPC_SYV682X_SMART_DISCHARGE
 static int syv682x_dev_is_connected(int port, enum ppc_device_role dev)
 {
+	CPRINTS("%s", __func__);
 	/*
 	 * (b:160548079) We disable the smart discharge(SDSG), so we should
 	 * turn off the discharge FET if a source is connected.
