@@ -16,6 +16,47 @@
       "message": "Not sure why, but the terrador project seems to be throwing an error despite not being a Zephyr project.\n\nThe low test coverage is due to the excluded nissa and intel programs not being tested. Once they\u0027re refactored I\u0027ll push both as a stacked CL.",
       "revId": "c06b50e6b7c4be46d0a12c8d3a52f44b8793e66e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0be651_bab7d0c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-11T15:48:06Z",
+      "side": 1,
+      "message": "The terrador board exceeded the available flash size.  I think if you rebase this error will go away.",
+      "parentUuid": "51151533_19384c8f",
+      "revId": "c06b50e6b7c4be46d0a12c8d3a52f44b8793e66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31fdc2a2_6d2a4c18",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-11T15:48:06Z",
+      "side": 1,
+      "message": "This path should return.  The is a fatal error.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 52
+      },
+      "revId": "c06b50e6b7c4be46d0a12c8d3a52f44b8793e66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
