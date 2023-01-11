@@ -918,6 +918,7 @@ void keyboard_scan_task(void *u)
 	int wait_time;
 	uint32_t local_disable_scanning = 0;
 
+	return;
 	print_state(debounced_state, "init state");
 	poll_deadline.val = 0;
 

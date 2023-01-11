@@ -1625,6 +1625,7 @@ void charger_task(void *u)
 	int prev_plt_and_desired_mw;
 	int chgnum = 0;
 
+		return;
 	/* Get the battery-specific values */
 	batt_info = battery_get_info();
 

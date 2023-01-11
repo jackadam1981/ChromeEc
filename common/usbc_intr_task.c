@@ -95,6 +95,7 @@ void pd_interrupt_handler_task(void *p)
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
+	return;
 	/*
 	 * If port does not exist, return
 	 */
@@ -150,6 +151,8 @@ void pd_shared_alert_task(void *p)
 	int want_alerts = 0;
 	int port;
 	int port_mask;
+
+	return;
 
 	CPRINTS("%s: port mask 0x%02x", __func__, sources_mask);
 

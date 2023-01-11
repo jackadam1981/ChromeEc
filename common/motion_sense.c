@@ -770,6 +770,8 @@ void motion_sense_task(void *u)
 	struct motion_sensor_t *sensor;
 	uint8_t *lpc_status;
 
+	return;
+
 	if (IS_ENABLED(CONFIG_MOTION_FILL_LPC_SENSE_DATA)) {
 		lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
 		set_present(lpc_status);

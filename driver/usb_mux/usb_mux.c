@@ -186,6 +186,8 @@ __maybe_unused void usb_mux_task(void *u)
 {
 	bool items_waiting = true;
 
+	return;
+
 	while (1) {
 		int port;
 

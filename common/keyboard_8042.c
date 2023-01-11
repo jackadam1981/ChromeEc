@@ -923,6 +923,7 @@ void keyboard_protocol_task(void *u)
 	int wait = -1;
 	int retries = 0;
 
+	return;
 	reset_rate_and_delay();
 
 	while (1) {

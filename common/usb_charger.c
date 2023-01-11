@@ -153,6 +153,8 @@ void usb_charger_task_shared(void *u)
 	uint32_t port_evt;
 	struct bc12_config *bc12_port;
 
+		return;
+		
 	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
 		bc12_port = &bc12_ports[port];
 
@@ -186,16 +188,19 @@ void usb_charger_task_shared(void *u)
 
 void usb_charger_task(void *u)
 {
+
 	int port = TASK_ID_TO_USB_CHG_PORT(task_get_current());
 	uint32_t evt;
 	struct bc12_config *bc12_port;
 
+	return;
 	/*
 	 * The actual number of ports may be less than the maximum
 	 * configured, so only run the task if the port exists.
 	 */
 	if (port >= board_get_usb_pd_port_count())
 		return;
+	
 
 	bc12_port = &bc12_ports[port];
 

@@ -164,6 +164,7 @@ void pd_task(void *u)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 
+	return;
 	/*
 	 * If port does not exist, return
 	 */

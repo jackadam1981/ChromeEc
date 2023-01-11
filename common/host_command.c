@@ -438,6 +438,7 @@ void host_command_task(void *u)
 	t_recess.val = 0;
 	t1.val = 0;
 
+		return;
 	host_command_init();
 
 	while (1) {

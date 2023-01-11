@@ -156,6 +156,7 @@ void chg_ramp_task(void *u)
 			    ramp_st_new = CHG_RAMP_DISCONNECTED;
 	int active_icl_new;
 
+		return;
 	/* Clear last OCP supplier to guarantee we ramp on first connect */
 	for (i = 0; i < board_get_usb_pd_port_count(); i++)
 		oc_info[i][0].sup = CHARGE_SUPPLIER_NONE;

@@ -350,6 +350,7 @@ void power_button_task(void *u)
 	enum button state = BUTTON_RELEASE;
 	uint32_t evt;
 
+	return;
 	/*
 	 * Capture current button level in case it's being pressed when the dock
 	 * is powered on. Note timer_us is initialized for debounce time to
