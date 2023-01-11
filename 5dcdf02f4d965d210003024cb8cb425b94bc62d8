@@ -16,6 +16,23 @@
       "message": "Compal, please mark Verified +1 when the CL is verified to work",
       "revId": "5dcdf02f4d965d210003024cb8cb425b94bc62d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa14bd3_a4bf5274",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2023-01-11T02:13:07Z",
+      "side": 1,
+      "message": "This CL can be fixed resolution algorithm and it is workable on Whiterun unit, but still need to add the configuration to tune the threshold like the CL:4150670 we submitted.\nBecause 14 bits raw data is drifting than 16 bits, if no fine tune threshold, still enter on body mode easier.",
+      "revId": "5dcdf02f4d965d210003024cb8cb425b94bc62d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
