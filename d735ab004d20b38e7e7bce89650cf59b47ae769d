@@ -87,6 +87,30 @@
       },
       "revId": "d735ab004d20b38e7e7bce89650cf59b47ae769d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4f374e_652e25d8",
+        "filename": "board/mchpevb1/board.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-11T21:54:15Z",
+      "side": 1,
+      "message": "I can, but there may be quite a few board.c files that need such a change, I would prefer to not have to touch all those files.",
+      "parentUuid": "f52e2951_551f3b64",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 35
+      },
+      "revId": "d735ab004d20b38e7e7bce89650cf59b47ae769d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
