@@ -70,6 +70,30 @@
       },
       "revId": "5a713f67288cde6c4862d63f6e882cb2b539419a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25717316_b3fb5b5f",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-11T00:19:46Z",
+      "side": 1,
+      "message": "You are right that 4 bytes of flash is less than what I have added to common code in other CLs adding pieces of support for my HyperDebug board.\n\nI was not aware that the I2C struct already had a name field, I think that sets a precedent, I have added an equivalent field unconditionally to the spi_device_t struct.",
+      "parentUuid": "7beb913a_9174161b",
+      "range": {
+        "startLine": 147,
+        "startChar": 12,
+        "endLine": 147,
+        "endChar": 28
+      },
+      "revId": "5a713f67288cde6c4862d63f6e882cb2b539419a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
