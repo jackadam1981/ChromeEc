@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e8bfec_b594d5cf",
+        "filename": "zephyr/test/qcom_power/boards/power_button.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-11T23:55:51Z",
+      "side": 1,
+      "message": "I\u0027m concerned that this is going to cause the merged herobrine test coverage to drop. \n\nThe herorbrine board is still using the legacy common/power_button.c driver, but you have the tests verifying the shim driver.  The ZOSS coverage report doesn\u0027t consider the merged coverage number.\n\nCan you run the herobrine test coverage locally to confirm?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "4d09d5edf6626890877bba604616e9b966eabf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
