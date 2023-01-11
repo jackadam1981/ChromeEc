@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4934f908_159059de",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-11T06:39:06Z",
+      "side": 1,
+      "message": "update it.",
+      "parentUuid": "5d6d3386_9ad77272",
+      "revId": "943b8d43bf464f57a52b8e4233694407c9fbfd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b34e04b4_dd9216cb",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09652c1_a6aa002a",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-11T06:39:06Z",
+      "side": 1,
+      "message": "update it to thermal_init(),the only one times.",
+      "parentUuid": "b34e04b4_dd9216cb",
+      "revId": "943b8d43bf464f57a52b8e4233694407c9fbfd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bbf4804_c9fce619",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-01-10T23:30:18Z",
       "side": 1,
       "message": "I would probably turn this around and check for the FW_THERMAL_15W instead,\nso that the \u0027else\u0027 becomes the \u0027default\u0027 as the DTS is configured.\nThat way, if the field is unset (0), the default is always chosen.",
+      "revId": "943b8d43bf464f57a52b8e4233694407c9fbfd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3350bcd_c285eca9",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-11T06:39:06Z",
+      "side": 1,
+      "message": "update it to thermal_init(),the only one times.",
+      "parentUuid": "8bbf4804_c9fce619",
       "revId": "943b8d43bf464f57a52b8e4233694407c9fbfd63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
