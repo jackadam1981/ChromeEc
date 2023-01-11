@@ -229,7 +229,12 @@ int raa489000_init(int port)
 	 * Set Vbus OCP UV here, PD tasks will set target current
 	 */
 	rv = tcpc_write16(port, RAA489000_VBUS_OCP_UV_THRESHOLD,
+#ifdef CONFIG_RAA489000_OCP_THRESHOLD_VALUE
+			  RAA489000_OCP_THRESHOLD_VALUE_4V);
+#else
 			  RAA489000_OCP_THRESHOLD_VALUE);
+#endif
+
 	if (rv)
 		CPRINTS("c%d: failed to set OCP threshold", port);
 
