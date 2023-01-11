@@ -239,6 +239,30 @@
       },
       "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c156e184_2ec177ac",
+        "filename": "zephyr/test/qcom_power/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-11T20:29:34Z",
+      "side": 1,
+      "message": "Ack - we definitely want to avoid warnings.",
+      "parentUuid": "d3fa9e49_fd0376fc",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 39
+      },
+      "revId": "dedab85213244de4b6a23383ba5296a1c658e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
