@@ -11,11 +11,13 @@
 #include "driver/accel_lis2dw12_public.h"
 #include "driver/accelgyro_bmi323.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/tcpm/raa489000.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "motion_sense.h"
 #include "motionsense_sensors.h"
 #include "tablet_mode.h"
+#include "tcpm/tcpci.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/logging/log.h>
@@ -75,3 +77,16 @@ static void sensor_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, sensor_init, HOOK_PRIO_POST_I2C);
+
+static void raa489000_vbus_ocp_uv_threshold(void)
+{
+	int rv;
+	/*
+	 * Set Vbus OCP UV here, PD tasks will set target current
+	 */
+	rv = tcpc_write16(0, RAA489000_VBUS_OCP_UV_THRESHOLD, 0xA0); /* 4V */
+	if (rv)
+		LOG_INF("c%d: failed to set OCP threshold", 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, raa489000_vbus_ocp_uv_threshold,
+	     HOOK_PRIO_LAST);
