@@ -32,6 +32,16 @@ if(DEFINED CONFIG_BOARD_NEREID)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "nereid/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "nereid/src/charger.c")
 endif()
+if(DEFINED CONFIG_BOARD_NEREID_CX)
+	project(nereid_cx)
+	zephyr_library_sources(
+			"src/led.c"
+			"nereid/src/keyboard.c"
+			"nereid/src/hdmi.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "nereid/src/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "nereid/src/charger.c")
+endif()
 if(DEFINED CONFIG_BOARD_CRAASK)
 	zephyr_library_sources(
 			"craask/src/fan.c"
