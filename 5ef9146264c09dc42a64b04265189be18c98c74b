@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c9b4599_cc01540b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-11T22:43:39Z",
+      "side": 1,
+      "message": "You also need to update the Nuvoton SHI driver:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/include/cros/nuvoton/npcx.dtsi;l\u003d92\n\nAdd `/delete-node/ shi@4000f000` and reference the same bug.",
+      "revId": "5ef9146264c09dc42a64b04265189be18c98c74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ffd7b54_87491666",
+        "filename": "zephyr/include/cros/ite/it8xxx2.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-11T22:43:39Z",
+      "side": 1,
+      "message": "I opened a bug to track migrating to the upstream driver.  Add a comment here:\nTODO(b/265198571): Migrate Zephyr EC builds to upstream SHI drivers.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "5ef9146264c09dc42a64b04265189be18c98c74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
