@@ -5,20 +5,25 @@
 
 #include "accelgyro.h"
 #include "button.h"
+#include "common.h"
 #include "cros_board_info.h"
 #include "cros_cbi.h"
 #include "driver/accel_bma4xx.h"
 #include "driver/accel_lis2dw12_public.h"
 #include "driver/accelgyro_bmi323.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/tcpm/raa489000.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "motion_sense.h"
 #include "motionsense_sensors.h"
 #include "tablet_mode.h"
+#include "tcpm/tcpci.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/logging/log.h>
+
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
@@ -75,3 +80,13 @@ static void sensor_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, sensor_init, HOOK_PRIO_POST_I2C);
+
+static void raa489000_voltage_init(void)
+{
+	int rv;
+
+	rv = tcpc_write16(0, RAA489000_VBUS_OCP_UV_THRESHOLD, 0xB4); /* 4.5V */
+	if (rv)
+		CPRINTS("c%d: failed to set OCP threshold", 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, raa489000_voltage_init, HOOK_PRIO_LAST);
