@@ -63,6 +63,30 @@
       },
       "revId": "d735ab004d20b38e7e7bce89650cf59b47ae769d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f52e2951_551f3b64",
+        "filename": "board/mchpevb1/board.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-11T21:51:44Z",
+      "side": 1,
+      "message": "Can you do:\n\n    { .port \u003d QMSPI0_PORT,\n      .div \u003d 4,\n      .gpio_cs \u003d GPIO_QMSPI_CS0 },",
+      "parentUuid": "5f4b50e8_489932c5",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 35
+      },
+      "revId": "d735ab004d20b38e7e7bce89650cf59b47ae769d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
