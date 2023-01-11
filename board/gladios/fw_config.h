@@ -41,4 +41,6 @@ union gladios_cbi_fw_config get_fw_config(void);
  */
 void ec_bj_power(uint32_t *voltage, uint32_t *current);
 
+enum ec_cfg_fvm_support get_cbi_fw_config_fvm_support(void);
+
 #endif /* __BOARD_GLADIOS_FW_CONFIG_H_ */
