@@ -69,6 +69,24 @@
       "tag": "mailMessageId\u003d\u003cCAPu8gQGBtmwcUBu_O5OSQksU1Uu0tJsheuSeju_dEwqc+m\u003dZxA@mail.gmail.com\u003e",
       "revId": "ac7ce85654cceb9782eb9aeb7c7904624be6ce73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd5f916c_ea4752c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2023-01-11T03:34:15Z",
+      "side": 1,
+      "message": "I do not see this failure by executing \u0027zmake build it8xxx2_evb\u0027 after \u0027repo sync\u0027.",
+      "parentUuid": "93b399a5_87410c53",
+      "revId": "ac7ce85654cceb9782eb9aeb7c7904624be6ce73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
