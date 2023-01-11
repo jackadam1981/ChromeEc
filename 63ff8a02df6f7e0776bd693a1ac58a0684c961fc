@@ -170,6 +170,30 @@
       },
       "revId": "63ff8a02df6f7e0776bd693a1ac58a0684c961fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde9f340_55c3b915",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-11T18:59:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ffdbbee_056e0ea0",
+      "range": {
+        "startLine": 761,
+        "startChar": 30,
+        "endLine": 761,
+        "endChar": 41
+      },
+      "revId": "63ff8a02df6f7e0776bd693a1ac58a0684c961fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
