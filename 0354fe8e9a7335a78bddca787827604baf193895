@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c5c04de_df4058a7",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-11T17:58:14Z",
+      "side": 1,
+      "message": "nit: is WITH_COMMA needed in this macro?",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 46
+      },
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d65f93c_cface4cf",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-11T17:58:14Z",
+      "side": 1,
+      "message": "how about combining these?\nAP_PWRSEQ_EACH_SUB_STATE_ENUM_DEF(node_id, app)",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b3fb057_6be9e3a5",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-11T17:58:14Z",
+      "side": 1,
+      "message": "nit: may be add some comments about this is using zephyr sate machine etc as in commit message",
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d2c6e06_39c4d0cd",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-11T17:58:14Z",
+      "side": 1,
+      "message": "how about ap_pwrseq_task_data",
+      "range": {
+        "startLine": 37,
+        "startChar": 29,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da66b19_94827b98",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-11T17:58:14Z",
+      "side": 1,
+      "message": "ap_pwrseq_post_event()?\n\ni think few of functions in here are undefined",
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a2ff54_739031a2",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-11T17:58:14Z",
+      "side": 1,
+      "message": "looks like not defined, there is a name mismatch  ap_pwrseq_get_instance() in header",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 37
+      },
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e11663d_e8d6c781",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-11T17:58:14Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 190,
+        "startChar": 7,
+        "endLine": 190,
+        "endChar": 24
+      },
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
