@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eefd2cf_fa1417b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-11T06:45:10Z",
+      "side": 1,
+      "message": "One minor nit, otherwise LGTM.",
+      "revId": "bde96880f91862c91c868232fa607985ca45f50e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982003f3_ac8c1156",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-11T06:45:10Z",
+      "side": 1,
+      "message": "You can leave this static as uninitialised. This will default it to 0, and it\nwon\u0027t take up any flash space (which is starting to get tight).",
+      "revId": "bde96880f91862c91c868232fa607985ca45f50e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
