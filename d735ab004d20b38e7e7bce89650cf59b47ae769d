@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d7f293_bb14e891",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-11T21:21:31Z",
+      "side": 1,
+      "message": "Apparently, more than a single board used old-style struct initialization.  I have moved my new field to be last in the struct, to avoid the need up updating multiple board files.",
+      "revId": "d735ab004d20b38e7e7bce89650cf59b47ae769d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
