@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02598c4e_c9df7ec0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-11T02:06:19Z",
+      "side": 1,
+      "message": "`sbs-*` doesn\u0027t even exist on platforms that don\u0027t directly expose a battery I2C interface to the AP. I assume that\u0027s typical for x86, since that information is usually retrieved via ACPI (and we need to avoid using ACPI to handle long strings because the memory map doesn\u0027t have enough space for long strings).",
+      "parentUuid": "5e4cf3cf_9f100b07",
+      "revId": "081d7612b915c2be8ab9f9754c271c0055797b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce6c8284_bf331131",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-01-11T00:37:03Z",
       "side": 1,
       "message": "Can you put these in a separate CL?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 35
+      },
+      "revId": "081d7612b915c2be8ab9f9754c271c0055797b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bba3789_be406feb",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-11T02:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce6c8284_bf331131",
       "range": {
         "startLine": 100,
         "startChar": 0,
