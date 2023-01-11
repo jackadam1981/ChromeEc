@@ -33,6 +33,23 @@
       "message": "This CL can be fixed resolution algorithm and it is workable on Whiterun unit, but still need to add the configuration to tune the threshold like the CL:4150670 we submitted.\nBecause 14 bits raw data is drifting than 16 bits, if no fine tune threshold, still enter on body mode easier.",
       "revId": "5dcdf02f4d965d210003024cb8cb425b94bc62d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ba6b8e_e942f934",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-01-11T17:11:38Z",
+      "side": 1,
+      "message": "For reference the tuning CL is at https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4150670",
+      "revId": "5dcdf02f4d965d210003024cb8cb425b94bc62d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
