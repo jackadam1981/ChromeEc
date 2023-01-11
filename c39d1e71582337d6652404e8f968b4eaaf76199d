@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0f7dca1_fe6f005a",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-11T08:19:21Z",
+      "side": 1,
+      "message": "fan_step_table can be moved to fan_table_rpm and declared as a local variable, not as a static.",
+      "revId": "c39d1e71582337d6652404e8f968b4eaaf76199d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44bdac60_866ee9b8",
+        "filename": "zephyr/program/nissa/craask/src/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-11T08:19:21Z",
+      "side": 1,
+      "message": "This does not need to be a static, since it is initialised each time when this function runs. Same with fan_step_table.",
+      "revId": "c39d1e71582337d6652404e8f968b4eaaf76199d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
