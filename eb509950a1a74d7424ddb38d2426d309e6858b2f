@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08b3b651_28e74d0e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8000,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-11T17:36:50Z",
+      "side": 1,
+      "message": "nit: this is more like \u0027print_battery_static_info\u0027, isn\u0027t it?",
+      "range": {
+        "startLine": 8000,
+        "startChar": 11,
+        "endLine": 8000,
+        "endChar": 37
+      },
+      "revId": "eb509950a1a74d7424ddb38d2426d309e6858b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86976f83_4335b98e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8109,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-11T17:36:50Z",
+      "side": 1,
+      "message": "We probably want to print error message before we return (e.g. error code and version).",
+      "range": {
+        "startLine": 8109,
+        "startChar": 2,
+        "endLine": 8109,
+        "endChar": 12
+      },
+      "revId": "eb509950a1a74d7424ddb38d2426d309e6858b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d917a62_1fed7cc9",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8120,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-11T17:36:50Z",
+      "side": 1,
+      "message": "nit: I would do \n\n    struct ec_response_battery_static_info_v2 static_v2 \u003d {0};\n    static_v2.design_capacity \u003d static_r.design_capacity;\n    ...\n\nThat takes fewer lines and wouldn\u0027t require a code change when a field is added or deleted.",
+      "range": {
+        "startLine": 8116,
+        "startChar": 0,
+        "endLine": 8120,
+        "endChar": 0
+      },
+      "revId": "eb509950a1a74d7424ddb38d2426d309e6858b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
