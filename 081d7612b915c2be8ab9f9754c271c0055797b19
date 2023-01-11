@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e4cf3cf_9f100b07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-11T00:37:03Z",
+      "side": 1,
+      "message": "Lgtm. Just a few questions.\n\nCONFIG_BATTERY_V2 already supports 32-bit strings. You don\u0027t see /sysfs/power_supply/sbs-* contain long strings?",
+      "revId": "081d7612b915c2be8ab9f9754c271c0055797b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6c8284_bf331131",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-11T00:37:03Z",
+      "side": 1,
+      "message": "Can you put these in a separate CL?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 35
+      },
+      "revId": "081d7612b915c2be8ab9f9754c271c0055797b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad526689_c81795f0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 7761,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-11T00:37:03Z",
+      "side": 1,
+      "message": "You don\u0027t want to use the same names as v1? (type, and model)",
+      "range": {
+        "startLine": 7761,
+        "startChar": 6,
+        "endLine": 7761,
+        "endChar": 15
+      },
+      "revId": "081d7612b915c2be8ab9f9754c271c0055797b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
