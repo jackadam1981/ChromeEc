@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ba1404_0a5d4a32",
+        "filename": "zephyr/shim/src/buttons/buttons.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-11T21:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa120c9b_a78bb7af",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "be4c484aa05ff4bd4639c435f854d231c6a69840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77c95a37_f4f692e6",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-01-11T20:29:34Z",
       "side": 1,
       "message": "Since this module fully replaces the common/power_button.c,  add stub implementations for the other functions, `power_button_signal_asserted()`, etc.",
+      "revId": "be4c484aa05ff4bd4639c435f854d231c6a69840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aab878da_32388294",
+        "filename": "zephyr/shim/src/buttons/power_button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-11T21:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77c95a37_f4f692e6",
       "revId": "be4c484aa05ff4bd4639c435f854d231c6a69840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
