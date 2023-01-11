@@ -898,10 +898,12 @@ static int ps8xxx_tcpm_init(int port)
 
 	product_id[port] = board_get_ps8xxx_product_id(port);
 
-	status = ps8xxx_lpm_recovery_delay(port);
-	if (status != EC_SUCCESS) {
-		CPRINTS("C%d: init: LPM recovery failed", port);
-		return status;
+	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8815)) {
+		status = ps8xxx_lpm_recovery_delay(port);
+		if (status != EC_SUCCESS) {
+			CPRINTS("C%d: init: LPM recovery failed", port);
+			return status;
+		}
 	}
 
 	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8815)) {
