@@ -248,14 +248,14 @@ ZTEST_F(usb_malfunction_sink, test_ignore_source_cap_and_pd_disable)
 	struct ec_response_typec_status typec_status;
 
 	/*
-	 * Ignore first SourceCapabilities message and discard others by sending
-	 * different messages. This will lead to PD disable.
+	 * Ignore first SourceCapabilities message and failed others.
+	 * This will lead to PD disable.
 	 */
 	fixture->actions[0].action_mask = TCPCI_FAULTY_EXT_IGNORE_SRC_CAP;
 	fixture->actions[0].count = 1;
 	tcpci_faulty_ext_append_action(&fixture->faulty_snk_ext,
 				       &fixture->actions[0]);
-	fixture->actions[1].action_mask = TCPCI_FAULTY_EXT_DISCARD_SRC_CAP;
+	fixture->actions[1].action_mask = TCPCI_FAULTY_EXT_FAIL_SRC_CAP;
 	fixture->actions[1].count = TCPCI_FAULTY_EXT_INFINITE_ACTION;
 	tcpci_faulty_ext_append_action(&fixture->faulty_snk_ext,
 				       &fixture->actions[1]);
@@ -269,4 +269,52 @@ ZTEST_F(usb_malfunction_sink, test_ignore_source_cap_and_pd_disable)
 	zassert_true(typec_status.pd_enabled);
 	zassert_true(typec_status.dev_connected);
 	zassert_false(typec_status.sop_connected);
+}
+
+ZTEST_F(usb_malfunction_sink, test_discard_source_cap)
+{
+	struct ec_response_usb_pd_power_info info;
+	struct ec_response_typec_status typec_status;
+	/*
+	 * Fail only few times on SourceCapabilities message to prevent entering
+	 * pd_suspend state by TCPM
+	 */
+	fixture->actions[0].action_mask = TCPCI_FAULTY_EXT_DISCARD_SRC_CAP;
+	fixture->actions[0].count = 3;
+	tcpci_faulty_ext_append_action(&fixture->faulty_snk_ext,
+				       &fixture->actions[0]);
+
+	connect_sink_to_port(&fixture->sink, fixture->tcpci_emul,
+			     fixture->charger_emul);
+
+	typec_status = host_cmd_typec_status(0);
+
+	zassert_true(typec_status.pd_enabled);
+	zassert_true(typec_status.dev_connected);
+	zassert_true(typec_status.sop_connected);
+
+	info = host_cmd_power_info(0);
+
+	zassert_equal(info.role, USB_PD_PORT_POWER_SOURCE,
+		      "Expected role to be %d, but got %d",
+		      USB_PD_PORT_POWER_SOURCE, info.role);
+	zassert_equal(info.type, USB_CHG_TYPE_NONE,
+		      "Expected type to be %d, but got %d", USB_CHG_TYPE_NONE,
+		      info.type);
+	zassert_equal(info.meas.voltage_max, 0,
+		      "Expected charge voltage max of 0mV, but got %dmV",
+		      info.meas.voltage_max);
+	zassert_within(
+		info.meas.voltage_now, 5000, 500,
+		"Charging voltage expected to be near 5000mV, but was %dmV",
+		info.meas.voltage_now);
+	zassert_equal(info.meas.current_max, 1500,
+		      "Current max expected to be 1500mV, but was %dmV",
+		      info.meas.current_max);
+	zassert_equal(info.meas.current_lim, 0,
+		      "VBUS max is set to 0mA, but PD is reporting %dmA",
+		      info.meas.current_lim);
+	zassert_equal(info.max_power, 0,
+		      "Charging expected to be at %duW, but PD max is %duW", 0,
+		      info.max_power);
 }
