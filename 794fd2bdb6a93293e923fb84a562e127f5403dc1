@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef9efca_48c90325",
+        "filename": "board/kuldax/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-12T01:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6e449f7_af684e92",
+      "revId": "794fd2bdb6a93293e923fb84a562e127f5403dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bde37be3_90c6d2ab",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-01-10T18:34:12Z",
       "side": 1,
       "message": "nit: Let\u0027s do this check first. Then, we don\u0027t need rv !\u003d EC_SUCCESS at line 587.",
+      "range": {
+        "startLine": 590,
+        "startChar": 2,
+        "endLine": 590,
+        "endChar": 32
+      },
+      "revId": "794fd2bdb6a93293e923fb84a562e127f5403dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5b2b7e_de5e7e48",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-12T01:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bde37be3_90c6d2ab",
       "range": {
         "startLine": 590,
         "startChar": 2,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73b92032_96f9e56c",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-12T01:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2f626e9_7bd01d32",
+      "range": {
+        "startLine": 591,
+        "startChar": 3,
+        "endLine": 591,
+        "endChar": 30
+      },
+      "revId": "794fd2bdb6a93293e923fb84a562e127f5403dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c28cfa46_a6f73500",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a4da3d_1e31bb26",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-12T01:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c28cfa46_a6f73500",
+      "range": {
+        "startLine": 602,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 37
+      },
+      "revId": "794fd2bdb6a93293e923fb84a562e127f5403dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3546bb9_8ca18eb6",
@@ -100,6 +190,30 @@
       "writtenOn": "2023-01-10T18:34:12Z",
       "side": 1,
       "message": "\u0027update_open, update_close, update_write may block and must return after completion.\u0027",
+      "range": {
+        "startLine": 223,
+        "startChar": 43,
+        "endLine": 223,
+        "endChar": 44
+      },
+      "revId": "794fd2bdb6a93293e923fb84a562e127f5403dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feab5700_38e0823d",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-12T01:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3546bb9_8ca18eb6",
       "range": {
         "startLine": 223,
         "startChar": 43,
