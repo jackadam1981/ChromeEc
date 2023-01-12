@@ -186,10 +186,8 @@ ZTEST_F(ap_vdm_control, test_send_vdm_req_bad_port)
 			.partner_type = TYPEC_PARTNER_SOP,
 		},
 	};
-	struct host_cmd_handler_args args =
-		BUILD_HOST_COMMAND_PARAMS(EC_CMD_TYPEC_CONTROL, 0, params);
 
-	zassert_equal(host_command_process(&args), EC_RES_INVALID_PARAM,
+	zassert_equal(ec_cmd_typec_control(NULL, &params), EC_RES_INVALID_PARAM,
 		      "Failed to see port error");
 }
 
@@ -204,10 +202,8 @@ ZTEST_F(ap_vdm_control, test_send_vdm_req_bad_type)
 			.partner_type = TYPEC_PARTNER_SOP_PRIME_PRIME + 1,
 		},
 	};
-	struct host_cmd_handler_args args =
-		BUILD_HOST_COMMAND_PARAMS(EC_CMD_TYPEC_CONTROL, 0, params);
 
-	zassert_equal(host_command_process(&args), EC_RES_INVALID_PARAM,
+	zassert_equal(ec_cmd_typec_control(NULL, &params), EC_RES_INVALID_PARAM,
 		      "Failed to see port error");
 }
 
@@ -222,10 +218,8 @@ ZTEST_F(ap_vdm_control, test_send_vdm_req_bad_count)
 			.partner_type = TYPEC_PARTNER_SOP,
 		},
 	};
-	struct host_cmd_handler_args args =
-		BUILD_HOST_COMMAND_PARAMS(EC_CMD_TYPEC_CONTROL, 0, params);
 
-	zassert_equal(host_command_process(&args), EC_RES_INVALID_PARAM,
+	zassert_equal(ec_cmd_typec_control(NULL, &params), EC_RES_INVALID_PARAM,
 		      "Failed to see port error");
 }
 
@@ -282,10 +276,8 @@ ZTEST_F(ap_vdm_control, test_send_vdm_sop_attention_bad)
 			.partner_type = TYPEC_PARTNER_SOP,
 		},
 	};
-	struct host_cmd_handler_args args =
-		BUILD_HOST_COMMAND_PARAMS(EC_CMD_TYPEC_CONTROL, 0, params);
 
-	zassert_equal(host_command_process(&args), EC_RES_INVALID_PARAM,
+	zassert_equal(ec_cmd_typec_control(NULL, &params), EC_RES_INVALID_PARAM,
 		      "Failed to see port error");
 }
 
@@ -302,16 +294,14 @@ ZTEST_F(ap_vdm_control, test_send_vdm_req_in_progress)
 			.partner_type = TYPEC_PARTNER_SOP,
 		},
 	};
-	struct host_cmd_handler_args args =
-		BUILD_HOST_COMMAND_PARAMS(EC_CMD_TYPEC_CONTROL, 0, params);
 
 	/*
 	 * First command should succeed, but given no time to process the second
 	 * should return busy
 	 */
-	zassert_equal(host_command_process(&args), EC_RES_SUCCESS,
+	zassert_equal(ec_cmd_typec_control(NULL, &params), EC_RES_SUCCESS,
 		      "Failed to send successful request");
-	zassert_equal(host_command_process(&args), EC_RES_BUSY,
+	zassert_equal(ec_cmd_typec_control(NULL, &params), EC_RES_BUSY,
 		      "Failed to see busy");
 }
 
@@ -391,8 +381,6 @@ ZTEST_F(ap_vdm_control, test_vdm_request_failed)
 	struct ec_response_typec_status status;
 	struct ec_response_typec_vdm_response vdm_resp;
 	struct ec_params_typec_status params = { .port = TEST_PORT };
-	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
-		EC_CMD_TYPEC_VDM_RESPONSE, 0, vdm_resp, params);
 
 	uint32_t vdm_req_header = VDO(USB_SID_DISPLAYPORT, 1, CMD_ENTER_MODE) |
 				  VDO_SVDM_VERS(VDM_VER20);
@@ -413,27 +401,23 @@ ZTEST_F(ap_vdm_control, test_vdm_request_failed)
 	zassert_true(status.events & PD_STATUS_EVENT_VDM_REQ_FAILED,
 		     "Failed to see notice of no reply");
 
-	zassert_equal(host_command_process(&args), EC_RES_UNAVAILABLE,
-		      "Failed to get unavailable");
+	zassert_equal(ec_cmd_typec_vdm_response(NULL, &params, &vdm_resp),
+		      EC_RES_UNAVAILABLE, "Failed to get unavailable");
 }
 
 ZTEST_F(ap_vdm_control, test_vdm_request_bad_port)
 {
 	struct ec_response_typec_vdm_response vdm_resp;
 	struct ec_params_typec_status params = { .port = 88 };
-	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
-		EC_CMD_TYPEC_VDM_RESPONSE, 0, vdm_resp, params);
 
-	zassert_equal(host_command_process(&args), EC_RES_INVALID_PARAM,
-		      "Failed to see bad port");
+	zassert_equal(ec_cmd_typec_vdm_response(NULL, &params, &vdm_resp),
+		      EC_RES_INVALID_PARAM, "Failed to see bad port");
 }
 
 ZTEST_F(ap_vdm_control, test_vdm_request_in_progress)
 {
 	struct ec_response_typec_vdm_response vdm_resp;
 	struct ec_params_typec_status params = { .port = TEST_PORT };
-	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
-		EC_CMD_TYPEC_VDM_RESPONSE, 0, vdm_resp, params);
 
 	uint32_t vdm_req_header = VDO(USB_SID_PD, 1, CMD_DISCOVER_IDENT) |
 				  VDO_SVDM_VERS(VDM_VER20);
@@ -446,18 +430,16 @@ ZTEST_F(ap_vdm_control, test_vdm_request_in_progress)
 	host_cmd_typec_control_vdm_req(TEST_PORT, req);
 
 	/* Give no processing time and immediately ask for our result */
-	zassert_equal(host_command_process(&args), EC_RES_BUSY,
-		      "Failed to see busy");
+	zassert_equal(ec_cmd_typec_vdm_response(NULL, &params, &vdm_resp),
+		      EC_RES_BUSY, "Failed to see busy");
 }
 
 ZTEST_F(ap_vdm_control, test_vdm_request_no_send)
 {
 	struct ec_response_typec_vdm_response vdm_resp;
 	struct ec_params_typec_status params = { .port = TEST_PORT };
-	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
-		EC_CMD_TYPEC_VDM_RESPONSE, 0, vdm_resp, params);
 
 	/* Check for an error on a fresh connection with no VDM REQ sent */
-	zassert_equal(host_command_process(&args), EC_RES_UNAVAILABLE,
-		      "Failed to see no message ready");
+	zassert_equal(ec_cmd_typec_vdm_response(NULL, &params, &vdm_resp),
+		      EC_RES_UNAVAILABLE, "Failed to see no message ready");
 }
