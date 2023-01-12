@@ -757,6 +757,11 @@ ZTEST_F(ppc_syv682x, test_syv682x_i2c_error_control_1)
 
 ZTEST_F(ppc_syv682x, test_syv682x_i2c_error_control_2)
 {
+	/* Reset ppc_discharge_vbus to disable to clear the cached force
+	 * discharge bit in the CONTROL_2 register
+	 */
+	ppc_discharge_vbus(syv682x_port, false);
+
 	/* Failed CONTROL_2 read */
 	i2c_common_emul_set_read_fail_reg(fixture->common_data,
 					  SYV682X_CONTROL_2_REG);
