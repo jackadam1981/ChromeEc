@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c154e31a_b20ebfef",
+        "filename": "zephyr/test/herobrine/src/board_chipset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-01-12T22:38:48Z",
+      "side": 1,
+      "message": "This CL adds 5000us delay. Please add another `zassert_true(time_diff_us \u003c 5010, ...)` to ensure the time is bounded between 5000 and 5010. So the original check won\u0027t lose.",
+      "range": {
+        "startLine": 36,
+        "startChar": 14,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "e6d2cdd391d9895a30d952bb14e533ded4831d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
