@@ -271,7 +271,11 @@ and turn on other developer-friendly flags (note that write protect must be
 disabled for this to work):
 
 ```bash
+<<<<<<< HEAD   (563de0 cr50: implement checks for FWMP in _plat__NvUpdateAllowed)
 (chroot) $ /usr/share/vboot/bin/set_gbb_flags.sh 0x239
+=======
+# futility gbb --set --flash --flags=0x239
+>>>>>>> CHANGE (611a9a cr50/README.md: Use futility over obsolete script)
 ```
 
 ```bash
