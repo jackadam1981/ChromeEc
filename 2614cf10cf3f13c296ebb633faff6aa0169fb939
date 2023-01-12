@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbff1c7f_8a46db9c",
+        "filename": "zephyr/program/nissa/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-12T00:29:58Z",
+      "side": 1,
+      "message": "You could use:\n\nif (CONFIG_BOARD_NEREID OR CONFIG_BOARD_NEREID_CX)\n\nIf everything else is identical, this may be preferable.",
+      "revId": "2614cf10cf3f13c296ebb633faff6aa0169fb939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
