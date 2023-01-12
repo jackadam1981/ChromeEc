@@ -13,6 +13,14 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+/*
+ * Allow dangerous commands.
+ * TODO(b:255199345): Remove this config before production.
+ */
+/* Disable console commands to help save space */
+#undef CONFIG_CMD_POWERINDEBUG
+#define CONFIG_USB_PD_COMM_LOCKED
+
 #define CONFIG_MP2964
 
 /* Barrel Jack */
