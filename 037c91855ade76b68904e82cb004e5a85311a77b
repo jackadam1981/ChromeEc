@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19740a08_a9b973c9",
+        "filename": "board/kuldax/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-01-12T03:22:37Z",
+      "side": 1,
+      "message": "hang on, don\u0027t you want USB_PD_COMM_LOCKED for production?",
+      "range": {
+        "startLine": 18,
+        "startChar": 41,
+        "endLine": 18,
+        "endChar": 58
+      },
+      "revId": "037c91855ade76b68904e82cb004e5a85311a77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
