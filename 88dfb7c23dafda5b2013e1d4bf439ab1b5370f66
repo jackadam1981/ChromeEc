@@ -1,0 +1,441 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca82dd13_31b7568e",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "ADDR_FLAG is also used in I2C. What\u0027s the register name? Can it be STATUS_FLAG?",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 25
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c80d1a_18991972",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "Can you use BIT() if it\u0027s applicable (if it\u0027s a flag)?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abcf4b4e_7f04848f",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "If there are two ports (using cps8200), these variables are shared. So, you need mutex them or separate them per port.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 22
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a18b61b6_6c5f984f",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "Can you add comment for this?",
+      "range": {
+        "startLine": 98,
+        "startChar": 15,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f805909_0cc47db8",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "This needs to go to common/crc.c.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 1
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c629b3f4_74b70f53",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "nit: sizeof(buf)",
+      "range": {
+        "startLine": 363,
+        "startChar": 55,
+        "endLine": 363,
+        "endChar": 56
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48f4f2be_0bb68b2e",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "nit: (addr \u003e\u003e 0) is consistent with cps8200_write32.",
+      "range": {
+        "startLine": 387,
+        "startChar": 10,
+        "endLine": 387,
+        "endChar": 14
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f97c1a7e_fbc8a254",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "nit: sizeof(buf)?",
+      "range": {
+        "startLine": 391,
+        "startChar": 53,
+        "endLine": 391,
+        "endChar": 54
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7fc4d2d_d79c531c",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "This is redundant.",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 2
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3d3bf0_1765af6b",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "I think you need to do:\n\n    static int cps8200_send_cmd(int port, uint32_t cmd, uint8_t *id)\n\nso that you can return error from cps8200_write32.",
+      "range": {
+        "startLine": 425,
+        "startChar": 15,
+        "endLine": 425,
+        "endChar": 31
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d8d328_a39aed80",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "nit: It\u0027ll be more readable if this is done by macro (e.g. \n\n    #define CPS8200_CMD_STATUS(flag) (flag \u0026 0xf0)",
+      "range": {
+        "startLine": 452,
+        "startChar": 26,
+        "endLine": 452,
+        "endChar": 38
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "579cb913_d345e29d",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "Can you add timeout on the EC side as well (using timestamp_expired)?",
+      "range": {
+        "startLine": 463,
+        "startChar": 1,
+        "endLine": 463,
+        "endChar": 2
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd0dee5_271bace9",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "The combined time of all the msleep()s here will be the duration in which other PCHG ports are paused. It\u0027s currently 350 ms. That could cause other ports to miss events.",
+      "range": {
+        "startLine": 636,
+        "startChar": 11,
+        "endLine": 636,
+        "endChar": 30
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab19c9a_b4d4e40d",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "Check the return value?",
+      "range": {
+        "startLine": 750,
+        "startChar": 1,
+        "endLine": 750,
+        "endChar": 15
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dfe746b_c4377375",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "Print \u0027rv\u0027?",
+      "range": {
+        "startLine": 764,
+        "startChar": 39,
+        "endLine": 764,
+        "endChar": 40
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453aee49_ae956d10",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "Check the return value?",
+      "range": {
+        "startLine": 786,
+        "startChar": 1,
+        "endLine": 786,
+        "endChar": 18
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df5da86d_8fc8b42b",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "FW was successfully written and CRC was correct. We still return error? Shall we at least print \u0027update success\u0027 before returning?",
+      "range": {
+        "startLine": 861,
+        "startChar": 2,
+        "endLine": 861,
+        "endChar": 26
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81d95551_fc5cda50",
+        "filename": "driver/wpc/cps8200_bootloader.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "Why not\n\n    const uint32_t boot_hex[] \u003d {\n        ...\n    }\n    const size_t boot_hex_len \u003d ARRAY_SIZE(boot_hex);\n    BUILD_ASSERT(boot_hex_len \u003d\u003d 458);\n\n?",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd4b454_33789727",
+        "filename": "driver/wpc/cps8200_bootloader.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-12T17:12:12Z",
+      "side": 1,
+      "message": "uint32_t?",
+      "range": {
+        "startLine": 6,
+        "startChar": 6,
+        "endLine": 6,
+        "endChar": 9
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
