@@ -39,6 +39,30 @@
       },
       "revId": "037c91855ade76b68904e82cb004e5a85311a77b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "556ce5a1_1b6c9821",
+        "filename": "board/kuldax/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-12T06:23:22Z",
+      "side": 1,
+      "message": "it is required PD function.",
+      "parentUuid": "19740a08_a9b973c9",
+      "range": {
+        "startLine": 18,
+        "startChar": 41,
+        "endLine": 18,
+        "endChar": 58
+      },
+      "revId": "037c91855ade76b68904e82cb004e5a85311a77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
