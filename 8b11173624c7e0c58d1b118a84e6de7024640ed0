@@ -34,6 +34,24 @@
       "parentUuid": "15d2f14c_ec3b5d51",
       "revId": "8b11173624c7e0c58d1b118a84e6de7024640ed0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4783a47b_e13a1241",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2927,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-12T18:47:49Z",
+      "side": 1,
+      "message": "Yeah, so for the self-powered partner we\u0027d want to prioritize the Get_Sink_Caps and then the Source_Cap update before discovery.\n\nFor the partners that could source us, we\u0027d want to prioritize discovery and entry before we then ask for their source caps and decide to PR swap (both for vconn swap considerations and also to shorten time to EnterMode). \n\nAt the moment, all of the non-discovery parts are grouped together into source_dpm_requests(), which makes this somewhat tricky to tune without starting to break apart that function and the common DPM requests function.",
+      "parentUuid": "93c0e035_cd9a8f53",
+      "revId": "8b11173624c7e0c58d1b118a84e6de7024640ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
