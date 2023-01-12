@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7ec2e2_f8528ab0",
+        "filename": "zephyr/shim/src/buttons/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-12T23:21:10Z",
+      "side": 1,
+      "message": "I don\u0027t think this is going to be sufficient to prevent a drop in coverage on the herobrine project specifically.\n\nThe actual herobrine project enables `CONFIG_PLATFORM_EC_POWER_BUTTON\u003dy`, is still compiling in common/power_button.c, however the tests use `CONFIG_PLATFORM_EC_POWER_BUTTON\u003dn`.\n\nSo the test now covers the lines in this file, and may show that source lines from common/power_button.c are not covered.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "82032c21a4b27eeda2783ba1e1c72e3e969bb920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
