@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb09736_24707afa",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-01-12T09:44:58Z",
+      "side": 1,
+      "message": "Should we update the cache only after i2c transaction is successful?",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 27
+      },
+      "revId": "934b33e6cf66863dac3ce46755565ea023d38053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
