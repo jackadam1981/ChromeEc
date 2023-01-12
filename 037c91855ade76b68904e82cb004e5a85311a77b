@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97731ed0_4fa4357e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-12T03:50:24Z",
+      "side": 1,
+      "message": "The requirements are listed below, can you check again? \n\n```\n- (Applicable only to USB3.0 platform and platforms without TCPMv2) Make sure CONFIG_USB_PD_COMM_LOCKED is set for EC (typically in board.h).\n- Make sure the following values are unset for EC (typically in baseboard.h and board.h)\nCONFIG_BRINGUP\nCONFIG_SYSTEM_UNLOCKED\nCONFIG_USB_PD_DEBUG_LEVEL\nCONFIG_CMD_GPIO_EXTENDED\nCONFIG_CMD_POWERINDEBUG\nCONFIG_I2C_DEBUG\nCONFIG_BYPASS_CBI_EEPROM_WP_CHECK\n```",
+      "revId": "037c91855ade76b68904e82cb004e5a85311a77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19740a08_a9b973c9",
