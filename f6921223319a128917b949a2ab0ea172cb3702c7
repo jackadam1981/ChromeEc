@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c966c06_058dc93b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-01-12T06:08:04Z",
+      "side": 1,
+      "message": "```\nHi Diana, The FRS is working now. I removed the PLATFORM_EC_USBC_PPC_SYV682X_SMART_DISCHARGE.\n```\n\nIt aligns with my impression. So, I think the current driver can\u0027t not coherent FRS and smart discharge well.",
+      "parentUuid": "a9d2d0f4_f006e7e1",
+      "revId": "f6921223319a128917b949a2ab0ea172cb3702c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4127b116_f9cbf845",
         "filename": "zephyr/program/corsola/tentacruel/project.conf",
         "patchSetId": 1
