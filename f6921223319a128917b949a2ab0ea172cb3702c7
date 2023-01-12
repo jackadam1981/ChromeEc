@@ -142,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b85963f2_8d2dfb26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-01-12T08:18:31Z",
+      "side": 1,
+      "message": "Dino,\n\nIf you\u0027d like to reduce the i2c traffic, could you try if https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4160813 works?",
+      "parentUuid": "266b75b2_ea196c00",
+      "revId": "f6921223319a128917b949a2ab0ea172cb3702c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4127b116_f9cbf845",
         "filename": "zephyr/program/corsola/tentacruel/project.conf",
         "patchSetId": 1
