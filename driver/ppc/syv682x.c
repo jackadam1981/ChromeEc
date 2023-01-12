@@ -150,6 +150,12 @@ static int syv682x_discharge_vbus(int port, int enable)
 #ifndef CONFIG_USBC_PPC_SYV682X_SMART_DISCHARGE
 	int regval;
 	int rv;
+	static uint8_t sd_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+	if ((!!enable) == sd_flags[port])
+		return EC_SUCCESS;
+
+	sd_flags[port] = !!enable;
 
 	rv = read_reg(port, SYV682X_CONTROL_2_REG, &regval);
 	if (rv)
