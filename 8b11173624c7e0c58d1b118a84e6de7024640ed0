@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15d2f14c_ec3b5d51",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2927,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-12T17:34:17Z",
+      "side": 1,
+      "message": "Unfortunately, this particular approach will break discovery with TBT partners who don\u0027t tell us they run TBT until they get 15W.  So this might warrant waiting until the discovery refactor so it can be finer-grained...",
+      "revId": "8b11173624c7e0c58d1b118a84e6de7024640ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
