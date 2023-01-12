@@ -212,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92ab1d9d_9b535ef1",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-12T04:54:50Z",
+      "side": 1,
+      "message": "as this CL just adds skeleton code we dont have to call these functions.\nAdd a TODO and mention what needs to be done for all such scenarios",
+      "parentUuid": "3d0c04ed_4ab9facd",
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0a2ff54_739031a2",
