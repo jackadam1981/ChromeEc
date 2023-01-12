@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e22c3c5_2a71e6e4",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-12T01:30:22Z",
+      "side": 1,
+      "message": "crc16 is a global variable. \n\nI modified the function `get_crc` to return `void` to avoid the confusion",
+      "parentUuid": "50f23672_b6378b58",
+      "range": {
+        "startLine": 755,
+        "startChar": 42,
+        "endLine": 755,
+        "endChar": 47
+      },
+      "revId": "5f8af10a245a40f58e807c9a2bbd92c8be8e8694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c69e5b64_750a3fe8",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-10T18:43:35Z",
       "side": 1,
       "message": "Please create a cps8200_drv. Common functions (e.g. cps8100_reset) can be renamed (e.g cps8x00_reset).",
+      "range": {
+        "startLine": 871,
+        "startChar": 22,
+        "endLine": 871,
+        "endChar": 33
+      },
+      "revId": "5f8af10a245a40f58e807c9a2bbd92c8be8e8694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e070c676_bec4e954",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-12T01:30:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c69e5b64_750a3fe8",
       "range": {
         "startLine": 871,
         "startChar": 22,
