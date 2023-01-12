@@ -22,6 +22,30 @@
       },
       "revId": "82032c21a4b27eeda2783ba1e1c72e3e969bb920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a86c0c53_fd400599",
+        "filename": "zephyr/shim/src/buttons/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-12T23:50:19Z",
+      "side": 1,
+      "message": "I\u0027m not deleting or changing the existing tests that cover `common/power_button.c`.  I am creating new tests that switch off legacy power button config and enable `gpio-keys` config power_button handling.  We are getting coverage on both now.\n\nRunning the coverage steps for herobrine you pointed out earlier, shows both files are getting coverage in the merged report.\n`common/power_button.c`          -- 89.9% http://screen/7pie5WocjxFqBPc \n`zephyr/shim/src/power_button.c` -- 97.1% http://screen/qDndbXspLGxvmkq\nLet me know if you want to sync up on this.",
+      "parentUuid": "cb7ec2e2_f8528ab0",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "82032c21a4b27eeda2783ba1e1c72e3e969bb920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
