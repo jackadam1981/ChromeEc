@@ -59,10 +59,7 @@ ZTEST_F(usbc_alt_mode, verify_mode_entry_via_pd_host_cmd)
 		.svid = USB_SID_DISPLAYPORT,
 	};
 
-	struct host_cmd_handler_args set_mode_args = BUILD_HOST_COMMAND_PARAMS(
-		EC_CMD_USB_PD_SET_AMODE, 0, set_mode_params);
-
-	zassert_ok(host_command_process(&set_mode_args));
+	zassert_ok(ec_cmd_usb_pd_set_amode(NULL, &set_mode_params));
 
 	/* Verify that DisplayPort is the active alternate mode. */
 	struct ec_params_usb_pd_get_mode_response get_mode_response;
@@ -109,10 +106,7 @@ ZTEST_F(usbc_alt_mode, verify_mode_exit_via_pd_host_cmd)
 		.svid = get_mode_response.svid,
 	};
 
-	struct host_cmd_handler_args set_mode_args = BUILD_HOST_COMMAND_PARAMS(
-		EC_CMD_USB_PD_SET_AMODE, 0, set_mode_params);
-
-	zassert_ok(host_command_process(&set_mode_args));
+	zassert_ok(ec_cmd_usb_pd_set_amode(NULL, &set_mode_params));
 
 	/* Verify mode was exited using get_amode command */
 	host_cmd_usb_pd_get_amode(TEST_PORT, 0, &get_mode_response,
