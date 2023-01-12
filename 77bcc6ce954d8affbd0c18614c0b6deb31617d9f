@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b056170_6f6a244d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-12T07:16:35Z",
+      "side": 1,
+      "message": "update it",
+      "parentUuid": "fd762332_f566bf05",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "77bcc6ce954d8affbd0c18614c0b6deb31617d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d20c353_9ab18753",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-12T06:42:52Z",
       "side": 1,
       "message": "Can you remove this comment?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 3
+      },
+      "revId": "77bcc6ce954d8affbd0c18614c0b6deb31617d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c781bb96_f2859307",
+        "filename": "board/kuldax/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-01-12T07:16:35Z",
+      "side": 1,
+      "message": "update it",
+      "parentUuid": "1d20c353_9ab18753",
       "range": {
         "startLine": 16,
         "startChar": 0,
