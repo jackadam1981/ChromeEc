@@ -384,6 +384,38 @@ stub_send_response_callback(struct host_cmd_handler_args *args)
 
 #define BUILD_HOST_COMMAND_SIMPLE(CMD, VERSION) \
 	BUILD_HOST_COMMAND(CMD, VERSION, EMPTY, EMPTY)
+
+#define CROS_EC_COMMAND_INFO struct host_cmd_handler_args
+
+static inline int CROS_EC_COMMAND(CROS_EC_COMMAND_INFO *h, uint16_t c,
+				  uint8_t v, const void *p, uint16_t ps,
+				  void *r, uint16_t rs)
+{
+	struct host_cmd_handler_args args;
+	int rv;
+
+	if (h == NULL)
+		h = &args;
+
+	h->send_response = stub_send_response_callback;
+	h->command = c;
+	h->version = v;
+	h->params = p;
+	h->params_size = ps;
+	h->response = r;
+	h->response_max = rs;
+	h->response_size = 0;
+	h->result = 0;
+
+	rv = host_command_process(h);
+	if (h->result != EC_RES_SUCCESS)
+		return h->result;
+
+	return rv;
+}
+
+#include "ec_cmd_api.h"
+
 #endif /* CONFIG_ZTEST */
 
 #ifdef __cplusplus
