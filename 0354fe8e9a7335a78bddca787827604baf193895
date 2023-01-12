@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa5678c_c33e0d28",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-12T02:36:26Z",
+      "side": 1,
+      "message": "I would think so, since it is being expanded into an enumeration.",
+      "parentUuid": "0c5c04de_df4058a7",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 46
+      },
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d65f93c_cface4cf",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-11T17:58:14Z",
       "side": 1,
       "message": "how about combining these?\nAP_PWRSEQ_EACH_SUB_STATE_ENUM_DEF(node_id, app)",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "956c3308_2367ca42",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-12T02:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d65f93c_cface4cf",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b26000d_e6433461",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-12T02:36:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5b3fb057_6be9e3a5",
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d2c6e06_39c4d0cd",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-01-11T17:58:14Z",
       "side": 1,
       "message": "how about ap_pwrseq_task_data",
+      "range": {
+        "startLine": 37,
+        "startChar": 29,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70dbd2b_35ad608e",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-12T02:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d2c6e06_39c4d0cd",
       "range": {
         "startLine": 37,
         "startChar": 29,
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0c04ed_4ab9facd",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-12T02:36:26Z",
+      "side": 1,
+      "message": "It would then make more sense to submit CL:4098524 earlier in the chain, to define these functions, and then have this CL to add the .c files.",
+      "parentUuid": "3da66b19_94827b98",
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0a2ff54_739031a2",
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b71045_fffcaa5f",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-12T02:36:26Z",
+      "side": 1,
+      "message": "See above response...",
+      "parentUuid": "b0a2ff54_739031a2",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 37
+      },
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e11663d_e8d6c781",
@@ -140,6 +272,30 @@
       "writtenOn": "2023-01-11T17:58:14Z",
       "side": 1,
       "message": "same as above",
+      "range": {
+        "startLine": 190,
+        "startChar": 7,
+        "endLine": 190,
+        "endChar": 24
+      },
+      "revId": "0354fe8e9a7335a78bddca787827604baf193895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c14f83d_6a7b64f0",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-12T02:36:26Z",
+      "side": 1,
+      "message": "See comment...",
+      "parentUuid": "1e11663d_e8d6c781",
       "range": {
         "startLine": 190,
         "startChar": 7,
