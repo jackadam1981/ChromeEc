@@ -160,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "013d7aa3_6240a418",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-01-12T09:45:36Z",
+      "side": 1,
+      "message": "Yes, the i2c traffic is reduced.",
+      "parentUuid": "b85963f2_8d2dfb26",
+      "revId": "f6921223319a128917b949a2ab0ea172cb3702c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4127b116_f9cbf845",
         "filename": "zephyr/program/corsola/tentacruel/project.conf",
         "patchSetId": 1
