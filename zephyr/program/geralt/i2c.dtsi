@@ -65,13 +65,6 @@
 		status = "okay";
 		reg = <0x53>;
 	};
-
-	bc12_port1: rt9490-bc12@53 {
-		compatible = "richtek,rt9490-bc12";
-		status = "okay";
-		reg = <0x53>;
-		irq = <&int_usb_c1_bc12_charger>;
-	};
 };
 
 &i2c1 {
@@ -94,7 +87,7 @@
 	/delete-property/ fifo-enable;
 
 	bc12_ppc_port0: rt1739@70 {
-		compatible = "richtek,rt1739-bc12", "richtek,rt1739-ppc";
+		compatible = "richtek,rt1739-ppc";
 		status = "okay";
 		reg = <0x70>;
 	};
