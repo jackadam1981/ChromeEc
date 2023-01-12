@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7db88e_c3743894",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2023-01-12T01:53:10Z",
+      "side": 1,
+      "message": "LID_SW (GPIO 01) function is the same as the LID_OPEN(GPIO 02), so revert this change to keep the original design",
+      "revId": "9e9eaff8583357cf4d0e84589b5e477079bbdb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
