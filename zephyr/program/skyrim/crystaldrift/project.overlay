@@ -168,4 +168,11 @@
 /* i2c overrides */
 &i2c0_0 {
 	/delete-node/ nx20p348x@71;
+	/delete-node/ anx7483@3e;
+};
+/* usbc overrides */
+&usbc_port0 {
+	usb-mux-chain-0 {
+		usb-muxes = <&amd_fp6_port0>;
+	};
 };
