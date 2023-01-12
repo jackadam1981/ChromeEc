@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd762332_f566bf05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-12T06:45:21Z",
+      "side": 1,
+      "message": "Remove the bring-up features",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "77bcc6ce954d8affbd0c18614c0b6deb31617d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d20c353_9ab18753",
         "filename": "board/kuldax/board.h",
         "patchSetId": 2
