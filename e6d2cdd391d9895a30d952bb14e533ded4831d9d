@@ -22,6 +22,53 @@
       },
       "revId": "e6d2cdd391d9895a30d952bb14e533ded4831d9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a41d988_9dfff81c",
+        "filename": "zephyr/test/herobrine/src/board_chipset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2023-01-12T23:32:57Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this actually be time_diff_us \u003c 5010 ?  Or simply \u003c 5000",
+      "parentUuid": "c154e31a_b20ebfef",
+      "range": {
+        "startLine": 36,
+        "startChar": 14,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "e6d2cdd391d9895a30d952bb14e533ded4831d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ce1dda_0aecb872",
+        "filename": "zephyr/test/herobrine/src/board_chipset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2023-01-12T23:32:57Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this actually be time_diff_us \u003c 5010 ?  Or simply \u003c 5000",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 34
+      },
+      "revId": "e6d2cdd391d9895a30d952bb14e533ded4831d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
