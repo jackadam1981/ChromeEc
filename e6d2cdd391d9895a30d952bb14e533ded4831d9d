@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "399991e8_374baf52",
+        "filename": "zephyr/test/herobrine/src/board_chipset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-01-13T02:14:24Z",
+      "side": 1,
+      "message": "looks ppc_init also take few time, modify normal_boot limit to \u003c\u003d 20000 \n\n2023-01-13 09:36:26,213 - twister - DEBUG - OUTPUT: SUITE PASS - 100.00% [board_chipset]: pass \u003d 3, fail \u003d 0, skip \u003d 0, total \u003d 3 duration \u003d 0.720 seconds\n2023-01-13 09:36:26,213 - twister - DEBUG - OUTPUT:  - PASS - [board_chipset.test_good_battery_normal_boot] duration \u003d 0.020 seconds\n2023-01-13 09:36:26,213 - twister - DEBUG - OUTPUT:  - PASS - [board_chipset.test_low_battery_delayed_boot] duration \u003d 0.680 seconds\n2023-01-13 09:36:26,213 - twister - DEBUG - OUTPUT:  - PASS - [board_chipset.test_low_battery_normal_boot] duration \u003d 0.020 seconds",
+      "parentUuid": "7a41d988_9dfff81c",
+      "range": {
+        "startLine": 36,
+        "startChar": 14,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "e6d2cdd391d9895a30d952bb14e533ded4831d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06ce1dda_0aecb872",
         "filename": "zephyr/test/herobrine/src/board_chipset.c",
         "patchSetId": 4
