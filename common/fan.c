@@ -363,6 +363,12 @@ static int cc_fanduty(int argc, const char **argv)
 	if (*e)
 		return EC_ERROR_PARAM1;
 
+	/* Ensure to set duty cycle within the limit */
+	if (percent < CONFIG_FAN_MIN_DUTY_PCT)
+		percent = CONFIG_FAN_MIN_DUTY_PCT;
+	if (percent > CONFIG_FAN_MAX_DUTY_PCT)
+		percent = CONFIG_FAN_MAX_DUTY_PCT;
+
 	ccprintf("Setting fan %d duty cycle to %d%%\n", fan, percent);
 	set_duty_cycle(fan, percent);
 

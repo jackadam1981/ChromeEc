@@ -109,6 +109,18 @@ config PLATFORM_EC_CUSTOM_FAN_CONTROL
 	  Enable fan custom control to let projects define
 	  their own fan control mechanism by EC.
 
+config PLATFORM_EC_FAN_MIN_DUTY_PCT
+	int "Minimum fanduty percentage"
+	default 0
+	help
+	  Set the minimum fanduty percentage.
+
+config PLATFORM_EC_FAN_MAX_DUTY_PCT
+	int "Maximum fanduty percentage"
+	default 100
+	help
+	  Set the maximum fanduty percentage.
+
 if PLATFORM_EC_FAN
 
 config PLATFORM_EC_NUM_FANS
