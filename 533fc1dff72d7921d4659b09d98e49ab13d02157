@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7c501aa_89e11ab7",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-01-13T18:05:07Z",
+      "side": 1,
+      "message": "Agree to have the discharging FET check. Can you move this `battery_get_disconnect_state()` check to the line 56 if-condition?",
+      "parentUuid": "e4f87f47_9400b92f",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 3
+      },
+      "revId": "533fc1dff72d7921d4659b09d98e49ab13d02157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "218de008_7affe02b",
         "filename": "zephyr/test/herobrine/src/board_chipset.c",
         "patchSetId": 4
