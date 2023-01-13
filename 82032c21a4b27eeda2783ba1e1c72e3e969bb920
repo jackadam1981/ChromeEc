@@ -46,6 +46,30 @@
       },
       "revId": "82032c21a4b27eeda2783ba1e1c72e3e969bb920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6737648c_bb1b2636",
+        "filename": "zephyr/shim/src/buttons/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-13T15:18:55Z",
+      "side": 1,
+      "message": "Thanks for verifying.",
+      "parentUuid": "a86c0c53_fd400599",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "82032c21a4b27eeda2783ba1e1c72e3e969bb920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
