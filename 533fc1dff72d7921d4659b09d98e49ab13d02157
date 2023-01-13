@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edfd44a3_7b3713fd",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-01-13T00:40:10Z",
+      "side": 1,
+      "message": "More explaination. The `battery_state_of_charge_abs(\u0026soc) !\u003d EC_SUCCESS` is a superset of `battery_get_disconnect_state()`. The `board_usb_pd_connect()` updated the timeout value to delay the 5V enabling.",
+      "parentUuid": "8d3c9948_da81c370",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 3
+      },
+      "revId": "533fc1dff72d7921d4659b09d98e49ab13d02157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "218de008_7affe02b",
         "filename": "zephyr/test/herobrine/src/board_chipset.c",
         "patchSetId": 4
