@@ -141,6 +141,30 @@
       },
       "revId": "723d2d98d7255eaacc2fc15bf8b7b439bbe09539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "939c2162_79b2ae7f",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-13T16:35:05Z",
+      "side": 1,
+      "message": "Ping?",
+      "parentUuid": "71477736_9dddcc38",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "723d2d98d7255eaacc2fc15bf8b7b439bbe09539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
