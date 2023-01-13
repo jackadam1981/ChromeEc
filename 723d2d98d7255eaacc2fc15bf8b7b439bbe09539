@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "084f58ff_0f18c271",
+        "filename": "common/cec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-13T00:21:46Z",
+      "side": 1,
+      "message": "You can configure cec_offline_policy however you like for your board. For example, to capture 0x84, you can add to moli/board.c:\n\n    const struct cec_config_t cec_config \u003d {\n      .offline_policy \u003d {\n        { .command \u003d 0x84, .action \u003d CEC_ACTION_POWER_BUTTON },\n        { 0 },\n      },\n    };",
+      "parentUuid": "f11bfa34_b97eade8",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 18
+      },
+      "revId": "723d2d98d7255eaacc2fc15bf8b7b439bbe09539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9b2996c_68b3c06f",
         "filename": "power/common.c",
         "patchSetId": 3
