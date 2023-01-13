@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84318697_523e52b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-01-13T05:32:06Z",
+      "side": 1,
+      "message": "Hi Diana and Abe,\ncan you take a look at this change? It updates the typec status command to also get the partners minor revision if it\u0027s available. This command is how the cros_ec_typec driver gets revision information to register it with the typec connector class. So, this update will allow the partners minor revision information to be accessible in userspace.",
+      "revId": "34e73d012b782b26b1b48937a11d2f63aef1f11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
