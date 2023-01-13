@@ -187,6 +187,14 @@ static void set_duty_cycle(int fan, int percent)
 	/* Disable thermal engine automatic fan control. */
 	set_thermal_control_enabled(fan, 0);
 
+	/*
+	 * When the fanduty percentage requested is below the configured
+	 * minimum fanduty as per the specification, ensure to set fanduty
+	 * within the minimum limit. If the percentage requested is 0, allow
+	 * fan to be stopped.
+	 */
+	if ((percent > 0) && (percent < fans[fan].rpm->rpm_fanduty_min))
+		percent = fans[fan].rpm->rpm_fanduty_min;
 	/* Set the duty cycle */
 	fan_set_duty(FAN_CH(fan), percent);
 }
