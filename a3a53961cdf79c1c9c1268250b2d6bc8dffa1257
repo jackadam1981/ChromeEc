@@ -33,6 +33,24 @@
       "message": "move this to a before hook",
       "revId": "a3a53961cdf79c1c9c1268250b2d6bc8dffa1257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73172053_6d438c6b",
+        "filename": "zephyr/test/drivers/default/src/ppc_syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-01-13T08:52:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd6ec1c_640e03a6",
+      "revId": "a3a53961cdf79c1c9c1268250b2d6bc8dffa1257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
