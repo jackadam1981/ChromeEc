@@ -16,6 +16,24 @@
       "message": "This a lot like the same test 3 times. Can\u0027t we just have one test that gets included under any one of these projects? I imagine skyrim could have a common set of tests.\n\nAlternatively we could factor out the tests as test helper functions that are called by each individual test itself. But right now I\u0027m not a fan of what looks like the same exact test written 3 times as they could get out of sync.\n\nLet me know if you want any pointers for setting up the structure for a common skyrim tests.",
       "revId": "4903798e43ca369e1fc15c2824150d0b080b7c9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e51fc99_1fc270d1",
+        "filename": "zephyr/test/skyrim/src/frostflow/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-13T18:21:29Z",
+      "side": 1,
+      "message": "I\u0027m half wondering if the repeated test code means we could get more clever with how we set up our program C-files... Right now, the primary thing which will vary by board will be the retimer tuning and any FW_CONFIG checks to initialize the correct retimer to begin with.\n\nThe SBU flip set could be shared because I don\u0027t think anyone has dropped that part so far.  And then possibly the PS DP GPIO set could be shared through some kind of clever compiling for boards which have that chip?",
+      "parentUuid": "88f5b3b1_42014fbf",
+      "revId": "4903798e43ca369e1fc15c2824150d0b080b7c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
