@@ -8,7 +8,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/atomic.h>
 
-#include "ap_power/ap_pwrseq.h"
+#include "ap_power/ap_pwrseq_sm.h"
 
 LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
@@ -29,6 +29,40 @@ struct ap_pwrseq_data {
 	struct ap_pwrseq_cb_list exit_list;
 };
 
+#define AP_PWRSEQ_STATE_DEFINE(name)                                          \
+	[name] = &app_state_##name
+
+/* Sub States defines */
+#define AP_PWRSEQ_APP_SUB_STATE_DEFINE(state)                                 \
+	[state] = &app_state_##state,
+
+#define AP_PWRSEQ_APP_SUB_STATE_DEFINE_(state)                                \
+	AP_PWRSEQ_APP_SUB_STATE_DEFINE(state)
+
+#define AP_PWRSEQ_EACH_APP_SUB_STATE_NODE_DEFINE__(node_id, prop, idx)        \
+	AP_PWRSEQ_APP_SUB_STATE_DEFINE_(DT_CAT6(node_id, _P_, prop, _IDX_,    \
+						idx, _STRING_UPPER_TOKEN))
+
+#define AP_PWRSEQ_EACH_CHIPSET_SUB_STATE_NODE_DEFINE(state)                   \
+	[state] = &chipset_##state##_actions,
+
+#define AP_PWRSEQ_EACH_CHIPSET_SUB_STATE_NODE_DEFINE_(state)                  \
+	AP_PWRSEQ_EACH_CHIPSET_SUB_STATE_NODE_DEFINE(state)
+
+#define AP_PWRSEQ_EACH_CHIPSET_SUB_STATE_NODE_DEFINE__(node_id, prop, idx)    \
+	AP_PWRSEQ_EACH_CHIPSET_SUB_STATE_NODE_DEFINE_(                        \
+			DT_CAT6(node_id, _P_, prop, _IDX_, idx,               \
+				_STRING_UPPER_TOKEN))
+
+#define AP_PWRSEQ_EACH_SUB_STATE_NODE_CHILD_DEFINE(node_id)                   \
+	COND_CODE_1(DT_NODE_HAS_PROP(node_id, chipset),                       \
+		(DT_FOREACH_PROP_ELEM(node_id, chipset,                       \
+			AP_PWRSEQ_EACH_CHIPSET_SUB_STATE_NODE_DEFINE__)),     \
+		(COND_CODE_1(DT_NODE_HAS_PROP(node_id, application),          \
+			(DT_FOREACH_PROP_ELEM(node_id, application,           \
+			AP_PWRSEQ_EACH_APP_SUB_STATE_NODE_DEFINE__)),         \
+			())))
+
 static const char * const ap_pwrseq_state_str[AP_POWER_STATE_COUNT] = {
 	"AP_POWER_STATE_UNINIT",
 	"AP_POWER_STATE_G3",
@@ -38,7 +72,8 @@ static const char * const ap_pwrseq_state_str[AP_POWER_STATE_COUNT] = {
 	"AP_POWER_STATE_S2",
 	"AP_POWER_STATE_S1",
 	"AP_POWER_STATE_S0",
-	/* TODO: Add substate name strings */
+	DT_FOREACH_STATUS_OKAY(ap_pwrseq_sub_states,
+			AP_PWRSEQ_EACH_SUB_STATE_NODE_CHILD_DEFINE)
 };
 BUILD_ASSERT(ARRAY_SIZE(ap_pwrseq_state_str) == AP_POWER_STATE_COUNT);
 
@@ -125,24 +160,39 @@ static uint32_t ap_pwrseq_wait_event(const struct device *dev, k_timeout_t timeo
 static void ap_pwrseq_thread(void *arg, void *unused1, void *unused2)
 {
 	struct device *const dev = (struct device *)arg;
+	struct ap_pwrseq_data *const data = dev->data;
+	enum ap_pwrseq_state cur_state, new_state;
 	k_timeout_t timeout = K_NO_WAIT;
 
 	LOG_INF("Power Sequence thread start");
+	cur_state = new_state = AP_POWER_STATE_UNDEF;
 	while(true) {
 		uint32_t events = ap_pwrseq_wait_event(dev, timeout);
 		if (events) {
 			LOG_DBG("Events posted: 0x%0#x", events);
 		}
 
-		/**
-		 * TODO: Process state machine until the new state is not equal
-		 * to previous state and generate callbacks.
-		 **/
-		ap_pwrseq_send_entry_callback(dev, AP_POWER_STATE_UNDEF,
-					      AP_POWER_STATE_UNDEF);
+		cur_state = ap_pwrseq_sm_get_cur_state(data->sm_data);
+		if (ap_pwrseq_sm_run_state(data->sm_data, events)) {
+			break;
+		}
 
-		ap_pwrseq_send_exit_callback(dev, AP_POWER_STATE_UNDEF,
-					     AP_POWER_STATE_UNDEF);
+		/* Check if state transition took place */
+		new_state = ap_pwrseq_sm_get_cur_state(data->sm_data);
+		if (cur_state != new_state) {
+			LOG_INF("%s -> %s", ap_pwrseq_get_state_str(cur_state),
+				 ap_pwrseq_get_state_str(new_state));
+
+			ap_pwrseq_send_entry_callback(dev, cur_state,
+						      new_state);
+
+			ap_pwrseq_send_exit_callback(dev, cur_state,
+						     new_state);
+			timeout = K_NO_WAIT;
+		} else {
+			/* No state transition, wait for any event */
+			timeout = K_FOREVER;
+		}
 	}
 }
 
@@ -161,9 +211,15 @@ K_THREAD_DEFINE(ap_pwrseq_tid, CONFIG_AP_PWRSEQ_STACK_SIZE, ap_pwrseq_thread,
 static int ap_pwrseq_driver_init(const struct device *dev)
 {
 	struct ap_pwrseq_data *const data = dev->data;
+	int ret;
 
-	/* TODO: Obtain state machine data reference. */
+	data->sm_data = ap_pwrseq_sm_get_instance();
 	k_event_init(&data->evt);
+
+	ret = ap_pwrseq_sm_init(data->sm_data, ap_pwrseq_tid);
+	if (ret) {
+		return ret;
+	}
 
 	if (IS_ENABLED(CONFIG_AP_PWRSEQ_AUTOSTART)) {
 		ap_pwrseq_thread_start(dev);
@@ -200,9 +256,7 @@ enum ap_pwrseq_state ap_pwrseq_get_current_state(const struct device *dev)
 {
 	struct ap_pwrseq_data *const data = dev->data;
 
-	/* TODO: Call function to get current state from state machine */
-	(void)data;
-	return AP_POWER_STATE_UNDEF;
+	return ap_pwrseq_sm_get_cur_state(data->sm_data);;
 }
 
 const char *const ap_pwrseq_get_state_str(enum ap_pwrseq_state state)
