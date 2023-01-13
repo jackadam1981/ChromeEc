@@ -16,4 +16,4 @@ md5sum $WORKDIR/build/${BOARD}_scp/ec.obj
 ssh root@$IP "md5sum /lib/firmware/scp.img"
 md5sum $WORKDIR/build/${BOARD}_scp_core1/ec.obj
 ssh root@$IP "md5sum /lib/firmware/scp-dual.img"
-ssh root@$IP "sync; reboot;"
+#ssh root@$IP "sync; reboot;"
