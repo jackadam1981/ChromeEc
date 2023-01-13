@@ -16,6 +16,23 @@
       "message": "I want Andrew or Peter to approve.  I\u0027m not sure if Nissa is planning on a git merge to pull in this change.",
       "revId": "29c05225d076f2b922634e116820cea70828b377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ef385c_78c666f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-13T15:31:48Z",
+      "side": 1,
+      "message": "Unfortunately we have found a regression in one of the FAFT tests for\nthe updated .82 release, and we have not yet found a root cause,\nso in the interests of expediency we have decided to create a separate branch\noff the already qualified .45 release and patch in the critical fix for the RO.",
+      "revId": "29c05225d076f2b922634e116820cea70828b377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
