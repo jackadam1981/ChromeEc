@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b0eaa7_f289a348",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-13T21:00:36Z",
+      "side": 1,
+      "message": "What\u0027s the logic on the host side? To use 0 for stalled, we need to combine it with another signal (GPIO_EN_FAN, pwm_get_enabled, etc.).\n\nAlso, you need to fix ectool.cc (i.e. cmd_pwm_get_fan_rpm).",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
