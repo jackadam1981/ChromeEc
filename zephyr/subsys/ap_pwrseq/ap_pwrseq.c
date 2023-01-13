@@ -8,7 +8,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/atomic.h>
 
-#include "ap_power/ap_pwrseq.h"
+#include "ap_power/ap_pwrseq_sm.h"
 
 #define DT_DRV_COMPAT ap_pwrseq_state
 
@@ -49,15 +49,12 @@ enum ap_pwrseq_state ap_pwrseq_get_current_state(const struct device *dev)
 {
 	struct ap_pwrseq_data *const data = dev->data;
 
-	/* TODO: Call function to get current state from state machine */
-	(void)data;
-	return AP_POWER_STATE_UNDEF;
+	return ap_pwrseq_sm_get_cur_state(data->sm_data);
 }
 
 const char *const ap_pwrseq_get_state_str(enum ap_pwrseq_state state)
 {
-	/* TODO: Call function to get state string from state machine */
-	return NULL;
+	return ap_pwrseq_sm_get_state_str(state);
 }
 
 static int ap_pwrseq_add_state_callback(struct ap_pwrseq_cb_list *cb_list, sys_snode_t *node)
@@ -156,38 +153,20 @@ static void ap_pwrseq_thread(void *arg, void *unused1, void *unused2)
 			LOG_DBG("Events posted: 0x%X", events);
 		}
 
-		/**
-		 * TODO: Get current state from state machine and store it in
-		 * `cur_state`
-		 **/
+		cur_state = ap_pwrseq_sm_get_cur_state(data->sm_data);
+		if (ap_pwrseq_sm_run_state(data->sm_data, events)) {
+			break;
+		}
 
-		/**
-		 * TODO: Call state machine function to execute current state
-		 * action handler.
-		 **/
-
-		if (cur_state !=
-		   /**
-		    * TODO: Call function to get current state from state
-		    * machine.
-		    **/
-		    AP_POWER_STATE_UNDEF) {
+		if (cur_state != ap_pwrseq_sm_get_cur_state(data->sm_data)) {
 			/* Previous state generates callbacks for exit actions */
 			ap_pwrseq_send_callbacks(dev,
-				/**
-				 * TODO: Call function to get current state from
-				 * state machine.
-				 **/
-				AP_POWER_STATE_UNDEF,
+				ap_pwrseq_sm_get_prev_state(data->sm_data),
 				&data->exit_list);
 
 			/* New state generates callbacks for entry actions */
 			ap_pwrseq_send_callbacks(dev,
-				/**
-				 * TODO: Call function to get previous state
-				 * from state machine.
-				 **/
-				AP_POWER_STATE_UNDEF,
+				ap_pwrseq_sm_get_cur_state(data->sm_data),
 				&data->entry_list);
 			timeout = K_NO_WAIT;
 		} else {
@@ -203,7 +182,7 @@ static int ap_pwrseq_driver_init(const struct device *dev)
 	int ret = 0;
 	k_tid_t tid;
 
-	/* TODO: Obtain state machine data reference. */
+	data->sm_data = ap_pwrseq_sm_get_instance();
 	k_event_init(&data->evt);
 
 	tid = k_thread_create(&data->thread,
@@ -215,10 +194,7 @@ static int ap_pwrseq_driver_init(const struct device *dev)
 
 	k_thread_name_set(&data->thread, "ap_pwrseq_task");
 
-	/**
-	 * TODO: Call function to initialize state machine, and store result on
-	 * `ret`.
-	 **/
+	ret = ap_pwrseq_sm_init(data->sm_data, tid);
 	if (ret) {
 		/* Something is wrong, abort thread execution. */
 		k_thread_abort(tid);
