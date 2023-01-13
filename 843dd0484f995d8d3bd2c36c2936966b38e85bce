@@ -16,6 +16,23 @@
       "message": "Can you help verifying the FRS and i2c traffics?",
       "revId": "843dd0484f995d8d3bd2c36c2936966b38e85bce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d9531b1_bc5c788e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-01-13T06:11:24Z",
+      "side": 1,
+      "message": "I2C traffic reduced. Verified FRS on three hub.",
+      "revId": "843dd0484f995d8d3bd2c36c2936966b38e85bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
