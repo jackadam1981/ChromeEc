@@ -6935,6 +6935,18 @@ enum tcpc_cc_polarity {
 #define PD_STATUS_REV_GET_MINOR(r) ((r >> 8) & 0xF)
 
 /*
+ * Encode revision from partner RMDO
+ *
+ * Unlike the specification revision given in the PD header, specification and
+ * version information returned in the revision message data object (RMDO) is
+ * not offset.
+ */
+#define PD_STATUS_RMDO_REV_SET_MAJOR(r) (r << 12)
+#define PD_STATUS_RMDO_REV_SET_MINOR(r) (r << 8)
+#define PD_STATUS_RMDO_VER_SET_MAJOR(r) (r << 4)
+#define PD_STATUS_RMDO_VER_SET_MINOR(r) (r)
+
+/*
  * Decode helpers for Source and Sink Capability PDOs
  *
  * Note: The Power Delivery Specification should be considered the ultimate
