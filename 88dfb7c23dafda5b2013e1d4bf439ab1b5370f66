@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4fb0cac_3273555d",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca82dd13_31b7568e",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 25
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56c80d1a_18991972",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-12T17:12:12Z",
       "side": 1,
       "message": "Can you use BIT() if it\u0027s applicable (if it\u0027s a flag)?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1982e6f1_925a772c",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56c80d1a_18991972",
       "range": {
         "startLine": 67,
         "startChar": 0,
@@ -95,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1eaf1c3d_ff526bb3",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Can I use cps8100_state.mtx to mutex them?\n\neq. call mutex_lock(\u0026cps8100_state.mtx) in update_open and mutex_unlock(\u0026cps8100_state.mtx) in update_close so it allows only one port to be updated?",
+      "parentUuid": "abcf4b4e_7f04848f",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 22
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f805909_0cc47db8",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 16
@@ -139,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "445423fc_ba0d804a",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c629b3f4_74b70f53",
+      "range": {
+        "startLine": 363,
+        "startChar": 55,
+        "endLine": 363,
+        "endChar": 56
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48f4f2be_0bb68b2e",
@@ -152,6 +248,30 @@
       "writtenOn": "2023-01-12T17:12:12Z",
       "side": 1,
       "message": "nit: (addr \u003e\u003e 0) is consistent with cps8200_write32.",
+      "range": {
+        "startLine": 387,
+        "startChar": 10,
+        "endLine": 387,
+        "endChar": 14
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54653584_5ceebbcd",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48f4f2be_0bb68b2e",
       "range": {
         "startLine": 387,
         "startChar": 10,
@@ -185,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39250a28_8fb7f93e",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f97c1a7e_fbc8a254",
+      "range": {
+        "startLine": 391,
+        "startChar": 53,
+        "endLine": 391,
+        "endChar": 54
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7fc4d2d_d79c531c",
@@ -198,6 +342,30 @@
       "writtenOn": "2023-01-12T17:12:12Z",
       "side": 1,
       "message": "This is redundant.",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 2
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "160f18d8_d58195ec",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7fc4d2d_d79c531c",
       "range": {
         "startLine": 400,
         "startChar": 0,
@@ -254,6 +422,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c9020b_352d5d12",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5d8d328_a39aed80",
+      "range": {
+        "startLine": 452,
+        "startChar": 26,
+        "endLine": 452,
+        "endChar": 38
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "579cb913_d345e29d",
@@ -267,6 +459,30 @@
       "writtenOn": "2023-01-12T17:12:12Z",
       "side": 1,
       "message": "Can you add timeout on the EC side as well (using timestamp_expired)?",
+      "range": {
+        "startLine": 463,
+        "startChar": 1,
+        "endLine": 463,
+        "endChar": 2
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a8a2f8_5828d45d",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "579cb913_d345e29d",
       "range": {
         "startLine": 463,
         "startChar": 1,
@@ -302,6 +518,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "792c705f_cde44d2e",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Somehow the delay is required otherwise some commands will be failed. I can try to shorten the delay a little bit.",
+      "parentUuid": "ecd0dee5_271bace9",
+      "range": {
+        "startLine": 636,
+        "startChar": 11,
+        "endLine": 636,
+        "endChar": 30
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ab19c9a_b4d4e40d",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 16
@@ -313,6 +553,30 @@
       "writtenOn": "2023-01-12T17:12:12Z",
       "side": 1,
       "message": "Check the return value?",
+      "range": {
+        "startLine": 750,
+        "startChar": 1,
+        "endLine": 750,
+        "endChar": 15
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9377f630_6719b36d",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ab19c9a_b4d4e40d",
       "range": {
         "startLine": 750,
         "startChar": 1,
@@ -336,6 +600,30 @@
       "writtenOn": "2023-01-12T17:12:12Z",
       "side": 1,
       "message": "Print \u0027rv\u0027?",
+      "range": {
+        "startLine": 764,
+        "startChar": 39,
+        "endLine": 764,
+        "endChar": 40
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0dbc7c_1f88613d",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dfe746b_c4377375",
       "range": {
         "startLine": 764,
         "startChar": 39,
@@ -392,6 +680,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6058fb3_6cd450e2",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df5da86d_8fc8b42b",
+      "range": {
+        "startLine": 861,
+        "startChar": 2,
+        "endLine": 861,
+        "endChar": 26
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81d95551_fc5cda50",
@@ -433,6 +745,54 @@
         "startChar": 6,
         "endLine": 6,
         "endChar": 9
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdaf060b_14c035fd",
+        "filename": "driver/wpc/cps8200_bootloader.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cd4b454_33789727",
+      "range": {
+        "startLine": 6,
+        "startChar": 6,
+        "endLine": 6,
+        "endChar": 9
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10210333_90599874",
+        "filename": "driver/wpc/cps8200_bootloader.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-01-13T02:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81d95551_fc5cda50",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 23
       },
       "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
