@@ -187,6 +187,12 @@ static void set_duty_cycle(int fan, int percent)
 	/* Disable thermal engine automatic fan control. */
 	set_thermal_control_enabled(fan, 0);
 
+	/* Ensure to set duty cycle within the limit */
+	if (percent < CONFIG_FAN_MIN_DUTY_PCT)
+		percent = CONFIG_FAN_MIN_DUTY_PCT;
+	else if (percent > CONFIG_FAN_MAX_DUTY_PCT)
+		percent = CONFIG_FAN_MAX_DUTY_PCT;
+
 	/* Set the duty cycle */
 	fan_set_duty(FAN_CH(fan), percent);
 }

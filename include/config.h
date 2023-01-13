@@ -2037,6 +2037,15 @@
 /* Number of cooling fans. Undef if none. */
 #undef CONFIG_FANS
 
+/*
+ * Valid minimum & maximum percentage of fanduty cycle for any fan ranges
+ * from 0% - 100%. These default values could be redefined in board specific
+ * files for limiting the fanduty percentage further for controlling the
+ * fan speed.
+ */
+#define CONFIG_FAN_MIN_DUTY_PCT 0
+#define CONFIG_FAN_MAX_DUTY_PCT 100
+
 /* Percentage to which all fans are set at initiation */
 #define CONFIG_FAN_INIT_SPEED 100
 
