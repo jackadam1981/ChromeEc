@@ -6931,6 +6931,7 @@ enum tcpc_cc_polarity {
  * 1.0-3.0 with the major revision being one greater than the binary value.
  */
 #define PD_STATUS_REV_SET_MAJOR(r) ((r + 1) << 12)
+#define PD_STATUS_REV_SET_MINOR(r) (r << 8)
 #define PD_STATUS_REV_GET_MAJOR(r) ((r >> 12) & 0xF)
 #define PD_STATUS_REV_GET_MINOR(r) ((r >> 8) & 0xF)
 

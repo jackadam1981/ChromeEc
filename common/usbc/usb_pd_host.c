@@ -12,6 +12,7 @@
 #include "usb_pd.h"
 #include "usb_pd_dpm_sm.h"
 #include "usb_pd_tcpm.h"
+#include "usb_pe_sm.h"
 #include "util.h"
 
 #include <string.h>
@@ -210,10 +211,15 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 
 	r->events = pd_get_events(p->port);
 
-	r->sop_revision = r->sop_connected ?
-				  PD_STATUS_REV_SET_MAJOR(
-					  pd_get_rev(p->port, TCPCI_MSG_SOP)) :
-				  0;
+	if (r->sop_connected) {
+		r->sop_revision =
+			PD_STATUS_REV_SET_MAJOR(
+				pd_get_rev(p->port, TCPCI_MSG_SOP)) |
+			PD_STATUS_REV_SET_MINOR(
+				pe_get_partner_rmdo(p->port).minor_rev);
+	} else {
+		r->sop_revision = 0;
+	}
 	r->sop_prime_revision =
 		pd_get_identity_discovery(p->port, TCPCI_MSG_SOP_PRIME) ==
 				PD_DISC_COMPLETE ?
