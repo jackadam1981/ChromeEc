@@ -34,6 +34,24 @@
       "parentUuid": "10092449_5999eb6c",
       "revId": "b54b8be8b2b001377dec45aaa3f04df8654d3c71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18353b70_7d21390d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-13T20:43:47Z",
+      "side": 1,
+      "message": "That\u0027s kind of a fundamental limitation of the way we\u0027ve structured our Zephyr tests so far. It\u0027s hard to compose a single test across different setups without writing a lot of boilerplate.",
+      "parentUuid": "80fff110_93c04571",
+      "revId": "b54b8be8b2b001377dec45aaa3f04df8654d3c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
