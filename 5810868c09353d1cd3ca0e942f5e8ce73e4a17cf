@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20bbf33d_63edc163",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 27
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-13T21:29:57Z",
+      "side": 1,
+      "message": "I don\u0027t think this config option is needed.  For the nissa program, the interrupt is shared by the TCPC and BC1.2.  However Zephyr allows multiple callers to register with a GPIO interrupt.\n\nSo I believe Nissa can use your common TCPC interrupt handler, and the nissa board code can still enable it\u0027s own interrupt callback for the BC1.2 device.\n\nYou should ask that @amcrae@google.com or @pmarheine@chromium.org verify operation on a Nissa board if you don\u0027t have access to one.",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "5810868c09353d1cd3ca0e942f5e8ce73e4a17cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
