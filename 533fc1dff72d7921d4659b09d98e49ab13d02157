@@ -157,6 +157,30 @@
       },
       "revId": "533fc1dff72d7921d4659b09d98e49ab13d02157",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ec7dbf0_2e190694",
+        "filename": "zephyr/test/herobrine/src/board_chipset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-01-13T02:16:59Z",
+      "side": 1,
+      "message": "2023-01-13 10:02:57,039 - twister - DEBUG - OUTPUT: SUITE PASS - 100.00% [board_chipset]: pass \u003d 4, fail \u003d 0, skip \u003d 0, total \u003d 4 duration \u003d 1.400 seconds\n2023-01-13 10:02:57,039 - twister - DEBUG - OUTPUT:  - PASS - [board_chipset.test_disconnect_battery_delayed_boot] duration \u003d 0.680 seconds\n2023-01-13 10:02:57,040 - twister - DEBUG - OUTPUT:  - PASS - [board_chipset.test_good_battery_normal_boot] duration \u003d 0.020 seconds\n2023-01-13 10:02:57,040 - twister - DEBUG - OUTPUT:  - PASS - [board_chipset.test_low_battery_delayed_boot] duration \u003d 0.680 seconds\n2023-01-13 10:02:57,040 - twister - DEBUG - OUTPUT:  - PASS - [board_chipset.test_low_battery_normal_boot] duration \u003d 0.020 seconds",
+      "parentUuid": "6c8e832e_34f540a8",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 35
+      },
+      "revId": "533fc1dff72d7921d4659b09d98e49ab13d02157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
