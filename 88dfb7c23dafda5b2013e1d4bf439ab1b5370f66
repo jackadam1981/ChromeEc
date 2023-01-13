@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6db41555_62b3827a",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-13T20:45:44Z",
+      "side": 1,
+      "message": "Will cmd_id not be used for non-update purpose?",
+      "parentUuid": "1eaf1c3d_ff526bb3",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 22
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f805909_0cc47db8",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 16
