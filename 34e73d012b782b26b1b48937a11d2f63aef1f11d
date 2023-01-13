@@ -33,6 +33,24 @@
       "message": "If it\u0027s OK to call this from a host command, then it should be `pd_get_partner_rmdo` and declared in `usb_pd.h`. If it\u0027s not safe to call this function from a different task, then you need to provide some kind of synchronized way of doing it.\n\nPerhaps `pd_get_rev` should somehow incorporate the information from the RMDO to keep the API simple.",
       "revId": "34e73d012b782b26b1b48937a11d2f63aef1f11d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a17d7930_3f7528fe",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-13T17:17:54Z",
+      "side": 1,
+      "message": "What about reporting the 16 non-reserved bits of the RMDO to the AP and falling back to `pd_get_rev()` if we don\u0027t have the detailed information available?\n\nThat way, we can maximize the information available to the AP.  Unifying `pd_get_rev()` with the RMDO would be nice, but would require a fair number of updates to how we run revision checks in the TCPMv2 stack.  So we can do that if we\u0027re up for the level of change lift. \n\nIf we do add in the version bits, the comment for sop_revision in ec_commands.h would need updated to match.",
+      "parentUuid": "27f23fd1_2a6be91c",
+      "revId": "34e73d012b782b26b1b48937a11d2f63aef1f11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
