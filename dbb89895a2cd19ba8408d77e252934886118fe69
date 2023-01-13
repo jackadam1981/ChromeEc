@@ -16,6 +16,24 @@
       "message": "These files looks similar (or even identical). Do you expect that it will change in the future? Maybe better approach would be to have single file included by multiple platforms in CMakeLists.txt or symlinks? Having 5 copies of the same file may be cumbersome if edits will be required.",
       "revId": "dbb89895a2cd19ba8408d77e252934886118fe69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5b60a8f_d9c775e0",
+        "filename": "zephyr/test/skyrim/src/crystaldrift/ppc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-13T18:17:10Z",
+      "side": 1,
+      "message": "The boards are using slightly different PPCs (notably, winterhold is using a different PPC on C0 than the other boards).\n\nCan the test code be shared with some kind of clever device tree checking?  Actually, for that matter, could the ppc_config.c files be shared with some kind of clever device tree checking to figure out which chip is where?",
+      "parentUuid": "5c0180a3_2041547a",
+      "revId": "dbb89895a2cd19ba8408d77e252934886118fe69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
