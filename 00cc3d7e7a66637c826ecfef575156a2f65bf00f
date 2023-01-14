@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6c04c1f_1e37cc4a",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-14T20:47:51Z",
+      "side": 1,
+      "message": "Add one commit per state per level, keeping previous code separating by Kconfig.",
+      "revId": "00cc3d7e7a66637c826ecfef575156a2f65bf00f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
