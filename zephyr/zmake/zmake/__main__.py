@@ -205,6 +205,24 @@ def get_argparser():
         action="store_true",
         help="Keep temporary build directories on exit",
     )
+    compare_builds.add_argument(
+        "-con",
+        "--compare-configs",
+        action="store_true",
+        help="Compare configs of build outputs",
+    )
+    compare_builds.add_argument(
+        "-bin",
+        "--compare-binaries",
+        action="store_false",
+        help="Don't compare binaries of build outputs",
+    )
+    compare_builds.add_argument(
+        "-dt",
+        "--compare-devicetrees",
+        action="store_true",
+        help="Compare devicetrees of build outputs",
+    )
     add_common_build_args(compare_builds)
 
     list_projects = sub.add_parser(
@@ -410,8 +428,15 @@ def main(argv=None):
         return result or wait_rv
     finally:
         multiproc.LogWriter.wait_for_log_end()
+        logging.error(
+            "\n".join(
+                f"Failed projects by diff in {k} : {', '.join(v)}"
+                for k, v in zmake.cmp_failed_projects.items()
+                if v
+            ),
+        )
         if zmake.failed_projects:
-            logging.error("Failed projects: %s", zmake.failed_projects)
+            logging.error("All failed projects: %s", zmake.failed_projects)
 
 
 if __name__ == "__main__":
