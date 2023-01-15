@@ -235,3 +235,85 @@ class CompareBuilds:
                 failed_projects.append(project.config.project_name)
 
         return failed_projects
+
+    def _compare_build_files(self, project, build_mode, file):
+        build_path = (
+            pathlib.Path("ec")
+            / "build"
+            / "zephyr"
+            / pathlib.Path(project.config.project_name)
+            / f"build-{build_mode}"
+            / "zephyr"
+        )
+
+        build_dir1 = self.checkouts[0].modules_dir / build_path
+        build_dir2 = self.checkouts[1].modules_dir / build_path
+
+        file1 = build_dir1 / file
+        file2 = build_dir2 / file
+
+        try:
+            data1 = ""
+            data2 = ""
+            with open(file1) as fp1, open(file2) as fp2:
+                data1 = fp1.read()
+                data2 = fp2.read()
+            data1 = data1.replace(self.checkouts[0].full_ref, "")
+            data2 = data2.replace(self.checkouts[1].full_ref, "")
+            return data1 == data2
+        except FileNotFoundError as err:
+            logging.error(
+                "Zephyr build-%s %s file not found for project %s: %s",
+                build_mode,
+                file,
+                project.config.project_name,
+                err,
+            )
+        return False
+
+    def _check_build_files(self, project, file):
+        return self._compare_build_files(
+            project, "ro", file
+        ) and self._compare_build_files(project, "rw", file)
+
+    def check_configs(self, projects):
+        """Compare Zephyr EC Config files for two different source trees
+
+        Args:
+            projects: List of projects to compare the .config files.
+
+        Returns:
+            A list of projects that failed to compare.  An empty list indicates that
+            all projects compared successfully.
+        """
+
+        failed_projects = []
+        for project in projects:
+            if project.config.is_test:
+                continue
+
+            if not self._check_build_files(project, ".config"):
+                failed_projects.append(project.config.project_name)
+
+        return failed_projects
+
+    def check_devicetrees(self, projects):
+        """Compare Zephyr EC devicetree files for two different source trees
+
+        Args:
+            projects: List of projects to compare the zephyr.dts files.
+
+        Returns:
+            A list of projects that failed to compare.  An empty list indicates that
+            all projects compared successfully.
+        """
+
+        failed_projects = []
+        for project in projects:
+            if project.config.is_test:
+                continue
+
+            if not self._check_build_files(project, "zephyr.dts"):
+                failed_projects.append(project.config.project_name)
+
+        return failed_projects
