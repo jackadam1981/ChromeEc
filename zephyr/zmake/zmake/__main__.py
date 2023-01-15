@@ -205,6 +205,12 @@ def get_argparser():
         action="store_true",
         help="Keep temporary build directories on exit",
     )
+    compare_builds.add_argument(
+        "-c",
+        "--compare-configs",
+        action="store_true",
+        help="Compare configs of build outputs",
+    )
     add_common_build_args(compare_builds)
 
     list_projects = sub.add_parser(
@@ -410,6 +416,16 @@ def main(argv=None):
         return result or wait_rv
     finally:
         multiproc.LogWriter.wait_for_log_end()
+        if zmake.bin_failed_projects:
+            logging.error(
+                "Failed projects by binary difference: %s",
+                zmake.bin_failed_projects,
+            )
+        if zmake.config_failed_projects:
+            logging.error(
+                "Failed projects by config difference: %s",
+                zmake.config_failed_projects,
+            )
         if zmake.failed_projects:
             logging.error("Failed projects: %s", zmake.failed_projects)
 
