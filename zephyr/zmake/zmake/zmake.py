@@ -191,6 +191,8 @@ class Zmake:
 
         self.executor = zmake.multiproc.Executor()
         self._sequential = self.jobserver.is_sequential() and not goma
+        self.bin_failed_projects = []
+        self.config_failed_projects = []
         self.failed_projects = []
 
     @property
@@ -342,6 +344,7 @@ class Zmake:
         extra_cflags=None,
         keep_temps=False,
         cmake_defs=None,
+        compare_configs=False,
     ):
         """Compare EC builds at two commits."""
         temp_dir = tempfile.mkdtemp(prefix="zcompare-")
@@ -404,7 +407,12 @@ class Zmake:
                 )
                 return result
 
-        self.failed_projects = cmp_builds.check_binaries(projects)
+        self.bin_failed_projects = cmp_builds.check_binaries(projects)
+        if compare_configs:
+            self.config_failed_projects = cmp_builds.check_configs(projects)
+        self.failed_projects = list(
+            set(self.bin_failed_projects + self.config_failed_projects)
+        )
 
         if len(self.failed_projects) == 0:
             self.logger.info("Zephyr compare builds successful:")
