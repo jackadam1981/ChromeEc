@@ -235,3 +235,66 @@ class CompareBuilds:
                 failed_projects.append(project.config.project_name)
 
         return failed_projects
+
+    def _compare_configs(self, project, build_mode):
+        build_path = (
+            pathlib.Path("ec")
+            / "build"
+            / "zephyr"
+            / pathlib.Path(project.config.project_name)
+            / f"build-{build_mode}"
+            / "zephyr"
+        )
+
+        build_dir1 = self.checkouts[0].modules_dir / build_path
+        build_dir2 = self.checkouts[1].modules_dir / build_path
+
+        config_output1 = build_dir1 / ".config"
+        config_output2 = build_dir2 / ".config"
+
+        try:
+            with open(config_output1) as config1, open(
+                config_output2
+            ) as config2:
+
+                config_data1 = config1.read()
+                config_data1 = config_data1.replace(
+                    self.checkouts[0].full_ref, ""
+                )
+                config_data2 = config2.read()
+                config_data2 = config_data2.replace(
+                    self.checkouts[1].full_ref, ""
+                )
+                return config_data1 == config_data2
+        except FileNotFoundError as err:
+            logging.error(
+                "Zephyr build-%s .config file not found for project %s : %s",
+                build_mode,
+                project.config.project_name,
+                err,
+            )
+        return False
+
+    def check_configs(self, projects):
+        """Compare Zephyr EC Config files for two different source trees
+
+        Args:
+            projects: List of projects to compare the .config files.
+
+        Returns:
+            A list of projects that failed to compare.  An empty list indicates that
+            all projects compared successfully.
+        """
+
+        failed_projects = []
+        for project in projects:
+            if project.config.is_test:
+                continue
+
+            if not (
+                self._compare_configs(project, "ro")
+                and self._compare_configs(project, "rw")
+            ):
+                failed_projects.append(project.config.project_name)
+
+        return failed_projects
