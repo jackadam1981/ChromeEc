@@ -29,9 +29,6 @@ config CROS_EC_DATA_RAM_SIZE
 config CROS_EC_RAM_SIZE
 	default 0x0000f800
 
-config CROS_EC_RO_MEM_OFF
-	default 0x0
-
 # NPCX993F: Image size limited by 1/2 Flash size (256 KiB) and
 #           code RAM size (256 KiB)
 # NPCX996F: Image size limited by code RAM size (192 KiB)

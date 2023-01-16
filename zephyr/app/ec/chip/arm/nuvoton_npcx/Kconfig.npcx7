@@ -28,9 +28,6 @@ config CROS_EC_DATA_RAM_SIZE
 config CROS_EC_RAM_SIZE
 	default 0x0000f800
 
-config CROS_EC_RO_MEM_OFF
-	default 0x0
-
 # NPCX796FB/NPCX796FC: Image size limited by code RAM size (192 KiB)
 # NPCX797FC:           Image size limited by 1/2 Flash size (256 KiB)
 config CROS_EC_RO_SIZE

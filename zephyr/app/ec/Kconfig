@@ -129,6 +129,7 @@ config CROS_EC_PROGRAM_MEMORY_BASE
 config CROS_EC_RO_MEM_OFF
 	hex "The RO region's offset."
 	default 0x0 if ARCH_POSIX
+	default $(dt_node_int_prop_hex,/binman/wp-ro,offset)
 	help
 		This will be used to determine if the current PC is in the RO section.
 

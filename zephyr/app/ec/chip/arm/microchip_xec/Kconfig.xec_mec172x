@@ -36,9 +36,6 @@ config CROS_EC_RAM_SIZE
 config FLASH_SIZE
 	default 512
 
-config CROS_EC_RO_MEM_OFF
-	default 0x0
-
 # was 0x40000
 config CROS_EC_RO_SIZE
 	default 0x3F000
