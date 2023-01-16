@@ -400,7 +400,7 @@ static void zephyr_print(const char *buff, size_t size)
 	 */
 	if (k_is_in_isr() || shell_stopped ||
 	    shell_zephyr->ctx->state != SHELL_STATE_ACTIVE) {
-		printk("%s", buff);
+		printk("!%s", buff);
 	} else {
 		shell_fprintf(shell_zephyr, SHELL_NORMAL, "%s", buff);
 		if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE))
