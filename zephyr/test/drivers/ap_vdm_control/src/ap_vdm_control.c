@@ -599,6 +599,69 @@ static void run_verify_dp_entry(struct ap_vdm_control_fixture *fixture,
 			      fixture->partner.dp_config_vdm);
 }
 
+ZTEST_F(ap_vdm_control, test_vdm_dp_hpd_transmit)
+{
+	uint32_t vdm_attention_data[2];
+	int opos = 1;
+	struct ec_response_typec_status status;
+
+	run_verify_dp_entry(fixture, opos);
+
+	/* Test that HPD is still registered */
+	vdm_attention_data[0] =
+		VDO(USB_SID_DISPLAYPORT, 1,
+		    VDO_OPOS(opos) | VDO_CMDT(CMDT_INIT) | CMD_ATTENTION) |
+		VDO_SVDM_VERS(VDM_VER20);
+	vdm_attention_data[1] = VDO_DP_STATUS(1, /* IRQ_HPD */
+					      true, /* HPD_HI|LOW - Changed*/
+					      0, /* request exit DP */
+					      0, /* request exit USB */
+					      0, /* MF pref */
+					      true, /* DP Enabled */
+					      0, /* power low e.g. normal */
+					      0x2 /* Connected as Sink */);
+	tcpci_partner_send_data_msg(&fixture->partner, PD_DATA_VENDOR_DEF,
+				    vdm_attention_data, 2, 0);
+
+	k_sleep(K_MSEC(100));
+	/* Verify the board's HPD notification triggered */
+	/*
+	 * Note: this should really use a HPD GPIO since mux HPDs will be set
+	 * by the AP
+	 */
+	status = host_cmd_typec_status(TEST_PORT);
+	zassert_equal((status.mux_state & USB_PD_MUX_HPD_LVL),
+		      USB_PD_MUX_HPD_LVL, "Failed to set HPD level in mux");
+	zassert_equal((status.mux_state & USB_PD_MUX_HPD_IRQ),
+		      USB_PD_MUX_HPD_IRQ, "Failed to set HPD IRQin mux");
+}
+
+ZTEST_F(ap_vdm_control, test_vdm_dp_shutdown_exit)
+{
+	int opos = 1;
+	struct typec_vdm_req req;
+
+	run_verify_dp_entry(fixture, opos);
+
+	/*
+	 * Trigger an EC shutdown and ensure EC automatically sends an
+	 * ExitMode VDM
+	 */
+	tcpci_partner_common_enable_pd_logging(&fixture->partner, true);
+	test_set_chipset_to_s5();
+	tcpci_partner_common_enable_pd_logging(&fixture->partner, false);
+
+	/* Use the req structure to package what we expect the EC to send */
+	req.vdm_data[0] =
+		VDO(USB_SID_DISPLAYPORT, 1,
+		    VDO_OPOS(opos) | VDO_CMDT(CMDT_INIT) | CMD_EXIT_MODE) |
+		VDO_SVDM_VERS(VDM_VER20);
+	req.vdm_data_objects = 1;
+	req.partner_type = TYPEC_PARTNER_SOP;
+
+	verify_vdm_req(fixture, &req);
+}
+
 ZTEST_F(ap_vdm_control, test_vdm_attention_none)
 {
 	struct ec_response_typec_vdm_response vdm_resp;
