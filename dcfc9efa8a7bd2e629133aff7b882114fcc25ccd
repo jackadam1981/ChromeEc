@@ -16,6 +16,24 @@
       "message": "Copied the CQ failure message:\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real: app/libapp.a(board_chipset.c.obj): in function `board_chipset_pre_init\u0027:\n/mnt/host/source/src/platform/ec/zephyr/program/herobrine/src/board_chipset.c:94: undefined reference to `pd_get_task_cc_state\u0027\n\nPlease include the `usb_pd.h` in the test file.",
       "revId": "dcfc9efa8a7bd2e629133aff7b882114fcc25ccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe19f90_a2a4869c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-01-16T00:42:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee7b2499_2569f031",
+      "revId": "dcfc9efa8a7bd2e629133aff7b882114fcc25ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
