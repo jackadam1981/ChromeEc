@@ -87,6 +87,42 @@
       "parentUuid": "5f8d91ae_6beebda7",
       "revId": "79f636521d5831ff6103e637c018fc848000de0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee3bf2f8_3f3a20c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-16T04:54:15Z",
+      "side": 1,
+      "message": "Setting `CC_DEFAULT` to exclude `CC_DPTF` seems like a good option, though it doesn\u0027t currently seem possible to configure that in a zephyr build.\n\nWhat if we added a default-off option to drop logs from ISR rather than printk them? That would fix the immediate problem of printk-for-logging, and could later be adjusted to help prevent accidental misuse in the future (perhaps by making it panic in debug builds instead of doing nothing).",
+      "parentUuid": "25b6bfd2_3e27eae9",
+      "revId": "79f636521d5831ff6103e637c018fc848000de0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa154b6_ce536a51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-16T04:54:15Z",
+      "side": 1,
+      "message": "Multiple tests set `chan 0` to suppress all output and later `chan 0xffffffff` to turn everything back on though.",
+      "parentUuid": "05881214_3bb60d3a",
+      "revId": "79f636521d5831ff6103e637c018fc848000de0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
