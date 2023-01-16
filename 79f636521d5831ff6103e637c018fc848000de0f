@@ -34,6 +34,23 @@
       "parentUuid": "99138fdc_6c7a2753",
       "revId": "79f636521d5831ff6103e637c018fc848000de0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25b6bfd2_3e27eae9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-16T04:42:55Z",
+      "side": 1,
+      "message": "I think my preferred option is to just remove these logs, or put them behind a config item, just because they are so noisy.",
+      "revId": "79f636521d5831ff6103e637c018fc848000de0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
