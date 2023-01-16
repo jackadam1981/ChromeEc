@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "610792c2_d142a71b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-16T23:58:57Z",
+      "side": 1,
+      "message": "Overall, I was still able to reproduce the console hang with this patch, so this particular fix, whilst maybe useful generally, doesn\u0027t help with the P0 issue.",
+      "revId": "cfc347f3b6d102b8acdb199b184a395a997169bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59218e20_22e97a9c",
