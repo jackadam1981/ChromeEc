@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc15269_e84e6fad",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-16T11:40:56Z",
+      "side": 1,
+      "message": "Since we are adding more checks it may be cool to add a flag for the binary check as well (keep it at default true to maintain the current behavior with no flags). Then one could run the check to only verify the config or whatever other check we\u0027ll end up adding.",
+      "revId": "d60014447a56383b5e4a98d6f035f70dba9bd6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377155b7_d1ba6c63",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-16T11:40:56Z",
+      "side": 1,
+      "message": "There\u0027s probably going to be more of these in the future (devicetree check etc...), how about doing a dict() of sets keyed by the name of the check? Like `failed_projects[\u0027config\u0027] \u003d (\u0027projecta\u0027, \u0027projectb\u0027)` etc. Then you could iterate over that for the list on the output and have less code duplication. The overall `failed_projects` could be calculated there as well, no need to store it.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "d60014447a56383b5e4a98d6f035f70dba9bd6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
