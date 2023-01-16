@@ -123,6 +123,42 @@
       "parentUuid": "05881214_3bb60d3a",
       "revId": "79f636521d5831ff6103e637c018fc848000de0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca1e6114_0b52c1f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-16T05:02:07Z",
+      "side": 1,
+      "message": "Yes, configuring all ISR console output to be dropped is an option.\nIt seems drastic, and I am not if there would be important messages we could miss.\nTo me, logging the occasional line through printk is tolerable, but when we get 25 at once, that\u0027s bad. Hence my thought to flag it when it happens.\nI\u0027m going to bounce this to Keith for an opinion.",
+      "parentUuid": "ee3bf2f8_3f3a20c6",
+      "revId": "79f636521d5831ff6103e637c018fc848000de0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d1569ba_3ead763c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-16T05:02:07Z",
+      "side": 1,
+      "message": "Yes, this is definitely an issue with the lack of integration with Zephyr logging.",
+      "parentUuid": "9aa154b6_ce536a51",
+      "revId": "79f636521d5831ff6103e637c018fc848000de0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
