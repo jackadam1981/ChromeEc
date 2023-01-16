@@ -83,6 +83,39 @@ static void add_dp_discovery(struct tcpci_partner_data *partner)
 	partner->svids_vdos = VDO_INDEX_HDR + 2;
 }
 
+static void add_displayport_mode_responses(struct tcpci_partner_data *partner)
+{
+	/* Add DisplayPort EnterMode response */
+	partner->enter_mode_vdm[VDO_INDEX_HDR] =
+		VDO(USB_SID_DISPLAYPORT, /* structured VDM */ true,
+		    VDO_CMDT(CMDT_RSP_ACK) | CMD_ENTER_MODE) |
+		VDO_SVDM_VERS(VDM_VER20);
+	partner->enter_mode_vdos = VDO_INDEX_HDR + 1;
+
+	/* Add DisplayPort StatusUpdate response */
+	partner->dp_status_vdm[VDO_INDEX_HDR] =
+		VDO(USB_SID_DISPLAYPORT, /* structured VDM */ true,
+		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DP_STATUS) |
+		VDO_SVDM_VERS(VDM_VER20);
+	partner->dp_status_vdm[VDO_INDEX_HDR + 1] =
+		VDO_DP_STATUS(0, /* IRQ_HPD */
+			      false, /* HPD_HI|LOW - Changed*/
+			      0, /* request exit DP */
+			      0, /* request exit USB */
+			      1, /* MF pref */
+			      true, /* DP Enabled */
+			      0, /* power low e.g. normal */
+			      0x2 /* Connected as Sink */);
+	partner->dp_status_vdos = VDO_INDEX_HDR + 2;
+
+	/* Add DisplayPort Configure Response */
+	partner->dp_config_vdm[VDO_INDEX_HDR] =
+		VDO(USB_SID_DISPLAYPORT, /* structured VDM */ true,
+		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DP_CONFIG) |
+		VDO_SVDM_VERS(VDM_VER20);
+	partner->dp_config_vdos = VDO_INDEX_HDR + 1;
+}
+
 static void verify_vdm_req(struct ap_vdm_control_fixture *fixture,
 			   struct typec_vdm_req *req)
 {
@@ -148,6 +181,7 @@ static void ap_vdm_control_before(void *data)
 	/* Set up the partner as DP-capable with a passive cable */
 	add_dp_discovery(partner);
 	partner->cable = &passive_usb3;
+	add_displayport_mode_responses(partner);
 
 	/* Connect our port partner */
 	connect_source_to_port(&fix->partner, &fix->src_ext, 0, fix->tcpci_emul,
@@ -460,4 +494,150 @@ ZTEST_F(ap_vdm_control, test_vdm_request_no_send)
 	/* Check for an error on a fresh connection with no VDM REQ sent */
 	zassert_equal(host_command_process(&args), EC_RES_UNAVAILABLE,
 		      "Failed to see no message ready");
+}
+
+/* Tests for the DP entry flow and related requirements */
+static void verify_expected_reply(enum typec_partner_type type, int objects,
+				  uint32_t *contents)
+{
+	struct ec_response_typec_status status;
+	struct ec_response_typec_vdm_response vdm_resp;
+
+	status = host_cmd_typec_status(TEST_PORT);
+	zassert_true(status.events & PD_STATUS_EVENT_VDM_REQ_REPLY,
+		     "Failed to see VDM ACK event");
+
+	vdm_resp = host_cmd_typec_vdm_response(TEST_PORT);
+	zassert_equal(vdm_resp.partner_type, type,
+		      "Failed to see correct partner");
+	zassert_equal(vdm_resp.vdm_data_objects, objects,
+		      "Failed to see correct number of objects");
+	zassert_equal(memcmp(vdm_resp.vdm_response, contents,
+			     objects * sizeof(uint32_t)),
+		      0, "Failed to see correct VDM contents");
+}
+
+static void run_verify_dp_entry(struct ap_vdm_control_fixture *fixture,
+				int opos)
+{
+	/*
+	 * Test the full flow of DP entry and configure, to set up for
+	 * further test cases.
+	 */
+	struct typec_vdm_req req = {
+		.vdm_data = { VDO(USB_SID_DISPLAYPORT, 1,
+				  CMD_ENTER_MODE | VDO_OPOS(opos)) |
+			      VDO_SVDM_VERS(VDM_VER20) },
+		.vdm_data_objects = 1,
+		.partner_type = TYPEC_PARTNER_SOP,
+	};
+
+	/* Step 1: EnterMode */
+	host_cmd_typec_control_vdm_req(TEST_PORT, req);
+	k_sleep(K_MSEC(100));
+
+	verify_expected_reply(req.partner_type,
+			      fixture->partner.enter_mode_vdos,
+			      fixture->partner.enter_mode_vdm);
+
+	/* Step 2: DP Status */
+	req.vdm_data[0] =
+		VDO(USB_SID_DISPLAYPORT, 1, CMD_DP_STATUS | VDO_OPOS(opos));
+	req.vdm_data[0] |= VDO_SVDM_VERS(VDM_VER20);
+	req.vdm_data[1] = VDO_DP_STATUS(0, /* HPD IRQ  ... not applicable */
+					0, /* HPD level ... not applicable */
+					0, /* exit DP? ... no */
+					0, /* usb mode? ... no */
+					0, /* multi-function ... no */
+					0, /* currently enabled ... no */
+					0, /* power low? ... no */
+					1 /* DP source connected */);
+	req.vdm_data_objects = 2;
+	req.partner_type = TYPEC_PARTNER_SOP;
+
+	host_cmd_typec_control_vdm_req(TEST_PORT, req);
+	k_sleep(K_MSEC(100));
+
+	verify_expected_reply(req.partner_type, fixture->partner.dp_status_vdos,
+			      fixture->partner.dp_status_vdm);
+
+	/* Step 3: DP Configure */
+	req.vdm_data[0] =
+		VDO(USB_SID_DISPLAYPORT, 1, CMD_DP_CONFIG | VDO_OPOS(opos));
+	req.vdm_data[0] |= VDO_SVDM_VERS(VDM_VER20);
+	req.vdm_data[1] = VDO_DP_CFG(MODE_DP_PIN_D, /* pin mode */
+				     1, /* DPv1.3 signaling */
+				     2); /* Set that partner should be DP sink
+					  */
+	req.vdm_data_objects = 2;
+	req.partner_type = TYPEC_PARTNER_SOP;
+
+	host_cmd_typec_control_vdm_req(TEST_PORT, req);
+	k_sleep(K_MSEC(100));
+
+	verify_expected_reply(req.partner_type, fixture->partner.dp_config_vdos,
+			      fixture->partner.dp_config_vdm);
+}
+
+ZTEST_F(ap_vdm_control, test_vdm_dp_hpd_transmit)
+{
+	uint32_t vdm_attention_data[2];
+	int opos = 1;
+	struct ec_response_typec_status status;
+
+	run_verify_dp_entry(fixture, opos);
+
+	/* Test that HPD is still registered */
+	vdm_attention_data[0] =
+		VDO(USB_SID_DISPLAYPORT, 1,
+		    VDO_OPOS(opos) | VDO_CMDT(CMDT_INIT) | CMD_ATTENTION) |
+		VDO_SVDM_VERS(VDM_VER20);
+	vdm_attention_data[1] = VDO_DP_STATUS(1, /* IRQ_HPD */
+					      true, /* HPD_HI|LOW - Changed*/
+					      0, /* request exit DP */
+					      0, /* request exit USB */
+					      0, /* MF pref */
+					      true, /* DP Enabled */
+					      0, /* power low e.g. normal */
+					      0x2 /* Connected as Sink */);
+	tcpci_partner_send_data_msg(&fixture->partner, PD_DATA_VENDOR_DEF,
+				    vdm_attention_data, 2, 0);
+
+	k_sleep(K_MSEC(100));
+	/* Verify the board's HPD notification triggered */
+	/*
+	 * Note: this should really use a HPD GPIO since mux HPDs will be set
+	 * by the AP
+	 */
+	status = host_cmd_typec_status(TEST_PORT);
+	zassert_equal((status.mux_state & USB_PD_MUX_HPD_LVL),
+		      USB_PD_MUX_HPD_LVL, "Failed to set HPD level in mux");
+	zassert_equal((status.mux_state & USB_PD_MUX_HPD_IRQ),
+		      USB_PD_MUX_HPD_IRQ, "Failed to set HPD IRQin mux");
+}
+
+ZTEST_F(ap_vdm_control, test_vdm_dp_shutdown_exit)
+{
+	int opos = 1;
+	struct typec_vdm_req req;
+
+	run_verify_dp_entry(fixture, opos);
+
+	/*
+	 * Trigger an EC shutdown and ensure EC automatically sends an
+	 * ExitMode VDM
+	 */
+	tcpci_partner_common_enable_pd_logging(&fixture->partner, true);
+	test_set_chipset_to_s5();
+	tcpci_partner_common_enable_pd_logging(&fixture->partner, false);
+
+	/* Use the req structure to package what we expect the EC to send */
+	req.vdm_data[0] =
+		VDO(USB_SID_DISPLAYPORT, 1,
+		    VDO_OPOS(opos) | VDO_CMDT(CMDT_INIT) | CMD_EXIT_MODE) |
+		VDO_SVDM_VERS(VDM_VER20);
+	req.vdm_data_objects = 1;
+	req.partner_type = TYPEC_PARTNER_SOP;
+
+	verify_vdm_req(fixture, &req);
 }
