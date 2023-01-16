@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0682ab89_1bbee036",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-01-16T09:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86744f37_6f0d4274",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "8a7f84a75dfdf958bf745d16fd03fa1a53071d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce6037da_bf1f1f41",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb5f23a_2c3b46c1",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-01-16T09:41:48Z",
+      "side": 1,
+      "message": "Done.\nDidn\u0027t noticed this one (so that\u0027s why CQ failed)",
+      "parentUuid": "8c3b3f46_cf29cb71",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 21
+      },
+      "revId": "8a7f84a75dfdf958bf745d16fd03fa1a53071d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be8bd274_eee897a6",
@@ -83,6 +131,30 @@
       "writtenOn": "2023-01-16T08:57:29Z",
       "side": 1,
       "message": "Can you add a comment like that this is for handling a query with num_banks\u003d0?",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 14
+      },
+      "revId": "8a7f84a75dfdf958bf745d16fd03fa1a53071d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c61220cb_7cf69d5e",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-01-16T09:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be8bd274_eee897a6",
       "range": {
         "startLine": 243,
         "startChar": 5,
