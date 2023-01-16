@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0e725c9_c33fd238",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-01-16T09:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce6037da_bf1f1f41",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 51
+      },
+      "revId": "8a7f84a75dfdf958bf745d16fd03fa1a53071d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c3b3f46_cf29cb71",
@@ -178,6 +202,30 @@
       "writtenOn": "2023-01-16T09:41:24Z",
       "side": 1,
       "message": "You can move `r-\u003enum_banks_total \u003d 1;` to the beginning of the function (and remove the assignment from the end).\n\nI think it would be better to change `r-\u003ebanks[0]` assignments to:\n```\nif (num_banks \u003e 0) {\n\tr-\u003ebanks[0].count \u003d crec_flash_total_banks();\n\tr-\u003ebanks[0].size_exp \u003d __fls(CONFIG_FLASH_BANK_SIZE);\n\tr-\u003ebanks[0].write_size_exp \u003d __fls(CONFIG_FLASH_WRITE_SIZE);\n\tr-\u003ebanks[0].erase_size_exp \u003d __fls(CONFIG_FLASH_ERASE_SIZE);\n\tr-\u003ebanks[0].protect_size_exp \u003d __fls(CONFIG_FLASH_BANK_SIZE);\n\n\tr-\u003enum_banks_desc \u003d 1;\n} else {\n\tr-\u003enum_banks_desc \u003d 0;\n}\n\nreturn EC_RES_SUCCESS;\n```",
+      "range": {
+        "startLine": 245,
+        "startChar": 2,
+        "endLine": 245,
+        "endChar": 25
+      },
+      "revId": "8a7f84a75dfdf958bf745d16fd03fa1a53071d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1833ac4_cde88b07",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-01-16T09:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9931d15_9fcffc0c",
       "range": {
         "startLine": 245,
         "startChar": 2,
