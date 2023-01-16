@@ -52,7 +52,8 @@ void test_set_battery_level(int percentage);
 void test_set_chipset_to_s0(void);
 
 /**
- * @brief Set the chipset to any stable state. Call all necessary hooks.
+ * @brief Set the chipset to any stable state. Calls necessary hooks for
+ * G3 and S0 only.
  *
  * Supported states are:
  * <ul>
@@ -71,6 +72,9 @@ void test_set_chipset_to_power_level(enum power_state new_state);
 
 /** @brief Set chipset to G3 state. Call all necessary hooks. */
 void test_set_chipset_to_g3(void);
+
+/** @brief Set chipset to S5 state. Call all necessary hooks. */
+void test_set_chipset_to_s5(void);
 
 /**
  * Run an ACPI read to the specified address.
