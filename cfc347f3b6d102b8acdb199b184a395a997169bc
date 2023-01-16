@@ -16,6 +16,24 @@
       "message": "I think this would be clearer as:\n\n```\n(in_isr \u0026\u0026 IS_ENABLED(CONFIG_PLATFORM_EC_ISR_CONSOLE_OUTPUT))\n|| shell_stopped\n|| ... SHELL_STATE_ACTIVE\n```\n\nrather than duplicating parts of the condition at a deeper indent level.",
       "revId": "cfc347f3b6d102b8acdb199b184a395a997169bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6067e16e_1a0809ed",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-16T23:57:46Z",
+      "side": 1,
+      "message": "Unfortunately that logic isn\u0027t quite right - if the config is off, the fact it is in an ISR will be ignored, meaning the other branch is taken, which means it is trying to use the normal shell functions in an ISR.\n\nI couldn\u0027t see any way of avoiding having the second check.\nEssentially we need to detect when we can\u0027t use the normal functions (which includes the 3 conditions), and after that decide separately that if it\u0027s an ISR we optionally allow printing using printk.\nThe order of checks may be important as well (maybe), so rearranging the conditions was something I was trying to avoid.",
+      "parentUuid": "59218e20_22e97a9c",
+      "revId": "cfc347f3b6d102b8acdb199b184a395a997169bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
