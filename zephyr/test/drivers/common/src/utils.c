@@ -124,6 +124,21 @@ void test_set_chipset_to_g3(void)
 		      power_get_state());
 }
 
+void test_set_chipset_to_s5(void)
+{
+	/* Let power code to settle on a particular state first. */
+	task_wake(TASK_ID_CHIPSET);
+	k_sleep(K_SECONDS(1));
+
+	printk("%s: Forcing shutdown\n", __func__);
+	chipset_force_shutdown(CHIPSET_RESET_KB_SYSRESET);
+	/* Wait long enough to hit S5, but not so long we fall to G3 */
+	k_sleep(K_SECONDS(5));
+	/* Check if chipset is in correct state */
+	zassert_equal(POWER_S5, power_get_state(), "Expected G3, got %d",
+		      power_get_state());
+}
+
 void connect_source_to_port(struct tcpci_partner_data *partner,
 			    struct tcpci_src_emul_data *src, int pdo_index,
 			    const struct emul *tcpci_emul,
