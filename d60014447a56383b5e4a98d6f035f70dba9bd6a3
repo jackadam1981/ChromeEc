@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ae368ed_6a10abc5",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-01-16T14:34:45Z",
+      "side": 1,
+      "message": "I added -bin subcommand to do that in new revision",
+      "parentUuid": "8dc15269_e84e6fad",
+      "revId": "d60014447a56383b5e4a98d6f035f70dba9bd6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "377155b7_d1ba6c63",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 3
@@ -31,6 +49,30 @@
       "writtenOn": "2023-01-16T11:40:56Z",
       "side": 1,
       "message": "There\u0027s probably going to be more of these in the future (devicetree check etc...), how about doing a dict() of sets keyed by the name of the check? Like `failed_projects[\u0027config\u0027] \u003d (\u0027projecta\u0027, \u0027projectb\u0027)` etc. Then you could iterate over that for the list on the output and have less code duplication. The overall `failed_projects` could be calculated there as well, no need to store it.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "d60014447a56383b5e4a98d6f035f70dba9bd6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e9ccf18_4aa0fa0b",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-01-16T14:34:45Z",
+      "side": 1,
+      "message": "Seems like failed_projects is being used by zmake for builds others along with \u0027compare-builds\u0027, they are performing actions assuming it\u0027s a list, if I change it to dict I need to update them as well. I merged the list of failed projects of compare-builds to one as dict. Thank you",
+      "parentUuid": "377155b7_d1ba6c63",
       "range": {
         "startLine": 194,
         "startChar": 0,
