@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59218e20_22e97a9c",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-16T22:38:23Z",
+      "side": 1,
+      "message": "I think this would be clearer as:\n\n```\n(in_isr \u0026\u0026 IS_ENABLED(CONFIG_PLATFORM_EC_ISR_CONSOLE_OUTPUT))\n|| shell_stopped\n|| ... SHELL_STATE_ACTIVE\n```\n\nrather than duplicating parts of the condition at a deeper indent level.",
+      "revId": "cfc347f3b6d102b8acdb199b184a395a997169bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
