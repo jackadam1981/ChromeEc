@@ -410,7 +410,8 @@ void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 
 	/* Clear the flag now that reply fields are updated */
 	DPM_CLR_FLAG(port, DPM_FLAG_SEND_VDM_REQ);
-#else
+#endif /* CONFIG_USB_PD_VDM_AP_CONTROL */
+
 	switch (svid) {
 	case USB_SID_DISPLAYPORT:
 		dp_vdm_acked(port, type, vdo_count, vdm);
@@ -429,7 +430,6 @@ void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		CPRINTS("C%d: Received unexpected VDM ACK for SVID %d", port,
 			svid);
 	}
-#endif /* CONFIG_USB_PD_VDM_AP_CONTROL */
 }
 
 void dpm_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
@@ -450,7 +450,8 @@ void dpm_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 
 	/* Clear the flag now that reply fields are updated */
 	DPM_CLR_FLAG(port, DPM_FLAG_SEND_VDM_REQ);
-#else
+#endif /* CONFIG_USB_PD_VDM_AP_CONTROL */
+
 	switch (svid) {
 	case USB_SID_DISPLAYPORT:
 		dp_vdm_naked(port, type, vdm_cmd);
@@ -469,7 +470,6 @@ void dpm_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 		CPRINTS("C%d: Received unexpected VDM NAK for SVID %d", port,
 			svid);
 	}
-#endif /* CONFIG_USB_PD_VDM_AP_CONTROL */
 }
 
 enum ec_status dpm_copy_vdm_reply(int port, uint8_t *type, uint8_t *size,
@@ -494,6 +494,8 @@ enum ec_status dpm_copy_vdm_reply(int port, uint8_t *type, uint8_t *size,
 
 static void dpm_send_req_vdm(int port)
 {
+	uint32_t vdm_hdr = dpm[port].vdm_req[0];
+
 	/* Set up VDM REQ msg that was passed in previously */
 	if (pd_setup_vdm_request(port, dpm[port].req_type, dpm[port].vdm_req,
 				 dpm[port].vdm_req_cnt) == true)
@@ -509,9 +511,19 @@ static void dpm_send_req_vdm(int port)
 	 * yet ready to read.
 	 *
 	 */
-	if (PD_VDO_SVDM(dpm[port].vdm_req[0]) &&
-	    (PD_VDO_CMD(dpm[port].vdm_req[0]) == CMD_ATTENTION))
+	if (PD_VDO_SVDM(vdm_hdr) && (PD_VDO_CMD(vdm_hdr) == CMD_ATTENTION)) {
 		DPM_CLR_FLAG(port, DPM_FLAG_SEND_VDM_REQ);
+	} else if (PD_VDO_SVDM(vdm_hdr) &&
+		   PD_VDO_VID(vdm_hdr) == USB_SID_DISPLAYPORT) {
+		if (PD_VDO_CMD(vdm_hdr) == CMD_ENTER_MODE) {
+			/* Re-start the state machine if necessary */
+			if (dp_is_idle(port))
+				dp_init(port);
+		}
+
+		/* Ask the DP module to set up internal variables as needed */
+		dp_setup_ap_vdm(port, dpm[port].req_type, vdm_hdr);
+	}
 }
 
 void dpm_notify_attention(int port, size_t vdo_objects, uint32_t *buf)
