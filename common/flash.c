@@ -227,9 +227,6 @@ int crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
 	const struct ec_flash_bank *banks = flash_bank_array;
 	int banks_to_copy = MIN(ARRAY_SIZE(flash_bank_array), num_banks);
 
-	if (num_banks < 1)
-		return EC_RES_INVALID_PARAM;
-
 	memcpy(r->banks, banks, banks_to_copy * sizeof(struct ec_flash_bank));
 	r->num_banks_desc = banks_to_copy;
 	r->num_banks_total = ARRAY_SIZE(flash_bank_array);
@@ -243,8 +240,12 @@ int crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
 int crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
 				   int num_banks)
 {
-	if (num_banks < 1)
-		return EC_RES_INVALID_PARAM;
+	if (num_banks < 1) {
+		r->num_banks_desc = 0;
+		r->num_banks_total = 1;
+
+		return EC_RES_SUCCESS;
+	}
 
 	r->banks[0].count = crec_flash_total_banks();
 	r->banks[0].size_exp = __fls(CONFIG_FLASH_BANK_SIZE);
