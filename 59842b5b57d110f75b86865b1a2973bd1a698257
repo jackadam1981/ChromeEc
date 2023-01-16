@@ -22,6 +22,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e732c5c5_6d2fcfe5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2023-01-16T14:37:36Z",
+      "side": 1,
+      "message": "I\u0027ve added detailed info about the current issue observed and usage of this from Host side in comment https://partnerissuetracker.corp.google.com/issues/261701530#comment7 \nAs per my understanding, we might not need to add any other check because this EC_FAN_SPEED_STALLED is being used only at two places, [1] pwm_fan_second() function in \"common/fan.c\" file [2] print_fan() function in \"util/ectool.cc\" file and no other dependency there. \nAlso, regarding ectool.cc, it\u0027s already taken care for cmd_pwm_get_fan_rpm because as mentioned above this EC_FAN_SPEED_STALLED is used in above two functions and this cmd_pwm_get_fan_rpm() function is calling  print_fan() function. Above two functions mentioned in [1] and [2] are using EC_MEMMAP_FAN location for fan rpm.",
+      "parentUuid": "c0b0eaa7_f289a348",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
