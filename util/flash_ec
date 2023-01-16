@@ -12,6 +12,7 @@ if [[ "$(basename "${EC_DIR}")" != "ec" ]]; then
 	EC_DIR=
 fi
 
+
 # Loads script libraries.
 . "/usr/share/misc/shflags" || exit 1
 
@@ -142,7 +143,7 @@ BOARDS_RAIDEN=(
 	soraka
 )
 
-BOARDS_MCHP=(
+BOARDS_MCHP_INT_SPI=(
 	mtlrvpp_mchp
 )
 DEFAULT_PORT="${SERVOD_PORT:-9999}"
@@ -189,6 +190,7 @@ eval set -- "${FLAGS_ARGV}"
 if [[ $# -gt 0 ]]; then
 	die "invalid arguments: \"$*\""
 fi
+
 
 # Error messages
 MSG_PROGRAM_FAIL="Failed to flash EC firmware image"
@@ -250,7 +252,6 @@ function dut_control_get() {
 		error "${FUNCNAME[0]} failed: more than one argument: $*"
 		return 1
 	fi
-
 	local ARGS DUT_GETVAL RETVAL
 	ARGS=( "${DUT_CONTROL_CMD[@]}" "--value_only" "${DUT_CTRL_PREFIX}$1" )
 	RETVAL=0
@@ -260,7 +261,6 @@ function dut_control_get() {
 		warn "${FUNCNAME[0]} failed: ${ARGS[*]} returned ${RETVAL}."
 		return "${RETVAL}"
 	fi
-
 	echo "${DUT_GETVAL}"
 }
 
@@ -284,6 +284,8 @@ in_array() {
 }
 
 declare -a SUPPORTED_CHIPS
+
+
 
 if in_array "${BOARDS_STM32[@]}" "${BOARD}"; then
 	SUPPORTED_CHIPS+=("stm32")
@@ -325,13 +327,14 @@ if in_array "${BOARDS_IT83XX_SPI_PROGRAMMING[@]}" "${BOARD}"; then
 	SUPPORTED_CHIPS+=("ite_spi")
 fi
 
-if in_array "${BOARDS_MCHP[@]}" "${BOARD}"; then
-	SUPPORTED_CHIPS+=("mchp17xx")
+if in_array "${BOARDS_MCHP_INT_SPI[@]}" "${BOARD}"; then
+	SUPPORTED_CHIPS+=("mchp17xx_int_spi")
 fi
 
 if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 && -n "${FLAGS_chip}" ]]; then
 	SUPPORTED_CHIPS+=("${FLAGS_chip}")
 fi
+
 
 if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 ]]; then
 	SERVO_EC_CHIP="$(dut_control_get ec_chip)"
@@ -386,7 +389,7 @@ esac
 
 case "${CHIP}" in
 	"stm32"|"npcx_spi"|"npcx_int_spi"|"it83xx"|"npcx_uut"|"ite_spi"| \
-			"ite_spi_ccd_i2c"|"it8xxx2"|"mchp17xx")
+			"ite_spi_ccd_i2c"|"it8xxx2"|"mchp17xx_int_spi")
 		;;
 	*)
 		if [[ -n "${FLAGS_read}" ]]; then
@@ -403,7 +406,6 @@ case "${CHIP}" in
 esac
 
 SERVO_TYPE="$(dut_control_get servo_type || :)"
-
 if [[ "${SERVO_TYPE}" =~ ^servo_v4(p1)?_with_.*$ ]]; then
 	ACTIVE_DEVICE="$(dut_control_get active_dut_controller)"
 	if [[ ${ACTIVE_DEVICE} == neither ]]; then
@@ -700,13 +702,10 @@ LOCAL_BUILD=
 if [[ -n "${EC_DIR}" ]]; then
 	if [ "${FLAGS_ro}" = "${FLAGS_TRUE}" ] ; then
 		LOCAL_BUILD="${EC_DIR}/build/${BOARD}/RO/${EC_FILE}"
-		echo LOCAL_BUILD "${LOCAL_BUILD}"
 	elif [ "${FLAGS_zephyr}" = "${FLAGS_TRUE}" ] ; then
 		LOCAL_BUILD="${EC_DIR}/build/zephyr/${BOARD}/output/${EC_FILE}"
-		echo LOCAL_BUILD "${LOCAL_BUILD}"
 	else
 		LOCAL_BUILD="${EC_DIR}/build/${BOARD}/${EC_FILE}"
-		echo LOCAL_BUILD "${LOCAL_BUILD}"
 	fi
 fi
 
@@ -1302,7 +1301,7 @@ function flash_it83xx() {
 		c2d2_wait_for_h1_power_on_or_reset
 
 		# Don't let the EC come out of reset after H1 reset
-		dut_control gsc_ec_reset:on
+		dut_control ec_reset:on
 
 		# Enable i2c bus on C2D2 at 400kbps
 		servo_save_add "i2c_ec_bus_speed"
@@ -1328,7 +1327,7 @@ function flash_it83xx() {
 	# We need to send the special waveform very soon after the EC powers on
 	if [[ "${SERVO_TYPE}" =~ "c2d2" ]]; then
 		# The EC was held in reset above
-		dut_control gsc_ec_reset:off
+		dut_control ec_reset:off
 	elif servo_has_cold_reset; then
 		servo_ec_hard_reset_or_die
 	fi
@@ -1490,11 +1489,11 @@ function flash_npcx_uut() {
 		c2d2_wait_for_h1_power_on_or_reset
 
 		# Don't let the EC come out of reset after H1 reset
-		dut_control gsc_ec_reset:on
+		dut_control ec_reset:on
 
 		# Force the EC to boot in UART update mode coming out of reset
 		ec_enable_boot0 "uut"
-		dut_control gsc_ec_reset:off
+		dut_control ec_reset:off
 
 		# Ensure normal UART operation
 		ec_disable_boot0 "uut"
@@ -1624,34 +1623,55 @@ function flash_npcx_int_spi() {
 
 info "Using ${SERVO_TYPE}."
 
-EC_LOCAL_BUILD=
-EC_FILE=
-EC_BOARD=
-if in_array "${BOARDS_MCHP[@]}" "${BOARD}"; then
-	if [[ "${SUPPORTED_CHIPS}" = "mchp17xx" ]]; then
-		if [[ -n "${EC_DIR}" ]]; then
-			EC_BOARD=adlrvpp_mchp1727
-			EC_FILE=ec.bin
-			EC_LOCAL_BUILD="${EC_DIR}/build/${EC_BOARD}/${EC_FILE}"
-			if [ EC_LOCAL_BUILD ] ; then
-				echo "Servo V4 connection setup"
-				sudo servod -b volteer &
-				echo "Comport detection"
-				uart_port="$(dut-control raw_ec_uart_pty)"
-				cp "${EC_DIR}/build/${EC_BOARD}/${EC_FILE}" "${EC_DIR}/mchp/spi_fw.bin"
-				echo Comport Number "${uart_port}"
-				echo "Application loader for the MEC1727 has been established"
-				cd ../mchp/
-				sudo bash mchp_download.sh ${uart_port}
-				echo " EC_FW has been programming"
-				sudo bash mchp_flash.sh ${uart_port}
-				info "Flashing chip ${CHIP}."
-				info "Flashing done."
-				exit
+function flash_mchp17xx_int_spi() {
+	echo Im here
+	EC_LOCAL_BUILD=
+	EC_FILE=
+	EC_BOARD=
+	if in_array "${BOARDS_MCHP_INT_SPI[@]}" "${BOARD}"; then
+		if [[ "${SUPPORTED_CHIPS}" = "mchp17xx_int_spi" ]]; then
+			if [[ -n "${EC_DIR}" ]]; then
+				EC_BOARD=adlrvpp_mchp1727
+				EC_FILE=ec.bin
+				EC_LOCAL_BUILD="${EC_DIR}/build/${EC_BOARD}/${EC_FILE}"
+				if [ "${EC_LOCAL_BUILD}" ] ; then
+					echo "Servo V4 connection setup"
+					sudo servod -b volteer &
+					echo "Comport detection"
+					uart_port="$(dut-control raw_ec_uart_pty)"
+					cp "${EC_DIR}/build/${EC_BOARD}/${EC_FILE}" "${EC_DIR}/util/mchp/spi_fw.bin"
+					echo Comport Number "${uart_port}"
+					echo "Application loader for the MEC1727 has been established"
+					cd mchp
+					python3 MakePgmHdr.py
+					sleep 1
+					dut-control cold_reset:on fw_up:on
+					sleep 1
+					dut-control cold_reset:off
+					sleep 1
+					dut-control uart1_baudrate:9600
+					sleep 1
+					dut-control uart1_baudrate
+					python3 UART_CR_V2.py ${uart_port}
+					echo " EC_FW has been programming"
+					dut-control uart1_baudrate:57600
+					sleep 1
+					dut-control uart1_baudrate
+					python3 CrisisRcvry_Utility_Final.py  ${uart_port}
+					sleep 1
+					dut-control cold_reset:on fw_up:off
+					sleep 1
+					dut-control cold_reset:off
+					info "Flashing chip ${CHIP}."
+					info "Flashing done."
+					exit
+				fi
 			fi
 		fi
 	fi
-fi
+}
+
+
 
 
 # Only if it is a flash program request, call ec_image.

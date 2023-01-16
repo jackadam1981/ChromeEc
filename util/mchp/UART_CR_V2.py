@@ -1,9 +1,3 @@
-#!/usr/bin/python
-
-# Copyright 2023 The ChromiumOS Authors
-# Use of this source code is governed by a BSD-style license that can be
-# found in the LICENSE file.
-
 from __future__ import with_statement
 import sys
 import binascii
@@ -30,6 +24,7 @@ file_line = [
     "RC 69 CRC32",
 ]
 
+###########0    1    2      3    4    5   6     7     8      9############
 srpt_list = [
     "s",
     "r",
@@ -114,7 +109,7 @@ def uart_communicator(uart):
     rs_content = []
     rs_cont_disp = []
 
-    ## converting srpt_list str to binary type ##
+    ############################ converting srpt_list str to binary type ##########################
 
     for (
         lines
@@ -324,7 +319,7 @@ def uart_communicator(uart):
             print("Send data ----------------------- Receive Data ")
             for n in range(s_count):
                 for items in s_content:
-                    # print("data sent[",items,"]")
+                    #                    print("data sent[",items,"]")
                     uart.write(items)  # wr
                 r_cont_disp = []
 
@@ -335,7 +330,7 @@ def uart_communicator(uart):
                     if len(read) == 0:
                         i += 1
                     else:
-                        # print ("read = ", read)
+                        #                        print ("read = ", read)
                         if read[0] == 165 and read[1] == 90:
                             print("Response Pattern matchced")
                             match_pat = True
@@ -345,15 +340,14 @@ def uart_communicator(uart):
                             match_pat = True
                             break
                         else:
-                            # if (retry == 0):
-                            # match_pat=False
-                            # EC responded, but sometimes servo does not read the right data
-                            match_pat = True
-                            # print("Err!!! Response Pattern Not Matched!\n")
-                            # sys.exit(1)
+                            #                            if (retry == 0):
+                            #                                match_pat=False
+                            match_pat = True  # EC responded, but sometimes servo does not read the right data.  Needs debugging.
+                            #                                print("Err!!! Response Pattern Not Matched!\n")
+                            #                                sys.exit(1)
                             break
-                    # else:
-                    # retry=0
+                    #                            else:
+                    #                                retry=0
 
                     if i == 2:
                         print(
@@ -392,16 +386,16 @@ def uart_communicator(uart):
             )
             for n in range(sc_count):
                 for items in sc_content:
-                    # print("data sent [",items,"]\n")
+                    #                    print("data sent [",items,"]\n")
                     uart.write(items)  # wr
                 rc_cont_disp = []
 
-                ## Command Sent !! Clear the Buffer and Receive the Response ##
+                ######################## Command Sent !!!!!! Clear the Buffer and Receive the Response ########
 
                 uart.reset_input_buffer()
 
                 first_cmd_read = uart.read(1)
-                # print("Read data :<",first_cmd_read,">\n")
+                #                print("Read data :<",first_cmd_read,">\n")
                 rc_len = rc_len - 1
                 b = first_cmd_read.hex()
 
@@ -418,20 +412,20 @@ def uart_communicator(uart):
                     if rc_data_count == 0:
                         for m in range(rc_len):
                             read = uart.read(1)
-                            # print( "Read data :<",read,">\n")
+                            #                            print( "Read data :<",read,">\n")
                             b = binascii.hexlify(read)
                             rc_cont_disp.append(b)
                     elif rc_data_count > 0:
                         for m in range(rc_len):
                             read = uart.read(1)
-                            # print( "Read data :<",read,">\n")
+                            #                            print( "Read data :<",read,">\n")
                             b = binascii.hexlify(read)
                             rc_cont_disp.append(b)
 
                         if calc_crc_sts == True:
                             for m in range(4):
                                 read = uart.read(1)
-                                # print(" Read data :<",read,">\n")
+                                #                                print(" Read data :<",read,">\n")
                                 b = binascii.hexlify(read)
                                 rc_cont_disp.append(b)
 
@@ -439,7 +433,7 @@ def uart_communicator(uart):
                     if rc_data_count > 0:
                         for m in range(rc_data_count):
                             read = uart.read(1)
-                            # print("Read data :<",read,">\n")
+                            #                            print("Read data :<",read,">\n")
                             b = binascii.hexlify(read)
                             rc_cont_disp.append(b)
                             rc_content.append(b)
@@ -447,7 +441,7 @@ def uart_communicator(uart):
                         if calc_crc_sts == True:
                             for m in range(4):
                                 read = uart.read(1)
-                                # print("Read data :<",read,">\n")
+                                #                                print("Read data :<",read,">\n")
                                 b = binascii.hexlify(read)
                                 rc_cont_disp.append(b)
 
@@ -465,12 +459,12 @@ def uart_communicator(uart):
                     if rc_data_count == 0:
                         for m in range(rc_len):
                             read = uart.read(1)
-                            # print( "Read data :<",read,">\n")
+                            #                            print( "Read data :<",read,">\n")
                             b = binascii.hexlify(read)
                             rc_cont_disp.append(b)
 
-                # print(sc_cont_disp,"\n",rc_cont_disp)
-                # print("rc_cont_disp:", rc_cont_disp, "rc_content:", rc_content)
+                #                print(sc_cont_disp,"\n",rc_cont_disp)
+                #                print("rc_cont_disp:", rc_cont_disp, "rc_content:", rc_content)
 
                 if rc_cont_disp == rc_content:
                     print("Response command Pattern matched")
@@ -526,16 +520,16 @@ def uart_communicator(uart):
                             b_data = struct.pack("B", tx_data_size)
                             sf_content.append(b_data)
 
-                        ## Transmit command and payload length##
+                        ######################### Transmit command and payload length###############
 
                         for items in sf_content:
-                            # print("FileHeader data sent [",items,"]")
+                            #                            print("FileHeader data sent [",items,"]")
                             b_data = binascii.hexlify(items)
                             crc_input_bytes.append(int(b_data, 16))
                             sf_cont_disp.append(b_data)
                             uart.write(items)
 
-                        ## Transmit payload offset ##
+                        ######################### Transmit payload offset ##########################
                         if sf_cmd in cmd_3byte_offset:
                             payload_offset = payload_offset & 0x00FFFFFF
                             byte_count = 3
@@ -550,12 +544,12 @@ def uart_communicator(uart):
                             temp_byte = struct.pack("B", byte_val)
                             tmp_pld_offset = tmp_pld_offset >> 8
                             crc_input_bytes.append(byte_val)
-                            # print( "File data sent [",temp_byte,"]")
+                            #                            print( "File data sent [",temp_byte,"]")
                             b_data = binascii.hexlify(temp_byte)
                             sf_cont_disp.append(b_data)
                             uart.write(temp_byte)
 
-                        ## Transmit payload data in chunks(payload length) ##
+                        ######################### Transmit payload data in chunks(payload length) ##########################
 
                         if tx_data_size > payload_size:
                             tx_data_size = payload_size
@@ -564,13 +558,13 @@ def uart_communicator(uart):
                         for data in file_content:
                             temp_byte = struct.pack("B", data)
                             crc_input_bytes.append(data)
-                            # print( "File data sent [",temp_byte,"]")
+                            #                            print( "File data sent [",temp_byte,"]")
                             b_data = binascii.hexlify(temp_byte)
                             sf_cont_disp.append(b_data)
                             uart.write(temp_byte)
 
-                        ## Transmit CRC32 [cmd, payld_size, payld_offset, payld_data] ##
-                        # print( "crc_input_bytes: ", crc_input_bytes )   # TR
+                        ################ Transmit CRC32 [cmd, payld_size, payld_offset, payld_data] #######################
+                        #                        print( "crc_input_bytes: ", crc_input_bytes )   # TR
 
                         time.sleep(
                             0.05
@@ -581,27 +575,27 @@ def uart_communicator(uart):
                         for i in range(4):
                             data = sf_crc32 & 0xFF
                             byte_conv = struct.pack("B", data)
-                            # print( "File data sent [",byte_conv,"]")
+                            #                            print( "File data sent [",byte_conv,"]")
                             b_data = binascii.hexlify(byte_conv)
                             sf_cont_disp.append(b_data)
                             uart.write(byte_conv)
                             sf_crc32 = sf_crc32 >> 8
-                        ## Command Sent !! Clear the Buffer and Receive the Response ##
+                        ######################## Command Sent !!!!!! Clear the Buffer and Receive the Response ########
                         uart.reset_input_buffer()
                         rf_cont_disp = []
 
                         for m in range(rf_len):
                             read = uart.read(1)
-                            # print("File read data [",read,"]")
+                            #                            print("File read data [",read,"]")
                             b = read.hex()
 
                             rf_cont_disp.append(b)
-                        # print("rf_content", rf_content)
-                        # print("rf_cont_disp", rf_cont_disp)
+                        #                        print("rf_content", rf_content)
+                        #                        print("rf_cont_disp", rf_cont_disp)
 
                         if rf_content == rf_cont_disp:
                             match_pat = True
-                            # print("Response command Pattern matched\n")
+                            #                            print("Response command Pattern matched\n")
 
                             payload_offset = payload_offset + tx_data_size
                             tx_file_size = tx_file_size - payload_size
@@ -609,7 +603,7 @@ def uart_communicator(uart):
 
                         else:
                             print("Err!!! Response Pattern Not Matched\n")
-                            # print ("Completed total no of Iteration:", s_count)
+                            #                            print ("Completed total no of Iteration:", s_count)
                             match_pat = False
                             break
 
@@ -658,15 +652,13 @@ def main(argv):
 
     # return
 
-    # Servo - first find the port name by using $dut-control raw_ec_uart_pty cmmand
-    # then make the port name change in the line below
+    # Servo - first find the port name by using $dut-control raw_ec_uart_pty cmmand, then make the port name change in the line below
     port = serial.Serial(
         "/dev/pts/" + string, baudrate=9600, stopbits=1, timeout=3
     )
 
-    # This line is for FTDI USB-RS232 cable
-    # $dmsg | grep tty to find the port name of the cable and make the name change below
-    # port = serial.Serial("/dev/ttyUSB0", baudrate=9600, stopbits=1, timeout=10)
+    # This line is for FTDI USB-RS232 cable - $dmsg | grep tty to find the port name of the cable and make the name change below
+    #    port = serial.Serial("/dev/ttyUSB0", baudrate=9600, stopbits=1, timeout=10)
 
     uart_ = port
 

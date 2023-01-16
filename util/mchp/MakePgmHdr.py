@@ -1,9 +1,5 @@
 #!/usr/bin/python
 
-# Copyright 2023 The ChromiumOS Authors
-# Use of this source code is governed by a BSD-style license that can be
-# found in the LICENSE file.
-
 # from __future__ import with_statement
 import sys
 import binascii
@@ -97,6 +93,64 @@ def main():
     if menu_select == 2:
         utility()
         print("\nUtility ran.  Check folder for update_pgmhdrfile.bin.")
+
+
+#     while (menu_select != 0):
+#         if (operation != 3):
+#             print ('\n-------------------------------- Current Setup --------------------------------')
+# #            print ('-- Operation=', operation, '(1=WR, 2=RD, 3=Erase Entire Flash, 4=Partial Erase, 5=Verify)')
+#             print ('-- Operation=', operation, '(1=WR, 2=RD, 3=Erase)')
+#             print ('-- Address Offset=', hex(start_add))
+#             print ('-- Data Length in Bytes=', hex(data_length))
+#             print ('-------------------------------------------------------------------------------\n')
+#         else:
+#             print ('\n-------------- Current Setup -------------')
+#             print ('-- Erase entire flash')
+#             print ('------------------------------------------\n')
+
+#         print ('*******************************************************************************')
+#         print ('** Enter 1 to make changes to current setup')
+#         print ('** Enter 2 to run utility to generate Update_PgmHdrFile.bin with current setup')
+#         print ('** Enter 0 to exit')
+#         print ('*******************************************************************************')
+#         prompt_text = input ('>')
+#         menu_select = int(prompt_text)
+
+#         if (menu_select==1):
+#             print ('\n-- Select from following options --')
+# #            prompt_text = input ('-- Operation: 1=Write, 2=Read, 3=Erase, 4=Partial Erase, 5=Verify: ')
+#             prompt_text = input ('-- Operation: 1=Write, 2=Read, 3=Erase: ')
+
+#             operation = int(prompt_text)
+
+#             if (operation==3):
+#                 start_add = 0x0
+#                 data_length = 0x80000
+
+# #            if (operation > 5):
+#             elif (operation > 3):
+#                 print ('Invalid Entry \n')
+
+#             else:
+#                 print ('\n-- Address Offset must start on a 4k boundary of flash memory.')
+#                 print ('-- For example: 0x0, 0x1000, 0x2000, 0x3F000')
+#                 prompt_text = input ("Enter address offset> ")
+#                 start_add = int(prompt_text, 16)
+
+#                 print ('\n-- Data length must end on a 4k boundary')
+#                 print ('-- For example: 0x1000, 0x20000, 0x40000, 0x60000, 0x80000')
+#                 prompt_text = input ("Enter data length in bytes> ")
+#                 data_length = int(prompt_text, 16)
+
+#         if (menu_select == 2):
+#             utility()
+#             print('\nUtility ran.  Check folder for update_pgmhdrfile.bin.')
+
+#         if (menu_select == 0):
+#             break
+
+#         if (menu_select > 2):
+#             print('Invalid Entry\n')
 
 
 if __name__ == "__main__":

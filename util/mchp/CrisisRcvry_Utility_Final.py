@@ -1,9 +1,3 @@
-#!/usr/bin/python
-
-# Copyright 2023 The ChromiumOS Authors
-# Use of this source code is governed by a BSD-style license that can be
-# found in the LICENSE file.
-
 from __future__ import with_statement
 import sys
 import binascii
@@ -17,6 +11,7 @@ import struct
 operation = 1  # 1=WR, 2=RD, 3=ERASE
 file_line = [""]
 
+###########0    1    2      3    4    5   6     7     8      9    10    11   ############
 srpt_list = [
     "s",
     "r",
@@ -109,8 +104,8 @@ def uart_communicator(uart):
     rg_cont_disp = []
 
     # Enable debug
-    # import pudb; pudb.set_trace()
-    ## converting srpt_list str to binary type ##
+    #        import pudb; pudb.set_trace()
+    ############################ converting srpt_list str to binary type ##########################
 
     try:
         for lines in file_line:
@@ -184,7 +179,7 @@ def uart_communicator(uart):
                     gf_cmd = 0
 
                     if content[0].lower() == srpt_list[10]:  # if 'GF'
-                        # print ("\n #if 'GF' ")
+                        #                            print ("\n #if 'GF' ")
                         find_gf = True
 
                         gf_payload_size = int(content[3].lower(), 16)
@@ -214,7 +209,7 @@ def uart_communicator(uart):
 
                     if content[0].lower() == srpt_list[8]:  # if 'SF'
                         print("\n")
-                        # print ("\n #if 'SF' ")
+                        #                            print ("\n #if 'SF' ")
                         find_sf = True
                         sf_payload_size = int(content[3].lower(), 16)
                         tx_file = content[2].lower()
@@ -237,7 +232,7 @@ def uart_communicator(uart):
                             sys.exit(1)
 
                     if content[0].lower() == srpt_list[4]:  # if 'C'
-                        # print ("\n if 'C' ")
+                        #                            print ("\n if 'C' ")
                         sf_count = int(content[-1], 16)
                         if sf_count == 0:
                             sf_count = 1
@@ -266,7 +261,7 @@ def uart_communicator(uart):
                             calc_crc_sts = True
                         rc_content.append(content[1].lower())
 
-                        ## Check for Receive Data count eg. get fw info ##
+                        ######### Check for Receive Data count eg. get fw info #############
                         if content[2].lower() == srpt_list[7]:  # CRC32
                             rc_data_count = 0
                         else:
@@ -334,6 +329,8 @@ def uart_communicator(uart):
 
                                 rf_content.append(byte_conv.hex())
                                 rf_crc32 = rf_crc32 >> 8
+
+                        ###############
 
                 if content[0].lower() == srpt_list[3]:  # if 'RS'
                     rs_content = []
@@ -434,7 +431,7 @@ def uart_communicator(uart):
                         uart.write(items)  # wr
                     rc_cont_disp = []
 
-                    ## Command Sent !! Clear the Buffer and Receive the Response ##
+                    ######################## Command Sent !!!!!! Clear the Buffer and Receive the Response ########
                     uart.reset_input_buffer()
 
                     first_cmd_read = uart.read(1)
@@ -538,8 +535,7 @@ def uart_communicator(uart):
                 gf_cont_disp = []
 
                 rg_len = len(rg_content)
-                # try sending CMD_GET_RD_CNT (0x68)  to F/W to have it return
-                # the number of bytes (from PgmHdrFile.bin) that we are reading
+                # try sending CMD_GET_RD_CNT (0x68)  to F/W to have it return the number of bytes (from PgmHdrFile.bin) that we are reading
                 uart.write(b"\x68")
 
                 # get response from F/W
@@ -579,22 +575,21 @@ def uart_communicator(uart):
                                 b_data = struct.pack("B", rx_data_size)
                                 gf_content.append(b_data)
 
-                            ## Transmit command and payload length ##
+                            ######################### Transmit command and payload length###############
                             for items in gf_content:
-                                # print("GF-Header data SENT [",items,"]")
+                                #                                    print("GF-Header data SENT [",items,"]")
                                 b_data = binascii.hexlify(
                                     items
-                                )  ## Return the 2-digit hexadecimal binary data in "items"
+                                )  ## Return the 2-digit hexadecimal representation of the binary data in "items"
                                 crc_input_bytes.append(
                                     int(b_data, 16)
-                                )  ## b_data added as ascii
+                                )  ##b_data added as ascii
                                 gf_cont_disp.append(b_data)
                                 uart.write(items)  # wr
 
-                            # print( "1st crc_input_bytes", crc_input_bytes)
-                            # this is only 2 bytes = 'f'(0x66), 0x80
+                            #                                print( "1st crc_input_bytes", crc_input_bytes)  ##this is only 2 bytes = 'f'(0x66), 0x80
 
-                            ## Transmit payload offset ##
+                            ######################### Transmit payload offset ##########################
                             if gf_cmd in cmd_3byte_offset:
                                 gf_payload_offset = (
                                     gf_payload_offset & 0x00FFFFFF
@@ -611,71 +606,69 @@ def uart_communicator(uart):
                             for i in range(byte_count):
                                 byte_val = (
                                     tmp_pld_offset & 0xFF
-                                )  ## From 'gf_payload_offset'
+                                )  ##From 'gf_payload_offset'
                                 ## from 'gf_payload_offset'
                                 temp_byte = struct.pack("B", byte_val)
                                 tmp_pld_offset = tmp_pld_offset >> 8
                                 crc_input_bytes.append(byte_val)
-                                # print( "GF-Offset data sent [",hex(byte_val),"]" )
+                                #                                    print( "GF-Offset data sent [",hex(byte_val),"]" )
                                 b_data = binascii.hexlify(temp_byte)
                                 gf_cont_disp.append(b_data)
                                 uart.write(temp_byte)
 
-                            # print( "2nd crc_input_bytes", crc_input_bytes)
-                            # This is 5 bytes = 'f'(0x66), 0x80, 0x00, 0x00, 0x00
-                            # cmd+chunk+(3)offset
+                            #                                print( "2nd crc_input_bytes", crc_input_bytes)    ##This is 5 bytes = 'f'(0x66), 0x80, 0x00, 0x00, 0x00  cmd+chunk+(3)offset
 
-                            ## RECEIVE payload data in chunks(payload length) ##
-                            #  print( "rx_data_size", rx_data_size)
-                            #  print( "gf_payload_size", gf_payload_size)
+                            ######################### RECEIVE payload data in chunks(payload length) ##########################
+                            #                                print( "rx_data_size", rx_data_size)
+                            #                                print( "gf_payload_size", gf_payload_size)
 
                             if rx_data_size > gf_payload_size:
                                 rx_data_size = gf_payload_size
                                 file_content = rx_data_size
-                            # print( "rx_data_size", rx_data_size)
+                            #                                print( "rx_data_size", rx_data_size)
 
                             for i in range(0, rx_data_size):
                                 temp_byte = uart.read(1)
-                                # print( "GF-File2 data recvd [",temp_byte,"]" )
+                                #                                    print( "GF-File2 data recvd [",temp_byte,"]" )
                                 rx_file_obj.write(temp_byte)
                                 rx_pay_data = binascii.hexlify(
                                     temp_byte
-                                )  ##Return the 2-digit hexadecimal binary data in "items"
+                                )  ##Return the 2-digit hexadecimal representation of the binary data in "items"
                                 crc_input_bytes.append(
                                     int(rx_pay_data, 16)
                                 )  ##rb_data added as ascii
 
-                            ## Transmit CRC32 [cmd, payld_size, payld_offset, payld_data] ##
-                            # print( "3rd crc_input_bytes: ", crc_input_bytes )   # TR
+                            ################ Transmit CRC32 [cmd, payld_size, payld_offset, payld_data] #######################
+                            #                                print( "3rd crc_input_bytes: ", crc_input_bytes )   # TR
 
                             gf_crc32 = binascii.crc32(crc_input_bytes)
 
                             for i in range(4):
                                 data = gf_crc32 & 0xFF
                                 byte_conv = struct.pack("B", data)
-                                # print( "GF-File3 data sent [",hex(data),"]" )
+                                #                                    print( "GF-File3 data sent [",hex(data),"]" )
                                 b_data = binascii.hexlify(byte_conv)
                                 gf_cont_disp.append(b_data)
                                 uart.write(byte_conv)
                                 gf_crc32 = gf_crc32 >> 8
 
-                            ## Command Sent !! Clear the Buffer and Receive the Response ##
+                            ######################## Command Sent !!!!!! Clear the Buffer and Receive the Response ########
 
                             rg_cont_disp = []
 
                             for m in range(rg_len):
                                 read = uart.read(1)
-                                # print("GF-File read resp-CRC32 data [",read,"]")
+                                #                                    print("GF-File read resp-CRC32 data [",read,"]")
                                 b = read.hex()
                                 rg_cont_disp.append(
                                     b
-                                )  ##This is the response from F/W only 5 bytes command+4 byte CRC
-                            # print("_GF_cont_disp",gf_cont_disp,"\n_GF_rg_cont_disp",rg_cont_disp)
-                            # print("_GF_rg_cont", rg_content)
+                                )  ###This is the response from F/W only 5 bytes command+4 byte CRC
+                            #                                print("_GF_cont_disp",gf_cont_disp,"\n_GF_rg_cont_disp",rg_cont_disp)  #This line must be here
+                            #                                print("_GF_rg_cont", rg_content)
 
                             if rg_content == rg_cont_disp:
                                 match_pat = True
-                                # print("Response command Pattern matched")
+                                #                                    print("Response command Pattern matched")
 
                                 gf_payload_offset = (
                                     gf_payload_offset + rx_data_size
@@ -732,19 +725,18 @@ def uart_communicator(uart):
                                 b_data = struct.pack("B", tx_data_size)
                                 sf_content.append(b_data)
 
-                            ## Transmit command and payload length##
+                            ######################### Transmit command and payload length###############
 
                             for items in sf_content:
-                                # print("SF_FileHeader data sent [",items,"]")
+                                #                                    print("SF_FileHeader data sent [",items,"]")
                                 b_data = binascii.hexlify(items)
                                 crc_input_bytes.append(int(b_data, 16))
                                 sf_cont_disp.append(b_data)
                                 uart.write(items)
 
-                            # print( "1st crc_input_bytes", crc_input_bytes)
-                            ##this is only 2 bytes = 'f'(0x65), 0x80
+                            #                                print( "1st crc_input_bytes", crc_input_bytes)  ##this is only 2 bytes = 'f'(0x65), 0x80
 
-                            ## Transmit payload offset ##
+                            ######################### Transmit payload offset ##########################
                             if sf_cmd in cmd_3byte_offset:
                                 payload_offset = payload_offset & 0x00FFFFFF
                                 byte_count = 3
@@ -759,23 +751,21 @@ def uart_communicator(uart):
                                 temp_byte = struct.pack("B", byte_val)
                                 tmp_pld_offset = tmp_pld_offset >> 8
                                 crc_input_bytes.append(byte_val)
-                                # print( "SF_File data sent [",hex(byte_val),"]" )
+                                #                                    print( "SF_File data sent [",hex(byte_val),"]" )
                                 b_data = binascii.hexlify(temp_byte)
                                 sf_cont_disp.append(b_data)
                                 uart.write(temp_byte)
 
-                            # print( "2nd crc_input_bytes", crc_input_bytes)
-                            ## this is 5 bytes = 'e'(0x65), 0x80, 0x00, 0x00, 0x00
-                            ## cmd+chunk+(3)offset
+                            #                                print( "2nd crc_input_bytes", crc_input_bytes)    ##this is 5 bytes = 'e'(0x65), 0x80, 0x00, 0x00, 0x00  cmd+chunk+(3)offset
 
-                            ## Transmit payload data in chunks(payload length) ##
+                            ######################### Transmit payload data in chunks(payload length) ##########################
 
                             if tx_data_size > sf_payload_size:
                                 tx_data_size = sf_payload_size
                             file_content = tx_file_obj.read(
                                 tx_data_size
                             )  ###Here's the read to file_content
-                            # print ("\nFILE_CONTENT:", file_content)
+                            #                                print ("\nFILE_CONTENT:", file_content)
 
                             for (
                                 data
@@ -784,57 +774,54 @@ def uart_communicator(uart):
                             ):  ##file_content is the entire chunk of data read from binary file
                                 temp_byte = struct.pack("B", data)
                                 crc_input_bytes.append(data)
-                                # print( "SF_File2 data sent [",hex(data),"]" )
+                                #                                    print( "SF_File2 data sent [",hex(data),"]" )
                                 b_data = binascii.hexlify(temp_byte)
                                 sf_cont_disp.append(b_data)
                                 uart.write(temp_byte)
 
-                            ## Transmit CRC32 [cmd, payld_size, payld_offset, payld_data] ##
-                            # print( "_SF_crc_input_bytes: ", crc_input_bytes )   # TR
+                            ################ Transmit CRC32 [cmd, payld_size, payld_offset, payld_data] #######################
+                            #                                print( "_SF_crc_input_bytes: ", crc_input_bytes )   # TR
                             sf_crc32 = binascii.crc32(crc_input_bytes)
 
                             for i in range(4):
                                 data = sf_crc32 & 0xFF
                                 byte_conv = struct.pack("B", data)
-                                # print( "SF_File3 data sent [",hex(data),"]" )
+                                #                                    print( "SF_File3 data sent [",hex(data),"]" )
 
                                 b_data = binascii.hexlify(byte_conv)
                                 sf_cont_disp.append(
                                     b_data
-                                )  ##this is all the data sent starting from 0x65, 0xF0, offset
-                                ##then all data in binary header file
+                                )  ##this is all the data sent starting from 0x65, 0xF0, offset, then all data in binary header file
                                 uart.write(byte_conv)
                                 sf_crc32 = sf_crc32 >> 8
-                            ## Command Sent !!!!!! Clear the Buffer and Receive the Response ##
+                            ######################## Command Sent !!!!!! Clear the Buffer and Receive the Response ########
                             uart.reset_input_buffer()
-                            # time.sleep(0.05)  #no need for this
+                            #                                time.sleep(0.05)  #no need for this
 
                             rf_cont_disp = []
 
                             if tx_file_size == 128 or tx_file_size == 262272:
                                 print(
-                                    "\n*** Waiting for EC to program. Will take about 22s. ***"
+                                    "\n*** Waiting for EC to program.  This will take about 22s. ***"
                                 )
                                 time.sleep(
                                     22
-                                )  # at 0x40000 and 0x80000 boundary
-                                # takes up to 22s to program before EC sends ACK
+                                )  # at 0x40000 and 0x80000 boundary, takes up to 22s to program before EC sends ACK
 
                             for m in range(rf_len):
                                 read = uart.read(1)
-                                # print("SF_File read resp-CRC32 data [",read,"]")
+                                #                                    print("SF_File read resp-CRC32 data [",read,"]")
                                 b = read.hex()
                                 rf_cont_disp.append(
                                     b
-                                )  ## this is the response from F/W only 5 bytes command+4 byte CRC
-                            # print("_SF_sf_cont_disp",sf_cont_disp,
-                            # "\n_SF_rf_cont_disp",rf_cont_disp)
-                            # print ("_SF_rf_content", rf_content)
-                            # print("_SF_rf_cont_disp",rf_cont_disp, " ")
+                                )  ### this is the response from F/W only 5 bytes command+4 byte CRC
+                            #                                print("_SF_sf_cont_disp",sf_cont_disp,"\n_SF_rf_cont_disp",rf_cont_disp)
+                            #                                print ("_SF_rf_content", rf_content)
+                            #                                print("_SF_rf_cont_disp",rf_cont_disp, " ")
 
                             if rf_content == rf_cont_disp:
                                 match_pat = True
-                                # print("Response command Pattern matched\n")
+                                #                                    print("Response command Pattern matched\n")
 
                                 payload_offset = payload_offset + tx_data_size
                                 tx_file_size = tx_file_size - sf_payload_size
@@ -866,11 +853,11 @@ def uart_communicator(uart):
                 # send file
                 for byte in bin_file:
                     uart.write(byte)
-                """
-                    uart.read(1)
-                    uart.read(1)
+                """    
+                    uart.read(1)  
+                    uart.read(1)                 
                     r_cont_disp=[]
-                    for m in range(14):
+                    for m in range(14):    
                         read = uart.read(1)
                         b=binascii.hexlify(read)
                         r_cont_disp.append(b)
@@ -897,8 +884,8 @@ def main(argv):
     # print ('** 1 - Program                                **')
     # print ('** 2 - Read                                   **')
     # print ('** 3 - Erase                                  **')
-    # print ('** 4 - Partial Erase                          **')
-    # print ('** 5 - Verify                                 **')
+    #    print ('** 4 - Partial Erase                          **')
+    #    print ('** 5 - Verify                                 **')
     # print ('** 4 - Quit                                   **')
     # print ('************************************************')
     prompt_text = 1  # input ('>')
@@ -942,14 +929,12 @@ def main(argv):
     if operation == 4:
         sys.exit(1)
 
-    # First find the port name by using $dut-control ec_uart_pty
-    # then make the port name change in the line below
+    # First find the port name by using $dut-control ec_uart_pty, then make the port name change in the line below
     port = serial.Serial(
         "/dev/pts/" + string, baudrate=57600, stopbits=1, timeout=10
     )
-    # This line is for FTDI USB-RS232 cable
-    # $dmsg | grep tty to find the port name of the cable and make the name change below
-    # port = serial.Serial("/dev/ttyUSB0", baudrate=57600, stopbits=1, timeout=10)
+    # This line is for FTDI USB-RS232 cable - $dmsg | grep tty to find the port name of the cable and make the name change below
+    #    port = serial.Serial("/dev/ttyUSB0", baudrate=57600, stopbits=1, timeout=10)
     uart_ = port
 
     uart_communicator(uart_)
