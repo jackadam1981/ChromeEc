@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be8bd274_eee897a6",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-01-16T08:57:29Z",
+      "side": 1,
+      "message": "Can you add a comment like that this is for handling a query with num_banks\u003d0?",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 14
+      },
+      "revId": "8a7f84a75dfdf958bf745d16fd03fa1a53071d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
