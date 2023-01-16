@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99138fdc_6c7a2753",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-16T04:29:13Z",
+      "side": 1,
+      "message": "I\u0027m hesitant to do this because there may be other components (tests, mostly) that depend on being able to disable `CC_DPTF`. I think we need to think more deeply on how to nicely integrate zephyr and legacy logging before we go making changes throughout the codebase: the status quo is pretty messy and seems like it may have a lot of bugs lurking inside.\n\nI\u0027ve commented this on the bug as well, but:\n\n * The `chan` console command can\u0027t currently control zephyr logs and we know that at least some tests depend on this being able to suppress output other than what they care about.\n * Zephyr logs don\u0027t currently end up visible to the AP (for feedback reports, etc) because nobody turns on `CONFIG_PLATFORM_EC_LOG_BACKEND_CONSOLE_BUFFER`. This probably needs to be enabled, but can\u0027t be done with minimal logging (which we currently use).",
+      "revId": "79f636521d5831ff6103e637c018fc848000de0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
