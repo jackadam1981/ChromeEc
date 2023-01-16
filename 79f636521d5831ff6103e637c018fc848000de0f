@@ -159,6 +159,24 @@
       "parentUuid": "9aa154b6_ce536a51",
       "revId": "79f636521d5831ff6103e637c018fc848000de0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd69e8ff_5eb40e67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-16T05:06:11Z",
+      "side": 1,
+      "message": "I realize that without changing the configuration of Nissa (not sure about other boards offhand, but nissa is the one we care about right now), just using zephyr logging doesn\u0027t change anything because we use `LOG_MINIMAL` which effectively just `printk`s everything anyway.\n\nI think silently dropping logs from ISRs is the most expeditious option right now, and I\u0027m feeling vindicated in the concerns I expressed when we switched to `LOG_MINIMAL` originally!",
+      "parentUuid": "ca1e6114_0b52c1f5",
+      "revId": "79f636521d5831ff6103e637c018fc848000de0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
