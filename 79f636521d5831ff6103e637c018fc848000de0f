@@ -69,6 +69,24 @@
       "parentUuid": "26a1eb08_ccdc83f9",
       "revId": "79f636521d5831ff6103e637c018fc848000de0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05881214_3bb60d3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-16T04:50:05Z",
+      "side": 1,
+      "message": "There doesn\u0027t seem to be any DPTF tests that reference the EC logs or console, from my cursory search through them.",
+      "parentUuid": "5f8d91ae_6beebda7",
+      "revId": "79f636521d5831ff6103e637c018fc848000de0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
