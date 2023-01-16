@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86744f37_6f0d4274",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-01-16T09:17:20Z",
+      "side": 1,
+      "message": "Please also add\n\n```\nTEST\u003d./twister -v -i -T zephyr/test/drivers/ --test external/platform/\\\n     ec/zephyr/test/drivers/drivers.flash.page_layout\n```\n\nand\n\n```\nTEST\u003d./twister -v -i -T zephyr/test/drivers/ --test external/platform/\\\n     ec/zephyr/test/drivers/drivers.flash\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "8a7f84a75dfdf958bf745d16fd03fa1a53071d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c3b3f46_cf29cb71",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-01-16T09:17:20Z",
+      "side": 1,
+      "message": "Thanks fot the fix. Could you also change `crec_flash_response_fill_banks()` in `zephyr/shim/src/flash.c` https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/flash.c;l\u003d324-325;drc\u003d23b85496baeaa77ae582ff50659ccfb51469ab99",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 21
+      },
+      "revId": "8a7f84a75dfdf958bf745d16fd03fa1a53071d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be8bd274_eee897a6",
         "filename": "common/flash.c",
         "patchSetId": 3
