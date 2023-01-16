@@ -936,8 +936,9 @@ __overridable void svdm_dp_post_config(int port)
 	/* Connect the SBU and USB lines to the connector. */
 	typec_set_sbu(port, true);
 
-	usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT,
-		    polarity_rm_dts(pd_get_polarity(port)));
+	if (!IS_ENABLED(CONFIG_USB_MUX_AP_CONTROL))
+		usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT,
+			    polarity_rm_dts(pd_get_polarity(port)));
 
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))

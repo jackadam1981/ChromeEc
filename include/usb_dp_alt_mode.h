@@ -88,4 +88,13 @@ void dp_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd);
 enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 					    uint32_t *vdm);
 
+/*
+ * Handle internal state setup for AP-driven mode entry
+ *
+ * @param[in] port	USB-C port number
+ * @param[in] type	Transmit type (SOP, SOP') for request
+ * @param[in] vdm_hdr	VDM header for AP's selected message
+ */
+void dp_setup_ap_vdm(int port, enum tcpci_msg_type type, uint32_t vdm_hdr);
+
 #endif /* __CROS_EC_USB_DP_ALT_MODE_H */
