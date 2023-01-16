@@ -15,11 +15,16 @@
 
 #ifdef CONFIG_ZEPHYR
 #include "temp_sensor/temp_sensor.h"
-#endif
+
+#include <zephyr/logging/log.h>
+LOG_MODULE_DECLARE(cros_system, LOG_LEVEL_INF);
+
+#define CPRINTS(format, args...) LOG_INF(format, ##args)
+#else
 
 /* Console output macros */
-#define CPUTS(outstr) cputs(CC_DPTF, outstr)
 #define CPRINTS(format, args...) cprints(CC_DPTF, format, ##args)
+#endif
 
 /*****************************************************************************/
 /* DPTF temperature thresholds */
@@ -66,7 +71,7 @@ static int dptf_check_temp_threshold(int sensor_id, int temp)
 	int max, i;
 
 	if (sensor_id >= TEMP_SENSOR_COUNT) {
-		CPRINTS("DPTF: Invalid sensor ID");
+		CPRINTS("DPTF: Invalid sensor ID (%d)", sensor_id);
 		return 0;
 	}
 
@@ -97,14 +102,13 @@ static int dptf_check_temp_threshold(int sensor_id, int temp)
 
 void dptf_set_temp_threshold(int sensor_id, int temp, int idx, int enable)
 {
-	CPRINTS("DPTF sensor %d, threshold %d C, index %d, %sabled", sensor_id,
-		K_TO_C(temp), idx, enable ? "en" : "dis");
-
 	if ((sensor_id >= TEMP_SENSOR_COUNT) ||
 	    (idx >= DPTF_THRESHOLDS_PER_SENSOR)) {
-		CPRINTS("DPTF: Invalid sensor ID");
+		CPRINTS("DPTF: Invalid sensor ID (%d)", sensor_id);
 		return;
 	}
+	CPRINTS("DPTF sensor %d, threshold %d C, index %d, %sabled", sensor_id,
+		K_TO_C(temp), idx, enable ? "en" : "dis");
 
 	if (enable) {
 		/* Don't update threshold condition if already enabled */
