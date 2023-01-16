@@ -118,8 +118,8 @@ void dpm_consume_attention(int port, uint8_t vdo_objects, uint32_t *buf);
  * @param[out] buf		Buffer to copy VDM header and VDO
  * @param[out] items_left	Number of Attention messages left in the queue
  */
-void dpm_vdm_attention_pop(int port, int *length, uint32_t *buf,
-			   int *items_left);
+void dpm_vdm_attention_pop(int port, uint8_t *length, uint32_t *buf,
+			   uint8_t *items_left);
 
 /*
  * Determines the current allocation for the connection, past the basic
