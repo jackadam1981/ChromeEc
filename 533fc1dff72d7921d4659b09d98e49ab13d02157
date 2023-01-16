@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09162d10_1dda77a2",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-01-16T07:45:06Z",
+      "side": 1,
+      "message": "I think it might be risky to move the check to PD_CONNECT hook, because PD_CONNECT is not guaranteed to run faster than board_chipset_pre_init.\n\nexperiment:\n```\ndiff --git a/zephyr/program/herobrine/src/board_chipset.c b/zephyr/program/herobrine/src/board_chipset.c\nindex 35b8e673ea..6bdb4ac17e 100644\n--- a/zephyr/program/herobrine/src/board_chipset.c\n+++ b/zephyr/program/herobrine/src/board_chipset.c\n@@ -50,6 +50,8 @@ static void board_usb_pd_connect(void)\n {\n        int soc \u003d -1;\n \n+       CPRINTS(\" @ @  HOOK_USB_PD_CONNECT\");\n+\n        /* First boot, battery unattached or low SOC */\n        if (!pp5000_inited \u0026\u0026\n            ((battery_state_of_charge_abs(\u0026soc) !\u003d EC_SUCCESS ||\n```\nboot with cutoff battery log:\n```\n[0.603200 C1: TCPC Enter Low Power Mode]\n[0.604500 power state 6 \u003d S5-\u003eS3, in 0x0001]\n[0.606300 power button released in time]\n[0.615900 Batt disconnected: reg 0x0000 mask 0x0010 disc 0x0000]\n[0.617000 Delay 5V due to battery disconnect]\n[0.617800 Wait PD negotiated VBUS transition 1273000]\n[0.651100 Batt disconnected: reg 0x0000 mask 0x0010 disc 0x0000]\n[0.680800 event set 0x0000000000000080]\n[0.681800 event set 0x0000000000400000]\n[0.687900 Battery 98% (Display 100.0 %) / ??h:?? to full]\n[0.689800 charge_request(8800mV, 4768mA)]\n[0.694600 C0: Attached.SNK]\n[0.698200  @ @  HOOK_USB_PD_CONNECT]\n[0.702500 C0: PE_SNK_Startup]\n```",
+      "parentUuid": "b7c501aa_89e11ab7",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 3
+      },
+      "revId": "533fc1dff72d7921d4659b09d98e49ab13d02157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "218de008_7affe02b",
         "filename": "zephyr/test/herobrine/src/board_chipset.c",
         "patchSetId": 4
