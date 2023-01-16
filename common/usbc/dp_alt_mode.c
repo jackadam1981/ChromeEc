@@ -341,3 +341,17 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 
 	return MSG_SETUP_UNSUPPORTED;
 }
+
+void dp_setup_ap_vdm(int port, enum tcpci_msg_type type, uint32_t vdm_hdr)
+{
+	if (PD_VDO_CMD(vdm_hdr) == CMD_ENTER_MODE) {
+		if (pd_dfp_enter_mode(port, type, PD_VDO_VID(vdm_hdr),
+				      PD_VDO_OPOS(vdm_hdr)) == 0)
+			CPRINTS("C%d: Info: AP chosen mode disagreement", port);
+
+		CPRINTS("C%d: Attempting to enter DP mode", port);
+	} else if (PD_VDO_CMD(vdm_hdr) == CMD_DP_CONFIG) {
+		/* Skip STATUS_ACK'd state */
+		dp_state[port] = DP_PREPARE_CONFIG;
+	}
+}
