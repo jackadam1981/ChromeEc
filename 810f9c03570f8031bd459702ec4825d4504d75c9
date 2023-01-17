@@ -22,6 +22,30 @@
       },
       "revId": "810f9c03570f8031bd459702ec4825d4504d75c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1464320f_89d7e1e4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 7377,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-17T21:08:56Z",
+      "side": 1,
+      "message": "Yup.  The spec dictates that \"The Number of Data Objects field in the Message Header Shall be set to 1 or 2 since the Attention Command Shall\nNot contain more than 1 VDO.\".  We could pad it just in case the spec changes, but I\u0027m not certain the odds for that. \n\nIt\u0027s on the same host command, but I started it as a separate event.  I\u0027m open to suggestions though if you\u0027d prefer it shares the `PD_STATUS_EVENT_VDM_REQ_REPLY` event.\n\nThe Attention queue portion of this CL stack needs some more changes to get the unit testing totally ready, FYI",
+      "parentUuid": "07214d98_e58cc318",
+      "range": {
+        "startLine": 7376,
+        "startChar": 0,
+        "endLine": 7377,
+        "endChar": 27
+      },
+      "revId": "810f9c03570f8031bd459702ec4825d4504d75c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
