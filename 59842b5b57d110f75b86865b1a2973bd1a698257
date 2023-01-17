@@ -70,6 +70,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22a4bbad_59c72e36",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-17T18:50:04Z",
+      "side": 1,
+      "message": "\u003e regarding ectool.cc, it\u0027s already taken care for cmd_pwm_get_fan_rpm\n\nYou need to deal with combinations of (ectool, fw) \u003d\u003d (old, new), (new, old).\n\nIf ectool is older, it won\u0027t print \u0027stalled\u0027 properly. So, this will have some affect for those using the tool for testing. This is usually ok because their common practice is to update the OS on test failure.\n\nFor devices which run old FW, we probably need to make ectool continue to print \u0027stalled\u0027 for 0xfffe (and x0000 as well). We can also print \u0027deprecated\u0027 as a warning.",
+      "parentUuid": "415e0ae6_ec9c06d9",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
