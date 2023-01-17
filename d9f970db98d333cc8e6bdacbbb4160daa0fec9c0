@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "877e203f_a7f0f502",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-17T22:15:57Z",
+      "side": 1,
+      "message": "Cable support for Revision is optional, so we could put it in but I don\u0027t know how many cables will actually report it",
+      "parentUuid": "21fdbc5e_d16f9793",
+      "revId": "d9f970db98d333cc8e6bdacbbb4160daa0fec9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d6af932_1ab3ab76",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
