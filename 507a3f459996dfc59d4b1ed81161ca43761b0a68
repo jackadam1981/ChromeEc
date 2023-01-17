@@ -33,6 +33,74 @@
       "message": "I tested this with the AP VDM code for the following cases:\n1. Hotplug \u003d PASS\n2. AP reboot (\"warn reboot\") when connected \u003d  PASS\n3. EC reboot (\"Refresh + Power\") \u003d PASS\n4. `powerd_dbus_suspend --suspend_for_sec\u003d15` (S0ix) \u003d FAIL\n\n\nPASS \u003d WiMaxit Type-C display lights up and renders the extended display correctly\n\nI should check to see if 4. passes on existing EC firmware (i.e without the AP VDM stuff), but I want to save off all my FW state first (lest things break irrevocably).\n\nApart from 4.) seems to be working fine...",
       "revId": "507a3f459996dfc59d4b1ed81161ca43761b0a68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8133b137_abb68ab7",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T23:16:20Z",
+      "side": 1,
+      "message": "Would it make more sense to do this check inside `usb_mux_set`?",
+      "revId": "507a3f459996dfc59d4b1ed81161ca43761b0a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b833ed2c_bef445f8",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T23:16:20Z",
+      "side": 1,
+      "message": "This comment is now wrong, since the code _does_ alert the modules.",
+      "revId": "507a3f459996dfc59d4b1ed81161ca43761b0a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dda08f5_7059899f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T23:16:20Z",
+      "side": 1,
+      "message": "Rather than code the DP logic into the DPM, it seems more modular to do a switch on the SVID and call a function in the appropriate alt mode module that does whatever is appropriate with the VDM. (You\u0027re already sort of doing this anyway?)",
+      "revId": "507a3f459996dfc59d4b1ed81161ca43761b0a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd777cd_42a34b40",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T23:16:20Z",
+      "side": 1,
+      "message": "I don\u0027t know whether this would make it more or less readable, but if you don\u0027t plan on having a bunch of `else`s here, you could just have one or two `if`s/levels of indentation and line breaks between the conditions.",
+      "revId": "507a3f459996dfc59d4b1ed81161ca43761b0a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
