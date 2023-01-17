@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5184897_0e6587be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-17T17:43:12Z",
+      "side": 1,
+      "message": "Okay, so I\u0027ve tested this approach and it works.  But I\u0027m wondering if I should do some refactoring to ensure the interactions here aren\u0027t brittle.\n\nRight now, the HPD transmission works because the DP module is essentially taking care of setting up the `common/usb_pd_alt_mode_dfp.c` state information for it.  And ExitMode on shutdown works because we\u0027ve been nudging the DP module states along just so.\n\nHowever, this does mean that the code needs the DP module in lock-step with the AP\u0027s VDMs to function.  I\u0027m not totally certain how buggy that will be long-term",
+      "revId": "507a3f459996dfc59d4b1ed81161ca43761b0a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
