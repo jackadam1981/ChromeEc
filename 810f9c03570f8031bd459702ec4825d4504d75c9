@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07214d98_e58cc318",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 7377,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-01-17T21:02:09Z",
+      "side": 1,
+      "message": "This refers to VDM header + 1 VDO right ?\n\nAnd, just to conform, it will use the same event as VDM_RESPONSE_REQ (as discussed) ?",
+      "range": {
+        "startLine": 7376,
+        "startChar": 0,
+        "endLine": 7377,
+        "endChar": 27
+      },
+      "revId": "810f9c03570f8031bd459702ec4825d4504d75c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
