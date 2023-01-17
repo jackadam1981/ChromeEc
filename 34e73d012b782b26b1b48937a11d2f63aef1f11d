@@ -51,6 +51,24 @@
       "parentUuid": "27f23fd1_2a6be91c",
       "revId": "34e73d012b782b26b1b48937a11d2f63aef1f11d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f5ed46_e83dab6f",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-01-17T19:06:56Z",
+      "side": 1,
+      "message": "\u003e If it\u0027s OK to call this from a host command, then it should be pd_get_partner_rmdo and declared in usb_pd.h\n\nI think it should be OK to call this from the a host command. We already have other getter functions which a host command calls to grab data from the PE state (`pd_get_src_cap_cnt`, `pd_get_src_caps`, `pd_get_snk_cap_cnt`, `pd_get_snk_cap`). In this patchset, I changed `pe_get_partner_rmdo` to `pd_get_partner_rmdo` and declared it in usb_pd.h as you mentioned.\n\n\u003e What about reporting the 16 non-reserved bits of the RMDO to the AP and falling back to pd_get_rev() if we don\u0027t have the detailed information available?\n\nI\u0027ve added this in patchset 2. `hc_typec_status` will check for data from `pd_get_partner_rmdo`, if that\u0027s unavailable then `hc_typec_status` uses `pd_get_rev`. If no device is connected, it will still just assign 0.\n\n\u003e Unifying pd_get_rev() with the RMDO would be nice, but would require a fair number of updates to how we run revision checks in the TCPMv2 stack\n\nI think it makes sense to keep these separated, they currently correspond to different ways that a partner can tell us revision information (header, rmdo) which don\u0027t line up very neatly due to the -1 offset in the message header revision.\n\n\u003e If we do add in the version bits, the comment for sop_revision in ec_commands.h would need updated to match.\n\nDone. Missed this in patchset 2, added in patchset 3.",
+      "parentUuid": "a17d7930_3f7528fe",
+      "revId": "34e73d012b782b26b1b48937a11d2f63aef1f11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
