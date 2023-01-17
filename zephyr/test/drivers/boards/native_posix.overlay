@@ -277,6 +277,9 @@
 		gpio_usb_c1_bc12_int_l: usb_c1_bc12_int_l {
 			gpios = <&gpio1 11 GPIO_INPUT>;
 		};
+		gpio_touchpad_int: touchpad_int {
+			gpios = <&gpio1 12 GPIO_INPUT>;
+		};
 	};
 
 	gpio1: gpio@101 {
@@ -289,7 +292,7 @@
 		low-level;
 		gpio-controller;
 		#gpio-cells = <2>;
-		ngpios = <12>;
+		ngpios = <13>;
 	};
 
 	gpio-interrupts {
@@ -354,6 +357,11 @@
 			irq-pin = <&gpio_usb_c1_bc12_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "usb1_evt";
+		};
+		int_touchpad: touchpad {
+			irq-pin = <&gpio_touchpad_int>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "touchpad_interrupt";
 		};
 	};
 
@@ -813,6 +821,13 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		reg = <0x400 4>;
+
+		touchpad: touchpad@15 {
+			compatible = "elan,ekth3000";
+			status = "okay";
+			reg = <0x15>;
+			irq = <&int_touchpad>;
+		};
 
 		tcs_emul: tcs@39 {
 			compatible = "zephyr,tcs3400-emul";

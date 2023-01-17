@@ -149,6 +149,14 @@ config EMUL_PCT2075
 	  Enable the PCT2075 temperature sensor emulator. It uses emulated I2C bus.
 	  Emulator API is available in zephyr/include/emul/emul_pct2075.h.
 
+config EMUL_TOUCHPAD_ELAN
+	bool "Elan I2C touchpad emulator"
+	default y
+	depends on ZTEST && DT_HAS_ELAN_EKTH3000_ENABLED
+	select EMUL_COMMON_I2C
+	help
+	  <WIP>
+
 rsource "Kconfig.ln9310"
 rsource "Kconfig.lis2dw12"
 rsource "Kconfig.i2c_mock"
