@@ -41,7 +41,7 @@
 #ifdef CONFIG_CMD_S5_TIMEOUT
 static int s5_inactivity_timeout = 10;
 #else
-static const int s5_inactivity_timeout = 10;
+static const int s5_inactivity_timeout = -1;
 #endif
 
 static const char *const state_names[] = {

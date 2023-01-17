@@ -6,6 +6,7 @@
 #include "adc.h"
 #include "builtin/assert.h"
 #include "button.h"
+#include "cec.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "chipset.h"
@@ -516,3 +517,26 @@ void monitor_interrupt(enum gpio_signal signal)
 				   MONITOR_DEBOUNCE_MS * MSEC);
 	}
 }
+
+/******************************************************************************/
+/*
+ * Power on moli by TV through CEC.
+ * When I power on TV, there is three commands that send from TV to moli.
+ * MSG: 0f84000000
+ * MSG: 0f879d1900
+ * MSG: 0f8000003000
+ * i.e. the msg[1] is 0x84/ 0x87/ 0x80.
+ */
+
+struct cec_offline_policy moli_cec_policy[] = {
+	{
+		.command = CEC_REPORT_PHYSICAL_ADDRESS,
+		.action = CEC_ACTION_POWER_BUTTON,
+	},
+	/* Terminator */
+	{ 0 },
+};
+
+__override const struct cec_config_t cec_config = {
+	.offline_policy = moli_cec_policy,
+};
