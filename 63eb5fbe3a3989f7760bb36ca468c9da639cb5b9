@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7da85af0_439e63ba",
+        "filename": "zephyr/zmake/zmake/util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-01-17T15:25:14Z",
+      "side": 1,
+      "message": "Could we add `ZMAKE_` prefix to this? I\u0027d feel better about the env variables being verbosely specific.",
+      "revId": "63eb5fbe3a3989f7760bb36ca468c9da639cb5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
