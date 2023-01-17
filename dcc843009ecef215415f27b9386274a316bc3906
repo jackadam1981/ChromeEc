@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15be5170_67f73d6a",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-17T22:40:26Z",
+      "side": 1,
+      "message": "Do we want to enable a disabled WDT in watchdog_reload? I think watchdog_reload should be slim. A disabled WDT should be enabled explicitly somewhere else.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 3
+      },
+      "revId": "dcc843009ecef215415f27b9386274a316bc3906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

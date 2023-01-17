@@ -46,6 +46,30 @@
       },
       "revId": "d4d13800d6f7649e4fc16c7fed80c78574fb29ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10068fef_e41d80ca",
+        "filename": "zephyr/test/drivers/default/src/watchdog.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-17T22:40:26Z",
+      "side": 0,
+      "message": "If watchdog_init can\u0027t be called multiple times, I think its unit test should continue to check if watchdog_init properly returns an error.",
+      "parentUuid": "f38afb07_232bf2b9",
+      "range": {
+        "startLine": 78,
+        "startChar": 16,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "d4d13800d6f7649e4fc16c7fed80c78574fb29ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
