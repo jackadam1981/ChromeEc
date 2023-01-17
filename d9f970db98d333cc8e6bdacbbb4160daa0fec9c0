@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71295221_3ccb8662",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-17T20:53:16Z",
+      "side": 1,
+      "message": "It seems like this should be pretty easy to cover from the PD 3 suite that you added the ALERT testing to",
+      "revId": "d9f970db98d333cc8e6bdacbbb4160daa0fec9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
