@@ -22,6 +22,30 @@
       },
       "revId": "07737bcabbf1a12099c6cb267a5f5a28549d5675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0549c5_091ed007",
+        "filename": "zephyr/test/drivers/ps8xxx/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-01-17T22:33:41Z",
+      "side": 1,
+      "message": "The emulator only supports 8805 and 8815 currently.",
+      "parentUuid": "1ea1b83b_4223c31e",
+      "range": {
+        "startLine": 6,
+        "startChar": 38,
+        "endLine": 6,
+        "endChar": 39
+      },
+      "revId": "07737bcabbf1a12099c6cb267a5f5a28549d5675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
