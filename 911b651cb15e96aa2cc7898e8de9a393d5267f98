@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "729ab3ed_e552196d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-17T17:45:17Z",
+      "side": 1,
+      "message": "I\u0027m guessing that `test_set_chipset_to_power_level` would need some modifications to actually call hooks for all power state changes (probably intelligently going from the current state through all the transitions to the next one).  I wasn\u0027t sure it was worth it at the time I was coding the test, but am open to suggestions.",
+      "revId": "911b651cb15e96aa2cc7898e8de9a393d5267f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
