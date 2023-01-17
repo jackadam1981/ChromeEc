@@ -34,6 +34,24 @@
       "parentUuid": "88f5b3b1_42014fbf",
       "revId": "4903798e43ca369e1fc15c2824150d0b080b7c9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91eddd40_74f81d90",
+        "filename": "zephyr/test/skyrim/src/frostflow/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-01-17T15:40:49Z",
+      "side": 1,
+      "message": "So we could include test sources based on some CONFIG via a CmakeList.txt.\n\nSuch as:\n\nWe could make one common suite for the program in something like `test/program/common/usb_mux_config.c` and conditionally add project-specific test sources that just get linked to the pre-existing suite.\n\nHowever, if we\u0027re just running the same exact test sources with different configs, we\u0027re better off writing separate testcase.yaml entries that enable different CONFIGs as needed.",
+      "parentUuid": "4e51fc99_1fc270d1",
+      "revId": "4903798e43ca369e1fc15c2824150d0b080b7c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
