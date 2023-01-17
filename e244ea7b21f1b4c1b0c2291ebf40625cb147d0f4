@@ -16,6 +16,24 @@
       "message": "Nit: Alternatively, `const uint8_t *port \u003d args-\u003eparams-\u003eport`, and then you don\u0027t need to change the other lines.",
       "revId": "e244ea7b21f1b4c1b0c2291ebf40625cb147d0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f712500f_814a6149",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T23:36:15Z",
+      "side": 1,
+      "message": "I guess it would be `\u0026args-\u003eparams-\u003eport`. Perhaps `const uint8_t port \u003d args-\u003eparams-\u003eport` and then not needing to dereference `port` later would be more natural. All up to you.",
+      "parentUuid": "b84625f8_8a80d61f",
+      "revId": "e244ea7b21f1b4c1b0c2291ebf40625cb147d0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
