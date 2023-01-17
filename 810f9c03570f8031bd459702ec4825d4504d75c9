@@ -46,6 +46,30 @@
       },
       "revId": "810f9c03570f8031bd459702ec4825d4504d75c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3367e2b1_9d27de6e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 7377,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-01-17T21:35:37Z",
+      "side": 1,
+      "message": "\u003e It\u0027s on the same host command, but I started it as a separate event. I\u0027m open to suggestions though if you\u0027d prefer it shares the PD_STATUS_EVENT_VDM_REQ_REPLY event.\n\nDoes calling `EC_CMD_TYPEC_VDM_RESPONSE` clear an actual `vdm_response[]` if one existed?\n\nOr does that just remain till AP sends another VDM ?\n\nIf calling `VDM_RESPONSE` doesn\u0027t clear the actual vdm_response, then a separate event is fine (probably preferable). However if a single read clears everything after, then it\u0027s probably better to club it with the existing host event (separate handlers for separate events would be cleaner, but not at the expense of functionality).",
+      "parentUuid": "1464320f_89d7e1e4",
+      "range": {
+        "startLine": 7376,
+        "startChar": 0,
+        "endLine": 7377,
+        "endChar": 27
+      },
+      "revId": "810f9c03570f8031bd459702ec4825d4504d75c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
