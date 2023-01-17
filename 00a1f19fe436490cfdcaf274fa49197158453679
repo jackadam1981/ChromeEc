@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7bd1dc7_767dc88f",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-17T16:36:42Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need this.",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 14
+      },
+      "revId": "00a1f19fe436490cfdcaf274fa49197158453679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbc63ebc_de598d68",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-17T16:36:42Z",
+      "side": 1,
+      "message": "Where do we enable this?",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 13
+      },
+      "revId": "00a1f19fe436490cfdcaf274fa49197158453679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e29c35b_8641594e",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-17T16:36:42Z",
+      "side": 1,
+      "message": "nit: can we pass \u0026wdt_info[i]?",
+      "range": {
+        "startLine": 130,
+        "startChar": 32,
+        "endLine": 131,
+        "endChar": 30
+      },
+      "revId": "00a1f19fe436490cfdcaf274fa49197158453679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
