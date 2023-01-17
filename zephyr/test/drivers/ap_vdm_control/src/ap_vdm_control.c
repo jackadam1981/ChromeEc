@@ -494,6 +494,31 @@ ZTEST_F(ap_vdm_control, test_vdm_request_no_send)
 		      "Failed to see no message ready");
 }
 
+ZTEST_F(ap_vdm_control, test_vdm_response_disconnect_clear)
+{
+	struct ec_response_typec_vdm_response vdm_resp;
+	uint32_t vdm_req_header = VDO(USB_SID_PD, 1, CMD_DISCOVER_IDENT) |
+				  VDO_SVDM_VERS(VDM_VER20);
+	struct typec_vdm_req req = {
+		.vdm_data = { vdm_req_header },
+		.vdm_data_objects = 1,
+		.partner_type = TYPEC_PARTNER_SOP,
+	};
+
+	host_cmd_typec_control_vdm_req(TEST_PORT, req);
+	k_sleep(K_SECONDS(1));
+
+	/* Now disconnect and verify there's nothing to see here */
+	disconnect_source_from_port(fixture->tcpci_emul, fixture->charger_emul);
+
+	vdm_resp = host_cmd_typec_vdm_response(TEST_PORT);
+	zassert_equal(vdm_resp.vdm_response_err, EC_RES_UNAVAILABLE,
+		      "Failed to see reply cleared");
+	zassert_equal(vdm_resp.vdm_data_objects,
+		      0,
+		      "Failed to see no VDOs available");
+}
+
 /* Tests for the DP entry flow and related requirements */
 static void run_verify_dp_entry(struct ap_vdm_control_fixture *fixture,
 				int opos)
@@ -658,4 +683,171 @@ ZTEST_F(ap_vdm_control, test_vdm_dp_shutdown_exit)
 	req.partner_type = TYPEC_PARTNER_SOP;
 
 	verify_vdm_req(fixture, &req);
+}
+
+ZTEST_F(ap_vdm_control, test_vdm_attention_none)
+{
+	struct ec_response_typec_vdm_response vdm_resp;
+	int opos = 1;
+
+	run_verify_dp_entry(fixture, opos);
+
+	/* Check that we have no Attention messages and none in the queue */
+	vdm_resp = host_cmd_typec_vdm_response(TEST_PORT);
+	zassert_equal(vdm_resp.vdm_attention_objects, 0,
+		      "Failed to see empty message");
+	zassert_equal(vdm_resp.vdm_attention_left, 0,
+		      "Failed to see no more messages");
+}
+
+ZTEST_F(ap_vdm_control, test_vdm_attention_one)
+{
+	uint32_t vdm_attention_data[2];
+	int opos = 1;
+	struct ec_response_typec_status status;
+	struct ec_response_typec_vdm_response vdm_resp;
+
+	run_verify_dp_entry(fixture, opos);
+
+	/* Test that we see our Attention message */
+	vdm_attention_data[0] =
+		VDO(USB_SID_DISPLAYPORT, 1,
+		    VDO_OPOS(opos) | VDO_CMDT(CMDT_INIT) | CMD_ATTENTION);
+	vdm_attention_data[0] |= VDO_SVDM_VERS(VDM_VER20);
+	vdm_attention_data[1] = VDO_DP_STATUS(1, /* IRQ_HPD */
+					      true, /* HPD_HI|LOW - Changed*/
+					      0, /* request exit DP */
+					      0, /* request exit USB */
+					      0, /* MF pref */
+					      true, /* DP Enabled */
+					      0, /* power low e.g. normal */
+					      0x2 /* Connected as Sink */);
+	tcpci_partner_send_data_msg(&fixture->partner, PD_DATA_VENDOR_DEF,
+				    vdm_attention_data, 2, 0);
+
+	k_sleep(K_SECONDS(1));
+	/*
+	 * Verify the event and the contents of our Attention
+	 */
+	status = host_cmd_typec_status(TEST_PORT);
+	zassert_true(status.events & PD_STATUS_EVENT_VDM_ATTENTION,
+		     "Failed to see VDM Attention event");
+
+	vdm_resp = host_cmd_typec_vdm_response(TEST_PORT);
+	zassert_equal(vdm_resp.vdm_attention_objects, 2,
+		      "Failed to see correct number of objects");
+	zassert_equal(vdm_resp.vdm_attention_left, 0,
+		      "Failed to see 0 more in queue");
+	zassert_equal(memcmp(vdm_resp.vdm_attention, vdm_attention_data,
+			     vdm_resp.vdm_attention_objects * sizeof(uint32_t)),
+		      0, "Failed to see correct Attention VDM contents");
+}
+
+ZTEST_F(ap_vdm_control, test_vdm_attention_two)
+{
+	uint32_t vdm_attention_first[2];
+	uint32_t vdm_attention_second[2];
+	int opos = 1;
+	struct ec_response_typec_status status;
+	struct ec_response_typec_vdm_response vdm_resp;
+
+	run_verify_dp_entry(fixture, opos);
+
+	/* Test that we see our first Attention message followed by second */
+	vdm_attention_first[0] =
+		VDO(USB_SID_DISPLAYPORT, 1,
+		    VDO_OPOS(opos) | VDO_CMDT(CMDT_INIT) | CMD_ATTENTION);
+	vdm_attention_first[0] |= VDO_SVDM_VERS(VDM_VER20);
+	vdm_attention_first[1] = VDO_DP_STATUS(0, /* IRQ_HPD */
+					       false, /* HPD_HI|LOW - Changed*/
+					       0, /* request exit DP */
+					       0, /* request exit USB */
+					       0, /* MF pref */
+					       true, /* DP Enabled */
+					       0, /* power low e.g. normal */
+					       0x2 /* Connected as Sink */);
+	tcpci_partner_send_data_msg(&fixture->partner, PD_DATA_VENDOR_DEF,
+				    vdm_attention_first, 2, 0);
+
+	k_sleep(K_SECONDS(1));
+
+	/* Number two time */
+	vdm_attention_second[0] =
+		VDO(USB_SID_DISPLAYPORT, 1,
+		    VDO_OPOS(opos) | VDO_CMDT(CMDT_INIT) | CMD_ATTENTION);
+	vdm_attention_second[0] |= VDO_SVDM_VERS(VDM_VER20);
+	vdm_attention_second[1] = VDO_DP_STATUS(1, /* IRQ_HPD */
+						true, /* HPD_HI|LOW - Changed*/
+						0, /* request exit DP */
+						0, /* request exit USB */
+						0, /* MF pref */
+						true, /* DP Enabled */
+						0, /* power low e.g. normal */
+						0x2 /* Connected as Sink */);
+	tcpci_partner_send_data_msg(&fixture->partner, PD_DATA_VENDOR_DEF,
+				    vdm_attention_second, 2, 0);
+
+	k_sleep(K_SECONDS(1));
+	/*
+	 * Verify the event and the contents of our Attention from each in
+	 * the proper order
+	 */
+	status = host_cmd_typec_status(TEST_PORT);
+	zassert_true(status.events & PD_STATUS_EVENT_VDM_ATTENTION,
+		     "Failed to see VDM Attention event");
+
+	vdm_resp = host_cmd_typec_vdm_response(TEST_PORT);
+	zassert_equal(vdm_resp.vdm_attention_objects, 2,
+		      "Failed to see correct number of objects");
+	zassert_equal(vdm_resp.vdm_attention_left, 1,
+		      "Failed to see 1 more in queue");
+	zassert_equal(memcmp(vdm_resp.vdm_attention, vdm_attention_first,
+			     vdm_resp.vdm_attention_objects * sizeof(uint32_t)),
+		      0, "Failed to see correct first Attention VDM contents");
+
+	vdm_resp = host_cmd_typec_vdm_response(TEST_PORT);
+	zassert_equal(vdm_resp.vdm_attention_objects, 2,
+		      "Failed to see correct number of objects");
+	zassert_equal(vdm_resp.vdm_attention_left, 0,
+		      "Failed to see 0 more in queue");
+	zassert_equal(memcmp(vdm_resp.vdm_attention, vdm_attention_second,
+			     vdm_resp.vdm_attention_objects * sizeof(uint32_t)),
+		      0, "Failed to see correct second Attention VDM contents");
+}
+
+ZTEST_F(ap_vdm_control, test_vdm_attention_disconnect_clear)
+{
+	uint32_t vdm_attention_data[2];
+	int opos = 1;
+	struct ec_response_typec_vdm_response vdm_resp;
+
+	run_verify_dp_entry(fixture, opos);
+
+	/* Send an Attention message */
+	vdm_attention_data[0] =
+		VDO(USB_SID_DISPLAYPORT, 1,
+		    VDO_OPOS(opos) | VDO_CMDT(CMDT_INIT) | CMD_ATTENTION);
+	vdm_attention_data[0] |= VDO_SVDM_VERS(VDM_VER20);
+	vdm_attention_data[1] = VDO_DP_STATUS(1, /* IRQ_HPD */
+					      true, /* HPD_HI|LOW - Changed*/
+					      0, /* request exit DP */
+					      0, /* request exit USB */
+					      0, /* MF pref */
+					      true, /* DP Enabled */
+					      0, /* power low e.g. normal */
+					      0x2 /* Connected as Sink */);
+	tcpci_partner_send_data_msg(&fixture->partner, PD_DATA_VENDOR_DEF,
+				    vdm_attention_data, 2, 0);
+
+	k_sleep(K_SECONDS(1));
+	/*
+	 * Disconnect and verify no messages are reported
+	 */
+	disconnect_source_from_port(fixture->tcpci_emul, fixture->charger_emul);
+	
+	vdm_resp = host_cmd_typec_vdm_response(TEST_PORT);
+	zassert_equal(vdm_resp.vdm_attention_objects, 0,
+		      "Failed to see empty message");
+	zassert_equal(vdm_resp.vdm_attention_left, 0,
+		      "Failed to see no more messages");
 }
