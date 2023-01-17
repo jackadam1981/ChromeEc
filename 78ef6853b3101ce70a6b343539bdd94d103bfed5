@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c827841c_083d2a91",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-17T21:49:57Z",
+      "side": 1,
+      "message": "nit: As its one liner can the consumer of these functions directly call ap_pwrseq_sm_get_state_str() and ap_pwrseq_sm_get_cur_state()? instead of a wrapper function?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "78ef6853b3101ce70a6b343539bdd94d103bfed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
