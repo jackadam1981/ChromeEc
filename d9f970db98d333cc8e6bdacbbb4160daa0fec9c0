@@ -16,6 +16,69 @@
       "message": "It seems like this should be pretty easy to cover from the PD 3 suite that you added the ALERT testing to",
       "revId": "d9f970db98d333cc8e6bdacbbb4160daa0fec9c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21fdbc5e_d16f9793",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T22:02:07Z",
+      "side": 1,
+      "message": "Are you planning on adding SOP\u0027 _Get_Revision_ support and using that here? (Separate CL)",
+      "revId": "d9f970db98d333cc8e6bdacbbb4160daa0fec9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d6af932_1ab3ab76",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 7053,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T22:02:07Z",
+      "side": 1,
+      "message": "revision",
+      "range": {
+        "startLine": 7053,
+        "startChar": 32,
+        "endLine": 7053,
+        "endChar": 41
+      },
+      "revId": "d9f970db98d333cc8e6bdacbbb4160daa0fec9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1c11a7_f405782d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 7054,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T22:02:07Z",
+      "side": 1,
+      "message": "revision",
+      "range": {
+        "startLine": 7054,
+        "startChar": 10,
+        "endLine": 7054,
+        "endChar": 17
+      },
+      "revId": "d9f970db98d333cc8e6bdacbbb4160daa0fec9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
