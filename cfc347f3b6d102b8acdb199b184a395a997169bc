@@ -51,6 +51,24 @@
       "parentUuid": "59218e20_22e97a9c",
       "revId": "cfc347f3b6d102b8acdb199b184a395a997169bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acfe42bd_0830675d",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-17T00:36:08Z",
+      "side": 1,
+      "message": "Right; there are actually two paths here (do something, and do nothing). It might be less confusing to remove the comment on line 406 (since it\u0027s already covered by 395-396)?",
+      "parentUuid": "6067e16e_1a0809ed",
+      "revId": "cfc347f3b6d102b8acdb199b184a395a997169bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
