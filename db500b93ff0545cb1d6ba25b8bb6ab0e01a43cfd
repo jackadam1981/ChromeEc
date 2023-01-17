@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af04904e_27ac36c3",
+        "filename": "zephyr/test/skyrim/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-17T20:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6332b1_e42fe1b1",
+      "revId": "db500b93ff0545cb1d6ba25b8bb6ab0e01a43cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d29c1052_bb935234",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-01-11T23:06:14Z",
       "side": 1,
       "message": "You can probably leave out mortal.  The board will actually be markarth, so it\u0027s just a duplicate right now",
+      "revId": "db500b93ff0545cb1d6ba25b8bb6ab0e01a43cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e303ff8_ee56a3a2",
+        "filename": "zephyr/test/skyrim/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-17T20:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d29c1052_bb935234",
       "revId": "db500b93ff0545cb1d6ba25b8bb6ab0e01a43cfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
