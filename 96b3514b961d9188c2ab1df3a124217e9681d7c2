@@ -39,6 +39,23 @@
       "message": "Update zephyr test.",
       "revId": "96b3514b961d9188c2ab1df3a124217e9681d7c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83bf10bf_203cb88c",
+        "filename": "zephyr/test/drivers/usb_malfunction_sink/src/usb_malfunction_sink.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-17T22:53:13Z",
+      "side": 1,
+      "message": "I\u0027m not sure the comment matches the test?  Is the goal to have a Source cap be discarded due to an incoming message during explicit contract negotiation? \n\nThis is kind of a strange situation to see (we wouldn\u0027t expect an incoming message before first getting our Source Cap sent).  But I suspect it would take work on the partner emulator to get it to discard a less odd message (ex. a message that happens after initial contract negotiation)",
+      "revId": "96b3514b961d9188c2ab1df3a124217e9681d7c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
