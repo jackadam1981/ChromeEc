@@ -46,6 +46,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "415e0ae6_ec9c06d9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-17T18:10:49Z",
+      "side": 1,
+      "message": "I didn\u0027t find any reference of EC_FAN_SPEED_STALLED (and EC_FAN_SPEED_NOT_PRESENT) either.\n\n(FYI: We should also deprecate EC_FAN_SPEED_NOT_PRESENT and add EC_FAN_COUNT, instead.)",
+      "parentUuid": "e732c5c5_6d2fcfe5",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
