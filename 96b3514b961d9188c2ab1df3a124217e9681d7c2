@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2259591b_26fe4da9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T18:33:58Z",
+      "side": 1,
+      "message": "Nit: Page 98 refers to messages longer than 128 bytes, which our TCPCs do not typically support. Page 97 refers to messages 128 bytes or less. I\u0027d just cite section 4.7.1, since there\u0027s a decent chance that that reference won\u0027t change even as the spec changes.",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "96b3514b961d9188c2ab1df3a124217e9681d7c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dabcb27f_669ddb51",
