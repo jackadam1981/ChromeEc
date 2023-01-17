@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "627be118_6eda2985",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T23:32:02Z",
+      "side": 1,
+      "message": "Nit: These could be their own easy-peasy CL.",
+      "revId": "a693e0ebb7a0b015b483cb39d1bdae9d3d7329b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca22bc2_fb98a21d",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T23:32:02Z",
+      "side": 1,
+      "message": "Nit: Presumably, the AP would not wait this long in real life. Does anything change if we wait like 50-100 ms after each message?",
+      "revId": "a693e0ebb7a0b015b483cb39d1bdae9d3d7329b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69db009b_0a04847c",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T23:32:02Z",
+      "side": 1,
+      "message": "Nit: If you\u0027re already writing helper functions, it might be helpful to have one that checks the SOP type, size, and contents for a VDM.",
+      "revId": "a693e0ebb7a0b015b483cb39d1bdae9d3d7329b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883db9e8_d4c19d02",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T23:32:02Z",
+      "side": 1,
+      "message": "Nit: Why not include this in the previous line?",
+      "revId": "a693e0ebb7a0b015b483cb39d1bdae9d3d7329b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4bd6ecc_95a55223",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T23:32:02Z",
+      "side": 1,
+      "message": "I think there is an example of this in our existing tests that you can copy-paste.",
+      "revId": "a693e0ebb7a0b015b483cb39d1bdae9d3d7329b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
