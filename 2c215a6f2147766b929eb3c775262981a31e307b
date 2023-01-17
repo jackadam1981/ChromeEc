@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b635161_cca66c0d",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/Kconfig.it8xxx2",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-17T17:47:05Z",
+      "side": 1,
+      "message": "This setting can move to the definition and then get shared by all projects.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/app/ec/Kconfig;l\u003d131",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "2c215a6f2147766b929eb3c775262981a31e307b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
