@@ -16,6 +16,24 @@
       "message": "I\u0027m just the new person, but why use the pattern DEFAULT_CONSOLE_CMDS vs. console_cmds?",
       "revId": "8ef29a6535ac70280892cb0046f2ab91f3032f82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e04a967f_de0a15dc",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-17T16:28:41Z",
+      "side": 1,
+      "message": "I did this to align with the path to the source code.",
+      "parentUuid": "8c96b343_cd77d1e4",
+      "revId": "8ef29a6535ac70280892cb0046f2ab91f3032f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
