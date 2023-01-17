@@ -52,6 +52,24 @@
       "parentUuid": "8178c689_538b5b2d",
       "revId": "0f52d7a9845beffe639aa7cefa195aaae274aad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77bec5db_08945458",
+        "filename": "docs/chromeos-ec-firmware-test-requirements.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-01-17T16:15:13Z",
+      "side": 1,
+      "message": "should we change line 14 with the 95% to match the 90% on line 28 then?",
+      "parentUuid": "17506ec8_10dc9e52",
+      "revId": "0f52d7a9845beffe639aa7cefa195aaae274aad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
