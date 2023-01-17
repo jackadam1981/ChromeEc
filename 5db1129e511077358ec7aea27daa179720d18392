@@ -16,6 +16,24 @@
       "message": "It\u0027s difficult to reason about when this will be called in relation to TCPC resets; I\u0027d prefer to add a config option to the driver instead (make `RAA489000_OCP_THRESHOLD_VALUE` configurable) because it\u0027s much easier to be certain that\u0027s correct.",
       "revId": "5db1129e511077358ec7aea27daa179720d18392",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab324baf_92ef37bb",
+        "filename": "zephyr/program/nissa/pujjo/src/form_factor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2023-01-17T09:57:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82d07ceb_864330f1",
+      "revId": "5db1129e511077358ec7aea27daa179720d18392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
