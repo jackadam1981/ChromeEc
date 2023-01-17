@@ -10,4 +10,4 @@ CHIP:=stm32
 CHIP_FAMILY:=stm32l5
 CHIP_VARIANT:=stm32l552xe
 
-board-y=board.o
+board-y=board.o gpio.o spi.o
