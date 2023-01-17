@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b106be_2a4654cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T23:19:30Z",
+      "side": 1,
+      "message": "Oops. Should these functions be refactored so that setting to any power state works the same way?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "911b651cb15e96aa2cc7898e8de9a393d5267f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "729ab3ed_e552196d",
@@ -14,6 +37,23 @@
       "writtenOn": "2023-01-17T17:45:17Z",
       "side": 1,
       "message": "I\u0027m guessing that `test_set_chipset_to_power_level` would need some modifications to actually call hooks for all power state changes (probably intelligently going from the current state through all the transitions to the next one).  I wasn\u0027t sure it was worth it at the time I was coding the test, but am open to suggestions.",
+      "revId": "911b651cb15e96aa2cc7898e8de9a393d5267f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57748081_aaf140b4",
+        "filename": "zephyr/test/drivers/common/src/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-17T23:19:30Z",
+      "side": 1,
+      "message": "Less time than what?",
       "revId": "911b651cb15e96aa2cc7898e8de9a393d5267f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
