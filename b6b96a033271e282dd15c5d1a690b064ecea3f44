@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47538a78_aa9e545b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-01-17T17:38:35Z",
+      "side": 1,
+      "message": "The latest CQ failure is:\nld.lld: error: undefined symbol: ppc_init\n\nYou also need to include `usbc_ppc.h`.",
+      "revId": "b6b96a033271e282dd15c5d1a690b064ecea3f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
