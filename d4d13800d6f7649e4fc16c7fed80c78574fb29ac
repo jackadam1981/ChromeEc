@@ -22,6 +22,30 @@
       },
       "revId": "d4d13800d6f7649e4fc16c7fed80c78574fb29ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f38afb07_232bf2b9",
+        "filename": "zephyr/test/drivers/default/src/watchdog.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-01-17T16:51:58Z",
+      "side": 0,
+      "message": "`watchdog_init()` is actually tested, because we initialize watchdog before running tests in `watchdog_before()`. Every call to `watchdog_init()` initializes one watchdog channel (posix counter provides only one channel, that\u0027s why we expected ENOMEM here), but there is no way to \"free\" them.\n\nI think, calling `watchdog_init()` more than once is bad behaviour.",
+      "parentUuid": "fe1a7dbe_a5b6e2d5",
+      "range": {
+        "startLine": 78,
+        "startChar": 16,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "d4d13800d6f7649e4fc16c7fed80c78574fb29ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
