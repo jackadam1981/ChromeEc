@@ -1073,6 +1073,31 @@ DECLARE_HOST_COMMAND(EC_CMD_MKBP_SIMULATE_KEY, mkbp_command_simulate_key,
 		     EC_VER_MASK(0));
 
 #ifdef CONFIG_KEYBOARD_FACTORY_TEST
+#include "gpio_it8xxx2.h"
+
+#define GPIO_KBD_KSO2 0 /* Need to get from node */ /* GPIO_EC_KSO_02_INV */
+
+/*
+ * Map keyboard connector pins to EC GPIO pins for factory test.
+ * Pins mapped to {-1, -1} are skipped.
+ * The connector has 30 pins total, and there is no pin 0.
+ */
+const int keyboard_factory_scan_pins[][2] = {
+	{ -1, -1 },	   { GPIO_KSOH, 4 }, { GPIO_KSOH, 0 },
+	{ GPIO_KSOH, 1 }, { GPIO_KSOH, 3 }, { GPIO_KSOH, 2 },
+	{ -1, -1 },	   { -1, -1 },	      { GPIO_KSOL, 5 },
+	{ GPIO_KSOL, 6 }, { -1, -1 },	      { GPIO_KSOL, 3 },
+	{ GPIO_KSOL, 2 }, { GPIO_KSI, 0 },   { GPIO_KSOL, 1 },
+	{ GPIO_KSOL, 4 }, { GPIO_KSI, 3 },   { GPIO_KSI, 2 },
+	{ GPIO_KSOL, 0 }, { GPIO_KSI, 5 },   { GPIO_KSI, 4 },
+	{ GPIO_KSOL, 7 }, { GPIO_KSI, 6 },   { GPIO_KSI, 7 },
+	{ GPIO_KSI, 1 },   { -1, -1 },	      { GPIO_KSOH, 5 },
+	{ -1, -1 },	   { GPIO_KSOH, 6 }, { -1, -1 },
+	{ -1, -1 },
+};
+
+const int keyboard_factory_scan_pins_used =
+	ARRAY_SIZE(keyboard_factory_scan_pins);
 
 /* Run keyboard factory testing, scan out KSO/KSI if any shorted. */
 int keyboard_factory_test_scan(void)
@@ -1082,12 +1107,12 @@ int keyboard_factory_test_scan(void)
 	int port, id;
 
 	/* Disable keyboard scan while testing */
-	keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_CLOSED);
-	flags = gpio_get_default_flags(GPIO_KBD_KSO2);
+	keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_CLOSED); //needn't change
+	flags = gpio_get_default_flags(GPIO_KBD_KSO2); //needn't change
 
 	if (IS_ENABLED(CONFIG_ZEPHYR))
 		/* set all KSI/KSO pins to GPIO_ALT_FUNC_NONE */
-		keybaord_raw_config_alt(0);
+		keybaord_raw_config_alt(0); //-> shim -> ite: cros_kb_raw_ite_config_alt()
 
 	/* Set all of KSO/KSI pins to internal pull-up and input */
 	for (i = 0; i < keyboard_factory_scan_pins_used; i++) {
@@ -1101,7 +1126,8 @@ int keyboard_factory_test_scan(void)
 			gpio_set_alternate_function(port, 1 << id,
 						    GPIO_ALT_FUNC_NONE);
 		gpio_set_flags_by_mask(port, 1 << id,
-				       GPIO_INPUT | GPIO_PULL_UP);
+				       GPIO_INPUT | GPIO_PULL_UP); //shim/chip/gpio define port number mapping to node table
+								   //then pass node to
 	}
 
 	/*
@@ -1123,7 +1149,7 @@ int keyboard_factory_test_scan(void)
 
 			if (keyboard_raw_is_input_low(
 				    keyboard_factory_scan_pins[j][0],
-				    keyboard_factory_scan_pins[j][1])) {
+				    keyboard_factory_scan_pins[j][1])) { //keyboard_factory_scan_pins[j][2], j port member = GPIO_KSI-GPIO_KSOL (50-52)
 				shorted = i << 8 | j;
 				goto done;
 			}

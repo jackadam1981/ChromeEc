@@ -123,4 +123,7 @@ int gpio_configure_port_pin(int port, int id, int flags)
 	}
 
 	return gpio_pin_configure(dev, id, flags);
+	//const struct device *dev = npcx_get_gpio_dev(port); //can't add this func in upstream
+
+	//return gpio_pin_configure(dev, id, flags);
 }

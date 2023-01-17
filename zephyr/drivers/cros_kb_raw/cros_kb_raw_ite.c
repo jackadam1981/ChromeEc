@@ -158,6 +158,7 @@ static int cros_kb_raw_ite_config_alt(const struct device *dev, bool enable)
 
 		/* Set KSI[7:0]/KSO[12:0] pins to gpio input mode */
 		for (pin = 0; pin < 8; pin++) {
+			//may call gpio_kscan driver or gpio_v2 driver
 			status |= gpio_pin_configure(gpio_ksi, pin, GPIO_INPUT);
 			status |= gpio_pin_configure(gpio_ksol, pin,
 						     GPIO_INPUT);
@@ -173,6 +174,10 @@ static int cros_kb_raw_ite_config_alt(const struct device *dev, bool enable)
 	}
 
 	return 0;
+	//const struct cros_kb_raw_npcx_config *const config = DRV_CONFIG(dev);
+	//uint8_t id = enable ? PINCTRL_STATE_DEFAULT : PINCTRL_STATE_SLEEP;
+
+	//return pinctrl_apply_state(config->pcfg, id);
 }
 #endif
 
