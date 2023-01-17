@@ -34,6 +34,24 @@
       "message": "nit. This says 90%, but line 14 says 80% right now.",
       "revId": "0f52d7a9845beffe639aa7cefa195aaae274aad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17506ec8_10dc9e52",
+        "filename": "docs/chromeos-ec-firmware-test-requirements.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-17T15:24:47Z",
+      "side": 1,
+      "message": "The gerrit bot requires 80% at the moment before a CL can land. But each project requires 90% coverage.",
+      "parentUuid": "8178c689_538b5b2d",
+      "revId": "0f52d7a9845beffe639aa7cefa195aaae274aad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
