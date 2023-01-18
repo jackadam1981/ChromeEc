@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d4bfc8_f0fe7da9",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-01-18T13:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "291b9514_6e82dca0",
+      "revId": "93a4f2fce82b3dcc969b859123e9f5fed3474105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b00e46bf_dcaf1263",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-01-18T11:21:27Z",
       "side": 1,
       "message": "Same",
+      "revId": "93a4f2fce82b3dcc969b859123e9f5fed3474105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab6729c2_ee11e8ac",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-01-18T13:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b00e46bf_dcaf1263",
       "revId": "93a4f2fce82b3dcc969b859123e9f5fed3474105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -95,6 +131,30 @@
       "writtenOn": "2023-01-18T11:21:27Z",
       "side": 1,
       "message": "Why not move this block in a common file as well? Then the check function becomes a oneliner and you don\u0027t need the \"file\" variable anymore.",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 0
+      },
+      "revId": "93a4f2fce82b3dcc969b859123e9f5fed3474105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3897563_37c8ac61",
+        "filename": "zephyr/zmake/zmake/compare_builds.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-01-18T13:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "638ace19_c735fd45",
       "range": {
         "startLine": 286,
         "startChar": 0,
