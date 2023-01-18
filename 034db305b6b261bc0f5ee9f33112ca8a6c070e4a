@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8591b81f_a7c1e38a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-01-18T17:41:16Z",
+      "side": 1,
+      "message": "Still have some errors. Pasted as the following:\n```\nld.lld: error: undefined symbol: pd_get_task_cc_state\n\u003e\u003e\u003e referenced by board_chipset.c:94 (/mnt/host/source/src/platform/ec/zephyr/program/herobrine/src/board_chipset.c:94)\n\u003e\u003e\u003e               board_chipset.c.obj:(board_chipset_pre_init) in archive app/libapp.a\n\nld.lld: error: undefined symbol: ppc_init\n\u003e\u003e\u003e referenced by board_chipset.c:96 (/mnt/host/source/src/platform/ec/zephyr/program/herobrine/src/board_chipset.c:96)\n\u003e\u003e\u003e               board_chipset.c.obj:(board_chipset_pre_init) in archive app/libapp.a\nclang-16: error: linker command failed with exit code 1 (use -v to see invocation)\n```\n\nThe problem happens to be the test implementation. The test doesn\u0027t pull all the USB-C stack dependency. So these functions (pd_get_task_cc_state and ppc_init) link to nowhere. You can either pull the dependency (more work) or simply mock these functions in the test.",
+      "revId": "034db305b6b261bc0f5ee9f33112ca8a6c070e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
