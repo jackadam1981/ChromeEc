@@ -10,6 +10,7 @@ register_raw_project(
     dts_overlays=[
         "clock.dts",
         "flash.dts",
+        "gpio.dts",
         "usb.dts",
     ],
 )
