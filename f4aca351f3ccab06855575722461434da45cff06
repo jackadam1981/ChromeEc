@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f2f5af7_72caa660",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-01-18T23:42:24Z",
+      "side": 1,
+      "message": "I need to test the error returns for the tcpc driver but the interrupts are initialized on a hook so I\u0027m not sure how to change the tcpc_config as part of the test before the interrupts are enabled. I either need to be able to take the enable_interrupt off the hook for the test or a way to tear down the interrupts so I can re-enable them.",
+      "revId": "f4aca351f3ccab06855575722461434da45cff06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a327230_7ff16e5e",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-01-18T23:42:24Z",
+      "side": 1,
+      "message": "Not sure if this type of config in a driver is appropraite, but this project is the only one that uses tcpc pins as a hibernate wake up pin.",
+      "range": {
+        "startLine": 219,
+        "startChar": 7,
+        "endLine": 219,
+        "endChar": 31
+      },
+      "revId": "f4aca351f3ccab06855575722461434da45cff06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
