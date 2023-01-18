@@ -34,6 +34,24 @@
       "parentUuid": "b84625f8_8a80d61f",
       "revId": "e244ea7b21f1b4c1b0c2291ebf40625cb147d0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecefdb20_bb85585f",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-01-18T00:04:25Z",
+      "side": 1,
+      "message": "i would like to keep the coding style of always doing\n\u003ctype\u003e *p \u003d p-\u003eargs-\u003eparams\n\ncould add another \"port \u003d p-\u003eport\" line, but\ndoesn\u0027t seem to me to make things more readable.",
+      "parentUuid": "f712500f_814a6149",
+      "revId": "e244ea7b21f1b4c1b0c2291ebf40625cb147d0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
