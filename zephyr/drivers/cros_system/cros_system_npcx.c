@@ -10,6 +10,7 @@
 #include "soc_gpio.h"
 #include "soc_miwu.h"
 #include "system.h"
+#include "tcpc.h"
 
 #include <zephyr/arch/arm/aarch32/cortex_m/cmsis.h>
 #include <zephyr/drivers/gpio.h>
@@ -323,6 +324,11 @@ static void system_npcx_hibernate_by_disable_ram(const struct device *dev,
 	 * power consumption before entering hibernate mode.
 	 */
 	system_npcx_set_wakeup_gpios_before_hibernate();
+
+#ifdef CONFIG_BOARD_MTLRVP_NPCX
+	tcpc_set_input();
+	tcpc_enable_interrupt();
+#endif
 
 	/*
 	 * Give the board a chance to do any late stage hibernation work.  This

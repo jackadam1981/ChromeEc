@@ -81,6 +81,8 @@ LOG_MODULE_REGISTER(tcpc, CONFIG_GPIO_LOG_LEVEL);
 MAYBE_CONST struct tcpc_config_t tcpc_config[] = { DT_FOREACH_STATUS_OKAY(
 	named_usbc_port, TCPC_CHIP) };
 
+BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
 #ifdef CONFIG_PLATFORM_EC_TCPC_INTERRUPT
 
 struct gpio_callback int_gpio_cb[DT_NUM_INST_STATUS_OKAY(named_usbc_port)];
@@ -95,6 +97,13 @@ static void tcpc_int_gpio_callback(const struct device *dev,
 	int port = cb - &int_gpio_cb[0];
 
 	schedule_deferred_pd_interrupt(port);
+}
+
+void tcpc_set_input(void)
+{
+	for (int i = 0; i < ARRAY_SIZE(tcpc_config); i++) {
+		gpio_pin_configure_dt(&tcpc_config[i].int_cfg, GPIO_INPUT);
+	}
 }
 
 /*
@@ -113,6 +122,10 @@ void tcpc_enable_interrupt(void)
 		 * by the devicetree.
 		 */
 		if (!tcpc_config[i].int_cfg.port)
+			continue;
+
+		/* No interrupts for embedded tcpc */
+		if (tcpc_config[i].bus_type == EC_BUS_TYPE_EMBEDDED)
 			continue;
 		/*
 		 * Check whether the gpio pin is ready
