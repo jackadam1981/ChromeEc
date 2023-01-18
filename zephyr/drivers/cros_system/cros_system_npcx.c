@@ -215,6 +215,23 @@ static void system_npcx_set_wakeup_gpios_before_hibernate(void)
 #undef WAKEUP_NGPIO
 #undef WAKEUP_SETUP
 
+#define ZEPHYR_WAKEUP_SETUP(id, prop, idx)                                    \
+	do {                                                                  \
+		gpio_pin_configure_dt(GPIO_DT_SPEC_GET_BY_IDX(id, prop, idx), \
+				      GPIO_INPUT);                            \
+		gpio_enable_dt_interrupt(GPIO_DT_SPEC_GET_BY_IDX(id, prop,    \
+								 idx),        \
+					 GPIO_INT_EDGE_FALLING);              \
+	} while (0);
+
+	/*
+	 * For all the wake-pins, re-init the GPIO and re-enable the interrupt.
+	 */
+	DT_FOREACH_PROP_ELEM(SYSTEM_DT_NODE_HIBERNATE_CONFIG, wakeup_gpios,
+			     ZEPHYR_WAKEUP_SETUP);
+
+#undef ZEPHYR_WAKEUP_SETUP
+
 #endif
 }
 
