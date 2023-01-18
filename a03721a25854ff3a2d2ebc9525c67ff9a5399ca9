@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "185db8a0_3fe7b58b",
+        "filename": "zephyr/zmake/zmake/compare_builds.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-01-18T08:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2b0a787_d5d2de10",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 42
+      },
+      "revId": "a03721a25854ff3a2d2ebc9525c67ff9a5399ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c40b30e_64e2daca",
@@ -61,6 +85,30 @@
       "writtenOn": "2023-01-17T11:50:58Z",
       "side": 1,
       "message": "Instead of using these, you can use a temporary variable in the \u0027if\u0027 blocks for the list of boards and reuse that in the two set so you don\u0027t even need a variable for the key, for example:\n\n```\nif compare_configs:\n    failed_configs \u003d cmp_builds.check_configs(projects)\n    self.cmp_failed_projects[\u0027binary\u0027] \u003d failed_configs\n    self.failed_projects.extend(failed_configs)\n```",
+      "range": {
+        "startLine": 410,
+        "startChar": 7,
+        "endLine": 413,
+        "endChar": 0
+      },
+      "revId": "a03721a25854ff3a2d2ebc9525c67ff9a5399ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec00f429_dd297c3d",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-01-18T08:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c40b30e_64e2daca",
       "range": {
         "startLine": 410,
         "startChar": 7,
