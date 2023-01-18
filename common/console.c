@@ -663,6 +663,8 @@ void console_has_input(void)
 	task_wake(TASK_ID_CONSOLE);
 }
 
+// volatile bool do_runtest = false;
+volatile unsigned runtest_counter = 1000;
 void console_task(void *u)
 {
 	console_init();
@@ -671,6 +673,18 @@ void console_task(void *u)
 		int c;
 
 		while (1) {
+
+			if ((--runtest_counter) == 0) {
+				static char runtest_command[] = "runtest\n";
+				runtest_counter = 1000;
+			// if (do_runtest) {
+				// do_runtest = false;
+				for (int i = 0; i < strlen(runtest_command);
+				     i++) {
+					console_handle_char(runtest_command[i]);
+				}
+			}
+
 			c = uart_getc();
 			if (c == -1)
 				break;
@@ -684,7 +698,7 @@ void console_task(void *u)
 			console_handle_char(c);
 		}
 
-		task_wait_event(-1); /* Wait for more input */
+		task_wait_event(1000); /* Wait for more input */
 	}
 }
 
