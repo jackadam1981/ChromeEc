@@ -40,14 +40,16 @@ static void baseboard_tcpc_init(void)
 		/* Enable PPC interrupts. */
 		if (tcpc_aic_gpios[i].ppc_intr_handler)
 			gpio_enable_interrupt(tcpc_aic_gpios[i].ppc_alert);
-
+#ifndef CONFIG_ZEPHYR
 		/* Enable TCPC interrupts. */
 		if (tcpc_config[i].bus_type != EC_BUS_TYPE_EMBEDDED)
 			gpio_enable_interrupt(tcpc_aic_gpios[i].tcpc_alert);
+#endif
 	}
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
 
+#ifndef CONFIG_ZEPHYR
 void tcpc_alert_event(enum gpio_signal signal)
 {
 	int i;
@@ -63,6 +65,7 @@ void tcpc_alert_event(enum gpio_signal signal)
 		}
 	}
 }
+#endif
 
 uint16_t tcpc_get_alert_status(void)
 {
@@ -74,9 +77,13 @@ uint16_t tcpc_get_alert_status(void)
 		/* No alerts for embdeded TCPC */
 		if (tcpc_config[i].bus_type == EC_BUS_TYPE_EMBEDDED)
 			continue;
-
+#ifndef CONFIG_ZEPHYR
 		if (!gpio_get_level(tcpc_aic_gpios[i].tcpc_alert))
 			status |= PD_STATUS_TCPC_ALERT_0 << i;
+#else
+		if (!gpio_pin_get_dt(&tcpc_config[i].int_cfg))
+			status |= PD_STATUS_TCPC_ALERT_0 << i;
+#endif
 	}
 
 	return status;
