@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002a21a5_f0852473",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-18T20:22:17Z",
+      "side": 1,
+      "message": "Please also update these other config options using the devicetree node property.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 0
+      },
+      "revId": "913204accae15253d4103779bef6954d33898ae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
