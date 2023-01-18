@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f81acf6e_ef82740b",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-01-18T01:19:45Z",
+      "side": 1,
+      "message": "Done, just added a test to call the host command and check the response included the same revision information as the partner for a PD 3.1 device.",
+      "parentUuid": "71295221_3ccb8662",
+      "revId": "d9f970db98d333cc8e6bdacbbb4160daa0fec9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21fdbc5e_d16f9793",
@@ -55,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "636c3de1_1de2500a",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-01-18T01:19:45Z",
+      "side": 1,
+      "message": "Currently there are not any features dependent on a cable\u0027s USB PD minor revision, so I\u0027m not currently planning to add it. But it\u0027s definitively something to think about.\n\nIf we start enabling features which depend on a cable at least defining fields added in the USB PD 3.1 spec (like USB4 v2 asymmetric mode), then I think we\u0027ll need to add Get_Revision for SOP\u0027. As Diana mentioned currently it is optional, but there has been a bit of movement here.\n\nIn PD 3.1 version 1.4 of the spec, transmitting Revision is purely optional for cables. In PD 3.1 version 1.6, it is \"CN12/O/I\" with this note: \"Note 12: Shall be supported by Active Cables.\". So, responding to Get_Revision will be required by active cables going forward.\n\nWe should start seeing active cables support this, but until we have a feature where cable revision impacts functionality, I think this should be a lower priority.",
+      "parentUuid": "877e203f_a7f0f502",
+      "revId": "d9f970db98d333cc8e6bdacbbb4160daa0fec9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d6af932_1ab3ab76",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -66,6 +102,30 @@
       "writtenOn": "2023-01-17T22:02:07Z",
       "side": 1,
       "message": "revision",
+      "range": {
+        "startLine": 7053,
+        "startChar": 32,
+        "endLine": 7053,
+        "endChar": 41
+      },
+      "revId": "d9f970db98d333cc8e6bdacbbb4160daa0fec9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2febfdd_148dd778",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 7053,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-01-18T01:19:45Z",
+      "side": 1,
+      "message": "Good catch. I made a couple other edits to this comment in patchset 5",
+      "parentUuid": "5d6af932_1ab3ab76",
       "range": {
         "startLine": 7053,
         "startChar": 32,
@@ -89,6 +149,30 @@
       "writtenOn": "2023-01-17T22:02:07Z",
       "side": 1,
       "message": "revision",
+      "range": {
+        "startLine": 7054,
+        "startChar": 10,
+        "endLine": 7054,
+        "endChar": 17
+      },
+      "revId": "d9f970db98d333cc8e6bdacbbb4160daa0fec9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "804ab059_3622c79e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 7054,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-01-18T01:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b1c11a7_f405782d",
       "range": {
         "startLine": 7054,
         "startChar": 10,
