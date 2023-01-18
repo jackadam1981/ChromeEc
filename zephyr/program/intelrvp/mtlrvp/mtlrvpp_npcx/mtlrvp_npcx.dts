@@ -16,10 +16,11 @@
 			&int_ac_present
 			&int_lid_open
 			&int_power_button
-			&int_usb_c0_c1_tcpc
-			&int_usb_c2_tcpc
-			&int_usb_c3_tcpc
 		>;
+		wakeup-gpios =
+			<&gpiod 0 GPIO_ACTIVE_LOW>, /* port 0 */
+			<&gpio9 1 GPIO_ACTIVE_LOW>, /* Port 2 */
+			<&gpiof 3 GPIO_ACTIVE_LOW>; /* port 3 */
 	};
 
 	named-i2c-ports {
@@ -155,6 +156,7 @@
 		tcpc-flags = <(
 			TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_NO_DEBUG_ACC_CONTROL)>;
+		irq-gpios = <&gpiod 0 GPIO_ACTIVE_LOW>;
 	};
 
 	nct38xx_c0: nct38xx_c0@73 {
@@ -181,6 +183,7 @@
 		reg = <0x77>;
 		gpio-dev = <&nct38xx_c1>;
 		tcpc-flags = <(TCPC_FLAGS_TCPCI_REV2_0)>;
+		irq-gpios = <&gpiod 0 GPIO_ACTIVE_LOW>;
 	};
 
 	nct38xx_c1: nct38xx_c1@77 {
@@ -239,11 +242,13 @@
 	tcpc_port2: ccgxxf@b {
 		compatible = "cypress,ccgxxf";
 		reg = <0xb>;
+		irq-gpios = <&gpio9 1 GPIO_ACTIVE_LOW>;
 	};
 
 	tcpc_port3: ccgxxf@1b {
 		compatible = "cypress,ccgxxf";
 		reg = <0x1b>;
+		irq-gpios = <&gpiof 3 GPIO_ACTIVE_LOW>;
 	};
 
 	usb_c2_hb_retimer: jhl9040r-c2@58 {
