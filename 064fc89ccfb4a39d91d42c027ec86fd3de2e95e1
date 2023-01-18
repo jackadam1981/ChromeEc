@@ -34,6 +34,24 @@
       "parentUuid": "3806655d_eed3b462",
       "revId": "064fc89ccfb4a39d91d42c027ec86fd3de2e95e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f894af73_4d63ec89",
+        "filename": "zephyr/Kconfig.tcpm",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-18T02:53:59Z",
+      "side": 1,
+      "message": "It would be reasonable to add a `BUILD_ASSERT` that the configured threshold is in range for the register.",
+      "parentUuid": "2e2a4205_a7fbfa12",
+      "revId": "064fc89ccfb4a39d91d42c027ec86fd3de2e95e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
