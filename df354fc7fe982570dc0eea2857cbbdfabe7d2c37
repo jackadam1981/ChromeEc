@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55c477f3_36695a3d",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00f5f29e_0746239a",
+      "range": {
+        "startLine": 33,
+        "startChar": 24,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f8d1513_56496ee4",
         "filename": "zephyr/include/ap_power/ap_pwrseq.h",
         "patchSetId": 13
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-17T21:24:04Z",
       "side": 1,
       "message": "nit: comment for both the states is same, can you add correct details?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 55
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da79b76_22e599cb",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f8d1513_56496ee4",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b4b0284_231a9bca",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b29d27ac_03d6dbec",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b136548_01c347f1",
         "filename": "zephyr/include/ap_power/ap_pwrseq.h",
         "patchSetId": 13
@@ -89,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7db001d9_7f8eac58",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b136548_01c347f1",
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d27049f4_8f305c99",
         "filename": "zephyr/include/ap_power/ap_pwrseq.h",
         "patchSetId": 13
@@ -100,6 +190,30 @@
       "writtenOn": "2023-01-18T02:00:04Z",
       "side": 1,
       "message": "typo: bitfield",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b89110_29459fb2",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d27049f4_8f305c99",
       "range": {
         "startLine": 80,
         "startChar": 4,
@@ -135,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "281eaf03_fed047d5",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "07a80ab0_4828c3e4",
+      "range": {
+        "startLine": 103,
+        "startChar": 10,
+        "endLine": 103,
+        "endChar": 20
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7ce5e79_f9edc7ba",
         "filename": "zephyr/include/ap_power/ap_pwrseq.h",
         "patchSetId": 13
@@ -146,6 +284,30 @@
       "writtenOn": "2023-01-18T02:00:04Z",
       "side": 1,
       "message": "function, and this typo is repeated on line 154.",
+      "range": {
+        "startLine": 137,
+        "startChar": 12,
+        "endLine": 137,
+        "endChar": 20
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f53b4c0c_c645cd2f",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c7ce5e79_f9edc7ba",
       "range": {
         "startLine": 137,
         "startChar": 12,
@@ -181,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c8d3ad1_3567276c",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "359e9e18_62ec49db",
+      "range": {
+        "startLine": 142,
+        "startChar": 19,
+        "endLine": 142,
+        "endChar": 27
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca460f73_26c6c702",
         "filename": "zephyr/include/ap_power/ap_pwrseq.h",
         "patchSetId": 13
@@ -192,6 +378,30 @@
       "writtenOn": "2023-01-18T02:00:04Z",
       "side": 1,
       "message": "`register_state_entry_callback` seems like a more understandable name, at which point I\u0027d also change the exit registration function to be `register_state_exit_callback` for consistency.",
+      "range": {
+        "startLine": 147,
+        "startChar": 14,
+        "endLine": 147,
+        "endChar": 35
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54381766_c650b29c",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca460f73_26c6c702",
       "range": {
         "startLine": 147,
         "startChar": 14,
@@ -221,6 +431,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c4cec03_8aad151c",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "878bb198_f5ec22e2",
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f840ca16_d96828bc",
         "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
         "patchSetId": 13
@@ -232,6 +460,24 @@
       "writtenOn": "2023-01-17T21:24:04Z",
       "side": 1,
       "message": "nit: bring all global functions below and static functions above so that easy to trace",
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7460df_9870d5ec",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f840ca16_d96828bc",
       "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -261,6 +507,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a53d1125_05f5a182",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ace19289_dbae1aab",
+      "range": {
+        "startLine": 44,
+        "startChar": 25,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b742bc5a_257d6d98",
         "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
         "patchSetId": 13
@@ -272,6 +542,24 @@
       "writtenOn": "2023-01-18T02:00:04Z",
       "side": 1,
       "message": "This looks like it will return an error if the list does not already contain `node`? That doesn\u0027t seem right. (`find_and_remove` is documented to return true if the node was removed.)\n\nImplementing some tests for this functionality would be useful and provide groundwork to extend those tests in following CLs.",
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fcb6a65_b288ccb7",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b742bc5a_257d6d98",
       "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -301,6 +589,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e3dc21d_f02b5074",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0188b3e9_c044f0e3",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 7
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd47e3ff_337ecd8e",
         "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
         "patchSetId": 13
@@ -312,6 +624,24 @@
       "writtenOn": "2023-01-18T02:00:04Z",
       "side": 1,
       "message": "Do we expect the callback to ever be NULL? Perhaps this should be an `__ASSERT` instead.",
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a57a71f4_a1b3bb1a",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fd47e3ff_337ecd8e",
       "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -335,6 +665,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8ce45d7_e91f2151",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "I also considered using `k_event_clear`, however I opted against it because:\n1- I wanted to avoid the overhead of waking pended threads, given that only driver instance thread is waiting for this.\n2- `k_event_clear` would generate one more unnecessary driver instance thread iteration when clearing events.",
+      "parentUuid": "c0096d8e_fe5792d5",
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5314fe7_7bf5caa6",
         "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
         "patchSetId": 13
@@ -346,6 +694,30 @@
       "writtenOn": "2023-01-18T02:00:04Z",
       "side": 1,
       "message": "`%#X`",
+      "range": {
+        "startLine": 156,
+        "startChar": 27,
+        "endLine": 156,
+        "endChar": 31
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "446b6352_08a6a89c",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c5314fe7_7bf5caa6",
       "range": {
         "startLine": 156,
         "startChar": 27,
@@ -381,6 +753,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73ebcf1a_b4dfe487",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "17a65be6_62970e01",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 3
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "384f90a7_61368aac",
         "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
         "patchSetId": 13
@@ -404,6 +800,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e7cd0f5_0cd3f862",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "384f90a7_61368aac",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 52
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f334d25e_c1b27080",
         "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
         "patchSetId": 13
@@ -415,6 +835,30 @@
       "writtenOn": "2023-01-17T21:24:04Z",
       "side": 1,
       "message": "nit: i think this can be removed",
+      "range": {
+        "startLine": 219,
+        "startChar": 9,
+        "endLine": 219,
+        "endChar": 27
+      },
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d3027a_5429bfbb",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-18T05:13:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f334d25e_c1b27080",
       "range": {
         "startLine": 219,
         "startChar": 9,
