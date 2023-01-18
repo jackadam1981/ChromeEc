@@ -11,3 +11,8 @@ properties:
     type: phandles
     required: true
     description: Interrupt list for hibernate wake-up
+  wakeup-gpios:
+    type: phandle-array
+    required: false
+    description: |
+      Interrupt list for hibernate wake-up using the zephyr upstream convention
