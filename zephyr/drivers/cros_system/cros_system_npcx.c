@@ -10,6 +10,7 @@
 #include "soc_gpio.h"
 #include "soc_miwu.h"
 #include "system.h"
+#include "tcpc.h"
 
 #include <zephyr/arch/arm/aarch32/cortex_m/cmsis.h>
 #include <zephyr/drivers/gpio.h>
@@ -214,6 +215,11 @@ static void system_npcx_set_wakeup_gpios_before_hibernate(void)
 #undef WAKEUP_INT
 #undef WAKEUP_NGPIO
 #undef WAKEUP_SETUP
+
+#ifdef CONFIG_BOARD_MTLRVP_NPCX
+	tcpc_set_input();
+	tcpc_enable_interrupt();
+#endif
 
 #endif
 }
