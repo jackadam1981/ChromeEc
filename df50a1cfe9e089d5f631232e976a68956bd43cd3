@@ -16,6 +16,23 @@
       "message": "Build failure: \n```\nThe following options are now in Kconfig:\n\nCONFIG_TEMP_SENSOR_F75303\n\nPlease run this to update the list of allowed ad-hoc CONFIGs and include this\nupdate in your CL:\n\n   cp /tmp/new_config_allowed.txt util/config_allowed.txt\n\nmake[2]: *** [Makefile.rules:285: notice] Error 1\nmake[1]: *** [Makefile.rules:290: proj-bloog] Error 2\n```\n\nYou should be able to verify on your own by running a \"make\" for one of the older boards",
       "revId": "df50a1cfe9e089d5f631232e976a68956bd43cd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a871f3_d29467a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-01-18T17:06:27Z",
+      "side": 1,
+      "message": "Who is writing the emulator for F75303?",
+      "revId": "df50a1cfe9e089d5f631232e976a68956bd43cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
