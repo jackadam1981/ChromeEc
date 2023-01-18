@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24a2910f_22179809",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-18T14:11:17Z",
+      "side": 1,
+      "message": "Sorry what I meant was something like\n```\nfor file, failed_projects in zmake.cmp_failed_projects.items():\n  if failed_projects:\n      logging.error(...)\n```\n\nThere\u0027s no reason to do the whole thing in a single logging.error() line, both the output and the code are harder to read.",
+      "parentUuid": "3a16deb6_53520c32",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 435,
+        "endChar": 20
+      },
+      "revId": "93a4f2fce82b3dcc969b859123e9f5fed3474105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "638ace19_c735fd45",
         "filename": "zephyr/zmake/zmake/compare_builds.py",
         "patchSetId": 8
