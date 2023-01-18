@@ -22,6 +22,30 @@
       },
       "revId": "2c215a6f2147766b929eb3c775262981a31e307b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae74633_bd7fe841",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/Kconfig.it8xxx2",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-01-18T07:52:24Z",
+      "side": 1,
+      "message": "Done. (Pulls change to its parent)",
+      "parentUuid": "5b635161_cca66c0d",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "2c215a6f2147766b929eb3c775262981a31e307b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
