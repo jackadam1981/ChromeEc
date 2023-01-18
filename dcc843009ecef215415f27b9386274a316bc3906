@@ -22,6 +22,30 @@
       },
       "revId": "dcc843009ecef215415f27b9386274a316bc3906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74cc41b8_0d261661",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-01-18T13:42:56Z",
+      "side": 1,
+      "message": "Added `watchdog_enable()` function. It\u0027s called from watchdog handler and `watchdog_init_device()` (which is called from `watchdog_init()`)",
+      "parentUuid": "15be5170_67f73d6a",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 3
+      },
+      "revId": "dcc843009ecef215415f27b9386274a316bc3906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
