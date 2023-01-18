@@ -77,4 +77,7 @@ config PLATFORM_EC_SMBUS_PEC
 
 	  This option also enables error checking function on smart batteries.
 
+config PLATFORM_EC_I2C_NACK_RETRY_COUNT
+	int "todo"
+
 endif # PLATFORM_EC_I2C
