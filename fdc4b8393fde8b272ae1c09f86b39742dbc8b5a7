@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "075e2470_c9d22faf",
+        "filename": "zephyr/test/herobrine/src/board_chipset.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-01-18T06:15:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9d4090_5f7ad1bb",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "fdc4b8393fde8b272ae1c09f86b39742dbc8b5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "384a2195_5e18bfd4",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-17T18:42:46Z",
       "side": 1,
       "message": "Same here. Don\u0027t need it.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "fdc4b8393fde8b272ae1c09f86b39742dbc8b5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceb43a54_b07d1d91",
+        "filename": "zephyr/test/herobrine/src/board_chipset.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-01-18T06:15:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "384a2195_5e18bfd4",
       "range": {
         "startLine": 30,
         "startChar": 0,
