@@ -5,7 +5,8 @@
 ## Overview
 
 The ChromeOS EC firmware requires that all C source and header file code changes
-include tests covering at least 80% of any new or changed lines of code.
+include tests covering at least 90% of any new or changed lines of code, as of
+19 Jan 2023.
 
 The Gerrit commit-queue enforces the coverage requirement with the
 `firmware-zephyr-cov-cq` builder.
