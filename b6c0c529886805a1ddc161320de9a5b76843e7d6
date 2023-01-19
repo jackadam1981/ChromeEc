@@ -22,6 +22,30 @@
       },
       "revId": "b6c0c529886805a1ddc161320de9a5b76843e7d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e2d143_3a621d6e",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/Kconfig.it8xxx2",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-01-19T03:14:18Z",
+      "side": 1,
+      "message": "I thought the same. But I see CROS_EC_RO_MEM_OFF of npcx isn\u0027t match its binman\u0027s property, so I did not move these settings into the common file.\n\nSince it8xxx2 run program directly from flash, these settings can be math to binman\u0027s propertys. On program memory architecture, these settings should be depended on program memory size.",
+      "parentUuid": "d1721057_47f249f4",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "b6c0c529886805a1ddc161320de9a5b76843e7d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
