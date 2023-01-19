@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t seem like an option that would be used except with certain chargers, so I think it makes more sense to make it a RAA489000-specific option. Or to put it another way, we don\u0027t anticipate doing this with any other chargers so we can more clearly document when you\u0027d want to enable this option (only if you\u0027re using ALERT_B on a RAA489000 to drive AC_PRESENT) by making it obviously only apply to that chip.",
       "revId": "c7a23f135043872e5c956347015a9e423a7a51ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f63c69_582fe0dd",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-19T04:06:50Z",
+      "side": 1,
+      "message": "In particular, the following change only affects the RAA489000 driver so there doesn\u0027t seem like any compelling reason to make this a more general option.",
+      "parentUuid": "11cc2777_61d2d8bc",
+      "revId": "c7a23f135043872e5c956347015a9e423a7a51ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
