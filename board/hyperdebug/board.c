@@ -13,6 +13,7 @@
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "usart-stm32l5.h"
@@ -25,8 +26,27 @@
 /* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
 
+#define data_val (*(volatile uint32_t*)0x20005500)
+#define DFU_MAGIC (0xFEEDBEEF)
+
 void board_config_pre_init(void)
 {
+	if (data_val == DFU_MAGIC) {
+		data_val = 0;
+		/*
+		 * Load stack pointer and program counter from ROM bootloader header.
+		 */
+		asm (
+			"ldr r1, =%0\n"
+			"ldr r0, [r1, 0]\n"
+			"msr msp, r0\n"
+			"ldr r0, [r1, 4]\n"
+			"sub r1, r1, r1\n"
+			"bx r0\n"
+			:: "i"(STM32_DFU_BASE) :
+		);
+	}
+
 	/* enable SYSCFG clock */
 	STM32_RCC_APB2ENR |= STM32_RCC_SYSCFGEN;
 }
@@ -195,6 +215,25 @@ const void *const usb_strings[] = {
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+
+/*
+ * Pass control to ROM DFU bootloader.
+ *
+ * In order to ensure that all peripherals are de-initialized, and all
+ * interupts disabled, etc. the transfer of control is achieved by means of
+ * resetting the chip, and having a piece of code in board_config_pre_init()
+ * recognize the magic value and jump, instead of proceeding with the bulk of
+ * the EC initialization.
+ */
+static int command_dfu(int argc, const char **argv)
+{
+	data_val = DFU_MAGIC;
+	system_reset(0);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND_FLAGS(dfu, command_dfu, "",
+			      "Enter DFU bootloader",
+			      CMD_FLAG_RESTRICTED);
 
 /******************************************************************************
  * OCTOSPI driver.
