@@ -81,6 +81,16 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "usb_c1_interrupt";
 		};
+		int_usb_bc12_c1: usb_bc12_c1 {
+			irq-pin = <&gpio_usb_c1_bc12_int_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb_c1_bc12_interrupt";
+		};
+		int_usb_tcpc_c1: usb_tcpc_c1 {
+			irq-pin = <&gpio_usb_c1_tcpc_int_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb_c1_tcpc_interrupt";
+		};
 	};
 
 	unused-pins {
