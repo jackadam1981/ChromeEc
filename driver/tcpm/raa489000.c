@@ -141,6 +141,8 @@ int raa489000_init(int port)
 		chg.voltage = 5000;
 		charge_manager_update_charge(CHARGE_SUPPLIER_TYPEC, port, &chg);
 		board_set_active_charge_port(port);
+		if (IS_ENABLED(CONFIG_PLATFORM_EC_RAA489000_AC_PRESENT_CONTROL))
+			raa489000_check_ac_present();
 	}
 
 	if (device_id > 1) {
