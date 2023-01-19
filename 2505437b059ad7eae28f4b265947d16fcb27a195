@@ -51,6 +51,23 @@
       "parentUuid": "f4ab062e_1b45e378",
       "revId": "2505437b059ad7eae28f4b265947d16fcb27a195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "223a89b0_c9f6c59d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T17:57:35Z",
+      "side": 1,
+      "message": "You also need to modify the code that sets the `.br_color` field from the devicetree.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/src/led_driver/led.h;l\u003d28",
+      "revId": "2505437b059ad7eae28f4b265947d16fcb27a195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
