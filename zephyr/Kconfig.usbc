@@ -294,4 +294,16 @@ config PLATFORM_EC_PD_POWER_SUPPLY_TURN_OFF_DELAY
 	  Each platform could have different power sequencing and transition
 	  timing for turning off the power on the PD port.
 
+config PLATFORM_EC_DEBUG_GET_CC
+	bool "Enable CC debug"
+	default n
+	help
+	  .
+
+config PLATFORM_EC_DEBUG_ROLE_CTRL_UPDATES
+	bool "Enable role ctrl update"
+	default n
+	help
+	  .
+
 endif  # PLATFORM_EC_USBC

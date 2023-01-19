@@ -27,5 +27,7 @@ static void board_init(void)
 	 */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0));
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_bc12_c1));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_tcpc_c1));
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);

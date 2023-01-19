@@ -152,7 +152,7 @@ uint16_t tcpc_get_alert_status(void)
 	int regval;
 
 	/* Is the C1 port IRQ line asserted? */
-	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c1_int_odl))) {
+	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c1_tcpc_int_odl))) {
 		/*
 		 * C1 IRQ is shared between BC1.2 and TCPC; poll TCPC to see if
 		 * it asserted the IRQ.
@@ -280,39 +280,23 @@ void usb_c0_interrupt(enum gpio_signal s)
 	hook_call_deferred(&check_c0_line_data, INT_RECHECK_US);
 }
 
-/* C1 interrupt line shared by BC 1.2, TCPC, and charger */
-static void check_c1_line(void);
-DECLARE_DEFERRED(check_c1_line);
-
-static void notify_c1_chips(void)
-{
-	schedule_deferred_pd_interrupt(1);
-	usb_charger_task_set_event(1, USB_CHG_EVENT_BC12);
-	/* Charger is handled in board_process_pd_alert */
-}
-
-static void check_c1_line(void)
-{
-	/*
-	 * If line is still being held low, see if there's more to process from
-	 * one of the chips.
-	 */
-	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c1_int_odl))) {
-		notify_c1_chips();
-		hook_call_deferred(&check_c1_line_data, INT_RECHECK_US);
-	}
-}
-
 void usb_c1_interrupt(enum gpio_signal s)
 {
-	/* Cancel any previous calls to check the interrupt line */
-	hook_call_deferred(&check_c1_line_data, -1);
+	LOG_INF("usb_c1_interrupt");
+	/* Charger is handled in board_process_pd_alert */
+	sm5803_interrupt(1);
+}
 
-	/* Notify all chips using this line that an interrupt came in */
-	notify_c1_chips();
+void usb_c1_bc12_interrupt(enum gpio_signal s)
+{
+	LOG_INF("usb_c1_bc12_interrupt");
+	usb_charger_task_set_event(1, USB_CHG_EVENT_BC12);
+}
 
-	/* Check the line again in 5ms */
-	hook_call_deferred(&check_c1_line_data, INT_RECHECK_US);
+void usb_c1_tcpc_interrupt(enum gpio_signal s)
+{
+	LOG_INF("usb_c1_tcpc_interrupt");
+	schedule_deferred_pd_interrupt(1);
 }
 
 /*
@@ -326,8 +310,6 @@ void usb_c1_interrupt(enum gpio_signal s)
 void board_handle_initial_typec_irq(void)
 {
 	check_c0_line();
-	if (board_get_usb_pd_port_count() == 2)
-		check_c1_line();
 }
 /*
  * This must run after sub-board detection (which happens in EC main()),
