@@ -118,6 +118,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a5fb102_f637a440",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-19T19:00:06Z",
+      "side": 1,
+      "message": "\u003e In a way, rpm \u003d 0 gives same hint to user, ...\n\nMaybe we should get rid of \u0027case EC_FAN_SPEED_STALLED\u0027 from print_fan, then. Maybe we should get rid of EC_FAN_SPEED_STALLED entirely. To anybody, rpm\u003d0 naturally means the fan is stalled.\n\nNew question: how do you distinguish RPM never measured (\u003d0) v.s. RPM measure to 0?",
+      "parentUuid": "c1257c88_20932d3a",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
