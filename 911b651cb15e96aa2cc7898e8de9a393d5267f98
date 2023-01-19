@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d86f76de_c318f929",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-19T00:50:37Z",
+      "side": 1,
+      "message": "That does sound like a good idea.  It looks like the only current consumer of using this function to set S5 is the LED test, which just wants the board to be in that state more so than running all the hooks (which is what I needed)",
+      "parentUuid": "b4b106be_2a4654cb",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "911b651cb15e96aa2cc7898e8de9a393d5267f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "729ab3ed_e552196d",
@@ -54,6 +78,24 @@
       "writtenOn": "2023-01-17T23:19:30Z",
       "side": 1,
       "message": "Less time than what?",
+      "revId": "911b651cb15e96aa2cc7898e8de9a393d5267f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b63add81_2124588e",
+        "filename": "zephyr/test/drivers/common/src/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-19T00:50:37Z",
+      "side": 1,
+      "message": "Than the G3 one up above.  We need to catch the system in S5 before we hit the 10 seconds to go down to G3.  Once we go to G3, then the test would get into the whole \"suddenly not sourcing Vconn, so let\u0027s hard reset\" train which I\u0027m not aiming to test here",
+      "parentUuid": "57748081_aaf140b4",
       "revId": "911b651cb15e96aa2cc7898e8de9a393d5267f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
