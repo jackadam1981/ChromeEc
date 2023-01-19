@@ -45,36 +45,6 @@
 #define USB_PORT_COUNT 1
 #define CONFIG_USB_PORT_POWER_DUMB
 
-/* Sensors */
-#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
-
-/* BMI160 Base accel/gyro */
-#define CONFIG_ACCELGYRO_BMI160
-#define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
-	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
-#define OPT3001_I2C_ADDR_FLAGS OPT3001_I2C_ADDR1_FLAGS
-
-/* ICM426XX Base accel/gyro */
-#define CONFIG_ACCELGYRO_ICM426XX
-#define CONFIG_ACCELGYRO_ICM426XX_INT_EVENT \
-	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
-
-/* KX022 lid accel */
-#define CONFIG_ACCEL_KX022
-
-/* BMA253 lid accel */
-#define CONFIG_ACCEL_BMA255
-#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
-
-#define CONFIG_LID_ANGLE
-#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
-#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
-#define CONFIG_LID_ANGLE_UPDATE
-
-#define CONFIG_TABLET_MODE
-#define CONFIG_TABLET_MODE_SWITCH
-#define CONFIG_GMR_TABLET_MODE
-
 /* GPIO alias */
 #define GPIO_AC_PRESENT GPIO_ACOK_OD
 #define GPIO_WP_L GPIO_EC_WP_ODL
@@ -94,14 +64,6 @@
 
 enum adc_channel { ADC_VBUS, ADC_AMON_BMON, ADC_PSYS, ADC_CH_COUNT };
 
-/* Motion sensors */
-enum sensor_id {
-	LID_ACCEL = 0,
-	BASE_ACCEL,
-	BASE_GYRO,
-	SENSOR_COUNT,
-};
-
 enum pwm_channel { PWM_CH_KBLIGHT = 0, PWM_CH_DISPLIGHT, PWM_CH_COUNT };
 
 /* List of possible batteries */
@@ -120,8 +82,6 @@ enum battery_type {
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
-/* Motion sensor interrupt */
-void motion_interrupt(enum gpio_signal signal);
 
 #endif /* !defined(__ASSEMBLER__) */
 

@@ -134,16 +134,6 @@
 #define CONFIG_CMD_RTC
 #define CONFIG_HOSTCMD_RTC
 
-/* Sensors */
-/* Enable sensor fifo, must also define the _SIZE and _THRES */
-#define CONFIG_ACCEL_FIFO
-/* FIFO size is a power of 2. */
-#define CONFIG_ACCEL_FIFO_SIZE 256
-/* Depends on how fast the AP boots and typical ODRs. */
-#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
-#define CONFIG_CMD_ACCELS
-#define CONFIG_CMD_ACCEL_INFO
-
 /* PD */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY 30000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
