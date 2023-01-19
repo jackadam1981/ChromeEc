@@ -84,6 +84,15 @@ config PLATFORM_EC_CHARGESPLASH
 	  Enable visual charging indicator to display on-screen when
 	  AC is initially connected.
 
+config PLATFORM_EC_CHARGER_AC_PRESENT
+	bool "Use the charger to generate the AC_PRESENT signal"
+	depends on !PLATFORM_EC_EXTPOWER_GPIO
+	help
+	  Enables the charger chip to generate the AC_PRESENT signal,
+	  usually using a comparator or other circuit.
+	  Enable this if the charger requires code to support this.
+	  The GPIO_AC_PRESENT gpio signal must not be configured.
+
 config PLATFORM_EC_CHARGER_ISL9237
 	bool "Use the ISL9237 charger"
 	depends on PLATFORM_EC_I2C
