@@ -16,6 +16,24 @@
       "message": "Doing this as polling seems awkward; have you considered hooking it up to the type-C state machine instead? I think `tc_attached_src_entry` and `tc_attached_snk_entry` are the right points, where you can just set inversion depending on whether it\u0027s source or sink.\n\nThat would require hooking it up in a way that\u0027s not currently supported by the state machine (probably not difficult to do!), but seems much less wasteful than polling the charger.",
       "revId": "88e2368a06d89c793c881ffa036998f742952872",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87eceeea_13d933be",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-19T04:46:31Z",
+      "side": 1,
+      "message": "So I debated this a bit, and I lament that the charger API for the chip\ndoesn\u0027t have the right methods. It\u0027s somewhat complicated by the fact that this only is used for the primary charger, requiring some special case.\nPlumbing it into the chip\u0027s tcpc driver seemed.. hmmm... ugly and cuts across\nthe driver boundaries (separate charger and TCPC drivers).\nThere didn\u0027t appear to be convenient places to hook it onto anything in driver/tcpm/raa489000.c\n\nIs it just the fact it is polled that is the issue? It\u0027s likely not that much overhead (reading and checking one register).\n\nI would have liked it to have been hooked into one of the charger API calls, but I am not sure which (if any) are suitable - none were obvious. There are some that are called regularly by the charger code (e.g get_status etc.) but it didn\u0027t seem good to rely on that.\n\nKeeping it entirely in the charger driver seemed to be better functional separation, at the cost of it being polled (because of the lack of a good hook somewhere).",
+      "parentUuid": "7fa42f7c_b58aeb3f",
+      "revId": "88e2368a06d89c793c881ffa036998f742952872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
