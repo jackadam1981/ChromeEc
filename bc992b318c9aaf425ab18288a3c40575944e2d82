@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e344e505_26ae15a2",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-19T22:43:30Z",
+      "side": 1,
+      "message": "nit: `RAA489000_AC_PRESENT_CONTROL`? Just `AC_PRESENT` suggests this enables just using the `AC_PRESENT` signal, not managing it.",
+      "range": {
+        "startLine": 187,
+        "startChar": 7,
+        "endLine": 187,
+        "endChar": 39
+      },
+      "revId": "bc992b318c9aaf425ab18288a3c40575944e2d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
