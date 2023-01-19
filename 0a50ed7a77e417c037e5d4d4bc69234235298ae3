@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18c09fd8_4fb2d627",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-01-19T19:53:19Z",
+      "side": 1,
+      "message": "As far as I\u0027m concerned +2, but +1ing just in case Diana wants to add anything.",
+      "revId": "0a50ed7a77e417c037e5d4d4bc69234235298ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dda076f_5b480783",
+        "filename": "zephyr/test/skyrim/testcase.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-01-19T19:53:19Z",
+      "side": 1,
+      "message": "Looks like this is an established style though I was unaware of it until now. I\u0027ve never seen sources in `testcase.yaml` directly. But it seems established so I certainly don\u0027t intend on holding the CL up for it.",
+      "revId": "0a50ed7a77e417c037e5d4d4bc69234235298ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
