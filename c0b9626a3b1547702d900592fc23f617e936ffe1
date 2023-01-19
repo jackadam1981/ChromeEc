@@ -16,6 +16,24 @@
       "message": "Is `PLATFORM_EC_RW_TOTAL_IMAGE_SIZE` only a concern for `CPU_CORTEX_M`? Without additional parenthesis, this check will only apply in that case.",
       "revId": "c0b9626a3b1547702d900592fc23f617e936ffe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71cd1f08_4b63c372",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-19T23:36:08Z",
+      "side": 1,
+      "message": "The whole original check is in parens unless I\u0027m misreading it:\n\n    (defined(CONFIG_CPU_CORTEX_M) || defined(CONFIG_CPU_CORTEX_R) || \\\n    defined(CONFIG_CPU_CORTEX_A) || defined (CONFIG_RISCV))\n\n\nI suspect we don\u0027t actually need the checks for processor series and that those checks only existed due to the same exact problem of a platform not using the flash layout and I suspect we can replace it with just this:\n\n    #if defined(CONFIG_PLATFORM_EC_RW_TOTAL_IMAGE_SIZE)",
+      "parentUuid": "3bd7a91c_8df2a411",
+      "revId": "c0b9626a3b1547702d900592fc23f617e936ffe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
