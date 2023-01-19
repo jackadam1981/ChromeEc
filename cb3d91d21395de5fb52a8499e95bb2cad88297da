@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "510b0bc8_0faf6e24",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-19T22:41:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this is sufficient if there\u0027s a PRS (including FRS), since these hooks don\u0027t get run during PRS (because the port doesn\u0027t disconnect).",
+      "range": {
+        "startLine": 1505,
+        "startChar": 13,
+        "endLine": 1505,
+        "endChar": 32
+      },
+      "revId": "cb3d91d21395de5fb52a8499e95bb2cad88297da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
