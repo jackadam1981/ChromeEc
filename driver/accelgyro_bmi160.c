@@ -697,11 +697,15 @@ static int init(struct motion_sensor_t *s)
 	 */
 	saved_data->odr = 0;
 
+	ret = sensor_init_done(s);
+	if (ret)
+		return ret;
+
+	/* Interrupt may need the range set by sensor_init_done(). */
 	if (IS_ENABLED(ACCELGYRO_BMI160_INT_ENABLE) &&
 	    (s->type == MOTIONSENSE_TYPE_ACCEL))
 		ret = config_accel_interrupt(s);
-
-	return sensor_init_done(s);
+	return ret;
 }
 
 const struct accelgyro_drv bmi160_drv = {
