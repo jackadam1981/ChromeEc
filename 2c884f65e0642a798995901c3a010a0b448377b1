@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5dff6d5_1417da24",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-19T19:10:31Z",
+      "side": 1,
+      "message": "Nit: Call these something like `expected_num_objects`?",
+      "range": {
+        "startLine": 500,
+        "startChar": 34,
+        "endLine": 501,
+        "endChar": 24
+      },
+      "revId": "2c884f65e0642a798995901c3a010a0b448377b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
