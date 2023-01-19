@@ -1456,6 +1456,51 @@ static enum ec_error_list raa489000_set_vsys_compensation(int chgnum,
 	 */
 	return EC_ERROR_UNIMPLEMENTED;
 }
+
+#ifdef CONFIG_PLATFORM_EC_RAA489000_AC_PRESENT
+/*
+ * If the device is in OTG mode, flip the comparator output
+ * so that the AC_PRESENT signal does not get asserted incorrectly
+ * (the comparator still operates in OTG mode).
+ */
+void raa489000_check_ac_delayed(void)
+{
+	static bool current_val;
+	bool new_val;
+	int rv, regval;
+
+	rv = raw_read16(CHARGER_PRIMARY, ISL9238_REG_INFO2, &regval);
+	if (rv == EC_SUCCESS) {
+		new_val = (((regval >> RAA489000_INFO2_STATE_SHIFT) &
+			    RAA489000_INFO2_STATE_MASK) ==
+			   RAA489000_INFO2_STATE_OTG);
+		if (new_val != current_val) {
+			/*
+			 * If the mode has changed to/from OTG mode,
+			 * set the comparator output to be inverted (OTG mode)
+			 * or non-inverted.
+			 * In OTG mode, ACOK is always on, and AC_PRESENT should
+			 * be low.
+			 */
+			current_val = new_val;
+			isl923x_set_comparator_inversion(CHARGER_PRIMARY,
+							 new_val);
+		}
+	}
+}
+DECLARE_DEFERRED(raa489000_check_ac_delayed);
+
+void raa489000_check_ac_present(void)
+{
+	hook_call_deferred(&raa489000_check_ac_delayed_data, 1 * SECOND);
+}
+
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, raa489000_check_ac_present,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, raa489000_check_ac_present,
+	     HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_PLATFORM_EC_RAA489000_AC_PRESENT */
+
 #endif /* CONFIG_CHARGER_RAA489000 && CONFIG_OCPC */
 
 const struct charger_drv isl923x_drv = {
