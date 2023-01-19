@@ -46,6 +46,30 @@
       },
       "revId": "78ef6853b3101ce70a6b343539bdd94d103bfed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83aab11_c214e5ce",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-19T05:27:31Z",
+      "side": 1,
+      "message": "Done, `ap_pwrseq_get_state_str` is used to export local state strings instead of passing request to state machine code.\n\nRemoving getting previous state, only keeping `ap_pwrseq_get_current_state` which obtained from state machine.",
+      "parentUuid": "a7f9fa33_1f6239b1",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "78ef6853b3101ce70a6b343539bdd94d103bfed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
