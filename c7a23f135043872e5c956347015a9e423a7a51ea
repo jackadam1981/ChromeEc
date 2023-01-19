@@ -88,6 +88,24 @@
       "parentUuid": "c9e8d7c2_825035a4",
       "revId": "c7a23f135043872e5c956347015a9e423a7a51ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d57f251a_5e1c07bb",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1512822
+      },
+      "writtenOn": "2023-01-19T04:54:31Z",
+      "side": 1,
+      "message": "I just confirmed that insertion of USB-C flash drive on USB-C1 port on Nereid SKU1 does not result in AC: R/F events in the GSC console. Perhaps, someone else could test this out as well to confirm.",
+      "parentUuid": "0d5f975f_65904559",
+      "revId": "c7a23f135043872e5c956347015a9e423a7a51ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
