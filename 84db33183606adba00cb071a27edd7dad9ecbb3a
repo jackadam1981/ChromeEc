@@ -149,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "835b319c_6719fcce",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-19T21:51:20Z",
+      "side": 1,
+      "message": "The default is set as `default $(dt_node_int_prop_hex,/binman/ec-rw,size)` so it undefined in this case.",
+      "parentUuid": "673a9983_ad51ca7d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35449170_177b0262",
         "filename": "zephyr/program/hdctools/starfish_v1/prj.conf",
         "patchSetId": 1
