@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f54047a_439d3d24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-19T06:46:43Z",
+      "side": 1,
+      "message": "This set of hooks provides the most reliable update (also including a call\nfrom board_set_active_charge_port()).",
+      "revId": "358b6653a4725920a45dcc08459f5fc58620db00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
