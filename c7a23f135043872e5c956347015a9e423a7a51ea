@@ -52,6 +52,24 @@
       "parentUuid": "01f63c69_582fe0dd",
       "revId": "c7a23f135043872e5c956347015a9e423a7a51ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e8d7c2_825035a4",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-19T04:20:48Z",
+      "side": 1,
+      "message": "Even if SM5803 needs something similar, I don\u0027t think it makes sense to have a \"global\" option if each driver does something on its own without requiring code outside the driver to know about the option.",
+      "parentUuid": "d9d750f5_64422ec6",
+      "revId": "c7a23f135043872e5c956347015a9e423a7a51ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
