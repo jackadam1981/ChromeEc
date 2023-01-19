@@ -68,6 +68,29 @@
       },
       "revId": "a1e7deeec07f0c3293afcefc775021ea8c9e36ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e10a2f45_d3f6a087",
+        "filename": "zephyr/Kconfig.console",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T23:53:51Z",
+      "side": 1,
+      "message": "Nit - fix the indentation.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "a1e7deeec07f0c3293afcefc775021ea8c9e36ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
