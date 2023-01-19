@@ -46,6 +46,30 @@
       },
       "revId": "cb3d91d21395de5fb52a8499e95bb2cad88297da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58b08bb3_36a31c3e",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-19T23:54:58Z",
+      "side": 1,
+      "message": "It may be better to put a call to this in driver/tcpm/raa489000.c (guarded by\nCONFIG_PLATFORM_EC_RAA489000_AC_PRESENT), since that is the source of the\nboard_set_active_charge_port() call.",
+      "parentUuid": "0e2a4b52_e9ded23f",
+      "range": {
+        "startLine": 1505,
+        "startChar": 13,
+        "endLine": 1505,
+        "endChar": 32
+      },
+      "revId": "cb3d91d21395de5fb52a8499e95bb2cad88297da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
