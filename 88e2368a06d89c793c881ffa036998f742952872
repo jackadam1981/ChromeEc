@@ -52,6 +52,24 @@
       "parentUuid": "87eceeea_13d933be",
       "revId": "88e2368a06d89c793c881ffa036998f742952872",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4868ae4b_4f767a6a",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-19T05:15:08Z",
+      "side": 1,
+      "message": "There was one hook I looked at, which was HOOK_AC_CHANGE, and others like HOOK_POWER_SUPPLY_CHANGE and HOOK_USB_PD_* changes.\nI guess what I could do is hook off any of these, and then run a deferred call to this check (I found the the mode status takes time to be updated).\nThat would avoid the polling.",
+      "parentUuid": "34625588_76d96743",
+      "revId": "88e2368a06d89c793c881ffa036998f742952872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
