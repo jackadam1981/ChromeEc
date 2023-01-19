@@ -33,6 +33,42 @@
       "message": "I successfully test this CL on a Villager device",
       "revId": "b90ea42adb6ff247eb4e35c789df5d78787c393a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d73d118_b67df9ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2023-01-19T19:05:46Z",
+      "side": 1,
+      "message": "Done, for npcx and ite",
+      "parentUuid": "88debf07_60d8c519",
+      "revId": "b90ea42adb6ff247eb4e35c789df5d78787c393a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c78176a_9c1b0bb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2023-01-19T19:05:46Z",
+      "side": 1,
+      "message": "I\u0027ve updated the CL after comment from Keith and also fixing it for ITE devices (krabby)",
+      "parentUuid": "d7fbc28e_7af790aa",
+      "revId": "b90ea42adb6ff247eb4e35c789df5d78787c393a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
