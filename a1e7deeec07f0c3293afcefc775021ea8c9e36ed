@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f7b3529_9c759d23",
+        "filename": "zephyr/Kconfig.console",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T23:52:50Z",
+      "side": 1,
+      "message": "This config isn\u0027t directly related to the console. Move these configs to the main Kconfig file.\n\nSuggested name `PLATFORM_EC_BOOT_NO_SLEEP` and `PLATFORM_EC_BOOT_NO_SLEEP_TIME_MS`.",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "a1e7deeec07f0c3293afcefc775021ea8c9e36ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04ae752b_7f9c2aa5",
+        "filename": "zephyr/Kconfig.console",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T23:52:50Z",
+      "side": 1,
+      "message": "Default to y - all the EC chips from the legacy code enabled this.  Also note that specifying `default n` is redundant.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "a1e7deeec07f0c3293afcefc775021ea8c9e36ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40bc5f5b_3afe70c3",
+        "filename": "zephyr/Kconfig.console",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T23:52:50Z",
+      "side": 1,
+      "message": "No need to document what the legacy code does, just document what this option does.\n\n\"This option disables the EC chip from entering deep sleep modes for the time specified by PLATFORM_EC_BOOT_NO_SLEEP_TIME_MS after booting.\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "a1e7deeec07f0c3293afcefc775021ea8c9e36ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
