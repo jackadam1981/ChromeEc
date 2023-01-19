@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "538f2160_443b7e33",
+        "filename": "zephyr/test/skyrim/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-19T17:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2e9e240_6db40c2f",
+      "revId": "4c92aa28fbfda1b55305a2fdbfa7535623125f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6965f991_1b1b36be",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-01-10T21:55:52Z",
       "side": 1,
       "message": "What do these do if they\u0027re only available if `CONFIG_TEST_BOARD_BASEBOARD` is set, but they\u0027re off by default? Why not just get rid of the `CONFIG_TEST_BOARD_BASEBOARD` check and control them entirely from `testcase.yaml`?",
+      "revId": "4c92aa28fbfda1b55305a2fdbfa7535623125f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c555f84d_da91435b",
+        "filename": "zephyr/test/skyrim/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-19T17:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6965f991_1b1b36be",
       "revId": "4c92aa28fbfda1b55305a2fdbfa7535623125f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beba9250_72c1aa51",
+        "filename": "zephyr/test/skyrim/src/baseboard/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-19T17:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4812cd94_851855ae",
+      "revId": "4c92aa28fbfda1b55305a2fdbfa7535623125f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79b73bb1_2868469e",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9da6882_17aed4b0",
+        "filename": "zephyr/test/skyrim/src/baseboard/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-19T17:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79b73bb1_2868469e",
+      "revId": "4c92aa28fbfda1b55305a2fdbfa7535623125f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a8d15a1_f127aad0",
@@ -82,6 +154,24 @@
       "writtenOn": "2023-01-10T21:55:52Z",
       "side": 1,
       "message": "Formatting",
+      "revId": "4c92aa28fbfda1b55305a2fdbfa7535623125f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b2a1ca_85432546",
+        "filename": "zephyr/test/skyrim/src/baseboard/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-19T17:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a8d15a1_f127aad0",
       "revId": "4c92aa28fbfda1b55305a2fdbfa7535623125f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
