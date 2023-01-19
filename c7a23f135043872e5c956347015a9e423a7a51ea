@@ -34,6 +34,24 @@
       "parentUuid": "11cc2777_61d2d8bc",
       "revId": "c7a23f135043872e5c956347015a9e423a7a51ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d750f5_64422ec6",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-19T04:18:12Z",
+      "side": 1,
+      "message": "I\u0027m not entirely certain that it is only the RAA489000 charger that is impacted\nby this - Louis did mention something about the SM5803 also being affected, but I haven\u0027t looked at that yet.\n\nI did consider making it a chip-specific config, and I think I am OK with doing that as long as we get confirmation from Louis that this isn\u0027t required with other chips.",
+      "parentUuid": "01f63c69_582fe0dd",
+      "revId": "c7a23f135043872e5c956347015a9e423a7a51ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
