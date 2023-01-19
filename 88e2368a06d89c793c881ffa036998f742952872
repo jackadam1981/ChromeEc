@@ -70,6 +70,24 @@
       "parentUuid": "34625588_76d96743",
       "revId": "88e2368a06d89c793c881ffa036998f742952872",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b74e954_f3761dd8",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-19T06:18:37Z",
+      "side": 1,
+      "message": "So none of these hooks provide all the necessary notification.\nSo rather than using a hook, it was easier to call it from the board\nspecific functions.",
+      "parentUuid": "4868ae4b_4f767a6a",
+      "revId": "88e2368a06d89c793c881ffa036998f742952872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
