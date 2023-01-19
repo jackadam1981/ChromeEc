@@ -2861,6 +2861,8 @@
 #undef CONFIG_INDUCTIVE_CHARGING
 
 /******************************************************************************/
+/* Support cypress CCG8 PD AIC */
+#undef CONFIG_CCG8_PD_AIC
 
 /* Support CCGXXF I/O expander built inside PD chip */
 #undef CONFIG_IO_EXPANDER_CCGXXF

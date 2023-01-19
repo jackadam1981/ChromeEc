@@ -46,10 +46,15 @@ GPIO_INT(UART_SERVO_TX_EC_RX,	PIN(B, 0), GPIO_INT_FALLING, uart_deepsleep_interr
 GPIO_INT(BAT_DET_EC,	PIN(K, 0), GPIO_INT_BOTH, battery_detect_interrupt)
 
 /* USB-C interrupts */
+#if 0
 /* Using embedded TCPC for Port-0 */
 UNIMPLEMENTED(USBC_TCPC_ALRT_P0)
 GPIO(NC_USBC_TCPC_ALRT_P0,	PIN(I, 7), GPIO_INPUT)
 GPIO_INT(USBC_TCPC_PPC_ALRT_P0, PIN(J, 5), GPIO_INT_FALLING, ppc_interrupt)
+#else
+GPIO_INT(USBC_TCPC_ALRT_P0,	PIN(I, 7), GPIO_INT_FALLING, tcpc_alert_event)
+//GPIO(USBC_TCPC_ALRT_P0,              PIN(I, 7), GPIO_OUT_LOW) //To test
+#endif /* For CCG8, no ppc */
 
 /*
  * b:200265672 External pull-up resistor of port 1 is removed to fix port 3
@@ -57,8 +62,13 @@ GPIO_INT(USBC_TCPC_PPC_ALRT_P0, PIN(J, 5), GPIO_INT_FALLING, ppc_interrupt)
  * This change is only applied to ITE chip.
  */
 #if defined(HAS_TASK_PD_C1)
+#if 0
 GPIO_INT(USBC_TCPC_ALRT_P1,	PIN(G, 0), GPIO_INT_FALLING | GPIO_PULL_UP, tcpc_alert_event)
 GPIO_INT(USBC_TCPC_PPC_ALRT_P1, PIN(C, 4), GPIO_INT_FALLING, ppc_interrupt)
+#else
+GPIO_INT(USBC_TCPC_ALRT_P1,   PIN(J, 5), GPIO_INT_FALLING, tcpc_alert_event)
+//GPIO(USBC_TCPC_ALRT_P1,		PIN(J, 5), GPIO_OUT_LOW)
+#endif /* For CCG8, no ppc */
 #else
 GPIO(USBC_TCPC_ALRT_P1,		PIN(G, 0), GPIO_INPUT)
 GPIO(USBC_TCPC_PPC_ALRT_P1,	PIN(C, 4), GPIO_INPUT)
@@ -66,15 +76,22 @@ GPIO(USBC_TCPC_PPC_ALRT_P1,	PIN(C, 4), GPIO_INPUT)
 
 #if defined(HAS_TASK_PD_C2)
 GPIO_INT(USBC_TCPC_ALRT_P2,	PIN(J, 1), GPIO_INT_FALLING, tcpc_alert_event)
+//GPIO(USBC_TCPC_ALRT_P2, 	PIN(J, 1), GPIO_OUT_LOW) //To test
+#if 0
 GPIO_INT(USBC_TCPC_PPC_ALRT_P2, PIN(E, 5), GPIO_INT_FALLING, ppc_interrupt)
+#endif /* CCG8 has no ppc */
 #else
 GPIO(USBC_TCPC_ALRT_P2,		PIN(J, 1), GPIO_INPUT)
 GPIO(USBC_TCPC_PPC_ALRT_P2,	PIN(E, 5), GPIO_INPUT)
 #endif
 
 #if defined(HAS_TASK_PD_C3)
+#if 0
 GPIO_INT(USBC_TCPC_ALRT_P3,	PIN(J, 3), GPIO_INT_FALLING, tcpc_alert_event)
 GPIO_INT(USBC_TCPC_PPC_ALRT_P3, PIN(E, 6), GPIO_INT_FALLING, ppc_interrupt)
+#endif
+GPIO_INT(USBC_TCPC_ALRT_P3, PIN(E, 6), GPIO_INT_FALLING, tcpc_alert_event)
+// GPIO(USBC_TCPC_ALRT_P3,		PIN(E, 5),GPIO_OUT_LOW) //To test
 #else
 GPIO(USBC_TCPC_ALRT_P3,		PIN(J, 3), GPIO_INPUT)
 GPIO(USBC_TCPC_PPC_ALRT_P3,	PIN(E, 6), GPIO_INPUT)
