@@ -22,6 +22,30 @@
       },
       "revId": "cb3d91d21395de5fb52a8499e95bb2cad88297da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e2a4b52_e9ded23f",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-19T22:45:50Z",
+      "side": 1,
+      "message": "Or is that handled by the board code in the following change? If so, it should be documented how users need to hook board code up to this function.",
+      "parentUuid": "510b0bc8_0faf6e24",
+      "range": {
+        "startLine": 1505,
+        "startChar": 13,
+        "endLine": 1505,
+        "endChar": 32
+      },
+      "revId": "cb3d91d21395de5fb52a8499e95bb2cad88297da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
