@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d97338f7_56649ef9",
+        "filename": "zephyr/boards/arm/stm32g4/Kconfig.board",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-19T21:48:53Z",
+      "side": 1,
+      "message": "Do you mean that zephyr/program/hdctools/starfish_v1/....c/h files should be removed and split up or just have a CL or only the zephyr/boards/arm/stm32g4/... content?",
+      "parentUuid": "9c7cb35c_499bb708",
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21fddbae_514ef750",
         "filename": "zephyr/boards/arm/stm32g4/stm32g4.dts",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2023-01-19T19:59:11Z",
       "side": 1,
       "message": "This duplicates the setting from flash.dts. If the flash layout is expected to be the same for all stm32g473Xc based boards, then move the flash partitions here.  Otherwise, delete this property here.",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4cc2ba3_671d8848",
+        "filename": "zephyr/boards/arm/stm32g4/stm32g4.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-19T21:48:53Z",
+      "side": 1,
+      "message": "I\u0027ll move those out to the platform directory.\n\n    zephyr,shell-uart \u003d \u0026cdc_acm_uart0;\n    zephyr,flash \u003d \u0026flash0;",
+      "parentUuid": "21fddbae_514ef750",
       "range": {
         "startLine": 18,
         "startChar": 2,
@@ -83,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "673a9983_ad51ca7d",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-19T21:48:53Z",
+      "side": 1,
+      "message": "Since it doesn\u0027t use the CrosEC flash layout it\u0027s not initialized and this generates errors. I suspect we could just replace the guard with this:\n\n    #if defined(CONFIG_PLATFORM_EC_RW_TOTAL_IMAGE_SIZE)\n\nWe\u0027d end up with the same protections that this was trying to do in a way that is more directly identifies the problem:\n\n    #if defined(CONFIG_CPU_CORTEX_M) || defined(CONFIG_CPU_CORTEX_R) || \\\n        defined(CONFIG_CPU_CORTEX_A) || defined (CONFIG_RISCV)",
+      "parentUuid": "985b166e_1ca44c0b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35449170_177b0262",
         "filename": "zephyr/program/hdctools/starfish_v1/prj.conf",
         "patchSetId": 1
@@ -106,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e11c158_7f8f5e5a",
+        "filename": "zephyr/program/hdctools/starfish_v1/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-19T21:48:53Z",
+      "side": 1,
+      "message": "Makes sense. CONFIG_USB_DEVICE_VID can be added since that\u0027s the Google\u0027s VID and almost everything is sharing it too.",
+      "parentUuid": "35449170_177b0262",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f27bc82_97481b70",
         "filename": "zephyr/program/hdctools/starfish_v1/usb.dts",
         "patchSetId": 1
@@ -117,6 +207,30 @@
       "writtenOn": "2023-01-19T19:59:11Z",
       "side": 1,
       "message": "This probably makes more sense in the stm32g4.dts file because that file is setting the `zephyr-shell-uart` chosen property.",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "761da2f0_8a95ff5d",
+        "filename": "zephyr/program/hdctools/starfish_v1/usb.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-19T21:48:53Z",
+      "side": 1,
+      "message": "The shell driver is going to likely be platform specific, for instance additional testing with Starfish has shown the CDC_ACM shell has some negative interactions with modem manager so I\u0027m going to replace it eventually with the Google Shell interface once other parts are settled.",
+      "parentUuid": "2f27bc82_97481b70",
       "range": {
         "startLine": 7,
         "startChar": 1,
