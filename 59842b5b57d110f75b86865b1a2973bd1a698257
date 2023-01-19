@@ -94,6 +94,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1257c88_20932d3a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2023-01-19T18:47:42Z",
+      "side": 1,
+      "message": "Hi Dai,\nAgree that for devices running with older ectool, it wont print.\nBut, the command(cmd_pwm_get_fan_rpm)  which uses this print doesnt depend on ec host command  to read rpm, but is reading rpm from memory location and printing it.So, i don\u0027t think, we have a way to verify the command version and then to decide about the stall print. In a way,rpm \u003d 0 gives same hint to user, eventhough  the stall print gets missed in boards with old fw.  Also,the moment when rpm is set to 0 in pwm_fan_second(), stall print will appear in ec log. So, it doesnt really impact boards with older fw.",
+      "parentUuid": "22a4bbad_59c72e36",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
