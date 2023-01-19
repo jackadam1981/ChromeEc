@@ -102,6 +102,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05dacf70_b28acc7a",
+        "filename": "zephyr/linker/end-of-ram.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-19T22:21:36Z",
+      "side": 1,
+      "message": "Should these linker changes be in their own CL?",
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "985b166e_1ca44c0b",
         "filename": "zephyr/linker/image_size.ld",
         "patchSetId": 1
