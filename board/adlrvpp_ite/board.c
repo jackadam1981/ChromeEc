@@ -5,6 +5,7 @@
 
 /* Intel ADLRVP-ITE board-specific configuration */
 #include "button.h"
+#include "driver/tcpm/ccgxxf.h"
 #include "fan.h"
 #include "fusb302.h"
 #include "gpio.h"
@@ -20,6 +21,7 @@
 #include "pwm_chip.h"
 #include "switch.h"
 #include "tablet_mode.h"
+#include "tcpm/tcpci.h"
 #include "uart.h"
 #include "usb_pd_tbt.h"
 #include "usb_pd_tcpm.h"
@@ -45,6 +47,7 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_SMB_BS_CLK,
 		.sda = GPIO_SMB_BS_DATA,
 	},
+#ifndef CONFIG_CCG8_PD_AIC
 	[I2C_CHAN_TYPEC_0] = {
 		.name = "typec_0",
 		.port = IT83XX_I2C_CH_C,
@@ -59,7 +62,17 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_USBC_TCPC_I2C_CLK_P2,
 		.sda = GPIO_USBC_TCPC_I2C_DATA_P2,
 	},
+#else
+	[I2C_CHAN_TYPEC_0_1] = {
+		.name = "PD_AIC_1",
+		.port = IT83XX_I2C_CH_C,
+		.kbps = 1000,
+		.scl = GPIO_USBC_TCPC_I2C_CLK_P0,
+		.sda = GPIO_USBC_TCPC_I2C_DATA_P0,
+	},
+#endif /* CONFIG_CCG8_PD_AIC */
 #if defined(HAS_TASK_PD_C2)
+#ifndef CONFIG_CCG8_PD_AIC
 	[I2C_CHAN_TYPEC_2] = {
 		.name = "typec_2",
 		.port = IT83XX_I2C_CH_E,
@@ -74,6 +87,15 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_USBC_TCPC_I2C_CLK_P3,
 		.sda = GPIO_USBC_TCPC_I2C_DATA_P3,
 	},
+#else
+	[I2C_CHAN_TYPEC_2_3] = {
+		.name = "PD_AIC_2",
+		.port = IT83XX_I2C_CH_E,
+		.kbps = 1000,
+		.scl = GPIO_USBC_TCPC_I2C_CLK_P1,
+		.sda = GPIO_USBC_TCPC_I2C_DATA_P1,
+	},
+#endif /* CONFIG_CCG8_PD_AIC */
 #endif
 };
 BUILD_ASSERT(ARRAY_SIZE(i2c_ports) == I2C_CHAN_COUNT);
@@ -101,6 +123,7 @@ BUILD_ASSERT(ARRAY_SIZE(i2c_bitbang_ports) == I2C_BITBANG_CHAN_COUNT);
 const unsigned int i2c_bitbang_ports_used = ARRAY_SIZE(i2c_bitbang_ports);
 
 /* USB-C TCPC Configuration */
+#ifndef CONFIG_CCG8_PD_AIC
 const struct tcpc_config_t tcpc_config[] = {
 	[TYPE_C_PORT_0] = {
 		.bus_type = EC_BUS_TYPE_EMBEDDED,
@@ -139,6 +162,53 @@ const struct tcpc_config_t tcpc_config[] = {
 #endif
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_MAX_COUNT);
+#else
+const struct tcpc_config_t tcpc_config[] = {
+	[TYPE_C_PORT_0] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_0,
+			.addr_flags = CCGXXF_I2C_ADDR1_FLAGS,/* not based on SWD_clk? PD FW? */
+		},
+		.drv = &ccgxxf_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+	},
+#if defined(HAS_TASK_PD_C1)
+	[TYPE_C_PORT_1] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_0,
+			.addr_flags = CCGXXF_I2C_ADDR2_FLAGS,
+		},
+		.drv = &ccgxxf_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+	},
+#endif
+#if defined(HAS_TASK_PD_C2)
+	[TYPE_C_PORT_2] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_2,
+			.addr_flags = CCGXXF_I2C_ADDR1_FLAGS,
+		},
+		.drv = &ccgxxf_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+	},
+#endif
+#if defined(HAS_TASK_PD_C3)
+	[TYPE_C_PORT_3] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_2,
+			.addr_flags = CCGXXF_I2C_ADDR2_FLAGS,
+		},
+		.drv = &ccgxxf_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+	},
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_MAX_COUNT);
+#endif /* CONFIG_CCG8_PD_AIC */
 
 static void enable_irq(void)
 {

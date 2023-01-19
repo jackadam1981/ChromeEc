@@ -11,6 +11,7 @@
 #include "charger.h"
 #include "common.h"
 #include "driver/retimer/bb_retimer_public.h"
+#include "driver/tcpm/ccgxxf.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -33,28 +34,36 @@
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 	[TYPE_C_PORT_0] = {
 		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P0,
+#ifndef CONFIG_CCG8_PD_AIC
 		.ppc_alert = GPIO_USBC_TCPC_PPC_ALRT_P0,
 		.ppc_intr_handler = sn5s330_interrupt,
+#endif /* CONFIG_CCG8_PD_AIC */
 	},
 #if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {
 		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P1,
+#ifndef CONFIG_CCG8_PD_AIC
 		.ppc_alert = GPIO_USBC_TCPC_PPC_ALRT_P1,
 		.ppc_intr_handler = sn5s330_interrupt,
+#endif /* CONFIG_CCG8_PD_AIC */
 	},
 #endif
 #if defined(HAS_TASK_PD_C2)
 	[TYPE_C_PORT_2] = {
 		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P2,
+#ifndef CONFIG_CCG8_PD_AIC
 		.ppc_alert = GPIO_USBC_TCPC_PPC_ALRT_P2,
 		.ppc_intr_handler = sn5s330_interrupt,
+#endif /* CONFIG_CCG8_PD_AIC */
 	},
 #endif
 #if defined(HAS_TASK_PD_C3)
 	[TYPE_C_PORT_3] = {
 		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P3,
+#ifndef CONFIG_CCG8_PD_AIC
 		.ppc_alert = GPIO_USBC_TCPC_PPC_ALRT_P3,
 		.ppc_intr_handler = sn5s330_interrupt,
+#endif /* CONFIG_CCG8_PD_AIC */
 	},
 #endif
 };
@@ -63,29 +72,37 @@ BUILD_ASSERT(ARRAY_SIZE(tcpc_aic_gpios) == CONFIG_USB_PD_PORT_MAX_COUNT);
 /* USB-C PPC configuration */
 struct ppc_config_t ppc_chips[] = {
 	[TYPE_C_PORT_0] = {
+#ifndef CONFIG_CCG8_PD_AIC
 		.i2c_port = I2C_PORT_TYPEC_0,
 		.i2c_addr_flags = I2C_ADDR_SN5S330_TCPC_AIC_PPC,
 		.drv = &sn5s330_drv,
+#endif /* CONFIG_CCG8_PD_AIC */
 	},
 #if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {
+#ifndef CONFIG_CCG8_PD_AIC
 		.i2c_port = I2C_PORT_TYPEC_1,
 		.i2c_addr_flags = I2C_ADDR_SN5S330_TCPC_AIC_PPC,
 		.drv = &sn5s330_drv
+#endif /* CONFIG_CCG8_PD_AIC */
 	},
 #endif
 #if defined(HAS_TASK_PD_C2)
 	[TYPE_C_PORT_2] = {
+#ifndef CONFIG_CCG8_PD_AIC
 		.i2c_port = I2C_PORT_TYPEC_2,
 		.i2c_addr_flags = I2C_ADDR_SN5S330_TCPC_AIC_PPC,
 		.drv = &sn5s330_drv,
+#endif /* CONFIG_CCG8_PD_AIC */
 	},
 #endif
 #if defined(HAS_TASK_PD_C3)
 	[TYPE_C_PORT_3] = {
+#ifndef CONFIG_CCG8_PD_AIC
 		.i2c_port = I2C_PORT_TYPEC_3,
 		.i2c_addr_flags = I2C_ADDR_SN5S330_TCPC_AIC_PPC,
 		.drv = &sn5s330_drv,
+#endif /* CONFIG_CCG8_PD_AIC */
 	},
 #endif
 };
@@ -250,6 +267,7 @@ BUILD_ASSERT(ARRAY_SIZE(bb_controls) == CONFIG_USB_PD_PORT_MAX_COUNT);
 /* Cache BB retimer power state */
 static bool cache_bb_enable[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+#ifndef CONFIG_CCG8_PD_AIC
 /* Each TCPC have corresponding IO expander and are available in pair */
 struct ioexpander_config_t ioex_config[] = {
 	[IOEX_C0_PCA9675] = {
@@ -276,6 +294,23 @@ struct ioexpander_config_t ioex_config[] = {
 #endif
 };
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
+#else
+struct ioexpander_config_t ioex_config[] = {
+	[IOEX_C0_C1_CCGXXF] = {
+		.i2c_host_port = I2C_PORT_TYPEC_0,
+		.i2c_addr_flags = CCGXXF_I2C_ADDR1_FLAGS,
+		.drv = &ccgxxf_ioexpander_drv,
+	},
+#if defined(HAS_TASK_PD_C2)
+	[IOEX_C2_C3_CCGXXF] = {
+		.i2c_host_port = I2C_PORT_TYPEC_2,
+		.i2c_addr_flags = CCGXXF_I2C_ADDR1_FLAGS,
+		.drv = &ccgxxf_ioexpander_drv,
+	},
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
+#endif /* CONFIG_CCG8_PD_AIC */
 
 /* Charger Chips */
 struct charger_config_t chg_chips[] = {
@@ -288,6 +323,7 @@ struct charger_config_t chg_chips[] = {
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
+#ifndef CONFIG_CCG8_PD_AIC
 	/* Port 0 & 1 and 2 & 3 share same line for over current indication */
 #if defined(HAS_TASK_PD_C2)
 	enum ioex_signal oc_signal = port < TYPE_C_PORT_2 ? IOEX_USB_C0_C1_OC :
@@ -298,6 +334,7 @@ void board_overcurrent_event(int port, int is_overcurrented)
 
 	/* Overcurrent indication is active low signal */
 	ioex_set_level(oc_signal, is_overcurrented ? 0 : 1);
+#endif /* CONFIG_CCG8_PD_AIC */
 }
 
 __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
@@ -350,6 +387,7 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 
 static void board_connect_c0_sbu_deferred(void)
 {
+#ifndef CONFIG_CCG8_PD_AIC
 	int ccd_intr_level = gpio_get_level(GPIO_CCD_MODE_ODL);
 
 	if (ccd_intr_level) {
@@ -361,6 +399,7 @@ static void board_connect_c0_sbu_deferred(void)
 		ioex_set_level(IOEX_USB_C0_USB_MUX_CNTRL_1, 1);
 		ioex_set_level(IOEX_USB_C0_USB_MUX_CNTRL_0, 0);
 	}
+#endif /* CONFIG_CCG8_PD_AIC */
 }
 DECLARE_DEFERRED(board_connect_c0_sbu_deferred);
 
@@ -565,8 +604,10 @@ __override bool board_is_tbt_usb4_port(int port)
 
 __override void board_pre_task_i2c_peripheral_init(void)
 {
+#ifndef CONFIG_CCG8_PD_AIC
 	/* Initialized IOEX-0 to access IOEX-GPIOs needed pre-task */
 	ioex_init(IOEX_C0_PCA9675);
+#endif
 
 	/* Make sure SBU are routed to CCD or AUX based on CCD status at init */
 	board_connect_c0_sbu_deferred();

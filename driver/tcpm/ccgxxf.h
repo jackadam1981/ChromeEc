@@ -52,7 +52,11 @@ enum ccgxxf_io_ports {
 	CCGXXF_PORT_0,
 	CCGXXF_PORT_1,
 	CCGXXF_PORT_2,
-	CCGXXF_PORT_3
+	CCGXXF_PORT_3,
+	CCGXXF_PORT_4,
+	CCGXXF_PORT_5,
+	CCGXXF_PORT_6,
+	CCGXXF_PORT_7
 };
 
 /* CCGXXF I/O pins that can be referenced in gpio.inc */
@@ -68,9 +72,9 @@ enum ccgxxf_io_pins {
 };
 
 #define CCGXXF_REG_GPIO_CONTROL(port) ((port) + 0x80)
-#define CCGXXF_REG_GPIO_STATUS(port) ((port) + 0x84)
+#define CCGXXF_REG_GPIO_STATUS(port) ((port) + 0x84) /* May need change */
 
-#define CCGXXF_REG_GPIO_MODE 0x88
+#define CCGXXF_REG_GPIO_MODE 0x88 /* Need check */
 #define CCGXXF_GPIO_PIN_MASK_SHIFT 8
 #define CCGXXF_GPIO_PIN_MODE_SHIFT 2
 #define CCGXXF_GPIO_1P8V_SEL BIT(7)

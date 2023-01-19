@@ -71,9 +71,14 @@
 #define I2C_PORT_TYPEC_3 IT83XX_I2C_CH_D
 #endif
 
+#ifndef CONFIG_CCG8_PD_AIC
 /* TCPC */
 #define CONFIG_USB_PD_TCPM_ITE_ON_CHIP
 #define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT 1
+#else
+#define CONFIG_USB_PD_TCPM_CCGXXF
+#define CONFIG_IO_EXPANDER_CCGXXF
+#endif /* CONFIG_CCG8_PD_AIC */
 
 /* Config Fan */
 #define GPIO_FAN_POWER_EN GPIO_EC_THRM_SEN_PWRGATE_N
@@ -85,6 +90,7 @@
 
 #ifndef __ASSEMBLER__
 
+#ifndef CONFIG_CCG8_PD_AIC
 enum adlrvp_i2c_channel {
 	I2C_CHAN_FLASH,
 	I2C_CHAN_BATT_CHG,
@@ -96,6 +102,17 @@ enum adlrvp_i2c_channel {
 #endif
 	I2C_CHAN_COUNT,
 };
+#else
+enum adlrvp_i2c_channel {
+	I2C_CHAN_FLASH,
+	I2C_CHAN_BATT_CHG,
+	I2C_CHAN_TYPEC_0_1,
+#if defined(HAS_TASK_PD_C2)
+	I2C_CHAN_TYPEC_2_3,
+#endif
+	I2C_CHAN_COUNT,
+};
+#endif /* CONFIG_CCG8_PD_AIC */
 
 #endif /* !__ASSEMBLER__ */
 

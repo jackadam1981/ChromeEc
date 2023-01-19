@@ -6,6 +6,7 @@
  */
 
 #include "console.h"
+#include "gpio.h"
 #include "i2c.h"
 #include "ioexpander.h"
 
