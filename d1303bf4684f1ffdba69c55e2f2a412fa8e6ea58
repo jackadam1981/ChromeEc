@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41bac79a_db828e74",
+        "filename": "zephyr/boards/arm/npcx9/npcx9m3f_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T23:53:22Z",
+      "side": 1,
+      "message": "This change isn\u0027t needed if make the default setting y.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "d1303bf4684f1ffdba69c55e2f2a412fa8e6ea58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
