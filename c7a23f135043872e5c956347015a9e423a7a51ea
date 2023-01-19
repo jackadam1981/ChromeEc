@@ -124,6 +124,24 @@
       "parentUuid": "c9e8d7c2_825035a4",
       "revId": "c7a23f135043872e5c956347015a9e423a7a51ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2d549fe_47b5ae70",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-19T05:03:40Z",
+      "side": 1,
+      "message": "Hmm I thought we had mentioned it in passing, but in any case, it seems the SM5803 isn\u0027t impacted here, so maybe more reason to make this a chip specific option.",
+      "parentUuid": "a3954e01_a3960084",
+      "revId": "c7a23f135043872e5c956347015a9e423a7a51ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
