@@ -34,6 +34,24 @@
       "parentUuid": "5c0180a3_2041547a",
       "revId": "dbb89895a2cd19ba8408d77e252934886118fe69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dddc9c51_17daf4eb",
+        "filename": "zephyr/test/skyrim/src/crystaldrift/ppc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-19T18:00:20Z",
+      "side": 1,
+      "message": "Switched over to using configs to control which source file gets used.",
+      "parentUuid": "a5b60a8f_d9c775e0",
+      "revId": "dbb89895a2cd19ba8408d77e252934886118fe69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
