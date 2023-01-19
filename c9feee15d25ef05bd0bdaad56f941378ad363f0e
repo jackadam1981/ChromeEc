@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d3f08e_b36b027b",
+        "filename": "zephyr/include/ap_power/ap_pwrseq_sm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-19T05:22:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01019466_95522e15",
+      "revId": "c9feee15d25ef05bd0bdaad56f941378ad363f0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb947ac2_18f1d1c0",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "\u003e I\u0027m guessing this is meant to allow callbacks to determine exactly what transition is occurring if needed,\n\nThat is the intention of this, I agree, it seems better to pass this to callback, driver users should only be aware of current state.\nI also wonder if next state should be available in callback as well, so user will get to know previous, current and next state of current transition.",
       "parentUuid": "eb947ac2_18f1d1c0",
+      "range": {
+        "startLine": 282,
+        "startChar": 14,
+        "endLine": 282,
+        "endChar": 22
+      },
+      "revId": "c9feee15d25ef05bd0bdaad56f941378ad363f0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33751d6_1de72f8a",
+        "filename": "zephyr/include/ap_power/ap_pwrseq_sm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-19T05:22:51Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "27408fc9_424b2ac8",
       "range": {
         "startLine": 282,
         "startChar": 14,

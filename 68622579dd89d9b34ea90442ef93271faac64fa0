@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd166add_b30c5cea",
+        "filename": "zephyr/include/ap_power/ap_pwrseq_sm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-19T05:22:51Z",
+      "side": 1,
+      "message": "This is intended to be utilized by driver users.",
+      "parentUuid": "ab541d74_97a9a7a3",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 8
+      },
+      "revId": "68622579dd89d9b34ea90442ef93271faac64fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78856ab0_a23d96ae",
