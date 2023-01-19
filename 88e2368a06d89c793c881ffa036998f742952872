@@ -34,6 +34,24 @@
       "parentUuid": "7fa42f7c_b58aeb3f",
       "revId": "88e2368a06d89c793c881ffa036998f742952872",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34625588_76d96743",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-19T04:57:10Z",
+      "side": 1,
+      "message": "Yes, it\u0027s mostly that polling feels like a messy way to achieve this even if the cost is pretty small (although I\u0027m not sure how small it really is, since this will probably consume on the order of 100 microseconds of CPU time per second, forever including while in sleep and there are only a small number of HOOK_SECOND users: one more could be a significant change to EC power draw under AP-off conditions).\n\nI agree that there\u0027s nowhere good to put it in either the TCPM or charger driver as things stand, since mode changes can happen semi-autonomously (thinking of FRS in particular) and there won\u0027t be any callbacks to change the charger mode. The type-C state machine will always be updated to remain in sync though, so I think adding some kind of hook in there is quite reasonable.",
+      "parentUuid": "87eceeea_13d933be",
+      "revId": "88e2368a06d89c793c881ffa036998f742952872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
