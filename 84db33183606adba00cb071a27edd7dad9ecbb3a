@@ -16,6 +16,115 @@
       "message": "You should give the board directly a more descriptive name. Maybe something like zephyr/boards/arm/google_starfish",
       "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c7cb35c_499bb708",
+        "filename": "zephyr/boards/arm/stm32g4/Kconfig.board",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T19:59:11Z",
+      "side": 1,
+      "message": "Please move the STM32 files into their own CL.",
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21fddbae_514ef750",
+        "filename": "zephyr/boards/arm/stm32g4/stm32g4.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T19:59:11Z",
+      "side": 1,
+      "message": "This duplicates the setting from flash.dts. If the flash layout is expected to be the same for all stm32g473Xc based boards, then move the flash partitions here.  Otherwise, delete this property here.",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985b166e_1ca44c0b",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T19:59:11Z",
+      "side": 1,
+      "message": "`CONFIG_PLATFORM_EC_RW_TOTAL_IMAGE_SIZE` is initialized from the binman.dtsi file, but this file isn\u0027t included.  So I think this is getting set to 0.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35449170_177b0262",
+        "filename": "zephyr/program/hdctools/starfish_v1/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T19:59:11Z",
+      "side": 1,
+      "message": "I\u0027d recommend putting some of the configs that are likely to be used by all STM32 designs into stm32g3_defconfig instead.\n\nCONFIG_GPIO\nCONFIG_PINCTRL\nCONFIG_USB_DEVICE configs (except for PID,PRODUCT,VID).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f27bc82_97481b70",
+        "filename": "zephyr/program/hdctools/starfish_v1/usb.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T19:59:11Z",
+      "side": 1,
+      "message": "This probably makes more sense in the stm32g4.dts file because that file is setting the `zephyr-shell-uart` chosen property.",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
