@@ -70,6 +70,24 @@
       "parentUuid": "d9d750f5_64422ec6",
       "revId": "c7a23f135043872e5c956347015a9e423a7a51ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d5f975f_65904559",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1512822
+      },
+      "writtenOn": "2023-01-19T04:49:16Z",
+      "side": 1,
+      "message": "I do not believe we discussed SM5803 previously, perhaps we were going to take a look at it. \n\nI just took a look at the datasheet and there is OTG_ON_CHG_DET register, which states \"Driving of CHG_DET output pin to high when device is in otg mode\". This bit is set to 0 by default, which means \"OTG doesn\u0027t drive CHG_DET\". As long as we do not touch this bit, I would presume that SM5803 do not exhibit the behavior that the current CL is trying to address.\n\nCould we check whether we are modifying this bit or not?",
+      "parentUuid": "c9e8d7c2_825035a4",
+      "revId": "c7a23f135043872e5c956347015a9e423a7a51ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
