@@ -3,8 +3,9 @@
  * found in the LICENSE file.
  */
 
-#if defined(CONFIG_CPU_CORTEX_M) || defined(CONFIG_CPU_CORTEX_R) || \
-	defined(CONFIG_CPU_CORTEX_A) || defined (CONFIG_RISCV)
+#if defined(CONFIG_PLATFORM_EC_RW_TOTAL_IMAGE_SIZE) && \
+	(defined(CONFIG_CPU_CORTEX_M) || defined(CONFIG_CPU_CORTEX_R) || \
+	defined(CONFIG_CPU_CORTEX_A) || defined (CONFIG_RISCV))
 __image_size = CONFIG_PLATFORM_EC_RW_TOTAL_IMAGE_SIZE;
 #else
 /*
