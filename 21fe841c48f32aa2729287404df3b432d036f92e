@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d16c40_463fbbab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-19T18:09:02Z",
+      "side": 1,
+      "message": "You may want to include ectool.cc in this CL. It\u0027ll allow you to test the commands as well.",
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff03d72_4c1240ed",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-19T18:09:02Z",
+      "side": 1,
+      "message": "Where do you populate this?",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 55
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "153d666a_6231a1ee",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-19T18:09:02Z",
+      "side": 1,
+      "message": "You don\u0027t need to reset memory_dump_timestamp?",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f38e3c9d_e7d85c6c",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-19T18:09:02Z",
+      "side": 1,
+      "message": "You need to set args-\u003eresponse_size here and in read_memory_dump.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 7
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b728c49_b81a5805",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-19T18:09:02Z",
+      "side": 1,
+      "message": "nit: This is redundant because of line 34, right?",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 50
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1072232f_25dd43c6",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-19T18:09:02Z",
+      "side": 1,
+      "message": "Better be EC_RES_INVALID_PARAM (to distinguish errors from line 125)?",
+      "range": {
+        "startLine": 119,
+        "startChar": 9,
+        "endLine": 119,
+        "endChar": 29
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4cadccf_0063f1a2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5596,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-19T18:09:02Z",
+      "side": 1,
+      "message": "The max response size can be different. It\u0027s informed by the EC through EC_CMD_GET_PROTOCOL_INFO. Do you still want to limit it to 244?",
+      "range": {
+        "startLine": 5596,
+        "startChar": 37,
+        "endLine": 5596,
+        "endChar": 40
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
