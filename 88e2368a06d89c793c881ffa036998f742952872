@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa42f7c_b58aeb3f",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-19T04:19:10Z",
+      "side": 1,
+      "message": "Doing this as polling seems awkward; have you considered hooking it up to the type-C state machine instead? I think `tc_attached_src_entry` and `tc_attached_snk_entry` are the right points, where you can just set inversion depending on whether it\u0027s source or sink.\n\nThat would require hooking it up in a way that\u0027s not currently supported by the state machine (probably not difficult to do!), but seems much less wasteful than polling the charger.",
+      "revId": "88e2368a06d89c793c881ffa036998f742952872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
