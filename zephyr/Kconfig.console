@@ -27,6 +27,21 @@ config PLATFORM_EC_CONSOLE_CHANNEL
 config SHELL_PRINTF_BUFF_SIZE
 	default 180
 
+config PLATFORM_EC_CONSOLE_BOOT_NO_SLEEP
+	bool "Disable sleep close after boot"
+	depends on CONSOLE
+	default n
+	help
+	  On some platforms UART console data can be corrupted when the EC
+	  wakes from sleep. Legacy EC code disables sleep for 15 seconds
+	  after boot through `CONSOLE_IN_USE_ON_BOOT_TIME`.
+
+config PLATFORM_EC_CONSOLE_BOOT_NO_SLEEP_MS
+	int "Console in use duration"
+	default 15000
+	help
+		Duration for PLATFORM_EC_CONSOLE_BOOT_NO_SLEEP in ms.
+
 # Some boards may need to increase the size, depending on the amount of output
 config SHELL_BACKEND_SERIAL_TX_RING_BUFFER_SIZE
 	default 1024
