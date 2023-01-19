@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d05b610_759da9f1",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-19T00:50:21Z",
+      "side": 1,
+      "message": "We\u0027re still setting the muxes from the EC on initial connection since there\u0027s a need to get that done quickly (by which I mean, a compliance test mentions we\u0027re supposed to set SS within 80ms of Vbus turning on)\n\nThough long-term, if we can get the AP setting the muxes all the time that would certainly make things easier on the virtual mux platforms by a lot.  We could obsolete the entire virtual mux handshake if that happened",
+      "parentUuid": "8133b137_abb68ab7",
+      "revId": "507a3f459996dfc59d4b1ed81161ca43761b0a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b833ed2c_bef445f8",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 1
@@ -82,6 +100,24 @@
       "writtenOn": "2023-01-17T23:16:20Z",
       "side": 1,
       "message": "Rather than code the DP logic into the DPM, it seems more modular to do a switch on the SVID and call a function in the appropriate alt mode module that does whatever is appropriate with the VDM. (You\u0027re already sort of doing this anyway?)",
+      "revId": "507a3f459996dfc59d4b1ed81161ca43761b0a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fd9f1d9_052e4319",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-19T00:50:21Z",
+      "side": 1,
+      "message": "What are your thoughts on this approach versus something more radical to achieve our stated goals? \n\nOn the one hand, this approach wasn\u0027t much coding which is nice.  On the other, I worry we\u0027ll regret tying the DP module states to the AP driving VDMs.  It makes it convenient to let the module run ExitMode, but it also means that if we do something like support active DP cable entry, then the module and AP would need updated to stay in step with each other. \n\nAt any rate, I was debating about whether the HPD logic could be modularized better so we don\u0027t have to move the DP states along.  I\u0027m not totally certain about ExitMode... we could just maintain whatever SVID/SOP* combinations we\u0027ve sent EnterMode to somewhere and iterate on them generically.",
+      "parentUuid": "1dda08f5_7059899f",
       "revId": "507a3f459996dfc59d4b1ed81161ca43761b0a68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
