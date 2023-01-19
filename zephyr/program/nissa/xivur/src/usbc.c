@@ -56,6 +56,7 @@ int board_set_active_charge_port(int port)
 	int i;
 	int old_port;
 
+	raa489000_check_ac_present();
 	if (!is_real_port && port != CHARGE_PORT_NONE)
 		return EC_ERROR_INVAL;
 
