@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6911d10c_ff27ba77",
+        "filename": "docs/chromeos-ec-firmware-test-requirements.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T23:08:48Z",
+      "side": 1,
+      "message": "Also add  note about \"with a non-blocking warning message being printed for CLs that do not exceed 95% coverage\".",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "239b02f1d9839f26e312dcfacd07d24a17f90eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c59d018b_9b1852fd",
         "filename": "docs/chromeos-ec-firmware-test-requirements.md",
         "patchSetId": 1
@@ -14,6 +37,30 @@
       "writtenOn": "2023-01-19T23:05:10Z",
       "side": 1,
       "message": "So are we still planning on further increasing? If no, I\u0027ll remove this paragraph.",
+      "range": {
+        "startLine": 15,
+        "startChar": 24,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "239b02f1d9839f26e312dcfacd07d24a17f90eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "981f9d9e_d16fc2cd",
+        "filename": "docs/chromeos-ec-firmware-test-requirements.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-19T23:08:48Z",
+      "side": 1,
+      "message": "I don\u0027t think so.   Please delete.",
+      "parentUuid": "c59d018b_9b1852fd",
       "range": {
         "startLine": 15,
         "startChar": 24,
