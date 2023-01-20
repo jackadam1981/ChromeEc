@@ -74,3 +74,15 @@ If using the Zephyr toolchain (`-t zephyr`), follow the [upstream
 documentation] to install the Zephyr build tools.
 
 [upstream documentation]: https://docs.zephyrproject.org/getting_started/index.html#install-a-toolchain
+
+
+## Using `west` to setup your build environment
+
+If you opt to leave west installed. You can sync the EC code base and dependencies
+with `west`.  Run the following commands
+
+```bash
+west init -m https://chromium.googlesource.com/chromiumos/platform/ec/ <project_dir>
+west update
+west setup
+```
