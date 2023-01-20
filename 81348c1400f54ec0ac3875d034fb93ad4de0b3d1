@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c1ce2cc_f4765a9b",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-20T22:36:57Z",
+      "side": 1,
+      "message": "Nit - use \"--compare-binaries-disable\" for the long form.",
+      "range": {
+        "startLine": 216,
+        "startChar": 11,
+        "endLine": 216,
+        "endChar": 27
+      },
+      "revId": "81348c1400f54ec0ac3875d034fb93ad4de0b3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
