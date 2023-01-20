@@ -46,6 +46,30 @@
       },
       "revId": "70bdfb1a07be6e321032e442c4391ac9fd41923e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c377157_eef6c0ae",
+        "filename": "zephyr/zmake/zmake/compare_builds.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-20T12:48:05Z",
+      "side": 1,
+      "message": "Sure but then we can refactor later, does not make much sense to me to have the exact same code duplicated. Triplicated? This may also cover the `check_binaries` functionality?",
+      "parentUuid": "deee0973_85799a40",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 0
+      },
+      "revId": "70bdfb1a07be6e321032e442c4391ac9fd41923e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
