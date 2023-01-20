@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33eda222_5b3fd871",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-20T18:44:41Z",
+      "side": 1,
+      "message": "Can you add b:266221111 as well?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0b0eaa7_f289a348",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -158,6 +181,30 @@
       "side": 1,
       "message": "We do not see any condition to take an action in code when RPM is forced to 0 (due to stalled) or measure to 0. The only place where the fan stalled occurs, user is informed with the help of print message. We feel there is no need to distinguish. \n\nWhen fan is stalled means the blades are not rotating at all and the speed it-self is 0 because it can overcome the back pressure and will not spin. So, setting the rpm value to 0 for fan stalled makes more sense here.",
       "parentUuid": "8a5fb102_f637a440",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47361432_61c41c2a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-20T18:44:41Z",
+      "side": 1,
+      "message": "\u003e We do not see any condition to take an action in code when RPM is forced to 0 (due to stalled)...\n\nCan you elaborate on this? I need to make a decision on whether we get rid of EC_FAN_SPEED_STALLED entirely (everywhere) or not.",
+      "parentUuid": "2ef79645_60efb2d2",
       "range": {
         "startLine": 255,
         "startChar": 31,
