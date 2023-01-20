@@ -1,6 +1,7 @@
 manifest:
   self:
     path: modules/ec
+    west-commands: zephyr/west/west-commands.yml
 
   remotes:
     - name: chromium
