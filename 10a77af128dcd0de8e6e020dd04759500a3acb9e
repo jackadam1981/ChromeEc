@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e69c2c5d_7076e834",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-20T18:48:54Z",
+      "side": 1,
+      "message": "Nit: `i` makes me think of an iterator. How about `info`?",
+      "revId": "10a77af128dcd0de8e6e020dd04759500a3acb9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "559d54e0_863d8585",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1379,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-20T18:48:54Z",
+      "side": 1,
+      "message": "Nit: `val` should be a `uint16_t`.",
+      "revId": "10a77af128dcd0de8e6e020dd04759500a3acb9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f2a042_61066283",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1423,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-20T18:48:54Z",
+      "side": 1,
+      "message": "Are you missing a word here?",
+      "range": {
+        "startLine": 1423,
+        "startChar": 7,
+        "endLine": 1423,
+        "endChar": 39
+      },
+      "revId": "10a77af128dcd0de8e6e020dd04759500a3acb9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
