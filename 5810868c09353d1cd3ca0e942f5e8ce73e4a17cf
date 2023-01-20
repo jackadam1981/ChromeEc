@@ -46,6 +46,30 @@
       },
       "revId": "5810868c09353d1cd3ca0e942f5e8ce73e4a17cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5894208b_162615fe",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 27
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-01-20T19:52:40Z",
+      "side": 1,
+      "message": "There\u0027s no example of nissa support in here right now. I\u0027m still working on getting the driver to work on nissa. Although, I\u0027ve noticed that the craask project only has about 1kb of flash left available and so might not be able to run an additional driver anyways? The other nissa projects don\u0027t have this issue as they all have at least 10kb of flash available.",
+      "parentUuid": "60491381_d9c23284",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "5810868c09353d1cd3ca0e942f5e8ce73e4a17cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
