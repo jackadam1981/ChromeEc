@@ -314,15 +314,12 @@ void crec_flash_print_region_info(void)
 }
 
 int crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
-				   int num_banks)
+				   uint16_t num_banks)
 {
 	struct ec_flash_bank region;
 	size_t sector_idx = 0;
-	int banks_idx = 0;
+	size_t banks_idx = 0;
 	int res;
-
-	if (num_banks < 1)
-		return EC_RES_INVALID_PARAM;
 
 	do {
 		res = flash_get_region(sector_idx, &region);

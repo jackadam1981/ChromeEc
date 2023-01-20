@@ -11,6 +11,8 @@
 #include "common.h"
 #include "ec_commands.h" /* For EC_FLASH_PROTECT_* flags */
 
+#include <stdint.h>
+
 #ifdef CONFIG_FLASH_MULTIPLE_REGION
 #ifndef CONFIG_ZEPHYR
 extern struct ec_flash_bank const
@@ -103,7 +105,7 @@ int crec_flash_total_banks(void);
  * @return EC_RES_SUCCESS or other error code.
  */
 int crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
-				   int num_banks);
+				   uint16_t num_banks);
 
 /* Persistent protection state flash offset / size / bank */
 #if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)

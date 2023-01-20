@@ -222,13 +222,10 @@ int crec_flash_bank_start_offset(int bank)
 }
 
 int crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
-				   int num_banks)
+				   uint16_t num_banks)
 {
 	const struct ec_flash_bank *banks = flash_bank_array;
-	int banks_to_copy = MIN(ARRAY_SIZE(flash_bank_array), num_banks);
-
-	if (num_banks < 1)
-		return EC_RES_INVALID_PARAM;
+	size_t banks_to_copy = MIN(ARRAY_SIZE(flash_bank_array), num_banks);
 
 	memcpy(r->banks, banks, banks_to_copy * sizeof(struct ec_flash_bank));
 	r->num_banks_desc = banks_to_copy;
@@ -241,10 +238,13 @@ int crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
 #error "Flash: Bank size expected bigger or equal to erase size."
 #endif
 int crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
-				   int num_banks)
+				   uint16_t num_banks)
 {
-	if (num_banks < 1)
-		return EC_RES_INVALID_PARAM;
+	if (num_banks == 0) {
+		r->num_banks_desc = 0;
+		r->num_banks_total = 1;
+		return EC_RES_SUCCESS;
+	}
 
 	r->banks[0].count = crec_flash_total_banks();
 	r->banks[0].size_exp = __fls(CONFIG_FLASH_BANK_SIZE);
