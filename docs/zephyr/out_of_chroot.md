@@ -3,6 +3,10 @@
 It is possible to build Zephyr outside of the Chromium OS chroot,
 albeit with additional steps.
 
+**You have the choice of using `west` or `zmake`.**
+
+*See steps below for either option.*
+
 *** note
 **Note:** These steps are maintained on a best-effort basis, and may
 not be accurate depending on your Linux distribution and your system's
@@ -11,6 +15,20 @@ specific environment.
 
 [TOC]
 
+## Setup your build environment using `west`
+
+Using `west` You can sync the EC code base and dependencies with the following
+commands:
+
+```bash
+west init -m https://chromium.googlesource.com/chromiumos/platform/ec/ <project_dir>
+west update
+west setup
+```
+
+***
+
+## Setup build environment with `zmake`
 ## Remove west, if installed [b/184654974](http://b/184654974)
 
 Zephyr's Cmake system will try to attach itself to the west tool if it finds it
