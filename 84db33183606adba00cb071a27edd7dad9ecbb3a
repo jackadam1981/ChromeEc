@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdd6dc85_222a4cf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-20T00:20:27Z",
+      "side": 1,
+      "message": "Keep in mind \u0027zephyr/boards\u0027 is organized based on Zephyr\u0027s requirements.  For the EC code, we\u0027ve use `zephyr/boards` for the common configs and devicetree settings for each EC chipset.\n\nSo `zephyr/boards/arm/stm32g4` is matches our pattern. The `zephyr/program` directory is what should match the project name.",
+      "parentUuid": "2fb5b434_45ef6e82",
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c7cb35c_499bb708",
         "filename": "zephyr/boards/arm/stm32g4/Kconfig.board",
         "patchSetId": 1
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Do you mean that zephyr/program/hdctools/starfish_v1/....c/h files should be removed and split up or just have a CL or only the zephyr/boards/arm/stm32g4/... content?",
       "parentUuid": "9c7cb35c_499bb708",
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbc9b381_7838d934",
+        "filename": "zephyr/boards/arm/stm32g4/Kconfig.board",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-20T00:20:27Z",
+      "side": 1,
+      "message": "I think two CLs:\n`. `zephyr/boards/arm/stm32g4/...`\n2. `zephyr/program/hdctools/...`\n\nLogically, the `zephyr/boards` directory corresponds to features common to the EC chipset while `zephyr/program` contains the program/project specific files.\n\nIt\u0027s a slightly cleaner commit history if CLs update one or the other.",
+      "parentUuid": "d97338f7_56649ef9",
       "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -108,6 +144,30 @@
       "side": 1,
       "message": "I\u0027ll move those out to the platform directory.\n\n    zephyr,shell-uart \u003d \u0026cdc_acm_uart0;\n    zephyr,flash \u003d \u0026flash0;",
       "parentUuid": "21fddbae_514ef750",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b362be5a_7a3d8f19",
+        "filename": "zephyr/boards/arm/stm32g4/stm32g4.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-20T00:20:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f4cc2ba3_671d8848",
       "range": {
         "startLine": 18,
         "startChar": 2,
