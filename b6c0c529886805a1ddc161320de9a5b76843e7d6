@@ -46,6 +46,30 @@
       },
       "revId": "b6c0c529886805a1ddc161320de9a5b76843e7d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e72687db_7dbaf455",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/Kconfig.it8xxx2",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-20T00:13:26Z",
+      "side": 1,
+      "message": "Good point on execute in place flash vs SPI flash.  This could effect both the RO and RW offset parameters.\n\nHowever, we should be able to use the binman property for the size parameters `CROS_EC_RO_SIZE` and `CROS_EC_RW_SIZE` for both flash types.",
+      "parentUuid": "a7e2d143_3a621d6e",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "b6c0c529886805a1ddc161320de9a5b76843e7d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
