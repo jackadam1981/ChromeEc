@@ -321,7 +321,7 @@ int crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
 	int banks_idx = 0;
 	int res;
 
-	if (num_banks < 1)
+	if (num_banks < 0)
 		return EC_RES_INVALID_PARAM;
 
 	do {
