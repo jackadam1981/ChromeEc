@@ -1,0 +1,6 @@
+west-commands:
+  - file: zephyr/west/setup.py
+    commands:
+      - name: ec-setup
+        class: ECSetup
+        help: Setup the EC build environment
