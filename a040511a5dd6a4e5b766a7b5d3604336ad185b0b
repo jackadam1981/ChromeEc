@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6899f95_78c0cfac",
+        "filename": "board/brya/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-20T20:11:57Z",
+      "side": 1,
+      "message": "Please submit this change in a separate CL.",
+      "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "368b3684_31217253",
         "filename": "common/fan.c",
         "patchSetId": 1
@@ -36,6 +53,29 @@
         "startChar": 1,
         "endLine": 369,
         "endChar": 4
+      },
+      "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f1d74fc_cb6cc118",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2047,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-20T20:11:57Z",
+      "side": 1,
+      "message": "Can we derive these from fans[ch].rpm-\u003erpm_max and rpm_min?",
+      "range": {
+        "startLine": 2046,
+        "startChar": 0,
+        "endLine": 2047,
+        "endChar": 35
       },
       "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
