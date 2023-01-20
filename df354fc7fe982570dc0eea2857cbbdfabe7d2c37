@@ -1011,6 +1011,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d7c735_04029050",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-20T03:32:28Z",
+      "side": 1,
+      "message": "Done, I made some experiments using this function, it works well after all.",
+      "parentUuid": "e8ce45d7_e91f2151",
+      "revId": "df354fc7fe982570dc0eea2857cbbdfabe7d2c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5314fe7_7bf5caa6",
