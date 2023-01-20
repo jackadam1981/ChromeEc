@@ -22,6 +22,30 @@
       },
       "revId": "0ece6dfb222d8b38a5b5c82d79b696d9b4361537",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba286e2_dafd3297",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2023-01-20T14:01:03Z",
+      "side": 1,
+      "message": "No need to, that one CL has revert and fixes inside, it is independent of the revert in this one here.",
+      "parentUuid": "ea8a858b_fc6acb88",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "0ece6dfb222d8b38a5b5c82d79b696d9b4361537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
