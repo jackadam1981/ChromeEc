@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87deb077_926d7dab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-20T17:47:33Z",
+      "side": 1,
+      "message": "Hey, first try at integrating the upstream compliance check with our presubmit. Bit hacky but then it\u0027s just a wrapper. Using vpython so I could not make pytest work, calling it directly instead from run_tests.sh, lmk if you have any better idea.\n\nNote that this right now only runs the yamllint stuff, but I was mainly interested in the bindings checks, but since there\u0027s a major rework on those going on I\u0027ll wait for that to be merged to make sure it still works out of tree before trying to integrate it.",
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
