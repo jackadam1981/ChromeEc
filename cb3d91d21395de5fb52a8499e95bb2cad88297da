@@ -142,6 +142,30 @@
       },
       "revId": "cb3d91d21395de5fb52a8499e95bb2cad88297da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639ee5c2_299331ad",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-20T03:24:43Z",
+      "side": 1,
+      "message": "Hmm I am not sure there is any other hook I can use - I don\u0027t believe there is any way of distinguishing when it is being charged from port1, and port0 has an unpowered hub plugged in. In this case AC_PRESENT will be low (OTG mode and ACOK is on).\nIf we are required to also check other ports, we could loop through the non-primary chargers and check whether they are active. Not sure if it is worth doing.",
+      "parentUuid": "5b33dd79_29f5caae",
+      "range": {
+        "startLine": 1505,
+        "startChar": 13,
+        "endLine": 1505,
+        "endChar": 32
+      },
+      "revId": "cb3d91d21395de5fb52a8499e95bb2cad88297da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
