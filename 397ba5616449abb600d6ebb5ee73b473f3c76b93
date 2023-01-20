@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55167b84_5e735599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-20T23:08:55Z",
+      "side": 1,
+      "message": "lgtm.",
+      "revId": "397ba5616449abb600d6ebb5ee73b473f3c76b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d99a81cd_6695b037",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-20T23:08:55Z",
+      "side": 1,
+      "message": "nit: How about \u0027CHIP_FAMILY_STM32L5\u0027?",
+      "range": {
+        "startLine": 727,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 21
+      },
+      "revId": "397ba5616449abb600d6ebb5ee73b473f3c76b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
