@@ -34,6 +34,24 @@
       "parentUuid": "3bd7a91c_8df2a411",
       "revId": "c0b9626a3b1547702d900592fc23f617e936ffe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3a7b79_e003048d",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-20T00:07:07Z",
+      "side": 1,
+      "message": "Yes - using `#if defined(CONFIG_PLATFORM_EC_RW_TOTAL_IMAGE_SIZE)` should be okay here.\n\nThe original code needed an architecture specific linker symbol, but a recent change switched to defining this value in binman.dtsi.",
+      "parentUuid": "71cd1f08_4b63c372",
+      "revId": "c0b9626a3b1547702d900592fc23f617e936ffe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
