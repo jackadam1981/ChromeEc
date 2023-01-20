@@ -16,6 +16,75 @@
       "message": "Looks like the latest comments have been addressed.\nAre extra printk statement meant to stay in place?\n\nDeferring to Wai Hong for approval.",
       "revId": "0802df73c3d0154c077596d1d1442ad8dac3d15d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d32bd29_18ee44cf",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-01-20T17:54:09Z",
+      "side": 1,
+      "message": "Move the `return` in the else clause. So you don\u0027t need the goto.",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "0802df73c3d0154c077596d1d1442ad8dac3d15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6980332c_eed289e4",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-01-20T17:54:09Z",
+      "side": 1,
+      "message": "Move it before the line 56.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "0802df73c3d0154c077596d1d1442ad8dac3d15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5b70ff_09ce40c4",
+        "filename": "zephyr/program/herobrine/src/board_chipset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-01-20T17:54:09Z",
+      "side": 1,
+      "message": "Keep the check of `pp5000_inited` here, instead of the `check_delay_5v()` inside. So the below logic from the line 102~117 won\u0027t be executed every time the AP boot up.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 1
+      },
+      "revId": "0802df73c3d0154c077596d1d1442ad8dac3d15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
