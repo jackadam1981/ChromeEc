@@ -166,6 +166,30 @@
       },
       "revId": "cb3d91d21395de5fb52a8499e95bb2cad88297da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f55c876_b9b337ab",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-20T03:45:14Z",
+      "side": 1,
+      "message": "So speaking to Louis about this, the use case is for factory battery cut-off, which always uses port 0, so reportedly the case where other ports are being used for power are not relevant.",
+      "parentUuid": "639ee5c2_299331ad",
+      "range": {
+        "startLine": 1505,
+        "startChar": 13,
+        "endLine": 1505,
+        "endChar": 32
+      },
+      "revId": "cb3d91d21395de5fb52a8499e95bb2cad88297da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
