@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b294b4_3de840de",
+        "filename": "zephyr/Kconfig.console",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-20T19:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f7b3529_9c759d23",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "a1e7deeec07f0c3293afcefc775021ea8c9e36ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04ae752b_7f9c2aa5",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-19T23:52:50Z",
       "side": 1,
       "message": "Default to y - all the EC chips from the legacy code enabled this.  Also note that specifying `default n` is redundant.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "a1e7deeec07f0c3293afcefc775021ea8c9e36ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f16b16ba_1d863042",
+        "filename": "zephyr/Kconfig.console",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-20T19:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04ae752b_7f9c2aa5",
       "range": {
         "startLine": 33,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d1ead9_43e71cc1",
+        "filename": "zephyr/Kconfig.console",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-20T19:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40bc5f5b_3afe70c3",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "a1e7deeec07f0c3293afcefc775021ea8c9e36ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e10a2f45_d3f6a087",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-01-19T23:53:51Z",
       "side": 1,
       "message": "Nit - fix the indentation.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "a1e7deeec07f0c3293afcefc775021ea8c9e36ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "991b266d_b3f6b921",
+        "filename": "zephyr/Kconfig.console",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-20T19:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e10a2f45_d3f6a087",
       "range": {
         "startLine": 43,
         "startChar": 2,
