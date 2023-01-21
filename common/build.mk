@@ -231,6 +231,8 @@ common-$(call not_cfg,$(CONFIG_MALLOC))+=shared_mem.o
 endif
 endif
 
+common-rw+=shmalloc.o
+
 ifeq ($(CTS_MODULE),)
 common-$(TEST_BUILD)+=test_util.o
 else
