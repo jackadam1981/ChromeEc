@@ -39,6 +39,30 @@
       },
       "revId": "397ba5616449abb600d6ebb5ee73b473f3c76b93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf914653_7f52afd6",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-21T03:28:21Z",
+      "side": 1,
+      "message": "I thought about it, but then again, if any future STM32L6 or whatever also defines _RPR and _FPR variants, then we want to use them.  Ideally the engineer that adds support for such a new device would review this common code, but I think that with the code as is, we get the largest chance that the code will work without modification for as many future variants as possible.",
+      "parentUuid": "d99a81cd_6695b037",
+      "range": {
+        "startLine": 727,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 21
+      },
+      "revId": "397ba5616449abb600d6ebb5ee73b473f3c76b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
