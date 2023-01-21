@@ -470,6 +470,12 @@ config PLATFORM_EC_USB_PD_LONG_PRESS_MAX_MS
 	 partner in ms. Any press longer than this will not be considered a valid USB
 	 PD button press.
 
+config PLATFORM_EC_USB_PD_DP21_SUPPORT
+	bool "Enable DP2.1 Support"
+	depends on PLATFORM_EC_USB_PD_ALT_MODE
+	help
+	  This configuration enables DP2.1 support.
+
 rsource "Kconfig.svdm_rsp"
 
 endif  # PLATFORM_EC_USB_POWER_DELIVERY
