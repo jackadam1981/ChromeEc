@@ -397,7 +397,7 @@ int hook_call_deferred(const struct deferred_data *data, int us);
  */
 #define hook_call_deferred(unused1, unused2) -1
 #define DECLARE_HOOK(t, func, p)               \
-	void CONCAT2(unused_hook_, func)(void) \
+	void CONCAT3(t, _unused_hook_, func)(void)	\
 	{                                      \
 		func();                        \
 	}
