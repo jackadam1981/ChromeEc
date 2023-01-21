@@ -70,6 +70,30 @@
       },
       "revId": "5810868c09353d1cd3ca0e942f5e8ce73e4a17cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bfd0aed_c3f84fe2",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 27
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-21T05:29:50Z",
+      "side": 1,
+      "message": "I am not sure I understand - what additional driver is required?\nIsn\u0027t this just plumbing in the ISR for the existing drivers?\nSo the delta shouldn\u0027t be that great, just removing the existing interrupt DTS entries and having some new device specific ones?",
+      "parentUuid": "5894208b_162615fe",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "5810868c09353d1cd3ca0e942f5e8ce73e4a17cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
