@@ -512,6 +512,26 @@ hc_pd_host_event_status(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_PD_HOST_EVENT_STATUS, hc_pd_host_event_status,
 		     EC_VER_MASK(0));
+
+static enum ec_status hc_pd_dp21_discovery(struct host_cmd_handler_args *args)
+{
+	const uint8_t *port = args->params;
+	uint32_t mode_vdo;
+	struct ec_response_usb_dp21_discovery *r = args->response;
+
+	mode_vdo = pd_get_dp_mode_vdo(*port, TCPCI_MSG_SOP_PRIME);
+
+	r->is_dp21_cable = (mode_vdo ? 1 : 0);
+	r->vdo_version = PD_DP_CFG_VERSION(mode_vdo);
+	r->speed = PD_DP_CFG_LINK_RATE(mode_vdo);
+	r->uhbr_13_5_supported = (PD_DP_CFG_UHBR13_5(mode_vdo) ? 1 : 0);
+	r->type = PD_DP_CFG_CABLE_TYPE(mode_vdo);
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PD_DP21_DISCOVERY, hc_pd_dp21_discovery,
+		     EC_VER_MASK(0));
 #endif /* ! CONFIG_USB_PD_TCPM_STUB */
 
 #endif /* HAS_TASK_HOSTCMD */
