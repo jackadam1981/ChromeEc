@@ -20,6 +20,8 @@
 #include "usb_dp_alt_mode.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_dp.h"
+#include "usb_pd_tbt.h"
 #include "usb_pd_tcpm.h"
 
 #include <stdbool.h>
@@ -274,6 +276,10 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 					     USB_SID_DISPLAYPORT,
 					     mode_vdos) == 0)
 			return MSG_SETUP_ERROR;
+
+		if (!dp_mode_entry_allowed(port))
+			return MSG_SETUP_ERROR;
+
 		if (svdm_enter_dp_mode(port, mode_vdos[dp_opos - 1]) < 0)
 			return MSG_SETUP_ERROR;
 		vdm[0] = VDO(USB_SID_DISPLAYPORT, 1,
@@ -281,6 +287,9 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 		/* CMDT_INIT is 0, so this is a no-op */
 		vdm[0] |= VDO_CMDT(CMDT_INIT);
 		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
+		if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE))
+			vdm[0] |= VDO_SVDM_VERS_MINOR(1);
+
 		vdo_count_ret = 1;
 		if (dp_state[port] == DP_START)
 			CPRINTS("C%d: Attempting to enter DP mode", port);
@@ -292,6 +301,8 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 		vdm[0] |= PD_VDO_OPOS(dp_opos);
 		vdm[0] |= VDO_CMDT(CMDT_INIT);
 		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
+		if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE))
+			vdm[0] |= VDO_SVDM_VERS_MINOR(1);
 		break;
 	case DP_STATUS_ACKED:
 		if (!get_dp_pin_mode(port))
@@ -320,6 +331,8 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 			return MSG_SETUP_ERROR;
 		vdm[0] |= VDO_CMDT(CMDT_INIT);
 		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
+		if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE))
+			vdm[0] |= VDO_SVDM_VERS_MINOR(1);
 		break;
 	case DP_ENTER_NAKED:
 		DP_SET_FLAG(port, DP_FLAG_RETRY);
@@ -344,6 +357,8 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 		vdm[0] |= VDO_OPOS(dp_opos);
 		vdm[0] |= VDO_CMDT(CMDT_INIT);
 		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
+		if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE))
+			vdm[0] |= VDO_SVDM_VERS_MINOR(1);
 		vdo_count_ret = 1;
 		break;
 	case DP_INACTIVE:
@@ -542,6 +557,9 @@ __overridable uint8_t get_dp_pin_mode(int port)
 __overridable int svdm_dp_config(int port, uint32_t *payload)
 {
 	uint8_t pin_mode = get_dp_pin_mode(port);
+	union dp_mode_resp_cable cable_dp_mode_resp;
+	uint8_t bit_rate;
+
 	mux_state_t mux_mode = svdm_dp_get_mux_mode(port);
 	/* Default dp_port_mf_allow is true */
 	int mf_pref;
@@ -557,11 +575,33 @@ __overridable int svdm_dp_config(int port, uint32_t *payload)
 
 	CPRINTS("pin_mode: %x, mf: %d, mux: %d", pin_mode, mf_pref, mux_mode);
 
-	payload[0] =
-		VDO(USB_SID_DISPLAYPORT, 1, CMD_DP_CONFIG | VDO_OPOS(dp_opos));
-	payload[1] = VDO_DP_CFG(pin_mode, /* pin mode */
-				1, /* DPv1.3 signaling */
-				2); /* UFP connected */
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE) &&
+	    resolve_dpam_version(port, TCPCI_MSG_SOP) == DPAM_VERSION_21) {
+		cable_dp_mode_resp.raw_value =
+			pd_get_dp_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
+		bit_rate = get_dp_cable_bit_rate(port);
+
+		payload[0] =
+			VDO(USB_SID_DISPLAYPORT, 1,
+			    VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP)) |
+				    VDO_SVDM_VERS_MINOR(1) | CMD_DP_CONFIG |
+				    VDO_OPOS(dp_opos));
+		payload[1] = VDO_DP2_1_CFG(1, /* DPAM Version */
+					   /* DP Cable Type */
+					   cable_dp_mode_resp.cable_type,
+					   /* uhbr13.5 support */
+					   cable_dp_mode_resp.uhbr13_5_support,
+					   pin_mode, /* pin mode */
+					   bit_rate, /* DP bitrate */
+					   2); /* UFP connected */
+	} else {
+		payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
+				 CMD_DP_CONFIG | VDO_OPOS(dp_opos));
+		payload[1] = VDO_DP_CFG(pin_mode, /* pin mode */
+					1, /* DPv1.3 signaling */
+					2); /* UFP connected */
+	}
+
 	return 2;
 };
 
@@ -716,3 +756,255 @@ static int command_mfallow(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(mfallow, command_mfallow, "port [true | false]",
 			"Controls Multifunction choice during DP Altmode.");
 #endif
+
+bool dp_mode_entry_allowed(int port)
+{
+	enum usb_pd_svdm_ver cable_svdm_ver;
+	enum usb_pd_svdm_ver device_svdm_ver;
+	enum dpam_version cable_dpam_ver;
+	enum dpam_version device_dpam_ver;
+	const struct pd_discovery *disc;
+#ifdef CONFIG_USB_PD_TBT_COMPAT_MODE
+	union tbt_mode_resp_cable tbt_cable_mode_resp;
+#endif
+	union dp_mode_resp_cable dp_cable_mode_resp;
+	bool usb20_only;
+
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE)) {
+		cable_svdm_ver =
+			resolve_svdm_version(port, TCPCI_MSG_SOP_PRIME);
+		CPRINTF("Port: %d Cable respond with SVDM version: %s\n", port,
+			(cable_svdm_ver == SVDM_VER_2_1) ? "SVDM2.1" :
+							   "SVDM2.0");
+
+		device_svdm_ver = resolve_svdm_version(port, TCPCI_MSG_SOP);
+		CPRINTF("Port: %d UFP respond with SVDM version: %s\n", port,
+			(device_svdm_ver == SVDM_VER_2_1) ? "SVDM2.1" :
+							    "SVDM2.0");
+
+		cable_dpam_ver =
+			resolve_dpam_version(port, TCPCI_MSG_SOP_PRIME);
+		CPRINTF("Port: %d Cable respond with DPAM version: %s\n", port,
+			(cable_dpam_ver == DPAM_VERSION_21) ? "DPAM2.1" :
+							      "DPAM2.0");
+
+		device_dpam_ver = resolve_dpam_version(port, TCPCI_MSG_SOP);
+		CPRINTF("Port: %d UFP respond with DPAM version: %s\n", port,
+			(device_dpam_ver == DPAM_VERSION_21) ? "DPAM2.1" :
+							       "DPAM2.0");
+
+		disc = pd_get_am_discovery(port, TCPCI_MSG_SOP_PRIME);
+
+		if (disc->identity.idh.product_type != IDH_PTYPE_PCABLE &&
+		    disc->identity.idh.product_type != IDH_PTYPE_ACABLE) {
+			CPRINTF("Port: %d Not Emark Cable\n", port);
+			return true;
+		}
+
+		dp_cable_mode_resp.raw_value =
+			pd_get_dp_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
+#ifdef CONFIG_USB_PD_TBT_COMPAT_MODE
+		tbt_cable_mode_resp.raw_value =
+			pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
+#endif
+
+		/* No DP Support, if emark cable and USB2.0 only */
+		if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+		    (pd_get_rev(port, TCPCI_MSG_SOP_PRIME) == PD_REV30))
+			usb20_only = (disc->identity.product_t1.p_rev30.ss ==
+				      USB_R30_SS_U2_ONLY) ?
+					     true :
+					     false;
+		else
+			usb20_only = (disc->identity.product_t1.p_rev20.ss ==
+				      USB_R20_SS_U2_ONLY) ?
+					     true :
+					     false;
+
+		if (usb20_only)
+			return false;
+
+		/* No DP Support, if Active Cable and  Modal Operation = NO */
+		if (disc->identity.idh.product_type == IDH_PTYPE_ACABLE &&
+		    !disc->identity.idh.modal_support)
+			return false;
+
+		/* No DP Support,
+		 * if Active Cable, Modal Operation = Yes and !DPSID and !TBTSID
+		 */
+		if (disc->identity.idh.product_type == IDH_PTYPE_ACABLE &&
+		    disc->identity.idh.modal_support &&
+		    !dp_cable_mode_resp.raw_value
+#ifdef CONFIG_USB_PD_TBT_COMPAT_MODE
+		    && !tbt_cable_mode_resp.raw_value
+#endif
+		)
+			return false;
+
+#ifdef CONFIG_USB_PD_TBT_COMPAT_MODE
+		/* No DP Support,
+		 * if Active/Passive Cable, Modal Operation = Yes and TBTSID
+		 * and (Retimed Bit:22 = 1 or Thunderbolt Alt Mode VDO bit 25
+		 * is Active.
+		 */
+		if ((disc->identity.idh.product_type == IDH_PTYPE_ACABLE ||
+		     disc->identity.idh.product_type == IDH_PTYPE_PCABLE) &&
+		    disc->identity.idh.modal_support &&
+		    !dp_cable_mode_resp.raw_value &&
+		    tbt_cable_mode_resp.raw_value &&
+		    (tbt_cable_mode_resp.retimer_type ||
+		     tbt_cable_mode_resp.tbt_active_passive))
+			return false;
+#endif
+	}
+
+	return true;
+}
+
+uint32_t pd_get_dp_mode_vdo(int port, enum tcpci_msg_type type)
+{
+	uint32_t dp_mode_vdo[VDO_MAX_OBJECTS];
+
+	return pd_get_mode_vdo_for_svid(port, type, USB_SID_DISPLAYPORT,
+					dp_mode_vdo) ?
+		       dp_mode_vdo[0] :
+		       0;
+}
+
+enum usb_pd_svdm_ver resolve_svdm_version(int port, enum tcpci_msg_type type)
+{
+	int idx;
+	const struct svid_mode_data *mode_discovery = NULL;
+	const struct pd_discovery *disc;
+
+	disc = pd_get_am_discovery(port, type);
+
+	for (idx = 0; idx < disc->svid_cnt; ++idx) {
+		if (pd_get_svid(port, idx, type) == USB_SID_DISPLAYPORT) {
+			mode_discovery = &disc->svids[idx];
+			break;
+		}
+	}
+
+	if (mode_discovery)
+		return disc->svdm_vers;
+
+	return SVDM_VER_2_0;
+}
+
+enum dpam_version resolve_dpam_version(int port, enum tcpci_msg_type type)
+{
+	union dp_mode_resp_cable discover_mode;
+
+	if (resolve_svdm_version(port, type) == SVDM_VER_2_1) {
+		/* TBD:  Test device UFP (SOP) is not setting DPAM version
+		 * (Bit 31:30) in Discover Mode Response VDO, So returning
+		 * DPAM_VERSION_21, if UFP device respond with SVDM version 2.1
+		 */
+		if (type == TCPCI_MSG_SOP)
+			return DPAM_VERSION_21;
+
+		discover_mode.raw_value = pd_get_dp_mode_vdo(port, type);
+		if (discover_mode.dpam_ver) {
+			return DPAM_VERSION_21;
+		}
+	}
+
+	return DPAM_VERSION_20;
+}
+
+static enum dp21_speed usb_rev30_to_dp_speed(enum usb_rev30_ss ss)
+{
+	switch (ss) {
+	case USB_R30_SS_U2_ONLY:
+		return DP21_SPEED_HBR3;
+	case USB_R30_SS_U32_U40_GEN1:
+	case USB_R30_SS_U32_U40_GEN2:
+		return DP21_SPEED_UHBR10;
+	case USB_R30_SS_U40_GEN3:
+		return DP21_SPEED_UHBR20;
+	default:
+		return DP21_SPEED_HBR3;
+	}
+}
+
+static enum dp21_speed usb_rev20_to_dp_speed(enum usb_rev20_ss ss)
+{
+	switch (ss) {
+	case USB_R20_SS_U2_ONLY:
+		return DP21_SPEED_HBR3;
+	case USB_R20_SS_U31_GEN1:
+	case USB_R20_SS_U31_GEN1_GEN2:
+		return DP21_SPEED_UHBR10;
+	default:
+		return DP21_SPEED_HBR3;
+	}
+}
+
+static enum dp21_speed tbt_to_dp_speed(enum tbt_compat_cable_speed ss)
+{
+	switch (ss) {
+	case TBT_SS_U31_GEN1:
+	case TBT_SS_U32_GEN1_GEN2:
+		return DP21_SPEED_UHBR10;
+	case TBT_SS_TBT_GEN3:
+		return DP21_SPEED_UHBR20;
+	default:
+		return DP21_SPEED_HBR3;
+	}
+}
+
+uint8_t get_dp_cable_bit_rate(int port)
+{
+	const struct pd_discovery *disc;
+	union dp_mode_resp_cable dp_cable_mode_resp;
+	union tbt_mode_resp_cable tbt_cable_mode_resp;
+
+	disc = pd_get_am_discovery(port, TCPCI_MSG_SOP_PRIME);
+	dp_cable_mode_resp.raw_value =
+		IS_ENABLED(CONFIG_USB_PD_DP21_MODE) ?
+			pd_get_dp_mode_vdo(port, TCPCI_MSG_SOP_PRIME) :
+			0;
+	tbt_cable_mode_resp.raw_value =
+		IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) ?
+			pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME) :
+			0;
+
+	if (disc->identity.idh.product_type == IDH_PTYPE_PCABLE &&
+	    (disc->identity.idh.modal_support == 0 ||
+	     (disc->identity.idh.modal_support == 1 &&
+	      !dp_cable_mode_resp.raw_value &&
+	      !tbt_cable_mode_resp.raw_value))) {
+		if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+		    (pd_get_rev(port, TCPCI_MSG_SOP_PRIME) == PD_REV30))
+			return usb_rev30_to_dp_speed(
+				disc->identity.product_t1.p_rev30.ss);
+		else
+			return usb_rev20_to_dp_speed(
+				disc->identity.product_t1.p_rev20.ss);
+	}
+
+	if ((disc->identity.idh.product_type == IDH_PTYPE_ACABLE ||
+	     disc->identity.idh.product_type == IDH_PTYPE_PCABLE) &&
+	    disc->identity.idh.modal_support == 1) {
+		if (dp_cable_mode_resp.raw_value &&
+		    (resolve_dpam_version(port, TCPCI_MSG_SOP_PRIME) ==
+		     DPAM_VERSION_21)) {
+			if (dp_cable_mode_resp.signaling & DP21_SPEED_UHBR20)
+				return DP21_SPEED_UHBR20;
+			else if (dp_cable_mode_resp.signaling &
+				 DP21_SPEED_UHBR10)
+				return DP21_SPEED_UHBR10;
+			else if (dp_cable_mode_resp.signaling & DP21_SPEED_HBR3)
+				return DP21_SPEED_HBR3;
+		} else if ((dp_cable_mode_resp.raw_value &&
+			    (resolve_dpam_version(port, TCPCI_MSG_SOP_PRIME) ==
+			     DPAM_VERSION_20)) ||
+			   (tbt_cable_mode_resp.raw_value &&
+			    !tbt_cable_mode_resp.retimer_type &&
+			    !tbt_cable_mode_resp.tbt_active_passive)) {
+			return tbt_to_dp_speed(get_tbt_cable_speed(port));
+		}
+	}
+	return DP21_SPEED_HBR3;
+}
