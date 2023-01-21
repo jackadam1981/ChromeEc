@@ -27,6 +27,8 @@
 #include "common.h"
 #include "compile_time_macros.h"
 
+#include <stdbool.h>
+
 #else
 /* If BUILD_ASSERT isn't already defined, make it a no-op */
 #ifndef BUILD_ASSERT
@@ -1585,6 +1587,11 @@ enum ec_feature_code {
 	 * The EC supports the AP composing VDMs for us to send.
 	 */
 	EC_FEATURE_TYPEC_AP_VDM_SEND = 46,
+	/*
+	 * The EC supports DP2.1
+	 */
+	EC_FEATURE_DP2_1 = 47,
+
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)
@@ -5697,6 +5704,28 @@ struct ec_response_pd_status {
 struct ec_response_host_event_status {
 	uint32_t status; /* PD MCU host event status */
 } __ec_align4;
+
+/* DP2.1 Cable Discovery Command */
+#define EC_CMD_USB_PD_DP21_DISCOVERY 0x0107
+
+struct ec_params_usb_pd_dp21 {
+	uint8_t port;
+} __ec_align1;
+
+/* Active/Passive Cable */
+#define USB_DP_ACTIVE_CABLE BIT(0)
+/* Re-timer/Re-Driver cable */
+#define USB_DP_RETIMER_CABLE BIT(1)
+/* Optical/Non-optical cable */
+#define USB_DP_OPTICAL_CABLE BIT(2)
+
+/* DP2.1 Cable Discovery Command */
+struct ec_response_usb_dp21_discovery {
+	uint8_t dpam_version;
+	uint8_t cable_speed;
+	bool uhbr_13_5_supported;
+	uint8_t cable_type;
+} __ec_align1;
 
 /*
  * Set USB type-C port role and muxes
