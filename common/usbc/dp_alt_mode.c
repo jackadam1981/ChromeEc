@@ -341,3 +341,13 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 
 	return MSG_SETUP_UNSUPPORTED;
 }
+
+uint32_t pd_get_dp_mode_vdo(int port, enum tcpci_msg_type type)
+{
+	uint32_t dp_mode_vdo[PDO_MODES];
+
+	return pd_get_mode_vdo_for_svid(port, type, USB_SID_DISPLAYPORT,
+					dp_mode_vdo) ?
+		       dp_mode_vdo[0] :
+		       0;
+}

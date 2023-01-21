@@ -784,11 +784,16 @@ struct pd_cable {
 /*
  * DisplayPort Configure VDO
  * -------------------------
- * <31:24> : SBZ
- * <23:16> : SBZ
+ * <31:30> : VDO Version
+ * <29:28> : cable type : 0h == Passive, 1h == Active ReTimer
+ *			  2h == Active ReDriver, 3h == Optical
+ * <27>    : SBZ
+ * <26>	   : UHBR13.5 Support
+ * <25:16> : SBZ
  * <15:8>  : Pin assignment requested.  Choose one from mode caps.
  * <7:6>   : SBZ
- * <5:2>   : signalling : 1h == DP v1.3, 2h == Gen 2
+ * <5:2>   : signalling : 1h == HBR3, 2h == UHBR10
+ *                        3h == UHBR20 except UHBR13.5 when bit 26 = 0
  *           Oh is only for USB, remaining values are reserved
  * <1:0>   : cfg : 00 == USB, 01 == DFP_D, 10 == UFP_D, 11 == reserved
  */
@@ -803,6 +808,12 @@ struct pd_cable {
  */
 #define PD_DP_CFG_PIN(x) \
 	((((x) >> 8) & 0xff) ? (((x) >> 8) & 0xff) : (((x) >> 16) & 0xff))
+
+#define PD_DP_CFG_VERSION(x) (((x) >> 30) & 0x3)
+#define PD_DP_CFG_CABLE_TYPE(x) (((x) >> 28) & 0x3)
+#define PD_DP_CFG_UHBR13_5(x) (((x) >> 26) & 0x1)
+#define PD_DP_CFG_LINK_RATE(x) (((x) >> 2) & 0xf)
+
 /*
  * ChromeOS specific PD device Hardware IDs. Used to identify unique
  * products and used in VDO_INFO. Note this field is 10 bits.
@@ -2384,6 +2395,16 @@ enum tbt_compat_rounded_support get_tbt_rounded_support(int port);
  *              discovered, 0 otherwise
  */
 uint32_t pd_get_tbt_mode_vdo(int port, enum tcpci_msg_type type);
+
+/**
+ * Returns the first discovered Mode VDO for DP SVID
+ *
+ * @param port  USB-C port number
+ * @param type  Transmit type (SOP, SOP') for VDM
+ * @return      Discover Mode VDO for DP SVID if the DP VDO is
+ *              discovered, 0 otherwise
+ */
+uint32_t pd_get_dp_mode_vdo(int port, enum tcpci_msg_type type);
 
 /**
  * Sets the Mux state to Thunderbolt-Compatible mode

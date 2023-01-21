@@ -27,6 +27,8 @@
 #include "common.h"
 #include "compile_time_macros.h"
 
+#include <stdbool.h>
+
 #else
 /* If BUILD_ASSERT isn't already defined, make it a no-op */
 #ifndef BUILD_ASSERT
@@ -5620,6 +5622,32 @@ struct ec_response_pd_status {
 
 struct ec_response_host_event_status {
 	uint32_t status; /* PD MCU host event status */
+} __ec_align4;
+
+/* DP2.1 Cable Discovery Command */
+#define EC_CMD_PD_DP21_DISCOVERY 0x0107
+
+enum dp21_speed {
+	DP21_SPEED_USB = 0,
+	DP21_SPEED_HBR3,
+	DP21_SPEED_UHBR10,
+	DP21_SPEED_UHBR20,
+	DP21_SPEED_RES,
+};
+
+enum dp21_cable_type {
+	DP21_PASSIVE_CABLE = 0,
+	DP21_ACTIVE_RETIMER_CABLE,
+	DP21_ACTIVE_REDRIVER_CABLE,
+	DP21_OPTICAL_CABLE,
+};
+
+struct ec_response_usb_dp21_discovery {
+	uint8_t vdo_version;
+	bool is_dp21_cable;
+	enum dp21_speed speed;
+	bool uhbr_13_5_supported;
+	enum dp21_cable_type type;
 } __ec_align4;
 
 /*

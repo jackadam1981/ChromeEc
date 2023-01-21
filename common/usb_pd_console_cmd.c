@@ -224,4 +224,49 @@ DECLARE_CONSOLE_COMMAND(pdcable, command_cable, "<port>",
 			"Cable Characteristics");
 #endif /* CONFIG_CMD_USB_PD_CABLE */
 
+static const char *const dp21_cable_type[] = {
+	[DP21_PASSIVE_CABLE] = "Passive",
+	[DP21_ACTIVE_RETIMER_CABLE] = "Active-Retimer",
+	[DP21_ACTIVE_REDRIVER_CABLE] = "Active-Redriver",
+	[DP21_OPTICAL_CABLE] = "Optical",
+};
+
+static const char *const dp21_cable_speed[] = {
+	[DP21_SPEED_USB] = "HBR3",
+	[DP21_SPEED_HBR3] = "HBR3",
+	[DP21_SPEED_UHBR10] = "UHBR10",
+	[DP21_SPEED_UHBR20] = "UHBR20",
+};
+
+static int command_dpcable(int argc, const char **argv)
+{
+	int port;
+	char *e;
+	uint32_t mode_vdo;
+	uint8_t speed;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	port = strtoi(argv[1], &e, 0);
+	if (*e || port >= board_get_usb_pd_port_count())
+		return EC_ERROR_PARAM2;
+
+	mode_vdo = pd_get_dp_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
+
+	ccprintf("DPCable : %s\n", (mode_vdo ? "True" : "False"));
+	ccprintf("DP VDO Version : %x\n", PD_DP_CFG_VERSION(mode_vdo));
+	speed = PD_DP_CFG_LINK_RATE(mode_vdo);
+	ccprintf("DP Cable Speed : %s\n",
+		 ((speed <= DP21_SPEED_UHBR20) ? dp21_cable_speed[speed] :
+						 "Invalid"));
+	ccprintf("DP UHBR13.5 Support : %s\n",
+		 (PD_DP_CFG_UHBR13_5(mode_vdo) ? "True" : "False"));
+	ccprintf("DP Cable Type : %s\n",
+		 dp21_cable_type[PD_DP_CFG_CABLE_TYPE(mode_vdo)]);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(dpcable, command_dpcable, "<port>",
+			"Cable Characteristics");
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
