@@ -18,6 +18,7 @@
 #include "usb_dp_alt_mode.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_dp.h"
 #include "usb_pd_tcpm.h"
 #include "usb_tbt_alt_mode.h"
 #include "usbc_ppc.h"
@@ -54,6 +55,7 @@ void dfp_consume_identity(int port, enum tcpci_msg_type type, int cnt,
 	int ptype;
 	struct pd_discovery *disc;
 	size_t identity_size;
+	uint8_t v_major = 0, v_minor = 0;
 
 	if (type == TCPCI_MSG_SOP_PRIME &&
 	    !IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
@@ -69,6 +71,16 @@ void dfp_consume_identity(int port, enum tcpci_msg_type type, int cnt,
 	/* Note: only store VDOs, not the VDM header */
 	memcpy(disc->identity.raw_value, payload + 1, identity_size);
 	disc->identity_cnt = identity_size / sizeof(uint32_t);
+
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE)) {
+		v_major = (uint8_t)PD_VDO_SVDM_VERS_MAJOR(payload[0]);
+		v_minor = (uint8_t)PD_VDO_SVDM_VERS_MINOR(payload[0]);
+
+		if (v_major & v_minor)
+			disc->svdm_vers = SVDM_VER_2_1;
+		else
+			disc->svdm_vers = SVDM_VER_2_0;
+	}
 
 	switch (ptype) {
 	case IDH_PTYPE_AMA:
