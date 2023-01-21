@@ -13,10 +13,27 @@
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 
+#ifdef SECTION_IS_RO
+
+/* Configure the Boot Manager. */
+#define CONFIG_MALLOC
+#define CONFIG_DFU_BOOTMANAGER_MAIN
+#define CONFIG_DFU_BOOTMANAGER_SHARED
+#undef CONFIG_COMMON_RUNTIME
+#undef CONFIG_COMMON_PANIC_OUTPUT
+#undef CONFIG_COMMON_GPIO
+#undef CONFIG_COMMON_TIMER
+
+#else /* !SECTION_IS_RO */
+
 #define CONFIG_BOARD_PRE_INIT
 
 #define CONFIG_ROM_BASE 0x0
 #define CONFIG_ROM_SIZE (CONFIG_RAM_BASE - CONFIG_ROM_BASE)
+
+/* DFU Firmware Update */
+/*#define CONFIG_DFU_RUNTIME*/
+/*#define CONFIG_DFU_BOOTMANAGER_SHARED*/
 
 /* Enable USB forwarding on UART 2, 3, 4, and 5. */
 #define CONFIG_STREAM_USART
@@ -123,6 +140,8 @@
  * switch.
  */
 #define CONFIG_SYSTEM_UNLOCKED
+
+#endif /* SECTION_IS_RO */
 
 #ifndef __ASSEMBLER__
 
