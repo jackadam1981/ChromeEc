@@ -25,6 +25,9 @@
 /* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
 
+
+#include "bkpdata.h"
+
 void board_config_pre_init(void)
 {
 	/* enable SYSCFG clock */
@@ -192,6 +195,7 @@ const void *const usb_strings[] = {
 	[USB_STR_USART3_STREAM_NAME] = USB_STRING_DESC("UART3"),
 	[USB_STR_USART4_STREAM_NAME] = USB_STRING_DESC("UART4"),
 	[USB_STR_USART5_STREAM_NAME] = USB_STRING_DESC("UART5"),
+	[USB_STR_DFU_NAME] = USB_STRING_DESC("DFU"),
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
