@@ -18,6 +18,7 @@
 #include "usb_dp_alt_mode.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_dp.h"
 #include "usb_pd_tcpm.h"
 #include "usb_tbt_alt_mode.h"
 #include "usbc_ppc.h"
@@ -361,6 +362,7 @@ void dfp_consume_identity(int port, enum tcpci_msg_type type, int cnt,
 	int ptype;
 	struct pd_discovery *disc;
 	size_t identity_size;
+	uint8_t v_major = 0, v_minor = 0;
 
 	if (type == TCPCI_MSG_SOP_PRIME &&
 	    !IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
@@ -376,6 +378,15 @@ void dfp_consume_identity(int port, enum tcpci_msg_type type, int cnt,
 	/* Note: only store VDOs, not the VDM header */
 	memcpy(disc->identity.raw_value, payload + 1, identity_size);
 	disc->identity_cnt = identity_size / sizeof(uint32_t);
+
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_SUPPORT)) {
+		v_major = (uint8_t)PD_VDO_SVDM_VERS_MAJOR(payload[0]);
+		v_minor = (uint8_t)PD_VDO_SVDM_VERS_MINOR(payload[0]);
+		if (v_major & v_minor)
+			disc->svdm_vers = SVDM_VER_2_1;
+		else
+			disc->svdm_vers = SVDM_VER_2_0;
+	}
 
 	switch (ptype) {
 	case IDH_PTYPE_AMA:
@@ -894,6 +905,9 @@ __overridable int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
 	uint8_t pin_mode = get_dp_pin_mode(port);
+	union dp_mode_resp_cable cable_dp_mode_resp;
+	uint8_t bit_rate;
+
 	mux_state_t mux_mode = svdm_dp_get_mux_mode(port);
 	/* Default dp_port_mf_allow is true */
 	int mf_pref;
@@ -909,11 +923,32 @@ __overridable int svdm_dp_config(int port, uint32_t *payload)
 
 	CPRINTS("pin_mode: %x, mf: %d, mux: %d", pin_mode, mf_pref, mux_mode);
 
-	payload[0] =
-		VDO(USB_SID_DISPLAYPORT, 1, CMD_DP_CONFIG | VDO_OPOS(opos));
-	payload[1] = VDO_DP_CFG(pin_mode, /* pin mode */
-				1, /* DPv1.3 signaling */
-				2); /* UFP connected */
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_SUPPORT) &&
+	    resolve_dpam_version(port, TCPCI_MSG_SOP) == DPAM_VERSION_21) {
+		cable_dp_mode_resp.raw_value =
+			pd_get_dp_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
+		bit_rate = get_dp_cable_bit_rate(port);
+
+		payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
+				 VDO_SVDM_VERS_MAJOR(
+					 pd_get_vdo_ver(port, TCPCI_MSG_SOP)) |
+					 VDO_SVDM_VERS_MINOR(1) |
+					 CMD_DP_CONFIG | VDO_OPOS(opos));
+		payload[1] = VDO_DP2_1_CFG(1, /* DPAM Version */
+					   /* DP Cable Type */
+					   cable_dp_mode_resp.cable_type,
+					   /* uhbr13.5 support */
+					   cable_dp_mode_resp.uhbr13_5_support,
+					   pin_mode, /* pin mode */
+					   bit_rate, /* DP bitrate */
+					   2); /* UFP connected */
+	} else {
+		payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
+				 CMD_DP_CONFIG | VDO_OPOS(opos));
+		payload[1] = VDO_DP_CFG(pin_mode, /* pin mode */
+					1, /* DPv1.3 signaling */
+					2); /* UFP connected */
+	}
 	return 2;
 };
 
