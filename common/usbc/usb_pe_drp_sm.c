@@ -5569,9 +5569,19 @@ static void pe_vdm_identity_request_cbl_entry(int port)
 		return;
 	}
 
-	msg[0] = VDO(USB_SID_PD, 1,
-		     VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
-			     CMD_DISCOVER_IDENT);
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_SUPPORT)) {
+		msg[0] = VDO(USB_SID_PD, 1,
+			     VDO_SVDM_VERS_MAJOR(
+				     pd_get_vdo_ver(port, pe[port].tx_type)) |
+				     VDO_SVDM_VERS_MINOR(1) |
+				     CMD_DISCOVER_IDENT);
+	} else {
+		msg[0] = VDO(
+			USB_SID_PD, 1,
+			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
+				CMD_DISCOVER_IDENT);
+	}
+
 	tx_emsg[port].len = sizeof(uint32_t);
 
 	send_data_msg(port, pe[port].tx_type, PD_DATA_VENDOR_DEF);
@@ -5740,9 +5750,19 @@ static void pe_init_port_vdm_identity_request_entry(int port)
 
 	print_current_state(port);
 
-	msg[0] = VDO(USB_SID_PD, 1,
-		     VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
-			     CMD_DISCOVER_IDENT);
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_SUPPORT)) {
+		msg[0] = VDO(USB_SID_PD, 1,
+			     VDO_SVDM_VERS_MAJOR(
+				     pd_get_vdo_ver(port, pe[port].tx_type)) |
+				     VDO_SVDM_VERS_MINOR(1) |
+				     CMD_DISCOVER_IDENT);
+	} else {
+		msg[0] = VDO(
+			USB_SID_PD, 1,
+			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
+				CMD_DISCOVER_IDENT);
+	}
+
 	tx_emsg[port].len = sizeof(uint32_t);
 
 	send_data_msg(port, pe[port].tx_type, PD_DATA_VENDOR_DEF);
@@ -5836,9 +5856,19 @@ static void pe_init_vdm_svids_request_entry(int port)
 		return;
 	}
 
-	msg[0] = VDO(USB_SID_PD, 1,
-		     VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
-			     CMD_DISCOVER_SVID);
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_SUPPORT)) {
+		msg[0] =
+			VDO(USB_SID_PD, 1,
+			    VDO_SVDM_VERS_MAJOR(
+				    pd_get_vdo_ver(port, pe[port].tx_type)) |
+				    VDO_SVDM_VERS_MINOR(1) | CMD_DISCOVER_SVID);
+	} else {
+		msg[0] = VDO(
+			USB_SID_PD, 1,
+			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
+				CMD_DISCOVER_SVID);
+	}
+
 	tx_emsg[port].len = sizeof(uint32_t);
 
 	send_data_msg(port, pe[port].tx_type, PD_DATA_VENDOR_DEF);
@@ -5940,9 +5970,19 @@ static void pe_init_vdm_modes_request_entry(int port)
 		return;
 	}
 
-	msg[0] = VDO((uint16_t)svid, 1,
-		     VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
-			     CMD_DISCOVER_MODES);
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_SUPPORT)) {
+		msg[0] = VDO((uint16_t)svid, 1,
+			     VDO_SVDM_VERS_MAJOR(
+				     pd_get_vdo_ver(port, pe[port].tx_type)) |
+				     VDO_SVDM_VERS_MINOR(1) |
+				     CMD_DISCOVER_MODES);
+	} else {
+		msg[0] = VDO(
+			(uint16_t)svid, 1,
+			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
+				CMD_DISCOVER_MODES);
+	}
+
 	tx_emsg[port].len = sizeof(uint32_t);
 
 	send_data_msg(port, pe[port].tx_type, PD_DATA_VENDOR_DEF);
@@ -6223,10 +6263,21 @@ static void pe_vdm_response_entry(int port)
 	 * result of the svdm response function.
 	 */
 	tx_payload[0] &= ~VDO_CMDT_MASK;
-	tx_payload[0] &= ~VDO_SVDM_VERS(0x3);
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_SUPPORT)) {
+		tx_payload[0] &= ~VDO_SVDM_VERS_MAJOR(0x3);
+		tx_payload[0] &= ~VDO_SVDM_VERS_MINOR(0x3);
 
-	/* Add SVDM structured version being used */
-	tx_payload[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
+		/* Add SVDM structured version being used */
+		tx_payload[0] |= VDO_SVDM_VERS_MAJOR(
+			pd_get_vdo_ver(port, TCPCI_MSG_SOP));
+		tx_payload[0] |= VDO_SVDM_VERS_MINOR(1);
+	} else {
+		tx_payload[0] &= ~VDO_SVDM_VERS(0x3);
+
+		/* Add SVDM structured version being used */
+		tx_payload[0] |=
+			VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
+	}
 
 	/* Use VDM command to select the response handler function */
 	switch (vdo_cmd) {
