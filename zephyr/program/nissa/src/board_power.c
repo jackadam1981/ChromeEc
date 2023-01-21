@@ -225,6 +225,50 @@ static int board_ap_power_g3_run(void *data)
 
 AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_G3, board_ap_power_g3_entry,
 			  board_ap_power_g3_run, NULL);
+
+static int board_ap_power_s0_run(void *data)
+{
+	int all_sys_pwrgd = power_signal_get(PWR_ALL_SYS_PWRGD);
+
+	if (power_signal_get(PWR_VCCST_PWRGD) != all_sys_pwrgd) {
+		if (all_sys_pwrgd) {
+			k_msleep(AP_PWRSEQ_DT_VALUE(vccst_pwrgd_delay));
+		}
+		power_signal_set(PWR_VCCST_PWRGD, all_sys_pwrgd);
+	}
+
+	if (power_signal_get(PWR_PCH_PWROK) != all_sys_pwrgd) {
+		if (all_sys_pwrgd) {
+			k_msleep(AP_PWRSEQ_DT_VALUE(pch_pwrok_delay));
+		}
+		power_signal_set(PWR_PCH_PWROK, all_sys_pwrgd);
+	}
+
+	if (power_signal_get(PWR_EC_PCH_SYS_PWROK) != all_sys_pwrgd) {
+		if (all_sys_pwrgd) {
+			k_msleep(AP_PWRSEQ_DT_VALUE(sys_pwrok_delay));
+		}
+		power_signal_set(PWR_EC_PCH_SYS_PWROK, all_sys_pwrgd);
+	}
+
+	if (power_signal_get(PWR_SLP_S3)) {
+		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S3);
+	}
+
+	if (!power_signal_get(PWR_ALL_SYS_PWRGD) ||
+	    !power_signal_get(PWR_VCCST_PWRGD) ||
+	    !power_signal_get(PWR_PCH_PWROK) ||
+	    !power_signal_get(PWR_EC_PCH_SYS_PWROK)) {
+		return 1;
+	}
+
+	power_signal_disable(PWR_DSW_PWROK);
+	power_signal_disable(PWR_PG_PP1P05);
+
+	return 0;
+}
+
+AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_S0, NULL, board_ap_power_s0_run, NULL);
 #endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
 int board_power_signal_get(enum power_signal signal)
