@@ -477,6 +477,8 @@ struct pd_discovery {
 	union disc_ident_ack identity;
 	/* Identity VDO count */
 	int identity_cnt;
+	/* svdm version */
+	enum usb_pd_svdm_ver svdm_vers;
 	/* Supported SVIDs and corresponding mode VDOs */
 	struct svid_mode_data svids[SVID_DISCOVERY_MAX];
 	/* index of SVID currently being operated on */
@@ -522,6 +524,7 @@ struct partner_active_modes {
 
 #define VDO_SVDM_TYPE BIT(15)
 #define VDO_SVDM_VERS(x) (x << 13)
+#define VDO_SVDM_VERS_MINOR(x) (x << 11)
 #define VDO_OPOS(x) (x << 8)
 #define VDO_CMDT(x) (x << 6)
 #define VDO_OPOS_MASK VDO_OPOS(0x7)
@@ -566,6 +569,8 @@ struct partner_active_modes {
 #define PD_VDO_OPOS(vdo) (((vdo) >> 8) & 0x7)
 #define PD_VDO_CMD(vdo) ((vdo)&0x1f)
 #define PD_VDO_CMDT(vdo) (((vdo) >> 6) & 0x3)
+#define PD_VDO_SVDM_VERS_MAJOR(vdo) (((vdo) >> 13) & 0x3)
+#define PD_VDO_SVDM_VERS_MINOR(vdo) (((vdo) >> 11) & 0x3)
 
 /*
  * SVDM Identity request -> response
