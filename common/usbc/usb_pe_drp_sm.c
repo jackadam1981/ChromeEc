@@ -5738,6 +5738,20 @@ static void pe_vdm_send_request_exit(int port)
 	pd_timer_disable(port, PE_TIMER_VDM_RESPONSE);
 }
 
+static uint32_t compose_vdo_header(uint16_t svid, int port, int cmd)
+{
+	uint32_t payload;
+
+	payload = VDO(svid, 1,
+		      VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
+			      (IS_ENABLED(CONFIG_USB_PD_DP21_MODE) ?
+				       VDO_SVDM_VERS_MINOR(1) :
+				       0) |
+			      cmd);
+
+	return payload;
+}
+
 /**
  * PE_VDM_IDENTITY_REQUEST_CBL
  * Combination of PE_INIT_PORT_VDM_Identity_Request State specific to the
@@ -5760,9 +5774,8 @@ static void pe_vdm_identity_request_cbl_entry(int port)
 		return;
 	}
 
-	msg[0] = VDO(USB_SID_PD, 1,
-		     VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
-			     CMD_DISCOVER_IDENT);
+	msg[0] = compose_vdo_header(USB_SID_PD, port, CMD_DISCOVER_IDENT);
+
 	tx_emsg[port].len = sizeof(uint32_t);
 
 	send_data_msg(port, pe[port].tx_type, PD_DATA_VENDOR_DEF);
@@ -5931,9 +5944,8 @@ static void pe_init_port_vdm_identity_request_entry(int port)
 
 	print_current_state(port);
 
-	msg[0] = VDO(USB_SID_PD, 1,
-		     VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
-			     CMD_DISCOVER_IDENT);
+	msg[0] = compose_vdo_header(USB_SID_PD, port, CMD_DISCOVER_IDENT);
+
 	tx_emsg[port].len = sizeof(uint32_t);
 
 	send_data_msg(port, pe[port].tx_type, PD_DATA_VENDOR_DEF);
@@ -6027,9 +6039,8 @@ static void pe_init_vdm_svids_request_entry(int port)
 		return;
 	}
 
-	msg[0] = VDO(USB_SID_PD, 1,
-		     VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
-			     CMD_DISCOVER_SVID);
+	msg[0] = compose_vdo_header(USB_SID_PD, port, CMD_DISCOVER_SVID);
+
 	tx_emsg[port].len = sizeof(uint32_t);
 
 	send_data_msg(port, pe[port].tx_type, PD_DATA_VENDOR_DEF);
@@ -6131,9 +6142,8 @@ static void pe_init_vdm_modes_request_entry(int port)
 		return;
 	}
 
-	msg[0] = VDO((uint16_t)svid, 1,
-		     VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
-			     CMD_DISCOVER_MODES);
+	msg[0] = compose_vdo_header(svid, port, CMD_DISCOVER_MODES);
+
 	tx_emsg[port].len = sizeof(uint32_t);
 
 	send_data_msg(port, pe[port].tx_type, PD_DATA_VENDOR_DEF);
@@ -6415,9 +6425,13 @@ static void pe_vdm_response_entry(int port)
 	 */
 	tx_payload[0] &= ~VDO_CMDT_MASK;
 	tx_payload[0] &= ~VDO_SVDM_VERS(0x3);
+	tx_payload[0] &= ~VDO_SVDM_VERS_MINOR(0x3);
 
 	/* Add SVDM structured version being used */
 	tx_payload[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
+	tx_payload[0] |= IS_ENABLED(CONFIG_USB_PD_DP21_MODE) ?
+				 VDO_SVDM_VERS_MINOR(1) :
+				 0;
 
 	/* Use VDM command to select the response handler function */
 	switch (vdo_cmd) {
