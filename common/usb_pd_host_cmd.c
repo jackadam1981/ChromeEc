@@ -16,6 +16,7 @@
 #include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_dp.h"
 #include "usb_pd_tcpm.h"
 
 #include <string.h>
@@ -231,9 +232,11 @@ static uint8_t pd_get_role_flags(int port)
 static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_control *p = args->params;
+	struct ec_response_usb_dp21_discovery *r_v3 = args->response;
 	struct ec_response_usb_pd_control_v2 *r_v2 = args->response;
 	struct ec_response_usb_pd_control_v1 *r_v1 = args->response;
 	struct ec_response_usb_pd_control *r = args->response;
+	union dp_mode_resp_cable cable_dp_mode_resp;
 	const char *task_state_name;
 
 	if (p->port >= board_get_usb_pd_port_count())
@@ -313,13 +316,31 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 			args->response_size = sizeof(*r_v2);
 
 		break;
+	case 3:
+		if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
+			cable_dp_mode_resp.raw_value = pd_get_dp_mode_vdo(
+				p->port, TCPCI_MSG_SOP_PRIME);
+
+			r_v3->dpam_version =
+				resolve_dpam_version(p->port, TCPCI_MSG_SOP);
+			r_v3->bit_rate = get_dp_cable_bit_rate(p->port);
+			r_v3->uhbr_13_5_supported =
+				cable_dp_mode_resp.uhbr13_5_support;
+			r_v3->type = (enum dp21_cable_type)
+					     cable_dp_mode_resp.cable_type;
+		}
+
+		args->response_size = sizeof(*r_v3);
+		break;
+
 	default:
 		return EC_RES_INVALID_PARAM;
 	}
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL, hc_usb_pd_control,
-		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
+		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2) |
+			     EC_VER_MASK(3));
 #endif /* CONFIG_COMMON_RUNTIME */
 
 __overridable enum ec_pd_port_location board_get_pd_port_location(int port)
