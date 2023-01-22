@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88102261_a51e85ae",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-22T22:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e69c2c5d_7076e834",
+      "revId": "10a77af128dcd0de8e6e020dd04759500a3acb9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "559d54e0_863d8585",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c36ae28_5dfbb3f8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1379,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-22T22:22:02Z",
+      "side": 1,
+      "message": "`tcpc_read16` takes a `int*` so it needs to be an int, but I\u0027ve split this into multiple bindings closer to point of use since this single-`val` structure was inherited from the old version and I think it\u0027s less clear.",
+      "parentUuid": "559d54e0_863d8585",
+      "revId": "10a77af128dcd0de8e6e020dd04759500a3acb9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16f2a042_61066283",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-01-20T18:48:54Z",
       "side": 1,
       "message": "Are you missing a word here?",
+      "range": {
+        "startLine": 1423,
+        "startChar": 7,
+        "endLine": 1423,
+        "endChar": 39
+      },
+      "revId": "10a77af128dcd0de8e6e020dd04759500a3acb9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93b16e7b_f8ba7f67",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1423,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-22T22:22:02Z",
+      "side": 1,
+      "message": "Yes, fixed.",
+      "parentUuid": "16f2a042_61066283",
       "range": {
         "startLine": 1423,
         "startChar": 7,
