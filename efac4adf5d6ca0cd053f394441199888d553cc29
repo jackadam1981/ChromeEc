@@ -46,6 +46,30 @@
       },
       "revId": "efac4adf5d6ca0cd053f394441199888d553cc29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5588d189_0bc59a98",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-23T22:18:40Z",
+      "side": 1,
+      "message": "No, you\u0027re right; I was assuming that `k_event_clear` cleared all events, but overlooked that it only clears the events you request. That makes much more sense as an API!",
+      "parentUuid": "5e9deb59_770a89a0",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "efac4adf5d6ca0cd053f394441199888d553cc29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
