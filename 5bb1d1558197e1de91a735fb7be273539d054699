@@ -86,6 +86,30 @@
       },
       "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f6976bc_10b3c0dd",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-23T16:54:07Z",
+      "side": 1,
+      "message": "Would `check_compliance.main()` make sense?",
+      "parentUuid": "0a5e2190_d68f60ae",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
