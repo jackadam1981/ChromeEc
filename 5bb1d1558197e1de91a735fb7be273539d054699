@@ -39,6 +39,30 @@
       },
       "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5e2190_d68f60ae",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-23T16:33:07Z",
+      "side": 1,
+      "message": "it\u0027s `argv[0]`, the name of the binary itself, so that if the the argument list fails to parse it prints something like\n\n`usage: \u003cinternal\u003e [-h] [-c COMMITS] [-o OUTPUT] ...`\n\nargparse expects it to be a string, could have used the real `argv[0]` but then it would print the path of the wrapper with the help of the real script, maybe I should use \"check_compliance.py\" since that\u0027s the name of the actual scripts? Though that makes it look like it\u0027s being actually called.",
+      "parentUuid": "44b41175_9c31ba79",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
