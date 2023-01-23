@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa744b6_3c520539",
+        "filename": "zephyr/include/ap_power/ap_pwrseq_sm.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-23T02:48:51Z",
+      "side": 1,
+      "message": "This doesn\u0027t directly set the state, right? It instead queues a transition to the given state?\n\nI think it\u0027s important to be precise about what this does because the rules around when it\u0027s valid to make a transition are somewhat complex, and being more descriptive around the later \"only one state transition\" line would probably be useful.\n\nMore generally, I\u0027d appreciate a comment block (probably up at the top) explaining how the state transitions are meant to go, since it seems like `sm_run_state` is expected to occur shortly after `set_state` but it\u0027s hard to tell just from the API documentation.",
+      "revId": "48dfff512bb9cb9cd44dad1838b8ed60273b0b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "980637b4_8ed0d7c9",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-23T02:48:51Z",
+      "side": 1,
+      "message": "This is only called from `sm_init` so I think it\u0027s better if we avoid making more weak functions and instead have the caller pass a callback for this (which can be NULL to default to G3).",
+      "revId": "48dfff512bb9cb9cd44dad1838b8ed60273b0b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c6a5e6_5218a6f0",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-23T02:48:51Z",
+      "side": 1,
+      "message": "Even though this function can only be used by the thread, it can still interact with other threads that are using `get_cur_state` so it needs to acquire the mutex around any accesses to `smf`.\n\n(It looks like the idea is that this will only be run while the mutex is already locked, but there\u0027s no guarantee of that and recursive locking is okay.)",
+      "revId": "48dfff512bb9cb9cd44dad1838b8ed60273b0b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
