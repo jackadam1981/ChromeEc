@@ -33,6 +33,24 @@
       "message": "I guess it might be some other platform chipset code based on the other CLs.",
       "revId": "4329d2c3e6b491c4adda1ceac8adbe2168da09df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bb9f734_3f0ab3e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-23T21:24:38Z",
+      "side": 1,
+      "message": "Shared memory is not required in the RO stage.  Shared memory is required in my RW stage.\n\nI assume that the intention with CONFIG_DFU_BOOTMANAGER_MAIN is to replace the RO stage with the minimal bootloader, while leaving RW stage the same as if DFU had not been enabled.  However, it turns out that the makefile logic was changed such that the RW image also had NEITHER shmalloc.o nor shared_mem.o linked, if CONFIG_DFU_BOOTMANAGER_MAIN is set to \"ro\" (or anything other than empty).\n\nI am trying to correct that flaw, such that RW linking is unaffected by setting CONFIG_DFU_BOOTMANAGER_MAIN to \"ro\".",
+      "parentUuid": "e05d925a_829ddf96",
+      "revId": "4329d2c3e6b491c4adda1ceac8adbe2168da09df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
