@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bea6d308_9f31d1ce",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-23T19:31:48Z",
+      "side": 1,
+      "message": "need a sleep until next event?",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 155,
+        "endChar": 11
+      },
+      "revId": "3a5125263d2cfc98120fa0ebb82fb028c0d25ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0110e040_bb7254a4",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-23T19:31:48Z",
+      "side": 1,
+      "message": "is this panic situation ?",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 10
+      },
+      "revId": "3a5125263d2cfc98120fa0ebb82fb028c0d25ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
