@@ -8,10 +8,10 @@ config BOARD_SKYRIM
 	  Build Google Skyrim reference board.  This board uses an AMD SoC
 	  and NPCX9 EC
 
-config BOARD_WINTERHOLD
-	bool "Google Winterhold Board"
+config BOARD_WHITERUN
+	bool "Google Whiterun Board"
 	help
-	  Build Google Winterhold reference board.  This board uses an AMD SoC
+	  Build Google Whiterun reference board.  This board uses an AMD SoC
 	  and NPCX9 EC
 
 config BOARD_FROSTFLOW

@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Winterhold board-specific PPC code */
+/* Whiterun board-specific PPC code */
 
 #include "driver/ppc/nx20p348x.h"
 #include "usbc_ppc.h"
