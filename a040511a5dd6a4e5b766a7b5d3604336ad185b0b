@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f889204a_dc784d61",
+        "filename": "board/brya/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-01-23T17:38:59Z",
+      "side": 1,
+      "message": "Done.\nCL - https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4189596",
+      "parentUuid": "c6899f95_78c0cfac",
+      "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "368b3684_31217253",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-01-20T17:37:36Z",
       "side": 1,
       "message": "should this be done in set_duty_cycle()? or its more of of console command issue fix? ectool command also needs a fix?",
+      "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4d9b7c_cc94d6fc",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-01-23T17:38:59Z",
+      "side": 1,
+      "message": "Oh!My Bad! Looks like i uploaded wrong patch change. It must be in set_duty_cycle() only, which can handle all 3 cases(dptf request, cc cmnd \u0026 ectool req ). Thank you for noting.",
+      "parentUuid": "368b3684_31217253",
       "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e91622_9eaf8719",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-01-23T17:38:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b862ceb9_5870629b",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 369,
+        "endChar": 4
+      },
+      "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f1d74fc_cb6cc118",
@@ -71,6 +131,30 @@
       "writtenOn": "2023-01-20T20:11:57Z",
       "side": 1,
       "message": "Can we derive these from fans[ch].rpm-\u003erpm_max and rpm_min?",
+      "range": {
+        "startLine": 2046,
+        "startChar": 0,
+        "endLine": 2047,
+        "endChar": 35
+      },
+      "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a473ccb_0b031cce",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2047,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-01-23T17:38:59Z",
+      "side": 1,
+      "message": "Fan vendor has decided min \u0026 max rpm \u0026 fanduty %  based on their testing and has noted in cross bug. Also, I didnot find it correct to derive fanduty cycle from the given rpm min \u0026 max for brya. For instance, if we take rpm max of 4200 as 100 % duty cycle, rpm for 30% duty cycle must have been ideally 1260, which is not matching the minimum rpm configured in brya (2200). I think, there is some marginal value which gets added  to the rpm that varies for different fans, which means, we cannot derive fanduty directly from these values.",
+      "parentUuid": "2f1d74fc_cb6cc118",
       "range": {
         "startLine": 2046,
         "startChar": 0,
