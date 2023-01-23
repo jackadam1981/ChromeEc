@@ -16,6 +16,23 @@
       "message": "The CONFIG_DFU_BOOTMANAGER_MAIN RO image doesn\u0027t really need to do a lot of work and really shouldn\u0027t. Why is shared memory required? I suspect other project files are being included that shouldn\u0027t be.",
       "revId": "4329d2c3e6b491c4adda1ceac8adbe2168da09df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "164e564e_f26a27b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-23T14:40:45Z",
+      "side": 1,
+      "message": "I guess it might be some other platform chipset code based on the other CLs.",
+      "revId": "4329d2c3e6b491c4adda1ceac8adbe2168da09df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
