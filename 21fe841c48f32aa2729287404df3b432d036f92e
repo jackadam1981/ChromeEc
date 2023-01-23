@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85c2fc7e_50712d9c",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-23T20:08:21Z",
+      "side": 1,
+      "message": "I only see memory_dump_address_offset \u003d 0 in initialize_memory_dump.  Can you elaborate?",
+      "parentUuid": "9969c876_6146f951",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 55
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "153d666a_6231a1ee",
         "filename": "common/memory_dump_hostcmds.c",
         "patchSetId": 4
@@ -208,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6006b8d8_9b879175",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-23T20:08:21Z",
+      "side": 1,
+      "message": "I meant it\u0027s guaranteed memory_dump_entry_count \u003c MAX_DUMP_ENTRIES because of line 34. So, if p-\u003ememory_dump_info_index \u003c memory_dump_entry_count, p-\u003ememory_dump_info_index is necessarily \u003c MAX_DUMP_ENTRIES.",
+      "parentUuid": "dd60c9b1_b5b4bf28",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 50
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1072232f_25dd43c6",
         "filename": "common/memory_dump_hostcmds.c",
         "patchSetId": 4
@@ -243,6 +291,30 @@
       "side": 1,
       "message": "These are both bound checks, so I think the same error code applies in both places. Arguably both could be switched to EC_RES_INVALID_PARAM.",
       "parentUuid": "1072232f_25dd43c6",
+      "range": {
+        "startLine": 119,
+        "startChar": 9,
+        "endLine": 119,
+        "endChar": 29
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "416d4994_14125b0e",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-23T20:08:21Z",
+      "side": 1,
+      "message": "Hmm... I would definitely appreciate different error codes for different bound checks. EC_RES_INVALID_PARAM is ok sematically. Not so much if these values are logged somewhere. I\u0027ll leave it to you.",
+      "parentUuid": "2e009ec9_740f52db",
       "range": {
         "startLine": 119,
         "startChar": 9,
