@@ -197,6 +197,13 @@
 #define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 
 #define CONFIG_FANS FAN_CH_COUNT
+/*
+ * Fan specific requirement.
+ * As per fan specification, fan can only run when duty cycle is 30%.
+ * Hence, redefine the minimum fanduty percentage.
+ */
+#undef CONFIG_FAN_MIN_DUTY_PCT
+#define CONFIG_FAN_MIN_DUTY_PCT 30
 
 /* Charger defines */
 #define CONFIG_CHARGER_BQ25720
