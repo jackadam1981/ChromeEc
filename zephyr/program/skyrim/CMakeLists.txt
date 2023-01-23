@@ -22,9 +22,9 @@ if(DEFINED CONFIG_BOARD_SKYRIM)
 	add_subdirectory(skyrim)
 endif()
 
-if(DEFINED CONFIG_BOARD_WINTERHOLD)
-	project(winterhold)
-	add_subdirectory(winterhold)
+if(DEFINED CONFIG_BOARD_WHITERUN)
+	project(whiterun)
+	add_subdirectory(whiterun)
 endif()
 
 if(DEFINED CONFIG_BOARD_FROSTFLOW)

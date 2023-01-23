@@ -526,10 +526,10 @@ Your `project.overlay` file can also directly override properties defined by the
     pinctrl-names = "default";
   };
   ```
-* Override the I2C clock frequency to fast-plus (1 MHz) in the winterhold
+* Override the I2C clock frequency to fast-plus (1 MHz) in the whiterun
   `project.overlay`.
   ``` c
-  /* zephyr/program/skyrim/winterhold/project.overlay */
+  /* zephyr/program/skyrim/whiterun/project.overlay */
   #include "../i2c.dtsi"
   &i2c0_0 {
     clock-frequency = <I2C_BITRATE_FAST_PLUS>;

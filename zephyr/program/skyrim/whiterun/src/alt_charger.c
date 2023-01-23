@@ -12,7 +12,7 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/logging/log.h>
 
-LOG_MODULE_DECLARE(winterhold, CONFIG_SKYRIM_LOG_LEVEL);
+LOG_MODULE_DECLARE(whiterun, CONFIG_SKYRIM_LOG_LEVEL);
 
 static void alt_charger_init(void)
 {
