@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc93050_a5781cb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-23T16:51:19Z",
+      "side": 1,
+      "message": "You should probably also update src/usb_mux_config.c to remove the obsolete code and move the SBU flip logic to the AMD mux\u0027s board set (if you still need the GPIO on the MB to indicate flipped polarity)",
+      "revId": "4ae3db276c22cfe53a5ef51fdcb15c105cfae7d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
