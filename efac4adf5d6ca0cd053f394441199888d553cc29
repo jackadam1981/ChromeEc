@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a76953d5_49753bd6",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-23T02:10:08Z",
+      "side": 1,
+      "message": "This is even more difficult than I thought, since there\u0027s a narrow window for events to get lost here if another thread posts an event after `k_event_wait` returns but before `k_event_clear` completes.\n\nThe event API doesn\u0027t seem to provide a way to do this correctly (the closest it gets is the `reset` parameter to `k_event_wait`, but that ignores any events that are set when you go to wait rather than returning them) so I think this should instead use a condition variable (`k_condvar`) to guard the bitset of pending events: that will allow code reading and clearing the events to block any concurrent modifications.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "efac4adf5d6ca0cd053f394441199888d553cc29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
