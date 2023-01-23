@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6236e8d_44520285",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-23T16:35:24Z",
+      "side": 1,
+      "message": "One more thing I forgot to mention, this currently writes few intermediate files that shows up on the output. Could `.gitignore` them but I\u0027d rather wait for https://github.com/zephyrproject-rtos/zephyr/pull/53966 so we can just shut them off. Will add the flags here once that lands before submitting.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44b41175_9c31ba79",
         "filename": "util/zephyr_check_compliance.py",
         "patchSetId": 8
