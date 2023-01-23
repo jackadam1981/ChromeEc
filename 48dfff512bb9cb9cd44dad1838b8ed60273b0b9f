@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "146f06dc_ca44ab05",
+        "filename": "zephyr/include/ap_power/ap_pwrseq_sm.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-23T23:20:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "faa744b6_3c520539",
+      "revId": "48dfff512bb9cb9cd44dad1838b8ed60273b0b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "980637b4_8ed0d7c9",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d4c0c5a_f47f04c1",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-23T23:20:43Z",
+      "side": 1,
+      "message": "I can go back to original implementation where instead of weak function definition, weak function pointer is declared, and macro `AP_POWER_INIT_STATE_FUNC` is used to declare initialization function. See [4098524/1](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4098524/1/zephyr/include/ap_power/ap_pwrseq_sm.h#222).",
+      "parentUuid": "980637b4_8ed0d7c9",
+      "revId": "48dfff512bb9cb9cd44dad1838b8ed60273b0b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12c6a5e6_5218a6f0",
         "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq_sm.c",
         "patchSetId": 9
@@ -48,6 +84,24 @@
       "writtenOn": "2023-01-23T02:48:51Z",
       "side": 1,
       "message": "Even though this function can only be used by the thread, it can still interact with other threads that are using `get_cur_state` so it needs to acquire the mutex around any accesses to `smf`.\n\n(It looks like the idea is that this will only be run while the mutex is already locked, but there\u0027s no guarantee of that and recursive locking is okay.)",
+      "revId": "48dfff512bb9cb9cd44dad1838b8ed60273b0b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa8fcd12_d2013194",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-23T23:20:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c6a5e6_5218a6f0",
       "revId": "48dfff512bb9cb9cd44dad1838b8ed60273b0b9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
