@@ -5,7 +5,7 @@
 
 #include "ec_commands.h"
 
-static const struct ec_response_keybd_config winterhold_kb = {
+static const struct ec_response_keybd_config whiterun_kb = {
 	.num_top_row_keys = 10,
 	.action_keys = {
 		TK_BACK,		/* T1 */
@@ -25,5 +25,5 @@ static const struct ec_response_keybd_config winterhold_kb = {
 __override const struct ec_response_keybd_config *
 board_vivaldi_keybd_config(void)
 {
-	return &winterhold_kb;
+	return &whiterun_kb;
 }
