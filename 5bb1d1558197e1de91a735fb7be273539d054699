@@ -16,6 +16,29 @@
       "message": "Hey, first try at integrating the upstream compliance check with our presubmit. Bit hacky but then it\u0027s just a wrapper. Using vpython so I could not make pytest work, calling it directly instead from run_tests.sh, lmk if you have any better idea.\n\nNote that this right now only runs the yamllint stuff, but I was mainly interested in the bindings checks, but since there\u0027s a major rework on those going on I\u0027ll wait for that to be merged to make sure it still works out of tree before trying to integrate it.",
       "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44b41175_9c31ba79",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-23T16:27:21Z",
+      "side": 1,
+      "message": "For my own education - what does this do?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
