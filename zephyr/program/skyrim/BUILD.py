@@ -30,7 +30,7 @@ register_skyrim_project(
 
 
 register_skyrim_project(
-    project_name="winterhold",
+    project_name="whiterun",
 )
 
 

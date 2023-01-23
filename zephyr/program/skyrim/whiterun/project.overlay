@@ -12,12 +12,12 @@
 #include "../keyboard.dtsi"
 #include "../usbc.dtsi"
 
-/* winterhold project DTS includes*/
+/* whiterun project DTS includes*/
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
 #include "motionsense.dtsi"
 
-/* Winterhold overrides follow... */
+/* Whiterun overrides follow... */
 / {
 	/* battery overrides */
 	batteries {
@@ -48,7 +48,7 @@
 	};
 
 	named-gpios {
-		/* Winterhold-specific GPIO customizations */
+		/* Whiterun-specific GPIO customizations */
 	};
 
 	named-temp-sensors {
@@ -79,7 +79,7 @@
 	 * Note this is expected to vary per-board, so we keep it in the overlay
 	 * files.
 	 */
-	Winterhold-fw-config {
+	Whiterun-fw-config {
 		compatible = "cros-ec,cbi-fw-config";
 
 		/*

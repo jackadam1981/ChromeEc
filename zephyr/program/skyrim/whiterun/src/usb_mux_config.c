@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Winterhold board-specific USB-C mux configuration */
+/* Whiterun board-specific USB-C mux configuration */
 
 #include "charge_state.h"
 #include "console.h"
