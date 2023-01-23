@@ -20,6 +20,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be76765d_f0619e90",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-23T17:15:17Z",
+      "side": 1,
+      "message": "should this also take `PRESUBMIT_FILES` so that we don\u0027t lint files we didn\u0027t touch?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "451a4cb3_ae1e3029",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-23T17:15:17Z",
+      "side": 1,
+      "message": "why not just keep these as `pathlib.Path` instead of converting to string?",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 30
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d6b748b_395b4596",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-23T17:15:17Z",
+      "side": 1,
+      "message": "same goes here",
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "642d2208_57b3547f",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-23T17:15:17Z",
+      "side": 1,
+      "message": "since it\u0027s optional, `--commit`? (make it an option instead of a positional argument)?",
+      "range": {
+        "startLine": 68,
+        "startChar": 9,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6236e8d_44520285",
         "filename": "util/zephyr_check_compliance.py",
         "patchSetId": 8
@@ -107,6 +193,29 @@
         "startChar": 0,
         "endLine": 98,
         "endChar": 21
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c042b7_814e5346",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-23T17:15:17Z",
+      "side": 1,
+      "message": "can we fix `compliance_check` upstream to take `argv\u003d`?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 27
       },
       "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
