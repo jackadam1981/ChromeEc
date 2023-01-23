@@ -22,6 +22,30 @@
       },
       "revId": "efac4adf5d6ca0cd053f394441199888d553cc29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e9deb59_770a89a0",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-23T19:29:14Z",
+      "side": 1,
+      "message": "I do not think this would cause any issue, `k_event_clear` will only clear events that caused `k_event_wait` to return, even if an event is posted repeatedly within this window, it will be handled in current thread iteration.\n\nThe following conde inside driver\u0027s thread, will ensure only events posted are processed:\n```\n\t\tevents \u003d ap_pwrseq_wait_event(dev);\n\t\tif (!events) {\n\t\t\tcontinue;\n\t\t}\n```\nIs there a specific scenario you would like to cover?",
+      "parentUuid": "a76953d5_49753bd6",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "efac4adf5d6ca0cd053f394441199888d553cc29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -22,6 +22,30 @@
       },
       "revId": "f2dce942d442710146bd57c88fd193cbf237cdcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63369451_8d18e681",
+        "filename": "zephyr/include/ap_power/ap_pwrseq.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-23T19:29:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e03de1fb_404d3740",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "f2dce942d442710146bd57c88fd193cbf237cdcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
