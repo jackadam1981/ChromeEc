@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d391d306_9a608207",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-23T22:21:51Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "ab5298a3_fbe036d5",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 155,
+        "endChar": 11
+      },
+      "revId": "3a5125263d2cfc98120fa0ebb82fb028c0d25ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0110e040_bb7254a4",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Not necessarily a panic, but it is unlikely, `ap_pwrseq_sm_run_state` returns `-EINVAL` if state machine is not initialized and whatever value `smf_run_state` returns. This las one returns `1` if state machine is terminated. Currently `smf_set_terminate` is not used.\n\nI wonder if we would need to handle state machine termination.",
       "parentUuid": "0110e040_bb7254a4",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 10
+      },
+      "revId": "3a5125263d2cfc98120fa0ebb82fb028c0d25ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c0eeb01_6a7c6215",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-23T22:21:51Z",
+      "side": 1,
+      "message": "this will break the thread while 1, may be need to add assert",
+      "parentUuid": "74b2c6fa_754617b7",
       "range": {
         "startLine": 167,
         "startChar": 4,
