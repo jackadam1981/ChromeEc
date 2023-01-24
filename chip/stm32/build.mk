@@ -64,7 +64,7 @@ endif
 chip-$(HAS_TASK_POWERLED)+=power_led.o
 ifeq ($(CHIP_FAMILY),$(filter $(CHIP_FAMILY),stm32g4 stm32l4 stm32l5))
 # STM32G4, STM32L4 and STM32L5 use the same flash IP block
-chip-y+=flash-stm32g4-l4.o
+chip-$(CONFIG_FLASH_PHYSICAL)+=flash-stm32g4-l4.o
 else
 chip-$(CONFIG_FLASH_PHYSICAL)+=flash-$(CHIP_FAMILY).o
 endif
