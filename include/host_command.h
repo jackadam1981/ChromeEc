@@ -354,6 +354,12 @@ void host_send_sysrq(uint8_t key);
 uint32_t get_feature_flags0(void);
 uint32_t get_feature_flags1(void);
 
+/* Return the protocol info for the host command implementation */
+const uint16_t host_command_max_request_size(void);
+const uint16_t host_command_max_response_size(void);
+/* Protocol info flags default to zero if not overridden */
+__overridable const uint32_t host_command_protocol_info_flags(void);
+
 #ifdef CONFIG_ZTEST
 static inline void
 stub_send_response_callback(struct host_cmd_handler_args *args)
