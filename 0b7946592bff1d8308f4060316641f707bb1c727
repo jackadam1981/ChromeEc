@@ -46,6 +46,30 @@
       },
       "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8142ece_c2b2a672",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-24T20:08:22Z",
+      "side": 1,
+      "message": "If CONFIG_FAN_MAX_DUTY \u003d 80% and the host asks 100%, the fan will be spun at 80%. Do you think this is fine?",
+      "parentUuid": "68169d36_b8b93adf",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
