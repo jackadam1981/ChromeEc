@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f96eeffa_6055c89a",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-24T18:23:13Z",
+      "side": 1,
+      "message": "Got it, `site.addsitedir` will do what you want and takes a `Path`.",
+      "parentUuid": "03c7990b_f8618b78",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 30
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d6b748b_395b4596",
         "filename": "util/zephyr_check_compliance.py",
         "patchSetId": 8
