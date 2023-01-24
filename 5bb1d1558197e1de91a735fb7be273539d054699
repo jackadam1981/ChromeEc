@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c14da4_9b8b59fc",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-24T15:27:48Z",
+      "side": 1,
+      "message": "It\u0027s an option, but the checks upstream are all designed to work on a per-commit basis so we need the commit anyway and there\u0027s well defined APIs to extract the file lists for that, so I\u0027ve figured let\u0027s use those and only have one argument.",
+      "parentUuid": "be76765d_f0619e90",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "451a4cb3_ae1e3029",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-01-23T17:15:17Z",
       "side": 1,
       "message": "why not just keep these as `pathlib.Path` instead of converting to string?",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 30
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df165e3_06e311d4",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-24T15:27:48Z",
+      "side": 1,
+      "message": "If I change it to pathlib.Path then sys.path ends up taking the __repr__, which is something like:\n\n```\n[PosixPath(\u0027/mnt/host/source/src/third_party/zephyr/main/scripts/ci\u0027), ...\n```\n\nSo I\u0027d have to convert it to string explicitly anyway. I can do that I guess? No preference, let me know.",
+      "parentUuid": "451a4cb3_ae1e3029",
       "range": {
         "startLine": 50,
         "startChar": 18,
@@ -94,6 +142,30 @@
       "writtenOn": "2023-01-23T17:15:17Z",
       "side": 1,
       "message": "since it\u0027s optional, `--commit`? (make it an option instead of a positional argument)?",
+      "range": {
+        "startLine": 68,
+        "startChar": 9,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac360c93_ccf4e6f0",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-24T15:27:48Z",
+      "side": 1,
+      "message": "But it\u0027s not optional:\n\n```\n$ ./util/zephyr_check_compliance.py\nusage: zephyr_check_compliance.py [-h] commit\nzephyr_check_compliance.py: error: the following arguments are required: commit\n```\n\nThe upstream -c is optional but takes a range, this one I intended to take a single commit since that\u0027s what our CI passes.",
+      "parentUuid": "642d2208_57b3547f",
       "range": {
         "startLine": 68,
         "startChar": 9,
@@ -211,6 +283,30 @@
       "writtenOn": "2023-01-23T17:15:17Z",
       "side": 1,
       "message": "can we fix `compliance_check` upstream to take `argv\u003d`?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ceca334_47170a2d",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-24T15:27:48Z",
+      "side": 1,
+      "message": "That\u0027d be ideal, I\u0027ll give it a go.",
+      "parentUuid": "00c042b7_814e5346",
       "range": {
         "startLine": 104,
         "startChar": 0,
