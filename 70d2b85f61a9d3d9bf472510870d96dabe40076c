@@ -16,6 +16,24 @@
       "message": "I suspect that this is still the original partition layout from before assuming roughly equal RO and RW regions. You can adjust that if you want too depending on system constraints.",
       "revId": "70d2b85f61a9d3d9bf472510870d96dabe40076c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed1ac0e0_0fa693cc",
+        "filename": "board/hyperdebug/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-24T21:26:51Z",
+      "side": 1,
+      "message": "Good point.  I had forgotten about that, I want to reduce the RO size to its minimum, since it no longer contains any of my actual logic.\n\nI am not constrained by space, yet, though.  My RW code is about 50kB, and the flash size is 512kB.  This actually brings me to a question that probably has not come up when dealing with servo firmware.  Flashing the entire 512kB takes a few minutes, it would be nice to be able to cut that time to a tenth, by reducing the size of the image.  Is it possible to generate an image that is not \"expanded\" to fill the entire flash chip, but variable in length?  I suppose that has never come up with EC development, and there may be some header block at the very end.  Probably the best then I can settle for is hard-coding some smaller image/flash size, which I will have to increase little by little, as I add features to the image.",
+      "parentUuid": "844b6020_5d808436",
+      "revId": "70d2b85f61a9d3d9bf472510870d96dabe40076c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
