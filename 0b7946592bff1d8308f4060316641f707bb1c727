@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70052ae6_5b67635a",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-24T00:53:34Z",
+      "side": 1,
+      "message": "If the requested duty is clamped to higher or lower value than the host expected, do we need to inform the DPTF daemon? Clamping up is fine but clamping down can cause a problem?\n\nI couldn\u0027t find the definition of \u0027duty cycle\u0027 in Intel\u0027s DPTF docs. Does it mean the PWM duty or the ratio between min_fan_speed and max_fan_speed?",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
