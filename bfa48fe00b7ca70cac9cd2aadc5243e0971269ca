@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdc7d645_f1e671d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-24T15:01:03Z",
+      "side": 1,
+      "message": "```\nThe auto-generated README.md differs from the expected contents:\n--- /mnt/host/source/src/platform/ec/zephyr/zmake/README.md\n+++\n@@ -91,7 +91,7 @@\n\n ### zmake compare-builds\n\n-**Usage:** `zmake compare-builds [-h] [--ref1 REF1] [--ref2 REF2] [-k] [-t TOOLCHAIN] [--extra-cflags EXTRA_CFLAGS] (-a | project_name [project_name ...])`\n+**Usage:** `zmake compare-builds [-h] [--ref1 REF1] [--ref2 REF2] [-k] [-n] [-b] [-d] [-t TOOLCHAIN] [--extra-cflags EXTRA_CFLAGS] (-a | project_name [project_name ...])`\n\n #### Positional Arguments\n\n@@ -107,6 +107,9 @@\n | `--ref1 REF1` | 1st git reference (commit, branch, etc), default\u003dHEAD |\n | `--ref2 REF2` | 2nd git reference (commit, branch, etc), default\u003dHEAD~ |\n | `-k`, `--keep-temps` | Keep temporary build directories on exit |\n+| `-n`, `--compare-configs` | Compare configs of build outputs |\n+| `-b`, `--compare-binaries-disable` | Don\u0027t compare binaries of build outputs |\n+| `-d`, `--compare-devicetrees` | Compare devicetrees of build outputs |\n | `-t TOOLCHAIN`, `--toolchain TOOLCHAIN` | Name of toolchain to use |\n | `--extra-cflags EXTRA_CFLAGS` | Additional CFLAGS to use for target builds |\n | `-a`, `--all` | Select all projects |\nRun \"zmake generate-readme\" to fix this.\n```\n\n^^ do this",
+      "revId": "bfa48fe00b7ca70cac9cd2aadc5243e0971269ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
