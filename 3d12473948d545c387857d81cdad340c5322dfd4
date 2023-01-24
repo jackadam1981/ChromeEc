@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69922fa5_705edc1b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-24T17:27:10Z",
+      "side": 1,
+      "message": "Nit: `sizeof(*buf)` would be more obviously correct.",
+      "range": {
+        "startLine": 221,
+        "startChar": 48,
+        "endLine": 221,
+        "endChar": 64
+      },
+      "revId": "3d12473948d545c387857d81cdad340c5322dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "735ad913_f70f7d68",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-24T17:27:10Z",
+      "side": 1,
+      "message": "\"Consume\" is weird verbiage if the DPM is just holding the Attention until the AP can grab it, particularly when \"consume\" is contrasted with \"pop.\" What about \"enqueue\" and \"dequeue\"? (I see that the helper function `vdm_enqueue_attention` already uses this verbiage.)",
+      "revId": "3d12473948d545c387857d81cdad340c5322dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "504a5779_a2cf2e15",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-24T17:27:10Z",
+      "side": 1,
+      "message": "Does this mean that `dfp_consume_attention` may read uninitialized memory? (Do DP Attentions always have 1 VDO?)",
+      "revId": "3d12473948d545c387857d81cdad340c5322dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1abd9fd6_989bc3da",
+        "filename": "include/usb_pd_dpm_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-24T17:27:10Z",
+      "side": 1,
+      "message": "Nit: `size_t` seems more natural, at least from a C POV.",
+      "range": {
+        "startLine": 111,
+        "startChar": 37,
+        "endLine": 111,
+        "endChar": 44
+      },
+      "revId": "3d12473948d545c387857d81cdad340c5322dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad8cdf8_caef4d71",
+        "filename": "include/usb_pd_dpm_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-24T17:27:10Z",
+      "side": 1,
+      "message": "What does it do if the queue is empty? Any assumptions on the size of `buf`? Would it make sense to return the value of `length` instead of having it as an output param?",
+      "revId": "3d12473948d545c387857d81cdad340c5322dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
