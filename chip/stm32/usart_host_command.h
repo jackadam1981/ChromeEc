@@ -14,6 +14,14 @@
 #include <stdarg.h> /* For va_list */
 
 /*
+ * Max data size for a version 3 request/response packet.  This is big enough
+ * to handle a request/response header, flash write offset/size and 512 bytes
+ * of request payload or 224 bytes of response payload.
+ */
+#define USART_MAX_REQUEST_SIZE 0x220
+#define USART_MAX_RESPONSE_SIZE 0x100
+
+/*
  * Add data to host command layer buffer.
  */
 size_t usart_host_command_rx_append_data(struct usart_config const *config,
@@ -24,13 +32,6 @@ size_t usart_host_command_rx_append_data(struct usart_config const *config,
  */
 size_t usart_host_command_tx_remove_data(struct usart_config const *config,
 					 uint8_t *dest);
-
-/*
- * Get USART protocol information. This function is called in runtime if
- * board's host command transport is USART.
- */
-enum ec_status usart_get_protocol_info(struct host_cmd_handler_args *args);
-
 /*
  * Initialize USART host command layer.
  */

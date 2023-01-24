@@ -19,6 +19,7 @@
 #include "registers.h"
 #include "spi.h"
 #include "stm32-dma.h"
+#include "stm32_spi.h"
 #include "system.h"
 #include "timer.h"
 #include "util.h"
@@ -75,13 +76,6 @@ static const struct dma_option dma_rx_option = {
 #define SPI_PROTO2_OVERHEAD \
 	(SPI_PROTO2_OFFSET + EC_PROTO2_RESPONSE_TRAILER_BYTES + 1)
 #endif /* defined(CONFIG_SPI_PROTOCOL_V2) */
-/*
- * Max data size for a version 3 request/response packet.  This is big enough
- * to handle a request/response header, flash write offset/size, and 512 bytes
- * of flash data.
- */
-#define SPI_MAX_REQUEST_SIZE 0x220
-#define SPI_MAX_RESPONSE_SIZE 0x220
 
 /*
  * The AP blindly clocks back bytes over the SPI interface looking for a
@@ -725,23 +719,19 @@ static void spi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_INIT_SPI);
 
-/**
- * Get protocol information
- */
-enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args)
+#ifndef CONFIG_FINGERPRINT_MCU
+const uint32_t host_command_protocol_info_flags(void)
 {
-	struct ec_response_get_protocol_info *r = args->response;
-
-	memset(r, 0, sizeof(*r));
-#ifdef CONFIG_SPI_PROTOCOL_V2
-	r->protocol_versions |= BIT(2);
-#endif
-	r->protocol_versions |= BIT(3);
-	r->max_request_packet_size = SPI_MAX_REQUEST_SIZE;
-	r->max_response_packet_size = SPI_MAX_RESPONSE_SIZE;
-	r->flags = EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
-
-	args->response_size = sizeof(*r);
-
-	return EC_RES_SUCCESS;
+	return EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
 }
+
+const uint16_t host_command_max_request_size(void)
+{
+	return SPI_MAX_REQUEST_SIZE;
+}
+
+const uint16_t host_command_max_response_size(void)
+{
+	return SPI_MAX_RESPONSE_SIZE;
+}
+#endif

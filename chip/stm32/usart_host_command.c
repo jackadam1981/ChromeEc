@@ -50,14 +50,6 @@
 #define USART_DEFERRED_PROCESS_REQ_TIMEOUT 300
 
 /*
- * Max data size for a version 3 request/response packet.  This is big enough
- * to handle a request/response header, flash write offset/size and 512 bytes
- * of request payload or 224 bytes of response payload.
- */
-#define USART_MAX_REQUEST_SIZE 0x220
-#define USART_MAX_RESPONSE_SIZE 0x100
-
-/*
  * FIFO size for USART DMA. Should be big enough to handle worst case
  * data processing
  */
@@ -588,19 +580,19 @@ size_t usart_host_command_tx_remove_data(struct usart_config const *config,
 	return bytes_remaining;
 }
 
-/*
- * Get protocol information
- */
-enum ec_status usart_get_protocol_info(struct host_cmd_handler_args *args)
+#ifndef CONFIG_FINGERPRINT_MCU
+const uint32_t host_command_protocol_info_flags(void)
 {
-	struct ec_response_get_protocol_info *r = args->response;
-
-	memset(r, 0, sizeof(*r));
-	r->protocol_versions |= BIT(3);
-	r->max_request_packet_size = USART_MAX_REQUEST_SIZE;
-	r->max_response_packet_size = USART_MAX_RESPONSE_SIZE;
-	r->flags = EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
-	args->response_size = sizeof(*r);
-
-	return EC_RES_SUCCESS;
+	return EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
 }
+
+const uint16_t host_command_max_request_size(void)
+{
+	return USART_MAX_REQUEST_SIZE;
+}
+
+const uint16_t host_command_max_response_size(void)
+{
+	return USART_MAX_RESPONSE_SIZE;
+}
+#endif

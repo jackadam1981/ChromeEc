@@ -94,25 +94,15 @@ static void hostcmd_handler(int32_t id, void *buf, uint32_t len)
 }
 DECLARE_IPI(SCP_IPI_HOST_COMMAND, hostcmd_handler, 0);
 
-/*
- * Get protocol information
- */
-static enum ec_status
-hostcmd_get_protocol_info(struct host_cmd_handler_args *args)
+const uint16_t host_command_max_request_size(void)
 {
-	struct ec_response_get_protocol_info *r = args->response;
-
-	memset(r, 0, sizeof(*r));
-	r->protocol_versions |= BIT(3);
-	r->max_request_packet_size = HOSTCMD_MAX_REQUEST_SIZE;
-	r->max_response_packet_size = HOSTCMD_MAX_RESPONSE_SIZE;
-
-	args->response_size = sizeof(*r);
-
-	return EC_SUCCESS;
+	return HOSTCMD_MAX_REQUEST_SIZE;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, hostcmd_get_protocol_info,
-		     EC_VER_MASK(0));
+
+const uint16_t host_command_max_response_size(void)
+{
+	return HOSTCMD_MAX_RESPONSE_SIZE;
+}
 
 void hostcmd_init(void)
 {
