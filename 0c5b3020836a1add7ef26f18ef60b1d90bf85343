@@ -16,6 +16,40 @@
       "message": "I\u0027ve swapped around the stack to get the HC changes reviewed before I refactor the HPD set",
       "revId": "0c5b3020836a1add7ef26f18ef60b1d90bf85343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5baef69_92ead869",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 7379,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-24T16:59:36Z",
+      "side": 1,
+      "message": "FWIW, the build forces `enum ec_status` to portably be 2 bytes. You could just use it here.",
+      "revId": "0c5b3020836a1add7ef26f18ef60b1d90bf85343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b40b542_0df8060e",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-24T16:59:36Z",
+      "side": 1,
+      "message": "FYI, error messages are optional now.",
+      "revId": "0c5b3020836a1add7ef26f18ef60b1d90bf85343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
