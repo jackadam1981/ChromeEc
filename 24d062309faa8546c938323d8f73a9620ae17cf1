@@ -16,6 +16,24 @@
       "message": "Do we need `main` in the path?",
       "revId": "24d062309faa8546c938323d8f73a9620ae17cf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "209837bd_a0e375cb",
+        "filename": "west.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-24T17:50:45Z",
+      "side": 1,
+      "message": "In the follow up CL for installing and setting up Zephyr SDK tools I have the tar file downloaded and extracted into zephyr.  So the file structure looks kinda like\n```\n -modules/\n     -ec/\n     -cmsis/\n     :\n -zephyr/\n     -main/\n     -zephyr-sdk-0.15.2/\n     -zephyr-sdk-0.15.2_linux-x86_64.targ.gz\n```\n\nThis follows similar to our gitlab setup.",
+      "parentUuid": "953ca124_ee6924f1",
+      "revId": "24d062309faa8546c938323d8f73a9620ae17cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
