@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03bfe3ad_14322b48",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-24T17:58:40Z",
+      "side": 1,
+      "message": "can the upstream function accept a `Path` as well?",
+      "parentUuid": "6df165e3_06e311d4",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 30
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d6b748b_395b4596",
         "filename": "util/zephyr_check_compliance.py",
         "patchSetId": 8
@@ -166,6 +190,30 @@
       "side": 1,
       "message": "But it\u0027s not optional:\n\n```\n$ ./util/zephyr_check_compliance.py\nusage: zephyr_check_compliance.py [-h] commit\nzephyr_check_compliance.py: error: the following arguments are required: commit\n```\n\nThe upstream -c is optional but takes a range, this one I intended to take a single commit since that\u0027s what our CI passes.",
       "parentUuid": "642d2208_57b3547f",
+      "range": {
+        "startLine": 68,
+        "startChar": 9,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c916ddf9_01ec8340",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-01-24T17:58:40Z",
+      "side": 1,
+      "message": "Seems like it might not be compatible with `pre-upload.py --pre-submit` then (which works on pre-committed files?\n\nHow does it behave in this case?",
+      "parentUuid": "ac360c93_ccf4e6f0",
       "range": {
         "startLine": 68,
         "startChar": 9,
