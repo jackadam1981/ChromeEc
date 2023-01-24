@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03c7990b_f8618b78",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-24T18:15:32Z",
+      "side": 1,
+      "message": "Not sure I get the question, what upstream function? This just ends up in sys.path.insert(), upstream there\u0027s few cases like\n\n`sys.path.insert(0, str(ZEPHYR_SCRIPTS / \u0027dts\u0027 / \u0027python-devicetree\u0027 / \u0027src\u0027))`\n\nAgain I\u0027m happy with either.",
+      "parentUuid": "03bfe3ad_14322b48",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 30
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d6b748b_395b4596",
         "filename": "util/zephyr_check_compliance.py",
         "patchSetId": 8
@@ -214,6 +238,30 @@
       "side": 1,
       "message": "Seems like it might not be compatible with `pre-upload.py --pre-submit` then (which works on pre-committed files?\n\nHow does it behave in this case?",
       "parentUuid": "ac360c93_ccf4e6f0",
+      "range": {
+        "startLine": 68,
+        "startChar": 9,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897afcdc_11b7d9f7",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-24T18:15:32Z",
+      "side": 1,
+      "message": "You are very right, in that case it gets a `pre-submit` in place of the commit and then proceeds to fail real bad.\n\nHow important is to handle that case? Never even realize it was an option, I\u0027d really like to say it\u0027s not supported, catch the special case and bail out.",
+      "parentUuid": "c916ddf9_01ec8340",
       "range": {
         "startLine": 68,
         "startChar": 9,
@@ -308,6 +356,30 @@
       "side": 1,
       "message": "Would `check_compliance.main()` make sense?",
       "parentUuid": "0a5e2190_d68f60ae",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be632e5d_046eb876",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-24T18:15:32Z",
+      "side": 1,
+      "message": "Well with the the upstreame change that Jack suggested we are dropping this entirely, will update once that\u0027s merged.",
+      "parentUuid": "5f6976bc_10b3c0dd",
       "range": {
         "startLine": 98,
         "startChar": 0,
