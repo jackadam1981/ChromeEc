@@ -380,25 +380,17 @@ void emmc_ap_jump_to_bl(enum gpio_signal signal)
 }
 #endif
 
-/* Get protocol information */
-static enum ec_status _spi_get_protocol_info(struct host_cmd_handler_args *args)
+const uint32_t host_command_protocol_info_flags(void)
 {
-	struct ec_response_get_protocol_info *r = args->response;
-
-	memset(r, 0, sizeof(*r));
-	r->protocol_versions = BIT(3);
-	r->max_request_packet_size = SPI_MAX_REQUEST_SIZE;
-	r->max_response_packet_size = SPI_MAX_RESPONSE_SIZE;
-	r->flags = EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
-
-	args->response_size = sizeof(*r);
-
-	return EC_SUCCESS;
+	return EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, _spi_get_protocol_info,
-		     EC_VER_MASK(0));
 
-enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args)
+const uint16_t host_command_max_request_size(void)
 {
-	return _spi_get_protocol_info(args);
+	return SPI_MAX_REQUEST_SIZE;
+}
+
+const uint16_t host_command_max_response_size(void)
+{
+	return SPI_MAX_RESPONSE_SIZE;
 }

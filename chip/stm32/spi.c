@@ -725,23 +725,12 @@ static void spi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_INIT_SPI);
 
-/**
- * Get protocol information
- */
-enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args)
+uint16_t spi_max_request_size(void)
 {
-	struct ec_response_get_protocol_info *r = args->response;
+	return SPI_MAX_REQUEST_SIZE;
+}
 
-	memset(r, 0, sizeof(*r));
-#ifdef CONFIG_SPI_PROTOCOL_V2
-	r->protocol_versions |= BIT(2);
-#endif
-	r->protocol_versions |= BIT(3);
-	r->max_request_packet_size = SPI_MAX_REQUEST_SIZE;
-	r->max_response_packet_size = SPI_MAX_RESPONSE_SIZE;
-	r->flags = EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
-
-	args->response_size = sizeof(*r);
-
-	return EC_RES_SUCCESS;
+uint16_t spi_max_response_size(void)
+{
+	return SPI_MAX_RESPONSE_SIZE;
 }

@@ -588,19 +588,12 @@ size_t usart_host_command_tx_remove_data(struct usart_config const *config,
 	return bytes_remaining;
 }
 
-/*
- * Get protocol information
- */
-enum ec_status usart_get_protocol_info(struct host_cmd_handler_args *args)
+uint16_t usart_max_request_size(void)
 {
-	struct ec_response_get_protocol_info *r = args->response;
+	return USART_MAX_REQUEST_SIZE;
+}
 
-	memset(r, 0, sizeof(*r));
-	r->protocol_versions |= BIT(3);
-	r->max_request_packet_size = USART_MAX_REQUEST_SIZE;
-	r->max_response_packet_size = USART_MAX_RESPONSE_SIZE;
-	r->flags = EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
-	args->response_size = sizeof(*r);
-
-	return EC_RES_SUCCESS;
+uint16_t usart_max_response_size(void)
+{
+	return USART_MAX_RESPONSE_SIZE;
 }
