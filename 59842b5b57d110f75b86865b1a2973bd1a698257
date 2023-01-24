@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bcaf228_24ce92ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2023-01-24T13:43:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a8af5e6_eb877179",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0b0eaa7_f289a348",
@@ -277,6 +301,30 @@
       "side": 1,
       "message": "Fan speeds are sent to the DPTF daemon through memmap. Have you searched code references there as well?",
       "parentUuid": "1a8b332b_861a1532",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05c004c2_3b2fa863",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2023-01-24T13:43:54Z",
+      "side": 1,
+      "message": "We checked under /chromiumos/platform/ec/ code base and found EC_FAN_SPEED_STALLED used at only two places, [1] pwm_fan_second() function in \"common/fan.c\" file [2] print_fan() function in \"util/ectool.cc\" file as per my previous comment.",
+      "parentUuid": "88b19836_7ec76125",
       "range": {
         "startLine": 255,
         "startChar": 31,
