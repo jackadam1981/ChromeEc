@@ -70,6 +70,24 @@
       "parentUuid": "3a7e6667_5a42554a",
       "revId": "70d2b85f61a9d3d9bf472510870d96dabe40076c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91f023d0_8bc6d54b",
+        "filename": "board/hyperdebug/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-24T22:49:23Z",
+      "side": 1,
+      "message": "The STM32 bootloader does not follow the DFU protocol exactly, they have made up their own incompatible variant.  dfu-util knows that protocol, but does a full erase every time, so I assume that it is the best that can be done.\n\nI agree that variable size images are not for all, in fact, I would expect the majority of EC images to be so close to filling the flash that there is no point. \n And your point about signing and other image processing is also right.\n \nI have tried introducing a CONFIG define to disable the padding, that way, all other boards will by default still have padding, but my board can opt out.  I will send a separate CL in a minute.",
+      "parentUuid": "08c0ae86_03c54dd3",
+      "revId": "70d2b85f61a9d3d9bf472510870d96dabe40076c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
