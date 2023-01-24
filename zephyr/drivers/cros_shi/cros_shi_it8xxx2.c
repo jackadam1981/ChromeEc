@@ -424,20 +424,17 @@ static const struct cros_shi_it8xxx2_cfg cros_shi_cfg = {
 DEVICE_DT_INST_DEFINE(0, cros_shi_ite_init, NULL, NULL, &cros_shi_cfg,
 		      POST_KERNEL, CONFIG_CROS_SHI_IT8XXX2_INIT_PRIORITY, NULL);
 
-/* Get protocol information */
-enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args)
+const uint32_t host_command_protocol_info_flags(void)
 {
-	struct ec_response_get_protocol_info *r = args->response;
-
-	memset(r, 0, sizeof(*r));
-	r->protocol_versions = BIT(3);
-	r->max_request_packet_size = SPI_MAX_REQUEST_SIZE;
-	r->max_response_packet_size = SPI_MAX_RESPONSE_SIZE;
-	r->flags = EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
-
-	args->response_size = sizeof(*r);
-
-	return EC_SUCCESS;
+	return EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, spi_get_protocol_info,
-		     EC_VER_MASK(0));
+
+const uint16_t host_command_max_request_size(void)
+{
+	return SPI_MAX_REQUEST_SIZE;
+}
+
+const uint16_t host_command_max_response_size(void)
+{
+	return SPI_MAX_RESPONSE_SIZE;
+}

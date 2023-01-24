@@ -130,24 +130,15 @@ static void cros_ec_ishtp_subsys_new_msg_received(const heci_handle_t handle,
  */
 #define HECI_CROS_EC_LIMIT_PACKET_SIZE 256
 
-/**
- * Get protocol information
- */
-static enum ec_status heci_get_protocol_info(struct host_cmd_handler_args *args)
+const uint16_t host_command_max_request_size(void)
 {
-	struct ec_response_get_protocol_info *r = args->response;
-
-	memset(r, 0, sizeof(*r));
-	r->protocol_versions = BIT(3);
-	r->max_request_packet_size = HECI_CROS_EC_LIMIT_PACKET_SIZE;
-	r->max_response_packet_size = HECI_CROS_EC_RESPONSE_MAX;
-
-	args->response_size = sizeof(*r);
-
-	return EC_RES_SUCCESS;
+	return HECI_CROS_EC_LIMIT_PACKET_SIZE;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, heci_get_protocol_info,
-		     EC_VER_MASK(0));
+
+const uint16_t host_command_max_response_size(void)
+{
+	return HECI_CROS_EC_RESPONSE_MAX;
+}
 
 static int cros_ec_ishtp_subsys_initialize(const heci_handle_t heci_handle)
 {

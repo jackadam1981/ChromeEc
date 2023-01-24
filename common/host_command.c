@@ -886,6 +886,30 @@ static int command_host_command(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(hostcmd, command_host_command, "cmd ver param",
 			"Fake host command");
+
+__overridable const uint32_t host_command_protocol_info_flags(void)
+{
+	return 0;
+}
+
+/* Get protocol information */
+static enum ec_status get_protocol_info(struct host_cmd_handler_args *args)
+{
+	struct ec_response_get_protocol_info *r = args->response;
+
+	memset(r, 0, sizeof(*r));
+	r->protocol_versions = BIT(3);
+	r->max_request_packet_size = host_command_max_request_size();
+	r->max_response_packet_size = host_command_max_response_size();
+	r->flags = host_command_protocol_info_flags();
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, get_protocol_info,
+		     EC_VER_MASK(0));
+
 #endif /* CONFIG_CMD_HOSTCMD */
 
 #ifdef CONFIG_CMD_HCDEBUG
