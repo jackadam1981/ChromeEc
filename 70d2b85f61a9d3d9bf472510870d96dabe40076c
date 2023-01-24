@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844b6020_5d808436",
+        "filename": "board/hyperdebug/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-24T21:18:46Z",
+      "side": 1,
+      "message": "I suspect that this is still the original partition layout from before assuming roughly equal RO and RW regions. You can adjust that if you want too depending on system constraints.",
+      "revId": "70d2b85f61a9d3d9bf472510870d96dabe40076c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
