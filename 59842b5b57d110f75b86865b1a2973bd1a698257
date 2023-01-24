@@ -333,6 +333,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50abad7b_bd93e6bf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-24T17:55:18Z",
+      "side": 1,
+      "message": "Thanks for clarification. If that\u0027s the case, this change needs to be on hold. I need to take a closer look at how the host handles 0xfffe (or not) and make host-side changes as needed.",
+      "parentUuid": "05c004c2_3b2fa863",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
