@@ -34,6 +34,24 @@
       "parentUuid": "844b6020_5d808436",
       "revId": "70d2b85f61a9d3d9bf472510870d96dabe40076c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a7e6667_5a42554a",
+        "filename": "board/hyperdebug/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-24T22:33:13Z",
+      "side": 1,
+      "message": "The linker adds a single byte at the very end of the firmware images this forces the padding when the makefile creates the final binary images. I think it is this section of the linker responsible for that. It looks like it will work to just remove this block:\n\n~/chromiumos/src/platform/ec/common/firmware_image.lds.S\n\n    .padding : AT(IMAGE_PADDING_AT) {\n        BYTE(0xff);\n    } \u003e FLASH \u003d0xff\n\nIt could also be this part which looks almost the same.\n\n~/chromiumos/src/platform/ec/core/cortex-m/ec.lds.S\n\n    . \u003d ORIGIN(FLASH) + LENGTH(FLASH) - 1;\n    /* Need at least one byte so section is not omitted */\n    BYTE(0xFF);\n    __fill_end \u003d .;\n\nI haven\u0027t tested this on your chipset, just with another and I expect it\u0027ll likely break a lot of the post processing scripts if it\u0027s removed from other targets with signed images for instance as I image a number of scripts use the size of the file to communicate the size of the flash too. I can greenlight the non-linker changes but linker change should be reviewed by others if you want it in main.\n\nI do expect that the dfu-util update should take less time on later calls unless your command invocation is odd like performing a chip erase each time. I think it does delta updates by default so that means it won\u0027t save significant time. But I could be wrong.",
+      "parentUuid": "ed1ac0e0_0fa693cc",
+      "revId": "70d2b85f61a9d3d9bf472510870d96dabe40076c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
