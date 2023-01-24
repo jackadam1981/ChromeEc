@@ -50,6 +50,24 @@
       "message": "Fails Zephyr tests for battery.",
       "revId": "dd4c511d420e00abff0aca36ccb86f5db8335280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2020314b_439df370",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-01-24T03:52:16Z",
+      "side": 1,
+      "message": "Test all pass now, Looks we don\u0027t need to add the test_mockable label in battery_get_disconnect_state():\n```\n(cr) (evoker_cp_0124) ec@ec-02 ~/chromiumos/src/platform/ec $ ./twister -T zephyr/test/\nZEPHYR_BASE unset, using \"/mnt/host/source/src/third_party/zephyr/main\"\nWest is not installed. Using ZEPHYR_BASE /mnt/host/source/src/third_party/zephyr/main as project\u0027s top directory\nInstall tabulate python module with pip to use --device-testing option.\nRenaming output directory to /mnt/host/source/src/platform/ec/twister-out.22\nINFO    - Using Ninja..\nwarning: tag \u0027upstream/v2.7.99\u0027 is externally known as \u0027v2.7.99\u0027\nINFO    - Zephyr version: v2.7.99-17468-gd86242a0d639\nINFO    - Using \u0027llvm\u0027 toolchain.\nINFO    - Building initial testsuite list...\nINFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out/testplan.json\nINFO    - JOBS: 8\nINFO    - Adding tasks to the queue...\nINFO    - Added initial list of jobs to queue\nINFO    - Total complete:   95/  95  100%  skipped:    0, failed:    0\nINFO    - 95 test scenarios (95 test instances) selected, 0 configurations skipped (0 by static filter, 0 at runtime).\nINFO    - 95 of 95 test configurations passed (100.00%), 0 failed, 0 skipped with 0 warnings in 515.46 seconds\nINFO    - In total 3280 test cases were executed, 0 skipped on 2 out of total 531 platforms (0.38%)\nINFO    - 95 test configurations executed on platforms, 0 test configurations were only built.\nINFO    - Saving reports...\nINFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out/twister.json\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister.xml...\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister_report.xml...\nINFO    - Run completed\nTEST EXECUTION SUCCESSFUL\n```",
+      "parentUuid": "d62492e3_432c9e4c",
+      "revId": "dd4c511d420e00abff0aca36ccb86f5db8335280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
