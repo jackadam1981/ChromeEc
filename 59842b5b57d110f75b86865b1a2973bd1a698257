@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a8af5e6_eb877179",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-24T01:06:29Z",
+      "side": 1,
+      "message": "Ping?",
+      "parentUuid": "33eda222_5b3fd871",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0b0eaa7_f289a348",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -229,6 +253,30 @@
       "side": 1,
       "message": "Dependency on where rpm value is compared to EC_FAN_SPEED_STALLED is seen only as part of printing info in command response only.\n util/ectool.cc:3650:    case EC_FAN_SPEED_STALLED:\n So, mean to say, donot see any code reference on where any distinction/action on when  rpm is set to zero by itself or due to stalling.\n I think the print reference  is kind of redundant. But, setting rpm to zero , when fan is found to be stalled due to  any reason(no duty cycle/pwm not enable/tacho underflow) makes sense too, as otherwise, rpm value might continue with some prev value otherwsise, if fan gets stalled due to some reason.",
       "parentUuid": "47361432_61c41c2a",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b19836_7ec76125",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-24T01:06:29Z",
+      "side": 1,
+      "message": "Fan speeds are sent to the DPTF daemon through memmap. Have you searched code references there as well?",
+      "parentUuid": "1a8b332b_861a1532",
       "range": {
         "startLine": 255,
         "startChar": 31,
