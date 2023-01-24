@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8aa1e5b3_dc980dab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-24T22:19:10Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "05d16c40_463fbbab",
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ff03d72_4c1240ed",
         "filename": "common/memory_dump_hostcmds.c",
         "patchSetId": 4
@@ -79,6 +97,30 @@
       "side": 1,
       "message": "I only see memory_dump_address_offset \u003d 0 in initialize_memory_dump.  Can you elaborate?",
       "parentUuid": "9969c876_6146f951",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 55
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d276083_cc5b3f86",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-24T22:19:10Z",
+      "side": 1,
+      "message": "Right, `memory_dump_address_offset` isn\u0027t currently utilized. The motivation was to support 64 bit based addresses without needing addresses to be 64-bit over the wire. Moving it to a reserved field, can add later if needed.",
+      "parentUuid": "85c2fc7e_50712d9c",
       "range": {
         "startLine": 38,
         "startChar": 29,
@@ -254,6 +296,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ef8ba5_33b3db5e",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-24T22:19:10Z",
+      "side": 1,
+      "message": "Ahh. I understand your comment now. Removed the redundant check.",
+      "parentUuid": "6006b8d8_9b879175",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 50
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cce24ab_743ca6c3",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-24T22:19:10Z",
+      "side": 1,
+      "message": "I understand your comment now. Removed redundant check.",
+      "parentUuid": "6006b8d8_9b879175",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 50
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1072232f_25dd43c6",
@@ -325,6 +415,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e1df3a_cdee7e89",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-24T22:19:10Z",
+      "side": 1,
+      "message": "Switched errors to EC_RES_INVALID_PARAM.",
+      "parentUuid": "416d4994_14125b0e",
+      "range": {
+        "startLine": 119,
+        "startChar": 9,
+        "endLine": 119,
+        "endChar": 29
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4cadccf_0063f1a2",
@@ -362,6 +476,30 @@
       "side": 1,
       "message": "Indeed. Looks like there\u0027s no mechanism to get the max size response size outside of EC_CMD_GET_PROTOCOL_INFO. I\u0027ll add a mechanism as a separate CL.",
       "parentUuid": "c4cadccf_0063f1a2",
+      "range": {
+        "startLine": 5596,
+        "startChar": 37,
+        "endLine": 5596,
+        "endChar": 40
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb92d74_c20804bf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5596,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-24T22:19:10Z",
+      "side": 1,
+      "message": "Working on an implementation at https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4192910. Will rebase this CL on to it when ready.",
+      "parentUuid": "65b4b60b_d6f427d9",
       "range": {
         "startLine": 5596,
         "startChar": 37,
