@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0dfe151_085470d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-24T16:50:07Z",
+      "side": 1,
+      "message": "It looks like some of the tests will need changed, perhaps to set this Kconfig to \"n\" for their purposes",
+      "revId": "83542ef6fae1ac35e6e2388678be24ebe8a362ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
