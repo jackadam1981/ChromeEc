@@ -22,6 +22,30 @@
       },
       "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68169d36_b8b93adf",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-01-24T15:44:08Z",
+      "side": 1,
+      "message": "There is no need to inform dptf on if the requested duty is higher or lower. Just that , we have to take care that , they are  set within the proper limit, in case if it is improper value.\nClamping up is fine.\nBut clamping down will result in stalling the fan(which is how this bug appeared for brya).\nThe duty cycle here corresponds to PWM duty. For instance , in brya, this is set in NPCX\u0027s DCR register (pwm_set_raw_duty() )",
+      "parentUuid": "70052ae6_5b67635a",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
