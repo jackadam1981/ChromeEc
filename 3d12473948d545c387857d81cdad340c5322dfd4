@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf388297_759fdd9b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-25T05:25:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69922fa5_705edc1b",
+      "range": {
+        "startLine": 221,
+        "startChar": 48,
+        "endLine": 221,
+        "endChar": 64
+      },
+      "revId": "3d12473948d545c387857d81cdad340c5322dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "735ad913_f70f7d68",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "602d4640_db0b201d",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-25T05:25:12Z",
+      "side": 1,
+      "message": "\"enqueue\" doesn\u0027t match what the function is doing on non-tidal flow systems though.  Perhaps \"notify\" since we\u0027re fulfilling the PD spec\u0027s requirement to notify the DPM of the message?  Actually, I suppose the exact wording is \"inform\" but that feels kind of weird for a function name",
+      "parentUuid": "735ad913_f70f7d68",
+      "revId": "3d12473948d545c387857d81cdad340c5322dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "504a5779_a2cf2e15",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 3
@@ -54,6 +96,24 @@
       "writtenOn": "2023-01-24T17:27:10Z",
       "side": 1,
       "message": "Does this mean that `dfp_consume_attention` may read uninitialized memory? (Do DP Attentions always have 1 VDO?)",
+      "revId": "3d12473948d545c387857d81cdad340c5322dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b20b5ad_002b9bd1",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-25T05:25:12Z",
+      "side": 1,
+      "message": "DP Attentions are always defined to have 1 VDO.  So it\u0027s fine for DP, but arguably the generic \"dfp_consume_attention\" should take a length to know whether there\u0027s a valid VDO.\n\nSince that function checks that we\u0027ve entered a mode before consuming the Attention, we\u0027re generally safe from mishaps here.  But I suppose that can be expounded upon via the codified commentary",
+      "parentUuid": "504a5779_a2cf2e15",
       "revId": "3d12473948d545c387857d81cdad340c5322dfd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f8ee6e3_24574c65",
+        "filename": "include/usb_pd_dpm_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-25T05:25:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1abd9fd6_989bc3da",
+      "range": {
+        "startLine": 111,
+        "startChar": 37,
+        "endLine": 111,
+        "endChar": 44
+      },
+      "revId": "3d12473948d545c387857d81cdad340c5322dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ad8cdf8_caef4d71",
@@ -94,6 +178,24 @@
       "writtenOn": "2023-01-24T17:27:10Z",
       "side": 1,
       "message": "What does it do if the queue is empty? Any assumptions on the size of `buf`? Would it make sense to return the value of `length` instead of having it as an output param?",
+      "revId": "3d12473948d545c387857d81cdad340c5322dfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf175e7a_57eadf86",
+        "filename": "include/usb_pd_dpm_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-25T05:25:12Z",
+      "side": 1,
+      "message": "Noted",
+      "parentUuid": "6ad8cdf8_caef4d71",
       "revId": "3d12473948d545c387857d81cdad340c5322dfd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
