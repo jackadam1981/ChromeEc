@@ -16,6 +16,24 @@
       "message": "So if we don\u0027t have the ability to check if flash is erased then we effectively lose any ability to recover from a failed dfu update, the system will potentially not be recoverable. It\u0027ll be worthwhile to figure out if we can do this check.\n\nIt\u0027s not perfect but reading a few bytes chunk starting at CONFIG_RW_MEM_OFF and doing a memcmp against CONFIG_FLASH_ERASED_VALUE32 would be sufficient if we can\u0027t rely on the core library.",
       "revId": "09a65856006b0305d6416d4759bcf86c2f5a2898",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0cdb6de_71764cf8",
+        "filename": "chip/stm32/dfu_bootmanager_main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-25T01:22:38Z",
+      "side": 1,
+      "message": "Actually it probably matters a lot less unless we do partial DFU updates and the checksum check option could address it too. Realize you\u0027re probably not using the servo-dfu flow described so some of the protections are reduced.",
+      "parentUuid": "99e38850_c6f29026",
+      "revId": "09a65856006b0305d6416d4759bcf86c2f5a2898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
