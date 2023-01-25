@@ -94,6 +94,30 @@
       },
       "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5ccca79_39161cd6",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-25T17:35:54Z",
+      "side": 1,
+      "message": "In general it\u0027s not a good idea to add smartness in the EC. A good design is to let the host make all decisions and send only a simple and valid command to the EC. The EC is harder to debug especially in the fields and harder to release a fix.\n\nSo, back to your scenario, I think the fan vendor should configure the speed limit on the host if they want to reduce the noise. The EC should provide only the fan spec with the host (so that the host can determine right duty cycles).\n\nI understand your CL is a quick and easy fix but I\u0027m afraid it\u0027ll create a grey area. A host wouldn\u0027t know why the fan isn\u0027t spinning as fast or slow as it wants.",
+      "parentUuid": "a4762878_ae668462",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
