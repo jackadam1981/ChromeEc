@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b612baeb_32462516",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 7379,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-25T05:24:57Z",
+      "side": 1,
+      "message": "We don\u0027t ever use enums directly in our structs, including our structure to send back the overall command result.  So I think I\u0027m going to err on the side of caution and keep this a uint16_t in the event that some corboot and/or kernel compiler would be unhappy otherwise",
+      "parentUuid": "e5baef69_92ead869",
+      "revId": "0c5b3020836a1add7ef26f18ef60b1d90bf85343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b40b542_0df8060e",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-01-24T16:59:36Z",
       "side": 1,
       "message": "FYI, error messages are optional now.",
+      "revId": "0c5b3020836a1add7ef26f18ef60b1d90bf85343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97924a61_69ea7729",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-25T05:24:57Z",
+      "side": 1,
+      "message": "Touche",
+      "parentUuid": "6b40b542_0df8060e",
       "revId": "0c5b3020836a1add7ef26f18ef60b1d90bf85343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
