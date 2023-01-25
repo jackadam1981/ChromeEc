@@ -91,6 +91,104 @@
       },
       "revId": "278f4a13975ff275d47a4d73f08c74df6fd866c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39bc2e51_76051191",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-25T03:54:31Z",
+      "side": 1,
+      "message": "It\u0027s probably worth adding a comment indicating this when removing call to `ncl_misc_init`",
+      "parentUuid": "fb4079fc_aa84287a",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 52
+      },
+      "revId": "278f4a13975ff275d47a4d73f08c74df6fd866c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25559d35_683ea45e",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-25T03:54:31Z",
+      "side": 1,
+      "message": "Is it worth short circuiting the function on errors? Similarly, should `ctx_p` be be reset if any step fails?\n\nI don\u0027t know enough about the peripheral to know if it will impact anything but as is we will continue initialization after a failure.",
+      "revId": "278f4a13975ff275d47a4d73f08c74df6fd866c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecffa937_92374398",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-25T03:54:31Z",
+      "side": 1,
+      "message": "If `trng_init` fails, should we inhibit generating a random number?",
+      "range": {
+        "startLine": 175,
+        "startChar": 9,
+        "endLine": 175,
+        "endChar": 18
+      },
+      "revId": "278f4a13975ff275d47a4d73f08c74df6fd866c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd42fa14_4bde21eb",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-25T03:54:31Z",
+      "side": 1,
+      "message": "If the system is unable to generate a random number then we probably need to do something more than return zero. We should probably throw a SW panic similar to what is done in stm32 chips. See  http://cs/chromeos_public/src/platform/ec/chip/stm32/trng.c;l\u003d27 for reference",
+      "revId": "278f4a13975ff275d47a4d73f08c74df6fd866c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ae06e95_77ca8b5a",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-01-25T03:54:31Z",
+      "side": 1,
+      "message": "Nit: Not critical for this CL but `command_rand` and `host_command_rand` functions are identical to the ones in stm32/trng.c` so it feels like it might be better to abstract this out to somewhere else.",
+      "revId": "278f4a13975ff275d47a4d73f08c74df6fd866c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
