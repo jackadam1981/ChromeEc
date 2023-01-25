@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ceaf1769_fc6b12cc",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-25T03:48:50Z",
+      "side": 1,
+      "message": "I\u0027d still prefer to avoid weak functions at all. There\u0027s nothing special happening here when it calls the function, so what if we made the initial state another parameter to this function instead? This code doesn\u0027t really care how you get the value, as long as you can provide one.",
+      "parentUuid": "64558a99_971584a8",
+      "revId": "48dfff512bb9cb9cd44dad1838b8ed60273b0b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12c6a5e6_5218a6f0",
         "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq_sm.c",
         "patchSetId": 9
