@@ -184,6 +184,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "486d5799_ebdddc1b",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-25T12:32:26Z",
+      "side": 1,
+      "message": "Cool! Reworked to keep ZEPHYR_BASE as path object and use site, send a patch to use the same in the other presubmit check file I did for coherency. Make not be a bad idea to unify this stuff upstream as well but we need to be check that the module lookup priority path does not change (new one first), should be fine though since the kconfig check still works, and that one does has a module collision.",
+      "parentUuid": "f96eeffa_6055c89a",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 30
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d6b748b_395b4596",
@@ -286,6 +310,30 @@
       "side": 1,
       "message": "You are very right, in that case it gets a `pre-submit` in place of the commit and then proceeds to fail real bad.\n\nHow important is to handle that case? Never even realize it was an option, I\u0027d really like to say it\u0027s not supported, catch the special case and bail out.",
       "parentUuid": "c916ddf9_01ec8340",
+      "range": {
+        "startLine": 68,
+        "startChar": 9,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6ba25dd_1680246c",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-25T12:32:26Z",
+      "side": 1,
+      "message": "Added a skip check.",
+      "parentUuid": "897afcdc_11b7d9f7",
       "range": {
         "startLine": 68,
         "startChar": 9,
@@ -416,6 +464,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af3f7724_452df256",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-25T12:32:26Z",
+      "side": 1,
+      "message": "Changed, need to wait for https://github.com/zephyrproject-rtos/zephyr/pull/54066 to land",
+      "parentUuid": "be632e5d_046eb876",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00c042b7_814e5346",
         "filename": "util/zephyr_check_compliance.py",
         "patchSetId": 8
@@ -451,6 +523,30 @@
       "side": 1,
       "message": "That\u0027d be ideal, I\u0027ll give it a go.",
       "parentUuid": "00c042b7_814e5346",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "5bb1d1558197e1de91a735fb7be273539d054699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c7ba10e_53bb01a3",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-01-25T12:32:26Z",
+      "side": 1,
+      "message": "Waiting for https://github.com/zephyrproject-rtos/zephyr/pull/54066",
+      "parentUuid": "3ceca334_47170a2d",
       "range": {
         "startLine": 104,
         "startChar": 0,
