@@ -16,6 +16,24 @@
       "message": "Should be fine. You can also flash the ec.RW.flat file, which doesn\u0027t have any padding.",
       "revId": "9abf2534275a4fbd06c44c797d5dfc1dc3f8517c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d782e0_de697dfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-25T00:35:15Z",
+      "side": 1,
+      "message": "Thanks for the suggestion.  For this purpose, though, I want to re-flash both RO and RW parts of the image using the ROM DFU bootloader present in STM32 chips.",
+      "parentUuid": "896b2cb2_cbd62f13",
+      "revId": "9abf2534275a4fbd06c44c797d5dfc1dc3f8517c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
