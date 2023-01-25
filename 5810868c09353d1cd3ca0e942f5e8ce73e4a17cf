@@ -94,6 +94,30 @@
       },
       "revId": "5810868c09353d1cd3ca0e942f5e8ce73e4a17cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02de8782_fecd87a0",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 27
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-01-25T22:05:00Z",
+      "side": 1,
+      "message": "I\u0027ve added the change to support nissa. Unfortunately craask didn\u0027t have enough flash to run seperate tcpc callbacks so it\u0027s excluded. Also I noticed the xivur project uses it\u0027s own tcpc_config instead of the common tcpc_config, so I\u0027ve left it alone for now until I understand the implications of changing it. Do you have any suggestions on what device I could test on that\u0027s not craask?",
+      "parentUuid": "3bfd0aed_c3f84fe2",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "5810868c09353d1cd3ca0e942f5e8ce73e4a17cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
