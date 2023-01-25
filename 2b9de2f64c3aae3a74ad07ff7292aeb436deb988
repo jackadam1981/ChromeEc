@@ -16,6 +16,24 @@
       "message": "Nit: Why not just make this change in the CL that introduces thise function?",
       "revId": "2b9de2f64c3aae3a74ad07ff7292aeb436deb988",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdf90236_6eff2298",
+        "filename": "include/usb_pd_dpm_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-25T05:25:21Z",
+      "side": 1,
+      "message": "It\u0027s an artifact of the development iteration.  Easy enough to fix...",
+      "parentUuid": "c82ee801_18271e24",
+      "revId": "2b9de2f64c3aae3a74ad07ff7292aeb436deb988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
