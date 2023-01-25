@@ -118,6 +118,30 @@
       },
       "revId": "5810868c09353d1cd3ca0e942f5e8ce73e4a17cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d643ff60_98146926",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 27
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-25T23:36:11Z",
+      "side": 1,
+      "message": "You will need to test against a board with a Nuvoton EC.  So this includes nivviks, craask, pujjo, xivu, xivur.\n\nI used [BUILD.py](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/nissa/BUILD.py;l\u003d57) to find the EC used on each project.",
+      "parentUuid": "02de8782_fecd87a0",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "5810868c09353d1cd3ca0e942f5e8ce73e4a17cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
