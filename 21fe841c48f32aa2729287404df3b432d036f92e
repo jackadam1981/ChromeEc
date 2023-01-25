@@ -508,6 +508,30 @@
       },
       "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b6b383e_dbdfd8d3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5596,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-25T22:41:41Z",
+      "side": 1,
+      "message": "Switched to clamping the response size based on `response_max` in the host command args. https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4192910 is abandoned.",
+      "parentUuid": "6cb92d74_c20804bf",
+      "range": {
+        "startLine": 5596,
+        "startChar": 37,
+        "endLine": 5596,
+        "endChar": 40
+      },
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
