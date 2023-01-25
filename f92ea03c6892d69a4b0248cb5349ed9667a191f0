@@ -22,6 +22,30 @@
       },
       "revId": "f92ea03c6892d69a4b0248cb5349ed9667a191f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a32f62e_557630c3",
+        "filename": "docs/gsc_without_servod.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-01-25T22:40:17Z",
+      "side": 1,
+      "message": "it seems to be doing the right thing : https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/53/4194953/1/docs/gsc_without_servod.md\n\nbut I\u0027ll add the space for consistency",
+      "parentUuid": "d0cb35f0_7b557c43",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 1
+      },
+      "revId": "f92ea03c6892d69a4b0248cb5349ed9667a191f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
