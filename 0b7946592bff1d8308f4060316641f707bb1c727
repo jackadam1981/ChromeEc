@@ -118,6 +118,30 @@
       },
       "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "465fcf8b_c7ca5ca0",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-01-25T17:49:48Z",
+      "side": 1,
+      "message": "Infact, in the cross bug, we have got confirmation from vendor side that above 30 % only fan will start running. so, for the specific board, if any request for a duty cycle below this value, fan will stop runnning. So, if not  limiting the upper  value, atleast , the lower value must be limited , is what i think.",
+      "parentUuid": "c5ccca79_39161cd6",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
