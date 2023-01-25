@@ -34,6 +34,24 @@
       "parentUuid": "99e38850_c6f29026",
       "revId": "09a65856006b0305d6416d4759bcf86c2f5a2898",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02bc9f5a_6dbf9ecd",
+        "filename": "chip/stm32/dfu_bootmanager_main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-01-25T04:25:57Z",
+      "side": 1,
+      "message": "Yes, if I use dfu-util, which updates block from beginning to end, then an interrupted update would be likely to result in the header block being written, but later parts of the RW firmware not being written, which the existing guard does not protect against.\n\nA specially-crafted replacement for dfu-util could know to perform the update in a particular order (and not erase and re-write the RO section, which dfu-util also does, adding opportunity for irrecoverable situations, no matter the RO flash support.)\n\nFor my particular board, which is typically used on the bench, the end users have the option of pulling BOOT0 high while resetting, in order to enter the DFU bootloader no matter how corrupted the flash is. \n\nWe will probably eventually want a DFU updated that knows about the order of updating blocks, but for now, I would like to not invoke flash routines on STM32L5.",
+      "parentUuid": "c0cdb6de_71764cf8",
+      "revId": "09a65856006b0305d6416d4759bcf86c2f5a2898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
