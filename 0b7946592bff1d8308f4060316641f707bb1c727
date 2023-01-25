@@ -70,6 +70,30 @@
       },
       "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4762878_ae668462",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-01-25T05:20:21Z",
+      "side": 1,
+      "message": "Yes Dai! By default, CONFIG_FAN_MAX_DUTY is set as 100. But , if ODM wants to limit the maximum limit too , we will need to redefine for specific platform to the required value. Now, based on Compal\u0027s requirement, Fan duty is limited between 30 - 100 in brya. As only lower limit is different, i have redefined only lower limit in brya in next CL.  Also,From the DPTF UI interface, there seemed no limit in what value could be configured(which means, anyonemay even write some value above 100 as well by mistake). Since , default MAX is set as 100, it also ensures that, if anyone sends some bad value above 100 by mistake, this limit check also reensures that maximum realistic duty cycle is  always 100. Infact, this CONFIG \u0026 the condition check assures that any specific board can have a limited value within which fan can spun, based on their specific fan vendor requirement. One such scenario, i can think  is like, when fan is running at high speed with 100% \u0026 sound is too loud, to limit the sound, fan vendor may like to limit the speed with a lower duty below 100.",
+      "parentUuid": "a8142ece_c2b2a672",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
