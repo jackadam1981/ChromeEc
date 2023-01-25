@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "276c5735_d0d3c70a",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-25T02:43:35Z",
+      "side": 1,
+      "message": "nit: move this function at the end so that forward declaration of above functions can avoided",
+      "revId": "e0c4f46a217a6025fb270bc0ba4579af7930ffbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c08cafa_9b3f4d6a",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-25T02:43:35Z",
+      "side": 1,
+      "message": "nit: pls add comment for why fallthrough is needed as we are checking for state",
+      "range": {
+        "startLine": 275,
+        "startChar": 2,
+        "endLine": 275,
+        "endChar": 15
+      },
+      "revId": "e0c4f46a217a6025fb270bc0ba4579af7930ffbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed529459_188a3b4f",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-25T02:43:35Z",
+      "side": 1,
+      "message": "some call have bit OR some are new calls. can it be consistent ?",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 6
+      },
+      "revId": "e0c4f46a217a6025fb270bc0ba4579af7930ffbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
