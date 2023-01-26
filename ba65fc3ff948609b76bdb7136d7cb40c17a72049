@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "979a6733_cb10c448",
+        "filename": "docs/zephyr/out_of_chroot.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-26T16:21:00Z",
+      "side": 1,
+      "message": "Nit - the ToC doesn\u0027t appear to support the back-ticks.  The ToC lists this as \"Setup your build environment using\".",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "ba65fc3ff948609b76bdb7136d7cb40c17a72049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd26c817_a098d000",
+        "filename": "docs/zephyr/out_of_chroot.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-26T16:21:00Z",
+      "side": 1,
+      "message": "How is \u003cproject_dir\u003e defined? What should the user use here?",
+      "range": {
+        "startLine": 24,
+        "startChar": 71,
+        "endLine": 24,
+        "endChar": 84
+      },
+      "revId": "ba65fc3ff948609b76bdb7136d7cb40c17a72049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ce7d227_3b5c4353",
         "filename": "docs/zephyr/out_of_chroot.md",
         "patchSetId": 5
