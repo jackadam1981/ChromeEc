@@ -38,7 +38,13 @@ static int history_next, history_pos;
 #endif
 
 /* Current console command line */
+#ifdef CONFIG_CMD_FPSENSOR_DEBUG
+#ifdef
+/* JOSIE will need to create fpmcu_input_buffer_size*/
+static char input_buf[2 * 160 * 160 + 16];
+#else
 static char input_buf[CONFIG_CONSOLE_INPUT_LINE_SIZE];
+#endif
 
 /* Length of current line */
 static int input_len;
