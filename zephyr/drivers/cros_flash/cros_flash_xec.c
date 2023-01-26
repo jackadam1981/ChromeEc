@@ -582,6 +582,10 @@ static int flash_xec_init(const struct device *dev)
 		return -ENODEV;
 	}
 
+	/* initialize spi_cfg, mchp SPI driver checks "SPI word size" field */
+	spi_cfg.frequency = MHZ(24);
+	spi_cfg.operation = SPI_WORD_SET(8) | SPI_LINES_SINGLE;
+
 	return EC_SUCCESS;
 }
 
