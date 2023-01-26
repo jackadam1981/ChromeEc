@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c2c14b_d11a8020",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-26T23:36:17Z",
+      "side": 1,
+      "message": "I think read-modify-write sequences like this involving the power state should have some locking. Without locking to keep the state machine from changing state, it\u0027s possible (though unlikely) that we\u0027ll do something like see the AP off but it moves out of S5 before we request start from G3, so then it will immediately boot again after reaching G3 later.\n\nThis sort of TOCTTOU error is possible in many places throughout the EC that inspect the current AP state, not just here.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 25
+      },
+      "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50825ac4_d4df76d0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-26T23:36:17Z",
+      "side": 1,
+      "message": "I know this change doesn\u0027t do anything to `ap_power_force_shutdown`, but is there a plan for making that handle threading safely? It currently forces power signals to G3 without the state machine\u0027s cooperation (assuming the state machine will follow along and remain in sync) but I think we need to ensure that transition occurs within state machine context (on the thread) to be confident in its correctness.",
+      "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46277bab_67140a90",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-26T23:36:17Z",
+      "side": 1,
+      "message": "This version doesn\u0027t seem to differ from the one above; do we need it?",
+      "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
