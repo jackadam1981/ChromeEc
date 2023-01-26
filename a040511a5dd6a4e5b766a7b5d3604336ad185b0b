@@ -163,6 +163,30 @@
       },
       "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8aee59_f0e97477",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2047,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-26T21:29:40Z",
+      "side": 1,
+      "message": "How did you get 30%, then? When you set duty \u003d 30%, you get rpm \u003d 2200? How much does it deviate between two units? Maybe rpm_min isn\u0027t really right (or not true to the spec)? I\u0027m still not convinced max duty and min duty can\u0027t be calculated (with some reasonable error margin).",
+      "parentUuid": "4a473ccb_0b031cce",
+      "range": {
+        "startLine": 2046,
+        "startChar": 0,
+        "endLine": 2047,
+        "endChar": 35
+      },
+      "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
