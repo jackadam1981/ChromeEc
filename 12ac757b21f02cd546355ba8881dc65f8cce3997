@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c05b96f4_9bf76f85",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-01-26T03:59:04Z",
+      "side": 1,
+      "message": "this can be inside #if",
+      "range": {
+        "startLine": 155,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 35
+      },
+      "revId": "12ac757b21f02cd546355ba8881dc65f8cce3997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
