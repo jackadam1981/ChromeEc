@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0175470_7e6f4e1c",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-26T00:04:32Z",
+      "side": 1,
+      "message": "OK, I have changed this in new patch set, now `ap_pwrseq_sm_init` receives one more parameter, to set initial state.\nI also modified the driver interface to pass this parameter through, it makes more sense to have user to specify which state driver should start.",
+      "parentUuid": "ceaf1769_fc6b12cc",
+      "revId": "48dfff512bb9cb9cd44dad1838b8ed60273b0b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12c6a5e6_5218a6f0",
