@@ -38,7 +38,17 @@ static int history_next, history_pos;
 #endif
 
 /* Current console command line */
+#ifdef CONFIG_CMD_FPSENSOR_DEBUG
+
+/* In debug build, allocate a larger input buffer to accommodate the fpimageload
+ * command. The buffer size depends on the sensor image dimensions.
+ */
+#define FPIMAGELOAD_HEADER_SIZE 24
+#define FPIMAGELOAD_PAYLOAD_SIZE (2 * 160 * 160)
+static char input_buf[FPIMAGELOAD_HEADER_SIZE + FPIMAGELOAD_PAYLOAD_SIZE];
+#else
 static char input_buf[CONFIG_CONSOLE_INPUT_LINE_SIZE];
+#endif
 
 /* Length of current line */
 static int input_len;

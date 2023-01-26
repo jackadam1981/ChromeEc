@@ -2,7 +2,6 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-
 #include "compile_time_macros.h"
 
 extern "C" {
@@ -23,6 +22,7 @@ extern "C" {
 #include "mkbp_event.h"
 #include "overflow.h"
 #include "spi.h"
+#include "stdio.h"
 #include "system.h"
 #include "task.h"
 #include "trng.h"
@@ -808,6 +808,43 @@ static int command_fpcapture(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND_FLAGS(fpcapture, command_fpcapture, NULL,
 			      "Capture fingerprint in PGM format",
 			      CMD_FLAG_RESTRICTED);
+
+/* Transfer an image from the host to the FPMCU
+ *
+ * Command format:
+ *  fpimageload <echo image> <num pixels> <pixel string>
+ *
+ * When echo is "1", the image is sent back to the host. This is useful to
+ * verify the data was transferred correctly. Note that it requires the terminal
+ * to be configured as explained in the comment above upload_pgm_image().
+ */
+static int command_fpimageload(int argc, const char **argv)
+{
+	int echo;
+	int num_pixels;
+
+	if (system_is_locked())
+		return EC_ERROR_ACCESS_DENIED;
+
+	uint8_t *ptr = fp_buffer + FP_SENSOR_IMAGE_OFFSET;
+	sscanf(argv[1], "%d", &echo);
+	sscanf(argv[2], "%d", &num_pixels);
+	const char *pixels_str = argv[3];
+
+	// TODO(b/267312024): check that num_pixels is consistent with the size
+	// of the sensor currently used
+	for (int i = 0; i < num_pixels; i++, pixels_str += 2, ptr++) {
+		char hex_str[2];
+		sscanf(pixels_str, "%02c", hex_str);
+		*ptr = (uint8_t)strtol(hex_str, NULL, 16);
+	}
+	if (echo)
+		upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fpimageload, command_fpimageload, NULL,
+			"Load fp image onto fpmcu fpsensor buffer");
 
 static int command_fpenroll(int argc, const char **argv)
 {
