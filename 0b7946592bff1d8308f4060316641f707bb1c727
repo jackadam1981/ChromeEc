@@ -166,6 +166,30 @@
       },
       "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef6c2ce6_7862c1ed",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-01-26T19:09:45Z",
+      "side": 1,
+      "message": "At present,what i see is all the config decided by fan vendor is configured at ec side for each board and not at the host side. For instance , the rpm limit of brya to 4200 to control noise is given at ec level. similarly, i think duty cycle must also be configured at ec level only.\nAlso, as per the current design of  dptf policy, at UI level, the design is such that  any fan duty value could be selected, which is also why this design to limit the fan duty at ec level itself was asked by the dptf team.\nAgain, at UI level, it shows what is the requested \u0026 accepted value too, which means, at host side, they becomes aware of what is requested \u0026 what gets set in reality as well. \nAlso, at present, ectool, console command or over acpi (for dptf) are the only way duty cycle can be requested to be set. In case , if we redesign current dptf implementation, where it 1st reads the board specific fan config \u0026 further tries to limit fan duty or even  rpm settings only within that config what is retrieved for each platform  in the UI, we may have to redesign even the console command \u0026 ectool commands as well, where each command  must retrieve the config of whichever platform \u0026 then let the user to enter the value to be set within that limit only. I think , this is adding unnecessary overhead. Instead, anyways as the config of fan is known only at EC level, there is practically no need to let the user know of the limit, but system has to be just careful not to set bad value \u0026 stop the fan, if the host by mistake,asks for a non-supportable value. May be for debug purpose, adding a host command which sends the complete config of fan to host is a good idea though, because, if at host side, when they see that, corrresponding requested value is not getting set, this command could be just used for their debug purpose to clarify on why it didn\u0027t get set.",
+      "parentUuid": "9e1f13d0_e70dfd6f",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "0b7946592bff1d8308f4060316641f707bb1c727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
