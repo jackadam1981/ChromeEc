@@ -2,9 +2,9 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-
+#include <inttypes.h>
 #include "compile_time_macros.h"
-
+#include <cstdio>
 extern "C" {
 #include "atomic.h"
 #include "clock.h"
@@ -808,6 +808,32 @@ static int command_fpcapture(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND_FLAGS(fpcapture, command_fpcapture, NULL,
 			      "Capture fingerprint in PGM format",
 			      CMD_FLAG_RESTRICTED);
+
+/* fpimageload <echo image> <num pixels> <pixel string> */
+static int command_fpimageload(int argc, const char **argv)
+{
+	if (system_is_locked())
+		return EC_ERROR_ACCESS_DENIED;
+
+	uint8_t *ptr = fp_buffer + FP_SENSOR_IMAGE_OFFSET;
+	int len;
+	int echo;
+	sscanf(argv[1], "%d", &echo);
+	sscanf(argv[2], "%d", &len);
+	const char *argv1 = argv[3];
+	char tmpstr[2];
+	char *charptr;
+	for (int i = 0; i < len; i++, argv1 += 2, ptr++) {
+		sscanf(argv1, "%02c", tmpstr);
+		*ptr = (uint8_t)strtol(tmpstr, &charptr, 16);
+	}
+	cflush();
+	if(echo)
+		upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fpimageload, command_fpimageload, NULL,
+			"Load fp image onto fpmcu fpsensor buffer");
 
 static int command_fpenroll(int argc, const char **argv)
 {
