@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d34d092_7e0cd555",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-26T23:02:56Z",
+      "side": 1,
+      "message": "These should be swapped, since the state machine documentation in the preceding CL says that exit callbacks run first (which makes sense to me, because you can\u0027t enter a new state before you exit the old one).",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 59
+      },
+      "revId": "cab414c5843474277db1ffd873f6ac71c1c7af9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
