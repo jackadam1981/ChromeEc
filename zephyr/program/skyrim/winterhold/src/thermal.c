@@ -77,6 +77,7 @@ static int last_amb_temp = -1;
 /* Switch thermal table when mode change */
 static void thermal_table_switch(void)
 {
+#if 0
 	enum body_detect_states body_state = body_detect_get_state();
 
 	if (body_state == BODY_DETECTION_OFF_BODY) {
@@ -91,6 +92,7 @@ static void thermal_table_switch(void)
 		thermal_params[TEMP_AMB] = thermal_laptop;
 		CPRINTS("Thermal: Laptop mode");
 	}
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, thermal_table_switch, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_LID_CHANGE, thermal_table_switch, HOOK_PRIO_DEFAULT);

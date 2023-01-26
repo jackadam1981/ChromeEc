@@ -197,6 +197,9 @@ static int lis2dw12_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	do {
 		RETURN_ERROR(lis2dw12_get_fifo_samples(s, &nsamples));
 
+		if (nsamples > 1)
+			CPRINTS("%s: need to read %d samples ", s->name, nsamples);
+
 		if (nsamples != 0) {
 			commit_needed = true;
 			RETURN_ERROR(lis2dw12_load_fifo(s, nsamples));
