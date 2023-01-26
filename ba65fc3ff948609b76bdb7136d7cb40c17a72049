@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2499dd4_2e6bf89e",
+        "filename": "docs/zephyr/out_of_chroot.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-01-26T05:41:47Z",
+      "side": 1,
+      "message": "We should document that this currently only works for testing, we need to integrate with https://docs.zephyrproject.org/latest/build/sysbuild/index.html in order to be able to build/flash images via commands like `west build projects/herobrine`",
+      "revId": "ba65fc3ff948609b76bdb7136d7cb40c17a72049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce7d227_3b5c4353",
+        "filename": "docs/zephyr/out_of_chroot.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-01-26T05:41:47Z",
+      "side": 1,
+      "message": "I think you need to add `#` to all these sections to make them subsections",
+      "revId": "ba65fc3ff948609b76bdb7136d7cb40c17a72049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
