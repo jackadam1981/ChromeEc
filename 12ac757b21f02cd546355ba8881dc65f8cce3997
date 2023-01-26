@@ -22,6 +22,30 @@
       },
       "revId": "12ac757b21f02cd546355ba8881dc65f8cce3997",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a26722_70d5ff34",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-26T04:43:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c05b96f4_9bf76f85",
+      "range": {
+        "startLine": 155,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 35
+      },
+      "revId": "12ac757b21f02cd546355ba8881dc65f8cce3997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
