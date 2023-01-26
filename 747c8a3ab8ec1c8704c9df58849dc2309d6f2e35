@@ -16,6 +16,24 @@
       "message": "Hey Jett, I wonder if you could do a preliminary review of this new \"logic analyzer\" functionality for HyperDebug, which will go together with https://github.com/lowRISC/opentitan/pull/17162 .\n\nMy hope is that with the bit-packed representation, using only one byte per edge event, HyperDebug will be able to record the entire the ITE bootloader waveform (as far as I recall, it was 50ms of 200kHz and 100kHz signals, in a particular phase relationship, which would amount to 30000 edges.)  For that to work, the performance of the interrupt routine would have to improved quite a bit, though, as there would only be about 100 clock cycles between the edges.",
       "revId": "747c8a3ab8ec1c8704c9df58849dc2309d6f2e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f2cee12_fef3948d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-01-26T21:00:59Z",
+      "side": 1,
+      "message": "For sure, I will take a look at both changes",
+      "parentUuid": "f2f96c8d_a1a33c29",
+      "revId": "747c8a3ab8ec1c8704c9df58849dc2309d6f2e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
