@@ -22,6 +22,30 @@
       },
       "revId": "74d5903072d2308d7215ad738bcb325a6bf7921b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c8e9856_caf1a80c",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-27T21:58:57Z",
+      "side": 0,
+      "message": "The long term goal here would be that the `wakeup-irqs` property gets converted to a `wakeup-gpios`, matching the upstream convention.\n\nI see two options:\n1. Leave the Intel platform alone, using the legacy TCPC interrupt model.\n2. Add the `wakeup-gpios` property, but continue to allow `wakeup-irqs`.\n\n```\nhibernate-wake-pins {\n  wakeup-irqs \u003d \u003c\u0026int_ac_present ...\u003e;\n  wakeup-gpios \u003d \n    \u003c\u0026gpio4 0 GPIO_ACTIVE_LOW\u003e, /* port 0 */\n    \u003c\u0026gpio6 3 GPIO_ACTIVE_LOW\u003e, /* Port 2 */\n    \u003c\u0026gpio6 7 GPIO_ACTIVE_LOW\u003e; /* port 3 */\n  \n```\n\nYou would need to add another `DT_FOREACH_PROP_ELEM()` for the `wakeup-gpios` property.  The IRQ callback has already been setup by the TCPC driver, so your helper macro only needs to call `gpio_pin_configure_dt()` and `gpio_pin_interrupt_configure()`.",
+      "parentUuid": "9b4dbd62_2d0118b5",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "74d5903072d2308d7215ad738bcb325a6bf7921b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
