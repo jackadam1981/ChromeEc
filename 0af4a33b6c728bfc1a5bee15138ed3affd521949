@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5088d2_7ad95881",
+        "filename": "zephyr/program/nissa/craask/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-27T00:49:22Z",
+      "side": 1,
+      "message": "This will always enable the PD logs at this level with no option to disable them, which doesn\u0027t seem right (because we currently default them off).",
+      "revId": "0af4a33b6c728bfc1a5bee15138ed3affd521949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
