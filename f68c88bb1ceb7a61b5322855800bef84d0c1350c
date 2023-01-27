@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d101311b_43280f97",
+        "filename": "board/nocturne_fp/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-01-27T02:10:12Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\nwhen I make for Bloonchipper, I am getting the below error message:\n```\ndriver/fingerprint/fpc/fpc_sensor.h:18:2: error: \"Sensor type not defined!\"\n#error \"Sensor type not defined!\"\n ^\nIn file included from test/tpm_seed_clear.c:8:\ninclude/fpsensor_state.h:43:26: error: use of undeclared identifier \u0027FP_SENSOR_IMAGE_SIZE\u0027\nextern uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE];\n                         ^\ninclude/fpsensor_state.h:45:28: error: use of undeclared identifier \u0027FP_MAX_FINGER_COUNT\u0027\nextern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];\n                           ^\ninclude/fpsensor_state.h:45:49: error: use of undeclared identifier \u0027FP_ALGORITHM_TEMPLATE_SIZE\u0027\nextern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];\n                                                ^\ninclude/fpsensor_state.h:52:30: error: use of undeclared identifier \u0027FP_ALGORITHM_TEMPLATE_SIZE\u0027\nextern uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];\n                             ^\ninclude/fpsensor_state.h:31:3: note: expanded from macro \u0027FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE\u0027\n        (FP_ALGORITHM_TEMPLATE_SIZE + FP_POSITIVE_MATCH_SALT_BYTES + \\\n         ^\ninclude/fpsensor_state.h:54:39: error: use of undeclared identifier \u0027FP_MAX_FINGER_COUNT\u0027\nextern uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]\n```\nwhere do I need to make these definitions. Is there a doc that goes through these?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 23
+      },
+      "revId": "f68c88bb1ceb7a61b5322855800bef84d0c1350c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5165c5ca_d7b9b9d5",
+        "filename": "test/tpm_seed_clear.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-01-27T02:10:12Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\n\nI understand that tpm_seed is an extern in fp_sensor_state.h, which means it does not have allocated memory. I can check the size. However, I am not able to use the variable. How do I access its definition in fpsensor_state.c file?",
+      "range": {
+        "startLine": 27,
+        "startChar": 56,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "f68c88bb1ceb7a61b5322855800bef84d0c1350c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
