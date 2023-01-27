@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2caeae91_3dce5981",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-01-27T11:28:34Z",
+      "side": 1,
+      "message": "Added in the latest flash_ec script\nsudo bash flash_ec --board\u003dmtlrvpp_mchp --image ../build/adlrvpp_mchp1727/ec.bin",
+      "revId": "18fb04d822d7f90a3c178b48b123d276b37a2ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
