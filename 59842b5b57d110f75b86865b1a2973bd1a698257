@@ -405,6 +405,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed271f3_86dc214a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2023-01-27T07:27:29Z",
+      "side": 1,
+      "message": "Added detailed information along with code locations on b:266221111 with our findings. Yes, it will help us to track this change in future. Thanks for your suggestions.",
+      "parentUuid": "258d83f9_3c9acb3d",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
