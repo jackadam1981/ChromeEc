@@ -63,6 +63,30 @@
       },
       "revId": "f4aca351f3ccab06855575722461434da45cff06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb554f5_a6e9e964",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-01-27T20:14:21Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure where the interrupts are disabled, but the original code would have re-enabled the tcpc through the `gpio-int` driver using the `WAKEUP_SETUP` macro above. I\u0027m just trying to replicate the change now that my tcpc driver is no longer dependent on `gpio-int`. See the .dts change I flagged.",
+      "parentUuid": "4b72d07d_83d22e84",
+      "range": {
+        "startLine": 219,
+        "startChar": 7,
+        "endLine": 219,
+        "endChar": 31
+      },
+      "revId": "f4aca351f3ccab06855575722461434da45cff06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
