@@ -16,6 +16,75 @@
       "message": "This has been tested on bloonchipper, not yet dartmonkey",
       "revId": "34727ceeb0a345e5c9d3512ef57be7d12fede906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95cdd50b_d43d3542",
+        "filename": "common/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T01:22:47Z",
+      "side": 1,
+      "message": "create macro for bloonchipper \u0026 dartmonkey",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "34727ceeb0a345e5c9d3512ef57be7d12fede906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a3498c3_6be6a3be",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1639,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T01:22:47Z",
+      "side": 1,
+      "message": "revert this file. This change should not be merged.",
+      "range": {
+        "startLine": 1639,
+        "startChar": 0,
+        "endLine": 1639,
+        "endChar": 7
+      },
+      "revId": "34727ceeb0a345e5c9d3512ef57be7d12fede906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4880f82a_b2d6183c",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T01:22:47Z",
+      "side": 1,
+      "message": "need to confirm that width and height are correct",
+      "range": {
+        "startLine": 212,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 56
+      },
+      "revId": "34727ceeb0a345e5c9d3512ef57be7d12fede906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
