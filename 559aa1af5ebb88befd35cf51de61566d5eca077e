@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d22f775_e221e68b",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-01-27T21:11:48Z",
+      "side": 1,
+      "message": "1) We should add these values as devicetree properties and use them from there. Probably add them as default values to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/dts/bindings/cros_flash/microchip,xec-cros-flash.yaml\n\n2) Can we initialize the `spi_cfg` values at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/drivers/cros_flash/cros_flash_xec.c;l\u003d35 in `spi_cfg`\u0027s declaration?",
+      "range": {
+        "startLine": 586,
+        "startChar": 0,
+        "endLine": 587,
+        "endChar": 56
+      },
+      "revId": "559aa1af5ebb88befd35cf51de61566d5eca077e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
