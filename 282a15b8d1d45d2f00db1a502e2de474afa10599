@@ -22,6 +22,30 @@
       },
       "revId": "282a15b8d1d45d2f00db1a502e2de474afa10599",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6744bf45_c263c697",
+        "filename": "zephyr/program/nissa/craask/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2023-01-27T21:47:42Z",
+      "side": 1,
+      "message": "So I was going to add some discussion in b/266879860 about this, as I was\nworking through the options, but didn\u0027t get around to completely capturing\nwhat I wanted to say.\nThe issue is that there are assumptions about the debug level and\nwhether the labels are stored, so that it is not possible to set an initial\ndebug level of 0 (to prevent excess logging), allow this to be modified via\nthe CLI, and not have the labels present (so that the state numbers are\nused instead).\nIt would be good to have a separate config item to specify whether the\nlabels are present, and then to have a separate init debug level. In this\ncase I am not sure that the FIXED_DEBUG_LEVEL is required (which doesn\u0027t seem\nthat useful in that the only useful setting is 0 to stop all logging and not\nstore the labels).\nI\u0027ve now copied this bit into that bug.\n\nSo I think more work is needed to clean this up a bit, and in the meantime,\nmaybe I\u0027ll just stick with the CONFIG_SHELL_HELP\u003dn which likely\ngives us enough head room for the short term.",
+      "parentUuid": "a94360a2_109f53a7",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 39
+      },
+      "revId": "282a15b8d1d45d2f00db1a502e2de474afa10599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
