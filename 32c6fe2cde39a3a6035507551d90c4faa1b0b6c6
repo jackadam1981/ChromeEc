@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "292895f2_5fe98646",
+        "filename": "zephyr/test/skyrim/src/common/ppc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-27T17:57:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure how much the port 1 tests make sense here, given that we only use this on C0 on skyrim?  I suppose we could have our board function check that the port \u003d\u003d 0 and expect an error on other ports?",
+      "revId": "32c6fe2cde39a3a6035507551d90c4faa1b0b6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
