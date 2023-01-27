@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7706e4eb_a39d779f",
+        "filename": "common/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T18:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09698293_a0c70031",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb5f192e_927437be",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-27T16:55:59Z",
       "side": 1,
       "message": "I assume JLink is not strictly required, right? Can this be used only with a servomicro?",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aed909c1_0579f4bd",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T18:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb5f192e_927437be",
       "range": {
         "startLine": 10,
         "startChar": 13,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3449dbf_a40ebee3",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T18:32:40Z",
+      "side": 1,
+      "message": "many of these support unused arguments that may be removed during refactor",
+      "parentUuid": "0aa170fd_bc40c3db",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c0b089b_0220ca2b",
         "filename": "util/fpmcu_loadimage.py",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2023-01-27T16:55:59Z",
       "side": 1,
       "message": "Do we need this big set of variables? From an initial look, I think we are only using `servo_uart_name`, which is set to `raw_fpmcu_console_uart_pty` in both board configurations.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 1
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e43833bc_ca1e15bd",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T18:32:40Z",
+      "side": 1,
+      "message": "Hopefully this code will migrate to a shared \"get_console\" file with the refactor of run_device_tests.py",
+      "parentUuid": "3c0b089b_0220ca2b",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -303,6 +399,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c504064b_9166d1b2",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T18:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "580f40ed_220067b3",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 42
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "deb7652d_0717e11b",
@@ -344,6 +464,54 @@
         "startChar": 8,
         "endLine": 239,
         "endChar": 18
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22eeeb28_c3b0b09a",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T18:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2263016c_7963559a",
+      "range": {
+        "startLine": 239,
+        "startChar": 8,
+        "endLine": 239,
+        "endChar": 18
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c7c42e_7f398c5f",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T18:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deb7652d_0717e11b",
+      "range": {
+        "startLine": 239,
+        "startChar": 42,
+        "endLine": 239,
+        "endChar": 60
       },
       "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
