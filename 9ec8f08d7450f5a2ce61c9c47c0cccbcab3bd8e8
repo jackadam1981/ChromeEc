@@ -46,6 +46,30 @@
       },
       "revId": "9ec8f08d7450f5a2ce61c9c47c0cccbcab3bd8e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55691af_090626fe",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-01-27T21:49:09Z",
+      "side": 1,
+      "message": "ok. i just wanted 2 independent CLs, this will make dependent ones",
+      "parentUuid": "1135d632_e266f447",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 41
+      },
+      "revId": "9ec8f08d7450f5a2ce61c9c47c0cccbcab3bd8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
