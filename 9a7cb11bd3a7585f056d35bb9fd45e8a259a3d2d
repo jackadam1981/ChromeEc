@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4ad147_046c5f5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-01-27T07:08:36Z",
+      "side": 1,
+      "message": "I think the problem is that it is including `RO/common/fpsensor/fpsensor_state.o`, which is included in `fpsensor_crypto` where printing the `tpm_seed` works. I am not sure which configuration I need to change to make this happen",
+      "revId": "9a7cb11bd3a7585f056d35bb9fd45e8a259a3d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
