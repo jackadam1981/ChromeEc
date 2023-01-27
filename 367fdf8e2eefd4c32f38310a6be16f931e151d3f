@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e97fe74e_0445378d",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-27T02:22:03Z",
+      "side": 1,
+      "message": "I agree, how about instead of locking, we \"pause\" its execution and resume afterwards?",
+      "parentUuid": "02c2c14b_d11a8020",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 25
+      },
+      "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50825ac4_d4df76d0",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
         "patchSetId": 18
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f99ea203_de95bf1f",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-27T02:22:03Z",
+      "side": 1,
+      "message": "Same principle may apply as avobe.",
+      "parentUuid": "50825ac4_d4df76d0",
+      "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46277bab_67140a90",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
         "patchSetId": 18
@@ -54,6 +96,24 @@
       "writtenOn": "2023-01-26T23:36:17Z",
       "side": 1,
       "message": "This version doesn\u0027t seem to differ from the one above; do we need it?",
+      "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c14f8553_4d6ba499",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-27T02:22:03Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "46277bab_67140a90",
       "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
