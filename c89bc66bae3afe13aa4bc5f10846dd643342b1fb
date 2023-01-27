@@ -16,6 +16,24 @@
       "message": "Is this supposed to continue executing and fail later or did you mean to exit at this point?",
       "revId": "c89bc66bae3afe13aa4bc5f10846dd643342b1fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b38cf9_a38a7b65",
+        "filename": "util/check_zephyr_project_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-27T18:33:58Z",
+      "side": 1,
+      "message": "I wanted to provide info why the import below fails.  I can raise an exception here instead.",
+      "parentUuid": "ae039335_f52b8bac",
+      "revId": "c89bc66bae3afe13aa4bc5f10846dd643342b1fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
