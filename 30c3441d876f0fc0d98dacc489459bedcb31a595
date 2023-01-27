@@ -139,6 +139,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb3249a1_a6fa1a9e",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T18:26:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5caa434f_34f8b4b9",
+      "range": {
+        "startLine": 200,
+        "startChar": 19,
+        "endLine": 200,
+        "endChar": 29
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ae9497b_096bf47d",
@@ -152,6 +176,30 @@
       "writtenOn": "2023-01-27T16:55:59Z",
       "side": 1,
       "message": "Trailing whitespace",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 4
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88133350_572ff792",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T18:26:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae9497b_096bf47d",
       "range": {
         "startLine": 205,
         "startChar": 0,
@@ -198,6 +246,30 @@
       "writtenOn": "2023-01-27T16:55:59Z",
       "side": 1,
       "message": "Can we directly rename `i` and `j` to `x` and `y`?",
+      "range": {
+        "startLine": 232,
+        "startChar": 30,
+        "endLine": 232,
+        "endChar": 41
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c2dc48_02e6880d",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-01-27T18:26:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "704feed1_9ba63a47",
       "range": {
         "startLine": 232,
         "startChar": 30,
