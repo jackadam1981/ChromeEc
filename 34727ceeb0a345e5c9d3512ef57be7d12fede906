@@ -85,6 +85,30 @@
       },
       "revId": "34727ceeb0a345e5c9d3512ef57be7d12fede906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd59c1bc_21b607d9",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-27T16:55:59Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we swap width and height? That is:\n\n```\nw !\u003d 192 or h !\u003d 56\n```",
+      "parentUuid": "4880f82a_b2d6183c",
+      "range": {
+        "startLine": 212,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 56
+      },
+      "revId": "34727ceeb0a345e5c9d3512ef57be7d12fede906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

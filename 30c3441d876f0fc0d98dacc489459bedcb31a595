@@ -22,6 +22,259 @@
       },
       "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5f192e_927437be",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-27T16:55:59Z",
+      "side": 1,
+      "message": "I assume JLink is not strictly required, right? Can this be used only with a servomicro?",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa170fd_bc40c3db",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-27T16:55:59Z",
+      "side": 1,
+      "message": "Nit: I suspect some of these are no longer required.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0b089b_0220ca2b",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-27T16:55:59Z",
+      "side": 1,
+      "message": "Do we need this big set of variables? From an initial look, I think we are only using `servo_uart_name`, which is set to `raw_fpmcu_console_uart_pty` in both board configurations.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 1
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f7e2091_a7c787fa",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-27T16:55:59Z",
+      "side": 1,
+      "message": "Did you also test these?\nTo keep things easy at the beginning we can omit the options for remote execution.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 5
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5caa434f_34f8b4b9",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-27T16:55:59Z",
+      "side": 1,
+      "message": "Nit: we can directly use `args.image` instead of declaring another intermediate variable `inputimgfile`.",
+      "range": {
+        "startLine": 200,
+        "startChar": 19,
+        "endLine": 200,
+        "endChar": 29
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae9497b_096bf47d",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-27T16:55:59Z",
+      "side": 1,
+      "message": "Trailing whitespace",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 4
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53904978_05ec8efc",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-27T16:55:59Z",
+      "side": 1,
+      "message": "Instead of using the magic number, I would add the expected size and width directly to the `board_config`. So we can do:\n\n```\nif w !\u003d board_config.width or h !\u003d board_config.height:\n  logging.error(\"This img size is (w, h) instead of (board_config.width, board_config.height)\")\n```",
+      "range": {
+        "startLine": 209,
+        "startChar": 21,
+        "endLine": 209,
+        "endChar": 24
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704feed1_9ba63a47",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-27T16:55:59Z",
+      "side": 1,
+      "message": "Can we directly rename `i` and `j` to `x` and `y`?",
+      "range": {
+        "startLine": 232,
+        "startChar": 30,
+        "endLine": 232,
+        "endChar": 41
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "580f40ed_220067b3",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-27T16:55:59Z",
+      "side": 1,
+      "message": "I read this code a few times and I am not sure what\u0027s the intention. Maybe add a a comment to clarify?",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 42
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb7652d_0717e11b",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-27T16:55:59Z",
+      "side": 1,
+      "message": "Nit: to make this easier to read, could we assign this to a temporary variable that has a meaningful name?",
+      "range": {
+        "startLine": 239,
+        "startChar": 42,
+        "endLine": 239,
+        "endChar": 60
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2263016c_7963559a",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-27T16:55:59Z",
+      "side": 1,
+      "message": "Nit: for reference, we can add a comment with the expected format of the `fpimageload` command. I believe it should be something like\n\n```\nfpimageload \u003cnum bytes\u003e \u003cbytes sequence\u003e\n```\n\nright?",
+      "range": {
+        "startLine": 239,
+        "startChar": 8,
+        "endLine": 239,
+        "endChar": 18
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
