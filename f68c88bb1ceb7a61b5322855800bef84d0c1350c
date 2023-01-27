@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa15326a_c969d0cd",
+        "filename": "board/nocturne_fp/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-01-27T06:30:43Z",
+      "side": 1,
+      "message": "I added a definition for the 1025 sensor (I think I need to check how to add condition config for 1145 and 1025) in the test_config file and the mock to the functions in fpsensor.h\nright now, things compile and arrive at the error that `tmp_seed` is undefined:\n```\nld.lld: error: undefined symbol: tpm_seed\n\u003e\u003e\u003e referenced by tpm_seed_clear.c:0 (/home/fsammoura/chromiumos/src/platform/ec/test/tpm_seed_clear.c:0)\n\u003e\u003e\u003e               build/bloonchipper/tpm_seed_clear/RO/test/tpm_seed_clear.o:(run_test)\nclang-16: error: ld.lld command failed with exit code 1 (use -v to see invocation)\nmake[1]: *** [Makefile.rules:593: build/bloonchipper/tpm_seed_clear/RO/tpm_seed_clear.RO.elf] Error 1\nmake: *** [Makefile.rules:334: test-tpm_seed_clear] Error 2\n```\n\nSo the errors between the host and board are the same",
+      "parentUuid": "d101311b_43280f97",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 23
+      },
+      "revId": "f68c88bb1ceb7a61b5322855800bef84d0c1350c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5165c5ca_d7b9b9d5",
         "filename": "test/tpm_seed_clear.c",
         "patchSetId": 1
