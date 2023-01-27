@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a98db7f5_37903d89",
+        "filename": "docs/zephyr/out_of_chroot.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-27T22:10:42Z",
+      "side": 1,
+      "message": "Can you provide a tree view of what\u0027s created?  The output from `tree -d -L 2` is probably sufficient here.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "a157d991bc76d6b8d2cd94dd642ba938a5c93352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
