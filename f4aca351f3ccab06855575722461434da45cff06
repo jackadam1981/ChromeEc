@@ -39,6 +39,30 @@
       },
       "revId": "f4aca351f3ccab06855575722461434da45cff06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b72d07d_83d22e84",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-27T18:08:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure why this is needed.  Isn\u0027t the GPIO type set to input and the interrupt enabled at initialization time.  Is there code that can disable the interrupt prior to entering hibernate mode.",
+      "parentUuid": "4a327230_7ff16e5e",
+      "range": {
+        "startLine": 219,
+        "startChar": 7,
+        "endLine": 219,
+        "endChar": 31
+      },
+      "revId": "f4aca351f3ccab06855575722461434da45cff06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
