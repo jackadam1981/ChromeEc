@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d52a7a2c_624936c1",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-01-27T18:40:53Z",
+      "side": 1,
+      "message": "why not add another value to CRYPT_RESULT values list in tpm2/CryptoEngine.h?",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 41
+      },
+      "revId": "9ec8f08d7450f5a2ce61c9c47c0cccbcab3bd8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
