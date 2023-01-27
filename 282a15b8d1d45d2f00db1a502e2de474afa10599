@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a94360a2_109f53a7",
+        "filename": "zephyr/program/nissa/craask/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-27T21:28:58Z",
+      "side": 1,
+      "message": "Doesn\u0027t this permanently disable all PD debugging due to the change made in the parent CL?\n\nI don\u0027t think that\u0027s what you want.  It will make PD related issue impossible to debug in the field.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 39
+      },
+      "revId": "282a15b8d1d45d2f00db1a502e2de474afa10599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
