@@ -7808,7 +7808,9 @@ void pd_dfp_mode_init(int port)
 
 	/* Reset the DPM and DP modules to enable alternate mode entry. */
 	dpm_mode_exit_complete(port);
-	dp_init(port);
+
+	if (IS_ENABLED(CONFIG_USB_PD_DP_MODE))
+		dp_init(port);
 
 	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
 		tbt_init(port);

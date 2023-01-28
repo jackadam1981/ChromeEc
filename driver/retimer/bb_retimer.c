@@ -433,7 +433,8 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	 * 0 – No DP connection
 	 * 1 – DP connected
 	 */
-	if (mux_state & USB_PD_MUX_DP_ENABLED) {
+	if (IS_ENABLED(CONFIG_USB_PD_DP_MODE) &&
+	    (mux_state & USB_PD_MUX_DP_ENABLED)) {
 		set_retimer_con |= BB_RETIMER_DP_CONNECTION;
 
 		/*

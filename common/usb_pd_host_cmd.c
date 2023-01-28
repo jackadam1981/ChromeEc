@@ -363,7 +363,7 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 			r_v2->state[0] = '\0';
 
 		r_v2->control_flags = get_pd_control_flags(p->port);
-		if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
+		if (IS_ENABLED(CONFIG_USB_PD_DP_MODE)) {
 			r_v2->dp_mode = get_dp_pin_mode(p->port);
 			if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE)) {
 				r_v2->cable_speed =
@@ -371,6 +371,8 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 				r_v2->cable_gen =
 					get_tbt_rounded_support(p->port);
 			}
+		} else {
+			r_v2->dp_mode = 0;
 		}
 
 		if (args->version == 1)

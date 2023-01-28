@@ -284,16 +284,18 @@ enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 		return EC_RES_BUSY;
 
 	switch (mode) {
+#ifdef CONFIG_USB_PD_DP_MODE
 	case TYPEC_MODE_DP:
 		if (dp_is_idle(port))
 			dp_init(port);
 		DPM_SET_FLAG(port, DPM_FLAG_ENTER_DP);
 		break;
+#endif /* CONFIG_USB_PD_DP_MODE */
 #ifdef CONFIG_USB_PD_TBT_COMPAT_MODE
 	case TYPEC_MODE_TBT:
 		/* TODO(b/235984702#comment21): Refactor alt mode modules
 		 * to better support mode reentry. */
-		if (dp_is_idle(port))
+		if (IS_ENABLED(CONFIG_USB_PD_DP_MODE) && dp_is_idle(port))
 			dp_init(port);
 		DPM_SET_FLAG(port, DPM_FLAG_ENTER_TBT);
 		break;
@@ -413,7 +415,9 @@ void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 #else
 	switch (svid) {
 	case USB_SID_DISPLAYPORT:
+#ifdef CONFIG_USB_PD_DP_MODE
 		dp_vdm_acked(port, type, vdo_count, vdm);
+#endif
 		break;
 	case USB_VID_INTEL:
 /* TODO (http://b/255967867) Can't use the IS_ENABLED macro here because
@@ -453,7 +457,9 @@ void dpm_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 #else
 	switch (svid) {
 	case USB_SID_DISPLAYPORT:
+#ifdef CONFIG_USB_PD_DP_MODE
 		dp_vdm_naked(port, type, vdm_cmd);
+#endif
 		break;
 	case USB_VID_INTEL:
 /* TODO (http://b/255967867) Can't use the IS_ENABLED macro here because
@@ -1218,7 +1224,7 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	    pd_get_modes_discovery(port, TCPCI_MSG_SOP) != PD_DISC_COMPLETE)
 		return false;
 
-	if (dp_entry_is_done(port) ||
+	if ((IS_ENABLED(CONFIG_USB_PD_DP_MODE) && dp_entry_is_done(port)) ||
 	    (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
 	     tbt_entry_is_done(port)) ||
 	    (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_entry_is_done(port))) {
@@ -1269,7 +1275,8 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	}
 
 	/* If not, check if they support DisplayPort alt mode. */
-	if (status == MSG_SETUP_UNSUPPORTED &&
+	if (IS_ENABLED(CONFIG_USB_PD_DP_MODE) &&
+	    status == MSG_SETUP_UNSUPPORTED &&
 	    !DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE) &&
 	    pd_is_mode_discovered_for_svid(port, TCPCI_MSG_SOP,
 					   USB_SID_DISPLAYPORT) &&
@@ -1364,7 +1371,7 @@ static bool dpm_dfp_exit_mode_msg(int port)
 		CPRINTS("C%d: TBT teardown", port);
 		tbt_exit_mode_request(port);
 		status = tbt_setup_next_vdm(port, &vdo_count, vdm, &tx_type);
-	} else if (dp_is_active(port)) {
+	} else if (IS_ENABLED(CONFIG_USB_PD_DP_MODE) && dp_is_active(port)) {
 		CPRINTS("C%d: DP teardown", port);
 		status = dp_setup_next_vdm(port, &vdo_count, vdm);
 	} else {

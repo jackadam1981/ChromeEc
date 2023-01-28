@@ -202,7 +202,10 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 						      PD_ROLE_VCONN_OFF;
 	r->polarity = pd_get_polarity(p->port);
 	r->cc_state = pd_get_task_cc_state(p->port);
-	r->dp_pin = get_dp_pin_mode(p->port);
+	if (IS_ENABLED(CONFIG_USB_PD_DP_MODE))
+		r->dp_pin = get_dp_pin_mode(p->port);
+	else
+		r->dp_pin = 0;
 	r->mux_state = usb_mux_get(p->port);
 
 	tc_state_name = pd_get_task_state_name(p->port);
