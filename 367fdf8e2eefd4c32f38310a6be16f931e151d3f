@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b4a8ae_6204d1f4",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-28T05:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28e2a4b3_eaa9ea2a",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 25
+      },
+      "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50825ac4_d4df76d0",
@@ -109,6 +133,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4635bf00_032b26b1",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-28T05:18:10Z",
+      "side": 1,
+      "message": "If lock implementation is OK, I can apply it to this and all places as required.",
+      "parentUuid": "f99ea203_de95bf1f",
+      "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46277bab_67140a90",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
         "patchSetId": 18
@@ -138,6 +180,24 @@
       "side": 1,
       "message": "ACK",
       "parentUuid": "46277bab_67140a90",
+      "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b796a46d_c26ee483",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-28T05:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c14f8553_4d6ba499",
       "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
