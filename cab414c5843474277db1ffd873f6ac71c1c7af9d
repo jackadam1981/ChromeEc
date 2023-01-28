@@ -22,6 +22,30 @@
       },
       "revId": "cab414c5843474277db1ffd873f6ac71c1c7af9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4a4b54_44edb3a2",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-28T05:20:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d34d092_7e0cd555",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 59
+      },
+      "revId": "cab414c5843474277db1ffd873f6ac71c1c7af9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
