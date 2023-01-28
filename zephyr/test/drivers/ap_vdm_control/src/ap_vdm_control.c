@@ -154,6 +154,32 @@ static void verify_vdm_req(struct ap_vdm_control_fixture *fixture,
 	zassert_true(message_seen, "Expected message not found");
 }
 
+static void verify_no_vdms(struct ap_vdm_control_fixture *fixture)
+{
+	struct tcpci_partner_log_msg *msg;
+
+	SYS_SLIST_FOR_EACH_CONTAINER(&fixture->partner.msg_log, msg, node)
+	{
+		uint16_t header = sys_get_le16(msg->buf);
+
+		/* Ignore messages from ourselves */
+		if (msg->sender == TCPCI_PARTNER_SENDER_PARTNER)
+			continue;
+
+		/*
+		 * Control messages, non-VDMs, and extended messages are not of
+		 * interest
+		 */
+		if ((PD_HEADER_CNT(header) == 0) ||
+		    (PD_HEADER_TYPE(header) != PD_DATA_VENDOR_DEF) ||
+		    (PD_HEADER_EXT(header) != 0)) {
+			continue;
+		}
+
+		zassert_unreachable();
+	}
+}
+
 static void *ap_vdm_control_setup(void)
 {
 	static struct ap_vdm_control_fixture fixture;
@@ -764,4 +790,62 @@ ZTEST_F(ap_vdm_control, test_vdm_attention_disconnect_clear)
 		      "Failed to see empty message");
 	zassert_equal(vdm_resp.vdm_attention_left, 0,
 		      "Failed to see no more messages");
+}
+
+ZTEST_F(ap_vdm_control, test_no_ec_dp_enter)
+{
+	/*
+	 * Confirm that the EC doesn't try to send EnterMode messages for DP on
+	 * its own through the EC DPM logic
+	 */
+	tcpci_partner_common_enable_pd_logging(&fixture->partner, true);
+	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	k_sleep(K_SECONDS(1));
+
+	tcpci_partner_common_enable_pd_logging(&fixture->partner, false);
+
+	verify_no_vdms(fixture);
+}
+
+ZTEST_F(ap_vdm_control, test_no_ec_dp_exit)
+{
+	/*
+	 * Confirm that the EC won't try to exit DP mode on its own through the
+	 * EC's DPM logic
+	 */
+	run_verify_dp_entry(fixture, 1);
+
+	tcpci_partner_common_enable_pd_logging(&fixture->partner, true);
+	host_cmd_typec_control_exit_modes(TEST_PORT);
+	k_sleep(K_SECONDS(1));
+
+	tcpci_partner_common_enable_pd_logging(&fixture->partner, false);
+
+	verify_no_vdms(fixture);
+}
+
+ZTEST_F(ap_vdm_control, test_no_ec_dp_mode)
+{
+	struct ec_response_typec_status status;
+	struct ec_response_usb_pd_control_v2 legacy_status;
+	struct ec_params_usb_pd_control params = {
+		.port = TEST_PORT,
+		.role = USB_PD_CTRL_ROLE_NO_CHANGE,
+		.mux = USB_PD_CTRL_MUX_NO_CHANGE,
+		.swap = USB_PD_CTRL_SWAP_NONE
+	};
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
+		EC_CMD_USB_PD_CONTROL, 2, legacy_status, params);
+
+	/*
+	 * Confirm that neither old nor new APIs see the EC selecting a DP pin
+	 * mode
+	 */
+	run_verify_dp_entry(fixture, 1);
+
+	zassert_ok(host_command_process(&args));
+	zassert_equal(legacy_status.dp_mode, 0);
+
+	status = host_cmd_typec_status(TEST_PORT);
+	zassert_equal(status.dp_pin, 0);
 }
