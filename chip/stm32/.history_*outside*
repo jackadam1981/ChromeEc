@@ -1,0 +1,500 @@
+git diff HEAD~1
+exit
+icepick_client corp-license-hosting
+exit
+find -name manifest
+find -name manifest\*
+cd third_party/lowrisc/opentitan/
+ls
+bazel build //sw/host/opentitansession
+cd ../../..
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -suzyq 0184108b-ed99d095 -debugger LHJTZG75M1NWULBJ -port 45000
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug spi help
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug spi
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug spi read-id
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register
+strace ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug console
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register
+cd common/
+cd utils
+cd ..
+find -name utils
+cd common/tool
+cd common/tools/
+ls
+cd ftdi_tpm_client/
+ls
+cd src/
+ls
+cd ..
+find -name tpm_client
+cd libs/tpm_client/
+ls
+cd src/
+ls
+cd ../..
+cd ../
+cd tools
+cd ftdi_tpm_client/
+ls
+cd src/
+ls
+cd ../../../..
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register DID_VID
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register DID_VIDdfs
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register DID_VID
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register STS
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register ACCESS
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register RID
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register DID_VID
+find -name \*.rs | xargs grep from_le_bytes
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register DID_VID
+dc
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register RID
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register STS
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register ACCESS
+find -name devboard\*
+git status
+cd common/
+git status
+git diff
+git status
+git diff projects/common/src/lib.rs
+git restore projects/common/src/lib.rs
+exit
+cd Downloads/
+sha512sum --check Xilinx_Unified_2020.2_1118_1232_Lin64.bin.digests 
+cat Xilinx_Unified_2020.2_1118_1232_Lin64.bin.digests
+sh Xilinx_Unified_2020.2_1118_1232_Lin64.bin
+cd /opt
+ls
+cd ..
+ls
+cd tools/
+ls
+cd Xilinx/
+ls
+cd Vivado/
+ls
+cd. .
+cd ..
+find -type f
+find -name 2022\*
+find -name 2022.1
+find -name 2022.1 | xargs rm -rf
+find -name 2022.1
+find -name vivado
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json -opentitantool ./third_party/lowrisc/opentitan/sw/host/opentitantool -debugger LHJTZG75M1NWULBJ -port 45000
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -debugger LHJTZG75M1NWULBJ -port 45000
+
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -debugger LHJTZG75M1NWULBJ -port 45000
+cd common
+cd ..
+ls /dev/tty
+cd common
+make console
+emacs ../custom.mk
+make signed_bin
+cd ..
+ls bin
+cd common/bin
+cd common/build/ti50/dauntless/dauntless/
+ls
+cd ../..
+cd ..
+PROJECT=system_test_auto make signed_bin
+cd ..
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -debugger LHJTZG75M1NWULBJ -port 45000
+ls /dev/ttyUSB*
+ls /dev/tty
+make console
+cd common/
+
+make console DEBUGGER=ultradebug
+make flash DEBUGGER=ultradebug
+make console DEBUGGER=ultradebug
+cd ..
+make flash DEBUGGER=ultradebug
+cd common/
+make flash DEBUGGER=ultradebug
+make console DEBUGGER=ultradebug
+make flash DEBUGGER=ultradebug V=1
+/usr/local/google/home/jbk/src/ti50/third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --interface ultradebug --conf ports/dauntless/software/tools/andreiboard_ultradebug.json bootstrap         --protocol=legacy --speed=500000 ~/Downloads/dump_state.signed.dbp
+/usr/local/google/home/jbk/src/ti50/third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --interface ultradebug --conf ports/dauntless/software/tools/andreiboard_ultradebug.json bootstrap         --protocol=legacy --speed=500000 /usr/local/google/home/jbk/src/ti50/common/build/ti50/dauntless/dauntless/full_image.signed.bin
+file ~/Downloads/dump_state.signed.dbp
+less ~/Downloads/dump_state.signed.dbp
+make signed_bin V=1
+
+/usr/local/google/home/jbk/src/ti50/third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --interface ultradebug --conf ports/dauntless/software/tools/andreiboard_ultradebug.json bootstrap         --protocol=legacy --speed=500000 ~/Downloads/dump_state.signed.bin
+make reset DEBUGGER=ultradebug
+make flash DEBUGGER=ultradebug ONE_SLOT=YES
+/usr/local/google/home/jbk/src/ti50/third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --interface ultradebug --conf ports/dauntless/software/tools/andreiboard_ultradebug.json bootstrap         --protocol=legacy --speed=500000 ~/Downloads/dump_state.signed.bin
+spiflash
+find -name spiflash
+cd ..
+find -name spiflash
+file /third_party/lowrisc/opentitan/sw/host/spiflash
+file third_party/lowrisc/opentitan/sw/host/spiflash
+file ports/cr50-utils/software/tools/SPI/spiflash
+ports/cr50-utils/software/tools/SPI/spiflash -d -i ~/Downloads/dump_state.signed.dbp --verbose
+make flash DEBUGGER=ultradebug ONE_SLOT=YES
+cd common
+make flash DEBUGGER=ultradebug ONE_SLOT=YES
+cd ..
+cd common/
+git fetch
+make flash DEBUGGER=ultradebug ONE_SLOT=YES
+make signed_bin DEBUGGER=ultradebug ONE_SLOT=YES V=1
+make flash DEBUGGER=ultradebug ONE_SLOT=YES
+PROJECT=system_test_auto make signed_bin DEBUGGER=ultradebug ONE_SLOT=YES
+PROJECT=system_test_auto make signed_bin DEBUGGER=ultradebug
+cd ..
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -debugger LHJTZG75M1NWULBJ -port 45000
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -debugger "" -port 45000
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -debugger "fisk" -port 45000
+rm /tmp/devboardd.1606298.lock
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -debugger "fisk" -port 45000
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -debugger "Fisk" -port 45000
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial Fisk --conf ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json --interface hyperdebug console --uart console --baudrate 115200
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial Fisk --conf ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json --interface hyperdebug gpio write RESET false
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial Fisk --conf ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json --interface hyperdebug gpio write RESET true
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial Fisk --conf ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json --interface hyperdebug console --uart console --baudrate 115200
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -debugger "Fisk" -port 45000
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitansession/opentitansession --usb-serial Fisk --conf ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json --interface hyperdebug
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitansession/opentitansession --usb-serial Fisk --conf ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json --interface hyperdebug --stop
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -debugger "Fisk" -port 45000
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -debugger LHJTZG75M1NWULBJ -port 45000
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc --help
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc flags
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc --flags
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc commands
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc flags
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start flags
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -debugger LHJTZG75M1NWULBJ -port 45000
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -suzyq fisk -debugger LHJTZG75M1NWULBJ -port 45000
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -suzyq 0184108b-ed99d095 -debugger LHJTZG75M1NWULBJ -port 45000
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial Fisk --conf ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json --interface hyperdebug console --uart console --baudrate 115200
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial Fisk --conf ./common/ports/dauntless/software/tools/andreiboard_hyperdebug.json --interface hyperdebug console -q --uart console --baudrate 115200
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -suzyq 0184108b-ed99d095 -debugger LHJTZG75M1NWULBJ -port 45000
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug gpio write RESET true
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug tpm read-register
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -suzyq 0184108b-ed99d095 -debugger LHJTZG75M1NWULBJ -port 45000
+PROJECT=ti50 make signed_bin
+cd common/
+PROJECT=ti50 make signed_bin
+PROJECT=ti50 make flash DEBUGGER=ultradebug
+PROJECT=ti50 make signed_bin
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -suzyq 0184108b-ed99d095 -debugger LHJTZG75M1NWULBJ -port 45000
+cd ..
+../chromiumos-2/src/platform/ti50/common/tools/devboardservice/build/devboardsvc start -configjson ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json -opentitantool ./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool -suzyq 0184108b-ed99d095 -debugger LHJTZG75M1NWULBJ -port 45000
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug bootstrap -p Rescue ~/src/ti50/common/build/ti50/dauntless/dauntless/full_image.signed.bin
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug bootstrap -p legacy ~/src/ti50/common/build/ti50/dauntless/dauntless/full_image.signed.bin
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug bootstrap -p Rescue ~/src/ti50/common/build/ti50/dauntless/dauntless/full_image.signed.bin
+find -name brescur
+find -name \*rescue\*
+cd ports/cr50-utils/
+ls
+cd software/
+ls
+cd tools/
+ls
+cd SPI/
+ls
+make
+ls -l
+ls -lcrt
+./rescue
+cd ../../..
+cd ../..
+cd third_party/lowrisc/opentitan/
+ls
+git status
+git fetch lowrisc
+git rebase
+git stash
+git rebase
+git stash pop
+cd ../../
+cd ../
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug bootstrap -p Rescue ~/src/ti50/common/build/ti50/dauntless/dauntless/full_image.signed.bin
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug bootstrap -p legacy ~/src/ti50/common/build/system_test_auto/dauntless/dauntless/full_image.signed.bin
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug bootstrap -p legacy  ~/src/ti50/common/build/ti50/dauntless/dauntless/full_image.signed.bin
+cat common/ports/dauntless/software/tools/andreiboard_ultradebug.json
+emacs common/ports/dauntless/software/tools/andreiboard_ultradebug.json
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug bootstrap -p legacy  ~/src/ti50/common/build/ti50/dauntless/dauntless/full_image.signed.bin
+emacs common/ports/dauntless/software/tools/andreiboard_ultradebug.json
+bg
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug bootstrap -p legacy  ~/src/ti50/common/build/ti50/dauntless/dauntless/full_image.signed.bin
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug bootstrap -p legacy  ~/src/ti50/common/build/system_test_auto/dauntless/dauntless/full_image.signed.bin
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug bootstrap -p rescue  ~/src/ti50/common/build/system_test_auto/dauntless/dauntless/full_image.signed.bin
+./third_party/lowrisc/opentitan/bazel-bin/sw/host/opentitantool/opentitantool --usb-serial LHJTZG75M1NWULBJ --conf ./common/ports/dauntless/software/tools/andreiboard_ultradebug.json --interface ultradebug bootstrap -p rescue  ~/src/ti50/common/build/ti50/dauntless/dauntless/full_image.signed.bin
+PROJECT=ti50 make signed_bin
+cd common/
+PROJECT=ti50 make signed_bin
+cd src/ti50
+cros_sdk
+cros
+cd ..
+cd src/chromiumos-2/
+dc
+emacs fisk.html
+bg
+pwd
+echo $PATH
+which vivado
+df -h
+dc
+bg
+reboot
+sudo reboot
+cros_sdk
+vmstat 1
+ping 100.115.92.129
+ping 100.115.92.133
+
+ip route show
+ping 172.16.243.101
+ssh root@172.16.243.101
+top
+ping 172.16.243.101
+find -name \*json
+find -name andre\*json
+find -name opentitantool
+find -name \*.rs | xargs grep "Strap mode:"
+find -name \*.rs | xargs grep "Strap config:"
+find -name \*.rs | xargs grep override_tpm_bus
+find -type f | xargs grep override_tpm_bus
+cd common/
+make console DEBUGGER=ultradebug
+make console DEBUGGER=ultradebug\
+icepick_client corp-license-hosting
+cd /tools/
+find -name vivado
+top
+ssh jesk@xspect.dk
+ssh jesk@gateway.bodi-klinke.dk
+~/bin/expand.sh < .twmrc > .twmrc.new
+mv .twmrc.new .twmrc
+ls chromiumos*.old
+ls -l chromiumos*.old
+ls -d chromiumos*.old
+ls -d chromiumos*.old | xargs rm -rf
+ls -d chromiumos*.old | sudo xargs rm -rf
+df -h
+cd Downloads/
+./Xilinx_Unified_2022.1_0420_0327_Lin64.bin 
+top
+sudo dmesg -w
+cd src/ti50
+make console DEBUGGER=ultradebug
+cd console
+cd common
+make console DEBUGGER=ultradebug
+tio /dev/ttyUSB0
+tio /dev/ttyUSB6
+tio /dev/ttyUSB7
+make console DEBUGGER=ultradebug
+icepick_client corp-license-hosting
+cd /tools
+ls
+mkdir Xilinx
+sudo mkdir Xilinx
+sudo chown jbk Xilinx
+sudo vi /etc/udev/rules.d/90-lowrisc.rules
+cd ..
+ls
+sudo rmdir scratch
+ssh -CY jesk@gateway.bodi-klinke.dk
+cd srv/
+ls
+cd ..
+cd src
+cd
+cd src
+ls
+cd drscan/
+ls
+cat account.yay 
+ls -l
+cat drscan.sh
+emacslist
+emacsclient -c -s emacs-8290 #"~/src/ti50/third_party/lowrisc/opentitan/"
+man ssh-agent
+emacs .xsession
+bg
+man ssh-agent
+emacslist
+emacsclient -c -s emacs-8290 #"~/src/ti50/third_party/lowrisc/opentitan/"
+emacslist
+emacsclient -c -s emacs-12322 #"~/src/ti50/third_party/lowrisc/opentitan/"
+exit
+emacsclient -c -s emacs-12322 #"~/src/ti50/third_party/lowrisc/opentitan/"
+emacslist
+emacsclient -c -s emacs-13305 #"~/"
+emacs &
+emacs
+\emacs
+ls
+exit
+emacslist
+alias emacslist
+cd /run/user/
+ls
+cd 121292/emacs/
+ls
+rm emacs-13436 
+cd
+emacslist
+ls -lcrt
+emacs
+cat ~/.twmrc
+cd /usr/local/google/home/jbk/src/ti50; mkdir -p /tmp/alias-emacs; ln -sf /usr/bin/emacs /tmp/alias-emacs/ti50; /tmp/alias-emacs/ti50
+bg
+top
+git status
+git stash list
+git branch 
+git status
+ rm sw/host/opentitanlib/src/proxy/.history_*shell*
+git add sw/host/opentitanlib/
+git commit --amend
+git diff --name-only HEAD~1
+git diff --name-only HEAD~1 | xargs rustfmt
+git status
+git diff
+git commit --amend
+git status
+git add sw/host/opentitanlib/
+git commit --amend
+git push -f jesultra HEAD
+git commit --amend
+git push -f jesultra HEAD
+git status
+git branch -l
+git checkout tpm
+git log -n2
+git rebase HEAD~1 --onto spi_cs
+git status
+git rebase --continue
+git status
+find -name opentitantool
+rm -rf sw/host/target
+cd chromiumos-2/
+exit
+cat ~/.twmrc
+cd /usr/local/google/home/jbk/src/ti50; mkdir -p /tmp/alias-emacs; ln -sf /usr/bin/emacs /tmp/alias-emacs/ti50;
+/tmp/alias-emacs/ti50 --daemon
+emacslist
+alias emacslist
+rm /run/user/121292/emacs/emacs-971931 
+emacslist
+emacsclient -c -s emacs-1157351 &
+fg
+bg
+gcert
+cat .twmrc
+cat ~/.twmrc
+fg
+bg
+cd /usr/local/google/home/jbk/src/chromiumos-2; mkdir -p /tmp/alias-emacs; ln -sf /usr/bin/emacs /tmp/alias-emacs/chromiumos-2; /tmp/alias-emacs/chromiumos-2 --daemon
+emacslist
+emacsclient -c -s emacs-1179950
+emacslist
+emacsclient -c -s emacs-1179950
+bg
+cd src/chromiumos-2/src/platform/tast-tests
+git commit --amend
+echo EDITOR
+echo $EDITOR
+eport EDITOR=vi
+export EDITOR=vi
+git commit --amend
+git status
+git add src
+git commit --amend
+git rebase -i HEAD~2
+git commit --amend
+git rebase --continue
+git status
+git add src/
+git commit --amend
+git rebase -i HEAD~2
+git status
+git add src/
+git commit --amend
+git rebase --continue
+git status
+which twm
+git rebase -i HEAD~2
+git stash pop
+git add src
+git commit --amend
+git rebase --continue
+emacslist
+emacsclient -c -s emacs-1179950
+emacslist
+emacsclient -c -s emacs-1179950 &
+cd src/chromiumos-2/
+cd src/platform/tast-tests
+git status
+git diff
+git status
+git add src/chromiumos/tast
+git commit --amend
+export EDITOR=vi
+git commit --help
+git commit --amend
+git status
+git rebase --continue
+git status
+git stash src/chromiumos/tast/remote/firmware/ti50/dutcontrol_andreiboard.go
+git stash push src/chromiumos/tast/remote/firmware/ti50/dutcontrol_andreiboard.go
+git status
+git add sr
+git add src
+git commit --amend
+git rebase -i HEAD~2
+git stash pop
+git add src
+git commit --amend
+git rebase --continue
+git status
+git add src
+git commit
+git status
+cd ../
+cd ec
+git status
+cd 
+cd src/ec
+git status
+git log -n2
+cat ~/.twmrc
+cd /usr/local/google/home/jbk/src/ec; mkdir -p /tmp/alias-emacs; ln -sf /usr/bin/emacs /tmp/alias-emacs/ec; /tmp/alias-emacs/ec --daemon
+emacslist
+emacsclient -c -s emacs-1454292
+exit
+cd src/ti50/third_party/lowrisc/opentitan/
+bazel build //sw/host/opentitansession
+exit
+emacslist
+cd src/ec/
+git status
+git log
+git branch -l
+git branch -d stm32l5
+git status
+emacslist
+emacsclient -c -s emacs-1454292
+bg
+cd ../ti50
+cd third_party/lowrisc/opentitan/
+git status
+git branch -l
+git diff HEAD~1
+emacslist
+emacsclient -c -s emacs-1179950 &
