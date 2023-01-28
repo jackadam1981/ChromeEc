@@ -765,3 +765,29 @@ ZTEST_F(ap_vdm_control, test_vdm_attention_disconnect_clear)
 	zassert_equal(vdm_resp.vdm_attention_left, 0,
 		      "Failed to see no more messages");
 }
+
+ZTEST_F(ap_vdm_control, test_no_ec_dp_mode)
+{
+	struct ec_response_typec_status status;
+	struct ec_response_usb_pd_control_v2 legacy_status;
+	struct ec_params_usb_pd_control params = {
+		.port = TEST_PORT,
+		.role = USB_PD_CTRL_ROLE_NO_CHANGE,
+		.mux = USB_PD_CTRL_MUX_NO_CHANGE,
+		.swap = USB_PD_CTRL_SWAP_NONE
+	};
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
+		EC_CMD_USB_PD_CONTROL, 2, legacy_status, params);
+
+	/*
+	 * Confirm that neither old nor new APIs see the EC selecting a DP pin
+	 * mode
+	 */
+	run_verify_dp_entry(fixture, 1);
+
+	zassert_ok(host_command_process(&args));
+	zassert_equal(legacy_status.dp_mode, 0);
+
+	status = host_cmd_typec_status(TEST_PORT);
+	zassert_equal(status.dp_pin, 0);
+}
