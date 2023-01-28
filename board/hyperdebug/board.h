@@ -10,9 +10,6 @@
 
 #define CONFIG_LTO
 
-/* 48 MHz SYSCLK clock frequency */
-#define CPU_CLOCK 48000000
-
 /* Configure the flash */
 #undef CONFIG_RO_SIZE
 #undef CONFIG_FW_PSTATE_OFF
@@ -38,6 +35,20 @@
 #undef CONFIG_WATCHDOG
 
 #else /* !SECTION_IS_RO */
+
+/* PLL configuration. Freq = STM32_HSE_CLOCK or HSI (16MHz) * n/m/r */
+
+#undef STM32_PLLM
+#undef STM32_PLLN
+#undef STM32_PLLR
+#define STM32_PLLM 1
+#define STM32_PLLN 13
+#define STM32_PLLR 2
+
+#define STM32_USE_PLL
+
+/* 104 MHz SYSCLK clock frequency */
+#define CPU_CLOCK 104000000
 
 #define CONFIG_BOARD_PRE_INIT
 
