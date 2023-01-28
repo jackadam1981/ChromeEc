@@ -7,6 +7,7 @@
 #include "atomic.h"
 #include "common.h"
 #include "console.h"
+#include "cpu.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
@@ -22,22 +23,24 @@
  * signal that changed (the direction of change is not explicitly recorded).
  */
 struct cyclic_buffer_header_t {
-	/* Number of signals being monitored in this buffer. */
-	uint8_t num_signals;
-	/* The number of bits required to represent 0..num_signals-1. */
-	uint8_t signal_bits;
-	/* Sticky bit recording if overflow occurred. */
-	volatile uint8_t overflow;
 	/* Time of the most recent event, updated from interrupt context. */
-	volatile timestamp_t head_time;
-	/* Time base that the oldest event is relative to. */
-	timestamp_t tail_time;
+	volatile uint32_t head_time;
 	/* Index at which new records are placed, updated from interrupt. */
 	volatile uint32_t head;
 	/* Index af oldest record. */
 	uint32_t tail;
 	/* Size of cyclic byte buffer, head and tail wrap to zero here. */
 	uint32_t size;
+	/* Time base that the oldest event is relative to. */
+	timestamp_t tail_time;
+	/* Sticky bit recording if overflow occurred. */
+	volatile uint8_t overflow;
+	/* Number of signals being monitored in this buffer. */
+	uint8_t num_signals;
+	/* The number of bits required to represent 0..num_signals-1. */
+	uint8_t signal_bits;
+	uint8_t fill;
+	uint32_t fill2;
 };
 
 /*
@@ -51,14 +54,18 @@ struct cyclic_buffer_header_t {
 struct monitoring_slot_t {
 	/* Link to buffer recording edges of this signal. */
 	struct cyclic_buffer_header_t *buffer;
+	uint32_t gpio_base;
+	uint32_t gpio_pin_mask;
 	/* EC enum id of the signal used by this detection slot. */
 	int gpio_signal;
-	/* The index of the signal as used in the recording buffer. */
-	uint8_t signal_no;
 	/* Most recently recorded level of the signal. */
-	volatile uint8_t head_level;
+	volatile uint32_t head_level;
 	/* Level as of the current oldest end (tail) of the recording. */
 	uint8_t tail_level;
+	/* The index of the signal as used in the recording buffer. */
+	uint8_t signal_no;
+	uint8_t fill1, fill2;
+	uint8_t code[512];
 };
 struct monitoring_slot_t monitoring_slots[16];
 
@@ -74,7 +81,7 @@ atomic_t num_cur_error_conditions;
  */
 int num_cur_monitoring = 0;
 
-static __attribute__((noinline)) void overflow(struct monitoring_slot_t *slot)
+__attribute__((noinline)) void overflow(struct monitoring_slot_t *slot)
 {
 	struct cyclic_buffer_header_t *buffer_header = slot->buffer;
 	gpio_disable_interrupt(slot->gpio_signal);
@@ -84,92 +91,51 @@ static __attribute__((noinline)) void overflow(struct monitoring_slot_t *slot)
 
 void gpio_edge(enum gpio_signal signal)
 {
-	/*
-	 * Hardware has detected one or more edges since last time.  We
-	 * process by looking at the current level of the signal.  If opposite
-	 * the most recent level, we record one edge, if the same as most
-	 * recent level, we record two edges, that is, a zero-width pulse.
-	 * This is useful for tests trying to verify e.g. that there are no
-	 * glitches on a paricular signal, and want to know about any pulses,
-	 * however narrow.
-	 */
-	int gpio_num = GPIO_MASK_TO_NUM(gpio_list[signal].mask);
-	struct monitoring_slot_t *slot = monitoring_slots + gpio_num;
-	int current_level = gpio_get_level(signal);
-	timestamp_t now = get_time();
-	struct cyclic_buffer_header_t *buffer_header = slot->buffer;
-	uint8_t *buffer_data = (uint8_t *)(buffer_header + 1);
-	uint32_t tail = buffer_header->tail, head = buffer_header->head,
-		 size = buffer_header->size;
-	uint64_t diff = now.val - buffer_header->head_time.val;
-
-	uint8_t signal_bits = buffer_header->signal_bits;
-
-	/*
-	 * Race condition here!  If three or more edges happen in
-	 * rapid succession, we may fail to record some of them, but
-	 * we should never over-report edges.
-	 *
-	 * Since the edge interrupts pending bit has been cleared before the
-	 * "current_level" was polled, if an edge happened between the two, then
-	 * an interrupt is currently pending, and when handled after this method
-	 * returns, the logic below would wrongly conclude that the signal must
-	 * have seen two transitions, in order to end up at the same level as
-	 * before.  In order to avoid such over-reporting, we clear "pending"
-	 * interupt bit below, but only for the direction that goes "towards"
-	 * the level measured above.
-	 */
-	if (current_level)
-		STM32_EXTI_RPR = BIT(gpio_num);
-	else
-		STM32_EXTI_FPR = BIT(gpio_num);
-
-	/*
-	 * Insert an entry recording the time since last event, and which
-	 * signal changed (the direction of the edge is not explicitly
-	 * recorded, as it can be derived from the initial level.
-	 *
-	 * The time difference and pin index are encoded in `diff`, which will
-	 * be a small integer if the event arrive rapidly.  7 bits of this
-	 * integer is then put into one byte at a time, using the high bit of
-	 * each byte to indicate if more are to come.  This encoding will use
-	 * only one byte per event, in the best case, allowing tens of
-	 * thousands of events to be buffered.
-	 */
-	diff <<= signal_bits;
-	diff |= slot->signal_no;
-	do {
-		buffer_data[head++] = ((diff >= 0x80) ? 0x80 : 0x00) |
-				      (diff & 0x7F);
-		diff >>= 7;
-		if (head == size)
-			head = 0;
-		if (head == tail)
-			return overflow(slot);
-	} while (diff);
-
-	/*
-	 * If current level equals the previous level, then record an
-	 * addtional edge 0ms after the previous.
-	 */
-	if (!!current_level == !!slot->head_level) {
-		buffer_data[head++] = slot->signal_no;
-		if (head == size)
-			head = 0;
-		if (head == tail)
-			return overflow(slot);
-	} else {
-		slot->head_level = current_level;
-	}
-	buffer_header->head = head;
-	buffer_header->head_time = now;
 }
+
+#define GPIO_IRQ_HIGHEST_PRIORITY(no) \
+  const struct irq_priority __keep IRQ_PRIORITY(STM32_IRQ_EXTI ## no)			\
+		__attribute__((section(".rodata.irqprio"))) = { STM32_IRQ_EXTI ## no, \
+								0 }
+
+GPIO_IRQ_HIGHEST_PRIORITY(0);
+GPIO_IRQ_HIGHEST_PRIORITY(1);
+GPIO_IRQ_HIGHEST_PRIORITY(2);
+GPIO_IRQ_HIGHEST_PRIORITY(3);
+GPIO_IRQ_HIGHEST_PRIORITY(4);
+GPIO_IRQ_HIGHEST_PRIORITY(5);
+GPIO_IRQ_HIGHEST_PRIORITY(6);
+GPIO_IRQ_HIGHEST_PRIORITY(7);
+GPIO_IRQ_HIGHEST_PRIORITY(8);
+GPIO_IRQ_HIGHEST_PRIORITY(9);
+GPIO_IRQ_HIGHEST_PRIORITY(10);
+GPIO_IRQ_HIGHEST_PRIORITY(11);
+GPIO_IRQ_HIGHEST_PRIORITY(12);
+GPIO_IRQ_HIGHEST_PRIORITY(13);
+GPIO_IRQ_HIGHEST_PRIORITY(14);
+GPIO_IRQ_HIGHEST_PRIORITY(15);
+
+__attribute((section(".bss.vector_table")))
+void (*sram_vtable[125])(void);
+extern void (*vectors[125])(void);
+
+#define CORTEX_VTABLE REG32(0xE000ED08)
+
+void edge_int(void);
 
 static void board_gpio_init(void)
 {
 	/* Mark every slot as unused. */
 	for (int i = 0; i < ARRAY_SIZE(monitoring_slots); i++)
 		monitoring_slots[i].gpio_signal = GPIO_COUNT;
+
+	memcpy(sram_vtable, vectors, sizeof(sram_vtable));
+	for (int i = 0; i < 16; i++) {
+		memcpy(monitoring_slots[i].code, (void *)(~1U & (size_t)&edge_int), 512);
+		ccprintf("Slot %d code: %p\n", i, &monitoring_slots[i].code);
+		sram_vtable[16 + STM32_IRQ_EXTI0 + i] = (void (*)(void))(1U | (size_t)&monitoring_slots[i].code);
+	}
+	CORTEX_VTABLE = (uint32_t)(sram_vtable);
 }
 DECLARE_HOOK(HOOK_INIT, board_gpio_init, HOOK_PRIO_DEFAULT);
 
@@ -301,6 +267,7 @@ static int command_gpio_monitoring_start(int argc, const char **argv)
 	int i;
 	timestamp_t now;
 	int rv;
+	size_t cyclic_buffer_size = 8192; /* Maybe configuration by parameter */
 	struct cyclic_buffer_header_t *buf;
 	struct monitoring_slot_t *slot;
 
@@ -327,13 +294,13 @@ static int command_gpio_monitoring_start(int argc, const char **argv)
 	 * All the requested signals were available for monitoring, and their
 	 * slots have been marked as reserved for the respective signal.
 	 */
-	rv = shared_mem_acquire(sizeof(struct cyclic_buffer_header_t) + 256,
+	rv = shared_mem_acquire(sizeof(struct cyclic_buffer_header_t) + cyclic_buffer_size,
 				(char **)&buf);
 	if (rv != EC_SUCCESS)
 		goto out_cleanup;
 
 	buf->head = buf->tail = 0;
-	buf->size = 256;
+	buf->size = cyclic_buffer_size;
 	buf->overflow = 0;
 	buf->num_signals = gpio_num;
 	buf->signal_bits = 0;
@@ -344,6 +311,8 @@ static int command_gpio_monitoring_start(int argc, const char **argv)
 	for (i = 0; i < gpio_num; i++) {
 		slot = monitoring_slots +
 		       GPIO_MASK_TO_NUM(gpio_list[gpios[i]].mask);
+		slot->gpio_base = gpio_list[gpios[i]].port;
+		slot->gpio_pin_mask = gpio_list[gpios[i]].mask;
 		slot->buffer = buf;
 		slot->signal_no = i;
 	}
@@ -351,7 +320,7 @@ static int command_gpio_monitoring_start(int argc, const char **argv)
 	/* Time critical block */
 	interrupt_disable();
 	now = get_time();
-	buf->head_time = now;
+	buf->head_time = now.le.lo;
 	for (i = 0; i < gpio_num; i++) {
 		int gpio_num = GPIO_MASK_TO_NUM(gpio_list[gpios[i]].mask);
 		slot = monitoring_slots + gpio_num;
