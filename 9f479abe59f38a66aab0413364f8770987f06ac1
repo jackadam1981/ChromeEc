@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d92601c_780a05c6",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-29T22:39:54Z",
+      "side": 1,
+      "message": "Should this unlock the mutex before terminating so nobody else can get deadlocked on it?",
+      "revId": "9f479abe59f38a66aab0413364f8770987f06ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
