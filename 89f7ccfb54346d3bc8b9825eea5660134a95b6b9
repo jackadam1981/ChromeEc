@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfc63397_82fe9972",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-29T22:51:56Z",
+      "side": 1,
+      "message": "It seems strange to do this initialization in `get_state` since it seems reasonable that an application might assume a particular power state rather than calling this and then it would miss out on required initialization.\n\nI would rather register these event handlers in a `SYS_INIT` (and possibly the same for `power_signal_init`).",
+      "revId": "89f7ccfb54346d3bc8b9825eea5660134a95b6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
