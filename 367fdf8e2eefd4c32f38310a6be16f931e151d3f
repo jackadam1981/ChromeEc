@@ -151,6 +151,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b772068_a8045b51",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-01-29T22:45:17Z",
+      "side": 1,
+      "message": "Not sure what you mean by above: you mean acquiring the SM lock? That seems okay since it ensures the SM thread won\u0027t do something unexpected during shutdown.\n\nI was considering that a way to run a callback on the power thread would be useful, but that ends up being mostly equivalent to locking while also having greater complexity.",
+      "parentUuid": "4635bf00_032b26b1",
+      "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46277bab_67140a90",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
         "patchSetId": 18
