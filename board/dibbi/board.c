@@ -128,19 +128,11 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
-static void c0_ccsbu_ovp_interrupt(enum gpio_signal s)
-{
-	cprints(CC_USBPD, "C0: CC OVP, SBU OVP, or thermal event");
-	pd_handle_cc_overvoltage(0);
-}
-
 void board_init(void)
 {
 	int on;
 
-	gpio_enable_interrupt(GPIO_USB_C0_CCSBU_OVP_ODL);
 	gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_L);
-	gpio_enable_interrupt(GPIO_USBC_ADP_PRESENT_L);
 
 	/* Turn on 5V if the system is on, otherwise turn it off */
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
@@ -179,7 +171,9 @@ int board_vbus_source_enabled(int port)
 {
 	if (port != CHARGE_PORT_TYPEC0)
 		return 0;
-	return gpio_get_level(GPIO_EN_USB_C0_VBUS);
+	/* TODO: Actually check if VBUS is enabled */
+	/* return gpio_get_level(GPIO_EN_USB_C0_VBUS); */
+	return 0;
 }
 
 /* Vconn control for integrated ITE TCPC */
@@ -197,14 +191,18 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 
 __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 {
-	int ilim3A;
+	/*TODO: Actually set the current limit */
+	/* int ilim3A; */
 
 	if (port < 0 || port > CONFIG_USB_PD_PORT_MAX_COUNT)
 		return;
 
+#if 0
 	/* Switch between 1.5A and 3A ILIM values */
 	ilim3A = (rp == TYPEC_RP_3A0);
+
 	gpio_set_level(GPIO_USB_C0_VBUS_ILIM, ilim3A);
+#endif
 }
 
 /******************************************************************************/
@@ -307,16 +305,18 @@ int board_set_active_charge_port(int port)
 
 	switch (port) {
 	case CHARGE_PORT_TYPEC0:
-		gpio_set_level(GPIO_EN_PPVAR_USBC_ADP_L, 0);
-		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
+		/* TODO: Actually enable USBC */
+		/* gpio_set_level(GPIO_EN_PPVAR_USBC_ADP_L, 0); */
+		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_OD, 1);
 		gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_L);
 		break;
 	case CHARGE_PORT_BARRELJACK:
 		/* Make sure BJ adapter is sourcing power */
 		if (gpio_get_level(GPIO_BJ_ADP_PRESENT_L))
 			return EC_ERROR_INVAL;
-		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 0);
-		gpio_set_level(GPIO_EN_PPVAR_USBC_ADP_L, 1);
+		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_OD, 0);
+		/* TODO: Actually disable USBC */
+		/* gpio_set_level(GPIO_EN_PPVAR_USBC_ADP_L, 1); */
 		gpio_disable_interrupt(GPIO_BJ_ADP_PRESENT_L);
 		break;
 	default:
