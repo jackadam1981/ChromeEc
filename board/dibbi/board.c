@@ -308,14 +308,14 @@ int board_set_active_charge_port(int port)
 	switch (port) {
 	case CHARGE_PORT_TYPEC0:
 		gpio_set_level(GPIO_EN_PPVAR_USBC_ADP_L, 0);
-		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
+		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_OD, 1);
 		gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_L);
 		break;
 	case CHARGE_PORT_BARRELJACK:
 		/* Make sure BJ adapter is sourcing power */
 		if (gpio_get_level(GPIO_BJ_ADP_PRESENT_L))
 			return EC_ERROR_INVAL;
-		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 0);
+		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_OD, 0);
 		gpio_set_level(GPIO_EN_PPVAR_USBC_ADP_L, 1);
 		gpio_disable_interrupt(GPIO_BJ_ADP_PRESENT_L);
 		break;
