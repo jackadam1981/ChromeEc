@@ -16,6 +16,24 @@
       "message": "It looks like mushu still uses this temperature sensor code, and doesn\u0027t have this variable defined, causing the board to fail: \n```\ndriver/temp_sensor/f75303.c: In function \u0027f75303_get_val_k\u0027:\ndriver/temp_sensor/f75303.c:73:20: error: \u0027F75303_COUNT\u0027 undeclared (first use in this function); did you mean \u0027F75303_IDX_COUNT\u0027?\n   73 |         if (idx \u003e\u003d F75303_COUNT)\n      |                    ^~~~~~~~~~~~\n      |                    F75303_IDX_COUNT\ndriver/temp_sensor/f75303.c:73:20: note: each undeclared identifier is reported only once for each function it appears in\ndriver/temp_sensor/f75303.c: In function \u0027f75303_get_val_mk\u0027:\ndriver/temp_sensor/f75303.c:82:20: error: \u0027F75303_COUNT\u0027 undeclared (first use in this function); did you mean \u0027F75303_IDX_COUNT\u0027?\n   82 |         if (idx \u003e\u003d F75303_COUNT)\n      |                    ^~~~~~~~~~~~\n      |                    F75303_IDX_COUNT\nmake[2]: *** [Makefile.rules:621: build/mushu/RW/driver/temp_sensor/f75303.o] Error 1\nmake[1]: *** [Makefile.rules:290: proj-mushu] Error 2\n```\n\nYou should be able to fix and test this locally with `make -j BOARD\u003dmushu`",
       "revId": "b6d98d62d9d232b88db28e27090646a902ee5eda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3b8254_74e11bf4",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2023-01-30T03:03:36Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b4de0037_ba61524a",
+      "revId": "b6d98d62d9d232b88db28e27090646a902ee5eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
