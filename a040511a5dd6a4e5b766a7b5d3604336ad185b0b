@@ -187,6 +187,30 @@
       },
       "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e208d702_0e2c1dda",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2047,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-01-30T16:48:23Z",
+      "side": 1,
+      "message": "Hi Dai,\n30% duty  is defined in fan spec definition(Also compal has confirmed same in comment#6 in cross bug)(spec says- Fan will be able to start when the duty cycle is 30%.)\nIn the fan spec , it is defined as when duty \u003d 100%, fan rpm \u003d \n3800 +- 7% , which also doesn\u0027t seem to the spec truely because below is my observation:\nWhen duty is increased to 30%, rpm \u003d ~1923(say, prev duty was 12 to 30 ). If reduced from higher to lower duty as 30%, rpm \u003d ~ 2300.  similary , when duty \u003d 100, rpm \u003d ~ 4866.  I think the error margin changes for diff fan types.",
+      "parentUuid": "4e8aee59_f0e97477",
+      "range": {
+        "startLine": 2046,
+        "startChar": 0,
+        "endLine": 2047,
+        "endChar": 35
+      },
+      "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
