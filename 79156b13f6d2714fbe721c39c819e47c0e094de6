@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ba9374_26c46415",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T16:42:28Z",
+      "side": 1,
+      "message": "Please run clang-format on all files before submitting.\n\nNote that this check is done automatically if you use `repo upload` instead of `git push`.",
+      "revId": "79156b13f6d2714fbe721c39c819e47c0e094de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
