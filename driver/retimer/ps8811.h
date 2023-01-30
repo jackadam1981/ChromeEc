@@ -10,6 +10,11 @@
 #ifndef __CROS_EC_USB_RETIMER_PS8811_H
 #define __CROS_EC_USB_RETIMER_PS8811_H
 
+struct ps8811_reg_val {
+	uint8_t reg;
+	uint16_t val;
+};
+
 /*
  * PS8811 uses 7-bit I2C addresses 0x28 to 0x29 (ADDR=LL).
  * Page 0 = 0x28, Page 1 = 0x29.
