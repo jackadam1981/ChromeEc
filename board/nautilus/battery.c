@@ -30,6 +30,8 @@ static enum battery_present batt_pres_prev = BP_NOT_SURE;
 
 #define CHARGING_VOLTAGE_MV_SAFE 8400
 #define CHARGING_CURRENT_MA_SAFE 1500
+#define	CHARGING_VOLTAGE_MV_ADJUST	8600
+#define	CHARGING_CURRENT_MA_ADJUST	3200
 
 static const struct battery_info info = {
 	.voltage_max = 8700,
@@ -89,6 +91,10 @@ int charger_profile_override(struct charge_state_data *curr)
 
 	current = curr->requested_current;
 	voltage = curr->requested_voltage;
+	if (current > CHARGING_CURRENT_MA_ADJUST)
+		current = CHARGING_CURRENT_MA_ADJUST;
+	if (voltage > CHARGING_VOLTAGE_MV_ADJUST)
+		voltage = CHARGING_VOLTAGE_MV_ADJUST;
 	bat_temp_c = curr->batt.temperature - 2731;
 
 	/*
