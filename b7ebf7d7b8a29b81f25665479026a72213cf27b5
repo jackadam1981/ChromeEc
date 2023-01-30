@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1858beec_21ac3ea9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-01-30T19:30:17Z",
+      "side": 1,
+      "message": "\u003e CQ can\u0027t process the CL because its deps do not belong to the same config group\n\n\nThe dependency has already merged, so let\u0027s drop Cq-Depend from the CL and send to CQ.",
+      "revId": "b7ebf7d7b8a29b81f25665479026a72213cf27b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
