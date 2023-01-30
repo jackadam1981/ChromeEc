@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure how much the port 1 tests make sense here, given that we only use this on C0 on skyrim?  I suppose we could have our board function check that the port \u003d\u003d 0 and expect an error on other ports?",
       "revId": "32c6fe2cde39a3a6035507551d90c4faa1b0b6c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dcc0512_3be26dc8",
+        "filename": "zephyr/test/skyrim/src/common/ppc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-01-30T20:23:50Z",
+      "side": 1,
+      "message": "Good catch, I got used to testing both ports from writing the baseboard PD tests and didn\u0027t notice that it doesn\u0027t make sense here. I created b/267205976 to add validation to `board_aoz1380_set_vbus_source_current_limit`.",
+      "parentUuid": "292895f2_5fe98646",
+      "revId": "32c6fe2cde39a3a6035507551d90c4faa1b0b6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
