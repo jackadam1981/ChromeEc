@@ -235,6 +235,30 @@
       },
       "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7034b357_cd2d443c",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2047,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-01-30T20:13:20Z",
+      "side": 1,
+      "message": "Hi Dai,\n Considering the wide variations in rpm values observed for duty cycles set, i have posted queries to compal to confirm on the decision on min/max duty values limits in crosbug -  https://partnerissuetracker.corp.google.com/issues/261701530.\n \nInfact, i  intentionally, didnot add duty inside const struct fan_rpm , as it will result in value change for all board files to configure min/max duty as default 0/100, except  for brya, for which only , we know the expected value for the time being. isn\u0027t it better to redefine config, if any future boards need to support this duty cycle limit, than the default value?\n\nRegarding https://issuetracker.google.com/266221111#comment3 , Vineesh added in cc here may help you.",
+      "parentUuid": "57984c42_ba8b6069",
+      "range": {
+        "startLine": 2046,
+        "startChar": 0,
+        "endLine": 2047,
+        "endChar": 35
+      },
+      "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
