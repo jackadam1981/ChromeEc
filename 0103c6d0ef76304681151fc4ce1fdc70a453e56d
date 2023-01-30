@@ -16,6 +16,23 @@
       "message": "Please add a \"LOW_COVERAGE_REASON\u003dTesting not yet available for EC on-chip drivers.\" to the commit message.",
       "revId": "0103c6d0ef76304681151fc4ce1fdc70a453e56d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ed21e4_7a6e0bec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T16:41:20Z",
+      "side": 1,
+      "message": "The current error is that you need to run clang-format at the code.\n\n```ERROR:root:/mnt/host/source/src/platform/ec/zephyr/drivers/cros_kb_raw/cros_kb_raw_ite.c:162:13: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:                        status |\u003d gpio_pin_configure(gpio_ksol, pin,\n```",
+      "revId": "0103c6d0ef76304681151fc4ce1fdc70a453e56d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
