@@ -66,7 +66,7 @@ void __hibernate_npcx_series(void);
 void system_check_bbram_on_reset(void);
 
 /* The utilities and variables depend on npcx chip family */
-#if defined(CHIP_FAMILY_NPCX5)
+#if defined(CHIP_FAMILY_NPCX5) || defined(CHIP_FAMILY_NPCX9)
 /* Bypass for GMDA issue of ROM api utilities only on npcx5 series */
 void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 				uint32_t size, uint32_t exeAddr);

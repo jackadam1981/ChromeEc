@@ -90,6 +90,8 @@
 /* Two blocks of data RAM - total size is 64KB */
 #define CONFIG_DATA_RAM_SIZE 0x00010000
 #define CONFIG_RAM_SIZE CONFIG_DATA_RAM_SIZE
+#define CONFIG_LPRAM_BASE 0x40001600 /* memory address of lpwr ram */
+#define CONFIG_LPRAM_SIZE 0x00000620 /* 1568B low power ram */
 
 /* Override default NPCX_RAM_SIZE because we're excluding a block. */
 #undef NPCX_RAM_SIZE

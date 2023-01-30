@@ -1352,7 +1352,7 @@ void system_jump_to_booter(void)
 	clock_turbo();
 
 	/* Bypass for GMDA issue of ROM api utilities */
-#if defined(CHIP_FAMILY_NPCX5)
+#if defined(CHIP_FAMILY_NPCX5) || defined(CHIP_FAMILY_NPCX9)
 	system_download_from_flash(flash_offset, /* The offset of the data in
 						    spi flash */
 				   CONFIG_PROGRAM_MEMORY_BASE, /* RAM Addr of
