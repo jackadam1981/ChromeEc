@@ -685,6 +685,8 @@ void ocpc_reset(struct ocpc_data *ocpc)
 			   !(batt.flags & BATT_FLAG_BAD_VOLTAGE)) ?
 				  batt.voltage :
 				  battery_get_info()->voltage_normal;
+		if (voltage < battery_get_info()->voltage_min)
+			voltage = battery_get_info()->voltage_min;
 		CPRINTS("OCPC: C%d Init VSYS to %dmV", ocpc->active_chg_chip,
 			voltage);
 		charger_set_voltage(ocpc->active_chg_chip, voltage);
