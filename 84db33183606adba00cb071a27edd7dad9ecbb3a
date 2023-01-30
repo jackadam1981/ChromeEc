@@ -313,6 +313,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8384c887_0a8b16dc",
+        "filename": "zephyr/program/hdctools/starfish_v1/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-30T18:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e11c158_7f8f5e5a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f27bc82_97481b70",
@@ -350,6 +374,30 @@
       "side": 1,
       "message": "The shell driver is going to likely be platform specific, for instance additional testing with Starfish has shown the CDC_ACM shell has some negative interactions with modem manager so I\u0027m going to replace it eventually with the Google Shell interface once other parts are settled.",
       "parentUuid": "2f27bc82_97481b70",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3227d0fb_cf5c4127",
+        "filename": "zephyr/program/hdctools/starfish_v1/usb.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-30T18:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "761da2f0_8a95ff5d",
       "range": {
         "startLine": 7,
         "startChar": 1,
