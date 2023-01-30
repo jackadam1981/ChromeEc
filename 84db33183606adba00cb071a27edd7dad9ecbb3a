@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d32811_62543ca8",
+        "filename": "zephyr/boards/arm/stm32g4/Kconfig.board",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-30T19:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbc9b381_7838d934",
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21fddbae_514ef750",
@@ -195,6 +213,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "484ebdba_6616c17c",
+        "filename": "zephyr/linker/end-of-ram.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-30T19:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05dacf70_b28acc7a",
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "985b166e_1ca44c0b",
@@ -256,6 +292,30 @@
       "side": 1,
       "message": "The default is set as `default $(dt_node_int_prop_hex,/binman/ec-rw,size)` so it undefined in this case.",
       "parentUuid": "673a9983_ad51ca7d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "84db33183606adba00cb071a27edd7dad9ecbb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4bfee1e_67f98a33",
+        "filename": "zephyr/linker/image_size.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-30T19:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "835b319c_6719fcce",
       "range": {
         "startLine": 9,
         "startChar": 0,
