@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2405efb_879e126e",
+        "filename": "zephyr/program/hdctools/starfish_v1/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "It\u0027s preferred to have a single devicetree overlay file, and then have that file explicitly include the other devicetree files.  I suggest either `project.overlay` or `starfish_v1.overlay`.\n\nAlso, use `.dtsi` for the extension devicetree helper files.\n\nFor details on how Zephyr EC organize program and project files, see this [doc](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/docs/zephyr/project_config.md;l\u003d1).",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b1e3956_a5b89a92",
+        "filename": "zephyr/program/hdctools/starfish_v1/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "I think this option is turned on by [default](https://github.com/zephyrproject-rtos/zephyr/blob/20644536b9aa74ca766f0fb69c16204b8ed84f95/cmake/compiler/gcc/compiler_flags.cmake#L193).",
+      "range": {
+        "startLine": 8,
+        "startChar": 23,
+        "endLine": 8,
+        "endChar": 50
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45e5c2ab_6c3234cc",
+        "filename": "zephyr/program/hdctools/starfish_v1/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "Redundant with line 8.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4810d4de_3f16c35e",
+        "filename": "zephyr/program/hdctools/starfish_v1/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "This isn\u0027t required, and isn\u0027t consistent with your target_sources() below.",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 56
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2c9038_9812df09",
+        "filename": "zephyr/program/hdctools/starfish_v1/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "Use `zephyr_library_sources()` for all files.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7ca53e_e745206b",
+        "filename": "zephyr/program/hdctools/starfish_v1/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "Use a path relative to `${PLATFORM_EC}` here.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 89
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed573a81_51564cb1",
+        "filename": "zephyr/program/hdctools/starfish_v1/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb5e99f_f65a5841",
+        "filename": "zephyr/program/hdctools/starfish_v1/flash.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "This overlaps the boot_partition.  Is that an issue?",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a503d98b_ef3bed35",
+        "filename": "zephyr/program/hdctools/starfish_v1/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "Are these GPIOs initialized anywhere?  The `gpio-keys` compatible C driver doesn\u0027t actually exist in Zephyr upstream.  Board that use this upstream generally use the node-label or an alias to find the GPIO pins to initialize.  You don\u0027t have any board code referencing anything in this file best I can tell.\n\nSo this file seems to be adding unused nodes into the devicetree.",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c42f0fe3_bc623c3f",
+        "filename": "zephyr/program/hdctools/starfish_v1/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "Note for physical buttons, there is a new driver upstream `zephyr,gpio-keys` which provides built-in software debouncing.",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9554569_3f8f9934",
+        "filename": "zephyr/program/hdctools/starfish_v1/include/dfu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "Nit - move this into dfu.c.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8c73a9_3e44d4a2",
+        "filename": "zephyr/program/hdctools/starfish_v1/src/dfu_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "trait?",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "123dfcec_4fdb41e3",
+        "filename": "zephyr/program/hdctools/starfish_v1/src/dfu_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "Why not `return 0;` here?",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 17
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fea86a2_175fed4d",
+        "filename": "zephyr/program/hdctools/starfish_v1/src/dfu_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:09:29Z",
+      "side": 1,
+      "message": "Nit - trailing space.",
+      "range": {
+        "startLine": 99,
+        "startChar": 37,
+        "endLine": 99,
+        "endChar": 38
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
