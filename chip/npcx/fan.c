@@ -346,6 +346,8 @@ void fan_tick_func(void)
 			/* Fan in duty mode still want rpm_actual being updated.
 			 */
 			p_status->rpm_actual = mft_fan_rpm(ch);
+//			CPRINTS("sumeet: auto_fan %d: get actual rpm", p_status->rpm_actual);
+
 			if (p_status->rpm_actual > 0)
 				p_status->auto_status = FAN_STATUS_LOCKED;
 			else

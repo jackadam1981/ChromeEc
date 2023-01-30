@@ -525,10 +525,13 @@ static void pwm_fan_second(void)
 			cprints(CC_PWM, "Fan %d stalled!", fan);
 		} else {
 			rpm = fan_get_rpm_actual(FAN_CH(fan));
+//			cprints(CC_PWM, "Fan rpm := %d", rpm);
 		}
 
 		mapped[fan] = rpm;
 	}
+
+//	cprints(CC_PWM, "sumeet: Fan rpm..");
 
 	/*
 	 * Issue warning.  As we have thermal shutdown
