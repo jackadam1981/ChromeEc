@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b537cc_03e391d6",
+        "filename": "zephyr/west/ec_env_builder.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-30T23:47:50Z",
+      "side": 1,
+      "message": "I should probably rename this and update the description for this function. There\u0027s no good way to activate and configure the virtual environment within a python script, as far as I could find.  This is installing the postactivate.sh script into the activate bash script.",
+      "parentUuid": "87ceff41_3a45ccf0",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 30
+      },
+      "revId": "81d38a5cc6c57b3c3828d6841188d183aa417d30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "467a96f1_51a0a8a7",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a2633f_4a331211",
+        "filename": "zephyr/west/setup.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-30T23:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "467a96f1_51a0a8a7",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "81d38a5cc6c57b3c3828d6841188d183aa417d30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb809135_412f99c7",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-01-30T20:29:27Z",
       "side": 1,
       "message": "`ec-setup`",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "81d38a5cc6c57b3c3828d6841188d183aa417d30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdce9366_c6a4443f",
+        "filename": "zephyr/west/setup.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-01-30T23:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb809135_412f99c7",
       "range": {
         "startLine": 22,
         "startChar": 13,
