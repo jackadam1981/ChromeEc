@@ -12,6 +12,7 @@ zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 zephyr_include_directories("${PLATFORM_EC}/include")
 
 target_sources(app PRIVATE src/app_init.c)
+target_sources(app PRIVATE src/buttons.c)
 target_sources(app PRIVATE src/dfu.c)
 target_sources(app PRIVATE src/dfu_usb.c)
 
