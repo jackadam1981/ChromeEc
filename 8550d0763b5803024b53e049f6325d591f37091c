@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759f196e_4e4a8bcc",
+        "filename": "zephyr/program/hdctools/starfish_v1/include/buttons.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:28:56Z",
+      "side": 1,
+      "message": "You haven\u0027t actually defined a mechanism for the application to read the button state or react to changes in the buttons.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "8550d0763b5803024b53e049f6325d591f37091c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "112e5189_6c5ec2b4",
+        "filename": "zephyr/program/hdctools/starfish_v1/src/buttons.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:28:56Z",
+      "side": 1,
+      "message": "This struct has a mix of constant and run-time data.  Consider splitting this apart to save RAM space.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "8550d0763b5803024b53e049f6325d591f37091c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d08ec91c_ab0cb83d",
+        "filename": "zephyr/program/hdctools/starfish_v1/src/buttons.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-30T21:28:56Z",
+      "side": 1,
+      "message": "It\u0027s preferred to move this into a SYS_INIT() call.  \n\nIf you want to define an API to access button state, you\u0027ll likely need to create Zephyr driver so the application can reference buttons by a `struct device *` pointer.  Zephyr driver\u0027s are instantiated using `DEVICE_DEFINE` and `DEVICE_DT_INST_DEFINE`, which already provide SYS_INIT() hook.",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 0
+      },
+      "revId": "8550d0763b5803024b53e049f6325d591f37091c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
