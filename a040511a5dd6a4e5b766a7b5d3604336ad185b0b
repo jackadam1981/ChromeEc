@@ -259,6 +259,30 @@
       },
       "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32f9935d_d1f7375b",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2047,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-30T22:14:29Z",
+      "side": 1,
+      "message": "We\u0027ll add only one uint8_t for duty_min. So, I believe the size increase is negligible. As written above, I don\u0027t think duty_max should be in the EC.",
+      "parentUuid": "7034b357_cd2d443c",
+      "range": {
+        "startLine": 2046,
+        "startChar": 0,
+        "endLine": 2047,
+        "endChar": 35
+      },
+      "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
