@@ -39,6 +39,18 @@ static struct body_detect_motion_data {
 } data[2]; /* motion data for X-axis and Y-axis */
 
 /*
+ * Console command can force the value of body_detect. If body_detect_force is
+ * true, the all external set call for body_detect are ignored.
+ */
+static bool body_detect_force;
+
+static inline void print_body_detect_mode(void)
+{
+	CPRINTS("body detect mode %sabled",
+		body_detect_get_state() ? "en" : "dis");
+}
+
+/*
  * This function will update new variance and new sum according to incoming
  * value, previous value, previous sum and previous variance.
  * In order to prevent inaccuracy, we use integer to calculate instead of float
@@ -95,6 +107,8 @@ void body_detect_change_state(enum body_detect_states state, bool spoof)
 {
 	if (IS_ENABLED(CONFIG_ACCEL_SPOOF_MODE) && spoof_enable && !spoof)
 		return;
+	if (body_detect_force && !spoof)
+		return;
 	if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION)) {
 		struct ec_response_motion_sensor_data vector = {
 			.flags = MOTIONSENSE_SENSOR_FLAG_BYPASS_FIFO,
@@ -115,15 +129,14 @@ void body_detect_change_state(enum body_detect_states state, bool spoof)
 		stationary_timeframe = 0;
 	}
 
+	/* state changing log */
+	print_body_detect_mode();
+
 #ifdef CONFIG_BODY_DETECTION_NOTIFY_MODE_CHANGE
 	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 #endif
 
 	hook_notify(HOOK_BODY_DETECT_CHANGE);
-
-	/* state changing log */
-	CPRINTS("body_detect changed state to: %s body",
-		motion_state ? "on" : "off");
 }
 
 enum body_detect_states body_detect_get_state(void)
@@ -258,3 +271,32 @@ bool body_detect_get_spoof(void)
 	return spoof_enable;
 }
 #endif
+
+static int command_setbodydetectionmode(int argc, const char **argv)
+{
+	if (argc == 1) {
+		print_body_detect_mode();
+		return EC_SUCCESS;
+	}
+
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (argv[1][0] == 'o' && argv[1][1] == 'n') {
+		body_detect_change_state(BODY_DETECTION_ON_BODY, true);
+		body_detect_force = true;
+	} else if (argv[1][0] == 'o' && argv[1][1] == 'f') {
+		body_detect_change_state(BODY_DETECTION_OFF_BODY, true);
+		body_detect_force = true;
+	} else if (argv[1][0] == 'r') {
+		body_detect_reset();
+		body_detect_force = false;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(
+	bodydetectmode, command_setbodydetectionmode, "[on | off | reset]",
+	"Manually force body detect mode to on (body), off (body) or reset.");
