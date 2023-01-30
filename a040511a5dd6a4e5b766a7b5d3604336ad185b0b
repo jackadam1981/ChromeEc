@@ -211,6 +211,30 @@
       },
       "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57984c42_ba8b6069",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2047,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-01-30T17:50:20Z",
+      "side": 1,
+      "message": "Hi Poornima, \n\nI understand duty_min is from the spec. So, I think we should have it in the EC. Can you please add it to struct fan_rpm so that each board can customize it? This should fix the stalled bug.\n\nRegarding duty_max, I think the EC should assume it\u0027s 100% and the AP should reduce it to a lower value as needed for whatever reason.\n\nAlso, can you respond to https://issuetracker.google.com/266221111#comment3? I\u0027m wondering how bad or good it is to map duty\u003d[1:100] to pwm\u003d[30:100] instead of clamping.",
+      "parentUuid": "e208d702_0e2c1dda",
+      "range": {
+        "startLine": 2046,
+        "startChar": 0,
+        "endLine": 2047,
+        "endChar": 35
+      },
+      "revId": "a040511a5dd6a4e5b766a7b5d3604336ad185b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
