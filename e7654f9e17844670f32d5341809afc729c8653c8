@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3841a4ae_7c24552a",
+        "filename": "zephyr/program/skyrim/src/stt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1547927
+      },
+      "writtenOn": "2023-01-30T21:12:33Z",
+      "side": 1,
+      "message": "Looks like here failed the clang-format check. Please correct here and CQ+2 again.\n\nSame clang-format checking applies to lines #21, #31, #33.",
+      "range": {
+        "startLine": 19,
+        "startChar": 71,
+        "endLine": 19,
+        "endChar": 80
+      },
+      "revId": "e7654f9e17844670f32d5341809afc729c8653c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
