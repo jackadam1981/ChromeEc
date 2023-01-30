@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad5c1f80_ec0ee4bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-01-30T19:38:10Z",
+      "side": 1,
+      "message": "Could this be done for PD logs generally with a common facility? For instance, could there be a function that `CPRINTS` could call instead of `cprints(CC_USBPD, ...)`?",
+      "revId": "f48633ac078a403577ad8e52d39c810238dd403a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
