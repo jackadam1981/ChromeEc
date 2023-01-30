@@ -1,0 +1,13 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config BOARD
+	default "stm32g473" if BOARD_STM32G4_G473
+
+CONFIG_ARM_MPU=y
+CONFIG_CLOCK_CONTROL=y
+CONFIG_GPIO=y
+CONFIG_HW_STACK_PROTECTION=y
+CONFIG_PINCTRL=y
+CONFIG_USB_DEVICE_VID=0x18d1
