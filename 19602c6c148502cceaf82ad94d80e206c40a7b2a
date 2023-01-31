@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14933c9c_2be18b12",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_xec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-31T19:47:34Z",
+      "side": 1,
+      "message": "The upstream [setting](https://github.com/zephyrproject-rtos/zephyr/blob/362874bc09916b1620c6a47437ee5d47b9773bea/dts/arm/microchip/mec1727nsz.dtsi#L27) is set to dual.  Should this be SPI_LINES_DUAL?",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 48
+      },
+      "revId": "19602c6c148502cceaf82ad94d80e206c40a7b2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
