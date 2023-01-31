@@ -887,7 +887,11 @@ enum ec_error_list raa489000_is_acok(int chgnum, bool *acok)
 	rv = raw_read16(chgnum, ISL9238_REG_INFO2, &regval);
 	if (rv != EC_SUCCESS)
 		return rv;
+#ifdef CONFIG_PLATFORM_EC_RAA489000_AC_PRESENT_CONTROL
+	*acok = (regval & RAA489000_INFO2_COMPARATOR);
+#else
 	*acok = (regval & RAA489000_INFO2_ACOK);
+#endif
 
 	return EC_SUCCESS;
 }
@@ -1460,6 +1464,8 @@ static enum ec_error_list raa489000_set_vsys_compensation(int chgnum,
 	 */
 	return EC_ERROR_UNIMPLEMENTED;
 }
+#endif /* CONFIG_CHARGER_RAA489000 && CONFIG_OCPC */
+
 #endif /* CONFIG_CHARGER_RAA489000 && CONFIG_OCPC */
 
 #ifdef CONFIG_PLATFORM_EC_RAA489000_AC_PRESENT_CONTROL
