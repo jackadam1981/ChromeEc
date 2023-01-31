@@ -63,7 +63,7 @@ test: $(BUILD)/zephyr/lcov_no_tests.info # ALL_FILTERED
 test: $(BUILD)/zephyr/lcov_rpt # html artifact
 test: special_boards # BOARD_ metric and html artifact
 else
-test: twister_host twister_llvm
+test: twister_host twister_llvm twister_asan
 endif
 
 zmake_unit_tests:
@@ -76,6 +76,11 @@ twister_host $(PLATFORM_EC)/twister-out-host/coverage.info:
 twister_llvm $(PLATFORM_EC)/twister-out-llvm/coverage.info: TOOLCHAIN=llvm
 twister_llvm $(PLATFORM_EC)/twister-out-llvm/coverage.info:
 	+$(TWISTER_COMMAND)
+
+twister_asan:
+	+cd $(PLATFORM_EC) && ./twister --outdir \
+	twister-out-asan -v -i --no-upload-cros-rdb --toolchain \
+	llvm -x CONFIG_ASAN=y -x CONFIG_HEAP_MEM_POOL_SIZE=1024
 
 $(BUILD)/coverage/lcov.info:
 	$(MAKE) -C .. test-coverage
