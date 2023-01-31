@@ -16,6 +16,23 @@
       "message": "hold until b/266001237 solved",
       "revId": "629d2fcfa350bec34fecfee897d0ca852f3437da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "201f8555_460aaaa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-01-31T09:42:31Z",
+      "side": 1,
+      "message": "Due to b:267273946, please generate a new merge that includes https://crrev.com/c/4205805",
+      "revId": "629d2fcfa350bec34fecfee897d0ca852f3437da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
