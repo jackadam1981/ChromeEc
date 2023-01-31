@@ -16,6 +16,24 @@
       "message": "Why not apply the same conditional here? I think sometimes fuel gauges may request (0,0) then we\u0027d be overriding that here when we just want to limit the max voltage.",
       "revId": "88b518c576e0c35a4c2cdbec6f60c0706c5c7754",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "352cd76c_364dfdd2",
+        "filename": "board/casta/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2023-01-31T00:05:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a487fc7_97b7151e",
+      "revId": "88b518c576e0c35a4c2cdbec6f60c0706c5c7754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
