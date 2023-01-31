@@ -16,6 +16,24 @@
       "message": "Please run clang-format on all files before submitting.\n\nNote that this check is done automatically if you use `repo upload` instead of `git push`.",
       "revId": "79156b13f6d2714fbe721c39c819e47c0e094de6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa187dfd_a46307cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2023-01-31T02:27:33Z",
+      "side": 1,
+      "message": "I had run clang-format(hook scripts), but it indented a line that don\u0027t exceed 80 character, so I didn\u0027t pick the change. OK, I apply the change now, thanks~",
+      "parentUuid": "42ba9374_26c46415",
+      "revId": "79156b13f6d2714fbe721c39c819e47c0e094de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
