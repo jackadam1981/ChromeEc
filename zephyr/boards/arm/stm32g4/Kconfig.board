@@ -8,3 +8,6 @@ config BOARD_STM32G4_G473
 	# Enables support for the STM32 HAL drivers
 	select HAS_STM32CUBE
 	select USE_STM32_HAL_CORTEX
+	# STM32 doesn't actually have enough ram for coverage, but this will
+	# allow generating initial 0 line coverage.
+	select HAS_COVERAGE_SUPPORT
