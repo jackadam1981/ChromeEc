@@ -87,6 +87,30 @@
       },
       "revId": "f4aca351f3ccab06855575722461434da45cff06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c53d988_d22defcc",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-01-31T21:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eb554f5_a6e9e964",
+      "range": {
+        "startLine": 219,
+        "startChar": 7,
+        "endLine": 219,
+        "endChar": 31
+      },
+      "revId": "f4aca351f3ccab06855575722461434da45cff06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
