@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17fa17e7_bd4e332a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-31T21:20:31Z",
+      "side": 1,
+      "message": "Documentation (with 1 nit) and overall flow looks good.  I\u0027ll let Yuval +2 the python pieces.",
+      "revId": "53c62707090645685b7eba047ea6f96d377ea64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5d29cec_b503ed0c",
+        "filename": "docs/zephyr/out_of_chroot.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-31T21:20:31Z",
+      "side": 1,
+      "message": "ec-setup",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "53c62707090645685b7eba047ea6f96d377ea64c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
