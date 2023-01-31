@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac51bcbb_f6e88baf",
+        "filename": "zephyr/program/hdctools/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-31T22:26:33Z",
+      "side": 1,
+      "message": "Nit - specify both sources with a single call:\n\n```\nzephyr_library_sources_ifdef(CONFIG_DFU_BOOTLOADER\n  src/dfu_stm32.c,\n  src/dfu_usb.c)\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "d99d5782278cf49a4c9f42204269ef4f79650485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fffe01ff_dc190544",
+        "filename": "zephyr/program/hdctools/src/dfu_stm32.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-01-31T22:26:33Z",
+      "side": 1,
+      "message": "Depending on how early you want this init, you could consider using POST_KERNEL here to ensure this runs before `main()` and `ec_app_main()`.",
+      "range": {
+        "startLine": 135,
+        "startChar": 25,
+        "endLine": 135,
+        "endChar": 36
+      },
+      "revId": "d99d5782278cf49a4c9f42204269ef4f79650485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
