@@ -16,6 +16,24 @@
       "message": "I\u0027ve been having problems getting this to work with the project.overlay format.\n\nhere / project_name / \"project.overlay\"",
       "revId": "19863ff0410226df28e792362e381d00e2e4a34a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e48e9cb_80544df0",
+        "filename": "zephyr/program/hdctools/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-31T22:06:10Z",
+      "side": 1,
+      "message": "Fixed, wrong comment block was being used.",
+      "parentUuid": "3f24cd6a_a8c56d86",
+      "revId": "19863ff0410226df28e792362e381d00e2e4a34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
