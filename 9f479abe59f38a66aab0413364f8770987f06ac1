@@ -16,6 +16,24 @@
       "message": "Should this unlock the mutex before terminating so nobody else can get deadlocked on it?",
       "revId": "9f479abe59f38a66aab0413364f8770987f06ac1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca384e72_1468f2ed",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-31T01:18:53Z",
+      "side": 1,
+      "message": "After some further testing and analysis, I think is better to limit lock around `ap_pwrseq_sm_run_state` (which is were state transitions are occurring), and move callbacks execution outside of this lock.\n\nExecuting callbacks inside mutex lock could slow down system response if any callback routine wakes other thread that queries current power state.",
+      "parentUuid": "5d92601c_780a05c6",
+      "revId": "9f479abe59f38a66aab0413364f8770987f06ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
