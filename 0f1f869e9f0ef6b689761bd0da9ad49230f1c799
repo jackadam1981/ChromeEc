@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb21fd3_b0b5f8d4",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-31T04:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5eb97ee_6febc57b",
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "535363d2_cb4eeecd",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-01-27T21:14:31Z",
       "side": 1,
       "message": "Suggest naming this file host_command_memory_dump.c for consistency.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 40
+      },
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c67b60_654efda7",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-31T04:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "535363d2_cb4eeecd",
       "range": {
         "startLine": 2,
         "startChar": 0,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06c5d728_53212190",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-31T04:23:47Z",
+      "side": 1,
+      "message": "I am intending to support both legacy and zephyr. I moved the zephyr specific code to zephyr/shim/src/register_memory_dump.c. Maybe this belongs in zephyr/app/ec instead? \n\nThere isn\u0027t an equivalent legacy implementation yet.",
+      "parentUuid": "0eb61f8b_e50cf629",
+      "range": {
+        "startLine": 28,
+        "startChar": 46,
+        "endLine": 28,
+        "endChar": 61
+      },
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3c4c2de_b7b5c766",
         "filename": "common/memory_dump_hostcmds.c",
         "patchSetId": 7
@@ -77,6 +143,30 @@
       "writtenOn": "2023-01-27T21:14:31Z",
       "side": 1,
       "message": "Are there any threads that we shouldn\u0027t expose?  What about keyboard scanning/keyboard protocol?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 62
+      },
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "291e44a6_234ff768",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-31T04:23:47Z",
+      "side": 1,
+      "message": "Correct. Added a check for these threads in register_memory_dump.c. Also added to unit test.",
+      "parentUuid": "d3c4c2de_b7b5c766",
       "range": {
         "startLine": 49,
         "startChar": 1,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b90dc9_0a0f1a70",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2605,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-31T04:23:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5371ae6c_00c2d018",
+      "range": {
+        "startLine": 2605,
+        "startChar": 0,
+        "endLine": 2605,
+        "endChar": 33
+      },
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34579cf7_e3050767",
@@ -123,6 +237,30 @@
       "writtenOn": "2023-01-27T21:14:31Z",
       "side": 1,
       "message": "I recommend using a common prefic `EC_CMD_MEMORY_DUMP_` for all these commands.  `EC_CMD_MEMORY_DUMP_GET_METADATA`, `EC_CMD_MEMORY_DUMP_GET_ENTRY_INFO`, etc.",
+      "range": {
+        "startLine": 5570,
+        "startChar": 8,
+        "endLine": 5570,
+        "endChar": 39
+      },
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dbdfcc2_5674cd66",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 5570,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-31T04:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34579cf7_e3050767",
       "range": {
         "startLine": 5570,
         "startChar": 8,
@@ -158,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd7527a2_5377709a",
+        "filename": "include/memory_dump_hostcmds.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-31T04:23:47Z",
+      "side": 1,
+      "message": "Context: I wanted to get the basic API out for review while I filled in the details, that\u0027s why these parts were missing. \n\nNote: Replaced `initialize_memory_dump` with `register_memory_dump`. \n\n`register_thread_memory_dump` is now called in `ec_app_main`. It only registers thread stacks at the moment. More memory will be added later.",
+      "parentUuid": "d676558b_f8f1ce65",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec4f02ad_ff71e5d3",
         "filename": "zephyr/Kconfig.system",
         "patchSetId": 7
@@ -169,6 +331,30 @@
       "writtenOn": "2023-01-27T21:14:31Z",
       "side": 1,
       "message": "I\u0027m curious what flash/RAM impact is when enabling this option.",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc6bcca_6dd240af",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-31T04:23:47Z",
+      "side": 1,
+      "message": "Turns out THREAD_MONITOR is also required (for iterating through threads). Looks like these add about 1.5K bytes to flash. Not great.",
+      "parentUuid": "ec4f02ad_ff71e5d3",
       "range": {
         "startLine": 103,
         "startChar": 8,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af98fc1d_60d1ad04",
+        "filename": "zephyr/test/drivers/memory_dump_hostcmds/src/memory_dump_hostcmds.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-31T04:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4547c5cb_826069cf",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b973180_d99a4a21",
@@ -215,6 +425,30 @@
       "writtenOn": "2023-01-27T21:14:31Z",
       "side": 1,
       "message": "There are [helper macros](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/include/host_command.h;l\u003d364) to initialize the args structure.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "562a1066_f9479ff9",
+        "filename": "zephyr/test/drivers/memory_dump_hostcmds/src/memory_dump_hostcmds.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-31T04:23:47Z",
+      "side": 1,
+      "message": "The helper macros do not allow setting response_max (helpers set `response_max` to sizeof(RESPONSE)). To maximize response size, response_max is set dynamically based on protocol_info.",
+      "parentUuid": "9b973180_d99a4a21",
       "range": {
         "startLine": 35,
         "startChar": 0,

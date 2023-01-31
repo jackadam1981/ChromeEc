@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b98bd737_27d3b0b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-01-31T04:23:47Z",
+      "side": 1,
+      "message": "Done. `ectool memory_dump` will output the memory dump in hexdump format.",
+      "parentUuid": "8aa1e5b3_dc980dab",
+      "revId": "21fe841c48f32aa2729287404df3b432d036f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ff03d72_4c1240ed",
