@@ -33,6 +33,42 @@
       "message": "The current error is that you need to run clang-format at the code.\n\n```ERROR:root:/mnt/host/source/src/platform/ec/zephyr/drivers/cros_kb_raw/cros_kb_raw_ite.c:162:13: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:                        status |\u003d gpio_pin_configure(gpio_ksol, pin,\n```",
       "revId": "0103c6d0ef76304681151fc4ce1fdc70a453e56d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd2b533a_c380bc93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2023-01-31T02:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dda56059_cf969142",
+      "revId": "0103c6d0ef76304681151fc4ce1fdc70a453e56d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cecea5b_626e9c41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2023-01-31T02:26:54Z",
+      "side": 1,
+      "message": "Ack, thanks~",
+      "parentUuid": "d5ed21e4_7a6e0bec",
+      "revId": "0103c6d0ef76304681151fc4ce1fdc70a453e56d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
