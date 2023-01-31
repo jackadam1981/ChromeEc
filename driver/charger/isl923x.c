@@ -887,7 +887,11 @@ enum ec_error_list raa489000_is_acok(int chgnum, bool *acok)
 	rv = raw_read16(chgnum, ISL9238_REG_INFO2, &regval);
 	if (rv != EC_SUCCESS)
 		return rv;
+#ifdef CONFIG_PLATFORM_EC_RAA489000_AC_PRESENT_CONTROL
+	*acok = (regval & RAA489000_INFO2_COMPARATOR);
+#else
 	*acok = (regval & RAA489000_INFO2_ACOK);
+#endif
 
 	return EC_SUCCESS;
 }
@@ -1462,6 +1466,8 @@ static enum ec_error_list raa489000_set_vsys_compensation(int chgnum,
 }
 #endif /* CONFIG_CHARGER_RAA489000 && CONFIG_OCPC */
 
+#endif /* CONFIG_CHARGER_RAA489000 && CONFIG_OCPC */
+
 #ifdef CONFIG_PLATFORM_EC_RAA489000_AC_PRESENT_CONTROL
 /*
  * If the device is in OTG mode, flip the comparator output
@@ -1485,7 +1491,11 @@ void raa489000_check_ac_delayed(void)
 		0;
 #endif
 
+<<<<<<< PATCH SET (b27bb1 raa489000: fix acok state when OTG mode)
+	rv = raw_read16(0, ISL9238_REG_INFO2, &regval);
+=======
 	rv = raw_read16(chgnum, ISL9238_REG_INFO2, &regval);
+>>>>>>> BASE      (fde99c raa489000: support AC_PRESENT_CONTROL without OCPC)
 	if (rv == EC_SUCCESS) {
 		new_val = (((regval >> RAA489000_INFO2_STATE_SHIFT) &
 			    RAA489000_INFO2_STATE_MASK) ==
@@ -1499,7 +1509,11 @@ void raa489000_check_ac_delayed(void)
 			 * be low.
 			 */
 			current_val = new_val;
+<<<<<<< PATCH SET (b27bb1 raa489000: fix acok state when OTG mode)
+			isl923x_set_comparator_inversion(0, new_val);
+=======
 			isl923x_set_comparator_inversion(chgnum, new_val);
+>>>>>>> BASE      (fde99c raa489000: support AC_PRESENT_CONTROL without OCPC)
 		}
 	}
 }
