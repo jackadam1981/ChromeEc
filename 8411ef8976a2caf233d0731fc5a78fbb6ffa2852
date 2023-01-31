@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d0d4ca4_21aa2e2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-31T01:39:14Z",
+      "side": 1,
+      "message": "Thanks for the feedback Keith!",
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2405efb_879e126e",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-01-30T21:09:29Z",
       "side": 1,
       "message": "It\u0027s preferred to have a single devicetree overlay file, and then have that file explicitly include the other devicetree files.  I suggest either `project.overlay` or `starfish_v1.overlay`.\n\nAlso, use `.dtsi` for the extension devicetree helper files.\n\nFor details on how Zephyr EC organize program and project files, see this [doc](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/docs/zephyr/project_config.md;l\u003d1).",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfe76c1d_e5d6c273",
+        "filename": "zephyr/program/hdctools/starfish_v1/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-31T01:39:14Z",
+      "side": 1,
+      "message": "I\u0027ll rearrange these.",
+      "parentUuid": "b2405efb_879e126e",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -164,6 +205,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f20d2250_299ff20d",
+        "filename": "zephyr/program/hdctools/starfish_v1/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-31T01:39:14Z",
+      "side": 1,
+      "message": "I really, really wanted to make sure `-fdiagnostics-color\u003dalways` was enabled. /s",
+      "parentUuid": "ed573a81_51564cb1",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb5e99f_f65a5841",
         "filename": "zephyr/program/hdctools/starfish_v1/flash.dts",
         "patchSetId": 2
@@ -175,6 +240,30 @@
       "writtenOn": "2023-01-30T21:09:29Z",
       "side": 1,
       "message": "This overlaps the boot_partition.  Is that an issue?",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "521de396_92b81219",
+        "filename": "zephyr/program/hdctools/starfish_v1/flash.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-31T01:39:14Z",
+      "side": 1,
+      "message": "Good catch, I should shrink it to avoid collisions.",
+      "parentUuid": "8eb5e99f_f65a5841",
       "range": {
         "startLine": 27,
         "startChar": 3,
@@ -210,6 +299,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a88fb7d_921b634a",
+        "filename": "zephyr/program/hdctools/starfish_v1/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-31T01:39:14Z",
+      "side": 1,
+      "message": "The next CLs initialize it. There\u0027s a macro GPIO_LIST_CTX() created which allows us to identify gpio and configure it based on the grouping patterns. The macro automatically creates a struct for each gpio within the blocks and assigns them GPIO_LABEL\u0027s and indexes based on the device tree. \n\nIt allows us to initialize each node with a statement like:\n\n    static struct button_ctx all_buttons[] \u003d { GPIO_LIST_CTX(button) };\n    static struct led_ctx all_leds[] \u003d { GPIO_LIST_CTX(led) };\n    static struct sim_ctx all_sim_gpios[] \u003d { GPIO_LIST_CTX(sim) };\n\nThat `struct gpio_ctx` is a small amount of RAM, but it\u0027s only 16 Bytes total leaving since I left everything at `int` defaults rather than `uint16_t`. All 28 calls are wasting less than 500 bytes of RAM out of the 120kB free. It can be optimized in a few different ways if we wanted it as a proper device tree driver but we\u0027re nowhere near limits on this project so resources can be spent elsewhere where it\u0027s needed.",
+      "parentUuid": "a503d98b_ef3bed35",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c42f0fe3_bc623c3f",
         "filename": "zephyr/program/hdctools/starfish_v1/gpio.dts",
         "patchSetId": 2
@@ -233,6 +346,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bf61bcd_c107d058",
+        "filename": "zephyr/program/hdctools/starfish_v1/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-31T01:39:14Z",
+      "side": 1,
+      "message": "Thanks, that makes the buttons.c file simpler.",
+      "parentUuid": "c42f0fe3_bc623c3f",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9554569_3f8f9934",
         "filename": "zephyr/program/hdctools/starfish_v1/include/dfu.h",
         "patchSetId": 2
@@ -244,6 +381,30 @@
       "writtenOn": "2023-01-30T21:09:29Z",
       "side": 1,
       "message": "Nit - move this into dfu.c.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b75d730_700250bb",
+        "filename": "zephyr/program/hdctools/starfish_v1/include/dfu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-31T01:39:14Z",
+      "side": 1,
+      "message": "Clang-formater was insisting externs be moved out of the *.c files. That\u0027s probably the cleanest method to structure this so I\u0027ll move it over.",
+      "parentUuid": "d9554569_3f8f9934",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -290,6 +451,30 @@
       "writtenOn": "2023-01-30T21:09:29Z",
       "side": 1,
       "message": "Why not `return 0;` here?",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 17
+      },
+      "revId": "8411ef8976a2caf233d0731fc5a78fbb6ffa2852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7110ad83_28f690b2",
+        "filename": "zephyr/program/hdctools/starfish_v1/src/dfu_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-01-31T01:39:14Z",
+      "side": 1,
+      "message": "Looks like some of the extra processing steps involved in MCUBoot\u0027s implementation don\u0027t apply here so \u00270\u0027 is valid.",
+      "parentUuid": "123dfcec_4fdb41e3",
       "range": {
         "startLine": 93,
         "startChar": 10,
