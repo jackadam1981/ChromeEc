@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "386f9a5f_f96b6b49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-01-31T02:13:25Z",
+      "side": 1,
+      "message": "I add CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4207168 for PS8811 driver code.",
+      "parentUuid": "afeb4a22_38be834b",
+      "revId": "8ff22b66a978eaf1c2ed152b9e99cc16c727b003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a7f46c9_c970450d",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9716a0fd_a324ad46",
+        "filename": "driver/retimer/ps8811.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-01-31T02:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a7f46c9_c970450d",
+      "revId": "8ff22b66a978eaf1c2ed152b9e99cc16c727b003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf5b49dd_3561d580",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-01-30T17:03:52Z",
       "side": 1,
       "message": "nit: does this print make sense?  It seems the default tuning is no longer being used with the express value sets below",
+      "revId": "8ff22b66a978eaf1c2ed152b9e99cc16c727b003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "762cc5a0_c2bfd56a",
+        "filename": "zephyr/program/skyrim/frostflow/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-01-31T02:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf5b49dd_3561d580",
       "revId": "8ff22b66a978eaf1c2ed152b9e99cc16c727b003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
