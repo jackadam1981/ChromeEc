@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b053bc_19092c6b",
+        "filename": "common/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-31T17:56:28Z",
+      "side": 1,
+      "message": "To keep things simple for now I used the worst case scenario, i.e. 160x160.",
+      "parentUuid": "95cdd50b_d43d3542",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "34727ceeb0a345e5c9d3512ef57be7d12fede906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a3498c3_6be6a3be",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-01-27T01:22:47Z",
       "side": 1,
       "message": "revert this file. This change should not be merged.",
+      "range": {
+        "startLine": 1639,
+        "startChar": 0,
+        "endLine": 1639,
+        "endChar": 7
+      },
+      "revId": "34727ceeb0a345e5c9d3512ef57be7d12fede906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587bb294_b7c54769",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1639,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-31T17:56:28Z",
+      "side": 1,
+      "message": "Keeping this open as reminder.",
+      "parentUuid": "2a3498c3_6be6a3be",
       "range": {
         "startLine": 1639,
         "startChar": 0,

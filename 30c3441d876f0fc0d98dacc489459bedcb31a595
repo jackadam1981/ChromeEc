@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29bf651_6f50a06b",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-31T17:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3449dbf_a40ebee3",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c0b089b_0220ca2b",
@@ -189,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e232f1b_d4747cfe",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-31T17:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e43833bc_ca1e15bd",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 1
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f7e2091_a7c787fa",
@@ -202,6 +250,30 @@
       "writtenOn": "2023-01-27T16:55:59Z",
       "side": 1,
       "message": "Did you also test these?\nTo keep things easy at the beginning we can omit the options for remote execution.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 5
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5570db63_f3836913",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-31T17:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f7e2091_a7c787fa",
       "range": {
         "startLine": 178,
         "startChar": 0,
@@ -319,6 +391,30 @@
       "writtenOn": "2023-01-27T16:55:59Z",
       "side": 1,
       "message": "Instead of using the magic number, I would add the expected size and width directly to the `board_config`. So we can do:\n\n```\nif w !\u003d board_config.width or h !\u003d board_config.height:\n  logging.error(\"This img size is (w, h) instead of (board_config.width, board_config.height)\")\n```",
+      "range": {
+        "startLine": 209,
+        "startChar": 21,
+        "endLine": 209,
+        "endChar": 24
+      },
+      "revId": "30c3441d876f0fc0d98dacc489459bedcb31a595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace94cea_0ebd5767",
+        "filename": "util/fpmcu_loadimage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-01-31T17:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53904978_05ec8efc",
       "range": {
         "startLine": 209,
         "startChar": 21,
