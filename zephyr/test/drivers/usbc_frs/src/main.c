@@ -114,3 +114,21 @@ ZTEST_USER_F(usbc_frs, test_frs_enable)
 	zassert_equal(power_control & TCPC_REG_POWER_CTRL_FRS_ENABLE,
 		      TCPC_REG_POWER_CTRL_FRS_ENABLE);
 }
+
+ZTEST_USER_F(usbc_frs, test_frs_partner_hard_reset)
+{
+	/* Test FRS signaled, followed by partner initiated hard reset */
+}
+
+ZTEST_USER_F(usbc_frs, test_frs_dpm_hard_reset)
+{
+	/*
+	 * Test FRS signaled, followed by DUT-initiated hard reset (ex. from
+	 * OCP module or similar which thinks we need to reset)
+	 */
+}
+
+ZTEST_USER_F(usbc_frs, test_frs_swap_discarded)
+{
+	/* Test FRS signaled, and FR_Swap message discarded by partner send */
+}
