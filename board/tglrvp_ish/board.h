@@ -29,6 +29,47 @@
 /* Host command over HECI */
 #define CONFIG_HOST_INTERFACE_HECI
 
+#ifdef BOARD_REX_ISH
+#define CONFIG_ACCELGYRO_LSM6DSO /* Base accel */
+#define CONFIG_ACCEL_LSM6DSO_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+
+/* TCS3400 ALS */
+#define CONFIG_ALS
+#define ALS_COUNT 1
+#define CONFIG_ALS_TCS3400
+#define CONFIG_ALS_TCS3400_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(CLEAR_ALS)
+
+#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(CLEAR_ALS)
+
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
+/* FIFO size is in power of 2. */
+#define CONFIG_ACCEL_FIFO_SIZE 256
+/* Depends on how fast the AP boots and typical ODRs */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
+
+/* Lid accel */
+#define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_UPDATE
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+#define CONFIG_ACCEL_LIS2DWL
+#define CONFIG_ACCEL_LIS2DW12_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
+
+/* I2C ports */
+#define I2C_PORT_SENSOR ISH_I2C0
+
+/* EC Console Commands */
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
+#define CONFIG_CMD_TIMERINFO
+#define CONFIG_CMD_I2C_XFER
+
+#endif /* BOARD_REX_ISH */
+
 #ifdef BOARD_TGLRVP_ISH
 #define CONFIG_ACCELGYRO_LSM6DSM /* For LSM6DS3 */
 #define CONFIG_ACCEL_FORCE_MODE_MASK BIT(BASE_ACCEL)
@@ -67,6 +108,7 @@
 /* DMA paging between SRAM and DRAM */
 #define CONFIG_DMA_PAGING
 
+#ifndef BOARD_REX_ISH
 /* power management definitions */
 #define CONFIG_LOW_POWER_IDLE
 
@@ -85,6 +127,7 @@
 #define CONFIG_ISH_D0I3_MIN_USEC (50 * MSEC)
 #endif
 #define CONFIG_ISH_NEW_PM
+#endif
 
 #ifndef __ASSEMBLER__
 
@@ -92,7 +135,18 @@
 #include "registers.h"
 
 /* Motion sensors */
+#ifdef BOARD_REX_ISH
+enum sensor_id {
+	LID_ACCEL = 0,
+	BASE_ACCEL,
+	BASE_GYRO,
+	CLEAR_ALS,
+	RGB_ALS,
+	SENSOR_COUNT
+};
+#else
 enum sensor_id { BASE_ACCEL, SENSOR_COUNT };
+#endif
 
 #endif /* !__ASSEMBLER__ */
 
