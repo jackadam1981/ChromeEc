@@ -167,6 +167,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "528cbd78_90a9791e",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-01-31T01:22:33Z",
+      "side": 1,
+      "message": "\u003e Not sure what you mean by above: you mean acquiring the SM lock?\n\nTo be more clear (and following the context set by API `ap_pwrseq_state_lock`) instead of \"acquiring lock\" it would be \"locking power state\".\n\n\u003e I was considering that a way to run a callback on the power thread would be useful, but that ends up being mostly equivalent to locking while also having greater complexity.\n\nI changed driver thread and moved executing callbacks outside of mutex lock. See CL:4162274/9.",
+      "parentUuid": "4b772068_a8045b51",
+      "revId": "367fdf8e2eefd4c32f38310a6be16f931e151d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46277bab_67140a90",
