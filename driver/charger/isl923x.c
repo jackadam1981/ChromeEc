@@ -887,7 +887,11 @@ enum ec_error_list raa489000_is_acok(int chgnum, bool *acok)
 	rv = raw_read16(chgnum, ISL9238_REG_INFO2, &regval);
 	if (rv != EC_SUCCESS)
 		return rv;
+#ifdef CONFIG_PLATFORM_EC_RAA489000_AC_PRESENT_CONTROL
+	*acok = (regval & RAA489000_INFO2_COMPARATOR);
+#else
 	*acok = (regval & RAA489000_INFO2_ACOK);
+#endif
 
 	return EC_SUCCESS;
 }
@@ -1461,6 +1465,8 @@ static enum ec_error_list raa489000_set_vsys_compensation(int chgnum,
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
+#endif /* CONFIG_CHARGER_RAA489000 && CONFIG_OCPC */
+
 #ifdef CONFIG_PLATFORM_EC_RAA489000_AC_PRESENT_CONTROL
 /*
  * If the device is in OTG mode, flip the comparator output
@@ -1477,8 +1483,14 @@ void raa489000_check_ac_delayed(void)
 	static bool current_val;
 	bool new_val;
 	int rv, regval;
+	int chgnum =
+#ifdef CONFIG_OCPC
+		CHARGER_PRIMARY;
+#else
+		0;
+#endif
 
-	rv = raw_read16(CHARGER_PRIMARY, ISL9238_REG_INFO2, &regval);
+	rv = raw_read16(chgnum, ISL9238_REG_INFO2, &regval);
 	if (rv == EC_SUCCESS) {
 		new_val = (((regval >> RAA489000_INFO2_STATE_SHIFT) &
 			    RAA489000_INFO2_STATE_MASK) ==
@@ -1492,8 +1504,7 @@ void raa489000_check_ac_delayed(void)
 			 * be low.
 			 */
 			current_val = new_val;
-			isl923x_set_comparator_inversion(CHARGER_PRIMARY,
-							 new_val);
+			isl923x_set_comparator_inversion(chgnum, new_val);
 		}
 	}
 }
@@ -1520,8 +1531,6 @@ DECLARE_HOOK(HOOK_USB_PD_CONNECT, raa489000_check_ac_present,
 DECLARE_HOOK(HOOK_POWER_SUPPLY_CHANGE, raa489000_check_ac_present,
 	     HOOK_PRIO_DEFAULT);
 #endif /* CONFIG_PLATFORM_EC_RAA489000_AC_PRESENT_CONTROL */
-
-#endif /* CONFIG_CHARGER_RAA489000 && CONFIG_OCPC */
 
 const struct charger_drv isl923x_drv = {
 	.init = &isl923x_init,
