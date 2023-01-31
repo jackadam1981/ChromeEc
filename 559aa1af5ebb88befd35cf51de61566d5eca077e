@@ -22,6 +22,30 @@
       },
       "revId": "559aa1af5ebb88befd35cf51de61566d5eca077e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58a4e48a_df6cbda4",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-01-31T18:32:48Z",
+      "side": 1,
+      "message": "Ack, fixed 2)\nfor 1) - Word size is a constant for MCHP SPI controllers, always 8 bits. Forcing this into YAML will make the property\nconfigurable because it may not be a constant for other vendors controllers. The current Zephyr SPI drivers are\nall full-duplex (lines \u003d\u003d single). Any other value is ignored by the current Zephyr SPI drivers.",
+      "parentUuid": "5d22f775_e221e68b",
+      "range": {
+        "startLine": 586,
+        "startChar": 0,
+        "endLine": 587,
+        "endChar": 56
+      },
+      "revId": "559aa1af5ebb88befd35cf51de61566d5eca077e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
