@@ -136,6 +136,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d78c127e_a9b4c31d",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1249354
+      },
+      "writtenOn": "2023-01-31T18:09:41Z",
+      "side": 1,
+      "message": "I agree that if one of the DRBG functions fails there is no point to call the other functions . regarding the ctx_p , there is no need to reset it.",
+      "parentUuid": "25559d35_683ea45e",
+      "revId": "278f4a13975ff275d47a4d73f08c74df6fd866c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ecffa937_92374398",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 1
