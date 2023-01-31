@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "add5944d_dc7da933",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-31T16:08:16Z",
+      "side": 1,
+      "message": "Zephyr: Add PS8811 to build",
+      "revId": "216b4f8103d61f57331dba17249f94a09ce594db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d49df5_7d84fa38",
+        "filename": "zephyr/shim/include/usbc/ps8811_usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-01-31T16:08:16Z",
+      "side": 1,
+      "message": "Driver structure does not exist and the public file referenced in the include doesn\u0027t exist, so you can probably just make this change the CMakeLists.txt addition.  \n\nIf we add a full driver for the PS8811, then it would make more sense to create a USB mux config entry for it.  As it is, the driver isn\u0027t really acting as a driver and just has a few weak APIs in it.",
+      "revId": "216b4f8103d61f57331dba17249f94a09ce594db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
