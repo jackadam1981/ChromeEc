@@ -33,6 +33,24 @@
       "message": "how about putting it in zephyr code?\n\"./dts/arm/microchip/mec1727nsz.dtsi\"",
       "revId": "f93c32e5eec63e68b903df24984eb15d6e2856f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ad1b05d_06c6c10c",
+        "filename": "zephyr/boards/arm/mec1727/mec1727.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-01-31T15:03:15Z",
+      "side": 1,
+      "message": "Hi VJ,\n\nMEC172x supports code size 0x58000 byte in max, defined in mec172xnsz.dtsi\n\tflash0: flash@c0000 {\n\t\treg \u003d \u003c0x000C0000 0x58000\u003e;\n\t};\nEven MEC1727 chip can support 0x58000 in code size in other design, e.g. only one EC image stored in internal 512KB flash.\n\nFor MEC1727 Chrome solution, since flash structure requirement is RO / RW in 512KB flash, so the max code size is 256KB, then 256KB definition should be in EC Zephyr board or program level, such that, build process can override definition “0x58000” in mec172xnsz.dtsi.",
+      "parentUuid": "72797baf_ad191310",
+      "revId": "f93c32e5eec63e68b903df24984eb15d6e2856f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
