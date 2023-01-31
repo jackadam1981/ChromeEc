@@ -887,7 +887,11 @@ enum ec_error_list raa489000_is_acok(int chgnum, bool *acok)
 	rv = raw_read16(chgnum, ISL9238_REG_INFO2, &regval);
 	if (rv != EC_SUCCESS)
 		return rv;
-	*acok = (regval & RAA489000_INFO2_ACOK);
+	if (((regval >> RAA489000_INFO2_STATE_SHIFT) &
+	     RAA489000_INFO2_STATE_MASK) == RAA489000_INFO2_STATE_OTG)
+		*acok = (regval & RAA489000_INFO2_COMPARATOR);
+	else
+		*acok = (regval & RAA489000_INFO2_ACOK);
 
 	return EC_SUCCESS;
 }
