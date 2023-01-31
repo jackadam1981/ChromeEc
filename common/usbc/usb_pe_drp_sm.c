@@ -911,6 +911,15 @@ void pe_got_hard_reset(int port)
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
 	/*
+	 * If we're in the middle of an FRS, any error could cause us to follow
+	 * the ErrorRecovery path
+	 */
+	if (pe_in_frs_mode(port)) {
+		pd_set_error_recovery(port);
+		return;
+	}
+
+	/*
 	 * Transition from any state to the PE_SRC_Hard_Reset_Received or
 	 *  PE_SNK_Transition_to_default state when:
 	 *  1) Hard Reset Signaling is detected.
@@ -5164,10 +5173,9 @@ static void pe_prs_snk_src_send_swap_run(int port)
 	 * Handle discarded message
 	 */
 	if (msg_check & PE_MSG_DISCARDED) {
-		if (pe_in_frs_mode(port))
-			pe_set_hard_reset(port);
-		else
-			set_state_pe(port, PE_SNK_READY);
+		set_state_pe(port, pe_in_frs_mode(port) ?
+					   PE_WAIT_FOR_ERROR_RECOVERY :
+					   PE_SNK_READY);
 		return;
 	}
 
