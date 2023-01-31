@@ -22,6 +22,30 @@
       },
       "revId": "19602c6c148502cceaf82ad94d80e206c40a7b2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2633d650_f60a8f5a",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_xec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2023-01-31T21:40:08Z",
+      "side": 1,
+      "message": "Hi Keith,\n\nIt is SPI_LINES_SINGLE, i.e. full-duplex with 2 lines (one output, the other input).\nBecause Chrome Zephyr applies flash drivers in “zephyr\\main\\drivers\\flash\\spi_nor.c”, spi_nor drivers only support full-duplex but not dual mode.",
+      "parentUuid": "14933c9c_2be18b12",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 48
+      },
+      "revId": "19602c6c148502cceaf82ad94d80e206c40a7b2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
