@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5eed3c7_8c458a37",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-01T18:39:28Z",
+      "side": 1,
+      "message": "This is somewhat tricky since ultimately I\u0027d like to move this code into the DP module (WIP patch later in the stack).  \n\nKeith, any thoughts or preferences on the approach for APIs like this?",
+      "parentUuid": "d9e77d70_f66e82b2",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36e5cbe8_e1f4b934",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 3
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fc23809_3d5a2158",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-01T18:39:28Z",
+      "side": 1,
+      "message": "Yup, I\u0027ll add that to the Kconfig next patchset.  And then ultimately this will move into the DP module",
+      "parentUuid": "36e5cbe8_e1f4b934",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "052a00ba_f615660e",
         "filename": "common/usb_pd_host_cmd.c",
         "patchSetId": 3
@@ -48,6 +84,24 @@
       "writtenOn": "2023-02-01T17:26:57Z",
       "side": 1,
       "message": "I know we haven\u0027t built anything like this, but conceivably, you could have a board that supports TBT but not DP, and this would be broken. (This might also be the case if we reach a state where the AP supports DP entry but not TBT entry yet.)",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c60a4b60_e98e0bca",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-01T18:39:28Z",
+      "side": 1,
+      "message": "Yup, we can separate these out since compare_builds has passed and we can mess with the function innards a bit.  \n\nI would tackle the question of \"what should be the else for TBT mode\", but that one doesn\u0027t have a good answer since 0 is still a meaningful value for both fields and there\u0027s no obvious option for \"nope, not a thing I support.\"",
+      "parentUuid": "052a00ba_f615660e",
       "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +136,24 @@
       "writtenOn": "2023-02-01T17:26:57Z",
       "side": 1,
       "message": "Shouldn\u0027t the feature gate for this logic have happened in the code that sets the bit in `mux_state`?",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a1465f4_731848d2",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-01T18:39:28Z",
+      "side": 1,
+      "message": "This needs to be here for the linker gate.  The alternative would be to always have a `get_dp_pin_mode()` function linked in, with just a 0 return. \n\nKeith, thoughts and preferences?",
+      "parentUuid": "4c7bb5d5_54101826",
       "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
