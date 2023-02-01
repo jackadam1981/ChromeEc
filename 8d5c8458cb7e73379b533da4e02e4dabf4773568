@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9e77d70_f66e82b2",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-01T17:26:57Z",
+      "side": 1,
+      "message": "This seems like a pretty natural place to have `if (!IS_ENABLED(CONFIG_USB_PD_DP_MODE)) return 0;` and avoid extra branches further afield.",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36e5cbe8_e1f4b934",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-01T17:26:57Z",
+      "side": 1,
+      "message": "Nit: Perhaps `CONFIG_CMD_MFALLOW` should be gated on `CONFIG_USB_PD_DP_MODE`.",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "052a00ba_f615660e",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-01T17:26:57Z",
+      "side": 1,
+      "message": "I know we haven\u0027t built anything like this, but conceivably, you could have a board that supports TBT but not DP, and this would be broken. (This might also be the case if we reach a state where the AP supports DP entry but not TBT entry yet.)",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e63092f3_21bfe450",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-01T17:26:57Z",
+      "side": 1,
+      "message": "Nit: Having vacuous implementations for the `dp_*` functions in `dp_alt_mode.c` would be more of a pain than for the stuff that\u0027s in `usb_pd_alt_mode_dfp.c`, but it would keep the DPM code, which is already fairly branchy, from getting more branchy.",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c7bb5d5_54101826",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-01T17:26:57Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the feature gate for this logic have happened in the code that sets the bit in `mux_state`?",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
