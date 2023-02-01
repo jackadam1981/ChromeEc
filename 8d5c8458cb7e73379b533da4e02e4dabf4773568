@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77a5115b_7ab05e1e",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T22:41:45Z",
+      "side": 1,
+      "message": "If all these functions will get moved to a separate module and use the CONFIG option to control compilation, I\u0027m good with #ifdef in the short term.",
+      "parentUuid": "f5eed3c7_8c458a37",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36e5cbe8_e1f4b934",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 3
@@ -154,6 +172,24 @@
       "side": 1,
       "message": "This needs to be here for the linker gate.  The alternative would be to always have a `get_dp_pin_mode()` function linked in, with just a 0 return. \n\nKeith, thoughts and preferences?",
       "parentUuid": "4c7bb5d5_54101826",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bedcc602_da0922d7",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T22:41:45Z",
+      "side": 1,
+      "message": "Upstream Zephyr has taken the approach to provide inline stub implementations for APIs that can disabled via CONFIGs.\n\nExample for [CONFIG_PM_DEVICE\u003dn](https://github.com/zephyrproject-rtos/zephyr/blob/60a20471b561a0a3a74b377991fe1976c2ea83d7/include/zephyr/pm/device.h#L569)\n\nHowever, in this case I don\u0027t think the compiler/linker would optimize out this block because the contents of `mux_state` are not constant.  So I think you need the IS_ENABLED guard here.",
+      "parentUuid": "7a1465f4_731848d2",
       "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
