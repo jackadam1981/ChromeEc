@@ -47,6 +47,12 @@
 #define HAS_TASK_USB_MUX 1
 #endif /* CONFIG_PLATFORM_EC_USB_MUX_TASK */
 
+/* HAS_TASK definitions for non-shimmed (extra) tasks */
+#if (defined(CONFIG_SHELL_BACKEND_SERIAL) || \
+     defined(CONFIG_SHELL_BACKEND_DUMMY))
+#define HAS_TASK_SHELL 1
+#endif
+
 /* These non-shimmed (extra) tasks are always present */
 #define HAS_TASK_IDLE 1
 #define HAS_TASK_SYSWORKQ 1
