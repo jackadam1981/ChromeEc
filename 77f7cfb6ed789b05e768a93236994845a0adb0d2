@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84830225_2942d6bc",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-01T23:37:06Z",
+      "side": 1,
+      "message": "Tomasz: This CL seems to work, but I\u0027m not totally clear on the logic of this check or what you meant by the comment.",
+      "range": {
+        "startLine": 1159,
+        "startChar": 0,
+        "endLine": 1164,
+        "endChar": 3
+      },
+      "revId": "77f7cfb6ed789b05e768a93236994845a0adb0d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
