@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "010ee1a4_550240c6",
+        "filename": "zephyr/test/ec_app/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T20:05:30Z",
+      "side": 1,
+      "message": "Guard this check with `#ifdef CONFIG_PLATFORM_EC_BOOT_NO_SLEEP`.  The zassert_false() check can remain for both settings of CONFIG_PLATFORM_EC_BOOT_NO_SLEEP.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 0
+      },
+      "revId": "d6d15ffde804f8821ced06202d58ae50d9e7896d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
