@@ -5,4 +5,9 @@
 common:
   platform_allow: native_posix
 tests:
-  tasks.default: {}
+  tasks.default:
+    extra_configs:
+      - CONFIG_HAS_TEST_TASKS=y
+  tasks.default_shimmed_tasks:
+    extra_configs:
+      - CONFIG_SHIMMED_TASKS=y
