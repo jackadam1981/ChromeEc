@@ -54,3 +54,9 @@ __override void board_hibernate(void)
 	LOG_INF("Charger(s) hibernated");
 	cflush();
 }
+
+__override void board_ocpc_init(struct ocpc_data *ocpc)
+{
+	/* There's no provision to measure Isys */
+	ocpc->chg_flags[CHARGER_SECONDARY] |= OCPC_NO_ISYS_MEAS_CAP;
+}
