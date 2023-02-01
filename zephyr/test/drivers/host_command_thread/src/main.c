@@ -29,7 +29,8 @@ static int last_check_main_thread_result;
 
 static enum ec_status check_main_thread(struct host_cmd_handler_args *args)
 {
-	last_check_main_thread_result = in_host_command_main() ? 1 : -1;
+	last_check_main_thread_result =
+		k_current_get() == &z_main_thread ? 1 : -1;
 	return EC_RES_SUCCESS;
 }
 
