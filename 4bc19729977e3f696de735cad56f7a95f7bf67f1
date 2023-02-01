@@ -22,6 +22,30 @@
       },
       "revId": "4bc19729977e3f696de735cad56f7a95f7bf67f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "157088e2_7145f0ef",
+        "filename": "zephyr/Kconfig.i2c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2023-02-01T03:14:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70dfd9b0_e51e4989",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 16
+      },
+      "revId": "4bc19729977e3f696de735cad56f7a95f7bf67f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
