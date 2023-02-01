@@ -13,6 +13,7 @@
 #include <stdbool.h>
 
 #include <zephyr/init.h>
+#include <zephyr/kernel_includes.h>
 
 /* Initializes and runs the host command handler loop.  */
 void host_command_task(void *u);
@@ -20,8 +21,11 @@ void host_command_task(void *u);
 /* Takes over the main thread and runs the host command loop. */
 void host_command_main(void);
 
-/* True if running in the main thread. */
-bool in_host_command_main(void);
+/*
+ * Get thread id of the main thread.
+ * Will be hostcmd thread when CONFIG_TASK_HOSTCMD_THREAD_MAIN is enabled.
+ */
+k_tid_t get_main_thread(void);
 
 #ifdef CONFIG_PLATFORM_EC_HOSTCMD
 
