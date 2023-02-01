@@ -225,7 +225,8 @@ enum {
 
 /*
  * Additional task IDs for features that runs on non shimmed threads,
- * task_get_current() needs to be updated to identify these ones.
+ * task_get_current() and task_id_to_thread_id() need to be updated
+ * to identify these tasks.
  */
 #define CROS_EC_EXTRA_TASKS(fn)                                     \
 	COND_CODE_1(CONFIG_TASK_HOSTCMD_THREAD_MAIN, (fn(HOSTCMD)), \
