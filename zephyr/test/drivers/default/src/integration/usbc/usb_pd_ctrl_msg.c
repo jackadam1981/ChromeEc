@@ -148,6 +148,19 @@ static void usb_pd_ctrl_msg_after(void *data)
 	disconnect_partner(fixture);
 }
 
+static bool log_contains_hard_reset(struct tcpci_partner_data *partner)
+{
+	struct tcpci_partner_log_msg *msg;
+
+	SYS_SLIST_FOR_EACH_CONTAINER(&partner->msg_log, msg, node)
+	{
+		if (msg->sop == TCPCI_MSG_TX_HARD_RESET)
+			return true;
+	}
+
+	return false;
+}
+
 /** ZTEST_SUITE to setup DRP partner_emul as SINK */
 ZTEST_SUITE(usb_pd_ctrl_msg_test_sink, drivers_predicate_post_main,
 	    usb_pd_ctrl_msg_sink_setup, usb_pd_ctrl_msg_before,
@@ -269,6 +282,40 @@ ZTEST_F(usb_pd_ctrl_msg_test_source, verify_dr_swap_rejected)
 
 	/* Verify DR_Swap request is REJECTED */
 	typec_status = host_cmd_typec_status(TEST_USB_PORT);
+	zassert_equal(PD_ROLE_DFP, typec_status.data_role,
+		      "Returned data_role=%u", typec_status.data_role);
+}
+
+ZTEST_F(usb_pd_ctrl_msg_test_source, verify_dr_swap_accepted)
+{
+	struct usb_pd_ctrl_msg_test_fixture *super_fixture = &fixture->fixture;
+	struct ec_response_typec_status typec_status = { 0 };
+	int rv = 0;
+
+	/* Start out with TCPM as UFP. */
+	pd_dpm_request(TEST_USB_PORT, DPM_REQUEST_DR_SWAP);
+	k_sleep(K_SECONDS(1));
+	typec_status = host_cmd_typec_status(TEST_USB_PORT);
+	zassert_equal(typec_status.data_role, PD_ROLE_UFP,
+		      "Returned data_role=%u", typec_status.data_role);
+
+	tcpci_partner_common_clear_logged_msgs(&super_fixture->partner_emul);
+	zassert_ok(tcpci_partner_common_enable_pd_logging(
+		&super_fixture->partner_emul, true));
+
+	/* Request Data Role Swap from partner. */
+	rv = tcpci_partner_send_control_msg(&super_fixture->partner_emul,
+					    PD_CTRL_DR_SWAP, 0);
+	zassert_ok(rv, "Failed to send DR_SWAP request, rv=%d", rv);
+	k_sleep(K_MSEC(50));
+
+	zassert_ok(tcpci_partner_common_enable_pd_logging(
+		&super_fixture->partner_emul, false));
+	zassert_false(log_contains_hard_reset(&super_fixture->partner_emul));
+
+	/* Verify that DR_Swap succeeded. */
+	typec_status = host_cmd_typec_status(TEST_USB_PORT);
+	zassert_true(typec_status.sop_connected);
 	zassert_equal(PD_ROLE_DFP, typec_status.data_role,
 		      "Returned data_role=%u", typec_status.data_role);
 }
