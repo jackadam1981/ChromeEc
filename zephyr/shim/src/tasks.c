@@ -96,28 +96,54 @@ static inline k_tid_t get_sysworkq_thread(void)
 	return &k_sys_work_q.thread;
 }
 
-task_id_t task_get_current(void)
+k_tid_t task_id_to_thread_id(task_id_t task_id)
 {
-	if (get_sysworkq_thread() == k_current_get())
+	if (task_id < 0)
+		return NULL;
+	if (task_id < TASK_ID_COUNT)
+		return task_to_k_tid[task_id];
+	if (task_id < TASK_ID_COUNT + EXTRA_TASK_COUNT) {
+		if (task_id == TASK_ID_SYSWORKQ)
+			return get_sysworkq_thread();
+		if (task_id == COND_CODE_1(CONFIG_TASK_HOSTCMD_THREAD_MAIN,
+					   (TASK_ID_HOSTCMD), (TASK_ID_MAIN)))
+			return get_main_thread();
+		if (task_id == TASK_ID_SHELL)
+			return get_shell_thread();
+		if (task_id == TASK_ID_IDLE)
+			return get_idle_thread();
+	}
+	__ASSERT(false, "Unable to map task %d to thread", task_id);
+	return NULL;
+}
+
+task_id_t thread_id_to_task_id(k_tid_t thread_id)
+{
+	if (get_sysworkq_thread() == thread_id)
 		return TASK_ID_SYSWORKQ;
 
-	if (get_main_thread() == k_current_get())
+	if (get_main_thread() == thread_id)
 		return COND_CODE_1(CONFIG_TASK_HOSTCMD_THREAD_MAIN,
 				   (TASK_ID_HOSTCMD), (TASK_ID_MAIN));
 
-	if (get_idle_thread() == k_current_get())
+	if (get_idle_thread() == thread_id)
 		return TASK_ID_IDLE;
 
-	if (get_shell_thread() == k_current_get())
+	if (get_shell_thread() == thread_id)
 		return TASK_ID_SHELL;
 
 	for (size_t i = 0; i < TASK_ID_COUNT; ++i) {
-		if (task_to_k_tid[i] == k_current_get())
+		if (task_to_k_tid[i] == thread_id)
 			return i;
 	}
 
-	__ASSERT(false, "Task index out of bound");
-	return 0;
+	__ASSERT(false, "Unable to map thread %s to task", thread->name);
+	return TASK_ID_INVALID;
+}
+
+task_id_t task_get_current(void)
+{
+	return thread_id_to_task_id(k_current_get());
 }
 
 atomic_t *task_get_event_bitmap(task_id_t cros_task_id)
