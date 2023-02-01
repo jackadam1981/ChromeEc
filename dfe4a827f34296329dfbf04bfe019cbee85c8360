@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3921f4_9771dba4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2023-02-01T08:36:17Z",
+      "side": 1,
+      "message": "CLs are added LOW COVERAGE and Disallow-Recycled-Builds label in commit message, pass the hook scripts (clang-format) and are rebased again, but it still builds fail in CQ.  Could you help to check the fail reason (I don\u0027t have permission)?  Appreciate that!",
+      "revId": "dfe4a827f34296329dfbf04bfe019cbee85c8360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
