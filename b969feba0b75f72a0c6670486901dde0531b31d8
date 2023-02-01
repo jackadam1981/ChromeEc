@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "864bceed_2ca3b261",
+        "filename": "baseboard/intelrvp/chg_usb_pd_mecc_1_0.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T23:20:05Z",
+      "side": 1,
+      "message": "Instead of removing this guard, before the Intel changes land, you could put the `tcpc_alert_event()` implementation back into shim/src/tcpc.c as part of the #ifndef CONFIG_PLATFORM_EC_TCPC_INTERRUPT.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 46
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee48b7a6_b0b0d226",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 38
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T23:20:05Z",
+      "side": 1,
+      "message": "This config should be disabled on Intel platforms, correct? I don\u0027t see any changes to the Intel project.conf to enable this config.\n\nAlso once, the Intel RVP boards get updated, then this config can get deleted.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e63875a_ef396ac5",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T23:20:05Z",
+      "side": 1,
+      "message": "Nit - name this `irq_gpio` for consistency with the devicetree property name.",
+      "range": {
+        "startLine": 83,
+        "startChar": 21,
+        "endLine": 83,
+        "endChar": 33
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b389dfa3_cc533e4a",
+        "filename": "zephyr/program/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T23:20:05Z",
+      "side": 1,
+      "message": "See the comment in the chg_usb_pd_mecc_1_0.c file.  Put this back into shim/src/tcpc.c.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 46
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f717668d_400d4432",
+        "filename": "zephyr/program/nissa/craask/project.conf",
+        "patchSetId": 38
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T23:20:05Z",
+      "side": 1,
+      "message": "Crassk now has ~4500 bytes free. Can craask use the common driver now?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 35
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
