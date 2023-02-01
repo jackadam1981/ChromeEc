@@ -16,6 +16,23 @@
       "message": "verified on steelix",
       "revId": "f202c198f351d622bbd722cc84fdbea15014f503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c43487_67665e1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T22:11:27Z",
+      "side": 1,
+      "message": "Please add \"LOW_COVERAGE_REASON\u003dNo tests are available for EC on-chip peripherals.\"",
+      "revId": "f202c198f351d622bbd722cc84fdbea15014f503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
