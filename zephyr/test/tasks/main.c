@@ -6,11 +6,17 @@
 #include "ec_tasks.h"
 #include "task.h"
 #include "timer.h"
+#include "zephyr_console_shim.h"
 
 #include <stdbool.h>
 
 #include <zephyr/kernel.h>
+#include <zephyr/kernel/thread.h>
 #include <zephyr/ztest.h>
+
+k_tid_t get_main_thread(void);
+k_tid_t get_sysworkq_thread(void);
+k_tid_t get_idle_thread(void);
 
 /* Second for platform/ec task API (in microseconds). */
 #define TASK_SEC(s) (s * 1000 * 1000)
@@ -273,6 +279,37 @@ static void empty_set_mask2(void)
 	zassert_within(end_ms - start_ms, 2000, 100, "Timeout for 2 seconds");
 }
 
+static void check_task_1_mapping(void)
+{
+	zassert_equal(TASK_ID_TASK_1, thread_id_to_task_id(k_current_get()));
+	zassert_equal(k_current_get(), task_id_to_thread_id(TASK_ID_TASK_1));
+}
+
+static void check_task_2_mapping(void)
+{
+	zassert_equal(TASK_ID_TASK_2, thread_id_to_task_id(k_current_get()));
+	zassert_equal(k_current_get(), task_id_to_thread_id(TASK_ID_TASK_2));
+}
+
+static void test_thread_to_task_mapping(void)
+{
+	run_test(&check_task_1_mapping, &check_task_2_mapping);
+	/* Main Thread */
+	zassert_equal(TASK_ID_MAIN, thread_id_to_task_id(get_main_thread()));
+	zassert_equal(task_id_to_thread_id(TASK_ID_MAIN), get_main_thread());
+	/* Sysworkq Thread*/
+	zassert_equal(TASK_ID_SYSWORKQ,
+		      thread_id_to_task_id(get_sysworkq_thread()));
+	zassert_equal(task_id_to_thread_id(TASK_ID_SYSWORKQ),
+		      get_sysworkq_thread());
+	/* Idle Thread*/
+	zassert_equal(TASK_ID_IDLE, thread_id_to_task_id(get_idle_thread()));
+	zassert_equal(task_id_to_thread_id(TASK_ID_IDLE), get_idle_thread());
+	/* Shell Thread */
+	zassert_equal(TASK_ID_SHELL, thread_id_to_task_id(get_shell_thread()));
+	zassert_equal(task_id_to_thread_id(TASK_ID_SHELL), get_shell_thread());
+}
+
 static void test_empty_set_mask(void)
 {
 	run_test(&empty_set_mask1, &empty_set_mask2);
@@ -289,6 +326,7 @@ void test_main(void)
 			 ztest_unit_test(test_event_delivered),
 			 ztest_unit_test(test_event_mask_not_delivered),
 			 ztest_unit_test(test_event_mask_extra),
-			 ztest_unit_test(test_empty_set_mask));
+			 ztest_unit_test(test_empty_set_mask),
+			 ztest_unit_test(test_thread_to_task_mapping));
 	ztest_run_test_suite(test_task_shim);
 }
