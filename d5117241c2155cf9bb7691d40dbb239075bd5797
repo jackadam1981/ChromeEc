@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ae746b_da2f07af",
+        "filename": "zephyr/shim/include/usbc/ps8811_usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-01T16:04:37Z",
+      "side": 1,
+      "message": "Still referencing a file that doesn\u0027t appear to exist in the tree? \n\nI think you can remove both the shim changes since this driver isn\u0027t fully setup to be used as an actual driver.  It would be a fair level of work to get the PS8811 set up as an actual retimer driver.",
+      "revId": "d5117241c2155cf9bb7691d40dbb239075bd5797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
