@@ -320,6 +320,44 @@ ZTEST_F(usb_pd_ctrl_msg_test_source, verify_dr_swap_accepted)
 		      "Returned data_role=%u", typec_status.data_role);
 }
 
+ZTEST_F(usb_pd_ctrl_msg_test_source, verify_dr_swap_fast_followup)
+{
+	struct usb_pd_ctrl_msg_test_fixture *super_fixture = &fixture->fixture;
+	struct ec_response_typec_status typec_status = { 0 };
+	int rv = 0;
+
+	/* Start out with TCPM as UFP. */
+	pd_dpm_request(TEST_USB_PORT, DPM_REQUEST_DR_SWAP);
+	k_sleep(K_SECONDS(1));
+	typec_status = host_cmd_typec_status(TEST_USB_PORT);
+	zassert_equal(typec_status.data_role, PD_ROLE_UFP,
+		      "Returned data_role=%u", typec_status.data_role);
+
+	tcpci_partner_common_clear_logged_msgs(&super_fixture->partner_emul);
+	zassert_ok(tcpci_partner_common_enable_pd_logging(
+		&super_fixture->partner_emul, true));
+
+	/* Request Data Role Swap from partner, then quickly send a Ping. The
+	 * parter should update its data role "immediately," since it is
+	 * emulated. The TCPM may take several "milliseconds" to update its
+	 * expected data role.
+	 */
+	rv = tcpci_partner_send_control_msg(&super_fixture->partner_emul,
+					    PD_CTRL_DR_SWAP, 0);
+	zassert_ok(rv, "Failed to send DR_SWAP request, rv=%d", rv);
+	tcpci_partner_send_control_msg(&super_fixture->partner_emul,
+				       PD_CTRL_PING, 6);
+	k_sleep(K_MSEC(100));
+
+	/* Despite the spurious data role mismatch, the TCPM should not reset
+	 * the connection.
+	 */
+	zassert_ok(tcpci_partner_common_enable_pd_logging(
+		&super_fixture->partner_emul, false));
+	tcpci_partner_common_print_logged_msgs(&super_fixture->partner_emul);
+	zassert_false(log_contains_hard_reset(&super_fixture->partner_emul));
+}
+
 /**
  * @brief TestPurpose: Verify DR Swap via DPM request when DRP is configured
  * as source
