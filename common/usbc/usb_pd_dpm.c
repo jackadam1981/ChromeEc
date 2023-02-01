@@ -83,6 +83,15 @@ static struct {
 #endif
 } dpm[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+__overridable const struct svdm_response svdm_rsp = {
+	.identity = NULL,
+	.svids = NULL,
+	.modes = NULL,
+};
+
+/* Tracker for which task is waiting on sysjump prep to finish */
+static volatile task_id_t sysjump_task_waiting = TASK_ID_INVALID;
+
 #define DPM_SET_FLAG(port, flag) atomic_or(&dpm[(port)].flags, (flag))
 #define DPM_CLR_FLAG(port, flag) atomic_clear_bits(&dpm[(port)].flags, (flag))
 #define DPM_CHK_FLAG(port, flag) (dpm[(port)].flags & (flag))
@@ -181,6 +190,138 @@ static void init_attention_queue_structs(void)
 }
 DECLARE_HOOK(HOOK_INIT, init_attention_queue_structs, HOOK_PRIO_FIRST);
 #endif
+
+void pd_prepare_sysjump(void)
+{
+#ifndef CONFIG_ZEPHYR
+	int i;
+
+	/* Exit modes before sysjump so we can cleanly enter again later */
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		/*
+		 * If the port is not capable of Alternate mode no need to
+		 * send the event.
+		 */
+		if (!pd_alt_mode_capable(i))
+			continue;
+
+		sysjump_task_waiting = task_get_current();
+		task_set_event(PD_PORT_TO_TASK_ID(i), PD_EVENT_SYSJUMP);
+		task_wait_event_mask(TASK_EVENT_SYSJUMP_READY, -1);
+		sysjump_task_waiting = TASK_ID_INVALID;
+	}
+#endif /* CONFIG_ZEPHYR */
+}
+
+void notify_sysjump_ready(void)
+{
+	/*
+	 * If event was set from pd_prepare_sysjump, wake the
+	 * task waiting on us to complete.
+	 */
+	if (sysjump_task_waiting != TASK_ID_INVALID)
+		task_set_event(sysjump_task_waiting, TASK_EVENT_SYSJUMP_READY);
+}
+
+/*
+ * Enter default mode ( payload[0] == 0 ) or attempt to enter mode via svid &
+ * opos
+ */
+uint32_t pd_dfp_enter_mode(int port, enum tcpci_msg_type type, uint16_t svid,
+			   int opos)
+{
+	int mode_idx = pd_allocate_mode(port, type, svid);
+	struct svdm_amode_data *modep;
+	uint32_t mode_caps;
+
+	if (mode_idx == -1)
+		return 0;
+	modep = &pd_get_partner_active_modes(port, type)->amodes[mode_idx];
+
+	if (!opos) {
+		/* choose the lowest as default */
+		modep->opos = 1;
+	} else if (opos <= modep->data->mode_cnt) {
+		modep->opos = opos;
+	} else {
+		CPRINTS("C%d: Invalid opos %d for SVID %x", port, opos, svid);
+		return 0;
+	}
+
+	mode_caps = modep->data->mode_vdo[modep->opos - 1];
+	if (modep->fx->enter(port, mode_caps) == -1)
+		return 0;
+
+	/*
+	 * Strictly speaking, this should only happen when the request
+	 * has been ACKed.
+	 * For TCPMV1, still set modal flag pre-emptively. For TCPMv2, the modal
+	 * flag is set when the ENTER command is ACK'd for each alt mode that is
+	 * supported.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_TCPMV1))
+		pd_set_dfp_enter_mode_flag(port, true);
+
+	/* SVDM to send to UFP for mode entry */
+	return VDO(modep->fx->svid, 1, CMD_ENTER_MODE | VDO_OPOS(modep->opos));
+}
+
+/* TODO(b/170372521) : Incorporate exit mode specific changes to DPM SM */
+int pd_dfp_exit_mode(int port, enum tcpci_msg_type type, uint16_t svid,
+		     int opos)
+{
+	struct svdm_amode_data *modep;
+	struct partner_active_modes *active =
+		pd_get_partner_active_modes(port, type);
+	int idx;
+
+	/*
+	 * Empty svid signals we should reset DFP VDM state by exiting all
+	 * entered modes then clearing state.  This occurs when we've
+	 * disconnected or for hard reset.
+	 */
+	if (!svid) {
+		for (idx = 0; idx < PD_AMODE_COUNT; idx++)
+			if (active->amodes[idx].fx)
+				active->amodes[idx].fx->exit(port);
+
+		pd_dfp_mode_init(port);
+		return 0;
+	}
+
+	/*
+	 * TODO(crosbug.com/p/33946) : below needs revisited to allow multiple
+	 * mode exit.  Additionally it should honor OPOS == 7 as DFP's request
+	 * to exit all modes.  We currently don't have any UFPs that support
+	 * multiple modes on one SVID.
+	 */
+	modep = pd_get_amode_data(port, type, svid);
+	if (!modep || !validate_mode_request(modep, svid, opos))
+		return 0;
+
+	/* call DFPs exit function */
+	modep->fx->exit(port);
+
+	pd_set_dfp_enter_mode_flag(port, false);
+
+	/* exit the mode */
+	modep->opos = 0;
+	return 1;
+}
+
+void dfp_consume_attention(int port, uint32_t *payload)
+{
+	uint16_t svid = PD_VDO_VID(payload[0]);
+	int opos = PD_VDO_OPOS(payload[0]);
+	struct svdm_amode_data *modep =
+		pd_get_amode_data(port, TCPCI_MSG_SOP, svid);
+
+	if (!modep || !validate_mode_request(modep, svid, opos))
+		return;
+
+	if (modep->fx->attention)
+		modep->fx->attention(port, payload);
+}
 
 static void vdm_attention_enqueue(int port, int length, uint32_t *buf)
 {
