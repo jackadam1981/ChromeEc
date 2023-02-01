@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "ec_tasks.h"
 #include "host_command.h"
 #include "task.h"
 
@@ -39,12 +40,16 @@ ZTEST_USER(extra_tasks, test_main_thread_mapping)
 	hostcmd_thread = find_thread_by_name("HOSTCMD");
 	zassert_not_null(hostcmd_thread);
 	zassert_equal(hostcmd_thread, get_hostcmd_thread());
+	zassert_equal(TASK_ID_HOSTCMD, thread_id_to_task_id(hostcmd_thread));
+	zassert_equal(task_id_to_thread_id(TASK_ID_HOSTCMD), hostcmd_thread);
 
 	main_thread = find_thread_by_name("main");
 	zassert_not_null(main_thread);
 	zassert_equal(main_thread, get_main_thread());
 	/* Not equal when CONFIG_TASK_HOSTCMD_THREAD_DEDICATED is set */
 	zassert_not_equal(main_thread, hostcmd_thread);
+	zassert_equal(TASK_ID_MAIN, thread_id_to_task_id(main_thread));
+	zassert_equal(task_id_to_thread_id(TASK_ID_MAIN), main_thread);
 }
 
 ZTEST_USER(extra_tasks, test_sysworkq_thread_mapping)
@@ -54,6 +59,8 @@ ZTEST_USER(extra_tasks, test_sysworkq_thread_mapping)
 	sysworkq_thread = find_thread_by_name("sysworkq");
 	zassert_not_null(sysworkq_thread);
 	zassert_equal(sysworkq_thread, get_sysworkq_thread());
+	zassert_equal(TASK_ID_SYSWORKQ, thread_id_to_task_id(sysworkq_thread));
+	zassert_equal(task_id_to_thread_id(TASK_ID_SYSWORKQ), sysworkq_thread);
 }
 
 ZTEST_USER(extra_tasks, test_idle_thread_mapping)
@@ -63,6 +70,8 @@ ZTEST_USER(extra_tasks, test_idle_thread_mapping)
 	idle_thread = find_thread_by_name("idle");
 	zassert_not_null(idle_thread);
 	zassert_equal(idle_thread, get_idle_thread());
+	zassert_equal(TASK_ID_IDLE, thread_id_to_task_id(idle_thread));
+	zassert_equal(task_id_to_thread_id(TASK_ID_IDLE), idle_thread);
 }
 
 ZTEST_SUITE(extra_tasks, NULL, NULL, NULL, NULL, NULL);
