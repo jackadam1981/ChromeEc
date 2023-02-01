@@ -93,6 +93,8 @@ static int calculate_motion_confidence(uint64_t var)
 /* Change the motion state and commit the change to AP. */
 void body_detect_change_state(enum body_detect_states state, bool spoof)
 {
+	bool state_changed = state != motion_state;
+
 	if (IS_ENABLED(CONFIG_ACCEL_SPOOF_MODE) && spoof_enable && !spoof)
 		return;
 	if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION)) {
@@ -116,7 +118,8 @@ void body_detect_change_state(enum body_detect_states state, bool spoof)
 	}
 
 #ifdef CONFIG_BODY_DETECTION_NOTIFY_MODE_CHANGE
-	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+	if (state_changed)
+		host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 #endif
 
 	hook_notify(HOOK_BODY_DETECT_CHANGE);
