@@ -1,0 +1,439 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e46c743_11741d0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "initiate",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f20f9ab_019baecf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "it",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa79680_b37e820a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "Sorry it took me so long to get to this review.\n\nI think we should add some more top-level comments about the expected data struct and how it is used and a few examples. I think it will really help us reason about this later",
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58168229_63c821a2",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "can you put a `uint8_t bufffer[];` at the end of this definition, so the code expresses this comment, also it will also you to directly access the data without having to use pointer math.",
+      "range": {
+        "startLine": 20,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 9
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a89221e2_c9b83eb4",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment that this is determined at runtime and does not need to be a power of 2 (since it is a departure for the norm)",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 63
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe807db_6d3f6e1e",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "\u003e \"paricular\" is a possible misspelling of \"particular\".\n\nPlease fix.",
+      "parentUuid": "75f3b109_ec0de2c0",
+      "range": {
+        "startLine": 93,
+        "startChar": 18,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a27f4238_6275db6a",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "should this be the first call in the fuction?",
+      "range": {
+        "startLine": 99,
+        "startChar": 13,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2a0822_e524cf47",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "\u003e \"interupt\" is a possible misspelling of \"interrupt\".\n\nPlease fix.",
+      "parentUuid": "6758faa7_9ec0d200",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 12
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7db2a3b_e9cdfa21",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "nit: closing `)` 😊",
+      "range": {
+        "startLine": 130,
+        "startChar": 56,
+        "endLine": 130,
+        "endChar": 58
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5820f73_163e7821",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "how is this just different that `diff \u0026 0xFF`?",
+      "range": {
+        "startLine": 142,
+        "startChar": 24,
+        "endLine": 143,
+        "endChar": 23
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "932b292f_0538017a",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "\u003e \"addtional\" is a possible misspelling of \"additional\".\n\nPlease fix.",
+      "parentUuid": "85a2f8be_aed3b2f5",
+      "range": {
+        "startLine": 153,
+        "startChar": 4,
+        "endLine": 153,
+        "endChar": 13
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e36b5126_65640997",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "don\u0027t we need to set the timestamp to the same thing? or make the diff a 0",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 25
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3341bd60_07855e80",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "should this `goto out_partial_cleanup` too?",
+      "range": {
+        "startLine": 313,
+        "startChar": 1,
+        "endLine": 313,
+        "endChar": 49
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b98cba7_796420cc",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "can you make this a local constant at least so this 256 and the one above share the same name",
+      "range": {
+        "startLine": 336,
+        "startChar": 13,
+        "endLine": 336,
+        "endChar": 16
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adda76ca_17f2b0e6",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "should we clear both interrupts before we enable?",
+      "range": {
+        "startLine": 358,
+        "startChar": 2,
+        "endLine": 358,
+        "endChar": 23
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90aa7bdc_2807809e",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "\u003e \"interupt\" is a possible misspelling of \"interrupt\".\n\nPlease fix.",
+      "parentUuid": "fe3cd315_a147229f",
+      "range": {
+        "startLine": 372,
+        "startChar": 5,
+        "endLine": 372,
+        "endChar": 13
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d84ae51_d3a5ca3a",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "shouldn\u0027t we take now after we take the head? otherwise an interrupt could add to head after we take now, right?",
+      "range": {
+        "startLine": 454,
+        "startChar": 55,
+        "endLine": 456,
+        "endChar": 31
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "491b9abb_ffffa98d",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "this condition will be false for a overrun buffer as well. Should we still print out everything it had?",
+      "range": {
+        "startLine": 465,
+        "startChar": 1,
+        "endLine": 465,
+        "endChar": 23
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1547303_f73c04dd",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-01T22:10:52Z",
+      "side": 1,
+      "message": "is LED1 active low and LED3 active high? that seems really weird. Is so, it is probably worth calling that out in a comment here",
+      "range": {
+        "startLine": 602,
+        "startChar": 17,
+        "endLine": 602,
+        "endChar": 38
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
