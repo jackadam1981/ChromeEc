@@ -77,4 +77,15 @@ ZTEST_USER(extra_tasks, test_idle_thread_to_task_mapping)
 	zassert_equal(task_id_to_thread_id(TASK_ID_IDLE), idle_thread);
 }
 
+ZTEST_USER(extra_tasks, test_shell_thread_to_task_mapping)
+{
+	k_tid_t shell_thread;
+
+	shell_thread = find_thread_by_name("shell_uart");
+	zassert_not_null(shell_thread);
+	zassert_equal(shell_thread, get_shell_thread());
+	zassert_equal(TASK_ID_SHELL, thread_id_to_task_id(shell_thread));
+	zassert_equal(task_id_to_thread_id(TASK_ID_SHELL), shell_thread);
+}
+
 ZTEST_SUITE(extra_tasks, NULL, NULL, NULL, NULL, NULL);

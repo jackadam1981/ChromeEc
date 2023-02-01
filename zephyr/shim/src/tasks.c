@@ -8,6 +8,7 @@
 #include "host_command.h"
 #include "task.h"
 #include "timer.h"
+#include "zephyr_console_shim.h"
 
 #include <zephyr/init.h>
 #include <zephyr/kernel.h>
@@ -135,6 +136,9 @@ k_tid_t task_id_to_thread_id(task_id_t task_id)
 
 		if (task_id == TASK_ID_IDLE)
 			return get_idle_thread();
+
+		if (task_id == TASK_ID_SHELL)
+			return get_shell_thread();
 	}
 	__ASSERT(false, "Failed to map task %d to thread", task_id);
 	return NULL;
@@ -157,6 +161,9 @@ task_id_t thread_id_to_task_id(k_tid_t thread_id)
 
 	if (get_idle_thread() == thread_id)
 		return TASK_ID_IDLE;
+
+	if (get_shell_thread() == thread_id)
+		return TASK_ID_SHELL;
 
 	for (size_t i = 0; i < TASK_ID_COUNT; ++i) {
 		if (task_to_k_tid[i] == thread_id)
