@@ -231,7 +231,9 @@ enum {
 #define CROS_EC_EXTRA_TASKS(fn)                                         \
 	COND_CODE_1(CONFIG_TASK_HOSTCMD_THREAD_MAIN, (fn(HOSTCMD)), ()) \
 	fn(SYSWORKQ)                                                    \
-	fn(IDLE)
+	fn(IDLE)                                                        \
+	COND_CODE_1(CONFIG_SHELL_BACKEND_SERIAL, (fn(SHELL)),           \
+		(COND_CODE_1(CONFIG_SHELL_BACKEND_DUMMY, (fn(SHELL)), ())))
 /* clang-format on */
 
 #define EXTRA_TASK_INTERNAL_ID(name) EXTRA_TASK_##name,
