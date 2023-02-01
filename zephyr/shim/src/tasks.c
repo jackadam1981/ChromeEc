@@ -101,11 +101,9 @@ task_id_t task_get_current(void)
 	if (get_sysworkq_thread() == k_current_get())
 		return TASK_ID_SYSWORKQ;
 
-#ifdef CONFIG_TASK_HOSTCMD_THREAD_MAIN
-	if (in_host_command_main()) {
-		return TASK_ID_HOSTCMD;
-	}
-#endif
+	if (get_main_thread() == k_current_get())
+		return COND_CODE_1(CONFIG_TASK_HOSTCMD_THREAD_MAIN,
+				   (TASK_ID_HOSTCMD), (TASK_ID_MAIN));
 
 	if (get_idle_thread() == k_current_get())
 		return TASK_ID_IDLE;
