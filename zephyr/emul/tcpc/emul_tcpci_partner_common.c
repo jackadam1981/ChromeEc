@@ -1011,12 +1011,12 @@ static enum tcpci_partner_handler_res
 tcpi_partner_common_handle_accept(struct tcpci_partner_data *data)
 {
 	switch (data->cur_ams_ctrl_req) {
+	case PD_CTRL_DR_SWAP:
+		return tcpci_partner_common_accept_dr_swap_handler(data);
 	case PD_CTRL_VCONN_SWAP:
-		data->cur_ams_ctrl_req = PD_CTRL_INVALID;
-		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
-
+		return tcpci_partner_common_accept_vconn_swap_handler(data);
 	default:
-		LOG_ERR("Unhandled current_req=%u in ACCEPT",
+		LOG_ERR("Unexpected Accept; AMS began with %u",
 			data->cur_ams_ctrl_req);
 		return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
 	}
@@ -1025,14 +1025,18 @@ tcpi_partner_common_handle_accept(struct tcpci_partner_data *data)
 static enum tcpci_partner_handler_res
 tcpci_partner_common_handle_reject(struct tcpci_partner_data *data)
 {
+	/* Typically, if the TCPM Rejects an initial message, there isn't much
+	 * for the partner to do.
+	 */
 	switch (data->cur_ams_ctrl_req) {
 	case PD_CTRL_DR_SWAP:
-		return tcpci_partner_common_accept_dr_swap_handler(data);
+		tcpci_partner_common_clear_ams_ctrl_msg(data);
+		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 	case PD_CTRL_VCONN_SWAP:
-		return tcpci_partner_common_accept_vconn_swap_handler(data);
-
+		tcpci_partner_common_clear_ams_ctrl_msg(data);
+		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 	default:
-		LOG_ERR("Unhandled current_req=%u in ACCEPT",
+		LOG_ERR("Unexpected Reject; AMS began with %u",
 			data->cur_ams_ctrl_req);
 		return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
 	}
@@ -1152,7 +1156,16 @@ tcpci_partner_common_sop_msg_handler(struct tcpci_partner_data *data,
 
 		tcpci_partner_common_clear_ams_ctrl_msg(data);
 
-		__fallthrough;
+		if (data->wait_for_response) {
+			/* Handle Reject as a special case, or allow an
+			 * extension to handle it.
+			 */
+			return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
+		}
+		/* Unexpected message - trigger soft reset. */
+		tcpci_partner_common_send_soft_reset(data);
+		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+
 	case PD_CTRL_ACCEPT:
 		if (data->wait_for_response) {
 			if (data->in_soft_reset) {
