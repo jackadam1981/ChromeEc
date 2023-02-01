@@ -227,10 +227,11 @@ enum {
  * Additional task IDs for features that runs on non shimmed threads,
  * task_get_current() needs to be updated to identify these ones.
  */
-#define CROS_EC_EXTRA_TASKS(fn)                                         \
-	COND_CODE_1(CONFIG_TASK_HOSTCMD_THREAD_MAIN, (fn(HOSTCMD)), ()) \
-	fn(SYSWORKQ) fn(IDLE) COND_CODE_1(                              \
-		CONFIG_SHELL_BACKEND_SERIAL, (fn(SHELL)),               \
+#define CROS_EC_EXTRA_TASKS(fn)                                     \
+	COND_CODE_1(CONFIG_TASK_HOSTCMD_THREAD_MAIN, (fn(HOSTCMD)), \
+		    (fn(MAIN)))                                     \
+	fn(SYSWORKQ) fn(IDLE) COND_CODE_1(                          \
+		CONFIG_SHELL_BACKEND_SERIAL, (fn(SHELL)),           \
 		(COND_CODE_1(CONFIG_SHELL_BACKEND_DUMMY, (fn(SHELL)), ())))
 
 #define EXTRA_TASK_INTERNAL_ID(name) EXTRA_TASK_##name,
