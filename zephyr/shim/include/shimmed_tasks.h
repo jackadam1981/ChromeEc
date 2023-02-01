@@ -53,6 +53,10 @@
 #define HAS_TASK_SHELL 1
 #endif
 
+#ifndef CONFIG_TASK_HOSTCMD_THREAD_MAIN
+#define HAS_TASK_MAIN 1
+#endif
+
 /* These non-shimmed (extra) tasks are always present */
 #define HAS_TASK_IDLE 1
 #define HAS_TASK_SYSWORKQ 1

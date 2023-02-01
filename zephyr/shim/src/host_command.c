@@ -29,8 +29,3 @@ void host_command_main(void)
 	k_thread_name_set(&z_main_thread, "HOSTCMD");
 	host_command_task(NULL);
 }
-
-bool in_host_command_main(void)
-{
-	return (k_current_get() == &z_main_thread);
-}
