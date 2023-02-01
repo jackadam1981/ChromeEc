@@ -142,6 +142,30 @@
       },
       "revId": "5810868c09353d1cd3ca0e942f5e8ce73e4a17cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d15eeb7_a37bf1bf",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 27
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-01T19:18:24Z",
+      "side": 1,
+      "message": "I\u0027ve tested usb-c charging on the xivu and confirmed it is working.",
+      "parentUuid": "d643ff60_98146926",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "5810868c09353d1cd3ca0e942f5e8ce73e4a17cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

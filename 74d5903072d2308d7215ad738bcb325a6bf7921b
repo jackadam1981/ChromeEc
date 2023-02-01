@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e665ee4c_0b308b80",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-01T19:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "346db074_b2af2def",
+      "range": {
+        "startLine": 589,
+        "startChar": 21,
+        "endLine": 589,
+        "endChar": 28
+      },
+      "revId": "74d5903072d2308d7215ad738bcb325a6bf7921b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "396bab34_dc7d2b1b",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-25T23:36:11Z",
       "side": 1,
       "message": "Move this to a common [location](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/include/usbc/utils.h;l\u003d38) and rename to `TCPC_VERIFY_NO_FLAGS_ACTIVE_ALERT_HIGH()`.\n\nYou could append the node name to the error message to help the developer:\n\n\n```\n#define TCPC_VERIFY_NO_FLAGS_ACTIVE_ALERT_HIGH(id) \\\n    ...\n    BUILD_ASSERT(\u003ctest\u003e, \n        \"incorrect TCPC interrupt configuration for \" DT_NODE_FULL_NAME(id));\n       \n```",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "74d5903072d2308d7215ad738bcb325a6bf7921b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68671a79_0f524152",
+        "filename": "zephyr/shim/include/usbc/tcpc_fusb302.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-01T19:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "396bab34_dc7d2b1b",
       "range": {
         "startLine": 23,
         "startChar": 8,
