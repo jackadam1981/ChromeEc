@@ -34,6 +34,24 @@
       "message": "Hi Dai, \nPlease help to get this same patch merge on \"firmware-brya-14505.B-main\" branch for EC?\nThanks.",
       "revId": "8b6f7de2a730fd8d2be3b2a576b22301a11ba3bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9df03b6_54804225",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-01T17:49:59Z",
+      "side": 1,
+      "message": "It should be cherry-picked by the next bulk merge.\n\nyueherngl@chromium.org, when is the next merge?",
+      "parentUuid": "57e984ff_01d9561e",
+      "revId": "8b6f7de2a730fd8d2be3b2a576b22301a11ba3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
