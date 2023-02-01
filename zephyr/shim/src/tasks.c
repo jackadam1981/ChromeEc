@@ -7,6 +7,7 @@
 #include "host_command.h"
 #include "task.h"
 #include "timer.h"
+#include "zephyr_console_shim.h"
 
 #include <zephyr/init.h>
 #include <zephyr/kernel.h>
@@ -108,6 +109,9 @@ task_id_t task_get_current(void)
 
 	if (get_idle_thread() == k_current_get())
 		return TASK_ID_IDLE;
+
+	if (get_shell_thread() == k_current_get())
+		return TASK_ID_SHELL;
 
 	for (size_t i = 0; i < TASK_ID_COUNT; ++i) {
 		if (task_to_k_tid[i] == k_current_get())
