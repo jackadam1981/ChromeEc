@@ -95,15 +95,35 @@ static inline k_tid_t get_sysworkq_thread(void)
 	return &k_sys_work_q.thread;
 }
 
+k_tid_t get_main_thread(void)
+{
+	/* Pointer to the main thread, defined in kernel/init.c */
+	extern struct k_thread z_main_thread;
+
+	return &k_sys_work_q.thread;
+}
+
+test_mockable k_tid_t get_hostcmd_thread(void)
+{
+	if (IS_ENABLED(CONFIG_TASK_HOSTCMD_DEDICATED_THREAD))
+		return task_to_k_tid[TASK_ID_HOSTCMD];
+	else
+		return get_main_thread();
+}
+
 task_id_t task_get_current(void)
 {
 	if (get_sysworkq_thread() == k_current_get())
 		return TASK_ID_SYSWORKQ;
 
-#ifdef CONFIG_TASK_HOSTCMD_THREAD_MAIN
-	if (in_host_command_main()) {
+#if IS_ENABLED(HAS_TASK_HOSTCMD)
+	if (get_hostcmd_thread() == k_current_get())
 		return TASK_ID_HOSTCMD;
-	}
+#endif
+
+#if IS_ENABLED(HAS_TASK_MAIN)
+	if (get_main_thread() == k_current_get())
+		return TASK_ID_MAIN;
 #endif
 
 	if (get_idle_thread() == k_current_get())
