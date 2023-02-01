@@ -187,7 +187,13 @@ static int command_gpio_set(int argc, const char **argv)
 				return EC_ERROR_PARAM2;
 		}
 		flags = GPIO_ALTERNATE;
-	} else
+	} else if (strcasecmp(argv[2], "PU") == 0)
+		flags = GPIO_PULL_UP;
+	else if (strcasecmp(argv[2], "PD") == 0)
+		flags = GPIO_PULL_DOWN;
+	else if (strcasecmp(argv[2], "ODR") == 0)
+		flags = GPIO_OPEN_DRAIN;
+	else
 		return EC_ERROR_PARAM2;
 
 	/* Update alt function if requested. */
@@ -214,13 +220,14 @@ static int command_gpio_set(int argc, const char **argv)
 #endif
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND_FLAGS(gpioset, command_gpio_set,
+DECLARE_CONSOLE_COMMAND_FLAGS(
+	gpioset, command_gpio_set,
 #ifdef CONFIG_CMD_GPIO_EXTENDED
-			      "name <0 | 1 | IN | A | ALT [func]>",
+	"name <0 | 1 | IN | A | PU | PD | ODR | ALT [func]>",
 #else
 			      "name <0 | 1>",
 #endif
-			      "Set a GPIO", CMD_FLAG_RESTRICTED);
+	"Set a GPIO", CMD_FLAG_RESTRICTED);
 
 /*****************************************************************************/
 /* Host commands */
