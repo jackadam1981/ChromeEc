@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38f173e4_e4c7b51a",
+        "filename": "zephyr/program/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T23:22:08Z",
+      "side": 1,
+      "message": "This help with the code coverage number too.",
+      "parentUuid": "b389dfa3_cc533e4a",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 46
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f717668d_400d4432",
         "filename": "zephyr/program/nissa/craask/project.conf",
         "patchSetId": 38
