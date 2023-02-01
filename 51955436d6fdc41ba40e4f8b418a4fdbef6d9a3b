@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f07e4bf2_a59b2e58",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T23:53:49Z",
+      "side": 1,
+      "message": "Hmm, I didn\u0027t consider the interrupt trigger type.  The Nuvoton MIWU (Multi-Input Wake-Up) module supports level or edge events, plus rising/falling/both.  So we really need a device tree property to set the trigger type.\n\nA recent change just merged adding [GPIO hog](https://github.com/zephyrproject-rtos/zephyr/pull/54110) support.  That change provides a mechanism to configure GPIOs during system initialization.  This is similar to what we do with the `named-gpios` node now.\n\nLet me take a stab at a migration plan to adding in GPIO hog support before  we try to get the Intel board updated to use the shared TCPC interrupt handler.",
+      "range": {
+        "startLine": 226,
+        "startChar": 6,
+        "endLine": 226,
+        "endChar": 27
+      },
+      "revId": "51955436d6fdc41ba40e4f8b418a4fdbef6d9a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a5aca9_8c77027f",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T23:53:49Z",
+      "side": 1,
+      "message": "Why is this check needed? The [ITE TCPC setup](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/include/usbc/tcpc_it8xxx2.h;l\u003d12) should already be setting the `irq_gpio.port` to NULL.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 0
+      },
+      "revId": "51955436d6fdc41ba40e4f8b418a4fdbef6d9a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
