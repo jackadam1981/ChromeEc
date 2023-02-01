@@ -213,7 +213,6 @@ enum {
 #define CROS_EC_TASK(name, ...) TASK_ID_##name,
 #define TASK_TEST(name, ...) CROS_EC_TASK(name)
 enum {
-	TASK_ID_IDLE = -1, /* We don't shim the idle task */
 	CROS_EC_TASK_LIST
 #ifdef TEST_BUILD
 		TASK_ID_TEST_RUNNER,
@@ -230,7 +229,8 @@ enum {
  */
 #define CROS_EC_EXTRA_TASKS(fn)                                         \
 	COND_CODE_1(CONFIG_TASK_HOSTCMD_THREAD_MAIN, (fn(HOSTCMD)), ()) \
-	fn(SYSWORKQ)
+	fn(SYSWORKQ)                                                    \
+	fn(IDLE)
 
 #define EXTRA_TASK_INTERNAL_ID(name) EXTRA_TASK_##name,
 enum {
