@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f36e5b_1be635fc",
+        "filename": "zephyr/test/ec_app/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T18:24:38Z",
+      "side": 1,
+      "message": "Note that the [native-posix](https://docs.zephyrproject.org/latest/boards/posix/doc/arch_soc.html#posix-arch-limitations) implementation doesn\u0027t attempt to track time accurately.  So you should delay at least 2x the CONFIG_PLATFORM_EC_BOOT_NO_SLEEP_MS time.",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 43
+      },
+      "revId": "5e8773cc6556f8f7508e2e92bd5b3fab9f169ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17cc92c3_98d791fc",
+        "filename": "zephyr/test/ec_app/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-01T18:24:38Z",
+      "side": 1,
+      "message": "Use `k_msleep()`.  msleep is just the legacy EC wrapper around Zephyr API.",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 7
+      },
+      "revId": "5e8773cc6556f8f7508e2e92bd5b3fab9f169ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
