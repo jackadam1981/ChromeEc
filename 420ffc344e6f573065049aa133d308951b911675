@@ -52,6 +52,24 @@
       "parentUuid": "a6fc6d7a_856d2016",
       "revId": "420ffc344e6f573065049aa133d308951b911675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a07a36_96e1ea78",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2023-02-02T15:19:02Z",
+      "side": 1,
+      "message": "Update some ec logs on b/262663436#comment25 to explain the acok state will incorrect if always use COMPARATOR bit to be acok state. \nIt looks better to use COMPARATOR bit in OTG mode, besides keep use ACOK bit?\nAnd CONFIG_PLATFORM_EC_RAA489000_AC_PRESENT_CONTROL doesn\u0027t seem to be needed?",
+      "parentUuid": "7c80fb97_f799e134",
+      "revId": "420ffc344e6f573065049aa133d308951b911675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
