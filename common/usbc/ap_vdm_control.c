@@ -9,6 +9,7 @@
  */
 
 #include "builtin/assert.h"
+#include "chipset.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "ec_commands.h"
@@ -19,6 +20,7 @@
 #include "tcpm/tcpm.h"
 #include "temp_sensor.h"
 #include "usb_pd.h"
+#include "usb_pd_dp_hpd_gpio.h"
 #include "usb_pd_dpm_sm.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -51,6 +53,8 @@ static struct {
 	struct queue_state queue_state;
 	struct attention_queue_entry queue_buffer[DPM_ATTENTION_QUEUE_DEPTH];
 	mutex_t queue_lock;
+	bool dp_configured;
+	bool hpd_waiting;
 } ap_storage[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #ifdef CONFIG_ZEPHYR
@@ -109,6 +113,26 @@ void ap_vdm_attention_enqueue(int port, int length, uint32_t *buf)
 		pd_notify_event(port, PD_STATUS_EVENT_VDM_ATTENTION);
 
 	mutex_unlock(&ap_storage[port].queue_lock);
+
+	/* Process HPD from the message if we're configured */
+	if (PD_VDO_VID(buf[0]) == USB_SID_DISPLAYPORT) {
+		bool hpd_level = PD_VDO_DPSTS_HPD_LVL(buf[1]);
+		bool hpd_irq = PD_VDO_DPSTS_HPD_IRQ(buf[1]);
+
+		if (!ap_storage[port].dp_configured && hpd_level)
+			ap_storage[port].hpd_waiting = true;
+		else
+			dp_hpd_gpio_set(port, hpd_level, hpd_irq);
+
+		if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
+		    (hpd_irq || hpd_level))
+			/*
+			 * Wake up the AP.  IRQ or level high indicates a DP
+			 * sink is now present.
+			 */
+			if (IS_ENABLED(CONFIG_MKBP_EVENT))
+				pd_notify_dp_alt_mode_entry(port);
+	}
 }
 
 uint8_t ap_vdm_attention_pop(int port, uint32_t *buf, uint8_t *items_left)
@@ -137,6 +161,9 @@ void ap_vdm_init(int port)
 	/* Clear any stored AP messages */
 	ap_storage[port].vdm_reply_cnt = 0;
 	queue_init(&ap_storage[port].attention_queue);
+	ap_storage[port].dp_configured = false;
+	ap_storage[port].hpd_waiting = false;
+	dp_hpd_gpio_set(port, false, false);
 }
 
 void ap_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
@@ -153,6 +180,17 @@ void ap_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 
 	/* Clear the flag now that reply fields are updated */
 	dpm_clear_vdm_request(port);
+
+	/*
+	 * If this was a DP:Configure ACK, register it so we can start sending
+	 * HPD signals
+	 */
+	if ((PD_VDO_VID(vdm[0]) == USB_SID_DISPLAYPORT) &&
+	    PD_VDO_SVDM(vdm[0]) && (PD_VDO_CMD(vdm[0]) == CMD_DP_CONFIG)) {
+		ap_storage[port].dp_configured = true;
+		if (ap_storage[port].hpd_waiting)
+			dp_hpd_gpio_set(port, true, false);
+	}
 }
 
 void ap_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
