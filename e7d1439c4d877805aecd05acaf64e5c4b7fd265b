@@ -69,6 +69,47 @@
       "parentUuid": "7754d0af_36bd23d8",
       "revId": "e7d1439c4d877805aecd05acaf64e5c4b7fd265b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbd78c00_514ded95",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-02T04:30:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "77e8aad2_25b8fdcf",
+      "revId": "e7d1439c4d877805aecd05acaf64e5c4b7fd265b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a2022eb_8729600a",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-02T04:30:48Z",
+      "side": 1,
+      "message": "I wonder if we still need to lock this. User would normally call first `ap_pwrseq_state_lock`, otherwise it is just peeking the current state which I would consider harmless. Probably locking this just at state machine level.",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 27
+      },
+      "revId": "e7d1439c4d877805aecd05acaf64e5c4b7fd265b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
