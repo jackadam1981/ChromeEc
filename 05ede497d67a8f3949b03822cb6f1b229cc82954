@@ -321,6 +321,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13bc6755_ae5746be",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-02T16:13:11Z",
+      "side": 1,
+      "message": "generally when there is a time critical interrupt handler that depends on timestamps, I have usually seen that get_time is the first thing call in order to reduce the variance/jitter in timestamp collection.\n\nI could see different gpios on different banks taking slightly different times in hardware (or not too). Putting timestamp first should eliminate more paths for variance.\n\nAll that said; we aren\u0027t looking for mircosecond precision here. At best we care about millisecond precision, so it doesn\u0027t really matter.\n\nI would prefer it to be first, but it is not necessary 😊",
+      "parentUuid": "72402b4d_bc276133",
+      "range": {
+        "startLine": 99,
+        "startChar": 13,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d2a0822_e524cf47",
         "filename": "board/hyperdebug/gpio.c",
         "patchSetId": 13
@@ -461,6 +485,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a395a51_8fadf26a",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-02T16:13:11Z",
+      "side": 1,
+      "message": "Ah yes, I forgot about that. This makes sense. Thanks!",
+      "parentUuid": "68d7680a_a42dbc43",
+      "range": {
+        "startLine": 142,
+        "startChar": 24,
+        "endLine": 143,
+        "endChar": 23
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "932b292f_0538017a",
@@ -546,6 +594,30 @@
       "side": 1,
       "message": "I will add some explanation of the data format.  Conceptually, it is storing a queue of pairs (diff, signal_no), each pair being encoded as a u64 by shifting the diff left by just enough to allow storing the highest signal_no (usually zero, one or two bits), and putting the signal_no as the least significant bits.  Finally, the sequence of integers are encoded as bytes by putting seven data bits into each byte, with the MSB indicating whether more are to come.\n\nSo in this case, I want to store a diff of zero, which I am doing by not or-ing anything into the higher bits, leaving just signal_no on the lowest bits (I know for sure that this will never exceed 7 bits, so no need to do a while loop to encode as bytes.)",
       "parentUuid": "e36b5126_65640997",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 25
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a64aa71_b87e807a",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-02T16:13:11Z",
+      "side": 1,
+      "message": "Ah, I see it now.\n\nCan you add a comment above `buffer_data[head++] \u003d slot-\u003esignal_no` say that this sets a timestamp diff of 0 (since diff occupies the highest bit, and signal_no won\u0027t be more than 7 bits)",
+      "parentUuid": "ee46a5c5_ce688fd3",
       "range": {
         "startLine": 156,
         "startChar": 2,
@@ -794,6 +866,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcfe2035_8ff6a343",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-02T16:13:11Z",
+      "side": 1,
+      "message": "I like this idea. let\u0027s add to the comment here too that we take care below not to consume a tail that happens after now either\n\n---\n\nor we can just put this (getting time, head, and tail) in a critical section and simplify the code.",
+      "parentUuid": "ac3fb116_53a9162d",
+      "range": {
+        "startLine": 454,
+        "startChar": 55,
+        "endLine": 456,
+        "endChar": 31
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "491b9abb_ffffa98d",
         "filename": "board/hyperdebug/gpio.c",
         "patchSetId": 13
@@ -829,6 +925,30 @@
       "side": 1,
       "message": "Actually, the interrupt handler takes care to never update head so that it becomes equal to tail.  If that would have happened, it discards the record it wanted to insert, and instead sets the overflow flag.  So the condition here will be true for a buffer that has experienced overflow, causing its contents (the oldest events in the window) to be dumped, with an \"Error: Overflow\" message in the end.\n\nThinking about it.  Once an overflow has happened, and the data has a gap, we should stop adding any more events to the buffer, even if enough space is made later.  The current code disables further interrupt handling only on the one signal that contributed the last straw, but allows other pins to continue adding events.\n\nI suppose I could make the overflow() function iterate over all the slots, and disable every one that points to the buffer in question.",
       "parentUuid": "491b9abb_ffffa98d",
+      "range": {
+        "startLine": 465,
+        "startChar": 1,
+        "endLine": 465,
+        "endChar": 23
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c0a17e5_a4dc27f6",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-02T16:13:11Z",
+      "side": 1,
+      "message": "Ah, I see. Can we put a small command on the `return overflow` calls that say that we never update the global head pointer to what we just wrote (or maybe the comment goes on where we set the head pointer). I think that would have helped me track it.",
+      "parentUuid": "0f5c471a_6dfa6cbd",
       "range": {
         "startLine": 465,
         "startChar": 1,
