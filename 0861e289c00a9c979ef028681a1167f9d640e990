@@ -16,6 +16,86 @@
       "message": "This one should be ready to start review, though I need to run the manual tests still",
       "revId": "0861e289c00a9c979ef028681a1167f9d640e990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94aa2745_346000a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-02T18:22:28Z",
+      "side": 1,
+      "message": "This wouldn\u0027t be needed for this refactor, but should we have a separate header for the discovery library? I think having one big, nebulous header may have contributed  to the ballooning of `usb_pd_alt_mode_dfp.c`. \"Just put this one with the others.\"",
+      "revId": "0861e289c00a9c979ef028681a1167f9d640e990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec70fc1_064a9b2f",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4569,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-02T18:22:28Z",
+      "side": 1,
+      "message": "Nit: You might want to elaborate that this enables mode _entry_ as distinct from discovery. This would also be a good opportunity to correct \"upward\" and \"downward\" below.",
+      "revId": "0861e289c00a9c979ef028681a1167f9d640e990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01148d2_b77b0763",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-02T18:22:28Z",
+      "side": 1,
+      "message": "\"direct\"? Without this enabled, it will \"run\" whatever the AP tells it to.",
+      "range": {
+        "startLine": 248,
+        "startChar": 20,
+        "endLine": 248,
+        "endChar": 23
+      },
+      "revId": "0861e289c00a9c979ef028681a1167f9d640e990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d87e9f_ff8ef712",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-02T18:22:28Z",
+      "side": 1,
+      "message": "Nit: Period",
+      "range": {
+        "startLine": 253,
+        "startChar": 16,
+        "endLine": 253,
+        "endChar": 17
+      },
+      "revId": "0861e289c00a9c979ef028681a1167f9d640e990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
