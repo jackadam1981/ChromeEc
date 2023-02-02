@@ -85,6 +85,52 @@
       "parentUuid": "7c5aba06_8967c01a",
       "revId": "18fb04d822d7f90a3c178b48b123d276b37a2ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e936e193_7a364ded",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-02T20:50:15Z",
+      "side": 1,
+      "message": "this function should get called from \"line 1685\" flash_\"${CHIP}\"\nhence additional variables are not needed and re-comparing of board is not needed",
+      "range": {
+        "startLine": 1625,
+        "startChar": 0,
+        "endLine": 1630,
+        "endChar": 10
+      },
+      "revId": "18fb04d822d7f90a3c178b48b123d276b37a2ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84884ce8_09d0534c",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1658,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-02T20:50:15Z",
+      "side": 1,
+      "message": "use progress bar from python utils instead of spamming the console with bytes flashed info",
+      "range": {
+        "startLine": 1658,
+        "startChar": 5,
+        "endLine": 1658,
+        "endChar": 13
+      },
+      "revId": "18fb04d822d7f90a3c178b48b123d276b37a2ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
