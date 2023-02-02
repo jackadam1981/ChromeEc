@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1122806b_9a13b5c1",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-02T14:54:29Z",
+      "side": 1,
+      "message": "Sounds good.  You should see it moving two more CLs up the stack",
+      "parentUuid": "77a5115b_7ab05e1e",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36e5cbe8_e1f4b934",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Yup, I\u0027ll add that to the Kconfig next patchset.  And then ultimately this will move into the DP module",
       "parentUuid": "36e5cbe8_e1f4b934",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e1b7ae3_b4837498",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-02T14:54:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fc23809_3d5a2158",
       "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -124,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "458e2928_262bb921",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-02T14:54:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c60a4b60_e98e0bca",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e63092f3_21bfe450",
@@ -137,6 +191,24 @@
       "writtenOn": "2023-02-01T17:26:57Z",
       "side": 1,
       "message": "Nit: Having vacuous implementations for the `dp_*` functions in `dp_alt_mode.c` would be more of a pain than for the stuff that\u0027s in `usb_pd_alt_mode_dfp.c`, but it would keep the DPM code, which is already fairly branchy, from getting more branchy.",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a96f68_27f95a8f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-02T14:54:29Z",
+      "side": 1,
+      "message": "Hmmm... This change, I was aiming to keep as much of a no-op as possible.  See what you think of the DP module changes further up the stack and let me know if you think there\u0027s a better way to approach this.",
+      "parentUuid": "e63092f3_21bfe450",
       "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +262,24 @@
       "side": 1,
       "message": "Upstream Zephyr has taken the approach to provide inline stub implementations for APIs that can disabled via CONFIGs.\n\nExample for [CONFIG_PM_DEVICE\u003dn](https://github.com/zephyrproject-rtos/zephyr/blob/60a20471b561a0a3a74b377991fe1976c2ea83d7/include/zephyr/pm/device.h#L569)\n\nHowever, in this case I don\u0027t think the compiler/linker would optimize out this block because the contents of `mux_state` are not constant.  So I think you need the IS_ENABLED guard here.",
       "parentUuid": "7a1465f4_731848d2",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9fa6a66_ab754080",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-02T14:54:29Z",
+      "side": 1,
+      "message": "Oh, that is interesting.  I might try that approach for a few of the APIs to keep the if guards from getting too unwieldy",
+      "parentUuid": "bedcc602_da0922d7",
       "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
