@@ -16,6 +16,24 @@
       "message": "Since you are modifying this function anyway, please change ACCEPT to REJECT in error message.",
       "revId": "6e1ddbc19a196038687de0ebf7e16397a2f444d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de59adb7_a0519035",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-02T18:47:36Z",
+      "side": 1,
+      "message": "Oops. I updated the language to avoid the overloaded meanings of \"current\" and \"request\" in this context.",
+      "parentUuid": "a859f409_827d2aab",
+      "revId": "6e1ddbc19a196038687de0ebf7e16397a2f444d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

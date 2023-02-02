@@ -46,6 +46,30 @@
       },
       "revId": "77f7cfb6ed789b05e768a93236994845a0adb0d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be1099d1_a31b9221",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-02T18:47:36Z",
+      "side": 1,
+      "message": "Alright. I updated the comment. This is fine for now.\n\nIt seems like `wait_for_response` and `cur_ams_ctrl_req` are slightly redundant, in that they both act as triggers for a particular way of handling a response. Not all AMSes start with control messages, and Accept and Reject aren\u0027t the only things we could be waiting for. As the emulator takes on more features, this might get complicated. I think we\u0027ll probably need to make the idea of waiting for a particular message more generic/flexible, but I don\u0027t have specific ideas about how to change it yet. I sent you a doc link for background.",
+      "parentUuid": "a5fda3bd_ef600b45",
+      "range": {
+        "startLine": 1159,
+        "startChar": 0,
+        "endLine": 1164,
+        "endChar": 3
+      },
+      "revId": "77f7cfb6ed789b05e768a93236994845a0adb0d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
