@@ -34,6 +34,29 @@
       "parentUuid": "af70f851_3c577536",
       "revId": "73354e663dbfcd73a9c10377437cc1c8da01a44c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5214c6_f9f759ab",
+        "filename": "zephyr/program/hdctools/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-02-02T21:43:20Z",
+      "side": 1,
+      "message": "Add to this section:\n\n```\n\t# STM32 doesn\u0027t actually have enough ram for coverage, but this will\n\t# allow generating initial 0 line coverage.\n\tselect HAS_COVERAGE_SUPPORT\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "73354e663dbfcd73a9c10377437cc1c8da01a44c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
