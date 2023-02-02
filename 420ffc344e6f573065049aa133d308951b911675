@@ -16,6 +16,24 @@
       "message": "If the ACOK bit of this register actually only reflects the comparator output, what\u0027s the difference between the COMPARATOR and ACOK bits? I\u0027m not convinced this solution makes sense.\n\nIf this bit is always set when sourcing then we should always use the other path to check if it\u0027s sourcing regardless of configuration (not use the ACOK bit at all), but if it\u0027s affected by the comparator invert setting somehow then we should directly check whether the comparator is inverted rather than duplicating the check against state machine mode.",
       "revId": "420ffc344e6f573065049aa133d308951b911675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6fc6d7a_856d2016",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2023-02-02T03:04:17Z",
+      "side": 1,
+      "message": "It still can reproduce b/262663436 #comment1 issue by using new FW (include CL:4211348), so we upload this patch want to fix it.\n \nCOMPARATOR and ACOK bits status are different when unplug AC from hub(b/262663436 #comment22 EC_0130_2.log) \n```\n23-01-30 17:53:23.867 ec:~$ [1462.993100 C0: DPM Waiting]                       \u003c\u003d\u003d unplug AC from hub\n23-01-30 17:53:23.872 ec:~$ I: New chg p0\n23-01-30 17:53:23.900 W: Skip enable p0\n23-01-30 17:53:23.903 I: New chg p-1\n...\n23-01-30 17:53:24.676 ec:~$ ISL9238_REG_INFO2: 0x69C9\n23-01-30 17:53:24.925 ec:~$ port: 0 , acok: 1 , rv: 0\n23-01-30 17:53:24.928 ec:~$ raa489000_check_ac_delayed: start\n23-01-30 17:53:24.932 ec:~$ regval: 0x69C9 \n23-01-30 17:53:24.936 ec:~$ current_val: 0 \n23-01-30 17:53:24.938 ec:~$ new_val: 1 \n23-01-30 17:53:24.939 ec:~$ isl923x_set_comparator_inversion\n23-01-30 17:53:24.943 ec:~$ raa489000_check_ac_delayed: end\n23-01-30 17:53:24.946 ec:~$ ISL9238_REG_INFO2: 0x49C9\n23-01-30 17:53:25.178 ec:~$ port: 0 , acok: 1 , rv: 0\n```\n0x49C9 \u003d\u003e ACOK(bit_14): is 1, COMPARATOR (bit_13) is 0, state machine(bit8-11) is OTG mode\n\nAnd we just want to follow CL:4179436 design(Support AC_PRESENT when OTG mode), so using comparator bit to be acok state instead of acok bit when OTG mode.",
+      "parentUuid": "3918a957_c6b6f0d4",
+      "revId": "420ffc344e6f573065049aa133d308951b911675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
