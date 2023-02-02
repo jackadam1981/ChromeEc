@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbacb3f8_3ab0ea2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e46c743_11741d0c",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f20f9ab_019baecf",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-01T22:10:52Z",
       "side": 1,
       "message": "it",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f62eb6b_2fb69215",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f20f9ab_019baecf",
       "range": {
         "startLine": 11,
         "startChar": 15,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13885322_0780c5fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa79680_b37e820a",
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58168229_63c821a2",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a884c25_dbda71d0",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "When I cut my teeth with C at my previous company, we did not use C99 extensions, so thanks for bringing it to my attention that such indefinite-sized array as the last member of a struct is possible.  This certainly makes the code working with this struct easier to read.",
+      "parentUuid": "58168229_63c821a2",
+      "range": {
+        "startLine": 20,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 9
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a89221e2_c9b83eb4",
@@ -100,6 +190,30 @@
       "writtenOn": "2023-02-01T22:10:52Z",
       "side": 1,
       "message": "Let\u0027s add a comment that this is determined at runtime and does not need to be a power of 2 (since it is a departure for the norm)",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 63
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96de8e89_1d6f55c4",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a89221e2_c9b83eb4",
       "range": {
         "startLine": 39,
         "startChar": 4,
@@ -134,6 +248,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7540592_c811d217",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fe807db_6d3f6e1e",
+      "range": {
+        "startLine": 93,
+        "startChar": 18,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a27f4238_6275db6a",
@@ -147,6 +285,30 @@
       "writtenOn": "2023-02-01T22:10:52Z",
       "side": 1,
       "message": "should this be the first call in the fuction?",
+      "range": {
+        "startLine": 99,
+        "startChar": 13,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72402b4d_bc276133",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "You could think that doing so would make the measurements more accurate.\n\nThinking about it, as long as there is a consistent delay between the actual edge, and the invocation of get_time(), then the measured time elapsed between any to events will still be equally accurate, (and I think that relative time of events is all that we can hope for having precise, as the clock of HyperDebug is not synchronized to anything.)\n\nI have a followup CL in the works, with many optimizations, among those relying only on 32-bit time values in this interrupt handler, as that will work provided that there is never an hour or more between adjacent events.  I would like to decide on the data format and agree that we have handled corner cases for correctness in this review.  Then we can debate optimization tradeoffs in the next one.",
+      "parentUuid": "a27f4238_6275db6a",
       "range": {
         "startLine": 99,
         "startChar": 13,
@@ -181,6 +343,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f20b37bc_e445530e",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d2a0822_e524cf47",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 12
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7db2a3b_e9cdfa21",
@@ -204,6 +390,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bf77f52_534d96e6",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7db2a3b_e9cdfa21",
+      "range": {
+        "startLine": 130,
+        "startChar": 56,
+        "endLine": 130,
+        "endChar": 58
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5820f73_163e7821",
@@ -217,6 +427,30 @@
       "writtenOn": "2023-02-01T22:10:52Z",
       "side": 1,
       "message": "how is this just different that `diff \u0026 0xFF`?",
+      "range": {
+        "startLine": 142,
+        "startChar": 24,
+        "endLine": 143,
+        "endChar": 23
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68d7680a_a42dbc43",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "It is different because diff is larger than 8 bits in size.  If diff is 0x1001, I want the the highest bit set, while stuffing the seven lowest bits of the value into the first byte, that is 0x81, which is not what you would get with your suggestion.",
+      "parentUuid": "f5820f73_163e7821",
       "range": {
         "startLine": 142,
         "startChar": 24,
@@ -251,6 +485,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2679bca_db7cfe0b",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "932b292f_0538017a",
+      "range": {
+        "startLine": 153,
+        "startChar": 4,
+        "endLine": 153,
+        "endChar": 13
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e36b5126_65640997",
@@ -264,6 +522,30 @@
       "writtenOn": "2023-02-01T22:10:52Z",
       "side": 1,
       "message": "don\u0027t we need to set the timestamp to the same thing? or make the diff a 0",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 25
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee46a5c5_ce688fd3",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "I will add some explanation of the data format.  Conceptually, it is storing a queue of pairs (diff, signal_no), each pair being encoded as a u64 by shifting the diff left by just enough to allow storing the highest signal_no (usually zero, one or two bits), and putting the signal_no as the least significant bits.  Finally, the sequence of integers are encoded as bytes by putting seven data bits into each byte, with the MSB indicating whether more are to come.\n\nSo in this case, I want to store a diff of zero, which I am doing by not or-ing anything into the higher bits, leaving just signal_no on the lowest bits (I know for sure that this will never exceed 7 bits, so no need to do a while loop to encode as bytes.)",
+      "parentUuid": "e36b5126_65640997",
       "range": {
         "startLine": 156,
         "startChar": 2,
@@ -297,6 +579,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdd07db0_45a9259d",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Yes, it should. Done.",
+      "parentUuid": "3341bd60_07855e80",
+      "range": {
+        "startLine": 313,
+        "startChar": 1,
+        "endLine": 313,
+        "endChar": 49
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b98cba7_796420cc",
@@ -310,6 +616,30 @@
       "writtenOn": "2023-02-01T22:10:52Z",
       "side": 1,
       "message": "can you make this a local constant at least so this 256 and the one above share the same name",
+      "range": {
+        "startLine": 336,
+        "startChar": 13,
+        "endLine": 336,
+        "endChar": 16
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ab5756_f1163f6a",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Oh yes.  I actually had in mind that the size of the buffer could be specified as a parameter to the `gpio monitoring start` command, but never got to it.  I also need to find out if there is a limit of 80 characters for a single command, and whether that can be extended, as it is easily exceeded, if one wants to monitor more than three signals at a time.\n\nFor now, I have introduced a named constant.",
+      "parentUuid": "6b98cba7_796420cc",
       "range": {
         "startLine": 336,
         "startChar": 13,
@@ -343,6 +673,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a0b123_cfb8406f",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adda76ca_17f2b0e6",
+      "range": {
+        "startLine": 358,
+        "startChar": 2,
+        "endLine": 358,
+        "endChar": 23
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90aa7bdc_2807809e",
@@ -357,6 +711,30 @@
       "side": 1,
       "message": "\u003e \"interupt\" is a possible misspelling of \"interrupt\".\n\nPlease fix.",
       "parentUuid": "fe3cd315_a147229f",
+      "range": {
+        "startLine": 372,
+        "startChar": 5,
+        "endLine": 372,
+        "endChar": 13
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "220c0114_feb11be3",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90aa7bdc_2807809e",
       "range": {
         "startLine": 372,
         "startChar": 5,
@@ -392,6 +770,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac3fb116_53a9162d",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "True, the current code runs the risk that an event with a timestamp later than our \"now\" will be added before we retrieve \"head\", and be reported on the list.\n\nIf we switch around the two lines, as I try to explain in the comment, we instead run the risk that an event added after head is retrieved but with a timestamp BEFORE our \"now\" will sit in the queue for next time.  I think this latter scenario is quite a bit worse, because it contradicts the assumption of the caller that the levels of each of the signals remain \"constant\" from the time of the last edge reported until the timestamp of the reading (our \"now\").\n\nThinking about it, it should be possible to prevent both issues, if we continue retrieving now before head, as is, but during the iteration through the buffer, stop either when we reach head, or when we reach an event with a timestamp later than now (whichever comes first.)",
+      "parentUuid": "6d84ae51_d3a5ca3a",
+      "range": {
+        "startLine": 454,
+        "startChar": 55,
+        "endLine": 456,
+        "endChar": 31
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "491b9abb_ffffa98d",
         "filename": "board/hyperdebug/gpio.c",
         "patchSetId": 13
@@ -415,6 +817,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f5c471a_6dfa6cbd",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "Actually, the interrupt handler takes care to never update head so that it becomes equal to tail.  If that would have happened, it discards the record it wanted to insert, and instead sets the overflow flag.  So the condition here will be true for a buffer that has experienced overflow, causing its contents (the oldest events in the window) to be dumped, with an \"Error: Overflow\" message in the end.\n\nThinking about it.  Once an overflow has happened, and the data has a gap, we should stop adding any more events to the buffer, even if enough space is made later.  The current code disables further interrupt handling only on the one signal that contributed the last straw, but allows other pins to continue adding events.\n\nI suppose I could make the overflow() function iterate over all the slots, and disable every one that points to the buffer in question.",
+      "parentUuid": "491b9abb_ffffa98d",
+      "range": {
+        "startLine": 465,
+        "startChar": 1,
+        "endLine": 465,
+        "endChar": 23
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1547303_f73c04dd",
         "filename": "board/hyperdebug/gpio.c",
         "patchSetId": 13
@@ -426,6 +852,30 @@
       "writtenOn": "2023-02-01T22:10:52Z",
       "side": 1,
       "message": "is LED1 active low and LED3 active high? that seems really weird. Is so, it is probably worth calling that out in a comment here",
+      "range": {
+        "startLine": 602,
+        "startChar": 17,
+        "endLine": 602,
+        "endChar": 38
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee72811_2beacd40",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T00:55:20Z",
+      "side": 1,
+      "message": "I will call the conventions out.  Both are active high, but the green led is by default constantly on, when the HyperDebug firmware is running (as opposed to e.g. the DFU bootloader), whereas the red led is by default off.",
+      "parentUuid": "f1547303_f73c04dd",
       "range": {
         "startLine": 602,
         "startChar": 17,
