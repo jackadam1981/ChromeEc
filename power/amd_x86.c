@@ -31,6 +31,19 @@
 
 static int forcing_shutdown; /* Forced shutdown in progress? */
 
+#define AMD_STB_DUMP_TRIGGER_DURATION_MS 1
+#if CONFIG_PLATFORM_EC_AMD_STB_DUMP
+static bool stb_dump_in_progress;
+static struct {
+	/* Interrupt from EC to AP. */
+	const struct gpio_dt_spec *int_out;
+	/* Interrupt from AP to EC. */
+	const struct gpio_dt_spec *int_in;
+} stb_dump_config;
+
+static void stb_dump_finish(void);
+#endif /* CONFIG_PLATFORM_EC_AMD_STB_DUMP */
+
 #ifdef CONFIG_POWERSEQ_FAKE_CONTROL
 /* Create fake power states through forcing the SoC SLP signal sequencing */
 void power_fake_s0(void)
@@ -73,6 +86,13 @@ void chipset_reset(enum chipset_shutdown_reason reason)
 		CPRINTS("Can't reset: SOC is off");
 		return;
 	}
+
+#if CONFIG_PLATFORM_EC_AMD_STB_DUMP
+	if (stb_dump_in_progress) {
+		CPRINTS("STB dump still in progress during reset");
+		stb_dump_finish();
+	}
+#endif /* CONFIG_PLATFORM_EC_AMD_STB_DUMP */
 
 	report_ap_reset(reason);
 	/*
@@ -268,6 +288,9 @@ __override void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 		get_lazy_wake_mask(POWER_S0ix, &sleep_wake_mask);
 		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, sleep_wake_mask);
 	}
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_AMD_STB_DUMP))
+		amd_stb_dump_trigger();
 
 	CPRINTS("Warning: Detected sleep hang! Waking host up!");
 	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
@@ -555,3 +578,55 @@ enum power_state power_handle_state(enum power_state state)
 	}
 	return state;
 }
+
+#if CONFIG_PLATFORM_EC_AMD_STB_DUMP
+void amd_stb_dump_trigger(void)
+{
+	if (stb_dump_in_progress || !stb_dump_config.int_out)
+		return;
+
+	CPRINTS("Triggering STB dump");
+	stb_dump_in_progress = true;
+	gpio_pin_set_dt(stb_dump_config.int_out, 1);
+	msleep(AMD_STB_DUMP_TRIGGER_DURATION_MS);
+	gpio_pin_set_dt(stb_dump_config.int_out, 0);
+}
+
+void amd_stb_dump_init(const struct gpio_dt_spec *int_out,
+		       const struct gpio_dt_spec *int_in)
+{
+	stb_dump_config.int_out = int_out;
+	stb_dump_config.int_in = int_in;
+}
+
+static void amd_stb_dump_interrupt_deferred(void)
+{
+	/* AP has indicated that it has finished the dump. */
+	if (!stb_dump_in_progress)
+		return;
+
+	stb_dump_finish();
+	CPRINTS("STB dump finished");
+}
+DECLARE_DEFERRED(amd_stb_dump_interrupt_deferred);
+
+void amd_stb_dump_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&amd_stb_dump_interrupt_deferred_data, 0);
+}
+
+static void stb_dump_finish(void)
+{
+	stb_dump_in_progress = false;
+}
+#endif /* CONFIG_PLATFORM_EC_AMD_STB_DUMP */
+
+#ifdef CONFIG_PLATFORM_EC_AMD_STB_DUMP_CMD
+static int command_amdstbdump(int argc, const char **argv)
+{
+	amd_stb_dump_trigger();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(amdstbdump, command_amdstbdump, NULL,
+			"Trigger an STB dump");
+#endif

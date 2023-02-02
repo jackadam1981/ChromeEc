@@ -26,4 +26,9 @@ enum power_signal {
 
 #endif
 
+void amd_stb_dump_init(const struct gpio_dt_spec *int_out,
+		       const struct gpio_dt_spec *int_in);
+void amd_stb_dump_interrupt(enum gpio_signal signal);
+void amd_stb_dump_trigger(void);
+
 #endif /* __CROS_EC_POWER_AMD_X86_H_ */
