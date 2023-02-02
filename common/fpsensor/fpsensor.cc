@@ -13,6 +13,7 @@ extern "C" {
 #include "cryptoc/util.h"
 #include "ec_commands.h"
 #include "fpsensor.h"
+#include "fpsensor_alg.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_detect.h"
 #include "fpsensor_private.h"
