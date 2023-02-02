@@ -16,6 +16,24 @@
       "message": "The [geralt](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/geralt/) platform is failing the build.  Can verify if there are any changes required to the project specific files?",
       "revId": "72f07733c8c70eb2aa5e7dd6cd3d99d9e79c7d64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2ffb167_763bee65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2023-02-02T05:46:38Z",
+      "side": 1,
+      "message": "I added the keyboard.dtsi for geralt. Thanks a lot!",
+      "parentUuid": "7e1185de_d2c5139e",
+      "revId": "72f07733c8c70eb2aa5e7dd6cd3d99d9e79c7d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
