@@ -4972,6 +4972,21 @@ struct ec_response_device_event {
 } __ec_align4;
 
 /*****************************************************************************/
+/* Get s0ix counter */
+#define EC_CMD_GET_S0IX_COUNTER 0x00AB
+
+#define EC_S0IX_COUNTER_SET 0x1
+
+struct ec_params_s0ix_cnt {
+	uint32_t flags;
+	uint32_t s0ix_counter;
+} __ec_align4;
+
+struct ec_response_s0ix_cnt {
+	uint32_t s0ix_counter;
+} __ec_align4;
+
+/*****************************************************************************/
 /* Smart battery pass-through */
 
 /* Get / Set 16-bit smart battery registers */
