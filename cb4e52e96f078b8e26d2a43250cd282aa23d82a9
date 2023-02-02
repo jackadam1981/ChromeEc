@@ -16,6 +16,24 @@
       "message": "The CL failed to pass clang format check. Please run check_clang_format.py to check the files in this CL.",
       "revId": "cb4e52e96f078b8e26d2a43250cd282aa23d82a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03559dad_229f4fe7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-02-02T05:11:03Z",
+      "side": 1,
+      "message": "Use check_clang_format.py, show below:\n\n(cr) (omnigul_for_leila) loganliao@loganliao-VirtualBox ~/chromiumos/src/platform/ec/util $ ./check_clang_format.py \nINFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/common/lightbar.c:1562:3: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        {                                \\\nERROR:root:         ^\nERROR:root:/mnt/host/source/src/platform/ec/driver/mag_lis2mdl.c:337:29: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        normalized_rate \u003d rate \u003c\u003d 0                   ? 0 :\nERROR:root:                                   ^^^^^\nERROR:root:/mnt/host/source/src/platform/ec/extra/ftdi_hostcmd/test_cmds.c:48:3: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:};\nERROR:root:  ^\nERROR:root:/mnt/host/source/src/platform/ec/extra/ftdi_hostcmd/test_cmds.c:50:78: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:/****************************************************************************\nERROR:root:                                                                             ^\nERROR:root:/mnt/host/source/src/platform/ec/extra/ftdi_hostcmd/test_cmds.c:51:20: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root: * Debugging output\nERROR:root:                   ^\nERROR:root:/mnt/host/source/src/platform/ec/extra/sps_errs/prog.c:49:3: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:};\nERROR:root:  ^\nERROR:root:/mnt/host/source/src/platform/ec/extra/sps_errs/prog.c:51:78: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:/****************************************************************************\nERROR:root:                                                                             ^\nERROR:root:/mnt/host/source/src/platform/ec/extra/sps_errs/prog.c:52:20: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root: * Debugging output\nERROR:root:                   ^\nERROR:root:/mnt/host/source/src/platform/ec/include/test_util.h:427:3: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        {                                                   \\\nERROR:root:         ^\n\nFind this check show that common  or else files check waning, but this CL didn\u0027t modify them. \n\nI try to correct it but can\u0027t pass clang-format check, do I miss something?",
+      "parentUuid": "7ceb90ef_3debf8ee",
+      "revId": "cb4e52e96f078b8e26d2a43250cd282aa23d82a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
