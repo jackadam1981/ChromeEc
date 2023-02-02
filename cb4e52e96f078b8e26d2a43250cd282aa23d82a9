@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ceb90ef_3debf8ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-02-02T01:50:49Z",
+      "side": 1,
+      "message": "The CL failed to pass clang format check. Please run check_clang_format.py to check the files in this CL.",
+      "revId": "cb4e52e96f078b8e26d2a43250cd282aa23d82a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
