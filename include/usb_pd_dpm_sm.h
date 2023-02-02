@@ -100,6 +100,21 @@ enum ec_status dpm_copy_vdm_reply(int port, uint8_t *type, uint8_t *size,
 				  uint32_t *buf);
 
 /*
+ * Clears the VDM request in progress bit for this port
+ *
+ * @param[in]  port		USB-C port number
+ */
+void dpm_clear_vdm_request(int port);
+
+/*
+ * Checks the VDM request in progress bit for this port
+ *
+ * @param[in]  port		USB-C port number
+ * @return			true if VDM REQ is set
+ */
+bool dpm_check_vdm_request(int port);
+
+/*
  * Informs the DPM of a received Attention message.  Note: all Attention
  * messages are assumed to be SOP since cables are disallowed from sending
  * this type of VDM.
@@ -121,7 +136,7 @@ void dpm_notify_attention(int port, size_t vdo_objects, uint32_t *buf);
  * @param[out] items_left	Number of Attention messages left in the queue
  * @return			Number of 32-bit objects filled in (0 if empty)
  */
-uint8_t dpm_vdm_attention_pop(int port, uint32_t *buf, uint8_t *items_left);
+uint8_t dpm_attention_pop(int port, uint32_t *buf, uint8_t *items_left);
 
 /*
  * Determines the current allocation for the connection, past the basic
