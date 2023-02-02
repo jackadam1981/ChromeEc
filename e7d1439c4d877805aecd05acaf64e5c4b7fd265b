@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b72d7ff_34e789d4",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-02T00:25:00Z",
+      "side": 1,
+      "message": "Add a comment here describing what fields this protects, so it\u0027s clear when this lock needs to be acquired.",
+      "revId": "e7d1439c4d877805aecd05acaf64e5c4b7fd265b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7754d0af_36bd23d8",
         "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
         "patchSetId": 19
