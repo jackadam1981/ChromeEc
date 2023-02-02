@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4278c1fb_9f5876f6",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-02T17:01:47Z",
+      "side": 1,
+      "message": "Still a nit: Having now done this, could you just have this be `#if defined(CONFIG_CMD_MFALLOW)` and have the dependency on DP be taken care of by Kconfig?",
+      "parentUuid": "9e1b7ae3_b4837498",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "052a00ba_f615660e",
         "filename": "common/usb_pd_host_cmd.c",
         "patchSetId": 3
@@ -215,6 +233,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec1c1e9d_b3a315d7",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-02T17:01:47Z",
+      "side": 1,
+      "message": "Which CL are you referring to? I mostly see code movement without API changes, but I haven\u0027t dug in yet.\n\nI was envisioning something like the Zephyr link that Keith provided, where the header file provides `inline`, empty implementations of the functions in the case where the relevant config is disabled. Then it\u0027s the DP library (header file) that is responsible for doing something reasonable in the case where the config is disabled, not the user of the library. From the DPM\u0027s POV, it would just be as if DP never does anything.",
+      "parentUuid": "98a96f68_27f95a8f",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c7bb5d5_54101826",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 3
@@ -280,6 +316,24 @@
       "side": 1,
       "message": "Oh, that is interesting.  I might try that approach for a few of the APIs to keep the if guards from getting too unwieldy",
       "parentUuid": "bedcc602_da0922d7",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a5b4306_03d9751f",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-02T17:01:47Z",
+      "side": 1,
+      "message": "The inline stub approach is what I had been envisioning in our OOB conversation.\n\nRe: optimizing out this block, how aggressive are we trying to be? With an inline, trivial `get_dp_pin_mode`, this will be handful of instructions. The same could be said for the other mode-specific checks here.\n\nJust spitballing: If we had something like\n```\nstatic inline bool is_mux_bit_set(mux_state_t mux_state, mux_state_t check_state) {\n  if (!IS_ENABLED(CONFIG_USB_PD_DP_MODE)) {\n    if (check_state \u0026 (USB_PD_MUX_DP_ENABLED | USB_PD_MUX_HPD_IRQ | USB_PD_MUX_HPD_LVL))\n      return false;\n   }\n   ...\n}\n```\nthat would separate the concerns of linkage and mux business logic for potentially this whole function. I think the C optimizer could figure it out. Certainly, `constexpr` in C++ could handle this.\n\nI\u0027m not necessarily suggesting that we reimplement `IS_ENABLED` for each of our optional features, but if we\u0027re trying to optimize stuff out more aggressively, we should probably keep an eye out for when our config checks are getting too dense, and we could use another layer of abstraction.",
+      "parentUuid": "b9fa6a66_ab754080",
       "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

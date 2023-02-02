@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9f8899_ef64243b",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-02T17:01:47Z",
+      "side": 1,
+      "message": "I think I\u0027m missing an aspect of this, but in the scenario where the AP controls VDMs, the EC is still responsible for actually setting the retimer, right? When the AP enters DP mode, how does the retimer get configured for DP?",
+      "revId": "058f97448b787c405be7186f90ce4d148ea91b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
