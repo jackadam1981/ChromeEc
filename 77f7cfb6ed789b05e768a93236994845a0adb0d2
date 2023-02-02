@@ -22,6 +22,30 @@
       },
       "revId": "77f7cfb6ed789b05e768a93236994845a0adb0d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5fda3bd_ef600b45",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2023-02-02T10:37:43Z",
+      "side": 1,
+      "message": "Flag `wait_for_response` indicates that one of extensions is expecting accept/reject message. Usually the flag is set by call to `tcpci_partner_start_sender_response_timer`. When an extension is waiting for accept/reject, common code shouldn\u0027t handle this message and should call extensions handlers instead (because of that `NOT_HANDLED` is returned). When `wait_for_response` is false, common handler is executed i.e. soft reset is send, because message is not expected.\n\nThere is one special case when `wait_for_response` and `in_soft_reset` are true. Then common code is waiting for accept/reject in response to soft reset. In that case common code is handling this message (hard reset in case of reject and stopping sender response timer in case of accept).",
+      "parentUuid": "84830225_2942d6bc",
+      "range": {
+        "startLine": 1159,
+        "startChar": 0,
+        "endLine": 1164,
+        "endChar": 3
+      },
+      "revId": "77f7cfb6ed789b05e768a93236994845a0adb0d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
