@@ -67,6 +67,24 @@
       "message": "1.\tFirst CL \nOriginal  :  python3 MakePgmHdr.py\nRename : python3 GenerateProgramHeader.py\n\nRelated Bin file:\nOriginal : PgmHdrFile.bin , update_pgmhdrfile.bin\nRename : ProgramHeader.bin , Upload_ProgramHeader.bin\n\n2.\tSecond CL :\nOriginal : python3 UART_CR_V2.py\nRename : python3 UART_Crisis_second_loader.py \n\n\nRelated Bin file\nOriginal :  Fwbin0.bin, Header0.bin, Keyhashblob.bin\nRename : SecondLoaderFW.bin, Header.bin, Keyhashblob.bin\n\n\n\n3.\tThird CL :\nOriginal : python3 CrisisRcvry_Utility_Final.py\nRename : python3 INT_Flash_Programming_Utility.py\n\nInside python scripts need to change accordingly with above changes \n4.\tFourth CL:\nFlash_ec script with the above changes",
       "revId": "18fb04d822d7f90a3c178b48b123d276b37a2ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f86edd9_5fce303d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-02T20:32:37Z",
+      "side": 1,
+      "message": "CrisisRcvry_Utility_Final.py -\u003e crisis_rcvry_util.py\nfwbin0.bin -\u003e rename with something meaningful, what it does?\nheader0.bin -\u003e header.bin\nkeyhashblob.bin -\u003e key_hash.bin\nMakePgmHdr.py -\u003e gen_pgm_hdr.py\nPgmHdrFile.bin -\u003e pgm_hdr.bin\nspi_fw.bin -\u003e This file is not needed, use the image passed from --image arg\nUART_CR_V2.py -\u003e why not combine this  with crisis_rcvry_util.py?\nupdate_pgmhdrfile.bin -\u003e rename with something meaningful, what it does?",
+      "parentUuid": "7c5aba06_8967c01a",
+      "revId": "18fb04d822d7f90a3c178b48b123d276b37a2ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
