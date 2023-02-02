@@ -119,7 +119,9 @@ struct vbus_prop {
 static struct vbus_prop vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 static int active_charge_port = CHARGE_PORT_NONE;
 static enum charge_supplier active_charge_supplier;
-static uint8_t vbus_rp = TYPEC_RP_RESERVED;
+/* Obsolete variable
+ * static uint8_t vbus_rp = TYPEC_RP_RESERVED;
+ */
 
 static int cc_config = CC_ALLOW_SRC | CC_EMCA_SERVO;
 
@@ -426,7 +428,7 @@ int pd_tcpc_cc_nc(int port, int cc_volt, int cc_sel)
 	if (port != DUT)
 		return 0;
 
-	rp_index = vbus_rp;
+	rp_index = rp_value_stored;
 	/*
 	 * If rp_index > 2, then always return not connected. This case should
 	 * only happen when all Rp GPIO controls are tri-stated.
@@ -454,7 +456,7 @@ int pd_tcpc_cc_ra(int port, int cc_volt, int cc_sel)
 	if (port != DUT)
 		return 0;
 
-	rp_index = vbus_rp;
+	rp_index = rp_value_stored;
 	/*
 	 * If rp_index > 2, then can't be Ra. This case should
 	 * only happen when all Rp GPIO controls are tri-stated.
@@ -613,7 +615,7 @@ static int board_set_rp(int rp)
 		}
 	}
 	/* Save new Rp value for DUT port */
-	vbus_rp = rp;
+	rp_value_stored = rp;
 
 	return EC_SUCCESS;
 }
