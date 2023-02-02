@@ -75,6 +75,30 @@
       },
       "revId": "73354e663dbfcd73a9c10377437cc1c8da01a44c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b2b922_0368a796",
+        "filename": "zephyr/program/hdctools/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-02-02T21:48:45Z",
+      "side": 1,
+      "message": "Thanks, that seems to be doing the trick!",
+      "parentUuid": "1c5214c6_f9f759ab",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "73354e663dbfcd73a9c10377437cc1c8da01a44c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
