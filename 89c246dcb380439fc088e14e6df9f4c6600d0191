@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18eb0824_20ee2c19",
+        "filename": "common/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-02T22:07:22Z",
+      "side": 1,
+      "message": "This isn\u0027t needed until you have code in the legacy EC to register memory dump regions.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 69
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4523229_ba21886b",
+        "filename": "common/host_command_memory_dump.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-02T22:07:22Z",
+      "side": 1,
+      "message": "How about just a `memset(entries, 0, sizeof(entries));`",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ca4b39_bce43b78",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 5559,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-02T22:07:22Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 5559,
+        "startChar": 35,
+        "endLine": 5559,
+        "endChar": 38
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9a2822_9a365e73",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 5566,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-02T22:07:22Z",
+      "side": 1,
+      "message": "How about also adding `EC_CMD_MEMORY_DUMP_CLEAR`?",
+      "range": {
+        "startLine": 5566,
+        "startChar": 6,
+        "endLine": 5566,
+        "endChar": 36
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b9559a7_8706a8e5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 5580,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-02T22:07:22Z",
+      "side": 1,
+      "message": "The host command protocol already provides a versioning mechanism.  I don\u0027t think this is needed to future proof the command.  I also can\u0027t think of an instance where we would have 64-bit support, but only needed a single offset for all memory regions.  It seems more likely we would need to each `struct ec_response_memory_dump_get_entry_info` to include a 64-bit address.",
+      "range": {
+        "startLine": 5579,
+        "startChar": 1,
+        "endLine": 5580,
+        "endChar": 19
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba4786f_64ee884d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-02T22:07:22Z",
+      "side": 1,
+      "message": "It could be useful to add arguments to dump a specific index, or limit the total number of bytes returned.\n\nAn optional `clear` parameter would be helpful too.",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 15
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a99000f_1583bec4",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-02T22:07:22Z",
+      "side": 1,
+      "message": "Just FYI : once this change merges, the ectool requires an uprev, but the uprev process is automatic.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/docs/pupr.md;l\u003d1",
+      "range": {
+        "startLine": 9131,
+        "startChar": 0,
+        "endLine": 9131,
+        "endChar": 50
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6b132f5_3b83a0e5",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9240,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-02T22:07:22Z",
+      "side": 1,
+      "message": "`if (isprint(seg-\u003emem[i + j]))`",
+      "range": {
+        "startLine": 9238,
+        "startChar": 4,
+        "endLine": 9240,
+        "endChar": 0
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27eeab93_e1c8ab9e",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-02T22:07:22Z",
+      "side": 1,
+      "message": "You could use `SYS_INIT()` to have the zephyr memory dump module self initialize instead of requiring a public routine.\n\nAlso, should this be done after `vboot_main()` - in which case you would need to use `DECLARE_HOOK(HOOK_INIT,...)` instead of `SYS_INIT`.  The kernel runs `SYS_INIT` calls before starting the application main function.",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7cfc473_b954e9eb",
+        "filename": "zephyr/shim/src/register_memory_dump.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-02T22:07:22Z",
+      "side": 1,
+      "message": "Thread names can be compiled out with `CONFIG_THREAD_NAME\u003dn`, so you\u0027ll need a different mechanism for the block list.",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 12
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
