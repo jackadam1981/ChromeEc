@@ -16,6 +16,24 @@
       "message": "Jeremy - the coverage report failed to build:\n```\nlcov: ERROR: no valid records found in tracefile /mnt/host/source/src/platform/ec/build/zephyr/starfish_v1/output/zephyr.info\nCombining tracefiles.\n```\n\nCan you help determine what\u0027s missing for this new project?",
       "revId": "73354e663dbfcd73a9c10377437cc1c8da01a44c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a68821d_56132e75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-02-02T21:26:14Z",
+      "side": 1,
+      "message": "```\nwarning: COVERAGE (defined at subsys/testsuite/Kconfig:34) was assigned the value \u0027y\u0027 but got the\nvalue \u0027n\u0027. Check these unsatisfied dependencies: HAS_COVERAGE_SUPPORT (\u003dn). See\nhttp://docs.zephyrproject.org/latest/kconfig.html#CONFIG_COVERAGE and/or look up COVERAGE in the\nmenuconfig/guiconfig interface. The Application Development Primer, Setting Configuration Values,\nand Kconfig - Tips and Best Practices sections of the manual might be helpful too.\nCMake Warning at /mnt/host/source/src/third_party/zephyr/main/CMakeLists.txt:822 (message):\n  No SOURCES given to Zephyr library: drivers__watchdog\n  Excluding target from build.\n```",
+      "parentUuid": "af70f851_3c577536",
+      "revId": "73354e663dbfcd73a9c10377437cc1c8da01a44c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
