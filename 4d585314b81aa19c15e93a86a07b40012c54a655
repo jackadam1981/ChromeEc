@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cd811bd_50cc344f",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T18:26:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8385273d_8c019975",
+      "range": {
+        "startLine": 32,
+        "startChar": 64,
+        "endLine": 32,
+        "endChar": 71
+      },
+      "revId": "4d585314b81aa19c15e93a86a07b40012c54a655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f785e9e9_37bd301d",
@@ -39,6 +63,30 @@
       "side": 1,
       "message": "\u003e \"accesed\" is a possible misspelling of \"accessed\".\n\nPlease fix.",
       "parentUuid": "6f4717fb_25fadba0",
+      "range": {
+        "startLine": 41,
+        "startChar": 66,
+        "endLine": 41,
+        "endChar": 73
+      },
+      "revId": "4d585314b81aa19c15e93a86a07b40012c54a655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be652f40_0adebb20",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T18:26:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f785e9e9_37bd301d",
       "range": {
         "startLine": 41,
         "startChar": 66,

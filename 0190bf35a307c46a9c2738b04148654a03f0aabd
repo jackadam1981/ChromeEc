@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a17227_487295e1",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T18:26:24Z",
+      "side": 1,
+      "message": "I have changed this code to avoid completely disabling interrupts in the CPU core.\n\nThe issue is that I cannot atomically read the current level of a GPIO pin, and enable edge interrupts.  So instead I first enable interrupts, then read the pin, and then I clear the \"pending edge\" bit for the direction \"towards\" the level that was just measured, before allowing interrupt handlers to run.  Doing so will let the handler run if an edge has happened after the level was read, but before interrupt handlers were enabled, but not invoke the interrupt handler merely because of a single edge before the level was read (which would be misinterpreted as a pulse by the interrupt handler).\n\nIt occurred to me that the Cortex interrupt controller (NVIC) can selectively disable interrupt sources, serving as an extra layer on top of the GPIO edge detection circuit.  And by using the NVIC to disable just the particular interrupts used by this operation, we can avoid globally disabling interrupts for an extended period in this method, which will help in case the user has multiple \"gpio monitoring\" operations in progress simultaneously (on disjoint pin sets, of course).",
+      "revId": "0190bf35a307c46a9c2738b04148654a03f0aabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

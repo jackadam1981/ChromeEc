@@ -343,6 +343,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70ddb19_a3f9042d",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T18:26:24Z",
+      "side": 1,
+      "message": "Sure, we can move it first.",
+      "parentUuid": "13bc6755_ae5746be",
+      "range": {
+        "startLine": 99,
+        "startChar": 13,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d2a0822_e524cf47",
@@ -628,6 +652,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a493f4d0_c2019f2e",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T18:26:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a64aa71_b87e807a",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 25
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3341bd60_07855e80",
@@ -888,6 +936,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d177985e_ac656410",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T18:26:24Z",
+      "side": 1,
+      "message": "I have elaborated in the comment.\n\nI was hoping to avoid routinely disabling interrupts (though I do have to do so in the start/stop code.  I do not know if it is unrealistic, but I was hoping that by not routinely disabling interrupts when emptying the buffer, and in a followup CL increasing the GPIO interrupts to higher priority than USB interrupts, that we could achieve microsecond precision on the edge detection, even if the buffer is being emptied multiple times during the period of capturing.  (The time it takes to handle the interrupt is down to roughly one microsecond with the followup changes.)",
+      "parentUuid": "bcfe2035_8ff6a343",
+      "range": {
+        "startLine": 454,
+        "startChar": 55,
+        "endLine": 456,
+        "endChar": 31
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "491b9abb_ffffa98d",
@@ -949,6 +1021,30 @@
       "side": 1,
       "message": "Ah, I see. Can we put a small command on the `return overflow` calls that say that we never update the global head pointer to what we just wrote (or maybe the comment goes on where we set the head pointer). I think that would have helped me track it.",
       "parentUuid": "0f5c471a_6dfa6cbd",
+      "range": {
+        "startLine": 465,
+        "startChar": 1,
+        "endLine": 465,
+        "endChar": 23
+      },
+      "revId": "05ede497d67a8f3949b03822cb6f1b229cc82954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5ac0be_132b9200",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T18:26:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c0a17e5_a4dc27f6",
       "range": {
         "startLine": 465,
         "startChar": 1,
