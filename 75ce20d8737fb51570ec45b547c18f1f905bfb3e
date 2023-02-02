@@ -16,6 +16,41 @@
       "message": "I do want to ask a rude question though: Is there actually any code being shared between starfish and EC?  Maybe this should go in a different repo.",
       "revId": "75ce20d8737fb51570ec45b547c18f1f905bfb3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5229c4ed_4c541c97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-02-02T22:19:54Z",
+      "side": 1,
+      "message": "That\u0027s actually been a fair point and has been a problem that regularly comes up I heavily favor splitting Hdctool\u0027s firmware out to a new repo especially now we have Zephyr to ease the support for new chipsets. The shared repo has caused a lot of problems in the past with Servo running CrosEC.\n\n* ToT is regularly breaking due to changes in common code. But with only a handful of people touching servo code periodically it\u0027s hard to detect these breaking changes quickly.\n* Changes we wanted to make to lower level peripheral drivers to improve performance can\u0027t be done due to risk of breaking ECs on Chromebooks as timing and power consumption may be impacted. This is one of the reasons for not performing some of the flash speed improvements.\n* Behaviors can vary significantly as between test devices were as Chromebooks are consumer devices. The engineers working on test devices and those working on Chromebooks are not the same group.\n\nThere aren\u0027t many firmware engineers working on ChromeOS tools. But the current workflow adds extra stress and time.\n\nI don\u0027t know how to start one that has a builder and the basic infra for interacting with the Zephyr project.",
+      "parentUuid": "7a10a3b0_73e08be3",
+      "revId": "75ce20d8737fb51570ec45b547c18f1f905bfb3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6e6e3a6_e81e308a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-02-02T22:19:54Z",
+      "side": 1,
+      "message": "t",
+      "revId": "75ce20d8737fb51570ec45b547c18f1f905bfb3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
