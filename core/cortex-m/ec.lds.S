@@ -389,6 +389,17 @@ SECTIONS
 	#define INIT_ROM_LMA	ORIGIN(ROM_RESIDENT_VMA)
 #endif
 
+	.vtable : {
+		/*
+		 * Vector table must be at the base of SRAM. The vector
+		 * table section contains a RAM copy of the vector table used on
+		 * STM chips for relocating the vector table.
+		 */
+		. = ALIGN(8);
+		*(.bss.vector_table)
+		. = ALIGN(8);
+	} > IRAM
+
 #ifdef CONFIG_PRESERVE_LOGS
 	.preserve_logs(NOLOAD) : {
 		. = ALIGN(8);
