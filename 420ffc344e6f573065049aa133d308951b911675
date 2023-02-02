@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3918a957_c6b6f0d4",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-02T00:08:44Z",
+      "side": 1,
+      "message": "If the ACOK bit of this register actually only reflects the comparator output, what\u0027s the difference between the COMPARATOR and ACOK bits? I\u0027m not convinced this solution makes sense.\n\nIf this bit is always set when sourcing then we should always use the other path to check if it\u0027s sourcing regardless of configuration (not use the ACOK bit at all), but if it\u0027s affected by the comparator invert setting somehow then we should directly check whether the comparator is inverted rather than duplicating the check against state machine mode.",
+      "revId": "420ffc344e6f573065049aa133d308951b911675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
