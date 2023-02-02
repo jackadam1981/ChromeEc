@@ -22,6 +22,30 @@
       },
       "revId": "8c6fc659cfc35e7227c6839ddbe5615e412f199a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb265d5_ca368577",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-02T21:45:28Z",
+      "side": 1,
+      "message": "That is true.  I am not sure if there is a point in the order of the help options.  Keeping them the same as before, and the same as branches in the source code seemed the most attractive to me.",
+      "parentUuid": "f1b1bdef_ded5a7d5",
+      "range": {
+        "startLine": 652,
+        "startChar": 7,
+        "endLine": 652,
+        "endChar": 10
+      },
+      "revId": "8c6fc659cfc35e7227c6839ddbe5615e412f199a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
