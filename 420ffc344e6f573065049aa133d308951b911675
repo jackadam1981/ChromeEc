@@ -34,6 +34,24 @@
       "parentUuid": "3918a957_c6b6f0d4",
       "revId": "420ffc344e6f573065049aa133d308951b911675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c80fb97_f799e134",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-02T04:42:59Z",
+      "side": 1,
+      "message": "I looks like COMPARATOR follows the pin\u0027s output value, so we should simply always use that bit instead of ACOK (since the INFO2 values in the log show it falling from 1 to 0 when the comparator output is inverted).\n\n```\n*acok \u003d regval \u0026 RAA489000_INFO2_COMPARATOR;\n\nreturn EC_SUCCESS;\n```\n\nI imagine this also means we want to remove the option for AC_PRESENT_CONTROL entirely because this function would work incorrectly in all cases if it\u0027s disabled, but we can investigate that separately.",
+      "parentUuid": "a6fc6d7a_856d2016",
+      "revId": "420ffc344e6f573065049aa133d308951b911675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
