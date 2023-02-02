@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7efe9c9_8bcddcb5",
+        "filename": "board/nocturne_fp/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-02T00:51:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa15326a_c969d0cd",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 23
+      },
+      "revId": "f68c88bb1ceb7a61b5322855800bef84d0c1350c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5165c5ca_d7b9b9d5",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I believe the fpsensor/fpsensor_state.o is not included in the build file and this is causing this issue",
       "parentUuid": "5165c5ca_d7b9b9d5",
+      "range": {
+        "startLine": 27,
+        "startChar": 56,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "f68c88bb1ceb7a61b5322855800bef84d0c1350c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c1dcb0b_d926444e",
+        "filename": "test/tpm_seed_clear.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-02T00:51:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23b519a1_b23b1207",
       "range": {
         "startLine": 27,
         "startChar": 56,
