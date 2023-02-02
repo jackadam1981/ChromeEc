@@ -647,8 +647,9 @@ static int command_clock(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(clock, command_clock,
 			"hsi | msi"
 #ifdef STM32_HSE_CLOCK
-			" | hse | pll"
+			" | hse"
 #endif
+			" | pll"
 			,
 			"Set clock frequency");
 
