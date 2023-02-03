@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69af0355_c1e7532d",
+        "filename": "board/dibbi/gpio.inc",
+        "patchSetId": 17
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-02-03T04:51:43Z",
+      "side": 1,
+      "message": "It looks like B1 is SOUT0 so shouldn\u0027t need to be configured as INT.",
+      "revId": "802cdb5d48d25cdf29d0eeab849ec035df57cc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58ab8c95_fa036ac8",
+        "filename": "board/dibbi/usb_pd_policy.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-02-03T04:51:43Z",
+      "side": 1,
+      "message": "`TODO(b/...)`",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 8
+      },
+      "revId": "802cdb5d48d25cdf29d0eeab849ec035df57cc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99685189_3ca8e0f1",
         "filename": "board/dibbi/usb_pd_policy.c",
         "patchSetId": 17
