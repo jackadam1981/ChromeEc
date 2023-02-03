@@ -22,6 +22,30 @@
       },
       "revId": "b637c7380226a9e4bd1bcaff539b791858e75950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a7b91ad_65150075",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-02-03T19:36:54Z",
+      "side": 1,
+      "message": "Yes, I remember we talked about that. Then I looked at the other `fpsensor_*.` files and noticed that none of them were included directly in `fpsensor.h` so I tried to be consistent.\n\nIt\u0027s very easy to change so let me know if you have a preference 👍",
+      "parentUuid": "772aecc4_a15c0038",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "b637c7380226a9e4bd1bcaff539b791858e75950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
