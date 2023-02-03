@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6f21b4_af007263",
+        "filename": "core/cortex-m/irq_handler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-03T18:36:14Z",
+      "side": 1,
+      "message": "I think indentation is preferred here (like previously done). This looks like three lines at a quick glance.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "a52100ea532cfdfd7bef76cfbf34e446583a6b62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
