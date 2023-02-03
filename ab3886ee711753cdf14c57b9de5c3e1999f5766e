@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d43d23_f8fd440a",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-03T04:43:45Z",
+      "side": 1,
+      "message": "Add \"Must be held when accessing sm_data.\" because that seems to be what it guards and I\u0027d like it to be very clear which data this protects.",
+      "revId": "ab3886ee711753cdf14c57b9de5c3e1999f5766e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
