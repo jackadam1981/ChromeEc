@@ -34,6 +34,24 @@
       "parentUuid": "7e9e39e0_e16d2342",
       "revId": "01fcdeb3c168914e31f641da2d7be2715f72a70d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e45e5bfe_ab0ee3a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-02-03T18:55:32Z",
+      "side": 1,
+      "message": "The status quo was that this would only land upstream (at least what we discussed in our meeting).\n\nIt\u0027s unexpected to see this landing in our tree.",
+      "parentUuid": "bbbb8603_e2385266",
+      "revId": "01fcdeb3c168914e31f641da2d7be2715f72a70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
