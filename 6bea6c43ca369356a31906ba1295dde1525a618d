@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f5fcc18_25810972",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T22:16:34Z",
+      "side": 1,
+      "message": "This is getting pretty close.  Thanks for your diligence in getting this support added.\n\nYou\u0027ll want to get some help verifying these changes on various boards.",
+      "revId": "6bea6c43ca369356a31906ba1295dde1525a618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4695e90_5784df31",
+        "filename": "zephyr/program/nissa/craask/src/usbc.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T22:16:34Z",
+      "side": 1,
+      "message": "Nit - just call `usb_charger_task_set_event(port, USB_CHG_EVENT_BC12);` directly.",
+      "range": {
+        "startLine": 211,
+        "startChar": 2,
+        "endLine": 211,
+        "endChar": 24
+      },
+      "revId": "6bea6c43ca369356a31906ba1295dde1525a618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "483acd3e_deeb3d8b",
+        "filename": "zephyr/program/nissa/craask/src/usbc.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T22:16:34Z",
+      "side": 1,
+      "message": "`usb_charger_task_set_event(port, USB_CHG_EVENT_BC12)`",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 30
+      },
+      "revId": "6bea6c43ca369356a31906ba1295dde1525a618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbbb2649_05f4c0a5",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T22:16:34Z",
+      "side": 1,
+      "message": "Add a comment here:\n\n```\n/* TODO(b/267537103): Once named-gpios support is dropped, evaluate \n * whether this code should call gpio_pin_configure_dt()\n */\n```",
+      "revId": "6bea6c43ca369356a31906ba1295dde1525a618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6c84154_c00eb9c2",
+        "filename": "zephyr/program/nissa/craask/overlay.dtsi",
+        "patchSetId": 39
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T22:16:34Z",
+      "side": 1,
+      "message": "Understood but `GPIO_PULL_UP` is stored in `gpio_dt_spec-\u003edt_flags` and available as the an official flag supported by the Zephyr bindings file.\n\nhttp://cs/chromeos_public/src/third_party/zephyr/main/include/zephyr/dt-bindings/gpio/gpio.h?rcl\u003dd485a659f63dc669aaf1d843065093efd1a2743d\u0026l\u003d72",
+      "parentUuid": "88fba505_bcc72044",
+      "range": {
+        "startLine": 355,
+        "startChar": 24,
+        "endLine": 355,
+        "endChar": 39
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d9719d6_164b3533",
         "filename": "zephyr/program/nissa/craask/overlay.dtsi",
         "patchSetId": 39
@@ -649,6 +673,30 @@
       "side": 1,
       "message": "The emulator has been updated to use `irq-gpios` in all situations, but testing the tcpc interrupt still requires the `tcpc_config` to use `int-pin` when the legacy interrupt is being used.\n\nI temporarily considered changing the emulator to use `int-pin` when `CONFIG_PLATFORM_EC_TCPC_INTERRUPT\u003dn`, but thought better of it since that would make the macros way too complicated just for a insignificant sense of consistency. So now when testing `CONFIG_PLATFORM_EC_TCPC_INTERRUPT\u003dn`, the `tcpc_port` has both `irq-gpios` and `int-pin` properties. The emulator is initialized from the `irq-gpios` and the `tcpc_config` and interrupt is initialized from `int-pin`.",
       "parentUuid": "01dc6e6f_94da7612",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dca56bd_e8262642",
+        "filename": "zephyr/shim/include/usbc/tcpc_generic_emul.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T22:16:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00baa45f_f64bb4d0",
       "range": {
         "startLine": 22,
         "startChar": 3,

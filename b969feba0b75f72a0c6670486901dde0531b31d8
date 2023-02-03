@@ -281,6 +281,30 @@
       },
       "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba0a84b_4138fa1c",
+        "filename": "zephyr/program/nissa/xivur/src/usbc.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T22:16:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "017ba7d4_08305cb9",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 1
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
