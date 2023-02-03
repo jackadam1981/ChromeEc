@@ -258,6 +258,29 @@
       },
       "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "017ba7d4_08305cb9",
+        "filename": "zephyr/program/nissa/xivur/src/usbc.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-03T21:53:54Z",
+      "side": 1,
+      "message": "Because BC 1.2 is disabled on this board. Now that TCPC is also running on the common driver, this whole section is unnecessary.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 1
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
