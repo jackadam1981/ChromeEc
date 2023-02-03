@@ -88,6 +88,24 @@
       "parentUuid": "35196d99_4b90f7e8",
       "revId": "01fcdeb3c168914e31f641da2d7be2715f72a70d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c8cf8f_be40b835",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-02-03T19:05:25Z",
+      "side": 1,
+      "message": "@aaronmassey@google.com has notes I think.\n\nAt a minimum, go/zephyr-west-fw-integration needs updated with what the actual plan is here.  This CL has no context in the commit message, no bug, and no links to anything about it.  We need to have a place to resolve the discussion about what to do with this...",
+      "parentUuid": "35196d99_4b90f7e8",
+      "revId": "01fcdeb3c168914e31f641da2d7be2715f72a70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
