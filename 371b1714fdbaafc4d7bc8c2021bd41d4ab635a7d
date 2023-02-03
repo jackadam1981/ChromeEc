@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a105fb_7f4d349d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-03T21:12:38Z",
+      "side": 1,
+      "message": "CQ rejected the previous version with this message:\n`ERROR:root:/mnt/host/source/src/platform/ec/core/cortex-m/irq_handler.h:26:45: warning: code should be clang-formatted [-Wclang-format-violations]`\n\nI have run clang-format, while arranging the declarations such that there is still some useful indentation.",
+      "revId": "371b1714fdbaafc4d7bc8c2021bd41d4ab635a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
