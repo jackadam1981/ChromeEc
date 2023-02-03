@@ -10,6 +10,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "gpio.h"
+#include "gpio_chip.h"
 #include "hooks.h"
 #include "registers.h"
 #include "shared_mem.h"
@@ -209,11 +210,50 @@ void gpio_edge(enum gpio_signal signal)
 	buffer_header->head_time = now;
 }
 
+#define GPIO_IRQ_HIGHEST_PRIORITY(no) \
+  const struct irq_priority __keep IRQ_PRIORITY(STM32_IRQ_EXTI ## no)			\
+		__attribute__((section(".rodata.irqprio"))) = { STM32_IRQ_EXTI ## no, \
+								0 }
+
+GPIO_IRQ_HIGHEST_PRIORITY(0);
+GPIO_IRQ_HIGHEST_PRIORITY(1);
+GPIO_IRQ_HIGHEST_PRIORITY(2);
+GPIO_IRQ_HIGHEST_PRIORITY(3);
+GPIO_IRQ_HIGHEST_PRIORITY(4);
+GPIO_IRQ_HIGHEST_PRIORITY(5);
+GPIO_IRQ_HIGHEST_PRIORITY(6);
+GPIO_IRQ_HIGHEST_PRIORITY(7);
+GPIO_IRQ_HIGHEST_PRIORITY(8);
+GPIO_IRQ_HIGHEST_PRIORITY(9);
+GPIO_IRQ_HIGHEST_PRIORITY(10);
+GPIO_IRQ_HIGHEST_PRIORITY(11);
+GPIO_IRQ_HIGHEST_PRIORITY(12);
+GPIO_IRQ_HIGHEST_PRIORITY(13);
+GPIO_IRQ_HIGHEST_PRIORITY(14);
+GPIO_IRQ_HIGHEST_PRIORITY(15);
+
+__attribute((section(".bss.vector_table")))
+void (*sram_vtable[125])(void);
+extern void (*vectors[125])(void);
+
+#define CORTEX_VTABLE REG32(0xE000ED08)
+
 static void board_gpio_init(void)
 {
 	/* Mark every slot as unused. */
 	for (int i = 0; i < ARRAY_SIZE(monitoring_slots); i++)
 		monitoring_slots[i].gpio_signal = GPIO_COUNT;
+
+	memcpy(sram_vtable, vectors, sizeof(sram_vtable));
+	for (int i = 0; i < 16; i++) {
+		/*
+		 * Update interrupt vector to point directly at
+		 * gpio_interrupt(), without the scheduling wrapper of
+		 * DECLARE_IRQ().
+		 */
+		sram_vtable[16 + STM32_IRQ_EXTI0 + i] = gpio_interrupt;
+	}
+	CORTEX_VTABLE = (uint32_t)(sram_vtable);
 }
 DECLARE_HOOK(HOOK_INIT, board_gpio_init, HOOK_PRIO_DEFAULT);
 
