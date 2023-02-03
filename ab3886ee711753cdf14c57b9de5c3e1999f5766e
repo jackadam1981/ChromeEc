@@ -16,6 +16,24 @@
       "message": "Are all of the items in this file actually part of the public API? It\u0027s hard to tell because some of them look like private APIs (especially the ones that document a requirement about only being used on the power sequencing thread) and many of them take a pointer that will normally be hidden inside the driver\u0027s `data` field.\n\nIf they\u0027re not intended to be used by user code they should be declared in a header next to the source (instead of in the public include directory). If they are actually public APIs, the documentation for those functions could be clarified by noting that user code on the thread runs only in callbacks.\n\n(I haven\u0027t scanned through all the other CLs in this chain, but this comment probably applies to others as well.)",
       "revId": "ab3886ee711753cdf14c57b9de5c3e1999f5766e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4758786_fe0aaa5e",
+        "filename": "zephyr/include/ap_power/ap_pwrseq_sm.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-03T23:52:01Z",
+      "side": 0,
+      "message": "Sounds good, some of these functions are meant to be used for action handlers implementation while others are only used by the driver. I have added file `zephyr/subsys/ap_pwrseq/ap_pwrseq_drv_sm.h` that only contains those used for driver, and it is located outside of public include folders.",
+      "parentUuid": "17f7fd96_8a5e4b19",
+      "revId": "ab3886ee711753cdf14c57b9de5c3e1999f5766e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
