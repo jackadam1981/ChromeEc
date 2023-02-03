@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec4d23c2_398d203b",
+        "filename": "zephyr/program/skyrim/program.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-03T16:18:02Z",
+      "side": 1,
+      "message": "This should be fine to add, though it looks like your base is on the older side since we\u0027re removed the TCPC dump command and help strings recently-ish",
+      "revId": "2973603f74c7817c1066fad49b50b5370c4be3ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
