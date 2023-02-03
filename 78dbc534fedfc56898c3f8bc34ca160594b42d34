@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e44cca85_4d887261",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-03T23:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3e03607_efacb260",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 11
+      },
+      "revId": "78dbc534fedfc56898c3f8bc34ca160594b42d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4639664b_ea0bafb5",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-02-03T04:56:54Z",
       "side": 1,
       "message": "Use `ap_pwrseq_state_lock()` for consistency (so it\u0027s easier to find every code path that uses this lock).\n\nSame goes for the other code in this file that acquires the lock, such as `ap_pwrseq_start` and `ap_pwrseq_get_current_state`.",
+      "revId": "78dbc534fedfc56898c3f8bc34ca160594b42d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfca9b7b_7ec0a579",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-03T23:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4639664b_ea0bafb5",
       "revId": "78dbc534fedfc56898c3f8bc34ca160594b42d34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
