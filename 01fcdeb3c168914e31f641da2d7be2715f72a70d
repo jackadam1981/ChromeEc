@@ -16,6 +16,24 @@
       "message": "Whoa no design doc or bug for this?\n\nHow will it integrate with firmware SDK?  Lots of open questions need answered here about what this is, what it does, and why we need it.",
       "revId": "01fcdeb3c168914e31f641da2d7be2715f72a70d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbbb8603_e2385266",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-02-03T18:53:11Z",
+      "side": 1,
+      "message": "This is just a workflow option for developers, no different than having `.vscode` in our platform/ec directory. There\u0027s no plan to do anything with firmware SDK here or in CI.",
+      "parentUuid": "7e9e39e0_e16d2342",
+      "revId": "01fcdeb3c168914e31f641da2d7be2715f72a70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
