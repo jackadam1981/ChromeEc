@@ -16,3 +16,11 @@
 #include "../shi.dtsi"
 #include "battery.dtsi"
 #include "led.dtsi"
+
+/ {
+	batteries {
+		default_battery: dynapack_c140254 {
+			compatible = "smp,l21m4pg0", "battery-smart";
+		};
+	};
+};
