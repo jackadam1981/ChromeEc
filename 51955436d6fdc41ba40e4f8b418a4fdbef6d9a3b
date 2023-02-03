@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "931a6f8d_ecf7b19b",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T16:46:41Z",
+      "side": 1,
+      "message": "Thinking about this more, this [PR](https://github.com/zephyrproject-rtos/zephyr/pull/52273) adds support for enabling/disabling GPIO interrupts without modifying any other configuration.\n\nThat would work well here.  The interrupt trigger type should already be setup by the regular driver.  This code simply needs to enable the interrupt using `gpio_pin_interrupt_configure_dt(\u0026spec_##idx, GPIO_INT_MODE_ENABLE_ONLY);`\n\nThis avoids having to specify interrupt triggering type as part of the `hibernate-wake-pins` node.  Of course, that PR is work in progress and the Zephyr merge window is currently closed.",
+      "parentUuid": "2a6fc219_e6884ef1",
+      "range": {
+        "startLine": 226,
+        "startChar": 6,
+        "endLine": 226,
+        "endChar": 27
+      },
+      "revId": "51955436d6fdc41ba40e4f8b418a4fdbef6d9a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06a5aca9_8c77027f",
         "filename": "zephyr/shim/src/tcpc.c",
         "patchSetId": 9
