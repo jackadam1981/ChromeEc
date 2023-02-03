@@ -40,8 +40,10 @@ TEST_PATTERNS='$(PLATFORM_EC)/test/**' \
 	'$(THIRD_PARTY)/zephyr/main/subsys/emul/**' \
 	'$(THIRD_PARTY)/zephyr/main/arch/posix/**' \
 	'**/*_test.c' \
+	'**/*_test.cc' \
 	'**/*_test.h' \
 	'**/*_emul.c' \
+	'**/*_emul.cc' \
 	'**/*_emul.h' \
 	'$(PLATFORM_EC)/include/test_util.h' \
 	'$(PLATFORM_EC)/common/test_util.c' \
