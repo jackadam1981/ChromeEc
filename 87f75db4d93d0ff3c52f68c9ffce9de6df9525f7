@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9aad4e_dd38e3f7",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-03T05:32:08Z",
+      "side": 1,
+      "message": "I can\u0027t find a new implementation of this function, but it looks like it needs to be careful to use `ap_pwrseq_state_lock()` everywhere the current state is inspected.",
+      "revId": "87f75db4d93d0ff3c52f68c9ffce9de6df9525f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
