@@ -16,6 +16,24 @@
       "message": "Can we avoid duplicating this for every board by putting it in a program-wide source file instead? It should only be used for OCPC devices, but that\u0027s easy to guard with `CONFIG_OCPC`.",
       "revId": "02046bdc88a8a33edd365eaa119e882885945014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ce2ddf_3eb83f8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2023-02-03T12:10:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f9ef811f_7ee58a33",
+      "revId": "02046bdc88a8a33edd365eaa119e882885945014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
