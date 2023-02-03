@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb1e048_6c83e53a",
+        "filename": "baseboard/intelrvp/chg_usb_pd_mecc_1_0.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-03T03:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "864bceed_2ca3b261",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 46
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee48b7a6_b0b0d226",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7402fe_8d6f5bdf",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 38
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-03T03:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee48b7a6_b0b0d226",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e63875a_ef396ac5",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-02-01T23:20:05Z",
       "side": 1,
       "message": "Nit - name this `irq_gpio` for consistency with the devicetree property name.",
+      "range": {
+        "startLine": 83,
+        "startChar": 21,
+        "endLine": 83,
+        "endChar": 33
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f000c7c_013d03a4",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-03T03:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e63875a_ef396ac5",
       "range": {
         "startLine": 83,
         "startChar": 21,
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd2fc93f_79791ace",
+        "filename": "zephyr/program/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-03T03:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f173e4_e4c7b51a",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 46
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f717668d_400d4432",
@@ -130,6 +226,30 @@
       "writtenOn": "2023-02-01T23:20:05Z",
       "side": 1,
       "message": "Crassk now has ~4500 bytes free. Can craask use the common driver now?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 35
+      },
+      "revId": "b969feba0b75f72a0c6670486901dde0531b31d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de671ae_0f986726",
+        "filename": "zephyr/program/nissa/craask/project.conf",
+        "patchSetId": 38
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-03T03:55:27Z",
+      "side": 1,
+      "message": "Craask is now using the common driver.",
+      "parentUuid": "f717668d_400d4432",
       "range": {
         "startLine": 31,
         "startChar": 0,
