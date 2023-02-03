@@ -10,6 +10,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "gpio.h"
+#include "gpio_chip.h"
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
@@ -183,6 +184,12 @@ static __attribute__((noinline)) void overflow(struct monitoring_slot_t *slot)
 	atomic_add(&num_cur_error_conditions, 1);
 }
 
+/*
+ * This interrupt routine is called without the usual wrapper for handling task
+ * re-scheduling upon entry and exit.  This gives lower latency, which is
+ * critical when recording a sequence of GPIO edges from software as is done
+ * here.  Task-related functions MUST NEVER be called from within this handler.
+ */
 void gpio_edge(enum gpio_signal signal)
 {
 	/*
@@ -293,6 +300,36 @@ void user_button_edge(enum gpio_signal signal)
 		gpio_set_level(shield_reset_pin, !pressed); /* Active low */
 }
 
+#define GPIO_IRQ_HIGHEST_PRIORITY(no)					\
+	const struct irq_priority __keep IRQ_PRIORITY(STM32_IRQ_EXTI##no) \
+		__attribute__((section(                                   \
+			".rodata.irqprio"))) = { STM32_IRQ_EXTI##no, 0 }
+
+GPIO_IRQ_HIGHEST_PRIORITY(0);
+GPIO_IRQ_HIGHEST_PRIORITY(1);
+GPIO_IRQ_HIGHEST_PRIORITY(2);
+GPIO_IRQ_HIGHEST_PRIORITY(3);
+GPIO_IRQ_HIGHEST_PRIORITY(4);
+GPIO_IRQ_HIGHEST_PRIORITY(5);
+GPIO_IRQ_HIGHEST_PRIORITY(6);
+GPIO_IRQ_HIGHEST_PRIORITY(7);
+GPIO_IRQ_HIGHEST_PRIORITY(8);
+GPIO_IRQ_HIGHEST_PRIORITY(9);
+GPIO_IRQ_HIGHEST_PRIORITY(10);
+GPIO_IRQ_HIGHEST_PRIORITY(11);
+GPIO_IRQ_HIGHEST_PRIORITY(12);
+GPIO_IRQ_HIGHEST_PRIORITY(13);
+GPIO_IRQ_HIGHEST_PRIORITY(14);
+GPIO_IRQ_HIGHEST_PRIORITY(15);
+
+/* Usual vector table in flash memory. */
+extern void (*vectors[125])(void);
+
+/* Our copy of the vector table in a specially aligned SRAM section. */
+__attribute((section(".bss.vector_table"))) void (*sram_vectors[125])(void);
+
+#define CORTEX_VTABLE REG32(0xE000ED08)
+
 static void board_gpio_init(void)
 {
 	/* Mark every slot as unused. */
@@ -300,8 +337,22 @@ static void board_gpio_init(void)
 		monitoring_slots[i].gpio_signal = GPIO_COUNT;
 
 	/* Enable handling of the blue user button of Nucleo-L552ZE-Q. */
-	gpio_clear_pending_interrupt(GPIO_NUCLEO_USER_BTN);
 	gpio_enable_interrupt(GPIO_NUCLEO_USER_BTN);
+	STM32_EXTI_SWIER = BIT(GPIO_MASK_TO_NUM((gpio_list + GPIO_NUCLEO_USER_BTN)->mask));
+
+	/* Copy vector table from flash to SRAM. */
+	memcpy(sram_vectors, vectors, sizeof(sram_vectors));
+	for (int i = 0; i < 16; i++) {
+		/*
+		 * Update GPIO edge interrupt vector to point directly at
+		 * gpio_interrupt(), thereby bypassing the scheduling wrapper of
+		 * DECLARE_IRQ().
+		 *
+		 * This is safe because these interrupts do not cause any task
+		 * to become runnable.
+		 */
+		sram_vectors[16 + STM32_IRQ_EXTI0 + i] = gpio_interrupt;
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_gpio_init, HOOK_PRIO_DEFAULT);
 
@@ -331,10 +382,13 @@ static void stop_all_gpio_monitoring(void)
 		free_cyclic_buffer(buffer_header);
 	}
 
-	/* Ensure handling of the blue user button of Nucleo-L552ZE-Q is
-	 * enabled. */
-	gpio_clear_pending_interrupt(GPIO_NUCLEO_USER_BTN);
+	/*
+	 * Ensure handling of the blue user button of Nucleo-L552ZE-Q is
+	 * enabled.
+	 */
+	CORTEX_VTABLE = (uint32_t)(vectors);
 	gpio_enable_interrupt(GPIO_NUCLEO_USER_BTN);
+	STM32_EXTI_SWIER = BIT(GPIO_MASK_TO_NUM((gpio_list + GPIO_NUCLEO_USER_BTN)->mask));
 }
 
 /*
@@ -657,11 +711,12 @@ static int command_gpio_monitoring_start(int argc, const char **argv)
 		goto out_cleanup;
 	}
 
-	/* Disable handling of the blue user button while monitoring is ongoing.
+	/*
+	 * Disable handling of the blue user button while monitoring is ongoing.
 	 */
 	if (!num_cur_monitoring) {
 		gpio_disable_interrupt(GPIO_NUCLEO_USER_BTN);
-		gpio_clear_pending_interrupt(GPIO_NUCLEO_USER_BTN);
+		CORTEX_VTABLE = (uint32_t)(sram_vectors);
 	}
 
 	buf->head = buf->tail = 0;
@@ -831,7 +886,8 @@ static int command_gpio_monitoring_read(int argc, const char **argv)
 	signal_bits = buf->signal_bits;
 	tail = buf->tail;
 	tail_time = buf->tail_time;
-	while (tail != head) {
+	i = 16;
+	while (tail != head && i-- > 0) {
 		uint8_t *buffer = buf->data;
 		timestamp_t diff;
 		uint8_t byte;
@@ -871,6 +927,9 @@ static int command_gpio_monitoring_read(int argc, const char **argv)
 	}
 	buf->tail = tail;
 	buf->tail_time = tail_time;
+	if (tail != head) {
+		ccprintf("Warning: more data\n");
+	}
 	if (buf->overflow) {
 		ccprintf("Error: Buffer overflow\n");
 	}
@@ -933,11 +992,13 @@ static int command_gpio_monitoring_stop(int argc, const char **argv)
 	if (buf->overflow)
 		atomic_sub(&num_cur_error_conditions, 1);
 
-	/* Re-enable handling of the blue user button once monitoring is done.
+	/*
+	 * Re-enable handling of the blue user button once monitoring is done.
 	 */
 	if (!num_cur_monitoring) {
-		gpio_clear_pending_interrupt(GPIO_NUCLEO_USER_BTN);
+		CORTEX_VTABLE = (uint32_t)(vectors);
 		gpio_enable_interrupt(GPIO_NUCLEO_USER_BTN);
+		STM32_EXTI_SWIER = BIT(GPIO_MASK_TO_NUM((gpio_list + GPIO_NUCLEO_USER_BTN)->mask));
 	}
 
 	free_cyclic_buffer(buf);
