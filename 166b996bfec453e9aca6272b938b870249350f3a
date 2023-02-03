@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea2d55cf_a66816c8",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-03T17:00:06Z",
+      "side": 1,
+      "message": "There\u0027s also a fancy STATIC_IF you can use with a CONFIG to avoid the ifdef\u0027ing but still compile out for boards which don\u0027t support your feature",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "166b996bfec453e9aca6272b938b870249350f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ada13ec_66453c1d",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-03T17:00:06Z",
+      "side": 1,
+      "message": "You may be able to use __maybe_unused and similar to compile this out without ifdef\u0027s.  When in doubt, I believe you can double check your ECOS smap files for dewatt and simliar to see if the functions were linked out",
+      "revId": "166b996bfec453e9aca6272b938b870249350f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c3ed82_5d0d2335",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-03T17:00:06Z",
+      "side": 1,
+      "message": "nit: Is the deferred call necessary?  As long as you\u0027re not doing something that takes a lot of stack space or time then you can run it from the interrupt",
+      "revId": "166b996bfec453e9aca6272b938b870249350f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
