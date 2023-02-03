@@ -106,6 +106,24 @@
       "parentUuid": "35196d99_4b90f7e8",
       "revId": "01fcdeb3c168914e31f641da2d7be2715f72a70d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7b9753_b7a56a40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-02-03T21:33:30Z",
+      "side": 1,
+      "message": "My incredibly rough notes + my memory:\n\nSpecifically that Simon had the idea that these scripts get upstreamed to ease development against Zephyr. We then all generally thought that this was the direction this was the direction the west integration scripts were heading.\n\nThat seemed like the decision/resolution here.\n\nAssuming that\u0027s still the case, for prototyping purposes before upstreaming they probably ought to live in our downstream Zephyr repo.",
+      "parentUuid": "b8c8cf8f_be40b835",
+      "revId": "01fcdeb3c168914e31f641da2d7be2715f72a70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
