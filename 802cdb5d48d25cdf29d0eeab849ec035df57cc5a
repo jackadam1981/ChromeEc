@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "655ce019_3565ceed",
+        "filename": "board/dibbi/gpio.inc",
+        "patchSetId": 17
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2023-02-03T12:22:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "69af0355_c1e7532d",
+      "revId": "802cdb5d48d25cdf29d0eeab849ec035df57cc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58ab8c95_fa036ac8",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-02-03T04:51:43Z",
       "side": 1,
       "message": "`TODO(b/...)`",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 8
+      },
+      "revId": "802cdb5d48d25cdf29d0eeab849ec035df57cc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1db16d9d_d35af6a2",
+        "filename": "board/dibbi/usb_pd_policy.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2023-02-03T12:22:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "58ab8c95_fa036ac8",
       "range": {
         "startLine": 43,
         "startChar": 4,
