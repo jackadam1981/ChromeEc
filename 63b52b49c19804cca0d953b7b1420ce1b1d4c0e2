@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e314e0fb_d575e16b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-03T00:17:16Z",
+      "side": 1,
+      "message": "# Running ./util/build_with_clang.py.\nDEBUG:root:Removing build directory\nDEBUG:root:Running command: \"make print-boards\"\nThe following boards are missing and must be added to BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG or BOARDS_THAT_FAIL_WITH_CLANG:\nconstitution\n16:09:18.076: INFO: Endpoint execution completed, return code: 3\n\nugh... looks like we added checks that aren\u0027t addressed with\ncreate_initial_ec_image.sh.",
+      "revId": "63b52b49c19804cca0d953b7b1420ce1b1d4c0e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
