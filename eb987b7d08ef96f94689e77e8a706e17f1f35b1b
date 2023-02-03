@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "403757ff_3ba743f0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-03T05:40:11Z",
+      "side": 1,
+      "message": "Instead of enumerating every state that might be higher than S5, could we make a guarantee about enum order and simply test `exit \u003e\u003d AP_POWER_STATE_S5`?\n\nThat would require a clear guarantee on the definition of `ap_pwrseq_state` that larger values correspond to higher-power states, but would make this less error-prone because it wouldn\u0027t need to be updated alongside the list of states.",
+      "revId": "eb987b7d08ef96f94689e77e8a706e17f1f35b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
