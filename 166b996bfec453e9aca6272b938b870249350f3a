@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1ee8300_298be6fb",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-03T18:13:15Z",
+      "side": 1,
+      "message": "Thanks for the tips, the implementation of `STATIC_IF` is a cool trick. Unfortunately this code uses Zephyr-specific functions and won\u0027t compile for legacy platforms without preprocessor guards.",
+      "parentUuid": "ea2d55cf_a66816c8",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "166b996bfec453e9aca6272b938b870249350f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ada13ec_66453c1d",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a9f4284_8ab86d61",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-03T18:13:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ada13ec_66453c1d",
+      "revId": "166b996bfec453e9aca6272b938b870249350f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75c3ed82_5d0d2335",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-02-03T17:00:06Z",
       "side": 1,
       "message": "nit: Is the deferred call necessary?  As long as you\u0027re not doing something that takes a lot of stack space or time then you can run it from the interrupt",
+      "revId": "166b996bfec453e9aca6272b938b870249350f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7df657d_8cd212d1",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-03T18:13:15Z",
+      "side": 1,
+      "message": "I prefer to do it this way since I\u0027ve noticed that printing in an interrupt handler can result in the output ending up in the middle of another\u0027s output.",
+      "parentUuid": "75c3ed82_5d0d2335",
       "revId": "166b996bfec453e9aca6272b938b870249350f3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
