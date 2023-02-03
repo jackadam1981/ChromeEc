@@ -16,6 +16,24 @@
       "message": "I think I\u0027m missing an aspect of this, but in the scenario where the AP controls VDMs, the EC is still responsible for actually setting the retimer, right? When the AP enters DP mode, how does the retimer get configured for DP?",
       "revId": "058f97448b787c405be7186f90ce4d148ea91b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2355d8c2_d2d3cdf8",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-03T18:02:49Z",
+      "side": 1,
+      "message": "The AP sends us a HC to tell us to configure the retimer.  \n\nWe also toyed with the idea of the AP setting the muxes for super speed on initial connection too, but technically that\u0027s supposed to be done within a super small window of Vbus setting.  If we did that, we could remove the virtual mux driver altogether which would make me quite happy. But I\u0027m not certain how well port partners would do with it.",
+      "parentUuid": "fd9f8899_ef64243b",
+      "revId": "058f97448b787c405be7186f90ce4d148ea91b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

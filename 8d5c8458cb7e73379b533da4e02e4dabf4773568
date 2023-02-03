@@ -251,6 +251,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f9cfd28_2ec86dff",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-03T18:02:49Z",
+      "side": 1,
+      "message": "I used that approach here, if you want to take a look and see what you think: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4218924/1\n\nI need to obsolete the AMODE host commands from the zephyr tests before I can actually run this full CL stack through the CQ, but hopefully I can get that done today and get verification rolling",
+      "parentUuid": "ec1c1e9d_b3a315d7",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c7bb5d5_54101826",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 3
