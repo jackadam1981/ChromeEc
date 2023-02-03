@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72900da1_acb29812",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-02-03T18:19:03Z",
+      "side": 1,
+      "message": "body_detect_change_state() is already called on state changes only in steady state. The problem is also called unilaterally by body_detect_reset(), called when the sensor ODR changes. We should focus on this function instead.",
+      "revId": "5cd4164fe40659d728bd18504dee79284fbdbf32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab910a4f_766e2e11",
