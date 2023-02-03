@@ -52,6 +52,24 @@
       "parentUuid": "03559dad_229f4fe7",
       "revId": "cb4e52e96f078b8e26d2a43250cd282aa23d82a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e4f9679_77ab31e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-02-03T03:42:32Z",
+      "side": 1,
+      "message": "@logan_liao@compal.corp-partner.google.com,\nPlease run `util/check_clang_format.py --fix board/omnigul/` to fix the format.",
+      "parentUuid": "247245e6_05be887a",
+      "revId": "cb4e52e96f078b8e26d2a43250cd282aa23d82a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
