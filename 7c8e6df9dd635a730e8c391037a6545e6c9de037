@@ -1,0 +1,366 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd78789_00422609",
+        "filename": "zephyr/dts/bindings/usbc/tcpc/cypress,ccgxxf.yaml",
+        "patchSetId": 39
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Add a comment that this field is deprecated.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0d91ed_d4978258",
+        "filename": "zephyr/dts/bindings/usbc/tcpc/fairchild,fusb302.yaml",
+        "patchSetId": 39
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Comment this property as deprecated and reference CONFIG_PLATFORM_EC_TCPC_INTERRUPT.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d2647d_02ac0a72",
+        "filename": "zephyr/dts/bindings/usbc/tcpc/nuvoton,nct38xx.yaml",
+        "patchSetId": 39
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Comment as deprecated.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2cce6a_b7b0fcef",
+        "filename": "zephyr/program/nissa/craask/overlay.dtsi",
+        "patchSetId": 39
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Add `GPIO_PULL_UP`.",
+      "range": {
+        "startLine": 355,
+        "startChar": 24,
+        "endLine": 355,
+        "endChar": 39
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d9719d6_164b3533",
+        "filename": "zephyr/program/nissa/craask/overlay.dtsi",
+        "patchSetId": 39
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Add `GPIO_PULL_UP`",
+      "range": {
+        "startLine": 381,
+        "startChar": 24,
+        "endLine": 381,
+        "endChar": 39
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d87891e_ceee6cf5",
+        "filename": "zephyr/program/nissa/craask/src/usbc.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "You\u0027re going to need to keep the deferred checks for the BC1.2 interrupt to deal with race condition of both the TCPC and BC1.2 chips generating interrupts back to back.\n\nThe TCPC ISR already does polling to determine if the interrupt is still active using the `tcpc_get_alert_status()`.  So the deferred calls only need to run `usb_charger_task_set_event()`.",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 41
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d9b43b4_4a329e7e",
+        "filename": "zephyr/program/nissa/nivviks/overlay.dtsi",
+        "patchSetId": 39
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Add `GPIO_PULL_UP`",
+      "range": {
+        "startLine": 363,
+        "startChar": 24,
+        "endLine": 363,
+        "endChar": 39
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "672614ea_52b805b3",
+        "filename": "zephyr/program/nissa/nivviks/overlay.dtsi",
+        "patchSetId": 39
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Add `GPIO_PULL_UP`.",
+      "range": {
+        "startLine": 389,
+        "startChar": 24,
+        "endLine": 389,
+        "endChar": 39
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19465485_e0c42e60",
+        "filename": "zephyr/program/nissa/pujjo/overlay.dtsi",
+        "patchSetId": 39
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Add `GPIO_PULL_UP`",
+      "range": {
+        "startLine": 336,
+        "startChar": 24,
+        "endLine": 336,
+        "endChar": 39
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29923bd5_89a6a6b1",
+        "filename": "zephyr/program/nissa/xivu/overlay.dtsi",
+        "patchSetId": 39
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Add `GPIO_PULL_UP`",
+      "range": {
+        "startLine": 344,
+        "startChar": 24,
+        "endLine": 344,
+        "endChar": 39
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "484026dd_71629ecb",
+        "filename": "zephyr/program/nissa/xivu/overlay.dtsi",
+        "patchSetId": 39
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Add `GPIO_PULL_UP`",
+      "range": {
+        "startLine": 370,
+        "startChar": 24,
+        "endLine": 370,
+        "endChar": 39
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eacb2cff_a831251e",
+        "filename": "zephyr/program/nissa/xivur/project.conf",
+        "patchSetId": 39
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Why is this board skipped?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84db9439_a7bedc00",
+        "filename": "zephyr/program/nissa/yaviks/overlay.dtsi",
+        "patchSetId": 39
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Add `GPIO_PULL_UP`",
+      "range": {
+        "startLine": 322,
+        "startChar": 24,
+        "endLine": 322,
+        "endChar": 39
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01dc6e6f_94da7612",
+        "filename": "zephyr/shim/include/usbc/tcpc_generic_emul.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "I don\u0027t think this is needed.  The tests have been updated to use `irq-gpios`.",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd2c5b8_e843c84b",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 39
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to create a separate test binary.  You should be able to use `CONFIG_LINK_TEST_SUITE_USBC_CONSOLE_PD\u003dy` here.  Then you won\u0027t be duplicating the file usbc_console_pd.c",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 55
+      },
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf03299_25e0b76d",
+        "filename": "zephyr/test/drivers/usbc_console_pd_legacy/usbc.dts",
+        "patchSetId": 39
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-03T20:21:32Z",
+      "side": 1,
+      "message": "Put this file under test/drivers/usbc_console_pd instead.  You can also name the file usbc_legacy.dts for clarity.",
+      "revId": "7c8e6df9dd635a730e8c391037a6545e6c9de037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
