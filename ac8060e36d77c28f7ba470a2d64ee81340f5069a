@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f3e819_f57df910",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-03T16:37:13Z",
+      "side": 1,
+      "message": "It looks like you\u0027re hitting a build failure: \n```\nFAILED: CMakeFiles/app.dir/mnt/host/source/src/platform/ec/zephyr/program/skyrim/frostflow/src/usb_mux_config.c.obj \n...\n/mnt/host/source/src/platform/ec/zephyr/program/skyrim/frostflow/src/usb_mux_config.c:128:15: error: use of undeclared identifier \u0027I2C_PORT_TCPC1\u0027\n                .i2c_port \u003d I2C_PORT_TCPC1,\n                            ^\n/mnt/host/source/src/platform/ec/zephyr/program/skyrim/frostflow/src/usb_mux_config.c:132:14: error: invalid application of \u0027sizeof\u0027 to an incomplete type \u0027const struct usb_mux[]\u0027\nBUILD_ASSERT(ARRAY_SIZE(usba_ps8811) \u003d\u003d USBA_PORT_COUNT);\n~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/sys/util.h:119:38: note: expanded from macro \u0027ARRAY_SIZE\u0027\n        ((size_t) (IS_ARRAY(array) + (sizeof(array) / sizeof((array)[0]))))\n                                            ^\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/toolchain/gcc.h:78:51: note: expanded from macro \u0027BUILD_ASSERT\u0027\n#define BUILD_ASSERT(EXPR, MSG...) _Static_assert(EXPR, \"\" MSG)\n                                                  ^~~~\n2 errors generated.\nninja: build stopped: subcommand failed.\n```\n\nI\u0027m uncertain if it\u0027s in the general zephyr build or the skyrim zephyr unit tests, but you should be able to run locally and figure out which is hitting the problem.",
+      "revId": "ac8060e36d77c28f7ba470a2d64ee81340f5069a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
