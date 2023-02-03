@@ -22,6 +22,30 @@
       },
       "revId": "802cdb5d48d25cdf29d0eeab849ec035df57cc5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5522884_8d53832c",
+        "filename": "board/dibbi/usb_pd_policy.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1535039
+      },
+      "writtenOn": "2023-02-03T02:24:52Z",
+      "side": 1,
+      "message": "As discussed, I think leave this as a TODO for now and we will add the PPC config as a separate commit.",
+      "parentUuid": "99685189_3ca8e0f1",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "802cdb5d48d25cdf29d0eeab849ec035df57cc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
