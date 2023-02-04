@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41db7066_09677cf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-04T00:44:15Z",
+      "side": 1,
+      "message": "NOTE: I had to increase the power utilization range to get this working on bloonchipper v3. I\u0027m not sure if this is an indication that my HW is different, or that there is some variability, or something else entirely. I created a bug  (b/267804744) and added a TODO. It\u0027ll be interesting to see if others get similar results.",
+      "revId": "6e38a12b083a3dc409182b4f69c9d962bf24901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

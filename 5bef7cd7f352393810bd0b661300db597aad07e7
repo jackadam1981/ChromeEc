@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d2ca0cf_9a9463c3",
+        "filename": "board/hatch_fp/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-04T00:44:15Z",
+      "side": 1,
+      "message": "Correct. These tests cannot be run through `make`, they must be run from `run_device_tests.py`. We could make an artificial make target but we\u0027d have to make sure that we were inadvertently including (or excluding) any code that could alter the power utilization.",
+      "parentUuid": "b610b5d2_0444b1f1",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b74df83c_4c1d692d",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -144,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c177d19_374c07d0",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-04T00:44:15Z",
+      "side": 1,
+      "message": "I started down a path a while back of moving these into the per-board configurations but things got a bit messy. I created a bug (b/267800058) to update these as part of a broader restructuring and cleanup (b/267803007).",
+      "parentUuid": "791c9e16_347535a7",
+      "range": {
+        "startLine": 195,
+        "startChar": 39,
+        "endLine": 195,
+        "endChar": 61
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7069db47_05cf3843",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "Also a good idea, I\u0027ll do it asap",
       "parentUuid": "7069db47_05cf3843",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 14
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "270dd551_4ab109be",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-04T00:44:15Z",
+      "side": 1,
+      "message": "Same as the [other reply](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3738761/comment/5effe052_cdabb254/).",
+      "parentUuid": "f4b1039a_34435bc3",
       "range": {
         "startLine": 178,
         "startChar": 0,
@@ -236,6 +308,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69b0fa0_ca34c35c",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-04T00:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa966ad0_3cff2eae",
+      "range": {
+        "startLine": 388,
+        "startChar": 32,
+        "endLine": 388,
+        "endChar": 63
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08129a2a_03fed472",
@@ -283,6 +379,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0d8a57_a0539fa8",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-04T00:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a12798b8_473a6283",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 29
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88f750c3_68221ea6",
@@ -320,6 +440,30 @@
       "side": 1,
       "message": "Will do",
       "parentUuid": "88f750c3_68221ea6",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 73
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ba46ff_33e900eb",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-04T00:44:15Z",
+      "side": 1,
+      "message": "I ended up modifying the `ImageType` to include a `TEST_RO`, `TEST_RW`, and `PRODUCTION_RW` to differentiate the app types. It seemed simpler and didn\u0027t require introducing another flag. \n\nThoughts?",
+      "parentUuid": "bc76db62_59c402bf",
       "range": {
         "startLine": 628,
         "startChar": 0,
@@ -401,6 +545,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f90f64_901508cd",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-04T00:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34677bd5_2ef8bb0d",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 753,
+        "endChar": 28
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97c714bf_652e3d5c",
@@ -438,6 +606,30 @@
       "side": 1,
       "message": "👍",
       "parentUuid": "97c714bf_652e3d5c",
+      "range": {
+        "startLine": 785,
+        "startChar": 0,
+        "endLine": 790,
+        "endChar": 41
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f261714_56320349",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-04T00:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4e6f1fd_dc56307d",
       "range": {
         "startLine": 785,
         "startChar": 0,
@@ -495,6 +687,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf749e3_54c95944",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-04T00:44:15Z",
+      "side": 1,
+      "message": "Split into separate CLs",
+      "parentUuid": "b398adab_32fbd14f",
+      "range": {
+        "startLine": 833,
+        "startChar": 0,
+        "endLine": 842,
+        "endChar": 47
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8180a8d_c6aefada",
@@ -542,6 +758,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59cd7848_0c993597",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-04T00:44:15Z",
+      "side": 1,
+      "message": "Broken into separate commits",
+      "parentUuid": "56fc6793_504a4fbc",
+      "range": {
+        "startLine": 851,
+        "startChar": 12,
+        "endLine": 851,
+        "endChar": 31
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c94d80db_cec9b89a",
@@ -579,6 +819,30 @@
       "side": 1,
       "message": "👍",
       "parentUuid": "c94d80db_cec9b89a",
+      "range": {
+        "startLine": 874,
+        "startChar": 8,
+        "endLine": 874,
+        "endChar": 28
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ec12d7_3deaa714",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-04T00:44:15Z",
+      "side": 1,
+      "message": "Broken into other commits",
+      "parentUuid": "2dbea186_1059ac25",
       "range": {
         "startLine": 874,
         "startChar": 8,
