@@ -17,11 +17,20 @@ enum ec_cfg_audio_type { DB_AUDIO_UNKNOWN = 0, DB_NAU88L25B_I2S = 1 };
 
 enum ec_cfg_bj_power { BJ_150W = 0, BJ_230W = 1, BJ_65W = 2, BJ_135W = 3 };
 
+/*
+ * Wireless charge  (Bits 5)
+ */
+enum ec_cfg_wireless_charge {
+	WIRELESS_CHARGE_DISABLE = 0,
+	WIRELESS_CHARGE_ENABLE = 1
+};
+
 union brask_cbi_fw_config {
 	struct {
 		uint32_t audio : 3;
 		uint32_t bj_power : 2;
-		uint32_t reserved_1 : 27;
+		uint32_t wireless_charge : 1;
+		uint32_t reserved_1 : 26;
 	};
 	uint32_t raw_value;
 };
@@ -37,5 +46,10 @@ union brask_cbi_fw_config get_fw_config(void);
  * Get the barrel-jack power from FW_CONFIG.
  */
 void ec_bj_power(uint32_t *voltage, uint32_t *current);
+
+/**
+ * SWITCH the wireless charge function enable/disable from FW_CONFIG.
+ */
+bool ec_cfg_has_wireless_charge(void);
 
 #endif /* __BOARD_BRASK_FW_CONFIG_H_ */

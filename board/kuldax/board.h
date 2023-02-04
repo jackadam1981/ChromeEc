@@ -147,6 +147,8 @@
 #define CONFIG_CPS8100
 #endif
 
+#define CONFIG_DYNAMIC_WIRELESS_CHARGE_COUNT
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h" /* needed by registers.h */
