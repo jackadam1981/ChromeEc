@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63751184_529f3835",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-02-04T06:01:12Z",
+      "side": 1,
+      "message": "1",
+      "revId": "e6ee71be9cf0596183402553563aa548dcda2107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b037bd0c_1f791bd0",
@@ -14,6 +31,29 @@
       "writtenOn": "2023-02-03T09:49:21Z",
       "side": 1,
       "message": "parker@ please help comfirm the settings here (especially the c-fet d-fet controls)",
+      "revId": "e6ee71be9cf0596183402553563aa548dcda2107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b5382be_ea2940f9",
+        "filename": "zephyr/dts/bindings/battery/smp,l21m4pg0.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-02-04T06:01:12Z",
+      "side": 1,
+      "message": "@parkerlin@google.com 0x0100?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 19
+      },
       "revId": "e6ee71be9cf0596183402553563aa548dcda2107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
