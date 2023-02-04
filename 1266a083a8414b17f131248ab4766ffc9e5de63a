@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b61e5c_74d66a07",
+        "filename": "board/kuldax/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T07:49:36Z",
+      "side": 1,
+      "message": "charger?",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cee1567_2d2a0870",
+        "filename": "board/kuldax/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T07:49:36Z",
+      "side": 1,
+      "message": "move to line 147",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 44
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adc89b1d_13ca8cdc",
+        "filename": "board/kuldax/fw_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T07:49:36Z",
+      "side": 1,
+      "message": "charger, same as line 77",
+      "range": {
+        "startLine": 75,
+        "startChar": 25,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016750d2_29e946ac",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T07:49:36Z",
+      "side": 1,
+      "message": "charger? same as line 24 and 25",
+      "range": {
+        "startLine": 23,
+        "startChar": 21,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29639bf_4174a792",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T07:49:36Z",
+      "side": 1,
+      "message": "Should be opposite, 0 means enable, 1 means disable. So it can backward support the devices which are already distributed.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7b3def7_d752f337",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T07:49:36Z",
+      "side": 1,
+      "message": "charger",
+      "range": {
+        "startLine": 53,
+        "startChar": 25,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
