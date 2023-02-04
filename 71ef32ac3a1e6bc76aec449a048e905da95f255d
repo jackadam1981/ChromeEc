@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d89879c1_262a3b07",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-02-04T00:34:23Z",
+      "side": 1,
+      "message": "I have always used the syntax `TODO(b/\u003cbug number\u003e)`, for example `TODO(b/267800058)`. Does it also work without `b/`?",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "71ef32ac3a1e6bc76aec449a048e905da95f255d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
