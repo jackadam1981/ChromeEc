@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19272d16_310bafc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T10:05:49Z",
+      "side": 1,
+      "message": "Some hardware skus may not have wireless charger but share the same EC firmware, add CONFIG_DYNAMIC_WIRELESS_CHARGER_COUNT to allow charger count to be determined at runtime.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 64
+      },
+      "revId": "f2df993d33e4ad6882eb398317cc64260d44c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc950012_92d79b03",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T10:05:49Z",
+      "side": 1,
+      "message": "Determine wireless chargers count at runtime",
+      "range": {
+        "startLine": 1402,
+        "startChar": 3,
+        "endLine": 1402,
+        "endChar": 48
+      },
+      "revId": "f2df993d33e4ad6882eb398317cc64260d44c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
