@@ -16,6 +16,24 @@
       "message": "I can\u0027t find a new implementation of this function, but it looks like it needs to be careful to use `ap_pwrseq_state_lock()` everywhere the current state is inspected.",
       "revId": "87f75db4d93d0ff3c52f68c9ffce9de6df9525f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19e37a20_ae1bc6ca",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-04T01:22:42Z",
+      "side": 1,
+      "message": "Yes, I need to find instances of it and place lock accordningly.\n\nI think we eventually need to get rid of `ap_power_in_or_transitioning_to_state`. Given that we are free from intermediate states.",
+      "parentUuid": "4d9aad4e_dd38e3f7",
+      "revId": "87f75db4d93d0ff3c52f68c9ffce9de6df9525f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
