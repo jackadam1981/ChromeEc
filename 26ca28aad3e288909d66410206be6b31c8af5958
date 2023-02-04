@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d220c3f7_fc1fdde5",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-04T09:37:31Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "0c9fbac1_8de59c50",
+      "range": {
+        "startLine": 1403,
+        "startChar": 31,
+        "endLine": 1403,
+        "endChar": 37
+      },
+      "revId": "26ca28aad3e288909d66410206be6b31c8af5958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "820efc3d_dc29fd01",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-04T07:49:05Z",
       "side": 1,
       "message": "CHARGER",
+      "range": {
+        "startLine": 347,
+        "startChar": 31,
+        "endLine": 347,
+        "endChar": 37
+      },
+      "revId": "26ca28aad3e288909d66410206be6b31c8af5958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "723ac7d3_ab6a7284",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-04T09:37:31Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "820efc3d_dc29fd01",
       "range": {
         "startLine": 347,
         "startChar": 31,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1fce322_deff4550",
+        "filename": "zephyr/Kconfig.wireless_charger",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-04T09:37:31Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "f2eefaad_4246dffe",
+      "range": {
+        "startLine": 17,
+        "startChar": 36,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "26ca28aad3e288909d66410206be6b31c8af5958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4550058b_13988292",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-02-04T07:49:05Z",
       "side": 1,
       "message": "Charger",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "26ca28aad3e288909d66410206be6b31c8af5958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14105bb9_a5d38f2d",
+        "filename": "zephyr/Kconfig.wireless_charger",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-04T09:37:31Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "4550058b_13988292",
       "range": {
         "startLine": 18,
         "startChar": 24,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "481f4a72_9a069900",
+        "filename": "zephyr/Kconfig.wireless_charger",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-04T09:37:31Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "9859fea5_7f18220f",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 67
+      },
+      "revId": "26ca28aad3e288909d66410206be6b31c8af5958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66ac9dbe_9a0ae9e6",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-02-04T07:49:05Z",
       "side": 1,
       "message": "CHARGER, same for below lines",
+      "range": {
+        "startLine": 2881,
+        "startChar": 31,
+        "endLine": 2881,
+        "endChar": 37
+      },
+      "revId": "26ca28aad3e288909d66410206be6b31c8af5958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "580fbbf4_a9705aaf",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2881,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-04T09:37:31Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "66ac9dbe_9a0ae9e6",
       "range": {
         "startLine": 2881,
         "startChar": 31,
