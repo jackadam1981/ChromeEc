@@ -368,4 +368,6 @@ void pchg_task(void *u);
  */
 __override_proto void board_pchg_power_on(int port, bool on);
 
+__override_proto int board_get_pchg_count(void);
+
 #endif /* __CROS_EC_PERIPHERAL_CHARGER_H */
