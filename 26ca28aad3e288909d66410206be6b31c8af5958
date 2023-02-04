@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c9fbac1_8de59c50",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T07:49:05Z",
+      "side": 1,
+      "message": "CHARGER",
+      "range": {
+        "startLine": 1403,
+        "startChar": 31,
+        "endLine": 1403,
+        "endChar": 37
+      },
+      "revId": "26ca28aad3e288909d66410206be6b31c8af5958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820efc3d_dc29fd01",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T07:49:05Z",
+      "side": 1,
+      "message": "CHARGER",
+      "range": {
+        "startLine": 347,
+        "startChar": 31,
+        "endLine": 347,
+        "endChar": 37
+      },
+      "revId": "26ca28aad3e288909d66410206be6b31c8af5958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2eefaad_4246dffe",
+        "filename": "zephyr/Kconfig.wireless_charger",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T07:49:05Z",
+      "side": 1,
+      "message": "CHARGER",
+      "range": {
+        "startLine": 17,
+        "startChar": 36,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "26ca28aad3e288909d66410206be6b31c8af5958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4550058b_13988292",
+        "filename": "zephyr/Kconfig.wireless_charger",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T07:49:05Z",
+      "side": 1,
+      "message": "Charger",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "26ca28aad3e288909d66410206be6b31c8af5958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9859fea5_7f18220f",
+        "filename": "zephyr/Kconfig.wireless_charger",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T07:49:05Z",
+      "side": 1,
+      "message": "How about: \nSome hardware skus may not have wireless charger but share the same EC firmware, enable this to allow charger count to be determined at runtime. CONFIG_DYNAMIC_WIRELESS_CHARGE_COUNT removes the const assumption for the global variable pchg_count",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 67
+      },
+      "revId": "26ca28aad3e288909d66410206be6b31c8af5958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ac9dbe_9a0ae9e6",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2881,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T07:49:05Z",
+      "side": 1,
+      "message": "CHARGER, same for below lines",
+      "range": {
+        "startLine": 2881,
+        "startChar": 31,
+        "endLine": 2881,
+        "endChar": 37
+      },
+      "revId": "26ca28aad3e288909d66410206be6b31c8af5958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
