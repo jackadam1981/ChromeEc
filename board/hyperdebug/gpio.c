@@ -12,6 +12,7 @@
 #include "gpio.h"
 #include "gpio_chip.h"
 #include "hooks.h"
+#include "hwtimer.h"
 #include "registers.h"
 #include "shared_mem.h"
 #include "task.h"
@@ -45,25 +46,27 @@
  * the interrupt handler, and the latter only accessed from non-interrupt code.
  */
 struct cyclic_buffer_header_t {
+	/* Time of the most recent event, updated from interrupt context. */
+	volatile uint32_t head_time;
+	/* Index at which new records are placed, updated from interrupt. */
+	uint8_t *volatile head;
+	/* Index of oldest record. */
+	uint8_t *tail;
+	/*
+	 * End of cyclic byte buffer. Here head and tail will wrap back to the
+	 * byte immediately following this struct.
+	 */
+	uint8_t *end;
+	/* Time base that the oldest event is relative to. */
+	timestamp_t tail_time;
+	/* Sticky bit recording if overflow occurred. */
+	volatile uint8_t overflow;
 	/* Number of signals being monitored in this buffer. */
 	uint8_t num_signals;
 	/* The number of bits required to represent 0..num_signals-1. */
 	uint8_t signal_bits;
-	/* Sticky bit recording if overflow occurred. */
-	volatile uint8_t overflow;
-	/* Time of the most recent event, updated from interrupt context. */
-	volatile timestamp_t head_time;
-	/* Time base that the oldest event is relative to. */
-	timestamp_t tail_time;
-	/* Index at which new records are placed, updated from interrupt. */
-	volatile uint32_t head;
-	/* Index af oldest record. */
-	uint32_t tail;
-	/*
-	 * Size of cyclic byte buffer, determined at runtime, not necessarily
-	 * power of two.  Head and tail wrap to zero here.
-	 */
-	uint32_t size;
+	uint8_t fill;
+	uint32_t fill2;
 	/* Data contents */
 	uint8_t data[];
 };
@@ -79,14 +82,17 @@ struct cyclic_buffer_header_t {
 struct monitoring_slot_t {
 	/* Link to buffer recording edges of this signal. */
 	struct cyclic_buffer_header_t *buffer;
+	uint32_t gpio_base;
+	uint32_t gpio_pin_mask;
 	/* EC enum id of the signal used by this detection slot. */
 	int gpio_signal;
-	/* The index of the signal as used in the recording buffer. */
-	uint8_t signal_no;
 	/* Most recently recorded level of the signal. */
-	volatile uint8_t head_level;
+	volatile uint32_t head_level;
 	/* Level as of the current oldest end (tail) of the recording. */
 	uint8_t tail_level;
+	/* The index of the signal as used in the recording buffer. */
+	uint8_t signal_no;
+	uint8_t fill1, fill2;
 };
 struct monitoring_slot_t monitoring_slots[16];
 
@@ -121,15 +127,16 @@ void gpio_edge(enum gpio_signal signal)
 	 * glitches on a particular signal, and want to know about any pulses,
 	 * however narrow.
 	 */
-	timestamp_t now = get_time();
+	uint32_t now = __hw_clock_source_read();
 	int gpio_num = GPIO_MASK_TO_NUM(gpio_list[signal].mask);
 	struct monitoring_slot_t *slot = monitoring_slots + gpio_num;
 	int current_level = gpio_get_level(signal);
 	struct cyclic_buffer_header_t *buffer_header = slot->buffer;
 	uint8_t *buffer_data = buffer_header->data;
-	uint32_t tail = buffer_header->tail, head = buffer_header->head,
-		 size = buffer_header->size;
-	uint64_t diff = now.val - buffer_header->head_time.val;
+	uint8_t *tail = buffer_header->tail;
+	uint8_t *head = buffer_header->head;
+	uint8_t *end = buffer_header->end;
+	uint32_t diff = now - buffer_header->head_time;
 
 	uint8_t signal_bits = buffer_header->signal_bits;
 
@@ -167,11 +174,11 @@ void gpio_edge(enum gpio_signal signal)
 	diff <<= signal_bits;
 	diff |= slot->signal_no;
 	do {
-		buffer_data[head++] = ((diff >= 0x80) ? 0x80 : 0x00) |
-				      (diff & 0x7F);
+		*head++ = ((diff >= 0x80) ? 0x80 : 0x00) |
+			(diff & 0x7F);
 		diff >>= 7;
-		if (head == size)
-			head = 0;
+		if (head == end)
+			head = buffer_data;
 		if (head == tail) {
 			/*
 			 * The new head will not be persisted, maintaining the
@@ -192,9 +199,9 @@ void gpio_edge(enum gpio_signal signal)
 		 * always fit in one byte, as signal_no never uses more than 7
 		 * bits.)
 		 */
-		buffer_data[head++] = slot->signal_no;
-		if (head == size)
-			head = 0;
+		*head++ = slot->signal_no;
+		if (head == end)
+			head = buffer_data;
 		if (head == tail) {
 			/*
 			 * The new head will not be persisted, maintaining the
@@ -425,8 +432,8 @@ static int command_gpio_monitoring_start(int argc, const char **argv)
 	if (rv != EC_SUCCESS)
 		goto out_cleanup;
 
-	buf->head = buf->tail = 0;
-	buf->size = cyclic_buffer_size;
+	buf->head = buf->tail = buf->data;
+	buf->end = buf->head + cyclic_buffer_size;
 	buf->overflow = 0;
 	buf->num_signals = gpio_num;
 	buf->signal_bits = 0;
@@ -437,6 +444,8 @@ static int command_gpio_monitoring_start(int argc, const char **argv)
 	for (i = 0; i < gpio_num; i++) {
 		slot = monitoring_slots +
 		       GPIO_MASK_TO_NUM(gpio_list[gpios[i]].mask);
+		slot->gpio_base = gpio_list[gpios[i]].port;
+		slot->gpio_pin_mask = gpio_list[gpios[i]].mask;
 		slot->buffer = buf;
 		slot->signal_no = i;
 	}
@@ -474,7 +483,8 @@ static int command_gpio_monitoring_start(int argc, const char **argv)
 		 * if the GPIO block requests interrupt.
 		 */
 		gpio_enable_interrupt(gpios[i]);
-		slot->tail_level = slot->head_level = gpio_get_level(gpios[i]);
+		slot->tail_level = gpio_get_level(gpios[i]);
+		slot->head_level = slot->tail_level ? gpio_list[gpios[i]].mask : 0;
 		/*
 		 * Race condition here!  If three or more edges happen in
 		 * rapid succession, we may fail to record some of them, but
@@ -499,7 +509,7 @@ static int command_gpio_monitoring_start(int argc, const char **argv)
 	 * Now enable the handling of the set of interrupts.
 	 */
 	now = get_time();
-	buf->head_time = now;
+	buf->head_time = now.le.lo;
 	CPU_NVIC_EN(0) = nvic_mask;
 
 	buf->tail_time = now;
@@ -539,7 +549,7 @@ static int command_gpio_monitoring_read(int argc, const char **argv)
 	struct monitoring_slot_t *slot;
 	int gpio_signals_by_no[16];
 	uint8_t signal_bits;
-	uint32_t tail, head;
+	uint8_t *tail, *head;
 	timestamp_t tail_time, now;
 
 	if (gpio_num <= 0 || gpio_num > 16)
@@ -589,18 +599,18 @@ static int command_gpio_monitoring_read(int argc, const char **argv)
 	tail = buf->tail;
 	tail_time = buf->tail_time;
 	while (tail != head) {
-		uint8_t *buffer = buf->data;
+		uint8_t *buf_start = buf->data;
 		timestamp_t diff;
 		uint8_t byte;
 		uint8_t signal_no;
 		int shift = 0;
-		uint32_t tentative_tail = tail;
+		uint8_t *tentative_tail = tail;
 		struct monitoring_slot_t *slot;
 		diff.val = 0;
 		do {
-			byte = buffer[tentative_tail++];
-			if (tentative_tail == buf->size)
-				tentative_tail = 0;
+			byte = *tentative_tail++;
+			if (tentative_tail == buf->end)
+				tentative_tail = buf_start;
 			diff.val |= (byte & 0x7F) << shift;
 			shift += 7;
 		} while (byte & 0x80);
