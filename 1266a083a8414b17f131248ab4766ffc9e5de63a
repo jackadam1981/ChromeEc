@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97152357_52ebef91",
+        "filename": "board/kuldax/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-04T10:05:33Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "f7b61e5c_74d66a07",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cee1567_2d2a0870",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-04T07:49:36Z",
       "side": 1,
       "message": "move to line 147",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 44
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d522e3e_1b87ee7a",
+        "filename": "board/kuldax/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-04T10:05:33Z",
+      "side": 1,
+      "message": "if remove to 147, build failed.\n\nboard/kuldax/board.c:61:5: error: conflicting type qualifiers for \u0027pchg_count\u0027\n   61 | int pchg_count \u003d ARRAY_SIZE(pchgs);\n      |     ^~~~~~~~~~\nIn file included from board/kuldax/board.c:19:\ninclude/peripheral_charger.h:350:18: note: previous declaration of \u0027pchg_count\u0027 with type \u0027int\u0027\n  350 | extern const int pchg_count;",
+      "parentUuid": "7cee1567_2d2a0870",
       "range": {
         "startLine": 150,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "101aa5ef_a88c098b",
+        "filename": "board/kuldax/fw_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-04T10:05:33Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "adc89b1d_13ca8cdc",
+      "range": {
+        "startLine": 75,
+        "startChar": 25,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "016750d2_29e946ac",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-02-04T07:49:36Z",
       "side": 1,
       "message": "charger? same as line 24 and 25",
+      "range": {
+        "startLine": 23,
+        "startChar": 21,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3d27db_0cacd56e",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-04T10:05:33Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "016750d2_29e946ac",
       "range": {
         "startLine": 23,
         "startChar": 21,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b7d9d53_995459e8",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-04T10:05:33Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "e29639bf_4174a792",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7b3def7_d752f337",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-02-04T07:49:36Z",
       "side": 1,
       "message": "charger",
+      "range": {
+        "startLine": 53,
+        "startChar": 25,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c312a558_04385430",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-04T10:05:33Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "c7b3def7_d752f337",
       "range": {
         "startLine": 53,
         "startChar": 25,
