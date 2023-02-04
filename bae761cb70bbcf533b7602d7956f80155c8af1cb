@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4bfb682_b6e30a64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-02-04T00:17:30Z",
+      "side": 1,
+      "message": "How do you supply the commands?\n\nI see the `standard_app_test` uses a custom finish regexp, but I don\u0027t think it\u0027s actually running any command.",
+      "range": {
+        "startLine": 11,
+        "startChar": 56,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "bae761cb70bbcf533b7602d7956f80155c8af1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98178ca5_fc80fb0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-02-04T00:17:30Z",
+      "side": 1,
+      "message": "I would also run another \"traditional\" test to make sure nothing breaks.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "bae761cb70bbcf533b7602d7956f80155c8af1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df133bfa_30921937",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-02-04T00:17:30Z",
+      "side": 1,
+      "message": "Nit: I wonder if `APP` could be ambiguous. Maybe `PRODUCTION` would better differentiate from the `TEST_*` images?\n\nDo we also need to differentiate between `RO` and `RW`?",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 7
+      },
+      "revId": "bae761cb70bbcf533b7602d7956f80155c8af1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
