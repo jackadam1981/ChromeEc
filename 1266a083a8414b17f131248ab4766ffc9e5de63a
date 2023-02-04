@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80e7f717_21159c23",
+        "filename": "board/kuldax/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-04T10:20:06Z",
+      "side": 1,
+      "message": "ah, this is due to board.c is required for RO. So we can\u0027t define it only for RW. \nYou can move it back to line 150.",
+      "parentUuid": "9d522e3e_1b87ee7a",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 44
+      },
+      "revId": "1266a083a8414b17f131248ab4766ffc9e5de63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adc89b1d_13ca8cdc",
         "filename": "board/kuldax/fw_config.c",
         "patchSetId": 1
