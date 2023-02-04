@@ -1399,6 +1399,8 @@
 /* Wireless chargers */
 #undef CONFIG_CPS8100
 
+#undef CONFIG_DYNAMIC_PCHG_COUNT
+
 /*****************************************************************************/
 
 /*
