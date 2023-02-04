@@ -1891,6 +1891,9 @@
 /* Include CRC-8 utility function */
 #undef CONFIG_CRC8
 
+/* Include CRC-16 utility function */
+#undef CONFIG_CRC16
+
 /*****************************************************************************/
 /*
  * Debugging config
