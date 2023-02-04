@@ -81,6 +81,7 @@ common-$(CONFIG_COMMON_RUNTIME)+=hooks.o main.o system.o peripheral.o \
 	system_boot_time.o
 common-$(CONFIG_COMMON_TIMER)+=timer.o
 common-$(CONFIG_CRC8)+= crc8.o
+common-$(CONFIG_CRC16)+= crc16.o
 common-$(CONFIG_CURVE25519)+=curve25519.o
 ifneq ($(CORE),cortex-m0)
 common-$(CONFIG_CURVE25519)+=curve25519-generic.o
