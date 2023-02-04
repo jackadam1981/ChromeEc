@@ -58,7 +58,7 @@ struct pchg pchgs[] = {
 		.events = QUEUE_NULL(PCHG_EVENT_QUEUE_SIZE, enum pchg_event),
 	},
 };
-const int pchg_count = ARRAY_SIZE(pchgs);
+int pchg_count = ARRAY_SIZE(pchgs);
 
 __override void board_pchg_power_on(int port, bool on)
 {
@@ -66,6 +66,15 @@ __override void board_pchg_power_on(int port, bool on)
 		gpio_set_level(GPIO_EC_QI_PWR, on);
 	else
 		CPRINTS("%s: Invalid port=%d", __func__, port);
+}
+
+static void board_update_pchg_count_from_sku(void)
+{
+	if (ec_cfg_has_wireless_charger()) {
+		pchg_count = ARRAY_SIZE(pchgs);
+	} else {
+		pchg_count = 0;
+	}
 }
 
 /******************************************************************************/
@@ -281,6 +290,8 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_A1_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A2_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A3_OC_ODL);
+
+	board_update_pchg_count_from_sku();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
