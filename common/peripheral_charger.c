@@ -26,6 +26,8 @@ static struct queue const host_events =
 	QUEUE_NULL(PCHG_EVENT_QUEUE_SIZE, uint32_t);
 struct mutex host_event_mtx;
 
+static int board_pchg_count;
+
 /*
  * Events and errors to be reported to the host in each chipset state.
  *
@@ -226,6 +228,11 @@ __overridable void board_pchg_power_on(int port, bool on)
 {
 }
 
+__overridable int board_get_pchg_count(void)
+{
+	return pchg_count;
+}
+
 /*
  * This handles two cases: asynchronous reset and synchronous reset.
  *
@@ -275,12 +282,14 @@ static void bist_timer_completion(void)
 	struct pchg *ctx = &pchgs[0];
 	int i;
 
-	for (i = 0; i < pchg_count; i++) {
+	board_pchg_count = board_get_pchg_count();
+
+	for (i = 0; i < board_pchg_count; i++) {
 		ctx = &pchgs[i];
 		if (ctx->state == PCHG_STATE_BIST)
 			break;
 	}
-	if (i == pchg_count)
+	if (i == board_pchg_count)
 		return;
 
 	pchg_queue_event(ctx, PCHG_EVENT_BIST_DONE);
@@ -758,7 +767,9 @@ void pchg_irq(enum gpio_signal signal)
 	struct pchg *ctx;
 	int i;
 
-	for (i = 0; i < pchg_count; i++) {
+	board_pchg_count = board_get_pchg_count();
+
+	for (i = 0; i < board_pchg_count; i++) {
 		ctx = &pchgs[i];
 		if (signal == ctx->cfg->irq_pin) {
 			ctx->irq = 1;
@@ -775,10 +786,12 @@ static void pchg_startup(void)
 	int active_pchg_count = 0;
 	int rv;
 
+	board_pchg_count = board_get_pchg_count();
+
 	CPRINTS("%s", __func__);
 	queue_init(&host_events);
 
-	for (p = 0; p < pchg_count; p++) {
+	for (p = 0; p < board_pchg_count; p++) {
 		rv = EC_SUCCESS;
 		ctx = &pchgs[p];
 		_clear_port(ctx);
@@ -808,9 +821,11 @@ static void pchg_shutdown(void)
 	struct pchg *ctx;
 	int p;
 
+	board_pchg_count = board_get_pchg_count();
+
 	CPRINTS("%s", __func__);
 
-	for (p = 0; p < pchg_count; p++) {
+	for (p = 0; p < board_pchg_count; p++) {
 		ctx = &pchgs[0];
 		gpio_disable_interrupt(ctx->cfg->irq_pin);
 		board_pchg_power_on(p, 0);
@@ -823,13 +838,15 @@ void pchg_task(void *u)
 	struct pchg *ctx;
 	int p;
 
+	board_pchg_count = board_get_pchg_count();
+
 	if (chipset_in_state(CHIPSET_STATE_ON))
 		/* We are here after power-on (because of late sysjump). */
 		pchg_startup();
 
 	while (true) {
 		/* Process pending events for all ports. */
-		for (p = 0; p < pchg_count; p++) {
+		for (p = 0; p < board_pchg_count; p++) {
 			ctx = &pchgs[p];
 			do {
 				if (atomic_clear(&ctx->irq))
@@ -848,7 +865,9 @@ static enum ec_status hc_pchg_count(struct host_cmd_handler_args *args)
 {
 	struct ec_response_pchg_count *r = args->response;
 
-	r->port_count = pchg_count;
+	board_pchg_count = board_get_pchg_count();
+
+	r->port_count = board_pchg_count;
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
@@ -864,11 +883,13 @@ static enum ec_status hc_pchg(struct host_cmd_handler_args *args)
 	int port = p->port;
 	struct pchg *ctx;
 
+	board_pchg_count = board_get_pchg_count();
+
 	/* Version 0 shouldn't exist. */
 	if (args->version == 0)
 		return EC_RES_INVALID_VERSION;
 
-	if (port >= pchg_count)
+	if (port >= board_pchg_count)
 		return EC_RES_INVALID_PARAM;
 
 	ctx = &pchgs[port];
@@ -930,7 +951,9 @@ static enum ec_status hc_pchg_update(struct host_cmd_handler_args *args)
 	int port = p->port;
 	struct pchg *ctx;
 
-	if (port >= pchg_count)
+	board_pchg_count = board_get_pchg_count();
+
+	if (port >= board_pchg_count)
 		return EC_RES_INVALID_PARAM;
 
 	ctx = &pchgs[port];
@@ -1019,11 +1042,13 @@ static int cc_pchg(int argc, const char **argv)
 	char *end;
 	struct pchg *ctx;
 
+	board_pchg_count = board_get_pchg_count();
+
 	if (argc < 2 || 4 < argc)
 		return EC_ERROR_PARAM_COUNT;
 
 	port = strtoi(argv[1], &end, 0);
-	if (*end || port < 0 || port >= pchg_count)
+	if (*end || port < 0 || port >= board_pchg_count)
 		return EC_ERROR_PARAM1;
 	ctx = &pchgs[port];
 
