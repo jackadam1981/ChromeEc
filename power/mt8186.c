@@ -22,7 +22,6 @@
  */
 
 #include "battery.h"
-#include "builtin/assert.h"
 #include "chipset.h"
 #include "common.h"
 #include "gpio.h"
@@ -55,6 +54,9 @@
 #define POWERBTN_BOOT_DELAY (10 * MSEC)
 #define PMIC_EN_PULSE_MS 50
 
+/* PG4200 S5 ready delay */
+#define PG_PP4200_S5_DELAY (100 * MSEC)
+
 /* Maximum time it should for PMIC to turn on after toggling PMIC_EN_ODL. */
 #define PMIC_EN_TIMEOUT (300 * MSEC)
 
@@ -67,18 +69,6 @@
  */
 #define NORMAL_SHUTDOWN_DELAY (150 * MSEC)
 #define RESET_FLAG_TIMEOUT (2 * SECOND)
-
-#ifndef CONFIG_ZEPHYR
-/* power signal list.  Must match order of enum power_signal. */
-const struct power_signal_info power_signal_list[] = {
-	{ GPIO_AP_EC_SYSRST_ODL, POWER_SIGNAL_ACTIVE_LOW, "AP_IN_RST" },
-	{ GPIO_AP_IN_SLEEP_L, POWER_SIGNAL_ACTIVE_LOW, "AP_IN_S3" },
-	{ GPIO_AP_EC_WDTRST_L, POWER_SIGNAL_ACTIVE_LOW, "AP_WDT_ASSERTED" },
-	{ GPIO_AP_EC_WARM_RST_REQ, POWER_SIGNAL_ACTIVE_HIGH,
-	  "AP_WARM_RST_REQ" },
-};
-BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
-#endif /* CONFIG_ZEPHYR */
 
 /* indicate MT8186 is processing a chipset reset. */
 static bool is_resetting;
@@ -360,6 +350,14 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_enable_interrupt(GPIO_AP_EC_WARM_RST_REQ);
 		gpio_enable_interrupt(GPIO_AP_EC_WDTRST_L);
 
+#if DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp4200_s5), 1);
+
+		if (power_wait_mask_signals_timeout(PG_PP4200_S5, PG_PP4200_S5,
+						    PG_PP4200_S5_DELAY))
+			return POWER_S5G3;
+#endif
+
 		GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 1);
 		msleep(PMIC_EN_PULSE_MS);
 		GPIO_SET_LEVEL(GPIO_EC_PMIC_EN_ODL, 0);
@@ -447,9 +445,15 @@ enum power_state power_handle_state(enum power_state state)
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 
+#if DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp4200_s5), 0);
+
+		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
+#endif
 		return POWER_S5;
 
 	case POWER_S5G3:
+#if !DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
 		/*
 		 * Normally, this is called in S3S5, but if it's a shutdown
 		 * triggered by EC side, then EC is unable to set up PMIC
@@ -459,6 +463,7 @@ enum power_state power_handle_state(enum power_state state)
 		 * will enter G3 after EC_PMIC_EN_ODL is released.
 		 */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
+#endif
 		return POWER_G3;
 	default:
 		CPRINTS("Unexpected power state %d", state);
