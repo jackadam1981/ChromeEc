@@ -226,6 +226,11 @@ __overridable void board_pchg_power_on(int port, bool on)
 {
 }
 
+__overridable int board_get_pchg_count(void)
+{
+	return pchg_count;
+}
+
 /*
  * This handles two cases: asynchronous reset and synchronous reset.
  *
@@ -774,6 +779,10 @@ static void pchg_startup(void)
 	int p;
 	int active_pchg_count = 0;
 	int rv;
+
+	static int pchg_count;
+
+	pchg_count = board_get_pchg_count();
 
 	CPRINTS("%s", __func__);
 	queue_init(&host_events);
