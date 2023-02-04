@@ -1399,6 +1399,9 @@
 /* Wireless chargers */
 #undef CONFIG_CPS8100
 
+/* Determine wireless chargers count at runtime */
+#undef CONFIG_DYNAMIC_WIRELESS_CHARGER_COUNT
+
 /*****************************************************************************/
 
 /*
