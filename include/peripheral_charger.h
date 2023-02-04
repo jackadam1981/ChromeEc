@@ -343,8 +343,12 @@ struct pchg_drv {
  * Should be defined in board.c.
  */
 extern struct pchg pchgs[];
-extern const int pchg_count;
 
+#ifdef CONFIG_DYNAMIC_WIRELESS_CHARGER_COUNT
+extern int pchg_count;
+#else
+extern const int pchg_count;
+#endif
 /* Utility macro converting port config to port number. */
 #define PCHG_CTX_TO_PORT(ctx) ((ctx) - &pchgs[0])
 
