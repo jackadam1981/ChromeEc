@@ -343,6 +343,7 @@ struct pchg_drv {
  * Should be defined in board.c.
  */
 extern struct pchg pchgs[];
+
 extern const int pchg_count;
 
 /* Utility macro converting port config to port number. */
@@ -367,5 +368,7 @@ void pchg_task(void *u);
  * @param on
  */
 __override_proto void board_pchg_power_on(int port, bool on);
+
+__override_proto int board_get_pchg_count(void);
 
 #endif /* __CROS_EC_PERIPHERAL_CHARGER_H */
