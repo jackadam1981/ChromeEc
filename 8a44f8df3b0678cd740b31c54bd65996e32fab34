@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c781563c_96e59b4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-02-04T08:49:47Z",
+      "side": 1,
+      "message": "You have to update config_allowed.txt as well:\n\n\n\nThe following options are now in Kconfig:\n\nCONFIG_I2C_NACK_RETRY_COUNT\n\nPlease run this to update the list of allowed ad-hoc CONFIGs and include this\nupdate in your CL:\n\n   cp /tmp/new_config_allowed.txt util/config_allowed.txt\n\n  CC      RW/driver/tcpm/tcpci.o\n  CC      RO/common/cbi_eeprom.o\n  CC      RW/common/version.o\n  CC      RW/common/uart_buffering.o\n  CC      RW/driver/usb_mux/usb_mux.o\n  CC      RW/common/usbc/usb_pd_host.o\n  CC      RO/common/util.o\n  CC      RW/driver/usb_mux/it5205.o\n  CC      RW/common/version.o\nmake[2]: *** [Makefile.rules:285: notice] Error 1\nmake[1]: *** [Makefile.rules:290: proj-hyperdebug] Error 2\nmake[1]: *** Waiting for unfinished jobs....",
+      "revId": "8a44f8df3b0678cd740b31c54bd65996e32fab34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
