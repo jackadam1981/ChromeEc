@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6719e37_db3d7fbf",
+        "filename": "zephyr/program/nissa/src/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-05T23:05:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure if there are any nissa boards that enable OCPC but might have a configuration (with sub-boards or something) that only has one port; I think this should check that `board_get_charger_chip_count` is at least 2.",
+      "range": {
+        "startLine": 139,
+        "startChar": 17,
+        "endLine": 139,
+        "endChar": 34
+      },
+      "revId": "b2130eb07fe711183fdfeaf754f0bc9e6acf029f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
