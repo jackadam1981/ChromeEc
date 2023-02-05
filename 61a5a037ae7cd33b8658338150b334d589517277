@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b501ba_49d31ad9",
+        "filename": "board/dibbi/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2023-02-05T23:38:17Z",
+      "side": 1,
+      "message": "Assumed all ports went up to 7.",
+      "parentUuid": "8f23f496_b9fd0a4d",
+      "revId": "61a5a037ae7cd33b8658338150b334d589517277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5821bf3b_651d90e5",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-02-05T23:02:22Z",
       "side": 1,
       "message": "Same as above",
+      "revId": "61a5a037ae7cd33b8658338150b334d589517277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e538b32_2c2442e3",
+        "filename": "board/dibbi/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2023-02-05T23:38:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5821bf3b_651d90e5",
       "revId": "61a5a037ae7cd33b8658338150b334d589517277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8021b768_fd4cf481",
+        "filename": "board/dibbi/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2023-02-05T23:38:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6e9d0815_3e92acf7",
+      "revId": "61a5a037ae7cd33b8658338150b334d589517277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffbe204b_d907f12c",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-02-05T23:02:22Z",
       "side": 1,
       "message": "GPL2 and GPL3 are marked as not connected above while also being ADC pins. Is that intentional?",
+      "revId": "61a5a037ae7cd33b8658338150b334d589517277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "809efcb0_a1966208",
+        "filename": "board/dibbi/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2023-02-05T23:38:17Z",
+      "side": 1,
+      "message": "Nope, missed that.",
+      "parentUuid": "ffbe204b_d907f12c",
       "revId": "61a5a037ae7cd33b8658338150b334d589517277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
