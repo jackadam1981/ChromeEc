@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02688d56_8f28d864",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-06T20:34:24Z",
+      "side": 1,
+      "message": "To clarify, you\u0027re saying that `body_detect_reset` should be updated to not call `body_detect_change_state` if it\u0027s not needed? Aside from resetting `stationary_timeframe`, is there anything else I need to be aware of with making that change? Are there any tests I can run to verify that that change won\u0027t break anything?",
+      "parentUuid": "72900da1_acb29812",
+      "revId": "5cd4164fe40659d728bd18504dee79284fbdbf32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab910a4f_766e2e11",
         "filename": "common/body_detection.c",
         "patchSetId": 1
