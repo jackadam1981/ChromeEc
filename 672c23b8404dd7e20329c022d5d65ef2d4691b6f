@@ -63,6 +63,30 @@
       },
       "revId": "672c23b8404dd7e20329c022d5d65ef2d4691b6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d16cbc7_1db5a1a2",
+        "filename": "test/tpm_seed_clear.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-06T22:12:52Z",
+      "side": 1,
+      "message": "Correct. In addition to the `if` change, you\u0027ll also need to make sure that the variable is still declared when compiling for RO. In the `fpsensor_hw.cc` test, we have the same issue, with `fp_sensor_hwid`, which we work around with [this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/fpsensor_hw.cc;l\u003d11-16;drc\u003d29699a43299a9782ad0e8ca3998b415b8cbb26ad).\n\nYou may also be able to work around it by removing the `#ifdef SECTION_IS_RW` around `default_fake_tpm_seed` and `zero_fake_tpm_seed` while changing the types from:\n\n```\nstatic const uint8_t default_fake_tpm_seed[]\n```\n\nto\n\n```\ntest_static const uint8_t default_fake_tpm_seed[]\n```",
+      "parentUuid": "b0a40011_ba1b77b3",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "672c23b8404dd7e20329c022d5d65ef2d4691b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
