@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "479e9d34_59b0c757",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-06T16:14:16Z",
+      "side": 1,
+      "message": "this comment also need to be in a code comment.\n\n\nAlso how much does this optimization give us (espeically with the faster clock). I think this adds some potential subtle pitfalls in the future, so it should definite give us a noticeable benefit to justify this optimization",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "414237cd19ddc49d5ec47010a351b520f1763695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
