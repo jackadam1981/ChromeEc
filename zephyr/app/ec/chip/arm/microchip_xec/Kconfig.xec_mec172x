@@ -37,6 +37,8 @@ config CROS_EC_RO_MEM_OFF
 	default 0x0
 
 # was 0x40000
+# TODO: can this configuration be removed to apply binman's
+# size property (0x40000)?
 config CROS_EC_RO_SIZE
 	default 0x3F000
 
@@ -44,8 +46,5 @@ config CROS_EC_RO_SIZE
 # time.
 config CROS_EC_RW_MEM_OFF
 	default 0x0
-
-config CROS_EC_RW_SIZE
-	default 0x40000
 
 endif # SOC_SERIES_MEC172X
