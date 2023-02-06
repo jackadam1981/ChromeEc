@@ -654,6 +654,65 @@ ZTEST_USER(flash, test_console_cmd_flash_write__happy)
 	zassert_equal(output, 0xFFFFFFFF, "Got %08x", output);
 }
 
+ZTEST_USER(flash, test_console_cmd_flash_read__bad_args)
+{
+	/* No args*/
+	zassert_equal(EC_ERROR_PARAM_COUNT,
+		      shell_execute_cmd(get_ec_shell(), "flashread"));
+
+	/* Check for alpha arg instead of number */
+	zassert_equal(EC_ERROR_PARAM1,
+		      shell_execute_cmd(get_ec_shell(), "flashread xyz 100"));
+	zassert_equal(EC_ERROR_PARAM2,
+		      shell_execute_cmd(get_ec_shell(), "flashread 100 xyz"));
+}
+
+ZTEST_USER(flash, test_console_cmd_flash_read__too_big)
+{
+	zassert_ok(!shell_execute_cmd(get_ec_shell(),
+				      "flashread 0x10000 " STRINGIFY(INT_MAX)));
+}
+
+ZTEST_USER(flash, test_console_cmd_flash_read__happy_4_bytes)
+{
+	/* Write some bytes to read */
+	zassert_ok(write_flash_helper32(0x10000, 0xA1B2C3D4));
+
+	static const char *expected = "\r\n\r\n"
+				      "00010000: d4 c3 b2 a1\r\n";
+	const char *outbuffer;
+	size_t buffer_size;
+
+	shell_backend_dummy_clear_output(get_ec_shell());
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "flashread 0x10000 4"));
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+
+	zassert_ok(strncmp(outbuffer, expected, buffer_size));
+}
+
+ZTEST_USER(flash, test_console_cmd_flash_read__happy_17_bytes)
+{
+	/* Test 16-byte column wrapping behavior */
+
+	/* Write some bytes to read */
+	zassert_ok(write_flash_helper32(0x10000, 0xA1B2C3D4));
+
+	static const char *expected =
+		"\r\n\r\n"
+		"00010000: d4 c3 b2 a1 ff ff ff ff ff ff ff ff ff ff ff ff\r\n"
+		"00010010: ff\r\n";
+	const char *outbuffer;
+	size_t buffer_size;
+
+	shell_backend_dummy_clear_output(get_ec_shell());
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "flashread 0x10000 17"));
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+
+	zassert_ok(strncmp(outbuffer, expected, buffer_size));
+}
+
 /**
  * @brief Prepare a region of flash for the test_crec_flash_is_erased* tests
  *
