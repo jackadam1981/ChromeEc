@@ -16,6 +16,24 @@
       "message": "Do you still need this config check?",
       "revId": "c5d6e4a6808b7ed6f2892881c9e69709fe612404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1021f6f_7e4f9483",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7812,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-06T20:45:28Z",
+      "side": 1,
+      "message": "Nope, we can do away with this one.  And then that\u0027ll mean we execute the empty dp_init and make the code coverage ever-so-slightly more happy",
+      "parentUuid": "5b3bccf1_0c6eaabe",
+      "revId": "c5d6e4a6808b7ed6f2892881c9e69709fe612404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

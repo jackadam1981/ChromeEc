@@ -52,6 +52,24 @@
       "parentUuid": "2355d8c2_d2d3cdf8",
       "revId": "058f97448b787c405be7186f90ce4d148ea91b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05e3020a_f7175a84",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-06T20:45:28Z",
+      "side": 1,
+      "message": "Ah, I get what you\u0027re going for.\n\nYes, it does.  So this will fall in the realm of things we need to work on before Tidal Flow goes into USB4 systems but which isn\u0027t immediately relevant for our first platform\u0027s release",
+      "parentUuid": "7a70c08d_ab8864d4",
+      "revId": "058f97448b787c405be7186f90ce4d148ea91b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
