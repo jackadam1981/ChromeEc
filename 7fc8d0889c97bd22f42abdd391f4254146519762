@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b16cf6ac_a6a4fcae",
+        "filename": "board/dibbi/gpio.inc",
+        "patchSetId": 19
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2023-02-06T02:49:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7d25de03_f9a0c429",
+      "range": {
+        "startLine": 103,
+        "startChar": 18,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "7fc8d0889c97bd22f42abdd391f4254146519762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88176221_368d8bfc",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-06T02:30:19Z",
       "side": 1,
       "message": "I2C3",
+      "range": {
+        "startLine": 150,
+        "startChar": 62,
+        "endLine": 150,
+        "endChar": 66
+      },
+      "revId": "7fc8d0889c97bd22f42abdd391f4254146519762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e41f5e_b79b632a",
+        "filename": "board/dibbi/gpio.inc",
+        "patchSetId": 19
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2023-02-06T02:49:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88176221_368d8bfc",
       "range": {
         "startLine": 150,
         "startChar": 62,
