@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad5c7ca9_36bf43c5",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-06T17:17:51Z",
+      "side": 1,
+      "message": "Hi Ben,\n\nThis approach doesn\u0027t work if we want to disable one of the multiple ports (for future devices). So, it is more like a workaround (or hack). This solution is handy because it won\u0027t require any host change but I don\u0027t think it deserves a new CONFIG macro.\n\nI suggest we introduce board_get_pchg_count instead and make pchg_task call board_get_pchg_count once on start-up (and save it internally in \u0027static int pchg_count\u0027). Other boards can simply return ARRAY_SIZE(pchgs). This also guarantees pchg_count won\u0027t change once pchg_task starts.\n\n--- \u003e8 ---\n\nI believe the right apporach is to make the kernel check the presence of each port in cros_pchg_probe by calling EC_CMD_PCHG. Then, the kernel automatically disable the module if there is no port availabe (num_registered_psy \u003d\u003d 0).",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 6
+      },
+      "revId": "506bee678efde2c801aba30e71274b3f3c4151a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
