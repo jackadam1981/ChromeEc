@@ -16,6 +16,24 @@
       "message": "Should these commands just return error codes when this functionality is disabled?",
       "revId": "d1ed795d7e8356cfe3263ccf517139438e18706f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c455e74b_ac3c6776",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-06T22:54:07Z",
+      "side": 1,
+      "message": "That would make sense as long as we anticipate that this feature always means all EC-driven modes are disabled.  \n\nI\u0027m not completely certain whether that will be the case for other form factors in the future (and I\u0027m somewhat biased, in that getting to 90% coverage on this CL would otherwise require me to make a new test which supports AP-driven mode entry but not DP mode specifically...)",
+      "parentUuid": "2a058917_4a035845",
+      "revId": "d1ed795d7e8356cfe3263ccf517139438e18706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
