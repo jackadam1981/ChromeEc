@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "546ddd6d_a8b0a835",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4569,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-06T17:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ec70fc1_064a9b2f",
+      "revId": "0861e289c00a9c979ef028681a1167f9d640e990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a01148d2_b77b0763",
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b25910d5_72beff47",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-06T17:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a01148d2_b77b0763",
+      "range": {
+        "startLine": 248,
+        "startChar": 20,
+        "endLine": 248,
+        "endChar": 23
+      },
+      "revId": "0861e289c00a9c979ef028681a1167f9d640e990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7d87e9f_ff8ef712",
@@ -88,6 +130,30 @@
       "writtenOn": "2023-02-02T18:22:28Z",
       "side": 1,
       "message": "Nit: Period",
+      "range": {
+        "startLine": 253,
+        "startChar": 16,
+        "endLine": 253,
+        "endChar": 17
+      },
+      "revId": "0861e289c00a9c979ef028681a1167f9d640e990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "351842d6_6753cf78",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-06T17:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7d87e9f_ff8ef712",
       "range": {
         "startLine": 253,
         "startChar": 16,
