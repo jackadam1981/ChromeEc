@@ -70,6 +70,30 @@
       },
       "revId": "b637c7380226a9e4bd1bcaff539b791858e75950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1f1d751_6c45055e",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-06T22:07:59Z",
+      "side": 1,
+      "message": "Sorry, I forgot to respond on your question. I think this way is slightly more consistent with how the code is currently structured. The other `.h` files that are included separately all have corresponding `.c` files, whereas this one doesn\u0027t.",
+      "parentUuid": "7e72b639_7b368cc3",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "b637c7380226a9e4bd1bcaff539b791858e75950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
