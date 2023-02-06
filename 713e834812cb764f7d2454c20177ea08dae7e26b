@@ -1,0 +1,235 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4e90e15_60c64dca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-06T16:26:08Z",
+      "side": 1,
+      "message": "\u003e \"insted\" is a possible misspelling of \"instead\".\n\nPlease fix.",
+      "parentUuid": "ce3a21dd_93238385",
+      "range": {
+        "startLine": 12,
+        "startChar": 15,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99d9676e_062f0bd7",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-06T16:26:08Z",
+      "side": 1,
+      "message": "since this is 64-bits, should this go first to ensure that there is not padding if someone where to add another field above this?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 22
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9cc340f_7ac39101",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-06T16:26:08Z",
+      "side": 1,
+      "message": "these fields need comments",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e3a964a_2b617998",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-06T16:26:08Z",
+      "side": 1,
+      "message": "why is `fill2` a `u8` here but a `u32` above?\n\nAlso need comments\n\n(Oh are these padding or reserved fields for padding?) Needs commends saying it is for padding and/or call them reserved#",
+      "range": {
+        "startLine": 95,
+        "startChar": 16,
+        "endLine": 95,
+        "endChar": 21
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f160b3df_083bb514",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-06T16:26:08Z",
+      "side": 1,
+      "message": "if we are going to keep this optimization to skip the normal IRQ logic that can handle tasks, etc. Then we need big comments warnings here not to use any common function or task functions to not risk messing with the task state and it not taking affect.\n\n(I still don\u0027t know if that optimization is worth it)",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 14
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac301163_a6499a83",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-06T16:26:08Z",
+      "side": 1,
+      "message": "`uint8_t const * buffer_data` since we don\u0027t want to update this variable ever",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 21
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d05d2c8_4d8c8d0c",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-06T16:26:08Z",
+      "side": 1,
+      "message": "nit: `const uint8_t *const tail` since we don\u0027t want to modify this variable or data pointed to by this var",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 14
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d9d06d_4c4d2f37",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-06T16:26:08Z",
+      "side": 1,
+      "message": "nit: `const uint8_t const * end` since we don\u0027t want to modify variable or modify contents through this variable.",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de0a6801_a454ae49",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-06T16:26:08Z",
+      "side": 1,
+      "message": "I didn\u0027t understand this change",
+      "range": {
+        "startLine": 487,
+        "startChar": 21,
+        "endLine": 487,
+        "endChar": 69
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c60a29f_6fb949a5",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-06T16:26:08Z",
+      "side": 1,
+      "message": "`uint8_t const * buf_start`",
+      "range": {
+        "startLine": 602,
+        "startChar": 2,
+        "endLine": 602,
+        "endChar": 20
+      },
+      "revId": "713e834812cb764f7d2454c20177ea08dae7e26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
