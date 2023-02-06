@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a88a4eb5_2262b4e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-06T16:27:47Z",
+      "side": 1,
+      "message": "how much benefit does this give us? We are getting into really unmaintainable territory with hand crafeted asm. Does the performance improvement justify this?\n\nWe are only really looking at millisecond precision, so I don\u0027t really think that hand written asm is worth it here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "2ca249f5930ade33478646a06d579923bf923f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
