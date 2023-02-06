@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3da00ee7_607b6ddb",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-06T23:29:26Z",
+      "side": 1,
+      "message": "This seems like it might be overkill. I\u0027m not a python expert, so I have to spend more time parsing this logic than if we just added a `logging.debug` in the two callbacks.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "b1cf232e67641b8d32547945b3961567b4afbc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "679de6f5_a25572f8",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
