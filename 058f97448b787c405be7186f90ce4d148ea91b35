@@ -70,6 +70,24 @@
       "parentUuid": "7a70c08d_ab8864d4",
       "revId": "058f97448b787c405be7186f90ce4d148ea91b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dffaa113_8c7d2f3e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-06T21:05:58Z",
+      "side": 1,
+      "message": "Perhaps a TODO is in order.",
+      "parentUuid": "05e3020a_f7175a84",
+      "revId": "058f97448b787c405be7186f90ce4d148ea91b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

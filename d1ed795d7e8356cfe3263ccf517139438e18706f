@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a058917_4a035845",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-06T21:05:58Z",
+      "side": 1,
+      "message": "Should these commands just return error codes when this functionality is disabled?",
+      "revId": "d1ed795d7e8356cfe3263ccf517139438e18706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
