@@ -68,6 +68,30 @@
       },
       "revId": "bae761cb70bbcf533b7602d7956f80155c8af1cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09400f51_7508fa7f",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-06T23:08:57Z",
+      "side": 1,
+      "message": "I think we\u0027re conflating \"image\" here with two different concepts. The original `ImageType` allowed toggling between the `RO` and `RW` parts of the test binary (\"image\").\n\nI think we want to be able to independently specify the binary we\u0027re using vs RO/RW. Something like:\n\n```\nclass ImageType(Enum):\n    \"\"\"EC Image type to use for the test.\"\"\"\n    RO \u003d 1\n    RW \u003d 2\n```\n\n```\nclass BinaryType(Enum):\n    TEST \u003d 1\n    PRODUCTION \u003d 2\n```\n\n(Not really happy with `Binary` vs `Image`, so if you can think of better names, feel free to use those.)",
+      "parentUuid": "df133bfa_30921937",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 7
+      },
+      "revId": "bae761cb70bbcf533b7602d7956f80155c8af1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
