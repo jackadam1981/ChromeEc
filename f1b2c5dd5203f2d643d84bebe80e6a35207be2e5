@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ea6380_50e72f8c",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-06T23:08:02Z",
+      "side": 1,
+      "message": "Idiomatically, this should be `zassert_unreachable`.",
+      "revId": "f1b2c5dd5203f2d643d84bebe80e6a35207be2e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
