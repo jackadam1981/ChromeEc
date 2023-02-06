@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ba0f47_416949e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-02-06T18:13:39Z",
+      "side": 1,
+      "message": "If I understand correctly, there is no code in the current commit using this new feature, right?\n\nWas it tested using the subsequent CLs?",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "b1cf232e67641b8d32547945b3961567b4afbc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e45d3fc_fc9798dd",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-02-06T18:13:39Z",
+      "side": 1,
+      "message": "Should we declare this functions after all the constants?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "b1cf232e67641b8d32547945b3961567b4afbc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "679de6f5_a25572f8",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-02-06T18:13:39Z",
+      "side": 1,
+      "message": "I realize that none of the fields of this class has a description, however it could be particularly useful to add a comment for these two callbacks. Mostly to describe when these functions are called and what value they are expected to return.",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 79
+      },
+      "revId": "b1cf232e67641b8d32547945b3961567b4afbc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
