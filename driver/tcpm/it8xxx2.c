@@ -83,13 +83,13 @@ void it83xx_Rd_5_1K_only_for_hibernate(int port)
 			  USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND |
 			  USBPD_REG_MASK_CC1_DISCONNECT |
 			  USBPD_REG_MASK_CC1_DISCONNECT_5_1K_TO_GND |
-			  USBPD_REG_MASK_CC1_CC2_RP_RD_SELECT);
+			  USBPD_REG_MASK_CC1_CC2_RP_RD_SELECT); /* 5_1k reserved, now controlled by CCCSR: CC1/CC2_DISCONNECT */
 		/* Disconnect CCs 5V tolerant */
 		IT83XX_USBPD_CCPSR(port) |=
 			(USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
-			 USBPD_REG_MASK_DISCONNECT_POWER_CC1);
+			 USBPD_REG_MASK_DISCONNECT_POWER_CC1); /* reserved */
 		/* Enable CCs analog module */
-		IT83XX_USBPD_CCGCR(port) &= ~USBPD_REG_MASK_DISABLE_CC;
+		IT83XX_USBPD_CCGCR(port) &= ~USBPD_REG_MASK_DISABLE_CC; /* reserved, now controlled by CCCSR: CC1/CC2_DISCONNECT */
 	}
 }
 
@@ -328,13 +328,13 @@ static void it8xxx2_enable_vconn(enum usbpd_port port, int enabled)
 			IT83XX_USBPD_CCPSR(port) =
 				(IT83XX_USBPD_CCPSR(port) &
 				 ~USBPD_REG_MASK_DISCONNECT_POWER_CC2) |
-				USBPD_REG_MASK_DISCONNECT_POWER_CC1;
+				USBPD_REG_MASK_DISCONNECT_POWER_CC1; /* reserved */
 		} else {
 			IT83XX_USBPD_CCCSR(port) = USBPD_CC1_DISCONNECTED(port);
 			IT83XX_USBPD_CCPSR(port) =
 				(IT83XX_USBPD_CCPSR(port) &
 				 ~USBPD_REG_MASK_DISCONNECT_POWER_CC1) |
-				USBPD_REG_MASK_DISCONNECT_POWER_CC2;
+				USBPD_REG_MASK_DISCONNECT_POWER_CC2; /* reserved */
 		}
 	} else {
 		/* Connect cc analog module (ex.UP/RD/DET/TX/RX) */
@@ -343,16 +343,27 @@ static void it8xxx2_enable_vconn(enum usbpd_port port, int enabled)
 		/* Disable cc 5v tolerant */
 		IT83XX_USBPD_CCPSR(port) |=
 			(USBPD_REG_MASK_DISCONNECT_POWER_CC1 |
-			 USBPD_REG_MASK_DISCONNECT_POWER_CC2);
+			 USBPD_REG_MASK_DISCONNECT_POWER_CC2); /* reserved */
 	}
 }
 
 static void it8xxx2_enable_cc(enum usbpd_port port, int enable)
 {
-	if (enable)
-		IT83XX_USBPD_CCGCR(port) &= ~USBPD_REG_MASK_DISABLE_CC;
-	else
-		IT83XX_USBPD_CCGCR(port) |= USBPD_REG_MASK_DISABLE_CC;
+	if (enable) {
+#if defined(CONFIG_SOC_IT81202_CX) || defined(CONFIG_SOC_IT81302_CX)
+		IT83XX_USBPD_CCCSR(port) &= ~(USBPD_REG_MASK_CC1_DISCONNECT |
+					      USBPD_REG_MASK_CC2_DISCONNECT);
+#else
+		IT83XX_USBPD_CCGCR(port) &= ~USBPD_REG_MASK_DISABLE_CC; /* reserved, now controlled by CCCSR: CC1/CC2_DISCONNECT */
+#endif
+	} else {
+#if defined(CONFIG_SOC_IT81202_CX) || defined(CONFIG_SOC_IT81302_CX)
+		IT83XX_USBPD_CCCSR(port) |= (USBPD_REG_MASK_CC1_DISCONNECT |
+					     USBPD_REG_MASK_CC2_DISCONNECT);
+#else
+		IT83XX_USBPD_CCGCR(port) |= USBPD_REG_MASK_DISABLE_CC; /* reserved, now controlled by CCCSR: CC1/CC2_DISCONNECT */
+#endif
+	}
 }
 
 static void it8xxx2_set_power_role(enum usbpd_port port, int power_role)
@@ -373,7 +384,7 @@ static void it8xxx2_set_power_role(enum usbpd_port port, int power_role)
 		/* Bit0: source */
 		IT83XX_USBPD_MHSR1(port) |= USBPD_REG_MASK_SOP_PORT_POWER_ROLE;
 		/* Bit1: CC1 and CC2 select Rp */
-		IT83XX_USBPD_CCCSR(port) |= USBPD_REG_MASK_CC1_CC2_RP_RD_SELECT;
+		IT83XX_USBPD_CCCSR(port) |= USBPD_REG_MASK_CC1_CC2_RP_RD_SELECT; /* change define */
 	} else {
 		/*
 		 * Bit[0:6] BMC Rx threshold setting
@@ -390,7 +401,7 @@ static void it8xxx2_set_power_role(enum usbpd_port port, int power_role)
 		IT83XX_USBPD_MHSR1(port) &= ~USBPD_REG_MASK_SOP_PORT_POWER_ROLE;
 		/* Bit1: CC1 and CC2 select Rd */
 		IT83XX_USBPD_CCCSR(port) &=
-			~USBPD_REG_MASK_CC1_CC2_RP_RD_SELECT;
+			~USBPD_REG_MASK_CC1_CC2_RP_RD_SELECT; /* change define */
 	}
 }
 
@@ -833,7 +844,7 @@ static void it8xxx2_init(enum usbpd_port port, int role)
 			    0);
 #endif
 	task_enable_irq(usbpd_ctrl_regs[port].irq);
-	USBPD_START(port);
+	USBPD_START(port); /* reserved */
 	/*
 	 * Disconnect CCs Rd_DB from GND
 	 * NOTE: CCs assert both Rd_5.1k and Rd_DB from USBPD_START() to
