@@ -34,6 +34,24 @@
       "parentUuid": "fd9f8899_ef64243b",
       "revId": "058f97448b787c405be7186f90ce4d148ea91b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a70c08d_ab8864d4",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-06T19:18:47Z",
+      "side": 1,
+      "message": "Doesn\u0027t that host command use this function to set the mux?",
+      "parentUuid": "2355d8c2_d2d3cdf8",
+      "revId": "058f97448b787c405be7186f90ce4d148ea91b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
