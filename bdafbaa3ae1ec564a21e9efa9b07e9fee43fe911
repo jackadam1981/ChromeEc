@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c288a22_857dce04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-06T23:42:26Z",
+      "side": 1,
+      "message": "It looks like all the instances that you changed were of the type:\n\n```\nsubprocess.run(cmd, check\u003dFalse).check_returncode()\n```\n\nThat should be the same as `subprocess.run(cmd, check\u003dTrue)`.\n\nBut I don\u0027t see any that were previously `subprocess.run(cmd, check\u003dTrue)` as the comment suggests.",
+      "range": {
+        "startLine": 14,
+        "startChar": 42,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "bdafbaa3ae1ec564a21e9efa9b07e9fee43fe911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
