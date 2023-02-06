@@ -143,6 +143,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d1c4427_4b9a7a0d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-06T17:40:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4278c1fb_9f5876f6",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "052a00ba_f615660e",
@@ -263,6 +281,24 @@
       "side": 1,
       "message": "I used that approach here, if you want to take a look and see what you think: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4218924/1\n\nI need to obsolete the AMODE host commands from the zephyr tests before I can actually run this full CL stack through the CQ, but hopefully I can get that done today and get verification rolling",
       "parentUuid": "ec1c1e9d_b3a315d7",
+      "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2416a1c3_0445ce1a",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-06T17:40:40Z",
+      "side": 1,
+      "message": "Done.  Furthermore, this looks like it will perhaps save me from the nagging of the code coverage calculations which haven\u0027t been counting my IS_ENABLED as \"covered\"",
+      "parentUuid": "5f9cfd28_2ec86dff",
       "revId": "8d5c8458cb7e73379b533da4e02e4dabf4773568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
