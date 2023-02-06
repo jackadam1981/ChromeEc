@@ -33,6 +33,24 @@
       "message": "Hi Diana\n\nCould you share the build code command for error message?\n\nI use the zmake build frostflow have no error.",
       "revId": "ac8060e36d77c28f7ba470a2d64ee81340f5069a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982d0164_323b6262",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-06T17:13:06Z",
+      "side": 1,
+      "message": "It looks like the failure is in the skyrim unit tests we recently started up: \n`INFO    -  90/127 native_posix              skyrim/skyrim.frostflow.usb_mux_config             FAILED Build failure (native)`\n\nYou can run twister locally like this:\n`~/chromiumos/src/platform/ec $ ./twister -s skyrim/skyrim.frostflow.usb_mux_config`\n\nAnd you can reference this CL to get a sense of how the unit tests are being set up: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4148777\n\nIf you run into any issues setting up or running the unit tests, please feel free to add zephyr-test-eng@google.com to your review",
+      "parentUuid": "2e372bc1_2d15c960",
+      "revId": "ac8060e36d77c28f7ba470a2d64ee81340f5069a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
