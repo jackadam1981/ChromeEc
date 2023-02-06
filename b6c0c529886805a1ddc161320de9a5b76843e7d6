@@ -70,6 +70,30 @@
       },
       "revId": "b6c0c529886805a1ddc161320de9a5b76843e7d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "274a6a50_4de59876",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/Kconfig.it8xxx2",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-02-06T07:47:54Z",
+      "side": 1,
+      "message": "I create a separate CL to remove these two configurations from chip level.\nOn NPCX, each variant has its own configuration.\nShould we create binman nodes for each variant to remove these two configurations?",
+      "parentUuid": "e72687db_7dbaf455",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "b6c0c529886805a1ddc161320de9a5b76843e7d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
