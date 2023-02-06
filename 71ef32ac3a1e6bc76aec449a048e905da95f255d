@@ -22,6 +22,30 @@
       },
       "revId": "71ef32ac3a1e6bc76aec449a048e905da95f255d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5243db70_41f94181",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-06T22:55:47Z",
+      "side": 1,
+      "message": "I think it\u0027s [somewhat ill-defined](http://b/187788091#comment4), but for consistency let\u0027s use `TODO(b/123)`.",
+      "parentUuid": "d89879c1_262a3b07",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "71ef32ac3a1e6bc76aec449a048e905da95f255d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
