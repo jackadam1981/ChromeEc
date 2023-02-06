@@ -16,6 +16,24 @@
       "message": "Did you verify the patch by configuring different FW_CONFIG value and check CPS8200 is enabled/disable accordingly?",
       "revId": "fc121a06a16f13c7a7fa93ac9cc018458015307e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee1a235_03d0c6d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-06T02:40:09Z",
+      "side": 1,
+      "message": "yes, local build test the result , ec logs could conrtol enable/disable by fw_config",
+      "parentUuid": "9f9596bf_41b52ce0",
+      "revId": "fc121a06a16f13c7a7fa93ac9cc018458015307e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
