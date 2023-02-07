@@ -248,11 +248,31 @@ static int rt1739_set_frs_enable(int port, int enable)
 static int rt1739_init(int port)
 {
 	int device_id, oc_setting;
+	int sys_ctrl, vbus_switch_ctrl;
 
 	atomic_clear(&flags[port]);
 
-	RETURN_ERROR(write_reg(port, RT1739_REG_SW_RESET, RT1739_SW_RESET));
-	usleep(1 * MSEC);
+	RETURN_ERROR(read_reg(port, RT1739_REG_SYS_CTRL, &sys_ctrl));
+	RETURN_ERROR(
+		read_reg(port, RT1739_REG_VBUS_SWITCH_CTRL, &vbus_switch_ctrl));
+
+	if (sys_ctrl & RT1739_DEAD_BATTERY) {
+		/* Dead battery boot, see b/267412033#comment6 */
+		RETURN_ERROR(
+			write_reg(port, RT1739_REG_SYS_CTRL,
+				  RT1739_DEAD_BATTERY | RT1739_SHUTDOWN_OFF));
+		rt1739_vbus_sink_enable(port, true);
+		RETURN_ERROR(write_reg(port, RT1739_REG_SYS_CTRL,
+				       RT1739_OT_EN | RT1739_SHUTDOWN_OFF));
+	} else if (!(vbus_switch_ctrl & RT1739_HV_SNK_EN)) {
+		/*
+		 * If rt1739 is not sinking, we can reset its registers safely.
+		 * Otherwise, don't touch the VBUS_SWITCH_CTRL reg.
+		 */
+		RETURN_ERROR(
+			write_reg(port, RT1739_REG_SW_RESET, RT1739_SW_RESET));
+		usleep(1 * MSEC);
+	}
 	RETURN_ERROR(write_reg(port, RT1739_REG_SYS_CTRL,
 			       RT1739_OT_EN | RT1739_SHUTDOWN_OFF));
 
