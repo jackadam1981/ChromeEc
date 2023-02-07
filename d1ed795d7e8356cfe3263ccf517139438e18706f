@@ -88,6 +88,24 @@
       "parentUuid": "4a0af440_cf4dd131",
       "revId": "d1ed795d7e8356cfe3263ccf517139438e18706f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc32291c_a75bbb01",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-07T17:20:02Z",
+      "side": 1,
+      "message": "Well, now that you\u0027ve both +2\u0027d it, I\u0027ve talked myself into re-doing the mode entry host command which was providing coverage for a couple of the stubs.  It will now return an error for our use-case, which makes practical sense.  I\u0027ll optimistically hit CQ+1, but I suspect the stub coverage will regress enough that I need to figure out another approach. \n\nWhat do you view the as trivial approach to coverage?\n\nI agree that moving to a structured interface would remove the need to cover the functions, and also that I have a sufficient level of refactoring going on already without going for that.",
+      "parentUuid": "a44bb4de_8c7cb88d",
+      "revId": "d1ed795d7e8356cfe3263ccf517139438e18706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

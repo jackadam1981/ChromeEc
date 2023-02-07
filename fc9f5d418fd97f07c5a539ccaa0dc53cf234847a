@@ -16,6 +16,24 @@
       "message": "Low coverage seems to be a side effect of using SYS_SLIST_FOR_EACH_CONTAINER.",
       "revId": "fc9f5d418fd97f07c5a539ccaa0dc53cf234847a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e133f751_0f9ed829",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-07T17:20:02Z",
+      "side": 1,
+      "message": "Yup, I feel entitled to use the LCOV exclusion here since it\u0027s code that meant to tolerate some level of test run variability and it\u0027s okay if it doesn\u0027t run",
+      "parentUuid": "332620fd_c25c0d0e",
+      "revId": "fc9f5d418fd97f07c5a539ccaa0dc53cf234847a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
