@@ -3283,8 +3283,12 @@ static void pe_snk_wait_for_capabilities_run(int port)
 
 	/* When the SinkWaitCapTimer times out, perform a Hard Reset. */
 	if (pd_timer_is_expired(port, PE_TIMER_TIMEOUT)) {
+		if (PE_CHK_FLAG(port, PE_FLAGS_SNK_WAIT_CAP_TIMEOUT)) {
+			pe_set_hard_reset(port);
+			return;
+		}
 		PE_SET_FLAG(port, PE_FLAGS_SNK_WAIT_CAP_TIMEOUT);
-		pe_set_hard_reset(port);
+		set_state_pe(port, PE_SNK_GET_SOURCE_CAP);
 	}
 }
 
@@ -3975,6 +3979,10 @@ static void pe_snk_get_source_cap_run(int port)
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
+		if (PE_CHK_FLAG(port, PE_FLAGS_SNK_WAIT_CAP_TIMEOUT)) {
+			set_state_pe(port, PE_SNK_WAIT_FOR_CAPABILITIES);
+			return;
+		}
 		set_state_pe(port, PE_SNK_READY);
 	}
 }
