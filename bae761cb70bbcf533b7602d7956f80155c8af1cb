@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b659120_fea409c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-07T18:13:48Z",
+      "side": 1,
+      "message": "This is a very simple test that just ensures that the production image boots successfully. Mostly it was intended to test the logic of allowing a production image to be used for testing. Future tests (such as the [power utilization tests](https://crrev.com/c/4193838/1?usp\u003drelated-change)) will use a production image in a similar way but run additional commands to check utilization.",
+      "parentUuid": "a4bfb682_b6e30a64",
+      "range": {
+        "startLine": 11,
+        "startChar": 56,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "bae761cb70bbcf533b7602d7956f80155c8af1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98178ca5_fc80fb0e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-04T00:17:30Z",
       "side": 1,
       "message": "I would also run another \"traditional\" test to make sure nothing breaks.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "bae761cb70bbcf533b7602d7956f80155c8af1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4199f132_5a894983",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-07T18:13:48Z",
+      "side": 1,
+      "message": "I included that one as the most important example, but I did run other tests. After making some changes I\u0027m in the process of running the full test suite again, so I\u0027ll update the commit comment to reflect that.",
+      "parentUuid": "98178ca5_fc80fb0e",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "I think we\u0027re conflating \"image\" here with two different concepts. The original `ImageType` allowed toggling between the `RO` and `RW` parts of the test binary (\"image\").\n\nI think we want to be able to independently specify the binary we\u0027re using vs RO/RW. Something like:\n\n```\nclass ImageType(Enum):\n    \"\"\"EC Image type to use for the test.\"\"\"\n    RO \u003d 1\n    RW \u003d 2\n```\n\n```\nclass BinaryType(Enum):\n    TEST \u003d 1\n    PRODUCTION \u003d 2\n```\n\n(Not really happy with `Binary` vs `Image`, so if you can think of better names, feel free to use those.)",
       "parentUuid": "df133bfa_30921937",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 7
+      },
+      "revId": "bae761cb70bbcf533b7602d7956f80155c8af1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b1d2755_41acf0fc",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-07T18:13:48Z",
+      "side": 1,
+      "message": "That\u0027s a good point. I guess I was assuming that conflating the two was intentional in this case because `image_to_use` was used to represent `ImageType` throughout the code. I\u0027ve separated those two out now so we have `imagetype_to_use` and `apptype_to_use` where `ImageType` is always `RW` or `RO` and `ApplicationType` is `TEST` or `PRODUCTION`. \n\nThoughts?",
+      "parentUuid": "09400f51_7508fa7f",
       "range": {
         "startLine": 134,
         "startChar": 4,
