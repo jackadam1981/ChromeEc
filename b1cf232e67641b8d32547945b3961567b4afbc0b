@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b598be2_6d6834e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-07T19:09:14Z",
+      "side": 1,
+      "message": "Correct, this CL adds the features but it is not utilized until a followup CL (go/crrv/c/4193838/1). It is tested in the subsequent CLs.",
+      "parentUuid": "60ba0f47_416949e6",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "b1cf232e67641b8d32547945b3961567b4afbc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e45d3fc_fc9798dd",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-06T18:13:39Z",
       "side": 1,
       "message": "Should we declare this functions after all the constants?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "b1cf232e67641b8d32547945b3961567b4afbc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf94f57a_34296c3e",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-07T19:09:14Z",
+      "side": 1,
+      "message": "Truthfully I think it should be in a different file but that should be part of the bigger restructuring. I could move it below the constants for now.",
+      "parentUuid": "1e45d3fc_fc9798dd",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a85a708b_3154d21b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-07T19:09:14Z",
+      "side": 1,
+      "message": "It may still be overkill but the primary reason for this is that I noticed a common pattern throughout the file where we call `logging.debug` and then call the function. Sometimes we print some of the arguments and sometimes we do not. The goal of this decorator is to replace all those logger calls with a decorator before the function that logs the function call but I didn\u0027t want to make that change all at once.\n\nI could remove it if that seems overly complicated. Thoughts?",
+      "parentUuid": "3da00ee7_607b6ddb",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "b1cf232e67641b8d32547945b3961567b4afbc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "679de6f5_a25572f8",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2023-02-06T18:13:39Z",
       "side": 1,
       "message": "I realize that none of the fields of this class has a description, however it could be particularly useful to add a comment for these two callbacks. Mostly to describe when these functions are called and what value they are expected to return.",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 79
+      },
+      "revId": "b1cf232e67641b8d32547945b3961567b4afbc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29ae86d0_958526e6",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-07T19:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "679de6f5_a25572f8",
       "range": {
         "startLine": 201,
         "startChar": 0,
