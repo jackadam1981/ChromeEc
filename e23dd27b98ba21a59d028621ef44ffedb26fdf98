@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f0c2ebb_a9f9d42d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-07T06:02:26Z",
+      "side": 1,
+      "message": "I\u0027m very hesitant to change this because it locks us into never being able to use the last 64k of Flash, and because this requires an RO update to ensure the FWID pointer is correct.\n\nIf we wanted to change this in the future we couldn\u0027t, because RO firmware contains the FWID address.",
+      "revId": "e23dd27b98ba21a59d028621ef44ffedb26fdf98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
