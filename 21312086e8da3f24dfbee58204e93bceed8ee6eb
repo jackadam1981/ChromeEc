@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cbebfa_a1653241",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-07T21:15:25Z",
+      "side": 1,
+      "message": "Let\u0027s move pchg_count here. Yes, you\u0027ll need to change coachz, redrix, etc. but it\u0027s ok. It\u0027s a trivial change.",
+      "range": {
+        "startLine": 29,
+        "startChar": 11,
+        "endLine": 29,
+        "endChar": 27
+      },
+      "revId": "21312086e8da3f24dfbee58204e93bceed8ee6eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
