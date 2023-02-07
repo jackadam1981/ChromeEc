@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9fc23f1_79115085",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-07T20:30:05Z",
+      "side": 1,
+      "message": "Note that the read/write methods here are only useful for writing to the TOP section registers (8 bit device address 0x20). We also need methods to access TopCtl registers which by default use the 8 bit device address of 0x40",
+      "range": {
+        "startLine": 26,
+        "startChar": 18,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c09015ab_e9210c4f",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 1
