@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447f1b56_16f7329f",
+        "filename": "zephyr/app/ec/chip/arm/microchip_xec/Kconfig.xec_mec172x",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-07T23:24:19Z",
+      "side": 1,
+      "message": "I opened a bug for this.  Please change the comment to \"TODO(b/268254046): mchp Zephyr: MEC172x: verify RO flash size\"",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "9a303a57260cc0bc33f421cfd22ee5aa8e9cfb0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
