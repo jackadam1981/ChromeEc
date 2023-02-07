@@ -52,6 +52,24 @@
       "parentUuid": "c455e74b_ac3c6776",
       "revId": "d1ed795d7e8356cfe3263ccf517139438e18706f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0af440_cf4dd131",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-07T14:19:10Z",
+      "side": 1,
+      "message": "I do have to admit, this is giving me some pause.  Using the inline functions without the CONFIG enabled does improve code readability, but it also defines a set of functions we may never expect to be called, which runs directly counter to our code coverage goals.  I suppose we could label them uncoverable, but then if they do get put into the critical path in the future they do need to be tested.\n\nI don\u0027t have a great solution yet, beyond possibly going back to IS_ENABLED in front of calls we expect to be unreachable and removing those inline definitions.",
+      "parentUuid": "0e8469b4_6dc1ca1a",
+      "revId": "d1ed795d7e8356cfe3263ccf517139438e18706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

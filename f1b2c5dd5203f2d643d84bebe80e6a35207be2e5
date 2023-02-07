@@ -16,6 +16,24 @@
       "message": "Idiomatically, this should be `zassert_unreachable`.",
       "revId": "f1b2c5dd5203f2d643d84bebe80e6a35207be2e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbde9337_e9b21b9c",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-07T14:19:10Z",
+      "side": 1,
+      "message": "Can do.  I\u0027m at a loss as to why it is my local twister run keeps passing but the CQ+1 hits build errors.  Sigh.",
+      "parentUuid": "99ea6380_50e72f8c",
+      "revId": "f1b2c5dd5203f2d643d84bebe80e6a35207be2e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
