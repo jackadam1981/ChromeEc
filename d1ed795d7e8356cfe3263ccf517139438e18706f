@@ -106,6 +106,24 @@
       "parentUuid": "a44bb4de_8c7cb88d",
       "revId": "d1ed795d7e8356cfe3263ccf517139438e18706f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ad0608_220bf02a",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-07T17:30:06Z",
+      "side": 1,
+      "message": "\u003e What do you view the as trivial approach to coverage?\n\nJust build with the config that generates the stub functions, call them directly, and check their return values.\n\n\u003e I agree that moving to a structured interface would remove the need to cover the functions, and also that I have a sufficient level of refactoring going on already without going for that.\n\nYou\u0027ve already stipulated that this will need to be changed to support AP VDMs properly with the BB retimer. I think it\u0027s fine for this to go through several intermediate forms.",
+      "parentUuid": "fc32291c_a75bbb01",
+      "revId": "d1ed795d7e8356cfe3263ccf517139438e18706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
