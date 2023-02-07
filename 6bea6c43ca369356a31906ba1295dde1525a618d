@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb8489fc_672ef572",
+        "filename": "zephyr/program/nissa/craask/src/usbc.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-07T04:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4695e90_5784df31",
+      "range": {
+        "startLine": 211,
+        "startChar": 2,
+        "endLine": 211,
+        "endChar": 24
+      },
+      "revId": "6bea6c43ca369356a31906ba1295dde1525a618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "483acd3e_deeb3d8b",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc80d55a_61ad2423",
+        "filename": "zephyr/program/nissa/craask/src/usbc.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-07T04:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "483acd3e_deeb3d8b",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 30
+      },
+      "revId": "6bea6c43ca369356a31906ba1295dde1525a618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbbb2649_05f4c0a5",
@@ -77,6 +125,24 @@
       "writtenOn": "2023-02-03T22:16:34Z",
       "side": 1,
       "message": "Add a comment here:\n\n```\n/* TODO(b/267537103): Once named-gpios support is dropped, evaluate \n * whether this code should call gpio_pin_configure_dt()\n */\n```",
+      "revId": "6bea6c43ca369356a31906ba1295dde1525a618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d757c00_5bcf5aa5",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-07T04:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbbb2649_05f4c0a5",
       "revId": "6bea6c43ca369356a31906ba1295dde1525a618d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
