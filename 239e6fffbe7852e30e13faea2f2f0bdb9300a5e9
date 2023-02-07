@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "269b8f65_14f4a7ed",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-07T06:48:54Z",
+      "side": 1,
+      "message": "I think you just need to call board_get_pchg_count() once in pchg_startup. The value will be stored in global variable `board_pchg_count`",
+      "range": {
+        "startLine": 285,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 43
+      },
+      "revId": "239e6fffbe7852e30e13faea2f2f0bdb9300a5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
