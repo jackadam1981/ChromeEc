@@ -50,6 +50,24 @@
       "message": "@chaogui@google.com Could you help to click Commit-Quene+2? Thanks.",
       "revId": "193a42d55a3fd63b8ff1a328809330423a6a0eba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf40ac98_bf6f095c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-07T17:59:28Z",
+      "side": 1,
+      "message": "This looks like a build failure in the unit test: `INFO    -  52/126 native_posix              skyrim/skyrim.frostflow.usb_mux_config             FAILED Build failure (native)`\n\nError:\n```\n/mnt/host/source/src/platform/ec/zephyr/program/skyrim/frostflow/src/usb_mux_config.c:128:15: warning: call to undeclared function \u0027I2C_PORT_NODELABEL\u0027; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]\n                .i2c_port \u003d I2C_PORT_NODELABEL(i2c1_0),\n                            ^\n/mnt/host/source/src/platform/ec/zephyr/program/skyrim/frostflow/src/usb_mux_config.c:128:34: error: use of undeclared identifier \u0027i2c1_0\u0027\n                .i2c_port \u003d I2C_PORT_NODELABEL(i2c1_0),\n                                               ^\n1 warning and 1 error generated.\nninja: build stopped: subcommand failed.\n```\n\nPlease see my previous comment for help running the skyrim unit tests and reference for the zephyr test team who can help you with questions",
+      "parentUuid": "1a5184ec_bdb53609",
+      "revId": "193a42d55a3fd63b8ff1a328809330423a6a0eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
