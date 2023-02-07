@@ -16,6 +16,24 @@
       "message": "clang format is forcing these to be on the same line. Does anyone know how to override this?",
       "revId": "a20c190aee2407a91b1f8dc841c0a66f22e3124e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b55b67_1b116179",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-07T18:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc9d1931_e69e33fa",
+      "revId": "a20c190aee2407a91b1f8dc841c0a66f22e3124e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
