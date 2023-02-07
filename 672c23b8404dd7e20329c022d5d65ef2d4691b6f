@@ -87,6 +87,30 @@
       },
       "revId": "672c23b8404dd7e20329c022d5d65ef2d4691b6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5b95b94_2257a519",
+        "filename": "test/tpm_seed_clear.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-07T01:23:11Z",
+      "side": 1,
+      "message": "let us discuss this on Wednesday. `fp_sensor_hwid` is a variable defined here. I do not see it declared in the fpsensor files. so I am not sure how I can solve the problem of tpm_seed using the same approach.\n\nI removed the ifdef around the default and zero values using test_static",
+      "parentUuid": "6d16cbc7_1db5a1a2",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "672c23b8404dd7e20329c022d5d65ef2d4691b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
