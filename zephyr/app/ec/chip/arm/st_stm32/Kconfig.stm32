@@ -1,0 +1,37 @@
+# Copyright 2023 The ChromiumOS Authors.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if SOC_FAMILY_STM32
+
+DT_CHOSEN_Z_SRAM := zephyr,sram
+
+config CROS_EC_PROGRAM_MEMORY_BASE
+	default FLASH_BASE_ADDRESS
+
+config CROS_EC_RAM_BASE
+	default SRAM_BASE_ADDRESS
+
+config CROS_EC_DATA_RAM_SIZE
+	default $(dt_chosen_reg_size_hex,$(DT_CHOSEN_Z_SRAM))
+
+config CROS_EC_RAM_SIZE
+	default $(dt_chosen_reg_size_hex,$(DT_CHOSEN_Z_SRAM))
+
+config CROS_EC_RO_MEM_OFF
+	default 0x0
+
+config CROS_EC_RO_SIZE
+	default 0x40000
+
+config CROS_EC_RW_MEM_OFF
+	# Leave 0x20000 bytes for rollback regions.
+	default 0x60000 if SOC_STM32F412CX
+	default 0x40000
+
+config CROS_EC_RW_SIZE
+	# Remaining flash space is used by RW (STM32F412CX has 1 MiB Flash).
+	default 0xA0000 if SOC_STM32F412CX
+	default 0x40000
+
+endif # SOC_FAMILY_STM32
