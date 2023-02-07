@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0064dfbf_409a357c",
+        "filename": "zephyr/test/drivers/flash/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-07T16:59:34Z",
+      "side": 1,
+      "message": "What does \"the opposite of this return value is ok\" mean?",
+      "range": {
+        "startLine": 635,
+        "startChar": 12,
+        "endLine": 635,
+        "endChar": 13
+      },
+      "revId": "a2a142108276832bb38a9f6b9587f166fb582e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b264e19d_796a57c5",
         "filename": "zephyr/test/drivers/flash/src/flash.c",
         "patchSetId": 1
@@ -14,6 +37,30 @@
       "writtenOn": "2023-02-06T22:15:13Z",
       "side": 1,
       "message": "TODO: The pattern is actually 00 01 02 03 but it gets reversed because little endian. Use `sys_be32_to_cpu()` to normalize this.",
+      "range": {
+        "startLine": 642,
+        "startChar": 12,
+        "endLine": 642,
+        "endChar": 23
+      },
+      "revId": "a2a142108276832bb38a9f6b9587f166fb582e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a8b9fc_6e76c56c",
+        "filename": "zephyr/test/drivers/flash/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-07T16:59:34Z",
+      "side": 1,
+      "message": "I\u0027ll approve this CL with a TODO code comment, but I\u0027m not approving it with a TODO CL comment 😊\n\nIf using the helper is burdensome for some reason, you could use `zassert_mem_equal` and compare to an array of bytes in the expected order.",
+      "parentUuid": "b264e19d_796a57c5",
       "range": {
         "startLine": 642,
         "startChar": 12,
