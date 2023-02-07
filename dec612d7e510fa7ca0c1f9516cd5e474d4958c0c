@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c60f20e9_3ec70faf",
+        "filename": "zephyr/test/skyrim/src/common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-02-07T15:12:57Z",
+      "side": 1,
+      "message": "You can also use `test_export_static` to expose and call `fan_init` directly. My only nit with this is that its running all other functions tied to `HOOK_INIT`\nhttp://cs/chromeos_public/src/platform/ec/include/common.h?l\u003d286",
+      "revId": "dec612d7e510fa7ca0c1f9516cd5e474d4958c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
