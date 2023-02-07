@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b192d59_81f61d1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-07T18:58:22Z",
+      "side": 1,
+      "message": "Even at this stage, it\u0027s fine to give this CL a proper title.\n\nretimer: anx7452: (WIP) Initial driver for ANX7452 USB4 retimer\n\nThe \u0027WIP\u0027 indicates you don\u0027t feel this is in a final state yet.",
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f8e6bc_50e5e64c",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-07T18:58:22Z",
+      "side": 1,
+      "message": "The power on sequence shows this as 30 msec.",
+      "range": {
+        "startLine": 21,
+        "startChar": 36,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c09015ab_e9210c4f",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-07T18:58:22Z",
+      "side": 1,
+      "message": "Similar to the other ANX driver, once we know the I2C interface is responding, we need to set mode control to be I2C register driver instead of GPIO pin driven. This requires setting bit 7 of Top:0xf8. What\u0027s pasted below, is from the other driver to show the equivalent step.\n\n/* Configure for i2c control */\n\tval |\u003d ANX7483_CTRL_REG_EN;\n\tRETURN_ERROR(anx7483_write(me, ANX7483_ANALOG_STATUS_CTRL_REG, val));",
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "075c3469_0e877410",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-07T18:58:22Z",
+      "side": 1,
+      "message": "This is sort of my personal preference, rather than a must have, but I think it\u0027s good to add a brief comment before each of these potential bit writes.\n\n/* Apply  CC polarity setting */",
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e149fca9_ad6026ad",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-07T18:58:22Z",
+      "side": 1,
+      "message": "I\u0027m not clear what the intent here is in this section. Section 2.4 states:\n\nUpon CC1/CC2 detection event or HPD event, system PD EC sets:\n- [TOP:0xF8] bit7 set to 1, bit4 (flip) set to CC1 (0) or CC2(1) according the PD detect, as well as [CtlTop:0x04] bit1 set to CC1\nor CC2\n\nTOP:0xF8] bit7 set to 1 will be set in the _init method. Besides this bit, we need to potentially set Top:0xf8 bit 4 and CtlTop:0x04 bit 1",
+      "range": {
+        "startLine": 83,
+        "startChar": 17,
+        "endLine": 83,
+        "endChar": 45
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69eba124_ae06cfcc",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-07T18:58:22Z",
+      "side": 1,
+      "message": "In the anx7483, all the control settings are done in the same single register, so for that case it makes sense to read that register, then modify the local copy, and write it back via I2C once the local register is modified.\n\nBut for ANX7452, each mode may require a different register read/write operation. So from an efficiency state, it makes more sense to only read the register if we need to modify it.",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 68
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a5f1ec_ab459c6e",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-07T18:58:22Z",
+      "side": 1,
+      "message": "Similar to my previous comment, we don\u0027t necessarily want to write all 4 registers if not required. However, one thing we\u0027re missing in this section is disabling modes that\u0027s aren\u0027t required.\n\nThe ANX7483 _set method accomplishes this by setting the initial register value to the be the value to enable I2C register control, and nothing else. Then other bits are OR\u0027d in as required. Then that final value gets written to the register. So it\u0027s consistent.\n\nFor ANX7452, it won\u0027t be this neat and tidy because some modes require 2 registers to be modified, and those may be different registers other modes..\n\nFor example, if DP mode is enabled, then CtlTop:0x05 bit 0 is set, but this register has no effect on USB or TBT modes. So we need to handle setting DP mode and turning off USB4 or TBT mode.",
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c83d6b5_ef0a13a7",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-07T18:58:22Z",
+      "side": 1,
+      "message": "the programming guide doesn\u0027t give much detail, but from context, I\u0027m pretty certain we won\u0027t need to worry about the SWAP bit in this register. This control is related to the data role of the port. DFP (host) and UFP (device). Chromebook ports would always be a DFP when this chip is required for operation. So this bit should always be left as 0. Note that it can be manufactured this way as well as it has EFUSE control.",
+      "range": {
+        "startLine": 140,
+        "startChar": 11,
+        "endLine": 140,
+        "endChar": 30
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12bda2d6_b630e362",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-07T18:58:22Z",
+      "side": 1,
+      "message": "We need more information from analogix. I\u0027m not sure if bits 0-\u003e4 of Top:0f8 reflect the actual mux setting. The programming guide has this note:\n\nNote: [Top:05] bit [6:4] show the final working result of FLIP, USB_EN and DP_EN\n\nBut the details of this register are not given. And, we need to know which register/bit indicates USB4 and TBT modes are active.",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 29
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "890cf9f2_c600927d",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-07T18:58:22Z",
+      "side": 1,
+      "message": "We don\u0027t have the full register document yet, so it\u0027s a little tough to give these meaningful names, but we do want to differentiate between the registers and their various bit definitions. I think it\u0027s best to do something like:\n\nchip_section_name_reg\nchip -\u003e anx7452\nsection -\u003e TOP, USB, DP, CTLTOP, etc\nname -\u003e CTRL for register 0xF8, \nreg -\u003e REG to indicate this macro is for register offset vs a bit or bitfield\n\nI think the registers as defined in the other ANX retimer is a good example to follow.\n\n/*\n * Analog_Status_CTRL register\n *\n * 7:6 Reserved\n * 5   Reg_bypass_EN (0: Enable state machine, 1: Disable state machine.)\n * 4   Reg_EN (0: All configures are controlled by pin.\n *             1: All configures are controlled by registers.)\n * 3   Reserved\n * 2   FLIP_EN (0: no flip; 1: enable flip.)\n * 1   DP_EN (0: disable DP mode; 1: Enable DP mode.)\n * 0   USB_EN (1: disable USB mode; 1: enable USB mode.)\n */\n#define ANX7483_ANALOG_STATUS_CTRL_REG 0x07\n#define ANX7483_CTRL_REG_BYPASS_EN BIT(5)\n#define ANX7483_CTRL_REG_EN BIT(4)\n#define ANX7483_CTRL_FLIP_EN BIT(2)\n#define ANX7483_CTRL_DP_EN BIT(1)\n#define ANX7483_CTRL_USB_EN BIT(0)\n\nThis visually makes it clear, that the register offset is given first, and the macros under that are for definitions of the register itself.\n\nWe don\u0027t have good names for CtlTop:0x05 or CtlTop:0x06, but we can infer from their use. eg. 0x06 -\u003e USB4/TBT enable, 0x05 -\u003e DP enable, 0x04 -\u003e USB3 enable\nSo for until we get further info, we could use:\n\nANX7483_CTLTOP_USB4_TBT_REG\nANX7483_CTLTOP_DP_REG\nANX7483_CTLTOP_USB3_REG",
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
