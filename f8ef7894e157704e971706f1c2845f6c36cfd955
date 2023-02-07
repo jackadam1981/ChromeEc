@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0afbd5a9_fc09a954",
+        "filename": "test/tpm_seed_clear.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-07T04:13:55Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org Hi Tom, how about this version. I was able to use the if statement. I had to define set_tpm_seed and get_tpm_seed functions",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "f8ef7894e157704e971706f1c2845f6c36cfd955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
