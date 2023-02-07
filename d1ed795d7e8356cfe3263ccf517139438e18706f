@@ -70,6 +70,24 @@
       "parentUuid": "0e8469b4_6dc1ca1a",
       "revId": "d1ed795d7e8356cfe3263ccf517139438e18706f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a44bb4de_8c7cb88d",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-07T16:46:07Z",
+      "side": 1,
+      "message": "I don\u0027t think it goes against our coverage goals as long as they\u0027re covered, and they should be trivial to unit test (assuming we get that working). We do expect `dp_init` to be called when DP support is disabled in production, and I suspect we\u0027ll end up with a few more functions like that.\n\nWe might be able to reduce the need for them if we gave the alt mode modules a structured interface with thin wrappers like our drivers for TCPCs, etc. Then we could supply a null version of the structure for unsupported modes but still do a runtime nullness check before returning the default value. That would also require some DPM refactoring that should probably remain out of scope for this change.",
+      "parentUuid": "4a0af440_cf4dd131",
+      "revId": "d1ed795d7e8356cfe3263ccf517139438e18706f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
