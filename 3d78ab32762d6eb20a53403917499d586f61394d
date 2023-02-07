@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "350e3740_32dc06df",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-07T22:59:59Z",
+      "side": 1,
+      "message": "Did you intentionally choose 3 here or did you mean 2?",
+      "range": {
+        "startLine": 144,
+        "startChar": 17,
+        "endLine": 144,
+        "endChar": 18
+      },
+      "revId": "3d78ab32762d6eb20a53403917499d586f61394d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ce8b089_0c566d13",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-07T22:59:59Z",
+      "side": 1,
+      "message": "nit: \"type\" now that we\u0027ve changed it.",
+      "range": {
+        "startLine": 670,
+        "startChar": 41,
+        "endLine": 670,
+        "endChar": 46
+      },
+      "revId": "3d78ab32762d6eb20a53403917499d586f61394d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
