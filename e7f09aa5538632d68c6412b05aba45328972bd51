@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f83759e_94026213",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2023-02-07T03:20:59Z",
+      "side": 1,
+      "message": "Nit: Don\u0027t need this break, or the other one.",
+      "range": {
+        "startLine": 386,
+        "startChar": 2,
+        "endLine": 386,
+        "endChar": 7
+      },
+      "revId": "e7f09aa5538632d68c6412b05aba45328972bd51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
