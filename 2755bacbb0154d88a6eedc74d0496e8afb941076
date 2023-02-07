@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e09c5c_68fe1345",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-07T23:23:46Z",
+      "side": 1,
+      "message": "Please also run `zmake compare-builds -a` with all the CLs in this set.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "2755bacbb0154d88a6eedc74d0496e8afb941076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
