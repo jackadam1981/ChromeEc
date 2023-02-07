@@ -22,6 +22,30 @@
       },
       "revId": "adb272aeb6db8253218152558b204087a46fbb54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f1a891_2e890685",
+        "filename": "zephyr/Kconfig.wireless_charger",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-07T06:16:30Z",
+      "side": 1,
+      "message": "update set13",
+      "parentUuid": "73876a62_38d82bd9",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "adb272aeb6db8253218152558b204087a46fbb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
