@@ -16,6 +16,24 @@
       "message": "I\u0027m very hesitant to change this because it locks us into never being able to use the last 64k of Flash, and because this requires an RO update to ensure the FWID pointer is correct.\n\nIf we wanted to change this in the future we couldn\u0027t, because RO firmware contains the FWID address.",
       "revId": "e23dd27b98ba21a59d028621ef44ffedb26fdf98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3267d0b1_8329dc30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-02-07T06:41:28Z",
+      "side": 1,
+      "message": "I checked CONFIG_CROS_EC_RW_SIZE for all SOCs. The maximum setting is 0x50000. If this space setting is not enough to use, we will all face the same problem.",
+      "parentUuid": "0f0c2ebb_a9f9d42d",
+      "revId": "e23dd27b98ba21a59d028621ef44ffedb26fdf98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
