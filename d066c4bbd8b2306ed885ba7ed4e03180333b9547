@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8fbf8b7_2f0d681b",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-08T02:33:14Z",
+      "side": 1,
+      "message": "no need for `static` here.\nalso, this is the same name as the global which is confusing.\ndid you mean to set the global variable here so\nboard_get_pchg_count() can return it?",
+      "range": {
+        "startLine": 783,
+        "startChar": 1,
+        "endLine": 783,
+        "endChar": 7
+      },
+      "revId": "d066c4bbd8b2306ed885ba7ed4e03180333b9547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b2efa6_6bca8d0a",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-08T02:33:14Z",
+      "side": 1,
+      "message": "please add function description.",
+      "range": {
+        "startLine": 371,
+        "startChar": 21,
+        "endLine": 371,
+        "endChar": 41
+      },
+      "revId": "d066c4bbd8b2306ed885ba7ed4e03180333b9547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
