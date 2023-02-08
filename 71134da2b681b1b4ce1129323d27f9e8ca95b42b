@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2fbc000_ad5f3d1b",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-08T17:21:47Z",
+      "side": 1,
+      "message": "You\u0027re returning pchg_count and storing it back in pchg_count at line 788.\n\nYou need to add the following to coachz, redrix:\n\n    int board_get_pchg_count(void)\n    {\n        return ARRAY_SIZE(pchgs);\n    }\n    \nbecause ARRAY_SIZE doesn\u0027t work beyond compilation unit.",
+      "range": {
+        "startLine": 233,
+        "startChar": 8,
+        "endLine": 233,
+        "endChar": 18
+      },
+      "revId": "71134da2b681b1b4ce1129323d27f9e8ca95b42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
