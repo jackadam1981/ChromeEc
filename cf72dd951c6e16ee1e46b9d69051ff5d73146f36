@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c0824179_fce50c2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 45
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-08T00:00:34Z",
+      "side": 1,
+      "message": "Tested this CL on Rex and verified that a PD contract is established on both C0 and C1",
+      "revId": "cf72dd951c6e16ee1e46b9d69051ff5d73146f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "21f4dcf3_397c0ac9",
         "filename": "zephyr/test/drivers/gpio_unhook/CMakeLists.txt",
         "patchSetId": 45
