@@ -68,6 +68,24 @@
       "parentUuid": "1a5184ec_bdb53609",
       "revId": "193a42d55a3fd63b8ff1a328809330423a6a0eba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9b72c58_9bb49343",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-02-08T10:30:13Z",
+      "side": 1,
+      "message": "PS8811 have no zephyr API mux structure, this CL base on CROS_EC guybrush to modify, not base on zephyr. The zephyr test need meet zephyr mux structure, but PS8811 is USBA, can\u0027t use mux",
+      "parentUuid": "bf40ac98_bf6f095c",
+      "revId": "193a42d55a3fd63b8ff1a328809330423a6a0eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
