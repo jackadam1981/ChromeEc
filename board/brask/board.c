@@ -58,7 +58,7 @@ struct pchg pchgs[] = {
 		.events = QUEUE_NULL(PCHG_EVENT_QUEUE_SIZE, enum pchg_event),
 	},
 };
-const int pchg_count = ARRAY_SIZE(pchgs);
+int pchg_count = ARRAY_SIZE(pchgs);
 
 __override void board_pchg_power_on(int port, bool on)
 {

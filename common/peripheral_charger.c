@@ -226,6 +226,11 @@ __overridable void board_pchg_power_on(int port, bool on)
 {
 }
 
+__overridable int board_get_pchg_count(void)
+{
+	return pchg_count;
+}
+
 /*
  * This handles two cases: asynchronous reset and synchronous reset.
  *
@@ -822,6 +827,8 @@ void pchg_task(void *u)
 {
 	struct pchg *ctx;
 	int p;
+
+	pchg_count = board_get_pchg_count();
 
 	if (chipset_in_state(CHIPSET_STATE_ON))
 		/* We are here after power-on (because of late sysjump). */
