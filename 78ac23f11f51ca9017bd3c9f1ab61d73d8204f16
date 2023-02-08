@@ -16,6 +16,24 @@
       "message": "There\u0027s a CL which retrieve the CROS_EC_RO/W_SIZE from the dts:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4226836\n\nDo you like to rebase or wait for the change to merge?",
       "revId": "78ac23f11f51ca9017bd3c9f1ab61d73d8204f16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "490855c7_bcbb8d21",
+        "filename": "zephyr/app/ec/chip/arm/st_stm32/Kconfig.stm32",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-02-08T07:03:17Z",
+      "side": 1,
+      "message": "I think you mean this CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4165992.\n\nThanks for the information. I\u0027ll rebase my change on this.",
+      "parentUuid": "0eb487c9_19378290",
+      "revId": "78ac23f11f51ca9017bd3c9f1ab61d73d8204f16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
