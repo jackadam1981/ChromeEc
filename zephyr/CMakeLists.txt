@@ -195,8 +195,6 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACPI
                                                 "${PLATFORM_EC}/common/acpi.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_AMD_SB_RMI
 						"${PLATFORM_EC}/driver/sb_rmi.c")
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_AMD_STB_DUMP
-						"${PLATFORM_EC}/driver/amd_stb.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_AMD_STT
 						"${PLATFORM_EC}/driver/amd_stt.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BACKLIGHT_LID

@@ -8,7 +8,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
-#include "driver/amd_stb.h"
+#include "drivers/amd_stb.h"
 #include "ec_commands.h"
 #include "gpio.h"
 #include "hooks.h"
