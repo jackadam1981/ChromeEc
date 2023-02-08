@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ab2519_a22300df",
+        "filename": "common/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1519424
+      },
+      "writtenOn": "2023-02-08T05:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18eb0824_20ee2c19",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 69
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4523229_ba21886b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dc7f758_f6cf86df",
+        "filename": "common/host_command_memory_dump.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1519424
+      },
+      "writtenOn": "2023-02-08T05:11:45Z",
+      "side": 1,
+      "message": "Good suggestion. Done.",
+      "parentUuid": "b4523229_ba21886b",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1ca4b39_bce43b78",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-02-02T22:07:22Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 5559,
+        "startChar": 35,
+        "endLine": 5559,
+        "endChar": 38
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e232fe53_5012f06f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 5559,
+      "author": {
+        "id": 1519424
+      },
+      "writtenOn": "2023-02-08T05:11:45Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "d1ca4b39_bce43b78",
       "range": {
         "startLine": 5559,
         "startChar": 35,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d75f5c82_25b6130f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 5566,
+      "author": {
+        "id": 1519424
+      },
+      "writtenOn": "2023-02-08T05:11:45Z",
+      "side": 1,
+      "message": "There isn\u0027t a command for the host to register memory regions for dumping, so I\u0027m not sure there\u0027s a use case for the host clearing?",
+      "parentUuid": "5f9a2822_9a365e73",
+      "range": {
+        "startLine": 5566,
+        "startChar": 6,
+        "endLine": 5566,
+        "endChar": 36
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b9559a7_8706a8e5",
         "filename": "include/ec_commands.h",
         "patchSetId": 9
@@ -106,6 +202,30 @@
       "writtenOn": "2023-02-02T22:07:22Z",
       "side": 1,
       "message": "The host command protocol already provides a versioning mechanism.  I don\u0027t think this is needed to future proof the command.  I also can\u0027t think of an instance where we would have 64-bit support, but only needed a single offset for all memory regions.  It seems more likely we would need to each `struct ec_response_memory_dump_get_entry_info` to include a 64-bit address.",
+      "range": {
+        "startLine": 5579,
+        "startChar": 1,
+        "endLine": 5580,
+        "endChar": 19
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee97667d_7e63d8f7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 5580,
+      "author": {
+        "id": 1519424
+      },
+      "writtenOn": "2023-02-08T05:11:45Z",
+      "side": 1,
+      "message": "Fair enough. Removed.",
+      "parentUuid": "1b9559a7_8706a8e5",
       "range": {
         "startLine": 5579,
         "startChar": 1,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e858ab50_0154d2af",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1519424
+      },
+      "writtenOn": "2023-02-08T05:11:45Z",
+      "side": 1,
+      "message": "I considered this, but the index is arbitrary (order in which memory is registered). It does serve as a rough paging mechanism.\n\nA another option would be to take an address and size. Obviously not all of the requested memory would be available, but it could print all the memory that is available in the requested range.\n\nI will revisit this option.",
+      "parentUuid": "fba4786f_64ee884d",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 15
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a99000f_1583bec4",
         "filename": "util/ectool.cc",
         "patchSetId": 9
@@ -152,6 +296,30 @@
       "writtenOn": "2023-02-02T22:07:22Z",
       "side": 1,
       "message": "Just FYI : once this change merges, the ectool requires an uprev, but the uprev process is automatic.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/docs/pupr.md;l\u003d1",
+      "range": {
+        "startLine": 9131,
+        "startChar": 0,
+        "endLine": 9131,
+        "endChar": 50
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a535bf_300d63e9",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9131,
+      "author": {
+        "id": 1519424
+      },
+      "writtenOn": "2023-02-08T05:11:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6a99000f_1583bec4",
       "range": {
         "startLine": 9131,
         "startChar": 0,
@@ -175,6 +343,30 @@
       "writtenOn": "2023-02-02T22:07:22Z",
       "side": 1,
       "message": "`if (isprint(seg-\u003emem[i + j]))`",
+      "range": {
+        "startLine": 9238,
+        "startChar": 4,
+        "endLine": 9240,
+        "endChar": 0
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1103395b_8fa9072f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 9240,
+      "author": {
+        "id": 1519424
+      },
+      "writtenOn": "2023-02-08T05:11:45Z",
+      "side": 1,
+      "message": "Good suggestion. Done.",
+      "parentUuid": "d6b132f5_3b83a0e5",
       "range": {
         "startLine": 9238,
         "startChar": 4,
@@ -210,6 +402,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d1b7c19_2aad25e4",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1519424
+      },
+      "writtenOn": "2023-02-08T05:11:45Z",
+      "side": 1,
+      "message": "Good suggestion. Switched to `HOOK_INIT`. This simplifies a few things.",
+      "parentUuid": "27eeab93_e1c8ab9e",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7cfc473_b954e9eb",
         "filename": "zephyr/shim/src/register_memory_dump.c",
         "patchSetId": 9
@@ -221,6 +437,30 @@
       "writtenOn": "2023-02-02T22:07:22Z",
       "side": 1,
       "message": "Thread names can be compiled out with `CONFIG_THREAD_NAME\u003dn`, so you\u0027ll need a different mechanism for the block list.",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 12
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4335dad4_36540e83",
+        "filename": "zephyr/shim/src/register_memory_dump.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1519424
+      },
+      "writtenOn": "2023-02-08T05:11:45Z",
+      "side": 1,
+      "message": "Indeed. I switched to using TASK_ID. This requires some manual maintenance of the non-shimmed task list, but it saves 1.5KB of flash. The extra friction may also help mitigate dumping the wrong thread.",
+      "parentUuid": "f7cfc473_b954e9eb",
       "range": {
         "startLine": 18,
         "startChar": 2,
