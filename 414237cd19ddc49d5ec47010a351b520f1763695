@@ -22,6 +22,30 @@
       },
       "revId": "414237cd19ddc49d5ec47010a351b520f1763695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bfdec65_58170506",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-08T00:08:00Z",
+      "side": 1,
+      "message": "To address your latter remark.  As you may have noticed, this is the first of a series of three increasingly nasty CLs to improve the performance of the edge detection.  My goal is to be able to capture exact timing of the special ITE I2C waveform, and possibly even ordinary I2C communication (SPI communication is probably out of reach, unless the clock is artificially reduced).\n\nI tested the code with a repeating pattern on two pins, six edges per period (one signal toggling on each falling edge of the other faster square signal), and I found that without this CL, the code could capture the waveform with reasonable fidelity down to 50us per period (that is six edges for every 50us).  If I reduced the period to 40us, then due to processing delay, many edges were recorded out of order, distorting the recorded signal.\n\nWith this CL, the code can capture the signal with a period down to 28us.  The two simultaneous edges are still recorded as if they happened 4us apart from each other.\n\nThe actual ITE waveform has a period of 10us, so there is still some way to go, hence the nasty assembly CL.  I will follow up with some measurements of the performance improvements we can expect from them, I know for sure, that with the assembly routine, the two simultaneous edges are recorded only 1us apart, leading me to believe that we could achieve recording 6 edges every 10us, to capture the ITE waveform.",
+      "parentUuid": "479e9d34_59b0c757",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "414237cd19ddc49d5ec47010a351b520f1763695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
