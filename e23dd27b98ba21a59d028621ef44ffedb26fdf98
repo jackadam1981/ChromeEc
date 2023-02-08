@@ -34,6 +34,24 @@
       "parentUuid": "0f0c2ebb_a9f9d42d",
       "revId": "e23dd27b98ba21a59d028621ef44ffedb26fdf98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6857bff0_8e15a5d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-08T06:02:35Z",
+      "side": 1,
+      "message": "No other EC uses a RISC-V CPU, so I don\u0027t know if direct comparison of flash size makes sense. Comparing Nissa devices, the RISC-V EC images consume around 15% more flash than the ARM ones.\n\nHowever, the Nissa ARM devices have also nearly filled their flash so that\u0027s more likely to be an issue for the project than running out on this chip. I guess this will be okay.",
+      "parentUuid": "3267d0b1_8329dc30",
+      "revId": "e23dd27b98ba21a59d028621ef44ffedb26fdf98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
