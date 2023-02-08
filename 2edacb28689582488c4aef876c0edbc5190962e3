@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0841432_b036b591",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-08T17:57:25Z",
+      "side": 1,
+      "message": "Let\u0027s simply do \u0027|| board_get_pchg_count() \u003c\u003d port\u0027. We don\u0027t need a variable.",
+      "range": {
+        "startLine": 745,
+        "startChar": 25,
+        "endLine": 745,
+        "endChar": 35
+      },
+      "revId": "2edacb28689582488c4aef876c0edbc5190962e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
