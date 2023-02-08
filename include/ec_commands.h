@@ -777,6 +777,19 @@ enum host_event_code {
 	 * not initialized on the EC, or improperly configured on the host.
 	 */
 	EC_HOST_EVENT_INVALID = 32,
+
+	/*
+	 * This is a floating value that's used for loop counters. It does not
+	 * need to be consistent between the EC/AP, just within the current
+	 * respective build.
+	 */
+	EC_HOST_EVENT_NUM_EVENTS,
+
+	/*
+	 * Only 64 host events are supported. This enum uses 1-based counting so
+	 * it can skip 0 (NONE). The last legal host event number is: 64
+	 */
+	EC_HOST_EVENT_LIMIT = 65
 };
 /* Host event mask */
 #define EC_HOST_EVENT_MASK(event_code) BIT_ULL((event_code)-1)
