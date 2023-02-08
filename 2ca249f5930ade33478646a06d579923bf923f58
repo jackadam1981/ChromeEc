@@ -22,6 +22,47 @@
       },
       "revId": "2ca249f5930ade33478646a06d579923bf923f58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e20012_d4be9e78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-08T00:23:58Z",
+      "side": 1,
+      "message": "It may not be worth it.  But I had set myself the stretch goal of being able to capture the ITE boot waveform, and creating a test case that verifies that it is generated correctly (frequency and phase relationship between the two signals).\n\nI have been running the same two-pin repeating signal as earlier CLs in this chain, and found that with this change, the edges that happen simultaneously are most often recorded 1us apart, but occasionally with the exact same timestamp.  This is in contrast to the code before this CL, which typically recorded simultaneous edges 4us apart.\n\nAlso, this code can sustain recording 6 edges every 7.5us, which gives us some headroom compared to the 10us period of the ITE waveform.  This is a big improvement compared to a maximum of 6 edge every 28us without this CL.",
+      "parentUuid": "a88a4eb5_2262b4e4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "2ca249f5930ade33478646a06d579923bf923f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ad9dfad_518f60e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-08T00:23:58Z",
+      "side": 1,
+      "message": "This code is still a draft with some rough edges, and missing comments.  I will add you to the \"Reviewers\" list when I feel that it is ready.  But it is fine to debate whether this kind of optimization makes sense at all before then.",
+      "revId": "2ca249f5930ade33478646a06d579923bf923f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
