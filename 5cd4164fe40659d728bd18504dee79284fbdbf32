@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28d4f1d5_2bbaad42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-08T17:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02688d56_8f28d864",
+      "revId": "5cd4164fe40659d728bd18504dee79284fbdbf32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab910a4f_766e2e11",
@@ -49,6 +67,24 @@
       "writtenOn": "2023-02-03T17:04:11Z",
       "side": 1,
       "message": "Should the FIFO commit depend on whether the state changed as well?",
+      "revId": "5cd4164fe40659d728bd18504dee79284fbdbf32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "713dd03c_b698b796",
+        "filename": "common/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-08T17:46:13Z",
+      "side": 1,
+      "message": "The updated CL takes care of this for `body_detect_reset`. I\u0027ll upload a new CL if Gwendal thinks it could cause issues.",
+      "parentUuid": "ab910a4f_766e2e11",
       "revId": "5cd4164fe40659d728bd18504dee79284fbdbf32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
