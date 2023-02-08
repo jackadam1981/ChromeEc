@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87bc4d82_6a0bbbb8",
+        "filename": "util/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-02-08T03:31:06Z",
+      "side": 1,
+      "message": "I think we want to keep ectool removed from here.",
+      "range": {
+        "startLine": 11,
+        "startChar": 23,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "91b1cf6d4700b2c91f190952f2c517cb57d07714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f3e44a_d5720d81",
+        "filename": "util/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-02-08T03:31:06Z",
+      "side": 1,
+      "message": "And keep this line removed.",
+      "revId": "91b1cf6d4700b2c91f190952f2c517cb57d07714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8848fd37_4f211d86",
+        "filename": "util/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-02-08T03:31:06Z",
+      "side": 1,
+      "message": "And keep this using stm32mon.c.",
+      "revId": "91b1cf6d4700b2c91f190952f2c517cb57d07714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
