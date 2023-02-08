@@ -10832,7 +10832,7 @@ int cmd_wait_event(int argc, char *argv[])
 	char *e;
 
 	BUILD_ASSERT(ARRAY_SIZE(mkbp_event_text) == EC_MKBP_EVENT_COUNT);
-	BUILD_ASSERT(ARRAY_SIZE(host_event_text) == 33); /* events start at 1 */
+	BUILD_ASSERT(ARRAY_SIZE(host_event_text) < EC_HOST_EVENT_MAX_EVENTS);
 
 	if (!ec_pollevent) {
 		fprintf(stderr, "Polling for MKBP event not supported\n");
@@ -10880,7 +10880,7 @@ int cmd_wait_event(int argc, char *argv[])
 	switch (event_type) {
 	case EC_MKBP_EVENT_HOST_EVENT:
 		printf("Host events:");
-		for (int evt = 1; evt <= 32; evt++) {
+		for (int evt = 1; evt < EC_HOST_EVENT_MAX_EVENTS; evt++) {
 			if (buffer.data.host_event & EC_HOST_EVENT_MASK(evt)) {
 				const char *name = host_event_text[evt];
 
