@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4887a655_4c07d515",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-08T07:20:57Z",
+      "side": 1,
+      "message": "if no need ``` static ```\ni think to board_get_pchg_count() can return it",
+      "parentUuid": "c8fbf8b7_2f0d681b",
+      "range": {
+        "startLine": 783,
+        "startChar": 1,
+        "endLine": 783,
+        "endChar": 7
+      },
+      "revId": "d066c4bbd8b2306ed885ba7ed4e03180333b9547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6b2efa6_6bca8d0a",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-08T02:33:14Z",
       "side": 1,
       "message": "please add function description.",
+      "range": {
+        "startLine": 371,
+        "startChar": 21,
+        "endLine": 371,
+        "endChar": 41
+      },
+      "revId": "d066c4bbd8b2306ed885ba7ed4e03180333b9547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad8d7ba_e1ce69d3",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-08T07:20:57Z",
+      "side": 1,
+      "message": "update it,",
+      "parentUuid": "c6b2efa6_6bca8d0a",
       "range": {
         "startLine": 371,
         "startChar": 21,
