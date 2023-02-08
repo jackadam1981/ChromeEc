@@ -46,6 +46,30 @@
       },
       "revId": "21312086e8da3f24dfbee58204e93bceed8ee6eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105b44e4_c846baf1",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-08T00:58:58Z",
+      "side": 1,
+      "message": "We don\u0027t need board_pchg_count. I suspect ARRAY_SIZE doesn\u0027t work beyond  translation boundaries. I don\u0027t think we can have default:\n\n    __overridable int board_get_pchg_count(void)\n    {\n        return ARRAY_SIZE(pchgs);\n    }\n\nIf it works, that\u0027ll be nice. We don\u0027t need to touch other boards.\n\nI like pchg_count to be encapsulated in peripheral_charger.c and pchg_task set it once on start-up:\n\n    static int pchg_count;\n    ...\n    void   pchg_task(void)\n    {\n        ...\n        pchg_count \u003d board_get_pchg_count();\n        ...",
+      "parentUuid": "51afc89f_570e3084",
+      "range": {
+        "startLine": 29,
+        "startChar": 11,
+        "endLine": 29,
+        "endChar": 27
+      },
+      "revId": "21312086e8da3f24dfbee58204e93bceed8ee6eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
