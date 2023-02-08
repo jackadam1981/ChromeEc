@@ -58,7 +58,6 @@ struct pchg pchgs[] = {
 		.events = QUEUE_NULL(PCHG_EVENT_QUEUE_SIZE, enum pchg_event),
 	},
 };
-const int pchg_count = ARRAY_SIZE(pchgs);
 
 __override void board_pchg_power_on(int port, bool on)
 {
@@ -68,6 +67,10 @@ __override void board_pchg_power_on(int port, bool on)
 		CPRINTS("%s: Invalid port=%d", __func__, port);
 }
 
+__override int board_get_pchg_count(void)
+{
+	return ARRAY_SIZE(pchgs);
+}
 /******************************************************************************/
 
 int board_set_active_charge_port(int port)
