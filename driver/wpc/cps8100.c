@@ -534,6 +534,7 @@ static void cps8100_dump(struct pchg *ctx)
 		cps8100_print_alert_info(val);
 }
 
+static int pchg_count;
 static int cc_cps8100(int argc, const char **argv)
 {
 	struct pchg *ctx;
@@ -542,6 +543,8 @@ static int cc_cps8100(int argc, const char **argv)
 
 	if (argc < 2 || 3 < argc)
 		return EC_ERROR_PARAM_COUNT;
+
+	pchg_count = board_get_pchg_count();
 
 	port = strtoi(argv[1], &end, 0);
 	if (*end || port < 0 || pchg_count <= port)
