@@ -726,6 +726,7 @@ const struct pchg_drv ctn730_drv = {
 	.bist = ctn730_bist,
 };
 
+static int pchg_count;
 static int cc_ctn730(int argc, const char **argv)
 {
 	int port;
@@ -737,6 +738,8 @@ static int cc_ctn730(int argc, const char **argv)
 
 	if (argc < 4)
 		return EC_ERROR_PARAM_COUNT;
+
+	pchg_count = board_get_pchg_count();
 
 	port = strtoi(argv[1], &end, 0);
 	if (*end || port < 0 || pchg_count <= port)
