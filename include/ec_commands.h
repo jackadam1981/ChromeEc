@@ -777,13 +777,16 @@ enum host_event_code {
 	 * not initialized on the EC, or improperly configured on the host.
 	 */
 	EC_HOST_EVENT_INVALID = 32,
+
+	/* The maximum number of support host events */
+	EC_HOST_EVENT_MAX_EVENTS = 65
 };
 /* Host event mask */
 #define EC_HOST_EVENT_MASK(event_code) BIT_ULL((event_code)-1)
 
 /* clang-format off */
-#define HOST_EVENT_TEXT                                                        \
-	{                                                                      \
+#define HOST_EVENT_TEXT                                                \
+	{                                                                  \
 		[EC_HOST_EVENT_NONE] = "NONE",                                 \
 		[EC_HOST_EVENT_LID_CLOSED] = "LID_CLOSED",                     \
 		[EC_HOST_EVENT_LID_OPEN] = "LID_OPEN",                         \
