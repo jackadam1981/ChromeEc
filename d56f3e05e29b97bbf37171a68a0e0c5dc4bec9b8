@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53f31aa_7465a0d8",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-08T17:58:34Z",
+      "side": 1,
+      "message": "Same here. We can simply call board_get_pchg_count(). We don\u0027t need a new variable.",
+      "range": {
+        "startLine": 550,
+        "startChar": 25,
+        "endLine": 550,
+        "endChar": 35
+      },
+      "revId": "d56f3e05e29b97bbf37171a68a0e0c5dc4bec9b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
