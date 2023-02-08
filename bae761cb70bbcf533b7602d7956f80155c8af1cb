@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7815f8c6_cac91908",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-02-08T00:28:31Z",
+      "side": 1,
+      "message": "I see, thanks for sharing the example.\n\nCould we then mention these explicitly? Something like\n\n\u003e ... must supply the appropriate commands (using pre_test_callback and post_test_callback) and finish_regexes\"",
+      "parentUuid": "9b659120_fea409c6",
+      "range": {
+        "startLine": 11,
+        "startChar": 56,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "bae761cb70bbcf533b7602d7956f80155c8af1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98178ca5_fc80fb0e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
