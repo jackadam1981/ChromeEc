@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf6101e9_45547d97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-08T23:28:59Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this flag is completely redundant. This is a first pass to make deleting it easier to reason about.",
+      "revId": "c9980d1702acedb5b9bd3baa02335d47f59cab26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
