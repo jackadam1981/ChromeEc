@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40ea6ed9_dc005ccb",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-08T13:00:07Z",
+      "side": 1,
+      "message": "In programming guide shared along with answers to queries, the wait seems to be 30 - 50 ms",
+      "parentUuid": "73f8e6bc_50e5e64c",
+      "range": {
+        "startLine": 21,
+        "startChar": 36,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9fc23f1_79115085",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 1
