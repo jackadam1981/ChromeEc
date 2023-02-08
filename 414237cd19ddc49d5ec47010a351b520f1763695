@@ -46,6 +46,30 @@
       },
       "revId": "414237cd19ddc49d5ec47010a351b520f1763695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dab41a3_6f239580",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-08T18:06:32Z",
+      "side": 1,
+      "message": "I think that 50us precision should be all that we need in practice. We aren\u0027t trying to replicated a salea logic analyzer. This feature is to ensure that we can detect and measure events and performance at the 1ms level or higher in my opinion.\n\nI don\u0027t think that we would want to record the special i2c waveform with this. If we need to debug the i2c waveform, then we should do so with salaea and a ITE EC connected on the other end.",
+      "parentUuid": "1bfdec65_58170506",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "414237cd19ddc49d5ec47010a351b520f1763695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
