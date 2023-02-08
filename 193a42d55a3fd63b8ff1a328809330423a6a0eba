@@ -104,6 +104,24 @@
       "parentUuid": "b9b72c58_9bb49343",
       "revId": "193a42d55a3fd63b8ff1a328809330423a6a0eba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a3e4c1e_b4b53b53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-08T17:46:31Z",
+      "side": 1,
+      "message": "What do you see when you run `./twister -s skyrim/skyrim.frostflow.usb_mux_config` locally?  \n\nIf the unit tests can\u0027t build, then the CL cannot be submitted.  The low coverage reason helps when the CL builds, but doesn\u0027t meet our coverage criteria.  But first, the tests have to successfully build and run",
+      "parentUuid": "548c1ba4_49a61296",
+      "revId": "193a42d55a3fd63b8ff1a328809330423a6a0eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
