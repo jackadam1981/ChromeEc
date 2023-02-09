@@ -22,6 +22,30 @@
       },
       "revId": "566057775c414bad938d0e2d0a9060eeff26dc14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b9415d3_916d0ded",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-09T22:25:23Z",
+      "side": 1,
+      "message": "You\u0027re correct, but only having the inline assembly caused some test builds to fail so I added the condition that matches what I expect on actual hardware, with this call ensuring correct operation for other builds (mostly native_posix). Using `htobe` will work correctly no matter the endianness of the system because it\u0027s a nop on big-endian systems.",
+      "parentUuid": "01be769d_14c0d650",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "566057775c414bad938d0e2d0a9060eeff26dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
