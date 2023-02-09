@@ -22,6 +22,30 @@
       },
       "revId": "2edacb28689582488c4aef876c0edbc5190962e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cfa7279_26a2c5a3",
+        "filename": "driver/nfc/ctn730.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-09T02:54:21Z",
+      "side": 1,
+      "message": "update it.",
+      "parentUuid": "c0841432_b036b591",
+      "range": {
+        "startLine": 745,
+        "startChar": 25,
+        "endLine": 745,
+        "endChar": 35
+      },
+      "revId": "2edacb28689582488c4aef876c0edbc5190962e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
