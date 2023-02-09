@@ -2976,6 +2976,7 @@ static void tc_attached_src_entry(const int port)
 	 * Set selected current limit in the hardware.
 	 */
 	typec_select_pull(port, TYPEC_CC_RP);
+	CPRINTS("---2 port=%d rp=%d", port, tc[port].select_current_limit_rp);
 	typec_set_source_current_limit(port, tc[port].select_current_limit_rp);
 
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
@@ -3272,6 +3273,8 @@ static void tc_attached_src_run(const int port)
 
 	if (TC_CHK_FLAG(port, TC_FLAGS_UPDATE_CURRENT)) {
 		TC_CLR_FLAG(port, TC_FLAGS_UPDATE_CURRENT);
+		CPRINTS("---3 TC_FLAGS_UPDATE_CURRENT port=%d rp=%d",
+				 port, tc[port].select_current_limit_rp);
 		typec_set_source_current_limit(
 			port, tc[port].select_current_limit_rp);
 		pd_update_contract(port);
