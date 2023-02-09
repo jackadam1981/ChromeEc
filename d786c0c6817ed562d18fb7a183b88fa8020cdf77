@@ -142,6 +142,30 @@
       },
       "revId": "d786c0c6817ed562d18fb7a183b88fa8020cdf77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98398d20_6ef4e2eb",
+        "filename": "include/ap_ro_integrity_check.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-02-09T19:56:57Z",
+      "side": 0,
+      "message": "Yeah rescue or not updating. It would take a lot for someone to do this/exploit it, but why are we even allowing the option.\n\nOnce a return code is assigned and used in ti50 for something as important as AP RO verification, the meaning should not change.",
+      "parentUuid": "7f99c341_de387696",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "d786c0c6817ed562d18fb7a183b88fa8020cdf77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
