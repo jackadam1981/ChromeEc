@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfd0d79d_bdb52134",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-09T21:46:05Z",
+      "side": 1,
+      "message": "nit: Looks like accidental change. Can you remove?",
+      "revId": "c09721e2fdc568f2f2cae21115de20160cd768cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eca0a6a_9cbdc463",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-09T21:46:05Z",
+      "side": 1,
+      "message": "nit: Looks like accidental change. Can you remove?",
+      "revId": "c09721e2fdc568f2f2cae21115de20160cd768cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c7df9f_117c132b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-09T21:46:05Z",
+      "side": 1,
+      "message": "Is this doing anything? (Looks like self-assignment?)",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 57
+      },
+      "revId": "c09721e2fdc568f2f2cae21115de20160cd768cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea2c2cd_01c2b349",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-09T21:46:05Z",
+      "side": 1,
+      "message": "If this fails, should we just early return? (i.e., any reason we would want to continue with the test?)",
+      "range": {
+        "startLine": 695,
+        "startChar": 1,
+        "endLine": 695,
+        "endChar": 55
+      },
+      "revId": "c09721e2fdc568f2f2cae21115de20160cd768cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "301fc6be_cb856f14",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-09T21:46:05Z",
+      "side": 1,
+      "message": "Is this related to the pre/post callbacks? If not, can we move it to a separate CL?",
+      "range": {
+        "startLine": 793,
+        "startChar": 12,
+        "endLine": 793,
+        "endChar": 31
+      },
+      "revId": "c09721e2fdc568f2f2cae21115de20160cd768cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
