@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "33217f88_a3f0c0ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-09T23:15:23Z",
+      "side": 1,
+      "message": "EC is not taking this long to boot, but to be responsive on CC lines.\nI will file bug then.",
+      "parentUuid": "402602e9_ebb06b8a",
+      "range": {
+        "startLine": 15,
+        "startChar": 44,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "972bcf10cc5e3de6a62c4ea8a47c007a3c443477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c0a09cbc_57670708",
