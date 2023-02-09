@@ -22,6 +22,30 @@
       },
       "revId": "d786c0c6817ed562d18fb7a183b88fa8020cdf77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aebce58a_71fb984e",
+        "filename": "include/ap_ro_integrity_check.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-09T18:45:19Z",
+      "side": 0,
+      "message": "Oh wow, it has in very corner cases. Ti50 also used value 35 as unknown for a little bit as well.\n\nWhat do you think we should do here? It is still a failure either way (but AP_RO_V2_NON_ZERO_GBB_FLAGS is treated special by factory tests). If gsc is running the newest version ti50 version then that check will be valid still.\n\nAlso we will start pre-loading DT with a Ti50 FW version that never used value 34 as unknown",
+      "parentUuid": "25b6e48a_79aa79aa",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "d786c0c6817ed562d18fb7a183b88fa8020cdf77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
