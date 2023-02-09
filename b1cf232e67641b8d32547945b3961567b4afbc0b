@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d3e9cb2_1405539e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-09T16:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b598be2_6d6834e7",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "b1cf232e67641b8d32547945b3961567b4afbc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e45d3fc_fc9798dd",
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "\u003e The goal of this decorator is to replace all those logger calls with a decorator before the function that logs the function call but I didn\u0027t want to make that change all at once.\n\nYeah, I think that to do that it would be better to split out in a separate CL that focuses on doing that rather than mixing it with the pre and post-test hooks. It would probably be cleanest if you put the CL that introduces the decorator change at the end of the chain; that way we can go ahead and land the small changes required to get the power tests working, but still have the cleanup.",
       "parentUuid": "a85a708b_3154d21b",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "b1cf232e67641b8d32547945b3961567b4afbc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b75a95d_b990732d",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-09T16:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eafcdca_26b80ae3",
       "range": {
         "startLine": 68,
         "startChar": 0,
