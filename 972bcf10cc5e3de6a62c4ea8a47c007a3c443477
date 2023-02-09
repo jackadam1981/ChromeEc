@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ea8413b_4248613c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3291,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-09T18:09:43Z",
+      "side": 1,
+      "message": "It is only valid to send a Get_Source_Cap message after a PD contract has successfully been negotiated.  You cannot send it without first having an explicit contract in place.",
+      "revId": "972bcf10cc5e3de6a62c4ea8a47c007a3c443477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3631e3e_5c72fbc1",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
