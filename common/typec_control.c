@@ -8,6 +8,7 @@
 #include "tcpm/tcpm.h"
 #include "usbc_ocp.h"
 #include "usbc_ppc.h"
+#include "console.h"
 
 void typec_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
@@ -74,3 +75,23 @@ void typec_set_vconn(int port, bool enable)
 	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) && enable)
 		ppc_set_vconn(port, true);
 }
+
+static int command_current_limit(int argc, const char **argv)
+{
+
+	if (!strcasecmp(argv[1], "1500")) 
+	{
+		typec_set_source_current_limit(0, TYPEC_RP_1A5);
+	} 
+	else if (!strcasecmp(argv[1], "3000")) 
+	{
+		typec_set_source_current_limit(0, TYPEC_RP_3A0);
+	} 
+	else {
+		return EC_ERROR_PARAM1;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(current1, command_current_limit,"<1500|3000>",
+			"limit discharge current");

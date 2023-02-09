@@ -99,6 +99,7 @@ static int nx20p348x_set_vbus_source_current_limit(int port,
 		break;
 	};
 
+	CPRINTS("--- ppc rp=%d", rp);
 	return write_reg(port, NX20P348X_5V_SRC_OCP_THRESHOLD_REG, regval);
 }
 
