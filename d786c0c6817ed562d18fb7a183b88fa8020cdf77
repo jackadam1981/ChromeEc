@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b6e48a_79aa79aa",
+        "filename": "include/ap_ro_integrity_check.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-02-09T18:14:39Z",
+      "side": 0,
+      "message": "I just wanted to confirm. Ti50 has never used 34 as the value for AP_RO_V2_UNKNOWN.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "d786c0c6817ed562d18fb7a183b88fa8020cdf77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
