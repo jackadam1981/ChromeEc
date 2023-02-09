@@ -158,6 +158,24 @@
       "parentUuid": "d309ff64_1d57a6b9",
       "revId": "193a42d55a3fd63b8ff1a328809330423a6a0eba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec07781_09ff1195",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-09T19:20:13Z",
+      "side": 1,
+      "message": "The test was written before the retimer code was added so it\u0027ll need to be updated. For now, could you comment out this block\n```\nskyrim.frostflow.usb_mux_config:\n    extra_configs:\n    - CONFIG_TEST_BOARD_FROSTFLOW\u003dy\n    - CONFIG_TEST_BOARD_USB_MUX_CONFIG\u003dy\n    - CONFIG_TEST_BOARD_USB_MUX_CONFIG_SRC\u003d\"frostflow/usb_mux_config.c\"\n```\n\nin zephyr/test/skyrim/testcase.yaml and upload the updated CL?",
+      "parentUuid": "4a11dfdc_eecae40a",
+      "revId": "193a42d55a3fd63b8ff1a328809330423a6a0eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
