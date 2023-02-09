@@ -7,13 +7,23 @@
 #
 
 # See Makefile for description.
+<<<<<<< HEAD   (4df964 utils: remove ectool from dedede firmware branch)
 host-util-bin-y += lbplay stm32mon ec_sb_firmware_update lbcc \
 	ec_parse_panicinfo cbi-util iteflash
+=======
+host-util-bin-y += cbi-util iteflash
+host-util-bin-cxx-y += ectool ec_parse_panicinfo lbplay ec_sb_firmware_update \
+	stm32mon lbcc
+>>>>>>> BRANCH (61c3af test: Check TPM_SEED is reset after reboot)
 build-util-art-y += util/export_taskinfo.so
 
 build-util-bin-$(CHIP_NPCX) += ecst
+<<<<<<< HEAD   (4df964 utils: remove ectool from dedede firmware branch)
+=======
+host-util-bin-cxx-$(BOARD_NOCTURNE_FP) += ectool_servo
+>>>>>>> BRANCH (61c3af test: Check TPM_SEED is reset after reboot)
 
-host-util-bin-y += uartupdatetool
+host-util-bin-cxx-y += uartupdatetool
 uartupdatetool-objs=uut/main.o uut/cmd.o uut/opr.o uut/l_com_port.o \
 	uut/lib_crc.o
 $(out)/util/uartupdatetool: HOST_CFLAGS+=-Iutil/
@@ -33,7 +43,11 @@ ec_sb_firmware_update-objs=ec_sb_firmware_update.o $(comm-objs) misc_util.o
 ec_sb_firmware_update-objs+=powerd_lock.o
 lbplay-objs=lbplay.o $(comm-objs)
 
+<<<<<<< HEAD   (4df964 utils: remove ectool from dedede firmware branch)
 util/stm32mon.c: $(out)/ec_version.h
+=======
+util/ectool.cc: $(out)/ec_version.h
+>>>>>>> BRANCH (61c3af test: Check TPM_SEED is reset after reboot)
 
 ec_parse_panicinfo-objs=ec_parse_panicinfo.o ec_panicinfo.o
 
@@ -91,11 +105,11 @@ build-util-bin-y += gen_touchpad_hash
 # Assume RW section (touchpad FW must be identical for both RO+RW)
 $(out)/util/gen_touchpad_hash: BUILD_LDFLAGS += -DSECTION_IS_RW=$(EMPTY)
 
-HOST_OPENSSL_CFLAGS := $(shell $(HOST_PKG_CONFIG) --cflags openssl)
-HOST_OPENSSL_LDFLAGS := $(shell $(HOST_PKG_CONFIG) --libs openssl)
+BUILD_OPENSSL_CFLAGS := $(shell $(BUILD_PKG_CONFIG) --cflags openssl)
+BUILD_OPENSSL_LDFLAGS := $(shell $(BUILD_PKG_CONFIG) --libs openssl)
 
-$(out)/util/gen_touchpad_hash: BUILD_CFLAGS += $(HOST_OPENSSL_CFLAGS)
-$(out)/util/gen_touchpad_hash: BUILD_LDFLAGS += $(HOST_OPENSSL_LDFLAGS)
+$(out)/util/gen_touchpad_hash: BUILD_CFLAGS += $(BUILD_OPENSSL_CFLAGS)
+$(out)/util/gen_touchpad_hash: BUILD_LDFLAGS += $(BUILD_OPENSSL_LDFLAGS)
 
 deps-y += $(out)/util/gen_touchpad_hash.d
 endif # CONFIG_TOUCHPAD_VIRTUAL_OFF
