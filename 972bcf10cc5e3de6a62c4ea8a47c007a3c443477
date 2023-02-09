@@ -16,6 +16,24 @@
       "message": "need to make sure this change is not violating the spec.",
       "revId": "972bcf10cc5e3de6a62c4ea8a47c007a3c443477",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb06cca3_75491de1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-09T01:43:53Z",
+      "side": 1,
+      "message": "Spec states that hard reset should be issued. However, CL:2848290 prevents that, by going instead into `PE_SRC_DISABLED` to prevent brownout. Given that battery is not connected.",
+      "parentUuid": "c0a09cbc_57670708",
+      "revId": "972bcf10cc5e3de6a62c4ea8a47c007a3c443477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
