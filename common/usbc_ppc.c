@@ -120,6 +120,7 @@ int ppc_set_vbus_source_current_limit(int port, enum tcpc_rp_value rp)
 	int rv = EC_ERROR_UNIMPLEMENTED;
 	const struct ppc_config_t *ppc;
 
+	CPRINTS("--- ppc set C%d rp=%d", port, rp);
 	if (!board_port_has_ppc(port))
 		return EC_SUCCESS;
 
