@@ -174,6 +174,7 @@ int board_set_active_charge_port(int port)
 		return EC_ERROR_INVAL;
 	}
 
+	CPRINTS("--- now port=%d", port);
 	if (port == CHARGE_PORT_NONE) {
 		CPRINTS("Disabling all charger ports");
 

@@ -781,7 +781,9 @@ static void charge_manager_refresh(void)
 
 	/* Hunt for an acceptable charge port */
 	while (1) {
+		CPRINTS("---1 new_port=%d", new_port);
 		charge_manager_get_best_charge_port(&new_port, &new_supplier);
+		CPRINTS("---2 new_port=%d", new_port);
 
 		if (!left_safe_mode && new_port == CHARGE_PORT_NONE)
 			return;
@@ -806,6 +808,7 @@ static void charge_manager_refresh(void)
 			trigger_ocpc_reset();
 		}
 
+		CPRINTS("---3 new_port=%d", new_port);
 		if (board_set_active_charge_port(new_port) == EC_SUCCESS) {
 			if (IS_ENABLED(CONFIG_EXTPOWER))
 				board_check_extpower();
