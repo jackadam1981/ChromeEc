@@ -140,6 +140,24 @@
       "parentUuid": "8a3e4c1e_b4b53b53",
       "revId": "193a42d55a3fd63b8ff1a328809330423a6a0eba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a11dfdc_eecae40a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-02-09T07:46:57Z",
+      "side": 1,
+      "message": "Hi Diana\n\nI try set ```.i2c_port \u003d 1,``` find still fail because of \n```\n[162/167] Linking C static library zephyr/kernel/libkernel.a\n[163/167] Linking C executable zephyr/zephyr_pre0.elf\nFAILED: zephyr/zephyr_pre0.elf zephyr/zephyr_pre0.map \n: \u0026\u0026 ccache /usr/bin/x86_64-pc-linux-gnu-clang   zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj -o zephyr/zephyr_pre0.elf  -Wl,-T  zephyr/linker_zephyr_pre0.cmd  -Wl,-Map\u003d/home/loganliao/chromiumos/src/platform/ec/twister-out/native_posix/skyrim/skyrim.frostflow.usb_mux_config/zephyr/zephyr_pre0.map  -Wl,--whole-archive  app/libapp.a  zephyr/libzephyr.a  zephyr/arch/arch/posix/core/libarch__posix__core.a  zephyr/soc/posix/inf_clock/libsoc__posix__inf_clock.a  zephyr/boards/posix/native_posix/libboards__posix__native_posix.a  zephyr/subsys/emul/libsubsys__emul.a  zephyr/subsys/testsuite/ztest/libsubsys__testsuite__ztest.a  zephyr/drivers/console/libdrivers__console.a  zephyr/drivers/gpio/libdrivers__gpio.a  zephyr/drivers/serial/libdrivers__serial.a  zephyr/drivers/timer/libdrivers__timer.a  modules/ec/zephyr/libec_shim.a  -Wl,--no-whole-archive  zephyr/kernel/libkernel.a  zephyr/CMakeFiles/offsets.dir/./arch/posix/core/offsets/offsets.c.obj  -L/home/loganliao/chromiumos/src/platform/ec/twister-out/native_posix/skyrim/skyrim.frostflow.usb_mux_config/zephyr  -no-pie  -Wl,--gc-sections  -Wl,-u,_OffsetAbsSyms  -Wl,-u,_ConfigAbsSyms  -m32  -ldl  -pthread  -lm \u0026\u0026 cd /home/loganliao/chromiumos/src/platform/ec/twister-out/native_posix/skyrim/skyrim.frostflow.usb_mux_config/zephyr \u0026\u0026 /usr/bin/cmake -E echo\nld.lld: error: undefined symbol: ps8811_i2c_read\n\u003e\u003e\u003e referenced by usb_mux_config.c:140 (/home/loganliao/chromiumos/src/platform/ec/zephyr/program/skyrim/frostflow/src/usb_mux_config.c:140)\n\u003e\u003e\u003e               usb_mux_config.c.obj:(baseboard_a1_retimer_setup) in archive app/libapp.a\nclang-15: error: linker command failed with exit code 1 (use -v to see invocation)\nninja: build stopped: subcommand failed.\n```\n\nCan\u0027t find the function but already include ps8811.h, is that build not include CROS_EC only build zephyr EC? \n\nI check that but can\u0027t find something wrong.\n\nWould you please help to check and have some advice?",
+      "parentUuid": "d309ff64_1d57a6b9",
+      "revId": "193a42d55a3fd63b8ff1a328809330423a6a0eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
