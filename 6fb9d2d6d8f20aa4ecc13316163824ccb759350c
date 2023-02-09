@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d8cb100_dd4e7924",
+        "filename": "zephyr/test/skyrim/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-09T17:18:59Z",
+      "side": 1,
+      "message": "Hey this is a bit of an odd pattern, I don\u0027t think we should use Kconfig to point directly at \u0027c\u0027 files, it\u0027s just going to make it much harder to find what is building what down the road.\n\nI see that the test hierarchy is already by board variant, how about keeping that as the main parameter use that to select which `CMakeLists.txt` file to include and have a `CMakeLists.txt` for every `src/\u003cvariant\u003e/CMakeLists.txt` that decides what combination of file should be used for the test?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "6fb9d2d6d8f20aa4ecc13316163824ccb759350c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
