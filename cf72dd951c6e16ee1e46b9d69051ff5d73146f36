@@ -37,6 +37,69 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "10888057_4a2d5616",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 45
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-09T15:56:37Z",
+      "side": 1,
+      "message": "Copy minor nits left.",
+      "revId": "cf72dd951c6e16ee1e46b9d69051ff5d73146f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c8b296b_20e8f132",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 45
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-09T15:56:37Z",
+      "side": 1,
+      "message": "interrupt",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "cf72dd951c6e16ee1e46b9d69051ff5d73146f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "234fdc4e_b6233251",
+        "filename": "zephyr/program/nissa/craask/src/usbc.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-09T15:56:37Z",
+      "side": 1,
+      "message": "Note that your TCPC interrupt configuration has this signal set as active low - but the TCPC driver isn\u0027t calling `gpio_pin_configure_dt()` so it\u0027s not a problem for now.\n\nAdd a comment here:\nTODO(b/267537103): Migrate named-gpios to Zephyr\u0027s GPIO hogs. Verify the\nactive high/active low setting once GPIO hogs are used.",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 30
+      },
+      "revId": "cf72dd951c6e16ee1e46b9d69051ff5d73146f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "21f4dcf3_397c0ac9",
         "filename": "zephyr/test/drivers/gpio_unhook/CMakeLists.txt",
         "patchSetId": 45
