@@ -33,7 +33,9 @@ enum ap_ro_status {
 	AP_RO_V2_MISSING_GSCVD = 31,
 	AP_RO_V2_BOARD_ID_MISMATCH = 32,
 	AP_RO_V2_SETTING_NOT_PROVISIONED = 33,
-	AP_RO_V2_UNKNOWN = 34,
+	AP_RO_V2_NON_ZERO_GBB_FLAGS = 34,
+	AP_RO_V2_WRONG_ROOT_KEY = 35,
+	AP_RO_V2_UNKNOWN = 255,
 };
 /*
  * validate_ap_ro: based on information saved in an H1 RO flash page verify
