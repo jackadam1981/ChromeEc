@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "51ac033d_5417d016",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-09T21:24:35Z",
+      "side": 1,
+      "message": "This device is EFS2 (I see flag CONFIG_PLATFORM_EC_VBOOT_EFS2 set), and\nRO - RW jump happens during initialization.\nWithout sysjump (by disabling EC sync), EC responses to CC lines approx. 3 seconds after providing power on dead battery, and power negotiation is completed.\nSysjump seems to make EC to response to CC lines later than 5.5 seconds.\n\nSimilar behavior is observed in BUG\u003db:191502642.",
+      "parentUuid": "330af25d_115588c5",
+      "range": {
+        "startLine": 15,
+        "startChar": 44,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "972bcf10cc5e3de6a62c4ea8a47c007a3c443477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c0a09cbc_57670708",
