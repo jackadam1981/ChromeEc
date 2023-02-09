@@ -147,7 +147,7 @@ void board_init(void)
 {
 	int on;
 
-	gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_L);
+	gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT);
 
 	/* Enable PPC interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_FAULT_L);
@@ -196,14 +196,11 @@ int board_vbus_source_enabled(int port)
 /* Vconn control for integrated ITE TCPC */
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
-	/* Vconn control is only for port 0 */
-	if (port)
-		return;
-
-	if (cc_pin == USBPD_CC_PIN_1)
-		gpio_set_level(GPIO_EN_USB_C0_CC1_VCONN, !!enabled);
-	else
-		gpio_set_level(GPIO_EN_USB_C0_CC2_VCONN, !!enabled);
+	/*
+	 * We ignore the cc_pin and PPC vconn because polarity and PPC vconn
+	 * should already be set correctly in the PPC driver via the pd
+	 * state machine.
+	 */
 }
 
 __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
@@ -250,7 +247,7 @@ static int8_t bj_adp_connected = -1;
 static void adp_connect_deferred(void)
 {
 	const struct charge_port_info *pi;
-	int connected = !gpio_get_level(GPIO_BJ_ADP_PRESENT_L);
+	int connected = gpio_get_level(GPIO_BJ_ADP_PRESENT);
 
 	/* Debounce */
 	if (connected == bj_adp_connected)
@@ -315,15 +312,15 @@ int board_set_active_charge_port(int port)
 	case CHARGE_PORT_TYPEC0:
 		ppc_vbus_sink_enable(USBC_PORT_C0, 1);
 		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_OD, 1);
-		gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_L);
+		gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT);
 		break;
 	case CHARGE_PORT_BARRELJACK:
 		/* Make sure BJ adapter is sourcing power */
-		if (gpio_get_level(GPIO_BJ_ADP_PRESENT_L))
+		if (!gpio_get_level(GPIO_BJ_ADP_PRESENT))
 			return EC_ERROR_INVAL;
 		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_OD, 0);
 		ppc_vbus_sink_enable(USBC_PORT_C0, 1);
-		gpio_disable_interrupt(GPIO_BJ_ADP_PRESENT_L);
+		gpio_disable_interrupt(GPIO_BJ_ADP_PRESENT);
 		break;
 	default:
 		return EC_ERROR_INVAL;
@@ -345,8 +342,8 @@ static void board_charge_manager_init(void)
 			charge_manager_update_charge(j, i, NULL);
 	}
 
-	port = gpio_get_level(GPIO_BJ_ADP_PRESENT_L) ? CHARGE_PORT_TYPEC0 :
-						       CHARGE_PORT_BARRELJACK;
+	port = gpio_get_level(GPIO_BJ_ADP_PRESENT) ? CHARGE_PORT_BARRELJACK :
+						     CHARGE_PORT_TYPEC0;
 	CPRINTUSB("Power source is p%d (%s)", port,
 		  port == CHARGE_PORT_TYPEC0 ? "USB-C" : "BJ");
 
