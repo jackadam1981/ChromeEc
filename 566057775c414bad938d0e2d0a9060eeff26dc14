@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01be769d_14c0d650",
+        "filename": "driver/sha256/sha256_it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-02-09T06:53:14Z",
+      "side": 1,
+      "message": "Since w of HW sha256 is fixed to big-endian on it8xxx2, no conversion is required.",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "566057775c414bad938d0e2d0a9060eeff26dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
