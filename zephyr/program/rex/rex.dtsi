@@ -39,6 +39,7 @@
 		ec-i2c-sensor-sda {
 			gpios = <&gpiob 4 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
+
 		ec-i2c-c0-rt-scl {
 			gpios = <&gpiod 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
@@ -94,7 +95,7 @@
 		     &adc0_chan7_gpe1>;
 	pinctrl-names = "default";
 };
-
+/*
 &i2c0_0 {
 	label = "I2C_SENSOR";
 	clock-frequency = <I2C_BITRATE_FAST>;
@@ -102,7 +103,7 @@
 	pinctrl-0 = <&i2c0_0_sda_scl_gpb4_b5>;
 	pinctrl-names = "default";
 };
-
+*/
 &i2c1_0 {
 	label = "I2C_USB_C0_TCPC";
 	clock-frequency = <I2C_BITRATE_FAST>;

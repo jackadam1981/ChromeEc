@@ -51,7 +51,7 @@
 			gpios = <&gpio8 1 GPIO_INPUT>;
 		};
 		gpio_ec_als_rgb_int_r_l: ec_als_rgb_int_r_l {
-			gpios = <&gpiod 4 GPIO_INPUT_PULL_UP>;
+			gpios = <&gpiod 4 GPIO_INPUT>;
 		};
 		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
 			gpios = <&gpioa 3 GPIO_INPUT>;
@@ -69,7 +69,7 @@
 			enum-name = "GPIO_PACKET_MODE_EN";
 		};
 		gpio_ec_imu_int_r_l: ec_imu_int_r_l {
-			gpios = <&gpio5 6 GPIO_INPUT_PULL_UP>;
+			gpios = <&gpio5 6 GPIO_INPUT>;
 		};
 		gpio_ec_imvp92_en_smb: ec_imvp92_en_smb {
 			gpios = <&gpiob 1 GPIO_OUTPUT>;
@@ -257,11 +257,12 @@
 
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
-
+/*
 		i2c_ec_i2c_sensor: ec_i2c_sensor {
 			i2c-port = <&i2c0_0>;
 			enum-names = "I2C_PORT_SENSOR";
 		};
+*/
 		i2c_ec_i2c_usb_c0_tcp: ec_i2c_usb_c0_tcp {
 			i2c-port = <&i2c1_0>;
 			enum-names = "I2C_PORT_USB_C0_TCPC";
@@ -298,9 +299,11 @@
 	status = "okay";
 };
 
+/*
 &i2c0_0 {
 	status = "okay";
 };
+*/
 
 &i2c1_0 {
 	status = "okay";
@@ -330,9 +333,11 @@
 	status = "okay";
 };
 
+/*
 &i2c_ctrl0 {
 	status = "okay";
 };
+*/
 
 &i2c_ctrl1 {
 	status = "okay";
