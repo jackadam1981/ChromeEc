@@ -9,5 +9,6 @@
 /* Geralt board specific hibernate implementation */
 __override void board_hibernate_late(void)
 {
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp5000_z1_l), 1);
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_ulp), 1);
 }
