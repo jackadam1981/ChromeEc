@@ -16,6 +16,24 @@
       "message": "any reason to add this? (you\u0027re not using this enum name in the code)",
       "revId": "67459621ae29e603957aacbc721685f7248f7028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e1efba_dff786fc",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-02-10T01:34:55Z",
+      "side": 1,
+      "message": "It\u0027s used by shim/src/power.c which still requiring the enum names in power_signal_list.",
+      "parentUuid": "6e98a4bf_296281e4",
+      "revId": "67459621ae29e603957aacbc721685f7248f7028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
