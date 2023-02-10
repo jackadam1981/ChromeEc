@@ -207,6 +207,7 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 		 */
 		gpio_set_level(GPIO_DP_MUX_SEL, port == 1);
 		gpio_set_level(GPIO_DP_MUX_OE_L, 0);
+<<<<<<< HEAD   (22dfeb trogdor: Handle HPD High embedded in DP-Status VDM)
 
 		/* Connect the SBU lines in PPC chip. */
 		if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
@@ -222,10 +223,13 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 		usb_mux_set(port, USB_PD_MUX_DOCK,
 			    USB_SWITCH_CONNECT,
 			    polarity_rm_dts(pd_get_polarity(port)));
+=======
+>>>>>>> CHANGE (323394 trogdor: Do not change the PPC SW and TCPC MUX when HPD chan)
 	} else {
 		/* Disconnect the DP port selection mux. */
 		gpio_set_level(GPIO_DP_MUX_OE_L, 1);
 		gpio_set_level(GPIO_DP_MUX_SEL, 0);
+<<<<<<< HEAD   (22dfeb trogdor: Handle HPD High embedded in DP-Status VDM)
 
 		/* Disconnect the SBU lines in PPC chip. */
 		if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
@@ -235,6 +239,8 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 		usb_mux_set(port, USB_PD_MUX_USB_ENABLED,
 			    USB_SWITCH_CONNECT,
 			    polarity_rm_dts(pd_get_polarity(port)));
+=======
+>>>>>>> CHANGE (323394 trogdor: Do not change the PPC SW and TCPC MUX when HPD chan)
 	}
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
