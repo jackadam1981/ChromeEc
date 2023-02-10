@@ -22,6 +22,30 @@
       },
       "revId": "b118e7cbbe52cbc36b630e22bf4280435c1c7d68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d845b54_de7782f7",
+        "filename": "zephyr/test/drivers/shim_rtc/src/test_shim_rtc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-02-10T21:16:07Z",
+      "side": 1,
+      "message": "So, you want me to add ```k_sleep(K_MSEC(100));``` between line 56 and 57. Then remove the ```zassert_equal(get_value.time -1, set_value.time);```?",
+      "parentUuid": "05cfab06_ebc1ff64",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "b118e7cbbe52cbc36b630e22bf4280435c1c7d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
