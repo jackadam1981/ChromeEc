@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "993b29e3_f3ea2937",
+        "filename": "zephyr/test/amd/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-10T22:35:23Z",
+      "side": 1,
+      "message": "Once you remove CONFIG_TEST_AMD_STB_DUMP, you can switch this to `target_sources(`",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "ee5cd7b5d5fde8c562268eb39995228c7e07c0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aadbb1e5_dc36568d",
+        "filename": "zephyr/test/amd/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-10T22:35:23Z",
+      "side": 1,
+      "message": "This config is not needed so you can delete this entire file.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 0
+      },
+      "revId": "ee5cd7b5d5fde8c562268eb39995228c7e07c0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222de67e_3f949355",
+        "filename": "zephyr/test/amd/boards/native_posix.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-10T22:35:23Z",
+      "side": 1,
+      "message": "Nit - should be hard tab.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "ee5cd7b5d5fde8c562268eb39995228c7e07c0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3537c600_8da14fd7",
+        "filename": "zephyr/test/amd/boards/native_posix.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-10T22:35:23Z",
+      "side": 1,
+      "message": "Hard tab",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "ee5cd7b5d5fde8c562268eb39995228c7e07c0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ffc3f62_41304229",
+        "filename": "zephyr/test/amd/testcase.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-10T22:35:23Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "ee5cd7b5d5fde8c562268eb39995228c7e07c0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
