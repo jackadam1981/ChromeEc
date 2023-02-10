@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05cfab06_ebc1ff64",
+        "filename": "zephyr/test/drivers/shim_rtc/src/test_shim_rtc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-02-10T20:56:09Z",
+      "side": 1,
+      "message": "Maybe file a new bug. I checked the RTC emulator can\u0027t emulate the time passing. Otherwise, the test instructions can be like:\n```\n \tzassert_ok(host_command_process(\u0026set_args));\n \tk_sleep(K_MSEC(100));\t\n \tzassert_ok(host_command_process(\u0026get_args));\n```\n\nThis can reflect the truncation error; `get_value` equals to `set_value`.",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "b118e7cbbe52cbc36b630e22bf4280435c1c7d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
