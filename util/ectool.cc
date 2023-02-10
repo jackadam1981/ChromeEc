@@ -3,29 +3,13 @@
  * found in the LICENSE file.
  */
 
-#include <assert.h>
-#include <ctype.h>
-#include <errno.h>
-#include <getopt.h>
-#include <inttypes.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#include <signal.h>
-#include <stdbool.h>
-
 #include "battery.h"
 #include "comm-host.h"
 #include "comm-usb.h"
-#include "chipset.h"
 #include "compile_time_macros.h"
 #include "crc.h"
 #include "cros_ec_dev.h"
 #include "ec_panicinfo.h"
-#include "ec_flash.h"
 #include "ec_version.h"
 #include "ectool.h"
 #include "i2c.h"
@@ -96,7 +80,8 @@ const char help_str[] =
 	"  cbi\n"
 	"      Get/Set/Remove Cros Board Info\n"
 	"  chargecurrentlimit\n"
-	"      Set the maximum battery charging current\n"
+	"      Set the maximum battery charging current and the battery SoC\n"
+	"	   above which it will apply\n"
 	"  chargecontrol\n"
 	"      Force the battery to stop charging or discharge\n"
 	"  chargeoverride\n"
@@ -3231,8 +3216,8 @@ static int cmd_temperature_print(int id, int mtemp)
 	int temp = mtemp + EC_TEMP_SENSOR_OFFSET;
 
 	temp_p.id = id;
-	rc = ec_command(EC_CMD_TEMP_SENSOR_GET_INFO, 0, &temp_p,
-			sizeof(temp_p), &temp_r, sizeof(temp_r));
+	rc = ec_command(EC_CMD_TEMP_SENSOR_GET_INFO, 0, &temp_p, sizeof(temp_p),
+			&temp_r, sizeof(temp_r));
 	if (rc < 0)
 		return rc;
 
@@ -3242,7 +3227,7 @@ static int cmd_temperature_print(int id, int mtemp)
 
 	printf("%-20s  %d K (= %d C)", temp_r.sensor_name, temp, K_TO_C(temp));
 
-	if(rc >= 0)
+	if (rc >= 0)
 		/*
 		 * Check for fan_off == fan_max when their
 		 * values are either zero or non-zero
@@ -3253,7 +3238,8 @@ static int cmd_temperature_print(int id, int mtemp)
 		else
 			printf("  %10d%% (%d K and %d K)",
 			       get_temp_ratio(temp, r.temp_fan_off,
-			       r.temp_fan_max), r.temp_fan_off, r.temp_fan_max);
+					      r.temp_fan_max),
+			       r.temp_fan_off, r.temp_fan_max);
 	else
 		printf("%20s(rc=%d)", "error", rc);
 
@@ -7535,21 +7521,41 @@ int cmd_ext_power_limit(int argc, char *argv[])
 int cmd_charge_current_limit(int argc, char *argv[])
 {
 	struct ec_params_current_limit p;
+	int version = 1;
 	int rv;
 	char *e;
 
-	if (argc != 2) {
-		fprintf(stderr, "Usage: %s <max_current_mA>\n", argv[0]);
+	if (!ec_cmd_version_supported(EC_CMD_CHARGE_CURRENT_LIMIT, 1))
+		version = 0;
+
+	if (version < 1) {
+		if (argc != 2) {
+			fprintf(stderr, "Usage: %s <max_current_mA>\n",
+				argv[0]);
+			return -1;
+		}
+	} else if (argc < 2 || argc > 3) {
+		fprintf(stderr, "Usage: %s <max_current_mA> <optional_SoC>\n",
+			argv[0]);
 		return -1;
 	}
 
 	p.limit = strtol(argv[1], &e, 0);
 	if (e && *e) {
-		fprintf(stderr, "Bad value.\n");
+		fprintf(stderr, "ERROR: Bad limit value\n");
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_CHARGE_CURRENT_LIMIT, 0, &p, sizeof(p), NULL, 0);
+	if (argc == 3) {
+		p.battery_soc = strtol(argv[2], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "ERROR: Bad battery SoC value\n");
+			return -1;
+		}
+	}
+
+	rv = ec_command(EC_CMD_CHARGE_CURRENT_LIMIT, version, &p, sizeof(p),
+			NULL, 0);
 	return rv;
 }
 

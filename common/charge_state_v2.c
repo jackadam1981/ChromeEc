@@ -2548,24 +2548,26 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_CHARGE_CONTROL, charge_command_charge_control,
 		     EC_VER_MASK(1) | EC_VER_MASK(2));
 
-static void reset_current_limit(void)
-{
-	user_current_limit = -1U;
-}
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, reset_current_limit, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, reset_current_limit, HOOK_PRIO_DEFAULT);
-
 static enum ec_status
 charge_command_current_limit(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_current_limit *p = args->params;
-
-	user_current_limit = p->limit;
-
+	if (args->version >= 1) {
+		if (p->battery_soc >= 0 && p->battery_soc <= 100) {
+			if (curr.chg.status >= p->battery_soc) {
+				user_current_limit = p->limit;
+			}
+		} else {
+			CPRINTS("Invalid param: %d", p->battery_soc);
+			return EC_RES_INVALID_PARAM;
+		}
+	} else {
+		user_current_limit = p->limit;
+	}
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_CHARGE_CURRENT_LIMIT, charge_command_current_limit,
-		     EC_VER_MASK(0));
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 /*
  * Expose charge/battery related state
