@@ -16,6 +16,24 @@
       "message": "This code is redundant: we can disable body detection by disabling the activity (temporary) with ectool motionsense set_activities\nectool motionsense set_activity 4 1\nectool motionsense list_activities\nEnabled:\n4: Body Detection\nDisabled:\nectool motionsense set_activity 4 0\nectool motionsense list_activities\nEnabled:\nDisabled:\n4: Body Detection",
       "revId": "7365396f11f2d624076bba39041ffa604885927f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02348e94_d36236d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-10T19:14:22Z",
+      "side": 1,
+      "message": "I disagree. There needs to be a way to enable/disable body detection easily from the EC for testing that the various DPTC tables are applied correctly, wake events are not generated, etc.\n\nUsing these `motionsense` commands is too esoteric. Nothing in this output indicates what the magic command `4 1` means:\n\n```\nlocalhost /var/log # ectool motionsense set_activities\nUsage:\n  motionsense                              - dump all motion data\n  motionsense active                       - print active flag\n  motionsense info NUM                     - print sensor info\n  motionsense ec_rate NUM [RATE_MS]        - set/get sample rate\n  motionsense odr NUM [ODR [ROUNDUP]]      - set/get sensor ODR\n  motionsense range NUM [RANGE [ROUNDUP]]  - set/get sensor range\n  motionsense offset NUM [-- X Y Z [TEMP]] - set/get sensor offset\n  motionsense kb_wake NUM                  - set/get KB wake ang\n  motionsense fifo_info                    - print fifo info\n  motionsense fifo_int_enable [0/1]        - enable/disable/get fifo interrupt status\n  motionsense fifo_read MAX_DATA           - read fifo data\n  motionsense fifo_flush NUM               - trigger fifo interrupt\n  motionsense list_activities              - list supported activities\n  motionsense set_activity ACT EN          - enable/disable activity\n  motionsense get_activity ACT             - get activity status\n  motionsense lid_angle                    - print lid angle\n  motionsense spoof -- NUM [0/1] [X Y Z]   - enable/disable spoofing\n  motionsense spoof -- NUM activity ACT [0/1] [STATE] - enable/disable activity spoofing\n  motionsense tablet_mode_angle ANG HYS    - set/get tablet mode angle\n  motionsense calibrate NUM                - run sensor calibration\n```\n\nAdditionally, using `ectool` is impossible when the AP is suspended, meaning host events can be debugged in that situation, since there isn\u0027t a corresponding command in the EC CLI.",
+      "parentUuid": "1b33095a_cb79902f",
+      "revId": "7365396f11f2d624076bba39041ffa604885927f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
