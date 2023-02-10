@@ -778,6 +778,9 @@ enum host_event_code {
 	 */
 	EC_HOST_EVENT_INVALID = 32,
 
+	/* Body detect (lap/desk) change event */
+	EC_HOST_EVENT_BODY_DETECT_CHANGE = 33,
+
 	/*
 	 * This is a floating value that's used for loop counters. It does not
 	 * need to be consistent between the EC/AP, just within the current
@@ -831,6 +834,7 @@ BUILD_ASSERT(EC_HOST_EVENT_NUM_EVENTS <= 65);
 		[EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT] =                  \
 			"KEYBOARD_RECOVERY_HW_REINIT",                         \
 		[EC_HOST_EVENT_WOV] = "WOV",                                   \
+		[EC_HOST_EVENT_BODY_DETECT_CHANGE] = "BODY_DETECT_CHANGE",     \
 		[EC_HOST_EVENT_INVALID] = "INVALID",                           \
 	}
 /* clang-format on */
