@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17afc016_1f900e9f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2001,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-10T18:22:28Z",
+      "side": 1,
+      "message": "So do we end up falling to this else every time we run a Ready state with the guard flag removed?",
+      "revId": "ce9adf6f12bd18a6bc90d74279742042b6436188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e84916d_0e0bd980",
         "filename": "test/usb_pe_drp_old.c",
         "patchSetId": 1
@@ -31,6 +48,24 @@
       "writtenOn": "2023-02-09T23:19:42Z",
       "side": 1,
       "message": "This is a total hack. In my defense, this test was already a total hack. I\u0027m  open to dealing with this differently.",
+      "revId": "ce9adf6f12bd18a6bc90d74279742042b6436188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bcafd89_4403e5ee",
+        "filename": "test/usb_pe_drp_old.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-10T18:22:28Z",
+      "side": 1,
+      "message": "I don\u0027t see a lot of point in spending time perfecting a set of unit tests which are, at this point, 2 generations old\n\nSo hack away",
+      "parentUuid": "1e84916d_0e0bd980",
       "revId": "ce9adf6f12bd18a6bc90d74279742042b6436188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
