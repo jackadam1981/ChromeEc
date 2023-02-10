@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3423ae0e_c780d3aa",
+        "filename": "zephyr/test/drivers/usbc_frs/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-10T19:41:35Z",
+      "side": 1,
+      "message": "I would suggest writing a test to just signal FRS and have it work before trying the error cases. I would need to refresh my memory on how I was thinking about doing this, but we can walk through it together if you want.",
+      "revId": "4affa763051780e18caf789c0164546c15bebf07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a1b5e4e_5d9d6310",
+        "filename": "zephyr/test/drivers/usbc_frs/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-10T19:41:35Z",
+      "side": 1,
+      "message": "Supposing that you have a good way to start the sequence, you might need to do something like this:\n1. If the partner currently sends Accept with no delay, change it to send with a reasonable delay.\n2. In your test code that sends the FRS signal, also schedule a Hard Reset to send later but earlier than the Accept.\n3. The Accept will still happen, but it probably won\u0027t affect the test.\n\nIt\u0027s possible that this would run into the kind of timing issues that I\u0027ve seen before, and we might need to generalize the concept of the partner emulator responding in a non-zero amount of time.",
+      "revId": "4affa763051780e18caf789c0164546c15bebf07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a590425_6b2975bd",
+        "filename": "zephyr/test/drivers/usbc_frs/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-10T19:41:35Z",
+      "side": 1,
+      "message": "This might be tricky to schedule from the test. You\u0027ll run into at least as many timing issues as are presented by the previous scenario, but now you also have the test thread, assuming that\u0027s where you wanted to initiate the DPM request from. It might be easier to think about if you plumb the OCP signal through the partner emulator, such that you can tell the partner emulator to generate an OCP on the part of the TCPCI emulator or PPC emulator at a scheduled time. Then, this test would be no harder than the previous test.",
+      "revId": "4affa763051780e18caf789c0164546c15bebf07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52c10f28_8c2781c7",
+        "filename": "zephyr/test/drivers/usbc_frs/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-10T19:41:35Z",
+      "side": 1,
+      "message": "I think you can already basically do this with the faulty partner extension.",
+      "revId": "4affa763051780e18caf789c0164546c15bebf07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d12bed7_29360cac",
+        "filename": "zephyr/test/drivers/usbc_frs/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-10T19:41:35Z",
+      "side": 1,
+      "message": "This should be similar to the Hard Reset from the partner scenario.",
+      "revId": "4affa763051780e18caf789c0164546c15bebf07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
