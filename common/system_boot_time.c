@@ -9,6 +9,8 @@
 #include "system.h"
 #include "util.h"
 
+#include <stdbool.h>
+
 #ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
 /* Content of ap_boot_time will be lost on sysjump */
 static struct ec_response_get_boot_time ap_boot_time;
@@ -18,6 +20,9 @@ static struct ec_response_get_boot_time ap_boot_time;
 void update_ap_boot_time(enum boot_time_param param)
 {
 #ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+	static bool system_booted; /* tracks system booted after #PLTRST */
+	static bool pltrst_transition; /* tracks #PLTRST transtion */
+
 	if (param > RESET_CNT) {
 		ccprintf("invalid boot_time_param: %d\n", param);
 		return;
@@ -28,12 +33,37 @@ void update_ap_boot_time(enum boot_time_param param)
 			 ap_boot_time.timestamp[param]);
 	}
 
+	/* ap_boot_time.cnt --	this is warm reboot counter used by AP to
+	 *			identify the warm reboot
+	 * ap_boot_time.cnt = 1  when warm reboot
+	 * ap_boot_time.cnt = 0  when cold reboot
+	 * warm reboot counter set to 1 only when #PLTRST transtion is complete
+	 * and system is already booted (system_booted = 1).
+	 * In initial boot or cold reboot scenario (system_booted = 0) warm
+	 * reboot counter will be set to 0.
+	 */
 	switch (param) {
+	case PLTRST_HIGH:
+		if (system_booted && pltrst_transition)
+			ap_boot_time.cnt = 1;
+		else
+			ap_boot_time.cnt = 0;
+
+		if (pltrst_transition) {
+			system_booted = true;
+			pltrst_transition = false;
+		}
+		break;
 	case PLTRST_LOW:
-		ap_boot_time.cnt++;
+		pltrst_transition = true;
 		break;
 	case RESET_CNT:
 		ap_boot_time.cnt = 0;
+
+		if (system_booted)
+			pltrst_transition = false;
+
+		system_booted = false;
 		break;
 	default:
 		break;
