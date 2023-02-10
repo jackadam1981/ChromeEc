@@ -501,6 +501,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ac1e32_87559eca",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1521968
+      },
+      "writtenOn": "2023-02-10T07:27:59Z",
+      "side": 1,
+      "message": "In ectool.cc, the function seems to print `Fan %d stalled!` if rv equals to `EC_FAN_SPEED_STALLED`.\n\nhttps://source.chromium.org/chromium/chromiumos/platform/ec/+/main:util/ectool.cc;l\u003d3650\n\nAnd the toolkit can\u0027t parse the output now, we\u0027re considering to modify the parse logic, or make ectool still return `Fan %d RPM: 0`.\nhttps://source.chromium.org/chromium/chromiumos/platform/factory/+/main:py/device/fan.py;l\u003d63",
+      "parentUuid": "d7b8b66a_2754c473",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
