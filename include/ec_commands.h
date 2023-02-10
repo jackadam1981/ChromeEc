@@ -778,6 +778,9 @@ enum host_event_code {
 	 */
 	EC_HOST_EVENT_INVALID = 32,
 
+	/* Body detect (lap/desk) change event */
+	EC_HOST_EVENT_BODY_DETECT_CHANGE = 33,
+
 	/* The 1-based count of the maximum number of supported host events */
 	EC_HOST_EVENT_MAX_EVENTS = 65
 };
@@ -820,6 +823,7 @@ enum host_event_code {
 		[EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT] =                  \
 			"KEYBOARD_RECOVERY_HW_REINIT",                         \
 		[EC_HOST_EVENT_WOV] = "WOV",                                   \
+		[EC_HOST_EVENT_BODY_DETECT_CHANGE] = "BODY_DETECT_CHANGE",     \
 		[EC_HOST_EVENT_INVALID] = "INVALID",                           \
 	}
 /* clang-format on */
