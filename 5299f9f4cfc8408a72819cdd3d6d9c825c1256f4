@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "878f89f5_985faee9",
+        "filename": "zephyr/test/drivers/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-10T19:11:24Z",
+      "side": 1,
+      "message": "Non-blocking nit - I would prefer this as a separate CL.  The first CL refactors the crash command, and the 2nd CL disables CONFIG_ASSERT_TEST.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "5299f9f4cfc8408a72819cdd3d6d9c825c1256f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
