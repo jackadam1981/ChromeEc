@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b33095a_cb79902f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-02-10T18:53:02Z",
+      "side": 1,
+      "message": "This code is redundant: we can disable body detection by disabling the activity (temporary) with ectool motionsense set_activities\nectool motionsense set_activity 4 1\nectool motionsense list_activities\nEnabled:\n4: Body Detection\nDisabled:\nectool motionsense set_activity 4 0\nectool motionsense list_activities\nEnabled:\nDisabled:\n4: Body Detection",
+      "revId": "7365396f11f2d624076bba39041ffa604885927f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
