@@ -453,6 +453,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b8b66a_2754c473",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2023-02-10T07:12:22Z",
+      "side": 1,
+      "message": "AFAIK the output from ectool pwmgetfanrpm should show 0 if fan is stalled as per commit log. \nI do not have an access to this bug b:268292546.",
+      "parentUuid": "f326718c_e918d092",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
