@@ -56,3 +56,8 @@ def register_mchp_project(**kwargs):
     kwargs.setdefault("output_packer", zmake.output_packers.MchpPacker)
     kwargs.setdefault("modules", ["ec", "cmsis"])
     return register_binman_project(**kwargs)
+
+def register_stm32_project(**kwargs):
+    kwargs.setdefault("output_packer", zmake.output_packers.MchpPacker)
+    kwargs.setdefault("modules", ["ec", "cmsis", "hal_stm32"])
+    return register_raw_project(**kwargs)
