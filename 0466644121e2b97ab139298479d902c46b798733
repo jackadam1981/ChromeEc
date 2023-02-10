@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e23df5b_01f7d09e",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-10T03:38:59Z",
+      "side": 1,
+      "message": "Can this simply call `ap_power_in_state` because (as you commented above) it\u0027s no longer possible to see intermediate states?",
+      "revId": "0466644121e2b97ab139298479d902c46b798733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
