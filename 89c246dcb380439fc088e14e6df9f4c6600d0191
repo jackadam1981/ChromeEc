@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ce57e5_7120739d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 5566,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-10T22:58:24Z",
+      "side": 1,
+      "message": "I was thinking it might make some tests easier.  But if there\u0027s not use case from the host, then I agree it\u0027s not needed.",
+      "parentUuid": "d75f5c82_25b6130f",
+      "range": {
+        "startLine": 5566,
+        "startChar": 6,
+        "endLine": 5566,
+        "endChar": 36
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b9559a7_8706a8e5",
