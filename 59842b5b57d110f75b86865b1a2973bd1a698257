@@ -429,6 +429,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f326718c_e918d092",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1521968
+      },
+      "writtenOn": "2023-02-10T07:00:33Z",
+      "side": 1,
+      "message": "FYI, factory toolkit is affected by this change.\nWe\u0027ll parse the output from `ectool pwmgetfanrpm` and calculate the average rpm, but now the command will return stall but not 0.\n\nb:268292546",
+      "parentUuid": "4ed271f3_86dc214a",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
