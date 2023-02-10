@@ -70,6 +70,30 @@
       },
       "revId": "b118e7cbbe52cbc36b630e22bf4280435c1c7d68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da124d7d_2745a464",
+        "filename": "zephyr/test/drivers/shim_rtc/src/test_shim_rtc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-02-10T22:01:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2352ef36_0a5d1a39",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "b118e7cbbe52cbc36b630e22bf4280435c1c7d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
