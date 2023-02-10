@@ -525,6 +525,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b935b0_48a252d9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-02-10T07:52:42Z",
+      "side": 1,
+      "message": "Removing the print from ectool.cc and make it return \"Fan %d RPM: 0\" should be ok, i think. Because, whenever fan stalled specific condition is met, there is already a print , which gives enough information from ec log about fan got stalled condition.(https://source.chromium.org/chromium/chromiumos/platform/ec/+/main:common/fan.c;l\u003d583)\nMeanwhile,  you may  also modify the parse logic too, if specifically when fan is stopped needs to be known.",
+      "parentUuid": "62ac1e32_87559eca",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
