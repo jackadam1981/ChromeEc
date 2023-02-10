@@ -769,6 +769,9 @@ enum host_event_code {
 	/* WoV */
 	EC_HOST_EVENT_WOV = 31,
 
+	/* Body detect mode change */
+	EC_HOST_EVENT_BODY_DETECT_CHANGE = 32,
+
 	/*
 	 * The high bit of the event mask is not used as a host event code.  If
 	 * it reads back as set, then the entire event mask should be
@@ -776,7 +779,7 @@ enum host_event_code {
 	 * raw event status via EC_MEMMAP_HOST_EVENTS but the LPC interface is
 	 * not initialized on the EC, or improperly configured on the host.
 	 */
-	EC_HOST_EVENT_INVALID = 32,
+	EC_HOST_EVENT_INVALID = 33,
 };
 /* Host event mask */
 #define EC_HOST_EVENT_MASK(event_code) BIT_ULL((event_code)-1)
