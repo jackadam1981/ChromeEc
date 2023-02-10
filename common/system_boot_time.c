@@ -18,6 +18,9 @@ static struct ec_response_get_boot_time ap_boot_time;
 void update_ap_boot_time(enum boot_time_param param)
 {
 #ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+	static uint8_t system_booted;
+	static uint8_t pltrst_transition;
+
 	if (param > RESET_CNT) {
 		ccprintf("invalid boot_time_param: %d\n", param);
 		return;
@@ -29,11 +32,27 @@ void update_ap_boot_time(enum boot_time_param param)
 	}
 
 	switch (param) {
+	case PLTRST_HIGH:
+		if (system_booted && pltrst_transition)
+			ap_boot_time.cnt = 1;
+		else
+			ap_boot_time.cnt = 0;
+
+		if (pltrst_transition) {
+			system_booted = 1;
+			pltrst_transition = 0;
+		}
+		break;
 	case PLTRST_LOW:
-		ap_boot_time.cnt++;
+		pltrst_transition = 1;
 		break;
 	case RESET_CNT:
 		ap_boot_time.cnt = 0;
+
+		if (system_booted)
+			pltrst_transition = 0;
+
+		system_booted = 0;
 		break;
 	default:
 		break;
