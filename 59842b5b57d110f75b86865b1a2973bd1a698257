@@ -477,6 +477,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5148f19_f82040ca",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-02-10T07:25:01Z",
+      "side": 1,
+      "message": "Hi Chih, Can you change the specific condition check for rpm \u003d 0 instead of 0xfffe  in toolkit code? Because fan stalled means, fan is stopped \u0026 rpm is expected to be 0.",
+      "parentUuid": "d7b8b66a_2754c473",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
