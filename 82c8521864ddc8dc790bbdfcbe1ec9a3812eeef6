@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b1a980_14dd1723",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-02-10T01:42:37Z",
+      "side": 1,
+      "message": "This also needs to be changed. We should not disconnect the DP mux in the TCPC. Keep it to `USB_PD_MUX_DOCK`.",
+      "range": {
+        "startLine": 225,
+        "startChar": 20,
+        "endLine": 225,
+        "endChar": 42
+      },
+      "revId": "82c8521864ddc8dc790bbdfcbe1ec9a3812eeef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
