@@ -9,6 +9,8 @@
 #include "system.h"
 #include "util.h"
 
+#include <stdbool.h>
+
 #ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
 /* Content of ap_boot_time will be lost on sysjump */
 static struct ec_response_get_boot_time ap_boot_time;
@@ -18,6 +20,9 @@ static struct ec_response_get_boot_time ap_boot_time;
 void update_ap_boot_time(enum boot_time_param param)
 {
 #ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+	static bool system_booted;
+	static bool pltrst_transition;
+
 	if (param > RESET_CNT) {
 		ccprintf("invalid boot_time_param: %d\n", param);
 		return;
@@ -29,11 +34,27 @@ void update_ap_boot_time(enum boot_time_param param)
 	}
 
 	switch (param) {
+	case PLTRST_HIGH:
+		if (system_booted && pltrst_transition)
+			ap_boot_time.cnt = 1;
+		else
+			ap_boot_time.cnt = 0;
+
+		if (pltrst_transition) {
+			system_booted = true;
+			pltrst_transition = false;
+		}
+		break;
 	case PLTRST_LOW:
-		ap_boot_time.cnt++;
+		pltrst_transition = true;
 		break;
 	case RESET_CNT:
 		ap_boot_time.cnt = 0;
+
+		if (system_booted)
+			pltrst_transition = false;
+
+		system_booted = false;
 		break;
 	default:
 		break;
