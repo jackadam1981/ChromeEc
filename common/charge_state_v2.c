@@ -91,6 +91,8 @@ static enum ec_charge_control_mode chg_ctl_mode;
 static int manual_voltage; /* Manual voltage override (-1 = no override) */
 static int manual_current; /* Manual current override (-1 = no override) */
 static unsigned int user_current_limit = -1U;
+static int current_limit_value;
+static int current_limit_soc;
 test_export_static timestamp_t shutdown_target_time;
 static bool is_charging_progress_displayed;
 static timestamp_t precharge_start_time;
@@ -1456,6 +1458,13 @@ static void sustain_battery_soc(void)
 		mode_text[mode]);
 }
 
+static void current_limit_battery_soc(void)
+{
+	if (charge_get_display_charge() / 10 >= current_limit_soc) {
+		user_current_limit = current_limit_value;
+	}
+}
+
 /*****************************************************************************/
 /* Hooks */
 void charger_init(void)
@@ -1906,6 +1915,9 @@ void charger_task(void *u)
 
 		/* Run battery sustainer (no-op if not applicable). */
 		sustain_battery_soc();
+
+		/* Run battery soc check for setting the current limit. */
+		current_limit_battery_soc();
 
 		if ((!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
 		     curr.batt.state_of_charge != prev_charge) ||
@@ -2553,12 +2565,23 @@ charge_command_current_limit(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_current_limit *p = args->params;
 
-	user_current_limit = p->limit;
+	if (args->version == 0) {
+		user_current_limit = p->limit;
+		return EC_RES_SUCCESS;
+	}
+
+	if (p->battery_soc < 0 || p->battery_soc > 100) {
+		CPRINTS("Invalid param: %d", p->battery_soc);
+		return EC_RES_INVALID_PARAM;
+	}
+
+	current_limit_value = p->limit;
+	current_limit_soc = p->battery_soc;
 
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_CHARGE_CURRENT_LIMIT, charge_command_current_limit,
-		     EC_VER_MASK(0));
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 /*
  * Expose charge/battery related state
