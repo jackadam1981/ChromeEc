@@ -1,0 +1,8 @@
+# STM32F072XB board configuration
+
+# Copyright (c) 2017 Clage GmbH
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_STM32F072XB
+	bool "STM32F072 Board"
+	depends on SOC_STM32F072XB

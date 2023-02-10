@@ -1,0 +1,15 @@
+# STM32F072XB board configuration
+
+# Copyright (c) 2017 Clage GmbH
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_STM32F072XB
+
+config BOARD
+	default "stm32f072xb"
+
+config SPI_STM32_INTERRUPT
+	default y
+	depends on SPI
+
+endif # BOARD_STM32F072
