@@ -549,6 +549,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c856a2d_dcf530c2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2023-02-10T08:25:25Z",
+      "side": 1,
+      "message": "I have pushed the CL. PLease verify it along with your factory CL change.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4236162\nAlso, please add me \u0026 sumeet to the cross bug.",
+      "parentUuid": "28b935b0_48a252d9",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
