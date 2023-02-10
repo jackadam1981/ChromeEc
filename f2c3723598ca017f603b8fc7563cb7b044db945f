@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "771c8cac_1dbab068",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-10T01:58:12Z",
+      "side": 1,
+      "message": "Use \"peripheral\" to make it generic, the patch is not specific to wireless charger. Same as other boards except kuldax, they may not have wireless charger actually.",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "f2c3723598ca017f603b8fc7563cb7b044db945f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9710dc1f_77656cea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-10T01:58:12Z",
+      "side": 1,
+      "message": "same here, remove this except kuldax to make it generic",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "f2c3723598ca017f603b8fc7563cb7b044db945f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
