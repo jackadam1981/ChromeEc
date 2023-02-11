@@ -597,6 +597,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c20864f_2b48bc4a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1521968
+      },
+      "writtenOn": "2023-02-11T07:16:40Z",
+      "side": 1,
+      "message": "I think I shouldn\u0027t cc you to the bug in other project, so I create another bug for you.\nb:268810195\n\nBut I can still only add sumeet, but not Poornima. (and I\u0027m not sure why)",
+      "parentUuid": "5c856a2d_dcf530c2",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
