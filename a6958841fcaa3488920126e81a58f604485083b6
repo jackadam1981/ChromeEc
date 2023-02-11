@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e4e054_ea4db08d",
+        "filename": "driver/wpc/cps8100.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-11T00:53:48Z",
+      "side": 1,
+      "message": "Could you include peripheral_charger.h for this?",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "a6958841fcaa3488920126e81a58f604485083b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
