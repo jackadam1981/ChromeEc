@@ -573,6 +573,30 @@
       },
       "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cca4c713_2ee2c075",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-11T01:00:39Z",
+      "side": 1,
+      "message": "\u003e Removing the print from ectool.cc and make it return \"Fan %d RPM: 0\" \n\n+1. I don\u0027t think ectool needs to print \u0027stalled\u0027.",
+      "parentUuid": "5c856a2d_dcf530c2",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "59842b5b57d110f75b86865b1a2973bd1a698257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
