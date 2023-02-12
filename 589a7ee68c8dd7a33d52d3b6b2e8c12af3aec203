@@ -22,6 +22,47 @@
       },
       "revId": "589a7ee68c8dd7a33d52d3b6b2e8c12af3aec203",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5acd8bd9_be340ec9",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-12T23:45:45Z",
+      "side": 1,
+      "message": "Better to inspect the active event I think, so we continue only if we\u0027ve received `AP_PWRSEQ_EVENT_POWER_STARTUP`.\n\nPossibly also want to stop the timer if we continue, just to ensure it won\u0027t trigger spurious events later.",
+      "parentUuid": "24d2ff33_300c1150",
+      "range": {
+        "startLine": 781,
+        "startChar": 1,
+        "endLine": 783,
+        "endChar": 2
+      },
+      "revId": "589a7ee68c8dd7a33d52d3b6b2e8c12af3aec203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d170f0_0b95ef25",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-12T23:45:45Z",
+      "side": 1,
+      "message": "This makes me happy; putting the flag clear at S5 entry never felt quite right, but this is very clearly the correct choice.",
+      "revId": "589a7ee68c8dd7a33d52d3b6b2e8c12af3aec203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
