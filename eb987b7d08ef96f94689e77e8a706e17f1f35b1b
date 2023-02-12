@@ -34,6 +34,24 @@
       "parentUuid": "403757ff_3ba743f0",
       "revId": "eb987b7d08ef96f94689e77e8a706e17f1f35b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be85105_dccb2a96",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-12T23:28:07Z",
+      "side": 1,
+      "message": "Please add a note to the definition of `enum ap_pwrseq_state` that states must remain ordered with lower power first, to ensure anybody making changes knows the order now matters.",
+      "parentUuid": "0f3d7893_b8548f04",
+      "revId": "eb987b7d08ef96f94689e77e8a706e17f1f35b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
