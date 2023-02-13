@@ -16,6 +16,92 @@
       "message": "for initial comments, testing yet to be described",
       "revId": "8a0af9582e26005ccf435ef0c4a122111fa3b968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d125b0fb_b7dd2e70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-13T19:04:44Z",
+      "side": 1,
+      "message": "a nit to your discretion, but please move the var name to the same line with the type",
+      "revId": "8a0af9582e26005ccf435ef0c4a122111fa3b968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d3c9821_f962d8eb",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-13T19:04:44Z",
+      "side": 1,
+      "message": "nit: not predefining array size is more robust - adding or removing elements does not require editing in multiple places. Iteration over the array should use ARRAY_SIZE() as the limit.",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "8a0af9582e26005ccf435ef0c4a122111fa3b968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59828039_6d6d561a",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-13T19:04:44Z",
+      "side": 1,
+      "message": "please keep type and name in the same line, makes it much easier for code browsing tools.",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "8a0af9582e26005ccf435ef0c4a122111fa3b968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "781d03c0_34a59027",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-13T19:04:44Z",
+      "side": 1,
+      "message": "just curious: how could we ever end up this state?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "8a0af9582e26005ccf435ef0c4a122111fa3b968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
