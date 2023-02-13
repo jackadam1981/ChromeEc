@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31da3f2c_b2349729",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-02-13T19:33:04Z",
+      "side": 0,
+      "message": "Does removing this here basically mean that ppc sbu lines are always connected, except for when CCD mode is entered on port0?",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 225,
+        "endChar": 24
+      },
+      "revId": "4c13062c489a816e6a2447d85e54e5820fd48fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
