@@ -173,7 +173,7 @@ __override void board_power_5v_enable(int enable)
 	 * Mainboard 5V regulator activated by GPIO.
 	 * USB-A ports are activated by usb_port_power_dumb.
 	 */
-	gpio_set_level(GPIO_EN_PP5000, !!enable);
+	gpio_set_level(GPIO_EN_PP5000, 1);
 }
 
 void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
