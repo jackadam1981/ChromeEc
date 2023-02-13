@@ -563,6 +563,10 @@ enum ec_error_list charger_get_vsys_voltage(int port, int *voltage)
 enum ec_error_list charger_set_input_current_limit(int chgnum,
 						   int input_current)
 {
+	uint32_t __ra;
+
+	__asm__ volatile("mv %0, ra" : "=r"(__ra));
+
 	/* Note: may be called with CHARGE_PORT_NONE regularly */
 	if (chgnum < 0)
 		return EC_ERROR_INVAL;
@@ -571,6 +575,8 @@ enum ec_error_list charger_set_input_current_limit(int chgnum,
 		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
 		return EC_ERROR_INVAL;
 	}
+
+	CPRINTS("!!! %s: %d caller:%x", __func__, input_current, __ra);
 
 	if (!chg_chips[chgnum].drv->set_input_current_limit)
 		return EC_ERROR_UNIMPLEMENTED;
