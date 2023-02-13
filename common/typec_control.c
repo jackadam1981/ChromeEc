@@ -69,7 +69,8 @@ void typec_set_vconn(int port, bool enable)
 	 *
 	 * See b/72961003 and b/180973460
 	 */
-	tcpm_set_vconn(port, enable);
+	if (IS_ENABLED(CONFIG_USB_PD_TCPC_VCONN))
+		tcpm_set_vconn(port, enable);
 
 	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) && enable)
 		ppc_set_vconn(port, true);
