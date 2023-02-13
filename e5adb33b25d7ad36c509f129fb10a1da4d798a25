@@ -46,6 +46,30 @@
       },
       "revId": "e5adb33b25d7ad36c509f129fb10a1da4d798a25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18714bc3_bb0acea3",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-13T17:17:14Z",
+      "side": 1,
+      "message": "Each board must implement board_get_pchg_count (because of ARRAY_SIZE). So, we don\u0027t need any default or overridable.",
+      "parentUuid": "5eb54475_c77b82d7",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 1
+      },
+      "revId": "e5adb33b25d7ad36c509f129fb10a1da4d798a25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
