@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c38e82_04a24fac",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-13T22:37:09Z",
+      "side": 1,
+      "message": "nit: Does the compiler still create a deferred data entry for an empty function (i.e. !CONFIG_HOSTCMD_EVENTS)?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 45
+      },
+      "revId": "f407ef7e681f7a48db6393a58b8307df1c80b05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
