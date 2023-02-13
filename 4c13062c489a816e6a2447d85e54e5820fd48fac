@@ -22,6 +22,30 @@
       },
       "revId": "4c13062c489a816e6a2447d85e54e5820fd48fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba72c738_535a3557",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-02-13T22:40:28Z",
+      "side": 0,
+      "message": "Let me check if exiting DP mode implicitly sets it back to disconnected. If not, we have to do it in the below `svdm_exit_dp_mode()`.",
+      "parentUuid": "31da3f2c_b2349729",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 225,
+        "endChar": 24
+      },
+      "revId": "4c13062c489a816e6a2447d85e54e5820fd48fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
