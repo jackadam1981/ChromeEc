@@ -12,6 +12,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/logging/log_ctrl.h>
+#include <zephyr/sys/__assert.h>
 
 /*
  * Arch-specific configuration
@@ -169,9 +170,7 @@ void k_sys_fatal_error_handler(unsigned int reason, const z_arch_esf_t *esf)
 	 * the watchdog will overwrite this panic.
 	 */
 	panic_reboot();
-#ifndef TEST_BUILD
-	CODE_UNREACHABLE;
-#endif
+	__ASSERT_UNREACHABLE;
 }
 
 void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
