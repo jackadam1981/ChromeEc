@@ -39,6 +39,24 @@
       "message": "By setting the ODR at 400Hz, the accelerometer will generate an interrupt every 2.5ms. Won\u0027t it overwhelm the EC?",
       "revId": "eb9d00200788243958290c0429582e9b67bf7d04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a922b9cb_b5b03609",
+        "filename": "zephyr/program/skyrim/winterhold/motionsense.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2023-02-13T02:56:29Z",
+      "side": 1,
+      "message": "According to the EC log, it looks like EC will not be overwhelmed.",
+      "parentUuid": "60323656_5f36c8b4",
+      "revId": "eb9d00200788243958290c0429582e9b67bf7d04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
