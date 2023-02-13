@@ -241,6 +241,10 @@ static void reset_nct38xx_port(int port)
 {
 	const struct gpio_dt_spec *reset_gpio_l;
 	const struct device *ioex_port0, *ioex_port1;
+	const struct gpio_dt_spec *usb_a0_vbus =
+		GPIO_DT_FROM_NODELABEL(ioex_en_pp5000_usb_a0_vbus);
+	const struct gpio_dt_spec *usb_a1_vbus =
+		GPIO_DT_FROM_NODELABEL(ioex_en_pp5000_usb_a1_vbus);
 
 	/* The maximum pin numbers of the NCT38xx IO expander port is 8 */
 	gpio_flags_t saved_port0_flags[8] = { 0 };
@@ -251,7 +255,6 @@ static void reset_nct38xx_port(int port)
 		ioex_port0 = DEVICE_DT_GET(DT_NODELABEL(ioex_c0_port0));
 		ioex_port1 = DEVICE_DT_GET(DT_NODELABEL(ioex_c0_port1));
 	} else if (port == USBC_PORT_C1) {
-		reset_gpio_l = GPIO_DT_FROM_NODELABEL(gpio_usb_c1_tcpc_rst_l);
 		ioex_port0 = DEVICE_DT_GET(DT_NODELABEL(ioex_c1_port0));
 		ioex_port1 = DEVICE_DT_GET(DT_NODELABEL(ioex_c1_port1));
 	} else {
@@ -275,6 +278,15 @@ static void reset_nct38xx_port(int port)
 				 ARRAY_SIZE(saved_port0_flags));
 	gpio_restore_port_config(ioex_port1, saved_port1_flags,
 				 ARRAY_SIZE(saved_port1_flags));
+
+	if (power_get_state() == POWER_S0) {
+		/* If we transitioned to S0 during the reset then the restore
+		 * may set these pins low. Ensure the A ports are always
+		 * powered in S0.
+		 */
+		gpio_pin_set_dt(usb_a0_vbus, 1);
+		gpio_pin_set_dt(usb_a1_vbus, 1);
+	}
 }
 
 void board_reset_pd_mcu(void)
