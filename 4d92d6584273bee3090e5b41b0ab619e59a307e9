@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "097d5e5f_8996c888",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T19:07:57Z",
+      "side": 1,
+      "message": "I didn\u0027t catch this at first, but there are potentially 3 registers we need to modify. This batch of comments are related to that issue.",
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f025b5a_979a8be5",
@@ -89,6 +106,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f80112f_04e072f3",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T19:07:57Z",
+      "side": 1,
+      "message": "I think there is an issue with this approach as there are up to 3 different registers that need to be modified.\n\nCtlTop:0x04 -\u003e FLIP and USB3 enable/disable\nCtlTop:0x05 -\u003e DP enable/disable\nCtlTop:0x06 -\u003e TBT/USB4 enable/disable\n\nAll this will use the same I2C address to access, but there are 3 registers to modify depending on the contents of mux_state.\n\nOne approach would be to keep 3 temporary variables here, initialized to 0. Then set bits in these temp variables as mux_state bits are checked. The masks for each of the 3 registers can be macros as they don\u0027t need to change. Then the ctltop_update function can do register read/modify/write using the masks for each fo the 3 registers. So you pass in 3 \u0027register content\u0027 arguments and not just one.",
+      "range": {
+        "startLine": 143,
+        "startChar": 8,
+        "endLine": 143,
+        "endChar": 29
+      },
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4226f8f_748282d4",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 3
@@ -146,6 +186,69 @@
       "writtenOn": "2023-02-13T18:37:27Z",
       "side": 1,
       "message": "For this bit and remaining bits (bit 4 - bit 0), we should change the name to either _STATUS or _ENABLED",
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2e2346_86ffec2f",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T19:07:57Z",
+      "side": 1,
+      "message": "There should only be one macro defined for each register we care about.\nName: RT_REG_INTF_CFG0 is the name from the programming guide for CtlTop:0x04\n\nSo we could use:\n\n#define ANX7452_CTLTOP_CFG0_REG\n#define ANX7452_CTLTOP_CFG0_USB3_EN BIT(5)\n#define ANX7452_CTLTOP_CFG0_FLIP_EN BIT(1)",
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b23c5fb_0fc66547",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T19:07:57Z",
+      "side": 1,
+      "message": "CFG1",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eaa32b5_8762ac9c",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T19:07:57Z",
+      "side": 1,
+      "message": "CFG2\n\nAnd similar to the comment for CFG0 register, only one instance for the register macro name, and 2 bit defines for USB4 and TBT mode.",
+      "range": {
+        "startLine": 63,
+        "startChar": 23,
+        "endLine": 63,
+        "endChar": 27
+      },
       "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
