@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8ec93b_73f00243",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-13T17:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ea6ed9_dc005ccb",
+      "range": {
+        "startLine": 21,
+        "startChar": 36,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9fc23f1_79115085",
@@ -78,6 +102,30 @@
       "writtenOn": "2023-02-07T20:30:05Z",
       "side": 1,
       "message": "Note that the read/write methods here are only useful for writing to the TOP section registers (8 bit device address 0x20). We also need methods to access TopCtl registers which by default use the 8 bit device address of 0x40",
+      "range": {
+        "startLine": 26,
+        "startChar": 18,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c57daf93_03bd0322",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-13T17:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9fc23f1_79115085",
       "range": {
         "startLine": 26,
         "startChar": 18,
@@ -105,6 +153,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca9f6de_0afb4f44",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-13T17:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c09015ab_e9210c4f",
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "075c3469_0e877410",
@@ -122,6 +188,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9cd4ab7_b895e2b9",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-13T17:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "075c3469_0e877410",
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e149fca9_ad6026ad",
@@ -135,6 +219,30 @@
       "writtenOn": "2023-02-07T18:58:22Z",
       "side": 1,
       "message": "I\u0027m not clear what the intent here is in this section. Section 2.4 states:\n\nUpon CC1/CC2 detection event or HPD event, system PD EC sets:\n- [TOP:0xF8] bit7 set to 1, bit4 (flip) set to CC1 (0) or CC2(1) according the PD detect, as well as [CtlTop:0x04] bit1 set to CC1\nor CC2\n\nTOP:0xF8] bit7 set to 1 will be set in the _init method. Besides this bit, we need to potentially set Top:0xf8 bit 4 and CtlTop:0x04 bit 1",
+      "range": {
+        "startLine": 83,
+        "startChar": 17,
+        "endLine": 83,
+        "endChar": 45
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbdd6da5_6ecbb617",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-13T17:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e149fca9_ad6026ad",
       "range": {
         "startLine": 83,
         "startChar": 17,
@@ -168,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7578a0b5_00dfdf4c",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-13T17:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69eba124_ae06cfcc",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 68
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1a5f1ec_ab459c6e",
@@ -185,6 +317,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "198d4c37_4f230df9",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-13T17:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1a5f1ec_ab459c6e",
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c83d6b5_ef0a13a7",
@@ -198,6 +348,30 @@
       "writtenOn": "2023-02-07T18:58:22Z",
       "side": 1,
       "message": "the programming guide doesn\u0027t give much detail, but from context, I\u0027m pretty certain we won\u0027t need to worry about the SWAP bit in this register. This control is related to the data role of the port. DFP (host) and UFP (device). Chromebook ports would always be a DFP when this chip is required for operation. So this bit should always be left as 0. Note that it can be manufactured this way as well as it has EFUSE control.",
+      "range": {
+        "startLine": 140,
+        "startChar": 11,
+        "endLine": 140,
+        "endChar": 30
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ae9a8da_537ed61f",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-13T17:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c83d6b5_ef0a13a7",
       "range": {
         "startLine": 140,
         "startChar": 11,
@@ -231,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec8e83e0_36e8bd5e",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-13T17:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12bda2d6_b630e362",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 29
+      },
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "890cf9f2_c600927d",
@@ -244,6 +442,24 @@
       "writtenOn": "2023-02-07T18:58:22Z",
       "side": 1,
       "message": "We don\u0027t have the full register document yet, so it\u0027s a little tough to give these meaningful names, but we do want to differentiate between the registers and their various bit definitions. I think it\u0027s best to do something like:\n\nchip_section_name_reg\nchip -\u003e anx7452\nsection -\u003e TOP, USB, DP, CTLTOP, etc\nname -\u003e CTRL for register 0xF8, \nreg -\u003e REG to indicate this macro is for register offset vs a bit or bitfield\n\nI think the registers as defined in the other ANX retimer is a good example to follow.\n\n/*\n * Analog_Status_CTRL register\n *\n * 7:6 Reserved\n * 5   Reg_bypass_EN (0: Enable state machine, 1: Disable state machine.)\n * 4   Reg_EN (0: All configures are controlled by pin.\n *             1: All configures are controlled by registers.)\n * 3   Reserved\n * 2   FLIP_EN (0: no flip; 1: enable flip.)\n * 1   DP_EN (0: disable DP mode; 1: Enable DP mode.)\n * 0   USB_EN (1: disable USB mode; 1: enable USB mode.)\n */\n#define ANX7483_ANALOG_STATUS_CTRL_REG 0x07\n#define ANX7483_CTRL_REG_BYPASS_EN BIT(5)\n#define ANX7483_CTRL_REG_EN BIT(4)\n#define ANX7483_CTRL_FLIP_EN BIT(2)\n#define ANX7483_CTRL_DP_EN BIT(1)\n#define ANX7483_CTRL_USB_EN BIT(0)\n\nThis visually makes it clear, that the register offset is given first, and the macros under that are for definitions of the register itself.\n\nWe don\u0027t have good names for CtlTop:0x05 or CtlTop:0x06, but we can infer from their use. eg. 0x06 -\u003e USB4/TBT enable, 0x05 -\u003e DP enable, 0x04 -\u003e USB3 enable\nSo for until we get further info, we could use:\n\nANX7483_CTLTOP_USB4_TBT_REG\nANX7483_CTLTOP_DP_REG\nANX7483_CTLTOP_USB3_REG",
+      "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86daca49_e23d163a",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-13T17:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "890cf9f2_c600927d",
       "revId": "5ffcf3d69295d4c47d98f91ee694ad7a34e39425",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
