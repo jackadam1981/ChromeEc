@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8e6ff5_9d43fad4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T18:37:27Z",
+      "side": 1,
+      "message": "Good improvements from the first patchset. One piece we\u0027re still missing is how the enable GPIO signal (USB_EN) is being controlled. Disabling this signal will put the chip in a further low power mode.",
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f025b5a_979a8be5",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T18:37:27Z",
+      "side": 1,
+      "message": "I think it\u0027s better to be consistent in terms of 7 bit/ 8 bit addresses. Since me-\u003ei2c_addr_flags will be the 7 bit address, let\u0027s just keep ctltop_reg_i2c_addr as a 7 bit address.",
+      "range": {
+        "startLine": 40,
+        "startChar": 32,
+        "endLine": 40,
+        "endChar": 56
+      },
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc9187c_cf49ce56",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T18:37:27Z",
+      "side": 1,
+      "message": "probably more accurate to name this parameter \u0027mask\u0027 as bits could be confused with the value of the bits to be set.",
+      "range": {
+        "startLine": 49,
+        "startChar": 73,
+        "endLine": 49,
+        "endChar": 77
+      },
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410940ff_4cb928e5",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T18:37:27Z",
+      "side": 1,
+      "message": "pass \u0027val\u0027 here and then in the following line:\n\nctltop_reg_i2c_addr \u003d val \u003e\u003e 1;",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 26
+      },
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4226f8f_748282d4",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T18:37:27Z",
+      "side": 1,
+      "message": "Based on the last update from analogix, I think we should read Top:0xF8 here use the bits defined there for status.",
+      "range": {
+        "startLine": 155,
+        "startChar": 31,
+        "endLine": 155,
+        "endChar": 52
+      },
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097b90bc_7adcb35a",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T18:37:27Z",
+      "side": 1,
+      "message": "As we get more information from Analogix, it looks like this register is mainly a status register. It is used to enable I2C register access (instead of pin control), but polarity, USB3, TBT, DP, and USB4 bits are read only and reflect the current status.",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52397106_dafdc2da",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T18:37:27Z",
+      "side": 1,
+      "message": "For this bit and remaining bits (bit 4 - bit 0), we should change the name to either _STATUS or _ENABLED",
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a4e030_1817267d",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-02-13T18:37:27Z",
+      "side": 1,
+      "message": "We don\u0027t need this declared in the .h file. It should be a static variable in the .c file.",
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
