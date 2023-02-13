@@ -16,6 +16,69 @@
       "message": "for initial comments, testing yet to be described",
       "revId": "099cc4a8566072f83a5652a4ea1636191c8e6492",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3059c5b8_61ab4445",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-13T18:58:10Z",
+      "side": 1,
+      "message": "a couple of nits",
+      "revId": "099cc4a8566072f83a5652a4ea1636191c8e6492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f2d0aa_ffb8e925",
+        "filename": "board/cr50/tpm_nvmem_ops.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-13T18:58:10Z",
+      "side": 1,
+      "message": "this is already defined in three places in the tree:\n```\noard/cr50/dcrypto/dcrypto.h:#define SHA256_DIGEST_SIZE  32\ninclude/sha256.h:#define SHA256_DIGEST_SIZE 32\ninclude/u2f.h:#define SHA256_DIGEST_SIZE        32\n```\n\ncan you not include any of those files here?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "099cc4a8566072f83a5652a4ea1636191c8e6492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2bf798d_f2927aa5",
+        "filename": "board/cr50/tpm_nvmem_ops.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-13T18:58:10Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be `u8`? It looks like this is mapped to `BYTE` in tmp2 tree, which is typedefed as `uint8_t`",
+      "range": {
+        "startLine": 63,
+        "startChar": 41,
+        "endLine": 63,
+        "endChar": 45
+      },
+      "revId": "099cc4a8566072f83a5652a4ea1636191c8e6492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
