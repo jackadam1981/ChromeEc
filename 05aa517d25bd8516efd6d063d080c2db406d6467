@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be0c8f0e_347b8fbb",
+        "filename": "zephyr/program/geralt/src/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-02-14T08:48:39Z",
+      "side": 0,
+      "message": "We could still keep this guard in case the follower enabling the usb_charger.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "05aa517d25bd8516efd6d063d080c2db406d6467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
