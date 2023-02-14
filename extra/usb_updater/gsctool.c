@@ -3869,6 +3869,21 @@ static int getopt_all(int argc, char *argv[])
 	return i;
 }
 
+static void get_crashlog(struct transfer_descriptor *td)
+{
+	uint32_t rv;
+	uint8_t cmd[4] = {0};
+	uint8_t response[4096] = {0};
+	size_t response_size = sizeof(response);
+
+	rv = send_vendor_command(td, VENDOR_CC_GET_CRASHLOG,
+				 cmd, sizeof(cmd), response, &response_size);
+	if (rv) {
+		printf("Get crash log failed.\n");
+		return;
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
