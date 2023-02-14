@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea31672a_3ee49692",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-14T01:40:26Z",
+      "side": 1,
+      "message": "\u003eBetter to inspect the active event I think, so we continue only if we\u0027ve received AP_PWRSEQ_EVENT_POWER_STARTUP.\n\nWe should not assume that this event will be processed at this level in single `run` iteration. Upper action handlers could require subsequent iterations until conditions are met to reach architecture level. In that case we would lose this event here.\n\n\u003e Possibly also want to stop the timer if we continue, just to ensure it won\u0027t trigger spurious events later.\n\nAt this point `x86_non_dsx_timer` timer for G3 already expired and triggered `AP_PWRSEQ_EVENT_POWER_STARTUP` event. See [x86_non_dsx_timer_handler](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3996453/24/zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c#194). Since this is the event that will trigger starting power up sequence, no need to check for timer state.\n\nHowever, if system should boot immediately when power button is pressed while waiting for delayed_reboot_from_g3_timer to expire; then we do need to stop timer when exiting G3 state.\n\nIn current (and legacy) implementation, pressing power button while waiting for delayed_reboot_from_g3_timer does nothing.",
+      "parentUuid": "5acd8bd9_be340ec9",
+      "range": {
+        "startLine": 781,
+        "startChar": 1,
+        "endLine": 783,
+        "endChar": 2
+      },
+      "revId": "589a7ee68c8dd7a33d52d3b6b2e8c12af3aec203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "04d170f0_0b95ef25",
