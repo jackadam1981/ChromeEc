@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "681ab545_b0694b3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-14T01:40:37Z",
+      "side": 1,
+      "message": "We\u0027ll need a privacy review before deploying this feature. I don\u0027t think it\u0027s required for merging the code since it\u0027s behind feature flags. Either way, I\u0027ve reached out to the privacy team for input.",
+      "parentUuid": "62026092_cd69ff49",
+      "revId": "74e8650ea81506b35bcf3d8d410af07151ecbd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53433c3c_10c66a28",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a47023a_70d477a3",
+        "filename": "zephyr/shim/src/register_memory_dump.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-14T01:40:37Z",
+      "side": 1,
+      "message": "Does this matter when it\u0027s a local constant?",
+      "parentUuid": "53433c3c_10c66a28",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "74e8650ea81506b35bcf3d8d410af07151ecbd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb1d2d52_36bdeacb",
         "filename": "zephyr/test/drivers/host_command_memory_dump/src/host_command_memory_dump.c",
         "patchSetId": 11
@@ -54,6 +96,30 @@
       "writtenOn": "2023-02-10T22:58:24Z",
       "side": 1,
       "message": "Nit - follow Zephyr\u0027s convention of always including braces for code under the zephyr directory.  Do this throughout the file.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "74e8650ea81506b35bcf3d8d410af07151ecbd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad2f38d_5eee4ea1",
+        "filename": "zephyr/test/drivers/host_command_memory_dump/src/host_command_memory_dump.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-14T01:40:37Z",
+      "side": 1,
+      "message": "Can you link to the guideline? Didn\u0027t see it at https://docs.zephyrproject.org/3.1.0/contribute/coding_guidelines/index.html.\n\nNot disagreeing, I just want to make sure I make all the needed corrections.",
+      "parentUuid": "bb1d2d52_36bdeacb",
       "range": {
         "startLine": 68,
         "startChar": 0,
