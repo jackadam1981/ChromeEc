@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2aefb33_556871d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 27
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-02-14T18:21:11Z",
+      "side": 1,
+      "message": "C-friendly",
+      "range": {
+        "startLine": 11,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062e9117_7ea70ad6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 27
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-02-14T18:21:11Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236e7f4a_8cf98898",
+        "filename": "docs/ec-host-command-api.md",
+        "patchSetId": 27
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-02-14T18:21:11Z",
+      "side": 1,
+      "message": "these should be in backticks",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e1ba2d4_31f0e40f",
+        "filename": "docs/ec-host-command-api.md",
+        "patchSetId": 27
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-02-14T18:21:11Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77dde0f5_2960b973",
+        "filename": "docs/ec-host-command-api.md",
+        "patchSetId": 27
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-02-14T18:21:11Z",
+      "side": 1,
+      "message": "put in multiline literal (triple backticks)",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12be8d94_ac51b82d",
+        "filename": "docs/ec-host-command-api.md",
+        "patchSetId": 27
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-02-14T18:21:11Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d42ab0d_71ecb1ab",
+        "filename": "docs/ec-host-command-api.md",
+        "patchSetId": 27
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-02-14T18:21:11Z",
+      "side": 1,
+      "message": "backticks",
+      "range": {
+        "startLine": 57,
+        "startChar": 15,
+        "endLine": 57,
+        "endChar": 27
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f39d62f_6a82253f",
+        "filename": "include/ec_cmd_api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-02-14T18:21:11Z",
+      "side": 1,
+      "message": "in general, it would be nice to avoid cryptic abbreviations.  can we spell out `CV`, `F`, `P`, and `R`? same for below.",
+      "range": {
+        "startLine": 121,
+        "startChar": 16,
+        "endLine": 121,
+        "endChar": 25
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e254f9dd_88d2b2c5",
+        "filename": "include/ec_cmd_api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-02-14T18:21:11Z",
+      "side": 1,
+      "message": "can we add a semicolon after each of these? that makes it so that editors will indent it nicely.",
+      "range": {
+        "startLine": 215,
+        "startChar": 45,
+        "endLine": 215,
+        "endChar": 46
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
