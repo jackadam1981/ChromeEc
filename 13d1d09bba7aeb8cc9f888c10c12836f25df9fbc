@@ -16,6 +16,24 @@
       "message": "Same as previous patch, code under `zephyr/` should comply with Zephyr coding style, which is to always use braces.",
       "revId": "13d1d09bba7aeb8cc9f888c10c12836f25df9fbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81954838_14da2629",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-14T20:54:21Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "1d40e018_295ec62c",
+      "revId": "13d1d09bba7aeb8cc9f888c10c12836f25df9fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
