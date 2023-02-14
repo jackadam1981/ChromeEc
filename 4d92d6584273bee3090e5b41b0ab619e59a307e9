@@ -152,6 +152,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "009e1815_1d82c838",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-14T03:55:36Z",
+      "side": 1,
+      "message": "I think it\u0027s doing the similar thing Scott",
+      "parentUuid": "d4226f8f_748282d4",
+      "range": {
+        "startLine": 155,
+        "startChar": 31,
+        "endLine": 155,
+        "endChar": 52
+      },
+      "revId": "4d92d6584273bee3090e5b41b0ab619e59a307e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "097b90bc_7adcb35a",
         "filename": "driver/retimer/anx7452.h",
         "patchSetId": 3
