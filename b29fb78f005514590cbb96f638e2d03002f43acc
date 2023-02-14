@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4100ea5e_ec8478c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-14T17:19:00Z",
+      "side": 1,
+      "message": "Even if not quite atomic, as you point out below, this will speed up \"transport init\" by probably a factor of 2, simply because of fewer textual command interactions.",
+      "parentUuid": "cc01e3ba_1c4db9eb",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "b29fb78f005514590cbb96f638e2d03002f43acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48805d12_833bbceb",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-14T17:12:37Z",
       "side": 1,
       "message": "does this set register in a way that always prevent glitches?",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 15
+      },
+      "revId": "b29fb78f005514590cbb96f638e2d03002f43acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e78c5b5_65b3f2d3",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-14T17:19:00Z",
+      "side": 1,
+      "message": "Good point.  Now that I think about it, I am not sure, as it does have to modify several registers in order to achieve the requested effects.\n\nAt least now we have the interface, and we can later enhance this code to look at current level and direction of the pin to determine a \"safe\" order of making the changes.",
+      "parentUuid": "48805d12_833bbceb",
       "range": {
         "startLine": 396,
         "startChar": 1,
