@@ -16,6 +16,24 @@
       "message": "this patch needs to be last in your patch series.\nalternatively, you can Cq-Depend on 4230054 or whichever ends up being\nthe last one in the series so an implementation of board_get_pchg_count()\ncan be found.",
       "revId": "d52f8b4b9bd836ccd217ef44fe3258ed8b010732",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8f186d_1746fb42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 31
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-14T09:56:17Z",
+      "side": 1,
+      "message": "done,",
+      "parentUuid": "0c86e3e7_78538507",
+      "revId": "d52f8b4b9bd836ccd217ef44fe3258ed8b010732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
