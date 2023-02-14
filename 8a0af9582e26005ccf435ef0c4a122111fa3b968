@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7970ce6a_7b8c2a1f",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-02-14T04:41:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0d3c9821_f962d8eb",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "8a0af9582e26005ccf435ef0c4a122111fa3b968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59828039_6d6d561a",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61ccd5ab_8fb8efc6",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-02-14T04:41:14Z",
+      "side": 1,
+      "message": "didn\u0027t fit on the line, now fixed.",
+      "parentUuid": "59828039_6d6d561a",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "8a0af9582e26005ccf435ef0c4a122111fa3b968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "781d03c0_34a59027",
@@ -94,6 +142,30 @@
       "writtenOn": "2023-02-13T19:04:44Z",
       "side": 1,
       "message": "just curious: how could we ever end up this state?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "8a0af9582e26005ccf435ef0c4a122111fa3b968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6787c40b_96a03655",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-02-14T04:41:14Z",
+      "side": 1,
+      "message": "it\u0027s before coreboot extended anything into PCR0, by including it we allow coreboot itself to modify the space. it doesn\u0027t add additional capabilities: if you have PCR0\u003d0, you know whatto extend to get it to normal or dev value so that you can change FWMP even ifwe don\u0027t allow 00s here.",
+      "parentUuid": "781d03c0_34a59027",
       "range": {
         "startLine": 49,
         "startChar": 0,
