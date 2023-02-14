@@ -283,6 +283,26 @@ rex_coverage:
     PROJECT: "rex"
   <<: *coverage_template
 
+geralt:
+  variables:
+    PROJECT: "geralt"
+  <<: *build_template
+
+geralt_coverage:
+  variables:
+    PROJECT: "geralt"
+  <<: *coverage_template
+
+myst:
+  variables:
+    PROJECT: "myst"
+  <<: *build_template
+
+myst_coverage:
+  variables:
+    PROJECT: "myst"
+  <<: *coverage_template
+
 ec_coverage:
   stage: test
   needs: []
