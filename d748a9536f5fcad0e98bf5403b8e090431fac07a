@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac25b24c_cad1611a",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-14T18:55:12Z",
+      "side": 1,
+      "message": "Similar to below, a failure should probably result in a `software_panic`.",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 10
+      },
+      "revId": "d748a9536f5fcad0e98bf5403b8e090431fac07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18efc099_3b0658fb",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-14T18:55:12Z",
+      "side": 1,
+      "message": "If `NCL_DRBG-\u003epower()`, or other calls below, fail then could we end up with a constant value or some pseudo-random number?",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 11
+      },
+      "revId": "d748a9536f5fcad0e98bf5403b8e090431fac07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6041779c_c384b691",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-14T18:55:12Z",
+      "side": 1,
+      "message": "I\u0027m worried about returning zero here and if `status !\u003d NCL_STATUS_OK` at the end. Zero is a valid random value and indistinguishable from an error code. I think we should use a `software_panic` in any error case, as is done in [chip/stm32/trng.c](http://cs/chromeos_public/src/platform/ec/chip/stm32/trng.c?rcl\u003d0e94eecb89da262dda0b2bad81c2d6c5df0933f1\u0026l\u003d27).",
+      "range": {
+        "startLine": 181,
+        "startChar": 10,
+        "endLine": 181,
+        "endChar": 11
+      },
+      "revId": "d748a9536f5fcad0e98bf5403b8e090431fac07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d243ccbd_f1f8ac87",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-14T18:55:12Z",
+      "side": 1,
+      "message": "nit: Unless I missed something, I think this could be simplified by removing the conditional here entirely. If `len \u003e\u003d 4` and `align \u003d\u003d 0` then a `cnt \u003d MIN(4 - align, len);` would result in `cnt` being set to 4, then `memcpy(buffer, \u0026number, cnt)` would be equivalent to `*(uint32_t*)buffer \u003d number;`",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 23
+      },
+      "revId": "d748a9536f5fcad0e98bf5403b8e090431fac07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df94cb53_d02ba3e3",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-14T18:55:12Z",
+      "side": 1,
+      "message": "nit: using `sizeof(number)` might make the intent more obvious than the constant 4",
+      "range": {
+        "startLine": 207,
+        "startChar": 13,
+        "endLine": 207,
+        "endChar": 14
+      },
+      "revId": "d748a9536f5fcad0e98bf5403b8e090431fac07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
