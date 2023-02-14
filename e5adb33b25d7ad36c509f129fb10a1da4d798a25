@@ -70,6 +70,30 @@
       },
       "revId": "e5adb33b25d7ad36c509f129fb10a1da4d798a25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf79c47_867f6cca",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-14T01:55:29Z",
+      "side": 1,
+      "message": "update it.and each board implement it.",
+      "parentUuid": "18714bc3_bb0acea3",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 1
+      },
+      "revId": "e5adb33b25d7ad36c509f129fb10a1da4d798a25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
