@@ -635,6 +635,7 @@ const struct charger_drv rt9490_drv = {
 #endif
 };
 
+#ifdef CONFIG_USB_CHARGER
 /* BC1.2 */
 static int rt9490_get_bc12_ilim(enum charge_supplier supplier)
 {
@@ -776,7 +777,9 @@ void rt9490_interrupt(int port)
 	atomic_or(&pending_events, BIT(port));
 	hook_call_deferred(&rt9490_deferred_interrupt_data, 0);
 }
+#endif /* CONFIG_USB_CHARGER */
 
+#ifdef CONFIG_USB_CHARGER
 const struct bc12_drv rt9490_bc12_drv = {
 	.usb_charger_task_init = rt9490_usb_charger_task_init,
 	.usb_charger_task_event = rt9490_usb_charger_task_event,
@@ -790,6 +793,7 @@ struct bc12_config bc12_ports[CHARGE_PORT_COUNT] = {
 	},
 };
 #endif /* CONFIG_BC12_SINGLE_DRIVER */
+#endif /* CONFIG_USB_CHARGER */
 
 int rt9490_get_thermistor_val(const struct temp_sensor_t *sensor, int *temp_ptr)
 {
