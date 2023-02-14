@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "501cadd1_37bfd0b7",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-14T10:11:48Z",
+      "side": 1,
+      "message": "Does this need to be decleared? It should be already available from including \"zephyr/kernel.h\"",
+      "revId": "2f429d49b5820edde46fe1731c56a1d6e961dad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5d5972_c77d4067",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-14T10:11:48Z",
+      "side": 1,
+      "message": "Feels like we are duplicating the logic, guess you are doing it for coherency with how this looks with other patches in the series?",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 24
+      },
+      "revId": "2f429d49b5820edde46fe1731c56a1d6e961dad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
