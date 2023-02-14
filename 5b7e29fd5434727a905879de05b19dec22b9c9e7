@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96ee7d67_8131f8b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-14T20:13:31Z",
+      "side": 1,
+      "message": "TCPC",
+      "range": {
+        "startLine": 7,
+        "startChar": 63,
+        "endLine": 7,
+        "endChar": 66
+      },
+      "revId": "5b7e29fd5434727a905879de05b19dec22b9c9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2fc6e5_c14501cd",
+        "filename": "zephyr/program/skyrim/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-14T20:13:31Z",
+      "side": 1,
+      "message": "Do we need to reset both pins, or just the one hooked up to the TCPC we reset? \n\nAlso, I noticed there\u0027s a `usb_charge_set_mode()` API we might be able to use to tie ourselves into the USB port power code in a slightly more elegant way (since it\u0027s the one technically in charge of this enable in normal cases)",
+      "revId": "5b7e29fd5434727a905879de05b19dec22b9c9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
