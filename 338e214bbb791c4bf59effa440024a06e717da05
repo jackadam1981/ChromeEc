@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5dbab9a_0e0cc50a",
+        "filename": "include/host_command.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-02-14T19:07:30Z",
+      "side": 1,
+      "message": "can we use non-cryptic names? not `c`, `h`, `v`, etc...",
+      "range": {
+        "startLine": 390,
+        "startChar": 33,
+        "endLine": 393,
+        "endChar": 1
+      },
+      "revId": "338e214bbb791c4bf59effa440024a06e717da05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
