@@ -34,6 +34,24 @@
       "parentUuid": "1b33095a_cb79902f",
       "revId": "7365396f11f2d624076bba39041ffa604885927f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca15cdd8_d8016cb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-14T17:55:57Z",
+      "side": 1,
+      "message": "Hi Gwendal,\n\nAny suggestions on how to use `ectool motionsense` to wake the AP with an EC host event while it\u0027s suspended during `suspend_stress_test`?",
+      "parentUuid": "02348e94_d36236d7",
+      "revId": "7365396f11f2d624076bba39041ffa604885927f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
