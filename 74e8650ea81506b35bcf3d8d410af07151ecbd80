@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3917b98d_a6f85224",
+        "filename": "zephyr/shim/src/register_memory_dump.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-14T17:53:05Z",
+      "side": 1,
+      "message": "In practice, probably not.  The optimizer likely allocates storage for this once instead of initializing directly on the stack with each call.\n\nUsing static explicitly makes this storage into the rodata area instead of the stack.\n\nI\u0027m fine with either approach.",
+      "parentUuid": "8a47023a_70d477a3",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "74e8650ea81506b35bcf3d8d410af07151ecbd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb1d2d52_36bdeacb",
         "filename": "zephyr/test/drivers/host_command_memory_dump/src/host_command_memory_dump.c",
         "patchSetId": 11
@@ -120,6 +144,30 @@
       "side": 1,
       "message": "Can you link to the guideline? Didn\u0027t see it at https://docs.zephyrproject.org/3.1.0/contribute/coding_guidelines/index.html.\n\nNot disagreeing, I just want to make sure I make all the needed corrections.",
       "parentUuid": "bb1d2d52_36bdeacb",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "74e8650ea81506b35bcf3d8d410af07151ecbd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6754c2c_fe65a8d7",
+        "filename": "zephyr/test/drivers/host_command_memory_dump/src/host_command_memory_dump.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-14T17:53:05Z",
+      "side": 1,
+      "message": "https://docs.zephyrproject.org/latest/contribute/guidelines.html#coding-style",
+      "parentUuid": "fad2f38d_5eee4ea1",
       "range": {
         "startLine": 68,
         "startChar": 0,
