@@ -91,6 +91,29 @@
       },
       "revId": "e6a883e44bc874755ba8334c63113831ac06cdbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4316d99_11ef0af9",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-14T16:50:29Z",
+      "side": 1,
+      "message": "I think to disable it has to be \"not okay\".\n\nor remove it",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "e6a883e44bc874755ba8334c63113831ac06cdbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
