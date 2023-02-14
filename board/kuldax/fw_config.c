@@ -71,3 +71,8 @@ void ec_bj_power(uint32_t *voltage, uint32_t *current)
 	*voltage = bj_power[bj].voltage;
 	*current = bj_power[bj].current;
 }
+
+bool ec_cfg_has_wireless_charger(void)
+{
+	return (fw_config.wireless_charger == WIRELESS_CHARGER_ENABLE);
+}
