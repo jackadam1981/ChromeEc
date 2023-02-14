@@ -222,6 +222,30 @@
       },
       "revId": "8a0af9582e26005ccf435ef0c4a122111fa3b968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4496f473_fe046610",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-14T05:31:54Z",
+      "side": 1,
+      "message": "I still don\u0027t see how keeping the initial PCR value here helps. \n\ncoreboot should never be modifying FWMP, but if need be - it could, as you described.  This seems to me just a wast of 32 bytes in flash for no particularly good reason.",
+      "parentUuid": "6787c40b_96a03655",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "8a0af9582e26005ccf435ef0c4a122111fa3b968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
