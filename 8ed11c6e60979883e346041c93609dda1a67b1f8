@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3d153f_a5958bf7",
+        "filename": "zephyr/program/geralt/interrupts.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-02-14T09:43:09Z",
+      "side": 1,
+      "message": "GPIO_INT_EDGE_BOTH?",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 32
+      },
+      "revId": "8ed11c6e60979883e346041c93609dda1a67b1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
