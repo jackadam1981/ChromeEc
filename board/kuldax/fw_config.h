@@ -37,5 +37,3 @@ union brask_cbi_fw_config get_fw_config(void);
  * Get the barrel-jack power from FW_CONFIG.
  */
 void ec_bj_power(uint32_t *voltage, uint32_t *current);
-
-#endif /* __BOARD_BRASK_FW_CONFIG_H_ */
