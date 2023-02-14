@@ -52,6 +52,24 @@
       "parentUuid": "0f3d7893_b8548f04",
       "revId": "eb987b7d08ef96f94689e77e8a706e17f1f35b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec6e6a0_ce097698",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-14T02:40:26Z",
+      "side": 1,
+      "message": "Done, See CL:3996453.",
+      "parentUuid": "6be85105_dccb2a96",
+      "revId": "eb987b7d08ef96f94689e77e8a706e17f1f35b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
