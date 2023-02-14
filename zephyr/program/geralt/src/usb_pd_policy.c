@@ -18,7 +18,6 @@ int pd_check_vconn_swap(int port)
 
 int pd_snk_is_vbus_provided(int port)
 {
-	static atomic_t vbus_prev[CONFIG_USB_PD_PORT_MAX_COUNT];
 	int vbus;
 
 	/*
@@ -28,21 +27,6 @@ int pd_snk_is_vbus_provided(int port)
 	vbus = adc_read_channel(board_get_vbus_adc(port)) >=
 	       PD_V_SINK_DISCONNECT_MAX;
 
-#ifdef CONFIG_USB_CHARGER
-	/*
-	 * There's no PPC to inform VBUS change for usb_charger, so inform
-	 * the usb_charger now.
-	 */
-	if (!!(vbus_prev[port] != vbus)) {
-		usb_charger_vbus_change(port, vbus);
-	}
-
-	if (vbus) {
-		atomic_or(&vbus_prev[port], 1);
-	} else {
-		atomic_clear(&vbus_prev[port]);
-	}
-#endif
 	return vbus;
 }
 
