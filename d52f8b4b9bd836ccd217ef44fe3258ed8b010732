@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c86e3e7_78538507",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 31
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-14T02:04:29Z",
+      "side": 1,
+      "message": "this patch needs to be last in your patch series.\nalternatively, you can Cq-Depend on 4230054 or whichever ends up being\nthe last one in the series so an implementation of board_get_pchg_count()\ncan be found.",
+      "revId": "d52f8b4b9bd836ccd217ef44fe3258ed8b010732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
