@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01de54cd_1e2b751b",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-02-14T16:24:40Z",
+      "side": 1,
+      "message": "Capturing conversation from our 1:1.\n\nThe condition in this loop should be `*pixel_str`.",
+      "range": {
+        "startLine": 836,
+        "startChar": 8,
+        "endLine": 836,
+        "endChar": 18
+      },
+      "revId": "374cac61430e3fb310654065178f45a64da9f849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
