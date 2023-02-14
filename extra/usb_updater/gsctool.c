@@ -387,7 +387,7 @@ struct __attribute__((__packed__)) arv_config_wpds {
  * This by far exceeds the largest vendor command response size we ever
  * expect.
  */
-#define MAX_RX_BUF_SIZE	500
+#define MAX_RX_BUF_SIZE	3072
 
 /*
  * Maximum update payload block size plus packet header size.
@@ -522,7 +522,9 @@ static const struct option_container cmd_line_options[] = {
 	 "[enable] Get the current WP setting or enable WP"},
 	{{"reboot", optional_argument, NULL, 'z'},
 	 "Tell the GSC to reboot with an optional reset timeout parameter "
-	 "in milliseconds"}
+	 "in milliseconds"},
+	{{"clog", optional_argument, NULL, 'x'},
+	 "[id]%Retrieve contents of the crash log with id <id>"}
 };
 
 /* Helper to print debug messages when verbose flag is specified. */
@@ -1655,8 +1657,10 @@ uint32_t send_vendor_command(struct transfer_descriptor *td,
 
 		if (!response_size) {
 			max_response_size = 1;
+			printf("set max size to 1\n");
 		} else if (*response_size < (sizeof(temp_response))) {
 			max_response_size = *response_size + 1;
+			printf("set max size to %zu\n", max_response_size);
 		} else {
 			fprintf(stderr,
 				"Error: Expected response too large (%zd)\n",
@@ -1680,7 +1684,9 @@ uint32_t send_vendor_command(struct transfer_descriptor *td,
 		} else {
 			rv = temp_response[0];
 			if (response_size) {
+				printf("resp!!!!!! %zu\n", *response_size);
 				*response_size = max_response_size - 1;
+				printf("resp!!!!!! %zu\n", *response_size);
 				memcpy(response,
 				       temp_response + 1, *response_size);
 			}
@@ -3869,6 +3875,28 @@ static int getopt_all(int argc, char *argv[])
 	return i;
 }
 
+static void get_crashlog(struct transfer_descriptor *td, uint32_t id)
+{
+	uint32_t id_be = htobe32(id);
+	uint32_t rv;
+	uint8_t response[2048] = {0};
+	size_t response_size = sizeof(response);
+
+	rv = send_vendor_command(td, VENDOR_CC_GET_CRASHLOG,
+				 &id_be, sizeof(id_be), response, &response_size);
+	if (rv != VENDOR_RC_SUCCESS) {
+		printf("Get crash log failed. (%X)\n", rv);
+		/*exit(1);*/
+	}
+
+	for(size_t i = 0; i < response_size; i++) {
+		printf("%02x", response[i]);
+		if (i % 64 == 0 && i > 0)
+			printf("\n");
+	}
+	printf("\n");
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -3930,6 +3958,8 @@ int main(int argc, char *argv[])
 	const char *capability_parameter = "";
 	bool reboot_gsc = false;
 	size_t reboot_gsc_timeout = 0;
+	int get_clog = 0;
+	uint32_t clog_id = 0;
 
 	/*
 	 * All options which result in setting a Boolean flag to True, along
@@ -4008,6 +4038,11 @@ int main(int argc, char *argv[])
 			else
 				arv_config_spi_addr_mode =
 				arv_config_spi_addr_mode_choice_get;
+			break;
+		case 'x':
+			get_clog = 1;
+			if (optarg)
+				clog_id = strtoul(optarg, NULL, 0);
 			break;
 		case 'd':
 			if (!parse_vidpid(optarg, &vid, &pid)) {
@@ -4212,6 +4247,7 @@ int main(int argc, char *argv[])
 	    !get_apro_hash &&
 	    !get_apro_boot_status &&
 	    !get_boot_mode &&
+	    !get_clog &&
 	    !get_flog &&
 	    !get_endorsement_seed &&
 	    !factory_mode &&
@@ -4265,10 +4301,10 @@ int main(int argc, char *argv[])
 	     !!ccd_unlock + !!ccd_lock + !!ccd_info + !!get_flog +
 	     !!get_boot_mode + !!openbox_desc_file + !!factory_mode +
 	     (wp != WP_NONE) + !!get_endorsement_seed +
-	     !!erase_ap_ro_hash + !!set_capability) > 1) {
+	     !!erase_ap_ro_hash + !!set_capability + !!get_clog) > 1) {
 		fprintf(stderr,
 			"ERROR: options "
-			"-e, -F, -g, -H, -I, -i, -k, -L, -O, -o, -P, -r, -U"
+			"-c, -e, -F, -g, -H, -I, -i, -k, -L, -O, -o, -P, -r, -U"
 			" and -w are mutually exclusive\n");
 		exit(update_error);
 	}
@@ -4364,6 +4400,9 @@ int main(int argc, char *argv[])
 
 	if (reboot_gsc)
 		exit(process_reboot_gsc(&td, reboot_gsc_timeout));
+	
+	if (get_clog)
+		get_crashlog(&td, clog_id);
 
 	if (data || show_fw_ver) {
 
@@ -4412,6 +4451,7 @@ int main(int argc, char *argv[])
 
 	if (!transferred_sections)
 		return noop;
+
 	/*
 	 * We should indicate if RO update was not done because of the
 	 * insufficient RW version.
