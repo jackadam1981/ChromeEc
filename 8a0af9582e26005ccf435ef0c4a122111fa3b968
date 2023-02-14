@@ -198,6 +198,30 @@
       },
       "revId": "8a0af9582e26005ccf435ef0c4a122111fa3b968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e49fabf_cda9154b",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-02-14T05:16:26Z",
+      "side": 1,
+      "message": "\u003e why should coreboot be allowed to change FWMP?\n\nI don\u0027t think it *does* atm, but it *can* do it now and it would be able to even if we don\u0027t allow 00s (by extending to whatever it wants and *then* modifying FWMP). same is true for any other entity that somehow gets access to TPM with PCR0 in the initial state.\n\nso kept 00s in the allowlist for simplicity in case there *is* some scenario when coreboot RO needs to write or delete FWMP. it changes nothing from the security point of view and eliminates this unknown edge case risk.",
+      "parentUuid": "1b9b0653_c8c7bd23",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "8a0af9582e26005ccf435ef0c4a122111fa3b968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
