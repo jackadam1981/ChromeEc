@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c9a5fee5_152d1d4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-02-14T04:41:09Z",
+      "side": 1,
+      "message": "\u003e not sure a separate patch is necessary\n\njust giving extra flexibility to deployment:\n\nhaving it in separate CLs, allows to revert just the last patch in the sequence with non-trivial implementation if we have issues with it. the rest can stay as it just establishes callbacks that don\u0027t change the old logic: platform never forbids these ops.\n\nbut we wouldn\u0027t be able to revert this CL w/o reverting https://crrev.com/c/4242410 that depends on it.",
+      "parentUuid": "00a3a7a8_d2bf4e1f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "d48ac13850a60aad1bdc1babfaead9dd5784fa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ddfbc0b5_bf07f528",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
