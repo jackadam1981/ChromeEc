@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8824863e_b41ed3b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-14T10:05:48Z",
+      "side": 1,
+      "message": "h",
+      "revId": "13d1d09bba7aeb8cc9f888c10c12836f25df9fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ca7104_e911d51c",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-14T10:05:48Z",
+      "side": 1,
+      "message": "Can you add braces? Zephyr coding policy is to always use them (this should have triggered presubmit warning)",
+      "revId": "13d1d09bba7aeb8cc9f888c10c12836f25df9fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2989a9b_35b3d5ed",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-14T10:05:48Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "13d1d09bba7aeb8cc9f888c10c12836f25df9fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
