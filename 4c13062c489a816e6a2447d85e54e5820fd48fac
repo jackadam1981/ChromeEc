@@ -46,6 +46,30 @@
       },
       "revId": "4c13062c489a816e6a2447d85e54e5820fd48fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b51c5393_cd364228",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-02-14T00:49:55Z",
+      "side": 0,
+      "message": "The PPC init enables the SBU mux and leaves it connected. Only entering the low power mode disconnects the SBU mux, but the low power mode has never been used. So here it is OK to not change the SBU mux.",
+      "parentUuid": "ba72c738_535a3557",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 225,
+        "endChar": 24
+      },
+      "revId": "4c13062c489a816e6a2447d85e54e5820fd48fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
