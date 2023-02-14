@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d7062f_cfa3588e",
+        "filename": "board/cr50/tpm_nvmem_ops.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-14T04:47:03Z",
+      "side": 1,
+      "message": "this is unfortunate, but I agree that this patch is not a place to untangle this.",
+      "parentUuid": "1a654034_611fcc67",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "099cc4a8566072f83a5652a4ea1636191c8e6492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2bf798d_f2927aa5",
