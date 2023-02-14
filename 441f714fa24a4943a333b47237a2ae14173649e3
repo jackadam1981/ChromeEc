@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "57093b91_689c69f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-14T21:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfd92fe3_0eb64f31",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "441f714fa24a4943a333b47237a2ae14173649e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fa7e9ec3_7a355fce",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2023-02-14T17:24:11Z",
       "side": 1,
       "message": "Also delete references where boards explicitly disable this option with `CONFIG_PLATFORM_EC_USBC_RETIMER_FW_UPDATE\u003dn`.",
+      "revId": "441f714fa24a4943a333b47237a2ae14173649e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc5e3379_4087c243",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-14T21:23:48Z",
+      "side": 1,
+      "message": "Done :)",
+      "parentUuid": "fa7e9ec3_7a355fce",
       "revId": "441f714fa24a4943a333b47237a2ae14173649e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
