@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed0fb23b_4ffc25a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-15T19:19:34Z",
+      "side": 1,
+      "message": "We might still want to keep this part of the device tree around for eventually when `named-gpios` support is dropped (b/267537103). I\u0027m not sure if it would be better to keep around the property now or delete it now and add it back in later. I\u0027ll let Keith weigh in on that.",
+      "revId": "92e44aebdf46ef6a17fb3c42ddd8d99b85f1edce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
