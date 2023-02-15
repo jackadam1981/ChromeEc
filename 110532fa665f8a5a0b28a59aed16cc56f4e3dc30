@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85ab6019_6991d641",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-15T20:55:39Z",
+      "side": 1,
+      "message": "Can you put these in a struct for readability (since they work as a pair)?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 29
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19eaae18_0210a771",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-15T20:55:39Z",
+      "side": 1,
+      "message": "You probably want to print a message here for logging.\n\nDo we clear the value once we trigger a slow charge or keep using it (charge-\u003edischarge-\u003e...)? What\u0027s the condition for clear?",
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9590e7_625406b6",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2578,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-15T20:55:39Z",
+      "side": 1,
+      "message": "You probably want to validate this and return error if it\u0027s too high or too low.",
+      "range": {
+        "startLine": 2578,
+        "startChar": 23,
+        "endLine": 2578,
+        "endChar": 31
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985c74b4_01c24a34",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4783,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-15T20:55:39Z",
+      "side": 1,
+      "message": "nit: I can read better without this...",
+      "range": {
+        "startLine": 4783,
+        "startChar": 37,
+        "endLine": 4783,
+        "endChar": 48
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb672e4e_eb0447fb",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3257,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-15T20:55:39Z",
+      "side": 1,
+      "message": "Irrelevant change? Please revert.",
+      "range": {
+        "startLine": 3257,
+        "startChar": 0,
+        "endLine": 3257,
+        "endChar": 27
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "812dc1a3_3c07f7a8",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7545,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-15T20:55:39Z",
+      "side": 1,
+      "message": "nit: if argc \u003d\u003d 2, it\u0027s nice to print a hint (e.g. \u0027EC doesn\u0027t support [soc]. Please update EC.\u0027)",
+      "range": {
+        "startLine": 7545,
+        "startChar": 6,
+        "endLine": 7545,
+        "endChar": 15
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6600ba14_fa45f9b2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7551,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-15T20:55:39Z",
+      "side": 1,
+      "message": "Defact standard syntax is \u003c..\u003e for mandatory param and [..] for optional.\n\nAlso, it\u0027s nice to describe what [soc] is for.",
+      "range": {
+        "startLine": 7551,
+        "startChar": 47,
+        "endLine": 7551,
+        "endChar": 59
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b616ef5_47fe25f6",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7558,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-15T20:55:39Z",
+      "side": 1,
+      "message": "nit: You can print the bad string (i.e. %s ... argv[1]).",
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
