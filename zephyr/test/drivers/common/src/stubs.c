@@ -146,6 +146,7 @@ DEFINE_FAKE_VOID_FUNC(system_hibernate, uint32_t, uint32_t);
 
 DEFINE_FAKE_VOID_FUNC(board_reset_pd_mcu);
 
+#ifndef CONFIG_PLATFORM_EC_TCPC_INTERRUPT
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
@@ -168,6 +169,7 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+#endif
 
 void ppc_alert(enum gpio_signal signal)
 {
