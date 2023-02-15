@@ -70,6 +70,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e74baf1e_3c3c1f5f",
+        "filename": "docs/ec-host-command-api.md",
+        "patchSetId": 27
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-15T00:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "236e7f4a_8cf98898",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e1ba2d4_31f0e40f",
@@ -83,6 +107,30 @@
       "writtenOn": "2023-02-14T18:21:11Z",
       "side": 1,
       "message": "here too",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c949ab4_26b24303",
+        "filename": "docs/ec-host-command-api.md",
+        "patchSetId": 27
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-15T00:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e1ba2d4_31f0e40f",
       "range": {
         "startLine": 34,
         "startChar": 3,
@@ -162,6 +210,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfce1ab0_e2058332",
+        "filename": "docs/ec-host-command-api.md",
+        "patchSetId": 27
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-15T00:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d42ab0d_71ecb1ab",
+      "range": {
+        "startLine": 57,
+        "startChar": 15,
+        "endLine": 57,
+        "endChar": 27
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f39d62f_6a82253f",
@@ -187,6 +259,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "014eebf8_3199133c",
+        "filename": "include/ec_cmd_api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-15T00:16:33Z",
+      "side": 1,
+      "message": "the macro names get unwieldy fast without abbreviations;\n\n`_CROS_EC_COMMAND_VERSION_FUNCTION_PARAM_RESPONSE`\n\n`_CROS_EC_COMMAND_VERSION_FUNCTION_PARAM_BASED_ON_FUNCTION_RESPONSE_BASED_ON_FUNCTION`\n\netc.\n\nthe names are pretty much limited to this file, so i don\u0027t have\na strong preference on their naming. i do want to limit their length\nto something \"reasonable\" given the 80 column limit.\ndo you have a better structure in mind?",
+      "parentUuid": "7f39d62f_6a82253f",
+      "range": {
+        "startLine": 121,
+        "startChar": 16,
+        "endLine": 121,
+        "endChar": 25
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e254f9dd_88d2b2c5",
         "filename": "include/ec_cmd_api.h",
         "patchSetId": 27
@@ -198,6 +294,30 @@
       "writtenOn": "2023-02-14T18:21:11Z",
       "side": 1,
       "message": "can we add a semicolon after each of these? that makes it so that editors will indent it nicely.",
+      "range": {
+        "startLine": 215,
+        "startChar": 45,
+        "endLine": 215,
+        "endChar": 46
+      },
+      "revId": "0d54a80510656368b993f4328d1148ebd9a199c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db9df65_bb1e6e7d",
+        "filename": "include/ec_cmd_api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-15T00:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e254f9dd_88d2b2c5",
       "range": {
         "startLine": 215,
         "startChar": 45,
