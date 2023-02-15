@@ -35,7 +35,7 @@ struct adc_profile_t {
 #endif
 #endif
 
-#if defined(CHIP_FAMILY_STM32L4)
+#if defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32L5)
 #define ADC_CALIBRATION_TIMEOUT_US 100000U
 #define ADC_ENABLE_TIMEOUT_US 200000U
 #define ADC_CONVERSION_TIMEOUT_US 200000U
