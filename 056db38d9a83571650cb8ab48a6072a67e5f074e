@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "971cb64c_f739ae10",
+        "filename": "common/ec_features.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-15T23:57:16Z",
+      "side": 1,
+      "message": "Hm, I had it that way and `repo upload` was complaining until I moved it. It seems fine moving it back now though.",
+      "parentUuid": "60b7310a_d6bd0918",
+      "range": {
+        "startLine": 118,
+        "startChar": 50,
+        "endLine": 118,
+        "endChar": 52
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e25296c1_b62ba166",
         "filename": "common/host_event_commands.c",
         "patchSetId": 6
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb05b486_e8801352",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-15T23:57:16Z",
+      "side": 1,
+      "message": "I\u0027ve added a comment indicating that Coreboot assumes a little-endian architecture.",
+      "parentUuid": "738eef88_90ff2b8c",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e784caa_448309e8",
@@ -120,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3945b9b_e879bd89",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-15T23:57:16Z",
+      "side": 1,
+      "message": "That\u0027s a good question. Looking at how `events` is modified:\n\n`events` has `mask` bits set:\n```\nvoid host_set_events(host_event_t mask)\n{\n...\n\thost_events_atomic_or(\u0026events, mask);\n```\n\nAnd `events` has `mask` bits cleared:\n```\nvoid host_clear_events(host_event_t mask)\n{\n...\n\thost_events_atomic_clear(\u0026events, mask);\n```\n\nAll other reads of `events` are unprotected, meaning there\u0027s no mutex or interrupts being disabled, so presumably we aren\u0027t actually __too__ concerned about incoherent reads.\n\nSo, the only thing `atomic_` functions are protecting us from are interleaved `OR` or `AND` (clear) operations on the same memory address, causing the final stored value to become undefined. For example, imagine an `OR` thread and an `AND` (clear) thread without atomic operations:\n\n0. `events` \u003d 0x1\n1. `OR`: Read `events` \u003d 0x1\n2. `AND`: Read `events` \u003d 0x1\n3. `AND`: Clear 0x1 (local value \u003d 0x0)\n4. `OR`: Set 0x2 (local value \u003d 0x3)\n5. `AND`: Store 0x0 to `events`\n6. `OR`: Store 0x3 to `events`\n\nUsing atomic functions would protect us from `events` erroneously containing the extra 0x1 bit that was supposed to be cleared. They also don\u0027t require a 64b version of the `atomic_` functions, since the loads/stores are done at the 32b granularity.\n\nHowever, the atomic functions don\u0027t protect from `host_set_events()` and `host_clear_events()` from being called at the same time, which would (presumably) be the only reason the atomic functions are required in the first place. If it\u0027s possible for multiple threads to execute those functions in parallel, `events` should be protected by a lock. That seems like the larger bug (and what you\u0027re likely alluding to here), and would also remove the need for the atomic functions. I don\u0027t know the design of this code well enough to say how possible/dangerous that actually is though.\n\nThat being said, I don\u0027t think this change is any worse or introduces any new bugs.",
+      "parentUuid": "3e784caa_448309e8",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 267,
+        "endChar": 41
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6eb4ff42_e44f6bda",
         "filename": "common/host_event_commands.c",
         "patchSetId": 6
@@ -131,6 +203,30 @@
       "writtenOn": "2023-02-15T21:56:15Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 18
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b1c1e5_08aa5efb",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-15T23:57:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6eb4ff42_e44f6bda",
       "range": {
         "startLine": 275,
         "startChar": 1,
@@ -166,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "150dbb8b_89f58bd1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-15T23:57:16Z",
+      "side": 1,
+      "message": "The last legal host event value is `64`.\n\nThis comment and naming is awkward, due to the 1-based counting.\n\nI tried giving it another update, so let me know what you think.",
+      "parentUuid": "3582d64a_6850ea3d",
+      "range": {
+        "startLine": 781,
+        "startChar": 62,
+        "endLine": 781,
+        "endChar": 68
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "941318d2_c357f53a",
         "filename": "util/ectool.cc",
         "patchSetId": 6
@@ -177,6 +297,30 @@
       "writtenOn": "2023-02-15T21:56:15Z",
       "side": 1,
       "message": "Hrmm, this will read out of bounds since we don\u0027t check that evt \u003c\u003d ARRAY_SIZE(host_event_text)",
+      "range": {
+        "startLine": 10885,
+        "startChar": 23,
+        "endLine": 10885,
+        "endChar": 38
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e5f7ce_adca223a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 10885,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-15T23:57:16Z",
+      "side": 1,
+      "message": "Ah, good catch. I seems we need 2 values in `host_event_code`. One to indicate how many host events are allowed, and how many are actually in use:\n\n```\n\tEC_HOST_EVENT_NUM_EVENTS,\n\tEC_HOST_EVENT_MAX_EVENTS \u003d 65\n```",
+      "parentUuid": "941318d2_c357f53a",
       "range": {
         "startLine": 10885,
         "startChar": 23,

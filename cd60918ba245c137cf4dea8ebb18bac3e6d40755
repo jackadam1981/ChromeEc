@@ -22,6 +22,30 @@
       },
       "revId": "cd60918ba245c137cf4dea8ebb18bac3e6d40755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ea4af4f_3abe2cf6",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2493,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-15T23:57:16Z",
+      "side": 0,
+      "message": "Adding the new host event requires this change, since it requires setting the bit in the upper 32 bits:\n\n```\n\tEC_HOST_EVENT_INVALID \u003d 32,\n\n\t/* Body detect (lap/desk) change event */\n\tEC_HOST_EVENT_BODY_DETECT_CHANGE \u003d 33,\n```\n\n```\n23-02-15 15:50:30.917 ec:~$ bodydetectmode on\n23-02-15 15:50:32.598 [13207.338000 bod![13207.339800 event clear 0x0000000100000000]\n23-02-15 15:50:32.604 ![13207.342900 ACPI query \u003d 33]\n23-02-15 15:50:32.607 y detect mode enabled]\n23-02-15 15:50:32.607 [13207.338700 event set 0x0000000100000000]\n23-02-15 15:50:32.612 [13207.346800 Thermal: Laptop mode]\n```\n\nThe `0x0000000100000000` values is the bitmask with the 33rd bit set.\n\n----\n\nJust to clarify what you\u0027re describing, this should be broken up into 4 CLs total:\n\n1. Remove the `ifdef` check and increase `CONFIG_HOST_EVENT_REPORT_MASK` to the 64b value.\n2. Remove `CONFIG_HOST_EVENT64` (the majority of this patch).\n3. Add `EC_HOST_EVENT_MAX_EVENTS \u003d 65`, use it instead of magic numbers.\n4. Add `EC_HOST_EVENT_BODY_DETECT_CHANGE`",
+      "parentUuid": "bfaed524_668c3f52",
+      "range": {
+        "startLine": 2486,
+        "startChar": 0,
+        "endLine": 2493,
+        "endChar": 27
+      },
+      "revId": "cd60918ba245c137cf4dea8ebb18bac3e6d40755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
