@@ -146,29 +146,6 @@ DEFINE_FAKE_VOID_FUNC(system_hibernate, uint32_t, uint32_t);
 
 DEFINE_FAKE_VOID_FUNC(board_reset_pd_mcu);
 
-uint16_t tcpc_get_alert_status(void)
-{
-	uint16_t status = 0;
-
-	/*
-	 * Check which port has the ALERT line set and ignore if that TCPC has
-	 * its reset line active.
-	 */
-	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(usb_c0_tcpc_int_odl))) {
-		if (gpio_pin_get_dt(
-			    GPIO_DT_FROM_NODELABEL(usb_c0_tcpc_rst_l)) != 0)
-			status |= PD_STATUS_TCPC_ALERT_0;
-	}
-
-	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(usb_c1_tcpc_int_odl))) {
-		if (gpio_pin_get_dt(
-			    GPIO_DT_FROM_NODELABEL(usb_c1_tcpc_rst_l)) != 0)
-			status |= PD_STATUS_TCPC_ALERT_1;
-	}
-
-	return status;
-}
-
 void ppc_alert(enum gpio_signal signal)
 {
 	switch (signal) {
