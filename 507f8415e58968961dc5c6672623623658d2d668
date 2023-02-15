@@ -68,6 +68,24 @@
       "message": "```\ndevicetree error: /soc/cros-kb-raw@f01d00: undefined node label \u0027ksi0_sleep\u0027\n```",
       "revId": "507f8415e58968961dc5c6672623623658d2d668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ed6f1e_24c8f83f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-15T23:57:38Z",
+      "side": 1,
+      "message": "Fixed just by running again so it picks up https://crrev.com/c/4252989",
+      "parentUuid": "5db31d4f_eebbe23d",
+      "revId": "507f8415e58968961dc5c6672623623658d2d668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
