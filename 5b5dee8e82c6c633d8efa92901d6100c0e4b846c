@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20159074_fbd05e18",
+        "filename": "zephyr/program/nissa/xivu/src/usbc.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-15T02:51:58Z",
+      "side": 0,
+      "message": "The issue is that these share a physical (open-drain) pin on the EC, so software has no control over it. A CPU interrupt will only occur the first time one of the devices asserts that signal, so one of them asserting it while the other is already holding it asserted isn\u0027t visible to the EC.\n\nI\u0027ve put up https://crrev.com/c/4252437 to disable the new shim handler for all nissa boards, because they\u0027re all subject to this problem.",
+      "parentUuid": "7f4ee2cf_08d1027d",
+      "revId": "5b5dee8e82c6c633d8efa92901d6100c0e4b846c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fa6ad58_3f217260",
@@ -73,6 +91,30 @@
       "side": 0,
       "message": "I\u0027m not sure that\u0027s the issue. Xivu also does not call `tcpc_alert_event` and I\u0027ve personally verified tcpc charging is working properly on it. The new tcpc driver should be calling `schedule_deferred_pd_interrupt` on the board\u0027s behalf. I suspect the problem might be because yaviks partially uses chip specific code for its tcpc interrupt and the common driver is not working properly with it. I\u0027ve submitted a temporary work around by adding an exception to yaviks to not use the common tcpc driver until I can find a fix.",
       "parentUuid": "7fa6ad58_3f217260",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 35
+      },
+      "revId": "5b5dee8e82c6c633d8efa92901d6100c0e4b846c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c97152dc_6f732443",
+        "filename": "zephyr/program/nissa/yaviks/src/usbc.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-15T02:51:58Z",
+      "side": 0,
+      "message": "There\u0027s a possible race between the two external interrupts that can cause the port to get permanently stuck, so a successful test isn\u0027t conclusive. I tested this change on Yaviks successfully as well, but I also know (as described in my other comment) that the polling logic is extremely important to handle the shared interrupts correctly (because I wrote it!).",
+      "parentUuid": "34713fbe_db9738c4",
       "range": {
         "startLine": 289,
         "startChar": 1,
