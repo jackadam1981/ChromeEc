@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4ee2cf_08d1027d",
+        "filename": "zephyr/program/nissa/xivu/src/usbc.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-15T02:16:54Z",
+      "side": 0,
+      "message": "My understanding is that Zephyr should be working in the background to prevent shared interrupt lines from deasserting each other. But I\u0027ll admit I\u0027m not sure exactly how it works. I\u0027ve submitted a temporary patch to exclude yaviks from the tcpc driver until I can figure it out.",
+      "parentUuid": "cbc5b41c_a7273afb",
+      "revId": "5b5dee8e82c6c633d8efa92901d6100c0e4b846c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fa6ad58_3f217260",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-02-14T07:44:16Z",
       "side": 0,
       "message": "Since some boards nissa/nereid family is not call `tcpc_alert_event`, remove schedule_deferred_pd_interrupt() will cause the issue.",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 35
+      },
+      "revId": "5b5dee8e82c6c633d8efa92901d6100c0e4b846c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34713fbe_db9738c4",
+        "filename": "zephyr/program/nissa/yaviks/src/usbc.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-15T02:16:54Z",
+      "side": 0,
+      "message": "I\u0027m not sure that\u0027s the issue. Xivu also does not call `tcpc_alert_event` and I\u0027ve personally verified tcpc charging is working properly on it. The new tcpc driver should be calling `schedule_deferred_pd_interrupt` on the board\u0027s behalf. I suspect the problem might be because yaviks partially uses chip specific code for its tcpc interrupt and the common driver is not working properly with it. I\u0027ve submitted a temporary work around by adding an exception to yaviks to not use the common tcpc driver until I can find a fix.",
+      "parentUuid": "7fa6ad58_3f217260",
       "range": {
         "startLine": 289,
         "startChar": 1,
