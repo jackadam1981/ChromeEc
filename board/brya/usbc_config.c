@@ -403,6 +403,7 @@ static void board_tcpc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
 
+#ifndef CONFIG_ZEPHYR
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
@@ -416,6 +417,7 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+#endif
 
 int ppc_get_alert_status(int port)
 {
