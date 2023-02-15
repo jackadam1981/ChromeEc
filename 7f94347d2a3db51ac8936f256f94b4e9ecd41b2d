@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b244b871_b8593c74",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-15T02:53:49Z",
+      "side": 1,
+      "message": "This is causing some issues. I need to investigate further how to efficiently implement these two functions.",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 35
+      },
+      "revId": "7f94347d2a3db51ac8936f256f94b4e9ecd41b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
