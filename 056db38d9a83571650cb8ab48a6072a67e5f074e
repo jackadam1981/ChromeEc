@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "60b7310a_d6bd0918",
+        "filename": "common/ec_features.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-15T22:07:26Z",
+      "side": 1,
+      "message": "just run through clang-format 😊",
+      "parentUuid": "edb2fba8_573cc01e",
+      "range": {
+        "startLine": 118,
+        "startChar": 50,
+        "endLine": 118,
+        "endChar": 52
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e25296c1_b62ba166",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-15T21:56:15Z",
       "side": 1,
       "message": "This only works for little endian. Are all our ARM cores little endian?",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "738eef88_90ff2b8c",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-15T22:07:26Z",
+      "side": 1,
+      "message": "i think you can theoretically run ARM big-endian, but i don\u0027t think\nwe have such a platform in this code base.\nwe have so many little-endianness assumptions in our code,\ni\u0027m embarrassed to comment on them as i see them.\n\nif we ever have a big-endian AP or EC, things will get \"interesting\".\nkeep in mind host command messages are also de-facto little endian\nand those get exchanged between different CPU architectures where\ndealing with endianness should be well defined.",
+      "parentUuid": "e25296c1_b62ba166",
       "range": {
         "startLine": 43,
         "startChar": 4,
