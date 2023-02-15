@@ -16,6 +16,23 @@
       "message": "Hi Wai-Hong,\nShould we remove the entire section for herobrine device, or just undef the CONFIG_SYSTEM_UNLOCKED flag? Not sure when is good timing to do this.\n```\n/* TODO(waihong): Remove the following bringup features */\n#define CONFIG_BRINGUP\n#define CONFIG_SYSTEM_UNLOCKED /* Disable dangerous commands. */\n#define CONFIG_USB_PD_DEBUG_LEVEL 3\n#define CONFIG_CMD_GPIO_EXTENDED\n#define CONFIG_CMD_POWERINDEBUG\n#define CONFIG_I2C_DEBUG\n```",
       "revId": "1c468102bc887574a8f2d8843b2e8bec8f1f9679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb2daa6_7578262a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-02-15T19:10:15Z",
+      "side": 1,
+      "message": "Herobrine has moved to Zephyr.\n\nYou need to change `zephyr/program/herobrine/herobrine/project.conf`.",
+      "revId": "1c468102bc887574a8f2d8843b2e8bec8f1f9679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
