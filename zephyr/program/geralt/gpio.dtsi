@@ -197,6 +197,8 @@
 			<&gpioh 6 GPIO_INPUT_PULL_DOWN>,
 			<&gpioi 6 GPIO_INPUT_PULL_DOWN>,
 			<&gpiom 6 (GPIO_INPUT_PULL_DOWN | GPIO_VOLTAGE_1P8)>,
+			/* gpg2 pulled up when flash SPI in use */
+			<&gpiog 2 GPIO_INPUT_PULL_UP>,
 			/* spi_clk_gpg6 */
 			<&gpiog 6 GPIO_INPUT_PULL_UP>,
 			/* spi_mosi_gpg4 */
