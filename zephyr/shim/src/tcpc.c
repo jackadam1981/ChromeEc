@@ -85,6 +85,36 @@ MAYBE_CONST struct tcpc_config_t tcpc_config[] = { DT_FOREACH_STATUS_OKAY(
 
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
+uint16_t tcpc_get_alert_status(void)
+{
+	uint16_t status = 0;
+	uint16_t alert_mask[] = { PD_STATUS_TCPC_ALERT_0,
+				  PD_STATUS_TCPC_ALERT_1,
+				  PD_STATUS_TCPC_ALERT_2,
+				  PD_STATUS_TCPC_ALERT_3 };
+
+	/*
+	 * Check which port has the ALERT line set and ignore if that TCPC has
+	 * its reset line active.
+	 */
+	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		/*
+		 * if the interrupt port exists and the interrupt is active
+		 */
+		if (tcpc_config[i].irq_gpio.port &&
+		    gpio_pin_get_dt(&tcpc_config[i].irq_gpio))
+			/*
+			 * if the reset line does not exist or exists but is
+			 * not active.
+			 */
+			if (!tcpc_config[i].rst_gpio.port ||
+			    !gpio_pin_get_dt(&tcpc_config[i].rst_gpio))
+				status |= alert_mask[i];
+	}
+
+	return status;
+}
+
 struct gpio_callback int_gpio_cb[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static void tcpc_int_gpio_callback(const struct device *dev,
