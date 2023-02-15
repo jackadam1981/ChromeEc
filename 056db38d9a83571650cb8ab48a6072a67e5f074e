@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb2fba8_573cc01e",
+        "filename": "common/ec_features.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-15T21:56:15Z",
+      "side": 1,
+      "message": "nit: Put the `|` on the next line so it matches the formatting of the rest of the expressions.",
+      "range": {
+        "startLine": 118,
+        "startChar": 50,
+        "endLine": 118,
+        "endChar": 52
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e25296c1_b62ba166",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-15T21:56:15Z",
+      "side": 1,
+      "message": "This only works for little endian. Are all our ARM cores little endian?",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e784caa_448309e8",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-15T21:56:15Z",
+      "side": 1,
+      "message": "Doesn\u0027t splitting an atomic operation into two defeat the purpose of an atomic operation?",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 267,
+        "endChar": 41
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eb4ff42_e44f6bda",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-15T21:56:15Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 18
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3582d64a_6850ea3d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-15T21:56:15Z",
+      "side": 1,
+      "message": "But is 65 still a valid host event that can be defined?",
+      "range": {
+        "startLine": 781,
+        "startChar": 62,
+        "endLine": 781,
+        "endChar": 68
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "941318d2_c357f53a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 10885,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-15T21:56:15Z",
+      "side": 1,
+      "message": "Hrmm, this will read out of bounds since we don\u0027t check that evt \u003c\u003d ARRAY_SIZE(host_event_text)",
+      "range": {
+        "startLine": 10885,
+        "startChar": 23,
+        "endLine": 10885,
+        "endChar": 38
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
