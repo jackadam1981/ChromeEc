@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbc5b41c_a7273afb",
+        "filename": "zephyr/program/nissa/xivu/src/usbc.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-15T02:05:14Z",
+      "side": 0,
+      "message": "Removing these is problematic because we can still lose TCPC interrupts. The PD interrupt task polls the interrupt line as long as it\u0027s awake, but if the TCPC alerts get cleared while the interrupt is asserted by another device and then the TCPC asserts it before the other device deasserts, the port would get stuck.",
+      "revId": "5b5dee8e82c6c633d8efa92901d6100c0e4b846c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fa6ad58_3f217260",
         "filename": "zephyr/program/nissa/yaviks/src/usbc.c",
         "patchSetId": 46
