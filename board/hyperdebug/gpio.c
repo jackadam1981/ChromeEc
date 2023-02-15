@@ -296,7 +296,8 @@ static int command_gpio_mode(int argc, const char **argv)
 		return EC_ERROR_PARAM1;
 	flags = gpio_get_flags(gpio);
 
-	flags = flags & ~(GPIO_INPUT | GPIO_OUTPUT | GPIO_OPEN_DRAIN);
+	flags = flags &
+		~(GPIO_INPUT | GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ANALOG);
 	dac_enable_value &= ~dac_channels[gpio].enable_mask;
 	if (strcasecmp(argv[2], "input") == 0)
 		flags |= GPIO_INPUT;
@@ -304,6 +305,8 @@ static int command_gpio_mode(int argc, const char **argv)
 		flags |= GPIO_OUTPUT | GPIO_OPEN_DRAIN;
 	else if (strcasecmp(argv[2], "pushpull") == 0)
 		flags |= GPIO_OUTPUT;
+	else if (strcasecmp(argv[2], "adc") == 0)
+		flags |= GPIO_ANALOG;
 	else if (strcasecmp(argv[2], "dac") == 0) {
 		if (dac_channels[gpio].enable_mask == 0) {
 			ccprintf("Error: Pin does not support dac\n");
@@ -424,7 +427,8 @@ static int command_gpio_multiset(int argc, const char **argv)
 	}
 
 	if (argc > 4 && strcasecmp(argv[4], "-") != 0) {
-		flags = flags & ~(GPIO_INPUT | GPIO_OUTPUT | GPIO_OPEN_DRAIN);
+		flags = flags & ~(GPIO_INPUT | GPIO_OUTPUT | GPIO_OPEN_DRAIN |
+				  GPIO_ANALOG);
 		dac_enable_value &= ~dac_channels[gpio].enable_mask;
 		if (strcasecmp(argv[4], "input") == 0)
 			flags |= GPIO_INPUT;
@@ -432,6 +436,8 @@ static int command_gpio_multiset(int argc, const char **argv)
 			flags |= GPIO_OUTPUT | GPIO_OPEN_DRAIN;
 		else if (strcasecmp(argv[4], "pushpull") == 0)
 			flags |= GPIO_OUTPUT;
+		else if (strcasecmp(argv[4], "adc") == 0)
+			flags |= GPIO_ANALOG;
 		else if (strcasecmp(argv[4], "dac") == 0) {
 			if (dac_channels[gpio].enable_mask == 0) {
 				ccprintf("Error: Pin does not support dac\n");
