@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfaed524_668c3f52",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2493,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-15T21:53:21Z",
+      "side": 0,
+      "message": "at the risk of being pedantic, i would suggest\nmaking this change as a separate bug-fix\npatch because it introduces a subtle semantic change.\n\nafter that, we can do a 2nd patch that effective\nunifdef\u0027s CONFIG_HOST_EVENT64 without introducing\na semantic difference.\n\nafter that, add a feature patch where\nEC_HOST_EVENT_MAX_EVENTS is introduced.\nit might be OK to introduce it with value\n65 and scrub all the hard coded \"32\" values\nin the same patch.",
+      "range": {
+        "startLine": 2486,
+        "startChar": 0,
+        "endLine": 2493,
+        "endChar": 27
+      },
+      "revId": "cd60918ba245c137cf4dea8ebb18bac3e6d40755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
