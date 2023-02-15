@@ -22,6 +22,30 @@
       },
       "revId": "45d6dd6aacad340f33b4c5cb3391b63b4f8476cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a732161d_f003400c",
+        "filename": "util/zephyr_check_compliance.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-15T18:12:03Z",
+      "side": 1,
+      "message": "Yeah well, it\u0027s hacky, not sure how I feel about it, but it\u0027s tested so at least we\u0027d catch any breakages early.",
+      "parentUuid": "1a5632b9_1dd25060",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "45d6dd6aacad340f33b4c5cb3391b63b4f8476cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
