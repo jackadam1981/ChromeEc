@@ -16,6 +16,24 @@
       "message": "nit: This patch isn\u0027t mobile. It\u0027ll create conflicts when cherry-picked. You may want to separate the refactoring (board_get_pchg_count) and the fix (if (ec_cfg_has_wrieless_charger()...).",
       "revId": "8c7242efc4f8a1d2df6a5c94d3958578b2408cfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55fbba82_5816457f",
+        "filename": "board/kuldax/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-02-15T01:08:01Z",
+      "side": 1,
+      "message": "done it, separate it.",
+      "parentUuid": "d27dd1e5_3ffee6b1",
+      "revId": "8c7242efc4f8a1d2df6a5c94d3958578b2408cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
