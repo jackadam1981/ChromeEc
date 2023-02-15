@@ -15,9 +15,13 @@
 
 void cpu_init(void)
 {
+#if defined(CHIP_VARIANT_NPCX9M8S) && defined(CONFIG_RNG)
+	/* Only Catch divide by 0 trap, RNG Functions use unaligned access */
+	CPU_NVIC_CCR |= CPU_NVIC_CCR_DIV_0_TRAP;
+#else
 	/* Catch divide by 0 and unaligned access */
 	CPU_NVIC_CCR |= CPU_NVIC_CCR_DIV_0_TRAP | CPU_NVIC_CCR_UNALIGN_TRAP;
-
+#endif
 	/* Enable reporting of memory faults, bus faults and usage faults */
 	CPU_NVIC_SHCSR |= CPU_NVIC_SHCSR_MEMFAULTENA |
 			  CPU_NVIC_SHCSR_BUSFAULTENA |
