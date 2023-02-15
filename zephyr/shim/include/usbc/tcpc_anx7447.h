@@ -19,4 +19,5 @@
 		.drv = &anx7447_tcpm_drv,                                      \
 		.flags = DT_PROP(id, tcpc_flags),                              \
 		.irq_gpio = GPIO_DT_SPEC_GET_OR(id, irq_gpios, {}),            \
+		.rst_gpio = GPIO_DT_SPEC_GET_OR(id, rst_gpios, {}),            \
 	},
