@@ -222,25 +222,6 @@ int board_set_active_charge_port(int port)
 	return EC_SUCCESS;
 }
 
-uint16_t tcpc_get_alert_status(void)
-{
-	uint16_t status = 0;
-
-	if (!gpio_pin_get_dt(
-		    GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_int_odl))) {
-		if (!gpio_pin_get_dt(
-			    GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_rst))) {
-			status |= PD_STATUS_TCPC_ALERT_0;
-		}
-	}
-
-	if (!gpio_pin_get_dt(
-		    GPIO_DT_FROM_NODELABEL(gpio_usb_c1_tcpc_int_odl))) {
-		return status |= PD_STATUS_TCPC_ALERT_1;
-	}
-	return status;
-}
-
 void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
