@@ -448,6 +448,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac95d183_83a6be2c",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-15T22:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d1b7c19_2aad25e4",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7cfc473_b954e9eb",

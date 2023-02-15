@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c88be40_57c15afd",
+        "filename": "common/memory_dump_hostcmds.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-15T22:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06c5d728_53212190",
+      "range": {
+        "startLine": 28,
+        "startChar": 46,
+        "endLine": 28,
+        "endChar": 61
+      },
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3c4c2de_b7b5c766",
@@ -318,6 +342,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de57df8_80dffdda",
+        "filename": "include/memory_dump_hostcmds.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-15T22:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd7527a2_5377709a",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec4f02ad_ff71e5d3",
@@ -355,6 +403,30 @@
       "side": 1,
       "message": "Turns out THREAD_MONITOR is also required (for iterating through threads). Looks like these add about 1.5K bytes to flash. Not great.",
       "parentUuid": "ec4f02ad_ff71e5d3",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "0f1f869e9f0ef6b689761bd0da9ad49230f1c799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3536391a_ddb49e99",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-15T22:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fc6bcca_6dd240af",
       "range": {
         "startLine": 103,
         "startChar": 8,

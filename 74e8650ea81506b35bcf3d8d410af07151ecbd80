@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "944625a9_43d61fe8",
+        "filename": "zephyr/shim/src/register_memory_dump.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-15T22:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3917b98d_a6f85224",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "74e8650ea81506b35bcf3d8d410af07151ecbd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb1d2d52_36bdeacb",
@@ -168,6 +192,30 @@
       "side": 1,
       "message": "https://docs.zephyrproject.org/latest/contribute/guidelines.html#coding-style",
       "parentUuid": "fad2f38d_5eee4ea1",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "74e8650ea81506b35bcf3d8d410af07151ecbd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b5810c_22f373e1",
+        "filename": "zephyr/test/drivers/host_command_memory_dump/src/host_command_memory_dump.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-15T22:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6754c2c_fe65a8d7",
       "range": {
         "startLine": 68,
         "startChar": 0,
