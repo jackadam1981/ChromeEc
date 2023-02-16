@@ -16,6 +16,29 @@
       "message": "Just confirmed that the linux kernel expects 2 bytes back for the 0xFF atkbd command: https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-5.15/drivers/input/keyboard/atkbd.c#146",
       "revId": "000c081862abca3aebe771c4f54994eac5ed523d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17030534_85ae74e0",
+        "filename": "test/kb_8042.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-16T16:05:44Z",
+      "side": 1,
+      "message": "Actually, can you #define this in atkbd_protocol.h",
+      "range": {
+        "startLine": 809,
+        "startChar": 17,
+        "endLine": 809,
+        "endChar": 23
+      },
+      "revId": "000c081862abca3aebe771c4f54994eac5ed523d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
