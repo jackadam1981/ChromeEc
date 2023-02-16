@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "429e1db7_5aa58f5b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1563627
+      },
+      "writtenOn": "2023-02-16T10:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85ab6019_6991d641",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 29
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19eaae18_0210a771",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c6d1da4_3dd1ed14",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1563627
+      },
+      "writtenOn": "2023-02-16T10:30:48Z",
+      "side": 1,
+      "message": "I don\u0027t think we can clear it because when this function is checked again, it will stop slow charging if the `current_limit_value` has been reset. The current limit is reset when slow charging is switched to fast charging or when adaptive charging is stopped (ie. on AC disconnect, when battery is fully charged). When holding charge ~100% the charge-discharge cycle that happens already uses a very low current below the typical 0.1C value.",
+      "parentUuid": "19eaae18_0210a771",
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da9590e7_625406b6",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 3
@@ -54,6 +96,30 @@
       "writtenOn": "2023-02-15T20:55:39Z",
       "side": 1,
       "message": "You probably want to validate this and return error if it\u0027s too high or too low.",
+      "range": {
+        "startLine": 2578,
+        "startChar": 23,
+        "endLine": 2578,
+        "endChar": 31
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d732b7a_47edcf54",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2578,
+      "author": {
+        "id": 1563627
+      },
+      "writtenOn": "2023-02-16T10:30:48Z",
+      "side": 1,
+      "message": "The max limit that can be set by the EC is capped by the battery, so I don\u0027t believe that is a concern. There is also a minimum supported current that the EC can set. If a value below that is passed in, the EC will use the minimum supported current as the limit. I have tested the command in ectool using excessively large and very small values and found the min and max limit to automatically apply.",
+      "parentUuid": "da9590e7_625406b6",
       "range": {
         "startLine": 2578,
         "startChar": 23,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12232782_158d4c93",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4783,
+      "author": {
+        "id": 1563627
+      },
+      "writtenOn": "2023-02-16T10:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "985c74b4_01c24a34",
+      "range": {
+        "startLine": 4783,
+        "startChar": 37,
+        "endLine": 4783,
+        "endChar": 48
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb672e4e_eb0447fb",
@@ -100,6 +190,30 @@
       "writtenOn": "2023-02-15T20:55:39Z",
       "side": 1,
       "message": "Irrelevant change? Please revert.",
+      "range": {
+        "startLine": 3257,
+        "startChar": 0,
+        "endLine": 3257,
+        "endChar": 27
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a28093_9bc70940",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3257,
+      "author": {
+        "id": 1563627
+      },
+      "writtenOn": "2023-02-16T10:30:48Z",
+      "side": 1,
+      "message": "I can\u0027t seem to upload my changes without running the command to fix formatting errors, and it automatically changes this line and another line within this file. I can upload them as a separate change first if preferred?",
+      "parentUuid": "fb672e4e_eb0447fb",
       "range": {
         "startLine": 3257,
         "startChar": 0,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ead228_e88062fd",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7545,
+      "author": {
+        "id": 1563627
+      },
+      "writtenOn": "2023-02-16T10:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "812dc1a3_3c07f7a8",
+      "range": {
+        "startLine": 7545,
+        "startChar": 6,
+        "endLine": 7545,
+        "endChar": 15
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6600ba14_fa45f9b2",
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8749c82c_997d3087",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7551,
+      "author": {
+        "id": 1563627
+      },
+      "writtenOn": "2023-02-16T10:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6600ba14_fa45f9b2",
+      "range": {
+        "startLine": 7551,
+        "startChar": 47,
+        "endLine": 7551,
+        "endChar": 59
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b616ef5_47fe25f6",
@@ -169,6 +331,24 @@
       "writtenOn": "2023-02-15T20:55:39Z",
       "side": 1,
       "message": "nit: You can print the bad string (i.e. %s ... argv[1]).",
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b67c0c6_e9d062c9",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7558,
+      "author": {
+        "id": 1563627
+      },
+      "writtenOn": "2023-02-16T10:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b616ef5_47fe25f6",
       "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
