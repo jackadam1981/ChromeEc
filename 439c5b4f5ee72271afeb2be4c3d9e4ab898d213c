@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1039a0d9_aaddbfa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2023-02-16T04:04:03Z",
+      "side": 1,
+      "message": "I upload patchset 2. It not need modify common code. Thanks.",
+      "parentUuid": "8ff625e7_3b55ea19",
+      "revId": "439c5b4f5ee72271afeb2be4c3d9e4ab898d213c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "832dcdf3_155d444b",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-02-16T02:50:27Z",
       "side": 1,
       "message": "Is this needed? It looks like the tcpm_set_vconn() already handle the case of CONFIG_USB_PD_TCPC_VCONN. Could you please double check it?",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 42
+      },
+      "revId": "439c5b4f5ee72271afeb2be4c3d9e4ab898d213c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11d01a7_12c16a26",
+        "filename": "common/typec_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2023-02-16T04:04:03Z",
+      "side": 1,
+      "message": "I find it define in /include/driver/tcpm/tcpm.h. And I upload patchset 2. Thanks.",
+      "parentUuid": "832dcdf3_155d444b",
       "range": {
         "startLine": 72,
         "startChar": 1,
