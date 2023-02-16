@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17bd1115_9a010e16",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-16T17:25:32Z",
+      "side": 1,
+      "message": "Should we set the initial value high so that we won\u0027t change user_current_limit accidentally?",
+      "range": {
+        "startLine": 1465,
+        "startChar": 41,
+        "endLine": 1465,
+        "endChar": 59
+      },
+      "revId": "2ce648a33110af8d8e8f345d41876ef797e0332a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d432eb1_9aa4cba0",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 7560,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-16T17:25:32Z",
+      "side": 1,
+      "message": "nit: This is redundant since [...] is used.",
+      "range": {
+        "startLine": 7560,
+        "startChar": 34,
+        "endLine": 7560,
+        "endChar": 43
+      },
+      "revId": "2ce648a33110af8d8e8f345d41876ef797e0332a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c3c8d7_83d1edcd",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 7562,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-16T17:25:32Z",
+      "side": 1,
+      "message": "I think it\u0027s better to have one common help text (for v0 and v1). Updating EC doesn\u0027t necessarily help (because the latest FW doesn\u0027t necessarilly support v1). So, we can simply say [soc] is available only for v1. Sorry for confusion.",
+      "range": {
+        "startLine": 7558,
+        "startChar": 0,
+        "endLine": 7562,
+        "endChar": 38
+      },
+      "revId": "2ce648a33110af8d8e8f345d41876ef797e0332a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

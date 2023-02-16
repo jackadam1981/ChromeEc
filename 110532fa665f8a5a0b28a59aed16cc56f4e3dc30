@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0478b19_a720c27a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-16T17:25:32Z",
+      "side": 1,
+      "message": "\u003e when adaptive charging is stopped (ie. on AC disconnect\n\nDo we also do this in shutdown? How do we reset slow charge?",
+      "parentUuid": "2c6d1da4_3dd1ed14",
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da9590e7_625406b6",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 3
@@ -120,6 +138,30 @@
       "side": 1,
       "message": "The max limit that can be set by the EC is capped by the battery, so I don\u0027t believe that is a concern. There is also a minimum supported current that the EC can set. If a value below that is passed in, the EC will use the minimum supported current as the limit. I have tested the command in ectool using excessively large and very small values and found the min and max limit to automatically apply.",
       "parentUuid": "da9590e7_625406b6",
+      "range": {
+        "startLine": 2578,
+        "startChar": 23,
+        "endLine": 2578,
+        "endChar": 31
+      },
+      "revId": "110532fa665f8a5a0b28a59aed16cc56f4e3dc30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11b4a688_ff962743",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2578,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-16T17:25:32Z",
+      "side": 1,
+      "message": "Doesn\u0027t the host need to know whether the requested limit was accepted or not?",
+      "parentUuid": "8d732b7a_47edcf54",
       "range": {
         "startLine": 2578,
         "startChar": 23,
