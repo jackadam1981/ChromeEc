@@ -16,6 +16,29 @@
       "message": "Can you separate changes into 2 CLs? One for prject code and one for common code.",
       "revId": "439c5b4f5ee72271afeb2be4c3d9e4ab898d213c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832dcdf3_155d444b",
+        "filename": "common/typec_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2023-02-16T02:50:27Z",
+      "side": 1,
+      "message": "Is this needed? It looks like the tcpm_set_vconn() already handle the case of CONFIG_USB_PD_TCPC_VCONN. Could you please double check it?",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 42
+      },
+      "revId": "439c5b4f5ee72271afeb2be4c3d9e4ab898d213c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
