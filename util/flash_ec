@@ -980,7 +980,7 @@ function flash_flashrom() {
 			SPI_VOLTAGE="pp3300"
 		fi
 
-		dut_control cold_reset:on
+		dut_control gsc_ec_reset:on
 
 		# If spi flash is in npcx's ec, enable gang programer mode
 		if [[ "${CHIP}" == "npcx_int_spi" ]]; then
@@ -989,20 +989,22 @@ function flash_flashrom() {
 			# Set GP_SEL# as low then start ec
 			dut_control fw_up:on
 			sleep 0.1
-			dut_control cold_reset:off
+			dut_control gsc_ec_reset:off
 		fi
 
 		# Enable SPI programming mode.
 		if [[ "${CHIP}" == "ite_spi" ||
-		      "${CHIP}" == "ite_spi_ccd_i2c" ||
-		      "${CHIP}" == "it8xxx2" ]]; then
-			# Set hardware strap pin (GPG6) of SPI programming as low then start ec
-			dut_control fw_up:on
-			sleep 0.1
-			dut_control cold_reset:off
-			sleep 0.1
-			# We have to release the HW strap pin because it also SPI clock pin.
-			dut_control fw_up:off
+			"${CHIP}" == "ite_spi_ccd_i2c" ||
+			"${CHIP}" == "it8xxx2" ]]; then
+					# Set hardware strap pin (GPG6) of SPI
+                                        # programming as low then start ec
+					dut_control fw_up:on
+					sleep 0.1
+					dut_control gsc_ec_reset:off
+					sleep 0.1
+					# We have to release the HW strap pin
+                                        # because it also SPI clock pin.
+					dut_control fw_up:off
 		fi
 
 		servo_save_add "spi1_vref" "off"
@@ -1020,13 +1022,13 @@ function flash_flashrom() {
 			servo_save_add "fw_up" "off"
 
 			# Set GP_SEL# as low then start ec
-			dut_control cold_reset:on
+			dut_control gsc_ec_reset:on
 			dut_control fw_up:on
 			# sleep 0.1
-			dut_control cold_reset:off
+			dut_control gsc_ec_reset:off
 		else
 			# Assert EC reset.
-			dut_control cold_reset:on
+			dut_control gsc_ec_reset:on
 		fi
 
 		# Temp layout
