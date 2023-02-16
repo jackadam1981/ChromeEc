@@ -16,6 +16,24 @@
       "message": "We\u0027ve been lucky because we haven\u0027t used the upper half of 64-bit event mask?",
       "revId": "a0d5f1acadd9b926f33c34d181dbfad12830893f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c0801c7_7299ac11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-16T23:40:38Z",
+      "side": 1,
+      "message": "Yup. We\u0027ve only had 31 host events so far, which fits in the lower 32 bits of the mask. Adding the new host event pushes us over that limit though (since we\u0027re reserving the MSB for \u0027invalid\u0027).",
+      "parentUuid": "87d9c083_b391c1c6",
+      "revId": "a0d5f1acadd9b926f33c34d181dbfad12830893f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
