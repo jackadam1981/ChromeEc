@@ -81,6 +81,24 @@
       "parentUuid": "7c2fc6e5_c14501cd",
       "revId": "5b7e29fd5434727a905879de05b19dec22b9c9e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "528988d6_639151aa",
+        "filename": "zephyr/program/skyrim/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-16T21:29:27Z",
+      "side": 1,
+      "message": "Ah, so I think some of this comes from how the I/O expander is set up.  Each TCPC I/O expander is on one C port and contains 2 GPIO \"ports\".  So \"port\" has many meanings here.  You can get an idea of it based on devicetree: https://source.chromium.org/chromium/chromiumos/platform/ec/+/main:zephyr/program/skyrim/i2c.dtsi;l\u003d94",
+      "parentUuid": "35846b5a_fe5d5d26",
+      "revId": "5b7e29fd5434727a905879de05b19dec22b9c9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
