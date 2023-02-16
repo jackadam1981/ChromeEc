@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a4d5149_3106c9bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-16T09:59:42Z",
+      "side": 1,
+      "message": "Created \"mchp\" directory, it contains:\n1.Utility which updates header file for the SPI image to be programmed\nflash_pgm_hdr.bin\ngen_pgm_hdr.py\npgm_hdr.bin\n\n    Utility which loades the crisis recovery internal SPI flash firmware file\n    crisis_rcvry_util.py\n    header.bin\n    key_hash.bin\n    second_loader_fw.bin\n    flash_ec script used to run the crisis recovery internal SPI flash firmware\n    and to do flash programming\n    Available : /root/chromiumos/src/platform/ec/util/flash_ec\n\nspi_fw.bin is renmed to ec.bin in the python script as well as taking from the command line and copying into the util directory to update the flash programming.\n\ncrisi_rcvry_util.py which does the job of loades the crisis recovery internal SPI flash firmware file and to do flash programming.\n\nRenamed from the blow file\nCrisisRcvry_Utility_Final.py -\u003e crisis_rcvry_util.py\n\n\n\nUART_CR_V2.py -\u003e combine with crisis_rcvry_util.py",
+      "revId": "47f1609ae24cb40eaedaa6cfdf9ec6fba379af42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

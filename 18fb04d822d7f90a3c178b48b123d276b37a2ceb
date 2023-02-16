@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "652fb7ea_37e7bd05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-16T09:59:42Z",
+      "side": 1,
+      "message": "Created \"mchp\" directory, it contains:\n1.Utility which updates header file for the SPI image to be programmed\n  flash_pgm_hdr.bin\n  gen_pgm_hdr.py\n  pgm_hdr.bin\n2. Utility which loades the crisis recovery internal SPI flash firmware file\n  crisis_rcvry_util.py\n  header.bin\n  key_hash.bin\n  second_loader_fw.bin\n3. flash_ec script used to run the crisis recovery internal SPI flash firmware\n  and to do flash programming\n  Available : /root/chromiumos/src/platform/ec/util/flash_ec\n\nspi_fw.bin is renmed to ec.bin in the python script as well as taking from the command line and copying into the util directory to update the flash programming.\n\ncrisi_rcvry_util.py which does the job of loades the crisis recovery internal SPI flash firmware file and to do flash programming.\n\nRenamed from the blow file \nCrisisRcvry_Utility_Final.py -\u003e crisis_rcvry_util.py  \n\nUART_CR_V2.py -\u003e combine  with crisis_rcvry_util.py",
+      "parentUuid": "2f86edd9_5fce303d",
+      "revId": "18fb04d822d7f90a3c178b48b123d276b37a2ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e936e193_7a364ded",
@@ -110,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "232782b2_57deecff",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-16T09:59:42Z",
+      "side": 1,
+      "message": "Updated in the latest patch 17 where removed the check , initialization of the variable  and comparison",
+      "parentUuid": "e936e193_7a364ded",
+      "range": {
+        "startLine": 1625,
+        "startChar": 0,
+        "endLine": 1630,
+        "endChar": 10
+      },
+      "revId": "18fb04d822d7f90a3c178b48b123d276b37a2ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84884ce8_09d0534c",
@@ -123,6 +165,30 @@
       "writtenOn": "2023-02-02T20:50:15Z",
       "side": 1,
       "message": "use progress bar from python utils instead of spamming the console with bytes flashed info",
+      "range": {
+        "startLine": 1658,
+        "startChar": 5,
+        "endLine": 1658,
+        "endChar": 13
+      },
+      "revId": "18fb04d822d7f90a3c178b48b123d276b37a2ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ce5ac3_44d38e34",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1658,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-16T09:59:42Z",
+      "side": 1,
+      "message": "Added in the latest python script to do Progress bar for uploading the crisis recovery image in the internal flash and do the flash programming",
+      "parentUuid": "84884ce8_09d0534c",
       "range": {
         "startLine": 1658,
         "startChar": 5,
