@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83f4ccf_6975930c",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-16T20:11:53Z",
+      "side": 1,
+      "message": "`dac_channels[gpio].enable_mask` will be 0x00010000 for one specific entry, 0x00000001 for another one, and 0x00000000 for all the others.  So as I do read-modify-write in this function, the bit 0 or bit 16 will only be cleared by line 300 if the user configures a particular GPIO which DAC channel 1 or 2 relates to.",
+      "parentUuid": "96af4224_f6dd76c8",
+      "range": {
+        "startLine": 322,
+        "startChar": 1,
+        "endLine": 322,
+        "endChar": 13
+      },
+      "revId": "8ac584ae58edc2cf3993dc34bbaec2a23f05a37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a9fe846_85ad0e59",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-16T19:44:34Z",
       "side": 1,
       "message": "Update the doc to add \"dac\".",
+      "range": {
+        "startLine": 326,
+        "startChar": 45,
+        "endLine": 326,
+        "endChar": 47
+      },
+      "revId": "8ac584ae58edc2cf3993dc34bbaec2a23f05a37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "878b516c_27729f41",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-16T20:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a9fe846_85ad0e59",
       "range": {
         "startLine": 326,
         "startChar": 45,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0afb59dd_06d48e5c",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-16T20:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "471b0f75_467b5f9e",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 0
+      },
+      "revId": "8ac584ae58edc2cf3993dc34bbaec2a23f05a37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d72eee4_2ca2aaea",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-02-16T19:44:34Z",
       "side": 1,
       "message": "Update the doc too.",
+      "range": {
+        "startLine": 825,
+        "startChar": 9,
+        "endLine": 825,
+        "endChar": 10
+      },
+      "revId": "8ac584ae58edc2cf3993dc34bbaec2a23f05a37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b25107_75f8e806",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-16T20:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d72eee4_2ca2aaea",
       "range": {
         "startLine": 825,
         "startChar": 9,
