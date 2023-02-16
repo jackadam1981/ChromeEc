@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87b886f7_8cd457f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-02-16T18:21:33Z",
+      "side": 1,
+      "message": "Thanks for checking!",
+      "parentUuid": "e4082bc2_f905c8b1",
+      "revId": "000c081862abca3aebe771c4f54994eac5ed523d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17030534_85ae74e0",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "I guess it\u0027s there, ATKBD_RET_TEST_SUCCESS",
       "parentUuid": "17030534_85ae74e0",
+      "range": {
+        "startLine": 809,
+        "startChar": 17,
+        "endLine": 809,
+        "endChar": 23
+      },
+      "revId": "000c081862abca3aebe771c4f54994eac5ed523d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d945b638_3c18f3d0",
+        "filename": "test/kb_8042.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-02-16T18:21:33Z",
+      "side": 1,
+      "message": "Yeah, I\u0027ve tried to use the defined value first and it didn\u0027t play nicely with VERIFY_LPC_CHAR, which expects a pointer to a string. Overall in this file the pattern is to use \"\\xNN\" values, so I assumed it would be okay to just use the number.",
+      "parentUuid": "02b892c7_78af072b",
       "range": {
         "startLine": 809,
         "startChar": 17,
