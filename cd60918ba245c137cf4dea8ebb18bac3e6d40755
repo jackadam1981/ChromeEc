@@ -46,6 +46,30 @@
       },
       "revId": "cd60918ba245c137cf4dea8ebb18bac3e6d40755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fb18625_513f03f3",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2493,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-16T23:17:26Z",
+      "side": 0,
+      "message": "1. [config: Update CONFIG_HOST_EVENT_REPORT_MASK to 64b (4261959)](https://crrev.com/c/4261959)\n1. [Remove CONFIG_HOST_EVENT64 (4255275)](https://crrev.com/c/4255275/8)\n1. [Increase supported host events to 64 (4261961)](https://crrev.com/c/4261961/1)\n1. [Add host event: EC_HOST_EVENT_BODY_DETECT_CHANGE (4255279)](https://crrev.com/c/4255279/3)",
+      "parentUuid": "3ea4af4f_3abe2cf6",
+      "range": {
+        "startLine": 2486,
+        "startChar": 0,
+        "endLine": 2493,
+        "endChar": 27
+      },
+      "revId": "cd60918ba245c137cf4dea8ebb18bac3e6d40755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
