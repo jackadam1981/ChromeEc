@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c492f1b4_3ad534a9",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2023-02-16T17:38:31Z",
+      "side": 1,
+      "message": "Added reference to both bugs that are related. Let me know if ot is enough",
+      "parentUuid": "23ef706d_a1f29955",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a8b7bd0_656f2d88",
         "filename": "board/servo_v4p1/board.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2023-02-16T10:32:20Z",
       "side": 1,
       "message": "nit: Put an empty line here for better readability.",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d00c680_5fb11a2b",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2023-02-16T17:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a8b7bd0_656f2d88",
       "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3fb1d8a_a4de0f71",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2023-02-16T17:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20d38358_87c735c4",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3707ae9f_1ad9f5c2",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "273be5d1_d5909a88",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2023-02-16T17:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3707ae9f_1ad9f5c2",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7859df65_cff45c1a",
@@ -82,6 +154,24 @@
       "writtenOn": "2023-02-16T10:32:20Z",
       "side": 1,
       "message": "Check for the number of arguments at the top of function and return EC_ERROR_PARAM_COUNT if the number of args is not as expected.",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aed3d658_132ca7e5",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2023-02-16T17:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7859df65_cff45c1a",
       "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +195,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d0b4dde_99180b0e",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2023-02-16T17:38:31Z",
+      "side": 1,
+      "message": "Seems to be reasonable. I changed final information to user to \"allowed/enabled\" and also add extra note in command description. However I would like to stay with \"dut_usb3 enable\" as it is designed to always force USB3 enablement. If you issue this command, it turns off DUT hub, enable USB3 (no matter what), then turn on DUT hub, so new USB3 devices can be enumerated. It can be overwritten by some other logic later, but not just after command.  \n\nThis also forces small change in servod part of mechanism, but I will do it when this CL would be ready.",
+      "parentUuid": "ee6fffba_af4b4c6e",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38e72108_cb683bd6",
         "filename": "board/servo_v4p1/board.c",
         "patchSetId": 1
@@ -116,6 +224,24 @@
       "writtenOn": "2023-02-16T10:32:20Z",
       "side": 1,
       "message": "So basically for a short period USB3 (terminations) will be enabled and only then we will get back to disabling them? Won\u0027t this cause any issues for the host connected to the servo? Is similar functionality used for other boards?",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "383a7c9e_d54cfc7a",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2023-02-16T17:38:31Z",
+      "side": 1,
+      "message": "Indeed MUX for short moment enables USB3 then disables. In my test no issues were spotted, but it is possible that some of them can occur later. What I can propose is to make sure DUT hub is disconnected then set MUX and finally enable DUT hub witch will start enumeration process. For sure its safer and should not introduce any additional problems. It does not in my tests on desk.",
+      "parentUuid": "38e72108_cb683bd6",
       "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
