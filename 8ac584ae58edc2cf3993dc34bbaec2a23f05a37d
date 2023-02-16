@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96af4224_f6dd76c8",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-02-16T19:44:34Z",
+      "side": 1,
+      "message": "Does it accidentally get cleared if an user configures some other GPIOs?",
+      "range": {
+        "startLine": 322,
+        "startChar": 1,
+        "endLine": 322,
+        "endChar": 13
+      },
+      "revId": "8ac584ae58edc2cf3993dc34bbaec2a23f05a37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9fe846_85ad0e59",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-02-16T19:44:34Z",
+      "side": 1,
+      "message": "Update the doc to add \"dac\".",
+      "range": {
+        "startLine": 326,
+        "startChar": 45,
+        "endLine": 326,
+        "endChar": 47
+      },
+      "revId": "8ac584ae58edc2cf3993dc34bbaec2a23f05a37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "471b0f75_467b5f9e",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-02-16T19:44:34Z",
+      "side": 1,
+      "message": "This logic is duplicated to the above. Put it into a function?",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 0
+      },
+      "revId": "8ac584ae58edc2cf3993dc34bbaec2a23f05a37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d72eee4_2ca2aaea",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-02-16T19:44:34Z",
+      "side": 1,
+      "message": "Update the doc too.",
+      "range": {
+        "startLine": 825,
+        "startChar": 9,
+        "endLine": 825,
+        "endChar": 10
+      },
+      "revId": "8ac584ae58edc2cf3993dc34bbaec2a23f05a37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
