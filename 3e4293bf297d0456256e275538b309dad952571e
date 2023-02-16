@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08453fc2_169b1b8b",
+        "filename": "zephyr/shim/src/system_safe_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-16T00:25:09Z",
+      "side": 1,
+      "message": "s/the//",
+      "range": {
+        "startLine": 22,
+        "startChar": 21,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "3e4293bf297d0456256e275538b309dad952571e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
