@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ef706d_a1f29955",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2023-02-16T10:32:20Z",
+      "side": 1,
+      "message": "I will put even more context - can you paste b/\u003cbug_number\u003e here?",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a8b7bd0_656f2d88",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2023-02-16T10:32:20Z",
+      "side": 1,
+      "message": "nit: Put an empty line here for better readability.",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20d38358_87c735c4",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2023-02-16T10:32:20Z",
+      "side": 1,
+      "message": "as above",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3707ae9f_1ad9f5c2",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2023-02-16T10:32:20Z",
+      "side": 1,
+      "message": "as above",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7859df65_cff45c1a",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2023-02-16T10:32:20Z",
+      "side": 1,
+      "message": "Check for the number of arguments at the top of function and return EC_ERROR_PARAM_COUNT if the number of args is not as expected.",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6fffba_af4b4c6e",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2023-02-16T10:32:20Z",
+      "side": 1,
+      "message": "Your logic seems to be correct - `usb3_dut` will return state of the USB3 knob which you designed. But what about changing \"enabled\" to \"allowed\"? It is possibly correct that one issued `usb3_dut enable` but due to other reasons (e.g. pd stack state) usb3 is not really enabled.",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e72108_cb683bd6",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2023-02-16T10:32:20Z",
+      "side": 1,
+      "message": "So basically for a short period USB3 (terminations) will be enabled and only then we will get back to disabling them? Won\u0027t this cause any issues for the host connected to the servo? Is similar functionality used for other boards?",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
