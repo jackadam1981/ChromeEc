@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e19fcfe_eb406632",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 10874,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T20:20:07Z",
+      "side": 1,
+      "message": "Why is this not EC_HOST_EVENT_NUM_EVENTS?",
+      "range": {
+        "startLine": 10874,
+        "startChar": 45,
+        "endLine": 10874,
+        "endChar": 47
+      },
+      "revId": "6fecec6040c0eecae787f6b27291d2f85cc0c977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb643057_033205a7",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 10922,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T20:20:07Z",
+      "side": 1,
+      "message": "Why is this not \u002764\u0027?\n\nAlso, can you add a comment explaining this is intentionally not EC_HOST_EVENT_NUM_EVENT so that the tool can handle older or newer ECs?",
+      "range": {
+        "startLine": 10922,
+        "startChar": 27,
+        "endLine": 10922,
+        "endChar": 29
+      },
+      "revId": "6fecec6040c0eecae787f6b27291d2f85cc0c977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
