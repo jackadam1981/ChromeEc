@@ -3,5 +3,7 @@
 # found in the LICENSE file.
 
 zephyr_library_sources_ifdef(CONFIG_POWER_SEQUENCE_MOCK power.c)
+zephyr_library_sources_ifdef(CONFIG_AP_POWER_EVENTS_MOCK ap_power_events.c)
 
 cros_ec_library_include_directories(include)
+zephyr_include_directories("${PLATFORM_EC}/zephyr/include")
