@@ -1387,6 +1387,7 @@ extern char mock_jump_data[CONFIG_PLATFORM_EC_PRESERVED_END_OF_RAM_SIZE];
 #undef CONFIG_USB_PD_REV30
 #ifdef CONFIG_PLATFORM_EC_USB_PD_REV30
 #define CONFIG_USB_PD_REV30
+#define CONFIG_USB_PD_EPR
 
 /*
  * Support USB PD 3.0 Extended Messages. Note that Chromebooks disabling this
