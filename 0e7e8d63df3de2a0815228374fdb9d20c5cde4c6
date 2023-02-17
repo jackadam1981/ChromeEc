@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0a18dd_81a7cc12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2023-02-17T10:31:25Z",
+      "side": 1,
+      "message": "Log from AP console:\n[INFO ]  VB2:vb2_check_recovery() Recovery reason from previous boot: 0x0 / 0x0\n[INFO ]  VB2:vb2_check_recovery() Recovery was requested manually\n[INFO ]  VB2:vb2_check_recovery() We have a recovery request: 0x2 / 0x0\n[INFO ]  Recovery requested (1009000e)",
+      "revId": "0e7e8d63df3de2a0815228374fdb9d20c5cde4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
