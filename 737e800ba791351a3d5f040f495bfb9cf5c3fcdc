@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "419e802d_1cb0f82a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T00:19:41Z",
+      "side": 1,
+      "message": "Instead, you can add BUILD_ASSERT(EC_HOST_EVENT_NUM_EVENTS \u003c\u003d 65). That\u0027s what\u0027s typically done in this repo.",
+      "range": {
+        "startLine": 789,
+        "startChar": 0,
+        "endLine": 792,
+        "endChar": 25
+      },
+      "revId": "737e800ba791351a3d5f040f495bfb9cf5c3fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
