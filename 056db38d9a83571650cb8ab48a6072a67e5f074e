@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99a56442_68c8492a",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-17T00:49:04Z",
+      "side": 1,
+      "message": "right, this patch does not change the semantics/correctness of the code.\n\nsupporting 64 bit atomics would be a good enhancements on its own.",
+      "parentUuid": "e3945b9b_e879bd89",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 267,
+        "endChar": 41
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6eb4ff42_e44f6bda",
         "filename": "common/host_event_commands.c",
         "patchSetId": 6
