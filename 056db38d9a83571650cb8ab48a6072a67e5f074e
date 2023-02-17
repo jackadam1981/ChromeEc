@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eefd64a7_8e2b48d5",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T01:02:16Z",
+      "side": 1,
+      "message": "I think the bigger problem is that the atomics aren\u0027t actually protecting us in any meaningful way.\n\n1. Either `host_set_events()` and `host_clear_events()` can be called at the same time, meaning all accesses of `events` in those functions needs to be protected by a lock in those functions (and possibly calls to `host_get_events()` also). Using atomics doesn\u0027t fully protect us, since `events` can be modified at the same time by both threads, possibly causing us to not send a host event when we should (or vice-versa).\n2. Or, they cannot be called at the same time, so the atomics are unnecessary.\n\nEither way, the current version is unlikely to be correct (but also not any worse after this).",
+      "parentUuid": "99a56442_68c8492a",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 267,
+        "endChar": 41
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6eb4ff42_e44f6bda",
         "filename": "common/host_event_commands.c",
         "patchSetId": 6
@@ -298,6 +322,30 @@
       "side": 1,
       "message": "The last legal host event value is `64`.\n\nThis comment and naming is awkward, due to the 1-based counting.\n\nI tried giving it another update, so let me know what you think.",
       "parentUuid": "3582d64a_6850ea3d",
+      "range": {
+        "startLine": 781,
+        "startChar": 62,
+        "endLine": 781,
+        "endChar": 68
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca8a15ed_39ef1d7e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T01:02:16Z",
+      "side": 1,
+      "message": "I\u0027m marking this resolved, since this portion has moved here: https://crrev.com/c/4261961",
+      "parentUuid": "150dbb8b_89f58bd1",
       "range": {
         "startLine": 781,
         "startChar": 62,
