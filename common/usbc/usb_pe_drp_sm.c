@@ -287,6 +287,13 @@ enum usb_pe_state {
 	PE_SNK_CHUNK_RECEIVED, /* pe-st76 */
 	PE_VCS_FORCE_VCONN, /* pe-st77 */
 	PE_GET_REVISION, /* pe-st78 */
+
+	/* EPR Sink States */
+	PE_SNK_EPR_KEEP_ALIVE,
+	PE_SNK_SEND_EPR_MODE_ENTRY,
+	PE_SNK_EPR_MODE_WAIT_FOR_RESPONSE,
+	PE_SNK_SEND_EPR_MODE_EXIT,
+	PE_SNK_EPR_MODE_EXIT_RECEIVED,
 };
 
 /*
@@ -426,6 +433,11 @@ __maybe_unused static __const_data const char *const pe_state_names[] = {
 	[PE_DDR_WAIT_FOR_VCONN_OFF] = "PE_DDR_Wait_For_VCONN_Off",
 	[PE_DDR_PERFORM_DATA_RESET] = "PE_DDR_Perform_Data_Reset",
 #endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+	[PE_SNK_EPR_KEEP_ALIVE] = "PE_SNK_EPR_Keep_Alive",
+	[PE_SNK_SEND_EPR_MODE_ENTRY] = "PE_SNK_Send_EPR_Mode_Entry",
+	[PE_SNK_EPR_MODE_WAIT_FOR_RESPONSE] = "PE_SNK_EPR_Mode_Wait_For_Response",
+	[PE_SNK_SEND_EPR_MODE_EXIT] = "PE_SNK_Send_EPR_Mode_Exit",
+	[PE_SNK_EPR_MODE_EXIT_RECEIVED] = "PE_SNK_EPR_Mode_Exit_Received",
 #endif /* CONFIG_USB_PD_REV30 */
 };
 
@@ -7738,6 +7750,110 @@ static void pe_ddr_perform_data_reset_exit(int port)
 }
 #endif /* CONFIG_USB_PD_DATA_RESET_MSG */
 
+static void pe_snk_send_epr_msg(int port, enum eprmdo_action action, int data)
+{
+	uint32_t eprmdo;
+
+	eprmdo = EPRMDO_SET_ACTION(action);
+	eprmdo |= EPRMDO_SET_DATA(data);
+
+	tx_emsg[port].len =  4;
+	memcpy(tx_emsg[port].buf, (uint8_t *)&eprmdo, tx_emsg[port].len);
+	send_data_msg(port, TCPCI_MSG_SOP, PD_DATA_EPR_MODE);
+}
+
+static void pe_snk_send_epr_mode_entry_entry(int port)
+{
+	print_current_state(port);
+
+	pe_snk_send_epr_msg(port, ENTER, 100);
+	pe_sender_response_msg_entry(port);
+
+	/**
+	 * PD 3.1 Section 8.3.3.25.2.1
+	 * On Entry to the PE_SNK_Send_EPR_Mode_Entry state the Policy Engine
+	 * Shall send an EPR_Mode (Enter) Message and starts the
+	 * SenderResponseTimer and the SinkEPREnterTimer.
+	 * Note that the SinkEPREnterTimer Shall continue to run in every state
+	 * until it is stopped or times out.
+	 **/
+	pd_timer_enable(port, PE_TIMER_EPR_ENTER, 5000);
+}
+
+static void pe_snk_send_epr_mode_entry_run(int port)
+{
+	enum pe_msg_check msg_check;
+
+	msg_check = pe_sender_response_msg_run(port);
+	if ((msg_check & PE_MSG_SENT) &&
+	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		int type = PD_HEADER_TYPE(rx_emsg[port].header);
+		int cnt = PD_HEADER_CNT(rx_emsg[port].header);
+		uint32_t eprmdo;
+
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		if ((cnt != 1) || (type != PD_DATA_EPR_MODE)) {
+			pe_send_soft_reset(port, TCPCI_MSG_SOP);
+			return;
+		}
+
+		memcpy((uint8_t *)&eprmdo, tx_emsg[port].buf, 4);
+		if (EPRMDO_GET_ACTION(eprmdo) == ENTER_ACK) {
+			set_state_pe(port, PE_SNK_EPR_MODE_WAIT_FOR_RESPONSE);
+		}
+	}
+
+}
+
+static void pe_snk_send_epr_mode_entry_exit(int port)
+{
+
+}
+
+static void pe_snk_epr_mode_wait_for_response_entry(int port)
+{
+	print_current_state(port);
+}
+
+static void pe_snk_epr_mode_wait_for_response_run(int port)
+{
+	/* Wait for success response*/
+	if (pd_timer_is_expired(port, PE_TIMER_EPR_ENTER)) {
+		pe_send_soft_reset(port, TCPCI_MSG_SOP);
+		return;
+	}
+
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		int type = PD_HEADER_TYPE(rx_emsg[port].header);
+		int cnt = PD_HEADER_CNT(rx_emsg[port].header);
+		uint32_t eprmdo;
+
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		if ((cnt != 1) || (type != PD_DATA_EPR_MODE)) {
+			pe_send_soft_reset(port, TCPCI_MSG_SOP);
+			return;
+		}
+
+		memcpy((uint8_t *)&eprmdo, tx_emsg[port].buf, 4);
+		if (EPRMDO_GET_ACTION(eprmdo) != ENTER_SUCCEEDED) {
+			pe_send_soft_reset(port, TCPCI_MSG_SOP);
+			return;
+		}
+
+		/**
+		 * Successfully entering in EPR mode, at this point only
+		 * PD_EXT_EPR_SOURCE_CAP are expected.
+		 **/
+		set_state_pe(port, PE_SNK_WAIT_FOR_CAPABILITIES);
+	}
+}
+
+static void pe_snk_epr_mode_wait_for_response_exit(int port)
+{
+}
+
 const uint32_t *const pd_get_src_caps(int port)
 {
 	return pe[port].src_caps;
@@ -8260,6 +8376,31 @@ static __const_data const struct usb_state pe_states[] = {
 		.exit  = pe_ddr_perform_data_reset_exit,
 	},
 #endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+	[PE_SNK_EPR_KEEP_ALIVE] = {
+		.entry = 0,
+		.run   = 0,
+		.exit  = 0,
+	},
+	[PE_SNK_SEND_EPR_MODE_ENTRY] = {
+		.entry = pe_snk_send_epr_mode_entry_entry,
+		.run   = pe_snk_send_epr_mode_entry_run,
+		.exit  = pe_snk_send_epr_mode_entry_exit,
+	},
+	[PE_SNK_EPR_MODE_WAIT_FOR_RESPONSE] = {
+		.entry = pe_snk_epr_mode_wait_for_response_entry,
+		.run   = pe_snk_epr_mode_wait_for_response_run,
+		.exit  = pe_snk_epr_mode_wait_for_response_exit,
+	},
+	[PE_SNK_SEND_EPR_MODE_EXIT] = {
+		.entry = 0,
+		.run   = 0,
+		.exit  = 0,
+	},
+	[PE_SNK_EPR_MODE_EXIT_RECEIVED] = {
+		.entry = 0,
+		.run   = 0,
+		.exit  = 0,
+	},
 #endif /* CONFIG_USB_PD_REV30 */
 };
 

@@ -140,6 +140,7 @@ enum pd_rx_errors {
 #define RDO_CAP_MISMATCH BIT(26)
 #define RDO_COMM_CAP BIT(25)
 #define RDO_NO_SUSPEND BIT(24)
+#define RDO_EPR_CAPABLE BIT(22)
 #define RDO_FIXED_VAR_OP_CURR(ma) ((((ma) / 10) & 0x3FF) << 10)
 #define RDO_FIXED_VAR_MAX_CURR(ma) ((((ma) / 10) & 0x3FF) << 0)
 
@@ -828,6 +829,21 @@ struct pd_cable {
 #define VDO_INFO_HW_DEV_ID(x) ((x) >> 16)
 #define VDO_INFO_SW_DBG_VER(x) (((x) >> 1) & 0x7fff)
 #define VDO_INFO_IS_RW(x) ((x)&1)
+
+/*EPRMDO*/
+enum eprmdo_action {
+	RESERVED,
+	ENTER,
+	ENTER_ACK,
+	ENTER_SUCCEEDED,
+	ENTER_FAILED,
+	ENTER_EXIT,
+};
+#define EPRMDO_SET_ACTION(action)  ((action & 0xff) << 24)
+#define EPRMDO_SET_DATA(data)  ((data & 0xff) << 16)
+
+#define EPRMDO_GET_ACTION(eprdmo)  ((eprdmo >> 24) & 0xff)
+#define EPRMDO_GET_DATA(eprdmo)  ((eprdmo >> 16) & 0xff)
 
 #define HW_DEV_ID_MAJ(x) (x & 0x3ff)
 #define HW_DEV_ID_MIN(x) ((x) >> 10)
