@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a33370_dd474bdb",
+        "filename": "chip/stm32/adc-stm32l5.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-17T22:07:39Z",
+      "side": 1,
+      "message": "I have done so, and also added a similar comment in i2c-stm32l4.c in  crrev.com/c/4264176 .",
+      "parentUuid": "099c32ab_096f2266",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "0efc844e85bb5466d678df437375698b3c8097b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31b73b48_fd5daadd",
