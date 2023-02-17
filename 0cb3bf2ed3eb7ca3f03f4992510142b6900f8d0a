@@ -22,6 +22,30 @@
       },
       "revId": "0cb3bf2ed3eb7ca3f03f4992510142b6900f8d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1540003d_232806a7",
+        "filename": "chip/stm32/adc-stm32l4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-17T21:40:20Z",
+      "side": 1,
+      "message": "I have created a static `stm32_adc1_isr_clear()`.  It seems that other peripherals such as I2C and UART have other conventions, with a read-only `ISR` register.",
+      "parentUuid": "23b5b904_ce9610ed",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 40
+      },
+      "revId": "0cb3bf2ed3eb7ca3f03f4992510142b6900f8d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
