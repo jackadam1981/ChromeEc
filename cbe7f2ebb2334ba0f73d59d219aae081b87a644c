@@ -22,6 +22,30 @@
       },
       "revId": "cbe7f2ebb2334ba0f73d59d219aae081b87a644c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b327f1de_b680bc52",
+        "filename": "chip/stm32/adc-stm32l4.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-17T22:31:21Z",
+      "side": 1,
+      "message": "There is some \u0027#ifndef CONFIG_ADC_SAMPLE_TIME` at the top of this file, which makes sure it is defined, (as long as `CONFIG_ADC_PROFILE_SINGLE` is defined, which I assume it always is.)\n\nThe CQ errors I have seen were not from lack of this define.",
+      "parentUuid": "0ebd5715_ffee8701",
+      "range": {
+        "startLine": 101,
+        "startChar": 13,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "cbe7f2ebb2334ba0f73d59d219aae081b87a644c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
