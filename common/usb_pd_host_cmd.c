@@ -126,6 +126,7 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DISCOVERY, hc_remote_pd_discovery,
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
 #ifdef CONFIG_COMMON_RUNTIME
+#ifdef CONFIG_USB_PD_TCPMV1
 static enum ec_status hc_remote_pd_dev_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_info_request *p = args->params;
@@ -147,6 +148,7 @@ static enum ec_status hc_remote_pd_dev_info(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DEV_INFO, hc_remote_pd_dev_info,
 		     EC_VER_MASK(0));
+#endif /* CONFIG_USB_PD_TCPMV1 */
 
 static const enum pd_dual_role_states dual_role_map[USB_PD_CTRL_ROLE_COUNT] = {
 	[USB_PD_CTRL_ROLE_TOGGLE_ON] = PD_DRP_TOGGLE_ON,
