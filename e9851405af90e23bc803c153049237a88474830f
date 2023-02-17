@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cafd9b7_b8cd0b73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-02-17T07:04:05Z",
+      "side": 1,
+      "message": "1. the PCBA EC IC is STM32F072CBU6 so change the dts include\n2. modify the uart config and enable all the internal clock source\n3. modify the zephyr cmake config to build pass\n```\ndiff --git a/cmake/compiler/gcc/target_arm.cmake b/cmake/compiler/gcc/target_arm.cmake\nindex 0cfaba43da..ce6cfef7d2 100644\n--- a/cmake/compiler/gcc/target_arm.cmake\n+++ b/cmake/compiler/gcc/target_arm.cmake\n@@ -6,6 +6,7 @@ list(APPEND ARM_C_FLAGS   -mcpu\u003d${GCC_M_CPU})\n \n if(CONFIG_COMPILER_ISA_THUMB2)\n   list(APPEND ARM_C_FLAGS   -mthumb)\n+  list(APPEND ARM_C_FLAGS   -lgcc)\n endif()\n ```",
+      "revId": "e9851405af90e23bc803c153049237a88474830f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
