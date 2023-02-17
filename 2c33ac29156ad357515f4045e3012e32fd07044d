@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa315c5d_e5963895",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-17T22:47:43Z",
+      "side": 1,
+      "message": "This looks guaranteed safe to me, as it is obvious that `isl9241_nvdc_to_bypass()` will always hold the mutex, when calling the new internal method.",
+      "revId": "2c33ac29156ad357515f4045e3012e32fd07044d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b8c997_f62adabf",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-17T22:47:43Z",
+      "side": 1,
+      "message": "Is is common naming convention to prefix internal static methods with underscore?  To me, this signals some special linker treatment or something, which does not apply here.",
+      "range": {
+        "startLine": 350,
+        "startChar": 26,
+        "endLine": 350,
+        "endChar": 43
+      },
+      "revId": "2c33ac29156ad357515f4045e3012e32fd07044d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
