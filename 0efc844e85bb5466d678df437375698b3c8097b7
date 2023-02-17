@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fee940_54e0813e",
+        "filename": "chip/stm32/adc-stm32l4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-17T21:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "718ea9af_6583b09b",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 7
+      },
+      "revId": "0efc844e85bb5466d678df437375698b3c8097b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7fda385_08349edc",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-17T20:28:49Z",
       "side": 1,
       "message": "I have never seen this in this repo. Usually we simply rename the file (e.g. adc-stm32lx.c).",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "0efc844e85bb5466d678df437375698b3c8097b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0679633f_db6a70a0",
+        "filename": "chip/stm32/adc-stm32l5.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-17T21:40:08Z",
+      "side": 1,
+      "message": "The thing is, we already have a stm32l.c, which applies to other Lx families besides 4 and 5, as far as I understand.\n\nIn this repo we already have clock-stm32l5.c and i2c-stm32l5.c which like this proposal contain only a single include line.\n\nAlso, we have gpio-stm32l4.c, gpio-stm32l5.c which both contain some declarations, and include another .c file for common pieces.",
+      "parentUuid": "e7fda385_08349edc",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5990a2_8e963d00",
+        "filename": "chip/stm32/adc_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-17T21:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31b73b48_fd5daadd",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 96
+      },
+      "revId": "0efc844e85bb5466d678df437375698b3c8097b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90e0ed25_13af30e8",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-02-17T20:28:49Z",
       "side": 1,
       "message": "Where is this used?",
+      "range": {
+        "startLine": 205,
+        "startChar": 8,
+        "endLine": 205,
+        "endChar": 23
+      },
+      "revId": "0efc844e85bb5466d678df437375698b3c8097b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fdaab57_661655b9",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-17T21:40:08Z",
+      "side": 1,
+      "message": "They are used further down this file, in the ADC section where you will find declarations like this one:\n\n`#define STM32_ADC1_CR REG32(STM32_ADC1_BASE + 0x08)`",
+      "parentUuid": "90e0ed25_13af30e8",
       "range": {
         "startLine": 205,
         "startChar": 8,
