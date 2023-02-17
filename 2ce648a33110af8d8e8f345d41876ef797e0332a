@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "307f0a8b_7cd616f9",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1563627
+      },
+      "writtenOn": "2023-02-17T05:41:18Z",
+      "side": 1,
+      "message": "I believe we could fix that by initialising the `current_limit_value` to INT_MAX. That way, the current limit can still be set without a soc to apply at (such as in slow charging in the non-shutdown scenario).",
+      "parentUuid": "17bd1115_9a010e16",
+      "range": {
+        "startLine": 1465,
+        "startChar": 41,
+        "endLine": 1465,
+        "endChar": 59
+      },
+      "revId": "2ce648a33110af8d8e8f345d41876ef797e0332a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d432eb1_9aa4cba0",
         "filename": "util/ectool.cc",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-16T17:25:32Z",
       "side": 1,
       "message": "nit: This is redundant since [...] is used.",
+      "range": {
+        "startLine": 7560,
+        "startChar": 34,
+        "endLine": 7560,
+        "endChar": 43
+      },
+      "revId": "2ce648a33110af8d8e8f345d41876ef797e0332a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87e782d_592b8c5f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 7560,
+      "author": {
+        "id": 1563627
+      },
+      "writtenOn": "2023-02-17T05:41:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "9d432eb1_9aa4cba0",
       "range": {
         "startLine": 7560,
         "startChar": 34,
@@ -60,6 +108,30 @@
       "writtenOn": "2023-02-16T17:25:32Z",
       "side": 1,
       "message": "I think it\u0027s better to have one common help text (for v0 and v1). Updating EC doesn\u0027t necessarily help (because the latest FW doesn\u0027t necessarilly support v1). So, we can simply say [soc] is available only for v1. Sorry for confusion.",
+      "range": {
+        "startLine": 7558,
+        "startChar": 0,
+        "endLine": 7562,
+        "endChar": 38
+      },
+      "revId": "2ce648a33110af8d8e8f345d41876ef797e0332a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de24e204_d07c32df",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 7562,
+      "author": {
+        "id": 1563627
+      },
+      "writtenOn": "2023-02-17T05:41:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63c3c8d7_83d1edcd",
       "range": {
         "startLine": 7558,
         "startChar": 0,
