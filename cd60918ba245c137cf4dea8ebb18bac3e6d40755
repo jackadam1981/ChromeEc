@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c3d054e_a93693b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T00:37:46Z",
+      "side": 1,
+      "message": "I have a CL attempting that here: https://crrev.com/c/4261964\n\nIt hits compilation errors though:\n\n```\n(cr) (b/261141172_bodydetect_test) timvp@timvp-p620-9115096 ~/chromiumos/src/platform/ec $ ./twister -v -i --coverage -p native_posix -p unit_testing\n...\n/home/timvp/chromiumos/src/platform/ec/common/motion_sense.c:204:34: error: use of undeclared identifier \u0027SENSOR_DT_N_ALIAS_on_body_sensor\u0027\n            (sensor - motion_sensors \u003d\u003d CONFIG_BODY_DETECTION_SENSOR))\n                                        ^\n/mnt/host/source/src/platform/ec/zephyr/shim/include/config_chip.h:2080:38: note: expanded from macro \u0027CONFIG_BODY_DETECTION_SENSOR\u0027\n#define CONFIG_BODY_DETECTION_SENSOR SENSOR_ID(DT_ALIAS(on_body_sensor))\n                                     ^\n/mnt/host/source/src/platform/ec/zephyr/shim/include/motionsense_sensors_defs.h:13:23: note: expanded from macro \u0027SENSOR_ID\u0027\n#define SENSOR_ID(id) DT_CAT(SENSOR_, id)\n                      ^\n/home/timvp/chromiumos/src/third_party/zephyr/main/include/zephyr/devicetree.h:3901:24: note: expanded from macro \u0027DT_CAT\u0027\n#define DT_CAT(a1, a2) a1 ## a2\n                       ^\n```\n\nAny guesses on what `#define CONFIG_BODY_DETECTION_SENSOR SENSOR_ID(DT_ALIAS(on_body_sensor))` should be?",
+      "parentUuid": "d15f8fac_fd45e652",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "cd60918ba245c137cf4dea8ebb18bac3e6d40755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a6f4982_2cc93473",
         "filename": "common/body_detection.c",
         "patchSetId": 5
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8bbdbbc_8c58130e",
+        "filename": "common/body_detection.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T00:37:46Z",
+      "side": 1,
+      "message": "Hm, that\u0027s what I get for copy/pasting directly from `common/tablet_mode.c` without reading it.\n\nFixed.",
+      "parentUuid": "6a6f4982_2cc93473",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "cd60918ba245c137cf4dea8ebb18bac3e6d40755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11f83e99_6ffcf1bb",
+        "filename": "common/body_detection.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T00:37:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7443d11b_b65fbec2",
+      "range": {
+        "startLine": 43,
+        "startChar": 30,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "cd60918ba245c137cf4dea8ebb18bac3e6d40755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1a3c39f_5940e204",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f440b29d_e0d2f61c",
+        "filename": "common/body_detection.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T00:37:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1a3c39f_5940e204",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "cd60918ba245c137cf4dea8ebb18bac3e6d40755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffbce689_df8b6a65",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-02-16T23:55:38Z",
       "side": 1,
       "message": "are there protection implications here?\nmay want to check system_is_locked(), if so.",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 22
+      },
+      "revId": "cd60918ba245c137cf4dea8ebb18bac3e6d40755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "718367c1_6d879cd4",
+        "filename": "common/body_detection.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T00:37:46Z",
+      "side": 1,
+      "message": "I don\u0027t think there are any security concerns here.\n\nThis is essentially how tablet mode behaves as well, where the EC CLI can be used to force a particular mode for testing. The CLI itself is already protected by the GSC and requiring CCD to be opened.\n\nIs there something else you\u0027re worried about?\n\nFor reference, see `tablet_set_mode()`:\nhttps://source.corp.google.com/chromeos_public/src/platform/ec/common/tablet_mode.c;rcl\u003d6dd12ddff735adb9cb1c6ec2528724c87b23e76e;l\u003d69",
+      "parentUuid": "ffbce689_df8b6a65",
       "range": {
         "startLine": 110,
         "startChar": 5,
