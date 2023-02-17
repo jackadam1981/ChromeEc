@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e89423fa_4b423f1c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T21:42:33Z",
+      "side": 1,
+      "message": "I\u0027ve updated it to \"unassigned\".",
+      "parentUuid": "a6ab8aec_ac50ce76",
+      "range": {
+        "startLine": 782,
+        "startChar": 14,
+        "endLine": 782,
+        "endChar": 22
+      },
+      "revId": "6c8af8bf8d77f79277518e693eb8f4d3c34e8ac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18e0d559_95467711",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-17T20:44:22Z",
       "side": 1,
       "message": "no comma here since it should be impossible to add another\nentry after this.",
+      "range": {
+        "startLine": 786,
+        "startChar": 25,
+        "endLine": 786,
+        "endChar": 26
+      },
+      "revId": "6c8af8bf8d77f79277518e693eb8f4d3c34e8ac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8625c310_953c6a84",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T21:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18e0d559_95467711",
       "range": {
         "startLine": 786,
         "startChar": 25,
