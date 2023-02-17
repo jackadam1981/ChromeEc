@@ -264,6 +264,11 @@ static int common_pwr_sm_run(int state)
 			return SYS_POWER_STATE_G3S5;
 		}
 
+		LOG_INF("delay 60s");
+		k_sleep(K_SECONDS(60));
+		LOG_INF("change to POWER_STATE_G3S5");
+		return SYS_POWER_STATE_G3S5;
+
 		break;
 
 	case SYS_POWER_STATE_G3S5:
