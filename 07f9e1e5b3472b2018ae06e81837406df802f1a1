@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bcedc45_adb5cb1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-17T07:01:05Z",
+      "side": 1,
+      "message": "1.Created \"mchp\" directory, it contains:\n  1.1.Utility which updates header file for the SPI image to be programmed\n      flash_pgm_hdr.bin\n      gen_pgm_hdr.py\n      pgm_hdr.bin",
+      "revId": "07f9e1e5b3472b2018ae06e81837406df802f1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
