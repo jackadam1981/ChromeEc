@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8780e926_ade8d7b0",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-17T00:21:33Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org I am not sure why the formatter rearranged the headers. I do not think there are correct",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "8b49c1d6e6fb5b539dcb8b479b53c635039577cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd03b070_3e25390f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1754,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-17T00:21:33Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org I am not sure what is the difference between the flags and masks. I can understand that a command will take flags.",
+      "range": {
+        "startLine": 1753,
+        "startChar": 1,
+        "endLine": 1754,
+        "endChar": 65
+      },
+      "revId": "8b49c1d6e6fb5b539dcb8b479b53c635039577cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c939b92_23ed959d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1780,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-17T00:21:33Z",
+      "side": 1,
+      "message": "is this the correct translation? Is this function returning EC_SUCCESS?",
+      "range": {
+        "startLine": 1775,
+        "startChar": 0,
+        "endLine": 1780,
+        "endChar": 2
+      },
+      "revId": "8b49c1d6e6fb5b539dcb8b479b53c635039577cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1ef625b_68a36e4a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-17T00:21:33Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org shall I use here this format 0x%08x or use %d since this can convert of a  uint32_t?",
+      "range": {
+        "startLine": 1783,
+        "startChar": 1,
+        "endLine": 1785,
+        "endChar": 72
+      },
+      "revId": "8b49c1d6e6fb5b539dcb8b479b53c635039577cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
