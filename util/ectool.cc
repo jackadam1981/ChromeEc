@@ -3,29 +3,15 @@
  * found in the LICENSE file.
  */
 
-#include <assert.h>
-#include <ctype.h>
-#include <errno.h>
-#include <getopt.h>
-#include <inttypes.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#include <signal.h>
-#include <stdbool.h>
-
 #include "battery.h"
+#include "chipset.h"
 #include "comm-host.h"
 #include "comm-usb.h"
-#include "chipset.h"
 #include "compile_time_macros.h"
 #include "crc.h"
 #include "cros_ec_dev.h"
-#include "ec_panicinfo.h"
 #include "ec_flash.h"
+#include "ec_panicinfo.h"
 #include "ec_version.h"
 #include "ectool.h"
 #include "i2c.h"
@@ -36,7 +22,23 @@
 #include "tablet_mode.h"
 #include "usb_pd.h"
 
+#include <assert.h>
+#include <ctype.h>
+#include <errno.h>
+#include <inttypes.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#include <getopt.h>
+#include <iostream>
 #include <libec/add_entropy_command.h>
+#include <libec/flash_protect_command.h>
+#include <unistd.h>
 
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
@@ -1743,83 +1745,64 @@ int cmd_flash_erase(int argc, char *argv[])
 	return 0;
 }
 
-static void print_flash_protect_flags(const char *desc, uint32_t flags)
-{
-	printf("%s 0x%08x", desc, flags);
-	if (flags & EC_FLASH_PROTECT_GPIO_ASSERTED)
-		printf(" wp_gpio_asserted");
-	if (flags & EC_FLASH_PROTECT_RO_AT_BOOT)
-		printf(" ro_at_boot");
-	if (flags & EC_FLASH_PROTECT_RW_AT_BOOT)
-		printf(" rw_at_boot");
-	if (flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)
-		printf(" rollback_at_boot");
-	if (flags & EC_FLASH_PROTECT_ALL_AT_BOOT)
-		printf(" all_at_boot");
-	if (flags & EC_FLASH_PROTECT_RO_NOW)
-		printf(" ro_now");
-	if (flags & EC_FLASH_PROTECT_RW_NOW)
-		printf(" rw_now");
-	if (flags & EC_FLASH_PROTECT_ROLLBACK_NOW)
-		printf(" rollback_now");
-	if (flags & EC_FLASH_PROTECT_ALL_NOW)
-		printf(" all_now");
-	if (flags & EC_FLASH_PROTECT_ERROR_STUCK)
-		printf(" STUCK");
-	if (flags & EC_FLASH_PROTECT_ERROR_INCONSISTENT)
-		printf(" INCONSISTENT");
-	if (flags & EC_FLASH_PROTECT_ERROR_UNKNOWN)
-		printf(" UNKNOWN_ERROR");
-	printf("\n");
-}
-
 int cmd_flash_protect(int argc, char *argv[])
 {
-	struct ec_params_flash_protect p;
-	struct ec_response_flash_protect r;
-	int rv, i;
-
 	/*
-	 * Set up requested flags.  If no flags were specified, p.mask will
-	 * be 0 and nothing will change.
+	 * Set up requested flags.  If no flags were specified, mask will
+	 * be flash_protect::Flags::kNone and nothing will change.
 	 */
-	p.mask = p.flags = 0;
-	for (i = 1; i < argc; i++) {
+	ec::flash_protect::Flags flags = ec::flash_protect::Flags::kNone;
+	ec::flash_protect::Flags mask = ec::flash_protect::Flags::kNone;
+
+	for (int i = 1; i < argc; i++) {
 		if (!strcasecmp(argv[i], "now")) {
-			p.mask |= EC_FLASH_PROTECT_ALL_NOW;
-			p.flags |= EC_FLASH_PROTECT_ALL_NOW;
+			mask |= ec::flash_protect::Flags::kAllNow;
+			flags |= ec::flash_protect::Flags::kAllNow;
 		} else if (!strcasecmp(argv[i], "enable")) {
-			p.mask |= EC_FLASH_PROTECT_RO_AT_BOOT;
-			p.flags |= EC_FLASH_PROTECT_RO_AT_BOOT;
+			mask |= ec::flash_protect::Flags::kRoAtBoot;
+			flags |= ec::flash_protect::Flags::kRoAtBoot;
 		} else if (!strcasecmp(argv[i], "disable"))
-			p.mask |= EC_FLASH_PROTECT_RO_AT_BOOT;
+			mask |= ec::flash_protect::Flags::kRoAtBoot;
 	}
 
-	rv = ec_command(EC_CMD_FLASH_PROTECT, EC_VER_FLASH_PROTECT, &p,
-			sizeof(p), &r, sizeof(r));
+	ec::FlashProtectCommand flash_protect_command(flags, mask);
+	if (!flash_protect_command.Run(comm_get_fd())) {
+		fprintf(stderr, "Too little data returned.\n");
+		return -1;
+	}
+
+	int rv = flash_protect_command.Result();
+
 	if (rv < 0)
 		return rv;
-	if (rv < sizeof(r)) {
+	if (rv < sizeof(flash_protect_command.Resp())) {
 		fprintf(stderr, "Too little data returned.\n");
 		return -1;
 	}
 
 	/* Print returned flags */
-	print_flash_protect_flags("Flash protect flags:", r.flags);
-	print_flash_protect_flags("Valid flags:        ", r.valid_flags);
-	print_flash_protect_flags("Writable flags:     ", r.writable_flags);
+	std::cout << "Flash protect flags: "
+		  << ec::FlashProtectCommand::ParseFlags(
+			     flash_protect_command.GetFlags());
+	std::cout << "Valid flags: "
+		  << ec::FlashProtectCommand::ParseFlags(
+			     flash_protect_command.GetValidFlags());
+	std::cout << "Writable flags: "
+		  << ec::FlashProtectCommand::ParseFlags(
+			     flash_protect_command.GetWritableFlags());
 
 	/* Check if we got all the flags we asked for */
-	if ((r.flags & p.mask) != (p.flags & p.mask)) {
+	if ((flash_protect_command.GetFlags() & mask) != (flags & mask)) {
 		fprintf(stderr,
 			"Unable to set requested flags "
-			"(wanted mask 0x%08x flags 0x%08x)\n",
-			p.mask, p.flags);
-		if (p.mask & ~r.writable_flags)
+			"(wanted mask %d flags %d)\n",
+			mask, flags);
+		if ((mask & ~flash_protect_command.GetWritableFlags()) !=
+		    ec::flash_protect::Flags::kNone)
 			fprintf(stderr,
 				"Which is expected, because writable "
-				"mask is 0x%08x.\n",
-				r.writable_flags);
+				"mask is %d.\n",
+				flash_protect_command.GetWritableFlags());
 
 		return -1;
 	}
@@ -3231,8 +3214,8 @@ static int cmd_temperature_print(int id, int mtemp)
 	int temp = mtemp + EC_TEMP_SENSOR_OFFSET;
 
 	temp_p.id = id;
-	rc = ec_command(EC_CMD_TEMP_SENSOR_GET_INFO, 0, &temp_p,
-			sizeof(temp_p), &temp_r, sizeof(temp_r));
+	rc = ec_command(EC_CMD_TEMP_SENSOR_GET_INFO, 0, &temp_p, sizeof(temp_p),
+			&temp_r, sizeof(temp_r));
 	if (rc < 0)
 		return rc;
 
@@ -3242,7 +3225,7 @@ static int cmd_temperature_print(int id, int mtemp)
 
 	printf("%-20s  %d K (= %d C)", temp_r.sensor_name, temp, K_TO_C(temp));
 
-	if(rc >= 0)
+	if (rc >= 0)
 		/*
 		 * Check for fan_off == fan_max when their
 		 * values are either zero or non-zero
@@ -3253,7 +3236,8 @@ static int cmd_temperature_print(int id, int mtemp)
 		else
 			printf("  %10d%% (%d K and %d K)",
 			       get_temp_ratio(temp, r.temp_fan_off,
-			       r.temp_fan_max), r.temp_fan_off, r.temp_fan_max);
+					      r.temp_fan_max),
+			       r.temp_fan_off, r.temp_fan_max);
 	else
 		printf("%20s(rc=%d)", "error", rc);
 
