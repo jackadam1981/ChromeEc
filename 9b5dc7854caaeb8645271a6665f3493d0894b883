@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a8e203_16e5d0a8",
+        "filename": "chip/stm32/adc-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T21:03:33Z",
+      "side": 1,
+      "message": "Do we need to worry about this may go negative if CONFIG_ADC_SAMPLE_TIME \u003d 0? We can add BUILD_ASSERT.",
+      "range": {
+        "startLine": 110,
+        "startChar": 24,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "9b5dc7854caaeb8645271a6665f3493d0894b883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
