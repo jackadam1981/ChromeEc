@@ -524,7 +524,9 @@ static const struct option_container cmd_line_options[] = {
 	 "[id]%Retrieve contents of the crash log with id <id>"},
 	{{"reboot", optional_argument, NULL, 'z'},
 	 "Tell the GSC to reboot with an optional reset timeout parameter "
-	 "in milliseconds"}
+	 "in milliseconds"},
+	{{"console", no_argument, NULL, 'Q'},
+	 "Get console logs"},
 };
 
 /* Helper to print debug messages when verbose flag is specified. */
@@ -3893,6 +3895,24 @@ static void get_crashlog(struct transfer_descriptor *td, uint32_t id)
 	printf("\n");
 }
 
+static void get_console_logs(struct transfer_descriptor *td)
+{
+	uint32_t rv;
+	uint8_t response[2048] = {0};
+	size_t response_size = sizeof(response);
+
+	rv = send_vendor_command(td, VENDOR_CC_GET_CONSOLE_LOGS, NULL,
+				 0, response, &response_size);
+	if (rv != VENDOR_RC_SUCCESS) {
+		printf("Get crash log failed. (%X)\n", rv);
+		exit(1);
+	}
+
+	printf("%s", response);
+	printf("\n");
+}
+
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -3956,6 +3976,7 @@ int main(int argc, char *argv[])
 	size_t reboot_gsc_timeout = 0;
 	int get_clog = 0;
 	uint32_t clog_id = 0;
+	int get_console = 0;
 
 	/*
 	 * All options which result in setting a Boolean flag to True, along
@@ -4022,6 +4043,9 @@ int main(int argc, char *argv[])
 				start_apro_verify = 1;
 			else
 				get_apro_boot_status = 1;
+			break;
+		case 'Q':
+			get_console = 1;
 			break;
 		case 'C':
 			if (optarg && !strncmp(optarg, "3byte", strlen(optarg)))
@@ -4244,6 +4268,7 @@ int main(int argc, char *argv[])
 	    !get_apro_boot_status &&
 	    !get_boot_mode &&
 	    !get_clog &&
+	    !get_console &&
 	    !get_flog &&
 	    !get_endorsement_seed &&
 	    !factory_mode &&
@@ -4297,7 +4322,7 @@ int main(int argc, char *argv[])
 	     !!ccd_unlock + !!ccd_lock + !!ccd_info + !!get_flog +
 	     !!get_boot_mode + !!openbox_desc_file + !!factory_mode +
 	     (wp != WP_NONE) + !!get_endorsement_seed +
-	     !!erase_ap_ro_hash + !!set_capability + !!get_clog) > 1) {
+	     !!erase_ap_ro_hash + !!set_capability + !!get_clog + !!get_console) > 1) {
 		fprintf(stderr,
 			"ERROR: options "
 			"-e, -F, -g, -H, -I, -i, -k, -L, -O, -o, -P, -r, -U, -x"
@@ -4399,6 +4424,10 @@ int main(int argc, char *argv[])
 
 	if (get_clog)
 		get_crashlog(&td, clog_id);
+	
+	if (get_console)
+		get_console_logs(&td);
+
 
 	if (data || show_fw_ver) {
 
