@@ -156,6 +156,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2312f10_4938bf9b",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-17T12:56:05Z",
+      "side": 1,
+      "message": "If I move the code to mock folder, the definition and declaration is happening there itself. and there is only one definition of a fake function for a function. and the code residing in mock folder seemed like it need to be generic so all other tests could use it if they need to \nbut in this case I am defining different mock functions for a function based on test and test-case. I mean there is one test case where I am sending a certain response n number of times, and the n + 1 time I am sending another response to break out of loop from fake function. that implementation is not useful for other test cases.",
+      "parentUuid": "b85f4326_6657abf3",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 75
+      },
+      "revId": "73e8397a987f5aa7349765e785aedc50370c866e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41132bb6_af309ee4",
         "filename": "zephyr/test/rex/src/fan.c",
         "patchSetId": 2
