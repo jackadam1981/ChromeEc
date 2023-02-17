@@ -84,6 +84,8 @@ enum {
 	PE_FLAGS_DATA_RESET_COMPLETE_FN,
 	/* Waiting for SRC to SNK settle time */
 	PE_FLAGS_SRC_SNK_SETTLE_FN,
+	/* FLAG to note that sink is in EPR mode */
+	PE_FLAGS_SNK_IN_EPR_MODE_FN,
 	/* Last element */
 	PE_FLAGS_COUNT
 };

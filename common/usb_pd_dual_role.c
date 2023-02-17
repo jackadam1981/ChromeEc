@@ -365,6 +365,10 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 		if (pd_get_power_role(port) == PD_ROLE_SINK)
 			*rdo |= RDO_NO_SUSPEND;
 	}
+
+	if (IS_ENABLED(CONFIG_USB_PD_EPR)) {
+		*rdo |= RDO_EPR_CAPABLE;
+	}
 }
 
 void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
