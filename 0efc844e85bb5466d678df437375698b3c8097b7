@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "718ea9af_6583b09b",
+        "filename": "chip/stm32/adc-stm32l4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T20:28:49Z",
+      "side": 1,
+      "message": "can you add \u0027static\u0027?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 7
+      },
+      "revId": "0efc844e85bb5466d678df437375698b3c8097b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7fda385_08349edc",
+        "filename": "chip/stm32/adc-stm32l5.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T20:28:49Z",
+      "side": 1,
+      "message": "I have never seen this in this repo. Usually we simply rename the file (e.g. adc-stm32lx.c).",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "0efc844e85bb5466d678df437375698b3c8097b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b73b48_fd5daadd",
+        "filename": "chip/stm32/adc_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T20:28:49Z",
+      "side": 1,
+      "message": "can you fold it?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 96
+      },
+      "revId": "0efc844e85bb5466d678df437375698b3c8097b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e0ed25_13af30e8",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T20:28:49Z",
+      "side": 1,
+      "message": "Where is this used?",
+      "range": {
+        "startLine": 205,
+        "startChar": 8,
+        "endLine": 205,
+        "endChar": 23
+      },
+      "revId": "0efc844e85bb5466d678df437375698b3c8097b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
