@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a6fbf84_22d42704",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-02-17T16:30:02Z",
+      "side": 1,
+      "message": "This will break flashing with servo micro/c2d2 when ccd is locked. Can you fix the timing issue another way?\n\nAt the very least use cold_reset_select to select gsc_ec_reset.",
+      "revId": "f0ff195ed030af910f303b0d65a778c846fa8d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
