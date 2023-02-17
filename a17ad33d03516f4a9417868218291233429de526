@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e2a26fa_2cbf7a8f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T01:05:53Z",
+      "side": 1,
+      "message": "If the last legal number is 64, won\u0027t EC_HOST_EVENT_NUM_EVENTS get 65?",
+      "range": {
+        "startLine": 790,
+        "startChar": 18,
+        "endLine": 790,
+        "endChar": 57
+      },
+      "revId": "a17ad33d03516f4a9417868218291233429de526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
