@@ -70,6 +70,30 @@
       },
       "revId": "a17ad33d03516f4a9417868218291233429de526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb1a2606_646e7ac4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T21:45:12Z",
+      "side": 1,
+      "message": "I completely agree, which is why I\u0027m trying to be as explicit as possible about the values here.\n\nI don\u0027t see `EC_HOST_EVENT_NONE` actually being used anywhere, so maybe we can insert a host event there at some point and clean all this up.",
+      "parentUuid": "e78c165a_af7212db",
+      "range": {
+        "startLine": 790,
+        "startChar": 18,
+        "endLine": 790,
+        "endChar": 57
+      },
+      "revId": "a17ad33d03516f4a9417868218291233429de526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
