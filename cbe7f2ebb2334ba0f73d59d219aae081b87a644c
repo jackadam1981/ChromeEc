@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ebd5715_ffee8701",
+        "filename": "chip/stm32/adc-stm32l4.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T22:00:54Z",
+      "side": 1,
+      "message": "Does buildall pass? It looks this isn\u0027t defined for some boards.",
+      "range": {
+        "startLine": 101,
+        "startChar": 13,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "cbe7f2ebb2334ba0f73d59d219aae081b87a644c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
