@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbab6fe3_0ca0dab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-17T11:38:14Z",
+      "side": 1,
+      "message": "Thank you 😀",
+      "parentUuid": "546abca7_a9225d8c",
+      "revId": "73e8397a987f5aa7349765e785aedc50370c866e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3c0c1c1_5d3ef99a",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-02-03T16:25:42Z",
       "side": 1,
       "message": "This is the only function your test is using correct?\n\nIt would be preferred to create a mock_ap_events.c that you link into your test and your test should skip linking in the real driver.\n\nThis avoids the need for the `test_mockable` and to include common.h",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 73
+      },
+      "revId": "73e8397a987f5aa7349765e785aedc50370c866e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a325fd91_74a42129",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_events.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-17T11:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3c0c1c1_5d3ef99a",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "534450d7_5ac7d9cd",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-17T11:38:14Z",
+      "side": 1,
+      "message": "The mocks of the functions are doing some checks at present, and I am calling different mocks for different scenarios or cases. Moving it to mock_\u003cfilename\u003e.c might not be able to support that as they don\u0027t know what function is calling them and when. Also for this file there is a enum named \"power_signals\", which gets generated after reading the devicetree. It needs to replaced with hardcoded one in the header file if it\u0027s used during tests using macros. So I didn\u0027t moved the methods to mock folder. Hence do you think the current way is not fine and should be moved to mock folder or current way is fine given the above scenario.",
+      "parentUuid": "f3b9ec3c_c907afbc",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 75
+      },
+      "revId": "73e8397a987f5aa7349765e785aedc50370c866e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41132bb6_af309ee4",
         "filename": "zephyr/test/rex/src/fan.c",
         "patchSetId": 2
@@ -77,6 +143,30 @@
       "writtenOn": "2023-02-03T16:25:42Z",
       "side": 1,
       "message": "Nit - submit this as a separate CL.  It\u0027s not directly related to the board power testing.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 73
+      },
+      "revId": "73e8397a987f5aa7349765e785aedc50370c866e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd156b9_e513494b",
+        "filename": "zephyr/test/rex/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-17T11:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41132bb6_af309ee4",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -100,6 +190,30 @@
       "writtenOn": "2023-02-03T16:25:42Z",
       "side": 1,
       "message": "Same here - move this into a separate CL with the fan.c change.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "73e8397a987f5aa7349765e785aedc50370c866e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd74e1ef_b93dba0d",
+        "filename": "zephyr/test/rex/src/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-17T11:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61d77fc8_d31f2c0f",
       "range": {
         "startLine": 16,
         "startChar": 0,
