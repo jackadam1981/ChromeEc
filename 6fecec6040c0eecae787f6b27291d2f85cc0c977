@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b66c8bf_021146a0",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 10874,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T21:38:16Z",
+      "side": 1,
+      "message": "Because I was asked to split that into its own CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4255275/comment/bfaed524_668c3f52/",
+      "parentUuid": "1e19fcfe_eb406632",
+      "range": {
+        "startLine": 10874,
+        "startChar": 45,
+        "endLine": 10874,
+        "endChar": 47
+      },
+      "revId": "6fecec6040c0eecae787f6b27291d2f85cc0c977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb643057_033205a7",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-17T20:20:07Z",
       "side": 1,
       "message": "Why is this not \u002764\u0027?\n\nAlso, can you add a comment explaining this is intentionally not EC_HOST_EVENT_NUM_EVENT so that the tool can handle older or newer ECs?",
+      "range": {
+        "startLine": 10922,
+        "startChar": 27,
+        "endLine": 10922,
+        "endChar": 29
+      },
+      "revId": "6fecec6040c0eecae787f6b27291d2f85cc0c977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca6bdc1_8f28c0b3",
+        "filename": "util/ectool.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 10922,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T21:38:16Z",
+      "side": 1,
+      "message": "\u003e Why is this not \u002764\u0027?\n\nThere are only 32 host events in `host_event_text`, so we can\u0027t go beyond that ([as Raul pointed out](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4255275/comment/941318d2_c357f53a/)). As noted in the previous comment, this will be updated `\u003c EC_HOST_EVENT_NUM_EVENTS` so we always index into `host_event_text` with a valid value.\n\n\u003e Also, can you add a comment explaining this is intentionally not EC_HOST_EVENT_NUM_EVENT so that the tool can handle older or newer ECs?\n\nThat statement is incorrect; we are updating this to `EC_HOST_EVENT_NUM_EVENT` in the next CL.\n\nThe version of the EC doesn\u0027t have any meaningful influence here, since `ectool` always needs to be able to safely index into `host_event_text`, regardless of the host event number the EC sends. While it\u0027s possible for the EC and `ectool` to have been built with different versions of `include/ec_commands.h` (and thus, different values of `EC_HOST_EVENT_NUM_EVENT`), `ectool`\u0027s version will always be correct for its own build. The values in `ec_commands.h` aren\u0027t sent at run-time to `ectool`. That means `EC_HOST_EVENT_NUM_EVENT` will always correctly indicate how large `host_event_text` is for that particular build of `ectool`, which is also enforced with the `BUILD_ASSERT` above.\n\nRegardless of whether the EC sends a host event \u003c32 or \u003e32, `ectool` will not index past the bounds of `host_event_text` when using `EC_HOST_EVENT_NUM_EVENTS` as the limit.",
+      "parentUuid": "eb643057_033205a7",
       "range": {
         "startLine": 10922,
         "startChar": 27,
