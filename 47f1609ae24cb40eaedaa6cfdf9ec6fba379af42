@@ -33,6 +33,24 @@
       "message": "Need to split as 3 CLs: create 2 CLs for followings.\n1.Utility which updates header file for the SPI image to be programmed\n  flash_pgm_hdr.bin\n  gen_pgm_hdr.py\n  pgm_hdr.bin\n2. Utility which loades the crisis recovery internal SPI flash firmware file\n  crisis_rcvry_util.py\n  header.bin\n  key_hash.bin\n  second_loader_fw.bin",
       "revId": "47f1609ae24cb40eaedaa6cfdf9ec6fba379af42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "656df2e1_0f2d413b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-17T07:16:14Z",
+      "side": 1,
+      "message": "Updated  the following latest patchset\n1. Patchset18 to delete the mchp directory\n2. Patchset19 to add the gen_pgm_hdr.py scripts and related bin\n3. patchset20 to add the crisis_rcvry_util.py scripts and related bin",
+      "parentUuid": "36fc7ff0_ce6d85ce",
+      "revId": "47f1609ae24cb40eaedaa6cfdf9ec6fba379af42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -16,6 +16,23 @@
       "message": "Utility which loades the crisis recovery internal SPI flash firmware file\n  crisis_rcvry_util.py\n  header.bin\n  key_hash.bin\n  second_loader_fw.bin",
       "revId": "35a7af890d78c0562bc73b6094ba7e922b202738",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e853d3de_98a7cb9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-17T07:16:14Z",
+      "side": 1,
+      "message": "Updated the following latest patchset\n\nPatchset18 to delete the mchp directory\nPatchset19 to add the gen_pgm_hdr.py scripts and related bin\npatchset20 to add the crisis_rcvry_util.py scripts and related bin",
+      "revId": "35a7af890d78c0562bc73b6094ba7e922b202738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
