@@ -46,6 +46,30 @@
       },
       "revId": "a17ad33d03516f4a9417868218291233429de526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78c165a_af7212db",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T20:11:48Z",
+      "side": 1,
+      "message": "This is really confusing. Every time i see this base-1 enum list, I sigh. I need me or somebody to take a look at the ACPI side to see if this base-1 is really necessary or not. base-0 list is much easier to handle and read.",
+      "parentUuid": "cb98b421_5a25e0f5",
+      "range": {
+        "startLine": 790,
+        "startChar": 18,
+        "endLine": 790,
+        "endChar": 57
+      },
+      "revId": "a17ad33d03516f4a9417868218291233429de526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
