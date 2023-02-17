@@ -178,7 +178,7 @@ int adc_read_channel(enum adc_channel ch)
 		}
 
 		/* Enable ADC */
-		STM32_ADC1_ISR |= STM32_ADC1_ISR_ADRDY;
+		STM32_ADC1_ISR = STM32_ADC1_ISR_ADRDY;
 		STM32_ADC1_CR |= STM32_ADC1_CR_ADEN;
 		wait_loop_index =
 			((ADC_ENABLE_TIMEOUT_US * (CPU_CLOCK / (100000 * 2))) /
@@ -188,6 +188,7 @@ int adc_read_channel(enum adc_channel ch)
 			if (wait_loop_index == 0)
 				break;
 		}
+		STM32_ADC1_ISR = STM32_ADC1_ISR_ADRDY;
 
 		adc1_initialized = 1;
 	}
@@ -204,7 +205,7 @@ int adc_read_channel(enum adc_channel ch)
 	}
 
 	/* Clear JEOS bit */
-	STM32_ADC1_ISR |= BIT(6);
+	STM32_ADC1_ISR = BIT(6);
 
 	/* read converted value */
 	if (adc->rank == 1)
