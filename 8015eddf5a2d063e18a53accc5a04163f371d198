@@ -45,6 +45,30 @@
       },
       "revId": "8015eddf5a2d063e18a53accc5a04163f371d198",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf21d75_3485a885",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-17T17:13:40Z",
+      "side": 1,
+      "message": "Oops, a bit too specific here. This came up in a coreboot context, but I\u0027ve broadened it.",
+      "parentUuid": "a650e3ca_af288a66",
+      "range": {
+        "startLine": 43,
+        "startChar": 16,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "8015eddf5a2d063e18a53accc5a04163f371d198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
