@@ -39,6 +39,30 @@
       },
       "revId": "2c33ac29156ad357515f4045e3012e32fd07044d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e2a294_629fcd6c",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T22:52:58Z",
+      "side": 1,
+      "message": "It is kind of common for me... For example, ctn730.c has those. It\u0027s used for  static functions (not even exported via a function pointer) to avoid name conflicts.",
+      "parentUuid": "50b8c997_f62adabf",
+      "range": {
+        "startLine": 350,
+        "startChar": 26,
+        "endLine": 350,
+        "endChar": 43
+      },
+      "revId": "2c33ac29156ad357515f4045e3012e32fd07044d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
