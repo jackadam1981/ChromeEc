@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48c5404_7b013c0b",
+        "filename": "zephyr/mock/ap_power_events.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-02-17T19:04:43Z",
+      "side": 1,
+      "message": "Let the individual tests set up custom_fakes",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 41
+      },
+      "revId": "7077b5df8c94e2e748e4c2e5e287aa9c0f8987b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df8a843c_4d9a70fa",
+        "filename": "zephyr/mock/ap_power_events.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-02-17T19:04:43Z",
+      "side": 1,
+      "message": "To keep the mock source file generic, move this to your test source (and you can probably drop the #ifdef in that case)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "7077b5df8c94e2e748e4c2e5e287aa9c0f8987b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

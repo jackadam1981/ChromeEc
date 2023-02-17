@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b51919c3_cb17c1c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-02-17T19:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "546abca7_a9225d8c",
+      "revId": "73e8397a987f5aa7349765e785aedc50370c866e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3c0c1c1_5d3ef99a",
@@ -168,6 +186,30 @@
       "side": 1,
       "message": "If I move the code to mock folder, the definition and declaration is happening there itself. and there is only one definition of a fake function for a function. and the code residing in mock folder seemed like it need to be generic so all other tests could use it if they need to \nbut in this case I am defining different mock functions for a function based on test and test-case. I mean there is one test case where I am sending a certain response n number of times, and the n + 1 time I am sending another response to break out of loop from fake function. that implementation is not useful for other test cases.",
       "parentUuid": "b85f4326_6657abf3",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 75
+      },
+      "revId": "73e8397a987f5aa7349765e785aedc50370c866e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6cf8910_4e66ddc2",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-02-17T19:04:43Z",
+      "side": 1,
+      "message": "\u003e code residing in mock folder seemed like it need to be generic so all other tests \u003e could use it\n...\n\u003e  that implementation is not useful for other test cases.\n\nYes, the mocks should be generic. However, you can still implement special functionality for your test as a custom fake function. Set up the custom fakes before your test in a before or setup function and reset it afterwards and it won\u0027t harm other suites. Don\u0027t set or declare any custom fake in the mock source and it\u0027ll stay generic; keep them within your test sources.",
+      "parentUuid": "b2312f10_4938bf9b",
       "range": {
         "startLine": 144,
         "startChar": 0,

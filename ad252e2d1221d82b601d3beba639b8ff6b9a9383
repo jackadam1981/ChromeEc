@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe02617_299f7510",
+        "filename": "zephyr/program/rex/src/board_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-02-17T19:04:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ed8e4b0f_74a53467",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 47
+      },
+      "revId": "ad252e2d1221d82b601d3beba639b8ff6b9a9383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4df7fb85_3c188cb1",
