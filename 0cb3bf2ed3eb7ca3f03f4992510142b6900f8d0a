@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23b5b904_ce9610ed",
+        "filename": "chip/stm32/adc-stm32l4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-17T20:34:04Z",
+      "side": 1,
+      "message": "nit: To reduce further mistakes, you might as well use a function/macro:\n\n    stm32_adc1_isr_clear(STM32_ADC1_ISR_ADRDY);\n\nor at least add a comment. It could be as generic as stm32_isr_clear?",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 40
+      },
+      "revId": "0cb3bf2ed3eb7ca3f03f4992510142b6900f8d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
