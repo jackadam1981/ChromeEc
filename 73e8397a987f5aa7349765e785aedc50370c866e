@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b85f4326_6657abf3",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-17T12:09:36Z",
+      "side": 1,
+      "message": "You should have the same flexibility by moving to a separate mock file. As for power signal, you can still include the normal header that generates those, it\u0027s not specific to this file.",
+      "parentUuid": "534450d7_5ac7d9cd",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 75
+      },
+      "revId": "73e8397a987f5aa7349765e785aedc50370c866e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41132bb6_af309ee4",
         "filename": "zephyr/test/rex/src/fan.c",
         "patchSetId": 2
