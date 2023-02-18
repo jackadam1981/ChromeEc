@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t seem right; you\u0027re promoting a bool to an int and assuming it\u0027s a valid `ap_power_state_mask`.",
       "revId": "0ef63a64d6e6f48c4dd5d1afdb9043ac0e0f41c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d97c735d_106810d1",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-02-18T01:28:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "75e5627b_046ef717",
+      "revId": "0ef63a64d6e6f48c4dd5d1afdb9043ac0e0f41c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
