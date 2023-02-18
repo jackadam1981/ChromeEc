@@ -33,7 +33,7 @@ const static int batt_host_shutdown_pct = CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE;
 #ifdef CONFIG_BATTERY_CUT_OFF
 
 #ifndef CONFIG_BATTERY_CUTOFF_DELAY_US
-#define CONFIG_BATTERY_CUTOFF_DELAY_US (1 * SECOND)
+#define CONFIG_BATTERY_CUTOFF_DELAY_US (30 * SECOND)
 #endif
 
 static enum battery_cutoff_states battery_cutoff_state =
@@ -348,28 +348,9 @@ DECLARE_HOOK(HOOK_AC_CHANGE, clear_pending_cutoff, HOOK_PRIO_DEFAULT);
 
 static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
 {
-	const struct ec_params_battery_cutoff *p;
-	int rv;
-
-	if (args->version == 1) {
-		p = args->params;
-		if (p->flags & EC_BATTERY_CUTOFF_FLAG_AT_SHUTDOWN) {
-			battery_cutoff_state = BATTERY_CUTOFF_STATE_PENDING;
-			CUTOFFPRINTS("at-shutdown is scheduled");
-			return EC_RES_SUCCESS;
-		}
-	}
-
-	battery_cutoff_state = BATTERY_CUTOFF_STATE_IN_PROGRESS;
-	rv = board_cut_off_battery();
-	if (rv == EC_RES_SUCCESS) {
-		CUTOFFPRINTS("is successful.");
-		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
-	} else {
-		CUTOFFPRINTS("has failed.");
-	}
-
-	return rv;
+	battery_cutoff_state = BATTERY_CUTOFF_STATE_PENDING;
+	CUTOFFPRINTS("at-shutdown is scheduled");
+	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cutoff,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
