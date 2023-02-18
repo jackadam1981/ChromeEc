@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63498bc5_c8146f6e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1799,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-18T01:22:52Z",
+      "side": 1,
+      "message": "same question here. Shall I keep 0x%08x or use %d with base::to_underlying or keep same format?\nNot sure if using the parse function is recommended here. I am not sure if fprintf will allow me to use a string?",
+      "range": {
+        "startLine": 1796,
+        "startChar": 2,
+        "endLine": 1799,
+        "endChar": 56
+      },
+      "revId": "33ddd9c21f0888117d0758535f758e7329d4ff2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
