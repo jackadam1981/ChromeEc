@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab6f0744_a64cdb67",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 10883,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-18T03:54:19Z",
+      "side": 1,
+      "message": "I would just do `ARRAY_SIZE(EC_HOST_EVENT_MASK)` and revert `EC_HOST_EVENT_NUM_EVENTS`",
+      "range": {
+        "startLine": 10883,
+        "startChar": 26,
+        "endLine": 10883,
+        "endChar": 50
+      },
+      "revId": "ecb6aedb1773dc136292173cefd9cbe320fe3930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
