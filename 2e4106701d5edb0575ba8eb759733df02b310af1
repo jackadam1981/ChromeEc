@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ec7451_916b5490",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-18T01:19:08Z",
+      "side": 1,
+      "message": "I am not sure why the formatter rearranged the headers. Is this correct?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "2e4106701d5edb0575ba8eb759733df02b310af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71978c2f_3c89156b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1781,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-18T01:19:08Z",
+      "side": 1,
+      "message": "is this the correct translation? Is this function returning EC_SUCCESS? shall I check for it?",
+      "range": {
+        "startLine": 1768,
+        "startChar": 0,
+        "endLine": 1781,
+        "endChar": 2
+      },
+      "revId": "2e4106701d5edb0575ba8eb759733df02b310af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc06067_478b7674",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1792,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-18T01:19:08Z",
+      "side": 1,
+      "message": "Shall I use the ParseFlags function here? I cannot use printf with std::string so I used std::cout??",
+      "range": {
+        "startLine": 1784,
+        "startChar": 0,
+        "endLine": 1792,
+        "endChar": 50
+      },
+      "revId": "2e4106701d5edb0575ba8eb759733df02b310af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5cef62_37771fda",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1805,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-18T01:19:08Z",
+      "side": 1,
+      "message": "same question here. Shall I keep 0x%08x or use %d with base::to_underlying or keep same format?\nNot sure if using the parse function is recommended here. I am not sure if fprintf will allow me to use a string?",
+      "range": {
+        "startLine": 1802,
+        "startChar": 2,
+        "endLine": 1805,
+        "endChar": 46
+      },
+      "revId": "2e4106701d5edb0575ba8eb759733df02b310af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
