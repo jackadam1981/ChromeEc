@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d83f365_7bdaa0b5",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2023-02-20T08:30:27Z",
+      "side": 1,
+      "message": "It looks like you need to check if the TCPC provides higher voltage (ie. \u003e 3.6v) than PPC can support.",
+      "range": {
+        "startLine": 744,
+        "startChar": 9,
+        "endLine": 744,
+        "endChar": 44
+      },
+      "revId": "4b8cb45354bcda557a74664c5a3cf408a3efc9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
