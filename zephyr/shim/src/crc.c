@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "crc.h"
 #include "crc8.h"
 
 #include <zephyr/sys/crc.h>
@@ -18,4 +19,14 @@ inline uint8_t cros_crc8(const uint8_t *data, int len)
 uint8_t cros_crc8_arg(const uint8_t *data, int len, uint8_t previous_crc)
 {
 	return crc8(data, len, SMBUS_POLYNOMIAL, previous_crc, false);
+}
+
+inline uint16_t crc16_start(const uint8_t *data, int len)
+{
+	return crc16_update(data, len, 0);
+}
+
+uint16_t crc16_update(const uint8_t *data, int len, uint16_t previous_crc)
+{
+	return crc16_itu_t(previous_crc, data, len);
 }
