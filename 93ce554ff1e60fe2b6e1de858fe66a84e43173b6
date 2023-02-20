@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb244a6a_4ef62747",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-02-20T08:43:29Z",
+      "side": 1,
+      "message": "Do you need this parameter to be 3?",
+      "range": {
+        "startLine": 207,
+        "startChar": 30,
+        "endLine": 207,
+        "endChar": 31
+      },
+      "revId": "93ce554ff1e60fe2b6e1de858fe66a84e43173b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
