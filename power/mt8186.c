@@ -308,6 +308,13 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_G3S5:
+#if DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp4200_s5), 1);
+
+		if (power_wait_mask_signals_timeout(PG_PP4200_S5, PG_PP4200_S5,
+						    PG_PP4200_S5_DELAY))
+			return POWER_S5G3;
+#endif
 		return POWER_S5;
 
 	case POWER_S5S3:
@@ -318,14 +325,6 @@ enum power_state power_handle_state(enum power_state state)
 		power_signal_enable_interrupt(GPIO_AP_IN_SLEEP_L);
 		power_signal_enable_interrupt(GPIO_AP_EC_WDTRST_L);
 		power_signal_enable_interrupt(GPIO_AP_EC_WARM_RST_REQ);
-
-#if DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp4200_s5), 1);
-
-		if (power_wait_mask_signals_timeout(PG_PP4200_S5, PG_PP4200_S5,
-						    PG_PP4200_S5_DELAY))
-			return POWER_S5G3;
-#endif
 
 		toggle_pmic();
 
@@ -409,15 +408,14 @@ enum power_state power_handle_state(enum power_state state)
 		if (is_shutdown && !power_button_is_pressed())
 			set_pmic(0);
 
-#if DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp4200_s5), 0);
-#endif
-
 		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
 		is_shutdown = false;
 		return POWER_S5;
 
 	case POWER_S5G3:
+#if DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp4200_s5), 0);
+#endif
 		return POWER_G3;
 	default:
 		CPRINTS("Unexpected power state %d", state);
