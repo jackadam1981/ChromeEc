@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b2915e_d9f40db2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-02-20T08:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c4f1a07_07416176",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "a04a7598393979d648fad3ca360272fa5d1f2fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc9a079a_6f96e68e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5437da20_5a4bb24d",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2929,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-02-20T08:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc9a079a_6f96e68e",
+      "range": {
+        "startLine": 2929,
+        "startChar": 8,
+        "endLine": 2929,
+        "endChar": 23
+      },
+      "revId": "a04a7598393979d648fad3ca360272fa5d1f2fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c3f30c9_ee96168d",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-02-20T08:13:20Z",
       "side": 1,
       "message": "Do you like to keep this as the lowest+1 priority?",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "a04a7598393979d648fad3ca360272fa5d1f2fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f503bcf_47b61595",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-02-20T08:23:42Z",
+      "side": 1,
+      "message": "Yes for now, we can update this later if needed.\n\nMost of the tasks below will not present in a keyboard EC (no hostcmd, chipset, usb related things etc.) so a lowest priority should be not that bad.",
+      "parentUuid": "8c3f30c9_ee96168d",
       "range": {
         "startLine": 29,
         "startChar": 1,
