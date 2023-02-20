@@ -1,0 +1,142 @@
+
+/* Copyright 2023 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+ #include <dt-bindings/gpio_defines.h>
+ / {
+	 named-gpios {
+		 compatible = "named-gpios";
+		 /* KSO list*/
+		 kb_out00 {
+			 gpios = <&gpiob 1 GPIO_ODR_HIGH>;
+			 enum-name = "GPIO_KB_OUT00";
+		 };
+		 kb_out01 {
+			gpios = <&gpioa 5 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_KB_OUT01";
+		};
+		kb_out02 {
+			gpios = <&gpioa 3 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_KB_OUT02";
+		};
+		kb_out03 {
+			gpios = <&gpioa 2 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_KB_OUT03";
+		};
+		kb_out04 {
+			gpios = <&gpioa 6 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_KB_OUT04";
+		};
+		kb_out05 {
+			gpios = <&gpioa 0 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_KB_OUT05";
+		};
+		kb_out06 {
+			gpios = <&gpioa 1 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_KB_OUT06";
+		};
+		kb_out07 {
+			gpios = <&gpiob 13 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_KB_OUT07";
+		};
+		kb_out08 {
+			gpios = <&gpioc 14 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_KB_OUT08";
+		};
+		kb_out09 {
+			gpios = <&gpioc 15 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_KB_OUT09";
+		};
+		kb_out10 {
+			gpios = <&gpiof 1 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_KB_OUT10";
+		};
+		kb_out11 {
+			gpios = <&gpiof 0 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_KB_OUT11";
+		};
+		kb_out12 {
+			gpios = <&gpioc 13 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_KB_OUT12";
+		};
+		/* KSI list*/
+		kb_in00: kb_in00 {
+			gpios = <&gpioa 4 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_KB_IN00";
+		};
+		kb_in01: kb_in01 {
+			gpios = <&gpiob 3 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_KB_IN01";
+		};
+		kb_in02: kb_in02 {
+			gpios = <&gpiob 0 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_KB_IN02";
+		};
+		kb_in03: kb_in03 {
+			gpios = <&gpioa 7 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_KB_IN03";
+		};
+		kb_in04: kb_in04 {
+			gpios = <&gpiob 12 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_KB_IN04";
+		};
+		kb_in05: kb_in05 {
+			gpios = <&gpiob 2 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_KB_IN05";
+		};
+		kb_in06: kb_in06 {
+			gpios = <&gpiob 14 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_KB_IN06";
+		};
+		kb_in07: kb_in07 {
+			gpios = <&gpiob 15 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_KB_IN07";
+		};
+
+	 };
+	 gpio-interrupts {
+		 compatible = "cros-ec,gpio-interrupts";
+		 kb_in00 {
+			 irq-pin = <&kb_in00>;
+			 flags = <GPIO_INT_EDGE_BOTH>;
+			 //handler = "keyboard_raw_gpio_interrupt";
+		 };
+		 kb_in01 {
+			irq-pin = <&kb_in01>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			//handler = "keyboard_raw_gpio_interrupt";
+		};
+		kb_in02 {
+			irq-pin = <&kb_in02>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			//handler = "keyboard_raw_gpio_interrupt";
+		};
+		kb_in03 {
+			irq-pin = <&kb_in03>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			//handler = "keyboard_raw_gpio_interrupt";
+		};
+		kb_in04 {
+			irq-pin = <&kb_in04>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			//handler = "keyboard_raw_gpio_interrupt";
+		};
+		kb_in05 {
+			irq-pin = <&kb_in05>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			//handler = "keyboard_raw_gpio_interrupt";
+		};
+		kb_in06 {
+			irq-pin = <&kb_in06>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			//handler = "keyboard_raw_gpio_interrupt";
+		};
+		kb_in07 {
+			irq-pin = <&kb_in07>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			//handler = "keyboard_raw_gpio_interrupt";
+		};
+	 };
+ };
+ 
