@@ -16,6 +16,23 @@
       "message": "make buildall pass.",
       "revId": "b73a6bdc0876259d9b085b40f12b8f71b690f118",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6baa41d9_097dee74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524952
+      },
+      "writtenOn": "2023-02-20T02:00:47Z",
+      "side": 1,
+      "message": "Error:All C source must be formatted with clang-format!\nPlease fix the format, and re-submit again",
+      "revId": "b73a6bdc0876259d9b085b40f12b8f71b690f118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
