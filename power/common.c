@@ -207,6 +207,7 @@ int power_wait_signals_timeout(uint32_t want, int timeout)
 int power_wait_mask_signals_timeout(uint32_t want, uint32_t mask, int timeout)
 {
 	in_want = want;
+	CPRINTS("\033[33min_want=0x%x\033[m", in_want);
 	if (!mask)
 		return EC_SUCCESS;
 
@@ -455,6 +456,7 @@ static enum power_state power_common_state(void)
 		}
 
 		in_want = 0;
+		CPRINTS("\033[32min_want=0x%x\033[m", in_want);
 #ifdef CONFIG_HIBERNATE
 		{
 			uint64_t target, now, wait;
