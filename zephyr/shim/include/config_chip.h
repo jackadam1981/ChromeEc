@@ -95,6 +95,13 @@
 #define CONFIG_CRC8
 
 /*
+ * This not used by the Zephyr code since we always make cros_crc16() available.
+ * Define it here to reduce the delta from the ECOS CONFIG.
+ */
+#undef CONFIG_CRC16
+#define CONFIG_CRC16
+
+/*
  * This is not used by the Zephyr code.
  * Define it here to reduce the delta from the ECOS CONFIG.
  */
