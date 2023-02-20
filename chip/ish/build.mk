@@ -26,6 +26,7 @@ chip-$(CONFIG_HID_HECI)+=hid_subsys.o
 chip-$(CONFIG_HID_HECI)+=heci.o system_state_subsys.o ipc_heci.o
 chip-$(CONFIG_DMA_PAGING)+=dma.o
 chip-$(CONFIG_LOW_POWER_IDLE)+=power_mgt.o
+chip-$(BOARD_REX_ISH)+=reset_prep_wr.o
 
 # There is no framework for on-board tests in ISH. Do not specify any.
 test-list-y=
