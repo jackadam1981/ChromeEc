@@ -8,6 +8,7 @@
 #include "common.h"
 #include "console.h"
 #include "crc.h"
+#include "crc16.h"
 #include "crc8.h"
 #include "test_util.h"
 #include "util.h"
@@ -83,6 +84,21 @@ static int test_cros_crc8(void)
 	return EC_SUCCESS;
 }
 
+static int test_cros_crc16(void)
+{
+	uint8_t buffer[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 8 };
+
+	int crc = cros_crc16(buffer, 10);
+
+	/*
+	 * Verifies polynomial values of 0x1021 representing X^16 + X^15 + X^2 +
+	 * 1
+	 */
+	TEST_EQ(crc, 60681, "%d");
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	test_reset();
@@ -91,6 +107,7 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_8);
 	RUN_TEST(test_kat0);
 	RUN_TEST(test_cros_crc8);
+	RUN_TEST(test_cros_crc16);
 
 	test_print_result();
 }
