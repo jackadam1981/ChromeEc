@@ -22,6 +22,30 @@
       },
       "revId": "8032b6d056f1ce36a1bbe0fcc588a185a6a899c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "397b7c76_eb61742a",
+        "filename": "common/mkbp_info.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-21T17:06:04Z",
+      "side": 1,
+      "message": "I don\u0027t think we\u0027re supposed to touch this date after the file is created.\n\nI only removed the period here because the presubmit script complains otherwise:\n\n```\n[FAILED] chromiumos/platform/ec: cros_license_check\n    Do not include period after \"ChromiumOS Authors\":\n    common/mkbp_info.c\n```",
+      "parentUuid": "72d978ca_b23a71c5",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "8032b6d056f1ce36a1bbe0fcc588a185a6a899c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
