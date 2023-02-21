@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4f46288_2fa545d4",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-21T19:42:38Z",
+      "side": 1,
+      "message": "too many echo and info in the entire change, dont spam",
+      "range": {
+        "startLine": 703,
+        "startChar": 1,
+        "endLine": 703,
+        "endChar": 2
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "739641cd_68d9b08e",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-21T19:42:38Z",
+      "side": 1,
+      "message": "save the original UART rate",
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f08f51a_e54e6ae3",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-21T19:42:38Z",
+      "side": 1,
+      "message": "dont copy, refer my previous comments, directly use passed binary",
+      "range": {
+        "startLine": 1630,
+        "startChar": 1,
+        "endLine": 1630,
+        "endChar": 72
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc4f406_520a1bb7",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-21T19:42:38Z",
+      "side": 1,
+      "message": "remove directly call mchp/xyz.py",
+      "range": {
+        "startLine": 1633,
+        "startChar": 1,
+        "endLine": 1633,
+        "endChar": 8
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76697cfe_ca660ef3",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-21T19:42:38Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 1635,
+        "startChar": 1,
+        "endLine": 1635,
+        "endChar": 8
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c684025_63dbae00",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1638,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-21T19:42:38Z",
+      "side": 1,
+      "message": "dut-control cold_reset:on fw_up:on sleep:1 cold_reset:off",
+      "range": {
+        "startLine": 1636,
+        "startChar": 0,
+        "endLine": 1638,
+        "endChar": 27
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431f2bd3_cd61a20d",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-21T19:42:38Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 1641,
+        "startChar": 0,
+        "endLine": 1642,
+        "endChar": 27
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52c749de_8b91f73b",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-21T19:42:38Z",
+      "side": 1,
+      "message": "dut-control cold_reset:on fw_up:off sleep:1 cold_reset:off",
+      "range": {
+        "startLine": 1649,
+        "startChar": 0,
+        "endLine": 1652,
+        "endChar": 27
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaa420ff_10472e93",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1654,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-21T19:42:38Z",
+      "side": 1,
+      "message": "line 1672 already doe it",
+      "range": {
+        "startLine": 1653,
+        "startChar": 0,
+        "endLine": 1654,
+        "endChar": 22
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc04dcb0_64fc6f5c",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1655,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-21T19:42:38Z",
+      "side": 1,
+      "message": "set the UART back to original rate",
+      "range": {
+        "startLine": 1655,
+        "startChar": 1,
+        "endLine": 1655,
+        "endChar": 5
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
