@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d671e1_28332741",
+        "filename": "board/dibbi/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-21T03:34:10Z",
+      "side": 1,
+      "message": "If it\u0027s always meant to be on, may as well set it to `GPIO_OUT_HIGH` in gpio.inc and remove the code that twiddles it.",
+      "revId": "ae463804813aa937a5558af8c617a824f1e0fd81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
