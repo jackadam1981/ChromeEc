@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc4063a_5a41ee7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-21T03:25:49Z",
+      "side": 1,
+      "message": "Is dibbi meant to be able to hot-swap sources? It looks like no because there\u0027s no switch to select, which means the EC should reject requests to change active charge port. Checkout puff\u0027s implementation of `board_set_active_charge_port` for an example.",
+      "revId": "ca14a882013f1e7d4ea8b429bb618c1545071afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
