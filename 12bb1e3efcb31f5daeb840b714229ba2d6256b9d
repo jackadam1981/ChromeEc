@@ -16,6 +16,24 @@
       "message": "Evidently, this host command does not have its own config item. I\u0027m open to giving it one or moving it into a file that\u0027s only linked for TCPMv1, if you think that would be a cleaner way to do it.",
       "revId": "12bb1e3efcb31f5daeb840b714229ba2d6256b9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc82e321_5031c231",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-21T18:23:00Z",
+      "side": 1,
+      "message": "So far, my philosophy has been to move TCPMv1 items into common/usb_pd_policy.c",
+      "parentUuid": "76e3bef6_9ab3b4b4",
+      "revId": "12bb1e3efcb31f5daeb840b714229ba2d6256b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
