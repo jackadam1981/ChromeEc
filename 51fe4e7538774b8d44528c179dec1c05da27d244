@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04744b02_63c88ab7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-21T18:25:55Z",
+      "side": 1,
+      "message": "Mary, do you think this will adversely affect other commands? What kind of testing should we do with gsctool before landing this change?",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 28
+      },
+      "revId": "51fe4e7538774b8d44528c179dec1c05da27d244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ae22db_a5189a7d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4189,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-02-21T18:25:55Z",
+      "side": 1,
+      "message": "should we not set `get_clog` to `1` if there is no id?",
+      "range": {
+        "startLine": 4189,
+        "startChar": 4,
+        "endLine": 4189,
+        "endChar": 11
+      },
+      "revId": "51fe4e7538774b8d44528c179dec1c05da27d244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
