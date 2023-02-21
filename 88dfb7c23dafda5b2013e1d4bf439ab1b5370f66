@@ -213,6 +213,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e6dc2f9_c36b627c",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-21T14:26:21Z",
+      "side": 1,
+      "message": "Please check line 406~408.",
+      "parentUuid": "a18b61b6_6c5f984f",
+      "range": {
+        "startLine": 98,
+        "startChar": 15,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e78c395_4762267b",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-21T14:26:21Z",
+      "side": 1,
+      "message": "Currently cmd_id is used for update only, I added new fields in struct pchg_update to separate the variables.",
+      "parentUuid": "02c273cb_a420d9c4",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 22
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f805909_0cc47db8",
@@ -226,6 +274,30 @@
       "writtenOn": "2023-01-12T17:12:12Z",
       "side": 1,
       "message": "This needs to go to common/crc.c.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 1
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a70156b0_f3b69e10",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-21T14:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f805909_0cc47db8",
       "range": {
         "startLine": 165,
         "startChar": 0,
@@ -437,6 +509,30 @@
       "writtenOn": "2023-01-12T17:12:12Z",
       "side": 1,
       "message": "I think you need to do:\n\n    static int cps8200_send_cmd(int port, uint32_t cmd, uint8_t *id)\n\nso that you can return error from cps8200_write32.",
+      "range": {
+        "startLine": 425,
+        "startChar": 15,
+        "endLine": 425,
+        "endChar": 31
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49af438e_2c44104a",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-21T14:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f3d3bf0_1765af6b",
       "range": {
         "startLine": 425,
         "startChar": 15,
@@ -695,6 +791,30 @@
       "writtenOn": "2023-01-12T17:12:12Z",
       "side": 1,
       "message": "Check the return value?",
+      "range": {
+        "startLine": 786,
+        "startChar": 1,
+        "endLine": 786,
+        "endChar": 18
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "950d34e5_8af298ea",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-21T14:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "453aee49_ae956d10",
       "range": {
         "startLine": 786,
         "startChar": 1,

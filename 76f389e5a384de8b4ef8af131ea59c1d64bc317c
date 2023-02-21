@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0ce1455_4a844bba",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-21T14:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39b93c6f_43921dda",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "76f389e5a384de8b4ef8af131ea59c1d64bc317c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbbf9b86_3c8ffaeb",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-13T20:45:44Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 376,
+        "startChar": 46,
+        "endLine": 376,
+        "endChar": 47
+      },
+      "revId": "76f389e5a384de8b4ef8af131ea59c1d64bc317c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b028d0_f7f4340b",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-21T14:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbbf9b86_3c8ffaeb",
       "range": {
         "startLine": 376,
         "startChar": 46,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5341481_cbf734ea",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-21T14:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6faca8e_a4d7139c",
+      "range": {
+        "startLine": 392,
+        "startChar": 53,
+        "endLine": 392,
+        "endChar": 54
+      },
+      "revId": "76f389e5a384de8b4ef8af131ea59c1d64bc317c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b57fe533_22fc086c",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-01-13T20:45:44Z",
       "side": 1,
       "message": "This should be \u0027\u0026\u0027? Currently, you won\u0027t catch:\n\n    CPS8200_CMD_STATUS(u32) \u003d\u003d CMD_STATUS_FAIL | CMD_STATUS_ILLEGAL\n    \nor any cases with other flags.",
+      "range": {
+        "startLine": 451,
+        "startChar": 30,
+        "endLine": 451,
+        "endChar": 32
+      },
+      "revId": "76f389e5a384de8b4ef8af131ea59c1d64bc317c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5519e7df_bf7c2d2a",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-21T14:26:21Z",
+      "side": 1,
+      "message": "CMD_STATUS_FAIL \u003d 0x30, `\u0026` will catch both CMD_STATUS_RUNNING(BIT 4) and CMD_STATUS_RUNNING(BIT 5)",
+      "parentUuid": "b57fe533_22fc086c",
       "range": {
         "startLine": 451,
         "startChar": 30,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "874ff1f1_b342136b",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-21T14:26:21Z",
+      "side": 1,
+      "message": "yes, FW version is only 8-bit",
+      "parentUuid": "b2c50d4b_ce4e380e",
+      "range": {
+        "startLine": 861,
+        "startChar": 26,
+        "endLine": 861,
+        "endChar": 30
+      },
+      "revId": "76f389e5a384de8b4ef8af131ea59c1d64bc317c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed96b8cc_dce298c0",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-01-13T20:45:44Z",
       "side": 1,
       "message": "This will be reported to the AP as update failure. Maybe we should return EC_SUCCESS and set ctx-\u003efw_version \u003d CPS8X00_BAD_FW_VERSION?",
+      "range": {
+        "startLine": 864,
+        "startChar": 9,
+        "endLine": 864,
+        "endChar": 25
+      },
+      "revId": "76f389e5a384de8b4ef8af131ea59c1d64bc317c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc27de4_bc7e2390",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-21T14:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed96b8cc_dce298c0",
       "range": {
         "startLine": 864,
         "startChar": 9,
