@@ -240,6 +240,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4661e179_c48dbd53",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-21T16:31:07Z",
+      "side": 1,
+      "message": "Right, you can fix this in a follow up. Just pointing out that we have a possible footgun",
+      "parentUuid": "eefd64a7_8e2b48d5",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 267,
+        "endChar": 41
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6eb4ff42_e44f6bda",
         "filename": "common/host_event_commands.c",
         "patchSetId": 6
