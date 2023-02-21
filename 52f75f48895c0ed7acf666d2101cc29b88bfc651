@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89cf8bab_1a7f97d7",
+        "filename": "zephyr/program/skyrim/frostflow/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-21T19:21:40Z",
+      "side": 1,
+      "message": "Is this just a temporary change to get this board to build, which should have a TODO? Or is it permanent?",
+      "revId": "52f75f48895c0ed7acf666d2101cc29b88bfc651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "480d6949_4be254f8",
+        "filename": "zephyr/test/skyrim/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-21T19:21:40Z",
+      "side": 1,
+      "message": "Enable",
+      "range": {
+        "startLine": 81,
+        "startChar": 7,
+        "endLine": 81,
+        "endChar": 13
+      },
+      "revId": "52f75f48895c0ed7acf666d2101cc29b88bfc651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e064aee4_9e726f6d",
+        "filename": "zephyr/test/skyrim/tests/common/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-21T19:21:40Z",
+      "side": 1,
+      "message": "Mux",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "52f75f48895c0ed7acf666d2101cc29b88bfc651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
