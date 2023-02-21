@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "38917697_6f38dbb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-21T19:07:42Z",
+      "side": 1,
+      "message": "Nit: from whence it came",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a0696f8e_d25d40c3",
@@ -14,6 +37,103 @@
       "writtenOn": "2023-02-15T18:10:26Z",
       "side": 1,
       "message": "I believe this CL is ready for review.  It\u0027s a big one and does actually change the calls we make, so I wouldn\u0027t mind a good number of eyes on it.  I plan for unit tests covering the uncovered chunks here to follow soon",
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeece742_476aa64c",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-21T19:07:42Z",
+      "side": 1,
+      "message": "IMO, this should also have a TODO to clean it up. I don\u0027t think we would design this module with a board-overridable macro like this today.",
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f7a967_097ef773",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-21T19:07:42Z",
+      "side": 1,
+      "message": "Nit: weird capitalization",
+      "range": {
+        "startLine": 202,
+        "startChar": 35,
+        "endLine": 202,
+        "endChar": 44
+      },
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d56a59c7_16bc8b9c",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-21T19:07:42Z",
+      "side": 1,
+      "message": "Nit: standard?",
+      "range": {
+        "startLine": 228,
+        "startChar": 3,
+        "endLine": 228,
+        "endChar": 11
+      },
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07d6b38d_43016453",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-21T19:07:42Z",
+      "side": 1,
+      "message": "It is also used by the alt mode modules, now somewhat bizarrely. This could be cleaner.",
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97c14c3a_6513c466",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-21T19:07:42Z",
+      "side": 1,
+      "message": "If it\u0027s always going to be null, why not just delete that code from the console command?",
       "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
