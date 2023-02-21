@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff2d73c_4c8a7f68",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-21T19:35:22Z",
+      "side": 1,
+      "message": "These are used together and specific to cps8x00, right? I think it\u0027s better to put in a struct.\n\n    union {\n        struct cps8x00_update;\n        /* other driver data follows in the future */\n    } driver_data;",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 7
+      },
+      "revId": "6f81576d9d0314dabd6cfac9f71007543acc3599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
