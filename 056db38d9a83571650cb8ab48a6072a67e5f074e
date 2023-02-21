@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "16d676fd_2b6b635a",
+        "filename": "common/ec_features.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-21T18:55:55Z",
+      "side": 1,
+      "message": "Coming back to this. Here\u0027s the reason the  \n\n```\nERROR:root:All C source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/common/ec_features.c:118:51: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:                EC_FEATURE_MASK_1(EC_FEATURE_UNIFIED_WAKE_MASKS)\nERROR:root:                                                                ^\nERROR:root:/mnt/host/source/src/platform/ec/common/ec_features.c:119:4: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:                | EC_FEATURE_MASK_1(EC_FEATURE_HOST_EVENT64)\n```\n\nThe format here is what `clang-format` outputs.",
+      "parentUuid": "971cb64c_f739ae10",
+      "range": {
+        "startLine": 118,
+        "startChar": 50,
+        "endLine": 118,
+        "endChar": 52
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e25296c1_b62ba166",
         "filename": "common/host_event_commands.c",
         "patchSetId": 6
