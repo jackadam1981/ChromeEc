@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67e5b29a_3ade3c77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-21T16:34:16Z",
+      "side": 1,
+      "message": "nit: new line",
+      "range": {
+        "startLine": 12,
+        "startChar": 72,
+        "endLine": 12,
+        "endChar": 75
+      },
+      "revId": "ecb6aedb1773dc136292173cefd9cbe320fe3930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09586564_880e033c",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 10835,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-21T16:34:16Z",
+      "side": 1,
+      "message": "Is it possible to move this line into ec_commands.h?",
+      "range": {
+        "startLine": 10835,
+        "startChar": 1,
+        "endLine": 10835,
+        "endChar": 71
+      },
+      "revId": "ecb6aedb1773dc136292173cefd9cbe320fe3930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab6f0744_a64cdb67",
         "filename": "util/ectool.cc",
         "patchSetId": 6
@@ -14,6 +60,30 @@
       "writtenOn": "2023-02-18T03:54:19Z",
       "side": 1,
       "message": "I would just do `ARRAY_SIZE(EC_HOST_EVENT_MASK)` and revert `EC_HOST_EVENT_NUM_EVENTS`",
+      "range": {
+        "startLine": 10883,
+        "startChar": 26,
+        "endLine": 10883,
+        "endChar": 50
+      },
+      "revId": "ecb6aedb1773dc136292173cefd9cbe320fe3930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5cfb021_42663f4d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 10883,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-21T16:34:16Z",
+      "side": 1,
+      "message": "Sorry, i meant ARRAY_SIZE(host_event_text)",
+      "parentUuid": "ab6f0744_a64cdb67",
       "range": {
         "startLine": 10883,
         "startChar": 26,
