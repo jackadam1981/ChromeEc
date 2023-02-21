@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2858726b_2a8e858e",
+        "filename": "zephyr/program/skyrim/frostflow/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-21T22:23:11Z",
+      "side": 1,
+      "message": "This may or may not be permanent depending on what I encounter while updating the test to use the proper emulators. Added a note to remind myself when I come back around to it.",
+      "parentUuid": "89cf8bab_1a7f97d7",
+      "revId": "52f75f48895c0ed7acf666d2101cc29b88bfc651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "480d6949_4be254f8",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "858ab631_cb4a58e0",
+        "filename": "zephyr/test/skyrim/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-21T22:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "480d6949_4be254f8",
+      "range": {
+        "startLine": 81,
+        "startChar": 7,
+        "endLine": 81,
+        "endChar": 13
+      },
+      "revId": "52f75f48895c0ed7acf666d2101cc29b88bfc651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e064aee4_9e726f6d",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-02-21T19:21:40Z",
       "side": 1,
       "message": "Mux",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "52f75f48895c0ed7acf666d2101cc29b88bfc651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52dcf118_060d5e54",
+        "filename": "zephyr/test/skyrim/tests/common/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-21T22:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e064aee4_9e726f6d",
       "range": {
         "startLine": 31,
         "startChar": 2,
