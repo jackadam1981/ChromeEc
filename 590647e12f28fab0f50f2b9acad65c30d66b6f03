@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4678f265_0f7e7990",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-21T19:37:00Z",
+      "side": 1,
+      "message": "Replying to the previous messages. (I will need to revisit all lines.)",
+      "revId": "590647e12f28fab0f50f2b9acad65c30d66b6f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d7ba7b_e79984e1",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-21T19:37:00Z",
+      "side": 1,
+      "message": "You need (value).",
+      "range": {
+        "startLine": 87,
+        "startChar": 35,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "590647e12f28fab0f50f2b9acad65c30d66b6f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70624a8f_257ceacc",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-21T19:37:00Z",
+      "side": 1,
+      "message": "nit: cmd |\u003d *id",
+      "range": {
+        "startLine": 416,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 17
+      },
+      "revId": "590647e12f28fab0f50f2b9acad65c30d66b6f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f5789e_d96eaf87",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-21T19:37:00Z",
+      "side": 1,
+      "message": "nit: return cps8200_write32(port, CPS8200_ADDR_CMD, cmd);",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 11
+      },
+      "revId": "590647e12f28fab0f50f2b9acad65c30d66b6f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11b34f25_317fe9ff",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-21T19:37:00Z",
+      "side": 1,
+      "message": "Why do we need two timeouts? What\u0027s the difference?",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 19
+      },
+      "revId": "590647e12f28fab0f50f2b9acad65c30d66b6f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0acce15d_7614a5ef",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-21T19:37:00Z",
+      "side": 1,
+      "message": "Can you make the caller print this? This isn\u0027t expected (from the API name).",
+      "range": {
+        "startLine": 468,
+        "startChar": 2,
+        "endLine": 468,
+        "endChar": 40
+      },
+      "revId": "590647e12f28fab0f50f2b9acad65c30d66b6f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

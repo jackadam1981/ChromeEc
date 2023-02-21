@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "805b1afc_032bf157",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-21T19:37:00Z",
+      "side": 1,
+      "message": "There is no BIT() used in PS 19 for these. None of these are flags?",
+      "parentUuid": "1982e6f1_925a772c",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abcf4b4e_7f04848f",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 16
@@ -674,6 +698,30 @@
       "side": 1,
       "message": "Somehow the delay is required otherwise some commands will be failed. I can try to shorten the delay a little bit.",
       "parentUuid": "ecd0dee5_271bace9",
+      "range": {
+        "startLine": 636,
+        "startChar": 11,
+        "endLine": 636,
+        "endChar": 30
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19d480f_793a5883",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-21T19:37:00Z",
+      "side": 1,
+      "message": "Any update? What\u0027s the current delay?",
+      "parentUuid": "792c705f_cde44d2e",
       "range": {
         "startLine": 636,
         "startChar": 11,

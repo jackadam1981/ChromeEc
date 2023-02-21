@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d608aff_bc8170dc",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-21T19:37:00Z",
+      "side": 1,
+      "message": "If \n\n    CPS8200_CMD_STATUS(u32) \u003d CMD_STATUS_FAIL | CMD_STATUS_ILLEGAL,\n\nneither \n\n    CPS8200_CMD_STATUS(u32) \u003d\u003d CMD_STATUS_FAIL \n\nnor\n\n    CPS8200_CMD_STATUS(u32) \u003d\u003d CMD_STATUS_ILLEGAL\n\nwill be true. Is that what you meant?",
+      "parentUuid": "5519e7df_bf7c2d2a",
+      "range": {
+        "startLine": 451,
+        "startChar": 30,
+        "endLine": 451,
+        "endChar": 32
+      },
+      "revId": "76f389e5a384de8b4ef8af131ea59c1d64bc317c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2c50d4b_ce4e380e",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 17
