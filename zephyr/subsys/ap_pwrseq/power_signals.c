@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "common.h"
 #include "signal_adc.h"
 #include "signal_gpio.h"
 #include "signal_vw.h"
@@ -140,8 +141,9 @@ void power_signal_interrupt(enum power_signal signal, int value)
 	ap_pwrseq_wake();
 }
 
-int power_wait_mask_signals_timeout(power_signal_mask_t mask,
-				    power_signal_mask_t want, int timeout)
+test_mockable int power_wait_mask_signals_timeout(power_signal_mask_t mask,
+						  power_signal_mask_t want,
+						  int timeout)
 {
 	if (mask == 0) {
 		return 0;
@@ -156,7 +158,7 @@ int power_wait_mask_signals_timeout(power_signal_mask_t mask,
 	return -ETIMEDOUT;
 }
 
-int power_signal_get(enum power_signal signal)
+test_mockable int power_signal_get(enum power_signal signal)
 {
 	const struct ps_config *cp;
 
@@ -190,7 +192,7 @@ int power_signal_get(enum power_signal signal)
 	}
 }
 
-int power_signal_set(enum power_signal signal, int value)
+test_mockable int power_signal_set(enum power_signal signal, int value)
 {
 	const struct ps_config *cp;
 	int ret;

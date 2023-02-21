@@ -56,6 +56,17 @@
 	DT_INST_STRING_UPPER_TOKEN(inst, enum_name)
 
 #define PWR_SIGNAL_ENUM_COMMA(id) PWR_SIGNAL_ENUM(id),
+
+#ifdef CONFIG_POWER_SIGNALS_MOCK
+enum power_signal {
+	PWR_EC_PCH_RSMRST,
+	PWR_EN_PP3300_A,
+	PWR_RSMRST,
+
+	/* Number of signals */
+	POWER_SIGNAL_COUNT,
+};
+#else
 /**
  * @brief Enum of all power signals.
  *
@@ -75,6 +86,7 @@ enum power_signal {
 	POWER_SIGNAL_COUNT,
 };
 /* clang-format on */
+#endif
 
 #undef PWR_SIGNAL_ENUM_COMMA
 
