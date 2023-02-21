@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "391c9466_ecdc19f9",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-02-21T09:00:34Z",
+      "side": 1,
+      "message": "Should we add this relationship in Kconfig.usb_charger instead?\n\n```\nconfig PLATFORM_EC_BC12_SINGLE_DRIVER\ndefault y \ndepends on PLATFORM_EC_USB_CHARGER\n```",
+      "range": {
+        "startLine": 68,
+        "startChar": 12,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "dc94a031046cc287b77c7e1a8a0520f641603b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
