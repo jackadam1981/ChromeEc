@@ -33,6 +33,29 @@
       "message": "Great to see this is working now! Out of curiosity, how long does it take to transfer an image?\n\nSince I directly contributed to the CL, I am probably not in the best position to provide an unbiased review 😊\n\nI moved myself to CC. Feel free to add another reviewer as a replacement.",
       "revId": "46f428e9cfebc068e61569eba2c85e88edc834b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7d8f04d_644831c7",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-02-21T17:17:51Z",
+      "side": 1,
+      "message": "Ops, I realized I forgot to update this. We should remove the `default` and replace this with:\n\n```\naction\u003d\u0027store_true\u0027\n```\n\nIn this way, we can pass the flag `--echo` instead of `--echo 1`.\n\nSee: https://docs.python.org/3/library/argparse.html#action",
+      "range": {
+        "startLine": 205,
+        "startChar": 8,
+        "endLine": 205,
+        "endChar": 18
+      },
+      "revId": "46f428e9cfebc068e61569eba2c85e88edc834b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
