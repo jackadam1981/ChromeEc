@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d4d552d_b27bfcf6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-21T16:35:04Z",
+      "side": 1,
+      "message": "INVALID is 32, so move this up one line to keep the ordering consistent.",
+      "range": {
+        "startLine": 839,
+        "startChar": 2,
+        "endLine": 839,
+        "endChar": 39
+      },
+      "revId": "ee07462519b45b5bbf6b9d69ab8ab0ac85bc137a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
