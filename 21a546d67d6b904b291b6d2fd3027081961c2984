@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de9df299_f554f39a",
+        "filename": "common/crc16.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-21T19:43:02Z",
+      "side": 1,
+      "message": "You can put these in common/crc.c. Then, you don\u0027t need CONFIG_CRC16, build.mk, or crc16.h.",
+      "revId": "21a546d67d6b904b291b6d2fd3027081961c2984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ddecc9_dff23856",
+        "filename": "common/crc16.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-21T19:43:02Z",
+      "side": 1,
+      "message": "Why do you have a prefix? Did you find a name conflict? You might as well take a look at common/crc.c to see how functions are named.",
+      "range": {
+        "startLine": 8,
+        "startChar": 16,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "21a546d67d6b904b291b6d2fd3027081961c2984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
