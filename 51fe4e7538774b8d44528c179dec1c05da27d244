@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b3a62d5_ff64b445",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-02-21T18:30:31Z",
+      "side": 1,
+      "message": "Vadim, do you know?",
+      "parentUuid": "04744b02_63c88ab7",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 28
+      },
+      "revId": "51fe4e7538774b8d44528c179dec1c05da27d244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8ae22db_a5189a7d",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 3
