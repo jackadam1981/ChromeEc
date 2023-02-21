@@ -41,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e00675c0_2d9001e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-21T19:41:24Z",
+      "side": 1,
+      "message": "Just nits from me.  This should also get tested on a USB4/TBT platform.",
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eeece742_476aa64c",
@@ -54,6 +71,52 @@
       "writtenOn": "2023-02-21T19:07:42Z",
       "side": 1,
       "message": "IMO, this should also have a TODO to clean it up. I don\u0027t think we would design this module with a board-overridable macro like this today.",
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a68a5206_92b7db3d",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-21T19:41:24Z",
+      "side": 1,
+      "message": "Nit - name this `dp_opos` to make it clear that this is a fixed value for display port.\n\nAs a follow-up, a helper macro that initialized the display port VDO could improve readability.",
+      "range": {
+        "startLine": 99,
+        "startChar": 17,
+        "endLine": 99,
+        "endChar": 21
+      },
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b9ea76_e9a99495",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-21T19:41:24Z",
+      "side": 1,
+      "message": "Similar to DP alt mode, name `tbt_opos` and consider a help macro.",
+      "range": {
+        "startLine": 86,
+        "startChar": 17,
+        "endLine": 86,
+        "endChar": 21
+      },
       "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
