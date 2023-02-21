@@ -248,6 +248,8 @@
 #define CONFIG_LOW_POWER_IDLE
 #endif /* SECTION_IS_RW */
 
+#define CONFIG_LTO
+
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
