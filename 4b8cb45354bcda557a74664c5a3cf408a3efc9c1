@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3223589f_f420ea70",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-02-21T03:06:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b9ff9d2_b6c28a8f",
+      "range": {
+        "startLine": 741,
+        "startChar": 28,
+        "endLine": 741,
+        "endChar": 30
+      },
+      "revId": "4b8cb45354bcda557a74664c5a3cf408a3efc9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d83f365_7bdaa0b5",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-20T08:30:27Z",
       "side": 1,
       "message": "It looks like you need to check if the TCPC provides higher voltage (ie. \u003e 3.6v) than PPC can support.",
+      "range": {
+        "startLine": 744,
+        "startChar": 9,
+        "endLine": 744,
+        "endChar": 44
+      },
+      "revId": "4b8cb45354bcda557a74664c5a3cf408a3efc9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "441e5816_59da149f",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-02-21T03:06:37Z",
+      "side": 1,
+      "message": "It\u0027s fine to disallow all TCPCs to provide Vconn even when the voltage is lower than 3.6V. Syv682x can provide Vconn by itself. I don\u0027t see any benefit of checking the Vconn voltage from TCPC.",
+      "parentUuid": "2d83f365_7bdaa0b5",
       "range": {
         "startLine": 744,
         "startChar": 9,
