@@ -5,7 +5,7 @@
 menuconfig AP_PWRSEQ
 	bool "AP Power sequencing support"
 	default y
-	depends on DT_HAS_INTEL_AP_PWRSEQ_ENABLED
+	depends on DT_HAS_INTEL_AP_PWRSEQ_ENABLED && !ZTEST
 	select HAS_TASK_POWERBTN
 	select GPIO_GET_CONFIG
 	help
@@ -177,5 +177,11 @@ config AP_PWRSEQ_DEBUG_MODE_COMMAND
 	  Intel debugger puts SOC in boot halt mode for step debugging,
 	  during this time EC may lose Sx lines, This option enables console
 	  command to enable debug mode and prevent force shutdown.
+
+config AP_EVENTS
+	bool "Enable AP events"
+	default y
+	help
+	  Helper symbol to enable Application Processor(AP) events.
 
 endif
