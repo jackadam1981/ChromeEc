@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9ec52449_4a4599ec",
+        "filename": "common/ec_features.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-21T19:13:04Z",
+      "side": 1,
+      "message": "Could use `/* clang-format off */ /* clang-format on */` if necessary.",
+      "parentUuid": "16d676fd_2b6b635a",
+      "range": {
+        "startLine": 118,
+        "startChar": 50,
+        "endLine": 118,
+        "endChar": 52
+      },
+      "revId": "056db38d9a83571650cb8ab48a6072a67e5f074e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e25296c1_b62ba166",
         "filename": "common/host_event_commands.c",
         "patchSetId": 6
