@@ -220,6 +220,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22e792d0_54bc6b1c",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-21T13:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6cf8910_4e66ddc2",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 75
+      },
+      "revId": "73e8397a987f5aa7349765e785aedc50370c866e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41132bb6_af309ee4",
