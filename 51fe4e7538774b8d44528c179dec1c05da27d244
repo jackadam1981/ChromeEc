@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb987b3b_1e8622fe",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-21T19:21:50Z",
+      "side": 1,
+      "message": "where does 3072 come from? TPM buffer is 2K if I remember correctly.",
+      "parentUuid": "2b3a62d5_ff64b445",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 28
+      },
+      "revId": "51fe4e7538774b8d44528c179dec1c05da27d244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8ae22db_a5189a7d",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 3
@@ -61,6 +85,30 @@
       "writtenOn": "2023-02-21T18:25:55Z",
       "side": 1,
       "message": "should we not set `get_clog` to `1` if there is no id?",
+      "range": {
+        "startLine": 4189,
+        "startChar": 4,
+        "endLine": 4189,
+        "endChar": 11
+      },
+      "revId": "51fe4e7538774b8d44528c179dec1c05da27d244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a58229b_a2895f83",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4189,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-21T19:21:50Z",
+      "side": 1,
+      "message": "good question, if the argument is optional the help message should mention the default used when argument is not included in the command line",
+      "parentUuid": "c8ae22db_a5189a7d",
       "range": {
         "startLine": 4189,
         "startChar": 4,
