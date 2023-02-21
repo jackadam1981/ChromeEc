@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9301bab3_54021755",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-21T11:06:56Z",
+      "side": 1,
+      "message": "Hey I see few binary blobs in both this and the next commit, can\u0027t find an explicit policy but I suspect they should not land here. +cc sjg@ keithshort@ do you have any information about it?\n\nPrabhakar: is the source for these available? Other platforms have loaders distributed in source form in this repository (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/chip/npcx/npcx_monitor/), I think that would be ideal.",
+      "revId": "8b43dfa78328be321e0c000ed2961a48d3bc9b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
