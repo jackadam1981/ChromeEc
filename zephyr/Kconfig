@@ -182,6 +182,17 @@ config PLATFORM_EC_BRINGUP
 	  - And more!  You can search the codebase for CONFIG_BRINGUP
             to see all of the features this flag will toggle.
 
+config PLATFORM_EC_GPIO_HOGS_CHECK
+	bool "Enable gpiohogs command"
+	depends on GPIO_HOGS
+	help
+	  Enables the "gpiophogs" console command which cross checks all the
+	  GPIOs configured with the "named-gpios" node with the configuration
+	  of the GPIO hogs driver.
+
+	  This option should only be used during the transition from
+	  "named-gpios" to the GPIO hogs driver.
+
 config PLATFORM_EC_CHIPSET_RESET_HOOK
 	bool "Provide a hook for when the AP resets"
 	default y

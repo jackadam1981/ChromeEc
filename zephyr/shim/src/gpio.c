@@ -32,6 +32,11 @@ struct gpio_config {
 	gpio_flags_t init_flags;
 	/* From DTS, skips initialisation */
 	bool no_auto_init;
+
+#ifdef CONFIG_GPIO_HOGS
+	/* Legacy GPIO signal enumeration value */
+	enum gpio_signal gpio_signal;
+#endif
 };
 
 /*
@@ -41,11 +46,11 @@ struct gpio_config {
  * whereas the standard macros assume that only 8 bits of initial flags
  * will be needed.
  */
-#define OUR_DT_SPEC(id)                                         \
-	{                                                       \
-		.port = DEVICE_DT_GET(DT_GPIO_CTLR(id, gpios)), \
-		.pin = DT_GPIO_PIN(id, gpios),                  \
-		.dt_flags = 0xFF & (DT_GPIO_FLAGS(id, gpios)),  \
+#define OUR_DT_SPEC(id)                                          \
+	{                                                        \
+		.port = DEVICE_DT_GET(DT_GPIO_CTLR(id, gpios)),  \
+		.pin = DT_GPIO_PIN(id, gpios),                   \
+		.dt_flags = 0xFFFF & (DT_GPIO_FLAGS(id, gpios)), \
 	}
 
 #define GPIO_CONFIG(id)                                    \
@@ -67,6 +72,76 @@ static const struct gpio_config configs[] = {
 #undef GPIO_IMPL_CONFIG
 #undef GPIO_CONFIG
 #undef OUR_DT_SPEC
+
+#ifdef CONFIG_GPIO_HOGS
+
+/* Expands to 1 if node_id is a GPIO controller, 0 otherwise */
+#define GPIO_HOGS_NODE_IS_GPIO_CTLR(node_id) \
+	DT_PROP_OR(node_id, gpio_controller, 0)
+
+/* Expands to to 1 if node_id is a GPIO hog, empty otherwise */
+#define GPIO_HOGS_NODE_IS_GPIO_HOG(node_id) \
+	IF_ENABLED(DT_PROP_OR(node_id, gpio_hog, 0), 1)
+
+/* Expands to 1 if GPIO controller node_id has GPIO hog children, 0 otherwise */
+#define GPIO_HOGS_GPIO_CTLR_HAS_HOGS(node_id)                      \
+	COND_CODE_0(IS_EMPTY(DT_FOREACH_CHILD_STATUS_OKAY(         \
+			    node_id, GPIO_HOGS_NODE_IS_GPIO_HOG)), \
+		    (1), (0))
+
+#define GPIO_HOG_LINE_NAME_TOKEN_BY_IDX(hog_node_id, idx)                    \
+	COND_CODE_1(                                                         \
+		DT_PROP_HAS_IDX(hog_node_id, line_names, idx),                \
+		(DT_STRING_UPPER_TOKEN_BY_IDX(hog_node_id, line_names, idx)), \
+		(GPIO_LIMIT))
+
+/* TODO: handle multiple GPIOs per hog... */
+#define GPIO_HOGS_SHIM_INIT_HOG_BY_IDX(idx, hog_node_id, gpio_ctrl_id) \
+	{                                                              \
+		.spec = { \
+			.port = DEVICE_DT_GET(gpio_ctrl_id), \
+			.pin = DT_GPIO_HOG_PIN_BY_IDX(hog_node_id, idx), \
+			.dt_flags = DT_GPIO_HOG_FLAGS_BY_IDX(hog_node_id, idx),\
+			}, \
+		.init_flags = DT_GPIO_HOG_FLAGS_BY_IDX(hog_node_id, idx) | 	\
+			      COND_CODE_1(DT_PROP(hog_node_id, input), 		\
+					  (GPIO_INPUT),				\
+					  (COND_CODE_1(DT_PROP(hog_node_id, output_low),		\
+						 (GPIO_OUTPUT_INACTIVE),			\
+						 (COND_CODE_1(DT_PROP(hog_node_id, output_high),\
+							     (GPIO_OUTPUT_ACTIVE), (0)))))),	\
+		.gpio_signal = GPIO_HOG_LINE_NAME_TOKEN_BY_IDX(hog_node_id, idx),               \
+	}
+
+/* Called for each enabled GPIO hogs child */
+#define GPIO_HOGS_SHIM_INIT_HOGS(hog_node_id, gpio_ctrl_id)                    \
+	LISTIFY(DT_NUM_GPIO_HOGS(hog_node_id), GPIO_HOGS_SHIM_INIT_HOG_BY_IDX, \
+		(, ), hog_node_id, gpio_ctrl_id),
+
+/* Called on all children of GPIO controller  */
+#define GPIO_HOGS_SHIM_COND_INIT_HOGS(hog_node_id, gpio_ctrl_id)       \
+	COND_CODE_0(IS_EMPTY(GPIO_HOGS_NODE_IS_GPIO_HOG(hog_node_id)), \
+		    (GPIO_HOGS_SHIM_INIT_HOGS(hog_node_id, gpio_ctrl_id)), ())
+
+/* Called on each GPIO controller that has a hogs child node */
+#define GPIO_HOGS_SHIM_INIT_GPIO_CTLR(node_id) \
+	DT_FOREACH_CHILD_STATUS_OKAY_VARGS(    \
+		node_id, GPIO_HOGS_SHIM_COND_INIT_HOGS, node_id)
+
+/* Called on each GPIO controller */
+#define GPIO_HOGS_SHIM_COND_INIT_GPIO_CTRL(node_id)       \
+	IF_ENABLED(GPIO_HOGS_GPIO_CTLR_HAS_HOGS(node_id), \
+		   (GPIO_HOGS_SHIM_INIT_GPIO_CTLR(node_id)))
+
+/* Called on every node in the tree */
+#define GPIO_HOGS_SHIM_COND_INIT(node_id)                \
+	IF_ENABLED(GPIO_HOGS_NODE_IS_GPIO_CTLR(node_id), \
+		   (GPIO_HOGS_SHIM_COND_INIT_GPIO_CTRL(node_id)))
+
+static const struct gpio_config hogs_config[] = { DT_FOREACH_STATUS_OKAY_NODE(
+	GPIO_HOGS_SHIM_COND_INIT) };
+
+#endif /* CONFIG_GPIO_HOGS */
 
 /*
  * Generate a pointer for each GPIO, pointing to the gpio_dt_spec entry
@@ -270,6 +345,14 @@ test_export_static int init_gpios(const struct device *unused)
 
 	ARG_UNUSED(unused);
 
+#if 0
+	if (is_sys_jumped) {
+		gpio_hogs_configure(GPIO_OUTPUT_INIT_LOW | GPIO_OUTPUT_INIT_HIGH);
+	} else {
+		gpio_hogs_configure(0);
+	}
+#endif
+
 	for (size_t i = 0; i < ARRAY_SIZE(configs); ++i) {
 		int rv;
 
@@ -405,3 +488,122 @@ int signal_is_gpio(int signal)
 {
 	return true;
 }
+
+#ifdef CONFIG_PLATFORM_EC_GPIO_HOGS_CHECK
+
+#define GPIO_OUTPUT_INIT_MASK \
+	(GPIO_OUTPUT_INIT_LOW | GPIO_OUTPUT_INIT_HIGH | GPIO_OUTPUT_INIT_LOGICAL)
+
+static bool compare_named_gpio_to_gpio_hog(const struct shell *shell,
+					   const struct gpio_config *named_gpio,
+					   const struct gpio_config *gpio_hog)
+{
+	gpio_flags_t hog_flags;
+
+	if (memcmp(&gpio_hog->spec, &named_gpio->spec,
+		   sizeof(struct gpio_dt_spec)) != 0) {
+		goto match_failed;
+	}
+
+	/*
+	 * GPIO hogs uses GPIO_OUTPUT_INIT_LOGICAL but this is not used by
+	 * named-gpios. Convert the GPIO hogs output level flags to account
+	 * for active high/active low setting.
+	 */
+	hog_flags = gpio_hog->init_flags;
+	if (((hog_flags & GPIO_OUTPUT_INIT_LOGICAL) != 0)
+	    && ((hog_flags & (GPIO_OUTPUT_INIT_LOW | GPIO_OUTPUT_INIT_HIGH)) != 0)
+	    && ((hog_flags & GPIO_ACTIVE_LOW) != 0)) {
+		hog_flags ^= GPIO_OUTPUT_INIT_LOW | GPIO_OUTPUT_INIT_HIGH;
+	}
+	hog_flags &= ~GPIO_OUTPUT_INIT_LOGICAL;
+
+	if (named_gpio->init_flags != hog_flags) {
+		goto match_failed;
+	}
+
+
+	return true;
+
+match_failed:
+	shell_fprintf(
+		shell, SHELL_INFO,
+		"Mismatch: GPIO %s, port %p, pin %d, dt_flags 0x%04x, init_flags 0x%08x\n",
+		named_gpio->name, named_gpio->spec.port, named_gpio->spec.pin,
+		named_gpio->spec.dt_flags, named_gpio->init_flags);
+	shell_fprintf(
+		shell, SHELL_INFO,
+		"          Hog      port %p, pin %d, dt_flags 0x%04x, init_flags 0x%08x\n",
+		gpio_hog->spec.port, gpio_hog->spec.pin,
+		gpio_hog->spec.dt_flags, gpio_hog->init_flags);
+
+	return false;
+}
+
+static bool check_gpio_hog(const struct shell *shell, const struct gpio_config *gpio_hog)
+{
+	for (int i = 0; i < ARRAY_SIZE(configs); i++) {
+		if (configs[i].spec.port == gpio_hog->spec.port &&
+		    configs[i].spec.pin == gpio_hog->spec.pin) {
+			return compare_named_gpio_to_gpio_hog(shell, &configs[i], gpio_hog);
+		}
+	}
+
+	shell_fprintf(shell, SHELL_INFO, "GPIO hog port %p, pin %d, not found in named-gpios\n",
+		gpio_hog->spec.port, gpio_hog->spec.pin);
+
+	return false;
+}
+
+static int gpio_hogs_check(const struct shell *shell, size_t argc, char **argv)
+{
+	int named_hogs_checked = 0;
+	int unnamed_hogs_checked = 0;
+	enum gpio_signal signal;
+	bool failed = false;
+
+	shell_fprintf(shell, SHELL_INFO,
+		      "GPIO Hogs cross check, GPIOs %d, Hogs %d\n",
+		      ARRAY_SIZE(configs), ARRAY_SIZE(hogs_config));
+
+	for (int i = 0; i < ARRAY_SIZE(hogs_config); i++) {
+		if (hogs_config[i].gpio_signal != GPIO_LIMIT) {
+			named_hogs_checked++;
+
+			signal = hogs_config[i].gpio_signal;
+
+			if (!compare_named_gpio_to_gpio_hog(
+				    shell, &configs[signal], &hogs_config[i])) {
+				failed = true;
+			}
+		} else {
+			/*
+			 * Search all the configs[i] for a matching GPIO port and pin
+			 */
+			unnamed_hogs_checked++;
+			if (!check_gpio_hog(shell, &hogs_config[i])) {
+				failed = true;
+			}
+		}
+	}
+
+	shell_fprintf(shell, SHELL_INFO, "Hogs checked: named %d, unnamed %d\n",
+			named_hogs_checked, unnamed_hogs_checked);
+
+	if (failed) {
+		shell_fprintf(shell, SHELL_INFO,
+			     "FAILED: one more more GPIO hogs mismatched named-gpios\n");
+	} else if (named_hogs_checked + unnamed_hogs_checked != ARRAY_SIZE(configs)) {
+		shell_fprintf(shell, SHELL_INFO,
+			     "FAILED: number of hogs (named %d, unnamed %d) doesn't match named-gpios %d\n",
+			     named_hogs_checked, unnamed_hogs_checked, ARRAY_SIZE(configs));
+	} else {
+		shell_fprintf(shell, SHELL_INFO, "PASSED: all GPIO hogs verified\n");
+	}
+
+	return 0;
+}
+
+SHELL_CMD_REGISTER(gpiohogs, NULL, NULL, gpio_hogs_check);
+
+#endif /* CONFIG_PLATFORM_EC_GPIO_HOGS_CHECK */
