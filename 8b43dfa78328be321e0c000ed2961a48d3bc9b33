@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e8453cc_0b174cf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T11:52:35Z",
+      "side": 1,
+      "message": "Hi Fabio/Simon, \n\nwe have kept the blob in the \"mchp\" directory only.\n~/chromiumos/platform/ec/util/mchp/\n\nRegards,\nPrabhakar V",
+      "parentUuid": "d1c1cf23_429a41fc",
+      "revId": "8b43dfa78328be321e0c000ed2961a48d3bc9b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "621d385d_1e0cfeb0",
