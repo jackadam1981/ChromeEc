@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "105c1da5_b9703d38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-02-22T03:06:32Z",
+      "side": 1,
+      "message": "Approximately 7 seconds to send an  160x160 image to bloonchipper using fpupload.\nApproximately 3 seconds to send a 56x192 image to dartmonkey using fpupload.",
+      "parentUuid": "b655b174_770e186c",
+      "revId": "46f428e9cfebc068e61569eba2c85e88edc834b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7d8f04d_644831c7",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-02-21T17:17:51Z",
       "side": 1,
       "message": "Ops, I realized I forgot to update this. We should remove the `default` and replace this with:\n\n```\naction\u003d\u0027store_true\u0027\n```\n\nIn this way, we can pass the flag `--echo` instead of `--echo 1`.\n\nSee: https://docs.python.org/3/library/argparse.html#action",
+      "range": {
+        "startLine": 205,
+        "startChar": 8,
+        "endLine": 205,
+        "endChar": 18
+      },
+      "revId": "46f428e9cfebc068e61569eba2c85e88edc834b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85df452e_ed6c8d55",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-02-22T03:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d8f04d_644831c7",
       "range": {
         "startLine": 205,
         "startChar": 8,
