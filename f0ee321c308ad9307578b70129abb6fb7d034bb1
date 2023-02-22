@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2937854_6a8bd448",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-22T23:33:23Z",
+      "side": 1,
+      "message": "This is the wrong author (of the original commit). I think we can just remove the name since it can be found from the CL links.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "f0ee321c308ad9307578b70129abb6fb7d034bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f54a7f66_f8d112fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-22T23:33:23Z",
+      "side": 1,
+      "message": "Could you mention the compilation/build test that you did?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "f0ee321c308ad9307578b70129abb6fb7d034bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
