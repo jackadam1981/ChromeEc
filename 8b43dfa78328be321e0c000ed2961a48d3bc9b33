@@ -175,6 +175,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfebb262_1fb9675a",
+        "filename": "util/mchp/gen_pgm_hdr.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T14:10:16Z",
+      "side": 1,
+      "message": "But the functionality of  gen_pgm_hdr.py is to generate the flash header required for  the SPI image programmed.\n\nIs it required to move this python script into crisis_rcvry_util.py as one file ?",
+      "parentUuid": "22d21d20_22c828b6",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "8b43dfa78328be321e0c000ed2961a48d3bc9b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "418b4612_c005119d",
         "filename": "util/mchp/gen_pgm_hdr.py",
         "patchSetId": 1
