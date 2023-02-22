@@ -164,6 +164,7 @@ static inline bool console_channel_is_disabled(enum console_channel channel)
  */
 int cputs(enum console_channel channel, const char *outstr);
 
+#if 0
 /**
  * Print formatted output to the console channel.
  *
@@ -186,6 +187,7 @@ cprintf(enum console_channel channel, const char *format, ...);
  */
 __attribute__((__format__(__printf__, 2, 3))) int
 cprints(enum console_channel channel, const char *format, ...);
+#endif
 
 /**
  * Flush the console output for all channels.
@@ -197,10 +199,12 @@ void cflush(void);
  * Modules may define similar macros in their .c files for their own use; it is
  * recommended those module-specific macros be named CPUTS and CPRINTF. */
 #define ccputs(outstr) cputs(CC_COMMAND, outstr)
+#if 1
 /* gcc allows variable arg lists in macros; see
  * http://gcc.gnu.org/onlinedocs/gcc/Variadic-Macros.html */
 #define ccprintf(format, args...) cprintf(CC_COMMAND, format, ##args)
 #define ccprints(format, args...) cprints(CC_COMMAND, format, ##args)
+#endif /* 0 */
 
 /**
  * Called by UART when a line of input is pending.

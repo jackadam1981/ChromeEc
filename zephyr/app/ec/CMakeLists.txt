@@ -3,6 +3,7 @@
 # found in the LICENSE file.
 
 cros_ec_library_include_directories(include)
+zephyr_include_directories(include)
 zephyr_library_sources(ec_app_main.c)
 if(NOT DEFINED CONFIG_ZTEST)
     zephyr_library_sources(main_shim.c)

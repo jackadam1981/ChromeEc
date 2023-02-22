@@ -117,3 +117,8 @@ void ec_app_main(void)
 		ap_pwrseq_task_start();
 	}
 }
+
+void SetMessage(const uint8_t* message, size_t size) {
+	ARG_UNUSED(message);
+	printk("SetMessage %d\n", size);
+}

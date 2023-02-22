@@ -431,6 +431,7 @@ int cputs(enum console_channel channel, const char *outstr)
 	return 0;
 }
 
+#if 0
 int cprintf(enum console_channel channel, const char *format, ...)
 {
 	int rv;
@@ -487,3 +488,4 @@ int cprints(enum console_channel channel, const char *format, ...)
 
 	return rv > 0 ? EC_SUCCESS : rv;
 }
+#endif /* 0 */
