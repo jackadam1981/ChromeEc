@@ -29,20 +29,21 @@ static const struct ec_response_get_protocol_info expected_info[] = {
 
 test_static int test_validate_fp_buffer_offset_success(void)
 {
-	TEST_EQ(validate_fp_buffer_offset(1, 0, 1), EC_SUCCESS, "%d");
+	TEST_EQ(fp_sensor_validate_buffer_offset(1, 0, 1), EC_SUCCESS, "%d");
 	return EC_SUCCESS;
 }
 
 test_static int test_validate_fp_buffer_offset_failure_no_overflow(void)
 {
-	TEST_EQ(validate_fp_buffer_offset(1, 1, 1), EC_ERROR_INVAL, "%d");
+	TEST_EQ(fp_sensor_validate_buffer_offset(1, 1, 1), EC_ERROR_INVAL,
+		"%d");
 	return EC_SUCCESS;
 }
 
 test_static int test_validate_fp_buffer_offset_failure_overflow(void)
 {
-	TEST_EQ(validate_fp_buffer_offset(1, UINT32_MAX, 1), EC_ERROR_OVERFLOW,
-		"%d");
+	TEST_EQ(fp_sensor_validate_buffer_offset(1, UINT32_MAX, 1),
+		EC_ERROR_OVERFLOW, "%d");
 	return EC_SUCCESS;
 }
 

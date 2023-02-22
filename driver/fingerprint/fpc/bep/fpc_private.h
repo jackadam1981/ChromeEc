@@ -28,8 +28,7 @@ typedef struct {
  * the finger detect zones are covered. A client can call
  * fp_sensor_finger_status to determine the current status.
  *
- * @param[in]  image_data      pointer to a buffer containing at least
- * FP_SENSOR_IMAGE_SIZE_FPC bytes of memory
+ * @param[in]  image_data      pointer to FP_SENSOR_IMAGE_SIZE bytes of memory
  * @param[out] fp_sensor_info  Structure containing output data.
  *
  * @return
