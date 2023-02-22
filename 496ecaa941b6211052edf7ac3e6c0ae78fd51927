@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecbbb881_620c45d9",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-02-22T21:39:11Z",
+      "side": 1,
+      "message": "Added +1 to the array size in ts_read so this doesn\u0027t have to be an abnormal size.",
+      "parentUuid": "00383150_e427285c",
+      "revId": "496ecaa941b6211052edf7ac3e6c0ae78fd51927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ddac4ae_c96d1c95",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "This becomes a bit brittle - gsctool sends data not just through trunks send, it could be sending it directly through /dev/tpm.\n\nMabye there should be different variables for the buffer size and the max size of the PDU gsctool can send?",
       "parentUuid": "00c3f002_ad98c46d",
+      "revId": "496ecaa941b6211052edf7ac3e6c0ae78fd51927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b5b212e_ec1f76d0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-02-22T21:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d2eca1a_3254ae03",
       "revId": "496ecaa941b6211052edf7ac3e6c0ae78fd51927",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
