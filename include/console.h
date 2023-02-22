@@ -197,10 +197,12 @@ void cflush(void);
  * Modules may define similar macros in their .c files for their own use; it is
  * recommended those module-specific macros be named CPUTS and CPRINTF. */
 #define ccputs(outstr) cputs(CC_COMMAND, outstr)
+#if 0
 /* gcc allows variable arg lists in macros; see
  * http://gcc.gnu.org/onlinedocs/gcc/Variadic-Macros.html */
 #define ccprintf(format, args...) cprintf(CC_COMMAND, format, ##args)
 #define ccprints(format, args...) cprints(CC_COMMAND, format, ##args)
+#endif /* 0 */
 
 /**
  * Called by UART when a line of input is pending.
