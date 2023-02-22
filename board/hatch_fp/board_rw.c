@@ -3,9 +3,11 @@
  * found in the LICENSE file.
  */
 
+#include "builtin/assert.h"
 #include "common.h"
 #include "console.h"
 #include "fpsensor_detect.h"
+#include "fpsensor_driver.h"
 #include "gpio.h"
 #include "registers.h"
 #include "spi.h"
@@ -23,6 +25,9 @@ const struct spi_device_t spi_devices[] = {
 	{ .port = CONFIG_SPI_FP_PORT, .div = 3, .gpio_cs = GPIO_SPI2_NSS }
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
+
+/* Fp sensor driver interface. */
+struct fp_sensor_interface *fp_driver;
 
 static void configure_fp_sensor_spi(void)
 {
@@ -56,6 +61,9 @@ void board_init_rw(void)
 	 * Explicitly reset FP_RST_ODL pin to default value.
 	 */
 	gpio_reset(GPIO_FP_RST_ODL);
+
+	fp_driver = fpc_sensor_get_interface();
+	ASSERT(fp_driver);
 
 	/* Configure and enable SPI as master for FP sensor */
 	configure_fp_sensor_spi();

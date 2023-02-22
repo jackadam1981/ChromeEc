@@ -165,7 +165,7 @@ void fp_sensor_configure_detect(void);
  * Returns the status of the finger on the sensor.
  * (assumes fp_sensor_configure_detect was called before)
  *
- * @return finger_state
+ * @return The current finger state
  */
 enum finger_state fp_sensor_finger_status(void);
 
