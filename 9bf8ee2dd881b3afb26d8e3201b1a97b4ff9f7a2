@@ -16,6 +16,24 @@
       "message": "split this CL into multiple easily readable CLs.\nIt a huge file",
       "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26160e9f_5af2c7dc",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T11:54:48Z",
+      "side": 1,
+      "message": "Hi Vijay, \n\nDo you want to have each lline/function with description for this code line ?\n\nWill remove the unwanted printf etc.\n\nRegards,\nPrabhakar V",
+      "parentUuid": "315bc4ee_ef61e425",
+      "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
