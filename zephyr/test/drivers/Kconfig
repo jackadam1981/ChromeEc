@@ -187,4 +187,7 @@ config LINK_TEST_SUITE_LED_COMMON
 	depends on !PLATFORM_EC_LED_DT
 	select PLATFORM_EC_LED_COMMON
 
+config LINK_TEST_SUITE_SM5803
+	bool "Link and test the SM5803 charger tests"
+
 source "Kconfig.zephyr"

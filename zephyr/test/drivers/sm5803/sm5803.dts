@@ -1,0 +1,23 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+// TODO: next problem: chg_chips doesn't have a SM5803 in it so looking up the
+// I2C port via chg_chips returns junk.
+/ {
+	usbc {
+		port0@0 {
+			compatible = "named-usbc-port";
+			chg = <&sm5803_emul>;
+		};
+	};
+};
+
+&i2c0 {
+	sm5803_emul: sm5803@32 {
+		compatible = "cros,sm5803-emul";
+		status = "okay";
+		reg = <0x32>;
+	};
+};
