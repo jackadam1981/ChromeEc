@@ -213,4 +213,7 @@ config LINK_TEST_SUITE_LED_COMMON
 config LINK_TEST_SUITE_HOST_COMMAND_MEMORY_DUMP
 	bool "Link and test memory dump host commands tests"
 
+config LINK_TEST_SUITE_SM5803
+	bool "Link and test the SM5803 charger tests"
+
 source "Kconfig.zephyr"
