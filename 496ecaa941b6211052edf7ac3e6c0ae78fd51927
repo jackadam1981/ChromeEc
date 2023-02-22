@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "317f3338_41f09f3f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-02-22T01:48:58Z",
+      "side": 1,
+      "message": "The command is executed through `trunks_send` which gets parsed as a string. `trunks_send` appends a `\\n` that gets stripped in ts_read at line 614. The bugger needs to be big enough for 2K of data and what trunks appends.",
+      "parentUuid": "b39653e0_370adfbc",
+      "revId": "496ecaa941b6211052edf7ac3e6c0ae78fd51927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ddac4ae_c96d1c95",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 6
@@ -31,6 +49,24 @@
       "writtenOn": "2023-02-22T01:24:43Z",
       "side": 1,
       "message": "why does this have to change?",
+      "revId": "496ecaa941b6211052edf7ac3e6c0ae78fd51927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c3f002_ad98c46d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-02-22T01:48:58Z",
+      "side": 1,
+      "message": "The buffer in `tpm_send_pkt` is reused to receive the response on the `trunks_send` path, so it has to be able to fit the full response as well.",
+      "parentUuid": "0ddac4ae_c96d1c95",
       "revId": "496ecaa941b6211052edf7ac3e6c0ae78fd51927",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
