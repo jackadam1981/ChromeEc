@@ -209,6 +209,8 @@ test_mockable void system_reset(int flags)
 	int err;
 	uint32_t save_flags;
 
+	sys_dev = device_get_binding("CROS_SYSTEM");
+
 	if (!sys_dev)
 		LOG_ERR("sys_dev get binding failed");
 

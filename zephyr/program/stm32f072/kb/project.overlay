@@ -1,2 +1,39 @@
 /* project dts */
 #include "../gpio.dtsi"
+
+/ {
+	chosen {
+		cros-ec,bbram = &bbram;
+		cros-ec,watchdog = &iwdg;
+	};
+
+	/* this field maybe is not correct but add this to build pass */
+	named-bbram-regions {
+		compatible = "named-bbram-regions";
+
+		scratchpad {
+			offset = <0x00>;
+			size = <0x02>;
+		};
+		saved-reset-flags {
+			offset = <0x02>;
+			size = <0x04>;
+		};
+		saved-panic-reason {
+			offset = <0x06>;
+			size = <0x02>;
+		};
+		saved-panic-info {
+			offset = <0x08>;
+			size = <0x02>;
+		};
+		saved-panic-exception {
+			offset = <0x0a>;
+			size = <0x02>;
+		};
+		saved-panic-flags {
+			offset = <0x0c>;
+			size = <0x02>;
+		};
+	};
+};

@@ -8,5 +8,6 @@ project(kb)
 
 zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 
-target_sources(app PRIVATE kb/src/main.c)
-target_sources(app PRIVATE kb/src/cortex-m0.S)
+# target_sources(app PRIVATE kb/src/main.c)
+target_sources(app PRIVATE kb/src/cortex-div.S)
+target_sources(app PRIVATE kb/src/cortex-ldivmod.S)

@@ -24,6 +24,10 @@
 	status = "okay";
 };
 
+&clk_lsi {
+	status = "okay";
+};
+
 &pll {
 	prediv = <1>;
 	mul = <6>;
@@ -42,5 +46,19 @@
 	pinctrl-0 = <&usart1_tx_pa9 &usart1_rx_pa10>;
 	pinctrl-names = "default";
 	current-speed = <115200>;
+	status = "okay";
+};
+
+&iwdg {
+	status = "okay";
+};
+
+&rtc {
+	clocks = <&rcc STM32_CLOCK_BUS_APB1 0x10000000>,
+		 <&rcc STM32_SRC_LSI RTC_SEL(2)>;
+	status = "okay";
+};
+
+&bbram {
 	status = "okay";
 };

@@ -5,8 +5,16 @@
  */
  #include <dt-bindings/gpio_defines.h>
  / {
+	aliases {
+		gpio-wp = &ec_wp_l;
+	};
+
 	 named-gpios {
 		 compatible = "named-gpios";
+
+		 ec_wp_l: write-protect {
+			gpios = <&gpioa 13 GPIO_INPUT_PULL_UP>;
+		};
 		 /* KSO list*/
 		 kb_out00 {
 			 gpios = <&gpiob 1 GPIO_ODR_HIGH>;
@@ -92,6 +100,10 @@
 		kb_in07: kb_in07 {
 			gpios = <&gpiob 15 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_KB_IN07";
+		};
+		/* unimplemented GPIO */
+		entering-rw {
+			enum-name = "GPIO_ENTERING_RW";
 		};
 
 	 };
