@@ -103,7 +103,7 @@ static void spi_configure(enum fp_sensor_spi_select spi_select)
 
 void board_init(void)
 {
-	enum fp_sensor_spi_select spi_select = get_fp_sensor_spi_select();
+	enum fp_sensor_spi_select spi_select = fpsensor_detect_get_spi_select();
 
 	/*
 	 * FP_RST_ODL pin is defined in gpio_rw.inc (with GPIO_OUT_HIGH
@@ -121,7 +121,7 @@ void board_init(void)
 	ccprints("TRANSPORT_SEL: %s",
 		 fp_transport_type_to_str(get_fp_transport_type()));
 
-	fp_driver = get_fp_sensor_driver();
+	fp_driver = fpsensor_detect_get_driver();
 	if (fp_driver == NULL) {
 		ccprints("Failed to get sensor type!");
 	}

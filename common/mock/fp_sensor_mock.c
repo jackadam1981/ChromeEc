@@ -20,7 +20,7 @@
 
 struct mock_ctrl_fp_sensor mock_ctrl_fp_sensor = MOCK_CTRL_DEFAULT_FP_SENSOR;
 
-struct fp_sensor_interface *get_fp_sensor_driver(void)
+struct fp_sensor_interface *fpsensor_detect_get_driver(void)
 {
 	return &fp_driver_mock;
 }
