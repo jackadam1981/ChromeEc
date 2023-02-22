@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f227a6c6_173ddd6b",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T16:29:27Z",
+      "side": 1,
+      "message": "Yes , we can call this way \npython3 mchp/gen_pgm_hdr.py instead of cd mchp",
+      "parentUuid": "7f994ee7_1bd191b4",
+      "range": {
+        "startLine": 1633,
+        "startChar": 1,
+        "endLine": 1633,
+        "endChar": 8
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76697cfe_ca660ef3",
         "filename": "util/flash_ec",
         "patchSetId": 21
