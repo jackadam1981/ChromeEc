@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15ebe9ae_273a845b",
+        "filename": "common/crc16.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-22T17:00:41Z",
+      "side": 1,
+      "message": "I think all crc code can be in one file. I don\u0027t see any disadvantages. Only referenced APIs will be linked. So there is no space penalty.",
+      "parentUuid": "943f2af0_ecbe6cd8",
+      "revId": "21a546d67d6b904b291b6d2fd3027081961c2984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09ddecc9_dff23856",
         "filename": "common/crc16.c",
         "patchSetId": 2
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "The prefix is to avoid the conflict with zephyr EC as zephyr already provides a implementation for crc16. I referred to common/crc8.c and implement it similarly.",
       "parentUuid": "09ddecc9_dff23856",
+      "range": {
+        "startLine": 8,
+        "startChar": 16,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "21a546d67d6b904b291b6d2fd3027081961c2984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cecdb69_6b26294f",
+        "filename": "common/crc16.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-22T17:00:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bbc9574b_e07d7be8",
       "range": {
         "startLine": 8,
         "startChar": 16,
