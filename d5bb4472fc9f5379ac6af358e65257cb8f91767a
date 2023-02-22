@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b076c91_707ab2b1",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-22T00:13:59Z",
+      "side": 1,
+      "message": "is `_MODE_CHANGE` still a good name component here?\nwould it make sense to just drop the suffix?",
+      "range": {
+        "startLine": 118,
+        "startChar": 36,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "d5bb4472fc9f5379ac6af358e65257cb8f91767a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
