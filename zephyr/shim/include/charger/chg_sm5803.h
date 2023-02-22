@@ -8,6 +8,7 @@
 #include <zephyr/devicetree.h>
 
 #define SM5803_CHG_COMPAT siliconmitus_sm5803
+#define SM5803_EMUL_COMPAT cros_sm5803_emul
 
 #define CHG_CONFIG_SM5803(id)                      \
 	{                                          \

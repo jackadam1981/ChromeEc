@@ -1189,8 +1189,6 @@
 		reg = <0x9>;
 		battery = <&battery>;
 	};
-
-
 };
 
 /* Enable all thermistors for testing */
