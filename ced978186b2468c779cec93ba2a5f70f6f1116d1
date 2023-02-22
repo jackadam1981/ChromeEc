@@ -16,6 +16,24 @@
       "message": "There were 2 complications with this CL.\n\nFirst, the usbc config for Brya does not take into account whether or not the reset line is active even though the reset lines exist in the device tree. To be consistent with the original code, I have not added Brya reset lines to the new `tcpc_get_alert_status`.\n\nSecond, every project has the reset line set as `ACTIVE_HIGH` and checks if it is active, but corsola for some reason has the reset line as `ACTIVE_LOW` and checks if it is deactive (so they\u0027re checking the same thing but in opposite ways). I\u0027ve changed corsola to `ACTIVE_HIGH` to be consistent with every other project.",
       "revId": "ced978186b2468c779cec93ba2a5f70f6f1116d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf263311_fe4e57cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-02-22T03:53:26Z",
+      "side": 1,
+      "message": "Also, it\u0027s possible to move `tcpc_get_alert_status` for nissa and intel to the common code as well. I feel like it would be too much of a maintenance headache to have half the driver running legacy code and half running common code so I\u0027ve excluded nissa and intel from this CL.",
+      "parentUuid": "6318d0ed_b3447004",
+      "revId": "ced978186b2468c779cec93ba2a5f70f6f1116d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
