@@ -58,7 +58,7 @@ void board_init_rw(void)
 	 */
 	gpio_reset(GPIO_FP_RST_ODL);
 
-	fp_driver = get_fp_sensor_driver();
+	fp_driver = fpsensor_detect_get_driver();
 	if (fp_driver == NULL) {
 		ccprints("Failed to get sensor type!");
 	}

@@ -45,6 +45,6 @@
 #define FP_MAX_FINGER_COUNT 5
 #endif
 
-struct fp_sensor_interface *get_fp_sensor_driver(void);
+struct fp_sensor_interface *fpsensor_detect_get_driver(void);
 
 #endif /* __CROS_EC_DRIVER_FINGERPRINT_FPSENSOR_DRIVER_H_ */

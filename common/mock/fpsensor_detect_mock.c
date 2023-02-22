@@ -12,7 +12,7 @@
 struct mock_ctrl_fpsensor_detect mock_ctrl_fpsensor_detect =
 	MOCK_CTRL_DEFAULT_FPSENSOR_DETECT;
 
-enum fp_sensor_type get_fp_sensor_type(void)
+enum fp_sensor_type fpsensor_detect_get_type(void)
 {
 	return mock_ctrl_fpsensor_detect.get_fp_sensor_type_return;
 }
@@ -22,7 +22,7 @@ enum fp_transport_type get_fp_transport_type(void)
 	return mock_ctrl_fpsensor_detect.get_fp_transport_type_return;
 }
 
-enum fp_sensor_spi_select get_fp_sensor_spi_select(void)
+enum fp_sensor_spi_select fpsensor_detect_get_spi_select(void)
 {
 	return mock_ctrl_fpsensor_detect.get_fp_sensor_spi_select_return;
 }
