@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe3dea6b_29fdc335",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-02-22T06:26:34Z",
+      "side": 1,
+      "message": "lol I thought this file is already tested. But apparently no.\n\nI will add tests in this CL",
+      "parentUuid": "1f1e2795_d77bc362",
+      "revId": "dc94a031046cc287b77c7e1a8a0520f641603b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "391c9466_ecdc19f9",
         "filename": "zephyr/shim/src/CMakeLists.txt",
         "patchSetId": 2
