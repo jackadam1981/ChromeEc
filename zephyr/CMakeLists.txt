@@ -63,6 +63,13 @@ if (DEFINED CONFIG_RISCV)
   zephyr_cc_option(-fsanitize-undefined-trap-on-error)
 endif()
 
+if (DEFINED CONFIG_ZEPHYR_PIGWEED_MODULE)
+  get_filename_component(pw_root "${CMAKE_CURRENT_SOURCE_DIR}/../../../third_party/pigweed" ABSOLUTE)
+  set(ENV{PW_ROOT} "${pw_root}")
+  add_subdirectory(${pw_root} pigweed)
+  zephyr_link_libraries(pw_minimal_cpp_stdlib)
+endif()
+
 # The EC application is split into two libraries:
 #   app: contains all the legacy code
 #   ec_shim: contains all the code under platform/ec/shim
