@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efd29a17_3fd72c08",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-22T18:42:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0533168f_ebe7da9a",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "2e4106701d5edb0575ba8eb759733df02b310af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71978c2f_3c89156b",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "`std::string` has a method called `c_str()` that will return the C-style string, which can be used with `printf`.\n\nThe equivalent to `fprintf(stderr, ...` in C++ would be `std:cerr`, not `std::cout`.\n\nFor consistency with the rest of the code, let\u0027s continue to use `fprintf` for now.",
       "parentUuid": "2bc06067_478b7674",
+      "range": {
+        "startLine": 1784,
+        "startChar": 0,
+        "endLine": 1792,
+        "endChar": 50
+      },
+      "revId": "2e4106701d5edb0575ba8eb759733df02b310af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b7db8c_177b02ca",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1792,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-22T18:42:47Z",
+      "side": 1,
+      "message": "you meant `printf`? This is what is being used here.",
+      "parentUuid": "ea50c089_e5c7c574",
       "range": {
         "startLine": 1784,
         "startChar": 0,
