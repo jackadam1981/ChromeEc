@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f60e85e_40427f3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-22T14:36:26Z",
+      "side": 1,
+      "message": "Few questions about this:\n- This seems to be a full interactive utility, not too sure it belongs here, but if it does it needs some major restructuring for both readability and compliance with the repository coding standard (the upload should run some presubmit check on all python code, check the output of those)\n- similar comments for the other commit about the binary files, `header.bin` should probably be embedded in the code and documented, `key_hash` as well\n- `second_loader_fw.bin`, ideally that should be distributed in code form and complied on demand, similarly to the npcx loader already in the repository. Is the code for this one available?",
+      "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "315bc4ee_ef61e425",
