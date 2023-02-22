@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_FPC_PRIVATE_H
 #define __CROS_EC_FPC_PRIVATE_H
 
+#include "fpsensor.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif

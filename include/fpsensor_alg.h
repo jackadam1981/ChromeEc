@@ -55,7 +55,7 @@ int fp_enrollment_begin(void);
  *
  * @return 0 on success, negative value on error
  */
-int fp_enrollment_finish(void *templ);
+int fp_enrollment_finish_fpc(void *templ);
 
 /**
  * Adds fingerprint image to the current enrollment session.

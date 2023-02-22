@@ -6,7 +6,9 @@
 #include "board_rw.h"
 #include "common.h"
 #include "console.h"
+#include "fpsensor.h"
 #include "fpsensor_detect.h"
+#include "fpsensor_driver.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
@@ -118,6 +120,11 @@ void board_init(void)
 
 	ccprints("TRANSPORT_SEL: %s",
 		 fp_transport_type_to_str(get_fp_transport_type()));
+
+	fp_driver = get_fp_sensor_driver();
+	if (fp_driver == NULL) {
+		ccprints("Failed to get sensor type!");
+	}
 
 	/* Use SPI select as a proxy for running on the icetower dev board. */
 	if (spi_select == FP_SENSOR_SPI_SELECT_DEVELOPMENT)
