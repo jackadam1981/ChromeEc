@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eed9edd_39e34e3c",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-22T22:51:53Z",
+      "side": 1,
+      "message": "ap_booted or EC_booted?",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "e7f922ae15dc66c4ed03eefc45c6cd7e8815956c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea3bcc81_166357d9",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-22T22:51:53Z",
+      "side": 1,
+      "message": "may be this is not needed, one can read from structure",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 4
+      },
+      "revId": "e7f922ae15dc66c4ed03eefc45c6cd7e8815956c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc76eeef_3052f37e",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-22T22:51:53Z",
+      "side": 1,
+      "message": "/* warm reboot happened */",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 41
+      },
+      "revId": "e7f922ae15dc66c4ed03eefc45c6cd7e8815956c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afe63c2_34e4d72d",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-22T22:51:53Z",
+      "side": 1,
+      "message": "/* cold reboot happened */",
+      "revId": "e7f922ae15dc66c4ed03eefc45c6cd7e8815956c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1516ad71_5130bc76",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-22T22:51:53Z",
+      "side": 1,
+      "message": "/* #PLTRST is in transition state */",
+      "revId": "e7f922ae15dc66c4ed03eefc45c6cd7e8815956c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
