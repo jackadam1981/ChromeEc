@@ -1,0 +1,44 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	/*
+	 * Would prefer this to be a child of the I2C bus and each page be a
+	 * child of this, but that seems hard since it's not clear how we'd get
+	 * the bus in the children to hook them up.
+	 *
+	 * (or can we just get hte grandparent or walk the parent?)
+	 */
+	sm5803_emul: sm5803 {
+		compatible = "cros,sm5803-emul";
+		status = "okay";
+
+		chg-page = <&sm5803_chg_emul>;
+	};
+};
+
+&i2c0 {
+/*
+	sm5803_main_emul: sm5803@30 {
+		compatible = "cros,sm5803-main-emul";
+		status = "okay";
+		reg = <0x30>;
+	};
+	sm5803_meas_emul: sm5803@31 {
+		compatible = "cros,sm5803-meas-emul";
+		status = "okay";
+		reg = <0x31>;
+	};
+	*/
+
+	sm5803_chg_emul: sm5803-chg@32 {
+		compatible = "cros,sm5803-chg-emul";
+		status = "okay";
+		reg = <0x32>;
+		/* Seems to fail because this creates a circular reference
+		   between devices, so DT generation fails */
+		emul-base = <&sm5803_emul>;
+	};
+};

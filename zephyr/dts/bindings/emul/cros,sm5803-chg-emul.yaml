@@ -1,0 +1,23 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: SM5803 charger emulator (charger registers)
+
+compatible: "cros,sm5803-chg-emul"
+
+include: base.yaml
+
+properties:
+  reg:
+    required: true
+  emul-base:
+    type: phandle
+    required: false
+    description:
+      Reference to cros,sm5803-emul device this is part of.
+  battery:
+    type: phandle
+    required: false
+    description:
+      Reference to battery emulator.
