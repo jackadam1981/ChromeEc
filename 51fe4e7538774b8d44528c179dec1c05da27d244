@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21e7762b_eb6e29d6",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-02-22T01:13:04Z",
+      "side": 1,
+      "message": "2K. It looks like `ts_read` always strips the trailing `\\n` from trunks read. If this gets set to 2048 and we generate that much output, the `\\n` doesn\u0027t fit in the buffer and we end up trimming a byte of the response and hit errors.",
+      "parentUuid": "846aa993_4668fee5",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 28
+      },
+      "revId": "51fe4e7538774b8d44528c179dec1c05da27d244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8ae22db_a5189a7d",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 3
