@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22d21d20_22c828b6",
+        "filename": "util/mchp/gen_pgm_hdr.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:09:45Z",
+      "side": 1,
+      "message": "will add the copyright info of crisis_rcvry_util.py",
+      "parentUuid": "621d385d_1e0cfeb0",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "8b43dfa78328be321e0c000ed2961a48d3bc9b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "418b4612_c005119d",
         "filename": "util/mchp/gen_pgm_hdr.py",
         "patchSetId": 1
@@ -120,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a89c648_c5a68cd2",
+        "filename": "util/mchp/gen_pgm_hdr.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:09:45Z",
+      "side": 1,
+      "message": "will check and add it",
+      "parentUuid": "418b4612_c005119d",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 70
+      },
+      "revId": "8b43dfa78328be321e0c000ed2961a48d3bc9b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9cd3ffb_3bd53153",
         "filename": "util/mchp/gen_pgm_hdr.py",
         "patchSetId": 1
@@ -131,6 +179,30 @@
       "writtenOn": "2023-02-21T19:30:38Z",
       "side": 1,
       "message": "too much spamming console",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 5
+      },
+      "revId": "8b43dfa78328be321e0c000ed2961a48d3bc9b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b02cd07_90280350",
+        "filename": "util/mchp/gen_pgm_hdr.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:09:45Z",
+      "side": 1,
+      "message": "will remove the unwanted printf",
+      "parentUuid": "c9cd3ffb_3bd53153",
       "range": {
         "startLine": 77,
         "startChar": 1,
