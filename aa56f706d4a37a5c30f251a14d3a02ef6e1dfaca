@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e28c059_3079bd51",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:08:50Z",
+      "side": 1,
+      "message": "will remove it, Noted",
+      "parentUuid": "d4f46288_2fa545d4",
+      "range": {
+        "startLine": 703,
+        "startChar": 1,
+        "endLine": 703,
+        "endChar": 2
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "739641cd_68d9b08e",
         "filename": "util/flash_ec",
         "patchSetId": 21
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "676ee217_0e5a1867",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:08:50Z",
+      "side": 1,
+      "message": "will initilaize/set the uart baudrate with the default/standard baudrate as below \ndut-control uart1_baudrate:115200",
+      "parentUuid": "739641cd_68d9b08e",
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f08f51a_e54e6ae3",
         "filename": "util/flash_ec",
         "patchSetId": 21
@@ -54,6 +96,30 @@
       "writtenOn": "2023-02-21T19:42:38Z",
       "side": 1,
       "message": "dont copy, refer my previous comments, directly use passed binary",
+      "range": {
+        "startLine": 1630,
+        "startChar": 1,
+        "endLine": 1630,
+        "endChar": 72
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83034579_10bc00ed",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:08:50Z",
+      "side": 1,
+      "message": "will take from the passed binary of ec.bin in the flash_ec scripts , passed to python scripts",
+      "parentUuid": "3f08f51a_e54e6ae3",
       "range": {
         "startLine": 1630,
         "startChar": 1,
@@ -89,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f994ee7_1bd191b4",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:08:50Z",
+      "side": 1,
+      "message": "Understand , will have to do absolute path of the binary generation in the python.\nBecause we are calling the python scripts in the flash_ec \npython3 mchp/gen_pgm_hdr.py will generate the relative bin in the current directory.\nwhile calling this scripts is not generating the blob \n File \"mchp/gen_pgm_hdr.py\", line 30, in utility    read_bin_file \u003d open(os.getcwd()+\"/pgm_hdr.bin\", \"rb\")FileNotFoundError: [Errno 2] No such file or directory: \u0027/mnt/host/source/src/platform/ec/util/pgm_hdr.bin",
+      "parentUuid": "7fc4f406_520a1bb7",
+      "range": {
+        "startLine": 1633,
+        "startChar": 1,
+        "endLine": 1633,
+        "endChar": 8
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76697cfe_ca660ef3",
         "filename": "util/flash_ec",
         "patchSetId": 21
@@ -100,6 +190,30 @@
       "writtenOn": "2023-02-21T19:42:38Z",
       "side": 1,
       "message": "not needed",
+      "range": {
+        "startLine": 1635,
+        "startChar": 1,
+        "endLine": 1635,
+        "endChar": 8
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df84223_7ae2f4ef",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:08:50Z",
+      "side": 1,
+      "message": "will remove the sleep 1",
+      "parentUuid": "76697cfe_ca660ef3",
       "range": {
         "startLine": 1635,
         "startChar": 1,
@@ -135,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "849aad80_12bc1833",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1638,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:08:50Z",
+      "side": 1,
+      "message": "Do you want to remove this code ?\nIts to strap the pin, Is it ? It is needed\n\nHold MEC1727 in reset  $ dut-control cold_reset:on\nSet CR_STRAP low  dut-control  fw_up:on \nRelease MEC1727 reset dut-control cold_reset:off",
+      "parentUuid": "6c684025_63dbae00",
+      "range": {
+        "startLine": 1636,
+        "startChar": 0,
+        "endLine": 1638,
+        "endChar": 27
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "431f2bd3_cd61a20d",
         "filename": "util/flash_ec",
         "patchSetId": 21
@@ -146,6 +284,30 @@
       "writtenOn": "2023-02-21T19:42:38Z",
       "side": 1,
       "message": "not needed",
+      "range": {
+        "startLine": 1641,
+        "startChar": 0,
+        "endLine": 1642,
+        "endChar": 27
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6442d12e_916a0825",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:08:50Z",
+      "side": 1,
+      "message": "sleep 1\n\tdut-control uart1_baudrate\n\t\n\tIts not needed, will remove it",
+      "parentUuid": "431f2bd3_cd61a20d",
       "range": {
         "startLine": 1641,
         "startChar": 0,
@@ -181,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97cd3564_75149d65",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:08:50Z",
+      "side": 1,
+      "message": "Is it for reset ? we need reset or not required",
+      "parentUuid": "52c749de_8b91f73b",
+      "range": {
+        "startLine": 1649,
+        "startChar": 0,
+        "endLine": 1652,
+        "endChar": 27
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aaa420ff_10472e93",
         "filename": "util/flash_ec",
         "patchSetId": 21
@@ -204,6 +390,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4be35b1_eccf03c0",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1654,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:08:50Z",
+      "side": 1,
+      "message": "will remove it",
+      "parentUuid": "aaa420ff_10472e93",
+      "range": {
+        "startLine": 1653,
+        "startChar": 0,
+        "endLine": 1654,
+        "endChar": 22
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc04dcb0_64fc6f5c",
         "filename": "util/flash_ec",
         "patchSetId": 21
@@ -215,6 +425,30 @@
       "writtenOn": "2023-02-21T19:42:38Z",
       "side": 1,
       "message": "set the UART back to original rate",
+      "range": {
+        "startLine": 1655,
+        "startChar": 1,
+        "endLine": 1655,
+        "endChar": 5
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9cd855c_8b679b00",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1655,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-22T12:08:50Z",
+      "side": 1,
+      "message": "will initilaize/set the uart baudrate with the default/standard baudrate as below\ndut-control uart1_baudrate:115200",
+      "parentUuid": "dc04dcb0_64fc6f5c",
       "range": {
         "startLine": 1655,
         "startChar": 1,
