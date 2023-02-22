@@ -70,6 +70,30 @@
       },
       "revId": "d5bb4472fc9f5379ac6af358e65257cb8f91767a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ae9e1aa_b06ddf3b",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-22T17:11:30Z",
+      "side": 1,
+      "message": "To clarify things, the config value `CONFIG_BODY_DETECTION_NOTIFY_MODE_CHANGE` hasn\u0027t changed. It\u0027s always had that name since it was added by https://crrev.com/c/3868880.\n\nThe host event that\u0027s sent is being changed from `EC_HOST_EVENT_MODE_CHANGE` to `EC_HOST_EVENT_BODY_DETECT_CHANGE`, to fix the spurious wake bug (b/261141172).\n\n* `EC_HOST_EVENT_MODE_CHANGE`: This is sent when tablet mode changes (enabled or disabled). We added the body detect change as another reason to send it, without realizing the wake bug.\n* `EC_HOST_EVENT_BODY_DETECT_CHANGE`: Is the new host event dedicated purely to body detect changes (lap vs. desk mode), and is not being configured as a wake event.\n\nI\u0027m going to leave the names as they are here, unless someone has something specific in mind they believe is better.",
+      "parentUuid": "cac739ff_843394c7",
+      "range": {
+        "startLine": 118,
+        "startChar": 36,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "d5bb4472fc9f5379ac6af358e65257cb8f91767a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
