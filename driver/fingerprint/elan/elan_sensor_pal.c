@@ -224,6 +224,7 @@ int elan_fp_maintenance(uint16_t *error_state)
 	*error_state &= 0xFC00;
 	sensor_info.num_defective_pixels = 0;
 	sensor_info.sensor_error_code = 0;
+	/* TODO(b/184289118): Request ELAN to rename fp_sensor_maintenance */
 	rv = fp_sensor_maintenance(&sensor_info);
 	LOGE_SA("Maintenance took %d ms", time_since32(start) / MSEC);
 
