@@ -17,5 +17,7 @@
  * otherwise change the detected version in hardware without a rework. See
  * https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/schematics/dragonclaw
  */
-#define CONFIG_TEST_MOCK_LIST MOCK(FPSENSOR_DETECT)
+#define CONFIG_TEST_MOCK_LIST \
+	MOCK(FP_SENSOR)       \
+	MOCK(FPSENSOR_DETECT)
 #endif /* BOARD_HOST */

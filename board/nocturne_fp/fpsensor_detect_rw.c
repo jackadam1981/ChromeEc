@@ -3,13 +3,25 @@
  * found in the LICENSE file.
  */
 
+#include "fpsensor.h"
 #include "fpsensor_detect.h"
+#include "fpsensor_driver.h"
 #include "gpio.h"
 #include "timer.h"
 
 enum fp_sensor_type get_fp_sensor_type(void)
 {
 	return FP_SENSOR_TYPE_FPC;
+}
+
+struct fp_sensor_interface *get_fp_sensor_driver(void)
+{
+	/* TODO: should this be HAVE_PRIVATE_FPC? */
+#ifdef HAVE_PRIVATE
+	return &fp_driver_fpc;
+#else
+	return NULL; /* TODO: something better than NULL? */
+#endif
 }
 
 enum fp_sensor_spi_select get_fp_sensor_spi_select(void)

@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_FPC_PRIVATE_H
 #define __CROS_EC_FPC_PRIVATE_H
 
+#include "fpsensor.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -128,6 +130,11 @@ const char *fp_sensor_get_version(void);
 typedef struct {
 	uint32_t num_defective_pixels;
 } fp_sensor_info_t;
+
+/* TODO(bobbycasey) should probably have an accessor function rather than extern
+ */
+/* FPC specific driver interface structure */
+extern struct fp_sensor_interface fp_driver_fpc;
 
 /**
  * fp_sensor_maintenance runs a test for defective pixels and should

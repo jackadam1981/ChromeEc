@@ -3,19 +3,15 @@
  * found in the LICENSE file.
  */
 
+#include "fpc_private.h"
+#include "fpc_sensor.h"
+
 #include <stddef.h>
 
 #include <include/fpsensor.h>
 #include <include/fpsensor_state.h>
-#include <include/fpsensor_utils.h>
-#if defined(CONFIG_FP_SENSOR_FPC1025) || defined(CONFIG_FP_SENSOR_FPC1035)
-#include "bep/fpc_private.h"
-#elif defined(CONFIG_FP_SENSOR_FPC1145)
-#include "libfp/fpc_private.h"
-#else
-#error "Sensor type not defined!"
-#endif
 
+/* TODO: I think this issue has been resolved, double check! */
 /*
  * TODO(b/164174822): We cannot include fpc_sensor.h here, since
  * the parent fpsensor.h header conditionally excludes fpc_sensor.h
@@ -25,6 +21,8 @@
  * #include "fpc_sensor.h"
  */
 
+/* TODO: should this be HAVE_PRIVATE_FPC? */
+#ifdef HAVE_PRIVATE
 int fpc_fp_maintenance(uint16_t *error_state)
 {
 	int rv;
@@ -34,7 +32,7 @@ int fpc_fp_maintenance(uint16_t *error_state)
 	if (error_state == NULL)
 		return EC_ERROR_INVAL;
 
-	rv = fp_sensor_maintenance(fp_buffer, &sensor_info);
+	rv = fp_sensor_maintenance((uint8_t *)&fp_buffer, &sensor_info);
 	CPRINTS("Maintenance took %d ms", time_since32(start) / MSEC);
 
 	if (rv != 0) {
@@ -51,3 +49,4 @@ int fpc_fp_maintenance(uint16_t *error_state)
 
 	return EC_SUCCESS;
 }
+#endif

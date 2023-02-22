@@ -3,17 +3,10 @@
  * found in the LICENSE file.
  */
 
-#include "common.h"
-#include "test_util.h"
-#include "fpc_private.h"
 #include "board.h"
-
-#ifdef SECTION_IS_RW
-#include "fpc/fpc_sensor.h"
-static const uint32_t fp_sensor_hwid = FP_SENSOR_HWID;
-#else
-static const uint32_t fp_sensor_hwid = UINT32_MAX;
-#endif
+#include "common.h"
+#include "fpsensor.h"
+#include "test_util.h"
 
 /* Hardware-dependent smoke test that makes a SPI transaction with the
  * fingerprint sensor.
@@ -21,9 +14,14 @@ static const uint32_t fp_sensor_hwid = UINT32_MAX;
 test_static int test_fp_check_hwid(void)
 {
 	uint16_t id = 0;
-
+	int rc;
+	const uint32_t fp_sensor_hwid = fp_driver->sensor_hwid;
 	if (IS_ENABLED(SECTION_IS_RW)) {
-		TEST_EQ(fpc_get_hwid(&id), EC_SUCCESS, "%d");
+		struct ec_response_fp_info info;
+		rc = fp_driver->sensor_get_info(&info);
+		TEST_EQ(rc, EC_SUCCESS, "%d");
+		TEST_EQ(info.model_id, 0x123, "%d");
+		// TEST_EQ(info.errors, 0, "%d");
 		/* The lower 4-bits of the sensor hardware id are a
 		 * manufacturing ID that is ok to vary.
 		 */

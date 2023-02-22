@@ -19,6 +19,6 @@
  *   EC_ERROR_INVAL: if size+offset > buffer_size
  *   EC_SUCCESS: otherwise
  */
-int validate_fp_buffer_offset(uint32_t buffer_size, uint32_t offset,
-			      uint32_t size);
+int fp_sensor_validate_buffer_offset(uint32_t buffer_size, uint32_t offset,
+				     uint32_t size);
 #endif /* __CROS_EC_FPSENSOR_UTILS_H */
