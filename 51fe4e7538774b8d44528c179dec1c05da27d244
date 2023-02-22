@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64181fb7_d55e8fdb",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-02-22T00:14:52Z",
+      "side": 1,
+      "message": "It\u0027s the next 1K multiple up from 2K. The minimum size I can use here is 2052-- 1 flash page + header.",
+      "parentUuid": "cb987b3b_1e8622fe",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 28
+      },
+      "revId": "51fe4e7538774b8d44528c179dec1c05da27d244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8ae22db_a5189a7d",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 3
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "good question, if the argument is optional the help message should mention the default used when argument is not included in the command line",
       "parentUuid": "c8ae22db_a5189a7d",
+      "range": {
+        "startLine": 4189,
+        "startChar": 4,
+        "endLine": 4189,
+        "endChar": 11
+      },
+      "revId": "51fe4e7538774b8d44528c179dec1c05da27d244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "867d17ef_14398eb4",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4189,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-02-22T00:14:52Z",
+      "side": 1,
+      "message": "Made this a required arg.",
+      "parentUuid": "4a58229b_a2895f83",
       "range": {
         "startLine": 4189,
         "startChar": 4,
