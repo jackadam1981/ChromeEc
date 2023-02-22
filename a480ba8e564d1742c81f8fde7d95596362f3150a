@@ -75,6 +75,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb592f6a_5780050d",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-22T22:40:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeece742_476aa64c",
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a68a5206_92b7db3d",
@@ -88,6 +106,30 @@
       "writtenOn": "2023-02-21T19:41:24Z",
       "side": 1,
       "message": "Nit - name this `dp_opos` to make it clear that this is a fixed value for display port.\n\nAs a follow-up, a helper macro that initialized the display port VDO could improve readability.",
+      "range": {
+        "startLine": 99,
+        "startChar": 17,
+        "endLine": 99,
+        "endChar": 21
+      },
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef60d87c_ddb97596",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-22T22:40:21Z",
+      "side": 1,
+      "message": "Re-named.  \n\nFor the macro, are you suggesting a macro that calls the VDO macro to initialize things?",
+      "parentUuid": "a68a5206_92b7db3d",
       "range": {
         "startLine": 99,
         "startChar": 17,
@@ -123,6 +165,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47524095_b9c5f065",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-22T22:40:21Z",
+      "side": 1,
+      "message": "Done for the re-name, reserving judgement for the macro helper macro",
+      "parentUuid": "19b9ea76_e9a99495",
+      "range": {
+        "startLine": 86,
+        "startChar": 17,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12f7a967_097ef773",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 13
@@ -134,6 +200,30 @@
       "writtenOn": "2023-02-21T19:07:42Z",
       "side": 1,
       "message": "Nit: weird capitalization",
+      "range": {
+        "startLine": 202,
+        "startChar": 35,
+        "endLine": 202,
+        "endChar": 44
+      },
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25419cdd_e42f3c6b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-22T22:40:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f7a967_097ef773",
       "range": {
         "startLine": 202,
         "startChar": 35,
@@ -167,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f852513_3814bedb",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-22T22:40:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d56a59c7_16bc8b9c",
+      "range": {
+        "startLine": 228,
+        "startChar": 3,
+        "endLine": 228,
+        "endChar": 11
+      },
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07d6b38d_43016453",
@@ -186,6 +300,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cc691dd_2ca51c50",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-22T22:40:21Z",
+      "side": 1,
+      "message": "Cleaner in a way you\u0027re suggesting for this CL, or cleaner in a way that we can address in the cleanup bug?",
+      "parentUuid": "07d6b38d_43016453",
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97c14c3a_6513c466",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 13
@@ -197,6 +329,24 @@
       "writtenOn": "2023-02-21T19:07:42Z",
       "side": 1,
       "message": "If it\u0027s always going to be null, why not just delete that code from the console command?",
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22076f5c_b69385b5",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-22T22:40:21Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m not a huge fan of that console command so I feel alright gutting it.  See lower CL stack now.\n\nAlso, BTW, if you ever need another 1k on volteer you can disable that console command. The USB4 boards appear to be the only ones using it, so I doubt it\u0027s integral to the test infrastructure or anything.",
+      "parentUuid": "97c14c3a_6513c466",
       "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
