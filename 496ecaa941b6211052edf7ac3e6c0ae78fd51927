@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b39653e0_370adfbc",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-22T01:24:43Z",
+      "side": 1,
+      "message": "so, if max tx buffer on the DUT is 2K in size, why does this value need to be larger than that?",
+      "revId": "496ecaa941b6211052edf7ac3e6c0ae78fd51927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ddac4ae_c96d1c95",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-22T01:24:43Z",
+      "side": 1,
+      "message": "why does this have to change?",
+      "revId": "496ecaa941b6211052edf7ac3e6c0ae78fd51927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
