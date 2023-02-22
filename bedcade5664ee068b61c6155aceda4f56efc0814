@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "455fe1e5_4a08312e",
+        "filename": "zephyr/app/ec/include/zephyr_custom_log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-22T18:11:19Z",
+      "side": 1,
+      "message": "This is missing a all the cprintf cprints that are not going directly to ccprintf. You need to undef cprintf and cprints instead.",
+      "revId": "bedcade5664ee068b61c6155aceda4f56efc0814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
