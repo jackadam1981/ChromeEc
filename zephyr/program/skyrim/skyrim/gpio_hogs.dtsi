@@ -1,0 +1,525 @@
+/* GPIO Hogs */
+&gpioc {
+	ccd_mode_odl {
+		gpio-hog;
+		gpios = <6 (GPIO_SINGLE_ENDED | GPIO_LINE_OPEN_DRAIN)>;
+		output-high;
+	};
+	pg_pwr_s5 {
+		gpio-hog;
+		gpios = <0 0>;
+		input;
+		line-names = "GPIO_S5_PGOOD";
+	};
+	ec_soc_rsmrst_l {
+		gpio-hog;
+		gpios = <5 0>;
+		output-low;
+		line-names = "GPIO_PCH_RSMRST_L";
+	};
+	usb_c1_tcpc_int_odl {
+		gpio-hog;
+		gpios = <7 0>;
+		input;
+		line-names = "GPIO_USB_C1_TCPC_INT_ODL";
+	};
+	tablet_mode_l {
+		gpio-hog;
+		gpios = <1 0>;
+		input;
+		line-names = "GPIO_TABLET_MODE_L";
+	};
+};
+&gpiob {
+	ec_gsc_packet_mode {
+		gpio-hog;
+		gpios = <1 0>;
+		output-low;
+		line-names = "GPIO_PACKET_MODE_EN";
+	};
+	pg_pcore_s0_r_od {
+		gpio-hog;
+		gpios = <6 0>;
+		input;
+		line-names = "GPIO_S0_PGOOD";
+	};
+	en_pwr_s5 {
+		gpio-hog;
+		gpios = <7 0>;
+		output-low;
+		line-names = "GPIO_EN_PWR_A";
+	};
+	ec_sc_rst {
+		gpio-hog;
+		gpios = <0 0>;
+		output-low;
+	};
+	ec_i2c_usb_a0_c0_scl {
+		gpio-hog;
+		gpios = <5 0>;
+		input;
+	};
+	ec_i2c_usb_a0_c0_sda {
+		gpio-hog;
+		gpios = <4 0>;
+		input;
+	};
+	ec_i2c_soc_sic {
+		gpio-hog;
+		gpios = <3 (GPIO_VOLTAGE_1P8)>;
+		input;
+	};
+	ec_i2c_soc_sid {
+		gpio-hog;
+		gpios = <2 (GPIO_VOLTAGE_1P8)>;
+		input;
+	};
+};
+&gpiod {
+	mech_pwr_btn_odl {
+		gpio-hog;
+		gpios = <2 0>;
+		input;
+		line-names = "GPIO_POWER_BUTTON_L";
+	};
+	prochot_odl {
+		gpio-hog;
+		gpios = <5 (GPIO_SINGLE_ENDED | GPIO_LINE_OPEN_DRAIN)>;
+		output-high;
+		line-names = "GPIO_CPU_PROCHOT";
+	};
+	usb_c1_ppc_int_odl {
+		gpio-hog;
+		gpios = <4 0>;
+		input;
+		line-names = "GPIO_USB_C1_PPC_INT_ODL";
+	};
+	ec_soc_pwr_good {
+		gpio-hog;
+		gpios = <3 0>;
+		output-low;
+	};
+	ec_wp_l {
+		gpio-hog;
+		gpios = <7 (GPIO_ACTIVE_LOW)>;
+		input;
+	};
+	ec_i2c_usbc_mux_scl {
+		gpio-hog;
+		gpios = <1 0>;
+		input;
+	};
+	ec_i2c_usbc_mux_sda {
+		gpio-hog;
+		gpios = <0 0>;
+		input;
+	};
+};
+&gpio6 {
+	slp_s3_l {
+		gpio-hog;
+		gpios = <1 0>;
+		input;
+		line-names = "GPIO_PCH_SLP_S3_L";
+	};
+	hub_rst {
+		gpio-hog;
+		gpios = <6 0>;
+		output-high;
+	};
+	volup_btn_odl {
+		gpio-hog;
+		gpios = <7 (GPIO_PULL_UP)>;
+		input;
+		line-names = "GPIO_VOLUME_UP_L";
+	};
+	pg_lpddr5_s0_od {
+		gpio-hog;
+		gpios = <0 0>;
+		input;
+	};
+};
+&gpio7 {
+	slp_s5_l {
+		gpio-hog;
+		gpios = <2 0>;
+		input;
+		line-names = "GPIO_PCH_SLP_S5_L";
+	};
+	ec_sys_rst_l {
+		gpio-hog;
+		gpios = <6 (GPIO_SINGLE_ENDED | GPIO_LINE_OPEN_DRAIN)>;
+		output-high;
+		line-names = "GPIO_SYS_RESET_L";
+	};
+	usb_c0_ppc_int_odl {
+		gpio-hog;
+		gpios = <5 0>;
+		input;
+		line-names = "GPIO_USB_C0_PPC_INT_ODL";
+	};
+	en_pwr_s3 {
+		gpio-hog;
+		gpios = <4 0>;
+		output-low;
+	};
+	pg_lpddr5_s3_od {
+		gpio-hog;
+		gpios = <3 0>;
+		input;
+	};
+	voldn_btn_odl {
+		gpio-hog;
+		gpios = <0 (GPIO_PULL_UP)>;
+		input;
+		line-names = "GPIO_VOLUME_DOWN_L";
+	};
+};
+&gpio0 {
+	acok_od {
+		gpio-hog;
+		gpios = <0 0>;
+		input;
+		line-names = "GPIO_AC_PRESENT";
+	};
+	ec_soc_wake_l {
+		gpio-hog;
+		gpios = <3 0>;
+		output-high;
+	};
+	lid_open {
+		gpio-hog;
+		gpios = <2 0>;
+		input;
+		line-names = "GPIO_LID_OPEN";
+	};
+};
+&gpiof {
+	en_pwr_s0_r {
+		gpio-hog;
+		gpios = <1 0>;
+		output-low;
+	};
+	usb_c0_hpd {
+		gpio-hog;
+		gpios = <5 0>;
+		output-low;
+		line-names = "GPIO_USB_C0_DP_HPD";
+	};
+	usb_c1_hpd {
+		gpio-hog;
+		gpios = <4 0>;
+		output-low;
+		line-names = "GPIO_USB_C1_DP_HPD";
+	};
+	pg_groupc_s0_od {
+		gpio-hog;
+		gpios = <0 0>;
+		input;
+	};
+	ec_i2c_power_scl {
+		gpio-hog;
+		gpios = <3 0>;
+		input;
+	};
+	ec_i2c_power_sda {
+		gpio-hog;
+		gpios = <2 0>;
+		input;
+	};
+};
+&gpioe {
+	en_pwr_pcore_s0_r {
+		gpio-hog;
+		gpios = <1 0>;
+		output-low;
+	};
+	soc_alert_ec_l {
+		gpio-hog;
+		gpios = <2 0>;
+		input;
+	};
+	usb_c0_tcpc_int_odl {
+		gpio-hog;
+		gpios = <0 0>;
+		input;
+		line-names = "GPIO_USB_C0_TCPC_INT_ODL";
+	};
+	usb_hub_fault_q_odl {
+		gpio-hog;
+		gpios = <5 (GPIO_PULL_UP)>;
+		input;
+	};
+	ec_i2c_sensor_scl {
+		gpio-hog;
+		gpios = <4 (GPIO_VOLTAGE_1P8)>;
+		input;
+	};
+	ec_i2c_sensor_sda {
+		gpio-hog;
+		gpios = <3 (GPIO_VOLTAGE_1P8)>;
+		input;
+	};
+};
+&gpioa {
+	usb_c0_bc12_int_odl {
+		gpio-hog;
+		gpios = <4 (GPIO_PULL_UP)>;
+		input;
+		line-names = "GPIO_USB_C0_BC12_INT_ODL";
+	};
+	ec_disable_disp_bl {
+		gpio-hog;
+		gpios = <6 0>;
+		output-high;
+		line-names = "GPIO_ENABLE_BACKLIGHT_L";
+	};
+	ec_i2c_usbc_pd_int {
+		gpio-hog;
+		gpios = <3 0>;
+		input;
+	};
+	ec_soc_int_l {
+		gpio-hog;
+		gpios = <1 0>;
+		output-high;
+		line-names = "GPIO_EC_INT_L";
+	};
+	pcore_ocp_r_l {
+		gpio-hog;
+		gpios = <5 0>;
+		input;
+	};
+	3axis_int_l {
+		gpio-hog;
+		gpios = <2 (GPIO_PULL_UP)>;
+		input;
+	};
+	ec_soc_pwr_btn_l {
+		gpio-hog;
+		gpios = <7 0>;
+		output-high;
+		line-names = "GPIO_PCH_PWRBTN_L";
+	};
+	accel_gyro_int_l {
+		gpio-hog;
+		gpios = <0 0>;
+		input;
+	};
+};
+&gpio9 {
+	usb_c1_bc12_int_odl {
+		gpio-hog;
+		gpios = <6 (GPIO_PULL_UP)>;
+		input;
+		line-names = "GPIO_USB_C1_BC12_INT_ODL";
+	};
+	ec_batt_pres_odl {
+		gpio-hog;
+		gpios = <4 0>;
+		input;
+		line-names = "GPIO_BATT_PRES_ODL";
+	};
+	soc_thermtrip_odl {
+		gpio-hog;
+		gpios = <5 0>;
+		input;
+	};
+	ec_i2c_usb_a1_c1_scl {
+		gpio-hog;
+		gpios = <0 0>;
+		input;
+	};
+	ec_i2c_batt_scl {
+		gpio-hog;
+		gpios = <2 (GPIO_VOLTAGE_1P8)>;
+		input;
+	};
+	ec_i2c_batt_sda {
+		gpio-hog;
+		gpios = <1 (GPIO_VOLTAGE_1P8)>;
+		input;
+	};
+	en_kb_bl {
+		gpio-hog;
+		gpios = <7 0>;
+		output-high;
+		line-names = "GPIO_EN_KEYBOARD_BACKLIGHT";
+	};
+	ec_sfh_int_h {
+		gpio-hog;
+		gpios = <3 0>;
+		output-low;
+	};
+};
+&gpio3 {
+	usb_c0_tcpc_rst_l {
+		gpio-hog;
+		gpios = <4 0>;
+		output-high;
+		line-names = "GPIO_USB_C0_TCPC_RST_L";
+	};
+	usb_c1_tcpc_rst_l {
+		gpio-hog;
+		gpios = <7 0>;
+		output-high;
+		line-names = "GPIO_USB_C1_TCPC_RST_L";
+	};
+	ec_i2c_cbi_scl {
+		gpio-hog;
+		gpios = <3 0>;
+		input;
+	};
+	ec_i2c_cbi_sda {
+		gpio-hog;
+		gpios = <6 0>;
+		input;
+	};
+};
+&gpio5 {
+	usb_fault_odl {
+		gpio-hog;
+		gpios = <0 (GPIO_SINGLE_ENDED | GPIO_LINE_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+		output-high;
+	};
+	ec_espi_rst_l {
+		gpio-hog;
+		gpios = <4 (GPIO_PULL_DOWN)>;
+	};
+	ec_gpio56 {
+		gpio-hog;
+		gpios = <6 (GPIO_PULL_UP)>;
+		input;
+	};
+	sfh_ec_int_h {
+		gpio-hog;
+		gpios = <6 0>;
+		input;
+	};
+};
+&gpio8 {
+	ec_cbi_wp {
+		gpio-hog;
+		gpios = <1 0>;
+		output-low;
+	};
+	ec_i2c_usb_a1_c1_sda {
+		gpio-hog;
+		gpios = <7 0>;
+		input;
+	};
+	ec_flprg2 {
+		gpio-hog;
+		gpios = <6 (GPIO_PULL_UP)>;
+		input;
+	};
+};
+&gpio1 {
+	ec_kso_02_inv {
+		gpio-hog;
+		gpios = <7 (GPIO_ACTIVE_LOW)>;
+		output-high;
+	};
+};
+&ioex_c0_port0 {
+	usb_c0_tcpc_fastsw_ctl_en {
+		gpio-hog;
+		gpios = <4 0>;
+		output-low;
+		line-names = "IOEX_USB_C0_TCPC_FASTSW_CTL_EN";
+	};
+};
+&ioex_c0_port1 {
+	usb_c0_ppc_en_l {
+		gpio-hog;
+		gpios = <0 0>;
+		output-low;
+	};
+	usb_c0_ppc_ilim_3a_en {
+		gpio-hog;
+		gpios = <1 0>;
+		output-low;
+		line-names = "IOEX_USB_C0_PPC_ILIM_3A_EN";
+	};
+	usb_c0_sbu_fault_odl {
+		gpio-hog;
+		gpios = <2 0>;
+		input;
+	};
+	en_pp5000_usb_a0_vbus {
+		gpio-hog;
+		gpios = <5 0>;
+		output-low;
+	};
+	usb_a0_fault_odl {
+		gpio-hog;
+		gpios = <6 0>;
+		input;
+	};
+	usb_c0_sbu_flip {
+		gpio-hog;
+		gpios = <7 0>;
+		output-low;
+		line-names = "IOEX_USB_C0_SBU_FLIP";
+	};
+};
+&ioex_c1_port0 {
+	usb_a1_retimer_en {
+		gpio-hog;
+		gpios = <0 0>;
+		output-low;
+		line-names = "IOEX_USB_A1_RETIMER_EN";
+	};
+	usb_a1_retimer_rst {
+		gpio-hog;
+		gpios = <1 0>;
+		output-low;
+	};
+	usb_c1_in_hpd {
+		gpio-hog;
+		gpios = <3 0>;
+		output-low;
+		line-names = "IOEX_USB_C1_HPD_IN_DB";
+	};
+	usb_c1_tcpc_fastsw_ctl_en {
+		gpio-hog;
+		gpios = <4 0>;
+		output-low;
+		line-names = "IOEX_USB_C1_TCPC_FASTSW_CTL_EN";
+	};
+};
+&ioex_c1_port1 {
+	usb_c1_ppc_en_l {
+		gpio-hog;
+		gpios = <0 0>;
+		output-low;
+	};
+	usb_c1_ppc_ilim_3a_en {
+		gpio-hog;
+		gpios = <1 0>;
+		output-low;
+		line-names = "IOEX_USB_C1_PPC_ILIM_3A_EN";
+	};
+	usb_c1_sbu_fault_odl {
+		gpio-hog;
+		gpios = <2 0>;
+		input;
+		line-names = "IOEX_USB_C1_FAULT_ODL";
+	};
+	en_pp5000_usb_a1_vbus {
+		gpio-hog;
+		gpios = <5 0>;
+		output-low;
+	};
+	usb_a1_fault_db_odl {
+		gpio-hog;
+		gpios = <6 0>;
+		input;
+	};
+	usb_c1_sbu_flip {
+		gpio-hog;
+		gpios = <7 0>;
+		output-low;
+		line-names = "IOEX_USB_C1_SBU_FLIP";
+	};
+};
