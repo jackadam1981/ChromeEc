@@ -23,7 +23,21 @@
 
 #include <stddef.h>
 
+#if FP_SENSOR_IMAGE_SIZE < FP_SENSOR_IMAGE_SIZE_ELAN
+#error Insufficient image buffer size
+#endif
+
+#if FP_ALGORITHM_TEMPLATE_SIZE < FP_ALGORITHM_TEMPLATE_SIZE_ELAN
+#error insufficient template buffer size
+#endif
+
+#if FP_MAX_FINGER_COUNT < FP_MAX_FINGER_COUNT_ELAN
+#error insufficient number of finger buffer templates
+#endif
+
 static uint16_t errors;
+
+#define FP_SENSOR_RES_BPP_ELAN (8)
 
 /* Sensor description */
 static struct ec_response_fp_info ec_fp_sensor_info = {
@@ -43,7 +57,7 @@ static struct ec_response_fp_info ec_fp_sensor_info = {
 /**
  * set fingerprint sensor into power saving mode
  */
-void fp_sensor_low_power(void)
+void fp_sensor_low_power_elan(void)
 {
 	elan_woe_mode();
 }
@@ -51,7 +65,7 @@ void fp_sensor_low_power(void)
 /**
  * Reset and initialize the sensor IC
  */
-int fp_sensor_init(void)
+int fp_sensor_init_elan(void)
 {
 	CPRINTF("========%s=======\n", __func__);
 
@@ -69,7 +83,7 @@ int fp_sensor_init(void)
 /**
  * Deinitialize the sensor IC
  */
-int fp_sensor_deinit(void)
+int fp_sensor_deinit_elan(void)
 {
 	CPRINTF("========%s=======\n", __func__);
 	return elan_fp_deinit();
@@ -82,7 +96,7 @@ int fp_sensor_deinit(void)
  *
  * @return EC_SUCCESS on success otherwise error.
  */
-int fp_sensor_get_info(struct ec_response_fp_info *resp)
+int fp_sensor_get_info_elan(struct ec_response_fp_info *resp)
 {
 	int ret = 0;
 
@@ -118,8 +132,8 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
  * - EC_MKBP_FP_ERR_MATCH_LOW_COVERAGE when matching could not be performed
  *   due to finger covering too little area of the sensor
  */
-int fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,
-		    int32_t *match_index, uint32_t *update_bitmap)
+int fp_finger_match_elan(void *templ, uint32_t templ_count, uint8_t *image,
+			 int32_t *match_index, uint32_t *update_bitmap)
 {
 	CPRINTF("========%s=======\n", __func__);
 	return elan_match(templ, templ_count, image, match_index,
@@ -132,7 +146,7 @@ int fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,
  * @return 0 on success.
  *
  */
-int fp_enrollment_begin(void)
+int fp_enrollment_begin_elan(void)
 {
 	CPRINTF("========%s=======\n", __func__);
 	return elan_enrollment_begin();
@@ -148,7 +162,7 @@ int fp_enrollment_begin(void)
  *
  * @return 0 on success or a negative error code.
  */
-int fp_enrollment_finish(void *templ)
+int fp_enrollment_finish_elan(void *templ)
 {
 	CPRINTF("========%s=======\n", __func__);
 	return elan_enrollment_finish(templ);
@@ -169,7 +183,7 @@ int fp_enrollment_finish(void *templ)
  * - EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE when image could not be used due to
  *   finger covering too little area of the sensor
  */
-int fp_finger_enroll(uint8_t *image, int *completion)
+int fp_finger_enroll_elan(uint8_t *image, int *completion)
 {
 	CPRINTF("========%s=======\n", __func__);
 	return elan_enroll(image, completion);
@@ -181,7 +195,7 @@ int fp_finger_enroll(uint8_t *image, int *completion)
  * fp_sensor_configure_detect needs to be called to restore finger detection
  * functionality.
  */
-void fp_sensor_configure_detect(void)
+void fp_sensor_configure_detect_elan(void)
 {
 	CPRINTF("========%s=======\n", __func__);
 	elan_woe_mode();
@@ -210,7 +224,7 @@ void fp_sensor_configure_detect(void)
  * - FP_SENSOR_TOO_FAST on finger removed before image was captured
  * - FP_SENSOR_LOW_SENSOR_COVERAGE on sensor not fully covered by finger
  */
-int fp_sensor_acquire_image_with_mode(uint8_t *image_data, int mode)
+int fp_sensor_acquire_image_with_mode_elan(uint8_t *image_data, int mode)
 {
 	CPRINTF("========%s=======\n", __func__);
 	return elan_sensor_acquire_image_with_mode(image_data, mode);
@@ -224,7 +238,7 @@ int fp_sensor_acquire_image_with_mode(uint8_t *image_data, int mode)
  * - FINGER_PARTIAL
  * - FINGER_PRESENT
  */
-enum finger_state fp_sensor_finger_status(void)
+enum finger_state fp_sensor_finger_status_elan(void)
 {
 	CPRINTF("========%s=======\n", __func__);
 	return elan_sensor_finger_status();
@@ -239,7 +253,7 @@ enum finger_state fp_sensor_finger_status(void)
  * @return EC_ERROR_HW_INTERNAL on error (such as finger on sensor)
  * @return EC_SUCCESS on success
  */
-int fp_maintenance(void)
+int fp_maintenance_elan(void)
 {
 	CPRINTF("========%s=======\n", __func__);
 	return elan_fp_maintenance(&errors);
@@ -261,4 +275,33 @@ void init_trng(void)
 void exit_trng(void)
 {
 	trng_exit();
+}
+
+struct fp_sensor_interface fp_driver_elan = {
+	.sensor_type = FP_SENSOR_TYPE_ELAN,
+	.sensor_hwid = PID,
+	.sensor_init = &fp_sensor_init_elan,
+	.sensor_deinit = &fp_sensor_deinit_elan,
+	.sensor_get_info = &fp_sensor_get_info_elan,
+	.sensor_low_power = &fp_sensor_low_power_elan,
+	.sensor_configure_detect_ = &fp_sensor_configure_detect_elan,
+	.sensor_finger_status_ = &fp_sensor_finger_status_elan,
+	.sensor_acquire_image_with_mode_ =
+		&fp_sensor_acquire_image_with_mode_elan,
+	.finger_enroll = &fp_finger_enroll_elan,
+	.finger_match = &fp_finger_match_elan,
+	.enrollment_begin = &fp_enrollment_begin_elan,
+	.enrollment_finish = &fp_enrollment_finish_elan,
+	.maintenance = &fp_maintenance_elan,
+	.algorithm_template_size = FP_ALGORITHM_TEMPLATE_SIZE_ELAN,
+	.encrypted_template_size =
+		FP_ALGORITHM_TEMPLATE_SIZE_ELAN + FP_POSITIVE_MATCH_SALT_BYTES +
+		sizeof(struct ec_fp_template_encryption_metadata),
+	.res_x = FP_SENSOR_RES_X_ELAN,
+	.res_y = FP_SENSOR_RES_Y_ELAN
+};
+
+struct fp_sensor_interface *fp_driver_get_elan(void)
+{
+	return &fp_driver_elan;
 }
