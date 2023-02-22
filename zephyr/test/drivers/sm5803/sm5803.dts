@@ -1,0 +1,36 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/*
+sm5803 {
+	compatible = "cros,sm5803-emul";
+	status = "okay";
+};
+*/
+
+&i2c0 {
+	sm5803_emul: sm5803@32 {
+		compatible = "cros,sm5803-emul";
+		status = "okay";
+		reg = <0x32>;
+	};
+/*
+	sm5803_main_emul: sm5803@30 {
+		compatible = "cros,sm5803-main-emul";
+		status = "okay";
+		reg = <0x30>;
+	};
+	sm5803_meas_emul: sm5803@31 {
+		compatible = "cros,sm5803-meas-emul";
+		status = "okay";
+		reg = <0x31>;
+	};
+	sm5803_chg_emul: sm5803@32 {
+		compatible = "cros,sm5803-chg-emul";
+		status = "okay";
+		reg = <0x32>;
+	};
+*/
+};
