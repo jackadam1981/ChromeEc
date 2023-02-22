@@ -46,6 +46,30 @@
       },
       "revId": "d5bb4472fc9f5379ac6af358e65257cb8f91767a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac739ff_843394c7",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-22T01:58:44Z",
+      "side": 1,
+      "message": "just wanted to make sure this config name is as appropriate as it was\npreviously - before `EC_HOST_EVENT_MODE_CHANGE` was\n\"renamed\" to `EC_HOST_EVENT_BODY_DETECT_CHANGE`.\n\nyour call.",
+      "parentUuid": "3311f342_0beaebb0",
+      "range": {
+        "startLine": 118,
+        "startChar": 36,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "d5bb4472fc9f5379ac6af358e65257cb8f91767a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
