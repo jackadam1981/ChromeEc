@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0533168f_ebe7da9a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-22T17:36:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure either. The order of header files should follow https://google.github.io/styleguide/cppguide.html#Names_and_Order_of_Includes. It looks like this moved the C headers (`assert.h`, `ctype.h`, etc.) to the wrong location. Let\u0027s keep them how they were.",
+      "parentUuid": "06ec7451_916b5490",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "2e4106701d5edb0575ba8eb759733df02b310af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71978c2f_3c89156b",
         "filename": "util/ectool.cc",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "writtenOn": "2023-02-18T01:19:08Z",
       "side": 1,
       "message": "Shall I use the ParseFlags function here? I cannot use printf with std::string so I used std::cout??",
+      "range": {
+        "startLine": 1784,
+        "startChar": 0,
+        "endLine": 1792,
+        "endChar": 50
+      },
+      "revId": "2e4106701d5edb0575ba8eb759733df02b310af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea50c089_e5c7c574",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1792,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-22T17:36:36Z",
+      "side": 1,
+      "message": "`std::string` has a method called `c_str()` that will return the C-style string, which can be used with `printf`.\n\nThe equivalent to `fprintf(stderr, ...` in C++ would be `std:cerr`, not `std::cout`.\n\nFor consistency with the rest of the code, let\u0027s continue to use `fprintf` for now.",
+      "parentUuid": "2bc06067_478b7674",
       "range": {
         "startLine": 1784,
         "startChar": 0,

@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f03a6ab_2979593e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1754,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-22T17:36:36Z",
+      "side": 1,
+      "message": "\u003e Mask blocks things from happening, right?\n\nYes, the mask is logically anded (`\u0026`) with the flags so that only the flags that are also in the mask will be applied.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/flash.c;l\u003d1508-1541;drc\u003d8636762aff20e11da8a99b010550ea3952d5bbc0\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/flash.c;l\u003d867-869;drc\u003d8636762aff20e11da8a99b010550ea3952d5bbc0",
+      "parentUuid": "ccb0eeca_86171831",
+      "range": {
+        "startLine": 1753,
+        "startChar": 1,
+        "endLine": 1754,
+        "endChar": 65
+      },
+      "revId": "8b49c1d6e6fb5b539dcb8b479b53c635039577cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c939b92_23ed959d",
         "filename": "util/ectool.cc",
         "patchSetId": 1

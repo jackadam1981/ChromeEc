@@ -22,6 +22,52 @@
       },
       "revId": "7ac82b1e5d3391b22902ba6d1ae9f382a74ff1a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e167636b_6b2bba7b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1781,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-22T17:36:36Z",
+      "side": 1,
+      "message": "You can get `rv` from `flash_protect_command.Result()`. The check for \"too little data returned\" is handled above when calling `Run()`:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/ec_command.h;l\u003d108-109;drc\u003de819964b669cb9bc97dbda020693d9bc55d539cd",
+      "range": {
+        "startLine": 1774,
+        "startChar": 0,
+        "endLine": 1781,
+        "endChar": 2
+      },
+      "revId": "7ac82b1e5d3391b22902ba6d1ae9f382a74ff1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "234cc5bc_6f32e437",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3242,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-22T17:36:36Z",
+      "side": 1,
+      "message": "Looks like this unrelated change was made. The current formatting is probably wrong, but let\u0027s fix that in a separate CL.",
+      "range": {
+        "startLine": 3219,
+        "startChar": 0,
+        "endLine": 3242,
+        "endChar": 42
+      },
+      "revId": "7ac82b1e5d3391b22902ba6d1ae9f382a74ff1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -22,6 +22,30 @@
       },
       "revId": "33ddd9c21f0888117d0758535f758e7329d4ff2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89c7fecb_e9e7c380",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1799,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-22T17:36:36Z",
+      "side": 1,
+      "message": "Let\u0027s keep the exact same format. I hope that nothing relies on the exact format, but there are many tests that use `ectool` and they might parse the output so changing it could cause problems.",
+      "parentUuid": "63498bc5_c8146f6e",
+      "range": {
+        "startLine": 1796,
+        "startChar": 2,
+        "endLine": 1799,
+        "endChar": 56
+      },
+      "revId": "33ddd9c21f0888117d0758535f758e7329d4ff2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
