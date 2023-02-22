@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90389d18_b3fdcb84",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-22T14:37:12Z",
+      "side": 1,
+      "message": "I think they are values to specify the cmd and cmd status not flags.",
+      "parentUuid": "805b1afc_032bf157",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abcf4b4e_7f04848f",
@@ -722,6 +746,30 @@
       "side": 1,
       "message": "Any update? What\u0027s the current delay?",
       "parentUuid": "792c705f_cde44d2e",
+      "range": {
+        "startLine": 636,
+        "startChar": 11,
+        "endLine": 636,
+        "endChar": 30
+      },
+      "revId": "88dfb7c23dafda5b2013e1d4bf439ab1b5370f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fbc9ebd_1ee93f1a",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-22T14:37:12Z",
+      "side": 1,
+      "message": "By changing msleep(10) to msleep(2), the current delay is 350ms - 120ms \u003d 230ms.\n\nI verified firmware update more than 10 times with two different kuldax, I didn\u0027t see any issues.",
+      "parentUuid": "f19d480f_793a5883",
       "range": {
         "startLine": 636,
         "startChar": 11,

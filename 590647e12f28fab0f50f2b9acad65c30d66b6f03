@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc05419a_de9686f5",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-22T14:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d7ba7b_e79984e1",
+      "range": {
+        "startLine": 87,
+        "startChar": 35,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "590647e12f28fab0f50f2b9acad65c30d66b6f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70624a8f_257ceacc",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-02-21T19:37:00Z",
       "side": 1,
       "message": "nit: cmd |\u003d *id",
+      "range": {
+        "startLine": 416,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 17
+      },
+      "revId": "590647e12f28fab0f50f2b9acad65c30d66b6f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba87b1c_f4c3ce40",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-22T14:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70624a8f_257ceacc",
       "range": {
         "startLine": 416,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b740e5a_68db108c",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-22T14:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f5789e_d96eaf87",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 11
+      },
+      "revId": "590647e12f28fab0f50f2b9acad65c30d66b6f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11b34f25_317fe9ff",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f740ff0_ee11e4e0",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-22T14:37:12Z",
+      "side": 1,
+      "message": "Initially I used cnt, then I added the timer. Removed cnt, one timeout is enough.",
+      "parentUuid": "11b34f25_317fe9ff",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 19
+      },
+      "revId": "590647e12f28fab0f50f2b9acad65c30d66b6f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0acce15d_7614a5ef",
@@ -123,6 +219,30 @@
       "writtenOn": "2023-02-21T19:37:00Z",
       "side": 1,
       "message": "Can you make the caller print this? This isn\u0027t expected (from the API name).",
+      "range": {
+        "startLine": 468,
+        "startChar": 2,
+        "endLine": 468,
+        "endChar": 40
+      },
+      "revId": "590647e12f28fab0f50f2b9acad65c30d66b6f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9c14e9_022cb594",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-22T14:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0acce15d_7614a5ef",
       "range": {
         "startLine": 468,
         "startChar": 2,

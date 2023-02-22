@@ -215,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fdb2ce4_cecaf92e",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-22T14:37:12Z",
+      "side": 1,
+      "message": "In PS 17, you suggested that:\n```\nThis should be \u0027\u0026\u0027? Currently, you won\u0027t catch:\n\n   CPS8200_CMD_STATUS(u32) \u003d\u003d CMD_STATUS_FAIL | CMD_STATUS_ILLEGAL\nor any cases with other flags.\n```\n\nI think that\u0027s based on the CMD_STATUS_FAIL, CMD_STATUS_ILLEGAL ...etc are flags. However I think they are values to specify the cmd status not flags (that\u0027s why I remove BIT() in the latest PS). \n\nIf I use \u0027\u0026\u0027 instead of \u0027\u003d\u003d\u0027:\n\n`if (CPS8200_CMD_STATUS(u32) \u0026 CMD_STATUS_FAIL || CPS8200_CMD_STATUS(u32) \u0026 CMD_STATUS_ILLEGAL)`\n\nthen if `CPS8200_CMD_STATUS(u32) \u003d CMD_STATUS_RUNNING` will be true because CMD_STATUS_RUNNING \u003d 0x10, CMD_STATUS_FAIL \u003d 0x30.",
+      "parentUuid": "6d608aff_bc8170dc",
+      "range": {
+        "startLine": 451,
+        "startChar": 30,
+        "endLine": 451,
+        "endChar": 32
+      },
+      "revId": "76f389e5a384de8b4ef8af131ea59c1d64bc317c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2c50d4b_ce4e380e",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 17
