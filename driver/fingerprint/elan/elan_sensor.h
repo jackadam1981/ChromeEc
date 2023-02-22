@@ -6,7 +6,7 @@
 #ifndef CROS_EC_DRIVER_FINGERPRINT_ELAN_ELAN_SENSOR_H
 #define CROS_EC_DRIVER_FINGERPRINT_ELAN_ELAN_SENSOR_H
 #include "common.h"
-#include "ec_commands.h"
+#include "fpsensor.h"
 #include "fpsensor_types.h"
 
 /* Sensor pixel resolution */
@@ -180,4 +180,12 @@ int elan_fp_maintenance(uint16_t *error_state);
  * @return EC_SUCCESS on success otherwise error.
  */
 int elan_fp_deinit(void);
+
+/**
+ * Returns the ELAN sensor driver structure
+ *
+ * @return fp_sensor_interface
+ */
+struct fp_sensor_interface *fp_driver_get_elan(void);
+
 #endif

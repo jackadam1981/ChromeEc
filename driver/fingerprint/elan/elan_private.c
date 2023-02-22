@@ -262,3 +262,31 @@ void exit_trng(void)
 {
 	trng_exit();
 }
+
+struct fp_sensor_interface fp_driver_elan = {
+	.sensor_type = FP_SENSOR_TYPE_ELAN,
+	.sensor_hwid = PID,
+	.sensor_init = &fp_sensor_init,
+	.sensor_deinit = &fp_sensor_deinit,
+	.sensor_get_info = &fp_sensor_get_info,
+	.sensor_low_power = &fp_sensor_low_power,
+	.sensor_configure_detect = &fp_sensor_configure_detect,
+	.sensor_finger_status = &fp_sensor_finger_status,
+	.sensor_acquire_image_with_mode = &fp_sensor_acquire_image_with_mode,
+	.finger_enroll = &fp_finger_enroll,
+	.finger_match = &fp_finger_match,
+	.enrollment_begin = &fp_enrollment_begin,
+	.enrollment_finish = &fp_enrollment_finish,
+	.maintenance = &fp_maintenance,
+	.algorithm_template_size = FP_ALGORITHM_TEMPLATE_SIZE_ELAN,
+	.encrypted_template_size =
+		FP_ALGORITHM_TEMPLATE_SIZE_ELAN + FP_POSITIVE_MATCH_SALT_BYTES +
+		sizeof(struct ec_fp_template_encryption_metadata),
+	.res_x = FP_SENSOR_RES_X_ELAN,
+	.res_y = FP_SENSOR_RES_Y_ELAN
+};
+
+struct fp_sensor_interface *fp_driver_get_elan(void)
+{
+	return &fp_driver_elan;
+}
