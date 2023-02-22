@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e69b5c_e1dedeff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-02-22T23:56:08Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f8272cf5_fccd168e",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "ad77fa8ab1cfe81502580bf98ce30804d2d3a52e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd8e791a_ad854139",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Adding comments to explain what logic is doing.\n\nThis doesn\u0027t have any side effect on ChromeEC with legacy EC power seq or with shimmed power seq.",
       "parentUuid": "cd8e791a_ad854139",
+      "revId": "ad77fa8ab1cfe81502580bf98ce30804d2d3a52e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d3c8b7_f99a8e12",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-02-22T23:56:08Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a348402c_c7466131",
       "revId": "ad77fa8ab1cfe81502580bf98ce30804d2d3a52e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
