@@ -1,0 +1,28 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: SM5803 charger emulator
+
+compatible: "cros,sm5803-emul"
+
+include: base.yaml
+
+properties:
+  meas-addr:
+    type: int
+    default: 0x31
+    description: |
+      I2C address of the charger measurement registers. This is always 0x31 on
+      hardware.
+  chg-addr:
+    type: int
+    default: 0x32
+    description: |
+      I2C address of the charger control registers. This is always 0x32 on
+      hardware.
+  battery:
+    type: phandle
+    required: false
+    description:
+      Reference to battery emulator.
