@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a64c22_d10ff29b",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-02-22T01:15:51Z",
+      "side": 1,
+      "message": "Please use BUILD_ASSERT to fail earlier",
+      "revId": "a08b40a7ff01f75ec40cc7a7b5f8d02b14fbfc21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
