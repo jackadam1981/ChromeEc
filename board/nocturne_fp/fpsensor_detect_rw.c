@@ -9,12 +9,12 @@
 #include "gpio.h"
 #include "timer.h"
 
-enum fp_sensor_type get_fp_sensor_type(void)
+enum fp_sensor_type fpsensor_detect_get_type(void)
 {
 	return FP_SENSOR_TYPE_FPC;
 }
 
-struct fp_sensor_interface *get_fp_sensor_driver(void)
+struct fp_sensor_interface *fpsensor_detect_get_driver(void)
 {
 	/* TODO: should this be HAVE_PRIVATE_FPC? */
 #ifdef HAVE_PRIVATE
@@ -32,7 +32,7 @@ struct fp_sensor_interface *get_fp_sensor_driver(void)
 	return NULL; /* TODO: something better than NULL? */
 }
 
-enum fp_sensor_spi_select get_fp_sensor_spi_select(void)
+enum fp_sensor_spi_select fpsensor_detect_get_spi_select(void)
 {
 	enum fp_sensor_spi_select ret;
 
