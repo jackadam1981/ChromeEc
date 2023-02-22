@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6dc9734_82abcf8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-22T23:16:18Z",
+      "side": 1,
+      "message": "Some minor comments but overall this looks great!",
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc2c879_e3144015",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-22T23:16:18Z",
+      "side": 1,
+      "message": "just out of curiosity, how much does the image size increase when using `stdio.h`?",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54115527_d6222d8a",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-22T23:16:18Z",
+      "side": 1,
+      "message": "nit: It might be easier to specify to built the `fpmcu` with `EXTRA_CFLAGS\u003d-DCONFIG_CMD_FPSENSOR_DEBUG` since it won\u0027t require making code changes that may accidentally get committed.",
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dbf3e5d_4c667c41",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-22T23:16:18Z",
+      "side": 1,
+      "message": "nit: Maybe just `${BOARD}`",
+      "range": {
+        "startLine": 23,
+        "startChar": 34,
+        "endLine": 23,
+        "endChar": 44
+      },
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2318090_1d0ab0c6",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-22T23:16:18Z",
+      "side": 1,
+      "message": "nit: Maybe just use `${BOARD}`",
+      "range": {
+        "startLine": 27,
+        "startChar": 64,
+        "endLine": 27,
+        "endChar": 76
+      },
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e89a4cd7_a9e94a4f",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-22T23:16:18Z",
+      "side": 1,
+      "message": "Will this create `/tmp/fpimages` if it doesn\u0027t exist? If not then maybe just use `/tmp/img1.png`",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3713fa1c_5b96bc14",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-22T23:16:18Z",
+      "side": 1,
+      "message": "I think this whole function could be replaced with `\u0027\u0027.join([pixel_value_to_hex(pixel) for pixel in image.getdata()])`, although I\u0027m not certain how this would work if we needed to deal with row vs col major. I suppose that could be handled with a transpose.",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 20
+      },
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
