@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55b41a37_c05fb244",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-22T18:38:55Z",
+      "side": 1,
+      "message": "nit: add some meaningful info",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4f46288_2fa545d4",
         "filename": "util/flash_ec",
         "patchSetId": 21
@@ -79,6 +102,24 @@
       "side": 1,
       "message": "will initilaize/set the uart baudrate with the default/standard baudrate as below \ndut-control uart1_baudrate:115200",
       "parentUuid": "739641cd_68d9b08e",
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27800691_27b65afb",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-22T18:38:55Z",
+      "side": 1,
+      "message": "step 1: save the current baudrate \nstep 2: change the rate only if MCHP rate !\u003d current rate\nstep 3: restore saved baudrate",
+      "parentUuid": "676ee217_0e5a1867",
       "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -297,6 +338,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78994327_8ff7b27f",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1638,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-22T18:38:55Z",
+      "side": 1,
+      "message": "replace 3 lines with one line as suggested",
+      "parentUuid": "849aad80_12bc1833",
+      "range": {
+        "startLine": 1636,
+        "startChar": 0,
+        "endLine": 1638,
+        "endChar": 27
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "431f2bd3_cd61a20d",
         "filename": "util/flash_ec",
         "patchSetId": 21
@@ -391,6 +456,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5a0a639_10c477cd",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-22T18:38:55Z",
+      "side": 1,
+      "message": "replace 4 lines with one line as suggested",
+      "parentUuid": "97cd3564_75149d65",
+      "range": {
+        "startLine": 1649,
+        "startChar": 0,
+        "endLine": 1652,
+        "endChar": 27
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aaa420ff_10472e93",
         "filename": "util/flash_ec",
         "patchSetId": 21
@@ -473,6 +562,30 @@
       "side": 1,
       "message": "will initilaize/set the uart baudrate with the default/standard baudrate as below\ndut-control uart1_baudrate:115200",
       "parentUuid": "dc04dcb0_64fc6f5c",
+      "range": {
+        "startLine": 1655,
+        "startChar": 1,
+        "endLine": 1655,
+        "endChar": 5
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef0ff910_47c69f09",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1655,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-22T18:38:55Z",
+      "side": 1,
+      "message": "dont use number , instead use saved val in initial step",
+      "parentUuid": "c9cd855c_8b679b00",
       "range": {
         "startLine": 1655,
         "startChar": 1,
