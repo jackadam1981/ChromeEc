@@ -6,6 +6,7 @@
 #include "common.h"
 #include "console.h"
 #include "fpsensor_detect.h"
+#include "fpsensor_driver.h"
 #include "gpio.h"
 #include "registers.h"
 #include "spi.h"
@@ -56,6 +57,11 @@ void board_init_rw(void)
 	 * Explicitly reset FP_RST_ODL pin to default value.
 	 */
 	gpio_reset(GPIO_FP_RST_ODL);
+
+	fp_driver = get_fp_sensor_driver();
+	if (fp_driver == NULL) {
+		ccprints("Failed to get sensor type!");
+	}
 
 	/* Configure and enable SPI as master for FP sensor */
 	configure_fp_sensor_spi();
