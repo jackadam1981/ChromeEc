@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e8be7e3_44dca07f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-22T22:29:15Z",
+      "side": 1,
+      "message": "driver/retimer:\n\nthere isn\u0027t really anything board specific here.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "c7e924f86708960cb2a245ef03e8846211985b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8962b416_dc0bd9d7",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-22T22:29:15Z",
+      "side": 1,
+      "message": "what happens when there is more than one instance\nof this chip in the system?",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "c7e924f86708960cb2a245ef03e8846211985b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a37322_4da876e4",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-22T22:29:15Z",
+      "side": 1,
+      "message": "not sure `inline` is useful here. the compiler should be able\nto do whatever optimizations are appropriate for local functions.",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "c7e924f86708960cb2a245ef03e8846211985b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1637882_91e173a7",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-22T22:29:15Z",
+      "side": 1,
+      "message": "can this be static?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "c7e924f86708960cb2a245ef03e8846211985b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f8849e8_28170ee7",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-22T22:29:15Z",
+      "side": 1,
+      "message": "can this be static?",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "c7e924f86708960cb2a245ef03e8846211985b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3118c4b9_09c15da4",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-22T22:29:15Z",
+      "side": 1,
+      "message": "i see we have done this in similar drivers.\nthere is no evidence in the datasheets that this a valid\nsequence to wait for the chip to come out of reset.\n\nthe datasheet just says the chip takes 30ms to do\npower-on-reset and the timing diagram labels I2C\nduring this period as \"invalid\".\nit would be safer to delay 30ms before attempting to\naccess the chip.\n\non the other hand we probably don\u0027t get here until after\nboard_reset_pd_mcu() where we implement the post-reset\ndelay(s)... albeit specific to the ps8815.",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 65
+      },
+      "revId": "c7e924f86708960cb2a245ef03e8846211985b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
