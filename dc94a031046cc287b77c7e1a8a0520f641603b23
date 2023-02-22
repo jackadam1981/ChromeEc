@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f1e2795_d77bc362",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-02-22T03:20:32Z",
+      "side": 1,
+      "message": "Do you want to add LOW_COVERAGE_REASON\u003d?",
+      "revId": "dc94a031046cc287b77c7e1a8a0520f641603b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "391c9466_ecdc19f9",
         "filename": "zephyr/shim/src/CMakeLists.txt",
         "patchSetId": 2
@@ -62,6 +79,30 @@
       "side": 1,
       "message": "Also I think the long term goal is to have bc12.c for all zephyr devices. So this block will eventually become `zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_CHARGER bc12.c)`",
       "parentUuid": "8f52ba3d_91d2dbb7",
+      "range": {
+        "startLine": 68,
+        "startChar": 12,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "dc94a031046cc287b77c7e1a8a0520f641603b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e88bdf1_57b6c90e",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-02-22T03:20:32Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "72c430d6_d2feb3b4",
       "range": {
         "startLine": 68,
         "startChar": 12,
