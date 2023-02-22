@@ -217,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8de7182a_30cea61a",
+        "filename": "util/mchp/gen_pgm_hdr.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-22T14:40:32Z",
+      "side": 1,
+      "message": "I agree with Vijay, would actually push the suggestion beyond that. If the scope of this work is to implement a loader that can be distributed with the EC code base then the utility should be rewritten to do just that. At that point I\u0027d imagine it would be natural to merge the functionality of this one with the loader code.",
+      "parentUuid": "cfebb262_1fb9675a",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "8b43dfa78328be321e0c000ed2961a48d3bc9b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "418b4612_c005119d",
         "filename": "util/mchp/gen_pgm_hdr.py",
         "patchSetId": 1
