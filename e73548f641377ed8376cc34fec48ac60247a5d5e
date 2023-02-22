@@ -16,6 +16,24 @@
       "message": "Prasant has kindly agreed to verify with USB4 and TBT mode",
       "revId": "e73548f641377ed8376cc34fec48ac60247a5d5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4240e487_20391dde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-02-22T23:03:51Z",
+      "side": 1,
+      "message": "Tested on Skolas EVT1, with the following docks:\n- Dell WD19TB + HDMI Dummy dongle\n- Anker Thunderbolt4 minidock + TYpe-C passive cable + WiMaxit Portable 15.6\" Type-C display\n\nWith the WD19TB:\n- tast.Mode*.manual mode tests pass 5 iterations (this includes the ModeSwitch, ModeSuspend, ModeHotplug, ModeCrash and ModeReboot tests). I had a solitary failure with ModeReboot, but that is not unexpected (retimer behaviour is not 100% even with the current ToT).\n\nWith the TBT4 dock, the following work:\n- Hotplug/unplug after boot : 5 iterations\n- Warm reboot while plugged, check display enumeration after (also check whether dock is enumerationg as USB4)\n- EC reboot while plugged, check display enumeration after (also check whether dock is enumerationg as USB4)",
+      "parentUuid": "2558e687_5f0333fd",
+      "revId": "e73548f641377ed8376cc34fec48ac60247a5d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
