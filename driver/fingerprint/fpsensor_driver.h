@@ -32,12 +32,6 @@
 #define FP_MAX_FINGER_COUNT 5
 #endif
 
-#if defined(HAVE_PRIVATE) && defined(TEST_BUILD)
-/*
- * For unittest in a private build, enable driver-related code in
- * common/fpsensor/ so that they can be tested (with fpsensor_mock).
- */
-#define HAVE_FP_PRIVATE_DRIVER
-#endif
+struct fp_sensor_interface *fpsensor_detect_get_driver(void);
 
 #endif /* __CROS_EC_DRIVER_FINGERPRINT_FPSENSOR_DRIVER_H_ */
