@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8272cf5_fccd168e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-02-22T22:45:54Z",
+      "side": 1,
+      "message": "I don\u0027t think its something that needs to be fixed in native power seq. In native power seq, we started using zephyr native support instead of shimmed which was indirectly using legacy,looks like timing might be the reason for early execution of hooked  deferred call \"hook_shutdown\"",
+      "parentUuid": "60eaa024_324db5e1",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "ad77fa8ab1cfe81502580bf98ce30804d2d3a52e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd8e791a_ad854139",
         "filename": "common/system_boot_time.c",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2023-02-22T20:08:44Z",
       "side": 1,
       "message": "nit: may be add some comments what the logic does.\nshould this be done only for Native pow seq code? any side effect on ChromeEC code?",
+      "revId": "ad77fa8ab1cfe81502580bf98ce30804d2d3a52e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a348402c_c7466131",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-02-22T22:45:54Z",
+      "side": 1,
+      "message": "Adding comments to explain what logic is doing.\n\nThis doesn\u0027t have any side effect on ChromeEC with legacy EC power seq or with shimmed power seq.",
+      "parentUuid": "cd8e791a_ad854139",
       "revId": "ad77fa8ab1cfe81502580bf98ce30804d2d3a52e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
