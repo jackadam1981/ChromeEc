@@ -10,7 +10,7 @@
 
 #include "common.h"
 #include "ec_commands.h"
-#include "fpsensor_alg.h"
+#include "fpsensor_driver.h"
 #include "fpsensor_types.h"
 #include "fpsensor_utils.h"
 
@@ -34,60 +34,184 @@ extern "C" {
 
 /* --- functions provided by the sensor-specific driver --- */
 
-/**
- * Initialize the connected sensor hardware and put it in a low power mode.
- *
- * @return EC_SUCCESS always
- */
-int fp_sensor_init(void);
+struct fp_sensor_interface {
+	/* Whether there is an ELAN fingerprint sensor or
+	 * FPC sensor.
+	 */
+	const enum fp_sensor_type sensor_type;
 
-/**
- * De-initialize the sensor hardware.
- *
- * @return 0 on success
- * @return negative value on error
- */
-int fp_sensor_deinit(void);
+	/* Hardware-specific sensor identifier */
+	const uint32_t sensor_hwid;
 
-/**
- * Fill the @p ec_response_fp_info buffer with the sensor information
- * as required by the EC_CMD_FP_INFO host command.
- *
- * Fills both the static information and information read from the sensor at
- * runtime.
- *
- * @param[out] resp sensor info
- *
- * @return EC_SUCCESS on success
- * @return EC_RES_ERROR on error
- */
-int fp_sensor_get_info(struct ec_response_fp_info *resp);
+	/*
+	 * Initialize the connected sensor hardware and put
+	 * it in a low power mode.
+	 */
+	int (*sensor_init)(void);
 
-/**
- * Put the sensor in its lowest power state.
- *
- * fp_sensor_configure_detect needs to be called to restore finger detection
- * functionality.
- */
-void fp_sensor_low_power(void);
+	/* De-initialize the sensor hardware.
+	 * @return 0 on success
+	 * @return negative value on error
+	 */
+	int (*sensor_deinit)(void);
 
-/**
- * Configure finger detection.
- *
- * Send the settings to the sensor, so it is properly configured to detect
- * the presence of a finger.
- */
-void fp_sensor_configure_detect(void);
+	/*
+	 * Fill the 'ec_response_fp_info' buffer with the
+	 * sensor information as required by the
+	 * EC_CMD_FP_INFO host command.
+	 *
+	 * Put both the static information and the ones read
+	 * from the sensor at runtime.
+	 *
+	 * @param[out] resp sensor info
+	 *
+	 * @return EC_SUCCESS on success
+	 * @return EC_RES_ERROR on error
+	 */
+	int (*sensor_get_info)(struct ec_response_fp_info *resp);
 
-/**
- * Returns the status of the finger on the sensor.
- * (assumes fp_sensor_configure_detect was called before)
- *
- * @return finger_state
- */
-enum finger_state fp_sensor_finger_status(void);
+	/*
+	 * Put the sensor in its lowest power state.
+	 *
+	 * fp_sensor_configure_detect needs to be called to
+	 * restore finger detection functionality.
+	 */
+	void (*sensor_low_power)(void);
 
-/**
+	/*
+	 * Configure finger detection.
+	 *
+	 * Send the settings to the sensor, so it is
+	 * properly configured to detect the presence of a
+	 * finger.
+	 */
+	/* TODO(b/184101599): Remove "_" suffix. */
+	void (*sensor_configure_detect)(void);
+
+	/*
+	 * Returns the status of the finger on the sensor.
+	 * (assumes fp_sensor_configure_detect was called
+	 * before)
+	 */
+	/* TODO(b/184101599): Remove "_" suffix. */
+	enum finger_state (*sensor_finger_status)(void);
+
+	/*
+	 * Acquires a fingerprint image with specific
+	 * capture mode.
+	 *
+	 * Same as the fp_sensor_acquire_image function
+	 * above, excepted 'mode' can be set to one of the
+	 * FP_CAPTURE_ constants to get a specific image
+	 * type (e.g. a pattern) rather than the default
+	 * one.
+	 */
+	/* TODO(b/184101599): Remove "_" suffix. */
+	int (*sensor_acquire_image_with_mode_)(uint8_t *image_data, int mode);
+
+	/*
+	 * Adds fingerprint image to the current enrollment
+	 * session.
+	 *
+	 * @return a negative value on error or one of the
+	 * following codes:
+	 * - EC_MKBP_FP_ERR_ENROLL_OK when image was
+	 * successfully enrolled
+	 * - EC_MKBP_FP_ERR_ENROLL_IMMOBILE when image
+	 * added, but user should be advised to move finger
+	 * - EC_MKBP_FP_ERR_ENROLL_LOW_QUALITY when image
+	 * could not be used due to low image quality
+	 * - EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE when image
+	 * could not be used due to finger covering too
+	 * little area of the sensor
+	 */
+	int (*finger_enroll)(uint8_t *image, int *completion);
+
+	/*
+	 * Compares given finger image against enrolled
+	 * templates.
+	 *
+	 * The matching algorithm can update the template
+	 * with additional biometric data from the image, if
+	 * it chooses to do so.
+	 *
+	 * @param templ a pointer to the array of template
+	 * buffers.
+	 * @param templ_count the number of buffers in the
+	 * array of templates.
+	 * @param image the buffer containing the finger
+	 * image
+	 * @param match_index index of the matched finger in
+	 * the template array if any.
+	 * @param update_bitmap contains one bit per
+	 * template, the bit is set if the match has updated
+	 * the given template.
+	 * @return negative value on error, else one of the
+	 * following code :
+	 * - EC_MKBP_FP_ERR_MATCH_NO on non-match
+	 * - EC_MKBP_FP_ERR_MATCH_YES for match when
+	 * template was not updated with new data
+	 * - EC_MKBP_FP_ERR_MATCH_YES_UPDATED for match when
+	 * template was updated
+	 * - EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED match,
+	 * but update failed (not saved)
+	 * - EC_MKBP_FP_ERR_MATCH_LOW_QUALITY when matching
+	 * could not be performed due to low image quality
+	 * - EC_MKBP_FP_ERR_MATCH_LOW_COVERAGE when matching
+	 * could not be performed due to finger covering too
+	 * little area of the sensor
+	 */
+	int (*finger_match)(void *templ, uint32_t templ_count, uint8_t *image,
+			    int32_t *match_index, uint32_t *update_bitmap);
+
+	/*
+	 * Start a finger enrollment session.
+	 *
+	 * @return 0 on success or a negative error code.
+	 */
+	int (*enrollment_begin)(void);
+
+	/*
+	 * Generate a template from the finger whose
+	 * enrollment has just being completed.
+	 *
+	 * @param templ the buffer which will receive the
+	 * template. templ can be set to NULL to abort the
+	 * current enrollment process.
+	 *
+	 * @return 0 on success or a negative error code.
+	 */
+	int (*enrollment_finish)(void *templ);
+
+	/**
+	 * Runs a test for defective pixels.
+	 *
+	 * Should be triggered periodically by the client.
+	 * The maintenance command can take several hundred
+	 * milliseconds to run.
+	 *
+	 * @return EC_ERROR_HW_INTERNAL on error (such as
+	 * finger on sensor)
+	 * @return EC_SUCCESS on success
+	 */
+	int (*maintenance)(void);
+
+	/* Size of one unencrypted fingerprint template. */
+	int algorithm_template_size;
+
+	/* Size of one encrypted fingerprint template sent
+	 * to the AP.
+	 */
+	int encrypted_template_size;
+
+	/* Sensor resolution. */
+	int res_x;
+	int res_y;
+};
+
+extern struct fp_sensor_interface *fp_driver;
+
+/*
  * Image captured but quality is too low
  */
 #define FP_SENSOR_LOW_IMAGE_QUALITY 1
@@ -145,6 +269,8 @@ int fp_sensor_acquire_image_with_mode(uint8_t *image_data, int mode);
  * @return EC_SUCCESS on success
  */
 int fp_maintenance(void);
+int fp_sensor_validate_buffer_offset(uint32_t buffer_size, uint32_t offset,
+				     uint32_t size);
 
 #ifdef __cplusplus
 }

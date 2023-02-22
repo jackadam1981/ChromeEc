@@ -6,32 +6,38 @@
 #ifndef CROS_EC_DRIVER_FINGERPRINT_ELAN_ELAN_SENSOR_H
 #define CROS_EC_DRIVER_FINGERPRINT_ELAN_ELAN_SENSOR_H
 #include "common.h"
-#include "ec_commands.h"
+#include "fpsensor.h"
+#include "fpsensor_types.h"
 
 /* Sensor pixel resolution */
 #if defined(CONFIG_FP_SENSOR_ELAN80)
 #define FP_SENSOR_IMAGE_SIZE_ELAN (80 * 80)
 #define FP_SENSOR_RES_X_ELAN 80
 #define FP_SENSOR_RES_Y_ELAN 80
+
 #if defined(CHIP_FAMILY_STM32F4)
 #define FP_ALGORITHM_TEMPLATE_SIZE_ELAN 15000
 #elif defined(CHIP_FAMILY_STM32H7)
 #define FP_ALGORITHM_TEMPLATE_SIZE_ELAN 40960
-#endif
+#endif /* CHIP_FAMILY_STM32F4 */
+
 #define FP_MAX_FINGER_COUNT_ELAN 3
 #elif defined(CONFIG_FP_SENSOR_ELAN515)
 #define FP_SENSOR_IMAGE_SIZE_ELAN (52 * 150)
 #define FP_SENSOR_RES_X_ELAN 52
 #define FP_SENSOR_RES_Y_ELAN 150
+
 #if defined(CHIP_FAMILY_STM32F4)
 #define FP_ALGORITHM_TEMPLATE_SIZE_ELAN 15000
 #elif defined(CHIP_FAMILY_STM32H7)
 #define FP_ALGORITHM_TEMPLATE_SIZE_ELAN 67000
-#endif
-#define FP_MAX_FINGER_COUNT_ELAN 3
-#endif
+#endif /* STM32F4 */
 
-#define FP_SENSOR_RES_BPP_ELAN (8)
+#define FP_MAX_FINGER_COUNT_ELAN 3
+#else
+#define FP_SENSOR_IMAGE_SIZE_ELAN (0)
+#define FP_ALGORITHM_TEMPLATE_SIZE_ELAN (0)
+#endif /* CONFIG_FP_SENSOR_ELAN80 */
 
 /**
  * Set ELAN fingerprint sensor into finger touch detects and power saving mode
@@ -178,4 +184,12 @@ int elan_fp_maintenance(uint16_t *error_state);
  * @return EC_SUCCESS on success otherwise error.
  */
 int elan_fp_deinit(void);
+
+/**
+ * Returns the ELAN sensor driver structure
+ *
+ * @return fp_sensor_interface
+ */
+struct fp_sensor_interface *fp_driver_get_elan(void);
+
 #endif
