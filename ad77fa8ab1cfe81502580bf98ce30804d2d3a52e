@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60eaa024_324db5e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-22T20:08:44Z",
+      "side": 1,
+      "message": "is that something that can be fixed in native power sequencing ?",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "ad77fa8ab1cfe81502580bf98ce30804d2d3a52e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd8e791a_ad854139",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-22T20:08:44Z",
+      "side": 1,
+      "message": "nit: may be add some comments what the logic does.\nshould this be done only for Native pow seq code? any side effect on ChromeEC code?",
+      "revId": "ad77fa8ab1cfe81502580bf98ce30804d2d3a52e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
