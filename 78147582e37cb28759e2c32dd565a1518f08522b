@@ -16,6 +16,75 @@
       "message": "Added Caveh as a reviewer, as he is more familiar with the bug.",
       "revId": "78147582e37cb28759e2c32dd565a1518f08522b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96bb34be_148417a6",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-23T19:30:03Z",
+      "side": 1,
+      "message": "please double check formatting by running clang-format.\ndid this pass the repo upload hooks?",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "78147582e37cb28759e2c32dd565a1518f08522b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7564367c_6e47f7c2",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-23T19:30:03Z",
+      "side": 1,
+      "message": "if PLTRST is low, wouldn\u0027t you also set `ap_booted` to false?\n\ni think that\u0027ll mean we won\u0027t have a hard dependency\non the `RESET_CNT` event coming in (i.e. being called).",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "78147582e37cb28759e2c32dd565a1518f08522b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602e88a8_47900aad",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-23T19:30:03Z",
+      "side": 1,
+      "message": "do you need this condition check?",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 16
+      },
+      "revId": "78147582e37cb28759e2c32dd565a1518f08522b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
