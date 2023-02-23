@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9e3e1d9_39f1a20a",
+        "filename": "board/constitution/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-23T07:38:08Z",
+      "side": 0,
+      "message": "do you need to declare these as unused or do they get used in\na different way in a later patch?",
+      "range": {
+        "startLine": 90,
+        "startChar": 37,
+        "endLine": 90,
+        "endChar": 46
+      },
+      "revId": "7855bedf46aa476bdd87c596c2d7f939cf5161bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
