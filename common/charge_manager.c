@@ -92,6 +92,8 @@ static timestamp_t registration_time[CHARGE_PORT_COUNT];
  * minimum ceiling taking effect.
  */
 static int charge_ceil[CHARGE_PORT_COUNT][CEIL_REQUESTOR_COUNT];
+/* Flag if PD ceil has been enforced. */
+static bool pd_ceil_enforced[CHARGE_PORT_COUNT];
 
 /* Dual-role capability of attached partner port */
 static enum dualrole_capabilities dualrole_capability[CHARGE_PORT_COUNT];
@@ -878,7 +880,8 @@ static void charge_manager_refresh(void)
 
 	/* Change the charge limit + charge port/supplier if modified. */
 	if (new_port != charge_port || new_charge_current != charge_current ||
-	    new_supplier != charge_supplier) {
+	    new_supplier != charge_supplier ||
+	    (pd_ceil_enforced[charge_port] && charge_port == new_port)) {
 #ifdef HAS_TASK_CHG_RAMP
 		chg_ramp_charge_supplier_change(new_port, new_supplier,
 						new_charge_current,
@@ -896,6 +899,7 @@ static void charge_manager_refresh(void)
 #endif /* HAS_TASK_CHG_RAMP */
 
 		power_changed = 1;
+		pd_ceil_enforced[charge_port] = false;
 
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
@@ -1284,10 +1288,23 @@ void charge_manager_force_ceil(int port, int ceil)
 	/*
 	 * Force our input current to ceil if we're exceeding it, without
 	 * waiting for our deferred task to run.
+	 *
+	 * Besides, set pd_ceil_enforced flag, if the CL has been forced.
+	 * The flag will enforce the charge_manager to set the new CL to prevent
+	 * a race condition. There are two consecutive CL changes in
+	 * PE_SNK_SELECT_CAPABILITY (to apply PSNKSTDBY), and in
+	 * PE_SNK_TRANSITION_SINK(to lift PSNKSTDBY) respectively. The time
+	 * frame of two hook calls is short, and sometimes the first
+	 * charge_manager_refresh hook may be in process when
+	 * the second hook is deferred. This will cause the CL evaluation not
+	 * detecting the charge_ceil applied from the PE_SNK_SELECT_CAPABILITY,
+	 * and hence the CL has been capped at the PSNKSTDBY.
 	 */
-	if (left_safe_mode && port == charge_port && ceil < charge_current)
+	if (left_safe_mode && port == charge_port && ceil < charge_current) {
+		pd_ceil_enforced[charge_port] = true;
 		board_set_charge_limit(port, CHARGE_SUPPLIER_PD, ceil,
 				       charge_current_uncapped, charge_voltage);
+	}
 
 	/*
 	 * Now inform charge_manager so it stays in sync with the state of
