@@ -3748,7 +3748,7 @@
 /* Support PS/2 interface */
 #undef CONFIG_PS2
 
-/* Support PSE */
+/* Support Power Sourcing Equipment(PSE) */
 #undef CONFIG_PSE
 
 /*

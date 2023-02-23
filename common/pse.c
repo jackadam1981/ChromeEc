@@ -123,8 +123,6 @@ static int command_pse(int argc, const char **argv)
 	int port;
 
 	/*
-	 *  TODO(b/156399232): endeavour: PSE controller reset by PLTRST
-	 *
 	 *  Initialization does not reliably work after reset because the device
 	 *  is held in reset by the AP. Running this command after boot finishes
 	 *  always succeeds. Remove once the reset signal changes.

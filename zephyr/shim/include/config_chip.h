@@ -836,7 +836,7 @@ extern char mock_jump_data[CONFIG_PLATFORM_EC_PRESERVED_END_OF_RAM_SIZE];
 #endif
 
 #undef CONFIG_PSE
-#ifdef PLATFORM_EC_PWM_HC
+#ifdef PLATFORM_EC_PSE
 #define CONFIG_PSE
 #endif
 
