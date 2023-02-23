@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b14f2524_d57eabc2",
+        "filename": "zephyr/mock/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-23T18:01:44Z",
+      "side": 1,
+      "message": "There are some files I needed to import i.e, header files. Without them they seemed to be failing with files not found error. Hence added them.",
+      "parentUuid": "8773d5e9_fb047543",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "1ab3915b3e7b3bfc0d3c5f16be512098a2e19d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec444cce_9b2f367a",
         "filename": "zephyr/subsys/ap_pwrseq/include/power_signals.h",
         "patchSetId": 6
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67e794e2_2c7eaaa0",
+        "filename": "zephyr/subsys/ap_pwrseq/include/power_signals.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-23T18:01:44Z",
+      "side": 1,
+      "message": "Actually the methods which are being mocked from mock folder are using enum power_signal as one of function parameters. The dt config is already in place to derive members from it but it\u0027s at test level. During the test run I see errors from mock folder as the power_signal type is incomplete if read from DT and being used already. Hence hardcoded them.",
+      "parentUuid": "ec444cce_9b2f367a",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "1ab3915b3e7b3bfc0d3c5f16be512098a2e19d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "400cc880_7c28ea18",
         "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
         "patchSetId": 6
@@ -60,6 +108,24 @@
       "writtenOn": "2023-02-23T17:49:12Z",
       "side": 1,
       "message": "I think that the idea of the mock module would be to skip linking to this driver and use the fake one instead. That is, you should not need to modifiy this driver and adding test_mockable at all.",
+      "revId": "1ab3915b3e7b3bfc0d3c5f16be512098a2e19d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7605276_cb957081",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-23T18:01:44Z",
+      "side": 1,
+      "message": "For mocking from the mock folder these methods needed to be attached with test_moackable. If I remove it, the mocking from mock folder is failing with redefinition error.",
+      "parentUuid": "400cc880_7c28ea18",
       "revId": "1ab3915b3e7b3bfc0d3c5f16be512098a2e19d52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
