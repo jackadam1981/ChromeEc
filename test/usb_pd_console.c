@@ -33,6 +33,8 @@ static bool tc_get_current_state_called;
 static bool tc_get_flags_called;
 static bool pe_get_current_state_called;
 static bool pe_get_flags_called;
+static bool pe_is_explicit_contract_called;
+static bool pe_snk_in_epr_mode_called;
 static bool pd_get_dual_role_called;
 static bool board_get_usb_pd_port_count_called;
 static bool pd_srccaps_dump_called;
@@ -69,6 +71,18 @@ uint32_t pe_get_flags(int port)
 {
 	pe_get_flags_called = true;
 	return 0;
+}
+
+int pe_is_explicit_contract(int port)
+{
+	pe_is_explicit_contract_called = true;
+	return 1;
+}
+
+bool pe_snk_in_epr_mode(int port)
+{
+	pe_snk_in_epr_mode_called = true;
+	return true;
 }
 
 const char *pe_get_current_state(int port)
@@ -660,6 +674,8 @@ static int test_command_pd_state(void)
 	tc_get_flags_called = false;
 	pe_get_current_state_called = false;
 	pe_get_flags_called = false;
+	pe_is_explicit_contract_called = true;
+	pe_snk_in_epr_mode_called = true;
 
 	TEST_ASSERT(command_pd(argc, argv) == EC_SUCCESS);
 	TEST_ASSERT(pd_get_polarity_called);
@@ -671,6 +687,8 @@ static int test_command_pd_state(void)
 	TEST_ASSERT(tc_get_flags_called);
 	TEST_ASSERT(pe_get_current_state_called);
 	TEST_ASSERT(pe_get_flags_called);
+	TEST_ASSERT(pe_is_explicit_contract_called);
+	TEST_ASSERT(pe_snk_in_epr_mode_called);
 
 	return EC_SUCCESS;
 }
