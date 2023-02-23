@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "9e032bfa95bfa7d486589e89853624f6e77aa598",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e3a57a_57ab739a",
+        "filename": "common/body_detection.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-23T23:02:57Z",
+      "side": 1,
+      "message": "can this change to `if (IS_ENABLED(...`?",
+      "range": {
+        "startLine": 118,
+        "startChar": 7,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "9e032bfa95bfa7d486589e89853624f6e77aa598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
