@@ -131,6 +131,11 @@
 				enum-name = "FW_CHARGER_ISL9538";
 				value = <1>;
 			};
+			charger-option-isl9238 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_CHARGER_ISL9238";
+				value = <2>;
+			};
 		};
 	};
 
