@@ -38,4 +38,12 @@ void amd_fp6_emul_set_xbar(const struct emul *emul, bool ready);
  */
 void amd_fp6_emul_set_delay(const struct emul *emul, int delay_reads);
 
+/**
+ * Snoop the contents of port 0 for this emulator
+ *
+ * @param emul - AMD FP6 emulator data
+ * @return - contents written to the port 0 register
+ */
+uint8_t amd_fp6_emul_snoop_port0(const struct emul *emul);
+
 #endif

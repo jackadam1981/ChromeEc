@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "driver/usb_mux/amd_fp6.h"
 #include "emul/emul_amd_fp6.h"
 #include "hooks.h"
 #include "test/drivers/stubs.h"
@@ -40,10 +41,21 @@ static void amd_fp6_usb_mux_before(void *fixture)
 ZTEST_SUITE(amd_fp6_usb_mux, drivers_predicate_post_main, amd_fp6_usb_mux_setup,
 	    amd_fp6_usb_mux_before, NULL, NULL);
 
+static void amd_fp6_usb_mux_wait(void)
+{
+	/*
+	 * Note: When using the USB mux task, writes will be performed in a
+	 * separate task and therefore our test needs to wait.
+	 */
+	if (IS_ENABLED(HAS_TASK_USB_MUX))
+		k_sleep(K_MSEC(100));
+}
+
 ZTEST(amd_fp6_usb_mux, test_usb_mode_set)
 {
 	/* Test a basic set to USB mode */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_USB_ENABLED, USB_SWITCH_CONNECT, 0);
+	amd_fp6_usb_mux_wait();
 
 	zassert_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_USB_ENABLED);
 }
@@ -52,6 +64,7 @@ ZTEST(amd_fp6_usb_mux, test_dp_mode_set)
 {
 	/* Test a basic set to DP mode */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_DP_ENABLED, USB_SWITCH_CONNECT, 0);
+	amd_fp6_usb_mux_wait();
 
 	zassert_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_DP_ENABLED);
 }
@@ -60,6 +73,7 @@ ZTEST(amd_fp6_usb_mux, test_dock_mode_set)
 {
 	/* Test a basic set to docked mode */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_DOCK, USB_SWITCH_CONNECT, 0);
+	amd_fp6_usb_mux_wait();
 
 	zassert_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_DOCK);
 }
@@ -68,6 +82,7 @@ ZTEST(amd_fp6_usb_mux, test_safe_mode_set)
 {
 	/* Test a basic set to safe mode */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_SAFE_MODE, USB_SWITCH_CONNECT, 0);
+	amd_fp6_usb_mux_wait();
 
 	/* Note: this driver uses "none" and "safe" interchangeably */
 	zassert_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_NONE);
@@ -77,6 +92,7 @@ ZTEST(amd_fp6_usb_mux, test_none_set)
 {
 	/* Test a basic set to none */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_NONE, USB_SWITCH_CONNECT, 0);
+	amd_fp6_usb_mux_wait();
 
 	zassert_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_NONE);
 }
@@ -85,6 +101,7 @@ ZTEST(amd_fp6_usb_mux, test_dp_flipped_set)
 {
 	/* Test a basic set to DP mode but flipped */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_DP_ENABLED, USB_SWITCH_CONNECT, 1);
+	amd_fp6_usb_mux_wait();
 
 	zassert_equal(usb_mux_get(TEST_PORT),
 		      USB_PD_MUX_DP_ENABLED | USB_PD_MUX_POLARITY_INVERTED);
@@ -94,6 +111,7 @@ ZTEST(amd_fp6_usb_mux, test_hpd_unsupported)
 {
 	/* Try to set HPD on the mux */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_HPD_LVL, USB_SWITCH_CONNECT, 0);
+	amd_fp6_usb_mux_wait();
 
 	/* And observe it didn't work */
 	zassert_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_NONE);
@@ -101,6 +119,8 @@ ZTEST(amd_fp6_usb_mux, test_hpd_unsupported)
 
 ZTEST_F(amd_fp6_usb_mux, test_mux_not_ready)
 {
+	uint8_t port0_reg;
+
 	/* Set the crossbar to not ready yet */
 	amd_fp6_emul_set_xbar(fixture->amd_fp6_emul, false);
 
@@ -108,7 +128,17 @@ ZTEST_F(amd_fp6_usb_mux, test_mux_not_ready)
 	usb_mux_set(TEST_PORT, USB_PD_MUX_USB_ENABLED, USB_SWITCH_CONNECT, 0);
 
 	k_sleep(K_MSEC(100));
-	zassert_not_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_USB_ENABLED);
+
+	/*
+	 * Confirm the driver didn't write while the Xbar wasn't ready
+	 *
+	 * Note: the mux will be locked while the set completes, so choose to
+	 * bypass our normal API here which, understandably, serializes reads
+	 * while a write is completing.
+	 */
+	port0_reg = amd_fp6_emul_snoop_port0(fixture->amd_fp6_emul);
+	zassert_not_equal((port0_reg & AMD_FP6_MUX_MODE_MASK),
+			  AMD_FP6_MUX_MODE_USB);
 
 	/* Allow the crossbar to be ready now */
 	amd_fp6_emul_set_xbar(fixture->amd_fp6_emul, true);
@@ -122,6 +152,7 @@ ZTEST_F(amd_fp6_usb_mux, test_chipset_reset)
 {
 	/* Start with a set to dock mode but flipped */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_DOCK, USB_SWITCH_CONNECT, 1);
+	amd_fp6_usb_mux_wait();
 
 	zassert_equal(usb_mux_get(TEST_PORT),
 		      USB_PD_MUX_DOCK | USB_PD_MUX_POLARITY_INVERTED);
