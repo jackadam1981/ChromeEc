@@ -1,10 +1,12 @@
 /* project dts */
 #include "../gpio.dtsi"
+#include <cros/binman.dtsi>
 
 / {
 	chosen {
 		cros-ec,bbram = &bbram;
 		cros-ec,watchdog = &iwdg;
+		cros-ec,flash-controller = &flash;
 	};
 
 	/* this field maybe is not correct but add this to build pass */
@@ -34,6 +36,22 @@
 		saved-panic-flags {
 			offset = <0x0c>;
 			size = <0x02>;
+		};
+	};
+
+	binman {
+		wp-ro {
+			offset = <0x0>;
+			size = <0x10000>;
+		};
+		ec-rw {
+			offset = <0x10000>;
+			size = <0x10000>;
+			rw-fw {
+				rw-fwid {
+					offset = <(0x10000 - 32)>;
+				};
+			};
 		};
 	};
 };
