@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87cb69d1_f30b5e9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-23T22:25:58Z",
+      "side": 1,
+      "message": "one more question",
+      "revId": "55798255684a52bbda72d23c14affd6601da1d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "773730e7_b4ba2cff",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 4402,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-23T22:25:58Z",
+      "side": 1,
+      "message": "should this be an exit(get_crashlog(..)) as in other cases above?",
+      "range": {
+        "startLine": 4402,
+        "startChar": 2,
+        "endLine": 4402,
+        "endChar": 28
+      },
+      "revId": "55798255684a52bbda72d23c14affd6601da1d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
