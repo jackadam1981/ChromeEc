@@ -17,7 +17,6 @@
 		zephyr,shell-uart = &usart1;
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
-		zephyr,flash-controller = &flash;
 	};
 };
 
@@ -61,9 +60,5 @@
 };
 
 &bbram {
-	status = "okay";
-};
-
-&flash {
 	status = "okay";
 };
