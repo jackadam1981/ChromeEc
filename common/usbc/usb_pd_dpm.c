@@ -38,6 +38,13 @@
 #include "temp_sensor/temp_sensor.h"
 #endif
 
+static const enum debug_level dpm_debug_level =
+#ifdef CONFIG_USB_PD_DEBUG_LEVEL
+	CONFIG_USB_PD_DEBUG_LEVEL;
+#else
+	DEBUG_LEVEL_1;
+#endif
+
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
@@ -1416,7 +1423,9 @@ void dpm_run(int port, int evt, int en)
 static void dpm_waiting_entry(const int port)
 {
 	DPM_CLR_FLAG(port, DPM_FLAG_PE_READY);
-	print_current_state(port);
+	if (dpm_debug_level >= DEBUG_LEVEL_2) {
+		print_current_state(port);
+	}
 }
 
 static void dpm_waiting_run(const int port)
@@ -1437,7 +1446,9 @@ static void dpm_waiting_run(const int port)
  */
 static void dpm_dfp_ready_entry(const int port)
 {
-	print_current_state(port);
+	if (dpm_debug_level >= DEBUG_LEVEL_2) {
+		print_current_state(port);
+	}
 }
 
 static void dpm_dfp_ready_run(const int port)
@@ -1480,7 +1491,9 @@ static void dpm_dfp_ready_run(const int port)
  */
 static void dpm_ufp_ready_entry(const int port)
 {
-	print_current_state(port);
+	if (dpm_debug_level >= DEBUG_LEVEL_2) {
+		print_current_state(port);
+	}
 }
 
 static void dpm_ufp_ready_run(const int port)
