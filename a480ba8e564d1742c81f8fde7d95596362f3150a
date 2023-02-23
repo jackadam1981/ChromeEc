@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a366ecc0_b9a923ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-23T20:44:05Z",
+      "side": 1,
+      "message": "Done.  I believe this is now the first commit message I\u0027ve ever made containing the word \"whence\"",
+      "parentUuid": "38917697_6f38dbb2",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a0696f8e_d25d40c3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 13
@@ -140,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f94a6bfd_7f476bc1",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-23T20:44:05Z",
+      "side": 1,
+      "message": "I think I\u0027ll pass on creating the additional macro for this CL, just since it\u0027s already quite a few changes without adding that as well",
+      "parentUuid": "ef60d87c_ddb97596",
+      "range": {
+        "startLine": 99,
+        "startChar": 17,
+        "endLine": 99,
+        "endChar": 21
+      },
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19b9ea76_e9a99495",
@@ -177,6 +225,30 @@
       "side": 1,
       "message": "Done for the re-name, reserving judgement for the macro helper macro",
       "parentUuid": "19b9ea76_e9a99495",
+      "range": {
+        "startLine": 86,
+        "startChar": 17,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67928157_370b9519",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-23T20:44:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "47524095_b9c5f065",
       "range": {
         "startLine": 86,
         "startChar": 17,
