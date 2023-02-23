@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15284213_bca8d870",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-23T07:52:24Z",
+      "side": 1,
+      "message": "267539938?",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "3f307d87153b6209e6a19bcd192ddb0b82708fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "117dd2a0_4ad61ead",
+        "filename": "board/constitution/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-23T07:52:24Z",
+      "side": 1,
+      "message": "have you checked if the I2C signals look OK at 1MHz?\nit\u0027s safer to start at 400 and bump up later after\nvalidating the board.",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 48,
+        "endChar": 14
+      },
+      "revId": "3f307d87153b6209e6a19bcd192ddb0b82708fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
