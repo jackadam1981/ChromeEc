@@ -45,6 +45,30 @@
       },
       "revId": "e01de0539a03ad104faf0168b8b1aa621ba067de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84cc0c3f_61df4757",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-23T19:36:54Z",
+      "side": 0,
+      "message": "Yes, it\u0027s actually not clear to me if `endian.h` was ever needed in this file but I suspect that during the switch to using standard libraries `builtin/` was removed from the include path so `#include \"endian.h\"` resulted in a compilation error. I\u0027ll update the commit message to include that.",
+      "parentUuid": "7d7a5313_fefff8ee",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "e01de0539a03ad104faf0168b8b1aa621ba067de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
