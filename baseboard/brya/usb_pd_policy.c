@@ -14,6 +14,7 @@
 #include "gpio.h"
 #include "timer.h"
 #include "usb_mux.h"
+#include "usb_pe_sm.h"
 #include "usb_pd.h"
 #include "usb_pd_tbt.h"
 #include "usb_pd_tcpm.h"
