@@ -878,7 +878,7 @@ static void charge_manager_refresh(void)
 
 	/* Change the charge limit + charge port/supplier if modified. */
 	if (new_port != charge_port || new_charge_current != charge_current ||
-	    new_supplier != charge_supplier) {
+	    new_supplier != charge_supplier || pd_ceil_enforced) {
 #ifdef HAS_TASK_CHG_RAMP
 		chg_ramp_charge_supplier_change(new_port, new_supplier,
 						new_charge_current,
@@ -896,6 +896,7 @@ static void charge_manager_refresh(void)
 #endif /* HAS_TASK_CHG_RAMP */
 
 		power_changed = 1;
+		pd_ceil_enforced = 0;
 
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
@@ -1285,9 +1286,11 @@ void charge_manager_force_ceil(int port, int ceil)
 	 * Force our input current to ceil if we're exceeding it, without
 	 * waiting for our deferred task to run.
 	 */
-	if (left_safe_mode && port == charge_port && ceil < charge_current)
+	if (left_safe_mode && port == charge_port && ceil < charge_current) {
+		pd_ceil_enforced = true;
 		board_set_charge_limit(port, CHARGE_SUPPLIER_PD, ceil,
 				       charge_current_uncapped, charge_voltage);
+	}
 
 	/*
 	 * Now inform charge_manager so it stays in sync with the state of
