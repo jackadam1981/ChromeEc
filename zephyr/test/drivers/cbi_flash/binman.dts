@@ -1,4 +1,4 @@
-/* Copyright 2021 The ChromiumOS Authors
+/* Copyright 2023 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -13,7 +13,7 @@
 			compatible = "cros-ec,flash-layout";
 			type = "section";
 			offset = <0x0>;
-			size = <0x40000>;
+			size = <0x400000>;
 			read-only;
 			ec-ro {
 				type = "section";
@@ -31,8 +31,8 @@
 				cbi_flash: cbi {
 					compatible = "cros-ec,flash-layout";
 					type = "fill";
-					offset = <0x40000>;
-					size = <0>;
+					offset = <(0x400000 - 0x10000)>;
+					size = <0x10000>;
 					fill-byte = [ff];
 					preserve;
 				};
@@ -41,8 +41,8 @@
 		ec-rw {
 			compatible = "cros-ec,flash-layout";
 			type = "section";
-			offset = <0x40000>;
-			size = <0x40000>;
+			offset = <0x400000>;
+			size = <0x400000>;
 			rw-fw {
 				type = "section";
 				zephyr-rw {
@@ -56,7 +56,7 @@
 					 * stored in the RO section of flash
 					 * are always correct.
 					 */
-					offset = <(0x40000 - 32)>;
+					offset = <(0x400000 - 32)>;
 					type = "text";
 					size = <32>;
 					text-label = "version";
