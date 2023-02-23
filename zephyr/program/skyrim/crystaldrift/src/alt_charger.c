@@ -31,7 +31,7 @@ test_export_static void alt_charger_init(void)
 		return;
 	}
 
-	if (val == FW_CHARGER_ISL9538)
+	if ((val == FW_CHARGER_ISL9538) || (val == FW_CHARGER_ISL9238))
 		CHG_ENABLE_ALTERNATE(0);
 }
 DECLARE_HOOK(HOOK_INIT, alt_charger_init, HOOK_PRIO_POST_FIRST);
