@@ -74,6 +74,13 @@ void amd_fp6_emul_set_xbar(const struct emul *emul, bool ready)
 					     0;
 }
 
+uint8_t amd_fp6_emul_snoop_port0(const struct emul *emul)
+{
+	struct amd_fp6_data *data = (struct amd_fp6_data *)emul->data;
+
+	return data->regs[AMD_FP6_PORT0];
+}
+
 static int amd_fp6_emul_read(const struct emul *emul, int reg, uint8_t *val,
 			     int bytes, void *unused_data)
 {

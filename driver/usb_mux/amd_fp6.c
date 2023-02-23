@@ -32,12 +32,15 @@
  * an AP reset.
  */
 static struct {
+	mux_state_t mux_state;
+#ifndef HAS_TASK_USB_MUX
 	const struct usb_mux *mux;
-	uint8_t val;
 	bool write_pending;
+#endif
 } saved_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
-static int amd_fp6_mux_port0_read(const struct usb_mux *me, uint8_t *val)
+static enum ec_error_list amd_fp6_mux_port0_read(const struct usb_mux *me,
+						 uint8_t *val)
 {
 	uint8_t payload[3] = { 0 };
 	bool mux_ready;
@@ -60,11 +63,49 @@ static int amd_fp6_mux_port0_read(const struct usb_mux *me, uint8_t *val)
 	return EC_SUCCESS;
 }
 
-static int amd_fp6_mux_port0_write(const struct usb_mux *me, uint8_t write_val)
+/* Translate a mux_state_t into a register value for the target */
+static enum ec_error_list amd_fp6_mux_state_to_reg(const struct usb_mux *me,
+						   mux_state_t mux_state,
+						   uint8_t *reg)
 {
+	/* This driver treats safe mode as none */
+	if (mux_state & USB_PD_MUX_SAFE_MODE)
+		mux_state = USB_PD_MUX_NONE;
+
+	if (mux_state == USB_PD_MUX_NONE)
+		/*
+		 * LOW_POWER must be set when connection mode is
+		 * set to 00b (safe state)
+		 */
+		*reg = AMD_FP6_MUX_MODE_SAFE | AMD_FP6_MUX_LOW_POWER;
+	else if ((mux_state & USB_PD_MUX_USB_ENABLED) &&
+		 (mux_state & USB_PD_MUX_DP_ENABLED))
+		*reg = AMD_FP6_MUX_MODE_DOCK;
+	else if (mux_state & USB_PD_MUX_USB_ENABLED)
+		*reg = AMD_FP6_MUX_MODE_USB;
+	else if (mux_state & USB_PD_MUX_DP_ENABLED)
+		*reg = AMD_FP6_MUX_MODE_DP;
+	else {
+		CPRINTSUSB("C%d: unhandled mux_state %x", me->usb_port,
+			   mux_state);
+		return EC_ERROR_INVAL;
+	}
+
+	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+		*reg |= AMD_FP6_MUX_ORIENTATION;
+
+	return EC_SUCCESS;
+}
+
+static enum ec_error_list amd_fp6_mux_port0_write(const struct usb_mux *me,
+						  mux_state_t mux_state)
+{
+	uint8_t write_val;
 	uint8_t read_val;
 	uint8_t port_status;
 	timestamp_t start;
+
+	RETURN_ERROR(amd_fp6_mux_state_to_reg(me, mux_state, &write_val));
 
 	/* Check if mux is ready */
 	RETURN_ERROR(amd_fp6_mux_port0_read(me, &read_val));
@@ -96,6 +137,12 @@ static int amd_fp6_mux_port0_write(const struct usb_mux *me, uint8_t write_val)
 	return EC_ERROR_TIMEOUT;
 }
 
+/* With or without the mux task, these APIs must be defined */
+static void amd_fp6_mux_write_now(const struct usb_mux *me,
+				  mux_state_t mux_state);
+static void amd_fp6_chipset_resume(void);
+
+#ifndef HAS_TASK_USB_MUX
 /*
  * Keep trying to write the saved mux state until successful or SOC leaves
  * S0 power state.
@@ -121,7 +168,7 @@ static void amd_fp6_set_mux_retry(void)
 			continue;
 
 		rv = amd_fp6_mux_port0_write(saved_mux_state[i].mux,
-					     saved_mux_state[i].val);
+					     saved_mux_state[i].mux_state);
 
 		if (rv)
 			try_again = true;
@@ -133,6 +180,61 @@ static void amd_fp6_set_mux_retry(void)
 				   CMD_RETRY_INTERVAL_MS * MSEC);
 }
 
+static void amd_fp6_mux_write_now(const struct usb_mux *me,
+				  mux_state_t mux_state)
+{
+	saved_mux_state[me->usb_port].write_pending = true;
+	amd_fp6_set_mux_retry();
+}
+
+/*
+ * The FP6 USB Mux will not be ready for writing until *sometime* after S0.
+ */
+static void amd_fp6_chipset_resume(void)
+{
+	for (int i = 0; i < ARRAY_SIZE(saved_mux_state); i++)
+		saved_mux_state[i].write_pending = true;
+	hook_call_deferred(&amd_fp6_set_mux_retry_data,
+			   CMD_RETRY_INTERVAL_MS * MSEC);
+}
+#else
+static void amd_fp6_mux_write_now(const struct usb_mux *me,
+				  mux_state_t mux_state)
+{
+	timestamp_t start = get_time();
+
+	/* Allow some retries in case the Xbar isn't ready */
+	while (time_since32(start) < CMD_RETRY_INTERVAL_MS * MSEC) {
+		if (amd_fp6_mux_port0_write(me, mux_state) == EC_SUCCESS)
+			break;
+
+		msleep(100);
+	}
+}
+/*
+ * Queue up some mux sets for the task now that the mux is on
+ */
+static void amd_fp6_chipset_resume(void)
+{
+	for (int i = 0; i < ARRAY_SIZE(saved_mux_state); i++) {
+		uint8_t state = saved_mux_state[i].mux_state;
+
+		usb_mux_set(i, state,
+			    (state == USB_PD_MUX_NONE ? USB_SWITCH_DISCONNECT :
+							USB_SWITCH_CONNECT),
+			    (state & USB_PD_MUX_POLARITY_INVERTED));
+	}
+}
+#endif
+
+static void amd_fp6_save_write_info(const struct usb_mux *me,
+				    mux_state_t mux_state)
+{
+	saved_mux_state[me->usb_port].mux_state = mux_state;
+#ifndef HAS_TASK_USB_MUX
+	saved_mux_state[me->usb_port].mux = me;
+#endif
+}
 static int amd_fp6_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 			   bool *ack_required)
 {
@@ -141,42 +243,17 @@ static int amd_fp6_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
 
-	/* This driver treats safe mode as none */
-	if (mux_state & USB_PD_MUX_SAFE_MODE)
-		mux_state = USB_PD_MUX_NONE;
+	/* Validate our input */
+	RETURN_ERROR(amd_fp6_mux_state_to_reg(me, mux_state, &val));
 
-	if (mux_state == USB_PD_MUX_NONE)
-		/*
-		 * LOW_POWER must be set when connection mode is
-		 * set to 00b (safe state)
-		 */
-		val = AMD_FP6_MUX_MODE_SAFE | AMD_FP6_MUX_LOW_POWER;
-	else if ((mux_state & USB_PD_MUX_USB_ENABLED) &&
-		 (mux_state & USB_PD_MUX_DP_ENABLED))
-		val = AMD_FP6_MUX_MODE_DOCK;
-	else if (mux_state & USB_PD_MUX_USB_ENABLED)
-		val = AMD_FP6_MUX_MODE_USB;
-	else if (mux_state & USB_PD_MUX_DP_ENABLED)
-		val = AMD_FP6_MUX_MODE_DP;
-	else {
-		CPRINTSUSB("C%d: unhandled mux_state %x\n", me->usb_port,
-			   mux_state);
-		return EC_ERROR_INVAL;
-	}
-
-	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
-		val |= AMD_FP6_MUX_ORIENTATION;
-
-	saved_mux_state[me->usb_port].mux = me;
-	saved_mux_state[me->usb_port].val = val;
+	amd_fp6_save_write_info(me, mux_state);
 
 	/* Mux is not powered in Z1 */
 	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
-		return (mux_state == USB_PD_MUX_NONE) ? EC_SUCCESS :
-							EC_ERROR_NOT_POWERED;
+		return (val & AMD_FP6_MUX_LOW_POWER) ? EC_SUCCESS :
+						       EC_ERROR_NOT_POWERED;
 
-	saved_mux_state[me->usb_port].write_pending = true;
-	amd_fp6_set_mux_retry();
+	amd_fp6_mux_write_now(me, mux_state);
 
 	return EC_SUCCESS;
 }
@@ -212,15 +289,9 @@ static int amd_fp6_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 }
 
 /*
- * The FP6 USB Mux will not be ready for writing until *sometime* after S0.
+ * Always restore our mux state, though the method varies based on the presence
+ * of the mux task
  */
-static void amd_fp6_chipset_resume(void)
-{
-	for (int i = 0; i < ARRAY_SIZE(saved_mux_state); i++)
-		saved_mux_state[i].write_pending = true;
-	hook_call_deferred(&amd_fp6_set_mux_retry_data,
-			   CMD_RETRY_INTERVAL_MS * MSEC);
-}
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, amd_fp6_chipset_resume, HOOK_PRIO_DEFAULT);
 
 static int amd_fp6_chipset_reset(const struct usb_mux *me)
