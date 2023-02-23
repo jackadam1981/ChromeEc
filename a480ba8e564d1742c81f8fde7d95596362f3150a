@@ -316,6 +316,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58ca267a_9a5930ae",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-23T19:11:39Z",
+      "side": 1,
+      "message": "We can take another cleanup pass later.",
+      "parentUuid": "0cc691dd_2ca51c50",
+      "revId": "a480ba8e564d1742c81f8fde7d95596362f3150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97c14c3a_6513c466",

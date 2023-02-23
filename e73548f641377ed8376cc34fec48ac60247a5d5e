@@ -51,6 +51,24 @@
       "message": "Side question for Abe: cur_lvl seems to always be 0 in my HPD tests, hence I can\u0027t get the little IRQ toggle block to run.  Is that expected with the emulated GPIO?",
       "revId": "e73548f641377ed8376cc34fec48ac60247a5d5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9208986d_73679c34",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-23T19:11:39Z",
+      "side": 1,
+      "message": "IIRC, you can\u0027t meaningfully get the value of an emulated GPIO that is an output. Or at least, the EC code can\u0027t. A test can.",
+      "parentUuid": "e503a4d4_45ac1799",
+      "revId": "e73548f641377ed8376cc34fec48ac60247a5d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
