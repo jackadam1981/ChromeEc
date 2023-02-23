@@ -223,12 +223,15 @@ static
 			/* Suppress (long) help message */
 			return EC_SUCCESS;
 		}
-		if (!strcasecmp(argv[3], "enter"))
+		if (!strcasecmp(argv[3], "enter")) {
 			req = DPM_REQUEST_EPR_MODE_ENTRY;
-		else if (!strcasecmp(argv[3], "exit"))
+		} else if (!strcasecmp(argv[3], "exit")) {
 			req = DPM_REQUEST_EPR_MODE_EXIT;
-		else
+			/* Prevent snk_ready from repeatedly enter EPR. */
+			pe_snk_epr_explicit_exit(port);
+		} else {
 			return EC_ERROR_PARAM2;
+		}
 		pd_dpm_request(port, req);
 		ccprintf("EPR %s requested\n", argv[3]);
 		return EC_SUCCESS;
