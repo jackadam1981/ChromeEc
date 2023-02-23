@@ -69,6 +69,24 @@
       "parentUuid": "26160e9f_5af2c7dc",
       "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87628447_9c536589",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-23T17:34:59Z",
+      "side": 1,
+      "message": "Hey before putting more work into splitting this specific implementation, can we discuss on why this needs to be implemented that way in the first place? It seems like this is a mashup of what used to be a command line tool with a script bolted on it. Feel free to look for a second opinion but this make no sense to me in the current form, the whole script feels like it would need a proper redesign to work like a script rather than a CLI with a hardcoded script, unless there\u0027s something I\u0027m missing here.",
+      "parentUuid": "825191c5_d9e61847",
+      "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
