@@ -40,10 +40,21 @@ static void amd_fp6_usb_mux_before(void *fixture)
 ZTEST_SUITE(amd_fp6_usb_mux, drivers_predicate_post_main, amd_fp6_usb_mux_setup,
 	    amd_fp6_usb_mux_before, NULL, NULL);
 
+static void amd_fp6_usb_mux_wait(void)
+{
+	/*
+	 * Note: When using the USB mux task, writes will be performed in a
+	 * separate task and therefore our test needs to wait.
+	 */
+	if (IS_ENABLED(HAS_TASK_USB_MUX))
+		k_sleep(K_MSEC(100));
+}
+
 ZTEST(amd_fp6_usb_mux, test_usb_mode_set)
 {
 	/* Test a basic set to USB mode */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_USB_ENABLED, USB_SWITCH_CONNECT, 0);
+	amd_fp6_usb_mux_wait();
 
 	zassert_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_USB_ENABLED);
 }
@@ -52,6 +63,7 @@ ZTEST(amd_fp6_usb_mux, test_dp_mode_set)
 {
 	/* Test a basic set to DP mode */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_DP_ENABLED, USB_SWITCH_CONNECT, 0);
+	amd_fp6_usb_mux_wait();
 
 	zassert_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_DP_ENABLED);
 }
@@ -60,6 +72,7 @@ ZTEST(amd_fp6_usb_mux, test_dock_mode_set)
 {
 	/* Test a basic set to docked mode */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_DOCK, USB_SWITCH_CONNECT, 0);
+	amd_fp6_usb_mux_wait();
 
 	zassert_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_DOCK);
 }
@@ -68,6 +81,7 @@ ZTEST(amd_fp6_usb_mux, test_safe_mode_set)
 {
 	/* Test a basic set to safe mode */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_SAFE_MODE, USB_SWITCH_CONNECT, 0);
+	amd_fp6_usb_mux_wait();
 
 	/* Note: this driver uses "none" and "safe" interchangeably */
 	zassert_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_NONE);
@@ -77,6 +91,7 @@ ZTEST(amd_fp6_usb_mux, test_none_set)
 {
 	/* Test a basic set to none */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_NONE, USB_SWITCH_CONNECT, 0);
+	amd_fp6_usb_mux_wait();
 
 	zassert_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_NONE);
 }
@@ -85,6 +100,7 @@ ZTEST(amd_fp6_usb_mux, test_dp_flipped_set)
 {
 	/* Test a basic set to DP mode but flipped */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_DP_ENABLED, USB_SWITCH_CONNECT, 1);
+	amd_fp6_usb_mux_wait();
 
 	zassert_equal(usb_mux_get(TEST_PORT),
 		      USB_PD_MUX_DP_ENABLED | USB_PD_MUX_POLARITY_INVERTED);
@@ -94,6 +110,7 @@ ZTEST(amd_fp6_usb_mux, test_hpd_unsupported)
 {
 	/* Try to set HPD on the mux */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_HPD_LVL, USB_SWITCH_CONNECT, 0);
+	amd_fp6_usb_mux_wait();
 
 	/* And observe it didn't work */
 	zassert_equal(usb_mux_get(TEST_PORT), USB_PD_MUX_NONE);
@@ -122,6 +139,7 @@ ZTEST_F(amd_fp6_usb_mux, test_chipset_reset)
 {
 	/* Start with a set to dock mode but flipped */
 	usb_mux_set(TEST_PORT, USB_PD_MUX_DOCK, USB_SWITCH_CONNECT, 1);
+	amd_fp6_usb_mux_wait();
 
 	zassert_equal(usb_mux_get(TEST_PORT),
 		      USB_PD_MUX_DOCK | USB_PD_MUX_POLARITY_INVERTED);

@@ -74,6 +74,12 @@ tests:
     - ./amd_fp6_usb_mux/usbc.dts
     extra_configs:
     - CONFIG_LINK_TEST_SUITE_AMD_FP6_USB_MUX=y
+  drivers.amd_fp6_usb_mux_with_task:
+    extra_dtc_overlay_files:
+    - ./boards/native_posix.overlay
+    - ./amd_fp6_usb_mux/usbc.dts
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_AMD_FP6_USB_MUX_WITH_TASK=y
   drivers.anx7447:
     extra_configs:
     - CONFIG_LINK_TEST_SUITE_ANX7447=y
