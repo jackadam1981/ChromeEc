@@ -8451,6 +8451,8 @@ int cmd_boottime(int argc, char *argv[])
 	printf("espirst: %" PRIu64 "\n", response.timestamp[ESPIRST]);
 	printf("pltrst_low: %" PRIu64 "\n", response.timestamp[PLTRST_LOW]);
 	printf("pltrst_high: %" PRIu64 "\n", response.timestamp[PLTRST_HIGH]);
+	printf("s5s4_transition: %" PRIu64 "\n",
+	       response.timestamp[S5S4_TRANSITION]);
 	printf("cnt: %" PRIu16 "\n", response.cnt);
 	printf("ec_cur_time: %" PRIu64 "\n", response.timestamp[EC_CUR_TIME]);
 	return rv;

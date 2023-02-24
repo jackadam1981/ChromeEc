@@ -376,6 +376,7 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5S4:
+		update_ap_boot_time(S5S4_TRANSITION);
 		return POWER_S4; /* Power up to next state */
 
 	case POWER_S3S4:

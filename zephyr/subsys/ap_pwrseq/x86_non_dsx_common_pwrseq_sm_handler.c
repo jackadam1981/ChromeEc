@@ -339,6 +339,7 @@ static int common_pwr_sm_run(int state)
 		/* Check if the PCH has come out of suspend state */
 		if (rsmrst_power_is_good()) {
 			LOG_DBG("RSMRST is ok");
+			update_ap_boot_time(S5S4_TRANSITION);
 			return SYS_POWER_STATE_S4;
 		}
 		LOG_DBG("RSMRST is not ok");
