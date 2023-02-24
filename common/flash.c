@@ -355,6 +355,10 @@ static int flash_write_pstate_data(struct persist_state *newpstate)
 {
 	int rv;
 
+	printk("=== erase off:%x size:%x newstate:%x %x %x\n",
+		CONFIG_FW_PSTATE_OFF, CONFIG_FW_PSTATE_SIZE,
+		newpstate->version, newpstate->flags, newpstate->valid_fields);
+
 	/* Erase pstate */
 	rv = crec_flash_physical_erase(CONFIG_FW_PSTATE_OFF,
 				       CONFIG_FW_PSTATE_SIZE);
@@ -1459,6 +1463,8 @@ static enum ec_status flash_command_erase(struct host_cmd_handler_args *args)
 	if (system_unsafe_to_overwrite(offset, p->size))
 		return EC_RES_ACCESS_DENIED;
 #endif
+
+	printk("=== erase cmd:%x offset:%x size:%x\n", cmd, offset, p->size);
 
 	switch (cmd) {
 	case FLASH_ERASE_SECTOR:
