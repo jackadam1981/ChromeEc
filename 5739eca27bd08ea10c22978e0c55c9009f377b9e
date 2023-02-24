@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba46a2de_e9071fc5",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-24T23:50:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "44d691ef_ecd60e75",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "5739eca27bd08ea10c22978e0c55c9009f377b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1283681a_f43ed223",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "it\u0027s for b/270243270, I\u0027ll update BUG in CL.\nand yes I need to change the logic. it\u0027s not `\u0026\u0026` it\u0027s \u0027||\u0027.\nwhy? because we can\u0027t rely on OS to do the right thing. this protects antirollback from non-standard images booted on the device primarily.",
       "parentUuid": "1283681a_f43ed223",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 0
+      },
+      "revId": "5739eca27bd08ea10c22978e0c55c9009f377b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e36e5011_8bb077bb",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-24T23:50:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1b854834_50dc1a27",
       "range": {
         "startLine": 172,
         "startChar": 0,
