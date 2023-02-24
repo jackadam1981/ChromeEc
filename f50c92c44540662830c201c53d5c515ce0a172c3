@@ -46,6 +46,30 @@
       },
       "revId": "f50c92c44540662830c201c53d5c515ce0a172c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5534c68f_e658a3b3",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-24T10:34:07Z",
+      "side": 1,
+      "message": "I don\u0027t see that as a reason to try and write to all of them even if something fails, the same could be said to any function writing multiple registers on any other driver. Just check after every write and bail out at the first fail.",
+      "parentUuid": "7edff6b6_03d407f8",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 8
+      },
+      "revId": "f50c92c44540662830c201c53d5c515ce0a172c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
