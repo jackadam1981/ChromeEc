@@ -1458,6 +1458,8 @@ static void tcpci_partner_transmit_op(const struct emul *emul,
 	struct tcpci_partner_extension *ext;
 	int ret;
 
+	k_sleep(K_MSEC(2));
+
 	data->received_msg_status = tcpci_partner_log_msg(
 		data, tx_msg, TCPCI_PARTNER_SENDER_TCPM, TCPCI_EMUL_TX_UNKNOWN);
 
