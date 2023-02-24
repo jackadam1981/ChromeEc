@@ -6,14 +6,17 @@
 #include "adc.h"
 #include "charger/chg_rt9490.h"
 #include "driver/charger/rt9490.h"
-#include "driver/temp_sensor/f75303.h"
 #include "hooks.h"
 #include "temp_sensor.h"
+#include "temp_sensor/f75303.h"
 #include "temp_sensor/pct2075.h"
 #include "temp_sensor/sb_tsi.h"
-#include "temp_sensor/temp_sensor.h"
 #include "temp_sensor/thermistor.h"
 #include "temp_sensor/tmp112.h"
+#include "zephyr/shim/include/temp_sensor/temp_sensor.h"
+
+#define CPUTS(outstr) cputs(CC_THERMAL, outstr)
+#define CPRINTS(format, args...) cprints(CC_THERMAL, format, ##args)
 
 #if DT_HAS_COMPAT_STATUS_OKAY(TEMP_SENSORS_COMPAT)
 
@@ -298,7 +301,6 @@ static bool temp_sensor_check_power(const struct temp_sensor_t *sensor)
 int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
 {
 	const struct temp_sensor_t *sensor;
-
 	if (id < 0 || id >= TEMP_SENSOR_COUNT)
 		return EC_ERROR_INVAL;
 	sensor = temp_sensors + id;
@@ -316,7 +318,6 @@ void temp_sensors_update(void)
 
 		if (!sensor->zephyr_info->update_temperature)
 			continue;
-
 		if (!temp_sensor_check_power(sensor))
 			continue;
 

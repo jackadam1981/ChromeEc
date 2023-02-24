@@ -49,7 +49,7 @@
 
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
-		soc-f75303 {
+		local-f75303 {
 			temp_host_high = <100>;
 			temp_host_halt = <105>;
 			temp_host_release_high = <80>;
@@ -57,11 +57,15 @@
 			temp_fan_off = <35>;
 			temp_fan_max = <70>;
 			power-good-pin = <&gpio_pg_pwr_s5>;
-			sensor = <&soc_f75303>;
+			sensor = <&local_f75303>;
 		};
-		amb-f75303 {
+		remote1-f75303 {
 			power-good-pin = <&gpio_pg_pwr_s5>;
-			sensor = <&amb_f75303>;
+			sensor = <&remote1_f75303>;
+		};
+		remote2-f75303 {
+			power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&remote2_f75303>;
 		};
 	};
 
@@ -188,15 +192,19 @@
 &i2c6_1 {
 	/delete-node/ soc-pct2075@48;
 	/delete-node/ amb-pct2075@4f;
-	soc_f75303: soc-f75303@48 {
+	local_f75303: local-f75303@4d {
 		compatible = "cros-ec,temp-sensor-f75303";
-		reg = <0x48>;
+		reg = <0x4d>;
+	};
+	remote1_f75303: remote1-f75303@4d {
+		compatible = "cros-ec,temp-sensor-f75303";
+		reg = <0x4d>;
+	};
+	remote2_f75303: remote2-f75303@4d {
+		compatible = "cros-ec,temp-sensor-f75303";
+		reg = <0x4d>;
 	};
 
-	amb_f75303: amb-f75303@4f {
-		compatible = "cros-ec,temp-sensor-f75303";
-		reg = <0x4f>;
-	};
 };
 
 &i2c_sensor {
