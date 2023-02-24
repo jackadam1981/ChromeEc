@@ -146,4 +146,6 @@ void anx7406_update_hpd_status(const struct usb_mux *mux,
  */
 int anx7406_set_gpio(int port, int gpio, int value);
 
+extern const struct ppc_drv anx7406_ppc_drv;
+
 #endif /* __CROS_EC_USB_PD_TCPM_ANX7406_H */
