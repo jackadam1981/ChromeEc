@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "764425a9_d9f05650",
+        "filename": "common/mock/fpsensor_crypto_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-24T19:22:01Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "174899bc_e58e2acf",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "0298beacc482f5c57898f0e9a30c044187c0440d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e66c0965_a33ab8ac",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-22T23:27:51Z",
       "side": 1,
       "message": "nit: Since this is mostly unrelated to the contents of this change, can you put it in a separate CL?",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "0298beacc482f5c57898f0e9a30c044187c0440d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a96ef4bd_e4bb2356",
+        "filename": "util/migrated_files.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-24T19:22:01Z",
+      "side": 1,
+      "message": "Yeah, I can put it into a separate CL. It was included here because I had to modify `driver/fingerprint/fpc/fpc_sensor.c` but that was not previously ignored.",
+      "parentUuid": "e66c0965_a33ab8ac",
       "range": {
         "startLine": 15,
         "startChar": 4,
