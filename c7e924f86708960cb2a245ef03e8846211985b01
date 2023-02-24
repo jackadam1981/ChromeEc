@@ -281,6 +281,30 @@
       },
       "revId": "c7e924f86708960cb2a245ef03e8846211985b01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1906aad4_c553d3ac",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-24T02:35:10Z",
+      "side": 1,
+      "message": "what is the significance of CHIPSET_STATE_HARD_OFF anyway?\nare we assuming the anx7452 is on the same power rail as the AP?\n\nit kind of doesn\u0027t matter because the timing diagram is relative\nto USB_EN. if i\u0027m reading the schematics correctly, that\u0027s\ncontrolled by the EC signal gpio_usb_c1_rt_rst_r_odl.\n\nwe need to update board_reset_pd_mcu() to do the right thing\ndepending on which daughterboard is present and add the\n30 ms delay there if we have a daughterboard with the 7452.\n\ngiven that, i don\u0027t think we need a delay here at all.\nif this driver were responsible for power sequencing or\nresetting the 7452, it would make sense here. as it stands,\nboard_reset_pd_mcu() is where that magic happens.\n\nas for boot time, we have to be a bit careful about which boot\ntime we mean. the EC is still running in RW when the AP is off\nso these delays are not applied when we typically boot the AP\nwhich is where we are expected to meet the 1 second hard limit.",
+      "parentUuid": "fd1f1190_6d1e964f",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 65
+      },
+      "revId": "c7e924f86708960cb2a245ef03e8846211985b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
