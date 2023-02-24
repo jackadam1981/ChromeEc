@@ -6785,11 +6785,14 @@ struct svid_mode_info {
 	uint32_t mode_vdo[6]; /* Max VDOs allowed after VDM header is 6 */
 };
 
+/* Max number of VDM data objects without VDM header */
+#define VDO_MAX_OBJECTS 6
+
 struct ec_response_typec_discovery {
 	uint8_t identity_count; /* Number of identity VDOs partner sent */
 	uint8_t svid_count; /* Number of SVIDs partner sent */
 	uint16_t reserved;
-	uint32_t discovery_vdo[6]; /* Max VDOs allowed after VDM header is 6 */
+	uint32_t discovery_vdo[VDO_MAX_OBJECTS];
 	struct svid_mode_info svids[0];
 } __ec_align1;
 
