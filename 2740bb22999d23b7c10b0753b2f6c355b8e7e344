@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "563a091e_c30db541",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-24T18:12:26Z",
+      "side": 1,
+      "message": "Code looks good, but I think we should do a manual test that changes the flash protect settings on the FPMCU to make sure that it works as expected. Or even better, run the fingerprint Tast tests with the new version of `ectool`, since they [set the flash protect settings](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go;l\u003d168-189;drc\u003d8fbf2c53960bc8917a6a01fda5405cad7c17201e).",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "2740bb22999d23b7c10b0753b2f6c355b8e7e344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bede3d29_acba8aa8",
+        "filename": "util/ectool.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 3232,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-24T18:12:26Z",
+      "side": 1,
+      "message": "Looks like an unrelated formatting change. Let\u0027s fix in a followup CL.",
+      "range": {
+        "startLine": 3232,
+        "startChar": 1,
+        "endLine": 3232,
+        "endChar": 13
+      },
+      "revId": "2740bb22999d23b7c10b0753b2f6c355b8e7e344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

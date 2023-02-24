@@ -190,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8fb446_0434ce3c",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1792,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-24T18:12:26Z",
+      "side": 1,
+      "message": "Oh, you\u0027re right. A lot of the rest of `ectool` uses `fprintf(stderr`, so I assumed that is what this was doing.",
+      "parentUuid": "01b7db8c_177b02ca",
+      "range": {
+        "startLine": 1784,
+        "startChar": 0,
+        "endLine": 1792,
+        "endChar": 50
+      },
+      "revId": "2e4106701d5edb0575ba8eb759733df02b310af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e5cef62_37771fda",
