@@ -6,9 +6,9 @@
 #include "adc.h"
 #include "charger/chg_rt9490.h"
 #include "driver/charger/rt9490.h"
-#include "driver/temp_sensor/f75303.h"
 #include "hooks.h"
 #include "temp_sensor.h"
+#include "temp_sensor/f75303.h"
 #include "temp_sensor/pct2075.h"
 #include "temp_sensor/sb_tsi.h"
 #include "temp_sensor/temp_sensor.h"
@@ -203,8 +203,18 @@ const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
 /* The function maybe unused because a temperature sensor can be added to dts
  * without a reference in the cros_ec_temp_sensors node.
  */
-__maybe_unused static int f75303_get_temp(const struct temp_sensor_t *sensor,
-					  int *temp_ptr)
+__maybe_unused static int
+f75303_get_local_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
+{
+	return f75303_get_val_k(sensor->idx, temp_ptr);
+}
+__maybe_unused static int
+f75303_get_remote_temp_1(const struct temp_sensor_t *sensor, int *temp_ptr)
+{
+	return f75303_get_val_k(sensor->idx, temp_ptr);
+}
+__maybe_unused static int
+f75303_get_remote_temp_2(const struct temp_sensor_t *sensor, int *temp_ptr)
 {
 	return f75303_get_val_k(sensor->idx, temp_ptr);
 }
@@ -216,9 +226,22 @@ __maybe_unused static int f75303_get_temp(const struct temp_sensor_t *sensor,
 		.i2c_addr_flags = DT_REG_ADDR(node_id), \
 	},
 
+#define TEMP_SENSOR_F75303_READ(named_id)                                  \
+	{                                                                  \
+		COND_CODE_1((DT_STRING_TOKEN(node_id, temperature_type) == \
+			     F75303_LOCAL),                                \
+			    (&f75303_get_local_temp), ())                  \
+		COND_CODE_1((DT_STRING_TOKEN(node_id, temperature_type) == \
+			     F75303_REMOTE_1),                             \
+			    (&f75303_get_remote_temp_1), ())               \
+		COND_CODE_1((DT_STRING_TOKEN(node_id, temperature_type) == \
+			     F75303_REMOTE_2),                             \
+			    (&f75303_get_remote_temp_2), ())               \
+	}
+
 #define GET_ZEPHYR_TEMP_SENSOR_F75303(named_id)                  \
 	(&(const struct zephyr_temp_sensor){                     \
-		.read = &f75303_get_temp,                        \
+		.read = TEMP_SENSOR_F75303_READ(named_id),       \
 		.thermistor = NULL,                              \
 		.update_temperature = f75303_update_temperature, \
 		FILL_POWER_GOOD(named_id) })
@@ -226,7 +249,7 @@ __maybe_unused static int f75303_get_temp(const struct temp_sensor_t *sensor,
 #define TEMP_F75303(named_id, sensor_id)                                \
 	[TEMP_SENSOR_ID(named_id)] = {                                  \
 		.name = DT_NODE_FULL_NAME(sensor_id),                   \
-		.idx = F75303_SENSOR_ID(sensor_id),                     \
+		.idx = DT_STRING_TOKEN(sensor_id, temperature_type),    \
 		.type = TEMP_SENSOR_TYPE_BOARD,                         \
 		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_F75303(named_id), \
 	}
