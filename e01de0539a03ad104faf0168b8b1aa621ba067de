@@ -22,6 +22,30 @@
       },
       "revId": "e01de0539a03ad104faf0168b8b1aa621ba067de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5ea88d_9f25ef2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-24T20:11:32Z",
+      "side": 1,
+      "message": "You\u0027re right, that was the name of the person who reverted the CL. I\u0027ll remove the name entirely.",
+      "parentUuid": "a9e3d89a_cc68f9f1",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "e01de0539a03ad104faf0168b8b1aa621ba067de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
