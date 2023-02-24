@@ -22,6 +22,30 @@
       },
       "revId": "7855bedf46aa476bdd87c596c2d7f939cf5161bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2652683_7e8f51a5",
+        "filename": "board/constitution/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-02-24T01:36:58Z",
+      "side": 0,
+      "message": "It will declare in this CL:4286391.",
+      "parentUuid": "b9e3e1d9_39f1a20a",
+      "range": {
+        "startLine": 90,
+        "startChar": 37,
+        "endLine": 90,
+        "endChar": 46
+      },
+      "revId": "7855bedf46aa476bdd87c596c2d7f939cf5161bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
