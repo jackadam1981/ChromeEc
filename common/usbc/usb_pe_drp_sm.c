@@ -6952,7 +6952,11 @@ static void pe_vcs_turn_off_vconn_swap_run(int port)
 		pe[port].discover_identity_counter = 0;
 		pe[port].dr_swap_attempt_counter = 0;
 
-		pe_set_ready_state(port);
+		if (PE_CHK_FLAG(port, PE_FLAGS_ENTERING_EPR))
+			set_state_pe(port,
+				     PE_SNK_EPR_MODE_ENTRY_WAIT_FOR_RESPONSE);
+		else
+			pe_set_ready_state(port);
 		return;
 	}
 }
@@ -7893,6 +7897,7 @@ static void pe_ddr_perform_data_reset_exit(int port)
 #ifdef CONFIG_USB_PD_EPR
 static void pe_enter_epr_mode(int port)
 {
+	PE_CLR_FLAG(port, PE_FLAGS_ENTERING_EPR);
 	PE_SET_FLAG(port, PE_FLAGS_IN_EPR);
 	CPRINTS("C%d: Entered EPR", port);
 }
@@ -7958,6 +7963,8 @@ static void pe_snk_send_epr_mode_entry_entry(int port)
 	struct eprmdo *eprmdo = (void *)tx_emsg[port].buf;
 
 	print_current_state(port);
+
+	PE_SET_FLAG(port, PE_FLAGS_ENTERING_EPR);
 
 	/* Send EPR mode entry message */
 	eprmdo->action = PD_EPRMDO_ACTION_ENTER;
@@ -8034,6 +8041,7 @@ static void pe_snk_epr_mode_entry_wait_for_response_run(int port)
 			}
 			/* Take all !success responses as fail. */
 			CPRINTS("C%d: Failed to enter EPR", port);
+			PE_CLR_FLAG(port, PE_FLAGS_ENTERING_EPR);
 			pe_send_soft_reset(port, TCPCI_MSG_SOP);
 			return;
 		} else if ((ext == 0) && (cnt == 0) &&
@@ -8045,6 +8053,7 @@ static void pe_snk_epr_mode_entry_wait_for_response_run(int port)
 	/* When the SinkEPREnterTimer times out, send a soft reset. */
 	if (pd_timer_is_expired(port, PE_TIMER_SINK_EPR_ENTER)) {
 		PE_SET_FLAG(port, PE_FLAGS_SNK_WAIT_CAP_TIMEOUT);
+		PE_CLR_FLAG(port, PE_FLAGS_ENTERING_EPR);
 		pe_send_soft_reset(port, TCPCI_MSG_SOP);
 	}
 }
