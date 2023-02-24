@@ -1464,7 +1464,7 @@ static enum ec_status flash_command_erase(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 #endif
 
-	printk("=== erase cmd:%x offset:%x size:%x\n", cmd, offset, p->size);
+	printk("=== 333 erase cmd:%x offset:%x size:%x\n", cmd, offset, p->size);
 
 	switch (cmd) {
 	case FLASH_ERASE_SECTOR:
