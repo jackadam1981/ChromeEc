@@ -22,6 +22,30 @@
       },
       "revId": "1beb45027fb28938cc89e87a4f64e614e8f56ba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a386b654_4df2a30d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4408,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-02-24T00:55:50Z",
+      "side": 1,
+      "message": "It\u0027s probably about to fail CQ+1. I guess `buildall` doesn\u0027t build gsctool.",
+      "parentUuid": "89f4651a_0b56fb91",
+      "range": {
+        "startLine": 4408,
+        "startChar": 8,
+        "endLine": 4408,
+        "endChar": 33
+      },
+      "revId": "1beb45027fb28938cc89e87a4f64e614e8f56ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
