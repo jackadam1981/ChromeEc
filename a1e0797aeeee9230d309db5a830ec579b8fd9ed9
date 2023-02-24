@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d71a917_0d3f8587",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-24T15:43:28Z",
+      "side": 1,
+      "message": "Do we need to worry about any conditions where this can be set and then not cleared (ex. times where the charge manager refresh may not executed as assumed)?",
+      "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
