@@ -13,6 +13,10 @@
 
 #include <ap_power/ap_power.h>
 
+#include "charger.h"
+#include "driver/charger/rt9490.h"
+#include "extpower.h"
+
 #define I2C3_NODE DT_NODELABEL(i2c3)
 PINCTRL_DT_DEFINE(I2C3_NODE);
 
@@ -85,3 +89,10 @@ static int install_suspend_handler(const struct device *unused)
 }
 
 SYS_INIT(install_suspend_handler, APPLICATION, 1);
+
+static void board_hook_ac_change(void)
+{
+	rt9490_enable_adc(CHARGER_SOLO, extpower_is_present());
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_hook_ac_change, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_hook_ac_change, HOOK_PRIO_LAST);
