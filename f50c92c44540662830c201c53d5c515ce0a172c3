@@ -22,6 +22,30 @@
       },
       "revId": "f50c92c44540662830c201c53d5c515ce0a172c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7edff6b6_03d407f8",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-02-24T09:12:09Z",
+      "side": 1,
+      "message": "Actually there is no order needed to do this operation. One register is for USB3 and flip status, another for DP, another for USB4 and TBT. Each are independent and status changes with change in mux. Hence not stopping write to one register if another register has error writing",
+      "parentUuid": "b5bd8f9f_cc77163e",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 8
+      },
+      "revId": "f50c92c44540662830c201c53d5c515ce0a172c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
