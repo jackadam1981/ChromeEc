@@ -5,6 +5,7 @@
 
 /* ANX7406 port manager */
 
+#include "assert.h"
 #include "common.h"
 #include "anx7406.h"
 #include "console.h"
@@ -13,6 +14,7 @@
 #include "tcpm/tcpm.h"
 #include "timer.h"
 #include "usb_pd.h"
+#include "usbc_ppc.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -456,4 +458,29 @@ const struct tcpm_drv anx7406_tcpm_drv = {
 #ifdef CONFIG_CMD_TCPC_DUMP
 	.dump_registers		= &anx7406_dump_registers,
 #endif
+};
+
+static int anx7406_ppc_init(int port)
+{
+	return EC_SUCCESS;
+}
+
+static int anx7406_ppc_vbus_sink_enable(int port, int enable)
+{
+	return tcpc_write(port, TCPC_REG_COMMAND,
+			  enable ? TCPC_REG_COMMAND_SNK_CTRL_HIGH
+				 : TCPC_REG_COMMAND_SNK_CTRL_LOW);
+}
+
+static int anx7406_ppc_vbus_source_enable(int port, int enable)
+{
+	return tcpc_write(port, TCPC_REG_COMMAND,
+			  enable ? TCPC_REG_COMMAND_SRC_CTRL_HIGH
+				 : TCPC_REG_COMMAND_SRC_CTRL_LOW);
+}
+
+const struct ppc_drv anx7406_ppc_drv = {
+	.init = anx7406_ppc_init,
+	.vbus_sink_enable = anx7406_ppc_vbus_sink_enable,
+	.vbus_source_enable = anx7406_ppc_vbus_source_enable,
 };

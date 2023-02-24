@@ -136,4 +136,6 @@ int anx7406_hpd_reset(const int port);
 void anx7406_update_hpd_status(const struct usb_mux *mux,
 			       mux_state_t mux_state);
 
+extern const struct ppc_drv anx7406_ppc_drv;
+
 #endif /* __CROS_EC_USB_PD_TCPM_ANX7406_H */
