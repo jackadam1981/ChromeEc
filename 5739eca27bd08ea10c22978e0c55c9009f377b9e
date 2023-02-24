@@ -16,6 +16,52 @@
       "message": "as last time, please review while testing is going",
       "revId": "5739eca27bd08ea10c22978e0c55c9009f377b9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c00e24c_564986eb",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-24T23:16:09Z",
+      "side": 1,
+      "message": "maybe this is a good time to drop this even if just to save 32 bytes of flash ;)",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "5739eca27bd08ea10c22978e0c55c9009f377b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1283681a_f43ed223",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-24T23:16:09Z",
+      "side": 1,
+      "message": "I don\u0027t understand why both pcr and fwmp need to be checked here. \n\nWhy not let the OS code which modifies the rollback spaces consult FWMP and then proceed if allowed? The pcr checks here would still make sure that rollback clearing could happen only in certain modes.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 0
+      },
+      "revId": "5739eca27bd08ea10c22978e0c55c9009f377b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
