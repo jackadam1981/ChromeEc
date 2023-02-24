@@ -7860,6 +7860,7 @@ enum boot_time_param {
 	ESPIRST,
 	PLTRST_LOW,
 	PLTRST_HIGH,
+	S5S4_TRANSITION,
 	EC_CUR_TIME,
 	RESET_CNT,
 };
