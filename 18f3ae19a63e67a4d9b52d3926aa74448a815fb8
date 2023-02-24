@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76b8c5e6_064a4400",
+        "filename": "zephyr/emul/emul_sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-02-24T00:58:30Z",
+      "side": 1,
+      "message": "As potential quick-fix.\n\nIf you change `sm5803_emul_data_##n` to `sm5803_emul_data_all` or something similar then you\u0027ll have all the emulators map to the same underlying private emulator data.",
+      "range": {
+        "startLine": 144,
+        "startChar": 43,
+        "endLine": 144,
+        "endChar": 63
+      },
+      "revId": "18f3ae19a63e67a4d9b52d3926aa74448a815fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
