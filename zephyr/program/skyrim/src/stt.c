@@ -6,7 +6,7 @@
 /* Support code for STT temperature reporting */
 
 #include "chipset.h"
-#include "driver/temp_sensor/f75303.h"
+#include "temp_sensor/f75303.h"
 #include "temp_sensor/pct2075.h"
 #include "temp_sensor/temp_sensor.h"
 
