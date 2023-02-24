@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9ac9384_a1eb8d2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-24T22:05:35Z",
+      "side": 1,
+      "message": "For this type of change that shouldn\u0027t change the binary, you can also use the \"compare_builds.sh\" script as a shortcut to be sure that everything was moved around without accidentally making any changes. See the \"git log\" history for some examples.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "edb5d408666de1d699864d2aafeb78b4647f8710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
