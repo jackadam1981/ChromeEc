@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89f4651a_0b56fb91",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4408,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-24T00:44:12Z",
+      "side": 1,
+      "message": "`get_crashlog()` returns `void`, does this compile?",
+      "range": {
+        "startLine": 4408,
+        "startChar": 8,
+        "endLine": 4408,
+        "endChar": 33
+      },
+      "revId": "1beb45027fb28938cc89e87a4f64e614e8f56ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
