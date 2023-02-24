@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1332f69d_a4f31292",
+        "filename": "zephyr/program/corsola/src/npcx_usbc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-24T00:22:24Z",
+      "side": 0,
+      "message": "Note - on the corsola project, this GPIO `gpio_usb_c0_tcpc_rst` is active high.  This means that herobrine and corsola are currently using opposite logic:\n\nHerobrine:\n```\n\t\tif (gpio_pin_get_dt(\n\t\t\t    GPIO_DT_FROM_NODELABEL(gpio_usb_c0_pd_rst_l)))\n\t\t\tstatus |\u003d PD_STATUS_TCPC_ALERT_0;\n```\n\nThis is further confirmation that the active high/active low status needs to be fixed on each project before moving this code into the shim driver.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 55
+      },
+      "revId": "0f0f0b289bc9f47c7a19db9693a77e754080af14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
