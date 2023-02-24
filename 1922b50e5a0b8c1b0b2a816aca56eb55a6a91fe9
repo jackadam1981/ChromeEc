@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e5a5386_9488cb84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-02-24T01:36:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55f5475d_bdaf224f",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "1922b50e5a0b8c1b0b2a816aca56eb55a6a91fe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2d864a0_50f279a7",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-02-23T07:49:33Z",
       "side": 1,
       "message": "this looks like it\u0027ll be the 4th copy of this driver.\ncould you please file a bug to merge these into a common place?",
+      "revId": "1922b50e5a0b8c1b0b2a816aca56eb55a6a91fe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "528363a9_98bf0bcd",
+        "filename": "board/constitution/pse.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-02-24T01:36:47Z",
+      "side": 1,
+      "message": "OK, I will file a bug and upload another CL to move these into common place.",
+      "parentUuid": "f2d864a0_50f279a7",
       "revId": "1922b50e5a0b8c1b0b2a816aca56eb55a6a91fe9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
