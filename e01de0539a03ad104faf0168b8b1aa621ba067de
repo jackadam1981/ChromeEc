@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c542cd7_d3df0765",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-24T20:12:16Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "3d33df04_413afce8",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "e01de0539a03ad104faf0168b8b1aa621ba067de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d7a5313_fefff8ee",
@@ -85,6 +109,30 @@
       "side": 0,
       "message": "That makes sense. Adding a comment in the commit message sounds good.",
       "parentUuid": "84cc0c3f_61df4757",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "e01de0539a03ad104faf0168b8b1aa621ba067de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3105cef_5ecb0d7e",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-02-24T20:12:16Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "ff500131_567c4a28",
       "range": {
         "startLine": 13,
         "startChar": 0,
