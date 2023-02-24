@@ -69,6 +69,30 @@
       },
       "revId": "e01de0539a03ad104faf0168b8b1aa621ba067de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff500131_567c4a28",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-02-24T17:21:13Z",
+      "side": 0,
+      "message": "That makes sense. Adding a comment in the commit message sounds good.",
+      "parentUuid": "84cc0c3f_61df4757",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "e01de0539a03ad104faf0168b8b1aa621ba067de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
