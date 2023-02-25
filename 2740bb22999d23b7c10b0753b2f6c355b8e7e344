@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "292cd752_75e7f514",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-02-25T00:52:08Z",
+      "side": 1,
+      "message": "Leased crosfleet device `helios`:\n```\n./crosfleet dut lease -model helios -dims \u0027label-fingerprint\u003dTrue,label-servo_state\u003dWORKING\u0027\n```\n\nFlashed custom image with ectool changes:\n```\n(cr) (main) fsammoura@fsammoura1 ~/chromiumos/src/scripts $ cros flash --disable-rootfs-verification ssh://localhost:2200 ~/chromiumos/src/build/images/hatch/R112-15358.0.0-d2023_02_24_005313-a1/chromiumos_test_image.bin\n```\n\nRan tast tests:\n```\n(cr) (main) fsammoura@fsammoura1 ~/chromiumos/src/platform/tast-tests $ tast run localhost:2200 firmware.Fp{AddEntropy,BioWash,CheckWriteProtect,RDP0,ROOnlyBootsValidRW,RWNoUpdateRO,ReadFlash,RebootToRO,SoftwareWriteProtect}\n```\n\n\nResults shows :\n```\n2023-02-24T22:58:05.728797Z firmware.FpAddEntropy           [ PASS ] \n2023-02-24T22:58:05.728797Z firmware.FpBioWash              [ PASS ] \n2023-02-24T22:58:05.728797Z firmware.FpCheckWriteProtect    [ PASS ] \n2023-02-24T22:58:05.728797Z firmware.FpRDP0                 [ PASS ] \n2023-02-24T22:58:05.728797Z firmware.FpROOnlyBootsValidRW   [ PASS ] \n2023-02-24T22:58:05.728797Z firmware.FpRWNoUpdateRO         [ PASS ] \n2023-02-24T22:58:05.728797Z firmware.FpReadFlash            [ PASS ] \n2023-02-24T22:58:05.728797Z firmware.FpRebootToRO           [ PASS ] \n2023-02-24T22:58:05.728797Z firmware.FpSoftwareWriteProtect [ PASS ] \n```\n\nDetailed logs:\nhttps://paste.googleplex.com/6662008945508352",
+      "parentUuid": "d9726830_c1dc8ab5",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "2740bb22999d23b7c10b0753b2f6c355b8e7e344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bede3d29_acba8aa8",
         "filename": "util/ectool.cc",
         "patchSetId": 15
