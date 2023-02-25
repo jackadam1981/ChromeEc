@@ -7550,7 +7550,8 @@ static void cmd_charge_current_limit_help(const char *cmd)
 
 int cmd_charge_current_limit(int argc, char *argv[])
 {
-	struct ec_params_current_limit p;
+	uint32_t limit;
+	uint8_t battery_soc;
 	int version = 1;
 	int rv;
 	char *e;
@@ -7558,35 +7559,54 @@ int cmd_charge_current_limit(int argc, char *argv[])
 	if (!ec_cmd_version_supported(EC_CMD_CHARGE_CURRENT_LIMIT, 1))
 		version = 0;
 
+	/*
+	 * v0: max_current_ma (argc == 2)
+	 * v1: max_current_ma and [battery_soc] (argc == 2 or 3)
+	 */
 	if (version < 1) {
 		if (argc != 2) {
 			cmd_charge_current_limit_help(argv[0]);
 			return -1;
 		}
-	} else if (argc < 2 || argc > 3) {
-		cmd_charge_current_limit_help(argv[0]);
-		return -1;
+	} else {
+		if (argc < 2 || argc > 3) {
+			cmd_charge_current_limit_help(argv[0]);
+			return -1;
+		}
 	}
 
-	p.limit = strtol(argv[1], &e, 0);
+	/* max_current_ma */
+	limit = strtoull(argv[1], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "ERROR: Bad limit value: %s\n", argv[1]);
 		return -1;
 	}
 
 	if (argc == 3) {
-		p.battery_soc = strtol(argv[2], &e, 0);
+		battery_soc = strtol(argv[2], &e, 0);
 		if (e && *e) {
 			fprintf(stderr, "ERROR: Bad battery SoC value: %s\n",
 				argv[2]);
 			return -1;
 		}
+	} else {
+		/* Send v0 if only <limit> is specified. */
+		version = 0;
 	}
 
-	rv = ec_command(EC_CMD_CHARGE_CURRENT_LIMIT, version, &p, sizeof(p),
-			NULL, 0);
-	if (rv < 0) {
-		fprintf(stderr, "ERROR: Battery SoC is out of range.\n");
+	if (version == 0) {
+		struct ec_params_current_limit p;
+
+		p.limit = limit;
+		rv = ec_command(EC_CMD_CHARGE_CURRENT_LIMIT, version, &p,
+				sizeof(p), NULL, 0);
+	} else {
+		struct ec_params_current_limit_v1 p;
+
+		p.limit = limit;
+		p.battery_soc = battery_soc;
+		rv = ec_command(EC_CMD_CHARGE_CURRENT_LIMIT, version, &p,
+				sizeof(p), NULL, 0);
 	}
 
 	return rv;
