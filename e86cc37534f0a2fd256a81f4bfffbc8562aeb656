@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24757e96_4f3b05a5",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-26T03:21:35Z",
+      "side": 1,
+      "message": "It writes address then followed by data. I don\u0027t find a good approach to combine these since the addr and data are from two different memory buffers.",
+      "parentUuid": "5adb1abc_0fd01115",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 25
+      },
+      "revId": "e86cc37534f0a2fd256a81f4bfffbc8562aeb656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c76aada_a1f5ffc3",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 21
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-22T17:25:22Z",
       "side": 1,
       "message": "Let\u0027s print CPS8200_CMD_STATUS(u32).",
+      "range": {
+        "startLine": 444,
+        "startChar": 37,
+        "endLine": 444,
+        "endChar": 38
+      },
+      "revId": "e86cc37534f0a2fd256a81f4bfffbc8562aeb656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0eb4546_4b553336",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-26T03:21:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c76aada_a1f5ffc3",
       "range": {
         "startLine": 444,
         "startChar": 37,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fed0809_4fbfcf66",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-26T03:21:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "021c49c2_65379815",
+      "range": {
+        "startLine": 465,
+        "startChar": 33,
+        "endLine": 465,
+        "endChar": 34
+      },
+      "revId": "e86cc37534f0a2fd256a81f4bfffbc8562aeb656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b9ccc44_2b569d7d",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b3295c_80514ab5",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-26T03:21:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b9ccc44_2b569d7d",
+      "range": {
+        "startLine": 562,
+        "startChar": 2,
+        "endLine": 562,
+        "endChar": 43
+      },
+      "revId": "e86cc37534f0a2fd256a81f4bfffbc8562aeb656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a6e6e95_86d4152b",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-02-22T17:25:22Z",
       "side": 1,
       "message": "nit: Why don\u0027t you use a pointer (i.e. struct cps8200_update *upd)?",
+      "range": {
+        "startLine": 646,
+        "startChar": 1,
+        "endLine": 646,
+        "endChar": 39
+      },
+      "revId": "e86cc37534f0a2fd256a81f4bfffbc8562aeb656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "369124d4_df7266df",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-26T03:21:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a6e6e95_86d4152b",
       "range": {
         "startLine": 646,
         "startChar": 1,
