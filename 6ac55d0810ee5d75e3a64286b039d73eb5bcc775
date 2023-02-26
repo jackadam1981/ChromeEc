@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd93d0eb_0ebce2bb",
+        "filename": "test/crc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-26T03:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a18ce7f9_14bd7d3c",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "6ac55d0810ee5d75e3a64286b039d73eb5bcc775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18d829cb_d2a1c534",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-22T19:01:57Z",
       "side": 1,
       "message": "Zephyr provides `crc16_itu_t()` which always is optimized for the the polynomial 0x1021.",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "6ac55d0810ee5d75e3a64286b039d73eb5bcc775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b5952b_4514ab89",
+        "filename": "zephyr/shim/src/crc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-02-26T03:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18d829cb_d2a1c534",
       "range": {
         "startLine": 29,
         "startChar": 8,
