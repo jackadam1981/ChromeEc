@@ -16,6 +16,23 @@
       "message": "It\u0027s weird to get used to, but we have a file called `zephyr/shim/include/config_chip.h` which translates the CONFIG_PLATFORM_EC configs into the old fashioned CONFIG options.  Generally speaking, we\u0027ve still been adding entries to `include/config.h` as well for new options, though it grows less relevant as more platforms move to zephyr.",
       "revId": "1878caebe6b36f8d26d9fc737ad212f36d327762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6dea8b_fd23eec4",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-27T15:02:52Z",
+      "side": 1,
+      "message": "Should this depend on PLATFORM_EC_POWERSEQ_S0IX too?",
+      "revId": "1878caebe6b36f8d26d9fc737ad212f36d327762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
