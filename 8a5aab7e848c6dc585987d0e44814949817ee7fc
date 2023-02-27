@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f5e3e9_56e84ba7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-27T20:20:07Z",
+      "side": 1,
+      "message": "Failure looks like it\u0027s here in the unit test build called `skyrim.crystaldrift.alt_charger`: \n```\n/mnt/host/source/src/platform/ec/zephyr/program/skyrim/crystaldrift/src/alt_charger.c:34:45: error: use of undeclared identifier \u0027FW_CHARGER_ISL9238\u0027; did you mean \u0027FW_CHARGER_ISL9538\u0027?\n        if ((val \u003d\u003d FW_CHARGER_ISL9538) || (val \u003d\u003d FW_CHARGER_ISL9238))\n                                                   ^~~~~~~~~~~~~~~~~~\n                                                   FW_CHARGER_ISL9538\n/mnt/host/source/src/platform/ec/zephyr/shim/include/cros_cbi.h:78:11: note: \u0027FW_CHARGER_ISL9538\u0027 declared here\n                               CBI_FW_CONFIG_ENUM_WITH_VALUE)\n                               ^\n1 error generated.\nninja: build stopped: subcommand failed.\n```",
+      "revId": "8a5aab7e848c6dc585987d0e44814949817ee7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
