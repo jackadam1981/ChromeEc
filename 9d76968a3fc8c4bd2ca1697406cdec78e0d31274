@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f942ef3a_1df7979f",
+        "filename": "common/usbc/ap_vdm_control.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-27T21:15:25Z",
+      "side": 1,
+      "message": "I think you need at least `\u003cstdint\u003e` for `uint32_t`, etc. and maybe a few other system headers.",
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "769a4fab_ad914a3d",
+        "filename": "common/usbc/ap_vdm_control.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-27T21:15:25Z",
+      "side": 1,
+      "message": "Is it meaningful for this to be negative?",
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dad9183_fe113d1e",
+        "filename": "common/usbc/ap_vdm_control.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-27T21:15:25Z",
+      "side": 1,
+      "message": "Nit: I don\u0027t think you need to hold the mutex while you do this, but you don\u0027t need to rearrange the code if it would end up being awkward, since contention for this mutex will probably be low. Same for the `popped_entry` copies below.",
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ed6c75_874b7dac",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-27T21:15:25Z",
+      "side": 1,
+      "message": "These thin wrapper functions are organized like the VDM host command is a client of the DPM, and the DPM is simply implemented in terms of the AP VDM control module. But it seems to me more like the host command is part-and-parcel of the AP VDM module, and the DPM doesn\u0027t need to know much about the host command. What would it look like if the host command were implemented directly in terms of the AP VDM API (and maybe moved into that module), and these thin wrappers were removed from the DPM?",
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06de7c13_1a84477b",
+        "filename": "include/usb_pd_ap_vdm_control.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-27T21:15:25Z",
+      "side": 1,
+      "message": "Nit: \"AP VDM module\"?",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e0c9a5_b4611219",
+        "filename": "include/usb_pd_ap_vdm_control.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-27T21:15:25Z",
+      "side": 1,
+      "message": "Nit: VDM",
+      "range": {
+        "startLine": 54,
+        "startChar": 42,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
