@@ -87,6 +87,24 @@
       "parentUuid": "825191c5_d9e61847",
       "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd48fc7e_58fca9f5",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-27T19:42:29Z",
+      "side": 1,
+      "message": "Hi VJ and Fabio , \n\ncan we take any one of the specific approach as below : \ncan we have multiple functions in the same script to do logically implement?\n\ncan we have multiple python scripts to split , do the second loader downloading the binary and do the flash programming ?",
+      "parentUuid": "87628447_9c536589",
+      "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
