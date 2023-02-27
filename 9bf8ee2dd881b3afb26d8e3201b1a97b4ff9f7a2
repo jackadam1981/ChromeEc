@@ -105,6 +105,24 @@
       "parentUuid": "87628447_9c536589",
       "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b9ac42_ae9ed442",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-02-27T20:42:19Z",
+      "side": 1,
+      "message": "As Fabio suggested pls make a design doc and then use single script to do all functionalities with multiple logical functions",
+      "parentUuid": "bd48fc7e_58fca9f5",
+      "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
