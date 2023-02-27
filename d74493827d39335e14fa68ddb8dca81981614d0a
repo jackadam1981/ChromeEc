@@ -69,6 +69,24 @@
       "message": "Hi @dzigterman@google.com, could you help confirm that the solution works? Same situation as board skyrim.",
       "revId": "d74493827d39335e14fa68ddb8dca81981614d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df9e7db_a9dd2832",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-27T20:35:22Z",
+      "side": 1,
+      "message": "I may be misremembering, but I thought `CONFIG_EEPROM_CBI_WP` was primarily intended for the dogfood stage?  \n\nCC-ing Aseda, who might have better insight here.",
+      "parentUuid": "84db0256_e1d957f2",
+      "revId": "d74493827d39335e14fa68ddb8dca81981614d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
