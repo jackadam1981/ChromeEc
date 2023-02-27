@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78678a9e_41c1b06c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-02-27T07:30:06Z",
+      "side": 1,
+      "message": "just build pass now\n\nsee `KB init` when EC power-on\n\n`kbpress, ksstate` commands shows in the console\n\n```\n23-02-27 15:16:22.200 ec:~$ *** Booting Zephyr OS build v2.7.99-18736-g0c9eb928d390 ***\n23-02-27 15:16:40.549 !\n23-02-27 15:16:40.549 !\n23-02-27 15:16:40.549 --- UART initialized after reboot ---\n23-02-27 15:16:40.549 ![Image: unknown, kb_v3.3.105927-ec:42a4df,os:0c9eb9,cmsis:4aa3ff,hal_stm32:99e88d 2023-02-27 15:15:21 zw@linux]\n23-02-27 15:16:40.557 ![Reset cause: !unknown!]\n23-02-27 15:16:40.560 ![0.023900 Inits done]\n23-02-27 15:16:40.562 ![0.025900 KB init state:! --! --! --! --! --! --! --! --! --! --! --! --! --!]\n23-02-27 15:16:40.569 \n23-02-27 15:16:40.569 \n23-02-27 15:16:40.569 ec:~$ \n23-02-27 15:16:46.128 ec:~$ \n23-02-27 15:16:46.849   chan       crash      feat       gettime    gpioget    gpioset    help\n23-02-27 15:16:46.855   hibernate  hwinfo     idlestats  kbpress    kernel     ksstate    md\n23-02-27 15:16:46.862   panicinfo  reboot     rw         shmem      sysinfo    syslock    timerinfo\n23-02-27 15:16:46.869   version    waitms\n23-02-27 15:16:46.871 ec:~$ ksstate \n23-02-27 15:17:10.433 [30.048500 KB debounced : -- -- -- -- -- -- -- -- -- -- -- -- --]\n23-02-27 15:17:10.439 [30.049400 KB debouncing: -- -- -- -- -- -- -- -- -- -- -- -- --]\n23-02-27 15:17:10.445 Keyboard scan disable mask: 0x00000000\n23-02-27 15:17:10.448 Keyboard scan state printing off\n23-02-27 15:17:10.452 ec:~$\n```",
+      "revId": "bdbb2e6c7cfb4522ed965846c3700253f6101bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
