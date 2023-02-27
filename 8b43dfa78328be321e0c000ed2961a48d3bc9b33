@@ -241,6 +241,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "130f30c2_5e91541b",
+        "filename": "util/mchp/gen_pgm_hdr.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-27T19:51:26Z",
+      "side": 1,
+      "message": "Hi VJ and fabio,\n\nwill merge the above python scripts into the crisis_rcvry_util.py as one file as suggested.",
+      "parentUuid": "8de7182a_30cea61a",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "8b43dfa78328be321e0c000ed2961a48d3bc9b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "418b4612_c005119d",
         "filename": "util/mchp/gen_pgm_hdr.py",
         "patchSetId": 1
