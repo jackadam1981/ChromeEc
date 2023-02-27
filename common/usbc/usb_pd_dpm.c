@@ -1363,7 +1363,7 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	    dpm_mode_entry_requested(port, TYPEC_MODE_DP)) {
 		enter_mode_requested = true;
 		vdo_count = ARRAY_SIZE(vdm);
-		status = dp_setup_next_vdm(port, &vdo_count, vdm);
+		status = dp_setup_next_vdm(port, &vdo_count, vdm, &tx_type);
 	}
 
 	/* Not ready to send a VDM, check again next cycle */
@@ -1453,7 +1453,7 @@ static bool dpm_dfp_exit_mode_msg(int port)
 		status = tbt_setup_next_vdm(port, &vdo_count, vdm, &tx_type);
 	} else if (dp_is_active(port)) {
 		CPRINTS("C%d: DP teardown", port);
-		status = dp_setup_next_vdm(port, &vdo_count, vdm);
+		status = dp_setup_next_vdm(port, &vdo_count, vdm, &tx_type);
 	} else {
 		/* Clear exit mode request */
 		dpm_clear_mode_exit_request(port);
