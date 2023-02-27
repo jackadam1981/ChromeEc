@@ -34,6 +34,24 @@
       "parentUuid": "87f43ee6_0a8105ad",
       "revId": "d74493827d39335e14fa68ddb8dca81981614d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84db0256_e1d957f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548949
+      },
+      "writtenOn": "2023-02-27T05:22:34Z",
+      "side": 1,
+      "message": "Xivu also disables this CONFIG_PLATFORM_EC_SYSTEM_UNLOCKED feature, gpio_cbi_wp will be able to be asserted high. The solution have verified that cbi write not works on winterhold and frostflow fordisable factory mode.",
+      "parentUuid": "5b0fa75c_7e24bf45",
+      "revId": "d74493827d39335e14fa68ddb8dca81981614d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
