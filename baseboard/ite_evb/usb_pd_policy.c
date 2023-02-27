@@ -112,7 +112,8 @@ __override int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 	return 0;
 }
 
-__override int svdm_dp_config(int port, uint32_t *payload)
+__override int svdm_dp_config(int port, uint32_t *payload,
+			      enum tcpci_msg_type type)
 {
 	/* Return length 0, means nothing needn't tx */
 	return 0;
