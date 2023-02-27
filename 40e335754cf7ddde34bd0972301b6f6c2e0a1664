@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f3d53b_75592a75",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-02-27T20:57:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a8d45bdc_e2467bf5",
+      "revId": "40e335754cf7ddde34bd0972301b6f6c2e0a1664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1e2817c_afbd42ab",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-01-23T17:46:51Z",
       "side": 1,
       "message": "step 1: check of version is 2.1 and only do PRIME\n\n\nneed to support TBT \u0026 USB4 cables also",
+      "revId": "40e335754cf7ddde34bd0972301b6f6c2e0a1664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2753b35_01113430",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-02-27T20:57:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e1e2817c_afbd42ab",
       "revId": "40e335754cf7ddde34bd0972301b6f6c2e0a1664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "011f8330_8a4811b0",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-02-27T20:57:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "02650216_683c2e61",
+      "range": {
+        "startLine": 240,
+        "startChar": 6,
+        "endLine": 240,
+        "endChar": 20
+      },
+      "revId": "40e335754cf7ddde34bd0972301b6f6c2e0a1664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb11408b_3fe2b9d8",
@@ -71,6 +131,24 @@
       "writtenOn": "2023-01-23T17:46:51Z",
       "side": 1,
       "message": "try make a new file for all DP configs",
+      "revId": "40e335754cf7ddde34bd0972301b6f6c2e0a1664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "011074c6_bed941f8",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-02-27T20:57:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "eb11408b_3fe2b9d8",
       "revId": "40e335754cf7ddde34bd0972301b6f6c2e0a1664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
