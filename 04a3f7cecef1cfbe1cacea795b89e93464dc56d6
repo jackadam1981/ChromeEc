@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9031deb7_e9119e4b",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-27T20:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3536edbd_6a5f6008",
+      "range": {
+        "startLine": 175,
+        "startChar": 48,
+        "endLine": 175,
+        "endChar": 54
+      },
+      "revId": "04a3f7cecef1cfbe1cacea795b89e93464dc56d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b92a8c17_823a16c1",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-21T18:29:48Z",
       "side": 1,
       "message": "nit: `fake` per COIL",
+      "range": {
+        "startLine": 230,
+        "startChar": 39,
+        "endLine": 230,
+        "endChar": 44
+      },
+      "revId": "04a3f7cecef1cfbe1cacea795b89e93464dc56d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a1ee83f_0519995c",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-02-27T20:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b92a8c17_823a16c1",
       "range": {
         "startLine": 230,
         "startChar": 39,
