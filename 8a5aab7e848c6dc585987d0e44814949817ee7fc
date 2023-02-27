@@ -16,6 +16,24 @@
       "message": "Failure looks like it\u0027s here in the unit test build called `skyrim.crystaldrift.alt_charger`: \n```\n/mnt/host/source/src/platform/ec/zephyr/program/skyrim/crystaldrift/src/alt_charger.c:34:45: error: use of undeclared identifier \u0027FW_CHARGER_ISL9238\u0027; did you mean \u0027FW_CHARGER_ISL9538\u0027?\n        if ((val \u003d\u003d FW_CHARGER_ISL9538) || (val \u003d\u003d FW_CHARGER_ISL9238))\n                                                   ^~~~~~~~~~~~~~~~~~\n                                                   FW_CHARGER_ISL9538\n/mnt/host/source/src/platform/ec/zephyr/shim/include/cros_cbi.h:78:11: note: \u0027FW_CHARGER_ISL9538\u0027 declared here\n                               CBI_FW_CONFIG_ENUM_WITH_VALUE)\n                               ^\n1 error generated.\nninja: build stopped: subcommand failed.\n```",
       "revId": "8a5aab7e848c6dc585987d0e44814949817ee7fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "020c9d6b_213d905e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-27T20:35:47Z",
+      "side": 1,
+      "message": "The generic alt charger test is written under the assumption that a variant would support the `FW_CHARGER_ISL9238` charger. Since crystaldrift doesn\u0027t, the test is failing to compile. Could you upload an updated CL with these lines commented out:\n```\n  skyrim.crystaldrift.alt_charger:\n    extra_configs:\n    - CONFIG_TEST_BOARD_CRYSTALDRIFT\u003dy\n    - CONFIG_TEST_BOARD_ALT_CHARGER\u003dy\n```\n\nin `zephyr/test/skyrim/testcase.yaml`? I\u0027ll go back in later and update the test.",
+      "parentUuid": "42f5e3e9_56e84ba7",
+      "revId": "8a5aab7e848c6dc585987d0e44814949817ee7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
