@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this is the correct solution to your bug, because Xivu *does* use a GPIO to latch CBI write-protect so it would be wrong to turn this option off. This would prevent the write-protect signal from ever being enabled because it is only controlled by that GPIO.",
       "revId": "d74493827d39335e14fa68ddb8dca81981614d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b0fa75c_7e24bf45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548949
+      },
+      "writtenOn": "2023-02-27T03:33:25Z",
+      "side": 1,
+      "message": "Since we have had positive results in these two cases : https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4248859 and https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4236323.",
+      "parentUuid": "87f43ee6_0a8105ad",
+      "revId": "d74493827d39335e14fa68ddb8dca81981614d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
