@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bed53cd7_82cce72b",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-02-27T23:04:22Z",
+      "side": 1,
+      "message": "I ran `make BOARD\u003d$BOARD` for both dartmonkey and bloonchipper with and without this CL. \n\nBloonchipper RW RAM usage increases 1472 bytes, RW flash increases 70376 bytes\nDartmonkey RW RAM usage increases 1440, RW flash increases 70368 bytes\n\n\nOutput from make BOARD:\nwith this CL\n- 76088 bytes in flash and 241792 bytes in RAM still available on bloonchipper RO \n- 399616 bytes in flash and 179328 bytes in RAM still available on bloonchipper RW \n\n- 734584 bytes in flash and 508384 bytes in RAM still available on dartmonkey RO \n- 727128 bytes in flash and 503648 bytes in RAM still available on dartmonkey RW \n\n\n without this CL:\n- 76088 bytes in flash and 241792 bytes in RAM still available on bloonchipper RO \n- 469992 bytes in flash and 180800 bytes in RAM still available on bloonchipper RW \n\n- 734584 bytes in flash and 508384 bytes in RAM still available on dartmonkey RO \n- 797496 bytes in flash and 505088 bytes in RAM still available on dartmonkey RW",
+      "parentUuid": "4fc2c879_e3144015",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54115527_d6222d8a",
         "filename": "util/fpmcu_upload.py",
         "patchSetId": 16
@@ -54,6 +78,24 @@
       "writtenOn": "2023-02-22T23:16:18Z",
       "side": 1,
       "message": "nit: It might be easier to specify to built the `fpmcu` with `EXTRA_CFLAGS\u003d-DCONFIG_CMD_FPSENSOR_DEBUG` since it won\u0027t require making code changes that may accidentally get committed.",
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "578df205_7ed47945",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-02-27T23:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54115527_d6222d8a",
       "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +113,30 @@
       "writtenOn": "2023-02-22T23:16:18Z",
       "side": 1,
       "message": "nit: Maybe just `${BOARD}`",
+      "range": {
+        "startLine": 23,
+        "startChar": 34,
+        "endLine": 23,
+        "endChar": 44
+      },
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81cc84f0_b2e87066",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-02-27T23:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dbf3e5d_4c667c41",
       "range": {
         "startLine": 23,
         "startChar": 34,
@@ -127,6 +193,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e30f7bd2_a834c961",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-02-27T23:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2318090_1d0ab0c6",
+      "range": {
+        "startLine": 27,
+        "startChar": 64,
+        "endLine": 27,
+        "endChar": 76
+      },
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4d22d7_b1c66c7e",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-02-27T23:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e89a4cd7_a9e94a4f",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3713fa1c_5b96bc14",
@@ -140,6 +254,30 @@
       "writtenOn": "2023-02-22T23:16:18Z",
       "side": 1,
       "message": "I think this whole function could be replaced with `\u0027\u0027.join([pixel_value_to_hex(pixel) for pixel in image.getdata()])`, although I\u0027m not certain how this would work if we needed to deal with row vs col major. I suppose that could be handled with a transpose.",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 20
+      },
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b0a6f9_200426b9",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-02-27T23:04:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3713fa1c_5b96bc14",
       "range": {
         "startLine": 124,
         "startChar": 4,
