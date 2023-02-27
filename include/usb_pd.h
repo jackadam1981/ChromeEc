@@ -356,7 +356,7 @@ struct svdm_amode_fx {
 	uint16_t svid;
 	int (*enter)(int port, uint32_t mode_caps);
 	int (*status)(int port, uint32_t *payload);
-	int (*config)(int port, uint32_t *payload);
+	int (*config)(int port, uint32_t *payload, enum tcpci_msg_type);
 	void (*post_config)(int port);
 	int (*attention)(int port, uint32_t *payload);
 	void (*exit)(int port);
@@ -3353,9 +3353,11 @@ __override_proto int svdm_dp_status(int port, uint32_t *payload);
  * @param port The PD port number
  * @payload payload Pointer to the PDO payload which is filled with the
  *                  DPConfigure response message
+ * @type TCPC message type
  * @return number of VDOs
  */
-__override_proto int svdm_dp_config(int port, uint32_t *payload);
+__override_proto int svdm_dp_config(int port, uint32_t *payload,
+				    enum tcpci_msg_type type);
 
 /**
  * Perform any other work required after configuring the pins for DP Alt Mode.
@@ -3425,9 +3427,11 @@ __override_proto int svdm_gfu_status(int port, uint32_t *payload);
  *
  * @param port The PD port number
  * @param payload Unused for GFU
+ * @type TCPC message type
  * @return The number of VDOs
  */
-__override_proto int svdm_gfu_config(int port, uint32_t *payload);
+__override_proto int svdm_gfu_config(int port, uint32_t *payload,
+				     enum tcpci_msg_type type);
 
 /**
  * Called when an Attention Message is received
