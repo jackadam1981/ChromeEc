@@ -16,6 +16,24 @@
       "message": "Is this something we plan to release with, or more of a debug feature?  (just to document since debug features may need cut if we run short on flash space)",
       "revId": "ffe0e7a21128f563084af9e17879d0391a168258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41feb77c_c96b4e73",
+        "filename": "zephyr/program/skyrim/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-27T22:08:28Z",
+      "side": 1,
+      "message": "It\u0027s required for the next CL that adds the EC CLI command `bodydetectmode`. I plan on leaving this on, since it enables spoofing the body detect state for testing/debug.\n\nI\u0027d be fine restricting this to only test images if that\u0027s possible - though I\u0027m not sure how to achieve that.",
+      "parentUuid": "8035b913_591f0738",
+      "revId": "ffe0e7a21128f563084af9e17879d0391a168258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
