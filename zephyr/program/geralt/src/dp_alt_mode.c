@@ -63,7 +63,8 @@ void svdm_set_hpd_gpio(int port, int en)
 	}
 }
 
-__override int svdm_dp_config(int port, uint32_t *payload)
+__override int svdm_dp_config(int port, uint32_t *payload,
+			      enum tcpci_msg_type type)
 {
 	int opos = pd_alt_mode(port, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
 	uint8_t pin_mode = get_dp_pin_mode(port);
