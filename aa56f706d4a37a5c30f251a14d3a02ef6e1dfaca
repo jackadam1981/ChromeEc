@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e2ab57_7cc7d9e9",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-27T18:26:36Z",
+      "side": 1,
+      "message": "echo is removed",
+      "parentUuid": "7e28c059_3079bd51",
+      "range": {
+        "startLine": 703,
+        "startChar": 1,
+        "endLine": 703,
+        "endChar": 2
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "739641cd_68d9b08e",
@@ -124,6 +148,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdd04fe1_aebcb022",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-27T18:26:36Z",
+      "side": 1,
+      "message": "Followed the step1,2,3 , saved the current baudrate and restore back to standard buadrate",
+      "parentUuid": "27800691_27b65afb",
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f08f51a_e54e6ae3",
@@ -161,6 +203,30 @@
       "side": 1,
       "message": "will take from the passed binary of ec.bin in the flash_ec scripts , passed to python scripts",
       "parentUuid": "3f08f51a_e54e6ae3",
+      "range": {
+        "startLine": 1630,
+        "startChar": 1,
+        "endLine": 1630,
+        "endChar": 72
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7914e2f4_42158d3f",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-27T18:26:36Z",
+      "side": 1,
+      "message": "From the arugument takes the ec.bin and passed to python scripts",
+      "parentUuid": "83034579_10bc00ed",
       "range": {
         "startLine": 1630,
         "startChar": 1,
@@ -242,6 +308,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "062eede6_f61a9a5b",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-27T18:26:36Z",
+      "side": 1,
+      "message": "Called with the python3 mchp/gen_pgm_hdr.py instead of moving to mchp directory",
+      "parentUuid": "f227a6c6_173ddd6b",
+      "range": {
+        "startLine": 1633,
+        "startChar": 1,
+        "endLine": 1633,
+        "endChar": 8
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76697cfe_ca660ef3",
@@ -279,6 +369,30 @@
       "side": 1,
       "message": "will remove the sleep 1",
       "parentUuid": "76697cfe_ca660ef3",
+      "range": {
+        "startLine": 1635,
+        "startChar": 1,
+        "endLine": 1635,
+        "endChar": 8
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "919126d6_128125df",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-27T18:26:36Z",
+      "side": 1,
+      "message": "Removed the sleep 1",
+      "parentUuid": "2df84223_7ae2f4ef",
       "range": {
         "startLine": 1635,
         "startChar": 1,
@@ -360,6 +474,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a07e2066_97b7cb68",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1638,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-27T18:26:36Z",
+      "side": 1,
+      "message": "added in the single line to reset\ndut-control cold_reset:on fw_up:on sleep:1 cold_reset:off",
+      "parentUuid": "78994327_8ff7b27f",
+      "range": {
+        "startLine": 1636,
+        "startChar": 0,
+        "endLine": 1638,
+        "endChar": 27
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "431f2bd3_cd61a20d",
@@ -397,6 +535,30 @@
       "side": 1,
       "message": "sleep 1\n\tdut-control uart1_baudrate\n\t\n\tIts not needed, will remove it",
       "parentUuid": "431f2bd3_cd61a20d",
+      "range": {
+        "startLine": 1641,
+        "startChar": 0,
+        "endLine": 1642,
+        "endChar": 27
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a84a669_90b1fb46",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-27T18:26:36Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "6442d12e_916a0825",
       "range": {
         "startLine": 1641,
         "startChar": 0,
@@ -515,6 +677,30 @@
       "side": 1,
       "message": "will remove it",
       "parentUuid": "aaa420ff_10472e93",
+      "range": {
+        "startLine": 1653,
+        "startChar": 0,
+        "endLine": 1654,
+        "endChar": 22
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f47e09_42eeba2e",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1654,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-02-27T18:26:36Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "a4be35b1_eccf03c0",
       "range": {
         "startLine": 1653,
         "startChar": 0,
