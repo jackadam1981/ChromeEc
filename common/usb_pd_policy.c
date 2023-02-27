@@ -371,7 +371,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 				if (svdm_dp_get_mux_mode(port) ==
 				    USB_PD_MUX_DP_ENABLED)
 					usb_mux_set_safe_mode(port);
-				rsize = modep->fx->config(port, payload);
+				rsize = modep->fx->config(port, payload,
+							  *rtype);
 			} else {
 				rsize = 0;
 			}
@@ -1008,7 +1009,8 @@ mux_state_t svdm_dp_get_mux_mode(int port)
 }
 
 /* Note: Assumes that pins have already been set in safe state if necessary */
-__overridable int svdm_dp_config(int port, uint32_t *payload)
+__overridable int svdm_dp_config(int port, uint32_t *payload,
+				 enum tcpci_msg_type type)
 {
 	int opos = pd_alt_mode(port, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
 	uint8_t pin_mode = get_dp_pin_mode(port);
@@ -1180,7 +1182,8 @@ __overridable int svdm_gfu_status(int port, uint32_t *payload)
 	return 0;
 }
 
-__overridable int svdm_gfu_config(int port, uint32_t *payload)
+__overridable int svdm_gfu_config(int port, uint32_t *payload,
+				  enum tcpci_msg_type type)
 {
 	return 0;
 }
