@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3cac1c25_3d0c5309",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-27T19:10:42Z",
+      "side": 1,
+      "message": "PE_SNK_SELECT_CAPABILITY calls charge_manager_force_ceil, which changes the charge limit immediately (by board_set_charge_limit). So, it\u0027s ok for the limit applied in the deferred task to be overruled by PE_SNK_TRANSITION_SINK. Am I missing something?",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d71a917_0d3f8587",
         "filename": "common/charge_manager.c",
         "patchSetId": 7
