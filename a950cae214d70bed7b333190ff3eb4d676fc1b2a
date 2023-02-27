@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2cf606_ec9bc4fd",
+        "filename": "common/crc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-02-27T16:23:33Z",
+      "side": 1,
+      "message": "Two notes - if you want this to really be inline, then you need to move the implementation into the header file.  Marking inline in the C file limits the scope to this file only.\n\nBut, is this routine is unused (except for the test).  I would prefer you only keep `cros_crc16()` (to avoid the name conflict with Zephyr).  There are various CRC-16 algorithms that use the 0x1021 polynomial, but use a different seed.  So the fixed seed of 0 here doesn\u0027t provide value.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 57
+      },
+      "revId": "a950cae214d70bed7b333190ff3eb4d676fc1b2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
