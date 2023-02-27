@@ -34,6 +34,24 @@
       "parentUuid": "8035b913_591f0738",
       "revId": "ffe0e7a21128f563084af9e17879d0391a168258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91604986_72a3eabf",
+        "filename": "zephyr/program/skyrim/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-27T22:39:37Z",
+      "side": 1,
+      "message": "We don\u0027t have a way to restrict only to test images, unfortunately.  If it\u0027s a debug feature, we\u0027ve been clustering those at the bottom of the file with a note on how much flash space they take up so it\u0027s easy to reference if they need to be removed in the future",
+      "parentUuid": "41feb77c_c96b4e73",
+      "revId": "ffe0e7a21128f563084af9e17879d0391a168258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
