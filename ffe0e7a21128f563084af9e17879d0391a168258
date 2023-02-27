@@ -52,6 +52,24 @@
       "parentUuid": "41feb77c_c96b4e73",
       "revId": "ffe0e7a21128f563084af9e17879d0391a168258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc19a5e_27464b45",
+        "filename": "zephyr/program/skyrim/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-27T23:03:25Z",
+      "side": 1,
+      "message": "Sounds good. Done.\n\nFor reference:\n\n```\n(cr) ((9ed8650...)) timvp@timvp-p620-9115096 ~/chromiumos/src/scripts $ zmake build skyrim\n```\n\nGenerates the following tables:\n\n#### ToT\n\n```\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      247256 B       256 KB     94.32%\n             RAM:       46496 B        64 KB     70.95%\n        IDT_LIST:          0 GB         2 KB      0.00%\n```\n\n#### Enable CONFIG_PLATFORM_EC_ACCEL_SPOOF_MODE\n\n```\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      247804 B       256 KB     94.53%\n             RAM:       46488 B        64 KB     70.94%\n        IDT_LIST:          0 GB         2 KB      0.00%\n```\n\n247804 - 247256 \u003d 548\n\nIt looks like that\u0027s the lowest impact of these so far, but we are still creeping closer to full.",
+      "parentUuid": "91604986_72a3eabf",
+      "revId": "ffe0e7a21128f563084af9e17879d0391a168258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
