@@ -94,7 +94,8 @@ mux_state_t svdm_dp_mux_mode(int port)
 		return USB_PD_MUX_DP_ENABLED;
 }
 
-__override int svdm_dp_config(int port, uint32_t *payload)
+__override int svdm_dp_config(int port, uint32_t *payload,
+			      enum tcpci_msg_type type)
 {
 	int opos = pd_alt_mode(port, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
 	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
