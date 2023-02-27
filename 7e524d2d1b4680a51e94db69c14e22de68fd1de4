@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d4daa3_a4efdaa1",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1442982
+      },
+      "writtenOn": "2023-02-27T10:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c492f1b4_3ad534a9",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a8b7bd0_656f2d88",
@@ -211,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1dbaf3f_cdb44413",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1442982
+      },
+      "writtenOn": "2023-02-27T10:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d0b4dde_99180b0e",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38e72108_cb683bd6",
@@ -242,6 +278,24 @@
       "side": 1,
       "message": "Indeed MUX for short moment enables USB3 then disables. In my test no issues were spotted, but it is possible that some of them can occur later. What I can propose is to make sure DUT hub is disconnected then set MUX and finally enable DUT hub witch will start enumeration process. For sure its safer and should not introduce any additional problems. It does not in my tests on desk.",
       "parentUuid": "38e72108_cb683bd6",
+      "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c588adc1_a5265da2",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1442982
+      },
+      "writtenOn": "2023-02-27T10:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "383a7c9e_d54cfc7a",
       "revId": "7e524d2d1b4680a51e94db69c14e22de68fd1de4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
