@@ -40,6 +40,30 @@
       },
       "revId": "c0924c4244907fcd4e81eb1ffb83b1638f1f5c57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b464771b_37efd721",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4786,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-27T20:38:04Z",
+      "side": 1,
+      "message": "Here is what I think how existing host-ec pairs will be affected:\n \n1. host\u003dv0 ec\u003dv0\nHost sets only limit. EC processes only limit. EC receives a larger request packet but it won\u0027t affect how it\u0027s processed.\n\n2. host\u003dv1 ec\u003dv0\nHost finds ec\u003dv0. So, it sets limit. EC processes only limit.\n\n3. host\u003dv0 ec\u003dv1\nHost sets only limit. EC receives v0 request and processes only limit. EC receives a smaller requst packet but it won\u0027t affect how it\u0027s processed.\n\n4. host\u003dv1 ec\u003dv1\nHost finds ec\u003dv1. So, it sets limit and battery_soc.\n\nWriting new host code is a bit tricky (as you pointed out) because battery_soc is ignored even though it is commented. Do you think adding the above comment is good enough or suggest something else?",
+      "parentUuid": "7e985d59_4fbacd9a",
+      "range": {
+        "startLine": 4786,
+        "startChar": 9,
+        "endLine": 4786,
+        "endChar": 20
+      },
+      "revId": "c0924c4244907fcd4e81eb1ffb83b1638f1f5c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
