@@ -185,7 +185,8 @@ __override void svdm_safe_dp_mode(int port)
 	 */
 }
 
-__override int svdm_dp_config(int port, uint32_t *payload)
+__override int svdm_dp_config(int port, uint32_t *payload,
+			      enum tcpci_msg_type type)
 {
 	int opos = pd_alt_mode(port, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
 	int pin_mode = pd_dfp_dp_get_pin_mode(port, dp_status[port]);
