@@ -3258,7 +3258,7 @@
  * This is enabled by default because all boards other than reference boards
  * are for laptops with lid switchs.  Reference boards #undef it.
  */
-#define CONFIG_LID_SWITCH
+#undef CONFIG_LID_SWITCH
 
 /*
  * GPIOs to use to detect that the lid is opened.
