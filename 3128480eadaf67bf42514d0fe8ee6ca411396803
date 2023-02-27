@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e79d0bd_f7cadbd3",
+        "filename": "common/usbc/dp_hpd_gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-27T21:25:51Z",
+      "side": 1,
+      "message": "`#include \"common.h\"`",
+      "revId": "3128480eadaf67bf42514d0fe8ee6ca411396803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d90b00df_4bf2cfec",
+        "filename": "common/usbc/dp_hpd_gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-27T21:25:51Z",
+      "side": 1,
+      "message": "Where is `svdm_hpd_deadline` defined?",
+      "revId": "3128480eadaf67bf42514d0fe8ee6ca411396803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
