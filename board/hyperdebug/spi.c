@@ -13,8 +13,8 @@
 #include "usb_spi.h"
 #include "util.h"
 
-#define OCTOSPI_CLOCK (16000000UL)
-#define SPI_CLOCK (16000000UL)
+#define OCTOSPI_CLOCK (CPU_CLOCK)
+#define SPI_CLOCK (CPU_CLOCK)
 
 /* SPI devices, default to 250 kb/s for all. */
 struct spi_device_t spi_devices[] = {

@@ -25,6 +25,9 @@ void board_config_pre_init(void)
 {
 	/* enable SYSCFG clock */
 	STM32_RCC_APB2ENR |= STM32_RCC_SYSCFGEN;
+
+	/* HCLK prescaling */
+	/*STM32_RCC_CFGR = (STM32_RCC_CFGR & ~STM32_RCC_CFGR_HPRE_MSK) | STM32_RCC_CFGR_HPRE_DIV8;*/
 }
 
 /******************************************************************************
