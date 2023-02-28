@@ -149,7 +149,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC
                                                 "${PLATFORM_EC}/common/system_boot_time.c"
                                                 "${PLATFORM_EC}/common/uart_printf.c"
                                                 "${PLATFORM_EC}/common/util.c"
-                                                "${PLATFORM_EC}/common/version.c")
+                                                "${PLATFORM_EC}/common/version.c"
+                                                "${PLATFORM_EC}/chip/stm32/usb_hid_keyboard.c")
 
 # Now include files that depend on or relate to other CONFIG options, sorted by
 # CONFIG

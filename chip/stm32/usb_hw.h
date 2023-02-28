@@ -8,6 +8,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include "registers.h"
 
 /* Event types for the endpoint event handler. */
 enum usb_ep_event {
@@ -25,12 +26,14 @@ enum usb_ep_event {
  * this RAM.
  */
 
+#define CONFIG_USB_RAM_ACCESS_TYPE uint16_t
 /* Primitive to access the words in USB RAM */
 typedef CONFIG_USB_RAM_ACCESS_TYPE usb_uint;
 /* Linker symbol for start of USB RAM */
 extern usb_uint __usb_ram_start[];
 
 /* Attribute to define a buffer variable in USB RAM */
+//TODO: how to fix this in zephyr build?
 #define __usb_ram __attribute__((section(".usb_ram.99_data")))
 
 /* Mask for the rx_count to identify the number of bytes in the buffer. */

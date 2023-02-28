@@ -482,8 +482,10 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #include "registers-stm32l4.h"
 #elif defined(CHIP_FAMILY_STM32L5)
 #include "registers-stm32l5.h"
-#else
-#error "Unsupported chip family"
 #endif
+
+#define CHIP_VARIANT_STM32F07X
+#include "registers-stm32f0.h"
+#include "config_chip.h"
 
 #endif /* __CROS_EC_REGISTERS_H */

@@ -27,6 +27,9 @@
 #include "usb_hw.h"
 #include "util.h"
 
+#define USB_IFACE_HID_KEYBOARD 0
+#define USB_EP_HID_KEYBOARD 2 
+
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ##args)
 
@@ -39,7 +42,7 @@ struct key_event {
 };
 
 static struct queue const key_queue = QUEUE_NULL(16, struct key_event);
-static struct mutex key_queue_mutex;
+static struct k_mutex key_queue_mutex;
 
 enum hid_protocol {
 	HID_BOOT_PROTOCOL = 0,
