@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac3b149_43c75225",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-28T16:37:05Z",
+      "side": 1,
+      "message": "I\u0027d need to double check where this is used, but there is some trickiness here since PDOs are both used in the classic capabilities  with the non-extended hard limit of 7, and the new EPR capabilities which are extended.  So we just need to ensure that, for example, we never overstep the correct bounds for an older capability message.",
+      "range": {
+        "startLine": 10,
+        "startChar": 42,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "revId": "fbdbf7b2d21482a593c80e0fc6b0b6b7bce0ae91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "810837fb_c9e9680e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-28T16:37:05Z",
+      "side": 1,
+      "message": "Does this need updated as well?",
+      "revId": "fbdbf7b2d21482a593c80e0fc6b0b6b7bce0ae91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
