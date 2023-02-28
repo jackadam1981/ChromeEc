@@ -1,0 +1,229 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4a07bb6_cc417495",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-28T23:33:26Z",
+      "side": 1,
+      "message": "Any comments on whether each while loop will deterministically terminate?",
+      "revId": "d39c78ab26e1bff0c8238b83aca58511a5e4689d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c81e1e6_e308f56d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 9170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-28T23:33:26Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 9170,
+        "startChar": 44,
+        "endLine": 9170,
+        "endChar": 48
+      },
+      "revId": "d39c78ab26e1bff0c8238b83aca58511a5e4689d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a200614d_f52a4255",
+        "filename": "util/ectool.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 9170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-28T23:33:26Z",
+      "side": 1,
+      "message": "This isn\u0027t needed.",
+      "range": {
+        "startLine": 9170,
+        "startChar": 38,
+        "endLine": 9170,
+        "endChar": 42
+      },
+      "revId": "d39c78ab26e1bff0c8238b83aca58511a5e4689d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20cbb82c_3265428d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 9175,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-28T23:33:26Z",
+      "side": 1,
+      "message": "Can you describe the command and each param?",
+      "range": {
+        "startLine": 9175,
+        "startChar": 8,
+        "endLine": 9175,
+        "endChar": 26
+      },
+      "revId": "d39c78ab26e1bff0c8238b83aca58511a5e4689d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ffb3d1_9b80c9ad",
+        "filename": "util/ectool.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 9229,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-28T23:33:26Z",
+      "side": 1,
+      "message": "I\u0027ve never seen it. Why not MIN()?",
+      "range": {
+        "startLine": 9229,
+        "startChar": 26,
+        "endLine": 9229,
+        "endChar": 30
+      },
+      "revId": "d39c78ab26e1bff0c8238b83aca58511a5e4689d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4468def_3c74c4c8",
+        "filename": "util/ectool.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 9230,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-28T23:33:26Z",
+      "side": 1,
+      "message": "Do we need to worry about wrap-around?",
+      "range": {
+        "startLine": 9230,
+        "startChar": 3,
+        "endLine": 9230,
+        "endChar": 43
+      },
+      "revId": "d39c78ab26e1bff0c8238b83aca58511a5e4689d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a29002e_e6f9df5d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 9291,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-28T23:33:26Z",
+      "side": 1,
+      "message": "\u003e \"boundries\" is a possible misspelling of \"boundaries\".\n\nPlease fix.",
+      "parentUuid": "17671a89_320167d3",
+      "range": {
+        "startLine": 9291,
+        "startChar": 25,
+        "endLine": 9291,
+        "endChar": 34
+      },
+      "revId": "d39c78ab26e1bff0c8238b83aca58511a5e4689d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca5dfa3_5e6cb07b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 9366,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-28T23:33:26Z",
+      "side": 1,
+      "message": "I think it\u0027s better to handle it by if (and print error message and exit to cmd_memory_dump_cleanup).",
+      "range": {
+        "startLine": 9366,
+        "startChar": 2,
+        "endLine": 9366,
+        "endChar": 8
+      },
+      "revId": "d39c78ab26e1bff0c8238b83aca58511a5e4689d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc508167_626c5fd3",
+        "filename": "util/ectool.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 9374,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-28T23:33:26Z",
+      "side": 1,
+      "message": "nit: merging segments failed",
+      "range": {
+        "startLine": 9374,
+        "startChar": 20,
+        "endLine": 9374,
+        "endChar": 26
+      },
+      "revId": "d39c78ab26e1bff0c8238b83aca58511a5e4689d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12acd114_79ed2f42",
+        "filename": "util/ectool.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 9405,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-28T23:33:26Z",
+      "side": 1,
+      "message": "Are you interested in hexdump?\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/main/include/util.h#274",
+      "range": {
+        "startLine": 9387,
+        "startChar": 0,
+        "endLine": 9405,
+        "endChar": 3
+      },
+      "revId": "d39c78ab26e1bff0c8238b83aca58511a5e4689d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
