@@ -307,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc48bc68_683dcf85",
+        "filename": "util/ectool.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-28T21:51:32Z",
+      "side": 1,
+      "message": "Refactored the ectool.cc interface to take a address and size. Also refactored to sort and merge the coredump segments so the output is contiguous. PTAL.",
+      "parentUuid": "e858ab50_0154d2af",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 15
+      },
+      "revId": "89c246dcb380439fc088e14e6df9f4c6600d0191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a99000f_1583bec4",
