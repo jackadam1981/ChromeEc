@@ -21,6 +21,7 @@ import zmake.generate_readme
 import zmake.jobserver
 import zmake.modules
 import zmake.multiproc
+import zmake.named_gpios
 import zmake.project
 import zmake.util as util
 import zmake.version
@@ -690,7 +691,10 @@ class Zmake:
             if proc.wait():
                 raise OSError(get_process_failure_msg(proc))
             config_json_file.write_text(config_json)
-            return 0
+
+            return zmake.named_gpios.verify_no_duplicates(
+                self.zephyr_base, output_dir
+            )
 
     def _build(
         self,
