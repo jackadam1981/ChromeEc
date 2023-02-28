@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28cc4bea_000d64f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-28T20:28:28Z",
+      "side": 1,
+      "message": "My code search shows PDO_MAX_OBJECTS is used only in usb_pe_drp_sm.c except emulators and tests (hence we can move these to there if you want to minimize the scope) to define src_caps and snk_caps. Also, sizeof() isn\u0027t used for those two fields.\n\nYes, that implies pe_set_src_caps can overflow the buffer (before and after this change). crrev/c/4296690.",
+      "parentUuid": "9ac3b149_43c75225",
+      "range": {
+        "startLine": 10,
+        "startChar": 42,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "revId": "fbdbf7b2d21482a593c80e0fc6b0b6b7bce0ae91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "810837fb_c9e9680e",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2023-02-28T16:37:05Z",
       "side": 1,
       "message": "Does this need updated as well?",
+      "revId": "fbdbf7b2d21482a593c80e0fc6b0b6b7bce0ae91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cab6bb1d_7ab610a5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-02-28T20:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810837fb_c9e9680e",
       "revId": "fbdbf7b2d21482a593c80e0fc6b0b6b7bce0ae91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
