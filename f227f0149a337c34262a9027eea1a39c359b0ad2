@@ -16,6 +16,24 @@
       "message": "I believe I found a cleaner way around this. Here\u0027s what I did.\n\n1. Add _N_ instances of `struct i2c_emul` to your emulator\u0027s \"data\" struct (one for each address).\n\n2. In the emulator\u0027s \"init\" function you\u0027ll do something like:\n```\nstatic int my_emul_transfer_i2c(const struct emul *target, struct i2c_msg *msgs,\n                                int num_msgs, int addr)\n{\n  // I think you\u0027ll now get all the I2C calls here.\n}\n\nstatic const struct i2c_emul_api my_emul_api \u003d {\n  .transfer \u003d my_emul_transfer_i2c,\n};\n\nstatic int my_emul_init(const struct emul *target, const struct device *parent)\n{\n  struct my_emul_data *data \u003d target-\u003edata;\n  int rc;\n\n  data-\u003ei2c_emul0.target \u003d target;\n  data-\u003ei2c_emul0.api \u003d my_emul_api;\n  data-\u003ei2c_emul0.addr \u003d MY_DRV_STATIC_I2C_ADDR0;\n  rc \u003d i2c_emul_register(parent, \u0026data-\u003ei2c_emul0);\n  if (rc !\u003d 0) {\n    return rc;\n  }\n\n  data-\u003ei2c_emul1.target \u003d target;\n  data-\u003ei2c_emul1.api \u003d my_emul_api;\n  data-\u003ei2c_emul1.addr \u003d MY_DRV_STATIC_I2C_ADDR0;\n  rc \u003d i2c_emul_register(parent, \u0026data-\u003ei2c_emul1);\n  if (rc !\u003d 0) {\n    return rc;\n  }\n  return 0;\n}\n```",
       "revId": "f227f0149a337c34262a9027eea1a39c359b0ad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e371a586_533a2a7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-28T00:22:13Z",
+      "side": 1,
+      "message": "That\u0027s similar to what it turns out the ps8xxx emulator does, and I\u0027ve taken the same route.",
+      "parentUuid": "f3c33bcc_d5c592de",
+      "revId": "f227f0149a337c34262a9027eea1a39c359b0ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
