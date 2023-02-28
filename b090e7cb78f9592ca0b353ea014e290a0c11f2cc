@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a36d4d_fb54d6e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-28T18:19:18Z",
+      "side": 1,
+      "message": "so, is the problem that there is a reset request without TPM wipe, which is followed by a reset request with TPM wipe while the original reset is in progress?\n\nWhen and why is this happeining?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "b090e7cb78f9592ca0b353ea014e290a0c11f2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6df0762c_5ba4f111",
