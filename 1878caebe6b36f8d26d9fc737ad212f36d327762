@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca3a3838_a78a3ef0",
+        "filename": "include/power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-02-28T13:45:49Z",
+      "side": 1,
+      "message": "OK, I will add translation from CONFIG_PLATFORM_EC_POWERSEQ_S0IX_COUNTER to CONFIG_POWERSEQ_S0IX_COUNTER in config_chip.c and use CONFIG_POWERSEQ_S0IX_COUNTER in the code.",
+      "parentUuid": "56802920_e42e91c9",
+      "revId": "1878caebe6b36f8d26d9fc737ad212f36d327762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e6dea8b_fd23eec4",
         "filename": "zephyr/Kconfig.powerseq",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2023-02-27T15:02:52Z",
       "side": 1,
       "message": "Should this depend on PLATFORM_EC_POWERSEQ_S0IX too?",
+      "revId": "1878caebe6b36f8d26d9fc737ad212f36d327762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4420e08_830f43de",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-02-28T13:45:49Z",
+      "side": 1,
+      "message": "Yes, it should I will add it",
+      "parentUuid": "3e6dea8b_fd23eec4",
       "revId": "1878caebe6b36f8d26d9fc737ad212f36d327762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
