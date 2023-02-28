@@ -123,6 +123,24 @@
       "parentUuid": "bd48fc7e_58fca9f5",
       "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9d7976_b44a0fa1",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-02-28T10:56:56Z",
+      "side": 1,
+      "message": "Hey, sorry again, just trying to be clear, this code needs to be restructured. Not asking for a \"design document for this code\", asking for a \"redesign of the code\".\n\nFrom what I can tell the script (crisis_rcvry_util.py) started as one (or two) interactive command line tools that then got wrapped (`main_1`) with few hardcoded set of inputs (`file_line` and `file_line_1`) to make it non interactive. The whole part of internal scripting has to go, stuff like the double `main` `main_1` functions, the two 600+ lines `uart_communicator` `uart_communicator_1` state machine functions, the hardcoded scripts etc.\n\nI\u0027d suggest starting from scratch, set up a main function with `ArgumentParser` for controlling the main operation modes (put stuff like file names such as `second_loader_fw.bin` as flags with a meaningful name, can still use that file as default value), use the Python logging facilities (the `logging` module) for logging instead of printing directly, setting the messages to the appropriate levels and avoiding \"fancy\" decorations, then start reimplementing the logic as needed, break into smaller logical functions, pick meaningful names for constants, use exceptions to handle errors etc...\n\nAt that point integrating the logic of the previous commit into this one should come pretty natural.\n\nMost Python scripts in the repository are fairly well written, I suggest reading some of those as reference, pick snippets as needed and use the same style, for example look at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py or https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/firmware_builder.py.\n\nOn top of that the code should comply with the style guideline (https://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md) and pass the upload presubmit (the stuff that runs when you use `repo upload`, there\u0027s few extra checks in there).\n\nWriting a design document would certainly help if you want design feedback before laying down more code, so up to you whether to work on that or start restructuring code. If you think you got a good idea of what we are asking, you may as well start writing new code.\n\nThen there\u0027s the whole separate `second_loader_fw.bin`, maybe while you rework the Python script you could get clearence to release the code and then we can start to plan how to handle that?",
+      "parentUuid": "37b9ac42_ae9ed442",
+      "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
