@@ -52,6 +52,24 @@
       "parentUuid": "9057ebd1_2b0182b8",
       "revId": "8aa12c953f8e5b7da88a9688eaba4146f0168a07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333ae416_331a5714",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-02-28T22:00:00Z",
+      "side": 1,
+      "message": "There\u0027s a way to make the Kconfig only enable with that feature.  Ex. default y if \u003cinsert S0ix CONFIG here\u003e",
+      "parentUuid": "d04d05bd_3b81e07f",
+      "revId": "8aa12c953f8e5b7da88a9688eaba4146f0168a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
