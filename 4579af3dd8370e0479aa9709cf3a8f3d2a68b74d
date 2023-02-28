@@ -16,6 +16,24 @@
       "message": "Add an additional test for the set flag?",
       "revId": "4579af3dd8370e0479aa9709cf3a8f3d2a68b74d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4852269f_17bc161d",
+        "filename": "zephyr/test/drivers/power_host_sleep/src/test_power_host_sleep.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-02-28T13:34:42Z",
+      "side": 1,
+      "message": "Sure, I will added in next version.",
+      "parentUuid": "99c8ba51_8414b62a",
+      "revId": "4579af3dd8370e0479aa9709cf3a8f3d2a68b74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
