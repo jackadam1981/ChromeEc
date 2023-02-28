@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc6f4d2_e5a21aa1",
+        "filename": "zephyr/test/skyrim/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-28T17:25:01Z",
+      "side": 1,
+      "message": "You should be able to use a single config for these tests. Each variant can use customized source files and mock functions to fully test code.",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6816087_f48a0f23",
+        "filename": "zephyr/test/skyrim/boards/skyrim/skyrim.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-28T17:25:01Z",
+      "side": 1,
+      "message": "Since multiple variants support different form factors you can put most (if not all) of this in the native_posix overlay. Double check on the rotation matrices though since they might differ between variants.",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "323495bc_6961821b",
+        "filename": "zephyr/test/skyrim/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-28T17:25:01Z",
+      "side": 1,
+      "message": "Use a mock function. See `cros_cbi_get_fw_config_mock` in the alt charger and fan tests. This will simplify the code since you\u0027ll no longer have to configure the EEPROM/FW_CONFIG.",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d3a4703_c61b4019",
+        "filename": "zephyr/test/skyrim/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-28T17:25:01Z",
+      "side": 1,
+      "message": "Enable these tests for Markarth and Crystaldrift as well.",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160530b4_0fac6e13",
+        "filename": "zephyr/test/skyrim/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-28T17:25:01Z",
+      "side": 1,
+      "message": "I recommend using `select ...` statements in the test Kconfig to enable these. It\u0027ll keep everything a little bit cleaner.",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c03b5aa_7e12f18c",
+        "filename": "zephyr/test/skyrim/tests/skyrim/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-28T17:25:01Z",
+      "side": 1,
+      "message": "Crystaldrift and Markarth both use the same form factor code, could you make this a common test? Take a look at the fan test and the configs `TEST_BOARD_FAN` and `TEST_BOARD_FAN_CUSTOM` for how to set that up. Those variants both use a BMI3xx accel so there shouldn\u0027t be any issues.",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4248ea4_d0d3efc4",
+        "filename": "zephyr/test/skyrim/tests/skyrim/src/clamshell.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-28T17:25:01Z",
+      "side": 1,
+      "message": "Combine clamshell.c and convertible.c into a single file. It looks like the only difference between the two is `FW_FF_CLAMSHELL` vs `FW_FF_CLAMSHELL`. You can use a mock function for `cbi_set_fw_config` if there is code that you\u0027re testing that requires checking the FW config.",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
