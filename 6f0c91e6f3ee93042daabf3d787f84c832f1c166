@@ -34,6 +34,24 @@
       "parentUuid": "9598d475_25060dd6",
       "revId": "6f0c91e6f3ee93042daabf3d787f84c832f1c166",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c59a9a5_042f6dcc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4993,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2023-02-28T18:29:04Z",
+      "side": 1,
+      "message": "Can you please explain why would the host want to set the S0ix counter. What is the requirement?",
+      "parentUuid": "23407b13_6a88daea",
+      "revId": "6f0c91e6f3ee93042daabf3d787f84c832f1c166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
