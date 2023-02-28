@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c825ce8f_c2ae3b1c",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-02-28T05:33:26Z",
+      "side": 1,
+      "message": "That\u0027s larger than I expected, although I don\u0027t know if it\u0027s too large and should block submission.\n\nMaybe we can try to turn on LTO to see if it mitigates the changes. Or we try to replace `sscanf` with [`atoi`](https://cplusplus.com/reference/cstdlib/atoi/).",
+      "parentUuid": "bed53cd7_82cce72b",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "5252ce9b5d64c8cbdfffc644c37e7f0fd65a5ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54115527_d6222d8a",
         "filename": "util/fpmcu_upload.py",
         "patchSetId": 16
