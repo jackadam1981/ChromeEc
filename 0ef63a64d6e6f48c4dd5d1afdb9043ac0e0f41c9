@@ -34,6 +34,24 @@
       "parentUuid": "75e5627b_046ef717",
       "revId": "0ef63a64d6e6f48c4dd5d1afdb9043ac0e0f41c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "051c5323_dfb8b81c",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-02-28T19:16:24Z",
+      "side": 1,
+      "message": "updated to int return since ap_power_in_or_transitioning_to_state is actually returning the specific mask of the current state or 0 depending on if it is set in the passed in mask",
+      "parentUuid": "d97c735d_106810d1",
+      "revId": "0ef63a64d6e6f48c4dd5d1afdb9043ac0e0f41c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
