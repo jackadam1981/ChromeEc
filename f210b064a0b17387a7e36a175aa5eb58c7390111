@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de0b6f9e_f9494eeb",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1447572
+      },
+      "writtenOn": "2023-02-28T21:29:39Z",
+      "side": 1,
+      "message": "does bit_rate provide information for cable speed? yes then please change it to cable_speed. I do not think dpam_version or uhbr_13_5_supported is needed from kernel so may be we can remove them?",
+      "parentUuid": "fb18df5b_e41379c2",
+      "revId": "f210b064a0b17387a7e36a175aa5eb58c7390111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cf3f605_38c86e2c",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 9
