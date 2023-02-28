@@ -91,6 +91,7 @@ int sb_rmi_mailbox_xfer(int cmd, uint32_t msg_in, uint32_t *msg_out_ptr)
 	int val;
 	bool alerted;
 	timestamp_t start;
+	static bool log_ap_comms_failure = true;
 
 	if (!chipset_in_state(CHIPSET_STATE_ON))
 		return EC_ERROR_NOT_POWERED;
@@ -140,15 +141,32 @@ int sb_rmi_mailbox_xfer(int cmd, uint32_t msg_in, uint32_t *msg_out_ptr)
 	} while (time_since32(start) < SB_RMI_MAILBOX_TIMEOUT_MS * MSEC);
 
 	if (!alerted) {
-		CPRINTS("SB-SMI: Mailbox transfer timeout");
+		/* Only log the AP communication failure once, to avoid spam. */
+		if (log_ap_comms_failure) {
+			CPRINTS("RMI: AP communication failure. This is "
+				"expected when the AP is not powered on and "
+				"executing.");
+			log_ap_comms_failure = false;
+		}
 		return EC_ERROR_TIMEOUT;
 	}
 
 	RETURN_ERROR(sb_rmi_read(SB_RMI_OUT_BND_MSG0_REG, &val));
 	if (val != cmd) {
-		CPRINTS("RMI: Unexpected command value in out bound message");
+		/* Only log the AP communication failure once, to avoid spam. */
+		if (log_ap_comms_failure) {
+			CPRINTS("RMI: AP communication failure. This is "
+				"expected when the AP is not powered on and "
+				"executing.");
+			log_ap_comms_failure = false;
+		}
 		return EC_ERROR_UNKNOWN;
 	}
+
+	/* This AP communication was successful.
+	 * Reset the flag to log the next AP communication failure.
+	 */
+	log_ap_comms_failure = true;
 
 	/* Step 8: read msgOut from {SBRMI_x34(MSB):SBRMI_x31(LSB)} */
 	*msg_out_ptr = 0;
