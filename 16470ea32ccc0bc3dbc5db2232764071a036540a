@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76167517_7d7e6029",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-02-28T16:27:46Z",
+      "side": 1,
+      "message": "I\u0027m guessing that the rationale for a 3-bit mask was that values with 1 in the highest-order bit are reserved. I\u0027m OK with the code working either way.",
+      "revId": "16470ea32ccc0bc3dbc5db2232764071a036540a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
