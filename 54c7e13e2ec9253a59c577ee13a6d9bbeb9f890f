@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "771749a6_a30a11aa",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-02-28T23:50:11Z",
+      "side": 1,
+      "message": "EPR sources may offer up to 48V, so is this an artificial limitation on the current implementation for some reason?",
+      "range": {
+        "startLine": 312,
+        "startChar": 3,
+        "endLine": 312,
+        "endChar": 22
+      },
+      "revId": "54c7e13e2ec9253a59c577ee13a6d9bbeb9f890f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
