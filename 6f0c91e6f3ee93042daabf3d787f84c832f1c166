@@ -16,6 +16,24 @@
       "message": "Probably clarify your expected usage more here since this header tends to serve as documentation for the host commands.  Does the host get to set the counter to whatever value it wants?  Are there any other things to be aware of with this command?",
       "revId": "6f0c91e6f3ee93042daabf3d787f84c832f1c166",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23407b13_6a88daea",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4993,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-02-28T13:39:04Z",
+      "side": 1,
+      "message": "Ok, I will add comments with some explanation. Yes, you can set the counter to any value.",
+      "parentUuid": "9598d475_25060dd6",
+      "revId": "6f0c91e6f3ee93042daabf3d787f84c832f1c166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
