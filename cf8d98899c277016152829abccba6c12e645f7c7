@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a2fb2c2_7ac01b02",
+        "filename": "driver/sb_rmi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-28T23:41:55Z",
+      "side": 1,
+      "message": "I think it\u0027s still useful to distinguish this as a timeout compared to the unexpected value error below.",
+      "revId": "cf8d98899c277016152829abccba6c12e645f7c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf7828b7_edbe51ef",
+        "filename": "driver/sb_rmi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-28T23:41:55Z",
+      "side": 1,
+      "message": "These RMI failures will also occur occasionally during a normal successful resume. There\u0027s a race condition in the resume path. We could try to avoid this by adding a delay after resume, but that will complicate this code a bit. Since missing a single temp reading isn\u0027t critical, I prefer keeping it simple.\n\nSo IMO the error message needs to be reworded to be less definitive, or we could switch to a fail counter. The first failure would print the generic RMI failure message. After at least 2 consecutive failures, we could print the more definitive message like:\n\"RMI: The AP is failing to respond despite being powered on. The AP is probably hung.\"",
+      "revId": "cf8d98899c277016152829abccba6c12e645f7c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb0a3d19_50ef8c61",
+        "filename": "driver/sb_rmi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-02-28T23:41:55Z",
+      "side": 1,
+      "message": "Line 96 will escape this path when the AP isn\u0027t powered on. So actually the AP is powered on, but isn\u0027t responding.",
+      "range": {
+        "startLine": 147,
+        "startChar": 33,
+        "endLine": 147,
+        "endChar": 40
+      },
+      "revId": "cf8d98899c277016152829abccba6c12e645f7c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
