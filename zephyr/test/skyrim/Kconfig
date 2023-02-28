@@ -64,6 +64,30 @@ config TEST_BOARD_FAN_SRC
 	default "common/fan.c"
 	depends on TEST_BOARD_FAN
 
+config TEST_BOARD_FF_CLAMSHELL
+	bool "Run the tests intended for clamshells"
+	help
+	  Include tests which verify that accelerometer
+	  interrupt is not generated and device does
+	  not enter tablet mode.
+
+config TEST_BOARD_FF_CLAMSHELL_SRC
+	string "Source file to use for this test"
+	default "skyrim/clamshell.c"
+	depends on TEST_BOARD_FF_CLAMSHELL
+
+config TEST_BOARD_FF_CONVERTIBLE
+	bool "Run the tests intended for convertibles"
+	help
+	  Include tests which verify tablet mode.
+	  It verifies that accelerometer interrupt
+	  is generated and device enters tablet mode.
+
+config TEST_BOARD_FF_CONVERTIBLE_SRC
+	string "Source file to use for this test"
+	default "skyrim/convertible.c"
+	depends on TEST_BOARD_FF_CONVERTIBLE
+
 config TEST_BOARD_USB_PD_POLICY
 	bool "Enable USB PD policy specific tests"
 	select TEST_ENABLE_USB_PD_HOST_CMD
