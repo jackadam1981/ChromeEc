@@ -16,6 +16,24 @@
       "message": "Any reason not to default y? Seems like minimal impact on ram and flash.",
       "revId": "8aa12c953f8e5b7da88a9688eaba4146f0168a07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9057ebd1_2b0182b8",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-02-28T13:47:00Z",
+      "side": 1,
+      "message": "I did not wanted to impact all the boards, but I am ok with changing it to yes.",
+      "parentUuid": "da43f2ae_dcb86468",
+      "revId": "8aa12c953f8e5b7da88a9688eaba4146f0168a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
