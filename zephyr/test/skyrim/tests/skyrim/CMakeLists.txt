@@ -3,3 +3,7 @@
 # found in the LICENSE file.
 
 target_sources(app PRIVATE src/common.c)
+target_sources_ifdef(CONFIG_TEST_BOARD_FF_CONVERTIBLE app PRIVATE
+	src/convertible.c ${PLATFORM_EC_PROGRAM_DIR}/skyrim/${CONFIG_TEST_BOARD_NAME}/src/form_factor.c)
+target_sources_ifdef(CONFIG_TEST_BOARD_FF_CLAMSHELL app PRIVATE
+	src/clamshell.c	${PLATFORM_EC_PROGRAM_DIR}/skyrim/${CONFIG_TEST_BOARD_NAME}/src/form_factor.c)

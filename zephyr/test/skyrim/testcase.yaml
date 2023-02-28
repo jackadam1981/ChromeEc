@@ -52,9 +52,9 @@ tests:
     - CONFIG_TEST_BOARD_PPC_CONFIG=y
 
   skyrim.frostflow.usb_mux_config:
-     extra_configs:
-     - CONFIG_TEST_BOARD_FROSTFLOW=y
-     - CONFIG_TEST_BOARD_USB_MUX_CONFIG_CUSTOM=y
+    extra_configs:
+    - CONFIG_TEST_BOARD_FROSTFLOW=y
+    - CONFIG_TEST_BOARD_USB_MUX_CONFIG_CUSTOM=y
 
   # Markarth tests
   skyrim.markarth:
@@ -90,6 +90,28 @@ tests:
     extra_configs:
     - CONFIG_TEST_BOARD_SKYRIM=y
     - CONFIG_TEST_BOARD_PPC_CONFIG=y
+
+  skyrim.skyrim.clamshell:
+    extra_args:
+      DTC_OVERLAY_FILE="./boards/skyrim/skyrim.dtsi;"
+    extra_configs:
+    - CONFIG_PLATFORM_EC_BOARD_VERSION_CBI=y
+    - CONFIG_PLATFORM_EC_DYNAMIC_MOTION_SENSOR_COUNT=y
+    - CONFIG_PLATFORM_EC_GMR_TABLET_MODE=y
+    - CONFIG_PLATFORM_EC_TABLET_MODE=y
+    - CONFIG_TEST_BOARD_SKYRIM=y
+    - CONFIG_TEST_BOARD_FF_CLAMSHELL=y
+
+  skyrim.skyrim.convertible:
+    extra_args:
+      DTC_OVERLAY_FILE="./boards/skyrim/skyrim.dtsi;"
+    extra_configs:
+    - CONFIG_PLATFORM_EC_BOARD_VERSION_CBI=y
+    - CONFIG_PLATFORM_EC_DYNAMIC_MOTION_SENSOR_COUNT=y
+    - CONFIG_PLATFORM_EC_GMR_TABLET_MODE=y
+    - CONFIG_PLATFORM_EC_TABLET_MODE=y
+    - CONFIG_TEST_BOARD_SKYRIM=y
+    - CONFIG_TEST_BOARD_FF_CONVERTIBLE=y
 
   # Winterhold tests
   skyrim.winterhold:

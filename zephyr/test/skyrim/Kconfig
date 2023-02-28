@@ -62,6 +62,20 @@ config TEST_BOARD_FAN_CUSTOM
 	bool "ENable fan tests with a variant-specific test file"
 	select TEST_BOARD_FAN
 
+config TEST_BOARD_FF_CLAMSHELL
+	bool "Run the tests intended for clamshells"
+	help
+	  Include tests which verify that accelerometer
+	  interrupt is not generated and device does
+	  not enter tablet mode.
+
+config TEST_BOARD_FF_CONVERTIBLE
+	bool "Run the tests intended for convertibles"
+	help
+	  Include tests which verify tablet mode.
+	  It verifies that accelerometer interrupt
+	  is generated and device enters tablet mode.
+
 config TEST_BOARD_USB_PD_POLICY
 	bool "Enable USB PD policy specific tests"
 	select TEST_ENABLE_USB_PD_HOST_CMD
