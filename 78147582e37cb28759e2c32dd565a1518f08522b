@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "545f8922_145774fe",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-02-28T01:39:50Z",
+      "side": 1,
+      "message": "clang-format didn\u0027t complain and repo upload hook paased.\nDo you see anything wrong here ?",
+      "parentUuid": "96bb34be_148417a6",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "78147582e37cb28759e2c32dd565a1518f08522b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7564367c_6e47f7c2",
         "filename": "common/system_boot_time.c",
         "patchSetId": 6
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f86af8de_c7d23840",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-02-28T01:39:50Z",
+      "side": 1,
+      "message": "Setting ap_booted\u003dfalse here will not help in identifying the warm reboot scenario. In warm reboot case, the seq of event is PLTRST_LOW and then PLTRST_HIGH, setting ap_booted\u003dfalse in PLTRST_LOW results ap_boot_time.cnt \u003d 0 in PLTRST_HIGH which cause failure in identifying warm reboot scenario.\n\nBecause of the above reason ap_booted is set to false in RESET_CNT scenario, RESET_CNT will be triggered when from system_common_shutdown when during hook notify HOOK_CHIPSET_SHUTDOWN_COMPLETE",
+      "parentUuid": "7564367c_6e47f7c2",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "78147582e37cb28759e2c32dd565a1518f08522b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "602e88a8_47900aad",
         "filename": "common/system_boot_time.c",
         "patchSetId": 6
@@ -77,6 +125,30 @@
       "writtenOn": "2023-02-23T19:30:03Z",
       "side": 1,
       "message": "do you need this condition check?",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 16
+      },
+      "revId": "78147582e37cb28759e2c32dd565a1518f08522b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab4af0aa_ca75f711",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-02-28T01:39:50Z",
+      "side": 1,
+      "message": "Yes, we need this check, because during initial boot sometime  system_common_shutdown is being executed after PLTRST_LOW, this will cause resetting the already ongoing #PLTRST transition and will leads to failure in identifying cold and warm reboot.\n\nThis is tested with all legacy EC, zephyr EC with shimmed power seq and zephyr EC with native power seq and its working in all scenarios.",
+      "parentUuid": "602e88a8_47900aad",
       "range": {
         "startLine": 61,
         "startChar": 2,
