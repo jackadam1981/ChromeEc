@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e07d84_560c2350",
+        "filename": "zephyr/program/skyrim/crystaldrift/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-02-28T18:26:02Z",
+      "side": 0,
+      "message": "The commit message says that crystaldrift uses the ISL9238, but there are references to the ISL9538. Does crystaldrift use both parts interchangeably?",
+      "revId": "ace29ea2c082f46fb6dbc1c5430ac6056be7cbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
