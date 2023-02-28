@@ -16,6 +16,24 @@
       "message": "Please use BUILD_ASSERT to fail earlier",
       "revId": "a08b40a7ff01f75ec40cc7a7b5f8d02b14fbfc21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1078e880_0001e6b9",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-02-28T00:13:43Z",
+      "side": 1,
+      "message": "ya, it would be nice if this can be checked at compile time.\ni\u0027m not sure that\u0027s possible, specially if we need to consult\nCBI to determine the configuration.\n\nis it feasible to check this in the unit tests? i suspect the\nanswer is `no` because the unit test would need to be board\nspecific which would be beyond the scope of unit testing.",
+      "parentUuid": "34a64c22_d10ff29b",
+      "revId": "a08b40a7ff01f75ec40cc7a7b5f8d02b14fbfc21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
