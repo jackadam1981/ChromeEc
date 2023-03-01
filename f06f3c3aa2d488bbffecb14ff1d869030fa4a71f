@@ -16,6 +16,24 @@
       "message": "Does this run any unit tests?",
       "revId": "f06f3c3aa2d488bbffecb14ff1d869030fa4a71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "519c7040_d3bea824",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-03-01T22:40:41Z",
+      "side": 1,
+      "message": "It runs legacy but not zephyr tests, though CQ runs them all as well.",
+      "parentUuid": "dceab15b_2425f147",
+      "revId": "f06f3c3aa2d488bbffecb14ff1d869030fa4a71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
