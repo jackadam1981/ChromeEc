@@ -1,6 +1,97 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b050f0ef_5857f893",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T00:02:15Z",
+      "side": 1,
+      "message": "I only got halfway through the PE file today, but can review the rest tomorrow",
+      "revId": "54c7e13e2ec9253a59c577ee13a6d9bbeb9f890f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f360db5_f95493b6",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T00:02:15Z",
+      "side": 1,
+      "message": "Arguably, we are allowed to change this bit dynamically and re-send our Request.  Do you foresee any conditions where we\u0027d want to do that?",
+      "revId": "54c7e13e2ec9253a59c577ee13a6d9bbeb9f890f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ad55ae5_fda95038",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T00:02:15Z",
+      "side": 1,
+      "message": "This terminology might get confusing since Rev 3.1 looks an awful lot like Rev3 from a hurried look.  How about referring to this as the SPR_MAX_VOLTAGE?",
+      "range": {
+        "startLine": 1082,
+        "startChar": 42,
+        "endLine": 1082,
+        "endChar": 61
+      },
+      "revId": "54c7e13e2ec9253a59c577ee13a6d9bbeb9f890f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04abef9d_b3ea64e7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1845,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T00:02:15Z",
+      "side": 1,
+      "message": "You probably want to use the helper to set the current DPM request.  That ensures we don\u0027t drop the DPM request on the event of an initial message discard (which happens somewhat often as the sink, since the source controls collision avoidance)",
+      "revId": "54c7e13e2ec9253a59c577ee13a6d9bbeb9f890f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f5602d_4759255d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T00:02:15Z",
+      "side": 1,
+      "message": "Is this triggering a secondary DPM request then, or did the TC function here change at another point in the stack?",
+      "revId": "54c7e13e2ec9253a59c577ee13a6d9bbeb9f890f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "771749a6_a30a11aa",
