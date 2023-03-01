@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4279eb_a9571199",
+        "filename": "common/usbc/ap_vdm_control.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-01T21:50:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7c09217b_dfbf72dc",
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dad9183_fe113d1e",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Same response as for the length.  I lean towards a cleanup CL rather than making functional changes to this CL",
       "parentUuid": "9dad9183_fe113d1e",
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea54f931_5a34c90a",
+        "filename": "common/usbc/ap_vdm_control.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-01T21:50:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d66fa999_8d3f710e",
       "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
