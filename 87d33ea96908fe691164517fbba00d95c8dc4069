@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b3ee3a3_cb1d845b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8145,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:26:18Z",
+      "side": 1,
+      "message": "Should we store source caps and EPR source caps separately?  \n\nCC-ing Benson, who might have thoughts about what the AP would like to know about EPR partners",
+      "revId": "87d33ea96908fe691164517fbba00d95c8dc4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
