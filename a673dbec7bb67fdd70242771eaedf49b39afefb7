@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549fd9da_269a26f9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8016,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:22:20Z",
+      "side": 1,
+      "message": "Should the soft reset path clear the entering flag?",
+      "revId": "a673dbec7bb67fdd70242771eaedf49b39afefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf4bfc2e_59bc625a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8020,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:22:20Z",
+      "side": 1,
+      "message": "Technically, the spec mentions that we should handle Vconn_swap from this state.  I think your current code works well enough to grab it from the next state, but probably add a note here for anyone comparing the spec directly to this function",
+      "revId": "a673dbec7bb67fdd70242771eaedf49b39afefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
