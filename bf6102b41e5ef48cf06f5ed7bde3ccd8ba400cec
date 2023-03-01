@@ -16,6 +16,24 @@
       "message": "What does \"waiting\" mean?",
       "revId": "bf6102b41e5ef48cf06f5ed7bde3ccd8ba400cec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae8239ff_d1a5626b",
+        "filename": "common/usbc/ap_vdm_control.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T19:56:01Z",
+      "side": 1,
+      "message": "It means the implmentation of the spec comment block from `ap_vdm_acked()`.  Would something like \"pending\" have a more clear meaning?  That\u0027s more similar to what the DP module is doing with its flags.",
+      "parentUuid": "8c8d0acd_fc3f7ccb",
+      "revId": "bf6102b41e5ef48cf06f5ed7bde3ccd8ba400cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
