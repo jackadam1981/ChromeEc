@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06d9eb4d_8cd14702",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T22:02:46Z",
+      "side": 1,
+      "message": "I\u0027m uncertain I\u0027d say the AP is hung for this one, since it will also come up on slow boots (ex. with serial image and developer mode and all the slow downs of early bringup boots).  \n\nSo I can nearly guarantee you\u0027ll see this print on a new platform\u0027s proto boot and it might lead to some level of concern",
+      "range": {
+        "startLine": 345,
+        "startChar": 23,
+        "endLine": 345,
+        "endChar": 50
+      },
+      "revId": "27817293c6023780ad90cbe91945b6d6a12bdbc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
