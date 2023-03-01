@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7626b1e5_08eb35e8",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-01T09:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a35368f3_6d4d75eb",
+      "range": {
+        "startLine": 410,
+        "startChar": 59,
+        "endLine": 410,
+        "endChar": 62
+      },
+      "revId": "dfaaae751c0195b2556b1a29844ca3ce48cf195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab99c7d2_2f1af407",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-27T16:51:38Z",
       "side": 1,
       "message": "I think we need to validate the lower 4-bit is 0000.",
+      "range": {
+        "startLine": 416,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 4
+      },
+      "revId": "dfaaae751c0195b2556b1a29844ca3ce48cf195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d86e868_d9cab01e",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-01T09:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab99c7d2_2f1af407",
       "range": {
         "startLine": 416,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c19bdd7_9aaeac94",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-01T09:37:28Z",
+      "side": 1,
+      "message": "Actually these are from sample code provided by CPS, it\u0027s hard to name these addresses and values without the document.",
+      "parentUuid": "8748416f_a760ecd0",
+      "range": {
+        "startLine": 660,
+        "startChar": 28,
+        "endLine": 660,
+        "endChar": 38
+      },
+      "revId": "dfaaae751c0195b2556b1a29844ca3ce48cf195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "439f3366_ad0a0b1d",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 22
@@ -83,6 +155,30 @@
       "writtenOn": "2023-02-27T16:51:38Z",
       "side": 1,
       "message": "Can you name this?",
+      "range": {
+        "startLine": 666,
+        "startChar": 40,
+        "endLine": 666,
+        "endChar": 50
+      },
+      "revId": "dfaaae751c0195b2556b1a29844ca3ce48cf195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6200dd7d_0615ae5a",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-01T09:37:28Z",
+      "side": 1,
+      "message": "same as line 660.",
+      "parentUuid": "439f3366_ad0a0b1d",
       "range": {
         "startLine": 666,
         "startChar": 40,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c618ffd4_c4d94e95",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-01T09:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d06c869_82d1d751",
+      "range": {
+        "startLine": 669,
+        "startChar": 8,
+        "endLine": 669,
+        "endChar": 9
+      },
+      "revId": "dfaaae751c0195b2556b1a29844ca3ce48cf195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33c63dbc_1ff3e7af",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-02-27T16:51:38Z",
       "side": 1,
       "message": "Can you print the return value? This helps us debug bugs remotely.",
+      "range": {
+        "startLine": 811,
+        "startChar": 5,
+        "endLine": 811,
+        "endChar": 26
+      },
+      "revId": "dfaaae751c0195b2556b1a29844ca3ce48cf195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a14d370_01b5340d",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-01T09:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c63dbc_1ff3e7af",
       "range": {
         "startLine": 811,
         "startChar": 5,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7cc9ba2_8e9b3c51",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-01T09:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c308a60_5dfaaf64",
+      "range": {
+        "startLine": 851,
+        "startChar": 5,
+        "endLine": 851,
+        "endChar": 26
+      },
+      "revId": "dfaaae751c0195b2556b1a29844ca3ce48cf195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3296d9b0_deaeffe0",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8684775_64507342",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-01T09:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3296d9b0_deaeffe0",
+      "range": {
+        "startLine": 870,
+        "startChar": 5,
+        "endLine": 870,
+        "endChar": 26
+      },
+      "revId": "dfaaae751c0195b2556b1a29844ca3ce48cf195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fb42f94_c374d918",
@@ -198,6 +390,30 @@
       "writtenOn": "2023-02-27T16:51:38Z",
       "side": 1,
       "message": "These are redundant.",
+      "range": {
+        "startLine": 883,
+        "startChar": 0,
+        "endLine": 884,
+        "endChar": 43
+      },
+      "revId": "dfaaae751c0195b2556b1a29844ca3ce48cf195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c39064bb_2b52c82d",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-01T09:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fb42f94_c374d918",
       "range": {
         "startLine": 883,
         "startChar": 0,
