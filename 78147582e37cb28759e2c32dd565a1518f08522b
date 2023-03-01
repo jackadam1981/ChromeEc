@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e721e226_66c2d41c",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-01T19:10:39Z",
+      "side": 1,
+      "message": "just looks strange. clang-format won\u0027t complain, it\u0027ll just reformat.\nif upload hooks didn\u0027t flag this, it should be fine.",
+      "parentUuid": "545f8922_145774fe",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "78147582e37cb28759e2c32dd565a1518f08522b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7564367c_6e47f7c2",
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "266ee340_d14fc2b6",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-01T19:10:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f86af8de_c7d23840",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "78147582e37cb28759e2c32dd565a1518f08522b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "602e88a8_47900aad",
@@ -149,6 +197,30 @@
       "side": 1,
       "message": "Yes, we need this check, because during initial boot sometime  system_common_shutdown is being executed after PLTRST_LOW, this will cause resetting the already ongoing #PLTRST transition and will leads to failure in identifying cold and warm reboot.\n\nThis is tested with all legacy EC, zephyr EC with shimmed power seq and zephyr EC with native power seq and its working in all scenarios.",
       "parentUuid": "602e88a8_47900aad",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 16
+      },
+      "revId": "78147582e37cb28759e2c32dd565a1518f08522b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b5e9b7_2af4ac06",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-01T19:10:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ab4af0aa_ca75f711",
       "range": {
         "startLine": 61,
         "startChar": 2,
