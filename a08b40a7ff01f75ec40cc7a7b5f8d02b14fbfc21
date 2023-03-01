@@ -52,6 +52,29 @@
       "parentUuid": "1078e880_0001e6b9",
       "revId": "a08b40a7ff01f75ec40cc7a7b5f8d02b14fbfc21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04495a4a_23b182dd",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-01T17:58:40Z",
+      "side": 1,
+      "message": "just looking at this a 2nd time.\n\nassert() is too strong here. we\u0027ll just end up boot looping which\nis kind of a worst case scenario and makes it difficult to diagnose\nthe underlying problem.\n\nhow about returning an error and maybe add a diagnostic message?\nother parts of the system will continue to function normally.",
+      "range": {
+        "startLine": 744,
+        "startChar": 1,
+        "endLine": 744,
+        "endChar": 7
+      },
+      "revId": "a08b40a7ff01f75ec40cc7a7b5f8d02b14fbfc21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
