@@ -291,3 +291,42 @@ __override int board_nx20p348x_init(int port)
 			 MASK_SET);
 	return rv;
 }
+
+static enum tcpc_rp_value curr_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+static void board_nx20p348x_set_sourec_ocp_c0(void)
+{
+	if (IS_ENABLED(CONFIG_USBC_PPC)) {
+		/* TODO: nx20p348x only */
+		ppc_set_vbus_source_current_limit(0, curr_rp[0]);
+	}
+}
+DECLARE_DEFERRED(board_nx20p348x_set_sourec_ocp_c0);
+
+static void board_nx20p348x_set_sourec_ocp_c1(void)
+{
+	if (IS_ENABLED(CONFIG_USBC_PPC)) {
+		/* TODO: nx20p348x only */
+		ppc_set_vbus_source_current_limit(1, curr_rp[1]);
+	}
+}
+DECLARE_DEFERRED(board_nx20p348x_set_sourec_ocp_c1);
+
+__override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
+{
+	if (rp < curr_rp[port]) {
+		void *func_ptr = NULL;
+
+		curr_rp[port] = rp;
+		if (port == 0) {
+			func_ptr = &board_nx20p348x_set_sourec_ocp_c0;
+		} else {
+			func_ptr = &board_nx20p348x_set_sourec_ocp_c1;
+		}
+
+		hook_call_deferred(func_ptr, PD_T_SINK_ADJ);
+	} else {
+		curr_rp[port] = rp;
+		ppc_set_vbus_source_current_limit(port, rp);
+	}
+}
