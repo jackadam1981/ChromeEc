@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6650fca7_51a6aa36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-03-01T13:17:57Z",
+      "side": 1,
+      "message": "This patch changes `CONFIG_DMA` to `CONFIG_DMA_CROS` to avoid conflict with Zephyr (as discussed in Zephyr chat).\n\nTom, your review is necessary because this patch affects FPMCU boards.",
+      "revId": "ea817680a695cccd5a0b60e8676ad3551960488c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
