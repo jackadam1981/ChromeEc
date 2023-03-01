@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a812453_22183fe8",
+        "filename": "common/usbc/dp_hpd_gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T19:55:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e79d0bd_f7cadbd3",
+      "revId": "3128480eadaf67bf42514d0fe8ee6ca411396803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d90b00df_4bf2cfec",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Actually, I see that it\u0027s defined in the next CL. Please fix that. Maybe it should be defined in this module.",
       "parentUuid": "d90b00df_4bf2cfec",
+      "revId": "3128480eadaf67bf42514d0fe8ee6ca411396803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "833bff03_91899c89",
+        "filename": "common/usbc/dp_hpd_gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T19:55:50Z",
+      "side": 1,
+      "message": "Oh, this is a fun one!  \n\nSo we used to have one copy of `svdm_hpd_deadline` in the common code, defined as an extern in `include/usb_pd.h` so, naturally, we can just access it from board code as well for our own board code purposes.  \n\nThat variable can\u0027t be defined in this module since some boards use it without setting the HPD GPIO CONFIG (ex. trogdor).  Our other options are to define one in the DPM for TCPMv2 to use, or define one for each consumer of the DP HPD GPIO file (so here, one in the DP module and one in the AP VDM module).  \n\nI took the second approach, but could be talked into the first.  The second approach is cleaner if there are defined mutually exclusive modules for EC control and AP control.  I actually got one CL into defining an EC control module before realizing that I should probably focus on just getting this stack in first.  \n\nThoughts welcome, because it\u0027s not the world\u0027s greatest variable.",
+      "parentUuid": "ffa93b2f_3cc410dd",
       "revId": "3128480eadaf67bf42514d0fe8ee6ca411396803",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
