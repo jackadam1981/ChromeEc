@@ -56,6 +56,66 @@
       },
       "revId": "cf8d98899c277016152829abccba6c12e645f7c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30edf226_8b313fa5",
+        "filename": "driver/sb_rmi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-03-01T20:59:52Z",
+      "side": 1,
+      "message": "Thanks, I missed that.",
+      "parentUuid": "fb0a3d19_50ef8c61",
+      "range": {
+        "startLine": 147,
+        "startChar": 33,
+        "endLine": 147,
+        "endChar": 40
+      },
+      "revId": "cf8d98899c277016152829abccba6c12e645f7c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca66d7d4_2f93ba36",
+        "filename": "driver/sb_rmi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-03-01T20:59:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a2fb2c2_7ac01b02",
+      "revId": "cf8d98899c277016152829abccba6c12e645f7c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "164fead5_11907528",
+        "filename": "driver/sb_rmi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-03-01T20:59:52Z",
+      "side": 1,
+      "message": "Done.\n\nI\u0027ve also updated `MKBP` since that also results in log spam. With both changes, we now get:\n\n```\n23-03-01 13:57:33.063 [134.439000 RMI: Unexpected command value in out bound message]\n23-03-01 13:57:33.428 [134.675600 MKBP not cleared within threshold, toggling.]\n23-03-01 13:57:33.667 [135.449900 RMI: Unexpected command value in out bound message]\n23-03-01 13:57:34.449 [135.678100 MKBP: The AP is failing to respond despite being powered on. The AP is probably hung.]\n23-03-01 13:57:34.682 [136.459300 RMI: The AP is failing to respond despite being powered on. The AP is probably hung.]\n```\n\nIt\u0027s still a bit of duplication, but (IMO) much cleaner than it was.",
+      "parentUuid": "cf7828b7_edbe51ef",
+      "revId": "cf8d98899c277016152829abccba6c12e645f7c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
