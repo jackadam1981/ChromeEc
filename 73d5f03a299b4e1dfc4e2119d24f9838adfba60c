@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35620eea_569b3be6",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T20:17:54Z",
+      "side": 1,
+      "message": "This has the feeling of something which should likely be an enum.  \n\nSo it looks like this sensor supports reading 3 temperatures off the same sensor.  We should probably establish a more clearly defined way to index into the right sensor.  Perhaps the offset should be a part of the devicetree properties for it?  \n\nKeith, any thoughts for how this would best be represented?",
+      "revId": "73d5f03a299b4e1dfc4e2119d24f9838adfba60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
