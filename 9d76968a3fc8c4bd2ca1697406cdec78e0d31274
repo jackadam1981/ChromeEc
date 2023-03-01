@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90322430_007036d1",
+        "filename": "common/usbc/ap_vdm_control.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T19:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f942ef3a_1df7979f",
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "769a4fab_ad914a3d",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-02-27T21:15:25Z",
       "side": 1,
       "message": "Is it meaningful for this to be negative?",
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c09217b_dfbf72dc",
+        "filename": "common/usbc/ap_vdm_control.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T19:55:06Z",
+      "side": 1,
+      "message": "Nope, though if we\u0027re going to start changing variable types I\u0027d be tempted to put that into a separate review since this one\u0027s purpose is to define an API boundary.",
+      "parentUuid": "769a4fab_ad914a3d",
       "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d66fa999_8d3f710e",
+        "filename": "common/usbc/ap_vdm_control.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T19:55:06Z",
+      "side": 1,
+      "message": "Same response as for the length.  I lean towards a cleanup CL rather than making functional changes to this CL",
+      "parentUuid": "9dad9183_fe113d1e",
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99ed6c75_874b7dac",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 16
@@ -65,6 +119,24 @@
       "writtenOn": "2023-02-27T21:15:25Z",
       "side": 1,
       "message": "These thin wrapper functions are organized like the VDM host command is a client of the DPM, and the DPM is simply implemented in terms of the AP VDM control module. But it seems to me more like the host command is part-and-parcel of the AP VDM module, and the DPM doesn\u0027t need to know much about the host command. What would it look like if the host command were implemented directly in terms of the AP VDM API (and maybe moved into that module), and these thin wrappers were removed from the DPM?",
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bfc9a7b_9cf3d2d6",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T19:55:06Z",
+      "side": 1,
+      "message": "Initially, I\u0027d thought we\u0027d want the DPM serving as the \"PD\" equivalent API layer for outside calls.  Ex. usually you can call \"pd_blah\" and expect it to serve as an API into the PD stack from where ever you need it.  But then I also like to keep the function names of my module aligned, so the end result is this.\n\nI am open to other thoughts though.  Does it seem alright to call ap_vdm_* functions from the host commands, given they already know they need to check the CONFIG option?",
+      "parentUuid": "99ed6c75_874b7dac",
       "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58fb7be_8160e991",
+        "filename": "include/usb_pd_ap_vdm_control.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T19:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06de7c13_1a84477b",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72e0c9a5_b4611219",
@@ -105,6 +201,30 @@
       "writtenOn": "2023-02-27T21:15:25Z",
       "side": 1,
       "message": "Nit: VDM",
+      "range": {
+        "startLine": 54,
+        "startChar": 42,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62e292fa_aaeec9c4",
+        "filename": "include/usb_pd_ap_vdm_control.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T19:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72e0c9a5_b4611219",
       "range": {
         "startLine": 54,
         "startChar": 42,
