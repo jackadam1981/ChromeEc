@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b48e394_15348827",
+        "filename": "util/ectool.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 9376,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-01T18:25:16Z",
+      "side": 1,
+      "message": "Set rv\u003d-1 before exit? (And please revisit other exits above and below.)",
+      "range": {
+        "startLine": 9376,
+        "startChar": 3,
+        "endLine": 9376,
+        "endChar": 7
+      },
+      "revId": "7d1cde1d37c42ce166f428e0cc1015dbdaa29553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

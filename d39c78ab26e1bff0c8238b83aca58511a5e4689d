@@ -458,6 +458,30 @@
       },
       "revId": "d39c78ab26e1bff0c8238b83aca58511a5e4689d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9490a362_c8f6e978",
+        "filename": "util/ectool.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 9405,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-01T18:25:16Z",
+      "side": 1,
+      "message": "\u003e I could move my implementation to util/misc_util.cc if it\u0027s useful.\n\nI believe it\u0027s a good practice to separate generic code in a sub-routine in a common file whether it\u0027s used or not by others. It increases the readability and testability.",
+      "parentUuid": "287ac9c1_edbeb18f",
+      "range": {
+        "startLine": 9387,
+        "startChar": 0,
+        "endLine": 9405,
+        "endChar": 3
+      },
+      "revId": "d39c78ab26e1bff0c8238b83aca58511a5e4689d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
