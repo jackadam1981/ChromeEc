@@ -113,6 +113,30 @@
       },
       "revId": "54c7e13e2ec9253a59c577ee13a6d9bbeb9f890f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3c8bec1_b9f4aa20",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "+1 to this comment.  If we have a board limitation, we\u0027ll want a board config and/or callback to know the board\u0027s max compared to the spec max (depending on whether we think it would need to change in runtime)",
+      "parentUuid": "771749a6_a30a11aa",
+      "range": {
+        "startLine": 312,
+        "startChar": 3,
+        "endLine": 312,
+        "endChar": 22
+      },
+      "revId": "54c7e13e2ec9253a59c577ee13a6d9bbeb9f890f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

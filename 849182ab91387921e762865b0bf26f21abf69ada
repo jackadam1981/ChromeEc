@@ -1,0 +1,316 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc97ff3_6ca7bed0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "I haven\u0027t dug into your stack enough to see if you\u0027ve also written zephyr tests, but I\u0027ve actually found the USB-C integration level tests to be super helpful while working on new features.\n\nYours might involve some evolution of the TCPCI partner emulator, in which case you should definitely feel free to loop in Abe and the rest of the zephyr test team to ask for insights on it",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808df4a2_390cabf2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "If the source sends an Exit Mode after we get the contract to an SPR voltage, do we preemptively clear this DPM request?",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18797a16_2096a367",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "Rev 3.1 Ver 1.7 6.4.10.3.1\nCommanded Exit says this should be bit 31.  Is that a typo?  I can submit a comment in the PD WG unless you know of a reason it would be bit 31 in the spec.  It seems like the EPR_Request uses the same RDO as the Request if I\u0027m reading this right, and it\u0027s definitely bit 22 there",
+      "range": {
+        "startLine": 1871,
+        "startChar": 23,
+        "endLine": 1871,
+        "endChar": 49
+      },
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4171d08_12b8f4f9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "I thought pd_build_request() was always setting this bit?  Unless I\u0027ve misread something in the helpers",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a8a5146_57476c2f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3382,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "If we receive an unexpected extended message, I\u0027m tempted to say it should be a hard reset.  I\u0027m pretty sure it should also be a hard reset for the condition of receiving the EPR source caps while in SPR mode, though I\u0027d need to dig into the spec more to find the reference for it.",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3802ac6_e8c89a80",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3772,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "I\u0027m still putting my money on this being a hard reset, though all I\u0027ve found since my last comment is in 6.5.15.2 EPR_Source_Capabilities Message, which states that we shall not respond with a epr_request.  Sigh.",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c91d8dae_862d8025",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3817,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "The other action options seem like they should be resulting in some form of protocol error at a minimum.  If you or I can\u0027t find the right answers in the spec, I can post them to the PD WG",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0222998b_b58bcac1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3930,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "Should this run after all the other checks, since any of those may result in a message being sent anyway?",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c8e879_765cb914",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7900,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "Do we need to call this from all the conditions in 6.4.10.3.2\nImplicit Exit and 6.4.10.3.3 Exits due to errors? \n\nIt\u0027s fine if you\u0027re breaking that out into another CL, just add a TODO so it doesn\u0027t get lost",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b890cb0_c25e9186",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7927,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "Don\u0027t forget our good friend the Discard case.  I would suspect that if this one is discarded, we can just return to Ready with no issue because that means the source is sending something to keep up the connection",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb4ffb4_aa59bfe6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7939,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "This should be a protocol error since we\u0027re in a non-interruptible AMS.  Normally I would reference our favorite Table 6-72 Response to an incoming Message (except VDM) to get an idea what we should do here, but I\u0027d wonder if it should be a hard reset given that\u0027s the timeout option.\n\nI suppose in its current form, we\u0027d eventually time out and hard reset.  But it would be somewhat more straightforward to just respond to the interruption with a reset.",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "286a9bf4_d735126e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7980,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "Never forget discard :)",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e996736_5fa5218c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8008,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "Should this trigger the sink cap wait timeout flag?  That\u0027s the path to hard reset a non-responsive source on initial connection, right?",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "990e3e1f_42bcdc55",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8009,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "Always \"return\" after a statement that will be changing the PE state",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43357938_3ce7637f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8048,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "Should we log the failure reason from the message when we hit it?",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bdccf0e_7b5a9d65",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8097,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "Discard handling",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95206a09_6f097c18",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8113,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "I think we want 6.4.10.3.3 Exits due to errors for this one.  Hard reset",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d717ecf_c48d3845",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-01T21:18:34Z",
+      "side": 1,
+      "message": "Failure enum?",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
