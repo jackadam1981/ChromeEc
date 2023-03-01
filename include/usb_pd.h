@@ -3415,9 +3415,15 @@ __override_proto int svdm_dp_status(int port, uint32_t *payload);
  * @param port The PD port number
  * @payload payload Pointer to the PDO payload which is filled with the
  *                  DPConfigure response message
+ * @type TCPC message type
  * @return number of VDOs
  */
-__override_proto int svdm_dp_config(int port, uint32_t *payload);
+__override_proto int svdm_dp_config(int port, uint32_t *payload
+#ifdef CONFIG_USB_PD_DP21_MODE
+				    ,
+				    enum tcpci_msg_type type
+#endif
+);
 
 /**
  * Perform any other work required after configuring the pins for DP Alt Mode.
