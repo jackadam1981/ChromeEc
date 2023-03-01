@@ -22,6 +22,30 @@
       },
       "revId": "27817293c6023780ad90cbe91945b6d6a12bdbc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d58473_4b6ace16",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-03-01T22:09:52Z",
+      "side": 1,
+      "message": "@Rob\n\nAre you ok with dropping this portion entirely, so we don\u0027t attempt to make any assumptions about the cause of the communication failure?",
+      "parentUuid": "06d9eb4d_8cd14702",
+      "range": {
+        "startLine": 345,
+        "startChar": 23,
+        "endLine": 345,
+        "endChar": 50
+      },
+      "revId": "27817293c6023780ad90cbe91945b6d6a12bdbc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
