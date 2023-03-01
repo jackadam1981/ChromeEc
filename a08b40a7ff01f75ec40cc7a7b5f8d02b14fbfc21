@@ -34,6 +34,24 @@
       "parentUuid": "34a64c22_d10ff29b",
       "revId": "a08b40a7ff01f75ec40cc7a7b5f8d02b14fbfc21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a38b4df_8b34b3d2",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-03-01T11:00:56Z",
+      "side": 1,
+      "message": "The PPC driver cannot get the value of \u0027port\u0027 at compile-time to check the port-specific TCPC configuration. Using BUILD_ASSERT here seems unachievable to me.\n\nI\u0027ve though about checking it in usbc_config.c. My conclusion is there\u0027s no simple solution because BUILD_ASSERT cannot get the value of TCPC port configuration at compile-time.\nOne possible solution is using macros to define the USBC port topology and configuration in usgc_config.c. Then the misconfiguration can be detected at compile-time. But I am not sure if it\u0027s worth doing so.",
+      "parentUuid": "1078e880_0001e6b9",
+      "revId": "a08b40a7ff01f75ec40cc7a7b5f8d02b14fbfc21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
