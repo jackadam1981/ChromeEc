@@ -15,6 +15,7 @@
 #include "task.h"
 #include "timer.h"
 #include "usb_pd.h"
+#include "usb_pd_dp.h"
 #include "util.h"
 
 #define BB_RETIMER_REG_SIZE 4
@@ -29,9 +30,8 @@
 	(USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED | \
 	 USB_PD_MUX_TBT_COMPAT_ENABLED | USB_PD_MUX_USB4_ENABLED)
 
-#define BB_RETIMER_MUX_USB_DP_MODE                        \
-	(USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED | \
-	 USB_PD_MUX_USB4_ENABLED)
+#define BB_RETIMER_MUX_USB_MODE \
+	(USB_PD_MUX_USB_ENABLED | USB_PD_MUX_USB4_ENABLED)
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
@@ -170,32 +170,34 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 	};
 	union tbt_mode_resp_device dev_resp;
 	enum idh_ptype cable_type = get_usb_pd_cable_type(port);
+	union dp_mode_resp_cable cable_dp_mode_resp = {
+		.raw_value = pd_get_dp_mode_vdo(port, TCPCI_MSG_SOP_PRIME)
+	};
 
-	/*
-	 * Bit 2: RE_TIMER_DRIVER
-	 * 0 - Re-driver
-	 * 1 - Re-timer
-	 *
-	 * If Alternate mode is USB/DP/USB4, RE_TIMER_DRIVER is
-	 * set according to SOP' VDO2 response Bit 9.
-	 *
-	 */
-	if (is_active_cable_element_retimer(port) &&
-	    (mux_state & BB_RETIMER_MUX_USB_DP_MODE))
-		*set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
+	if (mux_state & BB_RETIMER_MUX_USB_MODE) {
+		/*
+		 * Bit 2: RE_TIMER_DRIVER
+		 * 0 - Re-driver
+		 * 1 - Re-timer
+		 *
+		 * If Alternate mode is USB/USB4, RE_TIMER_DRIVER is
+		 * set according to SOP' VDO2 response Bit 9.
+		 *
+		 */
+		if (is_active_cable_element_retimer(port))
+			*set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
 
-	/*
-	 * Bit 22: ACTIVE/PASSIVE
-	 * 0 - Passive cable
-	 * 1 - Active cable
-	 *
-	 * If the mode is USB/DP/Thunderbolt_compat/USB4, ACTIVE/PASIVE is
-	 * set according to Discover mode SOP' response.
-	 */
-	if ((mux_state & BB_RETIMER_MUX_USB_ALT_MODE) &&
-	    ((cable_type == IDH_PTYPE_ACABLE) ||
-	     cable_resp.tbt_active_passive == TBT_CABLE_ACTIVE))
-		*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
+		/*
+		 * Bit 22: ACTIVE/PASSIVE
+		 * 0 - Passive cable
+		 * 1 - Active cable
+		 *
+		 * If the mode is USB/USB4, ACTIVE/PASIVE is
+		 * set according to Discover mode SOP' response.
+		 */
+		if (cable_type == IDH_PTYPE_ACABLE)
+			*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
+	}
 
 	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED ||
 	    mux_state & USB_PD_MUX_USB4_ENABLED) {
@@ -253,6 +255,17 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 			*set_retimer_con |= BB_RETIMER_TBT_ACTIVE_LINK_TRAINING;
 
 		/*
+		 * Bit 22: ACTIVE/PASSIVE
+		 * 0 - Passive cable
+		 * 1 - Active cable
+		 *
+		 * If the mode is Thunderbolt-Compat, ACTIVE/PASIVE is
+		 * set according to Discover mode SOP' response.
+		 */
+		if (cable_resp.tbt_active_passive == TBT_CABLE_ACTIVE)
+			*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
+
+		/*
 		 * Bit 27-25: USB4/TBT Cable speed
 		 * 000b - No functionality
 		 * 001b - USB3.1 Gen1 Cable
@@ -274,6 +287,102 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 		 */
 		*set_retimer_con |=
 			BB_RETIMER_TBT_CABLE_GENERATION(cable_resp.tbt_rounded);
+	}
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE) &&
+	    (mux_state & USB_PD_MUX_DP_ENABLED)) {
+		/*
+		 * Bit 2: RE_TIMER_DRIVER
+		 * 0 - Re-driver
+		 * 1 - Re-timer
+		 *
+		 * If Alternate mode is DP2.0 RE_TIMER_DRIVER is
+		 * set according to SOP' VDO2 response Bit 9.
+		 *
+		 * If Alternate mode is DP2.1 RE_TIMER_DRIVER is
+		 * set according to DP Discover mode SOP' response Bit 29:28.
+		 */
+		if ((resolve_dpam_version(port, TCPCI_MSG_SOP_PRIME) ==
+			     DPAM_VERSION_20 &&
+		     is_active_cable_element_retimer(port)) ||
+		    (resolve_dpam_version(port, TCPCI_MSG_SOP_PRIME) ==
+			     DPAM_VERSION_21 &&
+		     cable_dp_mode_resp.active_comp ==
+			     DP21_ACTIVE_RETIMER_CABLE))
+			*set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
+
+		/*
+		 * Bit 18: CABLE_TYPE
+		 * 0 - Electrical cable
+		 * 1 - Optical cable
+		 */
+		if (cable_dp_mode_resp.active_comp == DP21_OPTICAL_CABLE &&
+		    resolve_dpam_version(port, TCPCI_MSG_SOP_PRIME) ==
+			    DPAM_VERSION_21)
+			*set_retimer_con |= BB_RETIMER_TBT_CABLE_TYPE;
+
+		/*
+		 * Bit 22: ACTIVE/PASSIVE
+		 * 0 - Passive cable
+		 * 1 - Active cable
+		 *
+		 * If the mode is DP2.1, ACTIVE/PASIVE is set according to
+		 * DP Discover mode SOP' response B29:28
+		 * If the mode is DP2.0, ACTIVE/PASIVE is set according to
+		 * Discover ID SOP' response B29:27.
+		 */
+		if (((resolve_dpam_version(port, TCPCI_MSG_SOP_PRIME) ==
+		      DPAM_VERSION_20) &&
+		     (cable_type == IDH_PTYPE_ACABLE)) ||
+		    ((resolve_dpam_version(port, TCPCI_MSG_SOP_PRIME) ==
+		      DPAM_VERSION_21) &&
+		     (cable_dp_mode_resp.active_comp != DP21_PASSIVE_CABLE)))
+			*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
+
+		/*
+		 * Bit 27-25: DP Cable speed for DP2.1
+		 * 000b - No functionality
+		 * 001b - HBR3
+		 * 010b - UHBR10
+		 * 100b - UHBR20
+		 */
+		*set_retimer_con |= BB_RETIMER_USB4_TBT_CABLE_SPEED_SUPPORT(
+			resolve_dpam_version(port, TCPCI_MSG_SOP_PRIME) ==
+					DPAM_VERSION_21 ?
+				get_dp_cable_bit_rate(port) :
+				get_usb4_cable_speed(port));
+
+	} else if (!IS_ENABLED(CONFIG_USB_PD_DP21_MODE) &&
+		   (mux_state & USB_PD_MUX_DP_ENABLED)) {
+		/*
+		 * Bit 2: RE_TIMER_DRIVER
+		 * 0 - Re-driver
+		 * 1 - Re-timer
+		 *
+		 * If DP2.1 feature is not enabled, RE_TIMER_DRIVER is
+		 * set according to SOP' VDO2 response Bit 9.
+		 *
+		 */
+		if (is_active_cable_element_retimer(port))
+			*set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
+
+		/* TBD
+		 * Bit 18: CABLE_TYPE
+		 * 0 - Electrical cable
+		 * 1 - Optical cable
+		 */
+		if (cable_resp.tbt_cable == TBT_CABLE_OPTICAL)
+			*set_retimer_con |= BB_RETIMER_TBT_CABLE_TYPE;
+
+		/*
+		 * Bit 22: ACTIVE/PASSIVE
+		 * 0 - Passive cable
+		 * 1 - Active cable
+		 *
+		 * If DP2.1 support is not enabled, ACTIVE/PASIVE is set
+		 * according to Discover ID SOP' response B29:27.
+		 */
+		if (cable_type == IDH_PTYPE_ACABLE)
+			*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
 	}
 }
 
