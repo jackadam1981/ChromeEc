@@ -87,6 +87,24 @@
       "parentUuid": "ffa93b2f_3cc410dd",
       "revId": "3128480eadaf67bf42514d0fe8ee6ca411396803",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa461e4_ba0ac99c",
+        "filename": "common/usbc/dp_hpd_gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-01T22:05:15Z",
+      "side": 1,
+      "message": "1. It might help to add a comment to the DP module location like the AP module location\u0027s comment noting that they are mutually exclusive.\n2. Should boards like trogdor set `CONFIG_USB_PD_DP_HPD_GPIO`, and would that make things easier here?",
+      "parentUuid": "833bff03_91899c89",
+      "revId": "3128480eadaf67bf42514d0fe8ee6ca411396803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
