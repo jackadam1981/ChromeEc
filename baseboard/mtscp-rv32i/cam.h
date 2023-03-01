@@ -10,7 +10,7 @@
 
 struct cam_msg {
 	unsigned char id;
-	unsigned char msg[86];
+	unsigned char msg[106];
 };
 
 BUILD_ASSERT(member_size(struct cam_msg, msg) <= CONFIG_IPC_SHARED_OBJ_BUF_SIZE);
