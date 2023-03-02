@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa996c27_7acafec7",
+        "filename": "zephyr/mock/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T16:21:19Z",
+      "side": 1,
+      "message": "nit, . at the end of the line.",
+      "revId": "cd94fe9b82252617430aa134f2c84bf1bebea7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827928de_1fa0f3a1",
+        "filename": "zephyr/mock/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T16:21:19Z",
+      "side": 1,
+      "message": "same",
+      "revId": "cd94fe9b82252617430aa134f2c84bf1bebea7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2999345b_4e5efe7f",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T16:21:19Z",
+      "side": 1,
+      "message": "Move to be on a single line.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 0
+      },
+      "revId": "cd94fe9b82252617430aa134f2c84bf1bebea7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab5c91ec_4fccacf9",
+        "filename": "zephyr/test/rex/testcase.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T16:21:19Z",
+      "side": 1,
+      "message": "I think you can drop the trailing ; here",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 72
+      },
+      "revId": "cd94fe9b82252617430aa134f2c84bf1bebea7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8b65d44_7de44233",
+        "filename": "zephyr/test/rex/testcase.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T16:21:19Z",
+      "side": 1,
+      "message": "same, drop, the ;",
+      "revId": "cd94fe9b82252617430aa134f2c84bf1bebea7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
