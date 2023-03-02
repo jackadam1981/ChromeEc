@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abedfc34_dcf34f7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-02T06:27:37Z",
+      "side": 1,
+      "message": "The charge limit has been set by board_set_charge_limit, but however the charge_manager updates the `charge_current` until the deferred hook is almost finished.\n\nConsider this scenarios:\n\n0. Before PD transition, the `charge_ceil` is 3000mA\n\n1. Set PSNKSTDBY, charge_manager_force_ceil() called, `charge_ceil` set (said 275mA),  charge_manager_refresh deferred.\n\n2. Call board_set_charge_limit() in PD task, the input current limit 275mA is applied.\n\n3.PD SM exiting PE_SNK_TRANSITION_SINK, charge_manager_set_ceil() called, `charge_ceil` is now set to 3000mA. The second charge_manager_refresh deferred.\n\n4. The first charge_manager_refresh deferred is in process, and the charge_manager finds that the charge_ceil doesn\u0027t change (3000mA vs 3000mA), so no new CL is found. board_set_charge_limit is skipped. The input current is actually capped at 275mA, but the `charge_current` in charge_manager has been modified as 3000mA.",
+      "parentUuid": "3cac1c25_3d0c5309",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d71a917_0d3f8587",
         "filename": "common/charge_manager.c",
         "patchSetId": 7
@@ -37,6 +61,24 @@
       "writtenOn": "2023-02-24T15:43:28Z",
       "side": 1,
       "message": "Do we need to worry about any conditions where this can be set and then not cleared (ex. times where the charge manager refresh may not executed as assumed)?",
+      "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a2b804_62f12ec5",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-02T06:27:37Z",
+      "side": 1,
+      "message": "There are only several places that call board_set_charge_limit() and not through the charge_manager:\n\n1. charge_manager_force_ceil() from PD task in PE_SNK_SELSECT_CAPABILITY.\n2. chg_ramp task, which won\u0027t be supported anymore.\n3. PD CHG CTRL host command, a developer command.\n\nSo, I think there are no other suspects that might cause the race condition.",
+      "parentUuid": "6d71a917_0d3f8587",
       "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
