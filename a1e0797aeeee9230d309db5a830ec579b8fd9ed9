@@ -48,6 +48,53 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb5f122_e9496950",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-02T21:26:53Z",
+      "side": 1,
+      "message": "Eric, thanks for the explanation. I understand the situation.",
+      "parentUuid": "abedfc34_dcf34f7a",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69cb454e_7913f6c0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-02T21:26:53Z",
+      "side": 1,
+      "message": "Maybe we should move this up right below the if conditions (between line 884 and 885). That\u0027ll minimize the chance of another race condition.",
+      "range": {
+        "startLine": 902,
+        "startChar": 2,
+        "endLine": 902,
+        "endChar": 40
+      },
+      "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d71a917_0d3f8587",
@@ -97,6 +144,24 @@
       "side": 1,
       "message": "...and, for other cases, that called through the charge_manager_refresh deferred functions, the charge ceils and charge currents will be evaluated in sequence, so I think there won\u0027t have race conditions.",
       "parentUuid": "67a2b804_62f12ec5",
+      "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "589a482b_a1a216d6",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-02T21:26:53Z",
+      "side": 1,
+      "message": "pd_ceil_enforced[] is referenced only in charge_manager_refresh, where the flag is cleared necessarily if it\u0027s set. So, I don\u0027t think we need to worry about it left uncleared.",
+      "parentUuid": "32b19d8a_e67fe98a",
       "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
