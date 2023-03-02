@@ -33,6 +33,24 @@
       "message": "Do we actually want to do this at the current time?  EVT devices have not yet been evaluated at Google.",
       "revId": "59c0cd3513d7aff2e4f5bda1c533cd8d45d50149",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95bb0adf_465bfe8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2023-03-02T06:31:41Z",
+      "side": 1,
+      "message": "Since this flag will cause FAFT-EC \"firmware_ECSystemLocked\" test item failed, or can we skip this test result because it\u0027s more like WAI on early stage?",
+      "parentUuid": "9cb92fbb_b649bece",
+      "revId": "59c0cd3513d7aff2e4f5bda1c533cd8d45d50149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
