@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d26d5fac_e183e22c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-02T16:31:46Z",
+      "side": 1,
+      "message": "Added the comment for the commit description",
+      "parentUuid": "55b41a37_c05fb244",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4f46288_2fa545d4",
@@ -640,6 +664,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d8d960_6ab3f81f",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-02T16:31:46Z",
+      "side": 1,
+      "message": "Replaced with the single line with reset/sleep removed",
+      "parentUuid": "b5a0a639_10c477cd",
+      "range": {
+        "startLine": 1649,
+        "startChar": 0,
+        "endLine": 1652,
+        "endChar": 27
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaa420ff_10472e93",
@@ -772,6 +820,30 @@
       "side": 1,
       "message": "dont use number , instead use saved val in initial step",
       "parentUuid": "c9cd855c_8b679b00",
+      "range": {
+        "startLine": 1655,
+        "startChar": 1,
+        "endLine": 1655,
+        "endChar": 5
+      },
+      "revId": "aa56f706d4a37a5c30f251a14d3a02ef6e1dfaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4f5e5f6_88932dd6",
+        "filename": "util/flash_ec",
+        "patchSetId": 21
+      },
+      "lineNbr": 1655,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-02T16:31:46Z",
+      "side": 1,
+      "message": "removed this exit",
+      "parentUuid": "ef0ff910_47c69f09",
       "range": {
         "startLine": 1655,
         "startChar": 1,
