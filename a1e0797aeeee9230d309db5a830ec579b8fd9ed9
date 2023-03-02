@@ -81,6 +81,24 @@
       "parentUuid": "6d71a917_0d3f8587",
       "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b19d8a_e67fe98a",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-02T06:50:39Z",
+      "side": 1,
+      "message": "...and, for other cases, that called through the charge_manager_refresh deferred functions, the charge ceils and charge currents will be evaluated in sequence, so I think there won\u0027t have race conditions.",
+      "parentUuid": "67a2b804_62f12ec5",
+      "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
