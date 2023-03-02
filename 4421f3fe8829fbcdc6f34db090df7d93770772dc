@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68f9c16_e05a62d0",
+        "filename": "util/misc_util.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-02T19:42:05Z",
+      "side": 1,
+      "message": "Shall we validate len + offset_start against UINT32_MAX? We can either return or reduce the len and continue.",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 19
+      },
+      "revId": "4421f3fe8829fbcdc6f34db090df7d93770772dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
