@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc795ad_2fc99375",
+        "filename": "zephyr/test/drivers/anx7452/usbc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T15:44:03Z",
+      "side": 1,
+      "message": "that\u0027s some odd indentation, bring on the line before? should fit...",
+      "revId": "4a3a09d50863d9f8566190403294f28e8657cbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccef5c43_ddd0c633",
+        "filename": "zephyr/test/drivers/anx7452/usbc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T15:44:03Z",
+      "side": 1,
+      "message": "nit: drop the blank line",
+      "revId": "4a3a09d50863d9f8566190403294f28e8657cbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
