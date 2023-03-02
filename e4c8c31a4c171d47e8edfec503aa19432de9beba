@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfed4cd7_df0cf48f",
+        "filename": "include/config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 2605,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-02T20:51:14Z",
+      "side": 1,
+      "message": "Having this option here implies that it is valid to enable this for ECOS builds.  But enabling this option on an ECOS build does nothing at the moment.\n\nSo either drop this, or add a `#error` in this file somewhere after the `include \"board.h\"` that validates this option is only enabled for Zephyr builds.\n\nIf you\u0027re planning to update ECOS builds, the `#error` is my preference along with a TODO bug.",
+      "range": {
+        "startLine": 2605,
+        "startChar": 0,
+        "endLine": 2605,
+        "endChar": 38
+      },
+      "revId": "e4c8c31a4c171d47e8edfec503aa19432de9beba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71c2b526_2467cad3",
+        "filename": "zephyr/test/drivers/host_command_memory_dump/src/host_command_memory_dump.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-02T20:51:14Z",
+      "side": 1,
+      "message": "Do the tests run the \u0027HOOK_INIT\u0027?  If so, this call is redundant.",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 38
+      },
+      "revId": "e4c8c31a4c171d47e8edfec503aa19432de9beba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8486a23_4b7c1c5b",
+        "filename": "zephyr/test/drivers/host_command_memory_dump/src/host_command_memory_dump.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-02T20:51:14Z",
+      "side": 1,
+      "message": "Add a check for the WOV thread.",
+      "range": {
+        "startLine": 338,
+        "startChar": 2,
+        "endLine": 338,
+        "endChar": 15
+      },
+      "revId": "e4c8c31a4c171d47e8edfec503aa19432de9beba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
