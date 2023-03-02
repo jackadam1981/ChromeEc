@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e80e85fb_c93e322f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-03-02T03:19:52Z",
+      "side": 1,
+      "message": "```\n23-03-02 11:00:12.156 *** Booting Zephyr OS build v2.7.99-18736-g0c9eb928d390 ***\n23-03-02 11:00:12.157 !\n23-03-02 11:00:12.157 !\n23-03-02 11:00:12.157 --- UART initialized after reboot ---\n23-03-02 11:00:12.160 ![Image: unknown, kb_v3.3.105929-ec:1bae1a,os:0c9eb9,cmsis:4aa3ff,hal_stm32:99e88d 2023-03-02 10:54:45 zw@linux]\n23-03-02 11:00:12.170 ![Reset cause: !unknown!]\n23-03-02 11:00:12.173 ![0.023900 Inits done]\n23-03-02 11:00:12.175 ![0.025900 KB init state:! --! --! --! --! --! --! --! --! --! --! --! --! --!]\n23-03-02 11:00:12.182 \n23-03-02 11:00:12.183 \n23-03-02 11:00:12.183 ec:~$ \n23-03-02 11:01:37.546 \n23-03-02 11:01:37.546 ---KB gpio interrupt---\n23-03-02 11:01:37.548 \n23-03-02 11:01:37.548 \n23-03-02 11:01:37.548 \n23-03-02 11:01:37.549 ---KB gpio interrupt---\n23-03-02 11:01:37.550 \n23-03-02 11:01:37.551 \n23-03-02 11:01:37.551 \n23-03-02 11:01:37.551 ---KB gpio interrupt---\n```\n\ntrigger interrupt by pressing a key, but the interrupt is not stable.",
+      "revId": "4d68d849be229aa3aab26ce08a2e22f9724bd11e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
