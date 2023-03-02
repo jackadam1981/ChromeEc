@@ -19,7 +19,7 @@
 			batt-lvl = <(BATTERY_LEVEL_LOW + 1) BATTERY_LEVEL_FULL>;
 
 			color-0 {
-				led-color = <&color_white>;
+				led-color = <&color_blue>;
 			};
 		};
 
@@ -31,7 +31,7 @@
 
 			/* White 2 sec, off 1 sec */
 			color-0 {
-				led-color = <&color_white>;
+				led-color = <&color_blue>;
 				period-ms = <2000>;
 			};
 			color-1 {
@@ -46,7 +46,7 @@
 
 			/* White 1 sec, off 1 sec */
 			color-0 {
-				led-color = <&color_white>;
+				led-color = <&color_blue>;
 				period-ms = <1000>;
 			};
 			color-1 {
@@ -82,7 +82,7 @@
 			charge-state = "PWR_STATE_CHARGE_NEAR_FULL";
 
 			color-0 {
-				led-color = <&color_white>;
+				led-color = <&color_blue>;
 			};
 		};
 
@@ -95,7 +95,7 @@
 				period-ms = <2000>;
 			};
 			color-1 {
-				led-color = <&color_white>;
+				led-color = <&color_blue>;
 				period-ms = <2000>;
 			};
 		};
