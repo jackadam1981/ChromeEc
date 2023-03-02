@@ -16,6 +16,12 @@
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
 
+/** Types of "hidden" I2C devices */
+enum anx7452_emul_port {
+	TOP_EMUL_PORT,
+	CTLTOP_EMUL_PORT,
+};
+
 /**
  * @brief ANX7452 retimer emulator backend API
  * @defgroup anx7452_emul ANX7452 retimer emulator
@@ -65,7 +71,8 @@ void anx7452_emul_reset(const struct emul *emul);
  * @return Pointer to i2c_common_emul_data for emul argument
  */
 struct i2c_common_emul_data *
-emul_anx7452_get_i2c_common_data(const struct emul *emul);
+emul_anx7452_get_i2c_common_data(const struct emul *emul,
+				 enum anx7452_emul_port port);
 
 /**
  * @}
