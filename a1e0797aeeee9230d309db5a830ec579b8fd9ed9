@@ -164,6 +164,24 @@
       "parentUuid": "32b19d8a_e67fe98a",
       "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "204f4bcf_da14b06f",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-02T21:52:53Z",
+      "side": 1,
+      "message": "I was thinking more along the lines of conditions where we may not even call `charge_manager_refresh` after setting the flag.\n\nIn order to call `charge_manager_refresh` from `charge_manager_set_ceil`, then we\u0027ll need to return true for `is_valid_port` and then also true for `charge_ceil[port][requestor] !\u003d ceil` and `port \u003d\u003d charge_port \u0026\u0026 charge_manager_is_seeded()` \n\nThis functions \"if\" certainly covers `port \u003d\u003d charge_port`.  `is_valid_port` may be implied in a way by the fact that `port \u003d\u003d charge_port`.  I was trying to decide if `left_safe_mode` here implies that `charge_manager_is_seeded` will be true as well.  And then also trying to ensure that `ceil \u003c charge_current` covers the `charge_ceil` check in the other function. \n\nBasically, there are a lot of somewhat similar if\u0027s between these two functions and I want to ensure they approximately match up so the flag set/process/clear is reliable (and ideally readable). \n\nThen I suppose we also could hit an issue of disconnect while the flag is set to true (changing the charge port before the `charge_maanger_refresh` could be called), but that would require a very specifically unfortunate timing window.",
+      "parentUuid": "589a482b_a1a216d6",
+      "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
