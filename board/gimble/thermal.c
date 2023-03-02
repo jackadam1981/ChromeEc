@@ -40,41 +40,48 @@ struct fan_step {
 static const struct fan_step fan_table[] = {
 	{
 		/* level 0 */
-		.on = { 43, -1, -1 },
+		.on = { 32, -1, -1 },
 		.off = { 0, -1, -1 },
 		.rpm = { 0 },
 		.rpm_tablet = { 0 },
 	},
 	{
 		/* level 1 */
+		.on = { 37, -1, -1 },
+		.off = { 32, -1, -1 },
+		.rpm = { 3200 },
+		.rpm_tablet = { 3200 },
+	},
+	{
+		/* level 2 */
 		.on = { 45, -1, -1 },
 		.off = { 43, -1, -1 },
 		.rpm = { 3400 },
 		.rpm_tablet = { 3400 },
 	},
 	{
-		/* level 2 */
+		/* level 3 */
 		.on = { 46, -1, -1 },
 		.off = { 44, -1, -1 },
 		.rpm = { 3800 },
 		.rpm_tablet = { 3700 },
 	},
 	{
-		/* level 3 */
+		/* level 4 */
 		.on = { 48, -1, -1 },
 		.off = { 45, -1, -1 },
 		.rpm = { 4200 },
 		.rpm_tablet = { 4100 },
 	},
 	{
-		/* level 4 */
+		/* level 5 */
 		.on = { 50, -1, -1 },
 		.off = { 47, -1, -1 },
 		.rpm = { 4800 },
 		.rpm_tablet = { 4800 },
 	},
 	{
-		/* level 5 */
+		/* level 6 */
 		.on = { 52, -1, -1 },
 		.off = { 49, -1, -1 },
 		.rpm = { 5400 },
