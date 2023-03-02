@@ -16,6 +16,114 @@
       "message": "Splitting this into two CLs as it\u0027s big",
       "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c68bfc_945ec1bd",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T15:42:11Z",
+      "side": 1,
+      "message": "typo? equalization",
+      "range": {
+        "startLine": 5,
+        "startChar": 40,
+        "endLine": 5,
+        "endChar": 51
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08e6fdb4_5002ef14",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T15:42:11Z",
+      "side": 1,
+      "message": "How does this work? You get an address from ANX7452_TOP_CTLTOP_I2C_ADDR_REG and then you send data on that address? Does it change? Sounds like something that should be read only once in init.",
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6090f60d_93b7fff4",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T15:42:11Z",
+      "side": 1,
+      "message": "I\u0027d suggest using %x for addresses since that\u0027s how you express them in the definition (`#define ANX7452_TOP_REG 0xF8`). Same at line 40.",
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ffacf48_48c808c5",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T15:42:11Z",
+      "side": 1,
+      "message": "Use braces on these? We formally ask it only for code under zephyr, but you did use them in the function before, it should at least be coherent within the file.",
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4467c17a_2b1f9121",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T15:42:11Z",
+      "side": 1,
+      "message": "Copypaste leftover? Also typo, equalization",
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6a0ac5_33a9b60a",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T15:42:11Z",
+      "side": 1,
+      "message": "__CROS_EC_USB_RETIMER_ANX7452_H",
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
