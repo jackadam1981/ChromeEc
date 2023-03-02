@@ -141,6 +141,24 @@
       "parentUuid": "37b9ac42_ae9ed442",
       "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b60803_67254bcf",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-02T16:36:20Z",
+      "side": 1,
+      "message": "Removed main_1(), uart_communication_1 function , header.bin , key_hash.bin , gen_pgm_hdr.py (its related bin files) , tool takes only the second_loader_fw.bin for running the second loader image into sram ,",
+      "parentUuid": "eb9d7976_b44a0fa1",
+      "revId": "9bf8ee2dd881b3afb26d8e3201b1a97b4ff9f7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
