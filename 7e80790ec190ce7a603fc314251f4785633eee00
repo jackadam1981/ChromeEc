@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "707fb779_61ccd6c7",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-02T11:27:30Z",
+      "side": 1,
+      "message": "I would put this after the HOSTCMD one, just for symmetry and tho keep IDLE at last (feels special). Maybe I\u0027m overthinking it, up to you.",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 1
+      },
+      "revId": "7e80790ec190ce7a603fc314251f4785633eee00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
