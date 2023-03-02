@@ -108,46 +108,46 @@
 
 	 };
 	 gpio-interrupts {
-		 compatible = "cros-ec,gpio-interrupts";
-		 kb_in00 {
+		compatible = "cros-ec,gpio-interrupts";
+		int_kb_in00: int_kb_in00 {
 			 irq-pin = <&kb_in00>;
 			 flags = <GPIO_INT_EDGE_BOTH>;
-			 //handler = "keyboard_raw_gpio_interrupt";
+			 handler = "keyboard_raw_gpio_interrupt";
 		 };
-		 kb_in01 {
+		int_kb_in01: int_kb_in01 {
 			irq-pin = <&kb_in01>;
 			flags = <GPIO_INT_EDGE_BOTH>;
-			//handler = "keyboard_raw_gpio_interrupt";
+			handler = "keyboard_raw_gpio_interrupt";
 		};
-		kb_in02 {
+		int_kb_in02: int_kb_in02 {
 			irq-pin = <&kb_in02>;
 			flags = <GPIO_INT_EDGE_BOTH>;
-			//handler = "keyboard_raw_gpio_interrupt";
+			handler = "keyboard_raw_gpio_interrupt";
 		};
-		kb_in03 {
+		int_kb_in03: int_kb_in03 {
 			irq-pin = <&kb_in03>;
 			flags = <GPIO_INT_EDGE_BOTH>;
-			//handler = "keyboard_raw_gpio_interrupt";
+			handler = "keyboard_raw_gpio_interrupt";
 		};
-		kb_in04 {
+		int_kb_in04: int_kb_in04 {
 			irq-pin = <&kb_in04>;
 			flags = <GPIO_INT_EDGE_BOTH>;
-			//handler = "keyboard_raw_gpio_interrupt";
+			handler = "keyboard_raw_gpio_interrupt";
 		};
-		kb_in05 {
+		int_kb_in05: int_kb_in05 {
 			irq-pin = <&kb_in05>;
 			flags = <GPIO_INT_EDGE_BOTH>;
-			//handler = "keyboard_raw_gpio_interrupt";
+			handler = "keyboard_raw_gpio_interrupt";
 		};
-		kb_in06 {
+		int_kb_in06: int_kb_in06 {
 			irq-pin = <&kb_in06>;
 			flags = <GPIO_INT_EDGE_BOTH>;
-			//handler = "keyboard_raw_gpio_interrupt";
+			handler = "keyboard_raw_gpio_interrupt";
 		};
-		kb_in07 {
+		int_kb_in07: int_kb_in07 {
 			irq-pin = <&kb_in07>;
 			flags = <GPIO_INT_EDGE_BOTH>;
-			//handler = "keyboard_raw_gpio_interrupt";
+			handler = "keyboard_raw_gpio_interrupt";
 		};
 	 };
  };
