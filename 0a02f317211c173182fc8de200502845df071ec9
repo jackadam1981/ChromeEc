@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed13cd2_cda8bb7d",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-03T17:21:46Z",
+      "side": 1,
+      "message": "What\u0027s the difference betwen this and cps8x00_reset? I think we should consolidate them.\n\nAlso, msleep(50) is really necessary? cps8x00_reset uses only udelay(15).",
+      "range": {
+        "startLine": 882,
+        "startChar": 0,
+        "endLine": 887,
+        "endChar": 13
+      },
+      "revId": "0a02f317211c173182fc8de200502845df071ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
