@@ -34,6 +34,24 @@
       "parentUuid": "35620eea_569b3be6",
       "revId": "73d5f03a299b4e1dfc4e2119d24f9838adfba60c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79fb7e8c_1921a756",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-03T11:19:19Z",
+      "side": 1,
+      "message": "I add ***DT_PROP(node_id, temperature_type) \u003d\u003d F75303_LOCAL)*** but build fail.\n\n```\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/sys/util_internal.h:59:21: error: pasting \"_XXXX\" and \"(\" does not give a valid preprocessing token\n   59 |         __COND_CODE(_XXXX##_flag, _if_1_code, _else_code)\n```\n\nbuild fail log as below:\nhttps://docs.google.com/document/d/1fsWDJIZfldtRcrUw4NPKjmBbZNl1UdC2xhUE-j8I3Vo/edit?usp\u003dsharing\n\nI change to ***COND_CODE_1(DT_PROP(node_id, temperature_type),\t                        \\\n\t\t\t    (\u0026f75303_get_local_temp), ()) ***, also build fail...\n\n```\nOSError: Execution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/markarth/build-ro -j1\n\n                 from ../modules/ec/include/common.h:18,\n                 from ../modules/ec/include/adc.h:12,\n                 from /mnt/host/source/src/platform/ec/zephyr/shim/src/temp_sensors.c:6:\n/mnt/host/source/src/platform/ec/zephyr/shim/src/temp_sensors.c:249:32: error: \u0027node_id_P_temperature_type\u0027 undeclared here (not in a function)\n  249 |                 .idx \u003d DT_PROP(node_id, temperature_type),              \\\n      |                                ^~~~~~~\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/sys/util_internal.h:72:26: note: in definition of macro \u0027__DEBRACKET\u0027\n\n```\n\nHi Keith, could you give me some advice.",
+      "parentUuid": "e6a7ad0e_42cf36d2",
+      "revId": "73d5f03a299b4e1dfc4e2119d24f9838adfba60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
