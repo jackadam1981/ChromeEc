@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bbd3d7f_731c4a69",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-03-03T19:30:32Z",
+      "side": 1,
+      "message": "should break this rename out into a separate CL",
+      "range": {
+        "startLine": 408,
+        "startChar": 4,
+        "endLine": 408,
+        "endChar": 36
+      },
+      "revId": "de4883023d7c4ded601001076b28788a3ce66a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a9c6825_f2fc5c3c",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-03-03T19:30:32Z",
+      "side": 1,
+      "message": "These lines shouldn\u0027t be needed anymore",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "de4883023d7c4ded601001076b28788a3ce66a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "643a4fd1_77fab02c",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-03-03T19:30:32Z",
+      "side": 1,
+      "message": "As it stands only one FPC (or ELAN) sensor is supported at a time. Consider a structure per sensor type.",
+      "range": {
+        "startLine": 342,
+        "startChar": 7,
+        "endLine": 342,
+        "endChar": 26
+      },
+      "revId": "de4883023d7c4ded601001076b28788a3ce66a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14f1cbd2_49f8cc81",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-03-03T19:30:32Z",
+      "side": 1,
+      "message": "Need to clean up all this logic to allow both elan and fpc sensors to be included. Also consider multiple sensors from the same vendor.",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "de4883023d7c4ded601001076b28788a3ce66a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24adfbc1_dc5e4549",
+        "filename": "test/fpsensor_hw.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-03-03T19:30:32Z",
+      "side": 1,
+      "message": "disable this test if no private?",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "de4883023d7c4ded601001076b28788a3ce66a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65556d13_f0e583c0",
+        "filename": "test/fpsensor_hw.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-03-03T19:30:32Z",
+      "side": 1,
+      "message": "dev changes, revert",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "de4883023d7c4ded601001076b28788a3ce66a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94a262f1_dbcaed64",
+        "filename": "util/migrated_files.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-03-03T19:30:32Z",
+      "side": 1,
+      "message": "eliminate this change by renaming fp_sensor files to fpsensor prior to this",
+      "range": {
+        "startLine": 15,
+        "startChar": 64,
+        "endLine": 15,
+        "endChar": 73
+      },
+      "revId": "de4883023d7c4ded601001076b28788a3ce66a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
