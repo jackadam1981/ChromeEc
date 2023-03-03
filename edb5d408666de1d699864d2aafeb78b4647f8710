@@ -22,6 +22,30 @@
       },
       "revId": "edb5d408666de1d699864d2aafeb78b4647f8710",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "753a2791_adf9f284",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-03-03T18:59:30Z",
+      "side": 1,
+      "message": "Oh, I forgot about compare_builds. Thanks for the reminder!\nI just went back through a few commits, ran compare_builds, and updated TESTS in the commit message.",
+      "parentUuid": "f9ac9384_a1eb8d2f",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "edb5d408666de1d699864d2aafeb78b4647f8710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
