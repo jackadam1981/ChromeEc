@@ -1,0 +1,62 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	fans {
+		compatible = "cros-ec,fans";
+
+		fan0: fan_0 {
+			pwms = <&pwm0 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+			rpm_min = <3000>;
+			rpm_start = <3000>;
+			rpm_max = <5000>;
+			tach = <&speed0>;
+			pgood_gpio = <&gpio_s0_pgood>;
+		};
+		fan1: fan_1 {
+			pwms = <&pwm0 1 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+			rpm_min = <3000>;
+			rpm_start = <3000>;
+			rpm_max = <5000>;
+			tach = <&speed1>;
+			pgood_gpio = <&gpio_s0_pgood>;
+		};
+
+	};
+};
+
+/* Tachometers for fan speed measurement */
+&speed0 {
+	status = "okay";
+	pinctrl-0 = <&ta1_1_in_gp40>;
+	pinctrl-names = "default";
+	port = <NPCX_TACH_PORT_A>; /* port-A is selected */
+	sample-clk = <NPCX_TACH_FREQ_LFCLK>; /* Use LFCLK as sampling clock */
+	pulses-per-round = <2>; /* number of pulses per round of encoder */
+};
+
+&speed1 {
+	status = "okay";
+	pinctrl-0 = <&ta1_2_in_gp73>;
+	pinctrl-names = "default";
+	port = <NPCX_TACH_PORT_A>; /* port-A is selected */
+	sample-clk = <NPCX_TACH_FREQ_LFCLK>; /* Use LFCLK as sampling clock */
+	pulses-per-round = <2>; /* number of pulses per round of encoder */
+};
+
+&pwm0_gpc2 {
+	drive-open-drain;
+};
+
+&pwm0_gpc3 {
+	drive-open-drain;
+};
+
+&pwm0 {
+	status = "okay";
+	pinctrl-0 = <&pwm0_gpc3>;
+	pinctrl-1 = <&pwm0_gpc2>;
+	pinctrl-names = "default";
+};
