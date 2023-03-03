@@ -16,6 +16,24 @@
       "message": "How much room is left in CR50_DEV image after this?",
       "revId": "7479629ec3354a81a2605b644a86252b4a73663a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf4b680_e11e91c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-03-03T16:41:50Z",
+      "side": 1,
+      "message": "*** 4272 bytes in flash and 1772 bytes in RAM still available on cr50 RW ****",
+      "parentUuid": "25f195b7_3b68bf6c",
+      "revId": "7479629ec3354a81a2605b644a86252b4a73663a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
