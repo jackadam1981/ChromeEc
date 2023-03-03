@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "756481e9_e6fc6b22",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:51:12Z",
+      "side": 1,
+      "message": "Unused? Some other library as well. One of the presubmit scripts checks for these.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9c2201a_195756bb",
         "filename": "util/mchp/crisis_rcvry_util.py",
         "patchSetId": 4
