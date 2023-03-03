@@ -136,6 +136,17 @@ int fp_sensor_acquire_image(uint8_t *image_data);
 int fp_sensor_acquire_image_with_mode(uint8_t *image_data, int mode);
 
 /**
+ * Test that size+offset does not exceed buffer_size
+ *
+ * Returns:
+ *   EC_ERROR_OVERFLOW: if size+offset does not fit in uint32_t
+ *   EC_ERROR_INVAL: if size+offset > buffer_size
+ *   EC_SUCCESS: otherwise
+ */
+int fp_sensor_validate_buffer_offset(uint32_t buffer_size, uint32_t offset,
+				     uint32_t size);
+
+/**
  * Runs a test for defective pixels.
  *
  * Should be triggered periodically by the client. The maintenance command can

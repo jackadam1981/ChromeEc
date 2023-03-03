@@ -4,6 +4,7 @@
  */
 
 #include "ec_commands.h"
+#include "fpsensor.h"
 #include "fpsensor_utils.h"
 #include "mock/fpsensor_detect_mock.h"
 #include "string.h"
@@ -27,22 +28,23 @@ static const struct ec_response_get_protocol_info expected_info[] = {
 	}
 };
 
-test_static int test_validate_fp_buffer_offset_success(void)
+test_static int test_validate_buffer_offset_success(void)
 {
-	TEST_EQ(validate_fp_buffer_offset(1, 0, 1), EC_SUCCESS, "%d");
+	TEST_EQ(fp_sensor_validate_buffer_offset(1, 0, 1), EC_SUCCESS, "%d");
 	return EC_SUCCESS;
 }
 
-test_static int test_validate_fp_buffer_offset_failure_no_overflow(void)
+test_static int test_validate_buffer_offset_failure_no_overflow(void)
 {
-	TEST_EQ(validate_fp_buffer_offset(1, 1, 1), EC_ERROR_INVAL, "%d");
-	return EC_SUCCESS;
-}
-
-test_static int test_validate_fp_buffer_offset_failure_overflow(void)
-{
-	TEST_EQ(validate_fp_buffer_offset(1, UINT32_MAX, 1), EC_ERROR_OVERFLOW,
+	TEST_EQ(fp_sensor_validate_buffer_offset(1, 1, 1), EC_ERROR_INVAL,
 		"%d");
+	return EC_SUCCESS;
+}
+
+test_static int test_validate_buffer_offset_failure_overflow(void)
+{
+	TEST_EQ(fp_sensor_validate_buffer_offset(1, UINT32_MAX, 1),
+		EC_ERROR_OVERFLOW, "%d");
 	return EC_SUCCESS;
 }
 
@@ -91,9 +93,9 @@ void run_test(int argc, const char **argv)
 		 *  the functions used in the tests are only in RW, so these
 		 *  tests are not run on the emulator.
 		 */
-		RUN_TEST(test_validate_fp_buffer_offset_success);
-		RUN_TEST(test_validate_fp_buffer_offset_failure_no_overflow);
-		RUN_TEST(test_validate_fp_buffer_offset_failure_overflow);
+		RUN_TEST(test_validate_buffer_offset_success);
+		RUN_TEST(test_validate_buffer_offset_failure_no_overflow);
+		RUN_TEST(test_validate_buffer_offset_failure_overflow);
 	}
 
 	/* The tests after this only work on device right now. */

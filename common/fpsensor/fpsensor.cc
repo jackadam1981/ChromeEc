@@ -400,8 +400,8 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_INFO, fp_command_info,
 
 BUILD_ASSERT(FP_CONTEXT_NONCE_BYTES == 12);
 
-int validate_fp_buffer_offset(const uint32_t buffer_size, const uint32_t offset,
-			      const uint32_t size)
+int fp_sensor_validate_buffer_offset(const uint32_t buffer_size,
+				     const uint32_t offset, const uint32_t size)
 {
 	uint32_t bytes_requested;
 
@@ -437,8 +437,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		if (!is_raw_capture(sensor_mode))
 			offset += FP_SENSOR_IMAGE_OFFSET;
 
-		ret = validate_fp_buffer_offset(sizeof(fp_buffer), offset,
-						size);
+		ret = fp_sensor_validate_buffer_offset(sizeof(fp_buffer),
+						       offset, size);
 		if (ret != EC_SUCCESS)
 			return EC_RES_INVALID_PARAM;
 
@@ -456,7 +456,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 	if (fgr >= templ_valid)
 		return EC_RES_UNAVAILABLE;
-	ret = validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset, size);
+	ret = fp_sensor_validate_buffer_offset(sizeof(fp_enc_buffer), offset,
+					       size);
 	if (ret != EC_SUCCESS)
 		return EC_RES_INVALID_PARAM;
 
@@ -602,7 +603,8 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	if (args->params_size !=
 	    size + offsetof(struct ec_params_fp_template, data))
 		return EC_RES_INVALID_PARAM;
-	ret = validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset, size);
+	ret = fp_sensor_validate_buffer_offset(sizeof(fp_enc_buffer), offset,
+					       size);
 	if (ret != EC_SUCCESS)
 		return EC_RES_INVALID_PARAM;
 
