@@ -1,0 +1,849 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c2201a_195756bb",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "This should be a script argument, see my comment about:\n\n\u003e set up a main function with ArgumentParser for controlling the main operation modes (put stuff like file names such as second_loader_fw.bin as flags with a meaningful name, can still use that file as default value)",
+      "range": {
+        "startLine": 16,
+        "startChar": 37,
+        "endLine": 16,
+        "endChar": 53
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b98649e_6117ca23",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "same, ArgumentParser",
+      "range": {
+        "startLine": 17,
+        "startChar": 53,
+        "endLine": 17,
+        "endChar": 73
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43ee98a0_203566bc",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "Build it up starting from a blank array and explain the meaning of the magic numbers somehow, extra points for linking to a document about it.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13b472b3_61d94658",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "Start with a blank array, add the magic.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40abc028_73f0dc95",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "Are these part of the serial protocol as well? Still unclear to me. Is that documented somewhere?",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 7
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "968cd56e_fbb34357",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "This needs to go, the lines should be function calls, the argument should b e function arguments.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c643194e_263c1865",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "These should have been constants with a meaningful name, but the whole state machine does not make sense to exist in the current form anyway.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce05d852_7b9bfba2",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 0
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97c7b43f_7c11362e",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "should be constants, uppercase and with a comment explaining what they are.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2b38deb_9d5e1129",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "You made a constant 4 lines before, may as well use it.",
+      "range": {
+        "startLine": 111,
+        "startChar": 15,
+        "endLine": 111,
+        "endChar": 18
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f843566b_19b2efbd",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "this should be an exception, not a good idea to mix up return types",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 26
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99378f62_2bb0796e",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "This is just going to mess up the output if it gets logged in a file. Or if someone uses a terminal smaller than 100 columns. If you really want to have a progress bar use a library (`import progress.bar`), make sure it does not trigger if the output is not a tty. IMO: don\u0027t bother.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 0
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a77414_ed5b3fcd",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d19f54_45b808e0",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "I\u0027d imagine that most of the state would go once you rewrite this as a sequential function, but in case there\u0027s lot of it left: this should probably become a `Class` and the state should be into class variables.",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 21
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9903c4f7_63769ee2",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "Debugging comment, drop.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76cdd6ce_7a464f29",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "This function should really be two functions instead of a single function with an argument that decides which embedded script to use.\n\nDrop the script, write an actual function, use functions instead of script lines with proper arguments, names etc..., use logic in there instead of dynamically modifying the script.",
+      "range": {
+        "startLine": 183,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 47
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe5eea4d_c5a0fb9a",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "This and the whole script parsing logic needs to go, convert the script commands to functions, use arguments etc...",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 36
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b6776d_44cc976a",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "Use the logging library, see my comment:\n\n\u003e use the Python logging facilities (the logging module) for logging instead of printing directly, setting the messages to the appropriate levels and avoiding \"fancy\" decorations",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 38
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a831b63_8c4025bc",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "Exception should be probably handled in the main function rather than all around the code base. Or just let them go, it\u0027s not like they are handled with anything other than exiting anyway.",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 39
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ecb8c9_3bdeba24",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "debugging comment? drop",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 46
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c3700b_bf8c89d1",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "There\u0027s a bunch of empty lines with space, trailing spaces and general formatting awkwardness around the file. Are you using `repo upload`? There\u0027s a presubmit that should be complaining fairly loudly about it. If you are skipping it, don\u0027t.",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 28
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79897b16_344db9de",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "use `logging`",
+      "range": {
+        "startLine": 981,
+        "startChar": 32,
+        "endLine": 981,
+        "endChar": 37
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c507f32_0d098824",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "This does not read from keyboard (anymore).",
+      "range": {
+        "startLine": 994,
+        "startChar": 0,
+        "endLine": 994,
+        "endChar": 62
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26b47b7e_1447cc5a",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "Use ArgParse, just take a valid path, no need to get fancy with it.",
+      "range": {
+        "startLine": 998,
+        "startChar": 0,
+        "endLine": 1003,
+        "endChar": 27
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ece879c_67186ed8",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "What if it\u0027s not under `/dev/pts`? Just take a full path.",
+      "range": {
+        "startLine": 1005,
+        "startChar": 26,
+        "endLine": 1005,
+        "endChar": 35
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e635d4c1_7ee9af74",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "should be an argument, use ArgParse",
+      "range": {
+        "startLine": 1011,
+        "startChar": 23,
+        "endLine": 1011,
+        "endChar": 30
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9839cb26_238e555e",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "take the file path as an argument with ArgParse, set a useful default so it does not have to be passed all the time.",
+      "range": {
+        "startLine": 1012,
+        "startChar": 54,
+        "endLine": 1012,
+        "endChar": 71
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc29c0c_622e8f14",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "mixed variable naming style, see https://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md",
+      "range": {
+        "startLine": 1035,
+        "startChar": 0,
+        "endLine": 1035,
+        "endChar": 15
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef31b3ee_3a9ec970",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "stale comment, drop",
+      "range": {
+        "startLine": 1040,
+        "startChar": 0,
+        "endLine": 1040,
+        "endChar": 19
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15311cb7_8bad20ce",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "Is this a temporary file? Should not live in getcwd(), use `tempfile` (look for other scripts in this repo)",
+      "range": {
+        "startLine": 1038,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 24
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0050a2f_4f24ffcb",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "use `tempfile`",
+      "range": {
+        "startLine": 1050,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 0
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e489e6_4fe55684",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "Didn\u0027t you just write this file few lines above? Wouldn\u0027t `bstrings` be the same as `pgm_hdr_data`?",
+      "range": {
+        "startLine": 1059,
+        "startChar": 0,
+        "endLine": 1059,
+        "endChar": 40
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8124abd_eb661f5c",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "Version tracking and dates are the version control system job, drop this whole block. If anything add a log line but I don\u0027t think it adds much.",
+      "range": {
+        "startLine": 1082,
+        "startChar": 0,
+        "endLine": 1093,
+        "endChar": 5
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ca975c_e4e32d2b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "use `tempfile`",
+      "range": {
+        "startLine": 1096,
+        "startChar": 0,
+        "endLine": 1096,
+        "endChar": 59
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81dc4e0d_07caab96",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "leftover comment? drop",
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5344b32d_b534852b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 1104,
+        "startChar": 0,
+        "endLine": 1104,
+        "endChar": 40
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3610228_9e657fbd",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-03T11:36:44Z",
+      "side": 1,
+      "message": "Use ArgumentParser, make sure the arguments are documented (plenty of examples in this repository)",
+      "range": {
+        "startLine": 1107,
+        "startChar": 11,
+        "endLine": 1107,
+        "endChar": 18
+      },
+      "revId": "723fc28a23d2e9120136e05ada4d1f8f00fd97b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
