@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c02d9f3_5088eff6",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-03-03T00:01:43Z",
+      "side": 1,
+      "message": "I think this can simply be\n\n```\nbool ap_power_in_state(enum ap_power_state_mask state_mask)\n{\n    /*\n     * PWRSEQ_DRIVER only exposes stable power states (transitions\n     * occur atomically and are never visible to API consumers), so\n     * these two functions are equivalent.\n     */\n    return ap_power_in_or_transitioning_to_state(state_mask);\n}\n```\n\n`need_mask` is always a subset (possibly empty) of `state_mask` so this is actually just checking whether the result of `ap_power_in_or_transitioning_to_state` is zero. That also means we don\u0027t change the API, which is good (because it\u0027s hard to understand what this new integer mask from `in_or_transitioning_to_state` means).",
+      "revId": "7f6c1179855499a6e25043527e9f97619775f356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
