@@ -52,6 +52,24 @@
       "parentUuid": "e6a7ad0e_42cf36d2",
       "revId": "73d5f03a299b4e1dfc4e2119d24f9838adfba60c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f962c77_8e1a2263",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-03T18:34:35Z",
+      "side": 1,
+      "message": "You need to add the `temperature-type` property to the markarth overlay here:\n\nYou need to update the markarth project.overlay file to include the \"temperature-type\" property.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/skyrim/markarth/project.overlay;l\u003d199\n\nThat should get you past the build error `node_id_P_temperature_type undeclared`.",
+      "parentUuid": "79fb7e8c_1921a756",
+      "revId": "73d5f03a299b4e1dfc4e2119d24f9838adfba60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

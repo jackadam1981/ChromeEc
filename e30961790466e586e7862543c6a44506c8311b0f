@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f2c473_94fe0c77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-03T18:34:35Z",
+      "side": 1,
+      "message": "This is moving in the right direction.  However, it still needs an update if multiple f75303 devices are needed on the board.\n\nThe f75303 driver currently assumes one 1 device, with 3 children temperature sensors.",
+      "revId": "e30961790466e586e7862543c6a44506c8311b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9494e0d3_aea976a6",
+        "filename": "include/driver/temp_sensor/f75303.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-03T18:34:35Z",
+      "side": 1,
+      "message": "Change the #defines to an enum.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "e30961790466e586e7862543c6a44506c8311b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02727952_cecbfa07",
+        "filename": "zephyr/dts/bindings/temp/cros-ec,temp-sensor-f75303.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-03T18:34:35Z",
+      "side": 1,
+      "message": "Add `required: true` to this property.",
+      "revId": "e30961790466e586e7862543c6a44506c8311b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d9cb8f_3db935f7",
+        "filename": "zephyr/dts/bindings/temp/cros-ec,temp-sensor-f75303.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-03T18:34:35Z",
+      "side": 1,
+      "message": "These names need to match the symbol names from f75303.h.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "e30961790466e586e7862543c6a44506c8311b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262ddde1_f38d887b",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-03T18:34:35Z",
+      "side": 1,
+      "message": "Use `DT_STRING_TOKEN` instead of `DT_PROP` here.",
+      "range": {
+        "startLine": 231,
+        "startChar": 15,
+        "endLine": 231,
+        "endChar": 22
+      },
+      "revId": "e30961790466e586e7862543c6a44506c8311b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b661acf_6f36522e",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-03T18:34:35Z",
+      "side": 1,
+      "message": "This symbol needs to match the named defined in f75303.h",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 232,
+        "endChar": 20
+      },
+      "revId": "e30961790466e586e7862543c6a44506c8311b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
