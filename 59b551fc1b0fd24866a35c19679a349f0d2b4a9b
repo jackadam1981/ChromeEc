@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20557099_b0fd9857",
+        "filename": "zephyr/test/skyrim/boards/skyrim/skyrim.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-03T20:07:17Z",
+      "side": 1,
+      "message": "There shouldn\u0027t be any issues with adding it to the native_posix overlay. If there are then we can use a separate DT file. But generally I put anything that\u0027s useful across multiple variants into the native_posix overlay.",
+      "parentUuid": "84d79d06_a7381eed",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "323495bc_6961821b",
         "filename": "zephyr/test/skyrim/prj.conf",
         "patchSetId": 2
