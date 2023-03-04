@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ba430c_f58d3619",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2023-03-04T01:44:47Z",
+      "side": 1,
+      "message": "This may cause an issue if (logical) rp value is set/changed before \"adc_raw-to-rp_enum\" function is polled.\n\nIt could result in a false disconnect if Rp is changed to (physical) rp3a0 while (logical) is still rpusb.\n\nThe resulting vRd-connect would momentarily read \"\u003evOpen for rp1a5\", resulting in false disconnect between ticks.",
+      "range": {
+        "startLine": 431,
+        "startChar": 1,
+        "endLine": 431,
+        "endChar": 9
+      },
+      "revId": "bc45a17edc8e11d72bf1bcc8b25230d22d3a12aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
