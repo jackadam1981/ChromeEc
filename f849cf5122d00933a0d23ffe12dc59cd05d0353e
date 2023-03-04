@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee2e47b7_4f3e13f2",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-04T03:16:10Z",
+      "side": 1,
+      "message": "since this driver does not change the defaults i2c addrs,\nwe could hard-code 0x40... until we put two of these chips on the\nsame i2c bus.\n\nthe datasheet doesn\u0027t say that these default values depend\non the `Top Register` i2c address strapping option used.",
+      "range": {
+        "startLine": 30,
+        "startChar": 59,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08e6fdb4_5002ef14",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 8
@@ -60,6 +83,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4186b320_cda03129",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-04T03:16:10Z",
+      "side": 1,
+      "message": "we need to be explicit that the chip registers\ncontain the 8-bit address format (so it seems).",
+      "parentUuid": "08e6fdb4_5002ef14",
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6090f60d_93b7fff4",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 8
@@ -71,6 +112,29 @@
       "writtenOn": "2023-03-02T15:42:11Z",
       "side": 1,
       "message": "I\u0027d suggest using %x for addresses since that\u0027s how you express them in the definition (`#define ANX7452_TOP_REG 0xF8`). Same at line 40.",
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ede10c2_4daeeaa7",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-04T03:16:10Z",
+      "side": 1,
+      "message": "the mux driver API seems a bit strange. usually, i\u0027d\nexpect the driver methods to take an instance handle that\ncan be used to keep state around, but that\u0027s not the\ndesign here.\n\nwe can probably use me-\u003eusb_port to identify the anx7452\ninstance... and hope we don\u0027t have 2 per port.\n\nonce we have an instance handle, we can keep necessary\nchip state information around.\n\nfor example, anx7452_ctltop_update() should take this\ncontext handle. we can store the value of\n`ANX7452_TOP_CTLTOP_I2C_ADDR_REG` there.\n\ni\u0027m pretty torn here. this chip uses up a lot of i2c targets\non the bus. maybe we should require that designs never put\nmore than one on the same I2C bus and have the driver use\ndefault target addrs.",
+      "range": {
+        "startLine": 87,
+        "startChar": 23,
+        "endLine": 87,
+        "endChar": 47
+      },
       "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +169,75 @@
       "writtenOn": "2023-03-02T15:42:11Z",
       "side": 1,
       "message": "Copypaste leftover? Also typo, equalization",
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89666b88_82bc3cad",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-04T03:16:10Z",
+      "side": 1,
+      "message": "i\u0027m trying to wrap my head around 7 bit vs. 8 bit addressing\nnotation used in various places. i think this should be 0x10.",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e68d93c_36ea5e23",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-04T03:16:10Z",
+      "side": 1,
+      "message": "this chip has 8 target addrs, controlled by the strapping option.\n\nwe usually define these as:\n\n`\u003cchip\u003e_I2C_ADDR\u003cinstance\u003e_FLAGS`\n\nthe i2c addr needs to be a board level configuration.",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "821810c9_91538711",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-04T03:16:10Z",
+      "side": 1,
+      "message": "i\u0027m still trying to decipher the datasheet 😕\ni believe `TOP` refers to the I2C target address\n(0x20 by default) and `0xF8` is the register number.\n\nthis should probably be something like\n`ANX7452_TOP_STATUS_REG`, but it has no name in the\nsheets.",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 23
+      },
       "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
