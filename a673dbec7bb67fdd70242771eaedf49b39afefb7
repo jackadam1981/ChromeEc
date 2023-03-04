@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46329ec_72cc63ef",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8016,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:12Z",
+      "side": 1,
+      "message": "Done. Yes, it\u0027s cleaner.",
+      "parentUuid": "549fd9da_269a26f9",
+      "revId": "a673dbec7bb67fdd70242771eaedf49b39afefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf4bfc2e_59bc625a",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-01T21:22:20Z",
       "side": 1,
       "message": "Technically, the spec mentions that we should handle Vconn_swap from this state.  I think your current code works well enough to grab it from the next state, but probably add a note here for anyone comparing the spec directly to this function",
+      "revId": "a673dbec7bb67fdd70242771eaedf49b39afefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76916b28_7289e6ff",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8020,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:12Z",
+      "side": 1,
+      "message": "Figure 8-215 shows VCONN_Swap is handled from pe_snk_epr_mode_entry_wait_for_response. Maybe you\u0027re looking at Figure 8-214 or else?",
+      "parentUuid": "bf4bfc2e_59bc625a",
       "revId": "a673dbec7bb67fdd70242771eaedf49b39afefb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
