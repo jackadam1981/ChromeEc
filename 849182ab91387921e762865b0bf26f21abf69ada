@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c3f4b6_ef64edfb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Done. Added PE_CLR_DPM_REQUEST in pe_exit_epr_mode.",
+      "parentUuid": "808df4a2_390cabf2",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18797a16_2096a367",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-03-01T21:18:34Z",
       "side": 1,
       "message": "Rev 3.1 Ver 1.7 6.4.10.3.1\nCommanded Exit says this should be bit 31.  Is that a typo?  I can submit a comment in the PD WG unless you know of a reason it would be bit 31 in the spec.  It seems like the EPR_Request uses the same RDO as the Request if I\u0027m reading this right, and it\u0027s definitely bit 22 there",
+      "range": {
+        "startLine": 1871,
+        "startChar": 23,
+        "endLine": 1871,
+        "endChar": 49
+      },
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d504640_772bbc0a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "I think it\u0027s a typo. RDO\u0027s b31...b28 are for object position. Please see b/271612382 for more info.",
+      "parentUuid": "18797a16_2096a367",
       "range": {
         "startLine": 1871,
         "startChar": 23,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb93002_316497f3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "The spec isn\u0027t clear to me. Filed b/271612382.",
+      "parentUuid": "c4171d08_12b8f4f9",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a8a5146_57476c2f",
@@ -88,6 +148,24 @@
       "writtenOn": "2023-03-01T21:18:34Z",
       "side": 1,
       "message": "If we receive an unexpected extended message, I\u0027m tempted to say it should be a hard reset.  I\u0027m pretty sure it should also be a hard reset for the condition of receiving the EPR source caps while in SPR mode, though I\u0027d need to dig into the spec more to find the reference for it.",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fd7dd07_4686c80f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3382,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll update this in a separate patch when it\u0027s clarified by the WG.",
+      "parentUuid": "0a8a5146_57476c2f",
       "revId": "849182ab91387921e762865b0bf26f21abf69ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +189,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7747722_efe5c05e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3772,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll address this in a separate CL (once it\u0027s clearified by the WG).",
+      "parentUuid": "a3802ac6_e8c89a80",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c91d8dae_862d8025",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -122,6 +218,24 @@
       "writtenOn": "2023-03-01T21:18:34Z",
       "side": 1,
       "message": "The other action options seem like they should be resulting in some form of protocol error at a minimum.  If you or I can\u0027t find the right answers in the spec, I can post them to the PD WG",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1b7dac7_7e5c0ee4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3817,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Ack. Same here. I initially let the timeouts handle these unspecified corner cases. It\u0027ll be nice if the WG clarifies them.",
+      "parentUuid": "c91d8dae_862d8025",
       "revId": "849182ab91387921e762865b0bf26f21abf69ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +259,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41d31a42_83440955",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3930,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "I don\u0027t understand. Can you please clarify?",
+      "parentUuid": "0222998b_b58bcac1",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5c8e879_765cb914",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -156,6 +288,24 @@
       "writtenOn": "2023-03-01T21:18:34Z",
       "side": 1,
       "message": "Do we need to call this from all the conditions in 6.4.10.3.2\nImplicit Exit and 6.4.10.3.3 Exits due to errors? \n\nIt\u0027s fine if you\u0027re breaking that out into another CL, just add a TODO so it doesn\u0027t get lost",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "780bd767_77730145",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7900,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Done. Filed b:271631054 and b:271630735.",
+      "parentUuid": "d5c8e879_765cb914",
       "revId": "849182ab91387921e762865b0bf26f21abf69ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -179,6 +329,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "416d084e_38b4aecd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7927,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Done.\n\nWhat do you mean by \u0027that means the source is sending something\u0027?",
+      "parentUuid": "8b890cb0_c25e9186",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efb4ffb4_aa59bfe6",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -190,6 +358,24 @@
       "writtenOn": "2023-03-01T21:18:34Z",
       "side": 1,
       "message": "This should be a protocol error since we\u0027re in a non-interruptible AMS.  Normally I would reference our favorite Table 6-72 Response to an incoming Message (except VDM) to get an idea what we should do here, but I\u0027d wonder if it should be a hard reset given that\u0027s the timeout option.\n\nI suppose in its current form, we\u0027d eventually time out and hard reset.  But it would be somewhat more straightforward to just respond to the interruption with a reset.",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b391cc_a08fc535",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7939,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efb4ffb4_aa59bfe6",
       "revId": "849182ab91387921e762865b0bf26f21abf69ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -211,6 +397,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19cc1f46_bb31adb1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7980,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "286a9bf4_d735126e",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e996736_5fa5218c",
@@ -224,6 +428,24 @@
       "writtenOn": "2023-03-01T21:18:34Z",
       "side": 1,
       "message": "Should this trigger the sink cap wait timeout flag?  That\u0027s the path to hard reset a non-responsive source on initial connection, right?",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d195036d_1ba1776c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8008,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Done. I don\u0027t remember why I put it.",
+      "parentUuid": "2e996736_5fa5218c",
       "revId": "849182ab91387921e762865b0bf26f21abf69ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -245,6 +467,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0965b899_f5e61ca4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8009,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "990e3e1f_42bcdc55",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43357938_3ce7637f",
@@ -258,6 +498,24 @@
       "writtenOn": "2023-03-01T21:18:34Z",
       "side": 1,
       "message": "Should we log the failure reason from the message when we hit it?",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36bce506_0a963a19",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8048,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Done. Yeah, definitely.",
+      "parentUuid": "43357938_3ce7637f",
       "revId": "849182ab91387921e762865b0bf26f21abf69ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -279,6 +537,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b3209d_ec00be5d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8097,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bdccf0e_7b5a9d65",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95206a09_6f097c18",
@@ -296,6 +572,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c7292b3_ee2d328d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8113,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95206a09_6f097c18",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d717ecf_c48d3845",
@@ -309,6 +603,24 @@
       "writtenOn": "2023-03-01T21:18:34Z",
       "side": 1,
       "message": "Failure enum?",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "436b1cfb_bc3d90db",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-04T01:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d717ecf_c48d3845",
       "revId": "849182ab91387921e762865b0bf26f21abf69ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
