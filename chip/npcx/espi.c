@@ -106,6 +106,8 @@ static const struct host_wui_item espi_vw_int_list[] = {
 	{ MIWU_TABLE_2, MIWU_GROUP_2, 0, MIWU_EDGE_ANYING },
 	/* VW_WIRE_SUS_WARN */
 	{ MIWU_TABLE_2, MIWU_GROUP_2, 4, MIWU_EDGE_ANYING },
+	/* SLP_A */
+	{ MIWU_TABLE_2, MIWU_GROUP_2, 7, MIWU_EDGE_ANYING },
 };
 
 /* VW signals used in eSPI */
@@ -393,6 +395,8 @@ int espi_vw_enable_wire_int(enum espi_vw_signal signal)
 		SET_BIT(NPCX_WKEN(MIWU_TABLE_2, MIWU_GROUP_1), 1);
 	else if (signal == VW_SLP_S5_L)
 		SET_BIT(NPCX_WKEN(MIWU_TABLE_2, MIWU_GROUP_1), 2);
+	else if (signal == VW_SLP_A_L)
+		SET_BIT(NPCX_WKEN(MIWU_TABLE_2, MIWU_GROUP_2), 7);
 	else
 		return EC_ERROR_PARAM1;
 
@@ -413,6 +417,8 @@ int espi_vw_disable_wire_int(enum espi_vw_signal signal)
 		CLEAR_BIT(NPCX_WKEN(MIWU_TABLE_2, MIWU_GROUP_1), 1);
 	else if (signal == VW_SLP_S5_L)
 		CLEAR_BIT(NPCX_WKEN(MIWU_TABLE_2, MIWU_GROUP_1), 2);
+	else if (signal == VW_SLP_A_L)
+		CLEAR_BIT(NPCX_WKEN(MIWU_TABLE_2, MIWU_GROUP_2), 7);
 	else
 		return EC_ERROR_PARAM1;
 
@@ -488,6 +494,17 @@ void espi_vw_evt_slp_s5(void)
 {
 	CPRINTS("VW SLP_S5: %d", espi_vw_get_wire(VW_SLP_S5_L));
 	espi_vw_power_signal_interrupt(VW_SLP_S5_L);
+}
+/* SLP_A event handler */
+void espi_vw_evt_slp_a(void)
+{
+	int slp_a = espi_vw_get_wire(VW_SLP_A_L);
+
+	CPRINTS("VW SLP_A: %d", slp_a);
+
+	/* SLP_A# asserted */
+	if (!slp_a)
+		update_ap_boot_time(SLP_A);
 }
 
 /* OOB Reset event handler */
@@ -568,6 +585,8 @@ static void __espi_wk2b_interrupt(void)
 		espi_vw_evt_sus_warn();
 	if (IS_BIT_SET(pending_bits, 0))
 		espi_vw_evt_hostrst_warn();
+	if (IS_BIT_SET(pending_bits, 7))
+		espi_vw_evt_slp_a();
 }
 DECLARE_IRQ(NPCX_IRQ_WKINTB_2, __espi_wk2b_interrupt, 3);
 

@@ -260,6 +260,14 @@ static void espi_vw_idx41_isr(uint8_t flag_changed, uint8_t vw_evt)
 {
 	if (flag_changed & VW_LEVEL_FIELD(VW_IDX_41_SUS_WARN))
 		espi_vw_set_wire(VW_SUS_ACK, espi_vw_get_wire(VW_SUS_WARN_L));
+
+	if (flag_changed & VW_LEVEL_FIELD(VW_IDX_41_SLP_A)) {
+		int slp_a = espi_vw_get_wire(VW_SLP_A_L);
+
+		/* SLP_A# asserted */
+		if (!slp_a)
+			update_ap_boot_time(SLP_A);
+	}
 }
 #endif
 

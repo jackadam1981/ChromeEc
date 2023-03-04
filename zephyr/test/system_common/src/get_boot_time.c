@@ -23,7 +23,7 @@ ZTEST(host_cmd_get_boot_time, test_get_boot_time)
 		BUILD_HOST_COMMAND_RESPONSE(EC_CMD_GET_BOOT_TIME, 0, r);
 
 	update_ap_boot_time(ARAIL);
-	update_ap_boot_time(RSMRST);
+	update_ap_boot_time(SLP_A);
 	update_ap_boot_time(ESPIRST);
 	update_ap_boot_time(PLTRST_LOW);
 	update_ap_boot_time(PLTRST_HIGH);
@@ -36,7 +36,7 @@ ZTEST(host_cmd_get_boot_time, test_get_boot_time)
 	zassert_equal(ret, EC_SUCCESS, "Unexpected return value: %d", ret);
 
 	ccprintf("arail: %" PRIu64 "\n", r.timestamp[ARAIL]);
-	ccprintf("rsmrst: %" PRIu64 "\n", r.timestamp[RSMRST]);
+	ccprintf("slp_a: %" PRIu64 "\n", r.timestamp[SLP_A]);
 	ccprintf("espirst: %" PRIu64 "\n", r.timestamp[ESPIRST]);
 	ccprintf("pltrst_low: %" PRIu64 "\n", r.timestamp[PLTRST_LOW]);
 	ccprintf("pltrst_high: %" PRIu64 "\n", r.timestamp[PLTRST_HIGH]);
