@@ -198,6 +198,11 @@ static void espi_vwire_handler(const struct device *dev,
 		update_ap_boot_time(PLTRST_HIGH);
 	}
 #endif
+	/* If SLP_A# asserted (low) then log SLP_A timestamp */
+	if (event.evt_details == ESPI_VWIRE_SIGNAL_SLP_A &&
+	    event.evt_data == 0) {
+		update_ap_boot_time(SLP_A);
+	}
 }
 #endif
 

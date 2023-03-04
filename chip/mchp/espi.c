@@ -925,7 +925,9 @@ void espi_vw_evt_slp_a_n(uint32_t wire_state, uint32_t bpos)
 {
 	CPRINTS("VW SLP_A: %d", wire_state);
 
-	/* Put handling of ASW well devices here, if any */
+	/* SLP_A# asserted */
+	if (!wire_state)
+		update_ap_boot_time(SLP_A);
 }
 
 /* HOST_RST WARN event handler */

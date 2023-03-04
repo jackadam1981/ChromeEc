@@ -7881,7 +7881,7 @@ struct ec_params_usb_pd_mux_ack {
 
 enum boot_time_param {
 	ARAIL = 0,
-	RSMRST,
+	SLP_A,
 	ESPIRST,
 	PLTRST_LOW,
 	PLTRST_HIGH,
