@@ -1128,6 +1128,12 @@
 		simulate-command-exec-time;
 	};
 
+	bma422_emul: bma4xx@19 {
+		compatible = "cros,bma4xx-emul";
+		status = "okay";
+		reg = <0x19>;
+	};
+
 	ln9310: ln9310@72 {
 		compatible = "cros,ln9310-emul";
 		status = "okay";
