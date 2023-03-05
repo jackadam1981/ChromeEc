@@ -45,8 +45,8 @@ static inline int bma4_read8(const struct motion_sensor_t *s, const int reg,
 	return i2c_read8(s->port, s->i2c_spi_addr_flags, reg, data_ptr);
 }
 
-static inline int bma4_read16(const struct motion_sensor_t *s, const int reg,
-			      int *data_ptr)
+__maybe_unused static inline int bma4_read16(const struct motion_sensor_t *s,
+					     const int reg, int *data_ptr)
 {
 	return i2c_read16(s->port, s->i2c_spi_addr_flags, reg, data_ptr);
 }
