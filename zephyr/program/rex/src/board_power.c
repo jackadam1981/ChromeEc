@@ -63,3 +63,9 @@ bool board_ap_power_check_power_rails_enabled(void)
 	return power_signal_get(PWR_EN_PP3300_A);
 }
 #endif /* CONFIG_X86_NON_DSX_PWRSEQ_MTL */
+
+__override uint8_t is_dp_uhbr13_5_supported(int port)
+{
+	/* UHBR 13.5 Not Supported */
+	return 0;
+}
