@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fd49323_269b4af5",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-03-06T18:00:05Z",
+      "side": 1,
+      "message": "Yeah that makes sense to me...I was trying to minimally modify the code with the API change but leaving it as it was and not doing a double check of the mask makes sense to me will update with next patch set",
+      "parentUuid": "9c02d9f3_5088eff6",
+      "revId": "7f6c1179855499a6e25043527e9f97619775f356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb7789ab_6cf45291",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
         "patchSetId": 27
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-03T00:08:10Z",
       "side": 1,
       "message": "Do we need this here? It seems like something else should be ensuring the power signals are configured, especially since the other version of this function makes that assumption.",
+      "revId": "7f6c1179855499a6e25043527e9f97619775f356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "611cef5d_87126936",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-03-06T18:00:05Z",
+      "side": 1,
+      "message": "I\u0027ll check into this and update accordingly but logically that makes sense since the function this is replacing does not make this call",
+      "parentUuid": "eb7789ab_6cf45291",
       "revId": "7f6c1179855499a6e25043527e9f97619775f356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
