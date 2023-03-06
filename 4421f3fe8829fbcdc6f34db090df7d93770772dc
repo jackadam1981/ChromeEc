@@ -22,6 +22,30 @@
       },
       "revId": "4421f3fe8829fbcdc6f34db090df7d93770772dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddebb4d7_c9d010b9",
+        "filename": "util/misc_util.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-06T22:52:12Z",
+      "side": 1,
+      "message": "As it is currently implemented, it will just wrap back to 0x00000000. offset_start only affects the displayed offset, so I think wrapping is ok in this case. Also, truncating the the output may hide a bug in the caller.\n\n```\nffffffb0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|\nffffffc0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|\nffffffd0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|\nffffffe0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|\nfffffff0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|\n00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|\n00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|\n00000020  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|\n00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|\n00000040  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|\n00000050  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|\n00000060  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|\n```",
+      "parentUuid": "c68f9c16_e05a62d0",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 19
+      },
+      "revId": "4421f3fe8829fbcdc6f34db090df7d93770772dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
