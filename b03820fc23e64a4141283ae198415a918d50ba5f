@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb3ff618_0db9574d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-06T22:22:55Z",
+      "side": 1,
+      "message": "`emerge-skyrim ec-utils` is failing after this change.\n\n```\n  HOSTCXX  util/ectool\nutil/ectool.cc:1754:6: error: no member named \u0027flash_protect\u0027 in namespace \u0027ec\u0027\n        ec::flash_protect::Flags flags \u003d ec::flash_protect::Flags::kNone;\n        ~~~~^\n```",
+      "revId": "b03820fc23e64a4141283ae198415a918d50ba5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
