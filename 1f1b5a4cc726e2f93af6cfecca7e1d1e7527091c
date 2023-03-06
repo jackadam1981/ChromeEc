@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a6bf36_6b86e736",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-06T20:43:48Z",
+      "side": 1,
+      "message": "we found a problem with:\n`07c07943 util: Switch MIN/MAX from inline to macro`\n\nplease redo the merge so it includes:\n`f20862d64ac42cce2bdde56f9eb3bceb8eb7a49b usb_updater: Cast chunk_len to size_t`",
+      "revId": "1f1b5a4cc726e2f93af6cfecca7e1d1e7527091c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
