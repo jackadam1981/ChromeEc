@@ -352,6 +352,7 @@ build-utils := $(call objs_from_dir,$(out)/util,build-util-bin)
 ifeq ($(BOARD),host)
 host-utils := $(call objs_from_dir,$(out)/util,host-util-bin)
 host-utils-cxx := $(call objs_from_dir,$(out)/util,host-util-bin-cxx)
+crash-utils-cxx := $(call objs_from_dir,$(out)/util,crash-util-bin-cxx)
 endif
 build-art := $(call objs_from_dir,$(out),build-util-art)
 # Use the util_name with an added .c AND the special <util_name>-objs variable.
@@ -361,6 +362,8 @@ host-srcs := $(foreach u,$(host-util-bin-y),$(sort $($(u)-objs:%.o=util/%.c) \
                $(wildcard util/$(u).c)))
 host-srcs-cxx := $(foreach u,$(host-util-bin-cxx-y), \
 	$(sort $($(u)-objs:%.o=util/%.cc) $(wildcard util/$(u).cc)))
+crash-srcs-cxx := $(foreach u,$(crash-util-bin-cxx-y), \
+        $(sort $($(u)-objs:%.o=util/%.cc) $(wildcard util/$(u).cc)))
 
 dirs=core/$(CORE) chip/$(CHIP) $(BASEDIR) $(BDIR) common fuzz power test \
 	cts/common cts/$(CTS_MODULE) $(out)/gen

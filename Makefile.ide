@@ -35,8 +35,10 @@ ide-ro-objs = $(ro-objs:.o=.compile_cmd.json)
 ide-build-utils    = $(build-utils:=.compile_cmd.json)
 ide-host-utils     = $(host-utils:=.compile_cmd.json)
 ide-host-utils-cxx = $(host-utils-cxx:=.compile_cmd.json)
+ide-crash-utils-cxx = $(crash-utils-cxx:=.compile_cmd.json)
 
-ide-utils = $(ide-build-utils) $(ide-host-utils) $(ide-host-utils-cxx)
+ide-utils = $(ide-build-utils) $(ide-host-utils) $(ide-host-utils-cxx)\
+	$(ide-crash-utils-cxx)
 
 # The all-ide-compile-cmds target takes about 2 minutes using 8 cores when all
 # work is replaced by the |true| command. Thus, the build system itself
@@ -139,5 +141,9 @@ $(ide-host-utils): $(out)/%.compile_cmd.json:$(host-srcs)
 		$(EMPTY),$*.c)
 
 $(ide-host-utils-cxx): $(out)/%.compile_cmd.json:$(host-srcs-cxx)
+	$(call quiet,to_compile_cmd_json,JSON   ,$(cmd_cxx_to_host),\
+		$(EMPTY),$*.cc)
+
+$(ide-crash-utils-cxx): $(out)/%.compile_cmd.json:$(crash-srcs-cxx)
 	$(call quiet,to_compile_cmd_json,JSON   ,$(cmd_cxx_to_host),\
 		$(EMPTY),$*.cc)

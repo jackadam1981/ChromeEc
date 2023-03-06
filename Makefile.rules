@@ -310,10 +310,18 @@ utils-art: $(build-art)
 
 .PHONY: utils-host
 ifeq ($(BOARD),host)
-utils-host: $(host-utils) $(host-utils-cxx)
+utils-host: $(host-utils) $(host-utils-cxx) $(crash-utils-cxx)
 else
 utils-host:
 	$(error Building utils-host not supported when BOARD is not "host")
+endif
+
+.PHONY: utils-crash
+ifeq ($(BOARD),host)
+utils-crash: $(crash-utils-cxx)
+else
+utils-crash:
+	$(error Building utils-crash not supported when BOARD is not "host")
 endif
 
 .PHONY: utils-build
@@ -688,6 +696,9 @@ $(host-utils): $(out)/%:$(host-srcs)
 	$(call quiet,c_to_host,HOSTCC )
 
 $(host-utils-cxx): $(out)/%:$(host-srcs-cxx)
+	$(call quiet,cxx_to_host,HOSTCXX )
+
+$(crash-utils-cxx): $(out)/%:$(cash-srcs-cxx)
 	$(call quiet,cxx_to_host,HOSTCXX )
 
 $(out)/cscope.files: $(out)/$(PROJECT).bin
