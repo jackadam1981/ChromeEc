@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85586547_7c862be0",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T09:21:08Z",
+      "side": 1,
+      "message": "At present, I am getting the CTLTOP I2C address by reading TOP. The programming guide of anx7452 seems to be bit specific for Rex, in case other platforms starts using this and the address differs in future, hence reading from TOP instead of hardcoding.",
+      "parentUuid": "ee2e47b7_4f3e13f2",
+      "range": {
+        "startLine": 30,
+        "startChar": 59,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08e6fdb4_5002ef14",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 8
@@ -221,6 +245,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46aef389_16dc5d3c",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T09:21:08Z",
+      "side": 1,
+      "message": "0x10 is Top 7-bit i2c address which will be configured through device tree. This is a CTLTOP 7-bit i2c address defined to be used by emulator, for driver the value is not hard coded, it will get it from TOP register.",
+      "parentUuid": "89666b88_82bc3cad",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f78543_75442ab6",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T09:21:08Z",
+      "side": 1,
+      "message": "Actually this value is being only read by emulator, the actual driver is getting this value by reading the TOP register. It\u0027s a seven bit address.",
+      "parentUuid": "0e68d93c_36ea5e23",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "821810c9_91538711",
         "filename": "driver/retimer/anx7452.h",
         "patchSetId": 8
@@ -232,6 +304,30 @@
       "writtenOn": "2023-03-04T03:16:10Z",
       "side": 1,
       "message": "i\u0027m still trying to decipher the datasheet 😕\ni believe `TOP` refers to the I2C target address\n(0x20 by default) and `0xF8` is the register number.\n\nthis should probably be something like\n`ANX7452_TOP_STATUS_REG`, but it has no name in the\nsheets.",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aca7237_ca621258",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T09:21:08Z",
+      "side": 1,
+      "message": "I followed following notation : If the macro name ending with _REG refers to the register. But will update it.",
+      "parentUuid": "821810c9_91538711",
       "range": {
         "startLine": 40,
         "startChar": 8,
