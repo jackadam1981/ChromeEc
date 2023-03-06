@@ -46,6 +46,30 @@
       },
       "revId": "311d3920735027258f16b0489802de7e1e29d793",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b049c3_4ca02076",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-03-06T17:08:41Z",
+      "side": 1,
+      "message": "Last time I tried this (which, admittedly, was approximately 2 years ago), adding the EC module brought in a bunch of unnecessary dependencies that Chameleon couldn\u0027t satisfy. That might be fixed by now, but I\u0027d still like to avoid adding unnecessary dependencies.",
+      "parentUuid": "8424aaca_1038e472",
+      "range": {
+        "startLine": 10,
+        "startChar": 42,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "311d3920735027258f16b0489802de7e1e29d793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
