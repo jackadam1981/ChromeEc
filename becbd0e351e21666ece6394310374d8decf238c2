@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7791122b_82eacb6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-06T14:57:18Z",
+      "side": 1,
+      "message": "Builds when targeting boards (at least for skyrim), but fails when building for host due to a comparison of different sizes.",
+      "revId": "becbd0e351e21666ece6394310374d8decf238c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
