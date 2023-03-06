@@ -16,6 +16,24 @@
       "message": "do we need a `if ESPI_PERIPHERAL_DEBUG_PORT_80` here?\n\n`zephyr/main/drivers/espi/Kconfig.npcx` actually says:\n`depends on SOC_SERIES_NPCX9 \u0026\u0026 ESPI_PERIPHERAL_DEBUG_PORT_80`\nnot sure why NPCX9 is required.",
       "revId": "8f714252c1bc23a586220b62c34941db8dced93b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4302d3_eade8ae0",
+        "filename": "zephyr/Kconfig.defaults",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-03-06T20:59:03Z",
+      "side": 1,
+      "message": "Setting it to `default y` will still have the symbol set to `n` if the dependencies are not enabled, so writing `if ESPI_PERIPHERAL_DEBUG_PORT_80` has no change to the behavior.",
+      "parentUuid": "5c38e4a7_ed3d068d",
+      "revId": "8f714252c1bc23a586220b62c34941db8dced93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
