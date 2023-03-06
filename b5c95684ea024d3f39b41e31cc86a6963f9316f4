@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10fc6a22_698ac09b",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d886442d_3b673035",
+      "range": {
+        "startLine": 25,
+        "startChar": 23,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8e9d8fe_f50605e1",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-02-24T00:54:32Z",
       "side": 1,
       "message": "Just some cleanup. Better to add the dependency to these CBI_EEPROM related Kconfigs:\n\n    depends on PLATFORM_EC_CBI_EEPROM\n\nto limit these Kconfigs not affect the `CBI_FLASH`.",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 45
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81975769_b9747dc6",
+        "filename": "zephyr/Kconfig.cbi",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e9d8fe_f50605e1",
       "range": {
         "startLine": 5,
         "startChar": 7,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee316f16_c203daa6",
+        "filename": "zephyr/Kconfig.cbi",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cbf7875_45b5e852",
+      "range": {
+        "startLine": 39,
+        "startChar": 57,
+        "endLine": 39,
+        "endChar": 66
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68ae24f7_d5d1c81c",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-02-24T00:54:32Z",
       "side": 1,
       "message": "Checking the existence of `cbi_flash` is enough. In the default `binman` node, `cbi_flash` is inside the `wp_ro`. The project overlay usually modifies the `cbi_flash`. The `wp_ro` won\u0027t be modified so unlikely be wrong.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 65
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e1e98dc_8a0936f2",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ae24f7_d5d1c81c",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5daf1762_2309b6a1",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "219ad87a_2af5c1fd",
+      "range": {
+        "startLine": 28,
+        "startChar": 49,
+        "endLine": 28,
+        "endChar": 55
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2308ef8a_89d261c8",
@@ -146,6 +266,30 @@
       "writtenOn": "2023-02-24T00:54:32Z",
       "side": 1,
       "message": "Add a BUILD_ASSERT to ensure it is modified to \u003e0.",
+      "range": {
+        "startLine": 29,
+        "startChar": 47,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d539a091_66995dba",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2308ef8a_89d261c8",
       "range": {
         "startLine": 29,
         "startChar": 47,
@@ -214,6 +358,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc62bd7_ad164b0c",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5cc003c_66ce818a",
+      "range": {
+        "startLine": 34,
+        "startChar": 33,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f90e4e73_12687d32",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84b9edb8_b3b3ebbf",
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34cea06c_a65d00b0",
@@ -227,6 +413,30 @@
       "writtenOn": "2023-02-24T00:54:32Z",
       "side": 1,
       "message": "This function has a lot of history and debates. The goal of this project is to align it with the WP of internal flash.\n\nSo it should return `system_is_locked()`, or return 0 and add a TODO temporarily. We can talk about it later. You can search the document: \"CBI EEPROM Write Protection Discussion\" for more detail.",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b01eba33_912f9065",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34cea06c_a65d00b0",
       "range": {
         "startLine": 39,
         "startChar": 8,
@@ -260,6 +470,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cee1de6e_51531cda",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3277eb6f_ea58de23",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2586e68d_14286473",
@@ -273,6 +507,30 @@
       "writtenOn": "2023-02-24T00:54:32Z",
       "side": 1,
       "message": "Call the `crec_flash_physical_erase()` first.",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1732281d_c6a9b799",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2586e68d_14286473",
       "range": {
         "startLine": 45,
         "startChar": 9,
@@ -306,6 +564,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "935e75cd_2795a850",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fceb489_c921bddc",
+      "range": {
+        "startLine": 46,
+        "startChar": 21,
+        "endLine": 46,
+        "endChar": 35
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f295b56f_464e0d06",
@@ -329,6 +611,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83dc79c_c1136c1d",
+        "filename": "zephyr/test/drivers/cbi_flash/binman.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f295b56f_464e0d06",
+      "range": {
+        "startLine": 35,
+        "startChar": 13,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "304dbd2f_c044e4b5",
@@ -342,6 +648,30 @@
       "writtenOn": "2023-02-24T00:54:32Z",
       "side": 1,
       "message": "The `native_posix.overlay` defines an emulated flash. Probably you can read and write the flash content and don\u0027t mock these functions.",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 33
+      },
+      "revId": "b5c95684ea024d3f39b41e31cc86a6963f9316f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9418c9f_818a25dc",
+        "filename": "zephyr/test/drivers/cbi_flash/src/cbi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T11:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "304dbd2f_c044e4b5",
       "range": {
         "startLine": 17,
         "startChar": 4,
