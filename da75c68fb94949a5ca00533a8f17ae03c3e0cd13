@@ -16,6 +16,29 @@
       "message": "Yuval for visibility.",
       "revId": "da75c68fb94949a5ca00533a8f17ae03c3e0cd13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afadb7e9_eb541d57",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-06T23:50:26Z",
+      "side": 1,
+      "message": "can we add a static assert for this?",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 23
+      },
+      "revId": "da75c68fb94949a5ca00533a8f17ae03c3e0cd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
