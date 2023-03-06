@@ -16,6 +16,23 @@
       "message": "Builds when targeting boards (at least for skyrim), but fails when building for host due to a comparison of different sizes.",
       "revId": "becbd0e351e21666ece6394310374d8decf238c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba19349_76ff0991",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-06T15:26:35Z",
+      "side": 1,
+      "message": "This should fix the build error: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4311236",
+      "revId": "becbd0e351e21666ece6394310374d8decf238c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
