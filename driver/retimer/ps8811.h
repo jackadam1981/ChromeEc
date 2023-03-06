@@ -26,6 +26,14 @@
 #define PS8811_I2C_ADDR_FLAGS3 0x72
 
 /*
+ * PAGE 0 Register Definitions
+ */
+
+#define PS8811_REG_PAGE0 0x00
+#define PS8811_REG0_A_STATUS 0x42
+#define PS8811_REG0_B_STATUS 0x46
+
+/*
  * PAGE 1 Register Definitions
  */
 #define PS8811_REG_PAGE1 0x01
@@ -183,9 +191,11 @@
 
 #define PS8811_REG1_USB_CHAN_B_DE_PS_LSB 0xA5
 #define PS8811_CHAN_B_DE_PS_LSB_MASK GENMASK(2, 0)
+#define PS8811_CHAN_B_DE_PS_LSB_SHIFT 0
 
 #define PS8811_REG1_USB_CHAN_B_DE_PS_MSB 0xA6
 #define PS8811_CHAN_B_DE_PS_MSB_MASK GENMASK(5, 0)
+#define PS8811_CHAN_B_DE_PS_MSB_SHIFT 0
 
 int ps8811_i2c_read(const struct usb_mux *me, int page, int offset, int *data);
 int ps8811_i2c_write(const struct usb_mux *me, int page, int offset, int data);
