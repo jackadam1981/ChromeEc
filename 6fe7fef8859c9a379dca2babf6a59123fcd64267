@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db3f9f26_5701c5a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-03-06T16:52:56Z",
+      "side": 1,
+      "message": "Can I suggest a more detailed test, like provide the example command with all of the flags, including --projects-dir? (assuming a checkout in ~/chromiumos, of course)",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "6fe7fef8859c9a379dca2babf6a59123fcd64267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
