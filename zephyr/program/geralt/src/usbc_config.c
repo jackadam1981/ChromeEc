@@ -146,9 +146,11 @@ void xhci_interrupt(enum gpio_signal signal)
 
 	const int xhci_stat = gpio_get_level(signal);
 
-	for (int i = 0; i < USB_PORT_COUNT; i++) {
+#ifdef USB_PORT_ENABLE_COUNT
+	for (int i = 0; i < USB_PORT_ENABLE_COUNT; i++) {
 		usb_charge_set_mode(i, mode, USB_ALLOW_SUSPEND_CHARGE);
 	}
+#endif
 
 	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 		/*
