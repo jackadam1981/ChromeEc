@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2b8e26d_6e70c597",
+        "filename": "include/driver/temp_sensor/f75303.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-06T09:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9494e0d3_aea976a6",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "e30961790466e586e7862543c6a44506c8311b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02727952_cecbfa07",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06126dda_6b1c3b54",
+        "filename": "zephyr/dts/bindings/temp/cros-ec,temp-sensor-f75303.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-06T09:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02727952_cecbfa07",
+      "revId": "e30961790466e586e7862543c6a44506c8311b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94d9cb8f_3db935f7",
@@ -71,6 +113,30 @@
       "writtenOn": "2023-03-03T18:34:35Z",
       "side": 1,
       "message": "These names need to match the symbol names from f75303.h.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "e30961790466e586e7862543c6a44506c8311b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fed1658e_75c4bbb1",
+        "filename": "zephyr/dts/bindings/temp/cros-ec,temp-sensor-f75303.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-06T09:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94d9cb8f_3db935f7",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -106,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9dc6763c_706f9927",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-06T09:44:54Z",
+      "side": 1,
+      "message": "Add a temperature-type property to the markarth overlay, and change DT_STRING_TOKEN, also show ```node_id_P_temperature_type undeclared```.\n\nI find this structure(```.idx \u003d DT_PROP(node_id, temperature_type),```) can\u0027t use ***node_id***, I guess maybe that no this parameter to use.\n\nI change to the ```.idx \u003d DT_STRING_TOKEN(sensor_id, temperature_type),``` and didn\u0027t show undeclared error, but show :\n```\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/sys/util_internal.h:59:21: error: pasting \"_XXXX\" and \"(\" does not give a valid preprocessing token\n   59 |         __COND_CODE(_XXXX##_flag, _if_1_code, _else_code)\n```\n\nThen I change \n```\nCOND_CODE_1(DT_STRING_TOKEN(named_id, temperature_type),                        \\\n\t\t\t    (\u0026f75303_get_local_temp), ())\n``` \nalso build fail :\n```\nToolchain \u003czmake.toolchains.CorebootSdkToolchain object at 0x7f0f4ab29ba8\u003e selected by probe function.\nBuilding markarth in /mnt/host/source/src/platform/ec/build/zephyr/markarth.\nSkip reconfiguring markarth:ro due to previous cmake run of equivalent configuration.  Run with --clobber if this optimization is undesired.\nSkip reconfiguring markarth:rw due to previous cmake run of equivalent configuration.  Run with --clobber if this optimization is undesired.\nBuilding markarth:ro: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/markarth/build-ro -j1\nExecution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/markarth/build-ro -j1\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/multiproc.py\", line 346, in _run_fn\n    result \u003d func()\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 830, in _build_one_dir\n    raise OSError(get_process_failure_msg(proc))\nOSError: Execution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/markarth/build-ro -j1\n\nBuilding markarth:rw: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/markarth/build-rw -j1\nFAILED: modules/ec/zephyr/CMakeFiles/ec_shim.dir/shim/src/temp_sensors.c.obj \n/mnt/host/source/src/platform/ec/zephyr/shim/src/temp_sensors.c:302:8: error: macro \"COND_CODE_1\" passed 4 arguments, but takes just 3\n  302 |         TEMP_SENSORS_NODEID, TEMP_SENSOR_ENTRY, (, )) };\n      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                                  \nIn file included from /mnt/host/source/src/third_party/zephyr/main/include/zephyr/sys/util.h:17,\n                 from ../modules/ec/include/compile_time_macros.h:17,\n                 from ../modules/ec/include/common.h:18,\n                 from ../modules/ec/include/adc.h:12,\n                 from /mnt/host/source/src/platform/ec/zephyr/shim/src/temp_sensors.c:6:\n```\n\nHi Keith:\n\nWould you kindly help to check it?\n\nAnother question, I found ***config_fn*** but didn\u0027t find its definition, nor find it on the zephyr function.\n\nDo you know what the ***config_fn*** definition is?",
+      "parentUuid": "262ddde1_f38d887b",
+      "range": {
+        "startLine": 231,
+        "startChar": 15,
+        "endLine": 231,
+        "endChar": 22
+      },
+      "revId": "e30961790466e586e7862543c6a44506c8311b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b661acf_6f36522e",
         "filename": "zephyr/shim/src/temp_sensors.c",
         "patchSetId": 6
@@ -117,6 +207,30 @@
       "writtenOn": "2023-03-03T18:34:35Z",
       "side": 1,
       "message": "This symbol needs to match the named defined in f75303.h",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 232,
+        "endChar": 20
+      },
+      "revId": "e30961790466e586e7862543c6a44506c8311b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ed2d030_dfa1423f",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-06T09:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b661acf_6f36522e",
       "range": {
         "startLine": 232,
         "startChar": 8,
