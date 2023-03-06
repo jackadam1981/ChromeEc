@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ec14a87_abaecdfe",
+        "filename": "include/config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 2605,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-06T21:27:37Z",
+      "side": 1,
+      "message": "Removed for now. Created b/271883902 to track adding support for ECOS.",
+      "parentUuid": "bfed4cd7_df0cf48f",
+      "range": {
+        "startLine": 2605,
+        "startChar": 0,
+        "endLine": 2605,
+        "endChar": 38
+      },
+      "revId": "e4c8c31a4c171d47e8edfec503aa19432de9beba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71c2b526_2467cad3",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "509fecf0_16d237dc",
+        "filename": "zephyr/test/drivers/host_command_memory_dump/src/host_command_memory_dump.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-06T21:27:37Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "71c2b526_2467cad3",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 38
+      },
+      "revId": "e4c8c31a4c171d47e8edfec503aa19432de9beba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8486a23_4b7c1c5b",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-02T20:51:14Z",
       "side": 1,
       "message": "Add a check for the WOV thread.",
+      "range": {
+        "startLine": 338,
+        "startChar": 2,
+        "endLine": 338,
+        "endChar": 15
+      },
+      "revId": "e4c8c31a4c171d47e8edfec503aa19432de9beba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a670fa5_519c89ca",
+        "filename": "zephyr/test/drivers/host_command_memory_dump/src/host_command_memory_dump.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-06T21:27:37Z",
+      "side": 1,
+      "message": "WOV isn\u0027t supported in zephyr EC, so can\u0027t directly. I did add a placeholder in case it\u0027s added in the future.",
+      "parentUuid": "a8486a23_4b7c1c5b",
       "range": {
         "startLine": 338,
         "startChar": 2,
