@@ -16,6 +16,24 @@
       "message": "Is there any way to make these show as `skyrim.winterhold`, etc in the reports and daily messages to make it clearer what board they belong to?",
       "revId": "7dfe2f8c987497aa799e2770d5ede937333fd159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec1167f_ba357745",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-03-06T17:42:09Z",
+      "side": 1,
+      "message": "Not without a lot of work.  The metadata for boards doesn\u0027t actually know what the baseboard is.",
+      "parentUuid": "138355a1_af9d7e3d",
+      "revId": "7dfe2f8c987497aa799e2770d5ede937333fd159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
