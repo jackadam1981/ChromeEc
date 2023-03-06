@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a63a72e_e4e37301",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-06T23:02:12Z",
+      "side": 1,
+      "message": "nit: we are sophisticated enough to have strcasecmp and strncmp in the EC, which may improve readability",
+      "revId": "2b4fd62610a76495773be1dcdbddb49abb11041f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
