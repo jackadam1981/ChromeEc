@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e89673d3_f54d8306",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-06T17:34:16Z",
+      "side": 1,
+      "message": "nit: add some details on what is SLP_A and why its used for boot time measurement",
+      "revId": "bbf5d7ba915a44530442fe2021755e98df7d9dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4f3eb07_8944fb28",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-06T17:34:16Z",
+      "side": 1,
+      "message": "how about \"\u0026\u0026 espi_vw_get_wire(VW_SLP_A_L)\" as slp_a is not really used.",
+      "range": {
+        "startLine": 264,
+        "startChar": 51,
+        "endLine": 268,
+        "endChar": 13
+      },
+      "revId": "bbf5d7ba915a44530442fe2021755e98df7d9dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
