@@ -240,6 +240,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "500c6fa9_a118cb23",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3817,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-06T20:53:27Z",
+      "side": 1,
+      "message": "Sounds good.  I\u0027ll ask one or two others from our task force if they know the answers to these and then pass them onto the PD WG if we aren\u0027t sure.",
+      "parentUuid": "a1b7dac7_7e5c0ee4",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0222998b_b58bcac1",
@@ -271,6 +289,24 @@
       "side": 1,
       "message": "I don\u0027t understand. Can you please clarify?",
       "parentUuid": "0222998b_b58bcac1",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d9d4d29_40ad8528",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3930,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-06T20:53:27Z",
+      "side": 1,
+      "message": "The functions below this one (`sink_dpm_requests(port)` and `pe_attempt_port_discovery(port)`) can result in us deciding to send messages (ex. DiscoverIdentity and such).  If we already have another message we\u0027d like to send, then the KeepAlive shouldn\u0027t be necessary for those cases",
+      "parentUuid": "41d31a42_83440955",
       "revId": "849182ab91387921e762865b0bf26f21abf69ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -341,6 +377,24 @@
       "side": 1,
       "message": "Done.\n\nWhat do you mean by \u0027that means the source is sending something\u0027?",
       "parentUuid": "8b890cb0_c25e9186",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38f03d5_095a8367",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7927,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-06T20:53:27Z",
+      "side": 1,
+      "message": "When we have a message queued in the PRL that we\u0027d like to send, and the port partner sends us something before the message has left the PRL states, we run into our friend \"6.11 Message Discarding\" from the PD spec.\n\nBasically, any incoming message on SOP (so in this case, initiated by the source since we\u0027re the sink) will cause us to discard our own outgoing message, regardless of its type.  This happens most often for sources in `prl_tx_src_pending` (waiting to send after setting the NG level for the sink) and most often for sinks in `prl_tx_snk_pending` (waiting for the source to set OK level to send).  \n\nFor other states, this discard scenario usually means we need to re-try the message we wanted to send later.  In this case, since the source sent us something to cause the discard we should be OK to just reset the Keep Alive timer and reply to whatever the source sent.",
+      "parentUuid": "416d084e_38b4aecd",
       "revId": "849182ab91387921e762865b0bf26f21abf69ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

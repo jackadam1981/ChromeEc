@@ -137,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae636b3e_27df3285",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1845,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-06T20:53:27Z",
+      "side": 1,
+      "message": "Yes, we have a helper called `pe_set_dpm_curr_request()` which interacts with the SenderResponse helpers to ensure we pick up and re-try DPM requests which get dropped due to discarded messages.  You generally need it for any DPM request which is going to try starting an AMS (so this one, and then again in the Exit path)",
+      "parentUuid": "05ff511a_cba6afbc",
+      "revId": "54c7e13e2ec9253a59c577ee13a6d9bbeb9f890f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81f5602d_4759255d",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
