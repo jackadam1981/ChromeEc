@@ -69,6 +69,24 @@
       "parentUuid": "bf4bfc2e_59bc625a",
       "revId": "a673dbec7bb67fdd70242771eaedf49b39afefb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73840713_7dfda6d9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8020,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-06T20:58:56Z",
+      "side": 1,
+      "message": "I\u0027m referencing the text of `8.3.3.27.2.1 PE_SNK_Send_EPR_Mode_Entry State` for this one.  Which appears to conflict with the diagram\n\nNothing like trying to use the spec to find all the tiny inconsistencies in it :)\n\nI\u0027ll add this to the PD WG comment sheet",
+      "parentUuid": "76916b28_7289e6ff",
+      "revId": "a673dbec7bb67fdd70242771eaedf49b39afefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
