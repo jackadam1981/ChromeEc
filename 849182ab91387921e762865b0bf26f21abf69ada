@@ -311,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b5993d_b2d01127",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3930,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-06T21:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d9d4d29_40ad8528",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5c8e879_765cb914",
@@ -395,6 +413,24 @@
       "side": 1,
       "message": "When we have a message queued in the PRL that we\u0027d like to send, and the port partner sends us something before the message has left the PRL states, we run into our friend \"6.11 Message Discarding\" from the PD spec.\n\nBasically, any incoming message on SOP (so in this case, initiated by the source since we\u0027re the sink) will cause us to discard our own outgoing message, regardless of its type.  This happens most often for sources in `prl_tx_src_pending` (waiting to send after setting the NG level for the sink) and most often for sinks in `prl_tx_snk_pending` (waiting for the source to set OK level to send).  \n\nFor other states, this discard scenario usually means we need to re-try the message we wanted to send later.  In this case, since the source sent us something to cause the discard we should be OK to just reset the Keep Alive timer and reply to whatever the source sent.",
       "parentUuid": "416d084e_38b4aecd",
+      "revId": "849182ab91387921e762865b0bf26f21abf69ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a81956_1e27aabf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7927,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-06T21:50:04Z",
+      "side": 1,
+      "message": "That makes sense. Thanks. Updated the comment.",
+      "parentUuid": "e38f03d5_095a8367",
       "revId": "849182ab91387921e762865b0bf26f21abf69ada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
