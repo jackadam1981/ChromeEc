@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e3df02_7a472e3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-03-06T16:51:35Z",
+      "side": 1,
+      "message": "Give the instructions how you tested it.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "3179a425d7d345f6dd207f98c7e18bb7081e581b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "369ba76c_c3e49bae",
@@ -14,6 +37,52 @@
       "writtenOn": "2023-03-03T23:04:52Z",
       "side": 1,
       "message": "Did you test this? I\u0027ll also cherry pick and test.",
+      "revId": "3179a425d7d345f6dd207f98c7e18bb7081e581b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "367bb658_838133b2",
+        "filename": "zephyr/program/herobrine/evoker/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-03-06T16:51:35Z",
+      "side": 1,
+      "message": "This needs to be updated, like:\n\nThe PMIC controls backlight enable and this pin must be HiZ for normal operation.\nThe EC is allowed to drive low to abruptly removes power from the eDP panel in cases like lid close. So the signal should be open drain (allowed to drive low, never drive high).",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 6
+      },
+      "revId": "3179a425d7d345f6dd207f98c7e18bb7081e581b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04974389_cdef43d9",
+        "filename": "zephyr/program/herobrine/evoker/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-03-06T16:51:35Z",
+      "side": 1,
+      "message": "You also need to set the init level to high, i.e. High-Z. So it is `GPIO_ODR_HIGH`.",
+      "range": {
+        "startLine": 135,
+        "startChar": 21,
+        "endLine": 135,
+        "endChar": 36
+      },
       "revId": "3179a425d7d345f6dd207f98c7e18bb7081e581b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
