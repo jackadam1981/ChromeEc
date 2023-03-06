@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5049de71_935472e4",
+        "filename": "zephyr/mock/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T07:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa996c27_7acafec7",
+      "revId": "cd94fe9b82252617430aa134f2c84bf1bebea7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "827928de_1fa0f3a1",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f017b70_e7a18b9d",
+        "filename": "zephyr/mock/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T07:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "827928de_1fa0f3a1",
+      "revId": "cd94fe9b82252617430aa134f2c84bf1bebea7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2999345b_4e5efe7f",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-03-02T16:21:19Z",
       "side": 1,
       "message": "Move to be on a single line.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 0
+      },
+      "revId": "cd94fe9b82252617430aa134f2c84bf1bebea7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe0bd7bd_579542b1",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T07:11:02Z",
+      "side": 1,
+      "message": "Initially it\u0027s single line but I came across the CL upload precheck failure. Hence made it multiline.",
+      "parentUuid": "2999345b_4e5efe7f",
       "range": {
         "startLine": 185,
         "startChar": 0,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e51eca12_26cf938c",
+        "filename": "zephyr/test/rex/testcase.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T07:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab5c91ec_4fccacf9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 72
+      },
+      "revId": "cd94fe9b82252617430aa134f2c84bf1bebea7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8b65d44_7de44233",
@@ -94,6 +178,24 @@
       "writtenOn": "2023-03-02T16:21:19Z",
       "side": 1,
       "message": "same, drop, the ;",
+      "revId": "cd94fe9b82252617430aa134f2c84bf1bebea7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f8d5c8d_3e612963",
+        "filename": "zephyr/test/rex/testcase.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T07:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8b65d44_7de44233",
       "revId": "cd94fe9b82252617430aa134f2c84bf1bebea7d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

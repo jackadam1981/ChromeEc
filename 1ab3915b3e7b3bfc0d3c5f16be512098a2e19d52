@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db9349fd_666a901b",
+        "filename": "zephyr/mock/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T07:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02ee8897_3aaa294a",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "1ab3915b3e7b3bfc0d3c5f16be512098a2e19d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec444cce_9b2f367a",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Sorry I don\u0027t understand the explanation. Normally enum_power signal is defined based devicetree either from `subsys/ap_pwrseq/include/power_signals.h` or `shim/include/power/power.h`. Not super familiar with those but, can you use either one of those or explain why neither are usable here? I understand you were getting an error but why?",
       "parentUuid": "67e794e2_2c7eaaa0",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "1ab3915b3e7b3bfc0d3c5f16be512098a2e19d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d04ba79_6d8ef7a4",
+        "filename": "zephyr/subsys/ap_pwrseq/include/power_signals.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-06T07:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74882f20_3fc55de8",
       "range": {
         "startLine": 61,
         "startChar": 1,
