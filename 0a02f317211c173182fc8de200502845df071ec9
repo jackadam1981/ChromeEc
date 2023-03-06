@@ -22,6 +22,30 @@
       },
       "revId": "0a02f317211c173182fc8de200502845df071ec9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27d10018_fe37f626",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-06T03:26:23Z",
+      "side": 1,
+      "message": "Due to the CPS8200 issue (b/258093708), we can\u0027t simply reset CPS8200. CPS8200 needs to be powered off to completely reset its internal modules after programing via I2C. So we need to power off the CPS8200 after completing the firmware update, and then power on after some delay. \n\nI did some experiments, I think 2ms delay between power off and power on is enough, But we still need 50ms delay after power on to ensure there is enough delay before  first I2C command.",
+      "parentUuid": "eed13cd2_cda8bb7d",
+      "range": {
+        "startLine": 882,
+        "startChar": 0,
+        "endLine": 887,
+        "endChar": 13
+      },
+      "revId": "0a02f317211c173182fc8de200502845df071ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
