@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a06b5d_279867d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-07T03:09:54Z",
+      "side": 1,
+      "message": "Thanks Daisuke, I have updated the patch again based on your comment. Can you please review the child patch as well?",
+      "parentUuid": "eb6241ee_9d454e7e",
+      "revId": "af34e984ca431b738a52ceab0e548c3a86658a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c261a36_36dca15f",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ce7ea2_1e81bf93",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-07T03:09:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c261a36_36dca15f",
+      "range": {
+        "startLine": 547,
+        "startChar": 8,
+        "endLine": 547,
+        "endChar": 11
+      },
+      "revId": "af34e984ca431b738a52ceab0e548c3a86658a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75b1b25c_d5691ee2",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-03-06T16:58:39Z",
       "side": 1,
       "message": "It looks we need a global variable or macro so that all these 2\u0027s can be named: e.g. const static int short_sleep_ms or i2c_interval_ms.",
+      "range": {
+        "startLine": 808,
+        "startChar": 8,
+        "endLine": 808,
+        "endChar": 9
+      },
+      "revId": "af34e984ca431b738a52ceab0e548c3a86658a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c508c4e_eee7f8af",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-03-07T03:09:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75b1b25c_d5691ee2",
       "range": {
         "startLine": 808,
         "startChar": 8,
