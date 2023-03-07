@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb52b010_c08a92a2",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-07T16:24:29Z",
+      "side": 1,
+      "message": "Let me know if I should implement these in this CL. There are also a handful of registers that we don\u0027t use and I was trying to avoid testing functionality that isn\u0027t currently used.",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
