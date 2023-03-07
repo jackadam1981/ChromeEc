@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e96b53d5_95259222",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-07T18:31:28Z",
+      "side": 1,
+      "message": "Re: API definition, we traditionally haven\u0027t had strongly defined task APIs in the EC, and more\u0027s the pity. I think first and foremost, `pd_` means things that can be called from outside the PD task without worrying about synchronization. I originally meant `dpm_` functions to only be called from within the PD task, or at least called synchronously. Within that framework, I suppose the host command should be calling `pd_` functions, but they could be defined wherever is easiest.\n\nBut I think we could relax that requirement if these functions were not actually part of the public API of anything. They\u0027re only used by the host command, and the host command and the AP VDM module are both conditionally compiled on the same basis. I would just move the host command into the AP VDM module, make `ap_vdm_copy_reply` and `ap_vdm_attention_pop` static, and get rid of these `dpm_` functions. If we need to do some task synchronization, we\u0027ll still do it, but it\u0027s OK within one module if we don\u0027t stick to the `pd_` naming convention.\n\nAs for a public AP for separately linked host commands, I think the `pd_` one is still the most natural, but we could do with trimming it to be more opinionated about what other tasks should be doing to the PD stack. Right now, `usb_pd.h` doesn\u0027t provide a clear picture of how someone is supposed to use the API that it provides, but maybe it should.",
+      "parentUuid": "f1c56e07_1d32e4d2",
+      "revId": "9d76968a3fc8c4bd2ca1697406cdec78e0d31274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06de7c13_1a84477b",
         "filename": "include/usb_pd_ap_vdm_control.h",
         "patchSetId": 16
