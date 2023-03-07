@@ -113,6 +113,13 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 			  const uint8_t *txdata, int txlen, uint8_t *rxdata,
 			  int rxlen);
 
+/*
+ * Query weather async transaction is complete.  spi_transaction_flush() must
+ * still be called eventually, but can be assumed to return instantly, after
+ * this method has returned non-zero.
+ */
+int spi_transaction_is_complete(const struct spi_device_t *spi_device);
+
 /* Wait for async response received */
 int spi_transaction_flush(const struct spi_device_t *spi_device);
 
