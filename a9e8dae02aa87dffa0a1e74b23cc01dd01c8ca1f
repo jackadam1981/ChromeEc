@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8437955d_0c75b3e6",
+        "filename": "zephyr/program/myst/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T18:43:17Z",
+      "side": 1,
+      "message": "\"npcx9m7f\" since we\u0027re using a fancy bigger EC to start with :)",
+      "range": {
+        "startLine": 14,
+        "startChar": 22,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e50a36_b0c3c302",
+        "filename": "zephyr/program/myst/adc.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T18:43:17Z",
+      "side": 1,
+      "message": "I think these looks like they\u0027d be \u0026adc0 0 for the charger and 1 for the memory",
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453dbaf3_d990725d",
+        "filename": "zephyr/program/myst/adc.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T18:43:17Z",
+      "side": 1,
+      "message": "The STT sensors can be added later, but it looks like you defined the SB-TSI sensor in the i2c file which could go here now",
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c6f87df_4f9cf818",
+        "filename": "zephyr/program/myst/adc.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T18:43:17Z",
+      "side": 1,
+      "message": "I think you\u0027ll need these guys instead: \n```\n                adc0_chan0_gp45: periph-adc0-0 {\n                        pinmux \u003d \u003c \u0026alt6_adc0_sl \u003e;\n                        phandle \u003d \u003c 0x9b \u003e;\n                };\n                adc0_chan1_gp44: periph-adc0-1 {\n                        pinmux \u003d \u003c \u0026alt6_adc1_sl \u003e;\n                        phandle \u003d \u003c 0x9c \u003e;\n                };\n```\n\nJust from poking around the compiled dts files for rex and skyrim \n\n(you can find them in the build directories in places like this: `build/zephyr/skyrim/build-ro/zephyr/zephyr.dts`.  I find them super helpful when I\u0027m trying to figure out what dts components are valid to reference)",
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbc09fe8_b17e5f6a",
+        "filename": "zephyr/program/myst/fan.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T18:43:17Z",
+      "side": 1,
+      "message": "Looks like the second fan is just a TP for the proto, so we can probably leave it out of here.  I\u0027d guess we might get \"fan stalled\" warnings if we leave it in",
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2cd264d_66c9a855",
+        "filename": "zephyr/program/myst/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T18:43:17Z",
+      "side": 1,
+      "message": "Looks like B7 on go/myst-tot-schematics",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9461e23e_6f58538b",
+        "filename": "zephyr/program/myst/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T18:43:17Z",
+      "side": 1,
+      "message": "C0",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4888a9_a4cef9ed",
+        "filename": "zephyr/program/myst/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T18:43:17Z",
+      "side": 1,
+      "message": "D5\n\nAlso using this comment as a bookmark to remind me where to pick up reviewing next time :)",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
