@@ -2,5 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-target_sources_ifdef(CONFIG_EMUL_ANX7483 app PRIVATE src/anx7483.c)
-#target_sources_ifdef(CONFIG_EMUL_PS8811 app PRIVATE src/ps8811.c)
+description: Zephyr ANX7483 emulator
+
+compatible: "cros,anx7483-emul"
+
+include: base.yaml
