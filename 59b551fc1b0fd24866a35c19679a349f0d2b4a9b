@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "345feba5_97c22ff7",
+        "filename": "zephyr/test/skyrim/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-03-07T13:14:52Z",
+      "side": 1,
+      "message": "I will create a separate bug for that task",
+      "parentUuid": "0a0b207d_67384919",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "160530b4_0fac6e13",
@@ -225,6 +243,24 @@
       "side": 1,
       "message": "ok",
       "parentUuid": "4c03b5aa_7e12f18c",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf25f6f_681f06b7",
+        "filename": "zephyr/test/skyrim/tests/skyrim/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-03-07T13:14:52Z",
+      "side": 1,
+      "message": "It will be done, when fix will be ported to Markarth and Crystaldrift",
+      "parentUuid": "76c77ef0_92ce52d2",
       "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
