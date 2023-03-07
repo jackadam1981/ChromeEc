@@ -16,6 +16,24 @@
       "message": "`emerge-skyrim ec-utils` is failing after this change.\n\n```\n  HOSTCXX  util/ectool\nutil/ectool.cc:1754:6: error: no member named \u0027flash_protect\u0027 in namespace \u0027ec\u0027\n        ec::flash_protect::Flags flags \u003d ec::flash_protect::Flags::kNone;\n        ~~~~^\n```",
       "revId": "b03820fc23e64a4141283ae198415a918d50ba5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bfa720a_c5ecdf06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-07T00:59:38Z",
+      "side": 1,
+      "message": "I am able to get the build pass by doing a setup_board --force. So I think this is a non issue after all.",
+      "parentUuid": "bb3ff618_0db9574d",
+      "revId": "b03820fc23e64a4141283ae198415a918d50ba5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
