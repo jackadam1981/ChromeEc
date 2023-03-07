@@ -46,6 +46,30 @@
       },
       "revId": "f20862d64ac42cce2bdde56f9eb3bceb8eb7a49b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c42ab65_9ed727a9",
+        "filename": "zephyr/program/corsola/src/npcx_usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-03-07T21:21:58Z",
+      "side": 0,
+      "message": "This CL has been trimmed to only the changes to corsola for clarity.",
+      "parentUuid": "fbfa9db7_4b91a6d4",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 6
+      },
+      "revId": "f20862d64ac42cce2bdde56f9eb3bceb8eb7a49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
