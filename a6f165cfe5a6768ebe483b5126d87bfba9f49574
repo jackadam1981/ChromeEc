@@ -52,6 +52,24 @@
       "parentUuid": "8d087344_06da72e2",
       "revId": "a6f165cfe5a6768ebe483b5126d87bfba9f49574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1810971c_34225b45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2023-03-07T02:14:48Z",
+      "side": 1,
+      "message": "No, we are not using the ectool out of the firmware branch.\n\nBut it\u0027s being built as part of the SDK (init_SDK stage)... will that change the picture a bit?",
+      "parentUuid": "9f47ff23_9d7008fe",
+      "revId": "a6f165cfe5a6768ebe483b5126d87bfba9f49574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
