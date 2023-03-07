@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9febbfe3_af850efa",
+        "filename": "zephyr/program/rex/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-07T08:28:17Z",
+      "side": 1,
+      "message": "That is such a weird option naming schema :-) I mean the XXX_OFF\u003dy pattern. It really should have been a \"CONFIG_HCDEBUG\u003d...\" plus a choice of \"CONFIG_HCDEBUG_LEVEL_XXX\u003dy\" if the former is \"y\". If have some spare cycle to refactor it...",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "3a3b8e3f74d6f0e27aa95a2a2695173fe8e1ca7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
