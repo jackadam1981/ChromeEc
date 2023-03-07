@@ -105,6 +105,24 @@
       "parentUuid": "833bff03_91899c89",
       "revId": "3128480eadaf67bf42514d0fe8ee6ca411396803",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bce942a2_43ecb28e",
+        "filename": "common/usbc/dp_hpd_gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T21:24:02Z",
+      "side": 1,
+      "message": "1. Comments added\n2. Yes, that would be easier but I\u0027ve pushed it to b/267545470",
+      "parentUuid": "3aa461e4_ba0ac99c",
+      "revId": "3128480eadaf67bf42514d0fe8ee6ca411396803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
