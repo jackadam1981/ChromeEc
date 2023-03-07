@@ -16,6 +16,23 @@
       "message": "Testing CQ.",
       "revId": "f8f1e39daeddeff691a4444b6397397541e68d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "089b87f4_dce2a644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-07T23:26:33Z",
+      "side": 1,
+      "message": "Testing hotfix in CQ until we come up with a better fix that isn\u0027t prone to breakages.",
+      "revId": "f8f1e39daeddeff691a4444b6397397541e68d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
