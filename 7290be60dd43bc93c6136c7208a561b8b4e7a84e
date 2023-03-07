@@ -1,6 +1,74 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1de3ef98_011c3e93",
+        "filename": "zephyr/emul/retimer/emul_ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T18:01:30Z",
+      "side": 1,
+      "message": "Should this be a \"set_reg\"?",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e8bc4ae_a9ab7ad3",
+        "filename": "zephyr/emul/retimer/emul_ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T18:01:30Z",
+      "side": 1,
+      "message": "Out of curiosity, what happens on the actual chip when you write the reserved bits?",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14000a23_85e226fe",
+        "filename": "zephyr/emul/retimer/emul_ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T18:01:30Z",
+      "side": 1,
+      "message": "nit: I would wonder if some of this could be done through a structure holding the register, its default, and its mask to simplify the code?",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44cd77e2_33492cba",
+        "filename": "zephyr/test/drivers/usbc_retimer/i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-07T18:01:30Z",
+      "side": 1,
+      "message": "Aaron, how full-fledged do the emulator tests need to be?  Do they usually need a full \"USB-C stack\" type thing going, or just the chip they\u0027re testing?",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cb52b010_c08a92a2",
