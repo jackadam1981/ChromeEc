@@ -250,13 +250,16 @@ static int command_settabletmode(int argc, const char **argv)
 	if (tablet_mode_forced == false)
 		tablet_mode_store = tablet_mode;
 
-	if (argv[1][0] == 'o' && argv[1][1] == 'n') {
+	if (strlen("on") == strlen(argv[1]) &&
+	    strncmp(argv[1], "on", strlen("on")) == 0) {
 		tablet_mode = TABLET_TRIGGER_LID;
 		tablet_mode_forced = true;
-	} else if (argv[1][0] == 'o' && argv[1][1] == 'f') {
+	} else if (strlen("off") == strlen(argv[1]) &&
+		   strncmp(argv[1], "off", strlen("off")) == 0) {
 		tablet_mode = 0;
 		tablet_mode_forced = true;
-	} else if (argv[1][0] == 'r') {
+	} else if (strlen("reset") == strlen(argv[1]) &&
+		   strncmp(argv[1], "reset", strlen("reset")) == 0) {
 		tablet_mode = tablet_mode_store;
 		tablet_mode_forced = false;
 	} else {
