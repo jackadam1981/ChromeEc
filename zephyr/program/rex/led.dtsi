@@ -55,7 +55,7 @@
 			charge-state = "PWR_STATE_DISCHARGE";
 			chipset-state = "POWER_S3";
 
-			/* Blue 1 sec, off 3 sec */
+			/* White 1 sec, off 3 sec */
 			color-0 {
 				led-color = <&color_white>;
 				period-ms = <1000>;
@@ -78,7 +78,7 @@
 		power-state-error {
 			charge-state = "PWR_STATE_ERROR";
 
-			/* Red 1 sec, off 1 sec */
+			/* White 1 sec, off 1 sec */
 			color-0 {
 				led-color = <&color_white>;
 				period-ms = <1000>;
@@ -93,7 +93,7 @@
 			charge-state = "PWR_STATE_CHARGE_NEAR_FULL";
 
 			color-0 {
-				led-color = <&color_amber>;
+				led-color = <&color_white>;
 			};
 		};
 
