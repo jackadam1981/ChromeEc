@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4416ec41_9b0edeb2",
+        "filename": "common/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-03-07T19:17:00Z",
+      "side": 1,
+      "message": "Removing `strlen()` means `on` and `onf` are both treated the same, and enable the particular mode.\n\nThat\u0027s not any different than the behavior we have today, but also isn\u0027t entirely correct (and wouldn\u0027t catch typos). I would prefer to keep `strlen()` so we can handle the `onf`-type cases correctly.\n\nUsing `strcmp()` would solve this, but is unsafe since it could keep reading memory forever if the memory is not null-terminated, so we shouldn\u0027t use that.\n\nThoughts?",
+      "parentUuid": "524f9e67_44b2d312",
+      "revId": "eb4fa40622e30b3299890c83aec245ca58a59c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fcb41ef5_fec28035",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-07T18:37:54Z",
       "side": 1,
       "message": "nit: IMO `\u003d\u003d 0` is more readable than `!` when using strncmp.",
+      "revId": "eb4fa40622e30b3299890c83aec245ca58a59c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6bc3a63_7c3234d8",
+        "filename": "common/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-03-07T19:17:00Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "fcb41ef5_fec28035",
       "revId": "eb4fa40622e30b3299890c83aec245ca58a59c37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
