@@ -34,6 +34,24 @@
       "parentUuid": "3da8dd38_995c5ef4",
       "revId": "a6f165cfe5a6768ebe483b5126d87bfba9f49574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f47ff23_9d7008fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-07T01:04:57Z",
+      "side": 1,
+      "message": "i\u0027d be happier if we migrated ectool out of the EC repo since people\nseem to want to turn it into a platform2 app (that\u0027s where libec lives\nas well).\n\nalso, we don\u0027t actually bundle the firmware branch build of ectool\nwith chromeos, do we? if that\u0027s correct, maybe just stop building\nit on the FW branch?",
+      "parentUuid": "8d087344_06da72e2",
+      "revId": "a6f165cfe5a6768ebe483b5126d87bfba9f49574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
