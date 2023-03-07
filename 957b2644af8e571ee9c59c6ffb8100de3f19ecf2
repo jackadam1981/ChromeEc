@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf56bf4_aaa3c87a",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-07T12:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e178c65_ddc33f23",
+      "range": {
+        "startLine": 1180,
+        "startChar": 36,
+        "endLine": 1180,
+        "endChar": 40
+      },
+      "revId": "957b2644af8e571ee9c59c6ffb8100de3f19ecf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0206a07c_93c21c48",
@@ -61,6 +85,30 @@
       "writtenOn": "2023-03-06T23:34:33Z",
       "side": 1,
       "message": "This is 8MB? one extra 0 added?",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "957b2644af8e571ee9c59c6ffb8100de3f19ecf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a9b32c_2186694e",
+        "filename": "zephyr/test/drivers/cbi_flash/binman.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-07T12:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0206a07c_93c21c48",
       "range": {
         "startLine": 16,
         "startChar": 11,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2dfd441_3b6f8b9f",
+        "filename": "zephyr/test/drivers/cbi_flash/binman.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-07T12:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7418941c_7a6c442b",
+      "range": {
+        "startLine": 34,
+        "startChar": 27,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "957b2644af8e571ee9c59c6ffb8100de3f19ecf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a502045_8121dba3",
@@ -107,6 +179,30 @@
       "writtenOn": "2023-03-06T23:34:33Z",
       "side": 1,
       "message": "Please add a test to store some non-zero data and read it back.",
+      "range": {
+        "startLine": 35,
+        "startChar": 17,
+        "endLine": 35,
+        "endChar": 37
+      },
+      "revId": "957b2644af8e571ee9c59c6ffb8100de3f19ecf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9da5d62_70274dc9",
+        "filename": "zephyr/test/drivers/cbi_flash/src/cbi_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-07T12:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a502045_8121dba3",
       "range": {
         "startLine": 35,
         "startChar": 17,
