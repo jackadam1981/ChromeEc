@@ -17,5 +17,6 @@
 #include "../usbc.dtsi"
 
 /* Rex project DTS includes */
+#include "gpio_tweaks.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
