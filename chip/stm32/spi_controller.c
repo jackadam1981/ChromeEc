@@ -333,6 +333,17 @@ static int spi_dma_wait(int port)
 	return rv;
 }
 
+static int spi_dma_is_complete(int port)
+{
+	if (dma_is_enabled_(&dma_tx_option[port])
+	    && !dma_is_complete(dma_tx_option[port].channel))
+		return 0;
+	if (dma_is_enabled_(&dma_rx_option[port])
+	    && !dma_is_complete(dma_rx_option[port].channel))
+		return 0;
+	return 1;
+}
+
 static uint8_t spi_chip_select_already_asserted[ARRAY_SIZE(SPI_REGS)];
 
 int spi_transaction_async(const struct spi_device_t *spi_device,
@@ -345,6 +356,8 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 
 	stm32_spi_regs_t *spi = SPI_REGS[port];
 	char *buf = NULL;
+
+	//gpio_set_level(GPIO_UART_DBG_TX_AP_RX_INA_SCL, 0);
 
 	/* We should not ever be called when disabled, but fail early if so. */
 	if (!spi_enabled[port])
@@ -373,7 +386,9 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 
 	/* Initiate write part of the transaction, non-blocking. */
 	if (txlen) {
+		//gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 0);
 		rv = spi_dma_start(port, txdata, buf, txlen);
+		//gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 1);
 		if (rv != EC_SUCCESS)
 			goto err_free;
 #ifdef CONFIG_SPI_HALFDUPLEX
@@ -389,16 +404,20 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 		 * If "write then read" was requested, then we have to wait for
 		 * the write to complete, before we can initiate read.
 		 */
+		//gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 0);
 		if (txlen) {
 			rv = spi_dma_wait(port);
+			//gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 1);
 			if (rv != EC_SUCCESS)
 				goto err_free;
 
 			spi_clear_tx_fifo(spi);
+			//gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 0);
 		}
 
 		/* Initiate read part of the transaction, non-blocking. */
 		rv = spi_dma_start(port, buf, rxdata, rxlen);
+		//gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 1);
 		if (rv != EC_SUCCESS)
 			goto err_free;
 #ifdef CONFIG_SPI_HALFDUPLEX
@@ -418,7 +437,14 @@ err_free:
 	if (!full_readback)
 		shared_mem_release(buf);
 #endif
+	//gpio_set_level(GPIO_UART_DBG_TX_AP_RX_INA_SCL, 1);
+	//gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 1);
 	return rv;
+}
+
+int spi_transaction_is_complete(const struct spi_device_t *spi_device)
+{
+	return spi_dma_is_complete(spi_device->port);
 }
 
 int spi_transaction_flush(const struct spi_device_t *spi_device)

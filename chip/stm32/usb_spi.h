@@ -147,6 +147,7 @@
  *             process.
  *         0x0009: The device does not support full duplex mode.
  *         0x000A: Requested serial flash mode not supported
+ *         0x000B: In progress (response to first double buffered request)
  *         0x8000: Unknown error mask
  *             The bottom 15 bits will contain the bottom 15 bits from the EC
  *             error code.
@@ -307,12 +308,29 @@
  *            bit 26  reserved, must be zero
  *            bit 27  write to be preceded by "write enable" (0x06)
  *            bit 28  write to be followed by polling of "busy bit" (0x05)
- *            bit 29  reserved, must be zero
+ *            bit 29  double buffering mode
  *            bit 31  read (0) / write (1)
  *
  *                    The "width" fields indicate whether each stage of the
  *                    transfer is to be using standard SPI uni-directional
  *                    signals (0), dual channel (1), quad (2) or octo (3).
+ *
+ *                    Streaming mode, if requested, means that the response to
+ *                    a particular serial flash command will appear on the USB
+ *                    bus as response to the subsequent request.  This allows
+ *                    keeping the USB bus and SPI bus busy simultaneously.
+ *                    The very first streaming request will receive a response
+ *                    with status code 0x0A (in progress) and zero length
+ *                    payload.  The next USB request will receive a response
+ *                    with status code and payload length corresponding to the
+ *                    first request, and so forth.  In order to get the last
+ *                    response, the host must send a streamed request with
+ *                    zero count, and zero length opcode, address and
+ *                    alternate data.  If at any point an error is returned
+ *                    from a streaming mode request, it means that the
+ *                    previous request experienced that error, and the most
+ *                    recent request sent will be discarded (not executed on
+ *                    the SPI bus.)
  *
  *     write payload: Up to 56 bytes of data to write to SPI, the total length
  *                    of all TX packets must match opcode length + address
@@ -416,6 +434,8 @@ enum feature_bitmap {
 	USB_SPI_FEATURE_QUAD_MODE_SUPPORTED = BIT(3),
 	/* Indicates support for eight-line bidirectional data. */
 	USB_SPI_FEATURE_OCTO_MODE_SUPPORTED = BIT(4),
+	/* Indicates support for concurrent USB and SPI activity. */
+	USB_SPI_FEATURE_DOUBLE_BUFFER_SUPPORTED = BIT(5),
 };
 
 struct usb_spi_response_configuration_v2 {
@@ -479,6 +499,9 @@ struct usb_spi_flash_command {
 #define FLASH_FLAG_POLL_POS 29U
 #define FLASH_FLAG_POLL (0x1UL << FLASH_FLAG_POLL_POS)
 
+#define FLASH_FLAG_DOUBLE_BUFFER_POS 30
+#define FLASH_FLAG_DOUBLE_BUFFER (0x1U << FLASH_FLAG_DOUBLE_BUFFER_POS)
+
 #define FLASH_FLAG_READ_WRITE_POS 31U
 #define FLASH_FLAG_READ_WRITE_MSK (0x1UL << FLASH_FLAG_READ_WRITE_POS)
 #define FLASH_FLAG_READ_WRITE_READ 0
@@ -525,6 +548,8 @@ enum usb_spi_error {
 	USB_SPI_UNSUPPORTED_FULL_DUPLEX = 0x0009,
 	/* The device does not support dual/quad wire mode. */
 	USB_SPI_UNSUPPORTED_FLASH_MODE = 0x000A,
+	/* Operation accepted, reply will be sent next time. */
+	USB_SPI_IN_PROGRESS = 0x000B,
 	USB_SPI_UNKNOWN_ERROR = 0x8000,
 };
 
@@ -577,6 +602,21 @@ enum usb_spi_mode {
 	USB_SPI_MODE_CONTINUE_RESPONSE,
 };
 
+struct spi_transaction_state_t {
+#ifdef CONFIG_USB_SPI_FLASH_EXTENSIONS
+	uint32_t flash_flags;
+#endif
+	uint16_t status_code;
+	struct usb_spi_transfer_ctx spi_write_ctx;
+	struct usb_spi_transfer_ctx spi_read_ctx;
+};
+
+enum other_txn_status_t {
+	OTHER_TXN_NONE = 0,
+	OTHER_TXN_IN_PROGRESS = 1,
+	OTHER_TXN_DONE = 2,
+};
+
 struct usb_spi_state {
 	/*
 	 * The SPI bridge must be enabled both locally and by the host to allow
@@ -620,20 +660,24 @@ struct usb_spi_state {
 	struct usb_spi_packet_ctx receive_packet;
 	struct usb_spi_packet_ctx transmit_packet;
 
-#ifdef CONFIG_USB_SPI_FLASH_EXTENSIONS
-	/*
-	 * Flags describing if and how multi-lane (dual/quad), double transfer
-	 * rate, and other advanced flash protocol features are to be used.
-	 */
-	uint32_t flash_flags;
-#endif
-
 	/*
 	 * Context structures representing the progress receiving the SPI
 	 * write data and transmitting the SPI read data.
 	 */
-	struct usb_spi_transfer_ctx spi_write_ctx;
-	struct usb_spi_transfer_ctx spi_read_ctx;
+	struct spi_transaction_state_t txn[2];
+
+	/*
+	 * Which of the two above transaction slots is the one from which data
+	 * is sent via USB or received via USB.
+	 */
+	uint8_t usb_txn_idx;
+
+	/*
+	 * Value indicating the status of the slot that is not `usb_txn_idx`.
+	 * This "background" slot could contain a transaction in progress on
+	 * the SPI bus.
+	 */
+	enum other_txn_status_t other_txn_status;
 };
 
 /*
@@ -685,7 +729,9 @@ struct usb_spi_config {
  */
 #define USB_SPI_CONFIG(NAME, INTERFACE, ENDPOINT, FLAGS)                    \
 	static uint16_t CONCAT2(NAME,                                       \
-				_buffer_)[(USB_SPI_BUFFER_SIZE + 1) / 2];   \
+				_buffer1_)[(USB_SPI_BUFFER_SIZE + 1) / 2];  \
+	static uint16_t CONCAT2(NAME,                                       \
+				_buffer2_)[(USB_SPI_BUFFER_SIZE + 1) / 2];  \
 	static usb_uint CONCAT2(                                            \
 		NAME, _ep_rx_buffer_)[USB_MAX_PACKET_SIZE / 2] __usb_ram;   \
 	static usb_uint CONCAT2(                                            \
@@ -697,8 +743,15 @@ struct usb_spi_config {
 		.enabled_device = 0,                                        \
 		.enabled = 0,                                               \
 		.current_spi_device_idx = 0,                                \
-		.spi_write_ctx.buffer = (uint8_t *)CONCAT2(NAME, _buffer_), \
-		.spi_read_ctx.buffer = (uint8_t *)CONCAT2(NAME, _buffer_),  \
+		.txn[0].spi_write_ctx.buffer =                              \
+			(uint8_t *)CONCAT2(NAME, _buffer1_),                \
+		.txn[0].spi_read_ctx.buffer =                               \
+			(uint8_t *)CONCAT2(NAME, _buffer1_),                \
+		.txn[1].spi_write_ctx.buffer =                              \
+			(uint8_t *)CONCAT2(NAME, _buffer2_),                \
+		.txn[1].spi_read_ctx.buffer =                               \
+			(uint8_t *)CONCAT2(NAME, _buffer2_),                \
+		.other_txn_status = OTHER_TXN_NONE,                         \
 	};                                                                  \
 	struct usb_spi_config const NAME = {                                \
 		.state = &CONCAT2(NAME, _state_),                           \
@@ -799,9 +852,11 @@ void usb_spi_board_disable(struct usb_spi_config const *config);
  * will cause the USB to SPI forwarding logic to invoke this method rather
  * than the standard spi_transaction_async().
  */
-int usb_spi_board_transaction(const struct spi_device_t *spi_device,
-			      uint32_t flash_flags, const uint8_t *txdata,
-			      int txlen, uint8_t *rxdata, int rxlen);
+int usb_spi_board_transaction_async(const struct spi_device_t *spi_device,
+				    uint32_t flash_flags, const uint8_t *txdata,
+				    int txlen, uint8_t *rxdata, int rxlen);
+int usb_spi_board_transaction_is_complete(const struct spi_device_t *spi_device);
+int usb_spi_board_transaction_flush(const struct spi_device_t *spi_device);
 
 /*
  * Flags to use in usb_spi_board_transaction_async() for advanced serial flash
