@@ -23,6 +23,9 @@
 #include "system.h"
 #include "task.h"
 #include "usb_mux.h"
+#include "usb_pd.h"
+#include "usb_pd_tcpm.h"
+#include "usbc_ocp.h"
 #include "usbc_ppc.h"
 
 #include <zephyr/drivers/espi.h>
@@ -273,4 +276,9 @@ int board_set_active_charge_port(int port)
 	}
 
 	return EC_SUCCESS;
+}
+
+__override bool board_is_tbt_usb4_port(int port)
+{
+	return true;
 }
