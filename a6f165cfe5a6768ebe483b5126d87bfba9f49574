@@ -16,6 +16,24 @@
       "message": "Looks like some dependencies of libec breaks the CQ.",
       "revId": "a6f165cfe5a6768ebe483b5126d87bfba9f49574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d087344_06da72e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-07T00:46:22Z",
+      "side": 1,
+      "message": "ya...\noh boy, we may need to update libec on the FW branch.\n```\nec-utils-0.0.2-r11949: util/ectool.cc:40:10: fatal error: \u0027libec/flash_protect_command.h\u0027 file not\nec-utils-0.0.2-r11949:       found\nec-utils-0.0.2-r11949: #include \u003clibec/flash_protect_command.h\u003e\nec-utils-0.0.2-r11949:          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nec-utils-0.0.2-r11949: 1 error generated.\nec-utils-0.0.2-r11949: make: *** [Makefile.rules:691: build/host/util/ectool] Error 1\nec-utils-0.0.2-r11949:  * ERROR: chromeos-base/ec-utils-0.0.2-r11949::chromiumos failed (compile phase):\nec-utils-0.0.2-r11949:  *   emake failed\n```",
+      "parentUuid": "3da8dd38_995c5ef4",
+      "revId": "a6f165cfe5a6768ebe483b5126d87bfba9f49574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
