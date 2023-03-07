@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a60953c4_fd82e266",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-07T20:06:41Z",
+      "side": 1,
+      "message": "Refering to the CL description: \"manage_activity() on a sensor that does not support it\",\n\nnit: A typical coding pattern is to check the existance of the API (as you probably know). Can you do that instead of checking CONFIG_?\n\n    if (sensor-\u003edrv-\u003emanage_activity))\n        sensor-\u003edrv-\u003emanage_activity(...",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 14
+      },
+      "revId": "daad36c9d4fadd98cda40bf008b72b21f4f79fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
