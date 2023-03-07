@@ -70,6 +70,24 @@
       "parentUuid": "d04d05bd_3b81e07f",
       "revId": "8aa12c953f8e5b7da88a9688eaba4146f0168a07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2aec387_5cbde68a",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-03-07T14:04:56Z",
+      "side": 1,
+      "message": "I will enable it when CONFIG_AP_PWRSEQ_S0IX is enabled. It should not impact ARM boards, I cannot find CONFIG_AP_PWRSEQ_S0IX in arm boards configs and AFAIK it does not support S0ix",
+      "parentUuid": "333ae416_331a5714",
+      "revId": "8aa12c953f8e5b7da88a9688eaba4146f0168a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
