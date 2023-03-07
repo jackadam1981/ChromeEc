@@ -12,6 +12,8 @@
 #include "usb_descriptor.h"
 #include "usb_hw.h"
 
+#define CONFIG_SPI_EEPROM_MULTILANE
+
 /*
  * This SPI flash programming interface is designed to talk to a Chromium OS
  * device over a Raiden USB connection.
@@ -146,6 +148,7 @@
  *         0x0008: An unexpected packet arrived that the device could not
  *             process.
  *         0x0009: The device does not support full duplex mode.
+ *         0x000A: In progress (response to first streaming mode request)
  *         0x8000: Unknown error mask
  *             The bottom 15 bits will contain the bottom 15 bits from the EC
  *             error code.
@@ -218,6 +221,7 @@
  *
  *     feature bitmap:    Bitmap of supported features.
  *                        BIT(0): Full duplex SPI mode is supported
+ *                        BIT(1): Multilane EEPROM modes are supported
  *                        BIT(1:15): Reserved for future use
  *
  * Command Restart Response Packet (Host to Device):
@@ -256,6 +260,85 @@
  *         0x0000: Success
  *         others: Error
  *
+ * EEPROM Command Start Packet (Host to Device):
+ *
+ *      Start of the USB EEPROM SPI command, contains the number of bytes to
+ *      write or read on SPI and up to the first 58 bytes of write payload.
+ *      Longer writes will use the continue packets with packet id
+ *      USB_SPI_PKT_ID_CMD_TRANSFER_CONTINUE to transmit the remaining data.
+ *
+ *      The reading or writing of the "main" data will be preceeded by an
+ *      short sequence of opcode, optional address, optional "alternate data",
+ *      and optional 'dummy cycles" on the SPI bus.  Flags indicate how many
+ *      bytes of each stage to send, and whether to use advanced features such
+ *      as dual or quad signal lanes for each stage of the transfer".
+ *
+ *      The indicated number of opcode, address and alternate bytes will be
+ *      the first in the "write payload".  The "count" field will contain the
+ *      number of data bytes to be written/read after the opcode, address and
+ *      alternate bytes.
+ *
+ *      Implementations will advertise whether they support dual, quad or octo
+ *      modes, if none of these are supported, then support for "dummy cycles"
+ *      are not guaranteed either, and callers should use one or two bytes of
+ *      "alternate data" in place of dummy cycles.
+ *
+ *     +----------------+------------+------------+---------------+
+ *     | packet id : 2B | count : 2B | flags : 4B | w.p. : <= 56B |
+ *     +----------------+------------+------------+---------------+
+ *
+ *     packet id:     2 byte enum defined by packet_id_type
+ *                    Valid values packet id =
+ *                    USB_SPI_PKT_ID_CMD_EEPROM_TRANSFER_START
+ *
+ *     count:         2 byte, zero based count of bytes to read or write
+ *
+ *     flags:         4 byte, flags
+ *             bit 0  read (0) / write (1)
+ *          bits 1:2  opcode width
+ *             bit 3  opcode double transfer rate
+ *          bits 4:6  opcode length in bytes
+ *          bits 7:8  address width
+ *             bit 9  address double transfer rate
+ *        bits 10:12  address length in bytes
+ *        bits 13:14  alternate data width
+ *            bit 15  alternate data double transfer rate
+ *        bits 16:18  alternate data length in bytes
+ *        bits 19:23  number of dummy cycles
+ *        bits 24:25  data width
+ *            bit 26  data double transfer rate
+ *            bit 27  write to be preceded by "write enable" (0x06)
+ *            bit 28  write to be followed by polling of "busy bit" (0x05)
+ *            bit 29  streaming mode
+ *
+ *                    The "width" fields indicate whether each stage of the
+ *                    transfer is to be using standard SPI uni-directional
+ *                    signals (0), dual channel (1), quad (2) or octo (3).
+ *
+ *                    Streaming mode, if requested, means that the response to
+ *                    a particular EEPROM command will appear on the USB bus
+ *                    as response to the subsequent request.  This allows
+ *                    keeping the USB bus and SPI bus busy simultaneously.
+ *                    The very first streaming request will receive a response
+ *                    with status code 0x0A (in progress) and zero length
+ *                    payload.  The next USB request will receive a response
+ *                    with status code and payload length corresponding to the
+ *                    first request, and so forth.  In order to get the last
+ *                    response, the host must send a streamed request with
+ *                    zero count, and zero length opcode, address and
+ *                    alternate data.  If at any point an error is returned
+ *                    from a streaming mode request, it means that the
+ *                    previous request experienced that error, and the most
+ *                    recent request sent will be discarded (not executed on
+ *                    the SPI bus.)
+ *
+ *     write payload: Up to 56 bytes of data to write to SPI, the total length
+ *                    of all TX packets must match opcode length + address
+ *                    length + alternate data length + count.  Due to data
+ *                    alignment constraints, this must be an even number of
+ *                    bytes unless this is the final packet.
+ *
+ *
  * USB Error Codes:
  *
  * send_command return codes have the following format:
@@ -277,6 +360,8 @@
 #define USB_SPI_PAYLOAD_SIZE_V2_CONTINUE (60)
 
 #define USB_SPI_PAYLOAD_SIZE_V2_ERROR (60)
+
+#define USB_SPI_PAYLOAD_SIZE_EEPROM_START (56)
 
 #define USB_SPI_MIN_PACKET_SIZE (2)
 
@@ -327,6 +412,10 @@ enum packet_id_type {
 	USB_SPI_PKT_ID_CMD_CHIP_SELECT = 7,
 	/* Response to above request. */
 	USB_SPI_PKT_ID_RSP_CHIP_SELECT = 8,
+	/*
+	 * Start a USB EEPROM SPI transfer.
+	 */
+	USB_SPI_PKT_ID_CMD_EEPROM_TRANSFER_START = 9,
 };
 
 enum feature_bitmap {
@@ -390,11 +479,39 @@ struct usb_spi_chip_select_response {
 	uint16_t status_code;
 } __packed;
 
+struct usb_spi_eeprom_command {
+	uint16_t packet_id;
+	uint16_t count;
+	uint32_t flags;
+	uint8_t data[USB_SPI_PAYLOAD_SIZE_EEPROM_START];
+} __packed;
+
+/*
+ * Mask of the flags that are handled by logic in sub_spi.c, and not passed to
+ * SPI drivers through usb_spi_board_transaction_async().
+ */
+#define EEPROM_FLAG_XXX_FLAGS 0xF0000000UL
+
+#define EEPROM_FLAG_WRITE_ENABLE_POS 28U
+#define EEPROM_FLAG_WRITE_ENABLE (0x1UL << EEPROM_FLAG_WRITE_ENABLE_POS)
+
+#define EEPROM_FLAG_POLL_POS 29U
+#define EEPROM_FLAG_POLL (0x1UL << EEPROM_FLAG_POLL_POS)
+
+#define EEPROM_FLAG_STREAMING_POS 30U
+#define EEPROM_FLAG_STREAMING (0x1UL << EEPROM_FLAG_STREAMING_POS)
+
+#define EEPROM_FLAG_READ_WRITE_POS 31U
+#define EEPROM_FLAG_READ_WRITE_MSK (0x1UL << EEPROM_FLAG_READ_WRITE_POS)
+#define EEPROM_FLAG_READ_WRITE_READ 0
+#define EEPROM_FLAG_READ_WRITE_WRITE (0x1UL << EEPROM_FLAG_READ_WRITE_POS)
+
 struct usb_spi_packet_ctx {
 	union {
 		uint8_t bytes[USB_MAX_PACKET_SIZE];
 		uint16_t packet_id;
 		struct usb_spi_command_v2 cmd_start;
+		struct usb_spi_eeprom_command cmd_eeprom_start;
 		struct usb_spi_continue_v2 cmd_continue;
 		struct usb_spi_response_configuration_v2 rsp_config;
 		struct usb_spi_response_v2 rsp_start;
@@ -428,6 +545,10 @@ enum usb_spi_error {
 	USB_SPI_RX_UNEXPECTED_PACKET = 0x0008,
 	/* The device does not support full duplex mode. */
 	USB_SPI_UNSUPPORTED_FULL_DUPLEX = 0x0009,
+	/* Operation accepted, reply will be sent next time. */
+	USB_SPI_IN_PROGRESS = 0x000A,
+	/* The device does not support dual/quad wire mode. */
+	USB_SPI_UNSUPPORTED_EEPROM_MODE = 0x000B,
 	USB_SPI_UNKNOWN_ERROR = 0x8000,
 };
 
@@ -480,6 +601,12 @@ enum usb_spi_mode {
 	USB_SPI_MODE_CONTINUE_RESPONSE,
 };
 
+struct spi_transaction_state_t {
+	uint32_t eeprom_flags;
+	struct usb_spi_transfer_ctx spi_write_ctx;
+	struct usb_spi_transfer_ctx spi_read_ctx;
+};
+
 struct usb_spi_state {
 	/*
 	 * The SPI bridge must be enabled both locally and by the host to allow
@@ -527,8 +654,21 @@ struct usb_spi_state {
 	 * Context structures representing the progress receiving the SPI
 	 * write data and transmitting the SPI read data.
 	 */
-	struct usb_spi_transfer_ctx spi_write_ctx;
-	struct usb_spi_transfer_ctx spi_read_ctx;
+	struct spi_transaction_state_t txn[2];
+
+
+	/*
+	 * Which of the two above transaction slots is the one from which data
+	 * is sent via USB or received via USB.
+	 */
+	uint8_t usb_txn_idx;
+
+	/*
+	 * Boolean value indicating whether the slot that is not indicated
+	 * above contains a valid transaction, which is currently in progress
+	 * on the SPI bus.
+	 */
+	uint8_t is_other_txn_ongoing;
 };
 
 /*
@@ -580,7 +720,9 @@ struct usb_spi_config {
  */
 #define USB_SPI_CONFIG(NAME, INTERFACE, ENDPOINT, FLAGS)                    \
 	static uint16_t CONCAT2(NAME,                                       \
-				_buffer_)[(USB_SPI_BUFFER_SIZE + 1) / 2];   \
+				_buffer1_)[(USB_SPI_BUFFER_SIZE + 1) / 2];   \
+	static uint16_t CONCAT2(NAME,                                       \
+				_buffer2_)[(USB_SPI_BUFFER_SIZE + 1) / 2];   \
 	static usb_uint CONCAT2(                                            \
 		NAME, _ep_rx_buffer_)[USB_MAX_PACKET_SIZE / 2] __usb_ram;   \
 	static usb_uint CONCAT2(                                            \
@@ -592,8 +734,11 @@ struct usb_spi_config {
 		.enabled_device = 0,                                        \
 		.enabled = 0,                                               \
 		.current_spi_device_idx = 0,                                \
-		.spi_write_ctx.buffer = (uint8_t *)CONCAT2(NAME, _buffer_), \
-		.spi_read_ctx.buffer = (uint8_t *)CONCAT2(NAME, _buffer_),  \
+		.txn[0].spi_write_ctx.buffer = (uint8_t *)CONCAT2(NAME, _buffer1_), \
+		.txn[0].spi_read_ctx.buffer = (uint8_t *)CONCAT2(NAME, _buffer1_),  \
+		.txn[1].spi_write_ctx.buffer = (uint8_t *)CONCAT2(NAME, _buffer2_), \
+		.txn[1].spi_read_ctx.buffer = (uint8_t *)CONCAT2(NAME, _buffer2_),  \
+		.is_other_txn_ongoing = 0,                                  \
 	};                                                                  \
 	struct usb_spi_config const NAME = {                                \
 		.state = &CONCAT2(NAME, _state_),                           \
