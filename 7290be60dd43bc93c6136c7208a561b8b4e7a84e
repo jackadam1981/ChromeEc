@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a1f9e77_dcf0dcb8",
+        "filename": "zephyr/emul/retimer/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-07T18:32:14Z",
+      "side": 1,
+      "message": "Include `default y` with the `depends on DT_HAS_CROS_PS8811_EMUL_ENABLED` then I think you can get rid of the config itself in the `testcase.yaml`",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1de3ef98_011c3e93",
         "filename": "zephyr/emul/retimer/emul_ps8811.c",
         "patchSetId": 2
@@ -54,6 +71,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f78d377_9599ca20",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-07T18:32:14Z",
+      "side": 1,
+      "message": "See above comment in the kconfig.",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44cd77e2_33492cba",
         "filename": "zephyr/test/drivers/usbc_retimer/i2c.dts",
         "patchSetId": 2
@@ -65,6 +99,75 @@
       "writtenOn": "2023-03-07T18:01:30Z",
       "side": 1,
       "message": "Aaron, how full-fledged do the emulator tests need to be?  Do they usually need a full \"USB-C stack\" type thing going, or just the chip they\u0027re testing?",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1204b178_dc0135de",
+        "filename": "zephyr/test/drivers/usbc_retimer/i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-07T18:32:14Z",
+      "side": 1,
+      "message": "For unit testing the `ps8811` driver, just the chip itself should be sufficient. So yeah, this portion of the DT seems unnecessary.",
+      "parentUuid": "44cd77e2_33492cba",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dfc88dc_27051fc2",
+        "filename": "zephyr/test/drivers/usbc_retimer/i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-07T18:32:14Z",
+      "side": 1,
+      "message": "nit (because I don\u0027t know what style we want to use and both seem reasonable):\n\nInstead of deleting the node I am 97.55% sure we can actually reference the node and overwrite the properties you\u0027d like to change.\n\nSomething like:\n\n```\n\u0026ps8xxx_emul1 {\n\t\tp0-i2c-addr \u003d \u003c0x8\u003e;\n\t\tp1-i2c-addr \u003d \u003c0x9\u003e;\n\t\tgpio-i2c-addr \u003d \u003c0x1a\u003e;\n\n}\n```",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d4cc376_8f5b4b50",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-07T18:32:14Z",
+      "side": 1,
+      "message": "nit (should be done but can be done later):\n\nI prefer to reset emulator state using the `ZTEST_RULE` macro. See https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/emul/emul_smart_battery.c;l\u003d915 for an example of how this is used.\n\nThis way of resetting the emulator provides a bit more abstraction of the emulator to the test. It\u0027s also pretty nice for when someone is writing an integration test and doesn\u0027t necessarily want to special case which emulated device they\u0027re using.\n\nIt also makes the eventual upstreaming of the test easier.",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "223618d5_bc6e22c8",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-07T18:32:14Z",
+      "side": 1,
+      "message": "Could we use more explicit naming here? Ideally I have a pretty good idea what to abstractly expect from the test before parsing the test code myself.",
       "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +185,52 @@
       "writtenOn": "2023-03-07T16:24:29Z",
       "side": 1,
       "message": "Let me know if I should implement these in this CL. There are also a handful of registers that we don\u0027t use and I was trying to avoid testing functionality that isn\u0027t currently used.",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d2163de_e93c27df",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-07T18:32:14Z",
+      "side": 1,
+      "message": "See above comment for slightly more explicit test names.",
+      "range": {
+        "startLine": 130,
+        "startChar": 14,
+        "endLine": 130,
+        "endChar": 24
+      },
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2905bf9_4aa1331b",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-07T18:32:14Z",
+      "side": 1,
+      "message": "total nit:\n\nWe have `zexpect` macro which fails the test but delays the failure so that all checks can be done.\n\nSince each of these asserts are independent from each other, it\u0027d be a good place to use `zexpect` That way if an early check fails one may still view the results in later checks. I could see `zexpect` being pretty applicable to most of the checks in this test.\n\nAgain, feel free to ignore. Just thought you\u0027d like to know it\u0027s an option.",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 49
+      },
       "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
