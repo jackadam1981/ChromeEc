@@ -275,13 +275,16 @@ static int command_setbodydetectionmode(int argc, const char **argv)
 	if (argc != 2)
 		return EC_ERROR_PARAM_COUNT;
 
-	if (argv[1][0] == 'o' && argv[1][1] == 'n') {
+	if (strlen("on") == strlen(argv[1]) &&
+	    !strncmp(argv[1], "on", strlen("on"))) {
 		body_detect_change_state(BODY_DETECTION_ON_BODY, true);
 		spoof_enable = true;
-	} else if (argv[1][0] == 'o' && argv[1][1] == 'f') {
+	} else if (strlen("off") == strlen(argv[1]) &&
+		   !strncmp(argv[1], "off", strlen("off"))) {
 		body_detect_change_state(BODY_DETECTION_OFF_BODY, true);
 		spoof_enable = true;
-	} else if (argv[1][0] == 'r') {
+	} else if (strlen("reset") == strlen(argv[1]) &&
+		   !strncmp(argv[1], "reset", strlen("reset"))) {
 		body_detect_reset();
 		/*
 		 * Don't call body_detect_set_spoof(), since
