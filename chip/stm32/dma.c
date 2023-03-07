@@ -285,6 +285,13 @@ int dma_wait(enum dma_channel channel)
 	return EC_SUCCESS;
 }
 
+int dma_is_complete(enum dma_channel channel)
+{
+	stm32_dma_regs_t *dma = STM32_DMA_REGS(channel);
+	const uint32_t mask = STM32_DMA_ISR_TCIF(channel);
+	return (dma->isr & mask) == mask;
+}
+
 static inline void _dma_wake_callback(void *cb_data)
 {
 	task_id_t id = (task_id_t)(int)cb_data;
