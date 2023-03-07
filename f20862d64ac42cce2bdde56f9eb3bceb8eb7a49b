@@ -22,6 +22,30 @@
       },
       "revId": "f20862d64ac42cce2bdde56f9eb3bceb8eb7a49b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbfa9db7_4b91a6d4",
+        "filename": "zephyr/program/corsola/src/npcx_usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-07T16:33:45Z",
+      "side": 0,
+      "message": "The Zephyr functions `gpio_pin_get_dt()` and `gpio_pin_get()` return the logical level of the pin.  These routine return 1 if the state of the pin is active.\n\nJason has added the `GPIO_ACTIVE_LOW` flag to this pin:\n```\ngpio_usb_c0_tcpc_int_odl: usb_c0_tcpc_int_odl {\n\tgpios \u003d \u003c\u0026gpio7 3 (GPIO_INPUT | GPIO_ACTIVE_LOW)\u003e;\n\tenum-name \u003d \"GPIO_USB_C0_TCPC_INT_ODL\";\n};\n```\n\nSo `gpio_pin_get_dt()` returns 1 when the interrupt is asserted to the physical/raw state of 0.",
+      "parentUuid": "53a31612_01b856ff",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 6
+      },
+      "revId": "f20862d64ac42cce2bdde56f9eb3bceb8eb7a49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
