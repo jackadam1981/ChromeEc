@@ -16,6 +16,24 @@
       "message": "nit: we are sophisticated enough to have strcasecmp and strncmp in the EC, which may improve readability",
       "revId": "2b4fd62610a76495773be1dcdbddb49abb11041f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec2d861_0042e3d1",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-03-07T18:23:07Z",
+      "side": 1,
+      "message": "This is a direct copy of the `tabletmode` implementation, so I\u0027d like to go with this version initially.\n\nI\u0027ve updated both `bodydetectmode` and `tabletmode` to use `strncmp()`: https://crrev.com/c/4316726",
+      "parentUuid": "1a63a72e_e4e37301",
+      "revId": "2b4fd62610a76495773be1dcdbddb49abb11041f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
