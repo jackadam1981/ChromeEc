@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a31612_01b856ff",
+        "filename": "zephyr/program/corsola/src/npcx_usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-07T06:09:18Z",
+      "side": 0,
+      "message": "LOW of INT_ODL means the interrupt is asserted, so it implies the alert existed. Am I missing anything?\n\nalso from TCPCI Rev2.0 Version1.3:\n\n---\n  4.7 The TCPC shall have an open drain active low output Alert# pin. This pin is used to indicate a change of state, where Alert# pin is asserted when any Alert Bits are set.",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 6
+      },
+      "revId": "f20862d64ac42cce2bdde56f9eb3bceb8eb7a49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
