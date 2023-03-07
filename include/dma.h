@@ -163,6 +163,14 @@ void dma_disable_tc_interrupt(enum dma_channel channel);
 int dma_wait(enum dma_channel channel);
 
 /**
+ * Inspect the transfer complete flag
+ *
+ * @param channel	Channel number to wait on
+ * @return 0 if not complete, non-zero if complete
+ */
+int dma_is_complete(enum dma_channel channel);
+
+/**
  * Initialize the DMA module.
  */
 void dma_init(void);
