@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "524f9e67_44b2d312",
+        "filename": "common/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-07T18:37:54Z",
+      "side": 1,
+      "message": "I think comparing strlen is redundant when using strncmp.",
+      "revId": "eb4fa40622e30b3299890c83aec245ca58a59c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb41ef5_fec28035",
+        "filename": "common/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-07T18:37:54Z",
+      "side": 1,
+      "message": "nit: IMO `\u003d\u003d 0` is more readable than `!` when using strncmp.",
+      "revId": "eb4fa40622e30b3299890c83aec245ca58a59c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
