@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_PANIC_DEFS_H
 #define __CROS_EC_PANIC_DEFS_H
 
+#include <stdint.h>
+
 enum cortex_panic_frame_registers {
 	CORTEX_PANIC_FRAME_REGISTER_R0 = 0,
 	CORTEX_PANIC_FRAME_REGISTER_R1,
