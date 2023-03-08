@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7764258c_207f35ac",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-08T04:05:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "69cb454e_7913f6c0",
+      "range": {
+        "startLine": 902,
+        "startChar": 2,
+        "endLine": 902,
+        "endChar": 40
+      },
+      "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d71a917_0d3f8587",
@@ -198,6 +222,24 @@
       "side": 1,
       "message": "IIUC, charge_manager_force_ceil\u0027s premise as an API is to lower the ceil for the current charge port. It doesn\u0027t need to find a better port, supplier, or PDO. That means most of charge_manager_refresh doesn\u0027t need to be called.\n\nThe only problem I see in not calling charge_manager_refresh is not updating charge_current. I wonder if we should/can update it here. It\u0027s necessarily lower than the current charge_current (because of ceil \u003c charge_current). So, we can simply do\n\n    charge_current \u003d ceil;\n\nWDYT? Actually, if this is accepted, we probably don\u0027t need pd_ceil_enforced[] because the condition at line 882 will be true.",
       "parentUuid": "204f4bcf_da14b06f",
+      "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b95a0ff_daf44159",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-08T04:05:53Z",
+      "side": 1,
+      "message": "Thanks for the inputs from both of you!\n\nI am second to the approach to Daisuke\u0027s idea. Setting the charge_current in `charge_manager_force_ceil`, and dropping a deferred to `charge_manager_refresh`, which seems a better fix, simpler, and the worst case which Diana mentioned may be fixed as well. The HARD RESET, or ERROR RECOVERY will be called from PD task subsequently if a disconnection happens right after the charge_ceil is enforced.",
+      "parentUuid": "202fd507_d258adf2",
       "revId": "a1e0797aeeee9230d309db5a830ec579b8fd9ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
