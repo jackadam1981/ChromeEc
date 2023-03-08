@@ -31,6 +31,9 @@
 #define CONFIG_FLASH_SIZE_BYTES (512 * 1024)
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
+
+/* System safe mode for improved panic debugging */
+#define CONFIG_SYSTEM_SAFE_MODE
 #elif defined(VARIANT_DEDEDE_EC_IT8320) || defined(VARIANT_KEEBY_EC_IT8320)
 /* IT83XX config */
 #define CONFIG_IT83XX_VCC_1P8V
