@@ -7,8 +7,10 @@
 
 #include <stdint.h>
 #include <stdio.h>
+
 #include "compile_time_macros.h"
-#include "ec_panicinfo.h"
+
+#include <libec/ec_panicinfo.h>
 
 int main(int argc, char *argv[])
 {
@@ -34,9 +36,9 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	size = get_panic_input(pdata);
+	size = ec::get_panic_input(pdata);
 	if (size < 0)
 		return 1;
 
-	return parse_panic_info(pdata, size) ? 1 : 0;
+	return ec::parse_panic_info(pdata, size) ? 1 : 0;
 }
