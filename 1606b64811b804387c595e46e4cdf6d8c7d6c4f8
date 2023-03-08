@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0754974a_04bbb349",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-08T23:08:36Z",
+      "side": 1,
+      "message": "Since this shouldn\u0027t change the generated output, can you also run `compare_build.sh`?\n\nSee this commit message for an example: https://crrev.com/c/4126483/3//COMMIT_MSG.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "1606b64811b804387c595e46e4cdf6d8c7d6c4f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64f48041_149a1e04",
         "filename": "include/panic_defs.h",
         "patchSetId": 3
