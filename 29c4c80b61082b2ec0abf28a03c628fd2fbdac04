@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58efeab0_33f01d15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-08T23:44:01Z",
+      "side": 1,
+      "message": "This is looking good. Thanks for the hard work on this!",
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd17f569_7ce8e821",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 24
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-08T23:44:01Z",
+      "side": 1,
+      "message": "Can we pull this change out into a separate CL to make it more clear why it\u0027s needed?",
+      "range": {
+        "startLine": 268,
+        "startChar": 12,
+        "endLine": 268,
+        "endChar": 18
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c522333_0347f677",
+        "filename": "test/aes.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-08T23:44:01Z",
+      "side": 1,
+      "message": "I\u0027m guessing we should have add these `memset`s in the old code too, right? If so, can we split them out into a separate CL?",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 31
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae346838_3f646fcf",
+        "filename": "third_party/boringssl/cros-ec-toolchain.cmake",
+        "patchSetId": 24
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-08T23:44:01Z",
+      "side": 1,
+      "message": "A lot of this file is shared with [`cmake/toolchain-armv7m.cmake](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/cmake/toolchain-armv7m.cmake).\n\nCan you include that file here and then override/add anything that is specific to boringssl? IIRC, in cmake you should be able to include the other",
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd3c1c6_cef88d54",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-08T23:44:01Z",
+      "side": 1,
+      "message": "Could you add a comment on why we have to disable ASM on x86?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adcd0a7f_980c21c2",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-08T23:44:01Z",
+      "side": 1,
+      "message": "Can you add a comment on what this define does? It sounds like it\u0027s disabling threading support in boringssl? (But it also sounds like it may have some side effects?)",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 76
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b62f906_5e397992",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-08T23:44:01Z",
+      "side": 1,
+      "message": "Are these needed? It looks like we\u0027re specifying the compiler in toolchain file.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 30
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baee3650_8a58f9d4",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-08T23:44:01Z",
+      "side": 1,
+      "message": "not needed?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
