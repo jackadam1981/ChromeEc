@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9a91d81d_a30fe99d",
+        "filename": "common/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-03-08T18:14:34Z",
+      "side": 1,
+      "message": "Yeah, I realized later that using `strlen()` is also relying on a null-terminator, so is just as safe as strcmp(). Using the `strlen+1` is a better choice.\n\nUsing \"+1\" should be safe, based on the `strlen()` implementation:\n\n\u003e The strlen() function calculates the length of the string pointed to by s, excluding the terminating null byte (\u0027\\0\u0027).\n\nThis means `strlen()+1` will allow `strncmp()` to read the null byte for comparison, but not past it into invalid memory.",
+      "parentUuid": "90066233_258cfe0f",
+      "revId": "eb4fa40622e30b3299890c83aec245ca58a59c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fcb41ef5_fec28035",
         "filename": "common/body_detection.c",
         "patchSetId": 1
