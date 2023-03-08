@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc7d42f3_2e4e8243",
+        "filename": "zephyr/program/rex/led.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-08T09:33:22Z",
+      "side": 1,
+      "message": "...or just drop the comment entirely, does not seem to add much to the config and it\u0027s just going to be copy pasted and go stale again.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 31
+      },
+      "revId": "fe16b09c499047a9c718156958a42aa5b62c04df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
