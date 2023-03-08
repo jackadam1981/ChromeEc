@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e0185c_1fc24af8",
+        "filename": "util/ec_panicinfo.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-08T23:11:46Z",
+      "side": 1,
+      "message": "We should be able to remove this and use `offsetof` directly from `\u003ccstddef\u003e`: https://en.cppreference.com/w/cpp/types/offsetof.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "1a30245203ff6b4280a93ac970da3826b5286b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041b1573_112e1179",
+        "filename": "util/ec_panicinfo.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-08T23:11:46Z",
+      "side": 1,
+      "message": "Let\u0027s pass the size of `data` in as well to make sure we don\u0027t overflow the buffer.",
+      "range": {
+        "startLine": 157,
+        "startChar": 20,
+        "endLine": 157,
+        "endChar": 30
+      },
+      "revId": "1a30245203ff6b4280a93ac970da3826b5286b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
