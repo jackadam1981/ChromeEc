@@ -6,7 +6,7 @@
 #ifndef EC_PANICINFO_H
 #define EC_PANICINFO_H
 
-#include "panic.h"
+#include "panic_defs.h"
 
 /**
  * Prints panic information to stdout.
@@ -15,5 +15,13 @@
  * @return 0 if success or non-zero error code if error.
  */
 int parse_panic_info(const char *data, size_t size);
+
+/**
+ * Read stdin to data.
+ *
+ * @param data  Raw information to store.
+ * @return data length if success or non-zero code if error.
+ */
+int get_panic_input(char *data);
 
 #endif /* EC_PANICINFO_H */
