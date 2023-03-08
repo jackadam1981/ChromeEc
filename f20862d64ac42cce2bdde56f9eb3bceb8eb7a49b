@@ -70,6 +70,30 @@
       },
       "revId": "f20862d64ac42cce2bdde56f9eb3bceb8eb7a49b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb35e63_fdc23d3b",
+        "filename": "zephyr/program/corsola/src/npcx_usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-08T01:15:05Z",
+      "side": 0,
+      "message": "Thanks for the clarification. I also reviewed the gpio_pin_get_* uses in corsola, no other GPIO_ACTIVE_LOW usage was found.",
+      "parentUuid": "4c42ab65_9ed727a9",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 6
+      },
+      "revId": "f20862d64ac42cce2bdde56f9eb3bceb8eb7a49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
