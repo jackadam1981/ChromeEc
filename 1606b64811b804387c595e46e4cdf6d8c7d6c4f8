@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f48041_149a1e04",
+        "filename": "include/panic_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-03-08T15:09:42Z",
+      "side": 1,
+      "message": "nit: missing\n\n```\n#ifdef __cplusplus\nextern \"C\" {\n#endif\n```",
+      "revId": "1606b64811b804387c595e46e4cdf6d8c7d6c4f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
