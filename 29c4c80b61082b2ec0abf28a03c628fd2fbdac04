@@ -83,6 +83,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5312be19_6b2d43da",
+        "filename": "third_party/boringssl/cros-ec-toolchain.cmake",
+        "patchSetId": 24
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-08T23:45:36Z",
+      "side": 1,
+      "message": "\u003e  IIRC, in cmake you should be able to include the other\n\nI meant to finish this sentence.\n\n IIRC, in cmake you should be able to include the other cmake file with something like:\n \n ```\n include(../../path/to/other/file.cmake)\n ```",
+      "parentUuid": "ae346838_3f646fcf",
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffd3c1c6_cef88d54",
         "filename": "third_party/rules.mk",
         "patchSetId": 24
