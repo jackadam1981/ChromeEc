@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "091d1936_2f5938c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-08T20:07:45Z",
+      "side": 1,
+      "message": "This seems to work. Diana may have a say.",
+      "revId": "db4e25b98da1ba4c46d7bb88a3482b05996dfcfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee6cc67_dcd0dba9",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-08T20:07:45Z",
+      "side": 1,
+      "message": "Now the API has two very different paths. charge_manager.h should describe it (maybe not in this CL).",
+      "range": {
+        "startLine": 1282,
+        "startChar": 5,
+        "endLine": 1282,
+        "endChar": 30
+      },
+      "revId": "db4e25b98da1ba4c46d7bb88a3482b05996dfcfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e181520_a6149bae",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1302,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-08T20:07:45Z",
+      "side": 1,
+      "message": "nice.",
+      "range": {
+        "startLine": 1302,
+        "startChar": 32,
+        "endLine": 1302,
+        "endChar": 38
+      },
+      "revId": "db4e25b98da1ba4c46d7bb88a3482b05996dfcfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
