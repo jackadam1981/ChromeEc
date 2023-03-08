@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab956ee_1b528176",
+        "filename": "zephyr/test/skyrim/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-03-08T08:16:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1217d71_da6da7e8",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6816087_f48a0f23",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "There shouldn\u0027t be any issues with adding it to the native_posix overlay. If there are then we can use a separate DT file. But generally I put anything that\u0027s useful across multiple variants into the native_posix overlay.",
       "parentUuid": "84d79d06_a7381eed",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1570aaf5_b2bebcbd",
+        "filename": "zephyr/test/skyrim/boards/skyrim/skyrim.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-03-08T08:16:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20557099_b0fd9857",
       "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -212,6 +248,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d4edabb_7880ac5b",
+        "filename": "zephyr/test/skyrim/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-03-08T08:16:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "578db407_f95fdc4f",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c03b5aa_7e12f18c",
@@ -261,6 +315,24 @@
       "side": 1,
       "message": "It will be done, when fix will be ported to Markarth and Crystaldrift",
       "parentUuid": "76c77ef0_92ce52d2",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d65a096f_ac14d47f",
+        "filename": "zephyr/test/skyrim/tests/skyrim/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-03-08T08:16:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adf25f6f_681f06b7",
       "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
