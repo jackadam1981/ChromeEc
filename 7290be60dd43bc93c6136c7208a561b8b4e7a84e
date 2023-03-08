@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce80b892_ec23c6e6",
+        "filename": "zephyr/emul/retimer/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-08T21:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a1f9e77_dcf0dcb8",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1de3ef98_011c3e93",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-07T18:01:30Z",
       "side": 1,
       "message": "Should this be a \"set_reg\"?",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4098b81_66342bae",
+        "filename": "zephyr/emul/retimer/emul_ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-08T21:47:53Z",
+      "side": 1,
+      "message": "Yup, not sure why the compiler didn\u0027t catch it.",
+      "parentUuid": "1de3ef98_011c3e93",
       "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d10b4d_3bb5400a",
+        "filename": "zephyr/emul/retimer/emul_ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-08T21:47:53Z",
+      "side": 1,
+      "message": "From my experiments, there is no error and the bits actually do get changed.",
+      "parentUuid": "2e8bc4ae_a9ab7ad3",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14000a23_85e226fe",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66a672b8_03dc221f",
+        "filename": "zephyr/emul/retimer/emul_ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-08T21:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14000a23_85e226fe",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f78d377_9599ca20",
@@ -82,6 +154,24 @@
       "writtenOn": "2023-03-07T18:32:14Z",
       "side": 1,
       "message": "See above comment in the kconfig.",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4711ab32_e6ba8bc9",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-08T21:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f78d377_9599ca20",
       "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f07287b_86c4af8c",
+        "filename": "zephyr/test/drivers/usbc_retimer/i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-08T21:47:53Z",
+      "side": 1,
+      "message": "This is just a confusing naming issue. The `ps8xxx` emulator is different from the `ps8811` emulator. The former is a TCPCI emulator and is unrelated to this CL.",
+      "parentUuid": "1204b178_dc0135de",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dfc88dc_27051fc2",
@@ -134,6 +242,24 @@
       "writtenOn": "2023-03-07T18:32:14Z",
       "side": 1,
       "message": "nit (because I don\u0027t know what style we want to use and both seem reasonable):\n\nInstead of deleting the node I am 97.55% sure we can actually reference the node and overwrite the properties you\u0027d like to change.\n\nSomething like:\n\n```\n\u0026ps8xxx_emul1 {\n\t\tp0-i2c-addr \u003d \u003c0x8\u003e;\n\t\tp1-i2c-addr \u003d \u003c0x9\u003e;\n\t\tgpio-i2c-addr \u003d \u003c0x1a\u003e;\n\n}\n```",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3809d9ca_486cc263",
+        "filename": "zephyr/test/drivers/usbc_retimer/i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-08T21:47:53Z",
+      "side": 1,
+      "message": "Another \"the ps8811 emulator is different from the ps8xxx emulator\" thing.",
+      "parentUuid": "3dfc88dc_27051fc2",
       "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +281,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7635510_e339c1fb",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-08T21:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d4cc376_8f5b4b50",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "223618d5_bc6e22c8",
@@ -168,6 +312,24 @@
       "writtenOn": "2023-03-07T18:32:14Z",
       "side": 1,
       "message": "Could we use more explicit naming here? Ideally I have a pretty good idea what to abstractly expect from the test before parsing the test code myself.",
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf7d3bef_8f77f444",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-08T21:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "223618d5_bc6e22c8",
       "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -212,6 +374,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abeb55f2_cedf834f",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-08T21:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d2163de_e93c27df",
+      "range": {
+        "startLine": 130,
+        "startChar": 14,
+        "endLine": 130,
+        "endChar": 24
+      },
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2905bf9_4aa1331b",
@@ -225,6 +411,30 @@
       "writtenOn": "2023-03-07T18:32:14Z",
       "side": 1,
       "message": "total nit:\n\nWe have `zexpect` macro which fails the test but delays the failure so that all checks can be done.\n\nSince each of these asserts are independent from each other, it\u0027d be a good place to use `zexpect` That way if an early check fails one may still view the results in later checks. I could see `zexpect` being pretty applicable to most of the checks in this test.\n\nAgain, feel free to ignore. Just thought you\u0027d like to know it\u0027s an option.",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 49
+      },
+      "revId": "7290be60dd43bc93c6136c7208a561b8b4e7a84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e7f751_030efcdc",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-08T21:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2905bf9_4aa1331b",
       "range": {
         "startLine": 136,
         "startChar": 3,
