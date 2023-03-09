@@ -70,6 +70,30 @@
       },
       "revId": "a4367bacdf95fd7048070cb1bdba25ee12c8d0e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f3a3f31_e10e34e4",
+        "filename": "zephyr/program/rex/rex/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-09T16:30:42Z",
+      "side": 0,
+      "message": "led.dtsi is at program level, new added led configs are at rex project level which are overiding some part of program config, hence I think it should be there",
+      "parentUuid": "a609856b_029535dd",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "a4367bacdf95fd7048070cb1bdba25ee12c8d0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
