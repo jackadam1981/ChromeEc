@@ -94,12 +94,14 @@ struct ppc_config_t ppc_chips[] = {
 		.frs_en = IOEX_USB_C0_FRS_EN,
 		.drv = &syv682x_drv,
 	},
+#if 0
 	[USBC_PORT_C1] = {
 		/* Compatible with Silicon Mitus SM5360A */
 		.i2c_port = I2C_PORT_USB_C1_PPC,
 		.i2c_addr_flags = NX20P3483_ADDR2_FLAGS,
 		.drv = &nx20p348x_drv,
 	},
+#endif
 	[USBC_PORT_C2] = {
 		.i2c_port = I2C_PORT_USB_C0_C2_PPC,
 		.i2c_addr_flags = SYV682X_ADDR2_FLAGS,
@@ -448,7 +450,7 @@ void ppc_interrupt(enum gpio_signal signal)
 		case DB_USB_ABSENT2:
 			break;
 		case DB_USB3_PS8815:
-			nx20p348x_interrupt(USBC_PORT_C1);
+			//nx20p348x_interrupt(USBC_PORT_C1);
 			break;
 		}
 		break;
