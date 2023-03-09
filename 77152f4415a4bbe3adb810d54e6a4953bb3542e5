@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c19d4456_8d492ba8",
+        "filename": "util/ectool.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 6822,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-09T21:10:08Z",
+      "side": 1,
+      "message": "Style guide prefers `static_cast` over C-style cast: https://google.github.io/styleguide/cppguide.html#Casting\n\n(I know it\u0027s not consistent in `ectool.cc`.)",
+      "range": {
+        "startLine": 6822,
+        "startChar": 24,
+        "endLine": 6822,
+        "endChar": 32
+      },
+      "revId": "77152f4415a4bbe3adb810d54e6a4953bb3542e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
