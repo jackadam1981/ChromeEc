@@ -18,6 +18,20 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+/* Buttons are not supported */
+#undef CONFIG_VOLUME_BUTTONS
+#undef CONFIG_MKBP_INPUT_DEVICES
+
+/* Tablet mode is not supported */
+#undef CONFIG_TABLET_MODE
+#undef CONFIG_TABLET_MODE_SWITCH
+#undef CONFIG_LID_ANGLE
+
+/* BC1.2 is not supported */
+#undef CONFIG_USB_CHARGER
+#undef CONFIG_BC12_SINGLE_DRIVER
+#undef CONFIG_BC12_DETECT_PI3USB9201
+
 /*
  * This will happen automatically on NPCX9 ES2 and later. Do not remove
  * until we can confirm all earlier chips are out of service.
@@ -202,7 +216,7 @@
 #define CONFIG_CHARGER_BQ25720
 #define CONFIG_CHARGER_BQ25720_VSYS_TH2_CUSTOM
 #define CONFIG_CHARGER_BQ25720_VSYS_TH2_DV 70
-#define CONFIG_CHARGE_RAMP_SW
+#define xxxCONFIG_CHARGE_RAMP_SW
 #define CONFIG_CHARGER_BQ25710_SENSE_RESISTOR 10
 #define CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC 10
 #define CONFIG_CHARGER_BQ25710_PSYS_SENSING
