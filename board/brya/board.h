@@ -42,10 +42,6 @@
 
 /* Sensors */
 
-/* USB Type A Features */
-#define USB_PORT_COUNT 1
-#define CONFIG_USB_PORT_POWER_DUMB
-
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
 
