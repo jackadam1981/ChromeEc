@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e62ab03_58b5920c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-09T16:39:33Z",
+      "side": 1,
+      "message": "Generally speaking, it might be easiest to make this into its own test binary within the drivers test.  That way, it can have separate Kconfig and devicetree options if it needs those (example: zephyr/test/drivers/ps8xxx/ has its own dts and project configuration).  \n\nYou can take a look at the tests under zephyr/test/drivers to kind of get a sense for how these get set up.  There\u0027s also a zephyr test chat I\u0027ll add you to where folks are usually happy to answer questions.  Plus they have a YAQS and an alias to add zephyr test reviewers to CLs \n\nI think right now, we\u0027ve actually been getting body detection coverage from the old ECOS tests in test/body_detection.c.  So if the zephyr test setup starts becoming too difficult, you can fall back to trying to test in the old ECOS framework.  It\u0027s a trade off because that framework doesn\u0027t have a lot of support/expertise but it\u0027s also already set up for body detection.",
+      "revId": "6e29e4c8ca04a013ca4f2d68d10d2810063430ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
