@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a738bcdb_5c563940",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 24
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-09T07:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd17f569_7ce8e821",
+      "range": {
+        "startLine": 268,
+        "startChar": 12,
+        "endLine": 268,
+        "endChar": 18
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c522333_0347f677",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-03-08T23:44:01Z",
       "side": 1,
       "message": "I\u0027m guessing we should have add these `memset`s in the old code too, right? If so, can we split them out into a separate CL?",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 31
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d45e94c_f1319ae2",
+        "filename": "test/aes.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-09T07:57:46Z",
+      "side": 1,
+      "message": "hmmm, we don\u0027t need to add these `memset`s in the old code.\n\nThe reason that we need to add a memset here is because the definition of `GCM128_CONTEXT` is different between the original version \u0026 upstream.",
+      "parentUuid": "8c522333_0347f677",
       "range": {
         "startLine": 458,
         "startChar": 0,
@@ -101,6 +149,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "232eaf85_08a433bb",
+        "filename": "third_party/boringssl/cros-ec-toolchain.cmake",
+        "patchSetId": 24
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-09T07:57:46Z",
+      "side": 1,
+      "message": "But this toolchain file is not only for armv7m...\nThe \"host\"(x86_64) would also use this file to compile the host tests.",
+      "parentUuid": "5312be19_6b2d43da",
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffd3c1c6_cef88d54",
         "filename": "third_party/rules.mk",
         "patchSetId": 24
@@ -112,6 +178,30 @@
       "writtenOn": "2023-03-08T23:44:01Z",
       "side": 1,
       "message": "Could you add a comment on why we have to disable ASM on x86?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fbfbef_59639d89",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-09T07:57:46Z",
+      "side": 1,
+      "message": "We can enable the ASM for x86.\nI forget to re-enable it after testing.",
+      "parentUuid": "ffd3c1c6_cef88d54",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -135,6 +225,30 @@
       "writtenOn": "2023-03-08T23:44:01Z",
       "side": 1,
       "message": "Can you add a comment on what this define does? It sounds like it\u0027s disabling threading support in boringssl? (But it also sounds like it may have some side effects?)",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 76
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d35353c2_955c8e33",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-09T07:57:46Z",
+      "side": 1,
+      "message": "This is used to prevent the undefined pthread related types in the headers.\nObversely we don\u0027t support pthread in EC/FPMCU.",
+      "parentUuid": "adcd0a7f_980c21c2",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -170,6 +284,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62608d0f_f8d2e8fc",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-09T07:57:46Z",
+      "side": 1,
+      "message": "We didn\u0027t specify the exact compiler in the toolchain file.\n\nThe toolchain file needs these parameters to know the compiler we used in the make file.\n\nAnd we will have some linker errors if we use the gcc and clang at the same time.",
+      "parentUuid": "4b62f906_5e397992",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 30
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "baee3650_8a58f9d4",
         "filename": "third_party/rules.mk",
         "patchSetId": 24
@@ -181,6 +319,30 @@
       "writtenOn": "2023-03-08T23:44:01Z",
       "side": 1,
       "message": "not needed?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a8cb3a_56aaec5e",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-09T07:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baee3650_8a58f9d4",
       "range": {
         "startLine": 64,
         "startChar": 0,
