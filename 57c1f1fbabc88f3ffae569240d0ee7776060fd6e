@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c429e127_5e6b343d",
+        "filename": "util/ec_panicinfo_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2023-03-09T11:23:19Z",
+      "side": 1,
+      "message": "sure, will create a followup CL to move the fuzzer there.",
+      "parentUuid": "8fe92a11_d759f473",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 3
+      },
+      "revId": "57c1f1fbabc88f3ffae569240d0ee7776060fd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f23908fe_d5966149",
         "filename": "zephyr/shim/src/panic.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-08T23:18:38Z",
       "side": 1,
       "message": "Should this be `include/panic_defs.h`? (I haven\u0027t looked too closely, so this file may also be right.)",
+      "range": {
+        "startLine": 71,
+        "startChar": 30,
+        "endLine": 71,
+        "endChar": 50
+      },
+      "revId": "57c1f1fbabc88f3ffae569240d0ee7776060fd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42cc5a7c_7610fe6a",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2023-03-09T11:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f23908fe_d5966149",
       "range": {
         "startLine": 71,
         "startChar": 30,
