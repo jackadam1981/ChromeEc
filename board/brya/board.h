@@ -39,6 +39,8 @@
 #define CONFIG_USB_PD_TCPMV1
 #undef CONFIG_USB_DRP_ACC_TRYSRC
 #undef CONFIG_USB_PD_REV30
+#undef CONFIG_CMD_USB_PD_CABLE
+#undef CONFIG_USB_PD_DECODE_SOP
 
 /*
  * This will happen automatically on NPCX9 ES2 and later. Do not remove
