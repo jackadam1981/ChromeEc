@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8bd1c18_909006c8",
+        "filename": "zephyr/program/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-09T16:33:56Z",
+      "side": 1,
+      "message": "The default weak function already returns true, so I don\u0027t think this is needed.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/common/usbc/usb_pd_dpm.c;l\u003d339",
+      "range": {
+        "startLine": 281,
+        "startChar": 16,
+        "endLine": 281,
+        "endChar": 38
+      },
+      "revId": "904fb0016021d6d7179216b93d600a25499bb1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
