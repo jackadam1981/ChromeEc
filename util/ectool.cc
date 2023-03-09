@@ -14,6 +14,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#include <vector>
 #include <signal.h>
 #include <stdbool.h>
 
@@ -24,7 +25,6 @@
 #include "compile_time_macros.h"
 #include "crc.h"
 #include "cros_ec_dev.h"
-#include "ec_panicinfo.h"
 #include "ec_flash.h"
 #include "ec_version.h"
 #include "ectool.h"
@@ -38,6 +38,7 @@
 
 #include <libec/add_entropy_command.h>
 #include <libec/flash_protect_command.h>
+#include <libec/ec_panicinfo.h>
 
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
@@ -6818,7 +6819,14 @@ int cmd_panic_info(int argc, char *argv[])
 		return 0;
 	}
 
-	return parse_panic_info((char *)(ec_inbuf), rv);
+	std::vector<char> data((char *)ec_inbuf, (char *)ec_inbuf + rv);
+	auto result = ec::ParsePanicInfo(data);
+
+	if (!result.has_value())
+		return 1;
+	printf("%s", result.value().c_str());
+
+	return 0;
 }
 
 int cmd_power_info(int argc, char *argv[])
