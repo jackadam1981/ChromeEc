@@ -155,6 +155,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62500a4e_73f0a038",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-09T21:13:00Z",
+      "side": 1,
+      "message": "Line 164 enables source and 165 enables sink. Can you clarify?",
+      "parentUuid": "c6f88d82_f64b065d",
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3dbb131f_0d3a4dad",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 2
