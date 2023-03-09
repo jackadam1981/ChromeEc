@@ -40,8 +40,6 @@
 
 #define CONFIG_MP2964
 
-/* Sensors */
-
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
 
@@ -141,7 +139,6 @@
 
 /* Enabling USB4 mode */
 #define CONFIG_USB_PD_USB4
-#define CONFIG_USB_PD_DATA_RESET_MSG
 
 /* Retimer */
 #define CONFIG_USBC_RETIMER_FW_UPDATE
