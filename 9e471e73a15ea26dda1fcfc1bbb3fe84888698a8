@@ -34,6 +34,29 @@
       "parentUuid": "6202dbe8_edd89e7a",
       "revId": "9e471e73a15ea26dda1fcfc1bbb3fe84888698a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72799063_27ec8eaf",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-03-09T23:52:33Z",
+      "side": 1,
+      "message": "Do we really want to be calling `checkpatch` at all in the CQ?  It seems this should be done as a part of pre-upload checks instead?\n\nCheckpatch has been known to create plenty of false-positive warnings, so if a warning causes a CQ failure, there\u0027s no way to override that.",
+      "range": {
+        "startLine": 80,
+        "startChar": 24,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "revId": "9e471e73a15ea26dda1fcfc1bbb3fe84888698a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
