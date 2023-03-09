@@ -203,55 +203,33 @@ const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
 /* The function maybe unused because a temperature sensor can be added to dts
  * without a reference in the cros_ec_temp_sensors node.
  */
-__maybe_unused static int
-f75303_get_local_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
-{
-	return f75303_get_val_k(sensor->idx, temp_ptr);
-}
-__maybe_unused static int
-f75303_get_remote_temp_1(const struct temp_sensor_t *sensor, int *temp_ptr)
-{
-	return f75303_get_val_k(sensor->idx, temp_ptr);
-}
-__maybe_unused static int
-f75303_get_remote_temp_2(const struct temp_sensor_t *sensor, int *temp_ptr)
+__maybe_unused static int f75303_get_temp(const struct temp_sensor_t *sensor,
+					  int *temp_ptr)
 {
 	return f75303_get_val_k(sensor->idx, temp_ptr);
 }
 #endif /* f75303_COMPAT */
 
-#define DEFINE_F75303_DATA(node_id)                     \
-	[F75303_SENSOR_ID(node_id)] = {                 \
-		.i2c_port = I2C_PORT_BY_DEV(node_id),   \
-		.i2c_addr_flags = DT_REG_ADDR(node_id), \
+#define DEFINE_F75303_DATA(sensor_id)                     \
+	[F75303_SENSOR_ID(sensor_id)] = {                 \
+		.i2c_port = I2C_PORT_BY_DEV(sensor_id),   \
+		.i2c_addr_flags = DT_REG_ADDR(sensor_id), \
 	},
 
-#define TEMP_SENSOR_F75303_READ(named_id)                                  \
-	{                                                                  \
-		COND_CODE_1((DT_STRING_TOKEN(node_id, temperature_type) == \
-			     F75303_TEMP_LOCAL),                           \
-			    (&f75303_get_local_temp), ())                  \
-		COND_CODE_1((DT_STRING_TOKEN(node_id, temperature_type) == \
-			     F75303_TEMP_REMOTE1),                         \
-			    (&f75303_get_remote_temp_1), ())               \
-		COND_CODE_1((DT_STRING_TOKEN(node_id, temperature_type) == \
-			     F75303_TEMP_REMOTE2),                         \
-			    (&f75303_get_remote_temp_2), ())               \
-	}
-
-#define GET_ZEPHYR_TEMP_SENSOR_F75303(named_id)                  \
+#define GET_ZEPHYR_TEMP_SENSOR_F75303(named_id, sensor_id)       \
 	(&(const struct zephyr_temp_sensor){                     \
-		.read = TEMP_SENSOR_F75303_READ(named_id),       \
+		.read = &f75303_get_temp,                        \
 		.thermistor = NULL,                              \
 		.update_temperature = f75303_update_temperature, \
 		FILL_POWER_GOOD(named_id) })
 
-#define TEMP_F75303(named_id, sensor_id)                                \
-	[TEMP_SENSOR_ID(named_id)] = {                                  \
-		.name = DT_NODE_FULL_NAME(sensor_id),                   \
-		.idx = DT_STRING_TOKEN(sensor_id, temperature_type),    \
-		.type = TEMP_SENSOR_TYPE_BOARD,                         \
-		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_F75303(named_id), \
+#define TEMP_F75303(named_id, sensor_id)                                    \
+	[TEMP_SENSOR_ID(named_id)] = {                                      \
+		.name = DT_NODE_FULL_NAME(sensor_id),                       \
+		.idx = F75303_SENSOR_ID(sensor_id),                         \
+		.type = TEMP_SENSOR_TYPE_BOARD,                             \
+		.zephyr_info =                                              \
+			GET_ZEPHYR_TEMP_SENSOR_F75303(named_id, sensor_id), \
 	}
 
 const struct f75303_sensor_t f75303_sensors[F75303_IDX_COUNT] = {

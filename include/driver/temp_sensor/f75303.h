@@ -28,12 +28,20 @@ struct f75303_sensor_t {
 
 extern const struct f75303_sensor_t f75303_sensors[];
 
-/* F75303 register */
-enum {
-	F75303_TEMP_LOCAL,
-	F75303_TEMP_REMOTE1,
-	F75303_TEMP_REMOTE2,
-};
+/* F75303 register
+ * Note, these must be macros for compatibility with the Zephyr temperature
+ * sensor shim.
+ */
+#define F75303_TEMP_LOCAL 0
+#define F75303_TEMP_REMOTE1 1
+#define F75303_TEMP_REMOTE2 2
+
+/*
+ * The F75303 driver only supports a single device instamce, that contains 3
+ * separate temperature sensors.
+ */
+#define F75303_IDX_COUNT 3
+
 /**
  * Get the last polled value of a sensor.
  *
