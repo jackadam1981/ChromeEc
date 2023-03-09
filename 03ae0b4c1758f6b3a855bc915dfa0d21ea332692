@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cba00b3_b02a14a4",
+        "filename": "util/ec_panicinfo.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-09T21:08:01Z",
+      "side": 1,
+      "message": "I missed this before, but this check is checking the size of the pointer, not the array. It would have worked when this was in `main` and we had `char pdata[4096]`, but not here where we\u0027re just passing the pointer.",
+      "range": {
+        "startLine": 170,
+        "startChar": 6,
+        "endLine": 170,
+        "endChar": 26
+      },
+      "revId": "03ae0b4c1758f6b3a855bc915dfa0d21ea332692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
