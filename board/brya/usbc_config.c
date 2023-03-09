@@ -56,6 +56,7 @@ const struct tcpc_config_t tcpc_config[] = {
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_NO_DEBUG_ACC_CONTROL,
 	},
+#if 0
 	[USBC_PORT_C1] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
@@ -68,6 +69,7 @@ const struct tcpc_config_t tcpc_config[] = {
 			 TCPC_FLAGS_CONTROL_VCONN |
 			 TCPC_FLAGS_CONTROL_FRS,
 	},
+#endif
 	[USBC_PORT_C2] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
@@ -132,17 +134,6 @@ static const struct usb_mux usbc2_tcss_usb_mux = {
 	.hpd_update = &virtual_hpd_update,
 };
 
-/*
- * USB3 DB mux configuration - the top level mux still needs to be set
- * to the virtual_usb_mux_driver so the AP gets notified of mux changes
- * and updates the TCSS configuration on state changes.
- */
-static const struct usb_mux usbc1_usb3_db_retimer = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &tcpci_tcpm_usb_mux_driver,
-	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
-};
-
 const struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
@@ -152,6 +143,7 @@ const struct usb_mux usb_muxes[] = {
 		.i2c_addr_flags = USBC_PORT_C0_BB_RETIMER_I2C_ADDR,
 		.next_mux = &usbc0_tcss_usb_mux,
 	},
+#if 0
 	[USBC_PORT_C1] = {
 		/* PS8815 DB */
 		.usb_port = USBC_PORT_C1,
@@ -159,6 +151,7 @@ const struct usb_mux usb_muxes[] = {
 		.hpd_update = &virtual_hpd_update,
 		.next_mux = &usbc1_usb3_db_retimer,
 	},
+#endif
 	[USBC_PORT_C2] = {
 		.usb_port = USBC_PORT_C2,
 		.driver = &bb_usb_retimer,
