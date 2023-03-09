@@ -32,6 +32,9 @@
 #undef CONFIG_BC12_SINGLE_DRIVER
 #undef CONFIG_BC12_DETECT_PI3USB9201
 
+#undef CONFIG_USBC_PPC
+#undef CONFIG_USB_PD_DISCHARGE_PPC
+
 /*
  * This will happen automatically on NPCX9 ES2 and later. Do not remove
  * until we can confirm all earlier chips are out of service.
@@ -47,11 +50,7 @@
 
 
 
-#define CONFIG_USB_PD_FRS_PPC
-
 #define xCONFIG_USBC_RETIMER_INTEL_BB
-
-#define CONFIG_USBC_PPC_SYV682X
 
 /* TODO: b/177608416 - measure and check these values on brya */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY 30000 /* us */

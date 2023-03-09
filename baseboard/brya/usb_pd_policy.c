@@ -36,16 +36,16 @@ int pd_check_vconn_swap(int port)
 
 void pd_power_supply_reset(int port)
 {
-	int prev_en;
+	int prev_en = 0;
 
-	prev_en = ppc_is_sourcing_vbus(port);
+//	prev_en = ppc_is_sourcing_vbus(port);
 
 	/* Disable VBUS. */
-	ppc_vbus_source_enable(port, 0);
+//	ppc_vbus_source_enable(port, 0);
 
 	/* Enable discharge if we were previously sourcing 5V */
 	if (prev_en)
-		pd_set_vbus_discharge(port, 1);
+		/*pd_set_vbus_discharge(port, 1)*/;
 
 	/* Notify host of power info change. */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
@@ -53,17 +53,17 @@ void pd_power_supply_reset(int port)
 
 int pd_set_power_supply_ready(int port)
 {
-	int rv;
+	int rv = EC_SUCCESS;
 
 	/* Disable charging. */
-	rv = ppc_vbus_sink_enable(port, 0);
+//	rv = ppc_vbus_sink_enable(port, 0);
 	if (rv)
 		return rv;
 
-	pd_set_vbus_discharge(port, 0);
+//	pd_set_vbus_discharge(port, 0);
 
 	/* Provide Vbus. */
-	rv = ppc_vbus_source_enable(port, 1);
+//	rv = ppc_vbus_source_enable(port, 1);
 	if (rv)
 		return rv;
 
@@ -78,7 +78,8 @@ int board_vbus_source_enabled(int port)
 	/* BJ port is always sink. */
 	if (port >= CONFIG_USB_PD_PORT_MAX_COUNT)
 		return 0;
-	return ppc_is_sourcing_vbus(port);
+//	return ppc_is_sourcing_vbus(port);
+	return EC_SUCCESS;
 }
 
 /* ----------------- Vendor Defined Messages ------------------ */

@@ -13,8 +13,8 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "driver/bc12/pi3usb9201_public.h"
-#include "driver/ppc/nx20p348x.h"
-#include "driver/ppc/syv682x_public.h"
+
+
 #include "driver/retimer/bb_retimer_public.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/tcpm/ps8xxx_public.h"
@@ -30,7 +30,7 @@
 #include "task_id.h"
 #include "timer.h"
 #include "usbc_config.h"
-#include "usbc_ppc.h"
+
 #include "usb_charge.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
@@ -81,33 +81,6 @@ BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
 #endif /* !CONFIG_ZEPHYR */
 
 /******************************************************************************/
-
-/* USBC PPC configuration */
-struct ppc_config_t ppc_chips[] = {
-	[USBC_PORT_C0] = {
-		.i2c_port = I2C_PORT_USB_C0_C2_PPC,
-		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
-//		.frs_en = IOEX_USB_C0_FRS_EN,
-		.drv = &syv682x_drv,
-	},
-#if 0
-	[USBC_PORT_C1] = {
-		/* Compatible with Silicon Mitus SM5360A */
-		.i2c_port = I2C_PORT_USB_C1_PPC,
-		.i2c_addr_flags = NX20P3483_ADDR2_FLAGS,
-		.drv = &nx20p348x_drv,
-	},
-#endif
-	[USBC_PORT_C2] = {
-		.i2c_port = I2C_PORT_USB_C0_C2_PPC,
-		.i2c_addr_flags = SYV682X_ADDR2_FLAGS,
-//		.frs_en = IOEX_USB_C2_FRS_EN,
-		.drv = &syv682x_drv,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
-
-unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 #ifndef CONFIG_ZEPHYR
 /* USBC mux configuration - Alder Lake includes internal mux */
@@ -321,8 +294,8 @@ static void board_tcpc_init(void)
 #endif
 
 	/* Enable PPC interrupts. */
-	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C2_PPC_INT_ODL);
+//	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
+//	gpio_enable_interrupt(GPIO_USB_C2_PPC_INT_ODL);
 
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_C2_TCPC_INT_ODL);
@@ -336,7 +309,7 @@ static void board_tcpc_init(void)
 #endif /* !CONFIG_ZEPHYR */
 
 	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
-		gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
+//		gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
 		gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
 #ifndef CONFIG_ZEPHYR
 #if 0
@@ -359,18 +332,6 @@ uint16_t tcpc_get_alert_status(void)
 		status |= PD_STATUS_TCPC_ALERT_1;
 
 	return status;
-}
-
-int ppc_get_alert_status(int port)
-{
-	if (port == USBC_PORT_C0)
-		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
-	else if ((port == USBC_PORT_C1) &&
-		 (ec_cfg_usb_db_type() != DB_USB_ABSENT))
-		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
-	else if (port == USBC_PORT_C2)
-		return gpio_get_level(GPIO_USB_C2_PPC_INT_ODL) == 0;
-	return 0;
 }
 
 void tcpc_alert_event(enum gpio_signal signal)
@@ -409,30 +370,6 @@ void bc12_interrupt(enum gpio_signal signal)
 	}
 }
 #endif
-
-void ppc_interrupt(enum gpio_signal signal)
-{
-	switch (signal) {
-	case GPIO_USB_C0_PPC_INT_ODL:
-		syv682x_interrupt(USBC_PORT_C0);
-		break;
-	case GPIO_USB_C1_PPC_INT_ODL:
-		switch (ec_cfg_usb_db_type()) {
-		case DB_USB_ABSENT:
-		case DB_USB_ABSENT2:
-			break;
-		case DB_USB3_PS8815:
-			//nx20p348x_interrupt(USBC_PORT_C1);
-			break;
-		}
-		break;
-	case GPIO_USB_C2_PPC_INT_ODL:
-		syv682x_interrupt(USBC_PORT_C2);
-		break;
-	default:
-		break;
-	}
-}
 
 void retimer_interrupt(enum gpio_signal signal)
 {
