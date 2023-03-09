@@ -35,6 +35,8 @@
 #undef CONFIG_USBC_PPC
 #undef CONFIG_USB_PD_DISCHARGE_PPC
 
+#undef CONFIG_USB_PD_REV30
+
 /*
  * This will happen automatically on NPCX9 ES2 and later. Do not remove
  * until we can confirm all earlier chips are out of service.
