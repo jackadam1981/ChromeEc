@@ -3056,7 +3056,7 @@ struct ec_params_motion_sense {
 					/* spoof activity state */
 					uint8_t activity_state;
 				};
-			};
+			} __ec_todo_packed;
 		} spoof;
 
 		/* Used for MOTIONSENSE_CMD_TABLET_MODE_LID_ANGLE. */
@@ -3092,7 +3092,7 @@ struct ec_params_motion_sense {
 			uint8_t sensor_num;
 			uint8_t activity; /* enum motionsensor_activity */
 		} get_activity;
-	};
+	} __ec_todo_packed;
 } __ec_todo_packed;
 
 enum motion_sense_cmd_info_flags {
@@ -3392,7 +3392,7 @@ struct ec_params_port80_read {
 			uint32_t offset;
 			uint32_t num_entries;
 		} read_buffer;
-	};
+	} __ec_todo_packed;
 } __ec_todo_packed;
 
 struct ec_response_port80_read {
@@ -4726,7 +4726,7 @@ struct ec_params_charge_state {
 			uint32_t param; /* param to set */
 			uint32_t value; /* value to set */
 		} set_param;
-	};
+	} __ec_todo_packed;
 	uint8_t chgnum; /* Version 1 supports chgnum */
 } __ec_todo_packed;
 
@@ -6040,7 +6040,7 @@ struct ec_response_pd_chip_info {
 	union {
 		uint8_t fw_version_string[8];
 		uint64_t fw_version_number;
-	};
+	} __ec_align2;
 } __ec_align2;
 
 struct ec_response_pd_chip_info_v1 {
@@ -6050,11 +6050,11 @@ struct ec_response_pd_chip_info_v1 {
 	union {
 		uint8_t fw_version_string[8];
 		uint64_t fw_version_number;
-	};
+	} __ec_align2;
 	union {
 		uint8_t min_req_fw_version_string[8];
 		uint64_t min_req_fw_version_number;
-	};
+	} __ec_align2;
 } __ec_align2;
 
 /* Run RW signature verification and get status */
