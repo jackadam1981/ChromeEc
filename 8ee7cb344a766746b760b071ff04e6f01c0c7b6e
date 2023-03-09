@@ -16,6 +16,24 @@
       "message": "Does anything in this stack initialize the max voltage to the max SPR voltage on initial connection and after hard resets?  Do we need to worry about guarding ourselves from picking a EPR-level of voltage if one is mistakenly put into the regular SourceCaps?",
       "revId": "8ee7cb344a766746b760b071ff04e6f01c0c7b6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa9bff1f_9fd77a87",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-09T20:06:34Z",
+      "side": 1,
+      "message": "\u003e Does anything in this stack initialize the max voltage to the max SPR voltage on initial connection and after hard resets?\n\nIt\u0027s ok not to set the max voltage to SPR level initially since EPR voltage is required just before entering EPR. It\u0027s also no harm to set the max to EPR level initially because the first PD contract will be selected from the SPR source caps, which don\u0027t include EPR PDOs.\n\n\u003e Do we need to worry about guarding ourselves from picking a EPR-level of voltage if one is mistakenly put into the regular SourceCaps?\n\nDone. It\u0027s illegal to put an EPR PDO in SPR source caps, which have PDO slots from 1 through 7. We\u0027re supposed to issue a hard reset if this happens in EPR source caps but it takes a little bit of refactoring.",
+      "parentUuid": "197a42a6_11a21dce",
+      "revId": "8ee7cb344a766746b760b071ff04e6f01c0c7b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
