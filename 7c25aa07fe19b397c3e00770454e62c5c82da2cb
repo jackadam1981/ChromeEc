@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6acf37b6_7282313e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-09T00:17:36Z",
+      "side": 1,
+      "message": "\u003e \"ingores\" is a possible misspelling of \"ignores\".\n\nPlease fix.",
+      "parentUuid": "c51d5a22_013cf7a9",
+      "range": {
+        "startLine": 11,
+        "startChar": 37,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "7c25aa07fe19b397c3e00770454e62c5c82da2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0554e9_5e487ead",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-09T00:17:36Z",
+      "side": 1,
+      "message": "nit: Can you use IS_ENABLED?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 17
+      },
+      "revId": "7c25aa07fe19b397c3e00770454e62c5c82da2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f461a591_8d93ca1c",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-09T00:17:36Z",
+      "side": 1,
+      "message": "Looks like you don\u0027t need this?",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 65
+      },
+      "revId": "7c25aa07fe19b397c3e00770454e62c5c82da2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
