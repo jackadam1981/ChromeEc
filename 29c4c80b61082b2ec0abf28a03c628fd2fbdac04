@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8f0afca_ad388fde",
+        "filename": "test/aes.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-09T18:44:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure I follow. Did the API for `CRYPTO_gcm128_init_key` change in new upstream version or something else?",
+      "parentUuid": "9d45e94c_f1319ae2",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 31
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae346838_3f646fcf",
         "filename": "third_party/boringssl/cros-ec-toolchain.cmake",
         "patchSetId": 24
@@ -161,6 +185,24 @@
       "side": 1,
       "message": "But this toolchain file is not only for armv7m...\nThe \"host\"(x86_64) would also use this file to compile the host tests.",
       "parentUuid": "5312be19_6b2d43da",
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8220e97b_9cd464a4",
+        "filename": "third_party/boringssl/cros-ec-toolchain.cmake",
+        "patchSetId": 24
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-09T18:44:52Z",
+      "side": 1,
+      "message": "Ok, let\u0027s split `toolchain-armv7m.cmake` into `toolchain-armv7m.cmake` and `toolchain-common.cmake`, where `toolchain-common.cmake` has something like:\n\n```\nset(CMAKE_C_COMPILER ${PREFIX}clang)\nset(CMAKE_CXX_COMPILER ${PREFIX}clang++)\nset(CMAKE_LINKER ${PREFIX}ld.lld)\nset(CMAKE_AR ${PREFIX}ar)\nset(CMAKE_NM ${PREFIX}nm)\nset(CMAKE_OBJCOPY ${PREFIX}objcopy)\nset(CMAKE_OBJDUMP ${PREFIX}objdump)\nset(CMAKE_RANLIB ${PREFIX}ranlib)\nset(CMAKE_READELF ${PREFIX}readelf)\n\nadd_compile_options(-Oz)\n\nadd_compile_options(-flto)\nadd_link_options(-flto)\n\nadd_link_options(-lnosys)\n\nset(CMAKE_POSITION_INDEPENDENT_CODE OFF)\n\nset(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)\nset(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)\nset(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)\nset(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)\n```\n\nThen `toolchain-armv7m.cmake` can include `toolchain-common.cmake` and `cros-ec-toolchain.cmake` can also include `toolchain-common.cmake`.",
+      "parentUuid": "232eaf85_08a433bb",
       "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -296,6 +338,30 @@
       "side": 1,
       "message": "We didn\u0027t specify the exact compiler in the toolchain file.\n\nThe toolchain file needs these parameters to know the compiler we used in the make file.\n\nAnd we will have some linker errors if we use the gcc and clang at the same time.",
       "parentUuid": "4b62f906_5e397992",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 30
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b9a2ee_7d50f1a4",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-09T18:44:52Z",
+      "side": 1,
+      "message": "Ok, I see some of the variables used, but I don\u0027t see `CC_NAME` or `CXX_NAME` used in the toolchain file?",
+      "parentUuid": "62608d0f_f8d2e8fc",
       "range": {
         "startLine": 50,
         "startChar": 0,
