@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "662d196d_98b8437a",
+        "filename": "zephyr/program/rex/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-09T16:25:17Z",
+      "side": 1,
+      "message": "The devicetree entry `tcpc_port0-\u003eirq_gpios` has this signal configured as active low.  However the shared TCPC interrupt code doesn\u0027t configure the pin, only named-gpios.  The corresponding [entry](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/rex/generated.dtsi;l\u003d225) lacks the GPIO_ACTIVE_LOW flag.\n\nThe generated.dtsi file is auto-generated.  You need to do an override in [rex.dtsi](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/rex/rex.dtsi;l\u003d14)\n\n```\nnamed-gpios {\n    /delete-node/ usb_c0_tcpc_int_odl;\n\t\tgpio_usb_c0_tcpc_int_odl: usb_c0_tcpc_int_odl {\n\t\t\tgpios \u003d \u003c\u0026gpioe 0 GPIO_INPUT | GPIO_ACTIVE_LOW\u003e;\n\t\t\tenum-name \u003d \"GPIO_USB_C0_TCPC_INT_ODL\";\n\t\t};\n```\n\nAdd a comment noting that the util/pinmap utility doesn\u0027t support setting the active high/active low flag, so override the setting here.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "2f0b6bbbf9ebbff408d0675fa0bd47f54807a204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
