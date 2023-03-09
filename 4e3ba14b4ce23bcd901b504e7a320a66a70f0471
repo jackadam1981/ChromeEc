@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0aa280ee_ebfe82c3",
+        "filename": "zephyr/mock/ap_power_events.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-03-09T18:21:44Z",
+      "side": 1,
+      "message": "If a future test needs to apply a custom fake to the mock it can declare its own just like you did in your tests. A placeholder is not needed and would just be vestigial code",
+      "parentUuid": "9800e4ea_5810a563",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 71
+      },
+      "revId": "4e3ba14b4ce23bcd901b504e7a320a66a70f0471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af42a0d3_429a8d56",
         "filename": "zephyr/mock/power_signals.c",
         "patchSetId": 8
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "There are generic implementation of mocks, right now I didn\u0027t  add any logic as we are not using it for this tests, we are using custom ones. Later others could add generic implementation based on their usecases hence left it empty.",
       "parentUuid": "af42a0d3_429a8d56",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "4e3ba14b4ce23bcd901b504e7a320a66a70f0471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "508ccb7f_99579169",
+        "filename": "zephyr/mock/power_signals.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-03-09T18:21:44Z",
+      "side": 1,
+      "message": "If it isn\u0027t being used, please remove this. FFF does not have a concept of a \"default\" custom_fake to be stubbed out.",
+      "parentUuid": "e31eb229_dab231c3",
       "range": {
         "startLine": 14,
         "startChar": 0,
