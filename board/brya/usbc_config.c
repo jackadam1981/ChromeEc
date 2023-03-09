@@ -24,7 +24,7 @@
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "hooks.h"
-#include "ioexpander.h"
+
 #include "system.h"
 #include "task.h"
 #include "task_id.h"
@@ -38,10 +38,6 @@
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
-
-#ifdef CONFIG_ZEPHYR
-enum ioex_port { IOEX_C0_NCT38XX = 0, IOEX_C2_NCT38XX, IOEX_PORT_COUNT };
-#endif /* CONFIG_ZEPHYR */
 
 #ifndef CONFIG_ZEPHYR
 /* USBC TCPC configuration */
@@ -91,7 +87,7 @@ struct ppc_config_t ppc_chips[] = {
 	[USBC_PORT_C0] = {
 		.i2c_port = I2C_PORT_USB_C0_C2_PPC,
 		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
-		.frs_en = IOEX_USB_C0_FRS_EN,
+//		.frs_en = IOEX_USB_C0_FRS_EN,
 		.drv = &syv682x_drv,
 	},
 #if 0
@@ -105,7 +101,7 @@ struct ppc_config_t ppc_chips[] = {
 	[USBC_PORT_C2] = {
 		.i2c_port = I2C_PORT_USB_C0_C2_PPC,
 		.i2c_addr_flags = SYV682X_ADDR2_FLAGS,
-		.frs_en = IOEX_USB_C2_FRS_EN,
+//		.frs_en = IOEX_USB_C2_FRS_EN,
 		.drv = &syv682x_drv,
 	},
 };
@@ -172,30 +168,6 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
 
-/*
- * USB C0 and C2 uses burnside bridge chips and have their reset
- * controlled by their respective TCPC chips acting as GPIO expanders.
- *
- * ioex_init() is normally called before we take the TCPCs out of
- * reset, so we need to start in disabled mode, then explicitly
- * call ioex_init().
- */
-
-struct ioexpander_config_t ioex_config[] = {
-	[IOEX_C0_NCT38XX] = {
-		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
-		.i2c_addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
-		.drv = &nct38xx_ioexpander_drv,
-		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
-	},
-	[IOEX_C2_NCT38XX] = {
-		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
-		.i2c_addr_flags = NCT38XX_I2C_ADDR2_1_FLAGS,
-		.drv = &nct38xx_ioexpander_drv,
-		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
 #endif /* !CONFIG_ZEPHYR */
 
 #ifdef CONFIG_CHARGE_RAMP_SW
@@ -245,12 +217,12 @@ void config_usb_db_type(void)
 
 __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 {
-	enum ioex_signal rst_signal;
+//	enum ioex_signal rst_signal;
 
 	if (me->usb_port == USBC_PORT_C0) {
 /* TODO: explore how to handle board id in zephyr*/
 #ifndef CONFIG_ZEPHYR
-		rst_signal = IOEX_USB_C0_RT_RST_ODL;
+//		rst_signal = IOEX_USB_C0_RT_RST_ODL;
 #else
 		/* On Zephyr use bb_controls generated from DTS */
 		rst_signal = bb_controls[me->usb_port].retimer_rst_gpio;
@@ -258,7 +230,7 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 	} else if (me->usb_port == USBC_PORT_C2) {
 /* TODO: explore how to handle board id in zephyr*/
 #ifndef CONFIG_ZEPHYR
-		rst_signal = IOEX_USB_C2_RT_RST_ODL;
+//		rst_signal = IOEX_USB_C2_RT_RST_ODL;
 #else
 		/* On Zephyr use bb_controls generated from DTS */
 		rst_signal = bb_controls[me->usb_port].retimer_rst_gpio;
@@ -279,14 +251,14 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		 * retimer_init() function ensures power is up before calling
 		 * this function.
 		 */
-		ioex_set_level(rst_signal, 1);
+//		ioex_set_level(rst_signal, 1);
 		/*
 		 * Allow 1ms time for the retimer to power up lc_domain
 		 * which powers I2C controller within retimer
 		 */
 		msleep(1);
 	} else {
-		ioex_set_level(rst_signal, 0);
+//		ioex_set_level(rst_signal, 0);
 		msleep(1);
 	}
 	return EC_SUCCESS;
@@ -341,8 +313,8 @@ static void board_tcpc_init(void)
 		 * been taken out of reset.
 		 */
 #ifndef CONFIG_ZEPHYR
-	ioex_init(IOEX_C0_NCT38XX);
-	ioex_init(IOEX_C2_NCT38XX);
+
+
 #else
 	gpio_reset_port(DEVICE_DT_GET(DT_NODELABEL(ioex_port1)));
 	gpio_reset_port(DEVICE_DT_GET(DT_NODELABEL(ioex_port2)));
