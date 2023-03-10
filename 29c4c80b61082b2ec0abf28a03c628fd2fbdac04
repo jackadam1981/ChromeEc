@@ -275,6 +275,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67660cd3_56ff055d",
+        "filename": "third_party/boringssl/cros-ec-toolchain.cmake",
+        "patchSetId": 24
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-10T22:51:56Z",
+      "side": 1,
+      "message": "\u003e the boringssl toolchain file needs to support gcc \u0026 clang at the same time.\n\nLooks like we need to make `toolchain-armv7m.cmake` support both compilers too (originally I was testing with `clang`, but no reason not to support both).\n\n\u003e The problem is, when building the boringssl, the toolchain file would not be able to know the path of EC repo,\n\nCan you use `realpath`, like this: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3994291/47/third_party/rules.mk#63?\n\n\u003e The common part only remains\n\nFor flags that differ between `clang` and `gcc`, I think you can use https://cmake.org/cmake/help/latest/module/CheckCXXCompilerFlag.html or https://cmake.org/cmake/help/latest/module/CheckCCompilerFlag.html to determine whether it\u0027s supported and only add if it is.",
+      "parentUuid": "b2d0002d_ace9f672",
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffd3c1c6_cef88d54",
         "filename": "third_party/rules.mk",
         "patchSetId": 24
@@ -452,6 +470,30 @@
       "side": 1,
       "message": "We used the `CC_NAME` and `CXX_NAME` to determine the `CMAKE_C_COMPILER`, `CMAKE_CXX_COMPILER`, `CMAKE_AR`, `CMAKE_NM`, `CMAKE_RANLIB`.\n\n```\nset(CMAKE_C_COMPILER   \"${CROSS_COMPILE}${CC_NAME}\")\nset(CMAKE_CXX_COMPILER \"${CROSS_COMPILE}${CXX_NAME}\")\nset(CMAKE_LINKER       \"${CROSS_COMPILE}ld.lld\")\nset(CMAKE_OBJCOPY      \"${CROSS_COMPILE}objcopy\")\nset(CMAKE_OBJDUMP      \"${CROSS_COMPILE}objdump\")\nset(CMAKE_READELF      \"${CROSS_COMPILE}readelf\")\n\nif (\"${CC_NAME}\" STREQUAL gcc)\nset(CMAKE_AR           \"${CROSS_COMPILE}gcc-ar\")\nset(CMAKE_NM           \"${CROSS_COMPILE}gcc-nm\")\nset(CMAKE_RANLIB       \"${CROSS_COMPILE}gcc-ranlib\")\nelse()\nset(CMAKE_AR           \"${CROSS_COMPILE}ar\")\nset(CMAKE_NM           \"${CROSS_COMPILE}nm\")\nset(CMAKE_RANLIB       \"${CROSS_COMPILE}ranlib\")\nendif()\n```",
       "parentUuid": "e9b9a2ee_7d50f1a4",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 30
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e94fe4_40d3ef6a",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-10T22:51:56Z",
+      "side": 1,
+      "message": "Got it, thanks.",
+      "parentUuid": "38d23e0d_6bc17178",
       "range": {
         "startLine": 50,
         "startChar": 0,
