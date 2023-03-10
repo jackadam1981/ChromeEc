@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb7118b9_dd844cec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-10T19:07:50Z",
+      "side": 1,
+      "message": "Hey Keith, this is the matching change to https://github.com/zephyrproject-rtos/zephyr/pull/55523, I think it may get merged next week. This is tested against a cherry pick so it should work fine, just need to fix the Cq-Depend.",
+      "revId": "f2111bda9546e62b0a79d7949ae397ff9ea40b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
