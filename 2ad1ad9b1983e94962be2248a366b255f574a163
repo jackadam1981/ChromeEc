@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc49eae_686f6c19",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-10T18:20:01Z",
+      "side": 1,
+      "message": "This may be problematic, since it is going to decrease the amount of RAM we have available for [some other features](http://shortn/_5IRGgkahnl).\n\nIs this strictly required or an optimization? If required, is it possible to limit it to a single finger and process one-by-one?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 47
+      },
+      "revId": "2ad1ad9b1983e94962be2248a366b255f574a163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
