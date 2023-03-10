@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0f26b2_3cacd760",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-10T01:13:02Z",
+      "side": 1,
+      "message": "shouldn\u0027t that be `0x82`?",
+      "range": {
+        "startLine": 778,
+        "startChar": 34,
+        "endLine": 778,
+        "endChar": 36
+      },
+      "revId": "2a110e0f80cf70cec1b0d9bd84690ab55bfd2bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
