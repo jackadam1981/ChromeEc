@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "722ebe69_8e3353b2",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-10T01:15:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be the entire range of convertible boards? i.e. 168 through 175",
+      "range": {
+        "startLine": 194,
+        "startChar": 22,
+        "endLine": 194,
+        "endChar": 52
+      },
+      "revId": "ebf0318eafd2c50d31a8b84a81c371c5de3851a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
