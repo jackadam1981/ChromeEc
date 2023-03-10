@@ -7,6 +7,7 @@
 
 #include "console.h"
 #include "usb_pd.h"
+#include "usb_pd_dp.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
@@ -96,6 +97,19 @@ static const char *const cable_curr[] = {
 	[USB_VBUS_CUR_5A] = "5A",
 };
 
+static const char *const dp21_cable_type[] = {
+	[DP21_PASSIVE_CABLE] = "Passive",
+	[DP21_ACTIVE_RETIMER_CABLE] = "Active-Retimer",
+	[DP21_ACTIVE_REDRIVER_CABLE] = "Active-Redriver",
+	[DP21_OPTICAL_CABLE] = "Optical",
+};
+
+static const char *const dp21_cable_speed[] = {
+	[DP21_SPEED_HBR3] = "HBR3",
+	[DP21_SPEED_UHBR10] = "UHBR10",
+	[DP21_SPEED_UHBR20] = "UHBR20",
+};
+
 static int command_cable(int argc, const char **argv)
 {
 	int port;
@@ -104,6 +118,8 @@ static int command_cable(int argc, const char **argv)
 	enum idh_ptype ptype;
 	int cable_rev;
 	union tbt_mode_resp_cable cable_mode_resp;
+	union dp_mode_resp_cable cable_dp_mode_resp;
+	uint8_t dp_bit_rate;
 
 	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
@@ -126,6 +142,10 @@ static int command_cable(int argc, const char **argv)
 	cable_mode_resp.raw_value =
 		IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) ?
 			pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME) :
+			0;
+	cable_dp_mode_resp.raw_value =
+		IS_ENABLED(CONFIG_USB_PD_DP21_MODE) ?
+			pd_get_dp_mode_vdo(port, TCPCI_MSG_SOP_PRIME) :
 			0;
 
 	/* Cable revision */
@@ -184,6 +204,28 @@ static int command_cable(int argc, const char **argv)
 		}
 	}
 
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE) &&
+	    cable_dp_mode_resp.raw_value) {
+		enum dpam_version dp_ver =
+			resolve_dpam_version(port, TCPCI_MSG_SOP_PRIME);
+		if (dp_ver == DPAM_VERSION_21) {
+			ccprintf("DPAM Version : %s\n",
+				 (dp_ver ? "2.1 or higher" : "2.0 or earlier"));
+			dp_bit_rate = get_dp_cable_bit_rate(port);
+			ccprintf("DP Cable bitrate : %s\n",
+				 ((dp_bit_rate <= DP21_SPEED_UHBR20) ?
+					  dp21_cable_speed[dp_bit_rate] :
+					  "Invalid"));
+			ccprintf("DP UHBR13.5 Support : %s\n",
+				 (cable_dp_mode_resp.uhbr13_5_support ?
+					  "True" :
+					  "False"));
+			ccprintf(
+				"DP Cable Type : %s\n",
+				dp21_cable_type[cable_dp_mode_resp.active_comp]);
+		}
+	}
+
 	if (!cable_mode_resp.raw_value)
 		return EC_SUCCESS;
 
@@ -213,5 +255,4 @@ static int command_cable(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(pdcable, command_cable, "<port>",
 			"Cable Characteristics");
 #endif /* CONFIG_CMD_USB_PD_CABLE */
-
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
