@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02ea2a56_4d44c647",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 8001,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-10T19:34:01Z",
+      "side": 1,
+      "message": "Done.\n\n\u003e perhaps soft reset since that\u0027s the error path for most of entry?\n\nI think so. Then, the flag will be cleared in pe_send_soft_reset (together with other states which also need to be cleared). So, we will keep fixing leakage paths (if there is any).",
+      "parentUuid": "53a1c550_2f59d57f",
+      "revId": "d6a1532fb5ca63a2d845c899bae2dcd6ed14baa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b0597fc_7be79b42",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 12
@@ -48,6 +66,24 @@
       "writtenOn": "2023-03-10T15:13:30Z",
       "side": 1,
       "message": "Clear the entering flag on the failure path?",
+      "revId": "d6a1532fb5ca63a2d845c899bae2dcd6ed14baa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ae850b_7b64428a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 8069,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-10T19:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b0597fc_7be79b42",
       "revId": "d6a1532fb5ca63a2d845c899bae2dcd6ed14baa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
