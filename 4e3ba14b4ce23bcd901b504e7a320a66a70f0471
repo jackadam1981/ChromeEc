@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5df169f_9ce138ed",
+        "filename": "zephyr/mock/ap_power_events.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-10T09:18:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aa280ee_ebfe82c3",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 71
+      },
+      "revId": "4e3ba14b4ce23bcd901b504e7a320a66a70f0471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af42a0d3_429a8d56",
@@ -160,6 +184,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae89f62_21d569ab",
+        "filename": "zephyr/mock/power_signals.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-10T09:18:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "508ccb7f_99579169",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "4e3ba14b4ce23bcd901b504e7a320a66a70f0471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d32a08b1_e84bbd1d",
@@ -197,6 +245,30 @@
       "side": 1,
       "message": "Yes, the nodes related to \"INTEL_AP_PWRSEQ_ENABLED\" are required to be configured for having power signals defined. But AP_PWRSEQ is getting enabled, with that some unnecessary code for testing is being included and raising errors.",
       "parentUuid": "d32a08b1_e84bbd1d",
+      "range": {
+        "startLine": 8,
+        "startChar": 42,
+        "endLine": 8,
+        "endChar": 52
+      },
+      "revId": "4e3ba14b4ce23bcd901b504e7a320a66a70f0471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d07eec7e_8cbd298c",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-10T09:18:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3b23dee_26014229",
       "range": {
         "startLine": 8,
         "startChar": 42,
