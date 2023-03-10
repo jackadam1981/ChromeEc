@@ -5630,6 +5630,28 @@ struct ec_response_host_event_status {
 	uint32_t status; /* PD MCU host event status */
 } __ec_align4;
 
+/* DP2.1 Cable Discovery Command */
+#define EC_CMD_USB_PD_DP21_DISCOVERY 0x0107
+
+struct ec_params_usb_pd_dp21 {
+	uint8_t port;
+} __ec_align1;
+
+/* Active/Passive Cable */
+#define USB_DP_ACTIVE_CABLE BIT(0)
+/* Re-timer/Re-Driver cable */
+#define USB_DP_RETIMER_CABLE BIT(1)
+/* Optical/Non-optical cable */
+#define USB_DP_OPTICAL_CABLE BIT(2)
+
+/* DP2.1 Cable Discovery Command */
+struct ec_response_usb_dp21_discovery {
+	uint8_t dpam_version;
+	uint8_t cable_speed;
+	uint8_t uhbr_13_5_supported;
+	uint8_t cable_type;
+} __ec_align1;
+
 /*
  * Set USB type-C port role and muxes
  *
