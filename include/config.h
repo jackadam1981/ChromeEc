@@ -4754,6 +4754,9 @@
  */
 #undef CONFIG_USB_PD_5V_EN_CUSTOM
 
+/* Enable Displayport 2.1 Capability */
+#undef CONFIG_USB_PD_DP21_MODE
+
 /* Dynamic USB PD source capability */
 #undef CONFIG_USB_PD_DYNAMIC_SRC_CAP
 
