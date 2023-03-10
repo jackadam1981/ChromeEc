@@ -1591,6 +1591,10 @@ enum ec_feature_code {
 	 * The EC supports the AP composing VDMs for us to send.
 	 */
 	EC_FEATURE_TYPEC_AP_VDM_SEND = 46,
+	/*
+	 * The EC supports DP2.1 capability
+	 */
+	EC_FEATURE_TYPEC_DP2_1 = 47,
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)
