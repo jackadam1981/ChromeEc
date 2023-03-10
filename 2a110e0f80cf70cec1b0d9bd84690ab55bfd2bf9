@@ -22,6 +22,30 @@
       },
       "revId": "2a110e0f80cf70cec1b0d9bd84690ab55bfd2bf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "702db5d9_e7b5c356",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2023-03-10T02:57:39Z",
+      "side": 1,
+      "message": "This value is modified by CL:1361987 (aleena/kasumi: Add support for motion sensors)\nCan google side help to check it?",
+      "parentUuid": "bc0f26b2_3cacd760",
+      "range": {
+        "startLine": 778,
+        "startChar": 34,
+        "endLine": 778,
+        "endChar": 36
+      },
+      "revId": "2a110e0f80cf70cec1b0d9bd84690ab55bfd2bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
