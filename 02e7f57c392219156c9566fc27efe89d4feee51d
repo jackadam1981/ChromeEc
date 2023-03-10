@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9056e0a2_b181bfad",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-10T19:17:59Z",
+      "side": 1,
+      "message": "Can you group these into a `struct`?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "02e7f57c392219156c9566fc27efe89d4feee51d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
