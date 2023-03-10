@@ -200,6 +200,37 @@ const struct adc_t adc_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
+static void timer3_channel4_48mhz(void)
+{
+	/* Enable TIMER3 */
+	STM32_RCC_APB1ENR1 |= STM32_RCC_APB1ENR1_TIM3EN;
+
+	timer_ctlr_t *tim3 = (timer_ctlr_t *)STM32_TIM_BASE(3);
+
+	/* Disable counter during setup */
+	tim3->cr1 = 0x0000;
+
+	/* No prescaling. */
+	tim3->psc = 0;
+	/* Count to two, that is 48 Mhz frequency. */
+	tim3->arr = 1;
+
+	/* 50% duty cycle on channel 4. */
+	tim3->ccr[4] = 1;
+
+	/* Output, PWM mode 1, preload enable */
+	tim3->ccmr2 = (6 << 12) | BIT(11);
+
+	/* Output enable. Set active high/low. */
+	tim3->ccer = 1 << 12;
+
+	/* Generate update event to force loading of shadow registers */
+	tim3->egr |= 1;
+
+	/* Enable auto-reload preload, start counting */
+	tim3->cr1 |= BIT(7) | BIT(0);
+}
+
 /******************************************************************************
  * Initialize board.
  */
@@ -288,6 +319,37 @@ static void board_init(void)
 	STM32_OCTOSPI_DCR2 = spi_devices[1].div;
 	/* Zero dummy cycles */
 	STM32_OCTOSPI_TCR = 0;
+
+	/*
+	 * Select a particular alternate function for pins below, without
+	 * actually putting the pins in "alternate" mode (instead leaving it in
+	 * GPIO mode).  At runtime, the "gpio mode" command can be used to
+	 * enable the alternate function for any of these pins.
+	 */
+
+	/*
+	 * 48 MHz reference signal.
+	 * PB1, CN10_7: Alternate function 2: TIM3_CH4
+	 */
+	STM32_GPIO_AFRL(STM32_GPIOB_BASE) &= 0xFFFFFF0F;
+	STM32_GPIO_AFRL(STM32_GPIOB_BASE) |= 0x00000020;
+
+	/* Fast edge setting 1 (range: 0..3). */
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0x00000004;
+
+	timer3_channel4_48mhz();
+
+	/*
+	 * 96 MHz reference signal.
+	 * PA8, CN10_31: Alternate function 0: MCO
+	 */
+	STM32_GPIO_AFRH(STM32_GPIOA_BASE) &= 0xFFFFFFF0;
+
+	/* Fast edge setting 2 (range: 0..3). */
+	STM32_GPIO_OSPEEDR(GPIO_A) |= 0x00020000;
+
+	/* Choose SYSCLK to appear on "clock output", PA8 */
+	STM32_RCC_CFGR = (STM32_RCC_CFGR & 0x0000FFFF) | 0x01000000;
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
