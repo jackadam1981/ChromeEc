@@ -16,6 +16,40 @@
       "message": "Ping?",
       "revId": "d6a1532fb5ca63a2d845c899bae2dcd6ed14baa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a1c550_2f59d57f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 8001,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-10T15:13:30Z",
+      "side": 1,
+      "message": "Clear ENTERING_EPR flag in this path?\n\nI think that the other paths are covered.  The soft reset clear covers a lot of them.  I\u0027m fairly certain we clear out all flags after a hard reset. \n\nSo I think that would just leave the possibility that the vconn swap code could go wrong (ex. if we hadn\u0027t been the Vconn source but the partner erroneously thought we were and sent the swap).  I\u0027m not entirely certain what we\u0027d want to do for that scenario... perhaps soft reset since that\u0027s the error path for most of entry?",
+      "revId": "d6a1532fb5ca63a2d845c899bae2dcd6ed14baa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b0597fc_7be79b42",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 8069,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-10T15:13:30Z",
+      "side": 1,
+      "message": "Clear the entering flag on the failure path?",
+      "revId": "d6a1532fb5ca63a2d845c899bae2dcd6ed14baa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
