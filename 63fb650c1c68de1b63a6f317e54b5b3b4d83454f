@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f0e8129_a2362ea8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-10T15:16:40Z",
+      "side": 1,
+      "message": "Adding Benson\n\nWe should check with the OS team what data they\u0027d like from the port connection.  They may prefer to have the Source Caps and EPR Source Caps separate, since those could vary (they shouldn\u0027t by spec, but they could).",
+      "revId": "63fb650c1c68de1b63a6f317e54b5b3b4d83454f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
