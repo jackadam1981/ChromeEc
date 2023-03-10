@@ -16,6 +16,7 @@
 #include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_dp.h"
 #include "usb_pd_tcpm.h"
 
 #include <string.h>
@@ -298,6 +299,35 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL, hc_usb_pd_control,
 		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
+
+static enum ec_status
+hc_usb_pd_dp21_discovery(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_pd_dp21 *p = args->params;
+	struct ec_response_usb_dp21_discovery *dp21_disc = args->response;
+	union dp_mode_resp_cable cable_dp_mode_resp;
+
+	if (p->port >= board_get_usb_pd_port_count())
+		return EC_RES_INVALID_PARAM;
+
+	if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE)) {
+		cable_dp_mode_resp.raw_value =
+			pd_get_dp_mode_vdo(p->port, TCPCI_MSG_SOP_PRIME);
+
+		dp21_disc->dpam_version =
+			resolve_dpam_version(p->port, TCPCI_MSG_SOP);
+		dp21_disc->cable_speed = get_dp_cable_bit_rate(p->port);
+		dp21_disc->uhbr_13_5_supported =
+			cable_dp_mode_resp.uhbr13_5_support;
+		dp21_disc->cable_type = get_pd_cable_type_flags(p->port);
+	}
+
+	args->response_size = sizeof(*dp21_disc);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DP21_DISCOVERY, hc_usb_pd_dp21_discovery,
+		     EC_VER_MASK(0));
 #endif /* CONFIG_COMMON_RUNTIME */
 
 __overridable enum ec_pd_port_location board_get_pd_port_location(int port)
