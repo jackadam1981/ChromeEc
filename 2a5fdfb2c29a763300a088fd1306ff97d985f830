@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2fa159_f88ca746",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-10T19:28:04Z",
+      "side": 1,
+      "message": "For the new global variables that are being added in `fpsensor_state.c` that are related to this feature, can we try to organize them into `struct`s? The current code does not do a good job of this, but it\u0027s helpful to make it clearer on how the variables are related to each other. It also helps distinguish which variables are needed for which feature.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 39
+      },
+      "revId": "2a5fdfb2c29a763300a088fd1306ff97d985f830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f7a552_c9c9037d",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-10T19:28:04Z",
+      "side": 1,
+      "message": "nit: EC code no longer requires declaring all the variables up front, so you can declare them where you first use them: https://crrev.com/c/3256741.\n\n(you can do this in all the CLs; followup CLs are fine)",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 9
+      },
+      "revId": "2a5fdfb2c29a763300a088fd1306ff97d985f830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
