@@ -84,13 +84,6 @@ enum dp21_cable_type {
 	 ((uhbr13_5)&0x1) << 26 | ((pin)&0xff) << 8 | ((sig)&0xf) << 2 | \
 	 ((cfg)&0x3))
 
-/* Active/Passive Cable */
-#define USB_DP_ACTIVE_CABLE BIT(0)
-/* Re-timer/Re-Driver cable */
-#define USB_DP_RETIMER_CABLE BIT(1)
-/* Optical/Non-optical cable */
-#define USB_DP_OPTICAL_CABLE BIT(2)
-
 /**
  * Resolves DPAM version
  *
