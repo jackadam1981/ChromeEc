@@ -87,13 +87,6 @@ enum dp21_cable_type {
 #define VDM_VERS_MINOR \
 	IS_ENABLED(CONFIG_USB_PD_DP21_MODE) ? VDO_SVDM_VERS_MINOR(1) : 0
 
-/* Active/Passive Cable */
-#define USB_DP_ACTIVE_CABLE BIT(0)
-/* Re-timer/Re-Driver cable */
-#define USB_DP_RETIMER_CABLE BIT(1)
-/* Optical/Non-optical cable */
-#define USB_DP_OPTICAL_CABLE BIT(2)
-
 /**
  * Resolves DPAM version
  *
