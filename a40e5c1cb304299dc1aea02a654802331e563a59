@@ -33,6 +33,29 @@
       "message": "Hi Sumeet, please add BUG\u003d. We need to know the thermal test results.",
       "revId": "a40e5c1cb304299dc1aea02a654802331e563a59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b81dd8d5_dc7a8283",
+        "filename": "board/gimble/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-10T23:13:14Z",
+      "side": 1,
+      "message": "level 2 OFF should be less or equal level 1 ON (37)",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 13
+      },
+      "revId": "a40e5c1cb304299dc1aea02a654802331e563a59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
