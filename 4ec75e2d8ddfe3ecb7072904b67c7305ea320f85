@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f957a3_8b66909f",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-10T18:16:05Z",
+      "side": 1,
+      "message": "Since this is a C++ file, I\u0027d rather do this C++-style RAII, since that\u0027s easier to read. Something like:\n\n```\nstruct Cpu  {\n  Cpu() \u003d default;\n  ~Cpu() {\n     Default();\n  }\n  \n  void Fast() {\n    clock_enable_module(MODULE_FAST_CPU, 1);\n  }\n  void Default() {\n    clock_enable_module(MODULE_FAST_CPU, 0);\n  }\n};\n```",
+      "range": {
+        "startLine": 483,
+        "startChar": 2,
+        "endLine": 484,
+        "endChar": 27
+      },
+      "revId": "4ec75e2d8ddfe3ecb7072904b67c7305ea320f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
