@@ -16,6 +16,23 @@
       "message": "This is still discussed in the bug. -1 for making sure it won\u0027t slip through.",
       "revId": "892d2646f3ff8a7c50f907d7362e3923d9b64299",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc4b657b_f9da1ed0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-10T20:30:18Z",
+      "side": 1,
+      "message": "According to https://buganizer.corp.google.com/issues/266221111#comment13, DPTF works without a minimum duty. DPTF simply keeps increasing the fan until it gets a desired speed or temperature.\n\nSo, IIUC, this CL isn\u0027t needed. If I\u0027m missing something, please clarify.",
+      "revId": "892d2646f3ff8a7c50f907d7362e3923d9b64299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
