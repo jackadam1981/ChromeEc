@@ -272,6 +272,7 @@ static void tcpci_partner_delayed_send(void *fifo_data)
 			ret = tcpci_emul_add_rx_msg(data->tcpci_emul, &msg->msg,
 						    true /* send alert */);
 			status = tcpci_partner_add_rx_msg_to_status(ret);
+			LOG_INF("Delayed send");
 			tcpci_partner_log_msg(data, &msg->msg,
 					      TCPCI_PARTNER_SENDER_PARTNER,
 					      status);
@@ -286,6 +287,7 @@ static void tcpci_partner_delayed_send(void *fifo_data)
 		} else {
 			k_timer_start(&data->delayed_send,
 				      K_MSEC(msg->time - now), K_NO_WAIT);
+			LOG_INF("Delayed send not ready yet");
 			break;
 		}
 	}
@@ -309,6 +311,7 @@ static void tcpci_partner_delayed_send_thread(void *a, void *b, void *c)
 
 	while (1) {
 		fifo_data = k_fifo_get(&delayed_send_fifo, K_FOREVER);
+		LOG_INF("Delayed message available");
 		tcpci_partner_delayed_send(fifo_data);
 	}
 }
