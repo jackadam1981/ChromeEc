@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb36ebba_5df850e9",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-10T20:49:24Z",
+      "side": 1,
+      "message": "Doesn\u0027t line 55 also set the HPD to low?",
+      "parentUuid": "9ac9c015_6b6271b4",
+      "range": {
+        "startLine": 63,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99e739a5_9e717910",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 5
@@ -361,6 +385,24 @@
       "side": 1,
       "message": "OK",
       "parentUuid": "e8b370c5_69b7b1f3",
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48845092_f78ad1f4",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-10T20:49:24Z",
+      "side": 1,
+      "message": "Even if line 183 or 184 fails, do you need to continue to execute line 189?",
+      "parentUuid": "853d350e_9256590a",
       "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

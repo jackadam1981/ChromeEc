@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a4942b_6ed22d0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-10T20:49:24Z",
+      "side": 1,
+      "message": "LTGM. You may want to wait a day or two in case other reviewers have a comment before you submit the CL.",
+      "revId": "1f637d74fea8f15845d4c9a879a7806e27f4531b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c81712_87619c6c",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-10T20:49:24Z",
+      "side": 1,
+      "message": "nit: This is redundant.",
+      "range": {
+        "startLine": 117,
+        "startChar": 18,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "1f637d74fea8f15845d4c9a879a7806e27f4531b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
