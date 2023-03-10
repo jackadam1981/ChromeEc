@@ -16,7 +16,11 @@
 
 #include <stdint.h>
 
+#include <zephyr/kernel.h>
+#include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
+
+LOG_MODULE_REGISTER(usb_pd_ctrl_msg, LOG_LEVEL_INF);
 
 #define TEST_USB_PORT 0
 BUILD_ASSERT(TEST_USB_PORT == USBC_PORT_C0);
@@ -320,6 +324,14 @@ ZTEST_F(usb_pd_ctrl_msg_test_source, verify_dr_swap_accepted)
 		      "Returned data_role=%u", typec_status.data_role);
 }
 
+void print_prio(const struct k_thread *thread, void *user_data)
+{
+	const char *name = k_thread_name_get((k_tid_t)thread);
+	int prio = k_thread_priority_get((k_tid_t)thread);
+
+	LOG_INF("Thread %s: %i", name, prio);
+}
+
 ZTEST_F(usb_pd_ctrl_msg_test_source, verify_dr_swap_fast_followup)
 {
 	struct usb_pd_ctrl_msg_test_fixture *super_fixture = &fixture->fixture;
@@ -346,7 +358,9 @@ ZTEST_F(usb_pd_ctrl_msg_test_source, verify_dr_swap_fast_followup)
 					    PD_CTRL_DR_SWAP, 0);
 	zassert_ok(rv, "Failed to send DR_SWAP request, rv=%d", rv);
 	tcpci_partner_send_control_msg(&super_fixture->partner_emul,
-				       PD_CTRL_PING, 6);
+				       PD_CTRL_PING, 3);
+	LOG_INF("Scheduling ping");
+	k_thread_foreach(print_prio, NULL);
 	k_sleep(K_MSEC(100));
 
 	/* Despite the spurious data role mismatch, the TCPM should not reset
