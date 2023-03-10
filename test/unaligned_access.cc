@@ -1,0 +1,95 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/**
+ * Test if unaligned access works properly
+ */
+
+#include "common.h"
+#include "test_util.h"
+
+extern "C" {
+#include "shared_mem.h"
+#include "timer.h"
+}
+
+#include <cstdio>
+#include <cstring>
+
+test_static int test_unaligned_access()
+{
+	/* This is equivalent to {0xff, 0x09, 0x04, 0x06, 0x04, 0x06, 0x07,
+	 * 0xed, 0x0a, 0x0b, 0x0d, 0x38, 0xbd, 0x57, 0x59} */
+	alignas(int32_t) constexpr int8_t test_array[15] = {
+		-1, 9, 4, 6, 4, 6, 7, -19, 10, 11, 13, 56, -67, 87, 89
+	};
+
+	constexpr int32_t expected_results[12] = {
+		0x060409ff,
+		0x04060409,
+		0x06040604,
+		0x07060406,
+		static_cast<int32_t>(0xed070604),
+		0x0aed0706,
+		0x0b0aed07,
+		0x0d0b0aed,
+		0x380d0b0a,
+		static_cast<int32_t>(0xbd380d0b),
+		0x57bd380d,
+		0x5957bd38
+	};
+
+	/* If i % 4 = 0, we have an aligned access. Otherwise, it is
+	   unaligned access. */
+	for (int i = 0; i < 12; ++i) {
+		const int32_t *test_array_ptr =
+			reinterpret_cast<const int32_t *>(test_array + i);
+
+		TEST_EQ(*test_array_ptr, expected_results[i], "0x%08x");
+	}
+
+	return EC_SUCCESS;
+}
+
+test_static int benchmark_unaligned_access(){
+
+		int i;
+	timestamp_t t0, t1, t2, t3;
+	char *buf;
+	const int buf_size = 1000;
+	const int len = 400;
+	const int dest_offset = 500;
+	const int iteration = 1000;
+
+	TEST_ASSERT(shared_mem_acquire(buf_size, &buf) == EC_SUCCESS);
+
+	for (i = 0; i < len; ++i)
+		buf[i] = i & 0x7f;
+	for (i = len; i < buf_size; ++i)
+		buf[i] = 0;
+
+	t0 = get_time();
+	for (i = 0; i < iteration; ++i)
+		memcpy(buf + dest_offset + 1, buf, len); /* unaligned */
+	t1 = get_time();
+	TEST_ASSERT_ARRAY_EQ(buf + dest_offset + 1, buf, len);
+	ccprintf(" (speed gain: %" PRId64 " ->", t1.val - t0.val);
+
+	t2 = get_time();
+	for (i = 0; i < iteration; ++i)
+		memcpy(buf + dest_offset, buf, len); /* aligned */
+	t3 = get_time();
+	ccprintf(" %" PRId64 " us) ", t3.val - t2.val);
+	TEST_ASSERT_ARRAY_EQ(buf + dest_offset, buf, len);
+	return EC_SUCCESS;
+}
+
+extern "C" void run_test(int, const char **)
+{
+	test_reset();
+	RUN_TEST(test_unaligned_access);
+	RUN_TEST(benchmark_unaligned_access);
+	test_print_result();
+}
