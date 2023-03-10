@@ -257,6 +257,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2d0002d_ace9f672",
+        "filename": "third_party/boringssl/cros-ec-toolchain.cmake",
+        "patchSetId": 24
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-10T07:22:47Z",
+      "side": 1,
+      "message": "The problem is, when building the boringssl, the toolchain file would not be able to know the path of EC repo, because the cmake is already chdir into boringssl directory(`~/chromiumos/src/third_party/boringssl/`).\n\nUsing the relative path to locate the file under the EC repo is not suitable, because we should support changing the boringssl dir.\n`make BORINGSSL_DIR\u003d~/src/boringssl BOARD\u003dbloonchipper`\n\nA way to workaround is passing the location of the EC repo into the cmake, but I don\u0027t think it\u0027s a better solution.\n\nAnd because the boringssl toolchain file needs to support gcc \u0026 clang at the same time. The common part only remains:\n```\nadd_compile_options(-flto)\nadd_link_options(-flto)\nadd_link_options(-lnosys)\n\nset(CMAKE_POSITION_INDEPENDENT_CODE OFF)\n\nset(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)\nset(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)\nset(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)\nset(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)\n```\n(gcc doesn\u0027t support -Oz)\n\nI don\u0027t see much benefit to share the common parts of config.",
+      "parentUuid": "8220e97b_9cd464a4",
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffd3c1c6_cef88d54",
         "filename": "third_party/rules.mk",
         "patchSetId": 24
