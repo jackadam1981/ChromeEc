@@ -1603,6 +1603,10 @@ enum ec_feature_code {
 	 * The EC image is built with tokenized logging enabled.
 	 */
 	EC_FEATURE_TOKENIZED_LOGGING = 49,
+	/*
+	 * The EC supports DP2.1 capability
+	 */
+	EC_FEATURE_TYPEC_DP2_1 = 50,
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)
