@@ -173,6 +173,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78ce3b8a_cc21fe4f",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "The code only enable GPIO output, I\u0027ll change the comment.",
+      "parentUuid": "62500a4e_73f0a038",
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3dbb131f_0d3a4dad",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 2

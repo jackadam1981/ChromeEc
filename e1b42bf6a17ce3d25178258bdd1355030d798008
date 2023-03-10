@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d342b35_1ba4da14",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "59b0989b_4578893c",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 41
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59072cdd_d40ef58c",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-09T21:13:00Z",
       "side": 1,
       "message": "You can remove this once you change to CPRINTS.",
+      "range": {
+        "startLine": 38,
+        "startChar": 26,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd3027a_e40eb10a",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "59072cdd_d40ef58c",
       "range": {
         "startLine": 38,
         "startChar": 26,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a88ed6cb_e52b0f7f",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "4405fe58_f9c50ead",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afdbb88c_4af8c644",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 5
@@ -83,6 +155,30 @@
       "writtenOn": "2023-03-09T21:13:00Z",
       "side": 1,
       "message": "QQ: Is this necessary?",
+      "range": {
+        "startLine": 63,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac9c015_6b6271b4",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "Yes, set HPD to low.",
+      "parentUuid": "afdbb88c_4af8c644",
       "range": {
         "startLine": 63,
         "startChar": 8,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09ded3e2_0c83a7fd",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "99e739a5_9e717910",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 12
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30702d2a_762120bf",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 5
@@ -129,6 +249,30 @@
       "writtenOn": "2023-03-09T21:13:00Z",
       "side": 1,
       "message": "Print error message (with port #)?",
+      "range": {
+        "startLine": 134,
+        "startChar": 9,
+        "endLine": 134,
+        "endChar": 25
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74bed763_441efa34",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "30702d2a_762120bf",
       "range": {
         "startLine": 134,
         "startChar": 9,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd814cab_7548ea74",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "ca55abc0_291229f4",
+      "range": {
+        "startLine": 147,
+        "startChar": 10,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8b370c5_69b7b1f3",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 5
@@ -181,6 +349,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "853d350e_9256590a",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "e8b370c5_69b7b1f3",
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d80ecaf_a5435b11",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 5
@@ -192,6 +378,30 @@
       "writtenOn": "2023-03-09T21:13:00Z",
       "side": 1,
       "message": "nit: C%d:",
+      "range": {
+        "startLine": 191,
+        "startChar": 10,
+        "endLine": 191,
+        "endChar": 13
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c858fec2_4cfa40af",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "2d80ecaf_a5435b11",
       "range": {
         "startLine": 191,
         "startChar": 10,
@@ -227,6 +437,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f33fa606_03e19b69",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "f4998c08_c6fd1039",
+      "range": {
+        "startLine": 212,
+        "startChar": 2,
+        "endLine": 212,
+        "endChar": 9
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "add35351_71fd01e4",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 5
@@ -238,6 +472,30 @@
       "writtenOn": "2023-03-09T21:13:00Z",
       "side": 1,
       "message": "Can you consolidate this and anx7406_m1_config?",
+      "range": {
+        "startLine": 217,
+        "startChar": 11,
+        "endLine": 217,
+        "endChar": 28
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f682815_da8eeb1c",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "Will remove this",
+      "parentUuid": "add35351_71fd01e4",
       "range": {
         "startLine": 217,
         "startChar": 11,
@@ -273,6 +531,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb77de1b_44ba7fb8",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK, I\u0027ll remove this function",
+      "parentUuid": "a2e1babc_90f4c817",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 19
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67936e8c_700dd626",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 5
@@ -284,6 +566,30 @@
       "writtenOn": "2023-03-09T21:13:00Z",
       "side": 1,
       "message": "This isn\u0027t used. Do you need to keep it?",
+      "range": {
+        "startLine": 274,
+        "startChar": 4,
+        "endLine": 274,
+        "endChar": 20
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6279de4f_73e4ae56",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "I\u0027ll remove this unused function.",
+      "parentUuid": "67936e8c_700dd626",
       "range": {
         "startLine": 274,
         "startChar": 4,
@@ -319,6 +625,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84b3fcbf_873ca1ea",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "5e125b52_fa68371c",
+      "range": {
+        "startLine": 293,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 9
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9956dbd9_daf65d58",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 5
@@ -330,6 +660,30 @@
       "writtenOn": "2023-03-09T21:13:00Z",
       "side": 1,
       "message": "nit: \"un\"",
+      "range": {
+        "startLine": 380,
+        "startChar": 43,
+        "endLine": 380,
+        "endChar": 46
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff45392_c7ca38c5",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "9956dbd9_daf65d58",
       "range": {
         "startLine": 380,
         "startChar": 43,
@@ -365,6 +719,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9fee3cd_845f175c",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "8168f42d_776ab274",
+      "range": {
+        "startLine": 457,
+        "startChar": 21,
+        "endLine": 457,
+        "endChar": 43
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b395bf8_f5a68a53",
         "filename": "driver/tcpm/anx7406.h",
         "patchSetId": 5
@@ -376,6 +754,30 @@
       "writtenOn": "2023-03-09T21:13:00Z",
       "side": 1,
       "message": "Do these need to be exported?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 53
+      },
+      "revId": "e1b42bf6a17ce3d25178258bdd1355030d798008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bba79ff_e79dee4d",
+        "filename": "driver/tcpm/anx7406.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-03-10T09:45:16Z",
+      "side": 1,
+      "message": "No need to be exported, I\u0027ll remove it.",
+      "parentUuid": "4b395bf8_f5a68a53",
       "range": {
         "startLine": 130,
         "startChar": 0,
