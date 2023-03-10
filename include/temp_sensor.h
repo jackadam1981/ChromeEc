@@ -52,7 +52,7 @@ struct temp_sensor_t {
  * Defined in board_temp_sensor.c. Must be in the same order as
  * in enum temp_sensor_id.
  */
-extern const struct temp_sensor_t temp_sensors[];
+extern struct temp_sensor_t temp_sensors[];
 #endif
 
 /**

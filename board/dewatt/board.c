@@ -7,10 +7,12 @@
 
 #include "adc.h"
 #include "base_fw_config.h"
+#include "baseboard.h"
 #include "battery.h"
 #include "board_fw_config.h"
 #include "builtin/assert.h"
 #include "button.h"
+#include "cbi_ssfc.h"
 #include "charger.h"
 #include "common.h"
 #include "cros_board_info.h"
@@ -21,6 +23,7 @@
 #include "driver/retimer/ps8818_public.h"
 #include "driver/temp_sensor/pct2075.h"
 #include "driver/temp_sensor/sb_tsi.h"
+#include "driver/temp_sensor/tmp112.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -34,6 +37,7 @@
 #include "temp_sensor.h"
 #include "temp_sensor/pct2075.h"
 #include "temp_sensor/thermistor.h"
+#include "temp_sensor/tmp112.h"
 #include "thermal.h"
 #include "usb_mux.h"
 
@@ -250,75 +254,6 @@ uint16_t board_anx7451_get_usb_i2c_addr(const struct usb_mux *me)
 	return 0x2a;
 }
 
-/*
- * Base Gyro Sensor dynamic configuration
- */
-static int base_gyro_config;
-
-static void board_update_motion_sensor_config(void)
-{
-	if (board_is_convertible()) {
-		base_gyro_config = BASE_GYRO_BMI260;
-		ccprints("BASE GYRO is BMI260");
-
-		motion_sensor_count = ARRAY_SIZE(motion_sensors);
-		/* Enable Base Accel and Gyro interrupt */
-		gpio_enable_interrupt(GPIO_6AXIS_INT_L);
-	} else {
-		motion_sensor_count = 0;
-		gmr_tablet_switch_disable();
-		/* Base accel is not stuffed, don't allow line to float */
-		gpio_set_flags(GPIO_6AXIS_INT_L, GPIO_INPUT | GPIO_PULL_DOWN);
-	}
-}
-
-void motion_interrupt(enum gpio_signal signal)
-{
-	switch (base_gyro_config) {
-	case BASE_GYRO_BMI260:
-	default:
-		bmi260_interrupt(signal);
-		break;
-	}
-}
-
-static void board_init(void)
-{
-	board_update_motion_sensor_config();
-}
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
-static void board_chipset_startup(void)
-{
-	if (get_board_version() > 1)
-		pct2075_init();
-}
-DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
-
-int board_get_soc_temp_k(int idx, int *temp_k)
-{
-	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
-		return EC_ERROR_NOT_POWERED;
-
-	return pct2075_get_val_k(idx, temp_k);
-}
-
-int board_get_soc_temp_mk(int *temp_mk)
-{
-	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
-		return EC_ERROR_NOT_POWERED;
-
-	return pct2075_get_val_mk(PCT2075_SOC, temp_mk);
-}
-
-int board_get_ambient_temp_mk(int *temp_mk)
-{
-	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
-		return EC_ERROR_NOT_POWERED;
-
-	return pct2075_get_val_mk(PCT2075_AMB, temp_mk);
-}
-
 /* ADC Channels */
 const struct adc_t adc_channels[] = {
 	[ADC_TEMP_SENSOR_SOC] = {
@@ -368,7 +303,13 @@ const struct pct2075_sensor_t pct2075_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pct2075_sensors) == PCT2075_COUNT);
 
-const struct temp_sensor_t temp_sensors[] = {
+const struct tmp112_sensor_t tmp112_sensors[] = {
+	{ I2C_PORT_SENSOR, TMP112_I2C_ADDR_FLAGS0 },
+	{ I2C_PORT_SENSOR, TMP112_I2C_ADDR_FLAGS1 },
+};
+BUILD_ASSERT(ARRAY_SIZE(tmp112_sensors) == TMP112_COUNT);
+
+struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_SOC] = {
 		.name = "SOC",
 		.type = TEMP_SENSOR_TYPE_BOARD,
@@ -401,6 +342,111 @@ const struct temp_sensor_t temp_sensors[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+/*
+ * Base Gyro Sensor dynamic configuration
+ */
+static int base_gyro_config;
+
+static void board_update_motion_sensor_config(void)
+{
+	if (board_is_convertible()) {
+		base_gyro_config = BASE_GYRO_BMI260;
+		ccprints("BASE GYRO is BMI260");
+
+		motion_sensor_count = ARRAY_SIZE(motion_sensors);
+		/* Enable Base Accel and Gyro interrupt */
+		gpio_enable_interrupt(GPIO_6AXIS_INT_L);
+	} else {
+		motion_sensor_count = 0;
+		gmr_tablet_switch_disable();
+		/* Base accel is not stuffed, don't allow line to float */
+		gpio_set_flags(GPIO_6AXIS_INT_L, GPIO_INPUT | GPIO_PULL_DOWN);
+	}
+}
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	switch (base_gyro_config) {
+	case BASE_GYRO_BMI260:
+	default:
+		bmi260_interrupt(signal);
+		break;
+	}
+}
+
+/*
+ * Ambient Temp Sensor configuration
+ */
+static enum ec_ssfc_temp_sensor temp_sensor_ssfc;
+
+static void board_update_temp_sensor_config(void)
+{
+	temp_sensor_ssfc = get_cbi_ssfc_temp_sensor();
+
+	if (temp_sensor_ssfc == SSFC_TEMP_SENSOR_TMP112) {
+		temp_sensors[TEMP_SENSOR_SOC].idx = TMP112_SOC;
+		temp_sensors[TEMP_SENSOR_AMBIENT].read = tmp112_get_val_k;
+		temp_sensors[TEMP_SENSOR_AMBIENT].idx = TMP112_AMB;
+	}
+}
+
+static void board_init(void)
+{
+	board_update_motion_sensor_config();
+
+	board_update_temp_sensor_config();
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static void board_chipset_startup(void)
+{
+	if (get_board_version() > 1) {
+		switch (temp_sensor_ssfc) {
+		case SSFC_TEMP_SENSOR_TMP112:
+			tmp112_init();
+			break;
+		case SSFC_TEMP_SENSOR_PCT2075:
+		default:
+			pct2075_init();
+			break;
+		}
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
+
+int board_get_soc_temp_k(int idx, int *temp_k)
+{
+	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
+		return EC_ERROR_NOT_POWERED;
+
+	if (temp_sensor_ssfc == SSFC_TEMP_SENSOR_TMP112)
+		return tmp112_get_val_k(idx, temp_k);
+
+	return pct2075_get_val_k(idx, temp_k);
+}
+
+int board_get_soc_temp_mk(int *temp_mk)
+{
+	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
+		return EC_ERROR_NOT_POWERED;
+
+	if (temp_sensor_ssfc == SSFC_TEMP_SENSOR_TMP112)
+		return tmp112_get_val_mk(TMP112_SOC, temp_mk);
+
+	return pct2075_get_val_mk(PCT2075_SOC, temp_mk);
+}
+
+int board_get_ambient_temp_mk(int *temp_mk)
+{
+	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
+		return EC_ERROR_NOT_POWERED;
+
+	if (temp_sensor_ssfc == SSFC_TEMP_SENSOR_TMP112)
+		return tmp112_get_val_mk(TMP112_AMB, temp_mk);
+
+	return pct2075_get_val_mk(PCT2075_AMB, temp_mk);
+}
 
 static int board_get_memory_temp(int idx, int *temp_k)
 {

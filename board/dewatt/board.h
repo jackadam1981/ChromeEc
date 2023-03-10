@@ -58,6 +58,7 @@
 
 /* Thermal Config */
 #define CONFIG_TEMP_SENSOR_PCT2075
+#define CONFIG_TEMP_SENSOR_TMP112
 
 #ifndef __ASSEMBLER__
 
