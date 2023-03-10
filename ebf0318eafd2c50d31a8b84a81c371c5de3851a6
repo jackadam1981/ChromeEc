@@ -22,6 +22,30 @@
       },
       "revId": "ebf0318eafd2c50d31a8b84a81c371c5de3851a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6390c6ac_ba196528",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2023-03-10T01:56:17Z",
+      "side": 1,
+      "message": "Customer want this CL only effect on sku 160,168,169,190,191.",
+      "parentUuid": "722ebe69_8e3353b2",
+      "range": {
+        "startLine": 194,
+        "startChar": 22,
+        "endLine": 194,
+        "endChar": 52
+      },
+      "revId": "ebf0318eafd2c50d31a8b84a81c371c5de3851a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
