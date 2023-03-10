@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94ea3616_1b563861",
+        "filename": "util/ec_panicinfo.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-10T22:34:48Z",
+      "side": 1,
+      "message": "Looks like it only returns `-1` on error, so I would just say `-1 on error`.",
+      "range": {
+        "startLine": 26,
+        "startChar": 37,
+        "endLine": 26,
+        "endChar": 50
+      },
+      "revId": "89a9aee6fa197b11a879516052734a6d1c7c3f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
