@@ -172,7 +172,7 @@ int parse_panic_info(const char *data, size_t size)
 		copy_size = size;
 	}
 	/* Copy the data into pdata, as the struct size may have changed. */
-	memcpy(&pdata, data, copy_size);
+	memcpy(&pdata, data + size - copy_size, copy_size);
 	/* Then copy the trailer in position. */
 	memcpy((char *)&pdata + (sizeof(struct panic_data) - trailer_size),
 	       data + (size - trailer_size), trailer_size);
