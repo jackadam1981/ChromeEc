@@ -46,8 +46,13 @@
   // epoch/major/minor would be preferred
   "timestamp": 1,
   "epoch": 0,  // FWR diversification contributor, 32 bits.
+<<<<<<< HEAD   (318a14 cr50: prepare to release 0.{5,6}.151)
   "major": 5,  // FW2_HIK_CHAIN counter.
   "minor": 151,  // Mostly harmless version field.
+=======
+  "major": 6,  // FW2_HIK_CHAIN counter.
+  "minor": 152,  // Mostly harmless version field.
+>>>>>>> CHANGE (f8c939 cr50: prepare to release 0.{5,6}.152)
   "applysec": -1,  // Mask to and with fuse BROM_APPLYSEC.
   "config1": 13,  // Which BROM_CONFIG1 actions to take before launching.
   "err_response": 0,  // Mask to or with fuse BROM_ERR_RESPONSE.
