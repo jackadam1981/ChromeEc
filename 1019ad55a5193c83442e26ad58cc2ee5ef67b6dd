@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3876aba_5ea9b3c4",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2023-03-11T01:05:20Z",
+      "side": 1,
+      "message": "Any info we get from SOP_PRIME_PRIME?",
+      "revId": "1019ad55a5193c83442e26ad58cc2ee5ef67b6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33670757_9cf68918",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5714,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2023-03-11T01:05:20Z",
+      "side": 1,
+      "message": "Can\u0027t this be uint8_t??",
+      "range": {
+        "startLine": 5714,
+        "startChar": 1,
+        "endLine": 5714,
+        "endChar": 5
+      },
+      "revId": "1019ad55a5193c83442e26ad58cc2ee5ef67b6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
