@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "396b72d2_569aaf2e",
+        "filename": "common/ec_features.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2023-03-11T00:55:27Z",
+      "side": 1,
+      "message": "EC_FEATURE_TYPEC_DP2_1",
+      "revId": "1491498fdcfe4eb2f341fe5a489f320462fe0f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "053765ee_7a646d10",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2023-03-11T00:55:27Z",
+      "side": 1,
+      "message": "Should we mention about cable info or power delivery. EC is not responsible to fully support DP 2.1 End to end.",
+      "revId": "1491498fdcfe4eb2f341fe5a489f320462fe0f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
