@@ -16,6 +16,24 @@
       "message": "Adding Benson\n\nWe should check with the OS team what data they\u0027d like from the port connection.  They may prefer to have the Source Caps and EPR Source Caps separate, since those could vary (they shouldn\u0027t by spec, but they could).",
       "revId": "63fb650c1c68de1b63a6f317e54b5b3b4d83454f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3186742d_4a9a17ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2023-03-11T00:30:42Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong opinion about this.\n\nThe type-c connector class and the kernel\u0027s PDO support doesn\u0027t yet support EPR, and whatever the format for these, we can control the kernel driver to format things in the right way for when they do define EPR support in the kernel.",
+      "parentUuid": "3f0e8129_a2362ea8",
+      "revId": "63fb650c1c68de1b63a6f317e54b5b3b4d83454f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
