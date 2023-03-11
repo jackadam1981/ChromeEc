@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b3f940_53f4a442",
+        "filename": "util/ec_panicinfo.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-11T01:19:20Z",
+      "side": 0,
+      "message": "IIUC, the intention here is to copy the panic data from the beiginning and copy the trailer (\u003d magic and size) next. This ensures both the trailer and the beginning of the panic data are stored. (What\u0027s lost would be the data in the middle, which is less important.)\n\nThe code is obscure. So, I believe more comment would be almost necessary.\n\nWe might as well store all data in the reverse order. Also, if this truncated pdata is ever returned to the caller, the caller would be totally confused.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 52
+      },
+      "revId": "7223817c5eac990f2002096f84fa6d899ebeda97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
