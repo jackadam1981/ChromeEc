@@ -84,6 +84,8 @@ enum {
 	PE_FLAGS_DATA_RESET_COMPLETE_FN,
 	/* Waiting for SRC to SNK settle time */
 	PE_FLAGS_SRC_SNK_SETTLE_FN,
+	/* Discovery disabled due to UFP/PD 2.0 constraint. */
+	PE_FLAGS_DISCOVERY_DISABLED_FN,
 	/* Last element */
 	PE_FLAGS_COUNT
 };
