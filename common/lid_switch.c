@@ -173,3 +173,20 @@ static enum ec_status hc_force_lid_open(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FORCE_LID_OPEN, hc_force_lid_open, EC_VER_MASK(0));
+
+static int command_forcelidopen(int argc, const char **argv)
+{
+	if (argc > 1) {
+		if (!strcasecmp(argv[1], "on")) {
+			forced_lid_open = 1;
+			CPRINTS("set forced lidopen on");
+		} else {
+			forced_lid_open = 0;
+			CPRINTS("set forced lidopen off");
+		}
+	} else {
+		CPRINTS("usage: forcelidopen on|off");
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(forcelidopen, command_forcelidopen, "forcelidopen on|off", "set force lid open");
