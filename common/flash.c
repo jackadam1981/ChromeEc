@@ -1548,6 +1548,44 @@ static enum ec_status flash_command_protect(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_FLASH_PROTECT, flash_command_protect,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
+static enum ec_status flash_command_protect_v2(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_flash_protect_ *p = args->params;
+	struct ec_response_flash_protect *r = args->response;
+
+	/*
+	 * Handle requesting new flags.  Note that we ignore the return code
+	 * from flash_set_protect(), since errors will be visible to the caller
+	 * via the flags in the response.  (If we returned error, the caller
+	 * wouldn't get the response.)
+	 */
+
+	 switch (p.)
+	if (p->mask)
+		crec_flash_set_protect(p->mask, p->flags);
+
+	/*
+	 * Retrieve the current flags.  The caller can use this to determine
+	 * which of the requested flags could be set.  This is cleaner than
+	 * simply returning error, because it provides information to the
+	 * caller about the actual result.
+	 */
+	r->flags = crec_flash_get_protect();
+
+	/* Indicate which flags are valid on this platform */
+	r->valid_flags = EC_FLASH_PROTECT_GPIO_ASSERTED |
+			 EC_FLASH_PROTECT_ERROR_STUCK |
+			 EC_FLASH_PROTECT_ERROR_INCONSISTENT |
+			 EC_FLASH_PROTECT_ERROR_UNKNOWN |
+			 crec_flash_physical_get_valid_flags();
+	r->writable_flags = crec_flash_physical_get_writable_flags(r->flags);
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_PROTECT, flash_command_protect_v2, EC_VER_MASK(1));
+
 static enum ec_status
 flash_command_region_info(struct host_cmd_handler_args *args)
 {
