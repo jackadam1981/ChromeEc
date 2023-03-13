@@ -16,6 +16,24 @@
       "message": "Discussed with Jeremy and we\u0027d like to use this in Gitlab in order to improve reproducible builds.",
       "revId": "03b70bf8b89cf00de4b7ae8dadbe7aca8d3a9a01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abef8cc1_b5e25e25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-03-13T18:07:03Z",
+      "side": 1,
+      "message": "Please let me know if this is not sufficient to merge. This CL will allow use a easier out-of-chroot build that\u0027s reproducible in Gitlab thus making it easier for us to reproduce post-submit errors. I believe that\u0027s been described in Al\u0027s documents but please let me know if you feel it\u0027s not been sufficiently communicated.",
+      "parentUuid": "bc02d377_3604ffe8",
+      "revId": "03b70bf8b89cf00de4b7ae8dadbe7aca8d3a9a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
