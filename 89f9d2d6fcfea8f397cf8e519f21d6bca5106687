@@ -16,6 +16,259 @@
       "message": "Hi Keith, I cherry-pick your [patch](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4327418) and add new register remote2 tmep 0x23.\n\nWould you help to review it?",
       "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25a941ca_00b0443d",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-13T18:28:07Z",
+      "side": 1,
+      "message": "F75303_TEMP_LOCAL_REGISTER",
+      "range": {
+        "startLine": 118,
+        "startChar": 10,
+        "endLine": 118,
+        "endChar": 27
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "104de22c_700b3dc4",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-13T18:28:07Z",
+      "side": 1,
+      "message": "F75303_TEMP_REMOTE1_REGISTER",
+      "range": {
+        "startLine": 119,
+        "startChar": 10,
+        "endLine": 119,
+        "endChar": 29
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d8606a5_44e54e45",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-13T18:28:07Z",
+      "side": 1,
+      "message": "F75303_TEMP_REMOTE2_REGISTER",
+      "range": {
+        "startLine": 120,
+        "startChar": 10,
+        "endLine": 120,
+        "endChar": 29
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65acf27e_d2207c7b",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-13T18:28:07Z",
+      "side": 1,
+      "message": "Use the enum values for all cases in the switch statement: F75303_IDX_LOCAL",
+      "range": {
+        "startLine": 132,
+        "startChar": 6,
+        "endLine": 132,
+        "endChar": 7
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3338c83d_ccf4c731",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-13T18:28:07Z",
+      "side": 1,
+      "message": "F75303_TEMP_LOCAL_REGISTER",
+      "range": {
+        "startLine": 133,
+        "startChar": 21,
+        "endLine": 133,
+        "endChar": 38
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7429428d_2015ffc5",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-13T18:28:07Z",
+      "side": 1,
+      "message": "F75303_TEMP_REMOTE1_REGISTER",
+      "range": {
+        "startLine": 136,
+        "startChar": 21,
+        "endLine": 136,
+        "endChar": 40
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "852260cf_184d2c01",
+        "filename": "include/driver/temp_sensor/f75303.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-13T18:28:07Z",
+      "side": 1,
+      "message": "I was incorrect - these defines can be converted to an enum now that the macro F75303_SENSOR_ID has been fixed.  I think using the IDX nameing \n such as `F75303_IDX_LOCAL` makes this clearer.  You\u0027ll have to update the mushu and nami boards to remove the duplicate definition.\n\n```c\nenum f75303_index {\n\tF75303_TEMP_LOCAL,\n\tF75303_TEMP_REMOTE1,\n\tF75303_TEMP_REMOTE2,\n\tF75303_IDX_COUNT,\n};\n```",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d775aad4_aaf5af59",
+        "filename": "include/driver/temp_sensor/f75303.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-13T18:28:07Z",
+      "side": 1,
+      "message": "Add definitions for the F75303_TEMP_LOCAL_REGISTER and \n F75303_TEMP_REMOTE1_REGISTER.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 41
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf78d4c3_f94bf3a3",
+        "filename": "include/driver/temp_sensor/f75303.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-13T18:28:07Z",
+      "side": 1,
+      "message": "This can be deleted after you create the enum.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023af76b_e5edaef7",
+        "filename": "zephyr/dts/bindings/temp/cros-ec,temp-sensor-f75303.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-13T18:28:07Z",
+      "side": 1,
+      "message": "Use F75303_IDX_LOCAL, F75303_IDX_REMOTE1, F75303_IDX_REMOTE2",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e65aada_6e8bbde2",
+        "filename": "zephyr/program/skyrim/markarth/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-13T18:28:07Z",
+      "side": 1,
+      "message": "Please fix the indentation.  You should be using hard-tabs in this file.",
+      "range": {
+        "startLine": 204,
+        "startChar": 8,
+        "endLine": 217,
+        "endChar": 6
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -194,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b16baaf_8d01c023",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-13T18:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc6763c_706f9927",
+      "range": {
+        "startLine": 231,
+        "startChar": 15,
+        "endLine": 231,
+        "endChar": 22
+      },
+      "revId": "e30961790466e586e7862543c6a44506c8311b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b661acf_6f36522e",
