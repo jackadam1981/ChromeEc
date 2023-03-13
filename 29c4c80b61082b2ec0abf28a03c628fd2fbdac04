@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "591b5893_32f54cbe",
+        "filename": "test/aes.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-13T20:25:02Z",
+      "side": 1,
+      "message": "The comment that you added is just stating what the code does, which is already pretty clear from the code itself (the `memset`). The comment should address the \"why\": https://google.github.io/styleguide/cppguide.html#Implementation_Comment_Donts.\n\nEven though it\u0027s not required to do the memset in the older version of the code, let\u0027s go ahead and split this change into a separate CL. It won\u0027t hurt with the older code, and it will make the `git blame` history easier to understand in the future.\n\nI\u0027m still not sure I understand why this is needed after skimming https://boringssl-review.googlesource.com/c/boringssl/+/32004.\n\nIt looks like that change added a `memset` internally:\n\nbefore:\n\n```\n    gctx-\u003ectr \u003d\n        aes_ctr_set_key(\u0026gctx-\u003eks.ks, \u0026gctx-\u003egcm, NULL, key, ctx-\u003ekey_len);\n```\n\nafter:\n\n```\n    OPENSSL_memset(\u0026gctx-\u003egcm, 0, sizeof(gctx-\u003egcm));\n    gctx-\u003ectr \u003d aes_ctr_set_key(\u0026gctx-\u003eks.ks, \u0026gctx-\u003egcm.gcm_key, NULL, key,\n                                ctx-\u003ekey_len);\n```\n\nWhy do we need to also clear the context before passing it in?",
+      "parentUuid": "0642029e_6f75a1fa",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 31
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae346838_3f646fcf",
         "filename": "third_party/boringssl/cros-ec-toolchain.cmake",
         "patchSetId": 24

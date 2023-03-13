@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7fb9dc9_af9e51c5",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 29
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-13T20:25:02Z",
+      "side": 1,
+      "message": "Thanks for splitting this into a separate common file. Can you move the change into a separate CL: go/small-cls?",
+      "revId": "5262039d8cb16c11a15f5d17d8282a0fb6ce335f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daadf7be_4a319a2b",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 29
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-13T20:25:02Z",
+      "side": 1,
+      "message": "Does the more standard COMPILER_ID check work: https://stackoverflow.com/a/10055571? (since you set `CMAKE_C_COMPILER` above)",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "5262039d8cb16c11a15f5d17d8282a0fb6ce335f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a6edcf_1fac7fcb",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 29
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-13T20:25:02Z",
+      "side": 1,
+      "message": "We want these flags for all EC code, so this should be moved into the `cmake/toolchain-common.cmake` file. However, I think we may not need it all since [we set it in the `Makefile.toolchain`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/Makefile.toolchain;l\u003d121-122;drc\u003d6904a7e33f30f2def25cb5e4afe29503be0589d8). (Double-check that it ends up being added in the cmake build after removing it.)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 104
+      },
+      "revId": "5262039d8cb16c11a15f5d17d8282a0fb6ce335f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
