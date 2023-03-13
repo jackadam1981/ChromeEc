@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3999b63_abc91cc7",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-13T20:52:56Z",
+      "side": 1,
+      "message": "For safety, I would prefer double the stack size (1024-\u003e2048).\nAlthough the minimum requirement should be 256 bytes.",
+      "parentUuid": "5ec0d505_a02d9dd8",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 39
+      },
+      "revId": "2a5fdfb2c29a763300a088fd1306ff97d985f830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f7a552_c9c9037d",
         "filename": "common/fpsensor/fpsensor_state.c",
         "patchSetId": 48
