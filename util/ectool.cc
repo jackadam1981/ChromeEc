@@ -246,6 +246,8 @@ const char help_str[] =
 	"      Get All USB-PD alternate SVIDs and modes on <port>\n"
 	"  pdsetmode <port> <svid> <opos>\n"
 	"      Set USB-PD alternate SVID and mode on <port>\n"
+	"  pdsetmaxvoltage <port> <voltage>\n"
+	"      Set USB-PD max request <voltage> on <port>\n"
 	"  port80flood\n"
 	"      Rapidly write bytes to port 80\n"
 	"  port80read\n"
@@ -2857,6 +2859,45 @@ int cmd_pd_set_amode(int argc, char *argv[])
 		return -1;
 	}
 	return ec_command(EC_CMD_USB_PD_SET_AMODE, 0, p, sizeof(*p), NULL, 0);
+}
+
+int cmd_pd_set_max_req_voltage(int argc, char *argv[])
+{
+	struct ec_params_usb_pd_dps_control p;
+	struct ec_params_usb_pd_req_max request;
+	uint8_t port;
+	uint8_t voltage;
+	char *e;
+	int rv;
+
+	if (argc != 3) {
+		fprintf(stderr,"Usage: pdmax [port] [voltage](V)\n");
+	}
+
+	port = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "ERROR: Bad port number: %s\n", argv[1]);
+		return -1;
+	}
+	voltage = strtol(argv[2], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "ERROR: Bad voltage: %s\n", argv[1]);
+		return -1;
+	}
+
+	/* Disable DPS */
+	p.enable = 0;
+	rv = ec_command(EC_CMD_USB_PD_DPS_CONTROL, 0, &p, sizeof(p), NULL, 0);
+	if (rv < 0) {
+		fprintf(stderr, "Disable DPS failed!\n");
+		return rv;
+	}
+
+	request.port = port;
+	request.voltage = voltage;
+	fprintf(stdout, "port = %d, voltage = %d\n", request.port, request.voltage);
+	return ec_command(EC_CMD_USB_PD_REQ_MAX, 0,
+			  &request, sizeof(request), NULL, 0);
 }
 
 int cmd_pd_get_amode(int argc, char *argv[])
@@ -7533,7 +7574,6 @@ int cmd_charge_current_limit(int argc, char *argv[])
 	struct ec_params_current_limit_v1 p1;
 	uint32_t limit;
 	uint8_t battery_soc;
-	int rv;
 	char *e;
 
 	/*
@@ -11205,6 +11245,7 @@ const struct command commands[] = {
 	{ "pchg", cmd_pchg },
 	{ "pdgetmode", cmd_pd_get_amode },
 	{ "pdsetmode", cmd_pd_set_amode },
+	{ "pdsetmaxvoltage", cmd_pd_set_max_req_voltage },
 	{ "port80read", cmd_port80_read },
 	{ "pdlog", cmd_pd_log },
 	{ "pdcontrol", cmd_pd_control },

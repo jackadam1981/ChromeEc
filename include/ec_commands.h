@@ -7894,6 +7894,15 @@ struct ec_response_get_boot_time {
 	uint16_t cnt;
 } __ec_align4;
 
+
+/* Set pd max request voltage */
+#define EC_CMD_USB_PD_REQ_MAX 0x0605
+
+struct ec_params_usb_pd_req_max {
+	uint8_t port;
+	uint8_t voltage;
+} __ec_align1;
+
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or

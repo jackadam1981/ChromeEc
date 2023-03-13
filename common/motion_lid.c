@@ -566,3 +566,10 @@ enum ec_status host_cmd_motion_lid(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
+
+static int command_get_lid_angle(int argc, const char **argv)
+{
+	CPRINTS("the lid_angle is: %d", motion_lid_get_angle());
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(getlidangle, command_get_lid_angle, NULL, "get the lid angle");

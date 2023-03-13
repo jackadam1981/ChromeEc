@@ -236,3 +236,19 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 			,
 			"USB PD");
 #endif
+
+static enum ec_status
+host_command_set_max_req_voltage(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_pd_req_max *p = args->params;
+	uint16_t max_volt = p->voltage * 1000;
+	uint8_t port = p->port;
+
+	pd_request_source_voltage(port, max_volt);
+	pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
+	ccprintf("port %d max req: %dmV\n", port, max_volt);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_REQ_MAX, host_command_set_max_req_voltage,
+		     EC_VER_MASK(0));

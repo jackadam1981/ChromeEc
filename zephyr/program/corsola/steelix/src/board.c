@@ -10,6 +10,7 @@
  */
 #include "accelgyro.h"
 #include "common.h"
+#include "console.h"
 #include "cros_cbi.h"
 #include "driver/accelgyro_bmi3xx.h"
 #include "driver/accelgyro_lsm6dsm.h"
@@ -19,8 +20,19 @@
 #include "motionsense_sensors.h"
 #include "tablet_mode.h"
 
+#include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/shell/shell.h>
+
+#include "battery.h"
+#include "battery_smart.h"
+#include "host_command.h"
+#include "i2c.h"
+#include "timer.h"
+#include "util.h"
+
+#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)
 
 LOG_MODULE_REGISTER(board_init, LOG_LEVEL_ERR);
 
@@ -74,3 +86,47 @@ static void alt_sensor_init(void)
 	motion_sensors_check_ssfc();
 }
 DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C);
+
+
+static int command_dump_smb_regs(int argc, const char **argv)
+{
+	int reg;
+	int regval;
+	int rv;
+
+	for (reg = SB_MANUFACTURER_ACCESS; reg <= SB_MANUFACTURER_DATA; reg++) {
+		CPRINTF("[%Xh] = ", reg);
+		rv = i2c_read16(I2C_PORT_BATTERY,
+				BATTERY_ADDR_FLAGS, reg, &regval);
+		if (!rv)
+			CPRINTF("0x%04x\n", regval);
+		else
+			CPRINTF("ERR (%d)\n", rv);
+		cflush();
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(dumpbatteryreg, command_dump_smb_regs, NULL, "dump smart battery registers");
+
+
+static int cmd_sub_cmd1(const struct shell *shell,
+				  size_t argc, char **argv)
+{
+	printk("This is sub cmd 1 of test_shell_command\n");
+	return 0;
+}
+
+static int cmd_sub_cmd2(const struct shell *shell,
+				  size_t argc, char **argv)
+{
+	printk("This is sub cmd 2 of test_shell_command\n");
+	return 0;
+}
+
+SHELL_STATIC_SUBCMD_SET_CREATE(sub_test_shell_command,
+	SHELL_CMD(sub_cmd1, NULL, "Sub command 1", cmd_sub_cmd1),
+	SHELL_CMD(sub_cmd2, NULL, "Sub command 2", cmd_sub_cmd2),
+	SHELL_SUBCMD_SET_END /* Array terminated. */
+);
+
+SHELL_CMD_REGISTER(test_shell_command, &sub_test_shell_command, "test shell commands", NULL);
