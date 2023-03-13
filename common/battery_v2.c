@@ -36,6 +36,7 @@ static void battery_update(enum battery_index i)
 	int *memmap_rate = (int *)host_get_memmap(EC_MEMMAP_BATT_RATE);
 	int *memmap_cap = (int *)host_get_memmap(EC_MEMMAP_BATT_CAP);
 	int *memmap_lfcc = (int *)host_get_memmap(EC_MEMMAP_BATT_LFCC);
+	int *memmap_temp = (int *)host_get_memmap(EC_MEMMAP_TEMP_SENSOR);
 	uint8_t *memmap_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
 
 	/* Smart battery serial number is 16 bits */
@@ -76,6 +77,7 @@ static void battery_update(enum battery_index i)
 	*memmap_rate = ABS(battery_dynamic[i].actual_current);
 	*memmap_cap = battery_dynamic[i].remaining_capacity;
 	*memmap_lfcc = battery_dynamic[i].full_capacity;
+	*memmap_temp = battery_dynamic[i].temperature;
 	*memmap_flags = battery_dynamic[i].flags;
 }
 
@@ -339,6 +341,9 @@ void update_dynamic_battery_info(void)
 
 	if (!(curr->batt.flags & BATT_FLAG_BAD_DESIRED_CURRENT))
 		bd->desired_current = curr->batt.desired_current;
+
+	if (!(curr->batt.flags & BATT_FLAG_BAD_TEMPERATURE))
+		bd->temperature = curr->batt.temperature;
 
 	if (!(curr->batt.flags & BATT_FLAG_BAD_REMAINING_CAPACITY)) {
 		/*
