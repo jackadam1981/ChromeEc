@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a031aec8_e75eadaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-13T16:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6acf37b6_7282313e",
+      "range": {
+        "startLine": 11,
+        "startChar": 37,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "7c25aa07fe19b397c3e00770454e62c5c82da2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c0554e9_5e487ead",
@@ -48,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a9c7f5b_43c5030b",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-13T16:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c0554e9_5e487ead",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 17
+      },
+      "revId": "7c25aa07fe19b397c3e00770454e62c5c82da2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f461a591_8d93ca1c",
@@ -61,6 +109,30 @@
       "writtenOn": "2023-03-09T00:17:36Z",
       "side": 1,
       "message": "Looks like you don\u0027t need this?",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 65
+      },
+      "revId": "7c25aa07fe19b397c3e00770454e62c5c82da2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceb3af87_b37f2a4b",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-13T16:53:01Z",
+      "side": 1,
+      "message": "Are you suggesting I remove the assert in the `print_panic_task_stack` stub so it is a no-op when `CONFIG_PLATFORM_EC_SYSTEM_SAFE_MODE_PRINT_STACK` is not enabled?",
+      "parentUuid": "f461a591_8d93ca1c",
       "range": {
         "startLine": 206,
         "startChar": 1,
