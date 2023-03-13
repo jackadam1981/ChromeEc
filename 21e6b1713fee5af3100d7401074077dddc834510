@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4eb611f_34183250",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-13T23:25:09Z",
+      "side": 1,
+      "message": "To understand the performance implications of unaligned access, can you add something that compares the aligned versus unaligned access. Here are [two](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/stdlib.c;l\u003d353-368;drc\u003da147fd5e333e940ff831cd09964ca855b3f78755) [examples](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/stdlib.c;l\u003d398-413;drc\u003da147fd5e333e940ff831cd09964ca855b3f78755).",
+      "revId": "21e6b1713fee5af3100d7401074077dddc834510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
