@@ -59,6 +59,8 @@ static int get_data_size(enum ec_mkbp_event e)
 	case EC_MKBP_EVENT_SWITCH:
 	case EC_MKBP_EVENT_SYSRQ:
 		return sizeof(uint32_t);
+	case EC_MKBP_EVENT_TOUCHPAD:
+		return sizeof(fifo[0].data);
 	default:
 		/* For unknown types, say it's 0. */
 		return 0;
