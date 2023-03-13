@@ -9,4 +9,4 @@
 BASEBOARD:=guybrush
 
 board-y=board.o
-board-y+=board_fw_config.o led.o battery.o thermal.o
+board-y+=board_fw_config.o led.o battery.o thermal.o cbi_ssfc.o

@@ -52,8 +52,12 @@ struct temp_sensor_t {
  * Defined in board_temp_sensor.c. Must be in the same order as
  * in enum temp_sensor_id.
  */
+#ifdef CONFIG_TEMP_SENSOR_2ND_SOURCE
+extern struct temp_sensor_t temp_sensors[];
+#else
 extern const struct temp_sensor_t temp_sensors[];
-#endif
+#endif /* CONFIG_TEMP_SENSOR_2ND_SOURCE */
+#endif /* CONFIG_TEMP_SENSOR */
 
 /**
  * Get the most recently measured temperature (in degrees K) for the sensor.
