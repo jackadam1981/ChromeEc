@@ -22,6 +22,30 @@
       },
       "revId": "7223817c5eac990f2002096f84fa6d899ebeda97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a058875f_28dfa4ce",
+        "filename": "util/ec_panicinfo.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-13T20:31:54Z",
+      "side": 0,
+      "message": "Oh! With my current fix we actually don\u0027t even need to copy the trailer, so I could remove that and add a comment.\n\n...but it also sounds as if this code is going the way of the dodo. See https://crrev.com/c/4318306\n\nPerhaps it makes sense for this to be tackled after that cleanup?",
+      "parentUuid": "22b3f940_53f4a442",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 52
+      },
+      "revId": "7223817c5eac990f2002096f84fa6d899ebeda97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
