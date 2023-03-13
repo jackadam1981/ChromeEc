@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e802ced0_1c8c6353",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-03-13T17:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd49323_269b4af5",
+      "revId": "7f6c1179855499a6e25043527e9f97619775f356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb7789ab_6cf45291",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I\u0027ll check into this and update accordingly but logically that makes sense since the function this is replacing does not make this call",
       "parentUuid": "eb7789ab_6cf45291",
+      "revId": "7f6c1179855499a6e25043527e9f97619775f356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded2e3a2_c6bbc244",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-03-13T17:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "611cef5d_87126936",
       "revId": "7f6c1179855499a6e25043527e9f97619775f356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
