@@ -94,6 +94,30 @@
       },
       "revId": "e1181013dc499b59ed21a277d02eca6ff30e02a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16205dd7_11896887",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-03-13T23:16:00Z",
+      "side": 1,
+      "message": "I have looked a little, it seems that the required functionality is implemented only for the STM32F0 and STM32F3 series of chips, not for STM32L5 that HyperDebug is using.  It is probably straightforward to port the functionality, but it will take a CL to the core EC STM support directory, which I would not want to block this one on.",
+      "parentUuid": "6468ced2_f52b2baa",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "e1181013dc499b59ed21a277d02eca6ff30e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
