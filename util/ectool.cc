@@ -8120,6 +8120,10 @@ static int get_battery_command_print_info(
 		goto cmd_error;
 	printf("  Desired current         %u mA\n", dynamic_r.desired_current);
 
+	if (!is_battery_range(dynamic_r.desired_current))
+		goto cmd_error;
+	printf("  Temperature             %u C\n", dynamic_r.temperature);
+
 	print_battery_flags(dynamic_r.flags);
 	return 0;
 
