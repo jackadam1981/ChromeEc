@@ -293,6 +293,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b41c80e0_4959bbe3",
+        "filename": "third_party/boringssl/cros-ec-toolchain.cmake",
+        "patchSetId": 24
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-13T04:14:42Z",
+      "side": 1,
+      "message": "Looks like \"check_cxx_compiler_flag\" cannot be used inside the toolchain file.\nWhen I used it, cmake failed with:\n```\nCMake Error at /usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:52 (message):\n  check_compiler_flag: CXX: needs to be enabled before use.\nCall Stack (most recent call first):\n  /usr/share/cmake/Modules/CheckCXXCompilerFlag.cmake:40 (cmake_check_compiler_flag)\n  /mnt/host/source/src/platform/ec/cmake/toolchain-common.cmake:31 (check_cxx_compiler_flag)\n  /mnt/host/source/src/platform/ec/cmake/toolchain-armv7m.cmake:14 (include)\n  /mnt/host/source/src/platform/ec/build/bloonchipper/fpsensor_hw/googletest/CMakeFiles/3.20.5/CMakeSystem.cmake:6 (include)\n  CMakeLists.txt:10 (project)\n```\n\nIf I added `enable_language(CXX)`, cmake failed with:\n```\nCMake Error at /mnt/host/source/src/platform/ec/cmake/toolchain-common.cmake:31 (project):\n  Language \u0027CXX\u0027 is currently being enabled.  Recursive call not allowed.\nCall Stack (most recent call first):\n  /mnt/host/source/src/platform/ec/cmake/toolchain-armv7m.cmake:14 (include)\n  /mnt/host/source/src/platform/ec/build/bloonchipper/fpsensor_hw/googletest/CMakeFiles/3.20.5/CMakeSystem.cmake:6 (include)\n  CMakeLists.txt:10 (project)\n```",
+      "parentUuid": "67660cd3_56ff055d",
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffd3c1c6_cef88d54",
         "filename": "third_party/rules.mk",
         "patchSetId": 24
