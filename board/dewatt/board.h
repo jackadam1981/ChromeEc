@@ -57,7 +57,9 @@
 #define CONFIG_LED_ONOFF_STATES
 
 /* Thermal Config */
+#define CONFIG_TEMP_SENSOR_2ND_SOURCE
 #define CONFIG_TEMP_SENSOR_PCT2075
+#define CONFIG_TEMP_SENSOR_NCT7715
 
 #ifndef __ASSEMBLER__
 
@@ -96,6 +98,13 @@ enum temp_sensor_id {
 	TEMP_SENSOR_CPU,
 	TEMP_SENSOR_AMBIENT,
 	TEMP_SENSOR_COUNT
+};
+
+/* NCT7715 sensors */
+enum nct7715_sensor {
+	NCT7715_SOC,
+	NCT7715_AMB,
+	NCT7715_COUNT,
 };
 
 /* PCT2075 sensors */

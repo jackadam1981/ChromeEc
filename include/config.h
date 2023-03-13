@@ -4242,6 +4242,9 @@
 /* Compile common code for temperature sensor support */
 #undef CONFIG_TEMP_SENSOR
 
+/* Support 2nd source of temp sensor */
+#undef CONFIG_TEMP_SENSOR_2ND_SOURCE
+
 /* Support particular temperature sensor chips */
 #undef CONFIG_TEMP_SENSOR_ADT7481 /* ADT 7481 sensor, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_BD99992GW /* BD99992GW PMIC, on I2C bus */

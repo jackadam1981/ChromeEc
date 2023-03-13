@@ -11,6 +11,7 @@
 #include "board_fw_config.h"
 #include "builtin/assert.h"
 #include "button.h"
+#include "cbi_ssfc.h"
 #include "charger.h"
 #include "common.h"
 #include "cros_board_info.h"
@@ -19,6 +20,7 @@
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/retimer/ps8811.h"
 #include "driver/retimer/ps8818_public.h"
+#include "driver/temp_sensor/nct7715.h"
 #include "driver/temp_sensor/pct2075.h"
 #include "driver/temp_sensor/sb_tsi.h"
 #include "extpower.h"
@@ -149,6 +151,95 @@ struct motion_sensor_t motion_sensors[] = {
 };
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
+/* ADC Channels */
+const struct adc_t adc_channels[] = {
+	[ADC_TEMP_SENSOR_SOC] = {
+		.name = "SOC",
+		.input_ch = NPCX_ADC_CH0,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
+	[ADC_TEMP_SENSOR_CHARGER] = {
+		.name = "CHARGER",
+		.input_ch = NPCX_ADC_CH1,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
+	[ADC_TEMP_SENSOR_MEMORY] = {
+		.name = "MEMORY",
+		.input_ch = NPCX_ADC_CH2,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
+	[ADC_CORE_IMON1] = {
+		.name = "CORE_I",
+		.input_ch = NPCX_ADC_CH3,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
+	[ADC_SOC_IMON2] = {
+		.name = "SOC_I",
+		.input_ch = NPCX_ADC_CH4,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/* Temp Sensors */
+static int board_get_memory_temp(int, int *);
+
+const struct pct2075_sensor_t pct2075_sensors[] = {
+	{ I2C_PORT_SENSOR, PCT2075_I2C_ADDR_FLAGS0 },
+	{ I2C_PORT_SENSOR, PCT2075_I2C_ADDR_FLAGS7 },
+};
+BUILD_ASSERT(ARRAY_SIZE(pct2075_sensors) == PCT2075_COUNT);
+
+const struct nct7715_sensor_t nct7715_sensors[] = {
+	{ I2C_PORT_SENSOR, NCT7715_I2C_ADDR_FLAGS0 },
+	{ I2C_PORT_SENSOR, NCT7715_I2C_ADDR_FLAGS7 },
+};
+BUILD_ASSERT(ARRAY_SIZE(nct7715_sensors) == NCT7715_COUNT);
+
+struct temp_sensor_t temp_sensors[] = {
+	[TEMP_SENSOR_SOC] = {
+		.name = "SOC",
+		.type = TEMP_SENSOR_TYPE_BOARD,
+		.read = board_get_soc_temp_k,
+		.idx = PCT2075_SOC,
+	},
+	[TEMP_SENSOR_CHARGER] = {
+		.name = "Charger",
+		.type = TEMP_SENSOR_TYPE_BOARD,
+		.read = get_temp_3v3_30k9_47k_4050b,
+		.idx = ADC_TEMP_SENSOR_CHARGER,
+	},
+	[TEMP_SENSOR_MEMORY] = {
+		.name = "Memory",
+		.type = TEMP_SENSOR_TYPE_BOARD,
+		.read = board_get_memory_temp,
+		.idx = ADC_TEMP_SENSOR_MEMORY,
+	},
+	[TEMP_SENSOR_CPU] = {
+		.name = "CPU",
+		.type = TEMP_SENSOR_TYPE_CPU,
+		.read = sb_tsi_get_val,
+		.idx = 0,
+	},
+	[TEMP_SENSOR_AMBIENT] = {
+		.name = "Ambient",
+		.type = TEMP_SENSOR_TYPE_BOARD,
+		.read = pct2075_get_val_k,
+		.idx = PCT2075_AMB,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
 __override enum ec_error_list
 board_a1_ps8811_retimer_init(const struct usb_mux *me)
 {
@@ -251,6 +342,22 @@ uint16_t board_anx7451_get_usb_i2c_addr(const struct usb_mux *me)
 }
 
 /*
+ * Temp Sensor Configuration
+ */
+static enum ec_ssfc_temp_sensor temp_sensor_ssfc;
+
+static void board_update_temp_sensor_config(void)
+{
+	temp_sensor_ssfc = get_cbi_ssfc_temp_sensor();
+
+	if (temp_sensor_ssfc == SSFC_TEMP_SENSOR_NCT7715) {
+		temp_sensors[TEMP_SENSOR_SOC].idx = NCT7715_SOC;
+		temp_sensors[TEMP_SENSOR_AMBIENT].read = nct7715_get_val_k;
+		temp_sensors[TEMP_SENSOR_AMBIENT].idx = NCT7715_AMB;
+	}
+}
+
+/*
  * Base Gyro Sensor dynamic configuration
  */
 static int base_gyro_config;
@@ -284,14 +391,24 @@ void motion_interrupt(enum gpio_signal signal)
 
 static void board_init(void)
 {
+	board_update_temp_sensor_config();
 	board_update_motion_sensor_config();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 static void board_chipset_startup(void)
 {
-	if (get_board_version() > 1)
-		pct2075_init();
+	if (get_board_version() > 1) {
+		switch (temp_sensor_ssfc) {
+		case SSFC_TEMP_SENSOR_NCT7715:
+			nct7715_init();
+			break;
+		case SSFC_TEMP_SENSOR_PCT2075:
+		default:
+			pct2075_init();
+			break;
+		}
+	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -299,6 +416,9 @@ int board_get_soc_temp_k(int idx, int *temp_k)
 {
 	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
 		return EC_ERROR_NOT_POWERED;
+
+	if (temp_sensor_ssfc == SSFC_TEMP_SENSOR_NCT7715)
+		return nct7715_get_val_k(idx, temp_k);
 
 	return pct2075_get_val_k(idx, temp_k);
 }
@@ -308,6 +428,9 @@ int board_get_soc_temp_mk(int *temp_mk)
 	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
 		return EC_ERROR_NOT_POWERED;
 
+	if (temp_sensor_ssfc == SSFC_TEMP_SENSOR_NCT7715)
+		return nct7715_get_val_mk(NCT7715_SOC, temp_mk);
+
 	return pct2075_get_val_mk(PCT2075_SOC, temp_mk);
 }
 
@@ -316,91 +439,11 @@ int board_get_ambient_temp_mk(int *temp_mk)
 	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
 		return EC_ERROR_NOT_POWERED;
 
+	if (temp_sensor_ssfc == SSFC_TEMP_SENSOR_NCT7715)
+		return nct7715_get_val_mk(NCT7715_AMB, temp_mk);
+
 	return pct2075_get_val_mk(PCT2075_AMB, temp_mk);
 }
-
-/* ADC Channels */
-const struct adc_t adc_channels[] = {
-	[ADC_TEMP_SENSOR_SOC] = {
-		.name = "SOC",
-		.input_ch = NPCX_ADC_CH0,
-		.factor_mul = ADC_MAX_VOLT,
-		.factor_div = ADC_READ_MAX + 1,
-		.shift = 0,
-	},
-	[ADC_TEMP_SENSOR_CHARGER] = {
-		.name = "CHARGER",
-		.input_ch = NPCX_ADC_CH1,
-		.factor_mul = ADC_MAX_VOLT,
-		.factor_div = ADC_READ_MAX + 1,
-		.shift = 0,
-	},
-	[ADC_TEMP_SENSOR_MEMORY] = {
-		.name = "MEMORY",
-		.input_ch = NPCX_ADC_CH2,
-		.factor_mul = ADC_MAX_VOLT,
-		.factor_div = ADC_READ_MAX + 1,
-		.shift = 0,
-	},
-	[ADC_CORE_IMON1] = {
-		.name = "CORE_I",
-		.input_ch = NPCX_ADC_CH3,
-		.factor_mul = ADC_MAX_VOLT,
-		.factor_div = ADC_READ_MAX + 1,
-		.shift = 0,
-	},
-	[ADC_SOC_IMON2] = {
-		.name = "SOC_I",
-		.input_ch = NPCX_ADC_CH4,
-		.factor_mul = ADC_MAX_VOLT,
-		.factor_div = ADC_READ_MAX + 1,
-		.shift = 0,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
-
-/* Temp Sensors */
-static int board_get_memory_temp(int, int *);
-
-const struct pct2075_sensor_t pct2075_sensors[] = {
-	{ I2C_PORT_SENSOR, PCT2075_I2C_ADDR_FLAGS0 },
-	{ I2C_PORT_SENSOR, PCT2075_I2C_ADDR_FLAGS7 },
-};
-BUILD_ASSERT(ARRAY_SIZE(pct2075_sensors) == PCT2075_COUNT);
-
-const struct temp_sensor_t temp_sensors[] = {
-	[TEMP_SENSOR_SOC] = {
-		.name = "SOC",
-		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_soc_temp_k,
-		.idx = PCT2075_SOC,
-	},
-	[TEMP_SENSOR_CHARGER] = {
-		.name = "Charger",
-		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v3_30k9_47k_4050b,
-		.idx = ADC_TEMP_SENSOR_CHARGER,
-	},
-	[TEMP_SENSOR_MEMORY] = {
-		.name = "Memory",
-		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_memory_temp,
-		.idx = ADC_TEMP_SENSOR_MEMORY,
-	},
-	[TEMP_SENSOR_CPU] = {
-		.name = "CPU",
-		.type = TEMP_SENSOR_TYPE_CPU,
-		.read = sb_tsi_get_val,
-		.idx = 0,
-	},
-	[TEMP_SENSOR_AMBIENT] = {
-		.name = "Ambient",
-		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = pct2075_get_val_k,
-		.idx = PCT2075_AMB,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
 static int board_get_memory_temp(int idx, int *temp_k)
 {
