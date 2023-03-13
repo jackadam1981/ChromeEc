@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0345590d_6ecaf128",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-03-13T03:05:16Z",
+      "side": 0,
+      "message": "Are we still using these functions in `board/pdeval-stm32f072/usb_pd_policy.c`?",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 0
+      },
+      "revId": "a3ea89d98cdb93940e7f56b9a70eee743b125895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
