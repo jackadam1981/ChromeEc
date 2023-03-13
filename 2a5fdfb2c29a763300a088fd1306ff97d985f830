@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54e26933_70b1150e",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-13T04:57:24Z",
+      "side": 1,
+      "message": "I think a better solution is putting these values on the stack.\nBut we are hitting the stack limit.\n\nShould we increase the stack size?",
+      "parentUuid": "bb2fa159_f88ca746",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 39
+      },
+      "revId": "2a5fdfb2c29a763300a088fd1306ff97d985f830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f7a552_c9c9037d",
         "filename": "common/fpsensor/fpsensor_state.c",
         "patchSetId": 48
