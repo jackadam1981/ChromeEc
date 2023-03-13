@@ -46,6 +46,30 @@
       },
       "revId": "2ad1ad9b1983e94962be2248a366b255f574a163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a6d1a8e_12d5e49c",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-13T20:55:57Z",
+      "side": 1,
+      "message": "I want to make sure we take this additional RAM into account in [our calculations](http://b/263578675). The 500 ms template time does seem too high, so let\u0027s see if @bobbycasey@google.com can confirm.",
+      "parentUuid": "5a9b7f12_4415396f",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 47
+      },
+      "revId": "2ad1ad9b1983e94962be2248a366b255f574a163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
