@@ -138,6 +138,9 @@
 /* ADC */
 #define CONFIG_ADC
 
+/* PSE */
+#define CONFIG_PSE_LTC4291
+
 /*
  * TODO(b/197478860): Enable the fan control. We need
  * to check the sensor value and adjust the fan speed.
