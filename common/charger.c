@@ -644,6 +644,21 @@ enum ec_error_list charger_device_id(int *id)
 	return chg_chips[chgnum].drv->device_id(chgnum, id);
 }
 
+enum ec_error_list charger_set_frequence(int freq)
+{
+	int chgnum = 0;
+
+	if (chgnum >= board_get_charger_chip_count()) {
+		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
+		return EC_ERROR_INVAL;
+	}
+
+	if (!chg_chips[chgnum].drv->set_frequence)
+		return EC_ERROR_UNIMPLEMENTED;
+
+	return chg_chips[chgnum].drv->set_frequence(chgnum, freq);
+}
+
 enum ec_error_list charger_get_option(int *option)
 {
 	int chgnum = 0;
