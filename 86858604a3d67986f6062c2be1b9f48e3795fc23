@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "009bb610_6b8a7499",
+        "filename": "zephyr/emul/retimer/emul_anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-13T20:41:30Z",
+      "side": 1,
+      "message": "I\u0027m not sure how you\u0027ll need to approach reserved bits for this chip... see https://b.corp.google.com/issues/230694492#comment12 for details",
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f66e2789_66d97261",
+        "filename": "zephyr/emul/retimer/emul_anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-13T20:41:30Z",
+      "side": 1,
+      "message": "Would this have been caught by the \"if (!config)\" check earlier?",
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ce6cbf75_75c43d28",
