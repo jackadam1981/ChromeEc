@@ -22,6 +22,30 @@
       },
       "revId": "2ad1ad9b1983e94962be2248a366b255f574a163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a9b7f12_4415396f",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-03-13T01:52:54Z",
+      "side": 1,
+      "message": "From https://docs.google.com/document/d/1MHg4v9llCS157nONPyopnVGnkmZhqbOxUVxRbgpEYXA/edit#bookmark\u003did.vcr55arlbio and https://docs.google.com/document/d/1MHg4v9llCS157nONPyopnVGnkmZhqbOxUVxRbgpEYXA/edit#bookmark\u003did.q7qqiwjf7k7y sections, a single template load takes ~500 ms (you said it\u0027s longer than you expected, but even if it\u0027s only half of time), so loading 3 templates at authentication time will introduce too much latency.\n\nI think we can\u0027t limit it to a single finger as well because we don\u0027t directly process the template decryption after preloading, so we can\u0027t do it one-by-one (they\u0027re all preloaded during login, and decrypted on each match).",
+      "parentUuid": "8cc49eae_686f6c19",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 47
+      },
+      "revId": "2ad1ad9b1983e94962be2248a366b255f574a163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
