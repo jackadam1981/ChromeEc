@@ -210,6 +210,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c935134b_4a30ca62",
+        "filename": "test/aes.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-13T20:47:53Z",
+      "side": 1,
+      "message": "The original `CRYPTO_gcm128_init` would initialize the whole `GCM128_CONTEXT`.\n\nBut after that CL, `CRYPTO_gcm128_init_key` would only init the value of `\u0026ctx.gcm_key`. The other parts of the `ctx` still remain uninitialized.\n\nAnd passing the `ctx` that remain uninitialized parts into\n```\nCRYPTO_gcm128_setiv(\u0026ctx, \u0026aes_key, nonce, nonce_size);\nCRYPTO_gcm128_encrypt(\u0026ctx, \u0026aes_key, plaintext, encrypted_data,\n\t\t\t\t      plaintext_size);\nCRYPTO_gcm128_tag(\u0026ctx, tag, tag_size);\n```\nwill result undefined behavior.\n\nThe biggest problem is that boringssl didn\u0027t provide a proper way to \"init\" the GCM128_CONTEXT.\n(Because these are \"internal\" APIs, they didn\u0027t promise anything about the API stability, the code may need to be changed every time when we uprev the boringssl.)",
+      "parentUuid": "591b5893_32f54cbe",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 31
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae346838_3f646fcf",
         "filename": "third_party/boringssl/cros-ec-toolchain.cmake",
         "patchSetId": 24
