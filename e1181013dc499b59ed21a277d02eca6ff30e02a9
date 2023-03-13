@@ -22,6 +22,30 @@
       },
       "revId": "e1181013dc499b59ed21a277d02eca6ff30e02a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "252aa69f_703c85e1",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-03-13T17:21:20Z",
+      "side": 1,
+      "message": "Eventually, I want to allow opentitantool to specify speed, as is possible with the SPI ports.  This may require a little change to common EC code, in order to make this i2c_ports[] array non-const.\n\nI would prefer to keep that to a separate CL.",
+      "parentUuid": "b1ca653b_77d7473b",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "e1181013dc499b59ed21a277d02eca6ff30e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
