@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be5d1a87_31c172cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 47
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-13T03:35:19Z",
+      "side": 1,
+      "message": "When I run this command, it failed with this error:\n```\nld.lld: error: undefined symbol: getcwd\n\u003e\u003e\u003e referenced by ld-temp.o\n\u003e\u003e\u003e               lto.tmp:(testing::internal::MakeAndRegisterTestInfo(char const*, char const*, char const*, char const*, testing::internal::CodeLocation, void const*, void (*)(), void (*)(), testing::internal::TestFactoryBase*))\nclang-16: error: ld.lld command failed with exit code 1 (use -v to see invocation)\nmake[1]: *** [Makefile.rules:588: build/dartmonkey/fpsensor_hw/RW/fpsensor_hw.RW.elf] Error 1\nmake: *** [Makefile.rules:334: test-fpsensor_hw] Error 2\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "7475c77f72bbed8514de531bd24a7275012a8e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
