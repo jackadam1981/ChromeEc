@@ -562,6 +562,11 @@ config PLATFORM_EC_BUTTON_DEBOUNCE
 	help
 	  Configure the button debounce time in us per project requirement.
 
+config PLATFORM_EC_PSE
+	bool "power sourcing equipment (PSE)  support"
+	help
+	  Enable the power sourcing equipment (PSE) support.
+
 config PLATFORM_EC_PWM_HC
 	bool
 	help
