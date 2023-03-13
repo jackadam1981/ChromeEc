@@ -141,6 +141,30 @@
       },
       "revId": "7c25aa07fe19b397c3e00770454e62c5c82da2cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08b0348_d8ae1f98",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-13T21:06:05Z",
+      "side": 1,
+      "message": "I think you can remove the whole print_panic_task_stack() for !CONFIG_PLATFORM_EC_SYSTEM_SAFE_MODE_PRINT_STACK. We\u0027ll catch an error at compilation time if somebody tries to call print_panic_task_stack without defining CONFIG_PLATFORM_EC_SYSTEM_SAFE_MODE_PRINT_STACK.",
+      "parentUuid": "ceb3af87_b37f2a4b",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 65
+      },
+      "revId": "7c25aa07fe19b397c3e00770454e62c5c82da2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
