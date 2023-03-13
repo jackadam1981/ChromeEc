@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7407506f_0c507c5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-03-13T12:54:16Z",
+      "side": 1,
+      "message": "This change is still not ready to be merged (it uses agreed API, but not merged yet), but I think we can start review now. The driver introduced in this patch is responsible for translating EC flash protection abstraction `*_NOW` and `*_AT_BOOT` flags to real protection features like sector WP and RDP. It also defines behaviour on reset (what protection should be enabled/disabled) and translates protection information.\n\nTom, I would like you to take a look at this. I think you know how flash protection in FPMCU works and you know EC flash subsystem in general. If you have some questions, please let me know.",
+      "revId": "acdcc1923fdb1f895ee78cbc0fea49921f2e68da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
