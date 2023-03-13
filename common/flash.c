@@ -1505,8 +1505,96 @@ DECLARE_HOST_COMMAND(EC_CMD_FLASH_ERASE, flash_command_erase,
 #endif
 );
 
+static uint32_t mask;
+static uint32_t flags;
+static volatile enum ec_status flash_set_protect_rc = EC_RES_SUCCESS;
+
+static void crec_flash_set_protect_deferred(void)
+{
+	flash_set_protect_rc = EC_RES_BUSY;
+	if (crec_flash_set_protect(mask, flags))
+		flash_set_protect_rc = EC_RES_ERROR;
+	else
+		flash_set_protect_rc = EC_RES_SUCCESS;
+}
+DECLARE_DEFERRED(crec_flash_set_protect_deferred);
+
+static enum ec_status
+flash_command_protect_v2(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_flash_protect_v2 *p = args->params;
+	struct ec_response_flash_protect *r = args->response;
+	int rc = EC_RES_SUCCESS;
+
+	mask = p->mask;
+	flags = p->flags;
+
+	/*
+	 * Handle requesting new flags.  Note that we ignore the return code
+	 * from flash_set_protect(), since errors will be visible to the caller
+	 * via the flags in the response.  (If we returned error, the caller
+	 * wouldn't get the response.)
+	 */
+
+	switch (p->action) {
+	case FLASH_PROTECT_ASYNC:
+		if (p->mask) {
+			rc = flash_set_protect_rc;
+			if (rc == EC_RES_SUCCESS) {
+				hook_call_deferred(
+					&crec_flash_set_protect_deferred_data,
+					100 * MSEC);
+			} else {
+				/*
+				 * Not our job to return the result of
+				 * the previous command.
+				 */
+				rc = EC_RES_BUSY;
+			}
+		}
+		break;
+
+	case FLASH_ERASE_GET_RESULT:
+		/*
+		 * Retrieve the current flags.  The caller can use this
+		 * to determine which of the requested flags could be
+		 * set.  This is cleaner than simply returning error,
+		 * because it provides information to the caller about
+		 * the actual result.
+		 */
+		if (rc != EC_RES_BUSY) {
+			rc = flash_set_protect_rc;
+			r->flags = crec_flash_get_protect();
+
+			/* Indicate which flags are valid on this platform */
+			r->valid_flags = EC_FLASH_PROTECT_GPIO_ASSERTED |
+					 EC_FLASH_PROTECT_ERROR_STUCK |
+					 EC_FLASH_PROTECT_ERROR_INCONSISTENT |
+					 EC_FLASH_PROTECT_ERROR_UNKNOWN |
+					 crec_flash_physical_get_valid_flags();
+			r->writable_flags =
+				crec_flash_physical_get_writable_flags(
+					r->flags);
+
+			args->response_size = sizeof(*r);
+
+			/* Ready for another command */
+			flash_set_protect_rc = EC_RES_SUCCESS;
+		}
+		break;
+
+	default:
+		rc = EC_RES_INVALID_PARAM;
+	}
+
+	return rc;
+}
+
 static enum ec_status flash_command_protect(struct host_cmd_handler_args *args)
 {
+	if (args->version == EC_VER_MASK(2)) {
+		return flash_command_protect_v2(args);
+	}
 	const struct ec_params_flash_protect *p = args->params;
 	struct ec_response_flash_protect *r = args->response;
 
@@ -1546,7 +1634,7 @@ static enum ec_status flash_command_protect(struct host_cmd_handler_args *args)
  * EC_VER_MASK(0) once cros_ec driver can send the correct version.
  */
 DECLARE_HOST_COMMAND(EC_CMD_FLASH_PROTECT, flash_command_protect,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
+		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 
 static enum ec_status
 flash_command_region_info(struct host_cmd_handler_args *args)
