@@ -133,4 +133,11 @@
 		     &i2c4_data_gpe7_default>;
 	pinctrl-names = "default";
 	prescale-scl-low = <1>;
+
+	target-enable;
+	i2c5_target: target@56 {
+		compatible = "ite,target-i2c";
+		reg = <0x56>;
+		size = <0x100>;
+	};
 };
