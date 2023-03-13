@@ -13,3 +13,7 @@
 	/* unused but needed by dt binding */
 	cs-gpios = <&gpiom 5 GPIO_VOLTAGE_1P8>;
 };
+
+&sha0 {
+	status = "okay";
+};
