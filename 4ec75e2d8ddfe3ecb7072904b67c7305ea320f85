@@ -22,6 +22,30 @@
       },
       "revId": "4ec75e2d8ddfe3ecb7072904b67c7305ea320f85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21806844_e8a5baeb",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-13T04:48:09Z",
+      "side": 1,
+      "message": "For this part, I think we should use the same code for fpsensor.cc \u0026 fpsensor_state.c.\n\nShould we will wait until the fpsensor_state.c migrated to C++?",
+      "parentUuid": "e7f957a3_8b66909f",
+      "range": {
+        "startLine": 483,
+        "startChar": 2,
+        "endLine": 484,
+        "endChar": 27
+      },
+      "revId": "4ec75e2d8ddfe3ecb7072904b67c7305ea320f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
