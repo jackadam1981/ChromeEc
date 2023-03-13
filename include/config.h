@@ -1810,6 +1810,9 @@
  */
 #define CONFIG_COMMON_RUNTIME
 
+/* Allow deferred (async) flash protect*/
+#define CONFIG_FLASH_PROTECT_DEFERRED
+
 /* Provide common core code to handle the operating system timers. */
 #define CONFIG_COMMON_TIMER
 
@@ -2787,6 +2790,7 @@
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
 #ifndef CONFIG_ZEPHYR
+
 /*
  * Enable I2C bitbang driver.
  *
