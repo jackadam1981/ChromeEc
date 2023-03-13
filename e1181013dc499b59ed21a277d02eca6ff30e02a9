@@ -46,6 +46,30 @@
       },
       "revId": "e1181013dc499b59ed21a277d02eca6ff30e02a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe94d29c_8c6c6bd3",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-03-13T20:21:21Z",
+      "side": 1,
+      "message": "It is fine for a follow up CL, but EC codebase already supports it. I did it for C2D2 😊\n\nhttps://source.corp.google.com/chromeos_public/src/platform/ec/board/c2d2/board.c;l\u003d732?q\u003df:c2d%20f:board.c\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$)\n\nThoughts?",
+      "parentUuid": "252aa69f_703c85e1",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "e1181013dc499b59ed21a277d02eca6ff30e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
