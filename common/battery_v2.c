@@ -340,6 +340,9 @@ void update_dynamic_battery_info(void)
 	if (!(curr->batt.flags & BATT_FLAG_BAD_DESIRED_CURRENT))
 		bd->desired_current = curr->batt.desired_current;
 
+	if (!(curr->batt.flags & BATT_FLAG_BAD_TEMPERATURE))
+		bd->temperature = curr->batt.temperature;
+
 	if (!(curr->batt.flags & BATT_FLAG_BAD_REMAINING_CAPACITY)) {
 		/*
 		 * If we're running off the battery, it must have some charge.
