@@ -46,6 +46,30 @@
       },
       "revId": "7223817c5eac990f2002096f84fa6d899ebeda97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de95e208_8f9b07f0",
+        "filename": "util/ec_panicinfo.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-13T21:03:55Z",
+      "side": 0,
+      "message": "\u003e but it also sounds as if this code is going the way of the dodo. \n\nWe\u0027re migrating it over to `libec`: https://crrev.com/c/4318210. You can rebase on top of that if you want (or wait until it lands).\n\n\u003e The code is obscure. So, I believe more comment would be almost necessary.\n\nAfter the migration to `libec`, we can easily add googletest unit tests. Should be easy to copy a couple example panic infos and make sure we get the right output. Looks like there\u0027s some raw data in http://b/268392408 that we could probably use (assuming there\u0027s nothing sensitive in it).",
+      "parentUuid": "a058875f_28dfa4ce",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 52
+      },
+      "revId": "7223817c5eac990f2002096f84fa6d899ebeda97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
