@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06afc991_04c607da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-13T02:12:55Z",
+      "side": 1,
+      "message": "Hi Keith, I cherry-pick your [patch](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4327418) and add new register remote2 tmep 0x23.\n\nWould you help to review it?",
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
