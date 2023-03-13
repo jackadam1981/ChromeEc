@@ -70,6 +70,30 @@
       },
       "revId": "e1181013dc499b59ed21a277d02eca6ff30e02a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6468ced2_f52b2baa",
+        "filename": "board/hyperdebug/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-03-13T22:40:47Z",
+      "side": 1,
+      "message": "Thanks for pointing this out, you are right that the EC codebase has support for changing the I2C port speed, and the const field I guess is to be understood as the initial value.  (SPI is different, in that each transaction will read the speed field from the struct, and initialize the controller, meaning that the field had to be made non-const in order for variable speed to be achieved.)\n\nI will look into how to surface this in a followup CL.",
+      "parentUuid": "fe94d29c_8c6c6bd3",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "e1181013dc499b59ed21a277d02eca6ff30e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
