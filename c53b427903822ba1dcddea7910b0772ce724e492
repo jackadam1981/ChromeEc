@@ -22,6 +22,30 @@
       },
       "revId": "c53b427903822ba1dcddea7910b0772ce724e492",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea1ad66e_03b559c4",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-13T17:16:20Z",
+      "side": 1,
+      "message": "Unlike CONFIG_ options, HAS_TASK_ is actually defined as 1, so it seemed more accurate to check if 1. However, this doesn\u0027t seem to be the common pattern so I switched to ifdef as you suggested.",
+      "parentUuid": "4e9bf8de_45bc926f",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "c53b427903822ba1dcddea7910b0772ce724e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
