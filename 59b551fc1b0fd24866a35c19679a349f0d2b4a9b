@@ -160,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c8b2471_858219a8",
+        "filename": "zephyr/test/skyrim/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-13T18:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b638891_76778f02",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d3a4703_c61b4019",
@@ -368,6 +386,24 @@
       "side": 1,
       "message": "ok",
       "parentUuid": "a4248ea4_d0d3efc4",
+      "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e9899d_634bdfc1",
+        "filename": "zephyr/test/skyrim/tests/skyrim/src/clamshell.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-13T18:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02d567f1_46975c2f",
       "revId": "59b551fc1b0fd24866a35c19679a349f0d2b4a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
