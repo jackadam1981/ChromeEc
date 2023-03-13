@@ -194,9 +194,6 @@
 			<&gpioa 3 GPIO_INPUT_PULL_DOWN>,
 			<&gpioa 6 GPIO_INPUT_PULL_DOWN>,
 			<&gpioa 7 GPIO_INPUT_PULL_DOWN>,
-			/* h5,h6: uart base tx/rx */
-			<&gpioh 5 GPIO_INPUT>,
-			<&gpioh 6 GPIO_INPUT>,
 			<&gpioi 6 GPIO_INPUT_PULL_DOWN>,
 			<&gpiom 6 (GPIO_INPUT_PULL_DOWN | GPIO_VOLTAGE_1P8)>,
 			/* spi_clk_gpg6 */
@@ -237,4 +234,23 @@
 	shi_cs_gpm5_default: shi_cs_gpm5_default {
 		gpio-voltage = "1v8";
 	};
+	uart2_rx_gph5: uart2_rx_gph5 {
+		pinmuxs = <&pinctrlh 5 IT8XXX2_ALT_FUNC_3>;
+	};
+	uart2_tx_gph6: uart2_tx_gph6 {
+		pinmuxs = <&pinctrlh 6 IT8XXX2_ALT_FUNC_3>;
+	};
+};
+
+&uart2 {
+	status = "okay";
+	current-speed = <115200>;
+	clock-frequency = <1804800>;
+};
+
+&ite_uart2_wrapper {
+	status = "okay";
+	pinctrl-0 = <&uart2_rx_gph5
+		     &uart2_tx_gph6>;
+	pinctrl-names = "default";
 };

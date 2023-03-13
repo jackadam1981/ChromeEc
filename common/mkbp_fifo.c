@@ -30,7 +30,7 @@ static uint32_t fifo_start; /* first entry */
 static uint32_t fifo_end; /* last entry */
 static atomic_t fifo_entries; /* number of existing entries */
 static uint8_t fifo_max_depth = FIFO_DEPTH;
-static struct ec_response_get_next_event fifo[FIFO_DEPTH];
+static struct ec_response_get_next_event_v1 fifo[FIFO_DEPTH];
 
 /*
  * Mutex for critical sections of mkbp_fifo_add(), which is called
@@ -57,6 +57,8 @@ static int get_data_size(enum ec_mkbp_event e)
 	case EC_MKBP_EVENT_SWITCH:
 	case EC_MKBP_EVENT_SYSRQ:
 		return sizeof(uint32_t);
+	case EC_MKBP_EVENT_TOUCHPAD:
+		return sizeof(fifo[0].data);
 	default:
 		/* For unknown types, say it's 0. */
 		return 0;
@@ -197,6 +199,7 @@ test_mockable int mkbp_fifo_add(uint8_t event_type, const uint8_t *buffp)
 		fifo_remove(NULL);
 
 	mutex_unlock(&fifo_add_mutex);
+
 	return EC_SUCCESS;
 }
 

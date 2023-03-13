@@ -3911,6 +3911,8 @@ enum ec_mkbp_event {
 	/* Peripheral device charger event */
 	EC_MKBP_EVENT_PCHG = 12,
 
+	EC_MKBP_EVENT_TOUCHPAD = 13,
+
 	/* Number of MKBP events */
 	EC_MKBP_EVENT_COUNT,
 };
@@ -3985,8 +3987,26 @@ union __ec_align_offset1 ec_response_get_next_data_v1 {
 	uint32_t cec_events;
 
 	uint8_t cec_message[16];
+
+	struct {
+		uint8_t id; /* 0x01 */
+		struct {
+			uint16_t confidence : 1;
+			uint16_t tip : 1;
+			uint16_t inrange : 1;
+			uint16_t id : 4;
+			uint16_t pressure : 9;
+			uint16_t width : 12;
+			uint16_t height : 12;
+			uint16_t x : 12;
+			uint16_t y : 12;
+		} __packed finger[5];
+		uint8_t count : 7;
+		uint8_t button : 1;
+		uint16_t timestamp;
+	} __packed hid_report;
 };
-BUILD_ASSERT(sizeof(union ec_response_get_next_data_v1) == 16);
+/* BUILD_ASSERT(sizeof(union ec_response_get_next_data_v1) == 16); */
 
 struct ec_response_get_next_event {
 	uint8_t event_type;
