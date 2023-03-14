@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4db202a_499d2b76",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T20:32:00Z",
+      "side": 1,
+      "message": "Let\u0027s group these into a `status` struct. Or even better, maybe it makes sense to store the \"Fp context status\" as part of the `fp_encryption_status`. That was intended to be a generic status field, and [we\u0027re only using one bit right now](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d7730-7740;drc\u003d726908c0cfe93332e4af5dd509958c06d2e7c699).",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "310dd909a137a180ef0817119186541783bbc40f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
