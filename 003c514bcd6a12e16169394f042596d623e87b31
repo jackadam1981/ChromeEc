@@ -16,6 +16,46 @@
       "message": "Tomasz, do you have time to review this CL?",
       "revId": "003c514bcd6a12e16169394f042596d623e87b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "491f8d76_7f08d0af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2023-03-14T16:48:06Z",
+      "side": 1,
+      "message": "Apart from one nit, it looks good.",
+      "revId": "003c514bcd6a12e16169394f042596d623e87b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c76f599_102eb524",
+        "filename": "zephyr/test/drivers/usb_pd_discovery/src/usb_pd_discovery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2023-03-14T16:48:06Z",
+      "side": 1,
+      "message": "nit: It seems that `identity_vdm` is the same for all tests. Would it make sense to move that to before function?",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 55
+      },
+      "revId": "003c514bcd6a12e16169394f042596d623e87b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
