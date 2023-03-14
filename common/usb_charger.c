@@ -146,11 +146,24 @@ DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_POST_CHARGE_MANAGER);
 
 #ifdef CONFIG_PLATFORM_EC_USB_CHARGER_SINGLE_TASK
 
+void usb_charger_process_event(int port)
+{
+	struct bc12_config *bc12_port;
+	uint32_t port_evt = PORT_EVENT_UNPACK(
+		port, atomic_get(&usb_charger_port_events));
+
+	atomic_and(&usb_charger_port_events,
+		   ~PORT_EVENT_PACK(port, port_evt));
+
+	bc12_port = &bc12_ports[port];
+
+	bc12_port->drv->usb_charger_task_event(port, port_evt);
+}
+
 void usb_charger_task_shared(void *u)
 {
 	int port;
 	uint32_t evt;
-	uint32_t port_evt;
 	struct bc12_config *bc12_port;
 
 	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
@@ -170,14 +183,7 @@ void usb_charger_task_shared(void *u)
 				continue;
 			}
 
-			port_evt = PORT_EVENT_UNPACK(
-				port, atomic_get(&usb_charger_port_events));
-			atomic_and(&usb_charger_port_events,
-				   ~PORT_EVENT_PACK(port, port_evt));
-
-			bc12_port = &bc12_ports[port];
-
-			bc12_port->drv->usb_charger_task_event(port, port_evt);
+			usb_charger_process_event(port);
 		}
 	}
 }
