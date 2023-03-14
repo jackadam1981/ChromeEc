@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "108c177b_3d290af3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 35
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-14T22:35:12Z",
+      "side": 1,
+      "message": "Can you leave in the commands that are used in FAFT? AFAIK, we still need to run it for volteer: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/reducing_ec_image_size.md.",
+      "revId": "5ac5ba7418a60e394dcabe893a405927d511b69d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed7cecb7_5244c24f",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-14T22:35:12Z",
+      "side": 1,
+      "message": "Does this affect any files that are built for volteer? It should be using TCPMv2.",
+      "revId": "5ac5ba7418a60e394dcabe893a405927d511b69d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fc7f59d_1305e0d2",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-14T22:35:12Z",
+      "side": 1,
+      "message": "This might still be used for Cr50 tests in the lab?",
+      "revId": "5ac5ba7418a60e394dcabe893a405927d511b69d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf581bad_c3dc1982",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-14T22:35:12Z",
+      "side": 1,
+      "message": "This also might be used for Cr50 tests.",
+      "revId": "5ac5ba7418a60e394dcabe893a405927d511b69d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64592d1c_bc142d21",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-14T22:35:12Z",
+      "side": 1,
+      "message": "This is used by FAFT. I don\u0027t think we can get rid of it.",
+      "revId": "5ac5ba7418a60e394dcabe893a405927d511b69d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
