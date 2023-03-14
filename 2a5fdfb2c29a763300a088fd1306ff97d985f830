@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb974752_079289df",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-14T13:38:40Z",
+      "side": 1,
+      "message": "Done with:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4337179",
+      "parentUuid": "c3999b63_abc91cc7",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 39
+      },
+      "revId": "2a5fdfb2c29a763300a088fd1306ff97d985f830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59f7a552_c9c9037d",
@@ -109,6 +133,30 @@
       "writtenOn": "2023-03-10T19:28:04Z",
       "side": 1,
       "message": "nit: EC code no longer requires declaring all the variables up front, so you can declare them where you first use them: https://crrev.com/c/3256741.\n\n(you can do this in all the CLs; followup CLs are fine)",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 9
+      },
+      "revId": "2a5fdfb2c29a763300a088fd1306ff97d985f830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6f33bb2_2afb5f25",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-14T13:38:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59f7a552_c9c9037d",
       "range": {
         "startLine": 376,
         "startChar": 0,
