@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "859b25dc_fff063f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T15:43:40Z",
+      "side": 1,
+      "message": "c",
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "009bb610_6b8a7499",
@@ -48,6 +65,201 @@
       "writtenOn": "2023-03-10T22:23:54Z",
       "side": 1,
       "message": "Let me know if I should break this up over multiples CLs.",
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "809ce509_54e37825",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T15:43:40Z",
+      "side": 1,
+      "message": "Can we rename this to have emul somewhere in the name? It makes it a lot more clear what\u0027s driver behavior we\u0027re testing versus what\u0027s some setup we\u0027re doing with the emulator.",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "056c7ceb_d9869a05",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T15:43:40Z",
+      "side": 1,
+      "message": "Why aren\u0027t we using the driver to read here?",
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8ecb025_48dacce7",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T15:43:40Z",
+      "side": 1,
+      "message": "This looks to just be exercising the emulator. I\u0027m okay with this but tests should really be aiming to the driver directly and emulator indirectly.  let\u0027s rename to test_emul_reset.",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 25
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b78afea4_34f635a9",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T15:43:40Z",
+      "side": 1,
+      "message": "Can we describe as a comment or in the test function what we\u0027re testing?",
+      "range": {
+        "startLine": 220,
+        "startChar": 14,
+        "endLine": 220,
+        "endChar": 26
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f357244b_5d1cb10f",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T15:43:40Z",
+      "side": 1,
+      "message": "Any test that\u0027s specific to the emulator and not the driver, we ought to make it clear in the test name.",
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6751b295_4a9d93c8",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T15:43:40Z",
+      "side": 1,
+      "message": "If I understand correctly, can we rename this to `test_regs_default_tunning__usb_enabled_flags` or just clarify the intention with a comment that we\u0027re `Verifying corresponding registers are appropriately set by a default tuning call using the USB_PD_MUX_USB_ENABLED flags`?",
+      "range": {
+        "startLine": 728,
+        "startChar": 15,
+        "endLine": 728,
+        "endChar": 30
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65d3052f_df83726a",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T15:43:40Z",
+      "side": 1,
+      "message": "So are we just checking that the registers are equal to what the driver should make them based on the flag supplied to set_default_tuning?",
+      "range": {
+        "startLine": 855,
+        "startChar": 3,
+        "endLine": 855,
+        "endChar": 36
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7446301f_baceca4d",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T15:43:40Z",
+      "side": 1,
+      "message": "Can we get a better explanation of what this means? Are we verifying what the register values are if the anx7483 is configured in a particular way?",
+      "range": {
+        "startLine": 983,
+        "startChar": 18,
+        "endLine": 983,
+        "endChar": 37
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791e96e6_c9c206fc",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T15:43:40Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 1111,
+        "startChar": 18,
+        "endLine": 1111,
+        "endChar": 35
+      },
       "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
