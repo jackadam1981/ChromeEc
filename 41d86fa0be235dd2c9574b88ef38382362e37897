@@ -16,6 +16,24 @@
       "message": "The complete definition of enum power_signals is happening at test level from device tree. power_signals is used by mock power_signals.c. Without prior include it throws following error \"error: field has incomplete type \u0027enum power_signal\u0027\". With clang the order is changing resulting in error.",
       "revId": "41d86fa0be235dd2c9574b88ef38382362e37897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "605c7ec1_a21ed60d",
+        "filename": "zephyr/test/rex/src/board_power.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-14T12:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a66c90c_a81b952b",
+      "revId": "41d86fa0be235dd2c9574b88ef38382362e37897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
