@@ -70,6 +70,30 @@
       },
       "revId": "7223817c5eac990f2002096f84fa6d899ebeda97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "619f645c_ffe6af40",
+        "filename": "util/ec_panicinfo.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2023-03-14T09:14:04Z",
+      "side": 0,
+      "message": "rebase this CL as CL:4337126 and add a few comments.\nIn b/268392408\u0027s case, we should ignore the data at head, i.e. arch/version/flags is near the end. \nI\u0027m not sure if there will be cases that arch/version/flags is at the head and we should ignore the middle. Currently I\u0027m not aware of this case. If this case do exists, we should retry both cases.",
+      "parentUuid": "de95e208_8f9b07f0",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 52
+      },
+      "revId": "7223817c5eac990f2002096f84fa6d899ebeda97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
