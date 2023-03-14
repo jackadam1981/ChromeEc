@@ -3,29 +3,15 @@
  * found in the LICENSE file.
  */
 
-#include <assert.h>
-#include <ctype.h>
-#include <errno.h>
-#include <getopt.h>
-#include <inttypes.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#include <signal.h>
-#include <stdbool.h>
-
 #include "battery.h"
+#include "chipset.h"
 #include "comm-host.h"
 #include "comm-usb.h"
-#include "chipset.h"
 #include "compile_time_macros.h"
 #include "crc.h"
 #include "cros_ec_dev.h"
-#include "ec_panicinfo.h"
 #include "ec_flash.h"
+#include "ec_panicinfo.h"
 #include "ec_version.h"
 #include "ectool.h"
 #include "i2c.h"
@@ -36,7 +22,21 @@
 #include "tablet_mode.h"
 #include "usb_pd.h"
 
+#include <assert.h>
+#include <ctype.h>
+#include <errno.h>
+#include <inttypes.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#include <getopt.h>
 #include <libec/add_entropy_command.h>
+#include <unistd.h>
 
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
@@ -3245,7 +3245,7 @@ static int cmd_temperature_print(int id, int mtemp)
 
 	printf("%-20s  %d K (= %d C)", temp_r.sensor_name, temp, K_TO_C(temp));
 
-	if(rc >= 0)
+	if (rc >= 0)
 		/*
 		 * Check for fan_off == fan_max when their
 		 * values are either zero or non-zero
@@ -7584,22 +7584,21 @@ int cmd_charge_current_limit(int argc, char *argv[])
 		struct ec_params_current_limit p0;
 
 		p0.limit = limit;
-		return ec_command(EC_CMD_CHARGE_CURRENT_LIMIT, 0,
-				  &p0, sizeof(p0), NULL, 0);
+		return ec_command(EC_CMD_CHARGE_CURRENT_LIMIT, 0, &p0,
+				  sizeof(p0), NULL, 0);
 	}
 
 	/* argc==3 for battery_soc */
 	battery_soc = strtol(argv[2], &e, 0);
 	if (e && *e) {
-		fprintf(stderr, "ERROR: Bad battery SoC value: %s\n",
-			argv[2]);
+		fprintf(stderr, "ERROR: Bad battery SoC value: %s\n", argv[2]);
 		return -1;
 	}
 
 	p1.limit = limit;
 	p1.battery_soc = battery_soc;
-	return ec_command(EC_CMD_CHARGE_CURRENT_LIMIT, 1,
-			  &p1, sizeof(p1), NULL, 0);
+	return ec_command(EC_CMD_CHARGE_CURRENT_LIMIT, 1, &p1, sizeof(p1), NULL,
+			  0);
 }
 
 static void cmd_charge_control_help(const char *cmd, const char *msg)
