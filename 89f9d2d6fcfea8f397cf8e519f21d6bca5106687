@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8590e6e_877f9f93",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-14T06:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25a941ca_00b0443d",
+      "range": {
+        "startLine": 118,
+        "startChar": 10,
+        "endLine": 118,
+        "endChar": 27
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "104de22c_700b3dc4",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-03-13T18:28:07Z",
       "side": 1,
       "message": "F75303_TEMP_REMOTE1_REGISTER",
+      "range": {
+        "startLine": 119,
+        "startChar": 10,
+        "endLine": 119,
+        "endChar": 29
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8f3a0e1_27fad026",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-14T06:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "104de22c_700b3dc4",
       "range": {
         "startLine": 119,
         "startChar": 10,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea419844_f643c732",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-14T06:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d8606a5_44e54e45",
+      "range": {
+        "startLine": 120,
+        "startChar": 10,
+        "endLine": 120,
+        "endChar": 29
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65acf27e_d2207c7b",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-03-13T18:28:07Z",
       "side": 1,
       "message": "Use the enum values for all cases in the switch statement: F75303_IDX_LOCAL",
+      "range": {
+        "startLine": 132,
+        "startChar": 6,
+        "endLine": 132,
+        "endChar": 7
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52b2bee4_2d5e8dc9",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-14T06:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65acf27e_d2207c7b",
       "range": {
         "startLine": 132,
         "startChar": 6,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d957319b_3502bf6f",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-14T06:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3338c83d_ccf4c731",
+      "range": {
+        "startLine": 133,
+        "startChar": 21,
+        "endLine": 133,
+        "endChar": 38
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7429428d_2015ffc5",
@@ -146,6 +266,30 @@
       "writtenOn": "2023-03-13T18:28:07Z",
       "side": 1,
       "message": "F75303_TEMP_REMOTE1_REGISTER",
+      "range": {
+        "startLine": 136,
+        "startChar": 21,
+        "endLine": 136,
+        "endChar": 40
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18a9e6e_0fc8ff94",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-14T06:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7429428d_2015ffc5",
       "range": {
         "startLine": 136,
         "startChar": 21,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bcc1714_2eb25de7",
+        "filename": "include/driver/temp_sensor/f75303.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-14T06:42:23Z",
+      "side": 1,
+      "message": "Test make BOARD\u003dmushu, make BOARD\u003dnami success.",
+      "parentUuid": "852260cf_184d2c01",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d775aad4_aaf5af59",
@@ -192,6 +360,30 @@
       "writtenOn": "2023-03-13T18:28:07Z",
       "side": 1,
       "message": "Add definitions for the F75303_TEMP_LOCAL_REGISTER and \n F75303_TEMP_REMOTE1_REGISTER.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 41
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8b02e6_7946d1e4",
+        "filename": "include/driver/temp_sensor/f75303.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-14T06:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d775aad4_aaf5af59",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b459b2_0ae05f49",
+        "filename": "include/driver/temp_sensor/f75303.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-14T06:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf78d4c3_f94bf3a3",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "023af76b_e5edaef7",
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8016dc54_32b2ae06",
+        "filename": "zephyr/dts/bindings/temp/cros-ec,temp-sensor-f75303.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-14T06:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "023af76b_e5edaef7",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e65aada_6e8bbde2",
@@ -261,6 +501,30 @@
       "writtenOn": "2023-03-13T18:28:07Z",
       "side": 1,
       "message": "Please fix the indentation.  You should be using hard-tabs in this file.",
+      "range": {
+        "startLine": 204,
+        "startChar": 8,
+        "endLine": 217,
+        "endChar": 6
+      },
+      "revId": "89f9d2d6fcfea8f397cf8e519f21d6bca5106687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "593afffc_7f510c12",
+        "filename": "zephyr/program/skyrim/markarth/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-03-14T06:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e65aada_6e8bbde2",
       "range": {
         "startLine": 204,
         "startChar": 8,
