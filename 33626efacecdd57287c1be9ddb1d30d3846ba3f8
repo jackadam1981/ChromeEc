@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b033b4_4b2ffe4e",
+        "filename": "common/pse.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-14T23:23:20Z",
+      "side": 1,
+      "message": "nit: endeavor-specific comment shouldn\u0027t be present in common code",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 65
+      },
+      "revId": "33626efacecdd57287c1be9ddb1d30d3846ba3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd651c4e_96405ea4",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3751,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-14T23:23:20Z",
+      "side": 1,
+      "message": "nit: Power Sourcing Equipment\nPlease add some useful info for the next person looking at this define..",
+      "range": {
+        "startLine": 3751,
+        "startChar": 11,
+        "endLine": 3751,
+        "endChar": 14
+      },
+      "revId": "33626efacecdd57287c1be9ddb1d30d3846ba3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ee37de8_c6f4df8a",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-14T23:23:20Z",
+      "side": 1,
+      "message": "PLATFORM_EC_PSE",
+      "range": {
+        "startLine": 839,
+        "startChar": 7,
+        "endLine": 839,
+        "endChar": 25
+      },
+      "revId": "33626efacecdd57287c1be9ddb1d30d3846ba3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
