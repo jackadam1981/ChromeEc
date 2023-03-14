@@ -187,6 +187,14 @@
  * Fingerprint Specific
  *-------------------------------------------------------------------------*/
 
+#if CONFIG_STACK_SIZE == 1024
+/* Double the system stack size */
+#undef CONFIG_STACK_SIZE
+#define CONFIG_STACK_SIZE 2048
+#else
+#error "Unknown CONFIG_STACK_SIZE."
+#endif
+
 /* SPI configuration for the fingerprint sensor */
 #define CONFIG_SPI_CONTROLLER
 #define CONFIG_SPI_FP_PORT 0 /* SPI2: first master config */

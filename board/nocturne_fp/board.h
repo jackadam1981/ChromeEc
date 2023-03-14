@@ -115,6 +115,14 @@
 #define CONFIG_WP_ACTIVE_HIGH
 #define CONFIG_PANIC_STRIP_GPR
 
+#if CONFIG_STACK_SIZE == 1024
+/* Double the system stack size */
+#undef CONFIG_STACK_SIZE
+#define CONFIG_STACK_SIZE 2048
+#else
+#error "Unknown CONFIG_STACK_SIZE."
+#endif
+
 #if defined(BOARD_NOCTURNE_FP) || defined(BOARD_NAMI_FP)
 /*
  * FPMCU RO for nocturne (nocturne_fp_v2.2.64-58cf5974e) and
