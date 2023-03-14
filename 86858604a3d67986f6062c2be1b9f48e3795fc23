@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f40045b6_a7831653",
+        "filename": "zephyr/emul/retimer/emul_anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:25:09Z",
+      "side": 1,
+      "message": "I think there\u0027s two parts to handling that. When there\u0027s new documentation about bits that were only know as reserved then we can just update the emulator accordingly. I can also update the emulator with an API to allow board tests to change the register configuration so they can correctly test their bespoke tunings. I\u0027ll handle those aspects in a follow up CL.",
+      "parentUuid": "009bb610_6b8a7499",
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f66e2789_66d97261",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-03-13T20:41:30Z",
       "side": 1,
       "message": "Would this have been caught by the \"if (!config)\" check earlier?",
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7837bf01_7095d5fc",
+        "filename": "zephyr/emul/retimer/emul_anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:25:09Z",
+      "side": 1,
+      "message": "The previous check doesn\u0027t validate that the register index is within the array bounds, just that it is present in the config data.",
+      "parentUuid": "f66e2789_66d97261",
       "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a12dfb7_4775510a",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "809ce509_54e37825",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "056c7ceb_d9869a05",
@@ -109,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c209ced0_a102b082",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "056c7ceb_d9869a05",
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8ecb025_48dacce7",
@@ -122,6 +200,30 @@
       "writtenOn": "2023-03-14T15:43:40Z",
       "side": 1,
       "message": "This looks to just be exercising the emulator. I\u0027m okay with this but tests should really be aiming to the driver directly and emulator indirectly.  let\u0027s rename to test_emul_reset.",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 25
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e263987f_9bf7196a",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8ecb025_48dacce7",
       "range": {
         "startLine": 59,
         "startChar": 15,
@@ -155,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e46403c_5ab7ad59",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b78afea4_34f635a9",
+      "range": {
+        "startLine": 220,
+        "startChar": 14,
+        "endLine": 220,
+        "endChar": 26
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f357244b_5d1cb10f",
@@ -172,6 +298,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb8408ab_6c065f29",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f357244b_5d1cb10f",
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6751b295_4a9d93c8",
@@ -185,6 +329,30 @@
       "writtenOn": "2023-03-14T15:43:40Z",
       "side": 1,
       "message": "If I understand correctly, can we rename this to `test_regs_default_tunning__usb_enabled_flags` or just clarify the intention with a comment that we\u0027re `Verifying corresponding registers are appropriately set by a default tuning call using the USB_PD_MUX_USB_ENABLED flags`?",
+      "range": {
+        "startLine": 728,
+        "startChar": 15,
+        "endLine": 728,
+        "endChar": 30
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae5b981_691e11cc",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6751b295_4a9d93c8",
       "range": {
         "startLine": 728,
         "startChar": 15,
@@ -218,6 +386,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64429d15_53e67547",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65d3052f_df83726a",
+      "range": {
+        "startLine": 855,
+        "startChar": 3,
+        "endLine": 855,
+        "endChar": 36
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7446301f_baceca4d",
@@ -241,6 +433,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e73177b_2fc044c8",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7446301f_baceca4d",
+      "range": {
+        "startLine": 983,
+        "startChar": 18,
+        "endLine": 983,
+        "endChar": 37
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "791e96e6_c9c206fc",
@@ -254,6 +470,30 @@
       "writtenOn": "2023-03-14T15:43:40Z",
       "side": 1,
       "message": "What does this mean?",
+      "range": {
+        "startLine": 1111,
+        "startChar": 18,
+        "endLine": 1111,
+        "endChar": 35
+      },
+      "revId": "86858604a3d67986f6062c2be1b9f48e3795fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f670c50_e7902366",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "791e96e6_c9c206fc",
       "range": {
         "startLine": 1111,
         "startChar": 18,
