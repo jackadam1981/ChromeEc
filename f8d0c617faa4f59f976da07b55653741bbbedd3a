@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7590ca1_654f22bb",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-14T22:08:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcb486ee_04e1ecc3",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "f8d0c617faa4f59f976da07b55653741bbbedd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85ea043f_c4365924",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-14T20:47:37Z",
       "side": 1,
       "message": "You can declare the variable here rather than at the top of the function. This changed recently in the EC code with this CL: https://crrev.com/c/3256741.",
+      "range": {
+        "startLine": 1575,
+        "startChar": 0,
+        "endLine": 1575,
+        "endChar": 33
+      },
+      "revId": "f8d0c617faa4f59f976da07b55653741bbbedd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e527c3_29d75afa",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-14T22:08:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85ea043f_c4365924",
       "range": {
         "startLine": 1575,
         "startChar": 0,
