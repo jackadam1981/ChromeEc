@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44513d6f_fe3d63f4",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T20:26:43Z",
+      "side": 1,
+      "message": "Are there boringssl functions that do this? I\u0027d like to avoid `cryptoc` for new code now that we have `boringssl`.",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 35
+      },
+      "revId": "49227a6c331a4de077222de9485b34b492302cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bbcfac5_50319d6a",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T20:26:43Z",
+      "side": 1,
+      "message": "Are there boringssl functions that do this? I\u0027d like to avoid `cryptoc` for new code now that we have `boringssl`.",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 33
+      },
+      "revId": "49227a6c331a4de077222de9485b34b492302cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
