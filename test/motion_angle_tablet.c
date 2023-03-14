@@ -38,8 +38,6 @@ static int test_lid_angle_less180(void)
 	struct motion_sensor_t *base =
 		&motion_sensors[CONFIG_LID_ANGLE_SENSOR_BASE];
 
-	/* We don't have TASK_CHIP so simulate init ourselves */
-	hook_notify(HOOK_CHIPSET_SHUTDOWN);
 	TEST_ASSERT(sensor_active == SENSOR_ACTIVE_S5);
 	TEST_ASSERT(lid->drv->get_data_rate(lid) == 0);
 

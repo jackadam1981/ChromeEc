@@ -152,8 +152,6 @@ static int test_lid_angle(void)
 		&motion_sensors[CONFIG_LID_ANGLE_SENSOR_LID];
 	int lid_angle;
 
-	/* We don't have TASK_CHIP so simulate init ourselves */
-	hook_notify(HOOK_CHIPSET_SHUTDOWN);
 	/* Wait for the sensor task to start */
 	msleep(50);
 	TEST_ASSERT(sensor_active == SENSOR_ACTIVE_S5);
