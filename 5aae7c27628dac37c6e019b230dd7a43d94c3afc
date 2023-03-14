@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b9d49f4_7db561d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T18:48:09Z",
+      "side": 1,
+      "message": "Please specify exactly which operations require more task space and link to the associated CL that requires more space. This makes it easier for future readers to understand why the increase was needed.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "5aae7c27628dac37c6e019b230dd7a43d94c3afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2844800b_b5d5e01b",
+        "filename": "board/hatch_fp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T18:48:09Z",
+      "side": 1,
+      "message": "From the [other CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3901734/48/common/fpsensor/fpsensor_state.c) it looks like the code is running in a host command.\n\nWe should already have larger task sizes declared [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/hatch_fp/ec.tasklist;l\u003d10-14;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46) (last argument is task size). Both `FPSENSOR` and `HOSTCMD` tasks are `4096` already.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 6
+      },
+      "revId": "5aae7c27628dac37c6e019b230dd7a43d94c3afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
