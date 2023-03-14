@@ -239,8 +239,14 @@ excep_handler:
 	addi    $r0, $r0, -16*4
 	/* jump to panic dump C routine */
 	jal report_panic
+#ifdef CONFIG_SYSTEM_SAFE_MODE
+	/* Return from exception. */
+	/* Current task has been disabled so it will not run. */
+	iret
+#else
 	/* we never return: exceptions are fatal */
 	j .
+#endif /* CONFIG_SYSTEM_SAFE_MODE */
 
 .align 2
 _bss_start:
