@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb486ee_04e1ecc3",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T20:47:37Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to include this header.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "f8d0c617faa4f59f976da07b55653741bbbedd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85ea043f_c4365924",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T20:47:37Z",
+      "side": 1,
+      "message": "You can declare the variable here rather than at the top of the function. This changed recently in the EC code with this CL: https://crrev.com/c/3256741.",
+      "range": {
+        "startLine": 1575,
+        "startChar": 0,
+        "endLine": 1575,
+        "endChar": 33
+      },
+      "revId": "f8d0c617faa4f59f976da07b55653741bbbedd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
