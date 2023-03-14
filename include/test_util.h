@@ -101,8 +101,9 @@ extern "C" {
 		for (__i = 0; __i < n; ++__i)                                \
 			if ((s)[__i] != (d)[__i]) {                          \
 				ccprintf("%s:%d: ASSERT_ARRAY_EQ failed at " \
-					 "index=%ld: %d != %u\n",            \
-					 __FILE__, __LINE__, __i,            \
+					 "index=%d: %d != %d\n",             \
+					 __FILE__, __LINE__, (int)__i,       \
+                                                                             \
 					 (int)(s)[__i], (int)(d)[__i]);      \
 				task_dump_trace();                           \
 				return EC_ERROR_UNKNOWN;                     \
