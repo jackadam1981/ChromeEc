@@ -14,11 +14,11 @@
 static inline bool write_protect_is_asserted(void)
 {
 #ifdef CONFIG_WP_ALWAYS
-	return true;
+nnn	return true;
 #elif defined(CONFIG_WP_ACTIVE_HIGH)
-	return gpio_get_level(GPIO_WP);
+yyy	return gpio_get_level(GPIO_WP);
 #else
-	return !gpio_get_level(GPIO_WP_L);
+	xxx return !gpio_get_level(GPIO_WP_L);
 #endif
 }
 

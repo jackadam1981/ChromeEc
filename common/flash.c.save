@@ -745,12 +745,8 @@ int crec_flash_erase(int offset, int size)
 
 int crec_flash_protect_at_boot(uint32_t new_flags)
 {
-
-	ccprintf("%s: new_flags 0x%04x\n", __func__,
-		 (int)new_flags);
-
 #ifdef CONFIG_FLASH_PSTATE
-ppp	uint32_t new_pstate_flags = new_flags & EC_FLASH_PROTECT_RO_AT_BOOT;
+	uint32_t new_pstate_flags = new_flags & EC_FLASH_PROTECT_RO_AT_BOOT;
 
 	/* Read the current persist state from flash */
 	if (flash_read_pstate() != new_pstate_flags) {

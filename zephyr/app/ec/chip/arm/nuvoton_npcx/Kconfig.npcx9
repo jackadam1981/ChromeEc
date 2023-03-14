@@ -41,6 +41,8 @@ config CROS_EC_RO_SIZE
 	default 0x40000 if SOC_NPCX9M3F
 	default 0x30000 if SOC_NPCX9M6F
 	default 0x50000 if SOC_NPCX9M7F
+#	default 0x80000 if SOC_NPCX9M7F
+#	default 0x60000 if SOC_NPCX9M7F
 
 config CROS_EC_RW_MEM_OFF
 	default 0x0
@@ -49,5 +51,7 @@ config CROS_EC_RW_SIZE
 	default 0x40000 if SOC_NPCX9M3F
 	default 0x30000 if SOC_NPCX9M6F
 	default 0x50000 if SOC_NPCX9M7F
+#	default 0x80000 if SOC_NPCX9M7F
+#	default 0x60000 if SOC_NPCX9M7F
 
 endif # SOC_SERIES_NPCX9

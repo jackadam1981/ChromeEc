@@ -10,6 +10,8 @@
 #include "spi_flash_reg.h"
 #include "util.h"
 
+#include "system.h"
+
 /* Bit state for protect range table */
 enum bit_state {
 	OFF = 0,
@@ -183,6 +185,8 @@ int spi_flash_protect_to_reg(unsigned int start, unsigned int len, uint8_t *sr1,
 			return EC_SUCCESS;
 		}
 	}
+
+	ccprintf("%s: NO spi_flash_protect_ranges\n", __func__);
 
 	/* Invalid range, or valid range missing from our table */
 	return EC_ERROR_INVAL;
