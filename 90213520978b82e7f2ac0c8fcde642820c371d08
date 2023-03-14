@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845d0b7c_a8cff31b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2475,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T20:51:55Z",
+      "side": 1,
+      "message": "Can you create a followup CL to add a method to `FpEncryptionStatusCommand` that returns the flags as a `std::string`? Then we can get rid of `print_fp_enc_flags` and use the new method instead.",
+      "range": {
+        "startLine": 2475,
+        "startChar": 2,
+        "endLine": 2475,
+        "endChar": 20
+      },
+      "revId": "90213520978b82e7f2ac0c8fcde642820c371d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049087a1_0a66fa9b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2480,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T20:51:55Z",
+      "side": 1,
+      "message": "Let\u0027s remove the `else` here since the `if` returns: https://clang.llvm.org/extra/clang-tidy/checks/readability/else-after-return.html",
+      "range": {
+        "startLine": 2474,
+        "startChar": 1,
+        "endLine": 2480,
+        "endChar": 2
+      },
+      "revId": "90213520978b82e7f2ac0c8fcde642820c371d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
