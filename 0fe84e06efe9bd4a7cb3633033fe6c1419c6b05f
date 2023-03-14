@@ -52,6 +52,29 @@
       "parentUuid": "85330ea4_8477dcf8",
       "revId": "0fe84e06efe9bd4a7cb3633033fe6c1419c6b05f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24701952_467db1cc",
+        "filename": "zephyr/program/rex/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-14T21:12:48Z",
+      "side": 1,
+      "message": "Please see go/zephyr-projects\n\nFor the DTS files, please add #includes to the project.overlay.  So in this case, create zephyr/program/rex-sans-sensors/project.overlay and rex/sans-sensors/project.conf\n\nUse rex-sans-sensors/project.overlay to skip inclusion of motionsense.dtsi, and you can use /delete-node/ to delete the interrupts instead of moving the interrupts to a separate file.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "0fe84e06efe9bd4a7cb3633033fe6c1419c6b05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
