@@ -34,6 +34,24 @@
       "parentUuid": "c4eb611f_34183250",
       "revId": "21e6b1713fee5af3100d7401074077dddc834510",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7778701a_8cbf0064",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-03-14T06:01:49Z",
+      "side": 1,
+      "message": "to be clear, allowing unaligned accesses doesn\u0027t mean they have to be used ... if code is perf sensitive, it should be written with aligned access patterns.  if no unaligned accesses are made, then this CL doesn\u0027t change perf at all.\n\nof course the open question is how to detect unaligned accesses are degrading perf in the first place.  if things are running \"fast enough\", i wonder if it really matters.\n\nwould be nice if there was a sanitizer/checker we could enable for unittests, but i don\u0027t think there is.",
+      "parentUuid": "67b56f69_125e2bed",
+      "revId": "21e6b1713fee5af3100d7401074077dddc834510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
