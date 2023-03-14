@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbd30f62_1e632c9e",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T15:32:54Z",
+      "side": 1,
+      "message": "Can we rename the test only helpers to have emul in them to make it a bit more explicit that we\u0027re directly actuating the emulator instead via the driver.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "e4ddc6d80a6442a01cabcc7f22be638b43b3e0df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a019f29_f4f26d53",
         "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
         "patchSetId": 4
