@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64922fd9_01cb5bc3",
+        "filename": "cmake/toolchain-armv7m.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T18:54:12Z",
+      "side": 1,
+      "message": "Can you document the purpose of this variable? (the rest are clear from context)",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "23665f7e99f5647d8529a7d624570d34827cdb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9926cbd4_f0d0ef99",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T18:54:12Z",
+      "side": 1,
+      "message": "Please create a separate CL that introduces `gcc` support, since this is unrelated to the separation into a common file: go/small-cls.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "23665f7e99f5647d8529a7d624570d34827cdb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e22d2c_68d35e70",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T18:54:12Z",
+      "side": 1,
+      "message": "Please add this in a separate CL, since it is unrelated to the separation (it\u0027s new): go/small-cls",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "23665f7e99f5647d8529a7d624570d34827cdb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
