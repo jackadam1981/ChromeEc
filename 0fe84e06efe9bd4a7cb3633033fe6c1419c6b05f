@@ -16,6 +16,24 @@
       "message": "The reference to \u0026i2c0_0 {} has to be removed from rex-sans-sensor build too. otherwise, there will be two I2C master on motion sensor I2C bus.",
       "revId": "0fe84e06efe9bd4a7cb3633033fe6c1419c6b05f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85330ea4_8477dcf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-03-14T07:54:54Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ve created https://b.corp.google.com/issues/273308069 to refactor things after this change merges. I think the references to `i2c0_0` that you mention belong in the new ISH image that we need to create. Basically there will be 3 variants to Rex when we\u0027re done:\n1. Normal Rex build with sensors on the EC (target: `rex`)\n2. A Rex build for the EC without sensors (target: `rex-sans-sensors`)\n3. A Rex-ISH build for the ISH with only sensors (target `rex-ish`)\n\nSince we haven\u0027t created the `rex-ish` variant yet, I think that\u0027s where the bus and new paths for the motionsense need to be update. That variant will likely not use either `rex.dtsi` or `generated.dtsi` where `i2c0_0` are referenced.",
+      "parentUuid": "956b8bdb_61923f6d",
+      "revId": "0fe84e06efe9bd4a7cb3633033fe6c1419c6b05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
