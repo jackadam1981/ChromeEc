@@ -19,6 +19,14 @@
 
 #undef CONFIG_SYSTEM_UNLOCKED
 
+#if CONFIG_STACK_SIZE == 1024
+/* Double the system stack size */
+#undef CONFIG_STACK_SIZE
+#define CONFIG_STACK_SIZE 2048
+#else
+#error "Unknown CONFIG_STACK_SIZE."
+#endif
+
 /*
  * These allow console commands to be flagged as restricted.
  * Restricted commands will only be permitted to run when
