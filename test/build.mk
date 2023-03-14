@@ -74,6 +74,8 @@ test-list-host += shmalloc
 test-list-host += static_if
 test-list-host += static_if_error
 test-list-host += system
+test-list-host += tablet_broken_sensor
+test-list-host += tablet_no_sensor
 test-list-host += thermal
 test-list-host += timer_dos
 test-list-host += uptime
@@ -189,6 +191,12 @@ static_if-y=static_if.o
 stm32f_rtc-y=stm32f_rtc.o
 stress-y=stress.o
 system-y=system.o
+<<<<<<< HEAD   (daa983 motion_sense: Log stats at suspend, resume, and shutdown)
+=======
+system_is_locked-y=system_is_locked.o
+tablet_broken_sensor-y=tablet_broken_sensor.o
+tablet_no_sensor-y=tablet_no_sensor.o
+>>>>>>> CHANGE (c1f6b2 common/tablet: Allow getting out of tablet mode when sensors)
 thermal-y=thermal.o
 timer_calib-y=timer_calib.o
 timer_dos-y=timer_dos.o

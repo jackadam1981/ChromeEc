@@ -154,18 +154,30 @@
 #define CONFIG_TEMP_CACHE_STALE_THRES (1 * SECOND)
 #endif /* CONFIG_ONLINE_CALIB && !CONFIG_TEMP_CACHE_STALE_THRES */
 
+<<<<<<< HEAD   (daa983 motion_sense: Log stats at suspend, resume, and shutdown)
 #if defined(CONFIG_ONLINE_CALIB) || \
 	defined(TEST_BODY_DETECTION) || \
 	defined(TEST_MOTION_ANGLE) || \
 	defined(TEST_MOTION_ANGLE_TABLET) || \
 	defined(TEST_MOTION_LID) || \
 	defined(TEST_MOTION_SENSE_FIFO)
+=======
+#if defined(CONFIG_ONLINE_CALIB) || defined(TEST_BODY_DETECTION) ||        \
+	defined(TEST_MOTION_ANGLE) || defined(TEST_MOTION_ANGLE_TABLET) || \
+	defined(TEST_MOTION_LID) || defined(TEST_MOTION_SENSE_FIFO) ||     \
+	defined(TEST_TABLET_BROKEN_SENSOR)
+>>>>>>> CHANGE (c1f6b2 common/tablet: Allow getting out of tablet mode when sensors)
 enum sensor_id {
 	BASE,
 	LID,
 	SENSOR_COUNT,
 };
 
+<<<<<<< HEAD   (daa983 motion_sense: Log stats at suspend, resume, and shutdown)
+=======
+#if defined(TEST_MOTION_ANGLE) || defined(TEST_MOTION_ANGLE_TABLET) || \
+	defined(TEST_MOTION_LID) || defined(TEST_TABLET_BROKEN_SENSOR)
+>>>>>>> CHANGE (c1f6b2 common/tablet: Allow getting out of tablet mode when sensors)
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE
 #define CONFIG_LID_ANGLE_SENSOR_LID LID
@@ -186,6 +198,11 @@ enum sensor_id {
 #define CONFIG_ACCEL_FORCE_MODE_MASK \
 	((1 << CONFIG_LID_ANGLE_SENSOR_BASE) | \
 	 (1 << CONFIG_LID_ANGLE_SENSOR_LID))
+#endif
+
+#if defined(TEST_TABLET_BROKEN_SENSOR) || defined(TEST_TABLET_NO_SENSOR)
+#define CONFIG_TABLET_MODE
+#define CONFIG_GMR_TABLET_MODE
 #endif
 
 #if defined(TEST_BODY_DETECTION)
