@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d063f53_efb67f22",
+        "filename": "zephyr/mock/include/mock/power_signals.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-14T14:09:27Z",
+      "side": 1,
+      "message": "Yes, seems like it is, Thank you Fabio 😃",
+      "parentUuid": "b36dca3a_8183865a",
+      "revId": "41d86fa0be235dd2c9574b88ef38382362e37897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a66c90c_a81b952b",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "You are using the wrong include in `mock/power_signals.h`. See my comment there.",
       "parentUuid": "605c7ec1_a21ed60d",
+      "revId": "41d86fa0be235dd2c9574b88ef38382362e37897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a605a6_73fbb21d",
+        "filename": "zephyr/test/rex/src/board_power.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-14T14:09:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa1b22c8_5f79cea7",
       "revId": "41d86fa0be235dd2c9574b88ef38382362e37897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
