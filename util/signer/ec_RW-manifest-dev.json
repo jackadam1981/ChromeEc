@@ -39,8 +39,13 @@
 
   "timestamp": 0,
   "epoch": 0,  // FWR diversification contributor, 32 bits.
+<<<<<<< HEAD   (bf41af cr50: prepare to release 0.{5,6}.152)
   "major": 5,  // FW2_HIK_CHAIN counter.
   "minor": 152,  // Mostly harmless version field.
+=======
+  "major": 6,  // FW2_HIK_CHAIN counter.
+  "minor": 153,  // Mostly harmless version field.
+>>>>>>> CHANGE (7adea4 cr50: prepare to release 0.{5,6}.153)
   "applysec": -1,  // Mask to and with fuse BROM_APPLYSEC.
   "config1": 13,  // Which BROM_CONFIG1 actions to take before launching.
   "err_response": 0,  // Mask to or with fuse BROM_ERR_RESPONSE.
