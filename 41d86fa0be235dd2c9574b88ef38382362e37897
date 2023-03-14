@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b36dca3a_8183865a",
+        "filename": "zephyr/mock/include/mock/power_signals.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-14T13:43:41Z",
+      "side": 1,
+      "message": "I think this is (trying to) include itself, change to `#include \u003cpower_signals.h\u003e`.",
+      "revId": "41d86fa0be235dd2c9574b88ef38382362e37897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a66c90c_a81b952b",
         "filename": "zephyr/test/rex/src/board_power.c",
         "patchSetId": 15
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "7a66c90c_a81b952b",
+      "revId": "41d86fa0be235dd2c9574b88ef38382362e37897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa1b22c8_5f79cea7",
+        "filename": "zephyr/test/rex/src/board_power.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-14T13:43:41Z",
+      "side": 1,
+      "message": "You are using the wrong include in `mock/power_signals.h`. See my comment there.",
+      "parentUuid": "605c7ec1_a21ed60d",
       "revId": "41d86fa0be235dd2c9574b88ef38382362e37897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
