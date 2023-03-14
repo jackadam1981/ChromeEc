@@ -92,6 +92,10 @@ uint32_t crec_flash_physical_get_protect_flags(void)
 	 * doesn't support reading protected areas and the procedure is
 	 * different for each flash type.
 	 */
+
+//	ccprintf("%s: cros_flash_physical_get_protect_flags 0x%04x\n", __func__,
+//		 cros_flash_physical_get_protect_flags(cros_flash_dev));
+
 	return cros_flash_physical_get_protect_flags(cros_flash_dev);
 }
 

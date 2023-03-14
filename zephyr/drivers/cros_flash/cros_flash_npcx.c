@@ -20,6 +20,8 @@
 #include <drivers/cros_flash.h>
 #include <soc.h>
 
+#include "system.h"
+
 LOG_MODULE_REGISTER(cros_flash, LOG_LEVEL_ERR);
 
 static int all_protected; /* Has all-flash protection been requested? */
@@ -365,6 +367,9 @@ static int flash_write_prot_reg(const struct device *dev, unsigned int offset,
 	/* Compute desired protect range */
 	flash_get_status(dev, &sr1, &sr2);
 	rv = spi_flash_protect_to_reg(offset, bytes, &sr1, &sr2);
+
+	ccprintf("%s: spi_flash_protect_to_reg rv %d\n", __func__, rv);
+
 	if (rv)
 		return rv;
 
@@ -558,14 +563,23 @@ static int cros_flash_npcx_protect_at_boot(const struct device *dev,
 {
 	int ret;
 
+	ccprintf("%s: new_flags 0x%04x\n", __func__, (int)new_flags);
+
 	if ((new_flags & (EC_FLASH_PROTECT_RO_AT_BOOT |
 			  EC_FLASH_PROTECT_ALL_AT_BOOT)) == 0) {
 		/* Clear protection bits in status register */
 		return flash_set_status_for_prot(dev, 0, 0);
 	}
 
+	ccprintf("%s: prot_reg at %06x [%06x] MAX %06x\n", __func__, 
+		 (int)CONFIG_WP_STORAGE_OFF,
+		 (int)CONFIG_WP_STORAGE_SIZE,
+		 (int)CONFIG_FLASH_SIZE_BYTES);
+
 	ret = flash_write_prot_reg(dev, CONFIG_WP_STORAGE_OFF,
 				   CONFIG_WP_STORAGE_SIZE, 1);
+
+	ccprintf("%s: prot_reg ret %d\n", __func__, ret);
 
 	/*
 	 * Set UMA_LOCK bit for locking all UMA transaction.
