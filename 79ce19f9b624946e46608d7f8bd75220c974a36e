@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2537404_f30d5035",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 31
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T20:20:06Z",
+      "side": 1,
+      "message": "In the past we were using the internal boringssl crypto functions, such as `CRYPTO_gcm128_init_key`. I don\u0027t know the context, but I think this was because in the past they didn\u0027t want to have to port over more of the boringssl code. Now that we can actually compile and link the full boringssl library, can you create a followup CL that switches over to using the [public API](https://source.chromium.org/chromium/chromium/src/+/main:third_party/boringssl/src/include/openssl/cipher.h)?\n\nThis will be safer (less chance of making a mistake) and reduce the churn required when boringssl makes internal changes.",
+      "revId": "79ce19f9b624946e46608d7f8bd75220c974a36e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae611f8b_23d6e86f",
         "filename": "third_party/boringssl/boringssl-toolchain.cmake",
         "patchSetId": 31
