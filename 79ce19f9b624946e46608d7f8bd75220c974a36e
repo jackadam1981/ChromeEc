@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae611f8b_23d6e86f",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 31
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T19:06:26Z",
+      "side": 1,
+      "message": "For this and the `set(ANDROID TRUE)`, can we file a bug with boringssl to create a generic embedded build? This works, but it\u0027s definitely a workaround. Then you can add a `TODO(b/NNN)` in this file to remove it when fixed upstream.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "79ce19f9b624946e46608d7f8bd75220c974a36e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
