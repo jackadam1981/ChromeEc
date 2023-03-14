@@ -234,6 +234,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8b1ed16_a19931aa",
+        "filename": "test/aes.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T19:04:53Z",
+      "side": 1,
+      "message": "Ok. Instead of repeating the code multiple places (and potentially messing this up in the future), let\u0027s create our own `CRYPTO_gcm128_init` that wraps `CRYPTO_gcm128_init_key` and does the `memset`. e.g.,\n\n```\nCRYPTO_gcm128_init(...) {\n  memset(\u0026ctx, 0, sizeof(ctx));\n  CRYPTO_gcm128_init_key(...);\n}\n```\n\nSince this wrapper is boringssl-related, it would be good to put it in `third_party/boringssl`. You could potentially put it in a header and make it `static inline`.\n\nThe comment for our `CRYPTO_gcm128_init` should include the details from your last comment.",
+      "parentUuid": "c935134b_4a30ca62",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 31
+      },
+      "revId": "29c4c80b61082b2ec0abf28a03c628fd2fbdac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae346838_3f646fcf",
         "filename": "third_party/boringssl/cros-ec-toolchain.cmake",
         "patchSetId": 24
