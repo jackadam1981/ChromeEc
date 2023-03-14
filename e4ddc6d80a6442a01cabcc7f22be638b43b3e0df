@@ -33,6 +33,29 @@
       "message": "Apologies for not getting to this sooner! I was sick and then on PTO.",
       "revId": "e4ddc6d80a6442a01cabcc7f22be638b43b3e0df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a019f29_f4f26d53",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T15:29:34Z",
+      "side": 1,
+      "message": "I didn\u0027t catch this before, can we rename this to test_emul_reset since this is really only testing the emulator?",
+      "range": {
+        "startLine": 64,
+        "startChar": 14,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "e4ddc6d80a6442a01cabcc7f22be638b43b3e0df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
