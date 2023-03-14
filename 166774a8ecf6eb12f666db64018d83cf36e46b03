@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7570f256_fbbd18fe",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T18:35:42Z",
+      "side": 1,
+      "message": "Oh if we\u0027re actually using the driver to read for this function I\u0027d omit the `emul` part.\n\nSorry about the confusion. If we\u0027re using the driver to read it seems like we\u0027re actually testing the driver, but if we\u0027re directly reading the register value from the emulator with an emulator helper function then we want to keep the `emul` part.\n\nEssentially just want to easily tell the different from a glance if we\u0027re actuating the driver or the emulator.",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "166774a8ecf6eb12f666db64018d83cf36e46b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96566738_f32ef13e",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T18:35:42Z",
+      "side": 1,
+      "message": "See above comment. These can both be renamed back to `anx7483_i2c_set/get_reg()` as before. Just wanted them to use the driver directly if possible.",
+      "range": {
+        "startLine": 46,
+        "startChar": 19,
+        "endLine": 46,
+        "endChar": 23
+      },
+      "revId": "166774a8ecf6eb12f666db64018d83cf36e46b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13bd6cc_05016c3e",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-14T18:35:42Z",
+      "side": 1,
+      "message": "nit: Need a space. Surprised `clang-format` not catch this.",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 3
+      },
+      "revId": "166774a8ecf6eb12f666db64018d83cf36e46b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
