@@ -383,13 +383,13 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	if (full_readback)
 		return EC_SUCCESS;
 
-	rv = spi_dma_wait(port);
-	if (rv != EC_SUCCESS)
-		goto err_free;
-
-	spi_clear_tx_fifo(spi);
-
 	if (rxlen) {
+		rv = spi_dma_wait(port);
+		if (rv != EC_SUCCESS)
+			goto err_free;
+
+		spi_clear_tx_fifo(spi);
+
 		rv = spi_dma_start(port, buf, rxdata, rxlen);
 		if (rv != EC_SUCCESS)
 			goto err_free;
