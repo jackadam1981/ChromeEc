@@ -16,6 +16,24 @@
       "message": "this can move inside the following if statement.",
       "revId": "bffc5e84bd33448e6e08ec38cbe1efba9552853c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed8bde74_33d9b95c",
+        "filename": "common/panic_output.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-14T23:10:38Z",
+      "side": 1,
+      "message": "This is a cherry-pick, I try to keep it as close to the original as I can to avoid future merge issues.",
+      "parentUuid": "239f6454_939b18ae",
+      "revId": "bffc5e84bd33448e6e08ec38cbe1efba9552853c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
