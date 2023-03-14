@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b738cd_3c687ab6",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T19:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7570f256_fbbd18fe",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "166774a8ecf6eb12f666db64018d83cf36e46b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96566738_f32ef13e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ccd3826_aaedb24c",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T19:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96566738_f32ef13e",
+      "range": {
+        "startLine": 46,
+        "startChar": 19,
+        "endLine": 46,
+        "endChar": 23
+      },
+      "revId": "166774a8ecf6eb12f666db64018d83cf36e46b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e13bd6cc_05016c3e",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-14T18:35:42Z",
       "side": 1,
       "message": "nit: Need a space. Surprised `clang-format` not catch this.",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 3
+      },
+      "revId": "166774a8ecf6eb12f666db64018d83cf36e46b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01cb73a5_be4ef102",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T19:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e13bd6cc_05016c3e",
       "range": {
         "startLine": 281,
         "startChar": 1,
