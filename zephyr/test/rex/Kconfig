@@ -19,13 +19,4 @@ config TEST_ENABLE_USB_PD_HOST_CMD
 	  This is used to define CONFIG_USB_PD_HOST_CMD for testing purposes
 	  directly.
 
-config TEST_FAN
-	bool "Run the tests intended for fan"
-	help
-	  Include fan.c into the binary and test their functions.
-
-module = REX
-module-str = Rex board-specific code
-source "subsys/logging/Kconfig.template.log_config"
-
 source "Kconfig.zephyr"
