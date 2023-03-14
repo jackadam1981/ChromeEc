@@ -2145,6 +2145,39 @@ struct ec_response_pwm_get_duty {
 	uint16_t duty; /* Duty cycle, EC_PWM_MAX_DUTY = 100% */
 } __ec_align2;
 
+/* Get information about fan such as rpm, duty, status etc. */
+#define EC_CMD_FAN_INFO  0x0027
+
+/**
+ * struct ec_params_get_fan_info - Fan info parameters
+ * @fan_no: Fan index.
+ */
+struct ec_params_get_fan_info {
+	uint32_t fan_no;
+} __ec_align4;
+
+/**
+ * struct ec_response_get_fan_info - Fan info response
+ * @actual: Fan actual rpm
+ * @target: Fan target rpm
+ * @duty: Fan duty
+ * @status: Fan status - stopped, changing, locked, frustated
+ * @rpm_mode: Fan mode - rpm, duty
+ * @thermal_control - checks if thermal control is enabled or not
+ * @fan_get_enabled - checks if fan controller is enabled or not
+ * @power - checks if fan is on or off
+ */
+struct ec_response_get_fan_info {
+	uint32_t actual;
+	uint32_t target;
+	uint32_t duty;
+	uint32_t status;
+	uint32_t rpm_mode;
+	uint32_t thermal_control;
+	uint32_t fan_get_enabled;
+	uint32_t power;
+} __ec_align4;
+
 /*****************************************************************************/
 /*
  * Lightbar commands. This looks worse than it is. Since we only use one HOST

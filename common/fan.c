@@ -508,6 +508,29 @@ hc_thermal_auto_fan_ctrl(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_THERMAL_AUTO_FAN_CTRL, hc_thermal_auto_fan_ctrl,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
+static enum ec_status
+hc_faninfo(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_get_fan_info *p = args->params;
+	struct ec_response_get_fan_info *r = args->response;
+
+	if (fan_count <= p->fan_no)
+		return EC_RES_ERROR;
+
+	r->actual = fan_get_rpm_actual(FAN_CH(p->fan_no));
+	r->target = fan_get_rpm_target(FAN_CH(p->fan_no));
+	r->duty   = fan_get_duty(FAN_CH(p->fan_no));
+	r->status = fan_get_status(FAN_CH(p->fan_no));
+	r->rpm_mode = fan_get_rpm_mode(FAN_CH(p->fan_no));
+	r->thermal_control = is_thermal_control_enabled(p->fan_no);
+	r->fan_get_enabled  = fan_get_enabled(FAN_CH(p->fan_no));
+	r->power = is_powered(p->fan_no);
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FAN_INFO, hc_faninfo, EC_VER_MASK(0));
+
 /*****************************************************************************/
 /* Hooks */
 

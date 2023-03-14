@@ -138,6 +138,8 @@ const char help_str[] =
 	"      Sets the wake mask for EC host events\n"
 	"  extpwrlimit\n"
 	"      Set the maximum external power limit\n"
+	"  faninfo\n"
+	"  	Prints info about fan\n"
 	"  fanduty <percent>\n"
 	"      Forces the fan PWM to a constant duty cycle\n"
 	"  flasherase <offset> <size>\n"
@@ -3597,7 +3599,6 @@ static int get_num_fans(void)
 		if (rv == EC_FAN_SPEED_NOT_PRESENT)
 			break;
 	}
-
 	return idx;
 }
 
@@ -3895,6 +3896,36 @@ int cmd_pwm_set_duty(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_faninfo(int argc , char *argv[])
+{
+	struct ec_params_get_fan_info p;
+	struct ec_response_get_fan_info r;
+	int rv, num_fans;
+	num_fans = get_num_fans();
+	if(num_fans == 0)
+	{
+		printf("fan is not present\n");
+		return 0;
+	}
+	static const char *const human_status[] = { "not spinning", "changing", "locked", "frustrated" };
+	for (p.fan_no = 0; p.fan_no < num_fans; p.fan_no++)
+	{
+		rv = ec_command(EC_CMD_FAN_INFO, 0, &p, sizeof(p), &r, sizeof(r));
+		if (rv < 0 )
+			return rv;
+
+		printf("Fan %d info \n",p.fan_no);
+		printf("Actual: %4d rpm\n", r.actual);
+		printf("Target: %4d rpm\n", r.target);
+		printf("Duty:   %d%%\n", r.duty);
+		printf("Status: %d (%s)\n", r.status, human_status[r.status]);
+		printf("Mode:   %s\n", r.rpm_mode ? "rpm" : "duty");
+		printf("Auto:   %s\n", r.thermal_control ? "yes" : "no");
+		printf("Enable: %s\n", r.fan_get_enabled ? "yes" : "no");
+		printf("Power:  %s\n", r.power ? "yes" : "no");
+	}
+	return 0;
+}
 int cmd_fanduty(int argc, char *argv[])
 {
 	struct ec_params_pwm_set_fan_duty_v1 p_v1;
@@ -11470,6 +11501,7 @@ const struct command commands[] = {
 	{ "eventsetwakemask", cmd_host_event_set_wake_mask },
 	{ "extpwrlimit", cmd_ext_power_limit },
 	{ "fanduty", cmd_fanduty },
+	{ "faninfo", cmd_faninfo },
 	{ "flasherase", cmd_flash_erase },
 	{ "flasheraseasync", cmd_flash_erase },
 	{ "flashprotect", cmd_flash_protect },
