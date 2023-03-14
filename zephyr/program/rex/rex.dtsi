@@ -58,6 +58,12 @@
 			gpios = <&gpio3 4 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_USB_C1_TCPC_INT_ODL";
 		};
+
+		/delete-node/ ec_wp_l;
+		gpio_ec_wp_l: ec_wp_l {
+			gpios = <&gpioa 1 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+
 	};
 
 	usba-port-enable-list {
