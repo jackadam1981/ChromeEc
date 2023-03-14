@@ -1,0 +1,344 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e898001c_4ba3f308",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "\u003e \"variabes\" is a possible misspelling of \"variables\".\n\nPlease fix.",
+      "parentUuid": "a2ba9c04_6efc0226",
+      "range": {
+        "startLine": 15,
+        "startChar": 18,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7210d72_63157893",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "deduced?",
+      "range": {
+        "startLine": 15,
+        "startChar": 60,
+        "endLine": 15,
+        "endChar": 68
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dddbaff_04182fd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "I am completely unfamiliar with this code. I did my best at reviewing it, but it might be better to have a second pair of eyes who has looked at this code before.\n\nI\u0027ve also never looked at the EC test framework. I\u0027ve tried to review those as well (and possibly asked some stupid questions).",
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ebd24e_f3dee021",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "Do we need to account for this?",
+      "range": {
+        "startLine": 168,
+        "startChar": 53,
+        "endLine": 171,
+        "endChar": 18
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f53150_0a26ea5c",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 198,
+        "startChar": 29,
+        "endLine": 198,
+        "endChar": 30
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24658da3_0bedca2a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6978,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "nit, I think you can do this, which is more readable:\n\n```\n#if defined(CONFIG_LID_ANGLE_UPDATE) \u0026\u0026 !defined(CONFIG_LID_ANGLE)\n```",
+      "range": {
+        "startLine": 6976,
+        "startChar": 0,
+        "endLine": 6978,
+        "endChar": 30
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edaeb47b_8658adc3",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6979,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "Make a full sentance?",
+      "range": {
+        "startLine": 6979,
+        "startChar": 8,
+        "endLine": 6979,
+        "endChar": 52
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b19875a_a3221b39",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "Why is some of this stuff in `before_test()` and some in `test_init()`? I guess `test_init()` runs one time and `before_test()` runs before each of your two tests?\n\nSeems like all of this stuff should be in `before_test()`, then. As documented in `unit_tests.md`: \"Unit tests should be independent from each other as much as possible\", so really your 2nd unit test shouldn\u0027t really be depending on the state of the system at the end of your 1st unit test, right?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d43145a8_37c0c72c",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "Why do we need this and the same init in `before_test()`?",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3dc11e_9b42324d",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "I\u0027m not all that familiar with standards for EC tests, but these delays concern me and make me think that this test might be flaky if we\u0027re running it on a fully loaded build machine while builds are happening in the background. Is there anything more deterministic we can do, like wait for some background thread that\u0027s simulating interrupts to become quiescent?",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2d67ac1_5e6b2c83",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "Get out of full 360 mode.",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 11
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dffedcc1_919c20d9",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand what this function tests compared to the other test. I guess it\u0027s different since it has the shutdown in it? Why is it called `test_start_tablet_mode` then?",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 38
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dec5da8_442a7b05",
+        "filename": "test/tablet_no_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "Maybe document for those of us not in the know that this means that we\u0027ll always assume clamshell mode when tablet mode isn\u0027t asserted.\n\nBTW: is this something we actually ever use anywhere?",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 77
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a005bb9_8f86c141",
+        "filename": "test/tablet_no_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "Why do we need this and the same init in `before_test()`?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd000f45_b0a1ce56",
+        "filename": "test/tablet_no_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-14T20:57:28Z",
+      "side": 1,
+      "message": "Get out of full 360 mode.",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
