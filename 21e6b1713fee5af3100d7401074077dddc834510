@@ -52,6 +52,24 @@
       "parentUuid": "67b56f69_125e2bed",
       "revId": "21e6b1713fee5af3100d7401074077dddc834510",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b88b72_027faf0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-14T19:52:01Z",
+      "side": 1,
+      "message": "This is correct. We should use aligned access whenever possible. This is the benchmark performance results:\n```\nDEBUG:Running benchmark_unaligned_access...\nDEBUG: (speed gain: 11063 -\u003e 3783 us) OK\n```",
+      "parentUuid": "7778701a_8cbf0064",
+      "revId": "21e6b1713fee5af3100d7401074077dddc834510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
