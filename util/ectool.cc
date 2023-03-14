@@ -37,6 +37,8 @@
 #include "usb_pd.h"
 
 #include <libec/add_entropy_command.h>
+#include <libec/rand_num_command.h>
+#include <libec/rand_num_params.h>
 
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
@@ -1553,8 +1555,6 @@ int cmd_flash_info(int argc, char *argv[])
 int cmd_rand(int argc, char *argv[])
 {
 	struct ec_params_rand_num p;
-	struct ec_response_rand_num *r;
-	size_t r_size;
 	int64_t num_bytes;
 	int64_t i;
 	char *e;
@@ -1571,24 +1571,23 @@ int cmd_rand(int argc, char *argv[])
 		return -1;
 	}
 
-	r = (struct ec_response_rand_num *)(ec_inbuf);
-
 	for (i = 0; i < num_bytes; i += ec_max_insize) {
 		p.num_rand_bytes = ec_max_insize;
 		if (num_bytes - i < p.num_rand_bytes)
 			p.num_rand_bytes = num_bytes - i;
 
-		r_size = p.num_rand_bytes;
-
-		rv = ec_command(EC_CMD_RAND_NUM, EC_VER_RAND_NUM, &p, sizeof(p),
-				r, r_size);
-		if (rv < 0) {
-			fprintf(stderr, "Random number command failed\n");
-			return -1;
+		ec::RandNumCommand rand_num_command(p.num_rand_bytes);
+		if (!rand_num_command.Run(comm_get_fd())) {
+			int rv = -EECRESULT - rand_num_command.Result();
+			fprintf(stderr, "Rand Num returned with errors: %d\n",
+				rv);
+			return rv;
 		}
 
-		rv = write(STDOUT_FILENO, r->rand, r_size);
-		if (rv != r_size) {
+		rv = write(STDOUT_FILENO,
+			   rand_num_command.GetRandNumData().data(),
+			   p.num_rand_bytes);
+		if (rv != p.num_rand_bytes) {
 			fprintf(stderr, "Failed to write stdout\n");
 			return -1;
 		}
@@ -3245,7 +3244,7 @@ static int cmd_temperature_print(int id, int mtemp)
 
 	printf("%-20s  %d K (= %d C)", temp_r.sensor_name, temp, K_TO_C(temp));
 
-	if(rc >= 0)
+	if (rc >= 0)
 		/*
 		 * Check for fan_off == fan_max when their
 		 * values are either zero or non-zero
