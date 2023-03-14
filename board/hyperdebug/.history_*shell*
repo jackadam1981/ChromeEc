@@ -1,0 +1,500 @@
+git rebase --continue
+git rebase -i HEAD~3
+git status
+git diff
+git status
+git add chip/stm32/usb_spi.h
+git commit --amend
+git rebase --continue
+git status
+git rebase --continue
+git checkout m/main
+git diff chip/stm32/usb_spi.h qspi_review~3 qspi_review~2
+git diff qspi_review~3 qspi_review~2 -- chip/stm32/usb_spi.h
+git status
+git diff
+git stash
+git checkout qspi_review
+git status
+git rebase -i HEAD~3
+git stash pop
+git status
+git add chip/stm32/usb_spi.h
+git status
+git rebase --continue
+git status
+git push cros HEAD:refs/for/main
+git rebase -i HEAD~3
+git status
+git add chip/stm32/usb_spi.h
+clang-format chip/stm32/usb_spi.h
+clang-format -i chip/stm32/usb_spi.h
+git status
+git diff
+git commit --amend
+git rebase --continue
+git push cros HEAD:refs/for/main
+git status
+git rebase -i HEAD~3
+git diff --name-only HEAD~1 HEAD
+git diff --name-only HEAD~1 HEAD | grep '\.[ch]$'
+git diff --name-only HEAD~1 HEAD | grep '\.[ch]$' | xargs clang-format -i
+git status
+git diff
+git status
+git add chip/stm32/usb_spi.c
+git commit --amend
+git rebase --continue
+git diff --name-only HEAD~1 HEAD | grep '\.[ch]$' | xargs clang-format -i
+git status
+git diff
+git add board/hyperdebug/
+git commit --amend
+git rebase --continue
+git diff --name-only HEAD~1 HEAD | grep '\.[ch]$' | xargs clang-format -i
+git diff
+git status
+git rebase --continue
+git push cros HEAD:refs/for/main
+ssh -CY jesk@gateway.bodi-klinke.dk
+which gsutil
+file /usr/bin/gsutil
+file /usr/lib/google-cloud-sdk/bin/gsutil
+less /usr/lib/google-cloud-sdk/bin/gsutil
+which gsutil.py
+cd Downloads/
+gsutil cp gs://chromeos-localmirror-private/distfiles/ti50/ti50.r0.0.40.w0.24.21_FFFF_00000000_00000010.tar.xz .
+tar xvf ti50.r0.0.40.w0.24.21_FFFF_00000000_00000010.tar.xz
+cp ti50.r0.0.40.w0.24.21_FFFF_00000000_00000010/ti50.bin.prod ~/src/chromiumos-2/
+sudo dmesg -w
+tio /dev/ttyACM0 
+find -name ec_version.h
+cat build/hyperdebug/ec_version.h
+cat util/getversion.sh 
+cd Downloads/
+ls
+ls -lcrt
+tar tvf stable-channel_brya_15329.63.0_ChromeOS-firmware-R111-15329.63.0-brya.tar
+mkdir stable-channel_brya_15329.63.0_ChromeOS-firmware-R111-15329.63.0-brya
+cd ..
+cd -
+cd stable-channel_brya_15329.63.0_ChromeOS-firmware-R111-15329.63.0-brya
+tar xvf ../stable-channel_brya_15329.63.0_ChromeOS-firmware-R111-15329.63.0-brya.tar 
+ls
+docker ps
+docker
+cd
+docker stop
+docker ps
+docker stop 592e79884c52
+docker stop gscdevboard_hyperdebug
+docker ps
+docker stop 592e79884c52
+ping 8.8.8.8
+cat .Xmodmap 
+xev 
+sudo less /var/log/syslog
+/etc/init.d/networking restart
+ifconfig
+ip route show
+ip link show
+sudo netstat -l
+sudo netstat -l | grep 172
+sudo netstat -l | grep 172.16
+sudo netstat -l -p | grep 172.16
+chkconfig
+ping 8.8.8.8
+ifconfig
+ip link show
+reboot
+less /var/log/syslog
+exit
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-68057
+exit
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-15941 &
+exit
+cd src
+cd ..
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-68057 &
+locate updatemem
+exit
+cd src/drscan/
+ls
+ls -l
+cd 
+emacslist
+xauth -f /run/user/121292/gdm/Xauthority merge ~/.Xauthority
+emacsclient -c -s emacs-68057 &
+exit
+git status
+git branch -l
+git checkout m/main
+git checkout cros/main
+git fetch
+git checkout cros/main
+git checkout -b spi1
+git branch -u cros/main
+git status
+cd ../..
+sudo echo FISK
+find -name \*.c | xargs grep SPI3
+git status
+git diff
+git status
+git add board/ chip/
+git commit -m"WIP: Unsuccessful attempts at enabling SPI1 on HyperDebug"
+git branch -l
+git checkout qspi_review
+git status
+git log -n3
+git rebase
+git rebase -i HEAD~3
+git status
+git add chip/stm32/usb_spi.h
+clang-format -i chip/stm32/usb_spi.h
+git status
+git diff
+git add chip/stm32/usb_spi.h
+git commit --amend
+git rebase --continue
+git status
+git stash
+git rebase -i HEAD~3
+git stash pop
+git status
+git add chip/stm32/usb_spi.c
+git status
+git commit --amend
+git rebase --continue
+git status
+git status
+clang-format chip/stm32/usb_spi.{h,c}
+clang-format -i chip/stm32/usb_spi.{h,c}
+git status
+git diff
+git add chip/stm32/usb_spi.c 
+git rebase --continue
+git rebase -i HEAD~3
+clang-format -i chip/stm32/usb_spi.{h,c}
+git status
+git diff
+git add chip/stm32/usb_spi.c 
+git commit --amend
+git rebase --continue
+git status
+git status
+git rebase --continue
+git status
+git stash
+git rebase -i HEAD~3
+git stash pop
+git status
+git add board/hyperdebug/spi.c
+git commit --amend
+git rebase --continue
+git rebase -i HEAD~3
+git diff HEAD~1 HEAD
+git status
+clang-format -i chip/stm32/usb_spi.c
+git status
+git add chip/stm32/usb_spi.c
+git diff --staged
+git status
+git commit --amend
+git rebase --continue
+git status
+git restore board/c2d2/board.h
+git rebase --continue
+git push cros HEAD:refs/for/main
+sudo echo FISK
+git status
+git diff
+git stash
+git rebase -i HEAD~3
+git stash pop
+git status
+git commit --amend
+git rebase --continue
+git status
+cd extra/usb_updater/
+./servo_updater.py 
+cd ../..
+git status
+git diff
+git rebase --continue
+rm -rf build
+git status
+git push cros HEAD:refs/for/main
+git status
+git log -n3
+sudo echo FS
+sudo echo FS
+git status
+git diff
+git diff
+git status
+git restore board/c2d2/board.h
+git stash
+git rebase -i HEAD~3
+git stash pop
+git add chip/stm32/usb_spi.c
+clang-format -i chip/stm32/usb_spi.c
+git status
+git diff
+git add chip/stm32/usb_spi.c
+git status
+git commit --amend
+git rebase --continue
+git status
+git diff
+git status
+git diff
+git diff
+git status
+git stash
+git rebase -i HEAD~3
+git stash pop
+git status
+git stash
+git rebase -i HEAD~3
+git stash pop
+git status
+git add chip/stm32/usb_spi.{h,c}
+clang-format chip/stm32/usb_spi.{h,c}
+clang-format -i chip/stm32/usb_spi.{h,c}
+git status
+git diff
+git add chip/stm32/usb_spi.{h,c}
+git commit --amend
+git rebase --continue
+git status
+git rebase --continue
+repo upload . --cbr
+git push cros HEAD:refs/for/main
+git status
+git status
+git diff chip/stm32/usb_spi.h
+git status
+git diff chip/stm32/usb_spi.h
+git status
+ git stash push board/hyperdebug/spi.c
+git stash
+git rebase -i HEAD~3
+git stash pop
+git add chip/stm32/usb_spi.h
+git commit --amend
+git rebase --continue
+git stash pop
+git add board/hyperdebug/
+git commit --amend
+clang-format -i board/hyperdebug/spi.c
+git status
+git diff
+git add board/hyperdebug/spi.c
+git commit --amend
+git rebase --continuew
+git rebase --continue
+repo upload . --cbr
+git status
+git push cros HEAD:refs/for/main
+git status
+git status
+git status
+git status
+git checkout qspi_review~3
+git status
+git status
+git add chip/stm32/
+git commit
+git checkout qspi_review
+git rebase HEAD~3 --onto b099d51060
+git status
+git rebase --continue
+git push cros HEAD:refs/for/main
+cd build/c2d2/RW
+ls
+ls -lcrt
+cd ../..
+git status
+git diff
+clang-format -i ../chip/stm32/usb_spi.c 
+git diff
+git stash
+git rebase -i HEAD~3
+git stash pop
+cd ..
+find -name \*.h | xargs grep "define IS_ENABLED"
+git status
+git diff
+git status
+git add chip/stm32/
+git diff --staged
+git status
+rustfmt chip/stm32/usb_spi.{h,c}
+clang-format -i chip/stm32/usb_spi.{h,c}
+git status
+git diff
+git add chip/stm32/usb_spi.{h,c}
+git status
+git commit --amend
+git rebase --continue
+git status
+clang-format -i chip/stm32/usb_spi.{h,c}
+git status
+git add chip/stm32/usb_spi.c
+clang-format -i chip/stm32/usb_spi.{h,c}
+git status
+git diff 
+git add chip/stm32/usb_spi.c
+git status
+git rebase --continue
+git rebase -i HEAD~3
+git status
+git add chip/stm32/usb_spi.c
+git commit --amend
+git rebase --continue
+git status
+git rebase --continue
+git status
+git push cros HEAD:refs/for/main
+git rebase -i HEAD~4
+git status
+git add board/hyperdebug/spi.c
+clang-format -i board/hyperdebug/spi.c
+git diff
+git add board/hyperdebug/spi.c
+git commit --amend
+git status
+git add board/hyperdebug/spi.c
+git diff --staged
+git commit --amend
+git rebase --continue
+git push cros HEAD:refs/for/main
+git status
+git status
+git stash
+git rebase -i HEAD~5
+git stash pop
+git status
+git add board/hyperdebug/
+clang-format -i board/hyperdebug/spi.c
+git status
+git commit --amend
+git status
+git rebase --continue
+git status
+git push cros HEAD:refs/for/main
+git fetch
+git rebase
+git status
+git push cros HEAD:refs/for/main
+git status
+git fetch
+git rebase
+git status
+git log -n1
+git branch -l
+git checkout qspi
+git rebase
+git rebase --abort
+git status
+git branch -l
+git checkout usb_spi
+git rebase
+git rebase --abort
+git status
+git log -n3
+git checkout m/main
+sudo echo FISK
+find -name \*.c | xargs grep EC_ERROR_BUSY
+git status
+git checkout -b gpio_mem
+git branch -u m/main
+git status
+git diff
+git status
+git restore --staged
+git restore --staged .
+git status
+git diff
+git restore chip/stm32/usb_spi.c
+git status
+git restore chip/stm32/spi_controller.c
+git commit
+git add board/hyperdebug/
+git commit
+git status
+clang-format -i board/hyperdebug/gpio.c 
+git status
+git diff
+git add board/hyperdebug/gpio.c
+git commit --amend
+git push cros HEAD:refs/for/main
+git add board/hyperdebug/
+git status
+git commit --amend
+git push cros HEAD:refs/for/main
+git status
+git diff
+git add board/hyperdebug/gpio.c
+git commit
+git push cros HEAD:refs/for/main
+git commit --amend
+git commit --amend
+git push cros HEAD:refs/for/main
+git status
+git rebase -i HEAD~2
+clang-format -i board/hyperdebug/gpio.c 
+git status
+git diff
+git add board/hyperdebug/
+git commit --amend
+git rebase --continue
+clang-format -i board/hyperdebug/gpio.c 
+git status
+git push cros HEAD:refs/for/main
+git cl --help
+q
+git status
+git status
+git fetch
+git status
+git rebase
+git status
+git branch -l
+git checkout edge_fast
+git branch -d gpio_mem
+git status
+git log -n3
+git rebase
+git status
+git status
+git add board/hyperdebug/gpio.c
+git rebase --continue
+git status
+git statsu
+git status
+git rebase --continue
+git status
+git checkout m/main
+git statuys
+git status
+git fetch
+git branch -l
+git checkout usb_spi_review
+git log -n1
+git fetch
+git rebase
+git status
+git status
+git add chip/stm32/usb_spi.c
+git status
+git rebase --continue
+git status
+git push cros HEAD:refs/for/main
