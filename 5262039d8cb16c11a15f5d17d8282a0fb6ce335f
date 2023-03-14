@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b98ae087_b9d07f63",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 29
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-14T03:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7fb9dc9_af9e51c5",
+      "revId": "5262039d8cb16c11a15f5d17d8282a0fb6ce335f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daadf7be_4a319a2b",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-03-13T20:25:02Z",
       "side": 1,
       "message": "Does the more standard COMPILER_ID check work: https://stackoverflow.com/a/10055571? (since you set `CMAKE_C_COMPILER` above)",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "5262039d8cb16c11a15f5d17d8282a0fb6ce335f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a95e69_6c3b4522",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 29
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-14T03:53:31Z",
+      "side": 1,
+      "message": "https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#languages\n\nCMAKE_CXX_COMPILER_ID would not work before we called the \"project\" command in cmake. And we should not call project command inside the toolchain file.",
+      "parentUuid": "daadf7be_4a319a2b",
       "range": {
         "startLine": 14,
         "startChar": 3,
@@ -78,6 +120,30 @@
       "side": 1,
       "message": "Looks like we didn\u0027t set these flags for the host unit test.\nWe will get some link errors when building the host unit tests without these flags.",
       "parentUuid": "68a6edcf_1fac7fcb",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 104
+      },
+      "revId": "5262039d8cb16c11a15f5d17d8282a0fb6ce335f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0036fa_2a551578",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 29
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-14T03:53:31Z",
+      "side": 1,
+      "message": "Moved into the common toolchain file.",
+      "parentUuid": "1ef6b929_0b89e0d4",
       "range": {
         "startLine": 17,
         "startChar": 0,
