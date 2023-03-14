@@ -19,10 +19,10 @@
 	binman {
 		wp-ro {
 			offset = <0x0>;
-			size = <0x50000>;
+			size = <0x80000>;
 		};
 		ec-rw {
-			offset = <0x50000>;
+			offset = <0x80000>;
 			size = <0x50000>;
 			rw-fw {
 				rw-fwid {
@@ -37,6 +37,6 @@
 			};
 		};
 		pad-byte = <0xff>;
-		pad-after = <0x60000>;
+		pad-after = <0x30000>;
 	};
 };
