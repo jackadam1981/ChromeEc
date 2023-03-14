@@ -383,13 +383,13 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	if (full_readback)
 		return EC_SUCCESS;
 
-	rv = spi_dma_wait(port);
-	if (rv != EC_SUCCESS)
-		goto err_free;
-
-	spi_clear_tx_fifo(spi);
-
 	if (rxlen) {
+		rv = spi_dma_wait(port);
+		if (rv != EC_SUCCESS)
+			goto err_free;
+
+		spi_clear_tx_fifo(spi);
+
 		rv = spi_dma_start(port, buf, rxdata, rxlen);
 		if (rv != EC_SUCCESS)
 			goto err_free;
@@ -409,6 +409,11 @@ err_free:
 int spi_transaction_flush(const struct spi_device_t *spi_device)
 {
 	int rv = spi_dma_wait(spi_device->port);
+	int port = spi_device->port;
+	stm32_spi_regs_t *spi = SPI_REGS[port];
+
+	/* Ensure that last bits are transmitted before releasing CS. */
+	spi_clear_tx_fifo(spi);
 
 	if (!IS_ENABLED(CONFIG_USB_SPI) ||
 	    !spi_chip_select_already_asserted[spi_device->port]) {
