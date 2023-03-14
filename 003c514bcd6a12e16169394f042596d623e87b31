@@ -56,6 +56,30 @@
       },
       "revId": "003c514bcd6a12e16169394f042596d623e87b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e027169_2df9e834",
+        "filename": "zephyr/test/drivers/usb_pd_discovery/src/usb_pd_discovery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-14T19:49:03Z",
+      "side": 1,
+      "message": "Ah, sorry.  I missed this nit before I excitedly hit +2.  \n\nSince the CQ started, I\u0027ll leave it as-is but can optimize if this suite needs changes in the future",
+      "parentUuid": "9c76f599_102eb524",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 55
+      },
+      "revId": "003c514bcd6a12e16169394f042596d623e87b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
