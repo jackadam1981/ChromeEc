@@ -2,6 +2,27 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+choice TEST_BOARD_VARIANT
+	prompt "Select board variant for tests"
+	help
+	  Board variant to use for tests
+
+	config TEST_BOARD_REX
+		bool "Enable baseboard-specific tests"
+		help
+		Enable baseboard tests.
+
+endchoice # TEST_BOARD_VARIANT
+
+config TEST_BOARD_NAME
+	string "Board name"
+	default "rex" if TEST_BOARD_REX
+
+config TEST_BOARD_USB_MUX_CONFIG
+	bool "Run the tests intended for usb_mux_config"
+	help
+	  Include usb_muc_config.c into the binary and test their functions.
+
 config TEST_USB_PD_POLICY
 	bool "Run the tests intended for usb_pd_policy"
 	help
