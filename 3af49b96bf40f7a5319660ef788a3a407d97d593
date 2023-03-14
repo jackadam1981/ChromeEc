@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50a99076_27659c06",
+        "filename": "include/driver/temp_sensor/f75303.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-14T15:18:24Z",
+      "side": 1,
+      "message": "Delete this guard.  You should delete the duplicate enum from the mush and nami board.h files.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "3af49b96bf40f7a5319660ef788a3a407d97d593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "513012c6_1f3113e7",
+        "filename": "include/driver/temp_sensor/f75303.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-14T15:18:24Z",
+      "side": 1,
+      "message": "Fix this comment:\n\n\"The F75303 driver only supports a single device instance on the board.\nEach device supports 3 temperature sensor types: local, remote1, and \nremote2. The f75303_index selects the temperature sensor type to read.\"",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "3af49b96bf40f7a5319660ef788a3a407d97d593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef74076_3694b0a1",
+        "filename": "include/driver/temp_sensor/f75303.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-14T15:18:24Z",
+      "side": 1,
+      "message": "Delete this comment.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "3af49b96bf40f7a5319660ef788a3a407d97d593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
