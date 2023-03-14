@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dccc7496_4cafbf96",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:24:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd30f62_1e632c9e",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "e4ddc6d80a6442a01cabcc7f22be638b43b3e0df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a019f29_f4f26d53",
@@ -71,6 +95,30 @@
       "writtenOn": "2023-03-14T15:29:34Z",
       "side": 1,
       "message": "I didn\u0027t catch this before, can we rename this to test_emul_reset since this is really only testing the emulator?",
+      "range": {
+        "startLine": 64,
+        "startChar": 14,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "e4ddc6d80a6442a01cabcc7f22be638b43b3e0df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a46df9_b6fb1cdb",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/ps8811.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-14T18:24:35Z",
+      "side": 1,
+      "message": "Done, also moved test description comments up to make it easier to understand when you\u0027re scanning over the code.",
+      "parentUuid": "1a019f29_f4f26d53",
       "range": {
         "startLine": 64,
         "startChar": 14,
