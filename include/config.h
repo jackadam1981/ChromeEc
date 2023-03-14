@@ -6964,10 +6964,21 @@
 #define CONFIG_GESTURE_SIGMO_SENSOR 0
 #endif /* CONFIG_GESTURE_SIGMO */
 
-#ifndef CONFIG_LID_ANGLE
+#ifdef CONFIG_LID_ANGLE
+#if !defined(CONFIG_LID_ANGLE_SENSOR_BASE) || \
+	!defined(CONFIG_LID_ANGLE_SENSOR_LID)
+#error "Sensors must be identified for calculating lid angle."
+#endif
+#else /* CONFIG_LID_ANGLE */
 #define CONFIG_LID_ANGLE_SENSOR_BASE 0
 #define CONFIG_LID_ANGLE_SENSOR_LID 0
 #endif /* CONFIG_LID_ANGLE */
+
+#ifdef CONFIG_LID_ANGLE_UPDATE
+#if !defined(CONFIG_LID_ANGLE)
+#error "CONFIG_LID_ANGLE for CONFIG_LID_ANGLE_UPDATE"
+#endif
+#endif /* CONFIG_LID_ANGLE_UPDATE */
 
 #ifndef CONFIG_ALS
 #define ALS_COUNT 0
