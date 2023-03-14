@@ -16,6 +16,52 @@
       "message": "responded to all comments",
       "revId": "aa1d52caed562c828f2ef7b6a94c17bf88afc436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d8d8f7_410e7f34",
+        "filename": "test/unaligned_access.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T20:59:21Z",
+      "side": 1,
+      "message": "Compiler can deduce the size here, so you can leave this out",
+      "range": {
+        "startLine": 25,
+        "startChar": 46,
+        "endLine": 25,
+        "endChar": 48
+      },
+      "revId": "aa1d52caed562c828f2ef7b6a94c17bf88afc436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d4d370_f1bc60fe",
+        "filename": "test/unaligned_access.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-14T20:59:21Z",
+      "side": 1,
+      "message": "Compiler can deduce the size here, so you can leave this out. Since it\u0027s C++, probably better to use `std::array`. You can use `.size()` below in the `for` loop.",
+      "range": {
+        "startLine": 29,
+        "startChar": 36,
+        "endLine": 29,
+        "endChar": 38
+      },
+      "revId": "aa1d52caed562c828f2ef7b6a94c17bf88afc436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
