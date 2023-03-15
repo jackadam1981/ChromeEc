@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbde16e_312096d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-03-15T05:47:25Z",
+      "side": 1,
+      "message": "Fixed: I2C address conflict with another sensor; moved this one to another bus.\n\nbmi260_test_bmi_acc_fifo: motion sense FIFO contains leftover data? Not sure what\u0027s going on with that but that single test is failing the three remaining suites.",
+      "revId": "6f896b28e542e46e5b1077721ea8acc1c5c3f89c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
