@@ -82,6 +82,8 @@
 static bool is_resetting;
 /* indicate MT8186 is processing a AP forcing shutdown. */
 static bool is_shutdown;
+/* indicate MT8186 has been dropped to S5G3 from the last IN_AP_RST state . */
+static bool is_s5g3_passed;
 /*
  * indicate exiting off state, and don't respect the power signals until chipset
  * on.
@@ -214,9 +216,10 @@ static void power_reset_host_sleep_state(void)
  * Power state is determined from the following table:
  *
  *     | IN_AP_RST | IN_SUSPEND_ASSERTED |
- * ----------------------------------------------
+ * ---------------------------------------
  *  S0 |         0 |                   0 |
  *  S3 |         0 |                   1 |
+ *  S5 |         1 |                   x |
  *  G3 |         1 |                   x |
  *
  * S5 is only used when exit from G3 in power_common_state().
@@ -235,8 +238,12 @@ static enum power_state power_get_signal_state(void)
 		return POWER_S0;
 	if (is_shutdown)
 		return POWER_S5;
-	if (power_get_signals() & IN_AP_RST)
-		return POWER_G3;
+	if (power_get_signals() & IN_AP_RST) {
+		/* If it has been put to G3 from S5 idle, then stay at G3.*/
+		if (is_s5g3_passed)
+			return POWER_G3;
+		return POWER_S5;
+	}
 	if (power_get_signals() & IN_SUSPEND_ASSERTED)
 		return POWER_S3;
 	return POWER_S0;
@@ -311,6 +318,8 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_S5S3;
 		else if (next_state == POWER_G3)
 			return POWER_S5G3;
+		else if (next_state == POWER_S5)
+			return POWER_S5;
 		else
 			return POWER_S5S3;
 
@@ -342,6 +351,7 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_S5S3:
 		/* Off state exited. */
 		is_exiting_off = false;
+		is_s5g3_passed = false;
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
 		power_signal_enable_interrupt(GPIO_AP_IN_SLEEP_L);
@@ -415,7 +425,14 @@ enum power_state power_handle_state(enum power_state state)
 		power_signal_disable_interrupt(GPIO_AP_IN_SLEEP_L);
 		power_signal_disable_interrupt(GPIO_AP_EC_WDTRST_L);
 		power_signal_disable_interrupt(GPIO_AP_EC_WARM_RST_REQ);
-		GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 0);
+
+		/* Only actively reset AP with hard shutdown.
+		 * For AP initiated shutdown, the AP has been reset by PMIC.
+		 * For servo, gsc initiaed warm reset, EC doesn't need to hold
+		 * it.
+		 */
+		if (is_shutdown)
+			GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 0);
 
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
@@ -432,6 +449,7 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5G3:
+		is_s5g3_passed = true;
 #if DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
 		if (power_wait_mask_signals_timeout(IN_PMIC_AP_RST,
 						    IN_PMIC_AP_RST,
