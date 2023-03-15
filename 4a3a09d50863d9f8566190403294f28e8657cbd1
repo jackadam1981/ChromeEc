@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b61ebd0a_6b3448c1",
+        "filename": "zephyr/test/drivers/anx7452/usbc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-15T18:58:42Z",
+      "side": 1,
+      "message": "clang is raising error if I move it to one line",
+      "parentUuid": "b288d83c_4bb877ff",
+      "revId": "4a3a09d50863d9f8566190403294f28e8657cbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccef5c43_ddd0c633",
