@@ -50,6 +50,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e991aa85_c2cdb647",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7210d72_63157893",
+      "range": {
+        "startLine": 15,
+        "startChar": 60,
+        "endLine": 15,
+        "endChar": 68
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "914d2e98_a77bdaaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e898001c_4ba3f308",
+      "range": {
+        "startLine": 15,
+        "startChar": 18,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0dddbaff_04182fd9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -90,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc2fb368_1aa15bca",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "We do at line 212: we send an enable message when the lid close. When the sensor are working, the message would have been sent at the tablet-\u003eclamshell transition.",
+      "parentUuid": "c9ebd24e_f3dee021",
+      "range": {
+        "startLine": 168,
+        "startChar": 53,
+        "endLine": 171,
+        "endChar": 18
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6f53150_0a26ea5c",
         "filename": "common/tablet_mode.c",
         "patchSetId": 1
@@ -101,6 +173,30 @@
       "writtenOn": "2023-03-14T20:57:28Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 198,
+        "startChar": 29,
+        "endLine": 198,
+        "endChar": 30
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e66277b7_7659f50e",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6f53150_0a26ea5c",
       "range": {
         "startLine": 198,
         "startChar": 29,
@@ -134,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cdd277b_d813d759",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6978,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24658da3_0bedca2a",
+      "range": {
+        "startLine": 6976,
+        "startChar": 0,
+        "endLine": 6978,
+        "endChar": 30
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edaeb47b_8658adc3",
@@ -147,6 +267,30 @@
       "writtenOn": "2023-03-14T20:57:28Z",
       "side": 1,
       "message": "Make a full sentance?",
+      "range": {
+        "startLine": 6979,
+        "startChar": 8,
+        "endLine": 6979,
+        "endChar": 52
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dedb59a_690a88d8",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6979,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edaeb47b_8658adc3",
       "range": {
         "startLine": 6979,
         "startChar": 8,
@@ -182,6 +326,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5faec06a_857a04c8",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "\u003e Why is some of this stuff in before_test() and some in test_init()? I guess test_init() runs one time and before_test() runs before each of your two tests?\n\nThat\u0027s correct.\nIn `test_init()`, I set eh GPIOs in a correct state (they can be both low at the same time).\nAfter that the system is coherent, it should not need extra setup.\nI need to know the state of the EC at the end a test to prevent the tablet counter to increase inadvertently.",
+      "parentUuid": "4b19875a_a3221b39",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d43145a8_37c0c72c",
         "filename": "test/tablet_broken_sensor.c",
         "patchSetId": 1
@@ -193,6 +361,30 @@
       "writtenOn": "2023-03-14T20:57:28Z",
       "side": 1,
       "message": "Why do we need this and the same init in `before_test()`?",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ab26c61_fa627c2b",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "d43145a8_37c0c72c",
       "range": {
         "startLine": 81,
         "startChar": 1,
@@ -228,6 +420,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5786ea70_96f588ef",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "The duration of the msleep does not matter much. But we need to sleep to let other threads be scheduled.",
+      "parentUuid": "ac3dc11e_9b42324d",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2d67ac1_5e6b2c83",
         "filename": "test/tablet_broken_sensor.c",
         "patchSetId": 1
@@ -239,6 +455,30 @@
       "writtenOn": "2023-03-14T20:57:28Z",
       "side": 1,
       "message": "Get out of full 360 mode.",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 11
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "174c600c_f0f44669",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2d67ac1_5e6b2c83",
       "range": {
         "startLine": 96,
         "startChar": 4,
@@ -274,6 +514,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c558dca0_8553b30e",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "I want to put the device in tablet mode, reset the EC and verify the state is not forgotten, the EC starts in tablet mode after reset.",
+      "parentUuid": "dffedcc1_919c20d9",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 38
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dec5da8_442a7b05",
         "filename": "test/tablet_no_sensor.c",
         "patchSetId": 1
@@ -285,6 +549,30 @@
       "writtenOn": "2023-03-14T20:57:28Z",
       "side": 1,
       "message": "Maybe document for those of us not in the know that this means that we\u0027ll always assume clamshell mode when tablet mode isn\u0027t asserted.\n\nBTW: is this something we actually ever use anywhere?",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 77
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "898bc842_79b6ccda",
+        "filename": "test/tablet_no_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "\u003e BTW: is this something we actually ever use anywhere? \n\ndetachable comes to mind (when keyboard is disconnected). With a scripts, here are the list of boards:\n\n```\nadlrvpm_ite\nadlrvpp_ite\nadlrvpp_mchp1521\nadlrvpp_mchp1727\nadlrvpp_npcx\nbland\ndon\nduck\neel\ngelatin\nhammer\nhost\nmagnemite\nmasterball\nmoonball\nstaff\nstar\nwand\nwhiskers\nzed\n```",
+      "parentUuid": "9dec5da8_442a7b05",
       "range": {
         "startLine": 5,
         "startChar": 3,
@@ -318,6 +606,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8395da5d_0d9fccd3",
+        "filename": "test/tablet_no_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a005bb9_8f86c141",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd000f45_b0a1ce56",
@@ -331,6 +643,30 @@
       "writtenOn": "2023-03-14T20:57:28Z",
       "side": 1,
       "message": "Get out of full 360 mode.",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b022bdec_e445059f",
+        "filename": "test/tablet_no_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-15T01:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd000f45_b0a1ce56",
       "range": {
         "startLine": 56,
         "startChar": 4,
