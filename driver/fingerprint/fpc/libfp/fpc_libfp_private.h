@@ -5,13 +5,14 @@
 
 /* Private sensor interface */
 
-#ifndef __CROS_EC_FPC_PRIVATE_H
-#define __CROS_EC_FPC_PRIVATE_H
+#ifndef __CROS_EC_DRIVER_FINGERPRINT_FPC_LIBFP_FPC_LIBFP_PRIVATE_H
+#define __CROS_EC_DRIVER_FINGERPRINT_FPC_LIBFP_FPC_LIBFP_PRIVATE_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#include "fpc1145_private.h"
 #include "fpsensor_types.h"
 
 #include <stdint.h>
@@ -185,4 +186,4 @@ int fpc_get_hwid(uint16_t *id);
 }
 #endif
 
-#endif /* __CROS_EC_FPC_PRIVATE_H */
+#endif /* __CROS_EC_DRIVER_FINGERPRINT_FPC_LIBFP_FPC_LIBFP_PRIVATE_H */
