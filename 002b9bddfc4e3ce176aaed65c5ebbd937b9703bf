@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a04f049_b4306676",
+        "filename": "include/scoped_fast_cpu.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-15T15:59:40Z",
+      "side": 1,
+      "message": "Can you pull this out into a separate CL and add a unit test? (The unit test may only function on device, not in the \"emulator\", since I\u0027m not sure we have `clock_enable_module` in the emulator; you can check.)\n\nThe new CL can be moved to the beginning of the CL chain so that we can submit it by itself.\n\nThen create a followup CL to replace existing calls to `clock_enable_module(MODULE_FAST_CPU, ...)`, such as [this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d220;drc\u003dc49b07e12b1a69c7757b68b4000478418a3b321e) with `ScopedFastCpu`.\n\nThe remaining `ScopedFastCpu` can then be folded into the CLs where the corresponding commands are introduced (e.g., the `ScopedFastCpu` in `fp_command_nonce_context` can be added in the CL that adds `fp_command_nonce_context`).",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "002b9bddfc4e3ce176aaed65c5ebbd937b9703bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
