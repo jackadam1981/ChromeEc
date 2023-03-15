@@ -3,9 +3,8 @@
  * found in the LICENSE file.
  */
 
-#include "config.h"
-#include "fpc_bio_algorithm.h"
-#include "fpc_private.h"
+#include "fpc_bep_bio_algorithm.h"
+#include "fpc_bep_private.h"
 #include "fpsensor.h"
 #include "fpsensor_driver.h"
 #include "fpsensor_utils.h"

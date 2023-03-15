@@ -5,7 +5,7 @@
 
 #include "common.h"
 #include "config.h"
-#include "fpc_private.h"
+#include "fpc_sensor.h"
 #include "test_util.h"
 
 static const uint32_t fp_sensor_hwid = FP_SENSOR_HWID_FPC;
