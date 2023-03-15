@@ -286,9 +286,16 @@
 
 /* Is the USB host allowed to operate on SPI device. */
 #define USB_SPI_ENABLED (BIT(0))
-
 /* Use board specific SPI driver when forwarding to this device. */
 #define USB_SPI_CUSTOM_SPI_DEVICE (BIT(1))
+/* This SPI device supports eeprom_flags. */
+#define USB_SPI_EEPROM_SUPPORT (BIT(2))
+/* This SPI device supports dual lane mode. */
+#define USB_SPI_EEPROM_DUAL_SUPPORT (BIT(3))
+/* This SPI device supports four lane mode. */
+#define USB_SPI_EEPROM_QUAD_SUPPORT (BIT(4))
+/* This SPI device supports eight lane mode. */
+#define USB_SPI_EEPROM_OCTO_SUPPORT (BIT(5))
 
 enum packet_id_type {
 	/* Request USB SPI configuration data from device. */
@@ -324,7 +331,21 @@ enum packet_id_type {
 
 enum feature_bitmap {
 	/* Indicates the platform supports full duplex mode. */
-	USB_SPI_FEATURE_FULL_DUPLEX_SUPPORTED = BIT(0)
+	USB_SPI_FEATURE_FULL_DUPLEX_SUPPORTED = BIT(0),
+	/* Indicates support for USB_SPI_PKT_ID_CMD_EEPROM_TRANSFER_START. */
+	USB_SPI_FEATURE_EEPROM_SUPPORTED = BIT(1),
+	/*
+	 * Indicates that chip and any MUXes support bidirectional data on the
+	 * two SPI data lines.
+	 */
+	USB_SPI_FEATURE_DUAL_MODE_SUPPORTED = BIT(2),
+	/*
+	 * Indicates that chip and any MUXes support bidirectional data on the
+	 * "hold" and "write protect" lines.
+	 */
+	USB_SPI_FEATURE_QUAD_MODE_SUPPORTED = BIT(3),
+	/* Indicates support for eight-line bidirectional data. */
+	USB_SPI_FEATURE_OCTO_MODE_SUPPORTED = BIT(4),
 };
 
 struct usb_spi_response_configuration_v2 {
@@ -668,14 +689,56 @@ void usb_spi_board_enable(struct usb_spi_config const *config);
 void usb_spi_board_disable(struct usb_spi_config const *config);
 
 /*
- * In order to facilitate odd cases of e.g. a SPI bus sitting behind a second
- * microcontroller, or otherwise needing a non-standard driver, setting the
- * USB_SPI_CUSTOM_SPI_DEVICE_MASK bit of spi_device->port will cause the
- * USB->SPI forwarding logic to invoke this method rather than the standard
- * spi_transaction().
+ * In order to facilitate special SPI busses not covered by standard EC
+ * drivers, setting the USB_SPI_CUSTOM_SPI_DEVICE_MASK bit of spi_device->port
+ * will cause the USB to SPI forwarding logic to invoke this method rather
+ * than the standard spi_transaction_async().
  */
-int usb_spi_board_transaction(const struct spi_device_t *spi_device,
-			      const uint8_t *txdata, int txlen, uint8_t *rxdata,
-			      int rxlen);
+int usb_spi_board_transaction_async(
+	const struct spi_device_t *spi_device,
+	uint32_t eeprom_flags,
+	const uint8_t *txdata, int txlen, uint8_t *rxdata,
+	int rxlen);
+int usb_spi_board_transaction_flush(const struct spi_device_t *spi_device);
+
+/*
+ * Flags to use in usb_spi_board_transaction_async() for advanced EEPROM
+ * communication, when supported.
+ */
+#define EEPROM_FLAG_OPCODE_WIDTH_POS 0U
+#define EEPROM_FLAG_OPCODE_WIDTH_MSK (0x3UL << EEPROM_FLAG_OPCODE_WIDTH_POS)
+
+#define EEPROM_FLAG_OPCODE_DTR_POS 2U
+#define EEPROM_FLAG_OPCODE_DTR_MSK (0x1UL << EEPROM_FLAG_OPCODE_DTR_POS)
+
+#define EEPROM_FLAG_OPCODE_LEN_POS 3U
+#define EEPROM_FLAG_OPCODE_LEN_MSK (0x7UL << EEPROM_FLAG_OPCODE_LEN_POS)
+
+#define EEPROM_FLAG_ADDR_WIDTH_POS 6U
+#define EEPROM_FLAG_ADDR_WIDTH_MSK (0x3UL << EEPROM_FLAG_ADDR_WIDTH_POS)
+
+#define EEPROM_FLAG_ADDR_DTR_POS 8U
+#define EEPROM_FLAG_ADDR_DTR_MSK (0x1UL << EEPROM_FLAG_ADDR_DTR_POS)
+
+#define EEPROM_FLAG_ADDR_LEN_POS 9U
+#define EEPROM_FLAG_ADDR_LEN_MSK (0x7UL << EEPROM_FLAG_ADDR_LEN_POS)
+
+#define EEPROM_FLAG_ALT_WIDTH_POS 12U
+#define EEPROM_FLAG_ALT_WIDTH_MSK (0x3UL << EEPROM_FLAG_ALT_WIDTH_POS)
+
+#define EEPROM_FLAG_ALT_DTR_POS 14U
+#define EEPROM_FLAG_ALT_DTR_MSK (0x1UL << EEPROM_FLAG_ALT_DTR_POS)
+
+#define EEPROM_FLAG_ALT_LEN_POS 15U
+#define EEPROM_FLAG_ALT_LEN_MSK (0x7UL << EEPROM_FLAG_ALT_LEN_POS)
+
+#define EEPROM_FLAG_DUMMY_CYCLES_POS 18U
+#define EEPROM_FLAG_DUMMY_CYCLES_MSK (0x1FUL << EEPROM_FLAG_DUMMY_CYCLES_POS)
+
+#define EEPROM_FLAG_DATA_WIDTH_POS 23U
+#define EEPROM_FLAG_DATA_WIDTH_MSK (0x3UL << EEPROM_FLAG_DATA_WIDTH_POS)
+
+#define EEPROM_FLAG_DATA_DTR_POS 25U
+#define EEPROM_FLAG_DATA_DTR_MSK (0x1UL << EEPROM_FLAG_DATA_DTR_POS)
 
 #endif /* __CROS_EC_USB_SPI_H */
