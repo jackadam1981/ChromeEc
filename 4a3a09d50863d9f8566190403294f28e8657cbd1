@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b288d83c_4bb877ff",
+        "filename": "zephyr/test/drivers/anx7452/usbc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-15T18:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dc795ad_2fc99375",
+      "revId": "4a3a09d50863d9f8566190403294f28e8657cbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccef5c43_ddd0c633",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-02T15:44:03Z",
       "side": 1,
       "message": "nit: drop the blank line",
+      "revId": "4a3a09d50863d9f8566190403294f28e8657cbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf888a5_00541065",
+        "filename": "zephyr/test/drivers/anx7452/usbc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-15T18:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccef5c43_ddd0c633",
       "revId": "4a3a09d50863d9f8566190403294f28e8657cbd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
