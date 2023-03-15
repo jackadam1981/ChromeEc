@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "080382d7_0767d6a6",
+        "filename": "core/nds32/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-15T18:30:58Z",
+      "side": 1,
+      "message": "Just for my understanding, if the panic occurs in \"safe mode critical task\", is the offending task disabled?",
+      "range": {
+        "startLine": 198,
+        "startChar": 6,
+        "endLine": 198,
+        "endChar": 36
+      },
+      "revId": "99d75b5ead971e573b63be852b98f0ef91f19f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
