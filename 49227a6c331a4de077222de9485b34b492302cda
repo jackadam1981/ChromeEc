@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0250e1e0_571679a7",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-15T10:45:57Z",
+      "side": 1,
+      "message": "If we want to use the public API, another problem is:\n\nShould we import the \"ScopedOpenSSL\"? so we would not need to \"free\" the objects manually before every return statement.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/libchrome/crypto/scoped_openssl_types.h",
+      "parentUuid": "6128c3bc_8e2acd61",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 35
+      },
+      "revId": "49227a6c331a4de077222de9485b34b492302cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3bbcfac5_50319d6a",
         "filename": "common/fpsensor/fpsensor_state.c",
         "patchSetId": 53
