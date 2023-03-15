@@ -350,6 +350,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fd2d808_e8eaa71e",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-15T22:59:09Z",
+      "side": 1,
+      "message": "So I looked closer and I\u0027m pretty certain you want these moved to `before_test()`. Specifically, I think `before_test()` should be:\n\n```\n\t/* Make sure the device lid is in a consistent state (close). */\n\tgpio_set_level(GPIO_LID_OPEN, 0);\n\tgpio_set_level(GPIO_TABLET_MODE_L, 1);\n\t\n\tmsleep(50);\n\t\n\ttablet_hook_count \u003d 1;\n```\n\nWhy do I say this? Well, let\u0027s imagine that `test_start_lid_close()` fails midway through for some reason. I _think_ that means that `GPIO_LID_OPEN` and `GPIO_TABLET_MODE_L` could be left in any arbitrary state since `TEST_ASSERT` can cause an early return if the test fails.\n\nAfter `test_start_lid_close()` returns early then I think we\u0027ll run `test_start_tablet_mode()`, right? That\u0027s only guaranteed to run correctly if those first two commands cause a transition to tablet mode. ...but if `test_start_lid_close()` returned early then maybe the device was already in tablet mode?\n\nSaid another way, without this being in `before_test()` I think that a failure in one test could cause a cascading failure in the second test. That doesn\u0027t seem ideal. If you instead reset to the default state then you won\u0027t get a cascading failure.\n\nIf I\u0027m misunderstanding how the EC test frame works then please ignore me.",
+      "parentUuid": "5faec06a_857a04c8",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d43145a8_37c0c72c",
         "filename": "test/tablet_broken_sensor.c",
         "patchSetId": 1
@@ -432,6 +456,30 @@
       "side": 1,
       "message": "The duration of the msleep does not matter much. But we need to sleep to let other threads be scheduled.",
       "parentUuid": "ac3dc11e_9b42324d",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e78dfe_cf63dcb1",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-15T22:59:09Z",
+      "side": 1,
+      "message": "That still doesn\u0027t address my concerns, but maybe my concerns don\u0027t matter? Or maybe we have so many sleeps in the EC codebase that we don\u0027t care to fix them? To better explain my concerns, let\u0027s imagine that you\u0027re running the test on a HEAVILY loaded machine, perhaps a machine without many cores. It\u0027s not totally absurd that tasks running on that machine could be starved for hundreds of milliseconds. In such a case the 50 ms wouldn\u0027t be enough to let other threads be scheduled and your test will fail. In fact, I remember a case in the past where (in low memory pressure) pretty much all tasks in the system got blocked for over a minute (!).\n\nWhen I first studied unit/integration testing I was told to never use nearly sleep in them. Some random Google search finds \u003chttps://mir.cs.illinois.edu/farah/publications/fse14_flaky.pdf\u003e which says: \"Using a sleep is rarely a good idea when writing tests. As analyzed in our earlier work that focused on writing multithreaded tests [16], the use of sleep makes the test unintuitive, unreliable, and inefficient. It is hard to reason from the sleep calls what ordering among what events they try to enforce. Moreover, sleep calls cannot provide the guarantee that the ordering that the developer wants to enforce among events will indeed happen within the amount of time given in sleep. For that reason, developers tend to over-estimate the time needed in sleep calls, which makes the tests rather inefficient, because most of the time, the event can finish way before the time bound (and yet occasionally it does not finish before the time bound, thus intermittently failing the test)\"",
+      "parentUuid": "5786ea70_96f588ef",
       "range": {
         "startLine": 92,
         "startChar": 1,
@@ -538,6 +586,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "881335a7_546e7c06",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-15T22:59:09Z",
+      "side": 1,
+      "message": "Maybe that could go in a comment?",
+      "parentUuid": "c558dca0_8553b30e",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 38
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dec5da8_442a7b05",
         "filename": "test/tablet_no_sensor.c",
         "patchSetId": 1
@@ -573,6 +645,30 @@
       "side": 1,
       "message": "\u003e BTW: is this something we actually ever use anywhere? \n\ndetachable comes to mind (when keyboard is disconnected). With a scripts, here are the list of boards:\n\n```\nadlrvpm_ite\nadlrvpp_ite\nadlrvpp_mchp1521\nadlrvpp_mchp1727\nadlrvpp_npcx\nbland\ndon\nduck\neel\ngelatin\nhammer\nhost\nmagnemite\nmasterball\nmoonball\nstaff\nstar\nwand\nwhiskers\nzed\n```",
       "parentUuid": "9dec5da8_442a7b05",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 77
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0879d364_22b1298f",
+        "filename": "test/tablet_no_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-15T22:59:09Z",
+      "side": 1,
+      "message": "Ah, thanks! :-)",
+      "parentUuid": "898bc842_79b6ccda",
       "range": {
         "startLine": 5,
         "startChar": 3,
