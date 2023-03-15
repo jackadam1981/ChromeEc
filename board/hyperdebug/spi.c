@@ -6,9 +6,11 @@
 
 #include "common.h"
 #include "console.h"
+#include "dma.h"
 #include "gpio.h"
 #include "registers.h"
 #include "spi.h"
+#include "stm32-dma.h"
 #include "timer.h"
 #include "usb_spi.h"
 #include "util.h"
@@ -27,7 +29,10 @@ struct spi_device_t spi_devices[] = {
 	  .port = -1 /* OCTOSPI */,
 	  .div = 255,
 	  .gpio_cs = GPIO_CN10_6,
-	  .usb_flags = USB_SPI_ENABLED | USB_SPI_CUSTOM_SPI_DEVICE },
+	  .usb_flags = USB_SPI_ENABLED
+	  | USB_SPI_CUSTOM_SPI_DEVICE
+	  | USB_SPI_EEPROM_DUAL_SUPPORT
+	  | USB_SPI_EEPROM_QUAD_SUPPORT },
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
@@ -194,162 +199,6 @@ static int octospi_wait_for(uint32_t flags, timestamp_t deadline)
 }
 
 /*
- * Write transaction: Write a number of bytes on the OCTOSPI bus.
- */
-static int octospi_indirect_write(const uint8_t *txdata, int txlen)
-{
-	timestamp_t deadline;
-	/* Deadline on the entire SPI transaction. */
-	deadline.val = get_time().val + OCTOSPI_TRANSACTION_TIMEOUT_US;
-
-	/* Enable OCTOSPI, indirect write mode. */
-	STM32_OCTOSPI_CR = STM32_OCTOSPI_CR_FMODE_IND_WRITE |
-			   STM32_OCTOSPI_CR_EN;
-	/* Clear completion flag from last transaction. */
-	STM32_OCTOSPI_FCR = STM32_OCTOSPI_FCR_CTCF;
-
-	/* Data length. */
-	STM32_OCTOSPI_DLR = txlen - 1;
-	/* No instruction or address, only data. */
-	STM32_OCTOSPI_CCR =
-		STM32_OCTOSPI_CCR_IMODE_NONE | STM32_OCTOSPI_CCR_ADMODE_NONE |
-		STM32_OCTOSPI_CCR_ABMODE_NONE | STM32_OCTOSPI_CCR_DMODE_1WIRE;
-
-	/* Transmit data, four bytes at a time. */
-	for (int i = 0; i < txlen; i += 4) {
-		uint32_t value = 0;
-		int rv;
-		for (int j = 0; j < 4; j++) {
-			if (i + j < txlen)
-				value |= txdata[i + j] << (j * 8);
-		}
-		/* Wait for room in the FIFO. */
-		if ((rv = octospi_wait_for(STM32_OCTOSPI_SR_FTF, deadline)))
-			return rv;
-		STM32_OCTOSPI_DR = value;
-	}
-	/* Wait for transaction completion flag. */
-	return octospi_wait_for(STM32_OCTOSPI_SR_TCF, deadline);
-}
-
-/*
- * Read transaction: Optionally write a few bytes, before reading a number of
- * bytes on the OCTOSPI bus.
- */
-static int octospi_indirect_read(const uint8_t *control_data, int control_len,
-				 uint8_t *rxdata, int rxlen)
-{
-	uint32_t instruction = 0, address = 0;
-	timestamp_t deadline;
-
-	/* Deadline on the entire SPI transaction. */
-	deadline.val = get_time().val + OCTOSPI_TRANSACTION_TIMEOUT_US;
-
-	/* Enable OCTOSPI, indirect read mode. */
-	STM32_OCTOSPI_CR = STM32_OCTOSPI_CR_FMODE_IND_READ |
-			   STM32_OCTOSPI_CR_EN;
-	/* Clear completion flag from last transaction. */
-	STM32_OCTOSPI_FCR = STM32_OCTOSPI_FCR_CTCF;
-
-	/* Data length (receive). */
-	STM32_OCTOSPI_DLR = rxlen - 1;
-	if (control_len == 0) {
-		/*
-		 * Set up OCTOSPI for: No instruction, no address, then read
-		 * data.
-		 */
-		STM32_OCTOSPI_CCR = STM32_OCTOSPI_CCR_IMODE_NONE |
-				    STM32_OCTOSPI_CCR_ADMODE_NONE |
-				    STM32_OCTOSPI_CCR_ABMODE_NONE |
-				    STM32_OCTOSPI_CCR_DMODE_1WIRE;
-	} else if (control_len <= 4) {
-		/*
-		 * Set up OCTOSPI for: One to four bytes of instruction, no
-		 * address, then read data.
-		 */
-		STM32_OCTOSPI_CCR = STM32_OCTOSPI_CCR_IMODE_1WIRE |
-				    (control_len - 1)
-					    << STM32_OCTOSPI_CCR_ISIZE_POS |
-				    STM32_OCTOSPI_CCR_ADMODE_NONE |
-				    STM32_OCTOSPI_CCR_ABMODE_NONE |
-				    STM32_OCTOSPI_CCR_DMODE_1WIRE;
-		for (int i = 0; i < control_len; i++) {
-			instruction <<= 8;
-			instruction |= control_data[i];
-		}
-	} else if (control_len <= 8) {
-		/*
-		 * Set up OCTOSPI for: One to four bytes of instruction, four
-		 * bytes of address, then read data.
-		 */
-		STM32_OCTOSPI_CCR = STM32_OCTOSPI_CCR_IMODE_1WIRE |
-				    (control_len - 1)
-					    << STM32_OCTOSPI_CCR_ISIZE_POS |
-				    STM32_OCTOSPI_CCR_ADMODE_1WIRE |
-				    STM32_OCTOSPI_CCR_ADSIZE_4BYTES |
-				    STM32_OCTOSPI_CCR_ABMODE_NONE |
-				    STM32_OCTOSPI_CCR_DMODE_1WIRE;
-		for (int i = 0; i < control_len - 4; i++) {
-			instruction <<= 8;
-			instruction |= control_data[i];
-		}
-		for (int i = 0; i < 4; i++) {
-			address <<= 8;
-			address |= control_data[control_len - 4 + i];
-		}
-	} else if (control_len <= 12) {
-		uint32_t alternate = 0;
-		/*
-		 * Set up OCTOSPI for: One to four bytes of instruction, four
-		 * bytes of address, four "alternate" bytes, then read data.
-		 */
-		STM32_OCTOSPI_CCR = STM32_OCTOSPI_CCR_IMODE_1WIRE |
-				    (control_len - 1)
-					    << STM32_OCTOSPI_CCR_ISIZE_POS |
-				    STM32_OCTOSPI_CCR_ADMODE_1WIRE |
-				    STM32_OCTOSPI_CCR_ADSIZE_4BYTES |
-				    STM32_OCTOSPI_CCR_ABMODE_1WIRE |
-				    STM32_OCTOSPI_CCR_ABSIZE_4BYTES |
-				    STM32_OCTOSPI_CCR_DMODE_1WIRE;
-		for (int i = 0; i < control_len - 8; i++) {
-			instruction <<= 8;
-			instruction |= control_data[i];
-		}
-		for (int i = 0; i < 4; i++) {
-			address <<= 8;
-			address |= control_data[control_len - 8 + i];
-		}
-		for (int i = 0; i < 4; i++) {
-			alternate <<= 8;
-			alternate |= control_data[control_len - 4 + i];
-		}
-		STM32_OCTOSPI_ABR = alternate;
-	} else {
-		return EC_ERROR_UNIMPLEMENTED;
-	}
-	/* Set instruction and address registers, triggering the start of the
-	 * write+read transaction. */
-	STM32_OCTOSPI_IR = instruction;
-	STM32_OCTOSPI_AR = address;
-
-	/* Receive data, four bytes at a time. */
-	for (int i = 0; i < rxlen; i += 4) {
-		int rv;
-		uint32_t value;
-		/* Wait for data available in the FIFO. */
-		if ((rv = octospi_wait_for(STM32_OCTOSPI_SR_FTF, deadline)))
-			return rv;
-		value = STM32_OCTOSPI_DR;
-		for (int j = 0; j < 4; j++) {
-			if (i + j < rxlen)
-				rxdata[i + j] = value >> (j * 8);
-		}
-	}
-	/* Wait for transaction completion flag. */
-	return octospi_wait_for(STM32_OCTOSPI_SR_TCF, deadline);
-}
-
-/*
  * Board-specific SPI driver entry point, called by usb_spi.c.
  */
 void usb_spi_board_enable(struct usb_spi_config const *config)
@@ -361,64 +210,224 @@ void usb_spi_board_disable(struct usb_spi_config const *config)
 {
 }
 
+static const struct dma_option dma_optospi_option = {
+	STM32_DMAC_CH13,
+	(void *)&STM32_OCTOSPI_DR,
+	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
+};
+
+static bool previous_cs;
+
+
 /*
  * Board-specific SPI driver entry point, called by usb_spi.c.  On this board,
  * the only spi device declared as requiring board specific driver is OCTOSPI.
  */
-int usb_spi_board_transaction(const struct spi_device_t *spi_device,
-			      const uint8_t *txdata, int txlen, uint8_t *rxdata,
-			      int rxlen)
+int usb_spi_board_transaction_async(
+	const struct spi_device_t *spi_device,
+	uint32_t eeprom_flags,
+	const uint8_t *txdata, int txlen, uint8_t *rxdata,
+	int rxlen)
 {
 	int rv = EC_SUCCESS;
-	bool previous_cs;
+	uint32_t opcode = 0, address = 0, alternate = 0;
+	uint8_t opcode_len = (eeprom_flags & EEPROM_FLAG_OPCODE_LEN_MSK)
+		>> EEPROM_FLAG_OPCODE_LEN_POS;
+	uint8_t addr_len = (eeprom_flags & EEPROM_FLAG_ADDR_LEN_MSK)
+		>> EEPROM_FLAG_ADDR_LEN_POS;
+	uint8_t alt_len = (eeprom_flags & EEPROM_FLAG_ALT_LEN_MSK)
+		>> EEPROM_FLAG_ALT_LEN_POS;
+	uint8_t dummy_cycles = (eeprom_flags & EEPROM_FLAG_DUMMY_CYCLES_MSK)
+		>> EEPROM_FLAG_DUMMY_CYCLES_POS;
+	uint32_t data_len;
+	uint32_t control_value = 0;
+	timestamp_t deadline;
+
+	if (!eeprom_flags) {
+		if (rxlen == SPI_READBACK_ALL) {
+			cprints(CC_SPI,
+				"Full duplex not supported by OctoSPI hardware");
+			return EC_ERROR_UNIMPLEMENTED;
+		} else if (!rxlen && !txlen) {
+			/* No operation requested, done. */
+			return EC_SUCCESS;
+		} else if (!rxlen) {
+			/*
+			 * Transmit-only transaction.  This is implemented by not using
+			 * any of the up to 12 bytes of instructions, but as all "data".
+			 */
+			eeprom_flags |= EEPROM_FLAG_READ_WRITE_WRITE;
+		} else if (txlen <= 12) {
+			/*
+			 * Sending of up to 12 bytes, followed by reading a possibly
+			 * large number of bytes.  This is implemented by a "read"
+			 * transaction using the instruction and address feature of
+			 * OctoSPI.
+			 */
+			if (txlen <= 4) {
+				opcode_len = txlen;
+			} else if (txlen <= 8) {
+				opcode_len = 4;
+				addr_len = txlen - 4;
+			} else {
+				opcode_len = 4;
+				addr_len = 4;
+				alt_len = txlen - 8;
+			}
+		} else {
+			/*
+			 * Sending many bytes, followed by reading.  This would
+			 * have to be implemented as two separate OctoSPI
+			 * transactions.
+			 */
+			cprints(CC_SPI,
+				"General write-then-read not supported by OctoSPI hardware");
+			return EC_ERROR_UNIMPLEMENTED;
+		}
+	}
 
 	previous_cs = gpio_get_level(spi_device->gpio_cs);
 
 	/* Drive chip select low */
 	gpio_set_level(spi_device->gpio_cs, 0);
 
-	/*
-	 * STM32L5 OctoSPI in "indirect mode" supports two types of SPI
-	 * operations, "read" and "write", in addition to the main data, each
-	 * type of operation can be preceded by up to 12 bytes of
-	 * "instructions", (which are always written from HyperDebug to the SPI
-	 * device).  We can use the above features to support some combination
-	 * of write-followed-by-read in a single OctoSPI transaction.
-	 */
+	/* Deadline on the entire SPI transaction. */
+	deadline.val = get_time().val + OCTOSPI_TRANSACTION_TIMEOUT_US;
 
-	if (rxlen == SPI_READBACK_ALL) {
-		cprints(CC_SPI,
-			"Full duplex not supported by OctoSPI hardware");
-		rv = EC_ERROR_UNIMPLEMENTED;
-	} else if (!rxlen && !txlen) {
-		/* No operation requested, done. */
-	} else if (!rxlen) {
-		/*
-		 * Transmit-only transaction.  This is implemented by not using
-		 * any of the up to 12 bytes of instructions, but as all "data".
-		 */
-		rv = octospi_indirect_write(txdata, txlen);
-	} else if (txlen <= 12) {
-		/*
-		 * Sending of up to 12 bytes, followed by reading a possibly
-		 * large number of bytes.  This is implemented by a "read"
-		 * transaction using the instruction and address feature of
-		 * OctoSPI.
-		 */
-		rv = octospi_indirect_read(txdata, txlen, rxdata, rxlen);
+	if ((eeprom_flags & EEPROM_FLAG_READ_WRITE_MSK)
+	    == EEPROM_FLAG_READ_WRITE_WRITE) {
+		data_len = txlen - opcode_len - addr_len - alt_len;
+		/* Enable OCTOSPI, indirect write mode. */
+		STM32_OCTOSPI_CR = STM32_OCTOSPI_CR_FMODE_IND_WRITE |
+			STM32_OCTOSPI_CR_DMAEN | STM32_OCTOSPI_CR_EN;
 	} else {
-		/*
-		 * Sending many bytes, followed by reading.  This is implemented
-		 * as two separate OctoSPI transactions.  (Chip select is kept
-		 * asserted across both transactions, outside the control of the
-		 * OctoSPI hardware.)
-		 */
-		rv = octospi_indirect_write(txdata, txlen);
-		if (rv == EC_SUCCESS)
-			rv = octospi_indirect_read(NULL, 0, rxdata, rxlen);
+		data_len = rxlen;
+		/* Enable OCTOSPI, indirect read mode. */
+		STM32_OCTOSPI_CR = STM32_OCTOSPI_CR_FMODE_IND_READ |
+			STM32_OCTOSPI_CR_DMAEN | STM32_OCTOSPI_CR_EN;
 	}
+
+	gpio_set_level(GPIO_CN10_31, 0);
+	
+	/* Clear completion flag from last transaction. */
+	STM32_OCTOSPI_FCR = STM32_OCTOSPI_FCR_CTCF;
+
+	/* Data length. */
+	STM32_OCTOSPI_DLR = data_len - 1;
+
+	if (opcode_len == 0) {
+		control_value |= STM32_OCTOSPI_CCR_IMODE_NONE;
+	} else {
+		uint32_t mode = (eeprom_flags & EEPROM_FLAG_OPCODE_WIDTH_MSK)
+			>> EEPROM_FLAG_OPCODE_WIDTH_POS;
+		control_value |= (mode + 1) << STM32_OCTOSPI_CCR_IMODE_POS |
+			(opcode_len - 1) << STM32_OCTOSPI_CCR_ISIZE_POS;
+		if (eeprom_flags & EEPROM_FLAG_OPCODE_DTR_MSK)
+			control_value |= STM32_OCTOSPI_CCR_IDTR;
+		for (int i = 0; i < opcode_len; i++) {
+			opcode <<= 8;
+			opcode |= *txdata++;
+			txlen--;
+		}
+	}
+	if (addr_len == 0) {
+		control_value |= STM32_OCTOSPI_CCR_ADMODE_NONE;
+	} else {
+		uint32_t mode = (eeprom_flags & EEPROM_FLAG_ADDR_WIDTH_MSK)
+			>> EEPROM_FLAG_ADDR_WIDTH_POS;
+		control_value |= (mode + 1) << STM32_OCTOSPI_CCR_ADMODE_POS |
+			(addr_len - 1) << STM32_OCTOSPI_CCR_ADSIZE_POS;
+		if (eeprom_flags & EEPROM_FLAG_ADDR_DTR_MSK)
+			control_value |= STM32_OCTOSPI_CCR_ADDTR;
+		for (int i = 0; i < addr_len; i++) {
+			address <<= 8;
+			address |= *txdata++;
+			txlen--;
+		}
+	}
+	if (alt_len == 0) {
+		control_value |= STM32_OCTOSPI_CCR_ABMODE_NONE;
+	} else {
+		uint32_t mode = (eeprom_flags & EEPROM_FLAG_ALT_WIDTH_MSK)
+			>> EEPROM_FLAG_ALT_WIDTH_POS;
+		control_value |= (mode + 1) << STM32_OCTOSPI_CCR_ABMODE_POS |
+			(alt_len - 1) << STM32_OCTOSPI_CCR_ABSIZE_POS;
+		if (eeprom_flags & EEPROM_FLAG_ALT_DTR_MSK)
+			control_value |= STM32_OCTOSPI_CCR_ABDTR;
+		for (int i = 0; i < alt_len; i++) {
+			alternate <<= 8;
+			alternate |= *txdata++;
+			txlen--;
+		}
+		STM32_OCTOSPI_ABR = alternate;
+	}
+	if (data_len == 0) {
+		control_value |= STM32_OCTOSPI_CCR_DMODE_NONE;
+	} else {
+		uint32_t mode = (eeprom_flags & EEPROM_FLAG_DATA_WIDTH_MSK)
+			>> EEPROM_FLAG_DATA_WIDTH_POS;
+		control_value |= (mode + 1) << STM32_OCTOSPI_CCR_DMODE_POS;
+		if (eeprom_flags & EEPROM_FLAG_DATA_DTR_MSK)
+			control_value |= STM32_OCTOSPI_CCR_DDTR;
+	}
+
+	ccprintf("EEPROM flags: 0x%08x opcode:%x:%d, addr:%x:%d, alt:%x:%d, dummy:%d, data:%d\n", eeprom_flags, opcode, opcode_len, address, addr_len, alternate, alt_len, dummy_cycles, data_len);
+	
+	/* Dummy cycles. */
+	STM32_OCTOSPI_TCR = dummy_cycles << STM32_OCTOSPI_TCR_DCYC_POS;
+
+	STM32_OCTOSPI_CCR = control_value;
+
+
+	/* Set instruction and address registers, triggering the start of the
+	 * write+read transaction. */
+	STM32_OCTOSPI_IR = opcode;
+	STM32_OCTOSPI_AR = address;
+
+	if ((eeprom_flags & EEPROM_FLAG_READ_WRITE_MSK)
+	    == EEPROM_FLAG_READ_WRITE_WRITE) {
+		if (txlen > 0) {
+			dma_chan_t *txdma = dma_get_channel(STM32_DMAC_CH13);
+			dma_prepare_tx(&dma_optospi_option, txlen, txdata);
+			dma_go(txdma);
+			gpio_set_level(GPIO_CN10_29, 0);
+			rv = dma_wait(STM32_DMAC_CH13);
+			dma_disable(STM32_DMAC_CH13);
+			gpio_set_level(GPIO_CN10_31, 1);
+			if (rv)
+				return rv;
+		} else {
+			gpio_set_level(GPIO_CN10_29, 0);
+			gpio_set_level(GPIO_CN10_31, 1);
+		}
+	} else {
+		if (rxlen > 0) {
+			dma_start_rx(&dma_optospi_option, rxlen, rxdata);
+			gpio_set_level(GPIO_CN10_29, 0);
+			rv = dma_wait(STM32_DMAC_CH13);
+			dma_disable(STM32_DMAC_CH13);
+			gpio_set_level(GPIO_CN10_31, 1);
+			if (rv)
+				return rv;
+		} else {
+			gpio_set_level(GPIO_CN10_29, 0);
+			gpio_set_level(GPIO_CN10_31, 1);
+		}
+	}
+	
+	/* Wait for transaction completion flag. */
+	rv = octospi_wait_for(STM32_OCTOSPI_SR_TCF, deadline);
+	
+	gpio_set_level(GPIO_CN10_29, 1);
 
 	/* Return chip select to previous level. */
 	gpio_set_level(spi_device->gpio_cs, previous_cs);
+
 	return rv;
+}
+
+int usb_spi_board_transaction_flush(
+	const struct spi_device_t *spi_device)
+{
+	return EC_SUCCESS;
 }
