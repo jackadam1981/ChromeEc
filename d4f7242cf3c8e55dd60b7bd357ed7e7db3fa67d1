@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd483af8_603144d7",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-15T22:31:44Z",
+      "side": 1,
+      "message": "I wonder if we can just do:\n\n    !lid_is_open() \u0026\u0026 mode\n\nMaybe we should also have lid_is_flipped in lid_switch.c (and move gmr_tablet_switch_interrupt_debounce there). That looks cleaner to me.",
+      "range": {
+        "startLine": 98,
+        "startChar": 39,
+        "endLine": 98,
+        "endChar": 62
+      },
+      "revId": "d4f7242cf3c8e55dd60b7bd357ed7e7db3fa67d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb65ac03_5977efc8",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-15T22:31:44Z",
+      "side": 1,
+      "message": "GMR sensors don\u0027t measure the lid angle, right? I personally prefer not \n to use \u0027angle\u0027 or \u0027degree\u0027 to disambiguate it. Also, do we need to say \u0027GMR sensors report\u0027? I would write something like:\n\n    \"Ignoring %s mode entry because lid is closed/flipped\"\n\nBTW, we get here because angle sensors are malfunctioning. Do you think we can take some recovery/defensive action (init motion sense task, reset chips, recalibrate, or disable them) and report the error to the host?",
+      "range": {
+        "startLine": 106,
+        "startChar": 13,
+        "endLine": 106,
+        "endChar": 23
+      },
+      "revId": "d4f7242cf3c8e55dd60b7bd357ed7e7db3fa67d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
