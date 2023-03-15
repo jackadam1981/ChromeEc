@@ -22,6 +22,30 @@
       },
       "revId": "99d75b5ead971e573b63be852b98f0ef91f19f9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "327d46c1_af9ebebf",
+        "filename": "core/nds32/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-15T19:35:24Z",
+      "side": 1,
+      "message": "If the crash occurs in a \"safe mode critical task\", safe mode cannot run and we simply fall back to rebooting. A future feature will allow restarting of critical tasks: b/273782034",
+      "parentUuid": "080382d7_0767d6a6",
+      "range": {
+        "startLine": 198,
+        "startChar": 6,
+        "endLine": 198,
+        "endChar": 36
+      },
+      "revId": "99d75b5ead971e573b63be852b98f0ef91f19f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
