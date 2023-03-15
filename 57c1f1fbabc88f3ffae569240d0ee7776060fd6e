@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7eb7360_595921f8",
+        "filename": "util/ec_panicinfo_fuzzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2023-03-15T06:53:01Z",
+      "side": 1,
+      "message": "CL:4338981, CL:4337615",
+      "parentUuid": "c429e127_5e6b343d",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 3
+      },
+      "revId": "57c1f1fbabc88f3ffae569240d0ee7776060fd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f23908fe_d5966149",
