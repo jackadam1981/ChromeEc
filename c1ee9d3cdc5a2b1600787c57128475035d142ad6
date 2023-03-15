@@ -34,6 +34,24 @@
       "parentUuid": "8192fc08_9865d1b8",
       "revId": "c1ee9d3cdc5a2b1600787c57128475035d142ad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8f271d5_0c476988",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-15T05:42:08Z",
+      "side": 1,
+      "message": "added `benchmark_unaligned_access_array()` as well\n\n`DEBUG: (speed gain: 3170 -\u003e 2822 us) OK`\n\nThis delta is coming from 20,000 (2 unaligned arrays * 10 size* 1000 iterations?) unaligned accesses. The delta, 348 usecs correspond to 34,800 cycles. The delta by unaligned access is 34,800/20,000 \u003d 1.74 cycle.",
+      "parentUuid": "5b3e8375_02ad4e85",
+      "revId": "c1ee9d3cdc5a2b1600787c57128475035d142ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
