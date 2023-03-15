@@ -365,9 +365,11 @@ void usb_spi_board_disable(struct usb_spi_config const *config)
  * Board-specific SPI driver entry point, called by usb_spi.c.  On this board,
  * the only spi device declared as requiring board specific driver is OCTOSPI.
  */
-int usb_spi_board_transaction(const struct spi_device_t *spi_device,
-			      const uint8_t *txdata, int txlen, uint8_t *rxdata,
-			      int rxlen)
+int usb_spi_board_transaction_async(
+	const struct spi_device_t *spi_device,
+	uint32_t eeprom_flags,
+	const uint8_t *txdata, int txlen, uint8_t *rxdata,
+	int rxlen)
 {
 	int rv = EC_SUCCESS;
 	bool previous_cs;
@@ -421,4 +423,10 @@ int usb_spi_board_transaction(const struct spi_device_t *spi_device,
 	/* Return chip select to previous level. */
 	gpio_set_level(spi_device->gpio_cs, previous_cs);
 	return rv;
+}
+
+int usb_spi_board_transaction_flush(
+	const struct spi_device_t *spi_device)
+{
+	return EC_SUCCESS;
 }
