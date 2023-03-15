@@ -286,9 +286,14 @@
 
 /* Is the USB host allowed to operate on SPI device. */
 #define USB_SPI_ENABLED (BIT(0))
-
 /* Use board specific SPI driver when forwarding to this device. */
 #define USB_SPI_CUSTOM_SPI_DEVICE (BIT(1))
+/* This SPI device supports dual lane mode. */
+#define USB_SPI_EEPROM_DUAL_SUPPORT (BIT(2))
+/* This SPI device supports four lane mode. */
+#define USB_SPI_EEPROM_QUAD_SUPPORT (BIT(3))
+/* This SPI device supports eight lane mode. */
+#define USB_SPI_EEPROM_OCTO_SUPPORT (BIT(4))
 
 enum packet_id_type {
 	/* Request USB SPI configuration data from device. */
@@ -668,14 +673,94 @@ void usb_spi_board_enable(struct usb_spi_config const *config);
 void usb_spi_board_disable(struct usb_spi_config const *config);
 
 /*
- * In order to facilitate odd cases of e.g. a SPI bus sitting behind a second
- * microcontroller, or otherwise needing a non-standard driver, setting the
- * USB_SPI_CUSTOM_SPI_DEVICE_MASK bit of spi_device->port will cause the
- * USB->SPI forwarding logic to invoke this method rather than the standard
- * spi_transaction().
+ * In order to facilitate special SPI busses not covered by standard EC
+ * drivers, setting the USB_SPI_CUSTOM_SPI_DEVICE_MASK bit of spi_device->port
+ * will cause the USB to SPI forwarding logic to invoke this method rather
+ * than the standard spi_transaction_async().
  */
 int usb_spi_board_transaction(const struct spi_device_t *spi_device,
-			      const uint8_t *txdata, int txlen, uint8_t *rxdata,
-			      int rxlen);
+			      uint32_t eeprom_flags, const uint8_t *txdata,
+			      int txlen, uint8_t *rxdata, int rxlen);
+
+/*
+ * Flags to use in usb_spi_board_transaction_async() for advanced EEPROM
+ * communication, when supported.
+ */
+
+/* Data width during the opcode stage. */
+#define EEPROM_FLAG_OPCODE_WIDTH_POS 0U
+#define EEPROM_FLAG_OPCODE_WIDTH_MSK (0x3UL << EEPROM_FLAG_OPCODE_WIDTH_POS)
+#define EEPROM_FLAG_OPCODE_WIDTH_1WIRE (0x0UL << EEPROM_FLAG_OPCODE_WIDTH_POS)
+#define EEPROM_FLAG_OPCODE_WIDTH_2WIRE (0x1UL << EEPROM_FLAG_OPCODE_WIDTH_POS)
+#define EEPROM_FLAG_OPCODE_WIDTH_4WIRE (0x2UL << EEPROM_FLAG_OPCODE_WIDTH_POS)
+#define EEPROM_FLAG_OPCODE_WIDTH_8WIRE (0x3UL << EEPROM_FLAG_OPCODE_WIDTH_POS)
+
+/* Transmit opcode bits at both rising and falling clock edges. */
+#define EEPROM_FLAG_OPCODE_DTR_POS 2U
+#define EEPROM_FLAG_OPCODE_DTR (0x1UL << EEPROM_FLAG_OPCODE_DTR_POS)
+
+/* Number of bytes of opcode (0-4). */
+#define EEPROM_FLAG_OPCODE_LEN_POS 3U
+#define EEPROM_FLAG_OPCODE_LEN_MSK (0x7UL << EEPROM_FLAG_OPCODE_LEN_POS)
+
+/* Data width during the address stage. */
+#define EEPROM_FLAG_ADDR_WIDTH_POS 6U
+#define EEPROM_FLAG_ADDR_WIDTH_MSK (0x3UL << EEPROM_FLAG_ADDR_WIDTH_POS)
+#define EEPROM_FLAG_ADDR_WIDTH_1WIRE (0x0UL << EEPROM_FLAG_ADDR_WIDTH_POS)
+#define EEPROM_FLAG_ADDR_WIDTH_2WIRE (0x1UL << EEPROM_FLAG_ADDR_WIDTH_POS)
+#define EEPROM_FLAG_ADDR_WIDTH_4WIRE (0x2UL << EEPROM_FLAG_ADDR_WIDTH_POS)
+#define EEPROM_FLAG_ADDR_WIDTH_8WIRE (0x3UL << EEPROM_FLAG_ADDR_WIDTH_POS)
+
+/* Transmit address bits at both rising and falling clock edges. */
+#define EEPROM_FLAG_ADDR_DTR_POS 8U
+#define EEPROM_FLAG_ADDR_DTR (0x1UL << EEPROM_FLAG_ADDR_DTR_POS)
+
+/* Number of bytes of address (0-4). */
+#define EEPROM_FLAG_ADDR_LEN_POS 9U
+#define EEPROM_FLAG_ADDR_LEN_MSK (0x7UL << EEPROM_FLAG_ADDR_LEN_POS)
+
+/* Data width during the "alternate bytes" stage. */
+#define EEPROM_FLAG_ALT_WIDTH_POS 12U
+#define EEPROM_FLAG_ALT_WIDTH_MSK (0x3UL << EEPROM_FLAG_ALT_WIDTH_POS)
+
+/* Transmit alternate bits at both rising and falling clock edges. */
+#define EEPROM_FLAG_ALT_DTR_POS 14U
+#define EEPROM_FLAG_ALT_DTR (0x1UL << EEPROM_FLAG_ALT_DTR_POS)
+
+/* Number of bytes of alternate data (0-4). */
+#define EEPROM_FLAG_ALT_LEN_POS 15U
+#define EEPROM_FLAG_ALT_LEN_MSK (0x7UL << EEPROM_FLAG_ALT_LEN_POS)
+
+/* Number of dummy clock cycles (0-31). */
+#define EEPROM_FLAG_DUMMY_CYCLES_POS 18U
+#define EEPROM_FLAG_DUMMY_CYCLES_MSK (0x1FUL << EEPROM_FLAG_DUMMY_CYCLES_POS)
+
+/* Data width during the data stage. */
+#define EEPROM_FLAG_DATA_WIDTH_POS 23U
+#define EEPROM_FLAG_DATA_WIDTH_MSK (0x3UL << EEPROM_FLAG_DATA_WIDTH_POS)
+#define EEPROM_FLAG_DATA_WIDTH_1WIRE (0x0UL << EEPROM_FLAG_DATA_WIDTH_POS)
+#define EEPROM_FLAG_DATA_WIDTH_2WIRE (0x1UL << EEPROM_FLAG_DATA_WIDTH_POS)
+#define EEPROM_FLAG_DATA_WIDTH_4WIRE (0x2UL << EEPROM_FLAG_DATA_WIDTH_POS)
+#define EEPROM_FLAG_DATA_WIDTH_8WIRE (0x3UL << EEPROM_FLAG_DATA_WIDTH_POS)
+
+/* Transmit data bits at both rising and falling clock edges. */
+#define EEPROM_FLAG_DATA_DTR_POS 25U
+#define EEPROM_FLAG_DATA_DTR (0x1UL << EEPROM_FLAG_DATA_DTR_POS)
+
+/*
+ * Mask of the flags that cannot be ignored.  This is basically any flags
+ * which call for wires to switch direction, or data being clocked on both
+ * rising and falling edges.  As long as none of these are present, then the
+ * remaining flags specifying the length of opcode/address can be ignored, as
+ * the entire data buffer can be transmitted as a sequence of bytes, without
+ * the controller knowing which parts are to be interpreted as
+ * opcode/address/data.
+ */
+#define EEPROM_FLAGS_REQUIRING_SUPPORT                               \
+	(EEPROM_FLAG_OPCODE_WIDTH_MSK | EEPROM_FLAG_OPCODE_DTR |     \
+	 EEPROM_FLAG_ADDR_WIDTH_MSK | EEPROM_FLAG_ADDR_DTR |         \
+	 EEPROM_FLAG_ALT_WIDTH_MSK | EEPROM_FLAG_ALT_DTR |           \
+	 EEPROM_FLAG_DUMMY_CYCLES_MSK | EEPROM_FLAG_DATA_WIDTH_MSK | \
+	 EEPROM_FLAG_DATA_DTR)
 
 #endif /* __CROS_EC_USB_SPI_H */
