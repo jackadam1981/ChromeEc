@@ -11,7 +11,7 @@ _bep_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 dirs-y+="$(_bep_cur_dir)"
 
 # Only build for these objects for the RW image
-all-obj-rw+=$(_bep_cur_dir)fpc_misc.o \
-	$(_bep_cur_dir)fpc_private.o \
-	$(_bep_cur_dir)fpc_sensor_spi.o \
-	$(_bep_cur_dir)fpc_timebase.o
+all-obj-rw+=$(_bep_cur_dir)fpc_bep_misc.o \
+	$(_bep_cur_dir)fpc_bep_private.o \
+	$(_bep_cur_dir)fpc_bep_sensor_spi.o \
+	$(_bep_cur_dir)fpc_bep_timebase.o
