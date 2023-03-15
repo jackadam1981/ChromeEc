@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f431df24_895cfcd1",
+        "filename": "cmake/toolchain-armv7m.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-15T03:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64922fd9_01cb5bc3",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "23665f7e99f5647d8529a7d624570d34827cdb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9926cbd4_f0d0ef99",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a08088e_5fc80fa5",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-15T03:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9926cbd4_f0d0ef99",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "23665f7e99f5647d8529a7d624570d34827cdb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24e22d2c_68d35e70",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-14T18:54:12Z",
       "side": 1,
       "message": "Please add this in a separate CL, since it is unrelated to the separation (it\u0027s new): go/small-cls",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "23665f7e99f5647d8529a7d624570d34827cdb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d73ed35b_47af2e7a",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-15T03:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24e22d2c_68d35e70",
       "range": {
         "startLine": 30,
         "startChar": 0,
