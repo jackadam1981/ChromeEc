@@ -1,0 +1,19 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config EMUL_USB_MUX_AMD_FP6
+	bool "AMD FP6 USB mux emulator"
+	depends on DT_HAS_CROS_AMD_FP6_USB_MUX_EMUL_ENABLED
+	help
+	  Enable emulator for the AMD FP6 USB mux target.  This is a mux
+	  which, while it resides on the SoC, presents itself to the EC as a
+	  I2C target device
+
+if EMUL_USB_MUX_AMD_FP6
+
+module = AMD_FP6_EMUL
+module-str = amd_fp6_emul
+source "subsys/logging/Kconfig.template.log_config"
+
+endif # EMUL_USB_MUX_AMD_FP6
