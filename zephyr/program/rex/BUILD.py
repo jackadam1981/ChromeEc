@@ -27,3 +27,7 @@ def register_variant(
 register_variant(
     project_name="rex",
 )
+
+register_variant(
+    project_name="rex-sans-sensors",
+)
