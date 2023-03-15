@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6128c3bc_8e2acd61",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-15T09:56:31Z",
+      "side": 1,
+      "message": "There is a decision we will need to make: Should we use the internal API or the \"public\" API?\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/boringssl/src/crypto/fipsmodule/ec/p256.c;drc\u003d0e9a0b6e9bb6ec59521977eec805f5d0bca833e0;l\u003d474\n\nOr the public interface?\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/boringssl/src/include/openssl/ecdh.h;drc\u003d4732c544f76958ea75af2e5a05b9d77a2341128a;l\u003d88\n\nThe public interface would be more stable, although there are also no guarantees of API or ABI stability. https://boringssl.googlesource.com/boringssl/\n\nBut the public API would require more code size, memory usage and dynamic memory allocation, and may potentially use more unsupported features.",
+      "parentUuid": "44513d6f_fe3d63f4",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 35
+      },
+      "revId": "49227a6c331a4de077222de9485b34b492302cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3bbcfac5_50319d6a",
         "filename": "common/fpsensor/fpsensor_state.c",
         "patchSetId": 53
