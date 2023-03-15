@@ -3,7 +3,6 @@
  * found in the LICENSE file.
  */
 
-#include "fpc_private.h"
 #include "fpc_sensor.h"
 
 #include <stddef.h>

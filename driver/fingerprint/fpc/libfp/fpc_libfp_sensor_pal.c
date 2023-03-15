@@ -6,7 +6,7 @@
 
 #include "common.h"
 #include "console.h"
-#include "fpc_sensor_pal.h"
+#include "fpc_libfp_sensor_pal.h"
 #include "fpsensor.h"
 #include "fpsensor_utils.h"
 #include "shared_mem.h"

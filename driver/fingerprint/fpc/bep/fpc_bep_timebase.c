@@ -5,7 +5,7 @@
 
 /* FPC Platform Abstraction Layer */
 
-#include "fpc_timebase.h"
+#include "fpc_bep_timebase.h"
 #include "timer.h"
 
 #include <stdint.h>

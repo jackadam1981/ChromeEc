@@ -7,7 +7,7 @@
 
 #include "console.h"
 #include "driver/fingerprint/fpc/fpc_sensor.h"
-#include "fpc_sensor_spi.h"
+#include "fpc_bep_sensor_spi.h"
 #include "fpsensor.h"
 #include "fpsensor_utils.h"
 #include "gpio.h"
