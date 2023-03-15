@@ -8,10 +8,13 @@
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 
-set(PREFIX armv7m-cros-eabi-)
+set(CROSS_COMPILE armv7m-cros-eabi-)
 set(CMAKE_SYSROOT /usr/armv7m-cros-eabi/)
 
-set(CMAKE_TRY_COMPILE_PLATFORM_VARIABLES CROS_EC_REPO)
+set(CC_NAME clang)
+set(CXX_NAME clang++)
+
+set(CMAKE_TRY_COMPILE_PLATFORM_VARIABLES CROS_EC_REPO CROSS_COMPILE CC_NAME CXX_NAME)
 include("${CROS_EC_REPO}/cmake/toolchain-common.cmake")
 
 add_link_options(-lclang_rt.builtins-armv7m)
