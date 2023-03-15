@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8eb4ca67_dffd274a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2023-03-15T12:07:13Z",
+      "side": 1,
+      "message": "Hi Daisuke,\nYes, I\u0027ll add BUG\u003d details. Also, will update thermal test results on bug.",
+      "parentUuid": "e89c597d_a8eb718e",
+      "revId": "a40e5c1cb304299dc1aea02a654802331e563a59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b81dd8d5_dc7a8283",
         "filename": "board/gimble/thermal.c",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2023-03-10T23:13:14Z",
       "side": 1,
       "message": "level 2 OFF should be less or equal level 1 ON (37)",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 13
+      },
+      "revId": "a40e5c1cb304299dc1aea02a654802331e563a59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffaaedea_1d53beba",
+        "filename": "board/gimble/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2023-03-15T12:07:13Z",
+      "side": 1,
+      "message": "Please, help us to understand the reason for your suggestion.\n\nAs per our understanding, when temperature lowers down (goes)\nbelow OFF level:2, fan will rotate based on level:1 rpm value. \nWe wanted to run Fan at the lowest speed (at level:1) for longer time \neven if temperature goes below 43, i.e. from temperature range 43C to 37C \nduring temperature getting reduced. So, kept this level:2 OFF at 43C.",
+      "parentUuid": "b81dd8d5_dc7a8283",
       "range": {
         "startLine": 58,
         "startChar": 11,
