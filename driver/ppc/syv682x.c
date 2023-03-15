@@ -821,6 +821,38 @@ static int syv682x_init(int port)
 	return EC_SUCCESS;
 }
 
+int syv682x_disable_PD(void)
+{
+	int rv;
+	atomic_or(&flags[0], SYV682X_FLAGS_SOURCE_ENABLED);
+	atomic_or(&flags[1], SYV682X_FLAGS_SOURCE_ENABLED);
+	rv = syv682x_vbus_source_enable(0, 0);  // disable port 0
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	rv = syv682x_vbus_source_enable(1, 0);  // disable port 1
+	if (rv != EC_SUCCESS)
+		return rv;
+	
+	return EC_SUCCESS;
+}
+
+int syv682x_enable_PD(void)
+{
+	int rv;
+	atomic_clear_bits(&flags[0], SYV682X_FLAGS_SOURCE_ENABLED);
+	atomic_clear_bits(&flags[1], SYV682X_FLAGS_SOURCE_ENABLED);
+	rv = syv682x_vbus_sink_enable(0, 1);  // disable port 0
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	rv = syv682x_vbus_sink_enable(1, 1);  // disable port 1
+	if (rv != EC_SUCCESS)
+		return rv;
+	
+	return EC_SUCCESS;
+}
+
 const struct ppc_drv syv682x_drv = {
 	.init = &syv682x_init,
 	.is_sourcing_vbus = &syv682x_is_sourcing_vbus,

@@ -108,5 +108,7 @@
  * @return 1 if the PPC is SYV682C else 0
  */
 __override_proto int syv682x_board_is_syv682c(int port);
+int syv682x_disable_PD(void);
+int syv682x_enable_PD(void);
 
 #endif /* defined(__CROS_EC_SYV682X_H) */

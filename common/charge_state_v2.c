@@ -33,7 +33,8 @@
 #include "usb_common.h"
 #include "usb_pd.h"
 #include "util.h"
-
+#include "syv682x.h"
+#include "usbc_ppc.h"
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
@@ -1091,7 +1092,7 @@ void chgstate_set_manual_voltage(int volt_mv)
 /* Force charging off before the battery is full. */
 static int set_chg_ctrl_mode(enum ec_charge_control_mode mode)
 {
-	bool discharge_on_ac = false;
+	//bool discharge_on_ac = false;
 	int current, voltage;
 	int rv;
 
@@ -1104,6 +1105,9 @@ static int set_chg_ctrl_mode(enum ec_charge_control_mode mode)
 	if (mode == CHARGE_CONTROL_NORMAL) {
 		current = -1;
 		voltage = -1;
+		rv = syv682x_enable_PD();
+		if (rv != EC_SUCCESS)
+			return rv;
 	} else {
 		/* Changing mode is only meaningful if AC is present. */
 		if (!curr.ac)
@@ -1112,7 +1116,10 @@ static int set_chg_ctrl_mode(enum ec_charge_control_mode mode)
 		if (mode == CHARGE_CONTROL_DISCHARGE) {
 			if (!IS_ENABLED(CONFIG_CHARGER_DISCHARGE_ON_AC))
 				return EC_ERROR_UNIMPLEMENTED;
-			discharge_on_ac = true;
+			rv = syv682x_disable_PD();
+			if (rv != EC_SUCCESS)
+				return rv;
+			//discharge_on_ac = true;
 		} else if (mode == CHARGE_CONTROL_IDLE) {
 			current = 0;
 			voltage = 0;
@@ -1120,9 +1127,7 @@ static int set_chg_ctrl_mode(enum ec_charge_control_mode mode)
 	}
 
 	if (IS_ENABLED(CONFIG_CHARGER_DISCHARGE_ON_AC)) {
-		rv = charger_discharge_on_ac(discharge_on_ac);
-		if (rv != EC_SUCCESS)
-			return rv;
+		//rv = charger_discharge_on_ac(discharge_on_ac);
 	}
 
 	/* Commit all atomically */
@@ -1733,7 +1738,7 @@ void charger_task(void *u)
 					prev_ac = curr.ac;
 			} else {
 				/* Some things are only meaningful on AC */
-				set_chg_ctrl_mode(CHARGE_CONTROL_NORMAL);
+				//set_chg_ctrl_mode(CHARGE_CONTROL_NORMAL);
 				battery_seems_dead = 0;
 				prev_ac = curr.ac;
 
