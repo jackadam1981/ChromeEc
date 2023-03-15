@@ -16,6 +16,29 @@
       "message": "I need to write a unit test and double check this isn\u0027t going to impact any other paths, but take a look and see what you think",
       "revId": "20379e26616d3f8b1f84b57cacb3c2dd7773bf20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b28aef6a_175c8408",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-03-15T23:35:51Z",
+      "side": 1,
+      "message": "Nit: Add the bug link to the comment? So people can know more about the detail.",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 5
+      },
+      "revId": "20379e26616d3f8b1f84b57cacb3c2dd7773bf20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
