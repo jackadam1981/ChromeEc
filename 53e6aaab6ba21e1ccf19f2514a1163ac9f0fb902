@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "369dcf9a_049a22b7",
+        "filename": "zephyr/program/rex/rex-sans-sensors/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-15T18:13:33Z",
+      "side": 1,
+      "message": "Current rex/project.conf also has this:\n```\n# Some boards detect a false VBUS reverse current event\n# First investigated on taniks (b/237468526)\nCONFIG_PLATFORM_EC_USBC_NX20P348X_RCP_5VSRC_MASK_ENABLE\u003dy\n```",
+      "revId": "53e6aaab6ba21e1ccf19f2514a1163ac9f0fb902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
