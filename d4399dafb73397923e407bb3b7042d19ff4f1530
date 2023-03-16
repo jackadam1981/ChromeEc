@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f85e7a08_a4642165",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-16T11:21:07Z",
+      "side": 1,
+      "message": "nit: drop the ./, does not add anything in this case, just looks odd",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 83
+      },
+      "revId": "d4399dafb73397923e407bb3b7042d19ff4f1530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
