@@ -2398,14 +2398,6 @@ int cmd_fp_info(int argc, char *argv[])
 	return 0;
 }
 
-static void print_fp_enc_flags(const char *desc, uint32_t flags)
-{
-	printf("%s 0x%08x", desc, flags);
-	if (flags & FP_ENC_STATUS_SEED_SET)
-		printf(" FPTPM_seed_set");
-	printf("\n");
-}
-
 static int cmd_fp_context(int argc, char *argv[])
 {
 	struct ec_params_fp_context_v1 p;
@@ -2470,10 +2462,15 @@ int cmd_fp_enc_status(int argc, char *argv[])
 			"FP Encryption Status returned with errors: %d\n", rv);
 		return rv;
 	}
-	print_fp_enc_flags("FPMCU encryption status:",
-			   fp_encryptionstatus_command.GetStatus());
-	print_fp_enc_flags("Valid flags:            ",
-			   fp_encryptionstatus_command.GetValidFlags());
+	printf("FPMCU encryption status: 0x%08x%s",
+	       (ec::FpEncryptionStatusCommand::ParseFlags(
+			fp_encryptionstatus_command.GetStatus()))
+		       .c_str());
+	printf("FPMCU encryption status: 0x%08x%s",
+	       (ec::FpEncryptionStatusCommand::ParseFlags(
+			fp_encryptionstatus_command.GetStatus()))
+		       .c_str());
+
 	rv = 0;
 
 	return rv;
