@@ -254,8 +254,7 @@ usb_spi_create_spi_transfer_response(struct usb_spi_packet_ctx *transmit_packet)
  * Decodes the header fields of a Flash Command Start Packet, and sets up the
  * transaction depending on if it is read or write.
  */
-static void setup_flash_transfer(struct usb_spi_config const *config,
-				 struct usb_spi_packet_ctx *packet)
+static void setup_flash_transfer(struct usb_spi_packet_ctx *packet)
 {
 	uint32_t flags = packet->cmd_flash_start.flags;
 	usb_spi_state.flash_flags = flags;
@@ -274,7 +273,6 @@ static void setup_flash_transfer(struct usb_spi_config const *config,
 			return;
 		}
 		usb_spi_setup_transfer(
-			config,
 			opcode_count + addr_count + alt_count + write_count, 0);
 	} else {
 		size_t read_count = packet->cmd_flash_start.count;
@@ -283,8 +281,7 @@ static void setup_flash_transfer(struct usb_spi_config const *config,
 				USB_SPI_WRITE_COUNT_INVALID;
 			return;
 		}
-		usb_spi_setup_transfer(config,
-				       opcode_count + addr_count + alt_count,
+		usb_spi_setup_transfer(opcode_count + addr_count + alt_count,
 				       read_count);
 	}
 	packet->header_size = offsetof(struct usb_spi_flash_command, data);
@@ -371,15 +368,14 @@ static void usb_spi_process_rx_packet(struct usb_spi_packet_ctx *packet)
 	case USB_SPI_PKT_ID_CMD_FLASH_TRANSFER_START: {
 		/* The host started a new USB serial flash SPI transfer */
 		if (!usb_spi_state.enabled) {
-			setup_transfer_response(config, USB_SPI_DISABLED);
+			setup_transfer_response(USB_SPI_DISABLED);
 		} else {
-			setup_flash_transfer(config, packet);
+			setup_flash_transfer(packet);
 		}
 
 		/* Send responses if we encountered an error. */
 		if (usb_spi_state.status_code != USB_SPI_SUCCESS) {
-			setup_transfer_response(config,
-						usb_spi_state.status_code);
+			setup_transfer_response(usb_spi_state.status_code);
 			break;
 		}
 
