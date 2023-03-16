@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25214dcf_d20ebcfe",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-16T23:07:26Z",
+      "side": 1,
+      "message": "This probably should be `flags \u003d GPIO_INT_EDGE_TO_ACTIVE;` and then the TCPC_FLAGS_ALERT_ACTIVE_HIGH can hopefully get deprected.\n\nHowever, I tried this change locally, and the test still fails.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "067483272f8a3446bdf1a355656df78a3c465b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
