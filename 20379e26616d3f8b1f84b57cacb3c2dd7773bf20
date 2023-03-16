@@ -39,6 +39,30 @@
       },
       "revId": "20379e26616d3f8b1f84b57cacb3c2dd7773bf20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4916847_9baf6192",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-16T17:45:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b28aef6a_175c8408",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 5
+      },
+      "revId": "20379e26616d3f8b1f84b57cacb3c2dd7773bf20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

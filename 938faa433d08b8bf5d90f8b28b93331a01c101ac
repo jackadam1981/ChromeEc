@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9475d71_fbd364f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-16T17:45:41Z",
+      "side": 1,
+      "message": "Now with unit testing!\n\nI believe we should be safe relying on the host_sleep_state because it appears to get cleared during normal boots from the Qcom, AMD, and Intel power code.  So we shouldn\u0027t notify if we get a sequence where we somehow reboot from a lower power state after suspending with no resume (and in that case, the power code will send the resume notification during its state transitions).",
+      "revId": "938faa433d08b8bf5d90f8b28b93331a01c101ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
