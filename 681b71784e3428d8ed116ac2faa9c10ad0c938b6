@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7668395f_92964272",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-16T21:30:48Z",
+      "side": 1,
+      "message": "Why eeprom? Can we make it generic (e.g. spi_flags)?",
+      "range": {
+        "startLine": 371,
+        "startChar": 18,
+        "endLine": 371,
+        "endChar": 30
+      },
+      "revId": "681b71784e3428d8ed116ac2faa9c10ad0c938b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bdc61c0_72543002",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-16T21:30:48Z",
+      "side": 1,
+      "message": "Can we remove this?",
+      "range": {
+        "startLine": 292,
+        "startChar": 16,
+        "endLine": 292,
+        "endChar": 23
+      },
+      "revId": "681b71784e3428d8ed116ac2faa9c10ad0c938b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
