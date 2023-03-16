@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-
 # Copyright 2020 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 # pylint: disable=line-too-long
+
 """Runs unit tests on device and displays the results.
 
 This script assumes you have a ~/.servodrc config file with a line that
@@ -308,6 +308,7 @@ class AllTests:
                 test_name="rollback_entropy", imagetype_to_use=ImageType.RO
             ),
             TestConfig(test_name="rtc"),
+            TestConfig(test_name="scoped_fast_cpu"),
             TestConfig(test_name="sha256"),
             TestConfig(test_name="sha256_unrolled"),
             TestConfig(test_name="static_if"),
