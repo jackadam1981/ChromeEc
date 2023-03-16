@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "576a77b5_f8ef8eed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 31
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-16T11:45:48Z",
+      "side": 1,
+      "message": "If we want to use the public API, another problem is:\n\nShould we import something like the \"ScopedOpenSSL\"? so we would not need to \"free\" the objects manually before every return statement.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/libchrome/crypto/scoped_openssl_types.h",
+      "parentUuid": "c2537404_f30d5035",
+      "revId": "79ce19f9b624946e46608d7f8bd75220c974a36e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae611f8b_23d6e86f",
         "filename": "third_party/boringssl/boringssl-toolchain.cmake",
         "patchSetId": 31
