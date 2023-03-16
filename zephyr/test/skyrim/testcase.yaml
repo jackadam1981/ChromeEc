@@ -91,17 +91,22 @@ tests:
     - CONFIG_TEST_BOARD_SKYRIM=y
     - CONFIG_TEST_BOARD_FAN=y
 
-  skyrim.skyrim.ppc_config:
-    extra_configs:
-    - CONFIG_TEST_BOARD_SKYRIM=y
-    - CONFIG_TEST_BOARD_PPC_CONFIG=y
-
   skyrim.skyrim.form_factor:
     extra_args:
       DTC_OVERLAY_FILE="./boards/skyrim/skyrim.dtsi;"
     extra_configs:
     - CONFIG_TEST_BOARD_SKYRIM=y
     - CONFIG_TEST_BOARD_FORM_FACTOR=y
+
+  skyrim.skyrim.ppc_config:
+    extra_configs:
+    - CONFIG_TEST_BOARD_SKYRIM=y
+    - CONFIG_TEST_BOARD_PPC_CONFIG=y
+
+  skyrim.skyrim.usb_mux_config:
+    extra_configs:
+    - CONFIG_TEST_BOARD_SKYRIM=y
+    - CONFIG_TEST_BOARD_USB_MUX_CONFIG_CUSTOM=y
 
   # Winterhold tests
   skyrim.winterhold:
