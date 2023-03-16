@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "641b1cff_f1e48ca0",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-16T23:20:19Z",
+      "side": 1,
+      "message": "\u003e internal API / public API / public interface\n\nLet\u0027s ask the boringssl maintainers. IIRC, they discouraged us from using the internal API. It\u0027s more likely that we can make a mistake when using it, especially when we upgrade boringssl versions.\n\n\u003e although there are also no guarantees of API or ABI stability\n\nThat is fine given that we are compiling from source. When they change the public API, they will be doing so with the understanding that people will be updating to the new version. They don\u0027t do the same when changing internal APIs.\n\n\u003e But the public API would require more code size, memory usage and dynamic memory allocation, and may potentially use more unsupported features.\n\nYes, it will likely use more code and mem, but let\u0027s not prematurely optimize. If we start running into issues with code size or memory we can look at using the internal API, but let\u0027s try public first.\n\n\u003e Should we import the \"ScopedOpenSSL\"? so we would not need to \"free\" the objects manually before every return statement.\n\nRight now I don\u0027t think we can use that header file directly since EC does not have a dependency on `libchrome`, but the implementation is so trivial that we can easily have our own (I\u0027m surprised boringssl doesn\u0027t provide it.) We\u0027re compiling with C++17, so we [can use `std::function`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/libchrome/crypto/scoped_openssl_types.h;l\u003d29-30;drc\u003d5206370797f1ecbcb240cdb70b5cb2d7d5c3b160).",
+      "parentUuid": "0250e1e0_571679a7",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 35
+      },
+      "revId": "49227a6c331a4de077222de9485b34b492302cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3bbcfac5_50319d6a",
         "filename": "common/fpsensor/fpsensor_state.c",
         "patchSetId": 53
