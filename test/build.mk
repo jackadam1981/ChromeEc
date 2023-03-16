@@ -94,6 +94,7 @@ test-list-host += sbs_charging_v2
 test-list-host += sha256
 test-list-host += sha256_unrolled
 test-list-host += shmalloc
+test-list-host += scoped_fast_cpu
 test-list-host += static_if
 test-list-host += static_if_error
 # TODO(b/237823627): When building for the host, we're linking against the
@@ -255,6 +256,7 @@ sbs_charging_v2-y=sbs_charging_v2.o
 sha256-y=sha256.o
 sha256_unrolled-y=sha256.o
 shmalloc-y=shmalloc.o
+scoped_fast_cpu-y=scoped_fast_cpu.o
 static_if-y=static_if.o
 stdlib-y=stdlib.o
 std_vector-y=std_vector.o
