@@ -75,6 +75,9 @@ config TEST_BOARD_USB_PD_POLICY
 	bool "Enable USB PD policy specific tests"
 	select TEST_ENABLE_USB_PD_HOST_CMD
 
+config TEST_BOARD_POWER_SIGNALS
+	bool "Enable power signals tests"
+
 config TEST_BOARD_PPC_CONFIG
 	bool "Enable PPC config tests"
 
