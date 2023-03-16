@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ed2305_2b594947",
+        "filename": "zephyr/program/corsola/voltorb/src/usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-16T08:31:55Z",
+      "side": 1,
+      "message": "You should use the array size of the `pd_src_pdo_1A5` and `pd_src_pdo_3A` respectively.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "ba367e72cd34f3a25d4adf9c5db92e5b439aacf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
