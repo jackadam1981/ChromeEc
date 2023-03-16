@@ -22,6 +22,30 @@
       },
       "revId": "7a9f47487c41d15b3f8aeb4372afc36fc0dfceae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded4ea02_46d701bd",
+        "filename": "util/ectool.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-16T16:41:13Z",
+      "side": 1,
+      "message": "https://crrev.com/c/4346514",
+      "parentUuid": "8b94e428_531c022c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "7a9f47487c41d15b3f8aeb4372afc36fc0dfceae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
