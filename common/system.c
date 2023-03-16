@@ -1134,13 +1134,29 @@ test_mockable void system_enter_hibernate(uint32_t seconds,
 
 static void system_common_shutdown(void)
 {
-	system_exit_manual_recovery();
 	if (reboot_at_shutdown.cmd)
 		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown.cmd);
 	handle_pending_reboot(&reboot_at_shutdown);
 
 	/* Reset cnt on cold boot */
 	update_ap_boot_time(RESET_CNT);
+
+	if (IS_ENABLED(CONFIG_VBOOT_EFS2) && system_is_manual_recovery()) {
+		/*
+		 * We're here because the AP initiated a shutdown or a reboot in
+		 * recovery mode. We assume the AP intended to reboot (after a
+		 * recovery disk is removed), thus we execute a hard reset
+		 * (without AP_OFF). It will be followed by a normal boot (i.e.
+		 * sysjump from RO to RW then turning on the AP).
+		 *
+		 * If the AP intended to shutdown, it should have requested
+		 * SYSTEM_RESET_LEAVE_AP_OFF with FLAG_ON_AP_SHUTDOWN, which is
+		 * handled by the handle_pending_reboot call above.
+		 */
+		CPRINTS("Reset to exit recovery mode");
+		cflush();
+		system_reset(SYSTEM_RESET_HARD);
+	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, system_common_shutdown,
 	     HOOK_PRIO_DEFAULT);
