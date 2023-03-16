@@ -147,6 +147,11 @@ void system_set_reboot_at_shutdown(const struct ec_params_reboot_ec *p);
 const struct ec_params_reboot_ec *system_get_reboot_at_shutdown(void);
 
 /**
+ * Clear the reboot command to be executed on shutdown.
+ */
+void system_clear_reboot_at_shutdown(void);
+
+/**
  * Set reset flags.
  *
  * @param flags        Flags to set in reset flags
