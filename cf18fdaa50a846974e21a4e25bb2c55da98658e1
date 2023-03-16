@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c5071c_02f92aad",
+        "filename": "board/constitution/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-16T20:40:23Z",
+      "side": 1,
+      "message": "Can you please put these board changes in a separate CL? Thanks.",
+      "revId": "cf18fdaa50a846974e21a4e25bb2c55da98658e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a75dac0_a146ab08",
+        "filename": "driver/pse_ltc4291.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-16T20:40:23Z",
+      "side": 1,
+      "message": "nit: You can do \n\n    \"PSE\" format\n\nand emit \u0027PSE\u0027 in the callers below.",
+      "range": {
+        "startLine": 22,
+        "startChar": 52,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "cf18fdaa50a846974e21a4e25bb2c55da98658e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e04ae21_9bbf1dfb",
+        "filename": "driver/pse_ltc4291.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-16T20:40:23Z",
+      "side": 1,
+      "message": "This loop is too tight. Can you add an msleep with an expected latency?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "cf18fdaa50a846974e21a4e25bb2c55da98658e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ccc7323_04ed55a3",
+        "filename": "driver/pse_ltc4291.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-16T20:40:23Z",
+      "side": 1,
+      "message": "nit: EC_SUCCESS (and all applicable \u00270\u0027s below).",
+      "range": {
+        "startLine": 61,
+        "startChar": 41,
+        "endLine": 61,
+        "endChar": 42
+      },
+      "revId": "cf18fdaa50a846974e21a4e25bb2c55da98658e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034a061b_a51d8c16",
+        "filename": "driver/pse_ltc4291.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-16T20:40:23Z",
+      "side": 1,
+      "message": "You\u0027re looping here waiting for the chip to come out of a reset? Then, isn\u0027t EC_ERROR_TIMEOUT better since an i2c error is expected?",
+      "range": {
+        "startLine": 63,
+        "startChar": 10,
+        "endLine": 63,
+        "endChar": 13
+      },
+      "revId": "cf18fdaa50a846974e21a4e25bb2c55da98658e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ad828b_eba24fdf",
+        "filename": "driver/pse_ltc4291.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-16T20:40:23Z",
+      "side": 1,
+      "message": "nit: EC_SUCCESS (or just if (err)).",
+      "range": {
+        "startLine": 160,
+        "startChar": 12,
+        "endLine": 160,
+        "endChar": 13
+      },
+      "revId": "cf18fdaa50a846974e21a4e25bb2c55da98658e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
