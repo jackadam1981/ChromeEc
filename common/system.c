@@ -1111,13 +1111,29 @@ test_mockable void system_enter_hibernate(uint32_t seconds,
 
 static void system_common_shutdown(void)
 {
-	system_exit_manual_recovery();
+	bool in_recovery = system_is_manual_recovery();
+
+	if (in_recovery)
+		system_exit_manual_recovery();
+
 	if (reboot_at_shutdown.cmd)
 		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown.cmd);
 	handle_pending_reboot(reboot_at_shutdown);
 
 	/* Reset cnt on cold boot */
 	update_ap_boot_time(RESET_CNT);
+
+	if (in_recovery) {
+		/*
+		 * The AP is known (or supposed) not to issue a chip reset
+		 * (a.k.a. CME global reset in Intel term) in recovery mode.
+		 * So, we interpret this shutdown as a shutdown and do not worry
+		 * about it could be part of a reboot.
+		 */
+		CPRINTS("Reset to exit recovery mode");
+		cflush();
+		system_reset(SYSTEM_RESET_HARD | SYSTEM_RESET_LEAVE_AP_OFF);
+	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, system_common_shutdown,
 	     HOOK_PRIO_DEFAULT);
