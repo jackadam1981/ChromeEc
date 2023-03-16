@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e23f2ba0_edf628a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 31
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-16T23:37:25Z",
+      "side": 1,
+      "message": "Let\u0027s continue the discussion in the [other thread](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3901734/comment/44513d6f_fe3d63f4/).",
+      "parentUuid": "576a77b5_f8ef8eed",
+      "revId": "79ce19f9b624946e46608d7f8bd75220c974a36e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae611f8b_23d6e86f",
         "filename": "third_party/boringssl/boringssl-toolchain.cmake",
         "patchSetId": 31
