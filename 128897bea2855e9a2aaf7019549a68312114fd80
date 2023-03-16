@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb28def4_571d3baa",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-16T21:07:34Z",
+      "side": 1,
+      "message": "Shall we print something before return?",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 9
+      },
+      "revId": "128897bea2855e9a2aaf7019549a68312114fd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
