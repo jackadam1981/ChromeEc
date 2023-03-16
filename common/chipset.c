@@ -11,6 +11,7 @@
 #include "ec_commands.h"
 #include "host_command.h"
 #include "system.h"
+#include "util.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
@@ -42,11 +43,17 @@ static int command_apshutdown(int argc, const char **argv)
 		CPRINTS("Saved AP_IDLE flag");
 	}
 
+	if (argc != 2 || strcasecmp(argv[1], "-d"))
+		system_clear_reboot_at_shutdown();
+
 	chipset_force_shutdown(CHIPSET_SHUTDOWN_CONSOLE_CMD);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(apshutdown, command_apshutdown, NULL,
-			"Force AP shutdown");
+DECLARE_CONSOLE_COMMAND(
+	apshutdown, command_apshutdown, "-d",
+	"\n"
+	"Force AP shutdown.\n"
+	"With -d, AP may boot as scheduled in reboot_at_shutdown.");
 
 #endif
 
