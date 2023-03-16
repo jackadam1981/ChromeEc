@@ -22,6 +22,30 @@
       },
       "revId": "7475c77f72bbed8514de531bd24a7275012a8e6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b229ad_4647d530",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 47
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-16T21:33:56Z",
+      "side": 1,
+      "message": "There was a dependency on this CL: https://crrev.com/i/5548068.\n\nThat has now landed, so it should work now after `repo sync`. Let me know if you still have issues.",
+      "parentUuid": "be5d1a87_31c172cc",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "7475c77f72bbed8514de531bd24a7275012a8e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
