@@ -70,6 +70,30 @@
       },
       "revId": "c36b7af95bce1e9ca217153c49e1b1dc0d0f9a35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d79d613c_b236d5e0",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2023-03-16T17:00:23Z",
+      "side": 1,
+      "message": "So I think that current solution is ok?",
+      "parentUuid": "0480e371_b84ad182",
+      "range": {
+        "startLine": 570,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 0
+      },
+      "revId": "c36b7af95bce1e9ca217153c49e1b1dc0d0f9a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
