@@ -19,6 +19,7 @@
 #include "host_command.h"
 #include "keyboard_scan.h"
 #include "math_util.h"
+#include "system.h"
 #include "timer.h"
 #include "usb_pd.h"
 #include "util.h"
@@ -490,6 +491,7 @@ static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
 		p = args->params;
 		if (p->flags & EC_BATTERY_CUTOFF_FLAG_AT_SHUTDOWN) {
 			battery_cutoff_state = BATTERY_CUTOFF_STATE_SCHEDULED;
+			system_clear_reboot_at_shutdown();
 			CUTOFFPRINTS("at-shutdown is scheduled");
 			return EC_RES_SUCCESS;
 		}

@@ -1012,6 +1012,23 @@ int system_is_manual_recovery(void)
 	return system_info_flags & SYSTEM_IN_MANUAL_RECOVERY;
 }
 
+void system_set_reboot_at_shutdown(const struct ec_params_reboot_ec *p)
+{
+	reboot_at_shutdown = *p;
+}
+
+void system_clear_reboot_at_shutdown(void)
+{
+	reboot_at_shutdown.cmd = 0;
+	reboot_at_shutdown.flags = 0;
+	CPRINTS("Cleared reboot_at_shutdown");
+}
+
+const struct ec_params_reboot_ec *system_get_reboot_at_shutdown(void)
+{
+	return &reboot_at_shutdown;
+}
+
 /**
  * Handle a pending reboot command.
  */
@@ -1132,7 +1149,6 @@ test_mockable void system_enter_hibernate(uint32_t seconds,
 
 static void system_common_shutdown(void)
 {
-	system_exit_manual_recovery();
 	if (reboot_at_shutdown.cmd)
 		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown.cmd);
 	handle_pending_reboot(&reboot_at_shutdown);
