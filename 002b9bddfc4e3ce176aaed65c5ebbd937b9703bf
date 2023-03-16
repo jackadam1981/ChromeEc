@@ -22,6 +22,30 @@
       },
       "revId": "002b9bddfc4e3ce176aaed65c5ebbd937b9703bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e444a61_6bbfde44",
+        "filename": "include/scoped_fast_cpu.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-16T11:02:21Z",
+      "side": 1,
+      "message": "Done by:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4345046",
+      "parentUuid": "3a04f049_b4306676",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "002b9bddfc4e3ce176aaed65c5ebbd937b9703bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
