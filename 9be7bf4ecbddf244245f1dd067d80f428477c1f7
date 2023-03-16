@@ -16,6 +16,23 @@
       "message": "I will try this EC with ISH firmware tomorrow.",
       "revId": "9be7bf4ecbddf244245f1dd067d80f428477c1f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c884d26e_11235432",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-03-16T22:19:12Z",
+      "side": 1,
+      "message": "Tested on Rex with ISH rework and motion sensors are listed in /sys/bus/iio/devices.",
+      "revId": "9be7bf4ecbddf244245f1dd067d80f428477c1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
