@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f1c4f0_9b638791",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-16T21:45:24Z",
+      "side": 1,
+      "message": "This is the same as https://crrev.com/c/4261963, right? Can you mention that in the commit message? \n\nSomething like: \"This is a reland of https://crrev.com/c/4261963 now that the formatting was fixed in https://crrev.com/c/4335705\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "fc2cb621f76b737e00d7cdd7e34601033e4e1bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
