@@ -179,6 +179,9 @@ static void create_spi_config_response(struct usb_spi_config const *config,
 	packet->rsp_config.feature_bitmap |=
 		USB_SPI_FEATURE_FULL_DUPLEX_SUPPORTED;
 #endif
+#ifdef CONFIG_USB_SPI_FLASH_EXTENSIONS
+	packet->rsp_config.feature_bitmap |= USB_SPI_FEATURE_FLASH_EXTENSIONS;
+#endif
 	packet->packet_size = sizeof(struct usb_spi_response_configuration_v2);
 }
 
@@ -238,6 +241,52 @@ usb_spi_create_spi_transfer_response(struct usb_spi_config const *config,
 	}
 }
 
+#ifdef CONFIG_USB_SPI_FLASH_EXTENSIONS
+static void setup_flash_transfer(struct usb_spi_config const *config,
+				 struct usb_spi_packet_ctx *packet)
+{
+	uint32_t flags = packet->cmd_flash_start.flags;
+	config->state->flash_flags = flags;
+	uint8_t opcode_count = (flags & FLASH_FLAG_OPCODE_LEN_MSK) >>
+			       FLASH_FLAG_OPCODE_LEN_POS;
+	uint8_t addr_count = (flags & FLASH_FLAG_ADDR_LEN_MSK) >>
+			     FLASH_FLAG_ADDR_LEN_POS;
+	uint8_t alt_count = (flags & FLASH_FLAG_ALT_LEN_MSK) >>
+			    FLASH_FLAG_ALT_LEN_POS;
+	if ((packet->cmd_flash_start.flags & FLASH_FLAG_READ_WRITE_MSK) ==
+	    FLASH_FLAG_READ_WRITE_WRITE) {
+		size_t write_count = packet->cmd_flash_start.count;
+		if (write_count > USB_SPI_MAX_WRITE_COUNT) {
+			setup_transfer_response(config,
+						USB_SPI_WRITE_COUNT_INVALID);
+		} else {
+			usb_spi_setup_transfer(config,
+					       opcode_count + addr_count +
+						       alt_count + write_count,
+					       0);
+			packet->header_size =
+				offsetof(struct usb_spi_flash_command, data);
+			config->state->status_code = usb_spi_read_usb_packet(
+				&config->state->spi_write_ctx, packet);
+		}
+	} else {
+		size_t read_count = packet->cmd_flash_start.count;
+		if (read_count > USB_SPI_MAX_READ_COUNT) {
+			setup_transfer_response(config,
+						USB_SPI_READ_COUNT_INVALID);
+		} else {
+			usb_spi_setup_transfer(
+				config, opcode_count + addr_count + alt_count,
+				read_count);
+			packet->header_size =
+				offsetof(struct usb_spi_flash_command, data);
+			config->state->status_code = usb_spi_read_usb_packet(
+				&config->state->spi_write_ctx, packet);
+		}
+	}
+}
+#endif
+
 /*
  * Process the rx packet.
  *
@@ -274,6 +323,9 @@ static void usb_spi_process_rx_packet(struct usb_spi_config const *config,
 		/* The host started a new USB SPI transfer */
 		size_t write_count = packet->cmd_start.write_count;
 		size_t read_count = packet->cmd_start.read_count;
+#ifdef CONFIG_USB_SPI_FLASH_EXTENSIONS
+		config->state->flash_flags = 0;
+#endif
 
 		if (!config->state->enabled) {
 			setup_transfer_response(config, USB_SPI_DISABLED);
@@ -313,6 +365,31 @@ static void usb_spi_process_rx_packet(struct usb_spi_config const *config,
 
 		break;
 	}
+#ifdef CONFIG_USB_SPI_FLASH_EXTENSIONS
+	case USB_SPI_PKT_ID_CMD_FLASH_TRANSFER_START: {
+		/* The host started a new USB serial flash SPI transfer */
+		if (!config->state->enabled) {
+			setup_transfer_response(config, USB_SPI_DISABLED);
+		} else {
+			setup_flash_transfer(config, packet);
+		}
+
+		/* Send responses if we encountered an error. */
+		if (config->state->status_code != USB_SPI_SUCCESS) {
+			setup_transfer_response(config,
+						config->state->status_code);
+			break;
+		}
+
+		/* Start the SPI transfer when we've read all data. */
+		if (config->state->spi_write_ctx.transfer_index ==
+		    config->state->spi_write_ctx.transfer_size) {
+			config->state->mode = USB_SPI_MODE_START_SPI;
+		}
+
+		break;
+	}
+#endif
 	case USB_SPI_PKT_ID_CMD_TRANSFER_CONTINUE: {
 		/*
 		 * The host has sent a continue packet for the SPI transfer
@@ -365,6 +442,101 @@ static void usb_spi_process_rx_packet(struct usb_spi_config const *config,
 		break;
 	}
 	}
+}
+
+/*
+ * Perform a SPI write-then-read transaction, optionally preceded by a single
+ * byte "write enable" (separated by deasserting chip select), and optionally
+ * followed by polling the "busy bit" until clear.
+ */
+static uint16_t do_spi_transfer(struct usb_spi_config const *config)
+{
+	const struct spi_device_t *current_device =
+		&spi_devices[config->state->current_spi_device_idx];
+	bool custom_board_driver = current_device->usb_flags &
+				   USB_SPI_CUSTOM_SPI_DEVICE;
+#ifdef CONFIG_USB_SPI_FLASH_EXTENSIONS
+	const uint32_t flash_flags = config->state->flash_flags;
+#else
+	/*
+	 * If CONFIG_USB_SPI_FLASH_EXTENSIONS is not enabled, then the below
+	 * value being zero will allow the compiler to optimize away several
+	 * large if-blocks in this function.
+	 */
+	const uint32_t flash_flags = 0;
+#endif
+	uint16_t status_code = EC_SUCCESS;
+	int read_count = config->state->spi_read_ctx.transfer_size;
+#ifndef CONFIG_SPI_HALFDUPLEX
+	/*
+	 * Handle the full duplex mode on supported platforms.
+	 * The read count is equal to the write count.
+	 */
+	if (read_count == USB_SPI_FULL_DUPLEX_ENABLED) {
+		config->state->spi_read_ctx.transfer_size =
+			config->state->spi_write_ctx.transfer_size;
+		read_count = SPI_READBACK_ALL;
+	}
+#endif
+
+	if (!custom_board_driver &&
+	    (flash_flags & FLASH_FLAGS_REQUIRING_SUPPORT)) {
+		/*
+		 * The standard spi_transaction() does not support
+		 * any multi-lane modes.
+		 */
+		return USB_SPI_UNSUPPORTED_FLASH_MODE;
+	}
+
+	if (status_code == EC_SUCCESS &&
+	    flash_flags & FLASH_FLAG_WRITE_ENABLE) {
+		/* Precede main transaction with one-byte "write enable". */
+		const uint8_t write_enable = 0x06;
+		if (custom_board_driver) {
+			status_code = usb_spi_board_transaction(
+				current_device, 0, &write_enable, 1, NULL, 0);
+		} else {
+			status_code = spi_transaction(
+				current_device, &write_enable, 1, NULL, 0);
+		}
+	}
+
+	if (status_code == EC_SUCCESS) {
+		if (custom_board_driver) {
+			status_code = usb_spi_board_transaction(
+				current_device, flash_flags,
+				config->state->spi_write_ctx.buffer,
+				config->state->spi_write_ctx.transfer_size,
+				config->state->spi_read_ctx.buffer, read_count);
+		} else {
+			status_code = spi_transaction(
+				current_device,
+				config->state->spi_write_ctx.buffer,
+				config->state->spi_write_ctx.transfer_size,
+				config->state->spi_read_ctx.buffer, read_count);
+		}
+	}
+
+	if (flash_flags & FLASH_FLAG_POLL) {
+		/* After main transaction, poll until no longer "busy". TODO
+		 * limit time*/
+		while (status_code == EC_SUCCESS) {
+			const uint8_t read_status = 0x05;
+			uint8_t status_byte;
+			if (custom_board_driver) {
+				status_code = usb_spi_board_transaction(
+					current_device, 0, &read_status, 1,
+					&status_byte, 1);
+			} else {
+				status_code = spi_transaction(current_device,
+							      &read_status, 1,
+							      &status_byte, 1);
+			}
+			if ((status_byte & 0x01) == 0)
+				break;
+		}
+	}
+	return usb_spi_map_error(status_code);
 }
 
 /* Deferred function to handle state changes, process USB SPI packets,
@@ -424,40 +596,7 @@ void usb_spi_deferred(struct usb_spi_config const *config)
 
 	/* Start a new SPI transfer. */
 	if (config->state->mode == USB_SPI_MODE_START_SPI) {
-		const struct spi_device_t *current_device =
-			&spi_devices[config->state->current_spi_device_idx];
-		bool custom_board_driver = current_device->usb_flags &
-					   USB_SPI_CUSTOM_SPI_DEVICE;
-		uint16_t status_code;
-		int read_count = config->state->spi_read_ctx.transfer_size;
-#ifndef CONFIG_SPI_HALFDUPLEX
-		/*
-		 * Handle the full duplex mode on supported platforms.
-		 * The read count is equal to the write count.
-		 */
-		if (read_count == USB_SPI_FULL_DUPLEX_ENABLED) {
-			config->state->spi_read_ctx.transfer_size =
-				config->state->spi_write_ctx.transfer_size;
-			read_count = SPI_READBACK_ALL;
-		}
-#endif
-
-		if (custom_board_driver) {
-			status_code = usb_spi_board_transaction(
-				current_device, 0 /* eeprom_flags */,
-				config->state->spi_write_ctx.buffer,
-				config->state->spi_write_ctx.transfer_size,
-				config->state->spi_read_ctx.buffer, read_count);
-		} else {
-			status_code = spi_transaction(
-				current_device,
-				config->state->spi_write_ctx.buffer,
-				config->state->spi_write_ctx.transfer_size,
-				config->state->spi_read_ctx.buffer, read_count);
-		}
-
-		/* Cast the EC status code to USB SPI and start the response. */
-		status_code = usb_spi_map_error(status_code);
+		uint16_t status_code = do_spi_transfer(config);
 		setup_transfer_response(config, status_code);
 	}
 
@@ -677,7 +816,7 @@ int usb_spi_interface(struct usb_spi_config const *config, usb_uint *rx_buf,
 
 __overridable int
 usb_spi_board_transaction(const struct spi_device_t *spi_device,
-			  uint32_t eeprom_flags, const uint8_t *txdata,
+			  uint32_t flash_flags, const uint8_t *txdata,
 			  int txlen, uint8_t *rxdata, int rxlen)
 {
 	return EC_ERROR_UNIMPLEMENTED;
