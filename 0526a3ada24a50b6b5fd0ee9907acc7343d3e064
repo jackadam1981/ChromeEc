@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee3c45bc_66ebbacc",
+        "filename": "test/ec_gtest.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-03-16T22:56:24Z",
+      "side": 1,
+      "message": "Out of curiosity, is there any advantage in placing this code in a dedicated `static inline` function as opposed to add it directly in `run_test()`?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "0526a3ada24a50b6b5fd0ee9907acc7343d3e064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
