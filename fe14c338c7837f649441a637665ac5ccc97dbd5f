@@ -40,6 +40,30 @@
       },
       "revId": "fe14c338c7837f649441a637665ac5ccc97dbd5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8566df73_6fd69113",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-03-16T22:10:42Z",
+      "side": 1,
+      "message": "The _sync version is exposed publicly, so callers can opt in to synchronous processing by calling the synchronous version or continue getting the default asynchronous behavior. This allows callers to run the driver function on their thread rather than having no control over when exactly it gets processed.\n\nThe child CL demonstrates a use case, where Nissa needs to handle BC1.2 interrupts on the PD interrupt thread because they share an interrupt pin on the EC.",
+      "parentUuid": "48041b5b_1e1b5bd6",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 34
+      },
+      "revId": "fe14c338c7837f649441a637665ac5ccc97dbd5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
