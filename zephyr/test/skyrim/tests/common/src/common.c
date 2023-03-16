@@ -13,6 +13,19 @@ LOG_MODULE_REGISTER(skyrim, CONFIG_SKYRIM_LOG_LEVEL);
  * of test-specific device tree overrides needed.
  */
 
+__attribute__((weak)) void baseboard_soc_pcore_ocp(enum gpio_signal signal)
+{
+}
+
+__attribute__((weak)) void baseboard_soc_thermtrip(enum gpio_signal signal)
+{
+}
+
+__attribute__((weak)) int bmi3xx_interrupt(enum gpio_signal signal)
+{
+	return -EINVAL;
+}
+
 __attribute__((weak)) int board_anx7483_c0_mux_set(const struct usb_mux *me,
 						   mux_state_t mux_state)
 {
@@ -23,4 +36,14 @@ __attribute__((weak)) int board_anx7483_c1_mux_set(const struct usb_mux *me,
 						   mux_state_t mux_state)
 {
 	return -EINVAL;
+}
+
+__attribute__((weak)) int power_interrupt_handler(const struct gpio_dt_spec *dt)
+{
+	return -EINVAL;
+}
+
+__attribute__((weak)) void
+throttle_ap_prochot_input_interrupt(enum gpio_signal signal)
+{
 }
