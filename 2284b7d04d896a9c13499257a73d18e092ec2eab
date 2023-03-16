@@ -22,6 +22,30 @@
       },
       "revId": "2284b7d04d896a9c13499257a73d18e092ec2eab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba84215_d77d52cc",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-16T15:04:47Z",
+      "side": 1,
+      "message": "At present the configuration is not present for labels commented. Hence causing label not found type errors. So I commented it. But the configuration will be added in couple of weeks as it\u0027s required for proto1 main, it will be uncommented soon.",
+      "parentUuid": "03d57d70_44eb75e7",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "2284b7d04d896a9c13499257a73d18e092ec2eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
