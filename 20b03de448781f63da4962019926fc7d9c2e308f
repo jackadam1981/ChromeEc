@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e47c1c_e061d45e",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-16T10:27:15Z",
+      "side": 1,
+      "message": "No need for deleting end recreating the node, just override the `gpios` property of the existing one:\n\n```\nec_wp_l {\n\tgpios \u003d \u003c\u0026gpioa 1 (GPIO_INPUT | GPIO_ACTIVE_LOW)\u003e;\n};\n```\n\nYou can see the resulting processed output in `build/zephyr/rex/build-ro/zephyr/zephyr.dts.\n\nGuess the ones above should be cleaned as well.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "20b03de448781f63da4962019926fc7d9c2e308f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
