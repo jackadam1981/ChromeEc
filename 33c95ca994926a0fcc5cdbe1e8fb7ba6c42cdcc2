@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ddea7f0_40e545fb",
+        "filename": "board/hatch_fp/ec.tasklist",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-16T23:52:32Z",
+      "side": 1,
+      "message": "Do we need both `fp_task` and `host_command_task` increased? It looks most of the code you are adding are \"host commands\", which I think run in `host_command_task`. \n\nIt\u0027s fine if we do need to increase both, but since size is always an issue I\u0027d like the commit message to document what changes cause the size to increase.\n\nFor example, adding something to the commit message like:\n\n```\nThe fp_command_establish_pk_keygen command needs N more bytes. We increase by 1024 so we have some additional room.\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 54
+      },
+      "revId": "33c95ca994926a0fcc5cdbe1e8fb7ba6c42cdcc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
