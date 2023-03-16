@@ -64,6 +64,30 @@
       },
       "revId": "fe14c338c7837f649441a637665ac5ccc97dbd5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b271dd_0bb2da0e",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-16T22:25:58Z",
+      "side": 1,
+      "message": "I understand it now. It was alraedy synchronous. This CL just exports it. Thanks,",
+      "parentUuid": "8566df73_6fd69113",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 34
+      },
+      "revId": "fe14c338c7837f649441a637665ac5ccc97dbd5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
