@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e351a9a2_7006b80e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-03-16T21:42:53Z",
+      "side": 1,
+      "message": "Thanks for ever thorough reviews.",
+      "revId": "681b71784e3428d8ed116ac2faa9c10ad0c938b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7668395f_92964272",
@@ -26,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30206d37_d97244bf",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-03-16T21:42:53Z",
+      "side": 1,
+      "message": "We could, but already now 26 of the 32 bits are defined with meanings relating to the JEDEC \"serial flash protocol\", used by EEPROM and flash chips.  So I would almost say that if we in the future need more flags or parameters unrelated to serial flash, then another 32-bit argument could be appropriate.",
+      "parentUuid": "7668395f_92964272",
+      "range": {
+        "startLine": 371,
+        "startChar": 18,
+        "endLine": 371,
+        "endChar": 30
+      },
+      "revId": "681b71784e3428d8ed116ac2faa9c10ad0c938b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5bdc61c0_72543002",
         "filename": "chip/stm32/usb_spi.h",
         "patchSetId": 9
@@ -37,6 +78,30 @@
       "writtenOn": "2023-03-16T21:30:48Z",
       "side": 1,
       "message": "Can we remove this?",
+      "range": {
+        "startLine": 292,
+        "startChar": 16,
+        "endLine": 292,
+        "endChar": 23
+      },
+      "revId": "681b71784e3428d8ed116ac2faa9c10ad0c938b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9113bf2f_c364f8f6",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-03-16T21:42:53Z",
+      "side": 1,
+      "message": "The extension to SPI for using two or more wires for signals going the same direction is an invention for EEPROM and serial flash chips.  It is not something that non-flash SPI devices would support (at least not in the same way).  In other words, as far as I understand, there is no such thing as \"generic\" dual/quad-mode SPI, only the serial flash protocol implemented by EEPROMs and flash chips.  (Defined by JEDEC, see e.g.: https://drive.google.com/corp/drive/u/0/folders/1-RcQfcNqzQ0P4SQZcoK_owAQRBhC65Ny )\n\nMaybe using the term EEPROM is confusing, because even though EEPROM chips were the first to use this, the term \"flash\" is much more widespread at this time.  Should I rename to USB_SPI_FLASH_DUAL_SUPPORT ?  (and similarly rename other method and flags to use \"flash\" instead of \"eeprom\")?",
+      "parentUuid": "5bdc61c0_72543002",
       "range": {
         "startLine": 292,
         "startChar": 16,
