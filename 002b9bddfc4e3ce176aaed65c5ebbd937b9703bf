@@ -46,6 +46,30 @@
       },
       "revId": "002b9bddfc4e3ce176aaed65c5ebbd937b9703bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a032da5_4533ebd5",
+        "filename": "include/scoped_fast_cpu.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-16T11:40:13Z",
+      "side": 1,
+      "message": "Note: We have a weak implementation of clock_enable_module here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/system.c;drc\u003dc8234cc5335ad31d27d578d89bab4f2172e4f22a;l\u003d1853\n\nIt would be used for most of the unit tests.",
+      "parentUuid": "1e444a61_6bbfde44",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "002b9bddfc4e3ce176aaed65c5ebbd937b9703bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
