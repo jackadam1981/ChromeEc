@@ -11,6 +11,7 @@
 #include "hooks.h"
 #include "ioexpander.h"
 #include "usb_mux.h"
+#include "usbc/tcpci.h"
 #include "usbc/usb_muxes.h"
 
 #include <zephyr/drivers/gpio.h>
@@ -42,6 +43,11 @@ static void setup_mux(void)
 	}
 	if (val == FW_IO_DB_USB3) {
 		LOG_INF("C1: Setting USB3 mux");
+	}
+	if (val == FW_IO_DB_USB4_ANX7452) {
+		LOG_INF("C1: Setting ANX7452 mux");
+		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_anx7452_port1);
+		TCPC_ENABLE_ALTERNATE_BY_NODELABEL(1, rt1716_tcpc_port1);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, setup_mux, HOOK_PRIO_INIT_I2C);
