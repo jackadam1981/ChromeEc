@@ -3409,7 +3409,7 @@
 #undef CONFIG_LPRAM_SIZE
 
 /* Use Link-Time Optimizations to try to reduce the firmware code size */
-#undef CONFIG_LTO
+#define CONFIG_LTO
 
 /* Provide rudimentary malloc/free like services for shared memory. */
 #undef CONFIG_MALLOC
