@@ -3,9 +3,9 @@
  * found in the LICENSE file.
  */
 
-#include "android.h"
-
 #include <stdlib.h>
+
+#include "android.h"
 
 int in_android(void)
 {

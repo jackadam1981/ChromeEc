@@ -3,11 +3,11 @@
  * found in the LICENSE file.
  */
 
-#include "printf.h"
-#include "uart.h"
-
 #include <zephyr/fff.h>
 #include <zephyr/ztest.h>
+
+#include "printf.h"
+#include "uart.h"
 
 DEFINE_FFF_GLOBALS;
 

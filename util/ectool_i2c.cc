@@ -3,16 +3,15 @@
  * found in the LICENSE file.
  */
 
-#include "comm-host.h"
-#include "ectool.h"
-
 #include <ctype.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include <endian.h>
+
+#include "comm-host.h"
+#include "ectool.h"
 
 int cmd_i2c_protect(int argc, char *argv[])
 {
