@@ -329,6 +329,30 @@
       },
       "revId": "c7e924f86708960cb2a245ef03e8846211985b01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a53d1b5_b95233ff",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-03-17T01:21:41Z",
+      "side": 1,
+      "message": "I understood that this check was because there is no use case for the retimer when the AP is off. This check is also in the anx7483 driver. That driver was used as a reference starting point given that\u0027s a similar chip.\n\nmux-\u003einit happens each time the type-c SM is reset. It\u0027s not typically called in board_reset_pd_mcu(). I think those functions evolved to handle specific requirements for ANX/PS TCPCs to properly sequence the rst and en signals. \n\nFor the ANX7452, we only need to set either USB_EN or DP_EN to enable the chip. For power saving modes, the USB_EN line is set low. I think it\u0027s better to have a GPIO pin attached to the device tree node for this driver. This is similar to what\u0027s been done for the BB/HB retimers.",
+      "parentUuid": "b4d4e28a_a74ff7a3",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 65
+      },
+      "revId": "c7e924f86708960cb2a245ef03e8846211985b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

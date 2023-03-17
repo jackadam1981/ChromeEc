@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "267f32ba_d8fa2c07",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-03-17T01:21:41Z",
+      "side": 1,
+      "message": "It\u0027s only the Top register section that is affected by address strapping. All the other register sections are controlled via registers in the TOP register section.",
+      "parentUuid": "6110fe2b_bcebab4b",
+      "range": {
+        "startLine": 30,
+        "startChar": 59,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08e6fdb4_5002ef14",
@@ -185,6 +209,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "4186b320_cda03129",
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9a49955_a2a88d26",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-03-17T01:21:41Z",
+      "side": 1,
+      "message": "There are register groups for the various sections of the retimer (DP, TBT, USB4, etc). The group of registers in the TopCtl section are what are used to control the operation modes of the ANX7452. The device addresses for these registers are stored themselves in the TOP register section, and it\u0027s only TOP registers that are access via the chips main I2C device address which is selected via the 2 addr strapping pins. \n\n0x40 is the 8 bit default I2C address for the TopCtl section of registers. I think it is safest to use the value stored in [Top:0x91] as opposed to having it hard coded as a macro.",
+      "parentUuid": "b5d11282_271db8a1",
       "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -483,6 +525,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ab320f_1e740567",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-03-17T01:21:41Z",
+      "side": 1,
+      "message": "EC I2C device addresses are always the 7 bit variety. On the AP side we use 8 bit I2C device addresses. This particular case is used to access the TopCtl group of registers. It\u0027s POR reset value will be 0x40 (8 bits). I agree that we need a more nuanced way to handle cases where two of these retimers could be on the same I2C address.\n\nWe could open an issue to handle this case. I don\u0027t think it needs to be solved as part of the initial driver instance.",
+      "parentUuid": "dd2f9c8e_cdaffa1f",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "821810c9_91538711",
@@ -544,6 +610,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "5aca7237_ca621258",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac89670e_8e18e18b",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-03-17T01:21:41Z",
+      "side": 1,
+      "message": "This is effectively just a status register.",
+      "parentUuid": "6462c516_a3a2a9bd",
       "range": {
         "startLine": 40,
         "startChar": 8,
