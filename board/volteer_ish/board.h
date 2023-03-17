@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#undef CONFIG_LTO
+
 /*
  * Allow dangerous commands.
  * TODO: Don't use this on production systems.
