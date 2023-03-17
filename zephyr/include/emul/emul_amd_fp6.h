@@ -8,6 +8,7 @@
 
 #include <zephyr/drivers/emul.h>
 
+void amd_fp6_emul_reset_regs(const struct emul *emul);
 void amd_fp6_emul_set_xbar(const struct emul *emul, bool ready);
 void amd_fp6_emul_set_delay(const struct emul *emul, int delay_ms);
 
