@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2319992a_c791835d",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-03-17T21:01:04Z",
+      "side": 1,
+      "message": "If I understand correctly, the googletest library will be compiled and installed once for each target board, right?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "e5ed6ce20d606c1ec61251cee414ae26c79340d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d935a811_472d4077",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2023-03-17T21:01:04Z",
+      "side": 1,
+      "message": "For host test executables we don\u0027t need to set the `CFLAGS`?\n\n```\nCFLAGS +\u003d $(GOOGLETEST_CFLAGS)\n```",
+      "revId": "e5ed6ce20d606c1ec61251cee414ae26c79340d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
