@@ -122,6 +122,11 @@ def build(opts):
     print(f"# Running {' '.join(cmd)}.")
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
+    # This is used in chromeos-base/ec-utils
+    cmd = ["make", "utils-host", "BOARD=host", f"-j{opts.cpus}"]
+    print(f"# Running {' '.join(cmd)}.")
+    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
+
     cmd = ["make", "print-all-baseboards", f"-j{opts.cpus}"]
     print(f"# Running {' '.join(cmd)}.")
     baseboards = {}
