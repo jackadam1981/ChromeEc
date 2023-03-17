@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a7c646b_6a7bffa1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-17T19:50:39Z",
+      "side": 1,
+      "message": "Can you file a bug and link that bug in the commit message? `Reason for revert: broke build` is not detailed enough to track the underlying issue that let the breakage through the CQ.",
+      "parentUuid": "6ba58534_aa31c357",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 30
+      },
+      "revId": "898c877da5df74ffacd217f565c99ecf03500f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6f39cc4d_74a91da3",
@@ -61,6 +85,23 @@
       "writtenOn": "2023-03-17T03:02:15Z",
       "side": 1,
       "message": "1 second???",
+      "revId": "898c877da5df74ffacd217f565c99ecf03500f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "853671c7_f7a56d95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-17T19:50:39Z",
+      "side": 1,
+      "message": "Please file and add a bug to the commit before reverting.",
       "revId": "898c877da5df74ffacd217f565c99ecf03500f83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
