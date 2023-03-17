@@ -8,8 +8,6 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-#define CONFIG_LTO
-
 /* Free up flash space */
 #ifdef SECTION_IS_RO
 #define CONFIG_DEBUG_ASSERT_BRIEF

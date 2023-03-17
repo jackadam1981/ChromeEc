@@ -28,7 +28,7 @@
 #define CONFIG_CRC8
 
 /* EC Defines */
-#define CONFIG_LTO
+
 #define CONFIG_FPU
 
 /* Verified boot configs */

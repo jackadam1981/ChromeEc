@@ -80,7 +80,7 @@
 #ifndef BOARD_WAND
 #define CONFIG_LOW_POWER_IDLE
 #endif
-#define CONFIG_LTO
+
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_MATH_UTIL
 

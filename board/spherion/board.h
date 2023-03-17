@@ -12,7 +12,7 @@
 /* Chipset config */
 
 /* Optional features */
-#define CONFIG_LTO
+
 #undef CONFIG_LOW_POWER_S0
 
 /*

@@ -17,8 +17,6 @@
 #define VARIANT_DEDEDE_EC_IT8320
 #include "baseboard.h"
 
-#define CONFIG_LTO
-
 /*
  * The workaround can be enabled on a chip variant with 1MB flash.
  * (There is relocation truncated to fit error when building this board)

@@ -8,8 +8,6 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-#define CONFIG_LTO
-
 /* Configure the flash */
 #undef CONFIG_RO_SIZE
 #undef CONFIG_FW_PSTATE_OFF

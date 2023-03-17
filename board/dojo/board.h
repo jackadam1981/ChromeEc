@@ -10,7 +10,7 @@
 #include "baseboard.h"
 
 /* Optional features */
-#define CONFIG_LTO
+
 #define CONFIG_PRESERVE_LOGS
 
 /* Watchdog period in ms */

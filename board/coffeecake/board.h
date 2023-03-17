@@ -9,7 +9,6 @@
 #define __CROS_EC_BOARD_H
 
 /* Free up flash space */
-#define CONFIG_LTO
 
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000

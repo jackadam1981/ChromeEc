@@ -27,7 +27,7 @@
 #define CONFIG_LN9310
 
 /* Save some flash space */
-#define CONFIG_LTO
+
 #define CONFIG_USB_PD_DEBUG_LEVEL 2
 #undef CONFIG_CMD_FLASHINFO
 #undef CONFIG_CMD_MMAPINFO

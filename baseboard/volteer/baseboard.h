@@ -27,7 +27,7 @@
 #define CONFIG_CHIP_INIT_ROM_REGION
 
 /* EC Defines */
-#define CONFIG_LTO
+
 #define CONFIG_BOARD_VERSION_CBI
 #define CONFIG_CRC8
 #define CONFIG_CBI_EEPROM
