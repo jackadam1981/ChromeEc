@@ -199,6 +199,15 @@
 		reg = <0x40>;
 		frs_en_gpio = <&ioex_usb_c0_frs_en>;
 	};
+
+	ppc_port0_syv_alternate: ppc_syv@44 {
+		compatible = "silergy,syv682x";
+		status = "okay";
+		reg = <0x44>;
+		reg = <0x44>;
+		frs_en_gpio = <&ioex_usb_c0_frs_en>;
+		is-alt;
+	};
 };
 
 &i2c3_0 {
