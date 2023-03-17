@@ -16,6 +16,24 @@
       "message": "Did you figure out the chromeos-cr50-dev build failure?",
       "revId": "b606bb74e89b5fa6acf13b8c68a054f736941504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "151de4a7_e444308f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-03-17T01:58:18Z",
+      "side": 1,
+      "message": "any chance it is exceeding flash limits when CR50_DEV\u003d1? \ndid you run `make buildall` in platform/cr50? - presumbit checks require it.",
+      "parentUuid": "f5be4af0_2b4f5aa9",
+      "revId": "b606bb74e89b5fa6acf13b8c68a054f736941504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
