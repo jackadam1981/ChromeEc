@@ -17,6 +17,7 @@
 #include "usbc/tcpc_ps8xxx_emul.h"
 #include "usbc/tcpc_raa489000.h"
 #include "usbc/tcpc_rt1718s.h"
+#include "usbc/tcpc_rt171x.h"
 #include "usbc/tcpci.h"
 #include "usbc/utils.h"
 
@@ -68,6 +69,7 @@ LOG_MODULE_REGISTER(tcpc, CONFIG_GPIO_LOG_LEVEL);
 	CHECK_COMPAT(RT1718S_TCPC_COMPAT, usbc_id, tcpc_id,                    \
 		     TCPC_CONFIG_RT1718S)                                      \
 	CHECK_COMPAT(TCPCI_COMPAT, usbc_id, tcpc_id, TCPC_CONFIG_TCPCI)        \
+	CHECK_COMPAT(RT171X_TCPC_COMPAT, usbc_id, tcpc_id, TCPC_CONFIG_RT171X) \
 	TCPC_CHIP_FIND_EMUL(usbc_id, tcpc_id)
 
 #define TCPC_CHIP(usbc_id)                           \
@@ -88,6 +90,13 @@ MAYBE_CONST struct tcpc_config_t tcpc_config[] = { DT_FOREACH_STATUS_OKAY(
 #define TCPC_ALT_DEFINE(node_id, config_fn)         \
 	COND_CODE_1(DT_PROP_OR(node_id, is_alt, 0), \
 		    (TCPC_ALT_DEFINITION(node_id, config_fn);), ())
+
+/*
+ * Define a struct tcpc_config_t for every TCPC node in the tree with the
+ * "is-alt" property set.
+ */
+DT_FOREACH_STATUS_OKAY_VARGS(RT171X_TCPC_COMPAT, TCPC_ALT_DEFINE,
+			     TCPC_CONFIG_RT171X)
 
 #ifdef CONFIG_PLATFORM_EC_TCPC_INTERRUPT
 
