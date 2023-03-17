@@ -81,3 +81,6 @@ yaviks = register_nissa_project(
     project_name="yaviks",
     chip="it81302bx",
 )
+uldren = nereid.variant(
+    project_name="uldren",
+)
