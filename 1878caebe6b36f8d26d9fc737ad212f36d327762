@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c02175a_300fb38d",
+        "filename": "include/power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-03-17T14:25:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca3a3838_a78a3ef0",
+      "revId": "1878caebe6b36f8d26d9fc737ad212f36d327762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e6dea8b_fd23eec4",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Yes, it should I will add it",
       "parentUuid": "3e6dea8b_fd23eec4",
+      "revId": "1878caebe6b36f8d26d9fc737ad212f36d327762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48588323_93934c03",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-03-17T14:25:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4420e08_830f43de",
       "revId": "1878caebe6b36f8d26d9fc737ad212f36d327762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
