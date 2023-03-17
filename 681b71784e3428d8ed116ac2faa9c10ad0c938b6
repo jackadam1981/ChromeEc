@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76870487_6884381f",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-03-17T19:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9f36090_75497c16",
+      "range": {
+        "startLine": 292,
+        "startChar": 36,
+        "endLine": 292,
+        "endChar": 37
+      },
+      "revId": "681b71784e3428d8ed116ac2faa9c10ad0c938b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b145311_c65cbfef",
@@ -196,6 +220,30 @@
       "writtenOn": "2023-03-17T17:50:31Z",
       "side": 1,
       "message": "nit: I don\u0027t think you need \u0027U\u0027. Can you put these suffix like UL below only where necessary?",
+      "range": {
+        "startLine": 691,
+        "startChar": 38,
+        "endLine": 691,
+        "endChar": 39
+      },
+      "revId": "681b71784e3428d8ed116ac2faa9c10ad0c938b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0ce6f4e_7cded3e0",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-03-17T19:49:40Z",
+      "side": 1,
+      "message": "Right, for the positions, I do not need the U.  But when defining 32-bit values, I am not sure what `1 \u003c\u003c 31` is defined to give you when working with signed numbers.  (At least I see that the `BIT()` macro itself uses `(1U \u003c\u003c n)`\n\nI have retained U suffix on all the mask declarations, to ensure that all 31 bits can be used.",
+      "parentUuid": "2b145311_c65cbfef",
       "range": {
         "startLine": 691,
         "startChar": 38,
