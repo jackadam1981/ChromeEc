@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "061aceda_8dac6bfd",
+        "filename": "driver/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-17T17:44:17Z",
+      "side": 1,
+      "message": "please remove.",
+      "revId": "8f6d3445a935055bc385fc152b7c4014f288fbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "618dcc1e_5bafc2f4",
+        "filename": "include/driver/pse_ltc4291.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-17T17:44:17Z",
+      "side": 1,
+      "message": "Can this be const?",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "8f6d3445a935055bc385fc152b7c4014f288fbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
