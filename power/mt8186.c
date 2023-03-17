@@ -88,7 +88,7 @@ static bool is_s5g3_passed;
  * indicate exiting off state, and don't respect the power signals until chipset
  * on.
  */
-static bool is_exiting_off = true;
+static bool is_exiting_off;
 
 /* Turn on the PMIC power source to AP, this also boots AP. */
 static void set_pmic_pwron(void)
