@@ -16,6 +16,24 @@
       "message": "Yes, LTO saves a bit of space, but we usually wait until we\u0027re really desperate as we lose the helpful symbols. Does zephyr actually define LTO by default? I didn\u0027t see that.",
       "revId": "684b0904416f3a74758dfafff19e8edd9a4672f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "196169e2_0d5a4ea3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-17T21:25:31Z",
+      "side": 1,
+      "message": "\u003e Does zephyr actually define LTO by default?\n\nLooks like it: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/app/ec/Kconfig;l\u003d52;drc\u003dbbeffc0ea7814e58b209c053be777b69de7ce986\n\n\u003e until we\u0027re really desperate as we lose the helpful symbols.\n\nCan you explain what symbols you\u0027re looking for?",
+      "parentUuid": "fb0f0d65_155b80ff",
+      "revId": "684b0904416f3a74758dfafff19e8edd9a4672f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
