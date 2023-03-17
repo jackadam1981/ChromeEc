@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a07a1b_b76fc710",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-17T17:50:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "30206d37_d97244bf",
+      "range": {
+        "startLine": 371,
+        "startChar": 18,
+        "endLine": 371,
+        "endChar": 30
+      },
+      "revId": "681b71784e3428d8ed116ac2faa9c10ad0c938b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bdc61c0_72543002",
@@ -107,6 +131,76 @@
         "startChar": 16,
         "endLine": 292,
         "endChar": 23
+      },
+      "revId": "681b71784e3428d8ed116ac2faa9c10ad0c938b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd67db3_f0588d1e",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-17T17:50:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9113bf2f_c364f8f6",
+      "range": {
+        "startLine": 292,
+        "startChar": 16,
+        "endLine": 292,
+        "endChar": 23
+      },
+      "revId": "681b71784e3428d8ed116ac2faa9c10ad0c938b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f36090_75497c16",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-17T17:50:31Z",
+      "side": 1,
+      "message": "nit: \u0027(\u0027 isn\u0027t needed.",
+      "range": {
+        "startLine": 292,
+        "startChar": 36,
+        "endLine": 292,
+        "endChar": 37
+      },
+      "revId": "681b71784e3428d8ed116ac2faa9c10ad0c938b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b145311_c65cbfef",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-17T17:50:31Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think you need \u0027U\u0027. Can you put these suffix like UL below only where necessary?",
+      "range": {
+        "startLine": 691,
+        "startChar": 38,
+        "endLine": 691,
+        "endChar": 39
       },
       "revId": "681b71784e3428d8ed116ac2faa9c10ad0c938b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
