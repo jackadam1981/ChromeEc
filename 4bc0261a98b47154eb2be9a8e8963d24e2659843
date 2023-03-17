@@ -22,6 +22,30 @@
       },
       "revId": "4bc0261a98b47154eb2be9a8e8963d24e2659843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c88ccf_646797aa",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-03-17T20:20:13Z",
+      "side": 1,
+      "message": "Oops, thanks for pointing out that I missed two occurrences, in my search and replace.",
+      "parentUuid": "4a527d55_c325f560",
+      "range": {
+        "startLine": 680,
+        "startChar": 14,
+        "endLine": 680,
+        "endChar": 26
+      },
+      "revId": "4bc0261a98b47154eb2be9a8e8963d24e2659843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
