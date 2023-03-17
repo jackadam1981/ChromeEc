@@ -17,6 +17,8 @@
 /* Baseboard features */
 #include "base-board.h"
 
+#undef CONFIG_LTO
+
 #undef CONFIG_SYSTEM_UNLOCKED
 
 /*

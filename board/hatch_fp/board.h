@@ -15,6 +15,8 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
+#undef CONFIG_LTO
+
 #undef CONFIG_SYSTEM_UNLOCKED
 
 /*-------------------------------------------------------------------------*
