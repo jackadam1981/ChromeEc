@@ -4,6 +4,7 @@
  */
 
 #include "driver/tcpm/tcpci.h"
+#include "usbc/tcpc_rt171x.h"
 
 #include <zephyr/devicetree.h>
 
