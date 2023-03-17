@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ba58534_aa31c357",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-03-17T18:20:37Z",
+      "side": 1,
+      "message": "Looks like the pupr cl for ec-utils is failing on this cl: crrev/c/4344217\n\nThat cl is abandoned by pupr, but it is the earliest cl with that particular error. (The previous cls also fail, but for a different reason)",
+      "parentUuid": "4d647c7f_84767993",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 30
+      },
+      "revId": "898c877da5df74ffacd217f565c99ecf03500f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6f39cc4d_74a91da3",
