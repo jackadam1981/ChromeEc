@@ -374,6 +374,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "561e8929_02790b81",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-17T01:25:08Z",
+      "side": 1,
+      "message": "The whole test stops as soon as a TEST_ASSERT triggers.",
+      "parentUuid": "3fd2d808_e8eaa71e",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d43145a8_37c0c72c",
         "filename": "test/tablet_broken_sensor.c",
         "patchSetId": 1
@@ -480,6 +504,30 @@
       "side": 1,
       "message": "That still doesn\u0027t address my concerns, but maybe my concerns don\u0027t matter? Or maybe we have so many sleeps in the EC codebase that we don\u0027t care to fix them? To better explain my concerns, let\u0027s imagine that you\u0027re running the test on a HEAVILY loaded machine, perhaps a machine without many cores. It\u0027s not totally absurd that tasks running on that machine could be starved for hundreds of milliseconds. In such a case the 50 ms wouldn\u0027t be enough to let other threads be scheduled and your test will fail. In fact, I remember a case in the past where (in low memory pressure) pretty much all tasks in the system got blocked for over a minute (!).\n\nWhen I first studied unit/integration testing I was told to never use nearly sleep in them. Some random Google search finds \u003chttps://mir.cs.illinois.edu/farah/publications/fse14_flaky.pdf\u003e which says: \"Using a sleep is rarely a good idea when writing tests. As analyzed in our earlier work that focused on writing multithreaded tests [16], the use of sleep makes the test unintuitive, unreliable, and inefficient. It is hard to reason from the sleep calls what ordering among what events they try to enforce. Moreover, sleep calls cannot provide the guarantee that the ordering that the developer wants to enforce among events will indeed happen within the amount of time given in sleep. For that reason, developers tend to over-estimate the time needed in sleep calls, which makes the tests rather inefficient, because most of the time, the event can finish way before the time bound (and yet occasionally it does not finish before the time bound, thus intermittently failing the test)\"",
       "parentUuid": "5786ea70_96f588ef",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f693cb2a_cf5615c6",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-17T01:25:08Z",
+      "side": 1,
+      "message": "We need to sleep in this test: when we set the change the GPIO GPIO_TABLET_MODE_L level, the function gmr_tablet_switch_isr() triggers a delayed function - gmr_tablet_switch_interrupt_debounce_data - by 30ms. So we need to wait for that function to run before we can check the status of the EC.",
+      "parentUuid": "80e78dfe_cf63dcb1",
       "range": {
         "startLine": 92,
         "startChar": 1,
