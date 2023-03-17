@@ -12,9 +12,6 @@
 /* Chipset config */
 #define CONFIG_BRINGUP
 
-/* Optional features */
-#define CONFIG_LTO
-
 /*
  * TODO: Remove this option once the VBAT no longer keeps high when
  * system's power isn't presented.

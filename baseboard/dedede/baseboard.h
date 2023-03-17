@@ -8,8 +8,6 @@
 #ifndef __CROS_EC_BASEBOARD_H
 #define __CROS_EC_BASEBOARD_H
 
-#define CONFIG_LTO
-
 /* Free up additional flash space. */
 #undef CONFIG_CMD_I2C_SCAN
 #undef CONFIG_CMD_I2C_XFER

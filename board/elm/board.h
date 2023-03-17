@@ -16,7 +16,6 @@
 
 /* Free up flash space */
 #undef CONFIG_USB_PD_TCPMV1_DEBUG
-#define CONFIG_LTO
 
 /* Accelero meter and gyro sensor */
 #define CONFIG_ACCEL_KX022

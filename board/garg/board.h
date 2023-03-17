@@ -9,7 +9,7 @@
 #define __CROS_EC_BOARD_H
 
 /* Free up flash space */
-#define CONFIG_LTO
+
 #undef CONFIG_CMD_ACCELSPOOF
 #undef CONFIG_CMD_BATTFAKE
 #undef CONFIG_CMD_MEM

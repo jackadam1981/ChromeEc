@@ -108,7 +108,7 @@
 
 /* Optional features */
 #define CONFIG_LOW_POWER_IDLE
-#define CONFIG_LTO
+
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_MATH_UTIL
 

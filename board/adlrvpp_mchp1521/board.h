@@ -23,7 +23,6 @@
 #undef CONFIG_CMD_GETTIME
 
 /* Enable LTO */
-#define CONFIG_LTO
 
 /*
  * Macros for GPIO signals used in common code that don't match the
