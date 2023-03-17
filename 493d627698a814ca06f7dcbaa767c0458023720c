@@ -446,6 +446,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8dad576c_c5ef58e9",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-17T19:39:56Z",
+      "side": 1,
+      "message": "\u003e I see your point, test should be independent from each other.\n\u003e having said that, I want to limit setting the GPIOs outside the test code as much as possible: \n\u003e \n\u003e Without\n\u003e \u0027\u0027\u0027\n\u003e gpio_set_level(GPIO_LID_OPEN, 0);\n\u003e gpio_set_level(GPIO_TABLET_MODE_L, 1);\n\u003e ```\n\u003e the emulator set both GPIO to low, so the GMR sensors would indicate the device lid angle is both 0 and 360 degree. Setting one GPIO up is required.\n\u003e \n\u003e Between tests, that condition should not happen. If it does, I want to be able to detect it. I also wanted to detect unwanted state changes - especially in the next CL where sensors and GPIO are interacting together.\n\nThe tests run one after another, though. What is the point of trying to detect things that happen between tests? If you want to make sure the state isn\u0027t changing when nothing is happening then add a 3rd test that has a loop with a sleep in it and check that the state doesn\u0027t change in the loop.\n\n---\n\nAlso: what of my worry that I\u0027ve detected an actual bug while poking around. Specifically if you\u0027re in tablet mode and then (lid_open\u003d1, tablet_mode_l\u003d0) and then you quickly tablet_mode_l\u003d1 lid_open\u003d0 at the same time (before tablet_mode_l has a chance to debounce) then you\u0027ll miss a transition. That seemed like a valid issue.",
+      "parentUuid": "f96f2fea_aea35708",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d43145a8_37c0c72c",
         "filename": "test/tablet_broken_sensor.c",
         "patchSetId": 1
@@ -718,6 +742,30 @@
       "side": 1,
       "message": "Maybe that could go in a comment?",
       "parentUuid": "c558dca0_8553b30e",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 38
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39ca65db_e6110bc4",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-17T19:39:56Z",
+      "side": 1,
+      "message": "Are you going to add a comment here?",
+      "parentUuid": "881335a7_546e7c06",
       "range": {
         "startLine": 111,
         "startChar": 16,
