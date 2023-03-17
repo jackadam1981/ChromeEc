@@ -422,6 +422,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f96f2fea_aea35708",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-17T18:52:07Z",
+      "side": 1,
+      "message": "I see your point, test should be independent from each other.\nhaving said that, I want to limit setting the GPIOs outside the test code as much as possible: \n\nWithout\n\u0027\u0027\u0027\ngpio_set_level(GPIO_LID_OPEN, 0);\ngpio_set_level(GPIO_TABLET_MODE_L, 1);\n```\nthe emulator set both GPIO to low, so the GMR sensors would indicate the device lid angle is both 0 and 360 degree. Setting one GPIO up is required.\n\nBetween tests, that condition should not happen. If it does, I want to be able to detect it. I also wanted to detect unwanted state changes - especially in the next CL where sensors and GPIO are interacting together.\n\nAnother alternative is to have only one single big test.",
+      "parentUuid": "549e3f7c_523fb64e",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d43145a8_37c0c72c",
         "filename": "test/tablet_broken_sensor.c",
         "patchSetId": 1

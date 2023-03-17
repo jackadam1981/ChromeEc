@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b506ccb_4643f8ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-17T18:52:07Z",
+      "side": 1,
+      "message": "Sorry, `make -j runtests` fooled me. Should have looked the output more closely.",
+      "parentUuid": "a2641549_4c8a4b14",
+      "revId": "e66b304712892064c9b7771035d242815e568498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59cf27fb_52dcaf15",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e98ea945_4397d4fb",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-17T18:52:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59cf27fb_52dcaf15",
+      "revId": "e66b304712892064c9b7771035d242815e568498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "529368e3_632299d9",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-03-17T16:27:21Z",
       "side": 1,
       "message": "of",
+      "range": {
+        "startLine": 95,
+        "startChar": 14,
+        "endLine": 95,
+        "endChar": 15
+      },
+      "revId": "e66b304712892064c9b7771035d242815e568498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35a9b510_375cb409",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-17T18:52:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "529368e3_632299d9",
       "range": {
         "startLine": 95,
         "startChar": 14,
