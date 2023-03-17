@@ -34,6 +34,24 @@
       "parentUuid": "fb0f0d65_155b80ff",
       "revId": "684b0904416f3a74758dfafff19e8edd9a4672f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d567fdd_3ea29e93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2023-03-17T21:37:01Z",
+      "side": 1,
+      "message": "Cool, thanks for the pointer.\n\nI was referring to the function names in the disassembly, however, I just tried it and now they\u0027re not mangled with LTO enabled. Before, they would be mangled and just named `_lto_9239` or something similar.",
+      "parentUuid": "196169e2_0d5a4ea3",
+      "revId": "684b0904416f3a74758dfafff19e8edd9a4672f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
