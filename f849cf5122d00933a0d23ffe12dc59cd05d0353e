@@ -160,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27863cd5_02ecc9e8",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-17T08:22:23Z",
+      "side": 1,
+      "message": "I hardcoded it in latest revision",
+      "parentUuid": "267f32ba_d8fa2c07",
+      "range": {
+        "startLine": 30,
+        "startChar": 59,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08e6fdb4_5002ef14",
@@ -227,6 +251,24 @@
       "side": 1,
       "message": "There are register groups for the various sections of the retimer (DP, TBT, USB4, etc). The group of registers in the TopCtl section are what are used to control the operation modes of the ANX7452. The device addresses for these registers are stored themselves in the TOP register section, and it\u0027s only TOP registers that are access via the chips main I2C device address which is selected via the 2 addr strapping pins. \n\n0x40 is the 8 bit default I2C address for the TopCtl section of registers. I think it is safest to use the value stored in [Top:0x91] as opposed to having it hard coded as a macro.",
       "parentUuid": "b5d11282_271db8a1",
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea9d9c35_dcb36d1f",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-17T08:22:23Z",
+      "side": 1,
+      "message": "I hardcoded it in latest revision, also mentioned that it\u0027s 7 bit address in it\u0027s comment/doc string.",
+      "parentUuid": "a9a49955_a2a88d26",
       "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -303,6 +345,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "7ede10c2_4daeeaa7",
+      "range": {
+        "startLine": 87,
+        "startChar": 23,
+        "endLine": 87,
+        "endChar": 47
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c79cfc8_99626ca5",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-17T08:22:23Z",
+      "side": 1,
+      "message": "At present we don\u0027t have info required to be stored at instance level expect the gpio pins. In current revision we are storing usb_en, dp_en signals per instance/port.",
+      "parentUuid": "54634297_ecb71d60",
       "range": {
         "startLine": 87,
         "startChar": 23,
@@ -539,6 +605,30 @@
       "side": 1,
       "message": "EC I2C device addresses are always the 7 bit variety. On the AP side we use 8 bit I2C device addresses. This particular case is used to access the TopCtl group of registers. It\u0027s POR reset value will be 0x40 (8 bits). I agree that we need a more nuanced way to handle cases where two of these retimers could be on the same I2C address.\n\nWe could open an issue to handle this case. I don\u0027t think it needs to be solved as part of the initial driver instance.",
       "parentUuid": "dd2f9c8e_cdaffa1f",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "f849cf5122d00933a0d23ffe12dc59cd05d0353e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dc298a4_b38fe22e",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-17T08:22:23Z",
+      "side": 1,
+      "message": "I hardcoded it in latest revision",
+      "parentUuid": "84ab320f_1e740567",
       "range": {
         "startLine": 26,
         "startChar": 32,

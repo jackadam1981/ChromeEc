@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5a7d1e0_e4d12e9a",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-17T08:22:23Z",
+      "side": 1,
+      "message": "It\u0027s hardcoded it now",
+      "parentUuid": "36a70cba_1d1c1e29",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "c7e924f86708960cb2a245ef03e8846211985b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09a37322_4da876e4",
@@ -345,6 +369,30 @@
       "side": 1,
       "message": "I understood that this check was because there is no use case for the retimer when the AP is off. This check is also in the anx7483 driver. That driver was used as a reference starting point given that\u0027s a similar chip.\n\nmux-\u003einit happens each time the type-c SM is reset. It\u0027s not typically called in board_reset_pd_mcu(). I think those functions evolved to handle specific requirements for ANX/PS TCPCs to properly sequence the rst and en signals. \n\nFor the ANX7452, we only need to set either USB_EN or DP_EN to enable the chip. For power saving modes, the USB_EN line is set low. I think it\u0027s better to have a GPIO pin attached to the device tree node for this driver. This is similar to what\u0027s been done for the BB/HB retimers.",
       "parentUuid": "b4d4e28a_a74ff7a3",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 65
+      },
+      "revId": "c7e924f86708960cb2a245ef03e8846211985b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc1a725e_7533b21f",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-17T08:22:23Z",
+      "side": 1,
+      "message": "I am enabling a usb_en gpio pin in init in latest revision. If one/both of usb_en or dp_en pins are enabled the chip will be alive otherwise it will be turned off. The wait time is added back as it\u0027s required to wait till chip will be alive after enabling the pin.",
+      "parentUuid": "5a53d1b5_b95233ff",
       "range": {
         "startLine": 91,
         "startChar": 4,
