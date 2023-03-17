@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bbd5fd1_c7f95bbd",
+        "filename": "driver/pse_ltc4291.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-03-17T03:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a75dac0_a146ab08",
+      "range": {
+        "startLine": 22,
+        "startChar": 52,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "cf18fdaa50a846974e21a4e25bb2c55da98658e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e04ae21_9bbf1dfb",
@@ -87,6 +111,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b226d4b4_4ae201a9",
+        "filename": "driver/pse_ltc4291.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-03-17T03:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ccc7323_04ed55a3",
+      "range": {
+        "startLine": 61,
+        "startChar": 41,
+        "endLine": 61,
+        "endChar": 42
+      },
+      "revId": "cf18fdaa50a846974e21a4e25bb2c55da98658e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fdd2f27_d8e0e3b4",
+        "filename": "driver/pse_ltc4291.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-03-17T03:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e04ae21_9bbf1dfb",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "cf18fdaa50a846974e21a4e25bb2c55da98658e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "034a061b_a51d8c16",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "164312a5_2848d37b",
+        "filename": "driver/pse_ltc4291.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-03-17T03:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "034a061b_a51d8c16",
+      "range": {
+        "startLine": 63,
+        "startChar": 10,
+        "endLine": 63,
+        "endChar": 13
+      },
+      "revId": "cf18fdaa50a846974e21a4e25bb2c55da98658e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10ad828b_eba24fdf",
@@ -123,6 +219,30 @@
       "writtenOn": "2023-03-16T20:40:23Z",
       "side": 1,
       "message": "nit: EC_SUCCESS (or just if (err)).",
+      "range": {
+        "startLine": 160,
+        "startChar": 12,
+        "endLine": 160,
+        "endChar": 13
+      },
+      "revId": "cf18fdaa50a846974e21a4e25bb2c55da98658e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc93c56_245d0833",
+        "filename": "driver/pse_ltc4291.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-03-17T03:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10ad828b_eba24fdf",
       "range": {
         "startLine": 160,
         "startChar": 12,
