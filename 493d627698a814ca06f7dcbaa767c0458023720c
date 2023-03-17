@@ -398,6 +398,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "549e3f7c_523fb64e",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-17T16:27:21Z",
+      "side": 1,
+      "message": "Ah, so a `TEST_ASSERT` in `test_start_lid_close()` will cause `test_start_tablet_mode()` not to run? That\u0027s not at all what I\u0027d expect. I guess I can try confirming...\n\nOK, so I just tried this and I\u0027m convinced I\u0027m right, but feel free to tell me why I\u0027m wrong! :-) Here\u0027s what I tried:\n1. In `test_start_lid_close()`, I put a `TEST_ASSERT(false);` right before the `/* Going out o 360 mode, no change. */` comment. I ran `make -j run-tablet_broken_sensor` and I saw this at the end:\n```\ntest/tablet_broken_sensor.c:95: ASSERTION failed: false\nFail\nRunning test_start_tablet_mode...\n[4295.067307 Setting GPIO_LID_OPEN to 1]\n[4295.067308 Setting GPIO_TABLET_MODE_L to 0]\ntest/tablet_broken_sensor.c:118: ASSERTION failed: tablet_hook_count \u003d\u003d 2\nFail\nFail! (2 tests)\n```\n2. I moved the assert I added in step #1 to the _end_ of `test_start_lid_close()` (right before the `return EC_SUCCESS`). I ran `make -j run-tablet_broken_sensor` and I saw this at the end:\n```\ntest/tablet_broken_sensor.c:107: ASSERTION failed: false\nFail\nRunning test_start_tablet_mode...\n...\nOK\nFail! (1 tests)\n```\n\nThe above proves exactly what I was saying: a failure in the first test can cascade into a failure of the second test because you don\u0027t reset the state properly.\n\nSo I went and tried to fix it as I suggested, by making `test_init()` blank and moving the stuff to `before_test()`. I ended up getting it working but also finding a few surprising things. Specifically, I could avoid the cascading failures by making `before_test()` and `test_init()` look like this:\n\n```\nvoid before_test(void)\n{\n\t/* Make sure the device lid is in a consistent state (close). */\n\tgpio_set_level(GPIO_TABLET_MODE_L, 1);\n\tmsleep(50);\n\tgpio_set_level(GPIO_LID_OPEN, 0);\n\tmsleep(50);\n\n\ttablet_hook_count \u003d 1;\n}\n\nvoid test_init(void)\n{\n}\n```\n\nIf I do that then #1 and #2 above _both_ show just one failure (the assert(false)), not a cascading failure.\n\nThe surprising things I found while doing the above:\n* I could only avoid the cascading failures if I set \"tablet mode\" first and then \"lid open\". This is opposite the order you have. If I used the order you had then it wouldn\u0027t work. Is this a sign of a bug? It seems like maybe we ignore the \"lid closed\" GPIO if we\u0027re in \"tablet mode\" and then when \"tablet mode\" goes away we don\u0027t re-consider \"lid closed\"?\n* I needed the `msleep(50)` after the setting of the tablet mode. If I didn\u0027t have it then I also couldn\u0027t avoid the cascading failures. Even changing the `msleep()` after setting \"lid open\" to 100 wasn\u0027t enough. We absolutely had to let `GPIO_TABLET_MODE_L` debounce before setting `GPIO_LID_OPEN`. This feels like it must be a bug.",
+      "parentUuid": "561e8929_02790b81",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d43145a8_37c0c72c",
         "filename": "test/tablet_broken_sensor.c",
         "patchSetId": 1
@@ -528,6 +552,30 @@
       "side": 1,
       "message": "We need to sleep in this test: when we set the change the GPIO GPIO_TABLET_MODE_L level, the function gmr_tablet_switch_isr() triggers a delayed function - gmr_tablet_switch_interrupt_debounce_data - by 30ms. So we need to wait for that function to run before we can check the status of the EC.",
       "parentUuid": "80e78dfe_cf63dcb1",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc4a04bd_6e4c2861",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-17T16:27:21Z",
+      "side": 1,
+      "message": "Right. I understand that you need to wait, my hope was that you could wait for something more predictable. For example, is there some way to wait until all delayed functions currently pending have finished? When that happens then you know you\u0027re done.",
+      "parentUuid": "f693cb2a_cf5615c6",
       "range": {
         "startLine": 92,
         "startChar": 1,

@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2641549_4c8a4b14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-17T16:27:21Z",
+      "side": 1,
+      "message": "Does not compile. I\u0027m still concerned about the test state resetting, too.",
+      "revId": "e66b304712892064c9b7771035d242815e568498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59cf27fb_52dcaf15",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-17T16:27:21Z",
+      "side": 1,
+      "message": "```\nchromeos-ec-9999: common/tablet_mode.c: In function \u0027tablet_set_mode\u0027:\nchromeos-ec-9999: common/tablet_mode.c:95:48: error: implicit declaration of function \u0027lid_open\u0027; did you mean \u0027lid_is_open\u0027? [-Werror\u003dimplicit-function-declaration]\nchromeos-ec-9999:    95 |             ((gmr_sensor_at_360 \u0026\u0026 !mode) || (!lid_open() \u0026\u0026 mode))) {\nchromeos-ec-9999:       |                                                ^~~~~~~~\nchromeos-ec-9999:       |                                                lid_is_open\n```",
+      "revId": "e66b304712892064c9b7771035d242815e568498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "529368e3_632299d9",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-17T16:27:21Z",
+      "side": 1,
+      "message": "of",
+      "range": {
+        "startLine": 95,
+        "startChar": 14,
+        "endLine": 95,
+        "endChar": 15
+      },
+      "revId": "e66b304712892064c9b7771035d242815e568498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
