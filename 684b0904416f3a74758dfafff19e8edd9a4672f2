@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb0f0d65_155b80ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2023-03-17T21:20:18Z",
+      "side": 1,
+      "message": "Yes, LTO saves a bit of space, but we usually wait until we\u0027re really desperate as we lose the helpful symbols. Does zephyr actually define LTO by default? I didn\u0027t see that.",
+      "revId": "684b0904416f3a74758dfafff19e8edd9a4672f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
