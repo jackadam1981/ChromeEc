@@ -34,6 +34,24 @@
       "parentUuid": "8c8d0acd_fc3f7ccb",
       "revId": "bf6102b41e5ef48cf06f5ed7bde3ccd8ba400cec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c93d8c_cd1a5fdc",
+        "filename": "common/usbc/ap_vdm_control.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-17T22:39:18Z",
+      "side": 1,
+      "message": "Perhaps pending would be clearer.",
+      "parentUuid": "ae8239ff_d1a5626b",
+      "revId": "bf6102b41e5ef48cf06f5ed7bde3ccd8ba400cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
