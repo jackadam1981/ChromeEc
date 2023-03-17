@@ -22,6 +22,30 @@
       },
       "revId": "067483272f8a3446bdf1a355656df78a3c465b43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f927bbce_89d06e07",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-03-17T19:44:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25214dcf_d20ebcfe",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "067483272f8a3446bdf1a355656df78a3c465b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

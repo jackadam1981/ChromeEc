@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e20a395_628896bc",
+        "filename": "zephyr/dts/bindings/usbc/tcpc/richtek,rt1718s-tcpc.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-03-17T19:44:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0058fc69_f3071d69",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "bdaba201e7741d94680cc1fd4f7da588e3fa3864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7115543a_d626ab2b",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-24T00:22:24Z",
       "side": 1,
       "message": "The reset signal is active low on the PS8xxx devices.  This is actually an error in the original config, but the logic that asserts the reset is written to set the physical level to 0 here:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/herobrine/src/usbc_config.c;l\u003d148\n\nBefore creating the common logic, the polarity of these reset signals should be corrected.\n\nThe correct logic should be:\n```\n\t\tgpio_usb_c0_pd_rst_l: usb_c0_pd_rst_l {\n\t\t        /* Set initial level to inactive */\n\t\t\tgpios \u003d \u003c\u0026gpiof 1 (GPIO_OUTPUT_LOW | GPIO_OUTPUT_INIT_LOGICAL | GPIO_ACTIVE_LOW)\u003e;\n\t\t};\n\n        /* Assert reset to the active state */\t\t\n\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c0_pd_rst_l), 1);\n\tmsleep(PS8XXX_RESET_DELAY_MS);\n\t/* Clear reset to the inactive state */\n\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c0_pd_rst_l), 0);\n\n```\n\nBy having correct polarity, then the shared code can always check that `gpio_pin_get_dt()` returns 0, to indicate the reset is inactive (physical state of high for an active low signal, and physical state of low for an active high signal).",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "bdaba201e7741d94680cc1fd4f7da588e3fa3864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e884693b_7ec03ec1",
+        "filename": "zephyr/program/herobrine/hoglin/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-03-17T19:44:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7115543a_d626ab2b",
       "range": {
         "startLine": 54,
         "startChar": 0,

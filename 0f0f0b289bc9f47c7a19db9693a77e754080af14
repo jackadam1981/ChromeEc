@@ -22,6 +22,30 @@
       },
       "revId": "0f0f0b289bc9f47c7a19db9693a77e754080af14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d39d9999_b8225e98",
+        "filename": "zephyr/program/corsola/src/npcx_usbc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-03-17T19:44:37Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "1332f69d_a4f31292",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 55
+      },
+      "revId": "0f0f0b289bc9f47c7a19db9693a77e754080af14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
