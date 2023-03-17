@@ -94,6 +94,30 @@
       },
       "revId": "c36b7af95bce1e9ca217153c49e1b1dc0d0f9a35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "197e609c_bdd939ad",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-17T16:52:48Z",
+      "side": 1,
+      "message": "I think the pattern you should use is to update  zephyr/drivers/cros_rtc/Kconfig and add a `select PLATFORM_EC_RTC` to the [`CROS_RTC_TYPE`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/drivers/cros_rtc/Kconfig;l\u003d7)",
+      "parentUuid": "d79d613c_b236d5e0",
+      "range": {
+        "startLine": 570,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 0
+      },
+      "revId": "c36b7af95bce1e9ca217153c49e1b1dc0d0f9a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
