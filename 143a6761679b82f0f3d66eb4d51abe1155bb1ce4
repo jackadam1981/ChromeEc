@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1e48e4d_0ae8024e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-17T21:45:40Z",
+      "side": 1,
+      "message": "this is the kind of change that needs to be verified\nacross all affected chips and toolchains.\n\nnpcx7, npcx9 based boards should be fine since\nwe have plenty of examples of LTO working as intended.\n\nwe need to confirm this is safe for other ECs.",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 9
+      },
+      "revId": "143a6761679b82f0f3d66eb4d51abe1155bb1ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
