@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d806e797_170302df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-17T18:56:09Z",
+      "side": 1,
+      "message": "I\u0027m not very clear on the dynamic import part of this. You might just want to have this reviewed by someone who knows Python better.",
+      "revId": "5fb999c20f3b66a168f434b09bf4e347339cabe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e844b85_32aada97",
+        "filename": "zephyr/zmake/zmake/named_gpios.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-17T18:56:09Z",
+      "side": 1,
+      "message": "Nit: Configure-time",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "5fb999c20f3b66a168f434b09bf4e347339cabe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4730ceb_8a87ba3f",
+        "filename": "zephyr/zmake/zmake/named_gpios.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-17T18:56:09Z",
+      "side": 1,
+      "message": "Can\u0027t you just add this path to the Python environment at a higher level and import this module directly?",
+      "revId": "5fb999c20f3b66a168f434b09bf4e347339cabe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "095583ca_73ee4879",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-03-17T18:56:09Z",
+      "side": 1,
+      "message": "Nit/possibly out of scope, but the semantics of `_configure_one_build` and `verify_no_duplicates` seem a little confused.\n\nIt looks like the return values in this call chain have shell-status semantics, i.e. 0 is good, and anything else is bad. `verify_no_duplicates` has \"number of duplicates\" semantics, and it just happens that 0 is the good number also. It seems more natural to me that `verify_no_duplicates` should return `True`/`False` or that it should be called something like `get_number_of_duplicates`, and the \"translation\" should be commented here.",
+      "revId": "5fb999c20f3b66a168f434b09bf4e347339cabe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
