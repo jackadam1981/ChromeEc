@@ -345,6 +345,10 @@ static int spi_dma_is_complete(int port)
 }
 
 static uint8_t spi_chip_select_already_asserted[ARRAY_SIZE(SPI_REGS)];
+static uint8_t *spi_buf[ARRAY_SIZE(SPI_REGS)];
+static uint8_t *spi_rxdata[ARRAY_SIZE(SPI_REGS)];
+static int spi_txlen[ARRAY_SIZE(SPI_REGS)];
+static int spi_rxlen[ARRAY_SIZE(SPI_REGS)];
 
 int spi_transaction_async(const struct spi_device_t *spi_device,
 			  const uint8_t *txdata, int txlen, uint8_t *rxdata,
@@ -355,7 +359,6 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	int full_readback = 0;
 
 	stm32_spi_regs_t *spi = SPI_REGS[port];
-	char *buf = NULL;
 
 	// gpio_set_level(GPIO_UART_DBG_TX_AP_RX_INA_SCL, 0);
 
@@ -363,16 +366,18 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	if (!spi_enabled[port])
 		return EC_ERROR_BUSY;
 
-#ifndef CONFIG_SPI_HALFDUPLEX
 	if (rxlen == SPI_READBACK_ALL) {
-		buf = rxdata;
 		full_readback = 1;
 	} else {
-		rv = shared_mem_acquire(MAX(txlen, rxlen), &buf);
+		rv = shared_mem_acquire(txlen + rxlen, (char **)&spi_buf[port]);
 		if (rv != EC_SUCCESS)
 			return rv;
+		memcpy(spi_buf[port], txdata, txlen);
+		memset(spi_buf[port] + txlen, 0xFF, rxlen);
+		spi_rxdata[port] = rxdata;
+		spi_rxlen[port] = rxlen;
+		spi_txlen[port] = txlen;
 	}
-#endif
 
 	if (IS_ENABLED(CONFIG_USB_SPI)) {
 		spi_chip_select_already_asserted[port] =
@@ -385,58 +390,21 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	spi_clear_rx_fifo(spi);
 
 	/* Initiate write part of the transaction, non-blocking. */
-	if (txlen) {
-		// gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 0);
-		rv = spi_dma_start(port, txdata, buf, txlen);
-		// gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 1);
-		if (rv != EC_SUCCESS)
-			goto err_free;
-#ifdef CONFIG_SPI_HALFDUPLEX
-		spi->cr1 |= STM32_SPI_CR1_BIDIOE;
-#endif
-	}
 
-	if (full_readback)
-		return EC_SUCCESS;
+	// gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 0);
+	rv = spi_dma_start(port, full_readback ? txdata : spi_buf[port],
+			   full_readback ? rxdata : spi_buf[port],
+			   full_readback ? txlen : txlen + rxlen);
+	// gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 1);
+	if (rv != EC_SUCCESS)
+		goto err_free;
 
-	if (rxlen) {
-		/*
-		 * If "write then read" was requested, then we have to wait for
-		 * the write to complete, before we can initiate read.
-		 */
-		// gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 0);
-		if (txlen) {
-			rv = spi_dma_wait(port);
-			// gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 1);
-			if (rv != EC_SUCCESS)
-				goto err_free;
-
-			spi_clear_tx_fifo(spi);
-			// gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 0);
-		}
-
-		/* Initiate read part of the transaction, non-blocking. */
-		rv = spi_dma_start(port, buf, rxdata, rxlen);
-		// gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 1);
-		if (rv != EC_SUCCESS)
-			goto err_free;
-#ifdef CONFIG_SPI_HALFDUPLEX
-		spi->cr1 &= ~STM32_SPI_CR1_BIDIOE;
-#endif
-	}
-
-	/*
-	 * At this point, there is EITHER a pending non-blocking write OR a
-	 * pending non-blocking read.  In either case, spi_transaction_flush()
-	 * will wait for completion of the DMA transfer, and also make sure
-	 * that any last bits in the transmit shift register is flushed.
-	 */
+	return EC_SUCCESS;
 
 err_free:
-#ifndef CONFIG_SPI_HALFDUPLEX
-	if (!full_readback)
-		shared_mem_release(buf);
-#endif
+	if (spi_buf[port])
+		shared_mem_release(spi_buf[port]);
+	spi_buf[port] = 0;
 	// gpio_set_level(GPIO_UART_DBG_TX_AP_RX_INA_SCL, 1);
 	// gpio_set_level(GPIO_UART_AP_TX_DBG_RX_INA_SDA, 1);
 	return rv;
@@ -464,6 +432,12 @@ int spi_transaction_flush(const struct spi_device_t *spi_device)
 	    !spi_chip_select_already_asserted[spi_device->port]) {
 		/* Drive SS high */
 		gpio_set_level(spi_device->gpio_cs, 1);
+	}
+	if (spi_buf[port]) {
+		memcpy(spi_rxdata[port], spi_buf[port] + spi_txlen[port],
+		       spi_rxlen[port]);
+		shared_mem_release(spi_buf[port]);
+		spi_buf[port] = 0;
 	}
 
 	return rv;
