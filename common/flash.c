@@ -679,6 +679,22 @@ test_mockable int crec_flash_read(int offset, int size, char *data)
 	crec_flash_lock_mapped_storage(0);
 	return EC_SUCCESS;
 #else
+	if (CONFIG_PLATFORM_EC_CBI_FLASH) {
+		int cbi_end = CBI_FLASH_OFFSET + CBI_IMAGE_SIZE;
+		int sec_end = offset + size;
+		if (check_cbi_section_overlap(offset, size)) {
+			if (offset < CBI_FLASH_OFFSET) {
+				RETURN_ERROR(crec_flash_physical_read(offset, CBI_FLASH_OFFSET - offset, data));
+			}
+			for(int i = MAX(CBI_FLASH_OFFSET, offset); i < MIN(cbi_end, sec_end); i++) {
+				data[i - offset] = 0xFF;
+			}
+			if (sec_end > cbi_end) {
+				RETURN_ERROR(crec_flash_physical_read(cbi_end, sec_end - cbi_end, data + cbi_end - offset));
+			}
+			return 0;
+		}
+	}
 	return crec_flash_physical_read(offset, size, data);
 #endif
 }
@@ -721,12 +737,39 @@ static void flash_abort_or_invalidate_hash(int offset, int size)
 #endif
 }
 
+bool check_cbi_section_overlap(int offset, int size){
+	int cbi_start = CBI_FLASH_OFFSET;
+	int cbi_end = CBI_FLASH_OFFSET + CBI_IMAGE_SIZE;
+	int sec_start = offset;
+	int sec_end = offset + size;
+
+	if((sec_end <= cbi_start) || (sec_start >= cbi_end)) {
+		return false;
+	}
+	return true;
+}
+
+
 int crec_flash_write(int offset, int size, const char *data)
 {
 	if (!flash_range_ok(offset, size, CONFIG_FLASH_WRITE_SIZE))
 		return EC_ERROR_INVAL; /* Invalid range */
 
 	flash_abort_or_invalidate_hash(offset, size);
+
+	if (CONFIG_PLATFORM_EC_CBI_FLASH) {
+		int cbi_end = CBI_FLASH_OFFSET + CBI_IMAGE_SIZE;
+		int sec_end = offset + size;
+		if (check_cbi_section_overlap(offset, size)) {
+			if (offset < CBI_FLASH_OFFSET) {
+				RETURN_ERROR(crec_flash_physical_write(offset, CBI_FLASH_OFFSET - offset, data));
+			}
+			if (sec_end > cbi_end) {
+				RETURN_ERROR(crec_flash_physical_write(cbi_end, sec_end - cbi_end, data + cbi_end - offset));
+			}
+			return 0;
+		}
+	}
 
 	return crec_flash_physical_write(offset, size, data);
 }
@@ -739,6 +782,20 @@ int crec_flash_erase(int offset, int size)
 #endif
 
 	flash_abort_or_invalidate_hash(offset, size);
+
+	if (CONFIG_PLATFORM_EC_CBI_FLASH) {
+		int cbi_end = CBI_FLASH_OFFSET + CBI_IMAGE_SIZE;
+		int sec_end = offset + size;
+		if (check_cbi_section_overlap(offset, size)) {
+			if (offset < CBI_FLASH_OFFSET) {f
+				RETURN_ERROR(crec_flash_physical_erase(offset, CBI_FLASH_OFFSET - offset));
+			}
+			if (sec_end > cbi_end) {
+				RETURN_ERROR(crec_flash_physical_erase(cbi_end, sec_end - cbi_end));
+			}
+			return 0;
+		}
+	}
 
 	return crec_flash_physical_erase(offset, size);
 }
