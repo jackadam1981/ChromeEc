@@ -513,6 +513,11 @@ void i2c_port_restore(void)
 	}
 }
 
+int i2c_get_line_levels(int port)
+{
+	return I2C_LINE_IDLE;
+}
+
 void i2c_init(void)
 {
 	for (int i = 0; i < i2c_ports_used; i++) {
