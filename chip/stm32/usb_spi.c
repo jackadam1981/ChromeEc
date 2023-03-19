@@ -571,6 +571,7 @@ static uint16_t finish_spi_transfer(const struct spi_device_t *current_device,
 	const uint32_t flash_flags = 0;
 #endif
 	uint16_t status_code = EC_SUCCESS;
+
 	if (flash_flags & FLASH_FLAG_POLL) {
 		/* After main transaction, poll until no longer "busy". */
 		static timestamp_t deadline;
@@ -613,6 +614,8 @@ void usb_spi_deferred(void)
 		&usb_spi_state.receive_packet;
 	struct usb_spi_packet_ctx *transmit_packet =
 		&usb_spi_state.transmit_packet;
+	gpio_set_level(GPIO_DEBUG0, 0);
+	gpio_set_level(GPIO_DEBUG1, 0);
 	transmit_packet->packet_size = 0;
 
 	if (IS_ENABLED(CONFIG_USB_SPI_IGNORE_HOST_SIDE_ENABLE))
@@ -639,6 +642,7 @@ void usb_spi_deferred(void)
 			&spi_devices[usb_spi_state.current_spi_device_idx];
 		bool custom_board_driver = current_device->usb_flags &
 					   USB_SPI_CUSTOM_SPI_DEVICE;
+		gpio_set_level(GPIO_DEBUG1, 1);
 		if (custom_board_driver ?
 			    usb_spi_board_transaction_is_complete(
 				    current_device) :
@@ -651,19 +655,24 @@ void usb_spi_deferred(void)
 					spi_transaction_flush(current_device);
 			usb_spi_state.other_txn_status = OTHER_TXN_DONE;
 		}
+		gpio_set_level(GPIO_DEBUG1, 0);
 	}
 
+	gpio_set_level(GPIO_DEBUG0, 1);
 	/* Read any packets from the endpoint. */
 	usb_spi_read_packet(receive_packet);
 	if (receive_packet->packet_size) {
 		usb_spi_process_rx_packet(receive_packet);
 	}
+	gpio_set_level(GPIO_DEBUG0, 0);
 
 	/* Need to send the USB SPI configuration */
 	if (usb_spi_state.mode == USB_SPI_MODE_SEND_CONFIGURATION) {
 		create_spi_config_response(transmit_packet);
 		usb_spi_write_packet(transmit_packet);
 		usb_spi_state.mode = USB_SPI_MODE_IDLE;
+		gpio_set_level(GPIO_DEBUG0, 1);
+		gpio_set_level(GPIO_DEBUG1, 1);
 		return;
 	}
 	/* Need to send response to USB SPI chip select. */
@@ -671,6 +680,8 @@ void usb_spi_deferred(void)
 		create_spi_chip_select_response(transmit_packet);
 		usb_spi_write_packet(transmit_packet);
 		usb_spi_state.mode = USB_SPI_MODE_IDLE;
+		gpio_set_level(GPIO_DEBUG0, 1);
+		gpio_set_level(GPIO_DEBUG1, 1);
 		return;
 	}
 
@@ -770,8 +781,14 @@ void usb_spi_deferred(void)
 			 * finish the SPI transfer before returning USB
 			 * response.
 			 */
+			const struct spi_device_t *current_device =
+				&spi_devices[usb_spi_state
+						     .current_spi_device_idx];
 			status_code = start_spi_transfer(
 				&usb_spi_state.txn[usb_spi_state.usb_txn_idx]);
+			if (status_code == USB_SPI_SUCCESS)
+				status_code =
+					spi_transaction_flush(current_device);
 			if (status_code == USB_SPI_SUCCESS)
 				status_code = finish_spi_transfer(
 					&spi_devices
@@ -780,14 +797,20 @@ void usb_spi_deferred(void)
 					&usb_spi_state
 						 .txn[usb_spi_state.usb_txn_idx]);
 		}
-
+		// TODO: Confusion of error types above
+		// (USB_SPI_SUCCESS/EC_SUCCESS)
 		setup_transfer_response(status_code);
 	}
 
-	if (usb_spi_response_in_progress() && usb_spi_transmitted_packet()) {
+	if (usb_spi_response_in_progress() &&
+	    usb_spi_transmitted_packet()) {
+		gpio_set_level(GPIO_DEBUG1, 1);
 		usb_spi_create_spi_transfer_response(transmit_packet);
+		gpio_set_level(GPIO_DEBUG1, 0);
 		usb_spi_write_packet(transmit_packet);
 	}
+	gpio_set_level(GPIO_DEBUG0, 1);
+	gpio_set_level(GPIO_DEBUG1, 1);
 }
 
 /*
@@ -827,6 +850,7 @@ static void usb_spi_read_packet(struct usb_spi_packet_ctx *packet)
 			   packet_size);
 	packet->packet_size = packet_size;
 	/* Set endpoint as valid for accepting new packet. */
+	gpio_set_level(GPIO_DEBUG1, 1);
 	STM32_TOGGLE_EP(usb_spi.endpoint, EP_RX_MASK, EP_RX_VALID, 0);
 }
 
@@ -851,7 +875,9 @@ static void usb_spi_write_packet(struct usb_spi_packet_ctx *packet)
 	packet->packet_size = 0;
 
 	/* Set endpoint as valid for transmitting new packet. */
+	gpio_set_level(GPIO_DEBUG0, 1);
 	STM32_TOGGLE_EP(usb_spi.endpoint, EP_TX_MASK, EP_TX_VALID, 0);
+	gpio_set_level(GPIO_DEBUG2, 0);
 }
 
 /*
@@ -897,6 +923,7 @@ void usb_spi_rx(void)
 	 */
 	STM32_TOGGLE_EP(usb_spi.endpoint, EP_TX_RX_MASK, EP_TX_RX_NAK, 0);
 
+	gpio_set_level(GPIO_DEBUG0, 0);
 	hook_call_deferred(usb_spi.deferred, 0);
 }
 
@@ -909,6 +936,8 @@ void usb_spi_tx(void)
 {
 	STM32_TOGGLE_EP(usb_spi.endpoint, EP_TX_MASK, EP_TX_NAK, 0);
 
+	gpio_set_level(GPIO_DEBUG2, 1);
+	gpio_set_level(GPIO_DEBUG1, 0);
 	hook_call_deferred(usb_spi.deferred, 0);
 }
 

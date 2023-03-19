@@ -755,7 +755,7 @@ extern struct usb_spi_config const usb_spi;
 		.bEndpointAddress = 0x80 | ENDPOINT,                        \
 		.bmAttributes = 0x02 /* Bulk IN */,                         \
 		.wMaxPacketSize = USB_MAX_PACKET_SIZE,                      \
-		.bInterval = 10,                                            \
+		.bInterval = 0,                                             \
 	};                                                                  \
 	const struct usb_endpoint_descriptor USB_EP_DESC(INTERFACE, 1) = {  \
 		.bLength = USB_DT_ENDPOINT_SIZE,                            \
