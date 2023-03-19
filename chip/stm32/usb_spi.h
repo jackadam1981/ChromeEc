@@ -727,7 +727,7 @@ struct usb_spi_config {
  * FLAGS encodes different run-time control parameters. See
  * USB_SPI_CONFIG_FLAGS_* for definitions.
  */
-#define USB_SPI_CONFIG(NAME, INTERFACE, ENDPOINT, FLAGS)                    \
+#define *USB_SPI_CONFIG(NAME, INTERFACE, ENDPOINT, FLAGS)                    \
 	static uint16_t CONCAT2(NAME,                                       \
 				_buffer1_)[(USB_SPI_BUFFER_SIZE + 1) / 2];  \
 	static uint16_t CONCAT2(NAME,                                       \
