@@ -15,7 +15,7 @@
 
 #define UART_ERROR -1
 #define UART_BUSY -2
-#ifdef CHIP_VARIANT_ISH5P4
+#if defined(CHIP_VARIANT_ISH5P4) || defined(CHIP_VARIANT_ISH5P6)
 #define UART0_OFFS (0x00)
 #define UART1_OFFS (0x2000)
 #define UART2_OFFS (0x4000)
@@ -322,7 +322,7 @@
 /* KHZ, MHZ */
 #define KHZ(x) ((x)*1000)
 #define MHZ(x) (KHZ(x) * 1000)
-#if defined(CHIP_VARIANT_ISH5P4)
+#if defined(CHIP_VARIANT_ISH5P4) || defined(CHIP_VARIANT_ISH5P6)
 /* Change to 100MHZ in real silicon platform */
 #define UART_ISH_INPUT_FREQ MHZ(100)
 #elif defined(CHIP_FAMILY_ISH3) || defined(CHIP_FAMILY_ISH5)
