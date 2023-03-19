@@ -35,13 +35,13 @@
 /*                               Memory Layout                               */
 /*****************************************************************************/
 
-#ifdef CHIP_VARIANT_ISH5P4
+#if defined(CHIP_VARIANT_ISH5P4) || defined(CHIP_VARIANT_ISH5P6)
 #define CONFIG_RAM_BASE 0xFF200000
 #else
 #define CONFIG_RAM_BASE 0xFF000000
 #endif
 #define CONFIG_RAM_SIZE 0x000A0000
-#ifdef CHIP_VARIANT_ISH5P4
+#if defined(CHIP_VARIANT_ISH5P4) || defined(CHIP_VARIANT_ISH5P6)
 #define CONFIG_RAM_BANK_SIZE 0x00010000
 #else
 #define CONFIG_RAM_BANK_SIZE 0x00008000
@@ -122,7 +122,7 @@
 #define GPIO_PIN(index) 0, (1 << (index))
 #define GPIO_PIN_MASK(m) .port = 0, .mask = (m)
 
-#ifdef CHIP_VARIANT_ISH5P4
+#if defined(CHIP_VARIANT_ISH5P4) || defined(CHIP_VARIANT_ISH5P6)
 /* Use combined ISR for ipc communication between host and ISH */
 #define CONFIG_ISH_HOST2ISH_COMBINED_ISR
 /* Use Synopsys Designware uart */

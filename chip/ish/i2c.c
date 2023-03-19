@@ -41,7 +41,7 @@ static uint16_t default_lcnt_scl_1000[] = { 500, 500, 500, 525, 500, 500, 500 };
 static uint16_t default_hcnt_scl_hs[] = { 160, 300, 160, 166, 175, 150, 162 };
 static uint16_t default_lcnt_scl_hs[] = { 320, 340, 320, 325, 325, 300, 297 };
 
-#ifdef CHIP_VARIANT_ISH5P4
+#if defined(CHIP_VARIANT_ISH5P4) || defined(CHIP_VARIANT_ISH5P6)
 /* Change to I2C_FREQ_100 in real silicon platform */
 static uint8_t bus_freq[ISH_I2C_PORT_COUNT] = { I2C_FREQ_100, I2C_FREQ_100,
 						I2C_FREQ_100 };
