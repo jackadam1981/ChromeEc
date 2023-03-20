@@ -468,6 +468,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c92bc4d_2edbdf54",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-20T08:18:16Z",
+      "side": 1,
+      "message": "\u003e What is the point of trying to detect things that happen between tests?\n\nSet the GMR in lid close state in before_test() as you initially recommended.\n\n\u003e Also: what of my worry that I\u0027ve detected an actual bug while poking around. Specifically if you\u0027re in tablet mode and then (lid_open\u003d1, tablet_mode_l\u003d0) and then you quickly tablet_mode_l\u003d1 lid_open\u003d0 at the same time (before tablet_mode_l has a chance to debounce) then you\u0027ll miss a transition. That seemed like a valid issue.\n\nGood catch. It should not happen in the wild, since the lid has to physically mode from closed to flip. Note that we need 3 valid lid angle calculation in the same angle domain (so at least 3x100ms) to change to call tablet_set_mode(). \nHowever, by defining a priority in debouncing, it could be mitigated.\nAdded a test to confirm.",
+      "parentUuid": "8dad576c_c5ef58e9",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d43145a8_37c0c72c",
@@ -636,6 +660,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3d77851_49b7663e",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-20T08:18:16Z",
+      "side": 1,
+      "message": "The emulator could trigger unrelated delayed functions to the test. (although it is unlikely because very few tasks are running). Other test do assume the code runs in timely manner.",
+      "parentUuid": "dc4a04bd_6e4c2861",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2d67ac1_5e6b2c83",
         "filename": "test/tablet_broken_sensor.c",
         "patchSetId": 1
@@ -766,6 +814,30 @@
       "side": 1,
       "message": "Are you going to add a comment here?",
       "parentUuid": "881335a7_546e7c06",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 38
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a4e089_79057b03",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-20T08:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39ca65db_e6110bc4",
       "range": {
         "startLine": 111,
         "startChar": 16,

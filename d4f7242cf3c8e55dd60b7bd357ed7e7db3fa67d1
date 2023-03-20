@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b68436_92acb145",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-20T08:18:16Z",
+      "side": 1,
+      "message": "Actually, I reintroduce gmr_sensor_at_0 in case we are compiling when lid_is_open() is not defined (detachable).",
+      "parentUuid": "7ff189e7_fa3895d3",
+      "range": {
+        "startLine": 98,
+        "startChar": 39,
+        "endLine": 98,
+        "endChar": 62
+      },
+      "revId": "d4f7242cf3c8e55dd60b7bd357ed7e7db3fa67d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb65ac03_5977efc8",
