@@ -16,6 +16,24 @@
       "message": "the change seems is applied on full Skyrim program config, but title is \u0027Skyrim/Frostflow\u0027,  a bit confusing to me.",
       "revId": "0e72e57488784e4a92f5fed1c65240981f87519c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf99335_5329bd67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-20T16:57:02Z",
+      "side": 1,
+      "message": "Ah, good point.  I\u0027d missed that it was the general project file rather than the board file.  This should be okay to define for all the projects, but the title can be changed to just \"skyrim\" to reflect that and the comment block can mention this is for all the boards in the family.  Then I suppose we could clean up the board files that have this defined individually.",
+      "parentUuid": "933a39b5_8733932b",
+      "revId": "0e72e57488784e4a92f5fed1c65240981f87519c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
