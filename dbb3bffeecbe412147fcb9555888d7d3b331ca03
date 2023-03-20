@@ -16,6 +16,40 @@
       "message": "Looks nice to me, over to Daisuke for the official +2.",
       "revId": "dbb3bffeecbe412147fcb9555888d7d3b331ca03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f15be7_6dc3b7dc",
+        "filename": "test/motion_lid.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-20T22:45:42Z",
+      "side": 1,
+      "message": "Do we not check tablet_hook_count and tablet_get_mode here?",
+      "revId": "dbb3bffeecbe412147fcb9555888d7d3b331ca03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76bbb805_2d5c348a",
+        "filename": "test/motion_lid.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-20T22:45:42Z",
+      "side": 1,
+      "message": "Don\u0027t we want to test the case where GPIO_LID_OPEN and motion_lid_get_angle contradict (and we choose GPIO_LID_OPEN for tablet_get_mode)? For example, we want tablet_get_mode() to be false if motion_lid_get_angle returns 300 and GPIO_LID_OPEN is 0. Is it already tested somewhere?",
+      "revId": "dbb3bffeecbe412147fcb9555888d7d3b331ca03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
