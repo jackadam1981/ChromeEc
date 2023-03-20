@@ -22,6 +22,16 @@ int anx7483_get(const struct usb_mux *me, mux_state_t *mux_state);
 int anx7483_read(const struct usb_mux *me, uint8_t reg, int *val);
 int anx7483_write(const struct usb_mux *me, uint8_t reg, uint8_t val);
 
+extern const struct anx7483_tuning_set anx7483_usb_enabled[];
+extern const struct anx7483_tuning_set anx7483_dp_enabled[];
+extern const struct anx7483_tuning_set anx7483_dock_noflip[];
+extern const struct anx7483_tuning_set anx7483_dock_flip[];
+
+extern const size_t anx7483_usb_enabled_count;
+extern const size_t anx7483_dp_enabled_count;
+extern const size_t anx7483_dock_noflip_count;
+extern const size_t anx7483_dock_flip_count;
+
 static struct usb_mux mux = {
 	.i2c_port = I2C_PORT_NODELABEL(i2c3),
 	.i2c_addr_flags = 0x3e,
@@ -1070,6 +1080,11 @@ ZTEST(anx7483, test_tuning_usb)
 	rv = anx7483_emul_test_get_reg(ANX7483_DTX2_PORT_CFG4_REG, &val);
 	zexpect_ok(rv);
 	zexpect_equal(val, ANX7483_CFG4_TERM_DISABLE);
+
+	/* Validate through the emulator's tuning validation function. */
+	rv = anx7483_emul_validate_tuning(ANX7483_EMUL, anx7483_usb_enabled,
+					  anx7483_usb_enabled_count);
+	zexpect_ok(rv);
 }
 
 /*
@@ -1201,6 +1216,11 @@ ZTEST(anx7483, test_tuning_dp)
 	rv = anx7483_emul_test_get_reg(ANX7483_DTX2_PORT_CFG4_REG, &val);
 	zexpect_ok(rv);
 	zexpect_equal(val, ANX7483_CFG4_TERM_DISABLE);
+
+	/* Validate through the emulator's tuning validation function. */
+	rv = anx7483_emul_validate_tuning(ANX7483_EMUL, anx7483_dp_enabled,
+					  anx7483_dp_enabled_count);
+	zexpect_ok(rv);
 }
 
 /*
@@ -1333,6 +1353,11 @@ ZTEST(anx7483, test_tuning_dock_noflip)
 	rv = anx7483_emul_test_get_reg(ANX7483_DTX2_PORT_CFG4_REG, &val);
 	zexpect_ok(rv);
 	zexpect_equal(val, ANX7483_CFG4_TERM_DISABLE);
+
+	/* Validate through the emulator's tuning validation function. */
+	rv = anx7483_emul_validate_tuning(ANX7483_EMUL, anx7483_dock_noflip,
+					  anx7483_dock_noflip_count);
+	zexpect_ok(rv);
 }
 
 /*
@@ -1465,4 +1490,9 @@ ZTEST(anx7483, test_tuning_dock_flip)
 	rv = anx7483_emul_test_get_reg(ANX7483_DTX2_PORT_CFG4_REG, &val);
 	zexpect_ok(rv);
 	zexpect_equal(val, ANX7483_CFG4_TERM_DISABLE);
+
+	/* Validate through the emulator's tuning validation function. */
+	rv = anx7483_emul_validate_tuning(ANX7483_EMUL, anx7483_dock_flip,
+					  anx7483_dock_flip_count);
+	zexpect_ok(rv);
 }
