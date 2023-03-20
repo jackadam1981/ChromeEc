@@ -502,10 +502,8 @@ void bus_fault_handler(void)
 
 void ignore_bus_fault(int ignored)
 {
-	if (IS_ENABLED(CHIP_FAMILY_STM32H7)) {
-		if (ignored == 0)
-			asm volatile("dsb; isb");
-	}
+	if (ignored == 0)
+		asm volatile("dsb; isb");
 
 	/*
 	 * Flash code might call this before cpu_init(),
