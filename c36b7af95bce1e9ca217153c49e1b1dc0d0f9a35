@@ -118,6 +118,30 @@
       },
       "revId": "c36b7af95bce1e9ca217153c49e1b1dc0d0f9a35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3411fe2_c01b87b9",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2023-03-20T12:27:32Z",
+      "side": 1,
+      "message": "By using that pattern, instead of enabling the `PLATFORM_EC_RTC` we would need to add a `CROS_RTC_TYPE_NONE` in case that we don\u0027t want to have an RTC enabled. Is it better choice? I think that selecting the symbols is used only for buses in the upstream.",
+      "parentUuid": "197e609c_bdd939ad",
+      "range": {
+        "startLine": 570,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 0
+      },
+      "revId": "c36b7af95bce1e9ca217153c49e1b1dc0d0f9a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
