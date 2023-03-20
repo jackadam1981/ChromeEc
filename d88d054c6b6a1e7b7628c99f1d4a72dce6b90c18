@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb9b0fb2_d2ebaba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-20T21:49:05Z",
+      "side": 1,
+      "message": "flash_ec script has the mchp1727 routine which does the secondary loader image run into the sram , do the flash programming of the ec.bin into the internal flash",
+      "revId": "d88d054c6b6a1e7b7628c99f1d4a72dce6b90c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
