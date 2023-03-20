@@ -26,7 +26,7 @@
 
 #define CHECK_COMPAT(compat, usbc_id, ppc_id, config_fn) \
 	COND_CODE_1(DT_NODE_HAS_COMPAT(ppc_id, compat),  \
-		    (PPC_CHIP_ENTRY(usbc_id, ppc_id, config_fn)), ())
+		    (PPC_CHIP_ENTRY(usbc_id, ppc_id, config_fn), ), ())
 
 #define PPC_CHIP_FIND(usbc_id, ppc_id)                                       \
 	CHECK_COMPAT(AOZ1380_COMPAT, usbc_id, ppc_id, PPC_CHIP_AOZ1380)      \
