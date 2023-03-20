@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4403d5b_25e2ae61",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-20T11:40:40Z",
+      "side": 1,
+      "message": "Looks like the ScopedOpenSSL works.(At least on the host test, I haven\u0027t tested it on the DUT.)\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4349523\n\nBut there is a small problem that the unit test of `test/fpsensor_state.c` is still using C instead of C++. We cannot use ScopedOpenSSL in C.\n\nBTW, how many of the dynamic memory could we use?",
+      "parentUuid": "641b1cff_f1e48ca0",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 35
+      },
+      "revId": "49227a6c331a4de077222de9485b34b492302cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3bbcfac5_50319d6a",
         "filename": "common/fpsensor/fpsensor_state.c",
         "patchSetId": 53
