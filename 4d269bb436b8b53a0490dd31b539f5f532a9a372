@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d54828e_4ff506ec",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-20T22:21:24Z",
+      "side": 1,
+      "message": "nit: Short messages are appreciated. (e.g. \"Invalid panic data. Cannot dump stack\\n\")",
+      "range": {
+        "startLine": 166,
+        "startChar": 12,
+        "endLine": 166,
+        "endChar": 61
+      },
+      "revId": "4d269bb436b8b53a0490dd31b539f5f532a9a372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
