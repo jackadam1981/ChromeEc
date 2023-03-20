@@ -142,6 +142,30 @@
       },
       "revId": "c36b7af95bce1e9ca217153c49e1b1dc0d0f9a35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f9a1ef0_54c7b59e",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-20T20:23:55Z",
+      "side": 1,
+      "message": "I see that upstream does have a few uses of `dt_chosen_enabled`.  http://cs/chromeos_public/src/third_party/zephyr/main/subsys/shell/backends/Kconfig.backends?rcl\u003d31ad44bee7ae951a3167bc10ab915249dd369594\u0026l\u003d19\n\nSo this should be okay.  Thanks for your patience/persistence!",
+      "parentUuid": "d3411fe2_c01b87b9",
+      "range": {
+        "startLine": 570,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 0
+      },
+      "revId": "c36b7af95bce1e9ca217153c49e1b1dc0d0f9a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
