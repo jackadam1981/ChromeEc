@@ -81,6 +81,24 @@
       "parentUuid": "d935a811_472d4077",
       "revId": "e5ed6ce20d606c1ec61251cee414ae26c79340d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "560fd15b_9aed9796",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-20T23:32:39Z",
+      "side": 1,
+      "message": "Looks like it will take more work to make the host tests work, so I\u0027m removing them for now.",
+      "parentUuid": "7f2d613a_4dd19d2a",
+      "revId": "e5ed6ce20d606c1ec61251cee414ae26c79340d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
