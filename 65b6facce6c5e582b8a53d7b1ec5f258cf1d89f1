@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6767acc5_38f9b59a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-20T18:06:40Z",
+      "side": 1,
+      "message": "OK, looks good to me now. I guess all my questions do probe the point that having someone more familiar with the EC codebase is a good idea to make sure everything is hunky dory. Assuming Daisuke will +2. If you need me to +2 I can probably spend another bit double-checking that I understand how all the tasks / hooks work together and then do it, so let me know.",
+      "revId": "65b6facce6c5e582b8a53d7b1ec5f258cf1d89f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76592795_a202a045",
