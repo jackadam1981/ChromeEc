@@ -33,6 +33,24 @@
       "message": "Hi Ting, Can you help to take a look at the failure?\n\nFrom https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8786308954254985217/+/u/test_firmware/call_build_API_script/stdout?format\u003draw\n```\nAssertion failed at CMAKE_SOURCE_DIR/src/power_seq.c:135: power_seq_test_lid_open: chipset_pre_init_hook_fake.call_count not equal to 1\n```",
       "revId": "d5d00cf62b4881df5e957f21d1954de7fac968e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074fa8b4_af3f55c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-20T06:03:29Z",
+      "side": 1,
+      "message": "This CL has to update the test to pass the unit test.",
+      "parentUuid": "3248b99c_67335dd1",
+      "revId": "d5d00cf62b4881df5e957f21d1954de7fac968e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
