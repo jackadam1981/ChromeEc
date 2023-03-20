@@ -6,6 +6,8 @@
 #include "compile_time_macros.h"
 #include "fpsensor_utils.h"
 
+#include <cstddef>
+
 extern "C" {
 #include "atomic.h"
 #include "common.h"
@@ -24,7 +26,11 @@ extern "C" {
 #include "fpsensor.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_state.h"
+#include "openssl/ecdh.h"
+#include "openssl/obj_mac.h"
 #include "scoped_fast_cpu.h"
+
+#include "scoped_openssl_types.hpp"
 
 /* These must be included after the "openssl/aes.h" */
 #include "crypto/fipsmodule/aes/internal.h"
@@ -392,15 +398,58 @@ fp_command_establish_pk_keygen(struct host_cmd_handler_args *args)
 			FP_PK_ENCRYPTION_SALT_BYTES);
 	trng_exit();
 
-	p256_int p256_n, p256_x, p256_y;
+	ScopedEC_GROUP group(EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
 
-	p256_from_bin(r->enc_privkey, &p256_n);
-	p256_base_point_mul(&p256_n, &p256_x, &p256_y);
-	p256_to_bin(&p256_x, r->pubkey_x);
-	p256_to_bin(&p256_y, r->pubkey_y);
+	if (group.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
 
-	/* Clear the private key. */
-	always_memset(&p256_n, 0, sizeof(p256_n));
+	ScopedBIGNUM secret(BN_new());
+
+	if (secret.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	BN_bin2bn(r->enc_privkey, FP_PK_EC_PRIVATE_KEY_LEN, secret.get());
+
+	ScopedEC_POINT public_point(EC_POINT_new(group.get()));
+
+	if (public_point.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_mul(group.get(), public_point.get(), secret.get(), nullptr,
+			 nullptr, nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM x_bn(BN_new());
+
+	if (x_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM y_bn(BN_new());
+
+	if (y_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_get_affine_coordinates_GFp(group.get(), public_point.get(),
+						x_bn.get(), y_bn.get(),
+						nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(x_bn.get(), r->pubkey_x, FP_PK_EC_PUBLIC_KEY_LEN) !=
+	    FP_PK_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(y_bn.get(), r->pubkey_y, FP_PK_EC_PUBLIC_KEY_LEN) !=
+	    FP_PK_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
 
 	uint8_t key[SBP_ENC_KEY_LEN];
 	int ret =
