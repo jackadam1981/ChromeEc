@@ -22,6 +22,30 @@
       },
       "revId": "001874f04fa12f6ee2b4fbf9f846c76398cb907b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f05f386_b116adf3",
+        "filename": "zephyr/dts/bindings/usbc/tcpc/richtek,rt171x-tcpc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-20T12:29:58Z",
+      "side": 1,
+      "message": "Actually we are using RT1715 driver for RT1716 component. This driver could be used for RT1715 and RT1716 TCPC chips. Hence mentioned x. My assumption of notation is, until there is a driver with full name exists, this could be used if it matches.",
+      "parentUuid": "a15c3ac5_44a7167d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "001874f04fa12f6ee2b4fbf9f846c76398cb907b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
