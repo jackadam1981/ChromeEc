@@ -16,6 +16,23 @@
       "message": "Utility to load the secondary loader image into SRAM and update the ec image into the internal flasg",
       "revId": "3b6e9d9ea991499909bbfa88f76bf956d8e6e5d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff479876_7d3a392a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-20T21:50:34Z",
+      "side": 1,
+      "message": "Utility to load the seconday loader image into SRAM and update ec image into the internal flash",
+      "revId": "3b6e9d9ea991499909bbfa88f76bf956d8e6e5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
