@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "cros_board_info.h"
 #include "ec_commands.h"
 #include "fw_config.h"
 #include "keyboard_scan.h"
@@ -60,6 +61,23 @@ static const struct ec_response_keybd_config tarlo_kb = {
 	.capabilities = KEYBD_CAP_SCRNLOCK_KEY | KEYBD_CAP_NUMERIC_KEYPAD,
 };
 
+static const struct ec_response_keybd_config tabor_kb = {
+	.num_top_row_keys = 10,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_BRIGHTNESS_DOWN,	/* T5 */
+		TK_BRIGHTNESS_UP,	/* T6 */
+		TK_MICMUTE,             /* T7 */
+		TK_VOL_MUTE,		/* T8 */
+		TK_VOL_DOWN,		/* T9 */
+		TK_VOL_UP,		/* T10 */
+	},
+	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
+};
+
 /*
  * Row Column info for Top row keys T1 - T15.
  * Since tarlo keyboard top row keys have some issue when press with search
@@ -95,6 +113,9 @@ BUILD_ASSERT(ARRAY_SIZE(vivaldi_keys) == MAX_TOP_ROW_KEYS);
 __override const struct ec_response_keybd_config *
 board_vivaldi_keybd_config(void)
 {
+	uint32_t val;
+
+	cbi_get_sku_id(&val);
 	if (ec_cfg_has_keyboard_number_pad())
 		return &tarlo_kb;
 	else {
@@ -104,6 +125,9 @@ board_vivaldi_keybd_config(void)
 		vivaldi_keys[8].col = 9;
 		vivaldi_keys[9].row = 0; /* T10 */
 		vivaldi_keys[9].col = 4;
+		if (val >= 0x50200) {
+			return &tabor_kb;
+		}
 		return &taeko_kb;
 	}
 }
