@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0705ac8_4d640eb2",
+        "filename": "baseboard/ish/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-20T15:53:19Z",
+      "side": 1,
+      "message": "FYI. I2C scan can be enabled if we add this code.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3791662/3/chip/ish/i2c.c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "560590a89297a15c227835db365fcee95a1ca27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
