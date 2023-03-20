@@ -18,6 +18,8 @@ extern "C" {
 #include "trng.h"
 }
 
+#include "scoped_openssl_types.hpp"
+
 /* These must be included after the "openssl/aes.h" */
 #include "crypto/fipsmodule/aes/internal.h"
 #include "crypto/fipsmodule/modes/internal.h"

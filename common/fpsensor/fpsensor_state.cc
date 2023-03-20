@@ -6,6 +6,8 @@
 #include "compile_time_macros.h"
 #include "fpsensor_utils.h"
 
+#include <cstddef>
+
 extern "C" {
 #include "atomic.h"
 #include "common.h"
