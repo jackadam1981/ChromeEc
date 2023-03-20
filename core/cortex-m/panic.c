@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "atomic_bit.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
@@ -19,7 +20,7 @@
 #include "watchdog.h"
 
 /* Whether bus fault is ignored */
-static int bus_fault_ignored;
+static atomic_t bus_fault_ignored;
 
 /* Panic data goes at the end of RAM. */
 static struct panic_data *const pdata_ptr = PANIC_DATA_PTR;
@@ -496,7 +497,7 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 
 void bus_fault_handler(void)
 {
-	if (!bus_fault_ignored)
+	if (!atomic_get(&bus_fault_ignored))
 		exception_panic();
 }
 
@@ -512,5 +513,5 @@ void ignore_bus_fault(int ignored)
 	 * ensure that the bus faults really go through our handler.
 	 */
 	CPU_NVIC_SHCSR |= CPU_NVIC_SHCSR_BUSFAULTENA;
-	bus_fault_ignored = ignored;
+	__atomic_exchange_n(&bus_fault_ignored, ignored, __ATOMIC_SEQ_CST);
 }
