@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31536e22_9ab939d1",
+        "filename": "zephyr/test/skyrim/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-20T20:21:55Z",
+      "side": 1,
+      "message": "Enabling the emulators doesn\u0027t actually need to be done because it\u0027s automatically enabled from the device tree so I\u0027ve removed these lines. But otherwise these would need to go here over the other ANX7483 CLs because this is enabling the emulator for the board tests.",
+      "parentUuid": "3a4de7f8_84ef72e6",
+      "revId": "00640709c8d6006b77f19486f582d5b9adfc746b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b26c45bd_405ce683",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-03-16T18:59:05Z",
       "side": 1,
       "message": "Should this have a predicate that makes it run before main?",
+      "revId": "00640709c8d6006b77f19486f582d5b9adfc746b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ed8af2_d45dc1a8",
+        "filename": "zephyr/test/skyrim/tests/skyrim/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-20T20:21:55Z",
+      "side": 1,
+      "message": "With how the board code is structured it shouldn\u0027t matter when these tests run. We can change it in a subsequent CL if it turns out to be an issue.",
+      "parentUuid": "b26c45bd_405ce683",
       "revId": "00640709c8d6006b77f19486f582d5b9adfc746b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16cc77cb_31d9c3f8",
+        "filename": "zephyr/test/skyrim/tests/skyrim/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-20T20:21:55Z",
+      "side": 1,
+      "message": "Uploaded a new CL that adds the required function for board tests like this to verify the mux settings on their own.",
+      "parentUuid": "75a24bd6_0e27b2ca",
+      "revId": "00640709c8d6006b77f19486f582d5b9adfc746b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54f3ee8c_cb0152ac",
@@ -82,6 +136,24 @@
       "writtenOn": "2023-03-16T18:59:05Z",
       "side": 1,
       "message": "Nit: You can just do `zassert_false` and `zassert_true` for the GPIO values.",
+      "revId": "00640709c8d6006b77f19486f582d5b9adfc746b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0bc5279_5d45d21f",
+        "filename": "zephyr/test/skyrim/tests/skyrim/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-20T20:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54f3ee8c_cb0152ac",
       "revId": "00640709c8d6006b77f19486f582d5b9adfc746b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
