@@ -142,6 +142,9 @@ BOARDS_RAIDEN=(
 	soraka
 )
 
+BOARDS_MCHP_INT_SPI=(
+	mtlrvpp_mchp
+)
 DEFAULT_PORT="${SERVOD_PORT:-9999}"
 BITBANG_RATE="57600"  # Could be overwritten by a command line option.
 
@@ -322,6 +325,10 @@ if in_array "${BOARDS_IT83XX_SPI_PROGRAMMING[@]}" "${BOARD}"; then
 	SUPPORTED_CHIPS+=("ite_spi")
 fi
 
+if in_array "${BOARDS_MCHP_INT_SPI[@]}" "${BOARD}"; then
+	SUPPORTED_CHIPS+=("mchp17xx_int_spi")
+fi
+
 if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 && -n "${FLAGS_chip}" ]]; then
 	SUPPORTED_CHIPS+=("${FLAGS_chip}")
 fi
@@ -373,13 +380,13 @@ case "${BOARD}" in
 	oak_pd|strago_pd ) MCU="usbpd" ;;
 	chell_pd|glados_pd ) MCU="usbpd" ;;
 	bloonchipper|dartmonkey|hatch_fp|nami_fp|nocturne_fp ) MCU="fpmcu" ;;
-	dingdong|hoho|twinkie ) DUT_CONTROL_CMD=( "true" ); MCU="ec" ;;
+	dingdong|hoho|twinkie|mtlrvpp_mchp ) DUT_CONTROL_CMD=( "true" ); MCU="ec" ;;
 	*) MCU="ec" ;;
 esac
 
 case "${CHIP}" in
 	"stm32"|"npcx_spi"|"npcx_int_spi"|"it83xx"|"npcx_uut"|"ite_spi"| \
-			"ite_spi_ccd_i2c"|"it8xxx2")
+			"ite_spi_ccd_i2c"|"it8xxx2"|"mchp17xx_int_spi")
 		;;
 	*)
 		if [[ -n "${FLAGS_read}" ]]; then
@@ -1612,11 +1619,37 @@ function flash_npcx_int_spi() {
 	flash_flashrom
 }
 
-function flash_mec1322() {
-	flash_flashrom
+info "Using ${SERVO_TYPE}."
+
+function flash_mchp17xx_int_spi() {
+	echo "Get the Comport number"
+	uart_port="$(dut-control raw_ec_uart_pty)"
+	# Check the current baudrate of the servo
+	current_uart_baudrate="$(dut-control uart1_baudrate)"
+	# Hold MEC1727 in reset ,set CR_STRAP pin low and release MEC1727 to reset
+	dut-control cold_reset:on fw_up:on cold_reset:off
+	# Intilize the UART to 9600 baudrate for the secondary loader image to load
+	mchp_current_uart_baudrate=9600
+	# check the current baudrate with the standard baudrate and intilize to 9600 
+	# required for the secondary loader image
+	if [ "${current_uart_baudrate}"!="${mchp_current_uart_baudrate}" ] ; then
+	   dut-control uart1_baudrate:"${mchp_current_uart_baudrate}"
+	fi
+	# utility to load the secondary loader image into the SRAM
+	python3 mchp/crisis_rcvry_util.py -s "mchp/second_loader_fw.bin" -p ${uart_port}
+	echo "Secondary loader image has been programming"
+	# check the current baudrate
+	current_uart_baudrate="$(dut-control uart1_baudrate)"
+	# Check the current baudrate and intialize to required baudrate to load the EC image into
+	# internal flash 
+	mchp_current_uart_baudrate=57600
+	if [ "${mchp_current_uart_baudrate}"!="${current_uart_baudrate}" ] ; then
+	   dut-control uart1_baudrate:115200
+	fi
+	# utility to flash the ec image into the INT flash
+	python3 mchp/crisis_rcvry_util.py -e $(ec_image) -p ${uart_port}
 }
 
-info "Using ${SERVO_TYPE}."
 
 # Only if it is a flash program request, call ec_image.
 if [[ -z "${FLAGS_read}" ]]; then
