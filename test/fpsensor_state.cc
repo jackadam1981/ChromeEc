@@ -4,11 +4,12 @@
  */
 
 #include "common.h"
-#include "cryptoc/p256.h"
 #include "ec_commands.h"
 #include "fpsensor_state.h"
 #include "mock/fpsensor_state_mock.h"
 #include "openssl/aes.h"
+#include "openssl/ec.h"
+#include "openssl/obj_mac.h"
 #include "test_util.h"
 #include "util.h"
 
@@ -16,6 +17,8 @@ extern "C" {
 #include "sha256.h"
 #include "trng.h"
 }
+
+#include "scoped_openssl_types.hpp"
 
 /* These must be included after the "openssl/aes.h" */
 #include "crypto/fipsmodule/aes/internal.h"
@@ -423,7 +426,6 @@ test_static int test_fp_command_establish_and_load_pk(void)
 	struct ec_params_fp_load_pk load_params;
 
 	uint8_t privkey[FP_PK_EC_PRIVATE_KEY_LEN];
-	p256_int n, x, y;
 
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PK_KEYGEN, 0, NULL, 0,
 				    &keygen_response, sizeof(keygen_response));
@@ -440,10 +442,56 @@ test_static int test_fp_command_establish_and_load_pk(void)
 	trng_rand_bytes(privkey, FP_PK_EC_PRIVATE_KEY_LEN);
 	trng_exit();
 
-	p256_from_bin(privkey, &n);
-	p256_base_point_mul(&n, &x, &y);
-	p256_to_bin(&x, wrap_params.peers_pubkey_x);
-	p256_to_bin(&y, wrap_params.peers_pubkey_y);
+	ScopedEC_GROUP group(EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
+
+	if (group.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM n(BN_bin2bn(privkey, FP_PK_EC_PRIVATE_KEY_LEN, nullptr));
+
+	if (n.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedEC_POINT public_point(EC_POINT_new(group.get()));
+
+	if (public_point.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_mul(group.get(), public_point.get(), n.get(), nullptr,
+			 nullptr, nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM x_bn(BN_new());
+
+	if (x_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM y_bn(BN_new());
+
+	if (y_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_get_affine_coordinates_GFp(group.get(), public_point.get(),
+						x_bn.get(), y_bn.get(),
+						nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(x_bn.get(), wrap_params.peers_pubkey_x,
+			 FP_PK_EC_PUBLIC_KEY_LEN) != FP_PK_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(y_bn.get(), wrap_params.peers_pubkey_y,
+			 FP_PK_EC_PUBLIC_KEY_LEN) != FP_PK_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
 
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PK_WRAP, 0,
 				    &wrap_params, sizeof(wrap_params),
@@ -473,7 +521,6 @@ test_static int test_fp_command_establish_pk_fail(void)
 	struct ec_response_fp_establish_pk_wrap wrap_response;
 
 	uint8_t privkey[FP_PK_EC_PRIVATE_KEY_LEN];
-	p256_int n, x, y;
 
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PK_KEYGEN, 0, NULL, 0,
 				    &keygen_response, sizeof(keygen_response));
@@ -491,10 +538,56 @@ test_static int test_fp_command_establish_pk_fail(void)
 	trng_rand_bytes(privkey, FP_PK_EC_PRIVATE_KEY_LEN);
 	trng_exit();
 
-	p256_from_bin(privkey, &n);
-	p256_base_point_mul(&n, &x, &y);
-	p256_to_bin(&x, wrap_params.peers_pubkey_x);
-	p256_to_bin(&y, wrap_params.peers_pubkey_y);
+	ScopedEC_GROUP group(EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
+
+	if (group.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM n(BN_bin2bn(privkey, FP_PK_EC_PRIVATE_KEY_LEN, nullptr));
+
+	if (n.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedEC_POINT public_point(EC_POINT_new(group.get()));
+
+	if (public_point.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_mul(group.get(), public_point.get(), n.get(), nullptr,
+			 nullptr, nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM x_bn(BN_new());
+
+	if (x_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM y_bn(BN_new());
+
+	if (y_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_get_affine_coordinates_GFp(group.get(), public_point.get(),
+						x_bn.get(), y_bn.get(),
+						nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(x_bn.get(), wrap_params.peers_pubkey_x,
+			 FP_PK_EC_PUBLIC_KEY_LEN) != FP_PK_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(y_bn.get(), wrap_params.peers_pubkey_y,
+			 FP_PK_EC_PUBLIC_KEY_LEN) != FP_PK_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
 
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PK_WRAP, 0,
 				    &wrap_params, sizeof(wrap_params),
@@ -514,8 +607,6 @@ test_static int test_fp_command_load_pk_fail(void)
 	struct ec_params_fp_load_pk load_params;
 
 	uint8_t privkey[FP_PK_EC_PRIVATE_KEY_LEN];
-	p256_int n, x, y;
-
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PK_KEYGEN, 0, NULL, 0,
 				    &keygen_response, sizeof(keygen_response));
 
@@ -531,10 +622,56 @@ test_static int test_fp_command_load_pk_fail(void)
 	trng_rand_bytes(privkey, FP_PK_EC_PRIVATE_KEY_LEN);
 	trng_exit();
 
-	p256_from_bin(privkey, &n);
-	p256_base_point_mul(&n, &x, &y);
-	p256_to_bin(&x, wrap_params.peers_pubkey_x);
-	p256_to_bin(&y, wrap_params.peers_pubkey_y);
+	ScopedEC_GROUP group(EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
+
+	if (group.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM n(BN_bin2bn(privkey, FP_PK_EC_PRIVATE_KEY_LEN, nullptr));
+
+	if (n.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedEC_POINT public_point(EC_POINT_new(group.get()));
+
+	if (public_point.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_mul(group.get(), public_point.get(), n.get(), nullptr,
+			 nullptr, nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM x_bn(BN_new());
+
+	if (x_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM y_bn(BN_new());
+
+	if (y_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_get_affine_coordinates_GFp(group.get(), public_point.get(),
+						x_bn.get(), y_bn.get(),
+						nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(x_bn.get(), wrap_params.peers_pubkey_x,
+			 FP_PK_EC_PUBLIC_KEY_LEN) != FP_PK_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(y_bn.get(), wrap_params.peers_pubkey_y,
+			 FP_PK_EC_PUBLIC_KEY_LEN) != FP_PK_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
 
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PK_WRAP, 0,
 				    &wrap_params, sizeof(wrap_params),
@@ -727,7 +864,6 @@ test_static int test_fp_command_read_match_secret_with_pubkey_succeed(void)
 			},
 	};
 
-	p256_int p256_n, p256_x, p256_y;
 	uint8_t privkey[FP_PK_EC_PRIVATE_KEY_LEN];
 	uint8_t share_secret[FP_POSITIVE_MATCH_SECRET_BYTES];
 	struct sha256_ctx ctx;
@@ -740,11 +876,56 @@ test_static int test_fp_command_read_match_secret_with_pubkey_succeed(void)
 	trng_rand_bytes(privkey, FP_PK_EC_PRIVATE_KEY_LEN);
 	trng_exit();
 
-	p256_from_bin(privkey, &p256_n);
-	p256_base_point_mul(&p256_n, &p256_x, &p256_y);
+	ScopedEC_GROUP group(EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
 
-	p256_to_bin(&p256_x, params.pubkey_x);
-	p256_to_bin(&p256_y, params.pubkey_y);
+	if (group.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM n(BN_bin2bn(privkey, FP_PK_EC_PRIVATE_KEY_LEN, nullptr));
+
+	if (n.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedEC_POINT public_point(EC_POINT_new(group.get()));
+
+	if (public_point.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_mul(group.get(), public_point.get(), n.get(), nullptr,
+			 nullptr, nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM x_bn(BN_new());
+
+	if (x_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ScopedBIGNUM y_bn(BN_new());
+
+	if (y_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_get_affine_coordinates_GFp(group.get(), public_point.get(),
+						x_bn.get(), y_bn.get(),
+						nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(x_bn.get(), params.pubkey_x,
+			 FP_PK_EC_PUBLIC_KEY_LEN) != FP_PK_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(y_bn.get(), params.pubkey_y,
+			 FP_PK_EC_PUBLIC_KEY_LEN) != FP_PK_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
 
 	positive_match_secret_state = test_state_1;
 	/* Set fp_positive_match_salt to the trivial value */
@@ -768,10 +949,39 @@ test_static int test_fp_command_read_match_secret_with_pubkey_succeed(void)
 				       0, &params, sizeof(params), &response,
 				       sizeof(response)) == EC_SUCCESS);
 
-	p256_from_bin(response.pubkey_x, &p256_x);
-	p256_from_bin(response.pubkey_y, &p256_y);
-	p256_point_mul(&p256_n, &p256_x, &p256_y, &p256_x, &p256_y);
-	p256_to_bin(&p256_x, share_secret);
+	x_bn = ScopedBIGNUM(
+		BN_bin2bn(response.pubkey_x, FP_PK_EC_PUBLIC_KEY_LEN, nullptr));
+	if (x_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	y_bn = ScopedBIGNUM(
+		BN_bin2bn(response.pubkey_y, FP_PK_EC_PUBLIC_KEY_LEN, nullptr));
+	if (y_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_set_affine_coordinates_GFp(group.get(), public_point.get(),
+						x_bn.get(), y_bn.get(),
+						nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_mul(group.get(), public_point.get(), nullptr,
+			 public_point.get(), n.get(), nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_get_affine_coordinates_GFp(group.get(), public_point.get(),
+						x_bn.get(), y_bn.get(),
+						nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(x_bn.get(), share_secret,
+			 FP_POSITIVE_MATCH_SECRET_BYTES) != FP_PK_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
 
 	SHA256_init(&ctx);
 	SHA256_update(&ctx, share_secret, FP_POSITIVE_MATCH_SECRET_BYTES);
