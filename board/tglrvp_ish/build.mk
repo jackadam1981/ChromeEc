@@ -9,5 +9,6 @@
 CHIP:=ish
 CHIP_FAMILY:=ish5
 CHIP_VARIANT:=ish5p4
+BASEBOARD:=ish
 
 board-y=board.o

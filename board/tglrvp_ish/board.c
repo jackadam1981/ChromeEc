@@ -63,23 +63,3 @@ struct motion_sensor_t motion_sensors[] = {
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 #endif /* BOARD_TGLRVP_ISH */
-
-int chipset_in_state(int state_mask)
-{
-	return state_mask & CHIPSET_STATE_ON;
-}
-
-int chipset_in_or_transitioning_to_state(int state_mask)
-{
-	return state_mask & CHIPSET_STATE_ON;
-}
-
-void chipset_force_shutdown(enum chipset_shutdown_reason reason)
-{
-}
-
-int board_idle_task(void *unused)
-{
-	while (1)
-		task_wait_event(-1);
-}
