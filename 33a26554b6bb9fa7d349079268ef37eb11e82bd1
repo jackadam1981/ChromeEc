@@ -34,6 +34,29 @@
       "parentUuid": "48e82795_17ef9273",
       "revId": "33a26554b6bb9fa7d349079268ef37eb11e82bd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46608ab0_4ca5685d",
+        "filename": "board/rex_ish/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-20T16:04:48Z",
+      "side": 1,
+      "message": "MTL is 1.8V SOC. Do we need this? if yes, need same flag for line 10?",
+      "range": {
+        "startLine": 8,
+        "startChar": 30,
+        "endLine": 8,
+        "endChar": 44
+      },
+      "revId": "33a26554b6bb9fa7d349079268ef37eb11e82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
