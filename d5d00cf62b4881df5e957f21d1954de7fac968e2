@@ -69,6 +69,24 @@
       "parentUuid": "074fa8b4_af3f55c6",
       "revId": "d5d00cf62b4881df5e957f21d1954de7fac968e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "358d0974_9f2d4dda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-03-20T06:51:19Z",
+      "side": 1,
+      "message": "Add this line, and use ./twister -T zephyr/test/krabby/ shows TEST EXECUTION SUCCESSFUL.",
+      "parentUuid": "606d6dfe_f3604fb8",
+      "revId": "d5d00cf62b4881df5e957f21d1954de7fac968e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
