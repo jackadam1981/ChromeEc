@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a15c3ac5_44a7167d",
+        "filename": "zephyr/dts/bindings/usbc/tcpc/richtek,rt171x-tcpc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-20T11:22:26Z",
+      "side": 1,
+      "message": "Is it correct to use `rt171x` for this? All existing files refer to the full part number (`rt1715`) and there\u0027s already a `rt1718s`. The naming of this suggest that it would support both but clearly it does not.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "001874f04fa12f6ee2b4fbf9f846c76398cb907b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
