@@ -18,3 +18,19 @@
 		},                                     \
 		.drv = &tcpci_tcpm_drv,                \
 	},
+
+#define TCPC_ALT_NAME_GET(node_id) DT_CAT(tcpc_alt_, node_id)
+
+#define TCPC_ALT_FROM_NODELABEL(lbl) (TCPC_ALT_NAME_GET(DT_NODELABEL(lbl)))
+
+#define TCPC_ALT_DECLARATION(node_id) \
+	extern const struct tcpc_config_t TCPC_ALT_NAME_GET(node_id)
+
+#define TCPC_ALT_DECLARE(node_id)                   \
+	COND_CODE_1(DT_PROP_OR(node_id, is_alt, 0), \
+		    (TCPC_ALT_DECLARATION(node_id);), ())
+
+#define TCPC_ENABLE_ALTERNATE_BY_NODELABEL(usb_port_num, nodelabel) \
+	memcpy(&tcpc_config[usb_port_num],                          \
+	       &TCPC_ALT_FROM_NODELABEL(nodelabel),                 \
+	       sizeof(struct tcpc_config_t))
