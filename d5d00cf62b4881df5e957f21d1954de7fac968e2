@@ -51,6 +51,24 @@
       "parentUuid": "3248b99c_67335dd1",
       "revId": "d5d00cf62b4881df5e957f21d1954de7fac968e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606d6dfe_f3604fb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-03-20T06:17:59Z",
+      "side": 1,
+      "message": "please add a 1 sec sleep in zephyr/test/krabby/src/power_seq.c around line 127, thanks\n\n```\nZTEST(power_seq, test_lid_open)\n{\n        const struct gpio_dt_spec *lid_open \u003d gpio_get_dt_spec(GPIO_LID_OPEN);\n\n        gpio_emul_input_set(lid_open-\u003eport, lid_open-\u003epin, 0);\n        k_sleep(K_SECONDS(1));                                       \u003c- this line\n        zassert_equal(power_get_state(), POWER_G3);\n```",
+      "parentUuid": "074fa8b4_af3f55c6",
+      "revId": "d5d00cf62b4881df5e957f21d1954de7fac968e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
