@@ -9,7 +9,8 @@
 
 #define ANX7447_TCPC_COMPAT analogix_anx7447_tcpc
 
-#define TCPC_CONFIG_ANX7447(id) \
+/* clang-format off */
+#define TCPC_CONFIG_ANX7447(id)                                                \
 	{                                                                      \
 		.bus_type = EC_BUS_TYPE_I2C,                                   \
 		.i2c_info = {                                                  \
@@ -18,5 +19,6 @@
 		},                                                             \
 		.drv = &anx7447_tcpm_drv,                                      \
 		.flags = DT_PROP(id, tcpc_flags),                              \
-		.irq_gpio = GPIO_DT_SPEC_GET_OR(id, irq_gpios, {}),            \
-	},
+		.irq_gpio = GPIO_DT_SPEC_GET_OR(id, irq_gpios, {}), \
+	}
+/* clang-format on */

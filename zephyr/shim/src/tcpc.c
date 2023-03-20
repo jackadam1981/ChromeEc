@@ -34,7 +34,7 @@ LOG_MODULE_REGISTER(tcpc, CONFIG_GPIO_LOG_LEVEL);
 #if DT_HAS_TCPC
 
 #define TCPC_CHIP_ENTRY(usbc_id, tcpc_id, config_fn) \
-	[USBC_PORT_NEW(usbc_id)] = config_fn(tcpc_id)
+	[USBC_PORT_NEW(usbc_id)] = config_fn(tcpc_id),
 
 #define CHECK_COMPAT(compat, usbc_id, tcpc_id, config_fn) \
 	COND_CODE_1(DT_NODE_HAS_COMPAT(tcpc_id, compat),  \
@@ -80,6 +80,14 @@ LOG_MODULE_REGISTER(tcpc, CONFIG_GPIO_LOG_LEVEL);
 /* Type C Port Controllers */
 MAYBE_CONST struct tcpc_config_t tcpc_config[] = { DT_FOREACH_STATUS_OKAY(
 	named_usbc_port, TCPC_CHIP) };
+
+#define TCPC_ALT_DEFINITION(node_id, config_fn)                 \
+	const struct tcpc_config_t TCPC_ALT_NAME_GET(node_id) = \
+		config_fn(node_id)
+
+#define TCPC_ALT_DEFINE(node_id, config_fn)         \
+	COND_CODE_1(DT_PROP_OR(node_id, is_alt, 0), \
+		    (TCPC_ALT_DEFINITION(node_id, config_fn);), ())
 
 #ifdef CONFIG_PLATFORM_EC_TCPC_INTERRUPT
 

@@ -9,7 +9,8 @@
 
 #define PS8XXX_EMUL_COMPAT cros_ps8xxx_emul
 
-#define TCPC_CONFIG_PS8XXX_EMUL(id) \
+/* clang-format off */
+#define TCPC_CONFIG_PS8XXX_EMUL(id)                                            \
 	{                                                                      \
 		.bus_type = EC_BUS_TYPE_I2C,                                   \
 		.i2c_info = {                                                  \
@@ -22,5 +23,6 @@
 			(.alert_signal = COND_CODE_1(                          \
 				DT_NODE_HAS_PROP(id, int_pin),                 \
 				(GPIO_SIGNAL(DT_PHANDLE(id, int_pin))),        \
-				(GPIO_LIMIT)))),                               \
-	},
+				(GPIO_LIMIT)))), \
+	}
+/* clang-format on */
