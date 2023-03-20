@@ -46,6 +46,53 @@
       },
       "revId": "001874f04fa12f6ee2b4fbf9f846c76398cb907b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e039a3c_75f7f200",
+        "filename": "zephyr/dts/bindings/usbc/tcpc/richtek,rt171x-tcpc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-20T14:08:07Z",
+      "side": 1,
+      "message": "It\u0027s a bit confusing, ideally we\u0027d be coherent with the file on the whole stack, having a `zephyr/shim/include/usbc/tcpc_rt171x.h` unconditionally including `tcpm/rt1715_public.h` just does not look right, but I guess we can go with it for now.",
+      "parentUuid": "9f05f386_b116adf3",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "001874f04fa12f6ee2b4fbf9f846c76398cb907b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6520dbeb_752ed38d",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-20T14:08:07Z",
+      "side": 1,
+      "message": "I think the list is trying to be somewhat alphabetical, maybe swap these two?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "001874f04fa12f6ee2b4fbf9f846c76398cb907b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
