@@ -16,6 +16,46 @@
       "message": "nit: This isn\u0027t really retimer specific, but rather related to DB selection. Also, it\u0027s probably better to add a little explanation about the purpose (function) of this CL.",
       "revId": "7c20375a752052ee0ea46b721c543ba2aa09cb35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "823b24cf_b38fbb8e",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-20T11:16:18Z",
+      "side": 1,
+      "message": "not used",
+      "revId": "7c20375a752052ee0ea46b721c543ba2aa09cb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2988bd1_a77f9669",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-20T11:16:18Z",
+      "side": 1,
+      "message": "Only logging? Is that right?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "7c20375a752052ee0ea46b721c543ba2aa09cb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
