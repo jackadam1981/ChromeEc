@@ -33,6 +33,23 @@
       "message": "This CL stack seems unrelated to Zephyr. Are we enabling the ISH on non-zephyr boards too or did I misunderstand how this is being used?",
       "revId": "e8fe0e569d242e2dc11bd5a1dc94b51612b3afb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d59f6432_050e01c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2023-03-20T20:58:06Z",
+      "side": 1,
+      "message": "hi Yuval, we enabled non-zephyr only for the HW checkout. We will switch from non zephyr to CHRE based new zephyr sensor subsystem. we do not see value in enabling SHIM’ed zephyr. what do you think?",
+      "revId": "e8fe0e569d242e2dc11bd5a1dc94b51612b3afb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
