@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76592795_a202a045",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2023-03-20T16:57:29Z",
+      "side": 1,
+      "message": "Isn\u0027t it still racy, though? You\u0027ve just made the race really rare. I guess I\u0027m assuming it\u0027s possible for `tablet_mode_lid_event()` to somehow interrupt this function and/or run at the same time. If so then it could be changing these globals as we\u0027re evaluating them. I guess that would also mean that both could be calling `tablet_set_mode()` at the same time?\n\nGiven that we pretty much always want to evaluate the lid and tablet mode in tandem, maybe it would be easier to reason about / avoid races if we did this:\n* Change `tablet_mode_lid_event()` to the exact same thing as `gmr_tablet_switch_isr()`: just queue up the same deferred function.\n* Move all the checking / calling of `tablet_set_mode()` into the deferred function.",
+      "range": {
+        "startLine": 185,
+        "startChar": 16,
+        "endLine": 186,
+        "endChar": 27
+      },
+      "revId": "65b6facce6c5e582b8a53d7b1ec5f258cf1d89f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
