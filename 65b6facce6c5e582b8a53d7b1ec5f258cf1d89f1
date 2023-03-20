@@ -22,6 +22,30 @@
       },
       "revId": "65b6facce6c5e582b8a53d7b1ec5f258cf1d89f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d31f9894_44e2a042",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-20T17:42:57Z",
+      "side": 1,
+      "message": "\u003e Isn\u0027t it still racy, though?\n\nBoth functions (gmr_tablet_switch_interrupt_debounce() and tablet_mode_lid_event() runs on the same task (TASK_ID_HOOKS): on the lid side, the hook_notify() also happens from a deferred routine.\nIf we were using the same routine, since the source (lid and tablet gmr) is lost, we would possible fire duplicate events.",
+      "parentUuid": "76592795_a202a045",
+      "range": {
+        "startLine": 185,
+        "startChar": 16,
+        "endLine": 186,
+        "endChar": 27
+      },
+      "revId": "65b6facce6c5e582b8a53d7b1ec5f258cf1d89f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
