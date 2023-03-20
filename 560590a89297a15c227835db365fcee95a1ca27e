@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e5ec44_a916c549",
+        "filename": "baseboard/ish/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-03-20T22:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31ffec5b_54dc10a6",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "560590a89297a15c227835db365fcee95a1ca27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0705ac8_4d640eb2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9333ccde_29c92585",
+        "filename": "baseboard/ish/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-03-20T22:56:18Z",
+      "side": 1,
+      "message": "Added this to support i2cscan.",
+      "parentUuid": "d0705ac8_4d640eb2",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "560590a89297a15c227835db365fcee95a1ca27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d514740d_2f5904d4",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-20T21:30:29Z",
       "side": 1,
       "message": "need to be below line 53?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "560590a89297a15c227835db365fcee95a1ca27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "006af703_b557ac56",
+        "filename": "baseboard/ish/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-03-20T22:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d514740d_2f5904d4",
       "range": {
         "startLine": 45,
         "startChar": 0,
