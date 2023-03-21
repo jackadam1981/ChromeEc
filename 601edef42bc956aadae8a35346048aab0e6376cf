@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8b69058_c6b69ad8",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:24:54Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "601edef42bc956aadae8a35346048aab0e6376cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f11166e5_216d534b",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:24:54Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "601edef42bc956aadae8a35346048aab0e6376cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cf499a6_b38c43d6",
+        "filename": "include/timer.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:24:54Z",
+      "side": 1,
+      "message": "Can you put this change in a separate CL?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "601edef42bc956aadae8a35346048aab0e6376cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57aed469_8ffa876c",
+        "filename": "test/aes.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:24:54Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "601edef42bc956aadae8a35346048aab0e6376cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef36c16_34d7f2e9",
+        "filename": "test/aes.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:24:54Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "601edef42bc956aadae8a35346048aab0e6376cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a8bf33_73f5bfb7",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 39
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:24:54Z",
+      "side": 1,
+      "message": "Can you add `TODO(b/273639386)` on this one as well? (EC is not Linux.)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "601edef42bc956aadae8a35346048aab0e6376cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11560563_3b2def79",
+        "filename": "third_party/boringssl/include/aes_gcm_helpers.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:24:54Z",
+      "side": 1,
+      "message": "nit: \"This API was removed in upstream:\"",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 44
+      },
+      "revId": "601edef42bc956aadae8a35346048aab0e6376cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1490500_ce88299a",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 39
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:24:54Z",
+      "side": 1,
+      "message": "Can you add a `TODO(b/273639386)`, since we want to remove this in the future?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 27
+      },
+      "revId": "601edef42bc956aadae8a35346048aab0e6376cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
