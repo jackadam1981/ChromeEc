@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab210a68_75bd7772",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-03-21T18:54:33Z",
+      "side": 1,
+      "message": "Please add a check that `argc` is correct before using `argv`",
+      "range": {
+        "startLine": 828,
+        "startChar": 20,
+        "endLine": 828,
+        "endChar": 21
+      },
+      "revId": "d6a4d6d4672eb5e07989056683e721baab34db51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d3805a1_ee2de366",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-03-21T18:54:33Z",
+      "side": 1,
+      "message": "nit: It\u0027s not required but explicitly specifying this as `hex_str[3]` would allow the compiler to throw an error if too many characters are included.",
+      "range": {
+        "startLine": 837,
+        "startChar": 14,
+        "endLine": 837,
+        "endChar": 16
+      },
+      "revId": "d6a4d6d4672eb5e07989056683e721baab34db51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
