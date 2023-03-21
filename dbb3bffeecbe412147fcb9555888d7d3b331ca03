@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4ba1dc8_915593cd",
+        "filename": "test/motion_lid.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-21T16:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5f15be7_6dc3b7dc",
+      "revId": "dbb3bffeecbe412147fcb9555888d7d3b331ca03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76bbb805_2d5c348a",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-03-20T22:45:42Z",
       "side": 1,
       "message": "Don\u0027t we want to test the case where GPIO_LID_OPEN and motion_lid_get_angle contradict (and we choose GPIO_LID_OPEN for tablet_get_mode)? For example, we want tablet_get_mode() to be false if motion_lid_get_angle returns 300 and GPIO_LID_OPEN is 0. Is it already tested somewhere?",
+      "revId": "dbb3bffeecbe412147fcb9555888d7d3b331ca03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c0e82df_a9767e83",
+        "filename": "test/motion_lid.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-21T16:37:37Z",
+      "side": 1,
+      "message": "Yes, it is test line 348: the lid angle is reported large (350 degree), but since GPIO_LID_OPEN is low (from line 340), we stay in clamshell mode.",
+      "parentUuid": "76bbb805_2d5c348a",
       "revId": "dbb3bffeecbe412147fcb9555888d7d3b331ca03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
