@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c38e7a1_b0d6f647",
+        "filename": "docs/ti50_firwmare_releases.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-03-21T14:44:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91cff83a_6a4acf8a",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 14
+      },
+      "revId": "b5e87bde8775a11694eab693bab80feff5e36f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a0ce312_3d74ff1a",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-03-20T22:44:14Z",
       "side": 1,
       "message": "is this part useful going forward?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "b5e87bde8775a11694eab693bab80feff5e36f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07afc8b9_523537a3",
+        "filename": "docs/ti50_firwmare_releases.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-03-21T14:44:19Z",
+      "side": 1,
+      "message": "I removed the unreleased section, but the released location like it could be useful if someone needed to find an older version (and then use rescue).",
+      "parentUuid": "0a0ce312_3d74ff1a",
       "range": {
         "startLine": 75,
         "startChar": 0,
