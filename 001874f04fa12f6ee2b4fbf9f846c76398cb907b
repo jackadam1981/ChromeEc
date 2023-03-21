@@ -93,6 +93,30 @@
       },
       "revId": "001874f04fa12f6ee2b4fbf9f846c76398cb907b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5104b0ba_53897f90",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-21T07:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6520dbeb_752ed38d",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "001874f04fa12f6ee2b4fbf9f846c76398cb907b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
