@@ -60,6 +60,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51a0e884_3c84d08a",
+        "filename": "zephyr/zmake/zmake/named_gpios.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-21T16:20:41Z",
+      "side": 1,
+      "message": "zmake provides the `--zephyr-base` argument, allowing the user to point to a different Zephyr repository.  So I\u0027m doing a dynamic import to ensure I get the same module that the code is building/linking against.",
+      "parentUuid": "d4730ceb_8a87ba3f",
+      "revId": "5fb999c20f3b66a168f434b09bf4e347339cabe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "095583ca_73ee4879",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 3
@@ -71,6 +89,24 @@
       "writtenOn": "2023-03-17T18:56:09Z",
       "side": 1,
       "message": "Nit/possibly out of scope, but the semantics of `_configure_one_build` and `verify_no_duplicates` seem a little confused.\n\nIt looks like the return values in this call chain have shell-status semantics, i.e. 0 is good, and anything else is bad. `verify_no_duplicates` has \"number of duplicates\" semantics, and it just happens that 0 is the good number also. It seems more natural to me that `verify_no_duplicates` should return `True`/`False` or that it should be called something like `get_number_of_duplicates`, and the \"translation\" should be commented here.",
+      "revId": "5fb999c20f3b66a168f434b09bf4e347339cabe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7718524c_16fbd39e",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-21T16:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "095583ca_73ee4879",
       "revId": "5fb999c20f3b66a168f434b09bf4e347339cabe2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
