@@ -156,13 +156,13 @@ mux_task_enqueue(int port, int index, enum mux_config_type type,
 #endif
 
 	mutex_lock(&queue_lock[port]);
+	size_t size = queue_add_unit(&mux_queue[port], &new_entry);
+	mutex_unlock(&queue_lock[port]);
 
-	if (queue_add_unit(&mux_queue[port], &new_entry) == 0)
+	if (size == 0)
 		CPRINTS("Error: Dropping port %d mux %d", port, type);
 	else
 		task_wake(TASK_ID_USB_MUX);
-
-	mutex_unlock(&queue_lock[port]);
 }
 
 #ifdef HAS_TASK_USB_MUX
