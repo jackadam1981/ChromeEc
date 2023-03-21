@@ -16,6 +16,23 @@
       "message": "Madhu -\n\nThis change has not been compiled or tested.  But this shows you how to use the DT_FOREACH macros to walk the devicetree and find the TCPC nodes.",
       "revId": "e83973a50a354039a549cabce90bfb1513bc06ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c516f3_6fa36f4c",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-21T08:01:59Z",
+      "side": 1,
+      "message": "I added only one declaration and definition for RT171X in previous CLs as it\u0027s required bit urgently. But it\u0027s giving me `error: expected identifier or \u0027(\u0027 before \u0027;\u0027 token` error on build as well as while testing. I am unable to figure it out yet. But Thank you for looking into this.",
+      "revId": "e83973a50a354039a549cabce90bfb1513bc06ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
