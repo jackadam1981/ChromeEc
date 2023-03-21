@@ -6,6 +6,7 @@
 #ifndef ZEPHYR_CHROME_USBC_PPC_H
 #define ZEPHYR_CHROME_USBC_PPC_H
 
+#include "usbc/ppc_ktu1125.h"
 #include "usbc/ppc_nx20p348x.h"
 #include "usbc/ppc_rt1739.h"
 #include "usbc/ppc_sn5s330.h"

@@ -1,0 +1,11 @@
+description: USBC PPC
+
+compatible: "kinectic,ku1125"
+
+include: ppc-chip.yaml
+
+properties:
+  frs_alert_gpio:
+    type: phandle
+    description: The GPIO that alerts when FRS pulse is detected
+    required: false
