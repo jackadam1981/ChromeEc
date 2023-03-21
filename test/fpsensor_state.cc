@@ -188,9 +188,9 @@ test_static int test_fp_set_maintenance_mode(void)
 
 test_static int test_fp_command_read_match_secret_fail_fgr_less_than_zero(void)
 {
-	/* Create invalid param with fgr < 0 */
+	/* Create invalid param with fgr 0xffff */
 	struct ec_params_fp_read_match_secret test_match_secret = {
-		.fgr = -1,
+		.fgr = 0xffff,
 	};
 
 	TEST_ASSERT(test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0,
@@ -238,8 +238,8 @@ test_static int test_fp_command_read_match_secret_fail_timeout(void)
 test_static int test_fp_command_read_match_secret_unmatched_fgr(void)
 {
 	/* Create valid param with 0 <= fgr < 5 */
-	uint16_t matched_fgr = 1;
-	uint16_t unmatched_fgr = 2;
+	uint8_t matched_fgr = 1;
+	int8_t unmatched_fgr = 2;
 	struct ec_params_fp_read_match_secret test_match_secret_1 = {
 		.fgr = matched_fgr,
 	};
@@ -247,9 +247,12 @@ test_static int test_fp_command_read_match_secret_unmatched_fgr(void)
 	 * readable state, and wrong template matched
 	 */
 	struct positive_match_secret_state test_state = {
-		.deadline.val = 5000000,
-		.readable = true,
 		.template_matched = unmatched_fgr,
+		.readable = true,
+		.deadline =
+			timestamp_t{
+				.val = 5000000,
+			},
 	};
 
 	/* Test for the wrong matched finger state */
@@ -266,7 +269,7 @@ test_static int test_fp_command_read_match_secret_unmatched_fgr(void)
 test_static int test_fp_command_read_match_secret_unreadable_state(void)
 {
 	/* Create valid param with 0 <= fgr < 5 */
-	uint16_t matched_fgr = 1;
+	uint8_t matched_fgr = 1;
 	struct ec_params_fp_read_match_secret test_match_secret_1 = {
 		.fgr = matched_fgr,
 	};
@@ -275,9 +278,12 @@ test_static int test_fp_command_read_match_secret_unreadable_state(void)
 	 * unreadable state, and correct matched template
 	 */
 	struct positive_match_secret_state test_state = {
-		.deadline.val = 5000000,
+		.template_matched = static_cast<int8_t>(matched_fgr),
 		.readable = false,
-		.template_matched = matched_fgr,
+		.deadline =
+			timestamp_t{
+				.val = 5000000,
+			},
 	};
 
 	/* Test for the unreadable state */
@@ -303,9 +309,12 @@ test_static int test_fp_command_read_match_secret_derive_fail(void)
 	 * readable state, and correct template matched
 	 */
 	struct positive_match_secret_state test_state_1 = {
-		.deadline.val = 5000000,
+		.template_matched = static_cast<int8_t>(matched_fgr),
 		.readable = true,
-		.template_matched = matched_fgr,
+		.deadline =
+			timestamp_t{
+				.val = 5000000,
+			},
 	};
 	positive_match_secret_state = test_state_1;
 	/* Set fp_positive_match_salt to the trivial value */
@@ -343,9 +352,12 @@ test_static int test_fp_command_read_match_secret_derive_succeed(void)
 	 * readable state, and correct template matched
 	 */
 	struct positive_match_secret_state test_state_1 = {
-		.deadline.val = 5000000,
+		.template_matched = static_cast<int8_t>(matched_fgr),
 		.readable = true,
-		.template_matched = matched_fgr,
+		.deadline =
+			timestamp_t{
+				.val = 5000000,
+			},
 	};
 	positive_match_secret_state = test_state_1;
 	/* Set fp_positive_match_salt to the trivial value */
@@ -355,7 +367,7 @@ test_static int test_fp_command_read_match_secret_derive_succeed(void)
 	TEST_ASSERT_ARRAY_EQ(
 		(uint8_t const *)fp_positive_match_salt,
 		(uint8_t const *)default_fake_fp_positive_match_salt,
-		sizeof(default_fake_fp_positive_match_salt));
+		static_cast<int>(sizeof(default_fake_fp_positive_match_salt)));
 
 	/* Initialize an empty user_id to compare positive_match_secret */
 	memset(user_id, 0, sizeof(user_id));
@@ -372,7 +384,8 @@ test_static int test_fp_command_read_match_secret_derive_succeed(void)
 	TEST_ASSERT_ARRAY_EQ(
 		response.positive_match_secret,
 		expected_positive_match_secret_for_empty_user_id,
-		sizeof(expected_positive_match_secret_for_empty_user_id));
+		static_cast<int>(sizeof(
+			expected_positive_match_secret_for_empty_user_id)));
 
 	return EC_SUCCESS;
 }
