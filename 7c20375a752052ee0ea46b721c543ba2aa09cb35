@@ -116,6 +116,30 @@
       },
       "revId": "7c20375a752052ee0ea46b721c543ba2aa09cb35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b79032_ad4d583f",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-21T09:53:00Z",
+      "side": 1,
+      "message": "Ok but then it means that the commits are in the wrong order, you should first add the driver, then the cbi bits, then use the driver and the cbi bits to implement the functionality. What\u0027s the point of adding a half-baked patch in the stack just to finish it two commits later?",
+      "parentUuid": "4a03fc22_7d7c038f",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "7c20375a752052ee0ea46b721c543ba2aa09cb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
