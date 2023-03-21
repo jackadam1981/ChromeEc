@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17432baa_88aafd0f",
+        "filename": "zephyr/test/drivers/usbc_tcpc/src/tcpc_shim.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-21T19:34:47Z",
+      "side": 1,
+      "message": "Please add tests for all TCPC driver types.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "6f3237cb6ee8a63bd6e3552ef463b336da7c66e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
