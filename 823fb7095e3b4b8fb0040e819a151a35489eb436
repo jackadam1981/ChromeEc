@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c370d1a_442c7f0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:50:51Z",
+      "side": 1,
+      "message": "Let\u0027s keep the file extension as `.h`, not `hpp` since we haven\u0027t been using `hpp` in EC code. (Seems not to be in the [Google C++ style](https://google.github.io/styleguide/cppguide.html)).",
+      "revId": "823fb7095e3b4b8fb0040e819a151a35489eb436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
