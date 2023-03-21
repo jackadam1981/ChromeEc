@@ -140,6 +140,30 @@
       },
       "revId": "7c20375a752052ee0ea46b721c543ba2aa09cb35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ebeadd1_02dc356b",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-21T10:12:48Z",
+      "side": 1,
+      "message": "There are few features I am waiting for like ppc_alt and tcpc_alt for Analogix DB, hence didn\u0027t add it after Analogix as it\u0027s not completely ready. If the changes before drivers get merged, other engineer who is working on other DB could use it to configure their DB in parallel or by cherrypick.",
+      "parentUuid": "d7b79032_ad4d583f",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "7c20375a752052ee0ea46b721c543ba2aa09cb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
