@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ba20c3f_b3c6b0a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T22:24:33Z",
+      "side": 1,
+      "message": "Small changes. Otherwise LGTM.",
+      "revId": "b4d2b74a9fada2e6626e08e9964234cf6f148aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d16ea16_06af103e",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T22:24:33Z",
+      "side": 1,
+      "message": "nit: space",
+      "revId": "b4d2b74a9fada2e6626e08e9964234cf6f148aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c617ecb0_9b3a2614",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T22:24:33Z",
+      "side": 1,
+      "message": "Can you add a comment on how to run the unit tests in this file?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "b4d2b74a9fada2e6626e08e9964234cf6f148aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b2da98c_0cda2530",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T22:24:33Z",
+      "side": 1,
+      "message": "Can we make this a `TODO(b/123)`, so that it is tracked by a bug? There may already be a bug.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "b4d2b74a9fada2e6626e08e9964234cf6f148aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc178e1_51068fd7",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T22:24:33Z",
+      "side": 1,
+      "message": "\"a\"",
+      "range": {
+        "startLine": 121,
+        "startChar": 39,
+        "endLine": 121,
+        "endChar": 41
+      },
+      "revId": "b4d2b74a9fada2e6626e08e9964234cf6f148aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845158c3_3280fc28",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T22:24:33Z",
+      "side": 1,
+      "message": "\"contain\"",
+      "range": {
+        "startLine": 146,
+        "startChar": 27,
+        "endLine": 146,
+        "endChar": 35
+      },
+      "revId": "b4d2b74a9fada2e6626e08e9964234cf6f148aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a957cf_900191e4",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T22:24:33Z",
+      "side": 1,
+      "message": "\"represent\"",
+      "range": {
+        "startLine": 155,
+        "startChar": 48,
+        "endLine": 155,
+        "endChar": 56
+      },
+      "revId": "b4d2b74a9fada2e6626e08e9964234cf6f148aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9b1bc0_2d475975",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T22:24:33Z",
+      "side": 1,
+      "message": "Rather than `-1`, it may be a little clearer to specify the exact index. That would help make it clearer where `10740` comes from (`last_index * 20`).",
+      "range": {
+        "startLine": 324,
+        "startChar": 30,
+        "endLine": 324,
+        "endChar": 32
+      },
+      "revId": "b4d2b74a9fada2e6626e08e9964234cf6f148aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70c991b2_64d36acd",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T22:24:33Z",
+      "side": 1,
+      "message": "Could you add a comment that describes how `10752` and `10740` are related? For example, something like: \"We\u0027re splitting into chunks of size 20, and floor(10752/20) \u003d 10740\".",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 54
+      },
+      "revId": "b4d2b74a9fada2e6626e08e9964234cf6f148aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
