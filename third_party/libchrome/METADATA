@@ -1,0 +1,17 @@
+name: "libchrome"
+description:
+    "An general utility library form chromium project."
+
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://chromium.googlesource.com/chromiumos/docs/+/HEAD/packages/libchrome.md"
+  }
+  url {
+    type: GIT
+    value: "https://chromium.googlesource.com/chromiumos/platform/libchrome"
+  }
+  version: "407cef499113f4a2c578b8a5f0014f970b12544d"
+  last_upgrade_date { year: 2023 month: 3 day: 25 }
+  license_type: NOTICE
+}
