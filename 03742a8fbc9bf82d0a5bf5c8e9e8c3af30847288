@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da3f8c7d_5f616bb1",
+        "filename": "cmake/toolchain-armv7m.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-21T06:03:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24f8297c_3c450cdd",
+      "range": {
+        "startLine": 6,
+        "startChar": 39,
+        "endLine": 6,
+        "endChar": 50
+      },
+      "revId": "03742a8fbc9bf82d0a5bf5c8e9e8c3af30847288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "356bd063_bedc2eba",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7bd0190_e5ca37c2",
+        "filename": "cmake/toolchain-armv7m.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-21T06:03:56Z",
+      "side": 1,
+      "message": "hmmm, `CMAKE_CURRENT_SOURCE_DIR` is the location of `CMakeLists.txt` instead of the toolchain file. I think we should not depend on the relative path of target.",
+      "parentUuid": "356bd063_bedc2eba",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "03742a8fbc9bf82d0a5bf5c8e9e8c3af30847288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "903dee5b_7dba75be",
         "filename": "cmake/toolchain-common.cmake",
         "patchSetId": 6
@@ -60,6 +108,24 @@
       "writtenOn": "2023-03-16T23:28:31Z",
       "side": 1,
       "message": "nit: looks like an extra newline here",
+      "revId": "03742a8fbc9bf82d0a5bf5c8e9e8c3af30847288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5146dd8_bb7e3a3f",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-21T06:03:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "903dee5b_7dba75be",
       "revId": "03742a8fbc9bf82d0a5bf5c8e9e8c3af30847288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
