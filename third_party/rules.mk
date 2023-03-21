@@ -68,6 +68,7 @@ BORINGSSL_LDFLAGS := -L$(BORINGSSL_OUTDIR) -lcrypto
 
 # And the custom helpers.
 CPPFLAGS += -I$(shell pwd)/third_party/boringssl/include
+CPPFLAGS += -I$(shell pwd)/third_party/libchrome
 
 # Disable the unsupported features to prevent the usage of pthread & socket
 # related types in headers.
