@@ -699,6 +699,11 @@ class Zmake:
             ):
                 return 1
 
+            if not zmake.named_gpios.verify_gpios_cross_check(
+                self.zephyr_base, output_dir
+            ):
+                return 1
+
             return 0
 
     def _build(
