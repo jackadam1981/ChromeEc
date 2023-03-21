@@ -164,6 +164,30 @@
       },
       "revId": "a40e5c1cb304299dc1aea02a654802331e563a59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a77e902_7d545b03",
+        "filename": "board/gimble/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-21T22:28:28Z",
+      "side": 1,
+      "message": "45 and 43 are a bit close. So, I wonder if users may observe the fan goes on-off repeatedly at a noticeably short interval.\n\n1. system is heated.\n2. temp goes above 45 and fan goes to L.2.\n3. temp cools down (because of faster fan).\n4. temp drops to 43 and fan goes to L.1.\n5. temps goes up (because of slow fan).\n\nThe 2-degree gap could be totally fine. I\u0027m just trying to elaborate Boris\u0027s concern. If you don\u0027t observe the above behavior (when you put medium load on the system), please go ahead and submit the CL.",
+      "parentUuid": "705857d3_6b545666",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 13
+      },
+      "revId": "a40e5c1cb304299dc1aea02a654802331e563a59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
