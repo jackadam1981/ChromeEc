@@ -682,6 +682,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceca03c3_f3845b2b",
+        "filename": "test/tablet_broken_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-21T00:05:19Z",
+      "side": 1,
+      "message": "Yeah, I agree we should avoid msleep in unit tests as much as possible. We haven\u0027t been strict about it in this repo (unfortunately). If we need to yield the cpu to other threads, we can use a while loop waiting for a certain condition to be true.\n\nI\u0027ll find a way/opportunity to share it with the team. We\u0027re currently more interested in test coverage (than the stability).",
+      "parentUuid": "e3d77851_49b7663e",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "493d627698a814ca06f7dcbaa767c0458023720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2d67ac1_5e6b2c83",
