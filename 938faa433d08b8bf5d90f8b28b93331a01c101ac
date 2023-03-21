@@ -33,6 +33,29 @@
       "message": "Review ping",
       "revId": "938faa433d08b8bf5d90f8b28b93331a01c101ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "778e8b87_cd54fb16",
+        "filename": "zephyr/test/drivers/power_host_sleep/src/test_power_host_sleep.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-03-21T18:17:32Z",
+      "side": 1,
+      "message": "Do you think if it is necessary to test an extra case that it reboots so quickly that no timeout?",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 46
+      },
+      "revId": "938faa433d08b8bf5d90f8b28b93331a01c101ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
