@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45367a6f_0c12a5f0",
+        "filename": "zephyr/program/rex/rex/cbi.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-21T21:16:45Z",
+      "side": 1,
+      "message": "is \"io-db\" a zephyr preference?\nthis is called \"DB_USB\" in config.start and we should use a similar\nname to the extent possible. \"usb-db\" would be a better choice.\n\n\"io-db\" is ambiguous because we also have an SD card DB, etc...",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "408ff62c40c75830a43a675e3c7cf7c7a709661b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
