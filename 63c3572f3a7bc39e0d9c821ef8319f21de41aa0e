@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2895925a_40e44a4a",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-21T17:22:36Z",
+      "side": 1,
+      "message": "Note - you need to clear `tpcp_config[1].irq_gpio.port` when DB_USB_ABSENT is detected.  That can be done just above in the `board_tcpc_init()` call.",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 47
+      },
+      "revId": "63c3572f3a7bc39e0d9c821ef8319f21de41aa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4159675_bf5e66b6",
+        "filename": "zephyr/program/corsola/npcx_i2c.dtsi",
+        "patchSetId": 20
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-21T17:22:36Z",
+      "side": 1,
+      "message": "This pin should be active high.  The original code generated a reset pulse by driving high then low.\n```\n\t/* Assert reset */\n\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_rst), 1);\n\tmsleep(1);\n\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_rst), 0);\n```",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 39
+      },
+      "revId": "63c3572f3a7bc39e0d9c821ef8319f21de41aa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
