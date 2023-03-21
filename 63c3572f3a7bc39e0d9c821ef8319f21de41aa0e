@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38b23b4a_d9913daa",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-03-21T20:20:40Z",
+      "side": 1,
+      "message": "In brya the tcpc_config is set to be read-only. `CONFIG_PLATFORM_EC_USB_PD_TCPC_RUNTIME_CONFIG\u003dn` I\u0027m not sure how to clear `tpcp_config[1].irq_gpio.port`",
+      "parentUuid": "2895925a_40e44a4a",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 47
+      },
+      "revId": "63c3572f3a7bc39e0d9c821ef8319f21de41aa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4159675_bf5e66b6",
         "filename": "zephyr/program/corsola/npcx_i2c.dtsi",
         "patchSetId": 20
