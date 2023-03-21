@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80f97ba0_4a63e6b4",
+        "filename": "zephyr/shim/include/usbc/tcpc_anx7447.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-21T21:05:50Z",
+      "side": 0,
+      "message": "removing the \u0027,\u0027 here and in similar files is a tree wide syntactic\nchange which affects how these macros are used.\n\nplease separate these with the corresponding call sites like\ntcpc.c into a separate CL.",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 3
+      },
+      "revId": "65146b1a381c1d603ee2da3d718f7b1bebfa7d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
