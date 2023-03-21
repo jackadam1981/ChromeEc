@@ -35,6 +35,7 @@ SPECIAL_BOARDS = [
     "kingler",
     "rex",
     "geralt",
+    "myst",
     # Skyrim variants
     "winterhold",
     "frostflow",
