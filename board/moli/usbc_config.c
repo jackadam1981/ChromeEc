@@ -343,3 +343,13 @@ __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 
 	return TBT_SS_TBT_GEN3;
 }
+
+__override enum pd_dual_role_states pd_get_drp_state_in_suspend(void)
+{
+	/*
+	 * To support wakeup by USB-C disk, the DRP state need to keep on.
+	 * Set to PD_DRP_TOGGLE_ON, the TCPC will be abled to detect the
+	 * USB-C disk during suspend.
+	 */
+	return PD_DRP_TOGGLE_ON;
+}
