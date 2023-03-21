@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3297bf90_86513c7f",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-21T21:17:42Z",
+      "side": 1,
+      "message": "we just need a 30ms wait here based on the datasheets.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 68
+      },
+      "revId": "252a324c056b076289880798ebdceec10b41b956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
