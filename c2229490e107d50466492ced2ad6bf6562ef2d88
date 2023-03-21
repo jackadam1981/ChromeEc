@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fd6261e_7aa5235f",
+        "filename": "include/panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-21T23:38:20Z",
+      "side": 1,
+      "message": "Keeping the header in case refactoring the panic code takes longer than expected. But will have that CL up this or next week (latest).",
+      "revId": "c2229490e107d50466492ced2ad6bf6562ef2d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

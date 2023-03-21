@@ -140,6 +140,30 @@
       },
       "revId": "f54b566f2bbf1d10af8343dcd052a5090f34278f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d4699d9_0caa4c37",
+        "filename": "include/panic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-21T23:38:20Z",
+      "side": 1,
+      "message": "Assigned http://b/274661193 to myself. I\u0027d like to get this fix at least up and merged but then will follow-up with changing the panic code to reduce the risk of this happening again.",
+      "parentUuid": "9ac99bc1_f908c154",
+      "range": {
+        "startLine": 190,
+        "startChar": 19,
+        "endLine": 190,
+        "endChar": 39
+      },
+      "revId": "f54b566f2bbf1d10af8343dcd052a5090f34278f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
