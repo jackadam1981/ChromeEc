@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f057526b_da2c024e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-03-21T18:18:19Z",
+      "side": 1,
+      "message": "tracking bug http://b/274623816",
+      "parentUuid": "a0a94535_9782c685",
+      "revId": "00e71f4a1c2f315d78b65511a6f57c77caac47ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d41ad44_635656cb",
@@ -65,6 +83,30 @@
       "writtenOn": "2023-03-15T23:42:42Z",
       "side": 1,
       "message": "Can you mention it\u0027s hex-encoded? Maybe `\u003chex encoded pixel string\u003e`?",
+      "range": {
+        "startLine": 814,
+        "startChar": 23,
+        "endLine": 814,
+        "endChar": 35
+      },
+      "revId": "00e71f4a1c2f315d78b65511a6f57c77caac47ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c17c73_c0956e60",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-03-21T18:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d41ad44_635656cb",
       "range": {
         "startLine": 814,
         "startChar": 23,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c01d206_34db95ca",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-03-21T18:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbe3fbae_27ebf660",
+      "range": {
+        "startLine": 821,
+        "startChar": 0,
+        "endLine": 823,
+        "endChar": 12
+      },
+      "revId": "00e71f4a1c2f315d78b65511a6f57c77caac47ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e8701a1_c7fa4399",
@@ -111,6 +177,30 @@
       "writtenOn": "2023-03-15T23:42:42Z",
       "side": 1,
       "message": "Should this be \"\u003e\u003d\"?",
+      "range": {
+        "startLine": 834,
+        "startChar": 11,
+        "endLine": 834,
+        "endChar": 12
+      },
+      "revId": "00e71f4a1c2f315d78b65511a6f57c77caac47ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "056a01ad_d33ee321",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-03-21T18:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e8701a1_c7fa4399",
       "range": {
         "startLine": 834,
         "startChar": 11,
@@ -144,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e509971_814992d9",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-03-21T18:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daa5225f_b3822d79",
+      "range": {
+        "startLine": 836,
+        "startChar": 15,
+        "endLine": 836,
+        "endChar": 16
+      },
+      "revId": "00e71f4a1c2f315d78b65511a6f57c77caac47ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0530debb_b45c6ea2",
@@ -167,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5842a98e_eebd7db9",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-03-21T18:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0530debb_b45c6ea2",
+      "range": {
+        "startLine": 837,
+        "startChar": 10,
+        "endLine": 837,
+        "endChar": 19
+      },
+      "revId": "00e71f4a1c2f315d78b65511a6f57c77caac47ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae86cf55_697ba5d5",
@@ -180,6 +318,30 @@
       "writtenOn": "2023-03-15T23:45:06Z",
       "side": 1,
       "message": "Can you split this file into a separate CL: go/small-cls?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 45
+      },
+      "revId": "00e71f4a1c2f315d78b65511a6f57c77caac47ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5a88aa_fdd29698",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 18
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-03-21T18:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae86cf55_697ba5d5",
       "range": {
         "startLine": 1,
         "startChar": 0,
