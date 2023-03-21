@@ -144,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5541c06_18166d28",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T21:43:18Z",
+      "side": 1,
+      "message": "\u003e BTW, how many of the dynamic memory could we use?\n\nIf you run the `shmem` command you can see how much is available. (You\u0027ll need [this CL](https://crrev.com/c/4081572)).\n\nIf we run out of dynamic mem when performing allocations, the FPMCU will reboot.",
+      "parentUuid": "881c0d6c_2b76636b",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 35
+      },
+      "revId": "49227a6c331a4de077222de9485b34b492302cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bbcfac5_50319d6a",
