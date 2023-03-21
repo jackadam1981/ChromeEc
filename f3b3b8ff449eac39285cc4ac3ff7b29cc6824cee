@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb52ecd1_7cbb52c8",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1556,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-21T16:25:22Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\n\nHi Tom, Can you please let me know if this is going in the right direction? \n\nI am following example from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/flash.c;l\u003d1440?q\u003dEC_CMD_FLASH_ERASE\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\u0026start\u003d31#:~:text\u003d1439-,1440,-1441",
+      "range": {
+        "startLine": 1540,
+        "startChar": 0,
+        "endLine": 1556,
+        "endChar": 8
+      },
+      "revId": "f3b3b8ff449eac39285cc4ac3ff7b29cc6824cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
