@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74ae3a88_c2e54a63",
+        "filename": "test/scoped_fast_cpu.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:36:02Z",
+      "side": 1,
+      "message": "\u003e But the problem is we already use weak symbols for `clock_enable_module`.\n\nWe can probably remove that weak function. For the boards that fail to compile when it is removed, we can add the empty `clock_enable_module` in the corresponding `chip/\u003cCHIP\u003e/system.c` file.\n\nBefore doing the work for that, make sure the mock framework will work (I checked and dartmonkey still compiles if you remove the weak `clock_enable_module`.)",
+      "parentUuid": "37770cc6_2679fb5d",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "9ef4bdb3fc85b8f101a8924f4ee17015dbd16a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a32acf6_a8c2116b",
         "filename": "test/scoped_fast_cpu.cc",
         "patchSetId": 4
