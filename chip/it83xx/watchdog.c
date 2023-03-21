@@ -38,8 +38,7 @@ static void watchdog_set_warning_timer(int32_t ms, int init)
 
 void watchdog_warning_irq(void)
 {
-	struct panic_data *const pdata_ptr = get_panic_data_write();
-
+	struct panic_data *const pdata_ptr = PANIC_DATA_PTR;
 #if defined(CHIP_CORE_NDS32)
 	pdata_ptr->nds_n8.ipc = get_ipc();
 #elif defined(CHIP_CORE_RISCV)
