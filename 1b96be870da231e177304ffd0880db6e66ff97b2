@@ -34,6 +34,24 @@
       "parentUuid": "ce226297_0a170642",
       "revId": "1b96be870da231e177304ffd0880db6e66ff97b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b09282d_91b0a124",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392253
+      },
+      "writtenOn": "2023-03-21T22:29:45Z",
+      "side": 1,
+      "message": "The `builder_name` is populated through `util/twister_launcher.py` and I changed the flag to `-tag` from `-var`. The usage example is just mainly for explanation purpose.",
+      "parentUuid": "8022f5f2_a1d279f8",
+      "revId": "1b96be870da231e177304ffd0880db6e66ff97b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
