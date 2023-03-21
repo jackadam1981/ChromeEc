@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b430f451_51378d76",
+        "filename": "common/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1549,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-21T04:33:42Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org Hi Tom, Can you please let me know if this is going in the right direction? I assume that per (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/release-firmware/fpmcu-bloonchipper/include/hooks.h;l\u003d315?q\u003d%22Pass%20us%3D0%20to%20call%20as%20soon%20as%20possible,%20or%20-1%20to%20cancel%22\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d314-,315,-316) subsequent calls will not cause an issue as long as the call is still pending. If we call it with a delay of -1, we will cancel it. However, calling it again with a delay of zero, will keep it pending. Just wanted to confirm.",
+      "range": {
+        "startLine": 1537,
+        "startChar": 0,
+        "endLine": 1549,
+        "endChar": 2
+      },
+      "revId": "0f09db335176263649ce5810c29c8b9f5c843d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
