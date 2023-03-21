@@ -30,6 +30,13 @@
 				};
 			};
 		};
+
+		rollback0 {
+		};
+
+		rollback1 {
+		};
+
 		ec-rw {
 			compatible = "cros-ec,flash-layout";
 			type = "section";
