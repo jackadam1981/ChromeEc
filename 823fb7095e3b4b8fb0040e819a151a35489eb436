@@ -16,6 +16,23 @@
       "message": "Let\u0027s keep the file extension as `.h`, not `hpp` since we haven\u0027t been using `hpp` in EC code. (Seems not to be in the [Google C++ style](https://google.github.io/styleguide/cppguide.html)).",
       "revId": "823fb7095e3b4b8fb0040e819a151a35489eb436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25d4c3fb_8a94841a",
+        "filename": "third_party/boringssl/include/scoped_openssl_types.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T21:38:05Z",
+      "side": 1,
+      "message": "Since this is actually copied from `libchrome`, not `boringssl`, can you put it in `third_party/libchrome/crypto/scoped_openssl_types.h`?\n\nYou\u0027ll also need to add a [`METADATA`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/third_party/linux/METADATA;l\u003d1) and [`LICENSE`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/third_party/linux/LICENSE) file as described in [here](http://shortn/_5GbbSukpNW). You can use the generator to create the `METADATA` file.",
+      "revId": "823fb7095e3b4b8fb0040e819a151a35489eb436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
