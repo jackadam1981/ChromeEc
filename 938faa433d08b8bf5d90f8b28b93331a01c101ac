@@ -56,6 +56,30 @@
       },
       "revId": "938faa433d08b8bf5d90f8b28b93331a01c101ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0d1cc88_048f7f37",
+        "filename": "zephyr/test/drivers/power_host_sleep/src/test_power_host_sleep.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-21T19:57:00Z",
+      "side": 1,
+      "message": "Possibly.  In our case, the system is hanging on the resume in such a way that the timeout but we could see a reboot during a resume earlier",
+      "parentUuid": "778e8b87_cd54fb16",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 46
+      },
+      "revId": "938faa433d08b8bf5d90f8b28b93331a01c101ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
