@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "579859c0_be2eaa28",
+        "filename": "zephyr/dts/bindings/usbc/tcpc/richtek,rt171x-tcpc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-03-21T19:38:48Z",
+      "side": 1,
+      "message": "I think it would be better to just stick with the rt1715 name for this shim as it\u0027s specific to the rt1515 tcpc driver that exists in the ec/driver/tcpm/\n\nThen it\u0027s consistent. The fact that we can use the rt1715 driver for the rt1716 part can be noted in a comment.",
+      "parentUuid": "3e039a3c_75f7f200",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "001874f04fa12f6ee2b4fbf9f846c76398cb907b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6520dbeb_752ed38d",
