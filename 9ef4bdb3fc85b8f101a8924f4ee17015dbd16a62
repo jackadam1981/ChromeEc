@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8812b3e1_503d9928",
+        "filename": "test/scoped_fast_cpu.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-21T06:48:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7bd1097_cbd5fe47",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 59
+      },
+      "revId": "9ef4bdb3fc85b8f101a8924f4ee17015dbd16a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c38e4c14_77eb368a",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-16T22:56:02Z",
       "side": 1,
       "message": "Did you try using the mock framework to do this?\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/common/mock/README.md\n\nI think that may only work in the emulator tests though since having `clock_enable_module` mocked will likely prevent the real device from booting.\n\nIt\u0027s ok to limit the test to the emulator though since `ScopedFastCpu` is not doing anything device-specific. Here\u0027s [an example]( https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4062464) of a test that had a similar issue.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "9ef4bdb3fc85b8f101a8924f4ee17015dbd16a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37770cc6_2679fb5d",
+        "filename": "test/scoped_fast_cpu.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-21T06:48:31Z",
+      "side": 1,
+      "message": "The current common way to do the mock in EC repo is adding \"test_mockable\"(weak symbol) to the function.\n\nBut the problem is we already use weak symbols for `clock_enable_module`.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/system.c;drc\u003dc8234cc5335ad31d27d578d89bab4f2172e4f22a;l\u003d1853\n\n```\nIf a linkage contains multiple weak definitions of foo and no strong definition, then the linker chooses one of the weak definitions arbitrarily.\n```",
+      "parentUuid": "c38e4c14_77eb368a",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c6c193_75a9e3f3",
+        "filename": "test/scoped_fast_cpu.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-21T06:48:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a32acf6_a8c2116b",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "9ef4bdb3fc85b8f101a8924f4ee17015dbd16a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78238d2a_f281b876",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-03-16T22:56:02Z",
       "side": 1,
       "message": "I think we can simplify the test cases a bit. We don\u0027t really need to test that C++ variables behave as they should (i.e., we can assume they are destructed appropriately.).\n\nThe main thing we want to test is the behavior of the `ScopedFastCpu` constructor and destructor. I think that\u0027s basically:\n\n1. Fast CPU not enabled at start:\n\n```\n{\n  TEST_EQ(fast_cpu_state, 0, \"%d\");\n  {\n     // instantiate, which calls constructor\n     ScopedFastCpu cpu;\n     TEST_EQ(fast_cpu_state, 1, \"%d\");\n     // destructed here\n   }\n   TEST_EQ(fast_cpu_state, 0, \"%d\");\n}\n```\n\n2. Fast CPU enabled at start:\n\n```\n{\n  TEST_EQ(fast_cpu_state, 1, \"%d\");\n  {\n     // instantiate, which calls constructor\n     ScopedFastCpu cpu;\n     TEST_EQ(fast_cpu_state, 1, \"%d\");\n     // destructed here\n   }\n   TEST_EQ(fast_cpu_state, 1, \"%d\");\n}\n```",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "9ef4bdb3fc85b8f101a8924f4ee17015dbd16a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a54c8c2_8ab631d4",
+        "filename": "test/scoped_fast_cpu.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-21T06:48:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78238d2a_f281b876",
       "range": {
         "startLine": 31,
         "startChar": 0,
