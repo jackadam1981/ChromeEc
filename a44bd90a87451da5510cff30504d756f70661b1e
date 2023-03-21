@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac902a19_b181a20d",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-21T21:51:26Z",
+      "side": 1,
+      "message": "cros_cbi_get_fw_config() already logs this error.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "a44bd90a87451da5510cff30504d756f70661b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3642665_2b8e76f2",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-21T21:51:26Z",
+      "side": 1,
+      "message": "also, maybe identify the USB DB type since it\u0027s not just\nthe mux that\u0027s determined by the board.",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 31
+      },
+      "revId": "a44bd90a87451da5510cff30504d756f70661b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c96d88d9_b39f6989",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-21T21:51:26Z",
+      "side": 1,
+      "message": "C1 is somewhat confusing. maybe say \"usb-db\"?",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "a44bd90a87451da5510cff30504d756f70661b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
