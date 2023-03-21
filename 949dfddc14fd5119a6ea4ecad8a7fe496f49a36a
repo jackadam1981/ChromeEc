@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f80190_20aa7bf1",
+        "filename": "common/flash.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1598,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T23:23:54Z",
+      "side": 1,
+      "message": "Double-check, but I think in the example I gave this was just `2`, not `EC_VER_MASK(2)`.",
+      "range": {
+        "startLine": 1598,
+        "startChar": 22,
+        "endLine": 1598,
+        "endChar": 36
+      },
+      "revId": "949dfddc14fd5119a6ea4ecad8a7fe496f49a36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

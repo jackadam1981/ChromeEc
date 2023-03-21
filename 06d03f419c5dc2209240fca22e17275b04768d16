@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61adce2_ca0c9c4c",
+        "filename": "common/flash.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1511,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T23:23:54Z",
+      "side": 1,
+      "message": "Let\u0027s group these into a `struct` since to demonstrate that they are all related to the same functionality.",
+      "range": {
+        "startLine": 1509,
+        "startChar": 0,
+        "endLine": 1511,
+        "endChar": 69
+      },
+      "revId": "06d03f419c5dc2209240fca22e17275b04768d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaacf6a7_fc5da7aa",
+        "filename": "common/flash.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T23:23:54Z",
+      "side": 1,
+      "message": "I think it may be safer to set `flash_set_protect_rc \u003d EC_RES_BUSY;` rather than in the deferred function. The deferred function won\u0027t get called until 100 ms later, so if another `FLASH_PROTECT_ASYNC` comes in during the meantime we\u0027ll call this again, which is not what we want. (I think that\u0027s a bug in the [example you\u0027re using](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/flash.c;l\u003d1440?q\u003dEC_CMD_FLASH_ERASE\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\u0026start\u003d31). Can you create a CL to fix it there too?)",
+      "range": {
+        "startLine": 1546,
+        "startChar": 4,
+        "endLine": 1548,
+        "endChar": 17
+      },
+      "revId": "06d03f419c5dc2209240fca22e17275b04768d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7121611_3fbbc295",
+        "filename": "common/flash.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T23:23:54Z",
+      "side": 1,
+      "message": "style nit: Let\u0027s use [early return](https://clang.llvm.org/extra/clang-tidy/checks/readability/else-after-return.html) instead. e.g., \n\n```\nif (rc !\u003d EC_RES_SUCCESS) {\n  rc \u003d EC_RES_BUSY;\n  break;\n}\nhook_call_deferred(...);\n```",
+      "range": {
+        "startLine": 1545,
+        "startChar": 0,
+        "endLine": 1555,
+        "endChar": 4
+      },
+      "revId": "06d03f419c5dc2209240fca22e17275b04768d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d11f5d8_78a19576",
+        "filename": "common/flash.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1567,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T23:23:54Z",
+      "side": 1,
+      "message": "Where does `rc` get set? Should you have a `rc \u003d flash_set_protect_rc` before this?",
+      "range": {
+        "startLine": 1567,
+        "startChar": 2,
+        "endLine": 1567,
+        "endChar": 26
+      },
+      "revId": "06d03f419c5dc2209240fca22e17275b04768d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1392394c_6e68fcdb",
+        "filename": "common/flash.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1567,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T23:23:54Z",
+      "side": 1,
+      "message": "style nit: Let\u0027s invert logic to avoid extra nesting. e.g., \n\n```\nif (rc \u003d\u003d EC_RES_BUSY)\n  break;\n\nrc \u003d flash_set_protect_rc;\nr-\u003eflags \u003d crec_flash_get_protect();\n...\n```",
+      "range": {
+        "startLine": 1567,
+        "startChar": 2,
+        "endLine": 1567,
+        "endChar": 26
+      },
+      "revId": "06d03f419c5dc2209240fca22e17275b04768d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
