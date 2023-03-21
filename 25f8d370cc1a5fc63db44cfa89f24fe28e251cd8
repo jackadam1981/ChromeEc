@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aadd1cae_13e133b6",
+        "filename": "test/fpsensor_state.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:48:55Z",
+      "side": 1,
+      "message": "Can you keep the `-1` and cast instead? The name of the test is `fgr_less_than_zero`, so I think that would be clearer.",
+      "range": {
+        "startLine": 193,
+        "startChar": 9,
+        "endLine": 193,
+        "endChar": 15
+      },
+      "revId": "25f8d370cc1a5fc63db44cfa89f24fe28e251cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a1a2f3f_93f202ef",
+        "filename": "test/fpsensor_state.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:48:55Z",
+      "side": 1,
+      "message": "Does the type for this one need to change? It looks like the place where it\u0027s used `.fgr \u003d matched_fgr` is expecting `uint16_t`.",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 25
+      },
+      "revId": "25f8d370cc1a5fc63db44cfa89f24fe28e251cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91d7ca7c_5c9f0812",
+        "filename": "test/fpsensor_state.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:48:55Z",
+      "side": 1,
+      "message": "I think it will work without the `timestamp_t`. Same for the other instances if it works.",
+      "range": {
+        "startLine": 253,
+        "startChar": 3,
+        "endLine": 253,
+        "endChar": 14
+      },
+      "revId": "25f8d370cc1a5fc63db44cfa89f24fe28e251cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9edc4f4_718e2711",
+        "filename": "test/fpsensor_state.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-21T20:48:55Z",
+      "side": 1,
+      "message": "Does it still run if you don\u0027t add `extern \"C\"`?\n\nFor example, we [needed it here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/fpsensor_hw.cc;l\u003d35;drc\u003dd826a966469853fc37d9b844b00c7ad680deaad9) when running the tests on device.",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 13
+      },
+      "revId": "25f8d370cc1a5fc63db44cfa89f24fe28e251cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
