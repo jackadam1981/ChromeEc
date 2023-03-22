@@ -102,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30347678_397d865d",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-03-22T20:46:23Z",
+      "side": 1,
+      "message": "Some functions are used in multiple locations. DP2.1 specif code is written inside IS_ENABLED(CONFIG_USB_PD_DP21_MODE) in those functions..  I think its better to keep those function outside compile time flags. If you have other opinion, I can work on to move those inside compile time flags.",
+      "parentUuid": "15a609bf_1e696855",
+      "revId": "f210b064a0b17387a7e36a175aa5eb58c7390111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91c4ac60_4bb94b2a",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 9
