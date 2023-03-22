@@ -85,24 +85,42 @@ static void reset_nct38xx_port(int port)
 {
 	const struct gpio_dt_spec *reset_gpio_l;
 	const struct device *ioex_port0, *ioex_port1;
+	int rc_val;
+	int ps_val;
+
+	if (port != USBC_PORT_C0)
+		return;
+
+	ccprintf("%s: C%d\n", __func__, port);
+
+
+	if (tcpc_read(port, TCPC_REG_ROLE_CTRL, &rc_val) != EC_SUCCESS)
+		return;
+	if (tcpc_read(port, TCPC_REG_POWER_STATUS, &ps_val) != EC_SUCCESS)
+		return;
+	ccprintf("%s: RC before 0x%02x\n", __func__, rc_val);
+	ccprintf("%s: PS before 0x%02x\n", __func__, ps_val);
 
 	/* TODO(b/225189538): Save and restore ioex signals */
-	if (port == USBC_PORT_C0) {
-		reset_gpio_l = &tcpc_config[0].rst_gpio;
-		ioex_port0 = DEVICE_DT_GET(DT_NODELABEL(ioex_c0_port0));
-		ioex_port1 = DEVICE_DT_GET(DT_NODELABEL(ioex_c0_port1));
-	} else {
-		/* Invalid port: do nothing */
-		return;
-	}
+	reset_gpio_l = &tcpc_config[0].rst_gpio;
+	ioex_port0 = DEVICE_DT_GET(DT_NODELABEL(ioex_c0_port0));
+	ioex_port1 = DEVICE_DT_GET(DT_NODELABEL(ioex_c0_port1));
 
 	gpio_pin_set_dt(reset_gpio_l, 1);
 	msleep(NCT38XX_RESET_HOLD_DELAY_MS);
 	gpio_pin_set_dt(reset_gpio_l, 0);
 	nct38xx_reset_notify(port);
+
 	if (NCT3807_RESET_POST_DELAY_MS != 0) {
 		msleep(NCT3807_RESET_POST_DELAY_MS);
 	}
+
+	if (tcpc_read(port, TCPC_REG_ROLE_CTRL, &rc_val) != EC_SUCCESS)
+		return;
+	if (tcpc_read(port, TCPC_REG_POWER_STATUS, &ps_val) != EC_SUCCESS)
+		return;
+	ccprintf("%s: RC after 0x%02x\n", __func__, rc_val);
+	ccprintf("%s: PS after 0x%02x\n", __func__, ps_val);
 
 	/* Re-enable the IO expander pins */
 	gpio_reset_port(ioex_port0);
@@ -111,6 +129,9 @@ static void reset_nct38xx_port(int port)
 
 void board_reset_pd_mcu(void)
 {
+
+	ccprintf("%s: call", __func__);
+
 	/* Reset TCPC0 */
 	reset_nct38xx_port(USBC_PORT_C0);
 
@@ -155,17 +176,17 @@ static void board_disable_charger_ports(void)
 
 	CPRINTSUSB("Disabling all charger ports");
 
+	/*
+	 * If port C0 had booted in dead battery mode, go
+	 * ahead and reset it so EN_SNK responds properly.
+	 */
+	if (nct38xx_get_boot_type(USBC_PORT_C0) == NCT38XX_BOOT_DEAD_BATTERY) {
+		reset_nct38xx_port(USBC_PORT_C0);
+		pd_set_error_recovery(USBC_PORT_C0);
+	}
+
 	/* Disable all ports. */
 	for (i = 0; i < ppc_cnt; i++) {
-		/*
-		 * If this port had booted in dead battery mode, go
-		 * ahead and reset it so EN_SNK responds properly.
-		 */
-		if (nct38xx_get_boot_type(i) == NCT38XX_BOOT_DEAD_BATTERY) {
-			reset_nct38xx_port(i);
-			pd_set_error_recovery(i);
-		}
-
 		/*
 		 * Do not return early if one fails otherwise we can
 		 * get into a boot loop assertion failure.
@@ -180,6 +201,11 @@ int board_set_active_charge_port(int port)
 {
 	bool is_valid_port = (port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 	int i;
+
+	if (port == USBC_PORT_C0) {
+		ccprintf("%s: C%d: boot_type %d\n", __func__, port,
+			 nct38xx_get_boot_type(port));
+	}
 
 	if (port == CHARGE_PORT_NONE) {
 		board_disable_charger_ports();
@@ -207,8 +233,8 @@ int board_set_active_charge_port(int port)
 		 * sets to it.
 		 */
 		if (pd_is_battery_capable()) {
-			reset_nct38xx_port(port);
-			pd_set_error_recovery(port);
+			reset_nct38xx_port(USBC_PORT_C0);
+			pd_set_error_recovery(USBC_PORT_C0);
 		}
 	}
 
