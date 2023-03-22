@@ -16,6 +16,24 @@
       "message": "Also update the config in this file:\n\n```\n/* ... */\n#undef CONFIG_BODY_DETECTION_NOTIFY_MKBP\n```",
       "revId": "cd9e4d4756a7ee3c5cd94d092f14932b1b217798",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e11aa5e_a8346eb3",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1436607
+      },
+      "writtenOn": "2023-03-22T03:19:44Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "307bfd6b_beb706e7",
+      "revId": "cd9e4d4756a7ee3c5cd94d092f14932b1b217798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
