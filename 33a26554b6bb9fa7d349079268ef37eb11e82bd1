@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc2ee8cf_6ae0dd4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2023-03-22T16:08:50Z",
+      "side": 1,
+      "message": "We are using the legacy code only for the ISH HW checkout. Zephyr has missing ALS drivers and so couldn\u0027t be used for HW checkout. Using Zephyr SHIM was an option but since we will be moving to Zephyr SenSS we didn\u0027t want to spend time on Zephyr SHIM.",
+      "revId": "33a26554b6bb9fa7d349079268ef37eb11e82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46608ab0_4ca5685d",
