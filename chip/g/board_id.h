@@ -76,4 +76,9 @@ int board_id_type_is_blank(const struct board_id *id);
  */
 int board_id_is_erased(void);
 
+/**
+ * Print the factory config value.
+ */
+void print_factory_config(void);
+
 #endif  /* ! __EC_CHIP_G_BOARD_ID_H */
