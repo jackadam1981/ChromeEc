@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8212354_3f10495b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-22T23:08:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68b68c44_9f421653",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 5
+      },
+      "revId": "517ffb2f3ab0044c50c1c9589b939ef5c01cb123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14abce54_42a9b163",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-22T19:42:07Z",
       "side": 1,
       "message": "Do you need to spoof sensor 1?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "517ffb2f3ab0044c50c1c9589b939ef5c01cb123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43d332e3_efd66907",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-22T23:08:28Z",
+      "side": 1,
+      "message": "Not needed, but it locks its value. I can move the device while testing.",
+      "parentUuid": "14abce54_42a9b163",
       "range": {
         "startLine": 24,
         "startChar": 0,
