@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0366c1a_febce5b5",
+        "filename": "common/flash.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1511,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-22T03:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f61adce2_ca0c9c4c",
+      "range": {
+        "startLine": 1509,
+        "startChar": 0,
+        "endLine": 1511,
+        "endChar": 69
+      },
+      "revId": "06d03f419c5dc2209240fca22e17275b04768d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaacf6a7_fc5da7aa",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f4ca87_e67b57f1",
+        "filename": "common/flash.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-22T03:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaacf6a7_fc5da7aa",
+      "range": {
+        "startLine": 1546,
+        "startChar": 4,
+        "endLine": 1548,
+        "endChar": 17
+      },
+      "revId": "06d03f419c5dc2209240fca22e17275b04768d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7121611_3fbbc295",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-21T23:23:54Z",
       "side": 1,
       "message": "style nit: Let\u0027s use [early return](https://clang.llvm.org/extra/clang-tidy/checks/readability/else-after-return.html) instead. e.g., \n\n```\nif (rc !\u003d EC_RES_SUCCESS) {\n  rc \u003d EC_RES_BUSY;\n  break;\n}\nhook_call_deferred(...);\n```",
+      "range": {
+        "startLine": 1545,
+        "startChar": 0,
+        "endLine": 1555,
+        "endChar": 4
+      },
+      "revId": "06d03f419c5dc2209240fca22e17275b04768d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "258cee55_c41ce51b",
+        "filename": "common/flash.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-22T03:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7121611_3fbbc295",
       "range": {
         "startLine": 1545,
         "startChar": 0,
@@ -106,6 +178,54 @@
       "writtenOn": "2023-03-21T23:23:54Z",
       "side": 1,
       "message": "style nit: Let\u0027s invert logic to avoid extra nesting. e.g., \n\n```\nif (rc \u003d\u003d EC_RES_BUSY)\n  break;\n\nrc \u003d flash_set_protect_rc;\nr-\u003eflags \u003d crec_flash_get_protect();\n...\n```",
+      "range": {
+        "startLine": 1567,
+        "startChar": 2,
+        "endLine": 1567,
+        "endChar": 26
+      },
+      "revId": "06d03f419c5dc2209240fca22e17275b04768d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc4e3c32_4fe1d89c",
+        "filename": "common/flash.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1567,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-22T03:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d11f5d8_78a19576",
+      "range": {
+        "startLine": 1567,
+        "startChar": 2,
+        "endLine": 1567,
+        "endChar": 26
+      },
+      "revId": "06d03f419c5dc2209240fca22e17275b04768d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5497e8_506c0979",
+        "filename": "common/flash.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1567,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-22T03:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1392394c_6e68fcdb",
       "range": {
         "startLine": 1567,
         "startChar": 2,
