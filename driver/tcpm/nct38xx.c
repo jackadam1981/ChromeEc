@@ -45,6 +45,66 @@ void nct38xx_reset_notify(int port)
 {
 	/* A full reset also resets the chip's dead battery boot status */
 	boot_type[port] = NCT38XX_BOOT_UNKNOWN;
+
+	ccprintf("%s: C%d: NCT38XX_BOOT_UNKNOWN\n", __func__, port);
+}
+
+void nct38xx_i2c_fault(int port)
+{
+	int val;
+
+	/*
+	 * DisableVbusDetect if Sourcing or Sinking is enabled.
+	 * SinkVbus if Sourcing is enabled.
+	 * SourceVbusDefaultVoltage if Sinking is enabled.
+	 * SourceVbusNonDefaultVoltage if Sinking is enabled or if Sourcing has not yet been enabled.
+	 * SendFRSwapSignal if Fast_Role_Swap_Enable bit is 0.
+	 */
+
+	if (tcpc_read(port, TCPC_REG_POWER_STATUS, &val) != EC_SUCCESS)
+		return;
+	ccprintf("%s: power status 0x%02x (vbus_det %d)\n", __func__, val,
+		 (val & TCPC_REG_POWER_STATUS_VBUS_DET) != 0);
+
+	if (tcpc_read(port, NCT38XX_REG_CTRL_OUT_EN, &val) != EC_SUCCESS)
+		return;
+	ccprintf("%s: ctrl out en 0x%02x (snk_en %d)\n", __func__, val,
+		 (val & NCT38XX_REG_CTRL_OUT_EN_SNKEN) != 0);
+	ccprintf("%s: ctrl out en 0x%02x (src_en %d)\n", __func__, val,
+		 (val & NCT38XX_REG_CTRL_OUT_EN_SRCEN) != 0);
+
+	if (tcpc_read(port, TCPC_REG_POWER_CTRL, &val) != EC_SUCCESS)
+		return;
+	ccprintf("%s: power ctrl 0x%02x (FRS %d)\n", __func__, val,
+		 (val & TCPC_REG_POWER_CTRL_FRS_ENABLE) != 0);
+
+
+
+	if (tcpc_read(port, TCPC_REG_POWER_STATUS, &val) != EC_SUCCESS)
+		return;
+	ccprintf("%s: power status 0x%02x (snk %d src %d)\n", __func__,
+		 val,
+		 (val & TCPC_REG_POWER_STATUS_SINKING_VBUS) != 0,
+		 (val & TCPC_REG_POWER_STATUS_SOURCING_VBUS) != 0);
+	ccprintf("%s: boot type %d\n", __func__, nct38xx_get_boot_type(port));
+
+}
+
+static int nct38xx_battery_missing(int port)
+{
+	int rv;
+	int ps_val;
+	const int ps_mask = 0xbf;
+	const int ps_battery_missing = 0x0c;
+
+	rv = tcpc_read(port, TCPC_REG_POWER_STATUS, &ps_val);
+	if (rv != EC_SUCCESS)
+		return 1;
+
+	if ((ps_val & ps_mask) == ps_battery_missing)
+		return 1;
+
+	return 0;
 }
 
 static int nct38xx_init(int port)
@@ -57,12 +117,13 @@ static int nct38xx_init(int port)
 	 * once per EC run
 	 */
 	if (boot_type[port] == NCT38XX_BOOT_UNKNOWN) {
-		RETURN_ERROR(tcpc_read(port, TCPC_REG_ROLE_CTRL, &reg));
-
-		if (reg == NCT38XX_ROLE_CTRL_DEAD_BATTERY)
+		if (nct38xx_battery_missing(port))
 			boot_type[port] = NCT38XX_BOOT_DEAD_BATTERY;
 		else
 			boot_type[port] = NCT38XX_BOOT_NORMAL;
+
+		ccprintf("%s: C%d: new boot_type %d (role 0x%02x)\n", __func__,
+			 port, boot_type[port], reg);
 	}
 
 	RETURN_ERROR(tcpc_read(port, TCPC_REG_POWER_STATUS, &reg));
@@ -92,8 +153,12 @@ static int nct38xx_init(int port)
 	 * [2] - SNKEN     : VBUS sink enable output enable
 	 * [0] - SRCEN     : VBUS source voltage enable output enable
 	 */
-	reg = NCT38XX_REG_CTRL_OUT_EN_SRCEN | NCT38XX_REG_CTRL_OUT_EN_SNKEN |
-	      NCT38XX_REG_CTRL_OUT_EN_CONNDIREN;
+//	reg = NCT38XX_REG_CTRL_OUT_EN_SRCEN | NCT38XX_REG_CTRL_OUT_EN_SNKEN |
+//	      NCT38XX_REG_CTRL_OUT_EN_CONNDIREN;
+
+	reg = 0;
+
+	CPRINTS("C%d: CTRL_OUT_EN %02x", port, reg);
 
 	rv = tcpc_write(port, NCT38XX_REG_CTRL_OUT_EN, reg);
 	if (rv)
@@ -185,6 +250,10 @@ static int nct38xx_tcpm_init(int port)
 
 static int nct38xx_tcpm_set_cc(int port, int pull)
 {
+
+	ccprintf("%s: C%d: pull %d\n", __func__, port, pull);
+
+
 	/*
 	 * Setting the CC lines to open/open requires that the NCT CTRL_OUT
 	 * register has sink disabled. Otherwise, when no battery is connected:
@@ -236,7 +305,16 @@ static int nct38xx_tcpm_set_snk_ctrl(int port, int enable)
 			return rv;
 	}
 
+	ccprintf("%s: enable %d\n", __func__, enable);
+
 	return tcpci_tcpm_set_snk_ctrl(port, enable);
+}
+
+static int nct38xx_tcpm_set_src_ctrl(int port, int enable)
+{
+	ccprintf("%s: enable %d\n", __func__, enable);
+
+	return tcpci_tcpm_set_src_ctrl(port, enable);
 }
 
 static inline int tcpc_read_alert_no_lpm_exit(int port, int *val)
@@ -385,7 +463,8 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 	.get_snk_ctrl = &tcpci_tcpm_get_snk_ctrl,
 	.set_snk_ctrl = &nct38xx_tcpm_set_snk_ctrl,
 	.get_src_ctrl = &tcpci_tcpm_get_src_ctrl,
-	.set_src_ctrl = &tcpci_tcpm_set_src_ctrl,
+//	.set_src_ctrl = &tcpci_tcpm_set_src_ctrl,
+	.set_src_ctrl = &nct38xx_tcpm_set_src_ctrl,
 	.get_chip_info = &tcpci_get_chip_info,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode = &tcpci_enter_low_power_mode,
