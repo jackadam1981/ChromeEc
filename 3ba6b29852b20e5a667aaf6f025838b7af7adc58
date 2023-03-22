@@ -16,6 +16,23 @@
       "message": "```\nec-utils-0.0.2-r11951: util/ec_parse_panicinfo.cc:12:10: fatal error: \u0027libec/ec_panicinfo.h\u0027 file not\nec-utils-0.0.2-r11951:       found\nec-utils-0.0.2-r11951: #include \u003clibec/ec_panicinfo.h\u003e\n```",
       "revId": "3ba6b29852b20e5a667aaf6f025838b7af7adc58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad278d1c_e8bb2af8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-22T10:40:00Z",
+      "side": 1,
+      "message": "i think you\u0027ll need a Cq-Depend: chromium:4359367\nhere to make sure the patch stack goes in together.",
+      "revId": "3ba6b29852b20e5a667aaf6f025838b7af7adc58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
