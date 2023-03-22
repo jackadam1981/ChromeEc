@@ -16,6 +16,24 @@
       "message": "I think extra_dtc_overlay_files could be used here instead of extra_configs",
       "revId": "d540d7b4d02f4f07e7e4bcdcc9174f086f184023",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c0072f_bc815715",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-22T15:32:24Z",
+      "side": 1,
+      "message": "Good suggestion - I\u0027ll address this in a follow up CL.",
+      "parentUuid": "2b174241_01d261e7",
+      "revId": "d540d7b4d02f4f07e7e4bcdcc9174f086f184023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
