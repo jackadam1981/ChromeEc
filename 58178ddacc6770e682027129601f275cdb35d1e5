@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1693e67_09688f0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-03-22T16:51:47Z",
+      "side": 1,
+      "message": "This is the right way to implement the overlap check and breaking into multiple parts. Please move forward to clean up the code and add the unit tests.\n\nThanks!",
+      "revId": "58178ddacc6770e682027129601f275cdb35d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610f636d_603f7fbf",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-03-22T16:51:47Z",
+      "side": 1,
+      "message": "For the read function, is it more simple that read the entire range and then overwrite the CBI portion to 0xff?",
+      "range": {
+        "startLine": 686,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 4
+      },
+      "revId": "58178ddacc6770e682027129601f275cdb35d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16cbade8_2b2e3a30",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-03-22T16:51:47Z",
+      "side": 1,
+      "message": "Use memset()",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 4
+      },
+      "revId": "58178ddacc6770e682027129601f275cdb35d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
