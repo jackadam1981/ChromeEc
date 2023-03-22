@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e4e89d6_33b5cca2",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-03-22T23:38:49Z",
+      "side": 1,
+      "message": "Yes, if sop_prime_prime bit is on in SOP\u0027 response then we have to send SOP\" (ENTER, CONFIG and EXIT command). I have that change ready, upload that after basic testing.",
+      "parentUuid": "c0b0347f_ca05f0cb",
+      "revId": "1019ad55a5193c83442e26ad58cc2ee5ef67b6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33670757_9cf68918",
@@ -115,6 +133,30 @@
       "side": 1,
       "message": "I will recommend to use uint8_t for consistency and code readability. Also, you don\u0027t have to include additional header file.",
       "parentUuid": "faada199_f24ec37f",
+      "range": {
+        "startLine": 5714,
+        "startChar": 1,
+        "endLine": 5714,
+        "endChar": 5
+      },
+      "revId": "1019ad55a5193c83442e26ad58cc2ee5ef67b6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94637e30_73216754",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5714,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-03-22T23:38:49Z",
+      "side": 1,
+      "message": "Ack. I will change this to uint8_t",
+      "parentUuid": "764afed9_751d6dbb",
       "range": {
         "startLine": 5714,
         "startChar": 1,
