@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ae9fd46_96ce22e4",
+        "filename": "zephyr/emul/emul_amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-03-22T21:09:17Z",
+      "side": 1,
+      "message": "Please comment these members",
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6560f5c1_7b1634fb",
         "filename": "zephyr/emul/emul_amd_fp6.c",
         "patchSetId": 2
@@ -14,6 +31,52 @@
       "writtenOn": "2023-03-22T19:53:44Z",
       "side": 1,
       "message": "Do we need to validate the port in this function like `amd_fp6_emul_write` does?",
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d970f45d_d47f7db3",
+        "filename": "zephyr/emul/emul_amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-03-22T21:09:17Z",
+      "side": 1,
+      "message": "Should this be -EPERM? Or perhaps -EINVAL ?",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 11
+      },
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc998f34_3a6a9172",
+        "filename": "zephyr/emul/emul_amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-03-22T21:09:17Z",
+      "side": 1,
+      "message": "Do you need this extra set of brackets?",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 35
+      },
       "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +111,23 @@
       "writtenOn": "2023-03-22T19:53:44Z",
       "side": 1,
       "message": "I don\u0027t think you need this line since `EMUL_DT_INST_DEFINE` references the config data.",
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3b74b0_dd16ca42",
+        "filename": "zephyr/include/emul/emul_amd_fp6.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-03-22T21:09:17Z",
+      "side": 1,
+      "message": "Good to have comments on exported functions",
       "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
