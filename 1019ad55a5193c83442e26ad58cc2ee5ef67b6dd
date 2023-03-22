@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0b0347f_ca05f0cb",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2023-03-22T21:14:48Z",
+      "side": 1,
+      "message": "Does the spec say anything?",
+      "parentUuid": "dcf910e2_9176e376",
+      "revId": "1019ad55a5193c83442e26ad58cc2ee5ef67b6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33670757_9cf68918",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "We can also use uint8_t. i used bool so that we can use true/false instead of number 0/1. logically and size wise both are same.",
       "parentUuid": "33670757_9cf68918",
+      "range": {
+        "startLine": 5714,
+        "startChar": 1,
+        "endLine": 5714,
+        "endChar": 5
+      },
+      "revId": "1019ad55a5193c83442e26ad58cc2ee5ef67b6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "764afed9_751d6dbb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5714,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2023-03-22T21:14:48Z",
+      "side": 1,
+      "message": "I will recommend to use uint8_t for consistency and code readability. Also, you don\u0027t have to include additional header file.",
+      "parentUuid": "faada199_f24ec37f",
       "range": {
         "startLine": 5714,
         "startChar": 1,
