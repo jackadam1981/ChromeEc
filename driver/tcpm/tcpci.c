@@ -939,6 +939,9 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 	int reg = TCPC_REG_TX_DATA;
 	int rv, cnt = 4 * PD_HEADER_CNT(header);
 
+	if (port == 0)
+		ccprintf("TX0: t%d h%04x\n", type, header);
+
 	/* If not SOP* transmission, just write to the transmit register */
 	if (type >= NUM_SOP_STAR_TYPES) {
 		/*

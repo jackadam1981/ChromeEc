@@ -571,6 +571,8 @@ enum ec_error_list charger_set_input_current_limit(int chgnum,
 	if (chgnum < 0)
 		return EC_ERROR_INVAL;
 
+	ccprintf("%s: current %d mA\n", __func__, input_current);
+
 	if (chgnum >= board_get_charger_chip_count()) {
 		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
 		return EC_ERROR_INVAL;

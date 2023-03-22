@@ -1119,8 +1119,10 @@ static void prl_tx_construct_message(const int port)
 	 * should not retry those messages. We do not support that and probably
 	 * never will (since we support chunking).
 	 */
-	tcpm_transmit(port, pdmsg[port].xmit_type, header,
+	int status = tcpm_transmit(port, pdmsg[port].xmit_type, header,
 		      pdmsg[port].tx_chk_buf);
+	if (status != EC_SUCCESS)
+		ccprintf("%s: tcpm_transmit err %d\n", __func__, status);
 }
 
 /*
@@ -1309,8 +1311,10 @@ void prl_hr_send_msg_to_phy(const int port)
 	PDMSG_CLR_FLAG(port, PRL_FLAGS_TX_COMPLETE);
 
 	/* Pass message to PHY Layer */
-	tcpm_transmit(port, pdmsg[port].xmit_type, header,
+	int status = tcpm_transmit(port, pdmsg[port].xmit_type, header,
 		      pdmsg[port].tx_chk_buf);
+	if (status != EC_SUCCESS)
+		ccprintf("%s: tcpm_transmit err %d\n", __func__, status);
 }
 
 static void prl_hr_wait_for_request_entry(const int port)

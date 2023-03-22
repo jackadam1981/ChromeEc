@@ -153,10 +153,10 @@ static int nct38xx_init(int port)
 	 * [2] - SNKEN     : VBUS sink enable output enable
 	 * [0] - SRCEN     : VBUS source voltage enable output enable
 	 */
-//	reg = NCT38XX_REG_CTRL_OUT_EN_SRCEN | NCT38XX_REG_CTRL_OUT_EN_SNKEN |
-//	      NCT38XX_REG_CTRL_OUT_EN_CONNDIREN;
+	reg = NCT38XX_REG_CTRL_OUT_EN_SRCEN | NCT38XX_REG_CTRL_OUT_EN_SNKEN |
+	      NCT38XX_REG_CTRL_OUT_EN_CONNDIREN;
 
-	reg = 0;
+//	reg = 0;
 
 	CPRINTS("C%d: CTRL_OUT_EN %02x", port, reg);
 

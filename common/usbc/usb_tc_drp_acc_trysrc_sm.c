@@ -3850,8 +3850,8 @@ static void tc_cc_open_entry(const int port)
 	 * requirements.
 	 */
 	CPRINTS("C%d: Applying CC Open!", port);
-	if (!battery_is_present())
-		cflush();
+//	if (!battery_is_present())
+//		cflush();
 
 	/* Remove terminations from CC */
 	typec_select_pull(port, TYPEC_CC_OPEN);

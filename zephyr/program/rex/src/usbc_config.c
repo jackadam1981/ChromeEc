@@ -83,7 +83,7 @@ void sbu_fault_interrupt(enum gpio_signal signal)
 
 static void reset_nct38xx_port(int port)
 {
-	const struct gpio_dt_spec *reset_gpio_l;
+//	const struct gpio_dt_spec *reset_gpio_l;
 	const struct device *ioex_port0, *ioex_port1;
 	int rc_val;
 	int ps_val;
@@ -102,10 +102,11 @@ static void reset_nct38xx_port(int port)
 	ccprintf("%s: PS before 0x%02x\n", __func__, ps_val);
 
 	/* TODO(b/225189538): Save and restore ioex signals */
-	reset_gpio_l = &tcpc_config[0].rst_gpio;
+//	reset_gpio_l = &tcpc_config[0].rst_gpio;
 	ioex_port0 = DEVICE_DT_GET(DT_NODELABEL(ioex_c0_port0));
 	ioex_port1 = DEVICE_DT_GET(DT_NODELABEL(ioex_c0_port1));
 
+#if 0
 	gpio_pin_set_dt(reset_gpio_l, 1);
 	msleep(NCT38XX_RESET_HOLD_DELAY_MS);
 	gpio_pin_set_dt(reset_gpio_l, 0);
@@ -114,6 +115,7 @@ static void reset_nct38xx_port(int port)
 	if (NCT3807_RESET_POST_DELAY_MS != 0) {
 		msleep(NCT3807_RESET_POST_DELAY_MS);
 	}
+#endif
 
 	if (tcpc_read(port, TCPC_REG_ROLE_CTRL, &rc_val) != EC_SUCCESS)
 		return;
@@ -226,16 +228,18 @@ int board_set_active_charge_port(int port)
 	if (port == USBC_PORT_C0 &&
 	    nct38xx_get_boot_type(port) == NCT38XX_BOOT_DEAD_BATTERY) {
 		/* Handle dead battery boot case */
-		CPRINTSUSB("Found dead battery on C0");
+		CPRINTSUSB("C0: Dead battery mode");
 		/*
 		 * If we have battery, get this port reset ASAP.
 		 * This means temporarily rejecting charge manager
 		 * sets to it.
 		 */
+#if 0
 		if (pd_is_battery_capable()) {
 			reset_nct38xx_port(USBC_PORT_C0);
 			pd_set_error_recovery(USBC_PORT_C0);
 		}
+#endif
 	}
 
 	/* Check if the port is sourcing VBUS. */

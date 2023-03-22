@@ -2390,6 +2390,8 @@ int charge_set_input_current_limit(int ma, int mv)
 
 		charger_get_input_current_limit(chgnum, &prev_input);
 
+		ccprintf("%s: current limit %d mA\n", __func__, prev_input);
+
 #ifdef CONFIG_USB_POWER_DELIVERY
 #if ((PD_MAX_POWER_MW * 1000) / PD_MAX_VOLTAGE_MV != PD_MAX_CURRENT_MA)
 		/*
@@ -2400,7 +2402,7 @@ int charge_set_input_current_limit(int ma, int mv)
 		 * input system power.
 		 */
 
-		if (mv > 0 &&
+yy		if (mv > 0 &&
 		    mv * curr.desired_input_current > PD_MAX_POWER_MW * 1000)
 			ma = (PD_MAX_POWER_MW * 1000) / mv;
 		/*
@@ -2422,7 +2424,7 @@ int charge_set_input_current_limit(int ma, int mv)
 	}
 
 #ifdef CONFIG_CHARGER_MAX_INPUT_CURRENT
-	/* Limit input current limit to max limit for this board */
+mm	/* Limit input current limit to max limit for this board */
 	ma = MIN(ma, CONFIG_CHARGER_MAX_INPUT_CURRENT);
 #endif
 

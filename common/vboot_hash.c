@@ -33,8 +33,11 @@ struct vboot_hash_tag {
 	uint32_t size;
 };
 
-#define CHUNK_SIZE 1024 /* Bytes to hash per deferred call */
-#define WORK_INTERVAL_US 100 /* Delay between deferred calls */
+#define _CHUNK_SIZE 1024 /* Bytes to hash per deferred call */
+#define _WORK_INTERVAL_US 100 /* Delay between deferred calls */
+
+#define CHUNK_SIZE 512 /* Bytes to hash per deferred call */
+#define WORK_INTERVAL_US 400 /* Delay between deferred calls */
 
 /* Check that CHUNK_SIZE fits in shared memory. */
 SHARED_MEM_CHECK_SIZE(CHUNK_SIZE);
@@ -147,7 +150,7 @@ static void vboot_hash_all_chunks(void)
 	hash = SHA256_final(&ctx);
 	snprintf_hex_buffer(str_buf, sizeof(str_buf),
 			    HEX_BUF(hash, SHA256_PRINT_SIZE));
-	CPRINTS("hash done %s", str_buf);
+	CPRINTS("all hash done %s", str_buf);
 	in_progress = 0;
 	clock_enable_module(MODULE_FAST_CPU, 0);
 
@@ -242,7 +245,8 @@ static int vboot_hash_start(uint32_t offset, uint32_t size,
 	in_progress = 1;
 
 	/* Restart the hash computation */
-	CPRINTS("hash start 0x%08x 0x%08x", offset, size);
+	CPRINTS("hash start 0x%08x 0x%08x (deferred %d)", offset, size,
+		deferred);
 	SHA256_init(&ctx);
 	if (nonce_size)
 		SHA256_update(&ctx, nonce, nonce_size);
