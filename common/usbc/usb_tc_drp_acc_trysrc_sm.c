@@ -1825,10 +1825,21 @@ void tc_set_data_role(int port, enum pd_data_role role)
 
 static void sink_stop_drawing_current(int port)
 {
-	pd_set_input_current_limit(port, 0, 0);
+	uint32_t supplier_bitmask = BIT(CHARGE_SUPPLIER_PD);
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
-		typec_set_input_current_limit(port, 0, 0);
+		supplier_bitmask |= BIT(CHARGE_SUPPLIER_TYPEC);
+	}
+
+	/* Avoid race condition by not updating PD and TYPE-C suppliers
+	 * reseptively.
+	 */
+	charge_manager_drop_suppliers(port, supplier_bitmask);
+
+	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
+		/* Clear the ceiling in the last step to avoid the concurrency
+		 * issue.
+		 */
 		charge_manager_set_ceil(port, CEIL_REQUESTOR_PD,
 					CHARGE_CEIL_NONE);
 	}
