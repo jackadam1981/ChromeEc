@@ -248,11 +248,22 @@ static void verify_and_jump(void)
 	enum cr50_comm_err rv = verify_hash();
 
 	switch (rv) {
+#if 0
 	case CR50_COMM_ERR_BAD_PAYLOAD:
 		/* Cr50 should have set NO_BOOT. */
 		CPRINTS("Hash mismatch");
 		enable_pd();
 		break;
+#else
+	case CR50_COMM_ERR_BAD_PAYLOAD:
+		CPRINTS("Hash match faked");
+		system_set_reset_flags(EC_RESET_FLAG_EFS);
+		rv = system_run_image_copy(EC_IMAGE_RW);
+		CPRINTS("Failed to jump (0x%x)", rv);
+		system_clear_reset_flags(EC_RESET_FLAG_EFS);
+		show_critical_error();
+		break;
+#endif
 	case CR50_COMM_SUCCESS:
 		system_set_reset_flags(EC_RESET_FLAG_EFS);
 		rv = system_run_image_copy(EC_IMAGE_RW);
