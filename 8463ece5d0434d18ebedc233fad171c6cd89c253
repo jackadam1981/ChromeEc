@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bc3b4b7_01c46aba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-22T17:02:14Z",
+      "side": 1,
+      "message": "This check currently detects errors on these boards:\n[\u0027mtlrvpp_mchp\u0027, \u0027brya\u0027, \u0027mtlrvpp_npcx\u0027] \n\nHowever, these errors are from the TCPC interrupt signals.  So I think this might be cleaned up with your change to share the `tcpc_get_alert_status()` implementation CL:4257651.",
+      "revId": "8463ece5d0434d18ebedc233fad171c6cd89c253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
