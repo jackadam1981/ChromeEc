@@ -68,6 +68,24 @@
       "parentUuid": "d59f6432_050e01c7",
       "revId": "e8fe0e569d242e2dc11bd5a1dc94b51612b3afb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "015f0a7a_1ea0f044",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2023-03-22T00:09:52Z",
+      "side": 1,
+      "message": "Zephyr does not have driver for TCS3400. The main goal of using legacy EC was to confirm that ISH HW re-works on Rex are healthy. We do not plan to spend any more cycles on the legacy EC. Instead will switch directly to Zephyr Sensor sub-system.",
+      "parentUuid": "81755ee7_c2a038c9",
+      "revId": "e8fe0e569d242e2dc11bd5a1dc94b51612b3afb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
