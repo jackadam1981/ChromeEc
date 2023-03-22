@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32d4e0a5_c94921b7",
+        "filename": "zephyr/shim/include/usbc/tcpc_anx7447_emul.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-22T09:18:02Z",
+      "side": 1,
+      "message": "why these? the automatic formatting looked fine for these structures, i see the initial \\ was misaligned but that\u0027s fine, the problematic macro blocks for clangs are the ones where the macro embeds the termination but this does not seem to be one of those",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "a93297583e4ecb94a9350c19b57dd538fe76c128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d5546f5_e3149f6b",
         "filename": "zephyr/shim/src/tcpc.c",
         "patchSetId": 3
