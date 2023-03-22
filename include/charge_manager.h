@@ -286,6 +286,20 @@ void charge_manager_source_port(int port, int enable);
  */
 int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port);
 
+/**
+ * Drop the suppliers at a given port.
+ *
+ * This function is to drop the suppliers at once, and then refresh
+ * charge_manager after all the updates to avoid race condition. This is likely
+ * to happen with USB-PD FRS.
+ *
+ * @param port			Port number to b updated.
+ * @param supplier_bitmask	The bitmasks of enum charge_supplier, e.g.,
+ *				BIT(CHARGE_SUPPLIER_PD) |
+ *				BIT(CHARGE_SUPPLIER_TYPEC)
+ */
+void charge_manager_drop_suppliers(int port, uint32_t supplier_bitmask);
+
 /* Board-level callback functions */
 
 /**

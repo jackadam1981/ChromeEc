@@ -1045,10 +1045,12 @@ DECLARE_DEFERRED(charger_detect_debounced);
  * @param supplier		Charge supplier to be updated.
  * @param port			Charge port to be updated.
  * @param charge		Charge port current / voltage.
+ * @param refresh		Refresh the charge supplier
  */
 static void charge_manager_make_change(enum charge_manager_change_type change,
 				       int supplier, int port,
-				       const struct charge_port_info *charge)
+				       const struct charge_port_info *charge,
+				       bool refresh)
 {
 	int i;
 	int clear_override = 0;
@@ -1148,6 +1150,21 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	 * to our charge port until we are certain we know what is
 	 * attached.
 	 */
+	if (refresh && charge_manager_is_seeded())
+		hook_call_deferred(&charge_manager_refresh_data, 0);
+}
+
+void charge_manager_drop_suppliers(int port, uint32_t supplier_bitmask)
+{
+	struct charge_port_info zero = { 0 };
+
+	BUILD_ASSERT((8 * sizeof(supplier_bitmask)) >= CHARGE_SUPPLIER_COUNT);
+
+	for (int i = 0; i < CHARGE_SUPPLIER_COUNT; i++)
+		if (BIT(i) & supplier_bitmask)
+			charge_manager_make_change(CHANGE_CHARGE, i, port,
+						   &zero, false);
+
 	if (charge_manager_is_seeded())
 		hook_call_deferred(&charge_manager_refresh_data, 0);
 }
@@ -1223,7 +1240,7 @@ void charge_manager_update_charge(int supplier, int port,
 	struct charge_port_info zero = { 0 };
 	if (!charge)
 		charge = &zero;
-	charge_manager_make_change(CHANGE_CHARGE, supplier, port, charge);
+	charge_manager_make_change(CHANGE_CHARGE, supplier, port, charge, true);
 }
 
 void charge_manager_update_dualrole(int port, enum dualrole_capabilities cap)
@@ -1234,7 +1251,8 @@ void charge_manager_update_dualrole(int port, enum dualrole_capabilities cap)
 	/* Ignore when capability is unchanged */
 	if (cap != dualrole_capability[port]) {
 		dualrole_capability[port] = cap;
-		charge_manager_make_change(CHANGE_DUALROLE, 0, port, NULL);
+		charge_manager_make_change(CHANGE_DUALROLE, 0, port, NULL,
+					   true);
 	}
 }
 
