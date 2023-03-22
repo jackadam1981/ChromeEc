@@ -22,6 +22,30 @@
       },
       "revId": "949dfddc14fd5119a6ea4ecad8a7fe496f49a36a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "552306ee_9a279761",
+        "filename": "common/flash.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1598,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-22T03:41:53Z",
+      "side": 1,
+      "message": "I am not sure how to get the FLASH_PROTECT_COMMAND version. I am not sure why it is using EC_VER_MASK(x)\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/flash.c;l\u003d1375?q\u003d%22EC_VER_MASK(2)%22#:~:text\u003d1374-,1375,-1376",
+      "parentUuid": "d6f80190_20aa7bf1",
+      "range": {
+        "startLine": 1598,
+        "startChar": 22,
+        "endLine": 1598,
+        "endChar": 36
+      },
+      "revId": "949dfddc14fd5119a6ea4ecad8a7fe496f49a36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
