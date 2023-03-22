@@ -48,7 +48,7 @@ int rx_en[CONFIG_USB_PD_PORT_MAX_COUNT];
  * excluding XFER and BlockWrites, in an attempt to give clues as to what
  * was written to the TCPCI that caused the issue.
  */
-#undef DEBUG_I2C_FAULT_LAST_WRITE_OP
+#define DEBUG_I2C_FAULT_LAST_WRITE_OP 1
 
 struct i2c_wrt_op {
 	int addr;
@@ -96,7 +96,7 @@ struct get_cc_values last_get_cc[CONFIG_USB_PD_PORT_MAX_COUNT];
  * Seeing RoleCtrl updates can help determine why GetCC is not
  * working as it should be.
  */
-#undef DEBUG_ROLE_CTRL_UPDATES
+#define DEBUG_ROLE_CTRL_UPDATES 1
 
 /****************************************************************************/
 
@@ -1055,6 +1055,9 @@ static int tcpci_handle_fault(int port, int fault)
 
 	if (IS_ENABLED(DEBUG_I2C_FAULT_LAST_WRITE_OP) &&
 	    fault & TCPC_REG_FAULT_STATUS_I2C_INTERFACE_ERR) {
+		void nct38xx_i2c_fault(int port);
+
+		nct38xx_i2c_fault(port);
 		if (last_write_op[port].mask == 0)
 			CPRINTS("C%d I2C WR 0x%02X 0x%02X value=0x%X", port,
 				last_write_op[port].addr,
