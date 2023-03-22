@@ -16,6 +16,23 @@
       "message": "nit: borrowed.",
       "revId": "d9a98b9cafb32fc0b1cb20dcb4c9a8f1243a41c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1ed901_61efe08a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-03-22T20:18:10Z",
+      "side": 1,
+      "message": "\u003e LOW_COVERAGE_REASON\u003dPrinting process stack only supported on cotex_m\n\nWhile this code may only be relevant on ARM Cortex-M boards, it seems to be mostly application-level logic that could be at least partially tested with some simulated panic data and maybe some mocked functions. We reserve LOW_COVERAGE_REASON mostly for code that is impossible to test under native_posix, such as direct hardware I/O, but I don\u0027t think that\u0027s happening here?",
+      "revId": "d9a98b9cafb32fc0b1cb20dcb4c9a8f1243a41c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
