@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6560f5c1_7b1634fb",
+        "filename": "zephyr/emul/emul_amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-22T19:53:44Z",
+      "side": 1,
+      "message": "Do we need to validate the port in this function like `amd_fp6_emul_write` does?",
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeee7f67_dc64efb3",
+        "filename": "zephyr/emul/emul_amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-22T19:53:44Z",
+      "side": 1,
+      "message": "nit: You can assign the `read_byte` and `write_byte` members of `common` in `amd_fp6_data` to avoid having to call these functions.",
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64067577_f0345eda",
+        "filename": "zephyr/emul/emul_amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-03-22T19:53:44Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this line since `EMUL_DT_INST_DEFINE` references the config data.",
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
