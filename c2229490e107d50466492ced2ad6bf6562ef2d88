@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "270e1e99_2382b109",
+        "filename": "chip/it83xx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-22T16:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "991a1d67_a67b25b8",
+      "revId": "c2229490e107d50466492ced2ad6bf6562ef2d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6fd6261e_7aa5235f",
         "filename": "include/panic.h",
         "patchSetId": 4
