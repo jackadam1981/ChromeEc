@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d62ee5_97f532d9",
+        "filename": "zephyr/shim/include/usbc/tcpci.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-23T23:31:57Z",
+      "side": 1,
+      "message": "Add some help text for these macros, similar to the zephyr/shim/inlucde/usbc/ppc.h",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 61
+      },
+      "revId": "9eea1ff05c9c1b69f197ad9cf635b1e27cd41d40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
