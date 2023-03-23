@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddeacb6f_29bb2b0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-23T03:20:41Z",
+      "side": 1,
+      "message": "Found a bug in zephyr test where CONFIG_LID_SWITCH would still be set when CONFIG_PLATFORM_EC_LID_SWITCH was not set. Parent CL sent.",
+      "revId": "8decb5356f92179dc406f6707aa82dc75466132e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
