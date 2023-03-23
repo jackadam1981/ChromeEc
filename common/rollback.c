@@ -45,7 +45,6 @@ static int get_rollback_offset(int region)
 #endif
 }
 
-#ifdef SECTION_IS_RO
 static int get_rollback_erase_size_bytes(int region)
 {
 	int erase_size;
@@ -62,7 +61,6 @@ static int get_rollback_erase_size_bytes(int region)
 	ASSERT(sizeof(struct rollback_data) <= erase_size);
 	return erase_size;
 }
-#endif
 
 /*
  * When MPU is available, read rollback with interrupts disabled, to minimize
