@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f31199c7_1129753d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547927
+      },
+      "writtenOn": "2023-03-23T18:47:00Z",
+      "side": 1,
+      "message": "Cq-error due to this:\n\"CMake Error at /mnt/host/source/src/third_party/zephyr/main/cmake/modules/extensions.cmake:419 (add_library):\n  Cannot find source file:\n\n    /mnt/host/source/src/platform/ec/zephyr/program/skyrim/markarth/src/fan.c\"",
+      "revId": "aa7eb7780bd195c9a0b7e67a3529b5fcb457b99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
