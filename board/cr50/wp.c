@@ -496,6 +496,13 @@ int board_fwmp_allows_boot_policy_update(void)
 	return fwmp_allows(BOOT_POLICY_UPDATE);
 }
 
+void board_fwmp_changed(void)
+{
+#ifdef CR50_DEV
+	CPRINTS("FWMP updated");
+#endif
+}
+
 int board_vboot_dev_mode_enabled(void)
 {
 	struct RollbackSpaceFirmware fw;
