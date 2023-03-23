@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db345dfe_d2b4ba31",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-23T20:12:11Z",
+      "side": 1,
+      "message": "For the brya project on Zephyr.  It should be okay to enable `CONFIG_PLATFORM_EC_USB_PD_TCPC_RUNTIME_CONFIG`.\n\nbrya on Zephyr is just for testing and won\u0027t ship on any boards.  We\u0027ll delete brya here sometime soon.",
+      "parentUuid": "38b23b4a_d9913daa",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 47
+      },
+      "revId": "63c3572f3a7bc39e0d9c821ef8319f21de41aa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4159675_bf5e66b6",
         "filename": "zephyr/program/corsola/npcx_i2c.dtsi",
         "patchSetId": 20
@@ -61,6 +85,30 @@
       "writtenOn": "2023-03-21T17:22:36Z",
       "side": 1,
       "message": "This pin should be active high.  The original code generated a reset pulse by driving high then low.\n```\n\t/* Assert reset */\n\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_rst), 1);\n\tmsleep(1);\n\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_rst), 0);\n```",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 39
+      },
+      "revId": "63c3572f3a7bc39e0d9c821ef8319f21de41aa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b084351_47d1f2ca",
+        "filename": "zephyr/program/corsola/npcx_i2c.dtsi",
+        "patchSetId": 20
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-23T20:12:11Z",
+      "side": 1,
+      "message": "See my CL:4361322.  You can cherry-pick that CL, which does a cross-check of the GPIO tuple defined here, and the one defined by named-gpios.\n\nJust be aware that the original CL:4307436 that adds named_gpios.py has a pending revert, so you might need to cherry-pick that CL too.",
+      "parentUuid": "d4159675_bf5e66b6",
       "range": {
         "startLine": 89,
         "startChar": 24,
