@@ -8,14 +8,14 @@
 #include "builtin/assert.h"
 #include "common.h"
 #include "console.h"
-#ifdef CONFIG_LIBCRYPTOC
-#include "cryptoc/util.h"
-#endif
 #include "flash.h"
 #include "hooks.h"
 #include "host_command.h"
 #ifdef CONFIG_MPU
 #include "mpu.h"
+#endif
+#ifdef CONFIG_BORINGSSL_CRYPTO
+#include "openssl/mem.h"
 #endif
 #include "rollback.h"
 #include "rollback_private.h"
@@ -73,7 +73,7 @@ static uint32_t unlock_rollback(void)
 static void clear_rollback(struct rollback_data *data)
 {
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
-	always_memset(data->secret, 0, sizeof(data->secret));
+	OPENSSL_cleanse(data->secret, sizeof(data->secret));
 #endif
 }
 
@@ -222,7 +222,7 @@ static int add_entropy(uint8_t *dst, const uint8_t *src, const uint8_t *add,
 #ifdef CONFIG_ROLLBACK_SECRET_LOCAL_ENTROPY_SIZE
 failed:
 #endif
-	always_memset(&ctx, 0, sizeof(ctx));
+	OPENSSL_cleanse(&ctx, sizeof(ctx));
 	return ret;
 }
 #else
