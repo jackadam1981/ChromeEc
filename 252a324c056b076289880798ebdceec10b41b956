@@ -22,6 +22,30 @@
       },
       "revId": "252a324c056b076289880798ebdceec10b41b956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff61c387_dda608d9",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-23T20:10:30Z",
+      "side": 1,
+      "message": "In latest version of data sheets, they mentioned the following range 30 to 50 ms, hence added 50. Changed it to 30 for now. Done",
+      "parentUuid": "3297bf90_86513c7f",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 68
+      },
+      "revId": "252a324c056b076289880798ebdceec10b41b956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
