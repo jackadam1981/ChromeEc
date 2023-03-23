@@ -8,7 +8,7 @@
 #include "builtin/assert.h"
 #include "common.h"
 #include "console.h"
-#ifdef CONFIG_LIBCRYPTOC
+#if defined(CONFIG_LIBCRYPTOC) && !defined(CONFIG_ZEPHYR)
 #include "cryptoc/util.h"
 #endif
 #include "flash.h"
@@ -85,7 +85,7 @@ static void unlock_rollback(void)
 static void clear_rollback(struct rollback_data *data)
 {
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
-	always_memset(data->secret, 0, sizeof(data->secret));
+	memset(data->secret, 0, sizeof(data->secret));
 #endif
 }
 
@@ -219,7 +219,7 @@ static int add_entropy(uint8_t *dst, const uint8_t *src, const uint8_t *add,
 #ifdef CONFIG_ROLLBACK_SECRET_LOCAL_ENTROPY_SIZE
 failed:
 #endif
-	always_memset(&ctx, 0, sizeof(ctx));
+	memset(&ctx, 0, sizeof(ctx));
 #else
 #error "Adding entropy to secret in rollback region requires SHA256."
 #endif
