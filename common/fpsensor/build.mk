@@ -3,6 +3,7 @@
 # found in the LICENSE file.
 
 # Build for fingerprint sensor
+ifeq ($(CONFIG_FINGERPRINT_MCU),y)
 
 # Note that this variable includes the trailing "/"
 _fpsensor_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
@@ -24,3 +25,5 @@ all-obj-$(HAS_TASK_FPSENSOR)+=$(_fpsensor_state_obj)
 all-obj-$(HAS_TASK_FPSENSOR)+=$(_fpsensor_crypto_obj)
 all-obj-$(HAS_TASK_FPSENSOR)+=$(_fpsensor_obj)
 all-obj-$(HAS_TASK_CONSOLE)+=$(_fpsensor_detect_strings_obj)
+
+endif # CONFIG_FINGERPRINT_MCU
