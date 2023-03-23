@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ed29e9_e1da86db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-03-23T19:16:23Z",
+      "side": 1,
+      "message": "This really shouldn\u0027t be in zmake.  Zmake is meant to build non-EC projects (e.g., chameleon) as well, and `named-gpios` is an EC thing.\n\nCan it be in Cmake logic instead?",
+      "revId": "091ae39a38d8a91a5d2354d415c3e89b5773d74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
