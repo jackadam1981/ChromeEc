@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcabeda3_4c1e88d8",
+        "filename": "zephyr/shim/include/usbc/tcpc_anx7447_emul.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-23T20:07:08Z",
+      "side": 1,
+      "message": "I tried manually aligning (after clang format, I moved `\\` below 80 chars), then it raised clang format error, after clang format, exceeding 80 chars error, the cycle is repeating.",
+      "parentUuid": "ce608087_3ab7cb0c",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "a93297583e4ecb94a9350c19b57dd538fe76c128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d5546f5_e3149f6b",
         "filename": "zephyr/shim/src/tcpc.c",
         "patchSetId": 3
