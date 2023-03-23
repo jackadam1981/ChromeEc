@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "275d6907_63265306",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-23T16:11:38Z",
+      "side": 1,
+      "message": "and meaningful heading",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 0
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f8a653b_7f2af9a3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -20,6 +43,23 @@
         "endLine": 19,
         "endChar": 80
       },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d98e9281_a07bac2a",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-23T16:11:38Z",
+      "side": 1,
+      "message": "follow coding guidelines throughout this file",
       "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +122,167 @@
         "startChar": 0,
         "endLine": 1627,
         "endChar": 42
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da40efe5_8c5dfa11",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-23T16:11:38Z",
+      "side": 1,
+      "message": "rename to current_baudrate",
+      "range": {
+        "startLine": 1628,
+        "startChar": 1,
+        "endLine": 1628,
+        "endChar": 22
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b309ac12_3a129a62",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1632,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-23T16:11:38Z",
+      "side": 1,
+      "message": "rename to sec_load_uart_rate\u003d9600",
+      "range": {
+        "startLine": 1632,
+        "startChar": 1,
+        "endLine": 1632,
+        "endChar": 27
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80bb8fec_4fa86739",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-23T16:11:38Z",
+      "side": 1,
+      "message": "sec_load_baudrate",
+      "range": {
+        "startLine": 1635,
+        "startChar": 37,
+        "endLine": 1635,
+        "endChar": 63
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4001826f_d40664e1",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1636,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-23T16:11:38Z",
+      "side": 1,
+      "message": "sec_load_baudrate",
+      "range": {
+        "startLine": 1636,
+        "startChar": 34,
+        "endLine": 1636,
+        "endChar": 60
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9023052c_bb9b4e70",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-23T16:11:38Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 1642,
+        "startChar": 0,
+        "endLine": 1642,
+        "endChar": 54
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9f3c31_2c00b3c8",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-23T16:11:38Z",
+      "side": 1,
+      "message": "image_load_baudrate\u003d57600\ndut-control uart1_baudrate:image_load_baudrate",
+      "range": {
+        "startLine": 1645,
+        "startChar": 0,
+        "endLine": 1648,
+        "endChar": 3
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025e9ca9_087b7dba",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1651,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-23T16:11:38Z",
+      "side": 1,
+      "message": "#restore original UART baudrate\nif current_baudrate !\u003d image_load_baudrate\n  dut-control uart1_baudrate:current_baudrate \nfi",
+      "range": {
+        "startLine": 1651,
+        "startChar": 0,
+        "endLine": 1651,
+        "endChar": 1
       },
       "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
