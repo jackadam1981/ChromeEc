@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fdcde0d_4d7a08b7",
+        "filename": "zephyr/program/myst/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-23T20:50:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8437955d_0c75b3e6",
+      "range": {
+        "startLine": 14,
+        "startChar": 22,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70e50a36_b0c3c302",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-03-07T18:43:17Z",
       "side": 1,
       "message": "I think these looks like they\u0027d be \u0026adc0 0 for the charger and 1 for the memory",
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36898357_90af5e86",
+        "filename": "zephyr/program/myst/adc.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-23T20:50:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70e50a36_b0c3c302",
       "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8daa93d_e1e75eb2",
+        "filename": "zephyr/program/myst/adc.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-23T20:50:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c6f87df_4f9cf818",
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbc09fe8_b17e5f6a",
@@ -92,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e334f9db_69e5ee4a",
+        "filename": "zephyr/program/myst/fan.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-23T20:50:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbc09fe8_b17e5f6a",
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2cd264d_66c9a855",
@@ -105,6 +183,30 @@
       "writtenOn": "2023-03-07T18:43:17Z",
       "side": 1,
       "message": "Looks like B7 on go/myst-tot-schematics",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "342d9bef_6161654f",
+        "filename": "zephyr/program/myst/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-23T20:50:16Z",
+      "side": 1,
+      "message": "please refer to generated.dtsi now",
+      "parentUuid": "c2cd264d_66c9a855",
       "range": {
         "startLine": 18,
         "startChar": 13,
@@ -138,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e919e648_3b61e409",
+        "filename": "zephyr/program/myst/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-23T20:50:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9461e23e_6f58538b",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f4888a9_a4cef9ed",
@@ -151,6 +277,30 @@
       "writtenOn": "2023-03-07T18:43:17Z",
       "side": 1,
       "message": "D5\n\nAlso using this comment as a bookmark to remind me where to pick up reviewing next time :)",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "a9e8dae02aa87dffa0a1e74b23cc01dd01c8ca1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee62cc3c_9d0fe44a",
+        "filename": "zephyr/program/myst/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-23T20:50:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8f4888a9_a4cef9ed",
       "range": {
         "startLine": 38,
         "startChar": 13,
