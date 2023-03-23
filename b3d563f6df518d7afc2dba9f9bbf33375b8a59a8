@@ -16,6 +16,24 @@
       "message": "nit: unrelated change?",
       "revId": "b3d563f6df518d7afc2dba9f9bbf33375b8a59a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66dae5a8_cfe70acd",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-23T22:09:26Z",
+      "side": 0,
+      "message": "Looks like this is still here. Otherwise LGTM.",
+      "parentUuid": "bc9a5f61_eea4f459",
+      "revId": "b3d563f6df518d7afc2dba9f9bbf33375b8a59a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
