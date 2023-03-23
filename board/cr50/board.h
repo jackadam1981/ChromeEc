@@ -395,6 +395,7 @@ void power_button_release_enable_interrupt(int enable);
 int board_battery_is_present(void);
 int board_fwmp_allows_boot_policy_update(void);
 int board_fwmp_allows_unlock(void);
+void board_fwmp_changed(void);
 int board_vboot_dev_mode_enabled(void);
 void board_reboot_ap(void);
 void board_reboot_ec(void);
