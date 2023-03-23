@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5415ed12_65f34fb5",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-03-23T22:36:52Z",
+      "side": 1,
+      "message": "BIT(25)?\notherwise, conflicts with BOARD_USE_DIOM4 in LONG_LIFE_SCRATCH1.",
+      "range": {
+        "startLine": 110,
+        "startChar": 42,
+        "endLine": 110,
+        "endChar": 49
+      },
+      "revId": "7aa57f3003dbf8033ce87171a4c4bd219d0b37d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37a2d780_0761006e",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-03-23T22:36:52Z",
+      "side": 1,
+      "message": "\"FWMP: WP forced\" (\"en\" can be eve if not forced)",
+      "range": {
+        "startLine": 329,
+        "startChar": 20,
+        "endLine": 329,
+        "endChar": 22
+      },
+      "revId": "7aa57f3003dbf8033ce87171a4c4bd219d0b37d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ffb146_55cd34b2",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-03-23T22:36:52Z",
+      "side": 1,
+      "message": "not just FWMP updated, but specifically \"WP forced\" set",
+      "range": {
+        "startLine": 547,
+        "startChar": 17,
+        "endLine": 547,
+        "endChar": 24
+      },
+      "revId": "7aa57f3003dbf8033ce87171a4c4bd219d0b37d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf3452e_e09b56a6",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-03-23T22:36:52Z",
+      "side": 1,
+      "message": "1) shall this be moved to update_fwmp_wp_policy()? after it passes the return 0 point. or even to `set_wp_state`?\n\nthis way it will also auto-correct on boot if something goes wrong in the future.\n\n\n2) shall we change CCD config to be WPV_ATBOOT_SET + WPV_ATBOOT_ENABLE at the same time if FWMP ccdunlock policy is on, and the default if it\u0027s off? \n\nthis will also remove special `/* Get current wp settings */ if (board_fwmp_force_wp_en()) { ... }` handling in vc_set_wp()",
+      "revId": "7aa57f3003dbf8033ce87171a4c4bd219d0b37d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
