@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce608087_3ab7cb0c",
+        "filename": "zephyr/shim/include/usbc/tcpc_anx7447_emul.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-23T14:25:52Z",
+      "side": 1,
+      "message": "So removing the comma from the macro causes clang-format to move the \\ termination of the first two line beyond the 80 column despite it being configured with `ColumnLimit: 80`. @jrosenth@chromium.org have you ever bumped into this?\n\n@mparuchuri@google.com: in that case, can you (manually) align the \\?",
+      "parentUuid": "349beda1_5af71c44",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "a93297583e4ecb94a9350c19b57dd538fe76c128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d5546f5_e3149f6b",
         "filename": "zephyr/shim/src/tcpc.c",
         "patchSetId": 3
