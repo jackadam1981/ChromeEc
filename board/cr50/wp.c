@@ -42,6 +42,11 @@ int board_battery_is_present(void)
 /**
  * Return non-zero if the wp state is being overridden.
  */
+static int board_fwmp_force_wp_en(void)
+{
+	return !!(GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FWMP_FORCE_WP_EN);
+}
+
 static int board_forcing_wp(void)
 {
 	return GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP;
@@ -54,6 +59,11 @@ static int board_forcing_wp(void)
  */
 static void set_wp_state(int asserted)
 {
+	/* This shouldn't be possible. Ensure nothing can disable wp. */
+	if (board_fwmp_force_wp_en() && !asserted) {
+		CPRINTS("FWMP: WP ovrd");
+		asserted = 1;
+	}
 	/* Enable writing to the long life register */
 	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
 
@@ -85,7 +95,7 @@ static void check_wp_battery_presence(void)
 	int bp = board_battery_is_present();
 
 	/* If we're forcing WP, ignore battery detect */
-	if (board_forcing_wp())
+	if (board_fwmp_force_wp_en() || board_forcing_wp())
 		return;
 
 	/* Otherwise, mirror battery */
@@ -148,6 +158,11 @@ static enum vendor_cmd_rc vc_set_wp(enum vendor_cmd_cc code,
 	}
 
 	/* Get current wp settings */
+	if (board_fwmp_force_wp_en()) {
+		response |= WPV_FWMP_FORCE_WP_EN;
+		response |= WPV_ATBOOT_SET;
+		response |= WPV_ATBOOT_ENABLE;
+	}
 	if (board_forcing_wp())
 		response |= WPV_FORCE;
 	if (wp_is_asserted())
@@ -220,6 +235,11 @@ static int command_wp(int argc, char **argv)
 		if (!ccd_is_cap_enabled(CCD_CAP_OVERRIDE_WP))
 			return EC_ERROR_ACCESS_DENIED;
 
+		/* Get current wp settings */
+		if (board_fwmp_force_wp_en()) {
+			ccprintf("FWMP enabled WP\n");
+			return EC_ERROR_ACCESS_DENIED;
+		}
 		/* Update WP */
 		if (!strncasecmp(argv[1], "follow", 6))
 			forced = 0;
@@ -237,10 +257,14 @@ static int command_wp(int argc, char **argv)
 		}
 	}
 
-	ccprintf("Flash WP: %s%sabled\n", board_forcing_wp() ? "forced " : "",
-		 wp_is_asserted() ? "en" : "dis");
+	ccprintf("Flash WP: %s%s%sabled\n",
+		board_fwmp_force_wp_en() ? "fwmp " : "",
+		board_forcing_wp() ? "forced " : "",
+		wp_is_asserted() ? "en" : "dis");
 	ccprintf(" at boot: ");
-	if (ccd_get_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT))
+	if (board_fwmp_force_wp_en())
+		ccprintf("fwmp enabled\n");
+	else if (ccd_get_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT))
 		ccprintf("forced %sabled\n",
 			 ccd_get_flag(CCD_FLAG_OVERRIDE_WP_STATE_ENABLED)
 			 ? "en" : "dis");
@@ -267,7 +291,9 @@ void set_bp_follow_ccd_config(void)
 
 static void set_wp_follow_ccd_config(void)
 {
-	if (ccd_get_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT)) {
+	if (board_fwmp_force_wp_en()) {
+		force_write_protect(1, 1);
+	} else if (ccd_get_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT)) {
 		/* Reset to at-boot state specified by CCD */
 		force_write_protect(1, ccd_get_flag
 				    (CCD_FLAG_OVERRIDE_WP_STATE_ENABLED));
@@ -289,8 +315,24 @@ void board_wp_follow_ccd_config(void)
 	set_wp_follow_ccd_config();
 }
 
+/* Returns 1 if the WP state needs to be updated. */
+static int update_fwmp_wp_policy(void)
+{
+	int fwmp_force_wp = !board_fwmp_allows_unlock();
+
+	if (fwmp_force_wp == board_fwmp_force_wp_en())
+		return 0;
+
+	board_write_prop(BOARD_FWMP_FORCE_WP_EN, fwmp_force_wp);
+
+	if (fwmp_force_wp)
+		CPRINTS("FWMP: WP en");
+	return 1;
+}
+
 void init_wp_state(void)
 {
+	update_fwmp_wp_policy();
 	/*
 	 * Battery presence can be overidden using CCD. Get that setting before
 	 * configuring write protect.
@@ -305,7 +347,9 @@ void init_wp_state(void)
 		 * that was saved to the long-life registers before the deep
 		 * sleep instead of going back to the at-boot default.
 		 */
-		if (board_forcing_wp()) {
+		if (board_fwmp_force_wp_en()) {
+			set_wp_state(1);
+		} else if (board_forcing_wp()) {
 			/* Temporarily forcing WP */
 			set_wp_state(GREG32(PMU, LONG_LIFE_SCRATCH1) &
 				     BOARD_WP_ASSERTED);
@@ -498,9 +542,12 @@ int board_fwmp_allows_boot_policy_update(void)
 
 void board_fwmp_changed(void)
 {
+	if (update_fwmp_wp_policy()) {
 #ifdef CR50_DEV
-	CPRINTS("FWMP updated");
+		CPRINTS("FWMP: updated");
 #endif
+		set_wp_follow_ccd_config();
+	}
 }
 
 int board_vboot_dev_mode_enabled(void)
