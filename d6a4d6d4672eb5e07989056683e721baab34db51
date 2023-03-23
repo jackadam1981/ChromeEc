@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7f964f_5dc569f6",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-03-23T05:52:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab210a68_75bd7772",
+      "range": {
+        "startLine": 828,
+        "startChar": 20,
+        "endLine": 828,
+        "endChar": 21
+      },
+      "revId": "d6a4d6d4672eb5e07989056683e721baab34db51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d3805a1_ee2de366",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Heh, I was the one that said it could be removed. 😊\n\nEither way is fine with me.",
       "parentUuid": "7d3805a1_ee2de366",
+      "range": {
+        "startLine": 837,
+        "startChar": 14,
+        "endLine": 837,
+        "endChar": 16
+      },
+      "revId": "d6a4d6d4672eb5e07989056683e721baab34db51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a28b41_60d84f52",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2023-03-23T05:52:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2cd8701b_4b2d45ce",
       "range": {
         "startLine": 837,
         "startChar": 14,
