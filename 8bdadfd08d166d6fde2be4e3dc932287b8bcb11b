@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e62c64c_8c8cbe26",
+        "filename": "zephyr/program/corsola/voltorb/src/usbc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-23T07:43:29Z",
+      "side": 1,
+      "message": "`return ARRAY_SIZE(pd_src_pdo_1A5);`",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 39
+      },
+      "revId": "8bdadfd08d166d6fde2be4e3dc932287b8bcb11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfe46102_2b862cb5",
+        "filename": "zephyr/program/corsola/voltorb/src/usbc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-23T07:43:29Z",
+      "side": 1,
+      "message": "This can be replaced by a MACRO. (also below)",
+      "range": {
+        "startLine": 55,
+        "startChar": 29,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "8bdadfd08d166d6fde2be4e3dc932287b8bcb11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
