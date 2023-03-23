@@ -34,6 +34,24 @@
       "parentUuid": "40ed29e9_e1da86db",
       "revId": "091ae39a38d8a91a5d2354d415c3e89b5773d74d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f2877b4_ee7a21e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-03-23T20:12:42Z",
+      "side": 1,
+      "message": "Is there any reason you can\u0027t do it in cmake\u0027s configure step?",
+      "parentUuid": "3e19f495_2b480971",
+      "revId": "091ae39a38d8a91a5d2354d415c3e89b5773d74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
