@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f09fd7_f5432075",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-23T20:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac902a19_b181a20d",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "a44bd90a87451da5510cff30504d756f70661b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3642665_2b8e76f2",
@@ -65,6 +89,54 @@
         "startChar": 11,
         "endLine": 52,
         "endChar": 13
+      },
+      "revId": "a44bd90a87451da5510cff30504d756f70661b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3256dc0_82531b5a",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-23T20:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c96d88d9_b39f6989",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "a44bd90a87451da5510cff30504d756f70661b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "002a124c_57a11f52",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-23T20:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3642665_2b8e76f2",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 31
       },
       "revId": "a44bd90a87451da5510cff30504d756f70661b1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
