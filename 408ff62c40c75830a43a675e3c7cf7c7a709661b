@@ -22,6 +22,30 @@
       },
       "revId": "408ff62c40c75830a43a675e3c7cf7c7a709661b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6b480b5_9af15a84",
+        "filename": "zephyr/program/rex/rex/cbi.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-23T20:10:06Z",
+      "side": 1,
+      "message": "I see one same DB used in Skyrim, they used this terminology while looking up for it, but seems like the name is from their CBI config. Refactored it in new revision.",
+      "parentUuid": "45367a6f_0c12a5f0",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "408ff62c40c75830a43a675e3c7cf7c7a709661b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
