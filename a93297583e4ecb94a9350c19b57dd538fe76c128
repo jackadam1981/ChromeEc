@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "349beda1_5af71c44",
+        "filename": "zephyr/shim/include/usbc/tcpc_anx7447_emul.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-23T10:46:20Z",
+      "side": 1,
+      "message": "The ones where I added clang-format, raised error while uploading CL, when I format using the command it suggested, the line is exceeding 80 chars by \\ placement by formatter. The cycle was repeatedly happening if I tried to manually keep it under 80 chars. Hence disabled clang.",
+      "parentUuid": "32d4e0a5_c94921b7",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "a93297583e4ecb94a9350c19b57dd538fe76c128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d5546f5_e3149f6b",
         "filename": "zephyr/shim/src/tcpc.c",
         "patchSetId": 3
