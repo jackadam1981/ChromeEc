@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f42534_0a6bb2cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-03-23T21:27:02Z",
+      "side": 1,
+      "message": "do you want something like \"cr50: enable wp vendor command over usb for dev\" if we land it on TOT",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "54371d9e3466cf80e9b5aa1e5f9907d99d01b590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4699a0f_88532b9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-03-23T21:27:02Z",
+      "side": 1,
+      "message": "+2 with CIL",
+      "revId": "54371d9e3466cf80e9b5aa1e5f9907d99d01b590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
