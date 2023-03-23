@@ -9,7 +9,8 @@
 
 #define CCGXXF_TCPC_COMPAT cypress_ccgxxf
 
-#define TCPC_CONFIG_CCGXXF(id) \
+/* clang-format off */
+#define TCPC_CONFIG_CCGXXF(id)                                                 \
 	{                                                                      \
 		.bus_type = EC_BUS_TYPE_I2C,                                   \
 		.i2c_info = {                                                  \
@@ -23,5 +24,6 @@
 			(.alert_signal = COND_CODE_1(                          \
 				DT_NODE_HAS_PROP(id, int_pin),                 \
 				(GPIO_SIGNAL(DT_PHANDLE(id, int_pin))),        \
-				(GPIO_LIMIT)))),                               \
-	},
+				(GPIO_LIMIT)))), \
+	}
+/* clang-format on */
