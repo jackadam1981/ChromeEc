@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2033124_c6268d92",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-03-23T22:59:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db345dfe_d2b4ba31",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 47
+      },
+      "revId": "63c3572f3a7bc39e0d9c821ef8319f21de41aa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4159675_bf5e66b6",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "See my CL:4361322.  You can cherry-pick that CL, which does a cross-check of the GPIO tuple defined here, and the one defined by named-gpios.\n\nJust be aware that the original CL:4307436 that adds named_gpios.py has a pending revert, so you might need to cherry-pick that CL too.",
       "parentUuid": "d4159675_bf5e66b6",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 39
+      },
+      "revId": "63c3572f3a7bc39e0d9c821ef8319f21de41aa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b42936c_51e96fad",
+        "filename": "zephyr/program/corsola/npcx_i2c.dtsi",
+        "patchSetId": 20
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-03-23T22:59:13Z",
+      "side": 1,
+      "message": "I ran the script to check the gpios. All the mismatched tcpc flags were part of the `nuvoton,nct38xx-gpio-alert` compatible and not a part of the shim tcpc driver, so I\u0027m not sure why they\u0027re that way.",
+      "parentUuid": "8b084351_47d1f2ca",
       "range": {
         "startLine": 89,
         "startChar": 24,
