@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5bf2b8a_c5980c4f",
+        "filename": "zephyr/program/rex/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-24T09:28:05Z",
+      "side": 0,
+      "message": "You could probably make this bool as well while you are at cleaning this function up.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 72
+      },
+      "revId": "8f89844fc44baf53224a6148c4669a40f4b744f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
