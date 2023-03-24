@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8101577f_c169913c",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-24T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11d22fa2_55a437de",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 2
+      },
+      "revId": "844e50896671f8b2d7a52599243a295e1968b1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6203a746_49303d0c",
@@ -118,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "963c2209_10760013",
+        "filename": "zephyr/scripts/named_gpios.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-24T20:26:31Z",
+      "side": 1,
+      "message": "`pathlib` isn\u0027t listed as one of the exepmptions from Google\u0027s style guide https://github.com/google/styleguide/blob/gh-pages/pyguide.md#2241-exemptions",
+      "parentUuid": "633a0109_bd0ce32f",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "844e50896671f8b2d7a52599243a295e1968b1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f624f0dd_217ffc56",
@@ -131,6 +179,30 @@
       "writtenOn": "2023-03-24T15:53:29Z",
       "side": 1,
       "message": "Formatting is off here, see https://github.com/google/styleguide/blob/gh-pages/pyguide.md#383-functions-and-methods",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "844e50896671f8b2d7a52599243a295e1968b1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c666436e_801a4610",
+        "filename": "zephyr/scripts/named_gpios.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-24T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f624f0dd_217ffc56",
       "range": {
         "startLine": 19,
         "startChar": 19,
@@ -164,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d14ebdc_19eb53a3",
+        "filename": "zephyr/scripts/named_gpios.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-24T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "842fbba0_9dd23abf",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 35
+      },
+      "revId": "844e50896671f8b2d7a52599243a295e1968b1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a3d0646_a02a0990",
@@ -181,6 +277,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aed00a4_fcbbcf2a",
+        "filename": "zephyr/scripts/named_gpios.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-24T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a3d0646_a02a0990",
+      "revId": "844e50896671f8b2d7a52599243a295e1968b1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "379b94be_82071a69",
@@ -194,6 +308,30 @@
       "writtenOn": "2023-03-24T15:53:29Z",
       "side": 1,
       "message": "if you want to avoid the `str` conversion here, you can use `site.addsitedir` which takes a `Path` object.",
+      "range": {
+        "startLine": 31,
+        "startChar": 23,
+        "endLine": 31,
+        "endChar": 50
+      },
+      "revId": "844e50896671f8b2d7a52599243a295e1968b1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ad48a5_f97b2ad2",
+        "filename": "zephyr/scripts/named_gpios.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-24T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "379b94be_82071a69",
       "range": {
         "startLine": 31,
         "startChar": 23,
@@ -369,6 +507,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b139f172_09919489",
+        "filename": "zephyr/scripts/named_gpios.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-24T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4615992f_a41f80e7",
+      "range": {
+        "startLine": 130,
+        "startChar": 13,
+        "endLine": 130,
+        "endChar": 16
+      },
+      "revId": "844e50896671f8b2d7a52599243a295e1968b1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0163b0a_c943cd40",
@@ -382,6 +544,30 @@
       "writtenOn": "2023-03-24T15:53:29Z",
       "side": 1,
       "message": "Main boilerplate should follow the style guide: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main\n\n(needs to pass `sys.argv[1:]`)",
+      "range": {
+        "startLine": 170,
+        "startChar": 4,
+        "endLine": 170,
+        "endChar": 10
+      },
+      "revId": "844e50896671f8b2d7a52599243a295e1968b1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ad8488_48333ad2",
+        "filename": "zephyr/scripts/named_gpios.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-24T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0163b0a_c943cd40",
       "range": {
         "startLine": 170,
         "startChar": 4,
