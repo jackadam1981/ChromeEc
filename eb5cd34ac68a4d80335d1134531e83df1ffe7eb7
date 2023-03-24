@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c54d79_4c08392f",
+        "filename": "zephyr/test/skyrim/tests/skyrim/src/usb_mux_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-24T15:51:23Z",
+      "side": 1,
+      "message": "Can you call `usb_mux_set()` here instead?  This way you\u0027re also verifying that the devicetree binding is correct.\n\nAs is this seems too tightly coupled with the usbc_config.c source file.",
+      "range": {
+        "startLine": 65,
+        "startChar": 6,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "eb5cd34ac68a4d80335d1134531e83df1ffe7eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
