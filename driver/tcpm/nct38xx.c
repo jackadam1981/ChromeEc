@@ -53,6 +53,12 @@ void nct38xx_i2c_fault(int port)
 {
 	int val;
 
+	extern void i2c_trace_flush(void);
+
+	ccprintf("%s: call\n", __func__);
+
+	i2c_trace_flush();
+
 	/*
 	 * DisableVbusDetect if Sourcing or Sinking is enabled.
 	 * SinkVbus if Sourcing is enabled.
@@ -157,6 +163,16 @@ static int nct38xx_init(int port)
 	      NCT38XX_REG_CTRL_OUT_EN_CONNDIREN;
 
 //	reg = 0;
+
+	rv = tcpc_write(port, TCPC_REG_COMMAND,
+			TCPC_REG_COMMAND_RESET_TRANSMIT_BUF);
+	if (rv)
+		return rv;
+
+	rv = tcpc_write(port, TCPC_REG_COMMAND,
+			TCPC_REG_COMMAND_RESET_RECEIVE_BUF);
+	if (rv)
+		return rv;
 
 	CPRINTS("C%d: CTRL_OUT_EN %02x", port, reg);
 

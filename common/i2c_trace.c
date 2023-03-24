@@ -23,7 +23,99 @@ struct i2c_trace_range {
 
 static struct i2c_trace_range trace_entries[8];
 
+#define I2C_TB_SIZE 1024
+static uint8_t i2c_tracebuf[I2C_TB_SIZE];
+static int i2c_tb_index;
+
+void i2c_trace_flush(void)
+{
+	CPRINTF("\nI2C tracebuf WR size %d: {\n", i2c_tb_index);
+
+	for (int i = 0; i < i2c_tb_index;) {
+		int sz = i2c_tracebuf[i++];
+
+		if (sz == 2) {
+			CPRINTF("%02X %02X, ",
+				i2c_tracebuf[i + 0],
+				i2c_tracebuf[i + 1]);
+		} else if (sz == 3) {
+			CPRINTF("%02X %02X %02X, ",
+				i2c_tracebuf[i + 0],
+				i2c_tracebuf[i + 1],
+				i2c_tracebuf[i + 2]);
+		} else {
+			for (int b = 0; b < sz; ++b) {
+				CPRINTF("[%d] %02X ", b, i2c_tracebuf[i + b]);
+			}
+			CPRINTF(", ");
+		}
+		i += sz;
+	}
+	CPRINTF("}\n\n");
+
+	i2c_tb_index = 0;
+}
+
 void i2c_trace_notify(int port, uint16_t addr_flags, const uint8_t *out_data,
+		      size_t _out_size, const uint8_t *in_data, size_t in_size,
+		      int ret)
+{
+	size_t i;
+	uint16_t addr = I2C_STRIP_FLAGS(addr_flags);
+
+	for (i = 0; i < ARRAY_SIZE(trace_entries); i++)
+		if (trace_entries[i].enabled && trace_entries[i].port == port &&
+		    trace_entries[i].addr_lo <= addr &&
+		    trace_entries[i].addr_hi >= addr)
+			goto trace_enabled;
+	return;
+
+trace_enabled:
+
+	static int filling_tx = 0;
+	size_t sz;
+
+	if (_out_size == 1 && out_data[0] == 0x51) {
+		filling_tx = 1;
+		sz = 2;
+	} else {
+		if (_out_size <= 1)
+			return;
+
+		if (out_data[0] == 0x50)
+			filling_tx = 0;
+
+		sz = _out_size;
+	}
+
+	if (i2c_tb_index + 1 + sz > I2C_TB_SIZE) {
+		i2c_trace_flush();
+	}
+
+	if (out_data[0] == 0x51) {
+		i2c_tracebuf[i2c_tb_index++] = sz;
+		i2c_tracebuf[i2c_tb_index++] = out_data[0];
+		i2c_tracebuf[i2c_tb_index++] = _out_size - 1;
+		return;
+	}
+
+	if (out_data[0] == 0x50)
+		filling_tx = 0;
+
+	if (filling_tx) {
+		i2c_tracebuf[i2c_tb_index - 1] += sz;
+		return;
+	}
+
+	if (i2c_tb_index + 1 + sz <= I2C_TB_SIZE) {
+		i2c_tracebuf[i2c_tb_index++] = sz;
+		for (i = 0; i < sz; ++i)
+			i2c_tracebuf[i2c_tb_index + i] = out_data[i];
+		i2c_tb_index += sz;
+	}
+}
+
+void old_i2c_trace_notify(int port, uint16_t addr_flags, const uint8_t *out_data,
 		      size_t out_size, const uint8_t *in_data, size_t in_size,
 		      int ret)
 {

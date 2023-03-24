@@ -9,6 +9,7 @@ zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/board_power.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usbc_config.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usb_pd_policy.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usb_debug.c")
 
 if(DEFINED CONFIG_BOARD_REX)
 	project(rex)
