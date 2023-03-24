@@ -91,13 +91,10 @@ static int command_i2ctrace_disable(size_t id)
 	return EC_SUCCESS;
 }
 
-static int command_i2ctrace_enable(int port, int addr_lo, int addr_hi)
+/*static*/ int command_i2ctrace_enable(int port, int addr_lo, int addr_hi)
 {
 	struct i2c_trace_range *t;
 	struct i2c_trace_range *new_entry = NULL;
-
-	if (!get_i2c_port(port))
-		return EC_ERROR_PARAM2;
 
 	if (addr_lo > addr_hi)
 		return EC_ERROR_PARAM3;
@@ -190,6 +187,9 @@ static int command_i2ctrace(int argc, const char **argv)
 		} else {
 			return EC_ERROR_PARAM_COUNT;
 		}
+
+		if (!get_i2c_port(id_or_port))
+			return EC_ERROR_PARAM2;
 
 		return command_i2ctrace_enable(id_or_port, address_low,
 					       address_high);
