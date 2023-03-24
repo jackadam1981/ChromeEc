@@ -952,6 +952,9 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 				  TCPC_REG_TRANSMIT_SET_WITHOUT_RETRY(type));
 	}
 
+	/* %%% WOW */
+	tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_RESET_TRANSMIT_BUF);
+
 	if (tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0) {
 		/*
 		 * In TCPCI Rev 2.0, TX_BYTE_CNT and TX_BUF_BYTE_X are the same
