@@ -30,13 +30,20 @@ comm-objs=$(util-lock-objs:%=lock/%) comm-host.o comm-dev.o
 comm-objs+=comm-lpc.o comm-i2c.o misc_util.o comm-usb.o
 
 iteflash-objs = iteflash.o usb_if.o
+<<<<<<< HEAD   (7cae6d Merge remote-tracking branch cros/main into firmware-dedede-)
+=======
+ectool-objs=ectool.o ectool_keyscan.o ec_flash.o $(comm-objs)
+ectool-objs+=ectool_i2c.o
+ectool-objs+=../common/crc.o
+ectool_servo-objs=$(ectool-objs) comm-servo-spi.o
+>>>>>>> BRANCH (2b6263 common/fpsensor: Only build fpsensor code for fingerprint bo)
 ec_sb_firmware_update-objs=ec_sb_firmware_update.o $(comm-objs) misc_util.o
 ec_sb_firmware_update-objs+=powerd_lock.o
 lbplay-objs=lbplay.o $(comm-objs)
 
 util/stm32mon.cc: $(out)/ec_version.h
 
-ec_parse_panicinfo-objs=ec_parse_panicinfo.o ec_panicinfo.o
+ec_parse_panicinfo-objs=ec_parse_panicinfo.o
 
 # USB type-C Vendor Information File generation
 ifeq ($(CONFIG_USB_POWER_DELIVERY),y)
