@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06eb562d_55fbd60f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-24T14:25:35Z",
+      "side": 1,
+      "message": "Need to build for host_command_fuzz too it seems\n```\nld.lld: error: undefined symbol: fp_task\n\u003e\u003e\u003e referenced by host_command_fuzz.c\n\u003e\u003e\u003e               libec.a.2.o:(task_info) in archive build/host/host_command_fuzz/libec.a\nclang-16: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[2]: *** [Makefile.rules:608: build/host/host_command_fuzz/host_command_fuzz.exe] Error 1\nmake[1]: *** [Makefile.rules:392: host-host_command_fuzz] Error 2\n```",
+      "revId": "92f9ba911cf37601e7b76413662a138f14b04480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
