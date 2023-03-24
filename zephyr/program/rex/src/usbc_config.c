@@ -200,7 +200,7 @@ int board_set_active_charge_port(int port)
 	if (port == USBC_PORT_C0 &&
 	    nct38xx_get_boot_type(port) == NCT38XX_BOOT_DEAD_BATTERY) {
 		/* Handle dead battery boot case */
-		CPRINTSUSB("Found dead battery on C0");
+		CPRINTSUSB("C0: Dead battery mode");
 		/*
 		 * If we have battery, get this port reset ASAP.
 		 * This means temporarily rejecting charge manager
