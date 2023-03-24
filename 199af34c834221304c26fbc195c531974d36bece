@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe544c9_d12cce2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-24T05:59:26Z",
+      "side": 1,
+      "message": "Several conflicts: \n- GMR_TABLET_MODE_GPIO_L is still used\n- main() test function is different\n- did not include changes that fix tablet_mode while in debug mode: commit 6dd12ddff735ad (\"tabletmode: Correctly handle HW orientation changing\") [crrev.com/c/4006302].",
+      "revId": "199af34c834221304c26fbc195c531974d36bece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
