@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b16582c_31ae638d",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-03-24T18:30:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2c82c942_261292e8",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 30
+      },
+      "revId": "844e50896671f8b2d7a52599243a295e1968b1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "633a0109_bd0ce32f",
@@ -229,6 +253,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94a4b1d9_0cefe970",
+        "filename": "zephyr/scripts/named_gpios.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-03-24T18:30:12Z",
+      "side": 1,
+      "message": "You already do it above (see line 31)\n\nAll of this should be replaceable by `import edtlib`.\n\nAlternatively, the cmake can just call with `PYTHONPATH\u003d${ZEPHYR_BASE}/scripts/dts/python-devicetree/src`, and you can avoid the manipulation here and import in the normal position.",
+      "parentUuid": "d7618f81_e1f2282f",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "844e50896671f8b2d7a52599243a295e1968b1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b0ad3ee_74626b3e",
         "filename": "zephyr/scripts/named_gpios.py",
         "patchSetId": 1
@@ -264,6 +312,30 @@
       "side": 1,
       "message": "Every duplicate is output at line 86 above.",
       "parentUuid": "9b0ad3ee_74626b3e",
+      "range": {
+        "startLine": 97,
+        "startChar": 56,
+        "endLine": 97,
+        "endChar": 66
+      },
+      "revId": "844e50896671f8b2d7a52599243a295e1968b1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "877b9fd5_19b4dccc",
+        "filename": "zephyr/scripts/named_gpios.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-03-24T18:30:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b417c5af_ce069a9b",
       "range": {
         "startLine": 97,
         "startChar": 56,
