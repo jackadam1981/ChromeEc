@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99e7d2b2_a3f17f1b",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-24T15:45:24Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of validating these register sets twice?  Since you now have an emulator specific routine to validate tuning regs, can you delete all the discrete `anx7483_emul_test_get_reg()` calls?",
+      "range": {
+        "startLine": 966,
+        "startChar": 0,
+        "endLine": 1083,
+        "endChar": 0
+      },
+      "revId": "90699be063aaaf2be9ae6662a918b990f02c4506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
