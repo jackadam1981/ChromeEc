@@ -204,7 +204,6 @@ int board_set_active_charge_port(int port)
 {
 	int is_valid_port = (port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 	int i;
-	int rv;
 
 	if (port == CHARGE_PORT_NONE) {
 		board_disable_charger_ports();
@@ -222,7 +221,6 @@ int board_set_active_charge_port(int port)
 	 * sufficient battery to do so, which will bring EN_SNK back under
 	 * normal control.
 	 */
-	rv = EC_SUCCESS;
 	if (port == USBC_PORT_C0 &&
 	    nct38xx_get_boot_type(port) == NCT38XX_BOOT_DEAD_BATTERY) {
 		/* Handle dead battery boot case */
@@ -236,10 +234,6 @@ int board_set_active_charge_port(int port)
 			reset_nct38xx_port(port);
 			pd_set_error_recovery(port);
 		}
-	}
-
-	if (rv != EC_SUCCESS) {
-		return rv;
 	}
 
 	/* Check if the port is sourcing VBUS. */
