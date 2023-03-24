@@ -51,21 +51,20 @@ static int nct38xx_init(int port)
 {
 	int rv;
 	int reg;
+	int ps_val;
+
+	RETURN_ERROR(tcpc_read(port, TCPC_REG_POWER_STATUS, &ps_val));
 
 	/*
-	 * Detect dead battery boot by the default role control value of 0x0A
-	 * once per EC run
+	 * Detect dead battery boot by the default power status value of
+	 * 0x0C once per EC run.
 	 */
 	if (boot_type[port] == NCT38XX_BOOT_UNKNOWN) {
-		RETURN_ERROR(tcpc_read(port, TCPC_REG_ROLE_CTRL, &reg));
-
-		if (reg == NCT38XX_ROLE_CTRL_DEAD_BATTERY)
+		if (ps_val == NCT38XX_POWER_STATUS_DEAD_BATTERY)
 			boot_type[port] = NCT38XX_BOOT_DEAD_BATTERY;
 		else
 			boot_type[port] = NCT38XX_BOOT_NORMAL;
 	}
-
-	RETURN_ERROR(tcpc_read(port, TCPC_REG_POWER_STATUS, &reg));
 
 	/*
 	 * Set TCPC_CONTROL.DebugAccessoryControl = 1 to control by TCPM,
@@ -75,7 +74,7 @@ static int nct38xx_init(int port)
 	 * accessory and change this bit (see b/186799392).
 	 */
 	if ((boot_type[port] == NCT38XX_BOOT_DEAD_BATTERY) &&
-	    (reg & TCPC_REG_POWER_STATUS_DEBUG_ACC_CON))
+	    (ps_val & TCPC_REG_POWER_STATUS_DEBUG_ACC_CON))
 		CPRINTS("C%d: Booted in dead battery mode, not changing debug"
 			" control",
 			port);
