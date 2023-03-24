@@ -46,6 +46,30 @@
       },
       "revId": "4959b9190005ca0ae268b7688768353fd3beeb22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1647f528_e6070693",
+        "filename": "docs/pupr.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-03-24T17:06:22Z",
+      "side": 1,
+      "message": "See this chrome uprev CL in which pupr detects a later merge and abandons and older change: https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/4358224",
+      "parentUuid": "837111c7_4508190e",
+      "range": {
+        "startLine": 18,
+        "startChar": 67,
+        "endLine": 19,
+        "endChar": 7
+      },
+      "revId": "4959b9190005ca0ae268b7688768353fd3beeb22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
