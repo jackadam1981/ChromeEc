@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "014391c4_954a5c7f",
+        "filename": "zephyr/scripts/named_gpios.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-03-24T21:32:44Z",
+      "side": 1,
+      "message": "It looks like you\u0027ve duplicated the `sys.exit` here twice, you probably meant to `return` in the main function?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 32
+      },
+      "revId": "acb551b957dcf9c474d56da16ffc29c6e8c30a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
