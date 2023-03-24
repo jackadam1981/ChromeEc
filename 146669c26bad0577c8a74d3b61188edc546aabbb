@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d210e05_03d54775",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-24T17:16:08Z",
+      "side": 1,
+      "message": "Merge test for skipping tablet mode while in forced mode at the wrong place. We were ending up testing twice, the legacy one not protected by IS_ENABLED().",
+      "revId": "146669c26bad0577c8a74d3b61188edc546aabbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
