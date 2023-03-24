@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "446a87eb_48e32530",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-24T20:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15beca1b_dae32c22",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "136882e48943c56d827569a03d129d82afea452b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6da9416c_6dc83f4f",
@@ -49,6 +73,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b33a9912_33f4de21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-24T20:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6da9416c_6dc83f4f",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "136882e48943c56d827569a03d129d82afea452b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0e3d500c_e72fcd0f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -60,6 +108,23 @@
       "writtenOn": "2023-03-24T20:13:18Z",
       "side": 1,
       "message": "Adding original author.",
+      "revId": "136882e48943c56d827569a03d129d82afea452b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d3be76e_0c10f372",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-24T20:27:31Z",
+      "side": 1,
+      "message": "responded to all comments",
       "revId": "136882e48943c56d827569a03d129d82afea452b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
