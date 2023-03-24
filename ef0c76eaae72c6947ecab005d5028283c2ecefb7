@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d806dfd7_bedb270b",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-24T16:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb9df5ea_b58643e3",
+      "revId": "ef0c76eaae72c6947ecab005d5028283c2ecefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eecf29e0_f4ef3e55",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "127b1769_5d2825c2",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-24T16:00:06Z",
+      "side": 1,
+      "message": "Yes, I assume one runs `make buildall` to test your changes in ec_commands.h. (at least on ToT).",
+      "parentUuid": "eecf29e0_f4ef3e55",
+      "range": {
+        "startLine": 136,
+        "startChar": 55,
+        "endLine": 136,
+        "endChar": 69
+      },
+      "revId": "ef0c76eaae72c6947ecab005d5028283c2ecefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50a3829_5794218a",
         "filename": "docs/ap-ec-comm.md",
         "patchSetId": 2
@@ -54,6 +96,30 @@
       "writtenOn": "2023-03-24T14:15:24Z",
       "side": 1,
       "message": "Can we just run the same clang-format on upstream to streamline this process?",
+      "range": {
+        "startLine": 138,
+        "startChar": 32,
+        "endLine": 138,
+        "endChar": 55
+      },
+      "revId": "ef0c76eaae72c6947ecab005d5028283c2ecefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7ffa9b_57c3cdb8",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-24T16:00:06Z",
+      "side": 1,
+      "message": "The problem is syntax changes are frown upon as it makes backporting difficult [https://www.kernel.org/doc/html/v4.17/process/4.Coding.html#pitfalls]: \n\u003e But pure coding style fixes are seen as noise by the development community; they tend to get a chilly reception. So this type of patch is best avoided. It is natural to fix the style of a piece of code while working on it for other reasons, but coding style changes should not be made for their own sake.",
+      "parentUuid": "f50a3829_5794218a",
       "range": {
         "startLine": 138,
         "startChar": 32,
