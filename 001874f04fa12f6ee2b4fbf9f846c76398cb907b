@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d065058_bfb9e534",
+        "filename": "zephyr/dts/bindings/usbc/tcpc/richtek,rt171x-tcpc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-24T09:05:48Z",
+      "side": 1,
+      "message": "(unresolving) I agree with Scott here, seems like a safer bet, what if down the road you get another couple of rt171x that can share the same driver...",
+      "parentUuid": "579859c0_be2eaa28",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "001874f04fa12f6ee2b4fbf9f846c76398cb907b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6520dbeb_752ed38d",
         "filename": "zephyr/shim/src/tcpc.c",
         "patchSetId": 1
