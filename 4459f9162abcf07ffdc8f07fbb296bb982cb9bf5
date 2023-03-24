@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5518d7f_ba65d083",
+        "filename": "board/omnigul/fw_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2023-03-24T04:48:32Z",
+      "side": 1,
+      "message": "We have five firmware configs, what is the default config?\nPlease fill out all config.",
+      "range": {
+        "startLine": 22,
+        "startChar": 41,
+        "endLine": 22,
+        "endChar": 60
+      },
+      "revId": "4459f9162abcf07ffdc8f07fbb296bb982cb9bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
