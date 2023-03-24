@@ -68,6 +68,9 @@ ZTEST_F(mkbp_fifo, test_fifo_add_keyboard_key_matrix_event)
 	zassert_ok(mkbp_fifo_add(EC_MKBP_EVENT_KEY_MATRIX,
 				 fixture->input_event_data),
 		   NULL);
+	zassert_ok(mkbp_fifo_add(EC_MKBP_EVENT_KEY_MATRIX,
+				 fixture->input_event_data),
+		   NULL);
 
 	int dequeued_data_size =
 		mkbp_fifo_get_next_event(out, EC_MKBP_EVENT_KEY_MATRIX);
