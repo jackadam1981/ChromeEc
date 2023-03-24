@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9df5ea_b58643e3",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-24T14:15:24Z",
+      "side": 1,
+      "message": "depthcharge too, but depthcharge uses the exported ec headers: b/152373049",
+      "revId": "ef0c76eaae72c6947ecab005d5028283c2ecefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eecf29e0_f4ef3e55",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-24T14:15:24Z",
+      "side": 1,
+      "message": "Need to run `make build_cros_ec_commands` or `make buildall` right?",
+      "range": {
+        "startLine": 136,
+        "startChar": 55,
+        "endLine": 136,
+        "endChar": 69
+      },
+      "revId": "ef0c76eaae72c6947ecab005d5028283c2ecefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50a3829_5794218a",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-24T14:15:24Z",
+      "side": 1,
+      "message": "Can we just run the same clang-format on upstream to streamline this process?",
+      "range": {
+        "startLine": 138,
+        "startChar": 32,
+        "endLine": 138,
+        "endChar": 55
+      },
+      "revId": "ef0c76eaae72c6947ecab005d5028283c2ecefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b860eb_a4b690de",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-03-24T14:15:24Z",
+      "side": 1,
+      "message": "Maybe reiterate the upstreaming instructions, i.e. copy the necessary changes from /build/kernel/include/linux/mfd/cros_ec_commands.h to include/linux/platform_data/cros_ec_commands.h and push the changes upstream first following the instructions at https://chromium.googlesource.com/chromiumos/docs/+/HEAD/kernel_development.md#Upstream-development.",
+      "range": {
+        "startLine": 139,
+        "startChar": 25,
+        "endLine": 139,
+        "endChar": 26
+      },
+      "revId": "ef0c76eaae72c6947ecab005d5028283c2ecefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
