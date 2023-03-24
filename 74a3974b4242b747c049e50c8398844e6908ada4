@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a65fa10a_590f03ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-03-24T22:48:02Z",
+      "side": 1,
+      "message": "ARMv7-M TRM says imprecise BusFault is asynchronous and Cortex-M7 TRM says external write faults are asynchrouns. \n\nCan you explain why it\u0027s ok to handle all bus faults as asynchrouns (as this CL suggests)?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "74a3974b4242b747c049e50c8398844e6908ada4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
