@@ -98,7 +98,8 @@ static inline int is_test_capture(uint32_t mode)
 	int capture_type = FP_CAPTURE_TYPE(mode);
 
 	return (mode & FP_MODE_CAPTURE) &&
-	       (capture_type == FP_CAPTURE_PATTERN0 ||
+	       (capture_type == FP_CAPTURE_QUALITY_TEST ||
+		capture_type == FP_CAPTURE_PATTERN0 ||
 		capture_type == FP_CAPTURE_PATTERN1 ||
 		capture_type == FP_CAPTURE_RESET_TEST);
 }
