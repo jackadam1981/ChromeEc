@@ -3,3 +3,5 @@
 # found in the LICENSE file.
 
 cros_ec_library_include_directories(include)
+
+zephyr_library_sources(clock.c)
