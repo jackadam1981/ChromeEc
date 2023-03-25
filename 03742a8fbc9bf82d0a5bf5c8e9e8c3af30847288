@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc3850e_d680fae3",
+        "filename": "cmake/toolchain-armv7m.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-25T07:35:59Z",
+      "side": 1,
+      "message": "Changed it to CMAKE_CURRENT_SOURCE_DIR.\nIt should be fine if we only use this tool chain file in EC repo.",
+      "parentUuid": "183a260f_f5456962",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "03742a8fbc9bf82d0a5bf5c8e9e8c3af30847288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "903dee5b_7dba75be",
