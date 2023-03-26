@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838ee2ae_69e75e07",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-03-26T22:53:41Z",
+      "side": 1,
+      "message": "Lower (more specific) levels of state machine, rather than board now.",
+      "range": {
+        "startLine": 817,
+        "startChar": 19,
+        "endLine": 817,
+        "endChar": 24
+      },
+      "revId": "2686f710f9f13d2a6a565444bdb19810c043c512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
