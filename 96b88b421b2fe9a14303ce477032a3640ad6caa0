@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fab61f53_e3efa9c4",
+        "filename": "zephyr/emul/emul_amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-27T15:32:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ae9fd46_96ce22e4",
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6560f5c1_7b1634fb",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9c5e0ae_f661dfa5",
+        "filename": "zephyr/emul/emul_amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-27T15:32:26Z",
+      "side": 1,
+      "message": "The read sends back all bytes (port 0 and port 1) by definition.  So all reads to the emulator will give 3 bytes, but the third byte representing port 1 is currently zeroed out.  \n\nAnd for fun, the \"port 1\" on this mux doesn\u0027t at all correspond to our \"port 1\" from the Chromebook perspective.  Our port 0 is on port 0 of one i2c address, and our port 1 is on port 0 of the other i2c address for the mux, so the driver is currently hard coded to only ever interact with port 0",
+      "parentUuid": "6560f5c1_7b1634fb",
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d970f45d_d47f7db3",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-03-22T21:09:17Z",
       "side": 1,
       "message": "Should this be -EPERM? Or perhaps -EINVAL ?",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 11
+      },
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92b10782_425d9bce",
+        "filename": "zephyr/emul/emul_amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-27T15:32:26Z",
+      "side": 1,
+      "message": "Sure.  I think I did my initial copy/paste from an emulator without such nice descriptive errors.",
+      "parentUuid": "d970f45d_d47f7db3",
       "range": {
         "startLine": 85,
         "startChar": 10,
@@ -83,6 +143,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "431875af_731c38b3",
+        "filename": "zephyr/emul/emul_amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-27T15:32:26Z",
+      "side": 1,
+      "message": "Evidently not",
+      "parentUuid": "dc998f34_3a6a9172",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 35
+      },
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "eeee7f67_dc64efb3",
         "filename": "zephyr/emul/emul_amd_fp6.c",
         "patchSetId": 2
@@ -94,6 +178,24 @@
       "writtenOn": "2023-03-22T19:53:44Z",
       "side": 1,
       "message": "nit: You can assign the `read_byte` and `write_byte` members of `common` in `amd_fp6_data` to avoid having to call these functions.",
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "903d722f_af118581",
+        "filename": "zephyr/emul/emul_amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-27T15:32:26Z",
+      "side": 1,
+      "message": "Good to know.  Do you know if there\u0027s any best practice suggestions one way or the other?  I see a mix in `zephyr/emul`",
+      "parentUuid": "eeee7f67_dc64efb3",
       "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +217,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f370de_5b14a9c3",
+        "filename": "zephyr/emul/emul_amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-27T15:32:26Z",
+      "side": 1,
+      "message": "Good to know :)",
+      "parentUuid": "64067577_f0345eda",
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e3b74b0_dd16ca42",
@@ -128,6 +248,24 @@
       "writtenOn": "2023-03-22T21:09:17Z",
       "side": 1,
       "message": "Good to have comments on exported functions",
+      "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1193112d_9ac392e2",
+        "filename": "zephyr/include/emul/emul_amd_fp6.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-27T15:32:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e3b74b0_dd16ca42",
       "revId": "96b88b421b2fe9a14303ce477032a3640ad6caa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
