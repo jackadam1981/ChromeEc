@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "163c0a97_73d32ff3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-27T17:05:18Z",
+      "side": 1,
+      "message": "many branches.",
+      "revId": "e4bbb7090076f2c8c3246f1e15e734bb81c794f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56fd427e_16c537bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-27T17:05:18Z",
+      "side": 1,
+      "message": "The bug has been fixed in 2017. Did this race condition surface in another bug?",
+      "revId": "e4bbb7090076f2c8c3246f1e15e734bb81c794f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4b26e0_524a54d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-27T17:05:18Z",
+      "side": 1,
+      "message": "AFAIK, there are not tests for this race condition, `buildall` does not bring much.",
+      "revId": "e4bbb7090076f2c8c3246f1e15e734bb81c794f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
