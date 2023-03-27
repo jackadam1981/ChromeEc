@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e41f2d_104d4e79",
+        "filename": "common/typec_control.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-27T07:27:27Z",
+      "side": 1,
+      "message": "sort the include headers",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "2884a97d7066be12919b915d16ca9959cce4584e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa0c768_607f0ac6",
+        "filename": "common/typec_control.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-27T07:27:27Z",
+      "side": 1,
+      "message": "You might want to add a Rp-USB case. Or you could move this to Voltorb, or just drop the command here.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 34
+      },
+      "revId": "2884a97d7066be12919b915d16ca9959cce4584e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f065b2a6_ceaeb7af",
+        "filename": "zephyr/program/corsola/voltorb/src/usbc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-03-27T07:27:27Z",
+      "side": 1,
+      "message": "I wonder why the priorities are different for resume and limit case?",
+      "range": {
+        "startLine": 36,
+        "startChar": 57,
+        "endLine": 36,
+        "endChar": 71
+      },
+      "revId": "2884a97d7066be12919b915d16ca9959cce4584e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
