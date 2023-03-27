@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9038c47_bb4bd799",
+        "filename": "util/fpmcu_upload.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-27T22:33:44Z",
+      "side": 1,
+      "message": "This one should be `537` too since we changed the line above.",
+      "range": {
+        "startLine": 331,
+        "startChar": 30,
+        "endLine": 331,
+        "endChar": 32
+      },
+      "revId": "5660306e9e44335cbc2d8e4610e518ffc3b50e27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
