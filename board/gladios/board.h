@@ -13,6 +13,8 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_MP2964
+
 /* Barrel Jack */
 #define DEDICATED_CHARGE_PORT 1
 
@@ -91,8 +93,11 @@
 #define I2C_PORT_USB_A2_A3_RT NPCX_I2C_PORT6_1
 
 #define I2C_PORT_EEPROM NPCX_I2C_PORT7_0
+#define I2C_PORT_MP2964 NPCX_I2C_PORT7_0
 
 #define I2C_ADDR_EEPROM_FLAGS 0x50
+
+#define I2C_ADDR_MP2964_FLAGS 0x20
 
 /* Thermal features */
 #define CONFIG_THERMISTOR
