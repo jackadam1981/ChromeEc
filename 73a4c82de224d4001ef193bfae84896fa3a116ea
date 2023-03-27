@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f67f14d_4d8025da",
+        "filename": "zephyr/Kconfig.defaults",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-27T09:35:04Z",
+      "side": 1,
+      "message": "Can you do any operation without these? It seems like you can\u0027t even do a delete character or move a cursor. What do they add in the logs specifically? It may be worth figuring how to clean the logs rather than making the shell unusable for interactive commands.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "73a4c82de224d4001ef193bfae84896fa3a116ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
