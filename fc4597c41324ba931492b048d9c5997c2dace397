@@ -22,6 +22,30 @@
       },
       "revId": "fc4597c41324ba931492b048d9c5997c2dace397",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ad7021d_a8f1c6e4",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-03-27T19:01:34Z",
+      "side": 1,
+      "message": "There aren\u0027t any dependencies on the extra directories lines of the version output. Only the cr50_ line of version is checked by tools.",
+      "parentUuid": "ff357f67_1e5744a8",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 34
+      },
+      "revId": "fc4597c41324ba931492b048d9c5997c2dace397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
