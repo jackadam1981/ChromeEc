@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad6ac98f_b1056f8b",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2023-03-27T02:12:58Z",
+      "side": 1,
+      "message": "GPH5 and GPH6 are used as UART for onw-wire. Just wondering should we config them as GPIO_INPUT in .dtsi?",
+      "revId": "833e037f13311f52e8f4681e81cd12636bf54448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b72829_952ce26b",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2023-03-27T02:12:58Z",
+      "side": 1,
+      "message": "GPI6(EC_TEMP_CHARGER) is connected to a thermistor. Please config it as ADC input w/o internal PULL.",
+      "range": {
+        "startLine": 208,
+        "startChar": 13,
+        "endLine": 208,
+        "endChar": 33
+      },
+      "revId": "833e037f13311f52e8f4681e81cd12636bf54448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
