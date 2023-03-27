@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9d9423c_af1a6750",
+        "filename": "zephyr/program/myst/src/power_signals.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-03-27T11:51:42Z",
+      "side": 1,
+      "message": "This bug is marked as fixed. Do we still need the delays and the associated comments?",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 14
+      },
+      "revId": "f5d540b0b158a48962790a2bde97a52da158ff82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
