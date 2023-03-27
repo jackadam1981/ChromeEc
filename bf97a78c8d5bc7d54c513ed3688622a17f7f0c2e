@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9772c1c7_22012985",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-27T16:39:47Z",
+      "side": 1,
+      "message": "We can\u0027t submit this as-is because this [capture format is a raw format](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d85;drc\u003dc49b07e12b1a69c7757b68b4000478418a3b321e). We have to make sure that any raw formats cannot be captured when `system_is_locked()` is true.",
+      "revId": "bf97a78c8d5bc7d54c513ed3688622a17f7f0c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
