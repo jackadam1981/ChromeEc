@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff357f67_1e5744a8",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-03-27T18:56:28Z",
+      "side": 1,
+      "message": "do we have any dependencies in the external tools on the format of the cr50 version string? we are adding pinweaver:XXXX to it. otherwise, lgtm.",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 34
+      },
+      "revId": "fc4597c41324ba931492b048d9c5997c2dace397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
