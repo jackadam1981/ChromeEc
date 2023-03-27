@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a890413_9ce6adb8",
+        "filename": "cmake/toolchain-armv7m.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-27T18:20:20Z",
+      "side": 1,
+      "message": "The `gcc` toolchain is actually in an [entirely different `sysroot`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/toolchain.mk;l\u003d7;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46): `/opt/coreboot-sdk/bin/`.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "7265632a82e6e816cb1abb62766d8ed2aede41e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46d5ba0c_aee63432",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-27T18:20:20Z",
+      "side": 1,
+      "message": "I think this is the [LLVM linker (`lld`)](https://lld.llvm.org).\n\nThe GNU version is just `ld`. I think once you change the `CMAKE_SYSROOT` as mentioned in the other comment you\u0027ll see this.",
+      "range": {
+        "startLine": 14,
+        "startChar": 40,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "7265632a82e6e816cb1abb62766d8ed2aede41e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398905c0_ec383f38",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-27T18:20:20Z",
+      "side": 1,
+      "message": "I don\u0027t think this will be need once you change `CMAKE_SYSROOT` as mentioned in the other comment.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "7265632a82e6e816cb1abb62766d8ed2aede41e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
