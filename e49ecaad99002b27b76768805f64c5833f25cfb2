@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbab78fd_ffce1fb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-27T18:26:05Z",
+      "side": 1,
+      "message": "I think this change shouldn\u0027t change the generated binary for any boards, so you can run `compare_build.sh` to make sure. See [this `TEST` line for an example](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4350955/3//COMMIT_MSG).",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "e49ecaad99002b27b76768805f64c5833f25cfb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
