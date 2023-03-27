@@ -69,8 +69,8 @@ static void mp2964_write_vec16(const struct mp2964_reg_val *init_list,
 	for (i = 0; i < count; ++i, ++reg_val) {
 		mp2964_read16(reg_val->reg, &outval);
 		if (outval == reg_val->val) {
-			ccprintf("mp2964: reg 0x%02x already 0x%04x\n",
-				 reg_val->reg, outval);
+			// ccprintf("mp2964: reg 0x%02x already 0x%04x\n",
+			// 	 reg_val->reg, outval);
 			continue;
 		}
 		ccprintf("mp2964: tuning reg 0x%02x from 0x%04x to 0x%04x\n",
