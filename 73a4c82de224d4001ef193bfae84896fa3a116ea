@@ -46,6 +46,30 @@
       },
       "revId": "73a4c82de224d4001ef193bfae84896fa3a116ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f32e943_48c88dd4",
+        "filename": "zephyr/Kconfig.defaults",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-03-27T22:03:22Z",
+      "side": 1,
+      "message": "@fabio... ugh, you\u0027re right. backspace (what should be a simple ^H)\ndoesn\u0027t work without VT100 enabled 😮 that\u0027s just wrong.\nbasic ASCII control chars like CR, NL, BS, TAB have little\nto do with VT100 cursor or screen manipulation control sequences.\nwe need to untangle these. let me file a bug\nsince this is turning out to be more than a checkbox.\n\n@jack, the scenario is simple. use screen with logging enabled\nto see all the \"junk\" escape sequences the EC emits for every line\nof output. you don\u0027t see this without logging because the sequence\nis intended to back up the cursor over the prompt, print the\nlog message, and put the prompt back. we need to be more sparing\nwith console output. we\u0027ve had cases where excessive logging causes\nPD timing violations.",
+      "parentUuid": "01a62675_aceb4d9f",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "73a4c82de224d4001ef193bfae84896fa3a116ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
