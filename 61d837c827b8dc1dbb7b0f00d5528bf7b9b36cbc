@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a7d10ed_f96b9e3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-03-27T02:51:51Z",
+      "side": 1,
+      "message": "For EC/zephyr repos, we don\u0027t need to do cherry-pick by ourselves, we rely on fast forward merge.",
+      "revId": "61d837c827b8dc1dbb7b0f00d5528bf7b9b36cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
