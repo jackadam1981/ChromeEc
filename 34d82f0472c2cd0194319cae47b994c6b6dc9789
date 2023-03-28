@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cf532c0_b8c800b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T16:00:54Z",
+      "side": 1,
+      "message": "Tested with the given flow:\n/flash_ec --board\u003dmtlrvpp_mchp --image ../build/adlrvpp_mchp1727/ec.bin",
+      "parentUuid": "ea16fff2_77475b41",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 80
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d98e9281_a07bac2a",
