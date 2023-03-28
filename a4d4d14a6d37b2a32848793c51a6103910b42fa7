@@ -16,6 +16,24 @@
       "message": "What\u0027s the difference between this CL and CL:4239441? It seems like both are doing the same thing.",
       "revId": "a4d4d14a6d37b2a32848793c51a6103910b42fa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c267efe6_d0d60c1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2023-03-28T08:46:24Z",
+      "side": 1,
+      "message": "This is different power sequence code which is used for Intel based boards.",
+      "parentUuid": "01515fb0_e0374169",
+      "revId": "a4d4d14a6d37b2a32848793c51a6103910b42fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
