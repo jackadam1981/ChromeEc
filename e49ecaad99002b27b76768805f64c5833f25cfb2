@@ -46,6 +46,30 @@
       },
       "revId": "e49ecaad99002b27b76768805f64c5833f25cfb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19cfc941_970c4a11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-28T21:46:10Z",
+      "side": 1,
+      "message": "Can you add the `--keep` flag and try one of the failing boards? (e.g., `-b cozmo`). Then dump the disassembly (e.g., `armv7m-cros-eabi-objdump -d ./build/bloonchipper/RW/ec.RW.elf`). Then diff the disassembly before and after the change and post the diff.",
+      "parentUuid": "e2da9efe_7d392275",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "e49ecaad99002b27b76768805f64c5833f25cfb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
