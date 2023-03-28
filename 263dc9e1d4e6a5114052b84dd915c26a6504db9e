@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e21cbb2d_150c7bf3",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:26:48Z",
+      "side": 1,
+      "message": "Shared our design in the https://issuetracker.google.com/issues/272305778",
+      "parentUuid": "ae65f165_bb79e097",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba376bc_be968365",
@@ -162,6 +186,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59987d57_0423b88c",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:26:48Z",
+      "side": 1,
+      "message": "Taken care ,Called the isort/black , run the repo upload --cbr .",
+      "parentUuid": "261024fb_dc1bd2b8",
+      "range": {
+        "startLine": 92,
+        "startChar": 26,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcc8c4e0_e15aa783",
@@ -267,6 +315,30 @@
       "writtenOn": "2023-03-23T11:06:40Z",
       "side": 1,
       "message": "Use `for i in range(5):`",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "220e883f_ba0c40d3",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:26:48Z",
+      "side": 1,
+      "message": "Getting the crisis_rcvry_util.py:127:12: W0612: Unused variable \u0027i\u0027 (unused-variable)\nusing pylint ,so added the while loop",
+      "parentUuid": "ae19cb68_88fc43d2",
       "range": {
         "startLine": 110,
         "startChar": 0,
@@ -957,6 +1029,30 @@
       "writtenOn": "2023-03-23T11:06:40Z",
       "side": 1,
       "message": "why the intermediate _file variables?",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 50
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b47a96d_2a573833",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:26:48Z",
+      "side": 1,
+      "message": "Taken care",
+      "parentUuid": "2ec63e5f_5a6053a4",
       "range": {
         "startLine": 508,
         "startChar": 0,
