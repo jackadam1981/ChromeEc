@@ -22,6 +22,30 @@
       },
       "revId": "e49ecaad99002b27b76768805f64c5833f25cfb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2da9efe_7d392275",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-28T04:27:17Z",
+      "side": 1,
+      "message": "Here are the differences:\n```\nBinary files /tmp/compare_build.OOUT/build-f7789d1de748fcfb08c379e23a37018237de3bd8/adlrvpm_ite-ec.bin and /tmp/compare_build.OOUT/build-ddc0a7c8868a7244887f21af0367415f9e2e0874/adlrvpm_ite-ec.bin differ\nBinary files /tmp/compare_build.OOUT/build-f7789d1de748fcfb08c379e23a37018237de3bd8/adlrvpp_ite-ec.bin and /tmp/compare_build.OOUT/build-ddc0a7c8868a7244887f21af0367415f9e2e0874/adlrvpp_ite-ec.bin differ\nBinary files /tmp/compare_build.OOUT/build-f7789d1de748fcfb08c379e23a37018237de3bd8/adlrvpp_mchp1727-ec.bin and /tmp/compare_build.OOUT/build-ddc0a7c8868a7244887f21af0367415f9e2e0874/adlrvpp_mchp1727-ec.bin differ\nBinary files /tmp/compare_build.OOUT/build-f7789d1de748fcfb08c379e23a37018237de3bd8/cozmo-ec.bin and /tmp/compare_build.OOUT/build-ddc0a7c8868a7244887f21af0367415f9e2e0874/cozmo-ec.bin differ\nBinary files /tmp/compare_build.OOUT/build-f7789d1de748fcfb08c379e23a37018237de3bd8/icarus-ec.bin and /tmp/compare_build.OOUT/build-ddc0a7c8868a7244887f21af0367415f9e2e0874/icarus-ec.bin differ\nBinary files /tmp/compare_build.OOUT/build-f7789d1de748fcfb08c379e23a37018237de3bd8/it8xxx2_pdevb-ec.bin and /tmp/compare_build.OOUT/build-ddc0a7c8868a7244887f21af0367415f9e2e0874/it8xxx2_pdevb-ec.bin differ\nBinary files /tmp/compare_build.OOUT/build-f7789d1de748fcfb08c379e23a37018237de3bd8/mchpevb1-ec.bin and /tmp/compare_build.OOUT/build-ddc0a7c8868a7244887f21af0367415f9e2e0874/mchpevb1-ec.bin differ\nBinary files /tmp/compare_build.OOUT/build-f7789d1de748fcfb08c379e23a37018237de3bd8/npcx_evb-ec.bin and /tmp/compare_build.OOUT/build-ddc0a7c8868a7244887f21af0367415f9e2e0874/npcx_evb-ec.bin differ\nBinary files /tmp/compare_build.OOUT/build-f7789d1de748fcfb08c379e23a37018237de3bd8/npcx_evb_arm-ec.bin and /tmp/compare_build.OOUT/build-ddc0a7c8868a7244887f21af0367415f9e2e0874/npcx_evb_arm-ec.bin differ\nBinary files /tmp/compare_build.OOUT/build-f7789d1de748fcfb08c379e23a37018237de3bd8/pico-ec.bin and /tmp/compare_build.OOUT/build-ddc0a7c8868a7244887f21af0367415f9e2e0874/pico-ec.bin differ\n```\n\nI think the order/location of the clock_enable_module will affect the compiler optimization.",
+      "parentUuid": "bbab78fd_ffce1fb1",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "e49ecaad99002b27b76768805f64c5833f25cfb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
