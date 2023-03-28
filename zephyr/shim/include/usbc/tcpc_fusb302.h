@@ -4,7 +4,7 @@
  */
 
 #include "driver/tcpm/fusb302.h"
-#include "usbc/utils.h"
+//#include "usbc/utils.h"
 
 #include <zephyr/devicetree.h>
 
