@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd112e84_8e45e233",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T16:54:56Z",
+      "side": 1,
+      "message": "struct pack used to send the byte value so packed it rather than the ascii value to the uart module.",
+      "parentUuid": "6ba376bc_be968365",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 26
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96a28b0f_8f7fe655",
