@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea16fff2_77475b41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-28T14:15:59Z",
+      "side": 1,
+      "message": "This commit is changing the file modes:\n\n```\ndiff --git a/util/flash_ec b/util/flash_ec\nold mode 100755\nnew mode 100644\n```\n\nalso see the comment on this page where it says: util/flash_ec  (non-executable)\n\nThat is why you have to run it with \"bash flash_ec\" rather than just \"./flash_ec\", not sure how it happened, I guess you did not do it intentionally but please make it executable again (\"chmod +x flash_ec\") and make sure your workflow does not change it back for whatever reason.",
+      "parentUuid": "814eca85_e1b75cc4",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 80
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d98e9281_a07bac2a",
         "filename": "util/flash_ec",
         "patchSetId": 2
