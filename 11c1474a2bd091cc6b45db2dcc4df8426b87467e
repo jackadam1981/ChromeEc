@@ -33,6 +33,24 @@
       "message": "Normally, I\u0027m a fan of having new host command structures use the old structures as much as possible to make parsing and populating it as easy as we can.  I suppose this one ends up being fairly awkward though since it would require new bytes inserted directly in the middle of the old structure.   \n\nIf we\u0027re expecting fields to be shared for the purpose of filling in this command with the same kind of pointer, is there any build time guarantee we can get for that?",
       "revId": "11c1474a2bd091cc6b45db2dcc4df8426b87467e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb90d2df_9132ad95",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 7188,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-28T21:31:22Z",
+      "side": 1,
+      "message": "What about creating a separate command for retrieving the extended (\u003e 7) PDOs, or potentially the new command retrieves all PDOs, providing some redundant data returned by EC_CMD_TYPEC_STATUS.\n\nIf you want to stick with the v0/v1 approach, you can create build-time check for the common fields using `BUILD_ASSERT` with `offsetof` checks.  Example [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/test/cec.c;l\u003d26)",
+      "parentUuid": "61ea6440_67d617cc",
+      "revId": "11c1474a2bd091cc6b45db2dcc4df8426b87467e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
