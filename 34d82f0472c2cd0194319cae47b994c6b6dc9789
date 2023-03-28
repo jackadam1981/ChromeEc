@@ -64,6 +64,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bede935b_4dc99a76",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:31:29Z",
+      "side": 1,
+      "message": "Removed the Trailing space and use the command to run before uploading into repo  \"repo upload --cbr . \"",
+      "parentUuid": "d98e9281_a07bac2a",
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e8fec5b_999af0a6",
@@ -77,6 +95,30 @@
       "writtenOn": "2023-03-23T11:18:01Z",
       "side": 1,
       "message": "keep the flash function together (i.e. before the message above)",
+      "range": {
+        "startLine": 1624,
+        "startChar": 0,
+        "endLine": 1624,
+        "endChar": 35
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b050857a_e2f89210",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1624,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:31:29Z",
+      "side": 1,
+      "message": "Taken care",
+      "parentUuid": "1e8fec5b_999af0a6",
       "range": {
         "startLine": 1624,
         "startChar": 0,
@@ -104,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f785298_28d71be8",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:31:29Z",
+      "side": 1,
+      "message": "Unable to use in the scripts and getting the error as below:\nERROR: Cannot communicate with servod. Is servod running?\nusing this script , it satisfy the uart port to get\nuart_port\u003d\"$(dut-control raw_ec_uart_pty)\"",
+      "parentUuid": "68c1c524_632d65c6",
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91ec3de8_79956b5a",
@@ -117,6 +177,30 @@
       "writtenOn": "2023-03-23T11:18:01Z",
       "side": 1,
       "message": "this is really hard to read, maybe add a space between logical steps of this sequence?\n\nAlso these comments make little sense and should be thought out again, for example this line does not check anything, the \"if\" below does, and in any case the comment should explain \"why\" or \"how\" (if not evident already from the code itself, which should be the case most of the time), not \"what\"",
+      "range": {
+        "startLine": 1627,
+        "startChar": 0,
+        "endLine": 1627,
+        "endChar": 42
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b0bf75f_dca709b8",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:31:29Z",
+      "side": 1,
+      "message": "Taken care",
+      "parentUuid": "91ec3de8_79956b5a",
       "range": {
         "startLine": 1627,
         "startChar": 0,
@@ -150,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25cd1f07_b136ea43",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:31:29Z",
+      "side": 1,
+      "message": "Taken care",
+      "parentUuid": "da40efe5_8c5dfa11",
+      "range": {
+        "startLine": 1628,
+        "startChar": 1,
+        "endLine": 1628,
+        "endChar": 22
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b309ac12_3a129a62",
@@ -163,6 +271,30 @@
       "writtenOn": "2023-03-23T16:11:38Z",
       "side": 1,
       "message": "rename to sec_load_uart_rate\u003d9600",
+      "range": {
+        "startLine": 1632,
+        "startChar": 1,
+        "endLine": 1632,
+        "endChar": 27
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee140f23_1a7b5f1f",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1632,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:31:29Z",
+      "side": 1,
+      "message": "Taken care",
+      "parentUuid": "b309ac12_3a129a62",
       "range": {
         "startLine": 1632,
         "startChar": 1,
@@ -196,6 +328,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "997425b1_96c7a450",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:31:29Z",
+      "side": 1,
+      "message": "Taken care",
+      "parentUuid": "80bb8fec_4fa86739",
+      "range": {
+        "startLine": 1635,
+        "startChar": 37,
+        "endLine": 1635,
+        "endChar": 63
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4001826f_d40664e1",
@@ -209,6 +365,30 @@
       "writtenOn": "2023-03-23T16:11:38Z",
       "side": 1,
       "message": "sec_load_baudrate",
+      "range": {
+        "startLine": 1636,
+        "startChar": 34,
+        "endLine": 1636,
+        "endChar": 60
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede7c5b0_46c2ed3f",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1636,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:31:29Z",
+      "side": 1,
+      "message": "Taken care",
+      "parentUuid": "4001826f_d40664e1",
       "range": {
         "startLine": 1636,
         "startChar": 34,
@@ -242,6 +422,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c3aa7f_dd26eee1",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:31:29Z",
+      "side": 1,
+      "message": "Taken care",
+      "parentUuid": "9023052c_bb9b4e70",
+      "range": {
+        "startLine": 1642,
+        "startChar": 0,
+        "endLine": 1642,
+        "endChar": 54
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d9f3c31_2c00b3c8",
@@ -265,6 +469,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a136e794_dafa342f",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:31:29Z",
+      "side": 1,
+      "message": "Taken care",
+      "parentUuid": "4d9f3c31_2c00b3c8",
+      "range": {
+        "startLine": 1645,
+        "startChar": 0,
+        "endLine": 1648,
+        "endChar": 3
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "025e9ca9_087b7dba",
@@ -278,6 +506,30 @@
       "writtenOn": "2023-03-23T16:11:38Z",
       "side": 1,
       "message": "#restore original UART baudrate\nif current_baudrate !\u003d image_load_baudrate\n  dut-control uart1_baudrate:current_baudrate \nfi",
+      "range": {
+        "startLine": 1651,
+        "startChar": 0,
+        "endLine": 1651,
+        "endChar": 1
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d9fc4f8_60fad68a",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1651,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:31:29Z",
+      "side": 1,
+      "message": "Added in the script",
+      "parentUuid": "025e9ca9_087b7dba",
       "range": {
         "startLine": 1651,
         "startChar": 0,
