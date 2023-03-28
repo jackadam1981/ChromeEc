@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1992e29_1a644739",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-28T17:18:36Z",
+      "side": 1,
+      "message": "flash_ec: Add support for programming MCHP internal SPI flash",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 64
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654c4aac_e239f16c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-28T17:18:36Z",
+      "side": 1,
+      "message": "use ./flash_ec, I think this has changed the file mode",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "641418bc_7235d096",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1623,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-28T17:18:36Z",
+      "side": 1,
+      "message": "remove, spam",
+      "range": {
+        "startLine": 1623,
+        "startChar": 0,
+        "endLine": 1623,
+        "endChar": 1
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14be65fb_5a21f4a0",
         "filename": "util/flash_ec",
         "patchSetId": 18
@@ -42,6 +111,52 @@
         "startChar": 8,
         "endLine": 1631,
         "endChar": 15
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef0a523_71338637",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1634,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-28T17:18:36Z",
+      "side": 1,
+      "message": "i think this file has 80char max length in a line, use the repo upload tool to avoid these errors",
+      "range": {
+        "startLine": 1634,
+        "startChar": 0,
+        "endLine": 1634,
+        "endChar": 1
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11eec6e3_1f63a6bc",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-28T17:18:36Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 1636,
+        "startChar": 0,
+        "endLine": 1637,
+        "endChar": 77
       },
       "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
