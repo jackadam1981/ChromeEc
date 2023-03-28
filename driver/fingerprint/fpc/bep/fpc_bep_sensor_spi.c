@@ -30,7 +30,7 @@ int __unused fpc_sensor_spi_write_read(uint8_t *write, uint8_t *read,
 {
 	int rc = 0;
 
-	if (size == FP_SENSOR_REAL_IMAGE_SIZE_FPC) {
+	if (size == bep_sensor.real_image_size) {
 		rc |= spi_transaction(SPI_FP_DEVICE, write, size, read,
 				      SPI_READBACK_ALL);
 		spi_transaction_flush(SPI_FP_DEVICE);

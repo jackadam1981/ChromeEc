@@ -214,7 +214,7 @@ int elan_execute_calibration(void)
 int elan_fp_maintenance(uint16_t *error_state)
 {
 	int rv;
-	fp_sensor_info_t sensor_info;
+	struct fp_sensor_info_t sensor_info;
 	timestamp_t start = get_time();
 
 	if (error_state == NULL)

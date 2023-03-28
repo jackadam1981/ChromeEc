@@ -16,20 +16,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-/* TODO: should this be HAVE_PRIVATE_FPC? */
 #ifdef HAVE_PRIVATE
-
-#if FP_SENSOR_IMAGE_SIZE < FP_SENSOR_IMAGE_SIZE_FPC
-#error Insufficient image buffer size
-#endif
-
-#if FP_ALGORITHM_TEMPLATE_SIZE < FP_ALGORITHM_TEMPLATE_SIZE_FPC
-#error insufficient template buffer size
-#endif
-
-#if FP_MAX_FINGER_COUNT < FP_MAX_FINGER_COUNT_FPC
-#error insufficient number of finger buffer templates
-#endif
 
 static uint8_t
 	enroll_ctx[FP_ALGORITHM_ENROLLMENT_SIZE_FPC] __aligned(4) = { 0 };
@@ -46,21 +33,6 @@ const char *fp_sensor_get_version(void);
 
 /* Get FPC library build info.*/
 const char *fp_sensor_get_build_info(void);
-
-/* Sensor description */
-static struct ec_response_fp_info ec_fp_sensor_info = {
-	/* Sensor identification */
-	.vendor_id = FOURCC('F', 'P', 'C', ' '),
-	.product_id = 9,
-	.model_id = 1,
-	.version = 1,
-	/* Image frame characteristics */
-	.frame_size = FP_SENSOR_IMAGE_SIZE_FPC,
-	.pixel_format = V4L2_PIX_FMT_GREY,
-	.width = FP_SENSOR_RES_X_FPC,
-	.height = FP_SENSOR_RES_Y_FPC,
-	.bpp = FP_SENSOR_RES_BPP_FPC,
-};
 
 typedef struct fpc_bep_sensor fpc_bep_sensor_t;
 
@@ -156,12 +128,12 @@ int fpc_check_hwid(void)
 	int status;
 
 	status = fpc_get_hwid(&id);
-	if ((id >> 4) != FP_SENSOR_HWID_FPC) {
+	if ((id >> 4) != bep_sensor.hwid) {
 		CPRINTS("FPC unknown silicon 0x%04x", id);
 		return FP_ERROR_BAD_HWID;
 	}
 	if (status == EC_SUCCESS)
-		CPRINTS(FP_SENSOR_NAME_FPC " id 0x%04x", id);
+		CPRINTS("%s id 0x%04x", bep_sensor.name, id);
 
 	return status;
 }
@@ -218,6 +190,21 @@ int fp_sensor_deinit_fpc(void)
 int fp_sensor_get_info_fpc(struct ec_response_fp_info *resp)
 {
 	int rc;
+
+	/* Sensor description */
+	const struct ec_response_fp_info ec_fp_sensor_info = {
+		/* Sensor identification */
+		.vendor_id = FOURCC('F', 'P', 'C', ' '),
+		.product_id = 9,
+		.model_id = 1,
+		.version = 1,
+		/* Image frame characteristics */
+		.frame_size = bep_sensor.image_size,
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = bep_sensor.res_x,
+		.height = bep_sensor.res_y,
+		.bpp = bep_sensor.res_bpp,
+	};
 
 	spi_buf[0] = FPC_CMD_HW_ID;
 
@@ -297,7 +284,7 @@ int fp_maintenance_fpc(void)
 
 struct fp_sensor_interface fp_driver_bep = {
 	.sensor_type = FP_SENSOR_TYPE_FPC,
-	.sensor_hwid = FP_SENSOR_HWID_FPC,
+	.sensor = &bep_sensor,
 	.sensor_init = &fp_sensor_init_fpc,
 	.sensor_deinit = &fp_sensor_deinit_fpc,
 	.sensor_get_info = &fp_sensor_get_info_fpc,
@@ -314,8 +301,6 @@ struct fp_sensor_interface fp_driver_bep = {
 	.encrypted_template_size =
 		FP_ALGORITHM_TEMPLATE_SIZE_FPC + FP_POSITIVE_MATCH_SALT_BYTES +
 		sizeof(struct ec_fp_template_encryption_metadata),
-	.res_x = FP_SENSOR_RES_X_FPC,
-	.res_y = FP_SENSOR_RES_Y_FPC
 };
 
 struct fp_sensor_interface *fpc_sensor_get_interface(void)

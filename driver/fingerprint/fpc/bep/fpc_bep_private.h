@@ -8,24 +8,41 @@
 #ifndef __CROS_EC_DRIVER_FINGERPRINT_FPC_LIBFP_FPC_BEP_PRIVATE_H
 #define __CROS_EC_DRIVER_FINGERPRINT_FPC_LIBFP_FPC_BEP_PRIVATE_H
 
+#include "config.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "common.h"
+#include "fpc_sensor.h"
 #include "fpsensor_types.h"
+
+#include <stdint.h>
+
+/* Max number of templates stored / matched against */
+#define FP_MAX_FINGER_COUNT_FPC (5)
 
 #if defined(CONFIG_FP_SENSOR_FPC1025)
 #include "fpc1025_private.h"
+#define FP_SENSOR_IMAGE_SIZE_FPC FPC1025_SENSOR_IMAGE_SIZE
+#define FP_ALGORITHM_TEMPLATE_SIZE_FPC FPC1025_ALGORITHM_TEMPLATE_SIZE
+#define FP_ALGORITHM_ENROLLMENT_SIZE_FPC FPC1025_ALGORITHM_ENROLLMENT_SIZE
+
 #elif defined(CONFIG_FP_SENSOR_FPC1035)
+
 #include "fpc1035_private.h"
+#define FP_SENSOR_IMAGE_SIZE_FPC FPC1035_SENSOR_IMAGE_SIZE
+#define FP_ALGORITHM_TEMPLATE_SIZE_FPC FPC1035_ALGORITHM_TEMPLATE_SIZE
+#define FP_ALGORITHM_ENROLLMENT_SIZE_FPC FPC1035_ALGORITHM_ENROLLMENT_SIZE
+#else
+#error "No supported sensor"
 #endif
 
 #include <stdint.h>
 
-typedef struct {
+struct fp_sensor_info_t {
 	uint32_t num_defective_pixels;
-} fp_sensor_info_t;
+};
 
 /**
  * fp_sensor_maintenance runs a test for defective pixels and should
@@ -46,7 +63,7 @@ typedef struct {
  * - negative value on error
  */
 int fp_sensor_maintenance(uint8_t *image_data,
-			  fp_sensor_info_t *fp_sensor_info);
+			  struct fp_sensor_info_t *fp_sensor_info);
 
 /**
  * Configure finger detection.

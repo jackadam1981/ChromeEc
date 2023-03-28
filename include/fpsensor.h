@@ -10,7 +10,6 @@
 
 #include "common.h"
 #include "ec_commands.h"
-#include "fpsensor_driver.h"
 #include "fpsensor_types.h"
 #include "fpsensor_utils.h"
 
@@ -41,7 +40,7 @@ struct fp_sensor_interface {
 	const enum fp_sensor_type sensor_type;
 
 	/* Hardware-specific sensor identifier */
-	const uint32_t sensor_hwid;
+	const struct fpsensor_config *sensor;
 
 	/*
 	 * Initialize the connected sensor hardware and put
@@ -203,10 +202,6 @@ struct fp_sensor_interface {
 	 * to the AP.
 	 */
 	int encrypted_template_size;
-
-	/* Sensor resolution. */
-	int res_x;
-	int res_y;
 };
 
 extern struct fp_sensor_interface *fp_driver;

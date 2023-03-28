@@ -17,6 +17,18 @@ extern "C" {
 
 #include <stdint.h>
 
+/* Max number of templates stored / matched against */
+#define FP_MAX_FINGER_COUNT_FPC (5)
+
+#define FP_SENSOR_IMAGE_SIZE_FPC FPC1145_SENSOR_IMAGE_SIZE
+#define FP_ALGORITHM_TEMPLATE_SIZE_FPC FPC1145_ALGORITHM_TEMPLATE_SIZE
+#define FP_ALGORITHM_ENROLLMENT_SIZE_FPC FPC1145_ALGORITHM_ENROLLMENT_SIZE
+#define FP_ALGORITHM_TEMPLATE_SIZE_FPC FPC1145_ALGORITHM_TEMPLATE_SIZE
+
+struct fp_sensor_info_t {
+	uint32_t num_defective_pixels;
+};
+
 /* External error codes from FPC's sensor library */
 enum fpc_error_code_external {
 	FPC_ERROR_NONE = 0,
@@ -130,10 +142,6 @@ int fp_sensor_open(void *ctx, uint32_t ctx_size);
  */
 const char *fp_sensor_get_version(void);
 
-typedef struct {
-	uint32_t num_defective_pixels;
-} fp_sensor_info_t;
-
 /**
  * fp_sensor_maintenance runs a test for defective pixels and should
  * be triggered periodically by the client. Internally, a defective
@@ -152,7 +160,7 @@ typedef struct {
  * - negative value on error
  */
 int fp_sensor_maintenance(uint8_t *image_data,
-			  fp_sensor_info_t *fp_sensor_info);
+			  struct fp_sensor_info_t *fp_sensor_info);
 
 /**
  * Configure finger detection.

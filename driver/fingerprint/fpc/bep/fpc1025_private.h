@@ -6,34 +6,7 @@
 #ifndef __CROS_EC_FPC1025_PRIVATE_H
 #define __CROS_EC_FPC1025_PRIVATE_H
 
-/* The 16-bit hardware ID is 0x021y */
-#define FP_SENSOR_HWID_FPC 0x021
-
-/* Sensor type name */
-#define FP_SENSOR_NAME_FPC "FPC1025"
-
-/* Sensor pixel resolution */
-#define FP_SENSOR_RES_X_FPC (160) /**< Sensor width */
-#define FP_SENSOR_RES_Y_FPC (160) /**< Sensor height */
-#define FP_SENSOR_RES_BPP_FPC (8) /**< Resolution bits per pixel */
-
-/*
- * Sensor image size
- *
- * Value from fpc_bep_image_get_buffer_size(): (160*160)+660
- */
-#define FP_SENSOR_IMAGE_SIZE_FPC (26260)
-#define FP_SENSOR_REAL_IMAGE_SIZE_FPC \
-	(FP_SENSOR_RES_X_FPC * FP_SENSOR_RES_Y_FPC)
-/* Offset of image data in fp_buffer */
-#define FP_SENSOR_IMAGE_OFFSET_FPC (400)
-
-/*
- * Constant value for the enrollment data size
- *
- * Size of private fp_bio_enrollment_t
- */
-#define FP_ALGORITHM_ENROLLMENT_SIZE_FPC (4)
+#include "fpsensor_types.h"
 
 /*
  * Constant value corresponding to the maximum template size
@@ -42,11 +15,29 @@
  *
  * Template size + alignment padding + size of template size variable
  */
-#define FP_ALGORITHM_TEMPLATE_SIZE_FPC (5088 + 0 + 4)
+#define FPC1025_ALGORITHM_TEMPLATE_SIZE (5088 + 0 + 4)
 
-/* Max number of templates stored / matched against */
-#ifndef FP_MAX_FINGER_COUNT_FPC
-#define FP_MAX_FINGER_COUNT_FPC (5)
-#endif
+/*
+ * Sensor image size
+ *
+ * Value from fpc_bep_image_get_buffer_size(): (160*160)+660
+ */
+#define FPC1025_SENSOR_IMAGE_SIZE (26260)
+
+#define FPC1025_ALGORITHM_ENROLLMENT_SIZE (4)
+
+static const struct fpsensor_config bep_sensor = {
+	.hwid = 0x021,
+	.name = "FPC1025",
+	.res_x = 160, /**< sensor width */
+	.res_y = 160, /**< sensor height */
+	.res_bpp = 8, /**< resolution bits per pixel */
+	.image_size = FPC1025_SENSOR_IMAGE_SIZE,
+	.real_image_size = 160 * 160,
+	.image_offset = 400,
+	.algorithm_enrollment_size = FPC1025_ALGORITHM_ENROLLMENT_SIZE,
+	.algorithm_template_size = 5088 + 0 + 4,
+	.max_finger_count = 5,
+};
 
 #endif /* __CROS_EC_FPC1025_PRIVATE_H */

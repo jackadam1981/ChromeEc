@@ -10,12 +10,11 @@
 #include <include/fpsensor.h>
 #include <include/fpsensor_state.h>
 
-/* TODO: should this be HAVE_PRIVATE_FPC? */
 #ifdef HAVE_PRIVATE
 int fpc_sensor_maintenance(uint16_t *error_state)
 {
 	int rv;
-	fp_sensor_info_t sensor_info;
+	struct fp_sensor_info_t sensor_info;
 	timestamp_t start = get_time();
 
 	if (error_state == NULL)
