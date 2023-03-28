@@ -360,7 +360,7 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	 * But lis2dw12 needs switch low power mode according to odr value.
 	 */
 	if (!IS_ENABLED(CONFIG_ACCEL_LIS2DWL)) {
-		if (reg_val > LIS2DW12_ODR_200HZ_VAL)
+		if (reg_val >= LIS2DW12_ODR_50HZ_VAL)
 			ret = lis2dw12_set_power_mode(s, LIS2DW12_HIGH_PERF, 0);
 		else
 			ret = lis2dw12_set_power_mode(
@@ -401,9 +401,10 @@ static int get_rms_noise(const struct motion_sensor_t *s)
 	 */
 
 	if (!IS_ENABLED(CONFIG_ACCEL_LIS2DWL)) {
-		if (rate < INT_TO_FP(200))
-			return 2400;
-		noise_density_ug = INT_TO_FP(90);
+		if (rate < INT_TO_FP(50)) {
+			return 3000;
+		}
+		noise_density_ug = INT_TO_FP(110);
 	} else {
 		noise_density_ug = INT_TO_FP(110);
 	}
