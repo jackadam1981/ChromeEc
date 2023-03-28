@@ -16,6 +16,24 @@
       "message": "Please cherry-pick to firmware-skyrim.15390.B branch.",
       "revId": "e63fe7d96b27c3851fb9a65558937b5be5f729f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58697c77_ae83848e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2023-03-28T01:43:03Z",
+      "side": 1,
+      "message": "Done.\n4374559: markarth: moidfy fan table\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4374559",
+      "parentUuid": "6c45f321_b99eb25e",
+      "revId": "e63fe7d96b27c3851fb9a65558937b5be5f729f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
