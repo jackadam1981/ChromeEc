@@ -4,6 +4,7 @@
  */
 
 #include "accelgyro.h"
+#include "backlight.h"
 #include "button.h"
 #include "cros_board_info.h"
 #include "cros_cbi.h"
@@ -38,6 +39,16 @@ LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 static bool use_alt_sensor;
 static bool use_alt_lid_accel;
 
+void cpu_c10_gate_interrupt(enum gpio_signal signal)
+{
+	int enable =
+		gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_cpu_c10_gate_l));
+
+	enable_backlight(enable);
+	LOG_INF("%sable backlight follow CPU_C10_GATE_L",
+		enable ? "En" : "Dis");
+}
+
 void motion_interrupt(enum gpio_signal signal)
 {
 	if (use_alt_sensor)
@@ -59,6 +70,8 @@ static void form_factor_init(void)
 	int ret;
 	uint32_t val;
 	enum nissa_sub_board_type sb = nissa_get_sb_type();
+
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_cpu_c10_gate));
 
 	ret = cbi_get_board_version(&val);
 	if (ret != EC_SUCCESS) {
