@@ -527,3 +527,62 @@ failed:
 }
 DECLARE_HOST_COMMAND(EC_CMD_ROLLBACK_INFO, host_command_rollback_info,
 		     EC_VER_MASK(0));
+
+#if defined(CONFIG_ZEPHYR) && defined(CONFIG_CROS_EC_RO)
+static int rollback_first_init(void)
+{
+	uint8_t block[CONFIG_FLASH_WRITE_SIZE *
+		      DIV_ROUND_UP(sizeof(struct rollback_data),
+				   CONFIG_FLASH_WRITE_SIZE)];
+	struct rollback_data *data = (struct rollback_data *)block;
+	BUILD_ASSERT(sizeof(block) >= sizeof(*data));
+	int erase_size, offset, region, ret;
+	uint32_t key;
+
+	for (region = 0; region < ROLLBACK_REGIONS; region++) {
+		if (read_rollback(region, data))
+			continue;
+
+		if (data->cookie == CROS_EC_ROLLBACK_COOKIE)
+			return 0;
+	}
+
+	CPRINTS("Perform first time rollback initialization.");
+
+	data->id = 0;
+	data->rollback_min_version = CONFIG_ROLLBACK_VERSION;
+	data->cookie = CROS_EC_ROLLBACK_COOKIE;
+#ifdef CONFIG_ROLLBACK_SECRET_SIZE
+	memset(data->secret, 0, sizeof(data->secret));
+#endif
+
+	/* Initialize the rest of the block. */
+	memset(&block[sizeof(*data)], 0xff, sizeof(block) - sizeof(*data));
+
+	/* Initialize first rollback region */
+	erase_size = get_rollback_erase_size_bytes(0);
+	offset = get_rollback_offset(0);
+
+	if (system_unsafe_to_overwrite(offset, erase_size)) {
+		CPRINTS("Failed. Initialization will overwrite system image.");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	key = unlock_rollback();
+	if (crec_flash_erase(offset, erase_size)) {
+		lock_rollback(key);
+		CPRINTS("Rollback region erase failed.");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	ret = crec_flash_write(offset, sizeof(block), block);
+	lock_rollback(key);
+	if (ret) {
+		CPRINTS("Failed to write to the rollback region.");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	return 0;
+}
+SYS_INIT(rollback_first_init, APPLICATION, 0);
+#endif
