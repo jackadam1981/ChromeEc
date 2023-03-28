@@ -333,7 +333,7 @@ int fp_finger_enroll_fpc(uint8_t *image, int *completion)
 
 int fp_maintenance_fpc(void)
 {
-	return fpc_fp_maintenance(&errors);
+	return fpc_sensor_maintenance(&errors);
 }
 
 struct fp_sensor_interface fp_driver_libfp = {

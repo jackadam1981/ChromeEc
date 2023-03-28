@@ -12,7 +12,7 @@
 
 /* TODO: should this be HAVE_PRIVATE_FPC? */
 #ifdef HAVE_PRIVATE
-int fpc_fp_maintenance(uint16_t *error_state)
+int fpc_sensor_maintenance(uint16_t *error_state)
 {
 	int rv;
 	fp_sensor_info_t sensor_info;
