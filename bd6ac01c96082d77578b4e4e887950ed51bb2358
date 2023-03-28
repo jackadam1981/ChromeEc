@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d2355fa_deef8760",
+        "filename": "zephyr/test/drivers/amd_fp6_usb_mux/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-28T14:41:46Z",
+      "side": 1,
+      "message": "nit: this is a really useless comment, I see every other test has it but I think we can live without them.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 18
+      },
+      "revId": "bd6ac01c96082d77578b4e4e887950ed51bb2358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b62d0343_fcde083c",
         "filename": "zephyr/test/drivers/amd_fp6_usb_mux/src/amd_fp6_usb_mux_test.c",
         "patchSetId": 4
