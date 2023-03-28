@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46474c4d_8a225203",
+        "filename": "zephyr/shim/include/usbc/tcpc_anx7447_emul.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-28T13:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcabeda3_4c1e88d8",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "a93297583e4ecb94a9350c19b57dd538fe76c128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d5546f5_e3149f6b",
@@ -127,6 +151,24 @@
       "side": 1,
       "message": "I added the call for one of the TCPCs in next commit required by Analogix DB. To keep this CL short, I will add rest of them (i.e, other TCPC calls) in upcoming CLs. Let me know if there are any concerns with it",
       "parentUuid": "4d5546f5_e3149f6b",
+      "revId": "a93297583e4ecb94a9350c19b57dd538fe76c128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "920ad118_d6ac02e7",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-28T13:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14f2e38d_6acc9811",
       "revId": "a93297583e4ecb94a9350c19b57dd538fe76c128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
