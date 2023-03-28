@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a840ac30_b97b8821",
+        "filename": "cmake/toolchain-armv7m.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-28T17:21:32Z",
+      "side": 1,
+      "message": "Ah, ok. I see what you are doing.",
+      "parentUuid": "219c9ea4_22769d9d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "7265632a82e6e816cb1abb62766d8ed2aede41e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46d5ba0c_aee63432",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "without this, the gcc linker for the unittest build would not be able to link the library:\n```\n/usr/bin/x86_64-pc-linux-gnu-ar: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o: plugin needed to handle lto object\n/usr/bin/x86_64-pc-linux-gnu-ranlib: crypto/libcrypto.a(bcm.c.o): plugin needed to handle lto object\n  EXE     fpsensor_state.exe\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real: build/host/fpsensor_state/RO/common/fpsensor/fpsensor_crypto.o: in function `aes_gcm_encrypt\u0027:\n/mnt/host/source/src/platform/ec/common/fpsensor/fpsensor_crypto.cc:255: undefined reference to `AES_set_encrypt_key\u0027\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real: build/host/fpsensor_state/RO/common/fpsensor/fpsensor_crypto.o: in function `aes_gcm_encrypt\u0027:\n/mnt/host/source/src/platform/ec/third_party/boringssl/include/aes_gcm_helpers.h:32: undefined reference to `AES_encrypt\u0027\n...\n```\n\nAnd we already add the correct `CMAKE_SYSROOT`:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3925087/44/third_party/rules.mk#55",
       "parentUuid": "398905c0_ec383f38",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "7265632a82e6e816cb1abb62766d8ed2aede41e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba284f0_c35b0c4d",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-28T17:21:32Z",
+      "side": 1,
+      "message": "Does it work if you use `x86_64-pc-linux-gnu-ld` instead of `x86_64-pc-linux-gnu-ld.bfd.real`?\n\nIt looks like you removed the `CMAKE_LINKER`, but you could try something like:\n\n```\nset(CMAKE_LINKER \"${CROSS_COMPILE}ld.lld\")\nif (\"${CC_NAME}\" STREQUAL gcc)\nset(CMAKE_LINKER \"${CROSS_COMPILE}ld\")\nendif\n```\n\n[Reference](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/profiles/base/profile.bashrc;l\u003d596-612;drc\u003da10880c6d65936f1a605581215f1c3f1a0fddda7)",
+      "parentUuid": "5455ef69_e455b801",
       "range": {
         "startLine": 20,
         "startChar": 0,

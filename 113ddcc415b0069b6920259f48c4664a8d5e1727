@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adcc6a8a_d524a8d6",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-28T17:21:32Z",
+      "side": 1,
+      "message": "This is only for the host unittests, right? (Not for cross-compiling for ARM?)\n\nIn that case, can you qualify it so that it only applies to host builds? Something like this pseudocode:\n\n```\nif (\"${CC_NAME}\" STREQUAL gcc AND \"${CMAKE_SYSROOT} STREQUAL \"/host/sysroot\")\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "113ddcc415b0069b6920259f48c4664a8d5e1727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
