@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9161320c_e3fe56e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-28T22:00:43Z",
+      "side": 1,
+      "message": "You added this test to the `run_device_tests.py` script. Did you use that script to run on `bloonchipper` and `dartmonkey`? Can you put those commands in `TEST\u003d` lines?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "e8e905d5ed2eec44ac05f60328e13bb097a2717c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ad86ccb_2dcee660",
+        "filename": "include/scoped_fast_cpu.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-28T22:00:43Z",
+      "side": 1,
+      "message": "Since this is a `struct`, these are `public`. Let\u0027s just make this a `class`, so we can make these `private`: https://google.github.io/styleguide/cppguide.html#Structs_vs._Classes and go/totw/207",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "e8e905d5ed2eec44ac05f60328e13bb097a2717c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
