@@ -46,6 +46,30 @@
       },
       "revId": "6f3237cb6ee8a63bd6e3552ef463b336da7c66e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62318372_e92998e6",
+        "filename": "zephyr/test/drivers/usbc_tcpc/src/tcpc_shim.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-03-28T13:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3cc70de_d9dab7d6",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "6f3237cb6ee8a63bd6e3552ef463b336da7c66e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
