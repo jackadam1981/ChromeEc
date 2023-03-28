@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d087cbba_743d7606",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 49
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-28T21:10:36Z",
+      "side": 1,
+      "message": "We can change this to `CMAKE_CURRENT_SOURCE_DIR` like the other CL.",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "50080796b0d969c65e27f77f095e82149f3ad01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
