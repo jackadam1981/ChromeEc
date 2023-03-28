@@ -990,6 +990,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5812c67_e5601365",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:16:56Z",
+      "side": 1,
+      "message": "taken care",
+      "parentUuid": "a1a17a0e_5c0a1fee",
+      "range": {
+        "startLine": 523,
+        "startChar": 20,
+        "endLine": 523,
+        "endChar": 24
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f376c24c_3c9bd22d",
@@ -1003,6 +1027,30 @@
       "writtenOn": "2023-03-23T11:06:40Z",
       "side": 1,
       "message": "if spi_file_flag and comp_port_flag",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 56
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "472b33a4_bb4db9e1",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:16:56Z",
+      "side": 1,
+      "message": "Taken care",
+      "parentUuid": "f376c24c_3c9bd22d",
       "range": {
         "startLine": 525,
         "startChar": 0,
@@ -1036,6 +1084,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae95875_37d6a03e",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:16:56Z",
+      "side": 1,
+      "message": "In our case always will get the port handle and based on the flag to determine the second loader to execute and ec image to program into the internal flash",
+      "parentUuid": "7b6b8185_a379b9d2",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 539,
+        "endChar": 55
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b430c3a_5a1a5c7d",
@@ -1059,6 +1131,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c4b0b5f_90997131",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:16:56Z",
+      "side": 1,
+      "message": "we have two function to pass the uart handle for the second loader image into SRAM and pass the uart handle to the ec image to update into the internal flash.\nkept the outside of the uart handle to close",
+      "parentUuid": "1b430c3a_5a1a5c7d",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 23
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f49391a2_16b9c223",
@@ -1072,6 +1168,30 @@
       "writtenOn": "2023-03-23T11:06:40Z",
       "side": 1,
       "message": "main(sys.argv[1:])",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 555,
+        "endChar": 10
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9cf407e_0537e7d6",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:16:56Z",
+      "side": 1,
+      "message": "Added in the latest script",
+      "parentUuid": "f49391a2_16b9c223",
       "range": {
         "startLine": 555,
         "startChar": 0,
