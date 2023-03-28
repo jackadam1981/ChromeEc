@@ -39,6 +39,29 @@
       "message": "nit: prefer fixture of globals",
       "revId": "bd6ac01c96082d77578b4e4e887950ed51bb2358",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf1b815a_5f186a30",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-03-28T18:20:14Z",
+      "side": 1,
+      "message": "This can be moved to a new dedicated YAML field:\n\n```\ndrivers.amd_fp6_usb_mux:\n  extra_dtc_overlay_files:\n    - ./boards/native_posix.overlay\n    - ./amd_fp6_usb_mux/usbc.dts\n  ...\n```\n\nMore info here: https://github.com/zephyrproject-rtos/zephyr/pull/52810",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 81
+      },
+      "revId": "bd6ac01c96082d77578b4e4e887950ed51bb2358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
