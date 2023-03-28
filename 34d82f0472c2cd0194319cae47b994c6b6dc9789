@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2350dec5_1c54e29b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-28T16:58:35Z",
+      "side": 1,
+      "message": "Well I don\u0027t know how that can possibly work but this commit is still changing the file mode.\n\n```\n$ ls -l util/flash_ec \n-rw-r--r-- 1 fabiobaltieri primarygroup 44707 Mar 28 17:52 util/flash_ec\n```\n\n^^ this should be `-rwxr-xr-x`. Can you try `chmod +x util/flash_ec; git add util/flash_ec; git commit --amend`?",
+      "parentUuid": "5cf532c0_b8c800b1",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 80
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d98e9281_a07bac2a",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -256,6 +280,24 @@
       "side": 1,
       "message": "Unable to use in the scripts and getting the error as below:\nERROR: Cannot communicate with servod. Is servod running?\nusing this script , it satisfy the uart port to get\nuart_port\u003d\"$(dut-control raw_ec_uart_pty)\"",
       "parentUuid": "68c1c524_632d65c6",
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b3d862_1efcb165",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-28T16:58:35Z",
+      "side": 1,
+      "message": "That does not sound right, literally everything else here is using it. Can you try to see why it does not work for this case?",
+      "parentUuid": "4f785298_28d71be8",
       "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

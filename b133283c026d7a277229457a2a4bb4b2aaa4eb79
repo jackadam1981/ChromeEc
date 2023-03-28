@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14be65fb_5a21f4a0",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-28T16:58:35Z",
+      "side": 1,
+      "message": "Again this comment is misleading, there\u0027s no checking involved. Also just realized that the script already has facilities to change and restore the serial port speed: see `servo_save_add` and `servo_restore`, please use those instead.",
+      "range": {
+        "startLine": 1627,
+        "startChar": 3,
+        "endLine": 1627,
+        "endChar": 8
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceaf90d8_3ad6c95a",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1631,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-28T16:58:35Z",
+      "side": 1,
+      "message": "the function is called mchp17xx, should this be rephrased to sound more generic? Also not a fan of comments that just repeat the code, how about \"Reset chip in firmware update mode\"?",
+      "range": {
+        "startLine": 1631,
+        "startChar": 8,
+        "endLine": 1631,
+        "endChar": 15
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
