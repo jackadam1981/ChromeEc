@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4c0d2c1_b269f95e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:32:23Z",
+      "side": 1,
+      "message": "Added in the heading",
+      "parentUuid": "275d6907_63265306",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 0
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f8a653b_7f2af9a3",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-23T11:18:01Z",
       "side": 1,
       "message": "looks like the commit is trying to remove the executable bit from the script, please don\u0027t do that",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 80
+      },
+      "revId": "34d82f0472c2cd0194319cae47b994c6b6dc9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "814eca85_e1b75cc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:32:23Z",
+      "side": 1,
+      "message": "Could you please elaborate it",
+      "parentUuid": "7f8a653b_7f2af9a3",
       "range": {
         "startLine": 19,
         "startChar": 0,
