@@ -24,6 +24,12 @@
 		default_battery: bms-gf_cr50 {
 			compatible = "bms-gf,cr50", "battery-smart";
 		};
+<<<<<<< HEAD   (60ec9a crystaldrift: Adjust tuning for C1)
+=======
+		gfl_mfp-549358 {
+			compatible = "gfl,mfp-549358", "battery-smart";
+		};
+>>>>>>> CHANGE (89780d crystaldrift: modify battery configuration)
 	};
 
 	named-gpios {
