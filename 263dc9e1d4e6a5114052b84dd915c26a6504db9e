@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c058bd90_5b867ad5",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:35:26Z",
+      "side": 1,
+      "message": "run the repo upload --cbr . and removed the trailing space",
+      "parentUuid": "e7f07708_3c2afe85",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 34
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae65f165_bb79e097",
@@ -117,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a7c6c8a_8cd73bc8",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:35:26Z",
+      "side": 1,
+      "message": "taken care in the latest",
+      "parentUuid": "96a28b0f_8f7fe655",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efbc855d_f912531d",
@@ -140,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31e6739_e29df908",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:35:26Z",
+      "side": 1,
+      "message": "taken care",
+      "parentUuid": "efbc855d_f912531d",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 73
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "182cd8aa_a7b1c61f",
@@ -153,6 +225,30 @@
       "writtenOn": "2023-03-23T11:06:40Z",
       "side": 1,
       "message": "logging functions don\u0027t normally need any \"\\n\", they already print one log entry per line, please drop them from all of them",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 77
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeeff61f_90d55cec",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:35:26Z",
+      "side": 1,
+      "message": "Removed the \\n",
+      "parentUuid": "182cd8aa_a7b1c61f",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -233,6 +329,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "791448d0_f3ffabf0",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:35:26Z",
+      "side": 1,
+      "message": "framing as bytes and send it to uart , instead of ascii",
+      "parentUuid": "fcc8c4e0_e15aa783",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 43
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "016459fc_81947577",
@@ -269,6 +389,30 @@
       "writtenOn": "2023-03-23T11:06:40Z",
       "side": 1,
       "message": "262272? the whole condition here is completely opaque, maybe a couple of constants and an intermediate function would help?",
+      "range": {
+        "startLine": 104,
+        "startChar": 21,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5505c6ae_50f541eb",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:35:26Z",
+      "side": 1,
+      "message": "added this changes in the latest patch with constant",
+      "parentUuid": "fdfbecfe_095abec1",
       "range": {
         "startLine": 104,
         "startChar": 21,
@@ -385,6 +529,30 @@
       "writtenOn": "2023-03-23T11:06:40Z",
       "side": 1,
       "message": "Is the comment needed? The function name should be descriptive enough. If you feel like you need a comment maybe the function should be renamed.",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 35
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca9d1dba_b70b7fb3",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-03-28T12:35:26Z",
+      "side": 1,
+      "message": "Removed that comments",
+      "parentUuid": "d5210025_c62307ce",
       "range": {
         "startLine": 150,
         "startChar": 0,
