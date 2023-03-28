@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "219c9ea4_22769d9d",
+        "filename": "cmake/toolchain-armv7m.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-28T02:24:28Z",
+      "side": 1,
+      "message": "hmmmm, I didn\u0027t want to change the behavior of the `toolchain-armv7m.cmake`. We are not going to support GNU compilers in `toolchain-armv7m.cmake`. \nThis CL is supporting the GNU compilers in the `toolchain-common.cmake`.\n\nNote: For the boringssl, we didn\u0027t use this armv7m tool chain file. We used this common toolchain file directly.",
+      "parentUuid": "4a890413_9ce6adb8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "7265632a82e6e816cb1abb62766d8ed2aede41e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46d5ba0c_aee63432",
         "filename": "cmake/toolchain-common.cmake",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-27T18:20:20Z",
       "side": 1,
       "message": "I think this is the [LLVM linker (`lld`)](https://lld.llvm.org).\n\nThe GNU version is just `ld`. I think once you change the `CMAKE_SYSROOT` as mentioned in the other comment you\u0027ll see this.",
+      "range": {
+        "startLine": 14,
+        "startChar": 40,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "7265632a82e6e816cb1abb62766d8ed2aede41e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60cee65e_99022a04",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-28T02:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46d5ba0c_aee63432",
       "range": {
         "startLine": 14,
         "startChar": 40,
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-27T18:20:20Z",
       "side": 1,
       "message": "I don\u0027t think this will be need once you change `CMAKE_SYSROOT` as mentioned in the other comment.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "7265632a82e6e816cb1abb62766d8ed2aede41e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5455ef69_e455b801",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-28T02:24:28Z",
+      "side": 1,
+      "message": "without this, the gcc linker for the unittest build would not be able to link the library:\n```\n/usr/bin/x86_64-pc-linux-gnu-ar: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o: plugin needed to handle lto object\n/usr/bin/x86_64-pc-linux-gnu-ranlib: crypto/libcrypto.a(bcm.c.o): plugin needed to handle lto object\n  EXE     fpsensor_state.exe\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real: build/host/fpsensor_state/RO/common/fpsensor/fpsensor_crypto.o: in function `aes_gcm_encrypt\u0027:\n/mnt/host/source/src/platform/ec/common/fpsensor/fpsensor_crypto.cc:255: undefined reference to `AES_set_encrypt_key\u0027\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real: build/host/fpsensor_state/RO/common/fpsensor/fpsensor_crypto.o: in function `aes_gcm_encrypt\u0027:\n/mnt/host/source/src/platform/ec/third_party/boringssl/include/aes_gcm_helpers.h:32: undefined reference to `AES_encrypt\u0027\n...\n```\n\nAnd we already add the correct `CMAKE_SYSROOT`:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3925087/44/third_party/rules.mk#55",
+      "parentUuid": "398905c0_ec383f38",
       "range": {
         "startLine": 20,
         "startChar": 0,
