@@ -18,12 +18,6 @@ enum elan_error_code {
 	ELAN_ERROR_DEFECT_Y = 6
 };
 
-/* ELAN error info */
-struct fp_sensor_info_t {
-	uint32_t num_defective_pixels;
-	uint16_t sensor_error_code;
-};
-
 /**
  * @brief Write fp command to the sensor
  *
@@ -126,7 +120,7 @@ void elan_execute_reset(void);
  * @return 0 on success.
  *         negative value on error.
  */
-int fp_sensor_maintenance(struct fp_sensor_info_t *fp_sensor_info);
+int fp_sensor_maintenance(fp_sensor_info_t *fp_sensor_info);
 
 /**
  * @brief Set sensor reset state.

@@ -39,6 +39,12 @@
 #define FP_ALGORITHM_TEMPLATE_SIZE_ELAN (0)
 #endif /* CONFIG_FP_SENSOR_ELAN80 */
 
+/* ELAN error info */
+struct fp_sensor_info_t {
+	uint32_t num_defective_pixels;
+	uint16_t sensor_error_code;
+};
+
 /**
  * Set ELAN fingerprint sensor into finger touch detects and power saving mode
  *
@@ -190,6 +196,6 @@ int elan_fp_deinit(void);
  *
  * @return fp_sensor_interface
  */
-struct fp_sensor_interface *fp_driver_get_elan(void);
+struct fp_sensor_interface *elan_sensor_get_interface(void);
 
 #endif

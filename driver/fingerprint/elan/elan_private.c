@@ -301,7 +301,7 @@ struct fp_sensor_interface fp_driver_elan = {
 	.res_y = FP_SENSOR_RES_Y_ELAN
 };
 
-struct fp_sensor_interface *fp_driver_get_elan(void)
+struct fp_sensor_interface *elan_sensor_get_interface(void)
 {
 	return &fp_driver_elan;
 }
