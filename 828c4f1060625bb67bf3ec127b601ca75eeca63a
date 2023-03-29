@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9deaec4c_9794958f",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-03-29T16:30:54Z",
+      "side": 1,
+      "message": "nit, should this be:\nuint8_t default_val;\nuint8_t val;",
+      "range": {
+        "startLine": 330,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 25
+      },
+      "revId": "828c4f1060625bb67bf3ec127b601ca75eeca63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
