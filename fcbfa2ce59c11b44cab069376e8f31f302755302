@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4237ea84_e37f43a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-29T22:13:13Z",
+      "side": 1,
+      "message": "Before we submit, let\u0027s test that it actually works by using `ectool` (using the new `libec` command you\u0027ll add for this).",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f05da8b_f2c39235",
+        "filename": "common/flash.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-29T22:13:13Z",
+      "side": 1,
+      "message": "It\u0027s a little more consistent with the style used in EC if you list each variable on its own line:\n\n```\nstruct flash_protect_async {\n  uint32_t mask;\n  uint32_t flags;\n  ...\n}\n```",
+      "range": {
+        "startLine": 1510,
+        "startChar": 1,
+        "endLine": 1510,
+        "endChar": 5
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca961776_c3d7e975",
+        "filename": "common/flash.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1515,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-29T22:13:13Z",
+      "side": 1,
+      "message": "How about `flash_protect_async_data` instead?",
+      "range": {
+        "startLine": 1515,
+        "startChar": 34,
+        "endLine": 1515,
+        "endChar": 55
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ec8d1ae_5808e94a",
+        "filename": "common/flash.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-29T22:13:13Z",
+      "side": 1,
+      "message": "Does it work if you use `IS_ENABLED(CONFIG_FLASH_PROTECT_DEFERRED)` here? (Generally try to use that style instead of `#if defined` where possible. You will probably have to also remove the `#ifdef CONFIG_FLASH_PROTECT_DEFERRED` on line 1508 as well and add `__maybe_unused` to `flash_command_protect_v2`.",
+      "range": {
+        "startLine": 1603,
+        "startChar": 0,
+        "endLine": 1603,
+        "endChar": 42
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0ba5016_b02a0453",
+        "filename": "common/flash.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-29T22:13:13Z",
+      "side": 1,
+      "message": "This should be surrounded by `#if defined(CONFIG_FLASH_PROTECT_DEFERRED)` since we\u0027re only enabling version 2 when that CONFIG is enabled.",
+      "range": {
+        "startLine": 1648,
+        "startChar": 38,
+        "endLine": 1648,
+        "endChar": 56
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
