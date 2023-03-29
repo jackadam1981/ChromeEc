@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5069a91_bd2b7847",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-29T19:53:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "163c0a97_73d32ff3",
+      "revId": "e4bbb7090076f2c8c3246f1e15e734bb81c794f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56fd427e_16c537bd",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0071fb3_d5505466",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-29T19:53:55Z",
+      "side": 1,
+      "message": "I created a new bug number for this CL",
+      "parentUuid": "56fd427e_16c537bd",
+      "revId": "e4bbb7090076f2c8c3246f1e15e734bb81c794f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd4b26e0_524a54d1",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-03-27T17:05:18Z",
       "side": 1,
       "message": "AFAIK, there are not tests for this race condition, `buildall` does not bring much.",
+      "revId": "e4bbb7090076f2c8c3246f1e15e734bb81c794f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d5d0969_70ff4c32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-29T19:53:55Z",
+      "side": 1,
+      "message": "I was running `buildall` to make sure everything builds.",
+      "parentUuid": "cd4b26e0_524a54d1",
       "revId": "e4bbb7090076f2c8c3246f1e15e734bb81c794f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
