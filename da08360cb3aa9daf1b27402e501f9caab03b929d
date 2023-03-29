@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16d237a8_38d01595",
+        "filename": "zephyr/program/rex/src/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-29T02:24:09Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_USB_PD_ALT_MODE_UFP ?",
+      "range": {
+        "startLine": 85,
+        "startChar": 7,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "da08360cb3aa9daf1b27402e501f9caab03b929d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50746792_f79c6841",
+        "filename": "zephyr/program/rex/src/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-29T02:24:09Z",
+      "side": 1,
+      "message": "same for Rex?",
+      "range": {
+        "startLine": 139,
+        "startChar": 39,
+        "endLine": 139,
+        "endChar": 44
+      },
+      "revId": "da08360cb3aa9daf1b27402e501f9caab03b929d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
