@@ -369,16 +369,30 @@ DECLARE_CONSOLE_COMMAND(rollbackupdate, command_rollback_update, "min_version",
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
 static int command_rollback_add_entropy(int argc, const char **argv)
 {
+	const uint8_t *data;
 	int len;
 
-	if (argc < 2)
+	if (argc < 2) {
+#ifdef CONFIG_RNG
+		uint8_t rand[CONFIG_ROLLBACK_SECRET_SIZE];
+
+		trng_init();
+		trng_rand_bytes(rand, sizeof(rand));
+		trng_exit();
+
+		data = rand;
+		len = sizeof(rand);
+#else
 		return EC_ERROR_PARAM_COUNT;
+#endif
+	} else {
+		data = argv[1];
+		len = strlen(argv[1]);
+	}
 
-	len = strlen(argv[1]);
-
-	return rollback_add_entropy(argv[1], len);
+	return rollback_add_entropy(data, len);
 }
-DECLARE_CONSOLE_COMMAND(rollbackaddent, command_rollback_add_entropy, "data",
+DECLARE_CONSOLE_COMMAND(rollbackaddent, command_rollback_add_entropy, "[data]",
 			"Add entropy to rollback block");
 
 #ifdef CONFIG_RNG
