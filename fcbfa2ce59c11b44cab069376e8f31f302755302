@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b58ebff6_a547abdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-29T22:34:42Z",
+      "side": 1,
+      "message": "sounds good. Let us discuss this. I will start working on the libec implementation.",
+      "parentUuid": "4237ea84_e37f43a4",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f05da8b_f2c39235",
         "filename": "common/flash.c",
         "patchSetId": 21
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-29T22:13:13Z",
       "side": 1,
       "message": "It\u0027s a little more consistent with the style used in EC if you list each variable on its own line:\n\n```\nstruct flash_protect_async {\n  uint32_t mask;\n  uint32_t flags;\n  ...\n}\n```",
+      "range": {
+        "startLine": 1510,
+        "startChar": 1,
+        "endLine": 1510,
+        "endChar": 5
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97d183b_15e8d598",
+        "filename": "common/flash.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-29T22:34:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f05da8b_f2c39235",
       "range": {
         "startLine": 1510,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6936a2ab_3d0338f3",
+        "filename": "common/flash.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1515,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-29T22:34:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca961776_c3d7e975",
+      "range": {
+        "startLine": 1515,
+        "startChar": 34,
+        "endLine": 1515,
+        "endChar": 55
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ec8d1ae_5808e94a",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "128903c3_3e8185ff",
+        "filename": "common/flash.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-29T22:34:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ec8d1ae_5808e94a",
+      "range": {
+        "startLine": 1603,
+        "startChar": 0,
+        "endLine": 1603,
+        "endChar": 42
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0ba5016_b02a0453",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-03-29T22:13:13Z",
       "side": 1,
       "message": "This should be surrounded by `#if defined(CONFIG_FLASH_PROTECT_DEFERRED)` since we\u0027re only enabling version 2 when that CONFIG is enabled.",
+      "range": {
+        "startLine": 1648,
+        "startChar": 38,
+        "endLine": 1648,
+        "endChar": 56
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d35e6f_18125020",
+        "filename": "common/flash.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-29T22:34:42Z",
+      "side": 1,
+      "message": "This created an error with DECLARE_HOST_COMMAND. I already added the below check. Isn\u0027t it sufficient?\n```\nif (IS_ENABLED(CONFIG_FLASH_PROTECT_DEFERRED) \u0026\u0026 args-\u003eversion \u003d\u003d 2) {\n\t\treturn flash_command_protect_v2(args);\n\t}\n```",
+      "parentUuid": "a0ba5016_b02a0453",
       "range": {
         "startLine": 1648,
         "startChar": 38,
