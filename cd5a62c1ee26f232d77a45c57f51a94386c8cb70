@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "faedaf78_85559733",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2179,
+      "author": {
+        "id": 1366765
+      },
+      "writtenOn": "2023-03-29T07:21:57Z",
+      "side": 1,
+      "message": "pls check if the size of the allocations, all needs to be of \u0027uint32_t\u0027 ?",
+      "revId": "cd5a62c1ee26f232d77a45c57f51a94386c8cb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847c0905_f0844ccb",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3906,
+      "author": {
+        "id": 1366765
+      },
+      "writtenOn": "2023-03-29T07:21:57Z",
+      "side": 1,
+      "message": "move this to previous line, like \"if () {\"",
+      "revId": "cd5a62c1ee26f232d77a45c57f51a94386c8cb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a138db6_51879f6e",
         "filename": "util/ectool.cc",
         "patchSetId": 1
@@ -14,6 +48,23 @@
       "writtenOn": "2023-03-29T07:10:31Z",
       "side": 1,
       "message": "line over 80 characters, pls run the pre upload scripts.",
+      "revId": "cd5a62c1ee26f232d77a45c57f51a94386c8cb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a6f08f_2585d5c2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3912,
+      "author": {
+        "id": 1366765
+      },
+      "writtenOn": "2023-03-29T07:21:57Z",
+      "side": 1,
+      "message": "same as comment on line 3906",
       "revId": "cd5a62c1ee26f232d77a45c57f51a94386c8cb70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
