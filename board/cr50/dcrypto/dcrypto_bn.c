@@ -54,21 +54,15 @@ BUILD_ASSERT((offsetof(struct DMEM_ctx, RR) & 31) == 0);
 #define DMEM_INDEX(p, f)                                                       \
 	(((const uint8_t *)&(p)->f - (const uint8_t *)(p)) / DMEM_CELL_SIZE)
 
-/* Get non-0 64 bit random */
+/* Get non-0 64 bit random for blinding */
 static bool rand64(uint32_t dst[2])
 {
+	bool status;
+
 	do {
-		uint64_t rnd;
-
-		rnd = fips_trng_rand32();
-		if (!rand_valid(rnd))
+		status = fips_rand_bytes(dst, sizeof(uint32_t) * 2);
+		if (!status)
 			return false;
-		dst[0] = (uint32_t)rnd;
-
-		rnd = fips_trng_rand32();
-		if (!rand_valid(rnd))
-			return false;
-		dst[1] = (uint32_t)rnd;
 	} while ((dst[0] | dst[1]) == 0);
 
 	return true;
