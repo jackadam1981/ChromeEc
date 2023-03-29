@@ -1,0 +1,237 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdb56bf2_85957652",
+        "filename": "zephyr/program/myst/i2c.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "I think this one is 0x71?  At least, that\u0027s the note on the schematic",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 13
+      },
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78687928_078dba67",
+        "filename": "zephyr/program/myst/i2c.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "For tracking remaining work, perhaps add a TODO for the PS DB",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1d8633a_5246ab65",
+        "filename": "zephyr/program/myst/myst/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "Did we confirm with the ODM or EEs which batteries we\u0027ll be using?",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47234ee1_a55c934f",
+        "filename": "zephyr/program/myst/myst/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "Why the delete?  It seems like for the first round, we can just set up the nodes to whatever myst needs them and shuffle for variants later",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db21442_051888fe",
+        "filename": "zephyr/program/myst/program.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "We should allocate a new PID (or file a bug TODO to allocate it)",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce8cfa5_cb69038b",
+        "filename": "zephyr/program/myst/program.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "It might be best to disable FRS in the initial image and enable it later.  I haven\u0027t specifically worked with this combination for FRS before and it might make sense to de-risk the first image",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a51d0a31_1b31c3a5",
+        "filename": "zephyr/program/myst/program.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "Since we have a nice big EC to start with, I say to enable all the debugs again!  Especially shell help for partners during bringup",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "317ad87f_b9f42af0",
+        "filename": "zephyr/program/myst/src/power_signals.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "I think we can remove hub reset references based on the schematics",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07ca9b0_8e117d3e",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "It\u0027s wonderful how much more simple this function becomes when you don\u0027t have to deal with the weird NCT dead battery mode",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a00c09b0_63c019a7",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "fault",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 27
+      },
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a625a6_0dbef083",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "Oh, I should file a bug for this.  We will have to use it in myst",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b24b31_231a4a1b",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "nit: Probably note the lack of reset lines",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64a6bd78_e086feda",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "This guy I believe lives in the shim now... zephyr/shim/src/tcpc.c",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

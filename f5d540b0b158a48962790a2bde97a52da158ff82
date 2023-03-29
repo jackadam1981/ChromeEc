@@ -22,6 +22,30 @@
       },
       "revId": "f5d540b0b158a48962790a2bde97a52da158ff82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5882d0a7_96b27523",
+        "filename": "zephyr/program/myst/src/power_signals.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-29T19:31:33Z",
+      "side": 1,
+      "message": "I\u0027d say \"probably\".  So far, the last two platforms needed to tune this delay to make booting work reliably.  You should be able to get info from the EEs about what the delay needs to be for myst",
+      "parentUuid": "c9d9423c_af1a6750",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 14
+      },
+      "revId": "f5d540b0b158a48962790a2bde97a52da158ff82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
