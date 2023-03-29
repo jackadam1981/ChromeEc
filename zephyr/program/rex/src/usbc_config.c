@@ -12,6 +12,7 @@
 #include "driver/charger/isl9241.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/retimer/bb_retimer_public.h"
+#include "driver/ppc/ktu1125_public.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/tcpm/ps8xxx_public.h"
 #include "driver/tcpm/tcpci.h"
@@ -115,10 +116,12 @@ void board_reset_pd_mcu(void)
 	reset_nct38xx_port(USBC_PORT_C0);
 
 	/* Reset TCPC1 */
-	gpio_pin_set_dt(&tcpc_config[1].rst_gpio, 1);
-	msleep(PS8XXX_RESET_DELAY_MS);
-	gpio_pin_set_dt(&tcpc_config[1].rst_gpio, 0);
-	msleep(PS8815_FW_INIT_DELAY_MS);
+	/* if (&tcpc_config[1].rst_gpio) { */
+	/* 	gpio_pin_set_dt(&tcpc_config[1].rst_gpio, 1); */
+	/* 	msleep(PS8XXX_RESET_DELAY_MS); */
+	/* 	gpio_pin_set_dt(&tcpc_config[1].rst_gpio, 0); */
+	/* 	msleep(PS8815_FW_INIT_DELAY_MS); */
+	/* } */
 }
 
 void ppc_interrupt(enum gpio_signal signal)
@@ -128,7 +131,8 @@ void ppc_interrupt(enum gpio_signal signal)
 		syv682x_interrupt(USBC_PORT_C0);
 		break;
 	case GPIO_USB_C1_PPC_INT_ODL:
-		nx20p348x_interrupt(USBC_PORT_C1);
+		/* nx20p348x_interrupt(USBC_PORT_C1); */
+		ktu1125_interrupt(USBC_PORT_C1);
 		break;
 	default:
 		break;
@@ -161,7 +165,8 @@ static void board_disable_charger_ports(void)
 		 * If this port had booted in dead battery mode, go
 		 * ahead and reset it so EN_SNK responds properly.
 		 */
-		if (nct38xx_get_boot_type(i) == NCT38XX_BOOT_DEAD_BATTERY) {
+		if (i == USBC_PORT_C0 &&
+		    nct38xx_get_boot_type(i) == NCT38XX_BOOT_DEAD_BATTERY) {
 			reset_nct38xx_port(i);
 			pd_set_error_recovery(i);
 		}
