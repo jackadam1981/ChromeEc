@@ -22,6 +22,30 @@
       },
       "revId": "50080796b0d969c65e27f77f095e82149f3ad01b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c36129_c7e7bd29",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 49
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-29T04:04:39Z",
+      "side": 1,
+      "message": "Changing it to `CMAKE_CURRENT_SOURCE_DIR` would not work.\nIt will failed with:\n```\nCMake Error at /mnt/host/source/src/platform/ec/third_party/boringssl/boringssl-toolchain.cmake:12 (include):\n  include could not find requested file:\n\n    /mnt/host/source/src/third_party/boringssl/cmake/toolchain-common.cmake\n```\nThat is because the cmake file of boringssl is under `/mnt/host/source/src/third_party/boringssl/CMakeLists.txt`.\n\nAnd the relative path may be changed if we changed the \"BORINGSSL_DIR\".",
+      "parentUuid": "d087cbba_743d7606",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "50080796b0d969c65e27f77f095e82149f3ad01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
