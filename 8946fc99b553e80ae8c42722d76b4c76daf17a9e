@@ -16,6 +16,24 @@
       "message": "Hi Hank,\nDid you test if you set fan duty to 0, will it be too hot during booting process?",
       "revId": "8946fc99b553e80ae8c42722d76b4c76daf17a9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a99ad0_a5534008",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2023-03-29T07:01:12Z",
+      "side": 1,
+      "message": "Yes, I did test it.\nAfter PWM initialed about 0.5s, the fan speed is controlled by thermal.\nThis patch only modify the pwm of this 0.5s interval, so it doesn\u0027t impact so much the temperature of processor.",
+      "parentUuid": "94be6b58_c176db5c",
+      "revId": "8946fc99b553e80ae8c42722d76b4c76daf17a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
