@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54239cf6_3c3eb481",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-29T23:36:00Z",
+      "side": 1,
+      "message": "This should be without \"n\", so if Single Driver is defined -\u003e bc12.c is populating the array",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "41e0473f127221b26e6b7de122eaac9cf0ff04a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
