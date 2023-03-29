@@ -188,6 +188,30 @@
       },
       "revId": "7265632a82e6e816cb1abb62766d8ed2aede41e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "339194ea_e2b48a50",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-29T04:48:50Z",
+      "side": 1,
+      "message": "Changing the CMAKE_LINKER does not work for the boringssl static library case.\nBecause there is no \"linker\" stage when we generate the \"static library\".\n\nThe problem is the `ar,nm,ranlib` would not work with the \".o\" files that were compiled with \"gcc -flto\". And they will drop the \".o\" files that they cannot handle from the static library archive(\".a\").\n\nThe only way to let them handle the \".o\" files correctly is using the `gcc-ar,gcc-nm,gcc-ranlib` to archive the \".o\" files to \".a\".\n\n------\n\nBTW, the place that linking the static lib into the binary is here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/Makefile.rules;drc\u003da6505051ba9d893f71738acdb3e242fb37b90426;l\u003d101\n\nAnd I don\u0027t want to refactor the whole EC toolchain...",
+      "parentUuid": "dba284f0_c35b0c4d",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "7265632a82e6e816cb1abb62766d8ed2aede41e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

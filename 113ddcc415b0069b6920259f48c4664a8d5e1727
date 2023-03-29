@@ -22,6 +22,30 @@
       },
       "revId": "113ddcc415b0069b6920259f48c4664a8d5e1727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d59f3f1_61a16ede",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-29T04:48:50Z",
+      "side": 1,
+      "message": "Yeah, it currently only applies to the host builds.\nBut I don\u0027t think we should change the condition, because we should always use these ar/nm/ranlib for the `gcc + LTO` case.",
+      "parentUuid": "adcc6a8a_d524a8d6",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "113ddcc415b0069b6920259f48c4664a8d5e1727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
