@@ -244,8 +244,8 @@ bool fips_trng_startup(int stage)
 	return fips_powerup_passed();
 }
 
-/* Assuming H=0.77, we need 571 bits from TRNG to get 440 bits. */
-#define ENTROPY_SIZE_BITS  571
+/* Assuming min H=0.6, we need 640 bits from TRNG to get 384 bits. */
+#define ENTROPY_SIZE_BITS  640
 #define ENTROPY_SIZE_WORDS (BITS_TO_WORDS(ENTROPY_SIZE_BITS))
 
 bool fips_drbg_init(void)
@@ -260,7 +260,7 @@ bool fips_drbg_init(void)
 		return true;
 
 	/**
-	 * Get entropy + nonce from TRNG. Assume H>=0.77.
+	 * Get entropy + nonce from TRNG. Assume H>=0.6.
 	 */
 	if (!fips_trng_bytes(entropy_input, sizeof(entropy_input)))
 		return false;
@@ -276,10 +276,10 @@ bool fips_drbg_init(void)
 	 * Maximum length of the personalization string = 160 bits.
 	 * Maximum length of the entropy input = 1000 bits.
 	 *
-	 * Reseed_interval = 1000 requests.
+	 * Reseed_interval = 8192 requests.
 	 */
 	hmac_drbg_init(&fips_drbg, &entropy_input, sizeof(entropy_input), NULL,
-		       0, NULL, 0, 1000);
+		       0, NULL, 0, 8192);
 
 	always_memset(entropy_input, 0, sizeof(entropy_input));
 	return true;
