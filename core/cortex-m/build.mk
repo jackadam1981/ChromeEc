@@ -25,16 +25,9 @@ CFLAGS_CPU+=-flto
 LDFLAGS_EXTRA+=-flto
 endif
 
-# gcc 11.2 had a known issue which doesn't affect Cr50 build anymore
-# but we can't remove -fno-ipa-modref as it changes FIPS module digest
 GCC_VERSION := $(shell $(CROSS_COMPILE)$(cc-name) -dumpversion)
-ifeq ("$(GCC_VERSION)","11.2.0")
-# IPA modref pass crashes gcc 11.2 when LTO is used with partial linking
-CFLAGS_CPU += -fno-ipa-modref
-
 # Set an option to force LTO to generate target machine code
 export CFLAGS_LTO_PARTIAL_LINK := -flinker-output=nolto-rel
-endif
 
 core-y=cpu.o init.o ldivmod.o llsr.o uldivmod.o vecttable.o
 core-$(CONFIG_AES)+=aes.o
