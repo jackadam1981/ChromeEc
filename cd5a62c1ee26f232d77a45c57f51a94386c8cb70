@@ -3,6 +3,132 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77c3f91b_b88230df",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-29T20:14:32Z",
+      "side": 1,
+      "message": "nit: use fan_get_count()",
+      "range": {
+        "startLine": 517,
+        "startChar": 5,
+        "endLine": 517,
+        "endChar": 14
+      },
+      "revId": "cd5a62c1ee26f232d77a45c57f51a94386c8cb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "635c935b_99a4a3c6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2154,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-29T20:14:32Z",
+      "side": 1,
+      "message": "follow structure commenting style",
+      "range": {
+        "startLine": 2151,
+        "startChar": 0,
+        "endLine": 2154,
+        "endChar": 3
+      },
+      "revId": "cd5a62c1ee26f232d77a45c57f51a94386c8cb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a09d294_230fc377",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2169,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-29T20:14:32Z",
+      "side": 1,
+      "message": "follow structure commenting style.\nNeed to add comments in-front/above of the variable",
+      "range": {
+        "startLine": 2159,
+        "startChar": 0,
+        "endLine": 2169,
+        "endChar": 3
+      },
+      "revId": "cd5a62c1ee26f232d77a45c57f51a94386c8cb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ec43f95_9ead385b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2171,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-29T20:14:32Z",
+      "side": 1,
+      "message": "actual_rpm",
+      "range": {
+        "startLine": 2171,
+        "startChar": 10,
+        "endLine": 2171,
+        "endChar": 16
+      },
+      "revId": "cd5a62c1ee26f232d77a45c57f51a94386c8cb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503d9e06_36c160c5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2176,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-29T20:14:32Z",
+      "side": 1,
+      "message": "target_rpm",
+      "revId": "cd5a62c1ee26f232d77a45c57f51a94386c8cb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d10b774d_395f838c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2177,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-03-29T20:14:32Z",
+      "side": 1,
+      "message": "fan_enabled",
+      "revId": "cd5a62c1ee26f232d77a45c57f51a94386c8cb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "faedaf78_85559733",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
