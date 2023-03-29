@@ -43,3 +43,7 @@
 &dma2 {
 	status = "okay";
 };
+
+&rng {
+	status = "okay";
+};
