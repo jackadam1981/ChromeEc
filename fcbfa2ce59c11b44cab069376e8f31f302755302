@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b96becf_ace55b72",
+        "filename": "common/flash.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-03-29T22:55:49Z",
+      "side": 1,
+      "message": "in the initial testing on one board, it works. However, this will create an error for the `hyperdebug` board where `CONFIG_COMMON_RUNTIME` is undefined. This is the same error that I tried to resolve with the definition of the `CONFIG_FLASH_PROTECT_DEFERRED` and guarding the deferred implantation `DECLARE_DEFERRED(crec_flash_set_protect_deferred)` with",
+      "parentUuid": "128903c3_3e8185ff",
+      "range": {
+        "startLine": 1603,
+        "startChar": 0,
+        "endLine": 1603,
+        "endChar": 42
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0ba5016_b02a0453",
         "filename": "common/flash.c",
         "patchSetId": 21
