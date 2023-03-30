@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e334237_9f9fe1d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-30T22:46:14Z",
+      "side": 1,
+      "message": "Actually, I think we can abandon this and just use the [`bssl::UniquePtr` type](https://source.chromium.org/chromium/chromium/src/+/main:third_party/boringssl/src/include/openssl/base.h;l\u003d608-612;drc\u003da925c220c123af0bdd49be3a8a84a506584c1fb2) in `boringssl` itself.",
+      "revId": "b6887dbd5d02cce4cb1c2cae60fcff616475fbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
