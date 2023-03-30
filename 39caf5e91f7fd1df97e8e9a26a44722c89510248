@@ -16,6 +16,24 @@
       "message": "I have come to think that the bitfields I have declared in the flash_flags may be too flexible, as they basically mimic what STM32L5 is capable of, even combination that does not make sense.  For instance the separate width fields for opcode, address and data is excessive, in that it is never the case that e.g. opcode uses 1 wire, address uses 2 and data uses 4.  As far as I can tell, the form is always either 1-1-1, 1-1-N, 1-N-N, or N-N-N (where N is either 2, 4 or 8).\n\nI want to rework the set of flags to make them more compact, according to the observation above (I need to find out how \"double transfer rate\" works exactly, but I assume that it would apply to all of the \"N\"\u0027s above).\n\nHowever, before I do any of that, I would like to hear your opinion on the approach of adding a new CMD_FLASH_TRANSFER_START, guarded by a new CONFIG_, and extracting the code into a new do_spi_transfer().  I have taken care that if the new CONFIG_ is not defined, then flash_flags will be compile time constant of zero, meaning that several large if-statements in do_spi_transfer() will be eliminated by the compiler, with the intent that the remaining code closely matches what was there before this CL.\n\nPlease let me know if you are OK with the approach, and I can refine this CL.",
       "revId": "39caf5e91f7fd1df97e8e9a26a44722c89510248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0324d9a_af2c7044",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-03-30T20:19:37Z",
+      "side": 1,
+      "message": "KISS is a good design principle. That\u0027s a lot of states which will never be used. If it is not used or tested, it will break.\n\nThe packet_id field is 2 bytes long, we would run out of firmware space before we can create 65k unique packet handlers. We should be able to make a new start transfer field with minimal issues.",
+      "parentUuid": "fd8ac4a3_a6d34803",
+      "revId": "39caf5e91f7fd1df97e8e9a26a44722c89510248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
