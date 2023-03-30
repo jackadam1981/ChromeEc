@@ -705,6 +705,14 @@ config PLATFORM_EC_SYSTEM_UNLOCKED
 
 	  Also, this enables PD in RO for TCPMv2.
 
+config PLATFORM_EC_CMD_GPIO_EXTENDED
+        bool "Enable `gpioset` console command"
+        default n
+        help
+	  Enable this to acquire `gpioset name <value> abilities.
+
+	  NOTE: This flag should be removed on a shipping device..
+
 config PLATFORM_EC_THROTTLE_AP
 	bool "CPU throttling"
 	help
