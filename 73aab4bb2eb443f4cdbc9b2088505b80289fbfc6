@@ -94,6 +94,30 @@
       },
       "revId": "73aab4bb2eb443f4cdbc9b2088505b80289fbfc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c9ea4f8_dea88d80",
+        "filename": "chip/host/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-30T17:56:27Z",
+      "side": 1,
+      "message": "We will not have two weak symbols \"now\".\n\nBut if we add test_mockable to every chip, if someone wants to change the chip code in the future, it may easily be screwed up. \n\ne.g. You can take a look at the complex `#if #elif #else #endif` macros in `chip/npcx/clock.c`.",
+      "parentUuid": "afd1feb5_51b7df75",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "73aab4bb2eb443f4cdbc9b2088505b80289fbfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
