@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc10a960_964e1ea7",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 95
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-30T23:16:33Z",
+      "side": 1,
+      "message": "Instead of `always_memset` from `cryptoc`, we can use `boringssl`\u0027s [`OPENSSL_cleanse`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libbrillo/brillo/secure_string.cc;l\u003d12;drc\u003d3a446f27a00fba076a5a42d383ae6134c333ee57).",
+      "range": {
+        "startLine": 532,
+        "startChar": 1,
+        "endLine": 532,
+        "endChar": 14
+      },
+      "revId": "192412f44999a578202325dc09d5703e5bbd4929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
