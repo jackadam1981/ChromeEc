@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ffc5779_dae724ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-30T17:11:47Z",
+      "side": 1,
+      "message": "configure ANX7452 daughter board",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "b6167b31d469d45ee64af0f4aec537a11dad91ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24eb3b7d_c4fa9b19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-30T17:11:47Z",
+      "side": 1,
+      "message": "board",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "b6167b31d469d45ee64af0f4aec537a11dad91ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61fa9feb_ccc6edc9",
+        "filename": "zephyr/program/rex/usbc.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-30T17:11:47Z",
+      "side": 1,
+      "message": "The ordering of the virtual_mux_c1 is different from the default setting. Is that intended?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "b6167b31d469d45ee64af0f4aec537a11dad91ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f678c3bc_e7be0126",
+        "filename": "zephyr/test/rex/src/usb_mux_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-30T17:11:47Z",
+      "side": 1,
+      "message": "You should also verify that the expected TCPC, PPC, and muxes have been installed.  This test only verifies that the init code read the CBI data.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 58
+      },
+      "revId": "b6167b31d469d45ee64af0f4aec537a11dad91ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
