@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68d38c88_67c0fe0a",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-03-30T00:08:01Z",
+      "side": 1,
+      "message": "can you drop this line now?",
+      "revId": "2355704b7ed51a70cfdc38a34974b8fa4b240232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "214a166a_2385a5ab",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-03-30T00:08:01Z",
+      "side": 1,
+      "message": "This is strange...does \u0027Kconfig\u0027 not include the other Kconfig files?\n\nDoesn\u0027t search_paths handle the one in ZEPHYR_BASE?",
+      "revId": "2355704b7ed51a70cfdc38a34974b8fa4b240232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
