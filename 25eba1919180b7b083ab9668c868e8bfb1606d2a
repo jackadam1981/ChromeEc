@@ -118,6 +118,30 @@
       },
       "revId": "25eba1919180b7b083ab9668c868e8bfb1606d2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9972109c_a471b83c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-30T17:08:27Z",
+      "side": 1,
+      "message": "Sorry to keep going back and forth on this, but `EC_CMD_FP_*` suggests that *any* FP-related EC command (e.g., [`EC_CMD_FP_MODE`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d7497-7498;drc\u003d726908c0cfe93332e4af5dd509958c06d2e7c699)) causes the crash. I imagine it\u0027s only the new ones that you added, since those are the only ones that use boringssl. Can you make it more specific?",
+      "parentUuid": "b6de85a4_5a36e814",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "25eba1919180b7b083ab9668c868e8bfb1606d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
