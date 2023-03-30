@@ -70,6 +70,30 @@
       },
       "revId": "73aab4bb2eb443f4cdbc9b2088505b80289fbfc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd1feb5_51b7df75",
+        "filename": "chip/host/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-30T17:20:52Z",
+      "side": 1,
+      "message": "\u003e not warn you if you link two weak symbols at the same time\n\nWhere is the second weak version of `clock_enable_module`? The host version won\u0027t be linked with the version built for the EC, and only a single `chip` is built for a given EC board.",
+      "parentUuid": "732a66be_a09fd605",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "73aab4bb2eb443f4cdbc9b2088505b80289fbfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
