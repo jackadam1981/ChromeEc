@@ -5,10 +5,17 @@
  * Standalone utility to parse EC panicinfo.
  */
 
+#include "compile_time_macros.h"
+
 #include <stdint.h>
 #include <stdio.h>
+<<<<<<< HEAD   (c32434 Revert "util: Remove ec_panicinfo")
 #include "compile_time_macros.h"
 #include "ec_panicinfo.h"
+=======
+
+#include <libec/ec_panicinfo.h>
+>>>>>>> BRANCH (d1f31d marasov: Modify GPIO EN_PP5000_FAN default value)
 
 int main(int argc, char *argv[])
 {
