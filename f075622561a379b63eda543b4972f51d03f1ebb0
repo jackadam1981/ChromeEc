@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba3aeb5_82fa47cc",
+        "filename": "zephyr/test/drivers/anx7452/usbc.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-30T16:51:54Z",
+      "side": 1,
+      "message": "Nit - your anx7452 tests bypass the common USB mux layer calling `anx7452_usb_retimer_driver.get` and `anx7452_usb_retimer_driver.set`. \n\nThe virtual_mux_c1 node is not used by the this test so should be deleted.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "f075622561a379b63eda543b4972f51d03f1ebb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
