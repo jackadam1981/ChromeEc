@@ -247,4 +247,7 @@ config LINK_TEST_SUITE_ANX7452
 	  Include the test suite of ANX7452 retimer in the binary. The tests
 	  use I2C emulation.
 
+config LINK_TEST_SUITE_UPSTREAM_FUEL_GAUGE
+	bool "Link and test usage of upstream fuel-gauge API"
+
 source "Kconfig.zephyr"
