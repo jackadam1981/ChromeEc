@@ -9,6 +9,7 @@ zephyr_library_sources(gpio_int.c)
 
 add_subdirectory("buttons")
 add_subdirectory("cbi")
+add_subdirectory("fuel_gauge")
 add_subdirectory("led_driver")
 
 if (DEFINED CONFIG_ARCH_POSIX)
@@ -21,8 +22,6 @@ zephyr_library_sources_ifdef(no_libgcc                  libgcc_${ARCH}.S)
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_RETIMER_ANX7452 anx7452_usb_mux.c)
 zephyr_library_sources_ifdef(CONFIG_NAMED_ADC_CHANNELS      adc.c)
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BATTERY
-                                                            battery.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BC12_DETECT_RT9490
                                                             bc12_rt9490.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_RT9490
