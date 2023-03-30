@@ -432,6 +432,7 @@ int battery_get_avg_voltage(void)
 }
 #endif /* CONFIG_CMD_PWR_AVG */
 
+#ifndef CONFIG_FUEL_GAUGE
 static void apply_fake_state_of_charge(struct batt_params *batt)
 {
 	int full;
@@ -450,7 +451,9 @@ static void apply_fake_state_of_charge(struct batt_params *batt)
 	batt->flags &= ~BATT_FLAG_BAD_STATE_OF_CHARGE;
 	batt->flags &= ~BATT_FLAG_BAD_REMAINING_CAPACITY;
 }
+#endif
 
+#ifndef CONFIG_FUEL_GAUGE
 static bool battery_want_charge(struct batt_params *batt)
 {
 	if (batt->flags &
@@ -478,7 +481,9 @@ static bool battery_want_charge(struct batt_params *batt)
 
 	return false;
 }
+#endif
 
+#ifndef CONFIG_FUEL_GAUGE
 void battery_get_params(struct batt_params *batt)
 {
 	struct batt_params batt_new;
@@ -570,6 +575,7 @@ void battery_get_params(struct batt_params *batt)
 	/* Update visible battery parameters */
 	memcpy(batt, &batt_new, sizeof(*batt));
 }
+#endif /* !CONFIG_FUEL_GAUGE */
 
 /* Wait until battery is totally stable */
 int battery_wait_for_stable(void)

@@ -18,6 +18,7 @@ endif()
 add_compile_option_ifdef(CONFIG_ZTEST -fstack-protector-all)
 
 check_set_compiler_property(APPEND PROPERTY warning_extended -Wunused-variable
+  -g -O0
 	-Werror=unused-variable -Werror=missing-braces
 	-Werror=sometimes-uninitialized -Werror=unused-function
 	-Werror=array-bounds)
