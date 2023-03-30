@@ -56,7 +56,7 @@ def create_openocd_args(interface, board):
     return args
 
 
-def create_gdb_args(board, port, executable):
+def create_gdb_args(board, port, executable, attach):
     if not board in boards:
         raise RuntimeError(f"Unsupported board {board}")
 
@@ -86,6 +86,9 @@ def create_gdb_args(board, port, executable):
         f"target extended-remote localhost:{port}",
     ]
 
+    if not attach:
+        args.extend(["-ex", "load"])
+
     return args
 
 
@@ -99,7 +102,7 @@ def flash(interface, board, image, verify):
     subprocess.run(args, stdout=sys.stdout, stderr=subprocess.STDOUT)
 
 
-def debug(interface, board, port, executable):
+def debug(interface, board, port, executable, attach):
     # Start OpenOCD in the background
     openocd_args = create_openocd_args(interface, board)
     openocd_args += ["-c", f"gdb_port {port}"]
@@ -128,7 +131,7 @@ def debug(interface, board, port, executable):
 
     sock.close()
 
-    gdb_args = create_gdb_args(board, port, executable)
+    gdb_args = create_gdb_args(board, port, executable, attach)
     # Start GDB
     gdb = subprocess.Popen(
         gdb_args, stdout=sys.stdout, stderr=subprocess.STDOUT, stdin=sys.stdin
@@ -153,6 +156,13 @@ def debug(interface, board, port, executable):
     if openocd.returncode != 0:
         print("OpenOCD failed to shutdown cleanly: ")
     print(openocd_out)
+
+
+def debug_external(interface, board, port, executable, attach):
+    gdb_args = create_gdb_args(board, port, executable, attach)
+    gdb = subprocess.run(
+        gdb_args, stdout=sys.stdout, stderr=subprocess.STDOUT, stdin=sys.stdin
+    )
 
 
 def get_flash_file(board):
@@ -218,6 +228,18 @@ def main():
         type=int,
         default=3333,
     )
+    debug_parser.add_argument(
+        "--external-gdbserver",
+        "-x",
+        help="Do not run openocd, use an already running external gdb server",
+        action="store_true",
+    )
+    debug_parser.add_argument(
+        "--attach",
+        "-a",
+        help="Do not load the binary after starting gdb, attach to the running instance instead",
+        action="store_true",
+    )
 
     args = parser.parse_args()
     # Get the image path if we were given one
@@ -236,7 +258,22 @@ def main():
             if target_file == None
             else target_file
         )
-        debug(args.interface, args.board, args.port, executable_file)
+        if args.external_gdbserver:
+            debug_external(
+                args.interface,
+                args.board,
+                args.port,
+                executable_file,
+                args.attach,
+            )
+        else:
+            debug(
+                args.interface,
+                args.board,
+                args.port,
+                executable_file,
+                args.attach,
+            )
     else:
         parser.print_usage()
 
