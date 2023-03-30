@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b1bbedd_a9c59a3c",
+        "filename": "zephyr/program/myst/i2c.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T00:27:26Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "fdb56bf2_85957652",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 13
+      },
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78687928_078dba67",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-03-29T19:31:33Z",
       "side": 1,
       "message": "For tracking remaining work, perhaps add a TODO for the PS DB",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52c04711_bc88dd90",
+        "filename": "zephyr/program/myst/i2c.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T00:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78687928_078dba67",
       "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccbb6e19_72be2125",
+        "filename": "zephyr/program/myst/myst/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T00:27:26Z",
+      "side": 1,
+      "message": "changed to lgc_ap19b8m according to build matrix",
+      "parentUuid": "a1d8633a_5246ab65",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47234ee1_a55c934f",
@@ -71,6 +131,24 @@
       "writtenOn": "2023-03-29T19:31:33Z",
       "side": 1,
       "message": "Why the delete?  It seems like for the first round, we can just set up the nodes to whatever myst needs them and shuffle for variants later",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f93db6_09c60b5a",
+        "filename": "zephyr/program/myst/myst/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T00:27:26Z",
+      "side": 1,
+      "message": "Sorry it got here by mistake. Cleaned up",
+      "parentUuid": "47234ee1_a55c934f",
       "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "742fb457_b30d4d59",
+        "filename": "zephyr/program/myst/program.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T00:27:26Z",
+      "side": 1,
+      "message": "b/275938903",
+      "parentUuid": "5db21442_051888fe",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dce8cfa5_cb69038b",
@@ -105,6 +201,24 @@
       "writtenOn": "2023-03-29T19:31:33Z",
       "side": 1,
       "message": "It might be best to disable FRS in the initial image and enable it later.  I haven\u0027t specifically worked with this combination for FRS before and it might make sense to de-risk the first image",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f01472_97c0e591",
+        "filename": "zephyr/program/myst/program.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T00:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dce8cfa5_cb69038b",
       "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +240,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5746ad48_7995e2cc",
+        "filename": "zephyr/program/myst/program.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T00:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a51d0a31_1b31c3a5",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "317ad87f_b9f42af0",
@@ -139,6 +271,24 @@
       "writtenOn": "2023-03-29T19:31:33Z",
       "side": 1,
       "message": "I think we can remove hub reset references based on the schematics",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0de62475_7d0c5c39",
+        "filename": "zephyr/program/myst/src/power_signals.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T00:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "317ad87f_b9f42af0",
       "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +333,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c7ab07_4a11fe05",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T00:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a00c09b0_63c019a7",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 27
+      },
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07a625a6_0dbef083",
@@ -217,6 +391,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29259e29_e48cb3d6",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T00:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0b24b31_231a4a1b",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64a6bd78_e086feda",
@@ -230,6 +422,24 @@
       "writtenOn": "2023-03-29T19:31:33Z",
       "side": 1,
       "message": "This guy I believe lives in the shim now... zephyr/shim/src/tcpc.c",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b98d33_60892aee",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T00:27:26Z",
+      "side": 1,
+      "message": "Most likely a very recent change because I don\u0027t have it. Created b/275945357 to move it.",
+      "parentUuid": "64a6bd78_e086feda",
       "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

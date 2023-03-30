@@ -16,6 +16,24 @@
       "message": "Can you check go/myst-buildmatrix and see if you think you need fw_config fields for anything?  They can be added at go/myst-skus",
       "revId": "555acf782a501e69e9f309c7f5b4a75ff2f3f03a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16db7912_5a15c1ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T00:27:26Z",
+      "side": 1,
+      "message": "Will follow up via b/275631095 and separate CL",
+      "parentUuid": "5d176cb2_09f8ef8c",
+      "revId": "555acf782a501e69e9f309c7f5b4a75ff2f3f03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
