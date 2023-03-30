@@ -46,6 +46,30 @@
       },
       "revId": "113ddcc415b0069b6920259f48c4664a8d5e1727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "139d0027_081a17f9",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-30T17:11:59Z",
+      "side": 1,
+      "message": "\u003e we should always use these ar/nm/ranlib for the gcc + LTO case\n\nIn the case where we\u0027re cross-compiling for ARM, the `sysroot` used should be `/opt/coreboot-sdk/bin/`. The only binaries in there are from the `gcc` toolchain (not `clang`), so I think it will be fine.",
+      "parentUuid": "0d59f3f1_61a16ede",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "113ddcc415b0069b6920259f48c4664a8d5e1727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
