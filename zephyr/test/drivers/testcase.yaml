@@ -32,6 +32,7 @@ tests:
     extra_configs:
       - CONFIG_LINK_TEST_SUITE_DEFAULT_CONSOLE_CMDS=y
       - CONFIG_PLATFORM_EC_BATTERY_CUT_OFF=y
+      - CONFIG_PLATFORM_EC_CMD_POWERINDEBUG=y
   drivers.default.console_cmds.gpio_keys:
     timeout: 360
     extra_args: CONF_FILE="prj.conf;default/prj.conf"
