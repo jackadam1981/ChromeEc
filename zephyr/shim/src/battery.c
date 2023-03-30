@@ -3,9 +3,45 @@
  * found in the LICENSE file.
  */
 
+#include "battery.h"
 #include "battery_fuel_gauge.h"
 
 #include <zephyr/devicetree.h>
+
+#ifdef CONFIG_FUEL_GAUGE
+#include <zephyr/drivers/fuel_gauge.h>
+
+/* Using upstream fuel gauge driver */
+
+void battery_get_params(struct batt_params *batt)
+{
+	/* TODO rename upstream_battery to default_battery */
+	const struct device *dev =
+		DEVICE_DT_GET(DT_NODELABEL(upstream_battery));
+
+	struct fuel_gauge_get_property props[] = {
+		{
+			.property_type = FUEL_GAUGE_VOLTAGE,
+		},
+		{
+			.property_type = FUEL_GAUGE_CURRENT,
+		},
+	};
+
+	int ret = fuel_gauge_get_prop(dev, props, ARRAY_SIZE(props));
+
+	/* We explicitly expect some properties to fail */
+	ARG_UNUSED(ret);
+
+	batt->voltage = props[0].value.voltage / 1000;
+	batt->current = props[1].value.current / 1000;
+
+	/*
+	 * TODO(b/271889974): Percolate failed properties to client.
+	 */
+}
+
+#endif /* CONFIG_FUEL_GAUGE */
 
 #define NODE_FUEL_GAUGE(node) \
 	{ \
