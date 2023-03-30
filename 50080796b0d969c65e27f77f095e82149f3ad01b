@@ -46,6 +46,30 @@
       },
       "revId": "50080796b0d969c65e27f77f095e82149f3ad01b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f10753_08f8c692",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 49
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-30T17:15:18Z",
+      "side": 1,
+      "message": "\u003e And the relative path may be changed if we changed the \"BORINGSSL_DIR\".\n\nLet\u0027s just get rid of the `BORINGSSL_DIR` variable and make then use a relative path with `CMAKE_CURRENT_SOURCE_DIR`. Making it too generic makes it more complicated than it needs to be. I don\u0027t think there\u0027s much use case for needing  `BORINGSSL_DIR`.",
+      "parentUuid": "33c36129_c7e7bd29",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "50080796b0d969c65e27f77f095e82149f3ad01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
