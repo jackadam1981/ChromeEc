@@ -110,6 +110,20 @@ void led_set_color(enum led_color color, enum ec_led_id led_id);
  */
 void led_set_color_with_node(const struct led_pins_node_t *pins_node);
 
+/**
+ * Set LED color to be a transition between two nodes. Sets the color to *end
+ * when transition_pct != 0 if the LED is gpio.
+ *
+ * @param *start		Pins node for the color at the start of the
+ *				transition.
+ * @param *end			Pins node for the color at the end of the
+ *				transition.
+ * @param transition_pct	Percentage of the transition in progress
+ */
+int led_set_transition_with_nodes(const struct led_pins_node_t *start,
+				  const struct led_pins_node_t *end,
+				  uint8_t transition_pct);
+
 #ifdef TEST_BUILD
 const struct led_pins_node_t *led_get_node(enum led_color color,
 					   enum ec_led_id led_id);

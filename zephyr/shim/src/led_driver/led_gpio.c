@@ -80,6 +80,18 @@ void led_set_color(enum led_color color, enum ec_led_id led_id)
 	}
 }
 
+int led_set_transition_with_nodes(const struct led_pins_node_t *start,
+				  const struct led_pins_node_t *end,
+				  uint8_t transition_pct)
+{
+	if (transition_pct != 0)
+		led_set_color_with_node(end);
+	else
+		led_set_color_with_node(start);
+
+	return EC_SUCCESS;
+}
+
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	for (int i = 0; i < ARRAY_SIZE(pins_node); i++) {

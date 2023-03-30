@@ -28,6 +28,14 @@ LOG_MODULE_REGISTER(led, LOG_LEVEL_ERR);
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 	     "Exactly one instance of cros-ec,led-policy should be defined.");
 
+enum led_transition {
+	LED_TRANSITION_SOLID,
+	LED_TRANSITION_BLINKING,
+	LED_TRANSITION_SMOOTH,
+	LED_TRANSITION_SINE,
+	LED_TRANSITION_COUNT /* Number of patterns, not a transition itself */
+};
+
 struct led_color_node_t {
 	struct led_pins_node_t *pins_node;
 	int acc_period;
@@ -66,6 +74,7 @@ struct node_prop_t {
 	int8_t batt_lvl[2];
 	int8_t charge_port;
 	struct led_color_node_t led_colors[MAX_COLOR];
+	enum led_transition pattern;
 };
 
 /*
@@ -104,7 +113,7 @@ struct node_prop_t {
 /*
  * Initialize node_array struct with prop listed in dts
  */
-#define SET_LED_VALUES(state_id)                                              \
+#define SET_LED_VALUES(state_id) \
 	{ .pwr_state = GET_PROP(state_id, charge_state),                      \
 	  .chipset_state = GET_PROP(state_id, chipset_state),                 \
 	  .batt_state_mask =                                                  \
@@ -122,7 +131,9 @@ struct node_prop_t {
 		  LED_COLOR_INIT(1, 2, state_id),                             \
 		  LED_COLOR_INIT(2, 3, state_id),                             \
 		  LED_COLOR_INIT(3, 4, state_id),                             \
-	  } },
+	  },                                                                  \
+	  .pattern = DT_PROP_OR(state_id, led_transition,                     \
+				LED_TRANSITION_BLINKING) },
 
 static const struct node_prop_t node_array[] = { DT_INST_FOREACH_CHILD(
 	0, SET_LED_VALUES) };

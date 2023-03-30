@@ -82,6 +82,47 @@ void led_set_color_with_node(const struct led_pins_node_t *pins_node)
 	}
 }
 
+uint32_t pwm_transition_pulse(uint32_t start_pulse, uint32_t end_pulse,
+			      uint8_t transition_pct)
+{
+	int tmp = (int)start_pulse +
+		  ((int)end_pulse - (int)start_pulse) * transition_pct / 100;
+	return (uint32_t)tmp;
+}
+
+/*
+ * description here.
+ */
+int led_set_transition_with_nodes(const struct led_pins_node_t *start,
+				  const struct led_pins_node_t *end,
+				  uint8_t transition_pct)
+{
+	if (start->pins_count != end->pins_count)
+		return EC_LED_COLOR_INVALID;
+
+	/*
+	 * Check if both pins_node are using the same pins. Return with error
+	 * if the start and end are not on the same pins.
+	 *
+	 * TODO: Add support for when the pins are the same but in a different
+	 * order.
+	 */
+	for (int j = 0; j < start->pins_count; j++) {
+		if (start->pwm_pins[j].pwm.dev != end->pwm_pins[j].pwm.dev)
+			return EC_LED_COLOR_INVALID;
+	}
+
+	for (int j = 0; j < start->pins_count; j++) {
+		pwm_set_pulse_dt(
+			&start->pwm_pins[j].pwm,
+			pwm_transition_pulse(start->pwm_pins[j].pulse_ns,
+					     end->pwm_pins[j].pulse_ns,
+					     transition_pct));
+	}
+
+	return EC_SUCCESS;
+}
+
 /*
  * Iterate through LED pins nodes to find the color matching node.
  */
@@ -113,6 +154,7 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 	}
 }
 
+/* only turns LED on or off, does not actually set brightness */
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
 	bool color_set = false;
