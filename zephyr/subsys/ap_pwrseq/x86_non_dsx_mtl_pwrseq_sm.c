@@ -143,4 +143,54 @@ static int x86_non_dsx_mtl_s0_exit(void *data)
 
 AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_S0, NULL, x86_non_dsx_mtl_s0_run,
 			      x86_non_dsx_mtl_s0_exit);
+
+#if CONFIG_AP_PWRSEQ_S0IX
+static int x86_non_dsx_mtl_s0ix_entry(void *data)
+{
+	/*
+	 * Check sleep state and notify listeners of S0ix suspend if
+	 * HC already set sleep suspend state.
+	 */
+	ap_power_sleep_notify_transition(AP_POWER_SLEEP_SUSPEND);
+	/*
+	 * Enable idle task deep sleep. Allow the low power idle task
+	 * to go into deep sleep in S0ix.
+	 */
+	enable_sleep(SLEEP_MASK_AP_RUN);
+
+	return 0;
+}
+
+static int x86_non_dsx_mtl_s0ix_run(void *data)
+{
+	/* System in S0 only if SLP_S0 and SLP_S3 are de-asserted */
+	if (power_signals_off(IN_PCH_SLP_S0) &&
+	    power_signals_off(IN_PCH_SLP_S3)) {
+		/* TODO: Make sure ap reset handling is done
+		 * before leaving S0ix.
+		 */
+		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S0);
+	} else if (!power_signals_on(POWER_SIGNAL_MASK(PWR_RSMRST))) {
+		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_G3);
+	}
+
+	return 0;
+}
+
+static int x86_non_dsx_mtl_s0ix_exit(void *data)
+{
+	/*
+	 * Disable idle task deep sleep. This means that the low
+	 * power idle task will not go into deep sleep while in S0.
+	 */
+	disable_sleep(SLEEP_MASK_AP_RUN);
+
+	return 0;
+}
+
+AP_POWER_CHIPSET_SUB_STATE_DEFINE(AP_POWER_STATE_S0IX,
+				  x86_non_dsx_mtl_s0ix_entry,
+				  x86_non_dsx_mtl_s0ix_run,
+				  x86_non_dsx_mtl_s0ix_exit, AP_POWER_STATE_S0);
+#endif /* CONFIG_AP_PWRSEQ_S0IX */
 #endif /* CONFIG_AP_PWRSEQ_DRIVER */
