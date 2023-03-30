@@ -442,6 +442,24 @@
       "parentUuid": "64a6bd78_e086feda",
       "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43162f28_57955e1b",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-30T03:17:13Z",
+      "side": 1,
+      "message": "Ah i have to fix this one now, it fails to build..",
+      "parentUuid": "76b98d33_60892aee",
+      "revId": "af52237c1a1fd59a2fc136c0161933865f6acb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
