@@ -36,6 +36,62 @@ struct sbat_emul_data {
 	int num_to_read;
 };
 
+#define _DEFAULT_SPEC_VERSION                                            \
+	((BATTERY_SPEC_VER_1_1_WITH_PEC << BATTERY_SPEC_VERSION_SHIFT) & \
+	 BATTERY_SPEC_VERSION_MASK)
+
+#define _DEFAULT_VSCALE \
+	((0 << BATTERY_SPEC_VSCALE_SHIFT) & BATTERY_SPEC_VSCALE_MASK)
+
+#define _DEFAULT_IPSCALE \
+	((0 << BATTERY_SPEC_IPSCALE_SHIFT) & BATTERY_SPEC_IPSCALE_MASK)
+
+#define DEFAULT_SPEC_INFO                                            \
+	_DEFAULT_SPEC_VERSION | _DEFAULT_VSCALE | _DEFAULT_IPSCALE | \
+		BATTERY_SPEC_REVISION_1
+
+#define _DEFAULT_INT_CHARGE_CTLR (0 * MODE_INTERNAL_CHARGE_CONTROLLER)
+
+#define _DEFAULT_PRIMARY_BATTERY_SUPPORT (0 * MODE_PRIMARY_BATTERY_SUPPORT)
+
+#define DEFAULT_BATT_MODE \
+	_DEFAULT_INT_CHARGE_CTLR | _DEFAULT_PRIMARY_BATTERY_SUPPORT
+
+/* Default Dynamic Smart Battery Emulator Values */
+static const struct sbat_emul_bat_data default_dynamic_battery_data = {
+	.mf_data = 0,
+	.at_rate_full_mw_support = false,
+	.spec_info = DEFAULT_SPEC_INFO,
+	.mode = DEFAULT_BATT_MODE,
+	.design_mv = 5000,
+	.design_cap = 5000,
+	.temp = 2930,
+	.volt = 5000,
+	.cur = 1000,
+	.avg_cur = 1000,
+	.max_error = 0,
+	.cap = 2000,
+	.full_cap = 4000,
+	.desired_charg_cur = 2000,
+	.desired_charg_volt = 7000,
+	.cycle_count = 125,
+	.sn = 7,
+	.mf_name = "zephyr",
+	.mf_name_len = sizeof("zephyr") - 1,
+	.dev_name = "smartbat",
+	.dev_name_len = sizeof("smartbat") - 1,
+	.dev_chem = "LION",
+	.dev_name_len = sizeof("LION") - 1,
+	.mf_info = "LION",
+	.mf_info_len = sizeof("LION") - 1,
+	.mf_date = 0,
+	.cap_alarm = 0,
+	.time_alarm = 0,
+	.at_rate = 0,
+	.status = STATUS_INITIALIZED,
+	.error_code = STATUS_CODE_OK,
+};
+
 /** Check description in emul_smart_battery.h */
 struct sbat_emul_bat_data *sbat_emul_get_bat_data(const struct emul *emul)
 {
