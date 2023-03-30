@@ -70,6 +70,30 @@
       },
       "revId": "113ddcc415b0069b6920259f48c4664a8d5e1727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b996cd5_09d770ba",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-30T17:41:23Z",
+      "side": 1,
+      "message": "BTW, I just figured out the CMAKE_SYSROOT would be empty when building the host unit tests...\n\nI think something like this would be a little bit strange:\n`if (\"${CC_NAME}\" STREQUAL gcc AND \"${CMAKE_SYSROOT} STREQUAL \"\")`",
+      "parentUuid": "139d0027_081a17f9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "113ddcc415b0069b6920259f48c4664a8d5e1727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
