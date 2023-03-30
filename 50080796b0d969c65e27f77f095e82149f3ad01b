@@ -94,6 +94,30 @@
       },
       "revId": "50080796b0d969c65e27f77f095e82149f3ad01b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c547db88_4e2228ee",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 49
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-03-30T20:34:11Z",
+      "side": 1,
+      "message": "I see. This CL is quite large and is doing two things at once: adding `boringssl` and switching AES to use `boringssl`.\n\nCan you split this into two separate CLs?\n\n1. Add `boringssl`.\n2. Use `boringssl` for AES.\n\nhttps://google.github.io/eng-practices/review/developer/small-cls.html#what_is_small",
+      "parentUuid": "f1294143_031039b4",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "50080796b0d969c65e27f77f095e82149f3ad01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
