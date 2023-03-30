@@ -33,6 +33,23 @@
       "message": "Re-run stress passe on 8 units, total 20000 times.",
       "revId": "e7d84e4edf5dc9902021370fe2e4b9341b4e0c97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eae4d03_8fd9f17d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-30T15:16:51Z",
+      "side": 1,
+      "message": "Approve for now with the understanding we\u0027ll address this TODO in the near future.  I\u0027m assuming an actual high temperature situation will still be registered since it\u0027ll hit temperatures on the way to 300C",
+      "revId": "e7d84e4edf5dc9902021370fe2e4b9341b4e0c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
