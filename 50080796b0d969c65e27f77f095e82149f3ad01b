@@ -70,6 +70,30 @@
       },
       "revId": "50080796b0d969c65e27f77f095e82149f3ad01b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1294143_031039b4",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 49
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-30T17:44:21Z",
+      "side": 1,
+      "message": "The `BORINGSSL_DIR` is meaningful for the `.gitlab-ci.yml` \u0026 `util/compare_build.sh`\n\nThe coverage report / script will break if we don\u0027t set the BORINGSSL_DIR to the correct location.",
+      "parentUuid": "54f10753_08f8c692",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "50080796b0d969c65e27f77f095e82149f3ad01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
