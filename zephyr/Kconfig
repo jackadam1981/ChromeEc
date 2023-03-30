@@ -215,6 +215,14 @@ config PLATFORM_EC_CHIP_INIT_ROM_REGION
 	  Enable this flag if the board has a `.init_rom` region. This will
 	  activate routines in `init_rom.h` to access objects in this region.
 
+config PLATFORM_EC_CMD_POWERINDEBUG
+	bool "Console command: powerindebug"
+	default n
+	help
+	  Enable the `powerindebug` console command. This command is used to
+	  get and set power signal. This flag should be disable on a shipping
+	  device.
+
 config PLATFORM_EC_CONSOLE_CMD_HCDEBUG
 	bool "Console command: hcdebug"
 	default y
