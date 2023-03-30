@@ -36,6 +36,63 @@ struct sbat_emul_data {
 	int num_to_read;
 };
 
+#define _DEFAULT_SPEC_VERSION                                            \
+	((BATTERY_SPEC_VER_1_1_WITH_PEC << BATTERY_SPEC_VERSION_SHIFT) & \
+	 BATTERY_SPEC_VERSION_MASK)
+
+#define _DEFAULT_VSCALE \
+	((0 << BATTERY_SPEC_VSCALE_SHIFT) & BATTERY_SPEC_VSCALE_MASK)
+
+#define _DEFAULT_IPSCALE \
+	((0 << BATTERY_SPEC_IPSCALE_SHIFT) & BATTERY_SPEC_IPSCALE_MASK)
+
+#define DEFAULT_SPEC_INFO                                            \
+	_DEFAULT_SPEC_VERSION | _DEFAULT_VSCALE | _DEFAULT_IPSCALE | \
+		BATTERY_SPEC_REVISION_1
+
+#define _DEFAULT_INT_CHARGE_CTLR (0 * MODE_INTERNAL_CHARGE_CONTROLLER)
+
+#define _DEFAULT_PRIMARY_BATTERY_SUPPORT (0 * MODE_PRIMARY_BATTERY_SUPPORT)
+
+#define DEFAULT_BATT_MODE \
+	_DEFAULT_INT_CHARGE_CTLR | _DEFAULT_PRIMARY_BATTERY_SUPPORT
+
+/* Default Dynamic Smart Battery Emulator Values */
+static const struct sbat_emul_bat_data default_dynamic_battery_data = {
+	.mf_data = { 0 },
+	.at_rate_full_mw_support = false,
+	.spec_info = DEFAULT_SPEC_INFO,
+	.mode = DEFAULT_BATT_MODE,
+	.design_mv = 5000,
+	.design_cap = 5000,
+	.temp = 2930,
+	.volt = 5000,
+	.cur = 1000,
+	.avg_cur = 1000,
+	.max_error = 0,
+	.cap = 2000,
+	.full_cap = 4000,
+	.default_full_cap = 4000,
+	.desired_charg_cur = 2000,
+	.desired_charg_volt = 7000,
+	.cycle_count = 125,
+	.sn = 7,
+	.mf_name = "zephyr",
+	.mf_name_len = sizeof("zephyr") - 1,
+	.dev_name = "smartbat",
+	.dev_name_len = sizeof("smartbat") - 1,
+	.dev_chem = "LION",
+	.dev_name_len = sizeof("LION") - 1,
+	.mf_info = "LION",
+	.mf_info_len = sizeof("LION") - 1,
+	.mf_date = 0,
+	.cap_alarm = 0,
+	.time_alarm = 0,
+	.at_rate = 0,
+	.status = STATUS_INITIALIZED,
+	.error_code = STATUS_CODE_OK,
+};
+
 /** Check description in emul_smart_battery.h */
 struct sbat_emul_bat_data *sbat_emul_get_bat_data(const struct emul *emul)
 {
@@ -792,81 +849,28 @@ static int sbat_emul_init(const struct emul *emul, const struct device *parent)
 	data->common.i2c = parent;
 	data->common.cfg = cfg;
 
+	memcpy(&data->bat, &default_dynamic_battery_data,
+	       sizeof(default_dynamic_battery_data));
+
 	i2c_common_emul_init(&data->common);
 
 	return 0;
 }
 
-#define SMART_BATTERY_VALIDATE_STRING_PROPS_SIZE(n)                            \
-	BUILD_ASSERT(sizeof(DT_INST_PROP(n, dev_chem)) - 1 <= MAX_BLOCK_SIZE); \
-	BUILD_ASSERT(sizeof(DT_INST_PROP(n, mf_data)) - 1 <= MAX_BLOCK_SIZE);  \
-	BUILD_ASSERT(sizeof(DT_INST_PROP(n, mf_info)) - 1 <= MAX_BLOCK_SIZE);  \
-	BUILD_ASSERT(sizeof(DT_INST_PROP(n, mf_name)) - 1 <= MAX_BLOCK_SIZE);
+#define SMART_BATTERY_VALIDATE_STRING_PROPS_SIZE(n)                       \
+	BUILD_ASSERT(sizeof(default_dynamic_battery_data.dev_chem) - 1 <= \
+		     MAX_BLOCK_SIZE);                                     \
+	BUILD_ASSERT(sizeof(default_dynamic_battery_data.mf_data) - 1 <=  \
+		     MAX_BLOCK_SIZE);                                     \
+	BUILD_ASSERT(sizeof(default_dynamic_battery_data.mf_info) - 1 <=  \
+		     MAX_BLOCK_SIZE);                                     \
+	BUILD_ASSERT(sizeof(default_dynamic_battery_data.mf_name) - 1 <=  \
+		     MAX_BLOCK_SIZE);
 
 DT_INST_FOREACH_STATUS_OKAY(SMART_BATTERY_VALIDATE_STRING_PROPS_SIZE)
 
 #define SMART_BATTERY_EMUL(n)                                         \
 	static struct sbat_emul_data sbat_emul_data_##n = {		\
-		.bat = {						\
-			.mf_access = DT_INST_PROP(n, mf_access),	\
-			.at_rate_full_mw_support = DT_INST_PROP(n,	\
-					at_rate_full_mw_support),	\
-			.spec_info = ((DT_STRING_TOKEN(DT_DRV_INST(n),	\
-						       version) <<	\
-				       BATTERY_SPEC_VERSION_SHIFT) &	\
-				      BATTERY_SPEC_VERSION_MASK) |	\
-				     ((DT_INST_PROP(n, vscale) <<	\
-				       BATTERY_SPEC_VSCALE_SHIFT) &	\
-				      BATTERY_SPEC_VSCALE_MASK) |	\
-				     ((DT_INST_PROP(n, ipscale) <<	\
-				       BATTERY_SPEC_IPSCALE_SHIFT) &	\
-				      BATTERY_SPEC_IPSCALE_MASK) |	\
-				     BATTERY_SPEC_REVISION_1,		\
-			.mode = (DT_INST_PROP(n,			\
-					      int_charge_controller) *	\
-				 MODE_INTERNAL_CHARGE_CONTROLLER) |	\
-				(DT_INST_PROP(n, primary_battery) *	\
-				 MODE_PRIMARY_BATTERY_SUPPORT),		\
-			.design_mv = DT_INST_PROP(n, design_mv),	\
-			.default_design_mv = DT_INST_PROP(n, design_mv),\
-			.design_cap = DT_INST_PROP(n, design_cap),	\
-			.temp = DT_INST_PROP(n, temperature),		\
-			.volt = DT_INST_PROP(n, volt),			\
-			.cur = DT_INST_PROP(n, cur),			\
-			.avg_cur = DT_INST_PROP(n, avg_cur),		\
-			.max_error = DT_INST_PROP(n, max_error),	\
-			.cap = DT_INST_PROP(n, cap),			\
-			.default_cap = DT_INST_PROP(n, cap),		\
-			.full_cap = DT_INST_PROP(n, full_cap),		\
-			.default_full_cap = DT_INST_PROP(n, full_cap),	\
-			.desired_charg_cur = DT_INST_PROP(n,		\
-						desired_charg_cur),	\
-			.desired_charg_volt = DT_INST_PROP(n,		\
-						desired_charg_volt),	\
-			.cycle_count = DT_INST_PROP(n, cycle_count),	\
-			.sn = DT_INST_PROP(n, serial_number),		\
-			.mf_name = DT_INST_PROP(n, mf_name),		\
-			.mf_name_len = sizeof(				\
-					DT_INST_PROP(n, mf_name)) - 1,	\
-			.mf_data = DT_INST_PROP(n, mf_data),		\
-			.mf_data_len = sizeof(				\
-					DT_INST_PROP(n, mf_data)) - 1,	\
-			.dev_name = DT_INST_PROP(n, dev_name),		\
-			.dev_name_len = sizeof(				\
-					DT_INST_PROP(n, dev_name)) - 1,	\
-			.dev_chem = DT_INST_PROP(n, dev_chem),		\
-			.dev_chem_len = sizeof(				\
-					DT_INST_PROP(n, dev_chem)) - 1,	\
-			.mf_info = DT_INST_PROP(n, mf_info),		\
-			.mf_info_len = sizeof(				\
-					DT_INST_PROP(n, mf_info)) - 1,	\
-			.mf_date = 0,					\
-			.cap_alarm = 0,					\
-			.time_alarm = 0,				\
-			.at_rate = 0,					\
-			.status = STATUS_INITIALIZED,			\
-			.error_code = STATUS_CODE_OK,			\
-		},							\
 		.cur_cmd = SBAT_EMUL_NO_CMD,				\
 		.common = {						\
 			.start_write = NULL,				\
