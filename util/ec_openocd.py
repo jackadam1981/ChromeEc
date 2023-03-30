@@ -3,6 +3,9 @@
 # Copyright 2022 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
+"""
+Flashes and debugs the EC through openocd
+"""
 
 import argparse
 import dataclasses
@@ -15,10 +18,6 @@ import subprocess
 import sys
 import time
 
-
-"""
-Flashes and debugs the EC through openocd
-"""
 
 EC_BASE = pathlib.Path(__file__).parent.parent
 
@@ -190,6 +189,7 @@ def get_executable_file(board):
 
 
 def main():
+    """Main function."""
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--board",
@@ -229,8 +229,8 @@ def main():
 
     debug_parser = sub_parsers.add_parser(
         "debug",
-        help="Debugs the target EC through GDB, \
-        FILE selects the executable to load debug info from, defaults to using the zephyr RO executable",
+        help="Debugs the target EC through GDB, FILE selects the executable to \
+              load debug info from, defaults to using the zephyr RO executable",
     )
     debug_parser.set_defaults(command="debug")
     debug_parser.add_argument(
@@ -256,18 +256,18 @@ def main():
     args = parser.parse_args()
     # Get the image path if we were given one
     target_file = None
-    if args.file != None:
+    if args.file is not None:
         target_file = args.file.resolve()
 
     if args.command == "flash":
         image_file = (
-            get_flash_file(args.board) if target_file == None else target_file
+            get_flash_file(args.board) if target_file is None else target_file
         )
         flash(args.interface, args.board, image_file, args.verify)
     elif args.command == "debug":
         executable_file = (
             get_executable_file(args.board)
-            if target_file == None
+            if target_file is None
             else target_file
         )
         if args.external_gdbserver:
