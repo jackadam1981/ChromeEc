@@ -52,6 +52,11 @@
 			io-channels = <&adc0 1>;
 		};
 	};
+
+	ap-power {
+		compatible = "ap-pwrseq-sub-states";
+		chipset = "AP_POWER_STATE_S0IX";
+	};
 };
 
 /* charger */
