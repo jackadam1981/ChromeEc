@@ -3,6 +3,9 @@
 # Copyright 2022 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
+"""
+Flashes and debugs the EC through openocd
+"""
 
 import argparse
 import dataclasses
@@ -15,10 +18,6 @@ import subprocess
 import sys
 import time
 
-
-"""
-Flashes and debugs the EC through openocd
-"""
 
 EC_BASE = pathlib.Path(__file__).parent.parent
 
@@ -229,8 +228,8 @@ def main():
 
     debug_parser = sub_parsers.add_parser(
         "debug",
-        help="Debugs the target EC through GDB, \
-        FILE selects the executable to load debug info from, defaults to using the zephyr RO executable",
+        help="Debugs the target EC through GDB, FILE selects the executable to \
+              load debug info from, defaults to using the zephyr RO executable",
     )
     debug_parser.set_defaults(command="debug")
     debug_parser.add_argument(
