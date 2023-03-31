@@ -118,6 +118,30 @@
       },
       "revId": "73aab4bb2eb443f4cdbc9b2088505b80289fbfc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d65c04_ae00b942",
+        "filename": "chip/host/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-31T07:34:07Z",
+      "side": 1,
+      "message": "After consulting with @phoenixshen, we think adding `test_mockable` to all the versions of `clock_enable_module` is not a good idea.",
+      "parentUuid": "1c9ea4f8_dea88d80",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "73aab4bb2eb443f4cdbc9b2088505b80289fbfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
