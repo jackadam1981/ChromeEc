@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8fee45d_059375a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-03-31T20:48:41Z",
+      "side": 1,
+      "message": "The commit message implies that the changes are made directly in the DTSI. Maybe update it to say that the change is in the spreadsheet, which is exported as CSV, and then processed into DTSI.",
+      "parentUuid": "24ad00e3_f19e8116",
+      "range": {
+        "startLine": 9,
+        "startChar": 35,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "8054ab7589979763a1faef25a8e478476967818a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a298d083_97dccb0a",
         "filename": "zephyr/program/myst/generated.dtsi",
         "patchSetId": 1
