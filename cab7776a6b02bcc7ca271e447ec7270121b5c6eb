@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40906cd6_c8cd59c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-31T16:23:32Z",
+      "side": 1,
+      "message": "The tricky portion of this is that DEDICATED_CHARGE_PORT only exists in boards which use BJ\u0027s.... so the helper is slightly less nice looking than yours",
+      "parentUuid": "f6a2d0e5_29838833",
+      "revId": "cab7776a6b02bcc7ca271e447ec7270121b5c6eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62d51f84_e0fbacb5",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-03-31T15:58:43Z",
       "side": 1,
       "message": "Nit, use the same help text as the Kconfig.\n\n  Select this option if the charger will be used in a bypass mode in\n  order to pass the input current from AC directly to the system\n  power rail for efficiency.",
+      "range": {
+        "startLine": 1316,
+        "startChar": 0,
+        "endLine": 1316,
+        "endChar": 57
+      },
+      "revId": "cab7776a6b02bcc7ca271e447ec7270121b5c6eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84863922_025769e6",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1316,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-31T16:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62d51f84_e0fbacb5",
       "range": {
         "startLine": 1316,
         "startChar": 0,
