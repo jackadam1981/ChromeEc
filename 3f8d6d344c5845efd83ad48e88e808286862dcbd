@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad12fbf1_d4724ed4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-31T17:58:20Z",
+      "side": 1,
+      "message": "I\u0027ll hold off on submitting until Daisuke gets a chance to take a look.\n\nAlso, FYI for Daisuke, I almost have an ISL9241 emulator committed which should make it easier if you want to add unit tests for its bypass mode in the future",
+      "revId": "3f8d6d344c5845efd83ad48e88e808286862dcbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "928bd628_f47e4e76",
