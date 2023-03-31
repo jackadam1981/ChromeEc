@@ -22,6 +22,7 @@
 #include "usb_pd.h"
 #include "usb_pd_dp_hpd_gpio.h"
 #include "usb_pd_tcpm.h"
+#include "watchdog.h"
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -623,6 +624,15 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	if (port == USB_PD_PORT_TCPC_MST)
 		baseboard_mst_enable_control(port, lvl);
 #endif
+
+	/*
+	 * b:273208597: There are some peripheral display docks will
+	 * issue HPDs In the short time. TCPM must wake up pd_task
+	 * continually to service the events. They may cause the
+	 * watchdog to reset. This patch placates watchdog after
+	 * receiving dp_attention.
+	 */
+	watchdog_reload();
 
 	/* ack */
 	return 1;
