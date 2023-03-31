@@ -1313,6 +1313,9 @@
  */
 #undef CONFIG_BATTERY_MAX_IMBALANCE_MV
 
+/* Set this option to use the bypass mode of a charger */
+#undef CONFIG_CHARGER_BYPASS_MODE
+
 /* Set this option when using a Narrow VDC (NVDC) charger, such as ISL9237/8. */
 #undef CONFIG_CHARGER_NARROW_VDC
 
