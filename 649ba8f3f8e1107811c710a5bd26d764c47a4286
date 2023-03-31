@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c87c7b2_778441aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-03-31T21:12:01Z",
+      "side": 1,
+      "message": "Hmm I have to say that I don\u0027t really understand this. But the Python looks OK so if it works, great!\n\nI wonder if the creation of a Kconfig file in platform/ec was the thing that changed here? Before that perhaps it did find the one in third_party/zephyr/main/ ?",
+      "revId": "649ba8f3f8e1107811c710a5bd26d764c47a4286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
