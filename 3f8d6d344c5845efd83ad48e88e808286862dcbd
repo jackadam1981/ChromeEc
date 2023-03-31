@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "928bd628_f47e4e76",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-31T16:38:10Z",
+      "side": 1,
+      "message": "Nit - reflow this to skip all the bypass stuff if there are no dedicated charge ports.\n\n```\n#if (CONFIG_DEDICATED_CHARGE_PORT_COUNT \u003d\u003d 0)\n    return;\n#endif\n\n    if (charge_manager_get_active_charge_port() \u003d\u003d DEDICATED_CHARGE_PORT)\n        should_bypass \u003d true;\n```",
+      "range": {
+        "startLine": 960,
+        "startChar": 0,
+        "endLine": 964,
+        "endChar": 0
+      },
+      "revId": "3f8d6d344c5845efd83ad48e88e808286862dcbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
