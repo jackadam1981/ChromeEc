@@ -11,6 +11,9 @@
 #include "util.h"
 
 #include <zephyr/device.h>
+#include <zephyr/devicetree/gpio.h>
+#include <zephyr/drivers/emul.h>
+#include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
 
@@ -26,6 +29,7 @@ LOG_MODULE_REGISTER(emul_nx20p348x);
 
 struct nx20p348x_emul_data {
 	struct i2c_common_emul_data common;
+	//struct gpio_dt_spec irq_gpio;
 	uint8_t regs[NX20P348X_MAX_REG + 1];
 };
 
@@ -42,6 +46,19 @@ struct nx20p348x_reg_default nx20p348x_defaults[] = {
 	{ .offset = NX20P348X_5V_SRC_OCP_THRESHOLD_REG, .val = 0x0B },
 };
 
+static void nx20p348x_emul_interrupt_set(const struct emul *emul, int val)
+{
+	struct nx20p348x_emul_data *data =
+		(struct nx20p348x_emul_data *)emul->data;
+
+	printf("I'm setting the interrupt!");
+#if 0
+	int res = gpio_emul_input_set(data->irq_gpio.port, data->irq_gpio.pin,
+				      val);
+	__ASSERT_NO_MSG(res == 0);
+#endif
+}
+
 void nx20p348x_emul_reset_regs(const struct emul *emul)
 {
 	struct nx20p348x_emul_data *data =
@@ -54,6 +71,7 @@ void nx20p348x_emul_reset_regs(const struct emul *emul)
 
 		data->regs[def.offset] = def.val;
 	}
+	nx20p348x_emul_interrupt_set(emul, 0);
 }
 
 uint8_t nx20p348x_emul_peek(const struct emul *emul, int reg)
@@ -64,6 +82,16 @@ uint8_t nx20p348x_emul_peek(const struct emul *emul, int reg)
 		(struct nx20p348x_emul_data *)emul->data;
 
 	return data->regs[reg];
+}
+
+void nx20p348x_emul_set_interrupt1(const struct emul *emul, uint8_t val)
+{
+	struct nx20p348x_emul_data *data =
+		(struct nx20p348x_emul_data *)emul->data;
+
+	data->regs[NX20P348X_INTERRUPT1_REG] = val;
+
+	nx20p348x_emul_interrupt_set(emul, 1);
 }
 
 static int nx20p348x_emul_read(const struct emul *emul, int reg, uint8_t *val,
@@ -79,6 +107,15 @@ static int nx20p348x_emul_read(const struct emul *emul, int reg, uint8_t *val,
 		return -EINVAL;
 
 	*val = data->regs[reg];
+
+	/* Interrupt registers are clear on read and de-assert when serviced */
+	if (reg == NX20P348X_INTERRUPT1_REG || reg == NX20P348X_INTERRUPT2_REG) {
+		data->regs[reg] = 0;
+
+		if (data->regs[NX20P348X_INTERRUPT1_REG] == 0 &&
+		    data->regs[NX20P348X_INTERRUPT2_REG] == 0)
+			nx20p348x_emul_interrupt_set(emul, 0);
+	}
 
 	return 0;
 }
@@ -107,6 +144,7 @@ static int nx20p348x_emul_init(const struct emul *emul,
 		(struct nx20p348x_emul_data *)emul->data;
 	struct i2c_common_emul_data *common_data = &data->common;
 
+	printf("INIT O'CLOCK");
 	i2c_common_emul_init(common_data);
 	i2c_common_emul_set_read_func(common_data, nx20p348x_emul_read, NULL);
 	i2c_common_emul_set_write_func(common_data, nx20p348x_emul_write, NULL);
