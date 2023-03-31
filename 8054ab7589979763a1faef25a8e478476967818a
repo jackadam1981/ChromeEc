@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24ad00e3_f19e8116",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-31T20:24:37Z",
+      "side": 1,
+      "message": "Both are generated from go/myst-gpios. I\u0027m actually not convinced there is any point to keep the csv in git. I included it because other projects have it. What do you think, is there any value in keeping the csv file?",
+      "parentUuid": "dd573936_dda12e0d",
+      "range": {
+        "startLine": 9,
+        "startChar": 35,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "8054ab7589979763a1faef25a8e478476967818a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a298d083_97dccb0a",
         "filename": "zephyr/program/myst/generated.dtsi",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2023-03-31T19:05:41Z",
       "side": 1,
       "message": "What\u0027s the general rule for editing these things?  Should we have a file that includes this file overriding the GPIO flags?",
+      "revId": "8054ab7589979763a1faef25a8e478476967818a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa29993_6826087d",
+        "filename": "zephyr/program/myst/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-03-31T20:24:37Z",
+      "side": 1,
+      "message": "I suggest using column M in go/myst-gpios",
+      "parentUuid": "a298d083_97dccb0a",
       "revId": "8054ab7589979763a1faef25a8e478476967818a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
