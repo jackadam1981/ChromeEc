@@ -21,11 +21,32 @@
 	};
 
 	batteries {
-		default_battery: lgc {
-			compatible = "lgc,ap18c8k", "battery-smart";
+		default_battery: byd_1vx1hymd {
+			compatible = "byd,1vx1hymd", "battery-smart";
 		};
-		lgc_ap19b8m {
-			compatible = "lgc,ap19b8m", "battery-smart";
+		byd_x0y5mymd {
+			compatible = "byd,x0y5mymd", "battery-smart";
+		};
+		lgc_fdrhmymd {
+			compatible = "lgc,fdrhmymd", "battery-smart";
+		};
+		sunwoda_wjpc4ymd {
+			compatible = "sunwoda,wjpc4ymd", "battery-smart";
+		};
+		sunwoda_cos3wjpc4ymd {
+			compatible = "sunwoda,cos3wjpc4ymd", "battery-smart";
+		};
+		smp_atlvm732ymd {
+			compatible = "smp,atlvm732ymd", "battery-smart";
+		};
+		smp_atlrf9h3ymd {
+			compatible = "smp,atlrf9h3ymd", "battery-smart";
+		};
+		smp_cosvm732ymd {
+			compatible = "smp,cosvm732ymd", "battery-smart";
+		};
+		smp_cosrf9h3ymd {
+			compatible = "smp,cosrf9h3ymd", "battery-smart";
 		};
 	};
 
