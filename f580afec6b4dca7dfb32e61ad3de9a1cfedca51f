@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec21fa6_4dc3a36c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-31T20:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a6496eb_3bf1cec2",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "f580afec6b4dca7dfb32e61ad3de9a1cfedca51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "894bee54_3a37e207",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b798c33_4f09eae3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5000,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-31T20:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "894bee54_3a37e207",
+      "range": {
+        "startLine": 5000,
+        "startChar": 47,
+        "endLine": 5000,
+        "endChar": 57
+      },
+      "revId": "f580afec6b4dca7dfb32e61ad3de9a1cfedca51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79054d54_09448985",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-31T17:30:49Z",
       "side": 1,
       "message": "Obsolete",
+      "range": {
+        "startLine": 5005,
+        "startChar": 33,
+        "endLine": 5005,
+        "endChar": 43
+      },
+      "revId": "f580afec6b4dca7dfb32e61ad3de9a1cfedca51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7170d852_8df03eee",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5005,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-03-31T20:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79054d54_09448985",
       "range": {
         "startLine": 5005,
         "startChar": 33,
