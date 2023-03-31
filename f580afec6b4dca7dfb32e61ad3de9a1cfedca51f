@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6496eb_3bf1cec2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-31T17:30:49Z",
+      "side": 1,
+      "message": "Nit: use \"CL:xxxx\" to get a clickable link.",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "f580afec6b4dca7dfb32e61ad3de9a1cfedca51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "894bee54_3a37e207",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5000,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-31T17:30:49Z",
+      "side": 1,
+      "message": "Obsolete - the command is no longer supported and can\u0027t be used.",
+      "range": {
+        "startLine": 5000,
+        "startChar": 47,
+        "endLine": 5000,
+        "endChar": 57
+      },
+      "revId": "f580afec6b4dca7dfb32e61ad3de9a1cfedca51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79054d54_09448985",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5005,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-31T17:30:49Z",
+      "side": 1,
+      "message": "Obsolete",
+      "range": {
+        "startLine": 5005,
+        "startChar": 33,
+        "endLine": 5005,
+        "endChar": 43
+      },
+      "revId": "f580afec6b4dca7dfb32e61ad3de9a1cfedca51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
