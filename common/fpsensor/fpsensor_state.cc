@@ -9,7 +9,6 @@
 extern "C" {
 #include "atomic.h"
 #include "common.h"
-#include "cryptoc/util.h"
 #include "ec_commands.h"
 #include "host_command.h"
 #include "system.h"
@@ -20,6 +19,7 @@ extern "C" {
 #include "fpsensor.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_state.h"
+#include "openssl/mem.h"
 
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
 uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE] FP_FRAME_SECTION __aligned(4);
@@ -71,9 +71,9 @@ void fp_task_simulate(void)
 
 void fp_clear_finger_context(int idx)
 {
-	always_memset(fp_template[idx], 0, sizeof(fp_template[0]));
-	always_memset(fp_positive_match_salt[idx], 0,
-		      sizeof(fp_positive_match_salt[0]));
+	OPENSSL_cleanse(fp_template[idx], sizeof(fp_template[0]));
+	OPENSSL_cleanse(fp_positive_match_salt[idx],
+			sizeof(fp_positive_match_salt[0]));
 }
 
 /**
@@ -87,9 +87,9 @@ static void _fp_clear_context(void)
 
 	templ_valid = 0;
 	templ_dirty = 0;
-	always_memset(fp_buffer, 0, sizeof(fp_buffer));
-	always_memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
-	always_memset(user_id, 0, sizeof(user_id));
+	OPENSSL_cleanse(fp_buffer, sizeof(fp_buffer));
+	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
+	OPENSSL_cleanse(user_id, sizeof(user_id));
 	fp_disable_positive_match_secret(&positive_match_secret_state);
 	for (idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
 		fp_clear_finger_context(idx);
