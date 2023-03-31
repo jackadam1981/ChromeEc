@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd573936_dda12e0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-03-31T19:18:30Z",
+      "side": 1,
+      "message": "GPIO_ACTIVE_LOW flag in the dtsi, or INPUT_L in the csv?",
+      "range": {
+        "startLine": 9,
+        "startChar": 35,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "8054ab7589979763a1faef25a8e478476967818a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a298d083_97dccb0a",
         "filename": "zephyr/program/myst/generated.dtsi",
         "patchSetId": 1
