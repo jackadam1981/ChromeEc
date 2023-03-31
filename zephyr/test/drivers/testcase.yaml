@@ -217,6 +217,12 @@ tests:
     tags:
       common
       mkbp
+  drivers.nx20p348x:
+    extra_dtc_overlay_files:
+      - ./boards/native_posix.overlay
+      - ./nx20p348x/usbc.dts
+    extra_configs:
+      - CONFIG_LINK_TEST_SUITE_NX20P348X=y
   drivers.panic_output:
     extra_configs:
       - CONFIG_LINK_TEST_SUITE_PANIC_OUTPUT=y
