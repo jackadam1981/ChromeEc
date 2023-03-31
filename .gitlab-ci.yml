@@ -23,6 +23,7 @@ workflow:
 #    |   |_ hal_stm32/
 #    |   |_ nanopb/
 #    |   |_ cryptoc/
+#    |   |_ boringssl/
 #    |_ zephyr/
 #        |_ main/         - Zephyr repo (${ZEPHYR_BASE})
 #
@@ -73,6 +74,7 @@ before_script:
   - checkout_at_date "https://chromium.googlesource.com/chromiumos/third_party/zephyr/hal_stm32" "chromeos-main" "${MODULES_DIR}/hal_stm32" "${ec_commit_date}"
   - checkout_at_date "https://chromium.googlesource.com/chromiumos/third_party/zephyr/nanopb" "main" "${MODULES_DIR}/nanopb" "${ec_commit_date}"
   - checkout_at_date "https://chromium.googlesource.com/chromiumos/third_party/cryptoc" "main" "${MODULES_DIR}/cryptoc" "${ec_commit_date}"
+  - checkout_at_date "https://chromium.googlesource.com/external/gob/boringssl/boringssl" "e0d601a57fde7d67a1c771e7d87468faf1f8fe55" "${MODULES_DIR}/boringssl" "${ec_commit_date}"
   # Add a symlink so the ec appears in modules directory (hack to make zmake work)
   - ln -s "${EC_DIR}" "${MODULES_DIR}/ec"
   # Install Python and packages
@@ -327,7 +329,8 @@ ec_coverage:
   needs: []
   script:
     - cd ${EC_DIR}
-    - make -j$(nproc) CRYPTOC_DIR="${MODULES_DIR}/cryptoc"
+    - make -j$(nproc) BORINGSSL_DIR="${MODULES_DIR}/boringssl"
+      CRYPTOC_DIR="${MODULES_DIR}/cryptoc"
       CROSS_COMPILE_arm=/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-
       CROSS_COMPILE_host=/usr/bin/
       test-coverage
