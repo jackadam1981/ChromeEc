@@ -46,6 +46,30 @@
       },
       "revId": "3f8d6d344c5845efd83ad48e88e808286862dcbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1e07820_706f5b7e",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-31T16:47:07Z",
+      "side": 1,
+      "message": "Ack - I withdraw the change request.",
+      "parentUuid": "dbfeabe5_5ff53444",
+      "range": {
+        "startLine": 960,
+        "startChar": 0,
+        "endLine": 964,
+        "endChar": 0
+      },
+      "revId": "3f8d6d344c5845efd83ad48e88e808286862dcbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
