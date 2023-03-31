@@ -204,11 +204,6 @@ static const struct charge_port_info bj_power = {
 /* Debounce time for BJ plug/unplug */
 #define BJ_DEBOUNCE_MS CONFIG_EXTPOWER_DEBOUNCE_MS
 
-int board_should_charger_bypass(void)
-{
-	return charge_manager_get_active_charge_port() == DEDICATED_CHARGE_PORT;
-}
-
 static void bj_connect(void)
 {
 	static int8_t bj_connected = -1;

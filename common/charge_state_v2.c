@@ -950,9 +950,21 @@ test_mockable int calc_is_full(void)
 	return ret;
 }
 
-__overridable int board_should_charger_bypass(void)
+static void charge_set_bypass_state(void)
 {
-	return false;
+	bool should_bypass = false;
+
+	if (!IS_ENABLED(CONFIG_CHARGER_BYPASS_MODE))
+		return;
+
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+	if (charge_manager_get_active_charge_port() == DEDICATED_CHARGE_PORT)
+		should_bypass = true;
+#endif
+
+	if ((should_bypass && !(curr.chg.status & CHARGER_BYPASS_MODE)) ||
+	    (!should_bypass && (curr.chg.status & CHARGER_BYPASS_MODE)))
+		charger_enable_bypass_mode(0, should_bypass);
 }
 
 /*
@@ -963,7 +975,6 @@ static int charge_request(int voltage, int current)
 {
 	int r1 = EC_SUCCESS, r2 = EC_SUCCESS, r3 = EC_SUCCESS, r4 = EC_SUCCESS;
 	static int prev_volt, prev_curr;
-	bool should_bypass;
 
 	if (!voltage || !current) {
 #ifdef CONFIG_CHARGER_NARROW_VDC
@@ -996,10 +1007,7 @@ static int charge_request(int voltage, int current)
 	 * thus not done here. Similarly, when bypass is disabled, transitioning
 	 * from nvdc + chrg will be done separately.
 	 */
-	should_bypass = board_should_charger_bypass();
-	if ((should_bypass && !(curr.chg.status & CHARGER_BYPASS_MODE)) ||
-	    (!should_bypass && (curr.chg.status & CHARGER_BYPASS_MODE)))
-		charger_enable_bypass_mode(0, should_bypass);
+	charge_set_bypass_state();
 
 	/*
 	 * Set current before voltage so that if we are just starting
