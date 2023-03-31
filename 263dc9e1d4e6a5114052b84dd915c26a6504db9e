@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9bf5df93_fb23ae18",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-31T15:19:16Z",
+      "side": 1,
+      "message": "Ok but is there anything that explain the sequence, meaning of magic numbers, the protocol etc...?",
+      "parentUuid": "746f4803_4277608f",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ba376bc_be968365",
         "filename": "util/mchp/crisis_rcvry_util.py",
         "patchSetId": 2
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "struct pack used to send the byte value so packed it rather than the ascii value to the uart module.",
       "parentUuid": "6ba376bc_be968365",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 26
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66a17629_19f1a15d",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-31T15:19:16Z",
+      "side": 1,
+      "message": "struct.pack is useful for packing data, stuff like going between byte boundaries, you are not using any of that so it\u0027s extra complexity for no gain, can you try using bytearray instead? See https://github.com/zephyrproject-rtos/zephyr/blob/main/soc/arm/microchip_mec/common/spigen/mec_spi_gen.py#L406, that\u0027s not using any struct.pack at all.",
+      "parentUuid": "bd112e84_8e45e233",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -783,6 +831,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27fd902d_4e93529b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-31T15:19:16Z",
+      "side": 1,
+      "message": "use `for _ in range(5):`",
+      "parentUuid": "2d0b5d4a_5d9a4604",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8874a4fb_27ad7859",
         "filename": "util/mchp/crisis_rcvry_util.py",
         "patchSetId": 2
@@ -1277,6 +1349,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "857f33db_bdd02096",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-31T15:19:16Z",
+      "side": 1,
+      "message": "What I meant was: how about not using a class at all?",
+      "parentUuid": "cf418010_affcf8f9",
+      "range": {
+        "startLine": 263,
+        "startChar": 46,
+        "endLine": 263,
+        "endChar": 68
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56747d34_6f4f947d",
         "filename": "util/mchp/crisis_rcvry_util.py",
         "patchSetId": 2
@@ -1688,6 +1784,30 @@
       "side": 1,
       "message": "Added as info itself",
       "parentUuid": "e12015c7_184dd159",
+      "range": {
+        "startLine": 414,
+        "startChar": 20,
+        "endLine": 414,
+        "endChar": 24
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38adfdf1_889064b6",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-31T15:19:16Z",
+      "side": 1,
+      "message": "Not sure what that means. Errors should be printed as either logging.error or logging.critical, since this is next to an exit statement it should be logging.critical.",
+      "parentUuid": "ccf1adae_fd786311",
       "range": {
         "startLine": 414,
         "startChar": 20,
@@ -2123,6 +2243,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee76f993_c8e46cd3",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-31T15:19:16Z",
+      "side": 1,
+      "message": "What I meant is that the flag long format is incorrect, `\"- seconday_loader spi_image\"` should be something like `\"--seconday-loader-spi-image\"`",
+      "parentUuid": "b98479f2_4a4b279b",
+      "range": {
+        "startLine": 498,
+        "startChar": 31,
+        "endLine": 498,
+        "endChar": 58
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7eba9de_b84ff4a7",
         "filename": "util/mchp/crisis_rcvry_util.py",
         "patchSetId": 2
@@ -2158,6 +2302,30 @@
       "side": 1,
       "message": "yes port path as /dev/pts/10 only and its not a number",
       "parentUuid": "f7eba9de_b84ff4a7",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 0
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54b41b7c_2166009e",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-31T15:19:16Z",
+      "side": 1,
+      "message": "Cool, change the description to match?",
+      "parentUuid": "cc1594e2_24a4f086",
       "range": {
         "startLine": 500,
         "startChar": 0,
@@ -2393,6 +2561,30 @@
       "side": 1,
       "message": "we have two function to pass the uart handle for the second loader image into SRAM and pass the uart handle to the ec image to update into the internal flash.\nkept the outside of the uart handle to close",
       "parentUuid": "1b430c3a_5a1a5c7d",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 23
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c87fa6c7_81d0703a",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-03-31T15:19:16Z",
+      "side": 1,
+      "message": "```\n$ ./util/mchp/crisis_rcvry_util.py \nINFO:root:crisis_rcvry_util.py utility  \nTraceback (most recent call last):\n  File \"/home/fabiobaltieri/chromiumos/src/platform/ec/./util/mchp/crisis_rcvry_util.py\", line 648, in \u003cmodule\u003e\n    main(sys.argv[1:])\n  File \"/home/fabiobaltieri/chromiumos/src/platform/ec/./util/mchp/crisis_rcvry_util.py\", line 644, in main\n    uart_handle.close()\nUnboundLocalError: local variable \u0027uart_handle\u0027 referenced before assignment\n```",
+      "parentUuid": "3c4b0b5f_90997131",
       "range": {
         "startLine": 551,
         "startChar": 0,
