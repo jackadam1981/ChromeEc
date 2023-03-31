@@ -16,6 +16,40 @@
       "message": "Good example of emulating an SMBus charger IC!",
       "revId": "2ac76cefb57991ddad35c606ed3864f3b42298db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522459bd_9b088ece",
+        "filename": "zephyr/emul/emul_isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-03-31T21:18:58Z",
+      "side": 1,
+      "message": "Do we have a policy on hex? I\u0027d prefer to use lower-case always",
+      "revId": "2ac76cefb57991ddad35c606ed3864f3b42298db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26b9b1f0_80d3efd7",
+        "filename": "zephyr/emul/emul_isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-03-31T21:18:58Z",
+      "side": 1,
+      "message": "It is common in my experience to use OFFSET for the bit offset and MASK for the shifted mask. So if we adopted that, we could drop the \u0027BIT_\u0027 at some point.",
+      "revId": "2ac76cefb57991ddad35c606ed3864f3b42298db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
