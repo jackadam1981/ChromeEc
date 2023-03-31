@@ -415,7 +415,7 @@ ZTEST(power_seq, test_power_chipset_init)
 	power_chipset_init_subtest(POWER_S0, true, EC_RESET_FLAG_HIBERNATE,
 				   POWER_S0, __LINE__);
 	power_chipset_init_subtest(POWER_G3, true, EC_RESET_FLAG_AP_IDLE,
-				   POWER_S0, __LINE__);
+				   POWER_G3, __LINE__);
 	power_chipset_init_subtest(POWER_S0, true, EC_RESET_FLAG_AP_IDLE,
 				   POWER_S0, __LINE__);
 
