@@ -94,6 +94,30 @@
       },
       "revId": "113ddcc415b0069b6920259f48c4664a8d5e1727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b17bc71_0d1d8e1f",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-03-31T07:11:26Z",
+      "side": 1,
+      "message": "Change it to:\n`if (\"${CC_NAME}\" STREQUAL gcc AND \"${CMAKE_SYSROOT} STREQUAL \"\")`",
+      "parentUuid": "1b996cd5_09d770ba",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "113ddcc415b0069b6920259f48c4664a8d5e1727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
