@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a2d0e5_29838833",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-31T15:58:43Z",
+      "side": 1,
+      "message": "With this config option, it looks like you can eliminate `board_should_charger_bypass()` and use common logic.\n\nAs a follow up CL, can you refactor the code [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/common/charge_state_v2.c;l\u003d999).\n\nIf probably makes sense to move all charger bypass logic into a separate function:\n```\nstatic void charger_set_bypass_state() \n{\n    if (!IS_ENABLED(CONFIG_CHARGER_BYPASS_MODE))\n        return;\n        \n    if (charge_manager_get_active_charge_port() \u003d\u003d DEDICATED_CHARGE_PORT)\n        should_bypass \u003d true;\n    if ((should_bypass \u0026\u0026 !(curr.chg.status \u0026 CHARGER_BYPASS_MODE)) ||\n\t    (!should_bypass \u0026\u0026 (curr.chg.status \u0026 CHARGER_BYPASS_MODE)))\n\tcharger_enable_bypass_mode(0, should_bypass);\n}\n```",
+      "revId": "cab7776a6b02bcc7ca271e447ec7270121b5c6eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d51f84_e0fbacb5",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1316,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-03-31T15:58:43Z",
+      "side": 1,
+      "message": "Nit, use the same help text as the Kconfig.\n\n  Select this option if the charger will be used in a bypass mode in\n  order to pass the input current from AC directly to the system\n  power rail for efficiency.",
+      "range": {
+        "startLine": 1316,
+        "startChar": 0,
+        "endLine": 1316,
+        "endChar": 57
+      },
+      "revId": "cab7776a6b02bcc7ca271e447ec7270121b5c6eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
