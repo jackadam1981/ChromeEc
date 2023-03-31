@@ -22,6 +22,30 @@
       },
       "revId": "3f8d6d344c5845efd83ad48e88e808286862dcbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbfeabe5_5ff53444",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-03-31T16:45:04Z",
+      "side": 1,
+      "message": "`DEDICATED_CHARGE_PORT` is only defined on boards which have dedicated charge ports, so that won\u0027t build on something like skyrim with how our defines currently work.  \n\nWe could try creating an invalid option for boards without BJ\u0027s to use, but that seems somewhat risky if we end up crossing paths with the invalid option for no charge port or similar",
+      "parentUuid": "928bd628_f47e4e76",
+      "range": {
+        "startLine": 960,
+        "startChar": 0,
+        "endLine": 964,
+        "endChar": 0
+      },
+      "revId": "3f8d6d344c5845efd83ad48e88e808286862dcbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
