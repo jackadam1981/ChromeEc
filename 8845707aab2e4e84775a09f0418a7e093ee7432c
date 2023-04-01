@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "779ee594_1edbfba2",
+        "filename": "zephyr/emul/emul_nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-01T01:44:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd77a47c_b1aafee2",
+      "revId": "8845707aab2e4e84775a09f0418a7e093ee7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96699c54_285912db",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f23e0c_275e48d4",
+        "filename": "zephyr/emul/emul_nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-01T01:44:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96699c54_285912db",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 17
+      },
+      "revId": "8845707aab2e4e84775a09f0418a7e093ee7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5abec281_44a430c4",
@@ -71,6 +113,30 @@
       "writtenOn": "2023-04-01T00:47:07Z",
       "side": 1,
       "message": "nit: parens around 1 line blocks",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 17
+      },
+      "revId": "8845707aab2e4e84775a09f0418a7e093ee7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f99fbda_2bad4585",
+        "filename": "zephyr/emul/emul_nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-01T01:44:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5abec281_44a430c4",
       "range": {
         "startLine": 92,
         "startChar": 1,
