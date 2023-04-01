@@ -22,6 +22,30 @@
       },
       "revId": "0b98462e14f4c0ec54ab3c74af49c4a5ef4fac25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b2a362_9c85e3ab",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-01T01:44:23Z",
+      "side": 1,
+      "message": "Ah, like in the Kconfig?  That\u0027s doable.  It looks like we have a fair mixture of config enable things we do for the tests (files vs. this yaml vs. in the Kconfig)",
+      "parentUuid": "fcb405ff_3f8e1e95",
+      "range": {
+        "startLine": 226,
+        "startChar": 8,
+        "endLine": 227,
+        "endChar": 47
+      },
+      "revId": "0b98462e14f4c0ec54ab3c74af49c4a5ef4fac25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
