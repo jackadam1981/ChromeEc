@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb405ff_3f8e1e95",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-04-01T00:49:44Z",
+      "side": 1,
+      "message": "nit: I generally find it easier to add these as `select` statements",
+      "range": {
+        "startLine": 226,
+        "startChar": 8,
+        "endLine": 227,
+        "endChar": 47
+      },
+      "revId": "0b98462e14f4c0ec54ab3c74af49c4a5ef4fac25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
