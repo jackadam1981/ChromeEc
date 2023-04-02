@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3898329_4485a104",
+        "filename": "zephyr/program/rex/src/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-04-02T01:44:43Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "16d237a8_38d01595",
+      "range": {
+        "startLine": 85,
+        "startChar": 7,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "da08360cb3aa9daf1b27402e501f9caab03b929d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50746792_f79c6841",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-29T02:24:09Z",
       "side": 1,
       "message": "same for Rex?",
+      "range": {
+        "startLine": 139,
+        "startChar": 39,
+        "endLine": 139,
+        "endChar": 44
+      },
+      "revId": "da08360cb3aa9daf1b27402e501f9caab03b929d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a88d4a47_22a3ebbc",
+        "filename": "zephyr/program/rex/src/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-04-02T01:44:43Z",
+      "side": 1,
+      "message": "Yes, same.",
+      "parentUuid": "50746792_f79c6841",
       "range": {
         "startLine": 139,
         "startChar": 39,
