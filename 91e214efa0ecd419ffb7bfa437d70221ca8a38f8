@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde6644a_4b0ead08",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-03T21:20:22Z",
+      "side": 1,
+      "message": "This function checks more than just include/config.h, correct?\nDid this find any problems with files besides `incldue/config.h`?",
+      "range": {
+        "startLine": 508,
+        "startChar": 21,
+        "endLine": 508,
+        "endChar": 38
+      },
+      "revId": "91e214efa0ecd419ffb7bfa437d70221ca8a38f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
