@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c023321_32fb8f3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-03T17:09:31Z",
+      "side": 1,
+      "message": "Enabling bypass mode only for BJ is Agah\u0027s project specific decision (based on its HW design). Other boards may enable it for PD chargers as well or may add extra complex logic (e.g. only in S0).\n\n(board_should_charger_bypass is meant for hosting such project specific logic. It\u0027s not meant as a workaround of a CONFIG_ macro.)\n\nSo, this CL makes sense now but in the future we may need to bring back the callback.\n\nSo, I need to post -1 (unless I\u0027m missing something).",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "3f8d6d344c5845efd83ad48e88e808286862dcbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ad12fbf1_d4724ed4",
