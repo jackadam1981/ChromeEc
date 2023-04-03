@@ -1,0 +1,17 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config BOARD_STARFISH_V1
+	bool "Google Starfish v1 board"
+	help
+	  Build The Starfish v1 SIM tester.
+	  Starfish v1 is a SIM Mux which can be controlled over a USB console.
+
+config DFU_BOOTLOADER
+	bool "Enable the DFU bootloader"
+	help
+	  Enable the DFU bootloader.
+	  Enables the DFU runtime interface and a jump to DFU mode.
+
+source "Kconfig.zephyr"

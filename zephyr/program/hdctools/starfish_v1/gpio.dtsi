@@ -1,0 +1,96 @@
+/* Copyright 2023 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	gpio {
+		led {
+			compatible = "gpio-keys";
+			label = "LED";
+			led_sim_slot {
+				label = "LED_SLOT";
+				gpios = <&gpiob 0 GPIO_ACTIVE_LOW>,
+						<&gpiob 1 GPIO_ACTIVE_LOW>,
+						<&gpiob 2 GPIO_ACTIVE_LOW>,
+						<&gpiob 3 GPIO_ACTIVE_LOW>,
+						<&gpiob 5 GPIO_ACTIVE_LOW>,
+						<&gpiob 9 GPIO_ACTIVE_LOW>,
+						<&gpiob 10 GPIO_ACTIVE_LOW>,
+						<&gpiob 15 GPIO_ACTIVE_LOW>;
+			};
+			led_mode {
+				label = "LED_MODE";
+				gpios = <&gpioc 12 GPIO_ACTIVE_LOW>,
+						<&gpioc 13 GPIO_ACTIVE_LOW>;
+			};
+		};
+		button {
+			compatible = "gpio-keys";
+			label = "BUTTON";
+			mode {
+				label = "BUTTON_MODE";
+				gpios = <&gpiob 11 (GPIO_ACTIVE_LOW)>;
+			};
+			next {
+				label = "BUTTON_NEXT";
+				gpios = <&gpiob 12 GPIO_ACTIVE_LOW>;
+			};
+			prev {
+				label = "BUTTON_PREV";
+				gpios = <&gpiob 13 GPIO_ACTIVE_LOW>;
+			};
+		};
+		sim {
+			compatible = "gpio-keys";
+			label = "SIM";
+			vcc_sim_host_sns {
+				label = "VCC_SIM_HOST_SNS";
+				gpios = <&gpioa 0 GPIO_ACTIVE_HIGH>;
+			};
+			sim_det_cntrl {
+				label = "SIM_DET_CNTRL";
+				gpios = <&gpioa 1 GPIO_ACTIVE_HIGH>;
+			};
+			chip_detect {
+				label = "SIM_CD";
+				gpios = <&gpioc 0 GPIO_ACTIVE_LOW>,
+						<&gpioc 1 GPIO_ACTIVE_LOW>,
+						<&gpioc 2 GPIO_ACTIVE_LOW>,
+						<&gpioc 3 GPIO_ACTIVE_LOW>,
+						<&gpioc 4 GPIO_ACTIVE_LOW>,
+						<&gpioc 5 GPIO_ACTIVE_LOW>,
+						<&gpioc 6 GPIO_ACTIVE_LOW>,
+						<&gpioc 7 GPIO_ACTIVE_LOW>;
+			};
+			/* Control the voltage shifter */
+			sim_host_en {
+				label = "SIM_HOST_EN";
+				gpios = <&gpioe 7 GPIO_ACTIVE_HIGH>;
+			};
+			sim_vcc_sel {
+				label = "SIM_VCC_SEL";
+				gpios = <&gpioe 9 GPIO_ACTIVE_HIGH>;
+			};
+			/* Control the ESIM Muxes */
+			sim_mux_clk_en {
+				label = "SIM_MUX_CLK_EN";
+				gpios = <&gpioe 10 GPIO_ACTIVE_HIGH>;
+			};
+			sim_mux_data_en {
+				label = "SIM_MUX_DATA_EN";
+				gpios = <&gpioe 11 GPIO_ACTIVE_HIGH>;
+			};
+			sim_mux_rst_en {
+				label = "SIM_MUX_RST_EN";
+				gpios = <&gpioe 12 GPIO_ACTIVE_HIGH>;
+			};
+			sim_mux_addr {
+				label = "SIM_MUX_ADDR";
+				gpios = <&gpioa 4 GPIO_ACTIVE_HIGH>,
+						<&gpioa 5 GPIO_ACTIVE_HIGH>,
+						<&gpioa 6 GPIO_ACTIVE_HIGH>;
+			};
+		};
+	};
+};
