@@ -1,0 +1,30 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	chosen {
+		zephyr,code-partition = &boot_partition;
+		zephyr,flash = &flash0;
+	};
+};
+
+&flash0 {
+
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		boot_partition: partition@0 {
+			label = "boot";
+			reg = <0x00000000 DT_SIZE_K(116)>;
+		};
+
+		storage_partition: partition@1d000 {
+			label = "storage";
+			reg = <0x0001d000 DT_SIZE_K(12)>;
+		};
+	};
+};
