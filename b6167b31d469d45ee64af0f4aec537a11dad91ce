@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fa70a90_3c331c7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-03T11:05:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ffc5779_dae724ae",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "b6167b31d469d45ee64af0f4aec537a11dad91ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24eb3b7d_c4fa9b19",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-30T17:11:47Z",
       "side": 1,
       "message": "board",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "b6167b31d469d45ee64af0f4aec537a11dad91ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "677114bf_e9bcf2b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-03T11:05:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24eb3b7d_c4fa9b19",
       "range": {
         "startLine": 9,
         "startChar": 21,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "068d9883_9a25aef3",
+        "filename": "zephyr/program/rex/usbc.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-03T11:05:55Z",
+      "side": 1,
+      "message": "I made this change by referencing USC C0 port config, it\u0027s using HB retimer, which seemed more relevent as current USB C1 port config has TCPCI mux.",
+      "parentUuid": "61fa9feb_ccc6edc9",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "b6167b31d469d45ee64af0f4aec537a11dad91ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f678c3bc_e7be0126",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-03-30T17:11:47Z",
       "side": 1,
       "message": "You should also verify that the expected TCPC, PPC, and muxes have been installed.  This test only verifies that the init code read the CBI data.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 58
+      },
+      "revId": "b6167b31d469d45ee64af0f4aec537a11dad91ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9afb986_145d402e",
+        "filename": "zephyr/test/rex/src/usb_mux_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-03T11:05:55Z",
+      "side": 1,
+      "message": "Actually it\u0027s calling the macros for mux, tcpc and ppc. Which are calling other macros, which seemed to not have straight forward way to test.",
+      "parentUuid": "f678c3bc_e7be0126",
       "range": {
         "startLine": 68,
         "startChar": 0,
