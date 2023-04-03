@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7d454a_8e4960d9",
+        "filename": "zephyr/emul/emul_anx7452.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-03T15:21:30Z",
+      "side": 1,
+      "message": "Why is this default chosen?  I don\u0027t see default settings for any registers documented.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 22
+      },
+      "revId": "537a8519cd836ed69624d9ff5a0a975d803b2fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
