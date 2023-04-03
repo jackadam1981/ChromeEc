@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d846c71_71e0515d",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-03T21:33:07Z",
+      "side": 1,
+      "message": "This will likely get out of sync with the version specified in the `repo` manifest. \n\nIt looks like we can put arbitrary scripts here. Can you add a function to get the correct revision?\n\nFor example,\n\n```\nrepo info external/gob/boringssl/boringssl | grep \u0027Manifest revision\u0027\n```\n\nNote that this will probably require you to add steps in this `yml` file to [set up `depot_tools`](https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html#_setting_up) and [clone the `manifest` repo](https://chromium.googlesource.com/chromiumos/manifest/).",
+      "range": {
+        "startLine": 77,
+        "startChar": 90,
+        "endLine": 77,
+        "endChar": 132
+      },
+      "revId": "ee360946d3eed7589e5cbefcf576c56dcd45dc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
