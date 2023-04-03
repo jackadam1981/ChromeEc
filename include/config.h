@@ -2789,7 +2789,6 @@
 #ifndef CONFIG_ZEPHYR
 /* Allow deferred (async) flash protect*/
 #define CONFIG_FLASH_PROTECT_DEFERRED
-
 /*
  * Enable I2C bitbang driver.
  *
