@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e7e8fb_cf0b2606",
+        "filename": "board/nucleo-dartmonkey/board.h",
+        "patchSetId": 56
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-03T21:16:35Z",
+      "side": 1,
+      "message": "nit: Since we don\u0027t have comments in the other `board.h` files, let\u0027s just leave it out here.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 48
+      },
+      "revId": "5125ec6d170da9ed9f3601bf40b896a1872056ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6727e0ea_efa068e1",
+        "filename": "third_party/boringssl/include/aes_gcm_helpers.h",
+        "patchSetId": 56
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-03T21:16:35Z",
+      "side": 1,
+      "message": "Now that we have proven that we can use the public boringssl APIs, can you create a followup CL to switch the AES code to use the public APIs rather than depend on the internal ones? That way we don\u0027t have to keep making changes like this when we update boringssl.",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 64
+      },
+      "revId": "5125ec6d170da9ed9f3601bf40b896a1872056ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
