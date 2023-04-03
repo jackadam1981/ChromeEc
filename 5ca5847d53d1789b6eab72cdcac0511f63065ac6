@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e39e25b_49bda20a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-04-03T09:45:07Z",
+      "side": 1,
+      "message": "I\u0027d suggest to paste here the exact command line used, just to make it easier to reproduce (this gets run sporadically, can never remember the syntax).",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "5ca5847d53d1789b6eab72cdcac0511f63065ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81dfaef0_36a38d37",
+        "filename": "zephyr/program/rex/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-04-03T09:45:07Z",
+      "side": 1,
+      "message": "This does not look quite right, seems like a net name? (there\u0027s EC_I2C_SENSOR_SCL_R and EC_I2C_SENSOR_SDA_R). I think https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/pinmap/pm/generate.go;l\u003d151 should be changed to trim this (what\u0027s the `_r` for?)",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 25
+      },
+      "revId": "5ca5847d53d1789b6eab72cdcac0511f63065ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
