@@ -27,8 +27,6 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 
-/* a flag for indicating the tasks are inited. */
-static bool tasks_inited;
 
 /* Baseboard */
 static void baseboard_init(void)
@@ -44,36 +42,8 @@ static void baseboard_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_PRE_DEFAULT);
 
-__override uint8_t board_get_usb_pd_port_count(void)
-{
-	/* This function returns the PORT_COUNT+1 when HDMI db is connected.
-	 * This is a trick to ensure the usb_mux_set being set properley.
-	 * HDMI display functions using the USB virtual mux to * communicate
-	 * with the DP bridge.
-	 */
-	if (corsola_get_db_type() == CORSOLA_DB_HDMI) {
-		if (tasks_inited) {
-			return CONFIG_USB_PD_PORT_MAX_COUNT;
-		} else {
-			return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
-		}
-	} else if (corsola_get_db_type() == CORSOLA_DB_NONE) {
-		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
-	}
-
-	return CONFIG_USB_PD_PORT_MAX_COUNT;
-}
-
-uint8_t board_get_adjusted_usb_pd_port_count(void)
-{
-	if (corsola_get_db_type() == CORSOLA_DB_TYPEC) {
-		return CONFIG_USB_PD_PORT_MAX_COUNT;
-	} else {
-		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
-	}
-}
-
 /* USB-A */
+#ifdef USB_PORT_COUNT
 void usb_a0_interrupt(enum gpio_signal signal)
 {
 	enum usb_charge_mode mode = gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
@@ -103,6 +73,7 @@ void usb_a0_interrupt(enum gpio_signal signal)
 		}
 	}
 }
+#endif
 
 __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 {
@@ -120,6 +91,39 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 	 * should already be set correctly in the PPC driver via the pd
 	 * state machine.
 	 */
+}
+
+#if (CONFIG_USB_PD_PORT_MAX_COUNT > 1)
+
+/* a flag for indicating the tasks are inited. */
+static bool tasks_inited;
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	/* This function returns the PORT_COUNT+1 when HDMI db is connected.
+	 * This is a trick to ensure the usb_mux_set being set properley.
+	 * HDMI display functions using the USB virtual mux to * communicate
+	 * with the DP bridge.
+	 */
+	if (corsola_get_db_type() == CORSOLA_DB_HDMI) {
+		if (tasks_inited) {
+			return CONFIG_USB_PD_PORT_MAX_COUNT;
+		} else {
+			return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
+		}
+	} else if (corsola_get_db_type() == CORSOLA_DB_NONE) {
+		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
+	}
+
+	return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
+
+uint8_t board_get_adjusted_usb_pd_port_count(void)
+{
+	if (corsola_get_db_type() == CORSOLA_DB_TYPEC) {
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+	} else {
+		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
+	}
 }
 
 /* HDMI/TYPE-C function shared subboard interrupt */
@@ -235,3 +239,9 @@ __override uint8_t get_dp_pin_mode(int port)
 
 	return pd_dfp_dp_get_pin_mode(port, dp_status[port]);
 }
+#else
+uint8_t board_get_adjusted_usb_pd_port_count(void)
+{
+	return board_get_usb_pd_port_count();
+}
+#endif

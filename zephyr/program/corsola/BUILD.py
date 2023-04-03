@@ -45,6 +45,8 @@ register_corsola_project(
 
 register_corsola_project("tentacruel")
 
+register_corsola_project("starmie")
+
 register_corsola_project("magikarp")
 
 register_corsola_project(

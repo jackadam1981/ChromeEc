@@ -21,6 +21,7 @@
 uint32_t dp_status[CONFIG_USB_PD_PORT_MAX_COUNT];
 #endif
 
+#if (CONFIG_USB_PD_PORT_MAX_COUNT > 1)
 static void corsola_db_config(enum corsola_db_type type)
 {
 	switch (type) {
@@ -208,3 +209,4 @@ void hdmi_hpd_interrupt(enum gpio_signal signal)
 
 	svdm_set_hpd_gpio(USBC_PORT_C1, hpd);
 }
+#endif
