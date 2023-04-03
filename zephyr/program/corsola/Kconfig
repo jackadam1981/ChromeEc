@@ -55,4 +55,9 @@ config VARIANT_CORSOLA_USBA
         depends on PLATFORM_EC_USBC
 	default y
 
+config BOARD_STARMIE
+	bool "Google STARMIE Board"
+	help
+	  Build Google STARMIE variant board. STARMIE is a variant of Krabby
+	  and has MediaTek MT8186 SoC with ITE it81202-bx EC
 source "Kconfig.zephyr"
