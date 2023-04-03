@@ -484,7 +484,7 @@ class Zmake:
                             else {}
                         ),
                         **(
-                            {"EXTRA_CFLAGS": "-save-temps=obj"}
+                            {"CONFIG_COMPILER_SAVE_TEMPS": "y"}
                             if save_temps
                             else {}
                         ),
