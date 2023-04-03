@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bae258a6_02edd351",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-03T17:18:14Z",
+      "side": 1,
+      "message": "I\u0027d argue it\u0027s easy enough to add board specific code back in, if and only if some custom logic is required by another platform.\n\nI\u0027m not a fan of the large set of `board_xxx()` routines. These are usually not documented well and are hard to discover.",
+      "parentUuid": "5c023321_32fb8f3d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "3f8d6d344c5845efd83ad48e88e808286862dcbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ad12fbf1_d4724ed4",
