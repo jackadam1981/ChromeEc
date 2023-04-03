@@ -46,6 +46,30 @@
       },
       "revId": "537a8519cd836ed69624d9ff5a0a975d803b2fc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10050342_4770f2a3",
+        "filename": "zephyr/emul/emul_anx7452.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-03T16:55:05Z",
+      "side": 1,
+      "message": "Do you know what the default value is on real hardware?  The emulator should match that setting.\n\nIf you want to verify that various modes get disabled following a mux_init(), your test should explicitly do that.  Something like:\n```\n    anx7452_usb_retimer_driver.set(USB_PD_MUX_USB4_ENABLED);\n    anx7452_usb_retimer_driver.init();\n    /* Verify mux init disables active modes */\n    anx7452_usb_retimer_driver.get(\u0026mux_state);\n    zassert_equal(mux_state, USB_PD_MUX_NONE);\n    \n```",
+      "parentUuid": "b5984575_f83f3b22",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 22
+      },
+      "revId": "537a8519cd836ed69624d9ff5a0a975d803b2fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
