@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26985272_c7ea4f9c",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-04-03T21:25:25Z",
+      "side": 0,
+      "message": "Checkpatch still does provide some helpful linting advice (as opposed to formatting, which is all clang-format has to do).  It is possible to disable certain checks in checkpatch, and I\u0027d like to see us investigating disabling all the formatting checks in checkpatch, and leaving only the linting checks before all-out disabling it.  wdyt?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 22
+      },
+      "revId": "33885596426b7f419709d81529f3e4d02f960ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
