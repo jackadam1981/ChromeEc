@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ac6d3c_5dc0c563",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-03T21:43:07Z",
+      "side": 1,
+      "message": "Can you add a comment that this is for the host unittests build?",
+      "range": {
+        "startLine": 15,
+        "startChar": 34,
+        "endLine": 15,
+        "endChar": 64
+      },
+      "revId": "da815716e9f9ada8010addbc24a44610fb34f205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "170822b9_7ff0561a",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-03T21:43:07Z",
+      "side": 1,
+      "message": "Rather than combining `-Os` and `-Oz` with this conditional, which now checks `CMAKE_SYSROOT`, let\u0027s either use something like [`check_c_compiler_flag`](https://cmake.org/cmake/help/latest/module/CheckCCompilerFlag.html). If that doesn\u0027t work, we should use a separate conditional:\n\n```\nif (\"${CC_NAME}\" STREQUAL gcc)\nadd_compile_options(-Os)\nelse()\nadd_compile_options(-Oz)\nendif()\n```",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "da815716e9f9ada8010addbc24a44610fb34f205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ccfcfef_72ac39d8",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 14
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-03T21:43:07Z",
+      "side": 1,
+      "message": "nit: don\u0027t need \"the\" here. Just \"Enable Link Time Optimization.\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "da815716e9f9ada8010addbc24a44610fb34f205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
