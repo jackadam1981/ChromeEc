@@ -22,6 +22,30 @@
       },
       "revId": "91e214efa0ecd419ffb7bfa437d70221ca8a38f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e6b4e7_11d0b8d9",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-04-03T23:31:35Z",
+      "side": 1,
+      "message": "I changed it to check lots of files, but only include/config.h had problems.  I forgot to update the pydoc here when I added the globs.",
+      "parentUuid": "bde6644a_4b0ead08",
+      "range": {
+        "startLine": 508,
+        "startChar": 21,
+        "endLine": 508,
+        "endChar": 38
+      },
+      "revId": "91e214efa0ecd419ffb7bfa437d70221ca8a38f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
