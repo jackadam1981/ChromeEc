@@ -34,6 +34,24 @@
       "parentUuid": "41616f6a_1e842a4a",
       "revId": "5b3535e38b27b88a960d190152045bf461d81875",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37fda2b6_6d6bbfba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-04-03T17:55:15Z",
+      "side": 1,
+      "message": "Ah, I see now. I would say dealer\u0027s choice. You could easily add a test that exercises the error paths by accessing invalid registers, but I think that\u0027s overkill. I\u0027m happy with a `LOW_COVERAGE_REASON\u003dEmulator edge cases not tested`",
+      "parentUuid": "c87843a2_ba26dbdf",
+      "revId": "5b3535e38b27b88a960d190152045bf461d81875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
