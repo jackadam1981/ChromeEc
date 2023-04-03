@@ -16,6 +16,24 @@
       "message": "Hmm I have to say that I don\u0027t really understand this. But the Python looks OK so if it works, great!\n\nI wonder if the creation of a Kconfig file in platform/ec was the thing that changed here? Before that perhaps it did find the one in third_party/zephyr/main/ ?",
       "revId": "649ba8f3f8e1107811c710a5bd26d764c47a4286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "861f7ff0_a597e917",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-04-03T16:36:20Z",
+      "side": 1,
+      "message": "It was incorrectly picking up references to symbols, not just the declaration of symbols, so it was getting most everything, but also getting a lot of stuff that it should not have been picking up as well.\n\nThis is just a stepping stone to my real goal. Now that we have an accurate list of CONFIG_ defines, I can start enforcing new things, like, don\u0027t #undef zephyr CONFIG_ symbols in platform/ec/include/config.h",
+      "parentUuid": "4c87c7b2_778441aa",
+      "revId": "649ba8f3f8e1107811c710a5bd26d764c47a4286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
