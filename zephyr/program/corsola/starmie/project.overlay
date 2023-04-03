@@ -1,0 +1,268 @@
+/* Copyright 2022 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Corsola program common DTS includes */
+
+#include "../common.dtsi"
+#include "../power_signal.dtsi"
+#include "../usba.dtsi"
+#include "../ite_adc.dtsi"
+#include "../ite_gpio.dtsi"
+#include "../ite_i2c.dtsi"
+#include "../ite_interrupts.dtsi"
+#include "../ite_led.dtsi"
+#include "../ite_usbc.dtsi"
+#include "../ite_shi.dtsi"
+#include <cros/thermistor/thermistor.dtsi>
+#include <dt-bindings/motionsense/utils.h>
+
+/ {
+	batteries {
+		default_battery: b300049{
+			compatible = "celxpert,b300049", "battery-smart";
+		};
+	};
+
+	gpio-interrupts{
+		int_base_imu: base_imu {
+			irq-pin = <&base_imu_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "bmi3xx_interrupt";
+		};
+
+		/delete-node/ lid_imu;
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+		/delete-node/ lid_accel_int_l;
+		/delete-node/ usb_c0_ppc_frsinfo;
+	};
+
+	unused-pins {
+		unused-gpios =
+		<&gpiob 2 GPIO_INPUT_PULL_DOWN>,
+		<&gpioe 0 GPIO_INPUT_PULL_DOWN>,
+		<&gpioe 1 GPIO_INPUT_PULL_DOWN>,
+		<&gpioe 7 GPIO_INPUT_PULL_DOWN>,
+		<&gpiof 0 GPIO_INPUT_PULL_DOWN>,
+		<&gpiog 0 GPIO_INPUT_PULL_DOWN>,
+		<&gpioj 1 GPIO_INPUT_PULL_DOWN>,
+		<&gpioj 3 GPIO_INPUT_PULL_DOWN>,
+		<&gpioj 4 GPIO_INPUT_PULL_DOWN>,
+		<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
+		<&gpioh 2 GPIO_INPUT_PULL_DOWN>,
+		<&gpioh 4 GPIO_INPUT_PULL_DOWN>,
+		<&gpiom 2 GPIO_INPUT_PULL_DOWN>;
+	};
+	
+	named-i2c-ports {
+		/delete-node/ i2c_usb_c1;
+	};
+	
+	aliases {
+		/*
+		 * motion sense's <>_INT_EVENT is handled
+		 * by alias. Using the alias, each driver creates
+		 * its own <>_INT_EVENT.
+		 */
+		bmi3xx-int = &alt_base_accel;
+	};
+
+	motionsense-mutex {
+		compatible = "cros-ec,motionsense-mutex";
+		base_mutex_bmi323: bmi323-mutex {
+		};
+	};
+
+	/* Rotation matrix used by drivers. */
+	motionsense-rotation-ref {
+		compatible = "cros-ec,motionsense-rotation-ref";
+		base_rot_ref_bmi: base-rotation-ref-bmi {
+			mat33 = <1 0 0
+				 0 1 0
+				 0 0 1>;
+		};
+	};
+
+	motionsense-sensor-data {
+		bmi323_data: bmi323-drv-data {
+			compatible = "cros-ec,drvdata-bmi3xx";
+			status = "okay";
+		};
+	};
+
+	motionsense-sensor {
+		alt_base_accel: alt-base-accel {
+			compatible = "cros-ec,bmi3xx-accel";
+			status = "okay";
+
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_LID";
+			mutex = <&base_mutex_bmi323>;
+			port = <&i2c_sensor>;
+			rot-standard-ref = <&base_rot_ref_bmi>;
+			default-range = <2>;
+			drv-data = <&bmi323_data>;
+			configs {
+				compatible =
+					"cros-ec,motionsense-sensor-config";
+				ec-s0 {
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+				ec-s3 {
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+			};
+		};
+
+		alt_base_gyro: alt-base-gyro {
+			compatible = "cros-ec,bmi3xx-gyro";
+			status = "okay";
+
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_LID";
+			mutex = <&base_mutex_bmi323>;
+			port = <&i2c_sensor>;
+			rot-standard-ref = <&base_rot_ref_bmi>;
+			drv-data = <&bmi323_data>;
+		};
+	};
+	
+	motionsense-sensor-info {
+		compatible = "cros-ec,motionsense-sensor-info";
+
+		/*
+		 * list of GPIO interrupts that have to
+		 * be enabled at initial stage
+		 */
+		sensor-irqs = <&int_base_imu>;
+	};
+
+	named-adc-channels {
+        adc_temp_sensor_1: adc-temp-sensor-1 {
+			enum-name = "ADC_TEMP_SENSOR_1";
+			io-channels = <&adc0 6>;
+		};
+		adc_temp_sensor_2: adc-temp-sensor-2 {
+			enum-name = "ADC_TEMP_SENSOR_2";
+			io-channels = <&adc0 7>;
+		};
+    };
+
+	temp_sensor_1_thermistor: sensor-1-thermistor {
+		compatible = "cros-ec,temp-sensor-thermistor";
+		thermistor = <&thermistor_3V3_100K_100K_4250B>;
+		adc = <&adc_temp_sensor_1>;
+	};
+
+	temp_sensor_2_thermistor: sensor-2-thermistor {
+		compatible = "cros-ec,temp-sensor-thermistor";
+		thermistor = <&thermistor_3V3_100K_100K_4250B>;
+		adc = <&adc_temp_sensor_2>;
+	};
+
+    named-temp-sensors {
+		compatible = "cros-ec,temp-sensors";
+		temp_sensor_1 {
+			sensor = <&temp_sensor_1_thermistor>;
+		};
+		temp_sensor_2 {
+			sensor = <&temp_sensor_2_thermistor>;
+		};
+	};
+};
+
+&pinctrl {
+	i2c3_clk_gpf2_sleep: i2c3_clk_gpf2_sleep {
+		pinmuxs = <&pinctrlf 2 IT8XXX2_ALT_DEFAULT>;
+	};
+	i2c3_data_gpf3_sleep: i2c3_data_gpf3_sleep {
+		pinmuxs = <&pinctrlf 3 IT8XXX2_ALT_DEFAULT>;
+	};
+};
+
+&i2c0 {
+	/* EC_I2C_PWR_CBI */
+	label = "I2C_PWR_CBI";
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	pinctrl-0 = <&i2c0_clk_gpb3_default
+		     &i2c0_data_gpb4_default>;
+	pinctrl-names = "default";
+
+	cbi_eeprom: eeprom@50 {
+		compatible = "atmel,at24";
+		reg = <0x50>;
+		size = <2048>;
+		pagesize = <16>;
+		address-width = <8>;
+		timeout = <5>;
+	};
+
+	charger_bc12_port1: rt9490@53 {
+		compatible = "richtek,rt9490";
+		status = "okay";
+		reg = <0x53>;
+	};
+};
+
+&i2c2 {
+	/* EC_I2C_USB_C0 */
+	label = "I2C_USB_C0";
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	pinctrl-0 = <&i2c2_clk_gpf6_default
+		     &i2c2_data_gpf7_default>;
+	pinctrl-names = "default";
+	/delete-property/ fifo-enable;
+
+	bc12_ppc_port0: rt1739@70 {
+		compatible = "richtek,rt1739-bc12", "richtek,rt1739-ppc";
+		status = "okay";
+		reg = <0x70>;
+	};
+
+	ps8743_mux_1: ps8743-mux-1@10 {
+		compatible = "parade,ps8743";
+		reg = <0x10>;
+	};
+};
+
+&adc0{
+	status = "okay";
+	pinctrl-0 = <&adc0_ch6_gpi6_default>;
+	pinctrl-names = "default";
+};
+
+&thermistor_3V3_100K_100K_4250B{
+    status = "okay";
+};
+
+&cros_kb_raw {
+	status = "okay";
+	/* No KSO2 (it's inverted and implemented by GPIO) */
+	pinctrl-0 = <&ksi0_default
+		     &ksi1_default
+		     &ksi2_default
+		     &ksi3_default
+		     &ksi4_default
+		     &ksi5_default
+		     &ksi6_default
+		     &ksi7_default
+		     &kso0_default
+		     &kso1_default
+		     &kso3_default
+		     &kso4_default
+		     &kso5_default
+		     &kso6_default
+		     &kso7_default
+		     &kso8_default
+		     &kso9_default
+		     &kso10_default
+		     &kso11_default
+		     &kso12_default>;
+	pinctrl-names = "default";
+};

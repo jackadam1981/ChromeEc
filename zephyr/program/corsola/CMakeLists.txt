@@ -38,4 +38,8 @@ elseif(DEFINED CONFIG_BOARD_MAGIKARP)
 elseif(DEFINED CONFIG_BOARD_VOLTORB)
 	project(voltorb)
 	add_subdirectory(voltorb)
+elseif(DEFINED CONFIG_BOARD_STARMIE)
+	project(starmie)
+	add_subdirectory(starmie)
 endif()
+
