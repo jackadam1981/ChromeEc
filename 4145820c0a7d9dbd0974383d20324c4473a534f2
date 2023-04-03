@@ -34,6 +34,24 @@
       "parentUuid": "c5126ba3_075242d4",
       "revId": "4145820c0a7d9dbd0974383d20324c4473a534f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607a507c_4d9486f6",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-04-03T19:21:18Z",
+      "side": 1,
+      "message": "Neve mind, since S0ix is a sub state of S0, x86_s0_entry/exit will not be executed when transitioning from S0 to S0ix.\nI think is better to move this to `x86_non_dsx_chipset_state_entry/exit_cb`.",
+      "parentUuid": "69e53087_a94ab203",
+      "revId": "4145820c0a7d9dbd0974383d20324c4473a534f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
