@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d76f6540_23ee332a",
+        "filename": "zephyr/emul/emul_isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-03T14:03:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure we have an official policy.  The closest I know of would be that our HC file (include/ec_commands.h) requires \"4-digit UPPER CASE hex values\"",
+      "parentUuid": "522459bd_9b088ece",
+      "revId": "2ac76cefb57991ddad35c606ed3864f3b42298db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26b9b1f0_80d3efd7",
         "filename": "zephyr/emul/emul_isl9241.c",
         "patchSetId": 3
@@ -48,6 +66,24 @@
       "writtenOn": "2023-03-31T21:18:58Z",
       "side": 1,
       "message": "It is common in my experience to use OFFSET for the bit offset and MASK for the shifted mask. So if we adopted that, we could drop the \u0027BIT_\u0027 at some point.",
+      "revId": "2ac76cefb57991ddad35c606ed3864f3b42298db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "875f83c9_3b45a9de",
+        "filename": "zephyr/emul/emul_isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-03T14:03:18Z",
+      "side": 1,
+      "message": "Noted",
+      "parentUuid": "26b9b1f0_80d3efd7",
       "revId": "2ac76cefb57991ddad35c606ed3864f3b42298db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
