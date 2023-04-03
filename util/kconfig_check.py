@@ -119,6 +119,9 @@ a corresponding Kconfig option for Zephyr"""
 
     subparsers.add_parser("build", help="Build new list of ad-hoc CONFIGs")
     subparsers.add_parser("check", help="Check for new ad-hoc CONFIGs")
+    subparsers.add_parser(
+        "check_undef", help="Verify #undef directives in include/config.h"
+    )
 
     return parser.parse_args(argv)
 
@@ -496,6 +499,58 @@ update in your CL:
                 print(f"CONFIG_{config}", file=out)
         print(f"New list is in {NEW_ALLOWED_FNAME}")
 
+    def check_undef(
+        self,
+        srcdir,
+        search_paths,
+    ):
+        """Parse the include/config.h file and find zephyr Kconfigs that are
+        incorrectly undefined or defined to a default value.
+
+        Args:
+            srcdir: Source directory to scan for Kconfig files
+            search_paths: List of project paths to search for Kconfig files, in
+                addition to the current directory
+
+        Returns:
+            Exit code: 0 if OK, 1 if a problem was found
+        """
+        kconfigs = set(self.scan_kconfigs(srcdir, "", search_paths))
+
+        if_re = re.compile(r"^\s*#\s*if(ndef CONFIG_ZEPHYR)?")
+        endif_re = re.compile(r"^\s*#\s*endif")
+        modify_config_re = re.compile(r"^\s*#\s*(define|undef)\s+CONFIG_(\S*)")
+        exit_code = 0
+        with open(os.path.join(srcdir, "include/config.h"), "r") as config_h:
+            depth = 0
+            ignore_depth = 0
+            line_count = 0
+            for line in config_h.readlines():
+                line_count += 1
+                line = line.strip("\n")
+                match = if_re.match(line)
+                if match:
+                    depth += 1
+                    if match[1] or ignore_depth > 0:
+                        ignore_depth += 1
+                if endif_re.match(line):
+                    if depth > 0:
+                        depth -= 1
+                    if ignore_depth > 0:
+                        ignore_depth -= 1
+                if ignore_depth == 0:
+                    match = modify_config_re.match(line)
+                    if match:
+                        if match[2] in kconfigs:
+                            print(
+                                f"Modifying CONFIG_{match[2]} outside of "
+                                "#ifndef CONFIG_ZEPHYR not allowed at "
+                                f"include/config.h:{line_count}",
+                                file=sys.stderr,
+                            )
+                            exit_code = 1
+        return exit_code
+
 
 def main(argv):
     """Main function"""
@@ -520,6 +575,11 @@ def main(argv):
             allowed_file=args.allowed,
             prefix=args.prefix,
             use_defines=args.use_defines,
+            search_paths=args.search_path,
+        )
+    if args.cmd == "check_undef":
+        return checker.check_undef(
+            srcdir=args.srctree,
             search_paths=args.search_path,
         )
     return 2
