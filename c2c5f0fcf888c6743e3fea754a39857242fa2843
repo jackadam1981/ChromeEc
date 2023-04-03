@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b726050_915036d9",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-03T11:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d582eb7f_2b5bc686",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "c2c5f0fcf888c6743e3fea754a39857242fa2843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "075699e5_34ae5945",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-30T15:30:36Z",
       "side": 1,
       "message": "30ms",
+      "range": {
+        "startLine": 12,
+        "startChar": 52,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "c2c5f0fcf888c6743e3fea754a39857242fa2843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "441d28c4_3b0008c6",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-03T11:03:42Z",
+      "side": 1,
+      "message": "In guide it\u0027s mentioned as 30-50 ms hence updated the same, let me know if there is any concern with it.",
+      "parentUuid": "075699e5_34ae5945",
       "range": {
         "startLine": 12,
         "startChar": 52,
