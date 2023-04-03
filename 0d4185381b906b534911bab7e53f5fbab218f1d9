@@ -16,6 +16,24 @@
       "message": "This is what you need to extract the `struct gpio_dt_spec` from the devicetree.\n```\n.irq_gpio \u003d GPIO_DT_SPEC_GET_OR(n, irq_gpios, {}),\n```",
       "revId": "0d4185381b906b534911bab7e53f5fbab218f1d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dccbe31_a2ea3ce7",
+        "filename": "zephyr/emul/emul_nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-03T18:03:02Z",
+      "side": 1,
+      "message": "Oh, I had something very similar that for a while and then the test kept crashing in runtime...  This one is very much still a WIP",
+      "parentUuid": "93ac4ddb_97309544",
+      "revId": "0d4185381b906b534911bab7e53f5fbab218f1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
