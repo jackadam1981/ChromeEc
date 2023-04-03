@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ac4ddb_97309544",
+        "filename": "zephyr/emul/emul_nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-03T17:02:54Z",
+      "side": 1,
+      "message": "This is what you need to extract the `struct gpio_dt_spec` from the devicetree.\n```\n.irq_gpio \u003d GPIO_DT_SPEC_GET_OR(n, irq_gpios, {}),\n```",
+      "revId": "0d4185381b906b534911bab7e53f5fbab218f1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
