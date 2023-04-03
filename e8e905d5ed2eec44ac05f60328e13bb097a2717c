@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "221fd079_99d10545",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-03T20:57:07Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t think it\u0027s worth spending so much effort on writing a unit test for a simple class.\n\nSkipping tests is how we end up with fragile code. Since this class is so simple, it should be easy to test, so we shouldn\u0027t use the fact that it\u0027s simple to skip testing.\n\n\u003e the whole build system becomes very fragile\n\nUnfortunately, there is a lot of technical debt in EC, and we have to deal with it. The technical debt is often caused by people skipping things like unit tests \"because the code is simple\" and the problem is that this builds up over time. Let\u0027s go ahead and try to take care of it so that it does not continue to get worse. I think your previous changes were on the right track. If you are stuck on the Zephyr build let me know.",
+      "parentUuid": "a946049d_b412f861",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "e8e905d5ed2eec44ac05f60328e13bb097a2717c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ad86ccb_2dcee660",
         "filename": "include/scoped_fast_cpu.h",
         "patchSetId": 25
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Using class would not be able to pass the `clang-format` \u0026 `checkpatch.pl` check at the same time.\n\nResolved by changing the file suffix to `.hpp`.",
       "parentUuid": "7ad86ccb_2dcee660",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "e8e905d5ed2eec44ac05f60328e13bb097a2717c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c1d2fe_a2a161a7",
+        "filename": "include/scoped_fast_cpu.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-03T20:57:07Z",
+      "side": 1,
+      "message": "Let\u0027s just ignore `checkpatch.pl` and name it as `.h`. `clang-format` is really the only format that matters for the fingerprint code. I\u0027m going to try to remove `checkpatch` since we have `clang-format` now: https://issuetracker.google.com/276785070.",
+      "parentUuid": "e6be94b4_58408f12",
       "range": {
         "startLine": 30,
         "startChar": 0,
