@@ -86,7 +86,7 @@ rsource "Kconfig.wireless_charger"
 #
 # Please keep these in alphabetical order
 
-config FLASH_PROTECT_DEFERRED
+config PLATFORM_EC_FLASH_PROTECT_DEFERRED
 	bool "Enable Async Flash Protect"
 	help
 	  Enable the async version of the FLASH_PROTECT command. This uses
