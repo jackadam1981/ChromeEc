@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22249011_a5b09984",
+        "filename": "zephyr/dts/bindings/usbc/ppc-chip.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-03T16:58:35Z",
+      "side": 1,
+      "message": "Update this description:\nGPIO interrupt from the PPC using a named-gpios child node.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "05db38b55e16889b2dc1a53d1ab8caf969dcd968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
