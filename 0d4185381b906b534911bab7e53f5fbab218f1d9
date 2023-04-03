@@ -34,6 +34,24 @@
       "parentUuid": "93ac4ddb_97309544",
       "revId": "0d4185381b906b534911bab7e53f5fbab218f1d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5af5ef1_e3779435",
+        "filename": "zephyr/emul/emul_nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-03T18:10:43Z",
+      "side": 1,
+      "message": "Note that if the node property isn\u0027t found, this macro initializes the irq_gpio to NULL.  So you might want verify irq_gpio.port is not NULL before using it.",
+      "parentUuid": "8dccbe31_a2ea3ce7",
+      "revId": "0d4185381b906b534911bab7e53f5fbab218f1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
