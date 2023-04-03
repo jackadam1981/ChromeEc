@@ -16,6 +16,24 @@
       "message": "needs LOW_COVERAGE_REASON since it\u0027s just adding the emulator (or submit at the same time as the CL above)",
       "revId": "5b3535e38b27b88a960d190152045bf461d81875",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87843a2_ba26dbdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-03T17:43:39Z",
+      "side": 1,
+      "message": "I think the LOW_COVERAGE_REASON is because of the new error prints which aren\u0027t executed since nothing is calling invalid ranges on the emulator.  Do you generally exclude those from coverage since they shouldn\u0027t come up but are still good to have just in case?",
+      "parentUuid": "41616f6a_1e842a4a",
+      "revId": "5b3535e38b27b88a960d190152045bf461d81875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
