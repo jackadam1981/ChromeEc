@@ -1766,7 +1766,7 @@ int cmd_flash_protect(int argc, char *argv[])
 			mask |= ec::flash_protect::Flags::kRoAtBoot;
 	}
 
-	ec::FlashProtectCommand flash_protect_command(flags, mask);
+	ec::FlashProtectCommand_v2 flash_protect_command(flags, mask);
 	if (!flash_protect_command.Run(comm_get_fd())) {
 		int rv = -EECRESULT - flash_protect_command.Result();
 		fprintf(stderr, "Flash protect returned with errors: %d\n", rv);
