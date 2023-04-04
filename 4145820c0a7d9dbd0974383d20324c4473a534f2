@@ -52,6 +52,24 @@
       "parentUuid": "69e53087_a94ab203",
       "revId": "4145820c0a7d9dbd0974383d20324c4473a534f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ffe378_7b2a8ac7",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-04-04T18:02:05Z",
+      "side": 1,
+      "message": "Done. See CL:4395866.",
+      "parentUuid": "607a507c_4d9486f6",
+      "revId": "4145820c0a7d9dbd0974383d20324c4473a534f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
