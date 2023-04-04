@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f09dce_39acb4a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-04-04T23:30:21Z",
+      "side": 1,
+      "message": "I have simplified the bitfields used for the new \"serial flash\" command, so that only combinations that make sense can be encoded (or at least, fewer combinations that do not make sense can be encoded).\n\nPlease take another look.",
+      "revId": "2bb6aa8ea23d83b4e021b81b500d6bd655e72979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
