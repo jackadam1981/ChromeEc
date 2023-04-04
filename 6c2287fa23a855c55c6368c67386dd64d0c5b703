@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53235a84_b003cc50",
+        "filename": "zephyr/program/myst/myst/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-04-04T14:50:58Z",
+      "side": 1,
+      "message": "qq: the previous field takes bits 7 and 8, so this one could start on bit 9. Was there a reason to leave 1 bit unused between io-db and kb-bl? (I\u0027m not very familiar with CBI, so I don\u0027t know if we should pack the bits tightly.)",
+      "range": {
+        "startLine": 170,
+        "startChar": 12,
+        "endLine": 170,
+        "endChar": 14
+      },
+      "revId": "6c2287fa23a855c55c6368c67386dd64d0c5b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
