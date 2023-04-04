@@ -98,8 +98,8 @@ int rwsig_check_signature(void)
 	const uint8_t *sig;
 	uint8_t *hash;
 	uint32_t *rsa_workbuf = NULL;
-	const uint8_t *rwdata =
-		(uint8_t *)CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_MEM_OFF;
+	const uint8_t *rwdata = (uint8_t *)CONFIG_MAPPED_STORAGE_BASE +
+				CONFIG_EC_WRITABLE_STORAGE_OFF;
 	int good = 0;
 
 	unsigned int rwlen;
@@ -142,8 +142,19 @@ int rwsig_check_signature(void)
 	sig = (const uint8_t *)CONFIG_RW_SIG_ADDR;
 	rwlen = CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE;
 #elif defined(CONFIG_RWSIG_TYPE_RWSIG)
+
 	vb21_key = vb21_get_packed_key();
+
+#ifdef CHIP_NPCX
+	vb21_sig =
+		(const struct vb21_signature *)(CONFIG_MAPPED_STORAGE_BASE +
+						CONFIG_EC_WRITABLE_STORAGE_OFF +
+						CONFIG_RW_STORAGE_OFF +
+						RW_SIG_OFFSET);
+#else
+
 	vb21_sig = (const struct vb21_signature *)CONFIG_RW_SIG_ADDR;
+#endif
 
 	if (vb21_key->c.magic != VB21_MAGIC_PACKED_KEY ||
 	    vb21_key->key_size != sizeof(struct rsa_public_key)) {
