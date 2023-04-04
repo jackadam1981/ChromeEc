@@ -22,6 +22,30 @@
       },
       "revId": "eb5cd34ac68a4d80335d1134531e83df1ffe7eb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a2777c1_d37b71bf",
+        "filename": "zephyr/test/skyrim/tests/skyrim/src/usb_mux_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-04-04T19:57:09Z",
+      "side": 1,
+      "message": "Made this change to the ANX7384 related code. Unfortunately, the PS8xxx emulator doesn\u0027t support the `board-set` property. That doesn\u0027t seem to be a straight-forward change so I\u0027ve left that test as-is for now.",
+      "parentUuid": "c8c54d79_4c08392f",
+      "range": {
+        "startLine": 65,
+        "startChar": 6,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "eb5cd34ac68a4d80335d1134531e83df1ffe7eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
