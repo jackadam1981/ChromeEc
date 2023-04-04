@@ -11,6 +11,7 @@
 #include "common.h"
 #include "ec_commands.h"
 #include "fpsensor_alg.h"
+#include "fpsensor_modes.h"
 #include "fpsensor_types.h"
 #include "fpsensor_utils.h"
 
