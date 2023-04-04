@@ -52,6 +52,7 @@ class ProjectConfig:
         default_factory=list
     )
     project_dir: pathlib.Path = dataclasses.field(default_factory=pathlib.Path)
+    inherited_from: "list[str]" = dataclasses.field(default_factory=list)
 
 
 class Project:
@@ -171,6 +172,19 @@ class Project:
             "manually select an unsupported toolchain with the -t flag."
         )
 
+    def get_full_name(self):
+        """Get the full project name, e.g. baseboard.variant"""
+        if not self.config.inherited_from:
+            return self.config.project_name
+
+        parents = (
+            ".".join(self.config.inherited_from)
+            if isinstance(self.config.inherited_from, list)
+            else self.config.inherited_from
+        )
+
+        return f"{parents}.{self.config.project_name}"
+
 
 @dataclasses.dataclass
 class ProjectRegistrationHandler:
@@ -198,6 +212,8 @@ class ProjectRegistrationHandler:
             Another ProjectRegistrationHandler.
         """
         new_config = dataclasses.asdict(self.base_config)
+        new_config["inherited_from"].append(self.base_config.project_name)
+
         for key, value in kwargs.items():
             if isinstance(value, list):
                 new_config[key] = [*new_config[key], *value]
