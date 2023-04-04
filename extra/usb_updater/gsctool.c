@@ -524,6 +524,9 @@ static const struct option_container cmd_line_options[] = {
 	 "[enable] Get the current WP setting or enable WP"},
 	{{"clog", required_argument, NULL, 'x'},
 	 "[id]%Retrieve contents of the crash log with id <id>"},
+	{{"factory_config", optional_argument, NULL, 'y'},
+	 "[value]%Sets the factory config bits in INFO. value should be 64 "
+	 "bit hex."},
 	{{"reboot", optional_argument, NULL, 'z'},
 	 "Tell the GSC to reboot with an optional reset timeout parameter "
 	 "in milliseconds"},
@@ -3923,6 +3926,11 @@ static int get_console_logs(struct transfer_descriptor *td)
 	return 0;
 }
 
+static int set_factory_config(uint64_t val)
+{
+	return 0;
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -3988,6 +3996,8 @@ int main(int argc, char *argv[])
 	int get_clog = 0;
 	uint32_t clog_id = 0;
 	int get_console = 0;
+	int factory_config = 0;
+	uint64_t factory_config_arg = 0;
 
 	/*
 	 * All options which result in setting a Boolean flag to True, along
@@ -4112,6 +4122,7 @@ int main(int argc, char *argv[])
 			break;
 		case 'F':
 			factory_mode = 1;
+
 			factory_mode_arg = optarg;
 			break;
 		case 'h':
@@ -4222,6 +4233,16 @@ int main(int argc, char *argv[])
 			get_clog = 1;
 			clog_id = strtoul(optarg, NULL, 0);
 			break;
+		case 'y':
+			factory_config = 1;
+			if (optarg) {
+				char * end = NULL;
+				unsigned int upper = strtoul(optarg, &end, 16);
+				unsigned int lower = strtoul(end, &end, 16);
+				factory_config_arg = ((uint64_t) upper) << 32 | lower;
+				printf("arg %lX", factory_config_arg);
+			}
+			break;
 		case 'z':
 			reboot_gsc = true;
 			/* Set a 1ms default reboot time to avoid libusb errors
@@ -4281,6 +4302,7 @@ int main(int argc, char *argv[])
 	    !get_console &&
 	    !get_flog &&
 	    !get_endorsement_seed &&
+	    !factory_config &&
 	    !factory_mode &&
 	    !erase_ap_ro_hash &&
 	    !password &&
@@ -4438,6 +4460,9 @@ int main(int argc, char *argv[])
 
 	if (get_console)
 		exit(get_console_logs(&td));
+
+	if (factory_config)
+		exit(set_factory_config(&factory_config_arg));
 
 	if (data || show_fw_ver) {
 
