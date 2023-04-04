@@ -27,6 +27,7 @@
 #endif
 #else
 /* These values are used by the host (emulator) tests. */
+#define FP_SENSOR_IMAGE_OFFSET (0)
 #define FP_SENSOR_IMAGE_SIZE 0
 #define FP_SENSOR_RES_X 0
 #define FP_SENSOR_RES_Y 0
