@@ -70,6 +70,30 @@
       },
       "revId": "6a7fe387b7b422eed2271d552d7c9e9d314d8246",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea20d87_c51c42e0",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-04T21:14:05Z",
+      "side": 1,
+      "message": "The spec shows `intptr_t`, so I changed to that:\n\n* https://man7.org/linux/man-pages/man2/brk.2.html\n* https://pubs.opengroup.org/onlinepubs/7908799/xsh/sbrk.html",
+      "parentUuid": "14557241_f74ac138",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 15
+      },
+      "revId": "6a7fe387b7b422eed2271d552d7c9e9d314d8246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
