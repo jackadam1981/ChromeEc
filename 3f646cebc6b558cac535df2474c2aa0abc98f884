@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9294d933_604cefba",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-04-04T22:07:20Z",
+      "side": 1,
+      "message": "should likely be an `@property` of the `ProjectConfig` instead.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 28
+      },
+      "revId": "3f646cebc6b558cac535df2474c2aa0abc98f884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14d91f69_8a1d3aad",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-04-04T22:07:20Z",
+      "side": 1,
+      "message": "I believe this will modify the list from the original config.\n\nYou want `new_config[\"inherited_from\"] \u003d [*self.base_config.inherited_from, self.base_config.project_name]`.",
+      "range": {
+        "startLine": 215,
+        "startChar": 36,
+        "endLine": 215,
+        "endChar": 43
+      },
+      "revId": "3f646cebc6b558cac535df2474c2aa0abc98f884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
