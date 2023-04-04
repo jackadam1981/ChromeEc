@@ -16,6 +16,7 @@
 #include "hooks.h"
 #include "ioexpander.h"
 #include "isl9241.h"
+#include "pca9535.h"
 #include "pca9675.h"
 #include "power/icelake.h"
 #include "sn5s330.h"
@@ -274,6 +275,11 @@ struct ioexpander_config_t ioex_config[] = {
 		.drv = &pca9675_ioexpander_drv,
 	},
 #endif
+	[IOEX_PCA9535] = {
+		.i2c_host_port = I2C_PORT_CHARGER,
+		.i2c_addr_flags = 0x23,
+		.drv = &pca9535_ioexpander_drv,
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
 

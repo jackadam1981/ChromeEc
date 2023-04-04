@@ -59,6 +59,7 @@
 #define CONFIG_IO_EXPANDER
 #define CONFIG_IO_EXPANDER_PCA9675
 #define I2C_ADDR_PCA9675_TCPC_AIC_IOEX 0x21
+#define CONFIG_IO_EXPANDER_PCA9535
 
 /* DC Jack charge ports */
 #undef CONFIG_DEDICATED_CHARGE_PORT_COUNT
@@ -143,6 +144,7 @@
 /* Board Id */
 #define I2C_ADDR_PCA9555_BOARD_ID_GPIO 0x22
 
+#undef CONFIG_WATCHDOG
 /*
  * Frequent watchdog timer resets are seen, with the
  * increase in number of type-c ports. So increase
@@ -195,6 +197,7 @@ enum ioex_port {
 	IOEX_C2_PCA9675,
 	IOEX_C3_PCA9675,
 #endif
+	IOEX_PCA9535,
 	IOEX_PORT_COUNT
 };
 #define CONFIG_IO_EXPANDER_PORT_COUNT IOEX_PORT_COUNT
