@@ -16,6 +16,24 @@
       "message": "I think you can use a numeric comparison (`new_state \u003c AP_POWER_STATE_S3`) since we documented that ordering guarantee for state IDs.",
       "revId": "b4b2b0f6b9c22beddf152872b694c2860a062fb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f8de590_d2f4cfa1",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-04-04T18:43:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6259dd5c_22547c2e",
+      "revId": "b4b2b0f6b9c22beddf152872b694c2860a062fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
