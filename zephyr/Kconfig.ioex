@@ -33,6 +33,11 @@ config PLATFORM_EC_IOEX_NCT38XX
 	help
 	  Enables support for IO expander built inside Nuvoton NCT38xx TCPC
 
+config PLATFORM_EC_IOEX_PCA9535
+	bool "TI PCA9535"
+	help
+	  Enables support for TI/NXP/ONSEMI PCA9535 IO expander
+
 config PLATFORM_EC_IOEX_PCA9675
 	bool "NXP PCA9675PW"
 	help
