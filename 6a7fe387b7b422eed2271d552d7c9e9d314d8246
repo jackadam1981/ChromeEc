@@ -22,6 +22,30 @@
       },
       "revId": "6a7fe387b7b422eed2271d552d7c9e9d314d8246",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f937e48d_604c2268",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-04T16:43:40Z",
+      "side": 1,
+      "message": "`sbrk` does accept negative values, which are used to decrease the size:\n\n* https://linux.die.net/man/2/sbrk: \"decreasing the break deallocates memory.\"\n* Example on line 59 in [the unit test](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4396773/3/test/sbrk.c).",
+      "parentUuid": "70f6d93e_ce223362",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 15
+      },
+      "revId": "6a7fe387b7b422eed2271d552d7c9e9d314d8246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
