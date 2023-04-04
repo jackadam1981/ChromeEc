@@ -45,6 +45,30 @@
       },
       "revId": "5125ec6d170da9ed9f3601bf40b896a1872056ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df4f91f_7a7a106d",
+        "filename": "third_party/boringssl/include/aes_gcm_helpers.h",
+        "patchSetId": 56
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-04-04T12:21:20Z",
+      "side": 1,
+      "message": "We haven\u0027t. We need the dynamic allocation bug to be resolved first. Or should I test with your CL (that was reverted) on another FPC board first?",
+      "parentUuid": "6727e0ea_efa068e1",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 64
+      },
+      "revId": "5125ec6d170da9ed9f3601bf40b896a1872056ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
