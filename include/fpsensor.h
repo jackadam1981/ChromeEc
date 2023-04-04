@@ -13,6 +13,7 @@
 #include "fpsensor_alg.h"
 #include "fpsensor_types.h"
 #include "fpsensor_utils.h"
+#include "fpsensor_modes.h"
 
 #include <stdint.h>
 
@@ -99,6 +100,7 @@ enum finger_state fp_sensor_finger_status(void);
 /**
  * Sensor not fully covered by finger
  */
+
 #define FP_SENSOR_LOW_SENSOR_COVERAGE 3
 
 /**
