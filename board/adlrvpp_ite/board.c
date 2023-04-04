@@ -13,6 +13,7 @@
 #include "i2c_bitbang.h"
 #include "it83xx_pd.h"
 #include "lid_switch.h"
+#include "pca9535.h"
 #include "pca9675.h"
 #include "power.h"
 #include "power_button.h"

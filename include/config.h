@@ -2897,6 +2897,9 @@
 /* Support NXP PCA9534 I/O expander. */
 #undef CONFIG_IO_EXPANDER_PCA9534
 
+/* Support TI/NXP/ONSEMI PCA9535 I/O expander. */
+#undef CONFIG_IO_EXPANDER_PCA9535
+
 /* Support NXP PCA9675 I/O expander. */
 #undef CONFIG_IO_EXPANDER_PCA9675
 
