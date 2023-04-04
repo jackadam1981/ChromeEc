@@ -70,6 +70,30 @@
       },
       "revId": "6c2287fa23a855c55c6368c67386dd64d0c5b703",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f9adac7_cd023b46",
+        "filename": "zephyr/program/myst/myst/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-04T16:28:25Z",
+      "side": 1,
+      "message": "I\u0027d say it\u0027s worth making the DB field size 3 bits to match the spreadsheet, just in case we end up using that bit",
+      "parentUuid": "2b7d52d8_e5eb5eb4",
+      "range": {
+        "startLine": 170,
+        "startChar": 12,
+        "endLine": 170,
+        "endChar": 14
+      },
+      "revId": "6c2287fa23a855c55c6368c67386dd64d0c5b703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
