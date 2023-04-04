@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f6d93e_ce223362",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-04-04T16:41:13Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a `size_t` or something? AFAICT, you don\u0027t want to accept a negative argument.",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 15
+      },
+      "revId": "6a7fe387b7b422eed2271d552d7c9e9d314d8246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
