@@ -34,6 +34,24 @@
       "parentUuid": "fd8ac4a3_a6d34803",
       "revId": "39caf5e91f7fd1df97e8e9a26a44722c89510248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e25cb2b5_9e184f31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-04-04T22:38:23Z",
+      "side": 1,
+      "message": "I understand what you are saying as the current bitfield, allowing all combinations of 4-2-8 width, many of which will never be used in practice, as not being a good idea.\n\nI will try to rework into something that does not follow STM32L5 OctoSPI hardware as closely.\n\nI would like to re-state my main question though, whether you think it is a good approach to keep the existing CMD_TRANSFER_START (which allows read, write, write-then-read, or bidirectional transfer of arbitrary lengths), while adding a new CMD_FLASH_TRANSFER_START guarded by conditional compile directives, supporting a short write on single lane, followed by read or write on 1/2/4/8 lanes (with some additional flash-specific bells and whistles).\n\nI think it is beneficial to maintain exact backwards compatibility with tools that do not know about the protocol extensions.  The code for implementing the two kinds of request is shared to a large degree.",
+      "parentUuid": "e0324d9a_af2c7044",
+      "revId": "39caf5e91f7fd1df97e8e9a26a44722c89510248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
