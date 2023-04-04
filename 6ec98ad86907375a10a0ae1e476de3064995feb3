@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d903924b_9e67c424",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3956,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-04T23:34:41Z",
+      "side": 1,
+      "message": "8?",
+      "range": {
+        "startLine": 3956,
+        "startChar": 18,
+        "endLine": 3956,
+        "endChar": 22
+      },
+      "revId": "6ec98ad86907375a10a0ae1e476de3064995feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad6d34a_bd3bd8dc",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3982,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-04T23:34:41Z",
+      "side": 1,
+      "message": "Does ti50 send a response ? I don\u0027t think cr50 will. Probably just an error if the command fails.",
+      "range": {
+        "startLine": 3982,
+        "startChar": 18,
+        "endLine": 3982,
+        "endChar": 22
+      },
+      "revId": "6ec98ad86907375a10a0ae1e476de3064995feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c460c1fe_d4ed1616",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4187,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-04T23:34:41Z",
+      "side": 1,
+      "message": "nit: delete this.",
+      "revId": "6ec98ad86907375a10a0ae1e476de3064995feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d4d101_572c5d84",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4301,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-04T23:34:41Z",
+      "side": 1,
+      "message": "rename to set_factory_config",
+      "range": {
+        "startLine": 4301,
+        "startChar": 4,
+        "endLine": 4301,
+        "endChar": 25
+      },
+      "revId": "6ec98ad86907375a10a0ae1e476de3064995feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3de2744_dc912e6a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4527,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-04T23:34:41Z",
+      "side": 1,
+      "message": "rename these to process_set_factory_config and process_get_factory_config to match",
+      "range": {
+        "startLine": 4527,
+        "startChar": 8,
+        "endLine": 4527,
+        "endChar": 26
+      },
+      "revId": "6ec98ad86907375a10a0ae1e476de3064995feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
