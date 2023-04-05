@@ -22,6 +22,30 @@
       },
       "revId": "1a843bea3716cc89da9d968b56692548ccb59562",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e918b04_409817de",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-04-05T17:54:49Z",
+      "side": 0,
+      "message": "Hey good point, dropped a bunch of related structs, host commands etc.",
+      "parentUuid": "a52c32b3_2cbfce5d",
+      "range": {
+        "startLine": 1174,
+        "startChar": 10,
+        "endLine": 1174,
+        "endChar": 32
+      },
+      "revId": "1a843bea3716cc89da9d968b56692548ccb59562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
