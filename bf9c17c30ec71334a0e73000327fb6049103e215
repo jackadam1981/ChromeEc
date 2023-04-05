@@ -22,6 +22,30 @@
       },
       "revId": "bf9c17c30ec71334a0e73000327fb6049103e215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5644896f_614cb6e1",
+        "filename": "board/nucleo-dartmonkey/fpsensor_detect.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-05T15:53:49Z",
+      "side": 1,
+      "message": "Yeah, that makes sense. This CL only modified `get_fp_sensor_type` because a future CL used it. I\u0027ll add a CL for `get_fp_transport_type` too (b/277068573)",
+      "parentUuid": "986d42ee_12487cfe",
+      "range": {
+        "startLine": 13,
+        "startChar": 23,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "bf9c17c30ec71334a0e73000327fb6049103e215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
