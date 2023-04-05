@@ -22,6 +22,30 @@
       },
       "revId": "b0f84967411d26cd9e8f3bbd36e29cd2e81c8829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc2b8cf6_dc852108",
+        "filename": "common/rollback.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-05T22:42:45Z",
+      "side": 0,
+      "message": "\u003e Are you making any future changes to start calling this function in RW or you just noticed this when working on related code?\n\nNo, I was testing compatibility between EC RO and Zephyr RW. Code that modifies rollback was failing to compile on RW because `get_rollback_erase_size_bytes()` was not available.\n\n\u003e I don\u0027t see any issues with calling this function.\n\nYup. Calling this is definitely harmless.",
+      "parentUuid": "7fbc3de9_92146759",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "b0f84967411d26cd9e8f3bbd36e29cd2e81c8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
