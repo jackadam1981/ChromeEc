@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e4c645_03b495e7",
+        "filename": "common/mock/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-05T14:11:28Z",
+      "side": 1,
+      "message": "I didn\u0027t do it initially because I was focusing more on the filenames than macro names but it\u0027s probably worthwhile in this case. Done.",
+      "parentUuid": "dd0effab_41fbc75f",
+      "range": {
+        "startLine": 10,
+        "startChar": 16,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "eca237b96c0118d588c30cfba405ec9032e83368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9863bf60_fc01c158",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-03T20:27:36Z",
       "side": 1,
       "message": "Can you update the include guard to match the rename?",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "eca237b96c0118d588c30cfba405ec9032e83368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "559a1a35_a2262cca",
+        "filename": "include/mock/fpsensor_mock.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-05T14:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9863bf60_fc01c158",
       "range": {
         "startLine": 11,
         "startChar": 15,
