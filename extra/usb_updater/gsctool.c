@@ -340,7 +340,10 @@ static const struct option_container cmd_line_options[] = {
 	{{"version", no_argument, NULL, 'v'},
 	 "Report this utility version"},
 	{{"wp", optional_argument, NULL, 'w'},
-	 "[enable] Get the current WP setting or enable WP"}
+	 "[enable] Get the current WP setting or enable WP"},
+	{{"factory_config", optional_argument, NULL, 'y'},
+	"[value]%Sets the factory config bits in INFO. value should be 64 "
+	"bit hex."}
 };
 
 /* Helper to print debug messages when verbose flag is specified. */
@@ -3110,6 +3113,47 @@ static int getopt_all(int argc, char *argv[])
 	return i;
 }
 
+static int process_get_factory_config(struct transfer_descriptor *td)
+{
+	uint32_t rv;
+	uint64_t response = 0;
+	size_t response_size = sizeof(response);
+
+	rv = send_vendor_command(td, VENDOR_CC_GET_FACTORY_CONFIG, NULL,
+				 0, (uint8_t *) &response, &response_size);
+	if (rv != VENDOR_RC_SUCCESS) {
+		printf("Set factory config failed. (%X)\n", rv);
+		return 1;
+	}
+
+	if (response_size < sizeof(uint64_t)) {
+		printf("Unexpected response size. (%zu)", response_size);
+		return 2;
+	}
+
+	uint64_t out = be64toh(response);
+
+	printf("%"PRIX64"\n", out);
+	return 0;
+}
+
+static int process_set_factory_config(struct transfer_descriptor *td,
+				      uint64_t val)
+{
+	uint64_t val_be = htobe64(val);
+	uint32_t rv;
+
+	rv = send_vendor_command(td, VENDOR_CC_SET_FACTORY_CONFIG, &val_be,
+				 sizeof(val_be), NULL, NULL);
+	if (rv != VENDOR_RC_SUCCESS) {
+		printf("Factory config failed. (%X)\n", rv);
+		return 1;
+	}
+
+	return 0;
+}
+
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -3161,6 +3205,9 @@ int main(int argc, char *argv[])
 	uint8_t sn_inc_rma_arg;
 	int erase_ap_ro_hash = 0;
 	int is_dauntless = 0;
+	int factory_config = 0;
+	int set_factory_config = 0;
+	uint64_t factory_config_arg = 0;
 
 	/*
 	 * All options which result in setting a Boolean flag to True, along
@@ -3336,6 +3383,13 @@ int main(int argc, char *argv[])
 			fprintf(stderr, "Illegal wp option \"%s\"\n", optarg);
 			errorcnt++;
 			break;
+		case 'y':
+			factory_config = 1;
+			if (optarg) {
+				set_factory_config = 1;
+				factory_config_arg = strtoull(optarg, NULL, 16);
+			}
+			break;
 		case 0:				/* auto-handled option */
 			break;
 		case '?':
@@ -3380,6 +3434,7 @@ int main(int argc, char *argv[])
 	    !get_boot_mode &&
 	    !get_flog &&
 	    !get_endorsement_seed &&
+	    !factory_config &&
 	    !factory_mode &&
 	    !erase_ap_ro_hash &&
 	    !password &&
@@ -3512,6 +3567,14 @@ int main(int argc, char *argv[])
 
 	if (erase_ap_ro_hash)
 		process_erase_ap_ro_hash(&td);
+
+	if (factory_config) {
+		if (set_factory_config)
+			exit(process_set_factory_config(&td,
+							factory_config_arg));
+		else
+			exit(process_get_factory_config(&td));
+	}
 
 	if (data || show_fw_ver) {
 
