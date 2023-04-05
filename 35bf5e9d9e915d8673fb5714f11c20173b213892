@@ -16,6 +16,24 @@
       "message": "This isn\u0027t known to be an issue on any other boards, so if we\u0027re going to do this then it should be in board-specific code: `board_process_pd_alert` is a good place for it.\n\nBeyond that however, I don\u0027t think papering over bad performance is a good idea- if we\u0027re not reaching idle for seconds at a time, it\u0027s hard to predict what else might not be working as intended.",
       "revId": "35bf5e9d9e915d8673fb5714f11c20173b213892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e01009_afab0e43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-05T16:42:09Z",
+      "side": 1,
+      "message": "I know we\u0027ve seen issues getting massive amounts of VDM:Attention messages to transmit HPD with MST docks at times, though I thought they usually resulted in the EC dropping messages from the TCPC\u0027s buffer.\n\nIn general, this is one of the trickiest parts about using our EC as a TCPM. If we allow the Attention messages to consume too much task time, then we\u0027ll be dropping motion sensor and/or keyboard data.  I would almost lean towards either trying to throttle the rate at which we handle the Attention messages, or trying to set up a way for them to process faster than other messages.",
+      "parentUuid": "cbde39f3_1f3445ed",
+      "revId": "35bf5e9d9e915d8673fb5714f11c20173b213892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
