@@ -105,6 +105,30 @@
       },
       "revId": "ec105b269eb1e47496740fbdaa7b0b5547326853",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c9c7b11_4ca72582",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-04-05T16:40:15Z",
+      "side": 1,
+      "message": "See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4400340",
+      "parentUuid": "2dda9a67_6455749c",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 50
+      },
+      "revId": "ec105b269eb1e47496740fbdaa7b0b5547326853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
