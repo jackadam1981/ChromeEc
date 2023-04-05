@@ -22,6 +22,30 @@
       },
       "revId": "97656f7fc75cf2c063229f27dbfb4ee358319689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec105d3d_cfe831c8",
+        "filename": "zephyr/include/cros/st/stm32.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2023-04-05T17:10:13Z",
+      "side": 1,
+      "message": "https://github.com/zephyrproject-rtos/zephyr/blob/main/dts/arm/st/f4/stm32f4.dtsi#L500\n\nI\u0027m trying to upstream as much as possible 😎",
+      "parentUuid": "e2e89656_c110edd8",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "97656f7fc75cf2c063229f27dbfb4ee358319689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
