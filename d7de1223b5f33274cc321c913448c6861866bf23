@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65649f78_cf175207",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-05T14:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec98dc1b_a53575ac",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "d7de1223b5f33274cc321c913448c6861866bf23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c22c255b_5da673ef",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f29ac97e_268fb239",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-05T14:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c22c255b_5da673ef",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "d7de1223b5f33274cc321c913448c6861866bf23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4503f3e2_4de47844",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-03T20:29:43Z",
       "side": 1,
       "message": "Did you intend to change this?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "d7de1223b5f33274cc321c913448c6861866bf23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8127e526_e4868866",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-05T14:30:14Z",
+      "side": 1,
+      "message": "Yes, but not in this commit! It must have gotten pulled in on the rebase.",
+      "parentUuid": "4503f3e2_4de47844",
       "range": {
         "startLine": 35,
         "startChar": 0,
