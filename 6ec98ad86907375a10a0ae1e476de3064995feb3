@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "708271ef_04c179fb",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3956,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-04-05T01:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d903924b_9e67c424",
+      "range": {
+        "startLine": 3956,
+        "startChar": 18,
+        "endLine": 3956,
+        "endChar": 22
+      },
+      "revId": "6ec98ad86907375a10a0ae1e476de3064995feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ad6d34a_bd3bd8dc",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-04T23:34:41Z",
       "side": 1,
       "message": "Does ti50 send a response ? I don\u0027t think cr50 will. Probably just an error if the command fails.",
+      "range": {
+        "startLine": 3982,
+        "startChar": 18,
+        "endLine": 3982,
+        "endChar": 22
+      },
+      "revId": "6ec98ad86907375a10a0ae1e476de3064995feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63913cd9_cca6a045",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3982,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-04-05T01:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ad6d34a_bd3bd8dc",
       "range": {
         "startLine": 3982,
         "startChar": 18,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38beb502_916b0d99",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4187,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-04-05T01:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c460c1fe_d4ed1616",
+      "revId": "6ec98ad86907375a10a0ae1e476de3064995feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55d4d101_572c5d84",
@@ -87,6 +153,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9074b72_a5162227",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4301,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-04-05T01:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d4d101_572c5d84",
+      "range": {
+        "startLine": 4301,
+        "startChar": 4,
+        "endLine": 4301,
+        "endChar": 25
+      },
+      "revId": "6ec98ad86907375a10a0ae1e476de3064995feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c400c8_3e389cc7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4301,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-04-05T01:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d4d101_572c5d84",
+      "range": {
+        "startLine": 4301,
+        "startChar": 4,
+        "endLine": 4301,
+        "endChar": 25
+      },
+      "revId": "6ec98ad86907375a10a0ae1e476de3064995feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3de2744_dc912e6a",
@@ -100,6 +214,54 @@
       "writtenOn": "2023-04-04T23:34:41Z",
       "side": 1,
       "message": "rename these to process_set_factory_config and process_get_factory_config to match",
+      "range": {
+        "startLine": 4527,
+        "startChar": 8,
+        "endLine": 4527,
+        "endChar": 26
+      },
+      "revId": "6ec98ad86907375a10a0ae1e476de3064995feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a501b2bd_cb5d7368",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4527,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-04-05T01:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3de2744_dc912e6a",
+      "range": {
+        "startLine": 4527,
+        "startChar": 8,
+        "endLine": 4527,
+        "endChar": 26
+      },
+      "revId": "6ec98ad86907375a10a0ae1e476de3064995feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c635cdde_fbd2c246",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4527,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-04-05T01:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3de2744_dc912e6a",
       "range": {
         "startLine": 4527,
         "startChar": 8,
