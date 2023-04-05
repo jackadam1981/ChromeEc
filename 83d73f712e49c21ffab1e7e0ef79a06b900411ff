@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb92f7f2_de99dd37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-04-05T21:18:34Z",
+      "side": 1,
+      "message": "+1. we also have some hard resets on C0 (nct3807) in dead-battery mode\nthat are a bit mysterious (i.e. no root cause) and may be board specific.\nthis is still under investigation.",
+      "parentUuid": "6bca749e_d4156473",
+      "revId": "83d73f712e49c21ffab1e7e0ef79a06b900411ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7352cb0_5641a826",
         "filename": "zephyr/program/rex/program.conf",
         "patchSetId": 1
