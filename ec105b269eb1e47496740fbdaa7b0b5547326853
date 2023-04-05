@@ -57,6 +57,30 @@
       },
       "revId": "ec105b269eb1e47496740fbdaa7b0b5547326853",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dda9a67_6455749c",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-04-05T16:22:01Z",
+      "side": 1,
+      "message": "The problem is that https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4396144 isn\u0027t safe without this.\n\nSo either they both have to be rolled back, or we fix forward.",
+      "parentUuid": "184608d8_7b0a7ead",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 50
+      },
+      "revId": "ec105b269eb1e47496740fbdaa7b0b5547326853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
