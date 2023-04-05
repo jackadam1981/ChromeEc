@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e67e87_a5e48630",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-05T10:17:39Z",
+      "side": 1,
+      "message": "Added in the commit message",
+      "parentUuid": "e1992e29_1a644739",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 64
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "654c4aac_e239f16c",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-28T17:18:36Z",
       "side": 1,
       "message": "use ./flash_ec, I think this has changed the file mode",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "477cac31_c956b423",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-05T10:17:39Z",
+      "side": 1,
+      "message": "Added in the commit message",
+      "parentUuid": "654c4aac_e239f16c",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "135101f0_fa792fa3",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1623,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-05T10:17:39Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "641418bc_7235d096",
+      "range": {
+        "startLine": 1623,
+        "startChar": 0,
+        "endLine": 1623,
+        "endChar": 1
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14be65fb_5a21f4a0",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-03-28T16:58:35Z",
       "side": 1,
       "message": "Again this comment is misleading, there\u0027s no checking involved. Also just realized that the script already has facilities to change and restore the serial port speed: see `servo_save_add` and `servo_restore`, please use those instead.",
+      "range": {
+        "startLine": 1627,
+        "startChar": 3,
+        "endLine": 1627,
+        "endChar": 8
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9c9a20b_c133a010",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-05T10:17:39Z",
+      "side": 1,
+      "message": "Used the servo_save_add and servo_restore taken care in the exit automatically",
+      "parentUuid": "14be65fb_5a21f4a0",
       "range": {
         "startLine": 1627,
         "startChar": 3,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f911cbfd_e34a3bc9",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1631,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-05T10:17:39Z",
+      "side": 1,
+      "message": "Rephrased this function name and added the comments",
+      "parentUuid": "ceaf90d8_3ad6c95a",
+      "range": {
+        "startLine": 1631,
+        "startChar": 8,
+        "endLine": 1631,
+        "endChar": 15
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ef0a523_71338637",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "febc3ddb_89984f25",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1634,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-05T10:17:39Z",
+      "side": 1,
+      "message": "Updated the comments such a way to accommodate within 80char max",
+      "parentUuid": "7ef0a523_71338637",
+      "range": {
+        "startLine": 1634,
+        "startChar": 0,
+        "endLine": 1634,
+        "endChar": 1
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11eec6e3_1f63a6bc",
@@ -152,6 +296,30 @@
       "writtenOn": "2023-03-28T17:18:36Z",
       "side": 1,
       "message": "not needed",
+      "range": {
+        "startLine": 1636,
+        "startChar": 0,
+        "endLine": 1637,
+        "endChar": 77
+      },
+      "revId": "b133283c026d7a277229457a2a4bb4b2aaa4eb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88abf84e_cb5adc94",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-05T10:17:39Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "11eec6e3_1f63a6bc",
       "range": {
         "startLine": 1636,
         "startChar": 0,
