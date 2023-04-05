@@ -164,6 +164,30 @@
       },
       "revId": "c016a200c49a558e6b9d2b8188b2a92dc82c5171",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba02dc06_4abbb036",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-05T21:14:12Z",
+      "side": 1,
+      "message": "\u003e end up with something like v.o.l.t.e.e.r\n\nWell that\u0027s what this conditional is meant to handle. If we only want to support lists of strings that\u0027s fine but I\u0027d like to insert a check somewhere in the proj registration code that throws an exception if somebody passes just a string",
+      "parentUuid": "7806ddbb_78430729",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 52
+      },
+      "revId": "c016a200c49a558e6b9d2b8188b2a92dc82c5171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
