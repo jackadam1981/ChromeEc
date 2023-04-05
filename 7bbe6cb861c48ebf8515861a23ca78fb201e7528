@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b246857f_4134534f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-05T20:39:26Z",
+      "side": 1,
+      "message": "Can you run the rollback unit test just to verify it passes?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "7bbe6cb861c48ebf8515861a23ca78fb201e7528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7cee21a_6366f8c8",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-05T20:39:26Z",
+      "side": 1,
+      "message": "Could you do a followup CL to replace the `#ifdef`s with the `IS_ENABLE(CONFIG...)` format in this file?\n\nI think it will make the readability a little better. For example:\n\n```\nif (!IS_ENABLED(CONFIG_ROLLBACK_MPU_PROTECT))\n  return 0;\n  \nkey \u003d irq_lock();\n...\nreturn key;\n```",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "7bbe6cb861c48ebf8515861a23ca78fb201e7528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759824dc_981fde97",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-05T20:39:26Z",
+      "side": 1,
+      "message": "FYI (no change needed): you no longer have to declare all variables at the beginning: https://crrev.com/c/3256741",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 14
+      },
+      "revId": "7bbe6cb861c48ebf8515861a23ca78fb201e7528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
