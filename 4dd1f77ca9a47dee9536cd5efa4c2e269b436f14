@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c199c7de_9152e93f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-04-05T19:56:21Z",
+      "side": 1,
+      "message": "Build failure unrelated to this CL:\n```\nERROR: Modifying CONFIG_RTC outside of #ifndef CONFIG_ZEPHYR not allowed at include/config.h:3841\n```\nRetrying..",
+      "revId": "4dd1f77ca9a47dee9536cd5efa4c2e269b436f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
