@@ -16,6 +16,47 @@
       "message": "The previous commit actually broke the \"private-only\" build, this one fixes that.",
       "revId": "1b54f39b9cc9af5d3000598f8a0fd1c066f4f8f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de36a968_381cf77e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-05T15:30:48Z",
+      "side": 1,
+      "message": "Since you haven\u0027t submitted the previous commit, can you just squash this one into that? It seems like it\u0027s related since it\u0027s part of the change to fix `FP_SENSOR_IMAGE_OFFSET`.",
+      "parentUuid": "292a180d_65658c74",
+      "revId": "1b54f39b9cc9af5d3000598f8a0fd1c066f4f8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aca4556_08d09349",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-05T15:30:48Z",
+      "side": 1,
+      "message": "I see the comment on line 29 says that those defines are used for the host tests. If that were correct, wouldn\u0027t this line be enough?\n\nIs there some other case that line 30 is covering?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 6
+      },
+      "revId": "1b54f39b9cc9af5d3000598f8a0fd1c066f4f8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
