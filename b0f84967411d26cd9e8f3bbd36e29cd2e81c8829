@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fbc3de9_92146759",
+        "filename": "common/rollback.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-05T20:51:52Z",
+      "side": 0,
+      "message": "I looked through the history and don\u0027t see an obvious reason why I added this check. One concern could be security (e.g., if we wanted to be sure this function wasn\u0027t called from RW), but I don\u0027t see any issues with calling this function.\n\nAre you making any future changes to start calling this function in RW or you just noticed this when working on related code?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "b0f84967411d26cd9e8f3bbd36e29cd2e81c8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
