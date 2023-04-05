@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45655a3a_9706777a",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-04-05T17:40:46Z",
+      "side": 1,
+      "message": "is this type declaration correct? see my comment below.",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "c016a200c49a558e6b9d2b8188b2a92dc82c5171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0f3cfd6_fd470892",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-04-05T17:40:46Z",
+      "side": 1,
+      "message": "a suggestion for simpler logic:\n\n`return \".\".join([*self.inherited_from, self.project_name])`",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "c016a200c49a558e6b9d2b8188b2a92dc82c5171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac7318ec_6471f4f9",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-04-05T17:40:46Z",
+      "side": 1,
+      "message": "based on this type declaration above, this should be a tautology (you declare it as a `list[str]`).",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 52
+      },
+      "revId": "c016a200c49a558e6b9d2b8188b2a92dc82c5171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
