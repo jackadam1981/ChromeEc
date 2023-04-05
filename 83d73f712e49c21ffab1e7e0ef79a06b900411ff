@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6bca749e_d4156473",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-04-05T21:14:32Z",
+      "side": 1,
+      "message": "Agreed. I want to have this patch available in case it is determined to be the correct solution. From my understanding of the issue the hard resets are unexpected since by the point they occur the AP is already up, it makes sense to me to then clear these since they were never handled but the system has been rebooted so they probably are stale.",
+      "parentUuid": "4f1137a9_3ed758bc",
+      "revId": "83d73f712e49c21ffab1e7e0ef79a06b900411ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7352cb0_5641a826",
         "filename": "zephyr/program/rex/program.conf",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2023-04-05T21:10:33Z",
       "side": 1,
       "message": "i just noticed this is not in `include/config.h`\n\nare we now adding config options exclusively on the zephyr side\neven though we use the same code for cros ec?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 49
+      },
+      "revId": "83d73f712e49c21ffab1e7e0ef79a06b900411ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb7f07d_d123a69d",
+        "filename": "zephyr/program/rex/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-04-05T21:14:32Z",
+      "side": 1,
+      "message": "I only found this due to finding a similar issue with this fix on corsola (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4012838)",
+      "parentUuid": "c7352cb0_5641a826",
       "range": {
         "startLine": 82,
         "startChar": 0,
