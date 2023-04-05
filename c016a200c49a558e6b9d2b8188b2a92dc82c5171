@@ -188,6 +188,30 @@
       },
       "revId": "c016a200c49a558e6b9d2b8188b2a92dc82c5171",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5845cb89_32584d8c",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-04-05T21:51:04Z",
+      "side": 1,
+      "message": "One of two choices here:\n\n1. Accept a string, and simply prevent it from acting weird.  This works nicely, as a string is also a `Iterable[str]`.\n\n```\ninherited_from \u003d [self.inherited_from] if isinstance(self.inherited_from, str) else self.inherited_from\n```\n\n2. Error out when this happens:\n\n```\nif isinstance(self.inherited_from, str):\n    raise TypeError(\"inherited_from cannot be a string\")\n```\n\nI\u0027m without much opinion on either, so pick what you think works best.",
+      "parentUuid": "ba02dc06_4abbb036",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 52
+      },
+      "revId": "c016a200c49a558e6b9d2b8188b2a92dc82c5171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
