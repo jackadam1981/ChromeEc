@@ -33,6 +33,29 @@
       "message": "I\u0027d like to complete the investigation regarding why the unexpected hard resets are occuring before this is submitted (since this is effectively papering over that issue).",
       "revId": "83d73f712e49c21ffab1e7e0ef79a06b900411ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7352cb0_5641a826",
+        "filename": "zephyr/program/rex/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-04-05T21:10:33Z",
+      "side": 1,
+      "message": "i just noticed this is not in `include/config.h`\n\nare we now adding config options exclusively on the zephyr side\neven though we use the same code for cros ec?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 49
+      },
+      "revId": "83d73f712e49c21ffab1e7e0ef79a06b900411ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
