@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d19b6406_1fc90f68",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-05T17:59:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "45655a3a_9706777a",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "c016a200c49a558e6b9d2b8188b2a92dc82c5171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0f3cfd6_fd470892",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f32b77a_31dc104b",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-05T17:59:59Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "f0f3cfd6_fd470892",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "c016a200c49a558e6b9d2b8188b2a92dc82c5171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac7318ec_6471f4f9",
         "filename": "zephyr/zmake/zmake/project.py",
         "patchSetId": 3
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-05T17:40:46Z",
       "side": 1,
       "message": "based on this type declaration above, this should be a tautology (you declare it as a `list[str]`).",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 52
+      },
+      "revId": "c016a200c49a558e6b9d2b8188b2a92dc82c5171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f460618c_61142c42",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-05T17:59:59Z",
+      "side": 1,
+      "message": "I want it to be a list of strings but also don\u0027t want to unnecessarily blow up if somebody does `register(inherited_from\u003d\"base\")` I can make it a typing.Union",
+      "parentUuid": "ac7318ec_6471f4f9",
       "range": {
         "startLine": 65,
         "startChar": 0,
