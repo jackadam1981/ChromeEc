@@ -68,7 +68,8 @@ void slp_event(enum gpio_signal signal)
 
 static void board_init_transport(void)
 {
-	enum fp_transport_type ret_transport = get_fp_transport_type();
+	enum fp_transport_type ret_transport =
+		fpsensor_detect_get_transport_type();
 
 	ccprints("TRANSPORT_SEL: %s", fp_transport_type_to_str(ret_transport));
 
@@ -103,8 +104,9 @@ static void board_init_transport(void)
 		ccprints("ERROR: Selected transport is not valid.");
 	}
 
-	ccprints("TRANSPORT_SEL: %s",
-		 fp_transport_type_to_str(get_fp_transport_type()));
+	ccprints(
+		"TRANSPORT_SEL: %s",
+		fp_transport_type_to_str(fpsensor_detect_get_transport_type()));
 }
 
 /* Initialize board. */

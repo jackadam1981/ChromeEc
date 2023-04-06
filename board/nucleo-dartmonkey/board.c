@@ -102,8 +102,9 @@ static void board_init(void)
 
 	spi_configure();
 
-	ccprints("TRANSPORT_SEL: %s",
-		 fp_transport_type_to_str(get_fp_transport_type()));
+	ccprints(
+		"TRANSPORT_SEL: %s",
+		fp_transport_type_to_str(fpsensor_detect_get_transport_type()));
 
 	/* Enable interrupt on PCH power signals */
 	gpio_enable_interrupt(GPIO_SLP_ALT_L);

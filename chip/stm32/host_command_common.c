@@ -28,7 +28,7 @@ host_command_protocol_info(struct host_cmd_handler_args *args)
 	 */
 	if (IS_ENABLED(CONFIG_FINGERPRINT_MCU) &&
 	    (curr_transport_type == FP_TRANSPORT_TYPE_UNKNOWN))
-		curr_transport_type = get_fp_transport_type();
+		curr_transport_type = fpsensor_detect_get_transport_type();
 
 	if (IS_ENABLED(CONFIG_USART_HOST_COMMAND) &&
 	    curr_transport_type == FP_TRANSPORT_TYPE_UART)

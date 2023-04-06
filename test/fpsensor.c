@@ -55,7 +55,8 @@ test_static int test_host_command_protocol_info(
 
 	mock_ctrl_fpsensor_detect.fpsensor_detect_get_type_return =
 		FP_SENSOR_TYPE_FPC;
-	mock_ctrl_fpsensor_detect.get_fp_transport_type_return = transport_type;
+	mock_ctrl_fpsensor_detect.fpsensor_detect_get_transport_type_return =
+		transport_type;
 
 	rv = test_send_host_command(EC_CMD_GET_PROTOCOL_INFO, 0, NULL, 0, &info,
 				    sizeof(info));

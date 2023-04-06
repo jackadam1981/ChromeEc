@@ -120,8 +120,9 @@ void board_init(void)
 
 	spi_configure(spi_select);
 
-	ccprints("TRANSPORT_SEL: %s",
-		 fp_transport_type_to_str(get_fp_transport_type()));
+	ccprints(
+		"TRANSPORT_SEL: %s",
+		fp_transport_type_to_str(fpsensor_detect_get_transport_type()));
 
 	fp_driver = fpc_sensor_get_interface();
 

@@ -7,7 +7,7 @@
 #include "gpio.h"
 #include "timer.h"
 
-enum fp_transport_type get_fp_transport_type(void)
+enum fp_transport_type fpsensor_detect_get_transport_type(void)
 {
 	enum fp_transport_type ret;
 

@@ -18,7 +18,7 @@ const char *fp_transport_type_to_str(enum fp_transport_type type);
 const char *fp_sensor_type_to_str(enum fp_sensor_type type);
 const char *fp_sensor_spi_select_to_str(enum fp_sensor_spi_select type);
 enum fp_sensor_type fpsensor_detect_get_type(void);
-enum fp_transport_type get_fp_transport_type(void);
+enum fp_transport_type fpsensor_detect_get_transport_type(void);
 enum fp_sensor_spi_select fpsensor_detect_get_spi_select(void);
 
 #ifdef __cplusplus
