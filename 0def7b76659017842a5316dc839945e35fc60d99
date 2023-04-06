@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc0c9f1d_1d5d6717",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 15
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-06T23:26:56Z",
+      "side": 0,
+      "message": "Even if we\u0027re not using the linker for boringssl, this is a generic toolchain file, so we should handle the linker case:\n\n```\nif (\"${CC_NAME}\" STREQUAL \"gcc\")\nset(CMAKE_LINKER ${CROSS_COMPILE}ld)\nelse()\nset(CMAKE_LINKER ${CROSS_COMPILE}ld.lld)\nendif()\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "0def7b76659017842a5316dc839945e35fc60d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0be16dd_41b29f65",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 15
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-06T23:26:56Z",
+      "side": 0,
+      "message": "It looks like some of the tools  are missing in the new version: `objcopy`, `objdump`, `readelf`. I don\u0027t think we are using them, but we should keep them for completeness.\n\nThey can just be added as:\n\n```\nset(CMAKE_OBJCOPY ${CROSS_COMPILE}objcopy)\nset(CMAKE_OBJDUMP ${CROSS_COMPILE}objdump)\nset(CMAKE_READELF ${CROSS_COMPILE}readelf)\n```",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "0def7b76659017842a5316dc839945e35fc60d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
