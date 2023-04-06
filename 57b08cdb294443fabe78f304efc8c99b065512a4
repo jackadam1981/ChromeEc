@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ed39dd_54c498af",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-06T00:10:12Z",
+      "side": 1,
+      "message": "This test will fail if someone changes the tuning parameters in the driver.  Is that what you want here?  Can these tuning values ever change, or are they fixed by the vendor?",
+      "range": {
+        "startLine": 960,
+        "startChar": 0,
+        "endLine": 960,
+        "endChar": 50
+      },
+      "revId": "57b08cdb294443fabe78f304efc8c99b065512a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
