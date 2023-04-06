@@ -34,6 +34,24 @@
       "parentUuid": "5f48642c_667c57b4",
       "revId": "cf7ea892f09a023b29820a2d6f49f6fe91b142eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b34f76_bcd9729e",
+        "filename": "zephyr/test/skyrim/tests/common/src/common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-04-06T17:50:21Z",
+      "side": 1,
+      "message": "`usb_mux_config.c` uses `__override`.",
+      "parentUuid": "3ce3b5ac_5e9966a5",
+      "revId": "cf7ea892f09a023b29820a2d6f49f6fe91b142eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
