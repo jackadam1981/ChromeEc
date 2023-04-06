@@ -12,6 +12,7 @@ mock-$(HAS_MOCK_FPSENSOR_CRYPTO) += fpsensor_crypto_mock.o
 mock-$(HAS_MOCK_FPSENSOR_DETECT) += fpsensor_detect_mock.o
 mock-$(HAS_MOCK_FPSENSOR_STATE) += fpsensor_state_mock.o
 mock-$(HAS_MOCK_MKBP_EVENTS) += mkbp_events_mock.o
+mock-$(HAS_MOCK_MOCKABLE_CLOCK_ENABLE_MODULE) += mockable_clock_enable_module_mock.o
 mock-$(HAS_MOCK_ROLLBACK) += rollback_mock.o
 mock-$(HAS_MOCK_ROLLBACK_LATEST) += rollback_latest_mock.o
 mock-$(HAS_MOCK_TCPC) += tcpc_mock.o
