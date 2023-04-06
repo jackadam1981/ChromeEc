@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcd35d6_5110fbe6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-06T08:50:07Z",
+      "side": 1,
+      "message": "The main problem is `clock_enable_module` is hard to mock.\nI added a new function called `mockable_clock_enable_module`.",
+      "parentUuid": "221fd079_99d10545",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "e8e905d5ed2eec44ac05f60328e13bb097a2717c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ad86ccb_2dcee660",
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "Let\u0027s just ignore `checkpatch.pl` and name it as `.h`. `clang-format` is really the only format that matters for the fingerprint code. I\u0027m going to try to remove `checkpatch` since we have `clang-format` now: https://issuetracker.google.com/276785070.",
       "parentUuid": "e6be94b4_58408f12",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "e8e905d5ed2eec44ac05f60328e13bb097a2717c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e189a539_fd4309b1",
+        "filename": "include/scoped_fast_cpu.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-06T08:50:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c9c1d2fe_a2a161a7",
       "range": {
         "startLine": 30,
         "startChar": 0,
