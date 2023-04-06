@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c20be8c_5e9f805c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-04-06T23:52:43Z",
+      "side": 1,
+      "message": "added comment",
+      "revId": "de42801fa4f497d4599a08019545bba7a3a8980b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9906e30_1cf3aa3a",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1522,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-04-06T23:52:43Z",
+      "side": 1,
+      "message": "@tomhughes\nHi Tom,\nI flashed the new firmware, ran the command, and got this error:\n```\nlocalhost / # ectool --name\u003dcros_fp flashprotect enable\n2023-04-06T23:47:13.741584Z ERROR ectool: [ec_command_async.h(55)] Failed to start command\nFlash protect returned with errors: -1000\n```\nIn order to understand where my function is failing, I added print strings to my code and re-flashed the new mcu. Now running the above command, I am seeing the below in the `/var/log/cros_fp.log`:\n```\n2023-04-06T23:37:30.664000Z [109.283208 HC 0x0015]\n2023-04-06T23:37:30.664000Z [109.283269 flash_command_protect_0]\n2023-04-06T23:37:30.664000Z [109.283319 flash_command_protect_1]\n2023-04-06T23:37:30.664000Z [109.283369 flash_command_protect_v2_0]\n2023-04-06T23:37:30.664000Z [109.283423 flash_command_protect_v2_1]\n2023-04-06T23:37:30.664000Z [109.283477 flash_command_protect_v2_2]\n2023-04-06T23:37:30.664000Z [109.283529 flash_command_protect_v2_3]\n2023-04-06T23:37:30.664000Z [109.283586 flash_command_protect_v2_5]\n2023-04-06T23:37:30.664000Z [109.283639 flash_command_protect_v2_6]\n2023-04-06T23:37:30.664000Z [109.283691 flash_command_protect_v2_11]\n2023-04-06T23:37:30.764000Z [109.383597 I am at deferred function]\n2023-04-06T23:37:30.764000Z [109.383683 I am at deferred function2]\n```\n\nThis means that my function is properly going to the correct version, executing the first portion of the command properly (reaching \"I am at deferred function2\"). However, I do not see my function going to the second action `FLASH_PROTECT_GET_RESULT:` This is something I am trying to figure out. This is my implementation in libec: https://chromium-review.googlesource.com/c/chromiumos/platform2/+/4389804",
+      "range": {
+        "startLine": 1522,
+        "startChar": 10,
+        "endLine": 1522,
+        "endChar": 37
+      },
+      "revId": "de42801fa4f497d4599a08019545bba7a3a8980b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
