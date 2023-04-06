@@ -142,6 +142,30 @@
       },
       "revId": "73aab4bb2eb443f4cdbc9b2088505b80289fbfc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66bdc0e4_74b632d0",
+        "filename": "chip/host/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-06T23:44:20Z",
+      "side": 1,
+      "message": "\u003e But if we add test_mockable to every chip, if someone wants to change the chip code in the future, it may easily be screwed up.\n\u003e e.g. You can take a look at the complex #if #elif #else #endif macros in chip/npcx/clock.c.\n\nI\u0027m not sure I follow the reasoning. Yes, there are lot of `#ifdef`\u0027s in `chip/npcx/clock.c`, which is bad. Are you concerned that the mock will somehow be included in the release build? The [mock framework](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/common/mock/README.md) was specifically designed to [only affect the test and fuzzer builds](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/Makefile;l\u003d199-208;drc\u003d12e1ed299bf8a1323702fe44cff6a16c36a5d644) and the [mock can easily verify this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/mock/timer_mock.c;l\u003d8-10;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46).",
+      "parentUuid": "b8d65c04_ae00b942",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "73aab4bb2eb443f4cdbc9b2088505b80289fbfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
