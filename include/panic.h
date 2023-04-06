@@ -10,7 +10,7 @@
 #define __CROS_EC_PANIC_H
 
 #include "common.h"
-#include "panic_defs.h"
+#include "ec_commands.h"
 #include "software_panic.h"
 
 #include <stdarg.h>
