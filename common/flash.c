@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "cros_board_info.h"
+#include "ec_commands.h"
 #include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -1519,17 +1520,22 @@ static struct flash_protect_async flash_protect_async_data = {
 
 static void crec_flash_set_protect_deferred(void)
 {
+	ccprints("I am at deferred function");
 	if (crec_flash_set_protect(flash_protect_async_data.mask,
-				   flash_protect_async_data.flags))
+				   flash_protect_async_data.flags)){
 		flash_protect_async_data.rc = EC_RES_ERROR;
-	else
+		ccprints("I am at deferred function1");}
+	else{
 		flash_protect_async_data.rc = EC_RES_SUCCESS;
+		ccprints("I am at deferred function2");
+	}
 }
 DECLARE_DEFERRED(crec_flash_set_protect_deferred);
 
 static enum ec_status
 flash_command_protect_v2(struct host_cmd_handler_args *args)
 {
+	ccprints("flash_command_protect_v2_0");
 	const struct ec_params_flash_protect_v2 *p = args->params;
 	struct ec_response_flash_protect *r = args->response;
 	int rc = EC_RES_SUCCESS;
@@ -1544,22 +1550,29 @@ flash_command_protect_v2(struct host_cmd_handler_args *args)
 	 * wouldn't get the response.)
 	 */
 
+	ccprints("flash_command_protect_v2_1");
 	switch (p->action) {
 	case FLASH_PROTECT_ASYNC:
 		if (p->mask) {
+			ccprints("flash_command_protect_v2_2");
 			rc = flash_protect_async_data.rc;
+			ccprints("flash_command_protect_v2_3");
 			if (rc != EC_RES_SUCCESS) {
+				ccprints("flash_command_protect_v2_4");
 				rc = EC_RES_BUSY;
 				break;
 			}
 			hook_call_deferred(
 				&crec_flash_set_protect_deferred_data,
 				100 * MSEC);
+			ccprints("flash_command_protect_v2_5");
 			/* Not our job to return the result of
 			 * the previous command.
 			 */
 			flash_protect_async_data.rc = EC_RES_BUSY;
+			ccprints("flash_command_protect_v2_6");
 		}
+		ccprints("flash_command_protect_v2_6p5");
 		return EC_RES_SUCCESS;
 
 	case FLASH_PROTECT_GET_RESULT:
@@ -1570,10 +1583,13 @@ flash_command_protect_v2(struct host_cmd_handler_args *args)
 		 * because it provides information to the caller about
 		 * the actual result.
 		 */
+		ccprints("flash_command_protect_v2_7");
 		rc = flash_protect_async_data.rc;
 		if (rc == EC_RES_BUSY || rc == EC_RES_ERROR)
-			break;
+			ccprints("flash_command_protect_v2_8");
+		break;
 
+		ccprints("flash_command_protect_v2_9");
 		r->flags = crec_flash_get_protect();
 
 		/* Indicate which flags are valid on this platform */
@@ -1592,21 +1608,26 @@ flash_command_protect_v2(struct host_cmd_handler_args *args)
 		break;
 
 	default:
+		ccprints("flash_command_protect_v2_10");
 		rc = EC_RES_INVALID_PARAM;
 	}
 
+	ccprints("flash_command_protect_v2_11");
 	return rc;
 }
 #endif
 
 static enum ec_status flash_command_protect(struct host_cmd_handler_args *args)
 {
+	ccprints("flash_command_protect_0");
 #if defined(CONFIG_FLASH_PROTECT_DEFERRED)
 	if (args->version == 2) {
+		ccprints("flash_command_protect_1");
 		return flash_command_protect_v2(args);
 	}
 #endif
 
+	ccprints("flash_command_protect_2");
 	const struct ec_params_flash_protect *p = args->params;
 	struct ec_response_flash_protect *r = args->response;
 
