@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79f590ca_91318ce9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-04-06T06:31:45Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "aeb83be6_27e7f784",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "80335e9e1c376a98306ffaa074da41c20a4ab6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "117add8c_bc2913c5",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-03-31T10:03:42Z",
       "side": 1,
       "message": "not sure how this delta should be handled.\nshould we fold it into the previous patch?",
+      "revId": "80335e9e1c376a98306ffaa074da41c20a4ab6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d88322e_a8f272b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-04-06T06:31:45Z",
+      "side": 1,
+      "message": "You mean meld this patch to the merge commit? I think it\u0027s better to have a separate commit to indicate the delta.",
+      "parentUuid": "117add8c_bc2913c5",
       "revId": "80335e9e1c376a98306ffaa074da41c20a4ab6d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
