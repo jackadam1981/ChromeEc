@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f58dd71_ffff52c6",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-06T18:17:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f32b77a_31dc104b",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "c016a200c49a558e6b9d2b8188b2a92dc82c5171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac7318ec_6471f4f9",
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "One of two choices here:\n\n1. Accept a string, and simply prevent it from acting weird.  This works nicely, as a string is also a `Iterable[str]`.\n\n```\ninherited_from \u003d [self.inherited_from] if isinstance(self.inherited_from, str) else self.inherited_from\n```\n\n2. Error out when this happens:\n\n```\nif isinstance(self.inherited_from, str):\n    raise TypeError(\"inherited_from cannot be a string\")\n```\n\nI\u0027m without much opinion on either, so pick what you think works best.",
       "parentUuid": "ba02dc06_4abbb036",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 52
+      },
+      "revId": "c016a200c49a558e6b9d2b8188b2a92dc82c5171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5727be50_050b7824",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-06T18:17:25Z",
+      "side": 1,
+      "message": "Did option 1",
+      "parentUuid": "5845cb89_32584d8c",
       "range": {
         "startLine": 65,
         "startChar": 0,
