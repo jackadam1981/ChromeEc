@@ -50,6 +50,7 @@ config PLATFORM_EC_CHARGER_RUNTIME_CONFIG
 config PLATFORM_EC_CHARGE_MANAGER
 	bool "Charge manager"
 	default y
+	select ADC
 	help
 	  The EC charge manager manages charging the battery from all supported
 	  power sources.  This includes dedicated charge ports (such as a
