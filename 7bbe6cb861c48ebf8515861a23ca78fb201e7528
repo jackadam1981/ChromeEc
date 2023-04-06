@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f24f7b4e_759d30ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-06T12:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b246857f_4134534f",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "7bbe6cb861c48ebf8515861a23ca78fb201e7528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7cee21a_6366f8c8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d97743_0007e611",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-06T12:30:43Z",
+      "side": 1,
+      "message": "Created CL crrev/c/4403978. In many cases it\u0027s not possible to just replace `#ifdef` with `IS_ENABLE()`.",
+      "parentUuid": "c7cee21a_6366f8c8",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "7bbe6cb861c48ebf8515861a23ca78fb201e7528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "759824dc_981fde97",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-05T20:39:26Z",
       "side": 1,
       "message": "FYI (no change needed): you no longer have to declare all variables at the beginning: https://crrev.com/c/3256741",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 14
+      },
+      "revId": "7bbe6cb861c48ebf8515861a23ca78fb201e7528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e7f485_d938d283",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-06T12:30:43Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "759824dc_981fde97",
       "range": {
         "startLine": 261,
         "startChar": 1,
