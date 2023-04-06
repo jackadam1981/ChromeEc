@@ -22,6 +22,30 @@
       },
       "revId": "57b08cdb294443fabe78f304efc8c99b065512a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d247493_1ba2d750",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-06T14:53:59Z",
+      "side": 1,
+      "message": "Any settings in `anx7483_set_default_tuning()` are from a giant table in the datasheet from the vendor.  Anything we do in the board code past that is specific to our own SI tuning",
+      "parentUuid": "77ed39dd_54c498af",
+      "range": {
+        "startLine": 960,
+        "startChar": 0,
+        "endLine": 960,
+        "endChar": 50
+      },
+      "revId": "57b08cdb294443fabe78f304efc8c99b065512a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
