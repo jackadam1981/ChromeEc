@@ -22,6 +22,30 @@
       },
       "revId": "ee360946d3eed7589e5cbefcf576c56dcd45dc4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1cb6749_b8a2cec9",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-06T10:39:49Z",
+      "side": 1,
+      "message": "Installing depot_tools would not work, because `repo info` requires the ChromiumOS source tree setup correctly.\n\n```\n$ repo init -u https://chromium.googlesource.com/chromiumos/manifest -b main\n$ repo info external/gob/boringssl/boringssl | grep \u0027Manifest revision\u0027\nerror: project external/gob/boringssl/boringssl (src/third_party/boringssl) not found\n```\n\nI believe the script would not want to download the chromeos source tree.\n\n----\nA possible solution for that is parsing the XML manually:\nhttps://chromium.googlesource.com/chromiumos/manifest/+/HEAD/full.xml\n\n```\n$ grep boringssl .repo/manifests/full.xml -A3 | grep revision\n           revision\u003d\"e0d601a57fde7d67a1c771e7d87468faf1f8fe55\"\n```\n\nBut I don\u0027t think that is a better idea.\n\n---\n\nBTW, I think the proper solution is setting up a branch name for boringssl, and use the branch name here.\n\nFiled a bug for that: b/277182059",
+      "parentUuid": "4d846c71_71e0515d",
+      "range": {
+        "startLine": 77,
+        "startChar": 90,
+        "endLine": 77,
+        "endChar": 132
+      },
+      "revId": "ee360946d3eed7589e5cbefcf576c56dcd45dc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
