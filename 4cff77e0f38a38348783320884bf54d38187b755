@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c0090e1_b82b773c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-06T18:17:11Z",
+      "side": 1,
+      "message": "Can you run the `compare_build.sh` script? I would expect this to generate the exact same code.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "4cff77e0f38a38348783320884bf54d38187b755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e38fd2a4_a71ed62d",
         "filename": "common/rollback.c",
         "patchSetId": 1
@@ -65,6 +88,29 @@
         "startChar": 0,
         "endLine": 182,
         "endChar": 36
+      },
+      "revId": "4cff77e0f38a38348783320884bf54d38187b755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d415cfa_ca13893c",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-06T18:17:11Z",
+      "side": 1,
+      "message": "This looks like good cleanup, but slightly unrelated since it\u0027s not using `IS_ENABLED`. Separate CL?",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 70
       },
       "revId": "4cff77e0f38a38348783320884bf54d38187b755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
