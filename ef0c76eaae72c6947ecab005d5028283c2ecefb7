@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2a358ff_d67b3e43",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-04-06T14:09:40Z",
+      "side": 1,
+      "message": "I think it\u0027s worth mentioning the build command here. i.e. \"is auto-generated at `/build/kernel/include/linux/mfd/cros_ec_commands.h` when `make build_cros_ec_commands` or `make buildall` is run.",
+      "parentUuid": "127b1769_5d2825c2",
+      "range": {
+        "startLine": 136,
+        "startChar": 55,
+        "endLine": 136,
+        "endChar": 69
+      },
+      "revId": "ef0c76eaae72c6947ecab005d5028283c2ecefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50a3829_5794218a",
         "filename": "docs/ap-ec-comm.md",
         "patchSetId": 2
@@ -120,6 +144,30 @@
       "side": 1,
       "message": "The problem is syntax changes are frown upon as it makes backporting difficult [https://www.kernel.org/doc/html/v4.17/process/4.Coding.html#pitfalls]: \n\u003e But pure coding style fixes are seen as noise by the development community; they tend to get a chilly reception. So this type of patch is best avoided. It is natural to fix the style of a piece of code while working on it for other reasons, but coding style changes should not be made for their own sake.",
       "parentUuid": "f50a3829_5794218a",
+      "range": {
+        "startLine": 138,
+        "startChar": 32,
+        "endLine": 138,
+        "endChar": 55
+      },
+      "revId": "ef0c76eaae72c6947ecab005d5028283c2ecefb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb9e705_2064de3a",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-04-06T14:09:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ae7ffa9b_57c3cdb8",
       "range": {
         "startLine": 138,
         "startChar": 32,
