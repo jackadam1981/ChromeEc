@@ -8,3 +8,7 @@ tests:
   nissa.sub_board:
     extra_dtc_overlay_files:
     - "boards/generic_npcx.dts"
+  nissa.common:
+    extra_dtc_overlay_files:
+    - "boards/generic_npcx.dts"
+    - "boards/sm5803.dtsi"

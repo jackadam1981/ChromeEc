@@ -6,7 +6,10 @@
  * meaningful to testing.
  */
 
+#include "battery.h"
 #include "common.h"
+
+#include <zephyr/fff.h>
 
 __overridable void pd_power_supply_reset(int port)
 {
@@ -25,3 +28,5 @@ __overridable void pd_set_input_current_limit(int port, uint32_t max_ma,
 __overridable void usb_interrupt_c0(enum gpio_signal signal)
 {
 }
+
+FAKE_VALUE_FUNC(enum battery_present, battery_is_present);
