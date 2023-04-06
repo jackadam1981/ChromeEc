@@ -46,6 +46,30 @@
       },
       "revId": "ee360946d3eed7589e5cbefcf576c56dcd45dc4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bdbfeac_e829fa83",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-06T23:55:32Z",
+      "side": 1,
+      "message": "Even if we have a branch, we will have to hope that no one ever changes the branch name in the manifest, which is not guaranteed (e.g., someone decides that boringssl needs to be updated to get a security fix and just changes it to a specific commit with the fix).\n\nI think you can add this to your commands to only sync the boringssl project:\n\n```\n$ repo init -u https://chromium.googlesource.com/chromiumos/manifest -b main\n$ repo info external/gob/boringssl/boringssl | grep \u0027Manifest revision\u0027\n$ repo sync external/gob/boringssl/boringssl\n```",
+      "parentUuid": "f1cb6749_b8a2cec9",
+      "range": {
+        "startLine": 77,
+        "startChar": 90,
+        "endLine": 77,
+        "endChar": 132
+      },
+      "revId": "ee360946d3eed7589e5cbefcf576c56dcd45dc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
