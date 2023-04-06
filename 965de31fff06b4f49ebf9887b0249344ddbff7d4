@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7de5b0ca_ad959846",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-06T15:22:04Z",
+      "side": 1,
+      "message": "There\u0027s nothing technically wrong with using `#include` on a `.cc` file but it\u0027s not a common pattern. Is there an reason not to just add `fpsensor_debug.cc` to the `build.mk` file? You could either wrap the entire contents of the file in a `#if defined(CONFIG_CMD_FPSENSOR_DEBUG)` or there might be a way to conditionally compile it from `build.mk` (I\u0027d have to check on that).",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "965de31fff06b4f49ebf9887b0249344ddbff7d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
