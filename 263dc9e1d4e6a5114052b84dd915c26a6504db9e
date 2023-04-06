@@ -238,6 +238,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0586893b_f8659458",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-06T14:42:01Z",
+      "side": 1,
+      "message": "added as byte array, removed struct",
+      "parentUuid": "66a17629_19f1a15d",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 26
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96a28b0f_8f7fe655",
@@ -853,6 +877,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f75000a0_27a9cf6b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-06T14:42:01Z",
+      "side": 1,
+      "message": "used the same",
+      "parentUuid": "27fd902d_4e93529b",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8874a4fb_27ad7859",
@@ -1371,6 +1419,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a36785bf_e35e102f",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-06T14:42:01Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "857f33db_bdd02096",
+      "range": {
+        "startLine": 263,
+        "startChar": 46,
+        "endLine": 263,
+        "endChar": 68
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56747d34_6f4f947d",
@@ -1808,6 +1880,30 @@
       "side": 1,
       "message": "Not sure what that means. Errors should be printed as either logging.error or logging.critical, since this is next to an exit statement it should be logging.critical.",
       "parentUuid": "ccf1adae_fd786311",
+      "range": {
+        "startLine": 414,
+        "startChar": 20,
+        "endLine": 414,
+        "endChar": 24
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7006db2_15a2787d",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-06T14:42:01Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "38adfdf1_889064b6",
       "range": {
         "startLine": 414,
         "startChar": 20,
@@ -2265,6 +2361,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5f38f6c_dc13bf55",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-06T14:42:01Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "ee76f993_c8e46cd3",
+      "range": {
+        "startLine": 498,
+        "startChar": 31,
+        "endLine": 498,
+        "endChar": 58
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7eba9de_b84ff4a7",
@@ -2326,6 +2446,30 @@
       "side": 1,
       "message": "Cool, change the description to match?",
       "parentUuid": "cc1594e2_24a4f086",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 0
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d84d1b_722bc2a2",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-06T14:42:01Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "54b41b7c_2166009e",
       "range": {
         "startLine": 500,
         "startChar": 0,
@@ -2585,6 +2729,30 @@
       "side": 1,
       "message": "```\n$ ./util/mchp/crisis_rcvry_util.py \nINFO:root:crisis_rcvry_util.py utility  \nTraceback (most recent call last):\n  File \"/home/fabiobaltieri/chromiumos/src/platform/ec/./util/mchp/crisis_rcvry_util.py\", line 648, in \u003cmodule\u003e\n    main(sys.argv[1:])\n  File \"/home/fabiobaltieri/chromiumos/src/platform/ec/./util/mchp/crisis_rcvry_util.py\", line 644, in main\n    uart_handle.close()\nUnboundLocalError: local variable \u0027uart_handle\u0027 referenced before assignment\n```",
       "parentUuid": "3c4b0b5f_90997131",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 23
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b139d87_d39e79ce",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-06T14:42:01Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "c87fa6c7_81d0703a",
       "range": {
         "startLine": 551,
         "startChar": 0,
