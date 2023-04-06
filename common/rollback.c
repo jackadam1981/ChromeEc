@@ -51,23 +51,24 @@ static int get_rollback_offset(int region)
  */
 static void lock_rollback(uint32_t key)
 {
-#ifdef CONFIG_ROLLBACK_MPU_PROTECT
+	if (!IS_ENABLED(CONFIG_ROLLBACK_MPU_PROTECT))
+		return;
+
 	mpu_lock_rollback(1);
 	irq_unlock(key);
-#endif
 }
 
 static uint32_t unlock_rollback(void)
 {
-#ifdef CONFIG_ROLLBACK_MPU_PROTECT
 	uint32_t key;
+
+	if (!IS_ENABLED(CONFIG_ROLLBACK_MPU_PROTECT))
+		return 0;
 
 	key = irq_lock();
 	mpu_lock_rollback(0);
+
 	return key;
-#else
-	return 0;
-#endif
 }
 
 static void clear_rollback(struct rollback_data *data)
