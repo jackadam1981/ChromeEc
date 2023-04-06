@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38fd2a4_a71ed62d",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-06T16:27:31Z",
+      "side": 1,
+      "message": "How about this?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "4cff77e0f38a38348783320884bf54d38187b755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f335df2_62c9dca7",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-06T16:27:31Z",
+      "side": 1,
+      "message": "You may be able to remove this. I don\u0027t see anything unique to CONFIG_ROLLBACK_SECRET_SIZE in rollback_get_secret.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 34
+      },
+      "revId": "4cff77e0f38a38348783320884bf54d38187b755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d46340f3_dfd2d3ae",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-06T16:27:31Z",
+      "side": 1,
+      "message": "How about this?",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 36
+      },
+      "revId": "4cff77e0f38a38348783320884bf54d38187b755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
