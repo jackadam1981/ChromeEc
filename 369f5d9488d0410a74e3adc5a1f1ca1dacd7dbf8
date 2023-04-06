@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "493ef66e_717c32bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-06T15:00:34Z",
+      "side": 1,
+      "message": "Once this lands I will need to update to go/ti50-fw-releases link 😊 Spelling is hard.\n\nI saw that the file was renamed, but it still took me another 45 second to actually figure out what was different.",
+      "revId": "369f5d9488d0410a74e3adc5a1f1ca1dacd7dbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14d16bda_7c51c59b",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-06T15:00:34Z",
+      "side": 1,
+      "message": "it can be a follow up CL (or I can do it since I am sheriff now): we should add M113 and M114 to this list. 0.24.21 will be the prePVT version for M114",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "369f5d9488d0410a74e3adc5a1f1ca1dacd7dbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
