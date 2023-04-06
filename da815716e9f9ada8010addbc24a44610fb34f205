@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3600a3fe_0676b340",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-06T09:04:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8ac6d3c_5dc0c563",
+      "range": {
+        "startLine": 15,
+        "startChar": 34,
+        "endLine": 15,
+        "endChar": 64
+      },
+      "revId": "da815716e9f9ada8010addbc24a44610fb34f205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "170822b9_7ff0561a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8415e89e_22f8f1ad",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-06T09:04:29Z",
+      "side": 1,
+      "message": "`check_compiler_flag` would not work inside the toolchain file.\n\nIt will output this error message:\n```\ncheck_compiler_flag: CXX: needs to be enabled before use.\n```\n\nThe reason for that is because there is no \"project\" defined in the toolchain stage.\n\nIf you really want a proper way to use CMake without hacks, we should rewrite the whole EC \"make files\" into CMake. But I think that is a totally different project.\n\n(And if that is the case, we should consider using bazle instead of CMake.)",
+      "parentUuid": "170822b9_7ff0561a",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "da815716e9f9ada8010addbc24a44610fb34f205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ccfcfef_72ac39d8",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-03T21:43:07Z",
       "side": 1,
       "message": "nit: don\u0027t need \"the\" here. Just \"Enable Link Time Optimization.\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "da815716e9f9ada8010addbc24a44610fb34f205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e99cefee_aa96762e",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 14
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-06T09:04:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ccfcfef_72ac39d8",
       "range": {
         "startLine": 27,
         "startChar": 9,
