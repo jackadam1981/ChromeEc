@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd50ea65_435fc294",
+        "filename": "zephyr/test/skyrim/tests/baseboard/src/power_signals.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-06T21:01:50Z",
+      "side": 1,
+      "message": "I would call this same function after as well just to be safe.\n\nAre there any GPIO or power state logic that needs resetting? (especially if a test aborts)",
+      "range": {
+        "startLine": 84,
+        "startChar": 39,
+        "endLine": 84,
+        "endChar": 65
+      },
+      "revId": "0f11a5f3622ca131cce505469699f20a725debc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e6d7226_b14842e2",
+        "filename": "zephyr/test/skyrim/tests/common/src/common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-06T21:01:50Z",
+      "side": 1,
+      "message": "Use `test_mockable` from `include/common.h`",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "0f11a5f3622ca131cce505469699f20a725debc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
