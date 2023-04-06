@@ -51,23 +51,24 @@ static int get_rollback_offset(int region)
  */
 static void lock_rollback(uint32_t key)
 {
-#ifdef CONFIG_ROLLBACK_MPU_PROTECT
+	if (!IS_ENABLED(CONFIG_ROLLBACK_MPU_PROTECT))
+		return;
+
 	mpu_lock_rollback(1);
 	irq_unlock(key);
-#endif
 }
 
 static uint32_t unlock_rollback(void)
 {
-#ifdef CONFIG_ROLLBACK_MPU_PROTECT
 	uint32_t key;
+
+	if (!IS_ENABLED(CONFIG_ROLLBACK_MPU_PROTECT))
+		return 0;
 
 	key = irq_lock();
 	mpu_lock_rollback(0);
+
 	return key;
-#else
-	return 0;
-#endif
 }
 
 static void clear_rollback(struct rollback_data *data)
@@ -192,25 +193,23 @@ static int get_rollback_erase_size_bytes(int region)
 }
 
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
+#ifdef CONFIG_SHA256
 static int add_entropy(uint8_t *dst, const uint8_t *src, const uint8_t *add,
 		       unsigned int add_len)
 {
 	int ret = 0;
-#ifdef CONFIG_SHA256
 	BUILD_ASSERT(SHA256_DIGEST_SIZE == CONFIG_ROLLBACK_SECRET_SIZE);
 	struct sha256_ctx ctx;
 	uint8_t *hash;
-#ifdef CONFIG_ROLLBACK_SECRET_LOCAL_ENTROPY_SIZE
-	uint8_t extra;
-	int i;
-#endif
 
 	SHA256_init(&ctx);
 	SHA256_update(&ctx, src, CONFIG_ROLLBACK_SECRET_SIZE);
 	SHA256_update(&ctx, add, add_len);
 #ifdef CONFIG_ROLLBACK_SECRET_LOCAL_ENTROPY_SIZE
+	uint8_t extra;
+
 	/* Add some locally produced entropy */
-	for (i = 0; i < CONFIG_ROLLBACK_SECRET_LOCAL_ENTROPY_SIZE; i++) {
+	for (int i = 0; i < CONFIG_ROLLBACK_SECRET_LOCAL_ENTROPY_SIZE; i++) {
 		if (!board_get_entropy(&extra, 1))
 			goto failed;
 		SHA256_update(&ctx, &extra, 1);
@@ -225,11 +224,11 @@ static int add_entropy(uint8_t *dst, const uint8_t *src, const uint8_t *add,
 failed:
 #endif
 	always_memset(&ctx, 0, sizeof(ctx));
-#else
-#error "Adding entropy to secret in rollback region requires SHA256."
-#endif
 	return ret;
 }
+#else
+#error "Adding entropy to secret in rollback region requires SHA256."
+#endif /* CONFIG_SHA256 */
 #endif /* CONFIG_ROLLBACK_SECRET_SIZE */
 
 /**
