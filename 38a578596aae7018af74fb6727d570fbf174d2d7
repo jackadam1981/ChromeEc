@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8ff484b_03964372",
+        "filename": "zephyr/emul/emul_nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-06T19:55:42Z",
+      "side": 1,
+      "message": "There are two PPCs using the same emulator, driver, and devicetree node string.  There\u0027s the NX20P3483, which most new platforms use and interacts with a TCPC to source/sink Vbus.  Then there\u0027s the NX20P3481, which older platforms used which can source/sink with no TCPC interactions.\n\nI opted to cover both in the same emulator since they use the same driver and it\u0027s just this one section which needs to differ.",
+      "parentUuid": "9f22a4ee_3e5e00be",
+      "revId": "38a578596aae7018af74fb6727d570fbf174d2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac38d3c7_906b4a7b",
         "filename": "zephyr/test/drivers/nx20p348x/src/nx20p3481.c",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2023-04-05T22:59:17Z",
       "side": 1,
       "message": "extra brackets here and below",
+      "range": {
+        "startLine": 24,
+        "startChar": 15,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "38a578596aae7018af74fb6727d570fbf174d2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c00b544_d51b6ecf",
+        "filename": "zephyr/test/drivers/nx20p348x/src/nx20p3481.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-06T19:55:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac38d3c7_906b4a7b",
       "range": {
         "startLine": 24,
         "startChar": 15,
