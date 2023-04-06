@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8720b87a_bb75e2fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-04-06T07:48:02Z",
+      "side": 1,
+      "message": "```\nThe following options are now in Kconfig:\n\nCONFIG_USBC_PPC_NX20P3481\n\nPlease run this to update the list of allowed ad-hoc CONFIGs and include this\nupdate in your CL:\n\n   cp /tmp/new_config_allowed.txt util/config_allowed.txt\n```\n\n^^ just this",
+      "revId": "753c1e034f1ed37014a3909b4c62b1d0d8e7c6d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
