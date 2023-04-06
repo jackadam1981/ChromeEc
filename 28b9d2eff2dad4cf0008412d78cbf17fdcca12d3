@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd31e8d6_60f2af72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-06T16:30:49Z",
+      "side": 1,
+      "message": "This is slightly weird because the charge manager \"shouldn\u0027t\" need ADC if we\u0027re not using CONFIGs that indicate we need it.  But on the other hand, I don\u0027t know of any times we try compiling with ADC disabled except perhaps when setting up a new board.  But it is weird because many boards are only using ADC for thermistors, which would not be at all relevant here. \n\nAt any rate, I\u0027ll trust your judgement here.",
+      "revId": "28b9d2eff2dad4cf0008412d78cbf17fdcca12d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
