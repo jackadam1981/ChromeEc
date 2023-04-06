@@ -80,6 +80,8 @@
 
 /* indicate MT8186 is processing a chipset reset. */
 static bool is_resetting;
+/* indicate MT8186 is AP reset is held by servo or GSC. */
+static bool is_held;
 /* indicate MT8186 is processing a AP forcing shutdown. */
 static bool is_shutdown;
 /* indicate MT8186 has been dropped to S5G3 from the last IN_AP_RST state . */
@@ -123,6 +125,22 @@ static void set_pmic_pwroff(void)
 	};
 
 	GPIO_SET_LEVEL(GPIO_EC_PMIC_EN_ODL, 1);
+}
+
+void chipset_warm_reset_interrupt(enum gpio_signal signal)
+{
+	int sys_rst_ext = gpio_get_level(GPIO_SYS_RST_ODL);
+
+	/* If this is not a chipset_reset, the ap_rst must be held by gsc or
+	 * servo.
+	 */
+	if (!is_resetting && sys_rst_ext == 0 &&
+	    gpio_get_level(signal) == sys_rst_ext)
+		is_held = true;
+	else
+		is_held = false;
+
+	power_signal_interrupt(signal);
 }
 
 static void reset_request_interrupt_deferred(void)
@@ -238,6 +256,7 @@ static void power_reset_host_sleep_state(void)
  *
  * S5 is a temp stage, which will be put into G3 after s5_inactivity_timeout.
  * is_resetting flag indicate it's resetting chipset, and it's always S0.
+ * is_held flag indicate the AP reset is held by servo or GSC, and is always S0.
  * is_shutdown flag indicates it's shutting down the AP, it goes for S5.
  * is_s5g3_passed flag indicates it has shutdown from S5 to G3 since last
  * shutdown.
@@ -250,7 +269,7 @@ static enum power_state power_get_signal_state(void)
 	 * while the chipset is resetting, the intermediate power signal state
 	 * is not reflecting the current power state.
 	 */
-	if (is_resetting)
+	if (is_resetting || is_held)
 		return POWER_S0;
 	if (is_shutdown)
 		return POWER_S5;
