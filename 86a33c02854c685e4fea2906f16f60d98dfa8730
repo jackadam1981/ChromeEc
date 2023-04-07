@@ -16,6 +16,24 @@
       "message": "Is there a way to ensure this runs on the build that failed?",
       "revId": "86a33c02854c685e4fea2906f16f60d98dfa8730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd78c468_d474add6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-04-07T23:52:17Z",
+      "side": 1,
+      "message": "I built this for kukui locally and it succeeded.",
+      "parentUuid": "6abf34ee_5aa2195d",
+      "revId": "86a33c02854c685e4fea2906f16f60d98dfa8730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
