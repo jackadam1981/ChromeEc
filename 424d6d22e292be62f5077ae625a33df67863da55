@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd4f473e_3f2c4089",
+        "filename": "board/hatch_fp/board_rw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T20:33:25Z",
+      "side": 1,
+      "message": "\u003e Do you mean after this line to ensure fpc_sensor_get_interface() didn\u0027t return NULL?\n\nYep, exactly.\n\n\u003e  It might also make sense to put a similar check at some point in fpsensor.cc where the structure is being used.\n\nYeah, maybe at the beginning of the `while` loop where the \"state machine\" code lives in `fpsensor.cc`.",
+      "parentUuid": "14fbeb75_d8dc5a8b",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 40
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43b30c75_6f878ba9",
         "filename": "board/nocturne_fp/board_rw.c",
         "patchSetId": 10
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "These are the required functions that would otherwise be defined in `bep.a`, but are not available without `private`, so moving into a separate commit would result in builds failing in public builds. \n\nI don\u0027t think public builds will block the CL so I\u0027m okay with breaking out if it makes the review easier, but that\u0027s why it was included here.\n\nThe same goes for the `#if PRIVATE` lines, but the `static` change was just closely related in that they can be static now because we created the structure.",
       "parentUuid": "3ee85659_956ddfd1",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 0
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a70d9aa_46f747fc",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T20:33:25Z",
+      "side": 1,
+      "message": "\u003e so moving into a separate commit would result in builds failing in public builds.\n\nIs that still the case if the commit that does that comes before this one?\n\nI guess if that still breaks the build, you could still split it out but make sure to only submit them together (CQ+2 at the same time). I don\u0027t think we have to make any guarantees that the public build works for every commit; just that whatever is in pulled from `main` at any given point will build.",
+      "parentUuid": "319beaee_61190544",
       "range": {
         "startLine": 92,
         "startChar": 1,
@@ -390,6 +438,30 @@
       "side": 1,
       "message": "I tried to break this down into the smallest CL that included the struct and it\u0027s most basic usage, and compile in all cases (libfp, bep, elan, and private build). I *think* I could define the struct in a separate CL and not break anything. I\u0027ll give it a try.",
       "parentUuid": "6ea8352b_5af9ab45",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 48
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0979d3_2bc7cfea",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T20:33:25Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to include the struct. You can just add the new functions on their own, right?",
+      "parentUuid": "f6a9e48d_d7ffeebf",
       "range": {
         "startLine": 157,
         "startChar": 0,

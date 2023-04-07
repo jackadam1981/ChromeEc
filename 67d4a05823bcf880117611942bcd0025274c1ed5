@@ -46,6 +46,30 @@
       },
       "revId": "67d4a05823bcf880117611942bcd0025274c1ed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e507cdc_93dc0037",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T20:33:25Z",
+      "side": 0,
+      "message": "Ah, I see. That\u0027s fine as-is then.",
+      "parentUuid": "8c6b6055_21822eb3",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 3
+      },
+      "revId": "67d4a05823bcf880117611942bcd0025274c1ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
