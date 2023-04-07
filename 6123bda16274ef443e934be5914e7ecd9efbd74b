@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6799bd19_37503402",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-07T20:40:16Z",
+      "side": 1,
+      "message": "Lgtm. +1 for now to give Tom a chance.",
+      "revId": "6123bda16274ef443e934be5914e7ecd9efbd74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36a55562_23cf14a7",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "\u003e Is it a valid dependency?\n\nNo. CONFIG_SHA256 is required if we want to update the secret, but CONFIG_ROLLBACK_SECRET_SIZE is needed to read the secret (e.g. in RW).\n\nIs auto-defining possible in CrosEC?",
       "parentUuid": "36a55562_23cf14a7",
+      "range": {
+        "startLine": 231,
+        "startChar": 52,
+        "endLine": 231,
+        "endChar": 67
+      },
+      "revId": "6123bda16274ef443e934be5914e7ecd9efbd74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c2a44e2_b5598dd6",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-07T20:40:16Z",
+      "side": 1,
+      "message": "\u003e Is auto-defining possible in CrosEC?\n\nI was referring to something we already do for CONFIG_LIBCRYPTOC:\n\n    #ifdef CONFIG_ROLLBACK_SECRET_SIZE\n    #define CONFIG_LIBCRYPTOC\n    #endif",
+      "parentUuid": "26138f17_27b2d69f",
       "range": {
         "startLine": 231,
         "startChar": 52,
