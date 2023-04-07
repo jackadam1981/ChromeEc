@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fb688d4_e70bb9f4",
+        "filename": "test/malloc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-07T16:41:36Z",
+      "side": 1,
+      "message": "Nobody is calling this?",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 39
+      },
+      "revId": "d7092bdf2607d9abc9139e553af15e3c984dbcde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dccc44a3_0fad1ac5",
+        "filename": "test/malloc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-07T16:41:36Z",
+      "side": 1,
+      "message": "Can we hook the assertion handler to validate the result?",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "d7092bdf2607d9abc9139e553af15e3c984dbcde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
