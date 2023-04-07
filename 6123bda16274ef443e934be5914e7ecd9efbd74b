@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a55562_23cf14a7",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-07T20:14:21Z",
+      "side": 1,
+      "message": "Have you thought about auto-defining CONFIG_SHA256 if CONFIG_ROLLBACK_SECRET_SIZE? Is it a valid dependency?",
+      "range": {
+        "startLine": 231,
+        "startChar": 52,
+        "endLine": 231,
+        "endChar": 67
+      },
+      "revId": "6123bda16274ef443e934be5914e7ecd9efbd74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
