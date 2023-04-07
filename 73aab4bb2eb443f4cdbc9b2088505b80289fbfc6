@@ -190,6 +190,30 @@
       },
       "revId": "73aab4bb2eb443f4cdbc9b2088505b80289fbfc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59d0ae50_d1f0b3c2",
+        "filename": "chip/host/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-07T06:23:12Z",
+      "side": 1,
+      "message": "Added some changes in zephyr to fix the build issue.\n\nAlthough IMO, this change is more fragile than the `mockable_clock_enable_module`.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4402425\n\nBut I\u0027m not the maintainer of EC repo, so I don\u0027t want to fight on this.",
+      "parentUuid": "c626c61d_fe93e90a",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "73aab4bb2eb443f4cdbc9b2088505b80289fbfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
