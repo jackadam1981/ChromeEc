@@ -6,8 +6,6 @@
 #ifndef __CROS_EC_DPS__H
 #define __CROS_EC_DPS__H
 
-#include "common.h"
-
 #include <stdbool.h>
 
 #define DPS_FLAG_DISABLED BIT(0)
