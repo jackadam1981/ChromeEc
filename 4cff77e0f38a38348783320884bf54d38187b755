@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "121e9100_5c134009",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-07T11:32:45Z",
+      "side": 1,
+      "message": "Same. What about a `secret` member if `CONFIG_ROLLBACK_SECRET_SIZE` is not defined?",
+      "parentUuid": "e38fd2a4_a71ed62d",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "4cff77e0f38a38348783320884bf54d38187b755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f335df2_62c9dca7",
@@ -96,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d593fbc7_deb145db",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-07T11:32:45Z",
+      "side": 1,
+      "message": "Do you think I haven\u0027t tried?\n\n`IS_ENABLED()` is not a magical tool which will fix everything. In some cases it does more harm than benefits.\n\nIn this case there are two problems\n\nFirst problem is that `struct rollback_data` has `secret` member [only when `CONFIG_ROLLBACK_SECRET_SIZE` is defined](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/rollback_private.h;l\u003d24-26;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46). Of course, if `IS_ENABLED()` is used properly then no access to `secret` will happen, but before these accesses are optimized out the compiler during parsing the code will complain that `secret` is not defined.\n\nSecond problem. When I try to use it I got the following error\n```\nld.lld: error: undefined symbol: IS_ENABLED_BAD_ARGS\n\u003e\u003e\u003e referenced by rollback.c:276 (/home/patryk/chromiumos/src/platform/ec/common/rollback.c:276)\n\u003e\u003e\u003e               build/bloonchipper/RO/common/rollback.o:(rollback_update)\nclang-16: error: ld.lld command failed with exit code 1 (use -v to see invocation)\n```\n\nCould you help me with these issues?",
+      "parentUuid": "9f335df2_62c9dca7",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 34
+      },
+      "revId": "4cff77e0f38a38348783320884bf54d38187b755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d46340f3_dfd2d3ae",
         "filename": "common/rollback.c",
         "patchSetId": 1
@@ -107,6 +155,30 @@
       "writtenOn": "2023-04-06T16:27:31Z",
       "side": 1,
       "message": "How about this?",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 36
+      },
+      "revId": "4cff77e0f38a38348783320884bf54d38187b755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94706f19_ac5dc6dc",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-07T11:32:45Z",
+      "side": 1,
+      "message": "Same story. What if `CONFIG_FLASH_ERASE_SIZE` is not defined?",
+      "parentUuid": "d46340f3_dfd2d3ae",
       "range": {
         "startLine": 182,
         "startChar": 0,
