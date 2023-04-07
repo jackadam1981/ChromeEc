@@ -52,6 +52,24 @@
       "parentUuid": "8dccbe31_a2ea3ce7",
       "revId": "0d4185381b906b534911bab7e53f5fbab218f1d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c6112de_e9c1a120",
+        "filename": "zephyr/emul/emul_nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-07T14:05:23Z",
+      "side": 1,
+      "message": "Done.  You were correct and I was definitely dereferencing the NULL",
+      "parentUuid": "b5af5ef1_e3779435",
+      "revId": "0d4185381b906b534911bab7e53f5fbab218f1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
