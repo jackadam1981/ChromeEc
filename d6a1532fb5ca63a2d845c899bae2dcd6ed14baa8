@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a3f884_00990d3f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 8001,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-07T21:35:16Z",
+      "side": 1,
+      "message": "I think handling vconn swap errors and finding a proper reaction are out of the scope of this CL.",
+      "parentUuid": "02ea2a56_4d44c647",
+      "revId": "d6a1532fb5ca63a2d845c899bae2dcd6ed14baa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b0597fc_7be79b42",
