@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14fbeb75_d8dc5a8b",
+        "filename": "board/hatch_fp/board_rw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-07T19:29:13Z",
+      "side": 1,
+      "message": "Do you mean after this line to ensure `fpc_sensor_get_interface()` didn\u0027t return NULL? It might also make sense to put a similar check at some point in `fpsensor.cc` where the structure is being used.",
+      "parentUuid": "2f487054_b546c728",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 40
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43b30c75_6f878ba9",
         "filename": "board/nocturne_fp/board_rw.c",
         "patchSetId": 10
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46e8066c_7f164d75",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-07T19:29:13Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "94d5418c_c85434e6",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7784e267_61b0b600",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 10
@@ -83,6 +131,30 @@
       "writtenOn": "2023-04-07T16:22:14Z",
       "side": 1,
       "message": "To make the diffing a little easier (https://google.github.io/eng-practices/review/developer/small-cls.html), can you break out the changes related to the size into a separate commit that creates variables for the sizes?\n\nFor example,\n\n```\nconstexpr int encrypted_template_size \u003d FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE;\n...\nr-\u003etemplate_size \u003d encrypted_template_size;\n```\n\n```\nconstexpr size_t algorithm_template_size \u003d sizeof(fp_buffer);\n...\nret \u003d validate_fp_buffer_offset(algorithm_template_size, offset, size);\n...\nuint8_t *positive_match_salt \u003d\n\t\t\tencrypted_template + algorithm_template_size;\n...\netc\n``` \n\nThen the diff in this CL will just be changing from something like:\n\n```\nr-\u003etemplate_size \u003d encrypted_template_size;\n```\n\nto\n\n```\nr-\u003etemplate_size \u003d fp_driver-\u003eencrypted_template_size;\n```\n\nwhich is a little easier to see is obviously correct.",
+      "range": {
+        "startLine": 380,
+        "startChar": 20,
+        "endLine": 380,
+        "endChar": 55
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a98bad_4659fee6",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-07T19:29:13Z",
+      "side": 1,
+      "message": "That\u0027s a good idea, will do.",
+      "parentUuid": "7784e267_61b0b600",
       "range": {
         "startLine": 380,
         "startChar": 20,
@@ -118,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "319beaee_61190544",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-07T19:29:13Z",
+      "side": 1,
+      "message": "These are the required functions that would otherwise be defined in `bep.a`, but are not available without `private`, so moving into a separate commit would result in builds failing in public builds. \n\nI don\u0027t think public builds will block the CL so I\u0027m okay with breaking out if it makes the review easier, but that\u0027s why it was included here.\n\nThe same goes for the `#if PRIVATE` lines, but the `static` change was just closely related in that they can be static now because we created the structure.",
+      "parentUuid": "3ee85659_956ddfd1",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 0
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b36b6fc4_f763f6ab",
         "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
         "patchSetId": 10
@@ -129,6 +225,30 @@
       "writtenOn": "2023-04-07T16:22:14Z",
       "side": 1,
       "message": "Let\u0027s use `IS_ENABLED` (see other comment) instead of `ifdef`. Same for the rest of the instances in this file.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 5
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18c1a0b0_f0d33732",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-07T19:29:13Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "b36b6fc4_f763f6ab",
       "range": {
         "startLine": 181,
         "startChar": 0,
@@ -164,6 +284,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c036a96_534a043e",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-07T19:29:13Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "89151e04_1aa1cd2b",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03da396e_aadc7853",
         "filename": "driver/fingerprint/fpc/fpc_sensor.h",
         "patchSetId": 10
@@ -187,6 +331,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1141c5b8_5144c507",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-07T19:29:13Z",
+      "side": 1,
+      "message": "This ended up here because `fp_maintenance` was removed from `include/fpsensor.h` and I didn\u0027t want to lose this description. I can copy it over in a separate CL though",
+      "parentUuid": "03da396e_aadc7853",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ea8352b_5af9ab45",
         "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
         "patchSetId": 10
@@ -198,6 +366,30 @@
       "writtenOn": "2023-04-07T16:22:14Z",
       "side": 1,
       "message": "Could the change here and the associated changes in the `.c` file (minus the driver struct) still work if put in a separate CL? It could be combined with the similar changes to the `bep` version as well. Something like \"Set up consistent sensor API\".",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 48
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a9e48d_d7ffeebf",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-07T19:29:13Z",
+      "side": 1,
+      "message": "I tried to break this down into the smallest CL that included the struct and it\u0027s most basic usage, and compile in all cases (libfp, bep, elan, and private build). I *think* I could define the struct in a separate CL and not break anything. I\u0027ll give it a try.",
+      "parentUuid": "6ea8352b_5af9ab45",
       "range": {
         "startLine": 157,
         "startChar": 0,
