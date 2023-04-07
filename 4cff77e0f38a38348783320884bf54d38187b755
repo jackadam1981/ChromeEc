@@ -261,6 +261,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb05d8b_960090a4",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-07T17:51:18Z",
+      "side": 1,
+      "message": "It\u0027s not. On STM32F4 sectors have different size, so they have different erase size.",
+      "parentUuid": "e6d13abc_c6416b54",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 36
+      },
+      "revId": "4cff77e0f38a38348783320884bf54d38187b755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d415cfa_ca13893c",
