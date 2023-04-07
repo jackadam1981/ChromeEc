@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fdc4572_92d75465",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-04-07T13:48:20Z",
+      "side": 1,
+      "message": "LGTM. I have a small suggestion for how to report a failure in a different way, but it\u0027s strictly optional; CQ+2 this as-is if you want to.",
+      "revId": "c01883be7fca50867cc78d1499930aedc382b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01fc16cb_44aa8400",
+        "filename": "test/malloc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-04-07T13:48:20Z",
+      "side": 1,
+      "message": "What if, instead of `return EC_ERROR_UNKNOWN` on line 44, you had `TEST_EQ(ptr[j], test_data[i].val, \"%d\")` so that you get a test failure assertion? You only hit that if it\u0027s going to fail, so you don\u0027t get a flood of logging for when the values pass.",
+      "revId": "c01883be7fca50867cc78d1499930aedc382b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
