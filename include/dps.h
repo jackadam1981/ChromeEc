@@ -46,6 +46,13 @@ struct dps_config_t {
 };
 
 /*
+ * DPS function enable
+ *
+ * @@param en: true enable dps, false otherwise.
+ */
+void dps_enable(bool en);
+
+/*
  * Get voltage in the current system load
  *
  * @return a voltage(mV) that the adapter supports to charge at the given port.
@@ -76,7 +83,6 @@ bool dps_is_enabled(void);
 void dps_update_stabilized_time(int port);
 
 #ifdef TEST_BUILD
-__test_only void dps_enable(bool en);
 __test_only int dps_init(void);
 __test_only struct dps_config_t *dps_get_config(void);
 __test_only bool dps_is_fake_enabled(void);
