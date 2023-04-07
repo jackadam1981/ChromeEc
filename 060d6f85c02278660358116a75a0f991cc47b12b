@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3fe8e88_c7d1a07b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2023-04-07T23:39:27Z",
+      "side": 1,
+      "message": "This needs to not violate 80ms limit per CTS MOI below.\n\nUSB Type-C Functional Test Specification\nhttps://usb.org/document-library/usb-type-c-functional-test-specification\n03/08/2023 Rev 0.90\n\n```\nTD 4.2.1 Source Connect Sink Test\n\nA. Purpose:\n1. Verify a Source transitions to Attached.SRC according to spec\n2. Verify a Source transitions to Unattached.SRC when Sink removed\n\n9. If PUT supports USB 3.1 DFP:\na. CVS verifies that:\ni. PUT attaches eSS terminations after Vbus on and within 80ms of Vbus\non [TD.4.2.1.V.10]\n```",
+      "revId": "060d6f85c02278660358116a75a0f991cc47b12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
