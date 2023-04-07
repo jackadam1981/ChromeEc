@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655358c7_7531704b",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T16:22:14Z",
+      "side": 0,
+      "message": "Looks like this is cleanup unrelated to this change? Can we put it in a separate commit?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 3
+      },
+      "revId": "67d4a05823bcf880117611942bcd0025274c1ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

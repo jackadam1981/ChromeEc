@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f487054_b546c728",
+        "filename": "board/hatch_fp/board_rw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T16:22:14Z",
+      "side": 1,
+      "message": "How about adding an `ASSERT(fp_driver)`, which will reboot if it fails?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 40
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43b30c75_6f878ba9",
+        "filename": "board/nocturne_fp/board_rw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T16:22:14Z",
+      "side": 1,
+      "message": "How about adding an `ASSERT(fp_driver)`, which will reboot if it fails?",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 40
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d5418c_c85434e6",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T16:22:14Z",
+      "side": 1,
+      "message": "Can you use the `IS_ENABLED` macro instead of `#ifdef`?\n\n```\nif (IS_ENABLED(SECTION_IS_RW)) {\n  fp_driver \u003d fpc_sensor_get_interface();\n  ASSERT(fp_driver);\n}\n```",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7784e267_61b0b600",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T16:22:14Z",
+      "side": 1,
+      "message": "To make the diffing a little easier (https://google.github.io/eng-practices/review/developer/small-cls.html), can you break out the changes related to the size into a separate commit that creates variables for the sizes?\n\nFor example,\n\n```\nconstexpr int encrypted_template_size \u003d FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE;\n...\nr-\u003etemplate_size \u003d encrypted_template_size;\n```\n\n```\nconstexpr size_t algorithm_template_size \u003d sizeof(fp_buffer);\n...\nret \u003d validate_fp_buffer_offset(algorithm_template_size, offset, size);\n...\nuint8_t *positive_match_salt \u003d\n\t\t\tencrypted_template + algorithm_template_size;\n...\netc\n``` \n\nThen the diff in this CL will just be changing from something like:\n\n```\nr-\u003etemplate_size \u003d encrypted_template_size;\n```\n\nto\n\n```\nr-\u003etemplate_size \u003d fp_driver-\u003eencrypted_template_size;\n```\n\nwhich is a little easier to see is obviously correct.",
+      "range": {
+        "startLine": 380,
+        "startChar": 20,
+        "endLine": 380,
+        "endChar": 55
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee85659_956ddfd1",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T16:22:14Z",
+      "side": 1,
+      "message": "Can this change be broken into a separate commit? It looks like they it may stand on its own.\n\nI\u0027m less sure about the `static` and `if PRIVATE`, but maybe those could be too.",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 0
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b36b6fc4_f763f6ab",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T16:22:14Z",
+      "side": 1,
+      "message": "Let\u0027s use `IS_ENABLED` (see other comment) instead of `ifdef`. Same for the rest of the instances in this file.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 5
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89151e04_1aa1cd2b",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T16:22:14Z",
+      "side": 1,
+      "message": "nit: I think you can say something like \"current finger state\" since the return type is already specified by the function declaration itself.",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03da396e_aadc7853",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T16:22:14Z",
+      "side": 1,
+      "message": "Can we put this in a separate commit since it\u0027s technically not related to this change?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea8352b_5af9ab45",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T16:22:14Z",
+      "side": 1,
+      "message": "Could the change here and the associated changes in the `.c` file (minus the driver struct) still work if put in a separate CL? It could be combined with the similar changes to the `bep` version as well. Something like \"Set up consistent sensor API\".",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 48
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
