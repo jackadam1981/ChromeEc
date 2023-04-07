@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9924e4f_c367950c",
+        "filename": "test/malloc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T18:01:32Z",
+      "side": 1,
+      "message": "Yes, it\u0027s a manual test right now that you\u0027d have to explicitly add because the only way to get it working on device is to recompile newlib with malloc debugging enabled. (See comment.)",
+      "parentUuid": "7fb688d4_e70bb9f4",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 39
+      },
+      "revId": "d7092bdf2607d9abc9139e553af15e3c984dbcde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dccc44a3_0fad1ac5",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-07T16:41:36Z",
       "side": 1,
       "message": "Can we hook the assertion handler to validate the result?",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "d7092bdf2607d9abc9139e553af15e3c984dbcde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83027c1f_b49b867e",
+        "filename": "test/malloc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T18:01:32Z",
+      "side": 1,
+      "message": "See other comment. I didn\u0027t want to spend much time making the test automated since it requires manual changes to use it.",
+      "parentUuid": "dccc44a3_0fad1ac5",
       "range": {
         "startLine": 102,
         "startChar": 1,
