@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d884777_9d101851",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-04-07T23:19:16Z",
+      "side": 1,
+      "message": "I tested. It works with these changes. However, the libec implementation for async command need to be modified because this command has a response. The first base command will return false because the size of response does not match what the `ioctl` returns (no response). we can discuss this later and decide the best way to solve this issue from libec side.",
+      "parentUuid": "b58ebff6_a547abdf",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f05da8b_f2c39235",
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "6b96becf_ace55b72",
+      "range": {
+        "startLine": 1603,
+        "startChar": 0,
+        "endLine": 1603,
+        "endChar": 42
+      },
+      "revId": "fcbfa2ce59c11b44cab069376e8f31f302755302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9937e02b_dd8cfea3",
+        "filename": "common/flash.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-04-07T23:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b4721e4_29f0321e",
       "range": {
         "startLine": 1603,
         "startChar": 0,
