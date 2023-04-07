@@ -99,8 +99,7 @@ static int ktu1125_power_path_control(int port, int enable)
 	int status = enable ? set_flags(port, KTU1125_CTRL_SW_CFG,
 					KTU1125_SW_AB_EN) :
 			      clr_flags(port, KTU1125_CTRL_SW_CFG,
-					KTU1125_SW_AB_EN | KTU1125_CC1S_VCONN |
-						KTU1125_CC2S_VCONN);
+					KTU1125_SW_AB_EN);
 
 	if (status) {
 		CPRINTS("ppc p%d: Failed to %s power path", port,
