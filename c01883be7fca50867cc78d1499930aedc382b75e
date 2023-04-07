@@ -33,6 +33,24 @@
       "message": "What if, instead of `return EC_ERROR_UNKNOWN` on line 44, you had `TEST_EQ(ptr[j], test_data[i].val, \"%d\")` so that you get a test failure assertion? You only hit that if it\u0027s going to fail, so you don\u0027t get a flood of logging for when the values pass.",
       "revId": "c01883be7fca50867cc78d1499930aedc382b75e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4ad6be_709b979d",
+        "filename": "test/malloc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-07T21:08:17Z",
+      "side": 1,
+      "message": "Thanks, used a slight variation.",
+      "parentUuid": "01fc16cb_44aa8400",
+      "revId": "c01883be7fca50867cc78d1499930aedc382b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
