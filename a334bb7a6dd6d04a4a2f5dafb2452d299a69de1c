@@ -34,6 +34,24 @@
       "parentUuid": "457fea8f_81498b42",
       "revId": "a334bb7a6dd6d04a4a2f5dafb2452d299a69de1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64fdd0b6_e83f0bed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-07T06:19:02Z",
+      "side": 1,
+      "message": "Rebased with the chain with:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4369174",
+      "parentUuid": "898e0e05_41a7b823",
+      "revId": "a334bb7a6dd6d04a4a2f5dafb2452d299a69de1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
