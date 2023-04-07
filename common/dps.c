@@ -83,7 +83,7 @@ bool dps_is_enabled(void)
 	return is_enabled;
 }
 
-test_export_static void dps_enable(bool en)
+void dps_enable(bool en)
 {
 	bool prev_en = is_enabled;
 
