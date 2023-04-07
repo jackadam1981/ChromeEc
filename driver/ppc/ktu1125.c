@@ -22,6 +22,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 static atomic_t irq_pending; /* Bitmask of ports signaling an interrupt. */
+static atomic_t cc_polarity; /* Bitmask of polarity for each port */
 
 static int read_reg(uint8_t port, int reg, int *regval)
 {
@@ -99,8 +100,7 @@ static int ktu1125_power_path_control(int port, int enable)
 	int status = enable ? set_flags(port, KTU1125_CTRL_SW_CFG,
 					KTU1125_SW_AB_EN) :
 			      clr_flags(port, KTU1125_CTRL_SW_CFG,
-					KTU1125_SW_AB_EN | KTU1125_CC1S_VCONN |
-						KTU1125_CC2S_VCONN);
+					KTU1125_SW_AB_EN);
 
 	if (status) {
 		CPRINTS("ppc p%d: Failed to %s power path", port,
@@ -283,11 +283,13 @@ static int ktu1125_set_polarity(int port, int polarity)
 {
 	if (polarity) {
 		/* CC2 active. */
+		atomic_or(&cc_polarity, BIT(port));
 		clr_flags(port, KTU1125_CTRL_SW_CFG, KTU1125_CC2S_VCONN);
 		return set_flags(port, KTU1125_CTRL_SW_CFG, KTU1125_CC1S_VCONN);
 	}
 
 	/* else CC1 active. */
+	atomic_clear_bits(&cc_polarity, BIT(port));
 	clr_flags(port, KTU1125_CTRL_SW_CFG, KTU1125_CC1S_VCONN);
 	return set_flags(port, KTU1125_CTRL_SW_CFG, KTU1125_CC2S_VCONN);
 }
@@ -345,11 +347,18 @@ static int ktu1125_discharge_vbus(int port, int enable)
 #ifdef CONFIG_USBC_PPC_VCONN
 static int ktu1125_set_vconn(int port, int enable)
 {
-	int status = enable ? set_flags(port, KTU1125_CTRL_SW_CFG,
-					KTU1125_VCONN_EN) :
-			      clr_flags(port, KTU1125_CTRL_SW_CFG,
-					KTU1125_VCONN_EN | KTU1125_CC1S_VCONN |
-						KTU1125_CC2S_VCONN);
+	int status = ktu1125_set_polarity(port, !!(cc_polarity & BIT(port)));
+
+	if (status) {
+		CPRINTS("ppc p%d: Failed to set polarity", port);
+		return status;
+	}
+
+	status = enable ? set_flags(port, KTU1125_CTRL_SW_CFG,
+				    KTU1125_VCONN_EN) :
+			  clr_flags(port, KTU1125_CTRL_SW_CFG,
+				    KTU1125_VCONN_EN | KTU1125_CC1S_VCONN |
+					KTU1125_CC2S_VCONN);
 
 	return status;
 }
