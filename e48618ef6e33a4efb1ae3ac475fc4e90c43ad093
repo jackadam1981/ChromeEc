@@ -16,6 +16,41 @@
       "message": "Hi Fabi,\n\nTo show the progress of the transfer of downloading the secondary loader and flashing ec image into our Internal flash chip.\nAs we can\u0027t use the progressbar module from python where the module is not currently available in the SDK.\n\nCan we add below code snippet into our python script to show the progress:\nprint(\"Transfer {0} of {1}\".format(curr_val, max_val),end\u003d\"\\r\")\n\nRegards,\nPrabhakar V",
       "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "102941d5_736a7c6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-10T15:47:07Z",
+      "side": 1,
+      "message": "Hi Fabio/Vijay,\n\nInstead of progress bar which is not available , Can we add the above code to show the status of the downloading/flash update into the internal flash in the command line\n\nRegards,\nPrabhakar V",
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55997b0e_1ba7e7c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-10T15:47:07Z",
+      "side": 1,
+      "message": "Hi Fabio/Vijay,\n\nInstead of progress bar which is not available , Can we add the above code to show the status of the downloading/flash update into the internal flash in the command line\n\nRegards,\nPrabhakar V",
+      "parentUuid": "25584ce4_3500ad0b",
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
