@@ -16,6 +16,24 @@
       "message": "Note that both the primitive `SHA*` functions and the `EVP*` functions all have return values that we are ignoring. I kept it that way in this CL to minimize the size and complexity of the diff. However, it might be a good idea to check these and do something on failure (such as `abort`, or something).",
       "revId": "23f96802b96ae00cd64e04b358b844942688c96c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "949ad1b6_bb53315b",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2013,
+      "author": {
+        "id": 1001040
+      },
+      "writtenOn": "2023-04-10T17:27:57Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "298d8389_a4b67a66",
+      "revId": "23f96802b96ae00cd64e04b358b844942688c96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
