@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8467b1b6_d2b5e7d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-10T23:42:31Z",
+      "side": 1,
+      "message": "To solve the multiline problem you could use the regex that Twister has in testsuite.py:227 but you\u0027d need to pipe the patch into a Python script.\n\n```\n\u003e\u003e\u003e testcase_regex \u003d re.compile(\n        r\"^\\s*(?:ZTEST|ZTEST_F|ZTEST_USER|ZTEST_USER_F)\\(\\s*(?P\u003csuite_name\u003e[a-zA-Z0-9_]+)\\s*,\"\n        r\"\\s*(?P\u003ctestcase_name\u003e[a-zA-Z0-9_]+)\\s*\",\n        re.MULTILINE)\n\n\u003e\u003e\u003e testcase_regex.findall(\"\\n\\n\\t ZTEST(    \\n   suite,\\n\\n\\t  test)\")\n[(\u0027suite\u0027, \u0027test\u0027)]\n```",
+      "revId": "2d1cf0ded81c52f7e970b4879a22cbad20661208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
