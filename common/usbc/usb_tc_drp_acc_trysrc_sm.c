@@ -310,6 +310,38 @@ static enum debug_level tc_debug_level = CONFIG_USB_PD_INITIAL_DEBUG_LEVEL;
 static enum debug_level tc_debug_level = DEBUG_LEVEL_1;
 #endif
 
+#ifdef CONFIG_USBC_DBC_DEBUG
+static bool dbc_debug_enable[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+static int command_dbc_debug(int argc, const char **argv)
+{
+	char *e;
+	int port;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	port = strtoi(argv[1], &e, 10);
+	if (*e || port >= board_get_usb_pd_port_count())
+		return EC_ERROR_PARAM1;
+
+	if (strcasecmp(argv[2], "enable")) {
+		dbc_debug_enable[port] = true;
+		ccprintf("Port %d DbC Debug Enabled", port);
+	}
+	else if (strcasecmp(argv[2], "disable")) {
+		dbc_debug_enable[port] = false;
+		ccprintf("Port %d DbC Debug Disabled", port);
+	}
+	else
+		return EC_ERROR_PARAM2;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(dbc_debug, command_dbc_debug, "[port] [enable/disable]",
+				"Enable/Disable DbC debug on type-c port");
+#endif /* CONFIG_USBC_DBC_DEBUG */
+
 #ifdef DEBUG_PRINT_FLAG_AND_EVENT_NAMES
 struct bit_name {
 	int value;
@@ -1802,6 +1834,11 @@ void tc_set_data_role(int port, enum pd_data_role role)
 
 	prev_data_role = tc[port].data_role;
 	tc[port].data_role = role;
+
+#ifdef CONFIG_USBC_DBC_DEBUG
+	if (role == PD_ROLE_UFP && dbc_debug_enable[port])
+		tc[port].data_role = PD_ROLE_DFP;
+#endif /* CONFIG_USBC_DBC_DEBUG */
 
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
 		set_usb_mux_with_current_data_role(port);

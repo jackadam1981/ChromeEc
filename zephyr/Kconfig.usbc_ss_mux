@@ -59,6 +59,12 @@ config PLATFORM_EC_USBC_RETIMER_FW_UPDATE
 	   update can only be performed on retimers which show up in the AP
 	   thunderbolt device entries.
 
+config PLATFORM_EC_USBC_DBC_DEBUG
+	bool "USBC DbC Debug"
+	help
+	  Enable DbC Debug configuration and console command
+
+
 endif  # PLATFORM_EC_USBC_SS_MUX
 
 endif #  PLATFORM_EC_USBC

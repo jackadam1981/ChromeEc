@@ -820,6 +820,10 @@
  */
 #undef CONFIG_BUTTON_TRIGGERED_RECOVERY
 
+
+/* Support for DbC debug over type C */
+#undef CONFIG_DBC_DEBUG_OVER_TYPEC
+
 /*
  * Compile detachable base support
  *
@@ -5013,6 +5017,9 @@
  * scan on that port.
  */
 #undef CONFIG_USBC_RETIMER_FW_UPDATE
+
+/* DbC Debug over USBC */
+#undef CONFIG_USBC_DBC_DEBUG
 
 /* Prevent enabling LPM of NB7V904M */
 #undef CONFIG_NB7V904M_LPM_OVERRIDE
