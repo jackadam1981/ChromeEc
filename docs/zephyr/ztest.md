@@ -1,7 +1,5 @@
 # Zephyr Testing
 
-[TOC]
-
 Before starting, developers should read the following:
 - [Zephyr Test Framework](https://docs.zephyrproject.org/latest/develop/test/ztest.html)
 - [Zephyr Test Runner (Twister)](https://docs.zephyrproject.org/latest/develop/test/twister.html)
@@ -13,9 +11,10 @@ as a reviewer on your CL.
 
 Ask a question:
 - If you're a googler, please post using our YAQS label [zephyr-rtos-test](http://yaqs/eng/t/zephyr-rtos-test)
-- External contributors should email to [zephyr-test-eng@google.com](mailto:zephyr-test-eng@google.com)
-  or ask on the public Zephyr discord [#testing](https://discord.com/channels/720317445772017664/733037944922964069)
-  channel for generic Zephyr questions.
+- External contributors should:
+    - email to [zephyr-test-eng@google.com](mailto:zephyr-test-eng@google.com)
+    - or [sign up to the Public Zephyr discord](https://discord.com/invite/Ck7jw53nU2), and then visit the [#testing](https://discord.com/channels/720317445772017664/733037944922964069)
+  channel for questions.
 
 ## Where to add tests?
 
