@@ -19,3 +19,14 @@ if git diff --no-ext-diff "${upstream_branch}" HEAD |
   echo "error: CPRINTS strings should not include newline characters" >&2
   exit 1
 fi
+
+# Check for missing 'test_' prefix from ZTEST definitions
+# TODO - Figure out how to handle multiline checks for example:
+#   ZTEST(foo,
+#         test_bar)
+if git diff --no-ext-diff "${upstream_branch}" HEAD |
+     grep -e '^+\(ZTEST\|ZTEST_F\|ZTEST_USER\|ZTEST_USER_F\)(.*)' |
+     grep -v test_; then
+  echo "error: 'test_' prefix missing from test function name" >&2
+  exit 1
+fi
