@@ -34,6 +34,24 @@
       "parentUuid": "cbde39f3_1f3445ed",
       "revId": "35bf5e9d9e915d8673fb5714f11c20173b213892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "455ac51d_1b908e6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2023-04-10T05:56:26Z",
+      "side": 1,
+      "message": "I moved to board_process_pd_alert first. I guess this issue will on other nissa/nereid family. Since they have shared IRQs with BC12, charger, TCPC. It is more critical.",
+      "parentUuid": "74e01009_afab0e43",
+      "revId": "35bf5e9d9e915d8673fb5714f11c20173b213892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
