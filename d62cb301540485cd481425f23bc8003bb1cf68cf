@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8cb86c_2414809f",
+        "filename": "zephyr/program/nissa/uldren/led_pins.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-04-10T04:07:02Z",
+      "side": 1,
+      "message": "2023",
+      "revId": "d62cb301540485cd481425f23bc8003bb1cf68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83dccdfc_55b3e808",
+        "filename": "zephyr/program/nissa/uldren/led_policy.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-04-10T04:07:02Z",
+      "side": 1,
+      "message": "Should be BATTERY_LEVEL_EMPTY with AC?",
+      "revId": "d62cb301540485cd481425f23bc8003bb1cf68cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
