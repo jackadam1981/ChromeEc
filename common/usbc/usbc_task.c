@@ -175,6 +175,9 @@ void pd_task(void *u)
 #endif
 
 	while (1) {
+		msleep(1000);
+		continue;
+
 		pd_timer_init(port);
 		pd_task_init(port);
 

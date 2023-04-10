@@ -27,6 +27,7 @@ GPIO_INT(SLP_S3_R_L,		PIN(F, 2), GPIO_INT_BOTH, power_signal_interrupt)
 #ifndef CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S4
 GPIO_INT(SLP_S4_R_L,		PIN(F, 3), GPIO_INT_BOTH, power_signal_interrupt)
 #endif
+UNIMPLEMENTED(SLP_S5_R_L)
 
 /* Button interrupts */
 GPIO_INT(VOLUME_UP,		PIN(D, 5), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
