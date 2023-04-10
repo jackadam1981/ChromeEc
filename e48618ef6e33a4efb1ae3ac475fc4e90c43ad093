@@ -51,6 +51,162 @@
       "parentUuid": "25584ce4_3500ad0b",
       "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c791f466_150ed434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-10T16:11:14Z",
+      "side": 1,
+      "message": "That should be fine for a simple progress bar.",
+      "parentUuid": "25584ce4_3500ad0b",
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "129ae999_5e60d384",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-10T16:11:14Z",
+      "side": 1,
+      "message": "Docstring sections should use the same indent as the reset of the file (4 spaces).  Please fix throughout the file.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#describing-arguments-in-docstrings",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d726d032_3aba9d65",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-10T16:11:14Z",
+      "side": 1,
+      "message": "Use ACK_TIMEOUT_SEC here.",
+      "range": {
+        "startLine": 104,
+        "startChar": 69,
+        "endLine": 104,
+        "endChar": 72
+      },
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c701effd_ca2d8b9b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-10T16:11:14Z",
+      "side": 1,
+      "message": "internal",
+      "range": {
+        "startLine": 115,
+        "startChar": 58,
+        "endLine": 115,
+        "endChar": 65
+      },
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d807921d_c1d54032",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-10T16:11:14Z",
+      "side": 1,
+      "message": "Create constant for these header offsets so all the magic numbers related to the crisis recovery are at the top of the file.",
+      "range": {
+        "startLine": 144,
+        "startChar": 23,
+        "endLine": 144,
+        "endChar": 24
+      },
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "741638f1_86147eed",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-10T16:11:14Z",
+      "side": 1,
+      "message": "Use `mchp_vendor_id_start` and `mchp_vendor_id_end` for the names here.  `loc` and `size` don\u0027t reflect how you are initializing the byte array.\n\nUse the same pattern of `_start` and `_end` for all the header fields.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20001976_0d890771",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-10T16:11:14Z",
+      "side": 1,
+      "message": "Follow Chrome\u0027s main boilerplate style:\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 0
+      },
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
