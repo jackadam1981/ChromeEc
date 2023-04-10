@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed85cbd3_14e6f281",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-10T20:36:16Z",
+      "side": 1,
+      "message": "Commit summary should be 50 characters or fewer.\n\nCommit body shouldn\u0027t be empty.  For instance \"Joining the testing channel on discord requires following the Zephyr discord invitation process.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "e7216dffeff176b998570c27dee78ed41f716575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

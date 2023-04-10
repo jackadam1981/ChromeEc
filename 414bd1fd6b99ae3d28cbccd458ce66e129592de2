@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ed8602_70fae62d",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-10T20:36:16Z",
+      "side": 0,
+      "message": "This renders correctly in the public HTML.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr/ztest.md\n\nI think we should keep it.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 5
+      },
+      "revId": "414bd1fd6b99ae3d28cbccd458ce66e129592de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
