@@ -1,0 +1,42 @@
+/* -*- mode:c -*-
+ *
+ * Copyright 2020 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Intel ADL-P-RVP-ITE board-specific configuration */
+
+/*
+ * Declare symbolic names for all the GPIOs that we care about.
+ * Note: Those with interrupt handlers must be declared first.
+ */
+
+GPIO(EC_SPI_OE_N, PIN(I, 2), GPIO_OUT_HIGH)
+
+GPIO(SLP_S0, PIN(D, 4), GPIO_INPUT)
+GPIO(SLP_S3, PIN(F, 2), GPIO_INPUT)
+GPIO(SLP_S4, PIN(F, 3), GPIO_INPUT)
+GPIO(AC_PRESENT, PIN(K, 3), GPIO_INPUT)
+GPIO(PLT_RST, PIN(H, 6), GPIO_INPUT)
+GPIO(POWER_BTN, PIN(E, 4), GPIO_INPUT)
+GPIO(RSMRST_PWRGD, PIN(F, 1), GPIO_INPUT)
+GPIO(ALL_SYS_PWRGD, PIN(F, 0), GPIO_INPUT)
+GPIO(PM_SLP_SUS_EC, PIN(K, 2), GPIO_INPUT)
+GPIO(PCH_PWROK_EC_R, PIN(K, 4), GPIO_INPUT)
+GPIO(SYS_PWROK_EC, PIN(D, 1), GPIO_INPUT)
+GPIO(PROCHOT_EC, PIN(C, 0), GPIO_INPUT)
+
+GPIO(PM_PWRBTN, PIN(D, 0), GPIO_INPUT)
+GPIO(SYS_RST, PIN(B, 6), GPIO_INPUT)
+GPIO(PCH_WAKE, PIN(J, 0), GPIO_INPUT)
+
+GPIO(EN_PP3300_A, PIN(L, 4), GPIO_INPUT)
+GPIO(DSW_PWROK, PIN(L, 6), GPIO_INPUT)
+GPIO(PM_RSMRST, PIN(C, 6), GPIO_INPUT)
+
+UNIMPLEMENTED(WP_L)
+UNIMPLEMENTED(ENTERING_RW)
+
+ALTERNATE(PIN_MASK(B, BIT(0) | BIT(1)), GPIO_ALT_FUNC_DEFAULT, MODULE_UART,
+	  GPIO_FLAG_NONE) /* UART1 B0/B1 */

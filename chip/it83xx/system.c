@@ -330,7 +330,8 @@ void system_reset(int flags)
 	/* Handle saving common reset flags. */
 	system_encode_save_flags(flags, &save_flags);
 
-	if (clock_ec_wake_from_sleep())
+	if (0)
+		// if (clock_ec_wake_from_sleep())
 		save_flags |= EC_RESET_FLAG_HIBERNATE;
 
 	/* Store flags to battery backed RAM. */
