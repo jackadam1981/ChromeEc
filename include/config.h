@@ -5651,7 +5651,7 @@
 #define CONFIG_WATCHDOG_MAX_RETRIES 4
 
 /* Watchdog period in ms; see also AUX_TIMER_PERIOD_MS */
-#define CONFIG_WATCHDOG_PERIOD_MS 1600
+#define CONFIG_WATCHDOG_PERIOD_MS 2500
 
 /* The leading time of watchdog warning timer. */
 #define CONFIG_WATCHDOG_WARNING_LEADING_TIME_MS 500

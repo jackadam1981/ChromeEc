@@ -6,7 +6,7 @@ if WATCHDOG
 
 config PLATFORM_EC_WATCHDOG_PERIOD_MS
 	int "Watchdog timeout in ms"
-	default 1600
+	default 2500
 	help
 	  Set the timeout of the watchdog timer. The watchdog timer reboots
 	  the system if no one reloads the watchdog timer before the timeout.
