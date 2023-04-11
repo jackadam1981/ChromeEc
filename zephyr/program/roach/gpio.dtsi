@@ -19,7 +19,7 @@
 		};
 
 		ec_flash_wp_odl: ec_flash_wp_odl {
-			gpios = <&gpioi 4 GPIO_INPUT>;
+			gpios = <&gpioi 4 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 
 		base_accel_int_l: base_accel_int_l {

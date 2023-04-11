@@ -4,6 +4,10 @@
  */
 
 / {
+	aliases {
+		int-wp = &int_wp;
+	};
+
 	gpio-interrupts {
 		compatible = "cros-ec,gpio-interrupts";
 
@@ -11,6 +15,11 @@
 			irq-pin = <&tchpad_int_odl>;
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "touchpad_interrupt";
+		};
+		int_wp: wp {
+			irq-pin = <&ec_flash_wp_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "switch_interrupt";
 		};
 	};
 };
