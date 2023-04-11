@@ -51,6 +51,24 @@
       "parentUuid": "9b574abb_77aa4075",
       "revId": "2d1cf0ded81c52f7e970b4879a22cbad20661208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c33b1a2_b8469567",
+        "filename": "util/presubmit_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-11T20:43:24Z",
+      "side": 1,
+      "message": "Might be able to do some pre-processing with `sed`? I\u0027m not as much of a bash wizard as some people so I generally prefer to handle more complex things with a Python script.",
+      "parentUuid": "8136cd43_435095a6",
+      "revId": "2d1cf0ded81c52f7e970b4879a22cbad20661208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
