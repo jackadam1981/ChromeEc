@@ -301,15 +301,14 @@ static int rt1739_init(int port)
 		 *
 		 * Otherwise, don't touch the VBUS_SWITCH_CTRL reg.
 		 */
-		RETURN_ERROR(
-			write_reg(port, RT1739_REG_SW_RESET, RT1739_SW_RESET));
-		usleep(1 * MSEC);
+		RETURN_ERROR(write_reg(port, RT1739_REG_VBUS_SWITCH_CTRL, 0));
 	}
 	RETURN_ERROR(write_reg(port, RT1739_REG_SYS_CTRL,
 			       RT1739_OT_EN | RT1739_SHUTDOWN_OFF));
 
 	RETURN_ERROR(rt1739_workaround(port));
 	RETURN_ERROR(rt1739_set_frs_enable(port, false));
+	RETURN_ERROR(rt1739_set_vconn(port, false));
 	RETURN_ERROR(update_reg(port, RT1739_REG_VBUS_DET_EN,
 				RT1739_VBUS_PRESENT_EN, MASK_SET));
 	RETURN_ERROR(update_reg(port, RT1739_REG_SBU_CTRL_01,
