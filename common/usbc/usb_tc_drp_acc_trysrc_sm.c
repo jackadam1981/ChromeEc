@@ -731,6 +731,7 @@ static void tc_detached(int port)
 {
 	TC_CLR_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
 	hook_notify(HOOK_USB_PD_DISCONNECT);
+	tc_enable_pd(port, 0);
 	tc_pd_connection(port, 0);
 	tcpm_debug_accessory(port, 0);
 	set_ccd_mode(port, 0);
