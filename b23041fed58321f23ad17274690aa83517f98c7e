@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b2bb394_aa8f889b",
+        "filename": "zephyr/shim/core/cortex-m/panic.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1519424
+      },
+      "writtenOn": "2023-04-11T17:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d4e09cb_59f0fa2d",
+      "range": {
+        "startLine": 44,
+        "startChar": 16,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "b23041fed58321f23ad17274690aa83517f98c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "004209f3_188d976f",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-10T23:55:48Z",
       "side": 1,
       "message": "I think this could be\n```\n #define CONFIG_SYSTEM_SAFE_MODE_PRINT_STACK\n```\nsince `CONFIG_PLATFORM_EC_SYSTEM_SAFE_MODE_PRINT_STACK` is not a number, it is just Y/N",
+      "range": {
+        "startLine": 2961,
+        "startChar": 0,
+        "endLine": 2962,
+        "endChar": 48
+      },
+      "revId": "b23041fed58321f23ad17274690aa83517f98c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47343533_c4a33b9b",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 2962,
+      "author": {
+        "id": 1519424
+      },
+      "writtenOn": "2023-04-11T17:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "004209f3_188d976f",
       "range": {
         "startLine": 2961,
         "startChar": 0,
