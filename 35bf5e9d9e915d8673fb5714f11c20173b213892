@@ -52,6 +52,24 @@
       "parentUuid": "74e01009_afab0e43",
       "revId": "35bf5e9d9e915d8673fb5714f11c20173b213892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f6ffe62_eae1f305",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-04-11T03:11:35Z",
+      "side": 1,
+      "message": "Task priority is unchanged compared to boards that don\u0027t use shared interrupts (so it\u0027s equally likely that other boards could be killed by excess TCPC interrupts in the same way), but it\u0027s possible that polling the charger and BC1.2 chips (which is unique to the nissa design) increases interrupt processing time to a problematic degree.\n\nIt would still be useful to try to understand what the partners are doing to cause this problem so we might be able to develop a more general solution, but as a board-specific workaround I\u0027m okay with this.",
+      "parentUuid": "455ac51d_1b908e6e",
+      "revId": "35bf5e9d9e915d8673fb5714f11c20173b213892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
