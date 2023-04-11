@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d68640_f5e24469",
+        "filename": "zephyr/program/corsola/voltorb/src/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-04-11T03:13:10Z",
+      "side": 1,
+      "message": "This doesn\u0027t match the comment. It will choose any voltage \u003e\u003d 15V. You might want this:\n\ncurr_mv \u003e\u003d 15000 \u0026\u0026 (prev_mv \u003c 15000 || curr_mv \u003c\u003d prev_mv)",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "5188f23eebfef06f3d0b53aaf9133cb625869a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
