@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89f1949d_191483ef",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-04-11T19:20:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31099959_92840b64",
+      "range": {
+        "startLine": 90,
+        "startChar": 15,
+        "endLine": 90,
+        "endChar": 36
+      },
+      "revId": "0766b803540425367e200a0f812f022053caa126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48d11488_ee374da6",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-11T17:35:18Z",
       "side": 1,
       "message": "FPU_EXCEPTION_FRAME_SIZE_BYTES",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "0766b803540425367e200a0f812f022053caa126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84b23acb_eef49993",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-04-11T19:20:19Z",
+      "side": 1,
+      "message": "There\u0027s isn\u0027t a cortex-m header common between zephyr and CrOS EC, so the #define is duplicated in this file.",
+      "parentUuid": "48d11488_ee374da6",
       "range": {
         "startLine": 103,
         "startChar": 15,
