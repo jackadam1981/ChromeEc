@@ -16,6 +16,23 @@
       "message": "To solve the multiline problem you could use the regex that Twister has in testsuite.py:227 but you\u0027d need to pipe the patch into a Python script.\n\n```\n\u003e\u003e\u003e testcase_regex \u003d re.compile(\n        r\"^\\s*(?:ZTEST|ZTEST_F|ZTEST_USER|ZTEST_USER_F)\\(\\s*(?P\u003csuite_name\u003e[a-zA-Z0-9_]+)\\s*,\"\n        r\"\\s*(?P\u003ctestcase_name\u003e[a-zA-Z0-9_]+)\\s*\",\n        re.MULTILINE)\n\n\u003e\u003e\u003e testcase_regex.findall(\"\\n\\n\\t ZTEST(    \\n   suite,\\n\\n\\t  test)\")\n[(\u0027suite\u0027, \u0027test\u0027)]\n```",
       "revId": "2d1cf0ded81c52f7e970b4879a22cbad20661208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b574abb_77aa4075",
+        "filename": "util/presubmit_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-04-11T17:23:23Z",
+      "side": 1,
+      "message": "You could what Tristan mentioned. Though you could also do a quick fix by changing the regex and using `tr`.\n\nSo something like:\n\n```\ngrep -e \u0027^+\\(ZTEST\\|ZTEST_F\\|ZTEST_USER\\|ZTEST_USER_F\\)([^)]+)\u0027 |\n     tr \u0027\\n\u0027 \u0027\u0027 |\n     grep -v test_; then\n```\n\nThe `([^)]+)` should match the first open and closing parens. Then the `tr` command will replace newlines with nothing.",
+      "revId": "2d1cf0ded81c52f7e970b4879a22cbad20661208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
