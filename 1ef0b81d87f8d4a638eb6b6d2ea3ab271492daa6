@@ -22,6 +22,30 @@
       },
       "revId": "1ef0b81d87f8d4a638eb6b6d2ea3ab271492daa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ef5f4b_5b10144f",
+        "filename": "zephyr/program/nissa/uldren/src/form_factor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1539437
+      },
+      "writtenOn": "2023-04-11T02:42:26Z",
+      "side": 1,
+      "message": "After confirm, we only need to keep the get config code.\nBut since, we don\u0027t need to do anything, delete the log here",
+      "parentUuid": "5a62c823_7afb624a",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "1ef0b81d87f8d4a638eb6b6d2ea3ab271492daa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
