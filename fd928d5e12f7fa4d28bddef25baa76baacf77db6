@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a09e55b_11b55968",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-11T20:13:41Z",
+      "side": 0,
+      "message": "This isn\u0027t gramatically correct. It should be:\n\n    \"\u003cport\u003e r \u003creg\u003e\"\n    \"\\n\u003cport\u003e w \u003creg\u003e \u003cval\u003e\"",
+      "range": {
+        "startLine": 628,
+        "startChar": 3,
+        "endLine": 628,
+        "endChar": 31
+      },
+      "revId": "fd928d5e12f7fa4d28bddef25baa76baacf77db6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
