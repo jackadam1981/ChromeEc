@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb68628e_79be5203",
+        "filename": "zephyr/program/corsola/voltorb/src/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-04-11T01:17:18Z",
+      "side": 1,
+      "message": "What if there\u0027s no 15V, but only 20V/9V?\n\nThe better approach would be,\n\nIf the battery is full, choose:\n\n- the voltage \u003e\u003d15V, and closest to the 15V\n   curr_mv \u003e\u003d 15000 \u0026\u0026 curr_mv \u003c\u003d prev_mv",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "c055ac0c8e12498f7ae69eb642f95529de4688a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
