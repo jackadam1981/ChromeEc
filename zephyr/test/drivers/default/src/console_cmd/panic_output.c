@@ -19,12 +19,29 @@ ZTEST_USER(console_cmd_panic_output, test_panicinfo)
 		   "Failed default print");
 }
 
-/* Test panicinfo when a panic hasn't occurred with an extra arg. */
-/* Should return successfully. */
+/* Test panicinfo with one invalid argument */
 ZTEST_USER(console_cmd_panic_output, test_panicinfo_bad_arg)
+{ (invalid)
+	int rv = shell_execute_cmd(get_ec_shell(), "panicinfo fish");
+
+	zassert_equal(rv, EC_ERROR_PARAM1, "Expected %d, but got %d",
+		      EC_ERROR_PARAM1, rv);
+}
+
+/* Test panicinfo with two arguments */
+ZTEST_USER(console_cmd_panic_output, test_panicinfo_two_args)
 {
-	zassert_ok(shell_execute_cmd(get_ec_shell(), "panicinfo fish"),
-		   "Failed default print with a bad argument");
+	int rv = shell_execute_cmd(get_ec_shell(), "panicinfo go fish");
+
+	zassert_equal(rv, EC_ERROR_PARAM_COUNT, "Expected %d, but got %d",
+		      EC_ERROR_PARAM_COUNT, rv);
+}
+
+/* Test clear argument. Should always succeed. */
+ZTEST_USER(console_cmd_panic_output, test_panicinfo_clear)
+{
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "panicinfo clear"),
+		   "Failed clear");
 }
 
 /* Fixture needed to save panic data state */
