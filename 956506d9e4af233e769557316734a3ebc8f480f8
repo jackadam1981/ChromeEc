@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e19fcb86_87d7401f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-11T23:34:00Z",
+      "side": 1,
+      "message": "If it\u0027s a real hang, the wdt triggers whether it\u0027s 2.5 or 1.6 sec.\n\nOne option is to keep the bar high (\u003d1.6) during development (CONFIG_SYSTEM_UNLOCKED) and relax the bar in production.",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "956506d9e4af233e769557316734a3ebc8f480f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
