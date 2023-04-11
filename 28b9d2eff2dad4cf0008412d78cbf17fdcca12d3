@@ -16,6 +16,24 @@
       "message": "This is slightly weird because the charge manager \"shouldn\u0027t\" need ADC if we\u0027re not using CONFIGs that indicate we need it.  But on the other hand, I don\u0027t know of any times we try compiling with ADC disabled except perhaps when setting up a new board.  But it is weird because many boards are only using ADC for thermistors, which would not be at all relevant here. \n\nAt any rate, I\u0027ll trust your judgement here.",
       "revId": "28b9d2eff2dad4cf0008412d78cbf17fdcca12d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b84f53f_dac2e65b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-04-11T01:27:40Z",
+      "side": 1,
+      "message": "The issue is that including the header at all without an ADC driver enabled causes an error, so even though it only uses analog functions in some configurations we\u0027d have to avoid using the include file in the other cases.\n\nCome to think of it, hacking the ADC header to avoid errors in that configuration might be a better solution.",
+      "parentUuid": "bd31e8d6_60f2af72",
+      "revId": "28b9d2eff2dad4cf0008412d78cbf17fdcca12d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
