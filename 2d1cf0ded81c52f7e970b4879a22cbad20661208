@@ -33,6 +33,24 @@
       "message": "You could what Tristan mentioned. Though you could also do a quick fix by changing the regex and using `tr`.\n\nSo something like:\n\n```\ngrep -e \u0027^+\\(ZTEST\\|ZTEST_F\\|ZTEST_USER\\|ZTEST_USER_F\\)([^)]+)\u0027 |\n     tr \u0027\\n\u0027 \u0027\u0027 |\n     grep -v test_; then\n```\n\nThe `([^)]+)` should match the first open and closing parens. Then the `tr` command will replace newlines with nothing.",
       "revId": "2d1cf0ded81c52f7e970b4879a22cbad20661208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8136cd43_435095a6",
+        "filename": "util/presubmit_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-04-11T17:44:22Z",
+      "side": 1,
+      "message": "I did try that but ran into a problem when using `pcregrep -M` all new lines were stripped so I had a one line result like `ZTEST(foo, fail)ZTEST(foo, test_good)`.  `grep` doesn\u0027t have a multi-line check.\n\nAlso `git diff` adds a `+` to every new line so the output looks like\n```\n+ZTEST(foo,\n+      test_bar)\n```",
+      "parentUuid": "9b574abb_77aa4075",
+      "revId": "2d1cf0ded81c52f7e970b4879a22cbad20661208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
