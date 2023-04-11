@@ -437,6 +437,7 @@ static int command_panicinfo(int argc, const char **argv)
 			 (pdata_ptr->flags & PANIC_DATA_FLAG_OLD_CONSOLE ?
 				  "" :
 				  " (NEW)"));
+		ccprintf("Panic Flags = 0x%02X\n", pdata_ptr->flags);
 
 		panic_data_print(pdata_ptr);
 
