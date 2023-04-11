@@ -70,6 +70,30 @@
       },
       "revId": "c0d219f6a26a3c379f90201dff4dac8f93c13467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbaf160_f36d9d83",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2029,
+      "author": {
+        "id": 1001040
+      },
+      "writtenOn": "2023-04-11T00:36:51Z",
+      "side": 1,
+      "message": "Sounds good. See what you think of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4412089.",
+      "parentUuid": "b556f30a_d5757278",
+      "range": {
+        "startLine": 2029,
+        "startChar": 35,
+        "endLine": 2029,
+        "endChar": 39
+      },
+      "revId": "c0d219f6a26a3c379f90201dff4dac8f93c13467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
