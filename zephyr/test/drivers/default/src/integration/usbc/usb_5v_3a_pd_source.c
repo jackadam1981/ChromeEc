@@ -266,6 +266,23 @@ ZTEST_F(usb_attach_5v_3a_pd_source,
 	zassert_false(system_can_boot_ap());
 }
 
+
+ZTEST_F(foo, test_same)
+ZTEST_F(foo,
+	test_bar)
+
+ZTEST_F(foo,
+	no_bar)
+
+ZTEST(foo, test_good)
+ZTEST(foo, missing_prefix1)
+ZTEST_F(foo, missing_prefix2)
+ZTEST_USER(foo, missing_prefix3)
+ZTEST_USER_F(foo, missing_prefix4)
+
+ZTEST_USER_F(foo,
+	missing_prefix5)
+
 ZTEST_F(usb_attach_5v_3a_pd_source, test_uvdm_ignored)
 {
 	uint32_t vdm_header = VDO(USB_VID_GOOGLE, 0 /* unstructured */, 0);
