@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d99f8653_ef6ae9ba",
+        "filename": "zephyr/shim/src/random.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-11T16:22:12Z",
+      "side": 1,
+      "message": "Where does this limit come from?  I don\u0027t see any limitations for this upstream.",
+      "range": {
+        "startLine": 31,
+        "startChar": 30,
+        "endLine": 31,
+        "endChar": 46
+      },
+      "revId": "8a25a9ac1c8957d70e384cf9004d342a9bd69f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcb90e48_0eba5350",
+        "filename": "zephyr/shim/src/random.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-11T16:22:12Z",
+      "side": 1,
+      "message": "Because this is under the shim directory.  You should create a Zephyr shell command directly.\n\nThis also avoids having to use ccprintf.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 0
+      },
+      "revId": "8a25a9ac1c8957d70e384cf9004d342a9bd69f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
