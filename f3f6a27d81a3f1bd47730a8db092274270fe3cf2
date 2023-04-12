@@ -39,6 +39,30 @@
       },
       "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8254b86_3de9f1fa",
+        "filename": "common/flash.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1554,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-04-12T21:08:39Z",
+      "side": 1,
+      "message": "this is to block any additional triggering of this command while it is being executed",
+      "parentUuid": "328c6090_ad868071",
+      "range": {
+        "startLine": 1551,
+        "startChar": 3,
+        "endLine": 1554,
+        "endChar": 4
+      },
+      "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
