@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5af3d6f3_4e5cca45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-04-12T03:24:25Z",
+      "side": 1,
+      "message": "Another way is add a link to the dibbi, currently known changed is adding a USB-A port, But I\u0027m not sure if other modifications will be added.\nAny suggest?",
+      "revId": "975f7157f987ba90eb735ffdbb4d0d7a7e9f0874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0093ee05_71e5bb62",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-04-12T03:24:25Z",
+      "side": 1,
+      "message": "Fixed build failure. Other code same as dibbi except the board name.",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "975f7157f987ba90eb735ffdbb4d0d7a7e9f0874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
