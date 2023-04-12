@@ -70,6 +70,30 @@
       },
       "revId": "57b08cdb294443fabe78f304efc8c99b065512a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c95bc2_9f3cb92f",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-04-12T17:10:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b200d6c_8a5c562c",
+      "range": {
+        "startLine": 960,
+        "startChar": 0,
+        "endLine": 960,
+        "endChar": 50
+      },
+      "revId": "57b08cdb294443fabe78f304efc8c99b065512a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
