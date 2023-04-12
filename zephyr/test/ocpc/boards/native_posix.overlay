@@ -1,0 +1,248 @@
+/* Copyright 2020 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <board-overlays/native_posix.dts>
+#include <dt-bindings/usb_pd_tcpm.h>
+#include <dt-bindings/usbc_mux.h>
+
+/ {
+	batteries {
+		default_battery: lgc {
+			compatible = "lgc,ac17a8m", "battery-smart";
+		};
+		// lgc_ap19b8m {
+		// 	compatible = "lgc,ap19b8m", "battery-smart";
+		// };
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		// i2c_ec_i2c_eeprom: ec_i2c_eeprom {
+		// 	i2c-port = <&i2c0>;
+		// 	enum-names = "I2C_PORT_EEPROM";
+		// };
+		// i2c_ec_i2c_sensor: ec_i2c_sensor {
+		// 	i2c-port = <&i2c1>;
+		// 	enum-names = "I2C_PORT_SENSOR";
+		// };
+		i2c_ec_i2c_usb_c0: ec_i2c_usb_c0 {
+			i2c-port = <&i2c3>;
+			enum-names = "I2C_PORT_USB_C0_TCPC";
+		};
+		i2c_ec_i2c_sub_usb_c1: ec_i2c_sub_usb_c1 {
+			i2c-port = <&i2c5>;
+			enum-names = "I2C_PORT_USB_C1_TCPC";
+		};
+		i2c_ec_i2c_batt: ec_i2c_batt {
+			i2c-port = <&i2c7>;
+			enum-names = "I2C_PORT_BATTERY";
+		};
+	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		vbus {
+			enum-name = "ADC_VBUS";
+			io-channels = <&adc0 1>;
+			/* Measure VBUS through a 1/10 voltage divider */
+			mul = <10>;
+		};
+	};
+
+	aliases {
+		gpio-wp = &gpio_wp;
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+
+		gpio_wp: ec-flash-wp-odl {
+			gpios = <&gpio0 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_ec_edp_bl_en_od: ec_edp_bl_en_od {
+			gpios = <&gpio0 1 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_ENABLE_BACKLIGHT";
+		};
+		gpio_gsc_ec_pwr_btn_odl: gsc_ec_pwr_btn_odl {
+			gpios = <&gpio0 2 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+		gpio_lid_open: lid_open {
+			gpios = <&gpio0 3 GPIO_INPUT>;
+			enum-name = "GPIO_LID_OPEN";
+		};
+
+	};
+
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+
+		int_power_button: power_button {
+			irq-pin = <&gpio_gsc_ec_pwr_btn_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_button_interrupt";
+		};
+	};
+
+	usbc {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		port0@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
+			bc12 = <&bc12_port0>;
+			chg = <&chg_port0>;
+			tcpc = <&tcpc_port0>;
+			usb-mux-chain-0 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&virtual_mux_0>;
+			};
+		};
+		port0-muxes {
+			virtual_mux_0: virtual-mux-0 {
+				compatible = "cros-ec,usbc-mux-virtual";
+			};
+		};
+		port1@1 {
+			compatible = "named-usbc-port";
+			reg = <1>;
+			bc12 = <&bc12_port1>;
+			chg = <&chg_port1>;
+			tcpc = <&tcpc_port1>;
+			usb-mux-chain-1 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&virtual_mux_1 &anx7483_mux_1>;
+			};
+			usb_mux_chain_1_no_mux: usb-mux-chain-1-no-mux {
+				compatible = "cros-ec,usb-mux-chain";
+				alternative-chain;
+				usb-muxes = <&virtual_mux_1>;
+			};
+		};
+		port1-muxes {
+			virtual_mux_1: virtual-mux-1 {
+				compatible = "cros-ec,usbc-mux-virtual";
+			};
+		};
+	};
+
+	i2c3: i2c@1300 {
+		status = "okay";
+		compatible = "zephyr,i2c-emul-controller";
+		label = "I2C_USB_C0_TCPC";
+		clock-frequency = <I2C_BITRATE_STANDARD>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x1300 4>;
+
+		bc12_port0: pi3usb9201@5f {
+			compatible = "pericom,pi3usb9201";
+			status = "okay";
+			reg = <0x5f>;
+			/*
+			* BC1.2 interrupt is shared with TCPC, so
+			* IRQ is not specified here and handled by
+			* usb_c0_interrupt.
+			*/
+		};
+
+		chg_port0: isl923x@9 {
+			compatible = "intersil,isl923x";
+			status = "okay";
+			reg = <0x9>;
+		};
+
+		tcpc_port0: raa489000@22 {
+			compatible = "renesas,raa489000";
+			status="okay";
+			reg = <0x22>;
+			tcpc-flags = <(
+				TCPC_FLAGS_TCPCI_REV2_0 |
+				TCPC_FLAGS_VBUS_MONITOR)>;
+		};
+	};
+
+	i2c5: i2c@1500 {
+		status = "okay";
+		compatible = "zephyr,i2c-emul-controller";
+		label = "I2C_SUB_C1_TCPC";
+		clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x1500 4>;
+
+		bc12_port1: pi3usb9201@5f {
+			compatible = "pericom,pi3usb9201";
+			status = "okay";
+			reg = <0x5f>;
+		};
+
+		chg_port1: isl923x@9 {
+			compatible = "intersil,isl923x";
+			status = "okay";
+			reg = <0x9>;
+		};
+
+		tcpc_port1: raa489000@22 {
+			compatible = "renesas,raa489000";
+			status="okay";
+			reg = <0x22>;
+			tcpc-flags = <(
+				TCPC_FLAGS_TCPCI_REV2_0 |
+				TCPC_FLAGS_VBUS_MONITOR)>;
+		};
+
+		anx7483_mux_1: anx7483-mux-1@3e {
+			compatible = "analogix,anx7483";
+			reg = <0x3e>;
+			board-set = "anx7483_set_default_tuning";
+			flags = <USB_MUX_FLAG_RESETS_IN_G3>;
+		};
+	};
+
+	i2c7: i2c@1700 {
+		status = "okay";
+		compatible = "zephyr,i2c-emul-controller";
+		clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x1700 4>;
+
+		battery: sb@b {
+			compatible = "zephyr,smart-battery-emul";
+			reg = <0xb>;
+			cycle-count = <99>;
+			version = "BATTERY_SPEC_VER_1_1_WITH_PEC";
+			/* Real battery voltages are multiples of 4.4V. */
+			desired-charg-volt = <5000>;
+			desired-charg-cur = <1000>;
+			mf-name = "LGC";
+			dev-name = "AC17A8M";
+		};
+
+		// battery2: sb@3a {
+		// 	compatible = "zephyr,smart-battery-emul";
+		// 	reg = <0x3a>;
+		// 	cycle-count = <99>;
+		// 	version = "BATTERY_SPEC_VER_1_1_WITH_PEC";
+		// 	/* Real battery voltages are multiples of 4.4V. */
+		// 	desired-charg-volt = <5000>;
+		// 	desired-charg-cur = <1000>;
+		// 	mf-name = "PANASONIC";
+		// 	dev-name = "AP16L5J";
+		// };
+	};
+
+	adc0: adc {
+		compatible = "zephyr,adc-emul";
+		nchannels = <6>;
+		ref-internal-mv = <3300>;
+		#io-channel-cells = <1>;
+		status = "okay";
+	};
+};
