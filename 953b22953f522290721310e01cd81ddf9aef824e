@@ -16,6 +16,24 @@
       "message": "Superficially, this makes sense to me, but the overall picture of when `PD_DISABLED_NO_CONNECTION` is set is unclear. It looks like we already disable PD it when we enter the Unattached states and during ErrorRecovery (via `restart_tc_sm`), and we enable it when after at Attached state stabilizes. We call `tc_detached` at almost the same times.\n\nWhat does this change do to the timing of the flag change WRT the PE?",
       "revId": "953b22953f522290721310e01cd81ddf9aef824e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "426edbde_c2b8cd83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-12T20:38:10Z",
+      "side": 1,
+      "message": "At the moment, we run `restart_tc_sm` once `PD_T_ERROR_RECOVERY` has elapsed.  So if a process outside the PE (in this case, our board code to kick the TCPC out of dead battery mode via a reset) starts ErrorRecovery, the PE can blissfully run along for up to 240 ms trying to send messages,and then soft resetting when of course the partner doesn\u0027t GoodCRC, and then hard resetting.  So I\u0027d like to move up the timeframe on when we disable the PE.\n\nSo are you thinking we should consolidate `tc_enable_pd()` calls to disable entirely into `tc_detached`?",
+      "parentUuid": "c50f2b17_782e80af",
+      "revId": "953b22953f522290721310e01cd81ddf9aef824e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
