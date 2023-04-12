@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aec15de_bf2f80e3",
+        "filename": "zephyr/shim/src/random.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-12T15:31:39Z",
+      "side": 1,
+      "message": "Thanks for the clarification.  I don\u0027t think the loop is needed, just add a comment documenting the limitation of the Zephyr API.",
+      "parentUuid": "789085d5_d0eeaea1",
+      "range": {
+        "startLine": 31,
+        "startChar": 30,
+        "endLine": 31,
+        "endChar": 46
+      },
+      "revId": "8a25a9ac1c8957d70e384cf9004d342a9bd69f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcb90e48_0eba5350",

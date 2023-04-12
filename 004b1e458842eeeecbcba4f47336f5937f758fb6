@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04cd02e_49dda63d",
+        "filename": "zephyr/test/drivers/random/src/random.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-12T15:31:39Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem related to the RAND_NUM command specifically, and instead checks that the common host command processing cleared out the entire response buffer.\n\nActually testing that you\u0027re getting random numbers appears to be quite involved - see references [here]( http://cs/chromeos_public/src/platform/ec/include/ec_commands.h?rcl\u003d2aa4eb1a1516bd386a49d0211c3697e4e4c03358\u0026l\u003d1973)\n\nHowever, for the purpose of this test, how about call EC_CMD_RAND_NUM twice, and checking that the results are not the same?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 71
+      },
+      "revId": "004b1e458842eeeecbcba4f47336f5937f758fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4034f70a_4890a9e9",
+        "filename": "zephyr/test/drivers/random/src/random.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-12T15:31:39Z",
+      "side": 1,
+      "message": "This isn\u0027t checking any side effects.  The `trng_rand()` function should be covered by both the host command and console tests.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 13
+      },
+      "revId": "004b1e458842eeeecbcba4f47336f5937f758fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
