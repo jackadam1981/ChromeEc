@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d67ba53_c7c2e50a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-12T06:13:36Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "c791f466_150ed434",
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "129ae999_5e60d384",
@@ -84,6 +102,30 @@
       "writtenOn": "2023-04-10T16:11:14Z",
       "side": 1,
       "message": "Docstring sections should use the same indent as the reset of the file (4 spaces).  Please fix throughout the file.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#describing-arguments-in-docstrings",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d99f5424_8264e31e",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-12T06:13:36Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "129ae999_5e60d384",
       "range": {
         "startLine": 62,
         "startChar": 4,
@@ -117,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bce60ee_27ba1c9e",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-12T06:13:36Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "d726d032_3aba9d65",
+      "range": {
+        "startLine": 104,
+        "startChar": 69,
+        "endLine": 104,
+        "endChar": 72
+      },
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c701effd_ca2d8b9b",
@@ -130,6 +196,30 @@
       "writtenOn": "2023-04-10T16:11:14Z",
       "side": 1,
       "message": "internal",
+      "range": {
+        "startLine": 115,
+        "startChar": 58,
+        "endLine": 115,
+        "endChar": 65
+      },
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c75407_b549ed64",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-12T06:13:36Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "c701effd_ca2d8b9b",
       "range": {
         "startLine": 115,
         "startChar": 58,
@@ -186,6 +276,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d88f86_efca8942",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-12T06:13:36Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "d807921d_c1d54032",
+      "range": {
+        "startLine": 144,
+        "startChar": 23,
+        "endLine": 144,
+        "endChar": 24
+      },
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88319bb7_4d62f5e2",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-12T06:13:36Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "741638f1_86147eed",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20001976_0d890771",
@@ -199,6 +337,30 @@
       "writtenOn": "2023-04-10T16:11:14Z",
       "side": 1,
       "message": "Follow Chrome\u0027s main boilerplate style:\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 0
+      },
+      "revId": "e48618ef6e33a4efb1ae3ac475fc4e90c43ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c60d853_2901a0e0",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-12T06:13:36Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "20001976_0d890771",
       "range": {
         "startLine": 531,
         "startChar": 0,
