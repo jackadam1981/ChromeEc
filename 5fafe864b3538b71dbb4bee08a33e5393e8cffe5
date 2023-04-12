@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d3ba11_4891018b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-12T19:49:02Z",
+      "side": 1,
+      "message": "Just some nits.",
+      "revId": "5fafe864b3538b71dbb4bee08a33e5393e8cffe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb219545_11f80975",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-12T19:49:02Z",
+      "side": 1,
+      "message": "Add a comment to describe the function. Make the function `static`.",
+      "range": {
+        "startLine": 671,
+        "startChar": 0,
+        "endLine": 671,
+        "endChar": 1
+      },
+      "revId": "5fafe864b3538b71dbb4bee08a33e5393e8cffe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b5d0cba_21146498",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-12T19:49:02Z",
+      "side": 1,
+      "message": "You can simply return the `!` of the condition.",
+      "range": {
+        "startLine": 678,
+        "startChar": 1,
+        "endLine": 678,
+        "endChar": 3
+      },
+      "revId": "5fafe864b3538b71dbb4bee08a33e5393e8cffe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1323e0d7_3cefa9de",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-12T19:49:02Z",
+      "side": 1,
+      "message": "Similar here, add the comment and make it `static`.",
+      "range": {
+        "startLine": 684,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 1
+      },
+      "revId": "5fafe864b3538b71dbb4bee08a33e5393e8cffe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5954ca7_8186a9bd",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-12T19:49:02Z",
+      "side": 1,
+      "message": "Make them the same order as `crec_flash_read()`, like `int offset, int size, char *data`.",
+      "range": {
+        "startLine": 684,
+        "startChar": 36,
+        "endLine": 684,
+        "endChar": 68
+      },
+      "revId": "5fafe864b3538b71dbb4bee08a33e5393e8cffe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
