@@ -16,6 +16,24 @@
       "message": "```\nchromeos-ish-0.0.1-r105: kconfiglib.KconfigError: zephyr/emul/tcpc/Kconfig:23: \u0027subsys/logging/Kconfig.template.log_config\u0027 not found (in \u0027source \"subsys/logging/Kconfig.template.log_config\"\u0027).\n```\n\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8784121833525755985/+/u/sync_to_gitiles_commit/checkout_branch_firmware-nissa-15217.B/repo_sync/stdout\nNot sure why it didn\u0027t sync zephyr/main. Trigger again first.",
       "revId": "ed32f7b850ad39f8468c856c509a85cd25384f25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfe84b56_bad04b79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-04-12T00:40:59Z",
+      "side": 1,
+      "message": "Repo fetched successfully but still meet the build failure.   \n\nLast build with with `chromeos-ish-0.0.1-r104` can build pass, may be related.\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8784127721616352657/+/u/build_nissa/install_packages/stdout",
+      "parentUuid": "74f33718_43532917",
+      "revId": "ed32f7b850ad39f8468c856c509a85cd25384f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
