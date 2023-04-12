@@ -70,6 +70,30 @@
       },
       "revId": "537a8519cd836ed69624d9ff5a0a975d803b2fc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a061d2e5_3b35f291",
+        "filename": "zephyr/emul/emul_anx7452.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-12T08:03:31Z",
+      "side": 1,
+      "message": "From programming guide I didn\u0027t find the default values, but each bit in the register signifies the EN modes like USB3, USB4, TBT, DP etc...\n\nSince this CL is big and has many revisions due to rebases and changes. I will make the suggested change as a separate immediate patch",
+      "parentUuid": "10050342_4770f2a3",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 22
+      },
+      "revId": "537a8519cd836ed69624d9ff5a0a975d803b2fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
