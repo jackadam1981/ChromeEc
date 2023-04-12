@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77ae7f38_5c84f5c8",
+        "filename": "zephyr/shim/src/random.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-12T15:41:08Z",
+      "side": 1,
+      "message": "I suggest updating trng.h to eliminate this code, since you\u0027re getting a false positive on uncovered lines.\n\n```\n#ifdef CONFIG_ZEPHYR\n#define trng_init()\n#define trng_exit()\n#else\n/* legacy EC prototypes... */\n#endif\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "004b1e458842eeeecbcba4f47336f5937f758fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b04cd02e_49dda63d",
         "filename": "zephyr/test/drivers/random/src/random.c",
         "patchSetId": 10
