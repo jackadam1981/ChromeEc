@@ -68,6 +68,30 @@
       },
       "revId": "004b1e458842eeeecbcba4f47336f5937f758fb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c04cab_3184870c",
+        "filename": "zephyr/test/drivers/random/src/random.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-12T15:47:21Z",
+      "side": 1,
+      "message": "True. I added this test to increase code coverage. The function just returns random `uint32_t` and it\u0027s not used by the host command or console command.\n\nActually, it\u0027s used only [here]( https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/rng_benchmark.cc;l\u003d1;drc\u003d7a9f47487c41d15b3f8aeb4372afc36fc0dfceae). How about removing `trng_rand()` from `shim/src/random.c` ?",
+      "parentUuid": "4034f70a_4890a9e9",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 13
+      },
+      "revId": "004b1e458842eeeecbcba4f47336f5937f758fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
