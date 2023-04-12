@@ -5,3 +5,31 @@
 
 #include "../native_posix.overlay"
 #include "../../../../program/rex/rex/cbi.dtsi"
+
+/ {
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		named_i2c0: i2c0 {
+			i2c-port = <&i2c0>;
+			enum-names = "I2C_PORT_BATTERY",
+				"I2C_PORT_POWER",
+				"I2C_PORT_CHARGER",
+				"I2C_PORT_EEPROM",
+				"I2C_PORT_ACCEL",
+				"I2C_PORT_VIRTUAL_BATTERY";
+		};
+	};
+};
+
+&i2c0 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "okay";
+
+	tcpc_rt1715_alt: tcpc-rt1715-alt@a{
+		compatible = "richtek,rt1715-tcpc", "cros,i2c-mock";
+		reg = <0xa>;
+		is-alt;
+	};
+};
