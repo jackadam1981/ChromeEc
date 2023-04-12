@@ -102,6 +102,7 @@ static int ktu1125_power_path_control(int port, int enable)
 					KTU1125_SW_AB_EN | KTU1125_CC1S_VCONN |
 						KTU1125_CC2S_VCONN);
 
+
 	if (status) {
 		CPRINTS("ppc p%d: Failed to %s power path", port,
 			enable ? "enable" : "disable");
@@ -260,7 +261,7 @@ static int ktu1125_is_vbus_present(int port)
 		return 0;
 	}
 
-	return regval & KTU1125_SYSA_OK;
+	return !!(regval & KTU1125_SYSA_OK);
 }
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
 
@@ -275,7 +276,7 @@ static int ktu1125_is_sourcing_vbus(int port)
 		return 0;
 	}
 
-	return regval & KTU1125_VBUS_OK;
+	return !!(regval & KTU1125_VBUS_OK);
 }
 
 #ifdef CONFIG_USBC_PPC_POLARITY
@@ -378,6 +379,10 @@ static int ktu1125_set_frs_enable(int port, int enable)
 
 static int ktu1125_vbus_sink_enable(int port, int enable)
 {
+	/* Skip if VBUS SNK is already enabled/disabled */
+	if (ktu1125_is_vbus_present(port) == enable)
+		return EC_SUCCESS;
+
 	/* Select active sink */
 	int rv = clr_flags(port, KTU1125_CTRL_SW_CFG, KTU1125_POW_MODE);
 
@@ -391,6 +396,10 @@ static int ktu1125_vbus_sink_enable(int port, int enable)
 
 static int ktu1125_vbus_source_enable(int port, int enable)
 {
+	/* Skip if VBUS SRC is already enabled/disabled */
+	if (ktu1125_is_sourcing_vbus(port) == enable)
+		return EC_SUCCESS;
+
 	/* Select active source */
 	int rv = set_flags(port, KTU1125_CTRL_SW_CFG, KTU1125_POW_MODE);
 
