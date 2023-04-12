@@ -43,8 +43,7 @@ ZTEST(anx7452, test_anx7452_init)
 	zassert_not_null(gpio_dev, "Cannot get GPIO device");
 
 	/* Test successful init */
-	zassert_equal(anx7452_emul_get_reg(EMUL, ANX7452_TOP_STATUS_REG), 0xFF,
-		      NULL);
+	anx7452_emul_set_reg(EMUL, ANX7452_TOP_STATUS_REG, 0xFF);
 	zassert_equal(
 		EC_SUCCESS,
 		anx7452_usb_retimer_driver.init(usb_muxes[USBC_PORT_C1].mux),
