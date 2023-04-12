@@ -16,6 +16,29 @@
       "message": "responded to all comments",
       "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328c6090_ad868071",
+        "filename": "common/flash.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1554,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-12T21:01:18Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of this block? If we\u0027re not trying to \"return the result of the previous command\" (as noted below) then why check the present status here?",
+      "range": {
+        "startLine": 1551,
+        "startChar": 3,
+        "endLine": 1554,
+        "endChar": 4
+      },
+      "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
