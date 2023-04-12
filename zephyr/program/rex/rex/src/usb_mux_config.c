@@ -11,6 +11,7 @@
 #include "hooks.h"
 #include "ioexpander.h"
 #include "usb_mux.h"
+#include "usb_mux_config.h"
 #include "usbc/ppc.h"
 #include "usbc/tcpci.h"
 #include "usbc/usb_muxes.h"
@@ -33,23 +34,26 @@
 
 LOG_MODULE_DECLARE(rex, CONFIG_REX_LOG_LEVEL);
 
+uint32_t usb_db_type;
+
 static void setup_mux(void)
 {
 	int ret;
-	uint32_t val;
 
-	ret = cros_cbi_get_fw_config(FW_USB_DB, &val);
+	ret = cros_cbi_get_fw_config(FW_USB_DB, &usb_db_type);
 	if (ret != 0) {
+		LOG_INF("USB DB: Failed to get FW_USB_DB from CBI");
+		usb_db_type = -1;
 		return;
 	}
 
-	if (val == FW_USB_DB_NOT_CONNECTED) {
+	if (usb_db_type == FW_USB_DB_NOT_CONNECTED) {
 		LOG_INF("USB DB: not connected");
 	}
-	if (val == FW_USB_DB_USB3) {
+	if (usb_db_type == FW_USB_DB_USB3) {
 		LOG_INF("USB DB: Setting USB3 mux");
 	}
-	if (val == FW_USB_DB_USB4_ANX7452) {
+	if (usb_db_type == FW_USB_DB_USB4_ANX7452) {
 		LOG_INF("USB DB: Setting ANX7452 mux");
 		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_anx7452_port1);
 		TCPC_ENABLE_ALTERNATE_BY_NODELABEL(1, rt1716_tcpc_port1);

@@ -6,6 +6,7 @@
 #include "cros_cbi.h"
 #include "hooks.h"
 #include "usb_mux.h"
+#include "usb_mux_config.h"
 #include "usbc/usb_muxes.h"
 
 #include <zephyr/devicetree.h>
@@ -56,6 +57,7 @@ ZTEST_USER(usb_mux_config, test_setup_mux)
 	hook_notify(HOOK_INIT);
 
 	zassert_equal(1, cros_cbi_get_fw_config_fake.call_count);
+	zassert_equal(1, usb_db_type);
 }
 
 ZTEST_USER(usb_mux_config, test_setup_mux_anx7452)
@@ -66,6 +68,7 @@ ZTEST_USER(usb_mux_config, test_setup_mux_anx7452)
 	hook_notify(HOOK_INIT);
 
 	zassert_equal(1, cros_cbi_get_fw_config_fake.call_count);
+	zassert_equal(3, usb_db_type);
 }
 
 ZTEST_USER(usb_mux_config, test_setup_mux_no_usb_db)
@@ -76,6 +79,7 @@ ZTEST_USER(usb_mux_config, test_setup_mux_no_usb_db)
 	hook_notify(HOOK_INIT);
 
 	zassert_equal(1, cros_cbi_get_fw_config_fake.call_count);
+	zassert_equal(0, usb_db_type);
 }
 
 ZTEST_USER(usb_mux_config, test_setup_mux_error_reading_cbi)
@@ -86,6 +90,7 @@ ZTEST_USER(usb_mux_config, test_setup_mux_error_reading_cbi)
 	hook_notify(HOOK_INIT);
 
 	zassert_equal(1, cros_cbi_get_fw_config_fake.call_count);
+	zassert_equal(-1, usb_db_type);
 }
 
 ZTEST_SUITE(usb_mux_config, NULL, NULL, usb_mux_config_before, NULL, NULL);
