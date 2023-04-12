@@ -116,6 +116,30 @@
       },
       "revId": "004b1e458842eeeecbcba4f47336f5937f758fb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd99b010_1d012d4a",
+        "filename": "zephyr/test/drivers/random/src/random.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-12T15:57:14Z",
+      "side": 1,
+      "message": "How about dropping `trng_rand()` completely and modify that test to use `trng_rand_bytes()`?  Submit this as a separate CL.",
+      "parentUuid": "10c04cab_3184870c",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 13
+      },
+      "revId": "004b1e458842eeeecbcba4f47336f5937f758fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
