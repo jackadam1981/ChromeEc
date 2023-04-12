@@ -183,13 +183,13 @@ static void fan_adjust_duty(int ch, int rpm_diff, int duty)
 
 	/* Find suitable duty step */
 	if (ABS(rpm_diff) >= 2000) {
-		duty_step = 20;
-	} else if (ABS(rpm_diff) >= 1000) {
 		duty_step = 10;
-	} else if (ABS(rpm_diff) >= 500) {
+	} else if (ABS(rpm_diff) >= 1000) {
 		duty_step = 5;
-	} else if (ABS(rpm_diff) >= 250) {
+	} else if (ABS(rpm_diff) >= 500) {
 		duty_step = 3;
+	} else if (ABS(rpm_diff) >= 250) {
+		duty_step = 2;
 	} else {
 		duty_step = 1;
 	}
