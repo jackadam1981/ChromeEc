@@ -22,6 +22,30 @@
       },
       "revId": "120d9dbf6a3023c4c0a2958e359c5a6bd02cdd03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "781e7184_7c689c66",
+        "filename": "zephyr/test/skyrim/tests/common/src/usb_mux_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-04-12T16:42:22Z",
+      "side": 1,
+      "message": "I don\u0027t believe so in this case. The code that gets tested here just implements some simple combinatorial logic and isn\u0027t dependent on any sort of state. Any changes to this behavior would require changes in the board-specific code that should be caught by a coverage regression.",
+      "parentUuid": "7ac29f31_53456fab",
+      "range": {
+        "startLine": 18,
+        "startChar": 47,
+        "endLine": 18,
+        "endChar": 57
+      },
+      "revId": "120d9dbf6a3023c4c0a2958e359c5a6bd02cdd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
