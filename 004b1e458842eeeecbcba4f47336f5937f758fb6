@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad2235fd_8608a6b5",
+        "filename": "zephyr/test/drivers/random/src/random.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-12T15:54:26Z",
+      "side": 1,
+      "message": "\u003e checks that the common host command processing cleared out the entire response buffer\n\nMy intention was to check if the function is not writing more than expected. I agree it\u0027s not related, so I\u0027ll remove it.\n\n\u003e Actually testing that you\u0027re getting random numbers appears to be quite involved\n\nSounds like a good idea for hardware unit tests 😊\n\n\u003e However, for the purpose of this test, how about call EC_CMD_RAND_NUM twice, and checking that the results are not the same?\n\nSounds good. I\u0027ll implement it.",
+      "parentUuid": "b04cd02e_49dda63d",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 71
+      },
+      "revId": "004b1e458842eeeecbcba4f47336f5937f758fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4034f70a_4890a9e9",
         "filename": "zephyr/test/drivers/random/src/random.c",
         "patchSetId": 10

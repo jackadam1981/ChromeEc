@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c0da9e7_7ec7d7f5",
+        "filename": "zephyr/shim/src/random.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-12T15:54:26Z",
+      "side": 1,
+      "message": "Can I leave the loop or it would be better to remove it?",
+      "parentUuid": "3aec15de_bf2f80e3",
+      "range": {
+        "startLine": 31,
+        "startChar": 30,
+        "endLine": 31,
+        "endChar": 46
+      },
+      "revId": "8a25a9ac1c8957d70e384cf9004d342a9bd69f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcb90e48_0eba5350",
         "filename": "zephyr/shim/src/random.c",
         "patchSetId": 9
