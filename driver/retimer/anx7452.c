@@ -67,12 +67,22 @@ static int anx7452_ctltop_update_all(const struct usb_mux *me, uint8_t cfg0_val,
 static int anx7452_init(const struct usb_mux *me)
 {
 	int usb_enable;
+	int dp_enable;
 	timestamp_t start;
 	int val;
 	int rv;
 
+	CPRINTS("ANX7452: Started the Driver");
+
 	usb_enable = anx7452_controls[me->usb_port].usb_enable_gpio;
+	dp_enable = anx7452_controls[me->usb_port].dp_enable_gpio;
+
+	CPRINTS("ANX7452: Before USB_EN GPIO val:%d",
+		gpio_get_level(usb_enable));
+	CPRINTS("ANX7452: Before DP_EN GPIO val:%d", gpio_get_level(dp_enable));
+
 	gpio_set_level(usb_enable, 1);
+	gpio_set_level(dp_enable, 0);
 
 	/* Keep reading control register until mux wakes up or times out */
 	start = get_time();
@@ -87,9 +97,15 @@ static int anx7452_init(const struct usb_mux *me)
 		return EC_ERROR_TIMEOUT;
 	}
 
+	CPRINTS("ANX7452: After USB_EN GPIO val:%d",
+		gpio_get_level(usb_enable));
+	CPRINTS("ANX7452: After DP_EN GPIO val:%d", gpio_get_level(dp_enable));
+
 	/* Configure for i2c control */
-	val = ANX7452_TOP_REG_EN;
+	val |= ANX7452_TOP_REG_EN;
 	RETURN_ERROR(anx7452_write(me, ANX7452_TOP_STATUS_REG, val));
+
+	CPRINTS("ANX7452: Mux init successfull");
 
 	return EC_SUCCESS;
 }
