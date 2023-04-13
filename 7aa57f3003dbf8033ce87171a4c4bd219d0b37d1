@@ -157,6 +157,24 @@
       "message": "1) shall this be moved to update_fwmp_wp_policy()? after it passes the return 0 point. or even to `set_wp_state`?\n\nthis way it will also auto-correct on boot if something goes wrong in the future.\n\n\n2) shall we change CCD config to be WPV_ATBOOT_SET + WPV_ATBOOT_ENABLE at the same time if FWMP ccdunlock policy is on, and the default if it\u0027s off? \n\nthis will also remove special `/* Get current wp settings */ if (board_fwmp_force_wp_en()) { ... }` handling in vc_set_wp()",
       "revId": "7aa57f3003dbf8033ce87171a4c4bd219d0b37d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9863b3d_fdf7c97e",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-13T23:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baf3452e_e09b56a6",
+      "revId": "7aa57f3003dbf8033ce87171a4c4bd219d0b37d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
