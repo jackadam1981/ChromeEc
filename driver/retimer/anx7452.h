@@ -12,13 +12,18 @@
  * Programming guide specifies it may be as much as 30-50 ms after chip power on
  * before it's ready for i2c
  */
-#define ANX7452_I2C_WAKE_TIMEOUT_MS 30
+#define ANX7452_I2C_WAKE_TIMEOUT_MS 50
 #define ANX7452_I2C_WAKE_RETRY_DELAY_US 3000
 
 /*
  * CTLTOP I2C address (7 bit)
  */
 #define ANX7452_I2C_ADDR_CTLTOP_FLAGS 0x20
+
+/*
+ * New non-conflicting USB I2C address (8 bit)
+ */
+#define ANX7452_I2C_ADDR_USB_FLAGS_NEW 0x2C
 
 /*
  * TOP Status register
@@ -40,6 +45,11 @@
 #define ANX7452_TOP_TBT_INFO BIT(2)
 #define ANX7452_TOP_DP_INFO BIT(1)
 #define ANX7452_TOP_USB3_INFO BIT(0)
+
+/*
+ * USB I2C address register on TOP
+ */
+#define ANX7452_TOP_USB_I2C_ADDR_REG 0x38
 
 /*
  * CTLTOP - 0 register
