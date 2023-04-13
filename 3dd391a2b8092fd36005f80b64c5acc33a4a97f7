@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d9de4f_6b133d10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-04-13T23:16:56Z",
+      "side": 1,
+      "message": "I have verified that with these changes, a flashrom can still program and verify the content of Winbond W25Q128.V chip using C2D2.  I have verified this both with and without the new CONFIG_USB_SPI_FLASH_EXTENSIONS, though flashrom does not use the new CMD_FLASH_TRANSFER_START, whether support is compiled in or not.",
+      "revId": "3dd391a2b8092fd36005f80b64c5acc33a4a97f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
