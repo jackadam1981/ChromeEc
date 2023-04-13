@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "132bbaff_1480d58e",
+        "filename": "zephyr/test/skyrim/tests/baseboard/src/power_signals.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-04-13T17:01:40Z",
+      "side": 1,
+      "message": "What\u0027s the benefit with calling `power_signals_before` after as well? Since it just resets the mocks it shouldn\u0027t have an affect on any subsequent tests. No other state needs to be reset AFAIK, the code that is being tested is mostly combinatorial.",
+      "parentUuid": "cd50ea65_435fc294",
+      "range": {
+        "startLine": 84,
+        "startChar": 39,
+        "endLine": 84,
+        "endChar": 65
+      },
+      "revId": "0f11a5f3622ca131cce505469699f20a725debc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e6d7226_b14842e2",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-06T21:01:50Z",
       "side": 1,
       "message": "Use `test_mockable` from `include/common.h`",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "0f11a5f3622ca131cce505469699f20a725debc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125c191b_bd092bbf",
+        "filename": "zephyr/test/skyrim/tests/common/src/common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-04-13T17:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e6d7226_b14842e2",
       "range": {
         "startLine": 16,
         "startChar": 0,
