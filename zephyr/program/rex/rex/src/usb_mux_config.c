@@ -50,9 +50,15 @@ static void setup_mux(void)
 	}
 	if (usb_db_type == FW_USB_DB_USB3) {
 		LOG_INF("USB DB: Setting USB3 mux");
+		gpio_pin_configure_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_usb_c1_rt_rst_r_odl),
+			GPIO_ODR_HIGH | GPIO_ACTIVE_LOW);
 	}
 	if (usb_db_type == FW_USB_DB_USB4_ANX7452) {
 		LOG_INF("USB DB: Setting ANX7452 mux");
+		gpio_pin_configure_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_usb_c1_rt_rst_r_odl),
+			GPIO_OUTPUT_LOW);
 		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_anx7452_port1);
 		TCPC_ENABLE_ALTERNATE_BY_NODELABEL(1, rt1716_tcpc_port1);
 		PPC_ENABLE_ALTERNATE_BY_NODELABEL(1, ppc_port1_syv);

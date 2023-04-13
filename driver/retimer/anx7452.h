@@ -12,7 +12,7 @@
  * Programming guide specifies it may be as much as 30-50 ms after chip power on
  * before it's ready for i2c
  */
-#define ANX7452_I2C_WAKE_TIMEOUT_MS 30
+#define ANX7452_I2C_WAKE_TIMEOUT_MS 50
 #define ANX7452_I2C_WAKE_RETRY_DELAY_US 3000
 
 /*
