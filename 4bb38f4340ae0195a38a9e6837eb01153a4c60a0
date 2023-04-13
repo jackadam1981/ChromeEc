@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc6d8d9d_eba9e216",
+        "filename": "zephyr/test/rex/src/usb_mux_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-13T22:04:42Z",
+      "side": 1,
+      "message": "`flags` here is 0 whatever the value of GPIO flag is, in native posix dts overlay.",
+      "revId": "4bb38f4340ae0195a38a9e6837eb01153a4c60a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdaf15d9_2b942e4b",
+        "filename": "zephyr/test/rex/src/usb_mux_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-13T22:04:42Z",
+      "side": 1,
+      "message": "`flags` here is 0 when GPIO flag is set to GPIO_ODR_HIGH in native posix dts overlay.\n\n`flags` here is GPIO_OUTPUT_LOW when GPIO flag is set to GPIO_OUTPUT_LOW in native posix dts overlay.",
+      "revId": "4bb38f4340ae0195a38a9e6837eb01153a4c60a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
