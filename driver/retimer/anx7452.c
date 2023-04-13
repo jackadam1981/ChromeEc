@@ -29,6 +29,28 @@ static int anx7452_write(const struct usb_mux *me, uint8_t reg, uint8_t val)
 	return i2c_write8(me->i2c_port, me->i2c_addr_flags, reg, val);
 }
 
+static uint8_t get_masked_value(uint8_t mask, uint8_t curr_val, uint8_t new_val)
+{
+	return ((curr_val & ~mask) | (new_val & mask));
+}
+
+static int anx7452_top_update(const struct usb_mux *me, uint8_t reg,
+			      uint8_t mask, uint8_t val)
+{
+	int reg_val = 0;
+	int rv;
+
+	RETURN_ERROR(anx7452_read(me, reg, &reg_val));
+	reg_val = get_masked_value(mask, reg_val, val);
+	rv = anx7452_write(me, reg, reg_val);
+	if (rv) {
+		CPRINTS("ANX7452: Failed to write to top register %x rv: %d",
+			reg, rv);
+		return EC_ERROR_TIMEOUT;
+	}
+	return EC_SUCCESS;
+}
+
 static int anx7452_ctltop_update(const struct usb_mux *me, uint8_t reg,
 				 uint8_t mask, uint8_t val)
 {
@@ -37,7 +59,7 @@ static int anx7452_ctltop_update(const struct usb_mux *me, uint8_t reg,
 
 	RETURN_ERROR(i2c_read8(me->i2c_port, ANX7452_I2C_ADDR_CTLTOP_FLAGS, reg,
 			       &reg_val));
-	reg_val = (reg_val & ~mask) | (val & mask);
+	reg_val = get_masked_value(mask, reg_val, val);
 	rv = i2c_write8(me->i2c_port, ANX7452_I2C_ADDR_CTLTOP_FLAGS, reg,
 			reg_val);
 	if (rv) {
@@ -64,20 +86,47 @@ static int anx7452_ctltop_update_all(const struct usb_mux *me, uint8_t cfg0_val,
 	return EC_SUCCESS;
 }
 
-static int anx7452_init(const struct usb_mux *me)
+static int anx7452_power_enable(const struct usb_mux *me)
 {
 	int usb_enable;
-	timestamp_t start;
-	int val;
-	int rv;
+	int dp_enable;
 
 	usb_enable = anx7452_controls[me->usb_port].usb_enable_gpio;
-	gpio_set_level(usb_enable, 1);
+	dp_enable = anx7452_controls[me->usb_port].dp_enable_gpio;
 
-	/* Keep reading control register until mux wakes up or times out */
+	if (gpio_get_level(dp_enable)) {
+		CPRINTS("ANX7452: DP EN GPIO signal is not low");
+	}
+
+	if (chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+		gpio_set_level(usb_enable, 0);
+		return EC_ERROR_NOT_POWERED;
+	}
+
+	gpio_set_level(usb_enable, 1);
+	if (!gpio_get_level(usb_enable)) {
+		CPRINTS("ANX7452: USB EN GPIO signal is not high, but it should be high to power on DB");
+	}
+	return EC_SUCCESS;
+}
+
+static int anx7452_init(const struct usb_mux *me)
+{
+	CPRINTS("ANX7452: Started the init");
+
+	timestamp_t start;
+	int rv;
+
+	RETURN_ERROR(anx7452_power_enable(me));
+
+	/* Keep trying to update control register until mux wakes up or times
+	 * out */
 	start = get_time();
 	do {
-		rv = anx7452_read(me, ANX7452_TOP_STATUS_REG, &val);
+		/* Configure for i2c control */
+		rv = anx7452_top_update(me, ANX7452_TOP_STATUS_REG,
+					ANX7452_TOP_STATUS_REG_BIT_MASK,
+					ANX7452_TOP_REG_EN);
 		if (!rv)
 			break;
 		usleep(ANX7452_I2C_WAKE_RETRY_DELAY_US);
@@ -87,9 +136,12 @@ static int anx7452_init(const struct usb_mux *me)
 		return EC_ERROR_TIMEOUT;
 	}
 
-	/* Configure for i2c control */
-	val = ANX7452_TOP_REG_EN;
-	RETURN_ERROR(anx7452_write(me, ANX7452_TOP_STATUS_REG, val));
+	/* Configure non-conflicting i2c address for USB */
+	RETURN_ERROR(anx7452_top_update(me, ANX7452_TOP_USB_I2C_ADDR_REG,
+					ANX7452_TOP_USB_I2C_ADDR_REG_BIT_MASK,
+					ANX7452_I2C_ADDR_USB_FLAGS_NEW));
+
+	CPRINTS("ANX7452: Mux init successful");
 
 	return EC_SUCCESS;
 }
@@ -100,6 +152,10 @@ static int anx7452_set(const struct usb_mux *me, mux_state_t mux_state,
 	int cfg0_val = 0;
 	int cfg1_val = 0;
 	int cfg2_val = 0;
+
+	if (chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+		return EC_ERROR_NOT_POWERED;
+	}
 
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
@@ -135,6 +191,11 @@ static int anx7452_set(const struct usb_mux *me, mux_state_t mux_state,
 static int anx7452_get(const struct usb_mux *me, mux_state_t *mux_state)
 {
 	int reg = 0;
+
+	if (chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+		*mux_state = USB_PD_MUX_NONE;
+		return EC_ERROR_NOT_POWERED;
+	}
 
 	*mux_state = 0;
 	RETURN_ERROR(anx7452_read(me, ANX7452_TOP_STATUS_REG, &reg));
