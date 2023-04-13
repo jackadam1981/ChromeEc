@@ -176,11 +176,7 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
-enum battery_type {
-	BATTERY_DYNAPACK_COSMX,
-	BATTERY_DYNAPACK_HIGHPOWER,
-	BATTERY_TYPE_COUNT
-};
+enum battery_type { BATTERY_LGC_AP21A8T, BATTERY_TYPE_COUNT };
 
 enum pwm_channel {
 	PWM_CH_KBLIGHT = 0, /* PWM3 */
