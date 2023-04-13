@@ -52,6 +52,24 @@
       "parentUuid": "3ce3b5ac_5e9966a5",
       "revId": "cf7ea892f09a023b29820a2d6f49f6fe91b142eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "862c6a03_3753b401",
+        "filename": "zephyr/test/skyrim/tests/common/src/common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-04-13T16:56:28Z",
+      "side": 1,
+      "message": "Tristan recommended `test_mockable` in a seperate CL.",
+      "parentUuid": "85b34f76_bcd9729e",
+      "revId": "cf7ea892f09a023b29820a2d6f49f6fe91b142eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
