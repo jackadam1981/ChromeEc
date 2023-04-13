@@ -34,6 +34,23 @@
       "parentUuid": "6abf34ee_5aa2195d",
       "revId": "86a33c02854c685e4fea2906f16f60d98dfa8730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48c4ba2b_cccfe9f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-13T17:17:32Z",
+      "side": 1,
+      "message": "I just remembered. Normally we separate gsctool changes from cr50 code changes, because we don\u0027t always keep gsctool up to date on the branches.\n\nIt\u0027s probably not a big deal, but in the future we should make the tpm_vendor_cmds change in a separate CL from the gsctool.c change.",
+      "revId": "86a33c02854c685e4fea2906f16f60d98dfa8730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
