@@ -4,9 +4,11 @@
  */
 
 #include "body_detection.h"
+#include "fan.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
+#include "math_util.h"
 #include "temp_sensor/temp_sensor.h"
 #include "thermal.h"
 
@@ -209,3 +211,101 @@ static void detect_temp_change(void)
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, detect_temp_change, HOOK_PRIO_TEMP_SENSOR_DONE);
+
+#ifdef CONFIG_CUSTOM_FAN_DUTY_CONTROL
+/**
+ * Adjust fan duty by difference between target and actual rpm
+ *
+ * @param   ch        operation channel
+ * @param   rpm_diff  difference between target and actual rpm
+ * @param   duty      current fan duty
+ */
+static void fan_adjust_duty(int ch, int rpm_diff, int duty)
+{
+	int duty_step = 0;
+
+	/* Find suitable duty step */
+	if (ABS(rpm_diff) >= 1000) {
+		duty_step = 10;
+	} else if (ABS(rpm_diff) >= 500) {
+		duty_step = 3;
+	} else if (ABS(rpm_diff) >= 250) {
+		duty_step = 2;
+	} else if (ABS(rpm_diff) >= 100) {
+		duty_step = 1;
+	}
+
+	/* Adjust fan duty step by step */
+	if (rpm_diff > 0) {
+		duty = MIN(duty + duty_step, 100);
+	} else {
+		duty = MAX(duty - duty_step, 1);
+	}
+
+	fan_set_duty(ch, duty);
+
+	CPRINTS("fan%d: duty %d, rpm_diff %d", ch, duty, rpm_diff);
+}
+
+enum fan_status board_override_fan_control_duty(int ch)
+{
+	struct fan_data *data = &fan_data[ch];
+	static int change_cnt = 0;
+	static int wait_cnt = 0;
+	bool change = false;
+	int duty, rpm_diff;
+	int rpm_actual = data->rpm_actual;
+	int rpm_target = data->rpm_target;
+	int deviation = fans[ch].rpm->rpm_deviation;
+
+	CPRINTS("rpm_target: %d, rpm_actual: %d", rpm_target, rpm_actual);
+	/* wait rpm is stable */
+	if (ABS(rpm_actual - data->rpm_pre) > (rpm_target * deviation / 100)) {
+		data->rpm_pre = rpm_actual;
+		CPRINTS("Waiting...");
+		return FAN_STATUS_CHANGING;
+	}
+
+	/* Record previous rpm */
+	data->rpm_pre = rpm_actual;
+
+	/* Adjust PWM duty */
+	rpm_diff = rpm_target - rpm_actual;
+	duty = fan_get_duty(ch);
+	if (duty == 0 && rpm_target == 0) {
+		return FAN_STATUS_STOPPED;
+	}
+	if (rpm_diff > (rpm_target / 100)) {
+		/* Increase PWM duty */
+		if (duty == 100) {
+			return FAN_STATUS_FRUSTRATED;
+		}
+		change = true;
+	} else if (rpm_diff < -(rpm_target / 100)) {
+		/* Decrease PWM duty */
+		if (duty == 1 && rpm_target != 0) {
+			return FAN_STATUS_FRUSTRATED;
+		}
+		change = true;
+	}
+	if (change) {
+		/* Do not make rapid changes in period > 4*tick =  800ms */
+		if (change_cnt < 4) {
+			fan_adjust_duty(ch, rpm_diff, duty);
+			change_cnt++;
+		} else {
+			wait_cnt++;
+			if (wait_cnt > 4) {
+				wait_cnt = 0;
+				change_cnt = 0;
+			}
+		}
+		return FAN_STATUS_CHANGING;
+	}
+
+	wait_cnt = 0;
+	change_cnt = 0;
+	CPRINTS("Done!");
+	return FAN_STATUS_LOCKED;
+}
+#endif
