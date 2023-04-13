@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90976814_d4609822",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-13T05:45:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb219545_11f80975",
+      "range": {
+        "startLine": 671,
+        "startChar": 0,
+        "endLine": 671,
+        "endChar": 1
+      },
+      "revId": "5fafe864b3538b71dbb4bee08a33e5393e8cffe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b5d0cba_21146498",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-04-12T19:49:02Z",
       "side": 1,
       "message": "You can simply return the `!` of the condition.",
+      "range": {
+        "startLine": 678,
+        "startChar": 1,
+        "endLine": 678,
+        "endChar": 3
+      },
+      "revId": "5fafe864b3538b71dbb4bee08a33e5393e8cffe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84441602_f5fc077b",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-13T05:45:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b5d0cba_21146498",
       "range": {
         "startLine": 678,
         "startChar": 1,
@@ -100,6 +148,54 @@
       "writtenOn": "2023-04-12T19:49:02Z",
       "side": 1,
       "message": "Make them the same order as `crec_flash_read()`, like `int offset, int size, char *data`.",
+      "range": {
+        "startLine": 684,
+        "startChar": 36,
+        "endLine": 684,
+        "endChar": 68
+      },
+      "revId": "5fafe864b3538b71dbb4bee08a33e5393e8cffe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "376a36ca_df879262",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-13T05:45:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1323e0d7_3cefa9de",
+      "range": {
+        "startLine": 684,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 1
+      },
+      "revId": "5fafe864b3538b71dbb4bee08a33e5393e8cffe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d91f6c3a_705a743a",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-13T05:45:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5954ca7_8186a9bd",
       "range": {
         "startLine": 684,
         "startChar": 36,
