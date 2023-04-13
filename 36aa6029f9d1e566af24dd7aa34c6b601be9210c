@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4908950_abfee1bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-04-13T21:24:26Z",
+      "side": 1,
+      "message": "why does it even noticeably help? looking at where CONFIG_FLASH is used, I don\u0027t see what it saves",
+      "revId": "36aa6029f9d1e566af24dd7aa34c6b601be9210c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
