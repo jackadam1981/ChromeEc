@@ -4,9 +4,11 @@
  */
 
 #include "body_detection.h"
+#include "fan.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
+#include "math_util.h"
 #include "temp_sensor/temp_sensor.h"
 #include "thermal.h"
 
@@ -209,3 +211,84 @@ static void detect_temp_change(void)
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, detect_temp_change, HOOK_PRIO_TEMP_SENSOR_DONE);
+
+#ifdef CONFIG_PLATFORM_EC_CUSTOM_FAN_DUTY_CONTROL
+enum fan_status board_override_fan_control_duty(int ch)
+{
+	int duty, rpm_diff, deviation, duty_step;
+	struct fan_data *data = &fan_data[ch];
+	int rpm_actual = data->rpm_actual;
+	int rpm_target = data->rpm_target;
+	static int grace_period;
+
+	/* This works with one fan only. */
+	if (ch != 0) {
+		CPRINTS("Only FAN0 is supported!");
+		return FAN_STATUS_FRUSTRATED;
+	}
+
+	deviation = fans[ch].rpm->rpm_deviation * rpm_target / 100;
+
+	/*
+	 * Compare current RPM with the one read during previous tick.
+	 * If it's changing fast enough don't touch the duty.
+	 */
+	if (ABS(rpm_actual - data->rpm_pre) > deviation) {
+		data->rpm_pre = rpm_actual;
+		return FAN_STATUS_CHANGING;
+	}
+	data->rpm_pre = rpm_actual;
+
+	if (grace_period > 0) {
+		grace_period--;
+		return FAN_STATUS_CHANGING;
+	}
+
+	duty = fan_get_duty(ch);
+	if (duty == 0 && rpm_target == 0)
+		return FAN_STATUS_STOPPED;
+
+	/*
+	 * If the current RPM is close enough to the target just leave it.
+	 * It's always going to fluctuate a bit anyway.
+	 */
+	rpm_diff = rpm_target - rpm_actual;
+	if (rpm_diff > deviation) {
+		/* Can't set duty higher than 100%... */
+		if (duty == 100)
+			return FAN_STATUS_FRUSTRATED;
+	} else if (rpm_diff < -deviation) {
+		/* Can't set duty lower than 1%... */
+		if (duty == 1 && rpm_target != 0)
+			return FAN_STATUS_FRUSTRATED;
+	} else {
+		return FAN_STATUS_LOCKED;
+	}
+
+	if (ABS(rpm_diff) >= 2500) {
+		duty_step = 35;
+		grace_period += 5;
+	} else if (ABS(rpm_diff) >= 1000) {
+		duty_step = 10;
+		grace_period += 4;
+	} else if (ABS(rpm_diff) >= 500) {
+		duty_step = 3;
+		grace_period += 3;
+	} else if (ABS(rpm_diff) >= 250) {
+		duty_step = 2;
+		grace_period += 2;
+	} else {
+		duty_step += 1;
+		grace_period++;
+	}
+
+	if (rpm_diff > 0)
+		duty = MIN(duty + duty_step, 100);
+	else
+		duty = MAX(duty - duty_step, 1);
+
+	fan_set_duty(ch, duty);
+
+	return FAN_STATUS_CHANGING;
+}
+#endif
