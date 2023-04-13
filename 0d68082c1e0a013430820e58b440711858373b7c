@@ -16,6 +16,24 @@
       "message": "as discussed offline it probably belongs to the top-level \"features we don\u0027t want\" list, but ok as-is",
       "revId": "0d68082c1e0a013430820e58b440711858373b7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f5f011_0bad7bb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-13T22:14:21Z",
+      "side": 1,
+      "message": "I think \"Features we don\u0027t want\" is a section of features that never apply to cr50. I think like 135 is features we\u0027ve disabled because we need the space, but you might need them for debugging.",
+      "parentUuid": "f72d8d8b_f7b064cc",
+      "revId": "0d68082c1e0a013430820e58b440711858373b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
