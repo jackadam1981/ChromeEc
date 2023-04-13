@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ce2b78_11122824",
+        "filename": "common/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-13T17:31:11Z",
+      "side": 1,
+      "message": "Use the multiple-line comment and describe the `@param` and `@return`. You can check the comments of the other functions.",
+      "range": {
+        "startLine": 671,
+        "startChar": 0,
+        "endLine": 671,
+        "endChar": 72
+      },
+      "revId": "3370cbe0d6e2801eb21ac6f69691a319dfa704a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
