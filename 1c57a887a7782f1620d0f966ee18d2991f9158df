@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e99a7655_29fd918b",
+        "filename": "util/flash_ec",
+        "patchSetId": 22
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-13T02:30:32Z",
+      "side": 1,
+      "message": "what does this line do?",
+      "range": {
+        "startLine": 1628,
+        "startChar": 1,
+        "endLine": 1628,
+        "endChar": 44
+      },
+      "revId": "1c57a887a7782f1620d0f966ee18d2991f9158df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3634897f_5a3199ce",
+        "filename": "util/flash_ec",
+        "patchSetId": 22
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-13T02:30:32Z",
+      "side": 1,
+      "message": "need to restore the original baudrate and remove firmware update mode.\n\ncan you make sure device boots backup and you can see UART logs?",
+      "revId": "1c57a887a7782f1620d0f966ee18d2991f9158df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
