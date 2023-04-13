@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eaa0dcf4_1ef74da4",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-13T22:25:21Z",
+      "side": 1,
+      "message": "Note - this function takes ORs together the flags from the devicetree with the passed in flags.\n\nIt looks like the GPIO emulator does not support the OPEN_DRAIN flag.  So your test may be failing because this function is failing.\n\nI suggest adding check of the return value here and logging failures to the console.",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "4bb38f4340ae0195a38a9e6837eb01153a4c60a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc6d8d9d_eba9e216",
         "filename": "zephyr/test/rex/src/usb_mux_config.c",
         "patchSetId": 2
