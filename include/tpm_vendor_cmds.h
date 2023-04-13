@@ -170,6 +170,40 @@ enum vendor_cmd_cc {
 	/* POP_LOG_ENTRY with a 64 bit previous timestamp in ms */
 	VENDOR_CC_POP_LOG_ENTRY_MS = 61,
 
+<<<<<<< HEAD   (b08b1e gsctool: add support for AP RO Verification V2 status)
+=======
+	/*
+	 * Get/set AP RO configuration settings
+	 *
+	 * The message sent and received to this vendor command,
+	 * with the exception * of SET responses, uses the
+	 * following form:
+	 *
+	 * ```c
+	 * struct __attribute__((__packed__)) command_msg {
+	 *   // Current version of the API
+	 *   uint8_t version;
+	 *   // Determines payload type, see
+	 *   // `arv_config_setting_command_e`.
+	 *   uint8_t command;
+	 *   // Type here depends on command
+	 *   struct command_data data;
+	 * };
+	 * ```
+	 */
+	VENDOR_CC_GET_AP_RO_VERIFY_SETTING = 62,
+	VENDOR_CC_SET_AP_RO_VERIFY_SETTING = 63,
+
+	/* Ti50 only. */
+	VENDOR_CC_SET_CAPABILITY = 64,
+	VENDOR_CC_GET_TI50_STATS = 65,
+	VENDOR_CC_GET_CRASHLOG = 66,
+	VENDOR_CC_GET_CONSOLE_LOGS = 67,
+
+	VENDOR_CC_GET_FACTORY_CONFIG = 68,
+	VENDOR_CC_SET_FACTORY_CONFIG = 69,
+
+>>>>>>> CHANGE (92026f cr50: Add get/set factory config command codes.)
 	LAST_VENDOR_COMMAND = 65535,
 };
 
