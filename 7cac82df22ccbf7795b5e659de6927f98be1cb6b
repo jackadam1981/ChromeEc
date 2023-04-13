@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f516b478_3874cb89",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-04-13T00:19:12Z",
+      "side": 1,
+      "message": "This was just added for debug. I think we can remove it.",
+      "range": {
+        "startLine": 361,
+        "startChar": 1,
+        "endLine": 362,
+        "endChar": 33
+      },
+      "revId": "7cac82df22ccbf7795b5e659de6927f98be1cb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c406546e_df0d513a",
+        "filename": "zephyr/Kconfig.ppc",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-04-13T00:19:12Z",
+      "side": 1,
+      "message": "I think we should add\n\ndefault y\ndepends on DT_HAS_KINETIC_KTU1125_ENABLED\n\nsimilar to what is here for the other PPCs and then the Kconfig won\u0027t need to be explicitly enabled in the .conf file.",
+      "revId": "7cac82df22ccbf7795b5e659de6927f98be1cb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
