@@ -36,7 +36,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 
-#define BB_RETIMER_I2C_RETRY 5
+#define BB_RETIMER_I2C_RETRY 50
 #define BB_RETIMER_REG_OFFSET_MAX UINT8_MAX
 
 /*
@@ -88,6 +88,9 @@ static int bb_retimer_read(const struct usb_mux *me, const uint32_t offset,
 		}
 		msleep(10);
 	}
+
+	CPRINTS("%s: C%d: response after %d/%d tries", __func__, me->usb_port,
+		retry, BB_RETIMER_I2C_RETRY);
 
 	if (buf[0] != BB_RETIMER_REG_SIZE)
 		return EC_ERROR_UNKNOWN;
