@@ -2056,6 +2056,9 @@
 /* Allow board custom fan control */
 #undef CONFIG_CUSTOM_FAN_CONTROL
 
+/* Allow board custom fan duty adjustment control */
+#undef CONFIG_CUSTOM_FAN_DUTY_CONTROL
+
 /* Support fan control while in low-power idle */
 #undef CONFIG_FAN_DSLEEP
 
