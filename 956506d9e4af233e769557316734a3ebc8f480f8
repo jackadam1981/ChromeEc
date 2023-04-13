@@ -22,6 +22,30 @@
       },
       "revId": "956506d9e4af233e769557316734a3ebc8f480f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c188b0e6_9e96d366",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-13T16:26:02Z",
+      "side": 1,
+      "message": "I don\u0027t think a separate default with CONFIG_SYSTEM_UNLOCKED is needed.  \nFalse positives even during board bring-up are time consuming to reproduce and debug.",
+      "parentUuid": "e19fcb86_87d7401f",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "956506d9e4af233e769557316734a3ebc8f480f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
