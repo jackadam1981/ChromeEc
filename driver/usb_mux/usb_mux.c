@@ -359,7 +359,6 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 						port,
 						PD_STATUS_EVENT_MUX_1_SET_DONE);
 			}
-
 			break;
 
 		case USB_MUX_GET_MODE:
