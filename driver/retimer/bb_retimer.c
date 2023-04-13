@@ -32,7 +32,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 
-#define BB_RETIMER_I2C_RETRY 5
+#define BB_RETIMER_I2C_RETRY 20
 #define BB_RETIMER_REG_OFFSET_MAX UINT8_MAX
 
 /*
