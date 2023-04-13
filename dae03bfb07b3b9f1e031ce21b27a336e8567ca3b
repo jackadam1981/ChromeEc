@@ -16,6 +16,23 @@
       "message": "Hi Scott, this is ready for review.",
       "revId": "dae03bfb07b3b9f1e031ce21b27a336e8567ca3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93540213_8f623d19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-04-13T21:48:07Z",
+      "side": 1,
+      "message": "What about the test coverage for these changes? I\u0027m not sure how feasible it is to test UFP mode as that\u0027s not how chromebook ports are typically configured. But, Rex needs to stay \u003e 80% test coverage.",
+      "revId": "dae03bfb07b3b9f1e031ce21b27a336e8567ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
