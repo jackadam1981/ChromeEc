@@ -170,6 +170,9 @@ enum vendor_cmd_cc {
 	/* POP_LOG_ENTRY with a 64 bit previous timestamp in ms */
 	VENDOR_CC_POP_LOG_ENTRY_MS = 61,
 
+	VENDOR_CC_GET_FACTORY_CONFIG = 68,
+	VENDOR_CC_SET_FACTORY_CONFIG = 69,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
