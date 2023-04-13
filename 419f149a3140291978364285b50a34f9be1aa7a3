@@ -16,6 +16,24 @@
       "message": "Can we merge this change?",
       "revId": "419f149a3140291978364285b50a34f9be1aa7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "220677cf_5cf2f973",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 63
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-13T18:11:02Z",
+      "side": 1,
+      "message": "I\u0027m still waiting for the review of these two CLs.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4336873\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4388274",
+      "parentUuid": "827c3c3d_522e1a8e",
+      "revId": "419f149a3140291978364285b50a34f9be1aa7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
