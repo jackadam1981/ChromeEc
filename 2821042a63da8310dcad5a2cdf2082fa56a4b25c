@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b59549_3c1b3fef",
+        "filename": "util/mchp/second_loader_fw.bin",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-13T02:36:43Z",
+      "side": 0,
+      "message": "how about take one more arg in the flash script \"--loader\" if this is present pick the image from the user specified location else pick it from the build directory once the loader image CLs get merged ?",
+      "revId": "2821042a63da8310dcad5a2cdf2082fa56a4b25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
