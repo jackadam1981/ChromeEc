@@ -34,6 +34,24 @@
       "parentUuid": "c50f2b17_782e80af",
       "revId": "953b22953f522290721310e01cd81ddf9aef824e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "632e2cf4_2bfc0d7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-04-13T15:46:50Z",
+      "side": 1,
+      "message": "I\u0027m not sure I have a coherent vision, but I think with the change you already have, you could get rid of the `tc_enable_pd(port, 0)` calls in `tc_unattached_src_entry` and `tc_unattached_snk_entry`, and it would have negligible impact on behavior. (The `CONFIG_USB_PE_SM` guards now seem like they might be extraneous or just to make linking easier. I wouldn\u0027t expect this flag to do anything if we don\u0027t have a PE.)",
+      "parentUuid": "426edbde_c2b8cd83",
+      "revId": "953b22953f522290721310e01cd81ddf9aef824e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
