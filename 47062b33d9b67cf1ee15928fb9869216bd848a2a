@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d608ad99_872b6657",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2023-04-13T10:46:39Z",
+      "side": 1,
+      "message": "Here `config.h` is already included before `CONFIG_CHIP_DATA_IN_INIT_ROM`. Do you think that anything from line 12 to this line is using some defines from `config.h` or any define from this file is changing what is defined in `config.h`? In any case commit message is wrong, since `config.h` is included.",
+      "range": {
+        "startLine": 291,
+        "startChar": 6,
+        "endLine": 291,
+        "endChar": 7
+      },
+      "revId": "47062b33d9b67cf1ee15928fb9869216bd848a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
