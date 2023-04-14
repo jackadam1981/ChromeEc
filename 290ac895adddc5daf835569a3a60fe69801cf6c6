@@ -46,6 +46,30 @@
       },
       "revId": "290ac895adddc5daf835569a3a60fe69801cf6c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eae1571_7fec9643",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T18:10:50Z",
+      "side": 1,
+      "message": "I think \u0027\u003cuint32\u003e\u0027 is better. It\u0027s only 3 bytes more than \u0027\u003cval\u003e\u0027 and more informative. I\u0027ll leave it to you.",
+      "parentUuid": "648488ef_453150f4",
+      "range": {
+        "startLine": 746,
+        "startChar": 22,
+        "endLine": 746,
+        "endChar": 25
+      },
+      "revId": "290ac895adddc5daf835569a3a60fe69801cf6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
