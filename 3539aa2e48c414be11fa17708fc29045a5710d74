@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b1e1a74_cd6d7f84",
+        "filename": "chip/g/board_space.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-14T18:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68d2e303_04272850",
+      "revId": "3539aa2e48c414be11fa17708fc29045a5710d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9971133c_06599cab",
@@ -54,6 +72,30 @@
       "writtenOn": "2023-04-14T00:13:09Z",
       "side": 1,
       "message": "I should have thought about it at the time: it would be more robust to use the field name directtly:\n\nsomething like\n\nsizieof (((struct info1_board_space *)0)-\u003efactory_cfg)\n\ncould be a macro so that all checks are following the same pattern.\n\nJust a thought to your discreion.",
+      "range": {
+        "startLine": 87,
+        "startChar": 31,
+        "endLine": 87,
+        "endChar": 47
+      },
+      "revId": "3539aa2e48c414be11fa17708fc29045a5710d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dc5fb80_25c70f39",
+        "filename": "chip/g/board_space.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-14T18:16:33Z",
+      "side": 1,
+      "message": "I\u0027ll do this in a followup CL.",
+      "parentUuid": "9971133c_06599cab",
       "range": {
         "startLine": 87,
         "startChar": 31,
@@ -87,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d99142_4d6e2bfa",
+        "filename": "chip/g/board_space.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-14T18:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e112309_4230da88",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "3539aa2e48c414be11fa17708fc29045a5710d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12054f61_a8e6bf31",
@@ -110,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85748334_a7214776",
+        "filename": "chip/g/factory_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-14T18:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12054f61_a8e6bf31",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 57
+      },
+      "revId": "3539aa2e48c414be11fa17708fc29045a5710d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97599540_1427ff2e",
@@ -123,6 +213,30 @@
       "writtenOn": "2023-04-14T00:13:09Z",
       "side": 1,
       "message": "this should be a compile time check, not a run time check. (maybe it is already done my the optimizer at compile time, still, would make sense to explicitly express this as a compile time check).",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 41
+      },
+      "revId": "3539aa2e48c414be11fa17708fc29045a5710d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b0593d4_a92f1f98",
+        "filename": "chip/g/factory_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-14T18:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97599540_1427ff2e",
       "range": {
         "startLine": 135,
         "startChar": 3,
@@ -204,6 +318,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d75bb10_9db5038c",
+        "filename": "chip/g/factory_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-14T18:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba611991_8173eb24",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 35
+      },
+      "revId": "3539aa2e48c414be11fa17708fc29045a5710d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "465b12a6_a7417fd2",
@@ -217,6 +355,24 @@
       "writtenOn": "2023-04-14T00:13:09Z",
       "side": 1,
       "message": "maybe this should be included in board_space.h instead of adding a new .h file - the function seems related.\n\nBut I dno\u0027t remember how other board space accessors are declared.",
+      "revId": "3539aa2e48c414be11fa17708fc29045a5710d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be19002_0eaa46b6",
+        "filename": "chip/g/factory_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-14T18:16:33Z",
+      "side": 1,
+      "message": "sn_bits has its own header file. I\u0027m fine with either.",
+      "parentUuid": "465b12a6_a7417fd2",
       "revId": "3539aa2e48c414be11fa17708fc29045a5710d74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
