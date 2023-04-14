@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01991864_432aa345",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T00:20:27Z",
+      "side": 1,
+      "message": "I still think it\u0027s better to explicitly detect and fail on a bad input:\n\n    if (*e || val \u003e UINT32_MAX)\n\nbecause typecast isn\u0027t visible to the user. One may type a large number without knowing it\u0027s internally truncated to (very small) uint32_t.",
+      "parentUuid": "a651dd12_3c79bda6",
+      "range": {
+        "startLine": 604,
+        "startChar": 2,
+        "endLine": 604,
+        "endChar": 9
+      },
+      "revId": "cbb5c94a9ac7ddab4bc51e2a5fb32f54849f764d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40abd28e_4c4cce90",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 2
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "is it okay to change this as \"retimer\" and move the common to code usb_mux  so that all the retimers use same command?",
       "parentUuid": "40abd28e_4c4cce90",
+      "range": {
+        "startLine": 629,
+        "startChar": 24,
+        "endLine": 629,
+        "endChar": 26
+      },
+      "revId": "cbb5c94a9ac7ddab4bc51e2a5fb32f54849f764d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "338f3004_ed9a1568",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T00:20:27Z",
+      "side": 1,
+      "message": "Yeah, I think that\u0027s a good idea.",
+      "parentUuid": "28d695b9_a7c17317",
       "range": {
         "startLine": 629,
         "startChar": 24,
