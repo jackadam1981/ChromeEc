@@ -46,7 +46,7 @@ const struct tcpc_config_t tcpc_config[] = {
 		},
 		.drv = &rt1715_tcpm_drv,
 	},
-	[USBC_PORT_C2] = {
+	[USBC_PORT_C1] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C2_TCPC,
@@ -75,7 +75,7 @@ struct ppc_config_t ppc_chips[] = {
 		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
 		.drv = &syv682x_drv,
 	},
-	[USBC_PORT_C2] = {
+	[USBC_PORT_C1] = {
 		.i2c_port = I2C_PORT_USB_C2_PPC,
 		.i2c_addr_flags = SYV682X_ADDR2_FLAGS,
 		.frs_en = GPIO_USB_C2_FRS_EN,
@@ -146,7 +146,7 @@ int board_ps8818_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 const static struct usb_mux_chain usbc2_ps8818 = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C2,
+			.usb_port = USBC_PORT_C1,
 			.i2c_port = I2C_PORT_USB_C2_TCPC,
 			.i2c_addr_flags = PS8818_I2C_ADDR0_FLAGS,
 			.driver = &ps8818_usb_retimer_driver,
@@ -163,9 +163,9 @@ const struct usb_mux_chain usb_muxes[] = {
 			.hpd_update = &virtual_hpd_update,
 		},
 	},
-	[USBC_PORT_C2] = {
+	[USBC_PORT_C1] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C2,
+			.usb_port = USBC_PORT_C1,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
@@ -180,7 +180,7 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 		.i2c_port = I2C_PORT_USB_C0_BC12,
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
 	},
-	[USBC_PORT_C2] = {
+	[USBC_PORT_C1] = {
 		.i2c_port = I2C_PORT_USB_C2_BC12,
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
 	},
@@ -260,7 +260,7 @@ int ppc_get_alert_status(int port)
 	if (port == USBC_PORT_C0)
 		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
 
-	if (port == USBC_PORT_C2)
+	if (port == USBC_PORT_C1)
 		return gpio_get_level(GPIO_USB_C2_PPC_INT_ODL) == 0;
 
 	return 0;
@@ -273,7 +273,7 @@ void tcpc_alert_event(enum gpio_signal signal)
 		schedule_deferred_pd_interrupt(USBC_PORT_C0);
 		break;
 	case GPIO_USB_C2_TCPC_INT_ODL:
-		schedule_deferred_pd_interrupt(USBC_PORT_C2);
+		schedule_deferred_pd_interrupt(USBC_PORT_C1);
 		break;
 	default:
 		break;
@@ -301,7 +301,7 @@ void ppc_interrupt(enum gpio_signal signal)
 		syv682x_interrupt(USBC_PORT_C0);
 		break;
 	case GPIO_USB_C2_PPC_INT_ODL:
-		syv682x_interrupt(USBC_PORT_C2);
+		syv682x_interrupt(USBC_PORT_C1);
 		break;
 	default:
 		break;

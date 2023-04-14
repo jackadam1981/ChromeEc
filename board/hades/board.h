@@ -45,6 +45,7 @@
 #define CONFIG_USB_PD_TCPM_RT1715
 #undef CONFIG_USB_PD_TCPM_NCT38XX
 #define CONFIG_USBC_RETIMER_PS8818
+#define CONFIG_USB_PD_TCPM_ANX7406 /* C1 */
 
 /* I2C speed console command */
 #define CONFIG_CMD_I2C_SPEED
