@@ -70,6 +70,30 @@
       },
       "revId": "290ac895adddc5daf835569a3a60fe69801cf6c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62b3e16_e13fd2b5",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-14T19:02:44Z",
+      "side": 1,
+      "message": "ACK, I will plan to keep it \"val\" as in the follow on CL we need \"val\" as different Retimers have different register length",
+      "parentUuid": "6eae1571_7fec9643",
+      "range": {
+        "startLine": 746,
+        "startChar": 22,
+        "endLine": 746,
+        "endChar": 25
+      },
+      "revId": "290ac895adddc5daf835569a3a60fe69801cf6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
