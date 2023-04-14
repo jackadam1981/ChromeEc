@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f375fe_bed75389",
+        "filename": "zephyr/program/rex/screebo/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1552197
+      },
+      "writtenOn": "2023-04-14T12:33:16Z",
+      "side": 1,
+      "message": "missing `;`",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "1e06d693ffca5eb2d588ec2550dd8c5cd71090fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
