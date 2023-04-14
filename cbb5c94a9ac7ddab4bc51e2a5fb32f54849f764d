@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20b9b50c_1c2f5559",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T16:35:24Z",
+      "side": 1,
+      "message": "So, I think you need to use uint64_t for val (or add strtoul, which returns *e \u003d\u003d ERANGE if the number is larger than ulong_max).",
+      "parentUuid": "e0c6701a_5955c5cf",
+      "range": {
+        "startLine": 604,
+        "startChar": 2,
+        "endLine": 604,
+        "endChar": 9
+      },
+      "revId": "cbb5c94a9ac7ddab4bc51e2a5fb32f54849f764d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40abd28e_4c4cce90",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 2
