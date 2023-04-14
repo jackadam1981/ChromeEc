@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa115387_0ce17b22",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T16:48:22Z",
+      "side": 1,
+      "message": "powre_handle_state calls common_intel_x86_power_handle_state (line 346), which does the same (call intel_x86_wait_power_up_ok).\n\nHave you taken a look at CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON? If it\u0027s properly set, this change shouldn\u0027t be needed.\n\nCan you please clarify if I\u0027m missing something?",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 3
+      },
+      "revId": "7a7e1ba92359624a57442442081b7a67769b198b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
