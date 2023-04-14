@@ -141,6 +141,30 @@
       },
       "revId": "5125ec6d170da9ed9f3601bf40b896a1872056ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa86768_e8a41dab",
+        "filename": "third_party/boringssl/include/aes_gcm_helpers.h",
+        "patchSetId": 56
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-14T07:52:57Z",
+      "side": 1,
+      "message": "Note:\nThe `AES GCM` API would not work for us. Because the `AES GCM` public interface will require the linkage of sysrand, but we didn\u0027t enable the random number support for boringssl.\n\n```\nld.lld: error: undefined symbol: CRYPTO_sysrand\n\u003e\u003e\u003e referenced by rand.c:353 (/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/rand/rand.c:353)\n\u003e\u003e\u003e               lto.tmp:(aes_gcm_ctrl)\n\nld.lld: error: undefined symbol: CRYPTO_sysrand_for_seed\n\u003e\u003e\u003e referenced by rand.c:322 (/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/rand/rand.c:322)\n\u003e\u003e\u003e               lto.tmp:(aes_gcm_ctrl)\n\u003e\u003e\u003e referenced by rand.c:322 (/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/rand/rand.c:322)\n\u003e\u003e\u003e               lto.tmp:(aes_gcm_ctrl)\n```",
+      "parentUuid": "1c9e756f_aa3feb77",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 64
+      },
+      "revId": "5125ec6d170da9ed9f3601bf40b896a1872056ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
