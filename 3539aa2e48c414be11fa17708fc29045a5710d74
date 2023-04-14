@@ -182,6 +182,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba611991_8173eb24",
+        "filename": "chip/g/factory_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-14T15:40:04Z",
+      "side": 1,
+      "message": "the response size tells the caller how many bytes from the buffer should be sent back to the host.\n\nSome errors are accompanied by data in the buffer, some don\u0027t, in which case the size should be set to zero.",
+      "parentUuid": "e8e5eba5_4ca6b700",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 35
+      },
+      "revId": "3539aa2e48c414be11fa17708fc29045a5710d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "465b12a6_a7417fd2",
         "filename": "chip/g/factory_config.h",
         "patchSetId": 3
