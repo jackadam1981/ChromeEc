@@ -33,6 +33,29 @@
       "message": "Should we be using a different ERROR here? The issue isn\u0027t with PARAM1 its UNSUPPORTED",
       "revId": "13789b640b73e01c237a4201ee99dc622d630ca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c6ce1f_3976d90e",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T17:00:40Z",
+      "side": 1,
+      "message": "Instead of this, why don\u0027t you add read() and write()? I believe that would be more natural and useful extension of the interface.",
+      "range": {
+        "startLine": 135,
+        "startChar": 7,
+        "endLine": 135,
+        "endChar": 26
+      },
+      "revId": "13789b640b73e01c237a4201ee99dc622d630ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
