@@ -63,6 +63,24 @@
       "message": "I\u0027m ok with this change if we have other ways to detect \u0026 collect wdt warning/crashes. I\u0027m worried we\u0027ll see fewer reports from dogfooders because they\u0027re ok to see slowness in whatever the EC does.",
       "revId": "956506d9e4af233e769557316734a3ebc8f480f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c32eb99c_b400d6bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T00:13:33Z",
+      "side": 1,
+      "message": "I forgot to delete the message above. We\u0027ve discussed this already in the meeting.",
+      "parentUuid": "638a6066_9ab87aac",
+      "revId": "956506d9e4af233e769557316734a3ebc8f480f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
