@@ -22,6 +22,30 @@
       },
       "revId": "fec8ea2649f7aface52aa938721ee9823b783cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc01c729_b28cf21f",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T18:59:55Z",
+      "side": 1,
+      "message": "Done. The message was redundant.",
+      "parentUuid": "9836419b_edc7b9b5",
+      "range": {
+        "startLine": 218,
+        "startChar": 21,
+        "endLine": 218,
+        "endChar": 38
+      },
+      "revId": "fec8ea2649f7aface52aa938721ee9823b783cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
