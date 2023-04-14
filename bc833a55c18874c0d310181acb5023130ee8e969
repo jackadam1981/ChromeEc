@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5016560b_3cf9dfe9",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T22:38:31Z",
+      "side": 1,
+      "message": "Why do you need bb_console_cmd_read at all? Can you just do this check in bb_retimer_read? \n\nretimer_read isn\u0027t necessarily used by a console command. So, it should return EC_ERROR_INVAL not EC_ERROR_PARAM*.",
+      "range": {
+        "startLine": 675,
+        "startChar": 0,
+        "endLine": 676,
+        "endChar": 25
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db670718_f38d33c8",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T22:38:31Z",
+      "side": 1,
+      "message": "This is unused for rw \u003d\u003d \u0027r\u0027. To me, this looks unorthdox and I don\u0027t see much value in retimer_read_write, which handles read and write.\n\nWhy don\u0027t you handle read and write separately in the for loop at line 922?",
+      "range": {
+        "startLine": 858,
+        "startChar": 32,
+        "endLine": 858,
+        "endChar": 35
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74781e96_38d15189",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T22:38:31Z",
+      "side": 1,
+      "message": "\u0026\u0026 5 \u003c argc",
+      "range": {
+        "startLine": 888,
+        "startChar": 5,
+        "endLine": 888,
+        "endChar": 13
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c06cd7ea_49317687",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T22:38:31Z",
+      "side": 1,
+      "message": "Are these redundant because you have the same checks at line 924?",
+      "range": {
+        "startLine": 901,
+        "startChar": 13,
+        "endLine": 902,
+        "endChar": 32
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d340b1_728a1c98",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T22:38:31Z",
+      "side": 1,
+      "message": "You\u0027re passing the same values to the different muxes in a chain. Does it make sense?",
+      "range": {
+        "startLine": 926,
+        "startChar": 36,
+        "endLine": 926,
+        "endChar": 44
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
