@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9836419b_edc7b9b5",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-04-14T18:26:41Z",
+      "side": 1,
+      "message": "the commands are \"enter\" and \"exit\" though; this string could confuse someone into thinking they need to type \"enable\" or \"disable\"",
+      "range": {
+        "startLine": 218,
+        "startChar": 21,
+        "endLine": 218,
+        "endChar": 38
+      },
+      "revId": "fec8ea2649f7aface52aa938721ee9823b783cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
