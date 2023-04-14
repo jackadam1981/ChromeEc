@@ -81,6 +81,41 @@
       "parentUuid": "26952ec8_034b4142",
       "revId": "c527e0907fd82c62134166cf988917b47e4602d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e41e8c60_0a33c8ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-04-14T18:09:23Z",
+      "side": 1,
+      "message": "Weird that we\u0027re only noticing this now.\n\n```\nBUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(named_i2c_ports) \u003d\u003d 1,\n\t     \"only one named-i2c-ports compatible node may be present\");\n```\n\nHas been a check since 2022.",
+      "parentUuid": "925fd1fc_0003ac9f",
+      "revId": "c527e0907fd82c62134166cf988917b47e4602d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af15ab55_654f13b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-04-14T18:09:23Z",
+      "side": 1,
+      "message": "Added https://crrev.com/c/4426793",
+      "revId": "c527e0907fd82c62134166cf988917b47e4602d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
