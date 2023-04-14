@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "484843a1_185c9f1e",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-14T17:28:27Z",
+      "side": 1,
+      "message": "Replace with `extra_conf_files:` and `extra_dtc_overlay_files:` YAML fields",
+      "range": {
+        "startLine": 333,
+        "startChar": 16,
+        "endLine": 334,
+        "endChar": 90
+      },
+      "revId": "812ae073efc527997d1542e2a155e52d2f0fae95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
