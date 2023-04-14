@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5044f486_6549faa2",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-14T22:52:34Z",
+      "side": 1,
+      "message": "I guess we can remove the one at line 924 as its highly unlikely that non read/write reg retimers are cascaded",
+      "parentUuid": "c06cd7ea_49317687",
+      "range": {
+        "startLine": 901,
+        "startChar": 13,
+        "endLine": 902,
+        "endChar": 32
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0d340b1_728a1c98",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 4
@@ -106,6 +130,30 @@
       "writtenOn": "2023-04-14T22:38:31Z",
       "side": 1,
       "message": "You\u0027re passing the same values to the different muxes in a chain. Does it make sense?",
+      "range": {
+        "startLine": 926,
+        "startChar": 36,
+        "endLine": 926,
+        "endChar": 44
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "556bc0af_d54b6502",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-14T22:52:34Z",
+      "side": 1,
+      "message": "yes, cascaded retimers are written same value.\nwith the hardware strap they are configured as AP side or connector side",
+      "parentUuid": "b0d340b1_728a1c98",
       "range": {
         "startLine": 926,
         "startChar": 36,
