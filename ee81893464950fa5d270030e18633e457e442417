@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d5b83c0_ea8026ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-14T18:37:18Z",
+      "side": 1,
+      "message": "with a comment nit.",
+      "revId": "ee81893464950fa5d270030e18633e457e442417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39130add_cd142435",
+        "filename": "chip/g/factory_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-14T18:37:18Z",
+      "side": 1,
+      "message": "it\u0027s now 8 bytes",
+      "range": {
+        "startLine": 34,
+        "startChar": 62,
+        "endLine": 35,
+        "endChar": 43
+      },
+      "revId": "ee81893464950fa5d270030e18633e457e442417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
