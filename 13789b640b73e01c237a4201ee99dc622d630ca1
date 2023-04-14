@@ -16,6 +16,23 @@
       "message": "nit: only one byte write is possible.",
       "revId": "13789b640b73e01c237a4201ee99dc622d630ca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d0019d_b10d1619",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1427817
+      },
+      "writtenOn": "2023-04-14T16:09:20Z",
+      "side": 1,
+      "message": "Should we be using a different ERROR here? The issue isn\u0027t with PARAM1 its UNSUPPORTED",
+      "revId": "13789b640b73e01c237a4201ee99dc622d630ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
