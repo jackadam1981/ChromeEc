@@ -77,6 +77,70 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a9d1883_559a6f7d",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-14T00:36:18Z",
+      "side": 1,
+      "message": "good point, not sure what other docs are there, maybe some of them should be obsoleted.",
+      "parentUuid": "ceaea963_ff1552ac",
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f063485_b18160f4",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-14T00:36:18Z",
+      "side": 1,
+      "message": "here and in lines 100, 154, 156 maybe\n\nconnect to GSC console on {Cr|Ti}50",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d46f27_b52ba0f8",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-14T00:36:18Z",
+      "side": 1,
+      "message": "why does this have to change use sudo?\n\nhas something changed with `usb_console`, should it be fixed?",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5387fb53_35b8799c",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 1
@@ -100,6 +164,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "601d9b94_1233f31d",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-14T00:36:18Z",
+      "side": 1,
+      "message": "Iknow this is not this patch\u0027s change, but just a thought: through this document we indicate running commands from chroot by \n adding the `(croot)` prefix, for consistency running from gsc console should be prefixed by `(gsc)`",
+      "range": {
+        "startLine": 401,
+        "startChar": 4,
+        "endLine": 401,
+        "endChar": 7
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e94f99dc_c941799c",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 1
@@ -116,6 +203,52 @@
         "startChar": 23,
         "endLine": 554,
         "endChar": 28
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac97b3c7_8cc9725d",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-14T00:36:18Z",
+      "side": 1,
+      "message": "we now have `brescue.sh` availabe in the cr50 tree, we should recommend using that script, as it is working the same way with both GSCs and does not require the user to prepare a hex file.",
+      "range": {
+        "startLine": 571,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 89
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc9ac83_9999c62a",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-14T00:36:18Z",
+      "side": 1,
+      "message": "s/cr50_console/gsc_console/",
+      "range": {
+        "startLine": 571,
+        "startChar": 66,
+        "endLine": 571,
+        "endChar": 79
       },
       "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
