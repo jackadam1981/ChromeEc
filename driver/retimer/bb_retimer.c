@@ -664,85 +664,39 @@ static int retimer_init(const struct usb_mux *me)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_CMD_RETIMER
+
+#define BB_RETIMER_REG_OFFSET_MAX UINT8_MAX
+
+static int bb_console_cmd_read(const struct usb_mux *me, const uint32_t offset,
+			       uint32_t *data)
+{
+	/* Validate the register address */
+	if (offset > BB_RETIMER_REG_OFFSET_MAX)
+		return EC_ERROR_PARAM3;
+
+	return bb_retimer_read(me, (const uint8_t)offset, data);
+}
+
+static int bb_console_cmd_write(const struct usb_mux *me, const uint32_t offset,
+				uint32_t data)
+{
+	/* Validate the register address */
+	if (offset > BB_RETIMER_REG_OFFSET_MAX)
+		return EC_ERROR_PARAM3;
+
+	return bb_retimer_write(me, (const uint8_t)offset, data);
+}
+#endif /* CONFIG_CMD_RETIMER */
+
 const struct usb_mux_driver bb_usb_retimer = {
 	.init = retimer_init,
 	.set = retimer_set_state,
 	.set_idle_mode = bb_set_idle_mode,
 	.enter_low_power_mode = retimer_low_power_mode,
 	.is_retimer_fw_update_capable = is_retimer_fw_update_capable,
-};
-
 #ifdef CONFIG_CMD_RETIMER
-static int console_command_bb_retimer(int argc, const char **argv)
-{
-	char rw, *e;
-	int port;
-	uint8_t reg;
-	uint32_t data, val = 0;
-	int rv = EC_SUCCESS;
-	const struct usb_mux *mux;
-	const struct usb_mux_chain *mux_chain;
-
-	if (argc < 4)
-		return EC_ERROR_PARAM_COUNT;
-
-	/* Get port number */
-	port = strtoi(argv[1], &e, 0);
-	if (*e || !board_is_usb_pd_port_present(port))
-		return EC_ERROR_PARAM1;
-
-	mux_chain = &usb_muxes[port];
-	while (mux_chain) {
-		mux = mux_chain->mux;
-		if (mux->driver == &bb_usb_retimer)
-			break;
-		mux_chain = mux_chain->next;
-	}
-
-	if (!mux_chain)
-		return EC_ERROR_PARAM1;
-
-	/* Validate r/w selection */
-	rw = argv[2][0];
-	if (rw != 'w' && rw != 'r')
-		return EC_ERROR_PARAM2;
-
-	/* Get register address */
-	reg = (uint8_t)strtoull(argv[3], &e, 0);
-	if (*e)
-		return EC_ERROR_PARAM3;
-
-	/* Get value to be written */
-	if (rw == 'w') {
-		val = strtoull(argv[4], &e, 0);
-		if (*e)
-			return EC_ERROR_PARAM4;
-	}
-
-	for (; mux_chain != NULL; mux_chain = mux_chain->next) {
-		mux = mux_chain->mux;
-		if (mux->driver == &bb_usb_retimer) {
-			if (rw == 'r')
-				rv = bb_retimer_read(mux, reg, &data);
-			else {
-				rv = bb_retimer_write(mux, reg, val);
-				if (rv == EC_SUCCESS) {
-					rv = bb_retimer_read(mux, reg, &data);
-					if (rv == EC_SUCCESS && data != val)
-						rv = EC_ERROR_UNKNOWN;
-				}
-			}
-			if (rv == EC_SUCCESS)
-				CPRINTS("Addr 0x%x register %d = 0x%x",
-					mux->i2c_addr_flags, reg, data);
-		}
-	}
-
-	return rv;
-}
-/* TODO(b/278138274): Use common console command for all Retimers */
-DECLARE_CONSOLE_COMMAND(bb, console_command_bb_retimer,
-			"<port> r <reg>"
-			"\n<port> w <reg> <val>",
-			"Read or write to BB retimer register");
+	.retimer_read = bb_console_cmd_read,
+	.retimer_write = bb_console_cmd_write,
 #endif /* CONFIG_CMD_RETIMER */
+};
