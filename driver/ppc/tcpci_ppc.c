@@ -7,7 +7,6 @@
 
 #include "atomic.h"
 #include "common.h"
-#include "console.h"
 #include "driver/tcpm/tcpci.h"
 #include "usbc_ppc.h"
 
