@@ -121,6 +121,21 @@ struct usb_mux_driver {
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
 	int (*set_idle_mode)(const struct usb_mux *me, bool idle);
+
+#ifdef CONFIG_CMD_RETIMER
+	/**
+	 * Console command to read/write the retimer registers
+	 *
+	 * @param me usb_mux
+	 * @param offset Register offset
+	 * @param data Data to be read/written
+	 * @param read true for read, false for write
+	 * @return EC_SUCCESS on success, non-zero error code on failure.
+	 */
+	int (*retimer_console_cmd)(const struct usb_mux *me,
+				   const uint32_t offset, uint32_t *data,
+				   bool read);
+#endif /* CONFIG_CMD_RETIMER */
 };
 
 /* Describes a USB mux present in the system */
