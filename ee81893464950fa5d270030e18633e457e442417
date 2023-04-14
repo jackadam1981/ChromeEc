@@ -39,6 +39,30 @@
       },
       "revId": "ee81893464950fa5d270030e18633e457e442417",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6befb5ea_1ee2aef9",
+        "filename": "chip/g/factory_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-14T18:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39130add_cd142435",
+      "range": {
+        "startLine": 34,
+        "startChar": 62,
+        "endLine": 35,
+        "endChar": 43
+      },
+      "revId": "ee81893464950fa5d270030e18633e457e442417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
