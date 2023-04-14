@@ -22,6 +22,30 @@
       },
       "revId": "290ac895adddc5daf835569a3a60fe69801cf6c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "648488ef_453150f4",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-14T17:54:16Z",
+      "side": 1,
+      "message": "Sure I can add it, but I think developers generally knows what to enter so may be we can keep same as \u003cval\u003e. Any suggestion ?",
+      "parentUuid": "cf259255_003b3839",
+      "range": {
+        "startLine": 746,
+        "startChar": 22,
+        "endLine": 746,
+        "endChar": 25
+      },
+      "revId": "290ac895adddc5daf835569a3a60fe69801cf6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

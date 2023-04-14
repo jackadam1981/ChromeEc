@@ -156,6 +156,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "116e8f64_4cbbe5b4",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-14T17:54:16Z",
+      "side": 1,
+      "message": "looks like toolchain doesn\u0027t have strtoul()\n\ndriver/retimer/bb_retimer.c:719:23: error: implicit declaration of function \u0027strtoul\u0027; did you mean \u0027strtoull\u0027? [-Werror\u003dimplicit-function-declaration]\n  719 |                 val \u003d strtoul(argv[4], \u0026e, 0);\n      |                       ^~~~~~~\n      |                       strtoull\ncc1: all warnings being treated as errors",
+      "parentUuid": "20b9b50c_1c2f5559",
+      "range": {
+        "startLine": 604,
+        "startChar": 2,
+        "endLine": 604,
+        "endChar": 9
+      },
+      "revId": "cbb5c94a9ac7ddab4bc51e2a5fb32f54849f764d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40abd28e_4c4cce90",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 2
