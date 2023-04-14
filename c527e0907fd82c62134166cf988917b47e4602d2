@@ -177,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f77fc594_99301a98",
+        "filename": "zephyr/test/rex/boards/rex/rex.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-04-14T20:16:35Z",
+      "side": 1,
+      "message": "Sideband conversation, no todo needed.",
+      "parentUuid": "990e81f7_79ad15e0",
+      "revId": "c527e0907fd82c62134166cf988917b47e4602d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37673b53_1859346d",
@@ -230,6 +248,30 @@
       "writtenOn": "2023-04-14T20:08:18Z",
       "side": 1,
       "message": "we will use this in next comming CLs, I will add proper tests for ALT macros, which require USB sub system which needs I2C",
+      "parentUuid": "d01c2ae3_ad6172a7",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "c527e0907fd82c62134166cf988917b47e4602d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d493664_6836ef02",
+        "filename": "zephyr/test/rex/boards/rex/rex.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-04-14T20:16:35Z",
+      "side": 1,
+      "message": "Sideband conversation, no todo needed.",
       "parentUuid": "d01c2ae3_ad6172a7",
       "range": {
         "startLine": 25,
