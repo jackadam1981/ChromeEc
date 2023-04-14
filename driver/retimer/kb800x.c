@@ -474,74 +474,46 @@ static int kb800x_enter_low_power_mode(const struct usb_mux *me)
 
 #ifdef CONFIG_CMD_RETIMER
 
-static int console_command_kb800x_xfer(int argc, const char **argv)
+#define KB800X_REG_OFFSET_MAX UINT16_MAX
+#define KB800X_REG_DATA_MAX UINT8_MAX
+
+static int kb800x_console_cmd_read(const struct usb_mux *me,
+				   const uint32_t offset, uint32_t *data)
 {
-	char rw, *e;
-	int rv, port, reg, val;
-	uint8_t data;
-	const struct usb_mux_chain *mux_chain;
-	const struct usb_mux *mux;
+	int rv;
+	uint8_t val;
 
-	if (argc < 4)
-		return EC_ERROR_PARAM_COUNT;
-
-	/* Get port number */
-	port = strtoi(argv[1], &e, 0);
-	if (*e || !board_is_usb_pd_port_present(port))
-		return EC_ERROR_PARAM1;
-
-	mux_chain = &usb_muxes[port];
-	while (mux_chain) {
-		if (mux_chain->mux->driver == &kb800x_usb_mux_driver)
-			break;
-		mux_chain = mux_chain->next;
-	}
-
-	if (!mux_chain)
-		return EC_ERROR_PARAM1;
-
-	mux = mux_chain->mux;
-
-	/* Validate r/w selection */
-	rw = argv[2][0];
-	if (rw != 'w' && rw != 'r')
-		return EC_ERROR_PARAM2;
-
-	/* Get register address */
-	reg = strtoi(argv[3], &e, 0);
-	if (*e || reg < 0)
+	/* Validate the register address */
+	if (offset > KB800X_REG_OFFSET_MAX)
 		return EC_ERROR_PARAM3;
-	rv = EC_SUCCESS;
-	if (rw == 'r')
-		rv = kb800x_read(mux, reg, &data);
-	else {
-		if (argc < 5)
-			return EC_ERROR_PARAM_COUNT;
-		/* Get value to be written */
-		val = strtoi(argv[4], &e, 0);
-		if (*e || val < 0)
-			return EC_ERROR_PARAM4;
-		rv = kb800x_write(mux, reg, val);
-		if (rv == EC_SUCCESS) {
-			rv = kb800x_read(mux, reg, &data);
-			if (rv == EC_SUCCESS && data != val)
-				rv = EC_ERROR_UNKNOWN;
-		}
-	}
 
-	if (rv == EC_SUCCESS)
-		ccprintf("register 0x%x [%d] = 0x%x [%d]\n", reg, reg, data,
-			 data);
+	rv = kb800x_read(me, (uint16_t)offset, &val);
+	*data = val;
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(kbxfer, console_command_kb800x_xfer,
-			"<port> <r/w> <reg> | <val>",
-			"Read or write to KB retimer register");
+
+static int kb800x_console_cmd_write(const struct usb_mux *me,
+				    const uint32_t offset, uint32_t data)
+{
+	/* Validate the register address */
+	if (offset > KB800X_REG_OFFSET_MAX)
+		return EC_ERROR_PARAM3;
+
+	/* Validate the writeable data */
+	if (data > KB800X_REG_DATA_MAX)
+		return EC_ERROR_PARAM4;
+
+	return kb800x_write(me, (uint16_t)offset, (uint8_t)data);
+}
 #endif /* CONFIG_CMD_RETIMER */
 
 const struct usb_mux_driver kb800x_usb_mux_driver = {
 	.init = kb800x_init,
 	.set = kb800x_set_state,
 	.enter_low_power_mode = kb800x_enter_low_power_mode,
+#ifdef CONFIG_CMD_RETIMER
+	.retimer_read = kb800x_console_cmd_read,
+	.retimer_write = kb800x_console_cmd_write,
+#endif /* CONFIG_CMD_RETIMER */
 };
