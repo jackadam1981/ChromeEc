@@ -16,6 +16,305 @@
       "message": "Updated in the latest patch where the constant/space/trailing white space with 8 items are resolved.\nAdditionally followed the coding guidelines , pylint standard",
       "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "964841ab_fffee7d3",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "Non-blocking comment.  You send commands using hex format but expect responses in decimal.  This seems a little odd.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f9553c_37fe5ca7",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "This is just ASCII data.  You can use\n```\nVENDOR_ID \u003d b\"MCHP\"\n```",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d7ab2fe_a42fba78",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "b\"XEOF\"",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 35
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ec3c28_f1a474d0",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "This is just making a full bytes copy that was already returned by `data.read()`.  Why is this needed?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 50
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd31e852_644ba5aa",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "Why are you writing this out 1 byte at a time? Doesn\u0027t the serial.write() support multiple bytes?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 51
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43894ee1_00c381fb",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "Use PRG_HDR_TOTAL_LEN for both length parameters instead.",
+      "range": {
+        "startLine": 176,
+        "startChar": 47,
+        "endLine": 176,
+        "endChar": 55
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c349e6_0a949022",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "I find these parameter names to be confusing.\n\nHow about:\n```\nmax_write_length: Maximum number of bytes written to the UART during a single write\npayload_length: Total length of the payload\npayload: Payload bytes to write\n```\n\nYou could also use `chunk_length` in place of `max_write_length`",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 0
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5259981_6f3121b3",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "You\u0027ve already done this calculation and can replace this with `cmd.payload_length`",
+      "range": {
+        "startLine": 223,
+        "startChar": 26,
+        "endLine": 223,
+        "endChar": 66
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ec47e4b_2ed141d9",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "You can simplify this as:\n```\naddr \u003d image[0] | image[1] \u003c\u003c 8 |\u003d image[2] \u003c\u003c 16\n```\n\nIt might be better to use struct.unpack to make it more obvious that you\u0027re extracting little-endian data.\n\n```\naddr \u003d struct.unpack(\"\u003cI\", image[0:4])\naddr \u0026\u003d 0xFFFFFF\n```",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 0
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58fc43b2_eced6691",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "`hdr_file_data[0x10:0x12]` is equivalent",
+      "range": {
+        "startLine": 252,
+        "startChar": 18,
+        "endLine": 252,
+        "endChar": 69
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b558fb1_c9dda977",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "Why is the header written out in 64 byte chunks, while the image is written in 128 byte chunks?",
+      "range": {
+        "startLine": 264,
+        "startChar": 8,
+        "endLine": 264,
+        "endChar": 10
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e6181ec_bb837d99",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "Use `header_len`",
+      "range": {
+        "startLine": 265,
+        "startChar": 8,
+        "endLine": 265,
+        "endChar": 11
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1695979_4a98fa76",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-14T22:15:34Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 415,
+        "startChar": 44,
+        "endLine": 415,
+        "endChar": 47
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
