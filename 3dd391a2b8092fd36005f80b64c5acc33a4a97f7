@@ -33,6 +33,24 @@
       "message": "Biggest concern I have is chip specific vendor commands are not clearly identified. Like this is the JEDEC protocol and elsewhere there\u0027s a few other locations. We know that there are different sequences.",
       "revId": "3dd391a2b8092fd36005f80b64c5acc33a4a97f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb07d6c_551c1d51",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-04-14T18:38:03Z",
+      "side": 1,
+      "message": "I have eliminated the hard-coded \"write enable\" opcode, by instead specifying that if the \"write enable\" bit is set, the very first byte of the USB payload is to be sent as a one-byte SPI transfer within its own chip select envelope, followed by the main transaction.  I did so because flashrom source code revealed that some chips may be using another opcode for write enable.\n\nUltimately, however, if flashrom or some other host utility knows that for a particular chip, we need a two-byte \"write enable\", or that the \"read status1\" command is different from JEDEC, it can simply refrain from setting the \u0027write enable\" or \"poll status\" bits in the USB request, and perform these operations through separate USB transactions.\n\nI have clarified the comments that the \"poll status\" bit will trigger polling the \"write-in-progress\" bit according to JEDEC standards.  As far as I can tell, this is the only place left in my code using hard-coded opcodes or bits, which could be chip-specific.",
+      "parentUuid": "537ea41e_f395c8e8",
+      "revId": "3dd391a2b8092fd36005f80b64c5acc33a4a97f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
