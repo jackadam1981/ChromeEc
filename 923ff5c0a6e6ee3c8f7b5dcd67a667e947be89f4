@@ -39,6 +39,30 @@
       },
       "revId": "923ff5c0a6e6ee3c8f7b5dcd67a667e947be89f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "746b71ad_48017ebe",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-04-14T20:14:18Z",
+      "side": 1,
+      "message": "I think that would made debugging EC crashes more difficult. Every time I boot the AP (it asks for a panicinfo each time) I wouldn\u0027t be able to access the panic info via the EC console.\n\nThis would also make `ectool panicinfo` output mismatched with the cros_ec debug panic log, which I think might be confusing.",
+      "parentUuid": "2637cabe_18133ce3",
+      "range": {
+        "startLine": 916,
+        "startChar": 5,
+        "endLine": 916,
+        "endChar": 48
+      },
+      "revId": "923ff5c0a6e6ee3c8f7b5dcd67a667e947be89f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
