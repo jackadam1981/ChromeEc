@@ -16,6 +16,23 @@
       "message": "This looks ok to me. Vadim B, do you think there\u0027s any reason to keep this?",
       "revId": "be225892403786cfcf2acf80b2c9b9a80e8e7650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf12640_96576777",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-14T18:10:38Z",
+      "side": 1,
+      "message": "dropping this command line option could result in higher stack use. I am not sure how we can verify that the current stacks are still OK?\n\nRemember we had overflows in TPM task only when certain operations were running, and we had to increase the stack size. Could this increased size become not big enough after this command line option is dropped?",
+      "revId": "be225892403786cfcf2acf80b2c9b9a80e8e7650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
