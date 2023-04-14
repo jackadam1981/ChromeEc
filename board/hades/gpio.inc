@@ -25,8 +25,8 @@ GPIO_INT(USB_C0_TCPC_INT_ODL,            PIN(E, 0), GPIO_INT_FALLING, tcpc_alert
 GPIO_INT(USB_C0_PPC_INT_ODL,             PIN(A, 7), GPIO_INT_FALLING, ppc_interrupt)
 GPIO_INT(USB_C0_IN_HPD,                  PIN(6, 2), GPIO_INT_FALLING, ppc_interrupt)
 GPIO_INT(USB_C1_BC12_INT_ODL,            PIN(8, 3), GPIO_INT_FALLING, bc12_interrupt)
-GPIO_INT(USB_C1_TCPC_INT_ODL,            PIN(A, 7), GPIO_INT_FALLING, tcpc_alert_event)
-GPIO_INT(USB_C1_PPC_INT_ODL,             PIN(7, 0), GPIO_INT_FALLING, ppc_interrupt)
+GPIO_INT(USB_C1_TCPC_INT_ODL,            PIN(7, 0), GPIO_INT_FALLING, ppc_interrupt)
+GPIO_INT(USB_C1_PPC_INT_ODL,             PIN(B, 1), GPIO_INT_FALLING, ppc_interrupt)
 GPIO_INT(BJ_ADP_PRESENT_ODL,             PIN(9, 5), GPIO_INT_BOTH | GPIO_PULL_UP, bj_present_interrupt)
 GPIO_INT(GPU_OVERT_ODL,                  PIN(5, 0), GPIO_INT_BOTH, gpu_overt_interrupt)
 
@@ -68,7 +68,8 @@ GPIO(EC_USB_PCH_C2_OC_ODL,           PIN(9, 7), GPIO_ODR_HIGH)
 GPIO(VCCST_PWRGD_OD,                 PIN(A, 4), GPIO_ODR_LOW)
 GPIO(EN_USB_A_LOW_POWER,             PIN(9, 3), GPIO_OUT_LOW)
 GPIO(PG_PP3300_S5_EC_SEQ_OD,         PIN(B, 5), GPIO_OUT_LOW)
-GPIO(USB_C1_FRS_EN,                  PIN(D, 4), GPIO_OUT_LOW)
+GPIO(USB_C0_TCPC_RST_ODL,            PIN(D, 4), GPIO_ODR_LOW)
+GPIO(USB_C1_TCPC_RST_ODL,            PIN(0, 2), GPIO_INPUT)  /* Not used */
 GPIO(NVIDIA_GPU_ACOFF_ODL,           PIN(5, 6), GPIO_ODR_HIGH)
 GPIO(LED_2_L,                        PIN(C, 3), GPIO_OUT_LOW)
 GPIO(LED_1_L,                        PIN(C, 4), GPIO_OUT_LOW)
@@ -127,7 +128,6 @@ ALTERNATE(PIN_MASK(D, 0x04), 0, MODULE_PMU, GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH) 
 UNUSED(PIN(D, 6))       /* GPOD6/CR_SOUT3/SHDF_ESPI_L */
 UNUSED(PIN(3, 2))       /* GPO32/TRIS_L */
 UNUSED(PIN(3, 5))       /* GPO35/CR_SOUT4/TEST_L */
-UNUSED(PIN(0, 2))       /* GPIO02 */
 UNUSED(PIN(6, 6))       /* GPIO66 */
 UNUSED(PIN(5, 7))       /* GPIO57/SER_IRQ/ESPI_ALERT_L */
 UNUSED(PIN(8, 1))       /* GPIO81 */
