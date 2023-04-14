@@ -16,6 +16,29 @@
       "message": "LGTM, but you may want Daisuke\u0027s perspective.",
       "revId": "923ff5c0a6e6ee3c8f7b5dcd67a667e947be89f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2637cabe_18133ce3",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-14T20:09:22Z",
+      "side": 1,
+      "message": "Can we instead clear the panic reason in pdata every time a panic is reported to the host?",
+      "range": {
+        "startLine": 916,
+        "startChar": 5,
+        "endLine": 916,
+        "endChar": 48
+      },
+      "revId": "923ff5c0a6e6ee3c8f7b5dcd67a667e947be89f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
