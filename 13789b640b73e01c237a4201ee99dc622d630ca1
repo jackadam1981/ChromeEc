@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "321da656_2c3b773a",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-14T22:12:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "640ca5a5_942b5c7a",
+      "revId": "13789b640b73e01c237a4201ee99dc622d630ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60d0019d_b10d1619",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10bd7315_35d14815",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-14T22:12:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d0019d_b10d1619",
+      "revId": "13789b640b73e01c237a4201ee99dc622d630ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96c6ce1f_3976d90e",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-04-14T17:00:40Z",
       "side": 1,
       "message": "Instead of this, why don\u0027t you add read() and write()? I believe that would be more natural and useful extension of the interface.",
+      "range": {
+        "startLine": 135,
+        "startChar": 7,
+        "endLine": 135,
+        "endChar": 26
+      },
+      "revId": "13789b640b73e01c237a4201ee99dc622d630ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d917c824_495781d7",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-14T22:12:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96c6ce1f_3976d90e",
       "range": {
         "startLine": 135,
         "startChar": 7,
