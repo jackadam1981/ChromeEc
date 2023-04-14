@@ -186,6 +186,30 @@
       },
       "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "454a234b_f7a62f99",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-14T23:56:42Z",
+      "side": 1,
+      "message": "highly unlikely that different muxes will be in chained",
+      "parentUuid": "3893ec56_15e02e54",
+      "range": {
+        "startLine": 926,
+        "startChar": 36,
+        "endLine": 926,
+        "endChar": 44
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
