@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31e9cec7_45fa01f5",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-15T01:21:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5016560b_3cf9dfe9",
+      "range": {
+        "startLine": 675,
+        "startChar": 0,
+        "endLine": 676,
+        "endChar": 25
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db670718_f38d33c8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "130371b1_9c9ea64c",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-15T01:21:28Z",
+      "side": 1,
+      "message": "Done\nMove the code to calling function",
+      "parentUuid": "db670718_f38d33c8",
+      "range": {
+        "startLine": 858,
+        "startChar": 32,
+        "endLine": 858,
+        "endChar": 35
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74781e96_38d15189",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-14T22:38:31Z",
       "side": 1,
       "message": "\u0026\u0026 5 \u003c argc",
+      "range": {
+        "startLine": 888,
+        "startChar": 5,
+        "endLine": 888,
+        "endChar": 13
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb0db3ec_cf99d231",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-15T01:21:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74781e96_38d15189",
       "range": {
         "startLine": 888,
         "startChar": 5,
@@ -107,6 +179,30 @@
       "side": 1,
       "message": "I guess we can remove the one at line 924 as its highly unlikely that non read/write reg retimers are cascaded",
       "parentUuid": "c06cd7ea_49317687",
+      "range": {
+        "startLine": 901,
+        "startChar": 13,
+        "endLine": 902,
+        "endChar": 32
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07cc5472_2c7500d0",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-15T01:21:28Z",
+      "side": 1,
+      "message": "done, changed the default return value",
+      "parentUuid": "5044f486_6549faa2",
       "range": {
         "startLine": 901,
         "startChar": 13,
@@ -202,6 +298,30 @@
       "side": 1,
       "message": "highly unlikely that different muxes will be in chained",
       "parentUuid": "3893ec56_15e02e54",
+      "range": {
+        "startLine": 926,
+        "startChar": 36,
+        "endLine": 926,
+        "endChar": 44
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b994912_49e4ed9a",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-15T01:21:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "454a234b_f7a62f99",
       "range": {
         "startLine": 926,
         "startChar": 36,
