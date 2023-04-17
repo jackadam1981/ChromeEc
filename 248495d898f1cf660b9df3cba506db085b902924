@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b9678a9_73de61c8",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-17T22:38:28Z",
+      "side": 1,
+      "message": "One thing I thought of after my last suggestion is that since `repo sync` pulls down the exact revision of the code we want, maybe we can just use that directly instead of doing a separate checkout step. This is OK as-is; just wanted to mention it.",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 158
+      },
+      "revId": "248495d898f1cf660b9df3cba506db085b902924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
