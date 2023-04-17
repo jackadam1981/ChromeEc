@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "995976e1_ecfe803b",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-17T04:39:14Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb0b0b2_837a4afe",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-17T04:39:14Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 2
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83add373_22d07676",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-17T04:39:14Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 2
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe01c674_5bd43b65",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-17T04:39:14Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 2
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf2537a_a917ea02",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-17T04:39:14Z",
+      "side": 1,
+      "message": "see below - [*]",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 38
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b94b48ad_73d481dc",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-17T04:39:14Z",
+      "side": 1,
+      "message": "Why not make the struct member non-preprocessor conditional, wouldn\u0027t you still arrive at the same optimisation? Not sure I like the added pre-processory cyclomatic complexity for this minor branching optimisation.[*]",
+      "range": {
+        "startLine": 462,
+        "startChar": 1,
+        "endLine": 471,
+        "endChar": 6
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef9c3d2_f03887f7",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-17T04:39:14Z",
+      "side": 1,
+      "message": "see below - [*]",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 628,
+        "endChar": 38
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
