@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284e0d74_6ca70966",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-17T22:48:08Z",
+      "side": 1,
+      "message": "nit: You can remove the `TEST\u003d` on these lines and just indent. It\u0027s a little easier to read. Here\u0027s an [example](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4382560/13//COMMIT_MSG).",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "0ce5ba461a7c91457e1cd6d2e665484f912c986c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
