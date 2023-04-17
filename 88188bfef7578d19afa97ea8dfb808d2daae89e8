@@ -63,6 +63,30 @@
       },
       "revId": "88188bfef7578d19afa97ea8dfb808d2daae89e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6839577_70d68507",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-04-17T21:33:37Z",
+      "side": 1,
+      "message": "ah I misread the function name and didn\u0027t check the impl itself. it\u0027s follow ccd config, not follow battery disconnect.\nAck.",
+      "parentUuid": "0b53b62c_7f22ac89",
+      "range": {
+        "startLine": 565,
+        "startChar": 2,
+        "endLine": 565,
+        "endChar": 26
+      },
+      "revId": "88188bfef7578d19afa97ea8dfb808d2daae89e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
