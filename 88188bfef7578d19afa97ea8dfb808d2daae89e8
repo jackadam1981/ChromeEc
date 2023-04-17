@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24205db2_956d6d52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-04-17T20:37:14Z",
+      "side": 1,
+      "message": "+2 with one question",
+      "revId": "88188bfef7578d19afa97ea8dfb808d2daae89e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93afecca_ceafb55f",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-04-17T20:37:14Z",
+      "side": 1,
+      "message": "so we go to \"follow wp\" in ccd if we had FWMP.block_ccdunlock \u003d 1 and then switched to FWMP.block_ccdunlock \u003d 0. I don\u0027t remember if we discussed if that\u0027s expected.",
+      "range": {
+        "startLine": 565,
+        "startChar": 2,
+        "endLine": 565,
+        "endChar": 26
+      },
+      "revId": "88188bfef7578d19afa97ea8dfb808d2daae89e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
