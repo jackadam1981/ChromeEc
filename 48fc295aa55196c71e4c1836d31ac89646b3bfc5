@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ebebff_ad675514",
+        "filename": "driver/tcpm/anx7406.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-04-17T23:48:59Z",
+      "side": 1,
+      "message": "Why declare as int if the doc comment says it\u0027s an ec_error_list?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 3
+      },
+      "revId": "48fc295aa55196c71e4c1836d31ac89646b3bfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e6aab6_ac973d1d",
+        "filename": "driver/tcpm/anx7406.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-04-17T23:48:59Z",
+      "side": 1,
+      "message": "There are many fewer than 256 GPIOs, so perhaps prefer uint8_t. An enum of supported GPIOs might be even better, so it\u0027s easy to discover what\u0027s possible.",
+      "range": {
+        "startLine": 147,
+        "startChar": 31,
+        "endLine": 147,
+        "endChar": 39
+      },
+      "revId": "48fc295aa55196c71e4c1836d31ac89646b3bfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "032bded2_cc268e85",
+        "filename": "driver/tcpm/anx7406.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-04-17T23:48:59Z",
+      "side": 1,
+      "message": "This is only meaningful as 0 or nonzero, so use bool.",
+      "range": {
+        "startLine": 147,
+        "startChar": 41,
+        "endLine": 147,
+        "endChar": 50
+      },
+      "revId": "48fc295aa55196c71e4c1836d31ac89646b3bfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
