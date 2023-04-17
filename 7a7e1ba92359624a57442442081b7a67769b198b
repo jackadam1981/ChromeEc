@@ -22,6 +22,30 @@
       },
       "revId": "7a7e1ba92359624a57442442081b7a67769b198b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4294e81a_061cb098",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-04-17T00:42:31Z",
+      "side": 1,
+      "message": "Since common_intel_x86_power_handle_state() is not called until the end of this function, it tries to power on here before getting to that check, fails, and goes back to G3. See the logs in b/271534947#comment12. CL:1980104 duplicated the intel_x86_wait_power_up_ok() check in the same way, since cometlake-discrete also calls common_intel_x86_power_handle_state() at the end of power_handle_state(). Let me know if you think there\u0027s a better way to solve this.\n\nCONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON is set to 16 W in dibbi/board.h, but without this change it tries to power on with less than that.",
+      "parentUuid": "fa115387_0ce17b22",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 3
+      },
+      "revId": "7a7e1ba92359624a57442442081b7a67769b198b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
