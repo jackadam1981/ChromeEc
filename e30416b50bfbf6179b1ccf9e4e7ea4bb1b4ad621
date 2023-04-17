@@ -69,6 +69,30 @@
       },
       "revId": "e30416b50bfbf6179b1ccf9e4e7ea4bb1b4ad621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79aa740f_0d6baba1",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-17T17:50:14Z",
+      "side": 1,
+      "message": "I think for write not needed.\nError is printed by console command macro",
+      "parentUuid": "cb88c7d1_0edd5305",
+      "range": {
+        "startLine": 910,
+        "startChar": 0,
+        "endLine": 912,
+        "endChar": 37
+      },
+      "revId": "e30416b50bfbf6179b1ccf9e4e7ea4bb1b4ad621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
