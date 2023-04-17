@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47b8c0d5_9c13aed4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-17T18:08:56Z",
+      "side": 1,
+      "message": "nit: I think \u0027usb_max\u0027 or \u0027retimer\u0027 is more informative.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "305ca9fc3017e1c3f97f1203497f7ccb1a4ea9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab3a068_b7cd0e09",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-17T18:08:56Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 54,
+        "startChar": 37,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "305ca9fc3017e1c3f97f1203497f7ccb1a4ea9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
