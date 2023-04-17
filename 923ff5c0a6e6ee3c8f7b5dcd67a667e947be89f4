@@ -63,6 +63,30 @@
       },
       "revId": "923ff5c0a6e6ee3c8f7b5dcd67a667e947be89f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5a811de_666859ab",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-04-17T15:16:27Z",
+      "side": 1,
+      "message": "I think the flags already cover this case. The PANIC_DATA_FLAG_OLD_HOSTCMD is set when the host reads the panicinfo, so checking the flags before interpreting the panic reason is effectively the same as clearing the panic reason.",
+      "parentUuid": "746b71ad_48017ebe",
+      "range": {
+        "startLine": 916,
+        "startChar": 5,
+        "endLine": 916,
+        "endChar": 48
+      },
+      "revId": "923ff5c0a6e6ee3c8f7b5dcd67a667e947be89f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
