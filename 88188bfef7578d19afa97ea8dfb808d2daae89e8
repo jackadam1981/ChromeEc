@@ -39,6 +39,30 @@
       },
       "revId": "88188bfef7578d19afa97ea8dfb808d2daae89e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b53b62c_7f22ac89",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-17T21:32:23Z",
+      "side": 1,
+      "message": "Cr50 goes back to whatever ccd wp setting was before. The options\n- follow batt pres - (Default)\n- wp disable atboot - set by user\n- wp enable atboot - set by user",
+      "parentUuid": "93afecca_ceafb55f",
+      "range": {
+        "startLine": 565,
+        "startChar": 2,
+        "endLine": 565,
+        "endChar": 26
+      },
+      "revId": "88188bfef7578d19afa97ea8dfb808d2daae89e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
