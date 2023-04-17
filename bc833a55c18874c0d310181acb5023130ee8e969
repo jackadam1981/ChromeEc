@@ -330,6 +330,30 @@
       },
       "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff7cdff_fa5a25a0",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-17T15:43:11Z",
+      "side": 1,
+      "message": "Even if you have two muxes of the same chip, don\u0027t we need to write different values (to the same address)?\n\nIt\u0027s ok to have this assumption for this command because it\u0027s new but can you please write assumption as a comment?",
+      "parentUuid": "5b994912_49e4ed9a",
+      "range": {
+        "startLine": 926,
+        "startChar": 36,
+        "endLine": 926,
+        "endChar": 44
+      },
+      "revId": "bc833a55c18874c0d310181acb5023130ee8e969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

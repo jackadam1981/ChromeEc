@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bccd4d4_037a4c36",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-17T15:43:11Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this read-back is needed. Throughout the codebase, we mostly don\u0027t read-back to check what\u0027s written. \n\nYou can just use \u0027val\u0027 instead of \u0027data\u0027.",
+      "range": {
+        "startLine": 902,
+        "startChar": 0,
+        "endLine": 907,
+        "endChar": 5
+      },
+      "revId": "e30416b50bfbf6179b1ccf9e4e7ea4bb1b4ad621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
