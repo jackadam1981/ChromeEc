@@ -46,6 +46,30 @@
       },
       "revId": "4555caaa5fa36f000793fa9dab37cbe3e115d014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9903c7f_7c36cd7f",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-17T16:55:12Z",
+      "side": 1,
+      "message": "Thanks. What \u00270x49\u0027 means doesn\u0027t look so obvious, though.",
+      "parentUuid": "483a3db5_cbeee9b5",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 55
+      },
+      "revId": "4555caaa5fa36f000793fa9dab37cbe3e115d014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
