@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef8d9ac3_b3302601",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2023-04-17T16:25:41Z",
+      "side": 1,
+      "message": "I think that\u0027s only true if you consider it just preventing hard hangs, but it could lead to performance cases if we leave it at the higher threshold. For example, a tight loop is encountered that doesn\u0027t trigger the WDG, but maybe causes PD packets to be late or something.",
+      "parentUuid": "c188b0e6_9e96d366",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "956506d9e4af233e769557316734a3ebc8f480f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "638a6066_9ab87aac",
