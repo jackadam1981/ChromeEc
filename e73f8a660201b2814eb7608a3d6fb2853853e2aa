@@ -86,6 +86,30 @@
       },
       "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4044b9a1_10c96d51",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-17T21:28:25Z",
+      "side": 1,
+      "message": "Thinking about it more, it\u0027s probably even cleaner to create a new `#define` such as `CONFIG_RWDATA_ADDRESS` and then set the `#define` to default to `CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_MEM_OFF` and override it for `chip/npcx`. Then this becomes:\n\n```\nconst uint8_t *rwdata \u003d CONFIG_RWDATA_ADDRESS\n```\n\n(no conditionals)",
+      "parentUuid": "49031b7c_58fffb3b",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
