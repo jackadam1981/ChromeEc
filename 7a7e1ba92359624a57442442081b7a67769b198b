@@ -46,6 +46,30 @@
       },
       "revId": "7a7e1ba92359624a57442442081b7a67769b198b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "781a35bd_e4606fcf",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-17T16:43:07Z",
+      "side": 1,
+      "message": "Thanks. \n\nMy quick thought is to make common_intel_x86_power_handle_state call a callback and move the stuff below line 266 to the callback but I don\u0027t know  if it\u0027ll be worth the effort or not.",
+      "parentUuid": "4294e81a_061cb098",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 3
+      },
+      "revId": "7a7e1ba92359624a57442442081b7a67769b198b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
