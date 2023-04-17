@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553992e6_369b731c",
+        "filename": "test/fpsensor_state.cc",
+        "patchSetId": 49
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-17T22:57:03Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think this comment necessarily needs to change, but if you do change it, it would probably be good to also change `less_than_zero` in the function name to match.",
+      "range": {
+        "startLine": 191,
+        "startChar": 34,
+        "endLine": 191,
+        "endChar": 36
+      },
+      "revId": "7c7f132a79a8d2da14f866165c51bf43ea583497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
