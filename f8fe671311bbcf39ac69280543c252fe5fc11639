@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "512377ce_963e8d83",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-04-17T18:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "995976e1_ecfe803b",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fb0b0b2_837a4afe",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-17T04:39:14Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 2
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab57405_880f407a",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-04-17T18:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fb0b0b2_837a4afe",
       "range": {
         "startLine": 270,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b325233_f3fcabc4",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-04-17T18:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83add373_22d07676",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 2
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe01c674_5bd43b65",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bce5c57_48ed6f97",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-04-17T18:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe01c674_5bd43b65",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 2
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edf2537a_a917ea02",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-04-17T04:39:14Z",
       "side": 1,
       "message": "see below - [*]",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 38
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22f8cf3_5341769a",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-04-17T18:38:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "edf2537a_a917ea02",
       "range": {
         "startLine": 335,
         "startChar": 0,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7632bde_32d5399e",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-04-17T18:38:58Z",
+      "side": 1,
+      "message": "I would not call the optimization minor.  Almost half of the code in this method is new and specific to SPI flash support, and should not be a burden on boards that do not enable that configuration.\n\nI have removed the preprocessor conditionals around the declaration of the `flash_flags` struct member (making boards that do not use the CONFIG suffer a modest price of 4 bytes of RAM), but the compiler/linker does not see that there are no assignments other than zero to the field.  But if I add `IS_ENABLED() ? : ` here as in the newest revision, then the compiler again optimizes away the new blocks of code, when the CONFIG is not enabled.",
+      "parentUuid": "b94b48ad_73d481dc",
+      "range": {
+        "startLine": 462,
+        "startChar": 1,
+        "endLine": 471,
+        "endChar": 6
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cef9c3d2_f03887f7",
         "filename": "chip/stm32/usb_spi.h",
         "patchSetId": 23
@@ -152,6 +296,30 @@
       "writtenOn": "2023-04-17T04:39:14Z",
       "side": 1,
       "message": "see below - [*]",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 628,
+        "endChar": 38
+      },
+      "revId": "f8fe671311bbcf39ac69280543c252fe5fc11639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48bfd0cf_fbeb6142",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-04-17T18:38:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cef9c3d2_f03887f7",
       "range": {
         "startLine": 628,
         "startChar": 0,
