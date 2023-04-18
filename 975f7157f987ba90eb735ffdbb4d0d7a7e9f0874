@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ba51fa46_d2156011",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-04-18T06:50:17Z",
+      "side": 1,
+      "message": "We usually copy the reference for new boards rather than linking; this seems fine to me.",
+      "parentUuid": "5af3d6f3_4e5cca45",
+      "revId": "975f7157f987ba90eb735ffdbb4d0d7a7e9f0874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0093ee05_71e5bb62",
         "filename": "baseboard/dedede/variant_ec_it8320.c",
         "patchSetId": 2
