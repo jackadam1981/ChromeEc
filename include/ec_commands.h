@@ -783,6 +783,9 @@ enum host_event_code {
 	/* Body detect (lap/desk) change event */
 	EC_HOST_EVENT_BODY_DETECT_CHANGE = 33,
 
+	/* EC entered system safe mode after a panic */
+	EC_HOST_EVENT_SYSTEM_SAFE_MODE = 34,
+
 	/*
 	 * Only 64 host events are supported. This enum uses 1-based counting so
 	 * it can skip 0 (NONE), so the last legal host event number is 64.
@@ -830,6 +833,7 @@ enum host_event_code {
 		[EC_HOST_EVENT_WOV] = "WOV",                                   \
 		[EC_HOST_EVENT_INVALID] = "INVALID",                           \
 		[EC_HOST_EVENT_BODY_DETECT_CHANGE] = "BODY_DETECT_CHANGE",     \
+		[EC_HOST_EVENT_SYSTEM_SAFE_MODE] = "SYSTEM_SAFE_MODE",         \
 	}
 /* clang-format on */
 

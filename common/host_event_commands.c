@@ -82,7 +82,8 @@ static void host_event_set_bit(host_event_t *ev, uint8_t bit)
 	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_PANIC) |             \
 	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_FASTBOOT) | \
 	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_MKBP) |              \
-	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT))
+	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT) | \
+	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_SYSTEM_SAFE_MODE))
 
 static host_event_t lpc_host_events;
 static host_event_t lpc_host_event_mask[LPC_HOST_EVENT_COUNT];
