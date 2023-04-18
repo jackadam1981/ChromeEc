@@ -478,3 +478,22 @@ host_command_panic_info(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_PANIC_INFO, host_command_panic_info,
 		     EC_VER_MASK(0));
+
+static enum ec_status
+host_command_panic_flags(struct host_cmd_handler_args *args)
+{
+	struct panic_data *pdata = panic_get_data();
+
+	if (pdata == NULL)
+		return EC_RES_UNAVAILABLE;
+
+	if (args->response_max < 1)
+		return EC_RES_RESPONSE_TOO_BIG;
+
+	((uint8_t *)args->response)[0] = pdata->flags;
+	args->response_size = 1;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_PANIC_FLAGS, host_command_panic_flags,
+		     EC_VER_MASK(0));
