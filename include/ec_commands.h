@@ -5468,6 +5468,33 @@ struct ec_params_reboot_ec {
  */
 #define EC_CMD_GET_PANIC_INFO 0x00D3
 
+/* panic_data.frame is valid */
+#define PANIC_DATA_FLAG_FRAME_VALID BIT(0)
+/* Already printed at console */
+#define PANIC_DATA_FLAG_OLD_CONSOLE BIT(1)
+/* Already returned via host command */
+#define PANIC_DATA_FLAG_OLD_HOSTCMD BIT(2)
+/* Already reported via host event */
+#define PANIC_DATA_FLAG_OLD_HOSTEVENT BIT(3)
+/* The data was truncated to fit panic info host cmd */
+#define PANIC_DATA_FLAG_TRUNCATED BIT(4)
+/* System safe mode was started after a panic */
+#define PANIC_DATA_FLAG_SAFE_MODE_STARTED BIT(5)
+/* System safe mode failed to start */
+#define PANIC_DATA_FLAG_SAFE_MODE_FAIL_PRECONDITIONS BIT(6)
+
+/*
+ * This command returns the 1 byte panic flags.
+ *
+ * EC_CMD_GET_PANIC_INFO also returns the panic flags, but
+ * EC_CMD_GET_PANIC_FLAGS differs in a few important ways:
+ * - EC_CMD_GET_PANIC_FLAGS does not set the PANIC_DATA_FLAG_OLD_HOSTCMD flag.
+ * - EC_CMD_GET_PANIC_FLAGS response size is not platform-dependent.
+ * - Returns EC_RES_UNAVAILABLE when panic info is not set, instead
+ *   of a 0 byte response.
+ */
+#define EC_CMD_GET_PANIC_FLAGS 0x00D4
+
 /*****************************************************************************/
 /*
  * Special commands

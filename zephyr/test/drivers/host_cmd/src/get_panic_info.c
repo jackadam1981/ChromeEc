@@ -118,3 +118,46 @@ ZTEST_USER(host_cmd_get_panic_info, test_get_panic_info_truncate)
 		      PANIC_DATA_FLAG_TRUNCATED, NULL);
 	zassert_equal(sizeof(struct panic_data), response.struct_size, NULL);
 }
+
+ZTEST_USER(host_cmd_get_panic_info, test_get_panic_flags_unavailable)
+{
+	struct panic_data *pdata = get_panic_data_write();
+	uint8_t flags;
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND_RESPONSE(
+		EC_CMD_GET_PANIC_FLAGS, UINT8_C(0), flags);
+
+	pdata->magic = 0;
+	pdata->struct_size = sizeof(struct panic_data);
+
+	zassert_equal(host_command_process(&args), EC_RES_UNAVAILABLE);
+}
+
+ZTEST_USER(host_cmd_get_panic_info, test_get_panic_flags_too_big)
+{
+	struct panic_data *pdata = get_panic_data_write();
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND_SIMPLE(EC_CMD_GET_PANIC_FLAGS, UINT8_C(0));
+
+	pdata->magic = PANIC_DATA_MAGIC;
+	pdata->struct_size = sizeof(struct panic_data);
+
+	zassert_equal(host_command_process(&args), EC_RES_RESPONSE_TOO_BIG);
+}
+
+ZTEST_USER(host_cmd_get_panic_info, test_get_panic_flags)
+{
+	struct panic_data *pdata = get_panic_data_write();
+	uint8_t flags;
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND_RESPONSE(
+		EC_CMD_GET_PANIC_FLAGS, UINT8_C(0), flags);
+
+	pdata->flags = 1;
+	pdata->magic = PANIC_DATA_MAGIC;
+	pdata->struct_size = sizeof(struct panic_data);
+
+	zassert_ok(host_command_process(&args));
+	zassert_equal(flags, 1);
+	zassert_equal(pdata->flags, 1);
+	/* EC_CMD_GET_PANIC_FLAGS should not set PANIC_DATA_FLAG_OLD_HOSTCMD */
+	zassert_equal(pdata->flags & PANIC_DATA_FLAG_OLD_HOSTCMD, 0, NULL);
+}
