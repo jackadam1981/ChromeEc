@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a54d16b_8dbef99f",
+        "filename": "zephyr/test/ocpc/boards/native_posix.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-18T17:30:09Z",
+      "side": 1,
+      "message": "Looks like I can take these out if I turn off CONFIG_PLATFORM_EC_USB_CHARGER. Is that reasonable to do?",
+      "parentUuid": "0a4f8eed_ef887ade",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 3
+      },
+      "revId": "122f1930d1ab315247202a10c6423f6258a22f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a958f52_9a0adb66",
         "filename": "zephyr/test/ocpc/prj.conf",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-18T06:14:48Z",
       "side": 1,
       "message": "Is this really unwanted if we turn it on?",
+      "range": {
+        "startLine": 17,
+        "startChar": 30,
+        "endLine": 17,
+        "endChar": 31
+      },
+      "revId": "122f1930d1ab315247202a10c6423f6258a22f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b49764ec_1479a303",
+        "filename": "zephyr/test/ocpc/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-18T17:30:09Z",
+      "side": 1,
+      "message": "Thanks for catching",
+      "parentUuid": "0a958f52_9a0adb66",
       "range": {
         "startLine": 17,
         "startChar": 30,
