@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5148d67_3fdc2374",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-04-18T23:46:52Z",
+      "side": 1,
+      "message": "in case of failure maybe print some message and assign `usb_db_type` to some failsafe value... for example `usb_db_type \u003d FW_USB_DB_NOT_CONNECTED;`",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "79cfa5993427ee5957d38fab03b3f5fbbdd71c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
