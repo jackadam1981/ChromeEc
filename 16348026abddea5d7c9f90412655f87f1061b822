@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "064a8484_d2807dc6",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-04-18T18:15:37Z",
+      "side": 1,
+      "message": "This is not valid yaml: https://gitlab.com/zephyr-ec/ec/-/ci/editor?branch_name\u003dmain",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 89
+      },
+      "revId": "16348026abddea5d7c9f90412655f87f1061b822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e839c413_d4c0d34c",
