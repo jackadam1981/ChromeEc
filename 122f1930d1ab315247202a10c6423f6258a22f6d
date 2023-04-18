@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71224a5e_10fc18d9",
+        "filename": "zephyr/test/ocpc/boards/native_posix.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-04-18T23:26:28Z",
+      "side": 1,
+      "message": "Should be, since I did that in https://crrev.com/c/4402420. The option isn\u0027t very well named, since it only affects whether BC1.2 support is enabled.",
+      "parentUuid": "9a54d16b_8dbef99f",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 3
+      },
+      "revId": "122f1930d1ab315247202a10c6423f6258a22f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a958f52_9a0adb66",
         "filename": "zephyr/test/ocpc/prj.conf",
         "patchSetId": 1
