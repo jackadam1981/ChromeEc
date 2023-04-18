@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d7cc5d_6ccf25f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-18T20:59:17Z",
+      "side": 1,
+      "message": "These changes are not working for me. I have a debug build from Jett that includes the Ti50 changes, and I\u0027m running with the updated `gsctool`.\n\n```\nlocalhost /var/log # /usr/sbin/gsctool -aD --clog --verbose\ntpm_send_pkt: sending to 0 0 bytes\nWriting 12 bytes to TPM at 0\n80 01 00 00 00 0c 20 00 00 00 00 42 \ncmd: PATH\u003d\"${PATH}:/usr/sbin\" trunks_send --raw 80010000000c200000000042\nresponse of size 24, max rx size 2068: 80010000000C000005010042\n\nRead 12 bytes from TPM\n80 01 00 00 00 0c 00 00 05 01 00 42 \nGet crash log failed. (1)\n```",
+      "revId": "d4fe1af41527679a883d30c86a977730d090fe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
