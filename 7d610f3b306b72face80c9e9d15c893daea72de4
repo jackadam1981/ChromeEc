@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccec005d_8d73cf3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-04-18T09:48:08Z",
+      "side": 1,
+      "message": "1. zmake build screebo passed\n2. flash ec.bin into rex board and rex can boot",
+      "revId": "7d610f3b306b72face80c9e9d15c893daea72de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
