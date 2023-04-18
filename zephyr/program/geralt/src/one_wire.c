@@ -4,6 +4,7 @@
  */
 
 #include <zephyr/drivers/uart.h>
+#include <zephyr/drivers/i2c.h>
 #include <zephyr/devicetree.h>
 #include <zephyr/kernel.h>
 
@@ -54,6 +55,8 @@ static int ec_ec_comm_init(const struct device *unused)
 	uart_irq_callback_user_data_set(uart, uart_handler, NULL);
 	uart_irq_rx_enable(uart);
 
+	i2c_target_driver_register(DEVICE_DT_GET(DT_NODELABEL(i2c5_target)));
+
 	/* UART1PMR */
 	*(volatile uint8_t*)0xf03a23 = 1;
 
@@ -73,3 +76,12 @@ static int touchpad_get_next_event(uint8_t *out)
 	return mkbp_fifo_get_next_event(out, EC_MKBP_EVENT_TOUCHPAD);
 }
 DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_TOUCHPAD, touchpad_get_next_event);
+
+extern int callback_count1;
+extern int callback_count2;
+static int cmd_debug(int argc, const char **argv)
+{
+	ccprints("%08x %08x", callback_count1, callback_count2);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(dbg, cmd_debug, "", "");
