@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4661ee9f_b616ba7f",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1577857
+      },
+      "writtenOn": "2023-04-18T07:50:30Z",
+      "side": 1,
+      "message": "Shared the document, it captures the command involved in Crisis mode and its interaction between Host and EC.\n\nhttps://issuetracker.google.com/issues/272305778",
+      "parentUuid": "9bf5df93_fb23ae18",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "263dc9e1d4e6a5114052b84dd915c26a6504db9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba376bc_be968365",
