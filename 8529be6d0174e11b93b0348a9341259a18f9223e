@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4df69b3_ea23e413",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-04-18T21:54:30Z",
+      "side": 1,
+      "message": "Do you actually need the backslashes?",
+      "range": {
+        "startLine": 73,
+        "startChar": 26,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "8529be6d0174e11b93b0348a9341259a18f9223e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
