@@ -29,7 +29,3 @@ void clock_refresh_console_in_use(void)
 	 */
 	ish_pm_refresh_console_in_use();
 }
-
-void clock_enable_module(enum module_id module, int enable)
-{
-}
