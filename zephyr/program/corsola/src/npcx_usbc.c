@@ -53,8 +53,11 @@ DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_INIT_I2C + 1);
 
 void board_tcpc_init(void)
 {
-	/* Only reset TCPC if not sysjump */
-	if (!system_jumped_late()) {
+	/* Reset TCPC if we have had a system reset.
+	 * With EFSv2, it is possible to be in RW without having reset the TCPC.
+	 */
+	if (!system_jumped_late() &&
+	    (system_get_reset_flags() & EC_RESET_FLAG_POWER_ON)) {
 		/* TODO(crosbug.com/p/61098): How long do we need to wait? */
 		board_reset_pd_mcu();
 	}
