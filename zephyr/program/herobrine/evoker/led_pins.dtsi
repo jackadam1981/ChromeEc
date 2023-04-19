@@ -11,12 +11,12 @@
 			led-id = "EC_LED_ID_POWER_LED";
 			led-pins = <&gpio_ec_chg_led_w_c1>;
 
-			color_power_off: color-power-off {
+			color-power-off {
 				led-color = "LED_OFF";
 				led-values = <0>;
 			};
 
-			color_power_white: color-power-white {
+			color-power-white {
 				led-color = "LED_WHITE";
 				br-color = "EC_LED_COLOR_WHITE";
 				led-values = <1>;
@@ -29,24 +29,24 @@
 				    &gpio_ec_chg_led_w_c0
 				    &gpio_ec_chg_led_r_c0>;
 
-			color_battery_off: color-battery-off {
+			color-battery-off {
 				led-color = "LED_OFF";
 				led-values = <0 0 0>;
 			};
 
-			color_battery_amber: color-battery-amber {
+			color-battery-amber {
 				led-color = "LED_AMBER";
 				br-color = "EC_LED_COLOR_AMBER";
 				led-values = <1 0 0>;
 			};
 
-			color_battery_white: color-battery-white {
+			color-battery-white {
 				led-color = "LED_WHITE";
 				br-color = "EC_LED_COLOR_WHITE";
 				led-values = <0 1 0>;
 			};
 
-			color_battery_red: color-battery-red {
+			color-battery-red {
 				led-color = "LED_RED";
 				br-color = "EC_LED_COLOR_RED";
 				led-values = <0 0 1>;
