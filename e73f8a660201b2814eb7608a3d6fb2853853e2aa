@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5eff8a2_cfcf70bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-19T19:58:59Z",
+      "side": 1,
+      "message": "Wouldn\u0027t CONFIG_RWDATA_ADDRESS be a chip specific define to be added to both chip/npcx and chip/stm32 (no override needed)? This is how e.g. CONFIG_RW_MEM_OFF is defined. If you prefer a global (non chip specific) define with overrides, let me know where the global define should be added.",
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc98d227_4d3b6506",
         "filename": "common/rwsig.c",
         "patchSetId": 1
@@ -31,6 +48,30 @@
       "writtenOn": "2023-04-17T21:23:21Z",
       "side": 1,
       "message": "If I understand it correctly, `CONFIG_PROGRAM_MEMORY_BASE` is the base address for code in RAM (256 kB), and `CONFIG_MAPPED_STORAGE_BASE` is the base address for all flash memory. Is this correct? Does this mean that we were previously verifying the signature from RAM (address `0x10080000 + 0`) on NPCX targets and are now verifying from flash (address `0x64000000 + 0x40000`)?\n\nHave you verified that this doesn\u0027t break other NPCX targets?",
+      "range": {
+        "startLine": 103,
+        "startChar": 13,
+        "endLine": 103,
+        "endChar": 39
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3189bd4d_709f2d0a",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-19T19:58:59Z",
+      "side": 1,
+      "message": "Yes, correct on the definitions. Not really on your second question. As mentioned in b/273569976#comment2, fizz was the only program I could find with RWSIG verification enabled and Nuvoton clarified it used a different verification method where this code isn\u0027t included/executed. We should be good here, but let me know if you have concerns after reviewing the referenced information.",
+      "parentUuid": "fc98d227_4d3b6506",
       "range": {
         "startLine": 103,
         "startChar": 13,
@@ -125,6 +166,30 @@
       "writtenOn": "2023-04-19T17:07:24Z",
       "side": 1,
       "message": "That is a much nicer solution",
+      "parentUuid": "4044b9a1_10c96d51",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d3cbbf_b79cedd5",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-19T19:58:59Z",
+      "side": 1,
+      "message": "Wouldn\u0027t CONFIG_RWDATA_ADDRESS be a chip specific define to be added to both chip/npcx and chip/stm32 (no override needed)? This is how e.g. CONFIG_RW_MEM_OFF is defined. If you prefer a global (non chip specific) define with overrides, let me know where the global define should be added.",
       "parentUuid": "4044b9a1_10c96d51",
       "range": {
         "startLine": 101,
