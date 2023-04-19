@@ -406,8 +406,19 @@ __maybe_unused static __const_data const char *const pe_state_names[] = {
 
 /* PD3.0 only states below here*/
 #ifdef CONFIG_USB_PD_REV30
+#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+	[PE_UDR_SEND_DATA_RESET] = "PE_UDR_Send_Data_Reset",
+	[PE_UDR_DATA_RESET_RECEIVED] = "PE_UDR_Data_Reset_Received",
+	[PE_UDR_TURN_OFF_VCONN] = "PE_UDR_Turn_Off_VCONN",
+	[PE_UDR_SEND_PS_RDY] = "PE_UDR_Send_Ps_Rdy",
+	[PE_UDR_WAIT_FOR_DATA_RESET_COMPLETE] =
+		"PE_UDR_Wait_For_Data_Reset_Complete",
+	[PE_DDR_SEND_DATA_RESET] = "PE_DDR_Send_Data_Reset",
+	[PE_DDR_DATA_RESET_RECEIVED] = "PE_DDR_Data_Reset_Received",
+	[PE_DDR_WAIT_FOR_VCONN_OFF] = "PE_DDR_Wait_For_VCONN_Off",
+	[PE_DDR_PERFORM_DATA_RESET] = "PE_DDR_Perform_Data_Reset",
+#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
 	[PE_FRS_SNK_SRC_START_AMS] = "PE_FRS_SNK_SRC_Start_Ams",
-	[PE_GET_REVISION] = "PE_Get_Revision",
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	[PE_GIVE_BATTERY_CAP] = "PE_Give_Battery_Cap",
 	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
@@ -421,18 +432,7 @@ __maybe_unused static __const_data const char *const pe_state_names[] = {
 #ifdef CONFIG_USBC_VCONN
 	[PE_VCS_FORCE_VCONN] = "PE_VCS_Force_Vconn",
 #endif
-#ifdef CONFIG_USB_PD_DATA_RESET_MSG
-	[PE_UDR_SEND_DATA_RESET] = "PE_UDR_Send_Data_Reset",
-	[PE_UDR_DATA_RESET_RECEIVED] = "PE_UDR_Data_Reset_Received",
-	[PE_UDR_TURN_OFF_VCONN] = "PE_UDR_Turn_Off_VCONN",
-	[PE_UDR_SEND_PS_RDY] = "PE_UDR_Send_Ps_Rdy",
-	[PE_UDR_WAIT_FOR_DATA_RESET_COMPLETE] =
-		"PE_UDR_Wait_For_Data_Reset_Complete",
-	[PE_DDR_SEND_DATA_RESET] = "PE_DDR_Send_Data_Reset",
-	[PE_DDR_DATA_RESET_RECEIVED] = "PE_DDR_Data_Reset_Received",
-	[PE_DDR_WAIT_FOR_VCONN_OFF] = "PE_DDR_Wait_For_VCONN_Off",
-	[PE_DDR_PERFORM_DATA_RESET] = "PE_DDR_Perform_Data_Reset",
-#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+	[PE_GET_REVISION] = "PE_Get_Revision",
 #ifdef CONFIG_USB_PD_EPR
 	[PE_SNK_SEND_EPR_MODE_ENTRY] = "PE_SNK_Send_EPR_Mode_Entry",
 	[PE_SNK_EPR_MODE_ENTRY_WAIT_FOR_RESPONSE] =
@@ -8302,6 +8302,11 @@ const char *pe_get_current_state(int port)
 		return pe_state_names[get_state_pe(port)];
 	else
 		return "";
+}
+
+uint8_t pe_get_state(int port)
+{
+	return get_state_pe(port);
 }
 
 uint32_t pe_get_flags(int port)

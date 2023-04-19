@@ -272,6 +272,11 @@ extern int _GPIO_CCD_MODE_ODL;
 /* List of human readable state names for console debugging */
 __maybe_unused static __const_data const char *const tc_state_names[] = {
 #ifdef USB_PD_DEBUG_LABELS
+	/* Super States */
+	[TC_CC_OPEN] = "SS:CC_OPEN",
+	[TC_CC_RD] = "SS:CC_RD",
+	[TC_CC_RP] = "SS:CC_RP",
+	/* Normal States */
 	[TC_DISABLED] = "Disabled",
 	[TC_ERROR_RECOVERY] = "ErrorRecovery",
 	[TC_UNATTACHED_SNK] = "Unattached.SNK",
@@ -292,10 +297,6 @@ __maybe_unused static __const_data const char *const tc_state_names[] = {
 	[TC_CT_UNATTACHED_SNK] = "CTUnattached.SNK",
 	[TC_CT_ATTACHED_SNK] = "CTAttached.SNK",
 #endif
-	/* Super States */
-	[TC_CC_OPEN] = "SS:CC_OPEN",
-	[TC_CC_RD] = "SS:CC_RD",
-	[TC_CC_RP] = "SS:CC_RP",
 
 	[TC_STATE_COUNT] = "",
 #endif

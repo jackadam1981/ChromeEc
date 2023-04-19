@@ -33,6 +33,7 @@ static bool tc_get_current_state_called;
 static bool tc_get_flags_called;
 static bool pe_get_current_state_called;
 static bool pe_get_flags_called;
+static bool pe_get_state_called;
 static bool pe_is_explicit_contract_called;
 static bool pe_snk_in_epr_mode_called;
 static bool pe_snk_epr_explicit_exit_called;
@@ -40,6 +41,7 @@ static bool pd_get_dual_role_called;
 static bool board_get_usb_pd_port_count_called;
 static bool pd_srccaps_dump_called;
 static bool pd_timer_dump_called;
+static bool pd_get_task_state_called;
 
 static enum try_src_override_t try_src_override;
 static int test_port;
@@ -96,6 +98,12 @@ const char *pe_get_current_state(int port)
 {
 	pe_get_current_state_called = true;
 	return "PE_STATE";
+}
+
+uint8_t pe_get_state(int port)
+{
+	pd_get_task_state_called = true;
+	return 0;
 }
 
 enum pd_dual_role_states pd_get_dual_role(int port)
@@ -243,6 +251,13 @@ enum tcpc_cc_polarity pd_get_polarity(int port)
 {
 	test_port = port;
 	pd_get_polarity_called = true;
+	return 0;
+}
+
+uint8_t pd_get_task_state(int port)
+{
+	test_port = port;
+	pd_get_task_state_called = true;
 	return 0;
 }
 
@@ -676,11 +691,13 @@ static int test_command_pd_state(void)
 	pd_comm_is_enabled_called = false;
 	pd_get_power_role_called = false;
 	pd_get_data_role_called = false;
+	pd_get_task_state_called = false;
 	tc_is_vconn_src_called = false;
 	tc_get_current_state_called = false;
 	tc_get_flags_called = false;
 	pe_get_current_state_called = false;
 	pe_get_flags_called = false;
+	pe_get_state_called = false;
 	pe_is_explicit_contract_called = true;
 	pe_snk_in_epr_mode_called = true;
 
@@ -689,11 +706,13 @@ static int test_command_pd_state(void)
 	TEST_ASSERT(pd_comm_is_enabled_called);
 	TEST_ASSERT(pd_get_power_role_called);
 	TEST_ASSERT(pd_get_data_role_called);
+	TEST_ASSERT(pd_get_task_state_called);
 	TEST_ASSERT(tc_is_vconn_src_called);
 	TEST_ASSERT(tc_get_current_state_called);
 	TEST_ASSERT(tc_get_flags_called);
 	TEST_ASSERT(pe_get_current_state_called);
 	TEST_ASSERT(pe_get_flags_called);
+	TEST_ASSERT(pe_get_state_called);
 	TEST_ASSERT(pe_is_explicit_contract_called);
 	TEST_ASSERT(pe_snk_in_epr_mode_called);
 
