@@ -16,6 +16,24 @@
       "message": "Does the FAFT cover testing for all subsystems of EC like USBC, Battery etc... If not, is it possible to check the missing ones by manually flashing once, to make sure gpio config update is not breaking anything that is working right now\n\nIs it possible to check zephyr.dts in rex build to make sure override of GPIO config from rex.dts happening as expected if not done already",
       "revId": "606b25334951b6f7ae801a7fe38359e99030041c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1822d1af_a597003b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-04-19T21:01:33Z",
+      "side": 1,
+      "message": "i\u0027m testing with faft_ec, but that does not cover PD directly.\ni\u0027ve been runnnig with this patchset for a couple of\nweeks now, and basic system functionality is OK.",
+      "parentUuid": "01fd8e82_3e3a737e",
+      "revId": "606b25334951b6f7ae801a7fe38359e99030041c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
