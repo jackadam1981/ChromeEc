@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f736ed_5ebe14f4",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-04-19T15:54:20Z",
+      "side": 1,
+      "message": "Ok, I fixed your yaml errors, and it still doesn\u0027t work.\n\nWas this tested at all?\n\n```\n$ checkout_at_date \"https://chromium.googlesource.com/external/gob/boringssl/boringssl\" \"$(boringssl_commit)\" \"${MODULES_DIR}/boringssl\" \"${ec_commit_date}\"\nUpdating depot_tools...\nusing /tmp/goma_uboot as tmpdir\nINFO: creating cache dir (/tmp/goma_uboot/goma_cache).\nUpdating files: 100% (6039/6039), done.\nCloning into \u0027/builds/zephyr-ec/ec/modules/boringssl\u0027...\nwarning: Could not find remote branch e0d601a57fde7d67a1c771e7d87468faf1f8fe55 to clone.\nfatal: Remote branch e0d601a57fde7d67a1c771e7d87468faf1f8fe55 not found in upstream origin\ngit clone failed will retry 5 times\nCloning into \u0027/builds/zephyr-ec/ec/modules/boringssl\u0027...\nwarning: Could not find remote branch e0d601a57fde7d67a1c771e7d87468faf1f8fe55 to clone.\nfatal: Remote branch e0d601a57fde7d67a1c771e7d87468faf1f8fe55 not found in upstream origin\ngit clone failed will retry 4 times\nCloning into \u0027/builds/zephyr-ec/ec/modules/boringssl\u0027...\nwarning: Could not find remote branch e0d601a57fde7d67a1c771e7d87468faf1f8fe55 to clone.\nfatal: Remote branch e0d601a57fde7d67a1c771e7d87468faf1f8fe55 not found in upstream origin\ngit clone failed will retry 3 times\nCloning into \u0027/builds/zephyr-ec/ec/modules/boringssl\u0027...\nwarning: Could not find remote branch e0d601a57fde7d67a1c771e7d87468faf1f8fe55 to clone.\nfatal: Remote branch e0d601a57fde7d67a1c771e7d87468faf1f8fe55 not found in upstream origin\ngit clone failed will retry 2 times\nCloning into \u0027/builds/zephyr-ec/ec/modules/boringssl\u0027...\nwarning: Could not find remote branch e0d601a57fde7d67a1c771e7d87468faf1f8fe55 to clone.\nfatal: Remote branch e0d601a57fde7d67a1c771e7d87468faf1f8fe55 not found in upstream origin\ngit clone failed will retry 1 times\nfatal: not a git repository (or any parent up to mount point /)\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n```",
+      "parentUuid": "064a8484_d2807dc6",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 89
+      },
+      "revId": "16348026abddea5d7c9f90412655f87f1061b822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e839c413_d4c0d34c",
