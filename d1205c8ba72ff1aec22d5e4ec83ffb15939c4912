@@ -88,6 +88,24 @@
       "parentUuid": "d5c444e7_3636718f",
       "revId": "d1205c8ba72ff1aec22d5e4ec83ffb15939c4912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbbffd18_dc6fe9f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-19T16:35:57Z",
+      "side": 1,
+      "message": "okay thank you.\nMay be because CONFIG_CMD_RETIMER is enabled by default, I will plan to enabled only for BB \u0026 KB retimer",
+      "parentUuid": "b75961e0_facef231",
+      "revId": "d1205c8ba72ff1aec22d5e4ec83ffb15939c4912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
