@@ -118,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0483961a_9f4f6f74",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-19T23:07:13Z",
+      "side": 1,
+      "message": "Acknowledged\n\njust trying to avoid increasing the code size",
+      "parentUuid": "30347678_397d865d",
+      "revId": "f210b064a0b17387a7e36a175aa5eb58c7390111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91c4ac60_4bb94b2a",

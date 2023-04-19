@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9badd8bf_0cd7bf53",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-19T23:07:13Z",
+      "side": 1,
+      "message": "nit: declare at line 76 to avoid initializing to 0",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "5c4daabdbab60dee6afb823931863ecd85c593ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32ea8ed9_18797bf7",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-19T23:07:13Z",
+      "side": 1,
+      "message": "should it be more of DP2.1 entry mode allowed?",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 35
+      },
+      "revId": "5c4daabdbab60dee6afb823931863ecd85c593ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a23e654_fab9b869",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-19T23:07:13Z",
+      "side": 1,
+      "message": "nit: how about\n\n#define VDM_VERS_MINOR IS_ENABLED(CONFIG_USB_PD_DP21_MODE) ? VDO_SVDM_VERS_MINOR(1) : 0\n\nvdm[0] |\u003d VDM_VERS_MINOR;",
+      "range": {
+        "startLine": 290,
+        "startChar": 12,
+        "endLine": 292,
+        "endChar": 8
+      },
+      "revId": "5c4daabdbab60dee6afb823931863ecd85c593ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f0fb5b4_d4a231e2",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-19T23:07:13Z",
+      "side": 1,
+      "message": "nit: add reference from the DP flow and is it possible to follow same flow as in the spec?\n\nVESA DisplayPort Alt Mode on USB Type-C Standard\n(DisplayPort Alt Mode) Version 2.1 \nFigure 5–3: Example Cable Support Flow",
+      "revId": "5c4daabdbab60dee6afb823931863ecd85c593ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcbac8e0_5ca45012",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-19T23:07:13Z",
+      "side": 1,
+      "message": "if compiler treats as unused for non DP2.1, may be bring these inside line 744",
+      "range": {
+        "startLine": 733,
+        "startChar": 0,
+        "endLine": 743,
+        "endChar": 0
+      },
+      "revId": "5c4daabdbab60dee6afb823931863ecd85c593ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
