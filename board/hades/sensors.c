@@ -19,8 +19,8 @@ struct adc_t adc_channels[] = {
 		.factor_div = ADC_READ_MAX + 1,
 		.shift = 0,
 	},
-	[ADC_TEMP_SENSOR_2_GPU] = {
-		.name = "TEMP_GPU",
+	[ADC_TEMP_SENSOR_2_FAN] = {
+		.name = "TEMP_FAN",
 		.input_ch = NPCX_ADC_CH1,
 		.factor_mul = ADC_MAX_VOLT,
 		.factor_div = ADC_READ_MAX + 1,
@@ -47,6 +47,13 @@ struct adc_t adc_channels[] = {
 		.factor_div = ADC_READ_MAX + 1,
 		.shift = 0,
 	},
+	[ADC_USB_C1_VBUSM] = {
+		.name = "USB_C1_VBUSM",
+		.input_ch = NPCX_ADC_CH9,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -62,7 +69,7 @@ const struct temp_sensor_t temp_sensors[] = {
 		.name = "GPU",
 		.type = TEMP_SENSOR_TYPE_BOARD,
 		.read = get_temp_3v3_30k9_47k_4050b,
-		.idx = ADC_TEMP_SENSOR_2_GPU,
+		.idx = ADC_TEMP_SENSOR_2_FAN,
 	},
 	[TEMP_SENSOR_3_CHARGER] = {
 		.name = "Charger",
