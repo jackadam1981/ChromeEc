@@ -16,6 +16,24 @@
       "message": "Hi Daisuke, can you please share the error?",
       "revId": "d1205c8ba72ff1aec22d5e4ec83ffb15939c4912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de6640d2_93af8f0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-19T00:08:29Z",
+      "side": 1,
+      "message": "```\nERROR:root:The following boards failed to compile:\ncerise\ndamu\nmeep\nstern\nwillow\n```\nCan you reproduce the error?",
+      "parentUuid": "ae12f0d7_13d7131f",
+      "revId": "d1205c8ba72ff1aec22d5e4ec83ffb15939c4912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
