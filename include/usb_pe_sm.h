@@ -169,6 +169,14 @@ bool pe_in_local_ams(int port);
 const char *pe_get_current_state(int port);
 
 /**
+ * Returns the current PE state
+ *
+ * @param port USB-C port number
+ * @return the current pe state
+ */
+uint8_t pe_get_state(int port);
+
+/**
  * Returns the flag mask of the PE state machine
  *
  * @param port USB-C port number
