@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5760fcef_8721319c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-04-19T00:11:05Z",
+      "side": 1,
+      "message": "CQ treats skips as errors, so removed the skip from the test that\u0027s not yet implemented.",
+      "revId": "794ef7245e434be90e90f17bfa28035b70c7153a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
