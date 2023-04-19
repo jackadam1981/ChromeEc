@@ -34,6 +34,24 @@
       "parentUuid": "77e2a3e8_303415b2",
       "revId": "24df505e60ba56a12d07b0a554fb2aaf055e0561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb6055f_3f87f901",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-04-19T06:30:00Z",
+      "side": 1,
+      "message": "Two consecutive passes in CQ seems pretty conclusive that doubling the sleep duration was sufficient.",
+      "parentUuid": "1beb7007_7e7f8089",
+      "revId": "24df505e60ba56a12d07b0a554fb2aaf055e0561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
