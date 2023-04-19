@@ -38,8 +38,3 @@ int pd_snk_is_vbus_provided(int port)
 #endif
 	return vbus;
 }
-
-int board_vbus_source_enabled(int port)
-{
-	return ppc_is_sourcing_vbus(port);
-}
