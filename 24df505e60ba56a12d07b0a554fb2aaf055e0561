@@ -16,6 +16,24 @@
       "message": "Assertion failure doesn\u0027t occur when I run the CQ workflow on my workstation, but perhaps simply disabling assertions will fix it.",
       "revId": "24df505e60ba56a12d07b0a554fb2aaf055e0561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1beb7007_7e7f8089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-04-19T03:57:32Z",
+      "side": 1,
+      "message": "Assertions are on by default and no other test turns them off, so that seems like a bad choice. Perhaps sleeping longer will help.",
+      "parentUuid": "77e2a3e8_303415b2",
+      "revId": "24df505e60ba56a12d07b0a554fb2aaf055e0561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
