@@ -14,7 +14,7 @@
 	gpio-led-pins {
 		compatible = "cros-ec,gpio-led-pins";
 
-		left-led {
+		left_led: left-led {
 			led-id = "EC_LED_ID_SYSRQ_DEBUG_LED";
 			led-pins = <&gpio_ec_chg_led_y_c1
 				    &gpio_ec_chg_led_w_c1>;
@@ -34,7 +34,7 @@
 			};
 		};
 
-		right-led {
+		right_led: right-led {
 			led-id = "EC_LED_ID_RIGHT_LED";
 			led-pins = <&gpio_ec_chg_led_y_c0
 				    &gpio_ec_chg_led_w_c0>;

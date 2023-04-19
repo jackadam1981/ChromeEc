@@ -10,7 +10,10 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/pwm.h>
 
-#define PINS_NODE(id) DT_CAT(PIN_NODE_, id)
+#define EASY_PINS_NODE(parent_id, color_token) \
+	DT_CAT4(PIN_NODE_, parent_id, _COLOR_, color_token)
+#define PINS_NODE(id) \
+	EASY_PINS_NODE(DT_PARENT(id), DT_STRING_UPPER_TOKEN(id, led_color))
 #define PINS_ARRAY(id) DT_CAT(PINS_ARRAY_, id)
 
 /*
