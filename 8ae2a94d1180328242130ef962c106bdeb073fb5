@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12b41105_4ed0371d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5634,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-19T23:12:45Z",
+      "side": 1,
+      "message": "nit: how about?\nEC_CMD_USB_PD_DP21_CABLE_DISCOVERY\nec_params_usb_pd_dp21 \u003d\u003e ec_params_usb_pd_dp21_cable\nec_response_usb_dp21_discovery \u003d\u003e ec_response_usb_dp21_cable_info",
+      "range": {
+        "startLine": 5634,
+        "startChar": 26,
+        "endLine": 5634,
+        "endChar": 27
+      },
+      "revId": "8ae2a94d1180328242130ef962c106bdeb073fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
