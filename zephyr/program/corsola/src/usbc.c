@@ -235,3 +235,68 @@ __override uint8_t get_dp_pin_mode(int port)
 
 	return pd_dfp_dp_get_pin_mode(port, dp_status[port]);
 }
+
+int board_set_active_charge_port(int port)
+{
+	int i;
+	bool is_valid_port =
+		(port >= 0 && port < board_get_adjusted_usb_pd_port_count());
+	/* adjust the actual port count when not the type-c db connected. */
+
+	if (!is_valid_port && port != CHARGE_PORT_NONE) {
+		return EC_ERROR_INVAL;
+	}
+
+	if (port == CHARGE_PORT_NONE) {
+		CPRINTS("Disabling all charger ports");
+
+		/* Disable all ports. */
+		for (i = 0; i < board_get_adjusted_usb_pd_port_count(); i++) {
+			/*
+			 * Do not return early if one fails otherwise we can
+			 * get into a boot loop assertion failure.
+			 */
+			if (ppc_vbus_sink_enable(i, 0)) {
+				CPRINTS("Disabling C%d as sink failed.", i);
+			}
+		}
+
+		return EC_SUCCESS;
+	}
+
+	/* Check if the port is sourcing VBUS. */
+	if (ppc_is_sourcing_vbus(port)) {
+		CPRINTS("Skip enable C%d", port);
+		return EC_ERROR_INVAL;
+	}
+
+	CPRINTS("New charge port: C%d", port);
+
+	/*
+	 * Turn off the other ports' sink path FETs, before enabling the
+	 * requested charge port.
+	 */
+	for (i = 0; i < board_get_adjusted_usb_pd_port_count(); i++) {
+		if (i == port) {
+			continue;
+		}
+
+		if (ppc_vbus_sink_enable(i, 0)) {
+			CPRINTS("C%d: sink path disable failed.", i);
+		}
+	}
+
+	/* Enable requested charge port. */
+	if (ppc_vbus_sink_enable(port, 1)) {
+		CPRINTS("C%d: sink path enable failed.", port);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
+}
+
+/* Used by Vbus discharge common code with CONFIG_USB_PD_DISCHARGE */
+int board_vbus_source_enabled(int port)
+{
+	return ppc_is_sourcing_vbus(port);
+}
