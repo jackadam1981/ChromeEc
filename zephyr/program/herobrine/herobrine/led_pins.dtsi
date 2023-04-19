@@ -12,18 +12,18 @@
 			led-pins = <&gpio_ec_chg_led_y_c1
 				    &gpio_ec_chg_led_w_c1>;
 
-			color_off_left: color-off-left {
+			color-off-left {
 				led-color = "LED_OFF";
 				led-values = <0 0>;
 			};
 
-			color_amber_left: color-amber-left {
+			color-amber-left {
 				led-color = "LED_AMBER";
 				br-color = "EC_LED_COLOR_AMBER";
 				led-values = <1 0>;
 			};
 
-			color_white_left: color-white-left {
+			color-white-left {
 				led-color = "LED_WHITE";
 				br-color = "EC_LED_COLOR_WHITE";
 				led-values = <0 1>;
@@ -35,20 +35,20 @@
 			led-pins = <&gpio_ec_chg_led_y_c0
 				    &gpio_ec_chg_led_w_c0>;
 
-			color_off_right: color-off-right {
+			color-off-right {
 				led-color = "LED_OFF";
 				led-values = <0 0>;
 			};
 
 
-			color_amber_right: color-amber-right {
+			color-amber-right {
 				led-color = "LED_AMBER";
 				br-color = "EC_LED_COLOR_AMBER";
 				led-values = <1 0>;
 			};
 
 
-			color_white_right: color-white-right {
+			color-white-right {
 				led-color = "LED_WHITE";
 				br-color = "EC_LED_COLOR_WHITE";
 				led-values = <0 1>;
