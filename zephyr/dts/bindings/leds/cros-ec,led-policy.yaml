@@ -86,14 +86,12 @@ child-binding:
              range of BATTERY_LEVEL_EMPTY to BATTERY_LEVEL_LOW inclusive.
       type: array
       required: false
-
   child-binding:
-    description: Color enum
     properties:
-      led-color:
+      led-node:
         description: |
-          Handle to LED pins node that describes pins to set to enable a
-          particular color.
+          Handle to LED node that describes the pins to be set for this
+          transition.
         type: phandle
         required: true
       period-ms:
