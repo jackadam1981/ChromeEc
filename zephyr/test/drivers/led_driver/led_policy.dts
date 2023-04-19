@@ -18,12 +18,20 @@
 			charge-port = <1>; /* Left port */
 
 			/* Turn off the right LED */
-			color-0 {
-				led-color = <&color_off_right>;
+			led-0 {
+				led-node = <&right_led>;
+
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Left LED to Blue */
-			color-1 {
-				led-color = <&color_blue_left>;
+			led-1 {
+				led-node = <&left_led>;
+
+				color-1 {
+					led-color = "LED_BLUE";
+				};
 			};
 		};
 
@@ -35,12 +43,18 @@
 			batt-state = <0>;
 
 			/* Turn off the left LED */
-			color-0 {
-				led-color = <&color_off_left>;
+			led-0 {
+				led-node = <&left_led>;
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Right LED to Blue */
-			color-1 {
-				led-color = <&color_blue_right>;
+			led-1 {
+				led-node = <&right_led>;
+				color-1 {
+					led-color = "LED_BLUE";
+				};
 			};
 		};
 
@@ -52,12 +66,20 @@
 			batt-state = <SB_STATUS_DISCHARGING>;
 
 			/* Turn off the left LED */
-			color-0 {
-				led-color = <&color_off_left>;
+			led-0 {
+				led-node = <&left_led>;
+
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Turn off the right LED */
-			color-1 {
-				led-color = <&color_off_right>;
+			led-1 {
+				led-node = <&right_led>;
+
+				color-1 {
+					led-color = "LED_OFF";
+				};
 			};
 		};
 
@@ -67,17 +89,23 @@
 			batt-lvl = <BATTERY_LEVEL_EMPTY BATTERY_LEVEL_LOW>;
 
 			/* Turn off the left LED */
-			color-0 {
-				led-color = <&color_off_left>;
+			led-0 {
+				led-node = <&left_led>;
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Right LED - White 1 sec, off 3 sec */
-			color-1 {
-				led-color = <&color_white_right>;
-				period-ms = <1000>;
-			};
-			color-2 {
-				led-color = <&color_off_right>;
-				period-ms = <3000>;
+			led-1 {
+				led-node = <&right_led>;
+				color-1 {
+					led-color = "LED_WHITE";
+					period-ms = <1000>;
+				};
+				color-2 {
+					led-color = "LED_OFF";
+					period-ms = <3000>;
+				};
 			};
 		};
 
@@ -87,12 +115,18 @@
 			batt-lvl = <(BATTERY_LEVEL_LOW + 1) BATTERY_LEVEL_FULL>;
 
 			/* Turn off the left LED */
-			color-0 {
-				led-color = <&color_off_left>;
+			led-0 {
+				led-node = <&left_led>;
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Turn off the right LED */
-			color-1 {
-				led-color = <&color_off_right>;
+			led-1 {
+				led-node = <&right_led>;
+				color-1 {
+					led-color = "LED_OFF";
+				};
 			};
 		};
 
@@ -101,17 +135,23 @@
 			charge-port = <1>; /* Left port */
 
 			/* Turn off the right LED */
-			color-0 {
-				led-color = <&color_off_right>;
+			led-0 {
+				led-node = <&right_led>;
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Left LED - White 2 sec, off 2 sec */
-			color-1 {
-				led-color = <&color_white_left>;
-				period-ms = <2000>;
-			};
-			color-2 {
-				led-color = <&color_off_right>;
-				period-ms = <2000>;
+			led-1 {
+				led-node = <&left_led>;
+				color-1 {
+					led-color = "LED_WHITE";
+					period-ms = <2000>;
+				};
+				color-2 {
+					led-color = "LED_OFF";
+					period-ms = <2000>;
+				};
 			};
 		};
 
@@ -120,17 +160,24 @@
 			charge-port = <0>; /* Right port */
 
 			/* Turn off the left LED */
-			color-0 {
-				led-color = <&color_off_left>;
+			led-0 {
+				led-node = <&left_led>;
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Right LED - White 2 sec, off 2 sec */
-			color-1 {
-				led-color = <&color_white_right>;
-				period-ms = <2000>;
-			};
-			color-2 {
-				led-color = <&color_off_right>;
-				period-ms = <2000>;
+			led-1 {
+				led-node = <&right_led>;
+
+				color-1 {
+					led-color = "LED_WHITE";
+					period-ms = <2000>;
+				};
+				color-2 {
+					led-color = "LED_OFF";
+					period-ms = <2000>;
+				};
 			};
 		};
 
@@ -139,12 +186,18 @@
 			charge-port = <1>; /* Left port */
 
 			/* Turn off the right LED */
-			color-0 {
-				led-color = <&color_off_right>;
+			led-0 {
+				led-node = <&right_led>;
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Left LED to White */
-			color-1 {
-				led-color = <&color_white_left>;
+			led-1 {
+				led-node = <&left_led>;
+				color-1 {
+					led-color = "LED_WHITE";
+				};
 			};
 		};
 
@@ -153,12 +206,18 @@
 			charge-port = <0>; /* Right port */
 
 			/* Turn off the left LED */
-			color-0 {
-				led-color = <&color_off_left>;
+			led-0 {
+				led-node = <&left_led>;
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Right LED to White */
-			color-1 {
-				led-color = <&color_white_right>;
+			led-1 {
+				led-node = <&right_led>;
+				color-1 {
+					led-color = "LED_WHITE";
+				};
 			};
 		};
 
@@ -167,17 +226,23 @@
 			charge-port = <1>; /* Left port */
 
 			/* Turn off the right LED */
-			color-0 {
-				led-color = <&color_off_right>;
+			led-0 {
+				led-node = <&right_led>;
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Left LED - Blue 3 sec, Off 1 sec */
-			color-1 {
-				led-color = <&color_blue_left>;
-				period-ms = <3000>;
-			};
-			color-2 {
-				led-color = <&color_off_left>;
-				period-ms = <1000>;
+			led-1 {
+				led-node = <&left_led>;
+				color-1 {
+					led-color = "LED_BLUE";
+					period-ms = <3000>;
+				};
+				color-2 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+				};
 			};
 		};
 
@@ -186,17 +251,23 @@
 			charge-port = <0>; /* Right port */
 
 			/* Turn off the left LED */
-			color-0 {
-				led-color = <&color_off_left>;
+			led-0 {
+				led-node = <&left_led>;
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Right LED - Blue 3 sec, Off 1 sec */
-			color-1 {
-				led-color = <&color_blue_right>;
-				period-ms = <3000>;
-			};
-			color-2 {
-				led-color = <&color_off_right>;
-				period-ms = <1000>;
+			led-1 {
+				led-node = <&right_led>;
+				color-1 {
+					led-color = "LED_BLUE";
+					period-ms = <3000>;
+				};
+				color-2 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+				};
 			};
 		};
 
@@ -205,12 +276,18 @@
 			charge-port = <1>; /* Left port */
 
 			/* Turn off the right LED */
-			color-0 {
-				led-color = <&color_off_right>;
+			led-0 {
+				led-node = <&right_led>;
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Left LED to White */
-			color-1 {
-				led-color = <&color_white_left>;
+			led-1 {
+				led-node = <&left_led>;
+				color-1 {
+					led-color = "LED_WHITE";
+				};
 			};
 		};
 
@@ -219,12 +296,18 @@
 			charge-port = <0>; /* Right port */
 
 			/* Turn off the left LED */
-			color-0 {
-				led-color = <&color_off_left>;
+			led-0 {
+				led-node = <&left_led>;
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 			/* Right LED to White */
-			color-1 {
-				led-color = <&color_white_right>;
+			led-1 {
+				led-node = <&right_led>;
+				color-1 {
+					led-color = "LED_WHITE";
+				};
 			};
 		};
 	};
