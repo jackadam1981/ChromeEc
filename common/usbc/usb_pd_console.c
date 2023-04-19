@@ -189,12 +189,13 @@ static
 		if (IS_ENABLED(CONFIG_USBC_VCONN))
 			ccprintf("%s ", tc_is_vconn_src(port) ? "-VC" : "");
 
-		ccprintf("TC State: %s, Flags: 0x%04x",
-			 tc_get_current_state(port), tc_get_flags(port));
+		ccprintf("TC State: %d(%s), Flags: 0x%04x",
+			 pd_get_task_state(port), tc_get_current_state(port),
+			 tc_get_flags(port));
 
 		if (IS_ENABLED(CONFIG_USB_PE_SM)) {
-			ccprintf(" PE State: %s, Flags: 0x%04x",
-				 pe_get_current_state(port),
+			ccprintf(" PE State: %d(%s), Flags: 0x%04x",
+				 pe_get_state(port), pe_get_current_state(port),
 				 pe_get_flags(port));
 			if (pe_is_explicit_contract(port)) {
 				if (pe_snk_in_epr_mode(port))
