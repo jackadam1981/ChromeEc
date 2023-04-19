@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "807a9f70_d636bdad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-19T23:29:11Z",
+      "side": 1,
+      "message": "enable for all MTL-RVP too",
+      "revId": "c10fd10fa4ed7cda6e09120921d057422da4b99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2809abf9_2eb5583c",
+        "filename": "zephyr/program/rex/src/board_power.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-19T23:29:11Z",
+      "side": 1,
+      "message": "from Meteorlake PDG Table 92. DisplayPort* Bit Rates",
+      "revId": "c10fd10fa4ed7cda6e09120921d057422da4b99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
