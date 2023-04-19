@@ -680,6 +680,14 @@ tests:
     - ./boards/native_posix.overlay
     - ./led_driver/led_pins.dts
     - ./led_driver/led_policy.dts
+  drivers.led_pwm_fade:
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_LED_PWM_FADE=y
+    extra_conf_files:
+    - prj.conf
+    extra_dtc_overlay_files:
+    - ./boards/native_posix.overlay
+    - ./led_pwm_fade/led_policy.dts
   drivers.led_common:
     extra_configs:
     - CONFIG_LINK_TEST_SUITE_LED_COMMON=y
