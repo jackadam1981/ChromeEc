@@ -110,6 +110,30 @@
       },
       "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef3b47f6_79a2ede6",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-19T17:07:24Z",
+      "side": 1,
+      "message": "That is a much nicer solution",
+      "parentUuid": "4044b9a1_10c96d51",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
