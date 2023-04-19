@@ -7,8 +7,12 @@
 		power-state-charge {
 			charge-state = "LED_PWRS_CHARGE";
 
-			color-0 {
-				led-color = <&color_amber>;
+			led-0 {
+				led-node = <&battery_led>;
+
+				color-0 {
+					led-color = "LED_AMBER";
+				};
 			};
 		};
 
@@ -18,8 +22,12 @@
 			/* Battery percent range (> Low, <= Full) */
 			batt-lvl = <(BATTERY_LEVEL_LOW + 1) BATTERY_LEVEL_FULL>;
 
-			color-0 {
-				led-color = <&color_white>;
+			led-0 {
+				led-node = <&battery_led>;
+
+				color-0 {
+					led-color = "LED_WHITE";
+				};
 			};
 		};
 
@@ -29,14 +37,18 @@
 			/* Battery percent range (>= Empty, <= Low) */
 			batt-lvl = <BATTERY_LEVEL_EMPTY BATTERY_LEVEL_LOW>;
 
-			/* White 2 sec, off 1 sec */
-			color-0 {
-				led-color = <&color_white>;
-				period-ms = <2000>;
-			};
-			color-1 {
-				led-color = <&color_off>;
-				period-ms = <1000>;
+			led-0 {
+				led-node = <&battery_led>;
+
+				/* White 2 sec, off 1 sec */
+				color-0 {
+					led-color = "LED_WHITE";
+					period-ms = <2000>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+				};
 			};
 		};
 
@@ -44,14 +56,18 @@
 			charge-state = "LED_PWRS_DISCHARGE";
 			chipset-state = "POWER_S3";
 
-			/* White 1 sec, off 1 sec */
-			color-0 {
-				led-color = <&color_white>;
-				period-ms = <1000>;
-			};
-			color-1 {
-				led-color = <&color_off>;
-				period-ms = <1000>;
+			led-0 {
+				led-node = <&battery_led>;
+
+				/* White 1 sec, off 1 sec */
+				color-0 {
+					led-color = "LED_WHITE";
+					period-ms = <1000>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+				};
 			};
 		};
 
@@ -59,44 +75,60 @@
 			charge-state = "LED_PWRS_DISCHARGE";
 			chipset-state = "POWER_S5";
 
-			color-0 {
-				led-color = <&color_off>;
+			led-0 {
+				led-node = <&battery_led>;
+
+				color-0 {
+					led-color = "LED_OFF";
+				};
 			};
 		};
 
 		power-state-error {
 			charge-state = "LED_PWRS_ERROR";
 
-			/* Amber 1 sec, off 1 sec */
-			color-0 {
-				led-color = <&color_amber>;
-				period-ms = <1000>;
-			};
-			color-1 {
-				led-color = <&color_off>;
-				period-ms = <1000>;
+			led-0 {
+				led-node = <&battery_led>;
+
+				/* Amber 1 sec, off 1 sec */
+				color-0 {
+					led-color = "LED_AMBER";
+					period-ms = <1000>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+				};
 			};
 		};
 
 		power-state-near-full {
 			charge-state = "LED_PWRS_CHARGE_NEAR_FULL";
 
-			color-0 {
-				led-color = <&color_white>;
+			led-0 {
+				led-node = <&battery_led>;
+
+				color-0 {
+					led-color = "LED_WHITE";
+				};
 			};
 		};
 
 		power-state-forced-idle {
 			charge-state = "LED_PWRS_FORCED_IDLE";
 
-			/* Amber 2 sec, White 2 sec */
-			color-0 {
-				led-color = <&color_amber>;
-				period-ms = <2000>;
-			};
-			color-1 {
-				led-color = <&color_white>;
-				period-ms = <2000>;
+			led-0 {
+				led-node = <&battery_led>;
+
+				/* Amber 2 sec, White 2 sec */
+				color-0 {
+					led-color = "LED_AMBER";
+					period-ms = <2000>;
+				};
+				color-1 {
+					led-color = "LED_WHITE";
+					period-ms = <2000>;
+				};
 			};
 		};
 	};

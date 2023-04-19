@@ -80,33 +80,61 @@ struct node_prop_t {
  * HOOT_TICK_INTERVAL_MS
  */
 
-#define PERIOD_VAL(id)                               \
-	COND_CODE_1(DT_NODE_HAS_PROP(id, period_ms), \
-		    (DT_PROP(id, period_ms) / HOOK_TICK_INTERVAL_MS), (0))
+#define PERIOD_VAL(id) (DT_PROP_OR(id, period_ms, 0) / HOOK_TICK_INTERVAL_MS)
 
-#define LED_PERIOD(color_num, state_id) \
-	PERIOD_VAL(DT_CHILD(state_id, color_##color_num))
+#define LED_PERIOD(color_num, state_id)                                      \
+	COND_CODE_1(                                                         \
+		DT_NODE_EXISTS(DT_CHILD(DT_CHILD(state_id, led_0),           \
+					color_##color_num)),                 \
+		(PERIOD_VAL(DT_CHILD(DT_CHILD(state_id, led_0),              \
+				     color_##color_num))),                   \
+		(COND_CODE_1(DT_NODE_EXISTS(DT_CHILD(state_id, led_1)),      \
+			     (COND_CODE_1(DT_NODE_EXISTS(DT_CHILD(           \
+						  DT_CHILD(state_id, led_1), \
+						  color_##color_num)),       \
+					  (PERIOD_VAL(DT_CHILD(              \
+						  DT_CHILD(state_id, led_1), \
+						  color_##color_num))),      \
+					  (0))),                             \
+			     (0))))
 
-#define LED_PLUS_PERIOD(color_num, state_id) +LED_PERIOD(color_num, state_id)
+#define LED_PLUS_PERIOD(color_num, state_id) +LED_PERIOD(0, state_id)
 
 #define ACC_PERIOD(color_num, state_id) \
 	(0 LISTIFY(color_num, LED_PLUS_PERIOD, (), state_id))
 
-#define PINS_NODE_ADDR(id) DT_PHANDLE(id, led_color)
-#define LED_COLOR_INIT(color_num, color_num_plus_one, state_id)                \
-	{                                                                      \
-		.pins_node = COND_CODE_1(                                      \
-			DT_NODE_EXISTS(DT_CHILD(state_id, color_##color_num)), \
-			(&PINS_NODE(PINS_NODE_ADDR(                            \
-				DT_CHILD(state_id, color_##color_num)))),      \
-			(NULL)),                                               \
-		.acc_period = ACC_PERIOD(color_num_plus_one, state_id)         \
+#define EASY_PINS_NODE_FROM_POLICY(node_id, color_token) \
+	DT_CAT4(PIN_NODE_, node_id, _COLOR_, color_token)
+#define PINS_NODE_FROM_POLICY(id, color_num)                           \
+	EASY_PINS_NODE_FROM_POLICY(                                    \
+		DT_PROP(id, led_node),                                 \
+		DT_STRING_UPPER_TOKEN(DT_CHILD(id, color_##color_num), \
+				      led_color))
+#define LED_COLOR_INIT(color_num, color_num_plus_one, state_id)            \
+	{                                                                  \
+		.pins_node = COND_CODE_1(                                  \
+			DT_NODE_EXISTS(DT_CHILD(DT_CHILD(state_id, led_0), \
+						color_##color_num)),       \
+			(&PINS_NODE_FROM_POLICY(DT_CHILD(state_id, led_0), \
+						color_num)),               \
+			(COND_CODE_1(                                      \
+				DT_NODE_EXISTS(DT_CHILD(state_id, led_1)), \
+				(COND_CODE_1(                              \
+					DT_NODE_EXISTS(DT_CHILD(           \
+						DT_CHILD(state_id, led_1), \
+						color_##color_num)),       \
+					(&PINS_NODE_FROM_POLICY(           \
+						DT_CHILD(state_id, led_1), \
+						color_num)),               \
+					(0))),                             \
+				(0)))),                                    \
+		.acc_period = ACC_PERIOD(color_num_plus_one, state_id),    \
 	}
 
 /*
  * Initialize node_array struct with prop listed in dts
  */
-#define SET_LED_VALUES(state_id)                                              \
+#define SET_LED_VALUES(state_id) \
 	{ .pwr_state = GET_PROP(state_id, charge_state),                      \
 	  .chipset_state = GET_PROP(state_id, chipset_state),                 \
 	  .batt_state_mask =                                                  \
@@ -124,7 +152,7 @@ struct node_prop_t {
 		  LED_COLOR_INIT(1, 2, state_id),                             \
 		  LED_COLOR_INIT(2, 3, state_id),                             \
 		  LED_COLOR_INIT(3, 4, state_id),                             \
-	  } },
+	  }, },
 
 static const struct node_prop_t node_array[] = { DT_INST_FOREACH_CHILD(
 	0, SET_LED_VALUES) };

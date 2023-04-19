@@ -86,33 +86,47 @@ child-binding:
              range of BATTERY_LEVEL_EMPTY to BATTERY_LEVEL_LOW inclusive.
       type: array
       required: false
-
   child-binding:
-    description: Color enum
     properties:
-      led-color:
+      led-node:
         description: |
-          Handle to LED pins node that describes pins to set to enable a
-          particular color.
+          Handle to LED node that describes the pins to be set for this
+          transition.
         type: phandle
         required: true
-      period-ms:
-        description: |
-          In case of blinking LEDs, amount of time in msecs the LED
-          color is active. This value must be a multiple of
-          HOOK_TICK_INTERVAL_MS.
-          e.g.
-          power-state-error {
-             charge-state = "LED_PWRS_ERROR";
-             /* One sec Amber, one sec Off */
-             color-0 {
-               led-color = <&color_amber>;
-               period-ms = <1000>;
-             };
-             color-1 {
-               led-color = <&color_off>;
-               period-ms = <1000>;
-             };
-          };
-        type: int
-        required: false
+    child-binding:
+      properties:
+        led-color:
+          description: |
+            The color to be set for this LED. Must be one of the colors defined
+            for this LED in led_pins.dts or pwm_pins.dts.
+          type: string
+          required: true
+          enum:
+            - LED_OFF
+            - LED_RED
+            - LED_GREEN
+            - LED_BLUE
+            - LED_YELLOW
+            - LED_WHITE
+            - LED_AMBER
+        period-ms:
+          description: |
+            In case of blinking LEDs, amount of time in msecs the LED
+            color is active. This value must be a multiple of
+            HOOK_TICK_INTERVAL_MS.
+            e.g.
+            power-state-error {
+               charge-state = "LED_PWRS_ERROR";
+               /* One sec Amber, one sec Off */
+               color-0 {
+                 led-color = <&color_amber>;
+                 period-ms = <1000>;
+               };
+               color-1 {
+                 led-color = <&color_off>;
+                 period-ms = <1000>;
+               };
+            };
+          type: int
+          required: false
