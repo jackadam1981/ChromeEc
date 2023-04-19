@@ -34,6 +34,24 @@
       "parentUuid": "ae12f0d7_13d7131f",
       "revId": "d1205c8ba72ff1aec22d5e4ec83ffb15939c4912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc905ac3_7f4c0293",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-19T00:14:32Z",
+      "side": 1,
+      "message": "I couldn\u0027t, make buildall -j and also make for these boards is success for me.\nMy repo head is pointing to CL:4426805",
+      "parentUuid": "de6640d2_93af8f0f",
+      "revId": "d1205c8ba72ff1aec22d5e4ec83ffb15939c4912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
