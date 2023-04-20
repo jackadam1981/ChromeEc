@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abeb203_16ca91af",
+        "filename": "firmware_builder.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-04-20T02:35:20Z",
+      "side": 1,
+      "message": "Added taranza configuration in firmware_builder.py and build_with_clang.py",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 12
+      },
+      "revId": "1868ef736f998e5c2067ff0f93633d5630ebdfa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
