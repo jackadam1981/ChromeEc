@@ -269,6 +269,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "901a89eb_f73ac816",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-20T22:04:24Z",
+      "side": 1,
+      "message": "Bobby\u0027s suggestion is basically what I was thinking. I would do it in two stages:\n\n1. Introduce `CONFIG_RWDATA_ADDRESS` in `config.h` and use that in `rwsig.c`. This should result in identical code for all boards, which can be verified with `compare_build.sh`. Add that to the `TEST\u003d` line.\n2. Add the change to change the `#define` for the NPCX chip (that becomes this CL).",
+      "parentUuid": "ba1a9aa3_a6a43fad",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5110cdf6_86dffb2b",
         "filename": "common/rwsig.c",
         "patchSetId": 1
