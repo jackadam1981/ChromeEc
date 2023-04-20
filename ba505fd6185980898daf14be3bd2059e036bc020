@@ -319,6 +319,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c87d6bc_951dcbe0",
+        "filename": "board/helipilot/dev_key.pem",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-20T20:07:55Z",
+      "side": 1,
+      "message": "I don\u0027t know that it really matters (MP key is really the important one), but for consistency let\u0027s create a new key. At the very least it will help prevent trying to use a `helipilot` image on `bloonchipper`.",
+      "parentUuid": "b7ed8c31_cf0586c4",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 32
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "122c4c25_ba482e82",
         "filename": "board/helipilot/fpsensor_detect.c",
         "patchSetId": 1
@@ -378,6 +402,30 @@
       "side": 1,
       "message": "There\u0027s a similar case to be made for much of the code in `board.c` (most functions differ only in a symbol name), `board_rw.h` (exact copy), `ec.tasklist` (exaactly the same as `dartmonkey` and `bloonchipper`), and maybe others. Maybe it\u0027s worth a followup CL to reduce redundancy across FPMCU targets in general?",
       "parentUuid": "4e1eb7fe_9df23314",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8637199d_53ba4297",
+        "filename": "board/helipilot/fpsensor_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-20T20:07:55Z",
+      "side": 1,
+      "message": "\u003e  Maybe it\u0027s worth a followup CL to reduce redundancy across FPMCU targets in general?\n\nYes. Since this is new code, let\u0027s try to reduce the redundancy here and then one of you can make a followup CL to make the other boards use the same pattern to reduce redundancy for those.",
+      "parentUuid": "9171022c_9ca6b513",
       "range": {
         "startLine": 1,
         "startChar": 0,
