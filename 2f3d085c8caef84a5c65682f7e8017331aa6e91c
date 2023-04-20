@@ -45,6 +45,29 @@
       },
       "revId": "2f3d085c8caef84a5c65682f7e8017331aa6e91c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64de660_73305643",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-04-20T16:38:31Z",
+      "side": 1,
+      "message": "better to include those two array with \"CONFIG_USB_PD_DP21_MODE\" flag",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 42
+      },
+      "revId": "2f3d085c8caef84a5c65682f7e8017331aa6e91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
