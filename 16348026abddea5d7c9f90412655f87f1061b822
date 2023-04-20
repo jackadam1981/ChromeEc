@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c3b9a5_2e14ed52",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-20T07:45:41Z",
+      "side": 1,
+      "message": "This CL should be able to fix the issue:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4453523",
+      "parentUuid": "e8f736ed_5ebe14f4",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 89
+      },
+      "revId": "16348026abddea5d7c9f90412655f87f1061b822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e839c413_d4c0d34c",
