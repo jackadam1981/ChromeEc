@@ -16,6 +16,92 @@
       "message": "1. Include stdbool.h to fix compilation on some boards.\n2. Rebase on TOT.",
       "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "037ce7f5_2717d8a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-20T19:41:41Z",
+      "side": 1,
+      "message": "Some nits on the documentation, but please address before submitting.",
+      "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "200884b0_f5c0fcf8",
+        "filename": "include/fan.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-20T19:41:41Z",
+      "side": 1,
+      "message": "Move this under the CONFIG_ZEPHYR guard.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 34
+      },
+      "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7af11037_260da27d",
+        "filename": "include/fan.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-20T19:41:41Z",
+      "side": 1,
+      "message": "Please add description for this function, including documentation of the inputs and return value.",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 42
+      },
+      "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba355703_859f8477",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-20T19:41:41Z",
+      "side": 1,
+      "message": "mechanism by implementing the routine board_override_fan_control_duty().",
+      "range": {
+        "startLine": 125,
+        "startChar": 30,
+        "endLine": 125,
+        "endChar": 45
+      },
+      "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
