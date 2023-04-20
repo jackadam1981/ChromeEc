@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a404c0f1_2a33f76b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T03:04:31Z",
+      "side": 1,
+      "message": "No, as mentioned in b/273569976#comment2, fizz was the only program I could find with RWSIG verification enabled and Nuvoton clarified it used a different verification method where this code isn\u0027t included/executed. We should be good here, but let me know if you have concerns after reviewing the referenced information.",
+      "parentUuid": "4e5e3d43_7f861624",
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc98d227_4d3b6506",
         "filename": "common/rwsig.c",
         "patchSetId": 1
