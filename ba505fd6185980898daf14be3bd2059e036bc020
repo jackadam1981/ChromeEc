@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f23a96d_c46cff5c",
+        "filename": "board/helipilot/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:41:44Z",
+      "side": 1,
+      "message": "extpower, gpio_signal, power and trng can all be removed. switch.h is needed for GPIO definitions (GPIO_INT(HOST_MCU_WP_OD, PIN(4, 5), GPIO_INT_BOTH, switch_interrupt) and gpio_list.h is needed to link gpio functions (gpio_get_level, gpio_set_level)",
+      "parentUuid": "b02eca24_6931354c",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4760180_2e53c6f2",
@@ -84,6 +108,30 @@
       "writtenOn": "2023-04-20T17:23:57Z",
       "side": 1,
       "message": "These shouldn\u0027t be needed here anymore, they\u0027re in `fpsensor_utils.h` (which should probably be included explicitly)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac8b2b0_4b9121c2",
+        "filename": "board/helipilot/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4760180_2e53c6f2",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -117,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f984c00_f74dc803",
+        "filename": "board/helipilot/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f24ad064_980b9ea9",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55b2a052_3b44f2d1",
@@ -130,6 +202,30 @@
       "writtenOn": "2023-04-20T17:23:57Z",
       "side": 1,
       "message": "Should this be commented out? Maybe add a TODO to reenable?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 46
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c18221f_e82bdd3b",
+        "filename": "board/helipilot/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55b2a052_3b44f2d1",
       "range": {
         "startLine": 131,
         "startChar": 0,
@@ -482,6 +578,24 @@
       "writtenOn": "2023-04-20T17:23:57Z",
       "side": 1,
       "message": "When comparing against [build.mk](http://cs/chromeos_public/src/platform/ec/board/hatch_fp/build.mk?l\u003d28) I notice that this doesn\u0027t include the test list:\n\n```\ntest-list-y\u003d\\\n       abort \\\n       aes \\\n       always_memset \\\n       benchmark \\\n...\n```\n\nand a block to include the private repo\n```\n# Note that this variable includes the trailing \"/\"\n_hatch_fp_cur_dir:\u003d$(dir $(lastword $(MAKEFILE_LIST)))\n-include $(_hatch_fp_cur_dir)../../private/board/hatch_fp/build.mk\n```\n\nWill it still build the tests and/or include the FP libraries without these blocks?",
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c6ef29_44b01226",
+        "filename": "board/helipilot/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51b09a62_75619e68",
       "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
