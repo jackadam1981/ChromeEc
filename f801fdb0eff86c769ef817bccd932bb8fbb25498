@@ -157,6 +157,24 @@
       "parentUuid": "c017d284_7df4de50",
       "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d7a9f2b_82c15603",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-20T20:16:24Z",
+      "side": 1,
+      "message": "\u003e The problem here is that the relation between fan duty and RPM change is non-linear.\n\nIt appears this function is mixing units then. We are making calculations based on fan RPM, but setting the fan duty. How do we ever expect to hit the target RPM without knowing the duty-\u003eRPM translation, when we\u0027re modifying the fan speed using duty?\n\nCan we get the duty-\u003eRPM translation function?",
+      "parentUuid": "e801bd7d_18148dc8",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
