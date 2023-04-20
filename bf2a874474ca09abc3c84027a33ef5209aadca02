@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f666174_6b12be2a",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-20T19:59:21Z",
+      "side": 1,
+      "message": "This one doesn\u0027t seem related to the bug that was filed?",
+      "range": {
+        "startLine": 271,
+        "startChar": 9,
+        "endLine": 271,
+        "endChar": 20
+      },
+      "revId": "bf2a874474ca09abc3c84027a33ef5209aadca02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
