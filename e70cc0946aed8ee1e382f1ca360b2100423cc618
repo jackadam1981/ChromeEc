@@ -102,6 +102,29 @@
       },
       "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b341bd7_1765cc68",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-20T19:45:46Z",
+      "side": 1,
+      "message": "Add a TODO: referencing the bug tracking the improved fan implementation.",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 49
+      },
+      "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
