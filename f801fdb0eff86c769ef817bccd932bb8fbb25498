@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "997680dd_793544fe",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-20T20:43:22Z",
+      "side": 1,
+      "message": "I agree that updating the shared `struct fan_data` is not worth it for this  temporary code.\n\nI suggest using Zephyr\u0027s timer functionality instead of simple counter.\n\n```\nK_TIMER_DEFINE(grace_period_timer, 0, 0);\n...\n\nif (k_timer_remaining_get(\u0026grace_period_timer) !\u003d 0)\n    /* timer is running */\n    if (k_timer_status_get(\u0026grace_period_timer) \u003d\u003d 0)\n       /* timer has not yet expired */\n       return FAN_STATUS_FRUSTRATED;\n       \nk_timer_stop(\u0026grace_period_timer);\n\n...\nif (ABS(rpm_diff) \u003e\u003d 2500) {\n    k_timer_start(\u0026grace_period_timer, K_MSEC(1000), K_NO_WAIT);\n...\n} else if (ABS(rpm_diff) \u003e\u003d 250) {\n    k_timer_start(\u0026grace_period_timer, K_MSEC(750), K_NO_WAIT);\n    \n```",
+      "parentUuid": "9d11bc69_f6f14ef9",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8de2b9_9da560b3",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 9
@@ -172,6 +190,24 @@
       "writtenOn": "2023-04-20T20:16:24Z",
       "side": 1,
       "message": "\u003e The problem here is that the relation between fan duty and RPM change is non-linear.\n\nIt appears this function is mixing units then. We are making calculations based on fan RPM, but setting the fan duty. How do we ever expect to hit the target RPM without knowing the duty-\u003eRPM translation, when we\u0027re modifying the fan speed using duty?\n\nCan we get the duty-\u003eRPM translation function?",
+      "parentUuid": "e801bd7d_18148dc8",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a580e88_9f2aaf22",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-20T20:43:22Z",
+      "side": 1,
+      "message": "Please document that these RPM values were determined empirically and are specific to the Whiterun fan.",
       "parentUuid": "e801bd7d_18148dc8",
       "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
