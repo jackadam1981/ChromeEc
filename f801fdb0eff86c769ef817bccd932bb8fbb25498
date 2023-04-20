@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b1f713_e119ee98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-20T17:48:17Z",
+      "side": 1,
+      "message": "Thanks for the taking a look at this Tim.\nI\u0027ve added you as a reviewer to this, and the other two cls that are a part of the chain.",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "711afed1_dffc8f43",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "This was done deliberately. As a workaround we want to minimize the amount of changes and postpone the modification which might influence on another platforms till post AU. Therefore it was decided as Whiterun specific while long term fix will introduce PID and their parameters keept in \"struct fan_data\".",
       "parentUuid": "711afed1_dffc8f43",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a099dcb_16eee502",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-20T17:48:17Z",
+      "side": 1,
+      "message": "We can re-use the rpm_pre` field of the fan_data struct.\nIt\u0027s used for something else in the \"generic\" algorithm.\nI\u0027ll do that and will add a comment explaining weird variable name.",
+      "parentUuid": "bbe25493_d2d54286",
       "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
