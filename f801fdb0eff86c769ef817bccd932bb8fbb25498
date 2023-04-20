@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "711afed1_dffc8f43",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-20T17:19:24Z",
+      "side": 1,
+      "message": "Can this value be moved into `struct fan_data`, so each fan can have their own grace period? That should also allow for supporting \u003e1 fan.",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8de2b9_9da560b3",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-20T17:19:24Z",
+      "side": 1,
+      "message": "This should be moved to just before the `rpm_diff \u003e deviation` conditional, since it\u0027s unused if we return before then.",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "193cef00_7fb35141",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-20T17:19:24Z",
+      "side": 1,
+      "message": "Using `2500` directly makes it very specific to a particular fan\u0027s capabilities.\n\nInstead of using specific RPM values, can this instead be expressed with duty values? For example, with a fan that is capable of running at 4800 RPM (`rpm_max`, 100% duty), an RPM change of `2500` would be the same as a duty change of \u003e52%. So, rather than checking `ABS(rpm_diff) \u003e\u003d 2500`, calculate the target duty difference, and place bounds around how much it can actually change.",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
