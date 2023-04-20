@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b393f8ec_3f628825",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "Updated as hex format",
+      "parentUuid": "964841ab_fffee7d3",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2f9553c_37fe5ca7",
@@ -71,6 +95,30 @@
       "writtenOn": "2023-04-14T22:15:34Z",
       "side": 1,
       "message": "This is just ASCII data.  You can use\n```\nVENDOR_ID \u003d b\"MCHP\"\n```",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b47ba40e_db3e2071",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "f2f9553c_37fe5ca7",
       "range": {
         "startLine": 55,
         "startChar": 11,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d44d52e_43f0e17a",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "1d7ab2fe_a42fba78",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 35
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1ec3c28_f1a474d0",
@@ -117,6 +189,30 @@
       "writtenOn": "2023-04-14T22:15:34Z",
       "side": 1,
       "message": "This is just making a full bytes copy that was already returned by `data.read()`.  Why is this needed?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 50
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4542fbfa_5f4196b8",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "d1ec3c28_f1a474d0",
       "range": {
         "startLine": 113,
         "startChar": 0,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d93a3d2_5eae52d0",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "fd31e852_644ba5aa",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 51
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43894ee1_00c381fb",
@@ -163,6 +283,30 @@
       "writtenOn": "2023-04-14T22:15:34Z",
       "side": 1,
       "message": "Use PRG_HDR_TOTAL_LEN for both length parameters instead.",
+      "range": {
+        "startLine": 176,
+        "startChar": 47,
+        "endLine": 176,
+        "endChar": 55
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22df9d7c_b0a2e942",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "43894ee1_00c381fb",
       "range": {
         "startLine": 176,
         "startChar": 47,
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b26f658e_c7fde140",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "59c349e6_0a949022",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 0
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5259981_6f3121b3",
@@ -209,6 +377,30 @@
       "writtenOn": "2023-04-14T22:15:34Z",
       "side": 1,
       "message": "You\u0027ve already done this calculation and can replace this with `cmd.payload_length`",
+      "range": {
+        "startLine": 223,
+        "startChar": 26,
+        "endLine": 223,
+        "endChar": 66
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d42588db_8f00e1d2",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "e5259981_6f3121b3",
       "range": {
         "startLine": 223,
         "startChar": 26,
@@ -242,6 +434,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28184152_dac1e624",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "7ec47e4b_2ed141d9",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 0
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58fc43b2_eced6691",
@@ -255,6 +471,30 @@
       "writtenOn": "2023-04-14T22:15:34Z",
       "side": 1,
       "message": "`hdr_file_data[0x10:0x12]` is equivalent",
+      "range": {
+        "startLine": 252,
+        "startChar": 18,
+        "endLine": 252,
+        "endChar": 69
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83fb8c8b_56240d73",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "58fc43b2_eced6691",
       "range": {
         "startLine": 252,
         "startChar": 18,
@@ -288,6 +528,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a156637_b494f4cd",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "In our case, secondary loader Header total size is 320 bytes, so divided by 64 to make for 5 iteration.\nFW image in multiple of 128 bytes chunk, so divided the firmware image by 128 bytes and sending from host to ec",
+      "parentUuid": "0b558fb1_c9dda977",
+      "range": {
+        "startLine": 264,
+        "startChar": 8,
+        "endLine": 264,
+        "endChar": 10
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e6181ec_bb837d99",
@@ -311,6 +575,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "750dba1e_3a401cf8",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "4e6181ec_bb837d99",
+      "range": {
+        "startLine": 265,
+        "startChar": 8,
+        "endLine": 265,
+        "endChar": 11
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1695979_4a98fa76",
@@ -324,6 +612,30 @@
       "writtenOn": "2023-04-14T22:15:34Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 415,
+        "startChar": 44,
+        "endLine": 415,
+        "endChar": 47
+      },
+      "revId": "5519af496705fb6b37be2d22a05368f66e62f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c63adcf_b0b129ff",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:34:29Z",
+      "side": 1,
+      "message": "updated in the latest patch",
+      "parentUuid": "c1695979_4a98fa76",
       "range": {
         "startLine": 415,
         "startChar": 44,
