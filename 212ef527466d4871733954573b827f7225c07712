@@ -22,6 +22,30 @@
       },
       "revId": "212ef527466d4871733954573b827f7225c07712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dc57ced_77e05081",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T03:02:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4ed6044_b01cf1ee",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 10
+      },
+      "revId": "212ef527466d4871733954573b827f7225c07712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
