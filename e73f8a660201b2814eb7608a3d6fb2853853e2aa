@@ -293,6 +293,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbf8c7ae_528ea914",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-20T22:08:52Z",
+      "side": 1,
+      "message": "Another thought. It looks like `CONFIG_EC_WRITABLE_STORAGE_OFF` is defined as `CONFIG_RW_MEM_OFF` in some places. It would be worth creating a change that changes everything to use `CONFIG_MAPPED_STORAGE_BASE + CONFIG_EC_WRITABLE_STORAGE_OFF` and use `compare_build.sh` to see if there are any boards that fail. If those two values are equivalent for boards that use this code we can just switch everything to that.",
+      "parentUuid": "901a89eb_f73ac816",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5110cdf6_86dffb2b",
         "filename": "common/rwsig.c",
         "patchSetId": 1
