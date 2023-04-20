@@ -183,6 +183,31 @@ DECLARE_DEFERRED(baseboard_a1_retimer_setup);
 
 void board_chipset_startup(void)
 {
+<<<<<<< HEAD   (e09fc4 frostflow: Add CONFIG_USB_PD_STARTUP_DELAY_MS)
 	hook_call_deferred(&baseboard_a1_retimer_setup_data, 500 * MSEC);
+=======
+	switch (data.event) {
+	default:
+		return;
+
+	case AP_POWER_STARTUP:
+		/* Any retimer tuning can be done after the retimer turns on */
+		hook_call_deferred(&baseboard_a1_retimer_setup_data, 20 * MSEC);
+		break;
+	}
+>>>>>>> CHANGE (217910 Skyrim: Keep retimer enabled in suspend)
 }
+<<<<<<< HEAD   (e09fc4 frostflow: Add CONFIG_USB_PD_STARTUP_DELAY_MS)
 DECLARE_HOOK(HOOK_INIT, board_chipset_startup, HOOK_PRIO_DEFAULT);
+=======
+
+void board_callback_init(void)
+{
+	static struct ap_power_ev_callback cb;
+
+	/* Setup a resume callback */
+	ap_power_ev_init_callback(&cb, board_resume_change, AP_POWER_STARTUP);
+	ap_power_ev_add_callback(&cb);
+}
+DECLARE_HOOK(HOOK_INIT, board_callback_init, HOOK_PRIO_DEFAULT);
+>>>>>>> CHANGE (217910 Skyrim: Keep retimer enabled in suspend)
