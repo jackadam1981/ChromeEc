@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d11bc69_f6f14ef9",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-20T17:53:48Z",
+      "side": 1,
+      "message": "Using a static local variable feels kind of hacky, so I think it\u0027s worth it to change it.",
+      "parentUuid": "4a099dcb_16eee502",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8de2b9_9da560b3",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 9
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "Yes this is true, though fix is applied as Whiterun only and in fact address it\u0027s issues with dynamic pressure build-up and overshoot during the ramp up. Again the PID as final fix would be configurable and would allow to use proportional an derivative coefficients. We plan those can be defined per each fan and per board separately.\n\nHere we are trying to be as close to the original code as possible to not introduce unwanted behaviors for AU release. The rpm_max for instance is currently used to limit the max noise level. If ODM will change those and we use them for calculating the PWM step diffs for integration, those will influence on ramp up scenario.\nIn contrast, once we will implement PID the dynamic behavior can be easily controlled by Kp, Ki, Kd in separation from other existing RPM limitation params which purpose is currently used by ODM for limiting the max noise.",
       "parentUuid": "193cef00_7fb35141",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e801bd7d_18148dc8",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-20T17:53:48Z",
+      "side": 1,
+      "message": "```\n For example, with a fan that is capable of running at 4800 RPM (rpm_max, 100% duty), an RPM change of 2500 would be the same as a duty change of \u003e52%. So, rather than checking ABS(rpm_diff) \u003e\u003d 2500, calculate the target duty difference, and place bounds around how much it can actually change.\n\n```\n\nThe problem here is that the relation between fan duty and RPM change is non-linear. The values under those if-s have found experimentally, after quite a lot of fine tuning.\nI agree that this is not the ideal solution, though as Radosław mentioned, at some point we indent to fix this properly using PID.",
+      "parentUuid": "c017d284_7df4de50",
       "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
