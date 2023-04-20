@@ -16,6 +16,23 @@
       "message": "Hi Daisuke, could you help to review the CL, thanks.",
       "revId": "8f2cd261f94ba78d6af0867d38e98a092a867f26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc06f84_75cd7227",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-04-20T06:38:35Z",
+      "side": 1,
+      "message": "Hi JohnWC,\nyou made related changes in CL:4100346 and CL:4105800,\nyou should revert these two CLs if this CL merged,\nthanks.",
+      "revId": "8f2cd261f94ba78d6af0867d38e98a092a867f26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
