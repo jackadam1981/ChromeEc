@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "766983a7_f1ec9de0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:06:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1509af2d_c78b6f12",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b02eca24_6931354c",
@@ -139,6 +163,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da1b4b0_81bcdac9",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:06:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "22372747_5637ee4b",
+      "range": {
+        "startLine": 28,
+        "startChar": 49,
+        "endLine": 28,
+        "endChar": 51
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df2947fb_232860b0",
@@ -162,6 +210,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0051575c_eb9ce893",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:06:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df2947fb_232860b0",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 74
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "403efb6a_ceb4bad4",
@@ -175,6 +247,30 @@
       "writtenOn": "2023-04-20T17:23:57Z",
       "side": 1,
       "message": "Is this still an issue? If so, we should add a bug to the TODO to ensure it gets removed prior to shipping.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 30
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ad6f00_5adcc556",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:06:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "403efb6a_ceb4bad4",
       "range": {
         "startLine": 247,
         "startChar": 0,
@@ -210,6 +306,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f598aa9_97eb8206",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:06:07Z",
+      "side": 1,
+      "message": "Unsure since this is a holdover from brya ec firmware, but I\u0027ve added a bug to investigate",
+      "parentUuid": "b271e0ed_b88e4e43",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 44
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77caf244_f5a3f781",
         "filename": "board/helipilot/board.h",
         "patchSetId": 1
@@ -221,6 +341,30 @@
       "writtenOn": "2023-04-20T17:23:57Z",
       "side": 1,
       "message": "Can you add a `TODO(b/)` to the comment?",
+      "range": {
+        "startLine": 258,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 22
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15142171_5eb1dda5",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:06:07Z",
+      "side": 1,
+      "message": "Added a TODO, not sure that it makes sense to file a bug for this, it is only a pin assignment change and I think I\u0027m the only using mrider",
+      "parentUuid": "77caf244_f5a3f781",
       "range": {
         "startLine": 258,
         "startChar": 3,
@@ -244,6 +388,30 @@
       "writtenOn": "2023-04-20T17:23:57Z",
       "side": 1,
       "message": "Is this needed? It\u0027s only referenced in two places in code and one refers to a bug that was closed over two years ago.\n\nI added b/279032946 to track. No action needed here.",
+      "range": {
+        "startLine": 267,
+        "startChar": 8,
+        "endLine": 267,
+        "endChar": 36
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b3d1cf_6e728d55",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:06:07Z",
+      "side": 1,
+      "message": "Yes, it is needed for development to keep JTAG enabled based on the external pin. JTAG should be disabled in shipping firmware though",
+      "parentUuid": "bf441003_6c9d09cb",
       "range": {
         "startLine": 267,
         "startChar": 8,
@@ -331,6 +499,30 @@
       "side": 1,
       "message": "I don\u0027t know that it really matters (MP key is really the important one), but for consistency let\u0027s create a new key. At the very least it will help prevent trying to use a `helipilot` image on `bloonchipper`.",
       "parentUuid": "b7ed8c31_cf0586c4",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 32
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "681c1ff0_6a98a9b5",
+        "filename": "board/helipilot/dev_key.pem",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:06:07Z",
+      "side": 1,
+      "message": "Happy to create a new key,is there a procedure or process pointer available for this?",
+      "parentUuid": "9c87d6bc_951dcbe0",
       "range": {
         "startLine": 2,
         "startChar": 0,
