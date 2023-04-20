@@ -172,6 +172,16 @@ int tcpc_addr_read(int port, int i2c_addr, int reg, int *val)
 	return rv;
 }
 
+int tcpc_addr_read_no_lpm_exit(int port, int i2c_addr, int reg, int *val)
+{
+	int rv;
+
+	rv = i2c_read8(tcpc_config[port].i2c_info.port, i2c_addr, reg, val);
+
+	pd_device_accessed(port);
+	return rv;
+}
+
 int tcpc_addr_read16(int port, int i2c_addr, int reg, int *val)
 {
 	pd_wait_exit_low_power(port);
@@ -1201,6 +1211,9 @@ void tcpci_tcpc_alert(int port)
 		CPRINTS("C%d: Failed to read alert register", port);
 		return;
 	}
+
+	if (port == 1)
+		CPRINTS("C%d: ALERT 0x%02x", port, alert);
 
 	/* Get Extended Alert register if needed */
 	if (alert & TCPC_REG_ALERT_ALERT_EXT)

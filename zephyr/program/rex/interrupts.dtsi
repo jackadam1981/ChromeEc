@@ -40,6 +40,7 @@
 		int_usb_c1_ppc: usb_c1_ppc {
 			irq-pin = <&gpio_usb_c1_ppc_int_odl>;
 			flags = <GPIO_INT_EDGE_FALLING>;
+			/*flags = <GPIO_INT_LEVEL_LOW>; %causes watchdog% */
 			handler = "ppc_interrupt";
 		};
 		int_usb_c1_bc12: usb_c1_bc12 {

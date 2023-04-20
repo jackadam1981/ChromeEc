@@ -84,8 +84,8 @@ static int ktu1125_dump(int port)
 	CPRINTF("PPC%d: KTU1125. Registers:\n", port);
 
 	for (i = KTU1125_ID; i <= KTU1125_INT_DATA; i++) {
-		read_reg(port, i, &data);
-		CPRINTF("REG %02Xh = 0x%02x\n", i, data);
+		if (read_reg(port, i, &data) == EC_SUCCESS)
+			CPRINTF("REG %02Xh = 0x%02x\n", i, data);
 	}
 
 	cflush();
@@ -454,10 +454,11 @@ static void ktu1125_handle_interrupt(int port)
 		int data = 0;
 
 		attempt++;
-		if (attempt > 1)
+		if (attempt > 3) {
 			ppc_prints("Could not clear interrupts on first "
 				   "try, retrying",
 				   port);
+		}
 
 		/* Clear the interrupt by reading all 3 registers */
 		read_reg(port, KTU1125_INT_SNK, &snk);

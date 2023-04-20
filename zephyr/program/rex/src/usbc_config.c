@@ -119,6 +119,16 @@ void bc12_interrupt(enum gpio_signal signal)
 	}
 }
 
+int ppc_get_alert_status(int port)
+{
+	if (port == USBC_PORT_C0)
+		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
+	else if ((port == USBC_PORT_C1) &&
+		 1/*(ec_cfg_usb_db_type() != DB_USB_ABSENT)*/)
+		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
+	return 0;
+}
+
 static void board_disable_charger_ports(void)
 {
 	int i;
@@ -150,6 +160,7 @@ int board_set_active_charge_port(int port)
 {
 	bool is_valid_port = (port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 	int i;
+	int rv;
 
 	if (port == CHARGE_PORT_NONE) {
 		board_disable_charger_ports();
@@ -204,9 +215,10 @@ int board_set_active_charge_port(int port)
 	}
 
 	/* Enable requested charge port. */
-	if (ppc_vbus_sink_enable(port, 1)) {
-		CPRINTSUSB("C%d: sink path enable failed.", port);
-		return EC_ERROR_UNKNOWN;
+	rv = ppc_vbus_sink_enable(port, 1);
+	if (rv != EC_SUCCESS) {
+		CPRINTSUSB("C%d: sink path enable failed (%d)", port, rv);
+		return rv;
 	}
 
 	return EC_SUCCESS;

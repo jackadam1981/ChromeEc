@@ -56,7 +56,7 @@ static void setup_mux(void)
 	if (usb_db_type == FW_USB_DB_USB4_KB8010) {
 		LOG_INF("USB DB: KT8010");
 		TCPC_ENABLE_ALTERNATE_BY_NODELABEL(1, rt1716_tcpc_port1);
-		/*PPC_ENABLE_ALTERNATE_BY_NODELABEL(1, ppc_port1_ktu);*/
+		PPC_ENABLE_ALTERNATE_BY_NODELABEL(1, ppc_port1_ktu);
 	}
 	if (usb_db_type == FW_USB_DB_USB4_ANX7452) {
 		LOG_INF("USB DB: Setting ANX7452 mux");
@@ -65,4 +65,5 @@ static void setup_mux(void)
 		PPC_ENABLE_ALTERNATE_BY_NODELABEL(1, ppc_port1_syv);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, setup_mux, HOOK_PRIO_INIT_I2C);
+/*DECLARE_HOOK(HOOK_INIT, setup_mux, HOOK_PRIO_INIT_I2C);*/
+DECLARE_HOOK(HOOK_INIT, setup_mux, HOOK_PRIO_FIRST);

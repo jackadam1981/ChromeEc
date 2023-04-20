@@ -270,6 +270,8 @@ static void nct38xx_tcpc_alert(int port)
 {
 	int alert, rv;
 
+	ccprintf("%s: C%d: call\n", __func__, port);
+
 	/*
 	 * The nct3808 is a dual port chip with a shared ALERT
 	 * pin. Avoid taking a port out of LPM if it is not alerting.

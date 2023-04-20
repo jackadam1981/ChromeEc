@@ -118,6 +118,7 @@ static inline int tcpc_update16(int port, int reg, uint16_t mask,
 int tcpc_addr_write(int port, int i2c_addr, int reg, int val);
 int tcpc_addr_write16(int port, int i2c_addr, int reg, int val);
 int tcpc_addr_read(int port, int i2c_addr, int reg, int *val);
+int tcpc_addr_read_no_lpm_exit(int port, int i2c_addr, int reg, int *val);
 int tcpc_addr_read16(int port, int i2c_addr, int reg, int *val);
 int tcpc_addr_read16_no_lpm_exit(int port, int i2c_addr, int reg, int *val);
 int tcpc_read_block(int port, int reg, uint8_t *in, int size);

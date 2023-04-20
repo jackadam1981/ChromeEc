@@ -12,6 +12,8 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
+#include "console.h"
+
 #ifndef CONFIG_USB_PD_TCPM_TCPCI
 #error "RT1715 is using a standard TCPCI interface"
 #error "Please upgrade your board configuration"
@@ -212,13 +214,44 @@ static int rt1715_set_polarity(int port, enum tcpc_cc_polarity polarity)
 	return tcpci_tcpm_set_polarity(port, polarity);
 }
 
+static inline int rt_read_raw(int port, int reg, int *val)
+{
+	return tcpc_addr_read_no_lpm_exit(port,
+					  tcpc_config[port].i2c_info.addr_flags,
+					  reg, val);
+}
+
+static inline int tcpc_read_alert_no_lpm_exit(int port, int *val)
+{
+	return tcpc_addr_read16_no_lpm_exit(
+		port, tcpc_config[port].i2c_info.addr_flags, TCPC_REG_ALERT,
+		val);
+}
+
 static void rt1715_alert(int port)
 {
+	int alert, rv;
+	int m, i;
+
+	rt_read_raw(port, RT1715_REG_RT_MASK, &m);
+	rt_read_raw(port, RT1715_REG_RT_INT, &i);
+
+	ccprintf("%s: C%d: RT_MASK 0x%02x RT_INT 0x%02x\n", __func__, port,
+		 m, i);
+
 	/*
 	 * Make sure the wakeup interrupt is cleared. This bit is set on wakeup
 	 * from LPM. See b/179256608#comment16 for explanation.
 	 */
-	tcpc_write(port, RT1715_REG_RT_INT, RT1715_REG_RT_INT_WAKEUP);
+
+	/*tcpc_write(port, RT1715_REG_RT_INT, RT1715_REG_RT_INT_WAKEUP);*/
+	tcpc_write(port, RT1715_REG_RT_INT, 0xff);
+
+	rv = tcpc_read_alert_no_lpm_exit(port, &alert);
+	if (rv == EC_SUCCESS && alert == TCPC_REG_ALERT_NONE) {
+		/* No ALERT on this port, return early. */
+		return;
+	}
 
 	tcpci_tcpc_alert(port);
 }
