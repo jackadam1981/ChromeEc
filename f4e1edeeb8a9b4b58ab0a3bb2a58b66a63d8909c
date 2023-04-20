@@ -46,6 +46,30 @@
       },
       "revId": "f4e1edeeb8a9b4b58ab0a3bb2a58b66a63d8909c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f98df374_11482f2b",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-20T17:22:49Z",
+      "side": 1,
+      "message": "No. `mpu.h` doesn\u0027t exist for Cortex-M0. So the parser doesn\u0027t see the function definition.\n\nIf we really need to use `IS_ENABLED()`, we probably should add\n```\n#ifndef CONFIG_ROLLBACK_MPU_PROTECT\n#define mpu_lock_rollback(x)\n#endif\n```\nin this file.",
+      "parentUuid": "527396e5_ad9117db",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "f4e1edeeb8a9b4b58ab0a3bb2a58b66a63d8909c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
