@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "356eed9e_c6f41ab2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-20T18:21:36Z",
+      "side": 1,
+      "message": "This will also result in the fan coming on sooner, which could have an impact on the battery life.\n\nHow much power does the fan draw, and do we can if it\u0027s running earlier (from a power perspective)? If it\u0027s negligible, then this should be a fairly uncontroversial change.\n\nIt may be good to also run some of the MeetCUJ tests and see if the fan is running any more than it was before. For example, is the fan running in some cases, where it wasn\u0027t before?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 70
+      },
+      "revId": "0a2e0788929a06bdd9d95c355eda83be4f5c1362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
