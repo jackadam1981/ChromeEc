@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a30029e0_915a8bde",
+        "filename": "zephyr/boards/riscv/it8xxx2/it82202ax-512_defconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-20T21:12:10Z",
+      "side": 1,
+      "message": "Move this into Kconfig.defconfig\n\n```\nconfig CROS_EC_RW_MEM_OFF\n    default 0x60000\n    default 0x40000 if SOC_IT82202_AX\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "d890ee2d66f18e620be3f85cd21aa7245f367aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
