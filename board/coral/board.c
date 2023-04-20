@@ -652,12 +652,39 @@ static void board_chipset_suspend(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
+static inline int time_until(uint32_t from_time, uint32_t to_time)
+{
+	return (int32_t)(to_time - from_time);
+}
 /*
  * FIXME(dhendrix): Weak symbol hack until we can get a better solution for
  * both Amenia and Coral.
  */
 void chipset_do_shutdown(void)
 {
+	timestamp_t start, pp3300_pg_clr, pp5000_pg_clr;
+
+	/* Disable PMIC */
+	gpio_set_level(GPIO_PMIC_EN, 0);
+
+	start = get_time();
+
+	/*Disable 3.3V rail */
+	gpio_set_level(GPIO_EN_PP3300, 0);
+	while (gpio_get_level(GPIO_PP3300_PG))
+		;
+	pp3300_pg_clr = get_time();
+
+	/*Disable 5V rail */
+	gpio_set_level(GPIO_EN_PP5000, 0);
+	while (gpio_get_level(GPIO_PP5000_PG))
+		;
+	pp5000_pg_clr = get_time();
+
+
+	ccprintf("--> PG3300 CLR: %d us\n", time_until(start.le.lo, pp3300_pg_clr.le.lo));
+	ccprintf("--> PG5000 CLR: %d us\n", time_until(pp3300_pg_clr.le.lo, pp5000_pg_clr.le.lo));	
+#if 0	
 	/* Disable PMIC */
 	gpio_set_level(GPIO_PMIC_EN, 0);
 
@@ -670,6 +697,7 @@ void chipset_do_shutdown(void)
 	gpio_set_level(GPIO_EN_PP5000, 0);
 	while (gpio_get_level(GPIO_PP5000_PG))
 		;
+#endif		
 }
 
 void board_hibernate_late(void)
