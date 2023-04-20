@@ -378,6 +378,30 @@
       },
       "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e4c496c_88d6f552",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:16:34Z",
+      "side": 1,
+      "message": "My understanding is that all Nuvoton chips don\u0027t have an instruction cache and therefore would use mapped storage. Based on that, I think the broader CHIP_NPCX is more appropriate",
+      "parentUuid": "5110cdf6_86dffb2b",
+      "range": {
+        "startLine": 152,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 16
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
