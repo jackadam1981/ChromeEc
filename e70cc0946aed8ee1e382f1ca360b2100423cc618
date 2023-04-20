@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cec129aa_c6b4a399",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-20T08:57:36Z",
+      "side": 1,
+      "message": "1. Include stdbool.h to fix compilation on some boards.\n2. Rebase on TOT.",
+      "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
