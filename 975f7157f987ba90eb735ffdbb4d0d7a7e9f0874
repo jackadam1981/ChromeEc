@@ -57,6 +57,30 @@
       },
       "revId": "975f7157f987ba90eb735ffdbb4d0d7a7e9f0874",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce27756_767e36e8",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2023-04-20T17:27:39Z",
+      "side": 1,
+      "message": "Does that mean that this device should just be running the dibbi target?",
+      "parentUuid": "0093ee05_71e5bb62",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "975f7157f987ba90eb735ffdbb4d0d7a7e9f0874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
