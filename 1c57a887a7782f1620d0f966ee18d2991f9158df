@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9964be07_00033fc3",
+        "filename": "util/flash_ec",
+        "patchSetId": 22
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:29:02Z",
+      "side": 1,
+      "message": "This method used to save the current baudrate setting in global buffer (save) as \"ec_uart_baudrate:115200\".\n\n \n\nOn script exit, cleanup method will automatically called.\n\n \n\nCleanup method will invoke servo_restore, it will iterate the content in the global buffer(save) content one by one, then prepend the content with \"dut-control\" then execute it.\n\n \n\nThus it restoring the initial baudrate",
+      "parentUuid": "e99a7655_29fd918b",
+      "range": {
+        "startLine": 1628,
+        "startChar": 1,
+        "endLine": 1628,
+        "endChar": 44
+      },
+      "revId": "1c57a887a7782f1620d0f966ee18d2991f9158df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3634897f_5a3199ce",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-04-13T02:30:32Z",
       "side": 1,
       "message": "need to restore the original baudrate and remove firmware update mode.\n\ncan you make sure device boots backup and you can see UART logs?",
+      "revId": "1c57a887a7782f1620d0f966ee18d2991f9158df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f905b291_77769e7b",
+        "filename": "util/flash_ec",
+        "patchSetId": 22
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-20T06:29:02Z",
+      "side": 1,
+      "message": "On script exit, cleanup method will automatically called , restore the buadrate.\nVerifying the device boot using LED indications.",
+      "parentUuid": "3634897f_5a3199ce",
       "revId": "1c57a887a7782f1620d0f966ee18d2991f9158df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
