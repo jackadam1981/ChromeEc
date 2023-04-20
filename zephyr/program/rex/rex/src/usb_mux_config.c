@@ -53,6 +53,11 @@ static void setup_mux(void)
 	if (usb_db_type == FW_USB_DB_USB3) {
 		LOG_INF("USB DB: Setting USB3 mux");
 	}
+	if (usb_db_type == FW_USB_DB_USB4_KB8010) {
+		LOG_INF("USB DB: KT8010");
+		TCPC_ENABLE_ALTERNATE_BY_NODELABEL(1, rt1716_tcpc_port1);
+		/*PPC_ENABLE_ALTERNATE_BY_NODELABEL(1, ppc_port1_ktu);*/
+	}
 	if (usb_db_type == FW_USB_DB_USB4_ANX7452) {
 		LOG_INF("USB DB: Setting ANX7452 mux");
 		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_anx7452_port1);

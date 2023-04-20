@@ -11,6 +11,7 @@
 #include "usbc/ppc_rt1739.h"
 #include "usbc/ppc_sn5s330.h"
 #include "usbc/ppc_syv682x.h"
+#include "usbc/ppc_ktu1125.h"
 #include "usbc/utils.h"
 #include "usbc_ppc.h"
 
@@ -61,6 +62,7 @@
  * "is-alt" property set.
  */
 DT_FOREACH_STATUS_OKAY(AOZ1380_COMPAT, PPC_ALT_DECLARE)
+DT_FOREACH_STATUS_OKAY(KTU1125_COMPAT, PPC_ALT_DECLARE)
 DT_FOREACH_STATUS_OKAY(NX20P348X_COMPAT, PPC_ALT_DECLARE)
 DT_FOREACH_STATUS_OKAY(RT1739_PPC_COMPAT, PPC_ALT_DECLARE)
 DT_FOREACH_STATUS_OKAY(SN5S330_COMPAT, PPC_ALT_DECLARE)

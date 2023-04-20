@@ -1,0 +1,5 @@
+description: Kinetic KTU1125 USBC PPC binding
+
+compatible: "kinetic,ktu1125"
+
+include: ["i2c-device.yaml", "ppc-chip.yaml"]
