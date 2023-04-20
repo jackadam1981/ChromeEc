@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f8bf0a4_019cf8f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-20T11:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eace95a_f3af1105",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "6a0707c438bd98e517fb9e8c11ee10ed97ba7c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0370c5ba_14120619",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-19T17:36:13Z",
       "side": 1,
       "message": "What happens if CONFIG_CROS_FLASH_STM32_PROTECTION_COMPAT but !CONFIG_SOC_SERIES_STM32F4X? Shall we add dependency or build_assert?",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 33
+      },
+      "revId": "6a0707c438bd98e517fb9e8c11ee10ed97ba7c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aaf86c9_b76090a7",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_stm32_backend.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-20T11:53:09Z",
+      "side": 1,
+      "message": "I added dependency in Kconfig.",
+      "parentUuid": "0370c5ba_14120619",
       "range": {
         "startLine": 84,
         "startChar": 7,
