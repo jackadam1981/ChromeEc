@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bad70eb9_73fcbf34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a404c0f1_2a33f76b",
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc98d227_4d3b6506",
@@ -113,6 +131,30 @@
       "writtenOn": "2023-04-20T15:46:26Z",
       "side": 1,
       "message": "Okay, that makes sense but maybe it would be safer to use \n`#ifdef CHIP_FAMILY_NPCX9` instead, as it narrows the potential impact. Of course the point is moot if we go with Tom\u0027s suggestion below (which I think will be cleaner).",
+      "parentUuid": "3189bd4d_709f2d0a",
+      "range": {
+        "startLine": 103,
+        "startChar": 13,
+        "endLine": 103,
+        "endChar": 39
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ee792c_2f2fe6ed",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T22:15:01Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "3189bd4d_709f2d0a",
       "range": {
         "startLine": 103,
