@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "428f1a27_5f793416",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-04-20T07:44:08Z",
+      "side": 1,
+      "message": "Could be declared in line 596?",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 577,
+        "endChar": 0
+      },
+      "revId": "5c4daabdbab60dee6afb823931863ecd85c593ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f0fb5b4_d4a231e2",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 28
@@ -105,6 +128,52 @@
         "startChar": 0,
         "endLine": 743,
         "endChar": 0
+      },
+      "revId": "5c4daabdbab60dee6afb823931863ecd85c593ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eefee488_85bd3f75",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-04-20T07:44:08Z",
+      "side": 1,
+      "message": "The description should be get cable speed, and return value is wrong too.",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 31
+      },
+      "revId": "5c4daabdbab60dee6afb823931863ecd85c593ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3489ff3_72a5cda3",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-04-20T07:44:08Z",
+      "side": 1,
+      "message": "Change to proper description and return value is wrong too.",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 31
       },
       "revId": "5c4daabdbab60dee6afb823931863ecd85c593ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
