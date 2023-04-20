@@ -268,7 +268,7 @@ int fp_sensor_init(void)
 int fp_sensor_deinit(void)
 {
 	/*
-	 * TODO(tomhughes): libfp doesn't have fp_sensor_close like BEP does.
+	 * TODO(b/279041638): libfp doesn't have fp_sensor_close like BEP does.
 	 * We'll need FPC to either add it or verify that we don't have the same
 	 * problem with the libfp library as described in:
 	 * b/124773209#comment46

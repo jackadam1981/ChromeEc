@@ -201,7 +201,7 @@
 #define CONFIG_MALLOC
 /*
  * FP buffers are allocated in regular SRAM on STM32F4.
- * TODO(b/124773209): Instead of defining to empty, #undef once all CLs that
+ * TODO(b/279041638): Instead of defining to empty, #undef once all CLs that
  * depend on FP_*_SECTION have landed. Also rename the variables to CONFIG_*.
  */
 #define FP_FRAME_SECTION
