@@ -1,0 +1,31 @@
+/* Copyright 2022 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "../../boards/native_posix.overlay"
+
+/delete-node/ &int_usb_c0_bc12;
+/delete-node/ &int_usb_c1_bc12;
+
+&i2c2 {
+	/delete-node/ pi3usb9201@5f;
+
+	pi3usb9201_emul0: pi3usb9201@5f {
+		compatible = "diodes,pi3usb9201";
+		reg = <0x5f>;
+		intb-gpios = <&gpio1 10 GPIO_ACTIVE_LOW>;
+		charging-mode = "BC12_TYPE_CDP";
+	};
+};
+
+&i2c3 {
+	/delete-node/ pi3usb9201@5d;
+
+	pi3usb9201_emul1: pi3usb9201@5d {
+		compatible = "diodes,pi3usb9201";
+		reg = <0x5f>;
+		intb-gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
+		charging-mode = "BC12_TYPE_CDP";
+	};
+};

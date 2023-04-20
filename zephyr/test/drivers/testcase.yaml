@@ -470,6 +470,15 @@ tests:
     extra_configs:
     - CONFIG_LINK_TEST_SUITE_HOST_CMD_THREAD=y
     - CONFIG_TASK_HOSTCMD_THREAD_MAIN=y
+  drivers.bc12_upstream:
+    extra_dtc_overlay_files:
+    - bc12_upstream/boards/native_posix.overlay
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_BC12_UPSTREAM=y
+    - CONFIG_USB_BC12=y
+    - CONFIG_EMUL_BC12_DETECT_PI3USB9201=n
+    - CONFIG_EMUL_BC12_PI3USB9201=y
+    - CONFIG_LOG_BACKEND_SHOW_COLOR=n
   drivers.pi3usb9201:
     extra_configs:
     - CONFIG_LINK_TEST_SUITE_PI3USB9201=y
