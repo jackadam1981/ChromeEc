@@ -12,6 +12,7 @@
 #include "usbc/ppc_rt1739.h"
 #include "usbc/ppc_sn5s330.h"
 #include "usbc/ppc_syv682x.h"
+#include "usbc/ppc_ktu1125.h"
 #include "usbc/utils.h"
 #include "usbc_ppc.h"
 

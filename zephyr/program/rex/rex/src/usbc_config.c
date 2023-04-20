@@ -7,9 +7,11 @@
 #include "driver/ppc/nx20p348x.h"
 #include "driver/ppc/ktu1125_public.h"
 #include "driver/tcpm/ps8xxx_public.h"
+#include "ppc/ktu1125_public.h"
 #include "ppc/syv682x_public.h"
 #include "system.h"
 #include "usb_mux_config.h"
+#include "usb_pd.h"
 #include "usbc_config.h"
 
 void board_reset_pd_mcu(void)
@@ -35,6 +37,9 @@ void ppc_interrupt(enum gpio_signal signal)
 	case GPIO_USB_C1_PPC_INT_ODL:
 		if (usb_db_type == FW_USB_DB_USB3) {
 			nx20p348x_interrupt(USBC_PORT_C1);
+		}
+		if (usb_db_type == FW_USB_DB_USB4_KB8010) {
+			ktu1125_interrupt(USBC_PORT_C1);
 		}
 		if (usb_db_type == FW_USB_DB_USB4_ANX7452) {
 			syv682x_interrupt(USBC_PORT_C1);
