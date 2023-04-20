@@ -60,6 +60,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de062eb8_2185a18c",
+        "filename": "include/fan.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-20T19:54:26Z",
+      "side": 1,
+      "message": "Does this need to be public?",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 42
+      },
+      "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7af11037_260da27d",
         "filename": "include/fan.h",
         "patchSetId": 6
