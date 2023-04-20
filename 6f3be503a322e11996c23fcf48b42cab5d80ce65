@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b3ac08_2edd81e9",
+        "filename": "util/inject-keys.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-20T17:46:12Z",
+      "side": 1,
+      "message": "Where are these values defined, so we can validate this table is correct?\n\nFurther, is there something we can load/parse here instead, so there is a single source of truth for these values, rather than manually creating these maps for any device that deviates?",
+      "revId": "6f3be503a322e11996c23fcf48b42cab5d80ce65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
