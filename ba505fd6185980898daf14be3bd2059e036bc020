@@ -22,6 +22,30 @@
       },
       "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e1eb7fe_9df23314",
+        "filename": "board/helipilot/fpsensor_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-20T02:49:15Z",
+      "side": 1,
+      "message": "I don\u0027t see a reason why not, but if we go this route it seems like we should add the files to some central location (hatch?) and then have the individual board files (bloonchipper, helipilot) symlink to the central file. If you agree, please let me know your thoughts on the appropriate central location.",
+      "parentUuid": "122c4c25_ba482e82",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
