@@ -3,6 +3,322 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1509af2d_c78b6f12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "Could you change the description to something like \n\u003e fpmcu: Add helipilot board config",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b02eca24_6931354c",
+        "filename": "board/helipilot/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "There are several headers included here that don\u0027t seem required. \n* extpower\n* gpio_signal\n* power\n* switch\n* trng (maybe conditionally include as is done for the test?)\n* gpio_list (maybe?)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4760180_2e53c6f2",
+        "filename": "board/helipilot/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "These shouldn\u0027t be needed here anymore, they\u0027re in `fpsensor_utils.h` (which should probably be included explicitly)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f24ad064_980b9ea9",
+        "filename": "board/helipilot/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "I created b/279035335 to track this, could you add it to the comment?",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55b2a052_3b44f2d1",
+        "filename": "board/helipilot/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "Should this be commented out? Maybe add a TODO to reenable?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 46
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22372747_5637ee4b",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "nit: extra \u0027a\u0027",
+      "range": {
+        "startLine": 28,
+        "startChar": 49,
+        "endLine": 28,
+        "endChar": 51
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df2947fb_232860b0",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "This block is here twice, once here and once on line 86. This block feels more appropriate as the other is defined before the `#define CONFIG_ROLLBACK` although I haven\u0027t investigated that in depth.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 74
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "403efb6a_ceb4bad4",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "Is this still an issue? If so, we should add a bug to the TODO to ensure it gets removed prior to shipping.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 30
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b271e0ed_b88e4e43",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "Based on the comment it seems like we don\u0027t need this define. Right? Not critical for this CL but it\u0027s probably worth adding a bug to investigate.",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 44
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77caf244_f5a3f781",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "Can you add a `TODO(b/)` to the comment?",
+      "range": {
+        "startLine": 258,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 22
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf441003_6c9d09cb",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "Is this needed? It\u0027s only referenced in two places in code and one refers to a bug that was closed over two years ago.\n\nI added b/279032946 to track. No action needed here.",
+      "range": {
+        "startLine": 267,
+        "startChar": 8,
+        "endLine": 267,
+        "endChar": 36
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00f9a661_abee6839",
+        "filename": "board/helipilot/board_rw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "Can you update the include giard to `__CROS_EC_BOARD_HELIPILOT_BOARD_RW_H` or, better yet, make this a symlink to `board/hatch/board_rw.h`?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 43
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b09a62_75619e68",
+        "filename": "board/helipilot/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "When comparing against [build.mk](http://cs/chromeos_public/src/platform/ec/board/hatch_fp/build.mk?l\u003d28) I notice that this doesn\u0027t include the test list:\n\n```\ntest-list-y\u003d\\\n       abort \\\n       aes \\\n       always_memset \\\n       benchmark \\\n...\n```\n\nand a block to include the private repo\n```\n# Note that this variable includes the trailing \"/\"\n_hatch_fp_cur_dir:\u003d$(dir $(lastword $(MAKEFILE_LIST)))\n-include $(_hatch_fp_cur_dir)../../private/board/hatch_fp/build.mk\n```\n\nWill it still build the tests and/or include the FP libraries without these blocks?",
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ed8c31_cf0586c4",
+        "filename": "board/helipilot/dev_key.pem",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "Is it okay that this is the same dev key as bloonchipper?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 32
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "122c4c25_ba482e82",
         "filename": "board/helipilot/fpsensor_detect.c",
         "patchSetId": 1
@@ -38,6 +354,30 @@
       "side": 1,
       "message": "I don\u0027t see a reason why not, but if we go this route it seems like we should add the files to some central location (hatch?) and then have the individual board files (bloonchipper, helipilot) symlink to the central file. If you agree, please let me know your thoughts on the appropriate central location.",
       "parentUuid": "122c4c25_ba482e82",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9171022c_9ca6b513",
+        "filename": "board/helipilot/fpsensor_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T17:23:57Z",
+      "side": 1,
+      "message": "There\u0027s a similar case to be made for much of the code in `board.c` (most functions differ only in a symbol name), `board_rw.h` (exact copy), `ec.tasklist` (exaactly the same as `dartmonkey` and `bloonchipper`), and maybe others. Maybe it\u0027s worth a followup CL to reduce redundancy across FPMCU targets in general?",
+      "parentUuid": "4e1eb7fe_9df23314",
       "range": {
         "startLine": 1,
         "startChar": 0,
