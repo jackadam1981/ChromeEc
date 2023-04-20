@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0216620f_fe0c1414",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T15:46:26Z",
+      "side": 1,
+      "message": "Okay, that makes sense but maybe it would be safer to use \n`#ifdef CHIP_FAMILY_NPCX9` instead, as it narrows the potential impact. Of course the point is moot if we go with Tom\u0027s suggestion below (which I think will be cleaner).",
+      "parentUuid": "3189bd4d_709f2d0a",
+      "range": {
+        "startLine": 103,
+        "startChar": 13,
+        "endLine": 103,
+        "endChar": 39
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1a2ca11_d538017d",
         "filename": "common/rwsig.c",
         "patchSetId": 1
@@ -214,6 +238,53 @@
         "startChar": 0,
         "endLine": 108,
         "endChar": 6
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1a9aa3_a6a43fad",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T15:46:26Z",
+      "side": 1,
+      "message": "Tom may have a better suggestion but you could put the following block in [include/config.h](http://cs/chromeos_public/src/platform/ec/include/config.h?l\u003d5917) below where `config_chip.h` and `board.h`: \n\n```\n#ifndef CONFIG_RWDATA_ADDRESS \n#define CONFIG_RWDATA_ADDRESS (CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_MEM_OFF)\n#endif\n```\n\nThen inside `npcx/config_chip.h` (or maybe `chip/npcx/config_chip-npcx9.h`?) you\u0027d have\n```\n#define CONFIG_RWDATA_ADDRESS (CONFIG_MAPPED_STORAGE_BASE + CONFIG_EC_WRITABLE_STORAGE_OFF)\n```",
+      "parentUuid": "c3d3cbbf_b79cedd5",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5110cdf6_86dffb2b",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-20T15:46:26Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong preference but, similar to above, does it make sense to limit this scope to `ifdef CHIP_FAMILY_NPCX9`?",
+      "range": {
+        "startLine": 152,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 16
       },
       "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
