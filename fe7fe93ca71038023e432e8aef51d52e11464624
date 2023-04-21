@@ -223,6 +223,30 @@
       },
       "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a252e59_93fca58e",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-21T17:19:25Z",
+      "side": 1,
+      "message": "I only see `fan_set_rpm_target()` being called for markarth/frostflow:\n\n```\ntimvp@timvp-p620-9115096:~/code/cros_1/src/platform/ec/zephyr$ rg fan_set_rpm_target\nprogram/skyrim/frostflow/src/thermal.c\n107:\t\tfan_set_rpm_target(fan, fan_table_to_rpm(fan, temp));\n\nprogram/skyrim/markarth/src/thermal.c\n97:\t\tfan_set_rpm_target(fan, fan_table_to_rpm(fan, temp));\n\nprogram/nissa/yavilla/src/thermal.c\n106:\t\tfan_set_rpm_target(fan, fan_table_to_rpm(fan, temp));\n\nprogram/nissa/yaviks/src/thermal.c\n106:\t\tfan_set_rpm_target(fan, fan_table_to_rpm(fan, temp));\n\nprogram/nissa/craask/src/thermal.c\n117:\t\tfan_set_rpm_target(fan, fan_table_to_rpm(fan, temp));\n121:\t\tfan_set_rpm_target(fan, 0);\n\nshim/src/fan.c\n401:void fan_set_rpm_target(int ch, int rpm)\n```\n\nHow do we get there for winterhold?\n\nIs there a reason to keep it `1` (and hoping someone sets it to `0` somewhere else), rather than just setting it to `0` here?",
+      "parentUuid": "8bdde93b_ba139e12",
+      "range": {
+        "startLine": 286,
+        "startChar": 30,
+        "endLine": 286,
+        "endChar": 32
+      },
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
