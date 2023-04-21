@@ -81,6 +81,30 @@
       },
       "revId": "975f7157f987ba90eb735ffdbb4d0d7a7e9f0874",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dceea9c_82cdd62b",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2023-04-21T00:46:36Z",
+      "side": 1,
+      "message": "dibbi redefined it\u0027s own i2c_ports in board.c so it doesn\u0027t need this one. Since taranza leverage dibbi, So it also need to disable this one.\nThis mean disable i2c_ports if $BOARD is taranza or dibbi.",
+      "parentUuid": "1ce27756_767e36e8",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "975f7157f987ba90eb735ffdbb4d0d7a7e9f0874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
