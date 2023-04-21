@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d4e61f_436b74cc",
+        "filename": "zephyr/shim/src/ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-04-21T19:40:41Z",
+      "side": 1,
+      "message": "all those includes are not needed since they are part of ppc.h",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "31c37ac68de72feb5cad0b199b46aafdb2a1d313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
