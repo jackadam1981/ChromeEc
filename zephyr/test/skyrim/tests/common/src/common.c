@@ -5,3 +5,4 @@
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(skyrim, CONFIG_SKYRIM_LOG_LEVEL);
+
