@@ -22,6 +22,30 @@
       },
       "revId": "0a2e0788929a06bdd9d95c355eda83be4f5c1362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3861fef5_289f0dec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T09:46:41Z",
+      "side": 1,
+      "message": "There are two temperature sensors that are used to calculate fan speed: soc and cpu.\n\nDuring my experiments the fan would turn on due to the temperature increase on the former. So in general this change should only affect the steepness of fan RPM changes.\n\nI\u0027ve reached out to the ODM, the\u0027ll do a battery life validation, see https://buganizer.corp.google.com/issues/276577324#comment63.",
+      "parentUuid": "356eed9e_c6f41ab2",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 70
+      },
+      "revId": "0a2e0788929a06bdd9d95c355eda83be4f5c1362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
