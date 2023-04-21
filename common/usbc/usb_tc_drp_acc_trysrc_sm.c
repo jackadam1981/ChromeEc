@@ -2372,6 +2372,9 @@ static void tc_attach_wait_snk_run(const int port)
 		return;
 	}
 
+	ccprintf("%s: C%d cc1 %d cc2 %d new_cc_state %d\n", __func__, port,
+		 cc1, cc2, new_cc_state);
+
 	/*
 	 * A DRP shall transition to Unattached.SRC when the state of both
 	 * the CC1 and CC2 pins is SNK.Open for at least tPDDebounce, however
@@ -3508,6 +3511,9 @@ static void tc_try_src_run(const int port)
 		new_cc_state = PD_CC_UFP_ATTACHED;
 	else
 		new_cc_state = PD_CC_NONE;
+
+	ccprintf("%s: C%d cc1 %d cc2 %d new_cc_state %d\n", __func__, port,
+		 cc1, cc2, new_cc_state);
 
 	/* Debounce the cc state */
 	if (new_cc_state != tc[port].cc_state) {

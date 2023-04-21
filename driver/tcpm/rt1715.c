@@ -62,10 +62,12 @@ static int rt1715_tcpci_tcpm_init(int port)
 	if (rv)
 		return rv;
 
+#if 0
 	/* Unmask interrupt for LPM wakeup */
 	rv = tcpc_write(port, RT1715_REG_RT_MASK, RT1715_REG_RT_MASK_M_WAKEUP);
 	if (rv)
 		return rv;
+#endif
 
 	/*
 	 * Set tTCPCFilter (CC debounce time) to 400 us
@@ -108,6 +110,7 @@ static int rt1715_tcpci_tcpm_init(int port)
  */
 static inline int rt1715_init_cc_params(int port, int cc_level)
 {
+#if 1
 	int rv, en, sel;
 
 	if (cc_level == TYPEC_CC_VOLT_RP_DEF) {
@@ -129,6 +132,9 @@ static inline int rt1715_init_cc_params(int port, int cc_level)
 		rv = tcpc_write(port, RT1715_REG_BMCIO_RXDZSEL, sel);
 
 	return rv;
+#else
+	return EC_SUCCESS;
+#endif
 }
 
 static int rt1715_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
@@ -256,6 +262,27 @@ static void rt1715_alert(int port)
 	tcpci_tcpc_alert(port);
 }
 
+#ifdef CONFIG_CMD_TCPC_DUMP
+static const struct tcpc_reg_dump_map rt1715_regs[] = {
+	{
+		.addr = RT1715_REG_RT_INT,
+		.name = "RT_INT",
+		.size = 1,
+	},
+	{
+		.addr = RT1715_REG_RT_MASK,
+		.name = "RT_MASK",
+		.size = 1,
+	},
+};
+
+static void rt1715_dump_registers(int port)
+{
+	tcpc_dump_std_registers(port);
+	tcpc_dump_registers(port, rt1715_regs, ARRAY_SIZE(rt1715_regs));
+}
+#endif /* defined(CONFIG_CMD_TCPC_DUMP) */
+
 const struct tcpm_drv rt1715_tcpm_drv = {
 	.init = &rt1715_tcpci_tcpm_init,
 	.release = &tcpci_tcpm_release,
@@ -291,4 +318,7 @@ const struct tcpm_drv rt1715_tcpm_drv = {
 #endif
 	.set_bist_test_mode = &tcpci_set_bist_test_mode,
 	.get_bist_test_mode = &tcpci_get_bist_test_mode,
+#ifdef CONFIG_CMD_TCPC_DUMP
+	.dump_registers = &rt1715_dump_registers,
+#endif
 };

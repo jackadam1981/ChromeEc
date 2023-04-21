@@ -81,7 +81,7 @@ struct i2c_wrt_op last_write_op[CONFIG_USB_PD_PORT_MAX_COUNT];
  * helpful.  Defining DEBUG_GET_CC will output a line that gives
  * this useful information
  */
-#undef DEBUG_GET_CC
+#define DEBUG_GET_CC
 
 struct get_cc_values {
 	int cc1;

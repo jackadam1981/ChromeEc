@@ -87,6 +87,8 @@ int usb_charger_port_is_sourcing_vbus(int port)
 
 void usb_charger_vbus_change(int port, int vbus_level)
 {
+	ccprintf("%s: C%d: vbus_level %d\n", __func__, port, vbus_level);
+
 	/* If VBUS has transitioned low, notify PD module directly */
 	if (!vbus_level)
 		pd_vbus_low(port);

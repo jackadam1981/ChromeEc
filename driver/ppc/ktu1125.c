@@ -386,7 +386,7 @@ static int ktu1125_set_frs_enable(int port, int enable)
 static int ktu1125_vbus_sink_enable(int port, int enable)
 {
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
-	/* Skip if VBUS SNK is already enabled/disabled */
+x	/* Skip if VBUS SNK is already enabled/disabled */
 	if (ktu1125_is_vbus_present(port) == enable)
 		return EC_SUCCESS;
 #endif
