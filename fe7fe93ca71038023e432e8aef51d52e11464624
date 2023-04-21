@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a18db93b_59c44f96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-21T17:47:41Z",
+      "side": 1,
+      "message": "There is already a skryim fan test executable. Please create a follow-up CL to update this test to provide coverage for winterhold/thermal.c.",
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5d3869e_5207f98f",
