@@ -93,6 +93,30 @@
       },
       "revId": "d890ee2d66f18e620be3f85cd21aa7245f367aef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6618c29d_3f6e5132",
+        "filename": "zephyr/boards/riscv/it8xxx2/it82202ax-512_defconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-21T16:42:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e06f7451_93cb11b4",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "d890ee2d66f18e620be3f85cd21aa7245f367aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
