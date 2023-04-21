@@ -16,6 +16,29 @@
       "message": "Thanks, CH, works great",
       "revId": "1f5af801f26b6fe04e9d7e454613adcd5dbaf78e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dbdcd3b_fa754d9b",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-21T02:52:29Z",
+      "side": 1,
+      "message": "nit: this should probably be `const uint32_t pre_wdcnt`",
+      "range": {
+        "startLine": 145,
+        "startChar": 10,
+        "endLine": 145,
+        "endChar": 19
+      },
+      "revId": "1f5af801f26b6fe04e9d7e454613adcd5dbaf78e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
