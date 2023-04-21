@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ddc308_2616f97f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-21T03:06:18Z",
+      "side": 1,
+      "message": "LGTM but given Tom\u0027s previous comments, I\u0027d prefer for him to +2",
+      "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "328c6090_ad868071",
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "this is to block any additional triggering of this command while it is being executed",
       "parentUuid": "328c6090_ad868071",
+      "range": {
+        "startLine": 1551,
+        "startChar": 3,
+        "endLine": 1554,
+        "endChar": 4
+      },
+      "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ce84ce_1130a095",
+        "filename": "common/flash.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1554,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-21T03:06:18Z",
+      "side": 1,
+      "message": "Okay, that makes sense.",
+      "parentUuid": "f8254b86_3de9f1fa",
       "range": {
         "startLine": 1551,
         "startChar": 3,
