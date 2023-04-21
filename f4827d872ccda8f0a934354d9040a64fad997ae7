@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7233c19e_42939664",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-21T19:47:51Z",
+      "side": 1,
+      "message": "b/279199447",
+      "parentUuid": "43f5fd84_07d19563",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d9aefbd4_551f95dc",
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "There has been some flux with the boringssl changes due to build failures: http://b/279174496\n\nCurrently they\u0027re reverted, but we should make sure we update it (either in this CL or the boringssl CL, depending on which goes in first).\n\ncc @yich@google.com",
       "parentUuid": "80f69c24_c1d69e2d",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 22
+      },
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6473a9f4_e1ee4ba9",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-21T19:47:51Z",
+      "side": 1,
+      "message": "Ah, I saw the error when it had relanded in http://go/crvc/4439569 before being reverted again in go/crvc/4456117.",
+      "parentUuid": "39e5f778_820c2d6f",
       "range": {
         "startLine": 139,
         "startChar": 0,
