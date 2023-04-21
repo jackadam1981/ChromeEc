@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9aefbd4_551f95dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-21T04:04:56Z",
+      "side": 1,
+      "message": "Another minor note, I tried adding a commit that depends upon this one and received this error when it attempted to verify this commit:\n\n```\n[FAILED] chromiumos/platform/ec: _check_clang_format\n    clang-format.py errors/warnings\n    \n    The following files have formatting errors:\n    \tboard/helipilot/board.c\n    \tboard/helipilot/board_rw.c\n    \tboard/helipilot/gpio.inc\n    You can run `/home/bobbycasey/src/chromiumos/src/repohooks/third_party/clang-format.py --fix --commit f4827d872ccda8f0a934354d9040a64fad997ae7` to fix this\n```",
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a82ed3b_55ea448c",
