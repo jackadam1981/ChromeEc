@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c386e02_d75b0934",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-21T16:24:18Z",
+      "side": 1,
+      "message": "You\u0027re correct. Because you\u0027re starting the timer as a one-shot, it\u0027s sufficient to use `k_timer_remaining_ticks()`.",
+      "parentUuid": "31613f7b_6d8df9ee",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8de2b9_9da560b3",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 9
