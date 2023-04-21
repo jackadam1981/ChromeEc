@@ -6,6 +6,7 @@
 #include "cros_cbi.h"
 #include "driver/ppc/ktu1125_public.h"
 #include "driver/ppc/nx20p348x.h"
+#include "driver/ppc/ktu1125_public.h"
 #include "driver/tcpm/ps8xxx_public.h"
 #include "ppc/syv682x_public.h"
 #include "system.h"

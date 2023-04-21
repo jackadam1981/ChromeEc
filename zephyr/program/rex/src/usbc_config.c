@@ -213,8 +213,10 @@ int board_set_active_charge_port(int port)
 
 __override bool board_is_tbt_usb4_port(int port)
 {
-	if (port == USBC_PORT_C0)
+	if (port == USBC_PORT_C0 || port == USBC_PORT_C1) {
+		CPRINTSUSB("C%d: board_is_tbt_usb4_port = TRUE", port);
 		return true;
+	}
 
 	return false;
 }
