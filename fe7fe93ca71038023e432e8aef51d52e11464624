@@ -199,6 +199,30 @@
       },
       "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bdde93b_ba139e12",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T16:41:54Z",
+      "side": 1,
+      "message": "`One might wonder if this contributes to the abrupt on/off cycles...`\n\nFrom what I can see the on/off cycles are caused by something else.\nWinterhold uses the \"linear\" approach to set the fan RPM.\nBecause of that if the temperature fluctuates at around temp_fan_off point the fan will be turned off and on repeatedly.\nThis is somewhat mitigated by setting fan rpm_min to a low value.",
+      "parentUuid": "95581588_cf845846",
+      "range": {
+        "startLine": 286,
+        "startChar": 30,
+        "endLine": 286,
+        "endChar": 32
+      },
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
