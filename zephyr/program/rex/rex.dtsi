@@ -297,12 +297,25 @@
 		reg = <0x72>;
 	};
 
+	ppc_ktu1125_port1: ktu1125@38 {
+		compatible = "kinetic,ktu1125";
+		status = "okay";
+		reg = <0x38>;
+		is-alt;
+	};
+
 	ppc_syv_port1: ppc_syv@40 {
 		compatible = "silergy,syv682x";
 		status = "okay";
 		reg = <0x40>;
 		frs_en_gpio = <&gpio_usb_c1_frs_en>;
 		is-alt;
+	};
+
+	usb_c1_kb8010_retimer: usb-c1-kb8010-retimer@8{
+		compatible = "kandou,kb8010";
+		reg = <0x08>;
+		reset-pin = <&gpio_usb_c1_rt_rst_r_odl>;
 	};
 };
 
