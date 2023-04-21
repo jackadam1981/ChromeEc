@@ -151,6 +151,30 @@
       },
       "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95581588_cf845846",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T16:34:09Z",
+      "side": 1,
+      "message": "Oh right, thanks for finding this Diana.",
+      "parentUuid": "b696505d_f7dffc97",
+      "range": {
+        "startLine": 286,
+        "startChar": 30,
+        "endLine": 286,
+        "endChar": 32
+      },
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
