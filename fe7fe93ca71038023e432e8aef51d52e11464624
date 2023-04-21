@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2983b28e_a5ce3f57",
+        "filename": "zephyr/program/skyrim/winterhold/project.overlay",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T16:33:36Z",
+      "side": 1,
+      "message": "Those values were selected by the and I believe that they\u0027re correct.\nThe resoning behind the numbers is the following:\n\n1. rpm_max was set to 4800 to meet the max noise requirements. This was confirmed  by the ODM during a meeting I had with them.\n2. rpm_start is set to 2800 to make sure that the static friction is overcome and the fan starts spinning. We could go slight lower here, but we want to have a margin of safety.\n3. rpm_min is set to 2100, this is enough to keep the fan spinning, and provide just a little bit of cooling. We want to have it low to prevent the fan stop -\u003e fan start scenerio from happening too frequently.",
+      "parentUuid": "f5d3869e_5207f98f",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 18
+      },
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "716c3304_5bc4b813",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 11
@@ -94,6 +118,30 @@
       "writtenOn": "2023-04-21T16:31:37Z",
       "side": 1,
       "message": "I believe it\u0027s getting stopped here in the shim, with this delightful comment: \n```\nvoid fan_set_rpm_target(int ch, int rpm)\n{\n        if (rpm \u003d\u003d 0) {\n                /* If rpm \u003d 0, disable PWM immediately. Why?*/\n                fan_set_duty(ch, 0);\n        } else {\n\n```\n\nOne might wonder if this contributes to the abrupt on/off cycles...",
+      "parentUuid": "716c3304_5bc4b813",
+      "range": {
+        "startLine": 286,
+        "startChar": 30,
+        "endLine": 286,
+        "endChar": 32
+      },
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b696505d_f7dffc97",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T16:33:36Z",
+      "side": 1,
+      "message": "I\u0027ve copied this over from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/fan.c;l\u003d169.\n\nFrom what I can see in the EC console the fan must be turned off from another place - when the RPM is set to 0 I can see that the fan duty is also 0 using the `faninfo` EC command.",
       "parentUuid": "716c3304_5bc4b813",
       "range": {
         "startLine": 286,
