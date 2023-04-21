@@ -141,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a0cbc4f_9ade458e",
+        "filename": "zephyr/program/skyrim/winterhold/project.overlay",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-21T19:48:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e827bfcd_67f1a790",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 18
+      },
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "716c3304_5bc4b813",
@@ -322,6 +346,30 @@
       "side": 1,
       "message": "\u003e How do we get there for winterhold?\n\nI\u0027m fairly certain the path is from `fan_set_percent_needed()` in common/fan.c which is called from `thermal_control()` in common/thermal.c\n\n\u003e Winterhold uses the \"linear\" approach to set the fan RPM.\n\nI was thinking that, depending on the calls to fan_set_rpm_target(), we could potentially see a drop in duty from some non-zero number to 0 without any steps in between based on the calls into the API.  But this is an item I imagine the PID design would help with",
       "parentUuid": "8bdde93b_ba139e12",
+      "range": {
+        "startLine": 286,
+        "startChar": 30,
+        "endLine": 286,
+        "endChar": 32
+      },
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dbca6fd_b47a67ef",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-21T19:48:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fb8bf854_5b9ba62b",
       "range": {
         "startLine": 286,
         "startChar": 30,
