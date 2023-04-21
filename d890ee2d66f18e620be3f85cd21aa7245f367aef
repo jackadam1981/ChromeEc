@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07481188_c465e0e6",
+        "filename": "zephyr/boards/riscv/it8xxx2/it82202ax-512.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2023-04-21T02:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04ddcb27_80e3dde4",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "d890ee2d66f18e620be3f85cd21aa7245f367aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a30029e0_915a8bde",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-20T21:12:10Z",
       "side": 1,
       "message": "Move this into Kconfig.defconfig\n\n```\nconfig CROS_EC_RW_MEM_OFF\n    default 0x60000\n    default 0x40000 if SOC_IT82202_AX\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "d890ee2d66f18e620be3f85cd21aa7245f367aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e06f7451_93cb11b4",
+        "filename": "zephyr/boards/riscv/it8xxx2/it82202ax-512_defconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2023-04-21T02:50:09Z",
+      "side": 1,
+      "message": "SOC_IT82202_AX may has 1M variant. It seems to be more flexible to get CROS_EC_RW_MEM_OFF(in Kconfig.it8xxx2) from binman node.",
+      "parentUuid": "a30029e0_915a8bde",
       "range": {
         "startLine": 22,
         "startChar": 0,
