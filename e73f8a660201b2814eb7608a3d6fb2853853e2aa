@@ -402,6 +402,53 @@
       },
       "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a76229_733e1a1a",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-21T03:28:53Z",
+      "side": 1,
+      "message": "That makes sense.",
+      "parentUuid": "7e4c496c_88d6f552",
+      "range": {
+        "startLine": 152,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 16
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c58a38_7fdcc900",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-21T03:28:53Z",
+      "side": 1,
+      "message": "`vb21_get_packed_key` is just returning `(const struct vb21_packed_key *)(CONFIG_RO_PUBKEY_ADDR)` so couldn\u0027t we just set `CONFIG_RO_PUBKEY_ADDR` to \n```\n CONFIG_MAPPED_STORAGE_BASE + \\\n CONFIG_EC_PROTECTED_STORAGE_OFF + \\\n CONFIG_RO_PUBKEY_STORAGE_OFF)\n```\n\nand `CONFIG_RW_SIG_ADDR` to \n```\n(CONFIG_MAPPED_STORAGE_BASE + \\\n CONFIG_EC_WRITABLE_STORAGE_OFF + \\\n CONFIG_RW_STORAGE_OFF + \n RW_SIG_OFFSET)\n```\n\nand then this block doesn\u0027t have to change at all?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 0
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
