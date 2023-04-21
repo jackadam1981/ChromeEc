@@ -59,6 +59,10 @@
 			gpios = <&gpio0 9 GPIO_INPUT>;
 		};
 
+		gpio_lid_accel_int_l: lid_accel_int_l {
+			gpios = <&gpio0 10 GPIO_INPUT>;
+		};
+
 		tablet_mode_l: tablet_mode_l {
 			gpios = <&gpio0 11 GPIO_INPUT>;
 			enum-name = "GPIO_TABLET_MODE_L";
@@ -73,6 +77,120 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "bmi3xx_interrupt";
 		};
+<<<<<<< HEAD   (e09fc4 frostflow: Add CONFIG_USB_PD_STARTUP_DELAY_MS)
+=======
+
+		int_lid_accel: lid_accel {
+			irq-pin = <&gpio_lid_accel_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "bma4xx_interrupt";
+		};
+
+		int_pg_groupc_s0: pg_groupc_s0 {
+			irq-pin = <&gpio_pg_groupc_s0_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_interrupt_handler";
+		};
+
+		int_pg_lpddr_s0: pg_lpddr_s0 {
+			irq-pin = <&gpio_pg_lpddr5_s0_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_interrupt_handler";
+		};
+
+		int_pg_lpddr_s3: pg_lpddr_s3 {
+			irq-pin = <&gpio_pg_lpddr5_s3_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_interrupt_handler";
+		};
+
+		int_prochot: prochot {
+			irq-pin = <&gpio_prochot_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "throttle_ap_prochot_input_interrupt";
+		};
+
+		int_soc_pcore_ocp: soc_pcore_ocp {
+			irq-pin = <&gpio_pcore_ocp_r_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "baseboard_soc_pcore_ocp";
+		};
+
+		int_soc_thermtrip: soc_thermtrip {
+			irq-pin = <&gpio_soc_thermtrip_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "baseboard_soc_thermtrip";
+		};
+
+		int_stb_dump: stb_dump {
+			irq-pin = <&gpio_sfh_ec_int_h>;
+			flags = <GPIO_INT_EDGE_RISING>;
+			handler = "power_interrupt_handler";
+		};
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		i2c_tcpc0: tcpc0 {
+			i2c-port = <&i2c0_0>;
+			enum-names = "I2C_PORT_TCPC0";
+		};
+
+		i2c_tcpc1: tcpc1 {
+			i2c-port = <&i2c1_0>;
+			enum-names = "I2C_PORT_TCPC1";
+		};
+
+		i2c_sensor: sensor {
+			i2c-port = <&i2c6_1>;
+			enum-names = "I2C_PORT_SENSOR";
+		};
+	};
+
+	i2c0_0: i2c@400 {
+		status = "okay";
+		compatible = "zephyr,i2c-emul-controller";
+		clock-frequency = <I2C_BITRATE_STANDARD>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x400 4>;
+
+		anx7483_port0: anx7483_emul0@3e {
+			compatible = "cros,anx7483-emul", "analogix,anx7483";
+			reg = <0x3e>;
+			board-set = "board_anx7483_c0_mux_set";
+		};
+	};
+
+	i2c1_0: i2c@500 {
+		status = "okay";
+		compatible = "zephyr,i2c-emul-controller";
+		clock-frequency = <I2C_BITRATE_STANDARD>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x500 4>;
+
+		anx7483_port1: anx7483_emul1@3e {
+			compatible = "cros,anx7483-emul", "analogix,anx7483";
+			reg = <0x3e>;
+			board-set = "board_anx7483_c1_mux_set";
+		};
+
+		ps8811_port1: ps8811_emul@72 {
+			compatible = "cros,ps8811-emul";
+			reg = <0x72>;
+		};
+	};
+
+	i2c6_1: i2c@600 {
+		status = "okay";
+		compatible = "zephyr,i2c-emul-controller";
+		clock-frequency = <I2C_BITRATE_STANDARD>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x600 4>;
+>>>>>>> CHANGE (ce23f2 Skyrim: Set up BMA422 interrupts)
 	};
 
 	skyrim-fw-config {
