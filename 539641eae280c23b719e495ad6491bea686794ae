@@ -16,6 +16,24 @@
       "message": "I\u0027m assuming the build issue was resolved? What was it?",
       "revId": "539641eae280c23b719e495ad6491bea686794ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d14f9f89_432534ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-21T01:15:45Z",
+      "side": 1,
+      "message": "The build failure should be resolved by this:\nhttps://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/4439330",
+      "parentUuid": "cdaaa192_fe934b1a",
+      "revId": "539641eae280c23b719e495ad6491bea686794ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
