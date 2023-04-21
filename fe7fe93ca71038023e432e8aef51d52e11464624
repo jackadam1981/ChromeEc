@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e827bfcd_67f1a790",
+        "filename": "zephyr/program/skyrim/winterhold/project.overlay",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T16:37:36Z",
+      "side": 1,
+      "message": "To expand on that.\nWhen the fan is started the RPM is set to rpm_start(2800) first.\nThen depending on how much cooling is needed it might be decreased down to rpm_min(2100).",
+      "parentUuid": "2983b28e_a5ce3f57",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 18
+      },
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "716c3304_5bc4b813",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 11
