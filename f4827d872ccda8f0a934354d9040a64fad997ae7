@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b31070_85bef874",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-21T16:05:40Z",
+      "side": 1,
+      "message": "This CL should probably be based on top of the other CLs in a dependency chain, as it will not build successfully without them. It may take a bit longer to get them all merged but will provide a consistent point that is known to successfully build.",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d9aefbd4_551f95dc",
@@ -14,6 +37,29 @@
       "writtenOn": "2023-04-21T04:04:56Z",
       "side": 1,
       "message": "Another minor note, I tried adding a commit that depends upon this one and received this error when it attempted to verify this commit:\n\n```\n[FAILED] chromiumos/platform/ec: _check_clang_format\n    clang-format.py errors/warnings\n    \n    The following files have formatting errors:\n    \tboard/helipilot/board.c\n    \tboard/helipilot/board_rw.c\n    \tboard/helipilot/gpio.inc\n    You can run `/home/bobbycasey/src/chromiumos/src/repohooks/third_party/clang-format.py --fix --commit f4827d872ccda8f0a934354d9040a64fad997ae7` to fix this\n```",
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80f69c24_c1d69e2d",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-21T16:05:40Z",
+      "side": 1,
+      "message": "Per go/crvc/4439569, these lines should be replaced with \n```\n#define CONFIG_BORINGSSL_CRYPTO\n```",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 22
+      },
       "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
