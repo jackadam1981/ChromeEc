@@ -33,6 +33,24 @@
       "message": "It looks like bmi160_after doesn\u0027t reset the rotation matrix so we should make sure that\u0027s added as part of the cleanup process.",
       "revId": "06d67b79c3496e47784101bae6d97fd0fd826396",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c301e572_afac20ef",
+        "filename": "zephyr/test/drivers/default/src/bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-04-21T20:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57e9d797_13d66ae6",
+      "revId": "06d67b79c3496e47784101bae6d97fd0fd826396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
