@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f5fd84_07d19563",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-21T19:05:32Z",
+      "side": 1,
+      "message": "Yeah, doesn\u0027t have to block this since it looks like a bug in the `boringssl` build and should still compile. Can you file a bug and assign to @yich@google.com?",
+      "parentUuid": "bbb7aae3_a59561e1",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d9aefbd4_551f95dc",
@@ -77,6 +101,30 @@
       "writtenOn": "2023-04-21T16:05:40Z",
       "side": 1,
       "message": "Per go/crvc/4439569, these lines should be replaced with \n```\n#define CONFIG_BORINGSSL_CRYPTO\n```",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 22
+      },
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e5f778_820c2d6f",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-21T19:05:32Z",
+      "side": 1,
+      "message": "There has been some flux with the boringssl changes due to build failures: http://b/279174496\n\nCurrently they\u0027re reverted, but we should make sure we update it (either in this CL or the boringssl CL, depending on which goes in first).\n\ncc @yich@google.com",
+      "parentUuid": "80f69c24_c1d69e2d",
       "range": {
         "startLine": 139,
         "startChar": 0,
