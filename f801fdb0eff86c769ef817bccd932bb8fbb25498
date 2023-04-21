@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31613f7b_6d8df9ee",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T11:39:21Z",
+      "side": 1,
+      "message": "Done\n\nWhy do we need to call `k_timer_status_get`?\nAfter taking a quick look I think `k_timer_remaining_ticks` should provide enough information.\nPlease take a look at the new approach.",
+      "parentUuid": "997680dd_793544fe",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8de2b9_9da560b3",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 9
@@ -120,6 +138,24 @@
       "writtenOn": "2023-04-20T17:19:24Z",
       "side": 1,
       "message": "This should be moved to just before the `rpm_diff \u003e deviation` conditional, since it\u0027s unused if we return before then.",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c330ff87_379db796",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T11:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e8de2b9_9da560b3",
       "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -209,6 +245,24 @@
       "side": 1,
       "message": "Please document that these RPM values were determined empirically and are specific to the Whiterun fan.",
       "parentUuid": "e801bd7d_18148dc8",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01755746_3560c9bb",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T11:39:21Z",
+      "side": 1,
+      "message": "```\nIt appears this function is mixing units then. We are making calculations based on fan RPM, but setting the fan duty. How do we ever expect to hit the target RPM without knowing the duty-\u003eRPM translation, when we\u0027re modifying the fan speed using duty?\n\nCan we get the duty-\u003eRPM translation function?\n\n```\n\nOh, I see what you mean.\nInstead of calculating the delta of fan_duty based on RPM difference we could get set the duty based on target RPM. We can do that since the relation between duty and RPM can be found experimentally.\n\nFrankly I like your solution more, the problem is that we\u0027re out of time.\nMaking such a change would require to re-do the fine tuning from scratch.\n\nAlso the current approach should work better in case ODM uses a different fan, with similar characteristics.",
+      "parentUuid": "5a580e88_9f2aaf22",
       "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
