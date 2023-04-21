@@ -265,6 +265,24 @@
       "parentUuid": "5a580e88_9f2aaf22",
       "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12b9541a_93655cc7",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2023-04-21T13:58:20Z",
+      "side": 1,
+      "message": "\u003e How do we ever expect to hit the target RPM without knowing the duty-\u003eRPM translation,\n\nThe \"control theory\" is a wide field. The code resembles something which I would call \"integration controller\" (though my brain hurts when I write this). For such closed loop feedback controllers the error signal and control signals are usually in different dimensions as the whole point is to minimize the error within the required reaction time. This type of controller has limited possibilities for coping with non linearity (especially dynamic effects) which lead to overshoots and oscillations, but this is a well proven theory in the control theory field. The implementation though is another story and we wrote long explanation in the associated bug why it is broken and how to fix it. It is something we want to use as a quick fix as it proff to work for some time now and we need this fix before AU. Though we definitely plan to implement a proper PID to replace it.\n\n\u003e Can we get the duty-\u003eRPM translation function?\n\nFrom the control theory it is what is called \"linear open loop\". It can be done but usually non-linear dynamic feedback loops is used to accommodate dynamic properties of the system. The feedback loops have nice property that a single set of parameters is able to work with quite wide rage of devices which share the same properties (as the fan in a box in this case). A prominent and most typical example is PID which we plan ot implement as long term solution.\nIf you want to get more information why such solution is suggested by us and how it should be coded, I\u0027m happy to share the coming design document where we will try to elaborate more over this and similar questions.\nBut again, this patch is just short term. Long term solution is in design phase and address also other issues we found.",
+      "parentUuid": "01755746_3560c9bb",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
