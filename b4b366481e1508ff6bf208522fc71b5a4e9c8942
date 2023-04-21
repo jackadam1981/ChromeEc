@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b5e01a9_888762a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-21T21:36:36Z",
+      "side": 1,
+      "message": "Because you\u0027ve provided an option to specify the second loader binary manually, please drop the binary from this CL.",
+      "revId": "b4b366481e1508ff6bf208522fc71b5a4e9c8942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa958c20_868de7f7",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-21T21:36:36Z",
+      "side": 1,
+      "message": "Nit - if you\u0027re going to create a constant, you should abstract away the actual value assigned to the constant `RETRY_COUNT` or `RESPONSE_RETRIES`",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 17
+      },
+      "revId": "b4b366481e1508ff6bf208522fc71b5a4e9c8942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c28e813_6a043087",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-21T21:36:36Z",
+      "side": 1,
+      "message": "Change to \"retrying\".",
+      "range": {
+        "startLine": 221,
+        "startChar": 57,
+        "endLine": 221,
+        "endChar": 74
+      },
+      "revId": "b4b366481e1508ff6bf208522fc71b5a4e9c8942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
