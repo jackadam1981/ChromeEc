@@ -247,6 +247,30 @@
       },
       "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78aa0103_429cc2d4",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T17:24:49Z",
+      "side": 1,
+      "message": "Winterhold uses the \"linear\" approach.\nWith that the RPM calculations are done in src/thermal.c, function thermal_control.\nMarkath/frostflow use \"fan levels\", which is implemented through board override, hence they call fan_set_rpm_target directly.\n\nSo in the case of Winterhold we have thermal_control -\u003e fan_set_percent_needed -\u003e fan_set_rpm_target.",
+      "parentUuid": "4a252e59_93fca58e",
+      "range": {
+        "startLine": 286,
+        "startChar": 30,
+        "endLine": 286,
+        "endChar": 32
+      },
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
