@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed15b0e4_91985c8c",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T15:52:38Z",
+      "side": 1,
+      "message": "According to the header: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/include/zephyr/kernel.h.\n\n```\n * This routine stops a running timer prematurely. The timer\u0027s stop function,\n * if one exists, is invoked by the caller.\n *\n * Attempting to stop a timer that is not running is permitted, but has no\n * effect on the timer.\n```\n\nAs long as the timer is running the condition in line 233 will be satisfied and we\u0027ll leave the function early.\nBecause of that and the comment above I don\u0027t think we need to call this function.",
+      "parentUuid": "f5b42784_38b498c7",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8de2b9_9da560b3",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 9
@@ -317,6 +335,24 @@
       "side": 1,
       "message": "I agree this should be sufficient for a short-term solution on whiterun.  I look forward to a design doc on the long-term solution later",
       "parentUuid": "12b9541a_93655cc7",
+      "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "325f51b3_eaa4cfcd",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T15:52:38Z",
+      "side": 1,
+      "message": "Yeah, the design doc is a WIP.\nI\u0027ll put more work into it once this is closed.",
+      "parentUuid": "c3f8ba45_84904b5b",
       "revId": "f801fdb0eff86c769ef817bccd932bb8fbb25498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
