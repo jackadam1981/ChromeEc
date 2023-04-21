@@ -16,6 +16,29 @@
       "message": "Set the fan_duty, instead of incrementing it in one of the cases.",
       "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716c3304_5bc4b813",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-21T16:08:56Z",
+      "side": 1,
+      "message": "Should this be `0`? Otherwise, the fan will never turn off completely, even if a duty cycle of `1` isn\u0027t enough to actually get it to spin, it seems we\u0027d still be sending it some amount of (wasted) energy.",
+      "range": {
+        "startLine": 286,
+        "startChar": 30,
+        "endLine": 286,
+        "endChar": 32
+      },
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
