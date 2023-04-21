@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e975c8dc_ad576ca5",
+        "filename": "util/flash_ec",
+        "patchSetId": 24
+      },
+      "lineNbr": 1655,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-21T21:08:02Z",
+      "side": 1,
+      "message": "You should use `dut_control_get` or `dut_control_get_or_die` here instead.  It already passes in `--value_only` and it also honors the port number (which isn\u0027t always 9999).",
+      "range": {
+        "startLine": 1652,
+        "startChar": 0,
+        "endLine": 1655,
+        "endChar": 0
+      },
+      "revId": "a2ecac6a9115dac42446fd0b72f447dd42fb99b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccb1cf26_6d5c024a",
+        "filename": "util/flash_ec",
+        "patchSetId": 24
+      },
+      "lineNbr": 1662,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-21T21:08:02Z",
+      "side": 1,
+      "message": "Use `dut_control` or `dut_control_or_die`.",
+      "range": {
+        "startLine": 1662,
+        "startChar": 1,
+        "endLine": 1662,
+        "endChar": 12
+      },
+      "revId": "a2ecac6a9115dac42446fd0b72f447dd42fb99b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfcff30b_65977a3f",
+        "filename": "util/flash_ec",
+        "patchSetId": 24
+      },
+      "lineNbr": 1670,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-21T21:08:02Z",
+      "side": 1,
+      "message": "I don\u0027t think this is needed because the recovery script includes python3 on the shebang line.",
+      "range": {
+        "startLine": 1670,
+        "startChar": 1,
+        "endLine": 1670,
+        "endChar": 8
+      },
+      "revId": "a2ecac6a9115dac42446fd0b72f447dd42fb99b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
