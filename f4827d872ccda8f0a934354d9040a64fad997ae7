@@ -24,6 +24,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb7aae3_a59561e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-04-21T16:28:36Z",
+      "side": 1,
+      "message": "Note: I\u0027m seeing these linker warnings when building helipilot, which I think is documented in b/274937192. I don\u0027t think this needs to gate the CL but figured it was worth mentioning here in case someone else encounters it.\n\n```\nld.lld: warning: Linking two modules of different target triples: \u0027build/helipilot/aes/third_party/boringssl/crypto/libcrypto.a(bcm.c.o at 518)\u0027 is \u0027thumbv7m-cros-unknown-eabi\u0027 whereas \u0027ld-temp.o\u0027 is \u0027thumbv7em-cros-unknown-eabihf\u0027\n\nld.lld: warning: Linking two modules of different target triples: \u0027build/helipilot/aes/third_party/boringssl/crypto/libcrypto.a(err.c.o at 3664878)\u0027 is \u0027thumbv7m-cros-unknown-eabi\u0027 whereas \u0027ld-temp.o\u0027 is \u0027thumbv7em-cros-unknown-eabihf\u0027\n\nld.lld: warning: Linking two modules of different target triples: \u0027build/helipilot/aes/third_party/boringssl/crypto/libcrypto.a(err_data.c.o at 3718442)\u0027 is \u0027thumbv7m-cros-unknown-eabi\u0027 whereas \u0027ld-temp.o\u0027 is \u0027thumbv7em-cros-unknown-eabihf\u0027\n\nld.lld: warning: Linking two modules of different target triples: \u0027build/helipilot/aes/third_party/boringssl/crypto/libcrypto.a(engine.c.o at 3740430)\u0027 is \u0027thumbv7m-cros-unknown-eabi\u0027 whereas \u0027ld-temp.o\u0027 is \u0027thumbv7em-cros-unknown-eabihf\u0027\n```",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d9aefbd4_551f95dc",
