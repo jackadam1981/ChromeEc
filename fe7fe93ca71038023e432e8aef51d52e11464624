@@ -79,6 +79,30 @@
       },
       "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883203a5_36b7a482",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-21T16:31:37Z",
+      "side": 1,
+      "message": "I believe it\u0027s getting stopped here in the shim, with this delightful comment: \n```\nvoid fan_set_rpm_target(int ch, int rpm)\n{\n        if (rpm \u003d\u003d 0) {\n                /* If rpm \u003d 0, disable PWM immediately. Why?*/\n                fan_set_duty(ch, 0);\n        } else {\n\n```\n\nOne might wonder if this contributes to the abrupt on/off cycles...",
+      "parentUuid": "716c3304_5bc4b813",
+      "range": {
+        "startLine": 286,
+        "startChar": 30,
+        "endLine": 286,
+        "endChar": 32
+      },
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
