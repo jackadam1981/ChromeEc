@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c76465b2_3cd2c319",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-21T15:33:59Z",
+      "side": 1,
+      "message": "nit: presumably if we want to turn this feature off, the CL will just be reverted.  So it should be fine to leave out the CONFIG guard",
+      "revId": "a106b18cbce779f50b63461a9a5f665c2362570c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
