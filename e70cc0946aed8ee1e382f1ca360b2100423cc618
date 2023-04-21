@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "089902bf_b6570b17",
+        "filename": "include/fan.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T11:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "200884b0_f5c0fcf8",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 34
+      },
+      "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de062eb8_2185a18c",
@@ -71,6 +95,30 @@
       "writtenOn": "2023-04-20T19:54:26Z",
       "side": 1,
       "message": "Does this need to be public?",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 42
+      },
+      "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "884bb7c3_23cd7447",
+        "filename": "include/fan.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T11:37:51Z",
+      "side": 1,
+      "message": "Good catch. This is a leftover from development. I removed it.",
+      "parentUuid": "de062eb8_2185a18c",
       "range": {
         "startLine": 237,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b60207b_256619fd",
+        "filename": "include/fan.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T11:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7af11037_260da27d",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 42
+      },
+      "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba355703_859f8477",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a415a6_fe6d4081",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T11:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba355703_859f8477",
+      "range": {
+        "startLine": 125,
+        "startChar": 30,
+        "endLine": 125,
+        "endChar": 45
+      },
+      "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b341bd7_1765cc68",
@@ -140,6 +236,30 @@
       "writtenOn": "2023-04-20T19:45:46Z",
       "side": 1,
       "message": "Add a TODO: referencing the bug tracking the improved fan implementation.",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 49
+      },
+      "revId": "e70cc0946aed8ee1e382f1ca360b2100423cc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53247039_c34e40e1",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-21T11:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b341bd7_1765cc68",
       "range": {
         "startLine": 244,
         "startChar": 0,
