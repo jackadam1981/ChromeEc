@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5d3869e_5207f98f",
+        "filename": "zephyr/program/skyrim/winterhold/project.overlay",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-21T16:11:45Z",
+      "side": 1,
+      "message": "Based on the fan curve that Kornel provided, would updating these help `board_override_fan_control_duty()` behave more correctly?\n\nhttps://docs.google.com/spreadsheets/d/1Rm7xnWqJLeKZvHpNDt-LF1gt0vlRwWKQitpu0HdVS-M/edit?resourcekey\u003d0-U7xMtFOlsvTgdzzH3PI1oA#gid\u003d0\n\n```\n\trpm_min \u003d \u003c2300\u003e;\n\trpm_start \u003d \u003c2800\u003e;\n\trpm_max \u003d \u003c5600\u003e;\n```",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 18
+      },
+      "revId": "fe7fe93ca71038023e432e8aef51d52e11464624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "716c3304_5bc4b813",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 11
