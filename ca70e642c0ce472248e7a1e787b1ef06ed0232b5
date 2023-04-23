@@ -16,6 +16,23 @@
       "message": "Build error should be fixed now",
       "revId": "ca70e642c0ce472248e7a1e787b1ef06ed0232b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297a0837_a4b64836",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-04-23T23:15:07Z",
+      "side": 1,
+      "message": "CQ failing because skyrim form-factor test fails to build:\n\n```\ndevicetree error: /motionsense-sensor-info: undefined node label \u0027int_lid_accel\u0027\n-- In: /mnt/host/source/src/platform/ec/twister-out-llvm/native_posix/skyrim/skyrim.skyrim.form_factor/zephyr\n```",
+      "revId": "ca70e642c0ce472248e7a1e787b1ef06ed0232b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
