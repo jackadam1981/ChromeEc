@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f340e7c_13768c14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-04-24T15:10:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2f3943ef_d1f3dc8c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "2f3d085c8caef84a5c65682f7e8017331aa6e91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77f40386_123dbf6d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a17d10b6_f595e61d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-04-24T15:10:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "77f40386_123dbf6d",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "2f3d085c8caef84a5c65682f7e8017331aa6e91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d64de660_73305643",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-20T16:38:31Z",
       "side": 1,
       "message": "better to include those two array with \"CONFIG_USB_PD_DP21_MODE\" flag",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 42
+      },
+      "revId": "2f3d085c8caef84a5c65682f7e8017331aa6e91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc75c9d_43e3136c",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-04-24T15:10:16Z",
+      "side": 1,
+      "message": "we can\u0027t move inside build flag. Its giving compilation error at kine 217 and 225 even though we are using if (IS_ENABLED(CONFIG_USB_PD_DP21_MODE).\n\nIf we still want to move those structure inside build flag, we have to use #ifdef instead of using IS_ENABLED() in code.\n\nI think its better to leave those structure outside build flags.",
+      "parentUuid": "d64de660_73305643",
       "range": {
         "startLine": 100,
         "startChar": 0,
