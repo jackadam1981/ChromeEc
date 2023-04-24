@@ -16,6 +16,24 @@
       "message": "Hi JohnWC,\nThe Display values map to raw values will become mismatched with an aged battery, because the Display SOC depends on the `full capacity`. However, this `full capacity` will decrease as the battery ages.\n```\nDisplay Raw\n10      13\n11      14\n94      91\n95      92\n```\nI changed the LED node to depend on the display SOC in CL:4430138, so you should revert this CL.",
       "revId": "28052e2944fe30729d584cb2d900c39073399cd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f05659f_b4e12a2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2023-04-24T03:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c90c39b_53241338",
+      "revId": "28052e2944fe30729d584cb2d900c39073399cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
