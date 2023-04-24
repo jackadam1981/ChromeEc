@@ -112,6 +112,7 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_USB_A1_VBUS,
 	GPIO_EN_USB_A2_VBUS,
 	GPIO_EN_USB_A3_VBUS,
+	GPIO_EN_USB_A4_VBUS,
 };
 
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
