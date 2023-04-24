@@ -16,6 +16,24 @@
       "message": "We should probably set some panic data and make sure the clear actually clears it.",
       "revId": "f511239a468b28e543156ebc798b3d73dc83d504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae88dc47_f47b23c4",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-04-24T21:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc6f423a_e7c59dc2",
+      "revId": "f511239a468b28e543156ebc798b3d73dc83d504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
