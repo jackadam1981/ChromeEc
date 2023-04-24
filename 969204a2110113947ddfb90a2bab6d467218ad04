@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee496a3_095fe08b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-04-24T02:00:05Z",
+      "side": 1,
+      "message": "CQ was failed, please add boxy to:\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/51/4410551/4/util/build_with_clang.py#254\n\nIt should fix CQ issue.",
+      "revId": "969204a2110113947ddfb90a2bab6d467218ad04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
