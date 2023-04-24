@@ -1827,6 +1827,14 @@ void charger_task(void *u)
 		/* Don't let the battery hurt itself. */
 		battery_critical = shutdown_on_critical_battery();
 
+		/*
+		 * Always check the disconnect state.  This is because
+		 * the battery disconnect state is one of the items used
+		 * to decide whether or not to leave safe mode.
+		 */
+		battery_seems_disconnected = battery_get_disconnect_state() !=
+					     BATTERY_NOT_DISCONNECTED;
+
 		if (!curr.ac) {
 			set_charge_state(ST_DISCHARGE);
 			goto wait_for_it;
@@ -1867,14 +1875,6 @@ void charger_task(void *u)
 			}
 		}
 		/* The battery is responding. Yay. Try to use it. */
-
-		/*
-		 * Always check the disconnect state.  This is because
-		 * the battery disconnect state is one of the items used
-		 * to decide whether or not to leave safe mode.
-		 */
-		battery_seems_disconnected = battery_get_disconnect_state() ==
-					     BATTERY_DISCONNECTED;
 
 		revive_battery(&need_static);
 
