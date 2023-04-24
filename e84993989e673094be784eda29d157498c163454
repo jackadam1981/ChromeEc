@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "056f25dc_318ceb41",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-24T19:15:10Z",
+      "side": 1,
+      "message": "Can you please update this? I think TABLET_TRIGGER_LID \u0026 TABLET_TRIGGER_BASE should be mentioned.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "e84993989e673094be784eda29d157498c163454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6062750_fb44ff7e",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-24T19:15:10Z",
+      "side": 1,
+      "message": "We\u0027re assuming tablet_mode_names will always contain only (and exactly) two strings. Do you want to add a build_assert to enforce it?",
+      "range": {
+        "startLine": 64,
+        "startChar": 38,
+        "endLine": 64,
+        "endChar": 55
+      },
+      "revId": "e84993989e673094be784eda29d157498c163454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
