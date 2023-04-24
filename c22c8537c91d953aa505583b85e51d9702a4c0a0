@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9fcdebe0_65c0fd53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-24T22:08:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c967ecc_97a2e3a0",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9ba7fc3f_8b10454d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2023-04-13T21:37:22Z",
       "side": 1,
       "message": "The doc is still called case_closed_debugging_cr50. Change it to gsc?",
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feeced9e_e86848c5",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-24T22:08:02Z",
+      "side": 1,
+      "message": "I uploaded a child change that renames.",
+      "parentUuid": "9da0bd64_703d05d0",
       "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -93,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb1d2a2_c76f5925",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-24T22:08:02Z",
+      "side": 1,
+      "message": "Can we audit and update docs as we find them. I agree that we should update them, but this seem like a well referenced one and gives us a lot of benefit by updating.\n\nI have add this kind of doc clean up to the next fix it as a task someone can take",
+      "parentUuid": "4a9d1883_559a6f7d",
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f063485_b18160f4",
@@ -106,6 +166,30 @@
       "writtenOn": "2023-04-14T00:36:18Z",
       "side": 1,
       "message": "here and in lines 100, 154, 156 maybe\n\nconnect to GSC console on {Cr|Ti}50",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfb487a6_7f5f9961",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-24T22:08:02Z",
+      "side": 1,
+      "message": "Well the usb pid vids are different, so I made them two different lines. Thoughts on how to best consolidate and keep it easy to understand with that requirement?",
+      "parentUuid": "9f063485_b18160f4",
       "range": {
         "startLine": 98,
         "startChar": 2,
@@ -141,6 +225,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54e48847_2a9176e7",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-24T22:08:02Z",
+      "side": 1,
+      "message": "This `sudo` was actually one of the original requests to update this documentation. I do not use this flow, but Hou-Hsun has reported that this does not work without `sudo`. I have seen something like this. `sudo` shouldn\u0027t be that big of a deal to use in the chroot, right?",
+      "parentUuid": "35d46f27_b52ba0f8",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5387fb53_35b8799c",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 1
@@ -152,6 +260,30 @@
       "writtenOn": "2023-04-13T21:24:15Z",
       "side": 1,
       "message": "nit Ti50",
+      "range": {
+        "startLine": 114,
+        "startChar": 28,
+        "endLine": 114,
+        "endChar": 33
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b702b2b1_49e30d6f",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-24T22:08:02Z",
+      "side": 1,
+      "message": "Done. Thanks for catching that typo!",
+      "parentUuid": "5387fb53_35b8799c",
       "range": {
         "startLine": 114,
         "startChar": 28,
@@ -185,6 +317,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "982701ee_8a71d983",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-24T22:08:02Z",
+      "side": 1,
+      "message": "That is good change, and I think it is worth adding it to this change since I am touching all of those lines and it is a cosmetic change. Done.",
+      "parentUuid": "601d9b94_1233f31d",
+      "range": {
+        "startLine": 401,
+        "startChar": 4,
+        "endLine": 401,
+        "endChar": 7
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e94f99dc_c941799c",
@@ -198,6 +354,30 @@
       "writtenOn": "2023-04-13T21:37:22Z",
       "side": 1,
       "message": "I think there are aliases for these controls, so people can use gsc_uart_timestamp instead of cr50_uart_timestamp.",
+      "range": {
+        "startLine": 554,
+        "startChar": 23,
+        "endLine": 554,
+        "endChar": 28
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1ff8c7_1a1ccda9",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-24T22:08:02Z",
+      "side": 1,
+      "message": "good call. I confirmed they do exist. I updated them",
+      "parentUuid": "e94f99dc_c941799c",
       "range": {
         "startLine": 554,
         "startChar": 23,
@@ -249,6 +429,54 @@
         "startChar": 66,
         "endLine": 571,
         "endChar": 79
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c3f657_8f71c45d",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-24T22:08:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cc9ac83_9999c62a",
+      "range": {
+        "startLine": 571,
+        "startChar": 66,
+        "endLine": 571,
+        "endChar": 79
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58ad832a_e0f706f7",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-24T22:08:02Z",
+      "side": 1,
+      "message": "Agreed. I will removed this in a child CL",
+      "parentUuid": "ac97b3c7_8cc9725d",
+      "range": {
+        "startLine": 571,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 89
       },
       "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
