@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47b4f59b_920f4f05",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-24T15:31:28Z",
+      "side": 1,
+      "message": "Used the RETRY_COUNT",
+      "parentUuid": "aa958c20_868de7f7",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 17
+      },
+      "revId": "b4b366481e1508ff6bf208522fc71b5a4e9c8942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c28e813_6a043087",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-04-21T21:36:36Z",
       "side": 1,
       "message": "Change to \"retrying\".",
+      "range": {
+        "startLine": 221,
+        "startChar": 57,
+        "endLine": 221,
+        "endChar": 74
+      },
+      "revId": "b4b366481e1508ff6bf208522fc71b5a4e9c8942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb73e918_93663dce",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-24T15:31:28Z",
+      "side": 1,
+      "message": "Used the retrying",
+      "parentUuid": "8c28e813_6a043087",
       "range": {
         "startLine": 221,
         "startChar": 57,
