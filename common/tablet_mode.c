@@ -61,7 +61,7 @@ int tablet_get_mode(void)
 
 static inline void print_tablet_mode(void)
 {
-	CPRINTS("%s mode", tablet_mode_names[tablet_mode]);
+	CPRINTS("%s mode", tablet_mode_names[tablet_get_mode()]);
 }
 
 static void notify_tablet_mode_change(void)
