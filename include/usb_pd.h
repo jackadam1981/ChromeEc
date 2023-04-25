@@ -288,7 +288,10 @@ enum pd_rx_errors {
 #define PD_T_VDM_BUSY (50 * MSEC) /* at least 50ms */
 #define PD_T_VDM_E_MODE (25 * MSEC) /* enter/exit the same max */
 #define PD_T_VDM_RCVR_RSP (15 * MSEC) /* max of 15ms */
-#define PD_T_VDM_SNDR_RSP (30 * MSEC) /* max of 30ms */
+/* The actual timeout as seen by the partner should be ~30 ms due to timing
+ * errors in the EC.
+ */
+#define PD_T_VDM_SNDR_RSP (33 * MSEC) /* max of 30ms */
 #define PD_T_VDM_WAIT_MODE_E (100 * MSEC) /* enter/exit the same max */
 
 /* CTVPD Timers ( USB Type-C ECN Table 4-27 ) */
