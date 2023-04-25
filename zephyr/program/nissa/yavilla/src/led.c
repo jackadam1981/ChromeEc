@@ -4,6 +4,7 @@
  */
 
 #include "battery.h"
+#include "cros_cbi.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "chipset.h"
@@ -14,9 +15,15 @@
 #include "led_common.h"
 
 #include <stdint.h>
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
 #define BAT_LED_ON 0
 #define BAT_LED_OFF 1
+
+#define PWR_LED_ON 0
+#define PWR_LED_OFF 1
 
 #define BATT_LOW_BCT 10
 
@@ -25,8 +32,11 @@
 #define LED_ON_TICKS 2
 #define POWER_LED_ON_S3_TICKS 2
 
+static bool power_led_enable;
+
 const enum ec_led_id supported_led_ids[] = { EC_LED_ID_LEFT_LED,
-					     EC_LED_ID_RIGHT_LED };
+					     EC_LED_ID_RIGHT_LED,
+					     EC_LED_ID_POWER_LED };
 
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
@@ -69,6 +79,20 @@ static void led_set_color_battery(int port, enum led_color color)
 	}
 }
 
+static void led_set_color_power(enum led_color color)
+{
+	switch (color) {
+	case LED_OFF:
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_power_led_white_l), PWR_LED_OFF);
+		break;
+	case LED_WHITE:
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_power_led_white_l), PWR_LED_ON);
+		break;
+	default:
+		break;
+	}
+}
+
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	switch (led_id) {
@@ -79,6 +103,9 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 	case EC_LED_ID_RIGHT_LED:
 		brightness_range[EC_LED_COLOR_WHITE] = 1;
 		brightness_range[EC_LED_COLOR_AMBER] = 1;
+		break;
+	case EC_LED_ID_POWER_LED:
+		brightness_range[EC_LED_COLOR_WHITE] = 1;
 		break;
 	default:
 		break;
@@ -103,6 +130,12 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 			led_set_color_battery(RIGHT_PORT, LED_AMBER);
 		else
 			led_set_color_battery(RIGHT_PORT, LED_OFF);
+		break;
+	case EC_LED_ID_POWER_LED:
+		if (brightness[EC_LED_COLOR_WHITE] != 0)
+			led_set_color_power(LED_WHITE);
+		else
+			led_set_color_power(LED_OFF);
 		break;
 	default:
 		return EC_ERROR_PARAM1;
@@ -135,25 +168,27 @@ static void led_set_battery(void)
 	battery_ticks++;
 
 	/*
-	 * Override battery LEDs for Yavilla, Yavilla is non-power LED
-	 * design, blinking both two side battery white LEDs to indicate
+	 * Override battery LEDs for Yavilla without power led design,
+	 * blinking both two side battery white LEDs to indicate
 	 * system suspend with non-charging state.
 	 */
-	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
-	    charge_get_state() != PWR_STATE_CHARGE) {
-		suspend_ticks++;
+	if (!power_led_enable) {
+		if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
+		    charge_get_state() != PWR_STATE_CHARGE) {
+			suspend_ticks++;
 
-		led_set_color_battery(RIGHT_PORT,
-				      suspend_ticks % LED_TICKS_PER_CYCLE_S3 <
-						      POWER_LED_ON_S3_TICKS ?
-					      LED_WHITE :
-					      LED_OFF);
-		led_set_color_battery(LEFT_PORT,
-				      suspend_ticks % LED_TICKS_PER_CYCLE_S3 <
-						      POWER_LED_ON_S3_TICKS ?
-					      LED_WHITE :
-					      LED_OFF);
-		return;
+			led_set_color_battery(RIGHT_PORT,
+					      suspend_ticks % LED_TICKS_PER_CYCLE_S3 <
+							      POWER_LED_ON_S3_TICKS ?
+						      LED_WHITE :
+						      LED_OFF);
+			led_set_color_battery(LEFT_PORT,
+					      suspend_ticks % LED_TICKS_PER_CYCLE_S3 <
+							      POWER_LED_ON_S3_TICKS ?
+						      LED_WHITE :
+						      LED_OFF);
+			return;
+		}
 	}
 
 	suspend_ticks = 0;
@@ -223,9 +258,50 @@ static void led_set_battery(void)
 	}
 }
 
+static void led_set_power(void)
+{
+	static int power_ticks;
+
+	power_ticks++;
+
+	if (chipset_in_state(CHIPSET_STATE_ON))
+		led_set_color_power(LED_WHITE);
+	else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
+		led_set_color_power((power_ticks % LED_TICKS_PER_CYCLE_S3 <
+				             POWER_LED_ON_S3_TICKS) ?
+				             LED_WHITE : LED_OFF);
+	else
+		led_set_color_power(LED_OFF);
+}
+
+static void power_led_check(void)
+{
+	int ret;
+	uint32_t val;
+
+	/*
+	 * Retrieve the tablet config.
+	 */
+	ret = cros_cbi_get_fw_config(FW_TABLET, &val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", FW_TABLET);
+		return;
+	}
+
+	if (val == FW_TABLET_PRESENT)
+		power_led_enable = true;
+	else /* Clameshell */
+		power_led_enable = false;
+}
+DECLARE_HOOK(HOOK_INIT, power_led_check, HOOK_PRIO_DEFAULT);
+
 /* Called by hook task every TICK(IT83xx 500ms) */
 static void led_tick(void)
 {
 	led_set_battery();
+
+	if (power_led_enable &&
+	    led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
+		led_set_power();
 }
 DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
