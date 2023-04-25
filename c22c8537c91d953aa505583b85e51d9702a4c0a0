@@ -226,6 +226,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8a0c96e_34e1eb35",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-25T17:09:52Z",
+      "side": 1,
+      "message": "The usb DidVids are important since they are a parameter to the `usb_console` tool. It makes sense to include them in the example command line to make it easier on the reader to me",
+      "parentUuid": "be1e15c3_5277cf60",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35d46f27_b52ba0f8",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 1
@@ -285,6 +309,30 @@
       "side": 1,
       "message": "It is not a problem to run sudo in chroot, but it does not make sense to have to do it in this case.\n\nMaybe the problem is that the appropriate udev rules are not installed and the created TTY devices are not available to non root users?\n\nAs a side questions: If we don\u0027t use `usb_console` why do we recommend using it.",
       "parentUuid": "54e48847_2a9176e7",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbbc7fe7_d7e3c399",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-04-25T17:09:52Z",
+      "side": 1,
+      "message": "I think some people use `usb_console` and I believe it comes as part of the chroot dev tools. I think that is why we recommend it (or that is my best guess). I use `minicom` personally, but that is an external dependencies requirement.\n\nI can drop the `sudo` here, but this was specifically requested to be added. If you want to investigate why `sudo` is needed that is fine with me, but it seems like a reasonable \"fix\" to just add `sudo` to the command invocation since it is working with devices. Maybe it is something with udev rules; I have no idea. We don\u0027t include anything about udev rules in this doc, so we can\u0027t really rely on them being set up correctly.",
+      "parentUuid": "af5d7e92_90ae0054",
       "range": {
         "startLine": 99,
         "startChar": 10,
