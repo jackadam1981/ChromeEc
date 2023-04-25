@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d3add34_2611c696",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 123
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-25T22:37:55Z",
+      "side": 1,
+      "message": "Make all new variables `static`. If they need to be accessed outside of the file, please add an accessor method.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "e77ae3e5f2849ca1faf4f0c9ab5f33458436e548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
