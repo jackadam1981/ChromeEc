@@ -565,6 +565,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f486f06f_f67b0b1c",
+        "filename": "board/helipilot/board_rw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-25T05:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00f9a661_abee6839",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 43
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51b09a62_75619e68",
@@ -828,6 +852,30 @@
       "side": 1,
       "message": "I created b/279096907 to track future work",
       "parentUuid": "8637199d_53ba4297",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9f6afb1_3a3ac761",
+        "filename": "board/helipilot/fpsensor_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-25T05:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d309fb1_8bfdc146",
       "range": {
         "startLine": 1,
         "startChar": 0,
