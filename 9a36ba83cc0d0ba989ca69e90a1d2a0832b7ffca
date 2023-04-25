@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b49796c_cf993ade",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-04-25T02:48:03Z",
+      "side": 1,
+      "message": "ok, i guess we don\u0027t get enums with device trees.",
+      "parentUuid": "4ab92a30_38ff2a95",
+      "range": {
+        "startLine": 50,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 43
+      },
+      "revId": "9a36ba83cc0d0ba989ca69e90a1d2a0832b7ffca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd6a0602_0a5de7eb",
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "The code inside the method deals with gpio pin initialization, and modifications to what is configured in device tree. They are better to be modified before any other step based on CBI value. I also see other zephyr projects doing the similar way.",
       "parentUuid": "f88fd35e_4c6fd755",
+      "range": {
+        "startLine": 63,
+        "startChar": 35,
+        "endLine": 63,
+        "endChar": 53
+      },
+      "revId": "9a36ba83cc0d0ba989ca69e90a1d2a0832b7ffca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94810eca_32935145",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-04-25T02:48:03Z",
+      "side": 1,
+      "message": "when does zephyr enable I2C? in cros-ec, it\u0027s done before any init,\nso you don\u0027t need to defer to INIT_I2C.",
+      "parentUuid": "5e16f4bc_dbc0b847",
       "range": {
         "startLine": 63,
         "startChar": 35,
