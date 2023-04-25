@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f199792_8f702c33",
+        "filename": "util/flash_ec",
+        "patchSetId": 27
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-25T18:57:04Z",
+      "side": 1,
+      "message": "Nit - `mchp_loader`",
+      "range": {
+        "startLine": 163,
+        "startChar": 14,
+        "endLine": 163,
+        "endChar": 20
+      },
+      "revId": "bd7d31f4ec3d099d01bdbee1aebdd27078caef81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f96635ab_d9e7433d",
+        "filename": "util/flash_ec",
+        "patchSetId": 27
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-25T18:57:04Z",
+      "side": 1,
+      "message": "Microchip loader",
+      "range": {
+        "startLine": 164,
+        "startChar": 23,
+        "endLine": 164,
+        "endChar": 29
+      },
+      "revId": "bd7d31f4ec3d099d01bdbee1aebdd27078caef81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b3b894d_5130b4bf",
+        "filename": "util/flash_ec",
+        "patchSetId": 27
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-25T18:57:04Z",
+      "side": 1,
+      "message": "Nit - `mchp_loader_image` so it\u0027s clear this logic is only part of the MCHP programming.",
+      "range": {
+        "startLine": 763,
+        "startChar": 9,
+        "endLine": 763,
+        "endChar": 21
+      },
+      "revId": "bd7d31f4ec3d099d01bdbee1aebdd27078caef81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
