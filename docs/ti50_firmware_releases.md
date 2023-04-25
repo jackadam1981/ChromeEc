@@ -8,7 +8,7 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | PrePVT version | Prod Version
 ------------------- | -------------- | ------------
-[ToT][ToT ebuild]   | 0.24.21        | 0.23.14
+[ToT][ToT ebuild]   | 0.24.30        | 0.23.30
 [M113][113 release] | 0.24.13        | 0.23.14
 [M112][112 release] | 0.24.13        | 0.23.3
 [M111][111 release] | 0.24.3         | 0.23.3
@@ -366,6 +366,36 @@ Build:   ti50_common:v0.0.2949-4ee72fd9
          tock:v0.0.9629-77d147129
          ms-tpm-20-ref:v0.0.312-affdc53
          @chromeos-ci-firmware-us-central1-b-x32-0-j9et 2023-04-11 06:54:23
+```
+
+### 0.23.30 Released on 4/21/2023 in M114
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/4460212)
+
+Builder:
+[17](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-mp-15224.B-branch/17/overview)
+
+Artifacts:
+[15224.14.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/canary-channel/betty/15224.14.0)
+
+Manifest snapshot: gs://chromeos-manifest-versions/buildspecs/107/15224.14.0.xml
+
+**Bug Fixes**
+
+*   Add PCR-based policy to update fwmp and antirollback spaces
+    [b/274977008](https://b.corp.google.com/issues/274977008)
+*   Remove crash id parameter from GetCrashLog command
+    [b/265310865](https://b.corp.google.com/issues/265310865)
+*   AP RO verification returns detailed results
+    [b/263298180](https://b.corp.google.com/issues/263298180)
+
+```
+Build:   ti50_common_mp-15224.B:v0.0.186-6bcd2134
+         libtock-rs:v0.0.918-4fc5bc9
+         tock:v0.0.9631-d746cb946
+         ms-tpm-20-ref:v0.0.316-e4c9719
+         @chromeos-ci-firmware-us-east1-d-x32-0-1zci 2023-04-18 13:30:17
 ```
 
 ## PrePVT images
@@ -934,7 +964,7 @@ Build:   ti50_common:v0.0.2939-57543958
          @chromeos-ci-firmware-us-central1-b-x32-0-pnrp 2023-04-03 09:47:17
 ```
 
-### 0.24.30 Released on 4/21/2023
+### 0.24.30 Released on 4/21/2023 in M114
 
 Release
 [CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/4460051)
