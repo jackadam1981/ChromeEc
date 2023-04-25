@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0205286_7cdaa6a6",
+        "filename": "board/helipilot/board_rw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-25T20:01:05Z",
+      "side": 1,
+      "message": "This file isn\u0027t used in npcx code, right?\n\nI would check whether the related `gpio_reset` is needed for npcx.",
+      "range": {
+        "startLine": 51,
+        "startChar": 50,
+        "endLine": 51,
+        "endChar": 67
+      },
+      "revId": "55f1fd1ce62aa76bba5ce2edcb8afa18305ca85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f4bd41b_d438bd46",
+        "filename": "board/helipilot/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-25T20:01:05Z",
+      "side": 1,
+      "message": "nit: please remove",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "55f1fd1ce62aa76bba5ce2edcb8afa18305ca85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c7cf43a_4dc39d83",
+        "filename": "board/helipilot/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-25T20:01:05Z",
+      "side": 1,
+      "message": "The indentation looks somewhat strange here.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 50
+      },
+      "revId": "55f1fd1ce62aa76bba5ce2edcb8afa18305ca85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
