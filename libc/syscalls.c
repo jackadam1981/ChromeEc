@@ -112,11 +112,13 @@ void *_sbrk(intptr_t incr)
 	static char *heap_end = __shared_mem_buf;
 	char *prev_heap_end;
 
+#if 0
 	if ((heap_end + incr < __shared_mem_buf) ||
 	    (heap_end + incr > (__shared_mem_buf + shared_mem_size()))) {
 		errno = ENOMEM;
 		return (void *)-1;
 	}
+#endif
 
 	prev_heap_end = heap_end;
 	heap_end += incr;
