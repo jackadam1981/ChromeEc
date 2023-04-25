@@ -22,6 +22,30 @@
       },
       "revId": "6af81fc83923d8534aa9f86ae8a25482cad0d192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f49737_f232868b",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 173
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-25T23:49:54Z",
+      "side": 1,
+      "message": "Good catch, thanks.",
+      "parentUuid": "5d367bd7_c35ef162",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 6
+      },
+      "revId": "6af81fc83923d8534aa9f86ae8a25482cad0d192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
