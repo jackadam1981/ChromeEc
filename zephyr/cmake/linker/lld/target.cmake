@@ -18,10 +18,9 @@ macro(toolchain_ld_base)
   set_property(GLOBAL PROPERTY PROPERTY_LINKER_SCRIPT_DEFINES
     -D__GCC_LINKER_CMD__)
 
-  # Default flags
+    # Default flags
   zephyr_ld_options(
     ${TOOLCHAIN_LD_FLAGS}
-    -no-pie
     -Wl,--gc-sections
     --build-id=none)
 endmacro()
