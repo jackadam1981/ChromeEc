@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aacb203_81554369",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1351748
+      },
+      "writtenOn": "2023-04-25T05:26:39Z",
+      "side": 0,
+      "message": "So, in my opinion this macro is not implemented defensively enough since uses of its parameters aren\u0027t protected with ( and ).\n\nHowever, I can\u0027t find any usages of the macro at all.\n\nI don\u0027t know whether this is the right place to propose a change or if it should be proposed upstream somewhere. There are several files with this name. I\u0027m guessing one of them is like trunk, but I don\u0027t know which.",
+      "revId": "4bd705ffa6b507570c1fbad61aa87addb1c023cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
