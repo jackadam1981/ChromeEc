@@ -202,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be1e15c3_5277cf60",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-25T03:14:22Z",
+      "side": 1,
+      "message": "I don\u0027t see how USB devId is relevant here - it is already mentioned that devIds are different for the Two GSCs, and described how to connect to the appropriate console.\n\nHere we just are saying that the user needs to connect to the console.\n\nMaybe just `Connect to GSC console` or `Connect to the appropriate GSC console` ?",
+      "parentUuid": "dfb487a6_7f5f9961",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35d46f27_b52ba0f8",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 1
@@ -237,6 +261,30 @@
       "side": 1,
       "message": "This `sudo` was actually one of the original requests to update this documentation. I do not use this flow, but Hou-Hsun has reported that this does not work without `sudo`. I have seen something like this. `sudo` shouldn\u0027t be that big of a deal to use in the chroot, right?",
       "parentUuid": "35d46f27_b52ba0f8",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "c22c8537c91d953aa505583b85e51d9702a4c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5d7e92_90ae0054",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-25T03:14:22Z",
+      "side": 1,
+      "message": "It is not a problem to run sudo in chroot, but it does not make sense to have to do it in this case.\n\nMaybe the problem is that the appropriate udev rules are not installed and the created TTY devices are not available to non root users?\n\nAs a side questions: If we don\u0027t use `usb_console` why do we recommend using it.",
+      "parentUuid": "54e48847_2a9176e7",
       "range": {
         "startLine": 99,
         "startChar": 10,
