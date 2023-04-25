@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6eb4130_d395a2bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "add correct info",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7572a55b_37d382e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "can you pls add me to bug?",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ae5908_535e67f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "can you split it into multiple CLs?\nit would be easy to read the code with commit message explanation",
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce47b221_c2628b87",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "to avoid dependency on import serial have you explored \n\"dut-control ec_uart_cmd:\u003cDATA\u003e\" for transferring data?",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 0
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4106688b_7d229952",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "just curios , do you need all these parsing again, these are already handled by flash_ec",
+      "range": {
+        "startLine": 489,
+        "startChar": 4,
+        "endLine": 489,
+        "endChar": 5
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde3790e_8e3916f9",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "program",
+      "range": {
+        "startLine": 490,
+        "startChar": 8,
+        "endLine": 490,
+        "endChar": 11
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47db402a_d5d5e83a",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 498,
+        "startChar": 14,
+        "endLine": 498,
+        "endChar": 19
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7536aa7f_24b674ef",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "may be name as uart_port as in falsh_ec",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 25
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef98513_5c5b618b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "Servo EC UART port number",
+      "range": {
+        "startLine": 506,
+        "startChar": 14,
+        "endLine": 506,
+        "endChar": 44
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc4797e_43e9fee3",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "to be programmed in",
+      "range": {
+        "startLine": 514,
+        "startChar": 29,
+        "endLine": 514,
+        "endChar": 33
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d4c8a5f_dd3b9eae",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 514,
+        "startChar": 14,
+        "endLine": 514,
+        "endChar": 19
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd57996_4d7ba661",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "pass this val from flash_ec",
+      "range": {
+        "startLine": 530,
+        "startChar": 54,
+        "endLine": 530,
+        "endChar": 58
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04aea9c_fb5e419e",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-25T05:44:35Z",
+      "side": 1,
+      "message": "pass this val from flash_ec",
+      "range": {
+        "startLine": 551,
+        "startChar": 54,
+        "endLine": 551,
+        "endChar": 59
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
