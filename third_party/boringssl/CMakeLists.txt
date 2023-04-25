@@ -1,0 +1,241 @@
+# Copyright (c) 2023 The ChromiumOS Authors.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if(CONFIG_BORINGSSL_CRYPTO)
+
+zephyr_library_named(boringssl)
+zephyr_library_compile_options(-fvisibility=hidden -fno-common -std=c11)
+
+zephyr_library_compile_definitions(__TRUSTY__ OPENSSL_NO_ASM
+	BORINGSSL_IMPLEMENTATION _XOPEN_SOURCE=700)
+
+# Disable BoringSSL's checks if assert is not enabled.
+if (NOT DEFINED CONFIG_ASSERT)
+	zephyr_library_compile_definitions(NDEBUG)
+endif()
+
+# Currently BoringSSL is not as a module, so we need to provide a path to
+# sources.
+set(BORINGSSL_SOURCES ${CMAKE_BINARY_DIR}/../../../../../../third_party/boringssl)
+
+zephyr_include_directories(${BORINGSSL_SOURCES}/include)
+
+zephyr_library_sources(
+  err_data.c
+  ${BORINGSSL_SOURCES}/crypto/base64/base64.c
+  ${BORINGSSL_SOURCES}/crypto/buf/buf.c
+  ${BORINGSSL_SOURCES}/crypto/mem.c
+  ${BORINGSSL_SOURCES}/crypto/thread.c
+  ${BORINGSSL_SOURCES}/crypto/thread_none.c
+
+  ${BORINGSSL_SOURCES}/crypto/bio/bio.c
+  ${BORINGSSL_SOURCES}/crypto/bio/bio_mem.c
+  ${BORINGSSL_SOURCES}/crypto/bio/hexdump.c
+  ${BORINGSSL_SOURCES}/crypto/bio/pair.c
+  ${BORINGSSL_SOURCES}/crypto/bio/printf.c
+  ${BORINGSSL_SOURCES}/crypto/blake2/blake2.c
+  ${BORINGSSL_SOURCES}/crypto/bn_extra/bn_asn1.c
+  ${BORINGSSL_SOURCES}/crypto/bn_extra/convert.c
+  ${BORINGSSL_SOURCES}/crypto/bytestring/asn1_compat.c
+  ${BORINGSSL_SOURCES}/crypto/bytestring/ber.c
+  ${BORINGSSL_SOURCES}/crypto/bytestring/cbb.c
+  ${BORINGSSL_SOURCES}/crypto/bytestring/cbs.c
+  ${BORINGSSL_SOURCES}/crypto/bytestring/unicode.c
+  ${BORINGSSL_SOURCES}/crypto/chacha/chacha.c
+  ${BORINGSSL_SOURCES}/crypto/cipher_extra/cipher_extra.c
+  ${BORINGSSL_SOURCES}/crypto/cipher_extra/derive_key.c
+  ${BORINGSSL_SOURCES}/crypto/cipher_extra/e_aesctrhmac.c
+  ${BORINGSSL_SOURCES}/crypto/cipher_extra/e_aesgcmsiv.c
+  ${BORINGSSL_SOURCES}/crypto/cipher_extra/e_chacha20poly1305.c
+  ${BORINGSSL_SOURCES}/crypto/cipher_extra/e_des.c
+  ${BORINGSSL_SOURCES}/crypto/cipher_extra/e_null.c
+  ${BORINGSSL_SOURCES}/crypto/cipher_extra/e_rc2.c
+  ${BORINGSSL_SOURCES}/crypto/cipher_extra/e_rc4.c
+  ${BORINGSSL_SOURCES}/crypto/cipher_extra/e_tls.c
+  ${BORINGSSL_SOURCES}/crypto/cipher_extra/tls_cbc.c
+  ${BORINGSSL_SOURCES}/crypto/conf/conf.c
+  ${BORINGSSL_SOURCES}/crypto/cpu_arm.c
+  ${BORINGSSL_SOURCES}/crypto/cpu_intel.c
+  ${BORINGSSL_SOURCES}/crypto/crypto.c
+  ${BORINGSSL_SOURCES}/crypto/curve25519/curve25519.c
+  ${BORINGSSL_SOURCES}/crypto/curve25519/spake25519.c
+  ${BORINGSSL_SOURCES}/crypto/des/des.c
+  ${BORINGSSL_SOURCES}/crypto/dh_extra/dh_asn1.c
+  ${BORINGSSL_SOURCES}/crypto/dh_extra/params.c
+  ${BORINGSSL_SOURCES}/crypto/digest_extra/digest_extra.c
+  ${BORINGSSL_SOURCES}/crypto/dsa/dsa.c
+  ${BORINGSSL_SOURCES}/crypto/dsa/dsa_asn1.c
+  ${BORINGSSL_SOURCES}/crypto/ec_extra/ec_asn1.c
+  ${BORINGSSL_SOURCES}/crypto/ec_extra/ec_derive.c
+  ${BORINGSSL_SOURCES}/crypto/ec_extra/hash_to_curve.c
+  ${BORINGSSL_SOURCES}/crypto/ecdh_extra/ecdh_extra.c
+  ${BORINGSSL_SOURCES}/crypto/ecdsa_extra/ecdsa_asn1.c
+  ${BORINGSSL_SOURCES}/crypto/engine/engine.c
+  ${BORINGSSL_SOURCES}/crypto/err/err.c
+  ${BORINGSSL_SOURCES}/crypto/evp/evp.c
+  ${BORINGSSL_SOURCES}/crypto/evp/evp_asn1.c
+  ${BORINGSSL_SOURCES}/crypto/evp/evp_ctx.c
+  ${BORINGSSL_SOURCES}/crypto/evp/p_dsa_asn1.c
+  ${BORINGSSL_SOURCES}/crypto/evp/p_ec.c
+  ${BORINGSSL_SOURCES}/crypto/evp/p_ec_asn1.c
+  ${BORINGSSL_SOURCES}/crypto/evp/p_ed25519.c
+  ${BORINGSSL_SOURCES}/crypto/evp/p_ed25519_asn1.c
+  ${BORINGSSL_SOURCES}/crypto/evp/p_hkdf.c
+  ${BORINGSSL_SOURCES}/crypto/evp/p_rsa.c
+  ${BORINGSSL_SOURCES}/crypto/evp/p_rsa_asn1.c
+  ${BORINGSSL_SOURCES}/crypto/evp/p_x25519.c
+  ${BORINGSSL_SOURCES}/crypto/evp/p_x25519_asn1.c
+  ${BORINGSSL_SOURCES}/crypto/evp/pbkdf.c
+  ${BORINGSSL_SOURCES}/crypto/evp/print.c
+  ${BORINGSSL_SOURCES}/crypto/evp/scrypt.c
+  ${BORINGSSL_SOURCES}/crypto/evp/sign.c
+  ${BORINGSSL_SOURCES}/crypto/ex_data.c
+  ${BORINGSSL_SOURCES}/crypto/hkdf/hkdf.c
+  ${BORINGSSL_SOURCES}/crypto/hpke/hpke.c
+  ${BORINGSSL_SOURCES}/crypto/hrss/hrss.c
+  ${BORINGSSL_SOURCES}/crypto/lhash/lhash.c
+  ${BORINGSSL_SOURCES}/crypto/obj/obj.c
+  ${BORINGSSL_SOURCES}/crypto/obj/obj_xref.c
+  ${BORINGSSL_SOURCES}/crypto/pem/pem_all.c
+  ${BORINGSSL_SOURCES}/crypto/pem/pem_info.c
+  ${BORINGSSL_SOURCES}/crypto/pem/pem_lib.c
+  ${BORINGSSL_SOURCES}/crypto/pem/pem_oth.c
+  ${BORINGSSL_SOURCES}/crypto/pem/pem_pk8.c
+  ${BORINGSSL_SOURCES}/crypto/pem/pem_pkey.c
+  ${BORINGSSL_SOURCES}/crypto/pem/pem_x509.c
+  ${BORINGSSL_SOURCES}/crypto/pem/pem_xaux.c
+  ${BORINGSSL_SOURCES}/crypto/pkcs7/pkcs7.c
+  ${BORINGSSL_SOURCES}/crypto/pkcs7/pkcs7_x509.c
+  ${BORINGSSL_SOURCES}/crypto/pkcs8/p5_pbev2.c
+  ${BORINGSSL_SOURCES}/crypto/pkcs8/pkcs8.c
+  ${BORINGSSL_SOURCES}/crypto/pkcs8/pkcs8_x509.c
+  ${BORINGSSL_SOURCES}/crypto/poly1305/poly1305.c
+  ${BORINGSSL_SOURCES}/crypto/poly1305/poly1305_arm.c
+  ${BORINGSSL_SOURCES}/crypto/poly1305/poly1305_vec.c
+  ${BORINGSSL_SOURCES}/crypto/pool/pool.c
+  ${BORINGSSL_SOURCES}/crypto/rand_extra/deterministic.c
+  ${BORINGSSL_SOURCES}/crypto/rand_extra/forkunsafe.c
+  ${BORINGSSL_SOURCES}/crypto/rand_extra/passive.c
+  ${BORINGSSL_SOURCES}/crypto/rand_extra/rand_extra.c
+  ${BORINGSSL_SOURCES}/crypto/rc4/rc4.c
+  ${BORINGSSL_SOURCES}/crypto/refcount_c11.c
+  ${BORINGSSL_SOURCES}/crypto/refcount_lock.c
+  ${BORINGSSL_SOURCES}/crypto/rsa_extra/rsa_asn1.c
+  ${BORINGSSL_SOURCES}/crypto/rsa_extra/rsa_print.c
+  ${BORINGSSL_SOURCES}/crypto/siphash/siphash.c
+  ${BORINGSSL_SOURCES}/crypto/stack/stack.c
+  ${BORINGSSL_SOURCES}/crypto/trust_token/pmbtoken.c
+  ${BORINGSSL_SOURCES}/crypto/trust_token/trust_token.c
+  ${BORINGSSL_SOURCES}/crypto/trust_token/voprf.c
+)
+
+zephyr_library_sources_ifdef(CONFIG_BORINGSSL_CRYPTO_ASN1
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_bitstr.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_bool.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_d2i_fp.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_dup.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_gentm.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_i2d_fp.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_int.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_mbstr.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_object.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_octet.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_strex.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_strnid.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_time.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_type.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/a_utctm.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/asn1_lib.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/asn1_par.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/asn_pack.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/f_int.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/f_string.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/posix_time.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/tasn_dec.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/tasn_enc.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/tasn_fre.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/tasn_new.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/tasn_typ.c
+  ${BORINGSSL_SOURCES}/crypto/asn1/tasn_utl.c
+)
+
+zephyr_library_sources_ifdef(CONFIG_BORINGSSL_CRYPTO_X509
+  ${BORINGSSL_SOURCES}/crypto/x509/a_digest.c
+  ${BORINGSSL_SOURCES}/crypto/x509/a_sign.c
+  ${BORINGSSL_SOURCES}/crypto/x509/a_verify.c
+  ${BORINGSSL_SOURCES}/crypto/x509/algorithm.c
+  ${BORINGSSL_SOURCES}/crypto/x509/asn1_gen.c
+  ${BORINGSSL_SOURCES}/crypto/x509/i2d_pr.c
+  ${BORINGSSL_SOURCES}/crypto/x509/name_print.c
+  ${BORINGSSL_SOURCES}/crypto/x509/rsa_pss.c
+  ${BORINGSSL_SOURCES}/crypto/x509/t_crl.c
+  ${BORINGSSL_SOURCES}/crypto/x509/t_req.c
+  ${BORINGSSL_SOURCES}/crypto/x509/t_x509.c
+  ${BORINGSSL_SOURCES}/crypto/x509/t_x509a.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_att.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_cmp.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_d2.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_def.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_ext.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_lu.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_obj.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_req.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_set.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_trs.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_txt.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_v3.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_vfy.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509_vpm.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509cset.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509name.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509rset.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x509spki.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_algor.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_all.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_attrib.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_crl.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_exten.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_info.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_name.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_pkey.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_pubkey.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_req.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_sig.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_spki.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_val.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_x509.c
+  ${BORINGSSL_SOURCES}/crypto/x509/x_x509a.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/pcy_cache.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/pcy_data.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/pcy_map.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/pcy_node.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/pcy_tree.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_akey.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_akeya.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_alt.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_bcons.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_bitst.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_conf.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_cpols.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_crld.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_enum.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_extku.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_genn.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_ia5.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_info.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_int.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_lib.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_ncons.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_ocsp.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_pci.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_pcia.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_pcons.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_pmaps.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_prn.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_purp.c
+  ${BORINGSSL_SOURCES}/crypto/x509v3/v3_skey.c
+)
+
+endif()
