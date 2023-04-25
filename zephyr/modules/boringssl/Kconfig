@@ -1,0 +1,12 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config ZEPHYR_BORINGSSL_MODULE
+	bool
+
+config BORINGSSL_CRYPTO
+	bool "BoringSSL support"
+	help
+	  This option enables BoringSSL cryptography library.
+	  The library is provided as external module.
