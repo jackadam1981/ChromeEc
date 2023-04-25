@@ -695,6 +695,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2c67d2e_3456d08f",
+        "filename": "board/helipilot/dev_key.pem",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-25T05:17:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "594d5732_a37a6de1",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 32
+      },
+      "revId": "ba505fd6185980898daf14be3bd2059e036bc020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "122c4c25_ba482e82",
