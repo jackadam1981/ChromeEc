@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16db95e_3607cde9",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1833,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-25T00:37:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a99b7d1_1d68d0e8",
+      "range": {
+        "startLine": 1831,
+        "startChar": 0,
+        "endLine": 1833,
+        "endChar": 49
+      },
+      "revId": "35a4a9f050d102179ec622cb7cb74b0bc72d4632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47c53f96_479f1113",
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "+1. Lgtm otherwise.",
       "parentUuid": "47c53f96_479f1113",
+      "range": {
+        "startLine": 1835,
+        "startChar": 0,
+        "endLine": 1835,
+        "endChar": 64
+      },
+      "revId": "35a4a9f050d102179ec622cb7cb74b0bc72d4632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf9bb5b_84fb2978",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-25T00:37:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c5c5c30_671f4660",
       "range": {
         "startLine": 1835,
         "startChar": 0,
