@@ -16,6 +16,24 @@
       "message": "damu(jacuzzi) is out of flash. I\u0027ll need to add a config option for this feature.",
       "revId": "244bda27d52890652a77fab88bad60f5197631a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92f2a4af_2e73b4cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-25T19:41:52Z",
+      "side": 1,
+      "message": "Or you can simply undef some infrequently used CONFIG_CMD_* for damu. Usually, it\u0027s accepted.",
+      "parentUuid": "64ee349f_56c33bf2",
+      "revId": "244bda27d52890652a77fab88bad60f5197631a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
