@@ -1,0 +1,25 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config BORINGSSL_CRYPTO
+	bool "BoringSSL support"
+	help
+	  This option enables BoringSSL cryptography library.
+	  The library is provided as external module.
+
+if BORINGSSL_CRYPTO
+
+config BORINGSSL_CRYPTO_ASN1
+	bool "BoringSSL ASN1 support"
+	default n
+	help
+	  This option enables support for ASN1 from BoringSSL
+
+config BORINGSSL_CRYPTO_X509
+	bool "BoringSSL X509 support"
+	default n
+	help
+	  This option enables support for X509 from BoringSSL
+
+endif # BORINGSSL_CRYPTO
