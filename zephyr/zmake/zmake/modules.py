@@ -27,6 +27,7 @@ known_modules = {
     "ec": lambda name, checkout: (checkout / "src" / "platform" / "ec"),
     "nanopb": third_party_module,
     "pigweed": lambda name, checkout: (checkout / "src" / "third_party" / name),
+    "boringssl": lambda name, checkout: (checkout / "src" / "third_party" / name),
 }
 
 
