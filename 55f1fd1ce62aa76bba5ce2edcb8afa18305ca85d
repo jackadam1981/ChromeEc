@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e708d21_f1b0be97",
+        "filename": "board/helipilot/board_rw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-25T21:19:23Z",
+      "side": 1,
+      "message": "That is correct, the file is not used and the comment should get updated or removed.Not sure that the gpio_reset is specifically required but it also doesn\u0027t appear to be causing any issues. You are suggesting to investigate removing it just for optimization purposes?",
+      "parentUuid": "d0205286_7cdaa6a6",
+      "range": {
+        "startLine": 51,
+        "startChar": 50,
+        "endLine": 51,
+        "endChar": 67
+      },
+      "revId": "55f1fd1ce62aa76bba5ce2edcb8afa18305ca85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f4bd41b_d438bd46",
         "filename": "board/helipilot/gpio.inc",
         "patchSetId": 6
@@ -60,6 +84,30 @@
       "writtenOn": "2023-04-25T20:01:05Z",
       "side": 1,
       "message": "The indentation looks somewhat strange here.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 50
+      },
+      "revId": "55f1fd1ce62aa76bba5ce2edcb8afa18305ca85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c8a0be9_4981fe0e",
+        "filename": "board/helipilot/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-25T21:19:23Z",
+      "side": 1,
+      "message": "I agree completely, the indentation was created by running clang-format.py. Happy to revert back if we can ignore clang errors associated with gpio.inc files?",
+      "parentUuid": "1c7cf43a_4dc39d83",
       "range": {
         "startLine": 21,
         "startChar": 0,
