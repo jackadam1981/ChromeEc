@@ -329,6 +329,30 @@
       },
       "revId": "9a36ba83cc0d0ba989ca69e90a1d2a0832b7ffca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45daf12d_3d299e12",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-04-25T15:11:15Z",
+      "side": 1,
+      "message": "As per response from Diana, seems like I2C_INIT happens first, then I2C_INIT PRIO to pick proper drivers and configuration, then I2C_INIT POST, based on CL ID : 1772490",
+      "parentUuid": "94810eca_32935145",
+      "range": {
+        "startLine": 63,
+        "startChar": 35,
+        "endLine": 63,
+        "endChar": 53
+      },
+      "revId": "9a36ba83cc0d0ba989ca69e90a1d2a0832b7ffca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
