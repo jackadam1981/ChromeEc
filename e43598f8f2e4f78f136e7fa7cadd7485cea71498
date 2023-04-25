@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eecc90f_59fb3137",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 18
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-25T18:52:01Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually perform a retry - you\u0027re still unconditionally bumping the offset and moving to the next chunk.\n\nI think you want something like:\n```\nif rf_cont_disp !\u003d resp_bytes:\n    retry_count \u003d retry_count - 1\n    if retry_count \u003c\u003d 0:\n        logging.critical(\"...\")\n        sys.exit(1)\n    logging.info(\"Response pattern not matching, retrying offset %s\", offset)\n    continue\n```",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "e43598f8f2e4f78f136e7fa7cadd7485cea71498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10292187_4a5553cf",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 18
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-25T18:52:01Z",
+      "side": 1,
+      "message": "Same issue here - this retry logic needs to be fixed.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 38
+      },
+      "revId": "e43598f8f2e4f78f136e7fa7cadd7485cea71498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

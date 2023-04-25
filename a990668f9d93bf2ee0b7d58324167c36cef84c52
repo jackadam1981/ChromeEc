@@ -112,6 +112,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "669798c8_e6f6ab9c",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-25T18:52:01Z",
+      "side": 1,
+      "message": "At some point flash_ec will get refactored into python or some other language with a test framework.  I think it\u0027s okay for this tool to work standalone.",
+      "parentUuid": "4106688b_7d229952",
+      "range": {
+        "startLine": 489,
+        "startChar": 4,
+        "endLine": 489,
+        "endChar": 5
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fde3790e_8e3916f9",
         "filename": "util/mchp/crisis_rcvry_util.py",
         "patchSetId": 17
@@ -204,6 +228,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "161538b5_d88c78a6",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-25T18:52:01Z",
+      "side": 1,
+      "message": "When connecting a SuzyQ, the EC UART can be accessed without starting servod.  So I think it\u0027s good for this utility to work independently of servod.",
+      "parentUuid": "2ef98513_5c5b618b",
+      "range": {
+        "startLine": 506,
+        "startChar": 14,
+        "endLine": 506,
+        "endChar": 44
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bc4797e_43e9fee3",
         "filename": "util/mchp/crisis_rcvry_util.py",
         "patchSetId": 17
@@ -273,6 +321,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60f569a0_3419697f",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-25T18:52:01Z",
+      "side": 1,
+      "message": "The 9600 baud rate is a requirement by the ROM code.  I think it\u0027s better that this tool explicitly set the required rate.",
+      "parentUuid": "1cd57996_4d7ba661",
+      "range": {
+        "startLine": 530,
+        "startChar": 54,
+        "endLine": 530,
+        "endChar": 58
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b04aea9c_fb5e419e",
         "filename": "util/mchp/crisis_rcvry_util.py",
         "patchSetId": 17
@@ -284,6 +356,30 @@
       "writtenOn": "2023-04-25T05:44:35Z",
       "side": 1,
       "message": "pass this val from flash_ec",
+      "range": {
+        "startLine": 551,
+        "startChar": 54,
+        "endLine": 551,
+        "endChar": 59
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d87be679_397fe351",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-25T18:52:01Z",
+      "side": 1,
+      "message": "Is it possible for the SPI loader to support faster speeds?  That would justify adding command line parameter to set the SPI loader baud rate.\n\nIf the SPI loader is always fixed at 57600, I\u0027m good with hard-coding the rate here.",
+      "parentUuid": "b04aea9c_fb5e419e",
       "range": {
         "startLine": 551,
         "startChar": 54,
