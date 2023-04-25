@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a8cc266_3c6beed5",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 130
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-25T22:28:57Z",
+      "side": 1,
+      "message": "I think our `malloc` will return `nullptr` on failure, but it would be nice if we called `abort()` on allocation failure (see [this comment](https://boringssl.googlesource.com/boringssl/+/HEAD/API-CONVENTIONS.md#memory-allocation)). Then we get safe behavior and we don\u0027t have to worry about checking all of the allocations.\n\nFor now, can you add a test case that attempts to create a `bssl::UniquePtr` of a size that is too large to verify the behavior? As an example, you can use [this test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/malloc.c;l\u003d72-80;drc\u003da396fe189dcffcfb61c28e5548849073b8534081).\n\nTo get the crash on failure behavior, we could use `ASSERT(group.get())` instead of \n\n```\n\tif (group.get() \u003d\u003d nullptr) {\n\t\treturn EC_RES_UNAVAILABLE;\n\t}\n```",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 2
+      },
+      "revId": "eb09261773166c137126cd2e82bb425a631e7198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
