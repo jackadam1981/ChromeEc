@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73e07dbc_ed30d525",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-04-25T10:45:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4a23e654_fab9b869",
+      "range": {
+        "startLine": 290,
+        "startChar": 12,
+        "endLine": 292,
+        "endChar": 8
+      },
+      "revId": "5c4daabdbab60dee6afb823931863ecd85c593ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "428f1a27_5f793416",
