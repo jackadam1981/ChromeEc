@@ -264,6 +264,21 @@ static int ps8751_tune_mux(const struct usb_mux *mux)
 	return EC_SUCCESS;
 }
 
+static int board_anx7447_mux_set(int port, mux_state_t mux_state)
+{
+	int rv = EC_SUCCESS;
+
+	if (gpio_get_level(GPIO_CCD_MODE_ODL))
+		return rv;
+
+	CPRINTS("C%d: set AUX_SW_SEL=0x%x", port, 0xc);
+	rv = tcpc_write(port, ANX7447_REG_TCPC_AUX_SWITCH, 0xc);
+	if (rv)
+		CPRINTS("C%d: Setting AUX_SW_SEL failed", port);
+
+	return rv;
+}
+
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_PS8751] = {
 		.port_addr = USB_PD_PORT_PS8751,
@@ -273,6 +288,7 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ANX7447] = {
 		.port_addr = USB_PD_PORT_ANX7447,
 		.driver = &anx7447_usb_mux_driver,
+		.board_set = board_anx7447_mux_set,
 		.hpd_update = &anx7447_tcpc_update_hpd_status,
 	}
 };
@@ -979,6 +995,7 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+<<<<<<< HEAD   (2a8560 npcx/timer: Unroll udelay)
 void board_bc12_enable(void)
 {
 	enum gpio_signal pin;
@@ -1017,6 +1034,8 @@ void ccd_mode_isr(enum gpio_signal signal)
 	hook_call_deferred(&anx7447_set_aux_switch_data, 2 * SECOND);
 }
 
+=======
+>>>>>>> CHANGE (0cb9ec Nami: Set TCPC_AUX_SWITCH to 0xC on Port 1 on mux set)
 static void board_init(void)
 {
 	int reg;
@@ -1048,10 +1067,6 @@ static void board_init(void)
 	/* Enable pericom BC1.2 interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
-
-	/* Trigger once to set mux in case CCD cable is already connected. */
-	ccd_mode_isr(GPIO_CCD_MODE_ODL);
-	gpio_enable_interrupt(GPIO_CCD_MODE_ODL);
 
 	/* Enable Accel/Gyro interrupt for convertibles. */
 	if (sku & SKU_ID_MASK_CONVERTIBLE)
