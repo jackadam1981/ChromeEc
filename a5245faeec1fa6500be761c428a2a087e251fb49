@@ -70,6 +70,30 @@
       },
       "revId": "a5245faeec1fa6500be761c428a2a087e251fb49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44134c1d_0c3d76d5",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 56
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-25T22:43:38Z",
+      "side": 1,
+      "message": "\u003e being used to properly clear the templates on boot? \n\nNo. This was implemented before me (and before the discussion about clearing RAM). The blame shows [this CL](https://crrev.com/c/946370). It looks like it\u0027s due to the weird RAM setup for the H7. See the SRAM links [here]( https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-ram-and-flash.md#stm32h743-dartmonkey).",
+      "parentUuid": "56bdc0d5_4ec5d5f5",
+      "range": {
+        "startLine": 54,
+        "startChar": 15,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "a5245faeec1fa6500be761c428a2a087e251fb49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
