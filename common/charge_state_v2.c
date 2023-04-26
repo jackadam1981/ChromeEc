@@ -2230,7 +2230,8 @@ bool charge_prevent_power_on(bool power_button_pressed)
 
 static int battery_near_full(void)
 {
-	if (charge_get_percent() < BATTERY_LEVEL_NEAR_FULL)
+	if (DIV_ROUND_NEAREST(charge_get_display_charge(), 10) <
+	    BATTERY_LEVEL_NEAR_FULL)
 		return 0;
 
 #ifdef CONFIG_EC_EC_COMM_BATTERY_CLIENT
