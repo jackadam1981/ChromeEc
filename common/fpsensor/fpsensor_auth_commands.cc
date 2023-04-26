@@ -8,6 +8,7 @@
 /* Boringssl headers need to be included before extern "C" section. */
 #include "openssl/bn.h"
 #include "openssl/ec.h"
+#include "openssl/ecdh.h"
 #include "openssl/mem.h"
 #include "openssl/obj_mac.h"
 
@@ -30,6 +31,9 @@ extern "C" {
 #include "fpsensor_state.h"
 #include "fpsensor_utils.h"
 #include "scoped_fast_cpu.h"
+
+#include <iterator>
+#include <type_traits>
 
 /**
  * @warning |fp_buffer| contains data used by the matching algorithm that must
@@ -112,6 +116,63 @@ fill_encrypted_private_key(const EC_KEY &key, uint16_t version,
 	return encrypt_data_in_place(version, info, data, data_size);
 }
 
+enum ec_error_list
+decrypt_data(const struct ec_fp_auth_command_encryption_metadata &info,
+	     const uint8_t *enc_data, size_t enc_data_size, uint8_t *data,
+	     size_t data_size)
+{
+	uint8_t enc_key[SBP_ENC_KEY_LEN];
+	enum ec_error_list ret =
+		derive_encryption_key(enc_key, info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to derive key");
+		return EC_ERROR_INVAL;
+	}
+
+	if (enc_data_size != data_size) {
+		CPRINTS("Data size mismatch");
+		return EC_ERROR_INVAL;
+	}
+
+	ret = aes_gcm_decrypt(enc_key, SBP_ENC_KEY_LEN, data, enc_data,
+			      data_size, info.nonce, sizeof(info.nonce),
+			      info.tag, sizeof(info.tag));
+	OPENSSL_cleanse(enc_key, sizeof(enc_key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to decipher data");
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+
+bssl::UniquePtr<EC_KEY> decrypt_private_key(
+	const struct ec_fp_encrypted_private_key &encrypted_private_key)
+{
+	uint8_t privkey[sizeof(encrypted_private_key.data)];
+
+	enum ec_error_list ret = decrypt_data(encrypted_private_key.info,
+					      encrypted_private_key.data,
+					      sizeof(privkey), privkey,
+					      sizeof(privkey));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to decrypt private key");
+		return nullptr;
+	}
+
+	bssl::UniquePtr<EC_KEY> key(
+		EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
+	if (key == nullptr) {
+		return nullptr;
+	}
+
+	if (EC_KEY_oct2priv(key.get(), privkey, sizeof(privkey)) != 1) {
+		return nullptr;
+	}
+
+	return key;
+}
+
 bssl::UniquePtr<EC_KEY>
 create_ec_key_from_pubkey(const struct ec_fp_ec_public_key &pubkey)
 {
@@ -137,6 +198,24 @@ create_ec_key_from_pubkey(const struct ec_fp_ec_public_key &pubkey)
 	}
 
 	return key;
+}
+
+enum ec_error_list fill_ecdh_share_secret(const EC_KEY &private_key,
+					  const EC_KEY &public_key,
+					  uint8_t *share_secret,
+					  uint8_t share_secret_size)
+{
+	const EC_POINT *public_point = EC_KEY_get0_public_key(&public_key);
+	if (public_point == nullptr) {
+		return EC_ERROR_INVAL;
+	}
+
+	if (ECDH_compute_key_fips(share_secret, share_secret_size, public_point,
+				  &private_key) != 1) {
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
 }
 
 static enum ec_status
@@ -172,3 +251,49 @@ fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN,
 		     fp_command_establish_pairing_key_keygen, EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const ec_params_fp_establish_pairing_key_wrap *>(
+			args->params);
+	auto *r = static_cast<ec_response_fp_establish_pairing_key_wrap *>(
+		args->response);
+
+	ScopedFastCpu fast_cpu;
+
+	bssl::UniquePtr<EC_KEY> private_key =
+		decrypt_private_key(params->encrypted_private_key);
+	if (private_key == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<EC_KEY> public_key =
+		create_ec_key_from_pubkey(params->peers_pubkey);
+	if (public_key == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	enum ec_error_list ret = fill_ecdh_share_secret(
+		*private_key, *public_key, r->encrypted_pairing_key.data,
+		sizeof(r->encrypted_pairing_key.data));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pairing_key_wrap: Failed to compute ECDH share secret");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ret = encrypt_data_in_place(FP_PAIRING_KEY_ENC_METADATA_VERSION,
+				    r->encrypted_pairing_key.info,
+				    r->encrypted_pairing_key.data,
+				    sizeof(r->encrypted_pairing_key.data));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pairing_key_wrap: Failed to encrypt pairing key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP,
+		     fp_command_establish_pairing_key_wrap, EC_VER_MASK(0));
