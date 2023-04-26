@@ -23,6 +23,7 @@ extern "C" {
 }
 
 #include "fpsensor.h"
+#include "fpsensor_auth_commands.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_state.h"
 #include "fpsensor_utils.h"
@@ -31,6 +32,23 @@ extern "C" {
 BUILD_ASSERT(FP_PAIRING_KEY_LEN == SHA256_DIGEST_SIZE);
 BUILD_ASSERT(FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN == 32);
 BUILD_ASSERT(FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN == 32);
+
+/**
+ * @warning |fp_buffer| contains data used by the matching algorithm that must
+ * be released by calling fp_sensor_deinit() first. Call
+ * fp_reset_and_clear_context instead of calling this directly.
+ */
+void fp_clear_context(void)
+{
+	templ_valid = 0;
+	templ_dirty = 0;
+	OPENSSL_cleanse(fp_buffer, sizeof(fp_buffer));
+	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
+	OPENSSL_cleanse(user_id, sizeof(user_id));
+	fp_disable_positive_match_secret(&positive_match_secret_state);
+	for (uint16_t idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
+		fp_clear_finger_context(idx);
+}
 
 static enum ec_status
 fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
