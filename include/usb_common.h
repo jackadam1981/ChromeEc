@@ -128,6 +128,20 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t *const src_caps,
 		      int max_mv, uint32_t *selected_pdo);
 
 /**
+ * Find Augmented PDO index that offers the voltage range that fits between
+ * max_mv and min_mv, and max current in ma.
+ *
+ * @param src_cap_cnt
+ * @param src_caps
+ * @param max_mv maximum voltage
+ * @param min_mv minimum voltage
+ * @param selected_pdo raw pdo corresponding to index
+ * @return index of PDO within source cap packet
+ */
+int pd_find_apdo_index(uint32_t src_cap_cnt, const uint32_t *const src_caps,
+		       int max_mv, int min_mv, int ma, uint32_t *selected_pdo);
+
+/**
  * Extract power information out of a Power Data Object (PDO)
  *
  * @param pdo raw pdo to extract

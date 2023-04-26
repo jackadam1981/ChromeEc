@@ -61,6 +61,33 @@ static bool pd_get_usb_comm_capable(int port)
 	return !!(fixed_pdo & PDO_FIXED_COMM_CAP);
 }
 
+int pd_find_apdo_index(uint32_t src_cap_cnt, const uint32_t *const src_caps,
+		       int max_mv, int min_mv, int ma, uint32_t *selected_pdo)
+{
+	int i, max_apdo_mv, min_apdo_mv, max_apdo_ma;
+
+	if (!max_mv || !min_mv || !ma || (max_mv < min_mv)) {
+		return -1;
+	}
+
+	for (i = 0; i < src_cap_cnt; i++) {
+		if ((src_caps[i] & PDO_TYPE_MASK) != PDO_TYPE_AUGMENTED)
+			continue;
+		max_apdo_mv = PDO_AUG_MAX_VOLTAGE(src_caps[i]);
+		min_apdo_mv = PDO_AUG_MIN_VOLTAGE(src_caps[i]);
+		max_apdo_ma = PDO_AUG_MAX_CURRENT(src_caps[i]);
+
+		if (max_mv <= max_apdo_mv && min_mv >= min_apdo_mv &&
+		    ma <= max_apdo_ma) {
+			if (selected_pdo) {
+				*selected_pdo = src_caps[i];
+			}
+			return i;
+		}
+	}
+	return -1;
+}
+
 /*
  * Zinger implements a board specific usb policy that does not define
  * PD_MAX_VOLTAGE_MV and PD_OPERATING_POWER_MW. And in turn, does not
