@@ -16,6 +16,24 @@
       "message": "For cherry-picks to a branch, it would probably be better to have someone familiar with the branch review the change, since we don\u0027t have any context on the branch.",
       "revId": "dfe39063baaddaa4b5909e81a6af8fe47db3ec28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0f0cbb_937f3e5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-04-26T00:24:49Z",
+      "side": 1,
+      "message": "Sure. You were added automatically by gerrit cherry-pick. I\u0027ll remove you.",
+      "parentUuid": "75794679_e73e637e",
+      "revId": "dfe39063baaddaa4b5909e81a6af8fe47db3ec28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
