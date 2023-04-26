@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12525675_b133f8f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-04-26T00:56:30Z",
+      "side": 1,
+      "message": "please reconcile this patch with chromium:4358755",
+      "revId": "7ea3872770b9f6cf5c82d400274e8fb15e868c95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea13e835_46ed8361",
         "filename": "zephyr/dts/bindings/usbc/ppc/kinetic,ktu1125.yaml",
         "patchSetId": 1
