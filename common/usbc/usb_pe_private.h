@@ -99,6 +99,8 @@ enum {
 	PE_FLAGS_EPR_EXPLICIT_EXIT_FN,
 	/* Discovery disabled due to UFP/PD 2.0 constraint. */
 	PE_FLAGS_DISCOVERY_DISABLED_FN,
+	/* FLAG to note that PDO request has changed */
+	PE_FLAGS_PPS_ACTIVE_FN,
 	/* Last element */
 	PE_FLAGS_COUNT
 };
