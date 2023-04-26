@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "672f5f50_5b0ecf08",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-26T20:08:33Z",
+      "side": 1,
+      "message": "For most common code, there will be system-level test which run the things like DT translation which happens in the shim code.  And then the board tests can focus in on just serving as a unit test for the board code, essentially.  \n\nHowever, this does look like an area where we are lacking a system unit test based on our most recent winterhold coverage report.  Up to 159 more lines of coverage for us if we get zephyr/shim/src/fan.c tested!\n\nKornel, I\u0027ll leave it to your judgement whether you\u0027d want to do that as part of this work or whether we should file a bug for someone to work on it later. You can follow the instructions in `docs/code_coverage.md` if you want to verify which lines your test covers as-is",
+      "parentUuid": "0c118816_fd85a0e9",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 4
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8405381a_e29ca0f1",
         "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
         "patchSetId": 2
@@ -100,6 +124,24 @@
       "writtenOn": "2023-04-26T17:20:58Z",
       "side": 1,
       "message": "I\u0027m not familiar enough with ztest, but can these sleeps be avoided, so we don\u0027t slow down the overall test time?\n\nIs there a way to fake the `ktimer` used by `board_override_fan_control_duty()`?",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec269e6a_44a558eb",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-26T20:08:33Z",
+      "side": 1,
+      "message": "The sleeps in ztest don\u0027t actually take that real clock time, they just speed along the emulated system such that we give tasks what would be 1 second of run time (ex. so several HOOK_TICK iterations can run before our test code resumes)",
+      "parentUuid": "02a13ea9_d369c7fb",
       "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
