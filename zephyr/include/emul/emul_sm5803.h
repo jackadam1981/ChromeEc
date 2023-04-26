@@ -82,3 +82,6 @@ uint8_t sm5803_emul_get_gpio_ctrl(const struct emul *emul);
  * Register values are concatenated, with COMP1 as MSB and COMP2 as LSB.
  */
 uint16_t sm5803_emul_get_ir_comp(const struct emul *emul);
+
+/** Get the value of the CHG_MON register. */
+uint8_t sm5803_emul_get_chg_mon(const struct emul *emul);

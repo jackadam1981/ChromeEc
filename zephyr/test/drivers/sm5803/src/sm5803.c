@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery.h"
 #include "battery_smart.h"
 #include "charger.h"
 #include "driver/charger/sm5803.h"
@@ -16,10 +17,26 @@
 #include <zephyr/drivers/emul.h>
 #include <zephyr/ztest.h>
 
-#define CHARGER_NUM get_charger_num(&sm5803_drv)
-#define SM5803_EMUL EMUL_DT_GET(DT_NODELABEL(sm5803_emul))
+void sm5803_before_test(void *fixture);
 
-ZTEST_SUITE(sm5803, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
+ZTEST_SUITE(sm5803, drivers_predicate_post_main, NULL, sm5803_before_test, NULL,
+	    NULL);
+
+ZTEST(sm5803, test_sensible_ocpc_configuration)
+{
+	/*
+	 * A lot of OCPC-related code assumes there are exactly two chargers,
+	 * with IDs 0 and 1. Verify that this test's configuration yields
+	 * compatible configuration, since the driver contains some OCPC-related
+	 * code that we want to test.
+	 */
+	zassert_equal(chg_chips[CHARGER_PRIMARY].drv, &sm5803_drv);
+	zassert_equal(chg_chips[CHARGER_SECONDARY].drv, &sm5803_drv);
+}
+
+#define CHARGER_NUM CHARGER_PRIMARY
+#define SM5803_EMUL EMUL_DT_GET(DT_NODELABEL(sm5803_emul))
+#define SM5803_EMUL_SECONDARY EMUL_DT_GET(DT_NODELABEL(sm5803_emul_secondary))
 
 ZTEST(sm5803, test_chip_id)
 {
@@ -738,4 +755,53 @@ ZTEST(sm5803, test_vsys_compensation)
 					  SM5803_REG_IR_COMP1);
 	zassert_not_equal(
 		sm5803_drv.set_vsys_compensation(CHARGER_NUM, &ocpc, 0, 0), 0);
+}
+
+ZTEST(sm5803, test_vbus_sink_enable)
+{
+	uint8_t flow1, flow2, flow3;
+
+	zassert_ok(sm5803_vbus_sink_enable(CHARGER_NUM, 1));
+	sm5803_emul_get_flow_regs(SM5803_EMUL, &flow1, &flow2, &flow3);
+	zassert_equal(flow1, 0x01, "FLOW1 should be set to sink mode; was %#x", flow1);
+	zassert_equal(flow2, 0x07, "FLOW2 should enable automatic charge management; was %#x", flow2);
+
+	zassert_ok(sm5803_vbus_sink_enable(CHARGER_NUM, 0));
+	sm5803_emul_get_flow_regs(SM5803_EMUL, &flow1, &flow2, &flow3);
+	zassert_equal(flow1, 0, "FLOW1 should disable sinking; was %#x", flow1);
+	zassert_equal(flow2, 0, "FLOW2 should disable auto charge; was %#x", flow2);
+
+	/* Secondary charger has slightly different operation. */
+	zassert_ok(sm5803_vbus_sink_enable(CHARGER_SECONDARY, 1));
+	sm5803_emul_get_flow_regs(SM5803_EMUL_SECONDARY, &flow1, &flow2, &flow3);
+	zassert_equal(flow1, 0x01, "FLOW1 should be set to sink mode; was %#x", flow1);
+
+	zassert_ok(sm5803_vbus_sink_enable(CHARGER_SECONDARY, 0));
+	sm5803_emul_get_flow_regs(SM5803_EMUL_SECONDARY, &flow1, &flow2, &flow3);
+	zassert_equal(flow1, 0, "FLOW1 should disable sinking; was %#x", flow1);
+}
+
+ZTEST(sm5803, test_charge_ramp)
+{
+	int icl;
+
+	/* Enables DPM loop when ramp is requested */
+	zassert_ok(sm5803_drv.set_hw_ramp(CHARGER_NUM, 1));
+	zassert_equal(sm5803_emul_get_chg_mon(SM5803_EMUL), 1);
+	/* These functions always report these values */
+	zassert_equal(sm5803_drv.ramp_is_stable(CHARGER_NUM), 0);
+	zassert_equal(sm5803_drv.ramp_is_detected(CHARGER_NUM), 1);
+	/* Ramp limit is always the same as regular ICL */
+	zassert_ok(charger_get_input_current_limit(CHARGER_NUM, &icl));
+	zassert_equal(sm5803_drv.ramp_get_current_limit(CHARGER_NUM), icl);
+
+	/* Requesting disable turns off the DPM loop */
+	zassert_ok(sm5803_drv.set_hw_ramp(CHARGER_NUM, 0));
+	zassert_equal(sm5803_emul_get_chg_mon(SM5803_EMUL), 0);
+}
+
+void sm5803_before_test(void *fixture)
+{
+	/* Ensure the driver's cached device ID is a "typical" chip. */
+	dev_id = 3;
 }

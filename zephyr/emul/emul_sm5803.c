@@ -58,6 +58,8 @@ struct sm5803_emul_data {
 	uint8_t gpio_ctrl;
 	/** Raw values of IR_COMP_REG1 and 2 */
 	uint8_t ir_comp1, ir_comp2;
+	/** Raw value of CHG_MON register */
+	uint8_t chg_mon;
 };
 
 struct sm5803_emul_cfg {
@@ -65,7 +67,7 @@ struct sm5803_emul_cfg {
 	const struct i2c_common_emul_cfg i2c_chg;
 	const struct i2c_common_emul_cfg i2c_meas;
 	const struct i2c_common_emul_cfg i2c_test;
-	struct gpio_dt_spec interrupt_gpio;
+	const struct gpio_dt_spec *interrupt_gpio;
 };
 
 const struct gpio_dt_spec *
@@ -73,7 +75,7 @@ sm5803_emul_get_interrupt_gpio(const struct emul *emul)
 {
 	const struct sm5803_emul_cfg *cfg = emul->cfg;
 
-	return &cfg->interrupt_gpio;
+	return cfg->interrupt_gpio;
 }
 
 struct i2c_common_emul_data *sm5803_emul_get_i2c_main(const struct emul *emul)
@@ -158,8 +160,10 @@ static void update_interrupt_pin(const struct emul *emul)
 	bool pending = data->irq1 || data->irq2 || data->irq3 || data->irq4;
 
 	/* Pin goes low if any IRQ is pending. */
-	gpio_emul_input_set(cfg->interrupt_gpio.port, cfg->interrupt_gpio.pin,
-			    !pending);
+	if (cfg->interrupt_gpio != NULL) {
+		gpio_emul_input_set(cfg->interrupt_gpio->port,
+				    cfg->interrupt_gpio->pin, !pending);
+	}
 }
 
 void sm5803_emul_set_irqs(const struct emul *emul, uint8_t irq1, uint8_t irq2,
@@ -250,6 +254,13 @@ uint16_t sm5803_emul_get_ir_comp(const struct emul *emul)
 	return (data->ir_comp1 << 8) | data->ir_comp2;
 }
 
+uint8_t sm5803_emul_get_chg_mon(const struct emul *emul)
+{
+	struct sm5803_emul_data *data = emul->data;
+
+	return data->chg_mon;
+}
+
 static void sm5803_emul_reset(const struct emul *emul)
 {
 	struct sm5803_emul_data *data = emul->data;
@@ -296,10 +307,13 @@ static void sm5803_emul_reset(const struct emul *emul)
 	data->gpio_ctrl = 0x04;
 	data->ir_comp1 = 1;
 	data->ir_comp2 = 1;
+	data->chg_mon = 0;
 
 	/* Interrupt pin deasserted */
-	gpio_emul_input_set(cfg->interrupt_gpio.port, cfg->interrupt_gpio.pin,
-			    1);
+	if (cfg->interrupt_gpio != NULL) {
+		gpio_emul_input_set(cfg->interrupt_gpio->port,
+				    cfg->interrupt_gpio->pin, 1);
+	}
 }
 
 static int sm5803_main_read_byte(const struct emul *target, int reg,
@@ -431,6 +445,9 @@ static int sm5803_chg_read_byte(const struct emul *target, int reg,
 			(data->input_current_limit * ICL_LSB_MA))
 		       << 1;
 		return 0;
+	case SM5803_REG_CHG_MON_REG:
+		*val = data->chg_mon;
+		return 0;
 	case SM5803_REG_PHOT1:
 		*val = data->phot1;
 		return 0;
@@ -482,6 +499,9 @@ static int sm5803_chg_write_byte(const struct emul *target, int reg,
 		return 0;
 	case SM5803_REG_DISCH_CONF5:
 		data->disch_conf5 = val;
+		return 0;
+	case SM5803_REG_CHG_MON_REG:
+		data->chg_mon = val;
 		return 0;
 	}
 	LOG_INF("SM5803 charger page write of register %#x unhandled", reg);
@@ -630,6 +650,8 @@ static int sm5803_emul_init(const struct emul *emul,
 	return 0;
 }
 
+#define INST_HAS_IRQ(n) DT_INST_NODE_HAS_PROP(n, interrupt_gpios)
+
 #define INIT_SM5803(n)                                                           \
 	const static struct sm5803_emul_cfg sm5803_emul_cfg_##n;                 \
 	static struct sm5803_emul_data sm5803_emul_data_##n = {                \
@@ -688,7 +710,15 @@ static int sm5803_emul_init(const struct emul *emul,
 			.read_byte = &sm5803_test_read_byte,                   \
 			.write_byte = &sm5803_test_write_byte,                 \
 		},                                                             \
-	}; \
+	};								       \
+        IF_ENABLED(INST_HAS_IRQ(n), (					       \
+		const static struct gpio_dt_spec sm5803_emul_irq_##n = {       \
+			.port = DEVICE_DT_GET(DT_GPIO_CTLR(DT_DRV_INST(n),     \
+							   interrupt_gpios)),  \
+			.pin = DT_INST_GPIO_PIN(n, interrupt_gpios),           \
+			.dt_flags = DT_INST_GPIO_FLAGS(n, interrupt_gpios),    \
+		};							       \
+	))								       \
 	const static struct sm5803_emul_cfg sm5803_emul_cfg_##n = {	       \
 		.i2c_main =						       \
 			(struct i2c_common_emul_cfg){			       \
@@ -718,14 +748,13 @@ static int sm5803_emul_init(const struct emul *emul,
 				.addr = DT_INST_PROP(n, test_addr),            \
 				.data = &sm5803_emul_data_##n.i2c_test,        \
 			},                                                     \
-		.interrupt_gpio = {                                            \
-			.port = DEVICE_DT_GET(DT_GPIO_CTLR(DT_DRV_INST(n),     \
-							   interrupt_gpios)),  \
-			.pin = DT_INST_GPIO_PIN(n, interrupt_gpios),           \
-			.dt_flags = DT_INST_GPIO_FLAGS(n, interrupt_gpios),    \
-		},                                                             \
-	};     \
-	EMUL_DT_INST_DEFINE(n, sm5803_emul_init, &sm5803_emul_data_##n,          \
+		.interrupt_gpio = COND_CODE_1(				       \
+			INST_HAS_IRQ(n),				       \
+			(&sm5803_emul_irq_##n),				       \
+			(NULL)						       \
+ 		),							       \
+	};								       \
+	EMUL_DT_INST_DEFINE(n, sm5803_emul_init, &sm5803_emul_data_##n,	       \
 			    &sm5803_emul_cfg_##n, &sm5803_emul_api, NULL);
 
 DT_INST_FOREACH_STATUS_OKAY(INIT_SM5803)
