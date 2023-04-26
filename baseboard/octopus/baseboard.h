@@ -55,8 +55,21 @@
 	/* EC variant determines USB-C variant */
 	#define VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS
 
+<<<<<<< HEAD   (39bfb5 octopus: Undef CONFIG_CMD_MMAPINFO)
 	/* Allow the EC to enter deep sleep in S0 */
 	#define CONFIG_LOW_POWER_S0
+=======
+/* Allow the EC to enter deep sleep in S0 */
+#define CONFIG_LOW_POWER_S0
+
+/*
+ * Increase period to prevent false positive hangs (b/255368431).
+ * TODO(b/281584278): Reevaluate period when more data is available.
+ */
+#undef CONFIG_WATCHDOG_PERIOD_MS
+#define CONFIG_WATCHDOG_PERIOD_MS 2100
+
+>>>>>>> CHANGE (e4c1e4 octopus: Increase watchdog timeout period to 2100ms)
 #elif defined(VARIANT_OCTOPUS_EC_ITE8320)
 	 /* Flash clock must be > (50Mhz / 2) */
 	#define CONFIG_IT83XX_FLASH_CLOCK_48MHZ
