@@ -16,6 +16,143 @@
       "message": "Fix spelling",
       "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c118816_fd85a0e9",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:20:58Z",
+      "side": 1,
+      "message": "Why are we skipping this work for the fan tests, when other modules are doing it (e.g., usb).",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 4
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8405381a_e29ca0f1",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:20:58Z",
+      "side": 1,
+      "message": "Why 5s? Is this requirement defined somewhere?",
+      "range": {
+        "startLine": 101,
+        "startChar": 45,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f96792_b28d5502",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:20:58Z",
+      "side": 1,
+      "message": "Why 5600? `rpm_max` is 4800.",
+      "range": {
+        "startLine": 101,
+        "startChar": 37,
+        "endLine": 101,
+        "endChar": 41
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a13ea9_d369c7fb",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:20:58Z",
+      "side": 1,
+      "message": "I\u0027m not familiar enough with ztest, but can these sleeps be avoided, so we don\u0027t slow down the overall test time?\n\nIs there a way to fake the `ktimer` used by `board_override_fan_control_duty()`?",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a7548e_a451b13f",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:20:58Z",
+      "side": 1,
+      "message": "My understanding is that `rpm_target \u003d\u003d 0` doesn\u0027t mean it\u0027s stopped yet, just that we\u0027re intending for it to be stopped at some point.\n\nLooking at `board_override_fan_control_duty()`, it\u0027s also checking `fan_get_duty(ch) \u003d\u003d 0`, since that\u0027s the actual state of the fan.\n\nSince this test is relying on `fan_test_init()` to reset the duty value, and `fan_test_init()` also resets `rpm_target`, this line should be removed for consistency.",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29569999_e0a956ae",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:20:58Z",
+      "side": 1,
+      "message": "More than enough for what?",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca349a1b_0a6096da",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:20:58Z",
+      "side": 1,
+      "message": "How long is this test expected to take with 600 iterations of sleeps in it?\n\nDoes ztest support forcing a timer tick without having to actually sleep?",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
