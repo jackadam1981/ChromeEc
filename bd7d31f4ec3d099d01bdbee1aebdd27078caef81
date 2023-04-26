@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efaa0385_a813ca50",
+        "filename": "util/flash_ec",
+        "patchSetId": 27
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T13:43:13Z",
+      "side": 1,
+      "message": "Updated as mchp_loader",
+      "parentUuid": "3f199792_8f702c33",
+      "range": {
+        "startLine": 163,
+        "startChar": 14,
+        "endLine": 163,
+        "endChar": 20
+      },
+      "revId": "bd7d31f4ec3d099d01bdbee1aebdd27078caef81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f96635ab_d9e7433d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9898d2e_6a5a9273",
+        "filename": "util/flash_ec",
+        "patchSetId": 27
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T13:43:13Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "f96635ab_d9e7433d",
+      "range": {
+        "startLine": 164,
+        "startChar": 23,
+        "endLine": 164,
+        "endChar": 29
+      },
+      "revId": "bd7d31f4ec3d099d01bdbee1aebdd27078caef81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b3b894d_5130b4bf",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-25T18:57:04Z",
       "side": 1,
       "message": "Nit - `mchp_loader_image` so it\u0027s clear this logic is only part of the MCHP programming.",
+      "range": {
+        "startLine": 763,
+        "startChar": 9,
+        "endLine": 763,
+        "endChar": 21
+      },
+      "revId": "bd7d31f4ec3d099d01bdbee1aebdd27078caef81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29851d5d_1641f933",
+        "filename": "util/flash_ec",
+        "patchSetId": 27
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T13:43:13Z",
+      "side": 1,
+      "message": "updated as mchp_loader_image",
+      "parentUuid": "4b3b894d_5130b4bf",
       "range": {
         "startLine": 763,
         "startChar": 9,

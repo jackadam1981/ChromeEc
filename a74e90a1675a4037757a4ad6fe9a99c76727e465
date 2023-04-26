@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4642692e_c6e61f2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T13:43:13Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "6a5277ca_b75d4709",
+      "range": {
+        "startLine": 12,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "a74e90a1675a4037757a4ad6fe9a99c76727e465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c89567c2_f26c85be",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e3ad77_f1726e0d",
+        "filename": "util/flash_ec",
+        "patchSetId": 26
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T13:43:13Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "c89567c2_f26c85be",
+      "range": {
+        "startLine": 764,
+        "startChar": 1,
+        "endLine": 771,
+        "endChar": 10
+      },
+      "revId": "a74e90a1675a4037757a4ad6fe9a99c76727e465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "993d02bb_c24b671e",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-25T05:20:39Z",
       "side": 1,
       "message": "nit: use tabs",
+      "range": {
+        "startLine": 781,
+        "startChar": 2,
+        "endLine": 782,
+        "endChar": 5
+      },
+      "revId": "a74e90a1675a4037757a4ad6fe9a99c76727e465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64a5719e_048a2625",
+        "filename": "util/flash_ec",
+        "patchSetId": 26
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T13:43:13Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "993d02bb_c24b671e",
       "range": {
         "startLine": 781,
         "startChar": 2,
