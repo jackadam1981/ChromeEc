@@ -22,6 +22,30 @@
       },
       "revId": "965de31fff06b4f49ebf9887b0249344ddbff7d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba7495ed_af80fd58",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-26T18:12:08Z",
+      "side": 1,
+      "message": "+1, let\u0027s it add it to the build file. Looks like you did that in the latest version, so marking this comment resolved.",
+      "parentUuid": "7de5b0ca_ad959846",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "965de31fff06b4f49ebf9887b0249344ddbff7d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
