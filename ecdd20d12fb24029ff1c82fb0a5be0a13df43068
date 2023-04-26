@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fc5d458_7b2ebec1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-04-26T23:03:14Z",
+      "side": 1,
+      "message": "nit: You can link CLs in gerrit but writing `CL:4460056`\n\nExample and also where I learned that information: https://crrev.com/c/4388381",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "ecdd20d12fb24029ff1c82fb0a5be0a13df43068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4caa6e26_3c66044c",
         "filename": "driver/battery/smart.c",
         "patchSetId": 1
@@ -14,6 +37,30 @@
       "writtenOn": "2023-04-26T22:43:12Z",
       "side": 1,
       "message": "Does this need to be `do {} while (false)` to suck up the semicolon that will come after ADDR_FLAGS_FOR_PEC(xxx) ?",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 38
+      },
+      "revId": "ecdd20d12fb24029ff1c82fb0a5be0a13df43068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33bbc8d6_42a858ff",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-04-26T23:03:14Z",
+      "side": 1,
+      "message": "I think it just results in a null statement which I only just learned about: https://stackoverflow.com/q/5599380",
+      "parentUuid": "4caa6e26_3c66044c",
       "range": {
         "startLine": 55,
         "startChar": 8,
