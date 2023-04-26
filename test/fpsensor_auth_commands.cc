@@ -114,7 +114,11 @@ test_static enum ec_error_list test_fp_auth_command_encrypt_decrypt_data(void)
 	/* The encrypted data should not be the same as the input. */
 	TEST_ASSERT_ARRAY_NE(data, input, sizeof(data));
 
-	/* TODO(yich): Decrypt the data, and check the result is the same. */
+	uint8_t output[32];
+	TEST_EQ(decrypt_data(info, data, sizeof(data), output, sizeof(output)),
+		EC_SUCCESS, "%d");
+
+	TEST_ASSERT_ARRAY_EQ(input, output, sizeof(input));
 
 	return EC_SUCCESS;
 }
@@ -138,7 +142,16 @@ test_static enum ec_error_list test_fp_auth_command_encrypt_decrypt_key(void)
 
 	TEST_EQ(enc_key.info.struct_version, version, "%d");
 
-	/* TODO(yich): Decrypt the data, and check the result is the same. */
+	bssl::UniquePtr<EC_KEY> out_key = decrypt_private_key(enc_key);
+
+	TEST_NE(key.get(), nullptr, "%p");
+
+	uint8_t output_privkey[32];
+	TEST_EQ(EC_KEY_priv2oct(out_key.get(), output_privkey,
+				sizeof(output_privkey)),
+		sizeof(output_privkey), "%lu");
+
+	TEST_ASSERT_ARRAY_EQ(privkey, output_privkey, sizeof(privkey));
 
 	return EC_SUCCESS;
 }
@@ -226,6 +239,152 @@ test_fp_command_establish_pairing_key_keygen(void)
 	return EC_SUCCESS;
 }
 
+test_static enum ec_error_list test_fp_command_establish_pairing_key(void)
+{
+	enum ec_status rv;
+	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
+	struct ec_params_fp_establish_pairing_key_wrap wrap_params;
+	struct ec_response_fp_establish_pairing_key_wrap wrap_response;
+
+	uint8_t privkey[FP_EC_PRIVATE_KEY_LEN];
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN, 0,
+				    NULL, 0, &keygen_response,
+				    sizeof(keygen_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	memcpy(&wrap_params.encrypted_private_key.info,
+	       &keygen_response.encrypted_private_key.info,
+	       sizeof(keygen_response.encrypted_private_key.info));
+
+	memcpy(wrap_params.encrypted_private_key.data,
+	       keygen_response.encrypted_private_key.data,
+	       sizeof(keygen_response.encrypted_private_key.data));
+
+	memset(privkey, 'X', sizeof(privkey));
+
+	bssl::UniquePtr<EC_GROUP> group(
+		EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
+
+	TEST_NE(group.get(), nullptr, "%p");
+
+	bssl::UniquePtr<BIGNUM> n(
+		BN_bin2bn(privkey, FP_EC_PRIVATE_KEY_LEN, nullptr));
+
+	TEST_NE(n.get(), nullptr, "%p");
+
+	bssl::UniquePtr<EC_POINT> public_point(EC_POINT_new(group.get()));
+
+	TEST_NE(public_point.get(), nullptr, "%p");
+
+	TEST_EQ(EC_POINT_mul(group.get(), public_point.get(), n.get(), nullptr,
+			     nullptr, nullptr),
+		1, "%d");
+
+	bssl::UniquePtr<BIGNUM> x_bn(BN_new());
+
+	TEST_NE(x_bn.get(), nullptr, "%p");
+
+	bssl::UniquePtr<BIGNUM> y_bn(BN_new());
+
+	TEST_NE(y_bn.get(), nullptr, "%p");
+
+	TEST_EQ(EC_POINT_get_affine_coordinates_GFp(
+			group.get(), public_point.get(), x_bn.get(), y_bn.get(),
+			nullptr),
+		1, "%d");
+
+	TEST_EQ(BN_bn2binpad(x_bn.get(), wrap_params.peers_pubkey.x,
+			     FP_EC_PUBLIC_KEY_POINT_LEN),
+		FP_EC_PUBLIC_KEY_POINT_LEN, "%d");
+
+	TEST_EQ(BN_bn2binpad(y_bn.get(), wrap_params.peers_pubkey.y,
+			     FP_EC_PUBLIC_KEY_POINT_LEN),
+		FP_EC_PUBLIC_KEY_POINT_LEN, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP, 0,
+				    &wrap_params, sizeof(wrap_params),
+				    &wrap_response, sizeof(wrap_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_command_establish_pairing_key_fail(void)
+{
+	enum ec_status rv;
+	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
+	struct ec_params_fp_establish_pairing_key_wrap wrap_params;
+	struct ec_response_fp_establish_pairing_key_wrap wrap_response;
+
+	uint8_t privkey[FP_EC_PRIVATE_KEY_LEN];
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN, 0,
+				    NULL, 0, &keygen_response,
+				    sizeof(keygen_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	/* No encryption info. */
+	memset(&wrap_params.encrypted_private_key.info, 0,
+	       sizeof(wrap_params.encrypted_private_key.info));
+
+	memcpy(wrap_params.encrypted_private_key.data,
+	       keygen_response.encrypted_private_key.data,
+	       sizeof(keygen_response.encrypted_private_key.data));
+
+	memset(privkey, 'X', sizeof(privkey));
+
+	bssl::UniquePtr<EC_GROUP> group(
+		EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
+
+	TEST_NE(group.get(), nullptr, "%p");
+
+	bssl::UniquePtr<BIGNUM> n(
+		BN_bin2bn(privkey, FP_EC_PRIVATE_KEY_LEN, nullptr));
+
+	TEST_NE(n.get(), nullptr, "%p");
+
+	bssl::UniquePtr<EC_POINT> public_point(EC_POINT_new(group.get()));
+
+	TEST_NE(public_point.get(), nullptr, "%p");
+
+	TEST_EQ(EC_POINT_mul(group.get(), public_point.get(), n.get(), nullptr,
+			     nullptr, nullptr),
+		1, "%d");
+
+	bssl::UniquePtr<BIGNUM> x_bn(BN_new());
+
+	TEST_NE(x_bn.get(), nullptr, "%p");
+
+	bssl::UniquePtr<BIGNUM> y_bn(BN_new());
+
+	TEST_NE(y_bn.get(), nullptr, "%p");
+
+	TEST_EQ(EC_POINT_get_affine_coordinates_GFp(
+			group.get(), public_point.get(), x_bn.get(), y_bn.get(),
+			nullptr),
+		1, "%d");
+
+	TEST_EQ(BN_bn2binpad(x_bn.get(), wrap_params.peers_pubkey.x,
+			     FP_EC_PUBLIC_KEY_POINT_LEN),
+		FP_EC_PUBLIC_KEY_POINT_LEN, "%d");
+
+	TEST_EQ(BN_bn2binpad(y_bn.get(), wrap_params.peers_pubkey.y,
+			     FP_EC_PUBLIC_KEY_POINT_LEN),
+		FP_EC_PUBLIC_KEY_POINT_LEN, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP, 0,
+				    &wrap_params, sizeof(wrap_params),
+				    &wrap_response, sizeof(wrap_response));
+
+	TEST_NE(rv, EC_RES_SUCCESS, "%d");
+
+	return EC_SUCCESS;
+}
+
 } // namespace
 
 extern "C" void run_test(int argc, const char **argv)
@@ -238,5 +397,7 @@ extern "C" void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_auth_command_encrypt_decrypt_data);
 	RUN_TEST(test_fp_auth_command_encrypt_decrypt_key);
 	RUN_TEST(test_fp_command_establish_pairing_key_keygen);
+	RUN_TEST(test_fp_command_establish_pairing_key);
+	RUN_TEST(test_fp_command_establish_pairing_key_fail);
 	test_print_result();
 }
