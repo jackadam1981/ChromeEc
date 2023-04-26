@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5170e13_ccfefef5",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-26T23:22:10Z",
+      "side": 1,
+      "message": "need a CONFIG for PPS?",
+      "revId": "5c8a6b220ba226a9af8ace0892a283de3f116726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35aba1ed_5b873028",
+        "filename": "include/charger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-26T23:22:10Z",
+      "side": 1,
+      "message": "how about making it bool? return false on error or no PPS",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 18
+      },
+      "revId": "5c8a6b220ba226a9af8ace0892a283de3f116726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
