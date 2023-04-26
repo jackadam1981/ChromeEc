@@ -305,16 +305,32 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	 * request the max voltage, then select vSafe5V
 	 */
 	if (charging_allowed && max_request_allowed) {
-		/* find pdo index for max voltage we can request */
-		pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
-					      max_request_mv, &pdo);
+		if (pd_is_pps_enabled(port)) {
+			charge_get_adaptive_request(port, mv, ma);
+			pdo_index = pd_find_apdo_index(src_cap_cnt, src_caps,
+						       *mv, *mv, *ma, &pdo);
+		} else if (charge_get_adaptive_mode(port) ==
+			   CHARGE_ADAPTIVE_LEGACY) {
+			uint32_t unused2;
+
+			charge_get_adaptive_request(port, mv, ma);
+			pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
+						      *mv, &pdo);
+			pd_extract_pdo_power(src_caps[pdo_index], &unused, mv,
+					     &unused2);
+		} else {
+			/* find pdo index for max voltage we can request */
+			pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
+						      max_request_mv, &pdo);
+			pd_extract_pdo_power(src_caps[pdo_index], ma, mv,
+					     &unused);
+		}
 	} else {
 		/* src cap 0 should be vSafe5V */
 		pdo_index = 0;
 		pdo = src_caps[0];
+		pd_extract_pdo_power(src_caps[pdo_index], ma, mv, &unused);
 	}
-
-	pd_extract_pdo_power(pdo, ma, mv, &unused);
 
 	/*
 	 * Adjust VBUS current if CTVPD device was detected.
