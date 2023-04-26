@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61cfc536_45233834",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-04-26T06:53:58Z",
+      "side": 1,
+      "message": "In the bug (b:279522279) you say `cc off` should emulate DUT-side disconnect.  I agree with that, within the confines of the current `cc` interface.\n\nInstead of this, what if we changed `cc off` to remove `CC_EMCA_SERVO`, and changed the other `cc` subcommands to add it back?  (Leaving `cc emca` and `cc noemca` unchanged.)\n\nWe should really revisit the `cc` interface as a whole (b:248383961).",
+      "revId": "24b8789bebaeed7fed5d96b36d2d68bfdc90ff95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffb65643_11c75dbf",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-04-26T06:53:58Z",
+      "side": 1,
+      "message": "Did you mean to leave CC2 untouched when rp \u003d\u003d TYPEC_RP_RESERVED?  Or would the snippet below make more sense?\n\n```\n  if (cc_config \u0026 CC_EMCA_SERVO \u0026\u0026 rp !\u003d TYPEC_RP_RESERVED)\n    DUT_INACTIVE_CC_PD(RA);\n  else\n    DUT_INACTIVE_CC_OPEN(RA);\n```\n\nAlternatively, skip `DUT_INACTIVE_CC_OPEN(RA)` entirely, if we\u0027re comfortable with relying on `pd_set_rp_rd()` having set it.",
+      "revId": "24b8789bebaeed7fed5d96b36d2d68bfdc90ff95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
