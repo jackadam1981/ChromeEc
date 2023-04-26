@@ -1190,6 +1190,9 @@
 /* Provide common core code to handle the operating system timers. */
 #define CONFIG_COMMON_TIMER
 
+/* Shorten the source time to verify wrapping works correctly. */
+#undef CONFIG_DEBUG_TIMER_WRAPPING
+
 /*****************************************************************************/
 
 /*
