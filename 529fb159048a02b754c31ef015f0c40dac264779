@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58b40e63_5b5049a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:00:18Z",
+      "side": 1,
+      "message": "nit: I think it would be better to match the directory name: `winterhold`.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15991d44_4fc67df0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:00:18Z",
+      "side": 1,
+      "message": "How does this make testing easier?",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16fdcb13_f244fc39",
+        "filename": "zephyr/program/skyrim/winterhold/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:00:18Z",
+      "side": 1,
+      "message": "The other skyrim `CMakeLists.txt` use `CONFIG_PLATFORM_EC_FAN`. I understand you\u0027re using `CONFIG_PLATFORM_EC_CUSTOM_FAN_DUTY_CONTROL`, since that\u0027s what\u0027s being referenced in `shim/src/fan.c`, but the difference looks a bit odd.\n\nThis also means the file cannot be included for overriding things like `fan_init()`, since `PLATFORM_EC_CUSTOM_FAN_DUTY_CONTROL` does not depend on `PLATFORM_EC_FAN` (meaning `PLATFORM_EC_CUSTOM_FAN_DUTY_CONTROL` does not also imply `PLATFORM_EC_FAN`.",
+      "range": {
+        "startLine": 16,
+        "startChar": 29,
+        "endLine": 16,
+        "endChar": 71
+      },
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0670ecf_84c3e2b5",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:00:18Z",
+      "side": 1,
+      "message": "This split seems a bit arbitrary, since there are still a lot of fan settings in `thermal.c`, like all of the `FAN_` macros. How will it be decided which fan-related functions/macros/definitions go here versus `thermal.c`?",
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453b70c8_46d5051a",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:00:18Z",
+      "side": 1,
+      "message": "Why is this necessary?",
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b669185c_ba887beb",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-26T17:00:18Z",
+      "side": 1,
+      "message": "`CC_FAN` to match the source file name?",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 51
+      },
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
