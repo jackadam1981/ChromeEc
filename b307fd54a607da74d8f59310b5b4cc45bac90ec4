@@ -16,6 +16,24 @@
       "message": "Is this the same as https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4412089 ?",
       "revId": "b307fd54a607da74d8f59310b5b4cc45bac90ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a69fc33_b4c36cf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-04-26T20:09:28Z",
+      "side": 1,
+      "message": "yeah this is just in the prepvt cr50 branch",
+      "parentUuid": "d8f9dc85_f94c9b3c",
+      "revId": "b307fd54a607da74d8f59310b5b4cc45bac90ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
