@@ -19,6 +19,7 @@ extern "C" {
 }
 
 #include "fpsensor.h"
+#include "fpsensor_auth_commands.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_state.h"
 #include "fpsensor_utils.h"
@@ -78,28 +79,12 @@ void fp_clear_finger_context(uint16_t idx)
 			sizeof(fp_positive_match_salt[0]));
 }
 
-/**
- * @warning |fp_buffer| contains data used by the matching algorithm that must
- * be released by calling fp_sensor_deinit() first. Call
- * fp_reset_and_clear_context instead of calling this directly.
- */
-static void _fp_clear_context(void)
-{
-	templ_valid = 0;
-	templ_dirty = 0;
-	OPENSSL_cleanse(fp_buffer, sizeof(fp_buffer));
-	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
-	OPENSSL_cleanse(user_id, sizeof(user_id));
-	fp_disable_positive_match_secret(&positive_match_secret_state);
-	for (uint16_t idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
-		fp_clear_finger_context(idx);
-}
-
 void fp_reset_and_clear_context(void)
 {
 	if (fp_sensor_deinit() != EC_SUCCESS)
 		CPRINTS("Failed to deinit sensor");
-	_fp_clear_context();
+	fp_clear_context();
+	OPENSSL_cleanse(fp_buffer, sizeof(fp_buffer));
 	if (fp_sensor_init() != EC_SUCCESS)
 		CPRINTS("Failed to init sensor");
 }
