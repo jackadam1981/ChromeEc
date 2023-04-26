@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8645cd4e_c2e8a49b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "corrected",
+      "parentUuid": "b6eb4130_d395a2bb",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7572a55b_37d382e3",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-25T05:44:35Z",
       "side": 1,
       "message": "can you pls add me to bug?",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "034dca69_228bd7af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "https://partnerissuetracker.corp.google.com/issues/270944616?pli\u003d1\nalready added you into this bug",
+      "parentUuid": "7572a55b_37d382e3",
       "range": {
         "startLine": 11,
         "startChar": 6,
@@ -77,6 +125,30 @@
       "writtenOn": "2023-04-25T05:44:35Z",
       "side": 1,
       "message": "to avoid dependency on import serial have you explored \n\"dut-control ec_uart_cmd:\u003cDATA\u003e\" for transferring data?",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 0
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d50d0f_71c2461b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "we have not exposed this , as we are make use of serial which will be availble in all the python package.\nCan we provide any reference related to make use of ec_uart_cmd to send the data and receive the data.\nWe need to have the logic how to send/receive the data using this.\nas we are make use of serial to send the data/receive the data from host \u003c-\u003e EC, we are make use of handshaking process",
+      "parentUuid": "ce47b221_c2628b87",
       "range": {
         "startLine": 484,
         "startChar": 0,
@@ -134,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71e3490_8da61f35",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "669798c8_e6f6ab9c",
+      "range": {
+        "startLine": 489,
+        "startChar": 4,
+        "endLine": 489,
+        "endChar": 5
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fde3790e_8e3916f9",
@@ -147,6 +243,30 @@
       "writtenOn": "2023-04-25T05:44:35Z",
       "side": 1,
       "message": "program",
+      "range": {
+        "startLine": 490,
+        "startChar": 8,
+        "endLine": 490,
+        "endChar": 11
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4ff2d96_4ed1f821",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "added",
+      "parentUuid": "fde3790e_8e3916f9",
       "range": {
         "startLine": 490,
         "startChar": 8,
@@ -180,6 +300,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa3b6fd0_1e374971",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "47db402a_d5d5e83a",
+      "range": {
+        "startLine": 498,
+        "startChar": 14,
+        "endLine": 498,
+        "endChar": 19
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7536aa7f_24b674ef",
@@ -193,6 +337,30 @@
       "writtenOn": "2023-04-25T05:44:35Z",
       "side": 1,
       "message": "may be name as uart_port as in falsh_ec",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 25
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d4cb1e_5d53110b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "specified as uart_port",
+      "parentUuid": "7536aa7f_24b674ef",
       "range": {
         "startLine": 502,
         "startChar": 0,
@@ -250,6 +418,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d3d701b_c2effcd5",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "specified as Servo EC UART port number",
+      "parentUuid": "161538b5_d88c78a6",
+      "range": {
+        "startLine": 506,
+        "startChar": 14,
+        "endLine": 506,
+        "endChar": 44
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bc4797e_43e9fee3",
@@ -286,6 +478,54 @@
       "writtenOn": "2023-04-25T05:44:35Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 514,
+        "startChar": 14,
+        "endLine": 514,
+        "endChar": 19
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "587eb5cc_e5e7b8ba",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "Added",
+      "parentUuid": "4bc4797e_43e9fee3",
+      "range": {
+        "startLine": 514,
+        "startChar": 29,
+        "endLine": 514,
+        "endChar": 33
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e05a21_d9ec3833",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "6d4c8a5f_dd3b9eae",
       "range": {
         "startLine": 514,
         "startChar": 14,
@@ -343,6 +583,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a62eeb1_84562791",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "60f569a0_3419697f",
+      "range": {
+        "startLine": 530,
+        "startChar": 54,
+        "endLine": 530,
+        "endChar": 58
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b04aea9c_fb5e419e",
@@ -380,6 +644,30 @@
       "side": 1,
       "message": "Is it possible for the SPI loader to support faster speeds?  That would justify adding command line parameter to set the SPI loader baud rate.\n\nIf the SPI loader is always fixed at 57600, I\u0027m good with hard-coding the rate here.",
       "parentUuid": "b04aea9c_fb5e419e",
+      "range": {
+        "startLine": 551,
+        "startChar": 54,
+        "endLine": 551,
+        "endChar": 59
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8971fb2_4f542e2a",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "fixed as 57600",
+      "parentUuid": "d87be679_397fe351",
       "range": {
         "startLine": 551,
         "startChar": 54,

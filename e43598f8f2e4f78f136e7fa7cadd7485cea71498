@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55a8c5e0_cf0127a1",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 18
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "Added this logic which is correct one",
+      "parentUuid": "8eecc90f_59fb3137",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "e43598f8f2e4f78f136e7fa7cadd7485cea71498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10292187_4a5553cf",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-25T18:52:01Z",
       "side": 1,
       "message": "Same issue here - this retry logic needs to be fixed.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 38
+      },
+      "revId": "e43598f8f2e4f78f136e7fa7cadd7485cea71498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0f36be_9b795add",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 18
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-26T14:49:00Z",
+      "side": 1,
+      "message": "Added this logic which is correct one",
+      "parentUuid": "10292187_4a5553cf",
       "range": {
         "startLine": 220,
         "startChar": 0,
