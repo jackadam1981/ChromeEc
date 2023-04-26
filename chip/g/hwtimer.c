@@ -33,7 +33,11 @@
  * equivalent of approximately 0xffffffff usecs. Note that we lose 3us on
  * timer wrap due to loss of precision during division.
  */
+#ifdef CONFIG_DEBUG_TIMER_WRAPPING
+#define MAX_TIME_USEC (12 * SECOND)
+#else
 #define MAX_TIME_USEC 0xffffffff
+#endif
 #define MAX_TIME_S (MAX_TIME_USEC / SECOND)
 #define TIMELS_MAX (usecs_to_ticks(MAX_TIME_USEC))
 
