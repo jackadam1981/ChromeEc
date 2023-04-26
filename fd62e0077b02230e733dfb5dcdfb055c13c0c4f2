@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eff41b7d_dda22eea",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-04-26T23:41:15Z",
+      "side": 1,
+      "message": "nit:\nif (PD_VDO_SVDM_VERS_MAJOR(payload[0]) \u0026\u0026 PD_VDO_SVDM_VERS_MINOR(payload[0]))",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "fd62e0077b02230e733dfb5dcdfb055c13c0c4f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
