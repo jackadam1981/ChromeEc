@@ -275,6 +275,7 @@ enum pd_rx_errors {
 #define PD_T_VCONN_REAPPLIED (10 * MSEC) /* between 10ms and 20ms */
 #define PD_T_VCONN_DISCHARGE (240 * MSEC) /* between 160ms and 240ms */
 #define PD_T_SINK_EPR_KEEP_ALIVE (375 * MSEC) /* between 250ms and 500ms */
+#define PD_T_SINK_PPS_PERIODIC (10000 * MSEC) /* 10s */
 
 /*
  * Non-spec timer to prevent going Unattached if Vbus drops before a partner FRS
@@ -3596,6 +3597,9 @@ int typec_update_cc(int port);
 __override_proto enum pd_sdb_power_indicator
 board_get_pd_sdb_power_indicator(enum pd_sdb_power_state power_state);
 
+void pd_enable_pps(int port, bool enable);
+
+bool pd_is_pps_enabled(int port);
 /****************************************************************************/
 
 #endif /* __CROS_EC_USB_PD_H */
