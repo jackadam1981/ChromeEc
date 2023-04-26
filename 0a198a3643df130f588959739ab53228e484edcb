@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df0a5c69_1a5d65a7",
+        "filename": "zephyr/dts/bindings/usbc/ppc/kinetic,ktu1125.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-04-26T02:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c83d1d16_33b7084a",
+      "revId": "0a198a3643df130f588959739ab53228e484edcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4804b9ba_0689b5f1",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-28T05:09:14Z",
       "side": 1,
       "message": "This `,` needs to be removed to avoid build failures due to new changes in main branch",
+      "revId": "0a198a3643df130f588959739ab53228e484edcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71114d69_a26b4fbd",
+        "filename": "zephyr/shim/include/usbc/ppc_ktu1125.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-04-26T02:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4804b9ba_0689b5f1",
       "revId": "0a198a3643df130f588959739ab53228e484edcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
