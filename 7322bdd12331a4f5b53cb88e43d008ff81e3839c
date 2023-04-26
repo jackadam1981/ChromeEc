@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "380a41f7_1e208a23",
+        "filename": "include/fpsensor_modes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-26T23:15:07Z",
+      "side": 1,
+      "message": "This one isn\u0027t really related to the \"modes\" as the name suggests. I can\u0027t think of a great name, but how about the (overused) \"utils\": `fpsensor_utils.h`? (We actually already have that file, so you can add these to that file.)\n\nThen in a followup CL, can you change the macros in this file to functions similar to how `fp_match_success` is written? e.g., `FP_MODE_ANY_CAPTURE` becomes: `bool fp_mode_any_capture()`, etc.?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "7322bdd12331a4f5b53cb88e43d008ff81e3839c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
