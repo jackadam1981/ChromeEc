@@ -61,6 +61,33 @@ static bool pd_get_usb_comm_capable(int port)
 	return !!(fixed_pdo & PDO_FIXED_COMM_CAP);
 }
 
+int pd_find_apdo_index(uint32_t src_cap_cnt, const uint32_t *const src_caps,
+		       int max_mv, int min_mv, int ma, uint32_t *selected_pdo)
+{
+	int i, max_apdo_mv, min_apdo_mv, max_apdo_ma;
+
+	if (!max_mv || !min_mv || !ma || (max_mv < min_mv)) {
+		return -1;
+	}
+
+	for (i = 0; i < src_cap_cnt; i++) {
+		if ((src_caps[i] & PDO_TYPE_MASK) != PDO_TYPE_AUGMENTED)
+			continue;
+		max_apdo_mv = PDO_AUG_MAX_VOLTAGE(src_caps[i]);
+		min_apdo_mv = PDO_AUG_MIN_VOLTAGE(src_caps[i]);
+		max_apdo_ma = PDO_AUG_MAX_CURRENT(src_caps[i]);
+
+		if (max_mv <= max_apdo_mv && min_mv >= min_apdo_mv &&
+		    ma <= max_apdo_ma) {
+			if (selected_pdo) {
+				*selected_pdo = src_caps[i];
+			}
+			return i;
+		}
+	}
+	return -1;
+}
+
 /*
  * Zinger implements a board specific usb policy that does not define
  * PD_MAX_VOLTAGE_MV and PD_OPERATING_POWER_MW. And in turn, does not
@@ -246,7 +273,6 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	int charging_allowed;
 	int max_request_allowed;
 	uint32_t max_request_mv = pd_get_max_voltage();
-	uint32_t unused;
 
 	/*
 	 * If this port is the current charge port, or if there isn't an active
@@ -278,16 +304,35 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	 * request the max voltage, then select vSafe5V
 	 */
 	if (charging_allowed && max_request_allowed) {
-		/* find pdo index for max voltage we can request */
-		pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
-					      max_request_mv, &pdo);
+		if (pd_is_pps_enabled(port)) {
+			charge_get_adaptive_request(port, mv, ma);
+			pdo_index = pd_find_apdo_index(src_cap_cnt, src_caps,
+						       *mv, *mv, *ma, &pdo);
+		} else if (charge_get_adaptive_mode(port) ==
+			   CHARGE_ADAPTIVE_LEGACY) {
+			uint32_t unused1, unused2;
+
+			charge_get_adaptive_request(port, mv, ma);
+			pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
+						      *mv, &pdo);
+			pd_extract_pdo_power(src_caps[pdo_index], &unused1, mv,
+					     &unused2);
+		} else {
+			uint32_t unused;
+
+			/* find pdo index for max voltage we can request */
+			pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
+						      max_request_mv, &pdo);
+			pd_extract_pdo_power(src_caps[pdo_index], ma, mv,
+					     &unused);
+		}
 	} else {
+		uint32_t unused;
 		/* src cap 0 should be vSafe5V */
 		pdo_index = 0;
 		pdo = src_caps[0];
+		pd_extract_pdo_power(src_caps[pdo_index], ma, mv, &unused);
 	}
-
-	pd_extract_pdo_power(pdo, ma, mv, &unused);
 
 	/*
 	 * Adjust VBUS current if CTVPD device was detected.
@@ -355,6 +400,8 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
 		int mw = uw / 1000;
 		*rdo = RDO_BATT(pdo_index + 1, mw, max_or_min_mw, flags);
+	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
+		*rdo = PRDO_PPS(pdo_index + 1, *mv, *ma, flags);
 	} else {
 		*rdo = RDO_FIXED(pdo_index + 1, *ma, max_or_min_ma, flags);
 	}
@@ -379,8 +426,6 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 
 void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
 {
-	pd_set_src_caps(port, cnt, src_caps);
-
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 		uint32_t ma, mv, pdo, unused;
 		uint32_t max_mv = pd_get_max_voltage();

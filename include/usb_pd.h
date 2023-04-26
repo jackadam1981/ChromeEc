@@ -155,9 +155,15 @@ enum pd_rx_errors {
 	(RDO_OBJ_POS(n) | (flags) | RDO_FIXED_VAR_OP_CURR(op_ma) | \
 	 RDO_FIXED_VAR_MAX_CURR(max_ma))
 
+#define PRDO_VOLTAGE(mw) ((((mw) / 20) & 0x7FF) << 9)
+#define PRDO_OP_CURRENT(mw) ((((mw) / 50) & 0x7F) << 0)
+
 #define RDO_BATT(n, op_mw, max_mw, flags)                      \
 	(RDO_OBJ_POS(n) | (flags) | RDO_BATT_OP_POWER(op_mw) | \
 	 RDO_BATT_MAX_POWER(max_mw))
+
+#define PRDO_PPS(n, mv, op_ma, flags) \
+	(RDO_OBJ_POS(n) | (flags) | PRDO_VOLTAGE(mv) | PRDO_OP_CURRENT(op_ma))
 
 /* BDO : BIST Data Object
  * 31:28 BIST Mode
