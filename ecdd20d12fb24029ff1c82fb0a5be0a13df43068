@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4caa6e26_3c66044c",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-04-26T22:43:12Z",
+      "side": 1,
+      "message": "Does this need to be `do {} while (false)` to suck up the semicolon that will come after ADDR_FLAGS_FOR_PEC(xxx) ?",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 38
+      },
+      "revId": "ecdd20d12fb24029ff1c82fb0a5be0a13df43068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
