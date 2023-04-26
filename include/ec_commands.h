@@ -7785,14 +7785,30 @@ struct ec_fp_auth_command_encryption_metadata {
 	uint8_t tag[FP_PAIRING_KEY_TAG_BYTES];
 } __ec_align4;
 
+struct ec_fp_encrypted_private_key {
+	struct ec_fp_auth_command_encryption_metadata info;
+	uint8_t data[FP_EC_PRIVATE_KEY_LEN];
+} __ec_align4;
+
 #define EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN 0x0410
 
 struct ec_response_fp_establish_pairing_key_keygen {
 	struct ec_fp_ec_public_key pubkey;
+	struct ec_fp_encrypted_private_key encrypted_private_key;
+} __ec_align4;
+
+#define EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP 0x0411
+
+struct ec_params_fp_establish_pairing_key_wrap {
+	struct ec_fp_ec_public_key peers_pubkey;
+	struct ec_fp_encrypted_private_key encrypted_private_key;
+} __ec_align4;
+
+struct ec_response_fp_establish_pairing_key_wrap {
 	struct {
 		struct ec_fp_auth_command_encryption_metadata info;
-		uint8_t data[FP_EC_PRIVATE_KEY_LEN];
-	} __ec_align4 encrypted_private_key;
+		uint8_t data[FP_PAIRING_KEY_LEN];
+	} __ec_align4 encrypted_pairing_key;
 } __ec_align4;
 
 /*****************************************************************************/
