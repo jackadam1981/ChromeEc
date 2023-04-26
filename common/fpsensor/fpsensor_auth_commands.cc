@@ -8,6 +8,7 @@
 /* Boringssl headers need to be included before extern "C" section. */
 #include "openssl/bn.h"
 #include "openssl/ec.h"
+#include "openssl/ecdh.h"
 #include "openssl/mem.h"
 #include "openssl/obj_mac.h"
 
@@ -118,6 +119,116 @@ fill_encrypted_private_key(const EC_KEY &key, uint16_t version,
 	return inplace_encrypt_data(version, encrypted_private_key);
 }
 
+template <typename EncryptedData, typename Data>
+static enum ec_error_list decrypt_data(const EncryptedData &encrypted_data,
+				       Data &data)
+{
+	static_assert(!std::is_pointer_v<Data>,
+		      "The argument must not be a pointer.");
+
+	uint8_t enc_key[SBP_ENC_KEY_LEN];
+	enum ec_error_list ret = derive_encryption_key(
+		enc_key, encrypted_data.info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to derive key");
+		return EC_ERROR_INVAL;
+	}
+
+	memcpy(data, encrypted_data.data, sizeof(encrypted_data.data));
+
+	/* Decrypt the secret blob in-place. */
+	ret = aes_gcm_decrypt(enc_key, SBP_ENC_KEY_LEN, data, data,
+			      sizeof(data), encrypted_data.info.nonce,
+			      sizeof(encrypted_data.info.nonce),
+			      encrypted_data.info.tag,
+			      sizeof(encrypted_data.info.tag));
+	OPENSSL_cleanse(enc_key, sizeof(enc_key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to decipher data");
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+
+template <typename EncryptedPrivateKey>
+static bssl::UniquePtr<EC_KEY>
+decrypt_private_key(const EncryptedPrivateKey &encrypted_private_key)
+{
+	uint8_t privkey[sizeof(encrypted_private_key.data)];
+
+	enum ec_error_list ret = decrypt_data(encrypted_private_key, privkey);
+
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to decrypt private key");
+		return nullptr;
+	}
+
+	bssl::UniquePtr<EC_KEY> key(
+		EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
+
+	if (key == nullptr) {
+		return nullptr;
+	}
+
+	if (EC_KEY_oct2priv(key.get(), privkey, sizeof(privkey)) != 1) {
+		return nullptr;
+	}
+
+	return key;
+}
+
+template <typename Pubkey>
+static bssl::UniquePtr<EC_KEY> create_ec_key_from_pubkey(const Pubkey &pubkey)
+{
+	bssl::UniquePtr<BIGNUM> x_bn(
+		BN_bin2bn(pubkey.x, sizeof(pubkey.x), nullptr));
+
+	if (x_bn == nullptr) {
+		return nullptr;
+	}
+
+	bssl::UniquePtr<BIGNUM> y_bn(
+		BN_bin2bn(pubkey.y, sizeof(pubkey.y), nullptr));
+
+	if (y_bn == nullptr) {
+		return nullptr;
+	}
+
+	static_assert(sizeof(pubkey.x) == 32);
+	bssl::UniquePtr<EC_KEY> key(
+		EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
+
+	if (EC_KEY_set_public_key_affine_coordinates(key.get(), x_bn.get(),
+						     y_bn.get()) != 1) {
+		return nullptr;
+	}
+
+	return key;
+}
+
+template <typename ShareSecret>
+static enum ec_error_list fill_ecdh_share_secret(const EC_KEY &private_key,
+						 const EC_KEY &public_key,
+						 ShareSecret &share_secret)
+{
+	static_assert(!std::is_pointer_v<ShareSecret>,
+		      "The argument must not be a pointer.");
+
+	const EC_POINT *public_point = EC_KEY_get0_public_key(&public_key);
+
+	if (public_point == nullptr) {
+		return EC_ERROR_INVAL;
+	}
+
+	if (ECDH_compute_key_fips(share_secret, sizeof(share_secret),
+				  public_point, &private_key) != 1) {
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+
 } // namespace
 
 static enum ec_status
@@ -153,3 +264,50 @@ fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN,
 		     fp_command_establish_pairing_key_keygen, EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const ec_params_fp_establish_pairing_key_wrap *>(
+			args->params);
+	auto *r = static_cast<ec_response_fp_establish_pairing_key_wrap *>(
+		args->response);
+
+	ScopedFastCpu fast_cpu;
+
+	bssl::UniquePtr<EC_KEY> private_key =
+		decrypt_private_key(params->encrypted_private_key);
+
+	if (private_key == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<EC_KEY> public_key =
+		create_ec_key_from_pubkey(params->peers_pubkey);
+
+	if (public_key == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	enum ec_error_list ret = fill_ecdh_share_secret(
+		*private_key, *public_key, r->encrypted_pairing_key.data);
+
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pairing_key_wrap: Failed to compute ECDH share secret");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ret = inplace_encrypt_data(FP_PAIRING_KEY_ENC_METADATA_VERSION,
+				   r->encrypted_pairing_key);
+
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pairing_key_wrap: Failed to encrypt pairing key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP,
+		     fp_command_establish_pairing_key_wrap, EC_VER_MASK(0));
