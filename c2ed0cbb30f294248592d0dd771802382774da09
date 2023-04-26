@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdc383b3_0eefbe26",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-04-26T21:26:05Z",
+      "side": 1,
+      "message": "Agreed. Though in the short term it should be possible to pull this info from the DT without needing to compile in the fan code.",
+      "parentUuid": "0c118816_fd85a0e9",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 4
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8405381a_e29ca0f1",
         "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
         "patchSetId": 2
