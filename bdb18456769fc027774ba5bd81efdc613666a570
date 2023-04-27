@@ -33,6 +33,23 @@
       "message": "I neglected to publish my draft comments yesterday...  But I\u0027m aligned with Kornel on splitting the fan duty into a separate file.",
       "revId": "bdb18456769fc027774ba5bd81efdc613666a570",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fb1c209_28705fc5",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-04-27T15:12:13Z",
+      "side": 1,
+      "message": "Would `FAN_STATUS_STOPPED` make more sense here?",
+      "revId": "bdb18456769fc027774ba5bd81efdc613666a570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
