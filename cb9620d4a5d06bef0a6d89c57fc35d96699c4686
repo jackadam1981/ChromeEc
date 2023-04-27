@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ef0e01_3836d5bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-27T16:23:44Z",
+      "side": 1,
+      "message": "Great idea for integrating the TCPC GPIOs!",
+      "revId": "cb9620d4a5d06bef0a6d89c57fc35d96699c4686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c371bd3_e34e0c75",
+        "filename": "zephyr/test/drivers/nx20p348x/src/nx20p3483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-27T16:23:44Z",
+      "side": 1,
+      "message": "Should we test disable as well now that the emulator is more fully featured? \n\nI haven\u0027t thought of a good way to inject the timeout more naturally (API to the emulator to bypass TCPC maybe?), but it would be a nice-to-have if we didn\u0027t lose the timeout line coverage",
+      "revId": "cb9620d4a5d06bef0a6d89c57fc35d96699c4686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
