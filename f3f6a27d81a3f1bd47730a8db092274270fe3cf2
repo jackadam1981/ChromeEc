@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d84197a_898c8645",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-04-27T18:01:16Z",
+      "side": 1,
+      "message": "this is the output from the command:\n```\nlocalhost ~ # ectool --name\u003dcros_fp flashprotect enable\n2023-04-27T17:59:24.900338Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\n2023-04-27T17:59:25.013437Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\n2023-04-27T17:59:25.126406Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\nFlash protect flags: 0x00000001 ro_at_boot\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000001 ro_at_boot\n```",
+      "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "328c6090_ad868071",
