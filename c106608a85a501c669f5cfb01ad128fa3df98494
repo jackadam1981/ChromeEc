@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04cbe0f2_e9331d2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 135
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:15:37Z",
+      "side": 1,
+      "message": "\"These commands generate the FPMCU-side ECDH secret for pairing key.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e2ae54c_2d6c44e2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 135
+      },
+      "lineNbr": 7743,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:15:37Z",
+      "side": 1,
+      "message": "\"Pk\" is a bit ambiguous by itself. In this case it\u0027s meant to be \"pairing key\", but it could also be an abbreviation for \"private key\". Let\u0027s replace all instances of \"Pk\" with \"pairing_key\" in variable and function names to be clear.\n\nFor example:\n\n```\nFP_PAIRING_KEY_ENC_METADATA_VERSION\n```\n\n```\nec_response_fp_establish_pairing_key_keygen\n```\n\netc.",
+      "range": {
+        "startLine": 7743,
+        "startChar": 17,
+        "endLine": 7743,
+        "endChar": 19
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2fa923_788b762c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 135
+      },
+      "lineNbr": 7790,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:15:37Z",
+      "side": 1,
+      "message": "This isn\u0027t used in this CL, right? Looks like it should be part of https://crrev.com/c/4477228.",
+      "range": {
+        "startLine": 7777,
+        "startChar": 0,
+        "endLine": 7790,
+        "endChar": 0
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b122b9_40e9d37a",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 135
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:15:37Z",
+      "side": 1,
+      "message": "It looks like this is not needed for this CL and is used in followup CLs, so we can remove it from this CL.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "133c9cf0_05d23599",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 135
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:15:37Z",
+      "side": 1,
+      "message": "Since this test appears to require that the seed is not set, let\u0027s add a check in the test to make sure that the seed is not set. This will make sure that the condition holds (which could break if tests are re-ordered or run in parallel.)",
+      "range": {
+        "startLine": 62,
+        "startChar": 45,
+        "endLine": 62,
+        "endChar": 57
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
