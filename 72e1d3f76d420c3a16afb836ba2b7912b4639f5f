@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f5b849_81ccf46c",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-27T23:23:27Z",
+      "side": 1,
+      "message": "we might as well move the necessary stuff out and get rid of this file - Cr50 does not use ec_commands.",
+      "parentUuid": "26b5ed27_31964642",
+      "revId": "72e1d3f76d420c3a16afb836ba2b7912b4639f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f193a5c_52f73fcd",
