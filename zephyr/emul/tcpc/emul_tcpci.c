@@ -1145,6 +1145,7 @@ static int tcpci_emul_handle_command(const struct emul *emul)
 	struct tcpci_ctx *ctx = tcpc_data->tcpci_ctx;
 	uint16_t role_ctrl;
 	uint16_t pwr_ctrl;
+	uint16_t pwr_status;
 
 	switch (ctx->write_data & 0xff) {
 	case TCPC_REG_COMMAND_RESET_TRANSMIT_BUF:
@@ -1175,11 +1176,36 @@ static int tcpci_emul_handle_command(const struct emul *emul)
 				TCPC_REG_CC_STATUS_LOOK4CONNECTION_MASK);
 		}
 		break;
+	case TCPC_REG_COMMAND_DISABLE_VBUS_DETECT:
+		get_reg(ctx, TCPC_REG_POWER_STATUS, &pwr_status);
+		set_reg(ctx, TCPC_REG_POWER_STATUS,
+			pwr_status & (~TCPC_REG_POWER_STATUS_VBUS_DET));
+		break;
 	case TCPC_REG_COMMAND_ENABLE_VBUS_DETECT:
+		get_reg(ctx, TCPC_REG_POWER_STATUS, &pwr_status);
+		set_reg(ctx, TCPC_REG_POWER_STATUS,
+			pwr_status | TCPC_REG_POWER_STATUS_VBUS_DET);
+		break;
 	case TCPC_REG_COMMAND_SNK_CTRL_LOW:
+		get_reg(ctx, TCPC_REG_POWER_STATUS, &pwr_status);
+		set_reg(ctx, TCPC_REG_POWER_STATUS,
+			pwr_status & (~TCPC_REG_POWER_STATUS_SINKING_VBUS));
+		break;
 	case TCPC_REG_COMMAND_SNK_CTRL_HIGH:
+		get_reg(ctx, TCPC_REG_POWER_STATUS, &pwr_status);
+		set_reg(ctx, TCPC_REG_POWER_STATUS,
+			pwr_status | TCPC_REG_POWER_STATUS_SINKING_VBUS);
+		break;
 	case TCPC_REG_COMMAND_SRC_CTRL_LOW:
+		get_reg(ctx, TCPC_REG_POWER_STATUS, &pwr_status);
+		set_reg(ctx, TCPC_REG_POWER_STATUS,
+			pwr_status & (~TCPC_REG_POWER_STATUS_SOURCING_VBUS));
+		break;
 	case TCPC_REG_COMMAND_SRC_CTRL_HIGH:
+		get_reg(ctx, TCPC_REG_POWER_STATUS, &pwr_status);
+		set_reg(ctx, TCPC_REG_POWER_STATUS,
+			pwr_status | TCPC_REG_POWER_STATUS_SOURCING_VBUS);
+		break;
 	case TCPC_REG_COMMAND_I2CIDLE:
 		break;
 	default:
