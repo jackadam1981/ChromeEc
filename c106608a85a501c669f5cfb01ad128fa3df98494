@@ -49,6 +49,167 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f21e7bc2_8814469b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 135
+      },
+      "lineNbr": 7744,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:25:46Z",
+      "side": 1,
+      "message": "Why are we starting with version 3?",
+      "range": {
+        "startLine": 7744,
+        "startChar": 0,
+        "endLine": 7744,
+        "endChar": 36
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3ca243_68d0910b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 135
+      },
+      "lineNbr": 7754,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:25:46Z",
+      "side": 1,
+      "message": "I would replace this with `(FP_PK_ENC_METADATA_VERSION)`, since it may change if that constant changes.",
+      "range": {
+        "startLine": 7754,
+        "startChar": 36,
+        "endLine": 7754,
+        "endChar": 42
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87521acf_2e3c7614",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 135
+      },
+      "lineNbr": 7772,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:25:46Z",
+      "side": 1,
+      "message": "Let\u0027s make this a struct:\n\n```\nstruct pubkey {\n  uint8_t x[FP_PK_EC_PUBLIC_KEY_LEN];\n  uint8_t y[FP_PK_EC_PUBLIC_KEY_LEN];\n};\n```",
+      "range": {
+        "startLine": 7771,
+        "startChar": 1,
+        "endLine": 7772,
+        "endChar": 43
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8efaa4a6_ef1faab9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 135
+      },
+      "lineNbr": 7774,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:25:46Z",
+      "side": 1,
+      "message": "Let\u0027s make this a struct:\n\n```\nstruct encrypted_private_key {\n  struct ec_fp_pairing_key_encryption_metadata metadata;\n  uint8_t data[FP_PK_EC_PRIVATE_KEY_LEN];\n}\n```",
+      "range": {
+        "startLine": 7773,
+        "startChar": 1,
+        "endLine": 7774,
+        "endChar": 47
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b29761f_09999153",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 135
+      },
+      "lineNbr": 7774,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:25:46Z",
+      "side": 1,
+      "message": "Instead of `enc`, let\u0027s just use `encrypted`, so it\u0027s clear.",
+      "range": {
+        "startLine": 7774,
+        "startChar": 9,
+        "endLine": 7774,
+        "endChar": 12
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3633390_828340bc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 135
+      },
+      "lineNbr": 7782,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:25:46Z",
+      "side": 1,
+      "message": "Instead of `enc`, let\u0027s just use `encrypted`, so it\u0027s clear.",
+      "range": {
+        "startLine": 7782,
+        "startChar": 37,
+        "endLine": 7782,
+        "endChar": 53
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ea46ed1_b1b56fa5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 135
+      },
+      "lineNbr": 7783,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:25:46Z",
+      "side": 1,
+      "message": "Instead of `enc`, let\u0027s just use `encrypted`, so it\u0027s clear.",
+      "range": {
+        "startLine": 7783,
+        "startChar": 9,
+        "endLine": 7783,
+        "endChar": 20
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd2fa923_788b762c",
         "filename": "include/ec_commands.h",
         "patchSetId": 135
