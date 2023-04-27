@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27e7ce19_f38351bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-27T01:07:20Z",
+      "side": 1,
+      "message": "what\u0027s \"source time\"?\n\ndo you mean max value possibly read from the timer counter?",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "5236882e323eff8e34e331ad16e0c4f3cd53b16a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad19113b_f149e2d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-04-27T01:07:20Z",
+      "side": 1,
+      "message": "with a nit",
+      "revId": "5236882e323eff8e34e331ad16e0c4f3cd53b16a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
