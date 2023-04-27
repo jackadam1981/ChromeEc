@@ -699,8 +699,7 @@ void battery_validate_params(struct batt_params *batt)
 	 * incorrect results of 591.1K and 2151K, which are 318C and 1878C.
 	 * Ignore these for now.
 	 */
-	if (batt->temperature > CELSIUS_TO_DECI_KELVIN(5660) ||
-	    batt->temperature == 5911 || batt->temperature == 21510) {
+	if (batt->temperature > CELSIUS_TO_DECI_KELVIN(5660)) {
 		CPRINTS("ignoring ridiculous batt.temp of %dC",
 			DECI_KELVIN_TO_CELSIUS(batt->temperature));
 		batt->flags |= BATT_FLAG_BAD_TEMPERATURE;
