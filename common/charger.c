@@ -170,6 +170,14 @@ void print_charger_debug(int chgnum)
 	else
 		ccputs("disabled\n");
 
+	print_item_name("Actual current:");
+	if (check_print_error(charger_get_actual_current(chgnum, &d)))
+		ccprintf("%d mA\n", d);
+
+	print_item_name("Actual voltage:");
+	if (check_print_error(charger_get_actual_voltage(chgnum, &d)))
+		ccprintf("%d mV\n", d);
+
 	/* Limits */
 	ccprintf("Limits\t\t\t ( min    max  step)\n");
 
