@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a315548c_66502b2d",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2234,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-27T22:36:43Z",
+      "side": 1,
+      "message": "display_charge takes into account CONFIG_BATT_HOST_FULL_FACTOR, which is more-or-less the same as BATTERY_LEVEL_NEAR_FULL. So, this line should be:\n\n    if (charge_get_display_charge() \u003c 1000)\n\nI think we need to deprecate BATTERY_LEVEL_NEAR_FULL. It\u0027s not used elsewhere and causing confusion.\n\nFYI: display_charge is calculated at battery_compensate_params.",
+      "range": {
+        "startLine": 2233,
+        "startChar": 5,
+        "endLine": 2234,
+        "endChar": 28
+      },
+      "revId": "aa54a9fa206aba705dbbb90ceeb1c35c0f8e26ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
