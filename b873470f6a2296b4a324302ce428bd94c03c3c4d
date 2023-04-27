@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be4181e7_95b51237",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T17:55:25Z",
+      "side": 1,
+      "message": "clang-tidy: Let\u0027s use `auto` here: https://clang.llvm.org/extra/clang-tidy/checks/modernize/use-auto.html#cast-expressions",
+      "range": {
+        "startLine": 313,
+        "startChar": 1,
+        "endLine": 317,
+        "endChar": 66
+      },
+      "revId": "b873470f6a2296b4a324302ce428bd94c03c3c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4d176dd_7e74b7ef",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T17:55:25Z",
+      "side": 1,
+      "message": "Looks like we\u0027re missing the `@param` for `positive_match_secret`.",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 47
+      },
+      "revId": "b873470f6a2296b4a324302ce428bd94c03c3c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
