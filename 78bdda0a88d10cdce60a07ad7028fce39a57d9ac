@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "21b25b28_d51725d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-04-27T23:23:16Z",
+      "side": 1,
+      "message": "Thanks for catching this. You\u0027re right that the EC is sending a hard reset to PD partners and not resetting itself. I\u0027ve updated the commit message to make this more clear.",
+      "parentUuid": "e5bfb59c_fe5bf34d",
+      "range": {
+        "startLine": 10,
+        "startChar": 16,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "78bdda0a88d10cdce60a07ad7028fce39a57d9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "24a90b57_2593e6c1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
