@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5bfb59c_fe5bf34d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-04-27T23:10:57Z",
+      "side": 1,
+      "message": "that sounds like the EC is resetting.\ni assume you mean that the EC generates a hard reset PD \"message\"?",
+      "range": {
+        "startLine": 10,
+        "startChar": 16,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "78bdda0a88d10cdce60a07ad7028fce39a57d9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "24a90b57_2593e6c1",
