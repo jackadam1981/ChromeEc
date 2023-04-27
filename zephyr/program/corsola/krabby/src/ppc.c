@@ -24,7 +24,4 @@ DECLARE_HOOK(HOOK_INIT, board_usbc_init, HOOK_PRIO_POST_DEFAULT);
 
 void ppc_interrupt(enum gpio_signal signal)
 {
-	if (signal == GPIO_SIGNAL(DT_ALIAS(gpio_usb_c1_ppc_int_odl))) {
-		syv682x_interrupt(1);
-	}
 }

@@ -124,55 +124,10 @@ DECLARE_HOOK(HOOK_INIT, corsola_db_init, HOOK_PRIO_PRE_I2C);
  */
 void ps185_hdmi_hpd_mux_set(void)
 {
-	const int hpd =
-		gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_ec_dp_hpd));
-
-	if (!corsola_is_dp_muxable(USBC_PORT_C1)) {
-		return;
-	}
-
-	if (hpd && !(usb_mux_get(USBC_PORT_C1) & USB_PD_MUX_DP_ENABLED)) {
-		dp_status[USBC_PORT_C1] =
-			VDO_DP_STATUS(0, /* HPD IRQ  ... not applicable */
-				      0, /* HPD level ... not applicable */
-				      0, /* exit DP? ... no */
-				      0, /* usb mode? ... no */
-				      0, /* multi-function ... no */
-				      1, /* DP enabled ... yes */
-				      0, /* power low?  ... no */
-				      (!!DP_FLAGS_DP_ON));
-		/* update C1 virtual mux */
-		usb_mux_set(USBC_PORT_C1, USB_PD_MUX_DP_ENABLED,
-			    USB_SWITCH_DISCONNECT,
-			    0 /* polarity, don't care */);
-		CPRINTS("HDMI plug");
-	}
 }
 
 static void ps185_hdmi_hpd_deferred(void)
 {
-	const int hpd =
-		gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_ec_dp_hpd));
-
-	if (!hpd && (usb_mux_get(USBC_PORT_C1) & USB_PD_MUX_DP_ENABLED)) {
-		dp_status[USBC_PORT_C1] =
-			VDO_DP_STATUS(0, /* HPD IRQ  ... not applicable */
-				      0, /* HPD level ... not applicable */
-				      0, /* exit DP? ... no */
-				      0, /* usb mode? ... no */
-				      0, /* multi-function ... no */
-				      0, /* DP enabled ... no */
-				      0, /* power low?  ... no */
-				      (!DP_FLAGS_DP_ON));
-		usb_mux_set(USBC_PORT_C1, USB_PD_MUX_NONE,
-			    USB_SWITCH_DISCONNECT,
-			    0 /* polarity, don't care */);
-		CPRINTS("HDMI unplug");
-
-		return;
-	}
-
-	ps185_hdmi_hpd_mux_set();
 }
 DECLARE_DEFERRED(ps185_hdmi_hpd_deferred);
 
@@ -189,22 +144,4 @@ void hdmi_hpd_interrupt(enum gpio_signal signal)
 	} else {
 		hook_call_deferred(&ps185_hdmi_hpd_deferred_data, -1);
 	}
-
-	/* C0 DP is muxed, we should not send HPD to the AP */
-	if (!corsola_is_dp_muxable(USBC_PORT_C1)) {
-		if (hpd) {
-			CPRINTS("C0 port is already muxed.");
-		}
-		return;
-	}
-
-	if (hpd && !(usb_mux_get(USBC_PORT_C1) & USB_PD_MUX_DP_ENABLED)) {
-		/* set dp_aux_path_sel first, and configure the usb_mux in the
-		 * deferred hook to prevent from dead locking.
-		 */
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(dp_aux_path_sel), hpd);
-		hook_call_deferred(&ps185_hdmi_hpd_deferred_data, 0);
-	}
-
-	svdm_set_hpd_gpio(USBC_PORT_C1, hpd);
 }
