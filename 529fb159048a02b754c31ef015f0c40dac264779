@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d9261e4_c320ca3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T09:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58b40e63_5b5049a6",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15991d44_4fc67df0",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-26T17:00:18Z",
       "side": 1,
       "message": "How does this make testing easier?",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c8044a_d072a2db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T09:59:58Z",
+      "side": 1,
+      "message": "CMake is looking for fan.c file in the board derictory.\nWithout it twister fails with:\n```\nCMake Error at /home/korneld/chromiumos/src/third_party/zephyr/main/cmake/modules/extensions.cmake:424 (add_library):\n  Cannot find source file:\n\n    /home/korneld/chromiumos/src/platform/ec/zephyr/program/skyrim/winterhold/src/fan.c\n```\n\nI\u0027ve narrowed it down to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4479371/1/zephyr/test/skyrim/tests/common/CMakeLists.txt#b17, though I\u0027m not familiar enough with EC testing infrastructure to say why it\u0027s there.\nI didn\u0027t want to edit the \"common\" fan test config, hence this patch.",
+      "parentUuid": "15991d44_4fc67df0",
       "range": {
         "startLine": 10,
         "startChar": 13,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52905116_be0bfc93",
+        "filename": "zephyr/program/skyrim/winterhold/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T09:59:58Z",
+      "side": 1,
+      "message": "Good catch. I believe that the missing dependency is a bug.\nFrom what I can see `PLATFORM_EC_CUSTOM_FAN_CONTROL` has the same problem. We should add dependencies for both of them in a separate patch.\nI suppose that no one caught it before since `PLATFORM_EC_FAN` is set by default.\n\nWould you like me to open a new bug to track that?",
+      "parentUuid": "16fdcb13_f244fc39",
+      "range": {
+        "startLine": 16,
+        "startChar": 29,
+        "endLine": 16,
+        "endChar": 71
+      },
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0670ecf_84c3e2b5",
         "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
         "patchSetId": 1
@@ -89,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b255012f_bb7f35c3",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T09:59:58Z",
+      "side": 1,
+      "message": "I\u0027d argue that this belongs to fan.c because the logic here has nothing to do with thermals/sensors.\nThe input here is the current/target RPM and the result is a call to the PWM that changes fan duty.\nOn the other hand frostflow logic in \"thermal.c\" does something slightly different; It selects the target RPM based on temperature read from a sensor.\nIn my opinion this is how the distinction should be made.\nIt matches what is done in `zephyr/shim/src/fan.c`",
+      "parentUuid": "c0670ecf_84c3e2b5",
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "453b70c8_46d5051a",
         "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
         "patchSetId": 1
@@ -100,6 +190,24 @@
       "writtenOn": "2023-04-26T17:00:18Z",
       "side": 1,
       "message": "Why is this necessary?",
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "256a4dd3_92f8c696",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T09:59:58Z",
+      "side": 1,
+      "message": "It\u0027s not. This was a copy-paste oversight. I\u0027ve replaced it with correct headers.",
+      "parentUuid": "453b70c8_46d5051a",
       "revId": "529fb159048a02b754c31ef015f0c40dac264779",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -141,6 +249,30 @@
       "side": 1,
       "message": "I don\u0027t see a `CC_FAN` in the console_channel.inc file. Are you seeing it used in another file?",
       "parentUuid": "b669185c_ba887beb",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 51
+      },
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5d3af2_75dc7499",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T09:59:58Z",
+      "side": 1,
+      "message": "Yep, CC_FAN is unfortunately not a thing.\nI\u0027ve used CC_THERMAL since it feels like the closest thing.",
+      "parentUuid": "4260af16_247bd381",
       "range": {
         "startLine": 11,
         "startChar": 41,
