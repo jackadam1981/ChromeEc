@@ -75,6 +75,10 @@ baseboard_suspend_change(struct ap_power_ev_callback *cb,
 		/* Enable retimer and display backlight */
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_disable_disp_bl),
 				0);
+
+#ifdef CONFIG_BOARD_FROSTFLOW
+		msleep(300);
+#endif
 		ioex_set_level(IOEX_USB_A1_RETIMER_EN, 1);
 		/* Any retimer tuning can be done after the retimer turns on */
 		break;
