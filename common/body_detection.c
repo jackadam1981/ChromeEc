@@ -111,7 +111,7 @@ void body_detect_change_state(enum body_detect_states state, bool spoof)
 			},
 			.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID,
 		};
-		motion_sense_fifo_stage_data(&vector, NULL, 0,
+		motion_sense_fifo_stage_data(&vector, body_sensor, 0,
 					     __hw_clock_source_read());
 		motion_sense_fifo_commit_data();
 	}
