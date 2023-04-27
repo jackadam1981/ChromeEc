@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56555319_04fe58da",
+        "filename": "board/helipilot/board_rw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-27T04:41:34Z",
+      "side": 1,
+      "message": "Testing on MRider with the comment and code removed didn\u0027t cause any issues, so removed both.",
+      "parentUuid": "7e708d21_f1b0be97",
+      "range": {
+        "startLine": 51,
+        "startChar": 50,
+        "endLine": 51,
+        "endChar": 67
+      },
+      "revId": "55f1fd1ce62aa76bba5ce2edcb8afa18305ca85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f4bd41b_d438bd46",
@@ -61,6 +85,30 @@
       "writtenOn": "2023-04-25T20:01:05Z",
       "side": 1,
       "message": "nit: please remove",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "55f1fd1ce62aa76bba5ce2edcb8afa18305ca85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81782115_5ecbbb49",
+        "filename": "board/helipilot/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-27T04:41:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f4bd41b_d438bd46",
       "range": {
         "startLine": 1,
         "startChar": 3,
@@ -108,6 +156,30 @@
       "side": 1,
       "message": "I agree completely, the indentation was created by running clang-format.py. Happy to revert back if we can ignore clang errors associated with gpio.inc files?",
       "parentUuid": "1c7cf43a_4dc39d83",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 50
+      },
+      "revId": "55f1fd1ce62aa76bba5ce2edcb8afa18305ca85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b51ff01e_533ec659",
+        "filename": "board/helipilot/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-27T04:41:34Z",
+      "side": 1,
+      "message": "Suppose we can, other gpio.inc files show a more normal format which I\u0027ve reverted to",
+      "parentUuid": "8c8a0be9_4981fe0e",
       "range": {
         "startLine": 21,
         "startChar": 0,
