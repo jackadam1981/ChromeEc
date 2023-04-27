@@ -16,6 +16,29 @@
       "message": "```\nlocalhost ~ # ectool --name\u003dcros_fp flashprotect enable\n2023-04-27T17:59:24.900338Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\n2023-04-27T17:59:25.013437Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\n2023-04-27T17:59:25.126406Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\nFlash protect flags: 0x00000001 ro_at_boot\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000001 ro_at_boot\n```",
       "revId": "ed99a890e3cbd0b16c030b89bbc77698d3492322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "816ee97e_8d258903",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T20:29:43Z",
+      "side": 1,
+      "message": "Instead of using v2 directly, it\u0027s better to use the command factory to create the command because it will choose the right version to use (v2 if supported, otherwise v1): https://crrev.com/c/4409081",
+      "range": {
+        "startLine": 1769,
+        "startChar": 1,
+        "endLine": 1769,
+        "endChar": 27
+      },
+      "revId": "ed99a890e3cbd0b16c030b89bbc77698d3492322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
