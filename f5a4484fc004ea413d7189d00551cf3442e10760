@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6b17c0f_8bcce7cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-27T15:20:53Z",
+      "side": 1,
+      "message": "Just a nit.",
+      "revId": "f5a4484fc004ea413d7189d00551cf3442e10760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f92b661c_1d963e5d",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-27T15:20:53Z",
+      "side": 1,
+      "message": "Remove it? or write something meaningful?",
+      "range": {
+        "startLine": 375,
+        "startChar": 5,
+        "endLine": 375,
+        "endChar": 8
+      },
+      "revId": "f5a4484fc004ea413d7189d00551cf3442e10760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
