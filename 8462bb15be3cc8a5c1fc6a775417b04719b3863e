@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c936740e_ce438eb3",
+        "filename": "board/boxy/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-04-27T09:30:24Z",
+      "side": 1,
+      "message": "Will there be a fan in proto board? AFAIK, the pins are reserved just in case. Can you set to NC first until the fan is really required?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 40
+      },
+      "revId": "8462bb15be3cc8a5c1fc6a775417b04719b3863e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca981bc9_d25c7305",
+        "filename": "board/boxy/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-04-27T09:30:24Z",
+      "side": 1,
+      "message": "same here, keep PWM0 disabled. Enable it when it is needed.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 17
+      },
+      "revId": "8462bb15be3cc8a5c1fc6a775417b04719b3863e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
