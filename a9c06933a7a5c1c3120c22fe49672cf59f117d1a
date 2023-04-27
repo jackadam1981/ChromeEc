@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b37f1680_e3aeff27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-27T14:55:54Z",
+      "side": 1,
+      "message": "Since this is part of the baseboard code, have you been able to test on skyrim as well?",
+      "revId": "a9c06933a7a5c1c3120c22fe49672cf59f117d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3079bea_320a743a",
+        "filename": "zephyr/program/skyrim/src/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-27T14:55:54Z",
+      "side": 1,
+      "message": "nit: is deferred necessary here?",
+      "revId": "a9c06933a7a5c1c3120c22fe49672cf59f117d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
