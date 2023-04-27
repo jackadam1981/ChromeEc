@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae91221b_e16d541a",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T10:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09166fce_c8aa6067",
+      "range": {
+        "startLine": 69,
+        "startChar": 12,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c118816_fd85a0e9",
@@ -138,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d663618d_39c22b85",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T10:00:37Z",
+      "side": 1,
+      "message": "Using DT and covering part of the fan framework was my first approach too.\n\nIncluding a DT note with `cros-ec,fans` compat pulls the fan framework files into build.\nUnfortunately it seems that the testing framework doesn\u0027t mock enough to get `common/fan.c` to build:\n```\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real: app/libapp.a(fan.c.obj): in function `pwm_fan_init\u0027:\n/home/korneld/chromiumos/src/platform/ec/common/fan.c:566: undefined reference to `host_get_memmap\u0027\n```\n\nSo testing the entire fan framework is a much bigger ask.\nI agree with Keith that we should open a separate bug to track the effort for that.",
+      "parentUuid": "32bf8fc2_d2e2b9e8",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 4
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8405381a_e29ca0f1",
         "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
         "patchSetId": 2
@@ -182,6 +230,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06805ef_58648e51",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T10:00:37Z",
+      "side": 1,
+      "message": "Good point. Technically the fan can do 5600, but on winterhold it\u0027s clamped to 4800 due to noise concerns. That\u0027s where that number came from. I\u0027ve changed it to 4800 since it\u0027s more correct.",
+      "parentUuid": "64f96792_b28d5502",
+      "range": {
+        "startLine": 101,
+        "startChar": 37,
+        "endLine": 101,
+        "endChar": 41
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9890dcc_19790de2",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T10:00:37Z",
+      "side": 1,
+      "message": "I\u0027ve taken it from https://b.corp.google.com/issues/276577324#comment58.\nSince the code is public I decided not to give too much details here.",
+      "parentUuid": "8405381a_e29ca0f1",
+      "range": {
+        "startLine": 101,
+        "startChar": 45,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fd4d59f_8f49060e",
@@ -195,6 +291,30 @@
       "writtenOn": "2023-04-26T22:05:47Z",
       "side": 1,
       "message": "This test should verify that the `fan_set_duty()` call gets called multiple times and applied some ramping.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1606f99e_aec31764",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T10:00:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I can agree with that.\nMy intention behind this test is to leave the implementation freedom of how the fan duty is increased.\nThe ramping is verified in the assert, i.e. if the implementation didn\u0027t ramp up the fan the fan_tick won\u0027t update the RPM.\n\nIn other words in this test case I only want to verify that the RPM reaches the target in a timely matter.",
+      "parentUuid": "4fd4d59f_8f49060e",
       "range": {
         "startLine": 102,
         "startChar": 0,
@@ -240,6 +360,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5fe6f41_1d38122a",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T10:00:37Z",
+      "side": 1,
+      "message": "Based on Diana comment using sleep should be fine then.",
+      "parentUuid": "ec269e6a_44a558eb",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54a7548e_a451b13f",
@@ -259,6 +397,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ee8b758_b1e5f6a0",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T10:00:37Z",
+      "side": 1,
+      "message": "```\nMy understanding is that rpm_target \u003d\u003d 0 doesn\u0027t mean it\u0027s stopped yet, just that we\u0027re intending for it to be stopped at some point.\n```\n\nCorrect.\n\n```\nSince this test is relying on fan_test_init() to reset the duty value, and fan_test_init() also resets rpm_target, this line should be removed for consistency.\n```\n\nI\u0027d actually prefer to leave it here for the sake of consistency.\nIn other tests the rpm_target is set explicitly to indicate how we want the state of the fan to be changed.",
+      "parentUuid": "54a7548e_a451b13f",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29569999_e0a956ae",
         "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
         "patchSetId": 2
@@ -270,6 +426,24 @@
       "writtenOn": "2023-04-26T17:20:58Z",
       "side": 1,
       "message": "More than enough for what?",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e820898b_ab50b11c",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T10:00:37Z",
+      "side": 1,
+      "message": "The logic is expected to detect that it can\u0027t achieve the requested RPM and indicate that by returning FAN_STATUS_FRUSTRATED.\nI\u0027ve updated the comment.",
+      "parentUuid": "29569999_e0a956ae",
       "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -305,6 +479,24 @@
       "side": 1,
       "message": "Without the sleep, no other threads run.\nhttps://docs.zephyrproject.org/latest/boards/posix/doc/arch_soc.html#posix-arch-limitations\n\nIn this case other threads probably don\u0027t need to run since this test directly calls both `board_override_fan_control_duty()` and `fan_tick()`.  But it\u0027s better practice to avoid busy wait loops.",
       "parentUuid": "ca349a1b_0a6096da",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20b326b0_beb1163d",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T10:00:37Z",
+      "side": 1,
+      "message": "All I need to do is to emulate a \"tick\".\n`board_override_fan_control_duty` has it\u0027s own k_timer that has to be advanced between subsequent calls.\nNot sure if there is a better way to do this than k_sleep.\n\nKeith,\nIs k_sleep the correct option here?",
+      "parentUuid": "cab9cba9_6bc6d2f7",
       "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
