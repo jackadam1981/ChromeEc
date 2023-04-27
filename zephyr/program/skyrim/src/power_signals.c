@@ -51,6 +51,18 @@ const struct prochot_cfg prochot_cfg = {
 	.callback = handle_prochot,
 };
 
+void baseboard_a1_retimer_gpio_enable(void)
+{
+	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 1);
+}
+DECLARE_DEFERRED(baseboard_a1_retimer_gpio_enable);
+
+void baseboard_a1_retimer_gpio_disable(void)
+{
+	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 0);
+}
+DECLARE_DEFERRED(baseboard_a1_retimer_gpio_disable);
+
 /* Chipset hooks */
 static void baseboard_suspend_change(struct ap_power_ev_callback *cb,
 				     struct ap_power_ev_data data)
@@ -63,14 +75,15 @@ static void baseboard_suspend_change(struct ap_power_ev_callback *cb,
 		/* Disable display backlight and retimer */
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_disable_disp_bl),
 				1);
-		ioex_set_level(IOEX_USB_A1_RETIMER_EN, 0);
+		hook_call_deferred(&baseboard_a1_retimer_gpio_disable_data, 0);
 		break;
 
 	case AP_POWER_RESUME:
 		/* Enable retimer and display backlight */
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_disable_disp_bl),
 				0);
-		ioex_set_level(IOEX_USB_A1_RETIMER_EN, 1);
+		hook_call_deferred(&baseboard_a1_retimer_gpio_enable_data,
+				   1000 * MSEC);
 		/* Any retimer tuning can be done after the retimer turns on */
 		break;
 	}
