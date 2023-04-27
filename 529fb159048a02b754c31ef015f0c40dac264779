@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f19d157_9b49e4e7",
+        "filename": "zephyr/program/skyrim/winterhold/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T15:27:07Z",
+      "side": 1,
+      "message": "Sure, I can add the dependency.\nI\u0027d also like to use this opportunity to do the same with `PLATFORM_EC_CUSTOM_FAN_CONTROL`.\n\nI\u0027m not sure if renaming is a good idea though.\nSee https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4479371/comment/15991d44_4fc67df0.",
+      "parentUuid": "010c6794_deb55a0a",
+      "range": {
+        "startLine": 16,
+        "startChar": 29,
+        "endLine": 16,
+        "endChar": 71
+      },
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0670ecf_84c3e2b5",
         "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
         "patchSetId": 1
@@ -215,6 +239,24 @@
       "side": 1,
       "message": "`thermal.c` sets the policy to map temperature ranges to fan actions, while this file manages the setting the fan speed.\n\nEventually this file will be eliminated once a shared PID algorithm gets implemented.  All the `struct ec_thermal_config` arrays in `thermal.c` will  still be used with the fan control.",
       "parentUuid": "c0670ecf_84c3e2b5",
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "264f8a0b_05a082ca",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-27T15:27:07Z",
+      "side": 1,
+      "message": "```\nEventually this file will be eliminated once a shared PID algorithm gets implemented. All the struct ec_thermal_config arrays in thermal.c will still be used with the fan control.\n```\n\nI don\u0027t think that\u0027s the case. The PID controls fan duty based on current and target RPM. My intention is to use it as an alternative to `fan_smart_control`.\nThe logic that sets target RPM based on sensor readings is a separate thing.",
+      "parentUuid": "73d5bf14_2c0f9094",
       "revId": "529fb159048a02b754c31ef015f0c40dac264779",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
