@@ -33,6 +33,24 @@
       "message": "isl9241.c also checks charge_get_state() \u003d\u003d PWR_STATE_CHARGE_NEAR_FULL. So, this needs to be rephrased.",
       "revId": "ecfe2874861602aedd08d015b099858722083961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e348811e_5ecabaaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-04-27T02:29:03Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\ndo you mean I should update the commit message?\n\nI think this change has no harm for the feature `isl9241_restart_charge_voltage_when_full` in isl9241.c so I just update the commit message.\nWhat is your suggestion?",
+      "parentUuid": "25dd1b64_b9ad7ef7",
+      "revId": "ecfe2874861602aedd08d015b099858722083961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
