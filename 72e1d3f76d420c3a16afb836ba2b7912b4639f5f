@@ -180,6 +180,30 @@
       },
       "revId": "72e1d3f76d420c3a16afb836ba2b7912b4639f5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2da3865_fb522295",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-04-27T22:27:06Z",
+      "side": 1,
+      "message": "iiuc __hw_clock_source_read() resets every time we overflow u32 (so, every 2^32 usec ~\u003d 1.2 hr). when we reach the overflow point, i.e. the timer ticking from MAX reaches 0, __hw_clock_source_irq() is called, which resets the timer (and __hw_clock_source_read() starts returning low values again) and calls process_timers(overflow\u003d1) to increment the upper half. \n\nafter this CL, we now also call save_seconds_since_cold_boot() in __hw_clock_source_irq(), which will add MAX_TIME_S (as overflow_s) to the previously stored value to account for the full timer cycle.\n\nthis IRQ happens and wakes us up ~ every hour even in deep sleep, so seconds_since_cold_boot keep increasing. and we also save the accumulated seconds right after deep sleep before we reset the timer to MAX (__hw_clock_source_read to 0), which we do on every boot - cold or deep sleep resume. which makes sure that we don\u0027t lose the time accumulated in the last hour of deep sleep.\n\nwe also rely ion the fact that SCRATCHPAD23 is reset to 0 on cold boot, so when we read it there for the 1st time the previous value for seconds_since_cold_boot will be 0.\n\nand we don\u0027t want to modify the original time function that resets after every reset or deep sleep to avoid introducing some regression. so instead we create this new seconds_since_cold_boot based in SCRATCHPAD23 for features that need it.",
+      "parentUuid": "919f46f2_f0abf53f",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 63
+      },
+      "revId": "72e1d3f76d420c3a16afb836ba2b7912b4639f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

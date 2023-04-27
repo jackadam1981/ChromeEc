@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da85ccd_c06aa8e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-04-27T22:27:06Z",
+      "side": 1,
+      "message": "lgtm but please let Vadim comment \u0026 approve",
+      "revId": "e76033dee20bc5dab4fe376dbb0286a8bca9f31d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b200dd10_7459901b",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-04-27T22:27:06Z",
+      "side": 1,
+      "message": "yes, I see that\u0027s how we check for resume from deep sleep in other places",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 55
+      },
+      "revId": "e76033dee20bc5dab4fe376dbb0286a8bca9f31d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
