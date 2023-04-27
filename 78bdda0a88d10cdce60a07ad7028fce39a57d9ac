@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24a90b57_2593e6c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-04-27T22:52:06Z",
+      "side": 1,
+      "message": "Hi Albin and Jeremey, can you help me review this change.\n\nWe currently have a Vconn swap policy issue in Rex that leads the EC to hard reset connected USB PD devices on boot. The timing of this hard reset leads to some enumeration and mode entry issues for devices connected at boot.\n\nAblin,\nI updated the Vconn swap policy to depend on a power signal coming from the power sequencer. This seems similar to Brya, where we check a GPIO signal coming from the power sequencer. Can help check that the `pd_check_vconn_swap` change in usb_pd_policy.c is checking an appropriate power signal?\n\nJeremy,\nbecause I updated our PD policy to depend on a power signal in this CL, there are a handful of updates to the `usb_pd_policy.c` tests. Can you help take a look at those changes? It looks kind of like what you suggested in this comment https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3956154/comment/ad453fe8_ab57a963/\n\nLet me know if you have any questions.\n\nThanks,\nJameson",
+      "revId": "78bdda0a88d10cdce60a07ad7028fce39a57d9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
