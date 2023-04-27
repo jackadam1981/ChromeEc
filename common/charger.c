@@ -191,6 +191,16 @@ void print_charger_debug(int chgnum)
 		ccprintf("\t%5d mA (%4d - %5d, %3d)\n", d,
 			 info->input_current_min, info->input_current_max,
 			 info->input_current_step);
+
+	ccprintf("Actual\n");
+
+	print_item_name("chg_current:");
+	if (check_print_error(charger_get_actual_current(chgnum, &d)))
+		ccprintf("\t%5d mA\n", d);
+
+	print_item_name("chg_voltage:");
+	if (check_print_error(charger_get_actual_voltage(chgnum, &d)))
+		ccprintf("\t%5d mV\n", d);
 }
 
 void print_charger_prochot(int chgnum)
