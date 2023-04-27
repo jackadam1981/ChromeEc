@@ -52,6 +52,24 @@
       "parentUuid": "aab0158d_293d2dee",
       "revId": "852f363e248a4759b621ac6aff729be39ac285bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46b55c90_5eb33dae",
+        "filename": "zephyr/program/skyrim/crystaldrift/src/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-27T15:27:12Z",
+      "side": 1,
+      "message": "Yes.  This would be more efficient and deterministic than running once per second",
+      "parentUuid": "d8371d93_ddf4e61e",
+      "revId": "852f363e248a4759b621ac6aff729be39ac285bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
