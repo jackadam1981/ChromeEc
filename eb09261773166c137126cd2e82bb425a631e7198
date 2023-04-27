@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8526b39_79beb11c",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 130
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-27T18:02:44Z",
+      "side": 1,
+      "message": "For fingerprint boards, we always have `CONFIG_DEBUG_ASSERT` enabled, but let\u0027s just leave it as-is for now.",
+      "parentUuid": "d7419aed_2bd0585f",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 2
+      },
+      "revId": "eb09261773166c137126cd2e82bb425a631e7198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ca69a30_5e6dc1ce",
