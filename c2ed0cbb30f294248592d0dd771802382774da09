@@ -280,6 +280,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebaff00e_45574c53",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-27T16:31:48Z",
+      "side": 1,
+      "message": "There needs to be a description here for why 5s was chosen. Otherwise, if the test fails in the future, whoever is working on the bug will have no idea where that value came from, if it\u0027s safe to modify, and what acceptable values are.",
+      "parentUuid": "e9890dcc_19790de2",
+      "range": {
+        "startLine": 101,
+        "startChar": 45,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "295a9b0d_818d00b9",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-27T16:31:48Z",
+      "side": 1,
+      "message": "Please point to where this value comes from in the source code, so future test writers can know where to look for other boards.",
+      "parentUuid": "b06805ef_58648e51",
+      "range": {
+        "startLine": 101,
+        "startChar": 37,
+        "endLine": 101,
+        "endChar": 41
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fd4d59f_8f49060e",
         "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
         "patchSetId": 2
@@ -315,6 +363,30 @@
       "side": 1,
       "message": "I\u0027m not sure if I can agree with that.\nMy intention behind this test is to leave the implementation freedom of how the fan duty is increased.\nThe ramping is verified in the assert, i.e. if the implementation didn\u0027t ramp up the fan the fan_tick won\u0027t update the RPM.\n\nIn other words in this test case I only want to verify that the RPM reaches the target in a timely matter.",
       "parentUuid": "4fd4d59f_8f49060e",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59e2cc36_75341fa2",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-27T16:31:48Z",
+      "side": 1,
+      "message": "The source of the original bug is that the fan oscillates, which is annoying to users.\n\nHow are we validating that the fan reaches the desired RPM, but also in a way that matches the intended design? Meaning, that the RPMs climb steadily and stay there, rather than oscillating in a way that would generate feedback reports.",
+      "parentUuid": "1606f99e_aec31764",
       "range": {
         "startLine": 102,
         "startChar": 0,
@@ -409,6 +481,24 @@
       "side": 1,
       "message": "```\nMy understanding is that rpm_target \u003d\u003d 0 doesn\u0027t mean it\u0027s stopped yet, just that we\u0027re intending for it to be stopped at some point.\n```\n\nCorrect.\n\n```\nSince this test is relying on fan_test_init() to reset the duty value, and fan_test_init() also resets rpm_target, this line should be removed for consistency.\n```\n\nI\u0027d actually prefer to leave it here for the sake of consistency.\nIn other tests the rpm_target is set explicitly to indicate how we want the state of the fan to be changed.",
       "parentUuid": "54a7548e_a451b13f",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9aabbae_8f8ffb36",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-27T16:31:48Z",
+      "side": 1,
+      "message": "This test is validating the state of the fan, not the **intended** state of the fan.\n\nIf you\u0027d like to keep the `rpm_target` line, then explicitly setting the `duty` should be added as well. Otherwise, it will be confusing for future maintainers of this code if there are failures.",
+      "parentUuid": "6ee8b758_b1e5f6a0",
       "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
