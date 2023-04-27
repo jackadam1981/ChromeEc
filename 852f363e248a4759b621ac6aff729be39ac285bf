@@ -34,6 +34,24 @@
       "message": "Why use a HOOK_SECOND as opposed to one of the CHIPSET hooks to trigger this change?",
       "revId": "852f363e248a4759b621ac6aff729be39ac285bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8371d93_ddf4e61e",
+        "filename": "zephyr/program/skyrim/crystaldrift/src/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-04-27T02:12:04Z",
+      "side": 1,
+      "message": "Dear Diana:\n\n    Can I modify as follows:\n\nstatic void usb_porta_startup(void)\n{\n\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_usbhub_en), 1);\n}\nDECLARE_HOOK(HOOK_CHIPSET_STARTUP, usb_porta_startup, HOOK_PRIO_DEFAULT);\n\nstatic void usb_porta_shutdown(void)\n{\n\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_usbhub_en), 0);\n}\nDECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usb_porta_shutdown, HOOK_PRIO_DEFAULT);",
+      "parentUuid": "aab0158d_293d2dee",
+      "revId": "852f363e248a4759b621ac6aff729be39ac285bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
