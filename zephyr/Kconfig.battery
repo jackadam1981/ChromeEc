@@ -178,6 +178,13 @@ config PLATFORM_EC_BATTERY_MAX_IMBALANCE_MV
 	  system tolerant of larger values of
 	  CONFIG_PLATFORM_EC_BATTERY_MAX_IMBALANCE_MV.
 
+config PLATFORM_EC_BATTERY_STBL_STAT
+	bool "Check whether the battery is initialized and stable"
+	help
+	  Enables support for checking the specific battery status to
+	  judge whether the battery is initialized and stable when the battery
+	  wakes up from ship mode.
+
 config PLATFORM_EC_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON
 	int "Minimum battery percentage for power on with an imbalanced pack"
 	depends on PLATFORM_EC_BATTERY_MEASURE_IMBALANCE
