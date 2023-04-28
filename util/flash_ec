@@ -196,6 +196,7 @@ fi
 MSG_PROGRAM_FAIL="Failed to flash EC firmware image"
 MSG_READ_FAIL="Failed to read EC firmware image"
 MSG_VERIFY_FAIL="Failed to verify EC firmware image."
+MSG_CBI_PRESERVE_CHECK_FAIL="Failed to get CBI section preserve status from new EC image"
 
 set -e
 
@@ -1464,9 +1465,16 @@ function flash_npcx_jtag() {
 function flash_npcx_uut() {
 	local NPCX_UUT
 	local EC_UART
+	local TEMP_SUFFIX
+	local TEMP_DIR
+	local CUR_IMG
+	local CBI_PRESERVE_STATUS
 	local TOOL_PATH="${EC_DIR}/build/${BOARD}/util:${PATH}"
 	NPCX_UUT=$(PATH="${TOOL_PATH}" which uartupdatetool)
 	EC_UART="$(servo_ec_uart)"
+	TEMP_SUFFIX=".$(basename "${SCRIPT}").${CHIP}.$$"
+	TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
+	DELETE_LIST+=("${TEMP_DIR}")
 
 	# Look for npcx_monitor.bin in multiple directories, starting with
 	# the same path as the EC binary.
@@ -1571,6 +1579,23 @@ function flash_npcx_uut() {
 			die "Failed to load monitor binary."
 		fi
 
+		# Check if CBI section needs to be preserved on EC chip.
+		CBI_PRESERVE_STATUS=$(is_cbi_to_be_preserved ${IMG} ${TEMP_DIR})
+		if [[ "${CBI_PRESERVE_STATUS}" == "1" ]]; then
+		  info "Reading current EC firmware image."
+		  CUR_IMG="${TEMP_DIR}/ec.cur.bin"
+			local UUT_CUR_RD=( "${NPCX_UUT}" "${UUT_ARGS[@]}"   \
+						"--read-flash" "--file=${CUR_IMG}" )
+			echo "${UUT_CUR_RD[*]}"
+			print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+				"${UUT_CUR_RD[@]}" || die "${MSG_READ_FAIL}"
+
+			preserve_cbi ${CUR_IMG} ${IMG} ${TEMP_DIR}
+		elif [[ "${CBI_PRESERVE_STATUS}" == "0" ]]; then
+			info "Not preserving CBI section or no CBI section in new EC image."
+		elif [[ "${CBI_PRESERVE_STATUS}" == "-1" ]]; then
+			die "${MSG_CBI_PRESERVE_CHECK_FAIL}"
+		fi
 
 		info "Programming EC firmware image."
 		local UUT_WR=( "${NPCX_UUT}" "${UUT_ARGS[@]}"      \
@@ -1585,13 +1610,7 @@ function flash_npcx_uut() {
 		# If it is a program-verify request, then make a temporary
 		# directory to store the image.
 		if [[ "${FLAGS_verify}" == "${FLAGS_TRUE}" ]]; then
-			local TEMP_SUFFIX
-			local TEMP_DIR
-			TEMP_SUFFIX=".$(basename "${SCRIPT}").${CHIP}.$$"
-			TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
-
 			IMG_READ="${TEMP_DIR}/ec.read.bin"
-			DELETE_LIST+=( "${TEMP_DIR}" )
 		fi
 	fi
 
@@ -1692,6 +1711,36 @@ fi
 if [ "${NEED_SERVO}" != "no" ] ; then
 	servo_save
 fi
+
+function is_cbi_to_be_preserved() {
+  IMG=${1:?"missing arg 1: EC image path"}
+  TEMP_DIR=${2:?"missing arg 2: Temp directory path"}
+  CUR_DIR=$(pwd)
+  PRESERVE_STR='preserve'
+  UNPRESERVE_STR='unpreserve'
+
+  CBI_PRESERVE=$(cd ${TEMP_DIR};CBI_PRESERVE=$(dump_fmap ${CUR_DIR}/${IMG} -x CBI -e);echo ${CBI_PRESERVE})
+
+  if [[ "$CBI_PRESERVE" == *" $UNPRESERVE_STR"* ]]; then
+    echo 0
+  elif [[ "$CBI_PRESERVE" == *" $PRESERVE_STR"* ]]; then
+    echo 1
+  elif [[ -z "${CBI_PRESERVE}" ]]; then
+    echo 0
+  else
+    echo -1
+  fi
+}
+
+function preserve_cbi() {
+  info "Preserving CBI section on EC chip"
+  CUR_IMG=${1:?"missing arg 1: Cur EC image path"}
+  NEW_IMG=${2:?"missing arg 2: New EC image path"}
+  TEMP_DIR=${3:?"missing arg 3: Temp directory path"}
+  local CBI_IMG="${TEMP_DIR}/ec.cur.cbi.bin"
+  cbfstool ${CUR_IMG} read -r CBI -f ${CBI_IMG}
+  cbfstool ${NEW_IMG} write -r CBI -f ${CBI_IMG}
+}
 
 info "Flashing chip ${CHIP}."
 flash_"${CHIP}"
