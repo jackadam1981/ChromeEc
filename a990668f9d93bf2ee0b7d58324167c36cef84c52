@@ -185,6 +185,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ef1f36a_19e0383a",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-04-28T07:34:47Z",
+      "side": 1,
+      "message": "Can we proceed with keeping the executable to support on both linux x32/ linux x64 bit ?",
+      "parentUuid": "de761e64_1a83d8b8",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 0
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4106688b_7d229952",
         "filename": "util/mchp/crisis_rcvry_util.py",
         "patchSetId": 17
