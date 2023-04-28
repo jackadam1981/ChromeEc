@@ -1,0 +1,44 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+rsource "Kconfig.stacks"
+
+config PLATFORM_EC_USB_DC
+	bool "USB Device Controller Support"
+	default y
+	help
+	  Enable USB Device Controller
+
+config USB_DC_TRANS
+	bool "USB HID Keycode Translation Module"
+	depends on PLATFORM_EC_USB_DC
+	help
+	  Enable USB HID Keycode Translation Module
+
+config USB_DC_TRANS_AUTOSTART
+	bool "USB DC Thread Loop Enable"
+	help
+	  Enable the USB DC Thread Loop
+
+config USB_DC_THREAD_PRIORITY
+        int "usb dc thread priority"
+        default 12
+        help
+          This option determines usb dc thread priority, this number
+          must be selected in such way thread priority is in the middle of
+          all the enabled threads.
+
+config USB_DC_STACK_SIZE
+        int "usb dc stack size (in bytes)"
+        help
+          This must be set in a board configuration. If a default
+          is set here, it cannot be overridden (if necessary), since
+          this Kconfig appears before the EC chip specific stack
+          sizes.
+
+config USB_KEYCODE_TRANS
+	bool "USB Keycode Translation Enable"
+	depends on USB_DC_TRANS
+	help
+	  Enable USB HID Keycode Translation Function
