@@ -1,0 +1,5 @@
+config USB_Trans
+    bool "USB Trans"
+    help
+        This option enables USB communication for the USB Trans module.
+
