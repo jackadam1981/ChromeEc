@@ -118,6 +118,30 @@
       },
       "revId": "9aa904242a1f063acdc2b8242764d22da7163f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b3454d_dc35ec4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-28T17:55:16Z",
+      "side": 1,
+      "message": "If Vconn is tied to the Z1 rails, then rex can source it in G3, correct?  You can probably verify by plugging something in while in G3 with the swap allowed and watching the twinkie Vconn and cable responses. \n\nI have a general preference that `pd_check_vconn_swap` reflect \"yes, I\u0027m physically capable of sourcing Vconn\" as closely as possible.  Then if we find we need higher-level policy logic then that, it would hopefully live in the DPM rather than board code",
+      "parentUuid": "ce379065_675c2ea0",
+      "range": {
+        "startLine": 13,
+        "startChar": 23,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9aa904242a1f063acdc2b8242764d22da7163f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
