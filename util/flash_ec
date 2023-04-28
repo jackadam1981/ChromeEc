@@ -1431,9 +1431,15 @@ function flash_npcx_jtag() {
 function flash_npcx_uut() {
 	local NPCX_UUT
 	local EC_UART
+	local TEMP_SUFFIX
+	local TEMP_DIR
+	local OLD_IMG_READ
 	local TOOL_PATH="${EC_DIR}/build/${BOARD}/util:${PATH}"
 	NPCX_UUT=$(PATH="${TOOL_PATH}" which uartupdatetool)
 	EC_UART="$(servo_ec_uart)"
+	TEMP_SUFFIX=".$(basename "${SCRIPT}").${CHIP}.$$"
+	TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
+	OLD_IMG_READ="${TEMP_DIR}/old.ec.read.bin"
 
 	# Look for npcx_monitor.bin in multiple directories, starting with
 	# the same path as the EC binary.
@@ -1538,6 +1544,15 @@ function flash_npcx_uut() {
 			die "Failed to load monitor binary."
 		fi
 
+		# Read old/current EC image.
+		info "Reading old EC firmware image."
+		local UUT_OLD_RD=( "${NPCX_UUT}" "${UUT_ARGS[@]}"   \
+						"--read-flash" "--file=${OLD_IMG_READ}" )
+		echo "${UUT_OLD_RD[*]}"
+		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+			"${UUT_OLD_RD[@]}" || die "${MSG_READ_FAIL}"
+
+		protect_preserved_sections ${OLD_IMG_READ} ${IMG} ${TEMP_DIR}
 
 		info "Programming EC firmware image."
 		local UUT_WR=( "${NPCX_UUT}" "${UUT_ARGS[@]}"      \
@@ -1552,11 +1567,6 @@ function flash_npcx_uut() {
 		# If it is a program-verify request, then make a temporary
 		# directory to store the image.
 		if [[ "${FLAGS_verify}" == "${FLAGS_TRUE}" ]]; then
-			local TEMP_SUFFIX
-			local TEMP_DIR
-			TEMP_SUFFIX=".$(basename "${SCRIPT}").${CHIP}.$$"
-			TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
-
 			IMG_READ="${TEMP_DIR}/ec.read.bin"
 			DELETE_LIST+=( "${TEMP_DIR}" )
 		fi
@@ -1630,6 +1640,24 @@ fi
 if [ "${NEED_SERVO}" != "no" ] ; then
 	servo_save
 fi
+
+function preserve_cbi() {
+  info "Preserving CBI section"
+  local OLD_IMG=$1
+  local NEW_IMG=$2
+  local TEMP_DIR=$3
+  local CBI_IMG="${TEMP_DIR}/old.ec.read.cbi.bin"
+  cbfstool ${OLD_IMG} read -r CBI -f ${CBI_IMG}
+  cbfstool ${NEW_IMG} write -r CBI -f ${CBI_IMG}
+}
+
+function protect_preserved_sections() {
+  OLD_IMG=${1:?"missing arg 1: Old EC image path"}
+  NEW_IMG=${2:?"missing arg 2: New EC image path"}
+  TEMP_DIR=${3:?"missing arg 3: Temp directory path"}
+
+  preserve_cbi ${OLD_IMG} ${NEW_IMG} ${TEMP_DIR}
+}
 
 info "Flashing chip ${CHIP}."
 flash_"${CHIP}"
