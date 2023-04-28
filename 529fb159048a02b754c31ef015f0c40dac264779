@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c0c5e88_1b381f5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-28T16:21:11Z",
+      "side": 1,
+      "message": "Please update this to clarity that it enables zephyr unit testing.\n\nAlso, please add a `TEST` line that indicates what `twister` testing was performed (or how you invoked `twister` to hit the error).",
+      "parentUuid": "85c8044a_d072a2db",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16fdcb13_f244fc39",
         "filename": "zephyr/program/skyrim/winterhold/CMakeLists.txt",
         "patchSetId": 1
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "`Kornel - can you fix that as a separate CL in this stack?`\nDone - crrev/c/4488131.",
       "parentUuid": "8f19d157_9b49e4e7",
+      "range": {
+        "startLine": 16,
+        "startChar": 29,
+        "endLine": 16,
+        "endChar": 71
+      },
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc4a76fb_6498d145",
+        "filename": "zephyr/program/skyrim/winterhold/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-28T16:21:11Z",
+      "side": 1,
+      "message": "\u003e I\u0027m not sure if renaming is a good idea though.\n\u003e See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4479371/comment/15991d44_4fc67df0.\n\nWith these CONFIG changes, does this imply that winterhold will always need an empty `fan.c` if/when `board_override_fan_control_duty()` is no longer required once the PID algorithm is implemented? Or will the generic fan testing code cover that for us, and we disable `CONFIG_PLATFORM_EC_FAN` at that point to prevent the build errors in `skyrim/tests/common/CMakeLists.txt`?\n\nI like Keith\u0027s idea of renaming this to `fan_duty_control.c`, but I\u0027m fine with `fan.c` if that breaks things and requires extra complication to handle it.",
+      "parentUuid": "7efbb623_f78196f2",
       "range": {
         "startLine": 16,
         "startChar": 29,
