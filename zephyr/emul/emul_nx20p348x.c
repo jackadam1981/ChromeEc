@@ -6,6 +6,7 @@
 #include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/tcpci.h"
 #include "emul/emul_common_i2c.h"
+#include "emul/emul_nx20p348x.h"
 #include "emul/emul_stub_device.h"
 #include "emul/tcpc/emul_tcpci.h"
 #include "emul/utils.h"
@@ -35,6 +36,7 @@ struct nx20p348x_emul_data {
 	struct gpio_dt_spec irq_gpio;
 	const struct emul *tcpc_emul;
 	uint8_t regs[NX20P348X_MAX_REG + 1];
+	bool tcpc_interact;
 };
 
 struct nx20p348x_reg_default {
@@ -73,6 +75,7 @@ void nx20p348x_emul_reset_regs(const struct emul *emul)
 		data->regs[def.offset] = def.val;
 	}
 	nx20p348x_emul_interrupt_set(emul, 1);
+	nx20p348x_emul_set_tcpc_interact(emul, true);
 }
 
 uint8_t nx20p348x_emul_peek(const struct emul *emul, int reg)
@@ -83,6 +86,13 @@ uint8_t nx20p348x_emul_peek(const struct emul *emul, int reg)
 		(struct nx20p348x_emul_data *)emul->data;
 
 	return data->regs[reg];
+}
+
+void nx20p348x_emul_set_tcpc_interact(const struct emul *emul, bool en)
+{
+	struct nx20p348x_emul_data *data =
+		(struct nx20p348x_emul_data *)emul->data;
+	data->tcpc_interact = en;
 }
 
 void nx20p348x_emul_set_interrupt1(const struct emul *emul, uint8_t val)
@@ -107,7 +117,8 @@ static int nx20p348x_emul_read(const struct emul *emul, int reg, uint8_t *val,
 	if (bytes != 0)
 		return -EINVAL;
 
-	if (IS_ENABLED(CONFIG_PLATFORM_EC_USBC_PPC_NX20P3483)) {
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USBC_PPC_NX20P3483) &&
+	    data->tcpc_interact) {
 		uint16_t pwr_status;
 		bool src_en, snk_en;
 
@@ -236,6 +247,7 @@ static int nx20p348x_emul_init(const struct emul *emul,
 		.irq_gpio = GPIO_DT_SPEC_INST_GET_OR(n, irq_gpios, {}),        \
 		.tcpc_emul =                                                   \
 			EMUL_GET_USBC_PROP_BINDING(ppc, DT_DRV_INST(n), tcpc), \
+		.tcpc_interact = true,                                         \
 	};                                                                     \
 	EMUL_DT_INST_DEFINE(n, nx20p348x_emul_init, &nx20p348x_emul_data_##n,  \
 			    &common_cfg_##n, &i2c_common_emul_api, NULL)

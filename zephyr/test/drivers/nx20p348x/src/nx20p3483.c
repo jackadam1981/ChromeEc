@@ -28,3 +28,18 @@ ZTEST(nx20p348x_driver, test_source_enable_success)
 	 */
 	zassert_equal(ppc_vbus_source_enable(TEST_PORT, true), EC_SUCCESS);
 }
+
+ZTEST_F(nx20p348x_driver, test_sink_enable_timeout_failure)
+{
+	nx20p348x_emul_set_tcpc_interact(fixture->nx20p348x_emul, false);
+	/* Note: PPC requires a TCPC GPIO to enable its sinking */
+	zassert_equal(ppc_vbus_sink_enable(TEST_PORT, true), EC_ERROR_TIMEOUT);
+}
+
+ZTEST_F(nx20p348x_driver, test_source_enable_timeout_failure)
+{
+	nx20p348x_emul_set_tcpc_interact(fixture->nx20p348x_emul, false);
+	/* Note: PPC requires a TCPC GPIO to enable its sourcing */
+	zassert_equal(ppc_vbus_source_enable(TEST_PORT, true),
+		      EC_ERROR_TIMEOUT);
+}
