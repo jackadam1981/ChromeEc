@@ -549,7 +549,11 @@ test_mockable_static void key_state_changed(int row, int col, uint8_t state)
 		return;
 
 	/* No-op for protocols that require full keyboard matrix (e.g. MKBP). */
+	#ifdef USB_KEYCODE_TRANS
+	usb_keyboard_state_changed(row, col, !!(state & BIT(row)));
+	#else
 	keyboard_state_changed(row, col, !!(state & BIT(row)));
+	#endif /* #ifdef USB_KEYCODE_TRANS */
 }
 
 /* TODO: move this to common header */

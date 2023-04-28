@@ -96,3 +96,6 @@ config AP_PWRSEQ_STACK_SIZE
 	default 1280 if SOC_SERIES_NPCX7
 	default 1280 if SOC_SERIES_NPCX9
 	default 1280 # Needed since there is no other default
+
+config USB_DC_STACK_SIZE
+	default 1280 if SOC_SERIES_RISCV32_IT8XXX2
