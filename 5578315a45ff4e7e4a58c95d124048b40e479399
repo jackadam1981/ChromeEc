@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710a6252_e169dea9",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-28T17:26:14Z",
+      "side": 1,
+      "message": "not in this cl but now these lines can be replaced.",
+      "range": {
+        "startLine": 720,
+        "startChar": 0,
+        "endLine": 722,
+        "endChar": 55
+      },
+      "revId": "5578315a45ff4e7e4a58c95d124048b40e479399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "217cdd07_9f143bb1",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-28T17:26:14Z",
+      "side": 1,
+      "message": "nit: If you separate update_reg and clear_reg, you don\u0027t need to do this. Either is ok with me. I don\u0027t know which type of implementation is more standard.",
+      "range": {
+        "startLine": 1213,
+        "startChar": 41,
+        "endLine": 1213,
+        "endChar": 45
+      },
+      "revId": "5578315a45ff4e7e4a58c95d124048b40e479399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
