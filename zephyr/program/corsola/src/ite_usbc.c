@@ -39,6 +39,7 @@ int tusb1064_mux_1_board_init(const struct usb_mux *me)
 #ifdef CONFIG_USB_PD_TCPM_ITE_ON_CHIP
 const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
 {
+#if (CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT > 1)
 	const static struct cc_para_t
 		cc_parameter[CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT] = {
 			{
@@ -54,6 +55,17 @@ const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
 					IT83XX_TX_PRE_DRIVING_TIME_2_UNIT,
 			},
 		};
+#else
+	const static struct cc_para_t
+		cc_parameter[CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT] = {
+			{
+				.rising_time =
+					IT83XX_TX_PRE_DRIVING_TIME_1_UNIT,
+				.falling_time =
+					IT83XX_TX_PRE_DRIVING_TIME_2_UNIT,
+			},
+		};
+#endif
 
 	return &cc_parameter[port];
 }
