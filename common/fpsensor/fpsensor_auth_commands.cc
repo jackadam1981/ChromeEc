@@ -37,6 +37,18 @@ extern "C" {
 #include <algorithm>
 #include <array>
 
+extern "C" void CRYPTO_sysrand(uint8_t *out, size_t requested)
+{
+	trng_init();
+	trng_rand_bytes(out, requested);
+	trng_exit();
+}
+
+extern "C" void CRYPTO_sysrand_for_seed(uint8_t *out, size_t requested)
+{
+	return CRYPTO_sysrand(out, requested);
+}
+
 BUILD_ASSERT(FP_PK_LEN == SHA256_DIGEST_SIZE);
 BUILD_ASSERT(FP_PK_EC_PUBLIC_KEY_LEN == 32);
 BUILD_ASSERT(FP_PK_EC_PRIVATE_KEY_LEN == 32);
@@ -86,34 +98,43 @@ fp_command_establish_pk_keygen(struct host_cmd_handler_args *args)
 
 	r->enc_privkey_info.struct_version = FP_PK_ENC_METADATA_VERSION;
 	trng_init();
-	trng_rand_bytes(r->enc_privkey, FP_PK_EC_PRIVATE_KEY_LEN);
 	trng_rand_bytes(r->enc_privkey_info.nonce, FP_PK_NONCE_BYTES);
 	trng_rand_bytes(r->enc_privkey_info.encryption_salt,
 			FP_PK_ENCRYPTION_SALT_BYTES);
 	trng_exit();
 
-	bssl::UniquePtr<EC_GROUP> group(
-		EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
+	bssl::UniquePtr<EC_KEY> ecdh_key(
+		EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
+
+	if (ecdh_key == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_KEY_generate_key(ecdh_key.get()) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	const EC_GROUP *group = EC_KEY_get0_group(ecdh_key.get());
 
 	if (group == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<BIGNUM> secret(
-		BN_bin2bn(r->enc_privkey, FP_PK_EC_PRIVATE_KEY_LEN, nullptr));
+	const BIGNUM *private_bn = EC_KEY_get0_private_key(ecdh_key.get());
 
-	if (secret == nullptr) {
+	if (private_bn == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<EC_POINT> public_point(EC_POINT_new(group.get()));
+	if (BN_bn2binpad(private_bn, r->enc_privkey,
+			 FP_PK_EC_PRIVATE_KEY_LEN) !=
+	    FP_PK_EC_PRIVATE_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	const EC_POINT *public_point = EC_KEY_get0_public_key(ecdh_key.get());
 
 	if (public_point == nullptr) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (EC_POINT_mul(group.get(), public_point.get(), secret.get(), nullptr,
-			 nullptr, nullptr) != 1) {
 		return EC_RES_UNAVAILABLE;
 	}
 
@@ -129,9 +150,8 @@ fp_command_establish_pk_keygen(struct host_cmd_handler_args *args)
 		return EC_RES_UNAVAILABLE;
 	}
 
-	if (EC_POINT_get_affine_coordinates_GFp(group.get(), public_point.get(),
-						x_bn.get(), y_bn.get(),
-						nullptr) != 1) {
+	if (EC_POINT_get_affine_coordinates_GFp(group, public_point, x_bn.get(),
+						y_bn.get(), nullptr) != 1) {
 		return EC_RES_UNAVAILABLE;
 	}
 
