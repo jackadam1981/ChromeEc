@@ -64,4 +64,4 @@ static void setup_usb_db(void)
 		LOG_INF("USB DB: No known USB DB found");
 	}
 }
-DECLARE_HOOK(HOOK_INIT, setup_usb_db, HOOK_PRIO_INIT_I2C);
+DECLARE_HOOK(HOOK_INIT, setup_usb_db, HOOK_PRIO_INIT_CHIPSET);
