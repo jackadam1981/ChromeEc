@@ -471,6 +471,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62db46ee_cad1fe7a",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-28T15:46:53Z",
+      "side": 1,
+      "message": "I\u0027d still like a check that `fan_set_duty()` was called more than once.  This shouldn\u0027t check for a specific number of calls.  This ensures no regressions if someone attempts to modify both the test and the fan control at the same time.\n\n```\n\tzassert_true(fan_set_duty_fake.call_count \u003e 1);\n```",
+      "parentUuid": "f7728572_cdeb9ceb",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02a13ea9_d369c7fb",
         "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
         "patchSetId": 2
@@ -677,6 +701,24 @@
       "side": 1,
       "message": "All I need to do is to emulate a \"tick\".\n`board_override_fan_control_duty` has it\u0027s own k_timer that has to be advanced between subsequent calls.\nNot sure if there is a better way to do this than k_sleep.\n\nKeith,\nIs k_sleep the correct option here?",
       "parentUuid": "cab9cba9_6bc6d2f7",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee79a8c_00310248",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-28T15:46:53Z",
+      "side": 1,
+      "message": "Yes, `k_sleep` is correct here so that system timer keeps advancing.",
+      "parentUuid": "20b326b0_beb1163d",
       "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
