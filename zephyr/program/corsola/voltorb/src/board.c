@@ -12,6 +12,16 @@
 
 #include <dt-bindings/battery.h>
 
+#include "battery.h"
+#include "battery_smart.h"
+#include "console.h"
+#include "timer.h"
+
+#define CPRINTS(format, args...) cprints(CC_USB, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_USB, format, ##args)
+
+#define BATTERY_STABLE_TIMEOUT (2000 * MSEC)
+
 LOG_MODULE_REGISTER(board_init, LOG_LEVEL_ERR);
 
 bool voltorb_is_more_efficient(int curr_mv, int prev_mv, int batt_mv,
