@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53d01f71_3e3e2073",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 135
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-28T17:39:14Z",
+      "side": 1,
+      "message": "Thanks for testing this out. I agree that the version in your test CL is not fewer lines of code, but I think for non-crypto experts it\u0027s a little easier to follow/read. For example, `EC_KEY_new_by_curve_name` is clearly creating a new `EC` key, whereas it\u0027s less clear what `EC_GROUP_new_by_curve_name` means. I added some comments in your test CL with some questions that may simplify it even more.",
+      "parentUuid": "42a68ec1_de34ea00",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e2ae54c_2d6c44e2",
         "filename": "include/ec_commands.h",
         "patchSetId": 135
