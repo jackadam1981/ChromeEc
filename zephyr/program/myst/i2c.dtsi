@@ -81,10 +81,10 @@
 		irq-gpios = <&gpioe 0 GPIO_ACTIVE_LOW>;
 	};
 
-	ppc_port0: ktu1125@78 {
+	ppc_port0: ktu1125@38 {
 		compatible = "kinetic,ktu1125";
 		status = "okay";
-		reg = <0x78>;
+		reg = <0x38>;
 	};
 };
 
@@ -125,7 +125,18 @@
 		reg = <0x71>;
 	};
 
-	/* TODO: add SKU-B DB b/275610001 */
+	ps8815_port1_alt: ps8xxx@b {
+		compatible = "parade,ps8xxx";
+		reg = <0xb>;
+		is-alt;
+	};
+
+	ppc_port1_alt: ktu1125@38 {
+		compatible = "kinetic,ktu1125";
+		status = "okay";
+		reg = <0x38>;
+		is-alt;
+	};
 };
 
 &i2c_ctrl1 {
