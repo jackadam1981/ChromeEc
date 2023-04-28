@@ -166,6 +166,30 @@
       },
       "revId": "9aa904242a1f063acdc2b8242764d22da7163f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "316abaa8_dfec3a9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1427817
+      },
+      "writtenOn": "2023-04-28T21:59:24Z",
+      "side": 1,
+      "message": "I agree with this...would be good to have a dedicated signal to use instead of it changing platform to platform. This same issue came up on Nissa and would be good to figure out how to standardize this so we don\u0027t run into it in the future.",
+      "parentUuid": "5c60cae5_471c485e",
+      "range": {
+        "startLine": 13,
+        "startChar": 23,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9aa904242a1f063acdc2b8242764d22da7163f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
