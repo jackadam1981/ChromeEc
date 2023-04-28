@@ -45,6 +45,12 @@
 				 0 1 0
 				 0 0 1>;
 		};
+
+		base_rot_inverted: base-rotation-inverted {
+			mat33 = <(-1) 0 0
+				 0 1 0
+				 0 0 (-1)>;
+		};
 	};
 
 	/*
