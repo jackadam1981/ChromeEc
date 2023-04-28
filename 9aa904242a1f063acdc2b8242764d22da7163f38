@@ -46,6 +46,30 @@
       },
       "revId": "9aa904242a1f063acdc2b8242764d22da7163f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f0efa2f_6784cd44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-04-28T16:36:03Z",
+      "side": 1,
+      "message": "\u003e is it safe to assume pp5000_z1 comes up with pp3300_z1 upon z1_en_rails?\n\nThe power sequencing documentation I found for rex shows that these both come up in response to EN_Z1_Rails. In the diagram they come up at the same time, but it\u0027s looks like these are brought up independently and are just expected to come up at around the same time. There is likely some room for pp3300_z1 to come up a bit before pp5000_z1.\n\nLooking through the schematic, I don\u0027t see any incoming EC signal tied to pp5000_z1. FWIW, looking back at brya, it appears they are basing Vconn swap policy on pp3300_z1 as well. VDD for the power sequencer there is tied to PP3300_Z1, and that drives GPIO_SEQ_EC_DSW_PWROK which brya uses for it\u0027s Vconn swap policy. \n\nI\u0027ll check to see if using `chipset_in_state` to allow Vconn swaps in S5 resolves the PD hard reset issue and followup. If we determine that the pp5000_z1 and pp3300_z1 are not tied closely enough together to use a pp3300_z1-based signal for Vconn swap policy, this may be something to update on brya as well.",
+      "parentUuid": "67c09cbe_4cdc7772",
+      "range": {
+        "startLine": 13,
+        "startChar": 23,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9aa904242a1f063acdc2b8242764d22da7163f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
