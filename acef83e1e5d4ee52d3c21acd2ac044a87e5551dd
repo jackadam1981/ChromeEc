@@ -22,6 +22,30 @@
       },
       "revId": "acef83e1e5d4ee52d3c21acd2ac044a87e5551dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f3bd8c7_7f8ad26b",
+        "filename": "zephyr/program/corsola/src/usbc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-04-28T08:05:53Z",
+      "side": 1,
+      "message": "So we cannot remove gpio_ap_xhci_init_done. In that case, will my changes be accepted?OR is there a better solution?",
+      "parentUuid": "781ef4ce_996a5038",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "acef83e1e5d4ee52d3c21acd2ac044a87e5551dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

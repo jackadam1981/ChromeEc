@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57f1095_088463ba",
+        "filename": "zephyr/program/corsola/src/ite_charger_workaround.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-04-28T08:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d7e0fe8_b924f18f",
+      "range": {
+        "startLine": 20,
+        "startChar": 56,
+        "endLine": 20,
+        "endChar": 76
+      },
+      "revId": "24f322bf639dd947944bf71d71b3d5d05e6acebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2583759_ea74a312",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-13T06:59:29Z",
       "side": 1,
       "message": "no need this workaround for starmie",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 74
+      },
+      "revId": "24f322bf639dd947944bf71d71b3d5d05e6acebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88fa1acc_5f3c766e",
+        "filename": "zephyr/program/corsola/starmie/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-04-28T08:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2583759_ea74a312",
       "range": {
         "startLine": 7,
         "startChar": 52,
