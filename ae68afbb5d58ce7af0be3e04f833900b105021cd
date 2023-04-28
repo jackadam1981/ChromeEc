@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c2f47c_67b2b969",
+        "filename": "zephyr/program/myst/myst/src/ppc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-04-28T23:21:41Z",
+      "side": 0,
+      "message": "Moved all that to usbc_config.c ...",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "ae68afbb5d58ce7af0be3e04f833900b105021cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
