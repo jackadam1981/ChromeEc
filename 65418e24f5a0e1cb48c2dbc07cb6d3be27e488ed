@@ -60,6 +60,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0896708f_b4183556",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-04-28T21:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bd99e09_749b21d3",
+      "range": {
+        "startLine": 37,
+        "startChar": 51,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "65418e24f5a0e1cb48c2dbc07cb6d3be27e488ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "aceebd8c_591b817c",
         "filename": "zephyr/test/drivers/prj.conf",
         "patchSetId": 5
