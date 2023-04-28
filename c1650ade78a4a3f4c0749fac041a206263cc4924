@@ -34,6 +34,24 @@
       "parentUuid": "438d077f_36df9f70",
       "revId": "c1650ade78a4a3f4c0749fac041a206263cc4924",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d36bbbb_65b96214",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-28T19:06:31Z",
+      "side": 1,
+      "message": "I have no clue and this is really weird. I bet it\u0027s a bug in clang or clang\u0027s format checker. \n\nAnyway, I found this can be worked around by inserting a blank line between BATTERY_LGC_AP21A8T and BATTERY_TYPE_COUNT. Please try that. You can run \u0027/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py --metrics /tmp/tmpnwy_2s55 --code-coverage build\u0027 to test.",
+      "parentUuid": "30e158f5_d6115549",
+      "revId": "c1650ade78a4a3f4c0749fac041a206263cc4924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
