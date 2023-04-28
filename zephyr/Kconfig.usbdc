@@ -1,0 +1,25 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config PLATFORM_EC_USB_DC
+	bool "USB Device Controller Support"
+	default y
+	help
+	  Enable USB Device Controller
+
+config USB_DC_THREAD_PRIORITY
+        int "usb dc thread priority"
+        default 12
+        help
+          This option determines usb dc thread priority, this number
+          must be selected in such way thread priority is in the middle of
+          all the enabled threads.
+
+config USB_DC_STACK_SIZE
+        int "usb dc stack size (in bytes)"
+        help
+          This must be set in a board configuration. If a default
+          is set here, it cannot be overridden (if necessary), since
+          this Kconfig appears before the EC chip specific stack
+          sizes.
