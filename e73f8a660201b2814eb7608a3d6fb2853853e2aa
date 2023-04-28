@@ -359,6 +359,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3cfcc2db_9b3818bc",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-04-28T21:22:32Z",
+      "side": 1,
+      "message": "Please see my other comment. \"Adding storage definitions that include CONFIG_MAPPED_STORAGE_BASE to header files like board.h cause the size of the ec.bin file to blow up to 1GB. Please see b:273569976 comments #3-#7 for background and let me know if you have suggestions to work around the problem and still remove the #ifdef from runtime code.\" This suggestion has the same issue. I initially tried to use header definitions rather than runtime changes. I suspect this is a solvable problem but I\u0027m not sure of a clean way to solve it inside the EC code base. Suggestions welcome.",
+      "parentUuid": "dbf8c7ae_528ea914",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5110cdf6_86dffb2b",
         "filename": "common/rwsig.c",
         "patchSetId": 1
