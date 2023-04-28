@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42a68ec1_de34ea00",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 135
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-04-28T04:50:24Z",
+      "side": 1,
+      "message": "Acatully the code would not be simplify after using EC_KEY_new_by_curve_name \u0026 EC_KEY_get0_private_key:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4486719\n\nMost of the code is doing bignum \u0026 point \u0026 buffer conversions.",
+      "parentUuid": "56e8ba9f_dad7aa35",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "c106608a85a501c669f5cfb01ad128fa3df98494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e2ae54c_2d6c44e2",
         "filename": "include/ec_commands.h",
         "patchSetId": 135
