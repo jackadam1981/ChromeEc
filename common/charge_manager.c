@@ -817,7 +817,12 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	}
 
 	/* Remove override when a charger is plugged */
+<<<<<<< HEAD   (24bc96 chgstv2: Always discharge if soc is > sustainer_soc.upper)
 	if (clear_override && override_port != port
+=======
+	if (clear_override && override_port != port &&
+	    override_port != OVERRIDE_DONT_CHARGE
+>>>>>>> CHANGE (7b9b24 charge_manager: Make charge OVERRIDE_DONT_CHARGE persistent)
 #ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 	    /* only remove override when it's a dedicated charger */
 	    && dualrole_capability[port] == CAP_DEDICATED
