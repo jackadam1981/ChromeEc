@@ -3,6 +3,63 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "efbb41d7_dacb9dc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-04-28T21:07:29Z",
+      "side": 1,
+      "message": "I\u0027ve never seen us do this in a commit message. I don\u0027t mind it at all but someone with more wisdom may disagree.",
+      "revId": "65418e24f5a0e1cb48c2dbc07cb6d3be27e488ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12ad9b9_a3dddd5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-04-28T21:07:29Z",
+      "side": 1,
+      "message": "Just minor format change request.",
+      "revId": "65418e24f5a0e1cb48c2dbc07cb6d3be27e488ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd99e09_749b21d3",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-04-28T21:07:29Z",
+      "side": 1,
+      "message": "newline",
+      "range": {
+        "startLine": 37,
+        "startChar": 51,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "65418e24f5a0e1cb48c2dbc07cb6d3be27e488ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "aceebd8c_591b817c",
         "filename": "zephyr/test/drivers/prj.conf",
         "patchSetId": 5
@@ -14,6 +71,23 @@
       "writtenOn": "2023-04-28T20:13:14Z",
       "side": 1,
       "message": "If this doesn\u0027t cause issues with the other tests in default, it should be fine.  If you find you\u0027re encountering issues, then you can also easily put DTS and CONFIG changes in separate test binaries too.  I can point you to some examples if you need them.",
+      "revId": "65418e24f5a0e1cb48c2dbc07cb6d3be27e488ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e472aa_2f1ccd4c",
+        "filename": "zephyr/test/drivers/prj.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-04-28T21:07:29Z",
+      "side": 1,
+      "message": "This is fine since it\u0027s part of the `driver.default` binary, though we plan on eventually splitting that binary up... eventually.",
       "revId": "65418e24f5a0e1cb48c2dbc07cb6d3be27e488ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
