@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d4263f_f7143646",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2023-04-28T03:58:49Z",
+      "side": 1,
+      "message": "Keep frostflow,for frostflow change only.",
+      "parentUuid": "c5d4a5a7_db2de43c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "a9c06933a7a5c1c3120c22fe49672cf59f117d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b37f1680_e3aeff27",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15cc8951_8fd45109",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2023-04-28T03:58:49Z",
+      "side": 1,
+      "message": "Add CONFIG_BOARD_FROSTFLOW for frostflow board only.",
+      "parentUuid": "b37f1680_e3aeff27",
+      "revId": "a9c06933a7a5c1c3120c22fe49672cf59f117d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3079bea_320a743a",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-04-27T14:55:54Z",
       "side": 1,
       "message": "nit: is deferred necessary here?",
+      "revId": "a9c06933a7a5c1c3120c22fe49672cf59f117d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a4c55b_faea4659",
+        "filename": "zephyr/program/skyrim/src/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2023-04-28T03:58:49Z",
+      "side": 1,
+      "message": "It doesn\u0027t need, removed the code.",
+      "parentUuid": "c3079bea_320a743a",
       "revId": "a9c06933a7a5c1c3120c22fe49672cf59f117d1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
