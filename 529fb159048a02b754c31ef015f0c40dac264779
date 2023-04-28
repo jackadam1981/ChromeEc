@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7efbb623_f78196f2",
+        "filename": "zephyr/program/skyrim/winterhold/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-28T10:48:54Z",
+      "side": 1,
+      "message": "`Kornel - can you fix that as a separate CL in this stack?`\nDone - crrev/c/4488131.",
+      "parentUuid": "8f19d157_9b49e4e7",
+      "range": {
+        "startLine": 16,
+        "startChar": 29,
+        "endLine": 16,
+        "endChar": 71
+      },
+      "revId": "529fb159048a02b754c31ef015f0c40dac264779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0670ecf_84c3e2b5",
         "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
         "patchSetId": 1
