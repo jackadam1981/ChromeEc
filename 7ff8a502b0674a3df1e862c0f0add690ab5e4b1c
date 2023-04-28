@@ -16,6 +16,23 @@
       "message": "FYI building EC is broken at the moment - b/279955995, hence the CQ failure.",
       "revId": "7ff8a502b0674a3df1e862c0f0add690ab5e4b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b8dee2_78839f11",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-04-28T15:48:57Z",
+      "side": 1,
+      "message": "You can just move `PLATFORM_EC_CUSTOM_FAN_CONTROL` and `PLATFORM_EC_CUSTOM_FAN_DUTY_CONTROL` inside this `if` block.  The `if OPTION` automatically adds the `depends on` to every symbol inside the block.",
+      "revId": "7ff8a502b0674a3df1e862c0f0add690ab5e4b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
