@@ -16,6 +16,23 @@
       "message": "I don\u0027t see any reason why this can\u0027t merge. But maybe you want to wait for Caveh",
       "revId": "55ebd2ea224a32540ef8b9b18d44e0b77997fffa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca427ab_6672e18f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-04-28T23:09:35Z",
+      "side": 1,
+      "message": "I would like to see this test get split off into its own binary. It doesn\u0027t fit well with drivers.default and we\u0027ve been trying to avoid expanding that testcase further due to its crazy run time. There should be many examples of how to do this that you can copy and paste and then apply the body sensor device tree and Kconfig to. LMK if you need help with that.",
+      "revId": "55ebd2ea224a32540ef8b9b18d44e0b77997fffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
