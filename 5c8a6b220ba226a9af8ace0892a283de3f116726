@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecf46620_32d524b8",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-04-28T17:40:03Z",
+      "side": 1,
+      "message": "While CONFIG may be required, I do not think we need it at this level.\nThis patch is exporting PPS enablement from generic charger perspective. Code below will take care when this is not supported from IC charger:\n```\n\tif (!chg_chips[chgnum].drv-\u003eenable_pps)\n\t\treturn EC_ERROR_UNIMPLEMENTED;\n```",
+      "parentUuid": "b5170e13_ccfefef5",
+      "revId": "5c8a6b220ba226a9af8ace0892a283de3f116726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35aba1ed_5b873028",
         "filename": "include/charger.h",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2023-04-26T23:22:10Z",
       "side": 1,
       "message": "how about making it bool? return false on error or no PPS",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 18
+      },
+      "revId": "5c8a6b220ba226a9af8ace0892a283de3f116726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52c993c5_9f003b5c",
+        "filename": "include/charger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-04-28T17:40:03Z",
+      "side": 1,
+      "message": "That may work as well, I was following convention of other functions like:\n```\nenum ec_error_list charger_get_vsys_voltage(int port, int *voltage);\n```\n\nThis way user can figure out dynamically if PPS is supported by charger IC.",
+      "parentUuid": "35aba1ed_5b873028",
       "range": {
         "startLine": 444,
         "startChar": 0,
