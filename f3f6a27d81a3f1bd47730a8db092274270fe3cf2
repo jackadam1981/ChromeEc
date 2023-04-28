@@ -209,6 +209,30 @@
       },
       "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e7e8439_b2a89023",
+        "filename": "include/config.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 2791,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-04-28T22:56:08Z",
+      "side": 1,
+      "message": "I tried to place it outside of `ifndef` zephyr and I got this error\n```\n(cr) (async_flash) fsammoura@fsammoura1 ~/chromiumos/src/platform/ec $ make buildall -j \u003e firas_pp.txt\nERROR: Modifying CONFIG_FLASH_PROTECT_DEFERRED outside of #ifndef CONFIG_ZEPHYR not allowed at include/config.h:1814\n```\n\nI have already created a config for zephyr\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4335413/32/zephyr/Kconfig#88",
+      "parentUuid": "d66d2237_778ec4b0",
+      "range": {
+        "startLine": 2789,
+        "startChar": 0,
+        "endLine": 2791,
+        "endChar": 37
+      },
+      "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
