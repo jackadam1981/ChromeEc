@@ -14,12 +14,15 @@
 #include "cros_board_info.h"
 #include "cros_cbi.h"
 #include "driver/charger/isl9241.h"
+#include "driver/ppc/ktu1125_public.h"
+#include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/rt1718s.h"
 #include "driver/usb_mux/amd_fp6.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "power.h"
 #include "usb_mux.h"
+#include "usb_mux_config.h"
 #include "usb_pd_tcpm.h"
 #include "usbc/usb_muxes.h"
 #include "usbc_ppc.h"
@@ -119,6 +122,26 @@ void usb_pd_soc_interrupt(enum gpio_signal signal)
 	 * it as a point of interest.
 	 */
 	CPRINTSUSB("SOC PD Interrupt");
+}
+
+void ppc_interrupt(enum gpio_signal signal)
+{
+	switch (signal) {
+	case GPIO_USB_C0_PPC_INT_ODL:
+		break;
+
+	case GPIO_USB_C1_PPC_INT_ODL:
+		if (io_db_type == FW_IO_DB_SKU_A) {
+			nx20p348x_interrupt(USBC_PORT_C1);
+		}
+		if (io_db_type == FW_IO_DB_SKU_B) {
+			ktu1125_interrupt(USBC_PORT_C1);
+		}
+		break;
+
+	default:
+		break;
+	}
 }
 
 /* Round up 3250 max current to multiple of 128mA for ISL9241 AC prochot. */
