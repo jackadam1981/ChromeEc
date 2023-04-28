@@ -16,6 +16,24 @@
       "message": "Hi Daisuke, do you know how to fix this build error?\nThanks.",
       "revId": "c1650ade78a4a3f4c0749fac041a206263cc4924",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e158f5_d6115549",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-04-28T17:09:47Z",
+      "side": 1,
+      "message": "check_clang_format.py passes locally. I have no idea. Submitting again.\n\n```\nINFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C/C++ source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/board/hades/board.h:179:20: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:enum battery_type {\nERROR:root:                   ^\nERROR:root:/mnt/host/source/src/platform/ec/board/hades/board.h:180:22: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        BATTERY_LGC_AP21A8T,\nERROR:root:                            ^\nERROR:root:/mnt/host/source/src/platform/ec/board/hades/board.h:181:20: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        BATTERY_TYPE_COUNT\nERROR:root:   \n```",
+      "parentUuid": "438d077f_36df9f70",
+      "revId": "c1650ade78a4a3f4c0749fac041a206263cc4924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
