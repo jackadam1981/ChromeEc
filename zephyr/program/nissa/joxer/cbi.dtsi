@@ -28,5 +28,26 @@
 				value = <1>;
 			};
 		};
+
+		/*
+		 * FW_CONFIG field to describe mainboard orientation in chassis.
+		 */
+		base-inversion {
+			enum-name = "FW_BASE_INVERSION";
+			start = <6>;
+			size = <1>;
+
+			default {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "SENSOR_DEFAULT";
+				value = <0>;
+				default;
+			};
+			inverted {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "SENSOR_INVERTED";
+				value = <1>;
+			};
+		};
 	};
 };
