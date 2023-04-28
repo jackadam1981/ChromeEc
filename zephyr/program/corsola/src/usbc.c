@@ -73,6 +73,7 @@ uint8_t board_get_adjusted_usb_pd_port_count(void)
 	}
 }
 
+#ifdef CONFIG_VARIANT_CORSOLA_USBA
 /* USB-A */
 void usb_a0_interrupt(enum gpio_signal signal)
 {
@@ -112,6 +113,7 @@ __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 		return PD_DRP_FORCE_SINK;
 	}
 }
+#endif /* CONFIG_VARIANT_CORSOLA_USBA */
 
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {

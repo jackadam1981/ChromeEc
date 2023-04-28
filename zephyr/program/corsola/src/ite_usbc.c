@@ -15,9 +15,17 @@
 #include "variant_db_detection.h"
 #include "zephyr_adc.h"
 
+#include <zephyr/sys/util_macro.h>
+
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
+
+#define ITE_CC_PARAMETER(i, _)                                    \
+	{                                                         \
+		.rising_time = IT83XX_TX_PRE_DRIVING_TIME_1_UNIT, \
+		.falling_time = IT83XX_TX_PRE_DRIVING_TIME_2_UNIT \
+	}
 
 int tusb1064_mux_1_board_init(const struct usb_mux *me)
 {
