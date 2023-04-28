@@ -22,6 +22,30 @@
       },
       "revId": "f2328f3f21ad77a78777ebb71ebd22deb212f494",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2865dde6_43a33837",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-04-28T19:09:43Z",
+      "side": 1,
+      "message": "cold reset. Updated documentation.",
+      "parentUuid": "4fd03638_18a9bb02",
+      "range": {
+        "startLine": 465,
+        "startChar": 18,
+        "endLine": 465,
+        "endChar": 28
+      },
+      "revId": "f2328f3f21ad77a78777ebb71ebd22deb212f494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
