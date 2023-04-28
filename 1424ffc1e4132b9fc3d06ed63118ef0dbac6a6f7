@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8b8688_83edf456",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-28T17:38:42Z",
+      "side": 1,
+      "message": "Can [`EC_KEY_priv2buf` or `EC_KEY_priv2oct`](https://source.chromium.org/chromium/chromium/src/+/main:third_party/boringssl/src/include/openssl/ec_key.h;l\u003d201-213;drc\u003d29723828eca43b2dfa5fe476edc4e01ca8072d2a) replace this?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 2
+      },
+      "revId": "1424ffc1e4132b9fc3d06ed63118ef0dbac6a6f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e7c1c7d_2424d022",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-28T17:38:42Z",
+      "side": 1,
+      "message": "Given the call to `EC_KEY_get0_public_key`, it seems like there may be an easier way to get `(x, y)`.\n\nWhat about [`EC_KEY_key2buf`](https://source.chromium.org/chromium/chromium/src/+/main:third_party/boringssl/src/include/openssl/ec_key.h;l\u003d189-193;drc\u003d29723828eca43b2dfa5fe476edc4e01ca8072d2a) or `EC_POINT_point2buf`?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 0
+      },
+      "revId": "1424ffc1e4132b9fc3d06ed63118ef0dbac6a6f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
