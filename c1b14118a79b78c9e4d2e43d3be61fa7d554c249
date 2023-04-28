@@ -16,6 +16,23 @@
       "message": "Since BoringSSL is supported in EC, I prepared a patch which uses OPENSSL_cleanse() function instead of always_memset().",
       "revId": "c1b14118a79b78c9e4d2e43d3be61fa7d554c249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5fc21f_b7ec99a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-28T17:39:37Z",
+      "side": 1,
+      "message": "Turned out to be much more difficult:\n\n- In `third_party/rules.mk` BoringSSL related code depends on `CONFIG_LIBCRYPTOC`. Which is probably wrong.\n- Boards `hammer`, `prism` use coreboot-sdk as compiler instead of LLVM.\n- BoringSSL doesn\u0027t compile with coreboot-sdk compiler (I\u0027m not sure why).",
+      "revId": "c1b14118a79b78c9e4d2e43d3be61fa7d554c249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
