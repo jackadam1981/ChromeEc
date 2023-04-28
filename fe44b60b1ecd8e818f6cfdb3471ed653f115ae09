@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce2cff4_d9f31321",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2023-04-28T07:48:22Z",
+      "side": 1,
+      "message": "I try to run the `zmake build all` and `./util/check_clang_format.py --fix zephyr/program/skyrim/winterhold/` and `./util/check_clang_format.py --fix zephyr/program/skyrim` and `./twister -p native_posix -s skyrim/skyrim.winterhold` those results do not fail or error msg.\nSo can Google help to check where is the mistake?",
+      "revId": "fe44b60b1ecd8e818f6cfdb3471ed653f115ae09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
