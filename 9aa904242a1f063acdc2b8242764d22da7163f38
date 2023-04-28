@@ -94,6 +94,30 @@
       },
       "revId": "9aa904242a1f063acdc2b8242764d22da7163f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce379065_675c2ea0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-04-28T17:51:21Z",
+      "side": 1,
+      "message": "Quick update, adding `CHIPSET_STATE_SOFT_OFF` to the existing Vconn swap policy condition does not resolve the issue. There are still PD hard resets with partners connected during boot which leads to initial discovery and mode entry issues.",
+      "parentUuid": "1a4c0678_a882e308",
+      "range": {
+        "startLine": 13,
+        "startChar": 23,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9aa904242a1f063acdc2b8242764d22da7163f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
