@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "781ef4ce_996a5038",
+        "filename": "zephyr/program/corsola/src/usbc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-04-28T06:50:49Z",
+      "side": 1,
+      "message": "I think you should also make this whole function invisible in your Starmie build when removing the Type A port. Tried a build with Krabby proto 1, if you remove `gpio_ap_xhci_init_done` and leave this function always return `PD_DRP_FORCE_SINK`, the device will not be powered, thus no functionality.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "acef83e1e5d4ee52d3c21acd2ac044a87e5551dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

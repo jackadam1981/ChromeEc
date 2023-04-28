@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5930d85f_cf0dc1ce",
+        "filename": "zephyr/program/corsola/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-04-28T06:50:49Z",
+      "side": 1,
+      "message": "Please move this config above `BOARD_STEELIX` (follow the alphabetical order)",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 53
+      },
+      "revId": "c17986d1293827752da18be528cadde5a6a9fb75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a4ac11e_39391d46",
+        "filename": "zephyr/program/corsola/starmie/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-04-28T06:50:49Z",
+      "side": 1,
+      "message": "nit: I think we can drop this dtsi, and set `CONFIG_CROS_KB_RAW_ITE` to n in KConfig.",
+      "revId": "c17986d1293827752da18be528cadde5a6a9fb75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
