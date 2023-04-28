@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4145893c_6c736fca",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-04-28T20:35:37Z",
+      "side": 1,
+      "message": "Why is this include needed?",
+      "revId": "68149e7350667f8210df7c56e13f52bfa11dd1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ed89cc_a81cea72",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 5762,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-04-28T20:35:37Z",
+      "side": 1,
+      "message": "Nit: You don\u0027t need to explicitly use `inline`.",
+      "revId": "68149e7350667f8210df7c56e13f52bfa11dd1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f5722e_282f5bf9",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-04-28T20:35:37Z",
+      "side": 1,
+      "message": "Nit: It\u0027s weird to use a fixed-width type for a field that you\u0027re giving a different fixed-width size with a bit field. I\u0027d use an enum if you have one and `unsigned int` if you don\u0027t.",
+      "revId": "68149e7350667f8210df7c56e13f52bfa11dd1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

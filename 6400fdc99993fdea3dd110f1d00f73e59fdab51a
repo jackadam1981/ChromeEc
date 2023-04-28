@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f6d5d7_220922fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-04-28T20:35:37Z",
+      "side": 1,
+      "message": "First pass. I\u0027ll need to familiarize myself with DP 2.1 to review the implementation properly.",
+      "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e75bc179_f0670bba",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-04-28T20:35:37Z",
+      "side": 1,
+      "message": "I suspect that most of these functions only need to be used in `dp_alt_mode.c` and thus do not need to be part of the public API of that module.\n\nThe ones that do should start with `dp_`.",
+      "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
