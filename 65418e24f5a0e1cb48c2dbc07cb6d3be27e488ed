@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aceebd8c_591b817c",
+        "filename": "zephyr/test/drivers/prj.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-28T20:13:14Z",
+      "side": 1,
+      "message": "If this doesn\u0027t cause issues with the other tests in default, it should be fine.  If you find you\u0027re encountering issues, then you can also easily put DTS and CONFIG changes in separate test binaries too.  I can point you to some examples if you need them.",
+      "revId": "65418e24f5a0e1cb48c2dbc07cb6d3be27e488ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
