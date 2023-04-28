@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21d7fd92_5b2c13c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-04-28T16:57:04Z",
+      "side": 1,
+      "message": "Since BoringSSL is supported in EC, I prepared a patch which uses OPENSSL_cleanse() function instead of always_memset().",
+      "revId": "c1b14118a79b78c9e4d2e43d3be61fa7d554c249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
