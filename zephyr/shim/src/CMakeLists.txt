@@ -10,6 +10,7 @@ zephyr_library_sources(gpio_int.c)
 add_subdirectory("buttons")
 add_subdirectory("cbi")
 add_subdirectory("led_driver")
+add_subdirectory("usb")
 
 if (DEFINED CONFIG_ARCH_POSIX)
   zephyr_library_sources(ztest_system.c)
@@ -91,3 +92,4 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SHA256_HW_ZEPHYR
 	                                                    sha256_hw.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_HOST_COMMAND_MEMORY_DUMP
 	                                                    register_memory_dump.c)
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_DC      usb_dc_trans.c)
