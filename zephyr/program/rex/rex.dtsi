@@ -235,7 +235,7 @@
 	pinctrl-0 = <&i2c4_1_sda_scl_gpf2_f3>;
 	pinctrl-names = "default";
 
-	tcpc_port1: ps8xxx@b {
+	tcpc_ps8815_port1: ps8xxx@b {
 		compatible = "parade,ps8xxx";
 		reg = <0xb>;
 		tcpc-flags = <(
@@ -298,7 +298,7 @@
 		is-alt;
 	};
 
-	ppc_port1_nxp: nx20p348x@72 {
+	ppc_nx20p_port1: nx20p348x@72 {
 		compatible = "nxp,nx20p348x";
 		status = "okay";
 		reg = <0x72>;
