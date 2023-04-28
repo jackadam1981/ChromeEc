@@ -110,6 +110,7 @@ static int charge_supplier = CHARGE_SUPPLIER_NONE;
 static int charge_pd_current_uncapped = CHARGE_CURRENT_UNINITIALIZED;
 static int override_port = OVERRIDE_OFF;
 
+/* This is used to defer overriding a port which needs power role swap first. */
 static int delayed_override_port = OVERRIDE_OFF;
 static timestamp_t delayed_override_deadline;
 
@@ -822,13 +823,6 @@ static void charge_manager_refresh(void)
 
 	active_charge_port_initialized = 1;
 
-	/*
-	 * Clear override if it wasn't selected as the 'best' port -- it means
-	 * that no charge is available on the port, or the port was rejected.
-	 */
-	if (override_port >= 0 && override_port != new_port)
-		override_port = OVERRIDE_OFF;
-
 	if (new_supplier == CHARGE_SUPPLIER_NONE) {
 #ifdef CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT
 		new_charge_current = CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT;
@@ -1090,21 +1084,6 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 		if (!clear_override)
 			return;
 		break;
-	}
-
-	/* Remove override when a charger is plugged */
-	if (clear_override &&
-	    override_port != port
-#ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
-	    /* only remove override when it's a dedicated charger */
-	    && dualrole_capability[port] == CAP_DEDICATED
-#endif
-	) {
-		override_port = OVERRIDE_OFF;
-		if (delayed_override_port != OVERRIDE_OFF) {
-			delayed_override_port = OVERRIDE_OFF;
-			hook_call_deferred(&charge_override_timeout_data, -1);
-		}
 	}
 
 	if (change == CHANGE_CHARGE) {
