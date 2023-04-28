@@ -185,6 +185,30 @@
       },
       "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d66d2237_778ec4b0",
+        "filename": "include/config.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 2791,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-28T18:14:30Z",
+      "side": 1,
+      "message": "I *think* the ones that are within `ifndef CONFIG_ZEPHYR` seem to be used for config options that conflict with Zephyr (i.e., the zephyr build has a config (`Kconfig`) with the exact same name). For example: https://crrev.com/c/4490505  and https://crrev.com/c/2659135.",
+      "parentUuid": "578c0f42_e36a177d",
+      "range": {
+        "startLine": 2789,
+        "startChar": 0,
+        "endLine": 2791,
+        "endChar": 37
+      },
+      "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
