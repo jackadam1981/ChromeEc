@@ -52,3 +52,8 @@ void ppc_interrupt(enum gpio_signal signal)
 		break;
 	}
 }
+
+__override bool board_is_dts_port(int port)
+{
+	return port == USBC_PORT_C0;
+}
