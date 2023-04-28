@@ -34,6 +34,24 @@
       "parentUuid": "7ce2cff4_d9f31321",
       "revId": "fe44b60b1ecd8e818f6cfdb3471ed653f115ae09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b768caa_516a9054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-28T16:16:40Z",
+      "side": 1,
+      "message": "Fix is up here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4490505\n\nI\u0027ll CQ+2 when I see that it merged",
+      "parentUuid": "f71df473_6e1bec89",
+      "revId": "fe44b60b1ecd8e818f6cfdb3471ed653f115ae09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
