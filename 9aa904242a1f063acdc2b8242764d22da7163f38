@@ -22,6 +22,30 @@
       },
       "revId": "9aa904242a1f063acdc2b8242764d22da7163f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c09cbe_4cdc7772",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-04-28T15:05:58Z",
+      "side": 1,
+      "message": "\u003ewould it make sense to wait for S5? i\u0027m not sure it makes\nsense to drive VCONN in g3.\n\nThe power we\u0027ll lose to Vconn in G3 should be offset by the fact that we need to be charging to stay connected to any port partner in G3.\n\nThe primary advantage of sourcing Vconn in G3 is for USB4 platforms because they need to perform mode entry with cables, and this saves them from having to swap back into Vconn source when they boot and go into an alternate mode.  There would also be an advantage if someone ever implements the Charge-Through Vconn Powered devices from the Type-C spec, which would require Vconn to let you charge.  But, as far as I know, no one has actually brought any of those devices to market.",
+      "parentUuid": "821808ba_730100ea",
+      "range": {
+        "startLine": 13,
+        "startChar": 23,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9aa904242a1f063acdc2b8242764d22da7163f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
