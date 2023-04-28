@@ -35,7 +35,10 @@
 /* Stop printing repeated host commands "+" after this count */
 #define HCDEBUG_MAX_REPEAT_COUNT 5
 
+/* CONFIG_EC_HOST_CMD enables the upstream host command support */
+#ifndef CONFIG_EC_HOST_CMD
 static struct host_cmd_handler_args *pending_args;
+#endif
 
 #ifndef CONFIG_HOSTCMD_X86
 /*
@@ -72,6 +75,8 @@ static uint8_t command_pending;
 static uint8_t saved_result = EC_RES_UNAVAILABLE;
 #endif
 
+/* CONFIG_EC_HOST_CMD enables the upstream host command support */
+#ifndef CONFIG_EC_HOST_CMD
 /*
  * Host command args passed to command handler.  Static to keep it off the
  * stack.  Note this means we can handle only one host command at a time.
@@ -80,6 +85,7 @@ static struct host_cmd_handler_args args0;
 
 /* Current host command packet from host, for protocol version 3+ */
 static struct host_packet *pkt0;
+#endif
 
 /*
  * Host command suppress
@@ -100,6 +106,8 @@ uint8_t *host_get_memmap(int offset)
 #endif
 }
 
+/* CONFIG_EC_HOST_CMD enables the upstream host command support */
+#ifndef CONFIG_EC_HOST_CMD
 test_mockable void host_send_response(struct host_cmd_handler_args *args)
 {
 #ifdef CONFIG_HOST_COMMAND_STATUS
@@ -414,6 +422,7 @@ static const struct host_command *find_host_command(int command)
 		return NULL;
 	}
 }
+#endif /* CONFIG_EC_HOST_CMD */
 
 static void host_command_init(void)
 {
@@ -433,6 +442,7 @@ static void host_command_init(void)
 #endif
 }
 
+#ifndef CONFIG_EC_HOST_CMD
 void host_command_task(void *u)
 {
 	timestamp_t t0, t1, t_recess;
@@ -467,6 +477,9 @@ void host_command_task(void *u)
 			usleep(CONFIG_HOSTCMD_RATE_LIMITING_RECESS);
 	}
 }
+#else
+DECLARE_HOOK(HOOK_INIT, host_command_init, HOOK_PRIO_DEFAULT);
+#endif
 
 /*****************************************************************************/
 /* Host commands */
@@ -530,6 +543,7 @@ DECLARE_HOST_COMMAND(EC_CMD_READ_MEMMAP, host_command_read_memmap,
 		     EC_VER_MASK(0));
 #endif
 
+#ifndef CONFIG_EC_HOST_CMD
 static enum ec_status
 host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 {
@@ -566,6 +580,7 @@ static int host_command_is_suppressed(uint16_t cmd)
 #endif
 	return 0;
 }
+#endif /* CONFIG_EC_HOST_CMD */
 
 /*
  * Print & reset suppressed command counters. It should be called periodically
@@ -604,6 +619,7 @@ DECLARE_HOOK(HOOK_SYSJUMP, dump_host_command_suppressed_, HOOK_PRIO_DEFAULT);
 }
 #endif /* CONFIG_SUPPRESSED_HOST_COMMANDS */
 
+#ifndef CONFIG_EC_HOST_CMD
 /**
  * Print debug output for the host command request, before it's processed.
  *
@@ -715,6 +731,7 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 
 	return rv;
 }
+#endif
 
 #ifdef CONFIG_HOST_COMMAND_STATUS
 /* Returns current command status (busy or not) */

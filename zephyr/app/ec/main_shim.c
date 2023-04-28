@@ -13,9 +13,11 @@ void main(void)
 {
 	ec_app_main();
 
-	if (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN)) {
+	if (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN) &&
+	    !IS_ENABLED(CONFIG_EC_HOST_CMD)) {
 		host_command_main();
-	} else if (IS_ENABLED(CONFIG_THREAD_MONITOR)) {
+	} else if (IS_ENABLED(CONFIG_THREAD_MONITOR) ||
+		   IS_ENABLED(CONFIG_TASK_HOSTCMD_UPSTREAM)) {
 		/*
 		 * Avoid returning so that the main stack is displayed by the
 		 * "kernel stacks" shell command.

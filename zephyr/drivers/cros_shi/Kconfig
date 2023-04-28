@@ -6,8 +6,9 @@ if PLATFORM_EC_HOST_INTERFACE_SHI
 
 config CROS_SHI_NPCX
 	bool
-	default y
-	depends on DT_HAS_NUVOTON_NPCX_SHI_ENABLED
+	depends on SOC_FAMILY_NPCX
+	default n if EC_HOST_CMD
+	default y if DT_HAS_NUVOTON_NPCX_SHI_ENABLED
 	help
 	  This option enables Serial Host Interface driver for the NPCX family
 	  of processors. This is used for host-command communication on the
@@ -40,8 +41,9 @@ endif # CROS_SHI_NPCX
 
 config CROS_SHI_IT8XXX2
 	bool
-	default y
-	depends on DT_HAS_ITE_IT8XXX2_SHI_ENABLED
+	depends on SOC_FAMILY_RISCV_ITE
+	default n if EC_HOST_CMD
+	default y if DT_HAS_ITE_IT8XXX2_SHI_ENABLED
 	help
 	  This option enables spi host interface driver which is required to
 	  communicate with the EC when the CPU is the ARM processor.

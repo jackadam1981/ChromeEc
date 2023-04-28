@@ -1544,7 +1544,8 @@ static enum ec_status flash_command_erase(struct host_cmd_handler_args *args)
 
 	switch (cmd) {
 	case FLASH_ERASE_SECTOR:
-#if defined(HAS_TASK_HOSTCMD) && defined(CONFIG_HOST_COMMAND_STATUS)
+#if defined(HAS_TASK_HOSTCMD) && defined(CONFIG_HOST_COMMAND_STATUS) && \
+	!defined(CONFIG_EC_HOST_CMD)
 		args->result = EC_RES_IN_PROGRESS;
 		host_send_response(args);
 #endif

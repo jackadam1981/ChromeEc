@@ -12,6 +12,7 @@
 
 #include <zephyr/init.h>
 #include <zephyr/kernel.h>
+#include <zephyr/mgmt/ec_host_cmd/ec_host_cmd.h>
 #include <zephyr/shell/shell.h>
 #include <zephyr/sys/atomic.h>
 
@@ -104,11 +105,14 @@ k_tid_t get_main_thread(void)
 	return &z_main_thread;
 }
 
+/* CONFIG_EC_HOST_CMD enables upstream host command support */
 test_mockable k_tid_t get_hostcmd_thread(void)
 {
 #ifdef HAS_TASK_HOSTCMD
 	if (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN)) {
 		return get_main_thread();
+	} else if (IS_ENABLED(CONFIG_TASK_HOSTCMD_UPSTREAM)) {
+		return ec_host_cmd_get_hc()->thread_id;
 	}
 	return task_to_k_tid[TASK_ID_HOSTCMD];
 #endif /* HAS_TASK_HOSTCMD */
