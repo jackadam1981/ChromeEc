@@ -31,7 +31,7 @@
 			compatible = "named-usbc-port";
 			reg = <1>;
 			bc12 = <&bc12_port1>;
-			ppc = <&ppc_port1_nxp>;
+			ppc = <&ppc_nxp_port1>;
 			tcpc = <&tcpc_port1>;
 			usb-mux-chain-1 {
 				compatible = "cros-ec,usb-mux-chain";
