@@ -138,6 +138,29 @@
       },
       "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "178ee327_a9ad4241",
+        "filename": "include/config.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 2791,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-28T15:33:43Z",
+      "side": 1,
+      "message": "Does it not compile if you enable it when building for Zephyr? (Since we\u0027re migrating to Zephyr, we\u0027ll probably eventually need it there. If it doesn\u0027t work now, can you create a bug and add a `TODO(b/123)` so we don\u0027t forget?)",
+      "range": {
+        "startLine": 2789,
+        "startChar": 0,
+        "endLine": 2791,
+        "endChar": 37
+      },
+      "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
