@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "821808ba_730100ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-04-28T01:40:30Z",
+      "side": 1,
+      "message": "VCONN is driven by pp5000_z1.\nthe power sequencer monitors pp3300_z1 but not pp5000_z1 to\ngenerate all_sys_pg. is it safe to assume pp5000_z1 comes\nup with pp3300_z1 upon z1_en_rails?\n\nwould it make sense to wait for S5? i\u0027m not sure it makes\nsense to drive VCONN in g3.",
+      "range": {
+        "startLine": 13,
+        "startChar": 23,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9aa904242a1f063acdc2b8242764d22da7163f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
