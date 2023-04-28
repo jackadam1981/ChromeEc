@@ -113,6 +113,7 @@ config PLATFORM_EC_FAN
 config PLATFORM_EC_CUSTOM_FAN_CONTROL
 	bool "Fan custom control support"
 	default n
+	depends on PLATFORM_EC_FAN
 	help
 	  Enable fan custom control to let projects define
 	  their own fan control mechanism by EC.
@@ -120,6 +121,7 @@ config PLATFORM_EC_CUSTOM_FAN_CONTROL
 config PLATFORM_EC_CUSTOM_FAN_DUTY_CONTROL
 	bool "Fan custom control support"
 	default n
+	depends on PLATFORM_EC_FAN
 	help
 	  Enable fan duty custom control to let projects define
 	  their own fan duty control mechanism by implementing
