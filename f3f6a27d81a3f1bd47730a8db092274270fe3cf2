@@ -233,6 +233,30 @@
       },
       "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb02f8e_909eff5f",
+        "filename": "include/config.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 2791,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-04-28T23:00:16Z",
+      "side": 1,
+      "message": "Hmm, I wonder if the issue is that this config should only be in `include/config.h` and not `zephyr/Kconfig`. Does that work?",
+      "parentUuid": "6e7e8439_b2a89023",
+      "range": {
+        "startLine": 2789,
+        "startChar": 0,
+        "endLine": 2791,
+        "endChar": 37
+      },
+      "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
