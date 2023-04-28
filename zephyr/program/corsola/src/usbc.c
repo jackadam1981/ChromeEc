@@ -83,9 +83,11 @@ void usb_a0_interrupt(enum gpio_signal signal)
 
 	const int xhci_stat = gpio_get_level(signal);
 
+#ifdef CONFIG_VARIANT_CORSOLA_USBA
 	for (int i = 0; i < USB_PORT_COUNT; i++) {
 		usb_charge_set_mode(i, mode, USB_ALLOW_SUSPEND_CHARGE);
 	}
+#endif /* CONFIG_VARIANT_CORSOLA_USBA */
 
 	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 		/*
