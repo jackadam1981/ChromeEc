@@ -328,6 +328,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06a38f47_56e1f0a9",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-28T10:49:23Z",
+      "side": 1,
+      "message": "Sure, I\u0027ve reached to the ODM and got the following.\nThat time limit is chosen on a per board basis.\nIt depends on thermal capacity of the heat sink and CPU TDP.\nBasically we need to make sure the fan ramps up fast enough, so that CPU doesn\u0027t throttle.\nI added a comment describing that.",
+      "parentUuid": "ebaff00e_45574c53",
+      "range": {
+        "startLine": 101,
+        "startChar": 45,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9539b6ec_d8305e38",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-28T10:49:23Z",
+      "side": 1,
+      "message": "Sure, I defined that as max rpm in the fan parameters and added a comment.\nThis way it\u0027s way more clear.",
+      "parentUuid": "295a9b0d_818d00b9",
+      "range": {
+        "startLine": 101,
+        "startChar": 37,
+        "endLine": 101,
+        "endChar": 41
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fd4d59f_8f49060e",
         "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
         "patchSetId": 2
@@ -387,6 +435,30 @@
       "side": 1,
       "message": "The source of the original bug is that the fan oscillates, which is annoying to users.\n\nHow are we validating that the fan reaches the desired RPM, but also in a way that matches the intended design? Meaning, that the RPMs climb steadily and stay there, rather than oscillating in a way that would generate feedback reports.",
       "parentUuid": "1606f99e_aec31764",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7728572_cdeb9ceb",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-28T10:49:23Z",
+      "side": 1,
+      "message": "I added an assertion to check for status \u003d\u003d FAN_STATUS_LOCKED.\nThis indicates that the implementation is done with adjusting the fan duty.\nThe osculation would happens with rpm hovering around rpm_target.\nThe implementation would overshoot, correct, undershoot, correct, rinse and repeat.",
+      "parentUuid": "59e2cc36_75341fa2",
       "range": {
         "startLine": 102,
         "startChar": 0,
@@ -499,6 +571,24 @@
       "side": 1,
       "message": "This test is validating the state of the fan, not the **intended** state of the fan.\n\nIf you\u0027d like to keep the `rpm_target` line, then explicitly setting the `duty` should be added as well. Otherwise, it will be confusing for future maintainers of this code if there are failures.",
       "parentUuid": "6ee8b758_b1e5f6a0",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0113686e_02f2cc42",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-04-28T10:49:23Z",
+      "side": 1,
+      "message": "Hmm, ok fair enough. I removed it.",
+      "parentUuid": "b9aabbae_8f8ffb36",
       "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
