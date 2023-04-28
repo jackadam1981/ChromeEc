@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "949837fb_c074b137",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1556,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-04-28T17:40:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bc077010_7db5c797",
+      "revId": "046a2276ca45db81b103a37e9d95729372ba1494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5148ffa_504e390e",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-26T23:25:03Z",
       "side": 1,
       "message": "nit: how about \n\n(reg \u0026 RAA489000_INFO_PPS_MODE) \u0026\u0026 (reg \u0026 RAA489000_INFO_PTM_ACTIVE)",
+      "revId": "046a2276ca45db81b103a37e9d95729372ba1494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11764cb2_88273aef",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1579,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-04-28T17:40:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d5148ffa_504e390e",
       "revId": "046a2276ca45db81b103a37e9d95729372ba1494",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
