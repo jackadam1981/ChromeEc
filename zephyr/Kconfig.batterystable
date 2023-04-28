@@ -1,0 +1,32 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+menuconfig PLATFORM_EC_BATTERY_STBL_STAT
+	bool "Check whether the battery is initialized and stable"
+	depends on PLATFORM_EC_BATTERY
+	help
+	  Enables support for checking the specific battery status to
+	  judge whether the battery is initialized and stable when the battery
+	  wakes up from ship mode.
+
+if PLATFORM_EC_BATTERY_STBL_STAT
+
+config PLATFORM_EC_BATT_STBL_MASK1
+	hex "The battery status mask"
+	default 0x4800
+	help
+	  Use two MASKs to provide logical AND and logical OR options for different
+	  status. Default mask 0x4800 means
+	  (STATUS_TERMINATE_CHARGE_ALARM | STATUS_TERMINATE_DISCHARGE_ALARM),
+	  any one of these two masks is set, the battery state can be considered
+	  stable.
+
+config PLATFORM_EC_BATT_STBL_MASK2
+	hex "The battery status mask"
+	default 0xFF
+	help
+	  Use two MASKs to provide logical AND and logical OR options for different
+	  status. Default mask 0xFF means do not use this mask.
+
+endif  # PLATFORM_EC_BATTERY_STBL_STAT
