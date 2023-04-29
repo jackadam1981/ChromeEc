@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ed4b5b6_231ba67c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-29T02:56:13Z",
+      "side": 1,
+      "message": "It looks good. Please move forward.",
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dcd340f_3c6e73d3",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-29T02:56:13Z",
+      "side": 1,
+      "message": "Maybe just `OLD_IMG`, which is shorter?",
+      "range": {
+        "startLine": 1436,
+        "startChar": 7,
+        "endLine": 1436,
+        "endChar": 19
+      },
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78084eff_29f905d0",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1442,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-29T02:56:13Z",
+      "side": 1,
+      "message": "Similar here, `ec.old.bin`?",
+      "range": {
+        "startLine": 1442,
+        "startChar": 27,
+        "endLine": 1442,
+        "endChar": 42
+      },
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0d108bd_f2e124a3",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-29T02:56:13Z",
+      "side": 1,
+      "message": "Just `current`?",
+      "range": {
+        "startLine": 1547,
+        "startChar": 9,
+        "endLine": 1547,
+        "endChar": 20
+      },
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd3c722_60c99bb4",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-29T02:56:13Z",
+      "side": 1,
+      "message": "`current` here.",
+      "range": {
+        "startLine": 1548,
+        "startChar": 16,
+        "endLine": 1548,
+        "endChar": 19
+      },
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a30d859_115e20a1",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1660,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-04-29T02:56:13Z",
+      "side": 1,
+      "message": "It is the same as `preserve_cbi()`; simply call the `preserve_cbi()`.",
+      "range": {
+        "startLine": 1654,
+        "startChar": 0,
+        "endLine": 1660,
+        "endChar": 1
+      },
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
