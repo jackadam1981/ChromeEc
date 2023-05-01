@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f652a79_76131612",
+        "filename": "zephyr/program/dev/dev.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-05-01T23:04:00Z",
+      "side": 1,
+      "message": "Do we really need this if we\u0027re just adding I2C?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 2
+      },
+      "revId": "510521e3e7f2da35d09a2c51fae6eb402735b917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
