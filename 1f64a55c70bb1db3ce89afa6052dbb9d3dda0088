@@ -16,6 +16,24 @@
       "message": "This pin should default low and pull high when need program this chip.",
       "revId": "1f64a55c70bb1db3ce89afa6052dbb9d3dda0088",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12040d52_e0e42be3",
+        "filename": "board/hades/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-01T20:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35e92e9b_cdfbc473",
+      "revId": "1f64a55c70bb1db3ce89afa6052dbb9d3dda0088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
