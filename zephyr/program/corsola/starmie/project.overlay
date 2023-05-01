@@ -116,7 +116,10 @@
 		 * by alias. Using the alias, each driver creates
 		 * its own <>_INT_EVENT.
 		 */
-		bmi3xx-int = &alt_base_accel;
+		bmi3xx-int = &lid_accel;
+
+		/* Use base accelerometer for body detection */
+		on-body-sensor = &lid_accel;
 	};
 
 	motionsense-mutex {
@@ -143,7 +146,7 @@
 	};
 
 	motionsense-sensor {
-		alt_base_accel: alt-base-accel {
+		lid_accel: lid-accel {
 			compatible = "cros-ec,bmi3xx-accel";
 			status = "okay";
 
@@ -166,7 +169,7 @@
 			};
 		};
 
-		alt_base_gyro: alt-base-gyro {
+		lid_gyro: lid-gyro {
 			compatible = "cros-ec,bmi3xx-gyro";
 			status = "okay";
 
