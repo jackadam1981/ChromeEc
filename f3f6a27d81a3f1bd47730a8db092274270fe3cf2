@@ -281,6 +281,30 @@
       },
       "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbe87f5_c8ddf455",
+        "filename": "include/config.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 2791,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-05-01T16:20:56Z",
+      "side": 1,
+      "message": "I fixed the issue. I followed the instructions @https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig;l\u003d83?q\u003dzephyr%2FKConfig#:~:text\u003d82-,83,-84\n\nThe name for the config in the `KConfig` file was not following the requirement (prefix should be `PLATFORM_EC_`) and this could have been the reason why I had to put it when `Zephyr` was undefined. The CQ is passing now.",
+      "parentUuid": "604a72eb_2ae298e0",
+      "range": {
+        "startLine": 2789,
+        "startChar": 0,
+        "endLine": 2791,
+        "endChar": 37
+      },
+      "revId": "f3f6a27d81a3f1bd47730a8db092274270fe3cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
