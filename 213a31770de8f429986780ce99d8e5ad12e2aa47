@@ -22,6 +22,40 @@
       },
       "revId": "213a31770de8f429986780ce99d8e5ad12e2aa47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1118048d_7b6498da",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-01T20:20:58Z",
+      "side": 1,
+      "message": "Does C0 also need the KTU interrupt?",
+      "revId": "213a31770de8f429986780ce99d8e5ad12e2aa47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c43f3ae9_f240f82c",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-01T20:20:58Z",
+      "side": 1,
+      "message": "Do we anticipate the IO DB sku naming to be shared across variants?  Should this be something like fetching the PPC type that the variants could share more easily?",
+      "revId": "213a31770de8f429986780ce99d8e5ad12e2aa47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
