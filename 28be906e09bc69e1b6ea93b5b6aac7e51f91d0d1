@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "861b31ce_aad8548c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-02T20:28:02Z",
+      "side": 1,
+      "message": "We have both an ECOS and zephyr scripts to ensure the builds are all still equivalent that would be useful to run as a test here.  It\u0027s `util/compare_builds.sh` for ECOS and `zmake compare-builds` for zephyr",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "28be906e09bc69e1b6ea93b5b6aac7e51f91d0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3d62b2a4_bd8d8f47",
