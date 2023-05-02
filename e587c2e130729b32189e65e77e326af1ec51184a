@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12d61bcd_21620a40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2023-05-02T07:33:43Z",
+      "side": 1,
+      "message": "Not battery disconnect, it\u0027s battery cannot found, caused EC cannot find correct battery parameter.",
+      "parentUuid": "c9983b97_a9899de5",
+      "range": {
+        "startLine": 9,
+        "startChar": 35,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "e587c2e130729b32189e65e77e326af1ec51184a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4931f209_565665bf",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
