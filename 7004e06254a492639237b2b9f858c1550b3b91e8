@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f69c20a4_6a41746a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-02T19:53:02Z",
+      "side": 1,
+      "message": "\u003e How certain are you that this is dead code vs a rarely taken branch that happens to have a bug? \n\nThere is no way to execute this code without crashing, which results in a reboot of both the EC and AP for recovery. If that path is still used by any boards, then any gestures will crash the entire device, making gestures unusable. Based on that, removing this code won\u0027t break/regress anything, with the additional benefit of not crashing the entire device if gestures are accidentally triggered.\n\nIf the owners of a board like bugzzy find that some portion of the gesture feature has regressed, the device itself will at least not be crashing while they debug the issue. Additionally, assuming we land this test code, we can also at a minimum verify any fixes don\u0027t introduce any other crashes.",
+      "parentUuid": "d50f73bc_792fc5ea",
+      "range": {
+        "startLine": 13,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "7004e06254a492639237b2b9f858c1550b3b91e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe7ff1eb_24a2cf0b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -91,6 +115,24 @@
       "side": 1,
       "message": "I\u0027m 99.78% sure that if you +2 both of those changes at once, the test coverage report for both is combined.",
       "parentUuid": "58b61671_6fc02efd",
+      "revId": "7004e06254a492639237b2b9f858c1550b3b91e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a34c5927_2cc61419",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-02T19:53:02Z",
+      "side": 1,
+      "message": "Done: https://crrev.com/c/4499747",
+      "parentUuid": "0158fc46_356dd955",
       "revId": "7004e06254a492639237b2b9f858c1550b3b91e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
