@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "341de2b1_9bdee855",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-02T05:53:42Z",
+      "side": 1,
+      "message": "Sorry I forgot cleaning it up, I was trying to do something else here, then forgot cleaning it up",
+      "parentUuid": "3dcd340f_3c6e73d3",
+      "range": {
+        "startLine": 1436,
+        "startChar": 7,
+        "endLine": 1436,
+        "endChar": 19
+      },
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78084eff_29f905d0",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -123,6 +147,30 @@
       "writtenOn": "2023-04-29T02:56:13Z",
       "side": 1,
       "message": "It is the same as `preserve_cbi()`; simply call the `preserve_cbi()`.",
+      "range": {
+        "startLine": 1654,
+        "startChar": 0,
+        "endLine": 1660,
+        "endChar": 1
+      },
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c96952ef_00fb7ffe",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1660,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-02T05:53:42Z",
+      "side": 1,
+      "message": "The idea is to parse all sections, if they are preserved, then call respective section preserve method. It also make sure all args are passed",
+      "parentUuid": "1a30d859_115e20a1",
       "range": {
         "startLine": 1654,
         "startChar": 0,
