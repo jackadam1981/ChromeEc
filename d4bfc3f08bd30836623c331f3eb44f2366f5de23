@@ -16,6 +16,23 @@
       "message": "responded to all comments",
       "revId": "d4bfc3f08bd30836623c331f3eb44f2366f5de23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4facfb4_be8b76f9",
+        "filename": "include/config.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 2793,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T23:21:44Z",
+      "side": 1,
+      "message": "nit: Remove this extra line",
+      "revId": "d4bfc3f08bd30836623c331f3eb44f2366f5de23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
