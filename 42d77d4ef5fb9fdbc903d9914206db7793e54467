@@ -75,6 +75,30 @@
       },
       "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f2d7a64_4cec723b",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-02T18:52:15Z",
+      "side": 1,
+      "message": "It looks similar at first but there are some sizable differences between how the npcx9 and stm32 handle trng. There are a few identical (or near identical) functions such as `trng_rand_bytes`, `command_rand`, and `host_command_rand` so maybe the better option is to abstract those functions out?  It might make sense to move them into a new `common/trng.c` as I don\u0027t believe there is anything chip specific about them.",
+      "parentUuid": "5eb9265f_93fdde9f",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 0
+      },
+      "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
