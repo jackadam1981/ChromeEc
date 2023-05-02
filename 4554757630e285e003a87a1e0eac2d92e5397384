@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f08d218_63bbbb9d",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 139
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T22:28:31Z",
+      "side": 1,
+      "message": "For clarity, let\u0027s break this into separate functions (which this function will call):\n\n1. Function to generate a new key (return `bssl::UniquePtr\u003cEC_KEY\u003e`)\n2. Function to fill in the `pubkey` `struct` given the key\n3. Function to fill the `encrypted_private_key` struct given the key.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "4554757630e285e003a87a1e0eac2d92e5397384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2763c8f5_b6e69d48",
         "filename": "include/ec_commands.h",
         "patchSetId": 139
