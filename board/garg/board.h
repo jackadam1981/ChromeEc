@@ -71,6 +71,9 @@
 #undef CONFIG_CONSOLE_HISTORY
 #define CONFIG_USB_PD_DEBUG_LEVEL 0
 
+/* Free up more flash. */
+#undef CONFIG_CMD_ACCELSPOOF
+
 #ifndef __ASSEMBLER__
 
 /* support factory keyboard test */

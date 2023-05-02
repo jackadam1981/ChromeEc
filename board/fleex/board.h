@@ -74,6 +74,9 @@
 /* SYV682 isn't connected to CC, so TCPC must provide VCONN */
 #define CONFIG_USBC_PPC_SYV682X_NO_CC
 
+/* Free up more flash. */
+#undef CONFIG_CMD_ACCELSPOOF
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
