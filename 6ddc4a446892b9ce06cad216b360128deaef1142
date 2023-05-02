@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b623cf_8f5770ae",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-05-02T15:49:24Z",
+      "side": 1,
+      "message": "Nice comment!",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 5
+      },
+      "revId": "6ddc4a446892b9ce06cad216b360128deaef1142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "559ae361_ca3a58ab",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-05-02T15:49:24Z",
+      "side": 1,
+      "message": "Thank you for including a single clean reset function in your main code.\n\nIn cases where my before/after functions are identical I just declare a single `static void reset (void *fixture)` and pass it into ZTEST_SUITE twice, but NBD.",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "6ddc4a446892b9ce06cad216b360128deaef1142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
