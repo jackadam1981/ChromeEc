@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d50f73bc_792fc5ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-05-02T19:12:45Z",
+      "side": 1,
+      "message": "How certain are you that this is dead code vs a rarely taken branch that happens to have a bug? There is a legacy board (bugzzy) that enables both CONFIG_GESTURE_DETECTION and CONFIG_GESTURE_HOST_DETECTION",
+      "range": {
+        "startLine": 13,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "7004e06254a492639237b2b9f858c1550b3b91e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe7ff1eb_24a2cf0b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -32,6 +55,24 @@
       "side": 1,
       "message": "All other zephyr changes require the tests to land with them, so the line counts are validated. We also typically land tests with changes, to prove that the change is good.\n\nWhy do we want to do that differently here?",
       "parentUuid": "fe7ff1eb_24a2cf0b",
+      "revId": "7004e06254a492639237b2b9f858c1550b3b91e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58b61671_6fc02efd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-05-02T19:12:45Z",
+      "side": 1,
+      "message": "We want to see new/modified features merge in with tests[1] but in this case, the first CL would just be removing code and the second would be tests for something else\n\n1. Sometimes they do end up in a subsequent CL and this is an acceptable use of the `LOW_COVERAGE_REASON\u003d` line in the commit msg, as long as they actually exist and are ready.",
+      "parentUuid": "5e03c395_ead9ae7e",
       "revId": "7004e06254a492639237b2b9f858c1550b3b91e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
