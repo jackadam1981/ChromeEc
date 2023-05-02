@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "94305b51_36a9de1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T18:24:22Z",
+      "side": 1,
+      "message": "I agree with Bobby here. Generally, the minimum bar for new code that is submitted is that it compiles (ideally it should also have tests). \"Stacking\" commits as Bobby describes is generally the way this is done throughout ChromeOS. It allows further development (new changes can be added even if older ones are pending), and makes it easy for others to test out changes (e.g., if I wanted to do a `helipilot` build before everything was fully submitted I would just need to use the \"download\" command in gerrit on the commit at the top of the stack to get all the changes.)\n\nThere is definitely a learning curve for dealing with git/gerrit, but once you get the hang of it, stacking the changes in this manner works very well. [This doc](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/git_and_gerrit_intro.md) may help and Bobby can also answer any questions you have on the workflow.",
+      "parentUuid": "af473267_1221e7c9",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d9aefbd4_551f95dc",
