@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1187ab0f_54833512",
+        "filename": "zephyr/program/corsola/ite_usbc.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-02T09:43:54Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "b3809829_f0ebbd80",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "ff68e95e9333c427682180ba4d6494286686060b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83767e0d_cebacea3",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b7b1f2b_59b36cf7",
+        "filename": "zephyr/program/corsola/src/usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-02T09:43:54Z",
+      "side": 1,
+      "message": "Ok, than we just make the macro guard\n\n```\n\tfor (int i \u003d 0; i \u003c USB_PORT_COUNT; i++) {\n\t\tusb_charge_set_mode(i, mode, USB_ALLOW_SUSPEND_CHARGE);\n\t}\n```",
+      "parentUuid": "83767e0d_cebacea3",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 21
+      },
+      "revId": "ff68e95e9333c427682180ba4d6494286686060b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ca6d49a_e7262a0a",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-05-02T09:30:23Z",
       "side": 1,
       "message": "add space around tokens",
+      "range": {
+        "startLine": 194,
+        "startChar": 3,
+        "endLine": 194,
+        "endChar": 35
+      },
+      "revId": "ff68e95e9333c427682180ba4d6494286686060b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e39a8f_c79a20bb",
+        "filename": "zephyr/program/corsola/starmie/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-02T09:43:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ca6d49a_e7262a0a",
       "range": {
         "startLine": 194,
         "startChar": 3,
