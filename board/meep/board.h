@@ -62,6 +62,7 @@
 
 /* Free up more flash. */
 #undef CONFIG_CMD_ADC
+#undef CONFIG_CMD_ACCELSPOOF
 
 #ifndef __ASSEMBLER__
 

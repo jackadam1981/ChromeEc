@@ -61,6 +61,7 @@
 
 /* Free up more flash. */
 #undef CONFIG_CMD_ADC
+#undef CONFIG_CMD_ACCELSPOOF
 
 #ifndef __ASSEMBLER__
 
@@ -108,4 +109,5 @@ enum battery_type {
 
 #endif /* !__ASSEMBLER__ */
 
+#undef CONFIG_CMD_ALS
 #endif /* __CROS_EC_BOARD_H */
