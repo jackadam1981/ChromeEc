@@ -37,6 +37,18 @@ extern "C" {
 #include <algorithm>
 #include <array>
 
+extern "C" void CRYPTO_sysrand(uint8_t *out, size_t requested)
+{
+	trng_init();
+	trng_rand_bytes(out, requested);
+	trng_exit();
+}
+
+extern "C" void CRYPTO_sysrand_for_seed(uint8_t *out, size_t requested)
+{
+	return CRYPTO_sysrand(out, requested);
+}
+
 BUILD_ASSERT(FP_PAIRING_KEY_LEN == SHA256_DIGEST_SIZE);
 BUILD_ASSERT(FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN == 32);
 BUILD_ASSERT(FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN == 32);
@@ -87,69 +99,38 @@ fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 	r->encrypted_private_key.info.struct_version =
 		FP_PAIRING_KEY_ENC_METADATA_VERSION;
 	trng_init();
-	trng_rand_bytes(r->encrypted_private_key.data,
-			FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN);
 	trng_rand_bytes(r->encrypted_private_key.info.nonce,
 			FP_PAIRING_KEY_NONCE_BYTES);
 	trng_rand_bytes(r->encrypted_private_key.info.encryption_salt,
 			FP_PAIRING_KEY_ENCRYPTION_SALT_BYTES);
 	trng_exit();
 
-	bssl::UniquePtr<EC_GROUP> group(
-		EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
+	bssl::UniquePtr<EC_KEY> ecdh_key(
+		EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
 
-	if (group == nullptr) {
+	if (ecdh_key == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<BIGNUM> secret(
-		BN_bin2bn(r->encrypted_private_key.data,
-			  FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN, nullptr));
-
-	if (secret == nullptr) {
+	if (EC_KEY_generate_key(ecdh_key.get()) != 1) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<EC_POINT> public_point(EC_POINT_new(group.get()));
-
-	if (public_point == nullptr) {
+	if (EC_KEY_priv2oct(ecdh_key.get(), r->encrypted_private_key.data,
+			    FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN) !=
+	    FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	if (EC_POINT_mul(group.get(), public_point.get(), secret.get(), nullptr,
-			 nullptr, nullptr) != 1) {
+	uint8_t *pubkey_ptr = nullptr;
+	if (EC_KEY_key2buf(ecdh_key.get(), POINT_CONVERSION_UNCOMPRESSED,
+			   &pubkey_ptr, nullptr) !=
+	    FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN * 2 + 1) {
 		return EC_RES_UNAVAILABLE;
 	}
-
-	bssl::UniquePtr<BIGNUM> x_bn(BN_new());
-
-	if (x_bn == nullptr) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	bssl::UniquePtr<BIGNUM> y_bn(BN_new());
-
-	if (y_bn == nullptr) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (EC_POINT_get_affine_coordinates_GFp(group.get(), public_point.get(),
-						x_bn.get(), y_bn.get(),
-						nullptr) != 1) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (BN_bn2binpad(x_bn.get(), r->pubkey.x,
-			 FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) !=
-	    FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (BN_bn2binpad(y_bn.get(), r->pubkey.y,
-			 FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) !=
-	    FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) {
-		return EC_RES_UNAVAILABLE;
-	}
+	bssl::UniquePtr<uint8_t> pubkey_data(pubkey_ptr);
+	memcpy(&r->pubkey, pubkey_data.get() + 1,
+	       FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN * 2);
 
 	uint8_t key[SBP_ENC_KEY_LEN];
 	int ret = derive_encryption_key(
