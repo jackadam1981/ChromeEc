@@ -99,6 +99,30 @@
       },
       "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da3b4901_9a6d64c1",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T18:54:25Z",
+      "side": 1,
+      "message": "Yes, that was exactly what I was suggesting. (I only highlighted part of the code, but long highlights aren\u0027t very obvious in gerrit.)",
+      "parentUuid": "1f2d7a64_4cec723b",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 0
+      },
+      "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
