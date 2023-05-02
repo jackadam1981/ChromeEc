@@ -61,8 +61,8 @@ static enum vendor_cmd_rc report_tpm_state(enum vendor_cmd_cc code,
 	serialize_u32(&state->version, TPM_STATE_VERSION);
 	serialize_u32(&state->fail_code, s_failCode);
 	serialize_u32(&state->fail_line, s_failLine);
-	serialize_u32(&state->failed_tries, gp.failedTries);
-	serialize_u32(&state->max_tries, gp.maxTries);
+	serialize_u32(&state->failed_tries, 0);
+	serialize_u32(&state->max_tries, 200);
 	if (s_failFunction)
 		memcpy(state->func_name, (void *)&s_failFunction,
 		       sizeof(state->func_name));
