@@ -16,6 +16,29 @@
       "message": "Adding Keith for opinions about how config.h should be interacting with Kconfig here",
       "revId": "28be906e09bc69e1b6ea93b5b6aac7e51f91d0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c115bac_0d2d27dd",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6331,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-02T20:00:59Z",
+      "side": 1,
+      "message": "I recommend wrapping this section with `#ifndef CONFIG_ZEPHYR` instead.\n\nKconfig already ensures that the CONFIG_USH_PD_VBUS_MEASURE_* options are mutually exclusive.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/Kconfig.pd_meas_vbus;l\u003d8\n\nThe checks done here only apply to legacy boards.",
+      "range": {
+        "startLine": 6301,
+        "startChar": 0,
+        "endLine": 6331,
+        "endChar": 0
+      },
+      "revId": "28be906e09bc69e1b6ea93b5b6aac7e51f91d0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
