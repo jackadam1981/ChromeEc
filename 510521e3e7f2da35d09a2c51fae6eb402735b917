@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b04f504e_b2d4b197",
+        "filename": "zephyr/program/dev/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-05-02T17:03:59Z",
+      "side": 1,
+      "message": "Thanks for helping with this at my desk just now!\n\nJust to record what we found...twister does do this automatically but zmake apparently does not. We have instead (e,g, in herobrine) this fragment in the BUILD.py directory:\n\n        dts_overlays\u003d[\n            here / project_name / \"project.overlay\",\n        ],\n\nSo it seems we must be explicit with it here.",
+      "parentUuid": "3a78bf16_a0b974c8",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "510521e3e7f2da35d09a2c51fae6eb402735b917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f652a79_76131612",
         "filename": "zephyr/program/dev/dev.dtsi",
         "patchSetId": 1
