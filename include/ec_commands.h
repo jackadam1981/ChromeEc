@@ -7778,7 +7778,7 @@ struct ec_response_fp_establish_pairing_key_keygen {
 	struct {
 		uint8_t x[FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN];
 		uint8_t y[FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN];
-	} pubkey;
+	} __packed pubkey;
 	struct {
 		struct ec_fp_pairing_key_encryption_metadata info;
 		uint8_t data[FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN];
@@ -7791,7 +7791,7 @@ struct ec_params_fp_establish_pairing_key_wrap {
 	struct {
 		uint8_t x[FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN];
 		uint8_t y[FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN];
-	} peers_pubkey;
+	} __packed peers_pubkey;
 	struct {
 		struct ec_fp_pairing_key_encryption_metadata info;
 		uint8_t data[FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN];
@@ -7844,14 +7844,14 @@ struct ec_params_fp_read_match_secret_with_pubkey {
 	struct {
 		uint8_t x[FP_EC_PUBLIC_KEY_LEN];
 		uint8_t y[FP_EC_PUBLIC_KEY_LEN];
-	} pubkey;
+	} __packed pubkey;
 } __ec_align4;
 
 struct ec_response_fp_read_match_secret_with_pubkey {
 	struct {
 		uint8_t x[FP_EC_PUBLIC_KEY_LEN];
 		uint8_t y[FP_EC_PUBLIC_KEY_LEN];
-	} pubkey;
+	} __packed pubkey;
 	uint8_t iv[FP_EC_PUBLIC_KEY_IV_LEN];
 	uint8_t enc_secret[FP_POSITIVE_MATCH_SECRET_BYTES];
 } __ec_align4;

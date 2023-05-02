@@ -9,8 +9,11 @@
 #include "openssl/aes.h"
 #include "openssl/bn.h"
 #include "openssl/ec.h"
+#include "openssl/ecdh.h"
 #include "openssl/mem.h"
 #include "openssl/obj_mac.h"
+
+#include <cstring>
 
 extern "C" {
 #include "common.h"
@@ -36,6 +39,18 @@ extern "C" {
 
 #include <algorithm>
 #include <array>
+
+extern "C" void CRYPTO_sysrand(uint8_t *out, size_t requested)
+{
+	trng_init();
+	trng_rand_bytes(out, requested);
+	trng_exit();
+}
+
+extern "C" void CRYPTO_sysrand_for_seed(uint8_t *out, size_t requested)
+{
+	return CRYPTO_sysrand(out, requested);
+}
 
 BUILD_ASSERT(FP_PAIRING_KEY_LEN == SHA256_DIGEST_SIZE);
 BUILD_ASSERT(FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN == 32);
@@ -87,69 +102,40 @@ fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 	r->encrypted_private_key.info.struct_version =
 		FP_PAIRING_KEY_ENC_METADATA_VERSION;
 	trng_init();
-	trng_rand_bytes(r->encrypted_private_key.data,
-			FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN);
 	trng_rand_bytes(r->encrypted_private_key.info.nonce,
 			FP_PAIRING_KEY_NONCE_BYTES);
 	trng_rand_bytes(r->encrypted_private_key.info.encryption_salt,
 			FP_PAIRING_KEY_ENCRYPTION_SALT_BYTES);
 	trng_exit();
 
-	bssl::UniquePtr<EC_GROUP> group(
-		EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
+	bssl::UniquePtr<EC_KEY> ecdh_key(
+		EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
 
-	if (group == nullptr) {
+	if (ecdh_key == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<BIGNUM> secret(
-		BN_bin2bn(r->encrypted_private_key.data,
-			  FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN, nullptr));
-
-	if (secret == nullptr) {
+	if (EC_KEY_generate_key(ecdh_key.get()) != 1) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<EC_POINT> public_point(EC_POINT_new(group.get()));
-
-	if (public_point == nullptr) {
+	if (EC_KEY_priv2oct(ecdh_key.get(), r->encrypted_private_key.data,
+			    FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN) !=
+	    FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	if (EC_POINT_mul(group.get(), public_point.get(), secret.get(), nullptr,
-			 nullptr, nullptr) != 1) {
+	/* POINT_CONVERSION_UNCOMPRESSED indicates that the point is encoded as
+	 * z||x||y, where z is the octet 0x04. */
+	uint8_t *pubkey_ptr = nullptr;
+	if (EC_KEY_key2buf(ecdh_key.get(), POINT_CONVERSION_UNCOMPRESSED,
+			   &pubkey_ptr, nullptr) !=
+	    FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN * 2 + 1) {
 		return EC_RES_UNAVAILABLE;
 	}
-
-	bssl::UniquePtr<BIGNUM> x_bn(BN_new());
-
-	if (x_bn == nullptr) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	bssl::UniquePtr<BIGNUM> y_bn(BN_new());
-
-	if (y_bn == nullptr) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (EC_POINT_get_affine_coordinates_GFp(group.get(), public_point.get(),
-						x_bn.get(), y_bn.get(),
-						nullptr) != 1) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (BN_bn2binpad(x_bn.get(), r->pubkey.x,
-			 FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) !=
-	    FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (BN_bn2binpad(y_bn.get(), r->pubkey.y,
-			 FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) !=
-	    FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) {
-		return EC_RES_UNAVAILABLE;
-	}
+	bssl::UniquePtr<uint8_t> pubkey_data(pubkey_ptr);
+	memcpy(&r->pubkey, pubkey_data.get() + 1,
+	       FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN * 2);
 
 	uint8_t key[SBP_ENC_KEY_LEN];
 	int ret = derive_encryption_key(
@@ -215,75 +201,42 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<EC_GROUP> group(
-		EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
+	bssl::UniquePtr<EC_KEY> ecdh_key(
+		EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
 
-	if (group == nullptr) {
+	if (ecdh_key == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<BIGNUM> private_key(
-		BN_bin2bn(privkey, FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN, nullptr));
-
-	if (private_key == nullptr) {
+	if (EC_KEY_oct2priv(ecdh_key.get(), privkey,
+			    FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN) != 1) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<BIGNUM> public_key_x(
-		BN_bin2bn(params->peers_pubkey.x,
-			  FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN, nullptr));
+	const EC_GROUP *group = EC_KEY_get0_group(ecdh_key.get());
 
-	if (public_key_x == nullptr) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	bssl::UniquePtr<BIGNUM> public_key_y(
-		BN_bin2bn(params->peers_pubkey.y,
-			  FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN, nullptr));
-
-	if (public_key_y == nullptr) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	bssl::UniquePtr<EC_POINT> public_point(EC_POINT_new(group.get()));
+	bssl::UniquePtr<EC_POINT> public_point(EC_POINT_new(group));
 
 	if (public_point == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	if (EC_POINT_set_affine_coordinates_GFp(
-		    group.get(), public_point.get(), public_key_x.get(),
-		    public_key_y.get(), nullptr) != 1) {
+	/* POINT_CONVERSION_UNCOMPRESSED format point. */
+	uint8_t public_point_buf[FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN * 2 + 1];
+	public_point_buf[0] = POINT_CONVERSION_UNCOMPRESSED;
+	memcpy(public_point_buf + 1, &params->peers_pubkey,
+	       FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN * 2);
+
+	if (EC_POINT_oct2point(group, public_point.get(), public_point_buf,
+			       sizeof(public_point_buf), nullptr) != 1) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	if (EC_POINT_mul(group.get(), public_point.get(), nullptr,
-			 public_point.get(), private_key.get(), nullptr) != 1) {
+	if (ECDH_compute_key_fips(r->encrypted_pairing_key.data,
+				  FP_PAIRING_KEY_LEN, public_point.get(),
+				  ecdh_key.get()) != 1) {
 		return EC_RES_UNAVAILABLE;
 	}
-
-	if (EC_POINT_get_affine_coordinates_GFp(
-		    group.get(), public_point.get(), public_key_x.get(),
-		    public_key_y.get(), nullptr) != 1) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (BN_bn2binpad(public_key_x.get(), r->encrypted_pairing_key.data,
-			 FP_PAIRING_KEY_LEN) != FP_PAIRING_KEY_LEN) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	struct sha256_ctx ctx;
-
-	SHA256_init(&ctx);
-	SHA256_update(&ctx, r->encrypted_pairing_key.data, FP_PAIRING_KEY_LEN);
-	uint8_t *sha256_result = SHA256_final(&ctx);
-
-	memcpy(r->encrypted_pairing_key.data, sha256_result,
-	       FP_PAIRING_KEY_LEN);
-
-	/* Clear the context that contain pairing key. */
-	OPENSSL_cleanse(&ctx, sizeof(ctx));
 
 	r->encrypted_pairing_key.info.struct_version =
 		FP_PAIRING_KEY_ENC_METADATA_VERSION;
@@ -468,111 +421,55 @@ fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
 	trng_rand_bytes(response->iv, FP_EC_PUBLIC_KEY_IV_LEN);
 	trng_exit();
 
-	bssl::UniquePtr<EC_GROUP> group(
-		EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
-	if (group == nullptr) {
+	bssl::UniquePtr<EC_KEY> ecdh_key(
+		EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
+
+	if (ecdh_key == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<BIGNUM> private_key(
-		BN_bin2bn(privkey, FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN, nullptr));
-
-	if (private_key == nullptr) {
+	if (EC_KEY_generate_key(ecdh_key.get()) != 1) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<EC_POINT> public_point(EC_POINT_new(group.get()));
+	/* POINT_CONVERSION_UNCOMPRESSED indicates that the point is encoded as
+	 * z||x||y, where z is the octet 0x04. */
+	uint8_t *pubkey_ptr = nullptr;
+	if (EC_KEY_key2buf(ecdh_key.get(), POINT_CONVERSION_UNCOMPRESSED,
+			   &pubkey_ptr, nullptr) !=
+	    FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN * 2 + 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+	bssl::UniquePtr<uint8_t> pubkey_data(pubkey_ptr);
+	memcpy(&response->pubkey, pubkey_data.get() + 1,
+	       FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN * 2);
+
+	const EC_GROUP *group = EC_KEY_get0_group(ecdh_key.get());
+
+	bssl::UniquePtr<EC_POINT> public_point(EC_POINT_new(group));
 
 	if (public_point == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	if (EC_POINT_mul(group.get(), public_point.get(), private_key.get(),
-			 nullptr, nullptr, nullptr) != 1) {
+	/* POINT_CONVERSION_UNCOMPRESSED format point. */
+	uint8_t public_point_buf[FP_EC_PUBLIC_KEY_LEN * 2 + 1];
+	public_point_buf[0] = POINT_CONVERSION_UNCOMPRESSED;
+	memcpy(public_point_buf + 1, &params->pubkey, FP_EC_PUBLIC_KEY_LEN * 2);
+
+	if (EC_POINT_oct2point(group, public_point.get(), public_point_buf,
+			       sizeof(public_point_buf), nullptr) != 1) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<BIGNUM> x_bn(BN_new());
-
-	if (x_bn == nullptr) {
+	uint8_t enc_key[SHA256_DIGEST_SIZE];
+	if (ECDH_compute_key_fips(enc_key, SHA256_DIGEST_SIZE,
+				  public_point.get(), ecdh_key.get()) != 1) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	bssl::UniquePtr<BIGNUM> y_bn(BN_new());
-
-	if (y_bn == nullptr) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (EC_POINT_get_affine_coordinates_GFp(group.get(), public_point.get(),
-						x_bn.get(), y_bn.get(),
-						nullptr) != 1) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (BN_bn2binpad(x_bn.get(), response->pubkey.x,
-			 FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) !=
-	    FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (BN_bn2binpad(y_bn.get(), response->pubkey.y,
-			 FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) !=
-	    FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	bssl::UniquePtr<BIGNUM> public_key_x(BN_bin2bn(
-		params->pubkey.x, FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN, nullptr));
-
-	if (public_key_x == nullptr) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	bssl::UniquePtr<BIGNUM> public_key_y(BN_bin2bn(
-		params->pubkey.y, FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN, nullptr));
-
-	if (public_key_y == nullptr) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (EC_POINT_set_affine_coordinates_GFp(
-		    group.get(), public_point.get(), public_key_x.get(),
-		    public_key_y.get(), nullptr) != 1) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (EC_POINT_mul(group.get(), public_point.get(), nullptr,
-			 public_point.get(), private_key.get(), nullptr) != 1) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	if (EC_POINT_get_affine_coordinates_GFp(
-		    group.get(), public_point.get(), public_key_x.get(),
-		    public_key_y.get(), nullptr) != 1) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	uint8_t share_secret[FP_POSITIVE_MATCH_SECRET_BYTES];
-
-	if (BN_bn2binpad(public_key_x.get(), share_secret,
-			 FP_POSITIVE_MATCH_SECRET_BYTES) !=
-	    FP_POSITIVE_MATCH_SECRET_BYTES) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	/* Clear the private key. */
-	OPENSSL_cleanse(privkey, sizeof(privkey));
-
-	/* Sha256 the share_secret. */
-	struct sha256_ctx ctx;
-
-	SHA256_init(&ctx);
-	SHA256_update(&ctx, share_secret, FP_POSITIVE_MATCH_SECRET_BYTES);
-
-	uint8_t *tmp = SHA256_final(&ctx);
 	AES_KEY aes_key;
-	int res = AES_set_encrypt_key(tmp, 256, &aes_key);
+	int res = AES_set_encrypt_key(enc_key, 256, &aes_key);
 
 	if (res) {
 		CPRINTS("Failed to set encryption key: %d", res);
@@ -583,7 +480,7 @@ fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
 
 	memcpy(aes_iv, response->iv, FP_EC_PUBLIC_KEY_IV_LEN);
 
-	enum ec_status status = fp_read_match_secret(fgr, share_secret);
+	enum ec_status status = fp_read_match_secret(fgr, response->enc_secret);
 	if (status != EC_RES_SUCCESS) {
 		return status;
 	}
@@ -592,13 +489,12 @@ fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
 	uint8_t ecount_buf[AES_BLOCK_SIZE];
 
 	/* The AES CTR used the same function for encryption & decryption. */
-	AES_ctr128_encrypt(share_secret, response->enc_secret,
+	AES_ctr128_encrypt(response->enc_secret, response->enc_secret,
 			   FP_CONTEXT_USERID_LEN, &aes_key, aes_iv, ecount_buf,
 			   &block_num);
 
 	/* Clear the key material. */
 	OPENSSL_cleanse(&aes_key, sizeof(aes_key));
-	OPENSSL_cleanse(&ctx, sizeof(ctx));
 
 	args->response_size = sizeof(*response);
 
