@@ -22,6 +22,52 @@
       },
       "revId": "d7b3d9e887936faf0a08cf601b385e852c3ceb3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c04b82aa_bc1e07b6",
+        "filename": "util/presubmit_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-02T18:37:18Z",
+      "side": 1,
+      "message": "There\u0027s exceptions for `typing` module from-imports: https://github.com/google/styleguide/blob/gh-pages/pyguide.md#typing-imports\n\nBut not `contextlib`.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "d7b3d9e887936faf0a08cf601b385e852c3ceb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff041524_9808c672",
+        "filename": "util/presubmit_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-02T18:37:18Z",
+      "side": 1,
+      "message": "I don\u0027t think we should be combining multiple pre-upload checks into a single Python file.  It\u0027s better if they\u0027re split up.\n\nThe name `presubmit_check.sh` was bad to begin with...\n\n`pre-upload.py` will run checks in parallel, which is an advantage of having it split across multiple files (besides the obvious maintenance advantages).",
+      "range": {
+        "startLine": 92,
+        "startChar": 19,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "d7b3d9e887936faf0a08cf601b385e852c3ceb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
