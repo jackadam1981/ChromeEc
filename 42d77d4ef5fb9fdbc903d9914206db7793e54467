@@ -16,6 +16,24 @@
       "message": "Since `BOARD\u003dhelipilot` doesn\u0027t exist yet, I changed the TEST to run `compare_build`. Note that due to unrelated issues I had to use `ALLOW_CONFIG\u003d1` to successfully build all targets.",
       "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "649cc35c_378fbb0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-02T16:22:34Z",
+      "side": 1,
+      "message": "And now the CL tells me it is missing Core-Review again, though I\u0027ve voted +1 twice and you voted +2 on this. Not sure what the issue is, still new to the process...",
+      "tag": "mailMessageId\u003d\u003cCADujmoF\u003dgXfAQzoh8SbcjKsxEPmSC33agH9AxEBtU4wTa6HDeg@mail.gmail.com\u003e",
+      "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
