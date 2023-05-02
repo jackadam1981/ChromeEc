@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a173ec24_9b1cd37a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T22:24:00Z",
+      "side": 1,
+      "message": "\"PAIRING_KEY\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "2750e94641bbd541943ab33199353d04c43548d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6de4352_29ae6115",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T22:24:00Z",
+      "side": 1,
+      "message": "For clarity, let\u0027s break this into two standalone functions (that this function can call):\n\n1. Derive the pairing key from the peer\u0027s public key\n2. \"Wrap\" (encrypt) the resulting key.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 37
+      },
+      "revId": "2750e94641bbd541943ab33199353d04c43548d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
