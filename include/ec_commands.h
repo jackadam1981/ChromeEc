@@ -7778,7 +7778,7 @@ struct ec_response_fp_establish_pairing_key_keygen {
 	struct {
 		uint8_t x[FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN];
 		uint8_t y[FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN];
-	} pubkey;
+	} __packed pubkey;
 	struct {
 		struct ec_fp_pairing_key_encryption_metadata info;
 		uint8_t data[FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN];
