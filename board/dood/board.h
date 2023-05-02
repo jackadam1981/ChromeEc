@@ -59,6 +59,9 @@
 /* prevent pd reset when battery soc under 2% */
 #define CONFIG_USB_PD_RESET_MIN_BATT_SOC 2
 
+/* Free up more flash. */
+#undef CONFIG_CMD_ACCELSPOOF
+
 #ifndef __ASSEMBLER__
 
 /* support factory keyboard test */
@@ -105,4 +108,5 @@ enum battery_type {
 
 #endif /* !__ASSEMBLER__ */
 
+#undef CONFIG_CMD_ALS
 #endif /* __CROS_EC_BOARD_H */

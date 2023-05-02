@@ -60,6 +60,13 @@
 #define CONFIG_USB_PD_TCPM_MULTI_PS8XXX
 #define CONFIG_USB_PD_TCPM_PS8755
 
+<<<<<<< PATCH SET (5cb91d octopus: Undef CONFIG_CMD_ACCELSPOOF)
+/* Free up more flash. */
+#undef CONFIG_CMD_ADC
+#undef CONFIG_CMD_ACCELSPOOF
+
+=======
+>>>>>>> BASE      (7180ad rex: Enable TCPC reset and PPC interrupt based on USB DB typ)
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
