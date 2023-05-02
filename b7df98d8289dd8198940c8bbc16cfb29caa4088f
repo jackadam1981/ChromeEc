@@ -16,6 +16,24 @@
       "message": "It seems that the CHECK_ALLOWED error for CONFIG_INA3221 is fixed by the CL:https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4490505.\nI rebase this patch again to make sure it is after the CL:4490505.\nHope the CQ dry run can pass after the rebase.\nOtherwise, please share the error message for the analysis.",
       "revId": "b7df98d8289dd8198940c8bbc16cfb29caa4088f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7431b1fe_84bc3077",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-05-02T06:37:23Z",
+      "side": 1,
+      "message": "It seems that I cannot Code-review+1 and CQ+1 by myself.\n@David, could you help CQ+1 to dry run the build?",
+      "parentUuid": "b7c836ad_377bbc62",
+      "revId": "b7df98d8289dd8198940c8bbc16cfb29caa4088f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
