@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d2d0287_8ba8b4fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-02T21:58:34Z",
+      "side": 1,
+      "message": "It seems undefining CONFIG_CMD_ADC also removes EC_CMD_ADC_READ. It would be nice to only disable the \u0027adc\u0027 console command. WDYT?",
+      "revId": "ee868c0ff654f74494b79fef237fe99b6fc9abb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
