@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a78bf16_a0b974c8",
+        "filename": "zephyr/program/dev/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-05-02T04:13:44Z",
+      "side": 1,
+      "message": "Does zmake not support the Zephyr standard `boards/\u003cboard_name\u003e.overlay` for this?",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "510521e3e7f2da35d09a2c51fae6eb402735b917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f652a79_76131612",
         "filename": "zephyr/program/dev/dev.dtsi",
         "patchSetId": 1
