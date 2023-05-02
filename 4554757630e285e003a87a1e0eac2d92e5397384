@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2763c8f5_b6e69d48",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 139
+      },
+      "lineNbr": 7773,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T22:12:08Z",
+      "side": 1,
+      "message": "`FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN` seems like the wrong name. This is just a single point, not the entire public key. Maybe something like `EC_PAIRING_KEY_EC_PUBLIC_KEY_POINT_LEN`?",
+      "range": {
+        "startLine": 7773,
+        "startChar": 12,
+        "endLine": 7773,
+        "endChar": 44
+      },
+      "revId": "4554757630e285e003a87a1e0eac2d92e5397384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9a4c48_ce1b448a",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 139
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T22:12:08Z",
+      "side": 1,
+      "message": "Can you change the type of `rv` to `enum ec_status` to avoid the implicit conversion? You\u0027ll have to propagate the type through.\n\nExample: https://crrev.com/c/3872807\n\nCan you also change the place where you copied this code from in a separate CL?",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "4554757630e285e003a87a1e0eac2d92e5397384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d39798f_6a7c4ca1",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 139
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T22:12:08Z",
+      "side": 1,
+      "message": "Can you change the return type of the function to `enum ec_error_list` so that we avoid the implicit conversion?",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "4554757630e285e003a87a1e0eac2d92e5397384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b47cc19f_5bab6a12",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 139
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T22:12:08Z",
+      "side": 1,
+      "message": "Can you add a check that the key returned is valid?\n\nIt looks like there are [`boringssl` APIs to do this](https://source.chromium.org/chromium/chromium/src/+/main:third_party/boringssl/src/include/openssl/ec_key.h;l\u003d164-173;drc\u003d29723828eca43b2dfa5fe476edc4e01ca8072d2a). It looks like those functions will only test the public key if the private key is not set (which we can\u0027t easily do since it\u0027s encrypted at this point).",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "4554757630e285e003a87a1e0eac2d92e5397384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
