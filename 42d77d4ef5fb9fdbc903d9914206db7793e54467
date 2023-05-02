@@ -52,6 +52,29 @@
       "parentUuid": "649cc35c_378fbb0b",
       "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb9265f_93fdde9f",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T18:29:31Z",
+      "side": 1,
+      "message": "This and `trng_rand_bytes` above looks like it\u0027s probably an exact copy of the code in [`chip/stm32/trng.c`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/stm32/trng.c;l\u003d101-149;drc\u003d74e498c2647dcad68d46022abac34c8c5c6b96b3). Can we move it to a common location where it can be shared?",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 0
+      },
+      "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
