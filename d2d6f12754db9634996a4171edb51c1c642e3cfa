@@ -40,6 +40,30 @@
       },
       "revId": "d2d6f12754db9634996a4171edb51c1c642e3cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9bd80d8_59abe7bb",
+        "filename": "util/presubmit_check.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-05-02T17:17:22Z",
+      "side": 1,
+      "message": "I needed to use `pcregrep` as it handled multi line scenarios where the test function name could be on the next line.  Trying to do the same with `egrep` in chroot gave the following error.\n```\ngit diff cros/main HEAD | egrep -Pzo \"^\\+(ZTEST|ZTEST_F|ZTEST_USER|ZTEST_USER_F)\\(\\w+,[\\n\\+|\\s]*\\w+\\)\"\ngrep: Perl matching not supported in a --disable-perl-regexp build\n```",
+      "parentUuid": "2465afd1_ab9182fc",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "d2d6f12754db9634996a4171edb51c1c642e3cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
