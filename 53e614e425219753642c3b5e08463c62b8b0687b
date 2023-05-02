@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f540dac_59343130",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T21:20:31Z",
+      "side": 1,
+      "message": "Can you move this to a `build.mk` file under `third_party/boringssl`? That will help keep the `boringssl`-related code in a single place and then you can remove the `common/sysrand.c` symlink.\n\nThe new `build.mk` file can be added with an [`include` here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/Makefile;l\u003d262-293;drc\u003d12e1ed299bf8a1323702fe44cff6a16c36a5d644).",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "53e614e425219753642c3b5e08463c62b8b0687b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5074905_d55d5a56",
+        "filename": "third_party/boringssl/common/sysrand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-02T21:20:31Z",
+      "side": 1,
+      "message": "Does `boringssl` have unit tests for these functions? It would be nice if we had some way of testing. One way we tested random number generation in the past is described [here](http://b/124770147), but that\u0027s more of a one-off test.",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "53e614e425219753642c3b5e08463c62b8b0687b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
