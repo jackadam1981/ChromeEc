@@ -231,6 +231,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d206330_bdcf0ae5",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-02T06:52:30Z",
+      "side": 1,
+      "message": "Agreed,already serial package available and no need to update",
+      "parentUuid": "7ae4e031_c6aa54a9",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 0
+      },
+      "revId": "a990668f9d93bf2ee0b7d58324167c36cef84c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4106688b_7d229952",
