@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e86e97_aa481e8d",
+        "filename": "util/presubmit_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-02T23:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f91f1af_2d057055",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "d7b3d9e887936faf0a08cf601b385e852c3ceb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c04b82aa_bc1e07b6",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82cacc8d_38d9ad4e",
+        "filename": "util/presubmit_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-02T23:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c04b82aa_bc1e07b6",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "d7b3d9e887936faf0a08cf601b385e852c3ceb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff041524_9808c672",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-05-02T18:37:18Z",
       "side": 1,
       "message": "I don\u0027t think we should be combining multiple pre-upload checks into a single Python file.  It\u0027s better if they\u0027re split up.\n\nThe name `presubmit_check.sh` was bad to begin with...\n\n`pre-upload.py` will run checks in parallel, which is an advantage of having it split across multiple files (besides the obvious maintenance advantages).",
+      "range": {
+        "startLine": 92,
+        "startChar": 19,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "d7b3d9e887936faf0a08cf601b385e852c3ceb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e35f33_13887eaf",
+        "filename": "util/presubmit_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-02T23:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff041524_9808c672",
       "range": {
         "startLine": 92,
         "startChar": 19,
