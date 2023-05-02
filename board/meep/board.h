@@ -60,6 +60,9 @@
 #define CONFIG_USB_PD_TCPM_MULTI_PS8XXX
 #define CONFIG_USB_PD_TCPM_PS8755
 
+/* Free up more flash. */
+#undef CONFIG_CMD_ADC
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

@@ -59,6 +59,9 @@
 /* prevent pd reset when battery soc under 2% */
 #define CONFIG_USB_PD_RESET_MIN_BATT_SOC 2
 
+/* Free up more flash. */
+#undef CONFIG_CMD_ADC
+
 #ifndef __ASSEMBLER__
 
 /* support factory keyboard test */
