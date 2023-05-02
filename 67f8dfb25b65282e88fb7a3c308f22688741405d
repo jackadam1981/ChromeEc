@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d86afa66_17ea3b6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-02T09:16:43Z",
+      "side": 1,
+      "message": "There are problems with the daughter board detection settings, will fix it in future. In proto build, we will not disable any C1 port functionality, but just disable the type A port.",
+      "revId": "67f8dfb25b65282e88fb7a3c308f22688741405d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
