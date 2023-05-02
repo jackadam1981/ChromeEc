@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "af473267_1221e7c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-02T17:51:23Z",
+      "side": 1,
+      "message": "I\u0027m not really concerned about the content of commit messages as much as merging in code that doesn\u0027t build/link. Trying to build this CL with `make BOARD\u003dhelipilot` results in errors in SPI (which are resolved by go/crvc/4305803 and go/crvc/4259466/3) and TRNG (resolved by go/crvc/4257730). Setting up the dependency chain would allow us to continue development using the top commit while we prioritize getting the other CLs merged.\n\nI suppose that as long as CQ and other test are building `helipilot` this isn\u0027t a major issue but also doesn\u0027t add much benefit yet.  @tomhughes could you weigh in on how this has historically been managed?",
+      "parentUuid": "5c5964f9_2d97aed8",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d9aefbd4_551f95dc",
