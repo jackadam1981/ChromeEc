@@ -34,6 +34,29 @@
       "parentUuid": "b7c836ad_377bbc62",
       "revId": "b7df98d8289dd8198940c8bbc16cfb29caa4088f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a9f1cf_5bf14b3d",
+        "filename": "chip/npcx/spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-02T17:32:25Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think it needs to block this CL but this would read better if we remove the `goto` and change the conditional to `if (rxlen !\u003d SPI_READBACK_ALL)` and move code not applicable to `SPI_READBAC_ALL` into that block.",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 31
+      },
+      "revId": "b7df98d8289dd8198940c8bbc16cfb29caa4088f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
