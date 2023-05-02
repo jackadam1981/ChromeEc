@@ -52,6 +52,24 @@
       "parentUuid": "30e158f5_d6115549",
       "revId": "c1650ade78a4a3f4c0749fac041a206263cc4924",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "191175bf_022c5779",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-05-02T05:36:37Z",
+      "side": 1,
+      "message": "I have tried and got below error message\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 23, in \u003cmodule\u003e\n    from chromite.api.gen_sdk.chromite.api import firmware_pb2\n  File \"/usr/lib/python3.8/site-packages/chromite/api/gen_sdk/chromite/api/firmware_pb2.py\", line 5, in \u003cmodule\u003e\n    from google.protobuf.internal import builder as _builder\nImportError: cannot import name \u0027builder\u0027 from \u0027google.protobuf.internal\u0027 (/usr/lib/python3.8/site-packages/google/protobuf/internal/__init__.py)",
+      "parentUuid": "1d36bbbb_65b96214",
+      "revId": "c1650ade78a4a3f4c0749fac041a206263cc4924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
