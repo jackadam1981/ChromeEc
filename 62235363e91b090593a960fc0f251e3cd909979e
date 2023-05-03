@@ -34,6 +34,41 @@
       "parentUuid": "4f4d8ba4_e6caad58",
       "revId": "62235363e91b090593a960fc0f251e3cd909979e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "172bb0f0_ace2f269",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2023-05-03T19:23:38Z",
+      "side": 1,
+      "message": "Please request a merge instead.",
+      "revId": "62235363e91b090593a960fc0f251e3cd909979e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1847a17a_6e93d71e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2023-05-03T19:23:38Z",
+      "side": 1,
+      "message": "go/cros-ec-branching has the guidance; periodic merges are to be done.",
+      "parentUuid": "75980169_931b9255",
+      "revId": "62235363e91b090593a960fc0f251e3cd909979e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
