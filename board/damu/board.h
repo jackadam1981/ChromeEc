@@ -61,7 +61,6 @@
 #define CONFIG_ACCELGYRO_BMI160 /* Base accel */
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
-#define CONFIG_CMD_ACCEL_INFO
 
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_UPDATE
@@ -94,6 +93,9 @@
 
 /* Virutal battery optional MFG function */
 #define CONFIG_SMART_BATTERY_OPTIONAL_MFG_FUNC
+
+/* Console commands */
+#undef CONFIG_CMD_ACCEL_INFO
 
 #ifndef __ASSEMBLER__
 
