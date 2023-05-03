@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7beea47b_4eba7d56",
+        "filename": "util/check_ztest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T15:55:47Z",
+      "side": 1,
+      "message": "That can be replaced:\n\n```\nline_iter \u003d iter(enumerate(infile, start\u003d1))\nfor linenum, line in line_iter:\n    ...\n    linenum, line \u003d next(line_iter)\n    ...\n```",
+      "parentUuid": "f496433d_04b64144",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7e6c80d_8f6d9c10",
         "filename": "util/check_ztest.py",
         "patchSetId": 3
