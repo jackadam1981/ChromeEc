@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3025437c_71208896",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1816,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-05-03T14:49:13Z",
+      "side": 1,
+      "message": "Did you mean to clamp the register value or `output_voltage`?",
+      "revId": "ef9cc1d50c36d0c64b44ff8bc4a40b32a4a44c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
