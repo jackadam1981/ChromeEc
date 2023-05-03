@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d185aa27_3c82b8b0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-05-03T20:54:31Z",
+      "side": 1,
+      "message": "Nit: Any chance you can use an `IS_ENABLED` guard clause?",
+      "revId": "f0838f46b398b2a87c938adb6d142816da3685bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
