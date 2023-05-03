@@ -39,6 +39,30 @@
       },
       "revId": "ed99a890e3cbd0b16c030b89bbc77698d3492322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49f9513_f284e58b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-05-03T05:43:25Z",
+      "side": 1,
+      "message": "but this will require `CrosFpDeviceInterface* cros_fp`. How I initialize an instance of `CrosFpDeviceInterface` to get the version and use `FlashProtectCommandFactory`?",
+      "parentUuid": "816ee97e_8d258903",
+      "range": {
+        "startLine": 1769,
+        "startChar": 1,
+        "endLine": 1769,
+        "endChar": 27
+      },
+      "revId": "ed99a890e3cbd0b16c030b89bbc77698d3492322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
