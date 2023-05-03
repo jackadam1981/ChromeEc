@@ -136,6 +136,8 @@
 #endif
 
 /* All NPCX9 variants support SHA256 accelerator. */
+#ifdef SECTION_IS_RO
 #define CONFIG_SHA256_HW_ACCELERATE
+#endif
 
 #endif /* __CROS_EC_CONFIG_CHIP_NPCX9_H */
