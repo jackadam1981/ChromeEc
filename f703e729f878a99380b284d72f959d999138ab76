@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "510e8efb_11a6d2d4",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "Move the copyright outside the docstring block.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 0
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f843b448_f06b8cde",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "This documentation makes more sense as part of the flash_ec script.\n\nThis docstring should document how this script is invoked.  Something like:\n\n```\nScript to program a Microchip EC with erased or a bricked flash.\n\nGeneral usage:\n1. Assert UART crisis recovery pin and toggle EC reset\n2. Set baud rate of serial port on host to 9600\n3. Download and execute secondary loader into SRAM:\n    crisis_rcvry_util.py -s \u003cmchp-loader-image\u003e -p \u003cserial-port\u003e\n4. Set baud rate of serial port on host to 57600\n5. Download and program new EC images into flash:\n    crisis_rcvry_util.py -e \u003cec-image\u003e -p \u003cserial-port\u003e\n6. De-assert UART crisis recovery pin, and toggle EC reset\n7. EC boots programmed image\n8. Set baud rate of serial port on host to match EC image configuration\n\nRefer to the Microchip Crisis_Mode-cmdSequence document for full details.\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d39d7c_558e6d49",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "You need to check for EC images with a length that is not a multiple of 128 bytes.\n\n```\nprogram_length \u003d max(IMAGE_CHUNK_LENGTH, max_len - offset)\nfile_content \u003d image[offset: offset + program_length]",
+      "range": {
+        "startLine": 121,
+        "startChar": 47,
+        "endLine": 121,
+        "endChar": 65
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6d6e71a_56eb3870",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "Why is there a special check at 256 KiB? What happens if the EC image is larger than 256 KiB?\n\nAlso, if this is needed, there is an off by one error.\n```\nif offset + program_length \u003e\u003d EC_RESPONSE_BYTES_COUNT\n```",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 45
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0383809d_795eebac",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "This is clearer as:\n```\nif offset + program_length \u003e\u003d max_len\n```",
+      "range": {
+        "startLine": 132,
+        "startChar": 15,
+        "endLine": 132,
+        "endChar": 72
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29e5fcf_a6c8fc5b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "Can you I think you can replace with:\n```\nrf_count_disp \u003d uart_handle.read(RESPONSE_LENGTH)\n```",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ec5aeb_069fd869",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "Nit - delete \"for 3 times\".  This message is printed out on each retry, so the displaying the retry count is redundant.",
+      "range": {
+        "startLine": 152,
+        "startChar": 66,
+        "endLine": 152,
+        "endChar": 77
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e41a69cf_2c3296a8",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "`rf_count_disp \u003d uart_handle.read(RESPONSE_LENGTH)`",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 42
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "995053ca_fe1c4f97",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "Delete this output.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 60
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe24acb6_b44a3605",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "Delete \"for 3 times\".",
+      "range": {
+        "startLine": 229,
+        "startChar": 66,
+        "endLine": 229,
+        "endChar": 77
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9c117e4_d931760d",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "`resp_bytes \u003d response_bytes(SRAM_EXEC_CMD_ID)`",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 32
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e116d718_5a9154c7",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "Why is this referred to as a \"spi\" image?  The secondary loader is loaded into SRAM correct.  It would be clearer this was named \"secondary_loader_file\".",
+      "range": {
+        "startLine": 497,
+        "startChar": 14,
+        "endLine": 497,
+        "endChar": 22
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f01c51e7_b439b6ee",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "You don\u0027t need the `else:` clause since the `if` path exits.  This will save a level of indentation.",
+      "range": {
+        "startLine": 531,
+        "startChar": 8,
+        "endLine": 531,
+        "endChar": 13
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48726ce1_2dec82d6",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T21:54:07Z",
+      "side": 1,
+      "message": "`else:` is not needed.",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 13
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
