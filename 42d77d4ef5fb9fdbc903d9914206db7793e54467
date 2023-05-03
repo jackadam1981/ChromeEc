@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2a8ca92_730d0786",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-03T04:38:35Z",
+      "side": 1,
+      "message": "That makes sense, Tom mentioned a similar issue would occur if I modified Nuvoton commits. Does that mean we need help from Tom or someone else in the FPS team on this code review?",
+      "parentUuid": "7fb48789_7948fb63",
+      "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5eb9265f_93fdde9f",
