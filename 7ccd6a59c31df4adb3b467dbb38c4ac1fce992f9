@@ -16,6 +16,24 @@
       "message": "It looks like there\u0027s a failure building the crystaldrift PPC configuration tests: `INFO    - 158/164 native_posix              skyrim/skyrim.crystaldrift.ppc_config               ERROR Build failure (native)`\n\nHave you attempted to run this test locally?",
       "revId": "7ccd6a59c31df4adb3b467dbb38c4ac1fce992f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "581c8bad_29a91d47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-05-03T03:16:16Z",
+      "side": 1,
+      "message": "Dear Robert Zieba:\n     1. In the process of compiling ec.bin, there is no process of compiling test,\nbut it can be compiled successfully, as follows log:\n(cr) (main) xy@xy-sunny ~/chromiumos/src/platform/ec $ zmake build crystaldrift\n...\n-- Zephyr version: 3.3.99 (/mnt/host/source/src/third_party/zephyr/main), build: v2.7.99-22126-ga4e5cbf05c13\nINFO:root:Zephyr Base: /mnt/host/source/src/third_party/zephyr/main\nINFO:root:Including modules: [/mnt/host/source/src/platform/ec/build/zephyr/crystaldrift/modules/ec, /mnt/host/source/src/platform/ec/build/zephyr/crystaldrift/modules/cmsis]\nINFO:root:Version string: Zephyr-Kernel_v3.3.109540-ec:7ccd6a,os:a4e5cb,cmsis:4aa3ff\nINFO:root:Writing header to /mnt/host/source/src/platform/ec/build/zephyr/crystaldrift/build-rw/modules/ec/zephyr/include/ec_version.h\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      242320 B       256 KB     92.44%\n             RAM:       46232 B        64 KB     70.54%\n        IDT_LIST:          0 GB         2 KB      0.00%\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      242320 B       256 KB     92.44%\n             RAM:       46232 B        64 KB     70.54%\n        IDT_LIST:          0 GB         2 KB      0.00%\n\n   2. How do we compile test, is the following command?\n(cr) (main) xy@xy-sunny ~/chromiumos/src/platform/ec $ Ran skyrim tests\n-bash: Ran: command not found\n\nIt seems that there is no Ran command in the compilation environment,\nhow do we operate to compile test normally?",
+      "parentUuid": "ab694d62_23a48bb2",
+      "revId": "7ccd6a59c31df4adb3b467dbb38c4ac1fce992f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
