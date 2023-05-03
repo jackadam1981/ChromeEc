@@ -16,6 +16,29 @@
       "message": "Thanks you for cleaning this up! For these type of CLs, it\u0027s good to run `compare_build.sh` just to make sure nothing accidentally changed. \n\nI went ahead and ran it and it looks like everything matches.\n\nCan you add this to the commit message?\n\n```\nTEST\u003d./util/compare_build.sh -b all \u003d \u003eMATCH\n```",
       "revId": "6d2d6f9dd7767bcf6b2cf32df24a872b64c90d8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e2d6c2f_241975e0",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-03T16:49:57Z",
+      "side": 1,
+      "message": "Note that you no longer need to declare these at the beginning of the function, so you can just declare it where you first use it: https://crrev.com/c/3256741",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 590,
+        "endChar": 20
+      },
+      "revId": "6d2d6f9dd7767bcf6b2cf32df24a872b64c90d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
