@@ -250,4 +250,10 @@ config LINK_TEST_SUITE_ANX7452
 config LINK_TEST_SUITE_SM5803
 	bool "Link and test the SM5803 charger tests"
 
+config LINK_TEST_SUITE_KB8010
+	bool "Link and test the kb8010 tests"
+	help
+	  Include the test suite of KB8010 retimer in the binary. The tests
+	  use I2C emulation.
+
 source "Kconfig.zephyr"
