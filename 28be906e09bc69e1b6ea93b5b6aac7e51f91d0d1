@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba8d4b4_591c200b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-05-03T01:27:02Z",
+      "side": 1,
+      "message": "I use ```zmake compare-builds markarth``` and the result as below:\n```\n Zephyr compare builds successful:\n   HEAD: 28be906e09bc69e1b6ea93b5b6aac7e51f91d0d1\n   HEAD~: 6378b2bd5a61cde2433e92a2ee17f0f7564596da\n ```",
+      "parentUuid": "861b31ce_aad8548c",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "28be906e09bc69e1b6ea93b5b6aac7e51f91d0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3d62b2a4_bd8d8f47",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-05-02T20:00:59Z",
       "side": 1,
       "message": "I recommend wrapping this section with `#ifndef CONFIG_ZEPHYR` instead.\n\nKconfig already ensures that the CONFIG_USH_PD_VBUS_MEASURE_* options are mutually exclusive.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/Kconfig.pd_meas_vbus;l\u003d8\n\nThe checks done here only apply to legacy boards.",
+      "range": {
+        "startLine": 6301,
+        "startChar": 0,
+        "endLine": 6331,
+        "endChar": 0
+      },
+      "revId": "28be906e09bc69e1b6ea93b5b6aac7e51f91d0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47d4b83_b5775bd7",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6331,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-05-03T01:27:02Z",
+      "side": 1,
+      "message": "The omnigul(Chrome-EC) have the same situation, I want to modify it to meet Chrome-EC and Zephyr-EC.",
+      "parentUuid": "7c115bac_0d2d27dd",
       "range": {
         "startLine": 6301,
         "startChar": 0,
