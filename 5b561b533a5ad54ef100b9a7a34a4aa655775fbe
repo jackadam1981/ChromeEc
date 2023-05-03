@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c100ec74_2f62c525",
+        "filename": "zephyr/program/corsola/starmie/project.overlay",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-05-03T06:52:14Z",
+      "side": 1,
+      "message": "rename these to lid_* (and also update the references inside motionsense-sensor node",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 4
+      },
+      "revId": "5b561b533a5ad54ef100b9a7a34a4aa655775fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
