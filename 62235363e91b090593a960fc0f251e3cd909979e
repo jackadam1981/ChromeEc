@@ -16,6 +16,24 @@
       "message": "Not sure if we are still using the bulk sync or allow this single CL cherry pick? leave to Diana or Aseda to comment and review. Thanks!",
       "revId": "62235363e91b090593a960fc0f251e3cd909979e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75980169_931b9255",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-03T19:20:22Z",
+      "side": 1,
+      "message": "Generally speaking, I\u0027m still prefer to bulk sync because it 1) is usually faster than cherry-picking, especially when dependencies come into play and 2) ensures the branch has the same bugs as ToT rather than some unique set of bugs you get by mixing the branch with select ToT CLs.  \n\nHaving said that, I\u0027m no longer maintaining the firmware branch so I think this can be an SIE call. I don\u0027t know that the EC team has really unified on a firmware branch approach (skyrim went with cherry-picking, nissa is merge-committing), but I personally preferred the merge-commits.",
+      "parentUuid": "4f4d8ba4_e6caad58",
+      "revId": "62235363e91b090593a960fc0f251e3cd909979e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
