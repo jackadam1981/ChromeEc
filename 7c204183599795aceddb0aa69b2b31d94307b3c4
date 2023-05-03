@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "021b89a1_5753fafc",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 164
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-03T17:26:52Z",
+      "side": 1,
+      "message": "For new code, let\u0027s not use the internal functions. Cleaning up existing code is tracked in http://b/279950931.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 45
+      },
+      "revId": "7c204183599795aceddb0aa69b2b31d94307b3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
