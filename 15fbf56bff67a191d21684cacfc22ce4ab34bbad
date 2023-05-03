@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac480c9_82d67def",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T01:06:58Z",
+      "side": 1,
+      "message": "drop ` a`",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7fa816f_4d101377",
+        "filename": "util/check_cprints.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T01:06:58Z",
+      "side": 1,
+      "message": "```suggestion\n                line \u003d line.rstrip(\"\\n\")\n```",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c35fcd2_da551fcf",
+        "filename": "util/check_cprints.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T01:06:58Z",
+      "side": 1,
+      "message": "You can avoid manually tracking the line number by using the iterator on the loop differently:\n\n```\nfor linenum, line in enumerate(infile, start\u003d1):\n```",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f21e7ea5_5644948d",
+        "filename": "util/check_cprints.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T01:06:58Z",
+      "side": 1,
+      "message": "```suggestion\n    sys.exit(main(sys.argv[1:]))\n```\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40242839_437195d6",
+        "filename": "util/check_ztest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T01:06:58Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e6c80d_8f6d9c10",
+        "filename": "util/check_ztest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T01:06:58Z",
+      "side": 1,
+      "message": "```suggestion\n                line \u003d line.rstrip(\"\\n\")\n```",
+      "range": {
+        "startLine": 54,
+        "startChar": 28,
+        "endLine": 54,
+        "endChar": 33
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "631d8a50_413803c4",
+        "filename": "util/check_ztest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T01:06:58Z",
+      "side": 1,
+      "message": "```suggestion\n    sys.exit(main(sys.argv[1:]))\n```\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ebfe87a_4dab94ab",
+        "filename": "util/zephyr_check_testcase_yaml.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T01:06:58Z",
+      "side": 1,
+      "message": "put this in a common support module to avoid the duplication?",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43eb8184_3a512f75",
+        "filename": "util/zephyr_check_testcase_yaml.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T01:06:58Z",
+      "side": 1,
+      "message": "testcase.yaml",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 23
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f46ebd_3852d191",
+        "filename": "util/zephyr_check_testcase_yaml.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T01:06:58Z",
+      "side": 1,
+      "message": "```suggestion\n    parser.add_argument(\"filename\", nargs\u003d\"+\", type\u003dPath)\n```",
+      "range": {
+        "startLine": 56,
+        "startChar": 24,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89becb77_a4bedadc",
+        "filename": "util/zephyr_check_testcase_yaml.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T01:06:58Z",
+      "side": 1,
+      "message": "```suggestion\n        if filename.name \u003d\u003d \"testcase.yaml\":\n```",
+      "range": {
+        "startLine": 60,
+        "startChar": 19,
+        "endLine": 60,
+        "endChar": 46
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8469c4f3_02d92223",
+        "filename": "util/zephyr_check_testcase_yaml.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-03T01:06:58Z",
+      "side": 1,
+      "message": "```suggestion\n    sys.exit(main(sys.argv[1:])\n```\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
