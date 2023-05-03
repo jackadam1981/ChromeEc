@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e858e0b7_be676e27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-03T19:04:45Z",
+      "side": 1,
+      "message": "I guess this passes because we\u0027re not building any targets that use the new code that is introduced in `chip/npcx/trng.c`?",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "dfe426d46462d2c0f6b77eb69574c2597e92fd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
