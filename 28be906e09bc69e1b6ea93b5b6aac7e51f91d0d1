@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f83e710_ff0e42e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T15:28:30Z",
+      "side": 1,
+      "message": "Please update the commit message with this test result.",
+      "parentUuid": "dba8d4b4_591c200b",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "28be906e09bc69e1b6ea93b5b6aac7e51f91d0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3d62b2a4_bd8d8f47",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "The omnigul(Chrome-EC) have the same situation, I want to modify it to meet Chrome-EC and Zephyr-EC.",
       "parentUuid": "7c115bac_0d2d27dd",
+      "range": {
+        "startLine": 6301,
+        "startChar": 0,
+        "endLine": 6331,
+        "endChar": 0
+      },
+      "revId": "28be906e09bc69e1b6ea93b5b6aac7e51f91d0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e193f85_bcbd338e",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6331,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-03T15:28:30Z",
+      "side": 1,
+      "message": "For Zephyr, Kconfig already ensures that only one VBUS_MEASURE option is selected.  So we should avoid overriding any options that can be set by Kconfig in this file.  \n\nSo I recommend doing both - adding a CONFIG_ZEPHYR guard and also fixing the legacy EC:\n\npsuedo-code\n```\n#ifndef CONFIG_ZEPHYR\n\n#if defined (charger_chips)\n#if !defined (VBUS_MEASURE options)\n#define CONFIG_USB_PD_VBUS_MEASURE_CHARGER\n#endif /* VBUS_MEASURE options */\n\n#ifdef VBUS_NOT_PRESENT\n#error\n#endif /* VBUS_NOT_PRESENT */\n\n#endif /* charger chips */\n#endif /* CONFIG_ZEPHYR */\n```",
+      "parentUuid": "d47d4b83_b5775bd7",
       "range": {
         "startLine": 6301,
         "startChar": 0,
