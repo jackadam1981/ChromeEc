@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82461ddc_66d83bb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T15:44:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac480c9_82d67def",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7fa816f_4d101377",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-03T01:06:58Z",
       "side": 1,
       "message": "```suggestion\n                line \u003d line.rstrip(\"\\n\")\n```",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de50bab_2053d04f",
+        "filename": "util/check_cprints.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T15:44:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7fa816f_4d101377",
       "range": {
         "startLine": 50,
         "startChar": 28,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72a97b0_e9d5bc81",
+        "filename": "util/check_cprints.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T15:44:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c35fcd2_da551fcf",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f21e7ea5_5644948d",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-03T01:06:58Z",
       "side": 1,
       "message": "```suggestion\n    sys.exit(main(sys.argv[1:]))\n```\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de3447cf_827837ab",
+        "filename": "util/check_cprints.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T15:44:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f21e7ea5_5644948d",
       "range": {
         "startLine": 63,
         "startChar": 0,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f496433d_04b64144",
+        "filename": "util/check_ztest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T15:44:03Z",
+      "side": 1,
+      "message": "Except that here I sometimes read the next line (line 58-59), and then the linenum would be wrong.",
+      "parentUuid": "40242839_437195d6",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7e6c80d_8f6d9c10",
         "filename": "util/check_ztest.py",
         "patchSetId": 3
@@ -129,6 +249,30 @@
       "writtenOn": "2023-05-03T01:06:58Z",
       "side": 1,
       "message": "```suggestion\n                line \u003d line.rstrip(\"\\n\")\n```",
+      "range": {
+        "startLine": 54,
+        "startChar": 28,
+        "endLine": 54,
+        "endChar": 33
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e16739e_8900f377",
+        "filename": "util/check_ztest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T15:44:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7e6c80d_8f6d9c10",
       "range": {
         "startLine": 54,
         "startChar": 28,
@@ -152,6 +296,30 @@
       "writtenOn": "2023-05-03T01:06:58Z",
       "side": 1,
       "message": "```suggestion\n    sys.exit(main(sys.argv[1:]))\n```\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c922f0e1_21f97d73",
+        "filename": "util/check_ztest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T15:44:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "631d8a50_413803c4",
       "range": {
         "startLine": 74,
         "startChar": 3,
@@ -208,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e231b8e_bbc80a93",
+        "filename": "util/zephyr_check_testcase_yaml.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T15:44:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43eb8184_3a512f75",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 23
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06f46ebd_3852d191",
@@ -221,6 +413,30 @@
       "writtenOn": "2023-05-03T01:06:58Z",
       "side": 1,
       "message": "```suggestion\n    parser.add_argument(\"filename\", nargs\u003d\"+\", type\u003dPath)\n```",
+      "range": {
+        "startLine": 56,
+        "startChar": 24,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd2b5aa0_fcff7d1a",
+        "filename": "util/zephyr_check_testcase_yaml.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T15:44:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06f46ebd_3852d191",
       "range": {
         "startLine": 56,
         "startChar": 24,
@@ -254,6 +470,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "191ede57_dcd867c1",
+        "filename": "util/zephyr_check_testcase_yaml.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T15:44:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89becb77_a4bedadc",
+      "range": {
+        "startLine": 60,
+        "startChar": 19,
+        "endLine": 60,
+        "endChar": 46
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8469c4f3_02d92223",
@@ -267,6 +507,30 @@
       "writtenOn": "2023-05-03T01:06:58Z",
       "side": 1,
       "message": "```suggestion\n    sys.exit(main(sys.argv[1:])\n```\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ca2cef_4fa55dce",
+        "filename": "util/zephyr_check_testcase_yaml.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T15:44:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8469c4f3_02d92223",
       "range": {
         "startLine": 88,
         "startChar": 4,
