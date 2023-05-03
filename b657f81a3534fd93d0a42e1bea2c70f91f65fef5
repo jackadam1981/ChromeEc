@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2676999_48d0dabd",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 146
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-03T22:47:03Z",
+      "side": 1,
+      "message": "Since \"EC\" is also a commonly used acronym in the code, let\u0027s call it `generate_elliptic_curve_key` for clarity.",
+      "range": {
+        "startLine": 36,
+        "startChar": 31,
+        "endLine": 36,
+        "endChar": 46
+      },
+      "revId": "b657f81a3534fd93d0a42e1bea2c70f91f65fef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0816ecd9_cbcc82de",
         "filename": "common/fpsensor/fpsensor_auth_commands.cc",
         "patchSetId": 146
@@ -42,6 +65,52 @@
         "startChar": 0,
         "endLine": 52,
         "endChar": 6
+      },
+      "revId": "b657f81a3534fd93d0a42e1bea2c70f91f65fef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9d8191_58a56123",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 146
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-03T22:47:03Z",
+      "side": 1,
+      "message": "Let\u0027s call it `encrypt_private_key_in_place`.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 20
+      },
+      "revId": "b657f81a3534fd93d0a42e1bea2c70f91f65fef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dadff46_2403ea16",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 146
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-03T22:47:03Z",
+      "side": 1,
+      "message": "I was wondering whether `bssl::UniquePtr` clears the memory before free\u0027ing. It looks like it does since `OPENSSL_free` clears it:\n\n* https://boringssl.googlesource.com/boringssl/+/refs/heads/master/include/openssl/ec_key.h#377\n* https://boringssl.googlesource.com/boringssl/+/HEAD/crypto/fipsmodule/ec/ec_key.c#153\n* https://boringssl.googlesource.com/boringssl/+/master/crypto/mem.c#271",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 33
       },
       "revId": "b657f81a3534fd93d0a42e1bea2c70f91f65fef5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
