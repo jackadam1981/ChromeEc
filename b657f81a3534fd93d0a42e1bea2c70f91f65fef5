@@ -22,6 +22,29 @@
       },
       "revId": "b657f81a3534fd93d0a42e1bea2c70f91f65fef5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a996243_71dd7147",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 146
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-03T22:28:50Z",
+      "side": 1,
+      "message": "`static` is redundant in anonymous namespace: https://clang.llvm.org/extra/clang-tidy/checks/readability/static-definition-in-anonymous-namespace.html\n\nhttps://google.github.io/styleguide/cppguide.html#Internal_Linkage",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "b657f81a3534fd93d0a42e1bea2c70f91f65fef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
