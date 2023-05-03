@@ -329,8 +329,16 @@ DISABLE_GCC_WARNING("-Winfinite-recursion")
 #endif
 static void stack_overflow_recurse(int n)
 {
+#ifdef CONFIG_ZEPHYR
+	/*
+	 * ccprintf acquires a mutex lock internally. This mutex lock will not be
+	 * released after the stack overflow panic. This interferes with system
+	 * safe mode recovery testing. See b/278792557 and b/280673945.
+	 */
+	printk("+%d", n);
+#else
 	ccprintf("+%d", n);
-
+#endif
 	/*
 	 * Force task context switch, since that's where we do stack overflow
 	 * checking.
@@ -343,7 +351,11 @@ static void stack_overflow_recurse(int n)
 	 * Do work after the recursion, or else the compiler uses tail-chaining
 	 * and we don't actually consume additional stack.
 	 */
+#ifdef CONFIG_ZEPHYR
+	printk("-%d", n);
+#else
 	ccprintf("-%d", n);
+#endif
 }
 ENABLE_CLANG_WARNING("-Winfinite-recursion")
 #if __GNUC__ >= 12
