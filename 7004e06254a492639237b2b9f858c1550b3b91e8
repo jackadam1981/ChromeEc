@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c7315f1_bb7828e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-05-03T16:00:12Z",
+      "side": 1,
+      "message": "Closing since the relevant code is now in a different CL",
+      "parentUuid": "f69c20a4_6a41746a",
+      "range": {
+        "startLine": 13,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "7004e06254a492639237b2b9f858c1550b3b91e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe7ff1eb_24a2cf0b",
