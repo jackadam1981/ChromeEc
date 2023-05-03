@@ -260,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ffdf2e0_ea23fd66",
+        "filename": "util/check_ztest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T16:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7beea47b_4eba7d56",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7e6c80d_8f6d9c10",
@@ -367,6 +391,30 @@
       "writtenOn": "2023-05-03T01:06:58Z",
       "side": 1,
       "message": "put this in a common support module to avoid the duplication?",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "15fbf56bff67a191d21684cacfc22ce4ab34bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "692ba14d_eececd65",
+        "filename": "util/zephyr_check_testcase_yaml.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T16:28:35Z",
+      "side": 1,
+      "message": "I\u0027m surprised that there isn\u0027t already something like this in chromite or repohooks. I looked and didn\u0027t find anything.",
+      "parentUuid": "8ebfe87a_4dab94ab",
       "range": {
         "startLine": 34,
         "startChar": 4,
