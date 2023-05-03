@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8b3ffec_b34679b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-03T16:26:24Z",
+      "side": 1,
+      "message": "Thanks you for cleaning this up! For these type of CLs, it\u0027s good to run `compare_build.sh` just to make sure nothing accidentally changed. \n\nI went ahead and ran it and it looks like everything matches.\n\nCan you add this to the commit message?\n\n```\nTEST\u003d./util/compare_build.sh -b all \u003d \u003eMATCH\n```",
+      "revId": "6d2d6f9dd7767bcf6b2cf32df24a872b64c90d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
