@@ -33,24 +33,24 @@ struct kb80010_reg_desc {
 };
 
 const static struct kb80010_reg_desc kb8010_init_cfg[] = {
-	{ 0xF0A9, 0x03 },
-	{ 0xF0A0, 0x07 },
-	{ 0xFFB9, 0x04 },
-	{ 0xF172, 0x03 },
-	{ 0xF173, 0x06 },
-	{ 0xF174, 0x0A },
-	{ 0xF242, 0x13 },
-	{ 0xFECA, 0x01 },
+	{ KB8010_REG_SBBR_COMRX_CH_SHARED_LINK_CTRL_RUN_POST_CDR_OFFSET, 0x03 },
+	{ KB8010_REG_SBBR_COMRX_CH_SHARED_LINK_CTRL_RUN_OFFSET, 0x07 },
+	{ KB8010_REG_SBBR_BR_RX_CAL_VGA2_GXR, 0x04 },
+	{ KB8010_REG_SBBR_COMRX_AZC_CTRL_CTLE_OC_BW_STG1, 0x03 },
+	{ KB8010_REG_SBBR_COMRX_AZC_CTRL_CTLE_OC_BW_STG2, 0x06 },
+	{ KB8010_REG_SBBR_COMRX_AZC_CTRL_CTLE_OC_BW_STG3, 0x0A },
+	{ KB8010_REG_SBBR_COMRX_LFPS_LFPS_CTRL, 0x13 },
+	{ KB8010_REG_SBBR_BR_RX_CAL_OFFSET_EYE_BG_SAT_OVF, 0x01 },
 };
 
 const static struct kb80010_reg_desc kb8010_dp_cfg[] = {
-	{ 0x0002, 0x06 },
-	{ 0xf2cc, 0x02 },
-	{ 0x6314, 0x09 },
-	{ 0x6393, 0x60 },
-	{ 0x603d, 0xba },
-	{ 0x603e, 0x67 },
-	{ 0x603f, 0x91 },
+	{ KB8010_REG_ORIENTATION, 0x06 },
+	{ KB8010_REG_SBBR_COMTX_OUTPUT_DRIVER_MISC_OVR_EN, 0x02 },
+	{ KB8010_REG_DP_L_EQ_CFG, 0x09 },
+	{ KB8010_REG_DFP_REPLY_TIMEOUT, 0x60 },
+	{ KB8010_REG_DP_D_IEEE_OUI, 0xba },
+	{ KB8010_REG_DP_D_FUNC_1, 0x67 },
+	{ KB8010_REG_DP_D_FUNC_2, 0x91 },
 };
 
 const static uint8_t kb8010_flip_cfg[kb8010_num_modes][KB8010_LANE_CONFIG_LEN] = {
@@ -71,18 +71,6 @@ static int kb8010_write(const struct usb_mux *me, uint16_t address,
 	return i2c_xfer(me->i2c_port, me->i2c_addr_flags, kb8010_config,
 			sizeof(kb8010_config), NULL, 0);
 }
-
-static int kb8010_read(const struct usb_mux *me, uint16_t address,
-		       uint8_t *data)
-{
-	uint8_t kb8010_config[2] = { 0x00, 0x00 };
-
-	kb8010_config[0] = (address >> 8) & 0xff;
-	kb8010_config[1] = address & 0xff;
-	return i2c_xfer(me->i2c_port, me->i2c_addr_flags, kb8010_config,
-			sizeof(kb8010_config), data, 1);
-}
-
 
 static int kb8010_pair_write(const struct usb_mux *me,
 			     const struct kb80010_reg_desc *pair,
@@ -143,7 +131,8 @@ static int kb8010_config_usb4_tbt(const struct usb_mux *me,
 			cable_type |=
 				KB8010_CABLE_TYPE_ACTIVE_UNIDIR;
 		} else {
-			rv = kb8010_write(me, 0x811f, 0x1d);
+			rv = kb8010_write(
+				me, KB8010_REG_CIO_CFG_WAKEUP_IGN_LS_DET, 0x1d);
 			if (rv)
 				return rv;
 			cable_type |=
@@ -214,18 +203,19 @@ static int kb8010_set_state(const struct usb_mux *me, mux_state_t mux_state,
 
 	/* Flip configuration */
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED) {
-		rv = kb8010_write(me, 0x504C, 0x0d);
+		rv = kb8010_write(me, KB8010_REG_XBAR_SBU_CFG, 0x0d);
 		if (rv)
 			return rv;
-		rv = kb8010_write(me, 0x5040, 0x40);
+		rv = kb8010_write(me, KB8010_REG_XBAR_OVR, 0x40);
 		if (rv)
 			return rv;
-		rv = kb8010_sequential_write(me, 0x5044, kb8010_flip_cfg[mode],
-				 ARRAY_SIZE(kb8010_flip_cfg[mode]));
+		rv = kb8010_sequential_write(me, KB8010_REG_XBAR_EB1SEL,
+					     kb8010_flip_cfg[mode],
+					     ARRAY_SIZE(kb8010_flip_cfg[mode]));
 		if (rv)
 			return rv;
 	} else {
-		rv = kb8010_write(me, 0x504C, 0x02);
+		rv = kb8010_write(me, KB8010_REG_XBAR_SBU_CFG, 0x02);
 		if (rv)
 			return rv;
 	}
