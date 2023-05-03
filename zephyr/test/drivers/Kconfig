@@ -269,4 +269,10 @@ config LINK_TEST_SUITE_BODY_DETECTION
 	help
 	  Include the test suite exercising body detection behaviors in the binary.
 
+config LINK_TEST_SUITE_KB8010
+	bool "Link and test the kb8010 tests"
+	help
+	  Include the test suite of KB8010 retimer in the binary. The tests
+	  use I2C emulation.
+
 source "Kconfig.zephyr"

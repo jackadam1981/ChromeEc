@@ -539,3 +539,13 @@ tests:
     - CONFIG_PLATFORM_EC_BODY_DETECTION_ALWAYS_ENABLE_IN_S0=y
     - CONFIG_PLATFORM_EC_BODY_DETECTION_NOTIFY_MODE_CHANGE=y
     - CONFIG_PLATFORM_EC_GESTURE_HOST_DETECTION=y
+  drivers.kb8010:
+    extra_conf_files:
+    - prj.conf
+    - kb8010/prj.conf
+    extra_dtc_overlay_files:
+    - boards/native_posix.overlay
+    - kb8010/usbc.dts
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_KB8010=y
+    - CONFIG_PLATFORM_EC_USB_PD_TBT_COMPAT_MODE=y
