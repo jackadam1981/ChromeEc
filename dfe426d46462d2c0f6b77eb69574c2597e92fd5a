@@ -22,6 +22,30 @@
       },
       "revId": "dfe426d46462d2c0f6b77eb69574c2597e92fd5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae25f85e_4fd2c289",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-03T23:38:22Z",
+      "side": 1,
+      "message": "Bobby changed the commitmsg tests previously to be able to Verify+1. My actual tests included building bloonchipper and helipilot with the changes and CONFIG_CMD_RAND enabled. This actually exposed a minor error in CONFIG_CMD_RAND with existing code(replace EC_SUCCESS with EC_RES_SUCCESS). I can change the commitmsg back to a make test for the npcx commit if helpful?",
+      "parentUuid": "e858e0b7_be676e27",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "dfe426d46462d2c0f6b77eb69574c2597e92fd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
