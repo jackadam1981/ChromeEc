@@ -16,6 +16,23 @@
       "message": "Hi Diana and Jeremy,  \ncan you help re-review this. Patchset 3 failed in CQ because it broke zephyr tests for kingler. Basically, I had removed the option to not define `chipstet_in_state` in include/chipset.h because I removed the fake definition from the test file. But, the kingler usb pd policy tests define a fake function for `chipset_in_state`, so that CONFIG_TEST_USB_PD_POLICY ifdef in chipset.h cannot be removed. To account for that, I have added the fake `chipset_in_state` function back to the Rex usb pd policy tests, even though it is not getting used. This allows zephyr tests to pass for both rex and zingler. Let me know if you have any questions.",
       "revId": "c944d8f83704ca7c93af2759e7f2940a36c4bed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb2bf34a_53447949",
+        "filename": "zephyr/test/rex/src/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-03T19:31:03Z",
+      "side": 1,
+      "message": "If the lack of coverage here bothers you, you can add an LCOV tag for it.  I had to do that for a couple of my helpers with unreachable statements",
+      "revId": "c944d8f83704ca7c93af2759e7f2940a36c4bed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
