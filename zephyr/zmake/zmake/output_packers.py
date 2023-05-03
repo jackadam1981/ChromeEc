@@ -112,6 +112,12 @@ class RawBinPacker(BasePacker):
         del version_string
         yield dir_map["singleimage"] / "zephyr" / "zephyr.bin", "ec.bin"
 
+class IshBinPacker(BasePacker):
+    """Raw proxy for ish_fw.bin output of a single build."""
+
+    def pack_firmware(self, work_dir, jobclient, dir_map, version_string=""):
+        del version_string
+        yield dir_map["singleimage"] / "zephyr" / "ish_fw.bin", "ish_fw.bin"
 
 class BinmanPacker(BasePacker):
     """Packer for RO/RW image to generate a .bin build using FMAP."""
