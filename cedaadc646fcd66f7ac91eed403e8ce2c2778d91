@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e811df78_ebe48f30",
+        "filename": "zephyr/program/corsola/src/usbc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-03T03:00:28Z",
+      "side": 1,
+      "message": "I found it is not possible to use `CONFIG_VARIANT_CORSOLA_USBA`, as this KConfig actually disables the `AP_XHCI` interrupt as well, so without that interrupt, all inserted usb device will not work. I think we just keep the USB A port on for this CL, and we will fix the USB A in future.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "cedaadc646fcd66f7ac91eed403e8ce2c2778d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
