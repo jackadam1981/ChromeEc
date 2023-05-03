@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5c4c13_9d9e187c",
+        "filename": "util/check_cprints.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T16:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d655b53_b2a085bc",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "0d7e2cf5ef0e8dfb4d4c671b13e687e07306dce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47e409e9_9cafd25b",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-03T16:40:39Z",
       "side": 1,
       "message": "unused",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "0d7e2cf5ef0e8dfb4d4c671b13e687e07306dce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "213feb3e_ac459232",
+        "filename": "util/check_ztest.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T16:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47e409e9_9cafd25b",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf2650b2_7b2edf63",
+        "filename": "util/check_ztest.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T16:50:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bac6aa9a_99e16ec0",
+      "range": {
+        "startLine": 32,
+        "startChar": 33,
+        "endLine": 32,
+        "endChar": 42
+      },
+      "revId": "0d7e2cf5ef0e8dfb4d4c671b13e687e07306dce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ab4ca68_dc098ca9",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-03T16:40:39Z",
       "side": 1,
       "message": "`rstrip`",
+      "range": {
+        "startLine": 37,
+        "startChar": 34,
+        "endLine": 37,
+        "endChar": 39
+      },
+      "revId": "0d7e2cf5ef0e8dfb4d4c671b13e687e07306dce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47b86be5_d3045490",
+        "filename": "util/check_ztest.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T16:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ab4ca68_dc098ca9",
       "range": {
         "startLine": 37,
         "startChar": 34,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "304a016a_beb0390e",
+        "filename": "util/preupload/__init__.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T16:50:14Z",
+      "side": 1,
+      "message": "It is not. `ImportError: attempted relative import with no known parent package`",
+      "parentUuid": "f94734ac_e11a34a8",
+      "revId": "0d7e2cf5ef0e8dfb4d4c671b13e687e07306dce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8cd6a0d_e937fb19",
@@ -123,6 +237,30 @@
       "writtenOn": "2023-05-03T16:40:39Z",
       "side": 1,
       "message": "`from pathlib import Path`\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#imports",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "0d7e2cf5ef0e8dfb4d4c671b13e687e07306dce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee7a560_fa3dd00c",
+        "filename": "util/preupload/lib.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T16:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8cd6a0d_e937fb19",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c61ace6_6ce8fd51",
+        "filename": "util/preupload/lib.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T16:50:14Z",
+      "side": 1,
+      "message": "I was avoiding reading the entire file into memory. I know that computers have lots of RAM these days, and the files are probably small, but it is a bad habit to read full files into ram.",
+      "parentUuid": "949f2761_2da1bb71",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 63
+      },
+      "revId": "0d7e2cf5ef0e8dfb4d4c671b13e687e07306dce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fb4a94c_e40e5768",
@@ -169,6 +331,30 @@
       "writtenOn": "2023-05-03T16:40:39Z",
       "side": 1,
       "message": "unused",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "0d7e2cf5ef0e8dfb4d4c671b13e687e07306dce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "316625f9_b09d4d26",
+        "filename": "util/zephyr_check_testcase_yaml.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-03T16:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fb4a94c_e40e5768",
       "range": {
         "startLine": 23,
         "startChar": 0,
