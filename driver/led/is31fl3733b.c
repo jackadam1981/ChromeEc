@@ -169,6 +169,10 @@ static int is31fl3733b_set_color(struct rgbkbd *ctx, uint8_t offset,
 		rv |= is31fl3733b_write(ctx, led_addr + 0x10, color[i].g);
 		rv |= is31fl3733b_write(ctx, led_addr + 0x20, color[i].b);
 
+		rv |= is31fl3733b_write(ctx, led_addr + 0x30, color[i].r);
+		rv |= is31fl3733b_write(ctx, led_addr + 0x40, color[i].g);
+		rv |= is31fl3733b_write(ctx, led_addr + 0x50, color[i].b);
+
 		if (rv) {
 			return rv;
 		}
