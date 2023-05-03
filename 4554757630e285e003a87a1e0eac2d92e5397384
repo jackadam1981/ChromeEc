@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f016f857_b853e42a",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 139
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-03T10:11:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f08d218_63bbbb9d",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "4554757630e285e003a87a1e0eac2d92e5397384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2763c8f5_b6e69d48",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-02T22:12:08Z",
       "side": 1,
       "message": "`FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN` seems like the wrong name. This is just a single point, not the entire public key. Maybe something like `EC_PAIRING_KEY_EC_PUBLIC_KEY_POINT_LEN`?",
+      "range": {
+        "startLine": 7773,
+        "startChar": 12,
+        "endLine": 7773,
+        "endChar": 44
+      },
+      "revId": "4554757630e285e003a87a1e0eac2d92e5397384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db67f33_f608dab2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 139
+      },
+      "lineNbr": 7773,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-03T10:11:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2763c8f5_b6e69d48",
       "range": {
         "startLine": 7773,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c41d5e2_789cc58b",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 139
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-03T10:11:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc9a4c48_ce1b448a",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "4554757630e285e003a87a1e0eac2d92e5397384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d39798f_6a7c4ca1",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a3316c0_8ead97d3",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 139
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-03T10:11:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d39798f_6a7c4ca1",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "4554757630e285e003a87a1e0eac2d92e5397384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b47cc19f_5bab6a12",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-05-02T22:12:08Z",
       "side": 1,
       "message": "Can you add a check that the key returned is valid?\n\nIt looks like there are [`boringssl` APIs to do this](https://source.chromium.org/chromium/chromium/src/+/main:third_party/boringssl/src/include/openssl/ec_key.h;l\u003d164-173;drc\u003d29723828eca43b2dfa5fe476edc4e01ca8072d2a). It looks like those functions will only test the public key if the private key is not set (which we can\u0027t easily do since it\u0027s encrypted at this point).",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "4554757630e285e003a87a1e0eac2d92e5397384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc39b25_e37b3dcc",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 139
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-03T10:11:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b47cc19f_5bab6a12",
       "range": {
         "startLine": 55,
         "startChar": 1,
