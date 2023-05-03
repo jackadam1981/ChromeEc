@@ -93,6 +93,30 @@
       },
       "revId": "53e614e425219753642c3b5e08463c62b8b0687b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d8027c7_f28afdcf",
+        "filename": "third_party/boringssl/common/sysrand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-03T17:08:43Z",
+      "side": 1,
+      "message": "Yeah, that test doesn\u0027t look like what we want. The results from http://b/124770147 show that the TRNG is working correctly (at the time it was tested), but we also want to make sure that these new functions continue to behave correctly as the EC codebase evolves and is changed.\n\nI think the best we can do is add a \"smoke\" test that checks that non-zero data is generated like [this test](https://boringssl.googlesource.com/boringssl/+/master/crypto/rand_extra/rand_test.cc#45).",
+      "parentUuid": "1e0ac4ac_a5e92195",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "53e614e425219753642c3b5e08463c62b8b0687b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
