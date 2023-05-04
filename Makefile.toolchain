@@ -44,6 +44,7 @@ CLANG_BOARDS:= \
 	nucleo-dartmonkey \
 	nucleo-h743zi \
 	nucleo-f412zg \
+	prism \
 
 ifeq ($(filter $(BOARD), $(CLANG_BOARDS)), $(BOARD))
 CC=clang

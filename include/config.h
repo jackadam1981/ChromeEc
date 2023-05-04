@@ -6436,11 +6436,11 @@
 
 /*****************************************************************************/
 /*
- * Define CONFIG_LIBCRYPTOC if a board needs to read secret data from the
+ * Define CONFIG_BORINGSSL_CRYPTO if a board needs to read secret data from the
  * anti-rollback block.
  */
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
-#define CONFIG_LIBCRYPTOC
+#define CONFIG_BORINGSSL_CRYPTO
 #endif
 
 /*
