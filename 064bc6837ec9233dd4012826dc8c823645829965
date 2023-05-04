@@ -16,6 +16,24 @@
       "message": "GPIOD7 is not used for yavilla as I know.",
       "revId": "064bc6837ec9233dd4012826dc8c823645829965",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "022afcf9_f3c5c1c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2023-05-04T12:46:24Z",
+      "side": 1,
+      "message": "OK, let\u0027s wait for EE to see if they need to use GPIOD7",
+      "parentUuid": "7a58a779_039f25f8",
+      "revId": "064bc6837ec9233dd4012826dc8c823645829965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
