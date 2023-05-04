@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60b92182_f1e9e781",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 146
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-04T09:57:01Z",
+      "side": 1,
+      "message": "Removed the template of \"decrypt_data\" by doing the size check at runtime.",
+      "parentUuid": "543103af_35d92fde",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "b657f81a3534fd93d0a42e1bea2c70f91f65fef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a996243_71dd7147",
