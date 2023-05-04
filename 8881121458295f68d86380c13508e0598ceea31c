@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "369f2e90_db7c2485",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-04T16:21:06Z",
+      "side": 1,
+      "message": "CQ fails with following error:\n\n```\nFAILED: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o \n/opt/coreboot-sdk/bin/arm-eabi-gcc -DBORINGSSL_IMPLEMENTATION -DOPENSSL_NO_ASM -D__TRUSTY__ -I/mnt/host/source/src/third_party/boringssl/third_party/googletest/include -I/mnt/host/source/src/third_party/boringssl/crypto/../include -I/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/../../include -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -Werror -Wformat\u003d2 -Wsign-compare -Wmissing-field-initializers -Wwrite-strings -Wvla -Wshadow -Wtype-limits -ggdb -Wall -fvisibility\u003dhidden -fno-common -Wno-free-nonheap-object -Wimplicit-fallthrough -Wformat-signedness -Wmissing-prototypes -Wold-style-definition -Wstrict-prototypes -D_XOPEN_SOURCE\u003d700 -O3 -DNDEBUG -Os -flto -MD -MT crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o -MF crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o.d -o crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o -c /mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/fips_shared_support.c\nIn file included from /mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/fips_shared_support.c:15:\n/opt/coreboot-sdk/lib/gcc/arm-eabi/11.2.0/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next \u003cstdint.h\u003e\n      |                ^~~~~~~~~~\ncompilation terminated.\n```\n\nYi, could you help?",
+      "revId": "8881121458295f68d86380c13508e0598ceea31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
