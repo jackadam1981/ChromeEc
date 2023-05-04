@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b3497d_be522cfc",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 146
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-04T09:20:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2676999_48d0dabd",
+      "range": {
+        "startLine": 36,
+        "startChar": 31,
+        "endLine": 36,
+        "endChar": 46
+      },
+      "revId": "b657f81a3534fd93d0a42e1bea2c70f91f65fef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0816ecd9_cbcc82de",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-03T22:24:58Z",
       "side": 1,
       "message": "Are templates being used here (and other functions) because the `pubkey` is an anonymous struct? If so, let\u0027s just make it a named struct and get rid of the templated functions.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "b657f81a3534fd93d0a42e1bea2c70f91f65fef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "543103af_35d92fde",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 146
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-04T09:20:15Z",
+      "side": 1,
+      "message": "Done\n\nBut we still need it for the \"decrypt_data\" function, otherwise we would not be able to check the buffer length at the compile time.\n(template is the only way to preserve the type information(e.g. length) of std::array \u0026 uint8_t[...] in compile time.)",
+      "parentUuid": "0816ecd9_cbcc82de",
       "range": {
         "startLine": 51,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee93923a_c30047f1",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 146
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-04T09:20:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a996243_71dd7147",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "b657f81a3534fd93d0a42e1bea2c70f91f65fef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb9d8191_58a56123",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "921d50ea_b203a227",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 146
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-04T09:20:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb9d8191_58a56123",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 20
+      },
+      "revId": "b657f81a3534fd93d0a42e1bea2c70f91f65fef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dadff46_2403ea16",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-05-03T22:47:03Z",
       "side": 1,
       "message": "I was wondering whether `bssl::UniquePtr` clears the memory before free\u0027ing. It looks like it does since `OPENSSL_free` clears it:\n\n* https://boringssl.googlesource.com/boringssl/+/refs/heads/master/include/openssl/ec_key.h#377\n* https://boringssl.googlesource.com/boringssl/+/HEAD/crypto/fipsmodule/ec/ec_key.c#153\n* https://boringssl.googlesource.com/boringssl/+/master/crypto/mem.c#271",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "b657f81a3534fd93d0a42e1bea2c70f91f65fef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80680508_12c4a9ae",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 146
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-04T09:20:15Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6dadff46_2403ea16",
       "range": {
         "startLine": 130,
         "startChar": 1,
