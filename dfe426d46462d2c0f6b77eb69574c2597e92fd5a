@@ -46,6 +46,30 @@
       },
       "revId": "dfe426d46462d2c0f6b77eb69574c2597e92fd5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6eb8a87_3306b4da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T18:13:07Z",
+      "side": 1,
+      "message": "I think if you [split the CL as suggested in the other comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4257730/comment/5eb9265f_93fdde9f/) that will be best. Then we can verify that `compare_build.sh` works with the change that is only moving code around and the additional NPCX TRNG code will stand on its own.",
+      "parentUuid": "ae25f85e_4fd2c289",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "dfe426d46462d2c0f6b77eb69574c2597e92fd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
