@@ -33,6 +33,23 @@
       "message": "The CQ failure looks like it\u0027s building with `gcc`, not `clang`. I think that\u0027s causing the failure because C++ is not supported by the coreboot `gcc` toolchain:\n\n```\nmkdir -p build/nucleo-h743zi/third_party/boringssl/\ncmake \\\n\t-DCC_NAME\u003dgcc \\\n\t-DCXX_NAME\u003dg++ \\\n\t-DCROSS_COMPILE\u003d/opt/coreboot-sdk/bin/arm-eabi- \\\n\n...\n\nninja: Entering directory `build/nucleo-h743zi/third_party/boringssl/\u0027\n  CC      RW/power/host_sleep.o\n[1/231] Building C object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o\nFAILED: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o \n/opt/coreboot-sdk/bin/arm-eabi-gcc -DBORINGSSL_IMPLEMENTATION -DOPENSSL_NO_ASM -D__TRUSTY__ -I/mnt/host/source/src/third_party/boringssl/third_party/googletest/include -I/mnt/host/source/src/third_party/boringssl/crypto/../include -I/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/../../include -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -Werror -Wformat\u003d2 -Wsign-compare -Wmissing-field-initializers -Wwrite-strings -Wvla -Wshadow -Wtype-limits -ggdb -Wall -fvisibility\u003dhidden -fno-common -Wno-free-nonheap-object -Wimplicit-fallthrough -Wformat-signedness -Wmissing-prototypes -Wold-style-definition -Wstrict-prototypes -D_XOPEN_SOURCE\u003d700 -O3 -DNDEBUG -Os -flto -MD -MT crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o -MF crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o.d -o crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o -c /mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/bcm.c\nIn file included from /mnt/host/source/src/third_party/boringssl/crypto/../include/openssl/base.h:60,\n                 from /mnt/host/source/src/third_party/boringssl/crypto/../include/openssl/crypto.h:18,\n                 from /mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/bcm.c:19:\n/opt/coreboot-sdk/lib/gcc/arm-eabi/11.2.0/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next \u003cstdint.h\u003e\n      |                ^~~~~~~~~~\ncompilation terminated.\n[2/231] Building C object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o\nFAILED: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o \n/opt/coreboot-sdk/bin/arm-eabi-gcc -DBORINGSSL_IMPLEMENTATION -DOPENSSL_NO_ASM -D__TRUSTY__ -I/mnt/host/source/src/third_party/boringssl/third_party/googletest/include -I/mnt/host/source/src/third_party/boringssl/crypto/../include -I/mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/../../include -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -Werror -Wformat\u003d2 -Wsign-compare -Wmissing-field-initializers -Wwrite-strings -Wvla -Wshadow -Wtype-limits -ggdb -Wall -fvisibility\u003dhidden -fno-common -Wno-free-nonheap-object -Wimplicit-fallthrough -Wformat-signedness -Wmissing-prototypes -Wold-style-definition -Wstrict-prototypes -D_XOPEN_SOURCE\u003d700 -O3 -DNDEBUG -Os -flto -MD -MT crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o -MF crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o.d -o crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o -c /mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/fips_shared_support.c\nIn file included from /mnt/host/source/src/third_party/boringssl/crypto/fipsmodule/fips_shared_support.c:15:\n/opt/coreboot-sdk/lib/gcc/arm-eabi/11.2.0/include/stdint.h:9:16: fatal error: stdint.h: No such file or directory\n    9 | # include_next \u003cstdint.h\u003e\n      |                ^~~~~~~~~~\ncompilation terminated.\n```",
       "revId": "8881121458295f68d86380c13508e0598ceea31c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a280428_151047cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T21:53:18Z",
+      "side": 1,
+      "message": "This looks good, but not sure why it\u0027s causing the CQ failure (see other comment).",
+      "revId": "8881121458295f68d86380c13508e0598ceea31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
