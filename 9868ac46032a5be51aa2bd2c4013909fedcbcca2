@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8612cb71_2352f2a7",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T21:35:08Z",
+      "side": 1,
+      "message": "Add unit test for this function; same as others in that it should be deterministic.\n\nUnit test should run on both host and device.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 1
+      },
+      "revId": "9868ac46032a5be51aa2bd2c4013909fedcbcca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b7919fc_2ab90f67",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T21:35:08Z",
+      "side": 1,
+      "message": "Add unit test for this function; same as others in that it should be deterministic.\n\nUnit test should run on both host and device.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 1
+      },
+      "revId": "9868ac46032a5be51aa2bd2c4013909fedcbcca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5d811d_c92cf772",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T21:35:08Z",
+      "side": 1,
+      "message": "Add unit test for this function; same as others in that it should be deterministic.\n\nUnit test should run on both host and device.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 67
+      },
+      "revId": "9868ac46032a5be51aa2bd2c4013909fedcbcca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfbac41a_39c734c3",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T21:35:08Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me from [the docs](https://boringssl.googlesource.com/boringssl/+/refs/heads/master/include/openssl/ec_key.h#175) whether this does a check to make sure `x` and `y` are actually a point on the curve.\n\nDo we need to call `EC_KEY_check_key`/`EC_KEY_check_fips` or does this function do the validation?",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 45
+      },
+      "revId": "9868ac46032a5be51aa2bd2c4013909fedcbcca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02971e18_f53d01c5",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T21:35:08Z",
+      "side": 1,
+      "message": "I would call it `generate_ecdh_shared_secret`. We do happen to use it to fill the output buffer directly, but it\u0027s not limited to being used only for that (it could be used to put the secret in some other buffer).",
+      "range": {
+        "startLine": 202,
+        "startChar": 19,
+        "endLine": 202,
+        "endChar": 23
+      },
+      "revId": "9868ac46032a5be51aa2bd2c4013909fedcbcca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "671ebb24_37b442c8",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T21:35:08Z",
+      "side": 1,
+      "message": "`shared` instead of `share`",
+      "range": {
+        "startLine": 204,
+        "startChar": 16,
+        "endLine": 204,
+        "endChar": 28
+      },
+      "revId": "9868ac46032a5be51aa2bd2c4013909fedcbcca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff7e927a_59590dc6",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T21:35:08Z",
+      "side": 1,
+      "message": "`shared` instead of `share`",
+      "range": {
+        "startLine": 205,
+        "startChar": 15,
+        "endLine": 205,
+        "endChar": 32
+      },
+      "revId": "9868ac46032a5be51aa2bd2c4013909fedcbcca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b48c747c_86660761",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T21:35:08Z",
+      "side": 1,
+      "message": "Tests should be deterministic, so use a pre-generated set of bytes.\n\nhttp://shortn/_emXipucuh5",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 13
+      },
+      "revId": "9868ac46032a5be51aa2bd2c4013909fedcbcca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1b33465_07108a01",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T21:35:08Z",
+      "side": 1,
+      "message": "Tests should be deterministic, so use a pre-generated set of bytes.\n\nhttp://shortn/_emXipucuh5",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 13
+      },
+      "revId": "9868ac46032a5be51aa2bd2c4013909fedcbcca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
