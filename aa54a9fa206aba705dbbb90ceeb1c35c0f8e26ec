@@ -22,6 +22,30 @@
       },
       "revId": "aa54a9fa206aba705dbbb90ceeb1c35c0f8e26ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f59de8c5_f99df151",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2234,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-05-04T09:10:42Z",
+      "side": 1,
+      "message": "if we deprecate `BATTERY_LEVEL_NEAR_FULL` and change it to `charge_get_display_charge() \u003c 1000`, there will be a gap between [BATTERY_LEVEL_NEAR_FULL](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/battery.h;l\u003d32;drc\u003df0436fe4c66f1a6759c2ae28157ec495b53eab9c) and [PWR_STATE_CHARGE_NEAR_FULL](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/charge_state_v2.c;l\u003d2273;drc\u003d03cad4ad498b96cb9084e039fbc7ab30cc919b6c), there are many boards defined LED behavior that depends on `BATTERY_LEVEL_NEAR_FULL` and `PWR_STATE_CHARGE_NEAR_FULL`, such as [voltorb](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/corsola/voltorb/project.overlay;l\u003d88;drc\u003da10cb8394d26d9c369eb5bd1c2ab64f0e955a898), so the LED behavior between `BATTERY_LEVEL_NEAR_FULL` and `PWR_STATE_CHARGE_NEAR_FULL` will become undefined.",
+      "parentUuid": "a315548c_66502b2d",
+      "range": {
+        "startLine": 2233,
+        "startChar": 5,
+        "endLine": 2234,
+        "endChar": 28
+      },
+      "revId": "aa54a9fa206aba705dbbb90ceeb1c35c0f8e26ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
