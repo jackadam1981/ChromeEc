@@ -117,6 +117,30 @@
       },
       "revId": "53e614e425219753642c3b5e08463c62b8b0687b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8910bc3d_ba036735",
+        "filename": "third_party/boringssl/common/sysrand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-04T03:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d8027c7_f28afdcf",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "53e614e425219753642c3b5e08463c62b8b0687b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4979b5bb_4fe5e91b",
+        "filename": "third_party/boringssl/common/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-04T03:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75137b6_a5023866",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "32b4d8334ba5de00cd70526267565c349520780f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50a7ef80_9f57031c",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-03T17:11:11Z",
       "side": 1,
       "message": "We should probably make this clear that it\u0027s only extra files since boringssl itself is built with cmake. Something like \"EC OS Support Files for BoringSSL\".",
+      "range": {
+        "startLine": 6,
+        "startChar": 2,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "32b4d8334ba5de00cd70526267565c349520780f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d0e5bf6_5e78879f",
+        "filename": "third_party/boringssl/common/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-04T03:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50a7ef80_9f57031c",
       "range": {
         "startLine": 6,
         "startChar": 2,
