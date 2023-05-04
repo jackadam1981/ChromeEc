@@ -42,6 +42,7 @@ CLANG_BOARDS:= \
 	nami_fp \
 	nocturne_fp \
 	nucleo-dartmonkey \
+	prism \
 
 ifeq ($(filter $(BOARD), $(CLANG_BOARDS)), $(BOARD))
 CC=clang

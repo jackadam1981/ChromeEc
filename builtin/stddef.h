@@ -33,4 +33,9 @@ typedef __WCHAR_TYPE__ wchar_t;
 #define offsetof(TYPE, MEMBER) __builtin_offsetof(TYPE, MEMBER)
 #endif
 
+#ifndef __PTRDIFF_TYPE__
+#define __PTRDIFF_TYPE__ long int
+#endif
+typedef __PTRDIFF_TYPE__ ptrdiff_t;
+
 #endif /* __CROS_EC_STDDEF_H__ */
