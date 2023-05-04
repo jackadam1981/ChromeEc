@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01480c59_4bf3cce3",
+        "filename": "zephyr/program/myst/i2c.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-04T13:00:14Z",
+      "side": 1,
+      "message": "you\u0027re gonna need to add\n`TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V` here.",
+      "range": {
+        "startLine": 79,
+        "startChar": 17,
+        "endLine": 79,
+        "endChar": 40
+      },
+      "revId": "63844fd912a133e58e17ecad43b4e0c1a9dd15b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fa0a5aa_601b0d8d",
+        "filename": "zephyr/program/myst/i2c.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-04T13:00:14Z",
+      "side": 1,
+      "message": "i\u0027ve been wondering if `is-alt` should be applied to the \"default\" case\nas well. the way we use `is-alt`, there is no preferred or common case.\ni don\u0027t like how you have to go back and \"undo\" the defaults,\nspecially for mux chains.",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 8
+      },
+      "revId": "63844fd912a133e58e17ecad43b4e0c1a9dd15b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e464b90d_1d42b299",
+        "filename": "zephyr/program/myst/myst/src/usb_mux_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-04T13:00:14Z",
+      "side": 1,
+      "message": "case in point about `is-alt`.\nyou still have stuff plumbed up when you shouldn\u0027t.",
+      "revId": "63844fd912a133e58e17ecad43b4e0c1a9dd15b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
