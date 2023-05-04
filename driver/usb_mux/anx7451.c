@@ -19,7 +19,8 @@
  * Empirical testing found it takes ~12ms to wake mux.
  * Setting timeout to 20ms for some buffer.
  */
-#define ANX7451_I2C_WAKE_TIMEOUT_MS 20
+#define _ANX7451_I2C_WAKE_TIMEOUT_MS 20
+#define ANX7451_I2C_WAKE_TIMEOUT_MS 50
 #define ANX7451_I2C_WAKE_RETRY_DELAY_US 500
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
@@ -68,6 +69,7 @@ static int anx7451_wake_up(const struct usb_mux *me)
 		CPRINTS("ANX7451: Failed to wake mux rv:%d", rv);
 		return EC_ERROR_TIMEOUT;
 	}
+	CPRINTS("ANX7451: woke after %d ms", time_since32(start) / MSEC);
 
 	/* ULTRA_LOW_POWER must always be disabled (Fig 2-2) */
 	RETURN_ERROR(anx7451_write(me, ANX7451_REG_ULTRA_LOW_POWER,
@@ -92,6 +94,8 @@ static int anx7451_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 			   bool *ack_required)
 {
 	int reg;
+
+	ccprintf("%s: mux_state 0x%02x\n", __func__, (int)mux_state);
 
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
@@ -145,6 +149,8 @@ static int anx7451_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 		*mux_state |= USB_PD_MUX_DP_ENABLED;
 	if (reg & ANX7451_ULP_CFG_MODE_FLIP)
 		*mux_state |= USB_PD_MUX_POLARITY_INVERTED;
+
+	ccprintf("%s: mux_state 0x%02x\n", __func__, (int)*mux_state);
 
 	return EC_SUCCESS;
 }

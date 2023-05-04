@@ -57,3 +57,13 @@ __override bool board_is_dts_port(int port)
 {
 	return port == USBC_PORT_C0;
 }
+
+/* from anx7451.h */
+uint16_t board_anx7451_get_usb_i2c_addr(const struct usb_mux *me);
+
+uint16_t board_anx7451_get_usb_i2c_addr(const struct usb_mux *me)
+{
+	/* get from DT */
+	/* default USB target addr is 0x29 (7-bit) */
+	return 0x2a;
+}

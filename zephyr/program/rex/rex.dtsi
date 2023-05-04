@@ -4,6 +4,7 @@
  */
 
 #include <dt-bindings/usb_pd_tcpm.h>
+#include <dt-bindings/usbc_mux.h>
 
 / {
 	aliases {
@@ -54,8 +55,18 @@
 		usb_c0_tcpc_rst_odl {
 			gpios = <&gpio6 7 (GPIO_ODR_HIGH | GPIO_ACTIVE_LOW)>;
 		};
+
+		/* this is DP_EN on anx7452 */
+		usb_c1_rt_int_odl {
+			gpios = <&gpio7 2 GPIO_OUTPUT_LOW>;
+		};
+
+		/* this is USB_EN on anx7452 */
 		usb_c1_rt_rst_r_odl {
-			gpios = <&gpio7 4 (GPIO_ODR_HIGH | GPIO_ACTIVE_LOW)>;
+			/*gpios = <&gpio7 4 (GPIO_ODR_HIGH | GPIO_ACTIVE_LOW)>;*/
+			/* keeps chip off??? */
+			/*gpios = <&gpio7 4 (GPIO_OUTPUT_LOW)>;*/
+			gpios = <&gpio7 4 (GPIO_OUTPUT_HIGH)>;
 		};
 	};
 
@@ -252,7 +263,7 @@
 		 * "named-gpios". This is the Zephyr preferred style,
 		 * the "named-gpios" node will be dealt with at a later date.
 		 */
-		rst-gpios = <&gpio7 4 (GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
+		/*rst-gpios = <&gpio7 4 (GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;*/
 	};
 
 	tcpc_rt1716_port1: rt1716@4e {
@@ -310,6 +321,45 @@
 		reg = <0x40>;
 		frs_en_gpio = <&gpio_usb_c1_frs_en>;
 		is-alt;
+	};
+
+/*
+	rt_anx_port1: usb_c1_anx7451_retimer@20 {
+		compatible = "analogix,anx7451";
+		reg = <0x20>;
+		usb_en_pin = <&gpio_usb_c1_frs_en>;
+		/x usb_en_pin = <&gpio_usb_c1_rt_rst_r_odl>; x/
+		/x dp_en_pin = <&gpio_usb_c1_rt_int_odl>; x/
+		status = "okay";
+		is-alt;
+	};
+*/
+
+	/*rt_anx_port1: usb_c1_anx7451_retimer@20 {
+		compatible = "analogix,anx7451";
+		reg = <0x20>;
+		usb_en_pin = <&gpio_usb_c1_frs_en>;
+		/x usb_en_pin = <&gpio_usb_c1_rt_rst_r_odl>; x/
+		/x dp_en_pin = <&gpio_usb_c1_rt_int_odl>; x/
+		status = "okay";
+		is-alt;
+	};*/
+
+	/*usb_c1_anx_retimer: anx7451-c1@20 {
+		compatible = "analogix,anx7451";
+		/x reg = <0x20>; x/
+		reg = <0x10>;
+		dp-en-pin = <&gpio_usb_c1_rt_int_odl>;
+		usb-en-pin = <&gpio_usb_c1_rt_rst_r_odl>;
+		flags = <USB_MUX_FLAG_POLARITY_INVERTED>;
+	};*/
+
+	usb_c1_anx_retimer: anx7452-c1@10 {
+		compatible = "analogix,anx7452";
+		reg = <0x10>;
+		/*dp-en-pin = <&gpio_usb_c1_rt_int_odl>;*/
+		usb-en-pin = <&gpio_usb_c1_rt_rst_r_odl>;
+		/*flags = <USB_MUX_FLAG_POLARITY_INVERTED>;*/
 	};
 };
 

@@ -71,6 +71,9 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state,
 
 static int virtual_init(const struct usb_mux *me)
 {
+
+	ccprintf("%s: call\n", __func__);
+
 	return EC_SUCCESS;
 }
 
@@ -83,6 +86,8 @@ static int virtual_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 {
 	int port = me->usb_port;
 	mux_state_t new_mux_state;
+
+	ccprintf("%s: call\n", __func__);
 
 	/*
 	 * Current USB & DP mux status + existing HPD related mux status if DP
@@ -108,6 +113,8 @@ static int virtual_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 static int virtual_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 {
 	int port = me->usb_port;
+
+	ccprintf("%s: call\n", __func__);
 
 	*mux_state = virtual_mux_state[port];
 

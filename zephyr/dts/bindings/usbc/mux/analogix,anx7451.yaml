@@ -2,12 +2,11 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-description: |
-  Analogix re-timing MUX
+description: Analogix 7451 re-timing MUX
+
+compatible: "analogix,anx7451"
 
 include: ["i2c-device.yaml", "cros-ec,usbc-mux.yaml"]
-
-compatible: "analogix,anx7452"
 
 properties:
   flags:

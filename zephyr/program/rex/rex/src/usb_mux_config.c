@@ -56,13 +56,14 @@ static void setup_usb_db(void)
 		break;
 	case FW_USB_DB_USB4_ANX7452:
 		LOG_INF("USB DB: Setting ANX7452 mux");
-		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_anx7452_port1);
+		/*USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_anx7452_port1);*/
+		/*USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_anx7451_port1);*/
 		TCPC_ENABLE_ALTERNATE_BY_NODELABEL(1, tcpc_rt1716_port1);
 		PPC_ENABLE_ALTERNATE_BY_NODELABEL(1, ppc_syv_port1);
 		break;
 	case FW_USB_DB_USB4_KB8010:
 		LOG_INF("USB DB: Setting KB8010 mux");
-		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_kb8010_port1);
+		/*USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_kb8010_port1);*/
 		TCPC_ENABLE_ALTERNATE_BY_NODELABEL(1, tcpc_rt1716_port1);
 		PPC_ENABLE_ALTERNATE_BY_NODELABEL(1, ppc_ktu1125_port1);
 		break;

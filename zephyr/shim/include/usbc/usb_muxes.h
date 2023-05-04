@@ -9,6 +9,7 @@
 #include "usb_mux.h"
 #include "usbc/amd_fp6_usb_mux.h"
 #include "usbc/anx7447_usb_mux.h"
+#include "usbc/anx7451_usb_mux.h"
 #include "usbc/anx7452_usb_mux.h"
 #include "usbc/anx7483_usb_mux.h"
 #include "usbc/bb_retimer_usb_mux.h"
@@ -31,12 +32,13 @@
 #define USB_MUX_DRIVERS                                         \
 	(AMD_FP6_USB_MUX_COMPAT, USB_MUX_CONFIG_AMD_FP6),       \
 	(ANX7447_USB_MUX_COMPAT, USB_MUX_CONFIG_ANX7447),       \
+	(ANX7451_USB_MUX_COMPAT, USB_MUX_CONFIG_ANX7451),       \
 	(ANX7452_USB_MUX_COMPAT, USB_MUX_CONFIG_ANX7452),       \
 	(ANX7483_USB_MUX_COMPAT, USB_MUX_CONFIG_ANX7483),       \
 	(BB_RETIMER_USB_MUX_COMPAT, USB_MUX_CONFIG_BB_RETIMER), \
 	(IT5205_USB_MUX_COMPAT, USB_MUX_CONFIG_IT5205),         \
 	(PS8743_USB_MUX_COMPAT, USB_MUX_CONFIG_PS8743),         \
-	(PS8743_EMUL_COMPAT, USB_MUX_CONFIG_PS8743),         \
+	(PS8743_EMUL_COMPAT, USB_MUX_CONFIG_PS8743),            \
 	(PS8818_USB_MUX_COMPAT, USB_MUX_CONFIG_PS8818),         \
 	(PS8XXX_USB_MUX_COMPAT, USB_MUX_CONFIG_TCPCI_TCPM),     \
 	(TCPCI_TCPM_USB_MUX_COMPAT, USB_MUX_CONFIG_TCPCI_TCPM), \
@@ -44,6 +46,27 @@
 	(TUSB1064_EMUL_COMPAT, USB_MUX_CONFIG_TUSB1064),        \
 	(VIRTUAL_USB_MUX_COMPAT, USB_MUX_CONFIG_VIRTUAL)
 /* clang-format on */
+
+/* ================================================================ */
+
+#if 0
+#define USB_MUX_ALT_NAME_GET(node_id) DT_CAT(usb_mux_alt_, node_id)
+#define USB_MUX_ALT_FROM_NODELABEL(lbl) (USB_MUX_ALT_NAME_GET(DT_NODELABEL(lbl)))
+
+#define USB_MUX_ALT_DECLARATION(node_id) \
+	extern const struct usb_mux USB_MUX_ALT_NAME_GET(node_id)
+
+#define USB_MUX_ALT_DECLARE(node_id)                   \
+	COND_CODE_1(DT_PROP_OR(node_id, is_alt, 0), \
+		    (USB_MUX_ALT_DECLARATION(node_id);), ())
+
+#define USB_MUX_ENABLE_ALTERNATE_BY_NODELABEL(usb_port_num, nodelabel) \
+	memcpy(&usb_mux_config[usb_port_num],                          \
+	       &USB_MUX_ALT_FROM_NODELABEL(nodelabel),                 \
+	       sizeof(struct usb_mux))
+#endif
+
+/* ================================================================ */
 
 /**
  * @brief Get compatible from @p driver

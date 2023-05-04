@@ -23,3 +23,12 @@ properties:
     required: false
     description: |
       Name of function used as board_set callback
+
+properties:
+  is-alt:
+    type: boolean
+    required: false
+    description: |
+      If present, this node refers to an alternate MUX device. The MUX
+      device is not used by default, and must be manually enabled at
+      runtime.

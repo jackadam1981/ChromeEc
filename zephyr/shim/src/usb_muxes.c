@@ -90,3 +90,24 @@ BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
  * MAYBE_CONST struct usb_mux USB_MUX_NODE_<node_id> = { ... };
  */
 USB_MUX_FOREACH_MUX(USB_MUX_DEFINE)
+
+/* ================================================================ */
+
+#if 0
+#define USB_MUX_ALT_DEFINITION(node_id, config_fn) \
+	const struct usb_mux USB_MUX_ALT_NAME_GET(node_id) = config_fn(node_id)
+
+#define USB_MUX_ALT_DEFINE(node_id, config_fn)          \
+	COND_CODE_1(DT_PROP_OR(node_id, is_alt, 0), \
+		    (USB_MUX_ALT_DEFINITION(node_id, config_fn);), ())
+
+/*
+ * Define a global struct usb_mux for every USB_MUX node in the tree with the
+ * "is-alt" property set.
+ */
+
+DT_FOREACH_STATUS_OKAY_VARGS(ANX7451_USB_MUX_COMPAT, USB_MUX_ALT_DEFINE, USB_MUX_CONFIG_ANX7451)
+DT_FOREACH_STATUS_OKAY_VARGS(ANX7452_USB_MUX_COMPAT, USB_MUX_ALT_DEFINE, USB_MUX_CONFIG_ANX7452)
+#endif
+
+/* ================================================================ */

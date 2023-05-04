@@ -35,24 +35,39 @@
 			tcpc = <&tcpc_port1>;
 			usb-mux-chain-1 {
 				compatible = "cros-ec,usb-mux-chain";
-				usb-muxes = <&virtual_mux_c1 &tcpci_mux_c1>;
+				/*usb-muxes = <&virtual_mux_c1 &tcpci_mux_c1>;*/
+				/*usb-muxes = <&usb_c1_hb_retimer &virtual_mux_c1>;*/
+				/*usb-muxes = <&usb_c1_anx_retimer &virtual_mux_c1>;*/
+				usb-muxes = < &virtual_mux_c1 &usb_c1_anx_retimer>;
 			};
-			usb_mux_chain_anx7452_port1: usb-mux-chain-1-anx7452 {
+			/*usb_mux_chain_anx7452_port1_off: usb-mux-chain-1-anx7452_off {
 				compatible = "cros-ec,usb-mux-chain";
 				usb-muxes = <&virtual_mux_c1>;
 				alternative-chain;
-			};
-			usb_mux_chain_kb8010_port1: usb-mux-chain-1-kb8010 {
+			};*/
+			/*usb_mux_chain_kb8010_port1: usb-mux-chain-1-kb8010 {
 				compatible = "cros-ec,usb-mux-chain";
 				usb-muxes = <&virtual_mux_c1>;
 				alternative-chain;
-			};
+			};*/
+			/*usb_mux_chain_anx7451_port1: usb-mux-chain-1-anx7451 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&rt_anx_port1
+					     &virtual_mux_c1>;
+				alternative-chain;
+			};*/
+			/*usb_mux_chain_bb_port1: usb-mux-bb-port1 {
+				compatible = "cros-ec,usb-mux-chain";
+				/x alternative-chain; x/
+				usb-muxes = <&usb_c1_bb_retimer
+					     &virtual_mux_c1>;
+			};*/
 		};
 		port1-muxes {
-			tcpci_mux_c1: tcpci-mux-c1 {
+			/*tcpci_mux_c1: tcpci-mux-c1 {
 				compatible = "cros-ec,usbc-mux-tcpci";
 				hpd-update = "ps8xxx_tcpc_update_hpd_status";
-			};
+			};*/
 			virtual_mux_c1: virtual-mux-c1 {
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
