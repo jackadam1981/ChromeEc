@@ -1539,10 +1539,19 @@ static void sustain_battery_soc(void)
 	 */
 	switch (mode) {
 	case CHARGE_CONTROL_NORMAL:
+<<<<<<< HEAD   (69da06 chgstv2: rework "charge_command_charge_control()")
 		/* Going up */
 		if (sustain_soc.upper < soc)
 			mode = sustain_soc.upper == sustain_soc.lower ?
 				CHARGE_CONTROL_IDLE : CHARGE_CONTROL_DISCHARGE;
+=======
+		/* Going up. Always DISCHARGE if the soc is above upper. */
+		if (sustain_soc.lower == soc && soc == sustain_soc.upper) {
+			mode = CHARGE_CONTROL_IDLE;
+		} else if (sustain_soc.upper < soc) {
+			mode = CHARGE_CONTROL_DISCHARGE;
+		}
+>>>>>>> CHANGE (cfd4ab chgstv2: Always discharge if soc is > sustainer_soc.upper)
 		break;
 	case CHARGE_CONTROL_IDLE:
 		/* Discharging naturally */
@@ -1551,8 +1560,11 @@ static void sustain_battery_soc(void)
 		break;
 	case CHARGE_CONTROL_DISCHARGE:
 		/* Discharging actively. */
-		if (soc < sustain_soc.lower)
+		if (sustain_soc.lower == soc && soc == sustain_soc.upper) {
+			mode = CHARGE_CONTROL_IDLE;
+		} else if (soc < sustain_soc.lower) {
 			mode = CHARGE_CONTROL_NORMAL;
+		}
 		break;
 	default:
 		return;
