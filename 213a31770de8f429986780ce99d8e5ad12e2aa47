@@ -92,6 +92,24 @@
       "parentUuid": "c43f3ae9_f240f82c",
       "revId": "213a31770de8f429986780ce99d8e5ad12e2aa47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3692cdcc_572987ae",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-04T15:54:06Z",
+      "side": 1,
+      "message": "This part of the code appears to be shared (myst/src as opposed to myst/myst/src).  \n\nI suppose I should mention that on AMD projects, they usually don\u0027t share FW_CONFIG between the variants.  I\u0027m not sure what brya has been doing (dedede had all variants share one FW_CONFIG), but for skyrim each board got to make up its own FW_CONFIG fields.  Therefore the IO DB field wouldn\u0027t necessarily be the same terminology between projects.\n\nWe can check with the SIEs if the plan is the same for myst.  We could also take an approach of just exporting an enum to indicate which chip is present on C1 to keep the shared code without assuming anything about the FW config itself",
+      "parentUuid": "5a940b0f_e1c210f0",
+      "revId": "213a31770de8f429986780ce99d8e5ad12e2aa47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

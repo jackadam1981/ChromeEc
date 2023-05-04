@@ -62,6 +62,24 @@
       "message": "case in point about `is-alt`.\nyou still have stuff plumbed up when you shouldn\u0027t.",
       "revId": "63844fd912a133e58e17ecad43b4e0c1a9dd15b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a62a0b7_5ad405dd",
+        "filename": "zephyr/program/myst/myst/src/usb_mux_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-04T15:54:06Z",
+      "side": 1,
+      "message": "Oh, and if we have a no-DB option we should probably override `board_get_usb_pd_port_count()`.  I don\u0027t think I see an elegant zephyr-ish way to do the same thing it does (indicate the number of valid USB-C ports when they may vary at runtime)",
+      "parentUuid": "e464b90d_1d42b299",
+      "revId": "63844fd912a133e58e17ecad43b4e0c1a9dd15b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
