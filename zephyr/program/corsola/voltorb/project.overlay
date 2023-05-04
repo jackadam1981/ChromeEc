@@ -85,7 +85,7 @@
 			charge-state = "PWR_STATE_CHARGE";
 			/* Battery percent range (>= Empty, <= 96%) */
 			batt-lvl = <BATTERY_LEVEL_EMPTY
-					(BATTERY_LEVEL_NEAR_FULL - 1)>;
+					(CONFIG_BATT_HOST_FULL_FACTOR - 1)>;
 
 			color-0 {
 				led-color = <&color_amber>;

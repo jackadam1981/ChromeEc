@@ -2231,11 +2231,11 @@ bool charge_prevent_power_on(bool power_button_pressed)
 
 static int battery_near_full(void)
 {
-	if (charge_get_percent() < BATTERY_LEVEL_NEAR_FULL)
+	if (charge_get_percent() < CONFIG_BATT_HOST_FULL_FACTOR)
 		return 0;
 
 #ifdef CONFIG_EC_EC_COMM_BATTERY_CLIENT
-	if (charge_base > -1 && charge_base < BATTERY_LEVEL_NEAR_FULL)
+	if (charge_base > -1 && charge_base < CONFIG_BATT_HOST_FULL_FACTOR)
 		return 0;
 #endif
 
