@@ -16,6 +16,24 @@
       "message": "nit: Is it still needed?",
       "revId": "cb04727dfac0e84bae95017c354a3fcff30916dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b1aefb_de871c52",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1933,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-05-04T13:42:51Z",
+      "side": 1,
+      "message": "It is for this CL, but is removed in the next one.\n\nI didn\u0027t want to do it altogether since it is quite a lot of code and I thought this was a good breaking point",
+      "parentUuid": "07efcbcc_7455727c",
+      "revId": "cb04727dfac0e84bae95017c354a3fcff30916dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
