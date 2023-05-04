@@ -18,6 +18,7 @@
 #include "keyboard_8042_sharedlib.h"
 #include "keyboard_config.h"
 #include "keyboard_protocol.h"
+#include "keyboard_scan.h"
 #include "lightbar.h"
 #include "lpc.h"
 #include "power_button.h"
@@ -463,6 +464,22 @@ void clear_typematic_key(void)
 	typematic_len = 0;
 }
 
+#define ALT_R_COL 10
+#define ALT_R_ROW 0
+#define ALT_L_COL 10
+#define ALT_L_ROW 6
+#define SEARCH_COL 0
+#define SEARCH_ROW 3
+#define SETLEDS_COMING_TIMEOUT (10 * MSEC)
+static uint8_t setleds_coming;
+static timestamp_t setleds_coming_deadline;
+
+static void set_setleds_coming(void)
+{
+	setleds_coming_deadline.val = get_time().val + SETLEDS_COMING_TIMEOUT;
+	setleds_coming = 1;
+}
+
 void keyboard_state_changed(int row, int col, int is_pressed)
 {
 	uint8_t scan_code[MAX_SCAN_CODE_LEN];
@@ -479,6 +496,30 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 	else
 		CPRINTS("KB (%d,%d)=%d %c", row, col, is_pressed, mylabel);
 #endif
+
+	/*
+	 * First make sure this is a release event and SETLED is not already
+	 * expected.
+	 */
+	if (!is_pressed && !setleds_coming) {
+		const uint8_t *kbstate = keyboard_scan_get_state();
+
+		if ((col == ALT_R_COL && row == ALT_R_ROW) ||
+				(col == ALT_L_COL && row == ALT_L_ROW)) {
+			/* This is alt_r or alt_l release. */
+			if (kbstate[SEARCH_COL] & BIT(SEARCH_ROW)) {
+				/* Search is currently pressed. */
+				set_setleds_coming();
+			}
+		} else if (col == SEARCH_COL && row == SEARCH_ROW) {
+			/* This is search release. */
+			if ((kbstate[ALT_R_COL] & BIT(ALT_R_ROW)) ||
+					(kbstate[ALT_L_COL] & BIT(ALT_L_ROW))) {
+				/* Alt_R/L is currently pressed. */
+				set_setleds_coming();
+			}
+		}
+	}
 
 	ret = matrix_callback(row, col, is_pressed, scancode_set, scan_code,
 			      &len);
@@ -640,6 +681,7 @@ static int handle_keyboard_data(uint8_t data, uint8_t *output)
 		CPRINTS5("KB eaten by STATE_ATKBD_SETLEDS");
 		output[out_len++] = ATKBD_RET_ACK;
 		data_port_state = STATE_ATKBD_CMD;
+		setleds_coming = 0;
 		break;
 
 	case STATE_ATKBD_EX_SETLEDS_1:
@@ -686,6 +728,7 @@ static int handle_keyboard_data(uint8_t data, uint8_t *output)
 			/* Chrome OS doesn't have keyboard LEDs, so ignore */
 			output[out_len++] = ATKBD_RET_ACK;
 			data_port_state = STATE_ATKBD_SETLEDS;
+			setleds_coming = 0;
 			setleds_deadline.val = get_time().val + SETLEDS_TIMEOUT;
 			CPRINTS5("KB SETLEDS");
 			break;
@@ -919,6 +962,35 @@ static void i8042_handle_from_host(void)
 	}
 }
 
+/**
+ * Return false if we don't have data or we have data but we need to hold it.
+ */
+static bool i8042_shall_send_data(int *wait)
+{
+	if (queue_is_empty(&to_host_cmd)) {
+		if (queue_is_empty(&to_host))
+			/* Both queues are empty. Nothing to do */
+			return false;
+		/*
+		 * If scancode queue has data and SETLEDS is expected, we hold
+		 * to send a scancode because the AP may interpret it as a
+		 * response for SETLEDS command it's about to send.
+		 */
+		if (setleds_coming) {
+			timestamp_t t = get_time();
+
+			if (!timestamp_expired(setleds_coming_deadline, &t)) {
+				*wait = setleds_coming_deadline.val - t.val;
+				return false;
+			}
+			/* SETLEDS didn't arrive. Proceed and send scancode. */
+			setleds_coming = 0;
+		}
+	}
+
+	return true;
+}
+
 void keyboard_protocol_task(void *u)
 {
 	int wait = -1;
@@ -955,9 +1027,7 @@ void keyboard_protocol_task(void *u)
 			/* Handle command/data write from host */
 			i8042_handle_from_host();
 
-			/* Check if we have data to send to host */
-			if (queue_is_empty(&to_host) &&
-			    queue_is_empty(&to_host_cmd))
+			if (!i8042_shall_send_data(&wait))
 				break;
 
 			/*
