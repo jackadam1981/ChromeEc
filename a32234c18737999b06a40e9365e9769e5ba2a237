@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bd9e577_6c5c8451",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T22:03:55Z",
+      "side": 1,
+      "message": "At the point of this commit there\u0027s not duplicated code. I would just say:\n\n```\ncommon: Move chip agnostic TRNG code from STM32 to common \n```\n\nNote that the convention in the EC code is that the part before the colon is the affected directory.",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ac1a66_09336128",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T22:03:55Z",
+      "side": 1,
+      "message": "Generally commits should be associated with a bug. Is there one for adding TRNG support for NPCX?",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90b8a524_7c7e2eb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T22:03:55Z",
+      "side": 1,
+      "message": "Please run the `compare_build.sh -b all` script as mentioned in the other review.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cf3895a_7645ed77",
         "filename": "include/trng.h",
         "patchSetId": 1
