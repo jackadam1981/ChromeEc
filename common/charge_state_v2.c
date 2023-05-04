@@ -1432,11 +1432,17 @@ static void sustain_battery_soc(void)
 	 */
 	switch (mode) {
 	case CHARGE_CONTROL_NORMAL:
-		/* Going up */
-		if (sustain_soc.upper < soc)
+		/*
+		 * Going up. Always DISCHARGE if the soc is more than 1 above
+		 * upper.
+		 */
+		if (sustain_soc.lower <= soc && soc <= sustain_soc.upper + 1) {
 			mode = sustain_soc.upper == sustain_soc.lower ?
 				       CHARGE_CONTROL_IDLE :
 				       CHARGE_CONTROL_DISCHARGE;
+		} else if (sustain_soc.upper + 1 < soc) {
+			mode = CHARGE_CONTROL_DISCHARGE;
+		}
 		break;
 	case CHARGE_CONTROL_IDLE:
 		/* Discharging naturally */
