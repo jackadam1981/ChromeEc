@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b455214d_af04655b",
+        "filename": "test/boringssl_crypto.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T21:10:50Z",
+      "side": 1,
+      "message": "I would pull this into a separate CL with the [code that adds `generate_elliptic_curve_key`](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3901734/comment/cda542a4_1422ab4a/).",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "6014f743efca5c50a554b49a3529093b75ae3474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef1eaeb6_be151433",
         "filename": "test/build.mk",
         "patchSetId": 10
