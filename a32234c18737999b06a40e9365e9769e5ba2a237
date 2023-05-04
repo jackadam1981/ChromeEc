@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf3895a_7645ed77",
+        "filename": "include/trng.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T21:58:49Z",
+      "side": 1,
+      "message": "Does this need to be common? i.e., can `trng_rand` stay `static`? It was removed in  https://crrev.com/c/4423151.\n\nIt would be helpful for you to stack your NPCX TRNG change on top of this so that I could see the full context of whether it\u0027s used there.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
