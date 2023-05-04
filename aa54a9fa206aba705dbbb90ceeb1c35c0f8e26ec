@@ -46,6 +46,30 @@
       },
       "revId": "aa54a9fa206aba705dbbb90ceeb1c35c0f8e26ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0562840b_bc469870",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2234,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-04T18:51:08Z",
+      "side": 1,
+      "message": "Please take a look at b/280818345 (and crrev/c/4507891).",
+      "parentUuid": "f59de8c5_f99df151",
+      "range": {
+        "startLine": 2233,
+        "startChar": 5,
+        "endLine": 2234,
+        "endChar": 28
+      },
+      "revId": "aa54a9fa206aba705dbbb90ceeb1c35c0f8e26ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
