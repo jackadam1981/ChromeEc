@@ -237,6 +237,30 @@
       },
       "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b58cff57_cb3edd53",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-04T23:14:43Z",
+      "side": 1,
+      "message": "Yes, understand abandoning changes isn\u0027t ideal, but there were actually two reasons for this:\n1) While I understand how to amend commits, which your referenced document partially explains, I\u0027m unsure how to cleanly remove files from them. \n2) Bobby modified the commitmsg of the abandoned CL, making it harder to get through code review\n\nFor both these reasons, and given the context that my goal is to get the helipilot patches reviewed and merged ASAP, it seemed easier and quick to abandon and resubmit in this case.",
+      "parentUuid": "4a7d84ef_6989a704",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 0
+      },
+      "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
