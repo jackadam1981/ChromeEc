@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1753d36e_9bebaf23",
+        "filename": "driver/nvidia_gpu.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2023-05-04T22:36:38Z",
+      "side": 1,
+      "message": "Should this \"min\" also change to \"max\"?",
+      "range": {
+        "startLine": 55,
+        "startChar": 35,
+        "endLine": 55,
+        "endChar": 38
+      },
+      "revId": "dff5d70924750980bde68d0ce3acf142b7a01cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
