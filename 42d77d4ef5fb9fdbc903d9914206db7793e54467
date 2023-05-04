@@ -213,6 +213,30 @@
       },
       "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a7d84ef_6989a704",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T22:09:53Z",
+      "side": 1,
+      "message": "Rather than abandoning changes, you should [replace existing changes](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/git_and_gerrit_intro.md#updating-your-changelist) so that the history is preserved. @bobbycasey@google.com can help you with that.",
+      "parentUuid": "8ec127d9_c95defe2",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 0
+      },
+      "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
