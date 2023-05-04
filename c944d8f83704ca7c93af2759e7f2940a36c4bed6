@@ -33,6 +33,24 @@
       "message": "If the lack of coverage here bothers you, you can add an LCOV tag for it.  I had to do that for a couple of my helpers with unreachable statements",
       "revId": "c944d8f83704ca7c93af2759e7f2940a36c4bed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb3d0c38_c06afa30",
+        "filename": "zephyr/test/rex/src/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-05-04T18:52:15Z",
+      "side": 1,
+      "message": "Thanks for the pointer. I\u0027ve wrapped the unreachable code in LCOV tags and got to 100% coverage.",
+      "parentUuid": "fb2bf34a_53447949",
+      "revId": "c944d8f83704ca7c93af2759e7f2940a36c4bed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
