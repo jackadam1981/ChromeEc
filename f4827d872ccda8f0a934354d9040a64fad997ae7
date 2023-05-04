@@ -191,6 +191,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ef3c836_945fcb71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-04T20:10:21Z",
+      "side": 1,
+      "message": "The doc you pointed to doesn\u0027t include information on dependency chains. This one (https://docs.google.com/document/d/1BLivopEPewNYiipx2dulx9cYvlZoBn8mqUO9b-f5RNI/edit#heading\u003dh.qj2avam5o6vs) does, but the instructions seem outdated: repo is never referenced, all branches are created on git. Can one of you provide a reference that matches \"the way this is (actually) done throughout ChromeOS\"?",
+      "parentUuid": "94305b51_36a9de1b",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d9aefbd4_551f95dc",
