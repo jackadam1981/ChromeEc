@@ -189,6 +189,30 @@
       },
       "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec127d9_c95defe2",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-04T21:46:02Z",
+      "side": 1,
+      "message": "1. Has been added as go/crvc/4507892\n2. Is now at go/crvc/4507895\n\nMarking this as resolved, will abandon this change and you both as reviewers of the new CLS.",
+      "parentUuid": "fe47b202_f723451c",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 0
+      },
+      "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
