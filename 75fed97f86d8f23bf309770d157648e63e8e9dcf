@@ -16,6 +16,24 @@
       "message": "Are we missing `HAS_TASK_USB_MUX` ?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/include/shimmed_tasks.h;l\u003d47",
       "revId": "75fed97f86d8f23bf309770d157648e63e8e9dcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac480b5a_6ee60645",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2023-05-04T10:20:24Z",
+      "side": 1,
+      "message": "Yes, and even more. Thanks for noticing!",
+      "parentUuid": "67befd85_8f0d3511",
+      "revId": "75fed97f86d8f23bf309770d157648e63e8e9dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
