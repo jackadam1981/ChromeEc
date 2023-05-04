@@ -74,6 +74,24 @@
       "message": "Do we anticipate the IO DB sku naming to be shared across variants?  Should this be something like fetching the PPC type that the variants could share more easily?",
       "revId": "213a31770de8f429986780ce99d8e5ad12e2aa47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a940b0f_e1c210f0",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-04T12:28:03Z",
+      "side": 1,
+      "message": "Not sure I understand, could you please elaborate on the suggestion?",
+      "parentUuid": "c43f3ae9_f240f82c",
+      "revId": "213a31770de8f429986780ce99d8e5ad12e2aa47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
