@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf4d396_35bcb48b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T22:06:46Z",
+      "side": 1,
+      "message": "Generally commits should be associated with a bug. Is there one for adding TRNG support for NPCX?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "e7356bc03de335c07bd9e7bbe96ea50400ea4821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30d69665_91086ba9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-04T22:06:46Z",
+      "side": 1,
+      "message": "Generally new code should compile without requiring manual modification. That makes sure that the CQ actually builds the new code (and there aren\u0027t accidental local changes that make it only work on your machine). In addition, since the CQ won\u0027t build code that is not compiled, it\u0027s likely to be broken by other changes to EC in the meantime. Sounds like this should be stacked on the change that adds `CONFIG_RNG` to `board.h`.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "e7356bc03de335c07bd9e7bbe96ea50400ea4821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
