@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a0662f_fc730536",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 33
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-05T23:50:46Z",
+      "side": 1,
+      "message": "Instead of calling `fp_clear_context`, you should be calling `fp_reset_and_clear_context` (which is already exported).",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 62
+      },
+      "revId": "ac37e77df320cfab31e2e0218c4ddf5139af78e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
