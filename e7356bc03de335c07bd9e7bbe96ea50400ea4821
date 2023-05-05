@@ -93,6 +93,30 @@
       },
       "revId": "e7356bc03de335c07bd9e7bbe96ea50400ea4821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88fc0884_a4426e97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-05T16:00:46Z",
+      "side": 1,
+      "message": "I think your manual test combined with running `compare_build.sh -b all` (which I already ran and it passed) should be enough to prove that it will do what\u0027s expected and won\u0027t break anything else. If you rebase the board config CL (go/crvc/4451646) on top of this then they can be committed \"together\" which should alleviate the concern about something breaking in between.",
+      "parentUuid": "398d5845_b78043a3",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "e7356bc03de335c07bd9e7bbe96ea50400ea4821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
