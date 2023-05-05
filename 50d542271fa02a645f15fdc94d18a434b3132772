@@ -94,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a59834b0_a21629de",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 153
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-05T12:30:43Z",
+      "side": 1,
+      "message": "The reason that I wrap this into a function is because I want to abstract out the nonce, encryption_salt. Passing the `nonce`, `encryption_salt` and `enc_key` will break the abstraction.\n\nThe only thing we should do is check the data would be the same after encrypted+decrypted, and the result of that is still deterministic.\n\nhttp://shortn/_emXipucuh5\n\n\u003e Note that a test can still be deterministic even if it relies on randomness under the hood. For example, your API might generate a random ID for each object that it returns. This is no problem in a unit test, so long as it makes assertions only about properties that are always true (e.g. the ID is always 16 characters long) rather than asserting specific values.",
+      "parentUuid": "2043d53d_392ee8b9",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 1
+      },
+      "revId": "50d542271fa02a645f15fdc94d18a434b3132772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cd921ad_63981135",
@@ -107,6 +131,30 @@
       "writtenOn": "2023-05-04T21:20:07Z",
       "side": 1,
       "message": "Let\u0027s add a unit test for this function.\n\nSame as the others; it should be deterministic.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 1
+      },
+      "revId": "50d542271fa02a645f15fdc94d18a434b3132772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56cb3d95_b77eaf29",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 153
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-05T12:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cd921ad_63981135",
       "range": {
         "startLine": 102,
         "startChar": 0,
