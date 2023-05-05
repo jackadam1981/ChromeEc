@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f764de7_bcdcf4fc",
+        "filename": "util/flash_ec",
+        "patchSetId": 30
+      },
+      "lineNbr": 1651,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:39:05Z",
+      "side": 1,
+      "message": "Does this line do anything? I don\u0027t think there\u0027s any space in the output of `servo_ec_uart`\n\n```\n$ dut-control  raw_ec_uart_pty\nraw_ec_uart_pty:/dev/pts/10\n```",
+      "range": {
+        "startLine": 1651,
+        "startChar": 0,
+        "endLine": 1651,
+        "endChar": 51
+      },
+      "revId": "c079a0218e6ec450049744636051f43f23fdbd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
