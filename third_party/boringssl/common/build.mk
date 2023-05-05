@@ -5,4 +5,5 @@
 # EC OS Support Files for BoringSSL
 #
 
+boringssl-y+=elliptic_curve_key_helpers.o
 boringssl-y+=sysrand.o
