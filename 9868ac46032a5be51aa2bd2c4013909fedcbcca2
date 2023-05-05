@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44071532_14ee010f",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-05T12:45:05Z",
+      "side": 1,
+      "message": "This unittest cannot be run on the device, because derive_encryption_key depends on the tpm_key.\nAnd when I try to build the device test, it would end up with:\n\n```\nIn file included from test/fpsensor_auth_commands.cc:9:\nIn file included from include/fpsensor_state.h:14:\nIn file included from driver/fingerprint/fpsensor_driver.h:20:\ndriver/fingerprint/fpc/fpc_sensor.h:18:2: error: \"Sensor type not defined!\"\n#error \"Sensor type not defined!\"\n ^\nIn file included from test/fpsensor_auth_commands.cc:9:\ninclude/fpsensor_state.h:47:26: error: use of undeclared identifier \u0027FP_SENSOR_IMAGE_SIZE_FPC\u0027\nextern uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE];\n                         ^\ndriver/fingerprint/fpsensor_driver.h:22:31: note: expanded from macro \u0027FP_SENSOR_IMAGE_SIZE\u0027\n#define FP_SENSOR_IMAGE_SIZE (FP_SENSOR_IMAGE_SIZE_FPC)\n                              ^\nIn file included from test/fpsensor_auth_commands.cc:9:\ninclude/fpsensor_state.h:49:28: error: use of undeclared identifier \u0027FP_MAX_FINGER_COUNT_FPC\u0027\nextern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];\n                           ^\ndriver/fingerprint/fpsensor_driver.h:26:30: note: expanded from macro \u0027FP_MAX_FINGER_COUNT\u0027\n#define FP_MAX_FINGER_COUNT (FP_MAX_FINGER_COUNT_FPC)\n                             ^\nIn file included from test/fpsensor_auth_commands.cc:9:\ninclude/fpsensor_state.h:49:49: error: use of undeclared identifier \u0027FP_ALGORITHM_TEMPLATE_SIZE_FPC\u0027\nextern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];\n                                                ^\ndriver/fingerprint/fpsensor_driver.h:25:37: note: expanded from macro \u0027FP_ALGORITHM_TEMPLATE_SIZE\u0027\n#define FP_ALGORITHM_TEMPLATE_SIZE (FP_ALGORITHM_TEMPLATE_SIZE_FPC)\n...\n```",
+      "parentUuid": "8b22a636_49506b89",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 1
+      },
+      "revId": "9868ac46032a5be51aa2bd2c4013909fedcbcca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b7919fc_2ab90f67",
