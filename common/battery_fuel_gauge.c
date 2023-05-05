@@ -15,8 +15,9 @@
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 
-const struct board_batt_params *battery_params;
+batt_const struct board_batt_params *battery_params;
 
+#ifndef CONFIG_BATTERY_INFO_IN_CBI
 /*
  * Authenticate the battery connected.
  *
@@ -163,6 +164,7 @@ static inline const struct board_batt_params *get_batt_params(void)
 
 	return battery_params;
 }
+#endif /* !CONFIG_BATTERY_INFO_IN_CBI */
 
 const struct battery_info *battery_get_info(void)
 {
