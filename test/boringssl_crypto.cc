@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "console.h"
 #include "crypto/elliptic_curve_key.h"
 #include "openssl/bn.h"
 #include "openssl/ec.h"
@@ -63,4 +64,5 @@ extern "C" void run_test(int argc, const char **argv)
 	RUN_TEST(test_rand);
 	RUN_TEST(test_ecc_keygen);
 	test_print_result();
+	ccprints("FINISH!");
 }
