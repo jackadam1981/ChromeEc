@@ -16,6 +16,328 @@
       "message": "Updated and tested the review comments",
       "revId": "df0230001fca459f3136174b471f11a2d52779ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7908d0_69fd6efc",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "I think these warnings are relevant, what\u0027s the point of the class? Just make a methods returning the byte sequence directly. Same for the other above here.",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 44
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d214ae4_4080ecc6",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "could you do something like `if read[0:1] \u003d\u003d resp_seq[0:1]`?",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 65
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "909cc7ae_0a776643",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "this seems redundant and somewhat misplaced, the code above already have a RETRY_COUNT, I say just drop the comment",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 62
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5819d93b_0d078408",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "Would it be more useful to catch the opposite case? Like writing a warning if `resp_bytes !\u003d response_sram_exe`",
+      "range": {
+        "startLine": 435,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 0
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0651aac_353f6c00",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "Looking at other scripts, I think that the convention for long options is to use underscore, see for example https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/mchp/util/pack_ec_mec172x.py;l\u003d623;drc\u003dbb1bf345d928a602916bed6eefef4a317a577849\n\nSo this should be `--second_loader_image`",
+      "range": {
+        "startLine": 459,
+        "startChar": 9,
+        "endLine": 459,
+        "endChar": 30
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d256a1e_5c265461",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "This should probably be a long version of the option? Something like `--com_port_path`",
+      "range": {
+        "startLine": 467,
+        "startChar": 9,
+        "endLine": 467,
+        "endChar": 24
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a1e5a2_4d714697",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "same as the one above",
+      "range": {
+        "startLine": 475,
+        "startChar": 9,
+        "endLine": 475,
+        "endChar": 28
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20ec1a2_9d4a96e8",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "useless comment, drop",
+      "range": {
+        "startLine": 482,
+        "startChar": 30,
+        "endLine": 482,
+        "endChar": 41
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b43f3f5e_658a2aff",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "Can you invert the logic and have the normal path work inline? Something like:\n\n```\n    if not args.uart_port:\n        logging.error(\"comp port not exist\")\n        sys.exit(1)\n\n    comp_port \u003d os.path.normpath(args.uart_port)\n```",
+      "range": {
+        "startLine": 484,
+        "startChar": 4,
+        "endLine": 488,
+        "endChar": 19
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef14e6e6_41ccc08d",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "this block feels a bit weird, should the timeout check below be before this and then this be without the condition?",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 0
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73be1f8a_2b25deac",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "`if not process`?",
+      "range": {
+        "startLine": 505,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 28
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc128f40_e29e9f46",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "If this is run without either second_loader_file or ec_file, it would silently exit. May be worth catching it, how about changing this to a `elif` and having an `else` case with an error message saying that one of the two flags have to be specified.",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 20
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8091b4b5_28c33e1b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "same as the other `if process` above",
+      "range": {
+        "startLine": 521,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 0
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99dc654a_be86907b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-05T14:57:10Z",
+      "side": 1,
+      "message": "`if not process`?",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 28
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
