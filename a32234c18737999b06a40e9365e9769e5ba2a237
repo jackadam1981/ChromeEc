@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64ab6ee7_34b0520f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-05T16:51:47Z",
+      "side": 1,
+      "message": "I just ran with `ALLOW_CONFIG\u003d1` and unfortunately there are differences (see below). I suspect that this is one of those annoying cases where the functionality is exactly the same but because the function was moved from `chip/stm32/trng.c` to `common/trng.c` it gets located at a different memory address.  \n\n```\nBinary files /tmp/compare_build.U8jR/build-e174665c0d589d1fed1fe7c569af164f8dc0b36a/bloonchipper-ec.bin and /tmp/compare_build.U8jR/build-f60d347b57eb36b3c5b4c2f271847beed87c9387/bloonchipper-ec.bin differ\nBinary files /tmp/compare_build.U8jR/build-e174665c0d589d1fed1fe7c569af164f8dc0b36a/dartmonkey-ec.bin and /tmp/compare_build.U8jR/build-f60d347b57eb36b3c5b4c2f271847beed87c9387/dartmonkey-ec.bin differ\nBinary files /tmp/compare_build.U8jR/build-e174665c0d589d1fed1fe7c569af164f8dc0b36a/hatch_fp-ec.bin and /tmp/compare_build.U8jR/build-f60d347b57eb36b3c5b4c2f271847beed87c9387/hatch_fp-ec.bin differ\nBinary files /tmp/compare_build.U8jR/build-e174665c0d589d1fed1fe7c569af164f8dc0b36a/nami_fp-ec.bin and /tmp/compare_build.U8jR/build-f60d347b57eb36b3c5b4c2f271847beed87c9387/nami_fp-ec.bin differ\nBinary files /tmp/compare_build.U8jR/build-e174665c0d589d1fed1fe7c569af164f8dc0b36a/nocturne_fp-ec.bin and /tmp/compare_build.U8jR/build-f60d347b57eb36b3c5b4c2f271847beed87c9387/nocturne_fp-ec.bin differ\nBinary files /tmp/compare_build.U8jR/build-e174665c0d589d1fed1fe7c569af164f8dc0b36a/nucleo-dartmonkey-ec.bin and /tmp/compare_build.U8jR/build-f60d347b57eb36b3c5b4c2f271847beed87c9387/nucleo-dartmonkey-ec.bin differ\n```",
+      "parentUuid": "c7a8ecae_e043e734",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cf3895a_7645ed77",
         "filename": "include/trng.h",
         "patchSetId": 1
