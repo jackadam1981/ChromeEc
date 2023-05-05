@@ -158,6 +158,9 @@
 /* Give SEQ_EC_DSW_PWROK higher priority to reduce latency for PCH_PWROK. */
 #define NPCX_MIWU0_GROUP_F 1
 
+#define CONFIG_BATTERY_INFO_IN_CBI
+#define CONFIG_CMD_BATTERY_INFO_IN_CBI
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h" /* needed by registers.h */
