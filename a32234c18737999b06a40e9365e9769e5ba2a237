@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7a8ecae_e043e734",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-05T15:56:17Z",
+      "side": 1,
+      "message": "It looks like this was a bug in go/crvc/4490505. Please file a bug about the config error and try rerunning with `ALLOW_CONFIG\u003d1 compare_build.sh -b all`. The `ALLOW_CONFIG\u003d1` will ignore errors about new configs and continue testing.",
+      "parentUuid": "e1358d8f_1af2f974",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cf3895a_7645ed77",
         "filename": "include/trng.h",
         "patchSetId": 1
