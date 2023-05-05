@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "console.h"
 #include "crypto/cleanse_wrapper.h"
 #include "crypto/elliptic_curve_key.h"
 #include "openssl/bn.h"
@@ -220,4 +221,5 @@ extern "C" void run_test(int argc, const char **argv)
 	RUN_TEST(test_cleanse_wrapper_custom_struct);
 	RUN_TEST(test_cleanse_wrapper_normal_usage);
 	test_print_result();
+	ccprints("FINISH!");
 }
