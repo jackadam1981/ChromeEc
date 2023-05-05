@@ -22,6 +22,30 @@
       },
       "revId": "74a3974b4242b747c049e50c8398844e6908ada4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb96ba91_c3409495",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-05T22:13:10Z",
+      "side": 1,
+      "message": "\u003e Can you explain why it\u0027s ok to handle all bus faults as asynchrouns (as this CL suggests)?\n\nMainly that it\u0027s a safe change. Worst case there is a small performance penalty, but handling bus faults shouldn\u0027t be performance sensitive.",
+      "parentUuid": "a65fa10a_590f03ec",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "74a3974b4242b747c049e50c8398844e6908ada4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
