@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be5356fe_6ec35d13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-05T05:22:29Z",
+      "side": 1,
+      "message": "created b/280889889",
+      "parentUuid": "0cf4d396_35bcb48b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "e7356bc03de335c07bd9e7bbe96ea50400ea4821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30d69665_91086ba9",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-04T22:06:46Z",
       "side": 1,
       "message": "Generally new code should compile without requiring manual modification. That makes sure that the CQ actually builds the new code (and there aren\u0027t accidental local changes that make it only work on your machine). In addition, since the CQ won\u0027t build code that is not compiled, it\u0027s likely to be broken by other changes to EC in the meantime. Sounds like this should be stacked on the change that adds `CONFIG_RNG` to `board.h`.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "e7356bc03de335c07bd9e7bbe96ea50400ea4821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398d5845_b78043a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-05T05:22:29Z",
+      "side": 1,
+      "message": "Circular dependency chain (chicken and egg): the board that requires CONFIG_RNG is helipilot and helipilot depends on this CL. I can add CONFIG_RNG to an existing board such as npcx9_evb, but that might create issues with the original target hardware for that board which doesn\u0027t include HW TRNG.",
+      "parentUuid": "30d69665_91086ba9",
       "range": {
         "startLine": 10,
         "startChar": 0,
