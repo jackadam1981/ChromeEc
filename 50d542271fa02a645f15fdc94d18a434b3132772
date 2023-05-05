@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dfa7fc3_7447e11a",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 153
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-05T12:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d61f222b_7ccdd72a",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "50d542271fa02a645f15fdc94d18a434b3132772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2043d53d_392ee8b9",
