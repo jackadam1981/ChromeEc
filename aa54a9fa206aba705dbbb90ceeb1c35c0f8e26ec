@@ -70,6 +70,30 @@
       },
       "revId": "aa54a9fa206aba705dbbb90ceeb1c35c0f8e26ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b95a540f_e709bf1b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2234,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-05-05T08:17:35Z",
+      "side": 1,
+      "message": "Thanks for your help，\n\nCL:4507891 said ` This causes their LEDs show \u0027full\u0027 while the display battery percentages are still \u003c 100%.`, so we should change this line to `charge_get_display_charge() \u003c 1000`. \nIIUC, some boards define near full LED behavior when display SOC is less than 100% and LED behavior nodes depends on `display SOC \u003c CONFIG_BATT_HOST_FULL_FACTOR` and `PWR_STATE_CHARGE_NEAR_FULL` so could we change this line to `charge_get_display_charge() \u003c CONFIG_BATT_HOST_FULL_FACTOR`?\nIf we change this line to `charge_get_display_charge() \u003c 1000`, there will be a gap between `display SOC \u003e CONFIG_BATT_HOST_FULL_FACTOR` and `PWR_STATE_CHARGE_NEAR_FULL(display SOC\u003d100)`.",
+      "parentUuid": "0562840b_bc469870",
+      "range": {
+        "startLine": 2233,
+        "startChar": 5,
+        "endLine": 2234,
+        "endChar": 28
+      },
+      "revId": "aa54a9fa206aba705dbbb90ceeb1c35c0f8e26ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
