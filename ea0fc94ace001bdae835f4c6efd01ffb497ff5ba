@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae2591e_7738b53e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-05T08:30:01Z",
+      "side": 1,
+      "message": "Test with these two CLs:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4505563\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4507009\n\n```\nmake BOARD\u003dbloonchipper -j test-boringssl_crypto\nscp-host-dut /mnt/host/source/src/platform/ec/build/bloonchipper/boringssl_crypto/boringssl_crypto.bin /tmp\nshell flash_fp_mcu /tmp/boringssl_crypto.bin\nsleep 3\nshell ectool --name\u003dcros_fp runtest\nshell ectool --name\u003dcros_fp console\n```",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "ea0fc94ace001bdae835f4c6efd01ffb497ff5ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
