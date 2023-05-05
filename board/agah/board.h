@@ -154,6 +154,8 @@
 
 #define CONFIG_ADC_CHANNELS_RUNTIME_CONFIG
 
+#define CONFIG_BATTERY_INFO_IN_CBI
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h" /* needed by registers.h */
