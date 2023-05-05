@@ -33,6 +33,24 @@
       "message": "I try zmake build --all, find \n```\nBuilding adlrvp_mchp:rw: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/adlrvp_mchp/build-rw -j1\nFAILED: CMakeFiles/app.dir/mnt/host/source/src/platform/ec/build/zephyr/adlrvp_mchp/modules/ec/driver/charger/bq25710.c.obj \n/mnt/host/source/src/platform/ec/build/zephyr/adlrvp_mchp/modules/ec/driver/charger/bq25710.c: In function \u0027bq257x0_init_charge_option_1\u0027:\n/mnt/host/source/src/platform/ec/build/zephyr/adlrvp_mchp/modules/ec/driver/charger/bq25710.c:343:23: error: implicit declaration of function \u0027co1_set_psys_sensing\u0027 [-Werror\u003dimplicit-function-declaration]\n  343 |                 reg \u003d co1_set_psys_sensing(reg, true);\n      |                       ^~~~~~~~~~~~~~~~~~~~\n\n```\n\nFind adlrvp config \n```\nCONFIG_PLATFORM_EC_USB_PD_VBUS_MEASURE_CHARGER\u003dy\nCONFIG_PLATFORM_EC_USB_PD_VBUS_MEASURE_TCPC\u003dy\n```\n\nSeems like adlrvp didn\u0027t follow choice config, maybe is ifndef ```#ifndef CONFIG_ZEPHYR``` cause adlrvp build fail.",
       "revId": "dc1ac951312dd93fd47d7d5ece299969afeb4bfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4aaab4_64072b0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-05T15:41:24Z",
+      "side": 1,
+      "message": "This appears to be an error in the Intel ADLRVP baseboard.  This platform uses the FUSB302 TCPC which sets [VBUS_MEASURE_TCPC](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/include/config.h;l\u003d6330)\n\nHowever, in the [charge manager](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/common/charge_manager.c;l\u003d372) the VBUS measure options are mutually exclusive.\n\nI\u0027ll upload a fix for the ADL boards that should resolve the build error you are seeing.",
+      "parentUuid": "8106bbf6_83e22499",
+      "revId": "dc1ac951312dd93fd47d7d5ece299969afeb4bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
