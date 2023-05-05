@@ -215,6 +215,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c955b5f6_31a5d291",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-05T15:31:46Z",
+      "side": 1,
+      "message": "This is one of those areas where there the documentation isn\u0027t clear and it is actually a lot easier to do than to find out how to do it. Making matters worse is that this workflow is different for different projects using git/gerrit (even chromium is different from chromiumos).\n\nThe procedure to follow is discussed here http://go/howdoicros/git_chromiumos_workflow#managing-multiple-dependent-cls \n but the gist of it is that if you have a series of git commits in your local branch then when you do a `repo upload` it is going to create a separate CL for each one and keep them chained together. \n \nLet me know if you want to chat about it and I can help you put together the chain.",
+      "parentUuid": "3ef3c836_945fcb71",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d9aefbd4_551f95dc",
