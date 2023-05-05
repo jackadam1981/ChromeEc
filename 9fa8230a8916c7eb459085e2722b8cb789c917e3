@@ -46,6 +46,30 @@
       },
       "revId": "9fa8230a8916c7eb459085e2722b8cb789c917e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b02a86_55f10996",
+        "filename": "chip/stm32/i2c-stm32l4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-05T20:52:36Z",
+      "side": 1,
+      "message": "If you\u0027re using \u0027src\u0027, \u0027const\u0027 for enum stm32_i2c_clk_src src \u003d ... is desired.",
+      "parentUuid": "adde7767_a8ca0302",
+      "range": {
+        "startLine": 127,
+        "startChar": 40,
+        "endLine": 127,
+        "endChar": 43
+      },
+      "revId": "9fa8230a8916c7eb459085e2722b8cb789c917e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
