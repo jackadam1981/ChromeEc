@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b741672_3faf2c75",
+        "filename": "zephyr/program/nissa/yavilla/src/keyboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2023-05-05T08:33:43Z",
+      "side": 1,
+      "message": "2023?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "da057d8d4b72305a7309489e43f2a0a643223441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed9e44e_148a04d0",
+        "filename": "zephyr/program/nissa/yavilla/src/keyboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2023-05-05T08:33:43Z",
+      "side": 1,
+      "message": "Looks like we only need to override this for this SKU.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 40
+      },
+      "revId": "da057d8d4b72305a7309489e43f2a0a643223441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed0acd8_1c0628dc",
+        "filename": "zephyr/program/nissa/yavilla/src/keyboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2023-05-05T08:33:43Z",
+      "side": 1,
+      "message": "Remove this. I think we do\u0027t need this note.",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 22
+      },
+      "revId": "da057d8d4b72305a7309489e43f2a0a643223441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
