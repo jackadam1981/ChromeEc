@@ -240,6 +240,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cfe0b6f_718165f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-05T16:54:44Z",
+      "side": 1,
+      "message": "\u003e  I suspect that this is one of those annoying cases where the functionality is exactly the same but because the function was moved from chip/stm32/trng.c to common/trng.c it gets located at a different memory address.\n\nIt\u0027s a little strange that this would show a difference, but not [the original CL](https://crrev.com/c/4257730).\n\nCan you diff the disassembly to verify? e.g., `make BOARD\u003dbloonchipper dis` and diff the generated files.",
+      "parentUuid": "64ab6ee7_34b0520f",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cf3895a_7645ed77",
         "filename": "include/trng.h",
         "patchSetId": 1
