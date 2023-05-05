@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aaa8c5f_a0ae0b9c",
+        "filename": "zephyr/program/nissa/yavilla/overlay.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-05-05T02:13:37Z",
+      "side": 1,
+      "message": "0x48000",
+      "range": {
+        "startLine": 221,
+        "startChar": 14,
+        "endLine": 221,
+        "endChar": 21
+      },
+      "revId": "f459cfebeb4a188b519d8f870bcbc602cb3a8670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f8dc3d7_20de8a4a",
+        "filename": "zephyr/program/nissa/yavilla/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-05-05T02:13:37Z",
+      "side": 1,
+      "message": "This configuration can be removed, because we confiig RW image size with binman\u0027s size property by default.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "f459cfebeb4a188b519d8f870bcbc602cb3a8670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
