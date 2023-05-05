@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83ed5488_95cb5b94",
+        "filename": "test/boringssl_crypto.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-05T02:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05de8e0e_58e8f4d4",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "6014f743efca5c50a554b49a3529093b75ae3474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd6ca68e_e95652de",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-04T20:51:53Z",
       "side": 1,
       "message": "This is correct, but less readable than:\n\n```\nuint8_t zero[256] \u003d {0};\n\n...\n\nTEST_ASSERT_ARRAY_EQ(buf1, zero, \"%d\");\nTEST_ASSERT_ARRAY_EQ(buf2, zero, \"%d\");\n\nTEST_NE(memcmp(buf1, buf2, sizeof(buf1)), 0);\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "6014f743efca5c50a554b49a3529093b75ae3474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b23cf56d_03a0e3f8",
+        "filename": "test/boringssl_crypto.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-05T02:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd6ca68e_e95652de",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3941b475_51f676fd",
+        "filename": "test/boringssl_crypto.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-05T02:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b455214d_af04655b",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "6014f743efca5c50a554b49a3529093b75ae3474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef1eaeb6_be151433",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-04T20:51:53Z",
       "side": 1,
       "message": "We also want to run this test on the FPMCU so that we\u0027re actually testing the real `trng_rand_bytes()`.\n\nYou\u0027ll need to add the `boringssl_crypto` test target to the `build.mk` for the \"board\" files used by the FPMCU and add the test to the `run_device_tests.py` script. Here\u0027s an example: https://crrev.com/c/4396773.\n\nMake sure to run the test on both `dartmonkey` and `bloonchipper` as described in [this commit message](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4396773/8//COMMIT_MSG).",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "6014f743efca5c50a554b49a3529093b75ae3474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f70378_96375d91",
+        "filename": "test/build.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-05T02:33:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef1eaeb6_be151433",
       "range": {
         "startLine": 31,
         "startChar": 0,
