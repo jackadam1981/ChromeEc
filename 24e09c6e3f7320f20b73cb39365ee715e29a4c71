@@ -16,6 +16,23 @@
       "message": "This CL is also rebased to resolve the build error for CONFIG_CHECK.\nCould you take a look at it?",
       "revId": "24e09c6e3f7320f20b73cb39365ee715e29a4c71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f183cdea_0617e7de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-05-05T02:09:06Z",
+      "side": 1,
+      "message": "No idea on the message of the build error.\nPer our experience, sometimes the auto build error may be caused by the other CLs which are included by the auto build session together.\nCould you perform the dry-run again to see if there a difference?",
+      "revId": "24e09c6e3f7320f20b73cb39365ee715e29a4c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
