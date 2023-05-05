@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81652d55_fd8accb8",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 153
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-05T11:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cda542a4_1422ab4a",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "50d542271fa02a645f15fdc94d18a434b3132772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d61f222b_7ccdd72a",
@@ -116,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "947456c2_bc0f390d",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 153
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-05T11:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d223ec7d_f8227821",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "50d542271fa02a645f15fdc94d18a434b3132772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b2851f2_9db31ea8",
@@ -129,6 +177,30 @@
       "writtenOn": "2023-05-04T21:39:23Z",
       "side": 1,
       "message": "This function looks like the same as [this one](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4477228/27/common/fpsensor/fpsensor_auth_commands.cc#176). That makes it a good candidate to pull out into a separate CL (small CLs) and we can avoid the duplication by using the same function.\n\nAs mentioned in the [other CL with this function, we want a unit test for it as well](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4477228/comment/4a5d811d_c92cf772/).",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "50d542271fa02a645f15fdc94d18a434b3132772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "086b74cb_bcf30f6b",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 153
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-05T11:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b2851f2_9db31ea8",
       "range": {
         "startLine": 26,
         "startChar": 0,
