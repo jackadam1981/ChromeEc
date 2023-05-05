@@ -161,12 +161,7 @@ static inline const struct board_batt_params *get_batt_params(void)
 
 	return battery_params;
 }
-#else
-static inline struct board_batt_params *get_batt_params(void)
-{
-	return &default_battery_info;
-}
-#endif
+#endif /* !CONFIG_BATTERY_INFO_IN_CBI */
 
 const struct battery_info *battery_get_info(void)
 {

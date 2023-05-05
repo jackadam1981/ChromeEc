@@ -16,6 +16,12 @@ menuconfig PLATFORM_EC_BATTERY
 
 if PLATFORM_EC_BATTERY
 
+config PLATFORM_EC_BATTERY_INFO_IN_CBI
+	bool "Support battery-info-in-CBI"
+	depends on CBI_EEPROM
+	help
+	  Battery-info-in-CBI allows a board to read battery info from CBI.
+
 choice PLATFORM_EC_BATTERY_SELECT
 	prompt "Select the battery to use"
 	default PLATFORM_EC_BATTERY_SMART if DT_HAS_BATTERY_SMART_ENABLED
