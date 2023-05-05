@@ -13,6 +13,8 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_BATTERY_INFO_IN_CBI
+
 /*
  * Nvidia GPU
  */
@@ -158,6 +160,8 @@
 /* Give SEQ_EC_DSW_PWROK higher priority to reduce latency for PCH_PWROK. */
 #define NPCX_MIWU0_GROUP_F 1
 
+#define CONFIG_BATTERY_INFO_IN_CBI
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h" /* needed by registers.h */
@@ -182,7 +186,6 @@ enum temp_sensor_id {
 
 enum battery_type {
 	BATTERY_DYNAPACK_COSMX,
-	BATTERY_DYNAPACK_HIGHPOWER,
 	BATTERY_TYPE_COUNT
 };
 
