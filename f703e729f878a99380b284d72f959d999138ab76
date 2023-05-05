@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a35c5ca_be3d6035",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Copyright content moved outside docstring",
+      "parentUuid": "510e8efb_11a6d2d4",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 0
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f843b448_f06b8cde",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-03T21:54:07Z",
       "side": 1,
       "message": "This documentation makes more sense as part of the flash_ec script.\n\nThis docstring should document how this script is invoked.  Something like:\n\n```\nScript to program a Microchip EC with erased or a bricked flash.\n\nGeneral usage:\n1. Assert UART crisis recovery pin and toggle EC reset\n2. Set baud rate of serial port on host to 9600\n3. Download and execute secondary loader into SRAM:\n    crisis_rcvry_util.py -s \u003cmchp-loader-image\u003e -p \u003cserial-port\u003e\n4. Set baud rate of serial port on host to 57600\n5. Download and program new EC images into flash:\n    crisis_rcvry_util.py -e \u003cec-image\u003e -p \u003cserial-port\u003e\n6. De-assert UART crisis recovery pin, and toggle EC reset\n7. EC boots programmed image\n8. Set baud rate of serial port on host to match EC image configuration\n\nRefer to the Microchip Crisis_Mode-cmdSequence document for full details.\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "717142c8_828e80cf",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Updated as suggested",
+      "parentUuid": "f843b448_f06b8cde",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edd587ed_39036c52",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Updated, used min api because we need to transfer max of 128 bytes",
+      "parentUuid": "24d39d7c_558e6d49",
+      "range": {
+        "startLine": 121,
+        "startChar": 47,
+        "endLine": 121,
+        "endChar": 65
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6d6e71a_56eb3870",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-03T21:54:07Z",
       "side": 1,
       "message": "Why is there a special check at 256 KiB? What happens if the EC image is larger than 256 KiB?\n\nAlso, if this is needed, there is an off by one error.\n```\nif offset + program_length \u003e\u003d EC_RESPONSE_BYTES_COUNT\n```",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 45
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e737e071_1a9118e4",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Second loader firmware we have logic to accumulate 256KB of program data in SRAM. So when limit reached second loader will write from accumulated data into internal FLASH, after completion of write EC will respond/ack to Host. Till that time host script has logic to sleep.\n\nThe FLASH write takes ~2sec and since we have read timeout of 10sec already, deleted the 22s delay logic.",
+      "parentUuid": "c6d6e71a_56eb3870",
       "range": {
         "startLine": 131,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a97b7d9a_3216f624",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Removed the delay 22s, as EC took \u003c2sec to write 256kb data from SRAM to FLASH.",
+      "parentUuid": "0383809d_795eebac",
+      "range": {
+        "startLine": 132,
+        "startChar": 15,
+        "endLine": 132,
+        "endChar": 72
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e29e5fcf_a6c8fc5b",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-05-03T21:54:07Z",
       "side": 1,
       "message": "Can you I think you can replace with:\n```\nrf_count_disp \u003d uart_handle.read(RESPONSE_LENGTH)\n```",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d243353_4c7a7d3d",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Updated as suggested.",
+      "parentUuid": "e29e5fcf_a6c8fc5b",
       "range": {
         "startLine": 141,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78de857_2b8982a2",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Updated the logging message as suggested.",
+      "parentUuid": "89ec5aeb_069fd869",
+      "range": {
+        "startLine": 152,
+        "startChar": 66,
+        "endLine": 152,
+        "endChar": 77
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e41a69cf_2c3296a8",
@@ -175,6 +343,30 @@
       "writtenOn": "2023-05-03T21:54:07Z",
       "side": 1,
       "message": "`rf_count_disp \u003d uart_handle.read(RESPONSE_LENGTH)`",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 42
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b13a63a_892b3717",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Updated as suggested.",
+      "parentUuid": "e41a69cf_2c3296a8",
       "range": {
         "startLine": 217,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6036118_4add33d8",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Debug message has been deleted.",
+      "parentUuid": "995053ca_fe1c4f97",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 60
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe24acb6_b44a3605",
@@ -221,6 +437,30 @@
       "writtenOn": "2023-05-03T21:54:07Z",
       "side": 1,
       "message": "Delete \"for 3 times\".",
+      "range": {
+        "startLine": 229,
+        "startChar": 66,
+        "endLine": 229,
+        "endChar": 77
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17a9f6cf_3d9a2697",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Updated the logging message.",
+      "parentUuid": "fe24acb6_b44a3605",
       "range": {
         "startLine": 229,
         "startChar": 66,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65bd5eee_58866edb",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Updated as suggested.",
+      "parentUuid": "f9c117e4_d931760d",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 32
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e116d718_5a9154c7",
@@ -267,6 +531,30 @@
       "writtenOn": "2023-05-03T21:54:07Z",
       "side": 1,
       "message": "Why is this referred to as a \"spi\" image?  The secondary loader is loaded into SRAM correct.  It would be clearer this was named \"secondary_loader_file\".",
+      "range": {
+        "startLine": 497,
+        "startChar": 14,
+        "endLine": 497,
+        "endChar": 22
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e4b9e8c_9fb4015b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "e116d718_5a9154c7",
       "range": {
         "startLine": 497,
         "startChar": 14,
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43fd3ceb_9378be1e",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Updated as suggested.",
+      "parentUuid": "f01c51e7_b439b6ee",
+      "range": {
+        "startLine": 531,
+        "startChar": 8,
+        "endLine": 531,
+        "endChar": 13
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48726ce1_2dec82d6",
@@ -313,6 +625,30 @@
       "writtenOn": "2023-05-03T21:54:07Z",
       "side": 1,
       "message": "`else:` is not needed.",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 13
+      },
+      "revId": "f703e729f878a99380b284d72f959d999138ab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba1a77d_c02a3497",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-05T12:15:26Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "48726ce1_2dec82d6",
       "range": {
         "startLine": 552,
         "startChar": 0,
