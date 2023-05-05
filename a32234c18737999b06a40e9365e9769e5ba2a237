@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17a6d2ba_b44ed63e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-05T16:06:22Z",
+      "side": 1,
+      "message": "\u003e It looks like this was a bug in go/crvc/4490505.\n\nThe `CONFIG_INA3221` issue was fixed: http://b/279955995.\n\nYou probably need to update and rebase on latest `main`.",
+      "parentUuid": "c7a8ecae_e043e734",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cf3895a_7645ed77",
         "filename": "include/trng.h",
         "patchSetId": 1
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "Feedback from a previous code review was to include trng_rand_bytes as common since it was duplicated. trng_rand_bytes call trng_rand and therefore we can\u0027t both keep trng_rand static and call it externally. The alternative is to duplicate trng_rand_bytes in stm32 and npcx code to keep trng_rand_static, but then trng_rand_bytes needs to be defined as a common function and this is less intuitive.",
       "parentUuid": "8cf3895a_7645ed77",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb31d675_7c0002b3",
+        "filename": "include/trng.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-05T16:06:22Z",
+      "side": 1,
+      "message": "You can just say that `trng_rand_bytes` calls `trng_rand`. 😊 I missed that.\n\nPlease still stack the changes though.",
+      "parentUuid": "64a5d1c3_fdd16d31",
       "range": {
         "startLine": 28,
         "startChar": 0,
