@@ -11377,6 +11377,11 @@ static int cmd_cec_get(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_runtest(int argc, char *argv[])
+{
+	return ec_command(EC_CMD_READ_TEST, 0, NULL, 0, NULL, 0);
+}
+
 int cmd_cec(int argc, char *argv[])
 {
 	if (argc < 2) {
@@ -11551,6 +11556,7 @@ const struct command commands[] = {
 	{ "rtcgetalarm", cmd_rtc_get_alarm },
 	{ "rtcset", cmd_rtc_set },
 	{ "rtcsetalarm", cmd_rtc_set_alarm },
+	{ "runtest", cmd_runtest },
 	{ "rwhashpd", cmd_rw_hash_pd },
 	{ "rwsig", cmd_rwsig },
 	{ "rwsigaction", cmd_rwsig_action_legacy },
