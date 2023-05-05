@@ -50,6 +50,24 @@
       "message": "This looks good, but not sure why it\u0027s causing the CQ failure (see other comment).",
       "revId": "8881121458295f68d86380c13508e0598ceea31c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd9d263f_d10d3f10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-05T16:26:42Z",
+      "side": 1,
+      "message": "\u003e The CQ failure looks like it\u0027s building with gcc, not clang\n\nYup. It works when compiling using `clang`. Created [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4508176/1?usp\u003drelated-change) which adds `nucleo-h743zi` and `nucleo-f412zg` to boards compiled with clang.",
+      "parentUuid": "7f1e0eee_a052918b",
+      "revId": "8881121458295f68d86380c13508e0598ceea31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
