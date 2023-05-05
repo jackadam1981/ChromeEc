@@ -261,6 +261,30 @@
       },
       "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d32d808_a98e8aae",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-05T16:12:06Z",
+      "side": 1,
+      "message": "Both of the issues you mentioned are easy to resolve. I understand you need help understanding how to do it, so please ask @bobbycasey@google.com who can help you.\n\n\u003e  given the context that my goal is to get the helipilot patches reviewed and merged ASAP,\n\nOur goal is to not to shove through code as quickly possible; it\u0027s about sustainable and maintainable development. You\u0027ll need these skills for future changes, so please take the time to learn them now.",
+      "parentUuid": "b58cff57_cb3edd53",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 0
+      },
+      "revId": "42d77d4ef5fb9fdbc903d9914206db7793e54467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
