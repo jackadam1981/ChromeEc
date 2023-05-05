@@ -22,6 +22,30 @@
       },
       "revId": "9fa8230a8916c7eb459085e2722b8cb789c917e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adde7767_a8ca0302",
+        "filename": "chip/stm32/i2c-stm32l4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-05-05T20:12:13Z",
+      "side": 1,
+      "message": "This is mostly in order for this function body to read like the corresponding functions in i2c-stm32f0.c and i2c-stm32f3.c .  Bot have some ifdefs and other logic at the top of the function, to compute a value of `src`, and then the same bottom that sets the timing register.\n\nIt is true that at this point, there is no support for multiple clock sources in L4/L5.",
+      "parentUuid": "3930d2f9_531b5bcc",
+      "range": {
+        "startLine": 127,
+        "startChar": 40,
+        "endLine": 127,
+        "endChar": 43
+      },
+      "revId": "9fa8230a8916c7eb459085e2722b8cb789c917e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
