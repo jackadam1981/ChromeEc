@@ -48,3 +48,22 @@ register_rex_project(
 register_rex_project(
     project_name="screebo",
 )
+
+
+def register_ish_variant_project(
+    project_name,
+):
+    """Register a variant of Intel ISH."""
+    register_ish_project(
+        project_name=project_name,
+        zephyr_board="intel_ish_5_4_1",
+        dts_overlays=[
+            here / project_name / "project.overlay",
+        ],
+        kconfig_files=[here / project_name / "prj.conf"],
+    )
+
+
+register_ish_variant_project(
+    project_name="rex-ish",
+)
