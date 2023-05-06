@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f9c1a70_cd686e4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-06T01:25:30Z",
+      "side": 1,
+      "message": "i couldn\u0027t open the spreadsheet of results attached to the bug.\n\nwhat is the extent of testing? did you validate that I2C timing\nparameters meet spec at FAST_PLUS?",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "d8abb5f8f01b1b8345105d0d2ea8f4ae97a48ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e3cf398_f0c74cf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-06T01:25:30Z",
+      "side": 1,
+      "message": "let\u0027s hold off on bumping up the USB DB I2C busses.\nwe don\u0027t have SKU2 and SKU3 DBs fully enabled yet.",
+      "revId": "d8abb5f8f01b1b8345105d0d2ea8f4ae97a48ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d545acc7_c3b98049",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-06T01:25:30Z",
+      "side": 1,
+      "message": "could you point me to the intel doc where the max i2c speed is specified?",
+      "range": {
+        "startLine": 217,
+        "startChar": 16,
+        "endLine": 217,
+        "endChar": 30
+      },
+      "revId": "d8abb5f8f01b1b8345105d0d2ea8f4ae97a48ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925d33ae_c15dda3c",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-06T01:25:30Z",
+      "side": 1,
+      "message": "we have a KTU1125 on SKU2 which appears to only do 400 KHz.\nis there a newer datasheet that lists 1 MHz?",
+      "range": {
+        "startLine": 276,
+        "startChar": 20,
+        "endLine": 276,
+        "endChar": 41
+      },
+      "revId": "d8abb5f8f01b1b8345105d0d2ea8f4ae97a48ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
