@@ -13,6 +13,8 @@ add_subdirectory("led_driver")
 
 if (DEFINED CONFIG_ARCH_POSIX)
   zephyr_library_sources(ztest_system.c)
+elseif (DEFINED CONFIG_SOC_FAMILY_INTEL_ISH)
+  zephyr_library_sources(ish_system.c)
 else()
   zephyr_library_sources(system.c)
 endif()
