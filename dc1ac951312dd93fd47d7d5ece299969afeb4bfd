@@ -86,6 +86,23 @@
       "message": "You probably need to rebase this CL before the CQ tests will pass.",
       "revId": "dc1ac951312dd93fd47d7d5ece299969afeb4bfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0444b6c_da7d1c0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547927
+      },
+      "writtenOn": "2023-05-07T13:54:10Z",
+      "side": 1,
+      "message": "Hi Logan Liao,\n\nPlease rebase and submit this CL again to pass the CQ test.",
+      "revId": "dc1ac951312dd93fd47d7d5ece299969afeb4bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
