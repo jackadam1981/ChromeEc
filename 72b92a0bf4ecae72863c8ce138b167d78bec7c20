@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "486fedb6_d18e795f",
+        "filename": "crypto/elliptic_curve_key.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T20:02:11Z",
+      "side": 1,
+      "message": "Does boringssl provide any guarantees that it checks for `nullptr` arguments? If so, we might be able to remove the `return nullptr`s.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 2
+      },
+      "revId": "72b92a0bf4ecae72863c8ce138b167d78bec7c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ab1cd78_5d9a4f2a",
         "filename": "include/crypto/elliptic_curve_key.h",
         "patchSetId": 4
