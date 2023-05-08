@@ -1929,9 +1929,11 @@ static void adjust_requested_vi(const struct charger_info *const info)
 				curr.requested_current = manual_current;
 		}
 	} else if (!IS_ENABLED(CONFIG_CHARGER_MAINTAIN_VBAT)) {
-		curr.requested_voltage = charger_closest_voltage(
-			curr.batt.voltage + info->voltage_step);
-		curr.requested_current = -1;
+		if (curr.batt.is_present == BP_YES) {
+			curr.requested_voltage = charger_closest_voltage(
+				curr.batt.voltage + info->voltage_step);
+			curr.requested_current = -1;
+		}
 		/*
 		 * On EC-EC server, do not charge if curr.ac is 0: there might
 		 * still be some external power available but we do not want to
