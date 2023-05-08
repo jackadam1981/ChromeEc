@@ -62,7 +62,7 @@ static void current_update(void)
 
 	temp = average_tempature();
 #ifndef CONFIG_TEST
-	if (led_pwr_state() == PWR_STATE_DISCHARGE) {
+	if (pwr_get_state() == PWR_STATE_DISCHARGE) {
 		current_level = 0;
 		uptime = 0;
 		dntime = 0;
