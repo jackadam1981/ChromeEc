@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5ec69a3_cff7386e",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:27:16Z",
+      "side": 1,
+      "message": "To avoid having to worry about forgetting to call `OPENSSL_cleanse` in the early return cases (not just here, but anywhere), how about creating a simple class that automatically clears on object destruction, similar to [`SecureBlob`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libbrillo/brillo/secure_blob.h;l\u003d36-38;drc\u003d3a446f27a00fba076a5a42d383ae6134c333ee57)? (In this case it would be based on `std::array`.)",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 43
+      },
+      "revId": "04697739dac123f1db434a0c7e97bb5a4b614645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d01c755_1c625323",
         "filename": "common/fpsensor/fpsensor_auth_commands.cc",
         "patchSetId": 4
