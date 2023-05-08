@@ -57,6 +57,30 @@
       },
       "revId": "068c6f3a85bc711b0b2a40a295739c0a7c045396",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44815665_9f233fe7",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-08T16:34:11Z",
+      "side": 1,
+      "message": "I tried, but I can\u0027t compile firmware for `prism` and `hammer` using clang. On the other side BoringSSL can\u0027t be compiled using `coreboot-sdk`. Another problem is that I don\u0027t have hardware to test if it works.\n\nI added a comment with logs in the bug. Could you approve this patch?",
+      "parentUuid": "843718e1_55eae6ed",
+      "range": {
+        "startLine": 316,
+        "startChar": 8,
+        "endLine": 316,
+        "endChar": 25
+      },
+      "revId": "068c6f3a85bc711b0b2a40a295739c0a7c045396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
