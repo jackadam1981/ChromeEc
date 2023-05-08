@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbe571fa_2d310670",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1735,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2023-05-08T10:06:24Z",
+      "side": 1,
+      "message": "When `CONFIG_EC_EC_COMM_BATTERY_CLIENT` is not defined, there will be no return statement for non-void function. I see that this function is used only when config is present, but compiler probably will complain about that any way.",
+      "revId": "aec0e700860eccb58dbd7053e8cda47a6cfc58aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
