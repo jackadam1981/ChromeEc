@@ -62,6 +62,34 @@ test_fp_auth_command_create_ec_key_from_pubkey_fail(void)
 	return EC_SUCCESS;
 }
 
+test_static enum ec_error_list
+test_fp_auth_command_create_ec_key_from_privkey(void)
+{
+	std::array<uint8_t, 32> data = {};
+
+	bssl::UniquePtr<EC_KEY> key =
+		create_ec_key_from_privkey(data.data(), data.size());
+
+	TEST_NE(key.get(), nullptr, "%p");
+
+	/* There is nothing to check for the private key. */
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list
+test_fp_auth_command_create_ec_key_from_privkey_fail(void)
+{
+	std::array<uint8_t, 1> data = {};
+
+	bssl::UniquePtr<EC_KEY> key =
+		create_ec_key_from_privkey(data.data(), data.size());
+
+	TEST_EQ(key.get(), nullptr, "%p");
+
+	return EC_SUCCESS;
+}
+
 test_static enum ec_error_list test_fp_auth_command_fill_pubkey(void)
 {
 	struct ec_fp_ec_public_key pubkey = {
@@ -113,8 +141,12 @@ test_static enum ec_error_list test_fp_auth_command_encrypt_decrypt_data(void)
 	/* The encrypted data should not be the same as the input. */
 	TEST_ASSERT_ARRAY_NE(data, input, data.size());
 
-	/* TODO(crrev/c/4511815): Decrypt the data, and check the result is the
-	 * same. */
+	std::array<uint8_t, 32> output;
+	TEST_EQ(decrypt_data(info, data.data(), data.size(), output.data(),
+			     output.size()),
+		EC_SUCCESS, "%d");
+
+	TEST_ASSERT_ARRAY_EQ(input, output, sizeof(input));
 
 	return EC_SUCCESS;
 }
@@ -140,8 +172,15 @@ test_static enum ec_error_list test_fp_auth_command_encrypt_decrypt_key(void)
 
 	TEST_EQ(enc_key.info.struct_version, version, "%d");
 
-	/* TODO(crrev/c/4511815): Decrypt the data, and check the result is the
-	 * same. */
+	bssl::UniquePtr<EC_KEY> out_key = decrypt_private_key(enc_key);
+
+	TEST_NE(key.get(), nullptr, "%p");
+
+	std::array<uint8_t, 32> output_privkey;
+	EC_KEY_priv2oct(out_key.get(), output_privkey.data(),
+			output_privkey.size());
+
+	TEST_ASSERT_ARRAY_EQ(privkey, output_privkey, sizeof(privkey));
 
 	return EC_SUCCESS;
 }
@@ -192,6 +231,8 @@ extern "C" void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_fp_auth_command_create_ec_key_from_pubkey);
 	RUN_TEST(test_fp_auth_command_create_ec_key_from_pubkey_fail);
+	RUN_TEST(test_fp_auth_command_create_ec_key_from_privkey);
+	RUN_TEST(test_fp_auth_command_create_ec_key_from_privkey_fail);
 	RUN_TEST(test_fp_auth_command_fill_pubkey);
 	RUN_TEST(test_set_fp_tpm_seed);
 	RUN_TEST(test_fp_auth_command_encrypt_decrypt_data);
