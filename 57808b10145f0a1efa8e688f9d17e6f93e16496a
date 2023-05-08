@@ -22,6 +22,30 @@
       },
       "revId": "57808b10145f0a1efa8e688f9d17e6f93e16496a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324e91a4_3070f57b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-05-08T08:43:48Z",
+      "side": 1,
+      "message": "do you mean move this whole thing into drivers/default?\n\nI will try it.",
+      "parentUuid": "12b6ef79_df181943",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "57808b10145f0a1efa8e688f9d17e6f93e16496a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
