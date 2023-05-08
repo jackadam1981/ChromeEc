@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a45afa5_29168b38",
+        "filename": "test/boringssl_crypto.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-08T04:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c9becc2_91eb3c07",
+      "range": {
+        "startLine": 38,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "ea0fc94ace001bdae835f4c6efd01ffb497ff5ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78ca4c2f_718a3782",
@@ -60,6 +84,30 @@
       "writtenOn": "2023-05-05T23:47:09Z",
       "side": 1,
       "message": "I know we put the rand function in `third_party/boringssl`, but that was because it is essentially \"part\" of boringssl (boringssl won\u0027t function correctly without it and boringssl itself normally has that function for other OSes).\n\nIn this case, this is just helper/wrapper code, so I think we should put it in a new top-level `crypto` directory.\n\nAlso, I think we can remove `helpers` from the file name, since it [doesn\u0027t really provide much meaning](http://shortn/_1ukaoJ64Rb). `elliptic_curve_key.h/cc` seems like it makes sense.",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 46
+      },
+      "revId": "ea0fc94ace001bdae835f4c6efd01ffb497ff5ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90cfee43_34ca4bee",
+        "filename": "third_party/boringssl/include/elliptic_curve_key_helpers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-08T04:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78ca4c2f_718a3782",
       "range": {
         "startLine": 8,
         "startChar": 8,
