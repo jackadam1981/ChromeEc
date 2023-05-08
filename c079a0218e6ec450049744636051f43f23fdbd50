@@ -22,6 +22,30 @@
       },
       "revId": "c079a0218e6ec450049744636051f43f23fdbd50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b2c59f_f08b2ca7",
+        "filename": "util/flash_ec",
+        "patchSetId": 30
+      },
+      "lineNbr": 1651,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:52:58Z",
+      "side": 1,
+      "message": "removed the parsing logic since servo_ec_uart already returns uart port value alone",
+      "parentUuid": "3f764de7_bcdcf4fc",
+      "range": {
+        "startLine": 1651,
+        "startChar": 0,
+        "endLine": 1651,
+        "endChar": 51
+      },
+      "revId": "c079a0218e6ec450049744636051f43f23fdbd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
