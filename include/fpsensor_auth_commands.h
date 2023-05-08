@@ -8,6 +8,10 @@
 #ifndef __CROS_EC_FPSENSOR_AUTH_COMMANDS_H
 #define __CROS_EC_FPSENSOR_AUTH_COMMANDS_H
 
+extern "C" {
+#include "ec_commands.h"
+}
+
 /**
  * Clear all fingerprint templates associated with the current user id.
  */
