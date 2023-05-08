@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87106b05_b3ab6d9f",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 192
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T20:59:15Z",
+      "side": 1,
+      "message": "\"pairing\"",
+      "revId": "64f178f40546dde3ae42059037bfad41f91c8e69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a41c0c15_6a73c992",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 192
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T20:59:15Z",
+      "side": 1,
+      "message": "Let\u0027s add a `generate_nonce` support function and then this function can call that. Then add a unit test for `generate_nonce` that runs on both device and emulator. The test can probably function the same as the test you added for `boringssl`\u0027s random implementation.",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 0
+      },
+      "revId": "64f178f40546dde3ae42059037bfad41f91c8e69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
