@@ -33,6 +33,24 @@
       "message": "You can just move `PLATFORM_EC_CUSTOM_FAN_CONTROL` and `PLATFORM_EC_CUSTOM_FAN_DUTY_CONTROL` inside this `if` block.  The `if OPTION` automatically adds the `depends on` to every symbol inside the block.",
       "revId": "7ff8a502b0674a3df1e862c0f0add690ab5e4b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "315cc262_17721e65",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-08T10:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22b8dee2_78839f11",
+      "revId": "7ff8a502b0674a3df1e862c0f0add690ab5e4b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
