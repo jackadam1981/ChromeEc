@@ -22,6 +22,30 @@
       },
       "revId": "7c204183599795aceddb0aa69b2b31d94307b3c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "803d3af5_73d28985",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 164
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-08T06:35:12Z",
+      "side": 1,
+      "message": "Oh, there two functions (`AES_set_encrypt_key` \u0026 `AES_ctr128_encrypt`) are public functions.\n\nWe can remove these includes.\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/boringssl/src/include/openssl/aes.h",
+      "parentUuid": "021b89a1_5753fafc",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 45
+      },
+      "revId": "7c204183599795aceddb0aa69b2b31d94307b3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
