@@ -10,6 +10,7 @@
 #include "crypto/elliptic_curve_key.h"
 #include "openssl/bn.h"
 #include "openssl/ec.h"
+#include "openssl/ecdh.h"
 #include "openssl/mem.h"
 #include "openssl/obj_mac.h"
 #include "openssl/rand.h"
@@ -188,4 +189,22 @@ bssl::UniquePtr<EC_KEY> decrypt_private_key(
 	}
 
 	return create_ec_key_from_privkey(privkey.data(), privkey.size());
+}
+
+enum ec_error_list generate_ecdh_shared_secret(const EC_KEY &private_key,
+					       const EC_KEY &public_key,
+					       uint8_t *shared_secret,
+					       uint8_t shared_secret_size)
+{
+	const EC_POINT *public_point = EC_KEY_get0_public_key(&public_key);
+	if (public_point == nullptr) {
+		return EC_ERROR_INVAL;
+	}
+
+	if (ECDH_compute_key_fips(shared_secret, shared_secret_size,
+				  public_point, &private_key) != 1) {
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
 }
