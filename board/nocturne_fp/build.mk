@@ -41,6 +41,7 @@ test-list-y=\
        flash_write_protect \
        fpsensor \
        fpsensor_auth_crypto \
+       fpsensor_auth_crypto_mock \
        fpsensor_hw \
        ftrapv \
        global_initialization \
