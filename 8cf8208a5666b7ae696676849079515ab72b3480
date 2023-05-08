@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41cf3148_3e97ee2d",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 51
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:35:37Z",
+      "side": 1,
+      "message": "I haven\u0027t looked at this closely, but does any of the new code you added for dealing with keys work for this? (e.g., `fill_pubkey`, etc.)",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 36
+      },
+      "revId": "8cf8208a5666b7ae696676849079515ab72b3480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
