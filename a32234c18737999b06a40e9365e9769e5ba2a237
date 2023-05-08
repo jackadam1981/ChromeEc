@@ -264,6 +264,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f2f17b0_15dc8d4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-08T23:18:41Z",
+      "side": 1,
+      "message": "comparing the ec.RW.map files with and without this CL shows that the function memory addresses were moved. IIRC, when Bobby ran \"compare_build.sh -b all\" on the original CL, this was before the code review changes related to moving common trng functions to common was implemented. As such, the bloonchipper image was untouched until the changes to common were made, either by the original CL or this split CL.",
+      "parentUuid": "0cfe0b6f_718165f0",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cf3895a_7645ed77",
         "filename": "include/trng.h",
         "patchSetId": 1
