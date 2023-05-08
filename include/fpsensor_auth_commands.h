@@ -42,4 +42,13 @@ enum ec_error_list fill_pubkey(const EC_KEY &key,
 bssl::UniquePtr<EC_KEY>
 create_ec_key_from_pubkey(const struct ec_fp_ec_public_key &pubkey);
 
+enum ec_error_list
+encrypt_data_in_place(uint16_t version,
+		      struct ec_fp_auth_command_encryption_metadata &info,
+		      uint8_t *data, size_t data_size);
+
+enum ec_error_list
+fill_encrypted_private_key(const EC_KEY &key, uint16_t version,
+			   struct ec_fp_encrypted_private_key &enc_key);
+
 #endif /* __CROS_EC_FPSENSOR_AUTH_COMMANDS_H */
