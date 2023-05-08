@@ -19,6 +19,7 @@ extern "C" {
 #include "sha256.h"
 }
 
+#include "fpsensor.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_state_without_driver_info.h"
 #include "fpsensor_utils.h"
@@ -79,6 +80,22 @@ create_ec_key_from_pubkey(const struct ec_fp_ec_public_key &pubkey)
 	return key;
 }
 
+bssl::UniquePtr<EC_KEY> create_ec_key_from_privkey(const uint8_t *privkey,
+						   size_t privkey_size)
+{
+	bssl::UniquePtr<EC_KEY> key(
+		EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
+	if (key == nullptr) {
+		return nullptr;
+	}
+
+	if (EC_KEY_oct2priv(key.get(), privkey, privkey_size) != 1) {
+		return nullptr;
+	}
+
+	return key;
+}
+
 enum ec_error_list
 encrypt_data_in_place(uint16_t version,
 		      struct ec_fp_auth_command_encryption_metadata &info,
@@ -121,4 +138,55 @@ fill_encrypted_private_key(const EC_KEY &key, uint16_t version,
 
 	return encrypt_data_in_place(version, enc_key.info, enc_key.data,
 				     sizeof(enc_key.data));
+}
+
+enum ec_error_list
+decrypt_data(const struct ec_fp_auth_command_encryption_metadata &info,
+	     const uint8_t *enc_data, size_t enc_data_size, uint8_t *data,
+	     size_t data_size)
+{
+	if (info.struct_version != 1) {
+		return EC_ERROR_INVAL;
+	}
+
+	CleanseWrapper<std::array<uint8_t, SBP_ENC_KEY_LEN> > enc_key;
+	enum ec_error_list ret =
+		derive_encryption_key(enc_key.data(), info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to derive key");
+		return EC_ERROR_INVAL;
+	}
+
+	if (enc_data_size != data_size) {
+		CPRINTS("Data size mismatch");
+		return EC_ERROR_INVAL;
+	}
+
+	ret = aes_gcm_decrypt(enc_key.data(), enc_key.size(), data, enc_data,
+			      data_size, info.nonce, sizeof(info.nonce),
+			      info.tag, sizeof(info.tag));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to decipher data");
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+
+bssl::UniquePtr<EC_KEY> decrypt_private_key(
+	const struct ec_fp_encrypted_private_key &encrypted_private_key)
+{
+	CleanseWrapper<std::array<uint8_t, sizeof(encrypted_private_key.data)> >
+		privkey;
+
+	enum ec_error_list ret = decrypt_data(
+		encrypted_private_key.info, encrypted_private_key.data,
+		sizeof(encrypted_private_key.data), privkey.data(),
+		privkey.size());
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to decrypt private key");
+		return nullptr;
+	}
+
+	return create_ec_key_from_privkey(privkey.data(), privkey.size());
 }
