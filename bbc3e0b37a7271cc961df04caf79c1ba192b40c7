@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2aed31_6cd1eabe",
+        "filename": "zephyr/program/myst/myst/include/usb_mux_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-08T15:18:17Z",
+      "side": 1,
+      "message": "The full FW config field is already [cached](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/src/cbi/cros_cbi_fw_config.c;l\u003d160).\n\nCaching the DB type seems unnecessary.  Just call cros_cbi_get_fw_config() in the other locations.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "bbc3e0b37a7271cc961df04caf79c1ba192b40c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

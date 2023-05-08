@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d3743cc_798e7e64",
+        "filename": "zephyr/program/myst/i2c.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-08T15:18:17Z",
+      "side": 1,
+      "message": "Looking closer at the [ppc_chips[]](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/src/ppc.c;l\u003d52) definition, it looks like array size will correctly get set to the number of `named-usbc-port` nodes found.\n\nIf one of the `named-usbc-port` entries omits the `ppc` property, then the `ppc_chips[]` will be set to NULL for that entry.\n\nSo I\u0027m backtracking on my suggestion.  I think putting `is-alt` on all the PPCs, and then using PPC_ENABLE_ALTERNATE_BY_NODELABEL to install the correct PPC at runtime as appropriate.\n\nLonger term, I\u0027m plan to propose a common devicetree property \"deferred-init`, which would do something similar as the `is-alt` property.",
+      "parentUuid": "5d91de2f_4b913487",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 8
+      },
+      "revId": "63844fd912a133e58e17ecad43b4e0c1a9dd15b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e464b90d_1d42b299",
