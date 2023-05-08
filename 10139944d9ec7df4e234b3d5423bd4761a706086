@@ -51,6 +51,24 @@
       "parentUuid": "d32016c5_0cb43ad7",
       "revId": "10139944d9ec7df4e234b3d5423bd4761a706086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d34b168e_f3a1bbcc",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-08T21:17:02Z",
+      "side": 1,
+      "message": "Reading the bug, it sounds like power+refresh doesn\u0027t reset the ec or the charger well. Thus, the ec keeps running after AC unplug, resulting in setting a bad value in 0x15. I\u0027m not convinced this is the right way to fix the bug. (It should be fixed in the HW.)\n\nDo you really need to support battery-less reboot for a shipped device?\n\nIf so, why don\u0027t you just define CONFIG_CHARGER_MAINTAIN_VBAT?",
+      "parentUuid": "2e7631db_6ee13c5f",
+      "revId": "10139944d9ec7df4e234b3d5423bd4761a706086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
