@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "298370b8_e8d4c807",
+        "filename": "zephyr/dts/bindings/battery/celxpert_b300049.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-05-08T07:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1845d4ab_7ee7e44c",
+      "revId": "450a7941b41cfef910c75734018690a98a3c6a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f4ee53f_ef8f0e79",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-05-08T01:36:36Z",
       "side": 1,
       "message": "is this the correct bug linked to the document?",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "450a7941b41cfef910c75734018690a98a3c6a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87369a6_231febfc",
+        "filename": "zephyr/dts/bindings/battery/celxpert_b300049.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-05-08T07:11:06Z",
+      "side": 1,
+      "message": "This configuration in SPEC is consistent, we can not associate",
+      "parentUuid": "3f4ee53f_ef8f0e79",
       "range": {
         "startLine": 20,
         "startChar": 21,
