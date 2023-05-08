@@ -16,6 +16,23 @@
       "message": "I wonder if moving the function to common will cause conflict, because the same function is implemented in Zephyr shim.\n\nLet\u0027s run CQ to check that 😊",
       "revId": "e174665c0d589d1fed1fe7c569af164f8dc0b36a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d88b56f_d746da26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T23:35:08Z",
+      "side": 1,
+      "message": "Looks like the CQ is failing:\n\n```\nld.lld: error: undefined symbol: trng_rand\n\u003e\u003e\u003e referenced by trng.c:23 (/mnt/host/source/src/platform/ec/common/trng.c:23)\n\u003e\u003e\u003e               libec.a.2.o:(.text.trng_rand_bytes+0xDC) in archive build/host/pchg_fuzz/libec.a\n  CC      RO/common/usb_pd_dual_role.o\nclang-16: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[2]: *** [Makefile.rules:617: build/host/pchg_fuzz/pchg_fuzz.exe] Error 1\nmake[1]: *** [Makefile.rules:401: host-pchg_fuzz] Error 2\n```\n\nHowever, it\u0027s been a few days, so I\u0027m not sure if you have made any changes since you last ran it that would fix it.",
+      "revId": "e174665c0d589d1fed1fe7c569af164f8dc0b36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
