@@ -86,4 +86,44 @@ enum ec_error_list
 fill_encrypted_private_key(const EC_KEY &key, uint16_t version,
 			   struct ec_fp_encrypted_private_key &enc_key);
 
+/**
+ * Decrypt the encrypted data.
+ *
+ * version 1 is 128 bit AES-GCM, and the encryption key is bound to the TPM
+ * seed, rollback secret and user_id.
+ *
+ * @param[in] info the metadata of the encryption output
+ * @param[in] enc_data the encrypted data
+ * @param[in] enc_data_size the size of encrypted data
+ * @param[in] version the version of the encryption method
+ * @param[out] data the decrypted data
+ * @param[in] data_size the size of decrypted data
+ *
+ * @return EC_SUCCESS on success
+ * @return EC_ERROR_* on error
+ */
+enum ec_error_list
+decrypt_data(const struct ec_fp_auth_command_encryption_metadata &info,
+	     const uint8_t *enc_data, size_t enc_data_size, uint8_t *data,
+	     size_t data_size);
+
+/**
+ * Decrypt the encrypted private key.
+ *
+ * version 1 is 128 bit AES-GCM, and the encryption key is bound to the TPM
+ * seed, rollback secret and user_id.
+ *
+ * @param[in] info the metadata of the encryption output
+ * @param[in] enc_data the encrypted data
+ * @param[in] enc_data_size the size of encrypted data
+ * @param[in] version the version of the encryption method
+ * @param[out] data the decrypted data
+ * @param[in] data_size the size of decrypted data
+ *
+ * @return EC_SUCCESS on success
+ * @return EC_ERROR_* on error
+ */
+bssl::UniquePtr<EC_KEY> decrypt_private_key(
+	const struct ec_fp_encrypted_private_key &encrypted_private_key);
+
 #endif /* __CROS_EC_FPSENSOR_AUTH_CRYPTO_H */
