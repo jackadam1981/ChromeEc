@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39157fb6_6ef2140d",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 213
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:43:53Z",
+      "side": 1,
+      "message": "Can you break this into a separate helper function (or functions)? Add unit tests that run on emulator and device for the helper functions.",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 30
+      },
+      "revId": "d1d5e44549b6411ecf16593d41486dcbdb86ba2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc5d292_adff274a",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 213
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:43:53Z",
+      "side": 1,
+      "message": "Let\u0027s not use the internal API for new code.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "d1d5e44549b6411ecf16593d41486dcbdb86ba2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
