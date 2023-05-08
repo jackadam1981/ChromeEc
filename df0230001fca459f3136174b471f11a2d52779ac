@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d92d1016_5111ffc5",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Class re-written as method",
+      "parentUuid": "fa7908d0_69fd6efc",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 44
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d214ae4_4080ecc6",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-05-05T14:57:10Z",
       "side": 1,
       "message": "could you do something like `if read[0:1] \u003d\u003d resp_seq[0:1]`?",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 65
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16fac47a_04dd892d",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Updated the logic",
+      "parentUuid": "8d214ae4_4080ecc6",
       "range": {
         "startLine": 408,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e5debd_26899d43",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Deleted the comment",
+      "parentUuid": "909cc7ae_0a776643",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 62
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5819d93b_0d078408",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-05-05T14:57:10Z",
       "side": 1,
       "message": "Would it be more useful to catch the opposite case? Like writing a warning if `resp_bytes !\u003d response_sram_exe`",
+      "range": {
+        "startLine": 435,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 0
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba70d10d_9c156c11",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Updated as suggested.",
+      "parentUuid": "5819d93b_0d078408",
       "range": {
         "startLine": 435,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0e620d_d874d206",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Updated as suggested",
+      "parentUuid": "b0651aac_353f6c00",
+      "range": {
+        "startLine": 459,
+        "startChar": 9,
+        "endLine": 459,
+        "endChar": 30
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d256a1e_5c265461",
@@ -146,6 +266,30 @@
       "writtenOn": "2023-05-05T14:57:10Z",
       "side": 1,
       "message": "This should probably be a long version of the option? Something like `--com_port_path`",
+      "range": {
+        "startLine": 467,
+        "startChar": 9,
+        "endLine": 467,
+        "endChar": 24
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c51cbccc_23ef3a79",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Updated by replacing space with undersquare",
+      "parentUuid": "5d256a1e_5c265461",
       "range": {
         "startLine": 467,
         "startChar": 9,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d40da98_595d1c7a",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "82a1e5a2_4d714697",
+      "range": {
+        "startLine": 475,
+        "startChar": 9,
+        "endLine": 475,
+        "endChar": 28
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c20ec1a2_9d4a96e8",
@@ -192,6 +360,30 @@
       "writtenOn": "2023-05-05T14:57:10Z",
       "side": 1,
       "message": "useless comment, drop",
+      "range": {
+        "startLine": 482,
+        "startChar": 30,
+        "endLine": 482,
+        "endChar": 41
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d36553f5_e153889b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Deleted",
+      "parentUuid": "c20ec1a2_9d4a96e8",
       "range": {
         "startLine": 482,
         "startChar": 30,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b98b1ac0_224b3721",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Followed the sample snippet to update the script",
+      "parentUuid": "b43f3f5e_658a2aff",
+      "range": {
+        "startLine": 484,
+        "startChar": 4,
+        "endLine": 488,
+        "endChar": 19
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef14e6e6_41ccc08d",
@@ -238,6 +454,30 @@
       "writtenOn": "2023-05-05T14:57:10Z",
       "side": 1,
       "message": "this block feels a bit weird, should the timeout check below be before this and then this be without the condition?",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 0
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca2b51d_50df6cf7",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "ef14e6e6_41ccc08d",
       "range": {
         "startLine": 499,
         "startChar": 0,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c345087_e5da79dd",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Updated as suggested",
+      "parentUuid": "73be1f8a_2b25deac",
+      "range": {
+        "startLine": 505,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 28
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc128f40_e29e9f46",
@@ -284,6 +548,30 @@
       "writtenOn": "2023-05-05T14:57:10Z",
       "side": 1,
       "message": "If this is run without either second_loader_file or ec_file, it would silently exit. May be worth catching it, how about changing this to a `elif` and having an `else` case with an error message saying that one of the two flags have to be specified.",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 20
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c70b1b41_69aeda99",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "elif introduced to display the error message to user to pass one of the image argument",
+      "parentUuid": "dc128f40_e29e9f46",
       "range": {
         "startLine": 511,
         "startChar": 0,
@@ -317,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8403ffb_8fb01c7c",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "8091b4b5_28c33e1b",
+      "range": {
+        "startLine": 521,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 0
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99dc654a_be86907b",
@@ -330,6 +642,30 @@
       "writtenOn": "2023-05-05T14:57:10Z",
       "side": 1,
       "message": "`if not process`?",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 28
+      },
+      "revId": "df0230001fca459f3136174b471f11a2d52779ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e5e2f6_3abece6b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-08T11:51:31Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "99dc654a_be86907b",
       "range": {
         "startLine": 526,
         "startChar": 0,
