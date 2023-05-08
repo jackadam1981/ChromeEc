@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0956101_cd05d9b9",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 213
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:50:25Z",
+      "side": 1,
+      "message": "Returning here doesn\u0027t clear key? See suggestion in [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4511815/comment/f5ec69a3_cff7386e/) for suggestion on how we can avoid this here (and in future code).",
+      "range": {
+        "startLine": 485,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 2
+      },
+      "revId": "d1d5e44549b6411ecf16593d41486dcbdb86ba2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39157fb6_6ef2140d",
         "filename": "common/fpsensor/fpsensor_auth_commands.cc",
         "patchSetId": 213
