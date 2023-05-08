@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a37bc94_0822ee0b",
+        "filename": "core/cortex-m/cpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T23:43:29Z",
+      "side": 1,
+      "message": "Separate from the other comment: what code exactly is performing unaligned access? (There\u0027s nothing necessarily wrong with it, but I want to make sure it\u0027s intentional and not a bug/side effect of something else.)",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 67
+      },
+      "revId": "0756b1242d6aea583a6808e01f7d51fcb51ff04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf08bcd7_768a6fd5",
+        "filename": "core/cortex-m/cpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T23:43:29Z",
+      "side": 1,
+      "message": "In general we don\u0027t want to add more conditionals (specific configuration changes that only affect a subset of boards).\n\nUltimately you end up with:\n\n```\n#if FOO\n// do something\n#elif BAR\n// do something\n#elif X\n// something else\n#elif I_JUST_HAVE_ONE_MORE_CONFIG_TO_ADD\n// another thing\n#endif\n```\n\nand the code becomes really hard to read or reason about.\n\nIn this case we actually have a separate pending CL that removes `CPU_NVIC_CCR_UNALIGN_TRAP`: https://crrev.com/c/4327795.\n\nLet\u0027s push that one through and then we don\u0027t need to do this.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "0756b1242d6aea583a6808e01f7d51fcb51ff04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
