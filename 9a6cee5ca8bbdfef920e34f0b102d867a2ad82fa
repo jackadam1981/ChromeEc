@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb5c298e_d6a46e75",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 192
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:46:24Z",
+      "side": 1,
+      "message": "Let\u0027s use `std::array` since it\u0027s C++.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 47
+      },
+      "revId": "9a6cee5ca8bbdfef920e34f0b102d867a2ad82fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d5d51e_2f61f967",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 192
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:46:24Z",
+      "side": 1,
+      "message": "Let\u0027s put this into a helper function with unit test (that runs on device and emulator).",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 0
+      },
+      "revId": "9a6cee5ca8bbdfef920e34f0b102d867a2ad82fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
