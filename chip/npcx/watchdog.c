@@ -47,6 +47,7 @@ void watchdog_init_warning_timer(void)
 }
 
 static timestamp_t last_watchdog_touch;
+static timestamp_t latest_watchdog_touch;
 void watchdog_stop_and_unlock(void)
 {
 	/*
@@ -64,7 +65,13 @@ void watchdog_stop_and_unlock(void)
 static void touch_watchdog_count(void)
 {
 	NPCX_WDSDM = 0x5C;
-	last_watchdog_touch = get_time();
+	{
+		timestamp_t now = get_time();
+
+		if (now - last_watchdog_touch < latest_watchdog_touch)
+			latest_watchdog_touch = now - last_watchdog_touch;
+		last_watchdog_touch = now;
+	}
 }
 
 static void watchdog_reload_warning_timer(void)
@@ -201,6 +208,8 @@ int watchdog_init(void)
 
 	/* Init watchdog warning timer */
 	watchdog_init_warning_timer();
+
+	/* Load the previous latest_watchdog_touch. */
 #endif
 	return EC_SUCCESS;
 }
