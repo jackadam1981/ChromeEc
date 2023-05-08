@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8878dec_20c7f386",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 188
+      },
+      "lineNbr": 7818,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T20:55:00Z",
+      "side": 1,
+      "message": "Seems like this should be a `typedef` so the two do not get out of sync.",
+      "range": {
+        "startLine": 7818,
+        "startChar": 3,
+        "endLine": 7818,
+        "endChar": 79
+      },
+      "revId": "376db25d75e3feb82cf23bfafc11cfa4256ee0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0584ac13_09fe7c86",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 188
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T20:55:00Z",
+      "side": 1,
+      "message": "I haven\u0027t looked at this closely, but does any of the new code you added for dealing with keys work for this? (e.g., `fill_pubkey`, etc.)",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 36
+      },
+      "revId": "376db25d75e3feb82cf23bfafc11cfa4256ee0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
