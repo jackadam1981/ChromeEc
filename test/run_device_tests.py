@@ -535,6 +535,19 @@ def power_cycle(board_config: BoardConfig) -> None:
     time.sleep(1)
     power(board_config, power_on=True)
 
+def reset(enable: bool) -> None:
+    if enable:
+        state = "on"
+    else:
+        state = "off"
+
+    cmd = [
+        "dut-control",
+        "fpmcu_reset:" + state,
+    ]
+    logging.debug('Running command: "%s"', " ".join(cmd))
+    subprocess.run(cmd, check=False).check_returncode()
+
 
 def hw_write_protect(enable: bool) -> None:
     """Enable/disable hardware write protect."""
@@ -793,7 +806,10 @@ def flash_and_run_test(
         return False
 
     if test.toggle_power:
-        power_cycle(board_config)
+        #power_cycle(board_config)
+        reset(True)
+        time.sleep(1)
+        reset(False)
 
     hw_write_protect(test.enable_hw_write_protect)
 
