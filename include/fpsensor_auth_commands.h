@@ -51,4 +51,12 @@ enum ec_error_list
 fill_encrypted_private_key(const EC_KEY &key, uint16_t version,
 			   struct ec_fp_encrypted_private_key &enc_key);
 
+enum ec_error_list
+decrypt_data(const struct ec_fp_auth_command_encryption_metadata &info,
+	     const uint8_t *enc_data, size_t enc_data_size, uint8_t *data,
+	     size_t data_size);
+
+bssl::UniquePtr<EC_KEY> decrypt_private_key(
+	const struct ec_fp_encrypted_private_key &encrypted_private_key);
+
 #endif /* __CROS_EC_FPSENSOR_AUTH_COMMANDS_H */
