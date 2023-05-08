@@ -42,4 +42,9 @@ decrypt_data(const struct ec_fp_auth_command_encryption_metadata &info,
 bssl::UniquePtr<EC_KEY> decrypt_private_key(
 	const struct ec_fp_encrypted_private_key &encrypted_private_key);
 
+enum ec_error_list generate_ecdh_shared_secret(const EC_KEY &private_key,
+					       const EC_KEY &public_key,
+					       uint8_t *share_secret,
+					       uint8_t share_secret_size);
+
 #endif /* __CROS_EC_FPSENSOR_AUTH_COMMANDS_H */
