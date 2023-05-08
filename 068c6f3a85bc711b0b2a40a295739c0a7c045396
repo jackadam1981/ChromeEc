@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c5e589_9de3c01a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T16:08:01Z",
+      "side": 1,
+      "message": "Looks like the CQ is failing, but the change looks good.",
+      "revId": "068c6f3a85bc711b0b2a40a295739c0a7c045396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "843718e1_55eae6ed",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T16:08:01Z",
+      "side": 1,
+      "message": "I saw you were experimenting with boringssl for these boards too. It would be nice if we could get them switched over in the future too. I added a comment to [this bug](http://b/280075196).",
+      "range": {
+        "startLine": 316,
+        "startChar": 8,
+        "endLine": 316,
+        "endChar": 25
+      },
+      "revId": "068c6f3a85bc711b0b2a40a295739c0a7c045396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
