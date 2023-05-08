@@ -9,7 +9,11 @@
 #include <zephyr/kernel.h>
 
 /** A stub main to call the real ec app main function. LCOV_EXCL_START */
+#ifdef CONFIG_ZEPHYR_PIGWEED_MODULE
+int main(void)
+#else
 void main(void)
+#endif
 {
 	ec_app_main();
 
@@ -22,5 +26,8 @@ void main(void)
 		 */
 		k_sleep(K_FOREVER);
 	}
+#ifdef CONFIG_ZEPHYR_PIGWEED_MODULE
+	return 0;
+#endif
 }
 /* LCOV_EXCL_STOP */
