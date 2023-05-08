@@ -94,6 +94,30 @@
       },
       "revId": "ac37e77df320cfab31e2e0218c4ddf5139af78e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da94bfbf_8c9c1823",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 33
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-08T23:26:20Z",
+      "side": 1,
+      "message": "`fp_clear_context` might happen in the critical path:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3915754\n\nIIRC, the new design will establish the key \"after\" the user puts their finger on the sensor. (Otherwise the attempted number in GSC would increase even if the user didn\u0027t touch the sensor.)",
+      "parentUuid": "a15386f4_4bde8b23",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 62
+      },
+      "revId": "ac37e77df320cfab31e2e0218c4ddf5139af78e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
