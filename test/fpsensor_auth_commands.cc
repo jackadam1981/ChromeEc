@@ -98,6 +98,56 @@ test_static enum ec_error_list test_fp_auth_command_fill_pubkey(void)
 	return EC_SUCCESS;
 }
 
+test_static enum ec_error_list
+test_fp_auth_command_generate_ecdh_shared_secret(void)
+{
+	struct ec_fp_ec_public_key pubkey = {
+		.x = {
+			0x85, 0xAD, 0x35, 0x23, 0x05, 0x1E, 0x33, 0x3F,
+			0xCA, 0xA7, 0xEA, 0xA5, 0x88, 0x33, 0x12, 0x95,
+			0xA7, 0xB5, 0x98, 0x9F, 0x32, 0xEF, 0x7D, 0xE9,
+			0xF8, 0x70, 0x14, 0x5E, 0x89, 0xCB, 0xDE, 0x1F,
+		},
+		.y = {
+			0xD1, 0xDC, 0x91, 0xC6, 0xE6, 0x5B, 0x1E, 0x3C,
+			0x01, 0x6C, 0xE6, 0x50, 0x25, 0x5D, 0x89, 0xCF,
+			0xB7, 0x8D, 0x88, 0xB9, 0x0D, 0x09, 0x41, 0xF1,
+			0x09, 0x4F, 0x61, 0x55, 0x6C, 0xC4, 0x96, 0x6B,
+		},
+	};
+
+	bssl::UniquePtr<EC_KEY> public_key = create_ec_key_from_pubkey(pubkey);
+
+	TEST_NE(public_key.get(), nullptr, "%p");
+
+	uint8_t privkey[32] = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+				6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+
+	bssl::UniquePtr<EC_KEY> private_key(
+		EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
+
+	TEST_NE(private_key.get(), nullptr, "%p");
+
+	TEST_EQ(EC_KEY_oct2priv(private_key.get(), privkey, sizeof(privkey)), 1,
+		"%d");
+
+	uint8_t share_secret[32];
+	TEST_EQ(generate_ecdh_shared_secret(*private_key, *public_key,
+					    share_secret, sizeof(share_secret)),
+		EC_SUCCESS, "%d");
+
+	uint8_t expected_result[32] = {
+		0x46, 0x86, 0xca, 0x75, 0xce, 0xa1, 0xde, 0x23,
+		0x48, 0xb3, 0x0b, 0xfc, 0xd7, 0xbe, 0x7a, 0xa0,
+		0x33, 0x17, 0x6c, 0x97, 0xc6, 0xa7, 0x70, 0x7c,
+		0xd4, 0x2c, 0xfd, 0xc0, 0xba, 0xc1, 0x47, 0x01,
+	};
+
+	TEST_ASSERT_ARRAY_EQ(share_secret, expected_result,
+			     sizeof(share_secret));
+	return EC_SUCCESS;
+}
+
 test_static enum ec_error_list test_fp_auth_command_encrypt_decrypt_data(void)
 {
 	struct ec_fp_auth_command_encryption_metadata info;
@@ -207,6 +257,7 @@ extern "C" void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_auth_command_create_ec_key_from_pubkey);
 	RUN_TEST(test_fp_auth_command_create_ec_key_from_pubkey_fail);
 	RUN_TEST(test_fp_auth_command_fill_pubkey);
+	RUN_TEST(test_fp_auth_command_generate_ecdh_shared_secret);
 	RUN_TEST(test_set_fp_tpm_seed);
 	RUN_TEST(test_fp_auth_command_encrypt_decrypt_data);
 	RUN_TEST(test_fp_auth_command_encrypt_decrypt_key);
