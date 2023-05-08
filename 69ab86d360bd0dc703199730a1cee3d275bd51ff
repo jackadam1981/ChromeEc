@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9d651d9_5087ab4a",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T20:20:51Z",
+      "side": 1,
+      "message": "Let\u0027s use `std::array` here and `.size()` when we call `aes_gcm_encrypt`/`OPENSSL_cleanse`.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 34
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5958838a_5d9a08fe",
+        "filename": "include/fpsensor_auth_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T20:20:51Z",
+      "side": 1,
+      "message": "Similar to [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4506542/comment/14fbbaf6_e0c290c2/), let\u0027s move to `fpsensor_auth_crypto.cc/h`.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "584dff64_9d015f2e",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T20:20:51Z",
+      "side": 1,
+      "message": "Similar to [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4506542/comment/82ece39b_d2a13d5d/), let\u0027s use `std::array`.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd64348_d67f0603",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T20:20:51Z",
+      "side": 1,
+      "message": "Let\u0027s use `std::copy` since it\u0027s C++.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f67bd33_f6ddb2a9",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T20:20:51Z",
+      "side": 1,
+      "message": "Unresolved `TODO`.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 70
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f102691_d3289753",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T20:20:51Z",
+      "side": 1,
+      "message": "Similar to [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4506542/comment/82ece39b_d2a13d5d/), let\u0027s use `std::array`.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 53
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c349f99e_03c9e52b",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T20:20:51Z",
+      "side": 1,
+      "message": "Unresolved `TODO`.",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 70
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
