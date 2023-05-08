@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c877154_13f75d13",
+        "filename": "zephyr/program/nissa/yavilla/motionsense.dtsi",
+        "patchSetId": 13
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-05-08T06:18:48Z",
+      "side": 1,
+      "message": "If the interrupt signal for the lid accelerometer is connected, prefer to use its interrupt. You can look at Nereid as an example.",
+      "revId": "4d5307bbbd8876826b173c27cf8049ffb5607490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80b55629_6caefd95",
+        "filename": "zephyr/program/nissa/yavilla/project.conf",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-05-08T06:18:48Z",
+      "side": 1,
+      "message": "Comment is no longer accurate; update it.",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "4d5307bbbd8876826b173c27cf8049ffb5607490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
