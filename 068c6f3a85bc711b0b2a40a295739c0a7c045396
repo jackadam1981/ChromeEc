@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "eb532d48_f92e61ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-08T16:10:32Z",
+      "side": 1,
+      "message": "Yup. Here\u0027s the fix https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4513879. Could you take a look?",
+      "parentUuid": "e7c5e589_9de3c01a",
+      "revId": "068c6f3a85bc711b0b2a40a295739c0a7c045396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "843718e1_55eae6ed",
         "filename": "board/hammer/board.h",
         "patchSetId": 2
