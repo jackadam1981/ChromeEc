@@ -374,6 +374,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bad460d5_5d1bde31",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-08T10:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06a38f47_56e1f0a9",
+      "range": {
+        "startLine": 101,
+        "startChar": 45,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fd4d59f_8f49060e",
@@ -483,6 +507,30 @@
       "side": 1,
       "message": "I\u0027d still like a check that `fan_set_duty()` was called more than once.  This shouldn\u0027t check for a specific number of calls.  This ensures no regressions if someone attempts to modify both the test and the fan control at the same time.\n\n```\n\tzassert_true(fan_set_duty_fake.call_count \u003e 1);\n```",
       "parentUuid": "f7728572_cdeb9ceb",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d322b9fa_eff806bd",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-08T10:33:02Z",
+      "side": 1,
+      "message": "Fair enough. Done.",
+      "parentUuid": "62db46ee_cad1fe7a",
       "range": {
         "startLine": 102,
         "startChar": 0,
@@ -719,6 +767,24 @@
       "side": 1,
       "message": "Yes, `k_sleep` is correct here so that system timer keeps advancing.",
       "parentUuid": "20b326b0_beb1163d",
+      "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9028da3_09bbbdb5",
+        "filename": "zephyr/test/skyrim/tests/winterhold/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-08T10:33:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bee79a8c_00310248",
       "revId": "c2ed0cbb30f294248592d0dd771802382774da09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
