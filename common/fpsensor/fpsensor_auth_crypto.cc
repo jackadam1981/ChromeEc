@@ -6,11 +6,13 @@
 #include "compile_time_macros.h"
 
 /* Boringssl headers need to be included before extern "C" section. */
+#include "crypto/cleanse_wrapper.h"
 #include "crypto/elliptic_curve_key.h"
 #include "openssl/bn.h"
 #include "openssl/ec.h"
 #include "openssl/mem.h"
 #include "openssl/obj_mac.h"
+#include "openssl/rand.h"
 
 extern "C" {
 #include "ec_commands.h"
@@ -75,4 +77,48 @@ create_ec_key_from_pubkey(const struct ec_fp_ec_public_key &pubkey)
 	}
 
 	return key;
+}
+
+enum ec_error_list
+encrypt_data_in_place(uint16_t version,
+		      struct ec_fp_auth_command_encryption_metadata &info,
+		      uint8_t *data, size_t data_size)
+{
+	if (version != 1) {
+		return EC_ERROR_INVAL;
+	}
+
+	info.struct_version = version;
+	RAND_bytes(info.nonce, sizeof(info.nonce));
+	RAND_bytes(info.encryption_salt, sizeof(info.encryption_salt));
+
+	CleanseWrapper<std::array<uint8_t, SBP_ENC_KEY_LEN> > enc_key;
+	enum ec_error_list ret =
+		derive_encryption_key(enc_key.data(), info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		return EC_ERROR_INVAL;
+	}
+
+	/* Encrypt the secret blob in-place. */
+	ret = aes_gcm_encrypt(enc_key.data(), enc_key.size(), data, data,
+			      data_size, info.nonce, sizeof(info.nonce),
+			      info.tag, sizeof(info.tag));
+	if (ret != EC_SUCCESS) {
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+
+enum ec_error_list
+fill_encrypted_private_key(const EC_KEY &key, uint16_t version,
+			   struct ec_fp_encrypted_private_key &enc_key)
+{
+	if (EC_KEY_priv2oct(&key, enc_key.data, sizeof(enc_key.data)) !=
+	    sizeof(enc_key.data)) {
+		return EC_ERROR_INVAL;
+	}
+
+	return encrypt_data_in_place(version, enc_key.info, enc_key.data,
+				     sizeof(enc_key.data));
 }
