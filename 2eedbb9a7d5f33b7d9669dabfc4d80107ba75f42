@@ -16,6 +16,98 @@
       "message": "Updated the review comments",
       "revId": "2eedbb9a7d5f33b7d9669dabfc4d80107ba75f42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0f5c952_b7bb4d55",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-08T15:39:50Z",
+      "side": 1,
+      "message": "I\u0027d suggest adding two constant for these, like IMG_LEN_ENCRYPTION and IMG_LEN_NO_ENCRYPTION, then you could use those and drop the \"Encryption\" and \"Without Encryption\" comments.",
+      "range": {
+        "startLine": 244,
+        "startChar": 33,
+        "endLine": 244,
+        "endChar": 36
+      },
+      "revId": "2eedbb9a7d5f33b7d9669dabfc4d80107ba75f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e87ba5b_9a25c7db",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-08T15:39:50Z",
+      "side": 1,
+      "message": "could/should this just be an \"elif\"?",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 0
+      },
+      "revId": "2eedbb9a7d5f33b7d9669dabfc4d80107ba75f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dac33ff7_ed27413e",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-08T15:39:50Z",
+      "side": 1,
+      "message": "Now that you have the extended option names set, the `dest\u003d` argument should be redundant and you should have your argument automatically saved in `args.second_loader_image`, `args.com_port_path` etc.\n\nCould you drop the various `dest\u003d` form here and the other argument and use the automatic variable instead? That simplify things a bit and makes easier to find where a variable is using starting from the command line, without having to look up how it\u0027s called in the code.",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 34
+      },
+      "revId": "2eedbb9a7d5f33b7d9669dabfc4d80107ba75f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd89bdfb_3d00bfa2",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-08T15:39:50Z",
+      "side": 1,
+      "message": "ec_image_to_flash, options should normally be all lowercase",
+      "range": {
+        "startLine": 416,
+        "startChar": 11,
+        "endLine": 416,
+        "endChar": 28
+      },
+      "revId": "2eedbb9a7d5f33b7d9669dabfc4d80107ba75f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
