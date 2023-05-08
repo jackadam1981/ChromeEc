@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bc70dc3_7e8638db",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 200
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:39:32Z",
+      "side": 1,
+      "message": "Let\u0027s create two helper functions that this function calls:\n\n1. Generate `ck`.\n2. Encrypt\n\nEach helper function needs a unit test that runs on emulator and device.",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 0
+      },
+      "revId": "8b603df10b932d1ea37ae87ac89afefffe681208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
