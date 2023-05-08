@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c1d4e56_8598d47e",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:19:35Z",
+      "side": 1,
+      "message": "Let\u0027s use `std::array` since it\u0027s C++.",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 34
+      },
+      "revId": "04697739dac123f1db434a0c7e97bb5a4b614645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d01c755_1c625323",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:19:35Z",
+      "side": 1,
+      "message": "Let\u0027s use `std::array` since it\u0027s C++.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 53
+      },
+      "revId": "04697739dac123f1db434a0c7e97bb5a4b614645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecb21489_2d52e520",
+        "filename": "include/fpsensor_auth_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:19:35Z",
+      "side": 1,
+      "message": "Similar to [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4506542/comment/14fbbaf6_e0c290c2/), let\u0027s put these in `fpsensor_auth_crypto.cc/h`.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "04697739dac123f1db434a0c7e97bb5a4b614645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac690b4_c59ae35f",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:19:35Z",
+      "side": 1,
+      "message": "Let\u0027s use `std::array` since it\u0027s C++.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 20
+      },
+      "revId": "04697739dac123f1db434a0c7e97bb5a4b614645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86d2a3d_6d53cae2",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T22:19:35Z",
+      "side": 1,
+      "message": "Let\u0027s use `std::array` since it\u0027s C++.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 72
+      },
+      "revId": "04697739dac123f1db434a0c7e97bb5a4b614645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
