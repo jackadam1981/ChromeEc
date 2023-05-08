@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2859502_805debfc",
+        "filename": "zephyr/program/myst/i2c.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-08T13:30:15Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "01480c59_4bf3cce3",
+      "range": {
+        "startLine": 79,
+        "startChar": 17,
+        "endLine": 79,
+        "endChar": 40
+      },
+      "revId": "63844fd912a133e58e17ecad43b4e0c1a9dd15b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fa0a5aa_601b0d8d",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-04T13:00:14Z",
       "side": 1,
       "message": "i\u0027ve been wondering if `is-alt` should be applied to the \"default\" case\nas well. the way we use `is-alt`, there is no preferred or common case.\ni don\u0027t like how you have to go back and \"undo\" the defaults,\nspecially for mux chains.",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 8
+      },
+      "revId": "63844fd912a133e58e17ecad43b4e0c1a9dd15b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d91de2f_4b913487",
+        "filename": "zephyr/program/myst/i2c.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-08T13:30:15Z",
+      "side": 1,
+      "message": "I\u0027ve chatted wilth Keith and the suggestion was to use one of the SKUs as a default and for the case of no-DB-connected to clean up the arrays. Added the cleanup.",
+      "parentUuid": "3fa0a5aa_601b0d8d",
       "range": {
         "startLine": 138,
         "startChar": 2,
@@ -78,6 +126,24 @@
       "side": 1,
       "message": "Oh, and if we have a no-DB option we should probably override `board_get_usb_pd_port_count()`.  I don\u0027t think I see an elegant zephyr-ish way to do the same thing it does (indicate the number of valid USB-C ports when they may vary at runtime)",
       "parentUuid": "e464b90d_1d42b299",
+      "revId": "63844fd912a133e58e17ecad43b4e0c1a9dd15b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a683bd_108f55f4",
+        "filename": "zephyr/program/myst/myst/src/usb_mux_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-08T13:30:15Z",
+      "side": 1,
+      "message": "added `board_get_usb_pd_port_count` and replaced a couple of loops in code to use it",
+      "parentUuid": "9a62a0b7_5ad405dd",
       "revId": "63844fd912a133e58e17ecad43b4e0c1a9dd15b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
