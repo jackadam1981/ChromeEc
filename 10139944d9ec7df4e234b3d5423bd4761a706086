@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b94bdb75_bf365b44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-08T15:35:21Z",
+      "side": 1,
+      "message": "Adding Daisuke, who\u0027s an expert in our charging and power code to review",
+      "revId": "10139944d9ec7df4e234b3d5423bd4761a706086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32016c5_0cb43ad7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-08T15:35:21Z",
+      "side": 1,
+      "message": "Why in this scenario is `curr.ac` registering as false?  I\u0027d expect us to have AC if the battery isn\u0027t physically present and this may be closer to the root cause of your issue. \n\nIf for any reason we can\u0027t get `curr.ac` to accurately reflect our external power, then I\u0027d imagine that here we\u0027d want to avoid using `curr.batt.voltage` if we weren\u0027t able to actually communicate with the battery to get its voltage",
+      "revId": "10139944d9ec7df4e234b3d5423bd4761a706086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
