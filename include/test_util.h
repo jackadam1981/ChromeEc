@@ -115,6 +115,25 @@ extern "C" {
 			}                                                    \
 	} while (0)
 
+#define TEST_ASSERT_ARRAY_NE(s, d, n)                                         \
+	do {                                                                  \
+		if (n < 0)                                                    \
+			return EC_ERROR_UNKNOWN;                              \
+                                                                              \
+		unsigned int __n = n;                                         \
+		unsigned int __i = 0;                                         \
+		for (; __i < __n; ++__i)                                      \
+			if ((s)[__i] != (d)[__i]) {                           \
+				break;                                        \
+			}                                                     \
+		if (__i == __n) {                                             \
+			ccprintf("%s:%d: ASSERT_ARRAY_NE failed\n", __FILE__, \
+				 __LINE__);                                   \
+			task_dump_trace();                                    \
+			return EC_ERROR_UNKNOWN;                              \
+		}                                                             \
+	} while (0)
+
 #define TEST_ASSERT_MEMSET(d, c, n)                                        \
 	do {                                                               \
 		if (n < 0)                                                 \
