@@ -117,6 +117,30 @@
       },
       "revId": "e7356bc03de335c07bd9e7bbe96ea50400ea4821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c282bce_1b6ddbc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-08T22:53:11Z",
+      "side": 1,
+      "message": "Dependency chain created which includes this CL",
+      "parentUuid": "88fc0884_a4426e97",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "e7356bc03de335c07bd9e7bbe96ea50400ea4821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
