@@ -33,6 +33,24 @@
       "message": "`#undef ALTERNATE` now that you have used it",
       "revId": "08c27e96420c9018b8b3139a3e583de5832fec09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7eb2733_1a8bd9a6",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-05-08T22:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98cf23ff_261b848a",
+      "revId": "08c27e96420c9018b8b3139a3e583de5832fec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
