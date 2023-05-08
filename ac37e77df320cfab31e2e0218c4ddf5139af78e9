@@ -70,6 +70,30 @@
       },
       "revId": "ac37e77df320cfab31e2e0218c4ddf5139af78e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a15386f4_4bde8b23",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 33
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T18:44:53Z",
+      "side": 1,
+      "message": "Moving it makes it somewhat fragile and hard to reason about. (i.e., which buffers get cleared at which time.) It\u0027s simpler (and less error-prone) if calls to \"clear_context\" actually clears everything.\n\nThe issue is that resetting the sensor is taking too long, right? Are the commands that use the `fp_clear_context` performance sensitive? i.e., Are they in the critical path for matching or are they just done once during key establishment?\n\nIf it\u0027s not in the critical path, then we can make the command \"async\". We have some examples with the flash protect command where we recently added an \"async\" version:\n\n* https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/flash_protect_command.h;l\u003d53-55;drc\u003df4fb3ee1fab51e712b8ecf14d9bb471b790ba7c2\n* https://crrev.com/c/4335413",
+      "parentUuid": "a0abce34_7ae72d3e",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 62
+      },
+      "revId": "ac37e77df320cfab31e2e0218c4ddf5139af78e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
