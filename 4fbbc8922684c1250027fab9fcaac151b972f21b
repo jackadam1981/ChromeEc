@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9503ce_e4c99125",
+        "filename": "zephyr/program/nissa/yaviks/src/usbc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-05-08T23:18:26Z",
+      "side": 1,
+      "message": "I think you want to use the `charge_ma` parameter here instead of getting the active charger\u0027s voltage, because the active charger may not be the same port as this is being called for.",
+      "revId": "4fbbc8922684c1250027fab9fcaac151b972f21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4319d2d5_7c64fe30",
+        "filename": "zephyr/program/nissa/yaviks/src/usbc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-05-08T23:18:26Z",
+      "side": 1,
+      "message": "Use `charger_set_input_current_limit` to specify the current limit for the chosen port specifically, rather than globally.\n\n```suggestion\n\tcharger_set_input_current_limit(port, charge_ma);\n```",
+      "revId": "4fbbc8922684c1250027fab9fcaac151b972f21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
