@@ -17,6 +17,7 @@ extern "C" {
 #include "sha256.h"
 }
 
+#include "fpsensor.h"
 #include "fpsensor_auth_crypto.h"
 
 std::optional<fp_elliptic_curve_public_key>
