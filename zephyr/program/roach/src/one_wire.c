@@ -325,6 +325,7 @@ static int ec_ec_comm_init(void)
 }
 SYS_INIT(ec_ec_comm_init, APPLICATION, 50);
 
+#ifndef CONFIG_USB_HID_KEYBOARD
 void keyboard_state_changed(int row, int col, int is_pressed)
 {
 }
@@ -333,12 +334,15 @@ void detachable_keyboard_add(const uint8_t *state)
 {
 	board_uart_tx(ROACH_CMD_KEYBOARD_MATRIX, state, KEYBOARD_COLS_MAX);
 }
+#endif
 
 void board_touchpad_reset(void)
 {
 }
 
+#ifndef CONFIG_PLATFORM_EC_USB_HID_TOUCHPAD
 void set_touchpad_report(struct usb_hid_touchpad_report *report)
 {
 	board_uart_tx(ROACH_CMD_TOUCHPAD_REPORT, (uint8_t*)report, sizeof(*report));
 }
+#endif
