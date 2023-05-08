@@ -16,6 +16,52 @@
       "message": "Updated the comments",
       "revId": "84203211226876ed73840b00057fa1b4479cef13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c1a288_93388d37",
+        "filename": "util/flash_ec",
+        "patchSetId": 33
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-08T15:21:49Z",
+      "side": 1,
+      "message": "drop the space before the :",
+      "range": {
+        "startLine": 771,
+        "startChar": 25,
+        "endLine": 771,
+        "endChar": 26
+      },
+      "revId": "84203211226876ed73840b00057fa1b4479cef13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9069373d_2da03ac1",
+        "filename": "util/flash_ec",
+        "patchSetId": 33
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-08T15:21:49Z",
+      "side": 1,
+      "message": "drop the space before the :, also fix the casing to be consistent: \"No loader image...\" (uppercase N lowercase l), drop the \".\" at the end of the sentence (normally not used in \"die\" messages apparently, just looking for coherency)",
+      "range": {
+        "startLine": 782,
+        "startChar": 27,
+        "endLine": 782,
+        "endChar": 28
+      },
+      "revId": "84203211226876ed73840b00057fa1b4479cef13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
