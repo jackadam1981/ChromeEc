@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47467e9e_5b59083a",
+        "filename": "include/test_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T18:50:05Z",
+      "side": 1,
+      "message": "For clarity, let\u0027s add braces on this `for` loop",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 5
+      },
+      "revId": "ea6707c2533ba3dd2d2902d87001bb8ea6efc59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e292742a_ba6c8439",
+        "filename": "include/test_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-08T18:50:05Z",
+      "side": 1,
+      "message": "How about just using `memcmp`?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 12
+      },
+      "revId": "ea6707c2533ba3dd2d2902d87001bb8ea6efc59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
