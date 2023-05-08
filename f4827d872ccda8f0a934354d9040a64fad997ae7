@@ -241,6 +241,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d5ea87f5_f696d875",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-08T22:54:04Z",
+      "side": 1,
+      "message": "Thanks for your help chaining the CLs in a dependency chain, this is now done.",
+      "parentUuid": "c955b5f6_31a5d291",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "f4827d872ccda8f0a934354d9040a64fad997ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d9aefbd4_551f95dc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
