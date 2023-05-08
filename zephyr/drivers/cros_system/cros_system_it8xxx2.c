@@ -10,6 +10,10 @@
 #include "system.h"
 #include "util.h"
 
+#ifdef CONFIG_ZEPHYR_PIGWEED_MODULE
+#include <stdio.h>
+#endif
+
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
@@ -68,7 +72,7 @@ cros_system_it8xxx2_get_chip_revision(const struct device *dev)
 {
 	ARG_UNUSED(dev);
 
-	static char buf[3];
+	static char buf[4];
 	uint8_t rev = system_get_chip_version();
 
 	snprintf(buf, sizeof(buf), "%1xx", rev + 0xa);
