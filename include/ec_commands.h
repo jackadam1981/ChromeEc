@@ -7797,6 +7797,11 @@ struct ec_response_fp_establish_pairing_key_keygen {
 	struct ec_fp_encrypted_private_key encrypted_private_key;
 } __ec_align4;
 
+struct ec_fp_encrypted_pairing_key {
+	struct ec_fp_auth_command_encryption_metadata info;
+	uint8_t data[FP_PAIRING_KEY_LEN];
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 
