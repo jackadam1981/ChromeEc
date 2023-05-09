@@ -217,6 +217,13 @@
 			power-gpio-pin = <&pmic_ec_resetb>;
 		};
 	};
+
+	named-adc-channels {
+		adc-base-det {
+			enum-name = "ADC_BASE_DET";
+			io-channels = <&adc0 5>;
+		};
+	};
 };
 
 &i2c0{
@@ -230,4 +237,8 @@
 		compatible = "parade,ps8743";
 		reg = <0x10>;
 	};
+};
+
+&adc0{
+	pinctrl-0 = <&adc0_ch5_gpi5_default>;
 };
