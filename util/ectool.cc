@@ -39,6 +39,7 @@
 #include <libec/fingerprint/fp_encryption_status_command.h>
 #include <libec/flash_protect_command.h>
 #include <libec/rand_num_command.h>
+#include <libec/versions_command.h>
 #include <unistd.h>
 #include <vector>
 
@@ -1746,27 +1747,11 @@ int cmd_flash_erase(int argc, char *argv[])
 	return 0;
 }
 
-int cmd_flash_protect(int argc, char *argv[])
+template <typename T>
+int Execute_Flash_Protect_Command(T &flash_protect_command,
+				  const ec::flash_protect::Flags &flags,
+				  const ec::flash_protect::Flags &mask)
 {
-	/*
-	 * Set up requested flags.  If no flags were specified, mask will
-	 * be flash_protect::Flags::kNone and nothing will change.
-	 */
-	ec::flash_protect::Flags flags = ec::flash_protect::Flags::kNone;
-	ec::flash_protect::Flags mask = ec::flash_protect::Flags::kNone;
-
-	for (int i = 1; i < argc; i++) {
-		if (!strcasecmp(argv[i], "now")) {
-			mask |= ec::flash_protect::Flags::kAllNow;
-			flags |= ec::flash_protect::Flags::kAllNow;
-		} else if (!strcasecmp(argv[i], "enable")) {
-			mask |= ec::flash_protect::Flags::kRoAtBoot;
-			flags |= ec::flash_protect::Flags::kRoAtBoot;
-		} else if (!strcasecmp(argv[i], "disable"))
-			mask |= ec::flash_protect::Flags::kRoAtBoot;
-	}
-
-	ec::FlashProtectCommand flash_protect_command(flags, mask);
 	if (!flash_protect_command.Run(comm_get_fd())) {
 		int rv = -EECRESULT - flash_protect_command.Result();
 		fprintf(stderr, "Flash protect returned with errors: %d\n", rv);
@@ -1808,6 +1793,40 @@ int cmd_flash_protect(int argc, char *argv[])
 	}
 
 	return 0;
+}
+
+int cmd_flash_protect(int argc, char *argv[])
+{
+	/*
+	 * Set up requested flags.  If no flags were specified, mask will
+	 * be flash_protect::Flags::kNone and nothing will change.
+	 */
+	ec::flash_protect::Flags flags = ec::flash_protect::Flags::kNone;
+	ec::flash_protect::Flags mask = ec::flash_protect::Flags::kNone;
+
+	for (int i = 1; i < argc; i++) {
+		if (!strcasecmp(argv[i], "now")) {
+			mask |= ec::flash_protect::Flags::kAllNow;
+			flags |= ec::flash_protect::Flags::kAllNow;
+		} else if (!strcasecmp(argv[i], "enable")) {
+			mask |= ec::flash_protect::Flags::kRoAtBoot;
+			flags |= ec::flash_protect::Flags::kRoAtBoot;
+		} else if (!strcasecmp(argv[i], "disable"))
+			mask |= ec::flash_protect::Flags::kRoAtBoot;
+	}
+
+	ec::VersionsCommand flash_protect_versions_command(
+		EC_CMD_FLASH_PROTECT);
+
+	if (flash_protect_versions_command.IsVersionSupported(2) ==
+	    ec::EcCmdVersionSupportStatus::SUPPORTED) {
+		ec::FlashProtectCommand_v2 flash_protect_command(flags, mask);
+		return Execute_Flash_Protect_Command<ec::FlashProtectCommand_v2>(
+			flash_protect_command, flags, mask);
+	}
+	ec::FlashProtectCommand flash_protect_command(flags, mask);
+	return Execute_Flash_Protect_Command<ec::FlashProtectCommand>(
+		flash_protect_command, flags, mask);
 }
 
 int cmd_rw_hash_pd(int argc, char *argv[])
