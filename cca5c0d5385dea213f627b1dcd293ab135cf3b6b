@@ -212,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7971a01d_995d79fa",
+        "filename": "include/fpsensor_auth_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T04:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14fbbaf6_e0c290c2",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 68
+      },
+      "revId": "cca5c0d5385dea213f627b1dcd293ab135cf3b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82ece39b_d2a13d5d",
