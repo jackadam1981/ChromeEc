@@ -4,7 +4,6 @@
  */
 
 #include "accelgyro.h"
-#include "button.h"
 #include "cros_board_info.h"
 #include "cros_cbi.h"
 #include "driver/accel_bma4xx.h"
@@ -15,7 +14,6 @@
 #include "hooks.h"
 #include "motion_sense.h"
 #include "motionsense_sensors.h"
-#include "nissa_sub_board.h"
 #include "tablet_mode.h"
 
 #include <zephyr/devicetree.h>
@@ -58,26 +56,11 @@ static void form_factor_init(void)
 {
 	int ret;
 	uint32_t val;
-	enum nissa_sub_board_type sb = nissa_get_sb_type();
 
 	ret = cbi_get_board_version(&val);
 	if (ret != EC_SUCCESS) {
 		LOG_ERR("Error retrieving CBI BOARD_VER.");
 		return;
-	}
-	/*
-	 * The volume up/down button are exchanged on ver3 USB
-	 * sub board.
-	 *
-	 * LTE:
-	 *   volup -> gpioa2, voldn -> gpio93
-	 * USB:
-	 *   volup -> gpio93, voldn -> gpioa2
-	 */
-	if (val == 3 && sb == NISSA_SB_C_A) {
-		LOG_INF("Volume up/down btn exchanged on ver3 USB sku");
-		buttons[BUTTON_VOLUME_UP].gpio = GPIO_VOLUME_DOWN_L;
-		buttons[BUTTON_VOLUME_DOWN].gpio = GPIO_VOLUME_UP_L;
 	}
 
 	/*
@@ -114,6 +97,13 @@ static void form_factor_init(void)
 		CBI_SSFC_VALUE_ID(DT_NODELABEL(lid_sensor_1)));
 
 	motion_sensors_check_ssfc();
+}
+DECLARE_HOOK(HOOK_INIT, form_factor_init, HOOK_PRIO_POST_I2C);
+
+test_export_static void clamshell_init(void)
+{
+	int ret;
+	uint32_t val;
 
 	/* Check if it's clamshell or convertible */
 	ret = cros_cbi_get_fw_config(FORM_FACTOR, &val);
@@ -127,7 +117,7 @@ static void form_factor_init(void)
 		gmr_tablet_switch_disable();
 		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_l),
-				      GPIO_DISCONNECTED);
+				      GPIO_INPUT | GPIO_PULL_UP);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, form_factor_init, HOOK_PRIO_POST_I2C);
+DECLARE_HOOK(HOOK_INIT, clamshell_init, HOOK_PRIO_POST_DEFAULT);

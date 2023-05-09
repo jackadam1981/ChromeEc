@@ -26,6 +26,15 @@ choice TEST_TARGET
 		  exercises nissa/craask/src.
 endchoice
 
+config TEST_BOARD_FORM_FACTOR
+	select PLATFORM_EC_DYNAMIC_MOTION_SENSOR_COUNT
+	select PLATFORM_EC_GMR_TABLET_MODE
+	select PLATFORM_EC_TABLET_MODE
+	bool "Run the tests intended for form factor testing"
+	help
+	  Include tests which checks accelerometer
+	  interrupt and tablet mode.
+
 module = NISSA
 module-str = Nissa board-specific code (unit tests)
 source "subsys/logging/Kconfig.template.log_config"

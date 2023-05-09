@@ -20,9 +20,18 @@ tests:
     extra_configs:
     - CONFIG_TEST_NISSA_COMMON=y
 
-  # Craask Board
+  # Craask tests
   nissa.craask:
     extra_dtc_overlay_files:
     - "boards/generic_npcx.dts"
     extra_configs:
     - CONFIG_TEST_NISSA_CRAASK=y
+  nissa.craask.form_factor:
+    extra_configs:
+    - CONFIG_TEST_NISSA_CRAASK=y
+    - CONFIG_TEST_BOARD_FORM_FACTOR=y
+    extra_dtc_overlay_files:
+    - "./boards/craask/craask.dtsi"
+    extra_conf_files:
+    - "prj.conf"
+    - "craask.conf"

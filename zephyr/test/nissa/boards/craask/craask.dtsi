@@ -1,0 +1,82 @@
+/* Copyright 2022 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+#include "../generic_npcx.dts"
+#include "../../../../program/nissa/craask/cbi.dtsi"
+#include "../../../../program/nissa/craask/motionsense.dtsi"
+
+/ {
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+
+		int_lid_accel: ec_lid_accel {
+			irq-pin = <&gpio_acc_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "lid_accel_interrupt";
+		};
+		int_imu: ec_imu {
+			irq-pin = <&gpio_imu_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "motion_interrupt";
+		};
+		int_tablet_mode: tablet_mode {
+			irq-pin = <&gpio_tablet_mode_l>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "gmr_tablet_switch_isr";
+		};
+	};
+	named-gpios {
+		compatible = "named-gpios";
+
+		gpio_acc_int_l: acc_int_l {
+			gpios = <&gpio5 0 GPIO_INPUT>;
+		};
+		gpio_imu_int_l: imu_int_l {
+			gpios = <&gpio5 6 GPIO_INPUT>;
+		};
+		gpio_tablet_mode_l: tablet_mode_l {
+			gpios = <&gpio9 5 GPIO_INPUT>;
+			enum-name = "GPIO_TABLET_MODE_L";
+		};
+		gpio_voldn_btn_odl: voldn_btn_odl {
+			gpios = <&gpio9 3 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_VOLUME_DOWN_L";
+		};
+		gpio_volup_btn_odl: volup_btn_odl {
+			gpios = <&gpioa 2 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_VOLUME_UP_L";
+		};
+	};
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		i2c_ec_i2c_eeprom: ec_i2c_eeprom {
+			i2c-port = <&i2c_ctrl0>;
+			enum-names = "I2C_PORT_EEPROM";
+		};
+		i2c_ec_i2c_sensor: ec_i2c_sensor {
+			i2c-port = <&i2c_ctrl1>;
+			enum-names = "I2C_PORT_SENSOR";
+		};
+	};
+};
+
+&i2c_ctrl0 {
+	status = "okay";
+	compatible = "zephyr,i2c-emul-controller";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	#address-cells = <1>;
+	#size-cells = <0>;
+	reg = <0x400 4>;
+};
+
+&i2c_ctrl1 {
+	status = "okay";
+	compatible = "zephyr,i2c-emul-controller";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	#address-cells = <1>;
+	#size-cells = <0>;
+	reg = <0x500 4>;
+};
+
