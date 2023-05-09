@@ -70,11 +70,6 @@
 			gpios = <&gpioh 6 GPIO_OUTPUT_LOW>;
 		};
 
-		// POGO_PRSNT_INT_L  GPI5
-		pogo_prsnt_int_l: pogo_prsnt_int_l{
-			gpios = <&gpioi 5 GPIO_INPUT_PULL_DOWN>;
-		};
-
 		pg_pp4200_s5_od: pg-pp4200-s5-od {
 			gpios = <&gpiob 7 GPIO_OUTPUT_HIGH>;
 			enum-name = "GPIO_PG_PP4200_S5_OD";
@@ -217,6 +212,13 @@
 			power-gpio-pin = <&pmic_ec_resetb>;
 		};
 	};
+
+	named-adc-channels {
+		adc-base-det {
+			enum-name = "ADC_BASE_DET";
+			io-channels = <&adc0 5>;
+		};
+	};
 };
 
 &i2c0{
@@ -230,4 +232,8 @@
 		compatible = "parade,ps8743";
 		reg = <0x10>;
 	};
+};
+
+&adc0{
+	pinctrl-0 = <&adc0_ch5_gpi5_default>;
 };
