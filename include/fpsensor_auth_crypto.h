@@ -182,5 +182,23 @@ enum ec_error_list decrypt_data_with_ck_in_place(const uint8_t *ck,
 						 const uint8_t *iv,
 						 size_t iv_size, uint8_t *data,
 						 size_t data_size);
+/**
+ * Encrypt the data with a ECDH public key.
+ *
+ * @param[in] in_pubkey the input public key
+ * @param[out] out_pubkey the output public key
+ * @param[in,out] data the data to be encrypted
+ * @param[in] data_size the data size
+ * @param[out] iv the output IV
+ * @param[in] iv_size the IV size
+ *
+ * @return EC_SUCCESS on success
+ * @return EC_ERROR_INVAL on error
+ */
+enum ec_error_list
+encrypt_data_with_echd_key_in_place(const struct ec_fp_ec_public_key &in_pubkey,
+				    struct ec_fp_ec_public_key &out_pubkey,
+				    uint8_t *data, const size_t data_size,
+				    uint8_t *iv, size_t iv_size);
 
 #endif /* __CROS_EC_FPSENSOR_AUTH_CRYPTO_H */
