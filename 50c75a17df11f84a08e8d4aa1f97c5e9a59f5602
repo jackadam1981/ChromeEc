@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe75764_1fc01b4a",
+        "filename": "board/helipilot/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-09T00:02:34Z",
+      "side": 1,
+      "message": "It looks like this file was probably copied from `board/hatch_fp/board.c`. It appears to be missing:\n\n```\nint console_is_restricted(void)\n{\n\treturn system_is_locked();\n}\n```\n\nThis is needed for correct functionality of the restricted console commands.\n\nAlso, please add a `TODO(b/279096907)` comment in this file to remove duplication. Please start working on that next (before adding any new functionality). There are only very, very minor differences between the two files and if we don\u0027t resolve the duplication it\u0027s going to get harder and harder to do it later.",
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bff97e0_25b766e6",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-09T00:02:34Z",
+      "side": 1,
+      "message": "All `TODO`s need associated bugs (i.e., `TODO(b/123)`) so that we don\u0027t lose track of them.",
+      "range": {
+        "startLine": 250,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 28
+      },
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac1ead7c_be316107",
+        "filename": "board/helipilot/board_rw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-09T00:02:34Z",
+      "side": 1,
+      "message": "Same as `board.c`: very few differences from the file from which it was copied. Please add a `TODO` comment.",
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2ac5e7_f5c4b2ca",
+        "filename": "board/helipilot/board_rw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-09T00:02:34Z",
+      "side": 1,
+      "message": "This isn\u0027t a dragonclaw board. Does the same comment apply? Is the component mentioned also `U10` in the quincy schematic?",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2810c04_0177ceb7",
+        "filename": "board/helipilot/build.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-09T00:02:34Z",
+      "side": 1,
+      "message": "nit: not needed",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
