@@ -18,6 +18,12 @@ choice TEST_TARGET
 		bool "Tests for common.c"
 		help
 		  The test target that exercises nissa/src/common.c.
+
+	config TEST_NISSA_CRAASK
+		bool "Tests for Craask specific code"
+		help
+		  Enable tests for craask board. The test target that
+		  exercises nissa/craask/src.
 endchoice
 
 module = NISSA

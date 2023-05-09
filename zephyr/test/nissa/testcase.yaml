@@ -19,3 +19,10 @@ tests:
     - "charger.conf"
     extra_configs:
     - CONFIG_TEST_NISSA_COMMON=y
+
+  # Craask Board
+  nissa.craask:
+    extra_dtc_overlay_files:
+    - "boards/generic_npcx.dts"
+    extra_configs:
+    - CONFIG_TEST_NISSA_CRAASK=y
