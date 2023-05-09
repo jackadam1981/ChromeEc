@@ -18,19 +18,14 @@
 
 #define BASE_DETECT_INTERVAL (200 * MSEC)
 #define ATTACH_MAX_THRESHOLD_MV 300
-#define DETACH_MIN_THRESHOLD_MV 900
+#define DETACH_MIN_THRESHOLD_MV 3000
 
 static void base_update(bool attached)
 {
-	const struct gpio_dt_spec *en_cc_lid_base_pu =
-		GPIO_DT_FROM_NODELABEL(en_cc_lid_base_pu);
-
 	base_set_state(attached);
 	tablet_set_mode(!attached, TABLET_TRIGGER_BASE);
 
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_ppvar_base_x), attached);
-	gpio_pin_configure(en_cc_lid_base_pu->port, en_cc_lid_base_pu->pin,
-			   attached ? GPIO_OUTPUT_HIGH : GPIO_INPUT);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp3300_base_x), attached);
 }
 
 static void base_detect_tick(void);
