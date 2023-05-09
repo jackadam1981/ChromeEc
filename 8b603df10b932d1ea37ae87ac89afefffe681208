@@ -22,6 +22,30 @@
       },
       "revId": "8b603df10b932d1ea37ae87ac89afefffe681208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba32073_a0a08881",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 200
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T07:34:41Z",
+      "side": 1,
+      "message": "Done\nBut the unit test cannot be run on the device.\n```\n#ifdef BOARD_HOST\n#undef CONFIG_TEST_TASK_LIST\n#define CONFIG_TEST_TASK_LIST \\\n\tTASK_TEST(FPSENSOR, fp_task_simulate, NULL, TASK_STACK_SIZE)\n#endif\n```\nWill prevent the unit test to build.\n\nAnd I don\u0027t have a way to resolve that issue.",
+      "parentUuid": "0bc70dc3_7e8638db",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 0
+      },
+      "revId": "8b603df10b932d1ea37ae87ac89afefffe681208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
