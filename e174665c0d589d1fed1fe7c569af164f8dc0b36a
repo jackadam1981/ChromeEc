@@ -69,6 +69,24 @@
       "parentUuid": "ae9a21fe_ba353616",
       "revId": "e174665c0d589d1fed1fe7c569af164f8dc0b36a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc2b71f_318b4395",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-09T23:28:04Z",
+      "side": 1,
+      "message": "After cherry picking this CL (no other changes) and then running these \n\n$ git fetch cros\n$ git rebase cros/main\n\nI still see this error:\n\n  CHECK_ALLOWED build/metaknight/.config\n  *** 54248 bytes in flash and 100384 bytes in RAM still available on metaknight RO ****\n  *** 54128 bytes in flash and 100352 bytes in RAM still available on metaknight RW ****\nmake: *** [Makefile:19: build-eb431fee8906a82df10d00763af8d0dec6996d37] Error 2\n\n\nIt seems random as to whether it fails building metaknight or gooey, but this CL should not affect either.",
+      "parentUuid": "cc3b8e1b_67727ba4",
+      "revId": "e174665c0d589d1fed1fe7c569af164f8dc0b36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
