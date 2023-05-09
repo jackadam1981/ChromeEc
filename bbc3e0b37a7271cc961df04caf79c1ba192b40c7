@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "640bc13c_6091e7c4",
+        "filename": "zephyr/program/myst/myst/include/usb_mux_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-09T10:40:04Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "9d2aed31_6cd1eabe",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "bbc3e0b37a7271cc961df04caf79c1ba192b40c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "674403dd_facef766",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-05-08T18:22:49Z",
       "side": 1,
       "message": "if all the PPC options for C1 were set to `is-alt`\nwould we still need the memset?",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "bbc3e0b37a7271cc961df04caf79c1ba192b40c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d96048_48711d7d",
+        "filename": "zephyr/program/myst/myst/src/usb_mux_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-09T10:40:04Z",
+      "side": 1,
+      "message": "I guess no... Removing it. Keith please correct me if I\u0027m wrong",
+      "parentUuid": "674403dd_facef766",
       "range": {
         "startLine": 50,
         "startChar": 2,
