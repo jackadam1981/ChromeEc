@@ -330,6 +330,13 @@ test_mockable void clock_enable_module(enum module_id module, int enable)
 		else
 			STM32_RCC_APB2ENR &= ~STM32_RCC_APB2ENR_ADC1EN;
 		return;
+	} else if (module == MODULE_FAST_CPU) {
+		/* the PLL would be off in low power mode, disable it */
+		if (enable)
+			disable_sleep(SLEEP_MASK_PLL);
+		else
+			enable_sleep(SLEEP_MASK_PLL);
+		clock_set_osc(enable ? OSC_PLL : OSC_HSI);
 	}
 }
 
