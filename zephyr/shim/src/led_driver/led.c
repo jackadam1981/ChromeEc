@@ -202,6 +202,10 @@ static int match_node(int node_idx)
 {
 	/* Check if this node depends on power state */
 	if (node_array[node_idx].pwr_state != PWR_STATE_UNCHANGE) {
+		if (node_array[node_idx].pwr_state ==
+		    PWR_STATE_CHARGE_NEAR_FULL) {
+			charge_near_full = node_array[node_idx].batt_lvl[0];
+		}
 		enum charge_state pwr_state = charge_get_state();
 
 		if (node_array[node_idx].pwr_state != pwr_state)

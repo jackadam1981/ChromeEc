@@ -110,6 +110,8 @@ void led_set_color(enum led_color color, enum ec_led_id led_id);
  */
 void led_set_color_with_node(const struct led_pins_node_t *pins_node);
 
+extern int8_t charge_near_full;
+
 #ifdef TEST_BUILD
 const struct led_pins_node_t *led_get_node(enum led_color color,
 					   enum ec_led_id led_id);
