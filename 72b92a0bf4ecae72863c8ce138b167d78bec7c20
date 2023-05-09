@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df2ca5a2_56ffea69",
+        "filename": "crypto/elliptic_curve_key.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T02:34:14Z",
+      "side": 1,
+      "message": "The description of EC_KEY_generate_key doesn\u0027t guarantee that.\n```\n// EC_KEY_generate_key generates a random, private key, calculates the\n// corresponding public key and stores both in |key|. It returns one on success\n// or zero otherwise.\nOPENSSL_EXPORT int EC_KEY_generate_key(EC_KEY *key);\n```\n\nWe should not rely on the internal implementation.\n\n(And LTO should be able to optimize this.)",
+      "parentUuid": "486fedb6_d18e795f",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 2
+      },
+      "revId": "72b92a0bf4ecae72863c8ce138b167d78bec7c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ab1cd78_5d9a4f2a",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-08T18:56:33Z",
       "side": 1,
       "message": "Can you use `doxygen` formatting for the comment?\n\n```\n/**\n * Generate a p256 ECC key.\n * @return key on success, nullptr on failure \n */\n ```",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 71
+      },
+      "revId": "72b92a0bf4ecae72863c8ce138b167d78bec7c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acad4974_f9bcf503",
+        "filename": "include/crypto/elliptic_curve_key.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T02:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ab1cd78_5d9a4f2a",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a84be5_9d5b6851",
+        "filename": "test/boringssl_crypto.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T02:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f93504e6_36ae502a",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "72b92a0bf4ecae72863c8ce138b167d78bec7c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2b42fbc_f5f7f805",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-08T18:56:33Z",
       "side": 1,
       "message": "nit: extra space",
+      "range": {
+        "startLine": 54,
+        "startChar": 22,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "72b92a0bf4ecae72863c8ce138b167d78bec7c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c7955db_ba53b816",
+        "filename": "test/boringssl_crypto.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T02:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2b42fbc_f5f7f805",
       "range": {
         "startLine": 54,
         "startChar": 22,
