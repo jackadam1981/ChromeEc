@@ -186,7 +186,7 @@ DECLARE_IRQ(NPCX_IRQ_TWD_WKINTB_0, __gpio_wk0b_interrupt, 3);
 DECLARE_IRQ(NPCX_IRQ_WKINTC_0, __gpio_wk0c_interrupt, 3);
 DECLARE_IRQ(NPCX_IRQ_MTC_WKINTD_0, __gpio_rtc_interrupt, 3);
 DECLARE_IRQ(NPCX_IRQ_WKINTE_0, __gpio_host_interrupt, 3);
-DECLARE_IRQ(NPCX_IRQ_WKINTF_0, __gpio_wk0f_interrupt, 3);
+DECLARE_IRQ(NPCX_IRQ_WKINTF_0, __gpio_wk0f_interrupt, 1);
 DECLARE_IRQ(NPCX_IRQ_WKINTG_0, __gpio_wk0g_interrupt, 3);
 DECLARE_IRQ(NPCX_IRQ_WKINTH_0, __gpio_wk0h_interrupt, 3);
 DECLARE_IRQ(NPCX_IRQ_WKINTA_1, __gpio_wk1a_interrupt, 3);
