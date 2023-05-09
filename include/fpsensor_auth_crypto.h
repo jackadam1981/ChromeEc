@@ -142,4 +142,45 @@ enum ec_error_list generate_ecdh_shared_secret(const EC_KEY &private_key,
 					       uint8_t *shared_secret,
 					       uint8_t share_secret_size);
 
+/**
+ * Generate a ck that is derived from auth nonce, GSC nonce and pairing key.
+ *
+ * @param[in] auth_nonce the auth nonce
+ * @param[in] auth_nonce_size the size of auth nonce
+ * @param[in] gsc_nonce the auth nonce
+ * @param[in] gsc_nonce_size the size of gsc nonce
+ * @param[in] pairing_key the auth nonce
+ * @param[in] pairing_key_size the size of pairing key
+ * @param[in,out] ck the output key
+ * @param[in] ck_size the output key size
+ *
+ * @return EC_SUCCESS on success
+ * @return EC_ERROR_INVAL on error
+ */
+enum ec_error_list generate_ck(const uint8_t *auth_nonce,
+			       size_t auth_nonce_size, const uint8_t *gsc_nonce,
+			       size_t gsc_nonce_size,
+			       const uint8_t *pairing_key,
+			       size_t pairing_key_size, uint8_t *ck,
+			       size_t ck_size);
+
+/**
+ * Decrypt the data in place with a ck.
+ *
+ * @param[in] ck the CK
+ * @param[in] ck_size the size of CK
+ * @param[in] iv the IV of the encrypted data
+ * @param[in] iv_size the size of the IV
+ * @param[in,out] data the encrypted data
+ * @param[in] data_size the output data size
+ *
+ * @return EC_SUCCESS on success
+ * @return EC_ERROR_INVAL on error
+ */
+enum ec_error_list decrypt_data_with_ck_in_place(const uint8_t *ck,
+						 size_t ck_size,
+						 const uint8_t *iv,
+						 size_t iv_size, uint8_t *data,
+						 size_t data_size);
+
 #endif /* __CROS_EC_FPSENSOR_AUTH_CRYPTO_H */
