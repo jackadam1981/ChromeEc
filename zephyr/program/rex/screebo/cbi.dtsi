@@ -12,18 +12,35 @@
 		 */
 		usb-db {
 			enum-name = "FW_USB_DB";
-			start = <4>;
+			start = <3>;
 			size = <3>;
 
 			io-db-usb3 {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_USB_DB_USB3";
-				value = <0>;
+				value = <1>;
 			};
 			io-db-usb4-hayden {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_USB_DB_USB4_HB";
+				value = <2>;
+				default;
+			};
+		};
+		usb-mb {
+			enum-name = "FW_USB_MB";
+			start = <6>;
+			size = <3>;
+
+			io-mb-usb3 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_USB_MB_USB3";
 				value = <1>;
+			};
+			io-mb-usb4-hayden {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_USB_MB_USB4_HB";
+				value = <2>;
 				default;
 			};
 		};
