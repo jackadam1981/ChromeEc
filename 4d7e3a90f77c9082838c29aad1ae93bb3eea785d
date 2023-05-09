@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bb59a9f_497243c3",
+        "filename": "board/boxy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-05-09T08:23:15Z",
+      "side": 1,
+      "message": "How is the value \"113\" be determined? Is there any hardware dependency? Can you confirm the hardware design is exactly the same as Dibbi so you can reuse the value here?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "4d7e3a90f77c9082838c29aad1ae93bb3eea785d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
