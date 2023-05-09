@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ad0899_771c9846",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-09T06:33:00Z",
+      "side": 1,
+      "message": "added and comments removed",
+      "parentUuid": "a0f5c952_b7bb4d55",
+      "range": {
+        "startLine": 244,
+        "startChar": 33,
+        "endLine": 244,
+        "endChar": 36
+      },
+      "revId": "2eedbb9a7d5f33b7d9669dabfc4d80107ba75f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e87ba5b_9a25c7db",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-05-08T15:39:50Z",
       "side": 1,
       "message": "could/should this just be an \"elif\"?",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 0
+      },
+      "revId": "2eedbb9a7d5f33b7d9669dabfc4d80107ba75f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e011bb88_bcf8bd7b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-09T06:33:00Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "0e87ba5b_9a25c7db",
       "range": {
         "startLine": 349,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eed963e4_4aeb743e",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-09T06:33:00Z",
+      "side": 1,
+      "message": "dest removed",
+      "parentUuid": "dac33ff7_ed27413e",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 34
+      },
+      "revId": "2eedbb9a7d5f33b7d9669dabfc4d80107ba75f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd89bdfb_3d00bfa2",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-05-08T15:39:50Z",
       "side": 1,
       "message": "ec_image_to_flash, options should normally be all lowercase",
+      "range": {
+        "startLine": 416,
+        "startChar": 11,
+        "endLine": 416,
+        "endChar": 28
+      },
+      "revId": "2eedbb9a7d5f33b7d9669dabfc4d80107ba75f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b66d66_95acbc1b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 22
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-09T06:33:00Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "dd89bdfb_3d00bfa2",
       "range": {
         "startLine": 416,
         "startChar": 11,
