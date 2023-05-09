@@ -22,6 +22,30 @@
       },
       "revId": "205ba5ff592e8d7d50d72de503c69061803282d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a5d9505_73283218",
+        "filename": "include/charge_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-05-09T19:06:05Z",
+      "side": 1,
+      "message": "Oh dear, I missed power state.\n\nBut we have enum charge_state_v2, which I want to rename to charge_state.\n\nIf this really just relates to LEDs, could we use something like enum led_pwr_state ?",
+      "parentUuid": "80833f6a_dd017c75",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 14
+      },
+      "revId": "205ba5ff592e8d7d50d72de503c69061803282d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
