@@ -69,6 +69,24 @@
       "parentUuid": "2e7631db_6ee13c5f",
       "revId": "10139944d9ec7df4e234b3d5423bd4761a706086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc81edc_20776b8e",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2023-05-09T04:23:02Z",
+      "side": 1,
+      "message": "No, we do not support batteryless restarts of shipped devices.\nBecause of the 2.6V residual voltage during reset,  caused EC misjudgment as DC mode even not connect the battery.",
+      "parentUuid": "d34b168e_f3a1bbcc",
+      "revId": "10139944d9ec7df4e234b3d5423bd4761a706086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
