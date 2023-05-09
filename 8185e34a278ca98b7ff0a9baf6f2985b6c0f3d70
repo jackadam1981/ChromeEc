@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d66b159_15450d23",
+        "filename": "docs/case_closed_debugging_gsc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-05-09T01:28:14Z",
+      "side": 1,
+      "message": "Are we supposed to explicitly `sudo` futility from the chroot?  Make the two example lines consistent about it.",
+      "range": {
+        "startLine": 407,
+        "startChar": 15,
+        "endLine": 407,
+        "endChar": 19
+      },
+      "revId": "8185e34a278ca98b7ff0a9baf6f2985b6c0f3d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36df9e44_9586d0ac",
+        "filename": "docs/case_closed_debugging_gsc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-05-09T01:28:14Z",
+      "side": 1,
+      "message": "I see you properly matched the prior `flashrom` command, but I think it was wrong in the first place.  This is intended to go through Servo, right?\n\n(Based on this line specifying \"chroot\" and also based on the command above going through Servo.)",
+      "revId": "8185e34a278ca98b7ff0a9baf6f2985b6c0f3d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73adb3e2_d22b2fb4",
+        "filename": "docs/ccd_howtos.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-05-09T01:28:14Z",
+      "side": 1,
+      "message": "ditto here about whether \"sudo\" should be specified",
+      "revId": "8185e34a278ca98b7ff0a9baf6f2985b6c0f3d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
