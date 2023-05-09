@@ -34,6 +34,7 @@
 #include "usb_pd.h"
 #include "util.h"
 
+int8_t charge_near_full = -1;
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
@@ -2278,9 +2279,14 @@ bool charge_prevent_power_on(bool power_button_pressed)
 
 static int battery_near_full(void)
 {
-	if (charge_get_percent() < BATTERY_LEVEL_NEAR_FULL)
-		return 0;
-
+	if (charge_near_full > 0) {
+		if (DIV_ROUND_NEAREST(charge_get_display_charge(), 10) <
+			charge_near_full)
+			return 0;
+	} else {
+		if (charge_get_percent() < BATTERY_LEVEL_NEAR_FULL)
+			return 0;
+	}
 #ifdef CONFIG_EC_EC_COMM_BATTERY_CLIENT
 	if (charge_base > -1 && charge_base < BATTERY_LEVEL_NEAR_FULL)
 		return 0;

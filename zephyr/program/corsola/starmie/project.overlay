@@ -12,11 +12,11 @@
 #include "../ite_i2c.dtsi"
 #include "../ite_interrupts.dtsi"
 #include "../ite_keyboard.dtsi"
-#include "../ite_led.dtsi"
 #include "../ite_usbc.dtsi"
 #include "../ite_shi.dtsi"
 #include <cros/thermistor/thermistor.dtsi>
 #include <dt-bindings/motionsense/utils.h>
+#include <dt-bindings/battery.h>
 
 / {
 	batteries {
@@ -217,6 +217,184 @@
 			power-gpio-pin = <&pmic_ec_resetb>;
 		};
 	};
+
+	led-colors {
+		compatible = "cros-ec,led-policy";
+
+		/* STARMIE LED bat charge */
+		bat-power-state-charge {
+			charge-state = "PWR_STATE_CHARGE";
+			/* Battery percent range (>= Empty, <= 94%) */
+			batt-lvl = <BATTERY_LEVEL_EMPTY
+				   (BATTERY_LEVEL_NEAR_FULL - 3)>;
+			color-0 {
+				led-color = <&color_amber>;
+			};
+		};
+
+		bat-power-state-charge-near-full {
+			charge-state = "PWR_STATE_CHARGE_NEAR_FULL";
+			/* Battery percent range (>= 95%, <= Full) */
+			batt-lvl = <(BATTERY_LEVEL_NEAR_FULL - 2)
+				     BATTERY_LEVEL_FULL>;
+			color-0 {
+				led-color = <&color_white>;
+			};
+		};
+
+		/* STARMIE LED bat discharge */
+		bat-power-state-discharge {
+			charge-state = "PWR_STATE_DISCHARGE";
+			chipset-state = "POWER_S0";
+			/* Battery percent range (>= 11%, <= Full) */
+			batt-lvl = <(BATTERY_LEVEL_LOW + 1) BATTERY_LEVEL_FULL>;
+
+			color-0 {
+				led-color = <&color_white>;
+			};
+		};
+
+		bat-power-state-discharge-s3 {
+			charge-state = "PWR_STATE_DISCHARGE";
+			chipset-state = "POWER_S3";
+
+			color-0 {
+				led-color = <&color_white>;
+				period-ms = <1000>;
+			};
+
+			color-1 {
+				led-color = <&color_off>;
+				period-ms = <3000>;
+			};
+		};
+
+		bat-power-state-discharge-s5 {
+			charge-state = "PWR_STATE_DISCHARGE";
+
+			chipset-state = "POWER_S5";
+			color-0 {
+				led-color = <&color_off>;
+			};
+		};
+
+		/* STARMIE LED low bat discharge */
+		bat-power-state-discharge-s0-bat-low {
+			charge-state = "PWR_STATE_DISCHARGE";
+			chipset-state = "POWER_S0";
+			batt-lvl = <BATTERY_LEVEL_EMPTY BATTERY_LEVEL_LOW>;
+
+			color-0 {
+				led-color = <&color_amber>;
+				period-ms = <1000>;
+			};
+
+			color-1 {
+				led-color = <&color_off>;
+				period-ms = <3000>;
+			};
+		};
+
+		/* STARMIE LED bat error */
+		bat-power-state-error {
+			charge-state = "PWR_STATE_ERROR";
+			chipset-state = "POWER_S0";
+
+			color-0 {
+				led-color = <&color_amber>;
+				period-ms = <1000>;
+			};
+
+			color-1 {
+				led-color = <&color_off>;
+				period-ms = <1000>;
+			};
+		};
+
+		bat-power-state-error-s3 {
+			charge-state = "PWR_STATE_ERROR";
+			chipset-state = "POWER_S3";
+
+			color-0 {
+				led-color = <&color_white>;
+				period-ms = <1000>;
+			};
+
+			color-1 {
+				led-color = <&color_off>;
+				period-ms = <1000>;
+			};
+		};
+
+		bat-power-state-error-s5 {
+			charge-state = "PWR_STATE_ERROR";
+			chipset-state = "POWER_S5";
+
+			color-0 {
+				led-color = <&color_white>;
+				period-ms = <1000>;
+			};
+
+			color-1 {
+				led-color = <&color_off>;
+				period-ms = <1000>;
+			};
+		};
+	};
+
+	pwmleds {
+		compatible = "pwm-leds";
+
+		led_amber: ec_led1_odl {
+			pwms = <&pwm0 PWM_CHANNEL_0 PWM_HZ(324) PWM_POLARITY_INVERTED>;
+		};
+
+		led_white: ec_led2_odl {
+			pwms = <&pwm1 PWM_CHANNEL_1 PWM_HZ(324) PWM_POLARITY_INVERTED>;
+		};
+	};
+
+	pwm-led-pins {
+		compatible = "cros-ec,pwm-led-pins";
+
+		battery_led: battery-led {
+			led-id = "EC_LED_ID_BATTERY_LED";
+			led-pwms = <&led_amber &led_white>;
+
+			color_off: color-off {
+				led-color = "LED_OFF";
+				led-values = <0 0>;
+			};
+
+			color_amber: color-amber {
+				led-color = "LED_AMBER";
+				br-color = "EC_LED_COLOR_AMBER";
+				led-values = <100 0>;
+			};
+
+			color_white: color_white {
+				led-color = "LED_BLUE";
+				br-color = "EC_LED_COLOR_BLUE";
+				led-values = <0 100>;
+			};
+		};
+	};
+};
+
+/* LED1 */
+&pwm0 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C4>;
+	pinctrl-0 = <&pwm0_gpa0_default>;
+	pinctrl-names = "default";
+};
+
+/* LED2 */
+&pwm1 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C4>;
+	pinctrl-0 = <&pwm1_gpa1_default>;
+	pinctrl-names = "default";
 };
 
 &i2c0{
