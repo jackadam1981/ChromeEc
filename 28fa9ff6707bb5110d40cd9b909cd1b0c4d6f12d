@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5761a57b_023a979e",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-09T21:09:44Z",
+      "side": 1,
+      "message": "Is this register also R/O?",
+      "revId": "28fa9ff6707bb5110d40cd9b909cd1b0c4d6f12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
