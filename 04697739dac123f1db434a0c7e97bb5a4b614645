@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f728b74a_6ddbe1f4",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T03:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c1d4e56_8598d47e",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 34
+      },
+      "revId": "04697739dac123f1db434a0c7e97bb5a4b614645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5ec69a3_cff7386e",
@@ -60,6 +84,30 @@
       "writtenOn": "2023-05-08T22:19:35Z",
       "side": 1,
       "message": "Let\u0027s use `std::array` since it\u0027s C++.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 53
+      },
+      "revId": "04697739dac123f1db434a0c7e97bb5a4b614645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abdabbeb_bdb5818f",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T03:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d01c755_1c625323",
       "range": {
         "startLine": 173,
         "startChar": 1,
@@ -116,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43072a02_cc683176",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T03:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ac690b4_c59ae35f",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 20
+      },
+      "revId": "04697739dac123f1db434a0c7e97bb5a4b614645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c86d2a3d_6d53cae2",
@@ -129,6 +201,30 @@
       "writtenOn": "2023-05-08T22:19:35Z",
       "side": 1,
       "message": "Let\u0027s use `std::array` since it\u0027s C++.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 72
+      },
+      "revId": "04697739dac123f1db434a0c7e97bb5a4b614645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2375f693_f621b022",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T03:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c86d2a3d_6d53cae2",
       "range": {
         "startLine": 149,
         "startChar": 0,
