@@ -8,6 +8,12 @@ config TEST_BOARD_USB_MUX_CONFIG
 	  Include usb_mux_config.c into the binary and test their
 	  functions.
 
+config TEST_SCREEBO_USB_CONFIG
+	bool "Run the tests intended for rex/screebo/src/usb_config.c"
+	help
+	  Include rex/screebo/src/usb_config.c into the binary and test their
+	  functions.
+
 config TEST_USB_PD_POLICY
 	bool "Run the tests intended for usb_pd_policy"
 	help
@@ -43,6 +49,18 @@ config TEST_DISABLE_AP_PWRSEQ
 	help
 	  This is used to disable CONFIG_AP_PWRSEQ for testing purposes
 	  directly.
+
+config PLATFORM_EC_TCPC_INTERRUPT
+	bool "Enables tcpc driver"
+	help
+	  This is used to enable CONFIG_PLATFORM_EC_TCPC_INTERRUPT for testing
+	  purposes directly.
+
+config PLATFORM_EC_USB_PD_TCPC_RUNTIME_CONFIG
+	bool "Enables tcpc runtime config"
+	help
+	  This is used to enable USB_PD_TCPC_RUNTIME_CONFIG for testing
+	  purposes directly.
 
 module = REX
 module-str = Rex board-specific code
