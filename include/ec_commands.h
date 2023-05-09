@@ -7840,6 +7840,8 @@ struct ec_params_fp_nonce_context {
 	uint8_t enc_user_id_iv[FP_CONTEXT_USERID_IV_LEN];
 } __ec_align4;
 
+#define FP_ELLIPTIC_CURVE_PUBLIC_KEY_IV_LEN 16
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 
