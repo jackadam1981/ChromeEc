@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bbe6385_9177402c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 188
+      },
+      "lineNbr": 7818,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T04:57:20Z",
+      "side": 1,
+      "message": "Done\nThe downside of using typedef is the \"type\" of these two objects would not be the same in \"C\". One requires the \"struct\" prefix, and the other cannot use that prefix.\n`struct ec_response_fp_establish_pairing_key_wrap` \u0026 `ec_params_fp_load_pairing_key`",
+      "parentUuid": "e8878dec_20c7f386",
+      "range": {
+        "startLine": 7818,
+        "startChar": 3,
+        "endLine": 7818,
+        "endChar": 79
+      },
+      "revId": "376db25d75e3feb82cf23bfafc11cfa4256ee0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0584ac13_09fe7c86",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-08T20:55:00Z",
       "side": 1,
       "message": "I haven\u0027t looked at this closely, but does any of the new code you added for dealing with keys work for this? (e.g., `fill_pubkey`, etc.)",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 36
+      },
+      "revId": "376db25d75e3feb82cf23bfafc11cfa4256ee0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a3c7aab_c3becf19",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 188
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T04:57:20Z",
+      "side": 1,
+      "message": "There is no corresponding part in the `fpsensor_auth_crypto`.\nThe only thing we can do is providing a fixed public key.",
+      "parentUuid": "0584ac13_09fe7c86",
       "range": {
         "startLine": 477,
         "startChar": 0,
