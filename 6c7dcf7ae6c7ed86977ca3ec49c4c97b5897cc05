@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "488dd413_d766169b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1965,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-09T21:52:54Z",
+      "side": 1,
+      "message": "That seemed to work, these lines are not executable any more. (see the color of the line number here in gerrit)",
+      "range": {
+        "startLine": 1962,
+        "startChar": 1,
+        "endLine": 1965,
+        "endChar": 63
+      },
+      "revId": "6c7dcf7ae6c7ed86977ca3ec49c4c97b5897cc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
