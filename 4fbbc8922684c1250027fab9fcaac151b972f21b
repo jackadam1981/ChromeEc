@@ -105,6 +105,24 @@
       "parentUuid": "8d082015_ef2ee4ab",
       "revId": "4fbbc8922684c1250027fab9fcaac151b972f21b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebb27b74_b914a751",
+        "filename": "zephyr/program/nissa/yaviks/src/usbc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2023-05-09T08:58:38Z",
+      "side": 1,
+      "message": "This is not work if I used `charger_set_input_current_limit`. \nLook likes ocpc need `curr.desired_input_current` parameter inside `charge_set_input_current_limit(charge_ma, charge_mv)`.",
+      "parentUuid": "102988a6_90990b4f",
+      "revId": "4fbbc8922684c1250027fab9fcaac151b972f21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
