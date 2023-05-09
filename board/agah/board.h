@@ -157,6 +157,7 @@
 
 /* Give SEQ_EC_DSW_PWROK higher priority to reduce latency for PCH_PWROK. */
 #define NPCX_MIWU0_GROUP_F 1
+#define NPCX_MIWU0_GROUP_H 1
 
 #ifndef __ASSEMBLER__
 
