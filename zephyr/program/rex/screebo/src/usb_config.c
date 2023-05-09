@@ -26,6 +26,7 @@
 LOG_MODULE_REGISTER(screebo, LOG_LEVEL_INF);
 
 uint32_t usb_db_type;
+uint32_t usb_mb_type;
 
 void screebo_ppc_interrupt(enum gpio_signal signal)
 {
@@ -82,3 +83,30 @@ static void setup_alt_db(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, setup_alt_db, HOOK_PRIO_POST_I2C);
+
+static void setup_mb_usb(void)
+{
+	int ret;
+
+	ret = cros_cbi_get_fw_config(FW_USB_MB, &usb_mb_type);
+	if (ret != 0) {
+		LOG_ERR("USB MB: Failed to get FW_USB_MB from CBI");
+		usb_mb_type = -1;
+		return;
+	}
+
+	if (usb_mb_type == FW_USB_MB_USB3) {
+		LOG_INF("USB MB: C0 port is USB3");
+		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_usb3_port0);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, setup_mb_usb, HOOK_PRIO_POST_I2C);
+
+__override bool board_is_tbt_usb4_port(int port)
+{
+	/* Both C0 and C1 are USB4 port */
+	if (usb_mb_type == FW_USB_MB_USB4_HB)
+		return true;
+
+	return false;
+}
