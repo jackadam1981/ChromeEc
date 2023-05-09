@@ -16,6 +16,24 @@
       "message": "Is this register also R/O?",
       "revId": "28fa9ff6707bb5110d40cd9b909cd1b0c4d6f12d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "107c8125_a6af0c05",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-05-09T21:17:47Z",
+      "side": 1,
+      "message": "This is confusing, but the actual register is `TCPC_REG_CONFIG_EXT_1` which is RW.",
+      "parentUuid": "5761a57b_023a979e",
+      "revId": "28fa9ff6707bb5110d40cd9b909cd1b0c4d6f12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
