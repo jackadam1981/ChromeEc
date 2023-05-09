@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d17b152_e3d430c5",
+        "filename": "test/unaligned_access.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-09T15:10:41Z",
+      "side": 1,
+      "message": "It might be helpful to explicitly test that the performance is similar (i.e. `TEST_NEAR(t1-t0, t3-t2, epsilon, \"%d\");`). Otherwise it is unlikely that we\u0027ll notice any changes right away.",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "09624c7e08c1f85d0051ffe95b387fa6505e5fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
