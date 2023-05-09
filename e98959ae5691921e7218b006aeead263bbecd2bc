@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f04ac33_5005d6bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-09T20:46:52Z",
+      "side": 1,
+      "message": "All comments are nit-ish but I feel keeping some level of description in a log is important (for those who don\u0027t know SSM to guess what\u0027s going on.)",
+      "revId": "e98959ae5691921e7218b006aeead263bbecd2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219476d8_633db89c",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-09T20:46:52Z",
+      "side": 1,
+      "message": "Or remove all? Is there any ambiguity?",
+      "range": {
+        "startLine": 109,
+        "startChar": 13,
+        "endLine": 109,
+        "endChar": 16
+      },
+      "revId": "e98959ae5691921e7218b006aeead263bbecd2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73d19560_c9010ade",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-09T20:46:52Z",
+      "side": 1,
+      "message": "Post Panic SSM? I can\u0027t think of other meanings of SSM used in EC or AP.",
+      "range": {
+        "startLine": 137,
+        "startChar": 15,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "e98959ae5691921e7218b006aeead263bbecd2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a4ad8a_fe1eba41",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-09T20:46:52Z",
+      "side": 1,
+      "message": "Can we call it SSM?",
+      "range": {
+        "startLine": 153,
+        "startChar": 54,
+        "endLine": 153,
+        "endChar": 64
+      },
+      "revId": "e98959ae5691921e7218b006aeead263bbecd2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "881c80c8_f5bea754",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-09T20:46:52Z",
+      "side": 1,
+      "message": "SSM?",
+      "range": {
+        "startLine": 176,
+        "startChar": 24,
+        "endLine": 176,
+        "endChar": 33
+      },
+      "revId": "e98959ae5691921e7218b006aeead263bbecd2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "601992c6_bc784c06",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-09T20:46:52Z",
+      "side": 0,
+      "message": "This isn\u0027t necessary but looks very informative... How about \"safe mode TO (%d ms)\\n\"? I think \u0027TO\u0027 is commonly used. Or \"SSM timeout (%d ms)\\n\".",
+      "range": {
+        "startLine": 83,
+        "startChar": 7,
+        "endLine": 83,
+        "endChar": 43
+      },
+      "revId": "faa0c7623c23544cc5cac4928394b9099e10d2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
