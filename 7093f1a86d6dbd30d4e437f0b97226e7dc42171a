@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df1f18cc_311658ae",
+        "filename": "zephyr/program/myst/usbc.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-09T14:11:24Z",
+      "side": 1,
+      "message": "You should omit these properties. Otherwise, the TCPC and PPC shims will allocate storage for these devices twice.\n\nIdeally, we should also provide \"is-alt\" support for the BC1.2 driver as well but for now you still need this property.",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "7093f1a86d6dbd30d4e437f0b97226e7dc42171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

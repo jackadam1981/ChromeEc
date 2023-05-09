@@ -110,6 +110,30 @@
       },
       "revId": "bbc3e0b37a7271cc961df04caf79c1ba192b40c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f2df7f2_f2c789b2",
+        "filename": "zephyr/program/myst/myst/src/usb_mux_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-09T14:11:24Z",
+      "side": 1,
+      "message": "I believe the memset could be eliminated.  Note that in addition to setting `is-alt` on all PPCs/TCPCs for port 1, the `named-usbc-port` for port 1 needs to omit both the `ppc` and `tcpc` properties.",
+      "parentUuid": "674403dd_facef766",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "bbc3e0b37a7271cc961df04caf79c1ba192b40c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
