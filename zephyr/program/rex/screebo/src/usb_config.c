@@ -23,6 +23,19 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
 
+#ifdef CONFIG_ZTEST
+
+#undef USB_MUX_ENABLE_ALTERNATIVE
+#define USB_MUX_ENABLE_ALTERNATIVE(x)
+
+#undef TCPC_ENABLE_ALTERNATE_BY_NODELABEL
+#define TCPC_ENABLE_ALTERNATE_BY_NODELABEL(x, y)
+
+#undef PPC_ENABLE_ALTERNATE_BY_NODELABEL
+#define PPC_ENABLE_ALTERNATE_BY_NODELABEL(x, y)
+
+#endif /* CONFIG_ZTEST */
+
 LOG_MODULE_REGISTER(screebo, LOG_LEVEL_INF);
 
 uint32_t usb_db_type;
