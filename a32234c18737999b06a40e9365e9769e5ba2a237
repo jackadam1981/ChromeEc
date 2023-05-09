@@ -312,6 +312,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2072277e_cf5104e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-09T04:44:31Z",
+      "side": 1,
+      "message": "`ALLOW_CONFIG\u003d1 compare_build.sh -b all` is still failing on ToT\n\n\"You probably need to update and rebase on latest main.\"\nShouldn\u0027t `repo sync` be sufficient for this? The fix CL (go/crvc/4490505) was merged 4/28, so today\u0027s `repo sync` should include it.",
+      "parentUuid": "22f0e509_0fd6a3b3",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cf3895a_7645ed77",
         "filename": "include/trng.h",
         "patchSetId": 1
