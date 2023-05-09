@@ -57,6 +57,24 @@
       "parentUuid": "60323656_5f36c8b4",
       "revId": "eb9d00200788243958290c0429582e9b67bf7d04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd67544_0982e85b",
+        "filename": "zephyr/program/skyrim/winterhold/motionsense.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-05-09T15:56:22Z",
+      "side": 1,
+      "message": "To reduce noise, 400Hz is not recommended. The documentation suggests 50Hz ODR.",
+      "parentUuid": "a922b9cb_b5b03609",
+      "revId": "eb9d00200788243958290c0429582e9b67bf7d04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
