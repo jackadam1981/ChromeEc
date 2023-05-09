@@ -22,6 +22,30 @@
       },
       "revId": "7093f1a86d6dbd30d4e437f0b97226e7dc42171a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "087cd008_0d5ae3e0",
+        "filename": "zephyr/program/myst/usbc.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-09T14:31:35Z",
+      "side": 1,
+      "message": "If I just omit those - static assert is failing: \n```\n/mnt/host/source/src/platform/ec/zephyr/shim/src/tcpc.c:129:1: note: in expansion of macro \u0027BUILD_ASSERT\u0027\n  129 | BUILD_ASSERT(ARRAY_SIZE(tcpc_config) \u003d\u003d CONFIG_USB_PD_PORT_MAX_COUNT);\n```",
+      "parentUuid": "df1f18cc_311658ae",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "7093f1a86d6dbd30d4e437f0b97226e7dc42171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
