@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ec4f9c_62d84ddb",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-09T16:46:17Z",
+      "side": 1,
+      "message": "Is there any point in retrying if the response is not correct?  Specifically, once the ROM/loader returns 0x80 in the response, seems like you can stop.\n\nAlso, I see that on failures, the expected response length is 6 bytes (command + status + crc32).  Flushing the input buffer seems like a good idea.\n\n```\nrf_cont_disp \u003d uart_handle.read(RESPONSE_LENGTH)\nif len(rf_cont_disp) \u003d\u003d 0:\n    # retry logic...\n    continue\n    \nif rf_cont_disp !\u003d resp_bytes:\n    # log error\n    uart_handle.reset_input_buffer()\n    sys.exit(1)\n    \noffset \u003d offset + program_length\n```",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 38
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "944ef889_475bb978",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-09T16:46:17Z",
+      "side": 1,
+      "message": "`for i in range()` already increments i for you.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 17
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edaf478_ca30154a",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-09T16:46:17Z",
+      "side": 1,
+      "message": "`construct_write_packet` seems like a better name.",
+      "range": {
+        "startLine": 306,
+        "startChar": 4,
+        "endLine": 306,
+        "endChar": 16
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57cd6e51_5c64707b",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-09T16:46:17Z",
+      "side": 1,
+      "message": "Can you add a check that `length \u003e\u003d 1` since that is a requirement of HEADER_IMAGE_WRITE and FW_IMAGE_WRITE?",
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d15f8f_944bfce6",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-09T16:46:17Z",
+      "side": 1,
+      "message": "Note - if the command returns an unexpected response, this code will keep retrying without incrementing the counter.\n\nIf the response doesn\u0027t match, should this return False immediately?",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 23
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a11b63fb_fffdb58a",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-09T16:46:17Z",
+      "side": 1,
+      "message": "You can use `add_mutually_exclusive_group` for the `-s` and `-e` options.\n\nExample here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/zmake/zmake/__main__.py;l\u003d278",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 0
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd0da012_8d59cb56",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-09T16:46:17Z",
+      "side": 1,
+      "message": "This isn\u0027t needed. `parse_args()` handles catches this error because the `--uart-port` argument is required.",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 0
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69131e4f_02243704",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-09T16:46:17Z",
+      "side": 1,
+      "message": "This can be eliminated if you use `add_mutually_exclusive_group`.",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 0
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
