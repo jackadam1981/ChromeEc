@@ -404,14 +404,14 @@ To determine if the board you are using has this issue:
 1.  Check if hardware write protect disabled when the AP is off:
 
     ```bash
-    (chroot) $ sudo flashrom -p raiden_debug_spi:target=AP --wp-status
+    (chroot) $ sudo futility flash --wp-status --servo
     ```
 
 1.  If the last command shows that hardware write protect is still enabled when
     the AP is off, then you need to disable software write protect:
 
     ```bash
-    (chroot) $ flashrom -p host --wp-disable
+    (chroot) $ futility flash --wp-disable
     ```
 
 ## Control Hardware Write Protect {#hw-wp}

@@ -260,13 +260,13 @@ Cr50 will disable write protect if you remove the battery.
 
 4.  (optional) Check write protect is disabled from the AP.
 
-                AP > flashrom --wp-status
+                AP > futility flash --wp-status
 
 5.  (optional) Reconnecting the battery will reenable write protect. You can
     disable SW write protect if you want to be able to rewrite RO firmware
     without needing to keep the battery disconnected.
 
-                AP > flashrom -p host --wp-disable
+                AP > futility flash --wp-disable
 
 6.  **(recommended) Run some basic commands to setup CCD.** It's really easy to
     open cr50 with the battery removed. You might want to setup CCD while you
@@ -349,11 +349,11 @@ It goes into a lot more detail.
 
     From AP (after reentering dev mode):
 
-                AP > flashrom --wp-status
+                AP > futility flash --wp-status
 
     Using CCD:
 
-                from chroot > flashrom -p raiden_debug_spi:target=AP --wp-status
+                from chroot > futility flash --wp-status --servo
 
 5.  **(recommended) Setup capabilities**, so you can flash the device or open
     ccd without being able to boot the AP.
@@ -372,7 +372,7 @@ It goes into a lot more detail.
 6.  **(recommended) [Disable SW WP]** to flash RO firmware if your board has
     issues disabling HW WP with the AP off.
 
-                AP > flashrom -p host --wp-disable
+                AP > futility flash --wp-disable
 
 [Disable SW WP]: ./case_closed_debugging_gsc.md#AP-Off
 [enter dev mode]: ./case_closed_debugging_gsc.md#enter-dev-mode
