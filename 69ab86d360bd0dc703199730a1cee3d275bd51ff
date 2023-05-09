@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1d85c33_37f93153",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T03:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9d651d9_5087ab4a",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 34
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5958838a_5d9a08fe",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "905884e3_774c261f",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T03:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "584dff64_9d015f2e",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bd64348_d67f0603",
@@ -83,6 +131,30 @@
       "writtenOn": "2023-05-08T20:20:51Z",
       "side": 1,
       "message": "Let\u0027s use `std::copy` since it\u0027s C++.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd486983_4d129c54",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T03:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bd64348_d67f0603",
       "range": {
         "startLine": 107,
         "startChar": 1,
@@ -116,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf38e96c_f1af7c53",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T03:16:00Z",
+      "side": 1,
+      "message": "Done in crrev.com/c/4511815.",
+      "parentUuid": "3f67bd33_f6ddb2a9",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 70
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f102691_d3289753",
@@ -139,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8df54fd2_82073237",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T03:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f102691_d3289753",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 53
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c349f99e_03c9e52b",
@@ -152,6 +272,30 @@
       "writtenOn": "2023-05-08T20:20:51Z",
       "side": 1,
       "message": "Unresolved `TODO`.",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 70
+      },
+      "revId": "69ab86d360bd0dc703199730a1cee3d275bd51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3cf2db4_3c319954",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T03:16:00Z",
+      "side": 1,
+      "message": "Done in crrev.com/c/4511815.",
+      "parentUuid": "c349f99e_03c9e52b",
       "range": {
         "startLine": 141,
         "startChar": 1,
