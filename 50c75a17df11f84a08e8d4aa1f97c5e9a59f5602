@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e358155_409c7641",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-09T15:52:30Z",
+      "side": 1,
+      "message": "This will likely break CQs if we don\u0027t also add add `CONFIG_FW_MRIDER` to [config_allowed.txt](http://go/cros-ec-readme/+/refs/changes/46/4451646/10/util/config_allowed.txt)",
+      "range": {
+        "startLine": 254,
+        "startChar": 8,
+        "endLine": 254,
+        "endChar": 24
+      },
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6bff97e0_25b766e6",
         "filename": "board/helipilot/board.h",
         "patchSetId": 10
@@ -71,6 +94,30 @@
       "writtenOn": "2023-05-09T00:02:34Z",
       "side": 1,
       "message": "This isn\u0027t a dragonclaw board. Does the same comment apply? Is the component mentioned also `U10` in the quincy schematic?",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f37dd607_248e4a2e",
+        "filename": "board/helipilot/board_rw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-09T15:52:30Z",
+      "side": 1,
+      "message": "Good point, it looks like the `DIVIDER_HIGHSIDE` gpio is present but doesn\u0027t go anywhere (see the [schematic](http://go/ee-schematics/cros_fingerprint/quincy/v1/quincy_614d990d7a76de0f4bcc4669cd0b4949cfc4070c.html#page3,DIVIDER_HIGHSIDE)).\n\nThat comment and `gpio_set_level(GPIO_DIVIDER_HIGHSIDE, 1);` can likely be removed.",
+      "parentUuid": "bc2ac5e7_f5c4b2ca",
       "range": {
         "startLine": 33,
         "startChar": 3,
