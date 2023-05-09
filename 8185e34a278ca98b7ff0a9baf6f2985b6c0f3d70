@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5c337bb_0f325062",
+        "filename": "docs/case_closed_debugging_gsc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-05-09T02:57:37Z",
+      "side": 1,
+      "message": "Yes, sudo is always required from the chroot.\n\nAlso, now that I\u0027m reading this documentation, I\u0027ve realized that a lot of it doesn\u0027t make any sense. In particular, this command won\u0027t check HWWP status, it will only check SWWP.\n\nWe should delete this command. But I don\u0027t know what boards have this HW bug so it\u0027s hard to know what command would actually work in its place.",
+      "parentUuid": "2d66b159_15450d23",
+      "range": {
+        "startLine": 407,
+        "startChar": 15,
+        "endLine": 407,
+        "endChar": 19
+      },
+      "revId": "8185e34a278ca98b7ff0a9baf6f2985b6c0f3d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36df9e44_9586d0ac",
         "filename": "docs/case_closed_debugging_gsc.md",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2023-05-09T01:28:14Z",
       "side": 1,
       "message": "I see you properly matched the prior `flashrom` command, but I think it was wrong in the first place.  This is intended to go through Servo, right?\n\n(Based on this line specifying \"chroot\" and also based on the command above going through Servo.)",
+      "revId": "8185e34a278ca98b7ff0a9baf6f2985b6c0f3d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caaeee93_a85cf87a",
+        "filename": "docs/case_closed_debugging_gsc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-05-09T02:57:37Z",
+      "side": 1,
+      "message": "Correct, I left out `--servo` based on the old command, but there should be `--servo` since this is r is required for the chroot.",
+      "parentUuid": "36df9e44_9586d0ac",
       "revId": "8185e34a278ca98b7ff0a9baf6f2985b6c0f3d70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,24 @@
       "writtenOn": "2023-05-09T01:28:14Z",
       "side": 1,
       "message": "ditto here about whether \"sudo\" should be specified",
+      "revId": "8185e34a278ca98b7ff0a9baf6f2985b6c0f3d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0da98f8_a66a559d",
+        "filename": "docs/ccd_howtos.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-05-09T02:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73adb3e2_d22b2fb4",
       "revId": "8185e34a278ca98b7ff0a9baf6f2985b6c0f3d70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
