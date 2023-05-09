@@ -336,6 +336,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3209049c_3c8e0985",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-09T14:58:28Z",
+      "side": 1,
+      "message": "\u003e Shouldn\u0027t repo sync be sufficient for this? The fix CL (go/crvc/4490505) was merged 4/28, so today\u0027s repo sync should include it.\n\nUnfortunately no, I don\u0027t believe `repo sync` will rebase for you. See my other comment for instructions.\n\n\u003e Can you diff the disassembly to verify? e.g., make BOARD\u003dbloonchipper dis and diff the generated files.\n\nThis became complicated because things had indeed been rearranged so I built both versions separately and ran objdump (see below). It seems like the version on `cros/main` (`bloonchipper-4507892`) was able to inline `trng_rand` while this branch was not. Since they are in different compilation units, this makes sense if LTO is not enabled.\n\n**LATEST cros/main**\n```\n$ c armv7m-cros-eabi-objdump --demangle --disassemble\u003dtrng_rand_bytes build/bloonchipper-main/RW/chip/stm32/trng.o\n\nbuild/bloonchipper-main/RW/chip/stm32/trng.o:     file format elf32-littlearm\n\n\nDisassembly of section .text.trng_rand_bytes:\n\n00000000 \u003ctrng_rand_bytes\u003e:\n   0:\tb5f0      \tpush\t{r4, r5, r6, r7, lr}\n   2:\taf03      \tadd\tr7, sp, #12\n   4:\te92d 07c0 \tstmdb\tsp!, {r6, r7, r8, r9, sl}\n   8:\t4d18      \tldr\tr5, [pc, #96]\t; (6c \u003ctrng_rand_bytes+0x6c\u003e)\n   a:\t4a19      \tldr\tr2, [pc, #100]\t; (70 \u003ctrng_rand_bytes+0x70\u003e)\n   c:\t460c      \tmov\tr4, r1\n   e:\t4681      \tmov\tr9, r0\n  10:\tf10d 0804 \tadd.w\tr8, sp, #4\n  14:\tb304      \tcbz\tr4, 58 \u003ctrng_rand_bytes+0x58\u003e\n  16:\t4610      \tmov\tr0, r2\n  18:\t6829      \tldr\tr1, [r5, #0]\n  1a:\t07c9      \tlsls\tr1, r1, #31\n  1c:\td102      \tbne.n\t24 \u003ctrng_rand_bytes+0x24\u003e\n  1e:\t3001      \tadds\tr0, #1\n  20:\td3fa      \tbcc.n\t18 \u003ctrng_rand_bytes+0x18\u003e\n  22:\te01c      \tb.n\t5e \u003ctrng_rand_bytes+0x5e\u003e\n  24:\t6868      \tldr\tr0, [r5, #4]\n  26:\tf009 0103 \tand.w\tr1, r9, #3\n  2a:\t2c04      \tcmp\tr4, #4\n  2c:\t9001      \tstr\tr0, [sp, #4]\n  2e:\td304      \tbcc.n\t3a \u003ctrng_rand_bytes+0x3a\u003e\n  30:\tb919      \tcbnz\tr1, 3a \u003ctrng_rand_bytes+0x3a\u003e\n  32:\t2604      \tmovs\tr6, #4\n  34:\tf8c9 0000 \tstr.w\tr0, [r9]\n  38:\te00b      \tb.n\t52 \u003ctrng_rand_bytes+0x52\u003e\n  3a:\tf1c1 0604 \trsb\tr6, r1, #4\n  3e:\t4648      \tmov\tr0, r9\n  40:\t4641      \tmov\tr1, r8\n  42:\t4692      \tmov\tsl, r2\n  44:\t42a6      \tcmp\tr6, r4\n  46:\tbf28      \tit\tcs\n  48:\t4626      \tmovcs\tr6, r4\n  4a:\t4632      \tmov\tr2, r6\n  4c:\tf7ff fffe \tbl\t0 \u003c__aeabi_memcpy\u003e\n  50:\t4652      \tmov\tr2, sl\n  52:\t44b1      \tadd\tr9, r6\n  54:\t1ba4      \tsubs\tr4, r4, r6\n  56:\te7dd      \tb.n\t14 \u003ctrng_rand_bytes+0x14\u003e\n  58:\te8bd 070c \tldmia.w\tsp!, {r2, r3, r8, r9, sl}\n  5c:\tbdf0      \tpop\t{r4, r5, r6, r7, pc}\n  5e:\tf7ff fffe \tbl\t0 \u003ctask_get_current\u003e\n  62:\t4601      \tmov\tr1, r0\n  64:\t4803      \tldr\tr0, [pc, #12]\t; (74 \u003ctrng_rand_bytes+0x74\u003e)\n  66:\tf7ff fffe \tbl\t0 \u003csoftware_panic\u003e\n  6a:\tbf00      \tnop\n  6c:\t50060804 \t.word\t0x50060804\n  70:\tfffffed4 \t.word\t0xfffffed4\n  74:\tdead6665 \t.word\t0xdead6665\n\nDisassembly of section .text.trng_init:\n\nDisassembly of section .text.trng_exit:\n```\n\n**THIS BRANCH (after rebase on cros/main)**\n```\n$ c armv7m-cros-eabi-objdump --demangle --disassemble\u003dtrng_rand_bytes build/bloonchipper-4507892/RW/common/trng.o\n\nbuild/bloonchipper-4507892/RW/common/trng.o:     file format elf32-littlearm\n\n\nDisassembly of section .text.trng_rand_bytes:\n\n00000000 \u003ctrng_rand_bytes\u003e:\n   0:\tb5f0      \tpush\t{r4, r5, r6, r7, lr}\n   2:\taf03      \tadd\tr7, sp, #12\n   4:\tf84d 8d04 \tstr.w\tr8, [sp, #-4]!\n   8:\tb082      \tsub\tsp, #8\n   a:\t460c      \tmov\tr4, r1\n   c:\t4605      \tmov\tr5, r0\n   e:\tf10d 0804 \tadd.w\tr8, sp, #4\n  12:\tb1bc      \tcbz\tr4, 44 \u003ctrng_rand_bytes+0x44\u003e\n  14:\tf7ff fffe \tbl\t0 \u003ctrng_rand\u003e\n  18:\tf005 0103 \tand.w\tr1, r5, #3\n  1c:\t2c04      \tcmp\tr4, #4\n  1e:\t9001      \tstr\tr0, [sp, #4]\n  20:\td303      \tbcc.n\t2a \u003ctrng_rand_bytes+0x2a\u003e\n  22:\tb911      \tcbnz\tr1, 2a \u003ctrng_rand_bytes+0x2a\u003e\n  24:\t2604      \tmovs\tr6, #4\n  26:\t6028      \tstr\tr0, [r5, #0]\n  28:\te009      \tb.n\t3e \u003ctrng_rand_bytes+0x3e\u003e\n  2a:\tf1c1 0604 \trsb\tr6, r1, #4\n  2e:\t4628      \tmov\tr0, r5\n  30:\t4641      \tmov\tr1, r8\n  32:\t42a6      \tcmp\tr6, r4\n  34:\tbf28      \tit\tcs\n  36:\t4626      \tmovcs\tr6, r4\n  38:\t4632      \tmov\tr2, r6\n  3a:\tf7ff fffe \tbl\t0 \u003c__aeabi_memcpy\u003e\n  3e:\t4435      \tadd\tr5, r6\n  40:\t1ba4      \tsubs\tr4, r4, r6\n  42:\te7e6      \tb.n\t12 \u003ctrng_rand_bytes+0x12\u003e\n  44:\tb002      \tadd\tsp, #8\n  46:\tf85d 8b04 \tldr.w\tr8, [sp], #4\n  4a:\tbdf0      \tpop\t{r4, r5, r6, r7, pc}\n```",
+      "parentUuid": "0cfe0b6f_718165f0",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cf3895a_7645ed77",
         "filename": "include/trng.h",
         "patchSetId": 1

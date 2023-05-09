@@ -51,6 +51,24 @@
       "parentUuid": "9d88b56f_d746da26",
       "revId": "e174665c0d589d1fed1fe7c569af164f8dc0b36a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc3b8e1b_67727ba4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-09T14:58:28Z",
+      "side": 1,
+      "message": "Unfortunately `repo sync` does not do a `git rebase` so you\u0027ll need to run the following commands from `chromiumos/src/platform/ec`:\n```\n$ git fetch cros\n$ git rebase cros/main\n```",
+      "parentUuid": "ae9a21fe_ba353616",
+      "revId": "e174665c0d589d1fed1fe7c569af164f8dc0b36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
