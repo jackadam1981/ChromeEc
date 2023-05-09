@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7aa16ca_5f35fc63",
+        "filename": "zephyr/program/nissa/yaviks/src/usbc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2023-05-09T01:54:30Z",
+      "side": 1,
+      "message": "Do you mean `charge_mv`? We need to know this is low power charger.",
+      "parentUuid": "fc9503ce_e4c99125",
+      "revId": "4fbbc8922684c1250027fab9fcaac151b972f21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4319d2d5_7c64fe30",
         "filename": "zephyr/program/nissa/yaviks/src/usbc.c",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2023-05-08T23:18:26Z",
       "side": 1,
       "message": "Use `charger_set_input_current_limit` to specify the current limit for the chosen port specifically, rather than globally.\n\n```suggestion\n\tcharger_set_input_current_limit(port, charge_ma);\n```",
+      "revId": "4fbbc8922684c1250027fab9fcaac151b972f21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d082015_ef2ee4ab",
+        "filename": "zephyr/program/nissa/yaviks/src/usbc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2023-05-09T01:54:30Z",
+      "side": 1,
+      "message": "The oringal `board_set_charge_limit` from [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/charge_manager.c;l\u003d1722?q\u003dcharge_set_input_current_limit) that using `charge_set_input_current_limit(charge_ma, charge_mv)`. Are we still using `charger_set_input_current_limit(port, charge_ma)` instead?",
+      "parentUuid": "4319d2d5_7c64fe30",
       "revId": "4fbbc8922684c1250027fab9fcaac151b972f21b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
