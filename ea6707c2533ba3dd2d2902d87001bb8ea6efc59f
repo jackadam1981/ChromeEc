@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8cbfa19_b44e9f5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T02:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a71bebcf_86ae3cc1",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "ea6707c2533ba3dd2d2902d87001bb8ea6efc59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47467e9e_5b59083a",
@@ -65,6 +89,54 @@
         "startChar": 0,
         "endLine": 128,
         "endChar": 12
+      },
+      "revId": "ea6707c2533ba3dd2d2902d87001bb8ea6efc59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "372eecc8_27972edb",
+        "filename": "include/test_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T02:22:34Z",
+      "side": 1,
+      "message": "Done\nBTW, because this is a C header and we also need to support std::array, so we need to use something like `\u0026data[0]`.\n(We can\u0027t use `std::begin(data)` in the C header, and memcmp doesn\u0027t work for std::array.)",
+      "parentUuid": "e292742a_ba6c8439",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 12
+      },
+      "revId": "ea6707c2533ba3dd2d2902d87001bb8ea6efc59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d32c932_fb8bf816",
+        "filename": "include/test_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-09T02:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47467e9e_5b59083a",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 5
       },
       "revId": "ea6707c2533ba3dd2d2902d87001bb8ea6efc59f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
