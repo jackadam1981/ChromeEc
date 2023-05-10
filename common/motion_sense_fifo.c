@@ -460,7 +460,7 @@ void motion_sense_fifo_stage_data(struct ec_response_motion_sensor_data *data,
 			fifo_staged.read_ts = __hw_clock_source_read();
 		fifo_stage_timestamp(time, data->sensor_num);
 	}
-	if (sensor->config[SENSOR_CONFIG_AP].ec_rate > 0 &&
+	if (sensor && sensor->config[SENSOR_CONFIG_AP].ec_rate > 0 &&
 	    time_after(time, ts_last_int[id] +
 				     sensor->config[SENSOR_CONFIG_AP].ec_rate -
 				     MOTION_SENSOR_INT_ADJUSTMENT_US)) {
