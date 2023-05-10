@@ -224,12 +224,12 @@ static int cros_flash_npcx_uma_lock(const struct device *dev, bool enable)
 	return spi_transceive(data->spi_ctrl_dev, &spi_cfg, NULL, NULL);
 }
 
-static void flash_get_status(const struct device *dev, uint8_t *sr1,
-			     uint8_t *sr2)
+static void flash_get_status(const struct device *dev, uint8_t *v_sr1,
+			     uint8_t *v_sr2)
 {
 	if (all_protected) {
-		*sr1 = saved_sr1;
-		*sr2 = saved_sr2;
+		*v_sr1 = saved_sr1;
+		*v_sr2 = saved_sr2;
 		return;
 	}
 
@@ -237,9 +237,48 @@ static void flash_get_status(const struct device *dev, uint8_t *sr1,
 	crec_flash_lock_mapped_storage(1);
 
 	/* Read status register1 */
-	cros_flash_npcx_get_status_reg(dev, SPI_NOR_CMD_RDSR, sr1);
+//	cros_flash_npcx_get_status_reg(dev, SPI_NOR_CMD_RDSR, sr1);
 	/* Read status register2 */
-	cros_flash_npcx_get_status_reg(dev, SPI_NOR_CMD_RDSR2, sr2);
+//	cros_flash_npcx_get_status_reg(dev, SPI_NOR_CMD_RDSR2, sr2);
+
+{
+	struct cros_flash_npcx_data *dev_data = DRV_DATA(dev);
+
+	uint8_t op_sr1 = SPI_NOR_CMD_RDSR;
+	uint8_t op_sr2 = SPI_NOR_CMD_RDSR2;
+
+	const struct spi_buf spi_buf[4] = {
+		[0] = {
+			.buf = &op_sr1,
+			.len = 1,
+		},
+		[1] = {
+			.buf = v_sr1,
+			.len = 1,
+		},
+		[2] = {
+			.buf = &op_sr2,
+			.len = 1,
+		},
+		[3] = {
+			.buf = v_sr2,
+			.len = 1,
+		},
+	};
+
+	const struct spi_buf_set tx_set = {
+		.buffers = spi_buf,
+		.count = 4,
+	};
+
+	const struct spi_buf_set rx_set = {
+		.buffers = spi_buf,
+		.count = 4,
+	};
+
+	/*return*/ spi_transceive(dev_data->spi_ctrl_dev, &spi_cfg, &tx_set,
+			      &rx_set);
+}
 
 	/* Unlock physical flash operations */
 	crec_flash_lock_mapped_storage(0);
