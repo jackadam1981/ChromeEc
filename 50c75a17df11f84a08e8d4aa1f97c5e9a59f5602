@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f98c1bc_7b36f568",
+        "filename": "board/helipilot/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-10T00:37:33Z",
+      "side": 1,
+      "message": "Added the console_is_restricted function back in and associated board configs. While I can see your point on de-duplicating in general, de-duplicating board specific files (i.e. board.c) is counter-intuitive. There is also a lot of duplication of functions in board files in the EC code base currently. While the fact that duplication exists doesn\u0027t mean it should, I also don\u0027t this project should be held to higher standards than others, particularly if it delays the overall schedule. We can continue the discussion in the bug, but I\u0027m not aligned with the priority you are associating with this optimization (\"(p)lease start working on that next ...before adding any new functionality\"). Happy to discuss further in tomorrow\u0027s meeting if needed.",
+      "parentUuid": "afe75764_1fc01b4a",
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e358155_409c7641",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-05-09T15:52:30Z",
       "side": 1,
       "message": "This will likely break CQs if we don\u0027t also add add `CONFIG_FW_MRIDER` to [config_allowed.txt](http://go/cros-ec-readme/+/refs/changes/46/4451646/10/util/config_allowed.txt)",
+      "range": {
+        "startLine": 254,
+        "startChar": 8,
+        "endLine": 254,
+        "endChar": 24
+      },
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fdf60c8_0f117250",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-10T00:37:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e358155_409c7641",
       "range": {
         "startLine": 254,
         "startChar": 8,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "739a1793_6a5ded24",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-10T00:37:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bff97e0_25b766e6",
+      "range": {
+        "startLine": 250,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 28
+      },
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac1ead7c_be316107",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-05-09T00:02:34Z",
       "side": 1,
       "message": "Same as `board.c`: very few differences from the file from which it was copied. Please add a `TODO` comment.",
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f430a71_c855c483",
+        "filename": "board/helipilot/board_rw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-10T00:37:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac1ead7c_be316107",
       "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -128,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc51938_27d02f1a",
+        "filename": "board/helipilot/board_rw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-10T00:37:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f37dd607_248e4a2e",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2810c04_0177ceb7",
@@ -141,6 +249,30 @@
       "writtenOn": "2023-05-09T00:02:34Z",
       "side": 1,
       "message": "nit: not needed",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "50c75a17df11f84a08e8d4aa1f97c5e9a59f5602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca18b964_a9166426",
+        "filename": "board/helipilot/build.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-10T00:37:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2810c04_0177ceb7",
       "range": {
         "startLine": 1,
         "startChar": 0,
