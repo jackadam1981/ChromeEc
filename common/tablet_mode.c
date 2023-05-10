@@ -5,6 +5,7 @@
 
 #include "acpi.h"
 #include "console.h"
+#include "cros_cbi.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -255,6 +256,22 @@ static void gmr_tablet_switch_init(void)
 	/* If this sub-system was disabled before initializing, honor that. */
 	if (disabled)
 		return;
+
+	/*
+	 *Disable tablet mode if FW_SENSORS cbi value is FW_SENSORS_DISABLE
+	 */
+	int res;
+	uint32_t disable_tablet_mode;
+	res = cros_cbi_get_fw_config(FW_SENSORS, &disable_tablet_mode);
+	if (res != 0) {
+		CPRINTF("Sensor Enable: Failed to get FW_SENSORS from CBI\n");
+		disable_tablet_mode = FW_SENSORS_ENABLE;
+	}
+	if (disable_tablet_mode == FW_SENSORS_DISABLE) {
+		if (IS_ENABLED(CONFIG_TABLET_MODE))
+			gmr_tablet_switch_disable();
+		return;
+	}
 
 	gpio_enable_interrupt(GPIO_TABLET_MODE_L);
 	/*
