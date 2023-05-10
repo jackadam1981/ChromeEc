@@ -39,6 +39,30 @@
       },
       "revId": "5c7db53be3640fea22b3c59a417a1b4a45eca6e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bad1d4ab_dc1b93ef",
+        "filename": "zephyr/program/skyrim/frostflow/led_policy.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-05-10T22:20:14Z",
+      "side": 1,
+      "message": "The previous definition is the `amber: \u003c0 94\u003e, white: \u003e\u003d95%`, so I just keep the original defines, we should not modify it.",
+      "parentUuid": "d410cb6e_57d36f85",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "5c7db53be3640fea22b3c59a417a1b4a45eca6e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
