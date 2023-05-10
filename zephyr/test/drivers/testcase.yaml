@@ -274,6 +274,7 @@ tests:
   drivers.common_cbi_gpio.ec_host_cmd:
     extra_configs:
     - CONFIG_LINK_TEST_SUITE_COMMON_CBI_GPIO=y
+    - CONFIG_PLATFORM_EC_CBI_EEPROM=n
     - CONFIG_PLATFORM_EC_CBI_GPIO=y
     extra_conf_files:
     - prj.conf
