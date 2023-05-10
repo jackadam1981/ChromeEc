@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7cda2c_3499b7eb",
+        "filename": "include/charge_state.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-10T21:40:50Z",
+      "side": 1,
+      "message": "It\u0027ll be nice these are sync\u0027ed as well (LED_PWR_STATE_). It\u0027s a lot of changes but simply string substituion seems to work.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "09a165707893c22da774178db60a4851142a575f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
