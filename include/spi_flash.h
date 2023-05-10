@@ -78,17 +78,6 @@ uint8_t spi_flash_get_status1(void);
 uint8_t spi_flash_get_status2(void);
 
 /**
- * Sets the SPI flash status registers (non-volatile bits only)
- * Pass reg2 == -1 to only set reg1.
- *
- * @param reg1 Status register 1
- * @param reg2 Status register 2 (optional)
- *
- * @return EC_SUCCESS, or non-zero if any error.
- */
-int spi_flash_set_status(int reg1, int reg2);
-
-/**
  * Returns the content of SPI flash
  *
  * @param buf Buffer to write flash contents

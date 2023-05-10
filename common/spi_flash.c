@@ -108,7 +108,7 @@ uint8_t spi_flash_get_status2(void)
  *
  * @return EC_SUCCESS, or non-zero if any error.
  */
-int spi_flash_set_status(int reg1, int reg2)
+static int spi_flash_set_status(int reg1, int reg2)
 {
 	uint8_t cmd[3] = { SPI_FLASH_WRITE_SR, reg1, reg2 };
 	int rv = EC_SUCCESS;
