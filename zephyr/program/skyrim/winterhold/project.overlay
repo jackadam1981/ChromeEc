@@ -159,6 +159,41 @@
 				 0 0 1>;
 		};
 	};
+
+	fan_step_table: fan-step-table {
+		compatible = "cros-ec,fan-steps";
+		level_0 {
+			temp_on = <(-1) (-1)  1  1 (-1)>;
+			temp_off = <(-1) (-1) 99 99 (-1)>;
+			rpm_target = <0>;
+		};
+		level_1 {
+			temp_on = <(-1) (-1)  70 55 (-1)>;
+			temp_off = <(-1) (-1) 60 50 (-1)>;
+			rpm_target = <2200>;
+		};
+		level_2 {
+			temp_on = <(-1) (-1)  73 60 (-1)>;
+			temp_off = <(-1) (-1) 63 55 (-1)>;
+			rpm_target = <2800>;
+		};
+		level_3 {
+			temp_on = <(-1) (-1)  76 65 (-1)>;
+			temp_off = <(-1) (-1) 66 60 (-1)>;
+			rpm_target = <3600>;
+		};
+		level_4 {
+			temp_on = <(-1) (-1)  79 70 (-1)>;
+			temp_off = <(-1) (-1) 69 65 (-1)>;
+			rpm_target = <4200>;
+		};
+		level_5 {
+			temp_on = <(-1) (-1)  82 75 (-1)>;
+			temp_off = <(-1) (-1) 72 70 (-1)>;
+			rpm_target = <4800>;
+		};
+	};
+
 };
 
 /*i2c overrides */
