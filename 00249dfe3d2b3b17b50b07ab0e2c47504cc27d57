@@ -98,6 +98,69 @@
       "message": "At some point, shouldn\u0027t we just bust out LSC? 😄",
       "revId": "00249dfe3d2b3b17b50b07ab0e2c47504cc27d57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f643d3a_63dda6e3",
+        "filename": "baseboard/intelrvp/led_states.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-10T20:50:40Z",
+      "side": 1,
+      "message": "Why did this function name change also?",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "00249dfe3d2b3b17b50b07ab0e2c47504cc27d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "536dd088_5ee3e0c7",
+        "filename": "include/charge_state.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-10T20:50:40Z",
+      "side": 1,
+      "message": "The enum is still `led_pwr_state` (line 35 above).",
+      "range": {
+        "startLine": 70,
+        "startChar": 50,
+        "endLine": 70,
+        "endChar": 59
+      },
+      "revId": "00249dfe3d2b3b17b50b07ab0e2c47504cc27d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78814d64_2a0f5d7d",
+        "filename": "zephyr/test/drivers/common_charger/src/test_charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-10T20:50:40Z",
+      "side": 1,
+      "message": "Can the `v2` in this file name be removed also?",
+      "revId": "00249dfe3d2b3b17b50b07ab0e2c47504cc27d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
