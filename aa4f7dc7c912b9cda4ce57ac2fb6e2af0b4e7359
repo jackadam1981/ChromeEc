@@ -16,6 +16,23 @@
       "message": "i\u0027m not sure we ever got vbus monitoring working reliably on the ps8815.\nlet me check",
       "revId": "aa4f7dc7c912b9cda4ce57ac2fb6e2af0b4e7359",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd12ce5_625cd580",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-10T04:14:47Z",
+      "side": 1,
+      "message": "found it. please check b/195615907.\nnot sure if my test code is still around - i basically had a loop that\nchecked measured vbus and found that the readings were not consistent\nenough to be useful.",
+      "revId": "aa4f7dc7c912b9cda4ce57ac2fb6e2af0b4e7359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
