@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28567bc_e33ed0eb",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-10T13:41:49Z",
+      "side": 1,
+      "message": "Actually this is not const on purpose.\nWe want to be able to change the parameters in runtime, through EC command, in order to calibrate the fan.\nI added a comment to explain that.",
+      "parentUuid": "a7d46734_db5dd663",
+      "revId": "1fa3775d6701fd5f9d9a304241324fd4f4d9b828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72c1fd36_dc1a88d2",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b9eaa17_01674799",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-10T13:41:49Z",
+      "side": 1,
+      "message": "Ok, I\u0027ve removed the comment.",
+      "parentUuid": "72c1fd36_dc1a88d2",
+      "revId": "1fa3775d6701fd5f9d9a304241324fd4f4d9b828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5775c593_b59b53f3",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-05-10T12:29:19Z",
       "side": 1,
       "message": "Better to write define macro as initializer, so it can only get jp, ki, kd as parames and set remaining fields as needed.",
+      "revId": "1fa3775d6701fd5f9d9a304241324fd4f4d9b828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be9de4cc_5b5bcd21",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-10T13:41:49Z",
+      "side": 1,
+      "message": "I agree, but this is a PoC.\nMy intention is to read those values from DT in the final solution.\nThen they would be read using a macro, see https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4518773/1/zephyr/program/skyrim/winterhold/src/thermal.c#46 for reference.",
+      "parentUuid": "5775c593_b59b53f3",
       "revId": "1fa3775d6701fd5f9d9a304241324fd4f4d9b828",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d86544c_7651fcfc",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-10T13:41:49Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to take dt into account for this use case.\nI\u0027ve found experimentally that dt doesn\u0027t change a lot - it stays within 198-204ms.\n\nLet `Ki\u0027 \u003d Ki*dt`\n\n```\nintegral +\u003d error * dt;\nresult +\u003d Ki * integral`;\n```\n\nis equivalent to\n```\nintegral +\u003d error;\nresult +\u003d Ki\u0027 * integral;\n```\n\nThe same logic applies to derivative part.\nSince dt is doesn\u0027t have significant variation we can silently omit it.\n\nNow with that being said if we want to provide a \"generic\" PID util we should take dt into account.\nI\u0027ll update the code.",
+      "parentUuid": "45fb76c8_25cd73db",
+      "revId": "1fa3775d6701fd5f9d9a304241324fd4f4d9b828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1766249_facda5f8",
         "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
         "patchSetId": 1
@@ -82,6 +154,24 @@
       "writtenOn": "2023-05-10T12:29:19Z",
       "side": 1,
       "message": "Derivative part is wrongly calculated!!!\n\nPlease follow the example, it is much simpler in form and easier to read.\n\n```\nfloat pid_controller(float error, float dt) {\n\n    integral +\u003d error * dt;\n    derivative \u003d (error - last_error) / dt;\n    last_error \u003d error;\n\n    return Kp * error + Ki * integral + Kd * derivative;\n}\n```",
+      "revId": "1fa3775d6701fd5f9d9a304241324fd4f4d9b828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5cb390_46fdcbd4",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-10T13:41:49Z",
+      "side": 1,
+      "message": "Good catch, done.",
+      "parentUuid": "e1766249_facda5f8",
       "revId": "1fa3775d6701fd5f9d9a304241324fd4f4d9b828",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c745e52_4a101dca",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-10T13:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ed0cb0b_0af9240e",
+      "revId": "1fa3775d6701fd5f9d9a304241324fd4f4d9b828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff6c7760_673a9483",
@@ -116,6 +224,24 @@
       "writtenOn": "2023-05-10T12:29:19Z",
       "side": 1,
       "message": "Use CLAMP",
+      "revId": "1fa3775d6701fd5f9d9a304241324fd4f4d9b828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa14f11_6ac14a65",
+        "filename": "zephyr/program/skyrim/winterhold/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-10T13:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff6c7760_673a9483",
       "revId": "1fa3775d6701fd5f9d9a304241324fd4f4d9b828",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
