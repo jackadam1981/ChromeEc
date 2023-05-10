@@ -15,7 +15,7 @@
  * The smallest protection bank size is 1/8 of 512 KB or 1/16 of 1M flash,
  * i.e. 64KB.
  */
-#define CONFIG_FLASH_BANK_SIZE 0x10000
+#define CONFIG_FLASH_BANK_SIZE 0x40000
 
 /* RO image resides at start of protected region, right after header */
 #define CONFIG_RO_STORAGE_OFF CONFIG_RO_HDR_SIZE
