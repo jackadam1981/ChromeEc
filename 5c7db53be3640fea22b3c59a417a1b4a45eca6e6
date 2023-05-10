@@ -63,6 +63,30 @@
       },
       "revId": "5c7db53be3640fea22b3c59a417a1b4a45eca6e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e2bce0_cbaa432c",
+        "filename": "zephyr/program/skyrim/frostflow/led_policy.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-10T23:15:51Z",
+      "side": 1,
+      "message": "I think we should set CONFIG_BATT_HOST_FULL_FACTOR to 95 and change these to \u003c0 99\u003e and \u003c99 100\u003e for frostflow.",
+      "parentUuid": "bad1d4ab_dc1b93ef",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "5c7db53be3640fea22b3c59a417a1b4a45eca6e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
