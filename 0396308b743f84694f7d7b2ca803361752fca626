@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b067be0a_65a097ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2023-05-10T04:10:15Z",
+      "side": 1,
+      "message": "Hi Eric and Ting,\nMay I have your help to reivew this solution? Thank you.",
+      "revId": "0396308b743f84694f7d7b2ca803361752fca626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6453676_6994cef1",
+        "filename": "power/mt8186.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2023-05-10T04:10:15Z",
+      "side": 1,
+      "message": "Can all corsola ec fw build pass?\nDo we need a __override implementation here?",
+      "range": {
+        "startLine": 333,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 27
+      },
+      "revId": "0396308b743f84694f7d7b2ca803361752fca626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
