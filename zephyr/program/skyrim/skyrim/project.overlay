@@ -19,6 +19,10 @@
 
 /* Skyrim overrides follow... */
 / {
+	chosen {
+		zephyr,host-cmd-espi-backend = &espi0;
+	};
+
 	/* battery overrides */
 	batteries {
 		default_battery: aec_5477109 {
