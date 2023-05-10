@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "413fdad4_b1ffdf01",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-05-10T15:43:28Z",
+      "side": 1,
+      "message": "nit: \nreturn get_usb_pd_cable_type(port) \u003d\u003d IDH_PTYPE_ACABLE \u0026\u0026  \n                disc-\u003eidentity.product_t1.a_rev20.sop_p_p;",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 14
+      },
+      "revId": "456145f3bf6697c83da3df9cfea9eb93325c0f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0bbc592_40d9af76",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-05-10T15:43:28Z",
+      "side": 1,
+      "message": "both are same so club them sand replace \n*tx_type \u003d msg_type;",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 8
+      },
+      "revId": "456145f3bf6697c83da3df9cfea9eb93325c0f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "942a29a3_134f2e86",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-05-10T15:43:28Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 476,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 8
+      },
+      "revId": "456145f3bf6697c83da3df9cfea9eb93325c0f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ae1cc5_f85ecc16",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-05-10T15:43:28Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 523,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 8
+      },
+      "revId": "456145f3bf6697c83da3df9cfea9eb93325c0f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
