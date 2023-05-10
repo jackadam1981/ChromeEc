@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74a8ab5e_654442e1",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-10T07:07:40Z",
+      "side": 1,
+      "message": "During CRC failure scenario we may need to have retry to recover the corrupted packet.\n\nShall we keep the retry logic?\n\nDo we need to add uart_handle.reset_input_buffer() before sys.exit(1)? because exit will clear everything. Is my understanding correct?",
+      "parentUuid": "62ec4f9c_62d84ddb",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 38
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "944ef889_475bb978",
         "filename": "util/mchp/crisis_rcvry_util.py",
         "patchSetId": 23
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-09T16:46:17Z",
       "side": 1,
       "message": "`for i in range()` already increments i for you.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 17
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8138005c_c545c1ff",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-10T07:07:40Z",
+      "side": 1,
+      "message": "Deleted the redundant statement",
+      "parentUuid": "944ef889_475bb978",
       "range": {
         "startLine": 302,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05411ce8_ac2c0be3",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-10T07:07:40Z",
+      "side": 1,
+      "message": "Renamed the function name as suggested",
+      "parentUuid": "2edaf478_ca30154a",
+      "range": {
+        "startLine": 306,
+        "startChar": 4,
+        "endLine": 306,
+        "endChar": 16
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57cd6e51_5c64707b",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d74c32b_bd46604c",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-10T07:07:40Z",
+      "side": 1,
+      "message": "Updated the length check.",
+      "parentUuid": "57cd6e51_5c64707b",
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01d15f8f_944bfce6",
@@ -100,6 +190,30 @@
       "writtenOn": "2023-05-09T16:46:17Z",
       "side": 1,
       "message": "Note - if the command returns an unexpected response, this code will keep retrying without incrementing the counter.\n\nIf the response doesn\u0027t match, should this return False immediately?",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 23
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bab4049_4e71511c",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-10T07:07:40Z",
+      "side": 1,
+      "message": "Agreed. Updated the code by introducing the else block to return false.",
+      "parentUuid": "01d15f8f_944bfce6",
       "range": {
         "startLine": 351,
         "startChar": 0,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b3904a_967697bb",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-10T07:07:40Z",
+      "side": 1,
+      "message": "Updated parser using add_mutually_exclusive_group.",
+      "parentUuid": "a11b63fb_fffdb58a",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 0
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd0da012_8d59cb56",
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac4320e1_af989b92",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-10T07:07:40Z",
+      "side": 1,
+      "message": "Removed the logic",
+      "parentUuid": "dd0da012_8d59cb56",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 0
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69131e4f_02243704",
@@ -169,6 +331,30 @@
       "writtenOn": "2023-05-09T16:46:17Z",
       "side": 1,
       "message": "This can be eliminated if you use `add_mutually_exclusive_group`.",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 0
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "981c1669_f2bc0f38",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-10T07:07:40Z",
+      "side": 1,
+      "message": "Removed the else block",
+      "parentUuid": "69131e4f_02243704",
       "range": {
         "startLine": 469,
         "startChar": 0,
