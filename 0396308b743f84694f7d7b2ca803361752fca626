@@ -39,6 +39,29 @@
       },
       "revId": "0396308b743f84694f7d7b2ca803361752fca626",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a932f7_7a45bc43",
+        "filename": "zephyr/program/corsola/voltorb/src/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-05-10T06:25:47Z",
+      "side": 1,
+      "message": "Can you integrate this into the battery_wait_for_stable() function?\n\ne.g.\n```\n  int rv \u003d battery_status(\u0026status);\n  \n  if (rv !\u003d EC_SUCCESS) {\n     msleep(25);\n     continue;\n  }\n    \n  if ((status \u0026 CONFIG_PLATFORM_EC_BAT_STBL_STAT) !\u003d CONFIG_PLATFORM_EC_BAT_STBL_STAT) {\n    msleep(25);\n    continue;\n  }\n  \n  return EC_SUCCESS;\n  \n  ```\nBoards can define their CONFIG_PLATFORM_EC_BAT_STBL_STAT respectively.",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "0396308b743f84694f7d7b2ca803361752fca626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
