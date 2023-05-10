@@ -69,6 +69,24 @@
       "parentUuid": "31e8eb06_8dd110d8",
       "revId": "aa4f7dc7c912b9cda4ce57ac2fb6e2af0b4e7359",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d67365_d6ef4531",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-05-10T07:19:14Z",
+      "side": 1,
+      "message": "I use watch -n .1 ectool usbpdpower to monitor vbus value, seems like is consistent.\n\nAttached as below:\n\nhttps://drive.google.com/file/d/1Fy2rFFTZeOIxLPaHWOgg9ESKhg2TgxAk/view?usp\u003dsharing",
+      "parentUuid": "94488efc_3fbaf0bb",
+      "revId": "aa4f7dc7c912b9cda4ce57ac2fb6e2af0b4e7359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
