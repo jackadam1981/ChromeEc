@@ -105,6 +105,24 @@
       "parentUuid": "afc81edc_20776b8e",
       "revId": "10139944d9ec7df4e234b3d5423bd4761a706086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd088c7_98cca356",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2023-05-10T10:00:20Z",
+      "side": 1,
+      "message": "Yes,we try to enable CONFIG_CHARGER_MAINTAIN_VBAT on winterhold.\nThe last charger is filled in 0X15\u003d3A98 (15V).\nAdd battery exist condition or enable CONFIG_CHARGER_MAINTAIN_VBAT also fix this issue.\nAre you inclined to enable config to avoid this situation?",
+      "parentUuid": "ba4e2298_6fa94c0b",
+      "revId": "10139944d9ec7df4e234b3d5423bd4761a706086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
