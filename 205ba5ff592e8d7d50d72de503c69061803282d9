@@ -46,6 +46,30 @@
       },
       "revId": "205ba5ff592e8d7d50d72de503c69061803282d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35f48a3_ac700b58",
+        "filename": "include/charge_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-10T15:45:47Z",
+      "side": 1,
+      "message": "Yeah, led_pwr_state looks good to me.",
+      "parentUuid": "8a5d9505_73283218",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 14
+      },
+      "revId": "205ba5ff592e8d7d50d72de503c69061803282d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
