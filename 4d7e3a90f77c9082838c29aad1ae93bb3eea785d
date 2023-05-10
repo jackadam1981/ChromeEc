@@ -22,6 +22,30 @@
       },
       "revId": "4d7e3a90f77c9082838c29aad1ae93bb3eea785d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb68081_22cce8a9",
+        "filename": "board/boxy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2023-05-10T04:02:14Z",
+      "side": 1,
+      "message": "We have confirm with HW team that the voltage divider design here is same as dibbi,which is 226/(2000+226) \u003d 113/1113.",
+      "parentUuid": "0bb59a9f_497243c3",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "4d7e3a90f77c9082838c29aad1ae93bb3eea785d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
