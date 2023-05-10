@@ -8,6 +8,26 @@
 		compatible = "cros-ec,cbi-fw-config";
 
 		/*
+		 *FW_CONFIG field to disable motion sense.
+		 */
+		motion-sensor {
+			enum-name = "FW_SENSORS";
+			start = <11>;
+			size = <1>;
+
+			sensors-enable {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_SENSORS_ENABLE";
+				value = <0>;
+			};
+			sensor-disable {
+                                compatible = "cros-ec,cbi-fw-config-value";
+                                enum-name = "FW_SENSORS_DISABLE";
+                                value = <1>;
+                        };
+		};
+
+		/*
 		 * FW_CONFIG field to enable USB DB.
 		 */
 		usb-db {

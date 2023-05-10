@@ -12,6 +12,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "cros_cbi.h"
 #include "gesture.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -762,6 +763,21 @@ void motion_sense_task(void *u)
 	uint16_t ready_status = 0;
 	struct motion_sensor_t *sensor;
 	uint8_t *lpc_status;
+
+	int res;
+	uint32_t disable_sensors;
+	res = cros_cbi_get_fw_config(FW_SENSORS, &disable_sensors);
+	if (res != 0) {
+		CPRINTF("Sensor Enable: Failed to get FW_SENSORS from CBI\n");
+		disable_sensors = FW_SENSORS_ENABLE;
+	}
+
+	if (disable_sensors == FW_SENSORS_DISABLE) {
+		motion_sense_shutdown();
+		if (IS_ENABLED(CONFIG_TABLET_MODE)
+			gmr_tablet_switch_disable()
+		return;
+	}
 
 	if (IS_ENABLED(CONFIG_MOTION_FILL_LPC_SENSE_DATA)) {
 		lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
