@@ -16,6 +16,29 @@
       "message": "all related boards build pass and verify LED behavior on Voltorb",
       "revId": "5c7db53be3640fea22b3c59a417a1b4a45eca6e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d410cb6e_57d36f85",
+        "filename": "zephyr/program/skyrim/frostflow/led_policy.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-10T19:00:42Z",
+      "side": 1,
+      "message": "We have power-state-charge and power-state-charge-lvl-2. The former is amber and the latter is white. I assume amber means charging and white means full. Then, I think batt-lvl should be \u003c0 99\u003e and \u003c99 100\u003e.",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "5c7db53be3640fea22b3c59a417a1b4a45eca6e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
