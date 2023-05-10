@@ -69,6 +69,30 @@
       },
       "revId": "0756b1242d6aea583a6808e01f7d51fcb51ff04a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "252c8a21_76b0fa1b",
+        "filename": "core/cortex-m/cpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-10T19:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf08bcd7_768a6fd5",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "0756b1242d6aea583a6808e01f7d51fcb51ff04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
