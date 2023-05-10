@@ -22,6 +22,30 @@
       },
       "revId": "43db3385795cbfbcfe90e12463989a91e99bc9c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b7d91a_b10bf21b",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-05-10T19:19:58Z",
+      "side": 1,
+      "message": "Done. Good catch.",
+      "parentUuid": "37b96f9a_450a9f60",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "43db3385795cbfbcfe90e12463989a91e99bc9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
