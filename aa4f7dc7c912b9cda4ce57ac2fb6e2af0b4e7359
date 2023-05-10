@@ -51,6 +51,24 @@
       "parentUuid": "5fd12ce5_625cd580",
       "revId": "aa4f7dc7c912b9cda4ce57ac2fb6e2af0b4e7359",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94488efc_3fbaf0bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-10T05:34:38Z",
+      "side": 1,
+      "message": "ya, VBUS voltage measurement on the ps8815 was unreliable when i tried\nto enable this feature. the voltage readings would sometimes be very\nwrong to the point where i decided we couldn\u0027t use this feature.\n\ntry to read the voltage in a loop for a while (like a minute) to see if\nvalues make sense and are consistent.",
+      "parentUuid": "31e8eb06_8dd110d8",
+      "revId": "aa4f7dc7c912b9cda4ce57ac2fb6e2af0b4e7359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
