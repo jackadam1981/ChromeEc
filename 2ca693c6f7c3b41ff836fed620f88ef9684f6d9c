@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b715c06_e5f09e4c",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-11T16:34:34Z",
+      "side": 1,
+      "message": "It looks like a lot of LateX formatting was copied into here (`\\par`, `\u003cb\u003e`, `\u003cbr\u003e`, etc). Could you please clean that up?",
+      "revId": "2ca693c6f7c3b41ff836fed620f88ef9684f6d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
