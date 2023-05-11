@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d81baa07_4b56b81d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-05-11T17:44:23Z",
+      "side": 1,
+      "message": "It seems I can not change the owner directly even though I changed the CL author,\nso I make a copy of this CL in CL:4523043 and the CL:4478776 should be merged together,\nplease help to review these two CLs,\nthanks!",
+      "parentUuid": "32a6b2d9_00dce2ee",
+      "revId": "5c7db53be3640fea22b3c59a417a1b4a45eca6e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d410cb6e_57d36f85",
         "filename": "zephyr/program/skyrim/frostflow/led_policy.dtsi",
         "patchSetId": 2
@@ -144,6 +162,30 @@
       "side": 1,
       "message": "I bet the original definition is wrong. display soc \u003e\u003d 95% is something like raw soc \u003e\u003d 91%. I don\u0027t think that\u0027s intended (because 91% is too low to be full). I think we can leave it as is and let the device owners fix it.",
       "parentUuid": "a4de4ccf_8d3c3d3d",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "5c7db53be3640fea22b3c59a417a1b4a45eca6e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa9af331_c9b002a1",
+        "filename": "zephyr/program/skyrim/frostflow/led_policy.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-05-11T17:44:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "10c8b628_5ad78c66",
       "range": {
         "startLine": 18,
         "startChar": 15,
