@@ -539,6 +539,30 @@
       },
       "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b767c51d_3dc6a582",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-11T20:57:20Z",
+      "side": 1,
+      "message": "Building the code as-is the values of the macros in `rwsig_check_signature` are\n```\nCONFIG_MAPPED_STORAGE_BASE: 0x64000000\nCONFIG_EC_PROTECTED_STORAGE_OFF: 0\nCONFIG_RO_PUBKEY_STORAGE_OFF: (0 + (128 * 1024) - 1024)\n```\n\nand in `vb21_get_packed_key`:\n```\nCONFIG_RO_PUBKEY_ADDR in vb21_get_packed_key: (0x10058000 + 0 + (0 + (128 * 1024) - 1024)\n```\n\nSo it looks like `CONFIG_RO_PUBKEY_ADDR` is being based off `CONFIG_PROGRAM_MEMORY_BASE` rather than `CONFIG_MAPPED_STORAGE_BASE` (see http://cs/chromeos_public/src/platform/ec/include/rwsig.h;l\u003d84) . If I globally change `CONFIG_RO_PUBKEY_ADDR` to use `CONFIG_MAPPED_STORAGE_BASE` then I see the 1GB error, as David mentions. \n\nThe issue stems from the fact that `CONFIG_RO_PUBKEY_ADDR` is serving dual purpose. It is used in the code to determine where to read the RO key from but it is also used by the [linker script](http://cs/chromeos_public/src/platform/ec/common/firmware_image.lds.S;l\u003d93) to determine where to put the key in memory. On the npcx9 target we need to use the memory mapped address range (0x64000000) for reading but the physical address range (0x10000000) for the linker script. I think I have resolved this issue in go/crvc/4521405, which should allow us to revert this block.",
+      "parentUuid": "600ce0d3_edf54930",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 0
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
