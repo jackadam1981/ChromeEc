@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105be4e4_d8759566",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T17:35:19Z",
+      "side": 1,
+      "message": "nit: It looks all svc_handlers can call the same common function:\n\n    static inline void task_debug_stack_overflow(task_ *current)\n    {\n        if (*current-\u003estack ....",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 2
+      },
+      "revId": "f82d6693ca5f2654b8b87f06f88ad4bc5b4030ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
