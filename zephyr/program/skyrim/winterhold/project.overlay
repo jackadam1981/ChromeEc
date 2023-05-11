@@ -139,6 +139,17 @@
 		};
 	};
 
+	motionsense-bodydetect {
+		compatible = "cros-ec,motionsense-bodydetect";
+
+		/* LIS2DW12 */
+		base_bd_config: base_bd_config {
+			var_noise_factor = <150>;
+			var_threshold = <3000>;
+			confidence_delta = <2900>;
+		};
+	};
+
 	/* Rotation matrices for motion sensors. */
 	motionsense-rotation-ref {
 		compatible = "cros-ec,motionsense-rotation-ref";
