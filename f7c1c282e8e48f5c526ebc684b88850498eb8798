@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae82ae6c_90c49e63",
+        "filename": "zephyr/drivers/cros_flash/cros_flash.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T23:24:49Z",
+      "side": 1,
+      "message": "While we may save the EC from WDT, we miss some other important events (e.g. usbc pd). So, I\u0027m not sure if it\u0027s ok to let the AP occupy the EC (and starve other tasks). There is EC_RES_BUSY. WDYT?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 45
+      },
+      "revId": "f7c1c282e8e48f5c526ebc684b88850498eb8798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b83aa6_b26b0891",
+        "filename": "zephyr/drivers/cros_flash/cros_flash.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T23:24:49Z",
+      "side": 1,
+      "message": "nit: This is better be in line 123 to reflect its scope.",
+      "range": {
+        "startLine": 113,
+        "startChar": 10,
+        "endLine": 113,
+        "endChar": 23
+      },
+      "revId": "f7c1c282e8e48f5c526ebc684b88850498eb8798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aafa349_75d94e12",
+        "filename": "zephyr/drivers/cros_flash/cros_flash.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T23:24:49Z",
+      "side": 1,
+      "message": "Can you consolidate these with line 220 ~ 263?",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 3
+      },
+      "revId": "f7c1c282e8e48f5c526ebc684b88850498eb8798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db79042e_2e7b03a7",
+        "filename": "zephyr/drivers/cros_flash/cros_flash.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T23:24:49Z",
+      "side": 1,
+      "message": "Can you pass expect_enabled?",
+      "range": {
+        "startLine": 221,
+        "startChar": 37,
+        "endLine": 221,
+        "endChar": 50
+      },
+      "revId": "f7c1c282e8e48f5c526ebc684b88850498eb8798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e233f6_87d2959e",
+        "filename": "zephyr/drivers/cros_flash/cros_flash.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T23:24:49Z",
+      "side": 1,
+      "message": "nit: It looks more consistent with the rest of the file if you do:\n\n    if (err !\u003d 0) {\n        /* print some error? */\n        return err;\n    }\n    return flash_change_wp(flash_controller, disable_mask, 0);",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 12
+      },
+      "revId": "f7c1c282e8e48f5c526ebc684b88850498eb8798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bb62225_3c263cec",
+        "filename": "zephyr/drivers/cros_flash/cros_flash.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T23:24:49Z",
+      "side": 1,
+      "message": "This is not -EACCES?",
+      "range": {
+        "startLine": 318,
+        "startChar": 9,
+        "endLine": 318,
+        "endChar": 10
+      },
+      "revId": "f7c1c282e8e48f5c526ebc684b88850498eb8798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c82199_f28471f0",
+        "filename": "zephyr/drivers/cros_flash/cros_flash.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T23:24:49Z",
+      "side": 1,
+      "message": "We return 0 (\u003d not protected) if we don\u0027t know?",
+      "range": {
+        "startLine": 322,
+        "startChar": 9,
+        "endLine": 322,
+        "endChar": 10
+      },
+      "revId": "f7c1c282e8e48f5c526ebc684b88850498eb8798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7997e9ca_ea402e84",
+        "filename": "zephyr/drivers/cros_flash/cros_flash.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T23:24:49Z",
+      "side": 1,
+      "message": "nit: Does BIT() macro work?",
+      "range": {
+        "startLine": 325,
+        "startChar": 27,
+        "endLine": 325,
+        "endChar": 38
+      },
+      "revId": "f7c1c282e8e48f5c526ebc684b88850498eb8798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3162c156_6e8a40c5",
+        "filename": "zephyr/drivers/cros_flash/cros_flash.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T23:24:49Z",
+      "side": 1,
+      "message": "nit: can you move this to the right scope?",
+      "range": {
+        "startLine": 404,
+        "startChar": 5,
+        "endLine": 404,
+        "endChar": 8
+      },
+      "revId": "f7c1c282e8e48f5c526ebc684b88850498eb8798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a68472_0d316fc3",
+        "filename": "zephyr/drivers/cros_flash/cros_flash.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T23:24:49Z",
+      "side": 1,
+      "message": "nit: You may be able to omit this cast.",
+      "range": {
+        "startLine": 437,
+        "startChar": 4,
+        "endLine": 437,
+        "endChar": 40
+      },
+      "revId": "f7c1c282e8e48f5c526ebc684b88850498eb8798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b668a57_b25da9c9",
+        "filename": "zephyr/drivers/cros_flash/cros_flash.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T23:24:49Z",
+      "side": 1,
+      "message": "nit: you can bail out early.",
+      "range": {
+        "startLine": 445,
+        "startChar": 2,
+        "endLine": 445,
+        "endChar": 17
+      },
+      "revId": "f7c1c282e8e48f5c526ebc684b88850498eb8798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4adf8fdc_3a41fd36",
+        "filename": "zephyr/drivers/cros_flash/cros_flash.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T23:24:49Z",
+      "side": 1,
+      "message": "Do we care about the case an earlier image didn\u0027t apply write protection (and we want to do so)?",
+      "range": {
+        "startLine": 491,
+        "startChar": 2,
+        "endLine": 491,
+        "endChar": 13
+      },
+      "revId": "f7c1c282e8e48f5c526ebc684b88850498eb8798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
