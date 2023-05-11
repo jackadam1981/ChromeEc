@@ -47,13 +47,13 @@
  * Based on Revision 3.0, Version 1.2 of
  * the USB Power Delivery Specification.
  */
-
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 #else
 #define CPRINTF(format, args...)
-#define CPRINTS(format, args...)
+// #define CPRINTS(format, args...)
 #endif
 
 #define CPRINTF_LX(x, format, args...)           \
@@ -3685,6 +3685,7 @@ static void pe_snk_transition_sink_run(int port)
 			/*
 			 * Protocol Error
 			 */
+			CPRINTS("------------Protocol Error!");
 			pe_set_hard_reset(port);
 		}
 		return;
@@ -3696,7 +3697,8 @@ static void pe_snk_transition_sink_run(int port)
 	if (pd_timer_is_expired(port, PE_TIMER_PS_TRANSITION) &&
 	    pe[port].hard_reset_counter <= N_HARD_RESET_COUNT) {
 		PE_SET_FLAG(port, PE_FLAGS_PS_TRANSITION_TIMEOUT);
-
+		
+		CPRINTS("------------Timeout will lead to a Hard Reset!");
 		pe_set_hard_reset(port);
 	}
 }
