@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e72f6efe_e92bec1c",
+        "filename": "zephyr/test/krabby/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-05-11T09:54:27Z",
+      "side": 0,
+      "message": "Drop this test, since the call is integrated into the driver.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 44
+      },
+      "revId": "7e22a760d9ba3e2d255d98c2ca2163652c5003ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
