@@ -53,3 +53,8 @@ register_corsola_project(
     project_name="voltorb",
     chip="npcx9m3f",
 )
+
+register_corsola_project(
+    project_name="baipai",
+    chip="npcx9m3f",
+)
