@@ -401,6 +401,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d64d022_2368b47e",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-11T15:59:57Z",
+      "side": 1,
+      "message": "The solution listed above (not Tom\u0027s most recent, but the one prior) seems to work fine. I ran `compare_build.sh` and nothing seems to change in non-helipilot builds and helipilot seems to link properly (note: I have not tested the helipilot build).\n\n--------------------------------------------\n\nAs per Tom\u0027s most recent suggestion, I tried that out too and it also seemed to work. David, in your comment: \n\u003e Adding storage definitions that include CONFIG_MAPPED_STORAGE_BASE to header files like board.h cause the size of the ec.bin file to blow up to 1GB\n\nI think you have your logic backwards. Based on this CL and the patch you uploaded in http://b/273569976#comment5, I think the issue is with using `CONFIG_PROGRAM_MEMORY_BASE` not `CONFIG_MAPPED_STORAGE_BASE`. If I interpreted Tom\u0027s suggestion correctly, this solution is simply to replace these lines:\n```\n#ifdef CHIP_NPCX\n\tconst uint8_t *rwdata \u003d\n\t\t(uint8_t *)CONFIG_MAPPED_STORAGE_BASE +\n\t\t\t\t\tCONFIG_EC_WRITABLE_STORAGE_OFF;\n#else\n\tconst uint8_t *rwdata \u003d\n\t\t(uint8_t *)CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_MEM_OFF;\n#endif\n``` \n\nwith these lines:\n```\nconst uint8_t *rwdata \u003d (uint8_t *)CONFIG_MAPPED_STORAGE_BASE +\n\t\t\t\t   CONFIG_EC_WRITABLE_STORAGE_OFF;\n```\n\nI tested with with `ALLOW_CONFIG\u003d1 ./util/compare_build.sh -b all` which returned `MATCH` indicating no change to any other boards. Note that `all` here doesn\u0027t presently build `helipilot` so I also built that separately and checked the build size:\n```\n$ ls -sh build/helipilot/ec.bin \n1.0M build/helipilot/ec.bin\n```\n\nThen, just to be sure, I ran `$ ALLOW_CONFIG\u003d1 make build_boards` to build all boards and ran `$ find build/ -iname \u0027ec.bin\u0027 -exec ls -sh {} \\; | sort -h` to ensure that all boards were of a reasonable size and the largest was `build/npcx_evb/ec.bin` at 8MB (which matched a build on `cros/main`).\n\nLooking through the code, this works because in most places where the `else` case would be used in this version, `CONFIG_MAPPED_STORAGE_BASE` is set to `CONFIG_PROGRAM_MEMORY_BASE`.",
+      "parentUuid": "3cfcc2db_9b3818bc",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5110cdf6_86dffb2b",
         "filename": "common/rwsig.c",
         "patchSetId": 1
