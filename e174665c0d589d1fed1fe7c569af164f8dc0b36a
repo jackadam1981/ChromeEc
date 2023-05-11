@@ -87,6 +87,24 @@
       "parentUuid": "cc3b8e1b_67727ba4",
       "revId": "e174665c0d589d1fed1fe7c569af164f8dc0b36a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02c1fd2_fd6306f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-11T17:13:12Z",
+      "side": 1,
+      "message": "That\u0027s weird. As long as I use commit [e174665c](https://crrev.com/e174665c0d589d1fed1fe7c569af164f8dc0b36a) (Patchset 2 here) I\u0027m able to build both `metaknight` and `gooey`.  I\u0027m trying to `make build_boards` now just to be sure. If you run `git log`, which commit are you building against?\n\nI am seeing build failures on `host` tests in [luci above](https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8781924243399655505/+/u/build_firmware/call_build_API_script/stdout) and when running `make hosttests` locally. I believe this is due to [chip/host/trng.c](http://cs/chromeos_public/src/platform/ec/chip/host/trng.c) needing to define `trng_rand`.",
+      "parentUuid": "5dc2b71f_318b4395",
+      "revId": "e174665c0d589d1fed1fe7c569af164f8dc0b36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
