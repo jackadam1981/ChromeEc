@@ -22,6 +22,30 @@
       },
       "revId": "4a389d5ea489f31f35343c4f353a5257932be47f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06909da6_a8d89ed8",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-05-11T18:58:05Z",
+      "side": 1,
+      "message": "We can\u0027t club them, because on DP_ENTER_SOP_PRIME_PRIME_ACKED, we have to set tx_type \u003d TCPCI_MSG_SOP, if we club, tx_type will become TCPCI_MSG_SOP_PRIME_PRIME in both cases. For first case (DP_ENTER_SOP_PRIME_ACKED) it will work but for second case it will not work.",
+      "parentUuid": "f57ad477_3932dd7a",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 31
+      },
+      "revId": "4a389d5ea489f31f35343c4f353a5257932be47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
