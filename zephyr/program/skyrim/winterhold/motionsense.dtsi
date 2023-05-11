@@ -72,7 +72,7 @@
 			default-range = <2>;
 			drv-data = <&lis2dw12_data>;
 			i2c-spi-addr-flags = "LIS2DWL_ADDR1_FLAGS";
-
+			bodydetect-config = <&base_bd_config>;
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
