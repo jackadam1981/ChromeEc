@@ -87,6 +87,30 @@
       },
       "revId": "5c7db53be3640fea22b3c59a417a1b4a45eca6e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4de4ccf_8d3c3d3d",
+        "filename": "zephyr/program/skyrim/frostflow/led_policy.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-05-11T01:22:17Z",
+      "side": 1,
+      "message": "If we do this change, it means the LED is white when `RSOC \u003e\u003d 95%` but the original definition is white when `display SOC \u003e\u003d 95%`",
+      "parentUuid": "78e2bce0_cbaa432c",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "5c7db53be3640fea22b3c59a417a1b4a45eca6e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
