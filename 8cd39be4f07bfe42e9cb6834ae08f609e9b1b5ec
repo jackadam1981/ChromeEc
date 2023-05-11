@@ -69,6 +69,30 @@
       },
       "revId": "8cd39be4f07bfe42e9cb6834ae08f609e9b1b5ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c63ee50_c237792c",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-05-11T22:48:56Z",
+      "side": 1,
+      "message": "Talking to Keith... I should probably include this in the comments too... \n\nSpecification p. 37: \nThe PEC is appended to the message as dictated by the protocols in\nSection 6.5. The PEC calculation includes all bytes in the transmission, including\naddress, command and data. The PEC calculation does not include ACK or NACK\nbits or START, STOP or REPEATED START conditions. This means that the\nPEC is computed over the entire message from the first START condition.",
+      "parentUuid": "3dea8bc9_3b565cc9",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 35
+      },
+      "revId": "8cd39be4f07bfe42e9cb6834ae08f609e9b1b5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
