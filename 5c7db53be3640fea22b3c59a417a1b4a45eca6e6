@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a6b2d9_00dce2ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T16:06:17Z",
+      "side": 1,
+      "message": "Hi Wen. The CL looks good now but the owner is still me. So, I can\u0027t give +2. Please feel free to change the owner and reupload a new patchset. Otherwise, I\u0027ll find a reviewer from cros-ec-reviewers.",
+      "revId": "5c7db53be3640fea22b3c59a417a1b4a45eca6e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d410cb6e_57d36f85",
@@ -103,6 +120,30 @@
       "side": 1,
       "message": "If we do this change, it means the LED is white when `RSOC \u003e\u003d 95%` but the original definition is white when `display SOC \u003e\u003d 95%`",
       "parentUuid": "78e2bce0_cbaa432c",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "5c7db53be3640fea22b3c59a417a1b4a45eca6e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c8b628_5ad78c66",
+        "filename": "zephyr/program/skyrim/frostflow/led_policy.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-11T16:06:17Z",
+      "side": 1,
+      "message": "I bet the original definition is wrong. display soc \u003e\u003d 95% is something like raw soc \u003e\u003d 91%. I don\u0027t think that\u0027s intended (because 91% is too low to be full). I think we can leave it as is and let the device owners fix it.",
+      "parentUuid": "a4de4ccf_8d3c3d3d",
       "range": {
         "startLine": 18,
         "startChar": 15,
