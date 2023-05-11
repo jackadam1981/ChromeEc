@@ -61,6 +61,10 @@ properties:
   int-signal:
     type: phandle
     description: pin which triggers interrupt for sensor
+  bodydetect-config:
+    type: phandle
+    required: false
+    description: phandle to body detection parameters
 
 #
 # examples:
