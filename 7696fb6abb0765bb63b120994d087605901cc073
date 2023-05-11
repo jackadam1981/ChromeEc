@@ -16,6 +16,24 @@
       "message": "Looks like `garg` doesn\u0027t have enough space...",
       "revId": "7696fb6abb0765bb63b120994d087605901cc073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bcc2e8d_51acd5e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-05-11T14:57:13Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4519102 just merged, should be enough to resolve it.",
+      "parentUuid": "2706b910_d54eca21",
+      "revId": "7696fb6abb0765bb63b120994d087605901cc073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
