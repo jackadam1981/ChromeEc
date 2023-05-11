@@ -60,7 +60,8 @@ const struct tcpc_config_t tcpc_config[] = {
 		.drv = &ps8xxx_tcpm_drv,
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			 TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V |
-			 TCPC_FLAGS_CONTROL_FRS,
+			 TCPC_FLAGS_CONTROL_FRS |
+			 TCPC_FLAGS_VBUS_MONITOR,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == USBC_PORT_COUNT);
@@ -318,3 +319,10 @@ __override bool board_is_dts_port(int port)
 {
 	return port == USBC_PORT_C0;
 }
+
+#ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
+int pd_snk_is_vbus_provided(int port)
+{
+	return ppc_is_vbus_present(port);
+}
+#endif
