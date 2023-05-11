@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2889ed2d_46e0df47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-11T15:50:59Z",
+      "side": 1,
+      "message": "How do we know this is still necessary? As I noted in the CL that removed these calls, anything executing this code would be crashing today, so it seems it\u0027s either dead code or no one needs this data.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d6ecfb_66c17696",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-11T15:50:59Z",
+      "side": 1,
+      "message": "What are the results before this CL? It always crashed, so it must not have been getting the data anyway, unless there\u0027s something else I\u0027m misunderstanding.",
+      "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "50ba2208_92f9a96b",
@@ -14,6 +54,23 @@
       "writtenOn": "2023-05-11T06:07:53Z",
       "side": 1,
       "message": "LGTM, @timvp can you help check the added back code?",
+      "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a830db6_652a6a1b",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-11T15:50:59Z",
+      "side": 1,
+      "message": "This should verify that `valid_data \u003d\u003d false` if `sensor \u003d\u003d NULL`, and skip the call if not (or return immediately when entering the function). Otherwise, we\u0027re just moving the crash from here to `fifo_stage_unit()`:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/ec/common/motion_sense_fifo.c;rcl\u003d599c438e80c634a580c33bfb431472cf36c1cad5;l\u003d294\n```\nstatic void fifo_stage_unit(struct ec_response_motion_sensor_data *data,\n\t\t\t    struct motion_sensor_t *sensor, int valid_data)\n{\n...\n\tif (valid_data) {\n\t\tint removed \u003d 0;\n\n\t\tif (sensor-\u003eoversampling_ratio \u003d\u003d 0) {\n\t\t\tremoved \u003d 1;\n```\n\nThere should also be a test that exercised `fifo_stage_unit()`, so we can verify passing NULL to `fifo_stage_unit()` works correctly.",
       "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
