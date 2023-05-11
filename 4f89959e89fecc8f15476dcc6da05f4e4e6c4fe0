@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "309be3f7_e299b949",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-11T21:02:53Z",
+      "side": 1,
+      "message": "nit: Rather than the `#else` way down below, this might be slightly easier to read if it were just:\n```\n#ifndef CHIP_VARIANT_NPCX9M8S\n#error \"Please add support for CONFIG_RNG on this chip family.\"\n#endif\n```",
+      "revId": "4f89959e89fecc8f15476dcc6da05f4e4e6c4fe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
