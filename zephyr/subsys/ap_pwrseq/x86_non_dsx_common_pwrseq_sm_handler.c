@@ -459,7 +459,8 @@ static int common_pwr_sm_run(int state)
 
 	case SYS_POWER_STATE_S3:
 		/* AP is out of suspend to RAM */
-		if (!power_signals_on(IN_PGOOD_ALL_CORE)) {
+		if (!power_signals_on(IN_PGOOD_ALL_CORE) ||
+		    !rsmrst_power_is_good()) {
 			/* Required rail went away, go straight to S5 */
 			shutdown_and_notify(AP_POWER_SHUTDOWN_POWERFAIL);
 			return SYS_POWER_STATE_G3;
@@ -544,7 +545,8 @@ static int common_pwr_sm_run(int state)
 #endif /* CONFIG_AP_PWRSEQ_S0IX */
 
 	case SYS_POWER_STATE_S0:
-		if (!power_signals_on(IN_PGOOD_ALL_CORE)) {
+		if (!power_signals_on(IN_PGOOD_ALL_CORE) ||
+		    !rsmrst_power_is_good()) {
 			shutdown_and_notify(AP_POWER_SHUTDOWN_POWERFAIL);
 			return SYS_POWER_STATE_G3;
 		} else if (signals_valid_and_on(IN_PCH_SLP_S3)) {
