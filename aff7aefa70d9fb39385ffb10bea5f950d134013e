@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df175a2_5e119a90",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-05-11T20:47:50Z",
+      "side": 1,
+      "message": "modified this plus the out and reg variables. Thanks.",
+      "parentUuid": "c4524336_d8dbd6f8",
+      "range": {
+        "startLine": 221,
+        "startChar": 10,
+        "endLine": 221,
+        "endChar": 19
+      },
+      "revId": "aff7aefa70d9fb39385ffb10bea5f950d134013e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "361e4e2b_61154b01",
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0036786_764ef923",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-05-11T20:47:50Z",
+      "side": 1,
+      "message": "That is correct. I added a comment to the section with relevant spec and description of what\u0027s happening in the i2c protocol.",
+      "parentUuid": "361e4e2b_61154b01",
+      "range": {
+        "startLine": 229,
+        "startChar": 49,
+        "endLine": 229,
+        "endChar": 50
+      },
+      "revId": "aff7aefa70d9fb39385ffb10bea5f950d134013e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91f3c735_002cd12b",
         "filename": "zephyr/test/drivers/default/src/battery.c",
         "patchSetId": 1
@@ -77,6 +125,30 @@
       "writtenOn": "2023-05-10T19:27:52Z",
       "side": 1,
       "message": "Can you please add comments to these?",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 0
+      },
+      "revId": "aff7aefa70d9fb39385ffb10bea5f950d134013e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363a7b16_80fcc723",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-05-11T20:47:50Z",
+      "side": 1,
+      "message": "Added comment to the section including reference to original code (i2c_controller.c) and the spec that discusses this. I think it makes it more clear now, but LMK?",
+      "parentUuid": "91f3c735_002cd12b",
       "range": {
         "startLine": 231,
         "startChar": 0,
