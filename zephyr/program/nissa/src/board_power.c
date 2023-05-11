@@ -5,7 +5,9 @@
 
 #include "gpio/gpio.h"
 #include "gpio_signal.h"
+#include "hooks.h"
 #include "system_boot_time.h"
+#include "system.h"
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
@@ -23,6 +25,11 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 #define X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS 5
 
 static bool s0_stable;
+
+/* ---> TODO Ben test 20230504 */
+static void check_rsmrst_deferred(void);
+DECLARE_DEFERRED(check_rsmrst_deferred);
+/* TODO Ben test 20230504  <--- */
 
 static void generate_ec_soc_dsw_pwrok_handler(int delay)
 {
@@ -101,10 +108,29 @@ void board_ap_power_action_s3_s0(void)
 	s0_stable = false;
 }
 
+/* ---> TODO Ben test 20230504 */
+static void check_rsmrst_deferred(void)
+{
+	if (!power_signal_get(PWR_RSMRST))
+		system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
+}
+/* TODO Ben test 20230504  <--- */
+
 void board_ap_power_action_s0_s3(void)
 {
 	power_signal_enable(PWR_DSW_PWROK);
 	power_signal_enable(PWR_PG_PP1P05);
+
+	/* ---> TODO Ben test 20230504 */
+	/* Check if the PCH has come out of suspend state */
+	if (power_signal_get(PWR_RSMRST)) {
+		LOG_INF(" Ben test S0S3 RSMRST is ok");
+	} else {
+		LOG_ERR(" Ben test S0S3 RSMRST is not ok");
+		hook_call_deferred(&check_rsmrst_deferred_data, 0);
+	}
+	/* TODO Ben test 20230504  <--- */
+
 	s0_stable = false;
 }
 

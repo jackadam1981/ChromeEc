@@ -74,6 +74,7 @@ int all_sys_pwrgd_handler(void)
 /* Generate SYS_PWROK->SOC if needed by system */
 void generate_sys_pwrok_handler(void)
 {
+	//static uint8_t count;
 	/* Enable PCH_SYS_PWROK. */
 	if (power_signal_get(PWR_EC_PCH_SYS_PWROK) == 0) {
 		k_msleep(AP_PWRSEQ_DT_VALUE(sys_pwrok_delay));
@@ -87,6 +88,11 @@ void generate_sys_pwrok_handler(void)
 		LOG_INF("Turning on PWR_EC_PCH_SYS_PWROK");
 		power_signal_set(PWR_EC_PCH_SYS_PWROK, 1);
 		/* PCH will now release PLT_RST */
+		/* ---> TODO Ben test 20230504 */
+		//count ++;
+		//if (count == 2)
+		//while (1);
+		/* TODO Ben test 20230504  <--- */
 	}
 }
 

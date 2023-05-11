@@ -64,6 +64,13 @@
 		gpios = <&gpio6 2 GPIO_ACTIVE_LOW>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
+	pwr-bat-state {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "Combined batter in";
+		enum-name = "PWR_BAT_PWRGD";
+		gpios = <&gpioa 3 GPIO_ACTIVE_LOW>;
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+	};
 	pwr-ec-soc-dsw-pwrok {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "DSW_PWROK output to PCH";
