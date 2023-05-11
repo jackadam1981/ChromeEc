@@ -150,9 +150,21 @@ static void determine_threshold_scale(int range, int rms_noise)
 	 * rms_noise:          ug
 	 * var_noise:          mm^2/s^4
 	 */
+	int var_threshold, confidence_delta, var_noise_factor;
 	const int data_1g = MOTION_SCALING_FACTOR / range;
 	const int multiplier = POW2(data_1g);
 	const int divisor = POW2(9800);
+
+	if (body_sensor->bd_params) {
+		var_noise_factor = body_sensor->bd_params->var_noise_factor;
+		var_threshold = body_sensor->bd_params->var_threshold;
+		confidence_delta = body_sensor->bd_params->confidence_delta;
+	} else {
+		var_noise_factor = CONFIG_BODY_DETECTION_VAR_NOISE_FACTOR;
+		var_threshold = CONFIG_BODY_DETECTION_VAR_THRESHOLD;
+		confidence_delta = CONFIG_BODY_DETECTION_CONFIDENCE_DELTA;
+	}
+
 	/*
 	 * We are measuring the var(X) + var(Y), so theoretically, the
 	 * var(noise) should be 2 * rms_noise^2. However, in most case, on a
@@ -160,16 +172,13 @@ static void determine_threshold_scale(int range, int rms_noise)
 	 * rms_noise^2. We can multiply the rms_noise^2 with the
 	 * CONFIG_BODY_DETECTION_VAR_NOISE_FACTOR / 100.
 	 */
-	const int var_noise = POW2((uint64_t)rms_noise) *
-			      CONFIG_BODY_DETECTION_VAR_NOISE_FACTOR *
+	const int var_noise = POW2((uint64_t)rms_noise) * var_noise_factor *
 			      POW2(98) / 100 / POW2(10000);
 
 	var_threshold_scaled =
-		(uint64_t)(CONFIG_BODY_DETECTION_VAR_THRESHOLD + var_noise) *
-		multiplier / divisor;
+		(uint64_t)(var_threshold + var_noise) * multiplier / divisor;
 	confidence_delta_scaled =
-		(uint64_t)CONFIG_BODY_DETECTION_CONFIDENCE_DELTA * multiplier /
-		divisor;
+		(uint64_t)confidence_delta * multiplier / divisor;
 }
 
 void body_detect_reset(void)
