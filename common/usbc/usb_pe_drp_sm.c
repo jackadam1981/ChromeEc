@@ -53,7 +53,6 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 #else
 #define CPRINTF(format, args...)
-#define CPRINTS(format, args...)
 #endif
 
 #define CPRINTF_LX(x, format, args...)           \
@@ -3685,6 +3684,7 @@ static void pe_snk_transition_sink_run(int port)
 			/*
 			 * Protocol Error
 			 */
+
 			pe_set_hard_reset(port);
 		}
 		return;
