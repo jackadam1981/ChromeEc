@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f53e8fa7_bbd2beb2",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-05-11T22:50:40Z",
+      "side": 1,
+      "message": "Is this preventing sensor from being initialized at all? You may also want to prevent HOOK\u0027s from invoking `motion_sense_switch_sensor_rate`.\nPower states change may initialize sensors.",
+      "range": {
+        "startLine": 775,
+        "startChar": 1,
+        "endLine": 780,
+        "endChar": 2
+      },
+      "revId": "c48f86ea9efa00a7eccd35bf3c49b67c88a4d282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
