@@ -15,7 +15,7 @@
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
 #include <zephyr/logging/log.h>
-#include <zephyr/ztest.h>
+// #include <zephyr/ztest.h>
 
 #define DT_DRV_COMPAT cros_ps8xxx_emul
 #define PS8XXX_REG_MUX_IN_HPD_ASSERTION MUX_IN_HPD_ASSERTION_REG
@@ -680,17 +680,100 @@ static int ps8xxx_emul_init(const struct emul *emul,
 
 DT_INST_FOREACH_STATUS_OKAY(PS8XXX_EMUL)
 
-#ifdef CONFIG_ZTEST_NEW_API
-#define PS8XXX_EMUL_RESET_RULE_BEFORE(n) \
-	ps8xxx_emul_tcpc_reset(EMUL_DT_GET(DT_DRV_INST(n)));
-static void ps8xxx_emul_reset_rule_before(const struct ztest_unit_test *test,
-					  void *data)
-{
-	ARG_UNUSED(test);
-	ARG_UNUSED(data);
-	DT_INST_FOREACH_STATUS_OKAY(PS8XXX_EMUL_RESET_RULE_BEFORE);
-}
-ZTEST_RULE(PS8XXX_emul_reset, ps8xxx_emul_reset_rule_before, NULL);
-#endif /* CONFIG_ZTEST_NEW_API */
+// #ifdef CONFIG_ZTEST_NEW_API
+// #define PS8XXX_EMUL_RESET_RULE_BEFORE(n) \
+// 	ps8xxx_emul_tcpc_reset(EMUL_DT_GET(DT_DRV_INST(n)));
+// static void ps8xxx_emul_reset_rule_before(const struct ztest_unit_test *test,
+// 					  void *data)
+// {
+// 	ARG_UNUSED(test);
+// 	ARG_UNUSED(data);
+// 	DT_INST_FOREACH_STATUS_OKAY(PS8XXX_EMUL_RESET_RULE_BEFORE);
+// }
+// ZTEST_RULE(PS8XXX_emul_reset, ps8xxx_emul_reset_rule_before, NULL);
+// #endif /* CONFIG_ZTEST_NEW_API */
 
 DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);
+
+
+
+
+#include "emul/tcpc/emul_tcpci_partner_src.h"
+#include <zephyr/shell/shell.h>
+static struct tcpci_partner_data emul_charger_20v;
+static struct tcpci_src_emul_data emul_src_ext;
+
+// static inline void set_ac_enabled(bool enabled)
+// {
+// 	const struct device *acok_dev =
+// 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_ACOK_OD_NODE, gpios));
+
+// 	zassert_ok(gpio_emul_input_set(acok_dev, GPIO_ACOK_OD_PIN, enabled),
+// 		   NULL);
+// 	/*
+// 	 * b/253284635 - Sleep for a full second past the debounce time
+// 	 * to ensure the power button debounce logic runs.
+// 	 */
+// 	k_sleep(K_MSEC(CONFIG_EXTPOWER_DEBOUNCE_MS + 1000));
+// 	zassert_equal(enabled, extpower_is_present(), NULL);
+// }
+
+static inline void connect_charger_to_port()
+{
+	// set_ac_enabled(true);
+	// zassert_ok(tcpci_partner_connect_to_tcpci(&fixture->charger_20v,
+	// 					  fixture->tcpci_emul),
+	// 	   NULL);
+
+	// test_fixture.tcpci_emul = EMUL_GET_USBC_BINDING(TEST_PORT, tcpc);
+	struct emul *tcpci_emul = EMUL_DT_GET(DT_NODELABEL(tcpci_emul));
+
+	tcpci_partner_connect_to_tcpci(&emul_charger_20v, tcpci_emul);
+
+	// isl923x_emul_set_adc_vbus(fixture->charger_emul,
+	// 			  PDO_FIXED_GET_VOLT(fixture->src_ext.pdo[1]));
+
+	/* Wait for PD negotiation and current ramp.
+	 * TODO(b/213906889): Check message timing and contents.
+	 */
+	// k_sleep(K_SECONDS(10));
+}
+
+static inline void disconnect_charger_from_port()
+{
+	// set_ac_enabled(false);
+	// zassert_ok();
+	// isl923x_emul_set_adc_vbus(fixture->charger_emul, 0);
+	// k_sleep(K_SECONDS(1));
+
+	struct emul *tcpci_emul = EMUL_DT_GET(DT_NODELABEL(tcpci_emul));
+
+	tcpci_emul_disconnect_partner(tcpci_emul);
+}
+
+static int cmd_plugchg(const struct shell *sh, size_t argc, char **argv)
+{
+	/* Initialized the charger to supply 20V and 3A */
+	tcpci_partner_init(&emul_charger_20v, PD_REV20);
+	emul_charger_20v.extensions = tcpci_src_emul_init(&emul_src_ext, &emul_charger_20v, NULL);
+	emul_src_ext.pdo[1] = PDO_FIXED(20000, 3000, PDO_FIXED_UNCONSTRAINED);
+
+	connect_charger_to_port();
+
+	return 0;
+}
+SHELL_CMD_REGISTER(plugchg, NULL, "Plug charger", cmd_plugchg);
+
+static int cmd_unplugchg(const struct shell *sh, size_t argc, char **argv)
+{
+	/* Initialized the charger to supply 20V and 3A */
+	// tcpci_partner_init(&emul_charger_20v, PD_REV20);
+	// emul_charger_20v.extensions = tcpci_src_emul_init(&emul_src_ext, &emul_charger_20v, NULL);
+	// emul_src_ext.pdo[1] = PDO_FIXED(20000, 3000, PDO_FIXED_UNCONSTRAINED);
+
+	// connect_charger_to_port((struct usb_attach_20v_3a_pd_charger_fixture *)data);
+	disconnect_charger_from_port();
+
+	return 0;
+}
+SHELL_CMD_REGISTER(unplugchg, NULL, "Unplug charger", cmd_unplugchg);

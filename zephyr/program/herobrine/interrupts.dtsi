@@ -66,7 +66,7 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "power_signal_interrupt";
 		};
-		int_usb_c0_swctl: usb_c0_swctl {
+		/*int_usb_c0_swctl: usb_c0_swctl {
 			irq-pin = <&gpio_usb_c0_swctl_int_odl>;
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "ppc_interrupt";
@@ -75,8 +75,8 @@
 			irq-pin = <&gpio_usb_c1_swctl_int_odl>;
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "ppc_interrupt";
-		};
-		int_usb_c0_bc12: usb_c0_bc12 {
+		};*/
+		/*int_usb_c0_bc12: usb_c0_bc12 {
 			irq-pin = <&gpio_usb_c0_bc12_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "usb0_evt";
@@ -85,12 +85,12 @@
 			irq-pin = <&gpio_usb_c1_bc12_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "usb1_evt";
-		};
-		int_usb_a0_oc: usb_a0_oc {
+		};*/
+		/*int_usb_a0_oc: usb_a0_oc {
 			irq-pin = <&gpio_usb_a0_oc_odl>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "usba_oc_interrupt";
-		};
+		};*/
 		int_accel_gyro: accel_gyro {
 			irq-pin = <&gpio_accel_gyro_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;

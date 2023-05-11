@@ -56,7 +56,7 @@ static void check_delay_5v(void)
 	if (battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED) {
 		CPRINTS("Delay 5V due to battery disconnect");
 	} else if (battery_state_of_charge_abs(&soc) != EC_SUCCESS ||
-		   soc < charger_get_min_bat_pct_for_power_on()) {
+		   soc < 50/*charger_get_min_bat_pct_for_power_on()*/) {
 		CPRINTS("Delay 5V due to low battery");
 	} else {
 		return;

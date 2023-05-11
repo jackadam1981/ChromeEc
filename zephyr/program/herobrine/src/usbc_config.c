@@ -241,7 +241,7 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 	 * critical, as we may brownout.
 	 */
 	if (supplier == CHARGE_SUPPLIER_PD && charge_ma < 1500 &&
-	    charge_get_percent() < CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON) {
+	    /*charge_get_percent()*/ 50 < CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON) {
 		CPRINTS("Using max ilim %d", max_ma);
 		charge_ma = max_ma;
 	}

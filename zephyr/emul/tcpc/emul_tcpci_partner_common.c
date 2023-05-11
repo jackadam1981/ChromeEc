@@ -15,7 +15,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/sys/byteorder.h>
-#include <zephyr/ztest.h>
+// #include <zephyr/ztest.h>
 
 LOG_MODULE_REGISTER(tcpci_partner, CONFIG_TCPCI_EMUL_LOG_LEVEL);
 
@@ -49,16 +49,18 @@ void tcpci_partner_common_hard_reset_as_role(struct tcpci_partner_data *data,
  * @return Pointer to new message on success
  * @return NULL on error
  */
+static char buf1[512];
+static char buf2[512];
 static struct tcpci_partner_msg *tcpci_partner_alloc_msg_helper(size_t size)
 {
 	struct tcpci_partner_msg *new_msg;
 
-	new_msg = calloc(1, sizeof(struct tcpci_partner_msg));
+	new_msg = (struct tcpci_partner_msg *)buf1; //calloc(1, sizeof(struct tcpci_partner_msg));
 	if (new_msg == NULL) {
 		return NULL;
 	}
 
-	new_msg->msg.buf = calloc(1, size);
+	new_msg->msg.buf = (uint8_t*)buf2; //calloc(1, size);
 	if (new_msg->msg.buf == NULL) {
 		free(new_msg);
 		return NULL;
@@ -148,6 +150,8 @@ static enum tcpci_emul_tx_status *tcpci_partner_log_msg(
 	struct tcpci_partner_log_msg *log_msg;
 	int cnt;
 	int ret;
+
+	return NULL;
 
 	if (!data->collect_msg_log) {
 		return NULL;
@@ -1389,10 +1393,10 @@ void tcpci_partner_common_set_ams_ctrl_msg(struct tcpci_partner_data *data,
 					   enum pd_ctrl_msg_type msg_type)
 {
 	/* Make sure we handle one CTRL request at a time */
-	zassert_equal(data->cur_ams_ctrl_req, PD_CTRL_INVALID,
-		      "More than one CTRL msg handled in parallel"
-		      " cur_ams_ctrl_req=%d, msg_type=%d",
-		      data->cur_ams_ctrl_req, msg_type);
+	// zassert_equal(data->cur_ams_ctrl_req, PD_CTRL_INVALID,
+	// 	      "More than one CTRL msg handled in parallel"
+	// 	      " cur_ams_ctrl_req=%d, msg_type=%d",
+	// 	      data->cur_ams_ctrl_req, msg_type);
 	data->cur_ams_ctrl_req = msg_type;
 }
 
@@ -1583,12 +1587,15 @@ int tcpci_partner_connect_to_tcpci(struct tcpci_partner_data *data,
 
 	data->tcpci_emul = tcpci_emul;
 
+	printk("@@ %s:%d\n", __FUNCTION__, __LINE__);
 	for (ext = data->extensions; ext != NULL; ext = ext->next) {
 		if (ext->ops->connect == NULL) {
+			printk("@@ %s:%d\n", __FUNCTION__, __LINE__);
 			continue;
 		}
 		ret = ext->ops->connect(ext, data);
 		if (ret) {
+			printk("@@ %s:%d\n", __FUNCTION__, __LINE__);
 			data->tcpci_emul = NULL;
 			return ret;
 		}
@@ -1599,6 +1606,7 @@ int tcpci_partner_connect_to_tcpci(struct tcpci_partner_data *data,
 	ret = tcpci_emul_connect_partner(data->tcpci_emul, data->power_role,
 					 data->cc1, data->cc2, data->polarity);
 	if (ret) {
+		printk("@@ %s:%d\n", __FUNCTION__, __LINE__);
 		tcpci_emul_set_partner_ops(data->tcpci_emul, NULL);
 		data->tcpci_emul = NULL;
 	}
@@ -1606,6 +1614,7 @@ int tcpci_partner_connect_to_tcpci(struct tcpci_partner_data *data,
 	/* Clear any received battery capability info */
 	tcpci_partner_reset_battery_capability_state(data);
 
+	printk("@@ %s:%d - %d\n", __FUNCTION__, __LINE__, ret);
 	return ret;
 }
 

@@ -14,7 +14,7 @@
 #include <zephyr/drivers/i2c_emul.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/sys/byteorder.h>
-#include <zephyr/ztest.h>
+// #include <zephyr/ztest.h>
 
 LOG_MODULE_REGISTER(tcpci_emul, CONFIG_TCPCI_EMUL_LOG_LEVEL);
 
@@ -558,6 +558,8 @@ int tcpci_emul_connect_partner(const struct emul *emul,
 	enum tcpc_cc_voltage_status cc1_v, cc2_v;
 	enum tcpc_cc_pull cc1_r, cc2_r;
 
+	printk("@@ PARTNER CC: %d, %d\n", partner_cc1, partner_cc2);
+
 	if (polarity == POLARITY_CC1) {
 		cc1_v = partner_cc1;
 		cc2_v = partner_cc2;
@@ -591,9 +593,13 @@ int tcpci_emul_connect_partner(const struct emul *emul,
 	/* If CC status is TYPEC_CC_VOLT_RP_*, then BIT(2) is ignored */
 	cc_status = TCPC_REG_CC_STATUS_SET(
 		partner_power_role == PD_ROLE_SOURCE ? 1 : 0, cc2_v, cc1_v);
+
+	printk("@@ Connecting, EMUL CC: %d, %d, partner_power_role: %d, cc_status: %x\n", cc1_v, cc2_v, partner_power_role, cc_status);
+
 	set_reg(ctx, TCPC_REG_CC_STATUS, cc_status);
-	get_reg(ctx, TCPC_REG_ALERT, &alert);
-	set_reg(ctx, TCPC_REG_ALERT, alert | TCPC_REG_ALERT_CC_STATUS);
+	// get_reg(ctx, TCPC_REG_ALERT, &alert);
+	// set_reg(ctx, TCPC_REG_ALERT, alert | TCPC_REG_ALERT_CC_STATUS);
+	set_reg(ctx, TCPC_REG_ALERT, TCPC_REG_ALERT_CC_STATUS);
 
 	if (partner_power_role == PD_ROLE_SOURCE) {
 		get_reg(ctx, TCPC_REG_POWER_STATUS, &power_status);
@@ -608,6 +614,7 @@ int tcpci_emul_connect_partner(const struct emul *emul,
 	}
 
 	tcpci_emul_alert_changed(emul);
+	printk("@@ CONNECTED CC: %d, %d [%d, %d]\n", cc1_r, cc2_r, cc1_v, cc2_v);
 
 	return 0;
 }

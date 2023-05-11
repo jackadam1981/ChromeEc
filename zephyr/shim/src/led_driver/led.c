@@ -200,14 +200,14 @@ static int match_node(int node_idx)
 {
 	/* Check if this node depends on power state */
 	if (node_array[node_idx].pwr_state != PWR_STATE_UNCHANGE) {
-		enum charge_state pwr_state = charge_get_state();
+		enum charge_state pwr_state = PWR_STATE_DISCHARGE;//charge_get_state();
 
 		if (node_array[node_idx].pwr_state != pwr_state)
 			return -1;
 
 		/* Check if this node depends on charge port */
 		if (node_array[node_idx].charge_port != -1) {
-			int port = charge_manager_get_active_charge_port();
+			int port = -1;//charge_manager_get_active_charge_port();
 
 			if (node_array[node_idx].charge_port != port)
 				return -1;
@@ -235,7 +235,7 @@ static int match_node(int node_idx)
 
 	/* Check if this node depends on battery level */
 	if (node_array[node_idx].batt_lvl[0] != -1) {
-		int curr_batt_lvl = charge_get_percent();
+		int curr_batt_lvl = 50;//charge_get_percent();
 
 		if ((curr_batt_lvl < node_array[node_idx].batt_lvl[0]) ||
 		    (curr_batt_lvl > node_array[node_idx].batt_lvl[1]))

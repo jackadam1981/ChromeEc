@@ -64,9 +64,9 @@ static int watchdog_config(const struct watchdog_info *info)
 {
 	const struct device *wdt_dev = info->wdt_dev;
 	const struct wdt_timeout_cfg *config = &info->config;
-	int chan;
+	int chan = 0;
 
-	chan = wdt_install_timeout(wdt_dev, config);
+	// chan = wdt_install_timeout(wdt_dev, config);
 
 	/* If watchdog is running, reinstall it. */
 	if (chan == -EBUSY) {
@@ -83,11 +83,11 @@ static int watchdog_config(const struct watchdog_info *info)
 
 static int watchdog_enable(const struct device *wdt_dev)
 {
-	int err;
+	int err = 0;
 
-	err = wdt_setup(wdt_dev, 0);
-	if (err < 0)
-		LOG_ERR("Watchdog %s setup error: %d", wdt_dev->name, err);
+	// err = wdt_setup(wdt_dev, 0);
+	// if (err < 0)
+	// 	LOG_ERR("Watchdog %s setup error: %d", wdt_dev->name, err);
 
 	return err;
 }
@@ -106,9 +106,9 @@ static int watchdog_init_device(const struct watchdog_info *info)
 	if (chan < 0)
 		return chan;
 
-	err = watchdog_enable(wdt_dev);
-	if (err < 0)
-		return err;
+	// err = watchdog_enable(wdt_dev);
+	// if (err < 0)
+	// 	return err;
 
 	return chan;
 }
@@ -136,6 +136,9 @@ void watchdog_reload(void)
 {
 	if (!watchdog_initialized)
 		return;
+
+	// printk("<< KICK >>\n");
+	return;
 
 	for (int i = 0; i < ARRAY_SIZE(wdt_info); i++) {
 		if (wdt_chan[i] < 0)

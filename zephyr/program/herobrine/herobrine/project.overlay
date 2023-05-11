@@ -59,6 +59,6 @@
 };
 
 /* usbc overrides */
-&port0 {
+/*&port0 {
 	ppc_alt = <&ppc_port0_alt>;
-};
+};*/
