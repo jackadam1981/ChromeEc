@@ -401,6 +401,7 @@ static int command_cutoff(int argc, const char **argv)
 	battery_cutoff_state = BATTERY_CUTOFF_STATE_IN_PROGRESS;
 	rv = board_cut_off_battery();
 	if (rv == EC_RES_SUCCESS) {
+		ccprints("-----cutoff-----1");
 		ccprints("Battery cut off");
 		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
 		return EC_SUCCESS;
