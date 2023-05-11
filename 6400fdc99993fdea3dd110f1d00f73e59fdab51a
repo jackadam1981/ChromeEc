@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a595ba48_23298e9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447572
+      },
+      "writtenOn": "2023-05-11T18:22:37Z",
+      "side": 1,
+      "message": "https://issuetracker.google.com/266823500#comment19\n \n As mentioned in above comment, the cable identification flow(active cable with DPAM version 2.1) is implemented in EC. \n Connector-class/mux agent driver is using that via host command(EC_CMD_USB_PD_DP21_CABLE_DISCOVERY) to configure SOP DisplayPort.\nThis is transmitted to IOM through mux agent for DRM to use. \n\n\"\"So, what is being implemented here? EnterMode from host to DP 2.1 active cables should be optional (AFAIK according to 4.11 of DP Alt mode v2.1)\"\"\n\n4.11 talks about Legacy active cables but for the new Active cables that has DPAM version 2.1 support, this implementation is necessary (As per DAPM version resolution Table in 5-5(DP Alt mode v2.1)).",
+      "parentUuid": "0dd40a6d_90228e3c",
+      "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e75bc179_f0670bba",
