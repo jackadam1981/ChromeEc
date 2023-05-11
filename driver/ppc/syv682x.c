@@ -220,6 +220,10 @@ static int syv682x_vbus_source_enable(int port, int enable)
 			gpio_or_ioex_set_level(ppc_chips[port].frs_en, 0);
 	}
 
+	rv = tcpm_set_src_ctrl(port, enable);
+	if (rv)
+		return rv;
+
 	rv = write_reg(port, SYV682X_CONTROL_1_REG, regval);
 	if (rv)
 		return rv;
@@ -440,6 +444,10 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 		 */
 		regval |= SYV682X_CONTROL_1_PWR_ENB;
 	}
+
+	rv = tcpm_set_snk_ctrl(port, enable);
+	if (rv)
+		return rv;
 
 	return write_reg(port, SYV682X_CONTROL_1_REG, regval);
 }
