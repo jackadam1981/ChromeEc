@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aec8d65_4a6f49f7",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-12T17:10:13Z",
+      "side": 1,
+      "message": "This appears to just be a workaround for a potential board issue.  Let\u0027s continue discussing on the bug.",
+      "range": {
+        "startLine": 463,
+        "startChar": 2,
+        "endLine": 463,
+        "endChar": 32
+      },
+      "revId": "ee05e33fc78309e0da64f580ac1c3a2f6988455d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
