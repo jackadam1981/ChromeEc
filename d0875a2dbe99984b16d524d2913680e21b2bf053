@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "115903c5_0496d3db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-12T15:15:39Z",
+      "side": 1,
+      "message": "`motion_sense_fifo_stage_data()` will always segfault and crash when `sensor \u003d NULL`, implying that function call isn\u0027t necessary (since it couldn\u0027t complete). Please investigate how it was working before, so we can understand the changes that are necessary.",
+      "parentUuid": "6b8b6b36_05603c18",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19d6ecfb_66c17696",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "before this CL, I can\u0027t received the event from powerd log.",
       "parentUuid": "19d6ecfb_66c17696",
+      "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d13c9cd_9268886b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-12T15:15:39Z",
+      "side": 1,
+      "message": "The better question is: how was this working before the calls were removed. Since that\u0027s the same question I have in the other comment thread, I\u0027m going to resolve this one so it\u0027s in one place.",
+      "parentUuid": "7167b882_fb722b02",
       "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -131,6 +173,24 @@
       "side": 1,
       "message": "From the comment in `fifo_stage_unit`[1], the sensor can be NULL (for activity sensors), since the `valid_data` must be 0. So I think we will not see the crash here.\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/motion_sense_fifo.c;l\u003d266?q\u003dfifo_stage_unit\u0026ss\u003dchromiumos",
       "parentUuid": "6a830db6_652a6a1b",
+      "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a92ec3f7_15b50398",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-12T15:15:39Z",
+      "side": 1,
+      "message": "My point is that we need to enforce `valid_data \u003d\u003d false`, not just let things crash if it\u0027s not.",
+      "parentUuid": "bc27e1f3_161dc190",
       "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
