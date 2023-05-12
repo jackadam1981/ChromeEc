@@ -119,8 +119,8 @@
 
 	console {
 		compatible = "ec-console";
-		/* disabled = "DPTF", "PWM"; */
-		disabled = "PWM";
+		disabled = "DPTF", "PWM";
+		/* disabled = "PWM"; */
 	};
 };
 
