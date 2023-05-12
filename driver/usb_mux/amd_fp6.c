@@ -225,6 +225,9 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, amd_fp6_chipset_resume, HOOK_PRIO_DEFAULT);
 
 static int amd_fp6_chipset_reset(const struct usb_mux *me)
 {
+	if (!chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON))
+		return EC_SUCCESS;
+
 	amd_fp6_chipset_resume();
 	return EC_SUCCESS;
 }
