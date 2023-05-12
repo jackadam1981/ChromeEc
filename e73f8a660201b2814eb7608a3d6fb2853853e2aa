@@ -563,6 +563,30 @@
       },
       "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc5d7e30_11c65ebd",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-12T05:18:22Z",
+      "side": 1,
+      "message": "Thanks for go/crvc/4521405. Using it, I can change\n\n#ifdef CHIP_NPCX\n\tvb21_key \u003d\n\t\t(const struct vb21_packed_key *)\n\t\t\t(CONFIG_MAPPED_STORAGE_BASE +\n\t\t\t CONFIG_EC_PROTECTED_STORAGE_OFF +\n\t\t\t CONFIG_RO_PUBKEY_STORAGE_OFF);\n\tvb21_sig \u003d\n\t\t(const struct vb21_signature *)\n\t\t\t(CONFIG_MAPPED_STORAGE_BASE +\n\t\t\t CONFIG_EC_WRITABLE_STORAGE_OFF +\n\t\t\t CONFIG_RW_STORAGE_OFF + RW_SIG_OFFSET);\n#else\n\tvb21_key \u003d vb21_get_packed_key();\n\tvb21_sig \u003d (const struct vb21_signature *)CONFIG_RW_SIG_ADDR;\n#endif\n\nto\n\nvb21_key \u003d vb21_get_packed_key();\n#ifdef CHIP_NPCX\n\tvb21_sig \u003d\n\t\t(const struct vb21_signature *)\n\t\t\t(CONFIG_MAPPED_STORAGE_BASE +\n\t\t\t CONFIG_EC_WRITABLE_STORAGE_OFF +\n\t\t\t CONFIG_RW_STORAGE_OFF + RW_SIG_OFFSET);\n#else\n\n\tvb21_sig \u003d (const struct vb21_signature *)CONFIG_RW_SIG_ADDR;\n#endif\n\nHowever, I can\u0027t change the second part of the #ifdef for vb21_sig because  defining CONFIG_RW_SIG_ADDR to\n\n(CONFIG_MAPPED_STORAGE_BASE + \\\n CONFIG_EC_WRITABLE_STORAGE_OFF + \\\n CONFIG_RW_STORAGE_OFF + \n RW_SIG_OFFSET)\n\nalso causes the 1 GB ec.bin error",
+      "parentUuid": "b767c51d_3dc6a582",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 0
+      },
+      "revId": "e73f8a660201b2814eb7608a3d6fb2853853e2aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
