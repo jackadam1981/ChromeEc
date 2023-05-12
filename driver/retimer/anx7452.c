@@ -164,6 +164,7 @@ static int anx7452_set(const struct usb_mux *me, mux_state_t mux_state,
 	int cfg0_val = 0;
 	int cfg1_val = 0;
 	int cfg2_val = 0;
+	int port = me->usb_port;
 	int reg;
 	int rv;
 
@@ -172,29 +173,58 @@ static int anx7452_set(const struct usb_mux *me, mux_state_t mux_state,
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
 
-	/* Apply CC polarity settings */
-	if (mux_state & USB_PD_MUX_POLARITY_INVERTED) {
-		cfg0_val |= ANX7452_CTLTOP_CFG0_FLIP_EN;
-	}
-
-	/* Apply DP enable settings */
-	if (mux_state & USB_PD_MUX_DP_ENABLED) {
-		cfg1_val |= ANX7452_CTLTOP_CFG1_DP_EN;
-	}
+	/* ================================================================ */
 
 	/* Apply USB3 enable settings */
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		cfg0_val |= ANX7452_CTLTOP_CFG0_USB3_EN;
 	}
 
-	/* Apply USB4 enable settings */
-	if (mux_state & USB_PD_MUX_USB4_ENABLED) {
-		cfg2_val |= ANX7452_CTLTOP_CFG2_USB4_EN;
+	/* Apply DP enable settings */
+	if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		cfg1_val |= ANX7452_CTLTOP_CFG1_DP_EN;
+		/*
+		 * pin assignments:
+		 *   00 E/E'
+		 *   01 C/C'/D/D'
+		 *   10 reserved
+		 *   11reserved
+		 */
+		uint8_t dp_pin_mode = get_dp_pin_mode(port);
+		switch (dp_pin_mode) {
+		case MODE_DP_PIN_E:
+			cfg1_val |= ANX7452_CTLTOP_CFG1_DP_PM_E;
+			break;
+		case MODE_DP_PIN_C:
+		case MODE_DP_PIN_D:
+			cfg1_val |= ANX7452_CTLTOP_CFG1_DP_PM_C_D;
+			break;
+		}
+	}
+
+	/* Apply CC polarity settings */
+	if (mux_state & USB_PD_MUX_POLARITY_INVERTED) {
+		cfg0_val |= ANX7452_CTLTOP_CFG0_FLIP_EN;
+	}
+
+	/* Apply HPD IRQ settings */
+	if (mux_state & USB_PD_MUX_HPD_IRQ) {
+		cfg1_val |= ANX7452_CTLTOP_CFG1_IRQ_HPD;
+	}
+
+	/* Apply HPD level settings */
+	if (mux_state & USB_PD_MUX_HPD_LVL) {
+		cfg1_val |= ANX7452_CTLTOP_CFG1_HPD_LVL;
 	}
 
 	/* Apply TBT compatible enable settings */
 	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
 		cfg2_val |= ANX7452_CTLTOP_CFG2_TBT_EN;
+	}
+
+	/* Apply USB4 enable settings */
+	if (mux_state & USB_PD_MUX_USB4_ENABLED) {
+		cfg2_val |= ANX7452_CTLTOP_CFG2_USB4_EN;
 	}
 
 	RETURN_ERROR(anx7452_wake_up(me));

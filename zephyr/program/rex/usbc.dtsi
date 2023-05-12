@@ -70,6 +70,7 @@
 			};*/
 			virtual_mux_c1: virtual-mux-c1 {
 				compatible = "cros-ec,usbc-mux-virtual";
+				/*board-set = "some_board_set_function";*/
 			};
 		};
 	};

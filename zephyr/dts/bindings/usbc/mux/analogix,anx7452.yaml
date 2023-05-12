@@ -24,3 +24,7 @@ properties:
   dp-en-pin:
     type: phandle
     required: false
+
+  hpd-in-pin:
+    type: phandle
+    required: false
