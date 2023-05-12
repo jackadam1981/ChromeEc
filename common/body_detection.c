@@ -19,11 +19,11 @@
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ##args)
 
-static struct motion_sensor_t *body_sensor =
+test_export_static struct motion_sensor_t *body_sensor =
 	&motion_sensors[CONFIG_BODY_DETECTION_SENSOR];
 
 static int window_size = CONFIG_BODY_DETECTION_MAX_WINDOW_SIZE;
-static uint64_t var_threshold_scaled, confidence_delta_scaled;
+test_export_static uint64_t var_threshold_scaled, confidence_delta_scaled;
 static int stationary_timeframe;
 
 static int history_idx;
