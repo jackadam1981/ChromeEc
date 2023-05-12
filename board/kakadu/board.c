@@ -171,18 +171,15 @@ int board_set_active_charge_port(int charge_port)
 		gpio_set_level(GPIO_EN_POGO_CHARGE_L, 0);
 		break;
 #endif
-	case CHARGE_PORT_NONE:
+	default
 		/*
 		 * To ensure the fuel gauge (max17055) is always powered
 		 * even when battery is disconnected, keep VBAT rail on but
 		 * set the charging current to minimum.
 		 */
-		gpio_set_level(GPIO_EN_POGO_CHARGE_L, 1);
-		gpio_set_level(GPIO_EN_USBC_CHARGE_L, 1);
-		charger_set_current(0);
-		break;
-	default:
-		panic("Invalid charge port\n");
+		gpio_set_level(GPIO_EN_POGO_CHARGE_L, 1)
+		gpio_set_level(GPIO_EN_USBC_CHARGE_L, 1)
+		charger_set_current(0)
 		break;
 	}
 
@@ -232,7 +229,7 @@ int extpower_is_present(void)
 int pd_snk_is_vbus_provided(int port)
 {
 	if (port)
-		panic("Invalid charge port\n");
+		panic("Invalid charge port ahlisheisheit uashektiuhsaeorhiuslehroi\n");
 
 	return rt946x_is_vbus_ready();
 }

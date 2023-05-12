@@ -1,10 +1,9 @@
-/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+/* Copyright 2021 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "backlight.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -14,12 +13,10 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
-#include "driver/accelgyro_bmi_common.h"
 #include "driver/battery/max17055.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
-#include "driver/sync.h"
-#include "driver/tcpm/fusb302.h"
+#include "driver/tcpm/it83xx_pd.h"
 #include "driver/usb_mux/it5205.h"
 #include "ec_commands.h"
 #include "extpower.h"
@@ -27,97 +24,102 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
-#include "i2c_bitbang.h"
-#include "it8801.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "panic.h"
 #include "power.h"
 #include "power_button.h"
 #include "registers.h"
 #include "spi.h"
 #include "system.h"
-#include "tablet_mode.h"
 #include "task.h"
-#include "tcpm.h"
+#include "tcpm/tcpm.h"
 #include "timer.h"
+#include "uart.h"
 #include "usb_charge.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
-#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 
-static void tcpc_alert_event(enum gpio_signal signal)
-{
-	schedule_deferred_pd_interrupt(0 /* port */);
-}
-
+/* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
+
+/*
+ * Map keyboard connector pins to EC GPIO pins for factory test.
+ * Pins mapped to {-1, -1} are skipped.
+ * The connector has 24 pins total, and there is no pin 0.
+ */
+const int keyboard_factory_scan_pins[][2] = {
+	{ -1, -1 },	   { GPIO_KSO_H, 4 }, { GPIO_KSO_H, 0 },
+	{ GPIO_KSO_H, 1 }, { GPIO_KSO_H, 3 }, { GPIO_KSO_H, 2 },
+	{ -1, -1 },	   { -1, -1 },	      { GPIO_KSO_L, 5 },
+	{ GPIO_KSO_L, 6 }, { -1, -1 },	      { GPIO_KSO_L, 3 },
+	{ GPIO_KSO_L, 2 }, { GPIO_KSI, 0 },   { GPIO_KSO_L, 1 },
+	{ GPIO_KSO_L, 4 }, { GPIO_KSI, 3 },   { GPIO_KSI, 2 },
+	{ GPIO_KSO_L, 0 }, { GPIO_KSI, 5 },   { GPIO_KSI, 4 },
+	{ GPIO_KSO_L, 7 }, { GPIO_KSI, 6 },   { GPIO_KSI, 7 },
+	{ GPIO_KSI, 1 },   { -1, -1 },	      { GPIO_KSO_H, 5 },
+	{ -1, -1 },	   { GPIO_KSO_H, 6 }, { -1, -1 },
+	{ -1, -1 },
+};
+
+const int keyboard_factory_scan_pins_used =
+	ARRAY_SIZE(keyboard_factory_scan_pins);
+
+/* Wake-up pins for hibernate */
+const enum gpio_signal hibernate_wake_pins[] = {
+	GPIO_AC_PRESENT,
+	GPIO_LID_OPEN,
+	GPIO_POWER_BUTTON_L,
+};
+const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 /******************************************************************************/
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
-	[ADC_BOARD_ID] =  {"BOARD_ID",  3300, 4096, 0, STM32_AIN(10)},
-	[ADC_EC_SKU_ID] = {"EC_SKU_ID", 3300, 4096, 0, STM32_AIN(8)},
+	[ADC_BOARD_ID] = { "BOARD_ID", ADC_MAX_MVOLT, ADC_READ_MAX + 1, 0,
+			   CHIP_ADC_CH1 },
+	[ADC_EC_SKU_ID] = { "EC_SKU_ID", ADC_MAX_MVOLT, ADC_READ_MAX + 1, 0,
+			    CHIP_ADC_CH2 },
+	[ADC_VBUS] = { "VBUS", ADC_MAX_MVOLT * 10, ADC_READ_MAX + 1, 0,
+		       CHIP_ADC_CH0 },
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /******************************************************************************/
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"typec", 0, 400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
-	{"other", 1, 100, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
+	{ .name = "typec",
+	  .port = IT83XX_I2C_CH_C,
+	  .kbps = 400,
+	  .scl = GPIO_I2C_C_SCL,
+	  .sda = GPIO_I2C_C_SDA },
+	{ .name = "other",
+	  .port = IT83XX_I2C_CH_B,
+	  .kbps = 100,
+	  .scl = GPIO_I2C_B_SCL,
+	  .sda = GPIO_I2C_B_SDA },
+	{ .name = "battery",
+	  .port = IT83XX_I2C_CH_A,
+	  .kbps = 100,
+	  .scl = GPIO_I2C_A_SCL,
+	  .sda = GPIO_I2C_A_SDA },
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
-
-const struct i2c_port_t i2c_bitbang_ports[] = {
-	{"battery", 2, 100, GPIO_I2C3_SCL, GPIO_I2C3_SDA, .drv = &bitbang_drv},
-};
-const unsigned int i2c_bitbang_ports_used = ARRAY_SIZE(i2c_bitbang_ports);
 
 #define BC12_I2C_ADDR PI3USB9201_I2C_ADDR_3
 
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
-	{GPIO_AP_IN_SLEEP_L,   POWER_SIGNAL_ACTIVE_LOW,  "AP_IN_S3_L"},
-	{GPIO_PMIC_EC_RESETB,  POWER_SIGNAL_ACTIVE_HIGH, "PMIC_PWR_GOOD"},
+	{ GPIO_AP_IN_SLEEP_L, POWER_SIGNAL_ACTIVE_LOW, "AP_IN_S3_L" },
+	{ GPIO_PMIC_EC_RESETB, POWER_SIGNAL_ACTIVE_HIGH, "PMIC_PWR_GOOD" },
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
-/* Keyboard scan setting */
-struct keyboard_scan_config keyscan_config = {
-	/*
-	 * TODO(b/133200075): Tune this once we have the final performance
-	 * out of the driver and the i2c bus.
-	 */
-	.output_settle_us = 35,
-	.debounce_down_us = 5 * MSEC,
-	.debounce_up_us = 40 * MSEC,
-	.scan_period_us = 10 * MSEC,
-	.min_post_scan_delay_us = 10 * MSEC,
-	.poll_timeout_us = 100 * MSEC,
-	.actual_key_mask = {
-		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
-		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
-	},
-};
-
-struct ioexpander_config_t ioex_config[CONFIG_IO_EXPANDER_PORT_COUNT] = {
-	[0] = {
-		.i2c_host_port = I2C_PORT_IO_EXPANDER_IT8801,
-		.i2c_slave_addr = IT8801_I2C_ADDR,
-		.drv = &it8801_ioexpander_drv,
-	},
-};
-
 /******************************************************************************/
-/* SPI devices */
-/* TODO: to be added once sensors land via CL:1714436 */
-const struct spi_device_t spi_devices[] = {
-};
-const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
-
 const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	{
 		.i2c_port = I2C_PORT_BC12,
@@ -128,17 +130,20 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 /******************************************************************************/
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.bus_type = EC_BUS_TYPE_I2C,
-		.i2c_info = {
-			.port = I2C_PORT_TCPC0,
-			.addr_flags = FUSB302_I2C_SLAVE_ADDR_FLAGS,
-		},
-		.drv = &fusb302_tcpm_drv,
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &it8xxx2_tcpm_drv,
+		/* Alert is active-low, push-pull */
+		.flags = 0,
 	},
 };
 
-static void board_hpd_status(int port, int hpd_lvl, int hpd_irq)
+static void board_hpd_status(const struct usb_mux *me, mux_state_t mux_state,
+			     bool *ack_required)
 {
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
+
 	/*
 	 * svdm_dp_attention() did most of the work, we only need to notify
 	 * host here.
@@ -146,24 +151,27 @@ static void board_hpd_status(int port, int hpd_lvl, int hpd_irq)
 	host_set_single_event(EC_HOST_EVENT_USB_MUX);
 }
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		/* Driver uses I2C_PORT_USB_MUX as I2C port */
-		.port_addr = IT5205_I2C_ADDR1_FLAGS,
-		.driver = &it5205_usb_mux_driver,
-		.hpd_update = &board_hpd_status,
+		.mux =
+			&(const struct usb_mux){
+				.usb_port = 0,
+				.i2c_port = I2C_PORT_USB_MUX,
+				.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
+				.driver = &it5205_usb_mux_driver,
+				.hpd_update = &board_hpd_status,
+			},
 	},
 };
 
-uint16_t tcpc_get_alert_status(void)
-{
-	uint16_t status = 0;
-
-	if (!gpio_get_level(GPIO_USB_C0_PD_INT_ODL))
-		status |= PD_STATUS_TCPC_ALERT_0;
-
-	return status;
-}
+/* Charger config.  Start i2c address at 1, update during runtime */
+struct charger_config_t chg_chips[] = {
+	{
+		.i2c_port = I2C_PORT_CHARGER,
+		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
+		.drv = &isl923x_drv,
+	},
+};
 
 static int force_discharge;
 
@@ -187,19 +195,11 @@ int board_set_active_charge_port(int charge_port)
 		 * even when battery is disconnected, keep VBAT rail on but
 		 * set the charging current to minimum.
 		 */
-		charger_set_current(0);
+		charger_set_current(CHARGER_SOLO, 0);
 		break;
 	}
 
 	return EC_SUCCESS;
-}
-
-void board_set_charge_limit(int port, int supplier, int charge_ma,
-			    int max_ma, int charge_mv)
-{
-	charge_ma = (charge_ma * 95) / 100;
-	charge_set_input_current_limit(MAX(charge_ma,
-			       CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
 }
 
 int board_discharge_on_ac(int enable)
@@ -218,20 +218,24 @@ int board_discharge_on_ac(int enable)
 	ret = charger_discharge_on_ac(enable);
 	if (ret)
 		return ret;
-	force_discharge = enable;
 
+	force_discharge = enable;
 	return board_set_active_charge_port(port);
 }
 
+#define VBUS_THRESHOLD_MV 4200
 int pd_snk_is_vbus_provided(int port)
 {
-	/* TODO(b:138352732): read IT8801 GPIO EN_USBC_CHARGE_L */
-	return EC_ERROR_UNIMPLEMENTED;
+	/* This board has only one port. */
+	if (!port)
+		return adc_read_channel(ADC_VBUS) > VBUS_THRESHOLD_MV ? 1 : 0;
+	else
+		return 0;
 }
 
 void bc12_interrupt(enum gpio_signal signal)
 {
-	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
+	usb_charger_task_set_event(0, USB_CHG_EVENT_BC12);
 }
 
 static void board_init(void)
@@ -243,8 +247,8 @@ static void board_init(void)
 		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
 	}
 
-	/* Enable TCPC alert interrupts */
-	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
+	/* Enable interrupts from BMI160 sensor. */
+	gpio_enable_interrupt(GPIO_ACCEL_INT_ODL);
 
 	/* Enable interrupt from PMIC. */
 	gpio_enable_interrupt(GPIO_PMIC_EC_RESETB);
@@ -253,6 +257,19 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_BC12_EC_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/* Vconn control for integrated ITE TCPC */
+void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
+{
+	/* Vconn control is only for port 0 */
+	if (port)
+		return;
+
+	if (cc_pin == USBPD_CC_PIN_1)
+		gpio_set_level(GPIO_EN_USB_C0_CC1_VCONN, !!enabled);
+	else
+		gpio_set_level(GPIO_EN_USB_C0_CC2_VCONN, !!enabled);
+}
 
 /* Called on AP S5 -> S3 transition */
 static void board_chipset_startup(void)
@@ -267,25 +284,3 @@ static void board_chipset_shutdown(void)
 	gpio_set_level(GPIO_EN_USBA_5V, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
-
-int battery_get_vendor_param(uint32_t param, uint32_t *value)
-{
-	int rv;
-	uint8_t data[16] = {};
-
-	/* only allow reading 0x70~0x7F, 16 byte data */
-	if (param < 0x70 || param >= 0x80)
-		return EC_ERROR_ACCESS_DENIED;
-
-	rv = sb_read_string(0x70, data, sizeof(data));
-	if (rv)
-		return rv;
-
-	*value = data[param - 0x70];
-	return EC_SUCCESS;
-}
-
-int battery_set_vendor_param(uint32_t param, uint32_t value)
-{
-	return EC_ERROR_UNIMPLEMENTED;
-}
