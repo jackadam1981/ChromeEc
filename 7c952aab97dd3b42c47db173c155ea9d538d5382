@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb3ce2b_27e8a2bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-05-12T06:09:04Z",
+      "side": 1,
+      "message": "Build failure is due to clang-format:\n\n```\nINFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C/C++ source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/program/nissa/joxer/src/form_factor.c:6:1: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#include \u003czephyr/devicetree.h\u003e\nERROR:root:^\n```",
+      "revId": "7c952aab97dd3b42c47db173c155ea9d538d5382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
