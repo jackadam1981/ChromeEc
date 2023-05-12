@@ -105,6 +105,24 @@
       "parentUuid": "5dc2b71f_318b4395",
       "revId": "e174665c0d589d1fed1fe7c569af164f8dc0b36a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a90a19_918c3ab9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-12T04:50:42Z",
+      "side": 1,
+      "message": "Bobby provided the patch for the CQ build and it has been added here. The test is now passing on my end: the problem was caused by untracked test board files on my local machine.",
+      "parentUuid": "a02c1fd2_fd6306f6",
+      "revId": "e174665c0d589d1fed1fe7c569af164f8dc0b36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

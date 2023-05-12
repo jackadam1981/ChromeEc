@@ -358,6 +358,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fed1f826_f64f290f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-12T04:50:42Z",
+      "side": 1,
+      "message": "commitmsg changed per the example. As expected, only fingerprint boards don\u0027t match after the change.",
+      "parentUuid": "3209049c_3c8e0985",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "a32234c18737999b06a40e9365e9769e5ba2a237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cf3895a_7645ed77",
