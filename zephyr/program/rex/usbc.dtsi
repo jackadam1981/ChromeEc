@@ -37,8 +37,8 @@
 				compatible = "cros-ec,usb-mux-chain";
 				/*usb-muxes = <&virtual_mux_c1 &tcpci_mux_c1>;*/
 				/*usb-muxes = <&usb_c1_hb_retimer &virtual_mux_c1>;*/
-				/*usb-muxes = <&usb_c1_anx_retimer &virtual_mux_c1>;*/
-				usb-muxes = < &virtual_mux_c1 &usb_c1_anx_retimer>;
+				usb-muxes = <&usb_c1_anx_retimer &virtual_mux_c1>;
+				/*usb-muxes = < &virtual_mux_c1 &usb_c1_anx_retimer>;*/
 			};
 			/*usb_mux_chain_anx7452_port1_off: usb-mux-chain-1-anx7452_off {
 				compatible = "cros-ec,usb-mux-chain";
