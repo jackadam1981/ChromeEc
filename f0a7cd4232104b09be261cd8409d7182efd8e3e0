@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d263b02f_ce39b004",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-05-12T17:46:28Z",
+      "side": 1,
+      "message": "Hi Diana and Abe, can you take a look at this update?\nThis alters some of the work done in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3902611 and https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4104563 but it will still allow the updated drivers to treat USB_PD_MUX_SAFE_MODE like USB_PD_MUX_NONE.\n\nBasically, the cros_ec_typec driver maintains the \"Host\" or \"Device\" role in safe mode, and needs the connection polarity in safe mode to function properly. Let me know if you have any questions.",
+      "revId": "f0a7cd4232104b09be261cd8409d7182efd8e3e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
