@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c4aeb7_2ce72a28",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-12T20:25:59Z",
+      "side": 1,
+      "message": "Can you document the source of these?  For instance:\n```\n/* Right-ALT - scan code set 2 0xE011 */\n```\n\nAlso what about CONFIG_KEYBOARD_CUSTOMIZATION?  Glancing through boards with this option, I see at least one where the search key moved.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/board/omnigul/keyboard_customization.c;l\u003d16\n\nYou could create additional CONFIG options such as `CONFIG_ALT_R_COL`, or you could do a run-time lookup at initialization to determine the correct row/col.\n\nIf you go the CONFIG option route, you should add a build-time check.\n```\nBUILD_ASSERT(scancode_set2[CONFIG_ALT_R_COL][CONFIG_ALT_R_ROW] \u003d\u003d 0xe011)\n```",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 473,
+        "endChar": 0
+      },
+      "revId": "0a87a8b4547bacffb92f2f5b408558533539b687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb2fd5e_15ed2507",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-12T20:25:59Z",
+      "side": 1,
+      "message": "Is it possible for the user to re-press search/alt before the SETLEDs arrives?\n\nIf you dropped this condition, the code would just set a new deadlines that is 10 seconds after the last release event.",
+      "range": {
+        "startLine": 504,
+        "startChar": 20,
+        "endLine": 504,
+        "endChar": 35
+      },
+      "revId": "0a87a8b4547bacffb92f2f5b408558533539b687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
