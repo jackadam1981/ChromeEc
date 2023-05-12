@@ -22,6 +22,30 @@
       },
       "revId": "c48f86ea9efa00a7eccd35bf3c49b67c88a4d282",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d64886_5b4e78fa",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-05-12T16:42:38Z",
+      "side": 1,
+      "message": "Ack. In my understanding, motion_sense_switch_sensor_rate although registered as deferred function, should be used only by shutdown, suspend or resume. So checking the cbi settings in resume should be enough.",
+      "parentUuid": "f53e8fa7_bbd2beb2",
+      "range": {
+        "startLine": 775,
+        "startChar": 1,
+        "endLine": 780,
+        "endChar": 2
+      },
+      "revId": "c48f86ea9efa00a7eccd35bf3c49b67c88a4d282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
