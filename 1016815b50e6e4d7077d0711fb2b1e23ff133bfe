@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "439b9f95_85459114",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-05-12T14:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cd8aaf9_b48dcf82",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "1016815b50e6e4d7077d0711fb2b1e23ff133bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1ffa26e_2ae17474",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-12T05:45:52Z",
       "side": 1,
       "message": "CC1",
+      "range": {
+        "startLine": 352,
+        "startChar": 20,
+        "endLine": 352,
+        "endChar": 23
+      },
+      "revId": "1016815b50e6e4d7077d0711fb2b1e23ff133bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32771752_202fbf3a",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-05-12T14:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1ffa26e_2ae17474",
       "range": {
         "startLine": 352,
         "startChar": 20,
