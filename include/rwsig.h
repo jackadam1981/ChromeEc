@@ -95,6 +95,11 @@ void rwsig_jump_now(void);
 #endif
 #endif /* CONFIG_RO_PUBKEY_ADDR */
 
+/* Some chips require reading signature from a memory mapped address */
+#ifndef CONFIG_RWSIG_READ_ADDR
+#define CONFIG_RWSIG_READ_ADDR CONFIG_RW_SIG_ADDR
+#endif
+
 #ifndef CONFIG_RW_SIG_SIZE
 #ifdef CONFIG_RWSIG_TYPE_RWSIG
 /*
