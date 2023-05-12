@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "accelgyro.h"
 #include "body_detection.h"
 #include "console.h"
 #include "test/drivers/test_state.h"
@@ -12,6 +13,9 @@
 #include <zephyr/kernel.h>
 #include <zephyr/shell/shell.h>
 #include <zephyr/ztest.h>
+
+extern struct motion_sensor_t *body_sensor;
+extern uint64_t var_threshold_scaled, confidence_delta_scaled;
 
 static void body_detect_mode_before(void *state)
 {
@@ -120,3 +124,90 @@ ZTEST_USER(bodydetectmode, test_setbodydetectionmode_unknown_arg)
 
 ZTEST_SUITE(bodydetectmode, drivers_predicate_post_main, NULL,
 	    body_detect_mode_before, body_detect_mode_after, NULL);
+
+/*
+ * In order to be independent from a motion sensor driver changes mock
+ * two functions that are used during body detection parameters initialization.
+ */
+int get_rms_noise_mock(struct motion_sensor_t *sensor)
+{
+	/* RMS noise from LIS12DW with ODR set to 50Hz */
+	return 636;
+}
+int get_data_rate_mock(struct motion_sensor_t *sensor)
+{
+	return 50 * 1000; /* 50 Hz */
+}
+
+const static struct accelgyro_drv mock_drv = {
+	.get_data_rate = get_data_rate_mock,
+	.get_rms_noise = get_rms_noise_mock
+};
+
+const static struct accelgyro_drv *old_drv;
+
+static void body_detect_init_before(void *state)
+{
+	ARG_UNUSED(state);
+
+	old_drv = body_sensor->drv;
+	body_sensor->drv = &mock_drv;
+	body_detect_reset();
+}
+
+static void body_detect_init_after(void *state)
+{
+	ARG_UNUSED(state);
+
+	body_sensor->drv = old_drv;
+	body_sensor->bd_params = NULL;
+	body_detect_reset();
+}
+
+#define DEFAULT_CONFIDENCE_DELTA 1467
+#define DEFAULT_VAR_THRESHOLD 1665
+
+/**
+ * @brief TestPurpose: check variance properties with default input parameters
+ */
+ZTEST_USER(bodydetectinit, test_defaultparams)
+{
+	zassert_equal(confidence_delta_scaled, DEFAULT_CONFIDENCE_DELTA);
+	zassert_equal(var_threshold_scaled, DEFAULT_VAR_THRESHOLD);
+}
+
+/**
+ * @brief TestPurpose: check variance properties with custom parameters
+ * If any parameter is set to zero it should be replaced with default
+ * value read from Kconfig.
+ */
+ZTEST_USER(bodydetectinit, test_customparams)
+{
+	struct body_detect_params params;
+
+	body_sensor->bd_params = &params;
+
+	memset(&params, 0, sizeof(params));
+
+	body_detect_reset();
+	zassert_equal(confidence_delta_scaled, DEFAULT_CONFIDENCE_DELTA);
+	zassert_equal(var_threshold_scaled, DEFAULT_VAR_THRESHOLD);
+
+	params.confidence_delta = 2900;
+	params.var_threshold = 3000;
+
+	body_detect_reset();
+	zassert_equal(confidence_delta_scaled, 8105);
+	zassert_equal(var_threshold_scaled, 8513);
+
+	params.confidence_delta = 2900;
+	params.var_threshold = 3000;
+	params.var_noise_factor = 150;
+
+	body_detect_reset();
+	zassert_equal(confidence_delta_scaled, 8105);
+	zassert_equal(var_threshold_scaled, 8547);
+}
+
+ZTEST_SUITE(bodydetectinit, drivers_predicate_post_main, NULL,
+	    body_detect_init_before, body_detect_init_after, NULL);
