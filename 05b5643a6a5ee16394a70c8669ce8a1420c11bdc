@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c178a250_15708b82",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-05-12T10:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc05ee91_e3e17c5b",
+      "range": {
+        "startLine": 599,
+        "startChar": 2,
+        "endLine": 600,
+        "endChar": 67
+      },
+      "revId": "05b5643a6a5ee16394a70c8669ce8a1420c11bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9a423c2_3d5b8723",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-12T07:20:50Z",
       "side": 1,
       "message": "The description doesn\u0027t match the code logic. Would you mind double checking it again?",
+      "range": {
+        "startLine": 6426,
+        "startChar": 0,
+        "endLine": 6435,
+        "endChar": 0
+      },
+      "revId": "05b5643a6a5ee16394a70c8669ce8a1420c11bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "445481a3_65d2fbe4",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6435,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-05-12T10:07:06Z",
+      "side": 1,
+      "message": "We theck the description and code logic, they are consistent. The default configuration is logical OR. That means MASK1\u003d0x4800, it is used to check one of TCA/TDA. MASK2\u003d0xFFFF means it is ignored.\n```\nif (((status \u0026 CONFIG_BATT_STBL_MASK1) \u003d\u003d CONFIG_BATT_STBL_MASK1) ||\n   ((status \u0026 CONFIG_BATT_STBL_MASK2) \u003d\u003d CONFIG_BATT_STBL_MASK2)) {\n      msleep(25);\n      continue;\n}\n```\nSo according to code logic, when the status\u003d0x48c0, the battery is not stable and the EC goes to msleep(25). When the status\u003d 0x40c0, the TDA is stable and EC skips out this `if` judgment. This is the logical OR configuration.",
+      "parentUuid": "c9a423c2_3d5b8723",
       "range": {
         "startLine": 6426,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ec9f32_d17f9b3a",
+        "filename": "zephyr/Kconfig.batterystable",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-05-12T10:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b398460_10aee87c",
+      "revId": "05b5643a6a5ee16394a70c8669ce8a1420c11bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2e86c31_561ca389",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-05-12T07:20:50Z",
       "side": 1,
       "message": "You can separate the board config into another CL.",
+      "revId": "05b5643a6a5ee16394a70c8669ce8a1420c11bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "859cf65f_be297a71",
+        "filename": "zephyr/program/corsola/voltorb/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-05-12T10:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2e86c31_561ca389",
       "revId": "05b5643a6a5ee16394a70c8669ce8a1420c11bdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
