@@ -229,7 +229,7 @@ int board_set_active_charge_port(int charge_port)
 		if (board_vbus_source_enabled(charge_port))
 			return -1;
 		break;
-	case CHARGE_PORT_NONE:
+	default:
 		/*
 		 * To ensure the fuel gauge (max17055) is always powered
 		 * even when battery is disconnected, keep VBAT rail on but
@@ -238,7 +238,6 @@ int board_set_active_charge_port(int charge_port)
 		charger_set_current(CHARGER_SOLO, 0);
 		break;
 	default:
-		panic("Invalid charge port\n");
 		break;
 	}
 
