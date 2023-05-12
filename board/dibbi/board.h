@@ -1,9 +1,9 @@
-/* Copyright 2022 The ChromiumOS Authors
+/* Copyright 2023 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
-/* Dibbi board configuration */
+/* Boxy board configuration */
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
@@ -131,7 +131,6 @@
 
 enum charge_port {
 	CHARGE_PORT_TYPEC0,
-	CHARGE_PORT_BARRELJACK,
 };
 
 enum usbc_port { USBC_PORT_C0 = 0, USBC_PORT_COUNT };
