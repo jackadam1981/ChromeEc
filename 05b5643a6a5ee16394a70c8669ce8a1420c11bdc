@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc05ee91_e3e17c5b",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-05-12T07:20:50Z",
+      "side": 1,
+      "message": "keep this in 80 characters per line.",
+      "range": {
+        "startLine": 599,
+        "startChar": 2,
+        "endLine": 600,
+        "endChar": 67
+      },
+      "revId": "05b5643a6a5ee16394a70c8669ce8a1420c11bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a423c2_3d5b8723",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6435,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-05-12T07:20:50Z",
+      "side": 1,
+      "message": "The description doesn\u0027t match the code logic. Would you mind double checking it again?",
+      "range": {
+        "startLine": 6426,
+        "startChar": 0,
+        "endLine": 6435,
+        "endChar": 0
+      },
+      "revId": "05b5643a6a5ee16394a70c8669ce8a1420c11bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b398460_10aee87c",
+        "filename": "zephyr/Kconfig.batterystable",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-05-12T07:20:50Z",
+      "side": 1,
+      "message": "This can be integrated into Kconfig.battery",
+      "revId": "05b5643a6a5ee16394a70c8669ce8a1420c11bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e86c31_561ca389",
+        "filename": "zephyr/program/corsola/voltorb/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-05-12T07:20:50Z",
+      "side": 1,
+      "message": "You can separate the board config into another CL.",
+      "revId": "05b5643a6a5ee16394a70c8669ce8a1420c11bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
