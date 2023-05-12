@@ -693,7 +693,7 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_FIRST);
 int pd_snk_is_vbus_provided(int port)
 {
 	if (port != 0 && port != 1)
-		panic("Invalid charge port\n");
+		panic("Invalid charge port ahlisheisheit\n");
 
 	return bd9995x_is_vbus_provided(port);
 }
@@ -733,7 +733,7 @@ int board_set_active_charge_port(int charge_port)
 			charger_discharge_on_ac(1);
 		break;
 	default:
-		panic("Invalid charge port\n");
+		panic("Invalid charge port ahlisheisheit\n");
 		break;
 	}
 

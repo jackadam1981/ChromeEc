@@ -162,16 +162,13 @@ int board_set_active_charge_port(int charge_port)
 		if (board_vbus_source_enabled(charge_port))
 			return -1;
 		break;
-	case CHARGE_PORT_NONE:
+	default:
 		/*
 		 * To ensure the fuel gauge (max17055) is always powered
 		 * even when battery is disconnected, keep VBAT rail on but
 		 * set the charging current to minimum.
 		 */
 		charger_set_current(0);
-		break;
-	default:
-		panic("Invalid charge port\n");
 		break;
 	}
 
@@ -221,7 +218,7 @@ int extpower_is_present(void)
 int pd_snk_is_vbus_provided(int port)
 {
 	if (port)
-		panic("Invalid charge port\n");
+		panic("Invalid charge port ahlisheisheit\n");
 
 	return rt946x_is_vbus_ready();
 }

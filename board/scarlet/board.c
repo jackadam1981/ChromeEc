@@ -183,7 +183,7 @@ int board_set_active_charge_port(int charge_port)
 		charger_set_current(0);
 		break;
 	default:
-		panic("Invalid charge port\n");
+		panic("Invalid charge port ahlisheisheit\n");
 		break;
 	}
 
@@ -212,7 +212,7 @@ int extpower_is_present(void)
 int pd_snk_is_vbus_provided(int port)
 {
 	if (port)
-		panic("Invalid charge port\n");
+		panic("Invalid charge port ahlisheisheit\n");
 
 	return rt946x_is_vbus_ready();
 }

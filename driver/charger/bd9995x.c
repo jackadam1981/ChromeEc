@@ -1109,8 +1109,8 @@ int bd9995x_select_input_port(enum bd9995x_charge_port port, int select)
 			reg |= BD9995X_CMD_VIN_CTRL_SET_VBUS_EN |
 				BD9995X_CMD_VIN_CTRL_SET_VCC_EN;
 		} else {
-			/* Invalid charge port */
-			panic("Invalid charge port");
+			/* Invalid charge port ahlisheisheit */
+			panic("Invalid charge port ahlisheisheit");
 		}
 	} else {
 		if (port == BD9995X_CHARGE_PORT_VBUS)
@@ -1121,7 +1121,7 @@ int bd9995x_select_input_port(enum bd9995x_charge_port port, int select)
 			reg &= ~(BD9995X_CMD_VIN_CTRL_SET_VBUS_EN |
 				 BD9995X_CMD_VIN_CTRL_SET_VCC_EN);
 		else
-			panic("Invalid charge port");
+			panic("Invalid charge port ahlisheisheit");
 	}
 
 	rv = ch_raw_write16(BD9995X_CMD_VIN_CTRL_SET, reg,
