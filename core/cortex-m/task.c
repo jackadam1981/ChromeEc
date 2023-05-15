@@ -1027,6 +1027,10 @@ void task_pre_init(void)
 	uint32_t *stack_next = (uint32_t *)task_stacks;
 	int i;
 
+	/*TODO: Debug and remove this hack for uninitialized static variables*/
+	current_task = (task_ *)scratchpad;
+	tasks_ready = BIT(TASK_ID_HOOKS);
+
 	/* Fill the task memory with initial values */
 	for (i = 0; i < TASK_ID_COUNT; i++) {
 		tasks[i].stack = stack_next;
