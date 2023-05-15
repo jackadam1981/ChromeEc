@@ -246,7 +246,10 @@ enum sensor_id {
 
 enum ioex_port { IOEX_C0_NCT38XX = 0, IOEX_C2_NCT38XX, IOEX_PORT_COUNT };
 
-enum battery_type { BATTERY_POWER_TECH, BATTERY_LGC011, BATTERY_TYPE_COUNT };
+enum battery_type {
+	BATTERY_LGC011,
+	BATTERY_TYPE_COUNT
+};
 
 enum pwm_channel {
 	PWM_CH_LED2 = 0, /* PWM0 (white charger) */
