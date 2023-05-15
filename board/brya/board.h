@@ -18,6 +18,8 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_CBI_BATTERY_PARAMS
+
 /*
  * This will happen automatically on NPCX9 ES2 and later. Do not remove
  * until we can confirm all earlier chips are out of service.
@@ -248,6 +250,7 @@ enum ioex_port { IOEX_C0_NCT38XX = 0, IOEX_C2_NCT38XX, IOEX_PORT_COUNT };
 
 enum battery_type {
 	BATTERY_LGC011,
+	BATTERY_PARAM_IN_CBI,
 	BATTERY_TYPE_COUNT
 };
 
