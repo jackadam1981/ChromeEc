@@ -24,7 +24,18 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
 
-#include <dt-bindings/gpio_defines.h>
+#ifdef CONFIG_ZTEST
+
+#undef USB_MUX_ENABLE_ALTERNATIVE
+#define USB_MUX_ENABLE_ALTERNATIVE(x)
+
+#undef TCPC_ENABLE_ALTERNATE_BY_NODELABEL
+#define TCPC_ENABLE_ALTERNATE_BY_NODELABEL(x, y)
+
+#undef PPC_ENABLE_ALTERNATE_BY_NODELABEL
+#define PPC_ENABLE_ALTERNATE_BY_NODELABEL(x, y)
+
+#endif /* CONFIG_ZTEST */
 
 LOG_MODULE_REGISTER(screebo, LOG_LEVEL_INF);
 
@@ -176,4 +187,51 @@ __override uint8_t board_get_usb_pd_port_count(void)
 	default:
 		return 1;
 	}
+}
+
+static void setup_alt_db(void)
+{
+	int ret;
+
+	ret = cros_cbi_get_fw_config(FW_USB_DB, &usb_db_type);
+	if (ret != 0) {
+		LOG_ERR("USB DB: Failed to get FW_USB_DB from CBI");
+		usb_db_type = -1;
+		return;
+	}
+
+	if (usb_db_type == FW_USB_DB_USB3) {
+		LOG_INF("USB DB: USB3 DB connected");
+		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_ps8xxx_port1);
+		TCPC_ENABLE_ALTERNATE_BY_NODELABEL(1, tcpc_ps8xxx_port1);
+		PPC_ENABLE_ALTERNATE_BY_NODELABEL(1, ppc_nxp_port1);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, setup_alt_db, HOOK_PRIO_POST_I2C);
+
+static void setup_mb_usb(void)
+{
+	int ret;
+
+	ret = cros_cbi_get_fw_config(FW_USB_MB, &usb_mb_type);
+	if (ret != 0) {
+		LOG_ERR("USB MB: Failed to get FW_USB_MB from CBI");
+		usb_mb_type = -1;
+		return;
+	}
+
+	if (usb_mb_type == FW_USB_MB_USB3) {
+		LOG_INF("USB MB: C0 port is USB3");
+		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_usb3_port0);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, setup_mb_usb, HOOK_PRIO_POST_I2C);
+
+__override bool board_is_tbt_usb4_port(int port)
+{
+	/* Both C0 and C1 are USB4 port */
+	if (usb_mb_type == FW_USB_MB_USB4_HB)
+		return true;
+
+	return false;
 }
