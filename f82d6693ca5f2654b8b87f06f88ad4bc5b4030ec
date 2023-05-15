@@ -46,6 +46,30 @@
       },
       "revId": "f82d6693ca5f2654b8b87f06f88ad4bc5b4030ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8b615c_65ff7d9d",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-15T18:31:46Z",
+      "side": 1,
+      "message": "Inline functions are difficult to debug (for me). So, it would take a bit more code changes.",
+      "parentUuid": "13df960c_3848700d",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 2
+      },
+      "revId": "f82d6693ca5f2654b8b87f06f88ad4bc5b4030ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
