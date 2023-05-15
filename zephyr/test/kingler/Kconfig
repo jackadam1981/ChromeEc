@@ -71,4 +71,9 @@ config TEST_USB_PD_POLICY
 	  Include voltorb_usbc.c into the binary to test the type-c output
 	  current limit function.
 
+config TEST_DB_DETECTION
+	bool "Run the tests intended for db detection"
+	help
+	  Include USB-C tests into the binary.
+
 source "Kconfig.zephyr"

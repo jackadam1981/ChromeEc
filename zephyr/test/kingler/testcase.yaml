@@ -58,3 +58,8 @@ tests:
     - CONFIG_TEST_USB_PD_POLICY=y
     extra_dtc_overlay_files:
     - kingler.default.overlay
+  kingler.db_detection:
+    extra_configs:
+    - CONFIG_TEST_DB_DETECTION=y
+    extra_dtc_overlay_files:
+    - kingler.default.overlay
