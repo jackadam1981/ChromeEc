@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01bda458_85fbe43f",
+        "filename": "common/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2023-05-15T08:30:08Z",
+      "side": 1,
+      "message": "You can use `test_export_static` from `common.h` to make it non static in test context.",
+      "revId": "6a251df72cd7fdca423e9ec8aced27a87a5cbbc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b182d458_dd09cf66",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2023-05-15T08:30:08Z",
+      "side": 1,
+      "message": "For greater control over mocks, please use `FAKE_VALUE_FUNC` from FFF (e.g. `zephyr/test/drivers/host_cmd/src/adc.c`). With that you can check if mock was called, what were arguments etc. (you don\u0027t need to add that checks if it doesn\u0027t improve this test quality).\n\nWith that in place, it should be easier to test different paths that  `body_detect_reset` can take (e.g. data rate 0 leads to not changing variance properties).",
+      "revId": "6a251df72cd7fdca423e9ec8aced27a87a5cbbc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df281b4e_7c4b165a",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2023-05-15T08:30:08Z",
+      "side": 1,
+      "message": "This values are calculated using division, so result doesn\u0027t have to be exact. Consider using `zassert_within` if slight deviation is acceptable.",
+      "revId": "6a251df72cd7fdca423e9ec8aced27a87a5cbbc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
