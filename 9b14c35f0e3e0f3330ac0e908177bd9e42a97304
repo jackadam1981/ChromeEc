@@ -114,6 +114,30 @@
       },
       "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba8572bf_c4c4d3f4",
+        "filename": "test/fpsensor_auth_crypto.mocklist",
+        "patchSetId": 15
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-15T22:44:10Z",
+      "side": 1,
+      "message": "I think you are probably using it in a followup CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4511814/comment/69f11e6e_d2393261/, but it doesn\u0027t look like it\u0027s needed for this one.",
+      "parentUuid": "29a73347_49ab0f12",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
