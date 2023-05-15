@@ -191,7 +191,7 @@ struct battery_info {
 #ifdef CONFIG_BATTERY_VENDOR_PARAM
 	uint8_t vendor_param_start;
 #endif
-};
+} __packed;
 
 /**
  * Return vendor-provided battery constants.

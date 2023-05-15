@@ -320,6 +320,14 @@ int cbi_get_factory_calibration_data(uint32_t *calibration_data)
 				  (uint8_t *)calibration_data, &size);
 }
 
+int cbi_get_battery_params(struct cbi_battery_info *batt_info)
+{
+	uint8_t size = sizeof(*batt_info);
+
+	return cbi_get_board_info(CBI_TAG_BATTERY_PARAMS,
+				  (uint8_t *)batt_info, &size);
+}
+
 static enum ec_status hc_cbi_get(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_get_cbi *p = args->params;

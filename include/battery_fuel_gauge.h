@@ -28,13 +28,13 @@ struct ship_mode_info {
 	const uint8_t wb_support;
 	const uint8_t reg_addr;
 	const uint16_t reg_data[SHIP_MODE_WRITES];
-};
+} __packed;
 
 struct sleep_mode_info {
 	const bool sleep_supported;
 	const uint8_t reg_addr;
 	const uint16_t reg_data;
-};
+} __packed;
 
 struct fet_info {
 	const int mfgacc_support;
@@ -44,11 +44,11 @@ struct fet_info {
 	const uint16_t disconnect_val;
 	const uint16_t cfet_mask; /* CHG FET status mask */
 	const uint16_t cfet_off_val;
-};
+} __packed;
 
 struct fuel_gauge_info {
-	const char *manuf_name;
-	const char *device_name;
+	const char manuf_name[32];
+	const char device_name[32];
 	const uint8_t override_nil;
 	const struct ship_mode_info ship_mode;
 	const struct sleep_mode_info sleep_mode;
@@ -58,12 +58,31 @@ struct fuel_gauge_info {
 	/* See battery_*_imbalance_mv() for functions which are suitable. */
 	int (*imbalance_mv)(void);
 #endif
-};
+} __packed;
 
 struct board_batt_params {
 	const struct fuel_gauge_info fuel_gauge;
 	const struct battery_info batt_info;
-};
+} __packed;
+
+#define CBI_BATTERY_INFO_VERSION 1
+
+struct cbi_battery_info_header {
+	uint8_t version:7;
+	uint8_t reserved:1;
+	uint8_t index;
+} __packed;
+
+struct cbi_battery_info {
+	struct cbi_battery_info_header header;
+	struct board_batt_params batt_params;
+} __packed;
+
+#if !defined(CONFIG_CBI_BATTERY_PARAMS)
+#define BATTERY_PARAM_IN_CBI (BATTERY_TYPE_COUNT + 1)
+#endif
+
+const struct board_batt_params* get_cbi_battery_params(void);
 
 /* Forward declare board specific data used by common code */
 extern const struct board_batt_params board_battery_info[];

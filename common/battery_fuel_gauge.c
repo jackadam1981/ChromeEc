@@ -8,12 +8,30 @@
 #include "battery_fuel_gauge.h"
 #include "battery_smart.h"
 #include "builtin/assert.h"
+#include "cros_board_info.h"
 #include "console.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
+
+struct cbi_battery_info cbi_batt_info;
+
+static const struct board_batt_params* get_battery_info(int type)
+{
+	if (type < 0 || type > BATTERY_TYPE_COUNT) {
+		CPRINTS("Unexpected type = %d, set to BATTERY_TYPE_COUNT", type);
+		type = BATTERY_TYPE_COUNT;
+	}
+
+	if (IS_ENABLED(CONFIG_CBI_BATTERY_PARAMS) && type == BATTERY_PARAM_IN_CBI)
+		return get_cbi_battery_params();
+
+	return &board_battery_info[type == BATTERY_TYPE_COUNT ?
+					   board_get_default_battery_type() :
+					   type];
+}
 
 /*
  * Authenticate the battery connected.
@@ -28,8 +46,9 @@ test_export_static bool authenticate_battery_type(int index,
 {
 	char device_name[32];
 
+	const struct board_batt_params* batt_info = get_battery_info(index);
 	const struct fuel_gauge_info *const fuel_gauge =
-		&board_battery_info[index].fuel_gauge;
+		&batt_info->fuel_gauge;
 	int len = 0;
 
 	/* check for valid index */
@@ -150,11 +169,7 @@ DECLARE_HOOK(HOOK_INIT, init_battery_type, HOOK_PRIO_POST_I2C);
 
 static inline const struct board_batt_params *get_batt_params(void)
 {
-	int type = get_battery_type();
-
-	return &board_battery_info[type == BATTERY_TYPE_COUNT ?
-					   board_get_default_battery_type() :
-					   type];
+	return get_battery_info(get_battery_type());
 }
 
 const struct battery_info *battery_get_info(void)
@@ -217,17 +232,18 @@ int board_cut_off_battery(void)
 {
 	int rv;
 	int type = get_battery_type();
+	const struct board_batt_params* batt_info = get_battery_info(type);
 
 	/* If battery type is unknown can't send ship mode command */
 	if (type == BATTERY_TYPE_COUNT)
 		return EC_RES_ERROR;
 
-	if (board_battery_info[type].fuel_gauge.ship_mode.wb_support)
+	if (batt_info->fuel_gauge.ship_mode.wb_support)
 		rv = cut_off_battery_block_write(
-			&board_battery_info[type].fuel_gauge.ship_mode);
+			&batt_info->fuel_gauge.ship_mode);
 	else
 		rv = cut_off_battery_sb_write(
-			&board_battery_info[type].fuel_gauge.ship_mode);
+			&batt_info->fuel_gauge.ship_mode);
 
 	return rv ? EC_RES_ERROR : EC_RES_SUCCESS;
 }
@@ -236,12 +252,13 @@ enum ec_error_list battery_sleep_fuel_gauge(void)
 {
 	const struct sleep_mode_info *sleep_command;
 	int type = get_battery_type();
+	const struct board_batt_params* batt_info = get_battery_info(type);
 
 	/* Sleep entry command must be supplied as it will vary by gauge */
 	if (type == BATTERY_TYPE_COUNT)
 		return EC_ERROR_UNKNOWN;
 
-	sleep_command = &board_battery_info[type].fuel_gauge.sleep_mode;
+	sleep_command = &batt_info->fuel_gauge.sleep_mode;
 
 	if (!sleep_command->sleep_supported)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -253,12 +270,13 @@ static enum ec_error_list battery_get_fet_status_regval(int type, int *regval)
 {
 	int rv;
 	uint8_t data[6];
+	const struct board_batt_params* batt_info = get_battery_info(type);
 
 	ASSERT(type < BATTERY_TYPE_COUNT);
 
 	/* Read the status of charge/discharge FETs */
-	if (board_battery_info[type].fuel_gauge.fet.mfgacc_support == 1) {
-		if (board_battery_info[type].fuel_gauge.fet.mfgacc_smb_block ==
+	if (batt_info->fuel_gauge.fet.mfgacc_support == 1) {
+		if (batt_info->fuel_gauge.fet.mfgacc_smb_block ==
 		    1)
 			rv = sb_read_mfgacc_block(PARAM_OPERATION_STATUS,
 						  SB_ALT_MANUFACTURER_ACCESS,
@@ -270,7 +288,7 @@ static enum ec_error_list battery_get_fet_status_regval(int type, int *regval)
 		/* Get the lowest 16bits of the OperationStatus() data */
 		*regval = data[2] | data[3] << 8;
 	} else
-		rv = sb_read(board_battery_info[type].fuel_gauge.fet.reg_addr,
+		rv = sb_read(batt_info->fuel_gauge.fet.reg_addr,
 			     regval);
 
 	return rv;
@@ -281,6 +299,7 @@ test_mockable int battery_is_charge_fet_disabled(void)
 	int rv;
 	int reg;
 	int type = get_battery_type();
+	const struct board_batt_params* batt_info = get_battery_info(type);
 
 	/* If battery type is not known, can't check CHG/DCHG FETs */
 	if (type >= BATTERY_TYPE_COUNT) {
@@ -291,15 +310,15 @@ test_mockable int battery_is_charge_fet_disabled(void)
 	/*
 	 * If the CFET mask hasn't been defined, assume that it's not disabled.
 	 */
-	if (!board_battery_info[type].fuel_gauge.fet.cfet_mask)
+	if (!batt_info->fuel_gauge.fet.cfet_mask)
 		return 0;
 
 	rv = battery_get_fet_status_regval(type, &reg);
 	if (rv)
 		return -1;
 
-	return (reg & board_battery_info[type].fuel_gauge.fet.cfet_mask) ==
-	       board_battery_info[type].fuel_gauge.fet.cfet_off_val;
+	return (reg & batt_info->fuel_gauge.fet.cfet_mask) ==
+	       batt_info->fuel_gauge.fet.cfet_off_val;
 }
 
 /*
@@ -318,6 +337,7 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 {
 	int reg;
 	int type = get_battery_type();
+	const struct board_batt_params* batt_info = get_battery_info(type);
 
 	/* If battery type is not known, can't check CHG/DCHG FETs */
 	if (type >= BATTERY_TYPE_COUNT) {
@@ -328,11 +348,11 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 	if (battery_get_fet_status_regval(type, &reg))
 		return BATTERY_DISCONNECT_ERROR;
 
-	if ((reg & board_battery_info[type].fuel_gauge.fet.reg_mask) ==
-	    board_battery_info[type].fuel_gauge.fet.disconnect_val) {
+	if ((reg & batt_info->fuel_gauge.fet.reg_mask) ==
+	    batt_info->fuel_gauge.fet.disconnect_val) {
 		CPRINTS("Batt disconnected: reg 0x%04x mask 0x%04x disc 0x%04x",
-			reg, board_battery_info[type].fuel_gauge.fet.reg_mask,
-			board_battery_info[type].fuel_gauge.fet.disconnect_val);
+			reg, batt_info->fuel_gauge.fet.reg_mask,
+			batt_info->fuel_gauge.fet.disconnect_val);
 		return BATTERY_DISCONNECTED;
 	}
 
@@ -343,6 +363,7 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 int battery_imbalance_mv(void)
 {
 	int type = get_battery_type();
+	const struct board_batt_params* batt_info = get_battery_info(type);
 
 	/*
 	 * If battery type is unknown, we cannot safely access non-standard
@@ -350,7 +371,7 @@ int battery_imbalance_mv(void)
 	 */
 	return (type == BATTERY_TYPE_COUNT) ?
 		       0 :
-		       board_battery_info[type].fuel_gauge.imbalance_mv();
+		       batt_info->fuel_gauge.imbalance_mv();
 }
 
 int battery_default_imbalance_mv(void)
@@ -358,3 +379,25 @@ int battery_default_imbalance_mv(void)
 	return 0;
 }
 #endif /* CONFIG_BATTERY_MEASURE_IMBALANCE */
+
+#if defined(CONFIG_CBI_BATTERY_PARAMS)
+const struct board_batt_params* get_cbi_battery_params(void)
+{
+	static bool is_cached = 0;
+
+	if (!is_cached) {
+		if (cbi_get_battery_params(&cbi_batt_info))
+		{
+			CPRINTS("Can't load battery param from CBI");
+			return NULL;
+		}
+		if (cbi_batt_info.header.version != CBI_BATTERY_INFO_VERSION) {
+			CPRINTS("Version is unexpected :%d != %d",
+				cbi_batt_info.header.version, CBI_BATTERY_INFO_VERSION);
+			return NULL;
+		}
+		is_cached = 1;
+	}
+	return &cbi_batt_info.batt_params;
+}
+#endif

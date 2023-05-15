@@ -9,6 +9,7 @@
 
 #include "common.h"
 #include "ec_commands.h"
+#include "battery_fuel_gauge.h"
 
 #define CBI_VERSION_MAJOR 0
 #define CBI_VERSION_MINOR 0
@@ -103,6 +104,7 @@ int cbi_get_pcb_supplier(uint32_t *pcb_supplier);
 int cbi_get_ssfc(uint32_t *ssfc);
 int cbi_get_rework_id(uint64_t *id);
 int cbi_get_factory_calibration_data(uint32_t *calibration_data);
+int cbi_get_battery_params(struct cbi_battery_info *batt_info);
 
 /**
  * Get data from CBI store

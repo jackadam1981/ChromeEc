@@ -6162,6 +6162,7 @@ enum cbi_data_tag {
 	CBI_TAG_SSFC = 8, /* uint32_t bit field */
 	CBI_TAG_REWORK_ID = 9, /* uint64_t or smaller */
 	CBI_TAG_FACTORY_CALIBRATION_DATA = 10, /* uint32_t bit field */
+	CBI_TAG_BATTERY_PARAMS = 11, /* struct cbi_battery_info */
 	CBI_TAG_COUNT,
 };
 

@@ -5783,6 +5783,9 @@
 /* Define this to support Cros Board Info from GPIO. */
 #undef CONFIG_CBI_GPIO
 
+/* Enable the EC to load the battery paramater from the CBI */
+#undef CONFIG_CBI_BATTERY_PARAMS
+
 /*****************************************************************************/
 /*
  * ISH config defaults
