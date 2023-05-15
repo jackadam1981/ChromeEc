@@ -328,6 +328,8 @@ void timer_init(void)
 	const timestamp_t *ts;
 	int size, version;
 
+	next_deadline = 0xffffffff;
+
 	/* Restore time from before sysjump */
 	ts = (const timestamp_t *)system_get_jump_tag(TIMER_SYSJUMP_TAG,
 						      &version, &size);
