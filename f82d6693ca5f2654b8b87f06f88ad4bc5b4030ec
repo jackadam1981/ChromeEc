@@ -22,6 +22,30 @@
       },
       "revId": "f82d6693ca5f2654b8b87f06f88ad4bc5b4030ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13df960c_3848700d",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-05-15T16:10:37Z",
+      "side": 1,
+      "message": "It\u0027s possible, but it would require some restructuring. \n1) There is no common/task.c. This file would need to be added or the code could be appended to common/system.c.\n2) This implementation uses the file scoped `current_task` variable to read the stack. So a new access function would need to be added to get a reference to the stack. \n\nIMO, it\u0027s not worth restructuring this legacy code, but I can be convinced otherwise.",
+      "parentUuid": "105be4e4_d8759566",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 2
+      },
+      "revId": "f82d6693ca5f2654b8b87f06f88ad4bc5b4030ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
