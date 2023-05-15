@@ -13,6 +13,7 @@
 #include "../usbc.dtsi"
 
 /* Screebo project DTS includes */
+#include "cbi.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
 #include "temp_sensors.dtsi"
@@ -116,7 +117,7 @@
 };
 
 &i2c3_0 {
-	usb_c1_hb_retimer: jhl9040r-c1@54 {
+	usb_c1_hb_retimer: jhl9040r-c0@54 {
 		compatible = "intel,jhl9040r";
 		reg = <0x54>;
 		ls-en-pin = <&gpio_usb_c1_rt_3p3_sx_en>;
@@ -127,6 +128,7 @@
 
 &i2c4_1 {
 	/delete-node/ ps8xxx@b;
+	/delete-node/ rt1716@4e;
 
 	tcpc_port1: nct38xx@73 {
 		compatible = "nuvoton,nct38xx";
@@ -164,6 +166,15 @@
 			pin_mask = <0xff>;
 			pinmux_mask = <0xf7>;
 		};
+		ioex_c1_port1: gpio@1 {
+			compatible = "nuvoton,nct38xx-gpio-port";
+			reg = <0x1>;
+			label = "NCT3807_C1_GPIO1";
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+			pin_mask = <0xff>;
+		};
 	};
 
 	nct3808_alert_1 {
@@ -172,22 +183,63 @@
 		nct38xx-dev = <&nct3807_C1>;
 		label = "NCT3807_ALERT_0";
 	};
+
+	tcpc_ps8xxx_port1: ps8xxx@b {
+		compatible = "parade,ps8xxx";
+		reg = <0xb>;
+		tcpc-flags = <(
+			TCPC_FLAGS_TCPCI_REV2_0 |
+			TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V |
+			TCPC_FLAGS_CONTROL_VCONN |
+			TCPC_FLAGS_CONTROL_FRS)>;
+		/* a duplicate of the <&gpio_usb_c1_tcpc_int_odl> node in
+		 * "named-gpios". This is the Zephyr preferred style,
+		 * the "named-gpios" node will be dealt with at a later date.
+		 */
+		irq-gpios = <&gpio3 4 GPIO_ACTIVE_LOW>;
+		/* a duplicate of the <&gpio_usb_c1_rt_rst_r_odl> node in
+		 * "named-gpios". This is the Zephyr preferred style,
+		 * the "named-gpios" node will be dealt with at a later date.
+		 */
+		rst-gpios = <&gpio7 4 (GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
+		is-alt;
+	};
 };
 
 &i2c6_1 {
-	/delete-node/ nx20p348x@72;
+	/delete-node/ ppc_syv@40;
+	/delete-node/ ktu1125@38;
 
-	ppc_port1_syv: ppc_syv@40 {
+	ppc_syv_port1: ppc_syv@40 {
 		compatible = "silergy,syv682x";
 		status = "okay";
 		reg = <0x40>;
 		frs_en_gpio = <&ioex_usb_c1_frs_en>;
 	};
+	ppc_nxp_port1: nx20p348x@72 {
+		is-alt;
+	};
+};
+
+&usbc_port0 {
+	usb_mux_chain_usb3_port0: usb-mux-chain-0-usb3 {
+		compatible = "cros-ec,usb-mux-chain";
+		usb-muxes = <&virtual_mux_c0>;
+		alternative-chain;
+	};
 };
 
 &usbc_port1 {
-	ppc = <&ppc_port1_syv>;
+	/delete-node/ usb-mux-chain-1-anx7452;
+	/delete-node/ usb-mux-chain-1-kb8010;
+
+	ppc = <&ppc_syv_port1>;
 	usb-mux-chain-1 {
 		usb-muxes = <&usb_c1_hb_retimer &virtual_mux_c1>;
+	};
+	usb_mux_chain_ps8xxx_port1: usb-mux-chain-1-ps8xxx {
+		compatible = "cros-ec,usb-mux-chain";
+		usb-muxes = <&virtual_mux_c1 &tcpci_mux_c1>;
+		alternative-chain;
 	};
 };
