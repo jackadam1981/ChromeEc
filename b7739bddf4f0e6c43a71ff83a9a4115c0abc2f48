@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f11e6e_d2393261",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-15T22:43:20Z",
+      "side": 1,
+      "message": "I think we can get rid of this (and [the mocking](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4506542/comment/29a73347_49ab0f12/)) if we change `fill_encrypted_private_key` and `encrypt_data_in_place` to take the TPM seed as an argument (or actually `ikm`). That will require refactoring the existing code. One way to do that would be to create two functions for `derive_encryption_key`.\n\nSomething like:\n\n* `get_ikm_and_derive_encryption_key`\n* `derive_encryption_key`\n\nwhere `get_ikm_and_derive_encryption_key` just calls `derive_encryption_key` after calling `get_ikm`. Existing code would be changed to call `get_ikm_and_derive_encryption_key` and these new functions could just call `derive_encryption_key`.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 1
+      },
+      "revId": "b7739bddf4f0e6c43a71ff83a9a4115c0abc2f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
