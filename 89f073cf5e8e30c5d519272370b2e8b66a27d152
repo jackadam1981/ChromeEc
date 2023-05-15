@@ -16,6 +16,46 @@
       "message": "Updated the review comments",
       "revId": "89f073cf5e8e30c5d519272370b2e8b66a27d152",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "babc214c_7d2db2bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-15T15:44:53Z",
+      "side": 1,
+      "message": "One last comment from me to address in this CL.",
+      "revId": "89f073cf5e8e30c5d519272370b2e8b66a27d152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e357823e_83dd0bb0",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 24
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-15T15:44:53Z",
+      "side": 1,
+      "message": "When this is false, an extra delay is added because the ROM bootloader must generate the response and runs slower than the second loader that executes from SRAM.  Is my understanding correct?\n\nNaming this `rom_code_active` or `bootloader_active` is probably clearer and you\u0027ll have to flip the logic in `transfer()`.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 21
+      },
+      "revId": "89f073cf5e8e30c5d519272370b2e8b66a27d152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6431cb0e_51c8cac5",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-15T15:44:53Z",
+      "side": 1,
+      "message": "I see that all the commands return a different number of bytes for success and failure.  It probably makes sense to make the response checking a little more sophisticated so that you detect different classes of errors:\n\n1. Response has bad CRC.  This needs a retry\n2. Bit 7 of the first byte indicates failure and the status byte indicates a CRC failure of the command, do a retry.\n3. Bit 7 of the first byte indicates a failure, but something other than CRC failure (illegal header, length, etc).  In this case there is no point in retrying.\n\nFor cases 2 \u0026 3, the number of bytes read from the loader FW need to be adjusted.  So you probably would want to read 1 byte from the loader FW and use the failure bit to determine how many more bytes to read.\n\nThis also means checking the CRC of the response independently of the command sent to the device.  But overall this will make the script more resilient and allow you to provide better error messages - especially for \n\"FW image not valid\".",
+      "parentUuid": "74a8ab5e_654442e1",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 38
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "944ef889_475bb978",
         "filename": "util/mchp/crisis_rcvry_util.py",
         "patchSetId": 23
