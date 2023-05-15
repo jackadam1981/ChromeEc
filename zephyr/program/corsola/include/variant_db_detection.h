@@ -12,7 +12,16 @@
 
 enum corsola_db_type {
 	CORSOLA_DB_UNINIT = -1,
+	/* CORSOLA_DB_NONE means there is no DB in the design. */
 	CORSOLA_DB_NONE,
+	/*
+	 * CORSOLA_DB_DETECT_NONE is used when the project supports DB
+	 * detection, and the expected detection result is no DB in the design.
+	 * This allows derived projects to properly report the detected USB-C
+	 * ports counts, yet the dts settings to have the alternative USB-C
+	 * port.
+	 */
+	CORSOLA_DB_DETECT_NONE,
 	CORSOLA_DB_TYPEC,
 	CORSOLA_DB_HDMI,
 	CORSOLA_DB_COUNT,

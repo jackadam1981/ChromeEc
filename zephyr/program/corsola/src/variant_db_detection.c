@@ -51,7 +51,7 @@ static void corsola_db_config(enum corsola_db_type type)
 		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_usb_c1_dp_in_hpd),
 				      GPIO_OUTPUT_LOW);
 		return;
-	case CORSOLA_DB_NONE:
+	case CORSOLA_DB_DETECT_NONE:
 		/* Set floating pins as input with PU to prevent leakage */
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_x_gpio1),
 				      GPIO_INPUT | GPIO_PULL_UP);
@@ -89,14 +89,14 @@ enum corsola_db_type corsola_get_db_type(void)
 	if (ret != 0) {
 		CPRINTS("Error retrieving CBI FW_CONFIG field %d", DB);
 	} else if (val == DB_NONE) {
-		db = CORSOLA_DB_NONE;
+		db = CORSOLA_DB_DETECT_NONE;
 	}
 #endif
 
 	corsola_db_config(db);
 
 	switch (db) {
-	case CORSOLA_DB_NONE:
+	case CORSOLA_DB_DETECT_NONE:
 		CPRINTS("Detect %s DB", "NONE");
 		break;
 	case CORSOLA_DB_TYPEC:
