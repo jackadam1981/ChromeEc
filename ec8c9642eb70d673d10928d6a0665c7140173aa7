@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd5df9eb_ae5eebe4",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-15T23:04:22Z",
+      "side": 1,
+      "message": "Let\u0027s use a helper function for this.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 11
+      },
+      "revId": "ec8c9642eb70d673d10928d6a0665c7140173aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f8ff02_c0601d38",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-15T23:04:22Z",
+      "side": 1,
+      "message": "nit: \"shared_secret\"",
+      "range": {
+        "startLine": 136,
+        "startChar": 25,
+        "endLine": 136,
+        "endChar": 37
+      },
+      "revId": "ec8c9642eb70d673d10928d6a0665c7140173aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
