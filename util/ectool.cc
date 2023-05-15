@@ -8505,6 +8505,8 @@ static void cmd_cbi_help(char *cmd)
 	fprintf(stderr,
 		"  Usage: %s get <tag> [get_flag]\n"
 		"  Usage: %s set <tag> <value/string> <size> [set_flag]\n"
+		"  Usage: %s getbin <tag> <filename> [get_flag]\n"
+		"  Usage: %s setbin <tag> <filename> [set_flag]\n"
 		"  Usage: %s remove <tag> [set_flag]\n"
 		"    <tag> is one of:\n"
 		"      0: BOARD_VERSION\n"
@@ -8518,6 +8520,7 @@ static void cmd_cbi_help(char *cmd)
 		"      8: SSFC\n"
 		"      9: REWORK_ID\n"
 		"      10: FACTORY_CALIBRATION_DATA\n"
+		"      11: CBI_TAG_BATTERY_PARAMS\n"
 		"    <size> is the size of the data in byte. It should be zero for\n"
 		"      string types.\n"
 		"    <value/string> is an integer or a string to be set\n"
@@ -8526,7 +8529,7 @@ static void cmd_cbi_help(char *cmd)
 		"    [set_flag] is combination of:\n"
 		"      01b: Skip write to EEPROM. Use for back-to-back writes\n"
 		"      10b: Set all fields to defaults first\n",
-		cmd, cmd, cmd);
+		cmd, cmd, cmd, cmd, cmd);
 }
 
 static int cmd_cbi_is_string_field(enum cbi_data_tag tag)
@@ -8601,6 +8604,31 @@ static int cmd_cbi(int argc, char *argv[])
 		}
 		printf("\n");
 		return 0;
+	} else if (!strcasecmp(argv[1], "getbin")) {
+		struct ec_params_get_cbi p = { 0 };
+
+		p.tag = tag;
+		if (argc > 4) {
+			p.flag = strtol(argv[4], &e, 0);
+			if (e && *e) {
+				fprintf(stderr, "Bad flag\n");
+				return -1;
+			}
+		}
+		rv = ec_command(EC_CMD_GET_CROS_BOARD_INFO, 0, &p, sizeof(p),
+				ec_inbuf, ec_max_insize);
+		if (rv < 0) {
+			fprintf(stderr, "Error code: %d\n", rv);
+			return rv;
+		}
+		if (rv < sizeof(uint8_t)) {
+			fprintf(stderr, "Invalid size: %d\n", rv);
+			return -1;
+		}
+		const char * buffer = (const char *)(ec_inbuf);
+		rv = write_file(argv[3], buffer, rv);
+		printf("done.\n");
+		return 0;
 	} else if (!strcasecmp(argv[1], "set")) {
 		struct ec_params_set_cbi *p =
 			(struct ec_params_set_cbi *)ec_outbuf;
@@ -8658,6 +8686,49 @@ static int cmd_cbi(int argc, char *argv[])
 		p->size = size;
 		if (argc > 5) {
 			p->flag = strtol(argv[5], &e, 0);
+			if (e && *e) {
+				fprintf(stderr, "Bad flag\n");
+				return -1;
+			}
+		}
+		rv = ec_command(EC_CMD_SET_CROS_BOARD_INFO, 0, p,
+				sizeof(*p) + size, NULL, 0);
+		if (rv < 0) {
+			if (rv == -EC_RES_ACCESS_DENIED - EECRESULT)
+				fprintf(stderr,
+					"Write-protect is enabled or "
+					"EC explicitly refused to change the "
+					"requested field.\n");
+			else
+				fprintf(stderr, "Error code: %d\n", rv);
+			return rv;
+		}
+		return 0;
+	} else if (!strcasecmp(argv[1], "setbin")) {
+		struct ec_params_set_cbi *p =
+			(struct ec_params_set_cbi *)ec_outbuf;
+		void *val_ptr;
+		int32_t size;
+		if (argc < 4) {
+			fprintf(stderr, "Invalid number of params\n");
+			cmd_cbi_help(argv[0]);
+			return -1;
+		}
+		memset(p, 0, ec_max_outsize);
+		p->tag = tag;
+
+		val_ptr = read_file(argv[3], &size);
+
+		if (size > ec_max_outsize - sizeof(*p)) {
+			fprintf(stderr, "Size exceeds parameter buffer: %d\n",
+				size);
+			return -1;
+		}
+		/* Little endian */
+		memcpy(p->data, val_ptr, size);
+		p->size = size;
+		if (argc > 4) {
+			p->flag = strtol(argv[4], &e, 0);
 			if (e && *e) {
 				fprintf(stderr, "Bad flag\n");
 				return -1;

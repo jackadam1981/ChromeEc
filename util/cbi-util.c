@@ -84,6 +84,7 @@ static const char *field_name[] = {
 	"SSFC",
 	"REWORK_ID",
 	"FACTORY_CALIBRATION_DATA",
+	"CBI_TAG_BATTERY_PARAMS",
 };
 BUILD_ASSERT(ARRAY_SIZE(field_name) == CBI_TAG_COUNT);
 
