@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e90535d7_5168dfee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1436607
+      },
+      "writtenOn": "2023-05-15T11:41:14Z",
+      "side": 1,
+      "message": "Add some print logs here, the `sensor \u003d NULL` and `ec_rate \u003d 0` when body detection on/off. It looks like this is a null pointer reference but there is no crash.\n\n```\n23-05-15 19:28:23.600 [63.952911 motion_sense_fifo_stage_data: addr: 0, ec_rate: 0]                    \n23-05-15 19:28:23.605 [63.956573 body detect mode enabled]\n...\n23-05-15 19:35:36.840 [496.325988 motion_sense_fifo_stage_data: addr: 0, ec_rate: 0]                   \n23-05-15 19:35:36.846 [496.330108 body detect mode disabled]\n```",
+      "parentUuid": "115903c5_0496d3db",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19d6ecfb_66c17696",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -191,6 +215,24 @@
       "side": 1,
       "message": "My point is that we need to enforce `valid_data \u003d\u003d false`, not just let things crash if it\u0027s not.",
       "parentUuid": "bc27e1f3_161dc190",
+      "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54b0d5de_5ce02b55",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1436607
+      },
+      "writtenOn": "2023-05-15T11:41:14Z",
+      "side": 1,
+      "message": "how about return immediately\n\n```\nstatic void fifo_stage_unit(struct ec_response_motion_sensor_data *data,\n\t\t\t    struct motion_sensor_t *sensor, int valid_data)\n{\n...\n    if (valid_data \u003e 0 \u0026\u0026 !sensor)\n        return;\n```",
+      "parentUuid": "a92ec3f7_15b50398",
       "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
