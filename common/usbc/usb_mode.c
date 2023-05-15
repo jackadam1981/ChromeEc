@@ -169,6 +169,9 @@ bool enter_usb_port_partner_is_capable(int port)
 	if (usb4_state[port] == USB4_INACTIVE)
 		return false;
 
+	if (prl_get_rev(port, TCPCI_MSG_SOP) < PD_REV30)
+		return false;
+
 	if (!PD_PRODUCT_IS_USB4(disc->identity.product_t1.raw_value))
 		return false;
 
