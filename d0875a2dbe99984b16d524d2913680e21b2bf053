@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6aecb1e6_099add8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-15T21:09:18Z",
+      "side": 1,
+      "message": "Thanks for digging into that.\n\nThis sounds like a larger issue with the EC code base. Please open a P0 bug to enable null pointer detection and crashing on your EC platform. There are likely other cases of null pointer dereferences which are hiding bugs that need to at least be surfaced and then fixed.\n\nNote that crashing for address 0x0 is not enough. Instead, it needs to be a window of addresses, to handle offsetting into structures via a null pointer. The size of the window will likely be determined by other constraints within the platform and how the null pointers can be detected.",
+      "parentUuid": "e90535d7_5168dfee",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19d6ecfb_66c17696",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -233,6 +257,24 @@
       "side": 1,
       "message": "how about return immediately\n\n```\nstatic void fifo_stage_unit(struct ec_response_motion_sensor_data *data,\n\t\t\t    struct motion_sensor_t *sensor, int valid_data)\n{\n...\n    if (valid_data \u003e 0 \u0026\u0026 !sensor)\n        return;\n```",
       "parentUuid": "a92ec3f7_15b50398",
+      "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c08f12_69077e4e",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-15T21:09:18Z",
+      "side": 1,
+      "message": "\u003e how about return immediately\n\nYes, that\u0027s what I suggested.",
+      "parentUuid": "54b0d5de_5ce02b55",
       "revId": "d0875a2dbe99984b16d524d2913680e21b2bf053",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
