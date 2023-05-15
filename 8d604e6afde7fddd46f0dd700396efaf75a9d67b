@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbfa905f_7fce1e7c",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-15T23:05:07Z",
+      "side": 1,
+      "message": "Let\u0027s create a helper function that does this part and then you can use it [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4505566/comment/dd5df9eb_ae5eebe4/).",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 2
+      },
+      "revId": "8d604e6afde7fddd46f0dd700396efaf75a9d67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06a1f77a_36763a15",
         "filename": "test/fpsensor_auth_crypto.cc",
         "patchSetId": 23
