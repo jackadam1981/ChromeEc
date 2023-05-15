@@ -116,3 +116,16 @@ $(out)/util/export_taskinfo_rw.o: util/export_taskinfo.c
 	$(call quiet,c_to_taskinfo,BUILDCC,RW)
 
 deps-y += $(out)/util/export_taskinfo_ro.o.d $(out)/util/export_taskinfo_rw.o.d
+
+# CBI Battery Parameter generator
+ifneq ($(CONFIG_CBI_BATTERY_PARAMS),)
+build-util-bin-y += gen_cbi_battery_params
+cbi-battery-params-srcs = board/$(BOARD)/cbi_battery_params.c
+cbi-battery-params-objs = $(cbi-battery-params-srcs:%.c=$(out)/util/%.o)
+deps-y += $(cbi-battery-params-objs:%.o=%.o.d)
+$(out)/util/gen_cbi_battery_params: $(cbi-battery-params-objs) board/$(BOARD)/cbi_battery_params.h
+$(out)/util/gen_cbi_battery_params: BUILD_LDFLAGS+=$(cbi-battery-params-objs) -flto
+$(out)/util/%/cbi_battery_params.o: %/cbi_battery_params.c
+	-@ mkdir -p $(@D)
+	$(call quiet,c_to_cbi_batt,BUILDCC)
+endif # CONFIG_CBI_BATTERY_PARAMS
