@@ -244,10 +244,19 @@ static int rt1739_set_frs_enable(int port, int enable)
 				enable ? MASK_CLR : MASK_SET));
 	RETURN_ERROR(update_reg(port, RT1739_REG_INT_MASK4, RT1739_FRS_RX_MASK,
 				enable ? MASK_SET : MASK_CLR));
-	if (enable)
+	if (enable) {
+		RETURN_ERROR(write_reg(port, RT1739_REG_VCONN_CTRL3,
+				       RT1739_VCONN_UVP_CP_EN |
+					       RT1739_VCONN_OCP_CP_EN |
+					       RT1739_VCONN_RCP_CP_EN |
+					       RT1739_VCONN_RVP_CP_EN));
+		RETURN_ERROR(write_reg(port, RT1739_REG_VCONN_CTRL4,
+				       RT1739_VCONN_OCP_SEL_600 |
+					       RT1739_CC_OVP_SEL_3_8));
 		atomic_or(&flags[port], RT1739_FLAGS_FRS_ENABLED);
-	else
+	} else {
 		atomic_clear_bits(&flags[port], RT1739_FLAGS_FRS_ENABLED);
+	}
 
 	return EC_SUCCESS;
 }
