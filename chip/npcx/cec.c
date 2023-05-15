@@ -475,7 +475,7 @@ void enter_state(enum cec_state new_state)
 			/* Destination is our address */
 			gpio = 0;
 			timeout = NOMINAL_SAMPLE_TIME_TICKS;
-		} else if (addr == CEC_BROADCAST_ADDR) {
+		} else {
 			/* Don't ack broadcast or packets which destination
 			 * are us, but continue reading
 			 */
