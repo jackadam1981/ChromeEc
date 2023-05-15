@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "184e9421_afed0b36",
+        "filename": "driver/tcpm/nct38xx.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-15T21:01:09Z",
+      "side": 1,
+      "message": "The nct38xx datasheet only indicates that bit 2 (VBUS Present) is set to a specific value based on dead battery mode.",
+      "range": {
+        "startLine": 50,
+        "startChar": 42,
+        "endLine": 50,
+        "endChar": 46
+      },
+      "revId": "932274da17ed2c85b5d715db21abc9bb274b3f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
