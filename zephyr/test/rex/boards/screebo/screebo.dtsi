@@ -1,0 +1,41 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "../native_posix.overlay"
+#include "../../../../program/rex/screebo/cbi.dtsi"
+
+#include <dt-bindings/gpio_defines.h>
+
+/ {
+	/* Unused Stub */
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		named_i2c0: i2c0 {
+			i2c-port = <&i2c0>;
+			enum-names = "I2C_PORT_USB_MUX";
+		};
+	};
+
+	usbc-port0 {
+		compatible = "named-usbc-port";
+	};
+	usbc-port1 {
+		compatible = "named-usbc-port";
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+
+		gpio_usb_c0_ppc_int_odl: usb_c0_ppc_int_odl {
+			gpios = <&gpio0 1 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C0_PPC_INT_ODL";
+		};
+		gpio_usb_c1_ppc_int_odl: usb_c1_ppc_int_odl {
+			gpios = <&gpio0 2 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C1_PPC_INT_ODL";
+		};
+	};
+};
