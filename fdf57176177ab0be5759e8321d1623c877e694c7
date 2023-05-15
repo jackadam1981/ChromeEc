@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77510405_5afd001c",
+        "filename": "include/crypto/cleanse_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-15T22:12:58Z",
+      "side": 1,
+      "message": "This is a nice feature that I think a lot of boringssl users might want. Can you check if upstream boringssl would take this class? It would be similar to how they have `bssl::UniquePtr`.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "fdf57176177ab0be5759e8321d1623c877e694c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebe618fb_0e48a010",
+        "filename": "include/crypto/cleanse_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-15T22:12:58Z",
+      "side": 1,
+      "message": "Can you add tests for these?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "fdf57176177ab0be5759e8321d1623c877e694c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86858461_d59b5cab",
+        "filename": "include/crypto/cleanse_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-15T22:12:58Z",
+      "side": 1,
+      "message": "Can these be inherited as well? Maybe not.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "fdf57176177ab0be5759e8321d1623c877e694c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c59e3712_2dc7eb0d",
+        "filename": "include/crypto/cleanse_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-15T22:12:58Z",
+      "side": 1,
+      "message": "Can you add tests for these?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "fdf57176177ab0be5759e8321d1623c877e694c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a22049c_a03722e2",
+        "filename": "test/boringssl_crypto.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-15T22:12:58Z",
+      "side": 1,
+      "message": "context",
+      "range": {
+        "startLine": 206,
+        "startChar": 33,
+        "endLine": 206,
+        "endChar": 40
+      },
+      "revId": "fdf57176177ab0be5759e8321d1623c877e694c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
