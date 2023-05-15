@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c260295_d98cab84",
+        "filename": "common/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-15T10:11:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01bda458_85fbe43f",
+      "revId": "6a251df72cd7fdca423e9ec8aced27a87a5cbbc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b182d458_dd09cf66",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ddf0bdf_7afc61e1",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-15T10:11:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b182d458_dd09cf66",
+      "revId": "6a251df72cd7fdca423e9ec8aced27a87a5cbbc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df281b4e_7c4b165a",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-05-15T08:30:08Z",
       "side": 1,
       "message": "This values are calculated using division, so result doesn\u0027t have to be exact. Consider using `zassert_within` if slight deviation is acceptable.",
+      "revId": "6a251df72cd7fdca423e9ec8aced27a87a5cbbc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b526d78d_eab2ea7d",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-15T10:11:40Z",
+      "side": 1,
+      "message": "I\u0027d prefer to keep it as is.\nThe idea behind this test is to verify that the body detection logic reads the correct input values.\nThe difference in output value can be quite small, `8513` vs `8547` in two test cases, I\u0027m concerned about the assert being too permissible.\nAll calculations are done on integers, so there is no FP shenanigans to worry about.",
+      "parentUuid": "df281b4e_7c4b165a",
       "revId": "6a251df72cd7fdca423e9ec8aced27a87a5cbbc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
