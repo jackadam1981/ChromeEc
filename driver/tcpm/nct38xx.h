@@ -42,11 +42,12 @@
 #define NCT38XX_PRODUCT_ID 0xC301
 
 /*
- * Default value from the ROLE_CTRL register on first boot will depend on
- * whether we're coming from a dead battery state.
+ * The default value of the POWER_STATUS register on first boot will
+ * depend on whether we're coming from a dead battery state. The
+ * datasheet value is 0x1C, but we expect that the TCPC has completed
+ * internal initialization by the time we check.
  */
-#define NCT38XX_ROLE_CTRL_DEAD_BATTERY 0x0A
-#define NCT39XX_ROLE_CTRL_GOOD_BATTERY 0x4A
+#define NCT38XX_POWER_STATUS_DEAD_BATTERY 0x0C
 
 #define NCT38XX_REG_GPIO_DATA_IN(n) (0xC0 + ((n)*8))
 #define NCT38XX_REG_GPIO_DATA_OUT(n) (0xC1 + ((n)*8))
