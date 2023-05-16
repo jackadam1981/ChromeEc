@@ -177,6 +177,8 @@ enum power_state power_handle_state(enum power_state state)
 	common_intel_x86_handle_rsmrst(state);
 
 	switch (state) {
+	case POWER_G3:
+		return POWER_G3S5;
 	case POWER_G3S5:
 		if (IS_ENABLED(CONFIG_CHIPSET_SLP_S3_L_OVERRIDE)) {
 			/*
