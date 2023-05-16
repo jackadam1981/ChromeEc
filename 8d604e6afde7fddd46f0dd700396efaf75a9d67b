@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ee7123_2e29c3e6",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-16T09:24:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbfa905f_7fce1e7c",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 2
+      },
+      "revId": "8d604e6afde7fddd46f0dd700396efaf75a9d67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06a1f77a_36763a15",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-15T22:56:32Z",
       "side": 1,
       "message": "For consistency, can we use `std::array` here too?",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 28
+      },
+      "revId": "8d604e6afde7fddd46f0dd700396efaf75a9d67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf0f5bcb_edcdcf49",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-16T09:24:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06a1f77a_36763a15",
       "range": {
         "startLine": 155,
         "startChar": 1,
