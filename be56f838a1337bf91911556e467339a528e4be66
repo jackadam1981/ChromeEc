@@ -16,6 +16,52 @@
       "message": "Hi YH, could you help to review the CL, thanks.",
       "revId": "be56f838a1337bf91911556e467339a528e4be66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6fbaa97_ddd77986",
+        "filename": "zephyr/program/rex/screebo/led_policy.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-16T19:11:10Z",
+      "side": 1,
+      "message": "we don\u0027t really do S3 on MTL.\ni\u0027d add a duplicate entry for `POWER_S0ix` wherever you have S3.\ni\u0027m sure you can force the system into S3, but it\u0027s not\nthe normal sleep state.",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "be56f838a1337bf91911556e467339a528e4be66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e3d862_44f0512d",
+        "filename": "zephyr/program/rex/screebo/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-16T19:11:10Z",
+      "side": 1,
+      "message": "how close are your schematics to rex?\nit\u0027s better to copy/edit this file for screebo (just don\u0027t call it `generated` unless you have a workflow to auto-generate).\nwe\u0027ll likely regenerate this file for the next rex board\nspin and screebo should be isolated from such changes.\ni\u0027m assuming screebo does not track rex schematics.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 28
+      },
+      "revId": "be56f838a1337bf91911556e467339a528e4be66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
