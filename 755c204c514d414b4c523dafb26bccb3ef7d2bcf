@@ -16,6 +16,24 @@
       "message": "Given that bloonchipper won\u0027t share any drivers with EC code, and only will use it\u0027s own drivers + common zephyr code; This would be a great time to move to a different repo like Paul just did for chameleon v3 on zephyr.",
       "revId": "755c204c514d414b4c523dafb26bccb3ef7d2bcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb4c759_8c882324",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 52
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-16T19:06:51Z",
+      "side": 1,
+      "message": "\u003e Given that bloonchipper won\u0027t share any drivers with EC code\n\nIt\u0027s not true. FPMCU also uses RWSIG and Rollback. Why you want to put FPMCU to separate repository?",
+      "parentUuid": "0dcf53f8_6a8c227a",
+      "revId": "755c204c514d414b4c523dafb26bccb3ef7d2bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
