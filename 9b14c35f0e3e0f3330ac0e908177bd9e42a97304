@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2167c1b8_726c65b6",
+        "filename": "include/fpsensor_auth_crypto.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-16T08:31:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06b7cf3a_6e3e627a",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "265501bb_c3cd75bf",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-15T22:23:12Z",
       "side": 1,
       "message": "Can you add these tests to the on-device tests as well? (and make sure they pass).",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccc090ad_93b0a318",
+        "filename": "test/build.mk",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-16T08:31:17Z",
+      "side": 1,
+      "message": "The problem is the test cannot be compile if we add fp_task_simulate to the CONFIG_TEST_TASK_LIST.\n\n```\nIn file included from include/fpsensor_state.h:14:\nIn file included from driver/fingerprint/fpsensor_driver.h:20:\ndriver/fingerprint/fpc/fpc_sensor.h:18:2: error: \"Sensor type not defined!\"\n#error \"Sensor type not defined!\"\n ^\n[3/231] Building C object crypto/CMakeFiles/crypto.dir/des/des.c.oIn file included from test/fpsensor_auth_crypto.cc:9:\ninclude/fpsensor_state.h:47:26: error: use of undeclared identifier \u0027FP_SENSOR_IMAGE_SIZE_FPC\u0027\nextern uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE];\n                         ^\ndriver/fingerprint/fpsensor_driver.h:22:31: note: expanded from macro \u0027FP_SENSOR_IMAGE_SIZE\u0027\n#define FP_SENSOR_IMAGE_SIZE (FP_SENSOR_IMAGE_SIZE_FPC)\n                              ^\nIn file included from test/fpsensor_auth_crypto.cc:9:\ninclude/fpsensor_state.h:49:28: error: use of undeclared identifier \u0027FP_MAX_FINGER_COUNT_FPC\u0027\nextern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];\n                           ^\ndriver/fingerprint/fpsensor_driver.h:26:30: note: expanded from macro \u0027FP_MAX_FINGER_COUNT\u0027\n#define FP_MAX_FINGER_COUNT (FP_MAX_FINGER_COUNT_FPC)\n                             ^\nIn file included from test/fpsensor_auth_crypto.cc:9:\ninclude/fpsensor_state.h:49:49: error: use of undeclared identifier \u0027FP_ALGORITHM_TEMPLATE_SIZE_FPC\u0027\nextern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];\n                                                ^\ndriver/fingerprint/fpsensor_driver.h:25:37: note: expanded from macro \u0027FP_ALGORITHM_TEMPLATE_SIZE\u0027\n#define FP_ALGORITHM_TEMPLATE_SIZE (FP_ALGORITHM_TEMPLATE_SIZE_FPC)\n                                    ^\nIn file included from test/fpsensor_auth_crypto.cc:9:\ninclude/fpsensor_state.h:56:30: error: use of undeclared identifier \u0027FP_ALGORITHM_TEMPLATE_SIZE_FPC\u0027\nextern uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];\n                             ^\ninclude/fpsensor_state.h:35:3: note: expanded from macro \u0027FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE\u0027\n        (FP_ALGORITHM_TEMPLATE_SIZE + FP_POSITIVE_MATCH_SALT_BYTES + \\\n         ^\ndriver/fingerprint/fpsensor_driver.h:25:37: note: expanded from macro \u0027FP_ALGORITHM_TEMPLATE_SIZE\u0027\n#define FP_ALGORITHM_TEMPLATE_SIZE (FP_ALGORITHM_TEMPLATE_SIZE_FPC)\n                                    ^\n[8/231] Building C object crypto/CMakeFiles/crypto.dir/dsa/dsa_asn1.c.oIn file included from test/fpsensor_auth_crypto.cc:9:\ninclude/fpsensor_state.h:58:39: error: use of undeclared identifier \u0027FP_MAX_FINGER_COUNT_FPC\u0027\nextern uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]\n                                      ^\ndriver/fingerprint/fpsensor_driver.h:26:30: note: expanded from macro \u0027FP_MAX_FINGER_COUNT\u0027\n#define FP_MAX_FINGER_COUNT (FP_MAX_FINGER_COUNT_FPC)\n                             ^\n[10/231] Building C object crypto/CMakeFiles/crypto.dir/ecdsa_extra/ecdsa_asn1.c.oIn file included from test/fpsensor_auth_crypto.cc:10:\ninclude/mock/fpsensor_state_mock.h:17:38: error: use of undeclared identifier \u0027FP_MAX_FINGER_COUNT_FPC\u0027\n        default_fake_fp_positive_match_salt[FP_MAX_FINGER_COUNT]\n                                            ^\ndriver/fingerprint/fpsensor_driver.h:26:30: note: expanded from macro \u0027FP_MAX_FINGER_COUNT\u0027\n#define FP_MAX_FINGER_COUNT (FP_MAX_FINGER_COUNT_FPC)\n                             ^\n[14/231] Building C object crypto/CMakeFiles/crypto.dir/cipher_extra/derive_key.c.oIn file included from test/fpsensor_auth_crypto.cc:10:\ninclude/mock/fpsensor_state_mock.h:20:33: error: use of undeclared identifier \u0027FP_MAX_FINGER_COUNT_FPC\u0027\n        trivial_fp_positive_match_salt[FP_MAX_FINGER_COUNT]\n[14/231] Building C object crypto/CMakeFiles/crypto.dir/err/err.c.o\ndriver/fingerprint/fpsensor_driver.h:26:30: note: expanded from macro \u0027FP_MAX_FINGER_COUNT\u0027\n#define FP_MAX_FINGER_COUNT (FP_MAX_FINGER_COUNT_FPC)\n                             ^\n```",
+      "parentUuid": "265501bb_c3cd75bf",
       "range": {
         "startLine": 50,
         "startChar": 0,
