@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e54699_5c62973a",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-16T08:42:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6095e7f3_b2033270",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7e8c814_3df3785f",
@@ -155,6 +179,30 @@
       "writtenOn": "2023-05-15T22:23:12Z",
       "side": 1,
       "message": "Since we have a unit test for `create_ec_key_from_pubkey`, I think it\u0027s ok to use it here to generate `key`.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 11
+      },
+      "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b42f9a8_e6ca88da",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-16T08:42:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7e8c814_3df3785f",
       "range": {
         "startLine": 78,
         "startChar": 0,
