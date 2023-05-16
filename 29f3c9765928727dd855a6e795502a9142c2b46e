@@ -16,6 +16,24 @@
       "message": "you cold implement the same logic as CL:4463817 now,\n\n`PWR_STATE_CHARGE_NEAR_FULL` means display SOC \u003d 100%\n\ndefine display SOC \u003c\u003d 100(or \u003c\u003d 99) behavior in `PWR_STATE_CHARGE`",
       "revId": "29f3c9765928727dd855a6e795502a9142c2b46e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e443880b_156f23d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-05-16T11:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51ab8e20_4ba5dde8",
+      "revId": "29f3c9765928727dd855a6e795502a9142c2b46e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
