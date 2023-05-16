@@ -46,6 +46,30 @@
       },
       "revId": "b7739bddf4f0e6c43a71ff83a9a4115c0abc2f48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25bac530_51978ddc",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-16T18:32:27Z",
+      "side": 1,
+      "message": "\u003e Ideally, nothing should stay in the global scope, we should only pass class references \u0026 call member functions. But that is not the way we do under the EC framework now.\n\nYes, I agree. This has needed to be cleaned up for a long time and with these new changes it\u0027s starting to get out of hand since even more things are being added to global scope.\n\n\u003e Doing a large scale refactoring should be another project.\n\nI don\u0027t think it requires *too* much of a refactoring, but it does require refactoring. Can you go ahead and try to do a small refactor to see what is involved? The problem with waiting until later is that we\u0027re just adding more code that has to be changed in the future (making it even harder to fix in the future). In that case it will most likely never be done and the code will continue to get worse.",
+      "parentUuid": "29788d40_eb07630b",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 1
+      },
+      "revId": "b7739bddf4f0e6c43a71ff83a9a4115c0abc2f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
