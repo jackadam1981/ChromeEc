@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "932ba807_83d9ee99",
+        "filename": "chip/stm32/i2c-stm32l4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-05-16T22:31:42Z",
+      "side": 0,
+      "message": "Is there any reason to avoid writing identical value back to the \"clock enable\" register, in case the particular bit is already set?  I have removed that logic, mostly to save an indentation level.  Also because I do not like maintaining logic without a clear purpose.",
+      "revId": "318306b3a82aa941abe0a559e87d66009f0663c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
