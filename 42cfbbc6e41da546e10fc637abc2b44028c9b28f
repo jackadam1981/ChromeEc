@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b97a8a14_b711c014",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-05-16T11:32:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d3f401c_fdcccf7d",
+      "revId": "42cfbbc6e41da546e10fc637abc2b44028c9b28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b5dfb2_4ffe604c",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd1a803c_6e04a24d",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-05-16T11:32:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b5dfb2_4ffe604c",
+      "revId": "42cfbbc6e41da546e10fc637abc2b44028c9b28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2030729d_e876b020",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-04-14T14:46:13Z",
       "side": 1,
       "message": "Would it make sense to zero the output_buf_size just for safety?\n\nAlso please leave empty line after `if`",
+      "revId": "42cfbbc6e41da546e10fc637abc2b44028c9b28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee358ad_dcfa5326",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-05-16T11:32:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2030729d_e876b020",
       "revId": "42cfbbc6e41da546e10fc637abc2b44028c9b28f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
