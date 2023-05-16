@@ -16,6 +16,24 @@
       "message": "nit: It is a little confusing that call count is not 0. Consider adding in `body_detect_init_before` comment, to note that `body_detect_reset` will call fakes once.",
       "revId": "abe56779125d055a25346b1b4e5ca837e8bf6614",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74fbffa4_02e1855c",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-16T07:18:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f61e1e82_51bf156e",
+      "revId": "abe56779125d055a25346b1b4e5ca837e8bf6614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
