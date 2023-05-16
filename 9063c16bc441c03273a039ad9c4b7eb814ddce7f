@@ -16,6 +16,23 @@
       "message": "+ Caveh...want to make sure this gets merged as apreset won\u0027t work without it. seems like it was just oversight at board bring up.",
       "revId": "9063c16bc441c03273a039ad9c4b7eb814ddce7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed33248a_680d1653",
+        "filename": "zephyr/program/rex/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-16T01:07:03Z",
+      "side": 1,
+      "message": "hmmm... looks like this is a no-op on MTL for now in\ncoreboot/src/soc/intel/common/block/cse/cse_lite.c",
+      "revId": "9063c16bc441c03273a039ad9c4b7eb814ddce7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
