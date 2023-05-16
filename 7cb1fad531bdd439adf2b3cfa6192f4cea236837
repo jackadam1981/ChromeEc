@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f6ccb8b_1ab6cee8",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 23
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-16T09:37:05Z",
+      "side": 1,
+      "message": "Retry updated for CRC failure alone, remaining failures logged the message and exit application.",
+      "parentUuid": "6431cb0e_51c8cac5",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 38
+      },
+      "revId": "7cb1fad531bdd439adf2b3cfa6192f4cea236837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "944ef889_475bb978",
