@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0c9f34f_9f941aaa",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-bodydetect.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-16T21:47:50Z",
+      "side": 1,
+      "message": "How about just embedding this data directly as child on the sensor?\n\nI\u0027m not sure of the value of creating a separate node that collects up all the body detect parameters.\n\n```\nbase_accel: base-accel {\n\t\t\tcompatible \u003d \"cros-ec,lis2dw12\";\n\t\t\tstatus \u003d \"okay\";\n\n\t\t\tactive-mask \u003d \"SENSOR_ACTIVE_S0_S3\";\n\t\t\tlocation \u003d \"MOTIONSENSE_LOC_BASE\";\n\t\t\tmutex \u003d \u003c\u0026mutex_lis2dw12\u003e;\n\t\t\tport \u003d \u003c\u0026i2c_sensor\u003e;\n\t\t\trot-standard-ref \u003d \u003c\u0026base_rot_ref\u003e;\n\t\t\tdefault-range \u003d \u003c2\u003e;\n\t\t\tdrv-data \u003d \u003c\u0026lis2dw12_data\u003e;\n\t\t\ti2c-spi-addr-flags \u003d \"LIS2DWL_ADDR1_FLAGS\";\n\t\t\tbodydetect {\n\t\t\t\tcompatible \u003d \"cros-ec,motionsense-bodydetect\";\n\t\t\t\tvar_noise_factor \u003d \u003c150\u003e;\n\t\t\t\tvar_threshold \u003d \u003c3000\u003e;\n\t\t\t\tconfidence_delta \u003d \u003c2900\u003e;\n\t\t\t};\n\t\t\tconfigs {\n\t\t\t\tcompatible \u003d\n\t\t\t\t\t\"cros-ec,motionsense-sensor-config\";\n\t\t\t\t/* 50 Hz to support body detection. */\n\t\t\t\tec-s0 {\n\t\t\t\t\todr \u003d \u003c(50000 | ROUND_UP_FLAG)\u003e;\n\t\t\t\t};\n\t\t\t\tec-s3 {\n\t\t\t\t\todr \u003d \u003c(50000 | ROUND_UP_FLAG)\u003e;\n\t\t\t\t};\n\t\t\t};\n\t\t};\n```\n\nI think you can still keep `bd_params` as a pointer in the shared motionsense structure.  This just requires using using `DT_FOREACH_STATUS_OKAY(cros_ec_motionsense_bodydetect, fn)` to create the `struct body_detect_params` entries.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "4a694527e59086344c93f319be12b5d8c019323d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6f43a5_54bd181b",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-16T21:47:50Z",
+      "side": 1,
+      "message": "You can simplify with:\n```\n.var_noise_factor \u003d DT_PROP_OR(id, var_noise_factor, 0) \\\n```",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 52
+      },
+      "revId": "4a694527e59086344c93f319be12b5d8c019323d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63652844_716a5e26",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-16T21:47:50Z",
+      "side": 1,
+      "message": "You can use `DT_FOREACH_STATUS_OKAY(cros_ec_motionsense_bodydetect, DECLARE_BODYDETECT_CONFIG)` here instead.\n\nThis finds all nodes in the entire tree with the matching compatible string.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 67
+      },
+      "revId": "4a694527e59086344c93f319be12b5d8c019323d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
