@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3f48fe_ad9b91f8",
+        "filename": "util/check_low_coverage_reason.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-16T21:07:04Z",
+      "side": 1,
+      "message": "Please handle a value of `pre-submit` by exiting without doing anything.\n\nSee #9 under https://chromium.googlesource.com/chromiumos/repohooks/+/HEAD/README.md#guidelines-for-hooks-and-hook-scripts",
+      "range": {
+        "startLine": 35,
+        "startChar": 42,
+        "endLine": 35,
+        "endChar": 56
+      },
+      "revId": "bee72b76c9f0365d10a068d3a984ceba769a4ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
