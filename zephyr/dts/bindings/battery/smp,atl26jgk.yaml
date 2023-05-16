@@ -2,21 +2,23 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-description: "SMP-ATL3.61 DELL 26JGK"
-compatible: "smp,atl26jgk"
+description: "SMP-ATL3.61 DELL 26JGKA47"
+compatible: "smp,atl26jgka47"
 
 include: battery-smart.yaml
 
 properties:
   enum-name:
     type: string
-    default: "smp,atl26jgk"
+    default: "smp,atl26jgka47"
 
   # Fuel gauge
   manuf_name:
     default: "SMP-ATL-3.61"
   device_name:
-    default: "DELL 26JGK"
+    default: "DELL 26JGKA47"
+  ship_mode_wb_support:
+    default: 1
   ship_mode_reg_addr:
     default: 0x44
   ship_mode_reg_data:

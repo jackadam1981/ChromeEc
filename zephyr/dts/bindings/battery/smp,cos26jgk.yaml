@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-description: "SMP-COS3.63 DELL 26JGK"
+description: "SMP-COS3.63 DELL 26JGKA47"
 compatible: "smp,cos26jgk"
 
 include: battery-smart.yaml
@@ -16,7 +16,9 @@ properties:
   manuf_name:
     default: "SMP-COS3.63"
   device_name:
-    default: "DELL 26JGK"
+    default: "DELL 26JGKA47"
+  ship_mode_wb_support:
+    default: 1
   ship_mode_reg_addr:
     default: 0x44
   ship_mode_reg_data:

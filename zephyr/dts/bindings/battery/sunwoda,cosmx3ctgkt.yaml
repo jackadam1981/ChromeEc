@@ -2,19 +2,20 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-description: "SWD-ATL3.618 DELL CTGKT"
-compatible: "sunwoda,ctgkt"
+description: "SWD-COSMX3.618 DELL CTGKT"
+
+compatible: "sunwoda,cosmx3ctgkt"
 
 include: battery-smart.yaml
 
 properties:
   enum-name:
     type: string
-    default: "sunwoda,ctgkt"
+    default: "sunwoda,cosmx3ctgkt"
 
   # Fuel Gauge
   manuf_name:
-    default: "SWD-ATL3.618"
+    default: "SWD-COSMX3.618"
   device_name:
     default: "DELL CTGKT"
   ship_mode_wb_support:
