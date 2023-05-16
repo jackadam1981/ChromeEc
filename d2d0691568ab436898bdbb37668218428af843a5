@@ -33,6 +33,24 @@
       "message": "Would it make sense to put both sensor\u0027s parameter sets in the DT next to each other? That would make it clear to readers which sensor uses which values (as opposed to needing to reference Kconfig for one and DT for the other)",
       "revId": "d2d0691568ab436898bdbb37668218428af843a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86a519b_69f62ce9",
+        "filename": "zephyr/program/skyrim/winterhold/project.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-16T21:48:13Z",
+      "side": 1,
+      "message": "+1 - once you can represent parameter in the devicetree, we should use the devicetree properties.",
+      "parentUuid": "3b29a3ca_ebfb9295",
+      "revId": "d2d0691568ab436898bdbb37668218428af843a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
