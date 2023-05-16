@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4630994_abc48854",
+        "filename": "test/build.mk",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-16T09:02:07Z",
+      "side": 1,
+      "message": "I think the issue would always happen if we include the `fpsensor_state.h`.\n\nI don\u0027t have a good idea to do that without doing a huge refactor of existing fpsensor_state code.\n\nThe proper way to do that is packing all fpsensor_state variables into a \"context\", and passing it around.\n\nBut I don\u0027t want to do a huge refactor now, because that may introduce too much risk.",
+      "parentUuid": "4f6cadfe_78fd09b1",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6095e7f3_b2033270",
         "filename": "test/fpsensor_auth_crypto.cc",
         "patchSetId": 15
