@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1805534_5c112496",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-16T21:55:26Z",
+      "side": 1,
+      "message": "Adding \"cros-ec-reviewers@\" as another set of eyes since this is a critical piece of code.",
+      "revId": "54410c88956be5b19e2e96c4245aa2005581c45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4ab4bcb_bec43fee",
         "filename": "common/rwsig.c",
         "patchSetId": 6
