@@ -16,6 +16,167 @@
       "message": "I haven\u0027t been able to test the upstream host command for ite shi.",
       "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5656c1c8_f4bba689",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-16T22:29:28Z",
+      "side": 1,
+      "message": "How is EC_RES_IN_PROGRESS handled when using the upstream driver?",
+      "range": {
+        "startLine": 1549,
+        "startChar": 0,
+        "endLine": 1550,
+        "endChar": 27
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02109b5_b1fb15ff",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-16T22:29:28Z",
+      "side": 1,
+      "message": "How messy would it be to create a new file `host_command_task.c` that includes everything guarded by `#ifndef CONFIG_EC_HOST_CMD`?\n\nAs alternative, you could move functions within this file so that there is just 2 #ifndef blocks (one for data structures and one for functions).  This would be done as a separate CL.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72983189_7143109e",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-16T22:29:28Z",
+      "side": 1,
+      "message": "How about structuring this as:\n\nstatic void host_command_init()\n{\n...\n}\n#ifdef CONFIG_EC_HOST_CMD\nDECLARE_HOOK(HOOK_INIT, host_command_init, HOOK_PRIO_DEFAULT);\n#else\nvoid host_command_task(void *u)\n{\n...\n}\n#endif\n```",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 62
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b4e10be_4b9c81c8",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1757,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-16T22:29:28Z",
+      "side": 1,
+      "message": "You\u0027ve bypassed the reboot requested by the host.  You\u0027re going to need a mechanism to send a response to the host and still execute `handle_pending_reboot()` below.  \n\nAlternatively, you might be able to add a deferred call to `handle_pending_reboot()`, but this will require some extra testing.",
+      "range": {
+        "startLine": 1757,
+        "startChar": 2,
+        "endLine": 1757,
+        "endChar": 24
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b98aa7b_64ea894b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-16T22:29:28Z",
+      "side": 1,
+      "message": "The actual enum values need to be the same or the AP side of the interface will break.  Adding a build assert that the enum values from `enum ec_status` and `enum ec_host_cmd_status` match is what\u0027s needed here.\n\nIs the compiler checking the enum type and causing a build failure if you try to use `enum ec_status` with CONFIG_EC_HOST_CMD?",
+      "range": {
+        "startLine": 672,
+        "startChar": 0,
+        "endLine": 674,
+        "endChar": 0
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4717838d_8a5c96ae",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-16T22:29:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure of the value of a separate config here.  This must always be set to the same setting as CONFIG_EC_HOST_CMD, correct?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a15fdf3_b6d824f9",
+        "filename": "zephyr/app/ec/main_shim.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-16T22:29:28Z",
+      "side": 1,
+      "message": "This will consume a bit of extra RAM.  We probably need to propose a common solution for reclaiming the main thread\u0027s stack by a separate thread upstream.\n\nLooks like the ITE based boards only have about 500 bytes RAM free.",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
