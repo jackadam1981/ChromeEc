@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d644f6a_563876de",
+        "filename": "include/crypto/cleanse_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-16T08:23:08Z",
+      "side": 1,
+      "message": "Currently it misses the support of the heap allocated objects.\n(e.g. std::vector, std::list)\nIn that case, they might want a different thing for that.",
+      "parentUuid": "77510405_5afd001c",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "fdf57176177ab0be5759e8321d1623c877e694c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebe618fb_0e48a010",
         "filename": "include/crypto/cleanse_wrapper.h",
         "patchSetId": 5
@@ -93,6 +117,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ff31a7_28e2ba64",
+        "filename": "include/crypto/cleanse_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-16T08:23:08Z",
+      "side": 1,
+      "message": "Without `constexpr CleanseWrapper(const T \u0026t)`, this line would not compile:\n`CleanseWrapper\u003cstd::array\u003cuint8_t, 6\u003e \u003e array({ 1, 1, 1, 1, 1, 1 });`\n\nWithout `using T::T;`, this line would not compile:\n`CleanseWrapper\u003cstd::array\u003cuint8_t, 6\u003e \u003e array;`",
+      "parentUuid": "86858461_d59b5cab",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "fdf57176177ab0be5759e8321d1623c877e694c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9511568f_b352c8a1",
+        "filename": "include/crypto/cleanse_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-16T08:23:08Z",
+      "side": 1,
+      "message": "We already tested it.\n\nWithout `constexpr CleanseWrapper(const T \u0026t)`, this line would not compile:\n`CleanseWrapper\u003cstd::array\u003cuint8_t, 6\u003e \u003e array({ 1, 1, 1, 1, 1, 1 });`\n\nWithout `using T::T;`, this line would not compile:\n`CleanseWrapper\u003cstd::array\u003cuint8_t, 6\u003e \u003e array;`\n\nAnd removed the move relate operators, because move is meaningless for trivial type.",
+      "parentUuid": "c59e3712_2dc7eb0d",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "fdf57176177ab0be5759e8321d1623c877e694c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68e23c46_70d6a691",
+        "filename": "include/crypto/cleanse_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-16T08:23:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebe618fb_0e48a010",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "fdf57176177ab0be5759e8321d1623c877e694c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a22049c_a03722e2",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-05-15T22:12:58Z",
       "side": 1,
       "message": "context",
+      "range": {
+        "startLine": 206,
+        "startChar": 33,
+        "endLine": 206,
+        "endChar": 40
+      },
+      "revId": "fdf57176177ab0be5759e8321d1623c877e694c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddcf67c3_b7a924ae",
+        "filename": "test/boringssl_crypto.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-16T08:23:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a22049c_a03722e2",
       "range": {
         "startLine": 206,
         "startChar": 33,
