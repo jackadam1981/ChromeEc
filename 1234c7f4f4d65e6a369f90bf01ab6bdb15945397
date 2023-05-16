@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dcc9ba7_698d8fcb",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-16T19:47:05Z",
+      "side": 1,
+      "message": "please run \ncros format --fix driver/fingerprint/fpc/bep/fpc_private.h\n\non this file to replace the leading white spaces with tabs.\n\nThis patch is failing the CQ dry run due to clang formatting issues",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 4
+      },
+      "revId": "1234c7f4f4d65e6a369f90bf01ab6bdb15945397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
