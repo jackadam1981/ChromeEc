@@ -16,6 +16,24 @@
       "message": "I wonder if there\u0027d be a graceful way to auto-populate these fields with the CONFIG option by default?  That would simplify the code here",
       "revId": "aaee889035a2f85a226661b2208b22aa75f299ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f42aa98f_95aaab85",
+        "filename": "common/body_detection.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-16T20:45:42Z",
+      "side": 1,
+      "message": "How about defining a default/fixed setting:\n\n```\nconst static struct body_detect_params default_body_detect_params \u003d {\n    .var_noise_factor \u003d CONFIG_BODY_DETECTION_VAR_NOISE_FACTOR,\n    .var_threshold \u003d CONFIG_BODY_DETECTION_VAR_NOISE_FACTOR,\n    .confidence_delta \u003d CONFIG_BODY_DETECTION_CONFIDENCE_DELTA,\n};\n```\n\nThen in `body_detect_reset()`, assign the bd_params if NULL.\n\n```\n    if (!body_sensor-\u003ebd_params)\n        body_sensor-\u003ebd_params \u003d \u0026default_body_detect_params;\n```",
+      "parentUuid": "94938d79_e88d3ae4",
+      "revId": "aaee889035a2f85a226661b2208b22aa75f299ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
