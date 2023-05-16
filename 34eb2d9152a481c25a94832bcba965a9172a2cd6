@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f580337c_4e4eed78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-16T23:15:47Z",
+      "side": 1,
+      "message": "Currently, our root of trust is RO FW. Would this break the trust chain?",
+      "range": {
+        "startLine": 9,
+        "startChar": 64,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "34eb2d9152a481c25a94832bcba965a9172a2cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c7b4754_633c1115",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
