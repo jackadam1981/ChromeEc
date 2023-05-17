@@ -306,6 +306,30 @@
       },
       "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "768561cb_4022e8ab",
+        "filename": "test/fpsensor_auth_crypto.mocklist",
+        "patchSetId": 15
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-17T08:08:49Z",
+      "side": 1,
+      "message": "Removed most of the mock in the next CL(https://crrev.com/c/4542368).",
+      "parentUuid": "ba8572bf_c4c4d3f4",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
