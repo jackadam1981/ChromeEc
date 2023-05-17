@@ -191,7 +191,7 @@
 			enum-name = "GPIO_USB_C0_DP_HPD";
 		};
 		gpio_usb_c0_ppc_int_odl: usb_c0_ppc_int_odl {
-			gpios = <&gpio6 7 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+			gpios = <&gpio6 7 (GPIO_INPUT_PULL_UP | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_USB_C0_PPC_INT_ODL";
 		};
 		gpio_usb_c0_ppc_rst_l: usb_c0_ppc_rst_l {

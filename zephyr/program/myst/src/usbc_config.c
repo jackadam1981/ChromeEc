@@ -43,6 +43,17 @@ static void usbc_interrupt_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, usbc_interrupt_init, HOOK_PRIO_POST_I2C);
 
+int ppc_get_alert_status(int port)
+{
+	if (port == USBC_PORT_C0)
+		return gpio_pin_get_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_usb_c0_ppc_int_odl));
+	else if (port == USBC_PORT_C1)
+		return gpio_pin_get_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_usb_c1_ppc_int_odl));
+	return 0;
+}
+
 int board_set_active_charge_port(int port)
 {
 	int is_valid_port = (port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
