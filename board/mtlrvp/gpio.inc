@@ -7,6 +7,11 @@
 
 /* Intel MTL-P-RVP board-specific configuration */
 
+/* KBD I/O Expander interrupt */
+GPIO_INT(IOEX_KBD_INTR_N, PIN(0, 0), GPIO_INT_BOTH, ioex_kbd_interrupt)
+/* Notify PD about KBD interrupt */
+GPIO(KBD_INTR, PIN(4, 0), GPIO_ODR_HIGH)
+
 /* Power sequencing interrupts */
 GPIO_INT(ALL_SYS_PWRGD, PIN(7, 0), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(RSMRST_PWRGD, PIN(6, 6), GPIO_INT_BOTH | GPIO_SEL_1P8V,

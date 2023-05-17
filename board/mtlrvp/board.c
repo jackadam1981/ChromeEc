@@ -43,6 +43,11 @@ __override int board_get_version(void)
 	return 1;
 }
 
+static void ioex_kbd_interrupt(enum gpio_signal signal)
+{
+	gpio_set_level(GPIO_KBD_INTR, gpio_get_level(signal));
+}
+
 static void fake_interrupt(enum gpio_signal signal)
 {
 }
