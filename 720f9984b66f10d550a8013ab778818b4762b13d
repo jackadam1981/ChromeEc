@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9971307f_dd6f1265",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-17T07:40:01Z",
+      "side": 1,
+      "message": "Add a space after `.`.",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "720f9984b66f10d550a8013ab778818b4762b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e8bcc6b_5cd44f20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-17T07:40:01Z",
+      "side": 1,
+      "message": "Please describe the behavior you implemented to notify the AC/DC source.",
+      "revId": "720f9984b66f10d550a8013ab778818b4762b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22af185c_a2fcb549",
+        "filename": "zephyr/program/corsola/starmie/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-17T07:40:01Z",
+      "side": 1,
+      "message": "Add a space after the `:`.",
+      "range": {
+        "startLine": 94,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 14
+      },
+      "revId": "720f9984b66f10d550a8013ab778818b4762b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
