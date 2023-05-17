@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11880ae3_e54aed01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-17T14:32:18Z",
+      "side": 1,
+      "message": "I could be incorrect but I do not believe this breaks the trust chain. This change yields a match when run on `compare_build.sh -b all`, so it shouldn\u0027t affect the behavior of any existing boards. \n\nWhile it doesn\u0027t affect existing boards this change enables the future Helipilot board (see http://go/crvc/4451646/19) to override `CONFIG_RO_PUBKEY_READ_ADDR` to read from a memory mapped address. Both addresses will point to the same physical memory but the npcx9 chip runs from RAM and doesn\u0027t allow direct access to flash memory (see http://b/273569976#comment2) and the linker scripts require `CONFIG_RO_PUBKEY_ADDR` to specify the physical address in flash.\n\nThe same would likely be true for all Nuvoton chips in the EC but there are no other Nuvoton based board configured to run the `rwsig` task (per http://b/273569976#comment2 and verified by this crude shell script `$ grep -r \u0027CHIP:\u003dnpcx\u0027 board/ --include\u003dbuild.mk | sed -e \u0027s/\\/build.mk.*//\u0027 | xargs -I{} grep -l rwsig {}/ec.tasklist`).",
+      "parentUuid": "f580337c_4e4eed78",
+      "range": {
+        "startLine": 9,
+        "startChar": 64,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "34eb2d9152a481c25a94832bcba965a9172a2cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c7b4754_633c1115",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
