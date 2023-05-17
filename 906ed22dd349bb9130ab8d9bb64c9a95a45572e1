@@ -52,6 +52,24 @@
       "parentUuid": "37f0f2cd_35b4f3ec",
       "revId": "906ed22dd349bb9130ab8d9bb64c9a95a45572e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23870dca_cbaf3461",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-05-17T19:16:57Z",
+      "side": 1,
+      "message": "Just to add to that: determining whether this dock needed to have a USB 2.0 hub, and checking whether that Hub was enumerated or not will involve synthesizing signals from a couple of services (typecd and usb_bouncer) in addition to modifying debugd to expose a safe way of doing the hard reset.\n\nWe should definitely check if the hard reset actually solves the issue, but finally implementing this through the AP is the more complicated and brittle option.",
+      "parentUuid": "d0937fb1_db470b3c",
+      "revId": "906ed22dd349bb9130ab8d9bb64c9a95a45572e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
