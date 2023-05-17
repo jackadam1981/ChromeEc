@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbf747a9_979a6782",
+        "filename": "zephyr/dts/bindings/battery/smp,atl26jgk.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-05-17T00:46:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cea6ee28_cbe4cbba",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "f54a5561b23d02f973c2d55633b31e67cd64ce7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4133910b_5297fbb4",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-05-16T14:23:36Z",
       "side": 1,
       "message": "Would be \"DELL 26JGK\"",
+      "revId": "f54a5561b23d02f973c2d55633b31e67cd64ce7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "791d2acc_66e53768",
+        "filename": "zephyr/dts/bindings/battery/smp,cos26jgk.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-05-17T00:46:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4133910b_5297fbb4",
       "revId": "f54a5561b23d02f973c2d55633b31e67cd64ce7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
