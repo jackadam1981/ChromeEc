@@ -700,7 +700,7 @@ config_ghost() {
   config_brya
 }
 
-config_rex() {
+config_rex_backup() {
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev0.0"
 
@@ -718,6 +718,26 @@ config_rex() {
   readonly GPIO_BOOT0=659
   # FP_PWR_EN is on GPP_B11 = 925 + (215-204) = 936
   readonly GPIO_PWREN=936
+}
+
+config_rex() {
+  readonly TRANSPORT="SPI"
+  readonly DEVICE="/dev/spidev0.0"
+
+  # See kernel/v5.15/drivers/pinctrl/intel/pinctrl-meteorlake.c
+  # for pin name and pin number.
+  # Examine `cat /sys/kernel/debug/pinctrl/INTC1083:00/gpio-ranges` on a
+  # rex device to determine gpio number from pin number.
+  # For example: GPP_B11, the pin number is 215 from the pinctrl-meteorlake.c.
+  # From the gpio-ranges, the gpio value is 925 + (215-204) = 936
+
+  readonly GPIO_CHIP="gpiochip573"
+  # FPMCU RST_ODL is on GPP_C21 = 637 + (50 - 29) = 658
+  readonly GPIO_NRST=658
+  # FPMCU BOOT0 is on GPP_C20 = 637 + (49 - 29) = 657
+  readonly GPIO_BOOT0=657
+  # FP_PWR_EN is on GPP_B08 = 925 + (212-204) = 933
+  readonly GPIO_PWREN=933
 }
 
 config_zork() {
