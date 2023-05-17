@@ -33,6 +33,29 @@
       "message": "Keith could you please review it",
       "revId": "5823365e62c8b3c6598350d785d2c8ffa4879344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20cfe1ec_ada2cce8",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-17T22:54:43Z",
+      "side": 1,
+      "message": "There are two conditions you need to detect that should be retried:\n1. CRC error on the command (Host -\u003e MCHP).  This is detected with 0x80 in the command byte response, and 0x01 in the status byte response.\n2. CRC error on the response (MCHP -\u003e HOST). This is detected when bit 0x80 is clear in the command byte response, but the CRC doesn\u0027t match.\n\nThis code assumes case 1, and doesn\u0027t detect case 2.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 17
+      },
+      "revId": "5823365e62c8b3c6598350d785d2c8ffa4879344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
