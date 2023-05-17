@@ -28,6 +28,9 @@ GPIO_INT(PM_SLP_S4_N_EC, PIN(A, 5), GPIO_INT_BOTH, power_signal_interrupt) /* 1.
 GPIO(PM_SLP_S4_N, PIN(A, 5), GPIO_INPUT)
 #endif
 
+GPIO_INT(SMC_ONOFF_N, PIN(D, 2), GPIO_INT_BOTH, power_button_interrupt)
+GPIO_INT(SMC_LID, PIN(0, 1), GPIO_INT_BOTH, lid_interrupt)
+
 /* Host communication GPIOs */
 GPIO(PCH_WAKE_N, PIN(7, 4), GPIO_ODR_HIGH)
 #ifndef CONFIG_HOST_INTERFACE_ESPI
