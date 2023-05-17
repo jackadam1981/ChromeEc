@@ -22,6 +22,15 @@ config PLATFORM_EC_BATTERY_INFO_IN_CBI
 	help
 	  Battery-info-in-CBI allows a board to read battery info from CBI.
 
+config PLATFORM_EC_CONSOLE_CMD_BATTERY_INFO_IN_CBI
+	bool "Console commands: biic"
+	depends on PLATFORM_EC_BATTERY_INFO_IN_CBI
+	help
+	  Enables console commands:
+      
+          biic read | dump | reset - Read, dump, reset battery info read from
+          CBI.
+
 choice PLATFORM_EC_BATTERY_SELECT
 	prompt "Select the battery to use"
 	default PLATFORM_EC_BATTERY_SMART if DT_HAS_BATTERY_SMART_ENABLED
