@@ -68,6 +68,12 @@ struct sm5803_emul_data {
 	uint8_t ports_ctrl;
 	/** Raw value of REFERENCE1 register (REG_REFERENCE) */
 	uint8_t reference1;
+	/** Raw value of LOG_REG1 register (REG_LOG1) */
+	uint8_t log1;
+	/** Raw values of PREREG_CONF_REG{1,2} (REG_VSYS_PREREG_{M,L}LB) */
+	uint8_t prereg_conf1, prereg_conf2;
+	/** Voltage to report on the VBAT_SNSP pin, in mV */
+	uint16_t vbat_sns_mv;
 };
 
 struct sm5803_emul_cfg {
@@ -231,9 +237,15 @@ void sm5803_emul_get_flow_regs(const struct emul *emul, uint8_t *flow1,
 {
 	struct sm5803_emul_data *data = emul->data;
 
-	*flow1 = data->flow1;
-	*flow2 = data->flow2;
-	*flow3 = data->flow3;
+	if (flow1 != NULL) {
+		*flow1 = data->flow1;
+	}
+	if (flow2 != NULL) {
+		*flow2 = data->flow2;
+	}
+	if (flow3 != NULL) {
+		*flow3 = data->flow3;
+	}
 }
 
 void sm5803_emul_set_pmode(const struct emul *emul, uint8_t pmode)
@@ -276,6 +288,7 @@ void sm5803_emul_set_disch_status(const struct emul *emul, uint8_t value)
 
 SIMPLE_GETTER(ports_ctrl, ports_ctrl)
 SIMPLE_GETTER(reference_reg, reference1)
+SIMPLE_GETTER(log1, log1)
 
 bool sm5803_emul_is_psys_dac_enabled(const struct emul *emul)
 {
@@ -285,6 +298,32 @@ bool sm5803_emul_is_psys_dac_enabled(const struct emul *emul)
 }
 
 SIMPLE_GETTER(phot1, phot1)
+
+void sm5803_emul_set_vbat_sns_mv(const struct emul *emul, uint16_t mv)
+{
+	struct sm5803_emul_data *data = emul->data;
+
+	data->vbat_sns_mv = mv;
+}
+
+uint16_t sm5803_emul_vbat_snsp_regval(const struct emul *emul, uint16_t mv)
+{
+	struct sm5803_emul_data *data = emul->data;
+	double divisor;
+
+	/* Volts per ADC LSb varies with number of battery cells. */
+	if (data->pmode <= 5) { /* 1S */
+		divisor = 5.13;
+	} else if (data->pmode >= 6 && data->pmode <= 0xd) { /* 2S */
+		divisor = 10.2;
+	} else if (data->pmode >= 0xe && data->pmode <= 0x16) { /* 3S */
+		divisor = 15.38;
+	} else { /* 4S */
+		divisor = 20.51;
+	}
+
+	return mv / divisor;
+}
 
 static void sm5803_emul_reset(const struct emul *emul)
 {
@@ -337,6 +376,10 @@ static void sm5803_emul_reset(const struct emul *emul)
 	data->ana_en1 = 0x99;
 	data->disch_status = 0;
 	data->reference1 = 0;
+	data->log1 = 0;
+	data->prereg_conf1 = 0;
+	data->prereg_conf2 = 0;
+	data->vbat_sns_mv = 0;
 
 	/* Interrupt pin deasserted */
 	if (cfg->interrupt_gpio != NULL) {
@@ -414,6 +457,8 @@ static int sm5803_main_write_byte(const struct emul *target, int reg,
 	struct sm5803_emul_data *data = target->data;
 
 	switch (reg) {
+	case 0x1f: /* Mystery register used for linear charge enable. */
+		return 0;
 	case SM5803_REG_REFERENCE:
 		data->reference1 = val & GENMASK(3, 0);
 		return 0;
@@ -491,6 +536,9 @@ static int sm5803_chg_read_byte(const struct emul *target, int reg,
 	case SM5803_REG_IR_COMP2:
 		*val = data->ir_comp2;
 		return 0;
+	case SM5803_REG_LOG1:
+		*val = data->log1;
+		return 0;
 	case SM5803_REG_LOG2:
 		*val = ((data->ibus * ADC_CURRENT_LSB_MA) >
 			(data->input_current_limit * ICL_LSB_MA))
@@ -521,12 +569,16 @@ static int sm5803_chg_write_byte(const struct emul *target, int reg,
 		return 0;
 	case SM5803_REG_FLOW1:
 		data->flow1 = val & 0x8f;
+		/* Enabling linear charge turns on the BATFET. */
+		if (val & SM5803_FLOW1_LINEAR_CHARGE_EN) {
+			data->log1 |= SM5803_BATFET_ON;
+		}
 		return 0;
 	case SM5803_REG_FLOW2:
 		data->flow2 = val;
 		return 0;
 	case SM5803_REG_FLOW3:
-		data->flow3 = val & GENMASK(3, 0);
+		data->flow3 = val & GENMASK(6, 0);
 		return 0;
 	case SM5803_REG_SWITCHER_CONF:
 		data->switcher_conf = val & 0xc1;
@@ -548,6 +600,12 @@ static int sm5803_chg_write_byte(const struct emul *target, int reg,
 		return 0;
 	case SM5803_REG_DISCH_CONF6:
 		data->disch_conf6 = val;
+		return 0;
+	case SM5803_REG_VSYS_PREREG_MSB:
+		data->prereg_conf1 = val;
+		return 0;
+	case SM5803_REG_VSYS_PREREG_LSB:
+		data->prereg_conf2 = val;
 		return 0;
 	case SM5803_REG_PRE_FAST_CONF_REG1:
 	case SM5803_REG_PRE_FAST_CONF_REG1 + 1:
@@ -592,6 +650,20 @@ static int sm5803_meas_read_byte(const struct emul *target, int reg,
 		return 0;
 	case SM5803_REG_PSYS1:
 		*val = 0x04 | data->psys_dac_enabled;
+		return 0;
+	case SM5803_REG_VBATSNSP_MAX_TH:
+		/* Unimportant; tests don't care what this register reads. */
+		*val = 0;
+		return 0;
+	case SM5803_REG_VBATSNSP_MEAS_MSB:
+		*val = (sm5803_emul_vbat_snsp_regval(target,
+						     data->vbat_sns_mv) &
+			GENMASK(9, 2)) >>
+		       2;
+		return 0;
+	case SM5803_REG_VBATSNSP_MEAS_LSB:
+		*val = sm5803_emul_vbat_snsp_regval(target, data->vbat_sns_mv) &
+		       GENMASK(1, 0);
 		return 0;
 	case SM5803_REG_IBUS_CHG_MEAS_MSB:
 		*val = (data->ibus & GENMASK(9, 2)) >> 2;
@@ -654,6 +726,8 @@ static int sm5803_test_write_byte(const struct emul *target, int reg,
 				  uint8_t val, int bytes)
 {
 	switch (reg) {
+	case 0x44: /* Mystery register used for linear charge enable. */
+		return 0;
 	case 0x8e: /* Mystery register used for init on chip ID 2 */
 		return 0;
 	}

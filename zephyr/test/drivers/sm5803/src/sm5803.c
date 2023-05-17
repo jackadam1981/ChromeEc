@@ -19,6 +19,8 @@
 #include <zephyr/fff.h>
 #include <zephyr/ztest.h>
 
+LOG_MODULE_REGISTER(sm5803_driver_test, LOG_LEVEL_INF);
+
 void sm5803_before_test(void *fixture);
 
 ZTEST_SUITE(sm5803, drivers_predicate_post_main, NULL, sm5803_before_test, NULL,
@@ -114,6 +116,8 @@ struct i2c_log {
 		struct i2c_log *log = ctx;                                  \
                                                                             \
 		if (log->entries_used >= ARRAY_SIZE(log->entries)) {        \
+			LOG_ERR("No space to log I2C write to " #name       \
+				" page");                                   \
 			return -ENOSPC;                                     \
 		}                                                           \
                                                                             \
@@ -135,6 +139,8 @@ struct i2c_log {
 		struct i2c_log *log = ctx;                                  \
                                                                             \
 		if (log->entries_used >= ARRAY_SIZE(log->entries)) {        \
+			LOG_ERR("No space to log I2C read from " #name      \
+				" page");                                   \
 			return -ENOSPC;                                     \
 		}                                                           \
                                                                             \
@@ -233,6 +239,7 @@ ZTEST(sm5803, test_init_2s)
 	/* Emulator defaults to 2S PMODE so we don't need to set it. */
 	chip_inited[0] = false;
 	sm5803_drv.init(CHARGER_NUM);
+	sm5803_drv.post_init(CHARGER_NUM);
 
 	/* Ensures we're in a safe state for operation. */
 	LOG_ASSERT_R(SM5803_ADDR_MAIN_FLAGS, SM5803_REG_CLOCK_SEL);
@@ -309,6 +316,7 @@ ZTEST(sm5803, test_init_3s)
 	chip_inited[0] = false;
 	sm5803_emul_set_pmode(SM5803_EMUL, 0x14);
 	sm5803_drv.init(CHARGER_NUM);
+	sm5803_drv.post_init(CHARGER_NUM);
 
 	/* Ensures we're in a safe state for operation. */
 	LOG_ASSERT_R(SM5803_ADDR_MAIN_FLAGS, SM5803_REG_CLOCK_SEL);
@@ -377,6 +385,7 @@ ZTEST(sm5803, test_init_rev2)
 	dev_id = -1;
 	sm5803_emul_set_device_id(SM5803_EMUL, 2);
 	sm5803_drv.init(CHARGER_NUM);
+	sm5803_drv.post_init(CHARGER_NUM);
 
 	/* Ensures we're in a safe state for operation. */
 	LOG_ASSERT_R(SM5803_ADDR_MAIN_FLAGS, SM5803_REG_CLOCK_SEL);
@@ -623,6 +632,9 @@ ZTEST(sm5803, test_check_vbus_level)
 	k_sleep(K_SECONDS(1));
 	zassert_false(sm5803_check_vbus_level(CHARGER_NUM, VBUS_PRESENT));
 
+	/* Unrecognized levels are never matched */
+	zassert_false(sm5803_check_vbus_level(CHARGER_NUM, -1));
+
 	/*
 	 * With ADC disabled, uses digital presence only. 4.6V is high enough
 	 * to trip CHG_DET but wasn't enough to count as present with the analog
@@ -635,6 +647,9 @@ ZTEST(sm5803, test_check_vbus_level)
 	sm5803_emul_set_vbus_voltage(SM5803_EMUL, 400);
 	k_sleep(K_SECONDS(1));
 	zassert_true(sm5803_check_vbus_level(CHARGER_NUM, VBUS_REMOVED));
+
+	/* Unrecognized levels are never matched */
+	zassert_false(sm5803_check_vbus_level(CHARGER_NUM, -1));
 }
 
 ZTEST(sm5803, test_lpm)
@@ -813,6 +828,11 @@ ZTEST(sm5803, test_vbus_sink_enable)
 		"FLOW2 should enable automatic charge management; was %#x",
 		flow2);
 
+	/*
+	 * TODO(b:283026626): exercise the branch for disconnected battery
+	 * in sm5803_vbus_sink_enable.
+	 */
+
 	zassert_ok(sm5803_vbus_sink_enable(CHARGER_NUM, 0));
 	sm5803_emul_get_flow_regs(SM5803_EMUL, &flow1, &flow2, &flow3);
 	zassert_equal(flow1, 0, "FLOW1 should disable sinking; was %#x", flow1);
@@ -958,13 +978,13 @@ ZTEST(sm5803, test_set_option)
 	uint8_t flow1, flow2, flow3;
 
 	/* set_option() writes all three flow registers */
-	zassert_ok(sm5803_drv.set_option(CHARGER_NUM, 0x654321));
+	zassert_ok(sm5803_drv.set_option(CHARGER_NUM, 0xE54321));
 	sm5803_emul_get_flow_regs(SM5803_EMUL, &flow1, &flow2, &flow3);
 	/* FLOW1 bits 4-6 always read 0 */
 	zassert_equal(flow1, 0x01, "actual value was %#x", flow1);
 	zassert_equal(flow2, 0x43, "actual value was %#x", flow2);
-	/* FLOW3 bits 4-7 are unimplemented */
-	zassert_equal(flow3, 0x05, "actual value was %#x", flow3);
+	/* FLOW3 bit 7 is unimplemented */
+	zassert_equal(flow3, 0x65, "actual value was %#x", flow3);
 
 	/* and I2C errors are returned */
 	i2c_common_emul_set_write_fail_reg(sm5803_emul_get_i2c_chg(SM5803_EMUL),
@@ -1081,6 +1101,172 @@ ZTEST(sm5803, test_hibernate)
 		sm5803_emul_get_i2c_main(SM5803_EMUL_SECONDARY),
 		SM5803_REG_REFERENCE);
 	sm5803_hibernate(CHARGER_SECONDARY);
+}
+
+ZTEST(sm5803, test_linear_charge)
+{
+	uint8_t flow1, flow3;
+
+	/* Initial attempt is rebuffed because BFET is disabled. */
+	zassert_equal(sm5803_drv.enable_linear_charge(CHARGER_SECONDARY, 1),
+		      EC_ERROR_TRY_AGAIN);
+	/* Set target voltage, kicking the primary charger's BFET on. */
+	zassert_ok(sm5803_drv.set_voltage(CHARGER_SECONDARY, 10600));
+	sm5803_emul_get_flow_regs(SM5803_EMUL, &flow1, NULL, NULL);
+	zassert_equal(flow1, 0x01,
+		      "Primary charger FLOW1 should be sinking, but was %#x",
+		      flow1);
+	zassert_equal(sm5803_emul_get_log1(SM5803_EMUL), 0x04,
+		      "Primary charger BFET should be on, but LOG1 was %#x",
+		      sm5803_emul_get_log1(SM5803_EMUL));
+
+	/* Now linear charge enable is permitted. */
+	zassert_ok(sm5803_drv.enable_linear_charge(CHARGER_SECONDARY, 1));
+	sm5803_emul_get_flow_regs(SM5803_EMUL_SECONDARY, &flow1, NULL, &flow3);
+	zassert_equal(flow1, 0x09,
+		      "secondary charger should be sinking in linear mode,"
+		      " but FLOW1 was %#x",
+		      flow1);
+	zassert_equal(flow3, 0x70,
+		      "mystery bits 4-6 of FLOW3 should have been set, but"
+		      " value was %#x",
+		      flow3);
+
+	/* Disables when requested. */
+	zassert_ok(sm5803_drv.enable_linear_charge(CHARGER_SECONDARY, 0));
+	sm5803_emul_get_flow_regs(SM5803_EMUL_SECONDARY, &flow1, NULL, &flow3);
+	zassert_equal(flow1, 0x01,
+		      "secondary charger linear mode should be disabled, but"
+		      " FLOW1 was %#x",
+		      flow1);
+	zassert_equal(flow3, 0,
+		      "FLOW3 mystery bits should be cleared, but value was %#x",
+		      flow3);
+}
+
+ZTEST(sm5803, test_explicit_lpm)
+{
+	/* Enter LPM */
+	sm5803_enable_low_power_mode(CHARGER_NUM);
+	zassert_false(sm5803_emul_is_psys_dac_enabled(SM5803_EMUL));
+	zassert_equal(
+		sm5803_emul_get_phot1(SM5803_EMUL), 0x20,
+		"PROCHOT comparators should be disabled, but PHOT1 was %#x",
+		sm5803_emul_get_phot1(SM5803_EMUL));
+
+	/* Exit LPM */
+	sm5803_disable_low_power_mode(CHARGER_NUM);
+	zassert_true(sm5803_emul_is_psys_dac_enabled(SM5803_EMUL));
+	zassert_equal(
+		sm5803_emul_get_phot1(SM5803_EMUL), 0x2d,
+		"PROCHOT comparators should be enabled, but PHOT1 was %#x",
+		sm5803_emul_get_phot1(SM5803_EMUL));
+
+	/* Errors are handled */
+	i2c_common_emul_set_read_fail_reg(sm5803_emul_get_i2c_chg(SM5803_EMUL),
+					  SM5803_REG_PHOT1);
+	sm5803_enable_low_power_mode(CHARGER_NUM);
+	sm5803_disable_low_power_mode(CHARGER_NUM);
+	i2c_common_emul_set_read_fail_reg(sm5803_emul_get_i2c_meas(SM5803_EMUL),
+					  SM5803_REG_PSYS1);
+	sm5803_enable_low_power_mode(CHARGER_NUM);
+	sm5803_disable_low_power_mode(CHARGER_NUM);
+	i2c_common_emul_set_read_fail_reg(sm5803_emul_get_i2c_main(SM5803_EMUL),
+					  SM5803_REG_REFERENCE);
+	sm5803_enable_low_power_mode(CHARGER_NUM);
+	sm5803_disable_low_power_mode(CHARGER_NUM);
+}
+
+ZTEST(sm5803, test_explicit_lpm_connected)
+{
+	const struct emul *tcpci_emul = EMUL_GET_USBC_BINDING(0, tcpc);
+	struct tcpci_partner_data partner;
+	struct tcpci_src_emul_data partner_src;
+
+	tcpci_partner_init(&partner, PD_REV30);
+	partner.extensions = tcpci_src_emul_init(&partner_src, &partner, NULL);
+
+	/* Connect a partner. */
+	zassert_ok(tcpci_partner_connect_to_tcpci(&partner, tcpci_emul));
+	sm5803_emul_set_vbus_voltage(SM5803_EMUL, 5000);
+	k_sleep(K_SECONDS(10));
+	zassert_true(pd_is_connected(CHARGER_NUM));
+
+	/* Going to explicit LPM leaves VBUS comparator enabled. */
+	sm5803_enable_low_power_mode(CHARGER_NUM);
+	zassert_equal(sm5803_emul_get_phot1(SM5803_EMUL), 0x28,
+		      "Comparators other than VBUS should be disabled,"
+		      " but PHOT1 was %#x",
+		      sm5803_emul_get_phot1(SM5803_EMUL));
+
+	/* Clean up partner. */
+	zassert_ok(tcpci_emul_disconnect_partner(tcpci_emul));
+	sm5803_emul_set_vbus_voltage(SM5803_EMUL, 0);
+	k_sleep(K_SECONDS(10));
+}
+
+ZTEST(sm5803, test_vbat_overvoltage_2s)
+{
+	const struct emul *tcpci_emul = EMUL_GET_USBC_BINDING(0, tcpc);
+	struct tcpci_partner_data partner;
+	struct tcpci_src_emul_data partner_src;
+	struct i2c_log log = {};
+	struct i2c_log *const log_ptr = &log;
+	uint8_t flow1;
+
+	tcpci_partner_init(&partner, PD_REV30);
+	partner.extensions = tcpci_src_emul_init(&partner_src, &partner, NULL);
+
+	/* Connect PD source and begin charging. */
+	zassert_ok(tcpci_partner_connect_to_tcpci(&partner, tcpci_emul));
+	sm5803_emul_set_vbus_voltage(SM5803_EMUL, 5000);
+	k_sleep(K_SECONDS(10));
+	sm5803_emul_get_flow_regs(SM5803_EMUL, &flow1, NULL, NULL);
+	zassert_equal(flow1, 1, "charger should be sinking, but FLOW1 was %#x",
+		      flow1);
+
+	/* Log accesses to sense parameters to verify they're as expected. */
+	i2c_common_emul_set_read_func(sm5803_emul_get_i2c_meas(SM5803_EMUL),
+				      i2c_log_read_meas, log_ptr);
+	i2c_common_emul_set_write_func(sm5803_emul_get_i2c_meas(SM5803_EMUL),
+				       i2c_log_write_meas, log_ptr);
+
+	/*
+	 * Trigger VBAT_SNS overvoltage interrupt. Default threshold for 2S is
+	 * 9V.
+	 */
+	sm5803_emul_set_vbat_sns_mv(SM5803_EMUL, 9050);
+	sm5803_emul_set_irqs(SM5803_EMUL, 0, SM5803_INT2_VBATSNSP, 0, 0);
+	/* Allow interrupt to be serviced */
+	k_sleep(K_SECONDS(0.1));
+
+	/*
+	 * Interrupt handler logged voltages, then reset the threshold to reset
+	 * the interrupt, and programmed the expected threshold back.
+	 */
+	LOG_ASSERT_R(SM5803_ADDR_MEAS_FLAGS, SM5803_REG_VBATSNSP_MEAS_MSB);
+	LOG_ASSERT_R(SM5803_ADDR_MEAS_FLAGS, SM5803_REG_VBATSNSP_MEAS_LSB);
+	LOG_ASSERT_R(SM5803_ADDR_MEAS_FLAGS, SM5803_REG_VBATSNSP_MAX_TH);
+	LOG_ASSERT_W(SM5803_ADDR_MEAS_FLAGS, SM5803_REG_VBATSNSP_MAX_TH, 0xff);
+	LOG_ASSERT_W(SM5803_ADDR_MEAS_FLAGS, SM5803_REG_VBATSNSP_MAX_TH, 0xdc);
+	/* Interrupt handler also stopped sinking. */
+	sm5803_emul_get_flow_regs(SM5803_EMUL, &flow1, NULL, NULL);
+	zassert_equal(flow1, 0,
+		      "FLOW1 should disable charger, but value was %#x", flow1);
+
+	/*
+	 * Charger will now attempt to re-enable sinking automatically. Stop
+	 * logging because we don't care anymore and there will be a lot of
+	 * accesses in the background while we wait.
+	 */
+	i2c_common_emul_set_read_func(sm5803_emul_get_i2c_meas(SM5803_EMUL),
+				      NULL, NULL);
+	i2c_common_emul_set_write_func(sm5803_emul_get_i2c_meas(SM5803_EMUL),
+				       NULL, NULL);
+	k_sleep(K_SECONDS(2));
+	sm5803_emul_get_flow_regs(SM5803_EMUL, &flow1, NULL, NULL);
+	zassert_equal(flow1, 1,
+		      "FLOW1 should resume sinking, but value was %#x", flow1);
 }
 
 void sm5803_before_test(void *fixture)

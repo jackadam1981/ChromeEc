@@ -114,3 +114,9 @@ bool sm5803_emul_is_psys_dac_enabled(const struct emul *emul);
 
 /** Get the value of the PHOT1 register. */
 uint8_t sm5803_emul_get_phot1(const struct emul *emul);
+
+/** Get the value of the LOG1 register. */
+uint8_t sm5803_emul_get_log1(const struct emul *emul);
+
+/** Set the reported voltage on the VBATSNSP pin, in mV. */
+void sm5803_emul_set_vbat_sns_mv(const struct emul *emul, uint16_t mv);
