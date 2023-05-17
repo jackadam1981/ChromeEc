@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b91d1b_94d1dee8",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1950,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-05-17T04:53:13Z",
+      "side": 1,
+      "message": "I made it intentionally, as I think I found a discrepancy between the datasheet and what is declared here (possibly also affecting the L4 variant.)\n\nHowever, as I have not tested this change, I probably should save it for another CL.",
+      "parentUuid": "efc443f9_cf08ef64",
+      "range": {
+        "startLine": 1950,
+        "startChar": 40,
+        "endLine": 1950,
+        "endChar": 41
+      },
+      "revId": "003520ce9df7e74910db7cb11f3cad19bc84f118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "996984f6_2deff167",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-16T23:25:51Z",
       "side": 1,
       "message": "(port)",
+      "range": {
+        "startLine": 195,
+        "startChar": 16,
+        "endLine": 195,
+        "endChar": 20
+      },
+      "revId": "003520ce9df7e74910db7cb11f3cad19bc84f118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff11268c_ce35b6e9",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-05-17T04:53:13Z",
+      "side": 1,
+      "message": "Thanks, good catch.",
+      "parentUuid": "996984f6_2deff167",
       "range": {
         "startLine": 195,
         "startChar": 16,

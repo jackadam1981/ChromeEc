@@ -34,6 +34,24 @@
       "parentUuid": "932ba807_83d9ee99",
       "revId": "318306b3a82aa941abe0a559e87d66009f0663c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d273e33_4ef4661d",
+        "filename": "chip/stm32/i2c-stm32l4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-05-17T04:53:13Z",
+      "side": 0,
+      "message": "This register is for enable bits, all are marked as \"rw\" and \"Set and cleared by software\".  There is no \"write 1 to clear\" or any funny business, so I do not quite understand why the original code took steps to avoid a no-op write in case the bit in question was already set.\n\nI am going to assume that it is safe to do a plain unconditional |\u003d .",
+      "parentUuid": "701d106f_9a7a03f5",
+      "revId": "318306b3a82aa941abe0a559e87d66009f0663c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
