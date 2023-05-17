@@ -29,7 +29,7 @@ uint32_t get_io_db_type_from_cached_cbi(void)
 		io_db_type = FW_IO_DB_NONE;
 		LOG_ERR("Failed to get IO_DB value: %d", ret);
 	}
-
+	io_db_type = FW_IO_DB_SKU_A;
 	return io_db_type;
 }
 
