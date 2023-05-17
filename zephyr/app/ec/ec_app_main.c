@@ -16,6 +16,8 @@
 #include "vboot.h"
 #include "watchdog.h"
 #include "zephyr_espi_shim.h"
+#include "panic_defs.h"
+#include "panic.h"
 
 #include <zephyr/kernel.h>
 #include <zephyr/pm/policy.h>
@@ -46,7 +48,8 @@ void ec_app_main(void)
 
 	if (IS_ENABLED(CONFIG_WATCHDOG) &&
 	    !IS_ENABLED(CONFIG_WDT_DISABLE_AT_BOOT)) {
-		watchdog_init();
+		int err = watchdog_init();
+		cprints(CC_SYSTEM, "I initialized the watchdog! err %d", err);
 	}
 
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_BOOT_NO_SLEEP)) {
@@ -88,10 +91,48 @@ void ec_app_main(void)
 		 */
 		vboot_main();
 	}
+	cprints(CC_SYSTEM, "Calling init funcs");
+	struct panic_data* panic_data_ptr = panic_get_data();
+	cprints(CC_SYSTEM, "Panic Data PTR");
+	cprints(CC_SYSTEM, "arch 0x%02x", panic_data_ptr->arch);
+	cprints(CC_SYSTEM, "struct_version 0x%02x", panic_data_ptr->struct_version);
+	cprints(CC_SYSTEM, "flags 0x%02x", panic_data_ptr->flags);
+	cprints(CC_SYSTEM, "reserved 0x%02x", panic_data_ptr->reserved);
 
+	for(int i =0;i<NUM_CORTEX_PANIC_REGISTERS;i++)
+	{
+		cprints(CC_SYSTEM, "regs[%d] 0x%08x", i, panic_data_ptr->cm.regs[i]);
+	}
+	for(int i =0;i<NUM_CORTEX_PANIC_FRAME_REGISTERS;i++)
+	{
+		cprints(CC_SYSTEM, "frame[%d] 0x%08x", i, panic_data_ptr->cm.frame[i]);
+	}
+
+	cprints(CC_SYSTEM, "cfsr 0x%08x", panic_data_ptr->cm.cfsr);
+	cprints(CC_SYSTEM, "bfar 0x%08x", panic_data_ptr->cm.bfar);
+	cprints(CC_SYSTEM, "mfar 0x%08x", panic_data_ptr->cm.mfar);
+	cprints(CC_SYSTEM, "shcsr 0x%08x", panic_data_ptr->cm.shcsr);
+	cprints(CC_SYSTEM, "hfsr 0x%08x", panic_data_ptr->cm.hfsr);
+	cprints(CC_SYSTEM, "dfsr 0x%08x", panic_data_ptr->cm.dfsr);
+	#if 0 // x86
+	cprints(CC_SYSTEM, "Vector 0x%08x", panic_data_ptr->x86.vector);
+	cprints(CC_SYSTEM, "error_code 0x%08x", panic_data_ptr->x86.error_code);
+	cprints(CC_SYSTEM, "eip 0x%08x", panic_data_ptr->x86.eip);
+	cprints(CC_SYSTEM, "cs 0x%08x", panic_data_ptr->x86.cs);
+	cprints(CC_SYSTEM, "eflags 0x%08x", panic_data_ptr->x86.eflags);
+	cprints(CC_SYSTEM, "eax 0x%08x", panic_data_ptr->x86.eax);
+	cprints(CC_SYSTEM, "ebx 0x%08x", panic_data_ptr->x86.ebx);
+	cprints(CC_SYSTEM, "ecx 0x%08x", panic_data_ptr->x86.ecx);
+	cprints(CC_SYSTEM, "edx 0x%08x", panic_data_ptr->x86.edx);
+	cprints(CC_SYSTEM, "esi 0x%08x", panic_data_ptr->x86.esi);
+	cprints(CC_SYSTEM, "edi 0x%08x", panic_data_ptr->x86.edi);
+	cprints(CC_SYSTEM, "task_id 0x%02x", panic_data_ptr->x86.task_id);
+	#endif
 	/* Call init hooks before main tasks start */
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOOKS)) {
+		cprints(CC_SYSTEM, "Calling platform init hooks");
 		hook_notify(HOOK_INIT);
+		cprints(CC_SYSTEM, "Called platform init hooks");
 	}
 
 	/*
@@ -100,7 +141,10 @@ void ec_app_main(void)
 	 * EC must be reset via EC_RST_ODL in order for the WP to become unset.
 	 */
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_EEPROM_CBI_WP) && system_is_locked())
+	{
+		cprints(CC_SYSTEM, "Calling latch cbi funcs");
 		cbi_latch_eeprom_wp();
+	}
 
 	/*
 	 * Print the init time.  Not completely accurate because it can't take
@@ -111,6 +155,7 @@ void ec_app_main(void)
 
 	/* Start the EC tasks after performing all main initialization */
 	if (IS_ENABLED(CONFIG_SHIMMED_TASKS)) {
+		cprints(CC_SYSTEM, "Starting EC task");
 		start_ec_tasks();
 	}
 	if (IS_ENABLED(CONFIG_AP_PWRSEQ)) {
