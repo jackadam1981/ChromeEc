@@ -704,20 +704,44 @@ config_rex() {
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev0.0"
 
-  # See kernel/v5.15/drivers/pinctrl/intel/pinctrl-meteorlake.c
+  # See kernel/v6.1/drivers/pinctrl/intel/pinctrl-meteorlake.c
   # for pin name and pin number.
   # Examine `cat /sys/kernel/debug/pinctrl/INTC1083:00/gpio-ranges` on a
   # rex device to determine gpio number from pin number.
   # For example: GPP_B11, the pin number is 215 from the pinctrl-meteorlake.c.
   # From the gpio-ranges, the gpio value is 925 + (215-204) = 936
 
-  readonly GPIO_CHIP="gpiochip573"
-  # FPMCU RST_ODL is on GPP_C23 = 637 + (52 - 29) = 660
-  readonly GPIO_NRST=660
-  # FPMCU BOOT0 is on GPP_C22 = 637 + (51 - 29) = 659
-  readonly GPIO_BOOT0=659
-  # FP_PWR_EN is on GPP_B11 = 925 + (215-204) = 936
-  readonly GPIO_PWREN=936
+  # For kernel version 6.1, currently used on Rex platform
+  local gpiochip="gpiochip573"
+  readonly GPIO_CHIP="${gpiochip}"
+  local offset=0
+
+  local model=$(cros_config / name)
+  case "${model}" in
+    screebo)
+      # Screebo is based off Rex but with different pins for FPMCU
+      # FPMCU RST_ODL is on GPP_C21 = 637 + (50 - 29) = 658
+      local gpionrst=658
+      readonly GPIO_NRST=$(( gpionrst - offset ))
+      # FPMCU BOOT0 is on GPP_C20 = 637 + (49 - 29) = 657
+      local gpioboot=657
+      readonly GPIO_BOOT0=$(( gpioboot - offset ))
+      # FP_PWR_EN is on GPP_B08 = 925 + (212-204) = 933
+      local gpiopwren=933
+      readonly GPIO_PWREN=$(( gpiopwren - offset ))
+      ;;
+    *)
+      # FPMCU RST_ODL is on GPP_C23 = 637 + (52 - 29) = 660
+      local gpionrst=660
+      readonly GPIO_NRST=$(( gpionrst - offset ))
+      # FPMCU BOOT0 is on GPP_C22 = 637 + (51 - 29) = 659
+      local gpioboot=659
+      readonly GPIO_BOOT0=$(( gpioboot - offset ))
+      # FP_PWR_EN is on GPP_B11 = 925 + (215-204) = 936
+      local gpiopwren=936
+      readonly GPIO_PWREN=$(( gpiopwren - offset ))
+      ;;
+  esac
 }
 
 config_zork() {
