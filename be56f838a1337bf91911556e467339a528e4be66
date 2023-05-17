@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de9c568_e3174ae2",
+        "filename": "zephyr/program/rex/screebo/led_policy.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-05-17T02:23:50Z",
+      "side": 1,
+      "message": "Actually, this `chipset-state` is got from [get_chipset_state](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/led_driver/led.c;l\u003d132;drc\u003d47acf64182ccc833bb590c6d307d6e7c66a93360) in the shim led driver and the `S3` is equal to `CHIPSET_STATE_ANY_SUSPEND`, so it contains S3 and S0ix",
+      "parentUuid": "e6fbaa97_ddd77986",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "be56f838a1337bf91911556e467339a528e4be66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84e3d862_44f0512d",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-05-16T19:11:10Z",
       "side": 1,
       "message": "how close are your schematics to rex?\nit\u0027s better to copy/edit this file for screebo (just don\u0027t call it `generated` unless you have a workflow to auto-generate).\nwe\u0027ll likely regenerate this file for the next rex board\nspin and screebo should be isolated from such changes.\ni\u0027m assuming screebo does not track rex schematics.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 28
+      },
+      "revId": "be56f838a1337bf91911556e467339a528e4be66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e3e5ee_3913053f",
+        "filename": "zephyr/program/rex/screebo/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-05-17T02:23:50Z",
+      "side": 1,
+      "message": "Screebo is very similar to Rex, the main difference are:\n1. GPIO:\n   * some gpios are used on Rex but not on Screebo, so I delete the gpio nodes and add these gpios to the unused list.\n   * some gpios are differently used between Rex and Screebo so I delete the original nodes and re-define these for Screebo\n2. ADC: the ADC and temp sensors map are overwrite in `screebo/temp_sensors.dtsi`\n3. Interrupts: deleted some unused interrputs\n4. I2C:\n   * deleted unused sensor i2c\n   * change some i2c devices\n\nActually, I have met this situation when I submitted the Screebo init CL, the CL needs to rebase since CL:4392208 and CL:4392209 merged. See the  [CL comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4416520/comments/5760fff8_e8ca4c63)\n\nThanks for your suggestion, I will copy the `generated.dtsi` and rename it to `gpio.dtsi` for Screebo.\n\nI open a bug b/283010946 for this.",
+      "parentUuid": "84e3d862_44f0512d",
       "range": {
         "startLine": 8,
         "startChar": 0,
