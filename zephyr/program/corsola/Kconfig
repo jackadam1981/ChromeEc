@@ -53,4 +53,11 @@ config VARIANT_CORSOLA_DB_DETECTION
           includes pin configuration and driver loading.
 	default y
 
+config VARIANT_CORSOLA_HIBERNATE_POWER_SEQUENCE
+	bool "Corsola Platform Hibernate Power Sequence Selection"
+	help
+	  Set PP5000_Z2 to off before EN_ULP to fix immediate waking up from
+	  hibernate. (b:283037861)
+	default n
+
 source "Kconfig.zephyr"
