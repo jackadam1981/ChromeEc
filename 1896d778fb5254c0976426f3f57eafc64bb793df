@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc149b83_1d11f0a7",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-05-17T11:10:23Z",
+      "side": 1,
+      "message": "I\u0027ve seen that every host command driver ignores the `EC_RES_IN_PROGRESS` result code e.g.:\n```\n\t/* Ignore in-progress on LPC since interface is synchronous anyway */\n\tif (args-\u003eresult \u003d\u003d EC_RES_IN_PROGRESS)\n\t\treturn;\n```\n\nIt is used for the `EC_CMD_GET_COMMS_STATUS` and `EC_CMD_RESEND_RESPONSE` commands. It is not supported at the moment. Do you think it is required?",
+      "parentUuid": "5656c1c8_f4bba689",
+      "range": {
+        "startLine": 1549,
+        "startChar": 0,
+        "endLine": 1550,
+        "endChar": 27
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a02109b5_b1fb15ff",
         "filename": "common/host_command.c",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2023-05-16T22:29:28Z",
       "side": 1,
       "message": "How messy would it be to create a new file `host_command_task.c` that includes everything guarded by `#ifndef CONFIG_EC_HOST_CMD`?\n\nAs alternative, you could move functions within this file so that there is just 2 #ifndef blocks (one for data structures and one for functions).  This would be done as a separate CL.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce601556_5ab7aedc",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-05-17T11:10:23Z",
+      "side": 1,
+      "message": "I will try to make it more clear.",
+      "parentUuid": "a02109b5_b1fb15ff",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6018ff6e_cd32ed02",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-05-17T11:10:23Z",
+      "side": 1,
+      "message": "Only the order is different or I\u0027 missing something?",
+      "parentUuid": "72983189_7143109e",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 62
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b4e10be_4b9c81c8",
         "filename": "common/system.c",
         "patchSetId": 3
@@ -100,6 +172,30 @@
       "writtenOn": "2023-05-16T22:29:28Z",
       "side": 1,
       "message": "You\u0027ve bypassed the reboot requested by the host.  You\u0027re going to need a mechanism to send a response to the host and still execute `handle_pending_reboot()` below.  \n\nAlternatively, you might be able to add a deferred call to `handle_pending_reboot()`, but this will require some extra testing.",
+      "range": {
+        "startLine": 1757,
+        "startChar": 2,
+        "endLine": 1757,
+        "endChar": 24
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d27d4c0_4fadd503",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1757,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-05-17T11:10:23Z",
+      "side": 1,
+      "message": "Good point. I will try to find the best way to handle that. Maybe the best way is to add similar `host_send_response` upstream function.",
+      "parentUuid": "4b4e10be_4b9c81c8",
       "range": {
         "startLine": 1757,
         "startChar": 2,
@@ -158,6 +254,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "774dc90d_0582739d",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-05-17T11:10:23Z",
+      "side": 1,
+      "message": "I\u0027ve added this, because it is another choice option in my opinion. `CONFIG_TASK_HOSTCMD_THREAD_MAIN` and `TASK_HOSTCMD_THREAD_DEDICATED` can\u0027t be used with the current upstream Host Command state. However, it can be change once I add a new config to reuse the main thread.",
+      "parentUuid": "4717838d_8a5c96ae",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a15fdf3_b6d824f9",
         "filename": "zephyr/app/ec/main_shim.c",
         "patchSetId": 3
@@ -181,6 +301,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c54f502_706c1591",
+        "filename": "zephyr/app/ec/main_shim.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-05-17T11:10:23Z",
+      "side": 1,
+      "message": "That\u0027s true. The current upstream implementation assumes creating a new thread, it is additional ~1kB of RAM (stack, thread structures etc.). I\u0027m working on adding a new config not to create the new thread. This should allow calling the `task` function from the main thread. I think it is the only way to reclaim the main thread resources. The host command task looks like a good candidate for that",
+      "parentUuid": "8a15fdf3_b6d824f9",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfe4f5d2_a48d6045",
         "filename": "zephyr/shim/include/zephyr_host_command.h",
         "patchSetId": 3
@@ -192,6 +336,30 @@
       "writtenOn": "2023-05-16T23:23:54Z",
       "side": 1,
       "message": "As a follow up, you should audit existing calls to see where `EC_HOST_CMD_HANDLER` could be used.  This would require creating a stub macro for the legacy implementation that ignores the request/response types.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 70
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fa11c92_58bed3ac",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-05-17T11:10:23Z",
+      "side": 1,
+      "message": "Ok, will do.",
+      "parentUuid": "dfe4f5d2_a48d6045",
       "range": {
         "startLine": 45,
         "startChar": 1,
