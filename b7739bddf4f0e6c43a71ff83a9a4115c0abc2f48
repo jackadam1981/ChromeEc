@@ -70,6 +70,30 @@
       },
       "revId": "b7739bddf4f0e6c43a71ff83a9a4115c0abc2f48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f682d330_bd11d4a1",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-17T08:09:26Z",
+      "side": 1,
+      "message": "I cannot finish the refactor without changing a lot of code.\nOtherwise the code looks worse than the current state.\nFor example: the existing mock system doesn\u0027t work well with the C++ style mock.\n(And we still don\u0027t have the gtest support yet.)\ngtest or something like that should not be a blocker of this project.\n\nIf the only thing you want is the device testing, we should just workaround it.",
+      "parentUuid": "25bac530_51978ddc",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 1
+      },
+      "revId": "b7739bddf4f0e6c43a71ff83a9a4115c0abc2f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
