@@ -9,6 +9,7 @@
 #include "console.h"
 #include "cros_board_info.h"
 #include "hooks.h"
+#include "util.h"
 
 // #define DEBUG
 
@@ -170,3 +171,64 @@ test_export_static void batt_cbi_main(void)
 		CPRINTS("%s done", __func__);
 }
 DECLARE_HOOK(HOOK_INIT, batt_cbi_main, HOOK_PRIO_DEFAULT);
+
+static struct board_batt_params dummy_battery_info;
+
+static void batt_cbi_dump(const struct board_batt_params *info)
+{
+	const struct fuel_gauge_info *fg = &info->fuel_gauge;
+	const struct ship_mode_info *ship = &info->fuel_gauge.ship_mode;
+	const struct sleep_mode_info *sleep = &info->fuel_gauge.sleep_mode;
+	const struct fet_info *fet = &info->fuel_gauge.fet;
+	const struct battery_info *batt = &info->batt_info;
+
+	ccprintf(".fuel_gauge = {\n");
+	ccprintf("\t.manuf_name = %s,\n", fg->manuf_name);
+	ccprintf("\t.ship_mode = {\n");
+	ccprintf("\t\t.reg_addr = 0x%02x,\n", ship->reg_addr);
+	ccprintf("\t\t.reg_data = { 0x%04x, 0x%04x },\n", ship->reg_data[0],
+		 ship->reg_data[1]);
+	ccprintf("\t},\n");  /* end of ship_mode */
+	ccprintf("\t.sleep_mode = {\n");
+	ccprintf("\t\t.reg_addr = 0x%02x,\n", sleep->reg_addr);
+	ccprintf("\t\t.reg_data = 0x%04x,\n", sleep->reg_data);
+	ccprintf("\t\t.sleep_supported = %d,\n",
+		 sleep->sleep_supported & BIT(0));
+	ccprintf("\t},\n");  /* end of sleep_mode */
+	ccprintf("\t.fet = {\n");
+	ccprintf("\t\t.mfgacc_support = %d,\n", fet->mfgacc_support & BIT(0));
+	ccprintf("\t\t.reg_addr = 0x%02x,\n", fet->reg_addr);
+	ccprintf("\t\t.reg_mask = 0x%04x,\n", fet->reg_mask);
+	ccprintf("\t\t.disconnect_val = %x,\n", fet->disconnect_val);
+	ccprintf("\t},\n");
+	ccprintf("},\n");  /* end of fuel_gauge */
+	ccprintf(".batt_info = {\n");
+	ccprintf("\t.voltage_max = %d,\n", batt->voltage_max);
+	ccprintf("\t.voltage_normal = %d,\n", batt->voltage_normal);
+	ccprintf("\t.voltage_min = %d,\n", batt->voltage_min);
+	ccprintf("\t.precharge_current = %d,\n", batt->precharge_current);
+	ccprintf("\t.start_charging_min_c = %d,\n", batt->start_charging_min_c);
+	ccprintf("\t.start_charging_max_c = %d,\n", batt->start_charging_max_c);
+	ccprintf("\t.charging_min_c = %d,\n", batt->charging_min_c);
+	ccprintf("\t.charging_max_c = %d,\n", batt->charging_max_c);
+	ccprintf("\t.discharging_min_c = %d,\n", batt->discharging_min_c);
+	ccprintf("\t.discharging_max_c = %d,\n", batt->discharging_max_c);
+	ccprintf("},\n");  /* end of batt_info */
+}
+
+static int cc_batt_cbi(int argc, const char *argv[])
+{
+	if (argc == 2 && strcasecmp(argv[1], "read") == 0) {
+		batt_cbi_read_fuel_gauge_info(&dummy_battery_info);
+		batt_cbi_read_battery_info(&dummy_battery_info);
+	} else if (argc == 2 && strcasecmp(argv[1], "dump") == 0) {
+		batt_cbi_dump(&dummy_battery_info);
+	} else if (argc == 2 && strcasecmp(argv[1], "reset") == 0) {
+		memcpy(&dummy_battery_info, &default_battery_info,
+		       sizeof(dummy_battery_info));
+	} else {
+		return EC_ERROR_PARAM_COUNT;
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(biic, cc_batt_cbi, "read | dump | reset", NULL);
