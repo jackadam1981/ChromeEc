@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c93b6d69_cd56be8a",
+        "filename": "third_party/boringssl/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-17T21:59:34Z",
+      "side": 1,
+      "message": "You mentioned that you avoid used [zephyr modules](https://docs.zephyrproject.org/3.1.0/develop/modules.html). I haven\u0027t looked at zephyr modules too much, but the docs make it look like it\u0027s meant for external code, such as this. What was the reason to avoid modules?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "1b75272b2ee919ef5283e0c56d9f6b9ab1991381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "146a6c85_66e990de",
+        "filename": "third_party/boringssl/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-17T21:59:34Z",
+      "side": 1,
+      "message": "I worry about having to maintain this and if there are specific build flags that boringssl sets when building that we might miss.\n\nSince boringssl already uses cmake, you should be able to reference those cmake files directly (e.g., with `add_subdirectory`). The question is how to get the `boringssl` cmake targets to be added as zephyr library targets (and built with the right toolchain).\n\nIt looks like [this file](https://github.com/zephyrproject-rtos/zephyr/blob/main/cmake/modules/extensions.cmake) has the `zephyr_library` macros. There is probably a way to add the libraries created by the boringssl cmake files to zephyr, such as [this](https://github.com/zephyrproject-rtos/zephyr/blob/796d1112894823cb81d308f9aba2e5d4d3fd98f5/cmake/modules/extensions.cmake#L426). Note that you will need to still make sure the correct toolchain is set for the boringssl targets. When building for EC we did that [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/third_party/rules.mk;l\u003d61-104;drc\u003d1cef98f0913f36c4668bb7d74a03e701f6dfbebc).",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 39
+      },
+      "revId": "1b75272b2ee919ef5283e0c56d9f6b9ab1991381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
