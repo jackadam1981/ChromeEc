@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e3569a2_bdf68f0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 53
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-17T22:47:35Z",
+      "side": 1,
+      "message": "Generally looks good, but I haven\u0027t looked through it in much detail yet. I\u0027m definitely less familiar with the zephyr devicetree at this point, but I can mostly infer what it should be doing. Is there anyone else more familiar with the Zephyr side that could also look?",
+      "revId": "fa6f25de703db5a69b01f35eaff89e4cd9d1ce04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
