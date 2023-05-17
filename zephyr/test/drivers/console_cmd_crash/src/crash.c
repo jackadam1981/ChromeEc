@@ -32,3 +32,14 @@ ZTEST_USER(console_cmd_crash, test_assert)
 	zassert_equal(EC_ERROR_UNKNOWN, rv, NULL);
 	zassert_equal(1, assert_post_action_fake.call_count, NULL);
 }
+
+ZTEST_USER(console_cmd_crash, test_null)
+{
+	int rv;
+
+	RESET_FAKE(software_panic);
+	rv = shell_execute_cmd(get_ec_shell(), "crash null");
+
+	zassert_equal(EC_ERROR_UNKNOWN, rv, NULL);
+	zassert_equal(1, software_panic_fake.call_count, NULL);
+}
