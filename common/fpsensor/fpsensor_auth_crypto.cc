@@ -18,6 +18,11 @@ extern "C" {
 }
 
 #include "fpsensor_auth_crypto.h"
+#include "fpsensor_crypto.h"
+#include "fpsensor_state_without_driver_info.h"
+#include "fpsensor_utils.h"
+
+#include <array>
 
 std::optional<fp_elliptic_curve_public_key>
 create_pubkey_from_ec_key(const EC_KEY &key)
