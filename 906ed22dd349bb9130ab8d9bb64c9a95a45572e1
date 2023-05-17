@@ -34,6 +34,24 @@
       "parentUuid": "c1d2e015_fa9f7e8f",
       "revId": "906ed22dd349bb9130ab8d9bb64c9a95a45572e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0937fb1_db470b3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-05-17T19:05:00Z",
+      "side": 1,
+      "message": "\u003e I thought the relevant system state was that the USB 2.0 hub hadn\u0027t enumerated. \n\nYeah, but it\u0027s specific to this dock. One can side-step the issue by blasting the hard reset on cold boot unconditionally when one sees this dock. It is likely the simpler and smaller hack.\n\nThe problem is most system daemons don\u0027t have knowledge of when the system has cold booted or rebooted (that\u0027s by design; many services are stopped and then restarted on logout/login).",
+      "parentUuid": "37f0f2cd_35b4f3ec",
+      "revId": "906ed22dd349bb9130ab8d9bb64c9a95a45572e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
