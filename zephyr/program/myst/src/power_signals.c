@@ -53,7 +53,7 @@ const struct prochot_cfg prochot_cfg = {
 };
 
 /* Chipset hooks */
-static void baseboard_suspend_change(struct ap_power_ev_callback *cb,
+static void baseboard_power_change(struct ap_power_ev_callback *cb,
 				     struct ap_power_ev_data data)
 {
 	switch (data.event) {
@@ -61,16 +61,27 @@ static void baseboard_suspend_change(struct ap_power_ev_callback *cb,
 		return;
 
 	case AP_POWER_SUSPEND:
-		/* Disable display backlight and retimer */
+		/* Disable display backlight */
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_disable_disp_bl),
 				1);
+		// disable motion interrupts?  Check whether that makes sense
+		// with expected sensor on-times, I thought they were on in
+		// suspend
 		break;
 
 	case AP_POWER_RESUME:
-		/* Enable retimer and display backlight */
+		/* Enable display backlight */
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_disable_disp_bl),
 				0);
-		/* Any retimer tuning can be done after the retimer turns on */
+		// Enable motion interrupts
+		break;
+
+	case AP_POWER_SHUTDOWN:
+		// high-z fault output and retimer C0 interrupt
+		break;
+
+	case AP_POWER_STARTUP:
+		// set input for retimer interrupt and output for fault?
 		break;
 	}
 }
@@ -95,8 +106,9 @@ static void baseboard_init(void)
 	static struct ap_power_ev_callback cb;
 
 	/* Setup a suspend/resume callback */
-	ap_power_ev_init_callback(&cb, baseboard_suspend_change,
-				  AP_POWER_RESUME | AP_POWER_SUSPEND);
+	ap_power_ev_init_callback(&cb, baseboard_power_change,
+				  AP_POWER_RESUME | AP_POWER_SUSPEND |
+				  AP_POWER_SHUTDOWN | AP_POWER_STARTUP);
 	ap_power_ev_add_callback(&cb);
 	/* Enable Power Group interrupts. */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_pg_groupc_s0));
