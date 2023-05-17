@@ -398,6 +398,16 @@ static int command_crash(int argc, const char **argv)
 
 		/* Unreachable, but included for consistency */
 		irq_unlock(lock_key);
+	} else if (!strcasecmp(argv[1], "null")) {
+#ifdef TEST_BUILD
+		/* Not really an assert, but there isn't a better reason available */
+		software_panic(PANIC_SW_ASSERT, 0);
+#else
+		volatile uintptr_t null_ptr = 0x0;
+
+		cflush();
+		ccprintf("%08x\n", *(volatile unsigned int *)null_ptr);
+#endif
 	} else {
 		return EC_ERROR_PARAM1;
 	}
@@ -411,7 +421,7 @@ DECLARE_CONSOLE_COMMAND(crash, command_crash,
 #ifdef CONFIG_CMD_STACKOVERFLOW
 			" | stack"
 #endif
-			" | unaligned | watchdog | hang]",
+			" | unaligned | watchdog | hang | null]",
 			"Crash the system (for testing)");
 
 #ifdef TEST_BUILD
