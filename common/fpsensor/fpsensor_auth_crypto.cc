@@ -18,6 +18,10 @@ extern "C" {
 }
 
 #include "fpsensor_crypto.h"
+#include "fpsensor_state_without_driver_info.h"
+#include "fpsensor_utils.h"
+
+#include <array>
 
 enum ec_error_list fill_pubkey(const EC_KEY &key,
 			       struct ec_fp_ec_public_key &pubkey)
