@@ -47,6 +47,7 @@
  */
 #ifdef CONFIG_MALLOC
 #define CMD_KEYBOARD_LOG 1
+#error "This should be unreachable"
 #else
 #define CMD_KEYBOARD_LOG 0
 #endif
@@ -1170,49 +1171,6 @@ static int command_controller_ram(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 
-static int command_keyboard_log(int argc, const char **argv)
-{
-	int i;
-
-	/* If no args, print log */
-	if (argc == 1) {
-		ccprintf("KBC log (len=%d):\n", kblog_len);
-		for (i = 0; kblog_buf && i < kblog_len; ++i) {
-			ccprintf("%c.%02x ", kblog_buf[i].type,
-				 kblog_buf[i].byte);
-			if ((i & 15) == 15) {
-				ccputs("\n");
-				cflush();
-			}
-		}
-		ccputs("\n");
-		return EC_SUCCESS;
-	}
-
-	/* Otherwise, enable/disable */
-	if (!parse_bool(argv[1], &i))
-		return EC_ERROR_PARAM1;
-
-	if (i) {
-		if (!kblog_buf) {
-			int rv = SHARED_MEM_ACQUIRE_CHECK(sizeof(*kblog_buf) *
-								  MAX_KBLOG,
-							  (char **)&kblog_buf);
-			if (rv != EC_SUCCESS)
-				kblog_buf = NULL;
-			kblog_len = 0;
-			return rv;
-		}
-	} else {
-		kblog_len = 0;
-		if (kblog_buf)
-			shared_mem_release(kblog_buf);
-		kblog_buf = NULL;
-	}
-
-	return EC_SUCCESS;
-}
-
 static int command_keyboard(int argc, const char **argv)
 {
 	int ena;
@@ -1279,8 +1237,6 @@ DECLARE_CONSOLE_COMMAND(codeset, command_codeset, "[set]",
 			"Get/set keyboard codeset");
 DECLARE_CONSOLE_COMMAND(ctrlram, command_controller_ram, "index [value]",
 			"Get/set keyboard controller RAM");
-DECLARE_CONSOLE_COMMAND(kblog, command_keyboard_log, "[on | off]",
-			"Print or toggle keyboard event log");
 DECLARE_CONSOLE_COMMAND(kbd, command_keyboard, "[on | off]",
 			"Print or toggle keyboard info");
 #endif
@@ -1296,8 +1252,6 @@ static int command_8042(int argc, const char **argv)
 			return command_codeset(argc - 1, argv + 1);
 		else if (!strcasecmp(argv[1], "ctrlram"))
 			return command_controller_ram(argc - 1, argv + 1);
-		else if (CMD_KEYBOARD_LOG && !strcasecmp(argv[1], "kblog"))
-			return command_keyboard_log(argc - 1, argv + 1);
 		else if (!strcasecmp(argv[1], "kbd"))
 			return command_keyboard(argc - 1, argv + 1);
 		else
@@ -1313,10 +1267,6 @@ static int command_8042(int argc, const char **argv)
 		command_controller_ram(sizeof(ctlram_argv) /
 					       sizeof(ctlram_argv[0]),
 				       ctlram_argv);
-		if (CMD_KEYBOARD_LOG) {
-			ccprintf("\n- Keyboard log:\n");
-			command_keyboard_log(argc, argv);
-		}
 		ccprintf("\n- Keyboard:\n");
 		command_keyboard(argc, argv);
 		ccprintf("\n- Internal:\n");
