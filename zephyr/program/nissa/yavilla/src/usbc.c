@@ -272,7 +272,6 @@ DECLARE_DEFERRED(check_c0_line);
 
 static void notify_c0_chips(void)
 {
-	usb_charger_task_set_event(0, USB_CHG_EVENT_BC12);
 	sm5803_interrupt(0);
 }
 
@@ -328,7 +327,6 @@ void board_process_pd_alert(int port)
 
 	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c1_int_odl))) {
 		sm5803_handle_interrupt(port);
-		usb_charger_task_set_event_sync(1, USB_CHG_EVENT_BC12);
 	}
 	/*
 	 * Immediately schedule another TCPC interrupt if it seems we haven't
