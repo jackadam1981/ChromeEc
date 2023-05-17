@@ -46,6 +46,9 @@
 #define CONFIG_POWER_S4_RESIDENCY
 #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 
+/* Board ID */
+#define CONFIG_BOARD_VERSION_GPIO
+
 #ifndef __ASSEMBLER__
 #include "gpio_signal.h"
 
