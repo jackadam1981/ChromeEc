@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0557dbd8_a8d53d85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-17T21:37:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1805534_5c112496",
+      "revId": "54410c88956be5b19e2e96c4245aa2005581c45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4ab4bcb_bec43fee",
@@ -96,6 +114,24 @@
       "side": 1,
       "message": "This passed cros format as is, but removed anyway.",
       "parentUuid": "c4ab4bcb_bec43fee",
+      "revId": "54410c88956be5b19e2e96c4245aa2005581c45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b570b5c0_3a2b1e6d",
+        "filename": "common/rwsig.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-17T21:37:31Z",
+      "side": 1,
+      "message": "Yeah, there\u0027s nothing wrong from a style-guide perspective of having the extra line. It\u0027s more about it being a best practice to try not to introduce unrelated changes in commits since it makes the `git blame` history harder to read. e.g., when looking at the blame, you don\u0027t have to spend time trying to figure out why something unrelated to the purpose of the commit changed.",
+      "parentUuid": "c614ce75_b19a52c6",
       "revId": "54410c88956be5b19e2e96c4245aa2005581c45f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
