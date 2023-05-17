@@ -33,6 +33,24 @@
       "message": "Is there any documentation for the EC chip to confirm 1KB is the right page size? Although, I suppose the fact it builds and runs is likely good enough.\n\nhttps://source.corp.google.com/chromeos_public/src/third_party/zephyr/main/arch/arm/core/aarch32/cortex_m/Kconfig;rcl\u003d2904edc89bd720f94ee9c73524d798d3ca0da22c;l\u003d461\n\n```\nconfig CORTEX_M_NULL_POINTER_EXCEPTION_PAGE_SIZE\n\thex \"Size of paged unmapped to implement null pointer detection\"\n\tdefault 0x400\n\thelp\n\t  Size of the page reserved for detecting null pointer\n\t  dereferencing. Must be a power of two. A large value\n\t  offers enhanced detection performance to the cost of\n\t  wasting a large flash area that code may not use.\n```",
       "revId": "6d6f7813dd5c5ed7a404d51e3dc048545b7971ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "812a7373_65e50a77",
+        "filename": "zephyr/Kconfig.defaults-arm",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-05-17T22:13:19Z",
+      "side": 1,
+      "message": "I tried increasing it significantly, to 0x1000000 since txt starts 0x1008000 on my test image. It worked fine until after kernel booted and then faulted on address 0xffff here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/cros_system/cros_system_npcx.c;l\u003d406. NPCX_REVISION_ADDR\u003d0xfffc, which is a magic address I guess? Since it must be a power of 2, 0x8000 is the largest allowed value that doesn\u0027t cause the fault. \n\nI think 0x400 is a good default pending Nuvoton input.",
+      "parentUuid": "852b980d_c604bd1d",
+      "revId": "6d6f7813dd5c5ed7a404d51e3dc048545b7971ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
