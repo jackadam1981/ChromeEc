@@ -15,15 +15,15 @@ GPIO_INT(PCH_SLP_S0_N_EC, PIN(A, 1), GPIO_INT_BOTH,
 	 power_signal_interrupt) /* 1.8V */
 
 #ifndef CONFIG_HOSTCMD_ESPI_VW_SLP_S3
-GPIO_INT(PM_SLP_S3_N_EC, PIN(B, 0), GPIO_INT_BOTH,
-	 power_signal_interrupt) /* 1.8V */
+GPIO_INT(PM_SLP_S3_N_EC, PIN(B, 0), GPIO_INT_BOTH, power_signal_interrupt) /* 1.8V
+									    */
 #else
 GPIO(PM_SLP_S3_N, PIN(B, 0), GPIO_INPUT)
 #endif
 
 #ifndef CONFIG_HOSTCMD_ESPI_VW_SLP_S4
-GPIO_INT(PM_SLP_S4_N_EC, PIN(A, 5), GPIO_INT_BOTH,
-	 power_signal_interrupt) /* 1.8V */
+GPIO_INT(PM_SLP_S4_N_EC, PIN(A, 5), GPIO_INT_BOTH, power_signal_interrupt) /* 1.8V
+									    */
 #else
 GPIO(PM_SLP_S4_N, PIN(A, 5), GPIO_INPUT)
 #endif
@@ -51,6 +51,11 @@ GPIO(BC_ACOK_EC, PIN(0, 2), GPIO_INPUT)
 
 UNIMPLEMENTED(ENTERING_RW)
 UNIMPLEMENTED(EN_PP5000)
+
+/* MTL-RVP has custom GPIO implementation for reading board ID */
+UNIMPLEMENTED(BOARD_VERSION1)
+UNIMPLEMENTED(BOARD_VERSION2)
+UNIMPLEMENTED(BOARD_VERSION3)
 
 /* Alternate pins for UART */
 ALTERNATE(PIN_MASK(6, BIT(4) | BIT(5)), GPIO_ALT_FUNC_DEFAULT, MODULE_UART,

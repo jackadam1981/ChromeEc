@@ -7,8 +7,8 @@
 
 #include "console.h"
 #include "gpio.h"
-#include "power/meteorlake.h"
 #include "power.h"
+#include "power/meteorlake.h"
 #include "registers.h"
 
 /* PWROK signal configuration */
@@ -34,6 +34,11 @@ const int pwrok_signal_deassert_count = ARRAY_SIZE(pwrok_signal_deassert_list);
 int extpower_is_present(void)
 {
 	return gpio_get_level(GPIO_BC_ACOK_EC);
+}
+
+__override int board_get_version(void)
+{
+	return 1;
 }
 
 static void fake_interrupt(enum gpio_signal signal)
