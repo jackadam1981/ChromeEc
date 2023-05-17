@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9af3f7b4_d09c61b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-17T16:18:46Z",
+      "side": 1,
+      "message": "Maybe I misunderstood the description. RWSIG has never worked for npcx9?\n\n\u0027memory mapped address\u0027 is mabye just RAM address? I thought of memory shared between a host and an ec, which is also called mem-map (e.g. host_get_memmap). Maybe you want to change the description to disambiguate it.",
+      "parentUuid": "abbcd481_50a778b3",
+      "range": {
+        "startLine": 9,
+        "startChar": 64,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "34eb2d9152a481c25a94832bcba965a9172a2cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c7b4754_633c1115",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
