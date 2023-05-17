@@ -81,6 +81,8 @@
 #undef CONFIG_USB_CHARGER
 #undef CONFIG_BC12_DETECT_PI3USB9201
 
+#define CONFIG_USB_PD_COMM_LOCKED
+
 /* I2C speed console command */
 #define CONFIG_CMD_I2C_SPEED
 
