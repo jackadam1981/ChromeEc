@@ -52,6 +52,24 @@
       "parentUuid": "5bb4c759_8c882324",
       "revId": "755c204c514d414b4c523dafb26bccb3ef7d2bcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6a74319_896c5675",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 52
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-17T11:51:43Z",
+      "side": 1,
+      "message": "\u003e has code in a private repo\n\nThat \"code\" is a vendor library\n\n\u003e it uses c++\n\nI know that C++ was not supported in EC for a very long time, but I don\u0027t understand why this is a problem? Zephyr supports a subset of C++.\n\n\u003e uses different compilers\n\nIsn\u0027t it true that we all are switching from coreboot-sdk to clang?\n\nOur goal is to upstream as much as possible to Zephyr, but given that introducing support for WP and RDP in STM32 flash driver took me 4 months, switching to Zephyr + FPMCU specific code won\u0027t happen soon. Also I think that the Fingerprint team has a lot of good contributions to EC code.\n\nIf you have strong arguments about moving FPMCU to a separate repository, please write an email to chromeos-fingerprint@google.com. We appreciate any ideas that improves our codebase.",
+      "parentUuid": "17f9b775_66f464ef",
+      "revId": "755c204c514d414b4c523dafb26bccb3ef7d2bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
