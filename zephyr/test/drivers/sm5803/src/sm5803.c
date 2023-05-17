@@ -233,6 +233,7 @@ ZTEST(sm5803, test_init_2s)
 	/* Emulator defaults to 2S PMODE so we don't need to set it. */
 	chip_inited[0] = false;
 	sm5803_drv.init(CHARGER_NUM);
+	sm5803_drv.post_init(CHARGER_NUM);
 
 	/* Ensures we're in a safe state for operation. */
 	LOG_ASSERT_R(SM5803_ADDR_MAIN_FLAGS, SM5803_REG_CLOCK_SEL);
@@ -309,6 +310,7 @@ ZTEST(sm5803, test_init_3s)
 	chip_inited[0] = false;
 	sm5803_emul_set_pmode(SM5803_EMUL, 0x14);
 	sm5803_drv.init(CHARGER_NUM);
+	sm5803_drv.post_init(CHARGER_NUM);
 
 	/* Ensures we're in a safe state for operation. */
 	LOG_ASSERT_R(SM5803_ADDR_MAIN_FLAGS, SM5803_REG_CLOCK_SEL);
@@ -377,6 +379,7 @@ ZTEST(sm5803, test_init_rev2)
 	dev_id = -1;
 	sm5803_emul_set_device_id(SM5803_EMUL, 2);
 	sm5803_drv.init(CHARGER_NUM);
+	sm5803_drv.post_init(CHARGER_NUM);
 
 	/* Ensures we're in a safe state for operation. */
 	LOG_ASSERT_R(SM5803_ADDR_MAIN_FLAGS, SM5803_REG_CLOCK_SEL);
@@ -813,6 +816,11 @@ ZTEST(sm5803, test_vbus_sink_enable)
 		"FLOW2 should enable automatic charge management; was %#x",
 		flow2);
 
+	/*
+	 * TODO(b:283026626): exercise the branch for disconnected battery
+	 * in sm5803_vbus_sink_enable.
+	 */
+
 	zassert_ok(sm5803_vbus_sink_enable(CHARGER_NUM, 0));
 	sm5803_emul_get_flow_regs(SM5803_EMUL, &flow1, &flow2, &flow3);
 	zassert_equal(flow1, 0, "FLOW1 should disable sinking; was %#x", flow1);
@@ -958,13 +966,13 @@ ZTEST(sm5803, test_set_option)
 	uint8_t flow1, flow2, flow3;
 
 	/* set_option() writes all three flow registers */
-	zassert_ok(sm5803_drv.set_option(CHARGER_NUM, 0x654321));
+	zassert_ok(sm5803_drv.set_option(CHARGER_NUM, 0xE54321));
 	sm5803_emul_get_flow_regs(SM5803_EMUL, &flow1, &flow2, &flow3);
 	/* FLOW1 bits 4-6 always read 0 */
 	zassert_equal(flow1, 0x01, "actual value was %#x", flow1);
 	zassert_equal(flow2, 0x43, "actual value was %#x", flow2);
-	/* FLOW3 bits 4-7 are unimplemented */
-	zassert_equal(flow3, 0x05, "actual value was %#x", flow3);
+	/* FLOW3 bit 7 is unimplemented */
+	zassert_equal(flow3, 0x65, "actual value was %#x", flow3);
 
 	/* and I2C errors are returned */
 	i2c_common_emul_set_write_fail_reg(sm5803_emul_get_i2c_chg(SM5803_EMUL),
@@ -1081,6 +1089,47 @@ ZTEST(sm5803, test_hibernate)
 		sm5803_emul_get_i2c_main(SM5803_EMUL_SECONDARY),
 		SM5803_REG_REFERENCE);
 	sm5803_hibernate(CHARGER_SECONDARY);
+}
+
+ZTEST(sm5803, test_linear_charge)
+{
+	uint8_t flow1, flow3;
+
+	/* Initial attempt is rebuffed because BFET is disabled. */
+	zassert_equal(sm5803_drv.enable_linear_charge(CHARGER_SECONDARY, 1),
+		      EC_ERROR_TRY_AGAIN);
+	/* Set target voltage, kicking the primary charger's BFET on. */
+	zassert_ok(sm5803_drv.set_voltage(CHARGER_SECONDARY, 10600));
+	sm5803_emul_get_flow_regs(SM5803_EMUL, &flow1, NULL, NULL);
+	zassert_equal(flow1, 0x01,
+		      "Primary charger FLOW1 should be sinking, but was %#x",
+		      flow1);
+	zassert_equal(sm5803_emul_get_log1(SM5803_EMUL), 0x04,
+		      "Primary charger BFET should be on, but LOG1 was %#x",
+		      sm5803_emul_get_log1(SM5803_EMUL));
+
+	/* Now linear charge enable is permitted. */
+	zassert_ok(sm5803_drv.enable_linear_charge(CHARGER_SECONDARY, 1));
+	sm5803_emul_get_flow_regs(SM5803_EMUL_SECONDARY, &flow1, NULL, &flow3);
+	zassert_equal(flow1, 0x09,
+		      "secondary charger should be sinking in linear mode,"
+		      " but FLOW1 was %#x",
+		      flow1);
+	zassert_equal(flow3, 0x70,
+		      "mystery bits 4-6 of FLOW3 should have been set, but"
+		      " value was %#x",
+		      flow3);
+
+	/* Disables when requested. */
+	zassert_ok(sm5803_drv.enable_linear_charge(CHARGER_SECONDARY, 0));
+	sm5803_emul_get_flow_regs(SM5803_EMUL_SECONDARY, &flow1, NULL, &flow3);
+	zassert_equal(flow1, 0x01,
+		      "secondary charger linear mode should be disabled, but"
+		      " FLOW1 was %#x",
+		      flow1);
+	zassert_equal(flow3, 0,
+		      "FLOW3 mystery bits should be cleared, but value was %#x",
+		      flow3);
 }
 
 void sm5803_before_test(void *fixture)
