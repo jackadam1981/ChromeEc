@@ -53,7 +53,7 @@ const struct prochot_cfg prochot_cfg = {
 };
 
 /* Chipset hooks */
-static void baseboard_suspend_change(struct ap_power_ev_callback *cb,
+static void baseboard_power_change(struct ap_power_ev_callback *cb,
 				     struct ap_power_ev_data data)
 {
 	switch (data.event) {
@@ -61,16 +61,27 @@ static void baseboard_suspend_change(struct ap_power_ev_callback *cb,
 		return;
 
 	case AP_POWER_SUSPEND:
-		/* Disable display backlight and retimer */
+		/* Disable display backlight */
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_disable_disp_bl),
 				1);
+		// disable motion interrupts?  Check whether that makes sense
+		// with expected sensor on-times, I thought they were on in
+		// suspend
 		break;
 
 	case AP_POWER_RESUME:
-		/* Enable retimer and display backlight */
+		/* Enable display backlight */
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_disable_disp_bl),
 				0);
-		/* Any retimer tuning can be done after the retimer turns on */
+		// Enable motion interrupts
+		break;
+
+	case AP_POWER_SHUTDOWN:
+		// high-z fault output and retimer C0 interrupt
+		break;
+
+	case AP_POWER_STARTUP:
+		// set input for retimer interrupt and output for fault?
 		break;
 	}
 }
