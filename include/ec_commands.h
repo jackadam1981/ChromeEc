@@ -6811,6 +6811,7 @@ enum typec_control_command {
 	TYPEC_CONTROL_COMMAND_USB_MUX_SET,
 	TYPEC_CONTROL_COMMAND_BIST_SHARE_MODE,
 	TYPEC_CONTROL_COMMAND_SEND_VDM_REQ,
+	TYPEC_CONTROL_COMMAND_SEND_HARD_RESET,
 };
 
 /* Modes (USB or alternate) that a type-C port may enter. */

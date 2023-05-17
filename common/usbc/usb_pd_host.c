@@ -8,6 +8,7 @@
 #include "console.h"
 #include "ec_commands.h"
 #include "host_command.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_dpm_sm.h"
@@ -170,6 +171,9 @@ static enum ec_status hc_typec_control(struct host_cmd_handler_args *args)
 		return pd_request_vdm(p->port, data,
 				      p->vdm_req_params.vdm_data_objects,
 				      tx_type);
+	case TYPEC_CONTROL_COMMAND_SEND_HARD_RESET:
+		pd_send_hard_reset(p->port);
+		return EC_RES_SUCCESS;
 	default:
 		return EC_RES_INVALID_PARAM;
 	}
