@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f291965e_c5084ea3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-17T22:29:40Z",
+      "side": 1,
+      "message": "Have you tested sysjumps and EC software sync with this change?  The Nuvoton EC maps it\u0027s internal ROM to first 64K of the address space.  I think the sysjump code relies on ROM functions to copy the alternate image from flash to RAM and jump to it.",
+      "revId": "03425ee908b3fafd6f7a450461e2fb58b2e0773f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
