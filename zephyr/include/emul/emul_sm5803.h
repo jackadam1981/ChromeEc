@@ -114,3 +114,6 @@ bool sm5803_emul_is_psys_dac_enabled(const struct emul *emul);
 
 /** Get the value of the PHOT1 register. */
 uint8_t sm5803_emul_get_phot1(const struct emul *emul);
+
+/** Get the value of the LOG1 register. */
+uint8_t sm5803_emul_get_log1(const struct emul *emul);

@@ -1027,19 +1027,27 @@ void sm5803_disable_low_power_mode(int chgnum)
 		return;
 	}
 	/* Enable Psys DAC */
-	rv |= meas_read8(chgnum, SM5803_REG_PSYS1, &reg);
+	rv = meas_read8(chgnum, SM5803_REG_PSYS1, &reg);
+	if (rv) {
+		goto err;
+	}
 	reg |= SM5803_PSYS1_DAC_EN;
-	rv |= meas_write8(chgnum, SM5803_REG_PSYS1, reg);
+	rv = meas_write8(chgnum, SM5803_REG_PSYS1, reg);
 
 	/* Enable PROCHOT comparators except Ibus */
 	rv |= chg_read8(chgnum, SM5803_REG_PHOT1, &reg);
+	if (rv) {
+		goto err;
+	}
 	reg |= SM5803_PHOT1_COMPARATOR_EN;
 	reg &= ~SM5803_PHOT1_IBUS_PHOT_COMP_EN;
 	rv |= chg_write8(chgnum, SM5803_REG_PHOT1, reg);
 
-	if (rv)
+err:
+	if (rv) {
 		CPRINTS("%s %d: Failed to set in disable low power mode",
 			CHARGER_NAME, chgnum);
+	}
 }
 
 void sm5803_enable_low_power_mode(int chgnum)
@@ -1055,7 +1063,10 @@ void sm5803_enable_low_power_mode(int chgnum)
 		return;
 	}
 	/* Disable Psys DAC */
-	rv |= meas_read8(chgnum, SM5803_REG_PSYS1, &reg);
+	rv = meas_read8(chgnum, SM5803_REG_PSYS1, &reg);
+	if (rv) {
+		goto err;
+	}
 	reg &= ~SM5803_PSYS1_DAC_EN;
 	rv |= meas_write8(chgnum, SM5803_REG_PSYS1, reg);
 
@@ -1066,14 +1077,19 @@ void sm5803_enable_low_power_mode(int chgnum)
 	 * called after Vbus has turned on.
 	 */
 	rv |= chg_read8(chgnum, SM5803_REG_PHOT1, &reg);
+	if (rv) {
+		goto err;
+	}
 	reg &= ~SM5803_PHOT1_COMPARATOR_EN;
 	if (pd_is_connected(chgnum))
 		reg |= SM5803_PHOT1_VBUS_MON_EN;
 	rv |= chg_write8(chgnum, SM5803_REG_PHOT1, reg);
 
-	if (rv)
+err:
+	if (rv) {
 		CPRINTS("%s %d: Failed to set in enable low power mode",
 			CHARGER_NAME, chgnum);
+	}
 }
 
 /*
