@@ -16,6 +16,24 @@
       "message": "Why does this need to be via host command?\n\nCan\u0027t the EC issue the hard reset directly? It should have the identifiers for the dock, and knowledge of the system state?",
       "revId": "906ed22dd349bb9130ab8d9bb64c9a95a45572e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f0f2cd_35b4f3ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-05-17T18:31:47Z",
+      "side": 1,
+      "message": "I thought the relevant system state was that the USB 2.0 hub hadn\u0027t enumerated. The EC doesn\u0027t have knowledge of that.\n\nI don\u0027t know whether this will work yet, but if we do need to land a quirk, I\u0027d rather do it where we have more memory.",
+      "parentUuid": "c1d2e015_fa9f7e8f",
+      "revId": "906ed22dd349bb9130ab8d9bb64c9a95a45572e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
