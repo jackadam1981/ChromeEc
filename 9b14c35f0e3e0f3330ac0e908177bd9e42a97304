@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1948a06_835a9caa",
+        "filename": "test/build.mk",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-17T08:19:12Z",
+      "side": 1,
+      "message": "Currently the biggest problem of adding a persistent context is the EC framework itself, the \"host_command\" design is blocking us from writing proper code without global variables.\nAnd without gmock \u0026 gtest, we cannot write a good  C++ mocked class for testing.\nI will only workaround the device test issue with https://crrev.com/c/4542368",
+      "parentUuid": "a973ead2_9f53ace9",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6095e7f3_b2033270",
