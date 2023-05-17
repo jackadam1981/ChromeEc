@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6977ae7_2014f7f2",
+        "filename": "zephyr/program/corsola/starmie/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-05-17T09:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa7f84bf_d8bae548",
+      "range": {
+        "startLine": 238,
+        "startChar": 2,
+        "endLine": 243,
+        "endChar": 5
+      },
+      "revId": "bf4d55d6bcf0e6cb5790ef486f36bf728f1e7cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf0e5e22_6f83986f",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-17T01:21:08Z",
       "side": 1,
       "message": "`battery-led`?",
+      "range": {
+        "startLine": 244,
+        "startChar": 15,
+        "endLine": 244,
+        "endChar": 25
+      },
+      "revId": "bf4d55d6bcf0e6cb5790ef486f36bf728f1e7cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caa992af_72d48f3c",
+        "filename": "zephyr/program/corsola/starmie/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-05-17T09:03:27Z",
+      "side": 1,
+      "message": "This is defined by ite_led.dtsi.",
+      "parentUuid": "bf0e5e22_6f83986f",
       "range": {
         "startLine": 244,
         "startChar": 15,
