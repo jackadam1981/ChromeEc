@@ -94,6 +94,30 @@
       },
       "revId": "b7739bddf4f0e6c43a71ff83a9a4115c0abc2f48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ad0afb_c3632416",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-17T08:10:19Z",
+      "side": 1,
+      "message": "Workaround the device test issue with crrev.com/c/4542368",
+      "parentUuid": "f682d330_bd11d4a1",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 1
+      },
+      "revId": "b7739bddf4f0e6c43a71ff83a9a4115c0abc2f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
