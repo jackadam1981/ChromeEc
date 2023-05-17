@@ -9,10 +9,8 @@
 #define __CROS_EC_BOARD_H
 
 #undef CONFIG_ADC
-#undef CONFIG_LID_SWITCH
 #undef CONFIG_HIBERNATE
 #undef CONFIG_SPI_FLASH
-#undef CONFIG_SWITCH
 
 /* GPIO64/65 are used as UART pins. */
 #define NPCX_UART_MODULE2 1
@@ -28,6 +26,8 @@
 #define GPIO_EN_PP3300_A GPIO_EC_DS3_R
 #define GPIO_PCH_PWROK GPIO_PCH_PWROK_EC_R
 #define GPIO_CPU_PROCHOT GPIO_PROCHOT_EC
+#define GPIO_POWER_BUTTON_L GPIO_SMC_ONOFF_N
+#define GPIO_LID_OPEN GPIO_SMC_LID
 
 /* eSPI/Host communication */
 #define GPIO_PCH_WAKE_L GPIO_PCH_WAKE_N
@@ -48,6 +48,11 @@
 
 /* Board ID */
 #define CONFIG_BOARD_VERSION_GPIO
+
+/* Power Button */
+#define CONFIG_POWER_BUTTON
+#define CONFIG_POWER_BUTTON_X86
+#define CONFIG_LID_SWITCH
 
 #ifndef __ASSEMBLER__
 #include "gpio_signal.h"

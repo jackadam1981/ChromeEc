@@ -7,8 +7,10 @@
 
 #include "console.h"
 #include "gpio.h"
+#include "lid_switch.h"
 #include "power.h"
 #include "power/meteorlake.h"
+#include "power_button.h"
 #include "registers.h"
 
 /* PWROK signal configuration */
