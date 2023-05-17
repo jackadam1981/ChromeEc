@@ -114,3 +114,17 @@ bool sm5803_emul_is_psys_dac_enabled(const struct emul *emul);
 
 /** Get the value of the PHOT1 register. */
 uint8_t sm5803_emul_get_phot1(const struct emul *emul);
+
+/** Get the value of the LOG1 register. */
+uint8_t sm5803_emul_get_log1(const struct emul *emul);
+
+/** Set the reported voltage on the VBATSNSP pin, in mV. */
+void sm5803_emul_set_vbat_sns_mv(const struct emul *emul, uint16_t mv);
+
+/** Set the reported internal temperature of the charger, in Kelvin. */
+void sm5803_emul_set_internal_temperature(const struct emul *emul,
+					  uint16_t kelvin);
+/** Get the value of the TINT_HIGH_TH register. */
+uint8_t sm5803_emul_get_tint_high_th(const struct emul *emul);
+/** Get the value of the TINT_LOW_TH register. */
+uint8_t sm5803_emul_get_tint_low_th(const struct emul *emul);
