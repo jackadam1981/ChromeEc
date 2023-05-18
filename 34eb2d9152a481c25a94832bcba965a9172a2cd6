@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2be5be09_0c2f8d20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-18T17:42:00Z",
+      "side": 1,
+      "message": "\u003e RWSIG has never worked for npcx9?\n\nI\u0027d hesitate to say \"it never worked\" but as far as I\u0027m aware it\u0027s not presently being used on npcx targets \n\n\u003e \u0027memory mapped address\u0027 is mabye just RAM address? I thought of memory shared between a host and an ec, which is also called mem-map (e.g. host_get_memmap). \n\nAh, yes, the mapped memory we\u0027re referring to here is referring to physical memory within the chip. The npc9x\u0027s flash is at address 0x64000000 but always runs from RAM so this CL just sets up the ability to access the key from the appropriate address.\n\n\u003e Maybe you want to change the description to disambiguate it.\n\nWill do. Sorry for the confusion, I wasn\u0027t even aware of the EC `mem-map` feature.",
+      "parentUuid": "9af3f7b4_d09c61b2",
+      "range": {
+        "startLine": 9,
+        "startChar": 64,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "34eb2d9152a481c25a94832bcba965a9172a2cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c7b4754_633c1115",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
