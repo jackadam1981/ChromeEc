@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae491c9_7c4ad81f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-18T23:02:06Z",
+      "side": 1,
+      "message": "I looked at the disassembly for `dartmonkey` and it looks like a bunch of offsets changed. It\u0027s hard to diff the entire disassembled file, so I would suggest just copy/pasting the disassembled functions for comparison (e.g., `upload_pgm_image`, etc.) Note that C++ will [mangle the name](https://en.wikipedia.org/wiki/Name_mangling#C++), but if you search for the function name you should see them.\n\nOr if you\u0027re just manually testing the commands I think that\u0027s fine for this case.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "3bd9f5dfc6bd7f8fa9df09996bb987aa6bd4bac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9f932d_b4e50fc3",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-18T23:02:06Z",
+      "side": 1,
+      "message": "nit: Can you add `/* CONFIG_CMD_FPSENSOR_DEBUG */` like the original file?",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 6
+      },
+      "revId": "3bd9f5dfc6bd7f8fa9df09996bb987aa6bd4bac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
