@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "753318b9_54796232",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-18T23:41:50Z",
+      "side": 1,
+      "message": "Since we aren\u0027t really using the error code here, how about we return a `std::optional\u003cstruct ec_fp_ec_public_key\u003e` rather than passing the output as a parameter?",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 18
+      },
+      "revId": "d57f540137b267d92bab4886c43f2fcecea5131b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
