@@ -53,6 +53,10 @@ static void setup_usb_db(void)
 		break;
 	case FW_USB_DB_USB3:
 		LOG_INF("USB DB: Setting USB3 mux");
+		TCPC_ENABLE_ALTERNATE_BY_NODELABEL(USBC_PORT_C1,
+						   tcpc_ps8815_port1);
+		PPC_ENABLE_ALTERNATE_BY_NODELABEL(USBC_PORT_C1,
+						  ppc_nx20p_port1);
 		break;
 	case FW_USB_DB_USB4_ANX7452:
 		LOG_INF("USB DB: Setting ANX7452 mux");
