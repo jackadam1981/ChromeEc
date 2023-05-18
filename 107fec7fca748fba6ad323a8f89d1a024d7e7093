@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df76cca9_94814ffb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-05-18T06:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8919269a_eb157727",
+      "revId": "107fec7fca748fba6ad323a8f89d1a024d7e7093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1d88ba1_9f1a5e6c",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-05-18T05:41:42Z",
       "side": 1,
       "message": "This part should something like:\n\n```\nSet PP5000_Z2 to deactivate before executing normal corsola hibernate.\n```\n\nDo not explain you are solving a specific project problem. Just explain what behavior is going to be with this option, or explain what behavior can be improved.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "107fec7fca748fba6ad323a8f89d1a024d7e7093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d3e576_de50e9b1",
+        "filename": "zephyr/program/corsola/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-05-18T06:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1d88ba1_9f1a5e6c",
       "range": {
         "startLine": 59,
         "startChar": 0,
