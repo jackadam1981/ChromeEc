@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7106357_f1142629",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2023-05-18T16:16:12Z",
+      "side": 1,
+      "message": "+Bobby/Patryk to review as well.\n\nThanks.",
+      "revId": "5a1112e9b4efc054207500597d1a917f8078f95c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55eb56bc_78b4a2c4",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2023-05-18T16:16:12Z",
+      "side": 1,
+      "message": "I think we should use either model or device, not board which maybe a bit confusing.",
+      "range": {
+        "startLine": 744,
+        "startChar": 8,
+        "endLine": 744,
+        "endChar": 13
+      },
+      "revId": "5a1112e9b4efc054207500597d1a917f8078f95c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
