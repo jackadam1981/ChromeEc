@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a178b5d8_2f84d535",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-05-18T03:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3e1c50a_85927dc5",
+      "revId": "e22f146e2097ff83a626308d3c901c862613231d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4fae193f_2cf7cb01",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10732ffc_dfbe337a",
+        "filename": "zephyr/program/corsola/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-05-18T03:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f132487_cb400568",
+      "range": {
+        "startLine": 56,
+        "startChar": 7,
+        "endLine": 56,
+        "endChar": 47
+      },
+      "revId": "e22f146e2097ff83a626308d3c901c862613231d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfbb6ec2_cb76ed4e",
@@ -71,6 +113,30 @@
       "writtenOn": "2023-05-18T01:17:31Z",
       "side": 1,
       "message": "Please move the bug number in comment to `zephyr/program/corsola/src/hibernate.c`, and explain that this option will change hibernate behavior with fist deactivate the PP5000Z_2 power line with a short delay, then perform the common corsola hibernate.",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "e22f146e2097ff83a626308d3c901c862613231d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fbfd522_90e67b77",
+        "filename": "zephyr/program/corsola/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-05-18T03:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfbb6ec2_cb76ed4e",
       "range": {
         "startLine": 59,
         "startChar": 3,
