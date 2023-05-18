@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1757235_0b4c72bf",
+        "filename": "zephyr/drivers/cros_flash/CMakeLists.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-18T17:45:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03cfd1cc_fec501ea",
+      "revId": "2235fb672c1caa21ec10993a1b2c1d5a003bd91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3019227_8c2b4947",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc3ec641_d858a401",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-18T17:45:25Z",
+      "side": 1,
+      "message": "Good suggestion. Defines that have `COMPAT` in their name usually means some compatible string. I changed the name to avoid confusion.",
+      "parentUuid": "a3019227_8c2b4947",
+      "range": {
+        "startLine": 133,
+        "startChar": 35,
+        "endLine": 133,
+        "endChar": 41
+      },
+      "revId": "2235fb672c1caa21ec10993a1b2c1d5a003bd91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0b2a2e2_0686eb97",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-05-18T10:52:21Z",
       "side": 1,
       "message": "Does it make sense to check if `protection` and `jump_data` pointers are not NULL? The same question for other functions in this file.",
+      "revId": "2235fb672c1caa21ec10993a1b2c1d5a003bd91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b719fe13_5a8148ac",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_stm32_backend.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-18T17:45:25Z",
+      "side": 1,
+      "message": "Not really. This function is only called from cros_flash.c, and we are checking there if `jump_data` is different than NULL, but I added checks, because it\u0027s always good idea to validate inputs.",
+      "parentUuid": "a0b2a2e2_0686eb97",
       "revId": "2235fb672c1caa21ec10993a1b2c1d5a003bd91b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
