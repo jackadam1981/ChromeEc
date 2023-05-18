@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b915ef_07e0b5c5",
+        "filename": "zephyr/include/cros/st/stm32.dtsi",
+        "patchSetId": 28
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-18T21:28:21Z",
+      "side": 1,
+      "message": "Just for my knowledge: This is for a generic STM32 part, right? And this is included from the [`bloonchipper.dts`](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4030381/54/zephyr/program/fpmcu/bloonchipper/bloonchipper.dts)? Does the `wp-ro` and `ec-rw` from `bloonchipper.dts` override this one?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 3
+      },
+      "revId": "7939fd444fa972e39b44940b5fc61c5a57f548a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
