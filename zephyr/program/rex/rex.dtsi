@@ -253,6 +253,7 @@
 		 * the "named-gpios" node will be dealt with at a later date.
 		 */
 		rst-gpios = <&gpio7 4 (GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
+		is-alt;
 	};
 
 	tcpc_rt1716_port1: rt1716@4e {
@@ -302,6 +303,7 @@
 		compatible = "nxp,nx20p348x";
 		status = "okay";
 		reg = <0x72>;
+		is-alt;
 	};
 
 	ppc_syv_port1: ppc_syv@40 {
