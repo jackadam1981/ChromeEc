@@ -325,6 +325,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f63883c_6029be12",
+        "filename": "zephyr/app/ec/main_shim.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-05-18T13:36:54Z",
+      "side": 1,
+      "message": "This PR https://github.com/zephyrproject-rtos/zephyr/pull/58021 allows calling the Host Command task entry function from another thread. We can reuse the main thread with it. It saves 1kB of RAM. I\u0027m changing this commit to use it.",
+      "parentUuid": "2c54f502_706c1591",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfe4f5d2_a48d6045",
         "filename": "zephyr/shim/include/zephyr_host_command.h",
         "patchSetId": 3
