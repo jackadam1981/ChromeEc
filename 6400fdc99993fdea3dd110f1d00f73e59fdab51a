@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c8a485_39131838",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-05-18T17:09:21Z",
+      "side": 1,
+      "message": "\u003e 4.11 talks about Legacy active cables but for the new Active cables that has DPAM version 2.1 support, this implementation is necessary (As per DAPM version resolution Table in 5-5(DP Alt mode v2.1)).\n\nTable 5-5 doesn\u0027t show anything related to Cable entry, it\u0027s just \"Table 5-5: DP Capabilities (VDO in the Responder USB PD Discover Modes VDM)\"\n\nPerhaps you mean *Figure* 5-5?\n\n\nSection 4.11 doesn\u0027t talk about legacy cables. It just says that since legacy *hosts* don\u0027t support new DP messaging (to cables), Active cables should snoop the messages to SOP. Here is the text (emphasis mine):\n\n\"\nTo support operation from legacy DFP_Us that do not generate the DisplayPort Messages that are \ndefined in this section, ***an active cable shall snoop the USB PD DisplayPort Alt Mode Messages \nthat are transmitted from the DFP_U to the UFP_U (addressed to SOP)***, as follows:\n• If the active cable observes an Enter Mode Command request with the DP_SID addressed to \nSOP without having previously received an Enter Mode Command request addressed to SOP\u0027, \n***the active cable shall obey the Enter Mode Command request as if the request is addressed\nto SOP\u0027, but without responding (including not issuing a USB PD GoodCRC Message)***\n• ***Active cable shall obey any Configure and Exit Mode Command requests that are addressed \nto SOP without having previously received similar requests addressed to SOP as if\nthey were addressed to SOP\u0027, but without responding (including not issuing a USB PD\nGoodCRC Message)***\n• USB-C-to-USB-C active cable shall behave as if it has received an HPD high when the cable \nreceives a DisplayPort Configure Command\nA command that is addressed to SOP\u0027 shall take precedence over the same command addressed \nto SOP, regardless of the order in which the commands are received.\"\n\nThere is nothing about legacy (on non-legacy) active cables mentioned above. New active cables are supposed to snoop EnterMode and DisplayPort Configure commands.\n\nBesides the above, why do we need a new host command to surface cable information to the kernel? This is already being transmitted to the kernel connector class. See EC_CMD_TYPEC_DISCOVERY. Please use the existing interfaces which should surface all the necessary cable information.",
+      "parentUuid": "a595ba48_23298e9d",
+      "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e75bc179_f0670bba",
