@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fbbf31d_d9a03218",
+        "filename": "zephyr/program/fpmcu/BUILD.py",
+        "patchSetId": 54
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-18T21:16:46Z",
+      "side": 1,
+      "message": "We discussed on chat, but we\u0027ll want to use the clang toolchain `armv7m-cros-eabi-clang`.",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 43
+      },
+      "revId": "4caa956b568a364d617d7c6f791b51f947787bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
