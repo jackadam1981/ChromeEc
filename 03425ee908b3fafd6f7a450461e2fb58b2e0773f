@@ -52,6 +52,24 @@
       "parentUuid": "bb51aa01_224bd21e",
       "revId": "03425ee908b3fafd6f7a450461e2fb58b2e0773f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a786f5_c703b978",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-18T15:37:54Z",
+      "side": 1,
+      "message": "I\u0027m not sure how the feature is implemented, but is it possible for the detection to be disabled during FW update? Then, when we reboot to run the new code it would (presumably) get re-enabled during whatever init process sets it up today. There would still be a window where things could go wrong while it\u0027s disabled, but the other 99.9% of the code would be covered.\n\nI realize that\u0027s outside of the scope of this initial CL, but offsetting into structures with null pointers is a very common type of bug (and is what triggered this in the first place). It would be nice to get that working if we can improve this feature.",
+      "parentUuid": "41ee5766_d9e54613",
+      "revId": "03425ee908b3fafd6f7a450461e2fb58b2e0773f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
