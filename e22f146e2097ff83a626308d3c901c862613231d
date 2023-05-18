@@ -96,6 +96,23 @@
       "message": "You can follow the suggestion in this [comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4542370/comment/bfbb6ec2_cb76ed4e/), and leave a comment that links to a bug number. Also, please follow the format of how to leave a bug number in the code comment. It should be like this:\n\n```\n/* b/283037861: Pre-off the 5V power line for hibernate. */\n```",
       "revId": "e22f146e2097ff83a626308d3c901c862613231d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b48d595_67a86fab",
+        "filename": "zephyr/program/corsola/src/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-18T01:35:43Z",
+      "side": 1,
+      "message": "Also, don\u0027t forget this comment of why we have this short delay:\n\n```\n/* It takes around 30ms to release the PP5000 capacitance. */\n```",
+      "revId": "e22f146e2097ff83a626308d3c901c862613231d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
