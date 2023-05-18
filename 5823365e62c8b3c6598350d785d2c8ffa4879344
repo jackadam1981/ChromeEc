@@ -56,6 +56,30 @@
       },
       "revId": "5823365e62c8b3c6598350d785d2c8ffa4879344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de19416_b2ec53b3",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-18T06:38:24Z",
+      "side": 1,
+      "message": "Agreed, updated the logic to do retry for case 2.",
+      "parentUuid": "20cfe1ec_ada2cce8",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 17
+      },
+      "revId": "5823365e62c8b3c6598350d785d2c8ffa4879344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
