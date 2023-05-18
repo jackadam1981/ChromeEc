@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fae193f_2cf7cb01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-18T01:19:55Z",
+      "side": 1,
+      "message": "LGTM, just some minor changes needed.",
+      "revId": "e22f146e2097ff83a626308d3c901c862613231d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f132487_cb400568",
@@ -60,6 +77,23 @@
         "endLine": 60,
         "endChar": 27
       },
+      "revId": "e22f146e2097ff83a626308d3c901c862613231d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2e16527_071c6aaf",
+        "filename": "zephyr/program/corsola/src/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-18T01:19:55Z",
+      "side": 1,
+      "message": "You can follow the suggestion in this [comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4542370/comment/bfbb6ec2_cb76ed4e/), and leave a comment that links to a bug number. Also, please follow the format of how to leave a bug number in the code comment. It should be like this:\n\n```\n/* b/283037861: Pre-off the 5V power line for hibernate. */\n```",
       "revId": "e22f146e2097ff83a626308d3c901c862613231d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
