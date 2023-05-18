@@ -162,6 +162,9 @@ fips-${CONFIG_FIPS_UTIL} += dcrypto/util.o
 
 custom-board-ro_objs-${CONFIG_FIPS_UTIL} = $(BDIR)/dcrypto/util.o
 
+ifneq ($(USE_Dictionary_Attack_PROTECTION),)
+CFLAGS += -DUSE_Dictionary_Attack_PROTECTION
+endif
 # FIPS console and TPM2 commands are outside FIPS module
 board-y += fips_cmd.o
 board-y += crypto_api.o
