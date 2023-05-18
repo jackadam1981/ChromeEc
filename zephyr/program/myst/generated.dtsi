@@ -152,6 +152,7 @@
 		};
 		gpio_pg_pwr_s5: pg_pwr_s5 {
 			gpios = <&gpiod 5 GPIO_INPUT>;
+			enum-name = "GPIO_S5_PGOOD";
 		};
 		gpio_pg_vddq_mem_od: pg_vddq_mem_od {
 			gpios = <&gpioa 4 GPIO_INPUT_PULL_UP>;
@@ -181,7 +182,7 @@
 			gpios = <&gpio3 2 GPIO_OUTPUT>;
 		};
 		gpio_usb_c0_c1_fault_odl: usb_c0_c1_fault_odl {
-			gpios = <&gpioa 1 GPIO_INPUT_PULL_UP>;
+			gpios = <&gpioa 1 GPIO_ODR_LOW>;
 		};
 		gpio_usb_c0_frs_alert_od: usb_c0_frs_alert_od {
 			gpios = <&gpioc 6 GPIO_INPUT>;
