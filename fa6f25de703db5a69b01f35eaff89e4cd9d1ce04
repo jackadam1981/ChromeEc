@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cc26759_5f4a1e5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 53
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-18T10:03:34Z",
+      "side": 1,
+      "message": "I\u0027ll try to use cros-ec-reviewers once again 😊",
+      "parentUuid": "0e3569a2_bdf68f0f",
+      "revId": "fa6f25de703db5a69b01f35eaff89e4cd9d1ce04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6503e029_79bdcb14",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "881e2424_39495812",
+        "filename": "zephyr/program/fpmcu/prj.conf",
+        "patchSetId": 53
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-18T10:03:34Z",
+      "side": 1,
+      "message": "We keep panic data and reset cause in it. Layout can be find in zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+      "parentUuid": "6503e029_79bdcb14",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "fa6f25de703db5a69b01f35eaff89e4cd9d1ce04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b69cf5f_d7eb4882",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-05-17T22:50:45Z",
       "side": 1,
       "message": "Just for my knowledge: Does this enable a \"bbram\" and \"flash\" command in the shell? (Similar to the console commands in EC?)",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "fa6f25de703db5a69b01f35eaff89e4cd9d1ce04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60dc1527_15a0b2c7",
+        "filename": "zephyr/program/fpmcu/prj.conf",
+        "patchSetId": 53
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-18T10:03:34Z",
+      "side": 1,
+      "message": "Yes. Commands enabled by these configs are implemented in Zephyr.",
+      "parentUuid": "2b69cf5f_d7eb4882",
       "range": {
         "startLine": 25,
         "startChar": 0,
