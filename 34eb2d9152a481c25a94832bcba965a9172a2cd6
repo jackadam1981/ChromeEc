@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec4ae983_e9696a46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-18T18:42:54Z",
+      "side": 1,
+      "message": "This is how fizz \u0026 puff read a public key from RO: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/common/vboot/vboot.c#49. They use npcx7.\n\nIt should work for npcx9 as well, right? Which impelemntation is better?",
+      "parentUuid": "2be5be09_0c2f8d20",
+      "range": {
+        "startLine": 9,
+        "startChar": 64,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "34eb2d9152a481c25a94832bcba965a9172a2cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c7b4754_633c1115",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
