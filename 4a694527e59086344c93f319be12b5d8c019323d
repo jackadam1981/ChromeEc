@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1204fc45_5d99a3c2",
+        "filename": "zephyr/dts/bindings/motionsense/cros-ec,motionsense-bodydetect.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-18T13:05:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0c9f34f_9f941aaa",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "4a694527e59086344c93f319be12b5d8c019323d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b6f43a5_54bd181b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "070591ca_68c42e1d",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-18T13:05:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b6f43a5_54bd181b",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 52
+      },
+      "revId": "4a694527e59086344c93f319be12b5d8c019323d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63652844_716a5e26",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-05-16T21:47:50Z",
       "side": 1,
       "message": "You can use `DT_FOREACH_STATUS_OKAY(cros_ec_motionsense_bodydetect, DECLARE_BODYDETECT_CONFIG)` here instead.\n\nThis finds all nodes in the entire tree with the matching compatible string.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 67
+      },
+      "revId": "4a694527e59086344c93f319be12b5d8c019323d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5b3a34_b61ec1fa",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-05-18T13:05:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63652844_716a5e26",
       "range": {
         "startLine": 79,
         "startChar": 0,
