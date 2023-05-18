@@ -16,6 +16,46 @@
       "message": "Review comments updated",
       "revId": "afeb78fca35640f9d01e4cd264756999c98c645f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019fda78_8a85d1c7",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 26
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-18T18:06:58Z",
+      "side": 1,
+      "message": "Note the commit-queue is failing with the error:\n\n\"ERROR: /mnt/host/source/src/platform/ec/util/mchp/crisis_rcvry_util.py Imports are incorrectly sorted and/or formatted.\"\n\nRunning `cros format util/mchp/crisis_rcvry_util.py` should fix the import order for you.\n\nNote you should normally use `repo upload . --cbr` instead of `git push` to upload changes as this automatically runs the pre-submit checks.\n\nYou can manually run the pre-submit checks by executing:\n```\n~/chromiumos/src/repohooks/pre-upload.py\n```\n\nAlthough I see that the pre-submit checks flag problems in flash_ec unrelated to your change.  So you may need to use `repo upload . --cbr --no-verify` after fixing the issues with the crisis recovery script.",
+      "revId": "afeb78fca35640f9d01e4cd264756999c98c645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8885bf67_6ba12157",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 26
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-18T18:06:58Z",
+      "side": 1,
+      "message": "append `# pylint:disable\u003dimport-error` to this line.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "afeb78fca35640f9d01e4cd264756999c98c645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
