@@ -70,6 +70,7 @@ zephyr_cc_option(-Wimplicit-fallthrough)
 if (DEFINED CONFIG_RISCV)
   zephyr_cc_option(-fsanitize=integer-divide-by-zero)
   zephyr_cc_option(-fsanitize-undefined-trap-on-error)
+  set_property(TARGET app PROPERTY COMPILE_OPTIONS -fsanitize=null)
 endif()
 
 # The EC application is split into two libraries:
