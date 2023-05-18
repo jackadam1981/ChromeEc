@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5eedc4e5_e33d9502",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-05-18T10:27:03Z",
+      "side": 1,
+      "message": "I wanted to keep dp2.1 related stuff in separate file. if you want to move these changes in existing usb_pd_alt_alt_mode.h, we can move these changes.",
+      "parentUuid": "58a4b708_e21624d1",
+      "range": {
+        "startLine": 5,
+        "startChar": 16,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "8bb9e6883c1a882be368b0adcd4909f7018e99fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7933e60_b966ae92",
         "filename": "include/usb_pd_dp.h",
         "patchSetId": 25

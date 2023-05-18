@@ -85,6 +85,24 @@
       "message": "I suspect that most of these functions only need to be used in `dp_alt_mode.c` and thus do not need to be part of the public API of that module.\n\nThe ones that do should start with `dp_`.",
       "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e33a6f77_1f223336",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-05-18T10:27:03Z",
+      "side": 1,
+      "message": "these apis are used in different modules like host command, console command and bb_retimer, that\u0027s the reason , i kept those api in this header file.",
+      "parentUuid": "e75bc179_f0670bba",
+      "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

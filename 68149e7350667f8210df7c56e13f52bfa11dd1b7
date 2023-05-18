@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80b9c47e_e81ea3b9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-05-18T10:27:03Z",
+      "side": 1,
+      "message": "Added this new header file at keep DPAM 2.1 related stuff.",
+      "parentUuid": "4145893c_6c736fca",
+      "revId": "68149e7350667f8210df7c56e13f52bfa11dd1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9ed89cc_a81cea72",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 32
