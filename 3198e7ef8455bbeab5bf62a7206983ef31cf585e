@@ -16,6 +16,29 @@
       "message": "Thanks for the tips Keith!\nI\u0027ve applied them and that simplified the logic quite a lot.",
       "revId": "3198e7ef8455bbeab5bf62a7206983ef31cf585e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9ba8899_2d585cfd",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-18T20:52:20Z",
+      "side": 1,
+      "message": "This macro is not used.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "3198e7ef8455bbeab5bf62a7206983ef31cf585e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
