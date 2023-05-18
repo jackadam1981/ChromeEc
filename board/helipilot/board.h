@@ -274,7 +274,8 @@
  * Board should be set to CONFIG_HW_MRIDER or CONFIG_HW_QUINCY, only needed
  * until Quincy stable, re-assigns WP GPIO
  */
-#define CONFIG_HW_MRIDER
+#undef CONFIG_HW_MRIDER
+#define CONFIG_HW_QUINCY
 
 /*
  * TODO (b/279032946): should eventually be removed, required to avoid
