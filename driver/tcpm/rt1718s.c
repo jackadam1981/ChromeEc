@@ -108,7 +108,7 @@ int rt1718s_sw_reset(int port)
 
 	return rv;
 }
-
+#if 0
 /* enable bc 1.2 sink function  */
 static int rt1718s_enable_bc12_sink(int port, bool en)
 {
@@ -116,7 +116,6 @@ static int rt1718s_enable_bc12_sink(int port, bool en)
 				    RT1718S_RT2_BC12_SNK_FUNC_BC12_SNK_EN,
 				    en ? 0xFF : 0);
 }
-
 static int rt1718s_set_bc12_sink_spec_ta(int port, bool en)
 {
 	return rt1718s_update_bits8(port, RT1718S_RT2_BC12_SNK_FUNC,
@@ -186,6 +185,8 @@ static int rt1718s_bc12_init(int port)
 
 	return EC_SUCCESS;
 }
+
+#endif
 
 static int rt1718s_workaround(int port)
 {
@@ -272,7 +273,7 @@ static int rt1718s_init(int port)
 		need_sw_reset = false;
 	}
 
-	RETURN_ERROR(rt1718s_bc12_init(port));
+	//RETURN_ERROR(rt1718s_bc12_init(port));
 
 	/* Set VBUS_VOL_SEL to 20V */
 	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT2_VBUS_VOL_CTRL,
@@ -333,6 +334,7 @@ __overridable int board_rt1718s_init(int port)
 	return EC_SUCCESS;
 }
 
+#if 0
 static enum charge_supplier rt1718s_get_bc12_type(int port)
 {
 	int data;
@@ -421,7 +423,7 @@ static void rt1718s_bc12_usb_charger_task_event(const int port, uint32_t evt)
 		rt1718s_enable_bc12_sink(port, false);
 	}
 }
-
+#endif
 static void frs_gpio_disable_deferred(void)
 {
 	int i;
@@ -441,7 +443,7 @@ DECLARE_DEFERRED(frs_gpio_disable_deferred);
 
 void rt1718s_vendor_defined_alert(int port)
 {
-	int rv, value;
+	int rv;
 
 	if (IS_ENABLED(CONFIG_USB_PD_FRS)) {
 		int int1;
@@ -518,7 +520,7 @@ void rt1718s_vendor_defined_alert(int port)
 			return;
 		}
 	}
-
+#if 0
 	/* Process BC12 alert */
 	rv = rt1718s_read8(port, RT1718S_RT_INT6, &value);
 	if (rv)
@@ -532,7 +534,7 @@ void rt1718s_vendor_defined_alert(int port)
 	/* check snk done */
 	if (value & RT1718S_RT_INT6_INT_BC12_SNK_DONE)
 		usb_charger_task_set_event(port, USB_CHG_EVENT_BC12);
-
+#endif
 	/* clear the alerts from rt1718s_workaround() */
 	rv = rt1718s_write8(port, RT1718S_RT_INT2, 0xFF);
 	if (rv)
@@ -841,8 +843,9 @@ const struct tcpm_drv rt1718s_tcpm_drv = {
 	.set_sbu = &rt1718s_set_sbu,
 #endif
 };
-
+#if 0 
 const struct bc12_drv rt1718s_bc12_drv = {
 	.usb_charger_task_init = rt1718s_bc12_usb_charger_task_init,
 	.usb_charger_task_event = rt1718s_bc12_usb_charger_task_event,
 };
+#endif
