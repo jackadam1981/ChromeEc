@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03cfd1cc_fec501ea",
+        "filename": "zephyr/drivers/cros_flash/CMakeLists.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-05-18T10:52:21Z",
+      "side": 1,
+      "message": "Correct indention of the file name.",
+      "revId": "2235fb672c1caa21ec10993a1b2c1d5a003bd91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3019227_8c2b4947",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-05-18T10:52:21Z",
+      "side": 1,
+      "message": "Consider changing the `COMPAT` part. It looks like a devicetree macro/define.",
+      "range": {
+        "startLine": 133,
+        "startChar": 35,
+        "endLine": 133,
+        "endChar": 41
+      },
+      "revId": "2235fb672c1caa21ec10993a1b2c1d5a003bd91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b2a2e2_0686eb97",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_stm32_backend.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-05-18T10:52:21Z",
+      "side": 1,
+      "message": "Does it make sense to check if `protection` and `jump_data` pointers are not NULL? The same question for other functions in this file.",
+      "revId": "2235fb672c1caa21ec10993a1b2c1d5a003bd91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
