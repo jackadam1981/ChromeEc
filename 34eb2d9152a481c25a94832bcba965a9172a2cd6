@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9cde67b2_f323b25d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-18T19:16:56Z",
+      "side": 1,
+      "message": "As I understand it the fizz/puff solutions don\u0027t utilize the [rwsig task](http://cs/chromeos_public/src/platform/ec/common/rwsig.c?l\u003d263) as is done for the other FPMCU boards (bloonchipper and dartmonkey). I\u0027m not sure which solution is better, the primary reason this path was chosen was that it allows the future [helipilot board](go/crvc/4451646) to remain compatible with the existing FPMCU boards while not impacting other boards. \n\nI\u0027ll spend some time digging into this solution as well",
+      "parentUuid": "ec4ae983_e9696a46",
+      "range": {
+        "startLine": 9,
+        "startChar": 64,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "34eb2d9152a481c25a94832bcba965a9172a2cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c7b4754_633c1115",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
