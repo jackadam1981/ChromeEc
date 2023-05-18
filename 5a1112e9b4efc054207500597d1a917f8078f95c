@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e66cd4d3_b63a97db",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-18T17:34:09Z",
+      "side": 1,
+      "message": "What is a `screebo` board? Is this a `rex` family?",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 18
+      },
+      "revId": "5a1112e9b4efc054207500597d1a917f8078f95c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ab0609_200da804",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-18T17:34:09Z",
+      "side": 1,
+      "message": "Please use `get_sysfs_gpiochip_base` to determine the kernel GPIO base and calculate GPIO number using it (See `config_volteer` and `config_hatch` as examples).\n\nPlease also fix `config_rex0`. I think the difference will be offset only.",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 25
+      },
+      "revId": "5a1112e9b4efc054207500597d1a917f8078f95c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55eb56bc_78b4a2c4",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 4
