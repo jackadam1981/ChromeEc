@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af6fd4d_4f0df703",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 33
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-18T23:28:07Z",
+      "side": 1,
+      "message": "Do you want this to be hardcoded or can you use `FP_PAIRING_KEY_ENC_METADATA_VERSION`?",
+      "range": {
+        "startLine": 148,
+        "startChar": 28,
+        "endLine": 148,
+        "endChar": 29
+      },
+      "revId": "4fe7bfc0b838a64b53f022545d1554e9f8dd25c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
