@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e1c50a_85927dc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-18T01:17:31Z",
+      "side": 1,
+      "message": "Please also describe what you implemented in this commit; that is, you added a new Kconfig for deactivate the 5V power line before performing corsola common hibernate.",
+      "revId": "e22f146e2097ff83a626308d3c901c862613231d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f132487_cb400568",
+        "filename": "zephyr/program/corsola/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-18T01:17:31Z",
+      "side": 1,
+      "message": "How about `CORSOLA_HIBERNATE_PRE_OFF_5V`?",
+      "range": {
+        "startLine": 56,
+        "startChar": 7,
+        "endLine": 56,
+        "endChar": 47
+      },
+      "revId": "e22f146e2097ff83a626308d3c901c862613231d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbb6ec2_cb76ed4e",
+        "filename": "zephyr/program/corsola/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-18T01:17:31Z",
+      "side": 1,
+      "message": "Please move the bug number in comment to `zephyr/program/corsola/src/hibernate.c`, and explain that this option will change hibernate behavior with fist deactivate the PP5000Z_2 power line with a short delay, then perform the common corsola hibernate.",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "e22f146e2097ff83a626308d3c901c862613231d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
