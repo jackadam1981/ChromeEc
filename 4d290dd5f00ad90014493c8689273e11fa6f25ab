@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc83b944_ca3e7b16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-18T23:15:52Z",
+      "side": 1,
+      "message": "I think if we do this, it\u0027s going to get confusing. I\u0027d like to get rid of the global state that we have everywhere so we don\u0027t have code like [this `init_tpm_seed`](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4511814/26/test/fpsensor_auth_crypto.cc#169). Can you try creating a context that is passed around like you mentioned in the other review?",
+      "revId": "4d290dd5f00ad90014493c8689273e11fa6f25ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d9664e8_9dbfd47d",
+        "filename": "include/fpsensor_state_without_driver_info.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-18T23:15:52Z",
+      "side": 1,
+      "message": "Filename is no longer correct.",
+      "range": {
+        "startLine": 25,
+        "startChar": 35,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "4d290dd5f00ad90014493c8689273e11fa6f25ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
