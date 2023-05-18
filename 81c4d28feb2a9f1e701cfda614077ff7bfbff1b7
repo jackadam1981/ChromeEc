@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e25187aa_52c9de4e",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 31
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-18T23:32:56Z",
+      "side": 1,
+      "message": "This change is unrelated to this CL. I would pull the `create_ec_key_from_privkey` from https://crrev.com/c/4511815 into a separate CL and put it before https://crrev.com/c/4511814, so you can use it there when you create those tests.",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 0
+      },
+      "revId": "81c4d28feb2a9f1e701cfda614077ff7bfbff1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
