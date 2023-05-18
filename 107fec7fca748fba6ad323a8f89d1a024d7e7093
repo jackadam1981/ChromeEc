@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8919269a_eb157727",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-18T05:41:42Z",
+      "side": 1,
+      "message": "Please refer to the [developer guide of commit message](https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Commit-messages). Shortly explain background, what you have done in this commit.\n\nSo in this case, you need to explain the system cannot enter hibernate, and explain this is because the power sequencing requires the 5V to be off. Then, explain what you have done in this  commit, which is this paragraph you have written. Note: do not use \"I\" here, starts with \"Add a Kconfig...\"",
+      "revId": "107fec7fca748fba6ad323a8f89d1a024d7e7093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1d88ba1_9f1a5e6c",
+        "filename": "zephyr/program/corsola/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-18T05:41:42Z",
+      "side": 1,
+      "message": "This part should something like:\n\n```\nSet PP5000_Z2 to deactivate before executing normal corsola hibernate.\n```\n\nDo not explain you are solving a specific project problem. Just explain what behavior is going to be with this option, or explain what behavior can be improved.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "107fec7fca748fba6ad323a8f89d1a024d7e7093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

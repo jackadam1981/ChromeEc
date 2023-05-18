@@ -166,6 +166,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e45caa3f_8c35191b",
+        "filename": "zephyr/program/corsola/src/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-05-18T05:41:42Z",
+      "side": 1,
+      "message": "Sorry, I mean you can just leave a comment like this at here:\n\n`/* b/283037861: Pre-off the 5V power line for hibernate. */`",
+      "parentUuid": "e2e16527_071c6aaf",
+      "revId": "e22f146e2097ff83a626308d3c901c862613231d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b48d595_67a86fab",
         "filename": "zephyr/program/corsola/src/hibernate.c",
         "patchSetId": 4
