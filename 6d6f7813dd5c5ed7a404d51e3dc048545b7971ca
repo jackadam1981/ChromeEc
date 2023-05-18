@@ -51,6 +51,24 @@
       "parentUuid": "852b980d_c604bd1d",
       "revId": "6d6f7813dd5c5ed7a404d51e3dc048545b7971ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06a49094_288fbac0",
+        "filename": "zephyr/Kconfig.defaults-arm",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-05-18T00:43:43Z",
+      "side": 1,
+      "message": "Looks like we need to keep it under 0x20. See Keith\u0027s comment above.",
+      "parentUuid": "812a7373_65e50a77",
+      "revId": "6d6f7813dd5c5ed7a404d51e3dc048545b7971ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

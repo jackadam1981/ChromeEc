@@ -34,6 +34,24 @@
       "parentUuid": "f291965e_c5084ea3",
       "revId": "03425ee908b3fafd6f7a450461e2fb58b2e0773f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ee5766_d9e54613",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-05-18T00:43:43Z",
+      "side": 1,
+      "message": "You are right. sysjump faults at 0x40. So we need to keep the range at 0x20. We\u0027ll still catch direct Null dereferences.",
+      "parentUuid": "bb51aa01_224bd21e",
+      "revId": "03425ee908b3fafd6f7a450461e2fb58b2e0773f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
