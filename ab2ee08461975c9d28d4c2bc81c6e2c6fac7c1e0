@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30659802_9fe52bb6",
+        "filename": "driver/bc12/rt1718s.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-18T22:07:32Z",
+      "side": 1,
+      "message": "I think this got included as a copy/paste error. This function still exists in the tcpm driver and isn\u0027t needed here.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 0
+      },
+      "revId": "ab2ee08461975c9d28d4c2bc81c6e2c6fac7c1e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
