@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1732652b_0a0abf32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-18T19:20:44Z",
+      "side": 1,
+      "message": "Please describe what is a `screebo` and how it differs from rex family.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "5a1112e9b4efc054207500597d1a917f8078f95c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c7106357_f1142629",
@@ -55,6 +78,30 @@
       "side": 1,
       "message": "Yes, screebo is one of the rex devices.",
       "parentUuid": "e66cd4d3_b63a97db",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 18
+      },
+      "revId": "5a1112e9b4efc054207500597d1a917f8078f95c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "964bf822_bd5e6e8a",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-18T19:20:44Z",
+      "side": 1,
+      "message": "I think it deserves a comment that it\u0027s a rex family. Since all rex devices will have the same GPIO base, can we determine it in `config_rex` and pass it to `config_rex0` and `config_screebo`? We can also define `TRANSPORT` and `DEVICE` in `config_rex`.",
+      "parentUuid": "18ef683a_6d1974a9",
       "range": {
         "startLine": 723,
         "startChar": 0,
