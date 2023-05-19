@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c183c1e_0003520f",
+        "filename": "include/crypto/cleanse_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-19T04:26:54Z",
+      "side": 1,
+      "message": "Sent out:\nhttps://boringssl-review.googlesource.com/c/boringssl/+/59945\n\nBut looks like the uprev of the boringssl in ChromeOS would not be too fast, I think we still need this in the short term.",
+      "parentUuid": "0c396555_e893e34a",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "fdf57176177ab0be5759e8321d1623c877e694c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebe618fb_0e48a010",
