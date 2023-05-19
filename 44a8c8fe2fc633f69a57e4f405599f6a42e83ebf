@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2c1157_b53ec9e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-19T13:55:02Z",
+      "side": 1,
+      "message": "This seems like quite the gap in the auto-generated GPIOs.  It doesn\u0027t seem like any of the output lines are being given a default level flag to start with.  We should probably work with the arbitrage team on this",
+      "revId": "44a8c8fe2fc633f69a57e4f405599f6a42e83ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
