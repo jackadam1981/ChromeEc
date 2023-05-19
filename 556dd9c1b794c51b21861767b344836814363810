@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11845311_ecb7e95d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-19T04:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b15c488b_ea5eab14",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "556dd9c1b794c51b21861767b344836814363810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8906f56_6275ac5e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-18T23:19:52Z",
       "side": 1,
       "message": "Can we name this `expected_gsc_session_key`?",
+      "range": {
+        "startLine": 272,
+        "startChar": 25,
+        "endLine": 272,
+        "endChar": 36
+      },
+      "revId": "556dd9c1b794c51b21861767b344836814363810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e892bb39_160ef8cf",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-19T04:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8906f56_6275ac5e",
       "range": {
         "startLine": 272,
         "startChar": 25,
