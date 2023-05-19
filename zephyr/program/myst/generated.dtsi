@@ -98,7 +98,7 @@
 			gpios = <&gpiof 0 GPIO_ODR_LOW>;
 		};
 		gpio_ec_sys_rst_l: ec_sys_rst_l {
-			gpios = <&gpio7 5 GPIO_OUTPUT>;
+			gpios = <&gpio7 5 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_SYS_RESET_L";
 		};
 		gpio_ec_wp_l: ec_wp_l {
@@ -196,7 +196,7 @@
 			enum-name = "GPIO_USB_C0_PPC_INT_ODL";
 		};
 		gpio_usb_c0_ppc_rst_l: usb_c0_ppc_rst_l {
-			gpios = <&gpioe 0 GPIO_OUTPUT>;
+			gpios = <&gpioe 0 GPIO_ODR_HIGH>;
 		};
 		gpio_usb_c0_sbu_flip: usb_c0_sbu_flip {
 			gpios = <&gpio0 2 GPIO_ODR_LOW>;
