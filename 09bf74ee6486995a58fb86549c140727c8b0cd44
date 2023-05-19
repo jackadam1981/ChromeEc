@@ -22,6 +22,30 @@
       },
       "revId": "09bf74ee6486995a58fb86549c140727c8b0cd44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e68197d_ff83a413",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3432,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-05-19T16:19:40Z",
+      "side": 1,
+      "message": "I think it\u0027s guaranteed with cr50. Vadim, can you confirm ti50 does?",
+      "parentUuid": "a0661523_78cf343a",
+      "range": {
+        "startLine": 3432,
+        "startChar": 38,
+        "endLine": 3432,
+        "endChar": 40
+      },
+      "revId": "09bf74ee6486995a58fb86549c140727c8b0cd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
