@@ -16,6 +16,24 @@
       "message": "b/280642206\n\nDoes your system not boot if you press the power button?",
       "revId": "a3353e2ea931b397ebfeaa98fe6f33b635cfe1b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b4f6be_fb606ee6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-19T21:47:10Z",
+      "side": 1,
+      "message": "It does, but with this reverted the EC boots after flashing without pressing the power button.\n\nAlso, after pressing the power button the EC console continues to be flooded with `found battery in disconnect state`, even after the AP has booted.",
+      "parentUuid": "5d951df2_b3340151",
+      "revId": "a3353e2ea931b397ebfeaa98fe6f33b635cfe1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
