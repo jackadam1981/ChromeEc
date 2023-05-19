@@ -52,6 +52,24 @@
       "parentUuid": "9fa2e12e_1ac2e628",
       "revId": "44a8c8fe2fc633f69a57e4f405599f6a42e83ebf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b4246b3_00d9d714",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-19T20:01:32Z",
+      "side": 1,
+      "message": "I think there\u0027s a bit more of a gap than that just comparing to what we manually filled out on other platforms.  Usually, you never set a line to OUTPUT or ODR without also setting its initial level to low or high.  Here, we have a number of fields with no initial value being set, so we\u0027re at the mercy of the register defaults there.",
+      "parentUuid": "1652fc93_9c7eeb40",
+      "revId": "44a8c8fe2fc633f69a57e4f405599f6a42e83ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
