@@ -81,7 +81,7 @@ static int ktu1125_dump(int port)
 {
 	int i;
 	int data;
-	CPRINTF("PPC%d: KTU1125. Registers:\n", port);
+	CPRINTF("PPC%d: KTU1125. BMBM DBG v0x2 Registers:\n", port);
 
 	for (i = KTU1125_ID; i <= KTU1125_INT_DATA; i++) {
 		read_reg(port, i, &data);
@@ -237,12 +237,15 @@ static int ktu1125_init(int port)
 		return status;
 	}
 
-	/* Unmask the entire DATA group of interrupts */
-	status = write_reg(port, KTU1125_INTMASK_DATA, ~KTU1125_DATA_MASK_ALL);
+
+	read_reg(port, KTU1125_INT_DATA, &status);
+	/* MASK the entire DATA group of interrupts */
+	status = write_reg(port, KTU1125_INTMASK_DATA, KTU1125_DATA_MASK_ALL);
 	if (status) {
 		ppc_err_prints("Failed to write INTMASK_DATA!", port, status);
 		return status;
 	}
+	read_reg(port, KTU1125_INT_DATA, &status);
 
 	return EC_SUCCESS;
 }
