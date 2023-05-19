@@ -70,6 +70,24 @@
       "parentUuid": "17f9b775_66f464ef",
       "revId": "755c204c514d414b4c523dafb26bccb3ef7d2bcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "974d4876_b69e62b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 52
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-05-19T14:52:29Z",
+      "side": 1,
+      "message": "\u003e Our goal is to upstream as much as possible to Zephyr\nPutting code in a different repository does not affect the ability to upstream.",
+      "parentUuid": "a6a74319_896c5675",
+      "revId": "755c204c514d414b4c523dafb26bccb3ef7d2bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

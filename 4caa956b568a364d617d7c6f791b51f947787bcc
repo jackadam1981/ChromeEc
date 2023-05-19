@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c214e85c_a8e52c38",
+        "filename": "zephyr/program/fpmcu/BUILD.py",
+        "patchSetId": 54
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-05-19T14:52:29Z",
+      "side": 1,
+      "message": "Tom, I sent you a chat message about this. I think there needs to be a larger discussion about the toolchain.",
+      "parentUuid": "2fbbf31d_d9a03218",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 43
+      },
+      "revId": "4caa956b568a364d617d7c6f791b51f947787bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "761f3383_4e94505b",
         "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
         "patchSetId": 54
