@@ -470,6 +470,9 @@ static const struct option_container cmd_line_options[] = {
 	{{"board_id", optional_argument, NULL, 'i'},
 	 "[ID[:FLAGS]]%Get or set Info1 board ID fields. ID could be 32 bit "
 	 "hex or 4 character string."},
+	{{"boot_trace", optional_argument, NULL, 'J'},
+	 "[erase]%Retrieve boot trace from the chip, optionally erasing "
+	 "the trace buffer"},
 	{{"ccd_lock", no_argument, NULL, 'k'},
 	 "Lock CCD"},
 	{{"flog", optional_argument, NULL, 'L'},
@@ -4014,6 +4017,26 @@ static int process_get_time(struct transfer_descriptor *td)
 	return 0;
 }
 
+#define MAX_BOOT_TRACE_SIZE 54
+static int process_get_boot_trace(struct transfer_descriptor *td, bool erase)
+{
+	uint32_t payload = erase; /* zero means no erase, 1 means erase. */
+	uint16_t boot_trace[MAX_BOOT_TRACE_SIZE/sizeof(uint16_t)];
+	size_t response_size = sizeof(boot_trace);
+	uint32_t rv;
+
+	rv = send_vendor_command(td, VENDOR_CC_GET_BOOT_TRACE, &payload,
+				 sizeof(payload), &boot_trace, &response_size);
+
+	if (rv != VENDOR_RC_SUCCESS) {
+		printf("Get boot trace failed. (%X)\n", rv);
+		return 1;
+	}
+
+	printf("got %zd bytes back\n", response_size);
+	return 0;
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -4081,6 +4104,8 @@ int main(int argc, char *argv[])
 	int set_factory_config = 0;
 	uint64_t factory_config_arg = 0;
 	int get_time = 0;
+	bool get_boot_trace = false;
+	bool erase_boot_trace = false;
 
 	/*
 	 * All options which result in setting a Boolean flag to True, along
@@ -4231,6 +4256,17 @@ int main(int argc, char *argv[])
 				errorcnt++;
 			}
 			break;
+		case 'J':
+			get_boot_trace = true;
+			if (!optarg)
+				break;
+			if (strncasecmp(optarg, "erase", strlen(optarg))) {
+				fprintf(stderr, "Invalid boot trace argument: "
+					"\"%s\"\n", optarg);
+				errorcnt++;
+			}
+			erase_boot_trace = true;
+			break;
 		case 'L':
 			get_flog = 1;
 			if (optarg)
@@ -4379,6 +4415,7 @@ int main(int argc, char *argv[])
 	    !get_apro_hash &&
 	    !get_apro_boot_status &&
 	    !get_boot_mode &&
+	    !get_boot_trace &&
 	    !get_clog &&
 	    !get_console &&
 	    !get_flog &&
@@ -4555,6 +4592,9 @@ int main(int argc, char *argv[])
 	if (get_time) {
 		exit(process_get_time(&td));
 	}
+
+	if (get_boot_trace)
+		exit(process_get_boot_trace(&td, erase_boot_trace));
 
 	if (data || show_fw_ver) {
 
