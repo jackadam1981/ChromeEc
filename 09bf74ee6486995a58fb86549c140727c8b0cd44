@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0661523_78cf343a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3432,
+      "author": {
+        "id": 1244186
+      },
+      "writtenOn": "2023-05-19T08:54:04Z",
+      "side": 1,
+      "message": "Hi Mary, is rma_response guaranteed to be \\0 terminated? I\u0027m wondering if I should use \"%.*s\" to specify the length here.",
+      "range": {
+        "startLine": 3432,
+        "startChar": 38,
+        "endLine": 3432,
+        "endChar": 40
+      },
+      "revId": "09bf74ee6486995a58fb86549c140727c8b0cd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
