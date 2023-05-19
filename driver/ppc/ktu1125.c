@@ -237,8 +237,8 @@ static int ktu1125_init(int port)
 		return status;
 	}
 
-	/* Unmask the entire DATA group of interrupts */
-	status = write_reg(port, KTU1125_INTMASK_DATA, ~KTU1125_DATA_MASK_ALL);
+	/* MASK the entire DATA group of interrupts */
+	status = write_reg(port, KTU1125_INTMASK_DATA, KTU1125_DATA_MASK_ALL);
 	if (status) {
 		ppc_err_prints("Failed to write INTMASK_DATA!", port, status);
 		return status;
