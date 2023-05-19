@@ -54,8 +54,12 @@
 		usb_c0_tcpc_rst_odl {
 			gpios = <&gpio6 7 (GPIO_ODR_HIGH | GPIO_ACTIVE_LOW)>;
 		};
+		usb_c1_rt_int_odl {
+			gpios = <&gpio7 2 GPIO_OUTPUT_LOW>;
+		};
 		usb_c1_rt_rst_r_odl {
-			gpios = <&gpio7 4 (GPIO_ODR_HIGH | GPIO_ACTIVE_LOW)>;
+			gpios = <&gpio7 4 (GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
+			no-auto-init;
 		};
 	};
 
@@ -304,6 +308,13 @@
 		reg = <0x40>;
 		frs_en_gpio = <&gpio_usb_c1_frs_en>;
 		is-alt;
+	};
+
+	usb_c1_anx7452_retimer: usb-c1-anx7452-retimer@10{
+		compatible = "analogix,anx7452";
+		reg = <0x10>;
+		usb-en-pin = <&gpio_usb_c1_rt_rst_r_odl>;
+		dp-en-pin = <&gpio_usb_c1_rt_int_odl>;
 	};
 };
 

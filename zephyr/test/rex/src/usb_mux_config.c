@@ -4,6 +4,7 @@
  */
 
 #include "cros_cbi.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "usb_mux.h"
 #include "usb_mux_config.h"
@@ -43,18 +44,35 @@ int mock_cros_cbi_get_fw_config_error(enum cbi_fw_config_field_id field_id,
 	return -1;
 }
 
+void gpio_pin_config_reset(const struct gpio_dt_spec *spec, int flags)
+{
+	gpio_pin_configure(spec->port, spec->pin, flags);
+}
+
 static void usb_mux_config_before(void *fixture)
 {
 	ARG_UNUSED(fixture);
 
 	RESET_FAKE(cros_cbi_get_fw_config);
+	gpio_pin_config_reset(GPIO_DT_FROM_NODELABEL(gpio_usb_c1_rt_rst_r_odl),
+			      0);
 }
 
 ZTEST_USER(usb_mux_config, test_setup_usb_db)
 {
+	const struct gpio_dt_spec *spec =
+		GPIO_DT_FROM_NODELABEL(gpio_usb_c1_rt_rst_r_odl);
+	gpio_flags_t flags;
+
 	cros_cbi_get_fw_config_fake.custom_fake = mock_cros_cbi_get_fw_config;
 
+	gpio_pin_get_config_dt(spec, &flags);
+	zassert_equal(0, flags);
+
 	hook_notify(HOOK_INIT);
+
+	gpio_pin_get_config_dt(spec, &flags);
+	zassert_equal(GPIO_ACTIVE_LOW, flags);
 
 	zassert_equal(1, cros_cbi_get_fw_config_fake.call_count);
 	zassert_equal(1, usb_db_type);
@@ -62,10 +80,20 @@ ZTEST_USER(usb_mux_config, test_setup_usb_db)
 
 ZTEST_USER(usb_mux_config, test_setup_usb_db_anx7452)
 {
+	const struct gpio_dt_spec *spec =
+		GPIO_DT_FROM_NODELABEL(gpio_usb_c1_rt_rst_r_odl);
+	gpio_flags_t flags;
+
 	cros_cbi_get_fw_config_fake.custom_fake =
 		mock_cros_cbi_get_fw_config_anx7452;
 
+	gpio_pin_get_config_dt(spec, &flags);
+	zassert_equal(0, flags);
+
 	hook_notify(HOOK_INIT);
+
+	gpio_pin_get_config_dt(spec, &flags);
+	zassert_equal(GPIO_OUTPUT_LOW, flags);
 
 	zassert_equal(1, cros_cbi_get_fw_config_fake.call_count);
 	zassert_equal(3, usb_db_type);
@@ -73,10 +101,20 @@ ZTEST_USER(usb_mux_config, test_setup_usb_db_anx7452)
 
 ZTEST_USER(usb_mux_config, test_setup_usb_db_no_usb_db)
 {
+	const struct gpio_dt_spec *spec =
+		GPIO_DT_FROM_NODELABEL(gpio_usb_c1_rt_rst_r_odl);
+	gpio_flags_t flags;
+
 	cros_cbi_get_fw_config_fake.custom_fake =
 		mock_cros_cbi_get_fw_config_no_usb_db;
 
+	gpio_pin_get_config_dt(spec, &flags);
+	zassert_equal(0, flags);
+
 	hook_notify(HOOK_INIT);
+
+	gpio_pin_get_config_dt(spec, &flags);
+	zassert_equal(0, flags);
 
 	zassert_equal(1, cros_cbi_get_fw_config_fake.call_count);
 	zassert_equal(0, usb_db_type);
@@ -84,10 +122,20 @@ ZTEST_USER(usb_mux_config, test_setup_usb_db_no_usb_db)
 
 ZTEST_USER(usb_mux_config, test_setup_usb_db_error_reading_cbi)
 {
+	const struct gpio_dt_spec *spec =
+		GPIO_DT_FROM_NODELABEL(gpio_usb_c1_rt_rst_r_odl);
+	gpio_flags_t flags;
+
 	cros_cbi_get_fw_config_fake.custom_fake =
 		mock_cros_cbi_get_fw_config_error;
 
+	gpio_pin_get_config_dt(spec, &flags);
+	zassert_equal(0, flags);
+
 	hook_notify(HOOK_INIT);
+
+	gpio_pin_get_config_dt(spec, &flags);
+	zassert_equal(0, flags);
 
 	zassert_equal(1, cros_cbi_get_fw_config_fake.call_count);
 	zassert_equal(-1, usb_db_type);
