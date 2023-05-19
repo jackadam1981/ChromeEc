@@ -46,6 +46,30 @@
       },
       "revId": "09bf74ee6486995a58fb86549c140727c8b0cd44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ba3232_f6311914",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3432,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-05-19T17:10:42Z",
+      "side": 1,
+      "message": "It looks like we do not include the trailing zero in the vendor message response even on cr50: \n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/f5e2cf96/common/rma_auth.c#344\n\nJust set the last byte of the `rma_response[]` buffer to zero",
+      "parentUuid": "3e68197d_ff83a413",
+      "range": {
+        "startLine": 3432,
+        "startChar": 38,
+        "endLine": 3432,
+        "endChar": 40
+      },
+      "revId": "09bf74ee6486995a58fb86549c140727c8b0cd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
