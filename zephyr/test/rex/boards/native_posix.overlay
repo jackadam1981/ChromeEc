@@ -4,3 +4,20 @@
  */
 
 #include <board-overlays/native_posix.dts>
+#include <npcx_emul.dts>
+
+/ {
+	/*
+         * Keep these GPIOs in pin order.
+         * If you need to add one, make sure you increase
+         * ngpios in the gpio0 node further down.
+         */
+        named-gpios {
+                compatible = "named-gpios";
+
+                gpio_usb_c1_rt_rst_r_odl: usb_c1_rt_rst_r_odl {
+			gpios = <&gpio0 0 GPIO_ACTIVE_LOW>;
+			no-auto-init;
+		};
+	};
+};

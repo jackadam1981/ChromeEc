@@ -53,9 +53,26 @@ static void setup_usb_db(void)
 		break;
 	case FW_USB_DB_USB3:
 		LOG_INF("USB DB: Setting USB3 mux");
+		ret = gpio_pin_configure_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_usb_c1_rt_rst_r_odl), 0);
+		if (ret) {
+			LOG_INF("USB DB: USB3: gpio_usb_c1_rt_rst_r_odl"
+				" configuration failed: %d",
+				ret);
+		}
 		break;
 	case FW_USB_DB_USB4_ANX7452:
 		LOG_INF("USB DB: Setting ANX7452 mux");
+		const struct gpio_dt_spec *spec =
+			GPIO_DT_FROM_NODELABEL(gpio_usb_c1_rt_rst_r_odl);
+
+		ret = gpio_pin_configure(spec->port, spec->pin,
+					 GPIO_OUTPUT_LOW);
+		if (ret) {
+			LOG_INF("USB DB: ANX7452: gpio_usb_c1_rt_rst_r_odl"
+				" configuration failed: %d",
+				ret);
+		}
 		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_anx7452_port1);
 		TCPC_ENABLE_ALTERNATE_BY_NODELABEL(1, tcpc_rt1716_port1);
 		PPC_ENABLE_ALTERNATE_BY_NODELABEL(1, ppc_syv_port1);
