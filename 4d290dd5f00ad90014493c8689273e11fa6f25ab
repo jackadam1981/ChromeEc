@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa1398cf_8876676d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-19T03:02:30Z",
+      "side": 1,
+      "message": "Creating a context would not resolve the device test issue.\n\nThe current problem is we cannot build the device test if we include or use anything that is defined in `fpsensor_driver.h`.\n\n------\n\nThe reason why context doesn\u0027t work:\n\nCurrently the fpsensor_crypto needs \"user_id, tpm_seed, fp_encryption_status\" and `rollback secret`.\n\nuser_id \u0026 tpm_seed can be changed to a context for fpsensor_crypto functions easily.\nBut fp_encryption_status is the tricky part, I\u0027m not sure where we should put the fp_encryption_status, because we extend it\u0027s meaning at here:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3915754/248/include/ec_commands.h\n\n(And that\u0027s what you told me to do: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3915754/57..248/common/fpsensor/fpsensor_state.c#67 )\n\nIf we don\u0027t put it in the context struct, the logic in the fpsensor_crypto would be strange(e.g. we depend on a global state to know the content of context had been set or not.).\n\nIf we put it in the context struct, should we also pull in all auth nonce, match secret salt, etc... into the context? In that case, we will just pull everything, but if we want the device test, we still need to prevent include or use anything that is defined in `fpsensor_driver.h`. And that would not be better than the current situation.\n\nAnd the other problem is the rollback secret, because we still don\u0027t have gtest \u0026 gmock support, we cannot do proper mock for \"C++ class\", which means we still have some kind of global state in the test environment.\n\n---------\n\nTo be clarified, refactoring the \"existing\" code is not the goal of this project(FP login). We already have a barrier between the existing code and the new code to prevent complex interaction.\n\nRefactoring the \"existing\" code should be another project, we should not mixing two things together.\n\nBTW, if you can do the refactoring to the existing code, I can rebase my code on the.\n(But I don\u0027t want to \"design\" how to refactor the existing code.)\n(And if you want to migrate to Zephyr/TockOS in the future, most of the refactoring would be meaningless.)",
+      "parentUuid": "bc83b944_ca3e7b16",
+      "revId": "4d290dd5f00ad90014493c8689273e11fa6f25ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d9664e8_9dbfd47d",
         "filename": "include/fpsensor_state_without_driver_info.h",
         "patchSetId": 4
