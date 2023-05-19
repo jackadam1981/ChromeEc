@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd3f8b2_a2de0f55",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2023-05-19T22:22:51Z",
+      "side": 1,
+      "message": "IMHO, all the config_\u003cboard\u003e functions are board (or platform) based, not model based. So to make it consistent, maybe we should put the content of config_screebo()/config_rex0() into config_rex(), something similar to this?\n\n```\nconfig_rex() {\n  readonly TRANSPORT\u003d\"SPI\"\n  readonly DEVICE\u003d\"/dev/spidev0.0\"\n\n  # See kernel/v6.1/drivers/pinctrl/intel/pinctrl-meteorlake.c\n  # for pin name and pin number.\n  # Examine `cat /sys/kernel/debug/pinctrl/INTC1083:00/gpio-ranges` on a\n  # rex device to determine gpio number from pin number.\n  # For example: GPP_B11, the pin number is 215 from the pinctrl-meteorlake.c.\n  # From the gpio-ranges, the gpio value is 925 + (215-204) \u003d 936\n\n  # For kernel version 6.1, currently used on Rex platform\n  local gpiochip\u003d\"gpiochip573\"\n  readonly GPIO_CHIP\u003d\"${gpiochip}\"\n  local offset\u003d0\n\n  local model\u003d$(cros_config / name)\n  case \"${model}\" in\n    screebo)\n      # Screebo is based off Rex but with different pins for FPMCU\n      # FPMCU RST_ODL is on GPP_C21 \u003d 637 + (50 - 29) \u003d 658\n      local gpionrst\u003d658\n      readonly GPIO_NRST\u003d$(( gpionrst - offset ))\n      # FPMCU BOOT0 is on GPP_C20 \u003d 637 + (49 - 29) \u003d 657\n      local gpioboot\u003d657\n      readonly GPIO_BOOT0\u003d$(( gpioboot - offset ))\n      # FP_PWR_EN is on GPP_B08 \u003d 925 + (212-204) \u003d 933\n      local gpiopwren\u003d933\n      readonly GPIO_PWREN\u003d$(( gpiopwren - offset ))\n      ;;\n    *)\n      # FPMCU RST_ODL is on GPP_C23 \u003d 637 + (52 - 29) \u003d 660\n      local gpionrst\u003d660\n      readonly GPIO_NRST\u003d$(( gpionrst - offset ))\n      # FPMCU BOOT0 is on GPP_C22 \u003d 637 + (51 - 29) \u003d 659\n      local gpioboot\u003d659\n      readonly GPIO_BOOT0\u003d$(( gpioboot - offset ))\n      # FP_PWR_EN is on GPP_B11 \u003d 925 + (215-204) \u003d 936\n      local gpiopwren\u003d936\n      readonly GPIO_PWREN\u003d$(( gpiopwren - offset ))\n      ;;\n  esac\n}\n```",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 14
+      },
+      "revId": "d2ca5a168edfc0c0c5f7f84c337dcebb4616b366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
