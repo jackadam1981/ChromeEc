@@ -22,6 +22,30 @@
       },
       "revId": "4fe7bfc0b838a64b53f022545d1554e9f8dd25c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b858b8d_684646f5",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 33
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-19T04:33:10Z",
+      "side": 1,
+      "message": "FP_PAIRING_KEY_ENC_METADATA_VERSION may be changed in the future.\nBut this logic is only for the \"version 1\", \n\n```\n * version 1 is 128 bit AES-GCM, and the encryption key is bound to the TPM\n * seed, rollback secret and user_id.\n```",
+      "parentUuid": "4af6fd4d_4f0df703",
+      "range": {
+        "startLine": 148,
+        "startChar": 28,
+        "endLine": 148,
+        "endChar": 29
+      },
+      "revId": "4fe7bfc0b838a64b53f022545d1554e9f8dd25c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
