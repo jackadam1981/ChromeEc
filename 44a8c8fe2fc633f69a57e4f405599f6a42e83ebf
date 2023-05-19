@@ -34,6 +34,24 @@
       "parentUuid": "ca2c1157_b53ec9e2",
       "revId": "44a8c8fe2fc633f69a57e4f405599f6a42e83ebf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1652fc93_9c7eeb40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-19T19:19:54Z",
+      "side": 1,
+      "message": "The gap is when EEs called those lines *_L instead of *_ODL. So for now I just did pin override in the spreadsheet, but the plan is to fix the naming",
+      "parentUuid": "9fa2e12e_1ac2e628",
+      "revId": "44a8c8fe2fc633f69a57e4f405599f6a42e83ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
