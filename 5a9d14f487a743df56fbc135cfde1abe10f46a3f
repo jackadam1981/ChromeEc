@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1fa973c_448b8628",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-05-19T22:46:00Z",
+      "side": 1,
+      "message": "I think something went amiss with the rebase. screebo and starmie have errors:\n\ndevicetree error: value of property \u0027charge-state\u0027 on /led-colors/power-state-charge-lvl-1 in /mnt/host/source/src/platform/ec/build/zephyr/screebo/build-rw/zephyr/zephyr.dts.pre (\u0027PWR_STATE_CHARGE\u0027) is not in \u0027enum\u0027 list in /mnt/host/source/src/platform/ec/zephyr/dts/bindings/leds/cros-ec,led-policy.yaml ([\u0027LED_PWRS_CHARGE\u0027, \u0027LED_PWRS_DISCHARGE\u0027, \u0027LED_PWRS_ERROR\u0027, \u0027LED_PWRS_IDLE\u0027, \u0027LED_PWRS_FORCED_IDLE\u0027, \u0027LED_PWRS_CHARGE_NEAR_FULL\u0027])",
+      "revId": "5a9d14f487a743df56fbc135cfde1abe10f46a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
