@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8794be15_343e2b7b",
+        "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+        "patchSetId": 54
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-19T16:13:02Z",
+      "side": 1,
+      "message": "Yes, I think it\u0027s good to have these comments, but let\u0027s add a comment such as \"// TODO(b/1234): Signing not yet supported\" as well.",
+      "parentUuid": "1a99329f_226c00b2",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 30
+      },
+      "revId": "4caa956b568a364d617d7c6f791b51f947787bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3096e197_a81cc8bc",
         "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
         "patchSetId": 54
