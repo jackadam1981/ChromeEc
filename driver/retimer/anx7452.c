@@ -132,9 +132,12 @@ static int anx7452_i2c_awake(const struct usb_mux *me)
 	}
 
 	/* Configure non-conflicting i2c address for USB */
-	RETURN_ERROR(anx7452_top_update(me, ANX7452_TOP_USB_I2C_ADDR_REG,
-					ANX7452_TOP_USB_I2C_ADDR_REG_BIT_MASK,
-					ANX7452_I2C_ADDR_USB_FLAGS_NEW));
+	if (board_anx7452_is_usb_addr_conflict_present(me)) {
+		RETURN_ERROR(anx7452_top_update(
+			me, ANX7452_TOP_USB_I2C_ADDR_REG,
+			ANX7452_TOP_USB_I2C_ADDR_REG_BIT_MASK,
+			ANX7452_I2C_ADDR_USB_FLAGS_NEW));
+	}
 
 	return EC_SUCCESS;
 }

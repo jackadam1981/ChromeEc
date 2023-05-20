@@ -6,6 +6,7 @@
 #include "cros_cbi.h"
 #include "driver/ppc/ktu1125_public.h"
 #include "driver/ppc/nx20p348x.h"
+#include "driver/retimer/anx7452_public.h"
 #include "driver/tcpm/ps8xxx_public.h"
 #include "ppc/syv682x_public.h"
 #include "system.h"
@@ -46,4 +47,12 @@ void ppc_interrupt(enum gpio_signal signal)
 	default:
 		break;
 	}
+}
+
+bool board_anx7452_is_usb_addr_conflict_present(const struct usb_mux *me)
+{
+	if (usb_db_type == FW_USB_DB_USB4_ANX7452) {
+		return true;
+	}
+	return false;
 }
