@@ -16,6 +16,24 @@
       "message": "I am actually working on adding full support which included this, if it\u0027s fine I will include this in that CL",
       "revId": "89bb12230ead7385cb8928c32f822c14c0aa0d46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d652e185_863a6d06",
+        "filename": "zephyr/program/rex/rex/cbi.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-20T15:35:52Z",
+      "side": 1,
+      "message": "The related CL I was taking about : https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4546652",
+      "parentUuid": "3335e71c_d0cb6d5f",
+      "revId": "89bb12230ead7385cb8928c32f822c14c0aa0d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
