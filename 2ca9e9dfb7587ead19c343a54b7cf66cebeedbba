@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa56bc9a_ad535d4a",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-20T00:32:02Z",
+      "side": 1,
+      "message": "rv \u003d\u003d EC_SUCCESS",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 9
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f609a6_a5eca9df",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-20T00:32:02Z",
+      "side": 1,
+      "message": "rv !\u003d EC_SUCCESS",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 7
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77aec49c_051cc03e",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-20T00:32:02Z",
+      "side": 1,
+      "message": "is it sufficient to check this in the _init() routine?\ndo we have code that calls _set and _get even when\n_init() fails?",
+      "range": {
+        "startLine": 160,
+        "startChar": 5,
+        "endLine": 160,
+        "endChar": 45
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e24240d_6aaf21f1",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-20T00:32:02Z",
+      "side": 1,
+      "message": "are you accessing any of the USB registers here?",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66bca24d_c77ac377",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-20T00:32:02Z",
+      "side": 1,
+      "message": "DP enable should happen through I2C commands.",
+      "range": {
+        "startLine": 317,
+        "startChar": 2,
+        "endLine": 317,
+        "endChar": 11
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c40eb0b7_b4090325",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-20T00:32:02Z",
+      "side": 1,
+      "message": "this is a no-op.\n\nlet\u0027s land chromium:4550241 for runtime GPIO config.",
+      "range": {
+        "startLine": 57,
+        "startChar": 53,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
