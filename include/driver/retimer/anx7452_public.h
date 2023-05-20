@@ -23,4 +23,12 @@ struct anx7452_control {
 };
 extern const struct anx7452_control anx7452_controls[];
 
+/*
+ * ANX7452 uses multiple registers internally. One of the registers related to
+ * USB functionality has address conflict in some boards. This function helps in
+ * determining whether to handle that case in driver based on per board
+ * definition. Once no board need this function, it will be deprecated.
+ */
+bool board_anx7452_is_usb_addr_conflict_present(const struct usb_mux *me);
+
 #endif /* __CROS_EC_USB_RETIMER_ANX7452_PUBLIC_H */
