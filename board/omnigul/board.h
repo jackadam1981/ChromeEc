@@ -81,6 +81,8 @@
 #undef CONFIG_USB_CHARGER
 #undef CONFIG_BC12_DETECT_PI3USB9201
 
+#define CONFIG_USB_PD_COMM_LOCKED
+
 /* I2C speed console command */
 #define CONFIG_CMD_I2C_SPEED
 
@@ -102,6 +104,12 @@
 #define PD_MAX_POWER_MW 65000
 #define PD_MAX_CURRENT_MA 3250
 #define PD_MAX_VOLTAGE_MV 20000
+
+/*
+ * Because of b:279526032, modify monitor Vbus from Charger to TCPC.
+ */
+#undef CONFIG_USB_PD_VBUS_MEASURE_CHARGER
+#define CONFIG_USB_PD_VBUS_MEASURE_TCPC
 
 /*
  * Macros for GPIO signals used in common code that don't match the
@@ -190,6 +198,9 @@
 #define CONFIG_KEYBOARD_CUSTOMIZATION
 #define CONFIG_KEYBOARD_VIVALDI
 #define CONFIG_KEYBOARD_REFRESH_ROW3
+
+/* DISABLE POWERINDEBUG */
+#undef CONFIG_CMD_POWERINDEBUG
 
 /*
  * Older boards have a different ADC assignment.
