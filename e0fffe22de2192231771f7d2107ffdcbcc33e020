@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd89e695_f69a91ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-20T01:00:30Z",
+      "side": 1,
+      "message": "Taskbar battery icon becomes full when display_soc \u003d\u003d 100. Is it ok?",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "e0fffe22de2192231771f7d2107ffdcbcc33e020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ceba98_66ffeba8",
+        "filename": "zephyr/program/rex/rex/led_policy.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-20T01:00:30Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 51
+      },
+      "revId": "e0fffe22de2192231771f7d2107ffdcbcc33e020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
