@@ -35,6 +35,9 @@
 #define EMUL EMUL_DT_GET(ANX7452_NODE)
 #define COMMON_DATA(port) emul_anx7452_get_i2c_common_data(EMUL, port)
 
+FAKE_VALUE_FUNC(bool, board_anx7452_is_usb_addr_conflict_present,
+		const struct usb_mux *);
+
 static inline void reset_anx7452_state(void)
 {
 	test_set_chipset_to_s0();
@@ -55,6 +58,9 @@ static inline void reset_anx7452_state(void)
 					  I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	anx7452_emul_reset(EMUL);
+
+	RESET_FAKE(board_anx7452_is_usb_addr_conflict_present);
+	board_anx7452_is_usb_addr_conflict_present_fake.return_val = true;
 }
 
 ZTEST(anx7452, test_anx7452_init)
@@ -198,6 +204,50 @@ ZTEST(anx7452, test_anx7452_init)
 					       ANX7452_TOP_USB_I2C_ADDR_REG),
 			  usb_i2c_addr_reg_val, NULL);
 	zassert_equal(0,
+		      gpio_emul_output_get(usb_en_gpio_dev,
+					   GPIO_USB_C1_USB_EN_PORT),
+		      NULL);
+	zassert_equal(
+		0, gpio_emul_output_get(dp_en_gpio_dev, GPIO_USB_C1_DP_EN_PORT),
+		NULL);
+
+	reset_anx7452_state();
+	board_anx7452_is_usb_addr_conflict_present_fake.return_val = false;
+	/* Setup emulator fail on write */
+	i2c_common_emul_set_write_fail_reg(COMMON_DATA(TOP_EMUL_PORT),
+					   ANX7452_TOP_USB_I2C_ADDR_REG);
+	zassert_equal(
+		EC_SUCCESS,
+		anx7452_usb_retimer_driver.init(usb_muxes[USBC_PORT_C1].mux),
+		NULL);
+	zassert_equal(anx7452_emul_get_reg(EMUL, ANX7452_TOP_STATUS_REG),
+		      top_reg_val, NULL);
+	zassert_not_equal(anx7452_emul_get_reg(EMUL,
+					       ANX7452_TOP_USB_I2C_ADDR_REG),
+			  usb_i2c_addr_reg_val, NULL);
+	zassert_equal(1,
+		      gpio_emul_output_get(usb_en_gpio_dev,
+					   GPIO_USB_C1_USB_EN_PORT),
+		      NULL);
+	zassert_equal(
+		0, gpio_emul_output_get(dp_en_gpio_dev, GPIO_USB_C1_DP_EN_PORT),
+		NULL);
+
+	reset_anx7452_state();
+	board_anx7452_is_usb_addr_conflict_present_fake.return_val = false;
+	/* Setup emulator fail on read */
+	i2c_common_emul_set_read_fail_reg(COMMON_DATA(TOP_EMUL_PORT),
+					  ANX7452_TOP_USB_I2C_ADDR_REG);
+	zassert_equal(
+		EC_SUCCESS,
+		anx7452_usb_retimer_driver.init(usb_muxes[USBC_PORT_C1].mux),
+		NULL);
+	zassert_equal(anx7452_emul_get_reg(EMUL, ANX7452_TOP_STATUS_REG),
+		      top_reg_val, NULL);
+	zassert_not_equal(anx7452_emul_get_reg(EMUL,
+					       ANX7452_TOP_USB_I2C_ADDR_REG),
+			  usb_i2c_addr_reg_val, NULL);
+	zassert_equal(1,
 		      gpio_emul_output_get(usb_en_gpio_dev,
 					   GPIO_USB_C1_USB_EN_PORT),
 		      NULL);

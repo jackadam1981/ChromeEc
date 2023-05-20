@@ -61,6 +61,7 @@ static void setup_usb_db(void)
 				ret);
 		}
 		break;
+	case FW_USB_DB_USB4_ANX7452_V2:
 	case FW_USB_DB_USB4_ANX7452:
 		LOG_INF("USB DB: Setting ANX7452 mux");
 		const struct gpio_dt_spec *spec =
