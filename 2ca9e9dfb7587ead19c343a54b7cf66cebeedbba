@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a977058f_492e9453",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-20T16:09:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa56bc9a_ad535d4a",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 9
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01f609a6_a5eca9df",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-20T00:32:02Z",
       "side": 1,
       "message": "rv !\u003d EC_SUCCESS",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 7
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5103d6ef_e02a6fb6",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-20T16:09:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01f609a6_a5eca9df",
       "range": {
         "startLine": 129,
         "startChar": 5,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de62bf6e_d0859ded",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-20T16:09:59Z",
+      "side": 1,
+      "message": "The API methods are being called by other generic mux method. But the order of calling is not restricted by default by the driver/language like in classes. This check is required in init method otherwise the init is failing or expected power sequencing is not happening, but I see all existing retimer drivers are adding it to set and get, so I added it.",
+      "parentUuid": "77aec49c_051cc03e",
+      "range": {
+        "startLine": 160,
+        "startChar": 5,
+        "endLine": 160,
+        "endChar": 45
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e24240d_6aaf21f1",
         "filename": "driver/retimer/anx7452.h",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-20T00:32:02Z",
       "side": 1,
       "message": "are you accessing any of the USB registers here?",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3dd9343_481f845a",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-20T16:09:59Z",
+      "side": 1,
+      "message": "In proto 1 main there is USB address conflict, which will be resolved in proto 2 by hardware rework. The following address is a replacement to avoid address conflict in proto 1 main SKU3s.",
+      "parentUuid": "5e24240d_6aaf21f1",
       "range": {
         "startLine": 26,
         "startChar": 8,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e726798a_0e1517d4",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-20T16:09:59Z",
+      "side": 1,
+      "message": "USB_EN and DP_EN are used for power supply purposes, other than that they won\u0027t control anything. Also DP_EN pin is low all the time if it\u0027s SKU3. I just configured it based on schematics.",
+      "parentUuid": "66bca24d_c77ac377",
+      "range": {
+        "startLine": 317,
+        "startChar": 2,
+        "endLine": 317,
+        "endChar": 11
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c40eb0b7_b4090325",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-05-20T00:32:02Z",
       "side": 1,
       "message": "this is a no-op.\n\nlet\u0027s land chromium:4550241 for runtime GPIO config.",
+      "range": {
+        "startLine": 57,
+        "startChar": 53,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2224745_35181007",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-20T16:09:59Z",
+      "side": 1,
+      "message": "sure will rebase it once your changes are landed in main branch",
+      "parentUuid": "c40eb0b7_b4090325",
       "range": {
         "startLine": 57,
         "startChar": 53,
