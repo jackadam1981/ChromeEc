@@ -16,6 +16,23 @@
       "message": "Please try to build all board to ensure there is no build error.",
       "revId": "c6d88aa5aeed8cab04da6f201792fdea391fc160",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be05f90c_6e13510f",
+        "filename": "board/omnigul/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-05-22T08:15:08Z",
+      "side": 1,
+      "message": "The original definition is at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/config.h;drc\u003dbeead25fabdb6f1614343cf3b90b4e6c326141f1;l\u003d3202\nMaybe you should not define the customization value in this way which would cause build error like \ncommon/led_pwm.c:191:28: error: \u0027LED_CHARGER_ERROR_ON_TIME\u0027 undeclared (first use in this function)\n  191 |                            LED_CHARGER_ERROR_ON_TIME, LED_CHARGER_ERROR_PERIOD);",
+      "revId": "c6d88aa5aeed8cab04da6f201792fdea391fc160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
