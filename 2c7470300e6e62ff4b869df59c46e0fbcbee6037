@@ -69,6 +69,30 @@
       },
       "revId": "2c7470300e6e62ff4b869df59c46e0fbcbee6037",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912f2674_ad2b8b0e",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-22T20:26:25Z",
+      "side": 1,
+      "message": "+1\nagain, i don\u0027t think there\u0027s a need to implement the workaround for V1\nbecause there is no use case that i\u0027m aware of. we will run into problems\nwhen we start applying tuning parameters for the ps8811 sitting on the same bus,\nbut that can be limited to the\nV2 board where it\u0027ll work without a workaround.",
+      "parentUuid": "4959e920_5d211793",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 47
+      },
+      "revId": "2c7470300e6e62ff4b869df59c46e0fbcbee6037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
