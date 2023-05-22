@@ -39,6 +39,30 @@
       },
       "revId": "e180ff94ce79f8e05085dca402838c29faf00eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4506190c_a6450261",
+        "filename": "zephyr/Kconfig.defaults-arm",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-05-22T15:01:59Z",
+      "side": 1,
+      "message": "Done. PTAL.",
+      "parentUuid": "dca348e6_100cc733",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "e180ff94ce79f8e05085dca402838c29faf00eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

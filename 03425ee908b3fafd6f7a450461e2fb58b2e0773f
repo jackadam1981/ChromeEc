@@ -70,6 +70,24 @@
       "parentUuid": "41ee5766_d9e54613",
       "revId": "03425ee908b3fafd6f7a450461e2fb58b2e0773f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2796d342_d55e1aa7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-05-22T15:01:59Z",
+      "side": 1,
+      "message": "Here is where the detection is turned on: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/arch/arm/core/aarch32/cortex_m/debug.c;l\u003d61\n\nThere isn\u0027t a function for turning off detection, but it should be a straightforward reverse of the above function. Since this is outside the scope of this CL, let\u0027s discuss more in the bug.",
+      "parentUuid": "77a786f5_c703b978",
+      "revId": "03425ee908b3fafd6f7a450461e2fb58b2e0773f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
