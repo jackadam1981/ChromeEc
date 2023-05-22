@@ -16,6 +16,23 @@
       "message": "This is a fix for missing `stddef.h` when compiling bloonchipper with `clang`.",
       "revId": "5ff7d22baadd6080230ac05ee1da96d4a852816c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a6c1a9_769b61e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-22T17:54:05Z",
+      "side": 1,
+      "message": "Note that we will have to link against the C and C++ standard library for the fingerprint C++ functionality. Looks like that is [enabled separately](https://docs.zephyrproject.org/latest/develop/languages/cpp/index.html#c-standard-library).",
+      "revId": "5ff7d22baadd6080230ac05ee1da96d4a852816c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
