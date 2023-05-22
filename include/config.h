@@ -3204,6 +3204,11 @@
 #define CONFIG_LED_PWM_SOC_SUSPEND_COLOR EC_LED_COLOR_GREEN
 #define CONFIG_LED_PWM_LOW_BATT_COLOR EC_LED_COLOR_AMBER
 
+#ifdef CONFIG_LED_PWM_CHARGE_ERROR_COLOR
+#define LED_CHARGER_ERROR_ON_TIME 1
+#define LED_CHARGER_ERROR_PERIOD 2
+#endif /*CONFIG_LED_PWM_CHARGE_ERROR_COLOR*/
+
 /*
  * By default the PWM LED behaviour is reflected on both LEDs and includes the
  * chipset state, battery state, as well as the charging state.  Enable
