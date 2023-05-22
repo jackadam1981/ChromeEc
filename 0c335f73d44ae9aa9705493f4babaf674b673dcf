@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c84b8f7a_2c65ab9e",
+        "filename": "include/crypto/cleanse_wrapper.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-22T22:33:49Z",
+      "side": 1,
+      "message": "I think David\u0027s comment about using `static_assert` makes sense. If we want to specialize we can make it more generic with SFINAE in the future.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "0c335f73d44ae9aa9705493f4babaf674b673dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
