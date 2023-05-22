@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8698164_b6022d47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-22T19:02:47Z",
+      "side": 1,
+      "message": "These two views have been unified: https://chromium.googlesource.com/chromiumos/platform2/+/main/power_manager/powerd/system/power_supply.cc#1294.\n\nDisplay soc \u003d\u003d 100% means it\u0027s full from powerd\u0027s perspective. (FYI: display soc \u003d\u003d 0% means the battery is \u0027empty\u0027 but the battery still has a charge to do emergency shutdown.)",
+      "parentUuid": "fb036e0b_3cd6f11f",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "e0fffe22de2192231771f7d2107ffdcbcc33e020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4ceba98_66ffeba8",
         "filename": "zephyr/program/rex/rex/led_policy.dtsi",
         "patchSetId": 2
