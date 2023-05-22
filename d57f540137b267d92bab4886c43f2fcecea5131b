@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d4bf139_469c1a6d",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-22T23:37:50Z",
+      "side": 1,
+      "message": "\u003e And we will need an extra copy of ec_fp_ec_public_key if we return std::optional\u003cstruct ec_fp_ec_public_key\u003e.\n\n[RVO may take place](http://shortn/_VdnHj8BfZh), but even if it does not I\u0027m not worried about the overhead of an extra copy here. Let\u0027s focus on readability before prematurely optimizing.\n\n\u003e The problem is we have \"three\" output parameters(out_pubkey, data, iv).\n\nThe general style guide recommendation for that is described here: https://abseil.io/tips/176.",
+      "parentUuid": "77f1ecdd_9d521418",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 18
+      },
+      "revId": "d57f540137b267d92bab4886c43f2fcecea5131b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c47dca6_d4ded617",
         "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
         "patchSetId": 21
