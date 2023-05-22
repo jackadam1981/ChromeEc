@@ -29,6 +29,12 @@ struct mutex host_event_mtx;
 static int pchg_count;
 
 /*
+ * When battery is full, pchg will make the chip stop sending charging info.
+ * will be disabled until a device is removed or the timer expires.
+ */
+#define PCHG_SESSION_DISABLE_CHARGING_INFO_TIMEOUT (20 * MINUTE)
+
+/*
  * Events and errors to be reported to the host in each chipset state.
  *
  * Off:     None
@@ -224,6 +230,15 @@ static void reset_bist_cmd(struct pchg *ctx)
 				PCHG_BIST_CMD_NONE;
 }
 
+static void reset_session_flags(struct pchg *ctx)
+{
+	if (!ctx->cfg->drv->ctrl_cmd)
+		return;
+	ctx->cfg->drv->ctrl_cmd(ctx, PCHG_CTRL_CMD_SEND_CHARGING_INFO, 1);
+	ctx->session_flag = 0;
+	ctx->session_timer.val = 0;
+}
+
 __overridable void board_pchg_power_on(int port, bool on)
 {
 }
@@ -412,6 +427,7 @@ static void pchg_state_enabled(struct pchg *ctx)
 			ctx->state = pchg_reset(ctx);
 		} else {
 			ctx->state = PCHG_STATE_DETECTED;
+			reset_session_flags(ctx);
 		}
 		break;
 	case PCHG_EVENT_DEVICE_CONNECTED:
@@ -468,6 +484,7 @@ static void pchg_state_detected(struct pchg *ctx)
 		ctx->battery_percent = 0;
 		ctx->state = PCHG_STATE_ENABLED;
 		reset_bist_cmd(ctx);
+		reset_session_flags(ctx);
 		break;
 	default:
 		break;
@@ -502,6 +519,7 @@ static void pchg_state_connected(struct pchg *ctx)
 		ctx->battery_percent = 0;
 		ctx->state = PCHG_STATE_ENABLED;
 		reset_bist_cmd(ctx);
+		reset_session_flags(ctx);
 		break;
 	default:
 		break;
@@ -535,6 +553,7 @@ static void pchg_state_charging(struct pchg *ctx)
 		ctx->battery_percent = 0;
 		ctx->state = PCHG_STATE_ENABLED;
 		reset_bist_cmd(ctx);
+		reset_session_flags(ctx);
 		break;
 	case PCHG_EVENT_CHARGE_ENDED:
 	case PCHG_EVENT_CHARGE_STOPPED:
@@ -733,8 +752,25 @@ static int pchg_run(struct pchg *ctx)
 	if (previous_state != ctx->state)
 		CPRINTS("->STATE_%s", _text_state(ctx->state));
 
-	if (ctx->battery_percent != previous_battery)
+	if (ctx->battery_percent != previous_battery) {
 		CPRINTS("Battery %u%%", ctx->battery_percent);
+		if (ctx->battery_percent >= ctx->cfg->full_percent &&
+			ctx->cfg->drv->ctrl_cmd &&
+			!(ctx->session_flag &=
+				PCHG_SESSION_FLAG_CHARGING_INFO_DISABLED)) {
+			ctx->cfg->drv->ctrl_cmd(ctx,
+				PCHG_CTRL_CMD_SEND_CHARGING_INFO, 0);
+			ctx->session_flag |=
+				PCHG_SESSION_FLAG_CHARGING_INFO_DISABLED;
+			ctx->session_timer.val = get_time().val +
+				PCHG_SESSION_DISABLE_CHARGING_INFO_TIMEOUT;
+		}
+	}
+
+	if (ctx->session_flag && timestamp_expired(ctx->session_timer, 0)) {
+		CPRINTS("Session timer expired (0x%04x)", ctx->session_flag);
+		reset_session_flags(ctx);
+	}
 
 	if (ctx->event == PCHG_EVENT_ERROR) {
 		/* Print (only one) new error. */

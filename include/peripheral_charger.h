@@ -13,6 +13,7 @@
 #include "queue.h"
 #include "stdbool.h"
 #include "task.h"
+#include "timer.h"
 
 /*
  * Peripheral charge manager
@@ -192,6 +193,13 @@ enum pchg_error {
 	PCHG_ERROR_COUNT
 };
 
+enum pchg_session_flag {
+	/* Charging info is disabled. */
+	PCHG_SESSION_FLAG_CHARGING_INFO_DISABLED = BIT(0),
+
+	PCHG_SESSION_COUNT,
+};
+
 #define PCHG_ERROR_MASK(e) BIT(e)
 
 enum pchg_mode {
@@ -210,6 +218,14 @@ enum pchg_bist_cmd {
 
 	/* Add no more entries below here. */
 	PCHG_BIST_CMD_NONE = 0xff
+};
+
+enum pchg_ctrl_cmd {
+	/* Enable/Disable charger's sending charging info. */
+	PCHG_CTRL_CMD_SEND_CHARGING_INFO = 0x00,
+
+	/* Add no more entries after this. */
+	PCHG_CTRL_CMD_COUNT
 };
 
 enum pchg_chipset_state {
@@ -307,6 +323,10 @@ struct pchg {
 	enum pchg_event event;
 	/* Error (enum pchg_error). Port is disabled until it's cleared. */
 	uint32_t error;
+	/* Session flags (enum pchg_session_flag) */
+	uint32_t session_flag;
+	/* Session timer. Used to time out a certain session behavior. */
+	timestamp_t session_timer;
 	/* Battery percentage (0% ~ 100%) of the connected peripheral device */
 	uint8_t battery_percent;
 	/* Number of dropped events (due to queue overflow) */
@@ -362,6 +382,10 @@ struct pchg_drv {
 	int (*passthru)(struct pchg *ctx, bool enable);
 	/* Control BIST commands. */
 	int (*bist)(struct pchg *ctx, uint8_t test_id);
+	/**
+	 * Send special control command to the chip.
+	 */
+	int (*ctrl_cmd)(struct pchg *ctx, enum pchg_ctrl_cmd cmd, ...);
 };
 
 /**

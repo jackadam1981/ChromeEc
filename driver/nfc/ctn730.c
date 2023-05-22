@@ -651,6 +651,41 @@ static int ctn730_bist(struct pchg *ctx, uint8_t test_id)
 	return EC_SUCCESS_IN_PROGRESS;
 }
 
+static int ctn730_ctrl_cmd(struct pchg *ctx, enum pchg_ctrl_cmd cmd, ...)
+{
+	uint8_t buf[sizeof(struct ctn730_msg) +
+		    WLC_HOST_CTRL_WRITE_SESSION_PARAM_CMD_MAX_SIZE];
+	struct ctn730_msg *msg = (void *)buf;
+	va_list args;
+	int rv = EC_SUCCESS;
+
+	va_start(args, cmd);
+
+	switch (cmd) {
+	case PCHG_CTRL_CMD_SEND_CHARGING_INFO:
+		msg->message_type = CTN730_MESSAGE_TYPE_COMMAND;
+		msg->instruction = WLC_HOST_CTRL_WRITE_SESSION_PARAM;
+		msg->length = 1 +
+		       WLC_HOST_CTRL_WRITE_SESSION_PARAM_CMD_CHARGING_INFO_SIZE;
+		uint8_t *id = &msg->payload[0];
+		uint8_t *val = &msg->payload[1];
+		bool enable = (uint8_t)va_arg(args, int);
+
+		*id = WLC_HOST_CTRL_WRITE_SESSION_PARAM_CMD_CHARGING_INFO;
+		*val = enable ? 0x01 : 0x00;
+
+		rv = _send_command(ctx, msg);
+		break;
+	default:
+		rv = EC_ERROR_UNIMPLEMENTED;
+		break;
+	}
+
+	va_end(args);
+
+	return rv;
+}
+
 /**
  * Send command in blocking loop
  *
@@ -724,6 +759,7 @@ const struct pchg_drv ctn730_drv = {
 	.update_close = ctn730_update_close,
 	.passthru = ctn730_passthru,
 	.bist = ctn730_bist,
+	.ctrl_cmd = ctn730_ctrl_cmd,
 };
 
 static int cc_ctn730(int argc, const char **argv)
