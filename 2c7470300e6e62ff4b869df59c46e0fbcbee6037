@@ -46,6 +46,29 @@
       },
       "revId": "2c7470300e6e62ff4b869df59c46e0fbcbee6037",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4959e920_5d211793",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-22T08:49:49Z",
+      "side": 1,
+      "message": "This looks misnamed, it refers to a very specific issue but the actual implementation checks something different. Should it be called something like \"board_db_an7552_v1()\" or something like that instead? Then there should be a note about the removal here I guess, ideally with a tracking bug.",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 47
+      },
+      "revId": "2c7470300e6e62ff4b869df59c46e0fbcbee6037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
