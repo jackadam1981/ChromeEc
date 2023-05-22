@@ -60,7 +60,11 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 
 DT_INST_FOREACH_CHILD(0, FAN_CONFIGS)
 
+#ifndef CONFIG_PLATFORM_EC_FAN_DYNAMIC
 const struct fan_t fans[FAN_CH_COUNT] = { DT_INST_FOREACH_CHILD(0, FAN_INST) };
+#else
+struct fan_t fans[FAN_CH_COUNT] = { DT_INST_FOREACH_CHILD(0, FAN_INST) };
+#endif
 
 /* Data structure to define PWM and tachometer. */
 struct fan_config {
