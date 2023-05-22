@@ -3965,8 +3965,8 @@ static int process_get_factory_config(struct transfer_descriptor *td)
 	}
 
 	uint64_t out = be64toh(response);
-	bool is_x_branded = (out >> 4) & 1;
-	uint8_t compliance_version = out & 0xF;
+	bool is_x_branded = ((out >> 4) & 1) + 1;
+	uint8_t compliance_version = (out & 0xF) + 1;
 
 	printf("raw value: %016"PRIX64"\n", out);
 	printf("chassis_x_branded: %s\n", is_x_branded ? "true" : "false");
