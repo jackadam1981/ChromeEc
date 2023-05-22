@@ -16,6 +16,24 @@
       "message": "nits: Maybe don\u0027t need the ifdef if LED_CHARGER_ERROR_ON_TIME, LED_CHARGER_ERROR_PERIOD are used directly.",
       "revId": "5c10e3aa39e332ae88a2ef3e15dacf9b406a1265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "840f6987_be8e55e3",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3207,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-05-22T10:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb4e6e9d_a92b38e8",
+      "revId": "5c10e3aa39e332ae88a2ef3e15dacf9b406a1265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
