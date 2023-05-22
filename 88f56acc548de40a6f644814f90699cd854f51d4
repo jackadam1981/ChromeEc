@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b90e923_292ba706",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 7763,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-22T22:12:31Z",
+      "side": 1,
+      "message": "\"EC\" is ambiguous here. It could be \"embedded controller\" or \"elliptic curve\". I would just spell it out: `FP_ELLIPTIC_CURVE_PUBLIC_KEY_POINT_LEN`.",
+      "range": {
+        "startLine": 7763,
+        "startChar": 11,
+        "endLine": 7763,
+        "endChar": 13
+      },
+      "revId": "88f56acc548de40a6f644814f90699cd854f51d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a021b5f_fb1dac56",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 7764,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-22T22:12:31Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 7764,
+        "startChar": 11,
+        "endLine": 7764,
+        "endChar": 13
+      },
+      "revId": "88f56acc548de40a6f644814f90699cd854f51d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7bb6b8c_48ec9811",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 7766,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-22T22:12:31Z",
+      "side": 1,
+      "message": "\"EC\" is ambiguous here. In one place it stands for \"Embedded Controller\" and another \"elliptic curve\", right?\n\nSince the constant above (`FP_ELLIPTIC_CURVE_PUBLIC_KEY_POINT_LEN`) doesn\u0027t have the \"ec\" prefix, I would just make this `fp_elliptic_curve_public_key`. We have some examples of not using the `ec` prefix for structs that are not directly used in the request/response:\n\n* https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d7533-7557;drc\u003d7f21c475bb679788a0e04d71780eac8cc78ac5f5\n* https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d7692-7695;drc\u003d7f21c475bb679788a0e04d71780eac8cc78ac5f5\n\nOtherwise this starts to get pretty redundant: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4477228/86/include/ec_commands.h",
+      "range": {
+        "startLine": 7766,
+        "startChar": 7,
+        "endLine": 7766,
+        "endChar": 15
+      },
+      "revId": "88f56acc548de40a6f644814f90699cd854f51d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb01ffbe_be625530",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 7771,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-22T22:12:31Z",
+      "side": 1,
+      "message": "I think we could remove the \"ec\" prefix here.",
+      "range": {
+        "startLine": 7771,
+        "startChar": 7,
+        "endLine": 7771,
+        "endChar": 10
+      },
+      "revId": "88f56acc548de40a6f644814f90699cd854f51d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce0cec2_8ebc9ceb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 7788,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-22T22:12:31Z",
+      "side": 1,
+      "message": "I think we could remove the \"ec\" prefix here.",
+      "range": {
+        "startLine": 7788,
+        "startChar": 7,
+        "endLine": 7788,
+        "endChar": 10
+      },
+      "revId": "88f56acc548de40a6f644814f90699cd854f51d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
