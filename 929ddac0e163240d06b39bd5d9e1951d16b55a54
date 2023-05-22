@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8723110a_615fa9b7",
+        "filename": "common/panic_output.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-22T19:33:49Z",
+      "side": 1,
+      "message": "I would delete this, it is only for the test, and isn\u0027t actually helping anything.",
+      "range": {
+        "startLine": 404,
+        "startChar": 2,
+        "endLine": 408,
+        "endChar": 6
+      },
+      "revId": "929ddac0e163240d06b39bd5d9e1951d16b55a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce12fdcb_4b319c50",
+        "filename": "zephyr/test/drivers/console_cmd_crash/src/crash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-05-22T19:33:49Z",
+      "side": 1,
+      "message": "Since this isn\u0027t testing the production code, I would remove it and add LCOV_EXCL_START/LCOV_EXCL_STOP around the code that can\u0027t be tested.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "929ddac0e163240d06b39bd5d9e1951d16b55a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
