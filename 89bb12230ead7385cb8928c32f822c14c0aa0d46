@@ -34,6 +34,24 @@
       "parentUuid": "3335e71c_d0cb6d5f",
       "revId": "89bb12230ead7385cb8928c32f822c14c0aa0d46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42208b7d_2a0fd729",
+        "filename": "zephyr/program/rex/rex/cbi.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-22T01:47:59Z",
+      "side": 1,
+      "message": "this patch introduces the V2 board. we should have a separate\npatch for handling the addr conflict on the V1 board.",
+      "parentUuid": "d652e185_863a6d06",
+      "revId": "89bb12230ead7385cb8928c32f822c14c0aa0d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
