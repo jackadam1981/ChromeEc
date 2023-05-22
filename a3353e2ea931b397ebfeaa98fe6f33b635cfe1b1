@@ -88,6 +88,24 @@
       "parentUuid": "3d60f9d5_e882d3c2",
       "revId": "a3353e2ea931b397ebfeaa98fe6f33b635cfe1b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e662195_fd0f96a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2023-05-22T16:05:41Z",
+      "side": 1,
+      "message": "Robert and Tim,\nIf we revert this CL before we clarify PEC function on Whiterun, please also revert the crrev.com/c/4484326 also, because Whiterun need the CL as W/A to prevent read the error battery temperature.",
+      "parentUuid": "209c75b4_3d571f05",
+      "revId": "a3353e2ea931b397ebfeaa98fe6f33b635cfe1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
