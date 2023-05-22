@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38619307_a91b80ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-22T14:19:58Z",
+      "side": 1,
+      "message": "This is a fix for missing `stddef.h` when compiling bloonchipper with `clang`.",
+      "revId": "5ff7d22baadd6080230ac05ee1da96d4a852816c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
