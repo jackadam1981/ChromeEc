@@ -71,13 +71,6 @@ LOG_MODULE_REGISTER(tcpc, CONFIG_GPIO_LOG_LEVEL);
 	CHECK_COMPAT(TCPCI_COMPAT, usbc_id, tcpc_id, TCPC_CONFIG_TCPCI)        \
 	TCPC_CHIP_FIND_EMUL(usbc_id, tcpc_id)
 
-#define TCPC_DRIVERS                                                     \
-	ANX7447_TCPC_COMPAT, CCGXXF_TCPC_COMPAT, FUSB302_TCPC_COMPAT,    \
-		IT8XXX2_TCPC_COMPAT, PS8XXX_COMPAT, NCT38XX_TCPC_COMPAT, \
-		RAA489000_TCPC_COMPAT, RT1718S_TCPC_COMPAT,              \
-		RT1715_TCPC_COMPAT, TCPCI_COMPAT, TCPCI_EMUL_COMPAT,     \
-		PS8XXX_EMUL_COMPAT, ANX7447_EMUL_COMPAT, RT1718S_EMUL_COMPAT
-
 /*
  * This macro gets invoked for every driver in the TCPC_DRIVERS list.
  * If the passed in tcpc node contains the specified compat string, then
@@ -85,6 +78,12 @@ LOG_MODULE_REGISTER(tcpc, CONFIG_GPIO_LOG_LEVEL);
  */
 #define TCPC_HAS_COMPAT(compat, tcpc) \
 	IF_ENABLED(DT_NODE_HAS_COMPAT(tcpc, compat), 1)
+
+#define TCPC_HAS_COMPAT_DRIVER(tcpc) \
+	FOR_EACH_FIXED_ARG(TCPC_HAS_COMPAT, (), tcpc, TCPC_DRIVERS)
+
+#define TCPC_HAS_COMPAT_EMULATOR(tcpc) \
+	FOR_EACH_FIXED_ARG(TCPC_HAS_COMPAT, (), tcpc, TCPC_EMULATORS)
 
 /*
  * Verify the compatible property of a TCPC node is valid.
@@ -94,8 +93,8 @@ LOG_MODULE_REGISTER(tcpc, CONFIG_GPIO_LOG_LEVEL);
  * matching TCPC driver found and this macro generates a build error.
  */
 #define TCPC_PROP_COMPATIBLE_VERIFY(tcpc)                                     \
-	IF_ENABLED(IS_EMPTY(FOR_EACH_FIXED_ARG(TCPC_HAS_COMPAT, (), tcpc,     \
-					       TCPC_DRIVERS)),                \
+	IF_ENABLED(IS_EMPTY(TCPC_HAS_COMPAT_DRIVER(tcpc),                     \
+			    TCPC_HAS_COMPAT_EMULATOR(tcpc)),                  \
 		   (BUILD_ASSERT(                                             \
 			    0, "Invalid TCPC compatible on node: " STRINGIFY( \
 				       tcpc));))
@@ -157,14 +156,12 @@ DT_FOREACH_STATUS_OKAY_VARGS(RT1715_TCPC_COMPAT, TCPC_ALT_DEFINE,
 			     TCPC_CONFIG_RT1715)
 DT_FOREACH_STATUS_OKAY_VARGS(TCPCI_COMPAT, TCPC_ALT_DEFINE, TCPC_CONFIG_TCPCI)
 
-#ifdef TEST_BUILD
 DT_FOREACH_STATUS_OKAY_VARGS(TCPCI_EMUL_COMPAT, TCPC_ALT_DEFINE,
 			     TCPC_CONFIG_TCPCI_EMUL)
 DT_FOREACH_STATUS_OKAY_VARGS(PS8XXX_EMUL_COMPAT, TCPC_ALT_DEFINE,
 			     TCPC_CONFIG_PS8XXX_EMUL)
 DT_FOREACH_STATUS_OKAY_VARGS(ANX7447_EMUL_COMPAT, TCPC_ALT_DEFINE,
 			     TCPC_CONFIG_ANX7447_EMUL)
-#endif
 
 #ifdef CONFIG_PLATFORM_EC_TCPC_INTERRUPT
 
