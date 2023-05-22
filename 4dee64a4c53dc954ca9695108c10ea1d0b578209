@@ -34,6 +34,24 @@
       "message": "Do you really want to have this specific to SETLEDS command? The behavior of holding scancode data should be valid for all commands (and for some the scancode queue should be discarded once command is executed).",
       "revId": "4dee64a4c53dc954ca9695108c10ea1d0b578209",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "296f17da_004dc75b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-22T19:23:48Z",
+      "side": 1,
+      "message": "Nop. We should apply this to all commands.",
+      "parentUuid": "bad9e00f_5370f398",
+      "revId": "4dee64a4c53dc954ca9695108c10ea1d0b578209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
