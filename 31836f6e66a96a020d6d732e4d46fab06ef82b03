@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd5c903_128277af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-22T08:30:07Z",
+      "side": 1,
+      "message": "The commit message should describe the change motivation, in particular \"why\" this change is needed and correct, avoiding generic statements like \"because it fixes stuff\". The context is fine but it should not be the only thing in the commit message. Imagine scrolling through the changes looking for a potential regression cause, this would be meaningless.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "31836f6e66a96a020d6d732e4d46fab06ef82b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d23980f_2f6b522f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-22T08:30:07Z",
+      "side": 1,
+      "message": "Looks like there\u0027s multiple independent changes it the commit (new address, and various fixes), could you split it up? It\u0027s very hard to review right now.",
+      "revId": "31836f6e66a96a020d6d732e4d46fab06ef82b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
