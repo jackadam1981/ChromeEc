@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b40f563e_c1f58149",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-22T16:19:01Z",
+      "side": 1,
+      "message": "Thanks, Simon, for this change.\n\nI also don\u0027t like to see long names but in this case I\u0027m inclined to support a full prefix (i.e. LED_PWR_STATE_). They appear monstly in switch cases. So, I don\u0027t think readability will be lost too much.\n\nEither way, it\u0027s definitely better than PWR_STATE_.",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "dcd91902b6e9717f077f4aae3d080311f1fd8e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
