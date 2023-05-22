@@ -10,7 +10,7 @@
 _common_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 
 common-y=util.o
-common-y+=version.o printf.o queue.o queue_policies.o
+common-y+=version.o printf.o queue.o queue_policies.o rot128_eal.o
 
 common-$(CONFIG_ACCELGYRO_BMA255)+=math_util.o
 common-$(CONFIG_ACCELGYRO_BMI160)+=math_util.o
@@ -265,6 +265,27 @@ $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/cryptoc/libcryptoc.a
 $(out)/$(PROJECT).exe: LDFLAGS_EXTRA += $(CRYPTOC_LDFLAGS)
 $(out)/$(PROJECT).exe: $(out)/cryptoc/libcryptoc.a
 endif
+
+CARGO_TARGET := thumbv7m-none-eabi
+
+cmd_rot128 = mkdir -p $(realpath $(out))/rot128; \
+    CARGO_TARGET_DIR=$(realpath $(out))/rot128 OUT_DIR=$(realpath $(out))\
+		cargo build --target $(CARGO_TARGET) --manifest-path rot128/Cargo.toml
+
+# rot128_check_clean := $(cmd_rot128) -q && echo clean
+# ifneq ($(shell $(cmd_rot128)),clean)
+# Force the external build only if it is needed.
+.PHONY: $(out)/rot128
+# endif
+
+$(out)/rot128:
+	$(call quiet,rot128,ROT128)
+
+ROT128_LDFLAGS := $(out)/rot128/$(CARGO_TARGET)/debug/librot128.a
+
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += $(ROT128_LDFLAGS)
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/rot128
+
 
 include $(_common_dir)mock/build.mk
 common-y+=$(foreach m,$(mock-y),mock/$(m))

@@ -26,6 +26,7 @@
 #include "util.h"
 #include "watchdog.h"
 #include "wp.h"
+#include "rot128.h"
 
 /*
  * ENABLE_TPM can be used to free up a bunch of space for developing features
@@ -683,6 +684,16 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 			.out_size = *total_size - sizeof(struct tpm_cmd_header),
 			.flags = flags
 		};
+
+		if (p.code == VENDOR_CC_U2F_GENERATE || p.code == VENDOR_CC_U2F_SIGN) {
+			// Simulate that payload is encoded.
+			uint8_t *buffer_bytes = p.buffer;
+			for (size_t i = 0; i < p.in_size; i++) {
+				buffer_bytes[i] = buffer_bytes[i] + 128;
+			}
+			// Should be back to the original value here.
+			rot128_decode(buffer_bytes, p.in_size);
+		}
 
 		rc = extension_route_command(&p);
 
