@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61d47222_b54a8811",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 7
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-22T07:30:11Z",
+      "side": 1,
+      "message": "Determining `gpiobase` \n```\n local gpiochip_dev_path\u003d\"*/pci0000:00/INTC1083\\:00/gpio/*\"\n  local gpiobase\n  if ! gpiobase\u003d$(get_sysfs_gpiochip_base \"${gpiochip_dev_path}\"); then\n    echo \"Unable to find gpio chip base\"\n    return \"${EXIT_PRECONDITION}\"\n  fi\n```\ndisappeared after merging functions. Please remove the `offset` variable and use `gpiobase` instead. You can look at the `config_volteer()` as an example. Don\u0027t forget about updating comments, eg.:\n```\n# FPMCU RST_ODL is on GPP_C21 \u003d 637 + (50 - 29) - 573 \u003d 85\n```\nshould be\n```\n# FPMCU RST_ODL is on GPP_C21 \u003d 64 + (50 - 29) \u003d 85\n```",
+      "revId": "1c8b3613401d2aec1dca2cf83b38286b908ef89f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08600f9a_b3b47eba",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 7
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-05-22T07:30:11Z",
+      "side": 1,
+      "message": "Please change these lines to\n```\nlocal GPIO_CHIP\u003d\"gpiochip${gpiobase}\"\n```\nAnd remove the `# For kernel version 6.1, currently used on Rex platform` comment above",
+      "range": {
+        "startLine": 715,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 34
+      },
+      "revId": "1c8b3613401d2aec1dca2cf83b38286b908ef89f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
