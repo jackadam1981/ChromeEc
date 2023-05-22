@@ -142,6 +142,30 @@
       },
       "revId": "ac37e77df320cfab31e2e0218c4ddf5139af78e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85367805_8649a7a6",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 33
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2023-05-22T09:01:05Z",
+      "side": 1,
+      "message": "@tomhughes to test FP stuff again I need to rebase the userland CLs while making the EC APIs conform to the naming changes in the FPMCU CL chain. Can you confirm whether any naming still needs to change in this CL chain (structs, command names in ec_command.h etc.)?",
+      "parentUuid": "11e45b1b_e714041b",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 62
+      },
+      "revId": "ac37e77df320cfab31e2e0218c4ddf5139af78e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
