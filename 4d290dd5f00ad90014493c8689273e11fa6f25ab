@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee7144c7_3956b77d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-22T23:21:32Z",
+      "side": 1,
+      "message": "\u003e , because we still don\u0027t have gtest \u0026 gmock support, we cannot do proper mock for \"C++ class\",\n\nActually, googletest/googlemock [does work](http://b/254530679): https://crrev.com/c/4379778. It\u0027s blocked from being merged due to the same issue with [this CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4379777/comments/a6c74018_c64e2590).\n\n\u003e To be clarified, refactoring the \"existing\" code is not the goal of this project(FP login). \n\u003e Refactoring the \"existing\" code should be another project, we should not mixing two things together.\n\nUnfortunately, since some of this code touches the existing code, refactoring is sometimes needed. It\u0027s the same reason that I requested that you integrate boringssl. The fingerprint team has to maintain this code, so if we start adding things that make it more complicated or fragile we end up having to maintain it. It\u0027s much easier if we make better design choices now rather than try to fix them later.\n\n\u003e And if you want to migrate to Zephyr/TockOS in the future, most of the refactoring would be meaningless.\n\nNo, this is application logic. It can mostly be ported verbatim over to Zephyr. That\u0027s part of the reason why I\u0027m asking that you break out the underlying functionality from the EC commands (e.g., `create_ec_key_from_privkey`, etc. is going to be copied directly to Zephyr with no changes). If we further break out the stateful part, it\u0027s actually even simpler to do the port.\n\n\u003e BTW, if you can do the refactoring to the existing code, I can rebase my code\n\nI will try to sketch out what I\u0027m thinking. Unfortunately, I have many other things that I have to work on and review too.",
+      "parentUuid": "fa1398cf_8876676d",
+      "revId": "4d290dd5f00ad90014493c8689273e11fa6f25ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d9664e8_9dbfd47d",
         "filename": "include/fpsensor_state_without_driver_info.h",
         "patchSetId": 4
