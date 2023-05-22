@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2007ff76_df29d865",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-22T01:19:46Z",
+      "side": 1,
+      "message": "may want to rephrase this - we don\u0027t have a USB addr conflict.\ni\u0027m also not sure we need to provide this software workaround\nsince we\u0027ll have updated hardware.\nadding V2 support should be separate patch from the\nV1 workaround patch.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "2c7470300e6e62ff4b869df59c46e0fbcbee6037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
