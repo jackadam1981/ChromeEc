@@ -22,6 +22,30 @@
       },
       "revId": "2c7470300e6e62ff4b869df59c46e0fbcbee6037",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6291a25d_4a153ae5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-22T07:02:29Z",
+      "side": 1,
+      "message": "The address conflict is handled in re-timer driver, keeping proto 1 in mind. The handling involved updating the USB address to non conflicting address. It\u0027s already included in earlier CL. In this CL I am avoiding workaround for proto 2 since it\u0027s hardware rework solved that. This CL is not adding workaround for Proto1 but avoiding P1 workarounds for proto2 to work. Thank you",
+      "parentUuid": "2007ff76_df29d865",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "2c7470300e6e62ff4b869df59c46e0fbcbee6037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
