@@ -70,6 +70,24 @@
       "parentUuid": "3957467b_5468df70",
       "revId": "a3353e2ea931b397ebfeaa98fe6f33b635cfe1b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "209c75b4_3d571f05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-05-22T15:29:15Z",
+      "side": 1,
+      "message": "I opened b/283782707 to chase why this is occurring on ToT, since we\u0027ll (presumably) start seeing it the next time the FW is upreved for Skyrim devices.\n\nIn the meantime, this makes development pretty rough, since it\u0027s not cleared with a GSC or EC reset. Is there another workaround to try, or can we land this revert?",
+      "parentUuid": "3d60f9d5_e882d3c2",
+      "revId": "a3353e2ea931b397ebfeaa98fe6f33b635cfe1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
