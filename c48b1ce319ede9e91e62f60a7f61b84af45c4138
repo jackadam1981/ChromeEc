@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0402fbd_4cdbe6a8",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-22T14:11:35Z",
+      "side": 1,
+      "message": "nit: this comment is not true anymore, a possible update would be:\n``` \n/* Ontime and period in PULSE_TICK units */\n```",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 38
+      },
+      "revId": "c48b1ce319ede9e91e62f60a7f61b84af45c4138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
