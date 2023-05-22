@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1be472b_5bcd6085",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 7
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1372328
+      },
+      "writtenOn": "2023-05-22T08:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61d47222_b54a8811",
+      "revId": "1c8b3613401d2aec1dca2cf83b38286b908ef89f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08600f9a_b3b47eba",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-05-22T07:30:11Z",
       "side": 1,
       "message": "Please change these lines to\n```\nlocal GPIO_CHIP\u003d\"gpiochip${gpiobase}\"\n```\nAnd remove the `# For kernel version 6.1, currently used on Rex platform` comment above",
+      "range": {
+        "startLine": 715,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 34
+      },
+      "revId": "1c8b3613401d2aec1dca2cf83b38286b908ef89f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b3d509_ccb22412",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 7
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1372328
+      },
+      "writtenOn": "2023-05-22T08:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08600f9a_b3b47eba",
       "range": {
         "startLine": 715,
         "startChar": 0,
