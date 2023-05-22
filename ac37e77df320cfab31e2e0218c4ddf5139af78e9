@@ -166,6 +166,30 @@
       },
       "revId": "ac37e77df320cfab31e2e0218c4ddf5139af78e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee14a906_2170aff0",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 33
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-22T22:12:45Z",
+      "side": 1,
+      "message": "\u003e  Can you confirm whether any naming still needs to change in this CL chain (structs, command names in ec_command.h etc.)?\n\nI added comments in the reviews for the things that I think should be renamed. I\u0027m hoping there aren\u0027t more, but no promises...",
+      "parentUuid": "85367805_8649a7a6",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 62
+      },
+      "revId": "ac37e77df320cfab31e2e0218c4ddf5139af78e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
