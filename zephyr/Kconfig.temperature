@@ -127,6 +127,12 @@ config PLATFORM_EC_CUSTOM_FAN_DUTY_CONTROL
 	  their own fan duty control mechanism by implementing
 	  the routine board_override_fan_control_duty().
 
+config PLATFORM_EC_FAN_DYNAMIC
+	bool "Fans have non-const configuration"
+	default n
+	help
+	  Fans have non-const configuration so add the config will
+	  let us to configure the fan parameters during runtime.
 
 config PLATFORM_EC_NUM_FANS
 	int "Number of fans"
