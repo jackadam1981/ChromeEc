@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4eec2c46_4f245468",
+        "filename": "include/crypto/cleanse_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-22T22:16:20Z",
+      "side": 1,
+      "message": "Thanks. Can you create a `TODO(b/123): replace with upstream version` so we don\u0027t forget? (We can remove the TODO later if they don\u0027t take it upstream.)",
+      "parentUuid": "0c183c1e_0003520f",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "fdf57176177ab0be5759e8321d1623c877e694c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebe618fb_0e48a010",
         "filename": "include/crypto/cleanse_wrapper.h",
         "patchSetId": 5
