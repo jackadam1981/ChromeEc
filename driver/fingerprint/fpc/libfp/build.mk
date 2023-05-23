@@ -12,4 +12,5 @@ dirs-y+="$(libfp_cur_dir)"
 
 # Only build for these objects for the RW image
 all-obj-rw+=$(libfp_cur_dir)fpc_sensor_pal.o \
-			$(libfp_cur_dir)fpc_private.o
+			$(libfp_cur_dir)fpc_private.o \
+			$(libfp_cur_dir)fpc_stubs.o \
