@@ -54,8 +54,3 @@ void detachable_keyboard_add(const uint8_t *state)
 void board_touchpad_reset(void)
 {
 }
-
-void set_touchpad_report(struct usb_hid_touchpad_report *report)
-{
-	/* board_uart_tx(ROACH_CMD_TOUCHPAD_REPORT, (uint8_t*)report, sizeof(*report)); */
-}
