@@ -138,6 +138,24 @@
       "parentUuid": "9254c543_abcc29e2",
       "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03fbe56_645050ce",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1537632
+      },
+      "writtenOn": "2023-05-23T16:32:39Z",
+      "side": 1,
+      "message": "whoops, 15V 3A. Are we going to support 45W adapter? I only have 60W on hand.",
+      "parentUuid": "0b461469_b6e13df1",
+      "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
