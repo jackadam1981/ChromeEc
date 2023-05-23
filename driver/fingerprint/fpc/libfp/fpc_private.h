@@ -12,6 +12,10 @@
 extern "C" {
 #endif
 
+#include "fpsensor_types.h"
+
+#include <stdint.h>
+
 /* External error codes from FPC's sensor library */
 enum fpc_error_code_external {
 	FPC_ERROR_NONE = 0,
@@ -148,6 +152,22 @@ typedef struct {
  */
 int fp_sensor_maintenance(uint8_t *image_data,
 			  fp_sensor_info_t *fp_sensor_info);
+
+/**
+ * Configure finger detection.
+ *
+ * Send the settings to the sensor, so it is properly configured to detect
+ * the presence of a finger.
+ */
+void fp_sensor_configure_detect(void);
+
+/**
+ * Returns the status of the finger on the sensor.
+ * (assumes fp_sensor_configure_detect was called before)
+ *
+ * @return finger_state
+ */
+enum finger_state fp_sensor_finger_status(void);
 
 /**
  * Get the HWID of the sensor.
