@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bba2f2e7_25882458",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-05-23T16:14:42Z",
+      "side": 1,
+      "message": "I think we should just remove this block entirely and just directly use `GPIO_EN_USB_C1_SINK` and the rest. Maybe just put a comment in `board_rt1718s_init` noting which gpio is which.",
+      "parentUuid": "74d52adb_c553003a",
+      "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac5b9aef_a360aaef",
         "filename": "zephyr/program/myst/src/usbc_config.c",
         "patchSetId": 2
@@ -48,6 +66,40 @@
       "writtenOn": "2023-05-23T11:18:06Z",
       "side": 1,
       "message": "we should move this to a common place, we have get_io_db_type_from_cached_cbi in 3 places :p",
+      "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9977bba3_61749bfe",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-05-23T16:14:42Z",
+      "side": 1,
+      "message": "We should return an error if the port is not C1.",
+      "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9254c543_abcc29e2",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-05-23T16:14:42Z",
+      "side": 1,
+      "message": "Does this return the correct voltage on C0 and C1? If not, we should return an error for when given C0 as the port and open a bug just to double check if that functionality is required.",
       "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
