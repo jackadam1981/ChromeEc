@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd545ff_7b2c01e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-05-23T06:22:16Z",
+      "side": 1,
+      "message": "Checked the uldren config, there is only 2bit for DB so it\u0027s fine to create a new sub_board.c",
+      "parentUuid": "aaa735b9_63096373",
+      "revId": "b1198ed57760a9e199708b95f4b16d7b2c7a19f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c505de39_f3c3ef45",
