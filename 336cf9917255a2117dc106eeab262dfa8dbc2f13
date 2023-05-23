@@ -16,6 +16,29 @@
       "message": "Hi reviewers, could you help to review the CL, thanks！",
       "revId": "336cf9917255a2117dc106eeab262dfa8dbc2f13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212dd3ae_08e3ea8c",
+        "filename": "zephyr/program/rex/screebo/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-23T00:08:34Z",
+      "side": 1,
+      "message": "just move this node from rex/rex.dtsi to rex/rex/i2c.dtsi.\ni\u0027ve already moved the ps8xxx@b. it doesn\u0027t make sense\nto keep this up there if variants don\u0027t use them.",
+      "range": {
+        "startLine": 131,
+        "startChar": 15,
+        "endLine": 131,
+        "endChar": 24
+      },
+      "revId": "336cf9917255a2117dc106eeab262dfa8dbc2f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
