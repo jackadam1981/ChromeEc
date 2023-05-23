@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "config.h"
 #include "console.h"
 #include "driver/fingerprint/fpc/fpc_sensor.h"
 #include "fpc_bio_algorithm.h"
@@ -39,9 +40,38 @@
  * The sensor context is uncached as it contains the SPI buffers,
  * the binary library assumes that it is aligned.
  */
+#if defined(HAVE_PRIVATE)
+
+#if defined(CONFIG_FP_SENSOR_FPC1145)
 static uint8_t ctx[FP_SENSOR_CONTEXT_SIZE_FPC] __uncached __aligned(4);
 static bio_sensor_t bio_sensor;
 static uint8_t enroll_ctx[FP_ALGORITHM_ENROLLMENT_SIZE_FPC] __aligned(4);
+
+#else
+#error "Sensor type not defined!"
+#endif
+
+#else /* defined(HAVE_PRIVATE) */
+
+/*
+ * Private is not defined, so create stubs for required functions from private
+ * libraries
+ */
+void fp_sensor_configure_detect(void)
+{
+}
+
+enum finger_state fp_sensor_finger_status(void)
+{
+	return FINGER_NONE;
+}
+
+int fp_sensor_acquire_image_with_mode(uint8_t *image_data, int mode)
+{
+	return EC_ERROR_INVAL;
+}
+
+#endif /* defined(HAVE_PRIVATE) */
 
 /* recorded error flags */
 static uint16_t errors;
@@ -191,6 +221,10 @@ static int fpc_pulse_hw_reset(void)
 /* Reset and initialize the sensor IC */
 int fp_sensor_init(void)
 {
+#if !defined(HAVE_PRIVATE)
+	return EC_ERROR_INVAL;
+#else
+
 	int res;
 	int attempt;
 
@@ -262,6 +296,7 @@ int fp_sensor_init(void)
 	fp_sensor_low_power();
 
 	return EC_SUCCESS;
+#endif
 }
 
 /* Deinitialize the sensor IC */
@@ -296,12 +331,20 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 int fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,
 		    int32_t *match_index, uint32_t *update_bitmap)
 {
+#if !defined(HAVE_PRIVATE)
+	return EC_ERROR_INVAL;
+#else
 	return bio_template_image_match_list(templ, templ_count, image,
 					     match_index, update_bitmap);
+#endif
 }
 
 int fp_enrollment_begin(void)
 {
+#if !defined(HAVE_PRIVATE)
+	return EC_ERROR_INVAL;
+#else
+
 	int rc;
 	bio_enrollment_t p = enroll_ctx;
 
@@ -309,23 +352,33 @@ int fp_enrollment_begin(void)
 	if (rc < 0)
 		CPRINTS("begin failed %d", rc);
 	return rc;
+#endif
 }
 
 int fp_enrollment_finish(void *templ)
 {
+#if !defined(HAVE_PRIVATE)
+	return EC_ERROR_INVAL;
+#else
+
 	bio_template_t pt = templ;
 
 	return bio_enrollment_finish(enroll_ctx, templ ? &pt : NULL);
+#endif
 }
 
 int fp_finger_enroll(uint8_t *image, int *completion)
 {
+#if !defined(HAVE_PRIVATE)
+	return EC_ERROR_INVAL;
+#else
 	int rc = bio_enrollment_add_image(enroll_ctx, image);
 
 	if (rc < 0)
 		return rc;
 	*completion = bio_enrollment_get_percent_complete(enroll_ctx);
 	return rc;
+#endif
 }
 
 int fp_maintenance(void)
