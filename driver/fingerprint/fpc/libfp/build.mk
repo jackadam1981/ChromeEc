@@ -8,8 +8,10 @@
 libfp_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 
 # Make sure output directory is created (in build directory)
-dirs-y+="$(libfp_cur_dir)"
+dirs-y += $(libfp_cur_dir)
 
 # Only build for these objects for the RW image
-all-obj-rw+=$(libfp_cur_dir)fpc_sensor_pal.o \
-			$(libfp_cur_dir)fpc_private.o
+all-obj-rw+=$(libfp_cur_dir)fpc_sensor_pal.o
+
+# Add fpc_private.o only if there is a private repo
+all-obj-rw+=$(if $(HAVE_PRIVATE),$(libfp_cur_dir)fpc_private.o,)

@@ -25,6 +25,9 @@ dirs-rw+="$(_fpc_cur_dir)"
 
 # Only build these objects for the RW image
 all-obj-rw+=$(_fpc_cur_dir)fpc_sensor.o
+
+# If there is no private repo, build with fpc_stubs to allow testing
+all-obj-rw+=$(if $(HAVE_PRIVATE),,$(_fpc_cur_dir)fpc_stubs.o)
 endif
 
 endif
