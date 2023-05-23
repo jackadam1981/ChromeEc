@@ -40,17 +40,6 @@
 #define CPRINTS5(format, args...)
 #endif
 
-/*
- * This command needs malloc to work. Could we use this instead?
- *
- * #define CMD_KEYBOARD_LOG IS_ENABLED(CONFIG_MALLOC)
- */
-#ifdef CONFIG_MALLOC
-#define CMD_KEYBOARD_LOG 1
-#else
-#define CMD_KEYBOARD_LOG 0
-#endif
-
 static enum {
 	STATE_ATKBD_CMD = 0,
 	STATE_ATKBD_SCANCODE,
@@ -184,11 +173,9 @@ struct kb_state {
 	uint8_t keystroke_enabled;
 };
 
+#if IS_ENABLED(CONFIG_CMD_KEYBOARD_KBLOG)
 /*****************************************************************************/
 /* Keyboard event log */
-
-/* Log the traffic between EC and host -- for debug only */
-#define MAX_KBLOG 512 /* Max events in keyboard log */
 
 struct kblog_t {
 	/*
@@ -214,20 +201,46 @@ struct kblog_t {
 	uint8_t byte;
 };
 
-static struct kblog_t *kblog_buf; /* Log buffer; NULL if not logging */
-static int kblog_len; /* Current log length */
+static struct {
+	/** Ring buffer for storing events. */
+	struct kblog_t ringbuf[CONFIG_CMD_KEYBOARD_KBLOG_LEN];
+	/** Index of next available entry in ring buffer. */
+	uint32_t head;
+	/**
+	 * Number of KBD events that have been logged. Stops counting after
+	 * CONFIG_CMD_KEYBOARD_KBLOG_LEN.
+	 */
+	uint32_t length;
+	/** true if logging keyboard events. */
+	bool enabled;
+} kblog;
 
 /**
  * Add event to keyboard log.
  */
 static void kblog_put(char type, uint8_t byte)
 {
-	if (kblog_buf && kblog_len < MAX_KBLOG) {
-		kblog_buf[kblog_len].type = type;
-		kblog_buf[kblog_len].byte = byte;
-		kblog_len++;
+	if (kblog.enabled) {
+		kblog.ringbuf[kblog.head] = (struct kblog_t){
+			.type = type,
+			.byte = byte,
+		};
+
+		kblog.head = (kblog.head + 1) % ARRAY_SIZE(kblog.ringbuf);
+
+		if (kblog.length < ARRAY_SIZE(kblog.ringbuf)) {
+			/* Stop incrementing after we wrap since we'll be
+			 * discarding old events.
+			 */
+			kblog.length++;
+		}
 	}
 }
+#else
+static void kblog_put(char type, uint8_t byte)
+{
+}
+#endif /* CONFIG_CMD_KEYBOARD_KBLOG */
 
 /*****************************************************************************/
 
@@ -1170,16 +1183,22 @@ static int command_controller_ram(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 
+#if IS_ENABLED(CONFIG_CMD_KEYBOARD_KBLOG)
 static int command_keyboard_log(int argc, const char **argv)
 {
-	int i;
+	int enable;
 
 	/* If no args, print log */
 	if (argc == 1) {
-		ccprintf("KBC log (len=%d):\n", kblog_len);
-		for (i = 0; kblog_buf && i < kblog_len; ++i) {
-			ccprintf("%c.%02x ", kblog_buf[i].type,
-				 kblog_buf[i].byte);
+		ccprintf("KBC log (len=%d, running=%d):\n", kblog.length,
+			 kblog.enabled);
+		for (int i = 0; i < kblog.length; ++i) {
+			struct kblog_t *entry =
+				&kblog.ringbuf[(kblog.head - kblog.length +
+						ARRAY_SIZE(kblog.ringbuf) + i) %
+					       ARRAY_SIZE(kblog.ringbuf)];
+
+			ccprintf("%c.%02x ", entry->type, entry->byte);
 			if ((i & 15) == 15) {
 				ccputs("\n");
 				cflush();
@@ -1190,28 +1209,27 @@ static int command_keyboard_log(int argc, const char **argv)
 	}
 
 	/* Otherwise, enable/disable */
-	if (!parse_bool(argv[1], &i))
+	if (!parse_bool(argv[1], &enable))
 		return EC_ERROR_PARAM1;
 
-	if (i) {
-		if (!kblog_buf) {
-			int rv = SHARED_MEM_ACQUIRE_CHECK(sizeof(*kblog_buf) *
-								  MAX_KBLOG,
-							  (char **)&kblog_buf);
-			if (rv != EC_SUCCESS)
-				kblog_buf = NULL;
-			kblog_len = 0;
-			return rv;
-		}
+	if (enable) {
+		/* Reset ring buffer before starting logging. Calling this
+		 * while already running simply wipes the buffer and restarts.
+		 */
+		memset(kblog.ringbuf, 0, ARRAY_SIZE(kblog.ringbuf));
+
+		kblog.head = 0;
+		kblog.enabled = true;
+
 	} else {
-		kblog_len = 0;
-		if (kblog_buf)
-			shared_mem_release(kblog_buf);
-		kblog_buf = NULL;
+		/* Stop logging. Leave the buffer intact for later inspection.
+		 */
+		kblog.enabled = false;
 	}
 
 	return EC_SUCCESS;
 }
+#endif /* CONFIG_CMD_KEYBOARD_KBLOG */
 
 static int command_keyboard(int argc, const char **argv)
 {
@@ -1296,8 +1314,10 @@ static int command_8042(int argc, const char **argv)
 			return command_codeset(argc - 1, argv + 1);
 		else if (!strcasecmp(argv[1], "ctrlram"))
 			return command_controller_ram(argc - 1, argv + 1);
-		else if (CMD_KEYBOARD_LOG && !strcasecmp(argv[1], "kblog"))
+#if IS_ENABLED(CONFIG_CMD_KEYBOARD_KBLOG)
+		else if (!strcasecmp(argv[1], "kblog"))
 			return command_keyboard_log(argc - 1, argv + 1);
+#endif /* CONFIG_CMD_KEYBOARD_KBLOG */
 		else if (!strcasecmp(argv[1], "kbd"))
 			return command_keyboard(argc - 1, argv + 1);
 		else
@@ -1313,10 +1333,10 @@ static int command_8042(int argc, const char **argv)
 		command_controller_ram(sizeof(ctlram_argv) /
 					       sizeof(ctlram_argv[0]),
 				       ctlram_argv);
-		if (CMD_KEYBOARD_LOG) {
-			ccprintf("\n- Keyboard log:\n");
-			command_keyboard_log(argc, argv);
-		}
+#if IS_ENABLED(CONFIG_CMD_KEYBOARD_KBLOG)
+		ccprintf("\n- Keyboard log:\n");
+		command_keyboard_log(argc, argv);
+#endif /* CONFIG_CMD_KEYBOARD_KBLOG */
 		ccprintf("\n- Keyboard:\n");
 		command_keyboard(argc, argv);
 		ccprintf("\n- Internal:\n");
@@ -1417,5 +1437,10 @@ void test_keyboard_8042_reset(void)
 	keyboard_enabled = false;
 
 	A20_status = 0;
+
+#if IS_ENABLED(CONFIG_CMD_KEYBOARD_KBLOG)
+	/* Reset keyboard log state */
+	memset(&kblog, 0, sizeof(kblog));
+#endif /* CONFIG_CMD_KEYBOARD_KBLOG */
 }
 #endif /* TEST_BUILD */
