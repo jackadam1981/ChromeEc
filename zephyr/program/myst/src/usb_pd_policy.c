@@ -10,6 +10,8 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
+#include "cros_board_info.h"
+#include "cros_cbi.h"
 #include "ec_commands.h"
 #include "ioexpander.h"
 #include "system.h"
