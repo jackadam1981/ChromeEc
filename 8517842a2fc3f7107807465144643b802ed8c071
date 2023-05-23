@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c67bc995_065898f8",
+        "filename": "common/battery_cbi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-23T17:36:17Z",
+      "side": 1,
+      "message": "If a field in CBI is bad or corrupted, we fall back to the default value and continue to read the next field. This isn\u0027t worse or better than using the current hard-coded battery info in EC. We can add validation code (to exclude bad values) but that\u0027s orthogonal to this feature.\n\nThe callers checking a return code is doing so because they translate the value to a boolean. If CBI reading fails, it\u0027s the same story. We give up and move on.",
+      "parentUuid": "162d7c19_74bf2666",
+      "revId": "8517842a2fc3f7107807465144643b802ed8c071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e5ae691_ee81caf8",
         "filename": "common/battery_cbi.c",
         "patchSetId": 8
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00cf4216_c928daf8",
+        "filename": "common/battery_cbi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-23T17:36:17Z",
+      "side": 1,
+      "message": "Added rationales (about the strategy). Ptal.\n\nReporting errors is probably a functionality we want to add to biic or the legacy scheme.",
+      "parentUuid": "4e5ae691_ee81caf8",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "8517842a2fc3f7107807465144643b802ed8c071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e12f7338_1f640c90",
         "filename": "test/battery_cbi.c",
         "patchSetId": 8
@@ -54,6 +96,24 @@
       "writtenOn": "2023-05-23T14:05:13Z",
       "side": 1,
       "message": "All of these tests appear to be \"happy path\" tests.",
+      "revId": "8517842a2fc3f7107807465144643b802ed8c071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21c4e231_9411b816",
+        "filename": "test/battery_cbi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-05-23T17:36:17Z",
+      "side": 1,
+      "message": "Done. Added a test for ERROR_INVAL.",
+      "parentUuid": "e12f7338_1f640c90",
       "revId": "8517842a2fc3f7107807465144643b802ed8c071",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
