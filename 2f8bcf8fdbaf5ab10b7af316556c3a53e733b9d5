@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b161afbd_bdb54cc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-23T17:00:14Z",
+      "side": 1,
+      "message": "In its current form I couldn\u0027t get this to compile but after rebasing on `cros/main` I still encountered issues with RW sig. I could have been doing something wrong, or it may be caused by upstream changes, but I needed to make a lot of changes to get the console UART running and wasn\u0027t able to get it to boot directly into RW. \n\nIt might make sense to decouple the RW signature changes from getting the helipilot board config merged in.",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "2f8bcf8fdbaf5ab10b7af316556c3a53e733b9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
