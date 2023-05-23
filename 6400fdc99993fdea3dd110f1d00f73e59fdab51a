@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "550573f2_877ac176",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2023-05-23T17:22:35Z",
+      "side": 1,
+      "message": "1. \"4.11 Active Cable Legacy USB-C Support Mandates\" -  if Enter Mode, exit Mode and Configure DP SOP\u0027 messages are optional for all active cable including old legacy and new DPAM 2.1 cable then we can skip  below two CL in the series:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4363224\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4295360\n\nare you suggesting to remove those optional changes ?\n\n2. Regarding new host command:- initially we wanted to use existing host command EC_CMD_USB_PD_CONTROL(this is being used for USB4 and TBT mux configuration) but to avoid breaking existing commands by introducing new parameters in existing response structure and for backward compatibility we decided to use new host command.\n\nwe can also use EC_CMD_TYPEC_DISCOVERY host command on kernel side to get cable info, but for this kernel mux driver need to implement same parsing logic and cable flow to get speed, cable type and dpam version which is implemented on EC side(which is being used for retimer configuration), So to avoid replicating same parsing logic on EC and kernel mux driver, we decided to use new host command. \n\nIf you have different opinion on this, please let us know and we can revisit host command implementation.",
+      "parentUuid": "75c8a485_39131838",
+      "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e75bc179_f0670bba",
