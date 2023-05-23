@@ -3434,7 +3434,7 @@ __maybe_unused static void tc_low_power_mode_run(const int port)
 					PD_LPM_EXIT_DEBOUNCE_US);
 		} else if (pd_timer_is_expired(port,
 					       TC_TIMER_LOW_POWER_EXIT_TIME)) {
-			CPRINTS("C%d: Exit Low Power Mode", port);
+			//CPRINTS("C%d: Exit Low Power Mode", port);
 			check_drp_connection(port);
 		}
 		return;
@@ -3445,7 +3445,7 @@ __maybe_unused static void tc_low_power_mode_run(const int port)
 				PD_LPM_DEBOUNCE_US);
 
 	if (pd_timer_is_expired(port, TC_TIMER_LOW_POWER_TIME)) {
-		CPRINTS("C%d: TCPC Enter Low Power Mode", port);
+		//CPRINTS("C%d: TCPC Enter Low Power Mode", port);
 		TC_SET_FLAG(port, TC_FLAGS_LPM_ENGAGED);
 		TC_SET_FLAG(port, TC_FLAGS_LPM_TRANSITION);
 		tcpm_enter_low_power_mode(port);

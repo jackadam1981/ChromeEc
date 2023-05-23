@@ -281,6 +281,10 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 		       cs->sink_cap_count * sizeof(uint32_t));
 	}
 
+	cflush();
+	ccprintf("EC_CMD_TYPEC_STATUS \n");
+	cflush();
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_TYPEC_STATUS, hc_typec_status,

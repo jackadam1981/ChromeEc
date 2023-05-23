@@ -831,6 +831,10 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 		usb_mux_hpd_update(port, r->flags & USB_PD_MUX_HPD_LVL);
 	}
 
+	cflush();
+	ccprintf("EC_CMD_USB_PD_MUX_INFO %x\n",  r->flags);
+	cflush();
+
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
@@ -861,6 +865,10 @@ static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 		task_set_event(ack_task[p->port], PD_EVENT_AP_MUX_DONE);
 
 	usb_mux_set_ack_complete(p->port);
+
+	cflush();
+	ccprintf("EC_CMD_USB_PD_MUX_ACK\n");
+	cflush();
 
 	return EC_RES_SUCCESS;
 }

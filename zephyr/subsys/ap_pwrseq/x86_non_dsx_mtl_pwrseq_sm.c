@@ -42,6 +42,7 @@ enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
 {
 	/* Add chipset specific state handling if any */
 	switch (curr_state) {
+	case SYS_POWER_STATE_G3:
 	case SYS_POWER_STATE_G3S5:
 		board_ap_power_action_g3_s5();
 		break;

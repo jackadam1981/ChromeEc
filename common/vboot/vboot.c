@@ -175,7 +175,8 @@ bool vboot_allow_usb_pd(void)
 void vboot_main(void)
 {
 	CPRINTS("Main");
-
+	yy
+return;
 	if (system_is_in_rw()) {
 		/*
 		 * We come here and immediately return. LED shows power shortage

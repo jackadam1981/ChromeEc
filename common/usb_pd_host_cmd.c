@@ -299,6 +299,31 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 	default:
 		return EC_RES_INVALID_PARAM;
 	}
+	#if 0
+        uint8_t enabled;
+        uint8_t role;
+        uint8_t polarity;
+        char state[32];
+        uint8_t cc_state; /* enum pd_cc_states representing cc state */
+        uint8_t dp_mode; /* Current DP pin mode (MODE_DP_PIN_[A-E]) */
+        uint8_t reserved; /* Reserved for future use */
+        uint8_t control_flags; /* USB_PD_CTRL_*flags */
+        uint8_t cable_speed; /* TBT_SS_* cable speed */
+        uint8_t cable_gen; /* TBT_GEN3_* cable rounded support */
+	#endif
+	cflush();
+	ccprintf("EC_CMD_USB_PD_CONTROL %x %x %x %s cc%x dp%x %x %x %x\n",
+	r_v2->enabled,
+	r_v2->role,
+	r_v2->polarity,
+	r_v2->state,
+	r_v2->cc_state,
+	r_v2->dp_mode,
+	r_v2->control_flags,
+	r_v2->cable_speed,
+	r_v2->cable_gen);
+
+	cflush();
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL, hc_usb_pd_control,
@@ -424,6 +449,9 @@ hc_pd_host_event_status(struct host_cmd_handler_args *args)
 	/* Read and clear the host event status to return to AP */
 	r->status = atomic_clear(&pd_host_event_status);
 
+	cflush();
+	ccprintf("EC_CMD_PD_HOST_EVENT_STATUS %x\n",  r->status);
+	cflush();
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
