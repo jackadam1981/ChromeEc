@@ -6,6 +6,8 @@
 #include "gpio/gpio.h"
 #include "gpio_signal.h"
 #include "system_boot_time.h"
+#include "i2c.h"
+#include "console.h"
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
@@ -18,6 +20,9 @@
 #include <x86_power_signals.h>
 
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
+
+#define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 
 #if defined(CONFIG_X86_NON_DSX_PWRSEQ_MTL) || \
 	defined(CONFIG_TEST_X86_NON_DSX_PWRSEQ_MTL)
