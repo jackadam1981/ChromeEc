@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c4c466_94f3afc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-05-23T00:39:55Z",
+      "side": 1,
+      "message": "this patch does not drop EC commands from flashrom, it just updates documentation, please make this description more accurate.",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "229f90e54218090ff3ac8bbabd7d82ec3b9a481b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
