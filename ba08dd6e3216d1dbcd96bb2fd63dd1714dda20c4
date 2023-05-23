@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54690330_0af0258c",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 31
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-23T23:26:48Z",
+      "side": 1,
+      "message": "Similar to the discussion we\u0027re having [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4515192/comment/753318b9_54796232/), can the signature of this be easily changed to something like this?\n\n```\nstd::optional\u003cstruct fp_encrypted_private_key\u003e\nserialize_private_key(const EC_KEY \u0026key)\n```\n\n(not sure about the name)",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 26
+      },
+      "revId": "ba08dd6e3216d1dbcd96bb2fd63dd1714dda20c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
