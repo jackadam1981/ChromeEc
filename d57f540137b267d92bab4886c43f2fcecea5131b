@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a136ca3d_76a5ed20",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-23T11:01:33Z",
+      "side": 1,
+      "message": "RVO does not prevent the extra copy of data in this case.\n\nBecause the output location is inside `args-\u003eresponse` of the \"EC host command\", we always need an \"extra copy\" to copy the data from the internal of optional into the content `args-\u003eresponse`. Maybe some compilers are smart enough to optimize this if the copy operation is pure, but this is not RVO, and it\u0027s not specified in the C++ standard.\n\n-----------\n\nI know the \"best practice\" in C++ is returning all output parameters in the return value. But in this case, the size of \"data\" is flexible, we will need to deal with the ownership of the data buffer if we are not doing encryption in place.\n\nSo there are three options to put the `data` in a struct:\n1. return a `malloc` buffer, and the caller needs to remember `free` it.\n2. return a std::array, but the function needs to know the size of the array at compile time, so the size needs to be a template argument.\n3. return a std::vector, and this will be the first place we use std::vector in the production code of EC. And it may have worse performance.\n(And currently we already have a performance issue, the whole flow will need 0.6 seconds on the real device(GSC+fpsensor).)\n\nPlease make the decision.\n\n----------\n\nAnd std::optional cannot contain more error information than true/false, if we want more error info, we might need `absl::StatusOr` or `std::expected`. But the first one requires the extra dependency(and only the \"internal\" version of StatusOr supports custom error space), and the second one requires C++23. (Or should we consider the [StatusChainOr](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libhwsec-foundation/status/status_chain_or.h)?)",
+      "parentUuid": "6d4bf139_469c1a6d",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 18
+      },
+      "revId": "d57f540137b267d92bab4886c43f2fcecea5131b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c47dca6_d4ded617",
         "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
         "patchSetId": 21
