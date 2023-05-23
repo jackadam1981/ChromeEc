@@ -429,6 +429,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "730e2611_a64f24dd",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-23T20:46:29Z",
+      "side": 1,
+      "message": "I think it\u0027s ok to leave as-is then. If you want to change it, I think your second suggestion would work. I\u0027ve done something similar in other places. If you don\u0027t need to carry the private state status around, you may be able to just do:\n\n```\n#ifdef HAVE_PRIVATE\nconst bool has_private \u003d true;\n#else\nconst bool has_private \u003d false;\n#endif\n\n...\nstatic int fp_sensor_init(void)\n{\n  if (!has_private)\n    return EC_ERROR_INVAL;\n  ...\n  \n}\n```\n\nbut if you need to use it in multiple places putting it in the state struct like you suggested would be cleaner.",
+      "parentUuid": "740dc1dc_f46dd91d",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 5
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89151e04_1aa1cd2b",
         "filename": "driver/fingerprint/fpc/bep/fpc_private.h",
         "patchSetId": 10
