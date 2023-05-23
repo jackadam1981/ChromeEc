@@ -282,7 +282,7 @@ static bool is_battery_ready(void)
 void vboot_main(void)
 {
 	CPRINTS("Main");
-
+return;
 	if (system_is_in_rw()) {
 		/*
 		 * We come here and immediately return. LED shows power shortage
@@ -350,6 +350,7 @@ void vboot_main(void)
 void hook_shutdown(void)
 {
 	CPRINTS("%s", __func__);
+	return;
 
 	/*
 	 * We filter the cases which can be interfered with if we execute
