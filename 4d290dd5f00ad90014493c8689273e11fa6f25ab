@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f36b07e8_846b82e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-23T07:53:33Z",
+      "side": 1,
+      "message": "The biggest thing I want to complain about is in the meeting at `Sep 15, 2022`, I asked: Is the migration to `C++` a blocker of the project or not. The answer was no.\n\nSo I wrote most of the code in C in October. But it looks like we are still in the migration process to C++ even now. (e.g. the malloc is still not working correctly.)\n\nYou should say the migration to C++ is a hard blocker at that time, and we might be able to help the migration of C++. Instead of telling us we need to migrate all code to C++ style after pending half a year of review.",
+      "parentUuid": "ee7144c7_3956b77d",
+      "revId": "4d290dd5f00ad90014493c8689273e11fa6f25ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d9664e8_9dbfd47d",
         "filename": "include/fpsensor_state_without_driver_info.h",
         "patchSetId": 4
