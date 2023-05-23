@@ -142,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "054309a2_4d08ff11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-05-23T23:34:34Z",
+      "side": 1,
+      "message": "Thanks. Is the implication here that MTL will be using the DP alternate mode kernel driver? Or was that just something for your local development platform. I ask because if kernel alt modes are going to be used, we need support for Thunderbolt alt mode as well as USB4 (none of which is there in the upstream kernel ATM)\n\n\nAlso, the entire new host command is unnecessary. All the Cable VDO data is already present in the kernel so the cable VDOs can just be copied into that field directly.",
+      "parentUuid": "ca114668_cd965f69",
+      "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e75bc179_f0670bba",
