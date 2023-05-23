@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b23b28f8_e3b3c2fd",
+        "filename": "zephyr/program/myst/src/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-23T11:17:36Z",
+      "side": 1,
+      "message": "I think this function should be used on port\u003d\u003dC0 for any SKU",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 29
+      },
+      "revId": "7d4c5f91336e6ea625d6b779d9d98f85adf0a388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79041df3_32d8ac6f",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-23T11:17:36Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 59,
+        "startChar": 19,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "7d4c5f91336e6ea625d6b779d9d98f85adf0a388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d13130_11d26aab",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-23T11:17:36Z",
+      "side": 1,
+      "message": "similar check is done on lines 151-153. Is the check here really needed?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 63
+      },
+      "revId": "7d4c5f91336e6ea625d6b779d9d98f85adf0a388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6396e4b9_41e11f31",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-23T11:17:36Z",
+      "side": 1,
+      "message": "Disable SNK too:\n```\n/* Disable BC1.2 SRC mode */\nRETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT2_BC12_SNK_FUNC,\n\tRT1718S_RT2_BC12_SNK_FUNC_BC12_SNK_EN,\n\t0));\n```",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 11
+      },
+      "revId": "7d4c5f91336e6ea625d6b779d9d98f85adf0a388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
