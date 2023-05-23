@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0415a158_41cc29dd",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 28
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-23T23:18:41Z",
+      "side": 1,
+      "message": "For consistency, can we use `std::array` here too?",
+      "range": {
+        "startLine": 311,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 26
+      },
+      "revId": "fb3ab971d41805e716cea3d93c1ed06351588505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

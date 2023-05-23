@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63cce1c1_7cc0bb3a",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-23T23:18:41Z",
+      "side": 1,
+      "message": "The FPMCU code builds with C++17, so the strategy we\u0027re using is *trying* to follow the [standard Google C++ style guide](https://google.github.io/styleguide/cppguide.html). As you mentioned, we don\u0027t have `absl` (or `base`, but only `absl` is part of the standard C++ style guide.)\n\nEverything that compiles *should* work, so the style guide is pretty much just \"follow the [style guide](https://google.github.io/styleguide/cppguide.html)\" unless it doesn\u0027t compile or introduces some bad performance issue.\n\n\u003e  if we want more error info, we might need absl::StatusOr or std::expected\n\nSince we don\u0027t have these dependencies right now, we\u0027re limited to `std::optional`. If we need more information than pass/fail, we\u0027ll just have to stick with the out-value style.\n\n\u003e And currently we already have a performance issue, the whole flow will need 0.6 seconds on the real device(GSC+fpsensor).\n\nSounds like we need to do some benchmarking/tracing to figure out where the bottleneck is. As I mentioned in the earlier comment, it\u0027s completely fine to make optimization tradeoffs for readability, but we need to measure it so we know it\u0027s an issue before we making the tradeoff. We have a [benchmarking framework](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/benchmark.h;l\u003d1) that you can use to test different versions. You can find some examples [here](http://shortn/_m8XyRM4U7H).\n\n\u003e  But in this case, the size of \"data\" is flexible,\n\nAh, ok, I see the disconnect. I was only suggesting the `const struct fp_elliptic_curve_public_key` parameter. I was thinking the signature would become:\n\n```\nstd::optional\u003cstruct fp_elliptic_curve_public_key\u003e \nencrypt_data_with_ecdh_key_in_place(\n\tconst struct fp_elliptic_curve_public_key \u0026in_pubkey,\n\tuint8_t *data, size_t data_size, uint8_t *iv, size_t iv_size)\n```\n\n(since I agree in/out parameters are more painful to deal with)",
+      "parentUuid": "1f10c8bc_67d17349",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 18
+      },
+      "revId": "d57f540137b267d92bab4886c43f2fcecea5131b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c47dca6_d4ded617",
         "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
         "patchSetId": 21
