@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c105e9b_81c4d159",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-05-23T21:13:34Z",
+      "side": 1,
+      "message": "\u003e are you suggesting to remove those optional changes ?\n\nYes. If it\u0027s optional, why add it right now? (FTR: I haven\u0027t looked at the content of the changes; I\u0027m going purely off of the descriptions)\n\n\u003e we can also use EC_CMD_TYPEC_DISCOVERY host command on kernel side to get cable info, but for this kernel mux driver need to implement same parsing logic and cable flow to get speed, cable type and dpam version which is implemented on EC side(which is being used for retimer configuration), So to avoid replicating same parsing logic on EC and kernel mux driver, we decided to use new host command.\n\nSo, the port driver (cros-ec-typec) just sends the VDO across to the mux driver.\nSee an example of how this is being done for Thunderbolt [1]\n\nThe following needs to be done:\na. The DisplayPort struct [2] needs to be updated to include cable data, similar to how it is done in TBT [1]. I would go so far as to say that we should just blindly send the cable\u0027s VDO if available, and let the mux driver deal with parsing it. It shouldn\u0027t be the job of the port driver to parse cable VDOs.\nb. Update the Intel mux driver to utilize the cable data when it programs the IOM driver registers.\nc. Update cros-ec-typec\u0027s `cros_typec_enable_dp` function [3] to populate the cable data which you introduced in a.) The cable is already registered in the Type-C framework [4], so you can just get the data from there. Again, ideally the port driver shouldn\u0027t have to parse the VDO. The mux driver can easily do it itself.\n\nThis is the IMO correct way to enable this, in a manner which is scalable and upstream-compliant. Please let us use the existing EC/Host interfaces as well as the kernel mechanisms to implement this, rather than creating bespoke new interfaces which a.) complicate the EC/AP surface and b.) are not portable.\n\n[1]  https://elixir.bootlin.com/linux/v6.4-rc1/source/include/linux/usb/typec_tbt.h#L20\n[2] https://elixir.bootlin.com/linux/v6.4-rc1/source/include/linux/usb/typec_dp.h#L47\n[3] https://elixir.bootlin.com/linux/latest/source/drivers/platform/chrome/cros_ec_typec.c#L465\n[4] https://elixir.bootlin.com/linux/latest/source/drivers/platform/chrome/cros_ec_typec.c#L816",
+      "parentUuid": "550573f2_877ac176",
+      "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e75bc179_f0670bba",
