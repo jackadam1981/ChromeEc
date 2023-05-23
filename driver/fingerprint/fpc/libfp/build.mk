@@ -11,5 +11,11 @@ libfp_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 dirs-y+="$(libfp_cur_dir)"
 
 # Only build for these objects for the RW image
-all-obj-rw+=$(libfp_cur_dir)fpc_sensor_pal.o \
-			$(libfp_cur_dir)fpc_private.o
+all-obj-rw+=$(libfp_cur_dir)fpc_sensor_pal.o
+
+# If there is no private repo, utilize some stub functions to allow testing
+ifeq ($(HAVE_PRIVATE),y)
+all-obj-rw+=$(libfp_cur_dir)fpc_private.o
+else
+all-obj-rw+=$(libfp_cur_dir)fpc_stubs.o
+endif
