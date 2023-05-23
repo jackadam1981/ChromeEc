@@ -16,6 +16,23 @@
       "message": "Assume you could probably modify the original sbu_board.c without creating a new one ?",
       "revId": "b1198ed57760a9e199708b95f4b16d7b2c7a19f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c505de39_f3c3ef45",
+        "filename": "zephyr/program/nissa/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-05-23T06:21:08Z",
+      "side": 1,
+      "message": "you may put it in zephyr_library_source or define a different config flag.",
+      "revId": "b1198ed57760a9e199708b95f4b16d7b2c7a19f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
