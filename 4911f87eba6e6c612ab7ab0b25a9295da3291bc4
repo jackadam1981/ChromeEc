@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c853217_381c56e4",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-23T22:24:06Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of reading val here?",
+      "revId": "4911f87eba6e6c612ab7ab0b25a9295da3291bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f1f4f6_48dc7b14",
+        "filename": "zephyr/dts/bindings/emul/cros,nct38xx-emul.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-23T22:24:06Z",
+      "side": 1,
+      "message": "2023 :)",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "4911f87eba6e6c612ab7ab0b25a9295da3291bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c586a163_1e395217",
+        "filename": "zephyr/dts/bindings/emul/cros,nct38xx-emul.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-23T22:24:06Z",
+      "side": 1,
+      "message": "I think you can also just use the compatible string that the driver would normally use.  At least, that\u0027s what I went with for the NX20P PPC emulator and I think that method would make it more likely that we could share DTS files between tests and real boards.",
+      "revId": "4911f87eba6e6c612ab7ab0b25a9295da3291bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f1817a_5ff55627",
+        "filename": "zephyr/test/drivers/nct38xx/src/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-23T22:24:06Z",
+      "side": 1,
+      "message": "Should these definitions be coming from the driver header?",
+      "revId": "4911f87eba6e6c612ab7ab0b25a9295da3291bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8921af46_5907abdc",
+        "filename": "zephyr/test/drivers/nct38xx/src/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-23T22:24:06Z",
+      "side": 1,
+      "message": "Does the reset rule thingy in the emulator already take care of this?",
+      "revId": "4911f87eba6e6c612ab7ab0b25a9295da3291bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
