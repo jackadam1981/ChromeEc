@@ -154,10 +154,10 @@ int start_system_safe_mode(void)
 		return EC_ERROR_INVAL;
 	}
 
-	disable_non_safe_mode_critical_tasks();
-
 	hook_call_deferred(&handle_system_safe_mode_timeout_data,
 			   CONFIG_SYSTEM_SAFE_MODE_TIMEOUT_MSEC * MSEC);
+
+	disable_non_safe_mode_critical_tasks();
 
 	/*
 	 * Schedule a deferred function to run immediately
