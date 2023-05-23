@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c842ba76_01d04970",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 26
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-23T09:30:38Z",
+      "side": 1,
+      "message": "Rearranged the import by running cros format",
+      "parentUuid": "019fda78_8a85d1c7",
+      "revId": "afeb78fca35640f9d01e4cd264756999c98c645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8885bf67_6ba12157",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-05-18T18:06:58Z",
       "side": 1,
       "message": "append `# pylint:disable\u003dimport-error` to this line.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "afeb78fca35640f9d01e4cd264756999c98c645f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92498314_bb21a6b1",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 26
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-05-23T09:30:38Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "8885bf67_6ba12157",
       "range": {
         "startLine": 34,
         "startChar": 0,
