@@ -10,6 +10,8 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
+#include "cros_board_info.h"
+#include "cros_cbi.h"
 #include "ec_commands.h"
 #include "ioexpander.h"
 #include "system.h"
@@ -19,6 +21,18 @@
 #include "util.h"
 
 #include <zephyr/drivers/gpio.h>
+
+static uint32_t get_io_db_type_from_cached_cbi(void)
+{
+	uint32_t io_db_type;
+	int ret = cros_cbi_get_fw_config(FW_IO_DB, &io_db_type);
+
+	if (ret != 0) {
+		io_db_type = FW_IO_DB_NONE;
+	}
+
+	return io_db_type;
+}
 
 int pd_check_vconn_swap(int port)
 {
@@ -69,6 +83,11 @@ int pd_set_power_supply_ready(int port)
 /* Used by Vbus discharge common code with CONFIG_USB_PD_DISCHARGE */
 int board_vbus_source_enabled(int port)
 {
+	uint32_t io_db_type = get_io_db_type_from_cached_cbi();
+
+	if (io_db_type == FW_IO_DB_SKU_A)
+		return ppc_is_sourcing_vbus(port);
+
 	return tcpm_get_src_ctrl(port);
 }
 
