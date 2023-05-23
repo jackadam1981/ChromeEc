@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "162d7c19_74bf2666",
+        "filename": "common/battery_cbi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-05-23T14:05:13Z",
+      "side": 1,
+      "message": "Callers don\u0027t appear to check the return code in almost all places. Is that acceptable?",
+      "revId": "8517842a2fc3f7107807465144643b802ed8c071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e5ae691_ee81caf8",
+        "filename": "common/battery_cbi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-05-23T14:05:13Z",
+      "side": 1,
+      "message": "If one of the calls fails, `info` will be partly updated, but the caller won\u0027t know, because this function doesn\u0027t check to see if any of these return `EC_ERROR_INVAL`.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "8517842a2fc3f7107807465144643b802ed8c071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12f7338_1f640c90",
+        "filename": "test/battery_cbi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-05-23T14:05:13Z",
+      "side": 1,
+      "message": "All of these tests appear to be \"happy path\" tests.",
+      "revId": "8517842a2fc3f7107807465144643b802ed8c071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
