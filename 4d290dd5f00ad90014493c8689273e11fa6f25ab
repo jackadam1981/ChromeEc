@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27d4a59b_37de70de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-23T22:26:09Z",
+      "side": 1,
+      "message": "\u003e And another thing is, there are a lot of mechanical changes you should ask me to do \"before\" separating the CLs into a lot of CLs.\n\nUnfortunately, it\u0027s just not possible to do a good job of reviewing very large CLs. The reasoning is described in detail in the [small CL policy](https://google.github.io/eng-practices/review/developer/small-cls.html). A lot of the changes I\u0027m asking for now are only easily visible when they\u0027re split into more manageable chunks.\n\n\u003e You should say the migration to C++ is a hard blocker at that time, and we might be able to help the migration of C++. Instead of telling us we need to migrate all code to C++ style after pending half a year of review.\n\nSorry, there have been a lot of changes since the original discussion. At that time C++ support was still early, and it wasn\u0027t clear when it would be ready, so it wasn\u0027t a hard blocker. We\u0027ve made substantial progress since then, so we\u0027re now trying to modernize the FPMCU code as we make new changes to it.",
+      "parentUuid": "b70ced86_4af211cf",
+      "revId": "4d290dd5f00ad90014493c8689273e11fa6f25ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d9664e8_9dbfd47d",
         "filename": "include/fpsensor_state_without_driver_info.h",
         "patchSetId": 4
