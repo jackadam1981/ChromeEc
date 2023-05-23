@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecbf07d8_76bccb13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-23T20:32:49Z",
+      "side": 1,
+      "message": "It feels like most of this board code could be made unnecessary with some changes to make the TCPC driver integrate the GPIOs better.  Cc-ing Keith, in case he has some devicetree inspiration for the situation.  \n\nWe may need to file a bug to remove the board code later though, in the interest of getting C1 generally working",
+      "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74d52adb_c553003a",
@@ -154,6 +171,24 @@
       "side": 1,
       "message": "whoops, 15V 3A. Are we going to support 45W adapter? I only have 60W on hand.",
       "parentUuid": "0b461469_b6e13df1",
+      "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac9da146_75659af9",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-23T20:32:49Z",
+      "side": 1,
+      "message": "I\u0027m actually uncertain why we need this function at all for C1?  Does the charger not pick up voltage from this port for some reason?",
+      "parentUuid": "e03fbe56_645050ce",
       "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
