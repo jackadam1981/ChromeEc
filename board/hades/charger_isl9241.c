@@ -44,12 +44,15 @@
 #include "hooks.h"
 #include "stdbool.h"
 #include "throttle_ap.h"
+#include "timer.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
+static int fail_retry = 0;
+static int retry_port = -1;
 
 /* Charger Chip Configuration */
 const struct charger_config_t chg_chips[] = {
@@ -103,6 +106,26 @@ static int board_disable_other_vbus_sink(int except_port)
 	return rv;
 }
 
+static const struct charge_port_info bj_power = {
+	/* 150W (also default) */
+	.voltage = 19500,
+	.current = 7700,
+};
+
+static void board_disable_other_vbus_sink_again(void)
+{
+	int port;
+	if (retry_port != CHARGE_PORT_NONE) {
+		port = retry_port;
+		retry_port = -1;
+		fail_retry++;
+		CPRINTS("Fail retry = %d", fail_retry);
+		charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
+					     port, &bj_power);
+	}
+}
+DECLARE_DEFERRED(board_disable_other_vbus_sink_again);
+
 /* Minimum battery SoC required for switching source port. */
 #define MIN_BATT_FOR_SWITCHING_SOURCE_PORT 1
 
@@ -121,6 +144,7 @@ int board_set_active_charge_port(int port)
 		CPRINTS("Disabling all charger ports");
 
 		board_enable_bj_port(false);
+		CPRINTS("board_disable_other_vbus_sink3");
 		board_disable_other_vbus_sink(-1);
 
 		return EC_SUCCESS;
@@ -171,11 +195,17 @@ int board_set_active_charge_port(int port)
 		 * even if we were not previously on BJ.
 		 */
 		board_enable_bj_port(false);
-		if (board_disable_other_vbus_sink(port))
+		if (board_disable_other_vbus_sink(port)) {
+			retry_port = port;
+			hook_call_deferred(&board_disable_other_vbus_sink_again_data, 10 * MSEC);
+			CPRINTS("board_disable_other_vbus_sink1");
 			return EC_ERROR_UNCHANGED;
+		}
 
 		/* Enable requested USBC charge port. */
 		if (ppc_vbus_sink_enable(port, 1)) {
+			retry_port = port;
+			hook_call_deferred(&board_disable_other_vbus_sink_again_data, 10 * MSEC);
 			CPRINTS("Failed to enable sink path for C%d", port);
 			return EC_ERROR_UNKNOWN;
 		}
@@ -184,8 +214,13 @@ int board_set_active_charge_port(int port)
 		 * We can't proceed unless both ports are successfully
 		 * disconnected as sources.
 		 */
-		if (board_disable_other_vbus_sink(-1))
+		CPRINTS("BJ board_disable_other_vbus_sink2");
+		if (board_disable_other_vbus_sink(-1)) {
+			retry_port = port;
+			CPRINTS("board_disable_other_vbus_sink2");
+			hook_call_deferred(&board_disable_other_vbus_sink_again_data, 10 * MSEC);
 			return EC_ERROR_UNKNOWN;
+		}
 		board_enable_bj_port(true);
 	}
 
@@ -193,12 +228,6 @@ int board_set_active_charge_port(int port)
 
 	return EC_SUCCESS;
 }
-
-static const struct charge_port_info bj_power = {
-	/* 150W (also default) */
-	.voltage = 19500,
-	.current = 7700,
-};
 
 /* Debounce time for BJ plug/unplug */
 #define BJ_DEBOUNCE_MS CONFIG_EXTPOWER_DEBOUNCE_MS

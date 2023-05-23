@@ -149,13 +149,17 @@ static int anx7406_init(int port)
 	if (!I2C_STRIP_FLAGS(i2c_peripheral[port].top_addr_flags)) {
 		CPRINTS("C%d: 0x%x is invalid", port,
 			i2c_peripheral[port].top_addr_flags);
+		CPRINTS("C%d: init fail0", port);
 		return EC_ERROR_UNKNOWN;
 	}
 
 	/* Set VBUS OCP */
+	msleep(10);
 	rv = tcpc_write(port, ANX7406_REG_VBUS_OCP, OCP_THRESHOLD);
-	if (rv)
+	if (rv) {
+		CPRINTS("C%d: init fail1 : %d ", port, rv);
 		return rv;
+	}
 
 	/* Disable CAP write protect */
 	rv = tcpc_update8(port, ANX7406_REG_TCPCCTRL, ANX7406_REG_CAP_WP,
@@ -167,17 +171,23 @@ static int anx7406_init(int port)
 	/* Enable CAP write protect */
 	rv |= tcpc_update8(port, ANX7406_REG_TCPCCTRL, ANX7406_REG_CAP_WP,
 			   MASK_SET);
-	if (rv)
+	if (rv) {
+		CPRINTS("C%d: init fail2", port);
 		return rv;
+	}
 
 	rv = tcpc_update8(port, TCPC_REG_POWER_STATUS,
 			  TCPC_REG_POWER_STATUS_UNINIT, MASK_CLR);
-	if (rv)
+	if (rv) {
+		CPRINTS("C%d: init fail3", port);
 		return rv;
+	}
 
 	rv = tcpci_tcpm_init(port);
-	if (rv)
+	if (rv) {
+		CPRINTS("C%d: init fail4", port);
 		return rv;
+	}
 
 	/* Let sink_ctrl & source_ctrl GPIO pin controlled by TCPC */
 	tcpc_write(port, ANX7406_REG_VBUS_SOURCE_CTRL, SOURCE_GPIO_OEN);
@@ -186,8 +196,10 @@ static int anx7406_init(int port)
 	/* Clear CABLE DETECT signale */
 	rv = tcpc_update8(port, ANX7406_REG_ANALOG_SETTING,
 			  ANX7406_REG_CABLE_DET_DIG, MASK_CLR);
-	if (rv)
+	if (rv) {
+		CPRINTS("C%d: init fail5", port);
 		return rv;
+	}
 
 	/*
 	 * Specifically disable voltage alarms, as VBUS_VOLTAGE_ALARM_HI may
@@ -195,8 +207,10 @@ static int anx7406_init(int port)
 	 */
 	rv = tcpc_update16(port, TCPC_REG_POWER_CTRL,
 			   TCPC_REG_POWER_CTRL_VBUS_VOL_MONITOR_DIS, MASK_SET);
-	if (rv)
+	if (rv) {
+		CPRINTS("C%d: init fail6", port);
 		return rv;
+	}
 
 	/* TCPC Filter set to 512uS */
 	rv = tcpc_write(port, ANX7406_REG_TCPCFILTER, 0xFF);
