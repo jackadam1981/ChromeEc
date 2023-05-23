@@ -33,6 +33,29 @@
       "message": "Updated the review comments",
       "revId": "025266149aa5f0bbecc54887c407f6973930dec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fa4591d_02b7e809",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 29
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-23T13:40:05Z",
+      "side": 1,
+      "message": "```\n-import serial # pylint:disable\u003dimport-error\n+import serial  # pylint:disable\u003dimport-error\n```\n\nAdd a space before # (or run `black` on the file as the presubmit says)",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "025266149aa5f0bbecc54887c407f6973930dec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
