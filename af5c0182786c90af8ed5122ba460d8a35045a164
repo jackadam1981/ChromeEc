@@ -22,6 +22,30 @@
       },
       "revId": "af5c0182786c90af8ed5122ba460d8a35045a164",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "200636be_e46f6211",
+        "filename": "zephyr/shim/include/usbc/ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-23T23:29:28Z",
+      "side": 1,
+      "message": "Clang-format isn\u0027t playing nicely with this block.  I\u0027ll disable it.",
+      "parentUuid": "15974e85_18ce3cfc",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "af5c0182786c90af8ed5122ba460d8a35045a164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
