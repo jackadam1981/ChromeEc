@@ -422,7 +422,7 @@ test_mockable void system_disable_jump(void)
 {
 	disable_jump = 1;
 
-#ifdef CONFIG_MPU
+#if defined(CONFIG_MPU) && !defined(CONFIG_RISCV_PMP)
 	if (system_is_locked()) {
 #ifndef CONFIG_ZEPHYR
 		int ret;
