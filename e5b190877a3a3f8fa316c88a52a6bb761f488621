@@ -16,6 +16,40 @@
       "message": "This is from Eric\u0027s results in b/283381355#comment7",
       "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74d52adb_c553003a",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1537632
+      },
+      "writtenOn": "2023-05-23T11:18:06Z",
+      "side": 1,
+      "message": "This define also copied from corsola, better define in another place.",
+      "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac5b9aef_a360aaef",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1537632
+      },
+      "writtenOn": "2023-05-23T11:18:06Z",
+      "side": 1,
+      "message": "we should move this to a common place, we have get_io_db_type_from_cached_cbi in 3 places :p",
+      "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
