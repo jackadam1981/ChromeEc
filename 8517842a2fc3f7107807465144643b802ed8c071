@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "694d160b_f6bd6c85",
+        "filename": "common/battery_cbi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-05-23T22:47:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c67bc995_065898f8",
+      "revId": "8517842a2fc3f7107807465144643b802ed8c071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e5ae691_ee81caf8",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Added rationales (about the strategy). Ptal.\n\nReporting errors is probably a functionality we want to add to biic or the legacy scheme.",
       "parentUuid": "4e5ae691_ee81caf8",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "8517842a2fc3f7107807465144643b802ed8c071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3609e06c_82ead980",
+        "filename": "common/battery_cbi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2023-05-23T22:47:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00cf4216_c928daf8",
       "range": {
         "startLine": 120,
         "startChar": 0,
