@@ -183,6 +183,7 @@ ZTEST(keyboard_8042, test_console_cmd__all)
 	zassert_ok(!strstr(outbuffer, "- Typematic:"));
 	zassert_ok(!strstr(outbuffer, "- Codeset:"));
 	zassert_ok(!strstr(outbuffer, "- Control RAM:"));
+	zassert_ok(!strstr(outbuffer, "- Keyboard log:"));
 	zassert_ok(!strstr(outbuffer, "- Keyboard:"));
 	zassert_ok(!strstr(outbuffer, "- Internal:"));
 }
@@ -274,6 +275,88 @@ ZTEST(keyboard_8042, test_command__pulse)
 
 	zassert_true(buffer_size > 0);
 	zassert_ok(!strstr(outbuffer, "A20_status=1"));
+}
+
+ZTEST(keyboard_8042, test_command__kblog__not_running)
+{
+	const char *outbuffer;
+	size_t buffer_size;
+
+	/* Log should default to zero length and not running. */
+	shell_backend_dummy_clear_output(get_ec_shell());
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "8042 kblog"));
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+
+	zassert_true(buffer_size > 0);
+	zassert_ok(!strstr(outbuffer, "KBC log (len=0, running=0):"));
+}
+
+/* Use a small buffer to simply the console output validation. */
+BUILD_ASSERT(CONFIG_CMD_KEYBOARD_KBLOG_LEN == 20);
+
+ZTEST(keyboard_8042, test_command__kblog__not_full)
+{
+	const char *outbuffer;
+	size_t buffer_size;
+
+	/* Start logging */
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "8042 kblog y"));
+
+	/* Put less than CONFIG_CMD_KEYBOARD_KBLOG_LEN events in the log. This
+	 * pair of commands will yield 8 log entries.
+	 */
+
+	keyboard_host_write(I8042_READ_CTL_RAM, true);
+	keyboard_host_write(I8042_READ_CTL_RAM + 1, true);
+
+	/* Pause a bit to allow the KB task to process */
+	k_sleep(K_MSEC(100));
+
+	shell_backend_dummy_clear_output(get_ec_shell());
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "8042 kblog"));
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+
+	zassert_true(buffer_size > 0);
+	zassert_ok(!strstr(outbuffer, "KBC log (len=8, running=1):"));
+
+	/* If this ever flakes, assert only on the first event being c.21 */
+	zassert_ok(!strstr(outbuffer,
+			   "c.21 s.00 t.00 c.22 s.00 t.01 K.00 K.00 \r\n"),
+		   "Actual: '%s'", outbuffer);
+}
+
+ZTEST(keyboard_8042, test_command__kblog__wrap)
+{
+	const char *outbuffer;
+	size_t buffer_size;
+
+	/* Start logging */
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "8042 kblog y"));
+
+	/* Overflow the ring buffer so that older events are discarded. */
+	for (int i = 0; i < 8; i++) {
+		keyboard_host_write(I8042_READ_CTL_RAM + i, true);
+	}
+
+	/* Pause a bit to allow the KB task to process */
+	k_sleep(K_MSEC(100));
+
+	shell_backend_dummy_clear_output(get_ec_shell());
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "8042 kblog"));
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+
+	zassert_true(buffer_size > 0);
+	zassert_ok(!strstr(outbuffer, "KBC log (len=20, running=1):"));
+
+	/* If this ever flakes, assert only on the first event being c.25 */
+	zassert_ok(!strstr(outbuffer,
+			   "c.25 s.00 t.04 c.26 s.00 t.05 c.27 s.00 "
+			   "t.06 c.28 s.00 t.07 K.00 K.00 K.00 K.00 \r\n"
+			   "K.00 K.00 K.00 K.00 \r\n"),
+		   "Actual: '%s'", outbuffer);
 }
 
 ZTEST(keyboard_8042, test_command__invalid)
@@ -371,6 +454,12 @@ static void reset(void *fixture)
 {
 	ARG_UNUSED(fixture);
 
+	keyboard_clear_buffer();
+
+	/* Note: this wipes out the queue-clear event (type x)
+	 * keyboard_clear_buffer inserted into the kblog, if it happened to be
+	 * enabled.
+	 */
 	test_keyboard_8042_reset();
 
 	/* Fakes reset */

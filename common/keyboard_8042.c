@@ -40,17 +40,6 @@
 #define CPRINTS5(format, args...)
 #endif
 
-/*
- * This command needs malloc to work. Could we use this instead?
- *
- * #define CMD_KEYBOARD_LOG IS_ENABLED(CONFIG_MALLOC)
- */
-#ifdef CONFIG_MALLOC
-#define CMD_KEYBOARD_LOG 1
-#else
-#define CMD_KEYBOARD_LOG 0
-#endif
-
 static enum {
 	STATE_ATKBD_CMD = 0,
 	STATE_ATKBD_SCANCODE,
@@ -184,11 +173,9 @@ struct kb_state {
 	uint8_t keystroke_enabled;
 };
 
+#ifdef CONFIG_CMD_KEYBOARD_KBLOG
 /*****************************************************************************/
 /* Keyboard event log */
-
-/* Log the traffic between EC and host -- for debug only */
-#define MAX_KBLOG 512 /* Max events in keyboard log */
 
 struct kblog_t {
 	/*
@@ -214,20 +201,47 @@ struct kblog_t {
 	uint8_t byte;
 };
 
-static struct kblog_t *kblog_buf; /* Log buffer; NULL if not logging */
-static int kblog_len; /* Current log length */
+static struct {
+	/** Ring buffer for storing events. */
+	struct kblog_t ringbuf[CONFIG_CMD_KEYBOARD_KBLOG_LEN];
+	/** Index of next available entry in ring buffer. */
+	uint32_t head;
+	/**
+	 * Number of KBD events that have been logged. Stops counting after
+	 * CONFIG_CMD_KEYBOARD_KBLOG_LEN.
+	 */
+	uint32_t length;
+	/** true if logging keyboard events. */
+	bool enabled;
+} kblog;
 
 /**
  * Add event to keyboard log.
  */
 static void kblog_put(char type, uint8_t byte)
 {
-	if (kblog_buf && kblog_len < MAX_KBLOG) {
-		kblog_buf[kblog_len].type = type;
-		kblog_buf[kblog_len].byte = byte;
-		kblog_len++;
+	if (!kblog.enabled) {
+		return;
 	}
+
+	kblog.ringbuf[kblog.head] = (struct kblog_t){
+		.type = type,
+		.byte = byte,
+	};
+
+	kblog.head = (kblog.head + 1) % ARRAY_SIZE(kblog.ringbuf);
+
+	/* Stop incrementing after we wrap since we'll be
+	 * discarding old events.
+	 */
+	kblog.length = MIN(kblog.length + 1, ARRAY_SIZE(kblog.ringbuf));
 }
+
+#define KBLOG_PUT(type, byte) kblog_put((type), (byte))
+#else
+/* Turn this into a no-op when keyboard logging is turned off in the build. */
+#define KBLOG_PUT(type, byte)
+#endif /* CONFIG_CMD_KEYBOARD_KBLOG */
 
 /*****************************************************************************/
 
@@ -289,13 +303,14 @@ static void i8042_send_to_host(int len, const uint8_t *bytes, uint8_t chan,
 
 	if (is_typematic && !typematic_len) {
 		for (i = 0; i < len; i++)
-			kblog_put('r', bytes[i]);
+			KBLOG_PUT('r', bytes[i]);
 	} else {
 		struct queue const *queue = &to_host;
 
 		if (chan == CHAN_CMD)
 			queue = &to_host_cmd;
 
+#ifdef CONFIG_CMD_KEYBOARD_KBLOG
 		for (i = 0; i < len; i++) {
 			char type;
 
@@ -305,11 +320,12 @@ static void i8042_send_to_host(int len, const uint8_t *bytes, uint8_t chan,
 				type = 'u';
 			else
 				type = 's';
-			kblog_put(type, bytes[i]);
+			KBLOG_PUT(type, bytes[i]);
 		}
+#endif /* CONFIG_CMD_KEYBOARD_KBLOG */
 
 		if (queue_space(queue) >= len) {
-			kblog_put('t', queue->state->tail);
+			KBLOG_PUT('t', queue->state->tail);
 			for (i = 0; i < len; i++) {
 				data.chan = chan;
 				data.byte = bytes[i];
@@ -439,7 +455,7 @@ void keyboard_clear_buffer(void)
 {
 	CPRINTS("KB Clear Buffer");
 	mutex_lock(&to_host_mutex);
-	kblog_put('x', queue_count(&to_host));
+	KBLOG_PUT('x', queue_count(&to_host));
 	queue_init(&to_host);
 	queue_init(&to_host_cmd);
 	mutex_unlock(&to_host_mutex);
@@ -783,7 +799,7 @@ static int handle_keyboard_command(uint8_t command, uint8_t *output)
 	int out_len = 0;
 
 	CPRINTS5("KB recv cmd: 0x%02x", command);
-	kblog_put('c', command);
+	KBLOG_PUT('c', command);
 
 	switch (command) {
 	case I8042_READ_CMD_BYTE:
@@ -904,7 +920,7 @@ static void i8042_handle_from_host(void)
 			chan = CHAN_KBD;
 		} else {
 			CPRINTS5("KB recv data: 0x%02x", h.byte);
-			kblog_put('d', h.byte);
+			KBLOG_PUT('d', h.byte);
 
 			if (IS_ENABLED(CONFIG_8042_AUX) &&
 			    handle_mouse_data(h.byte, output, &ret_len)) {
@@ -994,7 +1010,7 @@ void keyboard_protocol_task(void *u)
 			 * So be cautious if you're adding any code below up to
 			 * lpc_keyboard_put_char since that'll increase the race
 			 * condition. For example, you don't want to add CPRINTS
-			 * or kblog_put.
+			 * or KBLOG_PUT.
 			 *
 			 * We should claim OBF=1 atomically to prevent the host
 			 * from writing to DBBIN (i.e. set-ibf-if-not-obf). It's
@@ -1041,11 +1057,11 @@ void keyboard_protocol_task(void *u)
 			    IS_ENABLED(CONFIG_8042_AUX)) {
 				lpc_aux_put_char(entry.byte,
 						 i8042_aux_irq_enabled);
-				kblog_put('A', entry.byte);
+				KBLOG_PUT('A', entry.byte);
 			} else {
 				lpc_keyboard_put_char(
 					entry.byte, i8042_keyboard_irq_enabled);
-				kblog_put('K', entry.byte);
+				KBLOG_PUT('K', entry.byte);
 			}
 			retries = 0;
 		}
@@ -1188,16 +1204,22 @@ static int command_controller_ram(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_CMD_KEYBOARD_KBLOG
 static int command_keyboard_log(int argc, const char **argv)
 {
-	int i;
+	int enable;
 
 	/* If no args, print log */
 	if (argc == 1) {
-		ccprintf("KBC log (len=%d):\n", kblog_len);
-		for (i = 0; kblog_buf && i < kblog_len; ++i) {
-			ccprintf("%c.%02x ", kblog_buf[i].type,
-				 kblog_buf[i].byte);
+		ccprintf("KBC log (len=%d, running=%d):\n", kblog.length,
+			 kblog.enabled);
+		for (int i = 0; i < kblog.length; ++i) {
+			struct kblog_t *entry =
+				&kblog.ringbuf[(kblog.head - kblog.length +
+						ARRAY_SIZE(kblog.ringbuf) + i) %
+					       ARRAY_SIZE(kblog.ringbuf)];
+
+			ccprintf("%c.%02x ", entry->type, entry->byte);
 			if ((i & 15) == 15) {
 				ccputs("\n");
 				cflush();
@@ -1208,28 +1230,27 @@ static int command_keyboard_log(int argc, const char **argv)
 	}
 
 	/* Otherwise, enable/disable */
-	if (!parse_bool(argv[1], &i))
+	if (!parse_bool(argv[1], &enable))
 		return EC_ERROR_PARAM1;
 
-	if (i) {
-		if (!kblog_buf) {
-			int rv = SHARED_MEM_ACQUIRE_CHECK(sizeof(*kblog_buf) *
-								  MAX_KBLOG,
-							  (char **)&kblog_buf);
-			if (rv != EC_SUCCESS)
-				kblog_buf = NULL;
-			kblog_len = 0;
-			return rv;
-		}
+	if (enable) {
+		/* Reset ring buffer before starting logging. Calling this
+		 * while already running simply wipes the buffer and restarts.
+		 */
+		memset(kblog.ringbuf, 0, sizeof(kblog.ringbuf));
+
+		kblog.head = 0;
+		kblog.enabled = true;
+
 	} else {
-		kblog_len = 0;
-		if (kblog_buf)
-			shared_mem_release(kblog_buf);
-		kblog_buf = NULL;
+		/* Stop logging. Leave the buffer intact for later inspection.
+		 */
+		kblog.enabled = false;
 	}
 
 	return EC_SUCCESS;
 }
+#endif /* CONFIG_CMD_KEYBOARD_KBLOG */
 
 static int command_keyboard(int argc, const char **argv)
 {
@@ -1297,8 +1318,10 @@ DECLARE_CONSOLE_COMMAND(codeset, command_codeset, "[set]",
 			"Get/set keyboard codeset");
 DECLARE_CONSOLE_COMMAND(ctrlram, command_controller_ram, "index [value]",
 			"Get/set keyboard controller RAM");
+#ifdef CONFIG_CMD_KEYBOARD_KBLOG
 DECLARE_CONSOLE_COMMAND(kblog, command_keyboard_log, "[on | off]",
 			"Print or toggle keyboard event log");
+#endif /* CONFIG_CMD_KEYBOARD_KBLOG */
 DECLARE_CONSOLE_COMMAND(kbd, command_keyboard, "[on | off]",
 			"Print or toggle keyboard info");
 #endif
@@ -1314,8 +1337,10 @@ static int command_8042(int argc, const char **argv)
 			return command_codeset(argc - 1, argv + 1);
 		else if (!strcasecmp(argv[1], "ctrlram"))
 			return command_controller_ram(argc - 1, argv + 1);
-		else if (CMD_KEYBOARD_LOG && !strcasecmp(argv[1], "kblog"))
+#ifdef CONFIG_CMD_KEYBOARD_KBLOG
+		else if (!strcasecmp(argv[1], "kblog"))
 			return command_keyboard_log(argc - 1, argv + 1);
+#endif /* CONFIG_CMD_KEYBOARD_KBLOG */
 		else if (!strcasecmp(argv[1], "kbd"))
 			return command_keyboard(argc - 1, argv + 1);
 		else
@@ -1331,10 +1356,10 @@ static int command_8042(int argc, const char **argv)
 		command_controller_ram(sizeof(ctlram_argv) /
 					       sizeof(ctlram_argv[0]),
 				       ctlram_argv);
-		if (CMD_KEYBOARD_LOG) {
-			ccprintf("\n- Keyboard log:\n");
-			command_keyboard_log(argc, argv);
-		}
+#ifdef CONFIG_CMD_KEYBOARD_KBLOG
+		ccprintf("\n- Keyboard log:\n");
+		command_keyboard_log(argc, argv);
+#endif /* CONFIG_CMD_KEYBOARD_KBLOG */
 		ccprintf("\n- Keyboard:\n");
 		command_keyboard(argc, argv);
 		ccprintf("\n- Internal:\n");
@@ -1435,5 +1460,10 @@ void test_keyboard_8042_reset(void)
 	keyboard_enabled = false;
 
 	A20_status = 0;
+
+#if IS_ENABLED(CONFIG_CMD_KEYBOARD_KBLOG)
+	/* Reset keyboard log state */
+	memset(&kblog, 0, sizeof(kblog));
+#endif /* CONFIG_CMD_KEYBOARD_KBLOG */
 }
 #endif /* TEST_BUILD */
