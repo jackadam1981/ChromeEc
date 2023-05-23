@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b70ced86_4af211cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-23T09:52:54Z",
+      "side": 1,
+      "message": "And another thing is, there are a lot of mechanical changes you should ask me to do \"before\" separating the CLs into a lot of CLs.\n\nDoing mechanical changes on a long CL chain is very painful and wasting a lot of time. It would spend a lot of time resolving the rebase conflicts.\nAnd we would not encounter those conflicts if you specified the style guide at the beginning.",
+      "parentUuid": "f36b07e8_846b82e4",
+      "revId": "4d290dd5f00ad90014493c8689273e11fa6f25ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d9664e8_9dbfd47d",
         "filename": "include/fpsensor_state_without_driver_info.h",
         "patchSetId": 4
