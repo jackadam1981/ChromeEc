@@ -12,8 +12,6 @@
 extern "C" {
 #endif
 
-#include <stdint.h>
-
 /** @brief Common results returned by BEP functions.
  *
  * BEP config/usage errors:

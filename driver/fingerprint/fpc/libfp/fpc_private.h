@@ -12,6 +12,10 @@
 extern "C" {
 #endif
 
+#include "fpsensor_types.h"
+
+#include <stdint.h>
+
 /* External error codes from FPC's sensor library */
 enum fpc_error_code_external {
 	FPC_ERROR_NONE = 0,
