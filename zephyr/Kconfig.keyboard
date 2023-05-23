@@ -235,8 +235,25 @@ config PLATFORM_EC_CONSOLE_CMD_KEYBOARD
 	    ctrlram	- Get/set keyboard controller RAM
 	    internal    - Show internal information
 	    kbd		- Print or toggle keyboard info
-	    kblog	- Print or toggle keyboard event log (current disabled)
+	    kblog	- Print or toggle keyboard event log (Off by default)
 	    typematic	- Get/set typematic delays
+
+config PLATFORM_EC_CONSOLE_CMD_KEYBOARD_KBLOG
+	bool "Console command: '8042 kblog'"
+	default n
+	depends on PLATFORM_EC_CONSOLE_CMD_KEYBOARD
+	help
+	  Enable the `kblog` (legacy EC) or `8042 kblog` (Zephyr) console command.
+	  This is off by default as it requires a decently sized buffer for logging
+	  keyboard events.
+
+config PLATFORM_EC_CONSOLE_CMD_KEYBOARD_KBLOG_LEN
+	int "Buffer size for kblog console command"
+	default 512
+	depends on PLATFORM_EC_CONSOLE_CMD_KEYBOARD_KBLOG
+	help
+	  Sets the size of the buffer for logging keyboard events, in number of
+	  events.
 
 config PLATFORM_EC_KEYBOARD_BACKLIGHT
 	bool "Keyboard backlight"
