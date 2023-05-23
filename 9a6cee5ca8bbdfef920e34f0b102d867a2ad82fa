@@ -69,6 +69,30 @@
       },
       "revId": "9a6cee5ca8bbdfef920e34f0b102d867a2ad82fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3715ec_6dc740d4",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 192
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-23T11:09:15Z",
+      "side": 1,
+      "message": "Please specify the function signature of the helper function.\n\nBecause I\u0027m not sure what kind of helper function you want.",
+      "parentUuid": "c8d5d51e_2f61f967",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 0
+      },
+      "revId": "9a6cee5ca8bbdfef920e34f0b102d867a2ad82fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
