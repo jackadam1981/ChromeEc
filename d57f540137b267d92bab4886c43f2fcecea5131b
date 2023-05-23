@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f10c8bc_67d17349",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-23T11:46:48Z",
+      "side": 1,
+      "message": "And if you want more readability we might want to replace the input of data \u0026 size pair with `absl::Span` or `base::Span` or `std::span`, but the first two require extra dependency, and the third one requires the C++20.\n\nYou should write down what is the style you want as a guide, make sure everything in it is doable(e.g. we don\u0027t support `absl` \u0026 `base` \u0026 C++20/23).\nAnd clarified what C/C++ features are recommended / banned. \n(e.g. Using std::vector\u003cuint_8\u003e when possible, or static size array, or data size pair, or std::string, or C style array, std::span...)\n\nThe idea of changing the coding conventions should not be popped up one by one in the code review process.",
+      "parentUuid": "a136ca3d_76a5ed20",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 18
+      },
+      "revId": "d57f540137b267d92bab4886c43f2fcecea5131b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c47dca6_d4ded617",
         "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
         "patchSetId": 21
