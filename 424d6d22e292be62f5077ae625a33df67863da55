@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "854e1c6a_8e1cff99",
+        "filename": "board/hatch_fp/board_rw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-23T20:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd4f473e_3f2c4089",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 40
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43b30c75_6f878ba9",
@@ -85,6 +109,30 @@
       "writtenOn": "2023-04-07T16:22:14Z",
       "side": 1,
       "message": "How about adding an `ASSERT(fp_driver)`, which will reboot if it fails?",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 40
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "700a843e_0b97b90b",
+        "filename": "board/nocturne_fp/board_rw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-23T20:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43b30c75_6f878ba9",
       "range": {
         "startLine": 126,
         "startChar": 1,
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "Yes",
       "parentUuid": "94d5418c_c85434e6",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "901fbb60_fa54d53c",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-23T20:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46e8066c_7f164d75",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -260,6 +332,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e726acc2_5d04a678",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-23T20:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a70d9aa_46f747fc",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 0
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b36b6fc4_f763f6ab",
@@ -297,6 +393,30 @@
       "side": 1,
       "message": "Will do",
       "parentUuid": "b36b6fc4_f763f6ab",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 5
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "740dc1dc_f46dd91d",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-23T20:32:46Z",
+      "side": 1,
+      "message": "It turns out that `IS_ENABLED` only works for config macros (i.e. `CONFIG_*`). Testing this out on a normal macro results in a link error like this:\n\n```\nld.lld: error: undefined symbol: IS_ENABLED_BAD_ARGS\n\u003e\u003e\u003e referenced by fpc_private.c:372 (/mnt/host/source/src/platform/ec/driver/fingerprint/fpc/libfp/fpc_private.c:372)\n```\n\nOne alternative strategy would be to add a field to the driver to represent whether we have a private repo. Something like:\n```\n\n#ifdef HAVE_PRIVATE\n#define FP_SENSOR_DRIVER_HAS_PRIVATE (true)\n#else\n#define FP_SENSOR_DRIVER_HAS_PRIVATE (false)\n#endif\n\nstruct fp_sensor_interface {\n\tconst enum fp_sensor_type sensor_type;\n        const bool has_private \u003d FP_SENSOR_DRIVER_HAS_PRIVATE;\n...\n```\n\nOtherwise we could leave it as-is or devise a more generic strategy similar to `IS_ENABLED` (although I\u0027m not sure how that would be done)",
+      "parentUuid": "18c1a0b0_f0d33732",
       "range": {
         "startLine": 181,
         "startChar": 0,
@@ -354,6 +474,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9d4ab34_4c4c9cfe",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-23T20:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c036a96_534a043e",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03da396e_aadc7853",
@@ -391,6 +535,30 @@
       "side": 1,
       "message": "This ended up here because `fp_maintenance` was removed from `include/fpsensor.h` and I didn\u0027t want to lose this description. I can copy it over in a separate CL though",
       "parentUuid": "03da396e_aadc7853",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b52a0db_199aa275",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-23T20:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1141c5b8_5144c507",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -462,6 +630,30 @@
       "side": 1,
       "message": "I don\u0027t think you need to include the struct. You can just add the new functions on their own, right?",
       "parentUuid": "f6a9e48d_d7ffeebf",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 48
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f49281b_d7fe2b90",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-23T20:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e0979d3_2bc7cfea",
       "range": {
         "startLine": 157,
         "startChar": 0,

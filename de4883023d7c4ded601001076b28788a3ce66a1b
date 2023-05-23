@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d793c4_e3d50746",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-23T20:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ced0988f_64dcd98d",
+      "revId": "de4883023d7c4ded601001076b28788a3ce66a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bbd3d7f_731c4a69",
@@ -219,6 +237,30 @@
       "writtenOn": "2023-03-03T19:30:32Z",
       "side": 1,
       "message": "disable this test if no private?",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "de4883023d7c4ded601001076b28788a3ce66a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ea730d_ed454045",
+        "filename": "test/fpsensor_hw.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-23T20:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24adfbc1_dc5e4549",
       "range": {
         "startLine": 19,
         "startChar": 16,
