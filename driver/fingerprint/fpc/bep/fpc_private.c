@@ -3,9 +3,11 @@
  * found in the LICENSE file.
  */
 
-#include "driver/fingerprint/fpc/fpc_sensor.h"
+#include "config.h"
 #include "fpc_bio_algorithm.h"
+#include "fpc_private.h"
 #include "fpsensor.h"
+#include "fpsensor_driver.h"
 #include "fpsensor_utils.h"
 #include "gpio.h"
 #include "spi.h"
@@ -14,9 +16,6 @@
 
 #include <stddef.h>
 #include <stdint.h>
-
-static uint8_t
-	enroll_ctx[FP_ALGORITHM_ENROLLMENT_SIZE_FPC] __aligned(4) = { 0 };
 
 /* Recorded error flags */
 static uint16_t errors;
@@ -53,6 +52,10 @@ typedef struct {
 	uint32_t image_buffer_size;
 } fpc_sensor_info_t;
 
+#if defined(HAVE_PRIVATE)
+static uint8_t
+	enroll_ctx[FP_ALGORITHM_ENROLLMENT_SIZE_FPC] __aligned(4) = { 0 };
+
 #if defined(CONFIG_FP_SENSOR_FPC1025)
 
 extern const fpc_bep_sensor_t fpc_bep_sensor_1025;
@@ -85,6 +88,28 @@ const fpc_bio_info_t fpc_bio_info = {
 #else
 #error "Sensor type not defined!"
 #endif
+
+#else /* defined(HAVE_PRIVATE) */
+
+/*
+ * Private is not defined, so create stubs for required functions from private
+ * libraries
+ */
+void fp_sensor_configure_detect(void)
+{
+}
+
+enum finger_state fp_sensor_finger_status(void)
+{
+	return FINGER_NONE;
+}
+
+int fp_sensor_acquire_image_with_mode(uint8_t *image_data, int mode)
+{
+	return EC_ERROR_INVAL;
+}
+
+#endif /* defined(HAVE_PRIVATE) */
 
 /* Sensor IC commands */
 enum fpc_cmd {
@@ -134,7 +159,7 @@ int fpc_get_hwid(uint16_t *id)
 	return EC_SUCCESS;
 }
 
-int fpc_check_hwid(void)
+static int fpc_check_hwid(void)
 {
 	uint16_t id = 0;
 	int status;
@@ -153,6 +178,9 @@ int fpc_check_hwid(void)
 /* Reset and initialize the sensor IC */
 int fp_sensor_init(void)
 {
+#if !defined(HAVE_PRIVATE)
+	return EC_ERROR_INVAL;
+#else
 	int rc;
 
 	/* Print the binary libfpbep.a library version */
@@ -181,11 +209,15 @@ int fp_sensor_init(void)
 	fp_sensor_low_power();
 
 	return EC_SUCCESS;
+#endif
 }
 
 /* Deinitialize the sensor IC */
 int fp_sensor_deinit(void)
 {
+#if !defined(HAVE_PRIVATE)
+	return EC_ERROR_INVAL;
+#else
 	int rc;
 
 	rc = bio_algorithm_exit();
@@ -197,6 +229,7 @@ int fp_sensor_deinit(void)
 		CPRINTS("Error: fp_sensor_close() failed, result=%d", rc);
 
 	return rc;
+#endif
 }
 
 int fp_sensor_get_info(struct ec_response_fp_info *resp)
@@ -221,6 +254,9 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 int fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,
 		    int32_t *match_index, uint32_t *update_bitmap)
 {
+#if !defined(HAVE_PRIVATE)
+	return EC_ERROR_INVAL;
+#else
 	int rc;
 
 	rc = bio_template_image_match_list(templ, templ_count, image,
@@ -230,10 +266,14 @@ int fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,
 			rc);
 
 	return rc;
+#endif
 }
 
 int fp_enrollment_begin(void)
 {
+#if !defined(HAVE_PRIVATE)
+	return EC_ERROR_INVAL;
+#else
 	int rc;
 	bio_enrollment_t bio_enroll = enroll_ctx;
 
@@ -242,10 +282,14 @@ int fp_enrollment_begin(void)
 		CPRINTS("Error: bio_enrollment_begin() failed, result=%d", rc);
 
 	return rc;
+#endif
 }
 
 int fp_enrollment_finish(void *templ)
 {
+#if !defined(HAVE_PRIVATE)
+	return EC_ERROR_INVAL;
+#else
 	int rc;
 	bio_enrollment_t bio_enroll = enroll_ctx;
 	bio_template_t bio_templ = templ;
@@ -255,10 +299,14 @@ int fp_enrollment_finish(void *templ)
 		CPRINTS("Error: bio_enrollment_finish() failed, result=%d", rc);
 
 	return rc;
+#endif
 }
 
 int fp_finger_enroll(uint8_t *image, int *completion)
 {
+#if !defined(HAVE_PRIVATE)
+	return EC_ERROR_INVAL;
+#else
 	int rc;
 	bio_enrollment_t bio_enroll = enroll_ctx;
 
@@ -272,6 +320,7 @@ int fp_finger_enroll(uint8_t *image, int *completion)
 	*completion = bio_enrollment_get_percent_complete(bio_enroll);
 
 	return rc;
+#endif
 }
 
 int fp_maintenance(void)
