@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c070db8e_953dacf1",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1537632
+      },
+      "writtenOn": "2023-05-23T16:21:33Z",
+      "side": 1,
+      "message": "if we don\u0027t have SKUA DB called the rt1718 init. This function won\u0027t be called, right?",
+      "parentUuid": "9977bba3_61749bfe",
+      "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9254c543_abcc29e2",
         "filename": "zephyr/program/myst/src/usbc_config.c",
         "patchSetId": 2
@@ -100,6 +118,24 @@
       "writtenOn": "2023-05-23T16:14:42Z",
       "side": 1,
       "message": "Does this return the correct voltage on C0 and C1? If not, we should return an error for when given C0 as the port and open a bug just to double check if that functionality is required.",
+      "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b461469_b6e13df1",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1537632
+      },
+      "writtenOn": "2023-05-23T16:21:33Z",
+      "side": 1,
+      "message": "Haven\u0027t tried 5V 3A, but 20V 3.5A worked on both port.",
+      "parentUuid": "9254c543_abcc29e2",
       "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
