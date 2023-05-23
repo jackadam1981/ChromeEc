@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "config.h"
 #include "console.h"
 #include "driver/fingerprint/fpc/fpc_sensor.h"
 #include "fpc_bio_algorithm.h"
@@ -39,9 +40,15 @@
  * The sensor context is uncached as it contains the SPI buffers,
  * the binary library assumes that it is aligned.
  */
+
+#if defined(CONFIG_FP_SENSOR_FPC1145)
 static uint8_t ctx[FP_SENSOR_CONTEXT_SIZE_FPC] __uncached __aligned(4);
 static bio_sensor_t bio_sensor;
 static uint8_t enroll_ctx[FP_ALGORITHM_ENROLLMENT_SIZE_FPC] __aligned(4);
+
+#else
+#error "Sensor type not defined!"
+#endif
 
 /* recorded error flags */
 static uint16_t errors;
