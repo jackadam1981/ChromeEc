@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a1ca3f_44eb504c",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-05-24T21:16:28Z",
+      "side": 1,
+      "message": "This was left-over from some debugging.",
+      "parentUuid": "7c853217_381c56e4",
+      "revId": "4911f87eba6e6c612ab7ab0b25a9295da3291bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52f1f4f6_48dc7b14",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-05-23T22:24:06Z",
       "side": 1,
       "message": "2023 :)",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "4911f87eba6e6c612ab7ab0b25a9295da3291bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c918ad16_dc831c65",
+        "filename": "zephyr/dts/bindings/emul/cros,nct38xx-emul.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-05-24T21:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52f1f4f6_48dc7b14",
       "range": {
         "startLine": 1,
         "startChar": 12,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8516aada_74c0f824",
+        "filename": "zephyr/dts/bindings/emul/cros,nct38xx-emul.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-05-24T21:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c586a163_1e395217",
+      "revId": "4911f87eba6e6c612ab7ab0b25a9295da3291bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70f1817a_5ff55627",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e295dfa_3a1dc5b2",
+        "filename": "zephyr/test/drivers/nct38xx/src/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-05-24T21:16:28Z",
+      "side": 1,
+      "message": "There are a couple that are covered by the header but the remaining ones are `test_export_static`.",
+      "parentUuid": "70f1817a_5ff55627",
+      "revId": "4911f87eba6e6c612ab7ab0b25a9295da3291bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8921af46_5907abdc",
@@ -88,6 +166,24 @@
       "writtenOn": "2023-05-23T22:24:06Z",
       "side": 1,
       "message": "Does the reset rule thingy in the emulator already take care of this?",
+      "revId": "4911f87eba6e6c612ab7ab0b25a9295da3291bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d0b79ef_06cca315",
+        "filename": "zephyr/test/drivers/nct38xx/src/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-05-24T21:16:28Z",
+      "side": 1,
+      "message": "Done, `nct38xx_reset_notify` is a part of the driver instead of the emulator so I\u0027m leaving that here.",
+      "parentUuid": "8921af46_5907abdc",
       "revId": "4911f87eba6e6c612ab7ab0b25a9295da3291bc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
