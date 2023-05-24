@@ -9,7 +9,7 @@
 CORE:=host
 
 chip-y=system.o gpio.o uart.o persistence.o flash.o lpc.o reboot.o \
-	clock.o spi_controller.o trng.o
+	clock.o spi_controller.o trng.o cec.o
 
 ifndef CONFIG_KEYBOARD_DISCRETE
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
