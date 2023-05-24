@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe0957b4_a451ee04",
+        "filename": "zephyr/program/myst/src/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1537632
+      },
+      "writtenOn": "2023-05-24T03:16:24Z",
+      "side": 1,
+      "message": "we don\u0027t need this too.",
+      "parentUuid": "b23b28f8_e3b3c2fd",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 29
+      },
+      "revId": "7d4c5f91336e6ea625d6b779d9d98f85adf0a388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79041df3_32d8ac6f",
