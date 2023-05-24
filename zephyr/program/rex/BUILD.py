@@ -34,14 +34,14 @@ register_rex_project(
 )
 
 register_rex_project(
-    project_name="rex-sans-sensors",
+    project_name="rex_ec_ish",
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
         # Parent project's config
         here / "rex" / "project.conf",
         # Project-specific KConfig customization.
-        here / "rex-sans-sensors" / "project.conf",
+        here / "rex_ec_ish" / "project.conf",
     ],
 )
 
