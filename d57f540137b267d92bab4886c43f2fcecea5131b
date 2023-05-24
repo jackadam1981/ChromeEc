@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56740ea7_4487f563",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-24T08:00:40Z",
+      "side": 1,
+      "message": "This function signature\n```\nstd::optional\u003cstruct fp_elliptic_curve_public_key\u003e \nencrypt_data_with_ecdh_key_in_place(\n    const struct fp_elliptic_curve_public_key \u0026in_pubkey,\n    uint8_t *data, size_t data_size, uint8_t *iv, size_t iv_size)\n```\ndoesn\u0027t make the code clearer to read.\n\nBecause those three output parameters(`out_pubkey` \u0026 `data` \u0026 `iv`) have the same importance. Only putting one of them in the return value is weird.\n\nAnd packing them together will require the decision of vector/array/raw buffer.",
+      "parentUuid": "63cce1c1_7cc0bb3a",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 18
+      },
+      "revId": "d57f540137b267d92bab4886c43f2fcecea5131b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c47dca6_d4ded617",
         "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
         "patchSetId": 21
