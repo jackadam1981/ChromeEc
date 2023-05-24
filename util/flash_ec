@@ -196,6 +196,8 @@ fi
 MSG_PROGRAM_FAIL="Failed to flash EC firmware image"
 MSG_READ_FAIL="Failed to read EC firmware image"
 MSG_VERIFY_FAIL="Failed to verify EC firmware image."
+MSG_PRESERVE_CHECK_FAIL="Failed to get sections preserve status"
+MSG_PRESERVE_FAIL="Preserving sections failed"
 
 set -e
 
@@ -1464,9 +1466,16 @@ function flash_npcx_jtag() {
 function flash_npcx_uut() {
 	local NPCX_UUT
 	local EC_UART
+	local TEMP_SUFFIX
+	local TEMP_DIR
+	local CUR_IMG
+	local PRESERVE_STATUS
 	local TOOL_PATH="${EC_DIR}/build/${BOARD}/util:${PATH}"
 	NPCX_UUT=$(PATH="${TOOL_PATH}" which uartupdatetool)
 	EC_UART="$(servo_ec_uart)"
+	TEMP_SUFFIX=".$(basename "${SCRIPT}").${CHIP}.$$"
+	TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
+	DELETE_LIST+=("${TEMP_DIR}")
 
 	# Look for npcx_monitor.bin in multiple directories, starting with
 	# the same path as the EC binary.
@@ -1571,6 +1580,26 @@ function flash_npcx_uut() {
 			die "Failed to load monitor binary."
 		fi
 
+		PRESERVE_STATUS=$(is_preservation_needed "${IMG}" "${TEMP_DIR}")
+		if [[ "${PRESERVE_STATUS}" == "1" ]]; then
+			local PRESERVE_SECTIONS
+			info "Reading current EC firmware image."
+			CUR_IMG="${TEMP_DIR}/ec.cur.bin"
+			local UUT_CUR_RD=( "${NPCX_UUT}" "${UUT_ARGS[@]}"   \
+						"--read-flash" "--file=${CUR_IMG}" )
+			echo "${UUT_CUR_RD[*]}"
+			print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+				"${UUT_CUR_RD[@]}" || die "${MSG_READ_FAIL}"
+
+			PRESERVE_SECTIONS=$(preserve_sections "${CUR_IMG}" "${IMG}" "${TEMP_DIR}")
+			if [[ "${PRESERVE_SECTIONS}" == "1" ]]; then
+			  die "${MSG_PRESERVE_FAIL}"
+			fi
+		elif [[ "${PRESERVE_STATUS}" == "0" ]]; then
+			info "Not preserving any EC section."
+		elif [[ "${PRESERVE_STATUS}" == "-1" ]]; then
+			die "${MSG_PRESERVE_CHECK_FAIL}"
+		fi
 
 		info "Programming EC firmware image."
 		local UUT_WR=( "${NPCX_UUT}" "${UUT_ARGS[@]}"      \
@@ -1585,13 +1614,7 @@ function flash_npcx_uut() {
 		# If it is a program-verify request, then make a temporary
 		# directory to store the image.
 		if [[ "${FLAGS_verify}" == "${FLAGS_TRUE}" ]]; then
-			local TEMP_SUFFIX
-			local TEMP_DIR
-			TEMP_SUFFIX=".$(basename "${SCRIPT}").${CHIP}.$$"
-			TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
-
 			IMG_READ="${TEMP_DIR}/ec.read.bin"
-			DELETE_LIST+=( "${TEMP_DIR}" )
 		fi
 	fi
 
@@ -1692,6 +1715,81 @@ fi
 if [ "${NEED_SERVO}" != "no" ] ; then
 	servo_save
 fi
+
+function is_preservation_needed() {
+	local IMG
+	local TEMP_DIR
+	local CUR_DIR
+	local PRESERVE_STR
+	local NOT_PRESERVE_STR
+	local PRESERVE_STATUS
+
+	IMG=${1:?"missing arg 1: EC image path"}
+	TEMP_DIR=${2:?"missing arg 2: Temp directory path"}
+	CUR_DIR=$(pwd)
+	PRESERVE_STR='preserve'
+	NOT_PRESERVE_STR='not-preserve'
+
+	PRESERVE_STATUS=$(
+		local DUMP_FMAP
+		local SUBSHELL_OUTPUT=0
+
+		cd "${TEMP_DIR}";
+		DUMP_FMAP=$(dump_fmap "${CUR_DIR}"/"${IMG}" -e)
+		while read -r line
+		do
+			if [[ "${line}" == *" ${NOT_PRESERVE_STR}"* ]]; then
+				continue
+			elif [[ "${line}" == *" ${PRESERVE_STR}"* ]]; then
+				SUBSHELL_OUTPUT=1
+				break
+			else
+				SUBSHELL_OUTPUT=-1
+				break
+			fi
+		done <<< "${DUMP_FMAP}"
+		echo "${SUBSHELL_OUTPUT}"
+	)
+	echo "${PRESERVE_STATUS}"
+}
+
+function preserve_sections() {
+	local CUR_IMG
+	local NEW_IMG
+	local TEMP_DIR
+	local CUR_DIR
+	local RETURN_VAL
+
+	CUR_IMG=${1:?"missing arg 1: Cur EC image path"}
+	NEW_IMG=${2:?"missing arg 2: New EC image path"}
+	TEMP_DIR=${3:?"missing arg 3: Temp directory path"}
+	CUR_DIR=$(pwd)
+
+	RETURN_VAL=$(
+		local DUMP_FMAP
+		local SUBSHELL_OUTPUT=0
+		local SEC_IMG="${TEMP_DIR}/ec.cur.sec.bin"
+
+		cd "${TEMP_DIR}";
+		preserve;DUMP_FMAP=$(dump_fmap "${CUR_DIR}"/"${IMG}" -e)
+		while read -r line
+		do
+			set -- $line
+			if [[ "${2}" == "not-preserve" ]]; then
+				continue
+			elif [[ "${2}" == "preserve" ]]; then
+				info "Preserving ${1} section on EC chip"
+				cbfstool "${CUR_IMG}" read -r "${1}" -f "${SEC_IMG}"
+				cbfstool "${CUR_DIR}"/"${NEW_IMG}" write -r "${1}" -f "${SEC_IMG}"
+			else
+				SUBSHELL_OUTPUT=1
+				break
+			fi
+		done <<< "${DUMP_FMAP}"
+		echo "${SUBSHELL_OUTPUT}"
+	)
+		echo "${RETURN_VAL}"
+}
 
 info "Flashing chip ${CHIP}."
 flash_"${CHIP}"
