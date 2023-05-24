@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4055384_845390ce",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-24T22:51:18Z",
+      "side": 1,
+      "message": "Do we still want to do this? Looks like the bug is closed. Somewhat of a nit, but if we do want this `TODO`, let\u0027s go ahead and pull the comment into a separate CL with `BUG\u003db:184289118` (also helps reduce the size of this CL).",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 70
+      },
+      "revId": "d648fe3bee18e93b5cf03b72d39bc28f3ef73715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f6e84d7_e21e6b7f",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-24T22:51:18Z",
+      "side": 1,
+      "message": "nit: Can we pull into separate CL like you did with https://crrev.com/c/4558586? ([small cls](https://google.github.io/eng-practices/review/developer/small-cls.html))\n\nAlso the equivalent change in `driver/fingerprint/fpc/libfp/fpc_private.h`",
+      "range": {
+        "startLine": 157,
+        "startChar": 11,
+        "endLine": 157,
+        "endChar": 35
+      },
+      "revId": "d648fe3bee18e93b5cf03b72d39bc28f3ef73715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f8593d0_cee14c02",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-24T22:51:18Z",
+      "side": 1,
+      "message": "Can we pull this into a separate CL? (I think it can stand on its own?)",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 5
+      },
+      "revId": "d648fe3bee18e93b5cf03b72d39bc28f3ef73715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "611ee89f_df0c1cb3",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-24T22:51:18Z",
+      "side": 1,
+      "message": "Is this relevant?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 44
+      },
+      "revId": "d648fe3bee18e93b5cf03b72d39bc28f3ef73715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12dbe46a_90615995",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-24T22:51:18Z",
+      "side": 1,
+      "message": "Is this relevant?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "d648fe3bee18e93b5cf03b72d39bc28f3ef73715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "260391ed_236769a6",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-24T22:51:18Z",
+      "side": 1,
+      "message": "Did this need to be added? If this part of the change can stand on its own, can we put it in a separate CL?",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 24
+      },
+      "revId": "d648fe3bee18e93b5cf03b72d39bc28f3ef73715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
