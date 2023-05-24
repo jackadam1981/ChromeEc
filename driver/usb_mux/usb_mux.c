@@ -28,7 +28,7 @@
 #define CPRINTF(format, args...)
 #endif
 
-static int enable_debug_prints;
+static int enable_debug_prints = 1;
 
 /*
  * Flags will reset to 0 after sysjump; This works for current flags as LPM will
@@ -85,7 +85,7 @@ enum mux_config_type {
 BUILD_ASSERT(POWER_OF_TWO(MUX_QUEUE_DEPTH));
 
 /* Define in order to enable debug info about how long the queue takes */
-#undef DEBUG_MUX_QUEUE_TIME
+#define DEBUG_MUX_QUEUE_TIME
 
 struct mux_queue_entry {
 	enum mux_config_type type;
@@ -290,6 +290,7 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 		switch (config) {
 		case USB_MUX_INIT:
 			if (drv && drv->init) {
+				ccprintf("here %d\n", __LINE__);
 				rv = drv->init(mux_ptr);
 				if (rv)
 					break;
@@ -338,6 +339,7 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 				lcl_state ^= USB_PD_MUX_POLARITY_INVERTED;
 
 			if (drv && drv->set) {
+				ccprintf("here %d\n", __LINE__);
 				rv = drv->set(mux_ptr, lcl_state,
 					      &ack_required);
 				if (rv)
@@ -370,6 +372,7 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 			 * we will end up with the correct value in the end.
 			 */
 			if (drv && drv->get) {
+				ccprintf("here %d\n", __LINE__);
 				rv = drv->get(mux_ptr, &lcl_state);
 				if (rv)
 					break;
@@ -421,7 +424,7 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 		}
 	}
 
-	if (rv)
+	//if (rv)
 		CPRINTS("mux config:%d, port:%d, rv:%d", config, port, rv);
 
 	return rv;
@@ -493,6 +496,7 @@ static void perform_mux_set(int port, int index, mux_state_t mux_mode,
 	const int should_enter_low_power_mode =
 		(mux_mode == USB_PD_MUX_NONE &&
 		 usb_mode == USB_SWITCH_DISCONNECT);
+ccprintf("%s p%d 0x%x\n", __func__, port, mux_mode);
 
 	/* Perform initialization if not initialized yet */
 	if (!(flags[port] & USB_MUX_FLAG_INIT))
@@ -540,13 +544,15 @@ void usb_mux_set(int port, mux_state_t mux_mode, enum usb_switch usb_mode,
 		return;
 
 	/* Block if we have no mux task, but otherwise queue it up and return */
-	if (IS_ENABLED(HAS_TASK_USB_MUX))
+	if (IS_ENABLED(HAS_TASK_USB_MUX)) {
+		ccprintf("%d 0x%x\n", port, mux_mode);
 		mux_task_enqueue(port, TYPEC_USB_MUX_SET_ALL_CHIPS,
 				 USB_MUX_SET_MODE, mux_mode, usb_mode,
 				 polarity);
-	else
+	} else {
 		perform_mux_set(port, TYPEC_USB_MUX_SET_ALL_CHIPS, mux_mode,
 				usb_mode, polarity);
+	}
 }
 
 void usb_mux_set_single(int port, int index, mux_state_t mux_mode,

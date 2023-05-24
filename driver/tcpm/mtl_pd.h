@@ -6,7 +6,10 @@
  * https://cdrdv2.intel.com/v1/dl/getContent/634442
  */
 
-#include "console.h"
+#include "usb_mux.h"
+
+#ifndef __CROS_EC_DRIVER_TCPM_MTLPD_H
+#define __CROS_EC_DRIVER_TCPM_MTLPD_H
 
 /*
  * Table 5-4: DATA STATUS Register Definition (ID-0x5F, RO, Len-5 bytes)
@@ -188,3 +191,12 @@ union mtl_data_control {
 	};
 	uint8_t raw_value[DATA_CONTROL_REG_LEN];
 };
+
+void mtl_pd_interrupt(enum gpio_signal signal);
+
+void dummy_hpd_update(const struct usb_mux *me, mux_state_t hpd_state,
+		      bool *ack_required);
+
+extern const struct usb_mux_driver dummy_mtl_pd;
+
+#endif /* __CROS_EC_DRIVER_TCPM_MTLPD_H */
