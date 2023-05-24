@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "772d9197_a3741ab4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-05-24T00:56:23Z",
+      "side": 1,
+      "message": "Cq-Depend: chromium:4557266",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 84
+      },
+      "revId": "fd6aa68157ea32cea593bb583064c84bac7e1b7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c79c2b6_500a9253",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-05-24T00:56:23Z",
+      "side": 1,
+      "message": "does the build generate two sets EC images in CPFE?",
+      "revId": "fd6aa68157ea32cea593bb583064c84bac7e1b7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7efb0df4_62f8df77",
+        "filename": "zephyr/program/rex/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-05-24T00:56:23Z",
+      "side": 1,
+      "message": "nit: tabs",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "fd6aa68157ea32cea593bb583064c84bac7e1b7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
