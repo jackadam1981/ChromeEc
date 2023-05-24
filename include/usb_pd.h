@@ -3224,7 +3224,7 @@ __override_proto int board_pd_set_frs_enable(int port, int enable);
  */
 __overridable void board_frs_handler(int port);
 
-#ifdef CONFIG_USB_PD_DP_MODE
+#if defined(CONFIG_USB_PD_DP_MODE) || defined(CONFIG_USB_PD_TCPM_MTLPD)
 /**
  * Get current DisplayPort pin mode on the specified port.
  *

@@ -49,6 +49,7 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state,
 	if (!IS_ENABLED(CONFIG_HOSTCMD_EVENTS))
 		return;
 
+ccprintf("%s %d 0x%x\n", __func__, port, mux_state);
 	host_set_single_event(EC_HOST_EVENT_USB_MUX);
 
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
@@ -96,7 +97,7 @@ static int virtual_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 		new_mux_state = mux_state;
 
 	virtual_mux_update_state(port, new_mux_state, ack_required);
-
+ccprintf("%s %d 0x%x\n", __func__, port, mux_state);
 	return EC_SUCCESS;
 }
 
@@ -111,6 +112,7 @@ static int virtual_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 
 	*mux_state = virtual_mux_state[port];
 
+ccprintf("%s %d 0x%x\n", __func__, port, *mux_state);
 	return EC_SUCCESS;
 }
 
