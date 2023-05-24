@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d220567c_7ab1a21a",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-24T23:40:41Z",
+      "side": 1,
+      "message": "you can probably just use i2c_field_update8().",
+      "parentUuid": "a4d24a40_3df3b528",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2453d1dc_1889a8d0",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 1
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "The ANX7452 data sheet is representing addresses in 8 bit notation. \n\nWhen we are writing this value to register, we are using following mask\n\n#define ANX7452_TOP_USB_I2C_ADDR_REG_BIT_MASK 0xFE\n\nso the LSB value will be ignored while updating the respective register",
       "parentUuid": "216cd2b9_97de9b61",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eba78af_76573ac9",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-24T23:40:41Z",
+      "side": 1,
+      "message": "as i\u0027ve pointed out before, we have no use case\nfor supporting an alternate addr.\n\nif we ever do need to support this, we should get the\naddr from the device tree instead of hard coding it here.",
+      "parentUuid": "8cc98cdb_5a735959",
       "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
