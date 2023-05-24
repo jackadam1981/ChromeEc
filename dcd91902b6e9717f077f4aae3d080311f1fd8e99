@@ -46,6 +46,30 @@
       },
       "revId": "dcd91902b6e9717f077f4aae3d080311f1fd8e99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7db9e10_50a83cfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-05-24T22:00:55Z",
+      "side": 1,
+      "message": "changed to pwr_state per your suggestion and fixed 2 lines-too-long in common/lightbar.c and intelrvp_led.c, along with flipping constant to RHS to fix style issue. \n\nStill running final compiles on my end to re-check the line length fixes.",
+      "parentUuid": "df69283b_eda94379",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "dcd91902b6e9717f077f4aae3d080311f1fd8e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
