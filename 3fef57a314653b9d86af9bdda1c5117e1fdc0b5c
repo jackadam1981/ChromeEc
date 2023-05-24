@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba1e50b_89162ab8",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-24T09:56:28Z",
+      "side": 1,
+      "message": "Just an FYI, I have a CL adding similar line which has tests added to cover this new line",
+      "revId": "3fef57a314653b9d86af9bdda1c5117e1fdc0b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
