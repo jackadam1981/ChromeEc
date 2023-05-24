@@ -160,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "179b89c3_62f1d20c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241068
+      },
+      "writtenOn": "2023-05-24T17:26:15Z",
+      "side": 1,
+      "message": "MTL will support DP2.1 with DP alternate mode only. We will use the existing host command to use the Cable VDO data and will delete the new host command.",
+      "parentUuid": "054309a2_4d08ff11",
+      "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e75bc179_f0670bba",
