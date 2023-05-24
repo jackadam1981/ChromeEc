@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd57d5a8_2e019be4",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-24T12:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de62bf6e_d0859ded",
+      "range": {
+        "startLine": 160,
+        "startChar": 5,
+        "endLine": 160,
+        "endChar": 45
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e24240d_6aaf21f1",
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "sure will rebase it once your changes are landed in main branch",
       "parentUuid": "c40eb0b7_b4090325",
+      "range": {
+        "startLine": 57,
+        "startChar": 53,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "2ca9e9dfb7587ead19c343a54b7cf66cebeedbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f90728d_a3eed534",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-24T12:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2224745_35181007",
       "range": {
         "startLine": 57,
         "startChar": 53,

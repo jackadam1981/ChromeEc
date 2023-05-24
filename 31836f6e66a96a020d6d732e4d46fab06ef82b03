@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38343432_323817df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-24T12:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bd5c903_128277af",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "31836f6e66a96a020d6d732e4d46fab06ef82b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d23980f_2f6b522f",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-05-22T08:30:07Z",
       "side": 1,
       "message": "Looks like there\u0027s multiple independent changes it the commit (new address, and various fixes), could you split it up? It\u0027s very hard to review right now.",
+      "revId": "31836f6e66a96a020d6d732e4d46fab06ef82b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd3d4b60_7c9cb1ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-24T12:47:41Z",
+      "side": 1,
+      "message": "I raised the splited CLs here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4561013/1 , please check",
+      "parentUuid": "2d23980f_2f6b522f",
       "revId": "31836f6e66a96a020d6d732e4d46fab06ef82b03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
