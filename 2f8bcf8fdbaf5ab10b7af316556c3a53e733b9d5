@@ -22,6 +22,30 @@
       },
       "revId": "2f8bcf8fdbaf5ab10b7af316556c3a53e733b9d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "845df8c8_53c34bea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-24T18:46:00Z",
+      "side": 1,
+      "message": "The compilation issue was likely caused just by the stray end comment when compiling for Quincy, this has been fixed in this CL. The RW signature verification works without issue on a freshly synced repo so there are no upstream dependencies here. The RW signature verification changes have been pending for a long time and there is only one vboot (go/crvc/4521405) implementation nit that is preventing merge of this CL and the entire chain. Let\u0027s resolve the nit there and merge the chain, this has been pending for a long while.",
+      "parentUuid": "b161afbd_bdb54cc4",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "2f8bcf8fdbaf5ab10b7af316556c3a53e733b9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
