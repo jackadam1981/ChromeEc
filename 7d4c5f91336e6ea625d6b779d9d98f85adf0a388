@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b196785c_663b10c6",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1537632
+      },
+      "writtenOn": "2023-05-24T03:07:48Z",
+      "side": 1,
+      "message": "Discuss with Micheal and Jon, we need wait system can boot to OS and verify again. Leave what we have now.",
+      "parentUuid": "05b77b94_9039c078",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 63
+      },
+      "revId": "7d4c5f91336e6ea625d6b779d9d98f85adf0a388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6396e4b9_41e11f31",
@@ -131,6 +155,30 @@
       "writtenOn": "2023-05-23T11:17:36Z",
       "side": 1,
       "message": "Disable SNK too:\n```\n/* Disable BC1.2 SRC mode */\nRETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT2_BC12_SNK_FUNC,\n\tRT1718S_RT2_BC12_SNK_FUNC_BC12_SNK_EN,\n\t0));\n```",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 11
+      },
+      "revId": "7d4c5f91336e6ea625d6b779d9d98f85adf0a388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7746bad2_0457677c",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1537632
+      },
+      "writtenOn": "2023-05-24T03:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6396e4b9_41e11f31",
       "range": {
         "startLine": 188,
         "startChar": 1,
