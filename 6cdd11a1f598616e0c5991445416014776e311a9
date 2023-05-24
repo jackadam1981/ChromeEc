@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121c2703_202ae69e",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-24T22:34:00Z",
+      "side": 1,
+      "message": "How about moving all of these to where you have the other stubs, so the `HAVE_PRIVATE` and real implementations are better separated?\n\ne.g.,\n\n```\n#ifdef HAVE_PRIVATE\n\n// all the non-working versions\nint fp_sensor_init(void)\n{\n  return EC_ERROR_INVAL;\n \n}\n\nint fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,\n\t\t    int32_t *match_index, uint32_t *update_bitmap)\n{\n\treturn EC_ERROR_INVAL;\n}\n\n...\n\n#else\n\n// all the real versions\nint fp_sensor_init(void)\n{\n  // real logic \n}\n\nint fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,\n\t\t    int32_t *match_index, uint32_t *update_bitmap)\n{\n  // real logic\n}\n\n#endif\n\n```\n\nTaking one step further, you could move them into separate files:\n\n* `fpc_private.c`: real implementations\n* `fpc_stubs.c`: stubs for when private doesn\u0027t exist",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "6cdd11a1f598616e0c5991445416014776e311a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d98c95e0_d9d53883",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-24T22:34:00Z",
+      "side": 1,
+      "message": "These should probably return error in the `!HAVE_PRIVATE` case?",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 1
+      },
+      "revId": "6cdd11a1f598616e0c5991445416014776e311a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
