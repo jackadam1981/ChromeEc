@@ -34,6 +34,24 @@
       "parentUuid": "3eb6606f_f4b1c820",
       "revId": "43a1d94326d4caf61ef0669a5cbcd170936ae273",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "948da510_ea8157c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-05-24T01:38:50Z",
+      "side": 1,
+      "message": "The GPIO difference provided by the hardware:\nhttps://partnerissuetracker.corp.google.com/issues/274707841#comment13",
+      "parentUuid": "c09b84cf_461c05ef",
+      "revId": "43a1d94326d4caf61ef0669a5cbcd170936ae273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
