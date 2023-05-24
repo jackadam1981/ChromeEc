@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4d24a40_3df3b528",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-24T14:15:27Z",
+      "side": 1,
+      "message": "I personally felt, when I unintentionally mess up with any of the symbols in this expression, while debugging or playing with rest of the function code, it will be time taking to figure it out. Having this working piece in an abstract interface assures me not to worry about rightness of this job/step, hence kept it in a method.",
+      "parentUuid": "5e6c9ac1_3935bb72",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2453d1dc_1889a8d0",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2023-05-24T13:55:32Z",
       "side": 1,
       "message": "nit: that\u0027s an odd message with the inverted logic... should it be \"is high\" rather than \"not low\"? Same below",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24505c4e_c2dc06dd",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-24T14:15:27Z",
+      "side": 1,
+      "message": "The ANX7452 gets power when either or both USB_EN and DP_EN pins are high. We decided to use only USB_EN pin to control power supply. DP_EN will be inactive, since both serve the same purpose. That why it\u0027s printing if DP_EN is in unexpected state i.e high while we are managing power through USB_EN only.",
+      "parentUuid": "2453d1dc_1889a8d0",
       "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cc98cdb_5a735959",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-24T14:15:27Z",
+      "side": 1,
+      "message": "The ANX7452 data sheet is representing addresses in 8 bit notation. \n\nWhen we are writing this value to register, we are using following mask\n\n#define ANX7452_TOP_USB_I2C_ADDR_REG_BIT_MASK 0xFE\n\nso the LSB value will be ignored while updating the respective register",
+      "parentUuid": "216cd2b9_97de9b61",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1617fe01_3c24b7f7",
         "filename": "driver/retimer/anx7452.h",
         "patchSetId": 1
@@ -82,6 +136,24 @@
       "writtenOn": "2023-05-24T13:55:32Z",
       "side": 1,
       "message": "Do you need this? Just drop it, no point defining every reserved bit. Same below.",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c32244_0e8a83d9",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-24T14:15:27Z",
+      "side": 1,
+      "message": "It will be used by emulator for testing update register value",
+      "parentUuid": "1617fe01_3c24b7f7",
       "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
