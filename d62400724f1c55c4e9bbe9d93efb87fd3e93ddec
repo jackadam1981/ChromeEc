@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3f2121_d291a394",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-05-24T17:36:52Z",
+      "side": 1,
+      "message": "Consider using macro RETURN_ERROR(). For instance:\n\nret \u003d icm_read8(s, ICM42607_REG_INT_STATUS, \u0026val);\nif (ret)\n\treturn ret;\n\nbecomes:\nRETURN_ERROR(icm_read8(s, ICM42607_REG_INT_STATUS, \u0026val));\n\nDo this change before the supporting ICM42608P.",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc08192_5d870c96",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-05-24T17:36:52Z",
+      "side": 1,
+      "message": "nit: indentation",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e641347_1d89f14d",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-05-24T17:36:52Z",
+      "side": 1,
+      "message": "How do reset typically last. This is not a power on reset, maybe we should wait less if the signal past reset last less than 200us [and read more often]",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3ecd878_bed1ea30",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-05-24T17:36:52Z",
+      "side": 1,
+      "message": "From the data sheet, we may have to wait up to 1ms for the registers to be readable (\"\"\"Start-up time for register read/write From power-up: max 1 ms \"\"\")\n\nWhat is the value when the register is not available, will we be stuck at i2c level or get a well know value (0xff)?",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "719fe3c8_1d7dfee4",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-05-24T17:36:52Z",
+      "side": 1,
+      "message": "nit: indentation",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
