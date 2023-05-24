@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58264af2_f9947010",
+        "filename": "common/fpsensor/fpsensor_auth_crypto.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-24T07:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dca576f_d46625e8",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "88f56acc548de40a6f644814f90699cd854f51d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b90e923_292ba706",
