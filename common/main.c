@@ -46,7 +46,7 @@
 
 test_mockable __keep int main(void)
 {
-	int mpu_pre_init_rv = EC_SUCCESS;
+	int mpu_pre_init_rv = EC_SUCCESS
 
 	if (IS_ENABLED(CONFIG_PRESERVE_LOGS)) {
 		/*
