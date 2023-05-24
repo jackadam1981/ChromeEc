@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fe64d38_eee7d8c7",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1537632
+      },
+      "writtenOn": "2023-05-24T03:32:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "79041df3_32d8ac6f",
+      "range": {
+        "startLine": 59,
+        "startChar": 19,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "7d4c5f91336e6ea625d6b779d9d98f85adf0a388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5d13130_11d26aab",
