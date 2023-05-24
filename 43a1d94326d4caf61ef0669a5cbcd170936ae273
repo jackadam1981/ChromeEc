@@ -16,6 +16,24 @@
       "message": "Format LGTM, may I ask to include Intel team to review according to the real HW design? Thanks!",
       "revId": "43a1d94326d4caf61ef0669a5cbcd170936ae273",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09b84cf_461c05ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-05-24T01:30:02Z",
+      "side": 1,
+      "message": "I modified it based on the GPIO difference between the design of Gothrax and Nereid provided by the hardware. Please you join the Intel team for review.\nThanks",
+      "parentUuid": "3eb6606f_f4b1c820",
+      "revId": "43a1d94326d4caf61ef0669a5cbcd170936ae273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
