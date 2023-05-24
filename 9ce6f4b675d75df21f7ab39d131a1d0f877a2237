@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e98d5ad0_ac96e206",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-24T15:48:16Z",
+      "side": 1,
+      "message": "Could you try to instead:\n- Add a new API to the NX20 PPC driver to allow RCP mask enable/disable\n- Use that API from the board\u0027s FRS enable function when the port\u0027s PPC is the NX20\n\nThere\u0027s already an NX20 emulator and test, so it should be pretty easy to write a unit test for that change.\n\nThat would give us more desirable behavior if we ever see RCP come up during a normal, non-FRS connection",
+      "revId": "9ce6f4b675d75df21f7ab39d131a1d0f877a2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
