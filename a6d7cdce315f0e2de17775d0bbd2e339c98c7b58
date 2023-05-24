@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e288bf_14931d38",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-24T23:48:16Z",
+      "side": 1,
+      "message": "add space separator",
+      "range": {
+        "startLine": 336,
+        "startChar": 50,
+        "endLine": 336,
+        "endChar": 51
+      },
+      "revId": "a6d7cdce315f0e2de17775d0bbd2e339c98c7b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ceccfe7_b7c4cb6f",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-24T23:48:16Z",
+      "side": 1,
+      "message": "is it possible to use the new aliases here?\n\n`anx-usb-c1-rt-usb-en`\n`anx-usb-c1-rt-dp-en`",
+      "range": {
+        "startLine": 339,
+        "startChar": 2,
+        "endLine": 340,
+        "endChar": 40
+      },
+      "revId": "a6d7cdce315f0e2de17775d0bbd2e339c98c7b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
