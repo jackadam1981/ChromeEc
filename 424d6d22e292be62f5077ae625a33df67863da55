@@ -451,6 +451,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f680066b_c7a946e0",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-24T00:23:34Z",
+      "side": 1,
+      "message": "I tried that solution out and found that when I remove the `private` directory I end up with linker errors because it\u0027s still compiling in the references to symbols from the library. I would have expected these to be optimized out by this point but apparently not. Based on that I\u0027m inclined to leave it as-is.\n\nHere\u0027s a snapshot of the errors:\n```\nld.lld: error: undefined symbol: fp_sensor_get_version\n\u003e\u003e\u003e referenced by fpc_private.c:193 (/mnt/host/source/src/platform/ec/driver/fingerprint/fpc/bep/fpc_private.c:193)\n\u003e\u003e\u003e               lto.tmp:(fp_sensor_init)\n\nld.lld: error: undefined symbol: fp_sensor_get_build_info\n\u003e\u003e\u003e referenced by fpc_private.c:196 (/mnt/host/source/src/platform/ec/driver/fingerprint/fpc/bep/fpc_private.c:196)\n\u003e\u003e\u003e               lto.tmp:(fp_sensor_init)\n\nld.lld: error: undefined symbol: fp_sensor_open\n\u003e\u003e\u003e referenced by fpc_private.c:200 (/mnt/host/source/src/platform/ec/driver/fingerprint/fpc/bep/fpc_private.c:200)\n\u003e\u003e\u003e               lto.tmp:(fp_sensor_init)\n\nld.lld: error: undefined symbol: bio_algorithm_init\n\u003e\u003e\u003e referenced by fpc_private.c:208 (/mnt/host/source/src/platform/ec/driver/fingerprint/fpc/bep/fpc_private.c:208)\n\u003e\u003e\u003e               lto.tmp:(fp_sensor_init)\nclang++: error: ld.lld command failed with exit code 1 (use -v to see invocation)\n```",
+      "parentUuid": "730e2611_a64f24dd",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 5
+      },
+      "revId": "424d6d22e292be62f5077ae625a33df67863da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89151e04_1aa1cd2b",
