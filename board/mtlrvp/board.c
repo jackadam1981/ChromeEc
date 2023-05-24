@@ -15,11 +15,15 @@
 #include "usb_mux.h"
 #include "ec_commands.h"
 #include "ioexpander.h"
+#include "mtl_pd.h"
 #include "driver/ioexpander/it8801.h"
 
 enum mtlrvp_typec_ports {
 	TYPE_C_PORT_0,
 	TYPE_C_PORT_1,
+	TYPE_C_PORT_2,
+	TYPE_C_PORT_3,
+	TYPE_C_PORT_COUNT
 };
 
 enum mtlrvp_i2c {
@@ -109,12 +113,72 @@ struct usb_mux_chain usbc1_tcss_usb_mux = {
 		},
 };
 
+struct usb_mux_chain usbc2_tcss_usb_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.usb_port = TYPE_C_PORT_2,
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
+};
+
+struct usb_mux_chain usbc3_tcss_usb_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.usb_port = TYPE_C_PORT_3,
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
+};
+
+struct usb_mux dummy0_usb_mux = {
+	.usb_port = TYPE_C_PORT_0,
+	.driver = &dummy_mtl_pd,
+	.hpd_update = dummy_hpd_update,
+	.i2c_port = 0,
+	.i2c_addr_flags = 0,
+};
+
+struct usb_mux dummy1_usb_mux = {
+	.usb_port = TYPE_C_PORT_1,
+	.driver = &dummy_mtl_pd,
+	.hpd_update = dummy_hpd_update,
+	.i2c_port = 0,
+	.i2c_addr_flags = 0,
+};
+
+struct usb_mux dummy2_usb_mux = {
+	.usb_port = TYPE_C_PORT_2,
+	.driver = &dummy_mtl_pd,
+	.hpd_update = dummy_hpd_update,
+	.i2c_port = 0,
+	.i2c_addr_flags = 0,
+};
+
+struct usb_mux dummy3_usb_mux = {
+	.usb_port = TYPE_C_PORT_3,
+	.driver = &dummy_mtl_pd,
+	.hpd_update = dummy_hpd_update,
+	.i2c_port = 0,
+	.i2c_addr_flags = 0,
+};
+
 const struct usb_mux_chain usb_muxes[] = {
 	[TYPE_C_PORT_0] = {
+		.mux = &dummy0_usb_mux,
 		.next = &usbc0_tcss_usb_mux,
 	},
 	[TYPE_C_PORT_1] = {
+		.mux = &dummy1_usb_mux,
 		.next = &usbc1_tcss_usb_mux,
+	},
+	[TYPE_C_PORT_2] = {
+		.mux = &dummy2_usb_mux,
+		.next = &usbc2_tcss_usb_mux,
+	},
+	[TYPE_C_PORT_3] = {
+		.mux = &dummy3_usb_mux,
+		.next = &usbc3_tcss_usb_mux,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
