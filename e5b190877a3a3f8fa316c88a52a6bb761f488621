@@ -142,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fdba70c_3507fe77",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-05-24T16:22:29Z",
+      "side": 1,
+      "message": "Ideally not, but it\u0027s nice to have in case there\u0027s some sort of misconfiguration. It\u0027ll also help when we write tests for the board code.",
+      "parentUuid": "c070db8e_953dacf1",
+      "revId": "e5b190877a3a3f8fa316c88a52a6bb761f488621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9254c543_abcc29e2",
         "filename": "zephyr/program/myst/src/usbc_config.c",
         "patchSetId": 2
