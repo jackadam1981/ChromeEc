@@ -31,6 +31,8 @@ struct anx7452_emul_data {
 	/** Current state of all emulated ANX7452 retimer registers */
 	uint8_t top_reg;
 
+	uint8_t usb_i2c_addr_reg;
+
 	uint8_t ctltop_cfg0_reg;
 
 	uint8_t ctltop_cfg1_reg;
@@ -57,6 +59,8 @@ static uint8_t *anx7452_emul_get_reg_ptr(struct anx7452_emul_data *data,
 		return &(data->ctltop_cfg1_reg);
 	case ANX7452_CTLTOP_CFG2_REG:
 		return &(data->ctltop_cfg2_reg);
+	case ANX7452_TOP_USB_I2C_ADDR_REG:
+		return &(data->usb_i2c_addr_reg);
 	default:
 		__ASSERT(false, "Unimplemented Register Access Error on 0x%x",
 			 reg);
@@ -90,7 +94,9 @@ void anx7452_emul_reset(const struct emul *emul)
 
 	data = emul->data;
 
-	data->top_reg = 0xFF;
+	data->top_reg = 0x01 | ANX7452_TOP_RESERVED_BIT;
+
+	data->usb_i2c_addr_reg = 0x52 | ANX7452_TOP_USB_I2C_ADDR_RESERVED_BIT;
 
 	data->ctltop_cfg0_reg = 0x00;
 
