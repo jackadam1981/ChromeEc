@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "366de8a7_046073d2",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2023-05-25T23:52:45Z",
+      "side": 1,
+      "message": "Can I apply your suggestion after this CL? Need to change all of if(ret) return ret to Macro. So look like it is more good to make new CL .",
+      "parentUuid": "dd3f2121_d291a394",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dc08192_5d870c96",
         "filename": "driver/accelgyro_icm42607.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2023-05-24T17:36:52Z",
       "side": 1,
       "message": "nit: indentation",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4313a987_5b4e3937",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2023-05-25T23:52:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7dc08192_5d870c96",
       "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04cb11fd_d5412b0f",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2023-05-25T23:52:45Z",
+      "side": 1,
+      "message": "On my test environment, average reset time is about 200~400ms, So I will also check with 100us delay with 10 times for loop.",
+      "parentUuid": "2e641347_1d89f14d",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3ecd878_bed1ea30",
         "filename": "driver/accelgyro_icm42607.c",
         "patchSetId": 1
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2078d55_f7db0356",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2023-05-25T23:52:45Z",
+      "side": 1,
+      "message": "On my side (ST Nucleo board with ICM42607/42608) I2C value is 0xff when incorrect I2C status or I2C stuck status. And about wait up to 1ms is need for ramp time not for read who am i.",
+      "parentUuid": "f3ecd878_bed1ea30",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "719fe3c8_1d7dfee4",
         "filename": "driver/accelgyro_icm42607.c",
         "patchSetId": 1
@@ -82,6 +154,24 @@
       "writtenOn": "2023-05-24T17:36:52Z",
       "side": 1,
       "message": "nit: indentation",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84dab5a5_432505be",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2023-05-25T23:52:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "719fe3c8_1d7dfee4",
       "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
