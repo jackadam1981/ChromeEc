@@ -63,8 +63,10 @@ static int rt1739_vbus_source_enable(int port, int enable)
 					      RT1739_FLAGS_SOURCE_ENABLED);
 
 	/* Return if status doesn't change */
+	/*
 	if (!!(prev_flag & RT1739_FLAGS_SOURCE_ENABLED) == !!enable)
 		return EC_SUCCESS;
+	*/
 
 	RETURN_ERROR(update_reg(port, RT1739_REG_VBUS_SWITCH_CTRL,
 				RT1739_LV_SRC_EN,
