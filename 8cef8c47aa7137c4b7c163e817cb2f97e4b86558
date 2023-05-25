@@ -33,6 +33,29 @@
       "message": "Hi YH \u0026 Caveh,\n\ncould you help to review the CL, thanks!",
       "revId": "8cef8c47aa7137c4b7c163e817cb2f97e4b86558",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b335bb9_f5f0d2e4",
+        "filename": "zephyr/program/rex/screebo/src/usb_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-25T19:39:27Z",
+      "side": 1,
+      "message": "please note that for the daughterboard, we can avoid the main\nEC tcpc code from accessing a missing DB by implementing\n`board_get_usb_pd_port_count(). we can\u0027t do that for a missing\nport0. there is too much code that assumes\n`tcpc_config[0]` and `ppc_chips[0]` are initialized.\n\nyou can either always provide a default chip for these\neven when it\u0027s wrong - it will avoid the EC crash but won\u0027t\nwork very well. alternatively, we could introduce a \"no-op\"\nTCPC driver for a missing TCPC that just returns an error\ncode for every driver function. that\u0027ll avoid having to add\nnull pointer checks everywhere the driver is accessed.",
+      "range": {
+        "startLine": 151,
+        "startChar": 12,
+        "endLine": 151,
+        "endChar": 24
+      },
+      "revId": "8cef8c47aa7137c4b7c163e817cb2f97e4b86558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

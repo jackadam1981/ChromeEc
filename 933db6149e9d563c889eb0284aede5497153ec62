@@ -16,6 +16,29 @@
       "message": "Hi reviewers, could you help to review the CL, thanks！",
       "revId": "933db6149e9d563c889eb0284aede5497153ec62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "158b52a8_86ee847b",
+        "filename": "zephyr/program/rex/screebo/src/usb_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-25T19:39:27Z",
+      "side": 1,
+      "message": "do you need a separate db type and mb type for your design\nor are the configs always going to match - i.e.\n2x HB or 2x USB3?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "933db6149e9d563c889eb0284aede5497153ec62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
