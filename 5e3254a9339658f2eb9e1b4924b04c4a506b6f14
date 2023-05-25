@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21475153_2ec1a64e",
+        "filename": "zephyr/program/myst/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-25T15:50:22Z",
+      "side": 0,
+      "message": "Is this signal ODR or just an output?",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "5e3254a9339658f2eb9e1b4924b04c4a506b6f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
