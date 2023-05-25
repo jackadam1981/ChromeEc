@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eabafaa_caf9a795",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2023-05-25T10:14:07Z",
+      "side": 1,
+      "message": "may be `rex_ec_ish`?\n\n`-` is not going well while trying to create variant (i\u0027m seeing error while running gen_config as the project name gets separated with space)",
+      "range": {
+        "startLine": 7,
+        "startChar": 32,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "60449578c90812129a945b6ed463cc22d9d1de46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
