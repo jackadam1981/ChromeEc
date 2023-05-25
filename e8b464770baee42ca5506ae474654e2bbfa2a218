@@ -118,6 +118,30 @@
       },
       "revId": "e8b464770baee42ca5506ae474654e2bbfa2a218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b259ad3_ba3cb875",
+        "filename": "zephyr/program/rex/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-05-25T23:57:27Z",
+      "side": 1,
+      "message": "I\u0027ll +1 that.  Maybe `rex-ish-ec` is more clear, as then it reads \"this is the ec for `rex-ish`\"?\n\ndon\u0027t have any better suggestions...",
+      "parentUuid": "ff22270e_4c1d1506",
+      "range": {
+        "startLine": 37,
+        "startChar": 17,
+        "endLine": 37,
+        "endChar": 28
+      },
+      "revId": "e8b464770baee42ca5506ae474654e2bbfa2a218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
