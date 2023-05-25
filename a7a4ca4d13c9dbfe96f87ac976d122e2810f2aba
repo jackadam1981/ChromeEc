@@ -16,6 +16,24 @@
       "message": "we need the board_get_vbus_voltage!!",
       "revId": "a7a4ca4d13c9dbfe96f87ac976d122e2810f2aba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad94afb_d167e53d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-25T16:41:38Z",
+      "side": 1,
+      "message": "I\u0027m surprised we need it, but I suppose we could file a bug to investigate the charger voltage error later.  The other boards using this function generally have a weird mix of Vbus detection, and I\u0027d assumed our charger would work for both ports.",
+      "parentUuid": "9cd10200_0135e25b",
+      "revId": "a7a4ca4d13c9dbfe96f87ac976d122e2810f2aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
