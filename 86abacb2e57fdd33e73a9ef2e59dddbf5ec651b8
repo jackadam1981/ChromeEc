@@ -16,6 +16,98 @@
       "message": "changed endianness of the parameter",
       "revId": "86abacb2e57fdd33e73a9ef2e59dddbf5ec651b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc745042_124a1038",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4070,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-05-25T19:30:54Z",
+      "side": 1,
+      "message": "nit:`sizeof(uint16_t)` Or it might be worth making a type alias for this data type. I think there is even a bit field type you can use in C (https://www.tutorialspoint.com/cprogramming/c_bit_fields.htm)",
+      "range": {
+        "startLine": 4070,
+        "startChar": 32,
+        "endLine": 4070,
+        "endChar": 33
+      },
+      "revId": "86abacb2e57fdd33e73a9ef2e59dddbf5ec651b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705b5e6a_5309e807",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4073,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-05-25T19:30:54Z",
+      "side": 1,
+      "message": "use `MAX_TIME_MS`?",
+      "range": {
+        "startLine": 4073,
+        "startChar": 33,
+        "endLine": 4073,
+        "endChar": 56
+      },
+      "revId": "86abacb2e57fdd33e73a9ef2e59dddbf5ec651b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "266e6e47_924f9901",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4086,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-05-25T19:30:54Z",
+      "side": 1,
+      "message": "should we use `+\u003d` here in case we decide to put multiple next to each other? (or print some kind of errors if timespan is not already `0`?)",
+      "range": {
+        "startLine": 4086,
+        "startChar": 13,
+        "endLine": 4086,
+        "endChar": 14
+      },
+      "revId": "86abacb2e57fdd33e73a9ef2e59dddbf5ec651b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d285ae_aa046ad0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4089,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-05-25T19:30:54Z",
+      "side": 1,
+      "message": "can you right alight these values too?",
+      "range": {
+        "startLine": 4089,
+        "startChar": 21,
+        "endLine": 4089,
+        "endChar": 27
+      },
+      "revId": "86abacb2e57fdd33e73a9ef2e59dddbf5ec651b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
