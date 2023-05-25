@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07e7512a_6dd9e277",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-05-25T01:24:25Z",
+      "side": 1,
+      "message": "I don\u0027t think either implementation is \"better\", but the one that works with the rwsig task which needs this CL is consistent with that used by other FPS boards. The other vboot implementation is used by fizz and shouldn\u0027t likely be modified.",
+      "parentUuid": "9cde67b2_f323b25d",
+      "range": {
+        "startLine": 9,
+        "startChar": 64,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "34eb2d9152a481c25a94832bcba965a9172a2cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c7b4754_633c1115",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
