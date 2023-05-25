@@ -33,6 +33,23 @@
       "message": "Hi YH \u0026 Caveh,\n\ncould you help to review the CL, thanks!",
       "revId": "8f7df41b8d9b8f8142e1d666201150e87ff04263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb2052a_cc1f3687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-25T19:25:54Z",
+      "side": 1,
+      "message": "please note to implement board_get_usb_pd_port_count() for your board in a future patch.\nexample:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4564099\n\nto avoid EC crashing when no USB DB is configured.",
+      "revId": "8f7df41b8d9b8f8142e1d666201150e87ff04263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
