@@ -214,6 +214,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abff4740_15516bde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-05-25T17:32:29Z",
+      "side": 1,
+      "message": "\u003e Since, we are implementing DP2.1 for only DP alt mode and to stay consistent with current implementation of cros_ec_typec driver where all the alternate mode and USB4 is handled by EC, we inclined to use new host command to get details for additional parameters. We can still use ec_response_usb_pd_control_v2 considering additional parameters(UHBR13.5, DPAM) are yet not needed for DP2.1 cable identification.\n\nGot it. Please use the cable VDO information already exported bia TYPEC_STATUS and TYPEC_DISCOVERY (we have handles to the cable and cable-plug structs, so you can get the VDOs ffrom there directly)\n\n\u003e \n\u003e As you mentioned if we want to implement same for other alt mode and usb4 that requires overhaul of the cros_ec_typec driver and additional validation as well as more discussions. I am not sure if that would be good idea at this stage of the MTL program.  For now, we can implement cable VDO usage for DP2.1 only and create tasks to extend it for all the alternate mode and USB4. When implementation is done for all alt modes, we can intercept it for next program.\n\nYeah, that sounds about right. Thanks for confirming.",
+      "parentUuid": "b6f6e20a_a864e9cf",
+      "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e75bc179_f0670bba",
