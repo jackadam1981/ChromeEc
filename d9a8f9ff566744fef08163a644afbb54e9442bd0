@@ -22,6 +22,30 @@
       },
       "revId": "d9a8f9ff566744fef08163a644afbb54e9442bd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16dc3f4b_113d330c",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-05-25T16:00:50Z",
+      "side": 1,
+      "message": "this was too long before in multiple places in the file, so I created a separate patch to address the line lengths: cr:4567187",
+      "parentUuid": "682ae1e1_6cd6a9ec",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 144
+      },
+      "revId": "d9a8f9ff566744fef08163a644afbb54e9442bd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
