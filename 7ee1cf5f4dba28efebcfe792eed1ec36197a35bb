@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b881c7b_eb86cc65",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-25T00:00:42Z",
+      "side": 1,
+      "message": "i don\u0027t think we need to touch DP_EN at all because it\nhas an internal pull-down, so its default behavior should\nalready be OK.\n\nis there evidence that the chip is not behaving as documented?",
+      "parentUuid": "24505c4e_c2dc06dd",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ed8576f_5190a73d",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 1
