@@ -178,6 +178,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "175e23eb_1d601506",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-05-25T00:31:47Z",
+      "side": 1,
+      "message": "The point is, if we are using the kernel alternate mode driver for 1 alternate mode, we need to do it for all the alternate modes (and USB4), regardless of what  DP version the other modes support. We can\u0027t have the kernel (drivers/usb/typec/altmodes/displayport.c) only handle DP alternate mode, but have the others handled by the EC.\n\nFTR, we have the infrastructure in place to send and receive VDMs from the AP, so we *can* get the alt mode drivers to work, just that it needs testing, and additional support for Thunderbolt compatibility mode.",
+      "parentUuid": "179b89c3_62f1d20c",
+      "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e75bc179_f0670bba",
