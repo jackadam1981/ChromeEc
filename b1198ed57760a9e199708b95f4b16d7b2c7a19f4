@@ -51,6 +51,24 @@
       "message": "you may put it in zephyr_library_source or define a different config flag.",
       "revId": "b1198ed57760a9e199708b95f4b16d7b2c7a19f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b563138c_18c601fc",
+        "filename": "zephyr/program/nissa/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1539437
+      },
+      "writtenOn": "2023-05-25T08:46:33Z",
+      "side": 1,
+      "message": "add in project build file",
+      "parentUuid": "c505de39_f3c3ef45",
+      "revId": "b1198ed57760a9e199708b95f4b16d7b2c7a19f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -16,6 +16,24 @@
       "message": "I think we could keep this one and define CONFIG_NISSA_SUB_BOARD\u003dn in project.conf to avoid including it if you want to use your own one to minimize the change.",
       "revId": "fb0ba42e3acaf0961cecec7fd328fabe15ac5667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf4a431_9edcf0b5",
+        "filename": "zephyr/program/nissa/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1539437
+      },
+      "writtenOn": "2023-05-25T08:46:33Z",
+      "side": 0,
+      "message": "Already added at patch7",
+      "parentUuid": "842ecb01_c9238848",
+      "revId": "fb0ba42e3acaf0961cecec7fd328fabe15ac5667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
