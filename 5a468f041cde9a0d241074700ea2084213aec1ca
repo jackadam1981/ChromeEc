@@ -46,6 +46,30 @@
       },
       "revId": "5a468f041cde9a0d241074700ea2084213aec1ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87de99fc_32b1e06b",
+        "filename": "zephyr/cmake/toolchain/llvm/target.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-25T16:29:20Z",
+      "side": 1,
+      "message": "Oh, you\u0027re right. This is just changing to `x86_64` instead of `arm`.",
+      "parentUuid": "514481b9_7cf04ca6",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "5a468f041cde9a0d241074700ea2084213aec1ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
