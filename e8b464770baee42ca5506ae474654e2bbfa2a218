@@ -94,6 +94,30 @@
       },
       "revId": "e8b464770baee42ca5506ae474654e2bbfa2a218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff22270e_4c1d1506",
+        "filename": "zephyr/program/rex/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-25T19:18:48Z",
+      "side": 1,
+      "message": "this is a confusing name.\nis this project build image going to run on the EC or ISH?",
+      "parentUuid": "413b91ab_43a08672",
+      "range": {
+        "startLine": 37,
+        "startChar": 17,
+        "endLine": 37,
+        "endChar": 28
+      },
+      "revId": "e8b464770baee42ca5506ae474654e2bbfa2a218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
