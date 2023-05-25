@@ -338,6 +338,7 @@ int rt1739_init(int port)
 #else
 	oc_setting |= rt1739_src_oc(CONFIG_USB_PD_PULLUP);
 #endif
+	oc_setting |= 3 << 6;
 	RETURN_ERROR(write_reg(port, RT1739_REG_VBUS_OC_SETTING, oc_setting));
 
 	return EC_SUCCESS;
