@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf273d40_bbb39a12",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-25T18:17:41Z",
+      "side": 1,
+      "message": "Should the pointer even be defined if the GPIO isn\u0027t implemented?\n\nMost users of `GPIO_DT_FROM_NODE`, `GPIO_DT_FROM_ALIAS`, etc, don\u0027t have a NULL check and directly call Zephyr\u0027s GPIO APIs.  The Zephyr GPIO APIs in turn dereference the gpio_dt_spec pointer without a NULL check.\n\nProbably better to put the `COND_CODE_1` check around the whole definition.  You also need to update the [extern declaration](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/include/zephyr_gpio_signal.h;l\u003d158).",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "e905c324e92b0bcf8d506bfd0b09502c6568b168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
