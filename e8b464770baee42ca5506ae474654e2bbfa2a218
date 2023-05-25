@@ -70,6 +70,30 @@
       },
       "revId": "e8b464770baee42ca5506ae474654e2bbfa2a218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "413b91ab_43a08672",
+        "filename": "zephyr/program/rex/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2023-05-25T19:14:37Z",
+      "side": 1,
+      "message": "\u003e there\u0027s no requirement to have the EC build target name be equivalent to the model name.\n\n`ec_target_name` \nhttps://chrome-internal-review.googlesource.com/c/chromeos/project/rex/rex/+/5966907/4/config.star#451 actually landed",
+      "parentUuid": "6dc7df67_2403013a",
+      "range": {
+        "startLine": 37,
+        "startChar": 17,
+        "endLine": 37,
+        "endChar": 28
+      },
+      "revId": "e8b464770baee42ca5506ae474654e2bbfa2a218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
