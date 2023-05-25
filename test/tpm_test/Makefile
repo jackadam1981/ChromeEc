@@ -22,9 +22,10 @@ SWIG = /usr/bin/swig
 PYTHON_INCLUDE = $(shell python3 -c 'import sysconfig; \
 print(sysconfig.get_paths().get("include"))')
 
-ifeq ($(CR50),)
+ifeq ($(CHIP_G),1)
 vpath %c $(src) ../../chip/g/dcrypto $(src)/testlib
 CFLAGS += -I../../chip/g/dcrypto
+CFLAGS += -I../../../../third_party/cryptoc/include
 else
 
 # Use BOARD=cr50 specific implementation
@@ -35,7 +36,6 @@ endif
 
 CFLAGS += -O2 -fPIC
 CFLAGS += -I ${PYTHON_INCLUDE}
-CFLAGS += -I../../../../third_party/cryptoc/include
 CFLAGS += -I../../board/cr50
 CFLAGS += -I../../chip/g
 CFLAGS += -I../../core/host

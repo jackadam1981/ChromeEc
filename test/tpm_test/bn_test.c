@@ -190,7 +190,9 @@ static int test_bn_modinv_helper(const BIGNUM *E, BN_CTX *ctx, int mod_top,
 		bn_init(&d, d_buf, sizeof(d_buf));
 
 		test_inverse = bn_modinv_vartime(&d, &e, &m);
-
+#ifdef CR50_DCRYPTO
+		test_inverse = (test_inverse == DCRYPTO_OK);
+#endif
 		if (test_inverse != has_inverse) {
 			fprintf(stderr,
 				"ossl inverse: %d, dcrypto inverse: %d\n",
@@ -257,6 +259,14 @@ static int test_bn_modinv(void)
 	if (test_bn_modinv_helper(E, ctx, BN_RAND_TOP_TWO, BN_RAND_BOTTOM_ANY))
 		goto fail;
 
+	BN_rand(E, 2048, BN_RAND_TOP_ONE, BN_RAND_BOTTOM_ODD);
+	/* Top bit set, bottom bit clear. */
+	if (test_bn_modinv_helper(E, ctx, BN_RAND_TOP_ONE, BN_RAND_BOTTOM_ANY))
+		goto fail;
+
+	if (test_bn_modinv_helper(E, ctx, BN_RAND_TOP_TWO, BN_RAND_BOTTOM_ANY))
+		goto fail;
+
 	BN_rand(E, 32, BN_RAND_TOP_TWO, BN_RAND_BOTTOM_ODD);
 	if (test_bn_modinv_helper(E, ctx, BN_RAND_TOP_ONE, BN_RAND_BOTTOM_ANY))
 		goto fail;
@@ -266,6 +276,10 @@ static int test_bn_modinv(void)
 		goto fail;
 
 	BN_set_word(E, 3);
+	if (test_bn_modinv_helper(E, ctx, BN_RAND_TOP_ONE, BN_RAND_BOTTOM_ANY))
+		goto fail;
+
+	BN_set_word(E, 257);
 	if (test_bn_modinv_helper(E, ctx, BN_RAND_TOP_ONE, BN_RAND_BOTTOM_ANY))
 		goto fail;
 
@@ -313,11 +327,175 @@ static BIGNUM *bn_gen(BIGNUM *out, int size, int front_ones, int mid_ones_pos,
 		n[(rand_low - 1) / 8] |= (rand() & 1) << ((rand_low - 1) & 7);
 		rand_low--;
 	}
-
+	n[0] |= 1;
 	return BN_lebin2bn(n, size / 8, out);
 }
 
-static int test_bn_div(void)
+/* Testing division where N=P*Q, so remainder is 0 */
+int test_bn_div_exactdiv(void)
+{
+	const int PSIZE = MAX_BN_TEST_SIZE / 2;
+	BIGNUM *N, *P, *Q, *R;
+	BN_CTX *ctx;
+	int result = 0, total = 0, prev = 1, even_prev = 1, even_result = 0;
+	int nf, nmps, nms, pf, pmps, pms;
+	struct LITE_BIGNUM p;
+	struct LITE_BIGNUM q;
+	struct LITE_BIGNUM n;
+	struct LITE_BIGNUM r;
+
+	uint32_t p_buff[MAX_BN_TEST_SIZE / LITE_BN_BITS2];
+	uint32_t q_buff[MAX_BN_TEST_SIZE / LITE_BN_BITS2];
+	uint32_t n_buff[MAX_BN_TEST_SIZE / LITE_BN_BITS2];
+	uint32_t r_buff[MAX_BN_TEST_SIZE / LITE_BN_BITS2];
+
+	ctx = BN_CTX_new();
+	BN_CTX_start(ctx);
+	N = BN_CTX_get(ctx);
+	P = BN_CTX_get(ctx);
+	Q = BN_CTX_get(ctx);
+	R = BN_CTX_get(ctx);
+	BN_set_word(R, 0);
+
+	for (nf = 2; nf <= PSIZE / 4; nf++)
+	for (nmps = PSIZE / 16; nmps < (PSIZE / 16) + 4; nmps++)
+	for (nms = PSIZE / 32; nms < (PSIZE / 32) + 2; nms++) {
+		Q = bn_gen(Q, PSIZE, nf, nmps, nms, nmps - nms);
+		for (pf = 2; pf <= PSIZE / 4; pf++)
+		for (pmps = PSIZE / 16; pmps < (PSIZE / 16) + 2; pmps++)
+		for (pms = PSIZE / 32; pms < (PSIZE / 32) + 2; pms++) {
+			P = bn_gen(P, PSIZE, pf, pmps, pms, pmps - pms);
+			BN_mul(N, P, Q, ctx);
+			total++;
+			bn_to_dcrypto(N, &n, n_buff, sizeof(n_buff));
+			bn_to_dcrypto(P, &p, p_buff, sizeof(p_buff));
+			DCRYPTO_bn_wrap(&q, q_buff, sizeof(q_buff));
+			DCRYPTO_bn_wrap(&r, r_buff, sizeof(r_buff));
+
+			DCRYPTO_bn_div(&q, &r, &n, &p);
+
+			if ((bn_dcrypto_cmpeq(Q, &q) != 0) ||
+			    (bn_dcrypto_cmpeq(R, &r) != 0)) {
+				result++;
+				even_result += ((q_buff[0] & 1) == 0);
+				if (result > prev || even_result > even_prev) {
+					/* print only 1 sample in 50000 */
+					if (q_buff[0] & 1)
+						prev = result + 50001;
+					else
+						even_prev = even_result + 1000;
+					fprintf(stderr, "N : ");
+					BN_print_fp(stderr, N);
+					fprintf(stderr, "\n");
+					fprintf(stderr, "P : ");
+					BN_print_fp(stderr, P);
+					fprintf(stderr, "\n");
+
+					fprintf(stderr, "Q : ");
+					BN_print_fp(stderr, Q);
+					fprintf(stderr, "\nQd: ");
+					dcrypto_print(stderr, &q,
+						      BN_num_bytes(Q));
+					fprintf(stderr, "\n");
+
+					fprintf(stderr, "R : ");
+					BN_print_fp(stderr, R);
+					fprintf(stderr, "\nRd: ");
+					dcrypto_print(stderr, &r,
+						      BN_num_bytes(R));
+					fprintf(stderr, "\n");
+				}
+			}
+		}
+	}
+
+	if (result)
+		fprintf(stderr,
+			"DCRYPTO_bn_div: total=%u, failures=%u,"
+			" with even Q=%u\n",
+			total, result, even_result);
+
+	BN_CTX_end(ctx);
+	BN_CTX_free(ctx);
+	return result;
+}
+
+/* Testing division where N=P*Q, so remainder is 0 */
+int test_bn_div_rand_exactdiv(void)
+{
+	const int PSIZE = MAX_BN_TEST_SIZE / 2;
+	BIGNUM *N, *P, *Q, *R;
+	BN_CTX *ctx;
+	int result = 0, prev = 1, even_prev = 1, even_result = 0;
+	struct LITE_BIGNUM p;
+	struct LITE_BIGNUM q;
+	struct LITE_BIGNUM n;
+	struct LITE_BIGNUM r;
+
+	uint32_t p_buff[MAX_BN_TEST_SIZE / LITE_BN_BITS2];
+	uint32_t q_buff[MAX_BN_TEST_SIZE / LITE_BN_BITS2];
+	uint32_t n_buff[MAX_BN_TEST_SIZE / LITE_BN_BITS2];
+	uint32_t r_buff[MAX_BN_TEST_SIZE / LITE_BN_BITS2];
+
+	ctx = BN_CTX_new();
+	BN_CTX_start(ctx);
+	N = BN_CTX_get(ctx);
+	P = BN_CTX_get(ctx);
+	Q = BN_CTX_get(ctx);
+	R = BN_CTX_get(ctx);
+
+	for (int i = 0; i < 100000; i++) {
+		BN_rand(P, PSIZE, BN_RAND_TOP_ONE, BN_RAND_BOTTOM_ODD);
+		BN_rand(Q, PSIZE, BN_RAND_TOP_ONE, BN_RAND_BOTTOM_ODD);
+		BN_mul(N, P, Q, ctx);
+		bn_to_dcrypto(N, &n, n_buff, sizeof(n_buff));
+		bn_to_dcrypto(P, &p, p_buff, sizeof(p_buff));
+		DCRYPTO_bn_wrap(&q, q_buff, sizeof(q_buff));
+		DCRYPTO_bn_wrap(&r, r_buff, sizeof(r_buff));
+		DCRYPTO_bn_div(&q, &r, &n, &p);
+		if ((bn_dcrypto_cmpeq(Q, &q) != 0) ||
+			(bn_dcrypto_cmpeq(R, &r) != 0)) {
+			result++;
+			even_result += ((q_buff[0] & 1) == 0);
+			if (result > prev || even_result > even_prev) {
+				/* print only 1 sample in 50000 */
+				if (q_buff[0] & 1)
+					prev = result + 50001;
+				else
+					even_prev = even_result + 1000;
+				fprintf(stderr, "N : ");
+				BN_print_fp(stderr, N);
+				fprintf(stderr, "\n");
+				fprintf(stderr, "P : ");
+				BN_print_fp(stderr, P);
+				fprintf(stderr, "\n");
+
+				fprintf(stderr, "Q : ");
+				BN_print_fp(stderr, Q);
+				fprintf(stderr, "\nQd: ");
+				dcrypto_print(stderr, &q,
+						BN_num_bytes(Q));
+				fprintf(stderr, "\n");
+
+				fprintf(stderr, "R : ");
+				BN_print_fp(stderr, R);
+				fprintf(stderr, "\nRd: ");
+				dcrypto_print(stderr, &r,
+						BN_num_bytes(R));
+				fprintf(stderr, "\n");
+			}
+		}
+	}
+	if (result)
+		fprintf(stderr, "DCRYPTO_bn_div: failures=%u, with even Q=%u\n",
+			result, even_result);
+	BN_CTX_end(ctx);
+	BN_CTX_free(ctx);
+	return result;
+}
+
+/* Testing division where N=P*Q + R */
+int test_bn_div(void)
 {
 	const int NSIZE = MAX_BN_TEST_SIZE;
 	const int PSIZE = MAX_BN_TEST_SIZE / 2;
@@ -436,8 +614,17 @@ uint64_t fips_trng_rand32(void)
 
 int main(void)
 {
-	assert(test_bn_modinv() == 0);
+	printf("test_bn_div_rand_exactdiv(): ");
+	assert(test_bn_div_rand_exactdiv() == 0);
+	printf("PASS\n");
+	printf("test_bn_div_exactdiv(): ");
+	assert(test_bn_div_exactdiv() == 0);
+	printf("PASS\n");
+	printf("test_bn_div(): ");
 	assert(test_bn_div() == 0);
-	fprintf(stderr, "PASS\n");
+	printf("PASS\n");
+	printf("test_bn_modinv(): ");
+	assert(test_bn_modinv() == 0);
+	printf("PASS\n");
 	return 0;
 }
