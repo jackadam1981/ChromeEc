@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b4a1d1e_07db7881",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4070,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-05-25T20:00:27Z",
+      "side": 1,
+      "message": "used `sizeof()`",
+      "parentUuid": "dc745042_124a1038",
+      "range": {
+        "startLine": 4070,
+        "startChar": 32,
+        "endLine": 4070,
+        "endChar": 33
+      },
+      "revId": "86abacb2e57fdd33e73a9ef2e59dddbf5ec651b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "705b5e6a_5309e807",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-05-25T19:30:54Z",
       "side": 1,
       "message": "use `MAX_TIME_MS`?",
+      "range": {
+        "startLine": 4073,
+        "startChar": 33,
+        "endLine": 4073,
+        "endChar": 56
+      },
+      "revId": "86abacb2e57fdd33e73a9ef2e59dddbf5ec651b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af934c7d_e64869cc",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4073,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-05-25T20:00:27Z",
+      "side": 1,
+      "message": "MAX_TIME_MS just happens to match the all ones value, but logically it is not a mask, I think this expression is clearer.",
+      "parentUuid": "705b5e6a_5309e807",
       "range": {
         "startLine": 4073,
         "startChar": 33,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1136e49_23d34885",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4086,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-05-25T20:00:27Z",
+      "side": 1,
+      "message": "the GSC side code will never create multiple timespan entries, but changed just in case.",
+      "parentUuid": "266e6e47_924f9901",
+      "range": {
+        "startLine": 4086,
+        "startChar": 13,
+        "endLine": 4086,
+        "endChar": 14
+      },
+      "revId": "86abacb2e57fdd33e73a9ef2e59dddbf5ec651b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37d285ae_aa046ad0",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-05-25T19:30:54Z",
       "side": 1,
       "message": "can you right alight these values too?",
+      "range": {
+        "startLine": 4089,
+        "startChar": 21,
+        "endLine": 4089,
+        "endChar": 27
+      },
+      "revId": "86abacb2e57fdd33e73a9ef2e59dddbf5ec651b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c531218c_53519a49",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4089,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-05-25T20:00:27Z",
+      "side": 1,
+      "message": "aligned at 4, but timeouts could be longer",
+      "parentUuid": "37d285ae_aa046ad0",
       "range": {
         "startLine": 4089,
         "startChar": 21,
