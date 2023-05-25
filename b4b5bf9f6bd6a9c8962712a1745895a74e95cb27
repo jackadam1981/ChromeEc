@@ -22,6 +22,30 @@
       },
       "revId": "b4b5bf9f6bd6a9c8962712a1745895a74e95cb27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91d6d507_1b8038c1",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-25T04:11:07Z",
+      "side": 1,
+      "message": "hmm.. maybe the issue is that gpio_unused()\nsets `GPIO_INPUT_PULL_UP`.\nwe probably need `GPIO_INPUT` to avoid the pull-up.",
+      "parentUuid": "cd5fe024_8fe8455c",
+      "range": {
+        "startLine": 79,
+        "startChar": 43,
+        "endLine": 79,
+        "endChar": 62
+      },
+      "revId": "b4b5bf9f6bd6a9c8962712a1745895a74e95cb27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
