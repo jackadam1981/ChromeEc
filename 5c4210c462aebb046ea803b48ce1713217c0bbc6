@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d326a43_e701a581",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 1728,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-05-26T23:47:31Z",
+      "side": 1,
+      "message": "Is it necessary to save it to a variable and then echo it? Simply execute the command?",
+      "range": {
+        "startLine": 1728,
+        "startChar": 33,
+        "endLine": 1728,
+        "endChar": 46
+      },
+      "revId": "5c4210c462aebb046ea803b48ce1713217c0bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
