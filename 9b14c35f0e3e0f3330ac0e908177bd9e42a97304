@@ -193,6 +193,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b6a2bab_cd8c4038",
+        "filename": "test/build.mk",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-26T22:35:08Z",
+      "side": 1,
+      "message": "I think this CL looks good for submission, except that the tests are not running on the device. AFAICT, for the tests in *this individual CL*, there\u0027s no dependency on sensor state or other things that need to be mocked. If that\u0027s the case, can we remove the `mocklist` file from this CL and add the tests to run on device?\n\nThen in the following CLs that do require some mocking (such as https://crrev.com/c/4542368), we could create a new test file (e.g., `test/fpsensor_auth_crypto_mock.c`) for the tests that require mocks and cannot run on device. \n\nThat will make it easier to keep the tests that require mocks separate and at least start running some of the tests on device.",
+      "parentUuid": "e1948a06_835a9caa",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6095e7f3_b2033270",
         "filename": "test/fpsensor_auth_crypto.cc",
         "patchSetId": 15
