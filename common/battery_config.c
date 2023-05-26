@@ -21,10 +21,11 @@
 #include "console.h"
 #include "cros_board_info.h"
 #include "hooks.h"
+#include "system.h"
 #include "util.h"
 
-#define CPRINTF(format, args...) cprintf(CC_SYSTEM, "BCNF " format, ##args)
-#define CPRINTS(format, args...) cprints(CC_SYSTEM, "BCNF " format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, "BCFG " format, ##args)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, "BCFG " format, ##args)
 
 test_export_static int batt_conf_read(enum cbi_data_tag tag, uint8_t *data,
 				      uint8_t size)
@@ -112,10 +113,6 @@ batt_conf_read_fuel_gauge_info(struct board_batt_params *info)
 	struct fuel_gauge_info *fg = &info->fuel_gauge;
 	uint8_t d8;
 
-	batt_conf_read(CBI_TAG_FUEL_GAUGE_MANUF_NAME,
-		       (uint8_t *)&fg->manuf_name, sizeof(fg->manuf_name));
-	batt_conf_read(CBI_TAG_FUEL_GAUGE_DEVICE_NAME,
-		       (uint8_t *)&fg->device_name, sizeof(fg->device_name));
 	if (batt_conf_read(CBI_TAG_FUEL_GAUGE_FLAGS, &d8, sizeof(d8)) ==
 	    EC_SUCCESS)
 		fg->override_nil = d8 & BIT(0) ? 1 : 0;
@@ -167,14 +164,56 @@ batt_conf_read_battery_info(struct board_batt_params *info)
 	return EC_SUCCESS;
 }
 
+#define SYSJUMP_TAG_BATTERY_CONFIG 0x4243 /* "BC" */
+#define SYSJUMP_VER_BATTERY_CONFIG 0
+
+static void batt_conf_save(void)
+{
+	int rv = system_add_jump_tag(SYSJUMP_TAG_BATTERY_CONFIG,
+				     SYSJUMP_VER_BATTERY_CONFIG,
+				     sizeof(default_battery_conf),
+				     &default_battery_conf);
+
+	if (rv)
+		CPRINTS("Failed to save conf (%d)", rv);
+}
+DECLARE_HOOK(HOOK_SYSJUMP, batt_conf_save, HOOK_PRIO_DEFAULT);
+
+static int batt_conf_load(struct board_batt_params *conf)
+{
+	const struct board_batt_params *p;
+	int version, size;
+
+	p = (const struct board_batt_params *)system_get_jump_tag(
+		SYSJUMP_TAG_BATTERY_CONFIG, &version, &size);
+
+	CPRINTS("p=%p version=%d size=%d", p, version, size);
+	if (!p || version != SYSJUMP_VER_BATTERY_CONFIG || size != sizeof(*p)) {
+		return EC_ERROR_NOT_FOUND;
+	}
+
+	memcpy(conf, p, sizeof(*conf));
+
+	return EC_SUCCESS;
+}
+
 test_export_static void batt_conf_main(void)
 {
 	CPRINTS("%s", __func__);
-	batt_conf_read_fuel_gauge_info(&default_battery_conf);
-	batt_conf_read_battery_info(&default_battery_conf);
+	if (!system_is_in_rw()) {
+		batt_conf_read_fuel_gauge_info(&default_battery_conf);
+		batt_conf_read_battery_info(&default_battery_conf);
+	} else {
+		/* We are in RW but CBI may not have battery config. */
+		if (batt_conf_load(&default_battery_conf)) {
+			/* fall back to the legacy method. */
+			CPRINTS("Failed to load conf. Fall back to detection");
+			init_battery_type();
+		}
+	}
 	CPRINTS("%s done", __func__);
 }
-DECLARE_HOOK(HOOK_INIT, batt_conf_main, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, batt_conf_main, HOOK_PRIO_POST_I2C);
 
 #ifdef CONFIG_CMD_BATTERY_CONFIG
 static struct board_batt_params scratch_battery_conf;

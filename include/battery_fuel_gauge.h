@@ -47,13 +47,13 @@ struct fet_info {
 };
 
 struct fuel_gauge_info {
-#ifdef CONFIG_BATTERY_CONFIG_IN_CBI
-	char manuf_name[32];
-	char device_name[32];
-#else
+	/*
+	 * These are used only for battery detection, thus, unused in BCIC.
+	 * Host can read them from CBI if needed.
+	 */
 	const char *manuf_name;
 	const char *device_name;
-#endif
+
 	uint8_t override_nil;
 	struct ship_mode_info ship_mode;
 	struct sleep_mode_info sleep_mode;
@@ -71,11 +71,8 @@ struct board_batt_params {
 };
 
 /* Forward declare board specific data used by common code */
-#ifdef CONFIG_BATTERY_CONFIG_IN_CBI
 extern struct board_batt_params default_battery_conf;
-#else
 extern const struct board_batt_params board_battery_info[];
-#endif
 extern const enum battery_type DEFAULT_BATTERY_TYPE;
 
 #ifdef CONFIG_BATTERY_MEASURE_IMBALANCE
@@ -108,6 +105,16 @@ void battery_set_fixed_battery_type(int type);
 __override_proto int board_get_default_battery_type(void);
 
 /**
+ * Detect a battery model.
+ */
+void init_battery_type(void);
+
+/**
+ * Return struct board_batt_params of the battery.
+ */
+const struct board_batt_params *get_batt_params(void);
+
+/**
  * Return 1 if CFET is disabled, 0 if enabled. -1 if an error was encountered.
  * If the CFET mask is not defined, it will return 0.
  */
@@ -119,15 +126,5 @@ int battery_is_charge_fet_disabled(void);
  * @return	0 if successful, non-zero if error occurred
  */
 enum ec_error_list battery_sleep_fuel_gauge(void);
-
-#ifdef CONFIG_BATTERY_CONFIG_IN_CBI
-/**
- * Return struct board_batt_params of default battery.
- */
-inline struct board_batt_params *get_batt_params(void)
-{
-	return &default_battery_conf;
-}
-#endif
 
 #endif /* __CROS_EC_BATTERY_FUEL_GAUGE_H */
