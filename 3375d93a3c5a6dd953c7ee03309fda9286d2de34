@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2fec939_c0cc36e9",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-26T18:36:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "341de2b1_9bdee855",
+      "range": {
+        "startLine": 1436,
+        "startChar": 7,
+        "endLine": 1436,
+        "endChar": 19
+      },
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78084eff_29f905d0",
@@ -78,6 +102,30 @@
       "writtenOn": "2023-04-29T02:56:13Z",
       "side": 1,
       "message": "Similar here, `ec.old.bin`?",
+      "range": {
+        "startLine": 1442,
+        "startChar": 27,
+        "endLine": 1442,
+        "endChar": 42
+      },
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "157b180c_b405afad",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1442,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-26T18:36:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78084eff_29f905d0",
       "range": {
         "startLine": 1442,
         "startChar": 27,
@@ -111,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d9f565d_335a221d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-26T18:36:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0d108bd_f2e124a3",
+      "range": {
+        "startLine": 1547,
+        "startChar": 9,
+        "endLine": 1547,
+        "endChar": 20
+      },
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cd3c722_60c99bb4",
@@ -124,6 +196,30 @@
       "writtenOn": "2023-04-29T02:56:13Z",
       "side": 1,
       "message": "`current` here.",
+      "range": {
+        "startLine": 1548,
+        "startChar": 16,
+        "endLine": 1548,
+        "endChar": 19
+      },
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a7fe17_83233733",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-26T18:36:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cd3c722_60c99bb4",
       "range": {
         "startLine": 1548,
         "startChar": 16,
@@ -195,6 +291,30 @@
       "side": 1,
       "message": "OK. Makes sense to have a separate function to iterate all the preserved sections.",
       "parentUuid": "c96952ef_00fb7ffe",
+      "range": {
+        "startLine": 1654,
+        "startChar": 0,
+        "endLine": 1660,
+        "endChar": 1
+      },
+      "revId": "3375d93a3c5a6dd953c7ee03309fda9286d2de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea76cf7_db7521ca",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1660,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-26T18:36:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c2668bd_b532c77c",
       "range": {
         "startLine": 1654,
         "startChar": 0,
