@@ -56,6 +56,30 @@
       },
       "revId": "8cef8c47aa7137c4b7c163e817cb2f97e4b86558",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f735b783_035c6782",
+        "filename": "zephyr/program/rex/screebo/src/usb_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-05-26T01:19:36Z",
+      "side": 1,
+      "message": "Thanks for your reminder,\n\nI add `board_get_usb_pd_port_count()` in CL:4570003.\n\nthere is no risk of a missing port0 on Screebo because both the tcpc and ppc are the same between HB and USB3 port0, so we provide default chips for port0.",
+      "parentUuid": "1b335bb9_f5f0d2e4",
+      "range": {
+        "startLine": 151,
+        "startChar": 12,
+        "endLine": 151,
+        "endChar": 24
+      },
+      "revId": "8cef8c47aa7137c4b7c163e817cb2f97e4b86558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
