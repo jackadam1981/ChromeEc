@@ -70,6 +70,23 @@
       "parentUuid": "948da510_ea8157c0",
       "revId": "43a1d94326d4caf61ef0669a5cbcd170936ae273",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb730dff_145d8723",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512643
+      },
+      "writtenOn": "2023-05-26T06:54:06Z",
+      "side": 1,
+      "message": "Per review gpio and update by Egg(b/274707841#comment14 and b/274707841#comment15), the gpio settings should be good.",
+      "revId": "43a1d94326d4caf61ef0669a5cbcd170936ae273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
