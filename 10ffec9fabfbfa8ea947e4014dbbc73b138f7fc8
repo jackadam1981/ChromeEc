@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad724b0_2167bc78",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 34
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-26T22:21:37Z",
+      "side": 1,
+      "message": "Since this is only needed for these tests, can you move the initialization so it only happens before these tests?",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 17
+      },
+      "revId": "10ffec9fabfbfa8ea947e4014dbbc73b138f7fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
