@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec14680_8e4e2878",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 48
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-26T22:37:28Z",
+      "side": 1,
+      "message": "Since we\u0027re still waiting on some resolution for this one, can you move it before the first CL that needs it? I think that CL is https://crrev.com/c/3915748. That will let us go ahead and submit these other CLs while this one is pending.",
+      "revId": "a65347b224b9dfd7b28e91e2af70f95770c74c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
