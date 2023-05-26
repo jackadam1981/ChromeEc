@@ -52,6 +52,24 @@
       "parentUuid": "958244f3_74b8041c",
       "revId": "4bd705ffa6b507570c1fbad61aa87addb1c023cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "729dceef_7a38b0f0",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2023-05-26T20:36:32Z",
+      "side": 0,
+      "message": "Depends on the change, but this is safe as an unused macro with no code impact. The commit queue validates the build works.",
+      "parentUuid": "2fed5140_f499ca3c",
+      "revId": "4bd705ffa6b507570c1fbad61aa87addb1c023cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
