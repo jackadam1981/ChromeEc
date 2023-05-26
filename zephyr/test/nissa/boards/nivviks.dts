@@ -1,0 +1,18 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "../program/nissa/nivviks/cbi.dtsi"
+/*
+#include "../program/nissa/nivviks/motionsense.dtsi"
+*/
+
+/ {
+  named-gpios {
+    gpio_fan_enable: fan-enable {
+      gpios = <&gpio6 3 GPIO_OUTPUT>;
+      no-auto-init;
+    };
+  };
+};

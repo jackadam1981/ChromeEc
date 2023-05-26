@@ -24,3 +24,14 @@ target_sources_ifdef(
         app PRIVATE
         src/common.c
         ${PLATFORM_EC_PROGRAM_DIR}/nissa/src/common.c)
+
+target_sources_ifdef(
+        CONFIG_TEST_NISSA_NIVVIKS
+        app PRIVATE
+        src/nivviks.c
+        ${PLATFORM_EC_PROGRAM_DIR}/nissa/nivviks/src/fan.c
+        #${PLATFORM_EC_PROGRAM_DIR}/nissa/nivviks/src/form_factor.c
+        #${PLATFORM_EC_PROGRAM_DIR}/nissa/nivviks/src/led.c
+)
+# charger.c and usbc.c are probably similar for both nivviks and nereid; exclude
+# them for now.
