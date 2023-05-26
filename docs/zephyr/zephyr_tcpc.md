@@ -9,8 +9,30 @@ Enable support for a [USB-C] [TCPC].
 ## Kconfig Options
 
 See the file [Kconfig.tcpm] for all Kconfig options related to [TCPC].
-You must enable the specific Kconfig option matching the TCPC chips
-used on your design.
+
+Note that the Kconfig option to enable the TCPC driver is automatically enabled
+based on the devicetree contents.
+
+For example, a devicetree can enable the Analogix ANX7447 device with this
+devicetree snippet:
+
+```c
+	tcpc_port0: anx7447-tcpc@2c {
+		compatible = "analogix,anx7447-tcpc";
+		status = "okay";
+		reg = <0x2c>;
+		/* ... other required properties */
+	};
+```
+
+The build system automatically enables the corresponding Kconfig option
+`CONFIG_PLATFORM_EC_USB_PD_TCPM_ANX7447` because the devicetree contains a node
+with the compatible string `"analogix,anx7447-tcpc"`.
+
+You should check the [Kconfig.tcpm] file for any Kconfig option related to the
+specific TCPC drivers used by your design. For the Analogix TCPC, this includes
+`CONFIG_PLATFORM_EC_USB_PD_TCPM_ANX7447_AUX_PU_PD` and potentially other
+options.
 
 ## Devicetree Nodes
 
