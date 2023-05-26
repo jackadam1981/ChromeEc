@@ -93,6 +93,30 @@
       },
       "revId": "9a6cee5ca8bbdfef920e34f0b102d867a2ad82fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b38185a_59338ebe",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 192
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-26T23:21:59Z",
+      "side": 1,
+      "message": "Basically, I want to have a way to unit test the \"core functionality\" of each new command without having to rely on indirect testing through `test_send_host_command`. This will make the Zephyr port simpler and also lets us do better unit testing since we can more easily write unit tests for the core functionality itself without having to call the host command.\n\nIn this case, the helper function would be something like:\n\n```\nvoid preload_template(uint32_t offset, uint16_t idx, bool xfer_complete)\n{\n  // logic from lines 526 to 544\n}\n\nstatic enum ec_status\nfp_command_preload_template(struct host_cmd_handler_args *args)\n{\n\tconst auto *params \u003d static_cast\u003cconst ec_params_fp_preload_template *\u003e(\n\t\targs-\u003eparams);\n\n\tScopedFastCpu fast_cpu;\n\n\tuint32_t size \u003d params-\u003esize \u0026 ~FP_TEMPLATE_COMMIT;\n\tint xfer_complete \u003d params-\u003esize \u0026 FP_TEMPLATE_COMMIT;\n\tuint32_t offset \u003d params-\u003eoffset;\n\tuint16_t idx \u003d params-\u003efgr;\n\t\n\tpreload_template(offset, idx, xfer_complete);\n\t\n\treturn EC_SUCCESS;\n}\n```\n\n(This is kind of pseudo-code since I didn\u0027t include everything, but hopefully shows the idea.)",
+      "parentUuid": "7e3715ec_6dc740d4",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 0
+      },
+      "revId": "9a6cee5ca8bbdfef920e34f0b102d867a2ad82fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
