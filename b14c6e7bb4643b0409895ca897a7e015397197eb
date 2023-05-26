@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b16061c2_e812bdd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-05-26T21:29:44Z",
+      "side": 1,
+      "message": "Here are the differences that I\u0027m seeing on a direct comparison of builds before and after this patch:\n1. With this patch in place `memmove` starts at address `0x000000001009b814` while it previously started at `0x000000001009b80c`. There\u0027s a difference of 8 bytes that continues throughout the application. After this point, the difference is always an 8 byte offset.\n2. Within `memmove` some branch addresses change\n\nOverall I think this is an artifact of LTO due to changing the addresses utilized by `rwsig` and I don\u0027t believe it is a concern. I tried disabling LTO and comparing without it but that leads to link errors due to the application growing too large for the EC.",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "b14c6e7bb4643b0409895ca897a7e015397197eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
