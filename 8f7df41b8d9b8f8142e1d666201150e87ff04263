@@ -50,6 +50,24 @@
       "message": "please note to implement board_get_usb_pd_port_count() for your board in a future patch.\nexample:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4564099\n\nto avoid EC crashing when no USB DB is configured.",
       "revId": "8f7df41b8d9b8f8142e1d666201150e87ff04263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5460bba_3d064a37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-05-26T01:04:51Z",
+      "side": 1,
+      "message": "Thanks, I submit CL:4570003 for this.",
+      "parentUuid": "1eb2052a_cc1f3687",
+      "revId": "8f7df41b8d9b8f8142e1d666201150e87ff04263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
