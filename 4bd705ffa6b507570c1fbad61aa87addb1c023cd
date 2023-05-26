@@ -34,6 +34,24 @@
       "parentUuid": "8aacb203_81554369",
       "revId": "4bd705ffa6b507570c1fbad61aa87addb1c023cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fed5140_f499ca3c",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1351748
+      },
+      "writtenOn": "2023-05-26T20:02:34Z",
+      "side": 0,
+      "message": "Do I have to build this thing and test it on a physical device to hit the verified button?\n\nI have never done that before.",
+      "parentUuid": "958244f3_74b8041c",
+      "revId": "4bd705ffa6b507570c1fbad61aa87addb1c023cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
