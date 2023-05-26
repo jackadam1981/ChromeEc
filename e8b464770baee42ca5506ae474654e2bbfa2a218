@@ -142,6 +142,30 @@
       },
       "revId": "e8b464770baee42ca5506ae474654e2bbfa2a218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec4faa86_918d9cbb",
+        "filename": "zephyr/program/rex/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-26T20:03:14Z",
+      "side": 1,
+      "message": "please note that we have some existing chrome ec build targets\nnamed \u003cboard\u003e_ish and at least one deleted one (atlas_ish).\nthese are all ISH images (i.e. minute-ia arch).\n\nif i understand correctly, the top level \"rex-ish\" device\nwill have 2 \"EC\" images. one for the ISH and one for the\ndiscrete EC. presumably, the discrete EC image will have\nredundant functionality removed compared to the regular\ndevice EC image.\n\ngiven the `rex-sans-sensors` origin of this build target name,\ni\u0027m assuming this is the de-featured EC image.\nwhat is the associated ISH image called?",
+      "parentUuid": "7b259ad3_ba3cb875",
+      "range": {
+        "startLine": 37,
+        "startChar": 17,
+        "endLine": 37,
+        "endChar": 28
+      },
+      "revId": "e8b464770baee42ca5506ae474654e2bbfa2a218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
