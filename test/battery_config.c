@@ -10,6 +10,7 @@
 #include "console.h"
 #include "cros_board_info.h"
 #include "ec_commands.h"
+#include "system.h"
 #include "test_util.h"
 #include "util.h"
 #include "write_protect.h"
@@ -20,12 +21,19 @@ int batt_conf_read_sleep_mode(struct board_batt_params *info);
 int batt_conf_read_fet_info(struct board_batt_params *info);
 int batt_conf_read_fuel_gauge_info(struct board_batt_params *info);
 int batt_conf_read_battery_info(struct board_batt_params *info);
+void batt_conf_main(void);
 
 struct board_batt_params default_battery_conf = {};
 
+static bool init_battery_type_called;
+
+void init_battery_type(void)
+{
+	init_battery_type_called = true;
+}
+
 static struct board_batt_params conf_in_cbi = {
 	.fuel_gauge = {
-		.manuf_name = { 'x', 'y', 'z' },
 		.ship_mode = {
 			.reg_addr = 0xaa,
 			.reg_data = {
@@ -49,6 +57,17 @@ static struct board_batt_params conf_in_cbi = {
 };
 
 static void test_setup(void)
+{
+	/* Make sure that write protect is disabled */
+	write_protect_set(0);
+
+	cbi_create();
+	cbi_write();
+
+	memset(&default_battery_conf, 0, sizeof(default_battery_conf));
+}
+
+static void test_setup_rw(void)
 {
 	/* Make sure that write protect is disabled */
 	write_protect_set(0);
@@ -91,7 +110,8 @@ DECLARE_EC_TEST(test_read_ship_mode)
 	uint8_t d8;
 
 	/* Read without data in CBI. Test ERROR_UNKNOWN is correctly ignored. */
-	zassert_equal(batt_conf_read_ship_mode(get_batt_params()), EC_SUCCESS);
+	zassert_equal(batt_conf_read_ship_mode(&default_battery_conf),
+		      EC_SUCCESS);
 
 	/* Validate default info remains unchanged. */
 	zassert_equal(dflt->reg_addr, 0);
@@ -133,7 +153,8 @@ DECLARE_EC_TEST(test_read_sleep_mode)
 	uint8_t d8;
 
 	/* Read without data in CBI. Test ERROR_UNKNOWN is correctly ignored. */
-	zassert_equal(batt_conf_read_sleep_mode(get_batt_params()), EC_SUCCESS);
+	zassert_equal(batt_conf_read_sleep_mode(&default_battery_conf),
+		      EC_SUCCESS);
 
 	/* Validate default info remains unchanged. */
 	zassert_equal(dflt->reg_addr, 0);
@@ -153,7 +174,8 @@ DECLARE_EC_TEST(test_read_sleep_mode)
 		      EC_SUCCESS);
 
 	/* Read */
-	zassert_equal(batt_conf_read_sleep_mode(get_batt_params()), EC_SUCCESS);
+	zassert_equal(batt_conf_read_sleep_mode(&default_battery_conf),
+		      EC_SUCCESS);
 
 	/* Validate default info == info in cbi. */
 	zassert_equal(dflt->reg_addr, info->reg_addr);
@@ -171,7 +193,8 @@ DECLARE_EC_TEST(test_read_fet_info)
 	uint8_t d8;
 
 	/* Read without data in CBI. Test ERROR_UNKNOWN is correctly ignored. */
-	zassert_equal(batt_conf_read_fet_info(get_batt_params()), EC_SUCCESS);
+	zassert_equal(batt_conf_read_fet_info(&default_battery_conf),
+		      EC_SUCCESS);
 
 	/* Validate default info remains unchanged. */
 	zassert_equal(dflt->reg_addr, 0);
@@ -203,7 +226,8 @@ DECLARE_EC_TEST(test_read_fet_info)
 		      EC_SUCCESS);
 
 	/* Read */
-	zassert_equal(batt_conf_read_fet_info(get_batt_params()), EC_SUCCESS);
+	zassert_equal(batt_conf_read_fet_info(&default_battery_conf),
+		      EC_SUCCESS);
 
 	zassert_equal(dflt->reg_addr, info->reg_addr);
 	zassert_equal(dflt->reg_mask, info->reg_mask);
@@ -218,15 +242,15 @@ DECLARE_EC_TEST(test_read_fuel_gauge_info)
 	struct fuel_gauge_info *dflt = &default_battery_conf.fuel_gauge;
 	enum cbi_data_tag tag;
 	uint8_t d8;
-	const char empty[32] = {};
 
 	/* Read without data in CBI. Test ERROR_UNKNOWN is correctly ignored. */
-	zassert_equal(batt_conf_read_fuel_gauge_info(get_batt_params()),
+	zassert_equal(batt_conf_read_fuel_gauge_info(&default_battery_conf),
 		      EC_SUCCESS);
 
-	/* Validate default info remains unchanged. */
-	zassert_equal(memcmp(dflt->manuf_name, empty, sizeof(empty)), 0);
-	zassert_equal(memcmp(dflt->device_name, empty, sizeof(empty)), 0);
+	/*
+	 * Validate default info remains unchanged. manuf_name and device_name
+	 * are unused in BCIC.
+	 */
 	zassert_equal(dflt->override_nil, 0);
 
 	tag = CBI_TAG_FUEL_GAUGE_MANUF_NAME;
@@ -242,16 +266,10 @@ DECLARE_EC_TEST(test_read_fuel_gauge_info)
 	zassert_equal(cbi_set_board_info(tag, &d8, sizeof(d8)), EC_SUCCESS);
 
 	/* Read */
-	zassert_equal(batt_conf_read_fuel_gauge_info(get_batt_params()),
+	zassert_equal(batt_conf_read_fuel_gauge_info(&default_battery_conf),
 		      EC_SUCCESS);
 
 	/* Validate default info == info in cbi. */
-	zassert_equal(memcmp(dflt->manuf_name, info->manuf_name,
-			     sizeof(info->manuf_name)),
-		      0);
-	zassert_equal(memcmp(dflt->device_name, info->device_name,
-			     sizeof(info->device_name)),
-		      0);
 	zassert_equal(dflt->override_nil, 1);
 
 	return EC_SUCCESS;
@@ -264,7 +282,7 @@ DECLARE_EC_TEST(test_read_battery_info)
 	enum cbi_data_tag tag;
 
 	/* Read without data in CBI. Test ERROR_UNKNOWN is correctly ignored. */
-	zassert_equal(batt_conf_read_battery_info(get_batt_params()),
+	zassert_equal(batt_conf_read_battery_info(&default_battery_conf),
 		      EC_SUCCESS);
 
 	/* Validate default info remains unchanged. */
@@ -332,7 +350,7 @@ DECLARE_EC_TEST(test_read_battery_info)
 		      EC_SUCCESS);
 
 	/* Read */
-	zassert_equal(batt_conf_read_battery_info(get_batt_params()),
+	zassert_equal(batt_conf_read_battery_info(&default_battery_conf),
 		      EC_SUCCESS);
 
 	/* Validate default info == info in cbi. */
@@ -351,21 +369,64 @@ DECLARE_EC_TEST(test_read_battery_info)
 	return EC_SUCCESS;
 }
 
+DECLARE_EC_TEST(test_batt_conf_main)
+{
+	struct board_batt_params *conf = &default_battery_conf;
+
+	memcpy(conf, &conf_in_cbi, sizeof(*conf));
+
+	/* Rerun main. Config should be saved in jump tag. */
+	batt_conf_main();
+
+	system_run_image_copy(EC_IMAGE_RW);
+
+	/* We shouldn't reach here. */
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
+DECLARE_EC_TEST(test_batt_conf_main_rw)
+{
+	struct board_batt_params *conf = &default_battery_conf;
+
+	/*
+	 * batt_conf_main has run in RW. Config should have been loaded from
+	 * jump tag.
+	 */
+	zassert_equal(memcmp(conf, &conf_in_cbi, sizeof(*conf)), 0);
+	zassert_equal(init_battery_type_called, false);
+
+	return EC_SUCCESS;
+}
+
 TEST_SUITE(test_suite_battery_config)
 {
-	ztest_test_suite(
-		test_battery_config,
-		ztest_unit_test_setup_teardown(test_batt_conf_read, test_setup,
-					       test_teardown),
-		ztest_unit_test_setup_teardown(test_read_ship_mode, test_setup,
-					       test_teardown),
-		ztest_unit_test_setup_teardown(test_read_sleep_mode, test_setup,
-					       test_teardown),
-		ztest_unit_test_setup_teardown(test_read_fet_info, test_setup,
-					       test_teardown),
-		ztest_unit_test_setup_teardown(test_read_fuel_gauge_info,
-					       test_setup, test_teardown),
-		ztest_unit_test_setup_teardown(test_read_battery_info,
-					       test_setup, test_teardown));
-	ztest_run_test_suite(test_battery_config);
+	if (system_get_image_copy() == EC_IMAGE_RO) {
+		ztest_test_suite(
+			test_battery_config,
+			ztest_unit_test_setup_teardown(
+				test_batt_conf_read, test_setup, test_teardown),
+			ztest_unit_test_setup_teardown(
+				test_read_ship_mode, test_setup, test_teardown),
+			ztest_unit_test_setup_teardown(test_read_sleep_mode,
+						       test_setup,
+						       test_teardown),
+			ztest_unit_test_setup_teardown(
+				test_read_fet_info, test_setup, test_teardown),
+			ztest_unit_test_setup_teardown(
+				test_read_fuel_gauge_info, test_setup,
+				test_teardown),
+			ztest_unit_test_setup_teardown(test_read_battery_info,
+						       test_setup,
+						       test_teardown),
+			ztest_unit_test_setup_teardown(test_batt_conf_main,
+						       test_setup,
+						       test_teardown));
+		ztest_run_test_suite(test_battery_config);
+	} else {
+		ztest_test_suite(test_battery_config,
+				 ztest_unit_test_setup_teardown(
+					 test_batt_conf_main_rw, test_setup_rw,
+					 test_teardown));
+		ztest_run_test_suite(test_battery_config);
+	}
 }
