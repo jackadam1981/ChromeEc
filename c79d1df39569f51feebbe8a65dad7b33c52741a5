@@ -33,6 +33,24 @@
       "message": "Hi Patrick, could you have a look at this one? The coreboot linter complained about egrep usage and so I replaced every occurrence.",
       "revId": "c79d1df39569f51feebbe8a65dad7b33c52741a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd36a34_052a449f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1538056
+      },
+      "writtenOn": "2023-05-27T20:06:20Z",
+      "side": 1,
+      "message": "See also https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4389920",
+      "parentUuid": "485dd455_68b76e6a",
+      "revId": "c79d1df39569f51feebbe8a65dad7b33c52741a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
