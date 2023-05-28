@@ -22,6 +22,30 @@
       },
       "revId": "5e3254a9339658f2eb9e1b4924b04c4a506b6f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3387a3b5_8e76619c",
+        "filename": "zephyr/program/myst/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-28T13:04:48Z",
+      "side": 0,
+      "message": "In the GPIO table it was open-drain, but based on this CL it should be ODL.\nAdded \"override\" field to the GPIO table to match the reality.",
+      "parentUuid": "21475153_2ec1a64e",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "5e3254a9339658f2eb9e1b4924b04c4a506b6f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
