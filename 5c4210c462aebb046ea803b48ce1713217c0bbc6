@@ -22,6 +22,30 @@
       },
       "revId": "5c4210c462aebb046ea803b48ce1713217c0bbc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef83d87b_dd549025",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 1728,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-28T09:23:47Z",
+      "side": 1,
+      "message": "Yes, it is required, I started this command without variable and I saw it\u0027s not storing the result I was expecting",
+      "parentUuid": "1d326a43_e701a581",
+      "range": {
+        "startLine": 1728,
+        "startChar": 33,
+        "endLine": 1728,
+        "endChar": 46
+      },
+      "revId": "5c4210c462aebb046ea803b48ce1713217c0bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
