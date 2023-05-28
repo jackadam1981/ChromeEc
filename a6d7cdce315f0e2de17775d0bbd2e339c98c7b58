@@ -69,6 +69,30 @@
       },
       "revId": "a6d7cdce315f0e2de17775d0bbd2e339c98c7b58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce5b4ee_8e55938a",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-28T13:37:14Z",
+      "side": 1,
+      "message": "Not sure we could refer to alias in the device tree, will keep trying to figure this out",
+      "parentUuid": "5ceccfe7_b7c4cb6f",
+      "range": {
+        "startLine": 339,
+        "startChar": 2,
+        "endLine": 340,
+        "endChar": 40
+      },
+      "revId": "a6d7cdce315f0e2de17775d0bbd2e339c98c7b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
