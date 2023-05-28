@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee24136f_4f3767ab",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-28T13:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d220567c_7ab1a21a",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2453d1dc_1889a8d0",
@@ -109,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "018a43b7_799f6c2e",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-28T13:19:45Z",
+      "side": 1,
+      "message": "Yes, we don\u0027t need to touch DP_EN as long as it is low, but as per documentation of ANX7452, DP_EN or USB_EN are looked up for power supply, hence added these gentle checks in the driver, to print if they are in unexpected states.",
+      "parentUuid": "6b881c7b_eb86cc65",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ed8576f_5190a73d",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 1
@@ -120,6 +156,24 @@
       "writtenOn": "2023-05-24T13:55:32Z",
       "side": 1,
       "message": "add braces",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91dc80c_d22f9f38",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-28T13:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ed8576f_5190a73d",
       "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -179,6 +233,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfca319b_7ffbba29",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-28T13:19:45Z",
+      "side": 1,
+      "message": "I am just trying to understand\n\nThen we don\u0027t need two versions for ANX7452 DB right, if this fix is not required?\n\nIsn\u0027t supporting P1 the use-case as per this bug, b:279647370 ?",
+      "parentUuid": "0eba78af_76573ac9",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1617fe01_3c24b7f7",
         "filename": "driver/retimer/anx7452.h",
         "patchSetId": 1
@@ -208,6 +280,24 @@
       "side": 1,
       "message": "It will be used by emulator for testing update register value",
       "parentUuid": "1617fe01_3c24b7f7",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01328775_5ee0d282",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-28T13:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9c32244_0e8a83d9",
       "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
