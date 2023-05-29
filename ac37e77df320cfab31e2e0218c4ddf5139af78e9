@@ -214,6 +214,30 @@
       },
       "revId": "ac37e77df320cfab31e2e0218c4ddf5139af78e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c06223c2_9caff549",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 33
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-29T11:01:04Z",
+      "side": 1,
+      "message": "I just removed this function, and added more \"checks\" to check we are in the expected state.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3915754/268\n\nWithout this function, we will have a more complex state machine between fpsensor_auth_commands and fpsensor_state.",
+      "parentUuid": "9ce50ed5_782bfe9b",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 62
+      },
+      "revId": "ac37e77df320cfab31e2e0218c4ddf5139af78e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
