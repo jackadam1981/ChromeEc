@@ -217,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8273b9ff_4ea6a9a3",
+        "filename": "test/build.mk",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-29T06:49:44Z",
+      "side": 1,
+      "message": "Done.\n\nBut the idea of `test/fpsensor_auth_crypto_mock.c` doesn\u0027t work.\n\nBecause the main problem of the device test is not the `mock`, the problem is we are linked to the `fpsensor_state.cc`, and it will include fpesnsor_state.h \u0026 fpsensor_driver.h. That will end up with `\"Sensor type not defined!\"` in `driver/fingerprint/fpc/fpc_sensor.h`.\n\nAnd I don\u0027t want to do a refactor on the existing design of fpsensor driver interface.",
+      "parentUuid": "3b6a2bab_cd8c4038",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6095e7f3_b2033270",
         "filename": "test/fpsensor_auth_crypto.cc",
         "patchSetId": 15
