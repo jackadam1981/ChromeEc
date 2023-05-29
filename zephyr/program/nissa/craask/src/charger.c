@@ -54,3 +54,28 @@ __override void board_hibernate(void)
 	LOG_INF("Charger(s) hibernated");
 	cflush();
 }
+
+enum battery_present battery_is_present(void)
+{
+
+	static int count = 0;
+
+	/*static int first_check_done;*/
+	const struct gpio_dt_spec *batt_pres;
+
+	batt_pres = GPIO_DT_FROM_NODELABEL(gpio_ec_battery_pres_odl);
+
+	/* Wait for disconnected battery to wake up */
+	while (battery_get_disconnect_state() ==
+		    BATTERY_DISCONNECTED) {
+		LOG_INF("battery disconnected. delay100ms");
+		k_sleep(K_MSEC(100));
+		/* Give up waiting after 1 seconds */
+		if (++count > 10) {
+			break;
+		}
+	}
+
+	return gpio_pin_get_dt(batt_pres) ? BP_NO : BP_YES;
+
+}
