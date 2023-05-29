@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "784c123f_e63915ff",
+        "filename": "zephyr/program/nissa/yavilla/src/usbc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-05-29T06:46:51Z",
+      "side": 1,
+      "message": "No longer shared, so the polling is unneeded.\n\n```suggestion\n/* C0 interrupt can only be triggered by the charger */\nvoid usb_c0_interrupt(enum gpio_signal s)\n{\n\tsm5803_interrupt(0);\n}\n```",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 1
+      },
+      "revId": "eb99a52dfc99aef415091018095c1398d174a23b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
