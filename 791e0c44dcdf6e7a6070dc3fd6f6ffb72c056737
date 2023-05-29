@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ae0e1e_04862bf0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2023-05-29T01:38:05Z",
+      "side": 1,
+      "message": "Markarth should be a Zephyr project, please use the \"zmake\" command to verify again.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "791e0c44dcdf6e7a6070dc3fd6f6ffb72c056737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5f68cc28_482d3a8e",
