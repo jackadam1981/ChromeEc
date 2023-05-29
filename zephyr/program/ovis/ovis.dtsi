@@ -79,6 +79,13 @@
 	pinctrl-names = "default";
 };
 
+/* Required for npcx bindings */
+&cros_kb_raw {
+	status = "okay";
+	pinctrl-0 = <>;
+	pinctrl-names = "default";
+};
+
 /* Power switch logic input pads */
 &psl_in1_gpd2 {
 	/* LID_OPEN */
