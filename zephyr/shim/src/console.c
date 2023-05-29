@@ -439,10 +439,9 @@ int cputs(enum console_channel channel, const char *outstr)
 	return 0;
 }
 
-int cprintf(enum console_channel channel, const char *format, ...)
+int vcprintf(enum console_channel channel, const char *format, va_list args)
 {
 	int rv;
-	va_list args;
 	size_t len = 0;
 	char buff[CONFIG_SHELL_PRINTF_BUFF_SIZE];
 
@@ -450,9 +449,7 @@ int cprintf(enum console_channel channel, const char *format, ...)
 	if (console_channel_is_disabled(channel))
 		return EC_SUCCESS;
 
-	va_start(args, format);
 	rv = crec_vsnprintf(buff, CONFIG_SHELL_PRINTF_BUFF_SIZE, format, args);
-	va_end(args);
 	handle_sprintf_rv(rv, &len);
 
 	zephyr_print(buff, len);
@@ -460,10 +457,21 @@ int cprintf(enum console_channel channel, const char *format, ...)
 	return rv > 0 ? EC_SUCCESS : rv;
 }
 
-int cprints(enum console_channel channel, const char *format, ...)
+int cprintf(enum console_channel channel, const char *format, ...)
+{
+	va_list args;
+	int rv;
+
+	va_start(args, format);
+	rv = vcprintf(channel, format, args);
+	va_end(args);
+
+	return rv;
+}
+
+int vcprints(enum console_channel channel, const char *format, va_list args)
 {
 	int rv;
-	va_list args;
 	char buff[CONFIG_SHELL_PRINTF_BUFF_SIZE];
 	size_t len = 0;
 
@@ -481,10 +489,8 @@ int cprints(enum console_channel channel, const char *format, ...)
 			   " ");
 	handle_sprintf_rv(rv, &len);
 
-	va_start(args, format);
 	rv = crec_vsnprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
 			    format, args);
-	va_end(args);
 	handle_sprintf_rv(rv, &len);
 
 	rv = crec_snprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
@@ -494,4 +500,16 @@ int cprints(enum console_channel channel, const char *format, ...)
 	zephyr_print(buff, len);
 
 	return rv > 0 ? EC_SUCCESS : rv;
+}
+
+int cprints(enum console_channel channel, const char *format, ...)
+{
+	va_list args;
+	int rv;
+
+	va_start(args, format);
+	rv = vcprints(channel, format, args);
+	va_end(args);
+
+	return rv;
 }
