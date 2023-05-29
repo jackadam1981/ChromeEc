@@ -175,6 +175,14 @@ int cputs(enum console_channel channel, const char *outstr);
 __attribute__((__format__(__printf__, 2, 3))) int
 cprintf(enum console_channel channel, const char *format, ...);
 
+#ifdef CONFIG_ZEPHYR
+/**
+ * Print formatted output to the console channel. See cprintf for more details.
+ */
+__attribute__((__format__(__printf__, 2, 0))) int
+vcprintf(enum console_channel channel, const char *format, va_list args);
+#endif
+
 /**
  * Print formatted output with timestamp. This is like:
  *   cprintf(channel, "[<TIMESTAMP> " + format + "]\n", ...)
@@ -186,6 +194,14 @@ cprintf(enum console_channel channel, const char *format, ...);
  */
 __attribute__((__format__(__printf__, 2, 3))) int
 cprints(enum console_channel channel, const char *format, ...);
+
+#ifdef CONFIG_ZEPHYR
+/**
+ * Print formatted output with timestamp. See cprints for more details.
+ */
+__attribute__((__format__(__printf__, 2, 0))) int
+vcprints(enum console_channel channel, const char *format, va_list args);
+#endif
 
 /**
  * Flush the console output for all channels.
