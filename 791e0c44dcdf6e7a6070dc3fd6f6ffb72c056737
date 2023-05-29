@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f68cc28_482d3a8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2023-05-29T01:33:18Z",
+      "side": 1,
+      "message": "Checked the firmware candidate config in the file \"build/zephyr/markarth/build-rw/zephyr/.config\".\n\nCONFIG_PLATFORM_EC_BRINGUP is not set\nCONFIG_PLATFORM_EC_SYSTEM_UNLOCKED is not set\nCONFIG_PLATFORM_EC_I2C_DEBUG is not set\nCONFIG_PLATFORM_EC_BYPASS_CBI_EEPROM_WP_CHECK is not set\nCONFIG_PLATFORM_EC_CMD_GPIO_EXTENDED is not set\nCONFIG_PLATFORM_EC_CMD_POWERINDEBUG is not set",
+      "revId": "791e0c44dcdf6e7a6070dc3fd6f6ffb72c056737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
