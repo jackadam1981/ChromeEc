@@ -79,6 +79,15 @@
 	pinctrl-names = "default";
 };
 
+/* Required for npcx bindings */
+&cros_kb_raw {
+	status = "okay";
+	/* No KSO2 (it's inverted and implemented by GPIO) */
+	pinctrl-0 = <
+	>;
+	pinctrl-names = "default";
+};
+
 /* Power switch logic input pads */
 &psl_in1_gpd2 {
 	/* LID_OPEN */
