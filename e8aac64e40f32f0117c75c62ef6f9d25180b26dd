@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0e325e_633aad67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 269
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-29T08:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "850ffcb3_757bbb18",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "e8aac64e40f32f0117c75c62ef6f9d25180b26dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84285c85_0877ae14",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-26T22:59:40Z",
       "side": 1,
       "message": "Can we use `std::array` for these?",
+      "range": {
+        "startLine": 437,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 24
+      },
+      "revId": "e8aac64e40f32f0117c75c62ef6f9d25180b26dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "153432ef_760e1695",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 269
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-29T08:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84285c85_0877ae14",
       "range": {
         "startLine": 437,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d635f0b0_ddf72a34",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 269
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-29T08:36:44Z",
+      "side": 1,
+      "message": "The problem is the boringssl doesn\u0027t provide a good API to derive the public key from a private key.\nThe only way to simplify this is to randomly generate the key. But that may introduce about `(1e-970)` failure rate of this test.\n\nNote:\n```\n1e-970 ~\u003d ((2**256-N)/(2**256))**100\nN\u003d0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551\n```",
+      "parentUuid": "7d397bbc_a11eb384",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 48
+      },
+      "revId": "e8aac64e40f32f0117c75c62ef6f9d25180b26dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e20db5c2_474083b9",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a92576e1_6e991bd0",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 269
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-29T08:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e20db5c2_474083b9",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 536,
+        "endChar": 28
+      },
+      "revId": "e8aac64e40f32f0117c75c62ef6f9d25180b26dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d9f5f0f_cd8f95ae",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-05-26T22:59:40Z",
       "side": 1,
       "message": "Let\u0027s use `std::copy` since we switched over in the other CLs.",
+      "range": {
+        "startLine": 544,
+        "startChar": 1,
+        "endLine": 544,
+        "endChar": 7
+      },
+      "revId": "e8aac64e40f32f0117c75c62ef6f9d25180b26dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26437a98_692c86bc",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 269
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-29T08:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9f5f0f_cd8f95ae",
       "range": {
         "startLine": 544,
         "startChar": 1,
