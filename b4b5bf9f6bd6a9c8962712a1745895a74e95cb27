@@ -70,6 +70,30 @@
       },
       "revId": "b4b5bf9f6bd6a9c8962712a1745895a74e95cb27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25093437_c603f9b1",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-05-29T09:58:20Z",
+      "side": 1,
+      "message": "If there\u0027s a pull-whatever internally on the device side there probably should not be any bias on the EC side - certainly not on the opposite side.\n\n```\nanx-usb-c1-rt-dp-en \u003d \u0026gpio_usb_c1_rt_int_odl;\n...\ngpio_usb_c1_rt_int_odl: usb_c1_rt_int_odl {\n        gpios \u003d \u003c\u0026gpio7 2 GPIO_INPUT_PULL_UP\u003e;\n};\n```\n\nIs the definition above wrong? The net is named as \"odl\" open drain and pull down makes no sense, is the net misnamed? If there\u0027s a pull up on our side and down on the device then the line would float at some random value, it would explain why you  had to force it low. Either way, setting it as output AND putting a bias makes no sense, you\u0027d be just wasting power, the internal pull-up bit has to go regardless.",
+      "parentUuid": "23b99388_b433383a",
+      "range": {
+        "startLine": 79,
+        "startChar": 43,
+        "endLine": 79,
+        "endChar": 62
+      },
+      "revId": "b4b5bf9f6bd6a9c8962712a1745895a74e95cb27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
