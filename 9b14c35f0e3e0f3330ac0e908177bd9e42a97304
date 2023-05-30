@@ -241,6 +241,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d186ea0_7a45866d",
+        "filename": "test/build.mk",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-30T17:57:17Z",
+      "side": 1,
+      "message": "\u003e But the idea of test/fpsensor_auth_crypto_mock.c doesn\u0027t work.\n\nWhat I mean is that if you are going to add a `mocklist` file, then separate out the tests that require a mock into a separate test file. For example, [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4511814/42/test/fpsensor_auth_crypto.mocklist) you add a `mocklist` for `test/fpsensor_auth_crypto.cc`. However, the existing tests (e.g., `test_fp_create_ec_key_from_pubkey`) do not require a mock, so we can keep them in a separate test file from the set of tests that do require a mock (e.g., `test_fp_encrypt_decrypt_data`).",
+      "parentUuid": "8273b9ff_4ea6a9a3",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6095e7f3_b2033270",
         "filename": "test/fpsensor_auth_crypto.cc",
         "patchSetId": 15
