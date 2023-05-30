@@ -117,6 +117,30 @@
       },
       "revId": "9a6cee5ca8bbdfef920e34f0b102d867a2ad82fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df7474c_6377b8ce",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 192
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-30T01:19:21Z",
+      "side": 1,
+      "message": "hmmmm, even if we do this kind of refactor, this function is still not testable on the device.\nBecause the code depends on `FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE` \u0026 `FP_MAX_FINGER_COUNT`, and those are not testable(buildable) in the device test.",
+      "parentUuid": "8b38185a_59338ebe",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 0
+      },
+      "revId": "9a6cee5ca8bbdfef920e34f0b102d867a2ad82fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
