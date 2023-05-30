@@ -109,10 +109,10 @@
 			enum-name = "GPIO_EN_KEYBOARD_BACKLIGHT";
 		};
 		gpio_en_pp5000_usb_a0_vbus: en_pp5000_usb_a0_vbus {
-			gpios = <&gpio6 6 GPIO_OUTPUT>;
+			gpios = <&gpio6 6 GPIO_ODR_HIGH>;
 		};
 		gpio_en_pp5000_usb_a1_vbus: en_pp5000_usb_a1_vbus {
-			gpios = <&gpio8 3 GPIO_OUTPUT>;
+			gpios = <&gpio8 3 GPIO_ODR_HIGH>;
 		};
 		gpio_en_pwr_pcore_s0: en_pwr_pcore_s0 {
 			gpios = <&gpioe 2 GPIO_OUTPUT>;
