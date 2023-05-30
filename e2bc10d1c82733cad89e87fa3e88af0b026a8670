@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32efa3d4_3cb14c88",
+        "filename": "zephyr/program/skyrim/winterhold/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-05-30T16:17:51Z",
+      "side": 1,
+      "message": "I should note, this might get you into trouble with other chargers.  The SourceCapabilityTimer is 100-200ms and the nCapsCount is 50, so you may only get Source_Capabilities for 5 seconds after initial charger connection.",
+      "revId": "e2bc10d1c82733cad89e87fa3e88af0b026a8670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
