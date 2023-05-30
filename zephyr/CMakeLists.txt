@@ -286,8 +286,10 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FLASH_CROS
                                                 "${PLATFORM_EC}/common/flash.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_HOSTCMD
-                                                "${PLATFORM_EC}/common/host_command.c"
-                                                "${PLATFORM_EC}/common/host_command_task.c")
+                                                "${PLATFORM_EC}/common/host_command.c")
+if (CONFIG_PLATFORM_EC_HOSTCMD AND !CONFIG_EC_HOST_CMD)
+	zephyr_library_sources(			"${PLATFORM_EC}/common/host_command_task.c")
+endif ()
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_HOSTCMD
                                                 "${PLATFORM_EC}/common/host_event_commands.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE
