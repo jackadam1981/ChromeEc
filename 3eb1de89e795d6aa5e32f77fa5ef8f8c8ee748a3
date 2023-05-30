@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26f1a0dd_5a4666ca",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 281
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-30T19:03:27Z",
+      "side": 1,
+      "message": "Can you add a comment that this is actually decrypting?",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 37
+      },
+      "revId": "3eb1de89e795d6aa5e32f77fa5ef8f8c8ee748a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
