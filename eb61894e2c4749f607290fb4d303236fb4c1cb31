@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4de57a5e_af27dcce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-05-30T21:27:45Z",
+      "side": 1,
+      "message": "please include b/280356243 and comment on the bug as\nthis is turning into a moving target. we need a better\nspec and understanding for how early we can enable VCONN.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 3
+      },
+      "revId": "eb61894e2c4749f607290fb4d303236fb4c1cb31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
