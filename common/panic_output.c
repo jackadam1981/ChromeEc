@@ -360,7 +360,16 @@ static int command_crash(int argc, const char **argv)
 		return EC_ERROR_PARAM1;
 
 	if (!strcasecmp(argv[1], "assert")) {
+		/* `crash assert` is needed for integration testing.
+		 * Fallback to equivalent implementation when not enabled.
+		 */
+#if defined(CONFIG_ZEPHYR) && !defined(CONFIG_ASSERT)
+		k_panic();
+#elif !defined(CONFIG_ZEPHYR) && !defined(CONFIG_DEBUG_ASSERT)
+		complete_panic(__LINE__);
+#else
 		ASSERT(0);
+#endif
 	} else if (!strcasecmp(argv[1], "divzero")) {
 		volatile int zero = 0;
 
