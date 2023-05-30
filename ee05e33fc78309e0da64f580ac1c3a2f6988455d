@@ -22,6 +22,30 @@
       },
       "revId": "ee05e33fc78309e0da64f580ac1c3a2f6988455d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4562451_410ac99d",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-05-30T03:04:25Z",
+      "side": 1,
+      "message": "We use local build to make sure system state test. To prevent system unstable state test. the result test as below\n https://partnerissuetracker.corp.google.com/issues/280021165#comment36",
+      "parentUuid": "5aec8d65_4a6f49f7",
+      "range": {
+        "startLine": 463,
+        "startChar": 2,
+        "endLine": 463,
+        "endChar": 32
+      },
+      "revId": "ee05e33fc78309e0da64f580ac1c3a2f6988455d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
