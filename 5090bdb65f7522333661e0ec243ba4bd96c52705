@@ -34,6 +34,24 @@
       "parentUuid": "74a00057_0545e415",
       "revId": "5090bdb65f7522333661e0ec243ba4bd96c52705",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b5ca3dd_57cd7b66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-05-30T05:02:34Z",
+      "side": 1,
+      "message": "BUG\u003db:269064073\nTEST\u003dThe USB-C1 interrupt on Yaviks no longer gets stuck asserted when\n     connected to an monitor; charging still works as expected\n     on Craask for both ports.\n\nthe bug id and test refers to Yaviks. That would be weird if uldren links to them I think.",
+      "parentUuid": "fcd067c3_53907b97",
+      "revId": "5090bdb65f7522333661e0ec243ba4bd96c52705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
