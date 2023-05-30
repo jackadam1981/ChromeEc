@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5464c175_250623b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-05-30T19:02:39Z",
+      "side": 1,
+      "message": "The issue is they\u0027re running ccd open on a device where the TPM reset, but for some reason it never communicated with cr50. Cr50 refuses to wipe the tpm since it handled a tpm reset without the AP communicating with it.\n\nThis change always wipes the tpm if cr50 requests it. It doesn\u0027t matter if cr50 just handled a tpm reset.",
+      "parentUuid": "60a36d4d_fb54d6e2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "b090e7cb78f9592ca0b353ea014e290a0c11f2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6df0762c_5ba4f111",
