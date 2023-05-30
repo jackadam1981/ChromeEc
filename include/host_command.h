@@ -138,9 +138,27 @@ struct host_command {
 	int version_mask;
 };
 
+enum hc_debug {
+	HCDEBUG_OFF, /* No host command debug output */
+	HCDEBUG_NORMAL, /* Normal output mode; skips repeated commands */
+	HCDEBUG_EVERY, /* Print every command */
+	HCDEBUG_PARAMS, /* ... and print params for request/response */
+
+	/* Number of host command debug modes */
+	HCDEBUG_MODES
+};
+
 typedef uint64_t host_event_t;
 #define HOST_EVENT_CPRINTS(str, e) CPRINTS("%s 0x%016" PRIx64, str, e)
 #define HOST_EVENT_CCPRINTF(str, e) ccprintf("%s 0x%016" PRIx64 "\n", str, e)
+
+/**
+ * Initialize Host Command
+ *
+ * Initialize memmap memory and set needed host event. This function does not
+ * initialize Host Command communication itself.
+ */
+void host_command_init(void);
 
 /**
  * Return a pointer to the memory-mapped buffer.
@@ -191,6 +209,40 @@ host_event_t host_get_events(void);
  * @return true if <event> is set or false otherwise
  */
 int host_is_event_set(enum host_event_code event);
+
+/**
+ * Print & reset suppressed command counters.
+ *
+ * It should be called periodically and on important events (e.g. shutdown,
+ * sysjump, etc.).
+ *
+ * @param force		Force printing and resetting despite timers
+ */
+void dump_host_command_suppressed(int force);
+
+/**
+ * Find a command by command number.
+ *
+ * @param command	Command number to find
+ * @return The command structure, or NULL if no match found.
+ */
+const struct host_command *find_host_command(int command);
+
+#ifdef CONFIG_CMD_HCDEBUG
+/**
+ * Get Host Command debug mode.
+ *
+ * @return The current Host Command mode
+ */
+enum hc_debug host_debug_get(void);
+
+/**
+ * Set Host Command debug mode.
+ *
+ * @param mode		A new Host Command debug mode
+ */
+void host_debug_set(enum hc_debug mode);
+#endif /* CONFIG_CMD_HCDEBUG */
 
 #ifdef CONFIG_HOSTCMD_X86
 
