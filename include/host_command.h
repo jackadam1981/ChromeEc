@@ -53,6 +53,10 @@ struct host_cmd_handler_args {
 	 */
 	uint16_t response_size;
 
+/* The upstream version of this structure doesn't have the result field.
+ * Drop it for the compatibility.
+ */
+#ifndef CONFIG_EC_HOST_CMD
 	/*
 	 * This is the result returned by command and therefore the status to
 	 * be reported from the command execution to the host. The driver
@@ -68,6 +72,7 @@ struct host_cmd_handler_args {
 	 * by this field.
 	 */
 	uint16_t result;
+#endif
 };
 
 /* Args for host packet handler */
