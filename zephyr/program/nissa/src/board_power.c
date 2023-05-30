@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "cros_board_info.h"
+#include "cros_cbi.h"
 #include "gpio/gpio.h"
 #include "gpio_signal.h"
 #include "system_boot_time.h"
@@ -101,11 +103,37 @@ void board_ap_power_action_s3_s0(void)
 	s0_stable = false;
 }
 
+static void shutdown_and_notify(enum ap_power_shutdown_reason reason)
+{
+	ap_power_force_shutdown(reason);
+	ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN);
+	ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN_COMPLETE);
+}
+
 void board_ap_power_action_s0_s3(void)
 {
+	int ret;
+	static uint32_t sku_id;
+
 	power_signal_enable(PWR_DSW_PWROK);
 	power_signal_enable(PWR_PG_PP1P05);
 	s0_stable = false;
+
+	if (sku_id == 0) {
+		ret = cbi_get_sku_id(&sku_id);
+		if (ret != EC_SUCCESS)
+			LOG_ERR("Error retrieving CBI SKU_ID.");
+	}
+
+	/* prevent RSMRST drop not fine for SKU_ID 0x140000 ~ 0x140007 */
+	if (sku_id == 0x140000 || sku_id == 0x140001 || sku_id == 0x140002 ||
+	    sku_id == 0x140003 || sku_id == 0x140004 || sku_id == 0x140005 ||
+	    sku_id == 0x140006 || sku_id == 0x140007) {
+		if (!power_signal_get(PWR_RSMRST)) {
+			LOG_ERR("s0->s3 PWR_RSMRST is not good");
+			shutdown_and_notify(AP_POWER_SHUTDOWN_G3);
+		}
+	}
 }
 
 void board_ap_power_action_s0(void)
