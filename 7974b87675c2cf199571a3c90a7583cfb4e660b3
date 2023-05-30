@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c56ec4c9_3c80b9c0",
+        "filename": "zephyr/dts/bindings/battery/smp,cosrf9h3.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-05-30T05:24:58Z",
+      "side": 1,
+      "message": "Why the dash is removed as it is corrected in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4486020 ?",
+      "revId": "7974b87675c2cf199571a3c90a7583cfb4e660b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
