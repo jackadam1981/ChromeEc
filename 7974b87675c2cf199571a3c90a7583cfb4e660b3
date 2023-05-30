@@ -16,6 +16,24 @@
       "message": "Why the dash is removed as it is corrected in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4486020 ?",
       "revId": "7974b87675c2cf199571a3c90a7583cfb4e660b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838d47f2_8f04eac0",
+        "filename": "zephyr/dts/bindings/battery/smp,cosrf9h3.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-05-30T08:37:06Z",
+      "side": 1,
+      "message": "For the first time, the battery parameter file shows ```SMP-COS-3.63``` but I wrote it wrong. So I upload CL(4486020) that correct it to meet battery parameter.\n\nThis time, the battery parameter file is modified by power team, so upload this CL to modify again.",
+      "parentUuid": "c56ec4c9_3c80b9c0",
+      "revId": "7974b87675c2cf199571a3c90a7583cfb4e660b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
