@@ -118,6 +118,30 @@
       },
       "revId": "2489e53d515f07f57949c9356e882dc251da96aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0994b114_281b9e86",
+        "filename": "zephyr/program/myst/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2023-05-30T16:40:49Z",
+      "side": 1,
+      "message": "This change is already merged, it\u0027s what resolved the backlight issue.  We\u0027re just debating the initial state of the GPIO.  It should be high or undriven.  We can test that change once we get devices in.",
+      "parentUuid": "c5805c1c_38e3f359",
+      "range": {
+        "startLine": 57,
+        "startChar": 21,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "2489e53d515f07f57949c9356e882dc251da96aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
