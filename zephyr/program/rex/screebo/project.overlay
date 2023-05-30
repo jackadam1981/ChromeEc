@@ -5,7 +5,7 @@
 
 /* Rex program common DTSI includes */
 #include "../fan.dtsi"
-#include "../generated.dtsi"
+#include "gpio.dtsi"
 #include "../interrupts.dtsi"
 #include "../keyboard.dtsi"
 #include "../power_signals.dtsi"
