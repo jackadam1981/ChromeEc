@@ -52,6 +52,24 @@
       "parentUuid": "fcd067c3_53907b97",
       "revId": "5090bdb65f7522333661e0ec243ba4bd96c52705",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62fb9f0_bb3f1f5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1539437
+      },
+      "writtenOn": "2023-05-30T06:27:25Z",
+      "side": 1,
+      "message": "I agree it\u0027s werid that uldren link to this bug. But the CL update by Peter in commit msg, he only tests the yavilks board but update all the usbc.c relate to nissa baseboard. Is it might be the common issue on nissa baseboard? Or can I test usbc.c with uldren ec code to make sure all function works well. To keep from bugs might happened if there is any changed on common code in nissa baseboard.",
+      "parentUuid": "6b5ca3dd_57cd7b66",
+      "revId": "5090bdb65f7522333661e0ec243ba4bd96c52705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
