@@ -9,6 +9,7 @@
 #include "test/drivers/utils.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_mux.h"
+#include "usb_pd_tcpm.h"
 #include "usb_pd_vdo.h"
 
 #include <stdint.h>
@@ -835,6 +836,7 @@ ZTEST_F(ap_vdm_control, test_dp_stub_returns)
 {
 	int temp;
 	uint32_t data[2];
+	enum tcpci_msg_type tx_type;
 
 	/*
 	 * Confirm that the DP stubs return what we expect them to without
@@ -845,7 +847,7 @@ ZTEST_F(ap_vdm_control, test_dp_stub_returns)
 	zassert_false(dp_is_active(TEST_PORT));
 	zassert_true(dp_is_idle(TEST_PORT));
 	zassert_false(dp_entry_is_done(TEST_PORT));
-	zassert_equal(dp_setup_next_vdm(TEST_PORT, &temp, data),
+	zassert_equal(dp_setup_next_vdm(TEST_PORT, &temp, data, &tx_type),
 		      MSG_SETUP_ERROR);
 }
 
