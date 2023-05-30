@@ -46,6 +46,30 @@
       },
       "revId": "5c4210c462aebb046ea803b48ce1713217c0bbc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "917f4e71_13b8e714",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 1728,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-05-30T20:54:15Z",
+      "side": 1,
+      "message": "I meant:\n\nCBI_PRESERVE\u003d$(cd \"${TEMP_DIR}\";dump_fmap \"${CUR_DIR}\"/\"${IMG}\" -x CBI -e)\n\nDoes it work?",
+      "parentUuid": "ef83d87b_dd549025",
+      "range": {
+        "startLine": 1728,
+        "startChar": 33,
+        "endLine": 1728,
+        "endChar": 46
+      },
+      "revId": "5c4210c462aebb046ea803b48ce1713217c0bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
