@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f9ef1b_652e0b0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-05-30T23:56:15Z",
+      "side": 1,
+      "message": "Tweaked sensor test because it was relying on some uninitialized fields; should pass reliably now.",
+      "revId": "3ecdb51f3d1cb574bc22151c92f92ad363b49767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
