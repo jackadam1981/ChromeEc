@@ -27,9 +27,11 @@
 #define CPRINTF(format, args...) cprintf(CC_HOSTCMD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_HOSTCMD, format, ##args)
 
+#ifndef CONFIG_EC_HOST_CMD
 #ifdef CONFIG_CMD_HCDEBUG
 static const char *const hcdebug_mode_names[] = { "off", "normal", "every",
 						  "params" };
+#endif
 #endif
 
 #ifndef CONFIG_HOSTCMD_X86
@@ -137,6 +139,8 @@ DECLARE_HOST_COMMAND(EC_CMD_READ_MEMMAP, host_command_read_memmap,
 		     EC_VER_MASK(0));
 #endif
 
+/* CONFIG_EC_HOST_CMD enables the upstream Host Command support */
+#ifndef CONFIG_EC_HOST_CMD
 static enum ec_status
 host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 {
@@ -159,6 +163,7 @@ host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_CMD_VERSIONS, host_command_get_cmd_versions,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
+#endif /* CONFIG_EC_HOST_CMD */
 
 /* Returns what we tell it to. */
 static enum ec_status
@@ -195,9 +200,12 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_FEATURES, host_command_get_features,
 /*****************************************************************************/
 /* Console commands */
 
+#ifndef CONFIG_EC_HOST_CMD
 #ifdef CONFIG_CMD_HCDEBUG
 static int command_hcdebug(int argc, const char **argv)
 {
+	int mode;
+
 	if (argc >= 3)
 		return EC_ERROR_PARAM_COUNT;
 	if (argc > 1) {
@@ -206,6 +214,7 @@ static int command_hcdebug(int argc, const char **argv)
 		for (i = 0; i < HCDEBUG_MODES; i++) {
 			if (!strcasecmp(argv[1], hcdebug_mode_names[i])) {
 				host_debug_set(i);
+
 				break;
 			}
 		}
@@ -213,8 +222,8 @@ static int command_hcdebug(int argc, const char **argv)
 			return EC_ERROR_PARAM1;
 	}
 
-	ccprintf("Host command debug mode is %s\n",
-		 hcdebug_mode_names[host_debug_get()]);
+	mode = host_debug_get();
+	ccprintf("Host command debug mode is %s\n", hcdebug_mode_names[mode]);
 	dump_host_command_suppressed(1);
 
 	return EC_SUCCESS;
@@ -223,6 +232,7 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 			"hcdebug [off | normal | every | params]",
 			"Set host command debug output mode");
 #endif /* CONFIG_CMD_HCDEBUG */
+#endif /* CONFIG_EC_HOST_CMD */
 
 #ifdef CONFIG_HOST_COMMAND_STATUS
 /* Returns current command status (busy or not) */
@@ -232,8 +242,11 @@ host_command_get_comms_status(struct host_cmd_handler_args *args)
 	struct ec_response_get_comms_status *r = args->response;
 	bool command_ended;
 
+#ifndef CONFIG_EC_HOST_CMD
 	command_ended = host_command_in_process_ended();
-
+#else
+	command_ended = ec_host_cmd_send_in_progress_ended();
+#endif
 	r->flags = command_ended ? 0 : EC_COMMS_STATUS_PROCESSING;
 	args->response_size = sizeof(*r);
 
@@ -248,13 +261,21 @@ host_command_resend_response(struct host_cmd_handler_args *args)
 {
 	uint16_t result;
 
+#ifndef CONFIG_EC_HOST_CMD
 	result = host_command_get_saved_result();
+#else
+	result = ec_host_cmd_send_in_progress_status();
+#endif
 
 	/* Handle resending response */
-	args->result = result;
 	args->response_size = 0;
 
+#ifndef CONFIG_EC_HOST_CMD
+	args->result = result;
 	return EC_RES_SUCCESS;
+#else
+	return result;
+#endif
 }
 DECLARE_HOST_COMMAND(EC_CMD_RESEND_RESPONSE, host_command_resend_response,
 		     EC_VER_MASK(0));
