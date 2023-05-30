@@ -137,6 +137,8 @@ DECLARE_HOST_COMMAND(EC_CMD_READ_MEMMAP, host_command_read_memmap,
 		     EC_VER_MASK(0));
 #endif
 
+/* CONFIG_EC_HOST_CMD enables the upstream Host Command support */
+#ifndef CONFIG_EC_HOST_CMD
 static enum ec_status
 host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 {
@@ -159,6 +161,7 @@ host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_CMD_VERSIONS, host_command_get_cmd_versions,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
+#endif /* CONFIG_EC_HOST_CMD */
 
 /* Returns what we tell it to. */
 static enum ec_status
@@ -198,6 +201,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_FEATURES, host_command_get_features,
 #ifdef CONFIG_CMD_HCDEBUG
 static int command_hcdebug(int argc, const char **argv)
 {
+	int mode;
+
 	if (argc >= 3)
 		return EC_ERROR_PARAM_COUNT;
 	if (argc > 1) {
@@ -205,7 +210,11 @@ static int command_hcdebug(int argc, const char **argv)
 
 		for (i = 0; i < HCDEBUG_MODES; i++) {
 			if (!strcasecmp(argv[1], hcdebug_mode_names[i])) {
+#ifndef CONFIG_EC_HOST_CMD
 				host_debug_set(i);
+#else
+				ec_host_cmd_set_log_level(i);
+#endif
 				break;
 			}
 		}
@@ -213,9 +222,15 @@ static int command_hcdebug(int argc, const char **argv)
 			return EC_ERROR_PARAM1;
 	}
 
-	ccprintf("Host command debug mode is %s\n",
-		 hcdebug_mode_names[host_debug_get()]);
+#ifndef CONFIG_EC_HOST_CMD
+	mode = host_debug_get();
+#else
+	mode = ec_host_cmd_get_log_level();
+#endif
+	ccprintf("Host command debug mode is %s\n", hcdebug_mode_names[mode]);
+#ifndef CONFIG_EC_HOST_CMD
 	dump_host_command_suppressed(1);
+#endif
 
 	return EC_SUCCESS;
 }

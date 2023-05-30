@@ -109,8 +109,15 @@ test_mockable k_tid_t get_hostcmd_thread(void)
 #ifdef HAS_TASK_HOSTCMD
 	if (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN)) {
 		return get_main_thread();
+	} else {
+#ifndef CONFIG_EC_HOST_CMD
+		return task_to_k_tid[TASK_ID_HOSTCMD];
+#else
+		const struct ec_host_cmd *hc = ec_host_cmd_get_hc();
+
+		return (k_tid_t)&hc->thread;
+#endif /* CONFIG_EC_HOST_CMD */
 	}
-	return task_to_k_tid[TASK_ID_HOSTCMD];
 #endif /* HAS_TASK_HOSTCMD */
 	__ASSERT(false, "HOSTCMD task is not enabled");
 	return NULL;
