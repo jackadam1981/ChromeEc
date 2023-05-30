@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "092b46e4_cc96be5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-05-30T16:11:19Z",
+      "side": 1,
+      "message": "Can you run zephyr tests as well? I think this may require an update to test_pd_check_vconn_swap in zephyr/test/rex/src/usb_pd_policy.c which is currently expecting a `power_signal_get` call as part of checking Vconn swap policy.",
+      "revId": "8529224628b7269bd57961824744a5a10d017cd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
