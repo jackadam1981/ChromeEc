@@ -1,0 +1,63 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+common:
+  platform_allow: native_posix
+tests:
+  # Baseboard tests TEST_BOARD_POWER_SIGNALS
+  myst.baseboard:
+    extra_configs:
+    - CONFIG_TEST_BOARD_BASEBOARD=y
+
+  myst.baseboard.power_signals:
+    extra_configs:
+    - CONFIG_TEST_BOARD_BASEBOARD=y
+    - CONFIG_TEST_BOARD_POWER_SIGNALS=y
+    - CONFIG_PLATFORM_EC_AMD_STB_DUMP=y
+    - CONFIG_PLATFORM_EC_THROTTLE_AP=y
+    - CONFIG_PLATFORM_EC_THROTTLE_AP_NO_FAN=y
+    - CONFIG_PLATFORM_EC_THROTTLE_AP_SINGLE_PIN=y
+
+  myst.baseboard.usb_pd_policy:
+    extra_configs:
+    - CONFIG_TEST_BOARD_BASEBOARD=y
+    - CONFIG_TEST_BOARD_USB_PD_POLICY=y
+
+  myst.baseboard.usb_pd_policy.discharge:
+    extra_configs:
+    - CONFIG_TEST_BOARD_BASEBOARD=y
+    - CONFIG_TEST_BOARD_USB_PD_POLICY=y
+    - CONFIG_USB_PD_DISCHARGE=y
+
+  # myst tests
+  myst.myst:
+    extra_configs:
+    - CONFIG_TEST_BOARD_MYST=y
+
+  myst.myst.alt_charger:
+    extra_configs:
+    - CONFIG_TEST_BOARD_MYST=y
+    - CONFIG_TEST_BOARD_ALT_CHARGER=y
+
+  myst.myst.fan:
+    extra_configs:
+    - CONFIG_TEST_BOARD_MYST=y
+    - CONFIG_TEST_BOARD_FAN=y
+
+  myst.myst.form_factor:
+    extra_configs:
+    - CONFIG_TEST_BOARD_MYST=y
+    - CONFIG_TEST_BOARD_FORM_FACTOR=y
+    extra_dtc_overlay_files:
+    - ./boards/myst/myst.dtsi
+
+  myst.myst.ppc_config:
+    extra_configs:
+    - CONFIG_TEST_BOARD_MYST=y
+    - CONFIG_TEST_BOARD_PPC_CONFIG=y
+
+  myst.myst.usb_mux_config:
+    extra_configs:
+    - CONFIG_TEST_BOARD_MYST=y
+    - CONFIG_TEST_BOARD_USB_MUX_CONFIG_CUSTOM=y

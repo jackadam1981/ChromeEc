@@ -18,6 +18,10 @@
 #include "throttle_ap.h"
 #include "timer.h"
 
+#ifdef CONFIG_ZTEST
+#define CHARGER_SOLO 0
+#endif
+
 /* Power Signal Input List */
 /* TODO: b/218904113: Convert to using Zephyr GPIOs */
 const struct power_signal_info power_signal_list[] = {
@@ -53,8 +57,9 @@ const struct prochot_cfg prochot_cfg = {
 };
 
 /* Chipset hooks */
-static void baseboard_suspend_change(struct ap_power_ev_callback *cb,
-				     struct ap_power_ev_data data)
+test_export_static void
+baseboard_suspend_change(struct ap_power_ev_callback *cb,
+			 struct ap_power_ev_data data)
 {
 	switch (data.event) {
 	default:
@@ -90,7 +95,7 @@ static void handle_prochot(bool asserted, void *data)
 		ccprints("Prochot deasserted externally");
 }
 
-static void baseboard_init(void)
+test_export_static void baseboard_init(void)
 {
 	static struct ap_power_ev_callback cb;
 
