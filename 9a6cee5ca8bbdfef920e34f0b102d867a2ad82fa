@@ -141,6 +141,30 @@
       },
       "revId": "9a6cee5ca8bbdfef920e34f0b102d867a2ad82fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8369723f_bf066421",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 192
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-30T18:59:21Z",
+      "side": 1,
+      "message": "\u003e this function is still not testable on the device.\n\nEven without being able to test on the device, we can still test it in the \"host\" tests.\n\nSimilar to the idea of creating a separate `test/fpsensor_auth_commands_mock.cc`, do we need to create a `test/fpsensor_auth_commands_host.cc` file to contain tests that only run on the host? Can you write a unit test for `preload_template` if you put it in that separate file that only runs on the host?",
+      "parentUuid": "0df7474c_6377b8ce",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 0
+      },
+      "revId": "9a6cee5ca8bbdfef920e34f0b102d867a2ad82fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
