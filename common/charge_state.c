@@ -51,9 +51,7 @@
 #endif /* CONFIG_HOSTCMD_EVENTS */
 #define BAT_OCP_TIMEOUT_US (60 * SECOND)
 /* BAT_OCP_HYSTERESIS_PCT can be optionally overridden in board.h. */
-#ifndef BAT_OCP_HYSTERESIS_PCT
 #define BAT_OCP_HYSTERESIS_PCT 10
-#endif /* BAT_OCP_HYSTERESIS_PCT */
 #define BAT_OCP_HYSTERESIS \
 	(BAT_MAX_DISCHG_CURRENT * BAT_OCP_HYSTERESIS_PCT / 100) /* mA */
 #endif /* CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT */
@@ -64,9 +62,7 @@
 #endif /* CONFIG_HOSTCMD_EVENTS */
 #define BAT_UVP_TIMEOUT_US (60 * SECOND)
 /* BAT_UVP_HYSTERESIS_PCT can be optionally overridden in board.h. */
-#ifndef BAT_UVP_HYSTERESIS_PCT
 #define BAT_UVP_HYSTERESIS_PCT 3
-#endif /* BAT_UVP_HYSTERESIS_PCT */
 #define BAT_UVP_HYSTERESIS \
 	(BAT_LOW_VOLTAGE_THRESH * BAT_UVP_HYSTERESIS_PCT / 100) /* mV */
 static timestamp_t uvp_throttle_start_time;
