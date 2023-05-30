@@ -94,6 +94,30 @@
       },
       "revId": "2489e53d515f07f57949c9356e882dc251da96aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5805c1c_38e3f359",
+        "filename": "zephyr/program/myst/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-05-30T16:36:34Z",
+      "side": 1,
+      "message": "Is the backlight working in general? I thought I remember hearing that the BL wasn\u0027t turning on during boot. I\u0027m fine introducing this change if it\u0027s a temporary thing to help out during this stage. If we\u0027re doing that then we should open a dedicated bug and add a comment here.",
+      "parentUuid": "a0d82bb0_07a62cfe",
+      "range": {
+        "startLine": 57,
+        "startChar": 21,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "2489e53d515f07f57949c9356e882dc251da96aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
