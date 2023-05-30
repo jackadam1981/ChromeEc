@@ -70,6 +70,30 @@
       },
       "revId": "2489e53d515f07f57949c9356e882dc251da96aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d82bb0_07a62cfe",
+        "filename": "zephyr/program/myst/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2023-05-30T16:28:19Z",
+      "side": 1,
+      "message": "Low enables the backlight, we probably want it disabled at boot.",
+      "parentUuid": "f569d1a2_4ab5bf48",
+      "range": {
+        "startLine": 57,
+        "startChar": 21,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "2489e53d515f07f57949c9356e882dc251da96aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
