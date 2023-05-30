@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4718f8a9_daa5c32e",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 51
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-30T18:07:36Z",
+      "side": 1,
+      "message": "This seems unrelated to this change? Is it needed for this CL? Maybe it\u0027s needed for a future CL? If so, can you move it to that CL?",
+      "range": {
+        "startLine": 36,
+        "startChar": 66,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "826cd0f809aeea0e2d4eb85093914666a6de4963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
