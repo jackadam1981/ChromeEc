@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b3a31ea_d35d6724",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 42
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-30T18:04:43Z",
+      "side": 1,
+      "message": "I mentioned this in [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4506542/comment/265501bb_c3cd75bf/), but let\u0027s move these tests into their own test file (e.g., `test/fpsensor_auth_crypto_mock.c`). That way we can keep the tests that don\u0027t require mocking separate from the ones that do require mocking.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 39
+      },
+      "revId": "d7848efe7e16e45d5aad06936f0343c9d5f9744c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
