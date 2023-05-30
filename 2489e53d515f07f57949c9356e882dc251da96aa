@@ -142,6 +142,30 @@
       },
       "revId": "2489e53d515f07f57949c9356e882dc251da96aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3717a0fc_41d3d5df",
+        "filename": "zephyr/program/myst/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-05-30T18:34:58Z",
+      "side": 1,
+      "message": "Agree, the real backlight fix is on line 58. Line 57 shouldn\u0027t have been changed IMO. Appreciate if you could test it on the real hardware if you have a moment...",
+      "parentUuid": "0994b114_281b9e86",
+      "range": {
+        "startLine": 57,
+        "startChar": 21,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "2489e53d515f07f57949c9356e882dc251da96aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
