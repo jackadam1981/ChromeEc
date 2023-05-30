@@ -91,6 +91,7 @@ if HAS_TASK_HOSTCMD
 choice TASK_HOSTCMD_THREAD_MODE
 	prompt "Host command thread selection"
 	default TASK_HOSTCMD_THREAD_DEDICATED if ZTEST
+	default TASK_HOSTCMD_THREAD_MAIN if EC_HOST_CMD
 
 config TASK_HOSTCMD_THREAD_MAIN
 	bool "Run the host command in the main thread"
