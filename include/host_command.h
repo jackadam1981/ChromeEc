@@ -53,6 +53,10 @@ struct host_cmd_handler_args {
 	 */
 	uint16_t response_size;
 
+/* The upstream version of that structure doesn't have the result member. Make
+ * sure it is not touched while using the upstream.
+ */
+#ifdef CONFIG_EC_HOST_CMD
 	/*
 	 * This is the result returned by command and therefore the status to
 	 * be reported from the command execution to the host. The driver
@@ -68,6 +72,7 @@ struct host_cmd_handler_args {
 	 * by this field.
 	 */
 	uint16_t result;
+#endif /* CONFIG_EC_HOST_CMD */
 };
 
 /* Args for host packet handler */

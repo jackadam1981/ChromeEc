@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+/* CONFIG_EC_HOST_CMD enables the upstream Host Command support */
+#ifndef CONFIG_EC_HOST_CMD
 /* Host command module for Chrome EC */
 
 #include "ap_hang_detect.h"
@@ -701,3 +703,5 @@ void host_debug_set(enum hc_debug mode)
 	hcdebug = mode;
 }
 #endif /* CONFIG_CMD_HCDEBUG */
+
+#endif /* CONFIG_EC_HOST_CMD */
