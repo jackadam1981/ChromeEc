@@ -18,6 +18,8 @@
 #include "compiler.h"
 #include "ec_commands.h"
 
+#include <stdbool.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -138,9 +140,27 @@ struct host_command {
 	int version_mask;
 };
 
+enum hc_debug {
+	HCDEBUG_OFF, /* No host command debug output */
+	HCDEBUG_NORMAL, /* Normal output mode; skips repeated commands */
+	HCDEBUG_EVERY, /* Print every command */
+	HCDEBUG_PARAMS, /* ... and print params for request/response */
+
+	/* Number of host command debug modes */
+	HCDEBUG_MODES
+};
+
 typedef uint64_t host_event_t;
 #define HOST_EVENT_CPRINTS(str, e) CPRINTS("%s 0x%016" PRIx64, str, e)
 #define HOST_EVENT_CCPRINTF(str, e) ccprintf("%s 0x%016" PRIx64 "\n", str, e)
+
+/**
+ * Initialize Host Command
+ *
+ * Initialize memmap memory and set needed host event. This function does not
+ * initialize Host Command communication itself.
+ */
+void host_command_init(void);
 
 /**
  * Return a pointer to the memory-mapped buffer.
@@ -191,6 +211,14 @@ host_event_t host_get_events(void);
  * @return true if <event> is set or false otherwise
  */
 int host_is_event_set(enum host_event_code event);
+
+/**
+ * Find a command by command number.
+ *
+ * @param command	Command number to find
+ * @return The command structure, or NULL if no match found.
+ */
+const struct host_command *find_host_command(int command);
 
 #ifdef CONFIG_HOSTCMD_X86
 
@@ -247,6 +275,22 @@ int host_request_expected_size(const struct ec_host_request *r);
  * @param packet	Host packet args
  */
 void host_packet_receive(struct host_packet *pkt);
+
+/**
+ * Check if a Host Command that sent EC_HOST_CMD_IN_PROGRESS status has ended.
+ *
+ * @return True if the command has ended, False if not.
+ */
+bool host_command_in_process_ended(void);
+
+/**
+ * Get saved result of the command that has sent IN_PROGRESS status.
+ *
+ * This routine returns the save result and clears it.
+ *
+ * @return Save result.
+ */
+uint8_t host_command_get_saved_result(void);
 
 /**
  * Find the handler for a command in Zephyr OS.
