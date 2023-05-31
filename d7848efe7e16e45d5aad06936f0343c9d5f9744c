@@ -22,6 +22,30 @@
       },
       "revId": "d7848efe7e16e45d5aad06936f0343c9d5f9744c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5283b14e_09508ebd",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 42
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-31T06:00:00Z",
+      "side": 1,
+      "message": "Creating a separate test dosen\u0027t prevent the mock.\nThe existing test will end up with:\n```\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real: build/host/fpsensor_auth_crypto/RO/common/fpsensor/fpsensor_crypto.o: in function `get_ikm(unsigned char*)\u0027:\n/mnt/host/source/src/platform/ec/common/fpsensor/fpsensor_crypto.cc:47: undefined reference to `rollback_get_secret\u0027\ncollect2: error: ld returned 1 exit status\nmake[1]: *** [Makefile.rules:623: build/host/fpsensor_auth_crypto/fpsensor_auth_crypto.exe] Error 1\nmake: *** [Makefile.rules:366: host-fpsensor_auth_crypto] Error 2\n```\nThat is because we introduce the dependency of `rollback_get_secret` in `common/fpsensor/fpsensor_auth_crypto.cc`.\n\nOr should we create another file called `common/fpsensor/fpsensor_auth_crypto_without_reset_secret.cc`?",
+      "parentUuid": "4b3a31ea_d35d6724",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 39
+      },
+      "revId": "d7848efe7e16e45d5aad06936f0343c9d5f9744c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
