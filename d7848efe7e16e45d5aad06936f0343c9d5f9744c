@@ -46,6 +46,30 @@
       },
       "revId": "d7848efe7e16e45d5aad06936f0343c9d5f9744c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9427f557_406dc962",
+        "filename": "test/fpsensor_auth_crypto.cc",
+        "patchSetId": 42
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-05-31T23:47:46Z",
+      "side": 1,
+      "message": "We could move the functions that don\u0027t depend on internal state (such as `rollback_get_secret`) into a separate file if that removes the dependency. Does it work if you rename the existing `fpsensor_auth_crypto.cc` to something like `fpsensor_auth_crypto_stateless.cc` (and the `test` file too?) in a new CL just before this one? Then the functions added in this CL would be put in `fpsensor_auth_crypto.cc`.",
+      "parentUuid": "5283b14e_09508ebd",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 39
+      },
+      "revId": "d7848efe7e16e45d5aad06936f0343c9d5f9744c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
