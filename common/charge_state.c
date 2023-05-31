@@ -65,9 +65,7 @@
 #define BAT_UVP_HYSTERESIS \
 	(BAT_LOW_VOLTAGE_THRESH * BAT_UVP_HYSTERESIS_PCT / 100) /* mV */
 
-#ifdef CONFIG_THROTTLE_AP_ON_BAT_VOLTAGE
 static timestamp_t uvp_throttle_start_time;
-#endif /* CONFIG_THROTTLE_AP_ON_BAT_OLTAGE */
 
 static uint8_t battery_level_shutdown;
 
@@ -781,7 +779,6 @@ static void set_charge_state(enum charge_state state)
 
 static void notify_host_of_low_battery_voltage(void)
 {
-#ifdef CONFIG_THROTTLE_AP_ON_BAT_VOLTAGE
 	if ((curr.batt.flags & BATT_FLAG_BAD_VOLTAGE) ||
 	    chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		return;
@@ -806,12 +803,10 @@ static void notify_host_of_low_battery_voltage(void)
 			    THROTTLE_SRC_BAT_VOLTAGE);
 		uvp_throttle_start_time.val = 0;
 	}
-#endif
 }
 
 static void notify_host_of_over_current(struct batt_params *batt)
 {
-#ifdef CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT
 	static timestamp_t ocp_throttle_start_time;
 
 	if (batt->flags & BATT_FLAG_BAD_CURRENT)
@@ -835,7 +830,6 @@ static void notify_host_of_over_current(struct batt_params *batt)
 		throttle_ap(THROTTLE_OFF, THROTTLE_SOFT,
 			    THROTTLE_SRC_BAT_DISCHG_CURRENT);
 	}
-#endif
 }
 
 const struct batt_params *charger_current_battery_params(void)
@@ -1524,7 +1518,9 @@ static int process_charge_state(int *need_staticp, int sleep_usec)
 	if (!*need_staticp)
 		update_dynamic_battery_info();
 	notify_host_of_low_battery_charge();
-	notify_host_of_low_battery_voltage();
+
+	if (IS_ENABLED(CONFIG_THROTTLE_AP_ON_BAT_VOLTAGE))
+		notify_host_of_low_battery_voltage();
 
 	return sleep_usec;
 }
@@ -1570,7 +1566,8 @@ void charger_task(void *u)
 
 		battery_validate_params(&curr.batt);
 
-		notify_host_of_over_current(&curr.batt);
+		if (IS_ENABLED(CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT))
+			notify_host_of_over_current(&curr.batt);
 
 		decide_charge_state(&need_static, &battery_critical);
 		sleep_usec = process_charge_state(&need_static, sleep_usec);
