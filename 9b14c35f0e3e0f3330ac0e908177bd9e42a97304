@@ -263,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57d4dcee_4c4cb5ee",
+        "filename": "test/build.mk",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-31T07:37:34Z",
+      "side": 1,
+      "message": "The existing test still requires a mock if we add the dependency of reset_secret into `common/fpsensor/fpsensor_auth_crypto.cc`\nPlease see:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4511814",
+      "parentUuid": "1d186ea0_7a45866d",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "9b14c35f0e3e0f3330ac0e908177bd9e42a97304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6095e7f3_b2033270",
