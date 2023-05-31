@@ -1586,6 +1586,8 @@ host_command_get_version(struct host_cmd_handler_args *args)
 	struct ec_response_get_version_v1 *r = args->response;
 	enum ec_image active_slot = system_get_active_copy();
 
+	memset(r, 0, sizeof(struct ec_response_get_version_v1));
+
 	strzcpy(r->version_string_ro, system_get_version(EC_IMAGE_RO),
 		sizeof(r->version_string_ro));
 	strzcpy(r->version_string_rw, system_get_version(active_slot),
