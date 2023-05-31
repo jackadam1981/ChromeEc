@@ -3262,7 +3262,11 @@
  * This is enabled by default because all boards other than reference boards
  * are for laptops with lid switchs.  Reference boards #undef it.
  */
+#ifndef CONFIG_ZEPHYR
 #define CONFIG_LID_SWITCH
+#else
+#undef CONFIG_LID_SWITCH
+#endif
 
 /*
  * GPIOs to use to detect that the lid is opened.
