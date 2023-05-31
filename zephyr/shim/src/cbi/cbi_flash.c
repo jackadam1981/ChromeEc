@@ -14,9 +14,26 @@
 
 LOG_MODULE_REGISTER(cbi_flash, LOG_LEVEL_ERR);
 
+static bool is_cbi_section(uint8_t offset, int len)
+{
+	if ((offset < 0) || (offset >= CBI_IMAGE_SIZE)) {
+		return false;
+	}
+	if ((len < 0) || (len > CBI_IMAGE_SIZE)) {
+		return false;
+	}
+	if (offset + len > CBI_IMAGE_SIZE) {
+		return false;
+	}
+	return true;
+}
+
 static int flash_load(uint8_t offset, uint8_t *data, int len)
 {
-	return crec_flash_unprotected_read(CBI_FLASH_OFFSET, CBI_IMAGE_SIZE,
+	if (!is_cbi_section(offset, len)) {
+		return EC_ERROR_INVAL;
+	}
+	return crec_flash_unprotected_read(CBI_FLASH_OFFSET + offset, len,
 					   (char *)data);
 }
 

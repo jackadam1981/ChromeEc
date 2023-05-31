@@ -18,6 +18,11 @@
 
 FAKE_VALUE_FUNC(int, crec_flash_unprotected_read, int, int, char *);
 
+int mock_crec_flash_unprotected_read(int offset, int size, char *data)
+{
+	return crec_flash_physical_read(offset, size, data);
+}
+
 ZTEST(cbi_flash, test_cbi_flash_is_write_protected)
 {
 	system_is_locked_fake.return_val = 1;
@@ -42,13 +47,33 @@ ZTEST(cbi_flash, test_cbi_flash_load)
 		input_data[index] = index % 255;
 	}
 	cbi_config.drv->store(input_data);
-	crec_flash_unprotected_read_fake.return_val = crec_flash_physical_read(
-		CBI_FLASH_OFFSET, CBI_IMAGE_SIZE, data);
+	crec_flash_unprotected_read_fake.custom_fake = crec_flash_physical_read;
 
-	zassert_ok(cbi_config.drv->load(0, data, 0));
+	zassert_ok(cbi_config.drv->load(0, data, CBI_IMAGE_SIZE));
 	for (index = 0; index < CBI_IMAGE_SIZE; index++) {
 		zassert_equal(data[index], index % 255);
 	}
+
+	zassert_ok(cbi_config.drv->load(211, data, CBI_IMAGE_SIZE - 400));
+	for (index = 0; index < CBI_IMAGE_SIZE - 400; index++) {
+		zassert_equal(data[index], (index + 211) % 255);
+	}
+
+	zassert_ok(cbi_config.drv->load(211, data, 0));
+	for (index = 0; index < 0; index++) {
+		zassert_equal(data[index], (index + 211) % 255);
+	}
+
+	zassert_equal(cbi_config.drv->load(0, data, -1), EC_ERROR_INVAL);
+
+	zassert_equal(cbi_config.drv->load(-1, data, CBI_IMAGE_SIZE),
+		      EC_ERROR_INVAL);
+
+	zassert_equal(cbi_config.drv->load(0, data, CBI_IMAGE_SIZE + 1),
+		      EC_ERROR_INVAL);
+
+	zassert_equal(cbi_config.drv->load(1, data, CBI_IMAGE_SIZE),
+		      EC_ERROR_INVAL);
 }
 
 ZTEST(cbi_flash, test_cbi_flash_load_error)
@@ -56,7 +81,8 @@ ZTEST(cbi_flash, test_cbi_flash_load_error)
 	uint8_t data[CBI_IMAGE_SIZE];
 
 	crec_flash_unprotected_read_fake.return_val = EC_ERROR_INVAL;
-	zassert_equal(cbi_config.drv->load(0, data, 0), EC_ERROR_INVAL);
+	zassert_equal(cbi_config.drv->load(0, data, CBI_IMAGE_SIZE),
+		      EC_ERROR_INVAL);
 }
 
 ZTEST(cbi_flash, test_cbi_flash_store)
