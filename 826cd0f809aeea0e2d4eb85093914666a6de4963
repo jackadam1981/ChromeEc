@@ -22,6 +22,30 @@
       },
       "revId": "826cd0f809aeea0e2d4eb85093914666a6de4963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d31d9b_42ac456c",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 51
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-05-31T05:52:28Z",
+      "side": 1,
+      "message": "oh, this is required for crrev.com/c/4542368\nAnd that CL is required for the device test.",
+      "parentUuid": "4718f8a9_daa5c32e",
+      "range": {
+        "startLine": 36,
+        "startChar": 66,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "826cd0f809aeea0e2d4eb85093914666a6de4963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
