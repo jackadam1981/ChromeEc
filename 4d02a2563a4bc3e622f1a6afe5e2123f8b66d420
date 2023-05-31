@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d42c858b_40c99e60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547927
+      },
+      "writtenOn": "2023-05-31T16:53:52Z",
+      "side": 1,
+      "message": "Error log shows `chromeos-zephyr-0.0.1-r6254: /build/skyrim/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r6254/work/chromeos-zephyr-0.0.1/modules/ec/zephyr/program/skyrim/markarth/project.conf:40: warning: attempt to assign the value \u0027n\u0027 to the undefined symbol PLATFORM_EC_CMD_POWERINDEBUG`\n\nPlease find the definition for \"PLATFORM_EC_CMD_POWERINDEBUG\", and consider cherry-picking.",
+      "revId": "4d02a2563a4bc3e622f1a6afe5e2123f8b66d420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
