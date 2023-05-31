@@ -32,42 +32,12 @@
 
 #endif /* CONFIG_ZTEST */
 
-LOG_MODULE_DECLARE(ovis, CONFIG_REX_LOG_LEVEL);
+LOG_MODULE_DECLARE(ovis, CONFIG_OVIS_LOG_LEVEL);
 
 uint32_t usb_db_type;
 
 static void setup_usb_db(void)
 {
-	int ret;
 
-	ret = cros_cbi_get_fw_config(FW_USB_DB, &usb_db_type);
-	if (ret != 0) {
-		LOG_INF("USB DB: Failed to get FW_USB_DB from CBI");
-		usb_db_type = -1;
-		return;
-	}
-
-	switch (usb_db_type) {
-	case FW_USB_DB_NOT_CONNECTED:
-		LOG_INF("USB DB: not connected");
-		break;
-	case FW_USB_DB_USB3:
-		LOG_INF("USB DB: Setting USB3 mux");
-		break;
-	case FW_USB_DB_USB4_ANX7452:
-		LOG_INF("USB DB: Setting ANX7452 mux");
-		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_anx7452_port1);
-		TCPC_ENABLE_ALTERNATE_BY_NODELABEL(1, tcpc_rt1716_port1);
-		PPC_ENABLE_ALTERNATE_BY_NODELABEL(1, ppc_syv_port1);
-		break;
-	case FW_USB_DB_USB4_KB8010:
-		LOG_INF("USB DB: Setting KB8010 mux");
-		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_kb8010_port1);
-		TCPC_ENABLE_ALTERNATE_BY_NODELABEL(1, tcpc_rt1716_port1);
-		PPC_ENABLE_ALTERNATE_BY_NODELABEL(1, ppc_ktu1125_port1);
-		break;
-	default:
-		LOG_INF("USB DB: No known USB DB found");
-	}
 }
 DECLARE_HOOK(HOOK_INIT, setup_usb_db, HOOK_PRIO_POST_I2C);
