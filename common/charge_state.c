@@ -1476,8 +1476,8 @@ int calculate_sleep_dur(int battery_critical, int sleep_usec)
 	return sleep_usec;
 }
 
-/* check external power and handle any changes */
-static void check_extpower(int chgnum)
+/* check external power, return true if there are any changes */
+static bool check_extpower(int chgnum)
 {
 	curr.ac = extpower_is_present();
 	if (IS_ENABLED(CONFIG_EC_EC_COMM_BATTERY_CLIENT)) {
@@ -1485,8 +1485,7 @@ static void check_extpower(int chgnum)
 			curr.ac = 0;
 	}
 
-	if (curr.ac != prev_ac)
-		process_ac_change(chgnum);
+	return curr.ac != prev_ac;
 }
 
 /* processing for new charge state, returning updated sleep_usec */
@@ -1548,7 +1547,8 @@ void charger_task(void *u)
 		problems_exist = 0;
 		battery_critical = 0;
 
-		check_extpower(chgnum);
+		if (check_extpower(chgnum))
+			process_ac_change(chgnum);
 
 		if (IS_ENABLED(CONFIG_EC_EC_COMM_BATTERY_CLIENT))
 			base_update_battery_info();
