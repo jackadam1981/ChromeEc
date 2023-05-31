@@ -20,7 +20,7 @@ def register_ovis_project(
 
     register_npcx_project(
         project_name=project_name,
-        zephyr_board="npcx9m7f",
+        zephyr_board="npcx9m3f",
         dts_overlays=[
             here / project_name / "project.overlay",
         ],
@@ -32,4 +32,3 @@ def register_ovis_project(
 register_ovis_project(
     project_name="ovis",
 )
-
