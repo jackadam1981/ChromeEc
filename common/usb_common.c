@@ -532,6 +532,14 @@ __overridable int pd_check_data_swap(int port, enum pd_data_role data_role)
 __overridable int pd_check_power_swap(int port)
 {
 	/*
+	 * If the Type-C port is our active charge port and we don't have a
+	 * battery, don't allow power role swap (to source).
+	 */
+	if (!IS_ENABLED(CONFIG_BATTERY) &&
+	    port == charge_manager_get_active_charge_port())
+		return 0;
+
+	/*
 	 * Allow power swap if we are acting as a dual role device.  If we are
 	 * not acting as dual role (ex. suspended), then only allow power swap
 	 * if we are sourcing when we could be sinking.
