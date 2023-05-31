@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e121b4_4f0431f8",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-05-31T20:53:59Z",
+      "side": 1,
+      "message": "This check is not necessary. The line 25 implies it.",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "35aa645d77c1cbc09dee65ffdee14a3ed4e0d0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7371acaf_66ead87d",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-05-31T20:53:59Z",
+      "side": 1,
+      "message": "Similar, the line 25 implies it.",
+      "range": {
+        "startLine": 22,
+        "startChar": 18,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "35aa645d77c1cbc09dee65ffdee14a3ed4e0d0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
