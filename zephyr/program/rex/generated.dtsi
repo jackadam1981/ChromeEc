@@ -148,6 +148,7 @@
 		};
 		gpio_en_pp5000_usba_r: en_pp5000_usba_r {
 			gpios = <&gpiod 7 GPIO_OUTPUT>;
+			enum-name = "GPIO_EN_PP5000_USBA_R";
 		};
 		gpio_en_s5_rails: en_s5_rails {
 			gpios = <&gpiob 6 GPIO_ODR_HIGH>;
