@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "153d85f3_ad2f7673",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-05-31T19:29:30Z",
+      "side": 1,
+      "message": "This code is shared by all board in the nissa program.  This needs to move to a craask specific file.  The correct location is this [directory](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/nissa/craask/src/).",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "84be5a800af68816672c7fc451beb385bb2a772e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
