@@ -285,6 +285,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a32aa6_fffed7a1",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-01T21:08:20Z",
+      "side": 1,
+      "message": "I rebased my main recently, support for V2 is added to main which don\u0027t require address conflict handling, will discuss and create other patch without breaking V1 and V2. Removing it for now",
+      "parentUuid": "42f54197_52121fd5",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1617fe01_3c24b7f7",
