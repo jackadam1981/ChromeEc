@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "ab88612f_a9b86485",
         "filename": "/COMMIT_MSG",
@@ -20,10 +21,10 @@
         "endChar": 20
       },
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2ceac748_3297ca9e",
         "filename": "chip/g/sn_bits.c",
@@ -37,10 +38,10 @@
       "side": 1,
       "message": "I would have put everything in one line and dropped the comparison to 0, but it seems like the style in this file is to explicitly compare to 0? (See string comparison calls etc.)",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "4f9f1c36_86ef9cfb",
         "filename": "chip/g/sn_bits.c",
@@ -55,10 +56,10 @@
       "message": "just to double-check: the idea is to allow setting S/N on some special boards that have .Flags (indicating prepvt) but not .Type set at factory? and we don\u0027t need to allow S/N writes on prepvt boards that have BID.Type also set?",
       "parentUuid": "2ceac748_3297ca9e",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9fddb622_a43a08f1",
         "filename": "chip/g/sn_bits.c",
@@ -73,10 +74,10 @@
       "message": "is this something Randall mentioned in passing the other day? Is this a plan of record now? Note that Cr50 will not write a flag value unless current setting is 0xffffffff",
       "parentUuid": "4f9f1c36_86ef9cfb",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "fcb03277_c227b0a1",
         "filename": "chip/g/sn_bits.c",
@@ -91,10 +92,10 @@
       "message": "Yea I don\u0027t think this change makes sense on it\u0027s own - it should go along with the change to writing the board id (allowing only the prepvt flag to be set, and allowing board id to be written if it is). \n\nIs there full agreement from everyone on doing this? Have factory team been looped into this plan and agree it\u0027s feasible?",
       "parentUuid": "9fddb622_a43a08f1",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "891c7b80_37b199e9",
         "filename": "chip/g/sn_bits.c",
@@ -109,10 +110,10 @@
       "message": "I\u0027m also curious in what situation we would only know the .Type halfway through the factory process?",
       "parentUuid": "fcb03277_c227b0a1",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d1d93511_d51e00b8",
         "filename": "chip/g/sn_bits.c",
@@ -127,10 +128,10 @@
       "message": "We should know early on in the build if this is PreMP or MP Cr50, since we flash one or the other of them.\n\nBut if this is Proto0 or EVT, we never get to factory finalize so never write the BoardID or SN.\n\nThe idea is that we should write what we know early, so that PreMP systems can never claim to be MP systems, at least as far as their usability for zero-touch is concerned.",
       "parentUuid": "891c7b80_37b199e9",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a752a580_328545ee",
         "filename": "chip/g/sn_bits.c",
@@ -145,10 +146,10 @@
       "message": "Ok so IIUC, the goal is to reduce the number of early prototype devices that might be able to impersonate a serial number for ZTE?\n\nAre we planning to just flip the \u0027premp\u0027 bit (bit 7 in flags) from 1 to 0 in the case where we flash a PreMP image? \n\nIf so, then those devices will never be eligible for ZTE, so don\u0027t need a serial number, and we don\u0027t need this change?",
       "parentUuid": "d1d93511_d51e00b8",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "10889a6a_88740c60",
         "filename": "chip/g/sn_bits.c",
@@ -163,10 +164,10 @@
       "message": "Sure, as long as you don\u0027t need to use them to test ZTE either.",
       "parentUuid": "a752a580_328545ee",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2c20da3a_faf7d6e3",
         "filename": "chip/g/sn_bits.c",
@@ -181,10 +182,10 @@
       "message": "Right - I can\u0027t think of any situations where writing a serial number to one of these devices would enable testing that couldn\u0027t be done with a normal prod board with serial number.",
       "parentUuid": "10889a6a_88740c60",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "33381fa3_e792458d",
         "filename": "chip/g/sn_bits.c",
@@ -199,10 +200,10 @@
       "message": "But that\u0027s assuming that testing only starts with prod boards. Isn\u0027t that a big assumption?",
       "parentUuid": "2c20da3a_faf7d6e3",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "27ce3396_28858687",
         "filename": "chip/g/sn_bits.c",
@@ -217,10 +218,10 @@
       "message": "Specifically, what I want to be able to do is to TEST Zero-Touch with a Pre-MP board (assuming DVTs and such early machines are using Pre-MP boards). That TEST will be against the TEST PCA and DMServer. In production, non-MP devices are not allowed to use ZT. In Google3, see https://cs.corp.google.com/piper///depot/google3/java/com/google/wireless/android/enterprise/devicemanagement/chrome/operations/CertificateBasedRegisterDeviceOperation.java?rcl\u003d215474308\u0026l\u003d365 (the flag there is only set to true for the test DMServer).",
       "parentUuid": "33381fa3_e792458d",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d280ff2c_ff2fb56f",
         "filename": "chip/g/sn_bits.c",
@@ -235,10 +236,10 @@
       "message": "Could we just write a totally-random serial number into PreMP boards just before setting the PreMP flag?\n\nThen you could match against that on your test server.",
       "parentUuid": "27ce3396_28858687",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1446b8e4_436a21a1",
         "filename": "chip/g/sn_bits.c",
@@ -253,10 +254,10 @@
       "message": "I am sure we could, but we would also need the full SN to be in the VPD since INFO1 only has bits of a hash. So at that point we\u0027re basically asking the factory for a more complicated step, which may not be reasonable, rather than some in dev and test being able to write the SN and bits they want as needed.",
       "parentUuid": "d280ff2c_ff2fb56f",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "71c54eb2_e018f5d2",
         "filename": "chip/g/sn_bits.c",
@@ -271,10 +272,10 @@
       "message": "Why do you want to test with DVT boards? AFAIK there is nothing device-specific about cr50 or attestationd etc",
       "parentUuid": "1446b8e4_436a21a1",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b91b5c12_42f12938",
         "filename": "chip/g/sn_bits.c",
@@ -289,10 +290,10 @@
       "message": "Because they\u0027re the first ones out when we test other parts of Chrome OS etc.? The eve I use for development and testing for example are DVTs because that\u0027s what Chromestop sent me. Arbitrarily blocking those boards from being able to be used for a part of Chrome OS doesn\u0027t seem like a good idea. Just like preventing erasure of INFO1 would make your life quite difficult you said, preventing non-MP boards from doing core parts of the enterprise flows for Chrome OS would make testing and development much more difficult too.",
       "parentUuid": "71c54eb2_e018f5d2",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "4891d659_6a4f26f6",
         "filename": "chip/g/sn_bits.c",
@@ -307,10 +308,10 @@
       "message": "So it\u0027s not about requiring pre-MP boards for testing, it\u0027s about not excluding them from being able to do all the enterprise flows of Chrome OS in a test environment.",
       "parentUuid": "b91b5c12_42f12938",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c12e11df_9b5f76f9",
         "filename": "chip/g/sn_bits.c",
@@ -325,10 +326,10 @@
       "message": "ok so the goal is to reduce the number of early stage devices that are eligible for [production] ZTE, whilst still allowing an arbitrary SN to be written to those devices so they can be used for testing.\n\nThis requires changes in:\n- cr50 board ID code\n- cr50 SN bits code\n- factory tooling\n- board ID validation in asbestos? (to check for premp bit on otherwise valid field) \n- qa borgconfig for asbestos to ignore above validation\n\nThe plan all makes sense, but above is a fair bit of work, not to mention additional complexity and room for error.\n\nChromestop in Taipei at least has many PVT devices and obtaining one is never a problem - if there is any chance of doing this in your office, and there are no other reasons to test on DVT devices, then I\u0027d suggest we just skip doing the above. \n\nIf it\u0027s possible to test on a PVT device but is still important to reduce the number of early stage devices eligible for ZTE, perhaps we could do this by just writing the fixed \u0027premp\u0027 board id (ZZCR), which would presumably only need a change to factory tooling.",
       "parentUuid": "4891d659_6a4f26f6",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f2957ea7_b82676f4",
         "filename": "chip/g/sn_bits.c",
@@ -343,10 +344,10 @@
       "message": "Yeah, the real goal is to ship early stage devices in a state where they can\u0027t pretend to be a real device.  Writing the entire PreMP board ID would be sufficient.\n\nWhat if we change the code which writes the serial numbers so that it will allow writing if *either*:\n   1) BoardID has not yet been set\n   2) BoardID has been set to ZZCR / PreMP flags\n\nThen we can just blindly write the BoardID to ZZCR early in proto/EVT factory runs and leave the serial number field blank.  When devices arrive at Google, we can write whatever serial number we want for ZTE testing.  But since BoardID has already been written to ZZCR, they\u0027ll never match any real MP device.",
       "parentUuid": "c12e11df_9b5f76f9",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9127b1d9_cef7312f",
         "filename": "chip/g/sn_bits.c",
@@ -361,10 +362,10 @@
       "message": "Let\u0027s move the discussion to go/zte-floors. What is ZZCR though? I couldn\u0027t find that acronym in go/cr50-boardid-lock which is my reference for all things BoardID.",
       "parentUuid": "f2957ea7_b82676f4",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f28f9b2a_de99360b",
         "filename": "chip/g/sn_bits.c",
@@ -379,10 +380,10 @@
       "message": "ZZCR is a brand code for internal or development device.  I added a hint to the doc.",
       "parentUuid": "9127b1d9_cef7312f",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d0799052_ad69c7a7",
         "filename": "chip/g/sn_bits.c",
@@ -397,8 +398,182 @@
       "message": "I\u0027ve put this in go/zte-floors in this section: https://docs.google.com/document/d/1UnyUNCCVg_-HhpkRJoUyGGpI-qzLfNU2OtA3D_lFCjk/edit#heading\u003dh.v9w2qmi9m4zg",
       "parentUuid": "f28f9b2a_de99360b",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
+  "submitRequirementResults": [
+    {
+      "submitRequirement": {
+        "name": "Code-Coverage",
+        "description": {
+          "value": "Submit requirement for the \u0027Code-Coverage\u0027 label"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "-branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Coverage\u003dMAX,user\u003dnon_uploader OR -label:Code-Coverage\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Coverage=MAX,user=non_uploader OR -label:Code-Coverage=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Code-Coverage=MAX,user=non_uploader","label:Code-Coverage=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
+      },
+      "patchSetCommitId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Code-Owners",
+        "description": {
+          "value": "User with the code owner override approved the change"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "has:enabled_code-owners"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "has:approval_code-owners"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Owners-Override\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"has:enabled_code-owners"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["has:enabled_code-owners"],"failingAtoms":[]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"has:approval_code-owners"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["has:approval_code-owners"],"failingAtoms":[]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Owners-Override=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Owners-Override=+1"]}
+      },
+      "patchSetCommitId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Code-Review",
+        "description": {
+          "value": "Submit requirement for the \u0027Code-Review\u0027 label"
+        },
+        "applicabilityExpression": {},
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Review\u003dMAX,user\u003dnon_uploader -label:Code-Review\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1 AND -label:Code-Review\u003dMIN"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {},
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Code-Review=MAX,user=non_uploader","label:Code-Review=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1 AND -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1","label:Code-Review=MIN"]}
+      },
+      "patchSetCommitId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Review-Enforcement",
+        "description": {
+          "value": "Two Google employees must approve the change. Uploading the change or voting positively on Code-Review count as approval."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "is:review-enforced_gerrit"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "is:review-enforcement-satisfied_gerrit"
+        },
+        "overrideExpression": {},
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforced_gerrit"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["is:review-enforced_gerrit"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforcement-satisfied_gerrit"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
+      },
+      "overrideExpressionResult": {},
+      "patchSetCommitId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Verified",
+        "description": {
+          "value": "CI or human verified the change"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "-branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Verified\u003dMAX AND -label:Verified\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Verified=MAX AND -label:Verified=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Verified=MAX","label:Verified=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
+      },
+      "patchSetCommitId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
     }
   ]
 }
