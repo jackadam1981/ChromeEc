@@ -26,14 +26,14 @@
 
 enum test_failure_mode failure_mode;
 
-static const uint8_t legacy_nvmem_image[] = {
-#include "legacy_nvmem_dump.h"
+static const uint8_t nvmem_cache_snapshot[] = {
+#include "nvmem_cache_snapshot.h"
 };
 
-BUILD_ASSERT(sizeof(legacy_nvmem_image) == NVMEM_PARTITION_SIZE);
+BUILD_ASSERT(sizeof(nvmem_cache_snapshot) == NVMEM_PARTITION_SIZE);
 
-static uint8_t write_buffer[NVMEM_PARTITION_SIZE];
 static int flash_write_fail;
+static int post_init_from_scratch(uint8_t flash_value);
 
 struct nvmem_test_result {
 	int var_count;
@@ -48,6 +48,36 @@ struct nvmem_test_result {
 };
 
 static struct nvmem_test_result test_result;
+
+/*
+ * Compare actual test result stats stored in 'test_result' with the expected
+ * value. If there is a mismatch - report all mismatched fields and generate an
+ * assert exception.
+ */
+static void compare_results(const struct nvmem_test_result *new)
+{
+	#define CHECK_FIELD(n) if (test_result.n != new->n) {	\
+		ccprintf("%20s mismatch: old %d, new %d\n",	\
+			 #n, (int)test_result.n, (int)new->n);	\
+	}
+
+	if (memcmp(&test_result, new, sizeof(test_result)) == 0)
+		return;
+
+	ccprintf("\nUnexpected result comparison mismatch:\n");
+	CHECK_FIELD(var_count);
+	CHECK_FIELD(reserved_obj_count);
+	CHECK_FIELD(evictable_obj_count);
+	CHECK_FIELD(deleted_obj_count);
+	CHECK_FIELD(delimiter_count);
+	CHECK_FIELD(unexpected_count);
+	CHECK_FIELD(valid_data_size);
+	CHECK_FIELD(erased_data_size);
+	CHECK_FIELD(tuple_data_size);
+	ccprintf("\n");
+
+	assert(false);
+}
 
 int app_cipher(const void *salt_p, void *out_p, const void *in_p, size_t size)
 {
@@ -130,23 +160,6 @@ static void wipe_out_nvmem_cache(void)
 	memset(nvmem_cache_base(NVMEM_TPM), 0, nvmem_user_sizes[NVMEM_TPM]);
 }
 
-static int prepare_nvmem_contents(void)
-{
-	struct nvmem_tag *tag;
-
-	memcpy(write_buffer, legacy_nvmem_image, sizeof(write_buffer));
-	tag = (struct nvmem_tag *)write_buffer;
-
-	app_compute_hash(tag->padding, NVMEM_PARTITION_SIZE - NVMEM_SHA_SIZE,
-			 tag->sha, sizeof(tag->sha));
-	app_cipher(tag->sha, tag + 1, tag + 1,
-		   NVMEM_PARTITION_SIZE - sizeof(struct nvmem_tag));
-
-	return flash_physical_write(CONFIG_FLASH_NVMEM_BASE_A -
-					    CONFIG_PROGRAM_MEMORY_BASE,
-				    sizeof(write_buffer), write_buffer);
-}
-
 static int iterate_over_flash(void)
 {
 	enum ec_error_list rv;
@@ -223,6 +236,66 @@ static int iterate_over_flash(void)
 	return EC_ERROR_INVAL;
 }
 
+/*
+ * Place the NVMEM cache sample in the cache and then run nvmem_save() to make
+ * sure that the cache contents makes it into the flash.
+ */
+static int prepare_nvmem_contents(void)
+{
+	struct VarData {
+		const char *key;
+		const char *value;
+	} init_vars [] = {
+		{ "ikey1", "idata1" },
+		{ "ikey2", "idata2" },
+		{ "ikey3", "idata3" },
+	};
+	const struct nvmem_test_result new_flash_result = {
+		.var_count = 3,
+		.reserved_obj_count = 40,
+		.evictable_obj_count = 9,
+		.deleted_obj_count = 24,
+		.delimiter_count = 5,
+		.valid_data_size = 5170,
+		.tuple_data_size = 33,
+		.erased_data_size = 698
+	};
+	size_t i;
+
+	/* First init NVMEM from scratch. */
+	post_init_from_scratch(0xff);
+
+	/* Now update contents of the NVMEM cache with preserved TPM data. */
+	memcpy(nvmem_cache_base(NVMEM_TPM),
+	       nvmem_cache_snapshot + sizeof(struct nvmem_tag),
+	       nvmem_user_sizes[NVMEM_TPM]);
+
+	/* Now save the new cache contents in the flash. */
+	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
+
+	/* Add a few variables for a good measure. */
+	for (i = 0; i < ARRAY_SIZE(init_vars); i++) {
+		const char *k = init_vars[i].key;
+		const char *v = init_vars[i].value;
+
+		TEST_ASSERT(setvar(k, strlen(k), v, strlen(v)) == EC_SUCCESS);
+	}
+
+	//
+	// This will repopulate the hash with the correct PCDR values (set to
+	// zero as opposed to 0xff);
+	//
+	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
+
+	/* Fill up the test_result structure. */
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+
+	dump_nvmem_state("After prepare_nvmem_contents()", &test_result);
+	compare_results(&new_flash_result);
+
+	return EC_SUCCESS;
+}
+
 static void *page_to_flash_addr(int page_num)
 {
 	uint32_t base_offset = CONFIG_FLASH_NEW_NVMEM_BASE_A;
@@ -243,10 +316,17 @@ static int post_init_from_scratch(uint8_t flash_value)
 {
 	int i;
 	void *flash_p;
+	/* NVMEM counts after initialization from scratch. */
+	const struct nvmem_test_result init_result = {
+		.reserved_obj_count = 38,
+		.delimiter_count = 1,
+		.valid_data_size = 1088,
+	};
+	uint8_t write_buffer[NVMEM_PARTITION_SIZE];
 
 	memset(write_buffer, flash_value, sizeof(write_buffer));
 
-	/* Overwrite nvmem flash space with junk value. */
+	/* Overwrite nvmem flash space with the initial value. */
 	flash_physical_write(
 		CONFIG_FLASH_NEW_NVMEM_BASE_A - CONFIG_PROGRAM_MEMORY_BASE,
 		NEW_FLASH_HALF_NVMEM_SIZE, (const char *)write_buffer);
@@ -256,13 +336,8 @@ static int post_init_from_scratch(uint8_t flash_value)
 
 	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
 	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
-	TEST_ASSERT(test_result.var_count == 0);
-	TEST_ASSERT(test_result.reserved_obj_count == 38);
-	TEST_ASSERT(test_result.evictable_obj_count == 0);
-	TEST_ASSERT(test_result.deleted_obj_count == 0);
-	TEST_ASSERT(test_result.unexpected_count == 0);
-	TEST_ASSERT(test_result.valid_data_size == 1088);
-	TEST_ASSERT(total_var_space == 0);
+	dump_nvmem_state("State after init from scratch", &test_result);
+	compare_results(&init_result);
 
 	for (i = 0; i < (NEW_NVMEM_TOTAL_PAGES - 1); i++) {
 		flash_p = page_to_flash_addr(i);
@@ -300,30 +375,6 @@ static int test_corrupt_nvmem(void)
 	return post_init_from_scratch(0x55);
 }
 
-static int prepare_new_flash(void)
-{
-	TEST_ASSERT(test_fully_erased_nvmem() == EC_SUCCESS);
-
-	/* Now copy sensible information into the nvmem cache. */
-	memcpy(nvmem_cache_base(NVMEM_TPM),
-	       legacy_nvmem_image + sizeof(struct nvmem_tag),
-	       nvmem_user_sizes[NVMEM_TPM]);
-
-	dump_nvmem_state("after first save", &test_result);
-	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
-	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
-
-	TEST_ASSERT(test_result.deleted_obj_count == 24);
-	TEST_ASSERT(test_result.var_count == 0);
-	TEST_ASSERT(test_result.reserved_obj_count == 40);
-	TEST_ASSERT(test_result.evictable_obj_count == 9);
-	TEST_ASSERT(test_result.unexpected_count == 0);
-	TEST_ASSERT(test_result.valid_data_size == 5128);
-	TEST_ASSERT(test_result.erased_data_size == 698);
-
-	return EC_SUCCESS;
-}
-
 static int test_nvmem_save(void)
 {
 	const char *key = "var1";
@@ -331,7 +382,7 @@ static int test_nvmem_save(void)
 	size_t total_var_size;
 	struct nvmem_test_result old_result;
 
-	TEST_ASSERT(prepare_new_flash() == EC_SUCCESS);
+	TEST_ASSERT(prepare_nvmem_contents() == EC_SUCCESS);
 
 	/*
 	 * Verify that saving without changing the cache does not affect flash
@@ -346,13 +397,13 @@ static int test_nvmem_save(void)
 	 */
 
 	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
-	TEST_ASSERT(!memcmp(&test_result, &old_result, sizeof(test_result)));
+	compare_results(&old_result);
 
 	wipe_out_nvmem_cache();
 	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
 	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
 	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
-	TEST_ASSERT(!memcmp(&test_result, &old_result, sizeof(test_result)));
+	compare_results(&old_result);
 
 	/*
 	 * Total size test variable storage takes in flash (container header
@@ -368,12 +419,10 @@ static int test_nvmem_save(void)
 	/* Remove changes caused by the new var addition. */
 	test_result.delimiter_count -= 1;
 	test_result.valid_data_size -= total_var_size;
-	test_result.tuple_data_size -= total_var_size -
-		sizeof(struct tuple) * test_result.var_count;
+	test_result.tuple_data_size -= total_var_size -	sizeof(struct tuple);
 	test_result.var_count -= 1;
 
-	TEST_ASSERT(memcmp(&test_result, &old_result, sizeof(test_result)) ==
-		    0);
+	compare_results(&old_result);
 
 	/* Verify that we can delete a variable from nvmem. */
 	TEST_ASSERT(setvar(key, strlen(key), NULL, 0) == EC_SUCCESS);
@@ -381,8 +430,7 @@ static int test_nvmem_save(void)
 	test_result.deleted_obj_count -= 1;
 	test_result.erased_data_size -= total_var_size;
 	test_result.delimiter_count -= 1;
-	TEST_ASSERT(memcmp(&test_result, &old_result, sizeof(test_result)) ==
-		    0);
+	compare_results(&old_result);
 
 	return EC_SUCCESS;
 }
@@ -426,7 +474,7 @@ static int test_nvmem_compaction(void)
 	key_len = strlen(key);
 	val_len = snprintf(value, sizeof(value), "variable value is %04d", 0);
 
-	TEST_ASSERT(prepare_new_flash() == EC_SUCCESS);
+	TEST_ASSERT(prepare_nvmem_contents() == EC_SUCCESS);
 
 	/*
 	 * Remember how much room was erased before flooding nvmem with erased
@@ -475,24 +523,6 @@ static int test_nvmem_compaction(void)
 	TEST_ASSERT(test_result.erased_data_size < var_space);
 
 	return EC_SUCCESS;
-}
-
-static int test_configured_nvmem(void)
-{
-	/*
-	 * The purpose of this test is to check how nvmem_init() initializes
-	 * from previously saved flash contents.
-	 */
-	TEST_ASSERT(prepare_nvmem_contents() == EC_SUCCESS);
-
-	/*
-	 * This is initialization from legacy flash contents which replaces
-	 * legacy flash image with the new format flash image
-	 */
-	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
-
-	/* And this is initialization from the new flash layout. */
-	return nvmem_init();
 }
 
 static uint8_t find_lb(const void *data)
@@ -678,20 +708,22 @@ static int test_nvmem_tuple_capacity(void)
 /* Verify that nvmem_erase_user_data only erases the given user's data. */
 static int test_nvmem_erase_tpm_data(void)
 {
+	const struct nvmem_test_result expected_after_erase = {
+		.var_count = 3,
+		.reserved_obj_count = 38,
+		.valid_data_size = 1130,
+		.delimiter_count = 4,
+		.tuple_data_size = 33,
+	};
+
 	TEST_ASSERT(prepare_nvmem_contents() == EC_SUCCESS);
-	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
 	browse_flash_contents(1);
 	TEST_ASSERT(nvmem_erase_tpm_data() == EC_SUCCESS);
 	browse_flash_contents(1);
 	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
-	TEST_ASSERT(test_result.deleted_obj_count == 0);
-	TEST_ASSERT(test_result.var_count == 3);
-	TEST_ASSERT(test_result.reserved_obj_count == 38);
-	TEST_ASSERT(test_result.evictable_obj_count == 0);
-	TEST_ASSERT(test_result.unexpected_count == 0);
-	TEST_ASSERT(test_result.valid_data_size == 1174);
-	TEST_ASSERT(test_result.erased_data_size == 0);
 
+	compare_results(&expected_after_erase);
 	return EC_SUCCESS;
 }
 
@@ -820,7 +852,7 @@ static int caches_match(const uint8_t *cache1, const uint8_t *cache2)
 			if (!memcmp(cache1 + offset, cache2 + offset, size))
 				continue;
 
-			ccprintf("%s:%d failed comparing %zd:%zd:\n", __func__,
+			ccprintf("\n%s:%d failed comparing %zd:%zd:\n", __func__,
 				 __LINE__, i, j);
 			for (k = offset; k < (offset + size); k++)
 				if (cache1[k] != cache2[k])
@@ -864,15 +896,6 @@ static int caches_match(const uint8_t *cache1, const uint8_t *cache2)
 	return EC_SUCCESS;
 }
 
-static int prepare_post_migration_nvmem(void)
-{
-	TEST_ASSERT(prepare_nvmem_contents() == EC_SUCCESS);
-	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
-	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
-	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
-
-	return EC_SUCCESS;
-}
 /*
  * This test creates various failure conditions related to interrupted nvmem
  * save operations and verifies that transaction integrity is maintained -
@@ -891,8 +914,10 @@ static int test_nvmem_incomplete_transaction(void)
 	size_t object_size;
 	union entry_u e;
 
-	TEST_ASSERT(prepare_post_migration_nvmem() == EC_SUCCESS);
+	TEST_ASSERT(prepare_nvmem_contents() == EC_SUCCESS);
+	browse_flash_contents(1);
 	num_objects = fill_obj_offsets(offsets, ARRAY_SIZE(offsets));
+	ccprintf("number of objects: %d\n", (int)num_objects);
 	TEST_ASSERT(num_objects == 9);
 
 	/* Save cache state before deleting objects. */
@@ -979,7 +1004,7 @@ static int test_nvmem_interrupted_compaction(void)
 	uint8_t target_list_index;
 	uint8_t filler = 1;
 
-	TEST_ASSERT(prepare_post_migration_nvmem() == EC_SUCCESS);
+	TEST_ASSERT(post_init_from_scratch(0xff) == EC_SUCCESS);
 
 	/* Let's fill up a couple of pages with erased objects. */
 	target_list_index = controller_at.list_index + 2;
@@ -1043,29 +1068,6 @@ int DCRYPTO_ladder_is_enabled(void)
 	return 1;
 }
 
-static int test_migration(void)
-{
-	/*
-	 * This purpose of this test is to verify migration of the 'legacy'
-	 * TPM NVMEM format to the new scheme where each element is stored in
-	 * flash in its own container.
-	 */
-	TEST_ASSERT(prepare_nvmem_contents() == EC_SUCCESS);
-	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
-	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
-	TEST_ASSERT(test_result.var_count == 3);
-	TEST_ASSERT(test_result.reserved_obj_count == 40);
-	TEST_ASSERT(test_result.evictable_obj_count == 9);
-	TEST_ASSERT(test_result.delimiter_count == 1);
-	TEST_ASSERT(test_result.deleted_obj_count == 0);
-	TEST_ASSERT(test_result.unexpected_count == 0);
-	TEST_ASSERT(test_result.valid_data_size == 5214);
-	TEST_ASSERT(total_var_space == 77);
-	/* Container pointer not yet set. */
-	TEST_ASSERT(!controller_at.ct.data_offset && !controller_at.ct.ph);
-	return EC_SUCCESS;
-}
-
 /*
  * The purpose of this test is to verify variable storage limits, both per
  * object and total.
@@ -1081,7 +1083,7 @@ static int test_var_boundaries(void)
 	uint32_t coverage_map;
 	uint8_t var_key[10];
 
-	TEST_ASSERT(prepare_new_flash() == EC_SUCCESS);
+	TEST_ASSERT(prepare_nvmem_contents() == EC_SUCCESS);
 	saved_total_var_space = total_var_space;
 	coverage_map = 0;
 
@@ -1089,8 +1091,8 @@ static int test_var_boundaries(void)
 	 * Let's use the legacy NVMEM image as a source of fairly random but
 	 * reproducible data.
 	 */
-	key = legacy_nvmem_image;
-	val = legacy_nvmem_image;
+	key = nvmem_cache_snapshot;
+	val = nvmem_cache_snapshot;
 
 	/*
 	 * Test limit of max variable body space, use keys and values of
@@ -1224,7 +1226,7 @@ static int test_tpm_nvmem_modify_reserved_objects(void)
 	size_t erased_size;
 
 	TEST_ASSERT(sizeof(cache_copy) >= nvmem_user_sizes[NVMEM_TPM]);
-	TEST_ASSERT(prepare_new_flash() == EC_SUCCESS);
+	TEST_ASSERT(prepare_nvmem_contents() == EC_SUCCESS);
 	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
 	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
 	iterate_over_flash();
@@ -1284,7 +1286,7 @@ static int test_tpm_nvmem_modify_reserved_objects(void)
 	old_result.erased_data_size += erased_size;
 	old_result.delimiter_count++;
 
-	TEST_ASSERT(!memcmp(&test_result, &old_result, sizeof(test_result)));
+	compare_results(&old_result);
 
 	/* Verify several index space cases. */
 	for (i = 0; i <= RAM_INDEX_SPACE; i += (RAM_INDEX_SPACE / 2))
@@ -1328,7 +1330,7 @@ static int test_tpm_nvmem_modify_evictable_objects(void)
 	int new_obj_index;
 	int modified_obj_index;
 
-	TEST_ASSERT(prepare_new_flash() == EC_SUCCESS);
+	TEST_ASSERT(prepare_nvmem_contents() == EC_SUCCESS);
 	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
 	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
 	iterate_over_flash();
@@ -1540,11 +1542,8 @@ static int test_nvmem_tuple_updates(void)
 void run_test(void)
 {
 	run_test_setup();
-
-	RUN_TEST(test_migration);
 	RUN_TEST(test_corrupt_nvmem);
 	RUN_TEST(test_fully_erased_nvmem);
-	RUN_TEST(test_configured_nvmem);
 	RUN_TEST(test_nvmem_save);
 	RUN_TEST(test_var_read_write_delete);
 	RUN_TEST(test_nvmem_compaction);
@@ -1558,12 +1557,10 @@ void run_test(void)
 	RUN_TEST(test_nvmem_tuple_capacity);
 	RUN_TEST(test_nvmem_interrupted_compaction);
 	failure_mode = TEST_NO_FAILURE; /* In case the above test failed. */
-
 	/*
 	 * more tests to come
 	 * RUN_TEST(test_lock);
 	 * RUN_TEST(test_malloc_blocking);
 	 */
-
 	test_print_result();
 }

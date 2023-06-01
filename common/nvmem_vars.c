@@ -71,33 +71,6 @@ enum ec_error_list set_local_copy(void)
 /****************************************************************************/
 /* API functions */
 
-const struct tuple *legacy_getnextvar(const struct tuple *prev_var)
-{
-	const struct tuple *var;
-	uintptr_t idx;
-
-	if (!prev_var) {
-		/*
-		 * The caller is just starting, let's get the first var, if
-		 * any.
-		 */
-		if (!rbuf[0])
-			return NULL;
-		return (const struct tuple *)rbuf;
-	}
-
-	/* Let's try to get the next one. */
-	idx = (uintptr_t)prev_var;
-	idx += prev_var->key_len + prev_var->val_len + sizeof(struct tuple);
-
-	var = (const struct tuple *)idx;
-
-	if (var->key_len)
-		return var;
-
-	return NULL;
-}
-
 const uint8_t *tuple_key(const struct tuple *t) { return t->data_; }
 
 const uint8_t *tuple_val(const struct tuple *t)

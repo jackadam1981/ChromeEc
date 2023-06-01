@@ -32,7 +32,9 @@
 #define TEST_ASSERT(n) \
 	do { \
 		if (!(n)) { \
+			ccprintf("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv\n"); \
 			ccprintf("%d: ASSERTION failed: %s\n", __LINE__, #n); \
+			ccprintf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"); \
 			task_dump_trace(); \
 			return EC_ERROR_UNKNOWN; \
 		} \
@@ -41,10 +43,12 @@
 #define TEST_OPERATOR(a, b, op, fmt) \
 	do { \
 		if (!((a) op (b))) { \
+			ccprintf("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv\n"); \
 			ccprintf("%d: ASSERSION failed: %s " #op " %s\n", \
 				 __LINE__, #a, #b); \
 			ccprintf("\t\tEVAL: " fmt " " #op " " fmt "\n", \
 				 (a), (b)); \
+			ccprintf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"); \
 			task_dump_trace(); \
 			return EC_ERROR_UNKNOWN; \
 		} \

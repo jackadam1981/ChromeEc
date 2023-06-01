@@ -261,7 +261,7 @@ enum ec_error_list {
  * Define test_mockable and test_mockable_static for mocking
  * functions.
  */
-#ifdef TEST_BUILD
+#if defined(TEST_BUILD) || defined(CRYPTO_TEST_SETUP)
 #define test_mockable __attribute__((weak))
 #define test_mockable_static __attribute__((weak))
 #define test_export_static
