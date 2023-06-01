@@ -318,7 +318,7 @@ static void panic_init(void)
 DECLARE_HOOK(HOOK_INIT, panic_init, HOOK_PRIO_LAST);
 DECLARE_HOOK(HOOK_CHIPSET_RESET, panic_init, HOOK_PRIO_LAST);
 
-#ifdef CONFIG_CMD_STACKOVERFLOW
+#if defined(CONFIG_CMD_STACKOVERFLOW) && defined(CONFIG_CMD_CRASH)
 /*
  * Disable infinite recursion warning, since we're intentionally doing that
  * here.
