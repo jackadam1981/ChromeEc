@@ -16,6 +16,24 @@
       "message": "We\u0027ll probably want this one HIGH",
       "revId": "944c1b8b138163275e1ed8d8ab68fdaa1b70b9c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0fc13de_44672dbb",
+        "filename": "zephyr/program/myst/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-06-01T21:04:34Z",
+      "side": 1,
+      "message": "Done. I initially figured we\u0027d want to keep the retimer in reset but I see that Skyrim does the same thing.",
+      "parentUuid": "09940727_ded6ea04",
+      "revId": "944c1b8b138163275e1ed8d8ab68fdaa1b70b9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
