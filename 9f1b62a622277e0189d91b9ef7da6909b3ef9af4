@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "194195f4_34a28dfa",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1717,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-01T21:17:15Z",
+      "side": 1,
+      "message": "if the argument/parameter is missing in that position (1) following is printed on console:\n\n\"missing arg 1: EC image path\"\n\nThis will not be seen by users but mostly by developers who work on this script since function is called by logic in this file itself",
+      "parentUuid": "7cbd4bdb_ae7269e2",
+      "range": {
+        "startLine": 1717,
+        "startChar": 10,
+        "endLine": 1717,
+        "endChar": 40
+      },
+      "revId": "9f1b62a622277e0189d91b9ef7da6909b3ef9af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0944ad21_ebbf8652",
         "filename": "util/flash_ec",
         "patchSetId": 11
@@ -60,6 +84,30 @@
       "writtenOn": "2023-06-01T18:21:11Z",
       "side": 1,
       "message": "Don\u0027t it, right?",
+      "range": {
+        "startLine": 1748,
+        "startChar": 1,
+        "endLine": 1748,
+        "endChar": 2
+      },
+      "revId": "9f1b62a622277e0189d91b9ef7da6909b3ef9af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b05a3b3c_ce739b84",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1748,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-01T21:17:15Z",
+      "side": 1,
+      "message": "this is required to create a sub shell and run change directory to run dump_fmap, and then come back to parent shell process",
+      "parentUuid": "0c7a8c53_0cad7df9",
       "range": {
         "startLine": 1748,
         "startChar": 1,
