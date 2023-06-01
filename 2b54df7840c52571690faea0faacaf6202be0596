@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97eaee35_091cf3d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-06-01T23:16:47Z",
+      "side": 1,
+      "message": "I think this should be done somewhere in the power sequencing state machine, because RSMRST is not a board-specific (or even chipset-specific) signal. Even if the cause of this reset is unknown, it\u0027s possible that another board could exhibit the same behavior and the expected result should never be letting the power sequencing state machine get stuck in S3.",
+      "revId": "2b54df7840c52571690faea0faacaf6202be0596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b1004c1_0a67b752",
+        "filename": "zephyr/program/nissa/craask/src/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-06-01T23:16:47Z",
+      "side": 1,
+      "message": "Call `apshutdown()` instead; it handles things correctly for you.",
+      "revId": "2b54df7840c52571690faea0faacaf6202be0596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
