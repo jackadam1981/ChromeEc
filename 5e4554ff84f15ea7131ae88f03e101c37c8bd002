@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e613c44c_750c073c",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-01T04:53:52Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "095bc4bb_b48236e0",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "5e4554ff84f15ea7131ae88f03e101c37c8bd002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "655c5992_2044925f",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-01T02:41:38Z",
       "side": 1,
       "message": "return\nso that ret variable can be removed",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 6
+      },
+      "revId": "5e4554ff84f15ea7131ae88f03e101c37c8bd002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97c6c18_164f3a07",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-01T04:53:52Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "655c5992_2044925f",
       "range": {
         "startLine": 94,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ecea86a_e2bda7f1",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-01T04:53:52Z",
+      "side": 1,
+      "message": "This will be reused, and not all fields are filled here. it\u0027s better to start with initial value 0.",
+      "parentUuid": "18a91130_dccca3e2",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 46
+      },
+      "revId": "5e4554ff84f15ea7131ae88f03e101c37c8bd002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46fdc83e_ce258122",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-06-01T02:41:38Z",
       "side": 1,
       "message": "needed?",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 26
+      },
+      "revId": "5e4554ff84f15ea7131ae88f03e101c37c8bd002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "724a8d2c_f22a9ed4",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-01T04:53:52Z",
+      "side": 1,
+      "message": "Yes, not all fields are filled here; better to reset to 0.",
+      "parentUuid": "46fdc83e_ce258122",
       "range": {
         "startLine": 156,
         "startChar": 1,
