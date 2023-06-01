@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f1b8f9_1d74b48d",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1717,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-01T22:09:20Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "194195f4_34a28dfa",
+      "range": {
+        "startLine": 1717,
+        "startChar": 10,
+        "endLine": 1717,
+        "endChar": 40
+      },
+      "revId": "9f1b62a622277e0189d91b9ef7da6909b3ef9af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0944ad21_ebbf8652",
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "this is required to create a sub shell and run change directory to run dump_fmap, and then come back to parent shell process",
       "parentUuid": "0c7a8c53_0cad7df9",
+      "range": {
+        "startLine": 1748,
+        "startChar": 1,
+        "endLine": 1748,
+        "endChar": 2
+      },
+      "revId": "9f1b62a622277e0189d91b9ef7da6909b3ef9af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5062f797_8bc010f5",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1748,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-01T22:09:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b05a3b3c_ce739b84",
       "range": {
         "startLine": 1748,
         "startChar": 1,
