@@ -64,6 +64,9 @@ static void evaluate_d_notify_level(void)
 {
 	enum d_notify_level lvl;
 	const struct d_notify_policy *policy = d_notify_policy;
+	static int previous_soc;
+	int watts, soc;
+	bool going_up;
 
 	/*
 	 * We don't need to care about 'transitioning to S0' because throttling
@@ -77,39 +80,30 @@ static void evaluate_d_notify_level(void)
 		return;
 	}
 
-	if (extpower_is_present()) {
-		const int watts = charge_manager_get_power_limit_uw() / 1000000;
+	if (extpower_is_present())
+		watts = charge_manager_get_power_limit_uw() / 1000000;
+	else
+		watts = 0;
 
-		for (lvl = D_NOTIFY_1; lvl <= D_NOTIFY_5; lvl++) {
-			if (policy[lvl].power_source != D_NOTIFY_AC &&
-			    policy[lvl].power_source != D_NOTIFY_AC_DC)
-				continue;
-
-			if (policy[lvl].power_source == D_NOTIFY_AC) {
-				if (watts >= policy[lvl].ac.min_charger_watts) {
-					set_d_notify_level(lvl);
-					break;
-				}
-			} else {
-				set_d_notify_level(lvl);
-				break;
-			}
-		}
+	if (battery_get_disconnect_state() == BATTERY_NOT_DISCONNECTED) {
+		soc = charge_get_percent();
 	} else {
-		const int soc = charge_get_percent();
+		soc = 0;
+	}
+	if (soc > previous_soc)
+		going_up = true;
+	previous_soc = soc;
 
-		for (lvl = D_NOTIFY_5; lvl >= D_NOTIFY_1; lvl--) {
-			if (policy[lvl].power_source == D_NOTIFY_DC) {
-				if (soc <= policy[lvl].dc.max_battery_soc) {
-					set_d_notify_level(lvl);
-					break;
-				}
-			} else if (policy[lvl].power_source == D_NOTIFY_AC_DC) {
-				set_d_notify_level(lvl);
-				break;
-			}
+	for (lvl = D_NOTIFY_1; lvl < D_NOTIFY_5; lvl++) {
+		int min_watts = policy[lvl].min_watts;
+		int min_soc = going_up ?
+				policy[lvl].min_soc_up :
+				policy[lvl].min_soc_down;
+		if (min_watts <= watts && min_soc <= soc) {
+			break;
 		}
 	}
+	set_d_notify_level(lvl);
 }
 
 static void disable_gpu_acoff(void)

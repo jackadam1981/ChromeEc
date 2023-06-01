@@ -19,41 +19,31 @@ enum d_notify_level {
 	D_NOTIFY_COUNT,
 };
 
-enum d_notify_policy_type {
-	/* High- or low-power A/C */
-	D_NOTIFY_AC,
-	/* Too low of A/C to still charge or DC with high battery SOC */
-	D_NOTIFY_AC_DC,
-	/* DC with medium or low battery SOC */
-	D_NOTIFY_DC,
-};
-
+/**
+ * A D-Notify policy consists of 5 struct d_notify_policy elements, which
+ * define minimum wattage and battery soc required for each Dx level.
+ *
+ * min_soc_up is used when a battery is charging and min_soc_down is used when
+ * a battery is discharging. These are needed to avoid frequent level
+ * transitions between two levels (e.g. D3->D2->D3...).
+ */
 struct d_notify_policy {
-	enum d_notify_policy_type power_source;
-	union {
-		struct {
-			unsigned int min_charger_watts;
-		} ac;
-		struct {
-			unsigned int max_battery_soc;
-		} dc;
-	};
+	unsigned int min_watts;
+	unsigned int min_soc_up;
+	unsigned int min_soc_down;
 };
 
-#define AC_ATLEAST_W(W)                                                   \
-	{                                                                 \
-		.power_source = D_NOTIFY_AC, .ac.min_charger_watts = (W), \
-	}
-
-#define AC_DC                                   \
-	{                                       \
-		.power_source = D_NOTIFY_AC_DC, \
-	}
-
-#define DC_ATMOST_SOC(S)                                                \
-	{                                                               \
-		.power_source = D_NOTIFY_DC, .dc.max_battery_soc = (S), \
-	}
+/**
+ * Helper macro to define d_notify_policy.
+ *
+ * w: minimum wattage required for this Dx level.
+ * c1: minimum battery soc required for this Dx level when charging.
+ * c2: minimum battery soc required for this Dx level when discharging.
+ *
+ * You need c1 > c2 to make hysteresis work.
+ */
+#define D_NOTIFY_ATLEAST(w, c1, c2) \
+	{ .min_watts = (w), .min_soc_up = (c1), .min_soc_down = (c2) }
 
 void nvidia_gpu_init_policy(const struct d_notify_policy *policies);
 

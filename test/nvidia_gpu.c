@@ -20,8 +20,11 @@
 #include <stdio.h>
 
 struct d_notify_policy d_notify_policies[] = {
-	AC_ATLEAST_W(100), AC_ATLEAST_W(65), AC_DC,
-	DC_ATMOST_SOC(20), DC_ATMOST_SOC(5),
+	[D_NOTIFY_1] = D_NOTIFY_ATLEAST(110, 0, 0),
+	[D_NOTIFY_2] = D_NOTIFY_ATLEAST(65, 0, 0),
+	[D_NOTIFY_3] = D_NOTIFY_ATLEAST(0, 21, 20),
+	[D_NOTIFY_4] = D_NOTIFY_ATLEAST(0, 6, 5),
+	[D_NOTIFY_5] = D_NOTIFY_ATLEAST(0, 0, 0),
 };
 
 extern enum d_notify_level d_notify_level;
@@ -32,6 +35,12 @@ static int nvidia_gpu_acoff_odl = 1;
 static int charge_percent = 100;
 static int charge_power = 100;
 static uint8_t *memmap_gpu;
+enum battery_disconnect_state disconnect_state = BATTERY_NOT_DISCONNECTED;
+
+enum battery_disconnect_state battery_get_disconnect_state(void)
+{
+	return disconnect_state;
+}
 
 __override int charge_get_percent(void)
 {
@@ -61,13 +70,13 @@ __override void gpio_set_level(enum gpio_signal signal, int value)
 		nvidia_gpu_acoff_odl = value;
 }
 
-static void setup(int extpower, int gpio_acoff, int percent, int power,
+static void setup(int extpower, int gpio_acoff, int soc, int watts,
 		  enum d_notify_level level)
 {
 	extpower_presence = extpower;
 	nvidia_gpu_acoff_odl = gpio_acoff;
-	charge_percent = percent;
-	charge_power = power;
+	charge_percent = soc;
+	charge_power = watts;
 	d_notify_level = level;
 	*memmap_gpu = level;
 }
@@ -102,7 +111,7 @@ static int test_ac_unplug(void)
 {
 	setup(1, 1, 100, 100, D_NOTIFY_1);
 
-	/* Unplug AC. D1 -> D5 */
+	/* Unplug AC. D1 -> D3 */
 	plug_ac(0);
 	throttle_gpu(THROTTLE_ON, THROTTLE_HARD, THROTTLE_SRC_AC);
 	TEST_EQ(nvidia_gpu_acoff_odl, 0, "%d");
@@ -123,23 +132,30 @@ static int test_ac_unplug(void)
 	TEST_ASSERT(host_is_event_set(EC_HOST_EVENT_GPU));
 	host_clear_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_GPU));
 
-	/* Discharge to 60%. D3 -> D3. */
-	charge_percent = 60;
+	/* Discharge to 21%. D3 -> D3 (Hysteresis). */
+	charge_percent = 21;
 	hook_notify(HOOK_BATTERY_SOC_CHANGE);
 	TEST_EQ(nvidia_gpu_acoff_odl, 1, "%d");
 	TEST_EQ(check_d_notify_level(D_NOTIFY_3), EC_SUCCESS, "%d");
 	TEST_ASSERT(!host_is_event_set(EC_HOST_EVENT_GPU));
 
-	/* Discharge to 20%. D3 -> D4 */
-	charge_percent = 20;
+	/* Discharge to 18%. D3 -> D4 */
+	charge_percent = 18;
 	hook_notify(HOOK_BATTERY_SOC_CHANGE);
 	TEST_EQ(nvidia_gpu_acoff_odl, 1, "%d");
 	TEST_EQ(check_d_notify_level(D_NOTIFY_4), EC_SUCCESS, "%d");
 	TEST_ASSERT(host_is_event_set(EC_HOST_EVENT_GPU));
 	host_clear_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_GPU));
 
-	/* Discharge to 5%. D4 -> D5 */
-	charge_percent = 5;
+	/* Discharge to 6%. D4 -> D4 (Hysteresis). */
+	charge_percent = 6;
+	hook_notify(HOOK_BATTERY_SOC_CHANGE);
+	TEST_EQ(nvidia_gpu_acoff_odl, 1, "%d");
+	TEST_EQ(check_d_notify_level(D_NOTIFY_4), EC_SUCCESS, "%d");
+	TEST_ASSERT(!host_is_event_set(EC_HOST_EVENT_GPU));
+
+	/* Discharge to 3%. D4 -> D5 */
+	charge_percent = 3;
 	hook_notify(HOOK_BATTERY_SOC_CHANGE);
 	TEST_EQ(nvidia_gpu_acoff_odl, 1, "%d");
 	TEST_EQ(check_d_notify_level(D_NOTIFY_5), EC_SUCCESS, "%d");
@@ -152,7 +168,7 @@ static int test_ac_unplug(void)
 static int test_ac_plug(void)
 {
 	/* Plug 100W AC. D5 -> D1. */
-	setup(0, 1, 5, 100, D_NOTIFY_5);
+	setup(0, 1, 5, 110, D_NOTIFY_5);
 	plug_ac(1);
 	throttle_gpu(THROTTLE_OFF, THROTTLE_HARD, THROTTLE_SRC_AC);
 	TEST_EQ(nvidia_gpu_acoff_odl, 1, "%d");
@@ -169,12 +185,30 @@ static int test_ac_plug(void)
 	TEST_ASSERT(host_is_event_set(EC_HOST_EVENT_GPU));
 	host_clear_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_GPU));
 
-	/* Plug 35W AC. D5 -> D3. */
-	setup(0, 1, 5, 35, D_NOTIFY_5);
+	/* Plug 45W AC & SoC 4%: D5 -> D5. */
+	setup(0, 1, 4, 45, D_NOTIFY_5);
 	plug_ac(1);
 	throttle_gpu(THROTTLE_OFF, THROTTLE_HARD, THROTTLE_SRC_AC);
 	TEST_EQ(nvidia_gpu_acoff_odl, 1, "%d");
-	TEST_EQ(check_d_notify_level(D_NOTIFY_3), EC_SUCCESS, "%d");
+	TEST_EQ(check_d_notify_level(D_NOTIFY_5), EC_SUCCESS, "%d");
+	TEST_ASSERT(!host_is_event_set(EC_HOST_EVENT_GPU));
+	host_clear_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_GPU));
+
+	/* Plug 45W AC & SoC 5%: D5 -> D5 (Hysteresis). */
+	setup(0, 1, 5, 45, D_NOTIFY_5);
+	plug_ac(1);
+	throttle_gpu(THROTTLE_OFF, THROTTLE_HARD, THROTTLE_SRC_AC);
+	TEST_EQ(nvidia_gpu_acoff_odl, 1, "%d");
+	TEST_EQ(check_d_notify_level(D_NOTIFY_5), EC_SUCCESS, "%d");
+	TEST_ASSERT(!host_is_event_set(EC_HOST_EVENT_GPU));
+	host_clear_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_GPU));
+
+	/* Plug 45W AC & SoC 6%: D5 -> D4 */
+	setup(0, 1, 6, 45, D_NOTIFY_5);
+	plug_ac(1);
+	throttle_gpu(THROTTLE_OFF, THROTTLE_HARD, THROTTLE_SRC_AC);
+	TEST_EQ(nvidia_gpu_acoff_odl, 1, "%d");
+	TEST_EQ(check_d_notify_level(D_NOTIFY_4), EC_SUCCESS, "%d");
 	TEST_ASSERT(host_is_event_set(EC_HOST_EVENT_GPU));
 	host_clear_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_GPU));
 
