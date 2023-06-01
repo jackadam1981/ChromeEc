@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25ab4735_e2c4428b",
+        "filename": "zephyr/program/myst/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-06-01T15:16:26Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be `GPIO_OUTPUT_HIGH`?",
+      "revId": "5951cf86713124c0d5fc323269e5195bc3e8b7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
