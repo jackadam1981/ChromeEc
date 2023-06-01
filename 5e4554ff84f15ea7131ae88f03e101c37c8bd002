@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "095bc4bb_b48236e0",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-06-01T02:41:38Z",
+      "side": 1,
+      "message": "nit: can be removed",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "5e4554ff84f15ea7131ae88f03e101c37c8bd002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655c5992_2044925f",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-06-01T02:41:38Z",
+      "side": 1,
+      "message": "return\nso that ret variable can be removed",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 6
+      },
+      "revId": "5e4554ff84f15ea7131ae88f03e101c37c8bd002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18a91130_dccca3e2",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-06-01T02:41:38Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 46
+      },
+      "revId": "5e4554ff84f15ea7131ae88f03e101c37c8bd002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46fdc83e_ce258122",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-06-01T02:41:38Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 26
+      },
+      "revId": "5e4554ff84f15ea7131ae88f03e101c37c8bd002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
