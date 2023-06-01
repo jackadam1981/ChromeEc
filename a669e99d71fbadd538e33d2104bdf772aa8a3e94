@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f25113c_778f100b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-06-01T03:44:59Z",
+      "side": 1,
+      "message": "I was running tests outside the chroot where I seemed to get fewer warnings-as-errors, but CQ complaining led to me realize there was an actual bug in the board code of using the wrong type for LED IDs.",
+      "revId": "a669e99d71fbadd538e33d2104bdf772aa8a3e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
