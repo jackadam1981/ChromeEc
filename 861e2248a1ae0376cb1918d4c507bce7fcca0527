@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab4a4da_e6c66803",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-01T23:18:06Z",
+      "side": 1,
+      "message": "please update to describe actual changes.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f7f6ade_274f73fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-01T23:18:06Z",
+      "side": 1,
+      "message": "what about USB3 on real hardware?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75754255_8b2970e6",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-01T23:18:06Z",
+      "side": 1,
+      "message": "this should happen after chipset state check",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d749bce_62bf3b05",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-01T23:18:06Z",
+      "side": 1,
+      "message": "should this be CHIPSET_STATE_ANY_OFF?\n\nalso, add a helper function for this so don\u0027t repeat\nthis state dependency multiple times.",
+      "range": {
+        "startLine": 62,
+        "startChar": 22,
+        "endLine": 62,
+        "endChar": 44
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36155f09_46b215b8",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-01T23:18:06Z",
+      "side": 1,
+      "message": "does this make sense here?",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 32
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da5da15_897737c3",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-01T23:18:06Z",
+      "side": 1,
+      "message": "!\u003d EC_SUCCESS",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 7
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eac22c4_0a3b0778",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-01T23:18:06Z",
+      "side": 1,
+      "message": "EC_ERROR_TIMEOUT",
+      "range": {
+        "startLine": 93,
+        "startChar": 9,
+        "endLine": 93,
+        "endChar": 11
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3513d5da_ec763155",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-01T23:18:06Z",
+      "side": 1,
+      "message": "where does this magic number come from?",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 10
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "146f2ee0_10395d96",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-01T23:18:06Z",
+      "side": 1,
+      "message": "is it sufficient to wake the chip in _init(),\nor does the chip need to be woken up again if not accessed\nfor some time?",
+      "range": {
+        "startLine": 105,
+        "startChar": 14,
+        "endLine": 105,
+        "endChar": 31
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b0c0da_668f90c4",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-01T23:18:06Z",
+      "side": 1,
+      "message": "should mux_state be updated when returning an error?",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 12
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
