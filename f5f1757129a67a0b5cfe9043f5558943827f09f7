@@ -22,6 +22,30 @@
       },
       "revId": "f5f1757129a67a0b5cfe9043f5558943827f09f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "069569f0_7cf9694c",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-06-01T17:42:38Z",
+      "side": 1,
+      "message": "That\u0027s OK, I suppose.\n\nI was rather hoping to move prev_ac into the charge loop and make it a local var, but haven\u0027t done it yet.",
+      "parentUuid": "0d84c164_d7a524a5",
+      "range": {
+        "startLine": 1550,
+        "startChar": 0,
+        "endLine": 1551,
+        "endChar": 29
+      },
+      "revId": "f5f1757129a67a0b5cfe9043f5558943827f09f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
