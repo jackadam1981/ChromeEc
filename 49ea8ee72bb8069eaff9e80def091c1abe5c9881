@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e7a2a41_f2a3e4d2",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-01T19:15:12Z",
+      "side": 1,
+      "message": "how about something like: \"Unexpected state for DP EN\"? that would be more meaningful, though it\u0027s still unclear to me why are we doing this and not taking any action, especially since the pin is output and set from other parts of the code",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 54
+      },
+      "revId": "49ea8ee72bb8069eaff9e80def091c1abe5c9881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e5357fb_ca87ea2a",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-01T19:15:12Z",
+      "side": 1,
+      "message": "Why? you just set usb_enable to 1, how could this trigger?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "49ea8ee72bb8069eaff9e80def091c1abe5c9881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
