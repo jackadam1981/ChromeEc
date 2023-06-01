@@ -34,6 +34,24 @@
       "parentUuid": "d42c858b_40c99e60",
       "revId": "4d02a2563a4bc3e622f1a6afe5e2123f8b66d420",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c9acc5_c8ab8a62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2023-06-01T09:50:17Z",
+      "side": 1,
+      "message": "Hi Chao,\nWe Cherrypick the CL:4383291 please help to review it.\nCL:4576375: zephyr: Support PLATFORM_EC_CMD_POWERINDEBUG flag | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4576375",
+      "parentUuid": "01811772_53435aea",
+      "revId": "4d02a2563a4bc3e622f1a6afe5e2123f8b66d420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
