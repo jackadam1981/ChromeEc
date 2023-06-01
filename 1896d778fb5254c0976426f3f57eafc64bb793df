@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35c20cc6_0a60b513",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-01T19:35:43Z",
+      "side": 1,
+      "message": "Yes, the option `CONFIG_HOST_COMMAND_STATUS` is required when the AP to EC interface uses the SHI (SPI host interface).  When the AP receives EC_RES_IN_PROGRESS, it then polls for command completion by sending EC_CMD_GET_COMMS_STATUS.\n\nAP code is [here](https://crsrc.org/o/src/third_party/kernel/v6.1/drivers/platform/chrome/cros_ec_proto.c;drc\u003df74c7557ed0d321947e8bb4e9d47c1013f8b2227;l\u003d185).",
+      "parentUuid": "cc149b83_1d11f0a7",
+      "range": {
+        "startLine": 1549,
+        "startChar": 0,
+        "endLine": 1550,
+        "endChar": 27
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a02109b5_b1fb15ff",
         "filename": "common/host_command.c",
         "patchSetId": 3
@@ -161,6 +185,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55066fa7_0d854be8",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-01T19:35:43Z",
+      "side": 1,
+      "message": "Yes, it\u0027s reordering so that the `DECLARE_HOOK` to be adjacent to the function that implements the hook.",
+      "parentUuid": "6018ff6e_cd32ed02",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 62
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b4e10be_4b9c81c8",
         "filename": "common/system.c",
         "patchSetId": 3
@@ -196,6 +244,30 @@
       "side": 1,
       "message": "Good point. I will try to find the best way to handle that. Maybe the best way is to add similar `host_send_response` upstream function.",
       "parentUuid": "4b4e10be_4b9c81c8",
+      "range": {
+        "startLine": 1757,
+        "startChar": 2,
+        "endLine": 1757,
+        "endChar": 24
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf9f20cb_5ae25ec5",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1757,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-01T19:35:43Z",
+      "side": 1,
+      "message": "This change merged on [PR#58300](https://github.com/zephyrproject-rtos/zephyr/pull/58300), correct?",
+      "parentUuid": "9d27d4c0_4fadd503",
       "range": {
         "startLine": 1757,
         "startChar": 2,
