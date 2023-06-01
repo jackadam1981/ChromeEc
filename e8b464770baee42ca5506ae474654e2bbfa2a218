@@ -166,6 +166,30 @@
       },
       "revId": "e8b464770baee42ca5506ae474654e2bbfa2a218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f87419f_5902e015",
+        "filename": "zephyr/program/rex/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-01T02:38:38Z",
+      "side": 1,
+      "message": "Finally getting wrapped up with ZDS talks, renamed to `rex-ish-ec`",
+      "parentUuid": "ec4faa86_918d9cbb",
+      "range": {
+        "startLine": 37,
+        "startChar": 17,
+        "endLine": 37,
+        "endChar": 28
+      },
+      "revId": "e8b464770baee42ca5506ae474654e2bbfa2a218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
