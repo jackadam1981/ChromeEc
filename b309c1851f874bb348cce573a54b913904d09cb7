@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this is the right way to do this, quick hack to get the USB A ports working.  Can someone please tell me how this should be done?",
       "revId": "b309c1851f874bb348cce573a54b913904d09cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d89d71b_712b5e3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-06-01T15:10:45Z",
+      "side": 1,
+      "message": "Skyrim has this:\n```\nusba-port-enable-list {\n\t\tcompatible \u003d \"cros-ec,usba-port-enable-pins\";\n\t\tenable-pins \u003d \u003c\u0026ioex_en_pp5000_usb_a0_vbus\n\t\t\t       \u0026ioex_en_pp5000_usb_a1_vbus\u003e;\n\t};\n```\n\nMyst probably just needs to have the equivalent block added.",
+      "parentUuid": "ffbce682_e763eb3e",
+      "revId": "b309c1851f874bb348cce573a54b913904d09cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
