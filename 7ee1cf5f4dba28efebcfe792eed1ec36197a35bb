@@ -143,6 +143,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd9012ba_1dc12663",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-01T18:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "018a43b7_799f6c2e",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ed8576f_5190a73d",
@@ -245,6 +263,24 @@
       "side": 1,
       "message": "I am just trying to understand\n\nThen we don\u0027t need two versions for ANX7452 DB right, if this fix is not required?\n\nIsn\u0027t supporting P1 the use-case as per this bug, b:279647370 ?",
       "parentUuid": "0eba78af_76573ac9",
+      "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f54197_52121fd5",
+        "filename": "driver/retimer/anx7452.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-01T18:14:21Z",
+      "side": 1,
+      "message": "Since the address conflict is present in proto 1 main boards and proto 2 are not received yet. I will keep this for a while. Opened a bug to clean this up once P2 are shipped or V2 FW_CONFIG option is deprecated b:285359634\n\nGetting this address from device tree is bit complex, since it\u0027s a native EC driver ported to zephyr (considering it\u0027s a temporary fix till next proto only), and this USB address is not used by EC, but by OCM firmware logic.",
+      "parentUuid": "cfca319b_7ffbba29",
       "revId": "7ee1cf5f4dba28efebcfe792eed1ec36197a35bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
