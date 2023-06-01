@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cbd4bdb_ae7269e2",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1717,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-01T18:21:11Z",
+      "side": 1,
+      "message": "How this error message print out?",
+      "range": {
+        "startLine": 1717,
+        "startChar": 10,
+        "endLine": 1717,
+        "endChar": 40
+      },
+      "revId": "9f1b62a622277e0189d91b9ef7da6909b3ef9af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0944ad21_ebbf8652",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1726,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-01T18:21:11Z",
+      "side": 1,
+      "message": "You don\u0027t need to print the output to a variable, check it, and convert it into 0 or 1. Just execute the comment. If the output contains the \" preserve\", `grep` will return 0; otherwise 1.\n\nSomething like:\n\t\n\tcd \"${TEMP_DIR}\"\n\tdump_fmap \"${CUR_DIR}\"/\"${IMG}\" -e | grep \" preserve\"",
+      "range": {
+        "startLine": 1726,
+        "startChar": 2,
+        "endLine": 1726,
+        "endChar": 14
+      },
+      "revId": "9f1b62a622277e0189d91b9ef7da6909b3ef9af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c7a8c53_0cad7df9",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1748,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-01T18:21:11Z",
+      "side": 1,
+      "message": "Don\u0027t it, right?",
+      "range": {
+        "startLine": 1748,
+        "startChar": 1,
+        "endLine": 1748,
+        "endChar": 2
+      },
+      "revId": "9f1b62a622277e0189d91b9ef7da6909b3ef9af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92987560_8da22b56",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1750,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-01T18:21:11Z",
+      "side": 1,
+      "message": "Better each section has a separate file, in the below while loop, like \"${TEMP_DIR}/ec.cur.${line}.bin\"",
+      "range": {
+        "startLine": 1750,
+        "startChar": 2,
+        "endLine": 1750,
+        "endChar": 44
+      },
+      "revId": "9f1b62a622277e0189d91b9ef7da6909b3ef9af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
