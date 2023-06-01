@@ -125,9 +125,12 @@ int battery_is_present(void)
 
 /**
  * @brief FFF fake that will be registered as a callback to monitor SYS reset
+ * and watch the power button output
  * Implements `gpio_callback_handler_t`.
  */
 FAKE_VOID_FUNC(interrupt_sys_reset_monitor, const struct device *,
+	       struct gpio_callback *, gpio_port_pins_t);
+FAKE_VOID_FUNC(interrupt_pwr_btn_monitor, const struct device *,
 	       struct gpio_callback *, gpio_port_pins_t);
 
 /**
@@ -136,6 +139,7 @@ FAKE_VOID_FUNC(interrupt_sys_reset_monitor, const struct device *,
 struct amd_power_fixture {
 	/** Configuration for the interrupt pin change callback */
 	struct gpio_callback callback_sys_reset;
+	struct gpio_callback callback_pwr_btn;
 };
 
 static struct amd_power_fixture fixture;
@@ -145,6 +149,8 @@ static void *amd_power_setup(void)
 	/* Add a callback for SYS reset so we can log edges */
 	const struct gpio_dt_spec *sys_reset_pin =
 		GPIO_DT_FROM_NODELABEL(gpio_sys_rst_l);
+	const struct gpio_dt_spec *pwr_btn_pin =
+		GPIO_DT_FROM_NODELABEL(gpio_ec_soc_pwr_btn_l);
 	/* STB dump GPIOs */
 	const struct gpio_dt_spec *gpio_ec_sfh_int_h =
 		GPIO_DT_FROM_NODELABEL(gpio_ec_sfh_int_h);
@@ -160,6 +166,15 @@ static void *amd_power_setup(void)
 				     &fixture.callback_sys_reset),
 		   "Could not configure GPIO callback.");
 
+	fixture.callback_pwr_btn = (struct gpio_callback){
+		.pin_mask = BIT(pwr_btn_pin->pin),
+		.handler = interrupt_pwr_btn_monitor,
+	};
+
+	zassert_ok(gpio_add_callback(pwr_btn_pin->port,
+				     &fixture.callback_pwr_btn),
+		   "Could not configure GPIO callback.");
+
 	/* Configure and enable STB dump */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_stb_dump));
 	amd_stb_dump_init(gpio_ec_sfh_int_h, gpio_sfh_ec_int_h);
@@ -173,8 +188,11 @@ static void amd_power_teardown(void *data)
 	struct amd_power_fixture *f = (struct amd_power_fixture *)data;
 	const struct gpio_dt_spec *sys_reset_pin =
 		GPIO_DT_FROM_NODELABEL(gpio_sys_rst_l);
+	const struct gpio_dt_spec *pwr_btn_pin =
+		GPIO_DT_FROM_NODELABEL(gpio_ec_soc_pwr_btn_l);
 
 	gpio_remove_callback(sys_reset_pin->port, &f->callback_sys_reset);
+	gpio_remove_callback(pwr_btn_pin->port, &f->callback_pwr_btn);
 }
 
 void amd_power_before(void *fixture)
@@ -186,6 +204,7 @@ void amd_power_before(void *fixture)
 	RESET_FAKE(system_jumped_to_this_image);
 	system_jumped_to_this_image_fake.return_val = 0;
 	RESET_FAKE(interrupt_sys_reset_monitor);
+	RESET_FAKE(interrupt_pwr_btn_monitor);
 
 	memset(&hook_counts, 0, sizeof(hook_counts));
 
