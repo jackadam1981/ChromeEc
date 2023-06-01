@@ -258,7 +258,8 @@ static void panic_init(void)
 DECLARE_HOOK(HOOK_INIT, panic_init, HOOK_PRIO_LAST);
 DECLARE_HOOK(HOOK_CHIPSET_RESET, panic_init, HOOK_PRIO_LAST);
 
-#ifdef CONFIG_CMD_STACKOVERFLOW
+#ifdef CONFIG_CMD_CRASH
+
 static void stack_overflow_recurse(int n)
 {
 	ccprintf("+%d", n);
@@ -277,7 +278,6 @@ static void stack_overflow_recurse(int n)
 	 */
 	ccprintf("-%d", n);
 }
-#endif /* CONFIG_CMD_STACKOVERFLOW */
 
 /*****************************************************************************/
 /* Console commands */
@@ -299,10 +299,8 @@ static int command_crash(int argc, char **argv)
 
 		cflush();
 		ccprintf("%08x", (unsigned long)1 / zero);
-#ifdef CONFIG_CMD_STACKOVERFLOW
 	} else if (!strcasecmp(argv[1], "stack")) {
 		stack_overflow_recurse(1);
-#endif
 	} else if (!strcasecmp(argv[1], "unaligned")) {
 		volatile intptr_t unaligned_ptr = 0xcdef;
 		cflush();
@@ -322,13 +320,9 @@ static int command_crash(int argc, char **argv)
 	return EC_ERROR_UNKNOWN;
 }
 DECLARE_CONSOLE_COMMAND(crash, command_crash,
-		"[assert | divzero | udivzero"
-#ifdef CONFIG_CMD_STACKOVERFLOW
-			" | stack"
-#endif
-			" | unaligned | watchdog | hang]",
-		"Crash the system (for testing)");
-#endif
+			"[assert | divzero | udivzero | stack"
+			" | unaligned | watchdog | hang | null]",
+			"Crash the system (for testing)");
 
 static int command_panicinfo(int argc, char **argv)
 {
