@@ -39,6 +39,24 @@
       "message": "should the deadline be set for all check results, not just for these two?",
       "revId": "60afa3812224e025ce4354a2eb84de9fe47e9204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e99297_e7b38a87",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-01T20:49:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "da78000e_1b3ff871",
+      "revId": "60afa3812224e025ce4354a2eb84de9fe47e9204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
