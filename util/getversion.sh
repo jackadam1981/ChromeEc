@@ -64,7 +64,7 @@ get_tree_version() {
     fi
     # avoid putting the -dirty attribute if only the timestamp
     # changed
-    git status > /dev/null 2>&1
+    git --no-optional-locks status > /dev/null 2>&1
 
     if [ -n "$(git diff-index --name-only HEAD 2>/dev/null)" ]; then
       marker="${dirty_marker}"
@@ -147,7 +147,7 @@ main() {
       vbase="${values[0]}"             # Retrieved version information.
       if [[ -n "${values[1]}" ]]; then
         # From each modified repo get the most recently modified file.
-        most_recent_file="$(git status --porcelain | \
+        most_recent_file="$(git --no-optional-locks status --porcelain | \
                                  awk '$1 ~ /[M|A|?]/ {print $2}' | \
                                  xargs -r ls -t | head -1)"
         if [[ -n "${most_recent_file}" ]]; then
