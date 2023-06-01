@@ -16,6 +16,24 @@
       "message": "Error log shows `chromeos-zephyr-0.0.1-r6254: /build/skyrim/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r6254/work/chromeos-zephyr-0.0.1/modules/ec/zephyr/program/skyrim/markarth/project.conf:40: warning: attempt to assign the value \u0027n\u0027 to the undefined symbol PLATFORM_EC_CMD_POWERINDEBUG`\n\nPlease find the definition for \"PLATFORM_EC_CMD_POWERINDEBUG\", and consider cherry-picking.",
       "revId": "4d02a2563a4bc3e622f1a6afe5e2123f8b66d420",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01811772_53435aea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2023-06-01T01:52:09Z",
+      "side": 1,
+      "message": "Hi Chao,\nBecause this CL:4383291: zephyr: Support PLATFORM_EC_CMD_POWERINDEBUG flag, does not cherry pick to firmware-skyrim-15390.B-main.\n\nCan you help to cherry pick?",
+      "parentUuid": "d42c858b_40c99e60",
+      "revId": "4d02a2563a4bc3e622f1a6afe5e2123f8b66d420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
