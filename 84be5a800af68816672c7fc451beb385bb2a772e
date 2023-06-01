@@ -22,6 +22,30 @@
       },
       "revId": "84be5a800af68816672c7fc451beb385bb2a772e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf37bb5_44122c8b",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-06-01T05:12:44Z",
+      "side": 1,
+      "message": "move to craask board.c",
+      "parentUuid": "153d85f3_ad2f7673",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "84be5a800af68816672c7fc451beb385bb2a772e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
