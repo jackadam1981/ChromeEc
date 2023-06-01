@@ -94,6 +94,30 @@
       },
       "revId": "b4b5bf9f6bd6a9c8962712a1745895a74e95cb27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705f3f34_d5ceecaf",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-01T18:17:04Z",
+      "side": 1,
+      "message": "The schematics of Rex mother board common one used for three daughter boards, but these GPIOs are used differently with different DBs i.e, SKUs. In SKU which has ANX7452 DB, it\u0027s an output signal. In (proto 1 main)SKU1 it\u0027s input",
+      "parentUuid": "25093437_c603f9b1",
+      "range": {
+        "startLine": 79,
+        "startChar": 43,
+        "endLine": 79,
+        "endChar": 62
+      },
+      "revId": "b4b5bf9f6bd6a9c8962712a1745895a74e95cb27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
