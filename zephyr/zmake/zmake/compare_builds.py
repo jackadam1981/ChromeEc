@@ -5,6 +5,7 @@
 """Module to compare Zephyr EC builds"""
 
 import dataclasses
+import functools
 import logging
 import os
 import pathlib
@@ -42,15 +43,17 @@ def get_git_hash(ref):
     return full_reference
 
 
-def git_do_checkout(module_name, work_dir, git_source, dst_dir, git_ref):
-    """Clone a repository and perform a checkout.
+def _git_clone_repo(module_name, work_dir, git_source, dst_dir):
+    """Clone a repository, skipping the checkout.
 
     Args:
         module_name: The module name to checkout.
-        work_dir: Root directory for the checktout.
+        work_dir: Root directory for the checkout.
         git_source: Path to the repository for the module.
         dst_dir: Destination directory for the checkout, relative to the work_dir.
-        git_ref: Git reference to checkout.
+
+    Returns:
+        0 on success, non-zero otherwise
     """
     cmd = [
         "git",
@@ -71,8 +74,22 @@ def git_do_checkout(module_name, work_dir, git_source, dst_dir, git_ref):
         )
     except subprocess.CalledProcessError:
         logging.error("Clone failed for %s: %s", module_name, shlex.join(cmd))
-        sys.exit(1)
+        return 1
 
+    return 0
+
+
+def _git_do_checkout(work_dir, dst_dir, git_ref):
+    """Perform a checkout of a specific Git reference from existing repository.
+
+    Args:
+        work_dir: Root directory for the checkout.
+        dst_dir: Destination directory for the checkout, relative to the work_dir.
+        git_ref: Git reference to checkout.
+
+    Returns:
+        0 on success, non-zero otherwise
+    """
     cmd = ["git", "-C", dst_dir, "checkout", "--quiet", git_ref]
     try:
         subprocess.run(
@@ -84,12 +101,13 @@ def git_do_checkout(module_name, work_dir, git_source, dst_dir, git_ref):
         )
     except subprocess.CalledProcessError:
         logging.error(
-            "Checkout of %s failed for %s: %s",
+            "Checkout of %s failed for: %s",
             git_ref,
-            module_name,
             shlex.join(cmd),
         )
-        sys.exit(1)
+        return 1
+
+    return 0
 
 
 def create_bin_from_elf(elf_input, bin_output):
@@ -165,10 +183,12 @@ class CompareBuilds:
             about the code checkout at each EC git reference.
     """
 
-    def __init__(self, temp_dir, ref1, ref2):
+    def __init__(self, temp_dir, ref1, ref2, executor, sequential):
         self.checkouts = []
         self.checkouts.append(CheckoutConfig(temp_dir, ref1))
         self.checkouts.append(CheckoutConfig(temp_dir, ref2))
+        self._executor = executor
+        self._sequential = sequential
 
     def do_checkouts(self, zephyr_base, module_paths):
         """Checkout all EC sources at a specific commit.
@@ -182,21 +202,71 @@ class CompareBuilds:
             for module_name, git_source in module_paths.items():
                 dst_dir = checkout.modules_dir / module_name
                 git_ref = checkout.full_ref if module_name == "ec" else "HEAD"
-                git_do_checkout(
-                    module_name=module_name,
-                    work_dir=checkout.work_dir,
-                    git_source=git_source,
-                    dst_dir=dst_dir,
-                    git_ref=git_ref,
+                self._executor.append(
+                    func=functools.partial(
+                        _git_clone_repo,
+                        module_name=module_name,
+                        work_dir=checkout.work_dir,
+                        git_source=git_source,
+                        dst_dir=dst_dir,
+                    )
                 )
+                if self._sequential and self._executor.wait():
+                    logging.error("Failed to clone module %s", module_name)
+                    sys.exit(1)
 
-            git_do_checkout(
-                module_name="zephyr",
-                work_dir=checkout.work_dir,
-                git_source=zephyr_base,
-                dst_dir="zephyr-base",
-                git_ref="HEAD",
+            self._executor.append(
+                func=functools.partial(
+                    _git_clone_repo,
+                    module_name="zephyr",
+                    work_dir=checkout.work_dir,
+                    git_source=zephyr_base,
+                    dst_dir="zephyr-base",
+                )
             )
+            if self._sequential and self._executor.wait():
+                logging.error("Failed to clone module zephyr")
+                sys.exit(1)
+
+        if not self._sequential and self._executor.wait():
+            logging.error("Failed to clone one or more repositories")
+            sys.exit(1)
+
+        for checkout in self.checkouts:
+            for module_name, git_source in module_paths.items():
+                dst_dir = checkout.modules_dir / module_name
+                git_ref = checkout.full_ref if module_name == "ec" else "HEAD"
+                self._executor.append(
+                    func=functools.partial(
+                        _git_do_checkout,
+                        work_dir=checkout.work_dir,
+                        dst_dir=dst_dir,
+                        git_ref=git_ref,
+                    )
+                )
+                if self._sequential and self._executor.wait():
+                    logging.error(
+                        "Failed to checkout module %s at %s",
+                        module_name,
+                        git_ref,
+                    )
+                    sys.exit(1)
+
+            self._executor.append(
+                func=functools.partial(
+                    _git_do_checkout,
+                    work_dir=checkout.work_dir,
+                    dst_dir="zephyr-base",
+                    git_ref="HEAD",
+                )
+            )
+            if self._sequential and self._executor.wait():
+                logging.error("Failed to checkout module zephyr at HEAD")
+                sys.exit(1)
+
+        if not self._sequential and self._executor.wait():
+            logging.error("Failed to checkout one or more repositories")
+            sys.exit(1)
 
     def _compare_binaries(self, project):
         output_path = (
