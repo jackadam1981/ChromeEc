@@ -68,6 +68,52 @@
       },
       "revId": "5e2df5160999a0c55993718c52313211c14fa482",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f257cf_e3fb859d",
+        "filename": "zephyr/program/ovis/interrupts.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-06-02T18:13:59Z",
+      "side": 1,
+      "message": "Is there a need for this, if ovis doesn\u0027t have a lid?",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a574f83c_2d648151",
+        "filename": "zephyr/program/ovis/interrupts.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-06-02T18:13:59Z",
+      "side": 1,
+      "message": "nit: spelling",
+      "range": {
+        "startLine": 78,
+        "startChar": 28,
+        "endLine": 78,
+        "endChar": 38
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
