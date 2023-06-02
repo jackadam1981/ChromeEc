@@ -2,5 +2,5 @@
 
 zephyr_library_include_directories(include)
 
-#zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_HID_KEYBOARD usb_hid_kb.c)
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_HID_KEYBOARD usb_hid_tp.c)
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_HID_KEYBOARD usb_hid_kb.c)
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_HID_TOUCHPAD usb_hid_tp.c)

@@ -225,37 +225,16 @@ void request_usb_wake(void)
 	}
 }
 
-/*
- * Write a report to EP, must be called with queue mutex held, and caller
- * must first check that EP is not busy.
- */
-
-enum it82xx2_ep_status {
-	EP_INIT,
-	EP_CHECK,
-	EP_CONFIG,
-	EP_CONFIG_IN,
-	EP_CONFIG_OUT,
-};
-
-struct ep_data {
-	usb_dc_ep_callback cb_in;
-	usb_dc_ep_callback cb_out;
-	enum it82xx2_ep_status ep_status;
-	enum usb_dc_ep_transfer_type ep_type;
-	uint16_t remaining; /* remaining bytes */
-	uint16_t mps;
-};
-
 static void write_tp_report(struct usb_hid_touchpad_report *report)
 {
-
-	LOG_INF("[%5d][size:%d]:Button[%d] - X:%4d, Y:%4d, "
-	"Width:%4d, Height:%4d, Tipswitch:%d, Pressure:%d\r\n",
-	report->timestamp, sizeof(*report), report->button,
-	report->finger[0].x, report->finger[0].y,
-	report->finger[0].width, report->finger[0].height,
-	report->finger[0].tip, report->finger[0].pressure);
+	if (touchpad_debug) {
+		LOG_DBG("[%5d][size:%d]:Button[%d] - X:%4d, Y:%4d, "
+		"Width:%4d, Height:%4d, Tipswitch:%d, Pressure:%d\r\n",
+		report->timestamp, sizeof(*report), report->button,
+		report->finger[0].x, report->finger[0].y,
+		report->finger[0].width, report->finger[0].height,
+		report->finger[0].tip, report->finger[0].pressure);
+	}
 
 	int ret = hid_int_ep_write(hid_dev, (uint8_t *)report,
 			sizeof(*report), NULL);
@@ -367,7 +346,7 @@ void set_touchpad_report(struct usb_hid_touchpad_report *report)
 
 static int usb_hid_tp_init(void)
 {
-	hid_dev = device_get_binding("HID_0");
+	hid_dev = device_get_binding("HID_1");
 
 	if (hid_dev == NULL) {
 		LOG_ERR("Cannot get USB HID Device");

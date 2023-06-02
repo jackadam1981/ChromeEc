@@ -7,3 +7,7 @@ config PLATFORM_EC_USB_HID_KEYBOARD
 	help
 	  Support USB HID keyboard interface
 
+config PLATFORM_EC_USB_HID_TOUCHPAD
+	bool "USB HID touchpad interface"
+	help
+	  Support USB HID touchpad interface
