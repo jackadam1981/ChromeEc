@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a8c37ee_d540118e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-06-02T02:13:22Z",
+      "side": 1,
+      "message": "PS1 just copy `generated.dtsi` to `screebo/gpio.dtsi` then modify the nodes on PS2 so it is easier to know the changes by comparing PS2 and PS1.",
+      "revId": "224ddf05a0fbd875f2e7414b77a4f1df7f269d3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
