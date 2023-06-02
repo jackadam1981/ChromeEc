@@ -226,6 +226,7 @@ common-$(CONFIG_AUDIO_CODEC_WOV)+=hotword_dsp_api.o
 endif
 
 ifeq ($(USE_BUILTIN_STDLIB), 0)
+common-y+=fpc_static_malloc.o
 common-y+=shared_mem_libc.o
 else ifneq ($(CONFIG_COMMON_RUNTIME),)
 ifeq ($(CONFIG_DFU_BOOTMANAGER_MAIN),ro)
