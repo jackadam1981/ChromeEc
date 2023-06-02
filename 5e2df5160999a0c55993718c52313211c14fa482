@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab482f1_7ec6ca56",
+        "filename": "zephyr/program/ovis/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-06-02T16:34:40Z",
+      "side": 1,
+      "message": "Is it correct? I see that the EC in schematics is npcx993fa0bx, the same as brya, but brya has `zephyr_board\u003d\"npcx9m3f\"`",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d06cecc_a12b8106",
+        "filename": "zephyr/program/ovis/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-06-02T16:34:40Z",
+      "side": 1,
+      "message": "Not an issue, but I wonder how these versions are set, I see that different boards use different versions.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 38
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c62b6c8_b2e582f5",
+        "filename": "zephyr/program/ovis/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-06-02T16:34:40Z",
+      "side": 1,
+      "message": "These two files could be added in one ifdef",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
