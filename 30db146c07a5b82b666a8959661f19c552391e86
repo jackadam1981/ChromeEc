@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3117f64b_ca815b00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-02T22:18:14Z",
+      "side": 1,
+      "message": "After some additional testing, I found this can cause false positives or false negatives when comparing builds.  \n\nThe configure/build functions of zmake use some global path variables, so the builds of each checkout must be done serially.",
+      "revId": "30db146c07a5b82b666a8959661f19c552391e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
