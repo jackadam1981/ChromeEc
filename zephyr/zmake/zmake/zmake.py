@@ -408,14 +408,21 @@ class Zmake:
                 save_temps=False,
                 wait_for_executor=False,
             )
-            if not result:
-                result = self.executor.wait()
             if result:
                 self.logger.error(
-                    "compare-builds failed to build all projects at %s",
+                    "compare-builds failed start configure/build at %s",
                     checkout.ref,
                 )
-                return result
+
+        if not result:
+            result = self.executor.wait()
+        if result:
+            self.logger.error(
+                "compare-builds failed to build all projects at %s",
+                checkout.ref,
+            )
+            return result
+
         if not compare_binaries_disable:
             failed_projects = cmp_builds.check_binaries(projects)
             self.cmp_failed_projects["binary"] = failed_projects
