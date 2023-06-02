@@ -16,6 +16,24 @@
       "message": "Does this interrupt need to be enabled? It doesn\u0027t look like we ever trigger it in this test.",
       "revId": "8d33c95b4b1b13dfe15fe66fbc0d440a9fa586d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fcadf39_44c1113c",
+        "filename": "zephyr/test/amd_power/src/amd_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-06-02T17:48:35Z",
+      "side": 1,
+      "message": "I thought I\u0027d fill it in during setup now in case we needed it later, but we can also just leave this line out.  It doesn\u0027t seem to have an effect on the test functionality.",
+      "parentUuid": "3cbefa6c_6ddb6012",
+      "revId": "8d33c95b4b1b13dfe15fe66fbc0d440a9fa586d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
