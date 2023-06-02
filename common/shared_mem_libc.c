@@ -31,8 +31,10 @@ int shared_mem_acquire(int size, char **dest_ptr)
 		return EC_ERROR_INVAL;
 
 	*dest_ptr = malloc(size);
-	if (!*dest_ptr)
+	if (!*dest_ptr) {
+		ccprints("MALLOC FAILED");
 		return EC_ERROR_BUSY;
+	}
 
 	return EC_SUCCESS;
 }
