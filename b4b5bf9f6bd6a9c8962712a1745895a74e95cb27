@@ -118,6 +118,30 @@
       },
       "revId": "b4b5bf9f6bd6a9c8962712a1745895a74e95cb27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea5618ba_5fa13aa6",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-02T09:44:57Z",
+      "side": 1,
+      "message": "Ok so if I read this right the right thing to do is to have a different configuration for `gpio_usb_c1_rt_int_odl` pin that sets it as input, probably also `gpio_usb_c1_rt_rst_r_odl` and `gpio_usb_c1_rst_odl`? Maybe you can flag them as no-auto-init and let the pull-up/down on the device drive them to a known state? (and initialize them manually in the non-anx case)",
+      "parentUuid": "705f3f34_d5ceecaf",
+      "range": {
+        "startLine": 79,
+        "startChar": 43,
+        "endLine": 79,
+        "endChar": 62
+      },
+      "revId": "b4b5bf9f6bd6a9c8962712a1745895a74e95cb27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
