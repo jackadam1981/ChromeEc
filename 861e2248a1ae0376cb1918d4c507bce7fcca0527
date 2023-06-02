@@ -215,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fe97e17_32222759",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-02T18:21:42Z",
+      "side": 1,
+      "message": "ANY_OFF seems to be having CHIPSET_STATE_SOFT_OFF along with HARD_OFF. But the current config seems to be working fine, I mean the chipset state check is stopping the USB_EN being set to high, until the things before it in power sequencing are met. So I am inclined going with existing way. Let me know if there is a reason to add ANY_OFF.",
+      "parentUuid": "6ce5c6b9_80b9137a",
+      "range": {
+        "startLine": 62,
+        "startChar": 22,
+        "endLine": 62,
+        "endChar": 44
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36155f09_46b215b8",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 4
