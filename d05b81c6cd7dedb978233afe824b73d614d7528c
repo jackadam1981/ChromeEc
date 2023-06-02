@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1fc981a_344424f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-06-02T08:24:10Z",
+      "side": 1,
+      "message": "This CL depends on the upstream Host Command [logging system](https://github.com/zephyrproject-rtos/zephyr/pull/58769)",
+      "revId": "d05b81c6cd7dedb978233afe824b73d614d7528c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da589175_a8aabfe7",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-06-02T08:24:10Z",
+      "side": 1,
+      "message": "I mark this CL as WIP, because it requires the upsteam Host Command [logging system](https://github.com/zephyrproject-rtos/zephyr/pull/58769) to be merged.",
+      "revId": "d05b81c6cd7dedb978233afe824b73d614d7528c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

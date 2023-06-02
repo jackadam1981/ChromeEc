@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5319af48_0a7965a8",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-06-02T08:24:10Z",
+      "side": 1,
+      "message": "I\u0027ve [added](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4422770/comment/5656c1c8_f4bba689/) support for the `EC_RES_IN_PROGRESS` status. I think native support for the `EC_CMD_GET_COMMS_STATUS`/`EC_CMD_RESEND_RESPONSE` commands has to be added, because it can\u0027t be handled in the shim layer.",
+      "parentUuid": "35c20cc6_0a60b513",
+      "range": {
+        "startLine": 1549,
+        "startChar": 0,
+        "endLine": 1550,
+        "endChar": 27
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a02109b5_b1fb15ff",
         "filename": "common/host_command.c",
         "patchSetId": 3
@@ -126,6 +150,30 @@
       "side": 1,
       "message": "I will try to make it more clear.",
       "parentUuid": "a02109b5_b1fb15ff",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9afe01f1_293b4578",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-06-02T08:24:10Z",
+      "side": 1,
+      "message": "I\u0027ve splitted the Host Command task and additional commands/functionality into two files.",
+      "parentUuid": "ce601556_5ab7aedc",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -209,6 +257,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07053d4f_6b99a1ef",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-06-02T08:24:10Z",
+      "side": 1,
+      "message": "I\u0027ve move calling the `host_command_init` function to the shim layer after introducing two files.",
+      "parentUuid": "55066fa7_0d854be8",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 62
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b4e10be_4b9c81c8",
         "filename": "common/system.c",
         "patchSetId": 3
@@ -278,6 +350,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a12394_cd5b545b",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1757,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-06-02T08:24:10Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve working on other changes.",
+      "parentUuid": "cf9f20cb_5ae25ec5",
+      "range": {
+        "startLine": 1757,
+        "startChar": 2,
+        "endLine": 1757,
+        "endChar": 24
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b98aa7b_64ea894b",
@@ -291,6 +387,30 @@
       "writtenOn": "2023-05-16T22:29:28Z",
       "side": 1,
       "message": "The actual enum values need to be the same or the AP side of the interface will break.  Adding a build assert that the enum values from `enum ec_status` and `enum ec_host_cmd_status` match is what\u0027s needed here.\n\nIs the compiler checking the enum type and causing a build failure if you try to use `enum ec_status` with CONFIG_EC_HOST_CMD?",
+      "range": {
+        "startLine": 672,
+        "startChar": 0,
+        "endLine": 674,
+        "endChar": 0
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce66f9e_82e695b5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-06-02T08:24:10Z",
+      "side": 1,
+      "message": "`enum ec_status` is used now with `BUILD_ASSERT` statements to make sure the CrosEC/Zephyr enum values are the same.",
+      "parentUuid": "5b98aa7b_64ea894b",
       "range": {
         "startLine": 672,
         "startChar": 0,
@@ -338,6 +458,30 @@
       "side": 1,
       "message": "I\u0027ve added this, because it is another choice option in my opinion. `CONFIG_TASK_HOSTCMD_THREAD_MAIN` and `TASK_HOSTCMD_THREAD_DEDICATED` can\u0027t be used with the current upstream Host Command state. However, it can be change once I add a new config to reuse the main thread.",
       "parentUuid": "4717838d_8a5c96ae",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ea9176_d44e8851",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2023-06-02T08:24:10Z",
+      "side": 1,
+      "message": "The main thread is reused now.",
+      "parentUuid": "774dc90d_0582739d",
       "range": {
         "startLine": 107,
         "startChar": 0,
