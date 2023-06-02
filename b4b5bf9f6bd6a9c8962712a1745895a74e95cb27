@@ -166,6 +166,30 @@
       },
       "revId": "b4b5bf9f6bd6a9c8962712a1745895a74e95cb27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "551ff57f_92d39954",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-02T18:00:37Z",
+      "side": 1,
+      "message": "The GPIO is not initialised until this line is triggered if there is analogix DB in the SKU. We are overriding the GPIO definition in generated.dtsi file with no-auto-init device tree configuration in rex.dtsi file. So pull up is not involved in the process. Based on the role of DP_EN GPIO, output low seems to be user friendly among all options, as suggested above.",
+      "parentUuid": "5d836af2_5ec359c1",
+      "range": {
+        "startLine": 79,
+        "startChar": 43,
+        "endLine": 79,
+        "endChar": 62
+      },
+      "revId": "b4b5bf9f6bd6a9c8962712a1745895a74e95cb27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
