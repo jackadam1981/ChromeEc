@@ -15,6 +15,8 @@
 #include "uart.h"
 #include "util.h"
 
+#include <malloc.h>
+
 void fpc_pal_log_entry(const char *tag, int log_level, const char *format, ...)
 {
 	va_list args;
@@ -49,6 +51,7 @@ int fpc_pal_wait_irq(fpc_device_t device, fpc_pal_irq_t irq_type)
 
 int32_t FpcMalloc(void **data, size_t size)
 {
+	malloc_trim(0);
 	return shared_mem_acquire(size, (char **)data);
 }
 
