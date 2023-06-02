@@ -190,6 +190,30 @@
       },
       "revId": "b4b5bf9f6bd6a9c8962712a1745895a74e95cb27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea744a03_c6cc3331",
+        "filename": "zephyr/program/rex/rex/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-02T21:44:55Z",
+      "side": 1,
+      "message": "So the effective configuration for this line is:\n\n```\n                usb_c1_rt_int_odl {\n                        gpios \u003d \u003c\u0026gpio7 2 0\u003e;\n                        no-auto-init;\n                };\n```\nfrom `zephyr/program/rex/rex.dtsi` (not the one I posted above). In that case I think this line is fine (with the ovveride above it sets push-pull, low, no pull-anything)",
+      "parentUuid": "551ff57f_92d39954",
+      "range": {
+        "startLine": 79,
+        "startChar": 43,
+        "endLine": 79,
+        "endChar": 62
+      },
+      "revId": "b4b5bf9f6bd6a9c8962712a1745895a74e95cb27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
