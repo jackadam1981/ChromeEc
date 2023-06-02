@@ -63,8 +63,7 @@ enum vendor_cmd_rc u2f_generate_cmd(enum vendor_cmd_cc code, void *buf,
 
 	static const size_t kh_version_response_size[] = {
 		sizeof(struct u2f_generate_resp),
-		sizeof(struct u2f_generate_versioned_resp),
-		sizeof(struct u2f_generate_versioned_resp_v2)
+		sizeof(struct u2f_generate_versioned_resp)
 	};
 
 	/**
@@ -87,9 +86,7 @@ enum vendor_cmd_rc u2f_generate_cmd(enum vendor_cmd_cc code, void *buf,
 	if (state == NULL)
 		return VENDOR_RC_INTERNAL_ERROR;
 
-	if ((req->flags & U2F_V2_KH_MASK) == U2F_V2_KH_MASK)
-		kh_version = U2F_KH_VERSION_2;
-	else if (req->flags & U2F_UV_ENABLED_KH)
+	if (req->flags & U2F_UV_ENABLED_KH)
 		kh_version = U2F_KH_VERSION_1;
 
 	/* Check there is enough room for response in response buffer. */
@@ -101,10 +98,6 @@ enum vendor_cmd_rc u2f_generate_cmd(enum vendor_cmd_cc code, void *buf,
 	       sizeof(authTimeSecretHash));
 
 	switch (kh_version) {
-	case U2F_KH_VERSION_2:
-		pubKey = &resp->v2.pubKey;
-		kh_buf = (union u2f_key_handle_variant *)&resp->v2.keyHandle;
-		break;
 	case U2F_KH_VERSION_1:
 		pubKey = &resp->v1.pubKey;
 		kh_buf = (union u2f_key_handle_variant *)&resp->v1.keyHandle;
@@ -195,14 +188,6 @@ enum vendor_cmd_rc u2f_sign_cmd(enum vendor_cmd_cc code, void *buf,
 		 * unconditionally or if (flags & U2F_AUTH_FLAG_TUP) == 0
 		 */
 		authTimeSecret = NULL;
-	} else if (input_size == sizeof(struct u2f_sign_versioned_req_v2)) {
-		kh = (union u2f_key_handle_variant *)&req->v2.keyHandle;
-		kh_version = U2F_KH_VERSION_2;
-		hash = req->v2.hash;
-		flags = req->v2.flags;
-		user = req->v2.userSecret;
-		origin = req->v2.appId;
-		authTimeSecret = (uint8_t *)req->v2.authTimeSecret;
 	} else
 		return VENDOR_RC_BOGUS_ARGS;
 
