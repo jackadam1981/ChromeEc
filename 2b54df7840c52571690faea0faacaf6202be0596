@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "108ede8e_1abfcef1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-06-02T02:39:39Z",
+      "side": 1,
+      "message": "be sure power state don\u0027t keep s3, even if RSMRST drop.",
+      "parentUuid": "97eaee35_091cf3d0",
+      "revId": "2b54df7840c52571690faea0faacaf6202be0596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b1004c1_0a67b752",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-06-01T23:16:47Z",
       "side": 1,
       "message": "Call `apshutdown()` instead; it handles things correctly for you.",
+      "revId": "2b54df7840c52571690faea0faacaf6202be0596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2dda87_514fddb3",
+        "filename": "zephyr/program/nissa/craask/src/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-06-02T02:39:39Z",
+      "side": 1,
+      "message": "update",
+      "parentUuid": "1b1004c1_0a67b752",
       "revId": "2b54df7840c52571690faea0faacaf6202be0596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
