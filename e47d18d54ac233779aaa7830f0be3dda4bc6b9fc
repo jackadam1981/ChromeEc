@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f34738_e5f35f2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-06-02T00:46:36Z",
+      "side": 1,
+      "message": "Twister with LLVM fails due to a crash, where it appears `motion_sensors[]` is zero-sized. This occurs when built with GCC as well, but doesn\u0027t cause a crash; investigation in progress, I assume this is an issue with the test\u0027s device tree.",
+      "revId": "e47d18d54ac233779aaa7830f0be3dda4bc6b9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
