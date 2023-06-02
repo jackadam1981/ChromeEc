@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ebc5360_451e3672",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-02T10:35:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eab4a4da_e6c66803",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f7f6ade_274f73fb",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc76ba6_ddd8c94f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-02T10:35:24Z",
+      "side": 1,
+      "message": "yes I validate it by flashing on rex that USB 3.0 working",
+      "parentUuid": "2f7f6ade_274f73fb",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75754255_8b2970e6",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-06-01T23:18:06Z",
       "side": 1,
       "message": "this should happen after chipset state check",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e392509_b5c8ee8d",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-02T10:35:24Z",
+      "side": 1,
+      "message": "It\u0027s actually just assigning GPIO but it\u0027s not performing any action on the value of GPIO. It\u0027s required for get_set_level in if block",
+      "parentUuid": "75754255_8b2970e6",
       "range": {
         "startLine": 60,
         "startChar": 1,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5aad90bf_37a187f4",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-02T10:35:24Z",
+      "side": 1,
+      "message": "there is little difference with logic inside this `if` block of set, get and init methods which is blocking from moving it to common method\n\nWithout no chipset state check the power sequencing is failing\n\nAll other retimer drivers are using this check, once we added it, the power sequencing is met and started working as expected\n\nNot sure my search is bad, but I am unable to find where  CHIPSET_STATE_* are defined, to know more about them. Could you help with this",
+      "parentUuid": "8d749bce_62bf3b05",
+      "range": {
+        "startLine": 62,
+        "startChar": 22,
+        "endLine": 62,
+        "endChar": 44
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36155f09_46b215b8",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 4
@@ -106,6 +202,30 @@
       "writtenOn": "2023-06-01T23:18:06Z",
       "side": 1,
       "message": "does this make sense here?",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 32
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e97a8b5b_279da491",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-02T10:35:24Z",
+      "side": 1,
+      "message": "I guess yes, we don\u0027t need power to ANX7452, if chipset is not in right state. It\u0027s (Chipset state) the first step in power sequencing, followed by USB_EN. Also I added this line bit later while adding unit tests, I took reference from other driver. Removing it in normal flow",
+      "parentUuid": "36155f09_46b215b8",
       "range": {
         "startLine": 63,
         "startChar": 2,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03e2104_d949274d",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-02T10:35:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8da5da15_897737c3",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 7
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5eac22c4_0a3b0778",
@@ -152,6 +296,30 @@
       "writtenOn": "2023-06-01T23:18:06Z",
       "side": 1,
       "message": "EC_ERROR_TIMEOUT",
+      "range": {
+        "startLine": 93,
+        "startChar": 9,
+        "endLine": 93,
+        "endChar": 11
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd5b4e9_7e746a56",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-02T10:35:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eac22c4_0a3b0778",
       "range": {
         "startLine": 93,
         "startChar": 9,
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e197fae7_c9e8ca22",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-02T10:35:24Z",
+      "side": 1,
+      "message": "This number and the type of sleep mechanism of init method is suggested by Analogix, while we are doing hardware debugging w.r.to power sequencing",
+      "parentUuid": "3513d5da_ec763155",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 10
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "146f2ee0_10395d96",
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a35e34_291b29ae",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-02T10:35:24Z",
+      "side": 1,
+      "message": "At present we are keeping ULP disabled, USB_EN always high, so this chip won\u0027t need to be woken up to access I2C",
+      "parentUuid": "146f2ee0_10395d96",
+      "range": {
+        "startLine": 105,
+        "startChar": 14,
+        "endLine": 105,
+        "endChar": 31
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31b0c0da_668f90c4",
@@ -221,6 +437,30 @@
       "writtenOn": "2023-06-01T23:18:06Z",
       "side": 1,
       "message": "should mux_state be updated when returning an error?",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 12
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "684f7cf2_8ba3e287",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-02T10:35:24Z",
+      "side": 1,
+      "message": "I see other drivers setting it hence added it",
+      "parentUuid": "31b0c0da_668f90c4",
       "range": {
         "startLine": 159,
         "startChar": 3,
