@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d995756e_169fafe9",
+        "filename": "docs/sitemap.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-06-02T21:27:23Z",
+      "side": 0,
+      "message": "nit: keep this. Remove the non-cr50 info.",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "a00a092342ef73558f8bddb87da4e31647acfbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d8d2944_7654c98a",
+        "filename": "extra/rma_reset/.gitignore",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-06-02T21:27:23Z",
+      "side": 0,
+      "message": "rma_reset is another tool that can be used by ti50 and cr50. Do we want to keep it in gsc_utils?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 9
+      },
+      "revId": "a00a092342ef73558f8bddb87da4e31647acfbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
