@@ -16,6 +16,29 @@
       "message": "Note - don\u0027t manually add the Code-Coverage vote.  Let the CQ+1 or CQ+2 provide this vote.\n\nIn cases where you need to bypass the code coverage requirement, add `LOW_COVERAGE_REASON\u003d\u003cjustification\u003e` to the commit message.",
       "revId": "82775a205ddf7b2d5e52fbd19119ba6093dba6aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb12ebbc_c2e5057f",
+        "filename": "zephyr/test/ap_power/src/ap_pwrseq.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-06-04T23:46:47Z",
+      "side": 1,
+      "message": "Why do we expect two shutdown events? That seems odd.",
+      "range": {
+        "startLine": 281,
+        "startChar": 15,
+        "endLine": 281,
+        "endChar": 38
+      },
+      "revId": "82775a205ddf7b2d5e52fbd19119ba6093dba6aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
