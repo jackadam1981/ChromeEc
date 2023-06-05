@@ -45,6 +45,30 @@
       },
       "revId": "6184526a5621b7b097118ff82600763a345d1b9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d4e1714_af50c4bc",
+        "filename": "zephyr/test/rex/boards/native_posix.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-06-05T23:16:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "aa863aef_6ab00147",
+      "range": {
+        "startLine": 26,
+        "startChar": 33,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "6184526a5621b7b097118ff82600763a345d1b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
