@@ -16,6 +16,24 @@
       "message": "Why is `call_count\u003d\u003d2`?",
       "revId": "3f0a9982f1efe9195a571dcca4539f51936db5aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf2fa762_b07aa9e2",
+        "filename": "zephyr/test/amd_power/src/amd_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-06-05T16:55:08Z",
+      "side": 1,
+      "message": "We have to toggle the GPIO twice.  So the code we\u0027re trying to detect looks like this: ```\n        /*\n         * Send a pulse to SYS_RST to trigger a warm reset.\n         */\n        gpio_set_level(GPIO_SYS_RESET_L, 0);\n        usleep(32 * MSEC);\n        gpio_set_level(GPIO_SYS_RESET_L, 1);\n```\n\nIf you have a suggestion past counting the edges, I can adjust the logic.",
+      "parentUuid": "36a9c8c5_e5ec08f7",
+      "revId": "3f0a9982f1efe9195a571dcca4539f51936db5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
