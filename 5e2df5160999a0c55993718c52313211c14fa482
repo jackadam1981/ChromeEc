@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af2455b2_165fc62d",
+        "filename": "zephyr/program/ovis/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-05T03:45:13Z",
+      "side": 1,
+      "message": "I purposefully had this CL contain as few as changes as possible. It\u0027s a copy of Rex from TOT with minor changes.\n\nYes, this is the incorrect EC for Ovis, But, it gets resolved in a follow on CL, once other features are removed and the image size is smaller. An EC build of Ovis with just this CL will never be used So the only requirement at this point is that the build works so it can be landed in the CQ",
+      "parentUuid": "9ab482f1_7ec6ca56",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d06cecc_a12b8106",
         "filename": "zephyr/program/ovis/CMakeLists.txt",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-02T16:34:40Z",
       "side": 1,
       "message": "Not an issue, but I wonder how these versions are set, I see that different boards use different versions.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 38
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ae88db8_e09f441e",
+        "filename": "zephyr/program/ovis/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-05T03:45:13Z",
+      "side": 1,
+      "message": "I\u0027m not clear on that either.",
+      "parentUuid": "4d06cecc_a12b8106",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -83,6 +131,30 @@
       "writtenOn": "2023-06-02T18:13:59Z",
       "side": 1,
       "message": "Is there a need for this, if ovis doesn\u0027t have a lid?",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c90709_26037e87",
+        "filename": "zephyr/program/ovis/interrupts.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-05T03:45:13Z",
+      "side": 1,
+      "message": "The goal for this CL was to start with a copy of Rex, having a few as changes as possible.\n\nIf there are numerous edits (to reflect Ovis features) for this CL, then it becomes much more difficult to see what was changed for Ovis relative to Rex",
+      "parentUuid": "29f257cf_e3fb859d",
       "range": {
         "startLine": 20,
         "startChar": 2,
