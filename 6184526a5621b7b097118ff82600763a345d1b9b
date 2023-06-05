@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58a183b0_c061b5e5",
+        "filename": "zephyr/program/rex/src/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-05T23:13:03Z",
+      "side": 1,
+      "message": "future work: maybe add a `vconn_rail` GPIO alias?",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "6184526a5621b7b097118ff82600763a345d1b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa863aef_6ab00147",
+        "filename": "zephyr/test/rex/boards/native_posix.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-05T23:13:03Z",
+      "side": 1,
+      "message": "dangling space?",
+      "range": {
+        "startLine": 26,
+        "startChar": 33,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "6184526a5621b7b097118ff82600763a345d1b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
