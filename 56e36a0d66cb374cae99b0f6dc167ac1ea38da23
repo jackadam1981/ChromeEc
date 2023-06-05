@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f01c3a1e_58532467",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-06-05T15:37:50Z",
+      "side": 1,
+      "message": "Would it make sense to set a default y if no lid switch is present in the DT or Kconfig?",
+      "range": {
+        "startLine": 589,
+        "startChar": 7,
+        "endLine": 589,
+        "endChar": 37
+      },
+      "revId": "56e36a0d66cb374cae99b0f6dc167ac1ea38da23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
