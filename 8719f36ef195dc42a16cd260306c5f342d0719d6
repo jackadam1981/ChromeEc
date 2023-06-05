@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4bf240_4ab11fcb",
+        "filename": "zephyr/program/ovis/keyboard.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-06-05T15:09:23Z",
+      "side": 1,
+      "message": "This node is duplicate of the one from ovis.dtsi",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 14
+      },
+      "revId": "8719f36ef195dc42a16cd260306c5f342d0719d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f948f0d_7e24dc9f",
+        "filename": "zephyr/program/ovis/ovis.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-06-05T15:09:23Z",
+      "side": 1,
+      "message": "This should be set as \"disabled\" and other properties removed",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "8719f36ef195dc42a16cd260306c5f342d0719d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
