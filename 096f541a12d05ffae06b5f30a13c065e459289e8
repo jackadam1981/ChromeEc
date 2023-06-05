@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69d25cf_e43c0fbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-05T21:43:39Z",
+      "side": 1,
+      "message": "is this retimer supposed to flip dp-aux/sbu orientation for DP\nor do we need to do it outside this chip?",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "096f541a12d05ffae06b5f30a13c065e459289e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "725d51fb_716269d4",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-05T21:43:39Z",
+      "side": 1,
+      "message": "insert space",
+      "range": {
+        "startLine": 336,
+        "startChar": 47,
+        "endLine": 336,
+        "endChar": 48
+      },
+      "revId": "096f541a12d05ffae06b5f30a13c065e459289e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c4f896_264ecd6d",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-05T21:43:39Z",
+      "side": 1,
+      "message": "can you use the `kb-usb-c1-rt-rst-odl` alias here?",
+      "range": {
+        "startLine": 339,
+        "startChar": 16,
+        "endLine": 339,
+        "endChar": 40
+      },
+      "revId": "096f541a12d05ffae06b5f30a13c065e459289e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
