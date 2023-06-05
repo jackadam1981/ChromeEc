@@ -10,6 +10,7 @@
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/kernel.h>
 
 #define LOG_LEVEL CONFIG_I2C_LOG_LEVEL
 LOG_MODULE_REGISTER(emul_common_i2c);
@@ -55,6 +56,10 @@ void i2c_common_emul_set_write_fail_reg(
 	struct i2c_common_emul_data *common_data, int reg)
 {
 	common_data->write_fail_reg = reg;
+
+		printk("i2c: set_write_fail: com = %x, reg = %x, reg2 = %x\n",
+		       (uintptr_t)common_data, reg,
+		       common_data->write_fail_reg);
 }
 
 /**
@@ -180,6 +185,10 @@ static int i2c_common_emul_write_byte(const struct emul *target,
 		/* Ignore first (register address) byte */
 		reg = data->cur_reg + data->msg_byte - 1;
 	}
+
+	if (reg == 6)
+		printk("i2c: emul_write_byte: reg = %x, fail_reg = %x\n", reg,
+		       data->write_fail_reg);
 
 	if (data->write_fail_reg == reg ||
 	    data->write_fail_reg == I2C_COMMON_EMUL_FAIL_ALL_REG) {
