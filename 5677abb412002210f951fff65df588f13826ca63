@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835c1f0d_1e66ba91",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5184,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-05T20:45:48Z",
+      "side": 1,
+      "message": "This argument is a bool, but you passed an enum to it. Why?\n\nI think you meant to use PE_CHK_FLAG, so I created crrev/c/4591671",
+      "range": {
+        "startLine": 5184,
+        "startChar": 2,
+        "endLine": 5184,
+        "endChar": 27
+      },
+      "revId": "5677abb412002210f951fff65df588f13826ca63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
