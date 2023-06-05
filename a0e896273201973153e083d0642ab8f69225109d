@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "608abf7d_a4addc5c",
+        "filename": "util/flash_ec",
+        "patchSetId": 12
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-05T23:06:50Z",
+      "side": 1,
+      "message": "It will cause problems if `${IMG}` is an absolution path, like \"/tmp/ec.bin\"\n\nBetter to resolve the absolution before `cd`, e.g. doing the following in the line 1728.\n```\n\tIMG\u003d$(readlink -f ${IMG})\n```",
+      "range": {
+        "startLine": 1734,
+        "startChar": 15,
+        "endLine": 1734,
+        "endChar": 29
+      },
+      "revId": "a0e896273201973153e083d0642ab8f69225109d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bd7f3be_b553dba1",
+        "filename": "util/flash_ec",
+        "patchSetId": 12
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-05T23:06:50Z",
+      "side": 1,
+      "message": "I meant you don\u0027t these lines too. Something like:\n\n```\nfunction is_preservation_needed() {\n\tlocal IMG\u003d${1:?\"missing arg 1: EC image path\"}\n\tlocal TEMP_DIR\u003d${2:?\"missing arg 2: Temp directory path\"}\n\t\n\tIMG\u003d$(readlink -f ${IMG})\n\t\n\t(\n\t\tcd \"${TEMP_DIR}\"\n\t\tdump_fmap \"${IMG}\" -e | grep -q \u0027 preserve\u0027\n\t)\n}\n```\n\nWhen call the function, save the return value and drop the stdout and stderr.\n```\n\tis_preservation_needed \"${IMG}\" \"${TEMP_DIR}\" \u003e/dev/null 2\u003e\u00261\n\tPRESERVE_STATUS\u003d$?\n\tif [[ ${PRESERVE_STATUS} -eq 0 ]] ; then\n\t\t...\n```",
+      "range": {
+        "startLine": 1735,
+        "startChar": 0,
+        "endLine": 1741,
+        "endChar": 26
+      },
+      "revId": "a0e896273201973153e083d0642ab8f69225109d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "941db3da_2d0daa15",
+        "filename": "util/flash_ec",
+        "patchSetId": 12
+      },
+      "lineNbr": 1762,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-05T23:06:50Z",
+      "side": 1,
+      "message": "Instead of saving the stdout to a variable, you can pipe it, like\n```\n\t\tdump_fmap \"${IMG}\" -e | grep \u0027 preserve\u0027 | cut -f1 -d\u0027 \u0027 |\n\t\twhile read -r line\n\t\tdo\n```",
+      "range": {
+        "startLine": 1759,
+        "startChar": 0,
+        "endLine": 1762,
+        "endChar": 4
+      },
+      "revId": "a0e896273201973153e083d0642ab8f69225109d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
