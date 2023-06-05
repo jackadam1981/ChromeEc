@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f29648_79b91462",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1726,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-05T12:24:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0944ad21_ebbf8652",
+      "range": {
+        "startLine": 1726,
+        "startChar": 2,
+        "endLine": 1726,
+        "endChar": 14
+      },
+      "revId": "9f1b62a622277e0189d91b9ef7da6909b3ef9af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c7a8c53_0cad7df9",
@@ -179,6 +203,30 @@
       "writtenOn": "2023-06-01T18:21:11Z",
       "side": 1,
       "message": "Better each section has a separate file, in the below while loop, like \"${TEMP_DIR}/ec.cur.${line}.bin\"",
+      "range": {
+        "startLine": 1750,
+        "startChar": 2,
+        "endLine": 1750,
+        "endChar": 44
+      },
+      "revId": "9f1b62a622277e0189d91b9ef7da6909b3ef9af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce8aeaf_ea2b75b7",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1750,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-05T12:24:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92987560_8da22b56",
       "range": {
         "startLine": 1750,
         "startChar": 2,
