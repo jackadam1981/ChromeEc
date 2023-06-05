@@ -26,6 +26,7 @@ if(DEFINED CONFIG_BOARD_NEREID OR DEFINED CONFIG_BOARD_NEREID_CX)
 	project(nereid)
 	zephyr_library_sources(
 			"src/led.c"
+			"nereid/src/board.c"
 			"nereid/src/keyboard.c"
 			"nereid/src/hdmi.c"
 	)
@@ -126,6 +127,7 @@ if(DEFINED CONFIG_BOARD_GOTHRAX)
 	project(gothrax)
 	zephyr_library_sources(
 			"src/led.c"
+			"gothrax/src/board.c"
 			"gothrax/src/keyboard.c"
 			"gothrax/src/hdmi.c"
 	)
