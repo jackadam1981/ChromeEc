@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3de1c0e7_7765efc2",
+        "filename": "zephyr/program/ovis/ovis/led_policy.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-06-05T15:09:36Z",
+      "side": 1,
+      "message": "This should also be removed, since there\u0027s no right led",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "5b231007b3309b61ffdccc0128dcbf33b6315415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
