@@ -158,6 +158,7 @@ static int kb8010_emul_write_byte(const struct emul *emul, int reg, uint8_t val)
 {
 	struct kb8010_emul_data *data = emul->data;
 
+	printk("kb8010_emul: wrtie_byte: reg = %x val = %x\n", reg, val);
 	uint8_t *reg_to_write = kb8010_emul_get_reg_ptr(data, reg);
 	*reg_to_write = val;
 
