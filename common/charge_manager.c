@@ -916,8 +916,10 @@ static void charge_manager_refresh(void)
 
 	/* If charge port changed, cleanup old port */
 	if (charge_port != new_port && charge_port != CHARGE_PORT_NONE) {
-		/* Check if need power swap */
-		charge_manager_switch_to_source(charge_port);
+		/* Switch the old port to SRC when there's a new charge port */
+		if (new_port != CHARGE_PORT_NONE)
+			charge_manager_switch_to_source(charge_port);
+
 		/* Signal new power request on old port */
 		updated_old_port = charge_port;
 	}
