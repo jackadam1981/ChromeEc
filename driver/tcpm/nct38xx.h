@@ -57,6 +57,7 @@
 #define NCT38XX_REG_GPIO_ALERT_LEVEL(n) (0xC6 + ((n)*8))
 #define NCT38XX_REG_GPIO_ALERT_MASK(n) (0xC7 + ((n)*8))
 #define NCT38XX_REG_MUX_CONTROL 0xD0
+#define NCT38XX_REG_CONTROL_POLARITY 0xD1
 #define NCT38XX_REG_GPIO_ALERT_STAT(n) (0xD4 + (n))
 
 /* NCT3808 only supports GPIO 2/3/4/6/7 */

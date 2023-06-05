@@ -234,15 +234,22 @@ void board_reset_pd_mcu(void)
 	nct38xx_reset_notify(USBC_PORT_C0);
 
 	/* wait for chips to come up */
-	if (NCT3807_RESET_POST_DELAY_MS != 0)
-		msleep(NCT3807_RESET_POST_DELAY_MS);
+	if (NCT3808_RESET_POST_DELAY_MS != 0)
+		msleep(NCT3808_RESET_POST_DELAY_MS);
 }
 
 static void board_tcpc_init(void)
 {
+	int rv;
+
 	/* Don't reset TCPCs after initial reset */
 	if (!system_jumped_late())
 		board_reset_pd_mcu();
+
+	/* Disable P2 */
+	rv = i2c_write16(tcpc_config[0].i2c_info.port, NCT38XX_I2C_ADDR2_1_FLAGS,
+		    TCPC_REG_ALERT_MASK, TCPC_REG_ALERT_NONE);
+	CPRINTS("%s: Disabled alerts on P2 of NCT3808 alerts (%d)", __func__, rv);
 
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);

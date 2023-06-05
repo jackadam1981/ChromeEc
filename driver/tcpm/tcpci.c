@@ -1201,6 +1201,8 @@ void tcpci_tcpc_alert(int port)
 		CPRINTS("C%d: Failed to read alert register", port);
 		return;
 	}
+	CPRINTS("%s: C%d alert=0x%x", __func__, port, alert);
+	cflush();
 
 	/* Get Extended Alert register if needed */
 	if (alert & TCPC_REG_ALERT_ALERT_EXT)

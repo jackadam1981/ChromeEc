@@ -52,6 +52,11 @@ int nct38xx_init(int port)
 	int rv;
 	int reg;
 
+	/* Disable P2 */
+	rv = i2c_write16(tcpc_config[0].i2c_info.port, NCT38XX_I2C_ADDR2_1_FLAGS,
+		    TCPC_REG_ALERT_MASK, TCPC_REG_ALERT_NONE);
+	CPRINTS("%s: Disabled alerts on P2 of NCT3808 alerts (%d)", __func__, rv);
+
 	/*
 	 * Detect dead battery boot by the default role control value of 0x0A
 	 * once per EC run
@@ -86,6 +91,11 @@ int nct38xx_init(int port)
 					  TCPC_REG_TCPC_CTRL_DEBUG_ACC_CONTROL,
 					  MASK_SET));
 	}
+
+	reg = BIT(2);
+	rv = tcpc_write(port, NCT38XX_REG_CONTROL_POLARITY, reg);
+	if (rv)
+		return rv;
 
 	/*
 	 * Write to the CONTROL_OUT_EN register to enable:
@@ -237,9 +247,16 @@ test_export_static int nct38xx_tcpm_set_snk_ctrl(int port, int enable)
 
 static inline int tcpc_read_alert_no_lpm_exit(int port, int *val)
 {
-	return tcpc_addr_read16_no_lpm_exit(
-		port, tcpc_config[port].i2c_info.addr_flags, TCPC_REG_ALERT,
-		val);
+	if (port == 0) {
+		return tcpc_addr_read16_no_lpm_exit(
+				port, tcpc_config[port].i2c_info.addr_flags,
+				TCPC_REG_ALERT,
+				val);
+	} else {
+		return i2c_read16(tcpc_config[0].i2c_info.port,
+				  NCT38XX_I2C_ADDR2_1_FLAGS, TCPC_REG_ALERT,
+				  val);
+	}
 }
 
 /* Map Type-C port to IOEX port */
@@ -278,8 +295,17 @@ static void nct38xx_tcpc_alert(int port)
 	 * ALERT as a side-effect of handing an ALERT.
 	 */
 	rv = tcpc_read_alert_no_lpm_exit(port, &alert);
+	CPRINTS("%s: C%d: rv=%d alert=0x%x", __func__, port, rv, alert);
+	cflush();
 	if (rv == EC_SUCCESS && alert == TCPC_REG_ALERT_NONE) {
 		/* No ALERT on this port, return early. */
+		if (port == 0) {
+			port = 1;
+			rv = tcpc_read_alert_no_lpm_exit(port, &alert);
+			CPRINTS("%s: C%d: rv=%d alert=0x%x", __func__, port, rv, alert);
+			cflush();
+		}
+
 		return;
 	}
 
