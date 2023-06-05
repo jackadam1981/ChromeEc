@@ -20,3 +20,16 @@
 #include "i2c.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
+
+#include <cros/cbi_flash.dtsi>
+
+&cbi_flash {
+	/*
+	 * CBI size is 0x1000 bytes, the CBI portion lies at the end of RO
+	 * sections. RO section size is 0x50000 bytes. The offset of CBI portion
+	 * is RO size subtracted by CBI size.
+	 */
+	offset = < 0x4F000 >;
+	size = < 0x1000 >;
+	/delete-property/ preserve;
+};
