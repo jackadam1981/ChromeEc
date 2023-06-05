@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a193acca_0dd734c2",
+        "filename": "zephyr/program/rex/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-05T23:28:39Z",
+      "side": 1,
+      "message": "The old config doesn\u0027t define it.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "7e053422508748591daf26d3321262d8c3d034a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06e886c_d5ef793f",
+        "filename": "zephyr/program/rex/rex/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-05T23:28:39Z",
+      "side": 1,
+      "message": "You better comment why it is `0x4F000`.",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "7e053422508748591daf26d3321262d8c3d034a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c2727e_ba81206e",
+        "filename": "zephyr/program/rex/rex/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-05T23:28:39Z",
+      "side": 1,
+      "message": "Why delete the preserve property?",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "7e053422508748591daf26d3321262d8c3d034a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa5cdd80_63106eb3",
+        "filename": "zephyr/shim/chip/npcx/include/flash_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-05T23:28:39Z",
+      "side": 1,
+      "message": "It is not board-specific. Change it in a separate CL.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "7e053422508748591daf26d3321262d8c3d034a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
