@@ -20,3 +20,11 @@
 #include "i2c.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
+
+#include <cros/cbi_flash.dtsi>
+
+&cbi_flash {
+	offset = < 0x4F000 >;
+	size = < 0x1000 >;
+	/delete-property/ preserve;
+};
