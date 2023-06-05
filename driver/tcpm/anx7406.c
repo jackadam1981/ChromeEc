@@ -154,8 +154,14 @@ static int anx7406_init(int port)
 
 	/* Set VBUS OCP */
 	rv = tcpc_write(port, ANX7406_REG_VBUS_OCP, OCP_THRESHOLD);
-	if (rv)
-		return rv;
+	if (rv) {
+		/* Failed but this is expected if the chip is in LPM. */
+		CPRINTS("C%d: Retrying to set OCP", port);
+		msleep(5);
+		rv = tcpc_write(port, ANX7406_REG_VBUS_OCP, OCP_THRESHOLD);
+		if (rv)
+			return rv;
+	}
 
 	/* Disable CAP write protect */
 	rv = tcpc_update8(port, ANX7406_REG_TCPCCTRL, ANX7406_REG_CAP_WP,
