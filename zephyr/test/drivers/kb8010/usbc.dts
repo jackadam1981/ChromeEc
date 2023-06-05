@@ -26,7 +26,6 @@
 	usb_c1_kb8010_emul: kb8010@10 {
 		compatible = "kandou,kb8010";
 		reg = <0x10>;
-		reset-pin = <&usb_c1_ls_en>;
-		int-pin = <&usb_c1_rt_rst_odl>;
+		reset-pin = <&usb_c1_rt_rst_odl>;
 	};
 };
