@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t this be rebased to the first commit?",
       "revId": "9c3ff7cb4c304d5b76898bd2abc49e8e9f646914",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4302bf32_0da41d95",
+        "filename": "zephyr/program/ovis/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-05T03:49:35Z",
+      "side": 1,
+      "message": "Not in my opinion. I would expect to land this stack of CLs prior to doing any Ovis bring up work. This is the 8th CL in a stack. It\u0027s not until the previous CL (which modifies the GPIO nodes and modifies the usbc info that there would be any useful Ovis image built.\n\nMy purpose for structuring these changes in this way was to make it easier to track changes for Ovis relative to Rex and try to make the changes exist in more manageable pieces.\n\nOnly from this CL onward, will there be point where functional Ovis EC image can be built.",
+      "parentUuid": "81c52725_9f0f4fe9",
+      "revId": "9c3ff7cb4c304d5b76898bd2abc49e8e9f646914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
