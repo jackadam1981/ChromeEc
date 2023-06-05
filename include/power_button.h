@@ -55,6 +55,13 @@ void power_button_pch_release(void);
 void power_button_pch_pulse(void);
 
 /**
+ * For x86 tests, allow the test to run initialization logic outside init
+ */
+#ifdef TEST_BUILD
+void set_initial_pwrbtn_state(void);
+#endif
+
+/**
  * Returns the time when DSW_PWROK was asserted. It should be customized
  * by each board. See CONFIG_DELAY_DSW_PWROK_TO_PWRBTN for details.
  *

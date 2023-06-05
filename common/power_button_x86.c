@@ -202,7 +202,12 @@ static void power_button_released(uint64_t tnow)
 /**
  * Set initial power button state.
  */
+#ifdef TEST_BUILD
+/* Allow tests to run this function outside init */
+void set_initial_pwrbtn_state(void)
+#else
 static void set_initial_pwrbtn_state(void)
+#endif
 {
 	uint32_t reset_flags = system_get_reset_flags();
 
