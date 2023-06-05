@@ -52,6 +52,24 @@
       "parentUuid": "bf2fa762_b07aa9e2",
       "revId": "3f0a9982f1efe9195a571dcca4539f51936db5aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acdabe53_772838bd",
+        "filename": "zephyr/test/amd_power/src/amd_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-06-05T17:18:35Z",
+      "side": 1,
+      "message": "I\u0027d be relatively surprised if the toggle changes since we\u0027ve been using it on the last 3 generations of processors.  So any change would need a new CONFIG or need to be tied into some other board-specific indicator, and that change could then update the unit test to ensure old boards still get the right toggle while new code uses the new toggle.",
+      "parentUuid": "900b6d2b_b2c5ad19",
+      "revId": "3f0a9982f1efe9195a571dcca4539f51936db5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
