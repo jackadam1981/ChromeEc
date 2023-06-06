@@ -310,6 +310,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18ac2c96_df47cf5c",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-06T07:09:13Z",
+      "side": 1,
+      "message": "The init method is triggered automatically by unit tests. And usb_en is enabled high then. We can\u0027t change the state of output GPIO. The only workaround to check the init is not enabling usb_en high when chipset is not in ready state is this approach. Since it\u0027s not in actual flow now it\u0027s not a big concern.",
+      "parentUuid": "952f944d_8b7acd6e",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 32
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8da5da15_897737c3",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 4
