@@ -497,6 +497,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca63bb9d_b50321b7",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-06T12:58:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc560f6e_5ebd4b9f",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 10
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "146f2ee0_10395d96",
