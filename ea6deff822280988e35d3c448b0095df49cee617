@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e654bf2d_11356d81",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-06-06T20:06:17Z",
+      "side": 1,
+      "message": "Use the `test_export_static` keyword. It automatically becomes non-static in test builds and static in normal builds (implemented in `include/common.h:292`)",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 6
+      },
+      "revId": "ea6deff822280988e35d3c448b0095df49cee617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
