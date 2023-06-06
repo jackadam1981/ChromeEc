@@ -22,6 +22,30 @@
       },
       "revId": "1b3e1661f14c14370c7fd049ac07287fcc573b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d593eb2_f9598d76",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T00:29:19Z",
+      "side": 0,
+      "message": "I modified this to check for DB type if it\u0027s USBC_PORT_C1",
+      "parentUuid": "1aeacc41_0e2713f5",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 38
+      },
+      "revId": "1b3e1661f14c14370c7fd049ac07287fcc573b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

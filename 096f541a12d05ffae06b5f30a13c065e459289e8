@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1320bc05_ff74cf42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T00:29:19Z",
+      "side": 1,
+      "message": "It is supposed to deal with polarity. But, DP isn\u0027t working in CC2 polarity. USB3 mode is working in both polarities.",
+      "parentUuid": "f69d25cf_e43c0fbb",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "096f541a12d05ffae06b5f30a13c065e459289e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "725d51fb_716269d4",
         "filename": "zephyr/program/rex/rex.dtsi",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-05T21:43:39Z",
       "side": 1,
       "message": "insert space",
+      "range": {
+        "startLine": 336,
+        "startChar": 47,
+        "endLine": 336,
+        "endChar": 48
+      },
+      "revId": "096f541a12d05ffae06b5f30a13c065e459289e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fe14ea2_0f42c74f",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T00:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "725d51fb_716269d4",
       "range": {
         "startLine": 336,
         "startChar": 47,
@@ -60,6 +108,30 @@
       "writtenOn": "2023-06-05T21:43:39Z",
       "side": 1,
       "message": "can you use the `kb-usb-c1-rt-rst-odl` alias here?",
+      "range": {
+        "startLine": 339,
+        "startChar": 16,
+        "endLine": 339,
+        "endChar": 40
+      },
+      "revId": "096f541a12d05ffae06b5f30a13c065e459289e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1be7f117_64af5e08",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T00:29:19Z",
+      "side": 1,
+      "message": "It doesn\u0027t build if I use kb-usb-c1-rt-rst-odl. I did quick read of zephyr documentation and I could only find example of aliases being used in a C macro DT_ALIAS(alias)",
+      "parentUuid": "83c4f896_264ecd6d",
       "range": {
         "startLine": 339,
         "startChar": 16,
