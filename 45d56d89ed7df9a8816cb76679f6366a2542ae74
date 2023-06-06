@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f157759_4c2f6e24",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T22:31:23Z",
+      "side": 1,
+      "message": "I have typically seen enums as loweercase and not uppercase. I want an enum list because the modes map directly to the protocol register modes and kb8010_num_modes becomes useful for the xbar",
+      "parentUuid": "58da03a2_5fde88ed",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0321699_1a7fa3f6",
         "filename": "driver/retimer/kb8010.c",
         "patchSetId": 13
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-06T10:52:43Z",
       "side": 1,
       "message": "no need to initialize this, or if you want to initialize it here you may as well use the actual values",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a22c4dd_8a0a3ebe",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T22:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0321699_1a7fa3f6",
       "range": {
         "startLine": 68,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a63d78e_ec88fdfd",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T22:31:23Z",
+      "side": 1,
+      "message": "This was explicitly not allowed in cros-ec, so I guess that\u0027s still ingrained in my habits. I\u0027ve added the braces for all the single statement if clauses.",
+      "parentUuid": "b7b2a821_a9d267eb",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dca91c12_89104d82",
         "filename": "driver/retimer/kb8010.c",
         "patchSetId": 13
@@ -83,6 +155,24 @@
       "writtenOn": "2023-06-06T10:52:43Z",
       "side": 1,
       "message": "no need to zero initialize this either",
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9af916a_cd1d36a1",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T22:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca91c12_89104d82",
       "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +190,30 @@
       "writtenOn": "2023-06-06T10:52:43Z",
       "side": 1,
       "message": "magic?",
+      "range": {
+        "startLine": 141,
+        "startChar": 6,
+        "endLine": 141,
+        "endChar": 10
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2a529ec_e1d18445",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T22:31:23Z",
+      "side": 1,
+      "message": "The values to program are given in the programming guide provided by the vendor. So this driver has these magic values. The programming guide is attached in the issue linked to this CL.\n\nIt\u0027s similar to the tables at the top of the file. We have the register names, but did not git a full register spec of the bit definitions.",
+      "parentUuid": "1967da9c_dc8d683a",
       "range": {
         "startLine": 141,
         "startChar": 6,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d2cf7dc_97be997e",
+        "filename": "driver/retimer/kb8010.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T22:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc9cf869_60c9a6ed",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dc71ce6_c03ae0b3",
@@ -146,6 +284,24 @@
       "writtenOn": "2023-06-06T10:52:43Z",
       "side": 1,
       "message": "nit: just bring up the previous line, does not need to wrap anyway",
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ad63d9_ecb23929",
+        "filename": "zephyr/dts/bindings/usbc/mux/kandou,kb8010.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T22:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dc71ce6_c03ae0b3",
       "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -173,6 +329,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65cc2ad8_93284541",
+        "filename": "zephyr/dts/bindings/usbc/mux/kandou,kb8010.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T22:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c580c58_f3235d7c",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f973a70_af6ef6dd",
@@ -186,6 +366,24 @@
       "writtenOn": "2023-06-06T10:52:43Z",
       "side": 1,
       "message": "trailing blank line, drop",
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b68b26f_34b6cfa3",
+        "filename": "zephyr/dts/bindings/usbc/mux/kandou,kb8010.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-06T22:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f973a70_af6ef6dd",
       "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
