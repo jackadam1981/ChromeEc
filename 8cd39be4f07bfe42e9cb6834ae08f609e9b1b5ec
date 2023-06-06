@@ -110,6 +110,30 @@
       },
       "revId": "8cd39be4f07bfe42e9cb6834ae08f609e9b1b5ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6590949d_95169cee",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-06T21:27:42Z",
+      "side": 1,
+      "message": "If I understand the question correctly:\n\nDaisuke:\nInvoking `battery_is_charge_fet_disabled()` will go do an I2C read against the emulator for the same register address that\u0027s in `out`, the `fet_reg_addr` So this test is leveraging knowledge of how `battery_is_charge_fet_disabled()` is implemented. Here we don\u0027t need to propagate `out` to the emulator because the same register address in `out` is being used in `battery_is_charge_fet_disabled()`.  \n\nEric is using the pre-existing fake function to respond for the emulator fet register read because the emulator doesn\u0027t know how to PEC.\n\nHe\u0027s probably not adding that functionality because I intend to shift us to the upstream smart battery emulator anyway once it has all the features we want.",
+      "parentUuid": "0c63ee50_c237792c",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 35
+      },
+      "revId": "8cd39be4f07bfe42e9cb6834ae08f609e9b1b5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

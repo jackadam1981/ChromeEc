@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7db26d1_a96c70b8",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-06T21:27:42Z",
+      "side": 1,
+      "message": "Should this be a separate change? This comment looks more like a commit message.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 48
+      },
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40176663_a0ad2c7a",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-06T21:27:42Z",
+      "side": 1,
+      "message": "This looks like a bugfix on the test where it was creating enough count as it had a PEC but shouldn\u0027t have.\n\nIf this is the case, this ought to be its own change.",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 49
+      },
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b094e8b5_f8350ef0",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-06T21:27:42Z",
+      "side": 1,
+      "message": "See above. We should fix these tests to be non-PEC in one change and then add the PEC in a follow-up change. It makes the review significantly easier and when folks are looking back at this change they\u0027ll have an easier time understanding what the code changes really meant.",
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d6387b_a87427e2",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-06T21:27:42Z",
+      "side": 1,
+      "message": "As a general rule, we like to have bugs as part of the `TODO` comment.\n\nExample:\n\n`/* TODO(b/#####): Blah blah blah */`",
+      "range": {
+        "startLine": 279,
+        "startChar": 4,
+        "endLine": 279,
+        "endChar": 8
+      },
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e64063fc_6a9013df",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-06T21:27:42Z",
+      "side": 1,
+      "message": "Can we use device tree instead? Cutoff values are normally in Manufacturers access, but we have chips that have it elsewhere too.",
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
