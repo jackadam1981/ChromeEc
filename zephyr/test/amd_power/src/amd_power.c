@@ -4,9 +4,11 @@
  */
 
 #include "console.h"
+#include "driver/amd_stb.h"
 #include "ec_app_main.h"
 #include "emul/emul_stub_device.h"
 #include "gpio.h"
+#include "gpio/gpio_int.h"
 #include "gpio_signal.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -43,6 +45,7 @@
 	DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(ec_soc_pwr_btn_l), gpios)
 #define PROCHOT_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(prochot_odl), gpios)
 #define LID_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(lid_open_ec), gpios)
+#define STB_OUT_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(ec_sfh_int_h), gpios)
 
 /*
  * Provide standard array of power signals for the module based on our DTS enum
@@ -120,6 +123,60 @@ int battery_is_present(void)
 	return 1;
 }
 
+/**
+ * @brief FFF fake that will be registered as a callback to monitor SYS reset
+ * Implements `gpio_callback_handler_t`.
+ */
+FAKE_VOID_FUNC(interrupt_sys_reset_monitor, const struct device *,
+	       struct gpio_callback *, gpio_port_pins_t);
+
+/**
+ * @brief Fixture to hold state while the suite is running.
+ */
+struct amd_power_fixture {
+	/** Configuration for the interrupt pin change callback */
+	struct gpio_callback callback_sys_reset;
+};
+
+static struct amd_power_fixture fixture;
+
+static void *amd_power_setup(void)
+{
+	/* Add a callback for SYS reset so we can log edges */
+	const struct gpio_dt_spec *sys_reset_pin =
+		GPIO_DT_FROM_NODELABEL(gpio_sys_rst_l);
+	/* STB dump GPIOs */
+	const struct gpio_dt_spec *gpio_ec_sfh_int_h =
+		GPIO_DT_FROM_NODELABEL(gpio_ec_sfh_int_h);
+	const struct gpio_dt_spec *gpio_sfh_ec_int_h =
+		GPIO_DT_FROM_NODELABEL(gpio_sfh_ec_int_h);
+
+	fixture.callback_sys_reset = (struct gpio_callback){
+		.pin_mask = BIT(sys_reset_pin->pin),
+		.handler = interrupt_sys_reset_monitor,
+	};
+
+	zassert_ok(gpio_add_callback(sys_reset_pin->port,
+				     &fixture.callback_sys_reset),
+		   "Could not configure GPIO callback.");
+
+	/* Configure and enable STB dump */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_stb_dump));
+	amd_stb_dump_init(gpio_ec_sfh_int_h, gpio_sfh_ec_int_h);
+
+	return &fixture;
+}
+
+static void amd_power_teardown(void *data)
+{
+	/* Cleanup the GPIO callback on the interrupt pin */
+	struct amd_power_fixture *f = (struct amd_power_fixture *)data;
+	const struct gpio_dt_spec *sys_reset_pin =
+		GPIO_DT_FROM_NODELABEL(gpio_sys_rst_l);
+
+	gpio_remove_callback(sys_reset_pin->port, &f->callback_sys_reset);
+}
+
 void amd_power_before(void *fixture)
 {
 	static const struct device *gpio_dev = GPIO_DEVICE;
@@ -128,6 +185,7 @@ void amd_power_before(void *fixture)
 	system_can_boot_ap_fake.return_val = 1;
 	RESET_FAKE(system_jumped_to_this_image);
 	system_jumped_to_this_image_fake.return_val = 0;
+	RESET_FAKE(interrupt_sys_reset_monitor);
 
 	memset(&hook_counts, 0, sizeof(hook_counts));
 
@@ -150,9 +208,11 @@ void amd_power_after(void *fixture)
 	host_clear_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_HANG_DETECT));
 	init_reset_log();
 	system_clear_reset_flags(EC_RESET_FLAG_AP_OFF);
+	chipset_throttle_cpu(0);
 }
 
-ZTEST_SUITE(amd_power, NULL, NULL, amd_power_before, amd_power_after, NULL);
+ZTEST_SUITE(amd_power, NULL, amd_power_setup, amd_power_before, amd_power_after,
+	    amd_power_teardown);
 
 ZTEST(amd_power, test_power_chipset_init_ap_off)
 {
@@ -407,6 +467,34 @@ ZTEST(amd_power, test_power_suspend_hang)
 	zassert_true(strstr(buffer, "Detected sleep hang!") != NULL);
 }
 
+ZTEST(amd_power, test_power_stb_dump_interrupt)
+{
+	struct ec_params_host_sleep_event_v1 host_sleep_ev_p = {
+		.sleep_event = HOST_SLEEP_EVENT_S0IX_SUSPEND,
+		.suspend_params = { EC_HOST_SLEEP_TIMEOUT_DEFAULT },
+	};
+	struct ec_response_host_sleep_event_v1 host_sleep_ev_r;
+	struct host_cmd_handler_args host_sleep_ev_args = BUILD_HOST_COMMAND(
+		EC_CMD_HOST_SLEEP_EVENT, 1, host_sleep_ev_r, host_sleep_ev_p);
+	static const struct device *gpio_dev = GPIO_DEVICE;
+
+	amd_power_s0_on();
+
+	/* Send sleep event, but fail to actually transition the signal */
+	zassert_ok(host_command_process(&host_sleep_ev_args));
+	k_sleep(K_MSEC(CONFIG_SLEEP_TIMEOUT_MS * 2));
+
+	zassert_equal(power_get_state(), POWER_S0);
+	/* Watch for our STB dump to trigger */
+	zassert_equal(gpio_emul_output_get(gpio_dev, STB_OUT_PIN), 1);
+
+	/* But a reset came in before we finished the STB dump */
+	chipset_reset(CHIPSET_RESET_HANG_REBOOT);
+
+	/* Observe we're not longer asserting the OUT pin */
+	zassert_equal(gpio_emul_output_get(gpio_dev, STB_OUT_PIN), 0);
+}
+
 ZTEST(amd_power, test_power_forced_shutdown)
 {
 	static const struct device *gpio_dev = GPIO_DEVICE;
@@ -463,8 +551,11 @@ ZTEST(amd_power, test_power_chipset_reset_s0)
 	chipset_reset(CHIPSET_RESET_KB_SYSRESET);
 	k_sleep(K_MSEC(500));
 
-	/* Verify our reporting */
+	/* Verify our reporting and SYS_RESET toggles */
 	zassert_equal(chipset_get_shutdown_reason(), CHIPSET_RESET_KB_SYSRESET);
+	zassert_equal(2, interrupt_sys_reset_monitor_fake.call_count,
+		      "Interrupt pin asserted only %d times.",
+		      interrupt_sys_reset_monitor_fake.call_count);
 }
 
 ZTEST(amd_power, test_power_chipset_reset_g3)
@@ -475,6 +566,7 @@ ZTEST(amd_power, test_power_chipset_reset_g3)
 
 	/* Verify we didn't report the reset attempt */
 	zassert_equal(chipset_get_shutdown_reason(), CHIPSET_RESET_UNKNOWN);
+	zassert_equal(0, interrupt_sys_reset_monitor_fake.call_count);
 }
 
 ZTEST(amd_power, test_power_chipset_throttle_s0)
