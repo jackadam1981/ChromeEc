@@ -811,6 +811,7 @@ def flash_and_run_test(
                 console_socket.makefile(mode="rwb", buffering=0)
             )
         else:
+            # pylint: disable=consider-using-with
             console = stack.enter_context(
                 open(get_console(board_config), "wb+", buffering=0)
             )
