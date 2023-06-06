@@ -29,6 +29,12 @@ import traceback
 
 from ec3po import interpreter
 from ec3po import threadproc_shim
+
+cros_checkout = os.environ.get("CROS_WORKON_SRCROOT")
+
+from pw_tokenizer.detokenize import AutoUpdatingDetokenizer
+from pw_tokenizer import detokenize, encode
+
 import six
 
 
@@ -194,6 +200,20 @@ class Console(object):
         self.look_buffer = b""
         self.raw_debug = False
         self.output_line_log_buffer = []
+        self.token_log = []
+        self.token_started = False
+        self.tm_req = True
+
+        self.detokenizer = None
+        token_db : Collection[Path] = (f'{cros_checkout}/src/platform/ec/build/tokens.bin',
+                    f'{cros_checkout}/src/platform/ec/build/zephyr/villager/build-ro/database.bin',
+                    f'{cros_checkout}/src/platform/ec/build/zephyr/villager/build-rw/database.bin')
+
+        if name == 'EC':
+            print(f'Loading Token database: {token_db}')
+            self.detokenizer = AutoUpdatingDetokenizer(*token_db)
+            self.detokenizer.show_errors = True
+            self.base64_re = detokenize._base64_message_regex(b'$')
 
     def __str__(self):
         """Show internal state of Console object as a string."""
@@ -567,6 +587,15 @@ class Console(object):
 
         return is_enhanced
 
+    def CheckForTokenizedEC(self):
+        print("Checking Tokenized Logging")
+        self.cmd_pipe.send(b'feat')
+
+        response = ""
+        if self.dbg_pipe.poll(self.interrogation_timeout):
+            response = self.dbg_pipe.recv()
+            print(f'tokenized response: {response}')
+
     def HandleChar(self, byte):
         """HandleChar does a certain action when it receives a character.
 
@@ -623,6 +652,8 @@ class Console(object):
                 # Only interrogate the EC if the interrogation mode is set to 'always'.
                 self.enhanced_ec = self.CheckForEnhancedECImage()
                 self.logger.debug("Enhanced EC image? %r", self.enhanced_ec)
+
+            # self.CheckForTokenizedEC()
 
         if not self.enhanced_ec:
             # Send everything straight to the EC to handle.
@@ -948,6 +979,94 @@ class Console(object):
         self.look_buffer = self.look_buffer[-LOOK_BUFFER_SIZE:]
 
 
+    def log_token(self, line: bytes, prefix):
+        flag = False
+        if line is None:
+            return flag
+
+        # See if prefix exists in line and detokenize it
+        try:
+            idx = line.index(prefix)
+
+
+            if idx > 0:
+                self.send_to_controller_pty(bytes(line[ : idx]))
+            print(f'decoding = {bytes(line[idx : ])}')
+            result = detokenize.detokenize_base64(self.detokenizer, bytes(line[idx : ]))
+            print(f'result: {result.decode()}')
+            self.send_to_controller_pty(result)
+            flag = True
+
+        except ValueError:
+            if len(line) > 0:
+                self.send_to_controller_pty(bytes(line))
+                flag = True
+            pass
+
+        return flag
+
+    def detokenize_and_log_output(self, data: bytes):
+        prefix = ord(encode.BASE64_PREFIX)
+        EOT = ord('#')
+        normal_text = []
+
+        print(f'Before token_log: {bytes(self.token_log)}')
+
+        line = self.token_log
+        token_data = list(data)
+
+        while token_data:
+            byte = token_data.pop(0)
+
+            if byte == EOT:
+                self.log_token(line, prefix)
+                self.token_started = False
+                line = []
+                continue
+
+            # Start of a base64 message
+            if byte == prefix or self.token_started:
+                self.token_started = True
+                line.append(byte)
+
+            if self.token_started == False:
+                normal_text.append(byte)
+
+        self.token_log = line
+
+        print(f'After token_log: {bytes(self.token_log)}')
+        return bytes(normal_text)
+
+    def send_to_controller_pty(self, data: bytes):
+        end = len(data) - 1
+        if self.timestamp_enabled:
+            # A timestamp is required at the beginning of this line
+            if self.tm_req is True:
+                now = datetime.now()
+                tm = CanonicalizeTimeString(
+                    now.strftime(HOST_STRFTIME)
+                )
+                os.write(self.controller_pty, tm)
+                self.tm_req = False
+
+            # Insert timestamps into the middle where appropriate
+            # except if the last character is a newline
+            nls_found = data.count(b"\n", 0, end)
+            now = datetime.now()
+            tm = CanonicalizeTimeString(
+                now.strftime("\n" + HOST_STRFTIME)
+            )
+            data_tm = data.replace(b"\n", tm, nls_found)
+        else:
+            data_tm = data
+
+        # timestamp required on next input
+        if data[end] == b"\n"[0]:
+            self.tm_req = True
+        #result = console.detokenizer.detokenize_base64(data)
+        os.write(self.controller_pty, data_tm)
+
+
 def CanonicalizeTimeString(timestr):
     """Canonicalize the timestamp string.
 
@@ -970,7 +1089,6 @@ def IsPrintable(byte):
       A boolean indicating whether the byte is a printable character.
     """
     return byte >= ord(" ") and byte <= ord("~")
-
 
 def StartLoop(console, command_active, shutdown_pipe=None):
     """Starts the infinite loop of console processing.
@@ -1118,6 +1236,12 @@ def StartLoop(console, command_active, shutdown_pipe=None):
                         if console.interrogation_mode == b"auto":
                             # Search look buffer for enhanced EC image string.
                             console.CheckBufferForEnhancedImage(data)
+
+                        if console.detokenizer and controller_connected:
+                            normal_text = console.detokenize_and_log_output(data)
+                            if len(normal_text) == 0: continue
+                            data = normal_text
+
                         # Write it to the user console.
                         if len(data) > 1 and console.raw_debug:
                             console.logger.debug(
@@ -1128,32 +1252,7 @@ def StartLoop(console, command_active, shutdown_pipe=None):
                             )
                         console.LogConsoleOutput(data)
                         if controller_connected:
-                            end = len(data) - 1
-                            if console.timestamp_enabled:
-                                # A timestamp is required at the beginning of this line
-                                if tm_req is True:
-                                    now = datetime.now()
-                                    tm = CanonicalizeTimeString(
-                                        now.strftime(HOST_STRFTIME)
-                                    )
-                                    os.write(console.controller_pty, tm)
-                                    tm_req = False
-
-                                # Insert timestamps into the middle where appropriate
-                                # except if the last character is a newline
-                                nls_found = data.count(b"\n", 0, end)
-                                now = datetime.now()
-                                tm = CanonicalizeTimeString(
-                                    now.strftime("\n" + HOST_STRFTIME)
-                                )
-                                data_tm = data.replace(b"\n", tm, nls_found)
-                            else:
-                                data_tm = data
-
-                            # timestamp required on next input
-                            if data[end] == b"\n"[0]:
-                                tm_req = True
-                            os.write(console.controller_pty, data_tm)
+                            console.send_to_controller_pty(data)
                         if command_active.value:
                             os.write(console.interface_pty, data)
 
@@ -1205,6 +1304,10 @@ def main(argv):
         "--log-level",
         default="info",
         help="info, debug, warning, error, or critical",
+    )
+    parser.add_argument(
+        "--token-db",
+        help="EC token database",
     )
 
     # Parse arguments.
