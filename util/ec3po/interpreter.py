@@ -24,7 +24,13 @@ import select
 import traceback
 
 import six
+import sys
 
+cros_checkout = os.environ.get("CROS_WORKON_SRCROOT")
+sys.path.insert(0, cros_checkout + "/src/third_party/pigweed/pw_tokenizer/py" )
+
+from pw_tokenizer.detokenize import AutoUpdatingDetokenizer
+from pw_tokenizer import detokenize, encode
 
 COMMAND_RETRIES = 3  # Number of attempts to retry a command.
 EC_MAX_READ = 1024  # Max bytes to read at a time from the EC.
@@ -119,6 +125,17 @@ class Interpreter(object):
         self.enhanced_ec = False
         self.interrogating = False
         self.connected = True
+
+        self.detokenizer = None
+        token_db : Collection[Path] = (f'{cros_checkout}/src/platform/ec/build/database.bin',
+                    f'{cros_checkout}/src/platform/ec/build/zephyr/villager/build-ro/database.bin',
+                    f'{cros_checkout}/src/platform/ec/build/zephyr/villager/build-rw/database.bin')
+
+        if name == 'EC':
+            print(f'Loading Token database: {token_db}')
+            self.detokenizer = AutoUpdatingDetokenizer(*token_db)
+            self.detokenizer.show_errors = True
+            self.base64_re = detokenize._base64_message_regex(b'$')
 
     def __str__(self):
         """Show internal state of the Interpreter object.
@@ -350,6 +367,10 @@ class Interpreter(object):
         # Read what the EC sent us.
         data = os.read(self.ec_uart_pty.fileno(), EC_MAX_READ)
         self.logger.log(1, "got: '%s'", binascii.hexlify(data))
+
+        if self.detokenizer:
+            print(f'data: {data} -- length={len(data)}')
+
         if b"&E" in data and self.enhanced_ec:
             # We received an error, so we should retry it if possible.
             self.logger.warning("Error string found in data.")
