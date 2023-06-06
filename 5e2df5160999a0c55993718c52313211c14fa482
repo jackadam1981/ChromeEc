@@ -234,6 +234,52 @@
       },
       "revId": "5e2df5160999a0c55993718c52313211c14fa482",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0acba0fe_35710901",
+        "filename": "zephyr/program/ovis/ovis.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-06-06T18:16:25Z",
+      "side": 1,
+      "message": "Why did you add this node? I don\u0027t see it in the rex.dtsi",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 3
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f05fafe6_7cc305ab",
+        "filename": "zephyr/program/ovis/program.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-06-06T18:16:25Z",
+      "side": 1,
+      "message": "This should be enabled automatically based on the other symbols",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
