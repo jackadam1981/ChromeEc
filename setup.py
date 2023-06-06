@@ -13,7 +13,7 @@ setup(
     url="https://www.chromium.org/chromium-os/ec-development",
     package_dir={"": "util"},
     packages=["ec3po"],
-    py_modules=["ec3po.console", "ec3po.interpreter"],
+    py_modules=["ec3po.console", "ec3po.interpreter", "ec3po.pw_zephyr_detokenizer"],
     description="EC console interpreter.",
 )
 
