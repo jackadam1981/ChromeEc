@@ -87,6 +87,11 @@ int nct38xx_init(int port)
 					  MASK_SET));
 	}
 
+	reg = NCT38XX_REG_CONTROL_POLARITY_SNKENI;
+	rv = tcpc_write(port, NCT38XX_REG_CONTROL_POLARITY, reg);
+	if (rv)
+		return rv;
+
 	/*
 	 * Write to the CONTROL_OUT_EN register to enable:
 	 * [6] - CONNDIREN : Connector direction indication output enable
