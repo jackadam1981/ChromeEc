@@ -258,6 +258,11 @@ int board_tcpc_post_init(int port)
 	if (rv)
 		CPRINTS("C0: Failed to disable P2 (0x%x)", rv);
 
+	rv = tcpc_write(port, NCT38XX_REG_CONTROL_POLARITY,
+			NCT38XX_REG_CONTROL_POLARITY_SNKENI);
+	if (rv)
+		CPRINTS("C0: Failed to invert SNKEN polarity (0x%x)", rv);
+
 	return rv;
 }
 
