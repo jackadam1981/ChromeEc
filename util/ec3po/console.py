@@ -29,6 +29,8 @@ import traceback
 
 from ec3po import interpreter
 from ec3po import threadproc_shim
+from ec3po import pw_zephyr_detokenizer
+
 import six
 
 
@@ -194,6 +196,15 @@ class Console(object):
         self.look_buffer = b""
         self.raw_debug = False
         self.output_line_log_buffer = []
+        self.tm_req = True
+        self.z_detokenizer = None
+
+        if name == 'EC':
+            cros_checkout = os.environ.get("CROS_WORKON_SRCROOT")
+            token_db : Collection[Path] = (f'{cros_checkout}/src/platform/ec/build/tokens.bin',
+                    f'{cros_checkout}/src/platform/ec/build/zephyr/villager/build-ro/database.bin',
+                    f'{cros_checkout}/src/platform/ec/build/zephyr/villager/build-rw/database.bin')
+            self.z_detokenizer = pw_zephyr_detokenizer.ZephyrDetokenizer(self.send_to_controller_pty, *token_db)
 
     def __str__(self):
         """Show internal state of Console object as a string."""
@@ -567,6 +578,15 @@ class Console(object):
 
         return is_enhanced
 
+    def CheckForTokenizedEC(self):
+        print("Checking Tokenized Logging")
+        self.cmd_pipe.send(b'feat')
+
+        response = ""
+        if self.dbg_pipe.poll(self.interrogation_timeout):
+            response = self.dbg_pipe.recv()
+            print(f'tokenized response: {response}')
+
     def HandleChar(self, byte):
         """HandleChar does a certain action when it receives a character.
 
@@ -623,6 +643,8 @@ class Console(object):
                 # Only interrogate the EC if the interrogation mode is set to 'always'.
                 self.enhanced_ec = self.CheckForEnhancedECImage()
                 self.logger.debug("Enhanced EC image? %r", self.enhanced_ec)
+
+            # self.CheckForTokenizedEC()
 
         if not self.enhanced_ec:
             # Send everything straight to the EC to handle.
@@ -948,6 +970,36 @@ class Console(object):
         self.look_buffer = self.look_buffer[-LOOK_BUFFER_SIZE:]
 
 
+    def send_to_controller_pty(self, data: bytes):
+        end = len(data) - 1
+        if self.timestamp_enabled:
+            # A timestamp is required at the beginning of this line
+            if self.tm_req is True:
+                now = datetime.now()
+                tm = CanonicalizeTimeString(
+                    now.strftime(HOST_STRFTIME)
+                )
+                os.write(self.controller_pty, tm)
+                self.tm_req = False
+
+            # Insert timestamps into the middle where appropriate
+            # except if the last character is a newline
+            nls_found = data.count(b"\n", 0, end)
+            now = datetime.now()
+            tm = CanonicalizeTimeString(
+                now.strftime("\n" + HOST_STRFTIME)
+            )
+            data_tm = data.replace(b"\n", tm, nls_found)
+        else:
+            data_tm = data
+
+        # timestamp required on next input
+        if data[end] == b"\n"[0]:
+            self.tm_req = True
+
+        os.write(self.controller_pty, data_tm)
+
+
 def CanonicalizeTimeString(timestr):
     """Canonicalize the timestamp string.
 
@@ -1118,6 +1170,11 @@ def StartLoop(console, command_active, shutdown_pipe=None):
                         if console.interrogation_mode == b"auto":
                             # Search look buffer for enhanced EC image string.
                             console.CheckBufferForEnhancedImage(data)
+
+                        if console.z_detokenizer and controller_connected:
+                            console.z_detokenizer.decode(data)
+                            continue
+
                         # Write it to the user console.
                         if len(data) > 1 and console.raw_debug:
                             console.logger.debug(
@@ -1128,32 +1185,7 @@ def StartLoop(console, command_active, shutdown_pipe=None):
                             )
                         console.LogConsoleOutput(data)
                         if controller_connected:
-                            end = len(data) - 1
-                            if console.timestamp_enabled:
-                                # A timestamp is required at the beginning of this line
-                                if tm_req is True:
-                                    now = datetime.now()
-                                    tm = CanonicalizeTimeString(
-                                        now.strftime(HOST_STRFTIME)
-                                    )
-                                    os.write(console.controller_pty, tm)
-                                    tm_req = False
-
-                                # Insert timestamps into the middle where appropriate
-                                # except if the last character is a newline
-                                nls_found = data.count(b"\n", 0, end)
-                                now = datetime.now()
-                                tm = CanonicalizeTimeString(
-                                    now.strftime("\n" + HOST_STRFTIME)
-                                )
-                                data_tm = data.replace(b"\n", tm, nls_found)
-                            else:
-                                data_tm = data
-
-                            # timestamp required on next input
-                            if data[end] == b"\n"[0]:
-                                tm_req = True
-                            os.write(console.controller_pty, data_tm)
+                            console.send_to_controller_pty(data)
                         if command_active.value:
                             os.write(console.interface_pty, data)
 
@@ -1205,6 +1237,10 @@ def main(argv):
         "--log-level",
         default="info",
         help="info, debug, warning, error, or critical",
+    )
+    parser.add_argument(
+        "--token-db",
+        help="EC token database",
     )
 
     # Parse arguments.
