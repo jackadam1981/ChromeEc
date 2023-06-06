@@ -259,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c188d2_31577261",
+        "filename": "zephyr/program/ovis/ovis.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2023-06-06T18:17:47Z",
+      "side": 1,
+      "message": "It\u0027s in the rex subdirectory, nevermind",
+      "parentUuid": "0acba0fe_35710901",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 3
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f05fafe6_7cc305ab",
