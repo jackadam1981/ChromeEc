@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ed4d84c_0efc422f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-06T01:00:53Z",
+      "side": 1,
+      "message": "if configuring `tcss_aux_ori` on the AP side fixes the\nCC1/CC2 polarity dependency, then either the retimer\ndoesn\u0027t handle it or more configuration needs to be done\non the retimer side to follow the cable.",
+      "parentUuid": "1320bc05_ff74cf42",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "096f541a12d05ffae06b5f30a13c065e459289e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "725d51fb_716269d4",
         "filename": "zephyr/program/rex/rex.dtsi",
         "patchSetId": 6
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "It doesn\u0027t build if I use kb-usb-c1-rt-rst-odl. I did quick read of zephyr documentation and I could only find example of aliases being used in a C macro DT_ALIAS(alias)",
       "parentUuid": "83c4f896_264ecd6d",
+      "range": {
+        "startLine": 339,
+        "startChar": 16,
+        "endLine": 339,
+        "endChar": 40
+      },
+      "revId": "096f541a12d05ffae06b5f30a13c065e459289e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b78c8fb9_341dbb85",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-06T01:00:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1be7f117_64af5e08",
       "range": {
         "startLine": 339,
         "startChar": 16,
