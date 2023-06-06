@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "356a1a88_d444186b",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-06T23:12:30Z",
+      "side": 1,
+      "message": "my take on this is that we should defer to clang-format both\nfor validating \"compliance\" and reformatting code when needed.\n\nlet\u0027s update clang-format rules where possible to void spending\ntoo much time on manually tweaking code for formatting.",
+      "parentUuid": "2a63d78e_ec88fdfd",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dca91c12_89104d82",
         "filename": "driver/retimer/kb8010.c",
         "patchSetId": 13
@@ -214,6 +238,30 @@
       "side": 1,
       "message": "The values to program are given in the programming guide provided by the vendor. So this driver has these magic values. The programming guide is attached in the issue linked to this CL.\n\nIt\u0027s similar to the tables at the top of the file. We have the register names, but did not git a full register spec of the bit definitions.",
       "parentUuid": "1967da9c_dc8d683a",
+      "range": {
+        "startLine": 141,
+        "startChar": 6,
+        "endLine": 141,
+        "endChar": 10
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca01f53_70e1acfc",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-06T23:12:30Z",
+      "side": 1,
+      "message": "@fabio, the vendor has not been very forthcoming with \"resolving\"\nmagic numbers. we\u0027re still working on finding a mutually agreeable\nlevel of detail/documentation for this sort of thing.",
+      "parentUuid": "e2a529ec_e1d18445",
       "range": {
         "startLine": 141,
         "startChar": 6,

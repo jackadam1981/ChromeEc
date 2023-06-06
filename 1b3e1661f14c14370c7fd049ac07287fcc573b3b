@@ -141,6 +141,30 @@
       },
       "revId": "1b3e1661f14c14370c7fd049ac07287fcc573b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "227880c3_62e04d23",
+        "filename": "zephyr/shim/src/kb8010_usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-06T23:12:30Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6731f1da_7cad9476",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "1b3e1661f14c14370c7fd049ac07287fcc573b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
