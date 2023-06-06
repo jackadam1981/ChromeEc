@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc86a60c_479d6814",
+        "filename": "zephyr/test/amd_power/src/amd_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-06T20:25:45Z",
+      "side": 1,
+      "message": "Nit: fakes, callbacks\n```suggestion\n * @brief FFF fakes that will be registered as callbacks to monitor SYS reset\n```",
+      "range": {
+        "startLine": 129,
+        "startChar": 14,
+        "endLine": 129,
+        "endChar": 18
+      },
+      "revId": "86880e1643ab0d8154295ad9062a308e02e39a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4d68795_a0aadf04",
+        "filename": "zephyr/test/amd_power/src/amd_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-06T20:25:45Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong preference here, but can\u0027t you get this from the fixture? That seems slightly more obviously correct.",
+      "revId": "86880e1643ab0d8154295ad9062a308e02e39a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc5ed88d_b801fcff",
+        "filename": "zephyr/test/amd_power/src/amd_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-06T20:25:45Z",
+      "side": 1,
+      "message": "Is there a press in here?",
+      "revId": "86880e1643ab0d8154295ad9062a308e02e39a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
