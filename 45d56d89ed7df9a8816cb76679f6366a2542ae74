@@ -3,6 +3,115 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58da03a2_5fde88ed",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-06T10:52:43Z",
+      "side": 1,
+      "message": "should these all be uppercase? or even #defines instead of enum",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0321699_1a7fa3f6",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-06T10:52:43Z",
+      "side": 1,
+      "message": "no need to initialize this, or if you want to initialize it here you may as well use the actual values",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b2a821_a9d267eb",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-06T10:52:43Z",
+      "side": 1,
+      "message": "code under zephyr/ needs braces around all ifs, up to you whether to do it here as well or not but I\u0027d lay towards adding them here, just for consistency (not that the rest of the code base is consistent, really up to you)",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca91c12_89104d82",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-06T10:52:43Z",
+      "side": 1,
+      "message": "no need to zero initialize this either",
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1967da9c_dc8d683a",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-06T10:52:43Z",
+      "side": 1,
+      "message": "magic?",
+      "range": {
+        "startLine": 141,
+        "startChar": 6,
+        "endLine": 141,
+        "endChar": 10
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc9cf869_60c9a6ed",
         "filename": "driver/retimer/kb8010.h",
         "patchSetId": 13
@@ -20,6 +129,63 @@
         "endLine": 13,
         "endChar": 20
       },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc71ce6_c03ae0b3",
+        "filename": "zephyr/dts/bindings/usbc/mux/kandou,kb8010.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-06T10:52:43Z",
+      "side": 1,
+      "message": "nit: just bring up the previous line, does not need to wrap anyway",
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c580c58_f3235d7c",
+        "filename": "zephyr/dts/bindings/usbc/mux/kandou,kb8010.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-06T10:52:43Z",
+      "side": 1,
+      "message": "no need for `required: false`, it\u0027s the default",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f973a70_af6ef6dd",
+        "filename": "zephyr/dts/bindings/usbc/mux/kandou,kb8010.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-06T10:52:43Z",
+      "side": 1,
+      "message": "trailing blank line, drop",
       "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
