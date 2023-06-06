@@ -239,6 +239,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72403449_1558a9e8",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-06T18:47:23Z",
+      "side": 1,
+      "message": "`current config seems to be working fine` which cases work fine?\n* please double check if we should talk to this chip in G3 and S5. my guess is that we should not talk to the chip in S5 either.\n* again, add a helper function so there is a single place where we check the power state.",
+      "parentUuid": "5fe97e17_32222759",
+      "range": {
+        "startLine": 62,
+        "startChar": 22,
+        "endLine": 62,
+        "endChar": 44
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36155f09_46b215b8",
         "filename": "driver/retimer/anx7452.c",
         "patchSetId": 4
@@ -322,6 +346,30 @@
       "side": 1,
       "message": "The init method is triggered automatically by unit tests. And usb_en is enabled high then. We can\u0027t change the state of output GPIO. The only workaround to check the init is not enabling usb_en high when chipset is not in ready state is this approach. Since it\u0027s not in actual flow now it\u0027s not a big concern.",
       "parentUuid": "952f944d_8b7acd6e",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 32
+      },
+      "revId": "861e2248a1ae0376cb1918d4c507bce7fcca0527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12896ac_d7f682ef",
+        "filename": "driver/retimer/anx7452.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-06T18:47:23Z",
+      "side": 1,
+      "message": "we should not have special behavior to satisfy tests.\nthe tests are supposed to check that the code is behaving\ncorrectly. the need to add code only to satisfy a test here\nindicates the test needs to be updated.",
+      "parentUuid": "18ac2c96_df47cf5c",
       "range": {
         "startLine": 63,
         "startChar": 2,
