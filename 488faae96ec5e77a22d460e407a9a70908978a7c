@@ -16,6 +16,24 @@
       "message": "For this one, I have another idea that we may be able to do without a complete refactor. Do the next few CLs that I approved need this change (https://crrev.com/c/4511814, https://crrev.com/c/4511815, https://crrev.com/c/4505566) or can we go ahead and submit those without this one?",
       "revId": "488faae96ec5e77a22d460e407a9a70908978a7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb5d599_a8ca95c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-06-06T23:19:58Z",
+      "side": 1,
+      "message": "Yes, those CLs also need this change.\nWithout this change, we will not be able to run \"stateful\" unittest on the device.\n(Or should we just skip the device test?)",
+      "parentUuid": "fffabc32_f9e4b56e",
+      "revId": "488faae96ec5e77a22d460e407a9a70908978a7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
