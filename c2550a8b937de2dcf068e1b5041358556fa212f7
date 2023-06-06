@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b2fa7d7_0d784f21",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-06T18:43:19Z",
+      "side": 1,
+      "message": "nit: The added undefs above seem like a separate change based on the commit message.",
+      "revId": "c2550a8b937de2dcf068e1b5041358556fa212f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
