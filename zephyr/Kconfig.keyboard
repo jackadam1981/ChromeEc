@@ -300,3 +300,9 @@ config PLATFORM_EC_LED_DRIVER_AW20198
 	  Enable driver for AW20198 LED controller.
 
 endif # PLATFORM_EC_RGB_KEYBOARD
+
+config PLATFORM_POWER_BUTTON_IGNORE_LID
+	bool "Custom shutdown of machine even with lid closed."
+	help
+		Do not ignore power button under lid close.
+	default n
