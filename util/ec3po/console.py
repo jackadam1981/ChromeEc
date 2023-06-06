@@ -29,6 +29,13 @@ import traceback
 
 from ec3po import interpreter
 from ec3po import threadproc_shim
+
+cros_checkout = os.environ.get("CROS_WORKON_SRCROOT")
+sys.path.insert(0, cros_checkout + "/src/third_party/pigweed/pw_tokenizer/py" )
+
+from pw_tokenizer.detokenize import AutoUpdatingDetokenizer
+from pw_tokenizer import detokenize, encode
+
 import six
 
 
@@ -194,6 +201,16 @@ class Console(object):
         self.look_buffer = b""
         self.raw_debug = False
         self.output_line_log_buffer = []
+
+        self.detokenizer = None
+        token_db : Collection[Path] = (f'{cros_checkout}/src/platform/ec/build/database.bin',
+                    f'{cros_checkout}/src/platform/ec/build/zephyr/villager/build-ro/database.bin',
+                    f'{cros_checkout}/src/platform/ec/build/zephyr/villager/build-rw/database.bin')
+
+        if name == 'EC':
+            print(f'Loading Token database: {token_db}')
+            self.detokenizer = AutoUpdatingDetokenizer(*token_db)
+            self.detokenizer.show_errors = True
 
     def __str__(self):
         """Show internal state of Console object as a string."""
@@ -947,6 +964,57 @@ class Console(object):
         # Move the sliding window.
         self.look_buffer = self.look_buffer[-LOOK_BUFFER_SIZE:]
 
+    def decode_optionally_tokenized(
+        self,
+        detokenizer: detokenize.Detokenizer,
+        data: bytes,
+        prefix: str = encode.BASE64_PREFIX,
+    ) -> str:
+        """Decodes data that may be plain text or binary / Base64 tokenized text."""
+        # Try detokenizing as binary.
+        result = detokenizer.detokenize(data)
+        if result.best_result() is not None:
+            # Rather than just returning the detokenized string, continue
+            # detokenization in case recursive Base64 detokenization is needed.
+            data = str(result).encode()
+
+        # Attempt to decode as UTF-8.
+        try:
+            text = data.decode()
+        except UnicodeDecodeError:
+            # Not UTF-8. Assume the token is unknown or the data is corrupt.
+            return encode.prefixed_base64(data, prefix)
+
+        # See if the string is prefixed Base64 or contains prefixed Base64.
+        detokenized = detokenize.detokenize_base64(detokenizer, data, prefix)
+        if detokenized != data:  # If anything detokenized successfully, use that.
+            return detokenized.decode()
+
+        # Attempt to determine whether this is an unknown token or plain text.
+        # Any string with only printable or whitespace characters is plain text.
+        if ''.join(text.split()).isprintable():
+            return text
+
+        # Assume this field is tokenized data that could not be decoded.
+        return encode.prefixed_base64(data, prefix)
+
+    def detokenize_and_log_output(self, data: bytes):
+        flag = False
+        log_messages = data.decode(
+            encoding='utf-8', errors='surrogateescape'
+        )
+
+        if self.detokenizer:
+            log_messages = self.decode_optionally_tokenized(
+                self.detokenizer, data
+            )
+
+        for line in log_messages.splitlines():
+            os.write(self.controller_pty, line.encode())
+            flag = True
+
+        return flag
+
 
 def CanonicalizeTimeString(timestr):
     """Canonicalize the timestamp string.
@@ -970,7 +1038,6 @@ def IsPrintable(byte):
       A boolean indicating whether the byte is a printable character.
     """
     return byte >= ord(" ") and byte <= ord("~")
-
 
 def StartLoop(console, command_active, shutdown_pipe=None):
     """Starts the infinite loop of console processing.
@@ -1118,6 +1185,11 @@ def StartLoop(console, command_active, shutdown_pipe=None):
                         if console.interrogation_mode == b"auto":
                             # Search look buffer for enhanced EC image string.
                             console.CheckBufferForEnhancedImage(data)
+
+                        if console.detokenizer and controller_connected:
+                            result = console.detokenize_and_log_output(data)
+                            if result: continue
+
                         # Write it to the user console.
                         if len(data) > 1 and console.raw_debug:
                             console.logger.debug(
@@ -1205,6 +1277,10 @@ def main(argv):
         "--log-level",
         default="info",
         help="info, debug, warning, error, or critical",
+    )
+    parser.add_argument(
+        "--token-db",
+        help="EC token database",
     )
 
     # Parse arguments.
