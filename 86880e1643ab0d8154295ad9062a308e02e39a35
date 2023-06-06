@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28de9f4b_4902ff17",
+        "filename": "zephyr/test/amd_power/src/amd_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-06-06T20:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc86a60c_479d6814",
+      "range": {
+        "startLine": 129,
+        "startChar": 14,
+        "endLine": 129,
+        "endChar": 18
+      },
+      "revId": "86880e1643ab0d8154295ad9062a308e02e39a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4d68795_a0aadf04",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d880645_b72c2eaf",
+        "filename": "zephyr/test/amd_power/src/amd_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-06-06T20:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4d68795_a0aadf04",
+      "revId": "86880e1643ab0d8154295ad9062a308e02e39a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc5ed88d_b801fcff",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-06-06T20:25:45Z",
       "side": 1,
       "message": "Is there a press in here?",
+      "revId": "86880e1643ab0d8154295ad9062a308e02e39a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d95107d_853b7dec",
+        "filename": "zephyr/test/amd_power/src/amd_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-06-06T20:39:10Z",
+      "side": 1,
+      "message": "Nope, it\u0027s idle and thus yields no presses",
+      "parentUuid": "dc5ed88d_b801fcff",
       "revId": "86880e1643ab0d8154295ad9062a308e02e39a35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
