@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47d0c431_df1efdb9",
+        "filename": "zephyr/program/rex/screebo/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-06-06T09:37:28Z",
+      "side": 1,
+      "message": "We must include the `gpio.dtsi` here because the following files will reference it.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "da92c02f89c8c74c9ba74e64a18e224bd0570472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
