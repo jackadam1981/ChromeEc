@@ -16,6 +16,24 @@
       "message": "Should we also correct our colors while we\u0027re at it?",
       "revId": "4dd9287ad104b283cc9139fddd6750f915b8e65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "344540c5_c9fcb561",
+        "filename": "zephyr/program/myst/myst/led_pins.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-06-06T16:38:08Z",
+      "side": 1,
+      "message": "Let\u0027s do a follow up CL. Looks like they should be red and green from the schematic?",
+      "parentUuid": "5d6a2935_70b324b9",
+      "revId": "4dd9287ad104b283cc9139fddd6750f915b8e65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
