@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cef5e91_670b2795",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-06-07T21:01:24Z",
+      "side": 1,
+      "message": "New change in the CL stack to accommodate. See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4599554/1",
+      "parentUuid": "f7db26d1_a96c70b8",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 48
+      },
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40176663_a0ad2c7a",
         "filename": "zephyr/test/drivers/default/src/battery.c",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-06T21:27:42Z",
       "side": 1,
       "message": "This looks like a bugfix on the test where it was creating enough count as it had a PEC but shouldn\u0027t have.\n\nIf this is the case, this ought to be its own change.",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 49
+      },
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed81e15c_49939a32",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-06-07T21:01:24Z",
+      "side": 1,
+      "message": "Original test assumed no room for PEC byte. This CL needs to make room for it but optionally decide to use it. I adjusted the comments to (perhaps?) make it clearer.",
+      "parentUuid": "40176663_a0ad2c7a",
       "range": {
         "startLine": 197,
         "startChar": 2,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a56277e0_197b2b44",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-06-07T21:01:24Z",
+      "side": 1,
+      "message": "Unpacking this: Fixed the 5 byte as a separate change, but the 0xFF is to reserve a bit of space if we need it. I adjusted count \u003d sizeof-1 though in this cl to try to make it common. It will probably go into a helper routine next CL since I think there are some other fails.",
+      "parentUuid": "b094e8b5_f8350ef0",
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49d6387b_a87427e2",
         "filename": "zephyr/test/drivers/default/src/battery.c",
         "patchSetId": 4
@@ -89,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a1c7a78_a0c3b045",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-06-07T21:01:24Z",
+      "side": 1,
+      "message": "should be fixed. Added comment to the bug as well.",
+      "parentUuid": "49d6387b_a87427e2",
+      "range": {
+        "startLine": 279,
+        "startChar": 4,
+        "endLine": 279,
+        "endChar": 8
+      },
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e64063fc_6a9013df",
         "filename": "zephyr/test/drivers/default/src/battery.c",
         "patchSetId": 4
@@ -100,6 +190,24 @@
       "writtenOn": "2023-06-06T21:27:42Z",
       "side": 1,
       "message": "Can we use device tree instead? Cutoff values are normally in Manufacturers access, but we have chips that have it elsewhere too.",
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a5721b2_020f25f5",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-06-07T21:01:24Z",
+      "side": 1,
+      "message": "AFAICT this was hardcoded to 0x0, but I think that was based on a gdb session I did which may have been specific to herobrine. do you have a good sample that I could try against another device that would force it to a Mfg access in a diff location? I used device tree for the other test in this CL but it defaults to 0 for everything I could find.",
+      "parentUuid": "e64063fc_6a9013df",
       "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
