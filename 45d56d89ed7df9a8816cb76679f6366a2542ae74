@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6866f4b_f95b4186",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-07T16:40:43Z",
+      "side": 1,
+      "message": "You\u0027re correct. I am not sure why I was convinced they were often lowercase. I had misrembered, or thinking back to my pre cros-ec days. I will change these to uppercase.",
+      "parentUuid": "15e921a6_55a3b045",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0321699_1a7fa3f6",
         "filename": "driver/retimer/kb8010.c",
         "patchSetId": 13
