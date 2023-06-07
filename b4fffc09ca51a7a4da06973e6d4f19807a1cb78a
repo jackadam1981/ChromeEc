@@ -16,6 +16,23 @@
       "message": "hey Boris,\nI am considering modifying the FAFT tests. I created this CL\n\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/4597766",
       "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc674608_3c2fea5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-07T22:31:13Z",
+      "side": 1,
+      "message": "It looks like the alignment test should probably just be removed: https://crrev.com/c/4597766.\n\nWe should also remove the `crash align` command since that is confusing (it won\u0027t actually crash).\n\nHowever, if you\u0027re concerned that this causes problems with launching this device and want to temporarily revert, I\u0027m ok with that too (I\u0027m assuming we can find a way to re-enable going forward, so let me know if that\u0027s not the case.).",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
