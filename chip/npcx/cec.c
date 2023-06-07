@@ -211,6 +211,8 @@ struct cec_tx {
 	uint8_t resends;
 	/* Acknowledge received from sink? */
 	uint8_t ack;
+	/* New send requested from AP */
+	uint8_t new_request;
 	/*
 	 * When sending multiple concurrent frames,
 	 * the free-time is slightly higher
@@ -316,21 +318,6 @@ static void tmr_oneshot_start(int timeout)
 
 	NPCX_TCNT1(mdl) = timeout;
 	SET_FIELD(NPCX_TCKC(mdl), NPCX_TCKC_C1CSEL_FIELD, 1);
-}
-
-static void tmr2_start(int timeout)
-{
-	int mdl = NPCX_MFT_MODULE_1;
-
-	NPCX_TCNT2(mdl) = timeout;
-	SET_FIELD(NPCX_TCKC(mdl), NPCX_TCKC_C2CSEL_FIELD, 1);
-}
-
-static void tmr2_stop(void)
-{
-	int mdl = NPCX_MFT_MODULE_1;
-
-	SET_FIELD(NPCX_TCKC(mdl), NPCX_TCKC_C2CSEL_FIELD, 0);
 }
 
 void enter_state(enum cec_state new_state)
@@ -803,9 +790,10 @@ static void cec_isr(void)
 		if (events & BIT(NPCX_TECTRL_TCPND))
 			cec_event_timeout();
 	}
-	/* Oneshot timer, a transfer has been initiated from AP */
-	if (events & BIT(NPCX_TECTRL_TDPND)) {
-		tmr2_stop();
+
+	/* Software interrupt, a transfer has been initiated from AP */
+	if (cec_tx.new_request) {
+		cec_tx.new_request = false;
 		cec_event_tx();
 	}
 
@@ -821,16 +809,16 @@ static int cec_send(const uint8_t *msg, uint8_t len)
 	if (cec_tx.len != 0)
 		return -1;
 
-	cec_tx.len = len;
-
 	CPRINTS("Send CEC:");
 	for (i = 0; i < len && i < MAX_CEC_MSG_LEN; i++)
 		CPRINTS(" 0x%02x", msg[i]);
 
 	memcpy(cec_tx.transfer.buf, msg, len);
+	cec_tx.len = len;
 
 	/* Elevate to interrupt context */
-	tmr2_start(0);
+	cec_tx.new_request = true;
+	task_trigger_irq(NPCX_IRQ_MFT_1);
 
 	return 0;
 }
@@ -893,7 +881,6 @@ static int cec_set_enable(uint8_t enable)
 		CLEAR_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TAIEN);
 		CLEAR_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TDIEN);
 
-		tmr2_stop();
 		tmr_cap_stop();
 
 		task_disable_irq(NPCX_IRQ_MFT_1);
