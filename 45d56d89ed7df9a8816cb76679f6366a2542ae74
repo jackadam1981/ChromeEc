@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11c98823_a13093a6",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-07T23:09:43Z",
+      "side": 1,
+      "message": "Uploaded a new patchset which fixes the case for this enum",
+      "parentUuid": "a6866f4b_f95b4186",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0321699_1a7fa3f6",
         "filename": "driver/retimer/kb8010.c",
         "patchSetId": 13
