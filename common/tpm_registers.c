@@ -631,6 +631,8 @@ static void tpm_init(void)
 	if (!tpm_manufactured()) {
 		enum manufacturing_status endorse_result;
 
+		ccprints("Starting manufacturing\n");
+
 		/*
 		 * If tpm has not been manufactured yet - this needs to run on
 		 * every startup. It will wipe out NV RAM, among other things.
@@ -640,9 +642,9 @@ static void tpm_init(void)
 		_plat__SetNvAvail();
 		endorse_result = tpm_endorse();
 
-		ccprints("Endorsement %s",
+		ccprints("Endorsement %s (%d)",
 			 (endorse_result == mnf_success) ?
-			 "succeeded" : "failed");
+			 "succeeded" : "failed", endorse_result);
 	} else {
 		_plat__SetNvAvail();
 	}

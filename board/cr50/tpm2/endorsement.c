@@ -553,14 +553,20 @@ enum manufacturing_status tpm_endorse(void)
 
 	flash_cert_region_enable();
 
-	/* First boot, certs not yet installed. */
-	if (*c == 0xFFFFFFFF)
-		return mnf_no_certs;
-
 	if (!get_decrypted_eps(eps)) {
 		CPRINTF("%s(): failed to read eps\n", __func__);
 		return mnf_eps_decr;
 	}
+
+	/* Copy EPS from INFO1 to flash data region. */
+	if (!store_eps(eps)) {
+		CPRINTF("%s(): eps storage failed\n", __func__);
+		return mnf_store;
+	}
+
+	/* First boot, certs not yet installed. */
+	if (*c == 0xFFFFFFFF)
+		return mnf_no_certs;
 
 	/* Unpack rsa cert struct. */
 	rsa_cert = (const struct ro_cert *) p;
@@ -668,13 +674,6 @@ enum manufacturing_status tpm_endorse(void)
 			break;
 		}
 		CPRINTF("%s: ECC cert install success\n", __func__);
-
-		/* Copy EPS from INFO1 to flash data region. */
-		if (!store_eps(eps)) {
-			CPRINTF("%s(): eps storage failed\n", __func__);
-			result = mnf_store;
-			break;
-		}
 
 		/* Mark as endorsed. */
 		endorsement_complete();
