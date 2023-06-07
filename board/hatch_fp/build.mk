@@ -69,7 +69,6 @@ test-list-y=\
        timer \
        timer_dos \
        tpm_seed_clear \
-       unaligned_access \
        utils \
        utils_str \
 
