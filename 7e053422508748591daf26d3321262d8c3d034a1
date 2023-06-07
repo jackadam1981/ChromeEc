@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96488dfc_793075c2",
+        "filename": "zephyr/program/rex/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-07T10:15:20Z",
+      "side": 1,
+      "message": "This CL doesn\u0027t get landed to main, it\u0027s just for reference to say how CBI is enabled in Rex. Hence commented config option related to EEPROM. I added EEPROM_SHELL for reading the image inside it.",
+      "parentUuid": "a193acca_0dd734c2",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "7e053422508748591daf26d3321262d8c3d034a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a06e886c_d5ef793f",
         "filename": "zephyr/program/rex/rex/project.overlay",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b0c21a7_558c2292",
+        "filename": "zephyr/program/rex/rex/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-07T10:15:20Z",
+      "side": 1,
+      "message": "For the first time the dev needs to use this option to flash EC image with CBI data, hence added it here explicitly.",
+      "parentUuid": "96c2727e_ba81206e",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "7e053422508748591daf26d3321262d8c3d034a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa5cdd80_63106eb3",
         "filename": "zephyr/shim/chip/npcx/include/flash_chip.h",
         "patchSetId": 1
@@ -83,6 +131,30 @@
       "writtenOn": "2023-06-05T23:28:39Z",
       "side": 1,
       "message": "It is not board-specific. Change it in a separate CL.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "7e053422508748591daf26d3321262d8c3d034a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b47690_665a0756",
+        "filename": "zephyr/shim/chip/npcx/include/flash_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-06-07T10:15:20Z",
+      "side": 1,
+      "message": "This CL is mostly used as reference for enabling CBI in Myst EC. Hence added it in this, to say erase size change is required if free memory is less. \n\nIn Rex there is less memory left, where 0x1000 is the max it could allocate for CBI at the end of RO.",
+      "parentUuid": "fa5cdd80_63106eb3",
       "range": {
         "startLine": 13,
         "startChar": 0,
