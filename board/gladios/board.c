@@ -5,6 +5,7 @@
 #include "adc.h"
 #include "builtin/assert.h"
 #include "button.h"
+#include "cec.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
@@ -41,6 +42,23 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 
 /******************************************************************************/
+
+struct cec_offline_policy gladios_cec_policy[] = {
+	{
+		.command = CEC_MSG_REPORT_PHYSICAL_ADDRESS,
+		.action = CEC_ACTION_POWER_BUTTON,
+	},
+	{
+		.command = CEC_MSG_DEVICE_VENDOR_ID,
+		.action = CEC_ACTION_POWER_BUTTON,
+	},
+	/* Terminator */
+	{ 0 },
+};
+
+__override const struct cec_config_t cec_config = {
+	.offline_policy = gladios_cec_policy,
+};
 
 int board_set_active_charge_port(int port)
 {
