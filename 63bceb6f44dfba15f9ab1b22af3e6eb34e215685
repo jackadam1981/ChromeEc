@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "942cb674_9dd16a31",
+        "filename": "common/shared_mem_libc.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1539947
+      },
+      "writtenOn": "2023-06-07T08:17:22Z",
+      "side": 1,
+      "message": "we could set ptr to NULL after free here, then it won\u0027t evoke the double free as BUG:274737509 mentioned",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "63bceb6f44dfba15f9ab1b22af3e6eb34e215685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
