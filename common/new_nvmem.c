@@ -325,7 +325,7 @@ static uint8_t init_in_progress;
  * The interfaces grabbing this mutex are
  *
  *  new_nvmem_migrate()
- *  new_nvmem_init()
+ *  new_nvmem_init_locked()
  *  new_nvmem_save()
  *  getvar()
  *  setvar()
@@ -365,6 +365,21 @@ test_export_static struct access_tracker controller_at;
 test_export_static enum ec_error_list browse_flash_contents(int print);
 static enum ec_error_list save_container(struct nn_container *nc);
 static void invalidate_nvmem_flash(void);
+static enum ec_error_list new_nvmem_init(void);
+
+/* Log NVMEM problem as per passed in payload and size. */
+static void log_failure(struct nvmem_failure_payload *payload,
+			size_t payload_union_size)
+{
+	flash_log_add_event(FE_LOG_NVMEM,
+			    payload_union_size +
+				    offsetof(struct nvmem_failure_payload,
+					     size),
+			    payload);
+
+	ccprintf("Logging failure %d, will %sreinit\n", payload->failure_type,
+		 init_in_progress ? "" : "not ");
+}
 
 /* Log NVMEM problem as per passed in payload and size, and reboot. */
 static void report_failure(struct nvmem_failure_payload *payload,
@@ -378,14 +393,7 @@ static void report_failure(struct nvmem_failure_payload *payload,
 		invalidate_nvmem_flash();
 	}
 
-	flash_log_add_event(FE_LOG_NVMEM,
-			    payload_union_size +
-				    offsetof(struct nvmem_failure_payload,
-					     size),
-			    payload);
-
-	ccprintf("Logging failure %d, will %sreinit\n", payload->failure_type,
-		 init_in_progress ? "" : "not ");
+	log_failure(payload, payload_union_size);
 
 	if (init_in_progress) {
 		struct nvmem_failure_payload fp;
@@ -408,6 +416,14 @@ static void report_no_payload_failure(enum nvmem_failure_type type)
 
 	fp.failure_type = type;
 	report_failure(&fp, 0);
+}
+
+static void log_no_payload_failure(enum nvmem_failure_type type)
+{
+	struct nvmem_failure_payload fp;
+
+	fp.failure_type = type;
+	log_failure(&fp, 0);
 }
 
 /*
@@ -807,8 +823,6 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 
 		/* And calculate hash. */
 		if (!container_is_valid(ch)) {
-			struct nvmem_failure_payload fp;
-
 			if (!init_in_progress)
 				report_no_payload_failure(
 					NVMEMF_CONTAINER_HASH_MISMATCH);
@@ -816,12 +830,7 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 			 * During init there might be a way to deal with
 			 * this, let's just log this and continue.
 			 */
-			fp.failure_type = NVMEMF_CONTAINER_HASH_MISMATCH;
-			flash_log_add_event(
-				FE_LOG_NVMEM,
-				offsetof(struct nvmem_failure_payload, size),
-				&fp);
-
+			log_no_payload_failure(NVMEMF_CONTAINER_HASH_MISMATCH);
 			return EC_ERROR_INVAL;
 		}
 
@@ -909,6 +918,7 @@ test_export_static enum ec_error_list compact_nvmem(void)
 {
 	const void *fence_ph;
 	enum ec_error_list rv = EC_SUCCESS;
+	enum ec_error_list rv_init = EC_SUCCESS;
 	size_t before;
 	struct nn_container *ch;
 	struct access_tracker at = {};
@@ -1014,6 +1024,10 @@ test_export_static enum ec_error_list compact_nvmem(void)
 
 	CPRINTS("Compaction done, went from %zd to %zd bytes", before,
 		total_used_size());
+	rv_init = new_nvmem_init();
+	/* Make sure init error is not lost */
+	if (rv == EC_SUCCESS && rv_init != EC_SUCCESS)
+		rv = rv_init;
 	return rv;
 }
 
@@ -1692,7 +1706,7 @@ static void init_page_list(void)
  * from flash. This function unmarshals it and places in the NVMEM cache where
  * it belongs. Note that PCRs were not marshaled.
  */
-static void unmarshal_state_clear(uint8_t *pad, int size, uint32_t offset)
+static enum ec_error_list unmarshal_state_clear(uint8_t *pad, int size, uint32_t offset)
 {
 	STATE_CLEAR_DATA *real_scd;
 	STATE_CLEAR_DATA *scd;
@@ -1705,7 +1719,7 @@ static void unmarshal_state_clear(uint8_t *pad, int size, uint32_t offset)
 
 	memset(real_scd, 0, sizeof(*real_scd));
 	if (!size)
-		return;
+		return EC_ERROR_UNKNOWN;
 
 	memcpy(&preserved, real_scd + 1, sizeof(preserved));
 
@@ -1722,19 +1736,27 @@ static void unmarshal_state_clear(uint8_t *pad, int size, uint32_t offset)
 	pad += sizeof(scd->platformAlg);
 	size -= sizeof(scd->platformAlg);
 
-	TPM2B_DIGEST_Unmarshal(&scd->platformPolicy, &pad, &size);
-	TPM2B_AUTH_Unmarshal(&scd->platformAuth, &pad, &size);
+	if (TPM2B_DIGEST_Unmarshal(&scd->platformPolicy, &pad, &size) !=
+	    TPM_RC_SUCCESS)
+		return EC_ERROR_UNKNOWN;
+	if (TPM2B_AUTH_Unmarshal(&scd->platformAuth, &pad, &size) !=
+	    TPM_RC_SUCCESS)
+		return EC_ERROR_UNKNOWN;
 
+	if (size < sizeof(scd->pcrSave.pcrCounter))
+		return EC_ERROR_UNKNOWN;
 	memcpy(&scd->pcrSave.pcrCounter, pad, sizeof(scd->pcrSave.pcrCounter));
 	pad += sizeof(scd->pcrSave.pcrCounter);
 	size -= sizeof(scd->pcrSave.pcrCounter);
 
 	for (i = 0; i < ARRAY_SIZE(scd->pcrAuthValues.auth); i++)
-		TPM2B_DIGEST_Unmarshal(scd->pcrAuthValues.auth + i, &pad,
-				       &size);
+		if (TPM2B_DIGEST_Unmarshal(scd->pcrAuthValues.auth + i, &pad,
+					   &size) != TPM_RC_SUCCESS)
+			return EC_ERROR_UNKNOWN;
 
 	memmove(real_scd, scd, sizeof(*scd));
 	memcpy(real_scd + 1, &preserved, sizeof(preserved));
+	return EC_SUCCESS;
 }
 
 /*
@@ -1742,7 +1764,7 @@ static void unmarshal_state_clear(uint8_t *pad, int size, uint32_t offset)
  * from flash. This function unmarshals it and places in the NVMEM cache where
  * it belongs.
  */
-static void unmarshal_state_reset(uint8_t *pad, int size, uint32_t offset)
+static enum ec_error_list unmarshal_state_reset(uint8_t *pad, int size, uint32_t offset)
 {
 	STATE_RESET_DATA *real_srd;
 	STATE_RESET_DATA *srd;
@@ -1753,71 +1775,96 @@ static void unmarshal_state_reset(uint8_t *pad, int size, uint32_t offset)
 
 	memset(real_srd, 0, sizeof(*real_srd));
 	if (!size)
-		return;
+		return EC_ERROR_UNKNOWN;
 
 	memcpy(&preserved, real_srd + 1, sizeof(preserved));
 
 	srd = (void *)(((uintptr_t)real_srd + 3) & ~3);
 
-	TPM2B_AUTH_Unmarshal(&srd->nullProof, &pad, &size);
-	TPM2B_DIGEST_Unmarshal((TPM2B_DIGEST *)(&srd->nullSeed), &pad, &size);
+	if (TPM2B_AUTH_Unmarshal(&srd->nullProof, &pad, &size) !=
+	    TPM_RC_SUCCESS)
+		return EC_ERROR_UNKNOWN;
+	if (TPM2B_DIGEST_Unmarshal((TPM2B_DIGEST *)(&srd->nullSeed), &pad,
+				   &size) != TPM_RC_SUCCESS)
+		return EC_ERROR_UNKNOWN;
 	UINT32_Unmarshal(&srd->clearCount, &pad, &size);
 	UINT64_Unmarshal(&srd->objectContextID, &pad, &size);
 
+	if (size < sizeof(srd->contextArray))
+		return EC_ERROR_UNKNOWN;
 	memcpy(srd->contextArray, pad, sizeof(srd->contextArray));
 	size -= sizeof(srd->contextArray);
 	pad += sizeof(srd->contextArray);
 
+	if (size < sizeof(srd->contextCounter))
+		return EC_ERROR_UNKNOWN;
 	memcpy(&srd->contextCounter, pad, sizeof(srd->contextCounter));
 	size -= sizeof(srd->contextCounter);
 	pad += sizeof(srd->contextCounter);
 
-	TPM2B_DIGEST_Unmarshal(&srd->commandAuditDigest, &pad, &size);
+	if (TPM2B_DIGEST_Unmarshal(&srd->commandAuditDigest, &pad, &size) !=
+	    TPM_RC_SUCCESS)
+		return EC_ERROR_UNKNOWN;
 	UINT32_Unmarshal(&srd->restartCount, &pad, &size);
 	UINT32_Unmarshal(&srd->pcrCounter, &pad, &size);
 
 #ifdef TPM_ALG_ECC
 	UINT64_Unmarshal(&srd->commitCounter, &pad, &size);
-	TPM2B_NONCE_Unmarshal(&srd->commitNonce, &pad, &size);
+	if (TPM2B_NONCE_Unmarshal(&srd->commitNonce, &pad, &size) !=
+	    TPM_RC_SUCCESS)
+		return EC_ERROR_UNKNOWN;
 
+	if (size < sizeof(srd->commitArray))
+		return EC_ERROR_UNKNOWN;
 	memcpy(srd->commitArray, pad, sizeof(srd->commitArray));
 	size -= sizeof(srd->commitArray);
 #endif
 
 	memmove(real_srd, srd, sizeof(*srd));
 	memcpy(real_srd + 1, &preserved, sizeof(preserved));
+	return EC_SUCCESS;
 }
 
 /*
  * Based on the passed in index, find the location of the PCR in the NVMEM
  * cache and copy it there.
  */
-static void restore_pcr(size_t pcr_index, uint8_t *pad, size_t size)
+static enum ec_error_list restore_pcr(size_t pcr_index, uint8_t *pad,
+				      size_t size)
 {
 	const STATE_CLEAR_DATA *scd;
 	const struct pcr_descriptor *pcrd;
 	void *cached; /* This PCR's position in the NVMEM cache. */
 
 	if (pcr_index > NUM_OF_PCRS)
-		return; /* This is an error. */
+		return EC_ERROR_UNKNOWN; /* This is an error. */
 
 	pcrd = pcr_arrays + pcr_index / NUM_STATIC_PCR;
 	if (pcrd->pcr_size != size)
-		return; /* This is an error. */
+		return EC_ERROR_UNKNOWN; /* This is an error. */
 
 	scd = get_scd();
 	cached = (uint8_t *)&scd->pcrSave + pcrd->pcr_array_offset +
 		 pcrd->pcr_size * (pcr_index % NUM_STATIC_PCR);
 
 	memcpy(cached, pad, size);
+	return EC_SUCCESS;
+}
+
+static size_t get_reserved_size(void)
+{
+	NV_RESERVED_ITEM ri;
+	NvGetReserved(NV_RESERVE_LAST - 1, &ri);
+	return ri.offset + ri.size;
 }
 
 /* Restore a reserved object found in flash on initialization. */
-static void restore_reserved(void *pad, size_t size, uint8_t *bitmap)
+static enum ec_error_list restore_reserved(void *pad, size_t size, uint8_t *bitmap)
 {
 	NV_RESERVED_ITEM ri;
-	uint16_t type;
+	NV_RESERVE type;
 	void *cached;
+	enum ec_error_list rv = EC_SUCCESS;
 
 	/*
 	 * Index is saved as a single byte, update pad to point at the
@@ -1829,15 +1876,13 @@ static void restore_reserved(void *pad, size_t size, uint8_t *bitmap)
 	if (type < NV_VIRTUAL_RESERVE_LAST) {
 		NvGetReserved(type, &ri);
 
-		bitmap_bit_set(bitmap, type);
-
 		switch (type) {
 		case NV_STATE_CLEAR:
-			unmarshal_state_clear(pad, size, ri.offset);
+			rv = unmarshal_state_clear(pad, size, ri.offset);
 			break;
 
 		case NV_STATE_RESET:
-			unmarshal_state_reset(pad, size, ri.offset);
+			rv = unmarshal_state_reset(pad, size, ri.offset);
 			break;
 
 		default:
@@ -1846,10 +1891,12 @@ static void restore_reserved(void *pad, size_t size, uint8_t *bitmap)
 			memcpy(cached, pad, size);
 			break;
 		}
-		return;
+		if (rv == EC_SUCCESS)
+			bitmap_bit_set(bitmap, type);
+		return rv;
 	}
 
-	restore_pcr(type - NV_VIRTUAL_RESERVE_LAST, pad, size);
+	return restore_pcr(type - NV_VIRTUAL_RESERVE_LAST, pad, size);
 }
 
 /* Restore an evictable object found in flash on initialization. */
@@ -2233,6 +2280,7 @@ static enum ec_error_list verify_delimiter(struct nn_container *nc)
 			 * Let's erase the page where the last object spilled
 			 * into.
 			 */
+			log_no_payload_failure(NVMEMF_NVMEM_ERASE_INVALID_DELIMITER);
 			flash_physical_erase((uintptr_t)dpt.mt.ph -
 						     CONFIG_PROGRAM_MEMORY_BASE,
 					     CONFIG_FLASH_BANK_SIZE);
@@ -2265,25 +2313,31 @@ static enum ec_error_list verify_delimiter(struct nn_container *nc)
  */
 static enum ec_error_list retrieve_nvmem_contents(void)
 {
-	int rv;
+	enum ec_error_list rv;
 	int tries;
 	struct max_var_container *vc;
 	struct nn_container *nc;
 	uint8_t res_bitmap[(NV_PSEUDO_RESERVE_LAST + 7) / 8];
+	size_t reserved_size;
 
 	/* No saved object will exceed CONFIG_FLASH_BANK_SIZE in size. */
 	nc = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE);
+
+	reserved_size = get_reserved_size(); /* Currently 4306 bytes */
+	memset(res_bitmap, 0, sizeof(res_bitmap));
 
 	/*
 	 * Depending on the state of flash, we might have to do this three
 	 * times.
 	 */
+
 	for (tries = 0; tries < 3; tries++) {
 		memset(&controller_at, 0, sizeof(controller_at));
-		memset(nvmem_cache_base(NVMEM_TPM), 0,
-		       nvmem_user_sizes[NVMEM_TPM]);
-		memset(res_bitmap, 0, sizeof(res_bitmap));
+		/* Preserve loaded reserved objects */
+		memset(nvmem_cache_base(NVMEM_TPM) + reserved_size, 0,
+		       nvmem_user_sizes[NVMEM_TPM] - reserved_size);
 		next_evict_obj_base = 0;
+		total_var_space = 0;
 
 		while ((rv = get_next_object(&controller_at, nc, 0)) ==
 		       EC_SUCCESS) {
@@ -2321,7 +2375,7 @@ static enum ec_error_list retrieve_nvmem_contents(void)
 	return rv;
 }
 
-enum ec_error_list new_nvmem_init(void)
+static enum ec_error_list new_nvmem_init(void)
 {
 	enum ec_error_list rv;
 	timestamp_t start, init;
@@ -2336,8 +2390,6 @@ enum ec_error_list new_nvmem_init(void)
 	/* Initialize NVMEM indices. */
 	NvEarlyStageFindHandle(0);
 
-	lock_mutex(__LINE__);
-
 	init_page_list();
 
 	start = get_time();
@@ -2346,11 +2398,19 @@ enum ec_error_list new_nvmem_init(void)
 
 	init = get_time();
 
-	unlock_mutex(__LINE__);
-
 	init_in_progress = 0;
 
 	CPRINTS("init took %d", (uint32_t)(init.val - start.val));
+
+	return rv;
+}
+
+enum ec_error_list new_nvmem_init_locked(void) {
+	enum ec_error_list rv;
+
+	lock_mutex(__LINE__);
+	rv = new_nvmem_init();
+	unlock_mutex(__LINE__);
 
 	return rv;
 }
@@ -2852,7 +2912,7 @@ static enum ec_error_list save_container(struct nn_container *nc)
 	return save_object(nc);
 }
 
-static int setvar_(const uint8_t *key, uint8_t key_len, const uint8_t *val,
+static enum ec_error_list setvar_(const uint8_t *key, uint8_t key_len, const uint8_t *val,
 		   uint8_t val_len)
 {
 	enum ec_error_list rv;
@@ -2957,10 +3017,10 @@ static int setvar_(const uint8_t *key, uint8_t key_len, const uint8_t *val,
 	return rv;
 }
 
-int setvar(const uint8_t *key, uint8_t key_len, const uint8_t *val,
+enum ec_error_list setvar(const uint8_t *key, uint8_t key_len, const uint8_t *val,
 	   uint8_t val_len)
 {
-	int rv;
+	enum ec_error_list rv;
 
 	if (!crypto_enabled())
 		return EC_ERROR_INVAL;
@@ -3102,9 +3162,6 @@ int nvmem_erase_tpm_data_selective(const uint32_t *objs_to_erase)
 	lock_mutex(__LINE__);
 	rv = compact_nvmem();
 	unlock_mutex(__LINE__);
-
-	if (rv == EC_SUCCESS)
-		rv = new_nvmem_init();
 
 	return rv;
 }

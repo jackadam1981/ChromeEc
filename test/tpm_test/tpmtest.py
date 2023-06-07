@@ -28,6 +28,7 @@ import hash_test
 import hkdf_test
 import rsa_test
 import subcmd
+import tpm
 import trng_test
 import upgrade_test
 import u2f_test
@@ -196,12 +197,13 @@ def usage():
 def main():
     """Run TPM tests"""
     try:
-        opts, _ = getopt.getopt(sys.argv[1:], 'dt:T:hs:o:r:e:l:', 'help')
+        opts, _ = getopt.getopt(sys.argv[1:], 'dpt:T:hs:o:r:e:l:', 'help')
     except getopt.GetoptError as err:
         print(str(err))
         usage()
         sys.exit(2)
     debug_needed = False
+    tpm_only = False
     trng_only = False
     trng_output = '/tmp/trng_output'
     trng_sample_bits = 1
@@ -214,6 +216,8 @@ def main():
     for option, arg in opts:
         if option == '-d':
             debug_needed = True
+        elif option == '-p':
+            tpm_only = True
         elif option == '-t':
             trng_only = True
             trng_mode = int(arg)
@@ -234,6 +238,10 @@ def main():
             sys.exit(0)
     try:
         tpm_object = TPM(debug_mode=debug_needed)
+        if tpm_only:
+            tpm.startup_test(tpm_object)
+            sys.exit(0)
+        
         if trng_only:
             trng_test.trng_test(tpm_object, trng_output,
                                 trng_mode, trng_sample_bits)

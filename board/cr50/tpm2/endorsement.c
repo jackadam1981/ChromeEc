@@ -75,6 +75,8 @@ BUILD_ASSERT(sizeof(struct cros_perso_certificate_response_v0) == 8);
 #define CR50_INCLUDE_FALLBACK_CERT
  */
 
+#define CR50_INCLUDE_FALLBACK_CERT
+
 #ifdef CR50_INCLUDE_FALLBACK_CERT
 
 /* This is a fixed seed (and corresponding certificates) for use in a
@@ -280,6 +282,7 @@ static int install_fixed_certs(void)
 
 #endif
 
+#ifndef CR50_INCLUDE_FALLBACK_CERT
 /* Test endorsement CA root. */
 static const uint32_t TEST_ENDORSEMENT_CA_RSA_N[64] = {
 	0xfa3b34ed, 0x3c59ad05, 0x912d6623, 0x83302402,
@@ -371,6 +374,7 @@ static int validate_cert(
 				    &TEST_ENDORSEMENT_CA_RSA_PUB) ==
 		DCRYPTO_OK);
 }
+#endif
 
 static int store_cert(enum cros_perso_component_type component_type,
 		const uint8_t *cert, size_t cert_len)
@@ -501,6 +505,7 @@ static void endorsement_complete(void)
 	CPRINTF("%s(): SUCCESS\n", __func__);
 }
 
+#ifndef CR50_INCLUDE_FALLBACK_CERT
 static int handle_cert(
 	const struct cros_perso_response_component_info_v0 *cert_info,
 	const struct cros_perso_certificate_response_v0 *cert,
@@ -521,7 +526,7 @@ static int handle_cert(
 
 	return 1;
 }
-
+#endif
 enum manufacturing_status tpm_endorse(void)
 {
 	struct ro_cert_response {
@@ -542,25 +547,37 @@ enum manufacturing_status tpm_endorse(void)
 	 *   last 32 bytes is hmac over (2048 - 32) preceding bytes.
 	 *   using hmac(eps, "RSA", 4) as key
 	 */
-	const uint8_t *p = (const uint8_t *) RO_CERTS_START_ADDR;
-	const uint32_t *c = (const uint32_t *) RO_CERTS_START_ADDR;
-	const struct ro_cert *rsa_cert;
-	const struct ro_cert *ecc_cert;
+
 	enum manufacturing_status result;
 	uint8_t eps[PRIMARY_SEED_SIZE];
 
+	const uint8_t *p = (const uint8_t *) RO_CERTS_START_ADDR;
+#ifndef CR50_INCLUDE_FALLBACK_CERT
+	const uint32_t *c = (const uint32_t *) RO_CERTS_START_ADDR;
+	const struct ro_cert *rsa_cert;
+	const struct ro_cert *ecc_cert;
+	struct ro_cert rsa, ecc;
+	struct cros_perso_response_component_info_v0 ecc_info, rsa_info;
+#endif
 	struct hmac_sha256_ctx hmac;
 
 	flash_cert_region_enable();
-
-	/* First boot, certs not yet installed. */
-	if (*c == 0xFFFFFFFF)
-		return mnf_no_certs;
 
 	if (!get_decrypted_eps(eps)) {
 		CPRINTF("%s(): failed to read eps\n", __func__);
 		return mnf_eps_decr;
 	}
+
+	/* Copy EPS from INFO1 to flash data region. */
+	if (!store_eps(eps)) {
+		CPRINTF("%s(): eps storage failed\n", __func__);
+		return mnf_store;
+	}
+
+#ifndef CR50_INCLUDE_FALLBACK_CERT
+	/* First boot, certs not yet installed. */
+	if (*c == 0xFFFFFFFF)
+		return mnf_no_certs;
 
 	/* Unpack rsa cert struct. */
 	rsa_cert = (const struct ro_cert *) p;
@@ -587,7 +604,7 @@ enum manufacturing_status tpm_endorse(void)
 		CROS_PERSO_COMPONENT_TYPE_P256_CERT) {
 		return mnf_bad_ecc_type;
 	}
-
+#endif
 	do {
 		/* Check cert region hmac.
 		 *
@@ -649,6 +666,7 @@ enum manufacturing_status tpm_endorse(void)
 #endif
 		}
 
+#ifndef CR50_INCLUDE_FALLBACK_CERT
 		if (!handle_cert(
 				&rsa_cert->cert_info,
 				(struct cros_perso_certificate_response_v0 *)
@@ -668,13 +686,7 @@ enum manufacturing_status tpm_endorse(void)
 			break;
 		}
 		CPRINTF("%s: ECC cert install success\n", __func__);
-
-		/* Copy EPS from INFO1 to flash data region. */
-		if (!store_eps(eps)) {
-			CPRINTF("%s(): eps storage failed\n", __func__);
-			result = mnf_store;
-			break;
-		}
+#endif
 
 		/* Mark as endorsed. */
 		endorsement_complete();

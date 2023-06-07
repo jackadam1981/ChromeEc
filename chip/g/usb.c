@@ -18,6 +18,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "usb_api.h"
 #include "usb_descriptor.h"
 #include "usb_hw.h"
 #include "watchdog.h"
@@ -1459,6 +1460,9 @@ void usb_init(void)
 	if (!resume)
 		usb_connect();
 #endif
+#ifdef H1_RED_BOARD_DEEP_SLEEP
+	usb_release(); /* auto deep sleep */
+#endif 
 }
 #ifndef CONFIG_USB_INHIBIT_INIT
 DECLARE_HOOK(HOOK_INIT, usb_init, HOOK_PRIO_DEFAULT - 2);

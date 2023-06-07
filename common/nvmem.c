@@ -314,7 +314,7 @@ int nvmem_init(void)
 	    (nvmem_find_partition() == EC_SUCCESS))
 		ret = new_nvmem_migrate(nvmem_act_partition);
 	else
-		ret = new_nvmem_init();
+		ret = new_nvmem_init_locked();
 
 	nvmem_error_state = ret;
 
