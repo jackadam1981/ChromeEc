@@ -238,6 +238,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24530e00_47cbf21c",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-07T17:14:01Z",
+      "side": 1,
+      "message": "clang format is quite powerful, but ya, not sure if we can have different flavors\nof formatting rules based on directory structure. i just saw a CQ failure due\nto `zephyr/test/rex/src/usb_pd_policy.c:123:51: warning: code should be clang-formatted [-Wclang-format-violations]` for another patch, so we\u0027re getting there.",
+      "parentUuid": "53f2369d_b3a22d7f",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dca91c12_89104d82",
