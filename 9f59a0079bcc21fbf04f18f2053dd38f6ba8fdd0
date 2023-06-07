@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34386715_3e7334e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-07T18:59:19Z",
+      "side": 1,
+      "message": "Can you add a git footer called [`Force-Relevant-Builds: all`](http://shortn/_ONML4K22md)? That will force the full CQ, which I *think* will now run the fingerprint Tast tests. (I don\u0027t think there\u0027s anything that depends on this string, but would be good to double-check. Once the build runs you can check to see if the Tast tests were actually triggered. If not, don\u0027t worry about adding the footer.)",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "9f59a0079bcc21fbf04f18f2053dd38f6ba8fdd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
