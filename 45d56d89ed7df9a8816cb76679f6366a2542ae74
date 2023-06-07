@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15e921a6_55a3b045",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-07T09:38:13Z",
+      "side": 1,
+      "message": "Ok but the coding style (we refer to the kernel one right?) says uppercase (https://www.kernel.org/doc/html/v4.10/process/coding-style.html#macros-enums-and-rtl) and in the EC code base I can\u0027t find a single istance of enums in lowercase (`grep -A3 \u0027enum {\u0027). Is there something special about these ones?",
+      "parentUuid": "0f157759_4c2f6e24",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0321699_1a7fa3f6",
         "filename": "driver/retimer/kb8010.c",
         "patchSetId": 13
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "my take on this is that we should defer to clang-format both\nfor validating \"compliance\" and reformatting code when needed.\n\nlet\u0027s update clang-format rules where possible to void spending\ntoo much time on manually tweaking code for formatting.",
       "parentUuid": "2a63d78e_ec88fdfd",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f2369d_b3a22d7f",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-07T09:38:13Z",
+      "side": 1,
+      "message": "Thanks! Yep a clang config update would be cool,wondering if it supports such case though.",
+      "parentUuid": "356a1a88_d444186b",
       "range": {
         "startLine": 86,
         "startChar": 0,
