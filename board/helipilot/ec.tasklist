@@ -6,6 +6,7 @@
 /*
  * See CONFIG_TASK_LIST in config.h for details.
  */
+
 #undef HOOKS_TASK_STACK_SIZE
 #define HOOKS_TASK_STACK_SIZE 2048
 
