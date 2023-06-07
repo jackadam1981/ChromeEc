@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6c876e_156f62c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-07T16:59:59Z",
+      "side": 1,
+      "message": "Note, this cannot be merged until all the unit tests are passing. Otherwise helipilot will block builds!",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "d1b1456f50e0eb6d42dba562b3e5157587edb6cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
