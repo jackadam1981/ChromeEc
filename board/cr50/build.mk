@@ -38,6 +38,11 @@ ifneq ($(CR50_USE_FIXED_CERT),)
 CPPFLAGS += -DCR50_USE_FIXED_CERT=1
 endif
 
+# Enable deep sleep by default on H1 red board
+ifneq ($(H1_RED_BOARD_DEEP_SLEEP),)
+CPPFLAGS += -DH1_RED_BOARD_DEEP_SLEEP=1
+endif
+
 ifneq ($(CRYPTO_TEST),)
 CPPFLAGS += -DCRYPTO_TEST_SETUP
 
