@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "084f96c5_4c775749",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-06-07T21:06:08Z",
+      "side": 1,
+      "message": "changed to complete.",
+      "parentUuid": "87de5197_f9453c72",
+      "range": {
+        "startLine": 235,
+        "startChar": 13,
+        "endLine": 235,
+        "endChar": 21
+      },
+      "revId": "8cd39be4f07bfe42e9cb6834ae08f609e9b1b5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6e926ff_e35d579f",
