@@ -101,6 +101,7 @@ PRINTF_CALLED_REGEX = re.compile(r"printf called\r\n")
 
 BLOONCHIPPER = "bloonchipper"
 DARTMONKEY = "dartmonkey"
+HELIPILOT = "helipilot"
 
 JTRACE = "jtrace"
 SERVO_MICRO = "servo_micro"
@@ -428,9 +429,20 @@ DARTMONKEY_CONFIG = BoardConfig(
     },
 )
 
+HELIPILOT_CONFIG = BoardConfig(
+    name=HELIPILOT,
+    servo_uart_name="raw_fpmcu_console_uart_pty",
+    servo_power_enable="fpmcu_pp3300",
+    rollback_region0_regex=DATA_ACCESS_VIOLATION_8020000_REGEX,
+    rollback_region1_regex=DATA_ACCESS_VIOLATION_8040000_REGEX,
+    mpu_regex=DATA_ACCESS_VIOLATION_20000000_REGEX,
+    variants={},
+)
+
 BOARD_CONFIGS = {
     "bloonchipper": BLOONCHIPPER_CONFIG,
     "dartmonkey": DARTMONKEY_CONFIG,
+    "helipilot": HELIPILOT_CONFIG,
 }
 
 
