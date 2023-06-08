@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d24545_7c83d3b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-06-08T23:11:38Z",
+      "side": 1,
+      "message": "nit: fix the \"ot\" -\u003e \"to\" typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "f990c8a4839ce9b7888a247660cc80ac476d1e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5fd37bb9_7c08c2a5",
