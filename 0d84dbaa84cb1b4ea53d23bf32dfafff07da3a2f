@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c07161_b8799c22",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-08T19:10:56Z",
+      "side": 1,
+      "message": "Can you remove this else and move timeout \u003d NOMINAL_SAMPLE_TIME_TICKS out?",
+      "range": {
+        "startLine": 478,
+        "startChar": 4,
+        "endLine": 478,
+        "endChar": 8
+      },
+      "revId": "0d84dbaa84cb1b4ea53d23bf32dfafff07da3a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ae9117_8979a867",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-08T19:10:56Z",
+      "side": 1,
+      "message": "nit: Maybe you can also fix the comment: \"whose destinations aren\u0027t\".",
+      "range": {
+        "startLine": 479,
+        "startChar": 37,
+        "endLine": 479,
+        "endChar": 54
+      },
+      "revId": "0d84dbaa84cb1b4ea53d23bf32dfafff07da3a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
