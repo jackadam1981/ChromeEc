@@ -22,6 +22,30 @@
       },
       "revId": "33f8f9e2f202fb4f9d747ac3b2bfdc75b5ca9a4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd9417a4_a15583e2",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-08T19:36:56Z",
+      "side": 1,
+      "message": "I initially using `disable-next` but due to the line wrapping the infringing line is actually two lines later and the warning was still raised. It didn\u0027t seem worth refactoring into separate lines but on second look that\u0027s probably better.",
+      "parentUuid": "c399ae0d_e9233c72",
+      "range": {
+        "startLine": 814,
+        "startChar": 12,
+        "endLine": 814,
+        "endChar": 49
+      },
+      "revId": "33f8f9e2f202fb4f9d747ac3b2bfdc75b5ca9a4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
