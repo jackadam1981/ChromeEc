@@ -1,0 +1,16 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <cros/cbi_flash.dtsi>
+
+&cbi_flash {
+	/*
+	 * CBI size is 0x1000 bytes, the CBI portion lies at the end of RO
+	 * section. RO section size is 0x80000 bytes. The offset of CBI portion
+	 * is RO size subtracted by CBI size.
+	 */
+	offset = < 0x7F000 >;
+	size = < 0x1000 >;
+};
