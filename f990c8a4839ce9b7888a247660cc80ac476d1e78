@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34bd75ff_d2e75a4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-06-08T22:11:36Z",
+      "side": 1,
+      "message": "Done. Are the upload hooks set up for this branch? I got a lot of complaints about tabs from repo upload.\n\nLooks like this created a new change here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4600680",
+      "parentUuid": "5fd37bb9_7c08c2a5",
+      "revId": "f990c8a4839ce9b7888a247660cc80ac476d1e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c299d88_5beac1c0",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-06-08T21:46:59Z",
       "side": 1,
       "message": "I think there are some alignment risks here. Maybe `response` can be `struct ti50_stats response[4] \u003d { 0 }`. Thoughts?",
+      "range": {
+        "startLine": 4055,
+        "startChar": 27,
+        "endLine": 4055,
+        "endChar": 58
+      },
+      "revId": "f990c8a4839ce9b7888a247660cc80ac476d1e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03f6d40_0d561525",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4055,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-06-08T22:11:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c299d88_5beac1c0",
       "range": {
         "startLine": 4055,
         "startChar": 27,
