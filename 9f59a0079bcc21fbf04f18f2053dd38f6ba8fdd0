@@ -46,6 +46,30 @@
       },
       "revId": "9f59a0079bcc21fbf04f18f2053dd38f6ba8fdd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70d98b6b_8e216d9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-06-08T22:18:53Z",
+      "side": 1,
+      "message": "\u003e That will force the full CQ\n\nI\u0027m not sure if the built images will contain this change. The script is installed by [`ec-utils-test`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/chromeos-base/ec-utils-test/ec-utils-test-9999.ebuild;l\u003d10-11;drc\u003d5901be6b2ce14c15a3fa414a38652e17d8cdce89) package which is upreved by PuPR \n\nIIRC it was changed this year after breaking tests with bad changes in `flash_fp_mcu`",
+      "parentUuid": "bdaad378_ebea2e59",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "9f59a0079bcc21fbf04f18f2053dd38f6ba8fdd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
