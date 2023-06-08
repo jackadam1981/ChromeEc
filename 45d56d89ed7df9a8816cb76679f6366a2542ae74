@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1831ccf6_8f1dd60f",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-08T01:07:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11c98823_a13093a6",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0321699_1a7fa3f6",
@@ -382,6 +406,30 @@
       "side": 1,
       "message": "@fabio, the vendor has not been very forthcoming with \"resolving\"\nmagic numbers. we\u0027re still working on finding a mutually agreeable\nlevel of detail/documentation for this sort of thing.",
       "parentUuid": "e2a529ec_e1d18445",
+      "range": {
+        "startLine": 141,
+        "startChar": 6,
+        "endLine": 141,
+        "endChar": 10
+      },
+      "revId": "45d56d89ed7df9a8816cb76679f6366a2542ae74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56666197_388862e2",
+        "filename": "driver/retimer/kb8010.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-08T01:07:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1ca01f53_70e1acfc",
       "range": {
         "startLine": 141,
         "startChar": 6,

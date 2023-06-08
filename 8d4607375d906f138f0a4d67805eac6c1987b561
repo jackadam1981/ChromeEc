@@ -16,6 +16,24 @@
       "message": "It (retimer_rst_gpio) should be \u0027reset_pin\u0027",
       "revId": "8d4607375d906f138f0a4d67805eac6c1987b561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e11a8fe_297b1c02",
+        "filename": "zephyr/shim/include/usbc/kb8010_usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-08T01:07:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7cbcc70_7dc2542c",
+      "revId": "8d4607375d906f138f0a4d67805eac6c1987b561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
