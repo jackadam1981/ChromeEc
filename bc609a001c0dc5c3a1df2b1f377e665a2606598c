@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baafd8de_f109e896",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-08T20:05:29Z",
+      "side": 1,
+      "message": "I haven\u0027t been paying attention to the details of `helipilot` memory layout. Are these addresses still correct?",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 51
+      },
+      "revId": "bc609a001c0dc5c3a1df2b1f377e665a2606598c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
