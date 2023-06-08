@@ -22,6 +22,30 @@
       },
       "revId": "bc609a001c0dc5c3a1df2b1f377e665a2606598c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a808df78_cd566843",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-06-08T21:52:08Z",
+      "side": 1,
+      "message": "Not familiar with these address specifically, but the rollback regions in helipilot are defined consistently with bloonchipper as:\n\n#define CONFIG_ROLLBACK_OFF (CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE)\n#define CONFIG_ROLLBACK_SIZE (128 * 1024 * 2) /* 2 blocks of 128KB each */\n\nwhere CONFIG_RO_MEM_OFF is 0 and CONFIG_RO_SIZE is (128 * 1024), putting the rollback flash addresses at 20000 and 40000. If the 8000000 offset on top of that is expected in the context of a data access violation, think we are good here. Can anyone confirm or do I need to do more digging?",
+      "parentUuid": "baafd8de_f109e896",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 51
+      },
+      "revId": "bc609a001c0dc5c3a1df2b1f377e665a2606598c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
