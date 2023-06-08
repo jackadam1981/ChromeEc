@@ -16,6 +16,24 @@
       "message": "Can we add a `TODO(b/286119221): refactor FPMCU code so that functions in this file don\u0027t rely on global state.`?",
       "revId": "8fa5d192c881dedd8e1520b0ac9bdc3fb223f482",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f0bdee2_680187cb",
+        "filename": "common/fpsensor/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 49
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-06-08T04:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "680cf57d_c175afe1",
+      "revId": "8fa5d192c881dedd8e1520b0ac9bdc3fb223f482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
