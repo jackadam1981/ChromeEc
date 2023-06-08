@@ -16,6 +16,46 @@
       "message": "Need to refactor \"erase\" to \"erase size\" in next revision",
       "revId": "2dd72a2178da8244eaea8c9a5e9c7c77b2ee3a5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3de1d04a_57cb7f68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-08T19:42:08Z",
+      "side": 1,
+      "message": "Remove the Myst-specific comments. It is general for CBI in flash, as the CBI section should occupy minimally one erase block.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "2dd72a2178da8244eaea8c9a5e9c7c77b2ee3a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a5e44ff_c404f9c7",
+        "filename": "zephyr/program/myst/myst/cbi.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-08T19:42:08Z",
+      "side": 1,
+      "message": "Remove this file?",
+      "revId": "2dd72a2178da8244eaea8c9a5e9c7c77b2ee3a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
