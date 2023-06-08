@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5beba950_a3f34845",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-08T22:09:23Z",
+      "side": 1,
+      "message": "Yes, this is what I was thinking, although it would be nice to get rid of wrapping the files in `#if defined(HAVE_PRIVATE)` if possible and just build either the private version or public version depending on the build config.\n\nDoes it work if you add something like this in the `build.mk`?\n\n```\nall-obj-rw+\u003d$(libfp_cur_dir)fpc_sensor_pal.o\n\nifeq ($(HAVE_PRIVATE),y)\nall-obj-rw+\u003d$(libfp_cur_dir)fpc_private.o \nelse\nall-obj-rw+\u003d$(libfp_cur_dir)fpc_stubs.o\nendif\n```\n\nThen you could just add some guards in the source files to make sure the file is not accidentally included in the wrong build:\n\n```\n#ifndef HAVE_PRIVATE\n#error This file should only be included in the private build\n#endif\n```\n\n(and the opposite in the stubs file that should only be in the public build).",
+      "parentUuid": "803f7c39_f9e921a2",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "6cdd11a1f598616e0c5991445416014776e311a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d98c95e0_d9d53883",
         "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
         "patchSetId": 3
