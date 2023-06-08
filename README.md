@@ -309,6 +309,17 @@ This turns on the following flags:
 *   `GBB_FLAG_DISABLE_FW_ROLLBACK_CHECK`
 *   `GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC`
 
+
+Alternatively, if the OS cannot be accessed, the same flag can be set over a servo with:
+
+```bash
+$ sudo flashrom -p raiden_debug_spi:target=AP -r -i GBB:/tmp/gbb.bin
+$ futility gbb -s --flags=0x239 /tmp/gbb.bin /tmp/gbb2.bin
+$ sudo flashrom -p raiden_debug_spi:target=AP -w -i GBB:/tmp/gbb2.bin
+```
+
+NOTE: the last write takes few minutes to complete.
+
 The `GBB` (Google Binary Block) flags are defined in the
 [vboot_reference source](https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/main/firmware/2lib/include/2struct.h).
 A varying subset of these flags are implemented and/or relevant for any
