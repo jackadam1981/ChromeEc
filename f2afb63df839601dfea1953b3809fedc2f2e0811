@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4914af64_58479db8",
+        "filename": "board/helipilot/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-08T20:02:26Z",
+      "side": 1,
+      "message": "FYI, there have been some other changes with tests (adding new ones and renaming as part of the fingerprint auth changes), so double-check `main`. I\u0027ll try to remember to mention `helipilot` for new changes now that it\u0027s in the build.",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "f2afb63df839601dfea1953b3809fedc2f2e0811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
