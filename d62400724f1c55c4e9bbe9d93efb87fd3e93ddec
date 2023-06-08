@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b633ef6b_2d31ac2d",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2023-06-08T16:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "366de8a7_046073d2",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dc08192_5d870c96",
@@ -106,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef4440a_5ea41d2d",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2023-06-08T16:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04cb11fd_d5412b0f",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3ecd878_bed1ea30",
@@ -137,6 +173,24 @@
       "side": 1,
       "message": "On my side (ST Nucleo board with ICM42607/42608) I2C value is 0xff when incorrect I2C status or I2C stuck status. And about wait up to 1ms is need for ramp time not for read who am i.",
       "parentUuid": "f3ecd878_bed1ea30",
+      "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a835a975_362e097d",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2023-06-08T16:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2078d55_f7db0356",
       "revId": "d62400724f1c55c4e9bbe9d93efb87fd3e93ddec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
