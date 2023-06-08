@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fd37bb9_7c08c2a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-08T21:53:01Z",
+      "side": 1,
+      "message": "Hi Brian, without commenting on the patch, may I suggest that you make changes in the gsc_utils branch (which is now mapped into src/platform/gsc-utils in both cros and ti50 manifests)",
+      "revId": "f990c8a4839ce9b7888a247660cc80ac476d1e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c299d88_5beac1c0",
