@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b94bbd5f_3c40d067",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4036,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-06-08T22:36:25Z",
+      "side": 1,
+      "message": "This is probably just 1 bit of information. Can we change this to a general status uint32 with 1 bit for rddkeepalive, so we can add more information to it later?",
+      "range": {
+        "startLine": 4036,
+        "startChar": 11,
+        "endLine": 4036,
+        "endChar": 24
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
