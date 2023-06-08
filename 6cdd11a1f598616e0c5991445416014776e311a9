@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "803f7c39_f9e921a2",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-08T14:44:20Z",
+      "side": 1,
+      "message": "I just pushed an update with the `fpc_stubs.c` approach. Let me know what you think and if you\u0027re happy with it I\u0027ll apply the same for the bep version in go/crvc/4558585/4",
+      "parentUuid": "121c2703_202ae69e",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "6cdd11a1f598616e0c5991445416014776e311a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d98c95e0_d9d53883",
         "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-24T22:34:00Z",
       "side": 1,
       "message": "These should probably return error in the `!HAVE_PRIVATE` case?",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 1
+      },
+      "revId": "6cdd11a1f598616e0c5991445416014776e311a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b3e55df_3c7e9b51",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-08T14:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d98c95e0_d9d53883",
       "range": {
         "startLine": 303,
         "startChar": 0,
