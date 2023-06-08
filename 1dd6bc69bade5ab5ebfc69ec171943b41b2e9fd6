@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ab62c12_c4750258",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-06-08T23:12:17Z",
+      "side": 1,
+      "message": "typo: \"ot\" -\u003e \"to\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b94bbd5f_3c40d067",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
