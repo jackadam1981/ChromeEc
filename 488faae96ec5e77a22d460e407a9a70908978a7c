@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79bd8367_6ec4a66a",
+        "filename": "common/fpsensor/fpsensor_state_without_driver_info.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-06-08T04:18:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c632a6fc_9be0a4c4",
+      "revId": "488faae96ec5e77a22d460e407a9a70908978a7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce2af806_d185f68a",
@@ -66,6 +84,30 @@
       "writtenOn": "2023-06-07T22:32:31Z",
       "side": 1,
       "message": "Is this needed as part of this change or should it be moved to a later change?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "488faae96ec5e77a22d460e407a9a70908978a7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b40a7cf_757e7088",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-06-08T04:18:40Z",
+      "side": 1,
+      "message": "It will be required if we build a fp test that is linked with a file that used `CPRINTS`, but HAS_TASK_FPSENSOR is empty.",
+      "parentUuid": "ce2af806_d185f68a",
       "range": {
         "startLine": 37,
         "startChar": 1,
