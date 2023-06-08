@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10baf64f_7da26b44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-08T19:24:06Z",
+      "side": 1,
+      "message": "IIUC, the native type of enum is int. So, it can be negative.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "a2dcb650f2af662a48145af3b106139cd4f77f26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6580925f_82d88b13",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-08T19:24:06Z",
+      "side": 1,
+      "message": "nit: I think this had better be inside the if statement.",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 4
+      },
+      "revId": "a2dcb650f2af662a48145af3b106139cd4f77f26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
