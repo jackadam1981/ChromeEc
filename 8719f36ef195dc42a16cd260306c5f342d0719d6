@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a646546_8f6ddec8",
+        "filename": "zephyr/program/ovis/keyboard.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-09T16:20:08Z",
+      "side": 1,
+      "message": "delete the whole file? It\u0027s unreferenced with this. That\u0027d get rid of the keyboard backlight as well.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "8719f36ef195dc42a16cd260306c5f342d0719d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db4bf240_4ab11fcb",
         "filename": "zephyr/program/ovis/keyboard.dtsi",
         "patchSetId": 3
@@ -42,6 +65,76 @@
         "startChar": 1,
         "endLine": 84,
         "endChar": 17
+      },
+      "revId": "8719f36ef195dc42a16cd260306c5f342d0719d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce217e1_f0e2ab02",
+        "filename": "zephyr/program/ovis/ovis.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-09T16:20:08Z",
+      "side": 1,
+      "message": "Just delete the whole node, should be disabled by default. If it fails the build we can look into why.",
+      "parentUuid": "1f948f0d_7e24dc9f",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "8719f36ef195dc42a16cd260306c5f342d0719d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d18027_28708d0b",
+        "filename": "zephyr/program/ovis/program.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-09T16:20:08Z",
+      "side": 1,
+      "message": "this should not be necessary if you delete the right node, check the definition: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig.keyboard;l\u003d10;drc\u003d95d4954a93e9d19f6b13caab240c7f5855adca17",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 29
+      },
+      "revId": "8719f36ef195dc42a16cd260306c5f342d0719d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5570906b_be528a07",
+        "filename": "zephyr/program/ovis/program.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-09T16:20:08Z",
+      "side": 1,
+      "message": "this should go automatically if you have `CONFIG_PLATFORM_EC_KEYBOARD\u003dn`",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 33
       },
       "revId": "8719f36ef195dc42a16cd260306c5f342d0719d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
