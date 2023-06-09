@@ -93,6 +93,11 @@ struct tcpci_partner_data {
 	 * respond to VCONN_Swap with Not_Supported.
 	 */
 	bool vconn_supported;
+	/**
+	 * Whether this partner rejects VCONN_Swap. If true, the partner will
+	 * respond to VCONN_Swap with Reject.
+	 */
+	bool vconn_reject;
 	/** Resistor set at the CC1 line of partner emulator */
 	enum tcpc_cc_voltage_status cc1;
 	/** Resistor set at the CC2 line of partner emulator */
@@ -390,6 +395,16 @@ void tcpci_partner_set_drs_support(struct tcpci_partner_data *data,
  */
 void tcpci_partner_set_vconn_support(struct tcpci_partner_data *data,
 				     bool support_vconn);
+
+/**
+ * @brief Set the partner emulator to simulate rejecting the VCONN Swap
+ * message.
+ *
+ * @param data Pointer to USB-C partner emulator
+ * @param reject_vconn true to reject VCONN, false for normal vconn handling.
+ */
+void tcpci_partner_set_vconn_reject(struct tcpci_partner_data *data,
+				    bool reject_vconn);
 
 /**
  * @brief Free message's memory

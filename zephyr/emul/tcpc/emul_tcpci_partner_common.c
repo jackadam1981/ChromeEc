@@ -916,6 +916,12 @@ tcpci_partner_common_vconn_swap_handler(struct tcpci_partner_data *data)
 		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 	}
 
+	if (data->vconn_reject) {
+		tcpci_partner_send_control_msg(data, PD_CTRL_REJECT, 0);
+		tcpci_partner_common_clear_ams_ctrl_msg(data);
+		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+	}
+
 	tcpci_partner_send_control_msg(data, PD_CTRL_ACCEPT, 0);
 
 	if (data->vconn_role == PD_ROLE_VCONN_OFF) {
@@ -1652,6 +1658,7 @@ void tcpci_partner_init(struct tcpci_partner_data *data, enum pd_rev_type rev)
 	data->drs_to_dfp_supported = true;
 	data->drs_to_ufp_supported = true;
 	data->vconn_supported = true;
+	data->vconn_reject = false;
 
 	data->ops.transmit = tcpci_partner_transmit_op;
 	data->ops.rx_consumed = tcpci_partner_rx_consumed_op;
@@ -1680,4 +1687,10 @@ void tcpci_partner_set_vconn_support(struct tcpci_partner_data *data,
 				     bool vconn_supported)
 {
 	data->vconn_supported = vconn_supported;
+}
+
+void tcpci_partner_set_vconn_reject(struct tcpci_partner_data *data,
+				    bool vconn_reject)
+{
+	data->vconn_reject = vconn_reject;
 }

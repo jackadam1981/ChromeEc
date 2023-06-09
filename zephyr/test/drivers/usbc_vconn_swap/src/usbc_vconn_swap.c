@@ -68,6 +68,10 @@ struct usbc_vconn_swap_not_supported_fixture {
 	struct common_fixture common;
 };
 
+struct usbc_vconn_swap_reject_fixture {
+	struct common_fixture common;
+};
+
 static void connect_partner_to_port(const struct emul *tcpc_emul,
 				    const struct emul *charger_emul,
 				    struct tcpci_partner_data *partner_emul,
@@ -132,6 +136,15 @@ static void *usbc_vconn_swap_not_supported_setup(void)
 	return fixture;
 }
 
+static void *usbc_vconn_swap_reject_setup(void)
+{
+	struct usbc_vconn_swap_fixture *fixture = common_setup();
+
+	/* The partner will respond to VCONN_Swap with Reject. */
+	tcpci_partner_set_vconn_reject(&fixture->common.partner, true);
+	return fixture;
+}
+
 static void common_before(struct common_fixture *fixture)
 {
 	/* Set chipset to ON, this will set TCPM to DRP */
@@ -181,6 +194,17 @@ static void usbc_vconn_swap_not_supported_before(void *data)
 	common_before(&outer->common);
 }
 
+static void usbc_vconn_swap_reject_before(void *data)
+{
+	struct usbc_vconn_swap_reject_fixture *outer = data;
+
+	RESET_FAKE(port_discovery_vconn_swap_policy);
+	port_discovery_vconn_swap_policy_fake.custom_fake =
+		port_discovery_vconn_swap_policy_custom;
+
+	common_before(&outer->common);
+}
+
 static void common_after(struct common_fixture *fixture)
 {
 	disconnect_partner_from_port(fixture->tcpci_emul,
@@ -200,6 +224,13 @@ static void usbc_vconn_swap_after(void *data)
 static void usbc_vconn_swap_not_supported_after(void *data)
 {
 	struct usbc_vconn_swap_not_supported_fixture *outer = data;
+
+	common_after(&outer->common);
+}
+
+static void usbc_vconn_swap_reject_after(void *data)
+{
+	struct usbc_vconn_swap_reject_fixture *outer = data;
 
 	common_after(&outer->common);
 }
@@ -263,3 +294,15 @@ ZTEST_F(usbc_vconn_swap_late, test_vconn_swap_before_discovery)
 ZTEST_SUITE(usbc_vconn_swap_late, drivers_predicate_post_main,
 	    usbc_vconn_swap_setup, usbc_vconn_swap_late_before,
 	    usbc_vconn_swap_after, NULL);
+
+ZTEST_F(usbc_vconn_swap_reject, test_vconn_swap_force_vconn)
+{
+	struct ec_response_typec_status status =
+		host_cmd_typec_status(TEST_PORT);
+
+	zassert_equal(status.vconn_role, PD_ROLE_VCONN_OFF);
+}
+
+ZTEST_SUITE(usbc_vconn_swap_reject, drivers_predicate_post_main,
+	    usbc_vconn_swap_reject_setup, usbc_vconn_swap_reject_before,
+	    usbc_vconn_swap_reject_after, NULL);
