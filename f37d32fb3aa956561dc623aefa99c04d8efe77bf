@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34066162_9b203fdd",
+        "filename": "zephyr/test/drivers/usbc_vconn_swap/src/usbc_vconn_swap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-09T15:37:30Z",
+      "side": 1,
+      "message": "This might benefit from a comment that it\u0027s the same as the real one.",
+      "revId": "f37d32fb3aa956561dc623aefa99c04d8efe77bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
