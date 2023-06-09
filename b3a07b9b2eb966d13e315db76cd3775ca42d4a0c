@@ -22,6 +22,30 @@
       },
       "revId": "b3a07b9b2eb966d13e315db76cd3775ca42d4a0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "031ef1bf_66cb4f05",
+        "filename": "board/hatch_fp/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-09T20:43:35Z",
+      "side": 1,
+      "message": "No, we don\u0027t need to run it to verify any fingerprint functionality. Originally we were adding any tests that compiled and passed on the fingerprint MCUs without paying much attention to what the test did.\n\nThe question came up whether this test actually is needed/useful at all: http://b/286428008.",
+      "parentUuid": "8c224dad_e3ed9a0d",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "b3a07b9b2eb966d13e315db76cd3775ca42d4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
