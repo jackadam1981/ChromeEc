@@ -22,6 +22,30 @@
       },
       "revId": "f2afb63df839601dfea1953b3809fedc2f2e0811",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "069d7b0d_5cddb946",
+        "filename": "board/helipilot/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-09T00:18:50Z",
+      "side": 1,
+      "message": "Thanks for the heads up. While going through this round I noticed [this change](go/crvc/4337179) too and have it on my list of things to check.",
+      "parentUuid": "4914af64_58479db8",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "f2afb63df839601dfea1953b3809fedc2f2e0811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
