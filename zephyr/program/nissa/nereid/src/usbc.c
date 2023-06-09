@@ -65,10 +65,12 @@ static void board_chargers_suspend(struct ap_power_ev_callback *const cb,
 	case AP_POWER_RESUME:
 		fn = sm5803_disable_low_power_mode;
 		break;
+	/* LCOV_EXCL_START can only happen if init doesn't match these cases */
 	default:
 		LOG_WRN("%s: power event %d is not recognized", __func__,
 			data.event);
 		return;
+		/* LCOV_EXCL_STOP */
 	}
 
 	fn(CHARGER_PRIMARY);
