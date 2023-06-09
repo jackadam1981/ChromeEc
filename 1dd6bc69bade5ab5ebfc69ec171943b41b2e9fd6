@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd683f5f_0603db58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-06-09T20:15:53Z",
+      "side": 1,
+      "message": "Double checked and it\u0027s not.",
+      "parentUuid": "6a9f6a61_d3717014",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "735598df_d91a2523",
@@ -60,6 +84,30 @@
       "writtenOn": "2023-06-09T01:39:43Z",
       "side": 1,
       "message": "can you format this so that the output is aligned, also, checkout the `-M` command line parameter of `gsctool`, adding it makes it easier to script the output. Check out \u0027gsctool -J\u0027 as an example.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b58c9c_621093ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-06-09T20:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "735598df_d91a2523",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -116,6 +164,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27afaaa0_ff20cce2",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4036,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-06-09T20:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "179a4160_96d45f96",
+      "range": {
+        "startLine": 4031,
+        "startChar": 1,
+        "endLine": 4036,
+        "endChar": 25
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "434e9c82_ae762d09",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4036,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-06-09T20:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b94bbd5f_3c40d067",
+      "range": {
+        "startLine": 4036,
+        "startChar": 11,
+        "endLine": 4036,
+        "endChar": 24
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dab50efa_4231aa19",
@@ -129,6 +225,30 @@
       "writtenOn": "2023-06-09T01:39:43Z",
       "side": 1,
       "message": "good point, this structure could change, how about adding version number and size fields in the header, u1t6 each would suffice.",
+      "range": {
+        "startLine": 4039,
+        "startChar": 4,
+        "endLine": 4039,
+        "endChar": 63
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37cbfce_71001551",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4039,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-06-09T20:15:53Z",
+      "side": 1,
+      "message": "I added it as a u32. Rust zerocopy doesn\u0027t like that a u16 adds padding and fails to generate serialization.",
+      "parentUuid": "dab50efa_4231aa19",
       "range": {
         "startLine": 4039,
         "startChar": 4,
@@ -164,6 +284,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77907320_42c3003f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4040,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-06-09T20:15:53Z",
+      "side": 1,
+      "message": "We could change the amount we overallocate as the struct changes. Jett suggested making it a `ti50_stats` array to ensure alignment is correct.",
+      "parentUuid": "1d635c46_4b9e659d",
+      "range": {
+        "startLine": 4040,
+        "startChar": 1,
+        "endLine": 4040,
+        "endChar": 36
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05dc1803_25635967",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
@@ -175,6 +319,30 @@
       "writtenOn": "2023-06-09T01:39:43Z",
       "side": 1,
       "message": "isn\u0027t `response` already a pointer to `ti50_stats`?",
+      "range": {
+        "startLine": 4055,
+        "startChar": 1,
+        "endLine": 4055,
+        "endChar": 26
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee757211_882b36b3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4055,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-06-09T20:15:53Z",
+      "side": 1,
+      "message": "That was left over from when it was declared as a uint8_t array.",
+      "parentUuid": "05dc1803_25635967",
       "range": {
         "startLine": 4055,
         "startChar": 1,
