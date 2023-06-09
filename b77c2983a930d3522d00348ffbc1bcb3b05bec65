@@ -70,6 +70,30 @@
       },
       "revId": "b77c2983a930d3522d00348ffbc1bcb3b05bec65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d9d9d64_233124fb",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-06-09T21:46:17Z",
+      "side": 1,
+      "message": "That\u0027s the tension in this CL-- either we have wasted space because fields like the one added here are pretty sparse or we need a version to know which bits in the misc_status value are meaningful. I lean towards just dealing with the wasted, space, but opinions were split. It really boils down to how many \"one more things\" to do expect to add?\n\nBTW, some of the review context disappeared because gerrit created a new review when the branch changed. Here\u0027s the old one: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4598415",
+      "parentUuid": "cb461b3e_3f6a0713",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 18
+      },
+      "revId": "b77c2983a930d3522d00348ffbc1bcb3b05bec65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
