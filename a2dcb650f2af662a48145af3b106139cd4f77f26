@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3e0b746_bee57c2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-09T03:24:38Z",
+      "side": 1,
+      "message": "https://stackoverflow.com/a/366033\n\u003e The choice of type is implementation-defined, but shall be capable of representing the values of all the members of the enumeration.\n\nIf I\u0027m reading that right, the enum constants are int, but the variable type doesn\u0027t have to be.\n\nAdd logging on kinox:\n```\nenum cap_edge cap_edge \u003d -1;\nCPRINTF(\"sizeof(cap_edge) \u003d %zu\\n\", sizeof(cap_edge));\nCPRINTF(\"cap_edge \u003d %d\\n\", cap_edge);\n```\n\nI get:\n```\nsizeof(cap_edge) \u003d 1 \ncap_edge \u003d 255\n```\nso it\u0027s using a uint8_t.",
+      "parentUuid": "10baf64f_7da26b44",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "a2dcb650f2af662a48145af3b106139cd4f77f26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6580925f_82d88b13",
         "filename": "chip/npcx/cec.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-08T19:24:06Z",
       "side": 1,
       "message": "nit: I think this had better be inside the if statement.",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 4
+      },
+      "revId": "a2dcb650f2af662a48145af3b106139cd4f77f26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de2e403e_355e7c2e",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-09T03:24:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6580925f_82d88b13",
       "range": {
         "startLine": 266,
         "startChar": 0,
