@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ab1f320_27130221",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2023-06-09T09:31:35Z",
+      "side": 1,
+      "message": "Reproed this on fizz as well:\n\nenum cap_edge cap_edge \u003d -1;\nif (cap_edge \u003e\u003d 0) {\n    CPRINTF(\"cap_edge is not negative\\n\");\n} else {\n    CPRINTF(\"cap_edge is negative\\n\");\n}\noutput:\ncap_edge is not negative\n\nI think this is fine for now, but it should be fixed a little more later on since it will calculate the send-timing wrong. It shouldn\u0027t use the cap_delay when sending.",
+      "parentUuid": "f3e0b746_bee57c2d",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "a2dcb650f2af662a48145af3b106139cd4f77f26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6580925f_82d88b13",
