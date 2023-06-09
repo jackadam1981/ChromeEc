@@ -26,6 +26,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a9f6a61_d3717014",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-09T01:39:43Z",
+      "side": 1,
+      "message": "`-D` is not necessary when running on a DUT, right? Not a big deal, just checking if this command requires passing the explicit GSC type.",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "735598df_d91a2523",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-09T01:39:43Z",
+      "side": 1,
+      "message": "can you format this so that the output is aligned, also, checkout the `-M` command line parameter of `gsctool`, adding it makes it easier to script the output. Check out \u0027gsctool -J\u0027 as an example.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b94bbd5f_3c40d067",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
@@ -42,6 +88,98 @@
         "startChar": 11,
         "endLine": 4036,
         "endChar": 24
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "179a4160_96d45f96",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4036,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-09T01:39:43Z",
+      "side": 1,
+      "message": "what are these fields? I think data shared between the host and  the GSC should be declared and descirbed more prominently.\n\ngsc-utils now lives along with Ti50 and they could share .h files, etc.",
+      "range": {
+        "startLine": 4031,
+        "startChar": 1,
+        "endLine": 4036,
+        "endChar": 25
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab50efa_4231aa19",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4039,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-09T01:39:43Z",
+      "side": 1,
+      "message": "good point, this structure could change, how about adding version number and size fields in the header, u1t6 each would suffice.",
+      "range": {
+        "startLine": 4039,
+        "startChar": 4,
+        "endLine": 4039,
+        "endChar": 63
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d635c46_4b9e659d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4040,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-09T01:39:43Z",
+      "side": 1,
+      "message": "this is kinda brittle, each time ti50_stats structure size changes this array will add four times more data. Maybe just `sizeof(ti50_stats) + CONST`?\n\nIdeally full response fits into 64 bytes (one USB packet), so maybe limit total size by 64",
+      "range": {
+        "startLine": 4040,
+        "startChar": 1,
+        "endLine": 4040,
+        "endChar": 36
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05dc1803_25635967",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4055,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-09T01:39:43Z",
+      "side": 1,
+      "message": "isn\u0027t `response` already a pointer to `ti50_stats`?",
+      "range": {
+        "startLine": 4055,
+        "startChar": 1,
+        "endLine": 4055,
+        "endChar": 26
       },
       "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
