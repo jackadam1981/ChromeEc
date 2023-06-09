@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9334963c_9a0b3164",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-09T20:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cef5e91_670b2795",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 48
+      },
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40176663_a0ad2c7a",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cdcc592_8ddd7471",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-09T20:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed81e15c_49939a32",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 49
+      },
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b094e8b5_f8350ef0",
@@ -126,6 +174,24 @@
       "side": 1,
       "message": "Unpacking this: Fixed the 5 byte as a separate change, but the 0xFF is to reserve a bit of space if we need it. I adjusted count \u003d sizeof-1 though in this cl to try to make it common. It will probably go into a helper routine next CL since I think there are some other fails.",
       "parentUuid": "b094e8b5_f8350ef0",
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "545e592b_0b75d16d",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-09T20:00:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a56277e0_197b2b44",
       "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +243,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6afc7702_135434a8",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-09T20:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a1c7a78_a0c3b045",
+      "range": {
+        "startLine": 279,
+        "startChar": 4,
+        "endLine": 279,
+        "endChar": 8
+      },
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e64063fc_6a9013df",
@@ -208,6 +298,24 @@
       "side": 1,
       "message": "AFAICT this was hardcoded to 0x0, but I think that was based on a gdb session I did which may have been specific to herobrine. do you have a good sample that I could try against another device that would force it to a Mfg access in a diff location? I used device tree for the other test in this CL but it defaults to 0 for everything I could find.",
       "parentUuid": "e64063fc_6a9013df",
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed3b5fe_4854b97e",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-09T20:00:38Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/dts/bindings/battery/cosmx,ap20cbl-2.yaml;l\u003d17;drc\u003d804f0ac206e449f4fef0473cf28bfe228c094291\n\n^ Example device where they\u0027re using a \"reserved\" register.",
+      "parentUuid": "6a5721b2_020f25f5",
       "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
