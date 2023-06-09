@@ -32,6 +32,12 @@ struct rollback_info rollback_info = {
 	.region_1_offset = 0xE0000,
 	.region_size_bytes = 128 * 1024,
 };
+#elif defined(CHIP_VARIANT_NPCX9M8S)
+struct rollback_info rollback_info = {
+	.region_0_offset = 0x60000,
+	.region_1_offset = 0x80000,
+	.region_size_bytes = 128 * 1024,
+};
 #else
 #error "Rollback info not defined for this chip. Please add it."
 #endif
