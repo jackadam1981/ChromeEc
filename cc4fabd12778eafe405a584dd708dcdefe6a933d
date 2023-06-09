@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f55bdd9e_806260d1",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-09T21:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ff77a66_31fa5e95",
+      "revId": "cc4fabd12778eafe405a584dd708dcdefe6a933d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f75c83e_dfe3a831",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-06-09T20:56:46Z",
       "side": 1,
       "message": "This file has gotten long enough that it\u0027s probably worth commenting that this sets up the partner as initial source and thus initial VCONN source. If it didn\u0027t do that, the VCONN role checks in the later tests (like the one added here) wouldn\u0027t work.",
+      "revId": "cc4fabd12778eafe405a584dd708dcdefe6a933d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b655be3_7958a8fe",
+        "filename": "zephyr/test/drivers/usbc_vconn_swap/src/usbc_vconn_swap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-09T21:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f75c83e_dfe3a831",
       "revId": "cc4fabd12778eafe405a584dd708dcdefe6a933d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
