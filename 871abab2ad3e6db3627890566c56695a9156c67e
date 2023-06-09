@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f11d68_e799a542",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-06-09T17:35:08Z",
+      "side": 1,
+      "message": "Mind blown. For some reason I didn\u0027t even make the connection between `[]` single character expansion and array notation. Thanks!",
+      "range": {
+        "startLine": 84,
+        "startChar": 10,
+        "endLine": 84,
+        "endChar": 23
+      },
+      "revId": "871abab2ad3e6db3627890566c56695a9156c67e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
