@@ -16,6 +16,24 @@
       "message": "This might benefit from a comment that it\u0027s the same as the real one.",
       "revId": "f37d32fb3aa956561dc623aefa99c04d8efe77bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b6b9faf_71c05fcc",
+        "filename": "zephyr/test/drivers/usbc_vconn_swap/src/usbc_vconn_swap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-09T16:20:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34066162_9b203fdd",
+      "revId": "f37d32fb3aa956561dc623aefa99c04d8efe77bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
