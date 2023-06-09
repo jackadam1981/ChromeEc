@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1fdbb6e_bc88d14d",
+        "filename": "zephyr/program/ovis/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1453582
+      },
+      "writtenOn": "2023-06-09T16:53:15Z",
+      "side": 1,
+      "message": "I don\u0027t see EC_SOC_REC_SWITCH_ODL here. See: https://docs.google.com/spreadsheets/d/1NYaoXgydw1z1cBJXhGNs_7SWD76bioFMnfkEHttxvS8/edit?resourcekey\u003d0-4oUN51Joe8jlbFqCQSzehw#gid\u003d668378413\u0026range\u003dO113",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "822e9b3db5607055741717092f0e13a182811bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec80bc85_9d7a9e29",
         "filename": "zephyr/program/ovis/generated.dtsi",
         "patchSetId": 3
