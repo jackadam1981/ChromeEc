@@ -11,6 +11,8 @@
 #include "common.h"
 #include "driver/ppc/ktu1125_public.h"
 
+static void ktu1125_handle_interrupt(int port);
+
 #define KTU1125_ID 0x0
 #define KTU1125_CTRL_SW_CFG 0x1
 #define KTU1125_SET_SW_CFG 0x2
