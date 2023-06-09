@@ -16,6 +16,24 @@
       "message": "nit: whitespace change. Looks like it should go in the formatting CL.",
       "revId": "6107b48e6fa7801ff36bbe9db420464b63cb5b79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6c27c9a_26de9e4e",
+        "filename": "board/helipilot/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-09T14:43:23Z",
+      "side": 1,
+      "message": "Actually that was included inadvertently because I initially made the change to `ec.tasklist` before moving it to `board.h`. I thought I fixed the commit but maybe I reverted it in a rebase or forgot to push it. Fixed now.",
+      "parentUuid": "5ce9f61f_cc094a3c",
+      "revId": "6107b48e6fa7801ff36bbe9db420464b63cb5b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
