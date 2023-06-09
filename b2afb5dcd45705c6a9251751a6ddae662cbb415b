@@ -34,6 +34,24 @@
       "parentUuid": "8423a056_645727d8",
       "revId": "b2afb5dcd45705c6a9251751a6ddae662cbb415b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540bc8f3_b4599deb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-09T23:46:46Z",
+      "side": 1,
+      "message": "Confirmed: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2692877/comment/8c224dad_e3ed9a0d/. You can remove it by yourself (e.g. crrev/c/4600240) or ask the FPS folks to do so.",
+      "parentUuid": "ebb6a8dc_9df5776f",
+      "revId": "b2afb5dcd45705c6a9251751a6ddae662cbb415b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
