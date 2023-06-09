@@ -46,6 +46,30 @@
       },
       "revId": "1974385d43eefac3216a1ad1a0a4c71085433a5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4735c4da_68af2953",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 33
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-09T18:42:26Z",
+      "side": 1,
+      "message": "Let me know if you want to test before I submit. Otherwise, I will go ahead and submit since this is blocking lots of other changes (googletest, boringssl).",
+      "parentUuid": "9ad7f9d4_5bb55f74",
+      "range": {
+        "startLine": 11,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "1974385d43eefac3216a1ad1a0a4c71085433a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
