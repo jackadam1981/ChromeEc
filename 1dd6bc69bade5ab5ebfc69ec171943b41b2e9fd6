@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60ef0a52_c275e7d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-09T21:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ab62c12_c4750258",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a9f6a61_d3717014",
@@ -259,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b2b01f2_91a08ceb",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4039,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-09T21:29:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c37cbfce_71001551",
+      "range": {
+        "startLine": 4039,
+        "startChar": 4,
+        "endLine": 4039,
+        "endChar": 63
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d635c46_4b9e659d",
@@ -296,6 +344,30 @@
       "side": 1,
       "message": "We could change the amount we overallocate as the struct changes. Jett suggested making it a `ti50_stats` array to ensure alignment is correct.",
       "parentUuid": "1d635c46_4b9e659d",
+      "range": {
+        "startLine": 4040,
+        "startChar": 1,
+        "endLine": 4040,
+        "endChar": 36
+      },
+      "revId": "1dd6bc69bade5ab5ebfc69ec171943b41b2e9fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b71ce45b_b3172842",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4040,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-09T21:29:29Z",
+      "side": 1,
+      "message": "u32 alignment would be sufficient, and ideally we need a check that the size does not cross the 50 byte or so boundary so that the entire message fits into a USB packet.\n\nBut can be addressed later, up to you.",
+      "parentUuid": "77907320_42c3003f",
       "range": {
         "startLine": 4040,
         "startChar": 1,

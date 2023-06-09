@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53044da5_1047d299",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-09T21:29:29Z",
+      "side": 1,
+      "message": "keeping version not in the first positoin is really awkward.\n\nHow abou this: put version first in the structure, and then on the recieve side you can decide if this is the pre-version structure or the one with version header based on the received size?",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 18
+      },
+      "revId": "b77c2983a930d3522d00348ffbc1bcb3b05bec65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
