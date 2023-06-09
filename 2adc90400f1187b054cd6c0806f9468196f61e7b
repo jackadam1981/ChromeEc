@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52555c3b_fbf503f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-09T17:47:23Z",
+      "side": 1,
+      "message": "I had to add a Zephyr test due to the code coverage warning. Adding `zephyr-test-eng` for review of the new test.",
+      "revId": "2adc90400f1187b054cd6c0806f9468196f61e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
