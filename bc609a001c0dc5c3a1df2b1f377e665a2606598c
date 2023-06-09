@@ -190,6 +190,30 @@
       },
       "revId": "bc609a001c0dc5c3a1df2b1f377e665a2606598c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcb6a77_5e21a791",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-09T17:25:55Z",
+      "side": 1,
+      "message": "Ah, I misunderstood this as using the \"Blocks\" field rather than \"Add to Hotlist\" for the projects. I fixed that and added the required blocking hotlist.\n\n\u003e (Once the TODO is added I\u0027ll add +2)\n\nI added the TODO to line 443 in Patchset 5. I put it down there to keep it colocated with the Helipilot config rather than the access violation definitions.",
+      "parentUuid": "57b2ea2b_68e260e3",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 51
+      },
+      "revId": "bc609a001c0dc5c3a1df2b1f377e665a2606598c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
