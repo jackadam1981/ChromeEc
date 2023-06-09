@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b96cc17_2401f0c1",
+        "filename": "zephyr/program/ovis/ovis/led_policy.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-09T16:14:03Z",
+      "side": 1,
+      "message": "How about emptying completely or deleting it entirely? Not a fan of having stale files in the repository, they tend to rot. You can always copy it back from rex and modify it at the right time anyway and then you\u0027d start from the most current version.",
+      "range": {
+        "startLine": 5,
+        "startChar": 15,
+        "endLine": 5,
+        "endChar": 68
+      },
+      "revId": "5b231007b3309b61ffdccc0128dcbf33b6315415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3de1c0e7_7765efc2",
         "filename": "zephyr/program/ovis/ovis/led_policy.dtsi",
         "patchSetId": 3
