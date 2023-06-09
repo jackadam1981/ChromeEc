@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c1a217b_318fbb05",
+        "filename": "zephyr/program/ovis/ovis.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1453582
+      },
+      "writtenOn": "2023-06-09T16:45:40Z",
+      "side": 1,
+      "message": "I might be misunderstanding what\u0027s going on here. But:\n\n1. This should be a 3.3V bus\n2. It should be called \"EC_I2C_USB_C0_SCL\" (or C1/C2)",
+      "parentUuid": "ba27f413_bfeeed87",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "822e9b3db5607055741717092f0e13a182811bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5629e802_438a1c5c",
         "filename": "zephyr/program/ovis/ovis.dtsi",
         "patchSetId": 3
@@ -105,6 +129,53 @@
         "startChar": 3,
         "endLine": 31,
         "endChar": 38
+      },
+      "revId": "822e9b3db5607055741717092f0e13a182811bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ba5a55_08750ec5",
+        "filename": "zephyr/program/ovis/ovis.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1453582
+      },
+      "writtenOn": "2023-06-09T16:45:40Z",
+      "side": 1,
+      "message": "agreed, this should be active-high",
+      "parentUuid": "5629e802_438a1c5c",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "822e9b3db5607055741717092f0e13a182811bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9feddedd_409c43b1",
+        "filename": "zephyr/program/ovis/ovis.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1453582
+      },
+      "writtenOn": "2023-06-09T16:45:40Z",
+      "side": 1,
+      "message": "this also has the IMVP9.2 (SoC Core power) controller on it. Don\u0027t we need a driver linked here for that?",
+      "range": {
+        "startLine": 194,
+        "startChar": 10,
+        "endLine": 194,
+        "endChar": 18
       },
       "revId": "822e9b3db5607055741717092f0e13a182811bbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
