@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a8c318bd_07d9a2e8",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-09T03:22:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55c07161_b8799c22",
+      "range": {
+        "startLine": 478,
+        "startChar": 4,
+        "endLine": 478,
+        "endChar": 8
+      },
+      "revId": "0d84dbaa84cb1b4ea53d23bf32dfafff07da3a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "53ae9117_8979a867",
         "filename": "chip/npcx/cec.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-08T19:10:56Z",
       "side": 1,
       "message": "nit: Maybe you can also fix the comment: \"whose destinations aren\u0027t\".",
+      "range": {
+        "startLine": 479,
+        "startChar": 37,
+        "endLine": 479,
+        "endChar": 54
+      },
+      "revId": "0d84dbaa84cb1b4ea53d23bf32dfafff07da3a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96cafd13_06dc829f",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-09T03:22:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ae9117_8979a867",
       "range": {
         "startLine": 479,
         "startChar": 37,
