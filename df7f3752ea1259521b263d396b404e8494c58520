@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c78480b_3d10203b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-09T06:10:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59c78451_95b997a3",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "df7f3752ea1259521b263d396b404e8494c58520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03d49e56_af64a6fb",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c34b5086_2d0ca4be",
+        "filename": "chip/host/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-09T06:10:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03d49e56_af64a6fb",
+      "range": {
+        "startLine": 12,
+        "startChar": 33,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "df7f3752ea1259521b263d396b404e8494c58520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72af5ba3_ba61171d",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-06-08T19:48:18Z",
       "side": 1,
       "message": "I think this should be still a macro, which can be defined differently by chips.",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 47
+      },
+      "revId": "df7f3752ea1259521b263d396b404e8494c58520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ec2b56_e85eefd8",
+        "filename": "common/cec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-09T06:10:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72af5ba3_ba61171d",
       "range": {
         "startLine": 49,
         "startChar": 26,
