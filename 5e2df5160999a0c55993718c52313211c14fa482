@@ -144,6 +144,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7514fb80_d34cc4f5",
+        "filename": "zephyr/program/ovis/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-09T16:10:02Z",
+      "side": 1,
+      "message": "this is regenerated with the new data right? just checking since it\u0027s not mentioned in the commit message",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 45
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a5c7b7c_8f92957e",
+        "filename": "zephyr/program/ovis/gpio.csv",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-09T16:10:02Z",
+      "side": 1,
+      "message": "Guess this is also regenerated right?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 32
+      },
+      "revId": "5e2df5160999a0c55993718c52313211c14fa482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29f257cf_e3fb859d",
         "filename": "zephyr/program/ovis/interrupts.dtsi",
         "patchSetId": 3
