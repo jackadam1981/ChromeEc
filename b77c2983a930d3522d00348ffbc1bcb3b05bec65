@@ -46,6 +46,30 @@
       },
       "revId": "b77c2983a930d3522d00348ffbc1bcb3b05bec65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb461b3e_3f6a0713",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-09T21:40:03Z",
+      "side": 1,
+      "message": "ok, on the second thought maybe we can go by the size of the structure and expect it to grow all the time, in wich case lets just do away with the version field?",
+      "parentUuid": "2a587a22_c2d9e44b",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 18
+      },
+      "revId": "b77c2983a930d3522d00348ffbc1bcb3b05bec65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
