@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8423a056_645727d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-09T06:47:16Z",
+      "side": 1,
+      "message": "CQ is failing because `make test-cec BOARD\u003ddartmonkey` fails. It\u0027s trying to build common/cec.c, but it uses stm32 so it\u0027s missing the chip definitions. I\u0027m confused about why we run the cec test on fingerprint boards even though they don\u0027t use cec. It was https://crrev.com/c/2692877 which started running it.",
+      "revId": "b2afb5dcd45705c6a9251751a6ddae662cbb415b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
