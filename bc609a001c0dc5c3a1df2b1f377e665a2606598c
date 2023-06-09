@@ -166,6 +166,30 @@
       },
       "revId": "bc609a001c0dc5c3a1df2b1f377e665a2606598c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b2ea2b_68e260e3",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-09T16:56:39Z",
+      "side": 1,
+      "message": "\u003e I haven\u0027t reviewed your logic yet. Since there are a lot of other changes that depend on this one, I think it\u0027s fine to put these values in, but add a TODO(b/123): verify these are correct, where b/123 is a bug for getting the rollback tests to work\n\nGood call. b/286537264 was already created to track this bug but it\u0027s definitely helpful to add this TODO. I added this in Patchset 5.\n\n\u003e just to make sure that any critical bugs such as this aren\u0027t lost before launch of the first project that uses them, I would add the Proj-XYZ and Blocks-FSI labels on the bug, where XYZ is the first product that will launch with this MCU.\n\nI couldn\u0027t find the link yet but I flagged that ticket as blocking the Dogfooding (b/272746214). We\u0027ll continue flagging things against that so they\u0027re at least tracked somewhere.",
+      "parentUuid": "8a719d9a_f4f00789",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 51
+      },
+      "revId": "bc609a001c0dc5c3a1df2b1f377e665a2606598c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
