@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57aca058_0cd5bdeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-06-09T22:53:25Z",
+      "side": 1,
+      "message": "can we also make fips_drbg_init available in dcrypto.h and call that directly?",
+      "revId": "4c278f28d5427a431aa101b990dce78aa4f430eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
