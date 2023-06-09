@@ -46,6 +46,30 @@
       },
       "revId": "bc609a001c0dc5c3a1df2b1f377e665a2606598c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a72c44a3_6ae7f427",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-09T13:46:33Z",
+      "side": 1,
+      "message": "\u003e I haven\u0027t been paying attention to the details of helipilot memory layout. Are these addresses still correct?\n\nNo, this is a direct copy and paste of the bloonchipper with minimal modifications. The rollback test was failing (likely a test setup issue) and I started trying to resolve it but haven\u0027t been able to yet. I had some updates as part of that effort but didn\u0027t think to include them here.\n\n\u003e  If the 8000000 offset on top of that is expected in the context of a data access violation, think we are good here. Can anyone confirm or do I need to do more digging?\n\nThe 0x08000000 address is the start of flash for the STM32F4 so we need to update this to point to the npcx9 start of flash (0x64000000).  Per [mpu_lock_rollback](http://cs/chromeos_public/src/platform/ec/core/cortex-m/mpu.c?l\u003d341) this address should be [CONFIG_MAPPED_STORAGE_BASE](http://cs/chromeos_public/src/platform/ec/chip/npcx/config_flash_layout.h?l\u003d20) + [CONFIG_ROLLBACK_OFF](http://cs/chromeos_public/src/platform/ec/board/helipilot/board.h?l\u003d242), where:\n    * `CONFIG_MAPPED_STORAGE_BASE` is 0x64000000 \n    * `CONFIG_ROLLBACK_OFF` is `CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE`\n        * `CONFIG_RO_MEM_OFF` is 0\n        * [CONFIG_RO_SIZE](http://cs/chromeos_public/src/platform/ec/chip/npcx/config_flash_layout.h?l\u003d69) is set to [NPCX_PROGRAM_MEMORY_SIZE](http://cs/chromeos_public/src/platform/ec/board/helipilot/board.h?l\u003d64) which is (`((416 - 32) * 1024) \u003d 0x60000`)\n        \nBased on this, I think this value should be 0x08060000. Does that sound right?",
+      "parentUuid": "baafd8de_f109e896",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 51
+      },
+      "revId": "bc609a001c0dc5c3a1df2b1f377e665a2606598c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
