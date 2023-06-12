@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2554343_7d07208a",
+        "filename": "zephyr/program/ovis/ovis.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-12T23:18:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41f5996e_ca7ac05f",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "8719f36ef195dc42a16cd260306c5f342d0719d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38d18027_28708d0b",
@@ -196,6 +220,30 @@
       "side": 1,
       "message": "I think CONFIG_PLATFORM_EC_KEYBOARD\u003dn is required because of the \u0026cros_kb_raw node. Should be able to remove this when that node can be removed.",
       "parentUuid": "38d18027_28708d0b",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 29
+      },
+      "revId": "8719f36ef195dc42a16cd260306c5f342d0719d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb9d8ae_3cca63c0",
+        "filename": "zephyr/program/ovis/program.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-12T23:18:28Z",
+      "side": 1,
+      "message": "with \u0026cros_kb_raw removed, then I can remove this",
+      "parentUuid": "79157e22_70d662f2",
       "range": {
         "startLine": 101,
         "startChar": 0,
