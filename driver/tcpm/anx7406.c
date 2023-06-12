@@ -110,6 +110,29 @@ void anx7406_update_hpd_status(const struct usb_mux *mux, mux_state_t mux_state)
 	hpd_timestamp[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 }
 
+static int anx7406_set_role(int port)
+{
+	int cc, rv;
+
+	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &cc);
+	if (rv)
+		return rv;
+
+	if (cc & TCPC_REG_CC_STATUS_CONNECT_RESULT_MASK)
+		rv = tcpc_write(port, TCPC_REG_ROLE_CTRL,
+				TCPC_REG_ROLE_CTRL_SET(TYPEC_DRP,
+						       0,
+						       2,
+						       2));
+	else
+		rv = tcpc_write(port, TCPC_REG_ROLE_CTRL,
+				TCPC_REG_ROLE_CTRL_SET(TYPEC_DRP,
+						       0,
+						       1,
+						       1));
+	return rv;
+}
+
 static int anx7406_init(int port)
 {
 	int rv, i;
@@ -167,11 +190,12 @@ static int anx7406_init(int port)
 	tcpc_write(port, ANX7406_REG_VBUS_SOURCE_CTRL, SOURCE_GPIO_OEN);
 	tcpc_write(port, ANX7406_REG_VBUS_SINK_CTRL, SINK_GPIO_OEN);
 
-	/* Clear CABLE DETECT signale */
-	rv = tcpc_update8(port, ANX7406_REG_ANALOG_SETTING,
-			  ANX7406_REG_CABLE_DET_DIG, MASK_CLR);
-	if (rv)
-		return rv;
+	/* Set the role control register by cc status */
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)) {
+		rv = anx7406_set_role(port);
+		if (rv)
+			return rv;
+	}
 
 	/*
 	 * Specifically disable voltage alarms, as VBUS_VOLTAGE_ALARM_HI may
