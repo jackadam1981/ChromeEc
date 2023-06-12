@@ -118,6 +118,30 @@
       },
       "revId": "b77c2983a930d3522d00348ffbc1bcb3b05bec65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdac9a80_0dcfa8f6",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-12T18:54:55Z",
+      "side": 1,
+      "message": "Soory, did not click \u0027send\u0027 on this on Friday:\n\nHow about this: keep the top  five bits of  the `misc_status field`  as the bit number used in the rest of the filed? So, at this time it would be \n\n(2 \u003c\u003c 27) | ..\n\nand drop the `version` field",
+      "parentUuid": "3d9d9d64_233124fb",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 18
+      },
+      "revId": "b77c2983a930d3522d00348ffbc1bcb3b05bec65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
