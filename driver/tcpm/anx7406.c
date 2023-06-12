@@ -217,6 +217,26 @@ static int anx7406_set_polarity(int port, enum tcpc_cc_polarity polarity)
 	return tcpci_tcpm_set_polarity(port, polarity);
 }
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+static int anx7406_tcpc_enter_low_power_mode(int port)
+{
+	int rv;
+
+	/* Set role to DRP */
+	rv = tcpc_write(port, TCPC_REG_ROLE_CTRL,
+			TCPC_REG_ROLE_CTRL_SET(1, 0, 2, 2));
+	rv |= tcpc_write(port, TCPC_REG_COMMAND,
+			 TCPC_REG_COMMAND_LOOK4CONNECTION);
+	rv |= tcpc_update8(port, ANX7406_REG_ANALOG_SETTING,
+			   ANX7406_REG_DIGITAL_RDY, MASK_CLR);
+
+	if (rv)
+		ccprintf("configure role failed!\n");
+
+	return tcpci_enter_low_power_mode(port);
+}
+#endif
+
 static int anx7406_m1_config(int port, int slave, int offset)
 {
 	int rv;
@@ -367,7 +387,7 @@ const struct tcpm_drv anx7406_tcpm_drv = {
 	.set_src_ctrl = &tcpci_tcpm_set_src_ctrl,
 #endif
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	.enter_low_power_mode = &tcpci_enter_low_power_mode,
+	.enter_low_power_mode = &anx7406_tcpc_enter_low_power_mode,
 #endif
 	.set_bist_test_mode = &tcpci_set_bist_test_mode,
 #ifdef CONFIG_CMD_TCPC_DUMP
