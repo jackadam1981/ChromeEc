@@ -22,6 +22,30 @@
       },
       "revId": "a9e8f74edf582e98d5e1d95cd072ed61807a393c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2ba1d42_8876457f",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2356,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-12T23:20:07Z",
+      "side": 1,
+      "message": "All I did was move this so it wouldn\u0027t be guarded by the motion sense config. I think otherwise is should be just as it was.",
+      "parentUuid": "1fa962b9_973ca2d5",
+      "range": {
+        "startLine": 2356,
+        "startChar": 0,
+        "endLine": 2356,
+        "endChar": 24
+      },
+      "revId": "a9e8f74edf582e98d5e1d95cd072ed61807a393c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
