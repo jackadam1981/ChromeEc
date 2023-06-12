@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24e9616_71c1d357",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-12T21:15:12Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "f6c33009_018aa1d5",
+      "range": {
+        "startLine": 913,
+        "startChar": 0,
+        "endLine": 919,
+        "endChar": 57
+      },
+      "revId": "2c63027cb62b48c03f1934d5385efb614a844c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dda04955_e4c8956e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42fd9161_74cc80bb",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-12T21:15:12Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "dda04955_e4c8956e",
+      "range": {
+        "startLine": 377,
+        "startChar": 45,
+        "endLine": 377,
+        "endChar": 49
+      },
+      "revId": "2c63027cb62b48c03f1934d5385efb614a844c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd4b1bc8_a08f19e2",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-06-12T18:53:04Z",
       "side": 1,
       "message": "```suggestion\n * A compliant partner should not change the response from Accept/Reject to Not_Supported\n * or vice versa while attached. However, there are real devices that pretend\n * to stop supporting VCONN after completing a VCONN Swap.\n *\n * The default behavior of the partner is to Accept VCONN Swaps.\n```",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 8
+      },
+      "revId": "2c63027cb62b48c03f1934d5385efb614a844c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27cf1789_2925f5c3",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-12T21:15:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd4b1bc8_a08f19e2",
       "range": {
         "startLine": 379,
         "startChar": 0,
