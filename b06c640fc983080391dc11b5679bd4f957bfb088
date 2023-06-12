@@ -22,6 +22,30 @@
       },
       "revId": "b06c640fc983080391dc11b5679bd4f957bfb088",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "693e9c97_fefa9b88",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-12T23:37:44Z",
+      "side": 1,
+      "message": "This generally seems like a good plan and shouldn\u0027t make anything worse. Do you have an \"earlier\" spot in mind?",
+      "parentUuid": "cfaafe6b_b32d9afe",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 37
+      },
+      "revId": "b06c640fc983080391dc11b5679bd4f957bfb088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
