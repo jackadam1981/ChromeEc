@@ -193,10 +193,19 @@ class TestKconfigCheck(unittest.TestCase):
 
         self.assertEqual(out, [file_conf])
 
+    @mock.patch("check_zephyr_project_config._default_y_if_ztest")
+    @mock.patch("check_zephyr_project_config._default_y")
     @mock.patch("kconfiglib.expr_str")
     @mock.patch("check_zephyr_project_config.KconfigCheck._kconf_from_path")
     @mock.patch("check_zephyr_project_config.KconfigCheck._fail")
-    def test_check_dt_has(self, fail_mock, kconf_from_path_mock, expr_str_mock):
+    def test_check_dt_has(
+        self,
+        fail_mock,
+        kconf_from_path_mock,
+        expr_str_mock,
+        def_y_mock,
+        def_y_if_ztest_mock,
+    ):
         """Test the DT_HAS_ check."""
         fake_symbol_no_dt = mock.Mock()
         fake_symbol_no_dt.direct_dep = "nothing with devicetree"
@@ -206,8 +215,32 @@ class TestKconfigCheck(unittest.TestCase):
             "a bunch of stuff with DT_HAS_something in the middle"
         )
 
+        fake_symbol_dt_default_n = mock.Mock()
+        fake_symbol_dt_default_n.direct_dep = (
+            "a bunch of stuff with DT_HAS_something in the middle"
+        )
+        fake_symbol_dt_default_n.orig_defaults = mock.Mock()
+
+        fake_symbol_dt_emul = mock.Mock()
+        fake_symbol_dt_emul.direct_dep = (
+            "a bunch of stuff with DT_HAS_something in the middle"
+        )
+        fake_symbol_dt_emul.orig_defaults = mock.Mock()
+
         fake_kconf = mock.Mock()
-        fake_kconf.syms = {"NO_DT": fake_symbol_no_dt, "DT": fake_symbol_dt}
+        fake_kconf.syms = {
+            "NO_DT": fake_symbol_no_dt,
+            "DT": fake_symbol_dt,
+            "DT_BUT_DEFAULT_N": fake_symbol_dt_default_n,
+            "DT_BUT_EMUL": fake_symbol_dt_emul,
+        }
+
+        def_y_mock.side_effect = (
+            lambda deps: deps != fake_symbol_dt_default_n.orig_defaults
+        )
+        def_y_if_ztest_mock.side_effect = (
+            lambda deps: deps == fake_symbol_dt_emul.orig_defaults
+        )
 
         kconf_from_path_mock.return_value = fake_kconf
         expr_str_mock.side_effect = lambda val: val
@@ -221,6 +254,8 @@ CONFIG_DT=y
 CONFIG_DT=y # and a comment
 CONFIG_DT=n
 CONFIG_SOMETHING_ELSE=y
+CONFIG_DT_BUT_DEFAULT_N=y
+CONFIG_DT_BUT_EMUL=y
 """
         with mock.patch("builtins.open", mock.mock_open(read_data=data)):
             self.kcheck._check_dt_has("the_file")
