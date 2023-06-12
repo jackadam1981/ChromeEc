@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5ea4c52_756f5e54",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-06-12T17:25:12Z",
+      "side": 1,
+      "message": "I assume the tradeoff would be in servicing speed when this is an actual double-interrupt situation (rather than some kind of infinitely firing interrupt like we have right now) \n\nI suppose it primarily depends on the speed at which we care about these interrupts being serviced.  With 3 registers that track interrupts, I\u0027d think 3-5 attempts seems pretty reasonable if we want speed?",
+      "parentUuid": "65ff52c6_65624838",
+      "revId": "66d196c553724ad419c380769dbf765e4a069e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4350713f_b7052d56",
         "filename": "driver/ppc/ktu1125.h",
         "patchSetId": 1
