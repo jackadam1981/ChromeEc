@@ -169,10 +169,17 @@ static int anx7406_init(int port)
 
 	/* Clear CABLE DETECT signale */
 	rv = tcpc_update8(port, ANX7406_REG_ANALOG_SETTING,
-			  ANX7406_REG_CABLE_DET_DIG, MASK_CLR);
+			  ANX7406_REG_DIGITAL_RDY|ANX7406_REG_CABLE_DET_DIG,
+			  MASK_CLR);
 	if (rv)
 		return rv;
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	rv = tcpc_update8(port, TCPC_REG_ROLE_CTRL,
+			  TCPC_REG_ROLE_CTRL_DRP_MASK, MASK_SET);
+	if (rv)
+		return rv;
+#endif
 	/*
 	 * Specifically disable voltage alarms, as VBUS_VOLTAGE_ALARM_HI may
 	 * trigger repeatedly despite being masked (b/153989733)
