@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6c33009_018aa1d5",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-12T18:53:04Z",
+      "side": 1,
+      "message": "Nit:\n```suggestion\n        tcpci_partner_send_control_msg(data, data-\u003evcs_response, 0);\n        \n\tif (data-\u003evcs_response !\u003d PD_CTRL_ACCEPT) {\n\t\ttcpci_partner_common_clear_ams_ctrl_msg(data);\n\t\treturn TCPCI_PARTNER_COMMON_MSG_HANDLED;\n\t}\n```",
+      "range": {
+        "startLine": 913,
+        "startChar": 0,
+        "endLine": 919,
+        "endChar": 57
+      },
+      "revId": "2c63027cb62b48c03f1934d5385efb614a844c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dda04955_e4c8956e",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-12T18:53:04Z",
+      "side": 1,
+      "message": "```suggestion\n * @brief Set the response message for VCONN Swap.\n```",
+      "range": {
+        "startLine": 377,
+        "startChar": 45,
+        "endLine": 377,
+        "endChar": 49
+      },
+      "revId": "2c63027cb62b48c03f1934d5385efb614a844c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4b1bc8_a08f19e2",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-12T18:53:04Z",
+      "side": 1,
+      "message": "```suggestion\n * A compliant partner should not change the response from Accept/Reject to Not_Supported\n * or vice versa while attached. However, there are real devices that pretend\n * to stop supporting VCONN after completing a VCONN Swap.\n *\n * The default behavior of the partner is to Accept VCONN Swaps.\n```",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 8
+      },
+      "revId": "2c63027cb62b48c03f1934d5385efb614a844c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
