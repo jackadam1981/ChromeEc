@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c0edc2f_4c1152ee",
+        "filename": "zephyr/program/ovis/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-12T23:20:36Z",
+      "side": 1,
+      "message": "That\u0027s a good point. The one reason the name makes sense is because this still contains the similar pieces as rex/generated.dtsi . But, it\u0027s not being generated via the arbitrage tool.",
+      "parentUuid": "d5d20fc2_8ceffae6",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "822e9b3db5607055741717092f0e13a182811bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1fdbb6e_bc88d14d",
         "filename": "zephyr/program/ovis/generated.dtsi",
         "patchSetId": 3
@@ -77,6 +101,30 @@
       "writtenOn": "2023-06-06T16:40:14Z",
       "side": 1,
       "message": "Is there a rule why one is input, and second one has pull-up enabled?",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 41
+      },
+      "revId": "822e9b3db5607055741717092f0e13a182811bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af899cc_5689bf7a",
+        "filename": "zephyr/program/ovis/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-12T23:20:36Z",
+      "side": 1,
+      "message": "The EC GPIO spreadsheet had this marked \u0027y\u0027 in the column for internal pull-ups for each of the 4 status_odl signals. Maybe that column isn\u0027t up to date?",
+      "parentUuid": "ec80bc85_9d7a9e29",
       "range": {
         "startLine": 239,
         "startChar": 0,
@@ -134,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96118e8d_68dd22c8",
+        "filename": "zephyr/program/ovis/ovis.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-12T23:20:36Z",
+      "side": 1,
+      "message": "This is a holdover of the i2c overlay for rex for this same i2c port. I\"m removing as it shouldn\u0027t be here.",
+      "parentUuid": "0c1a217b_318fbb05",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "822e9b3db5607055741717092f0e13a182811bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5629e802_438a1c5c",
@@ -181,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "967932cf_9c1017ac",
+        "filename": "zephyr/program/ovis/ovis.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-12T23:20:36Z",
+      "side": 1,
+      "message": "I think it\u0027s likely that I added this overlay during Rex P0 power on, when I was attempting to not edit generated.dtsi, but needed this to default to low. I\u0027m removing this from the overlay.",
+      "parentUuid": "c1ba5a55_08750ec5",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "822e9b3db5607055741717092f0e13a182811bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9feddedd_409c43b1",
@@ -206,6 +302,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f189465b_11f9b749",
+        "filename": "zephyr/program/ovis/ovis.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-12T23:20:36Z",
+      "side": 1,
+      "message": "I think the i2c bus is connected here if something needs to be changed relative to the default settings, but it\u0027s not actively controlled in Rex.",
+      "parentUuid": "9feddedd_409c43b1",
+      "range": {
+        "startLine": 194,
+        "startChar": 10,
+        "endLine": 194,
+        "endChar": 18
+      },
+      "revId": "822e9b3db5607055741717092f0e13a182811bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54609623_eaa0fb8f",
         "filename": "zephyr/program/ovis/ovis/project.conf",
         "patchSetId": 3
@@ -217,6 +337,30 @@
       "writtenOn": "2023-06-06T16:40:14Z",
       "side": 1,
       "message": "Is the above comment still valid when changing this flag?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "revId": "822e9b3db5607055741717092f0e13a182811bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "093a1b07_d87355b3",
+        "filename": "zephyr/program/ovis/ovis/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-12T23:20:36Z",
+      "side": 1,
+      "message": "This is not applicable to Ovis. This only matters for NXP PPC which is not being used on Ovis. I should have removed it.",
+      "parentUuid": "54609623_eaa0fb8f",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -264,6 +408,30 @@
       "side": 1,
       "message": "That looks like a leftover from `zephyr/program/minimal/prj.conf`",
       "parentUuid": "df1eceaf_6ba540cb",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "822e9b3db5607055741717092f0e13a182811bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6b13d17_c3cf09d8",
+        "filename": "zephyr/program/ovis/program.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-12T23:20:36Z",
+      "side": 1,
+      "message": "Yes, that\u0027s a stale comment. I have removed it.",
+      "parentUuid": "bf2e4fd6_67cd84fc",
       "range": {
         "startLine": 17,
         "startChar": 0,

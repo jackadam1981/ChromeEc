@@ -22,6 +22,30 @@
       },
       "revId": "56e36a0d66cb374cae99b0f6dc167ac1ea38da23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "445c7634_a36782ca",
+        "filename": "zephyr/program/ovis/ovis/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2023-06-12T23:20:36Z",
+      "side": 0,
+      "message": "This reset is specific to the nuvaton nct38xx TCPC. Ovis is using the rt1716 TCPC which does not have an external reset signal and only can be reset via an I2C command",
+      "parentUuid": "8e9e53fd_1df3153c",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "56e36a0d66cb374cae99b0f6dc167ac1ea38da23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
