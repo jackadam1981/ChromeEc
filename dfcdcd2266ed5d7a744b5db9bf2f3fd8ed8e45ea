@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa171dd_2ccef203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-06-12T23:43:33Z",
+      "side": 1,
+      "message": "You can squash this into the parent change; it wouldn\u0027t make sense to revert only the fix or only this test change, so they should be a single change.",
+      "revId": "dfcdcd2266ed5d7a744b5db9bf2f3fd8ed8e45ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
