@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure why this line isn\u0027t being covered. It\u0027s being checked with two separate tests.",
       "revId": "e3817b4b061d2623a36cc4362082f45097b5d649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99070cf3_66a03c69",
+        "filename": "common/ec_features.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-12T22:39:43Z",
+      "side": 1,
+      "message": "I downloaded your change, and ran `./twister -v -i -T zephyr/test/system_safe_mode --coverage` and in the report for that test none of these lines show as executable.\n\nBut in the overall coverage report (like in gerrit here) a handful of the lines are covered, most are not executable, and this one is the only one that appears as not covered. Very weird.",
+      "parentUuid": "a5124ac2_0187d119",
+      "revId": "e3817b4b061d2623a36cc4362082f45097b5d649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
