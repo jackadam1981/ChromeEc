@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b7f5ee_bedf90a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-06-12T11:14:22Z",
+      "side": 1,
+      "message": "Questions is that the unaligned access would trigger a EC crash and it looks still crashing if ro does not allow it even if RW allows. Would there be potential risk for the released devices ?",
+      "parentUuid": "483ed0ce_0b92a3bb",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ddceb0d_d9c4ce04",
