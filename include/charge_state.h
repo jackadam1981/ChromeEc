@@ -418,6 +418,55 @@ __test_only bool charging_progress_displayed(void);
  */
 int board_should_charger_bypass(void);
 
+enum charge_adaptive_mode {
+	CHARGE_ADAPTIVE_DISABLE,
+	CHARGE_ADAPTIVE_LEGACY,
+	CHARGE_ADAPTIVE_PPS,
+};
+
+/**
+ * Set adaptive mode.
+ *
+ * @param chgnum Charger number ID.
+ *
+ * @return EC_SUCCESS when adaptive mode has been successfully set; any other
+ * value otherwise.
+ */
+int charge_set_adaptive_mode(int chgnum, const enum charge_adaptive_mode mode);
+
+/**
+ * Get current adaptive mode.
+ *
+ * @param chgnum Charger number ID.
+ *
+ * @return Current Adaptive mode.
+ */
+enum charge_adaptive_mode charge_get_adaptive_mode(int chgnum);
+
+/**
+ * Get voltage and current set in charger for current adaptive mode.
+ *
+ * @param chgnum Charger number ID.
+ * @param mv Pointer of variable that will hold voltage.
+ * @param ma Pointer of variable that will hold current.
+ *
+ * @return EC_SUCCESS when adaptive mode has been successfully set; any other
+ * value otherwise.
+ */
+int charge_get_adaptive_request(int chgnum, int *mv, int *ma);
+
+/**
+ * Get voltage and current set in request for current adaptive mode.
+ *
+ * @param chgnum Charger number ID.
+ * @param mv Pointer of variable that will hold voltage.
+ * @param ma Pointer of variable that will hold current.
+ *
+ * @return EC_SUCCESS when adaptive mode has been successfully set; any other
+ * value otherwise.
+ */
+int charge_get_adaptive_charger(int chgnum, int *mv, int *ma);
+
 /* Config Charger */
 #include "charge_state.h"
 
