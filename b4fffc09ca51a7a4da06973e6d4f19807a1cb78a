@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "61c8a5d7_03b89b55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-06-13T02:56:37Z",
+      "side": 1,
+      "message": "Didn\u0027t dig into detail but my test result shows that with RO raises the exception and RW does not raise, the unaligned access still raises the exception and crash system so the change has potential risk affects the released device on the market especially now EC firmware are FFed on multiple branches. +1 that the scope should be limited by config rather than change the overall EC behavior.",
+      "parentUuid": "b073fc2a_05800879",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ddceb0d_d9c4ce04",
