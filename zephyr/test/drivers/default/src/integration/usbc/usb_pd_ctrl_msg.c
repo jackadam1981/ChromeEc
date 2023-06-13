@@ -9,6 +9,7 @@
 #include "emul/tcpc/emul_tcpci_partner_drp.h"
 #include "tcpm/tcpci.h"
 #include "test/drivers/stubs.h"
+#include "test/drivers/tcpci_test_common.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 #include "test/usb_pe.h"
@@ -396,4 +397,33 @@ ZTEST_F(usb_pd_ctrl_msg_test_source, test_verify_bist_tx_test_data)
 	tcpci_partner_common_send_hard_reset(&super_fixture->partner_emul);
 	k_sleep(K_SECONDS(1));
 	zassert_equal(get_state_pe(TEST_USB_PORT), PE_SNK_READY);
+}
+
+/**
+ * @brief TestPurpose: Verify dropping vbus in hard reset leads to correct
+ * state.
+ *
+ * @details
+ *  - TCPM is configured initially as Sink
+ *  - Set VBUS detect to 0V.
+ *  - End testing via signaling a Hard Reset
+ *
+ * Expected Results
+ *  - Role control is in correct state.
+ */
+ZTEST_F(usb_pd_ctrl_msg_test_source, test_no_vbus_at_hard_reset)
+{
+	struct usb_pd_ctrl_msg_test_fixture *super_fixture = &fixture->fixture;
+
+	tcpci_emul_set_reg(super_fixture->tcpci_emul, TCPC_REG_POWER_STATUS,
+			   TCPC_REG_POWER_STATUS_VBUS_DET);
+
+	tcpci_emul_set_reg(super_fixture->tcpci_emul, TCPC_REG_EXT_STATUS,
+			   TCPC_REG_EXT_STATUS_SAFE0V);
+
+	tcpci_partner_common_send_hard_reset(&super_fixture->partner_emul);
+	k_sleep(K_SECONDS(2));
+	check_tcpci_reg(super_fixture->tcpci_emul, TCPC_REG_ROLE_CTRL,
+			TCPC_REG_ROLE_CTRL_SET(TYPEC_NO_DRP, TYPEC_RP_1A5,
+					       TYPEC_CC_RD, TYPEC_CC_RD));
 }
