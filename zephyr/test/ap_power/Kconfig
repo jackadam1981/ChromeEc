@@ -3,3 +3,15 @@
 # found in the LICENSE file.
 
 source "Kconfig.zephyr"
+
+choice TEST_TARGET
+	prompt "Select test target to build"
+	help
+	  Select the build target for a given test. Each test target must select
+	  exactly one.
+
+	config TEST_NISSA
+		bool "Tests for nissa project"
+		help
+		  The test target that exercises nissa/src/board_power.c
+endchoice

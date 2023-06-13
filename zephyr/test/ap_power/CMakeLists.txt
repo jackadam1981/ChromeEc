@@ -14,3 +14,5 @@ zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 FILE(GLOB_RECURSE test_sources src/*.c)
 target_sources(app PRIVATE ${test_sources})
+
+target_sources_ifdef(CONFIG_TEST_NISSA app PRIVATE src/boards/nissa.c)
