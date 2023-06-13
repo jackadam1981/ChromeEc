@@ -3,7 +3,12 @@
  * found in the LICENSE file.
  */
 
-#include "byteorder.h"
+#ifndef CONFIG_ZEPHYR
+/* For legacy EC, stm32 only */
+#include "usb-stream.h"
+#endif
+
+#include "builtin/endian.h"
 #include "common.h"
 #include "console.h"
 #include "consumer.h"
@@ -17,7 +22,7 @@
 #include "system.h"
 #include "uart.h"
 #include "update_fw.h"
-#include "usb-stream.h"
+#include "usb_descriptor.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ##args)
@@ -43,8 +48,9 @@
  * In the end of the successful image transfer and programming, the host sends
  * the reset command, and the device reboots itself.
  */
-
 struct consumer const update_consumer;
+
+#ifndef CONFIG_PLATFORM_EC_ONE_WIRE_UART
 struct usb_stream_config const usb_update;
 
 static struct queue const update_to_usb =
@@ -56,6 +62,20 @@ USB_STREAM_CONFIG_FULL(usb_update, USB_IFACE_UPDATE, USB_CLASS_VENDOR_SPEC,
 		       USB_SUBCLASS_GOOGLE_UPDATE, USB_PROTOCOL_GOOGLE_UPDATE,
 		       USB_STR_UPDATE_NAME, USB_EP_UPDATE, USB_MAX_PACKET_SIZE,
 		       USB_MAX_PACKET_SIZE, usb_to_update, update_to_usb, 1, 0)
+#else
+extern struct consumer_ops one_wire_consumer_ops;
+extern struct consumer one_wire_consumer;
+
+struct queue const update_to_usb =
+	QUEUE_DIRECT(128, uint8_t, null_producer, one_wire_consumer);
+struct queue const usb_to_update =
+	QUEUE_DIRECT(128, uint8_t, null_producer, update_consumer);
+
+struct consumer one_wire_consumer = {
+	.queue = &update_to_usb,
+	.ops = &one_wire_consumer_ops,
+};
+#endif
 
 /* The receiver can be in one of the states below. */
 enum rx_state {

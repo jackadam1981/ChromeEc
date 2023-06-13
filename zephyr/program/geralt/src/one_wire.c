@@ -16,6 +16,10 @@
 #include <zephyr/drivers/uart.h>
 #include <zephyr/kernel.h>
 
+#define UPDATER_RESPONSE_SIZE_MAX 64
+
+K_MSGQ_DEFINE(usb_updater_queue, UPDATER_RESPONSE_SIZE_MAX, 16, 4);
+
 const static struct device *one_wire_uart =
 	DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
 
@@ -27,6 +31,16 @@ static void recv_cb(uint8_t cmd, const uint8_t *payload, int length)
 	if (cmd == ROACH_CMD_TOUCHPAD_REPORT && length == sizeof(struct usb_hid_touchpad_report)) {
 		hid_i2c_touchpad_add(
 			(const struct usb_hid_touchpad_report *)payload);
+	}
+	if (cmd == ROACH_CMD_UPDATER_COMMAND) {
+		uint8_t buf[UPDATER_RESPONSE_SIZE_MAX];
+
+		if (length >= UPDATER_RESPONSE_SIZE_MAX) {
+			return;
+		}
+		buf[0] = length;
+		memcpy(buf + 1, payload, length);
+		k_msgq_put(&usb_updater_queue, buf, K_MSEC(1));
 	}
 }
 
