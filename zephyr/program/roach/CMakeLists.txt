@@ -8,7 +8,11 @@ find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
 zephyr_library_sources(
 		"src/fakes.c"
+		"src/one_wire.c"
+		"../geralt/src/one_wire_common.c"
 )
+
+zephyr_include_directories("../geralt/include")
 
 if(DEFINED CONFIG_BOARD_ROACH)
 	project(roach)
