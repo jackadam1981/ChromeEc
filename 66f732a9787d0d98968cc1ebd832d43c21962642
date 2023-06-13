@@ -16,6 +16,29 @@
       "message": "The code coverage for `screebo/src/usb_config.c` increase to 100% with this CL.",
       "revId": "66f732a9787d0d98968cc1ebd832d43c21962642",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c32a91b_f3598251",
+        "filename": "zephyr/program/rex/screebo/src/usb_config.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-13T15:27:34Z",
+      "side": 1,
+      "message": "If you are just skipping over these calls, then they aren\u0027t actually being tested.  Isn\u0027t there some way to test the statics that these macros would initialize?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "66f732a9787d0d98968cc1ebd832d43c21962642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
