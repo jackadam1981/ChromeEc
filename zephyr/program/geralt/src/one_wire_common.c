@@ -194,7 +194,7 @@ static void process_rx_irq(const struct device *dev)
 		int msg_size = HEADER_SIZE + recv_buf.msg.header.payload_len;
 
 		/* too large ? */
-		if (msg_size > 64) {
+		if (msg_size > ROACH_MAX_MESSAGE_SIZE) {
 			/* erase current marker and find next one */
 			recv_buf.buf[0] = 0;
 			continue;
