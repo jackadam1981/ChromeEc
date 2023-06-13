@@ -16,6 +16,7 @@ enum RoachCommand {
 	ROACH_CMD_TOUCHPAD_REPORT,
 	ROACH_CMD_SUSPEND,
 	ROACH_CMD_RESUME,
+	ROACH_CMD_UPDATER_COMMAND,
 };
 
 struct RoachMsgHeader {
@@ -30,12 +31,14 @@ struct RoachMsgHeader {
 #define HEADER_SIZE sizeof(struct RoachMsgHeader)
 _Static_assert(HEADER_SIZE == 5);
 
+#define ROACH_MAX_MESSAGE_SIZE 256
+
 struct RoachMessage {
 	struct RoachMsgHeader header;
-	uint8_t payload[64 - HEADER_SIZE];
+	uint8_t payload[ROACH_MAX_MESSAGE_SIZE - HEADER_SIZE];
 } __packed __aligned(4);
 
-_Static_assert(sizeof(struct RoachMessage) == 64);
+_Static_assert(sizeof(struct RoachMessage) == ROACH_MAX_MESSAGE_SIZE);
 
 extern enum OneWireRole mode;
 
