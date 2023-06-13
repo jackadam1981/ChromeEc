@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec8207f0_d3064033",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-06-13T17:08:19Z",
+      "side": 1,
+      "message": "nit: how about \"system related functions to ISH SHIM\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "4131748c220d3e5d224a8a27c60727dfa4456e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a647aee8_35788919",
+        "filename": "zephyr/shim/src/ish_system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-06-13T17:08:19Z",
+      "side": 1,
+      "message": "nit: how about deriving it based on a config?",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "4131748c220d3e5d224a8a27c60727dfa4456e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1dc1d15_4fdfb7b7",
+        "filename": "zephyr/shim/src/ish_system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-06-13T17:08:19Z",
+      "side": 1,
+      "message": "is it a TODO?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "4131748c220d3e5d224a8a27c60727dfa4456e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
