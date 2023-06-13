@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e5888b_0436af09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-13T19:07:14Z",
+      "side": 1,
+      "message": "As is it allows to reproduce TPM_RC_VALUE issue due to missing EPS, but this is because fallback certs are not enabled.",
+      "revId": "f05312ebbeb33d3a69a68734c439f470c2b009e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
