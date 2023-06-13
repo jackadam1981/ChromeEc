@@ -9,6 +9,7 @@
 #include "emul/tcpc/emul_tcpci_partner_drp.h"
 #include "tcpm/tcpci.h"
 #include "test/drivers/stubs.h"
+#include "test/drivers/tcpci_test_common.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 #include "test/usb_pe.h"
