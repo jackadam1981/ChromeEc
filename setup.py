@@ -95,3 +95,13 @@ setup(
     },
     description="Tool to convert ST touchpad .ftb file to .bin",
 )
+
+setup(
+    name="pw_tokenizer",
+    version="1.0",
+    author="Pigweed Developers",
+    url="https://www.chromium.org/chromium-os/ec-development",
+    package_dir={"": "extra/pigweed/pw_tokenizer"},
+    py_modules=["pw_tokenizer"],
+    description="Pigweed tokenizer",
+)
