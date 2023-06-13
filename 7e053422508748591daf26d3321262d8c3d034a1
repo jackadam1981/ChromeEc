@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77421b6b_fb808d2b",
+        "filename": "zephyr/program/rex/rex/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-13T06:54:00Z",
+      "side": 1,
+      "message": "if the EC copies CBI from EEPROM to internal flash automatically,\nthe \"dev\" won\u0027t have to do anything.",
+      "parentUuid": "5b0c21a7_558c2292",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "7e053422508748591daf26d3321262d8c3d034a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa5cdd80_63106eb3",
         "filename": "zephyr/shim/chip/npcx/include/flash_chip.h",
         "patchSetId": 1
