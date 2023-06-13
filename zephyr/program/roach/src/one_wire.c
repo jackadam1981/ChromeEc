@@ -4,23 +4,48 @@
  */
 
 #include "console.h"
+#include "consumer.h"
 #include "drivers/one_wire_uart.h"
+#include "ec_commands.h"
+#include "flash.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
+#include "queue.h"
 #include "roach_cmds.h"
+#include "rwsig.h"
+#include "system.h"
 #include "touchpad.h"
+#include "update_fw.h"
 #include "usb_hid_touchpad.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/uart.h>
 #include <zephyr/kernel.h>
+#include <zephyr/sys/byteorder.h>
 
 const static struct device *one_wire_uart =
 	DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
 
+static void on_written(struct consumer const *consumer, size_t count)
+{
+	uint8_t buf[128];
+
+	QUEUE_REMOVE_UNITS(consumer->queue, buf, count);
+
+	one_wire_uart_send(one_wire_uart, ROACH_CMD_UPDATER_COMMAND, buf, count);
+}
+
+struct consumer_ops one_wire_consumer_ops = {.written = on_written};
+
+extern struct queue const usb_to_update;
+
 static void recv_cb(uint8_t cmd, const uint8_t *payload, int length)
 {
 	/* TODO: handle ROACH_CMD_SUSPEND/RESUME after touchpad driver ready */
+
+	if (cmd == ROACH_CMD_UPDATER_COMMAND) {
+		QUEUE_ADD_UNITS(&usb_to_update, payload, length);
+	}
 }
 
 static void ec_ec_comm_init(void)
