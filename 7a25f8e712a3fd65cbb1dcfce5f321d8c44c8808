@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cc0492c_82b4fa31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-06-13T00:44:37Z",
+      "side": 1,
+      "message": "responded to all comments",
+      "revId": "7a25f8e712a3fd65cbb1dcfce5f321d8c44c8808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "103664f8_fa537e21",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-06-13T00:40:31Z",
       "side": 1,
       "message": "Should this instance also just be `ec::FlashProtectCommand`?",
+      "range": {
+        "startLine": 1769,
+        "startChar": 5,
+        "endLine": 1769,
+        "endChar": 27
+      },
+      "revId": "7a25f8e712a3fd65cbb1dcfce5f321d8c44c8808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0d24bb0_fb195172",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-06-13T00:44:37Z",
+      "side": 1,
+      "message": "I have not switched to having ectool automatically select the version yet. Using `ec::FlashProtectCommand` requires the version sent in the constructor. \n\nThe goal of this CL is to just have to migrate the `ParseFlags` static method to `ec::FlashProtectCommand` class.",
+      "parentUuid": "103664f8_fa537e21",
       "range": {
         "startLine": 1769,
         "startChar": 5,
