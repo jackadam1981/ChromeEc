@@ -162,6 +162,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d252492b_5e94be14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-13T22:39:27Z",
+      "side": 1,
+      "message": "Well, if the intended population is everyone - according to Ivan\u0027s observation it might break already released devices (where RO doesn\u0027t allow unaligned access). I agree that the correct way to implement this change would be with a CONFIG, enabled only for FP boards, like suggested above.\nThe motivation here is to avoid \"silent\" crashes, by catching them, generating a crash report and sending it to our backend. If we disable the unaligned exception handler - we might end up silently crashing on an instruction that doesn\u0027t support unaligned access, which will be painful to debug.",
+      "parentUuid": "b3c72cb5_bf98761f",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ddceb0d_d9c4ce04",
