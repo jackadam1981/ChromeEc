@@ -4455,6 +4455,8 @@
  */
 #undef CONFIG_TOUCHPAD_VIRTUAL_OFF
 #undef CONFIG_TOUCHPAD_VIRTUAL_SIZE
+#define CONFIG_TOUCHPAD_VIRTUAL_SIZE (64 * 1024)
+#define CONFIG_TOUCHPAD_VIRTUAL_OFF 0x80000000
 
 /*
  * Include hashes of the touchpad FW in the EC image, passed as TOUCHPAD_FW
@@ -5807,6 +5809,7 @@
 /* Firmware upgrade options. */
 /* A different config for the same update. TODO(vbendeb): dedupe these */
 #undef CONFIG_USB_UPDATE
+#define CONFIG_USB_UPDATE
 
 /* Add support for pairing over the USB update interface. */
 #undef CONFIG_USB_PAIRING
