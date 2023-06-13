@@ -144,6 +144,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3c72cb5_bf98761f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-13T19:31:07Z",
+      "side": 1,
+      "message": "the intended population is everyone.  there might be an argument to not modifying behavior on existing devices, so it\u0027d be an opt-out situation, not an opt-in.\n\nbut i\u0027m not seeing a situation where this would make correctly working code break.  it might make broken code that would have triggered a crash no longer crash, but at that point arguably it\u0027s already a bug, and how it manifests or is detected isn\u0027t exactly guaranteed since it\u0027s a bug.",
+      "parentUuid": "a88944ac_3d2c7cc6",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ddceb0d_d9c4ce04",
