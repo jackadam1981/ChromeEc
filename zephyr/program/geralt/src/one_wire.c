@@ -17,7 +17,10 @@
 #include "drivers/one_wire_uart.h"
 #include "usb_hid_touchpad.h"
 
+#define UPDATER_RESPONSE_SIZE_MAX 64
+
 K_MSGQ_DEFINE(touchpad_report_queue, sizeof(struct usb_hid_touchpad_report), 16, 4);
+K_MSGQ_DEFINE(usb_updater_queue, UPDATER_RESPONSE_SIZE_MAX, 16, 4);
 
 const static struct device *one_wire_uart = DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
 
@@ -27,8 +30,18 @@ void board_process_packet(const struct RoachMessage *msg)
 		mkbp_keyboard_add(msg->payload);
 	}
 	if (msg->header.cmd == ROACH_CMD_TOUCHPAD_REPORT) {
-		k_msgq_put(&touchpad_report_queue, msg->payload, K_NO_WAIT);
+		k_msgq_put(&touchpad_report_queue, msg->payload, K_MSEC(1));
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_hid_int_odl), 0);
+	}
+	if (msg->header.cmd == ROACH_CMD_UPDATER_COMMAND) {
+		uint8_t buf[UPDATER_RESPONSE_SIZE_MAX];
+
+		if (msg->header.payload_len >= UPDATER_RESPONSE_SIZE_MAX) {
+			return;
+		}
+		buf[0] = msg->header.payload_len;
+		memcpy(buf + 1, msg->payload, msg->header.payload_len);
+		k_msgq_put(&usb_updater_queue, buf, K_MSEC(1));
 	}
 }
 
@@ -57,7 +70,7 @@ static int ec_ec_comm_init(void)
 	one_wire_uart_set_callback(one_wire_uart, board_process_packet);
 	one_wire_uart_enable(one_wire_uart);
 
-	i2c_target_driver_register(DEVICE_DT_GET(DT_NODELABEL(i2c5_target)));
+	i2c_target_driver_register(DEVICE_DT_GET(DT_NODELABEL(hid_i2c_target)));
 
 	/* UART1PMR */
 	*(volatile uint8_t*)0xf03a23 = 1;
