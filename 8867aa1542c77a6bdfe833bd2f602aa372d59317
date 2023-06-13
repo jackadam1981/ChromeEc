@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c54d9fc_073b5961",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-13T18:30:52Z",
+      "side": 1,
+      "message": "I can\u0027t trigger TPM_RST_L on Red board other than manually. This is not convenient.\n\nI need a state where TPM can accept commands, but when no commands - it goes into deep sleep. This is purely for automating testing involving deep sleep transitions.",
+      "parentUuid": "672ada3c_d40007e6",
+      "revId": "8867aa1542c77a6bdfe833bd2f602aa372d59317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eb080bd_c16b8d30",
