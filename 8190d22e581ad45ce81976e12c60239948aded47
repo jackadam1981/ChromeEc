@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4710adfe_2bfa90cf",
+        "filename": "test/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-13T17:38:52Z",
+      "side": 1,
+      "message": "Could you also update the access violation strings in [run_device_tests.py](http://cs/chromeos_public/src/platform/ec/test/run_device_tests.py?l\u003d100)? I think they should read:\n\n```\nDATA_ACCESS_VIOLATION_64060000_REGEX \u003d re.compile(\n    r\"Data access violation, mfar \u003d 64020000\\r\\n\"\n)\nDATA_ACCESS_VIOLATION_64080000_REGEX \u003d re.compile(\n    r\"Data access violation, mfar \u003d 64040000\\r\\n\"\n)\n```",
+      "range": {
+        "startLine": 23,
+        "startChar": 47,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "8190d22e581ad45ce81976e12c60239948aded47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
