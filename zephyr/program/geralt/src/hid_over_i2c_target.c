@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "console.h"
 #include "drivers/one_wire_uart.h"
 #include "hid_over_i2c_target.h"
 #include "hooks.h"
@@ -64,6 +65,8 @@ struct i2c_target_data {
 	struct ap_power_ev_callback cb;
 };
 
+extern struct k_pipe usb_updater_queue;
+
 static bool in_reset = true;
 
 static void hid_reset(void)
@@ -84,6 +87,8 @@ static void hid_reset(void)
  */
 static int hid_handler(const uint8_t *in, int in_size, uint8_t *out)
 {
+	const struct device *one_wire_uart = DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
+
 	if (in_size == 0) { /* read report */
 		if (!in_reset) {
 			int ret;
@@ -141,6 +146,24 @@ static int hid_handler(const uint8_t *in, int in_size, uint8_t *out)
 		}
 		/* TODO: implement GET_REPORT and SET_REPORT */
 		return 0;
+	}
+
+	if (reg == 0x10) { /* usb updater tunnel */
+		one_wire_uart_send(one_wire_uart, ROACH_CMD_UPDATER_COMMAND, in + 1, in_size - 1);
+		return 0;
+	}
+
+	if (reg == 0x11) {
+		int bytes_read;
+		int ret = k_pipe_get(&usb_updater_queue, out + 1, 255, &bytes_read, 1, K_NO_WAIT);
+
+		if (ret < 0 || bytes_read == 0) {
+			out[0] = 0;
+		} else {
+			out[0] = bytes_read;
+		}
+
+		return out[0] + 1;
 	}
 
 	return 0;
