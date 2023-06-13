@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3912ae88_89f585db",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-06-13T17:17:32Z",
+      "side": 1,
+      "message": "10 is fine. \n\nI was just trying to understand the reasoning. Are the interrupts buffered and repeated reads are needed to clear? Or is it that it may take a few microseconds for the the interrupt line to deassert?",
+      "parentUuid": "7d2bbb54_c77c09de",
+      "revId": "66d196c553724ad419c380769dbf765e4a069e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4350713f_b7052d56",
