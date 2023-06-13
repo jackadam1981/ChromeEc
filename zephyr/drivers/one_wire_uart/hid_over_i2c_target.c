@@ -27,6 +27,11 @@
 
 #define HID_DESC_LENGTH 30
 
+extern struct k_pipe usb_updater_queue;
+
+const static struct device *one_wire_uart =
+	DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
+
 static void hid_reset(const struct device *dev)
 {
 	const struct i2c_target_dev_config *cfg = dev->config;
@@ -107,6 +112,24 @@ static int hid_handler(const struct device *dev, const uint8_t *in, int in_size,
 		}
 		/* TODO: implement GET_REPORT and SET_REPORT */
 		return 0;
+	}
+
+	if (reg == 0x10) { /* usb updater tunnel */
+		one_wire_uart_send(one_wire_uart, ROACH_CMD_UPDATER_COMMAND, in + 1, in_size - 1);
+		return 0;
+	}
+
+	if (reg == 0x11) {
+		int bytes_read;
+		int ret = k_pipe_get(&usb_updater_queue, out + 1, 255, &bytes_read, 1, K_NO_WAIT);
+
+		if (ret < 0 || bytes_read == 0) {
+			out[0] = 0;
+		} else {
+			out[0] = bytes_read;
+		}
+
+		return out[0] + 1;
 	}
 
 	return 0;
