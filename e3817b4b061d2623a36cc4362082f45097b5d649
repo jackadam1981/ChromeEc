@@ -52,6 +52,24 @@
       "parentUuid": "99070cf3_66a03c69",
       "revId": "e3817b4b061d2623a36cc4362082f45097b5d649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eab2d33f_47dbe85f",
+        "filename": "common/ec_features.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-06-13T19:07:44Z",
+      "side": 1,
+      "message": "The cause is a function embedded in an ifdef causing a line in ec_features.c not being counted. see CL:4610069",
+      "parentUuid": "5cd713db_86345a91",
+      "revId": "e3817b4b061d2623a36cc4362082f45097b5d649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
