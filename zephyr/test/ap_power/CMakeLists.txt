@@ -12,5 +12,10 @@ add_subdirectory(${PLATFORM_EC}/zephyr/test/test_utils test_utils)
 zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
 zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 
+target_sources_ifdef(
+	CONFIG_TEST_NISSA
+	app PRIVATE
+	${PLATFORM_EC_PROGRAM_DIR}/nissa/src/board_power.c)
+
 FILE(GLOB_RECURSE test_sources src/*.c)
 target_sources(app PRIVATE ${test_sources})
