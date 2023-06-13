@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "byteorder.h"
+#include "builtin/endian.h"
 #include "common.h"
 #include "console.h"
 #include "consumer.h"
@@ -48,9 +48,9 @@ struct consumer const update_consumer;
 struct usb_stream_config const usb_update;
 
 static struct queue const update_to_usb =
-	QUEUE_DIRECT(64, uint8_t, null_producer, usb_update.consumer);
-static struct queue const usb_to_update =
-	QUEUE_DIRECT(64, uint8_t, usb_update.producer, update_consumer);
+	QUEUE_DIRECT(128, uint8_t, null_producer, usb_update.consumer);
+struct queue const usb_to_update =
+	QUEUE_DIRECT(128, uint8_t, usb_update.producer, update_consumer);
 
 USB_STREAM_CONFIG_FULL(usb_update, USB_IFACE_UPDATE, USB_CLASS_VENDOR_SPEC,
 		       USB_SUBCLASS_GOOGLE_UPDATE, USB_PROTOCOL_GOOGLE_UPDATE,
