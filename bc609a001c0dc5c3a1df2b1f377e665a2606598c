@@ -214,6 +214,30 @@
       },
       "revId": "bc609a001c0dc5c3a1df2b1f377e665a2606598c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "607d4771_423ce1e4",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-13T00:00:41Z",
+      "side": 1,
+      "message": "Following up on my comment above. David was correct that the offsets are the same as in bloonchipper. I was seeing the definition of `CONFIG_RO_SIZE` from [npcx/config_flash_layout.h](http://cs/chromeos_public/src/platform/ec/chip/npcx/config_flash_layout.h?l\u003d69) and didn\u0027t realize it was overridden in [helipilot/board.h](http://cs/chromeos_public/src/platform/ec/board/helipilot/board.h?l\u003d87)",
+      "parentUuid": "bdcb6a77_5e21a791",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 51
+      },
+      "revId": "bc609a001c0dc5c3a1df2b1f377e665a2606598c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
