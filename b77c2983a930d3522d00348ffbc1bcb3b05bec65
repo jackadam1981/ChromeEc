@@ -142,6 +142,30 @@
       },
       "revId": "b77c2983a930d3522d00348ffbc1bcb3b05bec65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f69137c4_1335652b",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-06-13T21:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdac9a80_0dcfa8f6",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 18
+      },
+      "revId": "b77c2983a930d3522d00348ffbc1bcb3b05bec65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
