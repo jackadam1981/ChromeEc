@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b15dae_de756c2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-13T02:04:01Z",
+      "side": 1,
+      "message": "Someone please correct me if I\u0027m wrong but as I understand it unaligned access on the Cortex-M4s should only result in the EC crashing if it is explicitly configured to cause a crash, or if the unaligned access results in accessing across a memory map boundary (for example, past the end of RAM). \n\n\u003e Questions is that the unaligned access would trigger a EC crash and it looks still crashing if ro does not allow it even if RW allows. Would there be potential risk for the released devices ?\n\nThe CL that this is reverting does not make unaligned access more or less likely, it only stops the MCU from throwing an exception if it does occur. So in the case of the RO raising an exception on unaligned access, but the RW not raising an exception, it may be technically possible for an unaligned access to occur in the RW before `cpu_init` is called. This would result in an exception with or without this change. The only difference is that the original CL would prevent a crash in the event of an unaligned access occurring after `cpu_init` is called.",
+      "parentUuid": "e3b7f5ee_bedf90a3",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ddceb0d_d9c4ce04",
