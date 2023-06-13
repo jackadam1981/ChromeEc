@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4bb5cbd_de855036",
+        "filename": "zephyr/program/ovis/ovis/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-06-13T08:58:06Z",
+      "side": 0,
+      "message": "delete battery.dtsi as well? (as in, the file itself)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "fdcd07c5995c6634eb2a3f79acd9915a36a7f96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
