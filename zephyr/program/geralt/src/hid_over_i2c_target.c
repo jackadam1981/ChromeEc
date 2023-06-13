@@ -4,6 +4,7 @@
 
 #include <ap_power/ap_power.h>
 
+#include "console.h"
 #include "drivers/one_wire_uart.h"
 #include "hooks.h"
 #include "roach_cmds.h"
@@ -51,6 +52,9 @@ struct i2c_target_data {
 };
 
 extern struct k_msgq touchpad_report_queue;
+extern struct k_msgq usb_updater_queue;
+
+const static struct device *one_wire_uart = DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
 
 static bool in_reset = true;
 
@@ -117,6 +121,20 @@ static int hid_handler(const uint8_t *in, int in_size, uint8_t *out)
 		}
 		/* TODO: implement GET_REPORT and SET_REPORT */
 		return 0;
+	}
+
+	if (reg == 0x10) { /* usb updater tunnel */
+		one_wire_uart_send(one_wire_uart, ROACH_CMD_UPDATER_COMMAND, in + 1, in_size - 1);
+		return 0;
+	}
+
+	if (reg == 0x11) {
+		int ret = k_msgq_get(&usb_updater_queue, out, K_NO_WAIT);
+		if (ret < 0) {
+			out[0] = 0;
+		}
+
+		return ret ? 1 : out[0] + 1;
 	}
 
 	return 0;
