@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "672ada3c_d40007e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-06-13T18:13:01Z",
+      "side": 1,
+      "message": "I don\u0027t think we should do this. You can pull down the TPM_RST_L signal to set the idle action to deep sleep.",
+      "revId": "8867aa1542c77a6bdfe833bd2f602aa372d59317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eb080bd_c16b8d30",
