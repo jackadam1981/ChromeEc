@@ -34,6 +34,24 @@
       "parentUuid": "a5124ac2_0187d119",
       "revId": "e3817b4b061d2623a36cc4362082f45097b5d649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cd713db_86345a91",
+        "filename": "common/ec_features.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-13T03:59:25Z",
+      "side": 1,
+      "message": "The test at zephyr/test/drivers/ap_vdm_control does cover line 160 successfully. I don\u0027t know what is different between that test and this one.",
+      "parentUuid": "99070cf3_66a03c69",
+      "revId": "e3817b4b061d2623a36cc4362082f45097b5d649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
