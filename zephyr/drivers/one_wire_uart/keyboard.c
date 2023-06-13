@@ -3,10 +3,13 @@
  * found in the LICENSE file.
  */
 
+#include "consumer.h"
 #include "drivers/one_wire_uart.h"
 #include "drivers/one_wire_uart_internal.h"
+#include "drivers/one_wire_uart_stream.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
+#include "queue.h"
 #include "touchpad.h"
 #include "usb_hid_touchpad.h"
 
@@ -17,9 +20,33 @@
 const static struct device *one_wire_uart =
 	DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
 
+void updater_stream_written(const struct consumer *consumer, size_t count)
+{
+	while (!queue_is_empty(consumer->queue)) {
+		struct queue_chunk chunk =
+			queue_get_read_chunk(consumer->queue);
+
+		one_wire_uart_send(one_wire_uart, ROACH_CMD_UPDATER_COMMAND,
+				   chunk.buffer, chunk.count);
+		queue_advance_head(consumer->queue, chunk.count);
+	}
+}
+
+static void recv_cb(uint8_t cmd, const uint8_t *payload, int length)
+{
+	/* TODO: handle ROACH_CMD_SUSPEND/RESUME after touchpad driver ready */
+
+	if (cmd == ROACH_CMD_UPDATER_COMMAND) {
+		const struct queue *usb_to_update = usb_update.producer.queue;
+
+		QUEUE_ADD_UNITS(usb_to_update, payload, length);
+	}
+}
+
 static void ec_ec_comm_init(void)
 {
-	one_wire_uart_enable(DEVICE_DT_GET(DT_NODELABEL(one_wire_uart)));
+	one_wire_uart_set_callback(one_wire_uart, recv_cb);
+	one_wire_uart_enable(one_wire_uart);
 }
 DECLARE_HOOK(HOOK_INIT, ec_ec_comm_init, HOOK_PRIO_DEFAULT);
 
