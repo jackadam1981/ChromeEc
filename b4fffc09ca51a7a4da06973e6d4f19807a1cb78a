@@ -126,6 +126,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a88944ac_3d2c7cc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-06-13T06:45:18Z",
+      "side": 1,
+      "message": "I am wondering it is programmed by CPU_NVIC_CCR |\u003d CPU_NVIC_CCR_DIV_0_TRAP so in the end the CPUREG(0xe000ed14) would keep the ro value unless it is overwritten instead. But anyway, I think to config it for FP only to prevent breaking shipped devices would be a better choice.",
+      "parentUuid": "7139e07a_b7198977",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ddceb0d_d9c4ce04",
