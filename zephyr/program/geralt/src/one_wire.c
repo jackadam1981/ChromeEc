@@ -16,6 +16,8 @@
 #include <zephyr/drivers/uart.h>
 #include <zephyr/kernel.h>
 
+K_PIPE_DEFINE(usb_updater_queue, 256, 1);
+
 const static struct device *one_wire_uart =
 	DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
 
@@ -28,6 +30,11 @@ static void recv_cb(uint8_t cmd, const uint8_t *payload, int length)
 	    length == sizeof(struct usb_hid_touchpad_report)) {
 		hid_i2c_touchpad_add(
 			(const struct usb_hid_touchpad_report *)payload);
+	}
+	if (cmd == ROACH_CMD_UPDATER_COMMAND) {
+		size_t bytes_written;
+
+		k_pipe_put(&usb_updater_queue, (void*)payload, length, &bytes_written, 0, K_NO_WAIT);
 	}
 }
 

@@ -4,9 +4,11 @@
  */
 
 #include "console.h"
+#include "consumer.h"
 #include "drivers/one_wire_uart.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
+#include "queue.h"
 #include "roach_cmds.h"
 #include "touchpad.h"
 #include "usb_hid_touchpad.h"
@@ -18,9 +20,32 @@
 const static struct device *one_wire_uart =
 	DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
 
+static void on_written(struct consumer const *consumer, size_t count)
+{
+	while (1) {
+		struct queue_chunk chunk = queue_get_read_chunk(consumer->queue);
+
+		if (chunk.count == 0) {
+			break;
+		}
+
+		one_wire_uart_send(one_wire_uart, ROACH_CMD_UPDATER_COMMAND,
+				chunk.buffer, chunk.count);
+		queue_advance_head(consumer->queue, chunk.count);
+	}
+}
+
+struct consumer_ops consumer_ops_usb_update = {.written = on_written};
+
+extern struct queue const usb_to_update;
+
 static void recv_cb(uint8_t cmd, const uint8_t *payload, int length)
 {
 	/* TODO: handle ROACH_CMD_SUSPEND/RESUME after touchpad driver ready */
+
+	if (cmd == ROACH_CMD_UPDATER_COMMAND) {
+		QUEUE_ADD_UNITS(&usb_to_update, payload, length);
+	}
 }
 
 static void ec_ec_comm_init(void)
