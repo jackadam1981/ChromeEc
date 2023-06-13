@@ -16,6 +16,24 @@
       "message": "If this is for machine output, should I remove the line length limit?",
       "revId": "12e76c028db89decab30a49d52bf9ede86ca5bc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1ef525_17e1c90b",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4055,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-06-13T21:39:00Z",
+      "side": 1,
+      "message": "if it is \"machine\" then yes it should get rid of `\\n` but if it is raw, then it should keep `\\n` 😊",
+      "parentUuid": "a6e8d7e9_5215105b",
+      "revId": "12e76c028db89decab30a49d52bf9ede86ca5bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
