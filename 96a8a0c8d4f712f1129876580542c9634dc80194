@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cffadea2_dd969103",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-13T06:50:22Z",
+      "side": 0,
+      "message": "we should leave this entry so the EC can copy existing CBI\ninfo from EEPROM to internal flash while we are transitioning.",
+      "range": {
+        "startLine": 344,
+        "startChar": 1,
+        "endLine": 344,
+        "endChar": 11
+      },
+      "revId": "96a8a0c8d4f712f1129876580542c9634dc80194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
