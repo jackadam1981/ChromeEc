@@ -33,6 +33,24 @@
       "message": "why is this necessary? Is this because CCD connection over USB keeps the H1 awake?\n\nMaybe just use the US console instead?",
       "revId": "8867aa1542c77a6bdfe833bd2f602aa372d59317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "308edb27_4f30c6b4",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-13T18:27:17Z",
+      "side": 1,
+      "message": "This is what I used as per Mary\u0027s advice for FIPS testing with deep sleep:\n\n```\nrddkeepalife off\nusb off\nidle d\n```\n\nI found that `rddkeepalife off` is not needed really, but `usb off` is important",
+      "parentUuid": "9eb080bd_c16b8d30",
+      "revId": "8867aa1542c77a6bdfe833bd2f602aa372d59317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
