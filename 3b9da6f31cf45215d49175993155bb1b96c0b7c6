@@ -22,6 +22,30 @@
       },
       "revId": "3b9da6f31cf45215d49175993155bb1b96c0b7c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df89514_462aa130",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-14T21:30:30Z",
+      "side": 1,
+      "message": "SPI flash doesn\u0027t really have a `FLASH_BANK_SIZE`, maybe you\u0027re\nthinking of `FLASH_ERASE_SIZE` which does max out at 64K unless\nyou want to erase the whole chip.\n\nSPI flash protection is controlled by 3 bits: `Block Protect Bits (BP2, BP1, BP0)`\n(winbond sheet section 7.1.3).\nthe way the driver is implemented and `FLASH_BANK_SIZE` is used,\nit\u0027s just the stride size for iterating over flash addresses\nto check if a particular \u0027bank\u0027 is protected.\nfor our flash layout strategy, this value can be as\nlarge as the smallest chunk of flash we would write protect.\nthat\u0027s 256KB on ECs with 512KB flash and 512KB on 1MB ECs.\n\nas pointed out in the linked bug, this algorithm is really not ideal.\nbumping up `FLASH_BANK_SIZE` is primarily intended to demonstrate\nthe potential performance gain.",
+      "parentUuid": "78ec7da5_bff44159",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "3b9da6f31cf45215d49175993155bb1b96c0b7c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
