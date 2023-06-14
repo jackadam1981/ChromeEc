@@ -39,6 +39,30 @@
       },
       "revId": "66f732a9787d0d98968cc1ebd832d43c21962642",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ff01b8_73a2e470",
+        "filename": "zephyr/program/rex/screebo/src/usb_config.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-06-14T02:52:05Z",
+      "side": 1,
+      "message": "I take the same way of `rex/rex/src/usb_mux_config.c` because I notice these macros are tested under `test/drivers`.\nShould we add the related tests to this board-specific level? Look forward to your suggestion.",
+      "parentUuid": "7c32a91b_f3598251",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "66f732a9787d0d98968cc1ebd832d43c21962642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
