@@ -252,6 +252,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "281cc502_6535e578",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-14T21:17:46Z",
+      "side": 1,
+      "message": "\u003e \"my test result shows that with RO raises the exception and RW does not raise, the unaligned access still raises the exception and crash system so the change has potential risk affects the released device\"\n\nthis is unclear as to exactly what you\u0027re describing\n\n\u003e my test result shows that with RO raises the exception\n\nthis is expected \u0026 correct\n\n\u003e RW does not raise\n\nthis is expected \u0026 correct\n\n\u003e the unaligned access still raises the exception and crash system\n\nthis needs clarification.  you just said RW does not raise.  if it doesn\u0027t raise, then the system doesn\u0027t crash.",
+      "parentUuid": "632ac12e_87529849",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ddceb0d_d9c4ce04",
