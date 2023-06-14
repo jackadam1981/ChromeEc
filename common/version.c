@@ -32,12 +32,18 @@ const struct image_data __keep current_image_data FIXED_SECTION("ver") = {
 BUILD_ASSERT(sizeof(CROS_EC_VERSION32) <= 32);
 BUILD_ASSERT(sizeof(CROS_FWID32) <= 32);
 
+#ifdef CONFIG_PIGWEED_LOG_TOKENIZED
+#define BUILD_TOKENIZED "TOK"
+#else
+#define BUILD_TOKENIZED "REG"
+#endif
+
 #ifdef CONFIG_CROS_FWID_VERSION
 const char build_info[] __keep __attribute__((section(".rodata.buildinfo"))) =
-	VERSION " " CROS_FWID32 " " DATE " " BUILDER;
+	VERSION " " CROS_FWID32 " " DATE " " BUILDER " " BUILD_TOKENIZED;
 #else
 const char build_info[] __keep __attribute__((section(".rodata.buildinfo"))) =
-	VERSION " " DATE " " BUILDER;
+	VERSION " " DATE " " BUILDER " " BUILD_TOKENIZED;
 #endif
 
 /* LCOV_EXCL_START - this function doesn't work in GitLab */
