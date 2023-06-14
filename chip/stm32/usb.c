@@ -458,8 +458,6 @@ static void usb_suspend(void)
 	STM32_USB_CNTR |= STM32_USB_CNTR_LP_MODE;
 	interrupt_enable();
 
-	clock_enable_module(MODULE_USB, 0);
-
 	/* USB is not in use anymore, we can (hopefully) sleep now. */
 	enable_sleep(SLEEP_MASK_USB_DEVICE);
 
@@ -488,8 +486,6 @@ DECLARE_DEFERRED(usb_resume_deferred);
 static void usb_resume(void)
 {
 	uint32_t state;
-
-	clock_enable_module(MODULE_USB, 1);
 
 	/* Clear FSUSP bit to exit suspend mode */
 	STM32_USB_CNTR &= ~STM32_USB_CNTR_FSUSP;
