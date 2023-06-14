@@ -105,6 +105,9 @@ ZEPHYR_TEST_PATHS = [
     Path("tests/subsys/shell"),
 ]
 
+os.system("clang --version")
+os.system("which clang")
+
 
 def find_checkout() -> Path:
     """Find the location of the source checkout or return None."""
@@ -287,6 +290,8 @@ def main():
         f"-x=SYSCALL_INCLUDE_DIRS={str(ec_base / 'zephyr' / 'include' / 'drivers')}",
         f"-x=ZEPHYR_BASE={zephyr_base}",
         f"-x=ZEPHYR_MODULES={';'.join([str(p) for p in zephyr_modules])}",
+        f"-x=PYTHON_EXECUTABLE={sys.executable}",
+        "-x=TOOLCHAIN_ROOT={}".format(os.path.abspath(os.environ["TOOLCHAIN_ROOT"])),
     ]
     is_in_chroot = Path("/etc/cros_chroot_version").is_file()
 
@@ -362,6 +367,8 @@ def main():
 
     twister_cli.extend(["--outdir", intercepted_args.outdir])
 
+    twister_cli.extend([f"-x=USER_CACHE_DIR={tempfile.mkdtemp()}"])
+
     # Prepare environment variables for export to Twister. Inherit the parent
     # process's environment, but set some default values if not already set.
     twister_env = dict(os.environ)
@@ -373,6 +380,7 @@ def main():
             ),
             "ZEPHYR_TOOLCHAIN_VARIANT": intercepted_args.toolchain,
             "PARSETAB_DIR": parsetab_dir,
+            "PATH": os.environ.get("PATH", "") + ":/bin:/usr/bin",
         }
         gcov_tool = None
         if intercepted_args.toolchain == "host":

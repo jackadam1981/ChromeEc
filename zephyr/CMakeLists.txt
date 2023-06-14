@@ -64,7 +64,8 @@ if(DEFINED CONFIG_PLATFORM_EC)
 endif()
 
 # Set extra compiler flags.
-zephyr_cc_option(-mno-unaligned-access)
+# TODO check if compiler supports it first :p
+#zephyr_cc_option(-mno-unaligned-access)
 zephyr_cc_option(-Wimplicit-fallthrough)
 
 if (DEFINED CONFIG_RISCV)

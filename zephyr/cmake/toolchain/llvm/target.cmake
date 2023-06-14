@@ -25,4 +25,6 @@ if("${ARCH}" STREQUAL "arm")
 endif()
 
 set(CC clang)
-set(CROSS_COMPILE "/usr/bin/${CROSS_COMPILE_TARGET}-")
+if(EXISTS /etc/cros_chroot_version)
+  set(CROSS_COMPILE "/usr/bin/${CROSS_COMPILE_TARGET}-")
+endif()
