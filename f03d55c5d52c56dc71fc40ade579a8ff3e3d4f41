@@ -1,6 +1,74 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61b266ea_a1433c6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T17:30:14Z",
+      "side": 1,
+      "message": "Sorry this turned out to be more complicated than I said it was.",
+      "revId": "f03d55c5d52c56dc71fc40ade579a8ff3e3d4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e215caf6_53be6f5c",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T17:30:14Z",
+      "side": 1,
+      "message": "```suggestion\n * @brief TestPurpose: Verify dropping VBUS in Hard Reset leads to correct\n```",
+      "revId": "f03d55c5d52c56dc71fc40ade579a8ff3e3d4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b368447a_9751a3d7",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T17:30:14Z",
+      "side": 1,
+      "message": "This should probably go in a new suite/file. Hard Reset isn\u0027t a control message, and this test is unlike the others in this suite, except that `test_verify_bist_tx_test_data` sends a control message incidentally.",
+      "revId": "f03d55c5d52c56dc71fc40ade579a8ff3e3d4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8c33398_bb186be6",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T17:30:14Z",
+      "side": 1,
+      "message": "The actual process is a bit more complex than this. I don\u0027t know how close to the real thing you\u0027ll need to get, but `tc_perform_snk_hard_reset` manages the timers involved in the Hard Reset process. To cover it thoroughly, I think the test would probably need some awareness of those timers as well. I think the partner emulator probably does this incorrectly in general, but we get away with it, because we end up resetting anyway.\n\nThe process is described in PD r3.1 v1.8 ss 7.3.4.1 Source Initiated Hard Reset. Hopefully, you won\u0027t need to refer to that. https://usb.org/document-library/usb-power-delivery\n\n1. Partner sends the Hard Reset. You\u0027re already doing this.\n2. Partner waits ~30 ms.\n3. Partner drops to vSafe0V. You\u0027re already doing this, but too early. The max time for this is 650 ms. I don\u0027t think you need to worry about the minimum time, but you could make it like 20 ms for plausibility.\n4. Partner waits between 660 and 1000 ms.\n5. Partner turns back on VBUS to vSafe5V. Again, there\u0027s a max amount of time for this of 275 ms but no min time.\n\n3 is the step that covers the code you\u0027re trying to cover.",
+      "revId": "f03d55c5d52c56dc71fc40ade579a8ff3e3d4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca3fb10e_fc79d64a",
@@ -14,6 +82,30 @@
       "writtenOn": "2023-06-13T22:13:54Z",
       "side": 1,
       "message": "I have no idea if this is correct, but it is what the register is set to.\n\nDo you have a different assert that would be better?",
+      "range": {
+        "startLine": 426,
+        "startChar": 1,
+        "endLine": 429,
+        "endChar": 1
+      },
+      "revId": "f03d55c5d52c56dc71fc40ade579a8ff3e3d4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44b8623b_7d396a09",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T17:30:14Z",
+      "side": 1,
+      "message": "I described this process to you incorrectly before. The CC terminations shouldn\u0027t change during a Hard Reset. I was thinking of something else.\n\nThe externally visible requirements on the sink during a Hard Reset are just that it doesn\u0027t draw too much current when the source reapplies vSafe5v. We have no way to measure that via an emulator.\n\nAfter PD starts again, shortly after the partner applies vSafe5V, the TCPM should initially be UFP and not VCONN Source, and you could test those things.\n\nThere are a few different ways I can think of to verify this, and I don\u0027t know which is best. Make sure the partner is Source/UFP/not VCONN Source before the Hard Reset with a Data Role Swap. The partner should be Source/DFP/VCONN Source after the Hard Reset. (You\u0027ll probably need to do this for each verification strategy.)\n1. Add an assert to the partner that checks the data role field on incoming messages and fails the test if it\u0027s wrong. (Probably in `tcpci_partner_transmit_op` or something in that call chain.)\n2. Run a host command to check the TCPM\u0027s self-reported roles. We do this a lot, but you would need to time it so that it happened before the TCPM did any swaps to change its roles.\n3. Alternatively, you could configure the partner to reject VCONN Swap and Data Role Swap after the Hard Reset. Then you could check the TCPM\u0027s self-reported roles at your leisure.",
+      "parentUuid": "ca3fb10e_fc79d64a",
       "range": {
         "startLine": 426,
         "startChar": 1,
