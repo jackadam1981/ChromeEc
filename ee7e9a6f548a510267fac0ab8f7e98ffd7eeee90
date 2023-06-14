@@ -22,6 +22,30 @@
       },
       "revId": "ee7e9a6f548a510267fac0ab8f7e98ffd7eeee90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69abbf9d_8780de85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-14T14:23:55Z",
+      "side": 1,
+      "message": "It is not used by any build as there was no way to configure it. This is actually a good idea to add it to `make buildall`  or CQ script.\n\nThe kind of testing I needed it is on H1 Red Board to call TPM2_CreatePrimary with EK request - without proper configuration it fails.",
+      "parentUuid": "a0df55ff_5c8204f6",
+      "range": {
+        "startLine": 7,
+        "startChar": 50,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "ee7e9a6f548a510267fac0ab8f7e98ffd7eeee90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
