@@ -198,6 +198,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea314ba0_cbc6a31a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-14T19:07:13Z",
+      "side": 1,
+      "message": "Silent crash means EC reboots without calling the panic handler. \n\n\u003e then it\u0027s going to trigger an exception regardless\n-- was that tested?\n\n-- was this CL verified on all different cortex-m chips?\n\nI don\u0027t understand the last section, please elaborate what do you mean by \"broken\" device and \"bad code\". Released devices have RO image that is fixed and RW that is changing. I\u0027m afraid that combination of RO that requires alignment with RW that uses unaligned addresses might result in unnecessary exception.\n\nWhat prevents us from adding this change only for FP boards under a proper CONFIG?",
+      "parentUuid": "d5753d44_c6de03eb",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ddceb0d_d9c4ce04",
