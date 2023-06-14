@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ad8a026_4a93e0ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-14T17:23:03Z",
+      "side": 1,
+      "message": "Should be the child bug b:266972341",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "5bc30ec4b8b004c3afb0e1ff511e24c6c5e71cea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d4aff62_29a9c602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-06-14T17:23:03Z",
+      "side": 1,
+      "message": "Change the dts of the test too, i.e. test/drivers/cbi_flash/binman.dts",
+      "revId": "5bc30ec4b8b004c3afb0e1ff511e24c6c5e71cea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
