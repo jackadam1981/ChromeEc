@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3415098_e2d13b85",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T18:52:35Z",
+      "side": 1,
+      "message": "Please integrate the new code into `usb_pd_alt_mode.h`.",
+      "parentUuid": "5eedc4e5_e33d9502",
+      "range": {
+        "startLine": 5,
+        "startChar": 16,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "8bb9e6883c1a882be368b0adcd4909f7018e99fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7933e60_b966ae92",
         "filename": "include/usb_pd_dp.h",
         "patchSetId": 25
@@ -402,6 +426,30 @@
       "writtenOn": "2023-04-19T23:07:13Z",
       "side": 1,
       "message": "use the enum wherever necessary",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 10
+      },
+      "revId": "8bb9e6883c1a882be368b0adcd4909f7018e99fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e9cdd15_4a6e5726",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T18:52:35Z",
+      "side": 1,
+      "message": "Please fix.",
+      "parentUuid": "29b7bdbb_bfd95ec6",
       "range": {
         "startLine": 41,
         "startChar": 2,

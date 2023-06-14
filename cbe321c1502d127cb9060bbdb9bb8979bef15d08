@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6ced5f_9d52a55e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T18:52:35Z",
+      "side": 1,
+      "message": "First pass on the generic PD stuff. I\u0027ll take another pass after I familiarize myself with DP alt mode 2.1.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2378db8_123a0851",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T18:52:35Z",
+      "side": 1,
+      "message": "I think we should probably record the VDM version from the partner and cable exactly as we received it and then make a decision to downgrade to our own highest supported version if necessary at transmit time. That will let us at least report the partner\u0027s real version up to the AP.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b66e579_0a6e0f17",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T18:52:35Z",
+      "side": 1,
+      "message": "Although major and minor versions are separate fields in the VDM header, I think it makes sense to calculate the version as one unified value. The minor version doesn\u0027t mean anything without the major version. Can you integrate the minor version into the existing logic here?",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc09e5df_99040171",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 5762,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T18:52:35Z",
+      "side": 1,
+      "message": "Please name functions like this `pe_*`. If you make it exported (see below), name it `pd_*`.\n\nThis one should probably be something like `pe_compose_svdm_header` or `pd_compose_svdm_header`. (Since the result will always be a structured VDM.)",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37a4c5ed_93e0dd34",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 5764,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T18:52:35Z",
+      "side": 1,
+      "message": "I like the idea of having a function to compose VDM headers, but this macro usage is getting pretty convoluted. I\u0027d prefer to refactor existing usage than add another way of doing the same thing.\n\n1. See my above comment about refactoring `pd_get_vdo_ver` to deal with the minor version.\n2. AFAICT, the `VDO` macro is only used to compose VDM headers, but as you\u0027ve noticed, it\u0027s awkward for that. I think we could entirely replace it with a function like this. It would be nice if you did that, but if you don\u0027t feel like it, could you declare this function in `usb_pd.h` to make the refactor easier later.\n3. If you do that, you\u0027ll need to pass in `tx_type` as an argument to make it stateless.\n\nNits:\n1. Please put the `port` argument first to align with the other functions in the TCPM.\n2. You should mask `cmd` with `VDO_CMDT_MASK`.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573e927a_6fa20193",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 6435,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T18:52:35Z",
+      "side": 1,
+      "message": "Nit: Can you define a macro like `VDO_SVDM_VERS_MINOR_MASK` and use that here, so it\u0027s more obvious that you\u0027re clearing every bit?\n\nIf it\u0027s convenient with existing code, I would also accept a `VDO_SVDM_VERS_MASK` that could be used to clear both fields.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a81108_4dbed13c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T18:52:35Z",
+      "side": 1,
+      "message": "We already have this on line 508. I like the enum better than macros, so by all means, switch to an enum. But please also update existing usages of the macro and remove it.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897a62a0_0646416a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T18:52:35Z",
+      "side": 1,
+      "message": "Please change this macro to `VDO_SVDM_VERS_MAJOR` and update the comment that describes the bit fields.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a61382b_554e31ae",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-14T18:52:35Z",
+      "side": 1,
+      "message": "1. Why is this in a DP-specific file? It should probably be in `usb_pd.h`. The PD spec says we should use VDM version 2.1 if we support PD r3.1 v1.6 or newer.\n2. This is an odd constant. We should be figuring out the whole version at the same time, in one place, not the minor version by itself.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
