@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3ef04c_9383a464",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-14T03:33:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bb93434_32f48c77",
+      "range": {
+        "startLine": 350,
+        "startChar": 9,
+        "endLine": 350,
+        "endChar": 35
+      },
+      "revId": "b6a9b996ca8a165c515555a304c052e15eabe1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c0e681a_60c2b22e",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-06-14T00:19:16Z",
       "side": 1,
       "message": "please indicate that code above is not compliled when this is defined.",
+      "range": {
+        "startLine": 508,
+        "startChar": 10,
+        "endLine": 508,
+        "endChar": 36
+      },
+      "revId": "b6a9b996ca8a165c515555a304c052e15eabe1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e16579_936702a0",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-14T03:33:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c0e681a_60c2b22e",
       "range": {
         "startLine": 508,
         "startChar": 10,
