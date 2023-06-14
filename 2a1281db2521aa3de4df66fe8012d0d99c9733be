@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71fc3511_8e2e54db",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-14T19:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2cd58d0_ed7f06d4",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "2a1281db2521aa3de4df66fe8012d0d99c9733be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "951d9c91_db1aba53",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f62f436_a088c8ff",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-14T19:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "951d9c91_db1aba53",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 6
+      },
+      "revId": "2a1281db2521aa3de4df66fe8012d0d99c9733be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fff95a9_b1972170",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-06-14T19:40:23Z",
       "side": 1,
       "message": "Shall we update only EC_MKBP_LID_OPEN? It seems safer.",
+      "range": {
+        "startLine": 124,
+        "startChar": 30,
+        "endLine": 124,
+        "endChar": 50
+      },
+      "revId": "2a1281db2521aa3de4df66fe8012d0d99c9733be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11442ba3_cbfc989d",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-14T19:59:11Z",
+      "side": 1,
+      "message": "mkbp protocol send all the switches values, so we update them all.",
+      "parentUuid": "5fff95a9_b1972170",
       "range": {
         "startLine": 124,
         "startChar": 30,
