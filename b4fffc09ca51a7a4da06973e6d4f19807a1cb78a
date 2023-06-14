@@ -216,6 +216,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f997fc27_dc694926",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-14T19:26:48Z",
+      "side": 1,
+      "message": "\u003e Silent crash means EC reboots without calling the panic handler.\n\nwhy is the EC going to reboot ?  if no exception is generated, then the EC shouldn\u0027t randomly be rebooting.\n\n\u003e \u003e if you\u0027re using an insn that never supports unaligned accesses (e.g. iirc some SIMD insns), then it\u0027s going to trigger an exception regardless\n\u003e\n\u003e -- was that tested?\n\nprobably not, but i\u0027m not familiar with the breadth of ISAs to know how many are actually in this bucket on a cortex-m\n\n\u003e -- was this CL verified on all different cortex-m chips?\n\nisn\u0027t that what ToT is for ?  are you requiring people to verify every CL that touches common code on every cortex-m chip and/or shipped device ?  i assume not, but i grok that there\u0027s a question of \"how risky is X and how thorough do we need to be before we can land it everywhere\".  i don\u0027t see this change as that risky.\n\n\u003e I don\u0027t understand the last section, please elaborate what do you mean by \"broken\" device and \"bad code\".\n\nif you setup your memory map such that derefing a NULL pointer triggers an exception and crashes the system, then any code that uses a NULL pointer as such is broken.  there is no situation in which that would be considered correct, and it should never happen in the field.  if the code never derefs a NULL pointer, it would never trigger that exception, and there wouldn\u0027t be a problem.\n\nif we adjust the memory map such that address 0 can now be read/written without triggering an exception, then the only thing this affects is code that is already bad.  all correctly functioning code would still work correctly.\n\nmaybe reading/writing address 0 will cause the code to wander down other code paths and eventually crash/assert for a different reason.\n\nthat\u0027s basically what we\u0027re talking about here with unaligned exceptions.  except that there are some situations where we\u0027re arguably making the system *more reliable* instead of crashing the EC because we accidentally created an unaligned structure that can be correctly used.  e.g. we have a buffer on the stack with alignof 1 and we cast it to a struct that requires 32-bit alignment, and then pass that struct directly to functions that read/write it like a struct.\n\n\u003e  I\u0027m afraid that combination of RO that requires alignment with RW that uses unaligned addresses might result in unnecessary exception.\n\nyou haven\u0027t cited any examples of how this would be possible\n\n\u003e What prevents us from adding this change only for FP boards under a proper CONFIG?\n\ni\u0027m not saying this isn\u0027t possible.  i\u0027m questioning whether you have an actual examples/thoughts of why it\u0027d matter.  if you want to purely argue \"i\u0027m completely risk adverse and thus i don\u0027t want to make any changes to released devices\", then i\u0027d question why you\u0027re shipping EC updates from ToT in the first place, and why you aren\u0027t using a frozen firmware branch.",
+      "parentUuid": "ea314ba0_cbc6a31a",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ddceb0d_d9c4ce04",
