@@ -142,8 +142,22 @@ void tablet_set_mode(int mode, uint32_t trigger)
 
 void tablet_disable(void)
 {
-	tablet_mode = 0;
+	bool need_to_notify = false;
+
 	disabled = true;
+	/*
+	 * We may have already transition to tablet mode:
+	 * At board init time, while the sensors are not running yet, we may
+	 * have read the GMR GPIO already. In case of clamshell device the GMR
+	 * may not be stuffed and we can think we are in tablet mode. At
+	 * recovery time, we want the device keyboard to be functional, even if
+	 * the the device is in tablet mode.
+	 */
+	if (tablet_get_mode())
+		need_to_notify = true;
+	tablet_mode = 0;
+	if (need_to_notify)
+		notify_tablet_mode_change();
 }
 
 /* This ifdef can be removed once we clean up past projects which do own init */
