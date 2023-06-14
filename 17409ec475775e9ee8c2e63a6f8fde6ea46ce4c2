@@ -22,6 +22,30 @@
       },
       "revId": "17409ec475775e9ee8c2e63a6f8fde6ea46ce4c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7fc422_7e793666",
+        "filename": "BUILD.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-14T18:16:12Z",
+      "side": 1,
+      "message": "I sorted them by name.\n\nI\u0027m going to hold off on grouping them because we\u0027re likely to change what these build rules look like.",
+      "parentUuid": "e8545a9f_25b81935",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "17409ec475775e9ee8c2e63a6f8fde6ea46ce4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
