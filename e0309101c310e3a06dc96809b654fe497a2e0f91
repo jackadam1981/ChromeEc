@@ -66,6 +66,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "533e4ec3_4c1c25ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-14T20:26:06Z",
+      "side": 1,
+      "message": "IMHO, Both are needed. This fix ensures not discrepency between tablet mode susbsystem and its dependency. That fix remove further cause of discrepency for MKBP only.",
+      "parentUuid": "d24e172c_19eb269b",
+      "revId": "e0309101c310e3a06dc96809b654fe497a2e0f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c61907e0_ba39b58e",
@@ -79,6 +97,30 @@
       "writtenOn": "2023-06-14T20:09:23Z",
       "side": 1,
       "message": "I don\u0027t see this part in the code. Can you clarify?",
+      "range": {
+        "startLine": 152,
+        "startChar": 63,
+        "endLine": 154,
+        "endChar": 37
+      },
+      "revId": "e0309101c310e3a06dc96809b654fe497a2e0f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bba1cc1_e49c4dc6",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-14T20:26:06Z",
+      "side": 1,
+      "message": "I was referering to \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1696914\nwhere we disable tablet mode if the recovery sequence is pressed.\nBut looking at the code deeper, since the test is done in main() very early at init, it looks like we will disable the tablet mode very early, before the hook task can run.",
+      "parentUuid": "c61907e0_ba39b58e",
       "range": {
         "startLine": 152,
         "startChar": 63,
