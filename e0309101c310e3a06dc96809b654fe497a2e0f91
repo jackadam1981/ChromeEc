@@ -153,6 +153,30 @@
       },
       "revId": "e0309101c310e3a06dc96809b654fe497a2e0f91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16fa764_a648077a",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-14T21:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cc39847_a8ad17fe",
+      "range": {
+        "startLine": 152,
+        "startChar": 63,
+        "endLine": 154,
+        "endChar": 37
+      },
+      "revId": "e0309101c310e3a06dc96809b654fe497a2e0f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

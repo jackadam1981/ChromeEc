@@ -22,6 +22,30 @@
       },
       "revId": "a85ccbe45483e2c1f62c5d1f000366168b17e31c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8d75da7_a6022c91",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-14T21:42:04Z",
+      "side": 1,
+      "message": "Done. Note we won\u0027t call notify_tablet_mode_change() anyway, since the last call to tablet_disable() has set |tablet_mode| to 0 already.",
+      "parentUuid": "7b8fb531_c7a92d97",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 17
+      },
+      "revId": "a85ccbe45483e2c1f62c5d1f000366168b17e31c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
