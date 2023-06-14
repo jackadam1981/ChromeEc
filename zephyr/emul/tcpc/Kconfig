@@ -5,7 +5,7 @@
 menuconfig EMUL_TCPCI
 	bool "TCPCI common functionality"
 	default y
-	depends on DT_HAS_CROS_TCPCI_GENERIC_EMUL_ENABLED
+	depends on DT_HAS_CROS_TCPCI_GENERIC_EMUL_ENABLED || DT_HAS_NUVOTON_NCT38XX_ENABLED
 	depends on I2C_EMUL
 	select PLATFORM_EC_USB_PD_TCPM_TCPCI
 	select EMUL_COMMON_I2C
