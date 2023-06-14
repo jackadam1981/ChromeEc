@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b9edec8_a2b92f7b",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-14T18:57:40Z",
+      "side": 1,
+      "message": "When DRP bit is set, bit0..3 of ROLE_CONTROL register are used to set the starting value of Rp/Rd (according to the tcpci spec). TCPM doesn\u0027t care what\u0027s in bit0..3 when a cable is detected (i.e. tcpci_tcpm_get_cc).\n\nI removed anx7406_set_role and just set bit6 (TCPC_REG_ROLE_CTRL_DRP_MASK) and verified the fix also works.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "1119c1dd7583a14eb4f2c266cf105c2a06126186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0dff950_9fcbe28a",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-14T18:57:40Z",
+      "side": 1,
+      "message": "Please revise or remove this comment.",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 49
+      },
+      "revId": "1119c1dd7583a14eb4f2c266cf105c2a06126186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fa79e6f_5c42301c",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-14T18:57:40Z",
+      "side": 1,
+      "message": "You can just do:\n\n\trv \u003d tcpc_update8(port, TCPC_REG_ROLE_CTRL,\n\t\t\t  TCPC_REG_ROLE_CTRL_DRP_MASK, MASK_SET);\n\nand remove anx7406_set_role.",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 30
+      },
+      "revId": "1119c1dd7583a14eb4f2c266cf105c2a06126186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
