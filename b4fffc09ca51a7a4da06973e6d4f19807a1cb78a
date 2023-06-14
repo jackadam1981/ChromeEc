@@ -234,6 +234,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "632ac12e_87529849",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-14T20:27:17Z",
+      "side": 1,
+      "message": "\u003e  i don\u0027t see this change as that risky.\n\nnoted. However myself, Ivan and Caveh are seeing it as risky and asking to apply it to relevant (new) boards only, to be on the safe side. Does it make sense?\n\n\u003e you haven\u0027t cited any examples of how this would be possible\n\nQuoting Ivan\u0027s comment above:\n\"my test result shows that with RO raises the exception and RW does not raise, the unaligned access still raises the exception and crash system so the change has potential risk affects the released device\"\n\n\u003e i\u0027d question why you\u0027re shipping EC updates from ToT\n\n-- awesome question, but not relevant for this CL.",
+      "parentUuid": "f997fc27_dc694926",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ddceb0d_d9c4ce04",
