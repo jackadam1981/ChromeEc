@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2cd58d0_ed7f06d4",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-14T19:40:23Z",
+      "side": 1,
+      "message": "nit: You can probably use IS_ENABLED for these.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "2a1281db2521aa3de4df66fe8012d0d99c9733be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "951d9c91_db1aba53",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-14T19:40:23Z",
+      "side": 1,
+      "message": "Can you add comment something like:\n\n    /*\n     * These all read already debounced states and cause no side effects\n     * or latency.\n     */",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 6
+      },
+      "revId": "2a1281db2521aa3de4df66fe8012d0d99c9733be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fff95a9_b1972170",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-14T19:40:23Z",
+      "side": 1,
+      "message": "Shall we update only EC_MKBP_LID_OPEN? It seems safer.",
+      "range": {
+        "startLine": 124,
+        "startChar": 30,
+        "endLine": 124,
+        "endChar": 50
+      },
+      "revId": "2a1281db2521aa3de4df66fe8012d0d99c9733be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
