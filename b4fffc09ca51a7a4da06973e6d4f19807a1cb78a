@@ -302,6 +302,23 @@
       "message": "It looks like the alignment test should probably just be removed: https://crrev.com/c/4597766.\n\nWe should also remove the `crash align` command since that is confusing (it won\u0027t actually crash).\n\nHowever, if you\u0027re concerned that this causes problems with launching this device and want to temporarily revert, I\u0027m ok with that too (I\u0027m assuming we can find a way to re-enable going forward, so let me know if that\u0027s not the case.).",
       "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60c546a_ef89303d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-14T23:53:59Z",
+      "side": 1,
+      "message": "The original change opened a window for unaligned access code. If we think there is such code already checked in, we need to make it aligned or disable the trap entirely (by clearing UNALIGN_TRP explicitly and abandoning this revert). Such code should have been already caught if our FW quals test all RO+RW combinations.\n\nIf unaligned access code runs on current RW on RO with UNALIGN_TRP, it\u0027ll crash the system. So, this revert will allow us to catch such a change earlier, meaning on new RW + new RO, just like before.\n\nSo, if we don\u0027t feel neccesity to allow unaligned access entirely, we should submit this revert and correctly clear UNALIGN_TRP for FPS.",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
