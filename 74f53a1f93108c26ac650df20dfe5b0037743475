@@ -16,6 +16,23 @@
       "message": "responded to all comments",
       "revId": "74f53a1f93108c26ac650df20dfe5b0037743475",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "430154e7_e2310672",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-14T23:01:10Z",
+      "side": 1,
+      "message": "This looks OK to me, but I\u0027m adding cros-ec-reviewers since this is generic code. Want to make sure they don\u0027t have a reason to keep the old version around for some reason.",
+      "revId": "74f53a1f93108c26ac650df20dfe5b0037743475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
