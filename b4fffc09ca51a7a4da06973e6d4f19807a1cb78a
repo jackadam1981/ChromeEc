@@ -180,6 +180,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5753d44_c6de03eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-14T04:55:19Z",
+      "side": 1,
+      "message": "sorry, but what is a \"silent crash\" ?\n\nif you\u0027re using an insn that never supports unaligned accesses (e.g. iirc some SIMD insns), then it\u0027s going to trigger an exception regardless.  if you\u0027re accessing a memory region that doesn\u0027t support unaligned accesses (like some MMIO), then it\u0027ll trigger \u003csomething\u003e (i don\u0027t know if it\u0027s an exception or interrupt or some other mechanism -- i\u0027m not as familiar with ARM cores in this space).\n\nif you\u0027re using insns like basic loads/stores on memory that allows it, an unaligned access will simple read/write the memory in question ... there will be no exception, and thus no crash.\n\nnowhere in here will an already released device break.  either it\u0027s already broken (because the code is bad), or it isn\u0027t broken, and thus runs fine.  the only argument is that for released devices with buggy code that happens to manifest itself as an unaligned access, an exception (and thus crash) is not guaranteed to be generated immediately.",
+      "parentUuid": "d252492b_5e94be14",
+      "revId": "b4fffc09ca51a7a4da06973e6d4f19807a1cb78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ddceb0d_d9c4ce04",
