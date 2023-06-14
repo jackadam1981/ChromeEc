@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7711025_bb23c528",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-14T00:01:57Z",
+      "side": 1,
+      "message": "Can you call tcpci_set_role_ctrl(port, TYPEC_DRP, TYPEC_RP_USB, TYPEC_CC_ RP) instead?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 17
+      },
+      "revId": "fbb2bbe9b7c3e038458f2614364cef402ef804f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
