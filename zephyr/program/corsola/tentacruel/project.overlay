@@ -98,11 +98,8 @@
 			handler = "ppc_interrupt";
 		};
 
-		int_usb_c0_bc12: usb_c0_bc12 {
-			irq-pin = <&usb_c0_bc12_int_odl>;
-			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "bc12_interrupt";
-		};
+		/delete-node/ usb_c1_bc12_charger;
+
 	};
 
 	usbc {
@@ -399,6 +396,7 @@
 
 &i2c0 {
 	charger_bc12_port1: rt9490@53 {
+		/delete-property/ irq;
 		thermistor = <&thermistor_rt9490>;
 	};
 };
@@ -408,7 +406,6 @@
 		compatible = "pericom,pi3usb9201";
 		status = "okay";
 		reg = <0x5f>;
-		irq = <&int_usb_c0_bc12>;
 	};
 
 	ppc_port0: syv682x@40 {

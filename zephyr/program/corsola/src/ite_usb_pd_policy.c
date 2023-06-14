@@ -11,7 +11,9 @@
 
 int pd_snk_is_vbus_provided(int port)
 {
+#ifdef CONFIG_USB_CHARGER
 	static atomic_t vbus_prev[CONFIG_USB_PD_PORT_MAX_COUNT];
+#endif
 	int vbus;
 
 	/*
