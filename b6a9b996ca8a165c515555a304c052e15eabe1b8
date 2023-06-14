@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b978891_69f861dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-14T00:19:16Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand the goal of this patch.\n\nI think the original idea was that the fallback cert is not an alternative, it is an addition to use in case the actual cert is not available. In this case the device would fall back to the fallback cert instead of failing.",
+      "revId": "b6a9b996ca8a165c515555a304c052e15eabe1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bb93434_32f48c77",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-14T00:19:16Z",
+      "side": 1,
+      "message": "please indicate that this is defined above and not defined below",
+      "range": {
+        "startLine": 350,
+        "startChar": 9,
+        "endLine": 350,
+        "endChar": 35
+      },
+      "revId": "b6a9b996ca8a165c515555a304c052e15eabe1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c0e681a_60c2b22e",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-14T00:19:16Z",
+      "side": 1,
+      "message": "please indicate that code above is not compliled when this is defined.",
+      "range": {
+        "startLine": 508,
+        "startChar": 10,
+        "endLine": 508,
+        "endChar": 36
+      },
+      "revId": "b6a9b996ca8a165c515555a304c052e15eabe1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
