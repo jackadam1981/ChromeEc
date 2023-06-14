@@ -1502,6 +1502,10 @@ function flash_npcx_uut() {
 	done
 	if [ -z "${MON}" ] ; then
 		echo "Failed to find npcx_monitor.bin"
+		if [ -n "${FLAGS_image}" ] ; then
+			echo "Have you built the EC code for this project at least once yet?"
+			echo "Example: make BOARD=brya -j8"
+		fi
 		exit 1
 	fi
 	info "Using NPCX image : ${MON}"
