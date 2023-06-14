@@ -47,6 +47,46 @@
       },
       "revId": "e0309101c310e3a06dc96809b654fe497a2e0f91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d24e172c_19eb269b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-14T20:09:23Z",
+      "side": 1,
+      "message": "We\u0027ll go with this fix as a short term solution. For a long term, this is addressed by https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4616428/.",
+      "revId": "e0309101c310e3a06dc96809b654fe497a2e0f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c61907e0_ba39b58e",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-14T20:09:23Z",
+      "side": 1,
+      "message": "I don\u0027t see this part in the code. Can you clarify?",
+      "range": {
+        "startLine": 152,
+        "startChar": 63,
+        "endLine": 154,
+        "endChar": 37
+      },
+      "revId": "e0309101c310e3a06dc96809b654fe497a2e0f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
