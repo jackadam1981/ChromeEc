@@ -22,6 +22,30 @@
       },
       "revId": "f87fec7b78f099902fbbbda02ec79ab297ead597",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de68312c_a5767ad0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2023-06-14T23:54:22Z",
+      "side": 0,
+      "message": "Sounds good I\u0027ll upload a patch removing it in TCPMv1",
+      "parentUuid": "a8fd6dba_3b81bd4e",
+      "range": {
+        "startLine": 795,
+        "startChar": 5,
+        "endLine": 795,
+        "endChar": 35
+      },
+      "revId": "f87fec7b78f099902fbbbda02ec79ab297ead597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
