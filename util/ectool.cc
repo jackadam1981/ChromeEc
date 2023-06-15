@@ -952,6 +952,8 @@ static const char *const ec_feature_names[] = {
 	[EC_FEATURE_S4_RESIDENCY] = "S4 residency",
 	[EC_FEATURE_TYPEC_AP_MUX_SET] = "AP directed mux sets",
 	[EC_FEATURE_TYPEC_AP_VDM_SEND] = "AP directed VDM Request messages",
+	[EC_FEATURE_SYSTEM_SAFE_MODE] = "System Safe Mode support",
+	[EC_FEATURE_ASSERT_REBOOTS] = "Assert reboots",
 };
 
 int cmd_inventory(int argc, char *argv[])
@@ -1798,9 +1800,16 @@ int cmd_flash_protect(int argc, char *argv[])
 			p.mask |= EC_FLASH_PROTECT_RO_AT_BOOT;
 	}
 
+<<<<<<< HEAD   (dee51e Revert "ec: Enable unaligned access for cortex-m")
 	rv = ec_command(EC_CMD_FLASH_PROTECT, EC_VER_FLASH_PROTECT, &p,
 			sizeof(p), &r, sizeof(r));
 	if (rv < 0)
+=======
+	ec::FlashProtectCommand_v1 flash_protect_command(flags, mask);
+	if (!flash_protect_command.Run(comm_get_fd())) {
+		int rv = -EECRESULT - flash_protect_command.Result();
+		fprintf(stderr, "Flash protect returned with errors: %d\n", rv);
+>>>>>>> BRANCH (d92f53 cbi: flash: Move CBI section out of EC_RO)
 		return rv;
 	if (rv < sizeof(r)) {
 		fprintf(stderr, "Too little data returned.\n");
@@ -1808,9 +1817,28 @@ int cmd_flash_protect(int argc, char *argv[])
 	}
 
 	/* Print returned flags */
+<<<<<<< HEAD   (dee51e Revert "ec: Enable unaligned access for cortex-m")
 	print_flash_protect_flags("Flash protect flags:", r.flags);
 	print_flash_protect_flags("Valid flags:        ", r.valid_flags);
 	print_flash_protect_flags("Writable flags:     ", r.writable_flags);
+=======
+	printf("Flash protect flags: 0x%08x%s\n",
+	       flash_protect_command.GetFlags(),
+	       (ec::FlashProtectCommand_v1::ParseFlags(
+			flash_protect_command.GetFlags()))
+		       .c_str());
+	printf("Valid flags:         0x%08x%s\n",
+	       flash_protect_command.GetValidFlags(),
+	       (ec::FlashProtectCommand_v1::ParseFlags(
+			flash_protect_command.GetValidFlags()))
+		       .c_str());
+	printf("Writable flags:      0x%08x%s\n",
+	       flash_protect_command.GetWritableFlags(),
+
+	       (ec::FlashProtectCommand_v1::ParseFlags(
+			flash_protect_command.GetWritableFlags()))
+		       .c_str());
+>>>>>>> BRANCH (d92f53 cbi: flash: Move CBI section out of EC_RO)
 
 	/* Check if we got all the flags we asked for */
 	if ((r.flags & p.mask) != (p.flags & p.mask)) {
