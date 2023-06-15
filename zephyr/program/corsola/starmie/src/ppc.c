@@ -30,7 +30,8 @@ void ppc_interrupt(enum gpio_signal signal)
 
 static int set_rt1739(void)
 {
-	rt1739_init(0);
+	if (!system_jumped_to_this_image())
+		rt1739_init(0);
 	return 0;
 }
 
