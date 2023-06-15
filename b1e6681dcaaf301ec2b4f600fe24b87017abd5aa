@@ -16,6 +16,24 @@
       "message": "Covered by https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4615470",
       "revId": "b1e6681dcaaf301ec2b4f600fe24b87017abd5aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b3eea0_437325f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-15T16:23:56Z",
+      "side": 1,
+      "message": "This merge CL does not apply to the nissa branch, only dedede.",
+      "parentUuid": "e53d2960_4100b97f",
+      "revId": "b1e6681dcaaf301ec2b4f600fe24b87017abd5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
