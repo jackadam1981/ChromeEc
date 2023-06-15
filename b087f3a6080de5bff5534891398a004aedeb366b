@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e73d12_66523800",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2546,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-15T19:52:55Z",
+      "side": 1,
+      "message": "I approved the GSC side of this, but now I\u0027m having second thoughts: what about backwards compatibility? Why is this change necessary in the first place, was something wrong?\n\nMaybe the GSC side change needs to be reverted?",
+      "range": {
+        "startLine": 2546,
+        "startChar": 2,
+        "endLine": 2546,
+        "endChar": 51
+      },
+      "revId": "b087f3a6080de5bff5534891398a004aedeb366b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
