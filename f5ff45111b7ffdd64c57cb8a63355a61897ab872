@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "697d99b0_977fbff7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-15T16:58:46Z",
+      "side": 1,
+      "message": "IIRC on the GSC side we mention factory mode only when it is active, Let\u0027s do the same on the host side.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "f5ff45111b7ffdd64c57cb8a63355a61897ab872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f8bef7fa_db4adf73",
@@ -14,6 +37,29 @@
       "writtenOn": "2023-06-15T13:58:03Z",
       "side": 1,
       "message": "See other CL:*6045691",
+      "revId": "f5ff45111b7ffdd64c57cb8a63355a61897ab872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "245960bd_8ed1bc44",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-15T16:58:46Z",
+      "side": 1,
+      "message": "how about using the top of the 32 bit word as a counter of the used bits (as was done in Brian\u0027s Cl)?\n\nIn this case zero in that space would mean the original version with only two bits active.\n\nThe way it is suggested now we\u0027d need two bis for every new informational bit included in the word",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 55
+      },
       "revId": "f5ff45111b7ffdd64c57cb8a63355a61897ab872",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
