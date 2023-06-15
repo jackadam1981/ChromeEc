@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89783aba_50965aa2",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-06-15T00:30:26Z",
+      "side": 0,
+      "message": "I think at least we need to plus a flag for hammer since this is common code which share between servo_v4 and several projects.\nAnd we might need to enable/disable it in usb_init/usb_release as well.",
+      "revId": "1d3dadb3a57aecf0a4108dd679e4345ec475ea57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
