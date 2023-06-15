@@ -152,6 +152,11 @@ static int anx7406_init(int port)
 		return EC_ERROR_UNKNOWN;
 	}
 
+	rv = tcpc_update8(port, TCPC_REG_TCPC_CTRL,
+			  TCPC_REG_TCPC_CTRL_DEBUG_ACC_CONTROL, MASK_SET);
+	if (rv)
+		return rv;
+
 	/* Set VBUS OCP */
 	rv = tcpc_write(port, ANX7406_REG_VBUS_OCP, OCP_THRESHOLD);
 	if (rv)
