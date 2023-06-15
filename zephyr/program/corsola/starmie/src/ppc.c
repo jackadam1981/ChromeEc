@@ -28,6 +28,7 @@ void ppc_interrupt(enum gpio_signal signal)
 	}
 }
 
+#ifdef SECTION_IS_RO
 static int set_rt1739(void)
 {
 	rt1739_init(0);
@@ -35,3 +36,4 @@ static int set_rt1739(void)
 }
 
 SYS_INIT(set_rt1739, POST_KERNEL, 61);
+#endif
