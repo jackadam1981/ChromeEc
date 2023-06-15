@@ -16,6 +16,24 @@
       "message": "Should this probably also be run on a board for V+1?  What do you consider to be a sufficient test case to ensure this is okay?",
       "revId": "e2e305c5699ed984d02bbaea757f3030208af8e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87b44fc5_df44b2c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-06-15T00:05:30Z",
+      "side": 1,
+      "message": "It would have to be a pretty contrived test; something like\n\n1. Discharge battery to 1% (MIN_BAT_PCT_FOR_POWER_ON_WITH_AC). It actually needs to be discharged and not faked because this is testing its ability to provide power at low state of charge.\n2. Connect \u003e\u003d50W charger (MIN_POWER_MW_FOR_POWER_ON)\n3. Allow system to turn on\n4. Trigger PD contract change to a new current limit (causing temporary input current limiting to 2.5W) but still providing at least 50W\n5. Verify system did not brown out\n\nThis essentially would verify that the minimum permitted battery level to boot is still sufficient to absorb a slightly larger load transient (needing up to 7.5W more power from the battery than before) during transitions, which are very rare in practice anyway (because if we have a 50W contract already, very few chargers will suddenly want to change it).\n\nIt may even be difficult to do this test because I believe the OS will show a \"low battery\" screen and shut down immediately when the battery is below 4% charge, so there\u0027s a narrow window of time to trigger a PD transition while the AP is on.",
+      "parentUuid": "0e4c44d6_17b026e8",
+      "revId": "e2e305c5699ed984d02bbaea757f3030208af8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
