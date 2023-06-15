@@ -16,6 +16,24 @@
       "message": "from a code style standpoint, does it make sense to put this into some more standard looking retry loop with a specified number of tries?",
       "revId": "e03bada49a4a238e0ff49536005ad6a33e427d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d84c9680_c6424aed",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-15T23:36:58Z",
+      "side": 1,
+      "message": "I don\u0027t feel particularly a necessity of such coding here and the codebase doesn\u0027t have such a framework/template. It would be nice to have one though.",
+      "parentUuid": "1b013c80_68355ced",
+      "revId": "e03bada49a4a238e0ff49536005ad6a33e427d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
