@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "655fa8ac_735e4c13",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1541852
+      },
+      "writtenOn": "2023-06-15T03:15:20Z",
+      "side": 1,
+      "message": "The intent was to print the extra message if npcx_monitor.bin is not found AND the user is trying to flash a side-loaded image, because this is the specific use case that we see this issue, and it wouldn\u0027t impact the people who regularly build images.  However if you recommend we remove this conditional, that solution is fine with me",
+      "parentUuid": "cacef8b2_1a1ae97e",
+      "range": {
+        "startLine": 1505,
+        "startChar": 2,
+        "endLine": 1505,
+        "endChar": 35
+      },
+      "revId": "dc91e838d53cf381ee864bbe003a9bebc9b46569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8337b8b2_78ce5c57",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-15T00:17:53Z",
       "side": 1,
       "message": "Why don\u0027t you use ${BOARD}? The script doesn\u0027t search other board\u0027s directories.",
+      "range": {
+        "startLine": 1507,
+        "startChar": 29,
+        "endLine": 1507,
+        "endChar": 33
+      },
+      "revId": "dc91e838d53cf381ee864bbe003a9bebc9b46569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a0c955_adbe71a5",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1541852
+      },
+      "writtenOn": "2023-06-15T03:15:20Z",
+      "side": 1,
+      "message": "Great idea, since the board may have been specified as a parameter and would be known.  Do we know this is always true?  Can you confirm BOARD is a required parameter to execute flash_ec?",
+      "parentUuid": "8337b8b2_78ce5c57",
       "range": {
         "startLine": 1507,
         "startChar": 29,
