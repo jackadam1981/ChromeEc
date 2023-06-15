@@ -9,6 +9,7 @@
 #include "driver/ppc/rt1739.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "system.h"
 
 void c0_bc12_interrupt(enum gpio_signal signal)
 {
@@ -30,7 +31,8 @@ void ppc_interrupt(enum gpio_signal signal)
 
 static int set_rt1739(void)
 {
-	rt1739_init(0);
+	if (!system_jumped_to_this_image())
+		rt1739_init(0);
 	return 0;
 }
 
