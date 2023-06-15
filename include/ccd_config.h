@@ -246,11 +246,17 @@ struct ccd_info_response {
 } __packed;
 
 enum ccd_indicator_bits {
-	/* has_password? */
+	/* Indicates there is a CCD password */
 	CCD_INDICATOR_BIT_HAS_PASSWORD = BIT(0),
 
-	/* Are CCD capabilities in CCD_CAP_STATE_DEFAULT */
+	/* Indicates all CCD capabilities are in CCD_CAP_STATE_DEFAULT state */
 	CCD_INDICATOR_BIT_ALL_CAPS_DEFAULT = BIT(1),
+
+	/* Indicates device is in initial factory mode (only applies to TI50) */
+	CCD_INDICATOR_BIT_INITIAL_FACTORY_MODE = BIT(2),
+
+	/* Indicates if the CCD_INDICATOR_BIT_INITIAL_FACTORY_MODE is valid */
+	CCD_INDICATOR_BIT_INITIAL_FACTORY_MODE_VALID = BIT(3),
 };
 
 /**
