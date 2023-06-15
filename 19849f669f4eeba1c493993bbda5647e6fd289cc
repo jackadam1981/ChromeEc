@@ -16,6 +16,29 @@
       "message": "How much of additional space does it use?",
       "revId": "19849f669f4eeba1c493993bbda5647e6fd289cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da2b2822_346d0f75",
+        "filename": "common/panic_output.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-15T23:45:10Z",
+      "side": 1,
+      "message": "Can we get rid of the macro entirely (instead of making it as default)? stack_overflow_recurse looks very generic. So, it should work for all chips.",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 6
+      },
+      "revId": "19849f669f4eeba1c493993bbda5647e6fd289cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
