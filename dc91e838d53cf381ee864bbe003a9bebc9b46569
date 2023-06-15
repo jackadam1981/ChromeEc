@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cacef8b2_1a1ae97e",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-15T00:17:53Z",
+      "side": 1,
+      "message": "We want to print a nice message whenever npcx_monitor.bin is missing and the example code works for all cases. So, we probably don\u0027t want this check.",
+      "range": {
+        "startLine": 1505,
+        "startChar": 2,
+        "endLine": 1505,
+        "endChar": 35
+      },
+      "revId": "dc91e838d53cf381ee864bbe003a9bebc9b46569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8337b8b2_78ce5c57",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-15T00:17:53Z",
+      "side": 1,
+      "message": "Why don\u0027t you use ${BOARD}? The script doesn\u0027t search other board\u0027s directories.",
+      "range": {
+        "startLine": 1507,
+        "startChar": 29,
+        "endLine": 1507,
+        "endChar": 33
+      },
+      "revId": "dc91e838d53cf381ee864bbe003a9bebc9b46569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
