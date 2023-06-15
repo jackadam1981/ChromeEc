@@ -87,6 +87,30 @@
       },
       "revId": "66f732a9787d0d98968cc1ebd832d43c21962642",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9f2de0_752aa277",
+        "filename": "zephyr/program/rex/screebo/src/usb_config.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-06-15T12:29:48Z",
+      "side": 1,
+      "message": "If I remove this block, the test can not work, because these macro was defined in the shim but the test does not contain the shim.\n\nThese macros had been tested in the `test/drivers/usbc_ppc/src/ppc_shim.c` and `test/drivers/usbc_tcpc/src/tcpc_shim.c` I think we could not test them again in this test since Rex and Skyrim did not test these macros too.\n\nI still try to test these macros in the test again but I find it requires containing the whole type-c PD and shim logic, which will cause this test to be burdensome.",
+      "parentUuid": "30baaa4d_af9348a3",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "66f732a9787d0d98968cc1ebd832d43c21962642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
