@@ -2580,6 +2580,14 @@ static void print_ccd_info(void *response, size_t response_size)
 	printf("Password: %s\n", (ccd_info.ccd_indicator_bitmap &
 		      CCD_INDICATOR_BIT_HAS_PASSWORD) ? "Set" : "None");
 	printf("Flags: %#06x\n", ccd_info.ccd_flags);
+	printf("Initial Factory Mode: %s\n",
+	       (ccd_info.ccd_indicator_bitmap &
+		CCD_INDICATOR_BIT_INITIAL_FACTORY_MODE) ?
+		       "Yes" :
+	       (ccd_info.ccd_indicator_bitmap &
+		CCD_INDICATOR_BIT_INITIAL_FACTORY_MODE_VALID) ?
+		       "No" :
+		       "Unknown");
 	printf("Capabilities, current and default:\n");
 
 	gsc_cap_count = version_to_ccd[ccd_info_version].cap_count;
