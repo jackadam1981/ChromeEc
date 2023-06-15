@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7dfd411_949ba05c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-06-15T22:54:59Z",
+      "side": 1,
+      "message": "from chat - I think platform_ec_i2c_write may also be broken. Might be worth having Ting test this on their recent platform as well.",
+      "revId": "73bd4da2ae95185b0b4f08bcb9c71caf7a43f172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
