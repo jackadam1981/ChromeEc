@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b013c80_68355ced",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1542693
+      },
+      "writtenOn": "2023-06-15T19:02:36Z",
+      "side": 1,
+      "message": "from a code style standpoint, does it make sense to put this into some more standard looking retry loop with a specified number of tries?",
+      "revId": "e03bada49a4a238e0ff49536005ad6a33e427d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
