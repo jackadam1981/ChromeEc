@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2df08a8_ab5a3d0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-06-15T19:37:31Z",
+      "side": 1,
+      "message": "It is true that we only print when initial factory mode is enabled, but the RMA centers need to know if factory is enable or not to determine which flow.\n\nIf we only print for `Yes`, then `No` and `Unknown` (which could be Yes) are indistinguishable.\n\nWe can wait and hear more feedback on b:286998283 about the machine format they are looking for. Maybe we don\u0027t even need to print anything in the format.",
+      "parentUuid": "697d99b0_977fbff7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "f5ff45111b7ffdd64c57cb8a63355a61897ab872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f8bef7fa_db4adf73",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-06-15T16:58:46Z",
       "side": 1,
       "message": "how about using the top of the 32 bit word as a counter of the used bits (as was done in Brian\u0027s Cl)?\n\nIn this case zero in that space would mean the original version with only two bits active.\n\nThe way it is suggested now we\u0027d need two bis for every new informational bit included in the word",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 55
+      },
+      "revId": "f5ff45111b7ffdd64c57cb8a63355a61897ab872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381c9d02_cbd0b147",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-06-15T19:37:31Z",
+      "side": 1,
+      "message": "This is only an 8-bit field, so we don\u0027t have room for a bit counter.\n\nWe could add another field, but then we have to bump the encoding version number, and ti50 would still need to support both encoding versions for a while.\n\nWhen we need to add a field in the future and are already spending the effort to bump the encoding version, we should definitely use add a bits used field.",
+      "parentUuid": "245960bd_8ed1bc44",
       "range": {
         "startLine": 259,
         "startChar": 0,
