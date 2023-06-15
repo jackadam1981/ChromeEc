@@ -16,6 +16,24 @@
       "message": "Hmmm. Looks like there\u0027s a problem related to crrev/c/4585371...",
       "revId": "0fe446bbb5f671b801200df64960f28ca7d582ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f144ecca_0bc98310",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-15T22:13:17Z",
+      "side": 1,
+      "message": "it\u0027s a dependency on a libec change:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/4585215",
+      "parentUuid": "dbb6b8dc_77086f1f",
+      "revId": "0fe446bbb5f671b801200df64960f28ca7d582ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
