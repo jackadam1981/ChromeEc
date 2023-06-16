@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2935fa2_d5877bd6",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-06-16T21:35:25Z",
+      "side": 1,
+      "message": "You probably meant this to be `\"utf-8\"`.  Using `str` uses locale-dependent encoding which may vary based on environment.",
+      "range": {
+        "startLine": 243,
+        "startChar": 38,
+        "endLine": 243,
+        "endChar": 41
+      },
+      "revId": "9c9527a4234f53cdc1a0a1f2b231af97193c1ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
