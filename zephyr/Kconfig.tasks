@@ -264,4 +264,19 @@ config TASK_TOUCHPAD_STACK_SIZE
 
 endif # HAS_TASK_CHG_RAMP
 
+config HAS_TASK_RWSIG
+	bool
+	help
+	  <WIP>
+
+if HAS_TASK_RWSIG
+
+config TASK_RWSIG_STACK_SIZE
+	int ""
+	default 1536
+	help
+	  <WIP>
+
+endif # HAS_TASK_RWSIG
+
 endmenu # Tasks
