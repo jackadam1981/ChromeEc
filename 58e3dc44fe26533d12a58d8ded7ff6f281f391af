@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2951485_377b1bda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-16T16:23:05Z",
+      "side": 1,
+      "message": "the only change is in the order of EPS \u0026 cert writes - EPS in TPM2 will be initialized no matter what happens to certs. However, practically it makes a little difference as TPM2_Manufacture from third_party/tpm2 does similar thing with setting it to random. I can restore original behavior if this matters. The whole idea is that reserved spaces of NVMEM will be stored first, reducing chance for spillover to another page.",
+      "parentUuid": "d61f083f_3eba2f57",
+      "range": {
+        "startLine": 7,
+        "startChar": 43,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "58e3dc44fe26533d12a58d8ded7ff6f281f391af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16bf42e8_14d9eaed",
         "filename": "board/cr50/tpm2/endorsement.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-16T14:34:54Z",
       "side": 1,
       "message": "Do we want this to happen in actual released images?",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 51
+      },
+      "revId": "58e3dc44fe26533d12a58d8ded7ff6f281f391af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0d0642_9f5f3ded",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-16T16:23:05Z",
+      "side": 1,
+      "message": "Before this code is called TPM2_Manufacture is called which sets EPS to random value - check https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4612046/5/common/tpm_registers.c#638\n\nwhich does NvCommit in https://source.corp.google.com/chromeos_public/src/third_party/tpm2/Manufacture.c;l\u003d95\n\nSo besides changing of value to proper one, no other changes. \n\nNow, semantically certificates are for this specific EPS. Earlier if certs failed or EPS store failed, some random EPS will be in use. Now if proper EPS store fails, no certs will be provisioned at all, indicating need to manufacture on next init.",
+      "parentUuid": "16bf42e8_14d9eaed",
       "range": {
         "startLine": 565,
         "startChar": 0,
