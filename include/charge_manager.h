@@ -118,8 +118,8 @@ enum dualrole_capabilities {
 void charge_manager_update_dualrole(int port, enum dualrole_capabilities cap);
 
 /**
- * Tell charge_manager to leave safe mode and switch to standard port / ILIM
- * selection logic.
+ * Tell charge_manager to leave safe mode and switch to standard port /
+ * ILIM selection logic.
  */
 void charge_manager_leave_safe_mode(void);
 
@@ -367,5 +367,11 @@ board_fill_source_power_info(int port, struct ec_response_usb_pd_power_info *r);
 __override_proto int board_get_vbus_voltage(int port);
 
 int is_pd_port(int port);
+
+/**
+ * Board specific callback to make sure if charge_manager to leave safe mode
+ * or need more delay time.
+ */
+__override_proto bool board_charge_manager_leave_safe_mode(void)
 
 #endif /* __CROS_EC_CHARGE_MANAGER_H */

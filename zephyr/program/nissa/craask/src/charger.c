@@ -54,3 +54,20 @@ __override void board_hibernate(void)
 	LOG_INF("Charger(s) hibernated");
 	cflush();
 }
+
+__override bool board_charge_manager_leave_safe_mode(void)
+{
+	static int check_times;
+
+	check_times++;
+
+	if (battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
+		return false;
+
+	LOG_INF("leave_safe_mode check_times=%d", check_times);
+
+	if (check_times < 3)
+		return false;
+
+	return true;
+}
