@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d61f083f_3eba2f57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-06-16T14:34:54Z",
+      "side": 1,
+      "message": "Can you define how this changes release images? It looks like this changes some behavior in normal images without CR50_INCLUDE_FALLBACK_CERT.",
+      "range": {
+        "startLine": 7,
+        "startChar": 43,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "58e3dc44fe26533d12a58d8ded7ff6f281f391af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16bf42e8_14d9eaed",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-06-16T14:34:54Z",
+      "side": 1,
+      "message": "Do we want this to happen in actual released images?",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 51
+      },
+      "revId": "58e3dc44fe26533d12a58d8ded7ff6f281f391af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
