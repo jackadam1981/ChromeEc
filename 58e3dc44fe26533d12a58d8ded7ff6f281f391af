@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a56d588_3480412a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-16T17:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2951485_377b1bda",
+      "range": {
+        "startLine": 7,
+        "startChar": 43,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "58e3dc44fe26533d12a58d8ded7ff6f281f391af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16bf42e8_14d9eaed",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Before this code is called TPM2_Manufacture is called which sets EPS to random value - check https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4612046/5/common/tpm_registers.c#638\n\nwhich does NvCommit in https://source.corp.google.com/chromeos_public/src/third_party/tpm2/Manufacture.c;l\u003d95\n\nSo besides changing of value to proper one, no other changes. \n\nNow, semantically certificates are for this specific EPS. Earlier if certs failed or EPS store failed, some random EPS will be in use. Now if proper EPS store fails, no certs will be provisioned at all, indicating need to manufacture on next init.",
       "parentUuid": "16bf42e8_14d9eaed",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 51
+      },
+      "revId": "58e3dc44fe26533d12a58d8ded7ff6f281f391af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8518fa26_0e5f851a",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-16T17:57:52Z",
+      "side": 1,
+      "message": "I decided to revert this change in this CL. Will return to it if required.",
+      "parentUuid": "8e0d0642_9f5f3ded",
       "range": {
         "startLine": 565,
         "startChar": 0,

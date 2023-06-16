@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d7fcdc18_96fcbc7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-16T17:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad422bd9_4e803a30",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "12ad9861e051613213118870403c618687ff7e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "71695138_ec9a8735",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "idea is to store EPS first, so it will be first object in nvmem and will be stored even w/o fallback certs. It is important for TPM2 functionality.",
       "parentUuid": "6b57588c_7ff67d8d",
+      "revId": "12ad9861e051613213118870403c618687ff7e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e6de6d_b532a4e7",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-16T17:57:52Z",
+      "side": 1,
+      "message": "Reverted it.",
+      "parentUuid": "9656b589_0d506003",
       "revId": "12ad9861e051613213118870403c618687ff7e89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
