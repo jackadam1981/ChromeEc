@@ -16,6 +16,24 @@
       "message": "?",
       "revId": "e2d0fc0ef223af3ef9b6e261c4c10d8d03911ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6648c81_3f5e861a",
+        "filename": "zephyr/program/skyrim/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-06-16T19:05:39Z",
+      "side": 1,
+      "message": "Oops, that was left-over from investigating the battery issues on skyrim.",
+      "parentUuid": "485bde81_4568a0d6",
+      "revId": "e2d0fc0ef223af3ef9b6e261c4c10d8d03911ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
