@@ -63,6 +63,29 @@
       "message": "Can you rebase the patch and upload it again? CL:4595537 is being merged. After rebase, it still worked for me.",
       "revId": "69d3377dc18b07acb6a997a2de529a57542700d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0de5a0f_a68bec2b",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-16T16:28:47Z",
+      "side": 1,
+      "message": "Please also don\u0027t forget to clang-format this. The CQ is rejecting it.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 17
+      },
+      "revId": "69d3377dc18b07acb6a997a2de529a57542700d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
