@@ -4,6 +4,8 @@
  */
 
 #include "battery.h"
+#include "battery_fuel_gauge.h"
+#include "charge_manager.h"
 #include "charger.h"
 #include "charger/isl923x_public.h"
 #include "console.h"
@@ -53,4 +55,28 @@ __override void board_hibernate(void)
 	raa489000_hibernate(CHARGER_PRIMARY, true);
 	LOG_INF("Charger(s) hibernated");
 	cflush();
+}
+
+__override bool board_can_leave_safe_mode(void)
+{
+	static int check_times;
+	const struct fuel_gauge_info *const fuel_gauge =
+		&get_batt_params()->fuel_gauge;
+
+	check_times++;
+
+	/* If the D-FET is off, charge_manager shouldn't leave safe mode. */
+	if (battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
+		return false;
+
+	/* If it's not COSMX battery, there's no need more delay time. */
+	if (strcasecmp(fuel_gauge->manuf_name, "COSMX KT0030B002") &&
+	    strcasecmp(fuel_gauge->manuf_name, "COSMX KT0030B004"))
+		return true;
+
+	/* cosmx battery might need about 1.5s to get stable. */
+	if (check_times < 3)
+		return false;
+
+	return true;
 }
