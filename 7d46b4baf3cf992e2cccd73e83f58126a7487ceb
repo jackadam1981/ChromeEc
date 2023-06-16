@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eacfdde9_33291167",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Yes there are copy error.",
+      "parentUuid": "6919b7d7_27e58140",
+      "range": {
+        "startLine": 284,
+        "startChar": 11,
+        "endLine": 284,
+        "endChar": 47
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "002eaa4d_ee71dc23",
         "filename": "driver/als_tcs3408.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-25T04:39:31Z",
       "side": 1,
       "message": "uncommented it?",
+      "range": {
+        "startLine": 351,
+        "startChar": 1,
+        "endLine": 360,
+        "endChar": 1
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "485e1b4b_bbd3de9a",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "002eaa4d_ee71dc23",
       "range": {
         "startLine": 351,
         "startChar": 1,
@@ -60,6 +108,54 @@
       "writtenOn": "2023-03-25T04:39:31Z",
       "side": 1,
       "message": "This seems to be replaced with code in als_tcs3400.c, and drop the `tcs3408_rgb_set_scale` in `tcs3408_rgb_init`.\n\n```\n\t\t/* Step 1: divide by individual channel scale value */\n\t\tcrgb_data[i] \u003d\n\t\t\tSENSOR_APPLY_DIV_SCALE(crgb_data[i], k_channel_scale);\n\n\t\t/* compensate for the light cover */\n\t\tcrgb_data[i] \u003d SENSOR_APPLY_SCALE(crgb_data[i], cover_scale);\n\n```",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 64
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8775c94c_ecb6154a",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b93219de_af0484b2",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 64
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "295addeb_90e4e2ec",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b93219de_af0484b2",
       "range": {
         "startLine": 451,
         "startChar": 0,
@@ -95,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9adbfce3_d3059bc1",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "According to vender\u0027s reply, STATUS2 does not need to be clear. If you don\u0027t need to deal with ASAT or FDSAT, clearing status2 will have no effect.",
+      "parentUuid": "087ab85f_d22eca07",
+      "range": {
+        "startLine": 575,
+        "startChar": 0,
+        "endLine": 575,
+        "endChar": 52
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "662f02e8_09506013",
         "filename": "driver/als_tcs3408.c",
         "patchSetId": 1
@@ -106,6 +226,54 @@
       "writtenOn": "2023-03-25T04:39:31Z",
       "side": 1,
       "message": "I understand this is from tcs3480 driver. I wonder do you like to uncomment the lines?",
+      "range": {
+        "startLine": 706,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 0
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e80c93_241d91df",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "662f02e8_09506013",
+      "range": {
+        "startLine": 706,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 0
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b1827d_8323c735",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "662f02e8_09506013",
       "range": {
         "startLine": 706,
         "startChar": 0,
@@ -162,6 +330,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c25b2db8_e2f87f8d",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea7fb272_561f7b43",
+      "range": {
+        "startLine": 746,
+        "startChar": 61,
+        "endLine": 746,
+        "endChar": 62
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e82672e_abcdd49c",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e04972b9_da6e80ad",
+      "range": {
+        "startLine": 746,
+        "startChar": 76,
+        "endLine": 746,
+        "endChar": 77
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4016a70b_9ed2512b",
@@ -175,6 +391,30 @@
       "writtenOn": "2023-03-25T04:39:31Z",
       "side": 1,
       "message": "It seems the driver never use these two indexes, do we still need to keep this?",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 753,
+        "endChar": 0
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8965228_365f4837",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4016a70b_9ed2512b",
       "range": {
         "startLine": 751,
         "startChar": 0,
@@ -233,6 +473,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4a36364_8fd1da9e",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "We can try 712.",
+      "parentUuid": "d47cbf0d_755db790",
+      "range": {
+        "startLine": 908,
+        "startChar": 28,
+        "endLine": 908,
+        "endChar": 31
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9db0857e_03e04d88",
         "filename": "driver/als_tcs3408.c",
         "patchSetId": 1
@@ -244,6 +508,30 @@
       "writtenOn": "2023-03-25T04:39:31Z",
       "side": 1,
       "message": "The reset value is `0xC0`.",
+      "range": {
+        "startLine": 910,
+        "startChar": 18,
+        "endLine": 910,
+        "endChar": 22
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fec18644_2b8210c8",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "I checked the TCS3408 spec, this value is 0x80. Do we need to change it to 0xc0?",
+      "parentUuid": "9db0857e_03e04d88",
       "range": {
         "startLine": 910,
         "startChar": 18,
@@ -277,6 +565,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "325912c0_e4c3d533",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "124573fb_3081d5ab",
+      "range": {
+        "startLine": 911,
+        "startChar": 18,
+        "endLine": 911,
+        "endChar": 22
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dabf81ea_8fbea542",
@@ -290,6 +602,30 @@
       "writtenOn": "2023-03-25T04:39:31Z",
       "side": 1,
       "message": "You could just use `0x09`.",
+      "range": {
+        "startLine": 914,
+        "startChar": 19,
+        "endLine": 914,
+        "endChar": 28
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a8226cb_1d16aab7",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dabf81ea_8fbea542",
       "range": {
         "startLine": 914,
         "startChar": 19,
@@ -323,6 +659,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "583c85e2_898bfc7f",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19bc6318_33437f02",
+      "range": {
+        "startLine": 927,
+        "startChar": 0,
+        "endLine": 934,
+        "endChar": 0
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "752627f3_0077b81b",
@@ -336,6 +696,30 @@
       "writtenOn": "2023-03-25T04:39:31Z",
       "side": 1,
       "message": "I am not sure if this needed?",
+      "range": {
+        "startLine": 937,
+        "startChar": 1,
+        "endLine": 938,
+        "endChar": 15
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd6755e_79c98faa",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "752627f3_0077b81b",
       "range": {
         "startLine": 937,
         "startChar": 1,
@@ -369,6 +753,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a337ca_4c9adf62",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31d77c16_e294e906",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 943,
+        "endChar": 16
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4599f556_1c88d720",
@@ -392,6 +800,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ce70b0_5bfa8ba1",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4599f556_1c88d720",
+      "range": {
+        "startLine": 945,
+        "startChar": 0,
+        "endLine": 945,
+        "endChar": 34
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05f64c3a_d3f61d1e",
@@ -405,6 +837,30 @@
       "writtenOn": "2023-03-25T04:39:31Z",
       "side": 1,
       "message": "\u0027delta_p\u0027 to follow the naming convention.",
+      "range": {
+        "startLine": 170,
+        "startChar": 9,
+        "endLine": 170,
+        "endChar": 15
+      },
+      "revId": "7d46b4baf3cf992e2cccd73e83f58126a7487ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ce4079_2badf14c",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-16T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05f64c3a_d3f61d1e",
       "range": {
         "startLine": 170,
         "startChar": 9,
