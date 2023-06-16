@@ -2265,7 +2265,7 @@ static enum ec_error_list verify_delimiter(struct nn_container *nc)
  */
 static enum ec_error_list retrieve_nvmem_contents(void)
 {
-	int rv;
+	enum ec_error_list rv;
 	int tries;
 	struct max_var_container *vc;
 	struct nn_container *nc;
@@ -2283,6 +2283,7 @@ static enum ec_error_list retrieve_nvmem_contents(void)
 		memset(nvmem_cache_base(NVMEM_TPM), 0,
 		       nvmem_user_sizes[NVMEM_TPM]);
 		memset(res_bitmap, 0, sizeof(res_bitmap));
+		total_var_space = 0;
 		next_evict_obj_base = 0;
 
 		while ((rv = get_next_object(&controller_at, nc, 0)) ==
