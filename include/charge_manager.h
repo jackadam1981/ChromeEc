@@ -9,6 +9,8 @@
 #include "common.h"
 #include "ec_commands.h"
 
+#include <stdbool.h>
+
 /* Charge port that indicates no active port */
 #define CHARGE_PORT_NONE -1
 #define CHARGE_CEIL_NONE -1
@@ -367,5 +369,11 @@ board_fill_source_power_info(int port, struct ec_response_usb_pd_power_info *r);
 __override_proto int board_get_vbus_voltage(int port);
 
 int is_pd_port(int port);
+
+/**
+ * Board specific callback to make sure if charge_manager can leave safe mode
+ * or need more delay time.
+ */
+__override_proto bool board_can_leave_safe_mode(void);
 
 #endif /* __CROS_EC_CHARGE_MANAGER_H */
