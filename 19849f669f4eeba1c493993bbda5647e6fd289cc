@@ -39,6 +39,30 @@
       },
       "revId": "19849f669f4eeba1c493993bbda5647e6fd289cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "217d99f8_70c35f07",
+        "filename": "common/panic_output.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-16T18:07:31Z",
+      "side": 1,
+      "message": "+1, I don\u0027t think there is value is excluding just stack overflow when the crash command is available.\n\nThe only reason to keep it is there are boards that get too large.",
+      "parentUuid": "da2b2822_346d0f75",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 6
+      },
+      "revId": "19849f669f4eeba1c493993bbda5647e6fd289cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
