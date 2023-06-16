@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cfbb682_3aba9156",
+        "filename": "include/host_command.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-16T17:48:30Z",
+      "side": 1,
+      "message": "Runtime control of host command logging using `hcdebug` is no longer a requirement for any FAFT tests.  Originally, there was a FAFT test `firmware_ECBootTime` that used the \"HC\" output on the EC console and also called `hcdebug`.  However, when this test got converted to [tast](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/tast-tests/src/go.chromium.org/tast-tests/cros/remote/bundles/cros/firmware/boot_time.go;l\u003d58) it now only checks for the AP reaching S0.\n\nI\u0027m in favor of dropping the runtime support completely when using the upstream CONFIG_EC_HOST_CMD.\n\nUpstream, you should just use Zephyr\u0027s logging.  The developer can select a build time log level by setting `CONFIG_EC_HC_LOG_LEVEL_DBG`.",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 0
+      },
+      "revId": "3e7d29aaef687b5f23489620c71b780ee13d1c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
