@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6953735b_162a32a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-06-16T22:34:00Z",
+      "side": 1,
+      "message": "BTW, I won\u0027t engage in a complete fly-by code review since I\u0027m not familiar with this code base, but in general please break your CL into more logically isolated chunks.\n\nI can see at least a couple of sections here which can be broken into their own CLs. Doing so makes the CLs a lot easier to review, and forces the function interfaces to be defined more cleanly.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2378db8_123a0851",
