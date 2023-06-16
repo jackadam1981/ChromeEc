@@ -13,3 +13,18 @@ zephyr_library_sources(
 if(DEFINED CONFIG_BOARD_ROACH)
 	project(roach)
 endif()
+
+if (DEFINED CONFIG_CROS_EC_RW)
+	add_custom_target(key_extract
+		COMMAND futility create "${PLATFORM_EC_PROGRAM_DIR}/roach/dev_key.pem" "key"
+		COMMENT "Extracting signing keys"
+		VERBATIM
+	)
+
+	add_custom_target(sign_rw ALL
+		COMMAND futility sign --type rwsig --prikey key.vbprik2 zephyr/zephyr.bin ec.sig
+		COMMENT "Signing EC RW"
+		DEPENDS zephyr_final key_extract
+		VERBATIM
+	)
+endif()

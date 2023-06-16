@@ -20,3 +20,25 @@
 	pinctrl-0 = <&adc0_ch1_gpi1_default>;
 	pinctrl-names = "default";
 };
+
+&{/binman/wp-ro/ec-ro} {
+	key-ro {
+		type = "blob";
+		offset = <(0x40000 - 4096 - 1024)>;
+		size = <1024>;
+		filename = "../build-rw/key.vbpubk2";
+	};
+};
+
+&{/binman/ec-rw/rw-fw} {
+	/delete-node/ rw-fwid;
+
+	sig-rw {
+		type = "blob";
+		offset = <(0x40000 - 1024)>;
+		size = <1024>;
+		filename = "../build-rw/ec.sig";
+	};
+
+	pad-byte = <0xff>;
+};
