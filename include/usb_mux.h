@@ -289,6 +289,13 @@ void usb_mux_set(int port, mux_state_t mux_mode, enum usb_switch usb_config,
 		 int polarity);
 
 /**
+ * Mark that mux ACK has been received for this port's pending set
+ *
+ * @param port port number.
+ */
+void usb_mux_set_ack_complete(int port);
+
+/**
  * Configure superspeed muxes on type-C port for only one index in the mux
  * chain
  *
