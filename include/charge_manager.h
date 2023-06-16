@@ -368,4 +368,10 @@ __override_proto int board_get_vbus_voltage(int port);
 
 int is_pd_port(int port);
 
+/**
+ * Board specific callback to make sure if charge_manager to leave safe mode
+ * or need more delay time.
+ */
+__override_proto bool board_can_leave_safe_mode(void)
+
 #endif /* __CROS_EC_CHARGE_MANAGER_H */
