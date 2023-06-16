@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "851eb560_fe358c7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-16T02:25:35Z",
+      "side": 1,
+      "message": "how can proper cert installation be tested? Maybe transitioining between dev and prod Cr50 on a chromebook?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "12ad9861e051613213118870403c618687ff7e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "71695138_ec9a8735",
@@ -14,6 +37,46 @@
       "writtenOn": "2023-06-15T22:15:41Z",
       "side": 1,
       "message": "Added comments regarding rationale and change of name/semantic.",
+      "revId": "12ad9861e051613213118870403c618687ff7e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b57588c_7ff67d8d",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-16T02:25:35Z",
+      "side": 1,
+      "message": "why does this have to move?",
+      "revId": "12ad9861e051613213118870403c618687ff7e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d0434e2_fe0d75d7",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-16T02:25:35Z",
+      "side": 1,
+      "message": "can you please literally say\n```\n#else /*  CR50_USE_FIXED_CERT vvvv defined    ^^^^^ not defined */\n```",
+      "range": {
+        "startLine": 671,
+        "startChar": 9,
+        "endLine": 671,
+        "endChar": 48
+      },
       "revId": "12ad9861e051613213118870403c618687ff7e89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
