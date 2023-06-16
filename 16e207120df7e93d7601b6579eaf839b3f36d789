@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d09690de_061ae25d",
+        "filename": "zephyr/boards/riscv/it8xxx2/it82202ax-512.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-06-16T17:53:34Z",
+      "side": 1,
+      "message": "Maybe no in this CL, but this is also set by config `CONFIG_FW_PSTATE_SIZE` and `CONFIG_FW_PSTATE_OFF`. Would you like to centralize the configuration to one place only?",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "16e207120df7e93d7601b6579eaf839b3f36d789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
