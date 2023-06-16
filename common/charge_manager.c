@@ -1234,6 +1234,11 @@ void charge_manager_update_dualrole(int port, enum dualrole_capabilities cap)
 }
 
 #ifdef CONFIG_CHARGE_MANAGER_SAFE_MODE
+__overridable bool board_charge_manager_leave_safe_mode(void)
+{
+	return true;
+}
+
 void charge_manager_leave_safe_mode(void)
 {
 	if (left_safe_mode)
@@ -1254,6 +1259,14 @@ void charge_manager_leave_safe_mode(void)
 	 * input FETs.
 	 */
 	msleep(500);
+	/*
+	 * For some battery need more than 500ms to be stable,
+	 * charge_manager_leave_safe_mode_now can modify in board
+	 * level to delay more.
+	 */
+	if (!board_charge_manager_leave_safe_mode())
+		return;
+
 	CPRINTS("%s()", __func__);
 	cflush();
 	left_safe_mode = 1;
