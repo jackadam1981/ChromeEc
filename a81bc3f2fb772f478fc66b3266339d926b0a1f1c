@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3bfb520_31c8592c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-06-16T21:46:04Z",
+      "side": 1,
+      "message": "why the full compilation output for `boringssl` and `googletest` was not showing before  when building with `V\u003d1`. My understanding is that we can always build with this flag. Maybe you can add a statement in the commit message about the difference that required this change in the `third_party/rules.mk` file",
+      "revId": "a81bc3f2fb772f478fc66b3266339d926b0a1f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
