@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b3bf114_4f50c745",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-16T15:36:32Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5319af48_0a7965a8",
+      "range": {
+        "startLine": 1549,
+        "startChar": 0,
+        "endLine": 1550,
+        "endChar": 27
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a02109b5_b1fb15ff",
@@ -279,6 +303,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b355daf9_97e64216",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-16T15:36:32Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "07053d4f_6b99a1ef",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 62
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b4e10be_4b9c81c8",
@@ -411,6 +459,30 @@
       "side": 1,
       "message": "`enum ec_status` is used now with `BUILD_ASSERT` statements to make sure the CrosEC/Zephyr enum values are the same.",
       "parentUuid": "5b98aa7b_64ea894b",
+      "range": {
+        "startLine": 672,
+        "startChar": 0,
+        "endLine": 674,
+        "endChar": 0
+      },
+      "revId": "1896d778fb5254c0976426f3f57eafc64bb793df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e6670e4_a9b29401",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-16T15:36:32Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7ce66f9e_82e695b5",
       "range": {
         "startLine": 672,
         "startChar": 0,

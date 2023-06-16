@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49f7888_529e92e1",
+        "filename": "common/host_command_task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-16T15:36:32Z",
+      "side": 1,
+      "message": "Can you handle this in the CMakeLists.txt instead?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "56ce2a185d5d66719866721f6006ff348b489ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d338c119_532582bf",
+        "filename": "zephyr/drivers/cros_shi/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-16T15:36:32Z",
+      "side": 1,
+      "message": "I see very few instances of `default y if DT_HAS...` in upstream.  I think the preferred pattern is:\n```\ndefault y\ndepends on !EC_HOST_CMD\ndepends on DT_HAS_NUVOTON_NPCX_SHI_ENABLED\n```\n\nThe check against `SOC_FAMILY_NPCX` seems redundant with `DT_HAS_NUVOTON_NPCX_SHI_ENABLED`.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "56ce2a185d5d66719866721f6006ff348b489ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3578dffe_167c3c54",
+        "filename": "zephyr/drivers/cros_shi/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-16T15:36:32Z",
+      "side": 1,
+      "message": "```\ndefault y\ndepends on !EC_HOST_CMD\ndepends on DT_HAS_ITE_IT8XXX2_SHI_ENABLED\n```",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "56ce2a185d5d66719866721f6006ff348b489ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e11f3ac8_4e5b7ded",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-16T15:36:32Z",
+      "side": 1,
+      "message": "If you also update cros_shi_it8xxx2.c, can this logic move to a common file shared by all SHI backend drivers?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "56ce2a185d5d66719866721f6006ff348b489ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
