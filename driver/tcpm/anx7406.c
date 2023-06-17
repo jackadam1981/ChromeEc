@@ -236,12 +236,15 @@ static int anx7406_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
 	int rv;
 
-	if (polarity_rm_dts(polarity))
+	if (polarity_rm_dts(polarity)) {
 		rv = tcpc_write(port, ANX7406_REG_VCONN_CTRL,
 				VCONN_PWR_CTRL_SEL | VCONN_CC1_PWR_ENABLE);
-	else
+		rv |= anx7406_set_aux(port, polarity);
+	} else {
 		rv = tcpc_write(port, ANX7406_REG_VCONN_CTRL,
 				VCONN_PWR_CTRL_SEL | VCONN_CC2_PWR_ENABLE);
+		rv |= anx7406_set_aux(port, polarity);
+	}
 	if (rv)
 		CPRINTS("Update VCONN power failed: %d, polarity: %d", rv,
 			polarity);
