@@ -503,6 +503,7 @@ void rt1739_pd_connect(void)
 				   RT1739_DM_SWEN | RT1739_DP_SWEN |
 					   RT1739_SBU1_SWEN | RT1739_SBU2_SWEN,
 				   MASK_SET);
+		rt1739_enable_bc12_detection(i, true);
 	}
 }
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, rt1739_pd_connect, HOOK_PRIO_DEFAULT);
