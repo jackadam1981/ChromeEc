@@ -20,18 +20,24 @@
 int tpm_manufactured(void)
 {
 	uint32_t nv_ram_index;
+	uint16_t eps_seed_len;
 	const uint32_t rsa_ek_nv_index = EK_CERT_NV_START_INDEX;
 	const uint32_t ecc_ek_nv_index = EK_CERT_NV_START_INDEX + 1;
+	NV_RESERVED_ITEM ri;
 
+	NvGetReserved(NV_EP_SEED, &ri);
 	/*
 	 * If nvram_index (value written at NV RAM offset of zero) is all
-	 * ones, or either endorsement certificate is not installed, consider
-	 * the chip un-manufactured.
+	 * ones, or either endorsement certificate is not installed or EPS seed
+	 * length is invalid, consider the chip un-manufactured.
 	 *
 	 * Thus, wiping flash NV ram allows to re-manufacture the chip.
 	 */
 	_plat__NvMemoryRead(0, sizeof(nv_ram_index), &nv_ram_index);
-	if ((nv_ram_index == ~0) ||
+	_plat__NvMemoryRead(ri.offset, sizeof(eps_seed_len), &eps_seed_len);
+
+	if ((nv_ram_index == ~0) || (eps_seed_len < PRIMARY_SEED_SIZE) ||
+	    (eps_seed_len > ri.size - sizeof(gp.EPSeed.t.size)) ||
 	    (NvIsUndefinedIndex(rsa_ek_nv_index) == TPM_RC_SUCCESS) ||
 	    (NvIsUndefinedIndex(ecc_ek_nv_index) == TPM_RC_SUCCESS)) {
 		CPRINTF("%s: NOT manufactured\n", __func__);
@@ -39,5 +45,6 @@ int tpm_manufactured(void)
 	}
 
 	CPRINTF("%s: manufactured\n", __func__);
+	cflush();
 	return 1;
 }
