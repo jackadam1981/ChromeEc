@@ -35,7 +35,10 @@ static const struct anx7483_register default_reg_configs[ANX7483_REG_MAX] = {
 		.def = ANX7483_AUX_SNOOPING_CTRL_REG_DEFAULT,
 		.reserved = ANX7483_AUX_SNOOPING_CTRL_REG_RESERVED_MASK,
 	},
-
+	{
+		.reg = ANX7483_VID,
+		.def = ANX7483_VID_DEFAULT,
+	},
 	/* CFG0 */
 	{
 		.reg = ANX7483_UTX1_PORT_CFG0_REG,
