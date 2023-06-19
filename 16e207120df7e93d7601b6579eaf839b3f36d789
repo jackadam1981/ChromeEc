@@ -22,6 +22,30 @@
       },
       "revId": "16e207120df7e93d7601b6579eaf839b3f36d789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5346f36_8b04a31b",
+        "filename": "zephyr/boards/riscv/it8xxx2/it82202ax-512.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-06-19T06:18:17Z",
+      "side": 1,
+      "message": "zephyr doesn\u0027t generate macros for nodes without compatible string.\n\nI will check if cros-ec,flash-layout suitable or need to define another dt binding.",
+      "parentUuid": "d09690de_061ae25d",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "16e207120df7e93d7601b6579eaf839b3f36d789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
