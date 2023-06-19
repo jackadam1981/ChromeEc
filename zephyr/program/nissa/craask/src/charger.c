@@ -4,6 +4,7 @@
  */
 
 #include "battery.h"
+#include "charge_manager.h"
 #include "charger.h"
 #include "charger/isl923x_public.h"
 #include "console.h"
@@ -53,4 +54,9 @@ __override void board_hibernate(void)
 	raa489000_hibernate(CHARGER_PRIMARY, true);
 	LOG_INF("Charger(s) hibernated");
 	cflush();
+}
+
+__override int board_leave_safe_mode_delay_ms(void)
+{
+	return 2000;
 }
