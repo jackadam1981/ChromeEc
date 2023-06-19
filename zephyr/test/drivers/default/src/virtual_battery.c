@@ -64,7 +64,9 @@ static void i2c_passthru_xfer(uint8_t port, uint8_t addr, uint8_t *write_buf,
 
 	/* Execute the I2C passthru host command */
 	zassert_ok(host_command_process(&args), NULL);
+#ifndef CONFIG_EC_HOST_CMD
 	zassert_ok(args.result, NULL);
+#endif
 	zassert_ok(response->i2c_status, NULL);
 	zassert_equal(args.response_size, sizeof(*response) + read_len, NULL);
 

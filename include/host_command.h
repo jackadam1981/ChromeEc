@@ -444,11 +444,15 @@ static inline int CROS_EC_COMMAND(CROS_EC_COMMAND_INFO *handle,
 	handle->response = response;
 	handle->response_max = response_size;
 	handle->response_size = 0;
+#ifndef CONFIG_EC_HOST_CMD
 	handle->result = 0;
+#endif
 
 	rv = host_command_process(handle);
+#ifndef CONFIG_EC_HOST_CMD
 	if (handle->result != EC_RES_SUCCESS)
 		return handle->result;
+#endif
 
 	return rv;
 }
