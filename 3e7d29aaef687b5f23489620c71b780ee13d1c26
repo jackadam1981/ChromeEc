@@ -22,6 +22,30 @@
       },
       "revId": "3e7d29aaef687b5f23489620c71b780ee13d1c26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ec51db_bd9eff88",
+        "filename": "include/host_command.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-06-19T10:48:03Z",
+      "side": 1,
+      "message": "I\u0027m happy to drop the `hcdebug` console command.\nIsn\u0027t it still a good approach to move host commands to separate file anyway?",
+      "parentUuid": "3cfbb682_3aba9156",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 0
+      },
+      "revId": "3e7d29aaef687b5f23489620c71b780ee13d1c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
