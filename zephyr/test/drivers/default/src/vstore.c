@@ -172,6 +172,7 @@ ZTEST_USER(vstore, test_vstore_write_read)
 	do_vstore_write_read(1);
 }
 
+enum ec_status host_command_reboot(struct host_cmd_handler_args *args);
 ZTEST_USER(vstore, test_vstore_state)
 {
 	struct ec_params_vstore_write write_params = {
@@ -203,9 +204,12 @@ ZTEST_USER(vstore, test_vstore_state)
 	if (!setjmp(env)) {
 		system_fake_setenv(&env);
 
+#ifndef CONFIG_EC_HOST_CMD
 		/* Reboot to RW  */
 		zassert_ok(host_command_process(&reboot_args), NULL);
-
+#else
+		host_command_reboot(&reboot_args);
+#endif
 		/* Does not return unless something went wrong */
 		zassert_unreachable("Failed to reboot");
 	}
