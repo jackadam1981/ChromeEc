@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb3febf_4db4d537",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-06-19T09:39:17Z",
+      "side": 1,
+      "message": "update: added CONFIG_RWSIG_TYPE_RWSIG/USBPD1 to fix the build error on legacy ec boards (hammer family).",
+      "revId": "05336b80dccbb7f6217918bca1464fe410e87ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
