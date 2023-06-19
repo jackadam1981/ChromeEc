@@ -11,6 +11,7 @@
 #define __CROS_EC_ZEPHYR_HOST_COMMAND_H
 
 #include <stdbool.h>
+#include <string.h>
 
 #include <zephyr/init.h>
 #include <zephyr/kernel.h>
@@ -41,8 +42,44 @@ k_tid_t get_hostcmd_thread(void);
 #ifdef CONFIG_EC_HOST_CMD
 
 #include <zephyr/mgmt/ec_host_cmd/ec_host_cmd.h>
+
+#ifndef CONFIG_ZTEST
+
 #define DECLARE_HOST_COMMAND(id, handler, ver) \
 	EC_HOST_CMD_HANDLER_UNBOUND(id, (ec_host_cmd_handler_cb)handler, ver)
+
+#else
+
+/*
+ * Get a pointer to the response buffer of the host command called.
+ */
+void *host_command_get_response_buf(void);
+
+/* Define a stub DECLARE_HOST_COMMAND macro for the tests with the upstream
+ * Host Commands. It is required to pass the exact response buffer, get by
+ * the host_command_process, to the command handler.
+ */
+/* clang-format off */
+#define DECLARE_HOST_COMMAND(id, handler, ver)				\
+	static enum ec_status handler##_test(				\
+		struct host_cmd_handler_args *args)			\
+	{								\
+		void *response = args->response;			\
+		enum ec_status status;					\
+									\
+		args->response = host_command_get_response_buf();	\
+		memcpy(args->response, response, args->response_max);	\
+		status = handler(args);					\
+		memcpy(response, args->response, args->response_max);	\
+		args->response = response;				\
+									\
+		return status;						\
+	}								\
+	EC_HOST_CMD_HANDLER_UNBOUND(					\
+		id, (ec_host_cmd_handler_cb)handler##_test, ver)
+/* clang-format on */
+
+#endif /* CONFIG_ZTEST */
 
 #else
 
