@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654043ba_787290d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-06-19T01:27:48Z",
+      "side": 1,
+      "message": "Would it be okay to always wait longer on craask? It would be simpler to convert the 500ms delay to a configurable one with 500ms default, then set it to the longest required time for craask.",
+      "revId": "48764c38e4a6c738726a07574381ad547588913d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
