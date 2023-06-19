@@ -10,6 +10,7 @@
 #include <zephyr/shell/shell.h>
 #include <zephyr/ztest.h>
 
+#ifndef CONFIG_EC_HOST_CMD
 static void console_cmd_hcdebug_after(void *fixture)
 {
 	ARG_UNUSED(fixture);
@@ -47,3 +48,4 @@ ZTEST_USER(console_cmd_hcdebug, test_valid_args)
 	zassert_ok(shell_execute_cmd(get_ec_shell(), "hcdebug every"), NULL);
 	zassert_ok(shell_execute_cmd(get_ec_shell(), "hcdebug params"), NULL);
 }
+#endif

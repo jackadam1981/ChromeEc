@@ -22,10 +22,12 @@
 
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/kernel.h>
+#include <zephyr/mgmt/ec_host_cmd/simulator.h>
 #include <zephyr/shell/shell.h>
 #include <zephyr/shell/shell_dummy.h>
 #include <zephyr/shell/shell_uart.h>
 #include <zephyr/ztest.h>
+
 
 #define BATTERY_NODE DT_NODELABEL(battery)
 #define GPIO_BATT_PRES_ODL_PATH NAMED_GPIOS_GPIO_NODE(ec_batt_pres_odl)
@@ -623,6 +625,84 @@ void host_events_restore(struct host_events_ctx *host_events_ctx)
 			i, host_events_ctx->lpc_host_event_mask[i]);
 	}
 }
+
+#ifdef CONFIG_EC_HOST_CMD
+/* Variables used to record what is "sent" to host for verification. */
+K_SEM_DEFINE(send_called, 0, 1);
+static struct ec_host_cmd_tx_buf *tx_buf;
+static uint8_t *response_buf;
+
+static int host_send(const struct ec_host_cmd_backend *backend)
+{
+	k_sem_give(&send_called);
+
+	return 0;
+}
+
+void *host_command_get_response_buf(void)
+{
+	return response_buf;
+}
+
+static uint8_t cal_checksum(const uint8_t *const buffer, const uint16_t size)
+{
+	uint8_t checksum = 0;
+
+	for (size_t i = 0; i < size; ++i) {
+		checksum += buffer[i];
+	}
+	return (uint8_t)(-checksum);
+}
+
+#define RX_HEADER_SIZE sizeof(struct ec_host_response)
+#define TX_HEADER_SIZE sizeof(struct ec_host_request)
+
+static uint16_t pass_args_to_sim(struct host_cmd_handler_args *args)
+{
+	uint8_t rx_buf[args->params_size + RX_HEADER_SIZE];
+	struct ec_host_request *rx_header = (struct ec_host_request *)rx_buf;
+	struct ec_host_response *tx_header;
+	int rv;
+
+	k_sem_reset(&send_called);
+
+	rx_header->struct_version = 3;
+	rx_header->checksum = 0;
+	rx_header->command = args->command;
+	rx_header->command_version = args->version;
+	rx_header->data_len = args->params_size;
+	rx_header->reserved = 0;
+	response_buf = args->response;
+
+	memcpy(rx_buf + RX_HEADER_SIZE, args->params, args->params_size);
+	rx_header->checksum = cal_checksum(rx_buf, sizeof(rx_buf));
+
+	ec_host_cmd_backend_sim_install_send_cb(host_send, &tx_buf);
+	tx_buf->len_max = args->response_max + TX_HEADER_SIZE;
+
+	ec_host_cmd_backend_sim_data_received(rx_buf, sizeof(rx_buf));
+
+	/* Ensure send was called so we can verify outputs */
+	rv = k_sem_take(&send_called, K_SECONDS(1));
+	zassert_equal(rv, 0, "Send was not called");
+
+	args->response_size = tx_buf->len - TX_HEADER_SIZE;
+	tx_header = tx_buf->buf;
+
+	return tx_header->result;
+}
+
+uint16_t host_command_process(struct host_cmd_handler_args *args)
+{
+	return pass_args_to_sim(args);
+}
+
+void host_command_received(struct host_cmd_handler_args *args)
+{
+	pass_args_to_sim(args);
+}
+
+#endif
 
 K_HEAP_DEFINE(test_heap, 2048);
 
