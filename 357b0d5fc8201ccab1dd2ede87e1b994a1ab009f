@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95bcf521_52990573",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 282
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-20T22:54:53Z",
+      "side": 1,
+      "message": "This looks similar to the [code here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3915748/253/common/fpsensor/fpsensor_auth_commands.cc). Can it be put in a helper function? (with a unit test)",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 31
+      },
+      "revId": "357b0d5fc8201ccab1dd2ede87e1b994a1ab009f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
