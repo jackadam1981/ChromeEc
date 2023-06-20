@@ -5,7 +5,10 @@
 
 #include "ec_commands.h"
 #include "hooks.h"
+#include "hwtimer.h"
 #include "keyboard_config.h"
+#include "queue.h"
+#include "task.h"
 #include "usb_dc.h"
 
 #include <errno.h>
@@ -18,6 +21,11 @@
 #include <zephyr/usb/class/usb_hid.h>
 
 LOG_MODULE_DECLARE(usb_hid_kb, LOG_LEVEL_INF);
+
+#define USB_HID_KB_TIMESTAMP_UNIT 100 /* usec */
+
+/* Discard KB events older than this time */
+#define EVENT_MAX_TIMEOUT (1 * SECOND)
 
 /* TODO: pull bland_kb and board_vivaldi_keybd_config to board code */
 static const struct ec_response_keybd_config bland_kb = {
@@ -313,7 +321,16 @@ struct usb_hid_keyboard_report {
 #endif
 } __packed;
 
+struct kb_device_data {
+	struct usb_hid_keyboard_report report;
+	uint16_t timestamp;
+};
+
+static struct queue const report_queue = QUEUE_NULL(32, struct kb_device_data);
+static struct k_mutex *report_queue_mutex;
 static struct usb_hid_keyboard_report report;
+
+static const struct device *hid_dev;
 
 static uint32_t maybe_convert_function_key(int keycode)
 {
@@ -342,20 +359,21 @@ static uint32_t maybe_convert_function_key(int keycode)
 	return action_key[config->action_keys[index]].mask;
 }
 
+static void hid_kb_proc_queue(void);
+DECLARE_DEFERRED(hid_kb_proc_queue);
+
 void keyboard_state_changed(int row, int col, int is_pressed)
 {
+	static int print_full = 1;
 	bool valid = 0;
 	uint8_t mask;
-	int i, ret;
+	int i;
 	uint32_t action_key_mask;
 	uint8_t keycode = keycodes[col][row];
-	const struct device *hid_dev;
-
 	if (!keycode) {
 		LOG_ERR("Unknown key at %d/%d\n", row, col);
 		return;
 	}
-	hid_dev = device_get_binding("HID_0");
 
 	action_key_mask = maybe_convert_function_key(keycode);
 
@@ -413,23 +431,77 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 			}
 		}
 	}
-
 	if (valid) {
-		ret = hid_int_ep_write(hid_dev, (uint8_t *)&report,
-					sizeof(report), NULL);
-		if (ret) {
-			LOG_INF("HID write error, %d", ret);
+		struct kb_device_data kb_data = {
+			.report = report,
+			.timestamp = __hw_clock_source_read() /
+				     USB_HID_KB_TIMESTAMP_UNIT
+		};
+		mutex_lock(report_queue_mutex);
+
+		if (queue_is_full(&report_queue)) {
+			if (print_full)
+				LOG_WRN("KB queue full\n");
+			print_full = 0;
+
+			queue_advance_head(&report_queue, 1);
+		} else {
+			print_full = 1;
 		}
+		queue_add_unit(&report_queue, &kb_data);
+
+		if (check_usb_is_suspended()) {
+			request_usb_wake();
+		}
+		hook_call_deferred(&hid_kb_proc_queue_data, 0);
+
+		mutex_unlock(report_queue_mutex);
+	}
+}
+
+static void hid_kb_proc_queue(void)
+{
+	struct kb_device_data kb_data;
+	int ret, delta;
+	uint16_t now;
+
+	mutex_lock(report_queue_mutex);
+
+	if (queue_count(&report_queue) == 0) {
+		mutex_unlock(report_queue_mutex);
+		return;
 	}
 
+	queue_peek_units(&report_queue, &kb_data, 0, 1);
+
+	now = __hw_clock_source_read() / USB_HID_KB_TIMESTAMP_UNIT;
+	delta = (int)((uint16_t)(now - kb_data.timestamp)) *
+		USB_HID_KB_TIMESTAMP_UNIT;
+
+	if (delta > EVENT_MAX_TIMEOUT) {
+		LOG_INF("drop hid kb event");
+		queue_advance_head(&report_queue, 1);
+		goto out;
+	}
+
+	ret = hid_int_ep_write(
+		hid_dev, (uint8_t *)&kb_data.report,
+		sizeof(struct usb_hid_keyboard_report), NULL);
+	if (ret) {
+		LOG_INF("HID write error, %d", ret);
+		goto out;
+	}
+	queue_advance_head(&report_queue, 1);
+
+out:
+	hook_call_deferred(&hid_kb_proc_queue_data, 1 * MSEC);
+	mutex_unlock(report_queue_mutex);
 }
 
 static int usb_hid_kb_init(void)
 {
-	const struct device *hid_dev;
-
 	hid_dev = device_get_binding("HID_0");
-	if (hid_dev == NULL) {
+	if (!hid_dev) {
 		LOG_ERR("Cannot get USB HID Device");
 		return 1;
 	}
