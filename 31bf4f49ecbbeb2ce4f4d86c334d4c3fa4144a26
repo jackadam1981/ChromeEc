@@ -16,6 +16,24 @@
       "message": "We shouldn\u0027t have done this change here, it must still be NULL, since the underlying signing procedure checks the auth_hmac if authTimeSecret is present, but we haven\u0027t do secret enforcement yet so u2fd cannot provide authTimeSecret (but there won\u0027t be U2F_AUTH_FLAG_TUP either because it\u0027s UV).",
       "revId": "31bf4f49ecbbeb2ce4f4d86c334d4c3fa4144a26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a6ea3a_bb15f3b7",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2023-06-20T22:39:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a21da9e_695dbe79",
+      "revId": "31bf4f49ecbbeb2ce4f4d86c334d4c3fa4144a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
