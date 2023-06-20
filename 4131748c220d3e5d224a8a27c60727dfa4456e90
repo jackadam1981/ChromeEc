@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4681c3a0_6ac02ffe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-20T22:12:05Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ec8207f0_d3064033",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "4131748c220d3e5d224a8a27c60727dfa4456e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a647aee8_35788919",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ed000e5_dd7e03cb",
+        "filename": "zephyr/shim/src/ish_system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-20T22:12:05Z",
+      "side": 1,
+      "message": "This file is included on config CONFIG_SOC_FAMILY_INTEL_ISH. That should guard this is called properly.",
+      "parentUuid": "a647aee8_35788919",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "4131748c220d3e5d224a8a27c60727dfa4456e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1dc1d15_4fdfb7b7",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-06-13T17:08:19Z",
       "side": 1,
       "message": "is it a TODO?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "4131748c220d3e5d224a8a27c60727dfa4456e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b312889a_bd07518f",
+        "filename": "zephyr/shim/src/ish_system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-20T22:12:05Z",
+      "side": 1,
+      "message": "This function is required to pass build though it\u0027s not applied to ISH. I added TODO in other functions which require later implementation.",
+      "parentUuid": "b1dc1d15_4fdfb7b7",
       "range": {
         "startLine": 70,
         "startChar": 0,
