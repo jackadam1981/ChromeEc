@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22653b67_22c5b418",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-20T03:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57adca3b_17be0d12",
+      "revId": "1d5c75b46fc64b5820708f8b0880fb812d7e9fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44a0950e_6fe537bd",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-06-19T04:27:21Z",
       "side": 1,
       "message": "Also, disable the detection when unplug the type c port.",
+      "revId": "1d5c75b46fc64b5820708f8b0880fb812d7e9fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a255e29_b105d518",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-20T03:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a0950e_6fe537bd",
       "revId": "1d5c75b46fc64b5820708f8b0880fb812d7e9fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
