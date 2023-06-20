@@ -16,6 +16,24 @@
       "message": "I am not sure how meaningful this is, but on the embedded side `sysinfo` will say `factory mode` only if the chip is in the \u0027initial\u0027 factory mode, i.e. fresh from chip production line, CCD was never reset/closed.\n\nThe CCD state bit checked here would be set every time this chip is in factory mode.",
       "revId": "c761d3c317465c9f72f5b70ef1fc24091f7b9c5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "860c7bd9_61493a49",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2640,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-06-20T21:33:06Z",
+      "side": 1,
+      "message": "This is the same initial factory mode. And this line wont\u0027 appear after a `ccd reset`",
+      "parentUuid": "723d2ddd_fbe6559c",
+      "revId": "c761d3c317465c9f72f5b70ef1fc24091f7b9c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
