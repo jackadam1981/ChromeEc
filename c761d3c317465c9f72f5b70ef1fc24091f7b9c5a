@@ -34,6 +34,24 @@
       "parentUuid": "723d2ddd_fbe6559c",
       "revId": "c761d3c317465c9f72f5b70ef1fc24091f7b9c5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b802b22_269cf7e3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2640,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-20T21:37:14Z",
+      "side": 1,
+      "message": "isn\u0027t where this bit is set: https://chrome-internal.googlesource.com/ti50/common/ti50/+/39068e85/applications/sys_mgr/src/ccd_config.rs#939?\n\nThe `sysinfo` factory mode state is printed based on the contents of a word in on INFO space.",
+      "parentUuid": "860c7bd9_61493a49",
+      "revId": "c761d3c317465c9f72f5b70ef1fc24091f7b9c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
