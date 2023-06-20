@@ -46,6 +46,30 @@
       },
       "revId": "3e7d29aaef687b5f23489620c71b780ee13d1c26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc987a8_9dd2705a",
+        "filename": "include/host_command.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-20T19:48:17Z",
+      "side": 1,
+      "message": "Yes, it\u0027s cleaner to have the host commands in a separate file. But you should be able to drop the code that exports the cprints/cprintf interface.",
+      "parentUuid": "24ec51db_bd9eff88",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 0
+      },
+      "revId": "3e7d29aaef687b5f23489620c71b780ee13d1c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
