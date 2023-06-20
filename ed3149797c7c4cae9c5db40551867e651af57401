@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c8a2a6_9a4c6b4b",
+        "filename": "chip/it83xx/cec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-20T20:37:35Z",
+      "side": 1,
+      "message": "CPRINTS?",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "ed3149797c7c4cae9c5db40551867e651af57401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e69a652_12f1cd56",
+        "filename": "chip/it83xx/cec_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-20T20:37:35Z",
+      "side": 1,
+      "message": "nit: hw_timer_chip.h needs to be included.",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "ed3149797c7c4cae9c5db40551867e651af57401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1c45f4_330fc507",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-20T20:37:35Z",
+      "side": 1,
+      "message": "nit: IS_ENABLED(CONFIG_CEC)?",
+      "range": {
+        "startLine": 210,
+        "startChar": 7,
+        "endLine": 210,
+        "endChar": 17
+      },
+      "revId": "ed3149797c7c4cae9c5db40551867e651af57401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0149a9e_5aea45c7",
+        "filename": "chip/it83xx/hwtimer_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-20T20:37:35Z",
+      "side": 1,
+      "message": "nit: #elif looks easier to read.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "ed3149797c7c4cae9c5db40551867e651af57401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a96c26_efa57160",
+        "filename": "common/cec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-20T20:37:35Z",
+      "side": 1,
+      "message": "nit: if it\u0027s?",
+      "range": {
+        "startLine": 860,
+        "startChar": 36,
+        "endLine": 860,
+        "endChar": 40
+      },
+      "revId": "ed3149797c7c4cae9c5db40551867e651af57401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
