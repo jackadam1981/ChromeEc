@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7a26d122_e058abdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-06-20T19:19:16Z",
+      "side": 1,
+      "message": "Since they want a machine readable format anyway. I updated this CL to only print `Chip factory mode.` if the flag is present, which also means that we don\u0027t need the `_VALID` flag.\n\nI will add the machine readable format in another CL",
+      "parentUuid": "17ccf0dd_a14ecf4f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "f5ff45111b7ffdd64c57cb8a63355a61897ab872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f8bef7fa_db4adf73",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -126,6 +150,30 @@
       "side": 1,
       "message": "This is only an 8-bit field, so we don\u0027t have room for a bit counter.\n\nWe could add another field, but then we have to bump the encoding version number, and ti50 would still need to support both encoding versions for a while.\n\nWhen we need to add a field in the future and are already spending the effort to bump the encoding version, we should definitely use add a bits used field.",
       "parentUuid": "245960bd_8ed1bc44",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 55
+      },
+      "revId": "f5ff45111b7ffdd64c57cb8a63355a61897ab872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6b04537_b8a5fdd6",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-06-20T19:19:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "381c9d02_cbd0b147",
       "range": {
         "startLine": 259,
         "startChar": 0,
