@@ -184,6 +184,9 @@ struct cec_tx {
 	int present_initiator;
 };
 
+/* Only one instance of this driver is supported for now. */
+static int cec_port;
+
 /* Single state for CEC. We are INITIATOR, FOLLOWER or IDLE */
 static enum cec_state cec_state;
 
@@ -365,8 +368,8 @@ static void enter_state(enum cec_state new_state)
 		if (cec_rx.eom || cec_rx.transfer.byte >= MAX_CEC_MSG_LEN) {
 			addr = cec_rx.transfer.buf[0] & 0x0f;
 			if (addr == cec_addr || addr == CEC_BROADCAST_ADDR) {
-				task_set_event(TASK_ID_CEC,
-					       CEC_TASK_EVENT_RECEIVED_DATA);
+				cec_task_set_event(
+					cec_port, CEC_TASK_EVENT_RECEIVED_DATA);
 			}
 			timeout = DATA_ZERO_HIGH_TICKS;
 		} else {
@@ -451,8 +454,8 @@ void cec_event_timeout(void)
 				cec_tx.len = 0;
 				cec_tx.resends = 0;
 				enter_state(CEC_STATE_IDLE);
-				task_set_event(TASK_ID_CEC,
-					       CEC_TASK_EVENT_OKAY);
+				cec_task_set_event(cec_port,
+						   CEC_TASK_EVENT_OKAY);
 			}
 		} else {
 			if (cec_tx.resends < CEC_MAX_RESENDS) {
@@ -464,8 +467,8 @@ void cec_event_timeout(void)
 				cec_tx.len = 0;
 				cec_tx.resends = 0;
 				enter_state(CEC_STATE_IDLE);
-				task_set_event(TASK_ID_CEC,
-					       CEC_TASK_EVENT_FAILED);
+				cec_task_set_event(cec_port,
+						   CEC_TASK_EVENT_FAILED);
 			}
 		}
 		break;
@@ -655,6 +658,8 @@ __overridable void cec_update_interrupt_time(void)
 
 static int bitbang_cec_init(int port)
 {
+	cec_port = port;
+
 	cec_init_timer();
 
 	/* If RO doesn't set it, RW needs to set it explicitly. */
