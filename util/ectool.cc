@@ -38,6 +38,7 @@
 #include <libec/ec_panicinfo.h>
 #include <libec/fingerprint/fp_encryption_status_command.h>
 #include <libec/flash_protect_command.h>
+#include <libec/flash_protect_command_factory.h>
 #include <libec/rand_num_command.h>
 #include <unistd.h>
 #include <vector>
@@ -1768,43 +1769,44 @@ int cmd_flash_protect(int argc, char *argv[])
 			mask |= ec::flash_protect::Flags::kRoAtBoot;
 	}
 
-	ec::FlashProtectCommand_v1 flash_protect_command(flags, mask);
-	if (!flash_protect_command.Run(comm_get_fd())) {
-		int rv = -EECRESULT - flash_protect_command.Result();
+	auto flash_protect_command =
+		ec::FlashProtectCommandFactory::Create(flags, mask);
+	if (!flash_protect_command->Run(comm_get_fd())) {
+		int rv = -EECRESULT - flash_protect_command->Result();
 		fprintf(stderr, "Flash protect returned with errors: %d\n", rv);
 		return rv;
 	}
 
 	/* Print returned flags */
 	printf("Flash protect flags: 0x%08x%s\n",
-	       flash_protect_command.GetFlags(),
+	       flash_protect_command->GetFlags(),
 	       (ec::FlashProtectCommand::ParseFlags(
-			flash_protect_command.GetFlags()))
+			flash_protect_command->GetFlags()))
 		       .c_str());
 	printf("Valid flags:         0x%08x%s\n",
-	       flash_protect_command.GetValidFlags(),
+	       flash_protect_command->GetValidFlags(),
 	       (ec::FlashProtectCommand::ParseFlags(
-			flash_protect_command.GetValidFlags()))
+			flash_protect_command->GetValidFlags()))
 		       .c_str());
 	printf("Writable flags:      0x%08x%s\n",
-	       flash_protect_command.GetWritableFlags(),
+	       flash_protect_command->GetWritableFlags(),
 
 	       (ec::FlashProtectCommand::ParseFlags(
-			flash_protect_command.GetWritableFlags()))
+			flash_protect_command->GetWritableFlags()))
 		       .c_str());
 
 	/* Check if we got all the flags we asked for */
-	if ((flash_protect_command.GetFlags() & mask) != (flags & mask)) {
+	if ((flash_protect_command->GetFlags() & mask) != (flags & mask)) {
 		fprintf(stderr,
 			"Unable to set requested flags "
 			"(wanted mask 0x%08x flags 0x%08x)\n",
 			mask, flags);
-		if ((mask & ~flash_protect_command.GetWritableFlags()) !=
+		if ((mask & ~flash_protect_command->GetWritableFlags()) !=
 		    ec::flash_protect::Flags::kNone)
 			fprintf(stderr,
 				"Which is expected, because writable "
 				"mask is 0x%08x.\n",
-				flash_protect_command.GetWritableFlags());
+				flash_protect_command->GetWritableFlags());
 
 		return -1;
 	}
