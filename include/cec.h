@@ -15,9 +15,9 @@
 #endif
 
 /* Notification from interrupt to CEC task that data has been received */
-#define CEC_TASK_EVENT_RECEIVED_DATA TASK_EVENT_CUSTOM_BIT(0)
-#define CEC_TASK_EVENT_OKAY TASK_EVENT_CUSTOM_BIT(1)
-#define CEC_TASK_EVENT_FAILED TASK_EVENT_CUSTOM_BIT(2)
+#define CEC_TASK_EVENT_RECEIVED_DATA BIT(0)
+#define CEC_TASK_EVENT_OKAY BIT(1)
+#define CEC_TASK_EVENT_FAILED BIT(2)
 
 /* CEC broadcast address. Also the highest possible CEC address */
 #define CEC_BROADCAST_ADDR 15
@@ -194,3 +194,11 @@ int cec_rx_queue_pop(struct cec_rx_queue *queue, uint8_t *msg,
  */
 int cec_process_offline_message(struct cec_rx_queue *queue, const uint8_t *msg,
 				uint8_t msg_len);
+
+/**
+ * Set a given task event for a given CEC port.
+ *
+ * @param port		Port the event occurred on
+ * @param event		Event type (CEC_TASK_EVENT_*)
+ */
+void cec_task_set_event(int port, uint32_t event);
