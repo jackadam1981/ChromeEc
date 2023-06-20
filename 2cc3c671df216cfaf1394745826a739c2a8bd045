@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a61d070_74a0849c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-06-20T02:34:57Z",
+      "side": 1,
+      "message": "Seems okay, just that I think the name could be made clearer.\n\n```suggestion\n__overridable int board_get_leave_safe_mode_delay_ms(void)\n{\n\treturn 500;\n}\n\nvoid charge_manager_leave_safe_mode(void)\n{\n\tif (left_safe_mode)\n\t\treturn;\n\n\t/*\n\t * Sometimes the fuel gauge will report that it has\n\t * sufficient state of charge and remaining capacity,\n\t * but in actuality it doesn\u0027t.  When the EC sees that\n\t * information, it trusts it and leaves charge manager\n\t * safe mode.  Doing so will allow CHARGE_PORT_NONE to\n\t * be selected, thereby cutting off the input FETs.\n\t * When the battery cannot provide the charge it claims,\n\t * the system loses power, shuts down, and the battery\n\t * is not charged even though the charger is plugged in.\n\t * By waiting 500ms, we can avoid the selection of\n\t * CHARGE_PORT_NONE around init time and not cut off the\n\t * input FETs.\n\t */\n\tmsleep(board_get_leave_safe_mode_delay_ms());\n```",
+      "range": {
+        "startLine": 1237,
+        "startChar": 0,
+        "endLine": 1261,
+        "endChar": 42
+      },
+      "revId": "2cc3c671df216cfaf1394745826a739c2a8bd045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
