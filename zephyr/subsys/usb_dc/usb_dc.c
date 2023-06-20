@@ -25,8 +25,7 @@ static void status_cb(enum usb_dc_status_code status, const uint8_t *param)
 
 bool check_usb_is_suspended(void)
 {
-	/* TODO */
-	return false;
+	return (usb_status == USB_DC_SUSPEND) ? true : false;
 }
 
 void request_usb_wake(void)
