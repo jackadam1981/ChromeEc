@@ -52,6 +52,24 @@
       "parentUuid": "860c7bd9_61493a49",
       "revId": "c761d3c317465c9f72f5b70ef1fc24091f7b9c5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a377d0c_66574505",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2640,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-06-20T22:20:25Z",
+      "side": 1,
+      "message": "It is actually here: https://chrome-internal-review.googlesource.com/c/ti50/common/ti50/+/6045691/4/applications/sys_mgr/src/ccd_config.rs#1177\n\nThe flag you mention is a different flag that track regular factory mode",
+      "parentUuid": "9b802b22_269cf7e3",
+      "revId": "c761d3c317465c9f72f5b70ef1fc24091f7b9c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
