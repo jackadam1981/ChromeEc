@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d945282_7a05f53e",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-20T15:42:53Z",
+      "side": 1,
+      "message": "Don\u0027t we need to release the semaphore here?",
+      "range": {
+        "startLine": 212,
+        "startChar": 3,
+        "endLine": 212,
+        "endChar": 10
+      },
+      "revId": "fb9117e0a6b3230cf6e327a9e247758fefbfb7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b79260_629c2fd6",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-20T15:42:53Z",
+      "side": 1,
+      "message": "Is there a reason for not just calling this via `K_THREAD_DEFINE()` and having the init logic in the thread\u0027s entry point `cros_ec_ishtp_task()`?",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 53
+      },
+      "revId": "fb9117e0a6b3230cf6e327a9e247758fefbfb7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
