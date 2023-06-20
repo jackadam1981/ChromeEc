@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1ed0d4_fc7559ea",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-06-20T17:15:07Z",
+      "side": 1,
+      "message": "Since we run this wrapper with vpython and a limited set of packages, will this cause issues if scripts called by cmake are missing packages not specified above?",
+      "range": {
+        "startLine": 290,
+        "startChar": 8,
+        "endLine": 290,
+        "endChar": 48
+      },
+      "revId": "f48dfe32270f026591ea28481fdde6109b70aa94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
