@@ -8,12 +8,10 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "hwtimer.h"
 #include "link_defs.h"
 #include "queue.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
 #include "util.h"
 #include "usb_dc.h"
 
@@ -26,8 +24,6 @@
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(usb_hid_tp, LOG_LEVEL_INF);
-
-#define USB_HID_TP_TIMESTAMP_UNIT 100 /* usec */
 
 #define REPORT_ID_TOUCHPAD 0x01
 #define REPORT_ID_MOUSE 0x02
@@ -68,9 +64,6 @@ static struct k_mutex *report_queue_mutex;
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 839 /* tenth of mm */
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y 457 /* tenth of mm */
 #define CONFIG_TOUCHPAD_VIRTUAL_SIZE (64 * 1024)
-
-/* Discard TP events older than this time */
-#define EVENT_DISCARD_MAX_TIME (1 * SECOND)
 
 #define FINGER_USAGE                                                           \
 		0x05, 0x0D, /*   Usage Page (Digitizer) */                             \
@@ -215,12 +208,9 @@ static void write_tp_report(struct usb_hid_touchpad_report *report)
 			sizeof(*report), NULL);
 
 	if (ret) {
-		LOG_ERR("HID write error\n");
+		LOG_ERR("hid tp write error, %d", ret);
 	}
-
-	request_usb_wake();
 }
-
 
 static void hid_tp_proc_queue(void);
 DECLARE_DEFERRED(hid_tp_proc_queue);
@@ -228,81 +218,46 @@ DECLARE_DEFERRED(hid_tp_proc_queue);
 static void hid_tp_proc_queue(void)
 {
 	struct usb_hid_touchpad_report report;
-	uint16_t now;
-	int trimming = 0;
 
 	mutex_lock(report_queue_mutex);
 
-	/* EP is busy, or nothing in queue: do nothing. */
-	if (queue_count(&report_queue) == 0)
-		goto unlock;
-
-	now = __hw_clock_source_read() / USB_HID_TP_TIMESTAMP_UNIT;
-
-	if (check_usb_is_suspended()) {
-
-		request_usb_wake();
-
-		/* Let's trim old events from the queue, if any. */
-		trimming = 1;
-	} else {
-		hook_call_deferred(&hid_tp_proc_queue_data, -1);
+	if (queue_is_empty(&report_queue)) {
+		mutex_unlock(report_queue_mutex);
+		return;
 	}
 
-	if (touchpad_debug)
-		LOG_DBG("TPQ t=%d (%d)", trimming, queue_count(&report_queue));
+	queue_peek_units(&report_queue, &report, 0, 1);
 
-	while (queue_count(&report_queue) > 0) {
-		int delta;
+	write_tp_report(&report);
 
-		queue_peek_units(&report_queue, &report, 0, 1);
+	queue_advance_head(&report_queue, 1);
 
-		delta = (int)((uint16_t)(now - report.timestamp)) *
-			USB_HID_TP_TIMESTAMP_UNIT;
-
-		if (touchpad_debug)
-			LOG_DBG("evt t=%d d=%d", report.timestamp, delta);
-
-		/* Drop old events */
-		if (delta > EVENT_DISCARD_MAX_TIME) {
-			queue_advance_head(&report_queue, 1);
-			continue;
-		}
-
-		if (trimming) {
-			/*
-			 * If we stil fail to resume, this will discard the
-			 * event after the timeout expires.
-			 */
-			hook_call_deferred(&hid_tp_proc_queue_data,
-					   EVENT_DISCARD_MAX_TIME - delta);
-		} else {
-			queue_advance_head(&report_queue, 1);
-			write_tp_report(&report);
-		}
-		break;
-	}
-
-unlock:
 	mutex_unlock(report_queue_mutex);
+	hook_call_deferred(&hid_tp_proc_queue_data, 1 * MSEC);
 }
 
 void set_touchpad_report(struct usb_hid_touchpad_report *report)
 {
 	static int print_full = 1;
 
-	mutex_lock(report_queue_mutex);
-
-	/* USB/EP ready and nothing in queue, just write the report. */
-	if (!check_usb_is_suspended() && (queue_count(&report_queue) == 0)) {
-		write_tp_report(report);
-		mutex_unlock(report_queue_mutex);
+	if (!check_usb_is_configured()) {
 		return;
 	}
 
-	/* Else add to queue, dropping oldest event if needed. */
-	if (touchpad_debug)
-		LOG_DBG("sTP t=%d", report->timestamp);
+	mutex_lock(report_queue_mutex);
+
+	if (!check_usb_is_suspended()) {
+		if (queue_is_empty(&report_queue)) {
+			write_tp_report(report);
+			mutex_unlock(report_queue_mutex);
+			return;
+		}
+	} else {
+		if (!request_usb_wake()) {
+			return;
+		}
+	}
+
 	if (queue_is_full(&report_queue)) {
 		if (print_full)
 			LOG_WRN("TP queue full\n");
@@ -316,7 +271,7 @@ void set_touchpad_report(struct usb_hid_touchpad_report *report)
 
 	mutex_unlock(report_queue_mutex);
 
-	hid_tp_proc_queue();
+	hook_call_deferred(&hid_tp_proc_queue_data, 0);
 }
 
 static int usb_hid_tp_init(void)

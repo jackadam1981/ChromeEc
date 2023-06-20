@@ -11,6 +11,13 @@
 #include "common.h"
 
 bool check_usb_is_suspended(void);
-void request_usb_wake(void);
+bool check_usb_is_configured(void);
+
+/**
+ * @brief Request usb wake-up
+ *
+ * @return true if wake up successfully, false otherwise
+ */
+bool request_usb_wake(void);
 
 #endif
