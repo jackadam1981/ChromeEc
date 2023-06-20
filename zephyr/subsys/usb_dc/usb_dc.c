@@ -16,27 +16,55 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(usb_dc, LOG_LEVEL_INF);
 
-static enum usb_dc_status_code usb_status;
+struct usb_controller_status {
+	bool suspended;
+	bool configured;
+};
+
+struct usb_controller_status usb_dc_status;
 
 static void status_cb(enum usb_dc_status_code status, const uint8_t *param)
 {
-	usb_status = status;
+	switch (status) {
+	case USB_DC_RESET:
+		usb_dc_status.configured = false;
+		usb_dc_status.suspended = false;
+		break;
+	case USB_DC_CONFIGURED:
+		usb_dc_status.configured = true;
+		break;
+	case USB_DC_DISCONNECTED:
+		usb_dc_status.configured = false;
+		usb_dc_status.suspended = false;
+		break;
+	case USB_DC_SUSPEND:
+		usb_dc_status.suspended = true;
+		break;
+	case USB_DC_RESUME:
+		usb_dc_status.suspended = false;
+		break;
+	default:
+		break;
+	}
 }
 
 bool check_usb_is_suspended(void)
 {
-	/* TODO */
-	return false;
+	return usb_dc_status.suspended;
 }
 
-void request_usb_wake(void)
+bool check_usb_is_configured(void)
+{
+	return usb_dc_status.configured;
+}
+
+bool request_usb_wake(void)
 {
 	if (IS_ENABLED(CONFIG_USB_DEVICE_REMOTE_WAKEUP)) {
-		if (usb_status == USB_DC_SUSPEND) {
-			usb_wakeup_request();
-			return;
-		}
+		usb_wakeup_request();
+		return usb_dc_status.suspended ? false : true;
 	}
+	return false;
 }
 
 static int usb_dc_init(void)
