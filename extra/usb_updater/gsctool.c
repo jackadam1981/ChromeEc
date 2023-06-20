@@ -73,33 +73,34 @@ enum Ti50CcdCapabilities {
 };
 
 static const struct ccd_capability_info ti50_cap_info[] = {
-	{"UartGscRxAPTx", CCD_CAP_STATE_ALWAYS},
-	{"UartGscTxAPRx", CCD_CAP_STATE_ALWAYS},
-	{"UartGscRxECTx", CCD_CAP_STATE_ALWAYS},
-	{"UartGscTxECRx", CCD_CAP_STATE_IF_OPENED},
-	{"UartGscRxFpmcuTx", CCD_CAP_STATE_ALWAYS},
-	{"UartGscTxFpmcuRx", CCD_CAP_STATE_IF_OPENED},
-	{"FlashAP", CCD_CAP_STATE_IF_OPENED},
-	{"FlashEC", CCD_CAP_STATE_IF_OPENED},
-	{"OverrideWP", CCD_CAP_STATE_IF_OPENED},
-	{"RebootECAP", CCD_CAP_STATE_IF_OPENED},
-	{"GscFullConsole", CCD_CAP_STATE_IF_OPENED},
-	{"UnlockNoReboot", CCD_CAP_STATE_ALWAYS},
-	{"UnlockNoShortPP", CCD_CAP_STATE_ALWAYS},
-	{"OpenNoTPMWipe", CCD_CAP_STATE_IF_OPENED},
-	{"OpenNoLongPP", CCD_CAP_STATE_IF_OPENED},
-	{"RemoveBatteryBypassPP", CCD_CAP_STATE_ALWAYS},
-	{"I2C", CCD_CAP_STATE_IF_OPENED},
-	{"FlashRead", CCD_CAP_STATE_ALWAYS},
+	{ "UartGscRxAPTx", "UART_GSC_RX_AP_TX", CCD_CAP_STATE_ALWAYS },
+	{ "UartGscTxAPRx", "UART_GSC_TX_AP_RX", CCD_CAP_STATE_ALWAYS },
+	{ "UartGscRxECTx", "UART_GSC_RX_EC_TX", CCD_CAP_STATE_ALWAYS },
+	{ "UartGscTxECRx", "UART_GSC_TX_EC_RX", CCD_CAP_STATE_IF_OPENED },
+	{ "UartGscRxFpmcuTx", "UART_GSC_RX_FPMCU_TX", CCD_CAP_STATE_ALWAYS },
+	{ "UartGscTxFpmcuRx", "UART_GSC_TX_FPMCU_RX", CCD_CAP_STATE_IF_OPENED },
+	{ "FlashAP", "FLASH_AP", CCD_CAP_STATE_IF_OPENED },
+	{ "FlashEC", "FLASH_EC", CCD_CAP_STATE_IF_OPENED },
+	{ "OverrideWP", "OVERRIDE_WP", CCD_CAP_STATE_IF_OPENED },
+	{ "RebootECAP", "REBOOT_ECAP", CCD_CAP_STATE_IF_OPENED },
+	{ "GscFullConsole", "GSC_FULL_CONSOLE", CCD_CAP_STATE_IF_OPENED },
+	{ "UnlockNoReboot", "UNLOCK_NO_REBOOT", CCD_CAP_STATE_ALWAYS },
+	{ "UnlockNoShortPP", "UNLOCK_NO_SHORT_PP", CCD_CAP_STATE_ALWAYS },
+	{ "OpenNoTPMWipe", "OPEN_NO_TPM_WIPE", CCD_CAP_STATE_IF_OPENED },
+	{ "OpenNoLongPP", "OPEN_NO_LONG_PP", CCD_CAP_STATE_IF_OPENED },
+	{ "RemoveBatteryBypassPP", "REMOVE_BATTERY_BYPASS_PP",
+	  CCD_CAP_STATE_ALWAYS },
+	{ "I2C", "I2C", CCD_CAP_STATE_IF_OPENED },
+	{ "FlashRead", "FLASH_READ", CCD_CAP_STATE_ALWAYS },
 	/*
 	 * The below two settings do not match ccd.rs value, which is
 	 * controlled at compile time.
 	 */
-	{"OpenNoDevMode", CCD_CAP_STATE_IF_OPENED},
-	{"OpenFromUSB", CCD_CAP_STATE_IF_OPENED},
-	{"OverrideBatt", CCD_CAP_STATE_IF_OPENED},
+	{ "OpenNoDevMode", "OPEN_NO_DEV_MODE", CCD_CAP_STATE_IF_OPENED },
+	{ "OpenFromUSB", "OPEN_FROM_USB", CCD_CAP_STATE_IF_OPENED },
+	{ "OverrideBatt", "OVERRIDE_BATT", CCD_CAP_STATE_IF_OPENED },
 	/* The below capability is presently set to 'never' in ccd.rs. */
-	{"AllowUnverifiedRo", CCD_CAP_STATE_IF_OPENED},
+	{ "AllowUnverifiedRo", "ALLOW_UNVERIFIED_RO", CCD_CAP_STATE_IF_OPENED },
 };
 
 #define CR50_CCD_CAP_COUNT CCD_CAP_COUNT
@@ -2489,7 +2490,8 @@ static void print_aligned(const char *name, size_t field_size)
 	}
 }
 
-static void print_ccd_info(void *response, size_t response_size)
+static void print_ccd_info(void *response, size_t response_size,
+			   bool show_machine_output)
 {
 	struct ccd_info_response_header ccd_info_header;
 	struct ccd_info_response ccd_info;
@@ -2574,13 +2576,24 @@ static void print_ccd_info(void *response, size_t response_size)
 			be32toh(ccd_info.ccd_caps_defaults[i]);
 	}
 
-	/* Now report CCD state on the console. */
-	printf("State: %s\n", ccd_info.ccd_state > ARRAY_SIZE(state_names) ?
-	       "Error" : state_names[ccd_info.ccd_state]);
-	printf("Password: %s\n", (ccd_info.ccd_indicator_bitmap &
-		      CCD_INDICATOR_BIT_HAS_PASSWORD) ? "Set" : "None");
-	printf("Flags: %#06x\n", ccd_info.ccd_flags);
-	printf("Capabilities, current and default:\n");
+	const char *const state = ccd_info.ccd_state > ARRAY_SIZE(state_names) ?
+					  "Error" :
+					  state_names[ccd_info.ccd_state];
+	const char *const password = (ccd_info.ccd_indicator_bitmap &
+				      CCD_INDICATOR_BIT_HAS_PASSWORD) ?
+					     "Set" :
+					     "None";
+	if (show_machine_output) {
+		print_machine_output("STATE", "%s", state);
+		print_machine_output("PASSWORD", "%s", password);
+		print_machine_output("FLAGS", "%#06x", ccd_info.ccd_flags);
+	} else {
+		/* Now report CCD state on the console. */
+		printf("State: %s\n", state);
+		printf("Password: %s\n", password);
+		printf("Flags: %#06x\n", ccd_info.ccd_flags);
+		printf("Capabilities, current and default:\n");
+	}
 
 	gsc_cap_count = version_to_ccd[ccd_info_version].cap_count;
 	gsc_capability_info = version_to_ccd[ccd_info_version].info_table;
@@ -2619,31 +2632,56 @@ static void print_ccd_info(void *response, size_t response_size)
 			}
 		}
 
-		printf("  ");
-		print_aligned(gsc_capability_info[i].name, name_column_width);
-		printf("%c %s",
-		       is_enabled ? 'Y' : '-',
-		       cap_state_names[cap_current]);
+		if (show_machine_output) {
+			print_machine_output(gsc_capability_info[i].name_upper,
+					     "%c", is_enabled ? 'Y' : 'N');
 
-		if (cap_current != cap_default)
-			printf("  (%s)", cap_state_names[cap_default]);
+		} else {
+			printf("  ");
+			print_aligned(gsc_capability_info[i].name,
+				      name_column_width);
+			printf("%c %s", is_enabled ? 'Y' : '-',
+			       cap_state_names[cap_current]);
 
-		printf("\n");
+			if (cap_current != cap_default)
+				printf("  (%s)", cap_state_names[cap_default]);
+
+			printf("\n");
+		}
 
 		if (is_enabled)
 			caps_bitmap |= (1 << i);
 	}
-	printf("CCD caps bitmap: %#x\n", caps_bitmap);
-	printf("Capabilities are %s.\n", (ccd_info.ccd_indicator_bitmap &
-		 CCD_INDICATOR_BIT_ALL_CAPS_DEFAULT) ? "default" : "modified");
-	if (ccd_info.ccd_indicator_bitmap &
-	    CCD_INDICATOR_BIT_INITIAL_FACTORY_MODE) {
-		printf("Chip factory mode.");
+	if (show_machine_output) {
+		print_machine_output("CCD_CAPS_BITMAP", "%#x", caps_bitmap);
+		print_machine_output("CAPABILITY_MODIFIED", "%c",
+				     (ccd_info.ccd_indicator_bitmap &
+				      CCD_INDICATOR_BIT_ALL_CAPS_DEFAULT) ?
+					     'N' :
+					     'Y');
+		print_machine_output("INITIAL_FACTORY_MODE", "%c",
+				     (ccd_info.ccd_indicator_bitmap &
+				      CCD_INDICATOR_BIT_INITIAL_FACTORY_MODE) ?
+					     'Y' :
+					     'N');
+
+	} else {
+		printf("CCD caps bitmap: %#x\n", caps_bitmap);
+		printf("Capabilities are %s.\n",
+		       (ccd_info.ccd_indicator_bitmap &
+			CCD_INDICATOR_BIT_ALL_CAPS_DEFAULT) ?
+			       "default" :
+			       "modified");
+		if (ccd_info.ccd_indicator_bitmap &
+		    CCD_INDICATOR_BIT_INITIAL_FACTORY_MODE) {
+			printf("Chip factory mode.");
+		}
 	}
 }
 
 static void process_ccd_state(struct transfer_descriptor *td, int ccd_unlock,
-			      int ccd_open, int ccd_lock, int ccd_info)
+			      int ccd_open, int ccd_lock, int ccd_info,
+			      bool show_machine_output)
 {
 	uint8_t payload;
 	 /* Max possible response size is when ccd_info is requested. */
@@ -2674,7 +2712,8 @@ static void process_ccd_state(struct transfer_descriptor *td, int ccd_unlock,
 
 	if (rv == VENDOR_RC_SUCCESS) {
 		if (ccd_info)
-			print_ccd_info(response, response_size);
+			print_ccd_info(response, response_size,
+				       show_machine_output);
 		return;
 	}
 
@@ -4569,7 +4608,7 @@ int main(int argc, char *argv[])
 
 	if (ccd_unlock || ccd_open || ccd_lock || ccd_info)
 		process_ccd_state(&td, ccd_unlock, ccd_open,
-				  ccd_lock, ccd_info);
+				  ccd_lock, ccd_info, show_machine_output);
 
 	if (set_capability)
 		exit(process_set_capabililty(&td, capability_parameter));

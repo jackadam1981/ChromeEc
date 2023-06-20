@@ -161,6 +161,9 @@ struct ccd_capability_info {
 	/* Capability name */
 	const char *name;
 
+	/* All Caps capability name */
+	const char *name_upper;
+
 	/* Default state, if config set to CCD_CAP_STATE_DEFAULT */
 	enum ccd_capability_state default_state;
 };
@@ -173,31 +176,31 @@ struct ccd_capability_info {
 #define CCD_CAP_STATE_OPEN_REQ CCD_CAP_STATE_IF_OPENED
 #endif
 
-#define CAP_INFO_DATA {					  \
-	{"UartGscRxAPTx",	CCD_CAP_STATE_ALWAYS},	  \
-	{"UartGscTxAPRx",	CCD_CAP_STATE_ALWAYS},	  \
-	{"UartGscRxECTx",	CCD_CAP_STATE_ALWAYS},	  \
-	{"UartGscTxECRx",	CCD_CAP_STATE_IF_OPENED}, \
-							  \
-	{"FlashAP",		CCD_CAP_STATE_IF_OPENED}, \
-	{"FlashEC",		CCD_CAP_STATE_IF_OPENED}, \
-	{"OverrideWP",		CCD_CAP_STATE_IF_OPENED}, \
-	{"RebootECAP",		CCD_CAP_STATE_IF_OPENED}, \
-							  \
-	{"GscFullConsole",	CCD_CAP_STATE_IF_OPENED}, \
-	{"UnlockNoReboot",	CCD_CAP_STATE_ALWAYS},	  \
-	{"UnlockNoShortPP",	CCD_CAP_STATE_ALWAYS},	  \
-	{"OpenNoTPMWipe",	CCD_CAP_STATE_IF_OPENED}, \
-							  \
-	{"OpenNoLongPP",	CCD_CAP_STATE_IF_OPENED}, \
-	{"BatteryBypassPP",	CCD_CAP_STATE_ALWAYS},	  \
-	{"Unused",		CCD_CAP_STATE_ALWAYS},	  \
-	{"I2C",			CCD_CAP_STATE_IF_OPENED}, \
-	{"FlashRead",		CCD_CAP_STATE_ALWAYS},	  \
-	{"OpenNoDevMode",	CCD_CAP_STATE_OPEN_REQ}, \
-	{"OpenFromUSB",		CCD_CAP_STATE_OPEN_REQ}, \
-	{"OverrideBatt",	CCD_CAP_STATE_IF_OPENED}, \
-	{"APROCheckVC",		CCD_CAP_STATE_IF_OPENED}, \
+#define CAP_INFO_DATA {					                     \
+	{"UartGscRxAPTx",    "UART_GSC_RX_AP_TX",  CCD_CAP_STATE_ALWAYS},    \
+	{"UartGscTxAPRx",    "UART_GSC_TX_AP_RX",  CCD_CAP_STATE_ALWAYS},    \
+	{"UartGscRxECTx",    "UART_GSC_RX_EC_TX",  CCD_CAP_STATE_ALWAYS},    \
+	{"UartGscTxECRx",    "UART_GSC_TX_EC_RX",  CCD_CAP_STATE_IF_OPENED}, \
+									     \
+	{"FlashAP",          "FLASH_AP",           CCD_CAP_STATE_IF_OPENED}, \
+	{"FlashEC",          "FLASH_EC",           CCD_CAP_STATE_IF_OPENED}, \
+	{"OverrideWP",       "OVERRIDE_WP",        CCD_CAP_STATE_IF_OPENED}, \
+	{"RebootECAP",       "REBOOT_EC_AP",       CCD_CAP_STATE_IF_OPENED}, \
+									     \
+	{"GscFullConsole",   "GSC_FULL_CONSOLE",   CCD_CAP_STATE_IF_OPENED}, \
+	{"UnlockNoReboot",   "UNLOCK_NO_REBOOT",   CCD_CAP_STATE_ALWAYS},    \
+	{"UnlockNoShortPP",  "UNLOCK_NO_SHORT_PP", CCD_CAP_STATE_ALWAYS},    \
+	{"OpenNoTPMWipe",    "OPEN_NO_TPM_WIPE",   CCD_CAP_STATE_IF_OPENED}, \
+									     \
+	{"OpenNoLongPP",     "OPEN_NO_LONG_PP",    CCD_CAP_STATE_IF_OPENED}, \
+	{"BatteryBypassPP",  "BATTERY_BYPASS_PP",  CCD_CAP_STATE_ALWAYS},    \
+	{"Unused",           "UNUSED",             CCD_CAP_STATE_ALWAYS},    \
+	{"I2C",              "I2C",                CCD_CAP_STATE_IF_OPENED}, \
+	{"FlashRead",        "FLASH_READ",         CCD_CAP_STATE_ALWAYS},    \
+	{"OpenNoDevMode",    "OPEN_NO_DEV_MODE",   CCD_CAP_STATE_OPEN_REQ},  \
+	{"OpenFromUSB",      "OPEN_FROM_USB",      CCD_CAP_STATE_OPEN_REQ},  \
+	{"OverrideBatt",     "OVERRIDE_BATT",      CCD_CAP_STATE_IF_OPENED}, \
+	{"APROCheckVC",      "APRO_CHECK_VC",      CCD_CAP_STATE_IF_OPENED}, \
 	}
 
 #define CCD_STATE_NAMES { "Locked", "Unlocked", "Opened" }
