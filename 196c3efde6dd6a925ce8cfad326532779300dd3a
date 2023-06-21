@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b584d582_8bdc8913",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-21T03:11:49Z",
+      "side": 1,
+      "message": "Is there a hard requirement around this name? Can we just use the `RawBinPacker`?",
+      "range": {
+        "startLine": 121,
+        "startChar": 65,
+        "endLine": 121,
+        "endChar": 75
+      },
+      "revId": "196c3efde6dd6a925ce8cfad326532779300dd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
