@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78ac259b_3a3835a6",
+        "filename": "zephyr/program/rex/rex-ish/i2c.dtsi",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-21T00:28:58Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "7036c5d6_188ba08e",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "133bdbe388b7c7d9b959c7c388bc8bf89790e973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1737976e_2d2862a4",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-13T17:17:32Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "133bdbe388b7c7d9b959c7c388bc8bf89790e973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc41234b_fb4b46e8",
+        "filename": "zephyr/program/rex/rex-ish/prj.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-21T00:28:58Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "1737976e_2d2862a4",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33dfdc9a_4f6356d7",
+        "filename": "zephyr/program/rex/rex-ish/prj.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-21T00:28:58Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9ea787cd_f42afc68",
+      "range": {
+        "startLine": 61,
+        "startChar": 9,
+        "endLine": 61,
+        "endChar": 16
+      },
+      "revId": "133bdbe388b7c7d9b959c7c388bc8bf89790e973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "248f5acf_0df43327",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-06-13T17:17:32Z",
       "side": 1,
       "message": "nit: how about clubbing disabled configs separately and add a proper comment?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 34
+      },
+      "revId": "133bdbe388b7c7d9b959c7c388bc8bf89790e973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09815935_6a82cfce",
+        "filename": "zephyr/program/rex/rex-ish/prj.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-21T00:28:58Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "248f5acf_0df43327",
       "range": {
         "startLine": 64,
         "startChar": 0,
