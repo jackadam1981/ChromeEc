@@ -16,6 +16,29 @@
       "message": "I had to add a few more fixes to pass pre-upload checks",
       "revId": "e2f992e78b7cf9d7bfcb25ed81337f1c00491d0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6cf8219_0d6274da",
+        "filename": "util/crash_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-21T18:54:16Z",
+      "side": 1,
+      "message": "just removing the unnecessary nesting here",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 52
+      },
+      "revId": "e2f992e78b7cf9d7bfcb25ed81337f1c00491d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
