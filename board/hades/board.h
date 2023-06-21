@@ -152,6 +152,9 @@
 /* Round down 7700 max current to multiple of 128mA for ISL9241 AC prochot. */
 #define HADES_AC_PROCHOT_CURRENT_MA 7680
 
+#undef CONFIG_CHARGER_INPUT_CURRENT_DERATE_PCT
+#define CONFIG_CHARGER_INPUT_CURRENT_DERATE_PCT 10
+
 /* Barrel jack adapter settings */
 #undef CONFIG_DEDICATED_CHARGE_PORT_COUNT
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
