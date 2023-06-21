@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07e6861c_73e2749d",
+        "filename": "chip/it83xx/cec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-21T00:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80c8a2a6_9a4c6b4b",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "ed3149797c7c4cae9c5db40551867e651af57401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e69a652_12f1cd56",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-20T20:37:35Z",
       "side": 1,
       "message": "nit: hw_timer_chip.h needs to be included.",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "ed3149797c7c4cae9c5db40551867e651af57401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b0e406e_05166d0f",
+        "filename": "chip/it83xx/cec_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-21T00:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e69a652_12f1cd56",
       "range": {
         "startLine": 9,
         "startChar": 25,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38781bb0_440be81a",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-21T00:15:59Z",
+      "side": 1,
+      "message": "CEC_EXT_TIMER won\u0027t be defined if CONFIG_CEC is not enabled?",
+      "parentUuid": "3b1c45f4_330fc507",
+      "range": {
+        "startLine": 210,
+        "startChar": 7,
+        "endLine": 210,
+        "endChar": 17
+      },
+      "revId": "ed3149797c7c4cae9c5db40551867e651af57401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0149a9e_5aea45c7",
         "filename": "chip/it83xx/hwtimer_chip.h",
         "patchSetId": 8
@@ -83,6 +155,30 @@
       "writtenOn": "2023-06-20T20:37:35Z",
       "side": 1,
       "message": "nit: #elif looks easier to read.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "ed3149797c7c4cae9c5db40551867e651af57401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee5abbb2_75f33313",
+        "filename": "chip/it83xx/hwtimer_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-21T00:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0149a9e_5aea45c7",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -106,6 +202,30 @@
       "writtenOn": "2023-06-20T20:37:35Z",
       "side": 1,
       "message": "nit: if it\u0027s?",
+      "range": {
+        "startLine": 860,
+        "startChar": 36,
+        "endLine": 860,
+        "endChar": 40
+      },
+      "revId": "ed3149797c7c4cae9c5db40551867e651af57401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db7295e_16b24df3",
+        "filename": "common/cec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-21T00:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6a96c26_efa57160",
       "range": {
         "startLine": 860,
         "startChar": 36,
