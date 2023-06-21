@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3837677a_94108817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-21T22:57:35Z",
+      "side": 1,
+      "message": "Looks like coverage analysis is mostly (if not all) false positives.",
+      "revId": "b655d0fe611d427a80d2226505cc452446f57dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd16ea87_a8731f0f",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-21T22:57:35Z",
+      "side": 1,
+      "message": "\u0027Not covered by tests\u0027 is false positive. This line is tested.",
+      "range": {
+        "startLine": 1024,
+        "startChar": 5,
+        "endLine": 1024,
+        "endChar": 10
+      },
+      "revId": "b655d0fe611d427a80d2226505cc452446f57dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11df545e_c75ee9aa",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-21T22:57:35Z",
+      "side": 1,
+      "message": "This is also tested.",
+      "range": {
+        "startLine": 1034,
+        "startChar": 5,
+        "endLine": 1034,
+        "endChar": 9
+      },
+      "revId": "b655d0fe611d427a80d2226505cc452446f57dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
