@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fa0dfbb_150ad9a4",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-21T07:05:30Z",
+      "side": 1,
+      "message": "The initial value is 0; sem is released only when cros_ec_ishtp_event_callback() receives a message, then cros_ec_ishtp_task() can go to switch at line 195.",
+      "parentUuid": "4d945282_7a05f53e",
+      "range": {
+        "startLine": 212,
+        "startChar": 3,
+        "endLine": 212,
+        "endChar": 10
+      },
+      "revId": "fb9117e0a6b3230cf6e327a9e247758fefbfb7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96b79260_629c2fd6",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-20T15:42:53Z",
       "side": 1,
       "message": "Is there a reason for not just calling this via `K_THREAD_DEFINE()` and having the init logic in the thread\u0027s entry point `cros_ec_ishtp_task()`?",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 53
+      },
+      "revId": "fb9117e0a6b3230cf6e327a9e247758fefbfb7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc89696_17fc8592",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-21T07:05:30Z",
+      "side": 1,
+      "message": "I asked HECI protocol owner (subsys/host_service),  HECI client should call heci_register() earlier than host_service_init() is executed; in this way, host service will be able enumerate all clients. This enumeration is static, will not update even later a new client is trying to connect. I also change the priority number to 95 since host service use 99.\n zephyr_host_service.c:89:SYS_INIT(host_service_init, APPLICATION, 99);",
+      "parentUuid": "96b79260_629c2fd6",
       "range": {
         "startLine": 219,
         "startChar": 0,
