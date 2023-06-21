@@ -242,8 +242,13 @@ static int show_chipset_state(void)
 		/* The power LED must pulse in the suspend state. */
 		pulse_leds(CONFIG_LED_PWM_SOC_SUSPEND_COLOR, 4, 16);
 	} else {
+#ifdef CONFIG_LED_PWM_SOC_OFF_COLOR
+		/* The power LED must light in the power off state. */
+		set_led_color(CONFIG_LED_PWM_SOC_OFF_COLOR);
+#else
 		/* Chipset is off, no need to show anything for this. */
 		return 0;
+#endif
 	}
 	return 1;
 }
