@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "953cc878_f7ac464c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-06-21T23:58:00Z",
+      "side": 1,
+      "message": "+2 with nits",
+      "revId": "d7b79d52c97efc668fe5d1d0e39a3ed1aece736e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "527a5bdb_64ecba60",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-06-21T23:58:00Z",
+      "side": 1,
+      "message": "nit: if `sizeof(gp.EPSeed.t.size) !\u003d sizeof(uint16_t)`, this is wrong.\nyou use both `sizeof`\u0027s interchangeably in this function, but it only works if they are equal. let\u0027s add a static assert for that?",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "d7b79d52c97efc668fe5d1d0e39a3ed1aece736e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
