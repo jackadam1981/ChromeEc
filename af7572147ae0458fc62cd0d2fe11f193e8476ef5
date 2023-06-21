@@ -16,6 +16,24 @@
       "message": "Please add a unit test for the new lines.",
       "revId": "af7572147ae0458fc62cd0d2fe11f193e8476ef5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3006711e_d1a33fee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-06-21T23:36:50Z",
+      "side": 1,
+      "message": "The state machine doesn\u0027t have any tests at the moment, so I need to write new tests from scratch. Since I\u0027m restructuring this as a driver in the following CLs, I was going to wait and add tests after the restructure. E.g. I can add tests as part of CL:4626201 (for both common/cec.c and driver/cec/bitbang.c). Do you think that\u0027s reasonable?\n\nAlso, is it correct that the new tests I write should be zephyr tests?",
+      "parentUuid": "8fa37750_6f80aca7",
+      "revId": "af7572147ae0458fc62cd0d2fe11f193e8476ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
