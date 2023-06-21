@@ -362,6 +362,8 @@ test_static enum ec_error_list test_fp_command_nonce_context(void)
 	struct ec_response_fp_generate_nonce nonce_response;
 	struct ec_params_fp_nonce_context nonce_params = {};
 
+	fp_reset_and_clear_context();
+
 	templ_valid = 1;
 
 	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
@@ -375,6 +377,125 @@ test_static enum ec_error_list test_fp_command_nonce_context(void)
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	TEST_EQ(templ_valid, 1u, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_command_nonce_context_deny(void)
+{
+	enum ec_status rv;
+	struct ec_response_fp_generate_nonce nonce_response;
+	struct ec_params_fp_nonce_context nonce_params;
+
+	fp_reset_and_clear_context();
+
+	// Nonce context without generate nonce should fail.
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
+
+	fp_reset_and_clear_context();
+
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	// Generate nonce without clear the existing conext should fail.
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_command_nonce_context_limit(void)
+{
+	enum ec_status rv;
+	struct ec_params_fp_context_v1 ctx_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+	};
+	struct ec_response_fp_generate_nonce nonce_response;
+	struct ec_params_fp_nonce_context nonce_params;
+
+	fp_reset_and_clear_context();
+
+	rv = test_send_host_command(EC_CMD_FP_CONTEXT, 1, &ctx_params,
+				    sizeof(ctx_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	/* Call nonce context without generated nonce should fail. */
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	/* Normal context should not clear the generated nonce. */
+	/* This will be used for the migration path. */
+	rv = test_send_host_command(EC_CMD_FP_CONTEXT, 1, &ctx_params,
+				    sizeof(ctx_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	/* Call nonce context with generated nonce should success. */
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	fp_reset_and_clear_context();
+
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	/* Call nonce context twice should fail. */
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
+
+	fp_reset_and_clear_context();
+
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	/* Call nonce context twice should fail even we generated two nonces. */
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
 
 	return EC_SUCCESS;
 }
@@ -395,5 +516,7 @@ extern "C" void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_command_establish_and_load_pairing_key);
 	RUN_TEST(test_fp_command_load_pairing_key_fail);
 	RUN_TEST(test_fp_command_nonce_context);
+	RUN_TEST(test_fp_command_nonce_context_deny);
+	RUN_TEST(test_fp_command_nonce_context_limit);
 	test_print_result();
 }
