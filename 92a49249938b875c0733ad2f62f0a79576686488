@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66dae37f_93f5458a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2023-06-21T08:01:34Z",
+      "side": 1,
+      "message": "Due to we found an issue about the browser shows emoji when the device do drop down test. We found that if increase dbounce_down_us value of keyboard will fix this issue.",
+      "revId": "92a49249938b875c0733ad2f62f0a79576686488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
