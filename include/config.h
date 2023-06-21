@@ -3204,6 +3204,12 @@
 #define CONFIG_LED_PWM_SOC_SUSPEND_COLOR EC_LED_COLOR_GREEN
 #define CONFIG_LED_PWM_LOW_BATT_COLOR EC_LED_COLOR_AMBER
 
+/*
+ * By default the PWM LED is off when SoC is in power off state. Enable this
+ * CONFIG_LED_PWM_SOC_OFF_COLOR option to customize LED color
+ */
+#undef CONFIG_LED_PWM_SOC_OFF_COLOR
+
 /* By default, 500 ms period, 50% duty cycle. */
 #define LED_CHARGER_ERROR_ON_TIME 1
 #define LED_CHARGER_ERROR_PERIOD 2
