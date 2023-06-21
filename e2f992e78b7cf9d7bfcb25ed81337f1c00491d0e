@@ -18,6 +18,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97ebe19_894a0e9e",
+        "filename": "util/crash_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-06-21T20:14:44Z",
+      "side": 1,
+      "message": "It\u0027s more precise if you parse the task ID by `HANDLER EXCEPTION` or \"PROCESS EXCEPTION\".\n\nFor example, if a divide-by-zero crash happens in an interrupt handler, then the regs[0] is still not the task ID but a handler\u0027s ID. You might want to add regs[\"handler\"] as a new dict entry.\n\nR5 provides additional context of the task ID only if it\u0027s a stack-overflow crash.",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 18
+      },
+      "revId": "e2f992e78b7cf9d7bfcb25ed81337f1c00491d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a6cf8219_0d6274da",
