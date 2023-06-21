@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e43686b2_8b6de787",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 258
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-06-21T11:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb6134b9_2efc1df8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "a3fdae7d2064e6d936e8af18684b91a7794564ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c5fef99_d3a9f4bc",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-20T22:51:00Z",
       "side": 1,
       "message": "Does this test depend on the TPM seed? If not, we should move it before `test_set_fp_tpm_seed`.",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 42
+      },
+      "revId": "a3fdae7d2064e6d936e8af18684b91a7794564ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e0c2dab_33761031",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 258
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-06-21T11:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c5fef99_d3a9f4bc",
       "range": {
         "startLine": 290,
         "startChar": 1,
