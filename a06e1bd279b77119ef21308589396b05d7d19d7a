@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "842845a1_3046bde3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-21T01:51:47Z",
+      "side": 1,
+      "message": "Frankly, I think this is too much: the bug referenced in the header doesn\u0027t really need this, parsing the existing output is pretty simple.\n\nIf you really feel that this command needs to support `-M` option why not use the existing capabilities` names instead of adding a parallel set of strings.",
+      "revId": "a06e1bd279b77119ef21308589396b05d7d19d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
