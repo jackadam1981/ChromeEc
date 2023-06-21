@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89fe2208_4991260c",
+        "filename": "driver/als_tcs3408.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-21T20:21:32Z",
+      "side": 0,
+      "message": "There is a lot of duplication with tcs3400.c. Can we have a common file to put identical functions. See also accel_kionix.h, accel_kx022.h, accel_kxcj9.h when the register mapping is close.",
+      "revId": "85238690a2596d02cc6204fd389f45b9e4f7e818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

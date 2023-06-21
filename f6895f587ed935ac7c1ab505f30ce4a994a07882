@@ -33,6 +33,40 @@
       "message": "Gwendal, could you review if the driver has any changes need to be made?",
       "revId": "f6895f587ed935ac7c1ab505f30ce4a994a07882",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f4deab4_b322604e",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-21T20:21:32Z",
+      "side": 1,
+      "message": "That breaks driver that assume 2 RGB channels.\nInstead do:\n\n```\nenum rgb_index {\n\tRED_RGB_IDX \u003d 0,\n\tGREEN_RGB_IDX,\n\tBLUE_RGB_IDX,\n\tRGB_CHANNEL_COUNT\n\tCLEAR_IDX \u003d RGB_CHANNEL_COUNT ,\n\tWIDEBAND_IDX,\n\tWIDE_RGB_CHANNEL_COUNT\n}\n```",
+      "revId": "f6895f587ed935ac7c1ab505f30ce4a994a07882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c931394d_1bebb5c8",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-21T20:21:32Z",
+      "side": 1,
+      "message": "That will break drivers that use W as an array index. (magnetometer online calibration).",
+      "revId": "f6895f587ed935ac7c1ab505f30ce4a994a07882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
