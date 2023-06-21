@@ -124,6 +124,24 @@
       "parentUuid": "355d8023_a0d5624f",
       "revId": "1d3dadb3a57aecf0a4108dd679e4345ec475ea57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace23ab2_4fb15317",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1436607
+      },
+      "writtenOn": "2023-06-21T01:48:45Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "3d624787_c470261e",
+      "revId": "1d3dadb3a57aecf0a4108dd679e4345ec475ea57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
