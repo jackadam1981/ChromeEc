@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bd985d6_addf7611",
+        "filename": "zephyr/shim/src/ish_system.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-21T03:09:41Z",
+      "side": 1,
+      "message": "Please add tests for this file. You can see an example of testing the system shim under `src/platform/ec/zephyr/test/system_shim/`",
+      "revId": "7eaf72f35e44312ab3e39323c3676d655a233b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
