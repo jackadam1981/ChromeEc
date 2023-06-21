@@ -34,6 +34,24 @@
       "parentUuid": "842845a1_3046bde3",
       "revId": "a06e1bd279b77119ef21308589396b05d7d19d7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af6d322e_be0d7fb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-21T15:44:47Z",
+      "side": 1,
+      "message": "I just re-read the bug - it inded was reuqseted by the factory folks, so my comment that \"the bug doesn\u0027t really need this\" doesn\u0027t apply :)\n\nI still feel apprehensive about duplicating the names, let\u0027s see what they say.\n\nAnother option could be converting CameCase into CAMEL_CASE at run time, not sure how much this is worth the trouble.",
+      "parentUuid": "ddf3acba_e762af60",
+      "revId": "a06e1bd279b77119ef21308589396b05d7d19d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
