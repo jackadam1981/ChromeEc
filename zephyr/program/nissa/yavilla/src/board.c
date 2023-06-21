@@ -69,6 +69,18 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_POST_I2C);
 
+static void board_do_chipset_suspend(void)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_usb_wwan), 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_do_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+static void board_do_chipset_resume(void)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_usb_wwan), 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_do_chipset_resume, HOOK_PRIO_DEFAULT);
+
 void pen_detect_interrupt(enum gpio_signal s)
 {
 	int pen_detect =

@@ -133,6 +133,9 @@
 		gpio_en_usb_c0_cc2_vconn: en_usb_c0_cc2_vconn {
 			gpios = <&gpioh 6 GPIO_OUTPUT>;
 		};
+		gpio_en_usb_wwan: en_usb_wwan {
+			gpios = <&gpioj 3 GPIO_OUTPUT>;
+		};
 		gpio_gsc_ec_pwr_btn_odl: gsc_ec_pwr_btn_odl {
 			gpios = <&gpioe 2 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_POWER_BUTTON_L";
