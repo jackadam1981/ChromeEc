@@ -18,7 +18,8 @@ FAKE_VALUE_FUNC(int, get_data_rate, struct motion_sensor_t *);
 FAKE_VALUE_FUNC(int, get_rms_noise, struct motion_sensor_t *);
 
 extern struct motion_sensor_t *body_sensor;
-extern uint64_t var_threshold_scaled, confidence_delta_scaled;
+extern float var_threshold;
+extern float confidence_delta;
 
 /*
  * In order to be independent from a motion sensor driver changes mock
@@ -50,18 +51,18 @@ ZTEST_USER(bodydetectmode, test_body_detect_set_state)
 	enum body_detect_states body_detect_state;
 
 	body_detect_state = body_detect_get_state();
-	zassert_equal(body_detect_state, BODY_DETECTION_ON_BODY,
+	zassert_equal(body_detect_state, BODY_DETECTION_OFF_BODY,
 		      "unexpected body detect initial mode: %d",
 		      body_detect_state);
-
-	body_detect_change_state(BODY_DETECTION_OFF_BODY, false);
-	body_detect_state = body_detect_get_state();
-	zassert_equal(body_detect_state, BODY_DETECTION_OFF_BODY,
-		      "unexpected body detect mode: %d", body_detect_state);
 
 	body_detect_change_state(BODY_DETECTION_ON_BODY, false);
 	body_detect_state = body_detect_get_state();
 	zassert_equal(body_detect_state, BODY_DETECTION_ON_BODY,
+		      "unexpected body detect mode: %d", body_detect_state);
+
+	body_detect_change_state(BODY_DETECTION_OFF_BODY, false);
+	body_detect_state = body_detect_get_state();
+	zassert_equal(body_detect_state, BODY_DETECTION_OFF_BODY,
 		      "unexpected body detect mode: %d", body_detect_state);
 }
 
@@ -75,22 +76,12 @@ ZTEST_USER(bodydetectmode, test_setbodydetectionmode_forced)
 	enum body_detect_states body_detect_state;
 
 	body_detect_state = body_detect_get_state();
-	zassert_equal(body_detect_state, BODY_DETECTION_ON_BODY,
+	zassert_equal(body_detect_state, BODY_DETECTION_OFF_BODY,
 		      "unexpected body detect initial mode: %d",
 		      body_detect_state);
 
 	/**
 	 * Set body detect mode to "off", since it defaults "on".
-	 */
-	ret = shell_execute_cmd(get_ec_shell(), "bodydetectmode off");
-	zassert_equal(ret, EC_SUCCESS, "unexpected command return status: %d",
-		      ret);
-	body_detect_state = body_detect_get_state();
-	zassert_equal(body_detect_state, BODY_DETECTION_OFF_BODY,
-		      "unexpected body detect mode: %d", body_detect_state);
-
-	/**
-	 * Set body detect mode to "on", to validate it can be enabled also.
 	 */
 	ret = shell_execute_cmd(get_ec_shell(), "bodydetectmode on");
 	zassert_equal(ret, EC_SUCCESS, "unexpected command return status: %d",
@@ -100,13 +91,33 @@ ZTEST_USER(bodydetectmode, test_setbodydetectionmode_forced)
 		      "unexpected body detect mode: %d", body_detect_state);
 
 	/**
-	 * Reset body detect mode. This returns body detect to "on".
+	 * Set body detect mode to "on", to validate it can be enabled also.
+	 */
+	ret = shell_execute_cmd(get_ec_shell(), "bodydetectmode off");
+	zassert_equal(ret, EC_SUCCESS, "unexpected command return status: %d",
+		      ret);
+	body_detect_state = body_detect_get_state();
+	zassert_equal(body_detect_state, BODY_DETECTION_OFF_BODY,
+		      "unexpected body detect mode: %d", body_detect_state);
+
+	/**
+	 * Set body detect mode to "off", since it defaults "on".
+	 */
+	ret = shell_execute_cmd(get_ec_shell(), "bodydetectmode on");
+	zassert_equal(ret, EC_SUCCESS, "unexpected command return status: %d",
+		      ret);
+	body_detect_state = body_detect_get_state();
+	zassert_equal(body_detect_state, BODY_DETECTION_ON_BODY,
+		      "unexpected body detect mode: %d", body_detect_state);
+
+	/**
+	 * Reset body detect mode. This returns body detect to "off".
 	 */
 	ret = shell_execute_cmd(get_ec_shell(), "bodydetectmode reset");
 	zassert_equal(ret, EC_SUCCESS, "unexpected command return status: %d",
 		      ret);
 	body_detect_state = body_detect_get_state();
-	zassert_equal(body_detect_state, BODY_DETECTION_ON_BODY,
+	zassert_equal(body_detect_state, BODY_DETECTION_OFF_BODY,
 		      "unexpected body detect mode: %d", body_detect_state);
 }
 
@@ -164,8 +175,8 @@ static void body_detect_init_after(void *state)
 	body_detect_reset();
 }
 
-#define DEFAULT_CONFIDENCE_DELTA 1467
-#define DEFAULT_VAR_THRESHOLD 1665
+#define DEFAULT_CONFIDENCE_DELTA 3000
+#define DEFAULT_VAR_THRESHOLD 4000
 
 /**
  * @brief TestPurpose: check variance properties with default input parameters
@@ -176,9 +187,8 @@ ZTEST_USER(bodydetectinit, test_defaultparams)
 	 * body_detect_reset was already called in body_detect_init_before.
 	 * No need to invoke it here.
 	 */
-	zassert_equal(confidence_delta_scaled, DEFAULT_CONFIDENCE_DELTA);
-	zassert_equal(var_threshold_scaled, DEFAULT_VAR_THRESHOLD);
-	zassert_equal(1, get_rms_noise_fake.call_count);
+	zassert_equal(confidence_delta, DEFAULT_CONFIDENCE_DELTA);
+	zassert_equal(var_threshold, DEFAULT_VAR_THRESHOLD);
 	zassert_equal(1, get_data_rate_fake.call_count);
 }
 
@@ -196,29 +206,17 @@ ZTEST_USER(bodydetectinit, test_customparams)
 	memset(&params, 0, sizeof(params));
 
 	body_detect_reset();
-	zassert_equal(confidence_delta_scaled, DEFAULT_CONFIDENCE_DELTA);
-	zassert_equal(var_threshold_scaled, DEFAULT_VAR_THRESHOLD);
-	zassert_equal(2, get_rms_noise_fake.call_count);
+	zassert_equal(confidence_delta, DEFAULT_CONFIDENCE_DELTA);
+	zassert_equal(var_threshold, DEFAULT_VAR_THRESHOLD);
 	zassert_equal(2, get_data_rate_fake.call_count);
 
 	params.confidence_delta = 2900;
 	params.var_threshold = 3000;
 
 	body_detect_reset();
-	zassert_equal(confidence_delta_scaled, 8105);
-	zassert_equal(var_threshold_scaled, 8513);
-	zassert_equal(3, get_rms_noise_fake.call_count);
+	zassert_equal(confidence_delta, 2900);
+	zassert_equal(var_threshold, 3000);
 	zassert_equal(3, get_data_rate_fake.call_count);
-
-	params.confidence_delta = 2900;
-	params.var_threshold = 3000;
-	params.var_noise_factor = 150;
-
-	body_detect_reset();
-	zassert_equal(confidence_delta_scaled, 8105);
-	zassert_equal(var_threshold_scaled, 8547);
-	zassert_equal(4, get_rms_noise_fake.call_count);
-	zassert_equal(4, get_data_rate_fake.call_count);
 }
 
 ZTEST_SUITE(bodydetectinit, drivers_predicate_post_main, NULL,
