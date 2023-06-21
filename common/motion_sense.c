@@ -205,9 +205,15 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 					     sensor->collection_rate);
 	}
 	mutex_unlock(&g_sensor_mutex);
+/*
+ * Zephyr is using new Body Detection algrithm immune to changes in data rate.
+ * In that case there is no need to reset its state.
+ */
+#ifndef CONFIG_ZEPHYR
 	if (IS_ENABLED(CONFIG_BODY_DETECTION) &&
 	    (sensor - motion_sensors == CONFIG_BODY_DETECTION_SENSOR))
 		body_detect_reset();
+#endif
 
 	return 0;
 }
