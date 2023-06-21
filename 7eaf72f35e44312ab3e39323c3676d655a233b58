@@ -16,6 +16,24 @@
       "message": "Please add tests for this file. You can see an example of testing the system shim under `src/platform/ec/zephyr/test/system_shim/`",
       "revId": "7eaf72f35e44312ab3e39323c3676d655a233b58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ae5cda_df22b555",
+        "filename": "zephyr/shim/src/ish_system.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-21T07:06:07Z",
+      "side": 1,
+      "message": "sure. thanks.",
+      "parentUuid": "9bd985d6_addf7611",
+      "revId": "7eaf72f35e44312ab3e39323c3676d655a233b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
