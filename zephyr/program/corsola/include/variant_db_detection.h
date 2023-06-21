@@ -26,9 +26,8 @@ enum corsola_db_type {
  *
  * @return		The daughterboard type.
  */
-#ifdef CONFIG_VARIANT_CORSOLA_DB_DETECTION
 enum corsola_db_type corsola_get_db_type(void);
-#elif !defined(CONFIG_TEST)
+#if !defined(CONFIG_VARIANT_CORSOLA_DB_DETECTION) && !defined(CONFIG_TEST)
 inline enum corsola_db_type corsola_get_db_type(void)
 {
 	return CORSOLA_DB_NO_DETECTION;
@@ -37,6 +36,6 @@ inline enum corsola_db_type corsola_get_db_type(void)
 
 /* return the adjusted port count for board overridden usbc/charger functions.
  */
-uint8_t board_get_adjusted_usb_pd_port_count(void);
+test_mockable uint8_t board_get_adjusted_usb_pd_port_count(void);
 
 #endif /* __CROS_EC_CORSOLA_DB_DETECTION_H */
