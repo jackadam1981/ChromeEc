@@ -16,6 +16,57 @@
       "message": "Test is failing:\n\n./twister -v -i -C -c -s drivers/drivers.default -- --test\u003dusb_hard_reset_source::test_no_vbus_after_hard_reset |\u0026 grep -vi skip",
       "revId": "2486f33ad9260b52e8b49cd9d3c943c0d207803d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb6835be_4b9cb35d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-21T19:25:32Z",
+      "side": 1,
+      "message": "First pass. Discussion of TCPC interrupt generation ongoing OOB.",
+      "revId": "2486f33ad9260b52e8b49cd9d3c943c0d207803d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0aeae32_06c3aab1",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_hard_reset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-21T19:25:32Z",
+      "side": 1,
+      "message": "Nit: This is a slightly odd assert, in that which port you use should not affect the results of this test.",
+      "revId": "2486f33ad9260b52e8b49cd9d3c943c0d207803d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b5797f_17b44c39",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-21T19:25:32Z",
+      "side": 1,
+      "message": "Is this left over from before?",
+      "revId": "2486f33ad9260b52e8b49cd9d3c943c0d207803d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
