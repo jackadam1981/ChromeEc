@@ -16,6 +16,23 @@
       "message": "LGTM, differ to Kyle for review. Thanks!",
       "revId": "4484c25d5f2dfb8137bfa301ceca37eb3669bb5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f275caf_c776ae58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2023-06-21T07:24:54Z",
+      "side": 1,
+      "message": "Approved the CL with 2 PD interrupt tasks. The shared PD interrupt task should be enabled later to reduce RAM usage.",
+      "revId": "4484c25d5f2dfb8137bfa301ceca37eb3669bb5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
