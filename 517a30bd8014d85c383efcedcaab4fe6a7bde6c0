@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "800e6473_76c1780f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 297
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-06-21T11:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "546d2533_a3aa8243",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "517a30bd8014d85c383efcedcaab4fe6a7bde6c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42f07b18_8be285e6",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-20T22:59:43Z",
       "side": 1,
       "message": "Do you mean \"default fake fp_positive_match_salt\"? The comment on line 474 mentions \"default fake fp_positive_match_sale\", but this comment says \"trivial value\". It wasn\u0027t clear to me if those were supposed to be the same thing.",
+      "range": {
+        "startLine": 461,
+        "startChar": 31,
+        "endLine": 461,
+        "endChar": 52
+      },
+      "revId": "517a30bd8014d85c383efcedcaab4fe6a7bde6c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5216ff_7f7100fa",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 297
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-06-21T11:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42f07b18_8be285e6",
       "range": {
         "startLine": 461,
         "startChar": 31,
