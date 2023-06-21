@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5d43a9_5bd2bd96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-06-21T20:21:48Z",
+      "side": 1,
+      "message": "It can be applied for all platforms. https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/include/software_panic.h#13",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "e2f992e78b7cf9d7bfcb25ed81337f1c00491d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "38af3643_1b506700",
