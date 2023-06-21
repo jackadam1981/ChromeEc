@@ -66,6 +66,7 @@ static void _fp_clear_context(void)
 {
 	templ_valid = 0;
 	templ_dirty = 0;
+	template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 	fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
 	OPENSSL_cleanse(fp_buffer, sizeof(fp_buffer));
 	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
