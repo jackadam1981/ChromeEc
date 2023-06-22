@@ -5127,6 +5127,14 @@ struct ec_response_i2c_passthru_protect {
 
 #define MAX_CEC_MSG_LEN 16
 
+/*
+ * Helper macros for packing/unpacking the cmd_port field of
+ * ec_params_cec_set/get.
+ */
+#define EC_CEC_CMD_PORT_PACK(cmd, port) (((cmd)&0xf) | (((port)&0xf) << 4))
+#define EC_CEC_CMD_PORT_GET_CMD(cmd) ((cmd)&0xf)
+#define EC_CEC_CMD_PORT_GET_PORT(cmd) (((cmd) >> 4) & 0xf)
+
 /* CEC message from the AP to be written on the CEC bus */
 #define EC_CMD_CEC_WRITE_MSG 0x00B8
 
@@ -5143,14 +5151,16 @@ struct ec_params_cec_write {
 
 /**
  * struct ec_params_cec_set - CEC parameters set
- * @cmd: parameter type, can be CEC_CMD_ENABLE or CEC_CMD_LOGICAL_ADDRESS
+ * @cmd_port:
+ *	bits[3:0]: cmd: parameter type from enum cec_command.
+ *	bits[7:4]: port: CEC port to set the parameter on.
  * @val: in case cmd is CEC_CMD_ENABLE, this field can be 0 to disable CEC
  *	or 1 to enable CEC functionality, in case cmd is
  *	CEC_CMD_LOGICAL_ADDRESS, this field encodes the requested logical
  *	address between 0 and 15 or 0xff to unregister
  */
 struct ec_params_cec_set {
-	uint8_t cmd; /* enum cec_command */
+	uint8_t cmd_port;
 	uint8_t val;
 } __ec_align1;
 
@@ -5159,10 +5169,12 @@ struct ec_params_cec_set {
 
 /**
  * struct ec_params_cec_get - CEC parameters get
- * @cmd: parameter type, can be CEC_CMD_ENABLE or CEC_CMD_LOGICAL_ADDRESS
+ * @cmd_port:
+ *	bits[3:0]: cmd: parameter type from enum cec_command.
+ *	bits[7:4]: port: CEC port to set the parameter on.
  */
 struct ec_params_cec_get {
-	uint8_t cmd; /* enum cec_command */
+	uint8_t cmd_port;
 } __ec_align1;
 
 /**
