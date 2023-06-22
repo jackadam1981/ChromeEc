@@ -39,6 +39,7 @@
 #include <libec/fingerprint/fp_encryption_status_command.h>
 #include <libec/flash_protect_command.h>
 #include <libec/rand_num_command.h>
+#include <libec/versions_command.h>
 #include <unistd.h>
 #include <vector>
 
@@ -1768,7 +1769,20 @@ int cmd_flash_protect(int argc, char *argv[])
 			mask |= ec::flash_protect::Flags::kRoAtBoot;
 	}
 
-	ec::FlashProtectCommand_v1 flash_protect_command(flags, mask);
+	uint32_t version = 1;
+	ec::VersionsCommand flash_protect_versions_command(
+		EC_CMD_FLASH_PROTECT);
+
+	if (flash_protect_versions_command.IsVersionSupported(2) ==
+	    ec::EcCmdVersionSupportStatus::SUPPORTED) {
+		version = 2;
+	}
+
+	LOG(ERROR) << "The supported command version is: " << version;
+
+	ec::FlashProtectCommand_v2 flash_protect_command(flags, mask);
+	LOG(ERROR) << "This is flash protect command v2";
+
 	if (!flash_protect_command.Run(comm_get_fd())) {
 		int rv = -EECRESULT - flash_protect_command.Result();
 		fprintf(stderr, "Flash protect returned with errors: %d\n", rv);
@@ -2142,18 +2156,19 @@ int cmd_apreset(int argc, char *argv[])
 /*
  * Download a frame buffer from the FPMCU.
  *
- * Might be either the finger image or a finger template depending on 'index'.
+ * Might be either the finger image or a finger template depending on
+ * 'index'.
  *
- * @param info a pointer to store the struct ec_response_fp_info retrieved by
- * this command.
+ * @param info a pointer to store the struct ec_response_fp_info
+ * retrieved by this command.
  * @param index the specific frame to retrieve, might be:
- *  -1 (aka FP_FRAME_INDEX_SIMPLE_IMAGE) for the a single grayscale image.
- *   0  (aka FP_FRAME_INDEX_RAW_IMAGE) for the full vendor raw finger image.
- *   1..n for a finger template.
+ *  -1 (aka FP_FRAME_INDEX_SIMPLE_IMAGE) for the a single grayscale
+ * image. 0  (aka FP_FRAME_INDEX_RAW_IMAGE) for the full vendor raw
+ * finger image. 1..n for a finger template.
  *
- * @returns a pointer to the buffer allocated to contain the frame or NULL
- * if case of error. The caller must call free() once it no longer needs the
- * buffer.
+ * @returns a pointer to the buffer allocated to contain the frame or
+ * NULL if case of error. The caller must call free() once it no longer
+ * needs the buffer.
  */
 static void *fp_download_frame(struct ec_response_fp_info *info, int index)
 {
@@ -2393,8 +2408,8 @@ static int cmd_fp_context(int argc, char *argv[])
 	}
 
 	/*
-	 * Note that we treat the resulting "userid" as raw byte array, so we
-	 * don't want to copy the NUL from the end of the string.
+	 * Note that we treat the resulting "userid" as raw byte array,
+	 * so we don't want to copy the NUL from the end of the string.
 	 */
 	if (strlen(argv[1]) != sizeof(p.userid)) {
 		fprintf(stderr, "Context must be exactly %zu bytes\n",
@@ -2421,7 +2436,8 @@ static int cmd_fp_context(int argc, char *argv[])
 			return EC_RES_SUCCESS;
 		}
 
-		/* Abort if EC returns an error other than EC_RES_BUSY. */
+		/* Abort if EC returns an error other than EC_RES_BUSY.
+		 */
 		if (rv <= -EECRESULT && rv != -EECRESULT - EC_RES_BUSY)
 			goto out;
 	}
@@ -2500,7 +2516,8 @@ int cmd_fp_template(int argc, char *argv[])
 	struct ec_response_fp_info r;
 	struct ec_params_fp_template *p =
 		(struct ec_params_fp_template *)(ec_outbuf);
-	/* TODO(b/78544921): removing 32 bits is a workaround for the MCU bug */
+	/* TODO(b/78544921): removing 32 bits is a workaround for the
+	 * MCU bug */
 	int max_chunk = ec_max_outsize -
 			offsetof(struct ec_params_fp_template, data) - 4;
 	int idx = -1;
@@ -2799,8 +2816,8 @@ int cmd_flash_pd(int argc, char *argv[])
 			goto pd_flash_error;
 
 		/*
-		 * TODO(crosbug.com/p/33905) throttle so EC doesn't watchdog on
-		 * other tasks.  Remove once issue resolved.
+		 * TODO(crosbug.com/p/33905) throttle so EC doesn't
+		 * watchdog on other tasks.  Remove once issue resolved.
 		 */
 		usleep(10000);
 	}
@@ -3184,8 +3201,8 @@ int read_mapped_temperature(int id)
 
 	if (!read_mapped_mem8(EC_MEMMAP_THERMAL_VERSION)) {
 		/*
-		 *  The temp_sensor_init() is not called, which implies no
-		 * temp sensor is defined.
+		 *  The temp_sensor_init() is not called, which implies
+		 * no temp sensor is defined.
 		 */
 		rv = EC_TEMP_SENSOR_NOT_PRESENT;
 	} else if (id < EC_TEMP_SENSOR_ENTRIES)
@@ -3194,7 +3211,8 @@ int read_mapped_temperature(int id)
 		rv = read_mapped_mem8(EC_MEMMAP_TEMP_SENSOR_B + id -
 				      EC_TEMP_SENSOR_ENTRIES);
 	else {
-		/* Sensor in second bank, but second bank isn't supported */
+		/* Sensor in second bank, but second bank isn't
+		 * supported */
 		rv = EC_TEMP_SENSOR_NOT_PRESENT;
 	}
 	return rv;
@@ -3595,8 +3613,10 @@ int cmd_thermal_auto_fan_ctrl(int argc, char *argv[])
 
 	if (!ec_cmd_version_supported(EC_CMD_THERMAL_AUTO_FAN_CTRL, cmdver) ||
 	    (argc == 1)) {
-		/* If no argument is provided then enable auto fan ctrl */
-		/* for all fans by using version 0 of the host command */
+		/* If no argument is provided then enable auto fan ctrl
+		 */
+		/* for all fans by using version 0 of the host command
+		 */
 
 		rv = ec_command(EC_CMD_THERMAL_AUTO_FAN_CTRL, 0, NULL, 0, NULL,
 				0);
@@ -5384,10 +5404,10 @@ static int cmd_motionsense(int argc, char **argv)
 			}
 			for (i = 0; i < resp->dump.sensor_count; i++) {
 				/*
-				 * Warning: the following string printed out
-				 * is read by an autotest. Do not change string
-				 * without consulting autotest for
-				 * kernel_CrosECSysfsAccel.
+				 * Warning: the following string printed
+				 * out is read by an autotest. Do not
+				 * change string without consulting
+				 * autotest for kernel_CrosECSysfsAccel.
 				 */
 				printf("Sensor %d: ", i);
 				if (resp->dump.sensor[i].flags &
@@ -5455,9 +5475,10 @@ static int cmd_motionsense(int argc, char **argv)
 					ms_command_sizes[param.cmd].insize);
 			if (rv < 0) {
 				/*
-				 * Return the error code to a higher level if
-				 * we're querying about a specific sensor; else
-				 * just print the error.
+				 * Return the error code to a higher
+				 * level if we're querying about a
+				 * specific sensor; else just print the
+				 * error.
 				 */
 				if (argc == 3)
 					return rv;
@@ -5752,8 +5773,8 @@ static int cmd_motionsense(int argc, char **argv)
 	if (argc < 5 && !strcasecmp(argv[1], "tablet_mode_angle")) {
 		param.cmd = MOTIONSENSE_CMD_TABLET_MODE_LID_ANGLE;
 		/*
-		 * EC_MOTION_SENSE_NO_VALUE indicates to the EC that host is
-		 * attempting to only read the current values.
+		 * EC_MOTION_SENSE_NO_VALUE indicates to the EC that
+		 * host is attempting to only read the current values.
 		 */
 		param.tablet_mode_threshold.lid_angle =
 			EC_MOTION_SENSE_NO_VALUE;
@@ -6083,11 +6104,13 @@ static int cmd_motionsense(int argc, char **argv)
 				}
 			}
 			if ((enable == 1) && (argc == 6)) {
-				/* Enable spoofing, but lock to current state */
+				/* Enable spoofing, but lock to current
+				 * state */
 				param.spoof.spoof_enable =
 					MOTIONSENSE_SPOOF_MODE_LOCK_CURRENT;
 			} else if ((enable == 1) && (argc == 7)) {
-				/* Enable spoofing, but use provided state */
+				/* Enable spoofing, but use provided
+				 * state */
 				int state = strtol(argv[6], &e, 0);
 
 				if ((e && *e) || (state != 0 && state != 1)) {
@@ -6117,15 +6140,15 @@ static int cmd_motionsense(int argc, char **argv)
 
 			if ((enable == 1) && (argc == 4)) {
 				/*
-				 * Enable spoofing, but lock to current sensor
-				 * values.
+				 * Enable spoofing, but lock to current
+				 * sensor values.
 				 */
 				param.spoof.spoof_enable =
 					MOTIONSENSE_SPOOF_MODE_LOCK_CURRENT;
 			} else if ((enable == 1) && (argc == 7)) {
 				/*
-				 * Enable spoofing, but use provided component
-				 * values.
+				 * Enable spoofing, but use provided
+				 * component values.
 				 */
 				param.spoof.spoof_enable =
 					MOTIONSENSE_SPOOF_MODE_CUSTOM;
@@ -6573,7 +6596,8 @@ int cmd_usb_pd(int argc, char *argv[])
 			printf("Rounded support: 3rd Gen %srounded support\n",
 			       r_v2->cable_gen ? "and 4th Gen " : "");
 		}
-		/* If connected to a PD device, then print port partner info */
+		/* If connected to a PD device, then print port partner
+		 * info */
 		if ((r_v1->enabled & PD_CTRL_RESP_ENABLED_CONNECTED) &&
 		    (r_v1->enabled & PD_CTRL_RESP_ENABLED_PD_CAPABLE))
 			printf("PD Partner Capabilities:\n%s%s%s%s",
@@ -6599,8 +6623,8 @@ int cmd_usb_pd_dps(int argc, char *argv[])
 	int rv;
 
 	/*
-	 * Set up requested flags.  If no flags were specified, p.mask will
-	 * be 0 and nothing will change.
+	 * Set up requested flags.  If no flags were specified, p.mask
+	 * will be 0 and nothing will change.
 	 */
 	if (argc < 1) {
 		fprintf(stderr, "Usage: %s [enable|disable]\n", argv[0]);
@@ -6717,10 +6741,10 @@ int cmd_usb_pd_mux_info(int argc, char *argv[])
 
 		if (tsv) {
 			/*
-			 * Machine-readable tab-separated values. This set of
-			 * values is append-only. Columns should not be removed
-			 * or repurposed. Update the documentation above if new
-			 * columns are added.
+			 * Machine-readable tab-separated values. This
+			 * set of values is append-only. Columns should
+			 * not be removed or repurposed. Update the
+			 * documentation above if new columns are added.
 			 */
 			printf("%d\t", i);
 			printf("%d\t", !!(r.flags & USB_PD_MUX_USB_ENABLED));
@@ -7483,7 +7507,8 @@ int cmd_locate_chip(int argc, char *argv[])
 
 	/*
 	 * When changing the format of this print, make sure FAFT
-	 * (firmware_ECCbiEeprom) still passes. It may silently skip the test.
+	 * (firmware_ECCbiEeprom) still passes. It may silently skip the
+	 * test.
 	 */
 	printf("Bus: %s; Port: %d; Address: 0x%02x (7-bit format)\n",
 	       bus_type[r.bus_type], r.i2c_info.port,
@@ -8268,9 +8293,10 @@ int cmd_battery(int argc, char *argv[])
 	}
 
 	/*
-	 * Prefer to use newer hostcmd versions if supported because these allow
-	 * us to read longer strings, and always use hostcmd for non-primary
-	 * batteries because memmap doesn't export that data.
+	 * Prefer to use newer hostcmd versions if supported because
+	 * these allow us to read longer strings, and always use hostcmd
+	 * for non-primary batteries because memmap doesn't export that
+	 * data.
 	 */
 	uint32_t versions;
 	ec_get_cmd_versions(EC_CMD_BATTERY_GET_STATIC, &versions);
@@ -8626,10 +8652,11 @@ static int cmd_cbi(int argc, char *argv[])
 			size = strlen((char *)(val_ptr)) + 1;
 		} else {
 			val = strtoul(argv[3], &e, 0);
-			/* strtoul sets an errno for invalid input. If the value
-			 * read is out of range of representable values by an
-			 * unsigned long int, the function returns ULONG_MAX
-			 * or ULONG_MIN and the errno is set to ERANGE.
+			/* strtoul sets an errno for invalid input. If
+			 * the value read is out of range of
+			 * representable values by an unsigned long int,
+			 * the function returns ULONG_MAX or ULONG_MIN
+			 * and the errno is set to ERANGE.
 			 */
 			if ((e && *e) || errno == ERANGE) {
 				fprintf(stderr, "Bad value\n");
@@ -8876,8 +8903,8 @@ int cmd_ec_hash(int argc, char *argv[])
 
 	if (argc == 5) {
 		/*
-		 * Technically nonce can be any binary data up to 64 bytes,
-		 * but this command only supports a 32-bit value.
+		 * Technically nonce can be any binary data up to 64
+		 * bytes, but this command only supports a 32-bit value.
 		 */
 		uint32_t nonce = strtol(argv[4], &e, 0);
 		if (e && *e) {
@@ -9216,7 +9243,8 @@ static int cmd_memory_dump(int argc, char *argv[])
 	};
 	uint16_t entry_count;
 	struct mem_segment *segments = NULL;
-	/* The real root is root.next, all other root fields are unused */
+	/* The real root is root.next, all other root fields are unused
+	 */
 	struct mem_segment root;
 	struct mem_segment *seg;
 	struct ec_response_memory_dump_get_metadata metadata_response;
@@ -9307,12 +9335,14 @@ static int cmd_memory_dump(int argc, char *argv[])
 		uint32_t entry_address_end =
 			entry_info_response.address + entry_info_response.size;
 
-		/* Check if entry is even in bounds of the requested range */
+		/* Check if entry is even in bounds of the requested
+		 * range */
 		if (entry_info_response.address >= requested_address_end ||
 		    entry_address_end <= requested_address_start)
 			continue;
 
-		/* Clip memory segment boundaries based on requested range */
+		/* Clip memory segment boundaries based on requested
+		 * range */
 		seg->addr_start = MAX(entry_info_response.address,
 				      requested_address_start);
 		seg->addr_end = MIN(entry_address_end, requested_address_end);
@@ -9364,11 +9394,13 @@ static int cmd_memory_dump(int argc, char *argv[])
 			offset += rv;
 		};
 
-		/* Sort segments in ascending order of starting address */
+		/* Sort segments in ascending order of starting address
+		 */
 		struct mem_segment *current = &root;
 		for (int i = 0; current->next && i < entry_count; i++) {
 			if (seg->addr_start < current->next->addr_start) {
-				/* Insert segment before current->next */
+				/* Insert segment before current->next
+				 */
 				seg->next = current->next;
 				current->next = seg;
 				break;
@@ -9603,7 +9635,8 @@ static int cmd_tmp006cal_v0(int idx, int argc, char *argv[])
 		return rv;
 
 	if (!argc) {
-		/* If no new values are given, just print what we have */
+		/* If no new values are given, just print what we have
+		 */
 		printf("S0: %e\n", rg.s0);
 		printf("b0: %e\n", rg.b0);
 		printf("b1: %e\n", rg.b1);
@@ -9677,7 +9710,8 @@ static int cmd_tmp006cal_v1(int idx, int argc, char *argv[])
 		return rv;
 
 	if (!argc) {
-		/* If no new values are given, just print what we have */
+		/* If no new values are given, just print what we have
+		 */
 		printf("algorithm:  %d\n", rg->algorithm);
 		printf("params:\n");
 		/* We only know about alg 1 at the moment */
@@ -9872,11 +9906,11 @@ int cmd_port80_read(int argc, char *argv[])
 		fprintf(stderr, "Unable to allocate buffer.\n");
 		return -1;
 	}
-	/* As the history buffer is quite large, we read data in chunks, with
-	    size in bytes of EC_PORT80_SIZE_MAX in each chunk.
-	    Incrementing offset until all history buffer has been read. To
-	    simplify the design, chose HISTORY_LEN is always multiple of
-	    EC_PORT80_SIZE_MAX.
+	/* As the history buffer is quite large, we read data in chunks,
+	   with size in bytes of EC_PORT80_SIZE_MAX in each chunk.
+	    Incrementing offset until all history buffer has been read.
+	   To simplify the design, chose HISTORY_LEN is always multiple
+	   of EC_PORT80_SIZE_MAX.
 
 	    offset: entry offset from the beginning of history buffer.
 	    num_entries: number of entries requested.
@@ -10378,7 +10412,8 @@ int cmd_pd_log(int argc, char *argv[])
 		milliseconds =
 			((uint64_t)u.r.timestamp << PD_LOG_TIMESTAMP_SHIFT) /
 			1000;
-		/* the timestamp is the number of milliseconds in the past */
+		/* the timestamp is the number of milliseconds in the
+		 * past */
 		seconds = (milliseconds + 999) / 1000;
 		milliseconds -= seconds * 1000;
 		now -= seconds;
@@ -11144,9 +11179,10 @@ int cmd_wait_event(int argc, char *argv[])
 
 	BUILD_ASSERT(ARRAY_SIZE(mkbp_event_text) == EC_MKBP_EVENT_COUNT);
 	/*
-	 * Only 64 host events are supported. The enum |host_event_code| uses
-	 * 1-based counting so it can skip 0 (NONE). The last legal host event
-	 * number is 64, so ARRAY_SIZE(host_event_text) <= 64+1.
+	 * Only 64 host events are supported. The enum |host_event_code|
+	 * uses 1-based counting so it can skip 0 (NONE). The last legal
+	 * host event number is 64, so ARRAY_SIZE(host_event_text) <=
+	 * 64+1.
 	 */
 	BUILD_ASSERT(ARRAY_SIZE(host_event_text) <= 65);
 
@@ -11698,7 +11734,8 @@ int main(int argc, char *argv[])
 
 	/* Prefer /dev method, which supports built-in mutex */
 	if (!(interfaces & COMM_DEV) || comm_init_dev(device_name)) {
-		/* If dev is excluded or isn't supported, find alternative */
+		/* If dev is excluded or isn't supported, find
+		 * alternative */
 
 		/* Lock is not needed for COMM_USB */
 		if (!(interfaces & COMM_USB) &&
