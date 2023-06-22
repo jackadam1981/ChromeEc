@@ -77,6 +77,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86aae195_8d2ebd0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-06-22T15:32:38Z",
+      "side": 1,
+      "message": "I think we should stay with uppercase, but I wrote a helper function to do this. There were a few corners case to take care of, but it works now!",
+      "parentUuid": "af6d322e_be0d7fb6",
+      "revId": "a06e1bd279b77119ef21308589396b05d7d19d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dcdb45b_2c789422",
