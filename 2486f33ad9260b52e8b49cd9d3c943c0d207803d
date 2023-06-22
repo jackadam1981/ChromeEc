@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd432dab_a62b1d61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-22T20:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da9cbd61_26e4fc5a",
+      "revId": "2486f33ad9260b52e8b49cd9d3c943c0d207803d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0aeae32_06c3aab1",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3135397_1d5b7fb6",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_hard_reset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-22T20:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0aeae32_06c3aab1",
+      "revId": "2486f33ad9260b52e8b49cd9d3c943c0d207803d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6b5797f_17b44c39",
@@ -65,6 +101,24 @@
       "writtenOn": "2023-06-21T19:25:32Z",
       "side": 1,
       "message": "Is this left over from before?",
+      "revId": "2486f33ad9260b52e8b49cd9d3c943c0d207803d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e5e8e8_9a21a99c",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-22T20:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6b5797f_17b44c39",
       "revId": "2486f33ad9260b52e8b49cd9d3c943c0d207803d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
