@@ -34,6 +34,24 @@
       "parentUuid": "5483ec36_74de3ebb",
       "revId": "e6b9dd5d426a2089468c45e3668369c1418b587c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a00ffa8_c569cd6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 281
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-22T22:43:36Z",
+      "side": 1,
+      "message": "I think we can probably decrease the [amount of memory used in the test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/std_vector.cc;l\u003d78-79;drc\u003d968b618df44c3dff1fc061a78ca0871d67cc1649). I think the value in the test is somewhat arbitrary; it was just trying to allocate a \"large\" amount of memory.\n\nWhat does the `bytes in RAM` message that shows up at the end of compilation show before and after this change? That should give us an idea of how much we have to work with. \n\nWe also need to run [the private tests](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d958-962;drc\u003d3066fe5f2ccee4aee34e42afbf6388dc1bd940cf) to make sure this doesn\u0027t break those.",
+      "parentUuid": "6715249e_53a2deee",
+      "revId": "e6b9dd5d426a2089468c45e3668369c1418b587c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
