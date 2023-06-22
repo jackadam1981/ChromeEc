@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b12da4_f623bc14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-06-22T15:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "296cb13c_660f1285",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "a06e1bd279b77119ef21308589396b05d7d19d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "842845a1_3046bde3",
@@ -108,6 +132,24 @@
       "writtenOn": "2023-06-22T15:32:09Z",
       "side": 1,
       "message": "Can you print TESTLAB_MODE and CCD_FLAG_FACTORY_MODE Y/N too?  I think it would be good to print the factory flag, so it\u0027s easy to tell the difference between all capabilities are accessible because ccd is open and all capabilities are accessible because factory mode is enabled.\n\nTestlab is Flags \u0026 1. CCD_FLAG_FACTORY_MODE is Flags \u0026 2.",
+      "revId": "a06e1bd279b77119ef21308589396b05d7d19d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef588c4e_8e96f5a6",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2667,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2023-06-22T15:44:39Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "6dcdb45b_2c789422",
       "revId": "a06e1bd279b77119ef21308589396b05d7d19d7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
