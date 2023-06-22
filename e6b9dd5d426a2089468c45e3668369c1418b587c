@@ -16,6 +16,24 @@
       "message": "This change somehow breaks the [std_vector::fill_one_vector unit test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/std_vector.cc;l\u003d76;drc\u003d968b618df44c3dff1fc061a78ca0871d67cc1649).\n\nSee b/288277586#comment3",
       "revId": "e6b9dd5d426a2089468c45e3668369c1418b587c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6715249e_53a2deee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 281
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-06-22T17:50:48Z",
+      "side": 1,
+      "message": "hmmm, I guess this CL uses too much memory, and let fill_one_vector doesn\u0027t have enough memory(64kB) for testing.\n\nShould we change the `array` to a `vector` or something like `std::unique_ptr\u003cstd::array\u003cstd::array\u003cuint8_t, ...\u003e,...\u003e\u003e`, so we will only allocate it at the first use of this function?",
+      "parentUuid": "5483ec36_74de3ebb",
+      "revId": "e6b9dd5d426a2089468c45e3668369c1418b587c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
