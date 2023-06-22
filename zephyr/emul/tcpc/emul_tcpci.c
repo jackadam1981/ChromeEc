@@ -1464,3 +1464,71 @@ void tcpci_emul_i2c_init(const struct emul *emul, const struct device *i2c_dev)
 
 	i2c_common_emul_init(&ctx->common);
 }
+
+/** Check description in emul_tcpci.h */
+int tcpci_emul_set_vbus_level(const struct emul *emul, enum vbus_level level)
+{
+	struct tcpc_emul_data *tcpc_data = emul->data;
+	struct tcpci_ctx *ctx = tcpc_data->tcpci_ctx;
+	uint16_t revision;
+	int rc;
+
+	rc = get_reg(ctx, TCPC_REG_PD_INT_REV, &revision);
+	if (rc)
+		return rc;
+	switch (level) {
+	case VBUS_SAFE0V:
+		rc = tcpci_emul_set_reg(emul, TCPC_REG_POWER_STATUS,
+					TCPC_REG_POWER_STATUS_VBUS_DET);
+		if (rc)
+			return rc;
+		if (TCPC_REG_PD_INT_REV_REV(revision) ==
+		    TCPC_REG_PD_INT_REV_REV_2_0) {
+			rc = tcpci_emul_set_reg(emul, TCPC_REG_EXT_STATUS,
+						TCPC_REG_EXT_STATUS_SAFE0V);
+
+			if (rc)
+				return rc;
+		}
+		rc = tcpci_emul_alert_changed(emul);
+		if (rc)
+			return rc;
+		break;
+	case VBUS_PRESENT:
+		rc = tcpci_emul_set_reg(
+			emul, TCPC_REG_POWER_STATUS,
+			TCPC_REG_POWER_STATUS_VBUS_DET |
+				TCPC_REG_POWER_STATUS_VBUS_PRES);
+		if (rc)
+			return rc;
+		if (TCPC_REG_PD_INT_REV_REV(revision) ==
+		    TCPC_REG_PD_INT_REV_REV_2_0) {
+			rc = tcpci_emul_set_reg(emul, TCPC_REG_EXT_STATUS, 0);
+			if (rc)
+				return rc;
+		}
+		rc = tcpci_emul_alert_changed(emul);
+		if (rc)
+			return rc;
+		break;
+	case VBUS_REMOVED:
+		rc = tcpci_emul_set_reg(emul, TCPC_REG_POWER_STATUS,
+					TCPC_REG_POWER_STATUS_VBUS_DET);
+		if (rc)
+			return rc;
+		if (TCPC_REG_PD_INT_REV_REV(revision) ==
+		    TCPC_REG_PD_INT_REV_REV_2_0) {
+			rc = tcpci_emul_set_reg(emul, TCPC_REG_EXT_STATUS, 0);
+
+			if (rc)
+				return rc;
+		}
+		rc = tcpci_emul_alert_changed(emul);
+		if (rc)
+			return rc;
+		break;
+	default:
+		return EC_ERROR_PARAM1;
+	}
+	return EC_SUCCESS;
+}
