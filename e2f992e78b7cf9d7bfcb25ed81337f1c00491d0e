@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c0293248_bcbd958e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-22T02:01:35Z",
+      "side": 1,
+      "message": "crash analyzer only supports cortex-m0 and NDS",
+      "parentUuid": "9f5d43a9_5bd2bd96",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "e2f992e78b7cf9d7bfcb25ed81337f1c00491d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "38af3643_1b506700",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2023-06-21T20:14:44Z",
       "side": 1,
       "message": "It\u0027s more precise if you parse the task ID by `HANDLER EXCEPTION` or \"PROCESS EXCEPTION\".\n\nFor example, if a divide-by-zero crash happens in an interrupt handler, then the regs[0] is still not the task ID but a handler\u0027s ID. You might want to add regs[\"handler\"] as a new dict entry.\n\nR5 provides additional context of the task ID only if it\u0027s a stack-overflow crash.",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 18
+      },
+      "revId": "e2f992e78b7cf9d7bfcb25ed81337f1c00491d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b804d7f0_4e7fc5f1",
+        "filename": "util/crash_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-22T02:01:35Z",
+      "side": 1,
+      "message": "Only for stack overflow the task number will be in r5, regardless of handler/process context:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/core/cortex-m0/task.c#238",
+      "parentUuid": "b97ebe19_894a0e9e",
       "range": {
         "startLine": 131,
         "startChar": 13,
