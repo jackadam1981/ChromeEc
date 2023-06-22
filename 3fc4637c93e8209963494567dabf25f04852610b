@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab67d56_41b7f12b",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-22T23:58:37Z",
+      "side": 1,
+      "message": "nit: can we connect these together?",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 25
+      },
+      "revId": "3fc4637c93e8209963494567dabf25f04852610b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
