@@ -34,6 +34,24 @@
       "parentUuid": "9022e387_6d81c4f8",
       "revId": "d1f0eea0c62e7aa5c083209903db0ca8bd450d61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05620465_20759c09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2023-06-22T18:38:47Z",
+      "side": 1,
+      "message": "The change has landed on 14505.512.0 (from brya firmware branch) so this CL is not needed anymore.",
+      "parentUuid": "83a13d2d_c4174bea",
+      "revId": "d1f0eea0c62e7aa5c083209903db0ca8bd450d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
