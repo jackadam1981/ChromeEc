@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34c41a8c_d8ba07a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2023-06-22T03:12:56Z",
+      "side": 1,
+      "message": "Hi Brandon,\n\nPlease add the regular tags (BUG, TEST etc) to this patch.\n\nHi eremy, PTAL. This CL is breaking critical functionality for Rex (close to a validation milestone), so let\u0027s revert and discuss how to reland the CL. Please LMK if you\u0027d prefer an alternate approach.\n\nThank,",
+      "revId": "1800d4a7f07fc890bd4d54df0dd4ac0a7fee4b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
