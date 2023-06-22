@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "296cb13c_660f1285",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-06-22T15:32:09Z",
+      "side": 1,
+      "message": "Show the sample output.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "a06e1bd279b77119ef21308589396b05d7d19d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "842845a1_3046bde3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -50,6 +73,23 @@
       "side": 1,
       "message": "I just re-read the bug - it inded was reuqseted by the factory folks, so my comment that \"the bug doesn\u0027t really need this\" doesn\u0027t apply :)\n\nI still feel apprehensive about duplicating the names, let\u0027s see what they say.\n\nAnother option could be converting CameCase into CAMEL_CASE at run time, not sure how much this is worth the trouble.",
       "parentUuid": "ddf3acba_e762af60",
+      "revId": "a06e1bd279b77119ef21308589396b05d7d19d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dcdb45b_2c789422",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2667,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-06-22T15:32:09Z",
+      "side": 1,
+      "message": "Can you print TESTLAB_MODE and CCD_FLAG_FACTORY_MODE Y/N too?  I think it would be good to print the factory flag, so it\u0027s easy to tell the difference between all capabilities are accessible because ccd is open and all capabilities are accessible because factory mode is enabled.\n\nTestlab is Flags \u0026 1. CCD_FLAG_FACTORY_MODE is Flags \u0026 2.",
       "revId": "a06e1bd279b77119ef21308589396b05d7d19d7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
