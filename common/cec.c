@@ -34,7 +34,7 @@ BUILD_ASSERT(CEC_PORT_COUNT == 1);
 static struct mutex rx_queue_readoffset_mutex;
 
 /* Queue of completed incoming CEC messages */
-static struct cec_rx_queue cec_rx_queue;
+static struct cec_rx_queue cec_rx_queue[CEC_PORT_COUNT];
 
 /* MKBP events to send to the AP (enum mkbp_cec_event) */
 static atomic_t cec_mkbp_events[CEC_PORT_COUNT];
@@ -115,12 +115,10 @@ static enum cec_action cec_find_action(const struct cec_offline_policy *policy,
 	return CEC_ACTION_NONE;
 }
 
-int cec_process_offline_message(struct cec_rx_queue *queue, const uint8_t *msg,
-				uint8_t msg_len)
+int cec_process_offline_message(int port, const uint8_t *msg, uint8_t msg_len)
 {
 	uint8_t command;
 	char str_buf[hex_str_buf_size(msg_len)];
-	int port = CEC_PORT;
 
 	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		/* Forward to the AP */
@@ -261,6 +259,25 @@ static enum ec_status hc_cec_write(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_CEC_WRITE_MSG, hc_cec_write,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
+static enum ec_status hc_cec_read(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_cec_read *params = args->params;
+	struct ec_response_cec_read *response = args->response;
+	int port = params->port;
+
+	if (port < 0 || port >= CEC_PORT_COUNT)
+		return EC_RES_INVALID_PARAM;
+
+	if (cec_rx_queue_pop(&cec_rx_queue[port], response->msg,
+			     &response->msg_len) != 0)
+		return EC_RES_UNAVAILABLE;
+
+	args->response_size = sizeof(*response);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_CEC_READ_MSG, hc_cec_read, EC_VER_MASK(0));
+
 static enum ec_status cec_set_enable(int port, uint8_t enable)
 {
 	if (enable != 0 && enable != 1)
@@ -271,7 +288,7 @@ static enum ec_status cec_set_enable(int port, uint8_t enable)
 
 	if (enable == 0) {
 		/* If disabled, clear the rx queue and events. */
-		memset(&cec_rx_queue, 0, sizeof(struct cec_rx_queue));
+		memset(&cec_rx_queue[port], 0, sizeof(struct cec_rx_queue));
 		cec_mkbp_events[port] = 0;
 	}
 
@@ -377,21 +394,6 @@ static int cec_get_next_event(uint8_t *out)
 }
 DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_CEC_EVENT, cec_get_next_event);
 
-static int cec_get_next_msg(uint8_t *out)
-{
-	int rv;
-	uint8_t msg_len, msg[MAX_CEC_MSG_LEN];
-
-	rv = cec_rx_queue_pop(&cec_rx_queue, msg, &msg_len);
-	if (rv != 0)
-		return EC_RES_UNAVAILABLE;
-
-	memcpy(out, msg, msg_len);
-
-	return msg_len;
-}
-DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_CEC_MESSAGE, cec_get_next_msg);
-
 static void cec_init(void)
 {
 	int port = CEC_PORT;
@@ -402,12 +404,11 @@ static void cec_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, cec_init, HOOK_PRIO_LAST);
 
-static void handle_received_message(void)
+static void handle_received_message(int port)
 {
 	int rv;
 	uint8_t *msg;
 	uint8_t msg_len;
-	int port = CEC_PORT;
 
 	if (cec_config[port].drv->get_received_message(port, &msg, &msg_len) !=
 	    EC_SUCCESS) {
@@ -415,19 +416,18 @@ static void handle_received_message(void)
 		return;
 	}
 
-	if (cec_process_offline_message(&cec_rx_queue, msg, msg_len) ==
-	    EC_SUCCESS) {
+	if (cec_process_offline_message(port, msg, msg_len) == EC_SUCCESS) {
 		CPRINTS("Message consumed offline");
 		/* Continue to queue message and notify AP. */
 	}
-	rv = cec_rx_queue_push(&cec_rx_queue, msg, msg_len);
+	rv = cec_rx_queue_push(&cec_rx_queue[port], msg, msg_len);
 	if (rv == EC_ERROR_OVERFLOW) {
 		/* Queue full, prefer the most recent msg */
-		cec_rx_queue_flush(&cec_rx_queue);
-		rv = cec_rx_queue_push(&cec_rx_queue, msg, msg_len);
+		cec_rx_queue_flush(&cec_rx_queue[port]);
+		rv = cec_rx_queue_push(&cec_rx_queue[port], msg, msg_len);
 	}
 	if (rv == EC_SUCCESS)
-		mkbp_send_event(EC_MKBP_EVENT_CEC_MESSAGE);
+		send_mkbp_event(port, EC_MKBP_CEC_HAVE_DATA);
 }
 
 void cec_task(void *unused)
@@ -442,7 +442,7 @@ void cec_task(void *unused)
 		for (port = 0; port < CEC_PORT_COUNT; port++) {
 			events = atomic_clear(&cec_task_events[port]);
 			if (events & CEC_TASK_EVENT_RECEIVED_DATA) {
-				handle_received_message();
+				handle_received_message(port);
 			}
 			if (events & CEC_TASK_EVENT_OKAY) {
 				send_mkbp_event(port, EC_MKBP_CEC_SEND_OK);
