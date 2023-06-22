@@ -277,9 +277,13 @@ static enum ec_status cec_set_logical_addr(int port, uint8_t logical_addr)
 static enum ec_status hc_cec_set(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_cec_set *params = args->params;
-	int port = CEC_PORT;
+	int cmd = EC_CEC_CMD_PORT_GET_CMD(params->cmd_port);
+	int port = EC_CEC_CMD_PORT_GET_PORT(params->cmd_port);
 
-	switch (params->cmd) {
+	if (port < 0 || port >= CEC_PORT_COUNT)
+		return EC_RES_INVALID_PARAM;
+
+	switch (cmd) {
 	case CEC_CMD_ENABLE:
 		return cec_set_enable(port, params->val);
 	case CEC_CMD_LOGICAL_ADDRESS:
@@ -294,9 +298,13 @@ static enum ec_status hc_cec_get(struct host_cmd_handler_args *args)
 {
 	struct ec_response_cec_get *response = args->response;
 	const struct ec_params_cec_get *params = args->params;
-	int port = CEC_PORT;
+	int cmd = EC_CEC_CMD_PORT_GET_CMD(params->cmd_port);
+	int port = EC_CEC_CMD_PORT_GET_PORT(params->cmd_port);
 
-	switch (params->cmd) {
+	if (port < 0 || port >= CEC_PORT_COUNT)
+		return EC_RES_INVALID_PARAM;
+
+	switch (cmd) {
 	case CEC_CMD_ENABLE:
 		if (cec_config[port].drv->get_enable(port, &response->val) !=
 		    EC_SUCCESS)
