@@ -23,10 +23,6 @@
 #define CPRINTS(...)
 #endif
 
-/* Only one port is supported for now */
-#define CEC_PORT 0
-BUILD_ASSERT(CEC_PORT_COUNT == 1);
-
 /*
  * Mutex for the read-offset of the rx queue. Needed since the
  * queue is read and flushed from different contexts
@@ -396,9 +392,11 @@ DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_CEC_EVENT, cec_get_next_event);
 
 static void cec_init(void)
 {
-	int port = CEC_PORT;
+	int port;
 
-	cec_config[port].drv->init(port);
+	for (port = 0; port < CEC_PORT_COUNT; port++) {
+		cec_config[port].drv->init(port);
+	}
 
 	CPRINTS("CEC initialized");
 }
