@@ -34,6 +34,23 @@
       "parentUuid": "dbb6b8dc_77086f1f",
       "revId": "0fe446bbb5f671b801200df64960f28ca7d582ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90619d89_62387089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2023-06-22T00:33:02Z",
+      "side": 1,
+      "message": "Two revert CLs on top of this one. Please have a look.\n\nThanks.",
+      "revId": "0fe446bbb5f671b801200df64960f28ca7d582ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
