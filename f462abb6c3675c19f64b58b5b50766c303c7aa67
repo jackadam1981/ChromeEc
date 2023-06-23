@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4d14ba_d69e7d7c",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1481,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-23T01:26:24Z",
+      "side": 1,
+      "message": "These sets should avoid messing with the other bits in this register. Debug Accessory Connected and VCONN Present seem particularly risky to clear indiscriminately.\n\nI\u0027d use `update_reg` to mask off the 2 bits you want to change.",
+      "revId": "f462abb6c3675c19f64b58b5b50766c303c7aa67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb32f1a_50dd0f30",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-23T01:26:24Z",
+      "side": 1,
+      "message": "```suggestion\n * @brief Set the VBUS level of the emulator, and trigger interrupts as needed.\n```",
+      "range": {
+        "startLine": 390,
+        "startChar": 18,
+        "endLine": 390,
+        "endChar": 22
+      },
+      "revId": "f462abb6c3675c19f64b58b5b50766c303c7aa67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
