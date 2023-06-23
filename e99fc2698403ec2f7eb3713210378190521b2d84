@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfdafdae_6424ba6e",
+        "filename": "include/cec.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-23T21:10:52Z",
+      "side": 1,
+      "message": "_config is widely used suffix in this codebase. Do you still want to change?",
+      "range": {
+        "startLine": 135,
+        "startChar": 37,
+        "endLine": 135,
+        "endChar": 42
+      },
+      "revId": "e99fc2698403ec2f7eb3713210378190521b2d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
