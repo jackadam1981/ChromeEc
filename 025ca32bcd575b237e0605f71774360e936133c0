@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d811d4a_8d359c08",
+        "filename": "include/driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-23T01:13:46Z",
+      "side": 1,
+      "message": "How did this ever compile? Do we not use these macros?",
+      "revId": "025ca32bcd575b237e0605f71774360e936133c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
