@@ -92,7 +92,13 @@
 #define GOOGLE_DID 0x0028
 #define CR50_RID	0  /* No revision ID yet */
 
-static __preserved uint8_t reset_in_progress;
+static __preserved uint8_t tpm_reset_state;
+
+/* Tpm state machine states. */
+enum tpm_reset_states {
+	tpm_reset_done = 0,
+	tpm_reset_in_progress,
+};
 
 /* Tpm state machine states. */
 enum tpm_states {
@@ -513,7 +519,7 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 	static uint32_t last_sts;
 	static uint32_t checked_sts;
 
-	reset_in_progress = 0;
+	tpm_reset_state = tpm_reset_done;
 
 	if (regaddr != TPM_STS) {
 		CPRINTF("%s(0x%06x, %d)\n", __func__, regaddr, data_size);
@@ -781,24 +787,28 @@ static __preserved int wipe_result;
  */
 static int wipe_requested __attribute__((section(".bss.Tpm2_common")));
 
-int tpm_reset_in_progress(void)
+int debouncing_tpm_rst(void)
 {
-	return reset_in_progress;
+	return tpm_reset_state != tpm_reset_done;
 }
 
 int tpm_reset_request(int wait_until_done, int wipe_nvmem_first)
 {
 	uint32_t evt;
 
-	cprints(CC_TASK, "%s(%d, %d)", __func__,
-		wait_until_done, wipe_nvmem_first);
+	cprints(CC_TASK, "%s(%d, %d, %d)", __func__,
+		wait_until_done, wipe_nvmem_first, tpm_reset_state);
 
-	if (reset_in_progress) {
+	/*
+	 * After the tpm is reset, ignore resets until the AP has communicated
+	 * with the tpm.
+	 */
+	if (debouncing_tpm_rst()) {
 		cprints(CC_TASK, "%s: already scheduled", __func__);
 		return EC_ERROR_BUSY;
 	}
 
-	reset_in_progress = 1;
+	tpm_reset_state = tpm_reset_in_progress;
 	wipe_result = EC_SUCCESS;
 
 	/* We can't change our minds about wiping. */
@@ -941,12 +951,12 @@ void tpm_stop(void)
 		if_stop();
 	/*
 	 * tpm_stop stops tpm communication until the tpm is reset.
-	 * reset_in_progress blocks tpm resets until there's tpm communication.
-	 * If reset_in_progress is 1 when the tpm is stopped, the system will
-	 * not be able to clear either.
+	 * tpm_reset_state blocks tpm resets until there's tpm communication.
+	 * If tpm_reset_state is not tpm_reset_done when the tpm is stopped,
+	 * the system will not be able to clear either.
 	 * Clear reset in progress to ensure that doesn't happen.
 	 */
-	reset_in_progress = 0;
+	tpm_reset_state = tpm_reset_done;
 }
 
 void tpm_task(void *u)
