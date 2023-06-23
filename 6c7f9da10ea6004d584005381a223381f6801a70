@@ -16,6 +16,24 @@
       "message": "I am not sure I got the purpose of this CL...",
       "revId": "6c7f9da10ea6004d584005381a223381f6801a70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd45e87_48c4570e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-06-23T04:04:36Z",
+      "side": 1,
+      "message": "This updates the dedicated branch for dartmonkey firmware to top-of-tree.\n\nNotice that the `Branch` field in the `Change info` section is `firmware-fpmcu-dartmonkey-release`.",
+      "parentUuid": "ea27acb3_b9634ad4",
+      "revId": "6c7f9da10ea6004d584005381a223381f6801a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
