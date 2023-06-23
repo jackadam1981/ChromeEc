@@ -16,6 +16,24 @@
       "message": "I am not sure I got what is the purpose of this CL?",
       "revId": "652fe78aaadd5e9e45d34b0d0ddf8e795fe5de2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "479bf5c9_fba0d9fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-06-23T04:03:44Z",
+      "side": 1,
+      "message": "This updates the dedicated branch for bloonchipper firmware to top-of-tree.\n\nNotice that the `Branch` field in the `Change info` section is `firmware-fpmcu-bloonchipper-release`.",
+      "parentUuid": "b27631da_5267c17e",
+      "revId": "652fe78aaadd5e9e45d34b0d0ddf8e795fe5de2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
