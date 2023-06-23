@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc626d43_bfe20414",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-23T19:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b74df83c_4c1d692d",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 16
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5effe052_cdabb254",
@@ -214,6 +238,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3386a79_99e893de",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-23T19:55:09Z",
+      "side": 1,
+      "message": "I fixed this with a namedtuple",
+      "parentUuid": "730759e5_aed6ce3c",
+      "range": {
+        "startLine": 195,
+        "startChar": 39,
+        "endLine": 195,
+        "endChar": 61
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7069db47_05cf3843",
@@ -275,6 +323,30 @@
       "side": 1,
       "message": "Same as the [other reply](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3738761/comment/5effe052_cdabb254/).",
       "parentUuid": "f4b1039a_34435bc3",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 14
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b6769b_e191fc85",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-23T19:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "270dd551_4ab109be",
       "range": {
         "startLine": 178,
         "startChar": 0,
@@ -488,6 +560,30 @@
       "side": 1,
       "message": "I ended up modifying the `ImageType` to include a `TEST_RO`, `TEST_RW`, and `PRODUCTION_RW` to differentiate the app types. It seemed simpler and didn\u0027t require introducing another flag. \n\nThoughts?",
       "parentUuid": "bc76db62_59c402bf",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 73
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baeb9c75_8ecdbc8f",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-23T19:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05ba46ff_33e900eb",
       "range": {
         "startLine": 628,
         "startChar": 0,
