@@ -98,6 +98,7 @@ static __preserved uint8_t tpm_reset_state;
 enum tpm_reset_states {
 	tpm_reset_done = 0,
 	tpm_reset_in_progress,
+	tpm_reset_waiting_for_comms,
 };
 
 /* Tpm state machine states. */
@@ -787,6 +788,10 @@ static __preserved int wipe_result;
  */
 static int wipe_requested __attribute__((section(".bss.Tpm2_common")));
 
+/*
+ * After resetting the TPM, ignore TPM_RST_L pulses until the AP communicates
+ * with the tpm.
+ */
 int debouncing_tpm_rst(void)
 {
 	return tpm_reset_state != tpm_reset_done;
@@ -800,10 +805,15 @@ int tpm_reset_request(int wait_until_done, int wipe_nvmem_first)
 		wait_until_done, wipe_nvmem_first, tpm_reset_state);
 
 	/*
-	 * After the tpm is reset, ignore resets until the AP has communicated
-	 * with the tpm.
+	 * If a wipe is requested, just check that there's not a reset in
+	 * progress.
+	 *
+	 * Debounce other types of tpm resets until the last reset has finished
+	 * and there's been ap communication.
 	 */
-	if (debouncing_tpm_rst()) {
+	if (wipe_nvmem_first && (tpm_reset_state != tpm_reset_in_progress)) {
+		cprints(CC_TASK, "%s: wipe nvmem", __func__);
+	} else if (debouncing_tpm_rst()) {
 		cprints(CC_TASK, "%s: already scheduled", __func__);
 		return EC_ERROR_BUSY;
 	}
@@ -928,6 +938,11 @@ static void tpm_reset_now(int wipe_first, int can_preserve_orderly)
 
 	cprints(CC_TASK, "%s: done", __func__);
 
+	/*
+	 * The TPM reset finished. Prevent another reset until the AP
+	 * communicates with the tpm.
+	 */
+	tpm_reset_state = tpm_reset_waiting_for_comms;
 	/*
 	 * The host might decide to do it sooner, but let's make sure commits
 	 * do not stay disabled for more than 3 seconds.
