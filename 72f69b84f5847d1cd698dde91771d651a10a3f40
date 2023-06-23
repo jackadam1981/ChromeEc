@@ -22,6 +22,30 @@
       },
       "revId": "72f69b84f5847d1cd698dde91771d651a10a3f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb568973_a0292720",
+        "filename": "zephyr/shim/src/battery.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-06-23T21:51:29Z",
+      "side": 1,
+      "message": "Works for me.",
+      "parentUuid": "714a937d_425ab2a2",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "72f69b84f5847d1cd698dde91771d651a10a3f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
