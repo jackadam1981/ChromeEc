@@ -43,7 +43,7 @@ static int flash_store(uint8_t *cbi)
 {
 	int rv;
 
-	rv = crec_flash_physical_erase(CBI_FLASH_OFFSET, CBI_IMAGE_SIZE);
+	rv = crec_flash_physical_erase(CBI_FLASH_OFFSET, CBI_FLASH_SIZE);
 	if (rv) {
 		LOG_ERR("CBI flash erase before write failed, rv: %d\n", rv);
 		return rv;
