@@ -1,0 +1,16 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <cros/cbi_flash.dtsi>
+
+&cbi_flash {
+	/*
+	 * CBI size is 0x10000 bytes, the CBI portion stays next to EC_RO
+	 * section. EC_RO section expands till 0x50000, which is
+	 * also the CBI offset.
+	 */
+	offset = < 0x50000 >;
+	size = < 0x10000 >;
+};
