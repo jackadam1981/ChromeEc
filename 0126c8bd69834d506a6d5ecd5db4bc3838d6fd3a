@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47f45e8_fc509f46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-23T23:29:55Z",
+      "side": 1,
+      "message": "Mostly nits. This is a nice improvement. Thanks,",
+      "revId": "0126c8bd69834d506a6d5ecd5db4bc3838d6fd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f92fb144_a3ed8338",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-23T23:29:55Z",
+      "side": 1,
+      "message": "#ifdef",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 14
+      },
+      "revId": "0126c8bd69834d506a6d5ecd5db4bc3838d6fd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f681fbbf_23426e0a",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-23T23:29:55Z",
+      "side": 1,
+      "message": "nit: \u0027if (!kblog.enabled) return;\u0027 is more used in the codebase. It also helps the indentations reduced.",
+      "range": {
+        "startLine": 223,
+        "startChar": 5,
+        "endLine": 223,
+        "endChar": 18
+      },
+      "revId": "0126c8bd69834d506a6d5ecd5db4bc3838d6fd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19134f15_907e53d8",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-23T23:29:55Z",
+      "side": 1,
+      "message": "nit: kblog.length \u003d MIN(kblog.length + 1, ARRAY_SIZE(kblog.ringbuf));",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 3
+      },
+      "revId": "0126c8bd69834d506a6d5ecd5db4bc3838d6fd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1325212c_714ebd5c",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-23T23:29:55Z",
+      "side": 1,
+      "message": "Since you\u0027re introducing CONFIG_CMD_KEYBOARD_KBLOG, all these kblog_put will be redundant if !CONFIG_CMD_KEYBOARD_KBLOG. Do you see the compiler smartly ignore this call (because you have kblog_put(type, byte){})?",
+      "range": {
+        "startLine": 305,
+        "startChar": 3,
+        "endLine": 305,
+        "endChar": 12
+      },
+      "revId": "0126c8bd69834d506a6d5ecd5db4bc3838d6fd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee0a9cc7_ba28eddc",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-23T23:29:55Z",
+      "side": 1,
+      "message": "#ifdef",
+      "range": {
+        "startLine": 1186,
+        "startChar": 0,
+        "endLine": 1186,
+        "endChar": 15
+      },
+      "revId": "0126c8bd69834d506a6d5ecd5db4bc3838d6fd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8f03935_c9d64268",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-23T23:29:55Z",
+      "side": 1,
+      "message": "nit: do you mind using a variable (e.g. kblog_size)? It\u0027s frequently used.",
+      "range": {
+        "startLine": 1198,
+        "startChar": 6,
+        "endLine": 1198,
+        "endChar": 31
+      },
+      "revId": "0126c8bd69834d506a6d5ecd5db4bc3838d6fd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
