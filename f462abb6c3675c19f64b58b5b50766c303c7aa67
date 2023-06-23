@@ -16,6 +16,24 @@
       "message": "Was this test redundantly calling the alert ISR before?",
       "revId": "f462abb6c3675c19f64b58b5b50766c303c7aa67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa78a78f_bae190ea",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-23T17:15:04Z",
+      "side": 0,
+      "message": "tcpci_emul_set_vbus_level triggers alerts, tcpci_emul_set_reg does not.  So it wasn\u0027t redundant, but now it is encapsulated in the new call.",
+      "parentUuid": "b6cd9e2a_3492d154",
+      "revId": "f462abb6c3675c19f64b58b5b50766c303c7aa67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

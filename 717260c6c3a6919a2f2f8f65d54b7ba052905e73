@@ -16,6 +16,24 @@
       "message": "`tcpci_emul_set_vbus_voltage` bases its use of EXT_STATUS on the value of PD_INTERFACE_REV (correctly). This test appears to base its expected driver behavior on `tcpc_config.flags`, and I don\u0027t see code to make the emulator actually do this behavior.\n\nDoes the test need to be updated to ensure the correct emulator behavior at the correct time?",
       "revId": "717260c6c3a6919a2f2f8f65d54b7ba052905e73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009f3a1b_3f1439b0",
+        "filename": "zephyr/test/drivers/default/src/tcpci_test_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-23T17:15:04Z",
+      "side": 1,
+      "message": "Is TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V a mode that the emulator supports? Or is that basically V1?",
+      "parentUuid": "40c7509e_5c524057",
+      "revId": "717260c6c3a6919a2f2f8f65d54b7ba052905e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
