@@ -126,7 +126,6 @@ endif()
 if(DEFINED CONFIG_BOARD_GOTHRAX)
 	project(gothrax)
 	zephyr_library_sources(
-			"src/led.c"
 			"gothrax/src/keyboard.c"
 			"gothrax/src/hdmi.c"
 	)
