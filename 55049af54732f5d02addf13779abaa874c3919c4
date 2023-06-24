@@ -16,6 +16,24 @@
       "message": "Was this change intentional?",
       "revId": "55049af54732f5d02addf13779abaa874c3919c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26c758fe_222fa594",
+        "filename": "zephyr/program/myst/myst/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-24T07:23:43Z",
+      "side": 0,
+      "message": "Yes, we don\u0027t have this pin on Myst",
+      "parentUuid": "6b27795a_49bd79b3",
+      "revId": "55049af54732f5d02addf13779abaa874c3919c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
