@@ -16,6 +16,23 @@
       "message": "I modified the CL. Now it will process a wipe request as long as cr50 is not currently resetting the TPM. If it\u0027s waiting for ap communication or it\u0027s completely done with the previous reset, process wipe requests.",
       "revId": "d3ffbda8cd0966643bc30242fd84d0d74a4d8178",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e773e32_bfaa53e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-26T17:47:24Z",
+      "side": 1,
+      "message": "I think this and the precvedding patches should be squashed - the preceeding one seems odd on its own.",
+      "revId": "d3ffbda8cd0966643bc30242fd84d0d74a4d8178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
