@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81761b26_fba4f54a",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-26T17:19:52Z",
+      "side": 1,
+      "message": "As the objective of this change is to rename the incorrectly named state of TPM reset in progress, this enum memeber name should be `tpm_reset_debouncing`",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 22
+      },
+      "revId": "8a5d020410b23b335ba1cadd4c50136e92dc6795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72019bd8_10f8ef58",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-06-26T17:19:52Z",
+      "side": 1,
+      "message": "then this would be `tpm_reset_state \u003d\u003d tpm_reset_debouncing`",
+      "range": {
+        "startLine": 792,
+        "startChar": 8,
+        "endLine": 792,
+        "endChar": 42
+      },
+      "revId": "8a5d020410b23b335ba1cadd4c50136e92dc6795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
