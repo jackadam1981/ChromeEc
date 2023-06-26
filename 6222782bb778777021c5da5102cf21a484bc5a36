@@ -16,6 +16,24 @@
       "message": "Hi, can you use `if(!system_is_in_rw())` instead?\n\nAlso, please add this comment for this block:\n\n\u003e b/286803490#comment12: this is a workaround, we initialize rt1739 in an early stage to turn on an internal MOS, so the system can boot up with lower voltage. We only want to perform this workaround once, so we do it in RO, and not do it again in RW, otherwise, re-initialize rt1739 in RW again would cause a temporary voltage drop due to switching an internal MOS, and EC would have abnormal behaviors due to sensing the wrong voltage.",
       "revId": "6222782bb778777021c5da5102cf21a484bc5a36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff7a366e_1a6cc33e",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-06-26T02:08:36Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, using if(!system_is_in_rw()) is also good.",
+      "parentUuid": "de469030_cbf3ff9e",
+      "revId": "6222782bb778777021c5da5102cf21a484bc5a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
