@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f20862_383f55d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-06-26T20:06:19Z",
+      "side": 1,
+      "message": "Wasn\u0027t the plan to have a `cros ec test` or similar command that more-or-less takes the role of this wrapper?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "7d6a84252310f626452b0903743ba104d7dad010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e90ecd_0464f4d3",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-06-26T20:06:19Z",
+      "side": 1,
+      "message": "Is there a possibility that the version of Twister inside and outside of this sandbox could be different?",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 47
+      },
+      "revId": "7d6a84252310f626452b0903743ba104d7dad010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
