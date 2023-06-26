@@ -212,6 +212,24 @@
       "parentUuid": "d121ae49_a351645c",
       "revId": "d1f16bd708f04fd41898238d5f2a3ae8757f02bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335afc98_00fb767e",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_hard_reset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-06-26T22:45:11Z",
+      "side": 1,
+      "message": "You scared me for a second there, but AFAIK, it should only be possible to link at most one of the files containing those definitions in a single build. Each of those files is a different implementation of the TC to support a different set of behaviors.",
+      "parentUuid": "ea451c3d_868e058d",
+      "revId": "d1f16bd708f04fd41898238d5f2a3ae8757f02bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
