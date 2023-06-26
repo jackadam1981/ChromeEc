@@ -837,6 +837,16 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO, hc_usb_pd_mux_info,
 		     EC_VER_MASK(0));
 
+/*
+ * Allow board or driver code to set the "done" event for muxes that have
+ * interrupt-driven completion
+ */
+void usb_mux_set_ack_complete(int port)
+{
+	if (ack_task[port] != TASK_ID_INVALID)
+		task_set_event(ack_task[port], PD_EVENT_AP_MUX_DONE);
+}
+
 static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 {
 	__maybe_unused const struct ec_params_usb_pd_mux_ack *p = args->params;
@@ -844,8 +854,7 @@ static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
 		return EC_RES_INVALID_COMMAND;
 
-	if (ack_task[p->port] != TASK_ID_INVALID)
-		task_set_event(ack_task[p->port], PD_EVENT_AP_MUX_DONE);
+	usb_mux_set_ack_complete(p->port);
 
 	return EC_RES_SUCCESS;
 }
