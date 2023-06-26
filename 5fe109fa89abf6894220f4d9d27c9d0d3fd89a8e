@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe94f68_8159aabf",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-06-26T18:01:03Z",
+      "side": 1,
+      "message": "Do you consider just reconnect the DP/DM here? Rather than waiting for the hook? 100 ms seems a quite big time interval to me.",
+      "range": {
+        "startLine": 438,
+        "startChar": 4,
+        "endLine": 438,
+        "endChar": 16
+      },
+      "revId": "5fe109fa89abf6894220f4d9d27c9d0d3fd89a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
