@@ -14,8 +14,10 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "nvidia_gpu.h"
+#include "string.h"
 #include "throttle_ap.h"
 #include "timer.h"
+#include "util.h"
 
 #include <stddef.h>
 
@@ -23,6 +25,7 @@
 #define CPRINTF(fmt, args...) cprintf(CC_GPU, "GPU: " fmt, ##args)
 
 test_export_static enum d_notify_level d_notify_level = D_NOTIFY_1;
+static enum d_notify_level forced_d_notify_level = D_NOTIFY_COUNT;
 test_export_static bool policy_initialized = false;
 test_export_static const struct d_notify_policy *d_notify_policy = NULL;
 
@@ -57,13 +60,18 @@ static void set_d_notify_level(enum d_notify_level level)
 	*memmap_gpu = (*memmap_gpu & ~EC_MEMMAP_GPU_D_NOTIFY_MASK) |
 		      d_notify_level;
 	host_set_single_event(EC_HOST_EVENT_GPU);
-	CPRINTS("Set D-notify level to D%c", ('1' + (int)d_notify_level));
+	CPRINTS("Set D-Notify to D%d", d_notify_level + 1);
 }
 
 static void evaluate_d_notify_level(void)
 {
 	enum d_notify_level lvl;
 	const struct d_notify_policy *policy = d_notify_policy;
+
+	if (forced_d_notify_level != D_NOTIFY_COUNT) {
+		set_d_notify_level(forced_d_notify_level);
+		return;
+	}
 
 	/*
 	 * We don't need to care about 'transitioning to S0' because throttling
@@ -159,3 +167,33 @@ void throttle_gpu(enum throttle_level level, enum throttle_type type, /* not
 		disable_gpu_acoff();
 	}
 }
+
+static int cc_dnotify(int argc, const char **argv)
+{
+
+	if (argc == 1) {
+		ccprintf("Current: D%d\n", d_notify_level + 1);
+	} else if (argc == 2) {
+		if (!strcasecmp(argv[1], "reset")) {
+			forced_d_notify_level = D_NOTIFY_COUNT;
+			ccprintf("D-Notify is reset\n");
+			evaluate_d_notify_level();
+		} else {
+			char *e;
+			int lvl = strtoi(argv[1], &e, 0) - 1;
+
+			if (*e || lvl < D_NOTIFY_1 || D_NOTIFY_5 < lvl)
+				return EC_ERROR_PARAM1;
+
+			forced_d_notify_level = lvl;
+			ccprintf("Set to D%d\n", lvl + 1);
+			set_d_notify_level(lvl);
+		}
+	} else {
+		return EC_ERROR_PARAM_COUNT;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(dnotify, cc_dnotify, "[<level>|reset]",
+			"Set d-notify level");
