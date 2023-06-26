@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eab5179_35eb3305",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 262
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-26T20:14:42Z",
+      "side": 1,
+      "message": "Can you add a case for this in the `test_fp_command_check_context_cleared` unit test?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "ce78332474d757df637cba38fae69a4f43aa60ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
