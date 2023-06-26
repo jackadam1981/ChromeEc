@@ -69,6 +69,30 @@
       },
       "revId": "5f82f43d34e663876e1be6da226079f631377c0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87745faa_0a019e90",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 253
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-06-26T08:07:58Z",
+      "side": 1,
+      "message": "Done\nAdded in http://crrev.com/c/4645135",
+      "parentUuid": "a81a7c5a_e9055372",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 30
+      },
+      "revId": "5f82f43d34e663876e1be6da226079f631377c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
