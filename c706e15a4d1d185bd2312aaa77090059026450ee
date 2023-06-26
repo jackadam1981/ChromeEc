@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110d6291_301f4518",
+        "filename": "zephyr/program/nissa/gothrax/src/usbc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-26T17:46:53Z",
+      "side": 1,
+      "message": "I\u0027m not sure why schedule_deferred_pd_interrupt can\u0027t be verified in tests.  You could mock it and make sure it is called, or check for some side effects of pd_interrupt_handler_task() running. For example, tcpci_tcpc_alert will reset the TCPC_REG_ALERT_EXT and TCPC_REG_ALERT registers, and the test could look at those to see if that happened.",
+      "range": {
+        "startLine": 218,
+        "startChar": 19,
+        "endLine": 218,
+        "endChar": 49
+      },
+      "revId": "c706e15a4d1d185bd2312aaa77090059026450ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
