@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff89fff0_0980b90f",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_hard_reset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-26T16:23:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82ecc8ae_97dddb68",
+      "revId": "d1f16bd708f04fd41898238d5f2a3ae8757f02bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f23b20d4_8b40ec1e",
@@ -107,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04329bd3_d05ece4f",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_hard_reset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-26T16:23:09Z",
+      "side": 1,
+      "message": "tcpci_emul_disconnect_partner sets to VBUS_SAFE0V here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4637715/4/zephyr/emul/tcpc/emul_tcpci.c#682, I\u0027ll change that to VBUS_REMOVED.\n\n\nI added VBUS_PRESENT to tcpci_emul_connect_partner.",
+      "parentUuid": "b9ef812a_9ec18ca4",
+      "revId": "d1f16bd708f04fd41898238d5f2a3ae8757f02bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "412ac355_8e1a4a3f",
@@ -156,6 +192,24 @@
       "side": 1,
       "message": "Re: current, ack. I don\u0027t think it\u0027s reasonable to ask you to write a better test than we\u0027ve ever written.\n\nI\u0027m still confused by the TC being in AttachWait.SRC. I would expect Attached.SNK. If we\u0027re covering the code in `tc_perform_snk_hard_reset` that this was originally intended to cover, we should be in `tc_attached_snk_run` the entire time.",
       "parentUuid": "ca57d5d3_318197cf",
+      "revId": "d1f16bd708f04fd41898238d5f2a3ae8757f02bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea451c3d_868e058d",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_hard_reset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-26T16:23:09Z",
+      "side": 1,
+      "message": "There are 2 enum usb_tc_state definitions, and two get_state_tc, and they have different definitions for ordinal 7. Perhaps I used the wrong one.\n\nLet\u0027s see which symbol gdb finds: `common/usbc/usb_tc_drp_acc_trysrc_sm.c, line 1703`\n\nAnd the ordinal #7 is...TC_ATTACHED_SNK, so the comment is wrong here.",
+      "parentUuid": "d121ae49_a351645c",
       "revId": "d1f16bd708f04fd41898238d5f2a3ae8757f02bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
