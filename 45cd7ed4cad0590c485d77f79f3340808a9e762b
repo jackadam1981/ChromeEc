@@ -40,6 +40,30 @@
       },
       "revId": "45cd7ed4cad0590c485d77f79f3340808a9e762b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad6ea762_5ff38380",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-06-26T06:33:53Z",
+      "side": 1,
+      "message": "ok, I think we can first revert this CL, and do a complete patch.",
+      "parentUuid": "49a173e3_6b2c83ff",
+      "range": {
+        "startLine": 506,
+        "startChar": 3,
+        "endLine": 506,
+        "endChar": 41
+      },
+      "revId": "45cd7ed4cad0590c485d77f79f3340808a9e762b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
