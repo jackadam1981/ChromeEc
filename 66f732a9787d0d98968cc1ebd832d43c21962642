@@ -111,6 +111,30 @@
       },
       "revId": "66f732a9787d0d98968cc1ebd832d43c21962642",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68132e3f_bfd8f607",
+        "filename": "zephyr/program/rex/screebo/src/usb_config.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-06-26T06:03:10Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1e9f2de0_752aa277",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "66f732a9787d0d98968cc1ebd832d43c21962642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
