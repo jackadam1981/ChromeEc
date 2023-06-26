@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a572d894_7523419d",
+        "filename": "zephyr/test/ap_power/src/ap_pwrseq.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-06-26T19:12:13Z",
+      "side": 1,
+      "message": "With Legacy power sequence `slp_sus` check is made is G3S5. If this signal is not de-asserted, we move into S5G3, and `AP_POWER_HARD_OFF` is generated on S5G3 state.\n\nWith new power sequence `slp_sus` signal error is detected while remaining on G3 and `AP_POWER_HARD_OFF` event is only generated whenever entering into G3.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 6
+      },
+      "revId": "f95e566219a3365930159dff2794a40e6a3dc9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
