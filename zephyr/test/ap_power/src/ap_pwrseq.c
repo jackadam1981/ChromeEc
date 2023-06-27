@@ -211,6 +211,7 @@ ZTEST(ap_pwrseq, test_ap_pwrseq_2)
 		      "AP_POWER_HARD_OFF event not generated");
 }
 
+#if defined(CONFIG_AP_X86_INTEL_ADL)
 ZTEST(ap_pwrseq, test_ap_pwrseq_3)
 {
 	zassert_equal(0,
@@ -262,6 +263,7 @@ ZTEST(ap_pwrseq, test_ap_pwrseq_5)
 	zassert_equal(1, power_shutdown_complete_count,
 		      "AP_POWER_SHUTDOWN_COMPLETE event not generated");
 }
+#endif /* CONFIG_AP_X86_INTEL_ADL */
 
 ZTEST(ap_pwrseq, test_insufficient_power_blocks_s5)
 {
