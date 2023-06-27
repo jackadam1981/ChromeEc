@@ -117,6 +117,7 @@ static enum ec_status read_memory_dump(struct host_cmd_handler_args *args)
 	entry = entries[p->memory_dump_entry_index];
 
 	if (p->address < entry.address ||
+	    p->address > entry.address + entry.size || p->size > entry.size ||
 	    p->address + p->size > entry.address + entry.size) {
 		return EC_RES_INVALID_PARAM;
 	}
