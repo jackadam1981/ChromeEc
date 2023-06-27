@@ -1,0 +1,6 @@
+common:
+  platform_allow: native_posix
+tests:
+  starmie.default:
+    extra_dtc_overlay_files:
+    - starmie.overlay

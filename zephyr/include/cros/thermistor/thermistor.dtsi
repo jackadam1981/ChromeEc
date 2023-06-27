@@ -388,7 +388,7 @@
 	};
 
 	/omit-if-no-ref/ thermistor_1V8_100K_100K_4250B:
-			thermistor-1V9-100K-100K-4250B {
+			thermistor-1V8-100K-100K-4250B {
 		status = "disabled";
 		compatible = "cros-ec,thermistor";
 		scaling-factor = <7>;

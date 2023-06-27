@@ -177,7 +177,7 @@ void power_set_state(enum power_state new_state);
  *
  * @return Current chipset power state
  */
-#ifdef CONFIG_AP_POWER_CONTROL
+#if defined(CONFIG_AP_POWER_CONTROL) || defined(CONFIG_ZTEST)
 enum power_state power_get_state(void);
 #else
 static inline enum power_state power_get_state(void)

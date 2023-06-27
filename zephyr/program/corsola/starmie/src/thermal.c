@@ -54,9 +54,8 @@ int charger_profile_override(struct charge_state_data *curr)
 
 	current = curr->requested_current;
 
-	temp_sensor_read(
-		TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(charger_bc12_port1)),
-		&charger_temp);
+	temp_sensor_read(TEMP_SENSOR_ID(DT_NODELABEL(temp_charger)),
+			 &charger_temp);
 
 	temp_sensor_read(
 		TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_sensor_1_thermistor)),
@@ -153,7 +152,7 @@ int charger_profile_override(struct charge_state_data *curr)
 
 	curr->requested_current = MIN(curr->requested_current, current);
 
-	return 0;
+	return 1;
 }
 
 enum ec_status charger_profile_override_get_param(uint32_t param,
