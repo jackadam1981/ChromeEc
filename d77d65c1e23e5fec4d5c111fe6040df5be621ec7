@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a061668f_4bee08b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-06-27T00:05:37Z",
+      "side": 1,
+      "message": "Hi Abe and Sam,  \ncan you take a look at this update to the PRL layer. It resolves a bug where the PE returns to a Sink_Ready state too quickly after sending an extended message. That can lead to a follow-up message mistaking a previous successful TX message signal from the TCPC as its own and starting the sender response timer too early. There is more detail in the bug. Let me know if you have any questions.\n\nThanks,\nJameson",
+      "revId": "d77d65c1e23e5fec4d5c111fe6040df5be621ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
