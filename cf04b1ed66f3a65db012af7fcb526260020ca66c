@@ -16,6 +16,24 @@
       "message": "Waiting for next the upstream changes",
       "revId": "cf04b1ed66f3a65db012af7fcb526260020ca66c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "055a0b61_f2329d34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-06-27T13:24:17Z",
+      "side": 1,
+      "message": "https://github.com/zephyrproject-rtos/zephyr/pull/59781",
+      "parentUuid": "9b0d7c8b_31f8809c",
+      "revId": "cf04b1ed66f3a65db012af7fcb526260020ca66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
