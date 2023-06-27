@@ -3208,6 +3208,14 @@
 #define LED_CHARGER_ERROR_ON_TIME 1
 #define LED_CHARGER_ERROR_PERIOD 2
 
+/* By default, 1 second period, 50% duty cycle. */
+#define LED_CRITICAL_LOW_BATTERY_ON_TIME 2
+#define LED_CRITICAL_LOW_BATTERY_PERIOD 4
+
+/* By default, 4 second period, 50% duty cycle. */
+#define LED_LOW_BATTERY_ON_TIME 8
+#define LED_LOW_BATTERY_PERIOD 16
+
 /*
  * By default the PWM LED behaviour is reflected on both LEDs and includes the
  * chipset state, battery state, as well as the charging state.  Enable

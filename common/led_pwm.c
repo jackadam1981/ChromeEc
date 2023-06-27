@@ -219,10 +219,13 @@ static int show_battery_state(void)
 	 */
 	if (batt_percentage < CRITICAL_LOW_BATTERY_PERCENTAGE) {
 		/* Flash amber faster (1 second period, 50% duty cycle) */
-		pulse_leds(CONFIG_LED_PWM_LOW_BATT_COLOR, 2, 4);
+		pulse_leds(CONFIG_LED_PWM_LOW_BATT_COLOR,
+			   LED_CRITICAL_LOW_BATTERY_ON_TIME,
+			   LED_CRITICAL_LOW_BATTERY_PERIOD);
 	} else if (batt_percentage < LOW_BATTERY_PERCENTAGE) {
 		/* Flash amber (4 second period, 50% duty cycle) */
-		pulse_leds(CONFIG_LED_PWM_LOW_BATT_COLOR, 8, 16);
+		pulse_leds(CONFIG_LED_PWM_LOW_BATT_COLOR,
+			   LED_LOW_BATTERY_ON_TIME, LED_LOW_BATTERY_PERIOD);
 	} else {
 		/* Sufficient charge, no need to show anything for this. */
 		return 0;
