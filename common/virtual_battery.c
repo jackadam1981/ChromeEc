@@ -394,6 +394,11 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head, uint8_t *dest,
 			return EC_ERROR_INVAL;
 		memcpy(dest, &str, MIN(read_len, sizeof(str)));
 		break;
+	case SB_MANUFACTURE_INFO2:
+		if (sb_read(*batt_cmd_head, &val))
+			return EC_ERROR_INVAL;
+		memcpy(dest, &val, bounded_read_len);
+		break;
 #endif
 	case SB_MANUFACTURER_ACCESS:
 #ifdef CONFIG_BATTERY_SMART
