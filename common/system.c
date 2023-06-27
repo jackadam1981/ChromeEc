@@ -313,9 +313,13 @@ void system_print_banner(void)
 	/* be less verbose if we boot for USB resume to meet spec timings */
 	if (!(system_get_reset_flags() & EC_RESET_FLAG_USB_RESUME)) {
 		CPUTS("\n");
-		if (system_jumped_to_this_image())
+		if (system_jumped_to_this_image()) {
+			if (system_is_in_rw() &&
+			    IS_ENABLED(CONFIG_UNALIGNED_ACCESS)) {
+				cpu_enable_unaligned_access();
+			}
 			CPRINTS("UART initialized after sysjump");
-		else
+		} else
 			CPUTS("\n--- UART initialized after reboot ---\n");
 		CPRINTF("[Image: %s, %s]\n", system_get_image_copy_string(),
 			system_get_build_info());
