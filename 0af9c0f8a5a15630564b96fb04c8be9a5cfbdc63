@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd5e1315_de415a10",
+        "filename": "common/host_command_memory_dump.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-27T19:41:41Z",
+      "side": 0,
+      "message": "How about checking:\n\n    p-\u003eaddress + p-\u003esize \u003c p-\u003eaddress\n\n? As long as this condition is false, we don\u0027t need to worry about wrap around in other conditions.",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 25
+      },
+      "revId": "0af9c0f8a5a15630564b96fb04c8be9a5cfbdc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

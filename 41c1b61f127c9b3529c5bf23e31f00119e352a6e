@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a39495d_abc59d89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-27T19:41:41Z",
+      "side": 1,
+      "message": "Let\u0027s update zephyr/test/drivers/host_command_memory_dump/src/host_command_memory_dump.c to cover these cases.",
+      "revId": "41c1b61f127c9b3529c5bf23e31f00119e352a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80a8c95b_c76c06db",
         "filename": "common/host_command_memory_dump.c",
         "patchSetId": 2
@@ -19,6 +36,29 @@
         "startChar": 16,
         "endLine": 120,
         "endChar": 17
+      },
+      "revId": "41c1b61f127c9b3529c5bf23e31f00119e352a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "581b11f8_e2be2a81",
+        "filename": "common/host_command_memory_dump.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-27T19:41:41Z",
+      "side": 1,
+      "message": "IIUC, these conditions still allow p-\u003eaddress + p-\u003esize to escape from the window:\n\n    p-\u003eaddress \u003d    0xffffffe0\n    p-\u003esize \u003d    0xe0\n    entry.address \u003d 0xffffff00\n    entry.size \u003d 0xf0\n\nthen, p-\u003eaddress + p-\u003esize would be 0xc0, which passes line 121.",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 69
       },
       "revId": "41c1b61f127c9b3529c5bf23e31f00119e352a6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
