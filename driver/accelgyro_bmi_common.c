@@ -747,6 +747,7 @@ int bmi_get_sensor_temp(int idx, int *temp_ptr)
 int bmi_get_normalized_rate(const struct motion_sensor_t *s, int rate, int rnd,
 			    int *normalized_rate_ptr, uint8_t *reg_val_ptr)
 {
+	ccprints("%s:%d", __func__, __LINE__);
 	*reg_val_ptr = BMI_ODR_TO_REG(rate);
 	*normalized_rate_ptr = BMI_REG_TO_ODR(*reg_val_ptr);
 	if (rnd && (*normalized_rate_ptr < rate)) {
@@ -754,19 +755,23 @@ int bmi_get_normalized_rate(const struct motion_sensor_t *s, int rate, int rnd,
 		*normalized_rate_ptr = BMI_REG_TO_ODR(*reg_val_ptr);
 	}
 
+	ccprints("%s:%d", __func__, __LINE__);
 	switch (s->type) {
 	case MOTIONSENSE_TYPE_ACCEL:
+	ccprints("%s:%d", __func__, __LINE__);
 		if (*normalized_rate_ptr > BMI_ACCEL_MAX_FREQ ||
 		    *normalized_rate_ptr < BMI_ACCEL_MIN_FREQ)
 			return EC_RES_INVALID_PARAM;
 		break;
 	case MOTIONSENSE_TYPE_GYRO:
+	ccprints("%s:%d nr=%d gyr(%d, %d) acc(%d, %d)", __func__, __LINE__, *normalized_rate_ptr, BMI_GYRO_MAX_FREQ, BMI_GYRO_MIN_FREQ, BMI_ACCEL_MAX_FREQ, BMI_ACCEL_MIN_FREQ);
 		if (*normalized_rate_ptr > BMI_GYRO_MAX_FREQ ||
 		    *normalized_rate_ptr < BMI_GYRO_MIN_FREQ)
 			return EC_RES_INVALID_PARAM;
 		break;
 #ifdef CONFIG_MAG_BMI_BMM150
 	case MOTIONSENSE_TYPE_MAG:
+	ccprints("%s:%d", __func__, __LINE__);
 		/* We use the regular preset we can go about 100Hz */
 		if (*reg_val_ptr > BMI_ODR_100HZ ||
 		    *reg_val_ptr < BMI_ODR_0_78HZ)
@@ -775,6 +780,7 @@ int bmi_get_normalized_rate(const struct motion_sensor_t *s, int rate, int rnd,
 #endif
 
 	default:
+		ccprintf("s->type=%d invalid la\n", s->type);
 		return EC_RES_INVALID_PARAM;
 	}
 	return EC_SUCCESS;

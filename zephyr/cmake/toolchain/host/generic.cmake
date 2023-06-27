@@ -16,3 +16,5 @@ set(BINTOOLS gnu)
 set(TOOLCHAIN_HAS_NEWLIB OFF CACHE BOOL "True if toolchain supports newlib")
 
 message(STATUS "Found toolchain: host ${ARCH} (gcc/ld)")
+set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")

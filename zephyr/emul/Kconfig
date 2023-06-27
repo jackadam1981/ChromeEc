@@ -88,6 +88,16 @@ config EMUL_BMI
 	  It is used to test bmi 160 and 260 drivers. Emulators API is
 	  available in zephyr/include/emul/emul_bmi.h
 
+config EMUL_BMI3XX
+	bool "BMI3XX emulator"
+	default y
+	depends on DT_HAS_ZEPHYR_BMI3XX_EMUL_ENABLED
+	select EMUL_COMMON_I2C
+	help
+	  Enable the BMI3XX emulator. This driver use emulated I2C bus.
+	  It is used to test bmi3xx/bmi323. Emulators API is
+	  available in zephyr/include/emul/emul_bmi3xx.h
+
 config EMUL_TCS3400
 	bool "TCS3400 emulator"
 	default y

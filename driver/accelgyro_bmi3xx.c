@@ -765,24 +765,29 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 
 	struct accelgyro_saved_data_t *saved_data = BMI_GET_SAVED_DATA(s);
 
+	ccprints("%s 0x%x 0x%x", __func__, rate, rnd);
 	if (rate > 0)
 		RETURN_ERROR(bmi_get_normalized_rate(
 			s, rate, rnd, &normalized_rate, &reg_val));
+	ccprints("%s:%d", __func__, __LINE__);
 
 	/*
 	 * Lock accel resource to prevent another task from attempting
 	 * to write accel parameters until we are done.
 	 */
 	mutex_lock(s->mutex);
+	ccprints("%s:%d", __func__, __LINE__);
 
 	/*
 	 * Get default configurations for the type of feature selected.
 	 */
 	ret = bmi3_read_n(s, BMI3_REG_ACC_CONF + s->type, reg_data, 4);
+	ccprints("%s:%d", __func__, __LINE__);
 	if (ret) {
 		mutex_unlock(s->mutex);
 		return ret;
 	}
+	ccprints("%s:%d", __func__, __LINE__);
 
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
 		if (rate == 0) {
@@ -836,6 +841,8 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	/* Set accelerometer ODR */
 	reg_data[2] = BMI3_SET_BIT_POS0(reg_data[2], BMI3_SENS_ODR, reg_val);
 
+	ccprints("\033[33m~~~~~write 0x%x 0x%x @0x%x~~~~~~~\033[m", reg_data[2],
+		 reg_data[3], BMI3_REG_ACC_CONF + s->type);
 	/* Set the accel/gyro configurations. */
 	ret = bmi3_write_n(s, BMI3_REG_ACC_CONF + s->type, &reg_data[2], 2);
 	if (ret) {
@@ -892,14 +899,18 @@ static int set_range(struct motion_sensor_t *s, int range, int rnd)
 	}
 
 	for (index = 0; index < sens_size - 1; index++) {
-		if (range <= sensor_range[index][0])
-			break;
-
-		if (range < sensor_range[index + 1][0] && rnd) {
-			index++;
+		if (range >= sensor_range[index][0] &&
+		    range < sensor_range[index + 1][0]) {
+			if (rnd) {
+				index++;
+			}
 			break;
 		}
 	}
+
+	/* cap at index 0 if the range is too low */
+	if (range < sensor_range[0][0])
+		index = 0;
 
 	mutex_lock(s->mutex);
 
