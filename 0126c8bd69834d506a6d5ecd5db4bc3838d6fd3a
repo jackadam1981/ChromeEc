@@ -225,6 +225,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef00133d_db7c4efa",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-27T22:42:14Z",
+      "side": 1,
+      "message": "The symbol is ok as long as there is no assembly code for it.",
+      "parentUuid": "235a7d1b_b3d5b525",
+      "range": {
+        "startLine": 305,
+        "startChar": 3,
+        "endLine": 305,
+        "endChar": 12
+      },
+      "revId": "0126c8bd69834d506a6d5ecd5db4bc3838d6fd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee0a9cc7_ba28eddc",
         "filename": "common/keyboard_8042.c",
         "patchSetId": 1
