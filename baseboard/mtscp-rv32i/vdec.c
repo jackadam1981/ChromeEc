@@ -46,7 +46,7 @@ static struct consumer const event_vdec_core_consumer = {
 };
 
 /* Stub functions only provided by private overlays. */
-#ifndef HAVE_PRIVATE_MT_SCP
+#if !defined(HAVE_PRIVATE_MT_SCP)
 void vdec_msg_handler(void *data)
 {
 }

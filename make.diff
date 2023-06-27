@@ -1,0 +1,51 @@
+diff --git a/baseboard/mtscp-rv32i/mdp.c b/baseboard/mtscp-rv32i/mdp.c
+index 4c054dc029..439ce148b5 100644
+--- a/baseboard/mtscp-rv32i/mdp.c
++++ b/baseboard/mtscp-rv32i/mdp.c
+@@ -29,7 +29,7 @@ static struct consumer const event_mdp_consumer = {
+ };
+ 
+ /* Stub functions only provided by private overlays. */
+-#ifndef HAVE_PRIVATE_MT_SCP
++#if !defined(HAVE_PRIVATE_MT_SCP) || defined(HAVE_PRIVATE_MT_NO_MDP)
+ void mdp_common_init(void)
+ {
+ }
+diff --git a/baseboard/mtscp-rv32i/vdec.c b/baseboard/mtscp-rv32i/vdec.c
+index 7ff98fff10..908014ab2a 100644
+--- a/baseboard/mtscp-rv32i/vdec.c
++++ b/baseboard/mtscp-rv32i/vdec.c
+@@ -46,7 +46,7 @@ static struct consumer const event_vdec_core_consumer = {
+ };
+ 
+ /* Stub functions only provided by private overlays. */
+-#ifndef HAVE_PRIVATE_MT_SCP
++#if !defined(HAVE_PRIVATE_MT_SCP)
+ void vdec_msg_handler(void *data)
+ {
+ }
+diff --git a/baseboard/mtscp-rv32i/venc.c b/baseboard/mtscp-rv32i/venc.c
+index bed2a2dbc6..9a99ea0845 100644
+--- a/baseboard/mtscp-rv32i/venc.c
++++ b/baseboard/mtscp-rv32i/venc.c
+@@ -31,7 +31,7 @@ static struct consumer const event_venc_consumer = {
+ };
+ 
+ /* Stub functions only provided by private overlays. */
+-#ifndef HAVE_PRIVATE_MT_SCP
++#if !defined(HAVE_PRIVATE_MT_SCP)
+ void venc_h264_msg_handler(void *data)
+ {
+ }
+diff --git a/board/geralt_scp/ec.tasklist b/board/geralt_scp/ec.tasklist
+index 746db13e60..6c6df23fb9 100644
+--- a/board/geralt_scp/ec.tasklist
++++ b/board/geralt_scp/ec.tasklist
+@@ -18,7 +18,6 @@
+ 	TASK_ALWAYS(CONSOLE, console_task, NULL, LARGER_TASK_STACK_SIZE) \
+ 	FEATURE_TASK_LIST \
+ 	TASK_ALWAYS(SR, sr_task, NULL, TASK_STACK_SIZE) \
+-	TASK_ALWAYS(CONSOLE, console_task, NULL, LARGER_TASK_STACK_SIZE) \
+ 	TASK_ALWAYS(VDEC_SERVICE, vdec_service_task, NULL, 4096) \
+ 	TASK_ALWAYS(VDEC_CORE_SERVICE, vdec_core_service_task, NULL, 4096) \
+ 	TASK_ALWAYS(VENC_SERVICE, venc_service_task, NULL, TRENTA_TASK_STACK_SIZE) \
