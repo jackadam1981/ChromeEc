@@ -16,6 +16,24 @@
       "message": "I think we should stop adding board specific regs into common code.\n(the previous CL for SB_MANUFACTURE_INFO is a bad practice..)\n\nIs it possible to use i2c passthru to access this register instead?",
       "revId": "4b7b9a26018055ea84d974e6ee654af9203b320a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5bcce2_07c14f7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2023-06-27T08:43:31Z",
+      "side": 1,
+      "message": "Hi Ting,\nColud yor provide i2c passthru command? Thanks.",
+      "parentUuid": "121aea0c_bae4e136",
+      "revId": "4b7b9a26018055ea84d974e6ee654af9203b320a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
