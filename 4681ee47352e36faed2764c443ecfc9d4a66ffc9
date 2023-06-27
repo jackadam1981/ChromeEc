@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7efce463_af27dcdf",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-06-27T22:15:43Z",
+      "side": 1,
+      "message": "Is there a better way to do this?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "4681ee47352e36faed2764c443ecfc9d4a66ffc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59b56ea0_43bc12ac",
+        "filename": "zephyr/test/ap_power/src/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-06-27T22:15:43Z",
+      "side": 1,
+      "message": "TODO: Add macro to automate all external type power signals expansion.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 33
+      },
+      "revId": "4681ee47352e36faed2764c443ecfc9d4a66ffc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
