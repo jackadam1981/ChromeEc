@@ -16,6 +16,24 @@
       "message": "Should this also check for `PRL_FLAGS_TX_COMPLETE`? As it, it seems like this transition would happen immediately instead of waiting for the GoodCRC.",
       "revId": "17fb5895ff8d8460a95c1c71d245ccad07e0ec76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4118d8a_bf4702c6",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2023,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-06-27T20:21:47Z",
+      "side": 1,
+      "message": "That\u0027s right, thanks for catching this. Looking at an example in the PD spec (Figure 6-7 Example Security_Request sequence Chunked (Chunked bit \u003d 1)), we should be getting a GoodCRC after each chunk in a chunked message.",
+      "parentUuid": "3af90d25_11216bd3",
+      "revId": "17fb5895ff8d8460a95c1c71d245ccad07e0ec76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
