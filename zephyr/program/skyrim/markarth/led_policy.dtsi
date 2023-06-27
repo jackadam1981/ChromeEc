@@ -26,13 +26,31 @@
 		power-state-discharge-s0-batt-low {
 			charge-state = "LED_PWRS_DISCHARGE";
 			chipset-state = "POWER_S0";
-			/* Battery percent range (>= Empty, <= Low) */
-			batt-lvl = <BATTERY_LEVEL_EMPTY BATTERY_LEVEL_LOW>;
+			/* Battery percent range (> shutdown, <= Low) */
+			batt-lvl = <(BATTERY_LEVEL_SHUTDOWN + 1) \
+			BATTERY_LEVEL_LOW>;
 
-			/* Blue 2 sec, off 1 sec */
+			/* Amber 1 sec, off 3 sec */
 			color-0 {
-				led-color = <&color_blue>;
-				period-ms = <2000>;
+				led-color = <&color_amber>;
+				period-ms = <1000>;
+			};
+			color-1 {
+				led-color = <&color_off>;
+				period-ms = <3000>;
+			};
+		};
+
+		power-state-discharge-s0-batt-critical {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S0";
+			/* Battery percent range (>= Empty, <= shutdown) */
+			batt-lvl = <BATTERY_LEVEL_EMPTY BATTERY_LEVEL_SHUTDOWN>;
+
+			/* Amber 1 sec, off 1 sec */
+			color-0 {
+				led-color = <&color_amber>;
+				period-ms = <1000>;
 			};
 			color-1 {
 				led-color = <&color_off>;
