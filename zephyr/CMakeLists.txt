@@ -477,6 +477,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_RETIMER_KB8010
                                                 "${PLATFORM_EC}/driver/retimer/kb8010.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_RETIMER_PS8818
                                                 "${PLATFORM_EC}/driver/retimer/ps8818.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_RETIMER_PS8828
+                                                "${PLATFORM_EC}/driver/retimer/ps8828.c")                                                 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_RETIMER_PS8811
                                                 "${PLATFORM_EC}/driver/retimer/ps8811.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_RETIMER_ANX7451
@@ -490,7 +492,7 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_MUX_AMD_FP8
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_MUX_IT5205
                                                 "${PLATFORM_EC}/driver/usb_mux/it5205.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_MUX_PS8743
-                                                "${PLATFORM_EC}/driver/usb_mux/ps8743.c")
+                                                "${PLATFORM_EC}/driver/usb_mux/ps8743.c")                     
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_MUX_TUSB546
                                                 "${PLATFORM_EC}/driver/usb_mux/tusb1064.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_MUX_TUSB1044
