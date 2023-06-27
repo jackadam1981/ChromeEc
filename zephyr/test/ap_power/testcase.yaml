@@ -1,10 +1,11 @@
 common:
   platform_allow: native_posix
 tests:
-  ap_power.alderlake:
+  ap_power.alderlake.nissa:
     extra_dtc_overlay_files:
     - boards/native_posix.overlay
     - boards/alderlake.dts
+    - boards/nissa.dts
     extra_configs:
     - CONFIG_EMUL_POWER_SIGNALS=y
     - CONFIG_X86_NON_DSX_PWRSEQ_ADL=y
