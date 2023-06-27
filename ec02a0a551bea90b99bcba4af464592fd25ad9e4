@@ -16,6 +16,29 @@
       "message": "This broke the build on gitlab. https://gitlab.com/zephyr-ec/ec/-/pipelines/912514185/failures\n\n```\n        File \"/usr/lib/python3.8/subprocess.py\", line 493, in run\n    with Popen(*popenargs, **kwargs) as process:\n  File \"/usr/lib/python3.8/subprocess.py\", line 858, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"/usr/lib/python3.8/subprocess.py\", line 1704, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: \u0027bazel\u0027\nCleaning up project directory and file based variables\nERROR: Job failed: exit code 1\n```",
       "revId": "ec02a0a551bea90b99bcba4af464592fd25ad9e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1938b2_9cb87cda",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-27T15:46:53Z",
+      "side": 1,
+      "message": "Also needs to catch FileNotFoundError",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 0
+      },
+      "revId": "ec02a0a551bea90b99bcba4af464592fd25ad9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
