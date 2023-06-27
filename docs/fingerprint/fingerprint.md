@@ -345,7 +345,7 @@ measuring power.
 ```
 
 **Firmware Version**:
-`bloonchipper_v2.0.4277-9f652bb3-RO_v2.0.14348-e5fb0b9-RW.bin`
+`bloonchipper_v2.0.4277-9f652bb3-RO_v2.0.21769-3757a66-RW.bin`
 
 #### MCU is idle
 
@@ -354,14 +354,12 @@ measuring power.
 ```
 
 ```
-@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN
-@@       sample_msecs    478   125.49   26.02   431.96    92.23
-@@    pp1800_dx_fp_mv    478  1800.00    0.00  1800.00  1800.00
-@@    pp1800_dx_fp_mw    478     0.00    0.00     0.00     0.00
-@@    pp3300_dx_fp_mv    478  3280.00    0.00  3280.00  3280.00
-@@    pp3300_dx_fp_mw    478     0.00    0.03     0.26     0.00
-@@   pp3300_dx_mcu_mv    478  3280.00    0.00  3280.00  3280.00
-@@   pp3300_dx_mcu_mw    478    21.78    0.06    23.09    21.78
+@@           NAME  COUNT    AVERAGE  STDDEV        MAX        MIN
+@@   sample_msecs   3303    18.1459  2.3595    40.7052    15.3005
+@@    ppvar_fp_mv   3303  3268.2507  1.3710  3272.0000  3264.0000
+@@    ppvar_fp_mw   3303     0.6981  0.5265     3.1751     0.1000
+@@   ppvar_mcu_mv   3303  3255.8692  1.0145  3256.0000  3248.0000
+@@   ppvar_mcu_mw   3303    16.1519  0.0546    17.1917    16.1101
 ```
 
 #### MCU in low power mode (suspend)
@@ -371,14 +369,12 @@ measuring power.
 ```
 
 ```
-@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN
-@@       sample_msecs    488   122.99   26.37   458.47    92.69
-@@    pp1800_dx_fp_mv    488  1800.00    0.00  1800.00  1800.00
-@@    pp1800_dx_fp_mw    488     0.00    0.00     0.00     0.00
-@@    pp3300_dx_fp_mv    488  3287.79    1.29  3288.00  3280.00
-@@    pp3300_dx_fp_mw    488     0.01    0.04     0.26     0.00
-@@   pp3300_dx_mcu_mv    488  3283.38    3.95  3288.00  3280.00
-@@   pp3300_dx_mcu_mw    488     1.57    0.59     9.73     1.31
+@@           NAME  COUNT    AVERAGE  STDDEV        MAX        MIN
+@@   sample_msecs   3352    17.8828  1.9635    32.5181    15.3811
+@@    ppvar_fp_mv   3352  3269.9391  2.0204  3276.0000  3264.0000
+@@    ppvar_fp_mw   3352     0.7172  0.5389     3.1751     0.1000
+@@   ppvar_mcu_mv   3352  3256.0000  0.0000  3256.0000  3256.0000
+@@   ppvar_mcu_mw   3352     0.5335  0.3512     7.0330     0.2605
 ```
 
 ### Icetower v3
@@ -406,7 +402,7 @@ measuring power.
 ```
 
 **Firmware Version**:
-`dartmonkey_v2.0.2887-311310808-RO_v2.0.14340-6c1587ca7-RW.bin`
+`dartmonkey_v2.0.2887-311310808-RO_v2.0.21761-e1e012ee3-RW.bin`
 
 #### MCU is idle
 
@@ -415,12 +411,12 @@ measuring power.
 ```
 
 ```
-@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN
-@@       sample_msecs    523   114.85   18.33   386.55    88.95
-@@    pp3300_dx_fp_mv    523  3256.00    0.00  3256.00  3256.00
-@@    pp3300_dx_fp_mw    523     0.00    0.00     0.00     0.00
-@@   pp3300_dx_mcu_mv    523  3248.00    0.00  3248.00  3248.00
-@@   pp3300_dx_mcu_mw    523    43.86    0.10    43.91    43.65
+@@           NAME  COUNT    AVERAGE  STDDEV        MAX        MIN
+@@   sample_msecs   1634    36.7194  5.1107    51.0595    29.2408
+@@    ppvar_fp_mv   1634  3239.2046  0.3362  3240.2344  3238.2812
+@@    ppvar_fp_mw   1634     0.0343  0.0538     0.4242     0.0000
+@@   ppvar_mcu_mv   1634  3239.2985  0.3444  3240.2344  3238.2812
+@@   ppvar_mcu_mw   1634    43.0608  0.2823    49.6093    42.1529
 ```
 
 #### MCU in low power mode (suspend)
@@ -430,12 +426,12 @@ measuring power.
 ```
 
 ```
-@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN
-@@       sample_msecs    501   119.79   14.72   381.92    89.22
-@@    pp3300_dx_fp_mv    501  3256.00    0.00  3256.00  3256.00
-@@    pp3300_dx_fp_mw    501     0.00    0.00     0.00     0.00
-@@   pp3300_dx_mcu_mv    501  3256.00    0.00  3256.00  3256.00
-@@   pp3300_dx_mcu_mw    501     5.74    0.28    11.98     5.73
+@@           NAME  COUNT    AVERAGE  STDDEV        MAX        MIN
+@@   sample_msecs   1634    36.7150  4.1282    51.2369    29.4888
+@@    ppvar_fp_mv   1634  3243.1121  0.3578  3244.1406  3241.6992
+@@    ppvar_fp_mw   1634     0.0311  0.0510     0.3659     0.0000
+@@   ppvar_mcu_mv   1634  3243.2161  0.3615  3244.6289  3241.2109
+@@   ppvar_mcu_mw   1634     4.8439  0.2634     5.8511     0.4257
 ```
 
 ## ChromeOS Build (portage / ebuild)
