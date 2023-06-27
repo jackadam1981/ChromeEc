@@ -1,0 +1,85 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <dt-bindings/gpio_defines.h>
+
+/ {
+	common-pwrseq {
+		compatible = "intel,ap-pwrseq";
+		s5-inactivity-timeout = <1>;
+		all-sys-pwrgd-timeout = <50>;
+	};
+
+	rsmrst: pwr-pg-ec-rsmrst-odl {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "RSMRST power good from regulator";
+		enum-name = "PWR_RSMRST";
+		gpios = <&gpio0 12 0>;
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+	};
+	slp_s0: pwr-slp-s0-l {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "SLP_S0_L input from PCH";
+		enum-name = "PWR_SLP_S0";
+		gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+		no-enable;
+	};
+	slp_s3: pwr-slp-s3-l {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "SLP_S3_L input from PCH";
+		enum-name = "PWR_SLP_S3";
+		gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+	};
+	ec_soc_dsw_pwrok: pwr-ec-soc-dsw-pwrok {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "DSW_PWROK output to PCH";
+		enum-name = "PWR_EC_SOC_DSW_PWROK";
+		gpios = <&gpio0 17 0>;
+		output;
+	};
+	pch_pwrok: pwr-pch-pwrok {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "PCH_PWROK output to PCH";
+		enum-name = "PWR_PCH_PWROK";
+		gpios = <&gpio0 20 0>;
+		output;
+	};
+	pwr-ec-pch-sys-pwrok {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "SYS_PWROK output to PCH";
+		enum-name = "PWR_EC_PCH_SYS_PWROK";
+		gpios = <&gpio0 21 0>;
+		output;
+	};
+	pwr-sys-rst-l {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "SYS_RESET# output to PCH";
+		enum-name = "PWR_SYS_RST";
+		gpios = <&gpio0 22 GPIO_ACTIVE_LOW>;
+		output;
+	};
+	slp_s4: pwr-slp-s4 {
+		compatible = "intel,ap-pwrseq-vw";
+		dbg-label = "SLP_S4 virtual wire input from PCH";
+		enum-name = "PWR_SLP_S4";
+		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S4";
+		vw-invert;
+	};
+	slp_s5: pwr-slp-s5 {
+		compatible = "intel,ap-pwrseq-vw";
+		dbg-label = "SLP_S5 virtual wire input from PCH";
+		enum-name = "PWR_SLP_S5";
+		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S5";
+		vw-invert;
+	};
+	all_sys_pwrgd: pwr-all-sys-pwrgd {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "Combined all power good";
+		enum-name = "PWR_ALL_SYS_PWRGD";
+		gpios = <&gpio0 19 0>;
+	};
+};

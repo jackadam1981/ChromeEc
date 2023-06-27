@@ -18,3 +18,5 @@ target_sources(app PRIVATE src/ap_pwrseq.c src/console_command.c
 
 target_sources_ifdef(CONFIG_TEST_NISSA app PRIVATE src/boards/nissa.c)
 target_sources_ifdef(CONFIG_TEST_NISSA app PRIVATE src/nissa_signals.c)
+
+target_sources_ifdef(CONFIG_TEST_REX app PRIVATE src/boards/rex.c)
