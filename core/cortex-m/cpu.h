@@ -111,6 +111,8 @@ enum {
 #define EXC_RETURN_S_NON_SECURE 0
 #define EXC_RETURN_S_SECURE BIT(6)
 
+/* Configure the cpu faults for the RW image */
+void cpu_init_rw(void);
 /* Set up the cpu to detect faults */
 void cpu_init(void);
 /* Enable the CPU I-cache and D-cache if they are not already enabled */
