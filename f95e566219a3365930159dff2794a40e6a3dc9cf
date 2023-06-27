@@ -22,6 +22,30 @@
       },
       "revId": "f95e566219a3365930159dff2794a40e6a3dc9cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a43ee66_f98745bb",
+        "filename": "zephyr/test/ap_power/src/ap_pwrseq.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-06-27T00:36:12Z",
+      "side": 1,
+      "message": "Suggest including this as a comment so future readers can easily identify why it\u0027s done this way.\n\n```suggestion\n\t/*\n\t * AP_PWRSEQ_DRIVER inhibits transition up from G3 due to slp_sus signal\n\t * error, whereas the other implementation goes to G3S5 then notices the\n\t * problem and goes back to G3, emitting a HARD_OFF event in the process.\n\t */\n\tif (IS_ENABLED(CONFIG_AP_PWRSEQ_DRIVER)) {\n\t\tzassert_equal(0, power_hard_off_count,\n\t\t\t      \"AP_POWER_HARD_OFF event generated\");\n\t} else {\n\t\tzassert_equal(1, power_hard_off_count,\n\t\t\t      \"AP_POWER_HARD_OFF event not generated\");\n\t}\n```",
+      "parentUuid": "a572d894_7523419d",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 6
+      },
+      "revId": "f95e566219a3365930159dff2794a40e6a3dc9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
