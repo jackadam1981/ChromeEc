@@ -13,10 +13,21 @@
 #define STACK_IDX_REG_PC 6
 #define STACK_IDX_REG_PSR 7
 
+void cpu_enable_unaligned_access(void)
+{
+	/* Enable unaligned access */
+	CPU_NVIC_CCR &= ~CPU_NVIC_CCR_UNALIGN_TRAP;
+}
+
 void cpu_init(void)
 {
-	/* Catch divide by 0 and unaligned access */
-	CPU_NVIC_CCR |= CPU_NVIC_CCR_DIV_0_TRAP | CPU_NVIC_CCR_UNALIGN_TRAP;
+	/* Catch divide by 0 */
+	CPU_NVIC_CCR |= CPU_NVIC_CCR_DIV_0_TRAP;
+
+	if (!IS_ENABLED(CONFIG_UNALIGNED_ACCESS)) {
+		/* Catch unaligned access */
+		CPU_NVIC_CCR |= CPU_NVIC_CCR_UNALIGN_TRAP;
+	}
 
 	/* Enable reporting of memory faults, bus faults and usage faults */
 	CPU_NVIC_SHCSR |= CPU_NVIC_SHCSR_MEMFAULTENA |
