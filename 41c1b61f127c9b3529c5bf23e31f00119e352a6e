@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a8c95b_c76c06db",
+        "filename": "common/host_command_memory_dump.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-27T02:55:20Z",
+      "side": 1,
+      "message": "`\u003e\u003d`?",
+      "range": {
+        "startLine": 120,
+        "startChar": 16,
+        "endLine": 120,
+        "endChar": 17
+      },
+      "revId": "41c1b61f127c9b3529c5bf23e31f00119e352a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74ae5225_2b5e195d",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-27T02:55:20Z",
+      "side": 1,
+      "message": "wonder if we need to add a 32-bit version of this host command\nfor CONFIG_PORT80_4_BYTE?\n\ni guess you could argue that this loop is just an inefficient\nmemcpy() and the caller could in theory do the decoding.\n\nmight want to open a bug to figure this out.",
+      "range": {
+        "startLine": 201,
+        "startChar": 3,
+        "endLine": 201,
+        "endChar": 11
+      },
+      "revId": "41c1b61f127c9b3529c5bf23e31f00119e352a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
