@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98858271_3f10a0ba",
+        "filename": "zephyr/test/kingler/src/kingler_usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-06-27T00:46:35Z",
+      "side": 1,
+      "message": "I can do that, but I think the RT1718S_SWRESET_MASK will be wiped out immediately by the emulator, how could I ensure the function is called?",
+      "parentUuid": "40b18612_8ed0017b",
+      "revId": "813e4e87fa0952409146c2bbcbdfcd5a24ab2fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "219a4262_3bf372ff",
         "filename": "zephyr/test/kingler/src/kingler_usbc.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2023-06-26T09:28:36Z",
       "side": 1,
       "message": "also verify `ppc_vbus_sink_enable_fake.call_count \u003d\u003d 0`",
+      "revId": "813e4e87fa0952409146c2bbcbdfcd5a24ab2fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ddba2b_0712957f",
+        "filename": "zephyr/test/kingler/src/kingler_usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-06-27T00:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "219a4262_3bf372ff",
       "revId": "813e4e87fa0952409146c2bbcbdfcd5a24ab2fe2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2023-06-26T09:28:36Z",
       "side": 1,
       "message": "you might also need to check the call history here.",
+      "revId": "813e4e87fa0952409146c2bbcbdfcd5a24ab2fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e52342fa_13040d74",
+        "filename": "zephyr/test/kingler/src/kingler_usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-06-27T00:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c052130f_0af918e2",
       "revId": "813e4e87fa0952409146c2bbcbdfcd5a24ab2fe2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
