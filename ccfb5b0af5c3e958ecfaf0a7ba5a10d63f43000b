@@ -16,6 +16,29 @@
       "message": "please also add unit tests to verify your charger_profile_override",
       "revId": "ccfb5b0af5c3e958ecfaf0a7ba5a10d63f43000b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86f01fe8_fa5f9bd5",
+        "filename": "zephyr/program/corsola/starmie/src/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-06-27T02:16:32Z",
+      "side": 1,
+      "message": "nit: Can you check the average implementation in `zephyr/program/corsola/tentacruel/src/temp.c`, fix the edge case when the thermal data is less then 5? I think it would help when you writing tests.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "ccfb5b0af5c3e958ecfaf0a7ba5a10d63f43000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
