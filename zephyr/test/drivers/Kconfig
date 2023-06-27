@@ -29,6 +29,9 @@ config LINK_TEST_SUITE_AP_MUX_CONTROL
 config LINK_TEST_SUITE_AP_VDM_CONTROL
 	bool "Link and test the ap_vdm_control tests"
 
+config LINK_TEST_SUITE_BMI3XX
+	bool "Link and test the bmi3xx tests"
+
 config LINK_TEST_SUITE_BUTTON
 	bool "Link tests for common/button.c"
 

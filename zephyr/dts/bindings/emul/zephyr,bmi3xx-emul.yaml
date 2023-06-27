@@ -1,0 +1,17 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Zephyr BMI3XX Emulator
+
+compatible: "zephyr,bmi3xx-emul"
+
+include: base.yaml
+
+properties:
+  device-model:
+    type: string
+    required: true
+    enum:
+      - BMI3XX_EMUL_3XX
+    description: Model of device that is emulated.
