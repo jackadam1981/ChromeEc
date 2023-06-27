@@ -232,6 +232,20 @@ void chipset_reset(enum chipset_shutdown_reason reason)
 	GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 1);
 }
 
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_MT8188
+/* b/285745528: pg_pp4200_s5_od needs a 1ms debounce */
+void pg_pp4200_interrupt_deferred(void)
+{
+	power_signal_interrupt(GPIO_SIGNAL(DT_NODELABEL(pg_pp4200_s5_od)));
+}
+DECLARE_DEFERRED(pg_pp4200_interrupt_deferred);
+
+void pg_pp4200_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&pg_pp4200_interrupt_deferred_data, MSEC);
+}
+#endif
+
 #ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 static void power_reset_host_sleep_state(void)
 {
