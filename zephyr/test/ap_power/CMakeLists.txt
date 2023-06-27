@@ -17,5 +17,10 @@ target_sources_ifdef(
 	app PRIVATE
 	${PLATFORM_EC_PROGRAM_DIR}/nissa/src/board_power.c)
 
+target_sources_ifdef(
+	CONFIG_TEST_REX
+	app PRIVATE
+	${PLATFORM_EC_PROGRAM_DIR}/rex/src/board_power.c)
+
 FILE(GLOB_RECURSE test_sources src/*.c)
 target_sources(app PRIVATE ${test_sources})
