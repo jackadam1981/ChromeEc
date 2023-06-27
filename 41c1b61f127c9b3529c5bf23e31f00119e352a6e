@@ -45,6 +45,30 @@
       },
       "revId": "41c1b61f127c9b3529c5bf23e31f00119e352a6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bc44522_bf223aa0",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-27T18:43:16Z",
+      "side": 1,
+      "message": "I only saw 4-byte post codes on AMD, bet they use a special memory buffer for those (i.e. not via this host command)",
+      "parentUuid": "74ae5225_2b5e195d",
+      "range": {
+        "startLine": 201,
+        "startChar": 3,
+        "endLine": 201,
+        "endChar": 11
+      },
+      "revId": "41c1b61f127c9b3529c5bf23e31f00119e352a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
