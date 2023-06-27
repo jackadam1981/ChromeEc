@@ -34,6 +34,24 @@
       "parentUuid": "121aea0c_bae4e136",
       "revId": "4b7b9a26018055ea84d974e6ee654af9203b320a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "462c3f58_49823483",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-06-27T09:05:17Z",
+      "side": 1,
+      "message": "Use the same `ectool i2cread` command.\n\nwhat I\u0027m thinking is:\nSet PLATFORM_EC_I2C_VIRTUAL_BATTERY_ADDR to some other address (0x0F for example). So you can access the real battery at address 0x0B, and virtual battery at 0x0F.\n\nYou might need to tune some config, and modify the board_allow_i2c_passthru function.",
+      "parentUuid": "6d5bcce2_07c14f7b",
+      "revId": "4b7b9a26018055ea84d974e6ee654af9203b320a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
