@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a429db_64d257de",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-06-27T02:51:37Z",
+      "side": 1,
+      "message": "how about move these to line 243 and change to, does it work?:\n```\n#ifdef CONFIG_LED_PWM_SOC_OFF_COLOR\n\t} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {\n\t\t/* The power LED must be on in the power off state. */\n\t\tset_led_color(CONFIG_LED_PWM_SOC_OFF_COLOR);\n\t} else {\n#endif\n```",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 5
+      },
+      "revId": "5c9cc9a0690a5c3ace17f6f4331fa2844c708c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3439350_775592ba",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3204,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-06-27T02:51:37Z",
+      "side": 1,
+      "message": "Can you add some comments to explain it? e.g.\n/*\n * By default the PWM LED is off when SoC is in power off state. Enable this\n * CONFIG_LED_PWM_SOC_OFF_COLOR option to .....\n */",
+      "range": {
+        "startLine": 3204,
+        "startChar": 0,
+        "endLine": 3204,
+        "endChar": 35
+      },
+      "revId": "5c9cc9a0690a5c3ace17f6f4331fa2844c708c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
