@@ -68,6 +68,30 @@
       },
       "revId": "1da4731d44e3cedb8e639460997f46adb459f8bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3fbc929_4003270a",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-06-28T20:37:12Z",
+      "side": 1,
+      "message": "Thanks for point out the LED requirement, However I found a discussion here (https://b.corp.google.com/issues/281666832#comment3)",
+      "parentUuid": "ae6f4a5b_b2dcbe72",
+      "range": {
+        "startLine": 246,
+        "startChar": 2,
+        "endLine": 246,
+        "endChar": 56
+      },
+      "revId": "1da4731d44e3cedb8e639460997f46adb459f8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
