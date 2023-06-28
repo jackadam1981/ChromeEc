@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a6ab5b41_b88d843a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302605
+      },
+      "writtenOn": "2023-06-28T22:50:53Z",
+      "side": 1,
+      "message": "also in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4653270\n\nbut we should also include the rail for pp1800_fp",
+      "revId": "4267b37f6b7ac7a2d4ed86dfb3fa96596542ffac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b283298c_8dae9305",
         "filename": "docs/fingerprint/fingerprint.md",
         "patchSetId": 1
