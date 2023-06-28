@@ -29,3 +29,11 @@ config PLATFORM_EC_RO_HEADER_SIZE
 	help
 	  The size of the RO header in bytes. This values should come from the
 	  datasheet of the chip being used.
+
+config PLATFORM_EC_RO_START_OFFSET
+	hex "EC RO FW start offset"
+	default 0x0
+	help
+	  The offset (in bytes) of the EC RO FW start. For EC with internal SPI
+	  flash this remains zero. Helful to know the start address for EC
+	  with external SPI flash.
