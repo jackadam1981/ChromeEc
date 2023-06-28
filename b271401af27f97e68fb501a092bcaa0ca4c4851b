@@ -248,6 +248,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdd2988e_e6524c20",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-06-28T17:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13feb48a_76b135dc",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 101
+      },
+      "revId": "b271401af27f97e68fb501a092bcaa0ca4c4851b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "add27a42_f2c0d5a2",
@@ -261,6 +285,24 @@
       "writtenOn": "2023-06-28T12:40:44Z",
       "side": 1,
       "message": "This should be automatic with the Zephyr module too",
+      "revId": "b271401af27f97e68fb501a092bcaa0ca4c4851b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67d537c6_d3909514",
+        "filename": "zephyr/Kconfig.pigweed",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-06-28T17:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "add27a42_f2c0d5a2",
       "revId": "b271401af27f97e68fb501a092bcaa0ca4c4851b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
