@@ -39,6 +39,30 @@
       },
       "revId": "8d07bb64f5875b2ead8b74ed0049e46c71fe7452",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f68f57_b1aece55",
+        "filename": "zephyr/shim/chip/it8xxx2/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-06-28T10:55:10Z",
+      "side": 1,
+      "message": "I see the next CL needs to enable PMP support for null pointer detection.  Disregard this comment.",
+      "parentUuid": "4b9c1b85_f7c17c55",
+      "range": {
+        "startLine": 6,
+        "startChar": 5,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "8d07bb64f5875b2ead8b74ed0049e46c71fe7452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
