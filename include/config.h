@@ -4522,6 +4522,7 @@
 
 /* Use this to include support for MP2964 IMVP9.1 PMIC */
 #undef CONFIG_MP2964
+#undef CONFIG_MP3634
 
 /*****************************************************************************/
 /* USB PD config */

@@ -2912,6 +2912,15 @@ BUILD_ASSERT((DT_NUM_INST_STATUS_OKAY(mps_mp2964)) == 1,
 	     "Only one instance of mps,mp2964 should be defined");
 #endif
 
+#undef CONFIG_MP3634
+#ifdef CONFIG_PLATFORM_EC_MP3634
+#define CONFIG_MP3634
+#define I2C_ADDR_MP3634_FLAGS \
+	DT_REG_ADDR(DT_COMPAT_GET_ANY_STATUS_OKAY(mps_mp3634))
+BUILD_ASSERT((DT_NUM_INST_STATUS_OKAY(mps_mp3634)) == 1,
+	     "Only one instance of mps,mp3634 should be defined");
+#endif
+
 #undef CONFIG_ACCELGYRO_ICM_COMM_SPI
 #ifdef CONFIG_PLATFORM_EC_ACCELGYRO_ICM_COMM_SPI
 #define CONFIG_ACCELGYRO_ICM_COMM_SPI
