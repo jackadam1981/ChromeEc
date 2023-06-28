@@ -173,8 +173,16 @@ void board_reset_pd_mcu(void)
 __override void board_power_5v_enable(int enable)
 {
 	/*
-	 * Nothing to do. 5V should always be enabled while in Z1 or above.
+	 * Delay to open EN_PP5000_Z1 and EN_PP3300_S5 until VBUS power rail
+	 * rises up to 15V.
 	 */
+	if(enable)
+		msleep(150);
+
+	if (enable)
+		gpio_set_level(GPIO_EN_PP5000, 1);
+	else
+		gpio_set_level(GPIO_EN_PP5000, 0);
 }
 
 void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
