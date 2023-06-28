@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff04c342_47349b42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-28T15:38:39Z",
+      "side": 1,
+      "message": "Does the `compare_build.sh` script work with Zephyr? It sounds like this change should result in no changes for all other boards since they are using GNU `ld`, so you could use `compare_build.sh` to verify.",
+      "revId": "29354b7245e35cfe22cee409276eccc5087a602d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
