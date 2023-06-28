@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b1cbc86_f620cab5",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-28T19:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfd0d79d_bdb52134",
+      "revId": "c09721e2fdc568f2f2cae21115de20160cd768cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6eca0a6a_9cbdc463",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca3a1cf_81300b1a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-28T19:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eca0a6a_9cbdc463",
+      "revId": "c09721e2fdc568f2f2cae21115de20160cd768cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5c7df9f_117c132b",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-02-09T21:46:05Z",
       "side": 1,
       "message": "Is this doing anything? (Looks like self-assignment?)",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 57
+      },
+      "revId": "c09721e2fdc568f2f2cae21115de20160cd768cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49549a8c_2b003c26",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-28T19:21:17Z",
+      "side": 1,
+      "message": "I believe that had previously looked different and got munged in rework. I removed it.",
+      "parentUuid": "f5c7df9f_117c132b",
       "range": {
         "startLine": 210,
         "startChar": 0,
@@ -83,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fb753ea_4e5f79d2",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-28T19:21:17Z",
+      "side": 1,
+      "message": "Yeah, I suppose it might make more sense to abort the test. I\u0027ll push another update with that change.",
+      "parentUuid": "dea2c2cd_01c2b349",
+      "range": {
+        "startLine": 695,
+        "startChar": 1,
+        "endLine": 695,
+        "endChar": 55
+      },
+      "revId": "c09721e2fdc568f2f2cae21115de20160cd768cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "301fc6be_cb856f14",
         "filename": "test/run_device_tests.py",
         "patchSetId": 7
@@ -94,6 +178,30 @@
       "writtenOn": "2023-02-09T21:46:05Z",
       "side": 1,
       "message": "Is this related to the pre/post callbacks? If not, can we move it to a separate CL?",
+      "range": {
+        "startLine": 793,
+        "startChar": 12,
+        "endLine": 793,
+        "endChar": 31
+      },
+      "revId": "c09721e2fdc568f2f2cae21115de20160cd768cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d82a8598_a89ecd88",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-28T19:21:17Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t think this change is needed anymore due to prior restructure. `test.passed` is now unconditionally set to the return value of `flash_and_run_test`. I\u0027ll remove it.",
+      "parentUuid": "301fc6be_cb856f14",
       "range": {
         "startLine": 793,
         "startChar": 12,
