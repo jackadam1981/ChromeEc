@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f482b7_8bbb2779",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-28T18:38:04Z",
+      "side": 1,
+      "message": "Initial review, will go further in later.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ad6320_b910aafc",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-28T18:38:04Z",
+      "side": 1,
+      "message": "Would it make sense to leave body_detection.c as is and create a new file?\nThe changes are not logically connected to the old algorithm.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53bb15f7_318f4771",
+        "filename": "include/filter.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-28T18:38:04Z",
+      "side": 1,
+      "message": "Add more description, links for more readings.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d991fdff_687b8283",
+        "filename": "include/filter.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-28T18:38:04Z",
+      "side": 1,
+      "message": "Is a float required or the filter work on EC without FPU by using fp_t?",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74496d94_a791eab8",
+        "filename": "include/filter.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-06-28T18:38:04Z",
+      "side": 1,
+      "message": "The function names are too generic. butterworth_filter or low_pass_filter?",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
