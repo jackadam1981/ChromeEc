@@ -15,7 +15,7 @@
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
-static const struct ec_response_keybd_config joxer_kb_legacy = {
+test_export_static const struct ec_response_keybd_config joxer_kb_legacy = {
 	.num_top_row_keys = 13,
 	.action_keys = {
 		TK_BACK,		/* T1 */
@@ -44,6 +44,8 @@ board_vivaldi_keybd_config(void)
 /*
  * Keyboard layout decided by FW config.
  */
+/* LCOV_EXCL_START schedule_deferred_pd_interrupt() is untestable */
+/* TODO(b/289111730) need to increase code coverage */
 static void kb_layout_init(void)
 {
 	int ret;
@@ -65,3 +67,4 @@ static void kb_layout_init(void)
 		set_scancode_set2(4, 0, get_scancode_set2(2, 7));
 }
 DECLARE_HOOK(HOOK_INIT, kb_layout_init, HOOK_PRIO_POST_FIRST);
+/* LCOV_EXCL_STOP */
