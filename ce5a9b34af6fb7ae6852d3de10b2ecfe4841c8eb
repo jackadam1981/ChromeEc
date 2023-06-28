@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a8d860_919bff7f",
+        "filename": "common/host_command_memory_dump.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-28T18:01:21Z",
+      "side": 1,
+      "message": "I think we only need to add one condition. That is, we\u0027ll have:\n\n    p-\u003eaddress \u003c entry.address /* lower bound check */ ||\n    entry.address + entry.size \u003c p-\u003eaddress + p-\u003esize /* upper bound check */ ||\n    p-\u003eaddress + p-\u003esize \u003c p-\u003eaddress + /* overwrap check (new) */",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 38
+      },
+      "revId": "ce5a9b34af6fb7ae6852d3de10b2ecfe4841c8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
