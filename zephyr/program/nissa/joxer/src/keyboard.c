@@ -15,7 +15,7 @@
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
-static const struct ec_response_keybd_config joxer_kb_legacy = {
+test_export_static const struct ec_response_keybd_config joxer_kb_legacy = {
 	.num_top_row_keys = 13,
 	.action_keys = {
 		TK_BACK,		/* T1 */
@@ -61,7 +61,7 @@ static void kb_layout_init(void)
 	 * If keyboard is US2(FW_KB_LAYOUT_US2), we need translate right ctrl
 	 * to backslash(\|) key.
 	 */
-	if (val == FW_KB_LAYOUT_US2)
-		set_scancode_set2(4, 0, get_scancode_set2(2, 7));
+	//if (val == FW_KB_LAYOUT_US2)
+	//	set_scancode_set2(4, 0, get_scancode_set2(2, 7));
 }
 DECLARE_HOOK(HOOK_INIT, kb_layout_init, HOOK_PRIO_POST_FIRST);
