@@ -92,6 +92,30 @@
       },
       "revId": "1da4731d44e3cedb8e639460997f46adb459f8bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21fdfecc_70f54ba1",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2023-06-28T21:05:37Z",
+      "side": 1,
+      "message": "I replied on that bug, but essentially that requirement was changed and then the firmware wasn\u0027t updated to follow suit. I wouldn\u0027t use that as an example to shirk the requirements. If a board wants to violate a requirement, they should follow the waiver process.",
+      "parentUuid": "c3fbc929_4003270a",
+      "range": {
+        "startLine": 246,
+        "startChar": 2,
+        "endLine": 246,
+        "endChar": 56
+      },
+      "revId": "1da4731d44e3cedb8e639460997f46adb459f8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
