@@ -16,6 +16,24 @@
       "message": "The current error:\n```\n/mnt/host/source/src/platform/ec/zephyr/shim/src/host_command_heci.c:14:10: fatal error: \u0027heci.h\u0027 file not found\n#include \u003checi.h\u003e\n         ^~~~~~~~\n...\nExecution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/dev-posix/build-singleimage all.libraries\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/multiproc.py\", line 379, in _run_fn\n    result \u003d func()\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 818, in _build_one_dir\n    raise OSError(get_process_failure_msg(proc))\nOSError: Execution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/dev-posix/build-singleimage all.libraries\n```\n\nI\u0027m curious if a rebase would fix this because I don\u0027t see why the HECI Kconfig would be enabled for the dev-posix target.",
       "revId": "cd82f4bb8e06d265056d33baaaaf11808cfe2a63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a63827d_facbef0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-28T19:48:37Z",
+      "side": 1,
+      "message": "HECI protocol patch is required.",
+      "parentUuid": "6936ec47_2a50c82e",
+      "revId": "cd82f4bb8e06d265056d33baaaaf11808cfe2a63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
