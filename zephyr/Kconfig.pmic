@@ -24,4 +24,15 @@ config PLATFORM_EC_MP2964
 	  enables reprogramming configuration registers when initial the
 	  factory settings need to be tuned in prototype devices.
 
+config PLATFORM_EC_MP3634
+	bool "Enable MP3634 PMIC support"
+	default y
+	depends on DT_HAS_MPS_MP3634_ENABLED
+	help
+	  Enables support for the MPS MP3634 PMIC (Power Management IC).
+	  This is a dual rail IMVP8 - IMVP9.1 compatible Digital
+	  Multi-Phase Controller with an I2C interface.  This driver
+	  enables reprogramming configuration registers when initial the
+	  factory settings need to be tuned in prototype devices.
+
 endif # PLATFORM_EC_PMIC

@@ -368,4 +368,10 @@
 		status = "okay";
 		reg = <0x09>;
 	};
+
+	pmic_mp3634: pmic_mp3634@20 {
+		compatible = "mps,mp3634";
+		reg = <0x20>;
+		label = "I2C_ADDR_MP3634_FLAGS";
+	};
 };
