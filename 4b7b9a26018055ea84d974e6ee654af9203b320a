@@ -52,6 +52,24 @@
       "parentUuid": "6d5bcce2_07c14f7b",
       "revId": "4b7b9a26018055ea84d974e6ee654af9203b320a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf82e09b_36d20434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2023-06-28T03:29:34Z",
+      "side": 1,
+      "message": "Thanks for you comment.\nI upload pathset 3. Modify PLATFORM_EC_I2C_VIRTUAL_BATTERY_ADDR to 0x0f.\nThe board_allow_i2c_passthru function is implement ready in corsola.",
+      "parentUuid": "462c3f58_49823483",
+      "revId": "4b7b9a26018055ea84d974e6ee654af9203b320a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
