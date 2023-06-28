@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b54c0b_2fdad755",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-28T12:40:44Z",
+      "side": 1,
+      "message": "extra \u0027y\u0027",
+      "range": {
+        "startLine": 9,
+        "startChar": 45,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "b271401af27f97e68fb501a092bcaa0ca4c4851b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33e7b616_0b555f64",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-28T12:40:44Z",
+      "side": 1,
+      "message": "Since we\u0027re now always returning 0, can we get rid of a branch to make this more readable?\n\n```\n#if !defined(TEST_LEGACY_BUILD) \u0026\u0026 defined(CONFIG_USBC_PPC_LOGGING)\n    CPRINTS(\"ppc p%d %s\", port, string);\n#endif\n    return 0;\n```",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 76
+      },
+      "revId": "b271401af27f97e68fb501a092bcaa0ca4c4851b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b10169_013651fb",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-28T12:40:44Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 76
+      },
+      "revId": "b271401af27f97e68fb501a092bcaa0ca4c4851b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecb16944_655141fe",
+        "filename": "include/console.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-28T12:40:44Z",
+      "side": 1,
+      "message": "Maybe a TODO and a bug here?",
+      "revId": "b271401af27f97e68fb501a092bcaa0ca4c4851b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a58c36_4d6371cb",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-28T12:40:44Z",
+      "side": 1,
+      "message": "nit: here and below, you can add newlines in CMake and it won\u0027t break anything.\n\nActual comment: This whole bit here shouldn\u0027t be necessary, you\u0027re bypassing Zephyr\u0027s module loading. Lets discuss offline and see if we can get rid of this.",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 101
+      },
+      "revId": "b271401af27f97e68fb501a092bcaa0ca4c4851b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "add27a42_f2c0d5a2",
+        "filename": "zephyr/Kconfig.pigweed",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-28T12:40:44Z",
+      "side": 1,
+      "message": "This should be automatic with the Zephyr module too",
+      "revId": "b271401af27f97e68fb501a092bcaa0ca4c4851b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92d98e21_f1438ec6",
+        "filename": "zephyr/app/ec/main_shim.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-28T12:40:44Z",
+      "side": 1,
+      "message": "Zephyr recently changed the `main` function signature to return `int` in C to match C++. You should be able to just change it here to `int main(void)` regardless of Kconfig values.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "b271401af27f97e68fb501a092bcaa0ca4c4851b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
