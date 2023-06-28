@@ -468,6 +468,11 @@ __override_proto const char *board_read_mac_addr(void);
  */
 __override_proto int board_write_mac_addr(const char *mac_addr);
 
+/**
+ * Optional board-level function to check it can boot to ap or not.
+ */
+void board_can_boot_ap(void) __attribute__((weak));
+
 /*
  * Common bbram entries. Chips don't necessarily need to implement
  * all of these, error will be returned from system_get/set_bbram if
