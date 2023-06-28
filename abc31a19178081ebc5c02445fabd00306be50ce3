@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b28a2b22_5df27725",
+        "filename": "zephyr/program/myst/myst/cbi.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-28T21:33:45Z",
+      "side": 1,
+      "message": "this is very wasteful and inefficient.\nwe need to support 4K instead of 64K.",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "abc31a19178081ebc5c02445fabd00306be50ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
