@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0579ebe8_b6f6d0c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-06-28T09:30:29Z",
+      "side": 1,
+      "message": "Add CONFIG_LED_PWM_SOC_OFF_COLOR",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "1da4731d44e3cedb8e639460997f46adb459f8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43ed84b9_c2e09475",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-06-28T09:30:29Z",
+      "side": 1,
+      "message": "Add an option for devices that want to light up power LED when system is in off state.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "1da4731d44e3cedb8e639460997f46adb459f8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
