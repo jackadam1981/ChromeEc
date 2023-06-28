@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c4c30e_3c90539e",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2023-06-28T08:52:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23a429db_64d257de",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 5
+      },
+      "revId": "5c9cc9a0690a5c3ace17f6f4331fa2844c708c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3439350_775592ba",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-27T02:51:37Z",
       "side": 1,
       "message": "Can you add some comments to explain it? e.g.\n/*\n * By default the PWM LED is off when SoC is in power off state. Enable this\n * CONFIG_LED_PWM_SOC_OFF_COLOR option to .....\n */",
+      "range": {
+        "startLine": 3204,
+        "startChar": 0,
+        "endLine": 3204,
+        "endChar": 35
+      },
+      "revId": "5c9cc9a0690a5c3ace17f6f4331fa2844c708c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6659af5_3f02cc77",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3204,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2023-06-28T08:52:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3439350_775592ba",
       "range": {
         "startLine": 3204,
         "startChar": 0,
