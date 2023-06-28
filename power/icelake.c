@@ -13,6 +13,7 @@
 #include "power.h"
 #include "power/intel_x86.h"
 #include "power_button.h"
+#include "system.h"
 #include "system_boot_time.h"
 #include "task.h"
 #include "timer.h"
@@ -273,6 +274,9 @@ enum power_state power_handle_state(enum power_state state)
 		power_signal_disable_interrupt(SLP_S3_SIGNAL_L);
 		gpio_set_flags(SLP_S3_SIGNAL_L, GPIO_ODR_LOW);
 #endif
+
+		if (board_can_boot_ap)
+			board_can_boot_ap();
 
 		/* Default behavior - turn on PP5000 rail first */
 		if (!IS_ENABLED(CONFIG_CHIPSET_PP3300_RAIL_FIRST))

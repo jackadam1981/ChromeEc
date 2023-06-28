@@ -170,13 +170,6 @@ void board_reset_pd_mcu(void)
 	 */
 }
 
-__override void board_power_5v_enable(int enable)
-{
-	/*
-	 * Nothing to do. 5V should always be enabled while in Z1 or above.
-	 */
-}
-
 void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
 			    int charge_mv)
 {
@@ -293,6 +286,15 @@ __override int extpower_is_present(void)
 	 * There's no battery, so running this method implies we have power.
 	 */
 	return 1;
+}
+
+void board_can_boot_ap(void)
+{
+	/*
+	 * Delay to open EN_PP5000_Z1 and EN_PP3300_S5 until VBUS power rail
+	 * rises up to 15V.
+	 */
+	msleep(150);
 }
 
 void ppc_interrupt(enum gpio_signal signal)
