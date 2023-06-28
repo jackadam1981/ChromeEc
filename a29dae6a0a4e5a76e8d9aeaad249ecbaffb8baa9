@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "330fc3a5_62510ae9",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-06-28T00:38:10Z",
+      "side": 1,
+      "message": "I believe `8042 kblog` is the only way to invoke it on Zephyr builds and plain `kblog` is for legacy EC builds since `DECLARE_CONSOLE_COMMAND(kblog, command_keyboard_log, ...` is gated by `#ifndef CONFIG_ZEPHYR`",
+      "parentUuid": "ba6dbed5_22a2af08",
+      "range": {
+        "startLine": 1320,
+        "startChar": 0,
+        "endLine": 1323,
+        "endChar": 38
+      },
+      "revId": "a29dae6a0a4e5a76e8d9aeaad249ecbaffb8baa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7abc02a_6f1a1abe",
         "filename": "common/keyboard_8042.c",
         "patchSetId": 3
