@@ -29,3 +29,10 @@ config PLATFORM_EC_RO_HEADER_SIZE
 	help
 	  The size of the RO header in bytes. This values should come from the
 	  datasheet of the chip being used.
+
+config PLATFORM_SPI_FLASH_HEADER_SIZE
+	hex "SPI header descriptor length in shared SPI flash"
+	default 0x0
+	help
+	  The offset (in bytes) of the header relative to the start address of
+	  the RO image.

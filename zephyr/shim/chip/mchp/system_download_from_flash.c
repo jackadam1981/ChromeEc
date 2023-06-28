@@ -5,6 +5,7 @@
 #include "common.h"
 #include "soc.h"
 #include "system_chip.h"
+#include <zephyr/drivers/gpio.h>
 
 #include <zephyr/dt-bindings/clock/npcx_clock.h>
 
@@ -95,6 +96,11 @@ void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 	fdiv = 2;
 	if (pcr->TURBO_CLK & MCHP_PCR_TURBO_CLK_96M)
 		fdiv *= 2;
+
+#ifdef CONFIG_PLATFORM_G3_FLASH_SHARING
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_spi_oe_mecc), 0);
+	fdiv = 6;
+#endif
 
 	qspi->MODE = (fdiv << MCHP_QMSPI_M_FDIV_POS) & MCHP_QMSPI_M_FDIV_MASK;
 	qspi->MODE |= (MCHP_QMSPI_M_ACTIVATE | MCHP_QMSPI_M_LDMA_RX_EN);

@@ -128,4 +128,12 @@ config PLATFORM_EC_USE_ZEPHYR_FLASH_PAGE_LAYOUT
 	  When enabled, EC will use flash page layout API to get information
 	  about flash sectors (index, offset, and size).
 
+config PLATFORM_G3_FLASH_SHARING
+	bool "External Shared SPI access methode"
+	default n
+	depends on PLATFORM_EC_EXTERNAL_STORAGE
+	help
+	  When enabled, EC will access the external shared SPI flash
+	  to download the EC RO and RW images.
+
 endif # PLATFORM_EC_FLASH_CROS
