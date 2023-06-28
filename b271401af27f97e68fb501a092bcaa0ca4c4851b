@@ -226,6 +226,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13feb48a_76b135dc",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-28T15:54:30Z",
+      "side": 1,
+      "message": "See if you can print `${ZEPHYR_PIGWEED_MODULE_DIR}`",
+      "parentUuid": "d0a58c36_4d6371cb",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 101
+      },
+      "revId": "b271401af27f97e68fb501a092bcaa0ca4c4851b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "add27a42_f2c0d5a2",
         "filename": "zephyr/Kconfig.pigweed",
         "patchSetId": 9
