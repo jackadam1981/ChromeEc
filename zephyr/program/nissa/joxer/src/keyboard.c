@@ -15,7 +15,7 @@
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
-static const struct ec_response_keybd_config joxer_kb_legacy = {
+test_export_static const struct ec_response_keybd_config joxer_kb_legacy = {
 	.num_top_row_keys = 13,
 	.action_keys = {
 		TK_BACK,		/* T1 */
