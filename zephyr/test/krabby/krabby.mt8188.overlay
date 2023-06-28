@@ -1,0 +1,68 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	gpio-interrupts {
+		int_pg_pp4200_s5: pg-pp4200-s5 {
+			irq-pin = <&pg_pp4200_s5_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "pg_pp4200_interrupt";
+		};
+	};
+
+	named-gpios {
+		en_pp4200_s5: en-pp4200-s5 {
+			gpios = <&gpiod 2 GPIO_OUTPUT_LOW>;
+		};
+
+		pg_pp4200_s5_od: pg-pp4200-s5-od {
+			gpios = <&gpioe 1 GPIO_INPUT>;
+			enum-name = "GPIO_PG_PP4200_S5_OD";
+		};
+
+		pmic_ec_resetb: pmic-ec-resetb {
+			gpios = <&gpioh 3 (GPIO_INPUT | GPIO_VOLTAGE_1P8 |
+					GPIO_ACTIVE_LOW)>;
+			enum-name = "GPIO_PMIC_EC_RESETB";
+		};
+	};
+
+	unused-pins {
+		unused-gpios =
+			/* unnamed nc pins */
+			<&gpioa 3 GPIO_INPUT_PULL_DOWN>,
+			<&gpioa 6 GPIO_INPUT_PULL_DOWN>,
+			<&gpioa 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiod 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
+			<&gpioh 0 GPIO_INPUT_PULL_DOWN>,
+			<&gpioh 6 GPIO_INPUT_PULL_DOWN>,
+			<&gpioi 3 GPIO_INPUT_PULL_DOWN>,
+			<&gpioi 5 GPIO_INPUT_PULL_DOWN>,
+			<&gpioi 6 GPIO_INPUT_PULL_DOWN>,
+			<&gpiom 6 (GPIO_INPUT_PULL_DOWN | GPIO_VOLTAGE_1P8)>,
+			/* spi_clk_gpg6 */
+			<&gpiog 6 GPIO_INPUT_PULL_UP>,
+			/* spi_mosi_gpg4 */
+			<&gpiog 4 GPIO_OUTPUT_LOW>,
+			/* spi_miso_gpg5 */
+			<&gpiog 5 GPIO_OUTPUT_LOW>,
+			/* spi_cs_gpg7 */
+			<&gpiog 7 GPIO_OUTPUT_LOW>;
+	};
+
+	power_signal_list: power-signal-list {
+		 compatible = "mediatek,mt8188-power-signal-list";
+
+		 pg_pp4200_s5 {
+			power-enum-name = "PG_PP4200_S5";
+			power-gpio-pin = <&pg_pp4200_s5_od>;
+		};
+		 pmic_ap_reset {
+			power-enum-name = "PMIC_AP_RST";
+			power-gpio-pin = <&pmic_ec_resetb>;
+		};
+	};
+};
