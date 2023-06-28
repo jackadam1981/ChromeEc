@@ -22,6 +22,30 @@
       },
       "revId": "492845ca74175ed87de443eca51280c83d25dc95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f2c725a_9a4dbb51",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-28T23:51:27Z",
+      "side": 1,
+      "message": "\u003e but I believe that ppvar_fp_mw should be the correct one \n\nYes, that\u0027s what I have been using in the updated numbers: https://crrev.com/c/4653270\n\n(The previous numbers in the docs were from before the servo change that renamed things.)\n\n\u003e I\u0027m getting 0.6 mW\n\nThat\u0027s what I\u0027m seeing in the measurements on the latest release firmware (which is fairly close to ToT if that\u0027s what you\u0027re testing against): https://crrev.com/c/4653270.",
+      "parentUuid": "4b3b5d74_501d088c",
+      "range": {
+        "startLine": 572,
+        "startChar": 25,
+        "endLine": 572,
+        "endChar": 28
+      },
+      "revId": "492845ca74175ed87de443eca51280c83d25dc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
