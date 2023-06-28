@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b3b5d74_501d088c",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-28T21:58:36Z",
+      "side": 1,
+      "message": "Tom\u0027s FP numbers look very different for FP. He had `pp3300_dx_fp_mw` as `0.0 mW` in both sleep and idle. I actually don\u0027t have that control (@tomhughes are your servo configs updated?) but I believe that `ppvar_fp_mw` should be the correct one and I\u0027m getting `0.6 mW`. The difference is small but it would be interesting to know why it exists.",
+      "range": {
+        "startLine": 572,
+        "startChar": 25,
+        "endLine": 572,
+        "endChar": 28
+      },
+      "revId": "492845ca74175ed87de443eca51280c83d25dc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

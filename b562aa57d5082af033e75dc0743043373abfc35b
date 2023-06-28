@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5d5f21_9de09f85",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-28T21:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d57c00f8_93f8d57a",
+      "range": {
+        "startLine": 501,
+        "startChar": 29,
+        "endLine": 501,
+        "endChar": 52
+      },
+      "revId": "b562aa57d5082af033e75dc0743043373abfc35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea12f35a_e96b05d1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a0c6f7_44d80ebe",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-28T21:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea12f35a_e96b05d1",
+      "range": {
+        "startLine": 563,
+        "startChar": 4,
+        "endLine": 568,
+        "endChar": 6
+      },
+      "revId": "b562aa57d5082af033e75dc0743043373abfc35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "327db56c_36fc823d",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-06-23T19:55:09Z",
       "side": 1,
       "message": "I think these values were based off the v2 boards, I need to update them.",
+      "range": {
+        "startLine": 586,
+        "startChar": 4,
+        "endLine": 591,
+        "endChar": 6
+      },
+      "revId": "b562aa57d5082af033e75dc0743043373abfc35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61dfcacd_b3978605",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-28T21:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "327db56c_36fc823d",
       "range": {
         "startLine": 586,
         "startChar": 4,
