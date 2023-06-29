@@ -39,6 +39,8 @@
 #define BB_RETIMER_I2C_RETRY 5
 #define BB_RETIMER_REG_OFFSET_MAX UINT8_MAX
 
+bool usb_compliance_mode;
+
 /*
  * Mutex for BB_RETIMER_REG_CONNECTION_STATE register, which can be
  * accessed from multiple tasks.
@@ -671,6 +673,22 @@ static int retimer_init(const struct usb_mux *me)
 		return EC_ERROR_INVAL;
 #endif
 
+	if (usb_compliance_mode) {
+		/* Update the register7 */
+		rv = bb_retimer_read(me, BB_RETIMER_REG_EXT_CONNECTION_MODE,
+				     &data);
+		if (rv != EC_SUCCESS)
+			return rv;
+		/* Set Bit28,30,31 */
+		data |= 0xd0000000;
+		rv = bb_retimer_write(me, BB_RETIMER_REG_EXT_CONNECTION_MODE,
+				      data);
+		if (rv != EC_SUCCESS)
+			return rv;
+		else
+			CPRINTS("C%d: set retimer usb3 compliance mode success",
+				me->usb_port);
+	}
 	return EC_SUCCESS;
 }
 
@@ -685,3 +703,16 @@ const struct usb_mux_driver bb_usb_retimer = {
 	.retimer_write = bb_retimer_write,
 #endif /* CONFIG_CMD_RETIMER */
 };
+
+static enum ec_status
+host_command_set_usbmux(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_mux *p = args->params;
+	uint8_t enable = p->mux;
+
+	usb_compliance_mode = enable;
+	CPRINTS("%sable usb3 compliance mode", enable ? "en" : "dis");
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_MUX, host_command_set_usbmux, EC_VER_MASK(0));
