@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21977481_05124ed5",
+        "filename": "common/system.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-29T23:06:13Z",
+      "side": 1,
+      "message": "Actually, now that I look at the code again, I am wondering if my test to see if `cpu_init()` was called in RW was wrong. Originally, I was adding a debug print in `cpu_init()`, but it looks like the UART is enabled *after* `cpu_init()` is called, so that might have prevented the message from being printed.\n\nSkimming the jump logic, I don\u0027t see a reason why `cpu_init()` wouldn\u0027t be called. It looks like jumping is just doing a reset to the RW image, which should trigger all of the same initialization code and then jump to `main` (where `cpu_init()` is called).\n\nTry removing the call to `cpu_init_rw()`. **However**, you will also need to add logic to `cpu_init()` so that it clears the bit if it\u0027s already set:\n\n```\n\tif (!IS_ENABLED(CONFIG_UNALIGNED_ACCESS)) {\n\t\tCPU_NVIC_CCR |\u003d CPU_NVIC_CCR_UNALIGN_TRAP;\n\t} else {\n\t        CPU_NVIC_CCR \u0026\u003d ~CPU_NVIC_CCR_UNALIGN_TRAP;\n\t}\n```\n\n(and if that works, reverse the `if` statement so it\u0027s `if(IS_ENABLED` instead of `if(!IS_ENABLED` since that\u0027s more readable.)",
+      "parentUuid": "f839a684_0e49850e",
+      "range": {
+        "startLine": 313,
+        "startChar": 1,
+        "endLine": 314,
+        "endChar": 62
+      },
+      "revId": "1d091afb9519f5f443dd5db96a22c188ff949c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0b31b46_fb29c1ca",
         "filename": "core/cortex-m/cpu.c",
         "patchSetId": 14
