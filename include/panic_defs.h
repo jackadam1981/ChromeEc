@@ -58,6 +58,22 @@ struct cortex_panic_data {
 	uint32_t dfsr;
 };
 
+/* Version 1 ARM Cortex-Mx registers saved on panic */
+struct cortex_panic_data_v1 {
+	/* Version 1 has one less element in regs. */
+	uint32_t regs[NUM_CORTEX_PANIC_REGISTERS - 1];
+
+	/* See cortex_panic_frame_registers enum for more information */
+	uint32_t frame[NUM_CORTEX_PANIC_FRAME_REGISTERS];
+
+	uint32_t cfsr;
+	uint32_t bfar;
+	uint32_t mfar;
+	uint32_t shcsr;
+	uint32_t hfsr;
+	uint32_t dfsr;
+};
+
 /* NDS32 N8 registers saved on panic */
 struct nds32_n8_panic_data {
 	uint32_t itype;
@@ -105,6 +121,7 @@ struct panic_data {
 	/* core specific panic data */
 	union {
 		struct cortex_panic_data cm; /* Cortex-Mx registers */
+		struct cortex_panic_data_v1 cm_v1; /* V1 Cortex-Mx registers */
 		struct nds32_n8_panic_data nds_n8; /* NDS32 N8 registers */
 		struct x86_panic_data x86; /* Intel x86 */
 #ifndef CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA
