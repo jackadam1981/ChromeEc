@@ -19,6 +19,10 @@
 			enum-name = "GPIO_ENTERING_RW";
 		};
 
+		gpio_en_pp5000_usba_r: en_pp5000_usba_r {
+			enum-name = "GPIO_EN_PP5000_USBA_R";
+		};
+
 		ioex_usb_c0_sbu_fault_odl: usb_c0_sbu_fault_odl {
 			gpios = <&ioex_c0_port1 2 GPIO_INPUT>;
 		};
