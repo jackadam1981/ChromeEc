@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81027af1_ff685adb",
+        "filename": "driver/usb_mux/amd_fp8.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-29T00:47:49Z",
+      "side": 1,
+      "message": "EC_SUCCESS",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 9
+      },
+      "revId": "6b4988a988ee9130abdc0805f6a3ea8f73cab209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "259964c3_d68cdc1c",
+        "filename": "driver/usb_mux/amd_fp8.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-29T00:47:49Z",
+      "side": 1,
+      "message": "There is one more possibility here - \"AMD_FP8_COMMAND_STATUS_IN_PROGRESS\"",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 5
+      },
+      "revId": "6b4988a988ee9130abdc0805f6a3ea8f73cab209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db8dff60_3a743f2a",
+        "filename": "driver/usb_mux/amd_fp8.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-29T00:47:49Z",
+      "side": 1,
+      "message": "port",
+      "range": {
+        "startLine": 212,
+        "startChar": 31,
+        "endLine": 212,
+        "endChar": 34
+      },
+      "revId": "6b4988a988ee9130abdc0805f6a3ea8f73cab209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d18839df_964242a8",
+        "filename": "driver/usb_mux/amd_fp8.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-29T00:47:49Z",
+      "side": 1,
+      "message": "integer to bool conversion",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 239,
+        "endChar": 32
+      },
+      "revId": "6b4988a988ee9130abdc0805f6a3ea8f73cab209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7284ef89_c29d60f2",
+        "filename": "driver/usb_mux/amd_fp8.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-29T00:47:49Z",
+      "side": 1,
+      "message": "AMD_FP8_WRITE1_USB4_LEN",
+      "range": {
+        "startLine": 266,
+        "startChar": 17,
+        "endLine": 266,
+        "endChar": 18
+      },
+      "revId": "6b4988a988ee9130abdc0805f6a3ea8f73cab209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5863b6ef_ed828bf7",
+        "filename": "driver/usb_mux/amd_fp8.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-06-29T00:47:49Z",
+      "side": 1,
+      "message": "nit: why not the full word \"MAILBOX\"?..",
+      "range": {
+        "startLine": 75,
+        "startChar": 23,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "6b4988a988ee9130abdc0805f6a3ea8f73cab209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
