@@ -113,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f77e009_0795e5ef",
+        "filename": "core/cortex-m/cpu.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-29T23:02:13Z",
+      "side": 1,
+      "message": "Oops, apparently I didn\u0027t complete that sentence. \"This comment is a bit misleading, should be `Disable unaligned access trap`.",
+      "parentUuid": "0c17d9c9_372f0e67",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "1d091afb9519f5f443dd5db96a22c188ff949c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5073296_4863e6dd",
         "filename": "test/unaligned_access.cc",
         "patchSetId": 14
