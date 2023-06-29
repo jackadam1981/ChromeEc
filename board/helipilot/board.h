@@ -14,6 +14,14 @@
 
 #define CONFIG_ALLOW_UNALIGNED_ACCESS
 
+/* Host Command Interface */
+#define NPCX_UART_BAUDRATE_3M
+
+#undef CONFIG_UART_HOST_COMMAND_HW
+#define CONFIG_UART_HOST_COMMAND_HW 1
+/* Enable UART host commands */
+#define CONFIG_USART_HOST_COMMAND
+
 /*-------------------------------------------------------------------------*
  * Flash layout:
  *
