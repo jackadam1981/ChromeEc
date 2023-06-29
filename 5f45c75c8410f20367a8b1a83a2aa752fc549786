@@ -16,6 +16,52 @@
       "message": "this was tested with FW that supports version 2 and FW that supports version 1:\n\n** Version 2:\n```\nhelios-rev3 ~ # ectool --name\u003dcros_fp version\nRO version:    dartmonkey_v2.0.21776-5f45c75c8\nRO cros fwid:  dartmonkey_15510.0.23_06_29\nRW version:    dartmonkey_v2.0.21776-5f45c75c8\nRW cros fwid:  dartmonkey_15510.0.23_06_29\nFirmware copy: RW\nBuild info:    dartmonkey_v2.0.21776-5f45c75c8 boringssl:v0.0.7276-e0d601a57 cryptoc:v1.9308_26_0.14-0dd6790 private:v0.0.132-8a640b8 fpc:v0.0.163-7198ada dartmonkey_15510.0.23_06_29 2023-06-28 19:56:34 fsammoura@fsammoura1.c.googlers.com\nTool version:  v2.1.9999-8053b497  @fsammoura1.c.googlers.com\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect enable\n2023-06-29T17:13:55.966074Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\n2023-06-29T17:13:56.079007Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\n2023-06-29T17:13:56.192260Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\n2023-06-29T17:13:56.305139Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\nFlash protect flags: 0x00000001 ro_at_boot\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000001 ro_at_boot\n```\n\n** Version 1\n```\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect enable\nFlash protect flags: 0x00000001 ro_at_boot\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000001 ro_at_boot\nhelios-rev3 ~ # ectool --name\u003dcros_fp version\nRO version:    dartmonkey_v2.0.2887-311310808\nRO cros fwid:  CROS_FWID_MISSING\nRW version:    dartmonkey_v2.0.14340-6c1587ca7\nRW cros fwid:  dartmonkey_14931.0.0\nFirmware copy: RW\nBuild info:    dartmonkey_v2.0.14340-6c1587ca7 cryptoc:v1.9308_26_0.11-11a97df private:1.1.9999-6c1587c fpc:1.1.9999-6c1587c dartmonkey_14931.0.0 2022-06-17 16:41:11 @chromeos-ci-legacy-us-central1-c-x32-31-nd7v\nTool version:  v2.1.9999-8053b497  @fsammoura1.c.googlers.com\n\n```",
       "revId": "5f45c75c8410f20367a8b1a83a2aa752fc549786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d4dcee_ff3bd740",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-29T17:55:52Z",
+      "side": 1,
+      "message": "I think this needs to use `/` instead of `:` (but not 100% sure if `:` would work too).",
+      "range": {
+        "startLine": 1772,
+        "startChar": 11,
+        "endLine": 1772,
+        "endChar": 12
+      },
+      "revId": "5f45c75c8410f20367a8b1a83a2aa752fc549786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c12a63d6_d1b31100",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-29T17:55:52Z",
+      "side": 1,
+      "message": "nit: remove space",
+      "range": {
+        "startLine": 1772,
+        "startChar": 8,
+        "endLine": 1772,
+        "endChar": 9
+      },
+      "revId": "5f45c75c8410f20367a8b1a83a2aa752fc549786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
