@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "common.h"
 #include "gpio/gpio.h"
 #include "gpio_signal.h"
 #include "system_boot_time.h"
@@ -63,3 +64,19 @@ bool board_ap_power_check_power_rails_enabled(void)
 	return power_signal_get(PWR_EN_PP3300_A);
 }
 #endif /* CONFIG_X86_NON_DSX_PWRSEQ_MTL */
+
+__overridable void board_resume_change(struct ap_power_ev_callback *cb,
+				       struct ap_power_ev_data data)
+{
+}
+
+static int board_resume_change_init(void)
+{
+	static struct ap_power_ev_callback cb = {
+		.handler = board_resume_change,
+		.events = AP_POWER_RESUME,
+	};
+	ap_power_ev_add_callback(&cb);
+	return 0;
+}
+SYS_INIT(board_resume_change_init, APPLICATION, 0);
