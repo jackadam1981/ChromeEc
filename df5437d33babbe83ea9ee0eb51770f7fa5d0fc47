@@ -16,6 +16,24 @@
       "message": "Does the AP need to turn on tokenization for the EC to use it? If the EC will just do it, and the AP doesn\u0027t have a choice, you might want to make the language strong here. See, for instance, `EC_FEATURE_TYPEC_REQUIRE_AP_MODE_ENTRY` or `EC_FEATURE_TYPEC_MUX_REQUIRE_AP_ACK`.",
       "revId": "df5437d33babbe83ea9ee0eb51770f7fa5d0fc47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3cd920_fb17d1f7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-06-29T21:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e325ffd_667c0db8",
+      "revId": "df5437d33babbe83ea9ee0eb51770f7fa5d0fc47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
