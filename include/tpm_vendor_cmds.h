@@ -288,6 +288,9 @@ struct user_pres_response {
 /* Our vendor-specific command codes go here */
 #define TPM_CC_VENDOR_CR50         0x0000
 
+#define TPM_ST_SPDM_CLEAR_MSG 0x8101
+#define TPM_ST_SPDM_SECURED_MSG 0x8201
+
 /*** Structures and constants for VENDOR_CC_SPI_HASH ***/
 
 enum vendor_cc_spi_hash_request_subcmd {

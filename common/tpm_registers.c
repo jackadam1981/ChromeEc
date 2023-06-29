@@ -42,6 +42,10 @@
 
 #endif
 
+#ifdef CONFIG_SPDM
+#include "spdm.h"
+#endif
+
 /****************************************************************************/
 /*
  * CAUTION: Variables defined in this in this file are treated specially.
@@ -701,6 +705,37 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 }
 #endif
 
+#ifdef CONFIG_SPDM
+
+#define IS_TPM_SPDM_TAG(tag)  \
+  ((tag == TPM_ST_SPDM_CLEAR_MSG) ||  \
+	 (tag == TPM_ST_SPDM_SECURED_MSG))
+
+static void call_tpm_spdm_command(struct tpm_cmd_header *tpmh, size_t *total_size) {
+	size_t command_size = be32toh(tpmh->size);
+	// No subcommand code.
+	size_t header_size = sizeof(struct tpm_cmd_header) - 2;
+	uint8_t* buffer = (uint8_t*)tpmh + header_size;
+	bool is_secure = tpmh->tag == TPM_ST_SPDM_SECURED_MSG;
+
+	if (command_size < header_size) {
+		*total_size = command_size;
+		return;
+	}
+
+	if (tpmh->command_code != 0) {
+		// TODO: How to return error here? Spec doesn't provide instructions.
+		*total_size = header_size;
+		return;
+	}
+
+	dispatch_spdm_request(is_secure, buffer, command_size - header_size, total_size);
+	*total_size += header_size;
+	tpmh->size = htobe32(*total_size);
+}
+
+#endif
+
 /*
  * Events used on the TPM task context. Make sure there is no collision with
  * event(s) defined in chip/g/dcrypto/dcrypto_runtime.c
@@ -1042,52 +1077,60 @@ void tpm_task(void *u)
 
 		watchdog_reload();
 
-#ifdef CONFIG_EXTENSION_COMMAND
-		if (IS_CUSTOM_CODE(command_code)) {
+#ifdef CONFIG_SPDM
+    if (IS_TPM_SPDM_TAG(tpmh->tag)) {
 			response_size = buffer_size;
-			call_extension_command(tpmh, &response_size,
-					       alt_if_command ?
-					       VENDOR_CMD_FROM_ALT_IF : 0);
-		} else
+			call_tpm_spdm_command(tpmh, &response_size);
+    } else
 #endif
 		{
-			if (board_id_is_mismatched()) {
-				static const char tpm_broken_response[] = {
-					0x80, 0x01,	/* TPM_ST_NO_SESSIONS */
-					0, 0, 0, 10,	/* Response size. */
-					0, 0, 9, 0x21	/* TPM_RC_LOCKOUT */
-				};
-				CPRINTF("%s: Ignoring TPM commands\n",
-					__func__);
-				response = (uint8_t *)tpmh;
-				response_size = sizeof(tpm_broken_response);
-				memcpy(response, tpm_broken_response,
-				       response_size);
-			} else {
-#ifdef ENABLE_TPM
-				ExecuteCommand(tpm_.fifo_write_index,
-					       (uint8_t *)tpmh,
-					       &response_size,
-					       &response);
-#else
-				{
-					/*
-					 * This response is sent by actual
-					 * TPM2 when replying to gibberish
-					 * input. Copy it here to avoid the
-					 * need to add conditional compilation
-					 * cases below.
-					 */
-					const uint8_t bad_cmd_resp[] = {
-						0x00, 0xc4, 0x00, 0x00, 0x00,
-						0x0a, 0x00, 0x00, 0x00, 0x1e
-					};
-					response = (uint8_t *)tpmh;
-					response_size = sizeof(bad_cmd_resp);
-					memcpy(response, bad_cmd_resp,
-					       response_size);
-				}
+#ifdef CONFIG_EXTENSION_COMMAND
+			if (IS_CUSTOM_CODE(command_code)) {
+				response_size = buffer_size;
+				call_extension_command(tpmh, &response_size,
+									alt_if_command ?
+									VENDOR_CMD_FROM_ALT_IF : 0);
+			} else
 #endif
+			{
+				if (board_id_is_mismatched()) {
+					static const char tpm_broken_response[] = {
+						0x80, 0x01,	/* TPM_ST_NO_SESSIONS */
+						0, 0, 0, 10,	/* Response size. */
+						0, 0, 9, 0x21	/* TPM_RC_LOCKOUT */
+					};
+					CPRINTF("%s: Ignoring TPM commands\n",
+						__func__);
+					response = (uint8_t *)tpmh;
+					response_size = sizeof(tpm_broken_response);
+					memcpy(response, tpm_broken_response,
+								response_size);
+				} else {
+#ifdef ENABLE_TPM
+					ExecuteCommand(tpm_.fifo_write_index,
+									(uint8_t *)tpmh,
+									&response_size,
+									&response);
+#else
+					{
+						/*
+						* This response is sent by actual
+						* TPM2 when replying to gibberish
+						* input. Copy it here to avoid the
+						* need to add conditional compilation
+						* cases below.
+						*/
+						const uint8_t bad_cmd_resp[] = {
+							0x00, 0xc4, 0x00, 0x00, 0x00,
+							0x0a, 0x00, 0x00, 0x00, 0x1e
+						};
+						response = (uint8_t *)tpmh;
+						response_size = sizeof(bad_cmd_resp);
+						memcpy(response, bad_cmd_resp,
+									response_size);
+					}
+#endif
+				}
 			}
 		}
 		CPRINTF("got %d bytes in response\n", response_size);
@@ -1111,11 +1154,16 @@ void tpm_task(void *u)
 			if (!IS_CUSTOM_CODE(command_code))
 #endif
 			{
+#ifdef CONFIG_SPDM
+			if (!IS_TPM_SPDM_TAG(command_code))
+#endif
+			{
 				/*
-				 * Extension commands reuse FIFO buffer, the
+				 * Extension and SPDM commands reuse FIFO buffer, the
 				 * rest need to copy.
 				 */
 				memcpy(tpmh, response, response_size);
+			}
 			}
 			if (alt_if_command) {
 				alt_if.process_result = ALT_PROCESS_DONE;

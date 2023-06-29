@@ -233,6 +233,42 @@ $(out)/RW/common/pinweaver.o: $(PINWEAVERLIB)/pinweaver.c
 	$(call quiet,c_to_o,CC     )
 endif
 
+# Build platform/spdm
+ifeq ($(CONFIG_SPDM),y)
+SPDMLIB := $(realpath ../spdm)
+CPPFLAGS += -I$(SPDMLIB)
+
+CARGO_TARGET := thumbv7m-none-eabi
+BUILD_TYPE := release
+OUT_DIR := $(realpath $(out))
+
+CARGO_FLAGS := --no-default-features --target $(CARGO_TARGET) \
+	--manifest-path $(SPDMLIB)/Cargo.toml
+ifeq ($(BUILD_TYPE),release)
+CARGO_FLAGS += --release
+endif
+
+$(OUT_DIR)/spdm:
+	mkdir -p $(OUT_DIR)/spdm
+
+cmd_spdm = CARGO_TARGET_DIR=$(OUT_DIR)/spdm cargo build $(CARGO_FLAGS)
+
+$(out)/spdm/$(CARGO_TARGET)/$(BUILD_TYPE)/libspdm.a:
+	$(call quiet,spdm)
+
+.PHONY: $(out)/spdm/$(CARGO_TARGET)/$(BUILD_TYPE)/libspdm.a
+
+SPDM_LDFLAGS := -L$(out)/spdm/$(CARGO_TARGET)/$(BUILD_TYPE) -lspdm
+
+common-y += spdm_eal.o
+
+$(out)/RW/common/spdm_eal.o: $(SPDMLIB)/eal/cr50/spdm_eal.c
+	$(call quiet,c_to_o,CC)
+
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += $(SPDM_LDFLAGS)
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/spdm/$(CARGO_TARGET)/$(BUILD_TYPE)/libspdm.a
+endif
+
 # Build and link against libcryptoc.
 ifeq ($(CONFIG_LIBCRYPTOC),y)
 CRYPTOCLIB := $(realpath ../../third_party/cryptoc)
