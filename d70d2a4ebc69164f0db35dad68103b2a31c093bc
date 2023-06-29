@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bce93b0_fcc70a47",
+        "filename": "core/cortex-m/cpu.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-29T18:04:24Z",
+      "side": 1,
+      "message": "I know I suggested this, but technically, I think this introduces a race condition. The hook will run sometime after jumping to RW, but that means there is a window when unaligned access will still be disabled. Increasing the priority might reduce the window, but it\u0027s probably safer to have a direct call to `cpu_init` as part of the RW initialization. e.g., in [`system_run_image_copy_with_flags`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/system.c;l\u003d652-714;drc\u003d6b7917a7a9d3bbabc454cf1b335081a858f1f95d).",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "d70d2a4ebc69164f0db35dad68103b2a31c093bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3178c88_6dedbd83",
+        "filename": "core/cortex-m/cpu.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-29T18:04:24Z",
+      "side": 1,
+      "message": "If you remove this, can you confirm that the `unaligned_access` test fails? (I just want to verify we are correctly testing with the RO that has unaligned access disabled.)",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "d70d2a4ebc69164f0db35dad68103b2a31c093bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
