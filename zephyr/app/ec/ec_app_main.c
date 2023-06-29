@@ -17,6 +17,7 @@
 #include "watchdog.h"
 #include "zephyr_espi_shim.h"
 
+#include <zephyr/debug/thread_analyzer.h>
 #include <zephyr/kernel.h>
 #include <zephyr/pm/policy.h>
 #include <zephyr/shell/shell_uart.h>
@@ -117,3 +118,12 @@ void ec_app_main(void)
 		ap_pwrseq_task_start();
 	}
 }
+
+#ifdef CONFIG_THREAD_ANALYZER
+static int task_info(const struct shell *shell, size_t argc, char **argv)
+{
+	thread_analyzer_print();
+	return 0;
+}
+SHELL_CMD_REGISTER(taskinfo, NULL, NULL, task_info);
+#endif
