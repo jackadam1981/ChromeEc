@@ -16,6 +16,24 @@
       "message": "Does the `compare_build.sh` script work with Zephyr? It sounds like this change should result in no changes for all other boards since they are using GNU `ld`, so you could use `compare_build.sh` to verify.",
       "revId": "29354b7245e35cfe22cee409276eccc5087a602d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e45e0a9_009c6a98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-06-29T13:43:07Z",
+      "side": 1,
+      "message": "`zmake compare-builds` doesn\u0027t work for me. It complains about `hal_intel` dependencies.",
+      "parentUuid": "ff04c342_47349b42",
+      "revId": "29354b7245e35cfe22cee409276eccc5087a602d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
