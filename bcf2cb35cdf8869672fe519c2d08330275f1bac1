@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acee952e_417d4fe7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-29T05:25:42Z",
+      "side": 1,
+      "message": "Did you also check that the `zmake build` fails given a bad elf file? I\u0027m not sure how the behavior of `extra_post_build_commands` is defined (if it fails does the build fail?)",
+      "revId": "bcf2cb35cdf8869672fe519c2d08330275f1bac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a4b613_29a4390a",
+        "filename": "common/shared_mem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-29T05:25:42Z",
+      "side": 1,
+      "message": "Can\u0027t use `CONFIG_PLATFORM_EC_*` in common code without also checking for Zephyr.",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 46
+      },
+      "revId": "bcf2cb35cdf8869672fe519c2d08330275f1bac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
