@@ -7,6 +7,7 @@
 #include "console.h"
 #include "fpsensor_detect.h"
 #include "gpio.h"
+#include "i2c.h"
 #include "registers.h"
 #include "spi.h"
 #include "task.h"
@@ -21,6 +22,14 @@
 
 /* create alias to fit spi_devices declaration in 80 chars */
 #define FP_SPI_CS GPIO_SPI_MCU_CS_FP_L
+
+/*
+ * Although no I2C device are used in helipilot, these structures
+ * need to be defined to enable CONFIG_LOW_POWER_IDLE in the npcx
+ * implementation
+ */
+const struct i2c_port_t i2c_ports[] = { 0 };
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
