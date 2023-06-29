@@ -16,6 +16,75 @@
       "message": "```\nTest \"unaligned_access\": PASSED\n\nTest \"unaligned_access_bloonchipper_v2.0.4277\": PASSED\n\nTest \"unaligned_access_bloonchipper_v2.0.5938\": PASSED\n```",
       "revId": "99054f4a0cbc1e1c57114fb47aff05f2c0252c67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eaba213_9a065100",
+        "filename": "board/hatch_fp/build.mk",
+        "patchSetId": 15
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-29T22:54:42Z",
+      "side": 1,
+      "message": "It as ambiguous as to whether this is enabling a trap on unaligned access or enabling unaligned access without a trap. Maybe rename this to `trap_unaligned_access` or `unaligned_access_trap`,",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "99054f4a0cbc1e1c57114fb47aff05f2c0252c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0f1f806_fd13d905",
+        "filename": "common/system.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-29T22:54:42Z",
+      "side": 1,
+      "message": "It feels weird to put this in the `system_print_banner_function`. Maybe it would be better in the `board_init`?",
+      "range": {
+        "startLine": 317,
+        "startChar": 3,
+        "endLine": 320,
+        "endChar": 4
+      },
+      "revId": "99054f4a0cbc1e1c57114fb47aff05f2c0252c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8227fb7c_14572b2b",
+        "filename": "core/cortex-m/cpu.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-06-29T22:54:42Z",
+      "side": 1,
+      "message": "I think this would be more clear as `Disable trapping on unaligned access`",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "99054f4a0cbc1e1c57114fb47aff05f2c0252c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
