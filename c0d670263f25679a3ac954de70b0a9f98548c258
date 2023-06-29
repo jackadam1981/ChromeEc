@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed3f7858_ee71e6e5",
+        "filename": "zephyr/program/rex/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-06-29T04:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bde86fbc_b2a45c43",
+      "revId": "c0d670263f25679a3ac954de70b0a9f98548c258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5712c6c5_74aa829e",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-06-16T21:04:31Z",
       "side": 1,
       "message": "the decision about applying the ps8811 tuning needs to be more complex.\n\ni\u0027m not sure it can be done at the baseboard level.\n\nit needs to be done based on the USB DB type. i\u0027m not sure if all\nDB types on all variants use the ps8811, and if so at the same addr.\n\nwe should also support the case where the USB DB type is set to\nnot present (`DB_USB_UNKNOWN`).\n\nsince USB_DB type assignments are not common or the same among all\nvariants, we can\u0027t decide this at the baseboard level.\n\nalso, on rex, we can\u0027t do this for `DB_USB4_ANX7452` due to an\nI2C addr conflict. we can only do this on `DB_USB4_ANX7452_V2`,\nso skip tuning on `DB_USB4_ANX7452`.",
+      "range": {
+        "startLine": 297,
+        "startChar": 17,
+        "endLine": 297,
+        "endChar": 32
+      },
+      "revId": "c0d670263f25679a3ac954de70b0a9f98548c258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db35e674_52793342",
+        "filename": "zephyr/program/rex/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-06-29T04:33:10Z",
+      "side": 1,
+      "message": "Move to board level and add I2C addr init for DB_USB4_ANX7452_V2.",
+      "parentUuid": "5712c6c5_74aa829e",
       "range": {
         "startLine": 297,
         "startChar": 17,
