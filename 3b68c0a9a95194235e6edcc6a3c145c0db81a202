@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e589f3_e518927f",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 0,
+      "message": "I think it\u0027s incorrect to remove this and default the device to `OFF_BODY`.\n\nThe intent of body detection is to throttle the device when it\u0027s on-body, to reduce the skin temperature and prevent the device from being uncomfortable or even injure someone due to the device being too hot. Defaulting to off-body means the device is free to reach the (possibly dangerous) high temperatures while it\u0027s on someone\u0027s body, and the device won\u0027t throttle back down until it has detected it\u0027s actually on-body. As currently implemented, this new algorithm ignores 5 seconds worth of data, which may be enough time to be dangerous if the device was already hot due to prior use and the EC was rebooted without ample time to fully cool down.\n\nThis should be reverted, so the device defaults to on-body, so we throttle by default and only allow it to get hot when we are confident it\u0027s safe to do so.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 58
+      },
+      "revId": "3b68c0a9a95194235e6edcc6a3c145c0db81a202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c2ad26_75b40be7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Please give a little more description of what manual testing was done and how this CL passed that testing.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b9f482b7_8bbb2779",
@@ -31,6 +48,440 @@
       "writtenOn": "2023-06-28T18:38:04Z",
       "side": 1,
       "message": "Would it make sense to leave body_detection.c as is and create a new file?\nThe changes are not logically connected to the old algorithm.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc9cd78_951a42ff",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "This file isn\u0027t new. Revert.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "556c82e5_04ee71f7",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "What does \"optimized for\" mean in this context? Optimized in terms of what?",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236f22e3_6e4af452",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "How does `5 * 20` \u003d 5 seconds?",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83701e15_55b7011c",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Maybe it\u0027s a non-issue, but I\u0027m surprised to see floats being used in EC code.\n\nPresumably we can\u0027t guarantee the presence of an FPU, so we are pulling in the software libraries to handle this. Is this increasing the size of the EC binary, or are those libraries already present in the build?\n\nLooking around a bit, there is `src/platform/ec/core/cortex-m/include/fpu.h`, though that won\u0027t apply to other chipsets like RISC-V. It also looks most other EC code uses fixed point, via `FLOAT_TO_FP()`.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 23
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39418e74_6fe08ff9",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "`CONFIG_BODY_DETECTION`?",
+      "range": {
+        "startLine": 49,
+        "startChar": 33,
+        "endLine": 49,
+        "endChar": 37
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93abb1e3_57ed357e",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Please avoid abbreviations, and use descriptive variable names instead.",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 13
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091c348f_69953c88",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "This contradicts the line below setting the state to `OFF_BODY`, since it implies it\u0027s actually `ON_BODY`. Why is it being set here?",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf86d09_6dd4e519",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Move this into `body_detect_init()`, since there where the initialization work is done.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b71eeceb_10b69af5",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "What does the comment here mean in relation to the magic number `50000`? Why isn\u0027t the division performed directly?",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6715c8_bd757ee4",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "nit: has",
+      "range": {
+        "startLine": 205,
+        "startChar": 46,
+        "endLine": 205,
+        "endChar": 50
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eae8d531_30af460c",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Can you explain this calculation?\n\n1. Why `- var_threshold`?\n1. Why `+ confidence_delta`?\n1. Why `2 * confidence_delta` before dividing?",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 30
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5183c6b_9f05a98c",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "`* SECOND`",
+      "range": {
+        "startLine": 257,
+        "startChar": 49,
+        "endLine": 257,
+        "endChar": 62
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a0359d4_31d43f45",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "This is done in `body_detect_change_state()`. Remove.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76729de2_497079b3",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "if (!IS_ENABLED(CONFIG_BODY_DETECTION))",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6cd1f6e_089953e0",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Why `* 1000`?",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 66
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f43fa8_8ea72038",
+        "filename": "common/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "This should be moved back into `body_detect_reset()`, so the body detection state is always reset to the same state whenever that function is called.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ee278c_ea996c6e",
+        "filename": "common/body_detection_legacy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "This is erasing the git history of the original file (`common/body_detection.c`), making the old code look entirely new.\n\nInstead, this should be moved back into `common/body_detection.c`, and the new algorithm should live in a new file, since that is actually the new code in this CL.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ccfc29_9406b7b9",
+        "filename": "common/filter.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "No one is checking this return code. Change to `void`.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 3
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2461b8_484a512d",
+        "filename": "common/filter.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Log the error before returning, with enough information to determine which case was hit.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b6e20c_3df5f9ef",
+        "filename": "common/filter.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Why is `filter` checked for `NULL` in `filter_init()`, but not here?",
+      "range": {
+        "startLine": 29,
+        "startChar": 37,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f191a854_aef5c9a7",
+        "filename": "common/filter.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Why do we only update `x` with the passed in `var` value from `body_detect_step()`?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddec18a1_155ae27f",
+        "filename": "common/filter.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Move above to the declaration.",
       "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -107,6 +558,86 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbd05442_f9a11a19",
+        "filename": "include/filter.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "It looks like `a` doesn\u0027t change. Can this be moved into `smooth_exp_init()`, so it\u0027s only done once, rather than every step?",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6369d9b0_1a3eaa84",
+        "filename": "include/filter.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "This makes `x(n-1)` \u003d `x(n+1)`, rather than `x(n)` for the next calculation, skipping a value. I think this should actually be:\n\n```\n\texp-\u003ex \u003d x;\n```",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd5d583e_2c045dc8",
+        "filename": "include/filter.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Why was `5` chosen?",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99945dcf_85b7150f",
+        "filename": "include/filter.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "What does `iir` mean?",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 15
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74496d94_a791eab8",
         "filename": "include/filter.h",
         "patchSetId": 11
@@ -136,6 +667,350 @@
       "side": 1,
       "message": "Actually, they are meant to be generic. Although I use Butterworth LPF here, the filter_iir_t can be high-, low-, or band- pass depending on the a and b parameters. By choosing different a%b the filter can become Chebyshev filter, Elliptic or any other IIR design.\n \nI can change it to filter_iir_init and filter_iir_step to indicate the class of filter types the function supports.",
       "parentUuid": "74496d94_a791eab8",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b20e017_68d166af",
+        "filename": "include/filter.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Building on Gwendal\u0027s comment, \"filter\" doesn\u0027t just apply to high/low/band-pass filters. It can also mean filtering out elements from a list to include/exclude matches, which is completely separate from this type of work.\n\nThese functions should indicate they are frequency-type filters, independent of the algorithm used to perform that work.\n\nThis applies to the name of the file as well, not just the functions/structs/etc.",
+      "parentUuid": "dd16e354_50534d35",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160a82ec_7b09e748",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "How does the legacy algorithm work with these redefined KConfig values? Meaning, how can the same Kconfig values be used in different algorithms, being interpreted in different ways?\n\nSpecifically, `common/body_detection_legacy.c` is now using `4000` as the new default value, but interpreting it with the old `(mm/s^2)^2` units while the new `common/body_detection.c` is interpreting it as `uG`.\n\nThese values either:\n1. Need to be duplicated, with the appropriate values/units for each algorithm. Or,\n2. We drop support for the old algorithm.\n\nOtherwise, reusing the same Kconfig definitions is a bug when used in the old algorithm code.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de75239c_0511b5bc",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "This is the same description as `PLATFORM_EC_BODY_DETECTION_VAR_THRESHOLD`. Please update, to distinguish the differences between these values.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8597c01b_c5e8b25a",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Why was this changed if it\u0027s only applicable to the legacy algorithm?",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a94a4e_a2612dbc",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "This is wrong. It\u0027s now set to `0` by default.",
+      "range": {
+        "startLine": 52,
+        "startChar": 54,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba5e785f_a75c4f91",
+        "filename": "zephyr/program/skyrim/winterhold/project.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "What are the power and binary size implications of this?\n\nMaybe it\u0027s incorrect, but I would assume without this enabled that we can keep the HW powered off and no code to init/use it are included in the build.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2d9148_91a63970",
+        "filename": "zephyr/program/skyrim/winterhold/project.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "I\u0027m not sure how these config files work too well, but can this depend on `CONFIG_BODY_DETECTION` rather than just being enabled?\n\nIf not, please add a comment indicating why the FPU is required for Winterhold, so we don\u0027t blindly copy it to future variants unless it\u0027s required.",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86d3d207_a569c4d3",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "What does `generic` mean here? I think we can remove it.",
+      "range": {
+        "startLine": 35,
+        "startChar": 30,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "551ff45c_03035399",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "As a described above, these changes to the default state of the body detection in these tests should be reverted, since we should default to on-body, for safety reasons.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d04f3963_ccd44ef1",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "on",
+      "range": {
+        "startLine": 85,
+        "startChar": 29,
+        "endLine": 85,
+        "endChar": 32
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1086756d_3cac9ac7",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "off",
+      "range": {
+        "startLine": 95,
+        "startChar": 29,
+        "endLine": 95,
+        "endChar": 31
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59a64bfc_537100b9",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "on",
+      "range": {
+        "startLine": 105,
+        "startChar": 29,
+        "endLine": 105,
+        "endChar": 32
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67210be8_cf231892",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Are these necessary? It looks like the test is enforcing Kconfig values, which implies they aren\u0027t actually configurable.\n\nCan they be removed?",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 34
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8620439_fd2b78b0",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "This should be resolved before the test is checked in.",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3516280_6a8883f7",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "nit: `test_setenable` or something similar, since `test_customparams` doesn\u0027t describe much.",
+      "range": {
+        "startLine": 262,
+        "startChar": 28,
+        "endLine": 262,
+        "endChar": 45
+      },
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f356fed1_b825c029",
+        "filename": "zephyr/test/drivers/body_detection/src/body_detection.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "Is this test necessary? What\u0027s being tested here that hasn\u0027t been tested by any of the previous tests, and does the line count change if this test is removed?",
+      "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb53ed59_f0eac96b",
+        "filename": "zephyr/test/drivers/body_detection/src/data.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-06-29T18:38:05Z",
+      "side": 1,
+      "message": "While testing with real data is nice, this will make debugging and further development difficult of this driver, due to the sheer volume of data to step through when there\u0027s a failure. Instead, this should be reduced to the minimal amount of data necessary to trigger the required state changes.",
       "revId": "f4117c9a1f37c174610e10667a2cbd877d40a900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
