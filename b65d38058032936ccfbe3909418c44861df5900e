@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0480e6d7_f3d62245",
+        "filename": "board/constitution/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-06-30T20:58:50Z",
+      "side": 1,
+      "message": "did you swap these values?\ni would think you\u0027d want HALT \u003e HIGH.",
+      "range": {
+        "startLine": 94,
+        "startChar": 34,
+        "endLine": 94,
+        "endChar": 36
+      },
+      "revId": "b65d38058032936ccfbe3909418c44861df5900e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
