@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85ee94c5_808de584",
+        "filename": "zephyr/subsys/host_service/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-30T16:37:42Z",
+      "side": 1,
+      "message": "This library doesn\u0027t seem to be used. Instead it seems like you\u0027re adding everything to the Zephyr main library.\n\n```\nzephyr_library()\nzephyr_library_include_directories(include)\nzephyr_library_include_directories_ifdef(\n    CONFIG_HOST_SERVICE ../../include/host_services)\nzephyr_library_sources_ifdef(CONFIG_HOST_SERVICE zephyr_host_service.c)\nzephyr_library_sources_ifdef(CONFIG_SYS_MNG sys_mng.c)\n```",
+      "revId": "d43e18b5b4500c90633d9379f52a5c3a9b452aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6649b77_624516f1",
+        "filename": "zephyr/subsys/host_service/heci/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-06-30T16:37:42Z",
+      "side": 1,
+      "message": "Same here, these should not be added to the global Zephyr library",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "d43e18b5b4500c90633d9379f52a5c3a9b452aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
