@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1acf813a_20a44d46",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 282
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-30T23:20:11Z",
+      "side": 1,
+      "message": "If we call this without having called `EC_CMD_FP_GENERATE_NONCE`, will it pass? We should have a test case for that to make sure it fails.",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 39
+      },
+      "revId": "be998518367e7b9afd6f88a9646a3323da07d781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
