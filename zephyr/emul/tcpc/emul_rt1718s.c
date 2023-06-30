@@ -29,6 +29,7 @@ static bool is_valid_rt1718s_page1_register(int reg)
 	case RT1718S_SYS_CTRL2:
 	case RT1718S_SYS_CTRL3:
 	case RT1718S_RT_MASK6:
+	case RT1718S_RT_INT6:
 	case RT1718S_VCON_CTRL3:
 	case 0xCF: /* FOD function */
 	case RT1718S_RT_MASK1:
@@ -48,12 +49,18 @@ static bool is_valid_rt1718s_page2_register(int reg)
 {
 	int combined_reg_address = (RT1718S_RT2 << 8) | reg;
 
+	if (RT1718S_ADC_CHX_VOL_L(RT1718S_ADC_VBUS1) <= combined_reg_address &&
+	    combined_reg_address <= RT1718S_ADC_CHX_VOL_H(RT1718S_ADC_CH11)) {
+		return true;
+	}
+
 	switch (combined_reg_address) {
 	case RT1718S_RT2_SBU_CTRL_01:
 	case RT1718S_RT2_BC12_SNK_FUNC:
 	case RT1718S_RT2_DPDM_CTR1_DPDM_SET:
 	case RT1718S_RT2_VBUS_VOL_CTRL:
 	case RT1718S_VCON_CTRL4:
+	case RT1718S_ADC_CTRL_01:
 		return true;
 	default:
 		return false;
@@ -188,7 +195,9 @@ static int rt1718s_emul_read_byte(const struct emul *emul, int reg,
 	struct rt1718s_emul_data *rt1718s_data = emul->data;
 	int current_page = rt1718s_data->current_page;
 
+	/*
 	rt1718s_data->current_page = 1;
+	*/
 
 	if (current_page == 2) {
 		if (reg != RT1718S_RT2) {
@@ -256,18 +265,11 @@ static int rt1718s_emul_write_byte_page2(const struct emul *emul, int reg,
 			return -EIO;
 		}
 		rt1718s_data->current_page2_register = val;
-	} else if (bytes == 2) {
-		rt1718s_data->reg_page2[rt1718s_data->current_page2_register] =
-			val;
-		add_access_history_entry(
-			rt1718s_data,
-			(reg << 8) | rt1718s_data->current_page2_register, val);
 	} else {
-		/*
-		 * All register in page2 only has 1 byte, so the write should
-		 * not more than 3 bytes.
-		 */
-		return -EIO;
+		int pos = rt1718s_data->current_page2_register + bytes - 2;
+
+		rt1718s_data->reg_page2[pos] = val;
+		add_access_history_entry(rt1718s_data, (reg << 8) | pos, val);
 	}
 
 	return EC_SUCCESS;
