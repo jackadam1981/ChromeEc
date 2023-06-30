@@ -33,6 +33,24 @@
       "message": "Does the protocol repeat the byte? Or does it only send it once? I\u0027m wondering if we could poll instead of just waiting?",
       "revId": "24fbbcd4eb6331ba383b1b4906f0c395b0f1e2c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ecb47a_a3e44bb8",
+        "filename": "util/mchp/crisis_rcvry_util.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1559102
+      },
+      "writtenOn": "2023-06-30T08:32:19Z",
+      "side": 1,
+      "message": "Yes, protocol repeat the chunk only if CRC mismatch observed. \nFor other failure it will exit the application.\n\n\"transfer\" is generic method used as a interface to transfer all different images (2nd loader header and firmware, EC header and frimware) to EC.\n\nAfter each and every chunk transfer, prop_obj.uart_handle.read tries to get response from EC with timeout of 10sec.\n\nAfter 256Kbyte transfer from Host, EC starts copy image from SRAM to FLASH, till copy completes EC will not respond back to Host. Copy takes \u003e10sec.\n\nIf we go with polling, need to have two handling,\n    1) Other than EC FW transfer, if prop_obj.uart_handle.read timeout occurs it should exit the application.\n    2) In EC FW transfer at each 256Kbytes transfer alone, if prop_obj.uart_handle.read timeout occurs it should go back to read response again without exit or re-ransfer the chunk. This itself should have some retry check.\n\nThose changes make complexity, so decided to give fixed delay (22sec) before reading the response from EC on each 256KBytes transfer.",
+      "parentUuid": "09a4da94_7a40c3e1",
+      "revId": "24fbbcd4eb6331ba383b1b4906f0c395b0f1e2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
