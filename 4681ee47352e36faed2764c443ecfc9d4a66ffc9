@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc0b207e_ea2eeeae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-06-30T01:18:42Z",
+      "side": 1,
+      "message": "This seems like it\u0027s combining two different tests in a confusing way. I would expect that the tests in ap_power exercise the ap_power code specifically (which it already does), and the per-board customizations should be tested on their own under the assumption that the power sequencer will call those customized functions at the appropriate times (which is tested by the ap_power tests).\n\nTo test nissa\u0027s board_power.c, I expected we would add a test suite to the nissa directory that called the board_* functions directly (without actually building ap_power for that test), avoiding tendrils of ap_power reaching out into every project; then the versions of the extension functions in test/ap_power/ should be written in such a way that the tests can verify they were actually called as expected.",
+      "revId": "4681ee47352e36faed2764c443ecfc9d4a66ffc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7efce463_af27dcdf",
