@@ -33,6 +33,29 @@
       "message": "responded to all comments",
       "revId": "77b91daf43b260a32f9e4edc648e93095a1f3bf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07279e79_04a5a046",
+        "filename": "core/cortex-m/cpu.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-30T22:41:35Z",
+      "side": 1,
+      "message": "When this config is enabled, we should also disable the [`crash unaligned` command](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/panic_output.c;l\u003d374-377;drc\u003dd3d1e371ad9a4c774b4d2f76f9cc204aee0ebd78), since it won\u0027t actually crash.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "77b91daf43b260a32f9e4edc648e93095a1f3bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
