@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0e15fc5_dd05382f",
+        "filename": "zephyr/subsys/host_service/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-30T19:50:18Z",
+      "side": 1,
+      "message": "Changes made except zephyr_include_directories..., if change to zephyr_library_include_directories..., I have to give relative path of those header files in c files. Have to use \"#include \"../include/bsp_helper.h\"\", will get build error if use \"#include \"bsp_helper.h\" directly. \nOr in next level CMakefiles, I add \nzephyr_library_include_directories(../include), feel it\u0027s not an ideal way.",
+      "parentUuid": "85ee94c5_808de584",
+      "revId": "d43e18b5b4500c90633d9379f52a5c3a9b452aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6649b77_624516f1",
         "filename": "zephyr/subsys/host_service/heci/CMakeLists.txt",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2023-06-30T16:37:42Z",
       "side": 1,
       "message": "Same here, these should not be added to the global Zephyr library",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "d43e18b5b4500c90633d9379f52a5c3a9b452aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53768806_cf1e1327",
+        "filename": "zephyr/subsys/host_service/heci/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-06-30T19:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6649b77_624516f1",
       "range": {
         "startLine": 1,
         "startChar": 0,
