@@ -10,7 +10,7 @@
 void cpu_init(void)
 {
 	/* Catch unaligned access */
-	CPU_NVIC_CCR |= CPU_NVIC_CCR_UNALIGN_TRAP;
+	CPU_NVIC_CCR &= ~CPU_NVIC_CCR_UNALIGN_TRAP;
 
 	/* Set supervisor call (SVC) to priority 0 */
 	CPU_NVIC_SHCSR2 = 0;
