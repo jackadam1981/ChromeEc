@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7742baa_fba6ca70",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-30T18:42:23Z",
+      "side": 1,
+      "message": "Is it not good to add \u0027int port\u0027 instead?",
+      "range": {
+        "startLine": 399,
+        "startChar": 23,
+        "endLine": 399,
+        "endChar": 27
+      },
+      "revId": "abcf0de450fedb9cd268e75a471cb79af1fd07c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b321c94_151f4b18",
+        "filename": "include/cec.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-06-30T18:42:23Z",
+      "side": 1,
+      "message": "TASK_EVENT_CUSTOM_BIT has a built-in check, which prevents BIT(x) from exceeding BIT(15).",
+      "range": {
+        "startLine": 18,
+        "startChar": 37,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "abcf0de450fedb9cd268e75a471cb79af1fd07c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
