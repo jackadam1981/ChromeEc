@@ -22,6 +22,30 @@
       },
       "revId": "eb85a35295e7d50eedfbdc8850ff6d1501fe97b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "312845cd_201fac8a",
+        "filename": "driver/usb_mux/amd_fp8.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-06-30T16:58:35Z",
+      "side": 0,
+      "message": "I intended for this to make it into the initial driver CL because it seemed a little bit redundant. But I think it\u0027s better to keep the state as clean possible.",
+      "parentUuid": "4a1105bc_37666f0c",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 39
+      },
+      "revId": "eb85a35295e7d50eedfbdc8850ff6d1501fe97b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db4296e9_0843d968",
+        "filename": "driver/usb_mux/amd_fp8.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-06-30T16:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75b1da5e_680ed772",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "bcbd1b01c508051992b0f03f1d6fd54f67f0e1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf7f9d5b_727ef8d6",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ec6c23_398c81cf",
+        "filename": "driver/usb_mux/amd_fp8.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-06-30T16:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf7f9d5b_727ef8d6",
+      "range": {
+        "startLine": 111,
+        "startChar": 17,
+        "endLine": 111,
+        "endChar": 18
+      },
+      "revId": "bcbd1b01c508051992b0f03f1d6fd54f67f0e1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfdd86b1_6654aaeb",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-06-29T01:04:26Z",
       "side": 1,
       "message": "USB_PD_MUX_NONE \u003d\u003d",
+      "range": {
+        "startLine": 293,
+        "startChar": 6,
+        "endLine": 293,
+        "endChar": 7
+      },
+      "revId": "bcbd1b01c508051992b0f03f1d6fd54f67f0e1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe4ab59_eb4c764d",
+        "filename": "driver/usb_mux/amd_fp8.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-06-30T16:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfdd86b1_6654aaeb",
       "range": {
         "startLine": 293,
         "startChar": 6,
