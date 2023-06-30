@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c314d8d8_029c0f22",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-06-30T01:22:23Z",
+      "side": 1,
+      "message": "nit: this is not a problem for starmie, as it only has one port, but I think this could make the confusion with multiple ports. Can you add comments for `static bool rt1739_pd_connect_flag;` in line 25, explaining what this flag is for, and why only 1 variable is capable of working with multiple ports?",
+      "range": {
+        "startLine": 437,
+        "startChar": 3,
+        "endLine": 443,
+        "endChar": 4
+      },
+      "revId": "8dfd531fd86034b1bcc6d56bdab267c72076ffc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
