@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4391b5b1_e1774994",
+        "filename": "test/ec_gtest.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-06-30T00:11:35Z",
+      "side": 1,
+      "message": "I do not see it being used. but I assume just that it being included is the demonstration meant from this CL, right?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "19fec1d3463147b76429d9b0540c325d01352e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
