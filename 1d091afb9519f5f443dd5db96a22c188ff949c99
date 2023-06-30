@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "369568ee_de404623",
+        "filename": "core/cortex-m/cpu.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-06-30T02:44:56Z",
+      "side": 1,
+      "message": "I think this was fixed. It should be `Enable unaligned access`.",
+      "parentUuid": "8f77e009_0795e5ef",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "1d091afb9519f5f443dd5db96a22c188ff949c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5073296_4863e6dd",
