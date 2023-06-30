@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6c3ea47_aaf48c57",
+        "filename": "board/hatch_fp/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-06-30T02:47:45Z",
+      "side": 1,
+      "message": "I believe this what I agreed to name the configuration with Tom. I am open though for considerations. When we use `IsEnabled`, it makes sense to have this `CONFIG_UNALIGNED_ACCESS`.",
+      "parentUuid": "afdf58e0_1f28cf85",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "9cc6bdf7c41851685604b8289426bd95536904e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1585b1e9_27d68e0e",
         "filename": "zephyr/Kconfig",
         "patchSetId": 9
@@ -54,6 +78,30 @@
       "writtenOn": "2023-06-29T18:25:26Z",
       "side": 1,
       "message": "Does Zephyr use the `core/cortex/cpu.c` code that we change in https://crrev.com/c/4652005? I\u0027m guessing it does not, but @patrykd@google.com could probably confirm. If not, we\u0027ll need to have the equivalent to the change in [this file](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4652005/13/core/cortex-m/cpu.c) for Zephyr or setting this config will be a no-op.\n\nIn that case, I think we could change this help text to indicate this is currently a noop, and then create a followup CL to enable it in Zephyr.",
+      "range": {
+        "startLine": 803,
+        "startChar": 0,
+        "endLine": 807,
+        "endChar": 52
+      },
+      "revId": "9cc6bdf7c41851685604b8289426bd95536904e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ebf0852_1c7bb017",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-06-30T02:47:45Z",
+      "side": 1,
+      "message": "@Patryk, please let know if a change has to be done in a separate zephyr file. I am trying the hooks warning for now.",
+      "parentUuid": "1585b1e9_27d68e0e",
       "range": {
         "startLine": 803,
         "startChar": 0,
