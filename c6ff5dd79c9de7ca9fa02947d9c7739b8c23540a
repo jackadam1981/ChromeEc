@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1259c0_dcccfc78",
+        "filename": "zephyr/program/nissa/joxer/src/usbc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-06-30T22:33:18Z",
+      "side": 1,
+      "message": "I don\u0027t believe that schedule_deferred_pd_interrupt is untestable. I would omit these LCOV_EXCL comments, and not have 100% for now.",
+      "range": {
+        "startLine": 277,
+        "startChar": 19,
+        "endLine": 277,
+        "endChar": 65
+      },
+      "revId": "c6ff5dd79c9de7ca9fa02947d9c7739b8c23540a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
