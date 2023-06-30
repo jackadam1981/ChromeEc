@@ -110,6 +110,30 @@
       },
       "revId": "9cc6bdf7c41851685604b8289426bd95536904e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ec6e075_148c7717",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-06-30T19:15:16Z",
+      "side": 1,
+      "message": "\u003e Does Zephyr use the core/cortex/cpu.c code that we change in https://crrev.com/c/4652005?\n\nOf course not.\n\nZephyr has CONFIG_TRAP_UNALIGNED_ACCESS option which is *probably* what you want in this case. I think, adding `depends on !TRAP_UNALIGNED_ACCESS` here will be enough. If not, I\u0027ll fix it later.",
+      "parentUuid": "2ebf0852_1c7bb017",
+      "range": {
+        "startLine": 803,
+        "startChar": 0,
+        "endLine": 807,
+        "endChar": 52
+      },
+      "revId": "9cc6bdf7c41851685604b8289426bd95536904e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
