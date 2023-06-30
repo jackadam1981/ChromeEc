@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1679909d_12ef0606",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 291
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-30T23:09:55Z",
+      "side": 1,
+      "message": "Although there will be some setup duplication, it\u0027s generally preferred to test a single thing in each test:\n\n* http://shortn/_tYOxTN0SlW\n* http://shortn/_fLePvMtUdi\n\nThat will also help make the test names self-describing and make failures easier to debug. For example, `test_fp_command_nonce_context_limit_without_generated_nonce`, `test_fp_command_nonce_context_limit_normal_context`, etc.",
+      "range": {
+        "startLine": 400,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 35
+      },
+      "revId": "a914c28303f699473eba58439aa37a83d3869d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
