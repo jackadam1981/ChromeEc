@@ -22,6 +22,30 @@
       },
       "revId": "8dfd531fd86034b1bcc6d56bdab267c72076ffc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fef0b48_9e2d18ea",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-06-30T18:36:37Z",
+      "side": 1,
+      "message": "Oh, that\u0027s right. Can you use a flag instead?\n\ne.g.\n\n!(rt1739_pd_connect_flag \u0026 port)",
+      "parentUuid": "c314d8d8_029c0f22",
+      "range": {
+        "startLine": 437,
+        "startChar": 3,
+        "endLine": 443,
+        "endChar": 4
+      },
+      "revId": "8dfd531fd86034b1bcc6d56bdab267c72076ffc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
