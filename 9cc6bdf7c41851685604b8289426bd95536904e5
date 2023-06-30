@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33e60f02_2c2073b1",
+        "filename": "board/hatch_fp/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-30T22:50:57Z",
+      "side": 1,
+      "message": "Generally, we should try to use \"[positive boolean](http://shortn/_ZOoZV7ss2F)\"s for readability (i.e., not `CONFIG_DISABLE_UNALIGNED_ACCESS_TRAP`).\n\nTo avoid the ambiguity with `CONFIG_UNALIGNED_ACCESS` (is it allowed or not when enabled?), we could use either:\n\n* `CONFIG_TRAP_UNALIGNED_ACCESS` (symmetry with the [`TRAP_UNALIGNED_ACCESS` in our Zephyr implementation](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig.defaults-arm;l\u003d7-8;drc\u003de113586363a26755dbd171b4b2d24aacc302780e))\n* `CONFIG_ALLOW_UNALIGNED_ACCESS`",
+      "parentUuid": "a6c3ea47_aaf48c57",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "9cc6bdf7c41851685604b8289426bd95536904e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1585b1e9_27d68e0e",
         "filename": "zephyr/Kconfig",
         "patchSetId": 9
