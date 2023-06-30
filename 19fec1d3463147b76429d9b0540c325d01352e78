@@ -22,6 +22,30 @@
       },
       "revId": "19fec1d3463147b76429d9b0540c325d01352e78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d4fe50_3a54eba7",
+        "filename": "test/ec_gtest.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2023-06-30T15:25:15Z",
+      "side": 1,
+      "message": "Correct. I have an example CL that needs it here: https://crrev.com/i/6104274",
+      "parentUuid": "4391b5b1_e1774994",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "19fec1d3463147b76429d9b0540c325d01352e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
