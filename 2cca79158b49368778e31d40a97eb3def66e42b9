@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89bcdd71_35bbaeeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-01T00:44:47Z",
+      "side": 1,
+      "message": "```\n2023-07-01T00:27:35.155118Z --------------------------------------------------------------------------------\n2023-07-01T00:27:35.155135Z biod.CrosConfig                 [ PASS ] \n2023-07-01T00:27:35.155135Z biod.CrosConfigMatchesDevice    [ PASS ] \n2023-07-01T00:27:35.155135Z biod.DeviceAccess               [ PASS ] \n2023-07-01T00:27:35.155135Z biod.DevicePermissions          [ PASS ] \n2023-07-01T00:27:35.155135Z biod.FirmwareFile               [ PASS ] \n2023-07-01T00:27:35.155135Z biod.Running                    [ PASS ] \n2023-07-01T00:27:35.155135Z example.CommandContextUser      [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpUpdaterSucceeded     [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpAddEntropy           [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpBioWash              [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpCheckWriteProtect    [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpFlashFpMcuHello      [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpRDP0                 [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpRDP1                 [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpReadFlash            [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpRebootPowerCycle     [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpRebootToRO           [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpSoftwareWriteProtect [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpSystemIsLocked       [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpTpmSeed              [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpUpdater              [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpObeysRollback        [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpROCanUpdateRW        [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpROOnlyBootsValidRW   [ PASS ] \n2023-07-01T00:27:35.155135Z firmware.FpRWNoUpdateRO         [ PASS ] \n2023-07-01T00:27:35.155250Z --------------------------------------------------------------------------------\n2023-07-01T00:27:35.155254Z Results saved to /tmp/tast/results/20230630-165725\n```",
+      "revId": "2cca79158b49368778e31d40a97eb3def66e42b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
