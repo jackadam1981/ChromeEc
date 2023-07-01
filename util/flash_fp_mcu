@@ -20,7 +20,7 @@ DEFINE_boolean 'remove_flash_write_protect' "${FLAGS_TRUE}" \
 DEFINE_integer 'retries' "${DEFAULT_RETRIES}" 'Specify number of retries' 'R'
 DEFINE_integer 'baudrate' "${STM32MON_SERIAL_BAUDRATE}" 'Specify UART baudrate' 'B'
 DEFINE_boolean 'hello' "${FLAGS_FALSE}" 'Only ping the bootloader' 'H'
-DEFINE_boolean 'services' "${FLAGS_TRUE}" \
+DEFINE_boolean 'stop_start_biod' "${FLAGS_TRUE}" \
   'Stop the biod service before flashing and then resume it afterwards' 's'
 FLAGS_HELP="Usage: ${0} [flags] [ec.bin]"
 
@@ -892,7 +892,7 @@ main() {
     exit "${EXIT_CONFIG}"
   fi
 
-  if [[ "${FLAGS_services}" -eq "${FLAGS_TRUE}" ]]; then
+  if [[ "${FLAGS_stop_start_biod}" -eq "${FLAGS_TRUE}" ]]; then
     echo "# Stopping biod"
     stop biod
   fi
@@ -938,9 +938,9 @@ main() {
     "${filename}"
   ret=$?
 
-  if [[ "${FLAGS_services}" -eq "${FLAGS_TRUE}" ]]; then
   echo "# Restarting timberslide"
   start timberslide LOG_PATH=/sys/kernel/debug/cros_fp/console_log
+  if [[ "${FLAGS_stop_start_biod}" -eq "${FLAGS_TRUE}" ]]; then
     echo "# Restarting biod"
     start biod
   fi
