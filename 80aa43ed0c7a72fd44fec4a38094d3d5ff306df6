@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2807e47_446496da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-01T09:49:28Z",
+      "side": 1,
+      "message": "```\n2023-07-01T09:43:34.859024Z biod.CrosConfig                 [ PASS ] \n2023-07-01T09:43:34.859024Z biod.CrosConfigMatchesDevice    [ PASS ] \n2023-07-01T09:43:34.859024Z biod.DeviceAccess               [ PASS ] \n2023-07-01T09:43:34.859024Z biod.DevicePermissions          [ PASS ] \n2023-07-01T09:43:34.859024Z biod.FirmwareFile               [ PASS ] \n2023-07-01T09:43:34.859024Z biod.Running                    [ FAIL ] Test failed: biod not running (stop/waiting)\n2023-07-01T09:43:34.859024Z example.CommandContextUser      [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpUpdaterSucceeded     [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpAddEntropy           [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpBioWash              [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpCheckWriteProtect    [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpFlashFpMcuHello      [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpRDP0                 [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpRDP1                 [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpReadFlash            [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpRebootPowerCycle     [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpRebootToRO           [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpSoftwareWriteProtect [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpSystemIsLocked       [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpTpmSeed              [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpUpdater              [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpObeysRollback        [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpROCanUpdateRW        [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpROOnlyBootsValidRW   [ PASS ] \n2023-07-01T09:43:34.859024Z firmware.FpRWNoUpdateRO         [ PASS ]\n\nRun attempt #2\n\n2023-07-01T09:49:19.005127Z biod.Running [ PASS ]\n\n```",
+      "revId": "80aa43ed0c7a72fd44fec4a38094d3d5ff306df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
