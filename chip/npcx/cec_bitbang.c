@@ -20,6 +20,9 @@
 #define CPRINTS(format, args...) cprints(CC_CEC, format, ##args)
 #endif
 
+/* Only one instance of the bitbang driver is supported on Nuvoton for now. */
+static int cec_port;
+
 /*
  * Time between interrupt triggered and the next timer was
  * set when measuring pulse width
@@ -32,7 +35,7 @@ static int cap_charge;
 /* APB1 frequency. Store divided by 10k to avoid some runtime divisions */
 uint32_t apb1_freq_div_10k;
 
-void cec_tmr_cap_start(enum cec_cap_edge edge, int timeout)
+void cec_tmr_cap_start(int port, enum cec_cap_edge edge, int timeout)
 {
 	int mdl = NPCX_MFT_MODULE_1;
 
@@ -77,7 +80,7 @@ void cec_tmr_cap_start(enum cec_cap_edge edge, int timeout)
 	SET_FIELD(NPCX_TCKC(mdl), NPCX_TCKC_C1CSEL_FIELD, 1);
 }
 
-void cec_tmr_cap_stop(void)
+void cec_tmr_cap_stop(int port)
 {
 	int mdl = NPCX_MFT_MODULE_1;
 
@@ -85,7 +88,7 @@ void cec_tmr_cap_stop(void)
 	SET_FIELD(NPCX_TCKC(mdl), NPCX_TCKC_C1CSEL_FIELD, 0);
 }
 
-int cec_tmr_cap_get(void)
+int cec_tmr_cap_get(int port)
 {
 	int mdl = NPCX_MFT_MODULE_1;
 
@@ -109,6 +112,7 @@ static void tmr2_stop(void)
 
 static void cec_isr(void)
 {
+	int port = cec_port;
 	int mdl = NPCX_MFT_MODULE_1;
 	uint8_t events;
 
@@ -117,7 +121,7 @@ static void cec_isr(void)
 
 	if (events & BIT(NPCX_TECTRL_TAPND)) {
 		/* Capture event */
-		cec_event_cap();
+		cec_event_cap(port);
 	} else {
 		/*
 		 * Capture timeout
@@ -126,12 +130,12 @@ static void cec_isr(void)
 		 * edge-trigger case
 		 */
 		if (events & BIT(NPCX_TECTRL_TCPND))
-			cec_event_timeout();
+			cec_event_timeout(port);
 	}
 	/* Oneshot timer, a transfer has been initiated from AP */
 	if (events & BIT(NPCX_TECTRL_TDPND)) {
 		tmr2_stop();
-		cec_event_tx();
+		cec_event_tx(port);
 	}
 
 	/* Clear handled events */
@@ -139,13 +143,13 @@ static void cec_isr(void)
 }
 DECLARE_IRQ(NPCX_IRQ_MFT_1, cec_isr, 4);
 
-void cec_trigger_send(void)
+void cec_trigger_send(int port)
 {
 	/* Elevate to interrupt context */
 	tmr2_start(0);
 }
 
-void cec_enable_timer(void)
+void cec_enable_timer(int port)
 {
 	int mdl = NPCX_MFT_MODULE_1;
 
@@ -161,7 +165,7 @@ void cec_enable_timer(void)
 	task_enable_irq(NPCX_IRQ_MFT_1);
 }
 
-void cec_disable_timer(void)
+void cec_disable_timer(int port)
 {
 	int mdl = NPCX_MFT_MODULE_1;
 
@@ -170,7 +174,7 @@ void cec_disable_timer(void)
 	CLEAR_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TDIEN);
 
 	tmr2_stop();
-	cec_tmr_cap_stop();
+	cec_tmr_cap_stop(port);
 
 	task_disable_irq(NPCX_IRQ_MFT_1);
 
@@ -182,9 +186,11 @@ void cec_disable_timer(void)
 	cap_delay = 0;
 }
 
-void cec_init_timer(void)
+void cec_init_timer(int port)
 {
 	int mdl = NPCX_MFT_MODULE_1;
+
+	cec_port = port;
 
 	/* APB1 is the clock we base the timers on */
 	apb1_freq_div_10k = clock_get_apb1_freq() / 10000;
