@@ -231,6 +231,12 @@
 			gpios = <&gpioi 7 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_VOLUME_UP_L";
 		};
+		gpio_acc_int_debug: acc_int_debug {
+			gpios = <&gpioc 6 GPIO_OUTPUT>;
+		};
+		gpio_imu_int_debug: imu_int_debug {
+			gpios = <&gpiod 7 GPIO_OUTPUT>;
+		};
 	};
 
 	named-i2c-ports {

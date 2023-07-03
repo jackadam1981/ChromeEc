@@ -107,9 +107,11 @@ static void irq_set_orientation(struct motion_sensor_t *s)
  */
 void bmi3xx_interrupt(enum gpio_signal signal)
 {
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 1);
 	last_interrupt_timestamp = __hw_clock_source_read();
 
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCELGYRO_BMI3XX_INT_EVENT);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 0);
 }
 
 static int enable_fifo(const struct motion_sensor_t *s, int enable)

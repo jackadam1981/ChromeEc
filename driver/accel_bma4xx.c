@@ -14,6 +14,7 @@
 #include "builtin/assert.h"
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "hwtimer.h"
 #include "i2c.h"
 #include "math_util.h"
@@ -587,9 +588,11 @@ static uint32_t last_irq_timestamp;
 /* Handle IRQ from sensor: schedule read from task context */
 void bma4xx_interrupt(enum gpio_signal signal)
 {
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 1);
 	__atomic_store_n(&last_irq_timestamp, __hw_clock_source_read(),
 			 __ATOMIC_RELAXED);
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCEL_BMA4XX_INT_EVENT);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 0);
 }
 
 /* Process FIFO data read from accel and push data to host */
