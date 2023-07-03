@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5ef927f_09a27949",
+        "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+        "patchSetId": 54
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-07-03T14:44:16Z",
+      "side": 1,
+      "message": "Filled properties with correct values.",
+      "parentUuid": "8794be15_343e2b7b",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 30
+      },
+      "revId": "4caa956b568a364d617d7c6f791b51f947787bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3096e197_a81cc8bc",
@@ -149,6 +173,30 @@
       "writtenOn": "2023-05-18T21:24:34Z",
       "side": 1,
       "message": "Same here",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 27
+      },
+      "revId": "4caa956b568a364d617d7c6f791b51f947787bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa3ac784_39c6daf3",
+        "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+        "patchSetId": 54
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-07-03T14:44:16Z",
+      "side": 1,
+      "message": "Filled properties with correct values.",
+      "parentUuid": "3096e197_a81cc8bc",
       "range": {
         "startLine": 75,
         "startChar": 4,
