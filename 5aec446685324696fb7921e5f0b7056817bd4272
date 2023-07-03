@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "818d4db1_c001f705",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-07-03T06:38:24Z",
+      "side": 1,
+      "message": "Please add the low coverage reason (the test is implemented in http://crrev.com/c/4648290).\n\nOr, you can construct the relation chain with http://crrev.com/c/4648290 to make them submit together, then you do not need to add the low coverage reason.",
+      "revId": "5aec446685324696fb7921e5f0b7056817bd4272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
