@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "373e6200_08bb5288",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-07-03T03:13:59Z",
+      "side": 1,
+      "message": "Yes eventually all the functions will need a port parameter. I thought we could do this later when Stefan adds support for multiple ports on npcx, but I\u0027ve gone ahead and done it now in CL:4663559.",
+      "parentUuid": "f7742baa_fba6ca70",
+      "range": {
+        "startLine": 399,
+        "startChar": 23,
+        "endLine": 399,
+        "endChar": 27
+      },
+      "revId": "abcf0de450fedb9cd268e75a471cb79af1fd07c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b321c94_151f4b18",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-30T18:42:23Z",
       "side": 1,
       "message": "TASK_EVENT_CUSTOM_BIT has a built-in check, which prevents BIT(x) from exceeding BIT(15).",
+      "range": {
+        "startLine": 18,
+        "startChar": 37,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "abcf0de450fedb9cd268e75a471cb79af1fd07c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b679e3_293587e7",
+        "filename": "include/cec.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-07-03T03:13:59Z",
+      "side": 1,
+      "message": "Changed it back. I changed it because we\u0027re no longer using it with task_set_event(), but I guess that doesn\u0027t matter.",
+      "parentUuid": "8b321c94_151f4b18",
       "range": {
         "startLine": 18,
         "startChar": 37,
