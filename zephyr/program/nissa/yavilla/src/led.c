@@ -4,6 +4,7 @@
  */
 
 #include "battery.h"
+#include "board_led.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "chipset.h"
@@ -13,6 +14,8 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "led_common.h"
+#include "led_pwm.h"
+#include "util.h"
 
 #include <stdint.h>
 
@@ -23,15 +26,14 @@ LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 #define BAT_LED_ON 0
 #define BAT_LED_OFF 1
 
-#define PWR_LED_ON 0
-#define PWR_LED_OFF 1
-
 #define BATT_LOW_BCT 10
 
 #define LED_TICKS_PER_CYCLE 4
 #define LED_TICKS_PER_CYCLE_S3 4
 #define LED_ON_TICKS 2
 #define POWER_LED_ON_S3_TICKS 2
+
+#define BOARD_LED_PWM_PERIOD_NS BOARD_LED_HZ_TO_PERIOD_NS(1296)
 
 static bool power_led_support;
 
@@ -49,6 +51,32 @@ enum led_color {
 };
 
 enum led_port { RIGHT_PORT = 0, LEFT_PORT };
+
+static const struct board_led_pwm_dt_channel board_led_power =
+	BOARD_LED_PWM_DT_CHANNEL_INITIALIZER(DT_NODELABEL(pwm_power_led));
+
+static void board_led_pwm_set_duty(const struct board_led_pwm_dt_channel *ch,
+				   int percent)
+{
+	uint32_t pulse_ns;
+	int rv;
+
+	if (!device_is_ready(ch->dev)) {
+		LOG_ERR("PWM device %s not ready", ch->dev->name);
+		return;
+	}
+
+	pulse_ns = DIV_ROUND_NEAREST(BOARD_LED_PWM_PERIOD_NS * percent, 100);
+
+	LOG_DBG("Board LED PWM %s set percent (%d), pulse %d", ch->dev->name,
+		percent, pulse_ns);
+
+	rv = pwm_set(ch->dev, ch->channel, BOARD_LED_PWM_PERIOD_NS, pulse_ns,
+		     ch->flags);
+	if (rv) {
+		LOG_ERR("pwm_set() failed %s (%d)", ch->dev->name, rv);
+	}
+}
 
 static void led_set_color_battery(int port, enum led_color color)
 {
@@ -84,12 +112,10 @@ static void led_set_color_power(enum led_color color)
 {
 	switch (color) {
 	case LED_OFF:
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_power_led_white_l),
-				PWR_LED_OFF);
+		board_led_pwm_set_duty(&board_led_power, 0);
 		break;
 	case LED_WHITE:
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_power_led_white_l),
-				PWR_LED_ON);
+		board_led_pwm_set_duty(&board_led_power, 100);
 		break;
 	default:
 		break;
