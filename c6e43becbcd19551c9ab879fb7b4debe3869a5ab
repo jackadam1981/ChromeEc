@@ -22,6 +22,30 @@
       },
       "revId": "c6e43becbcd19551c9ab879fb7b4debe3869a5ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e35ff9e3_f084a843",
+        "filename": "zephyr/test/drivers/rt1718s/src/adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-03T07:13:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "292b45e0_c2a2a02b",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "c6e43becbcd19551c9ab879fb7b4debe3869a5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
