@@ -22,6 +22,30 @@
       },
       "revId": "c6ff5dd79c9de7ca9fa02947d9c7739b8c23540a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa2a29e5_4a1be963",
+        "filename": "zephyr/program/nissa/joxer/src/usbc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-07-03T07:24:49Z",
+      "side": 1,
+      "message": "Add mock for schedule_deferred_pd_interrupt and it was checked in test_c1_interrupt.",
+      "parentUuid": "ee1259c0_dcccfc78",
+      "range": {
+        "startLine": 277,
+        "startChar": 19,
+        "endLine": 277,
+        "endChar": 65
+      },
+      "revId": "c6ff5dd79c9de7ca9fa02947d9c7739b8c23540a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
