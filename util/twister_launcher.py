@@ -215,7 +215,7 @@ def upload_results(ec_base, outdir):
                 "-realm",
                 "chromium:public",
                 "-tag",
-                "builder_name:" + hostname,
+                "build_config:" + hostname,
                 "--",
                 "vpython3",
                 str(ec_base / "util/zephyr_to_resultdb.py"),

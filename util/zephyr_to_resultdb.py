@@ -6,7 +6,7 @@
 """ Upload twister results to ResultDB
 
     Usage:
-    $ rdb stream -new -realm chromium:public -tag builder_name:${HOSTNAME%%.*}
+    $ rdb stream -new -realm chromium:public -tag build_config:${HOSTNAME%%.*}
       -- ./util/zephyr_to_resultdb.py --results=twister-out/twister.json
       --upload=True
 """
