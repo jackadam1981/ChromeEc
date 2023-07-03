@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4d80ce_7cad04dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-07-03T10:41:55Z",
+      "side": 1,
+      "message": "nit: max 72 columns per line",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 39
+      },
+      "revId": "17885748ff94a6e502fbe9fe9382229506cebda5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cfc8e04_8d118e16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-07-03T10:41:55Z",
+      "side": 1,
+      "message": "Thanks for the description why we want to disable timberslide in this script rather than TAST test. It helped me to understand the purpose of this change.",
+      "revId": "17885748ff94a6e502fbe9fe9382229506cebda5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
