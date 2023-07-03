@@ -33,6 +33,24 @@
       "message": "Thank you for creating these test cases, I think these cases are valid and good. However, can you make them a table test? You can check examples like [tests here](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/test/drivers/rt9490/src/charger.c)? Thank you.",
       "revId": "d39cfd086150842bbbeee35b87406b270e6e4211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07fd1b92_38256b4d",
+        "filename": "zephyr/test/krabby/src/temp_starmie.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-07-03T06:31:24Z",
+      "side": 1,
+      "message": "Thank you, it looks good.",
+      "parentUuid": "4a7c71af_b1b49fdd",
+      "revId": "d39cfd086150842bbbeee35b87406b270e6e4211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
