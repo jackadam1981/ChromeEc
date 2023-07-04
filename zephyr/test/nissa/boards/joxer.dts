@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 #include <it8xxx2_emul.dts>
+#include "../program/nissa/cbi.dtsi"
 #include "../program/nissa/joxer/cbi.dtsi"
 
 / {
@@ -24,6 +25,10 @@
 		};
 		gpio_usb_c1_int_odl: usb_c1_int_odl {
 			gpios = <&gpioe 6 GPIO_INPUT_PULL_UP>;
+		};
+		gpio_fan_enable: fan-enable {
+			gpios = <&gpiol 4 GPIO_OUTPUT>;
+			no-auto-init;
 		};
 	};
 

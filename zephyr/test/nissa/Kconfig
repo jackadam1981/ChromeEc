@@ -45,6 +45,12 @@ choice TEST_TARGET
 	  bool "Tests for Joxer-specific code"
 	  help
 		The test target that exercises nissa/joxer/*.c
+
+	config TEST_NISSA_JOXER_FAN
+	  bool "Tests for Joxer-specific fan code"
+	  help
+		The test target that exercises nissa/joxer/fan.c
+
 endchoice
 
 config TEST_USB_PD_POLICY
