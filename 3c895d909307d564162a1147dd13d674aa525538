@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dde52c2_5bedd6e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558197
+      },
+      "writtenOn": "2023-07-04T11:45:55Z",
+      "side": 1,
+      "message": "Thanks for comments.\n\nJust a general remark, this is a PoC meant mostly to start a discussion about replacing old body detection algorithm with the new one.\nThe first phase is to use it on all Zephyr-based EC (i.e. Whiterun and Starmie).\n\nUpdating older DUTs might be problematic as for some of them EC is not actively maintained etc.\n\nAlso, as a future work after PoC I want to provide scripts for gathering real time data and analyzing them in a more appropriate environment (like Octave or Matlab) as doing any such debug in C is a nightmare.",
+      "revId": "3c895d909307d564162a1147dd13d674aa525538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
