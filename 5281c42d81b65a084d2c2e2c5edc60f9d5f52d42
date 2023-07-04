@@ -16,6 +16,23 @@
       "message": "This version recognizes BC1.2 correctly.",
       "revId": "5281c42d81b65a084d2c2e2c5edc60f9d5f52d42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "561fabf0_0c5471dd",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-07-04T01:14:38Z",
+      "side": 1,
+      "message": "Please only set the only corresponding bit to 0.",
+      "revId": "5281c42d81b65a084d2c2e2c5edc60f9d5f52d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
