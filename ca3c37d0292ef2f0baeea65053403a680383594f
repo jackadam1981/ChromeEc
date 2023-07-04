@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6affd526_98e00424",
+        "filename": "chip/it83xx/cec_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-07-04T22:45:56Z",
+      "side": 1,
+      "message": "Can we make the driver state-less?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "ca3c37d0292ef2f0baeea65053403a680383594f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d702c2_8e8f2e6c",
+        "filename": "chip/it83xx/cec_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-07-04T22:45:56Z",
+      "side": 1,
+      "message": "We use a separage GPIO for each CEC port, right? Can we find a port based on \u0027signal\u0027?",
+      "range": {
+        "startLine": 113,
+        "startChar": 24,
+        "endLine": 113,
+        "endChar": 47
+      },
+      "revId": "ca3c37d0292ef2f0baeea65053403a680383594f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
