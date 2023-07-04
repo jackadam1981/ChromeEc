@@ -82,3 +82,12 @@ if(CONFIG_TEST_NISSA_JOXER)
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/joxer/src/usbc.c
     )
 endif()
+
+if(CONFIG_TEST_NISSA_JOXER_FAN)
+    target_compile_definitions(app PRIVATE CHARGER_PRIMARY=0 CHARGER_SECONDARY=1)
+    target_sources(
+            app PRIVATE
+            src/joxer_fan.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/joxer/src/fan.c
+    )
+endif()
