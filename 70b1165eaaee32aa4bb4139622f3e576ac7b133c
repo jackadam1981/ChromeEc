@@ -16,6 +16,24 @@
       "message": "This is caused by the `usb-c1` is removed, so when `zephyr/shim/src/i2c.c` crafting the `i2c_remote_ports`, there is no setting that sets the `i2c_remote_ports[4]` to -1, and with your change in patchset 1, this would make `i2c_remote_ports[0]` and `i2c_remote_ports[4]` both map to remote port 0.\n\nI think this is not a good idea, so I suggest either remove the `/delete-node/ usb-c1;`. Maybe @yllin has better idea?",
       "revId": "70b1165eaaee32aa4bb4139622f3e576ac7b133c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb0d27e6_754f6482",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-04T09:14:00Z",
+      "side": 1,
+      "message": "+1 to add `usb-c1` back.",
+      "parentUuid": "64edc032_d2ed3467",
+      "revId": "70b1165eaaee32aa4bb4139622f3e576ac7b133c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
