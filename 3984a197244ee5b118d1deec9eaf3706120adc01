@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c10e8f8_082fa727",
+        "filename": "zephyr/program/corsola/starmie/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-07-04T07:48:25Z",
+      "side": 1,
+      "message": "I think we are more like tentacruel, so we only need \n\n```\nCONFIG_PLATFORM_EC_BRINGUP\u003dn\nCONFIG_PLATFORM_EC_SYSTEM_UNLOCKED\u003dn\n```\n?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "3984a197244ee5b118d1deec9eaf3706120adc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
