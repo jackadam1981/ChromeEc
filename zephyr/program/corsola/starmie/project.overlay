@@ -128,6 +128,9 @@
 
 	named-i2c-ports {
 		/delete-node/ usb-c1;			//unused i2c_usb_c1
+		charger {
+			remote-port = <0>;
+		};
 	};
 
 	/delete-node/ cros-keyscan;
