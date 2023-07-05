@@ -214,6 +214,9 @@ void pd_shared_alert_task(void *p)
 				service_one_port(port);
 			}
 		} while (have_alerts != 0);
+		for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port) {
+			board_process_pd_alert(port);
+		}
 	}
 }
 #endif /* !CONFIG_ZEPHYR || CONFIG_HAS_TASK_PD_INT_SHARED */
