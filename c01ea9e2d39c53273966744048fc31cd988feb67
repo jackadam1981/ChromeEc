@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97706b13_b07756c0",
+        "filename": "zephyr/emul/emul_rt1739.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-05T06:54:44Z",
+      "side": 1,
+      "message": "I think you don\u0027t need to allow 0xF0 and 0xF1 here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 25,
+        "endLine": 42,
+        "endChar": 55
+      },
+      "revId": "c01ea9e2d39c53273966744048fc31cd988feb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0356efa4_2a27d979",
         "filename": "zephyr/include/emul/emul_rt1739.h",
         "patchSetId": 2
