@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a418063d_ea07f57c",
+        "filename": "zephyr/test/drivers/default/src/temp_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-07-05T19:56:12Z",
+      "side": 1,
+      "message": "Perfect, done",
+      "parentUuid": "c04f26ab_e3b68504",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 47
+      },
+      "revId": "8902297dd0437835ae961288ad8a65668688cb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9df5c1a_2937fb6e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-05T19:40:57Z",
       "side": 1,
       "message": "You might be able to get away without `args` and passing NULL to the command function here and above.",
+      "range": {
+        "startLine": 335,
+        "startChar": 44,
+        "endLine": 335,
+        "endChar": 48
+      },
+      "revId": "8902297dd0437835ae961288ad8a65668688cb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b59be1_3604d530",
+        "filename": "zephyr/test/drivers/default/src/temp_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-07-05T19:56:12Z",
+      "side": 1,
+      "message": "Oooo, fancy.  Done",
+      "parentUuid": "d9df5c1a_2937fb6e",
       "range": {
         "startLine": 335,
         "startChar": 44,
