@@ -90,3 +90,11 @@ if(CONFIG_TEST_NISSA_JOXER_FAN)
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/joxer/src/fan.c
     )
 endif()
+
+if(CONFIG_TEST_NISSA_JOXER_FORM_FACTOR)
+    target_sources(
+            app PRIVATE
+            src/joxer_form_factor.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/joxer/src/form_factor.c
+    )
+endif()

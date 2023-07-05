@@ -11,5 +11,6 @@
 extern const struct ec_response_keybd_config joxer_kb_legacy;
 
 void fan_init(void);
+void form_factor_init(void);
 
 #endif /* ZEPHYR_TEST_NISSA_INCLUDE_JOXER_H_ */

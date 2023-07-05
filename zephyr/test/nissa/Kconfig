@@ -51,6 +51,12 @@ choice TEST_TARGET
 	  help
 		The test target that exercises nissa/joxer/fan.c
 
+	config TEST_NISSA_JOXER_FORM_FACTOR
+	  bool "Tests for Joxer-specific form factor code"
+	  help
+		The test target that exercises nissa/joxer/form_factor.c.
+		It will test rotation matrix based on cbi FW_CONFIG.
+
 endchoice
 
 config TEST_USB_PD_POLICY
