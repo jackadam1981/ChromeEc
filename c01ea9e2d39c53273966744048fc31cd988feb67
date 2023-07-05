@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0356efa4_2a27d979",
+        "filename": "zephyr/include/emul/emul_rt1739.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-05T06:47:20Z",
+      "side": 1,
+      "message": "There\u0027s already a `struct set_reg_entry_t` in emul_rt1718s.h, rename this to avoid redefinition.",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "c01ea9e2d39c53273966744048fc31cd988feb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
