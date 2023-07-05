@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a164a70_fb25fbcd",
+        "filename": "util/merge_token_db.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-07-05T14:52:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a83caa8b_cc04e2f3",
+      "range": {
+        "startLine": 6,
+        "startChar": 18,
+        "endLine": 6,
+        "endChar": 30
+      },
+      "revId": "343259603782148592c187a9b7d26c7ed7ee26f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e506529b_368f7a18",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-07-03T09:16:43Z",
       "side": 1,
       "message": "Would you not be better off calling the script directly? (i.e. without python3 explicitly) The script is already executable... just in case it gets changed to use vpython or something else",
+      "revId": "343259603782148592c187a9b7d26c7ed7ee26f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7b0bf7_001690fd",
+        "filename": "util/merge_token_db.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-07-05T14:52:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e506529b_368f7a18",
       "revId": "343259603782148592c187a9b7d26c7ed7ee26f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
