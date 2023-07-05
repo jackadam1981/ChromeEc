@@ -16,6 +16,24 @@
       "message": "It turns out that this isn\u0027t actually working. `test_trng_rand_bytes_toggle` is still taking way too long to execute.",
       "revId": "bc69922ae44cb66b7dc8b09428e858be5ef3d3ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1698832b_ba557ff4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-05T21:24:36Z",
+      "side": 1,
+      "message": "To resolve this issue I added go/crvc/4667790/2, which reduces the number of iterations. It turns out that helipilot takes about 1 second to init / exit the RNG so 100 iterations took 100 seconds. Since this isn\u0027t a normal use case, reducing the iterations count seems okay.",
+      "parentUuid": "49e33a11_e0e50538",
+      "revId": "bc69922ae44cb66b7dc8b09428e858be5ef3d3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
