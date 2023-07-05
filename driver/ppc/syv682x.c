@@ -832,6 +832,7 @@ static int syv682x_init(int port)
 	if (rv)
 		return rv;
 
+	udelay(100 * MSEC);
 	return EC_SUCCESS;
 }
 
