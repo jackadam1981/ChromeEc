@@ -104,6 +104,30 @@
       },
       "revId": "77b91daf43b260a32f9e4edc648e93095a1f3bf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd30763b_d0819d43",
+        "filename": "core/cortex-m/cpu.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-05T21:28:39Z",
+      "side": 1,
+      "message": "we can keep this `crash unaligned` because it will crash when unaligned access is attempted. It should not work though when `CONFIG_ALLOW_UNALIGNED_ACCESS` is enabled.",
+      "parentUuid": "771c289e_177ece64",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "77b91daf43b260a32f9e4edc648e93095a1f3bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

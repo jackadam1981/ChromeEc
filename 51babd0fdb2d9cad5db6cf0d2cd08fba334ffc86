@@ -22,6 +22,30 @@
       },
       "revId": "51babd0fdb2d9cad5db6cf0d2cd08fba334ffc86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe52d57_432cb64a",
+        "filename": "common/panic_output.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-05T21:28:39Z",
+      "side": 1,
+      "message": "I removed this comment. I mainly was adding TODO per Boris comment to modify the crash logic such that it will still crash even with unaligned trapped removed. It can use instructions that are not allowed without alignment. However, I am not sure this will work because this is not only for armv7",
+      "parentUuid": "c1cc1450_087fb075",
+      "range": {
+        "startLine": 374,
+        "startChar": 2,
+        "endLine": 374,
+        "endChar": 59
+      },
+      "revId": "51babd0fdb2d9cad5db6cf0d2cd08fba334ffc86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
