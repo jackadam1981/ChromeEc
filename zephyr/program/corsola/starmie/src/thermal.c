@@ -11,7 +11,10 @@
 #include "extpower.h"
 #include "hooks.h"
 #include "power.h"
+#include "temp_sensor.h"
 #include "temp_sensor/temp_sensor.h"
+#include "thermal.h"
+#include "throttle_ap.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
@@ -20,10 +23,12 @@
 #define CHARGING_CURRENT_MA_SAFE 5000
 
 static int thermals[6];
-static int thermal_cyc;
+static int thermal_cyc, high_temp_cyc, high_dischg_cyc, high_S5_cyc;
+static int warn_report, high_report;
 
 int charger_profile_override(struct charge_state_data *curr)
 {
+	int ambient_temp, ambient_c;
 	int charger_temp, charger_temp_c, charger_temp_ave;
 	int lcd_temp, lcd_temp_c;
 	int current;
@@ -62,6 +67,11 @@ int charger_profile_override(struct charge_state_data *curr)
 		TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_sensor_1_thermistor)),
 		&lcd_temp);
 
+	temp_sensor_read(
+		TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_sensor_2_thermistor)),
+		&ambient_temp);
+
+	ambient_c = K_TO_C(ambient_temp);
 	charger_temp_c = K_TO_C(charger_temp);
 	lcd_temp_c = K_TO_C(lcd_temp);
 
@@ -123,6 +133,79 @@ int charger_profile_override(struct charge_state_data *curr)
 		}
 	}
 	thermals[5] = charger_temp_ave;
+
+	if (chipset_state == POWER_S0) {
+		if ((lcd_temp_c >= 82) || (ambient_c >= 80)) {
+			if (high_temp_cyc <= 15)
+				high_temp_cyc++;
+			else {
+				if (warn_report == 0) {
+					warn_report++;
+					CPRINTS("thermal WARN");
+					throttle_ap(THROTTLE_ON, THROTTLE_SOFT,
+						    THROTTLE_SRC_THERMAL);
+				}
+			}
+
+			if ((lcd_temp_c >= 87) || (ambient_c >= 85)) {
+				if (high_dischg_cyc <= 15)
+					high_dischg_cyc++;
+				else {
+					temp_zone = TEMP_OUT_OF_RANGE;
+					if (high_report == 0) {
+						high_report++;
+						CPRINTS("thermal HIGH");
+						throttle_ap(
+							THROTTLE_ON,
+							THROTTLE_HARD,
+							THROTTLE_SRC_THERMAL);
+					}
+				}
+				if ((lcd_temp_c >= 92) || (ambient_c >= 90)) {
+					if (high_S5_cyc <= 20)
+						high_S5_cyc++;
+					else {
+						CPRINTS("thermal SHUTDOWN");
+						chipset_force_shutdown(
+							CHIPSET_SHUTDOWN_THERMAL);
+					}
+				} else {
+					high_S5_cyc = 0;
+				}
+			} else {
+				high_dischg_cyc = high_S5_cyc = 0;
+				if (high_report != 0) {
+					high_report--;
+					CPRINTS("thermal no longer high");
+					throttle_ap(THROTTLE_OFF, THROTTLE_HARD,
+						    THROTTLE_SRC_THERMAL);
+				}
+			}
+
+		} else {
+			high_temp_cyc = high_dischg_cyc = high_S5_cyc = 0;
+			if (warn_report != 0) {
+				warn_report--;
+				CPRINTS("thermal no longer warn");
+				throttle_ap(THROTTLE_OFF, THROTTLE_HARD,
+					    THROTTLE_SRC_THERMAL);
+			}
+		}
+	} else {
+		high_temp_cyc = high_dischg_cyc = high_S5_cyc = 0;
+		if (high_report != 0) {
+			high_report--;
+			CPRINTS("thermal no longer high");
+			throttle_ap(THROTTLE_OFF, THROTTLE_HARD,
+				    THROTTLE_SRC_THERMAL);
+		}
+		if (warn_report != 0) {
+			warn_report--;
+			CPRINTS("thermal no longer warn");
+			throttle_ap(THROTTLE_OFF, THROTTLE_HARD,
+				    THROTTLE_SRC_THERMAL);
+		}
+	}
 
 	switch (temp_zone) {
 	case TEMP_ZONE_0:

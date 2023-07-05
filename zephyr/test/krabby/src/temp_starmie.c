@@ -50,6 +50,14 @@ static void test_table(uint16_t batt, uint16_t chgv1, uint16_t lcdv1,
 
 ZTEST(temp_current, test_current_limit_in_each_zone)
 {
+	const struct device *adc_dev = DEVICE_DT_GET(DT_NODELABEL(adc0));
+	uint8_t charger_adc_channel =
+		DT_IO_CHANNELS_INPUT(DT_NODELABEL(adc_charger));
+	uint8_t lcd_adc_channel =
+		DT_IO_CHANNELS_INPUT(DT_NODELABEL(adc_temp_sensor_1));
+	uint8_t ambient_adc_channel =
+		DT_IO_CHANNELS_INPUT(DT_NODELABEL(adc_temp_sensor_2));
+	struct charge_state_data curr;
 	int battflag[2] = { BATT_FLAG_RESPONSIVE,
 			    BATT_FLAG_RESPONSIVE | BATT_FLAG_BAD_TEMPERATURE };
 	uint16_t current_table[] = { 5000, 2500, 1800, 1000, 0 };
@@ -80,12 +88,41 @@ ZTEST(temp_current, test_current_limit_in_each_zone)
 		{ battflag[0], 376, 446, 418, 446, current_table[1], POWER_S0 },
 		{ battflag[0], 418, 446, 483, 446, current_table[0], POWER_S0 },
 	};
+
+	set_adc_emul_read_voltage(446, adc_dev, ambient_adc_channel);
 	for (int i = 0; i < ARRAY_SIZE(testdata); i++) {
 		test_table(testdata[i].batt, testdata[i].chgv1,
 			   testdata[i].lcdv1, testdata[i].chgv2,
 			   testdata[i].lcdv2, testdata[i].current,
 			   testdata[i].power);
 	}
+
+	/* Implement thermal protection*/
+	curr.batt.flags = battflag[0];
+	power_set_state(POWER_S0);
+	set_adc_emul_read_voltage(418, adc_dev, charger_adc_channel);
+	set_adc_emul_read_voltage(446, adc_dev, lcd_adc_channel);
+	set_adc_emul_read_voltage(147, adc_dev, ambient_adc_channel);
+	for (int i = 0; i < 4; i++)
+		wait_heat_stable(&curr);
+	zassert_equal(curr.requested_current, current_table[4]);
+
+	power_set_state(POWER_S0);
+	set_adc_emul_read_voltage(418, adc_dev, charger_adc_channel);
+	set_adc_emul_read_voltage(446, adc_dev, lcd_adc_channel);
+	set_adc_emul_read_voltage(446, adc_dev, ambient_adc_channel);
+	for (int i = 0; i < 4; i++)
+		wait_heat_stable(&curr);
+	zassert_equal(curr.requested_current, current_table[0]);
+
+	curr.batt.flags = battflag[0];
+	power_set_state(POWER_S0);
+	set_adc_emul_read_voltage(418, adc_dev, charger_adc_channel);
+	set_adc_emul_read_voltage(446, adc_dev, lcd_adc_channel);
+	set_adc_emul_read_voltage(125, adc_dev, ambient_adc_channel);
+	for (int i = 0; i < 5; i++)
+		wait_heat_stable(&curr);
+	zassert_equal(power_get_state(), POWER_S0);
 }
 
 ZTEST_SUITE(temp_current, NULL, NULL, NULL, NULL, NULL);

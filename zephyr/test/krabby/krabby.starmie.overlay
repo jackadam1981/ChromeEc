@@ -49,6 +49,13 @@
 		adc = <&adc_temp_sensor_1>;
 	};
 
+	temp_sensor_2_thermistor: temp_sensor_2_thermistor {
+		compatible = "cros-ec,temp-sensor-thermistor";
+
+		thermistor = <&thermistor_1V8_100K_100K_4250B>;
+		adc = <&adc_temp_sensor_2>;
+	};
+
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		temp_charger: charger {
@@ -58,6 +65,10 @@
 
 		lcd_thermistor: lcd_thermistor {
 			sensor = <&temp_sensor_1_thermistor>;
+		};
+
+		ambient_thermistor: ambient_thermistor {
+			sensor = <&temp_sensor_2_thermistor>;
 		};
 	};
 
@@ -70,6 +81,11 @@
 			 * is 5.
 			 */
 			io-channels = <&adc0 4>;
+		};
+
+		adc_temp_sensor_2: adc-temp-sensor-2 {
+			enum-name = "ADC_TEMP_SENSOR_2";
+			io-channels = <&adc0 3>;
 		};
 	};
 
