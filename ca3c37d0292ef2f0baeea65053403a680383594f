@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "732987cb_a3470e41",
+        "filename": "chip/it83xx/cec_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-07-05T04:44:36Z",
+      "side": 1,
+      "message": "I\u0027ve uploaded CLs for ITE. Let me know what you think.\n\nFor Nuvoton, we can detect the port based on the events (NPCX_TECTRL_TAPND, etc) in cec_isr. But that depends on Stefan\u0027s changes to share one MFT between ports, so I\u0027ve left it as a TODO. Is that alright?",
+      "parentUuid": "6affd526_98e00424",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "ca3c37d0292ef2f0baeea65053403a680383594f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19d702c2_8e8f2e6c",
         "filename": "chip/it83xx/cec_bitbang.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-04T22:45:56Z",
       "side": 1,
       "message": "We use a separage GPIO for each CEC port, right? Can we find a port based on \u0027signal\u0027?",
+      "range": {
+        "startLine": 113,
+        "startChar": 24,
+        "endLine": 113,
+        "endChar": 47
+      },
+      "revId": "ca3c37d0292ef2f0baeea65053403a680383594f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d781d8d9_45a5f8e6",
+        "filename": "chip/it83xx/cec_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-07-05T04:44:36Z",
+      "side": 1,
+      "message": "Done in CL:4666543",
+      "parentUuid": "19d702c2_8e8f2e6c",
       "range": {
         "startLine": 113,
         "startChar": 24,
