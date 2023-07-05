@@ -80,6 +80,30 @@
       },
       "revId": "77b91daf43b260a32f9e4edc648e93095a1f3bf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "771c289e_177ece64",
+        "filename": "core/cortex-m/cpu.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-05T19:56:53Z",
+      "side": 1,
+      "message": "Is there still a need to \"crash on unaligned\" or does it make more sense to rename the command to just `crash` or `test_crash` or something similar?",
+      "parentUuid": "b6b4c255_d3b7e853",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "77b91daf43b260a32f9e4edc648e93095a1f3bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
