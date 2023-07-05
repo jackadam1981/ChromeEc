@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da5afe9f_80d795d1",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-07-05T21:07:22Z",
+      "side": 1,
+      "message": "I tried this out (and the using IF_ENABLED throughout) but it fails to build due to `CONFIG_CMD_KEYBOARD_KBLOG_LEN` not being defined when logging is disabled (needed for the struct definition)",
+      "parentUuid": "3171644b_f46d39d3",
+      "range": {
+        "startLine": 176,
+        "startChar": 7,
+        "endLine": 176,
+        "endChar": 32
+      },
+      "revId": "a29dae6a0a4e5a76e8d9aeaad249ecbaffb8baa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "649ef8ba_8839e8a7",
         "filename": "common/keyboard_8042.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-27T22:42:14Z",
       "side": 1,
       "message": "We don\u0027t need this whole section if !CONFIG_CMD_KEYBOARD_KBLOG.",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 3
+      },
+      "revId": "a29dae6a0a4e5a76e8d9aeaad249ecbaffb8baa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8011da1_b2206138",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-07-05T21:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "649ef8ba_8839e8a7",
       "range": {
         "startLine": 313,
         "startChar": 0,
@@ -107,6 +155,30 @@
       "writtenOn": "2023-06-27T22:42:14Z",
       "side": 1,
       "message": "If you ungard line 176, you can do:\n\n    if (IS_ENABLED(CONFIG_CMD_KEYBOARD_KBLOG))\n        memset(\u0026kblog, 0, sizeof(kblog));",
+      "range": {
+        "startLine": 1444,
+        "startChar": 0,
+        "endLine": 1444,
+        "endChar": 41
+      },
+      "revId": "a29dae6a0a4e5a76e8d9aeaad249ecbaffb8baa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c151439_ea98c1cf",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-07-05T21:07:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b7abc02a_6f1a1abe",
       "range": {
         "startLine": 1444,
         "startChar": 0,
