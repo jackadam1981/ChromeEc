@@ -21,9 +21,6 @@
 #define CPRINTS(...)
 #endif
 
-/* Only one instance of the bitbang driver is supported on ITE for now. */
-static int cec_port;
-
 /* Timestamp when the most recent interrupt occurred */
 static timestamp_t interrupt_time;
 
@@ -32,6 +29,38 @@ static timestamp_t prev_interrupt_time;
 
 /* Flag set when a transfer is initiated from the AP */
 static bool transfer_initiated;
+
+static int port_from_timer(enum ext_timer_sel ext_timer)
+{
+	int port;
+	const struct bitbang_cec_config *drv_config;
+
+	for (port = 0; port < CEC_PORT_COUNT; port++) {
+		if (cec_config[port].drv == &bitbang_cec_drv) {
+			drv_config = cec_config[port].drv_config;
+			if (drv_config->timer == ext_timer)
+				return port;
+		}
+	}
+
+	return -1;
+}
+
+static int port_from_gpio_in(enum gpio_signal signal)
+{
+	int port;
+	const struct bitbang_cec_config *drv_config;
+
+	for (port = 0; port < CEC_PORT_COUNT; port++) {
+		if (cec_config[port].drv == &bitbang_cec_drv) {
+			drv_config = cec_config[port].drv_config;
+			if (drv_config->gpio_in == signal)
+				return port;
+		}
+	}
+
+	return -1;
+}
 
 /*
  * ITE doesn't have a capture timer, so we use a countdown timer for timeout
@@ -103,9 +132,14 @@ __override void cec_update_interrupt_time(int port)
 	interrupt_time = get_time();
 }
 
-void cec_ext_timer_interrupt(void)
+void cec_ext_timer_interrupt(enum ext_timer_sel ext_timer)
 {
-	int port = cec_port;
+	int port = port_from_timer(ext_timer);
+
+	if (port < 0) {
+		CPRINTF("CEC: interrupt on invalid timer %d\n", ext_timer);
+		return;
+	}
 
 	if (transfer_initiated) {
 		transfer_initiated = false;
@@ -118,7 +152,13 @@ void cec_ext_timer_interrupt(void)
 
 void cec_gpio_interrupt(enum gpio_signal signal)
 {
-	int port = cec_port;
+	int port = port_from_gpio_in(signal);
+
+	if (port < 0) {
+		CPRINTF("CEC: interrupt on invalid GPIO %s\n",
+			gpio_get_name(signal));
+		return;
+	}
 
 	cec_update_interrupt_time(port);
 	cec_event_cap(port);
@@ -154,8 +194,6 @@ void cec_init_timer(int port)
 {
 	const struct bitbang_cec_config *drv_config =
 		cec_config[port].drv_config;
-
-	cec_port = port;
 
 	ext_timer_ms(drv_config->timer, CEC_CLOCK_SOURCE, 0, 0, 0, 1, 0);
 }
