@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "801e9804_e2c4f683",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-07-06T21:09:02Z",
+      "side": 1,
+      "message": "nit: pls add note about ROM image downloading with single mode",
+      "revId": "06b86e68054daa67f4a173372286ea5df0646d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18747162_8078b77d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-07-06T21:09:02Z",
+      "side": 1,
+      "message": "trace",
+      "range": {
+        "startLine": 13,
+        "startChar": 42,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "06b86e68054daa67f4a173372286ea5df0646d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cbcb425_f0b17e1b",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-07-06T21:09:02Z",
+      "side": 1,
+      "message": "nit: is it possible to auto calculate based on spi-max-frequency?",
+      "revId": "06b86e68054daa67f4a173372286ea5df0646d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f299ffd_522b8f5b",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-07-06T21:09:02Z",
+      "side": 1,
+      "message": "nit: about selecting these values dynamically based on info from flash dts file \"lines \u003d \u003cx\u003e;\" ?",
+      "revId": "06b86e68054daa67f4a173372286ea5df0646d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
