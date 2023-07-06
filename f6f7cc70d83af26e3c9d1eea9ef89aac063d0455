@@ -34,6 +34,24 @@
       "parentUuid": "847856f2_0fe3bb44",
       "revId": "f6f7cc70d83af26e3c9d1eea9ef89aac063d0455",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fdf6395_f1f6fa81",
+        "filename": "zephyr/program/rex/rex-ish/prj.conf",
+        "patchSetId": 17
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-07-06T09:08:39Z",
+      "side": 1,
+      "message": "I took some time to run some diffs on these and I think I agree, since it\u0027s a PoC lets stay out of the main rex configs and keep our own.",
+      "parentUuid": "c4c588f8_b24d59c9",
+      "revId": "f6f7cc70d83af26e3c9d1eea9ef89aac063d0455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
