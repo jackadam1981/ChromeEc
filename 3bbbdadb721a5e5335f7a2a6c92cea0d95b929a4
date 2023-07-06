@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd61e7cd_78ab71d4",
+        "filename": "board/helipilot/board_rw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-06T18:51:07Z",
+      "side": 1,
+      "message": "let\u0027s rebase this CL on top of go/crvc/4659518 so we don\u0027t need the `i2c_ports` workaround here",
+      "revId": "3bbbdadb721a5e5335f7a2a6c92cea0d95b929a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
