@@ -92,7 +92,7 @@ void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 	__ASSERT_NO_MSG(exeAddr != 0x0);
 	/* Configure QMSPI controller */
 	qspi->MODE = MCHP_QMSPI_M_SRST;
-	fdiv = 2;
+	fdiv = 3;
 	if (pcr->TURBO_CLK & MCHP_PCR_TURBO_CLK_96M)
 		fdiv *= 2;
 
@@ -106,6 +106,7 @@ void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 		 MCHP_QMSPI_C_XFR_UNITS_1 | MCHP_QMSPI_C_XFR_NUNITS(4) |
 		 MCHP_QMSPI_C_NEXT_DESCR(1));
 
+#ifdef MCHP_QSPI_USE_DUAL_DATA
 	/* Transmit 8 clocks with IO0 and IO1 tri-stated */
 	qspi->DESCR[1] =
 		(MCHP_QMSPI_C_IFM_2X | MCHP_QMSPI_C_TX_DIS |
@@ -117,7 +118,19 @@ void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 			  MCHP_QMSPI_C_RX_EN | MCHP_QMSPI_C_RX_DMA_1B |
 			  MCHP_QMSPI_C_CLOSE | MCHP_QMSPI_C_DESCR_LAST |
 			  MCHP_QMSPI_C_NEXT_DESCR(0));
+#else
+	/* Transmit 8 clocks with IO0 and IO1 tri-stated */
+	qspi->DESCR[1] =
+		(MCHP_QMSPI_C_IFM_1X | MCHP_QMSPI_C_TX_DIS |
+		 MCHP_QMSPI_C_XFR_UNITS_1 | MCHP_QMSPI_C_XFR_NUNITS(1) |
+		 MCHP_QMSPI_C_NEXT_DESCR(2));
 
+	/* Read using LDMA RX Chan 0, IFM=1x, Last Descriptor, close */
+	qspi->DESCR[2] = (MCHP_QMSPI_C_IFM_1X | MCHP_QMSPI_C_TX_DIS |
+			  MCHP_QMSPI_C_RX_EN | MCHP_QMSPI_C_RX_DMA_1B |
+			  MCHP_QMSPI_C_CLOSE | MCHP_QMSPI_C_DESCR_LAST |
+			  MCHP_QMSPI_C_NEXT_DESCR(0));
+#endif
 	/* QSPI Local DMA RX channel 0 */
 	qspi->LDMA_RX_DESCR_BM = BIT(2); /* descriptor 2 uses RX LDMA */
 	qspi->LDRX[0].CTRL = MCHP_QMSPI_LDC_EN | MCHP_QMSPI_LDC_UCHL_EN |
@@ -138,8 +151,11 @@ void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 	}
 
 	cmdaddr = __builtin_bswap32(srcAddr & 0x00ffffff);
+#ifdef MCHP_QSPI_USE_DUAL_DATA
 	cmdaddr |= SPI_READ_112_FAST;
-
+#else
+	cmdaddr |= SPI_READ_111_FAST;
+#endif
 	qspi->TX_FIFO = cmdaddr;
 
 	/* MCHP destination location */
