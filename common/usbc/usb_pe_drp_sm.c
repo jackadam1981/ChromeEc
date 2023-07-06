@@ -1599,6 +1599,34 @@ test_export_static enum usb_pe_state get_state_pe(const int port)
 }
 
 /*
+ * PD 3.x partners should respond to Data_Reset with either Accept or
+ * Not_Supported. However, some partners simply do not respond, triggering
+ * ErrorRecovery. Try to avoid this by only initiating Data Reset with partners
+ * that seem likely to support it.
+ */
+static bool pe_should_send_data_reset(const int port)
+{
+	const struct pd_discovery *disc =
+		pd_get_am_discovery(port, TCPCI_MSG_SOP);
+	const enum idh_ptype ufp_ptype = pd_get_product_type(port);
+	const uint32_t ufp_vdo = disc->identity.product_t1.raw_value;
+
+	return prl_get_rev(port, TCPCI_MSG_SOP) >= PD_REV30 &&
+	       /*
+		* Data Reset was added to the PD spec around the time that the
+		* AMA product type/VDO was deprecated and the UFP VDO added.
+		* Partners that advertise the AMA product type are thus likely
+		* not to support Data Reset (and perhaps more likely than newer
+		* products to not respond to it at all).
+		* TODO: This is clunky. There should be a struct defining the
+		* UFP VDO.
+		*/
+	       (ufp_ptype == IDH_PTYPE_HUB || ufp_ptype == IDH_PTYPE_PERIPH) &&
+	       (PD_PRODUCT_IS_USB4(ufp_vdo) ||
+		ufp_vdo & VDO_UFP1_ALT_MODE_MASK);
+}
+
+/*
  * Handle common DPM requests to both source and sink.
  *
  * Note: it is assumed the calling state set PE_FLAGS_LOCALLY_INITIATED_AMS
@@ -1688,7 +1716,7 @@ static bool common_src_snk_dpm_requests(int port)
 		return true;
 	} else if (IS_ENABLED(CONFIG_USB_PD_DATA_RESET_MSG) &&
 		   PE_CHK_DPM_REQUEST(port, DPM_REQUEST_DATA_RESET)) {
-		if (prl_get_rev(port, TCPCI_MSG_SOP) < PD_REV30) {
+		if (!pe_should_send_data_reset(port)) {
 			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DATA_RESET);
 			dpm_data_reset_complete(port);
 			return false;

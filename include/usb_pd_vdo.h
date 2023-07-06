@@ -142,6 +142,7 @@ struct product_vdo {
 #define VDO_UFP1_ALT_MODE_TBT3 BIT(0)
 #define VDO_UFP1_ALT_MODE_RECONFIGURE BIT(1)
 #define VDO_UFP1_ALT_MODE_NO_RECONFIGURE BIT(2)
+#define VDO_UFP1_ALT_MODE_MASK (0x7 << 3)
 
 /* UFP VDO 1 Device Capability */
 #define VDO_UFP1_CAPABILITY_USB20 BIT(0)
