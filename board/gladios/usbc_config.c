@@ -8,6 +8,7 @@
 #include "console.h"
 #include "driver/bc12/pi3usb9201_public.h"
 #include "driver/ppc/syv682x_public.h"
+#include "driver/retimer/ps8811.h"
 #include "driver/retimer/ps8818_public.h"
 #include "driver/tcpm/rt1715.h"
 #include "driver/tcpm/tcpci.h"
@@ -31,6 +32,12 @@
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
+
+#define PLATFORM_RPL
+
+#ifndef PLATFORM_RPL
+#define PLATFORM_ADL
+#endif
 
 /* USBC TCPC configuration */
 const struct tcpc_config_t tcpc_config[] = {
@@ -102,6 +109,26 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
 
+const struct usb_mux usba_ps8811[] = {
+	[USBA_PORT_A0] = {
+		.usb_port = USBA_PORT_A0,
+	},
+	[USBA_PORT_A1] = {
+		.usb_port = USBA_PORT_A1,
+	},
+	[USBA_PORT_A2] = {
+		.usb_port = USBA_PORT_A2,
+		.i2c_port = I2C_PORT_USB_A2_A3_RT,
+		.i2c_addr_flags = PS8811_I2C_ADDR_FLAGS0,
+	},
+	[USBA_PORT_A3] = {
+		.usb_port = USBA_PORT_A3,
+		.i2c_port = I2C_PORT_USB_A2_A3_RT,
+		.i2c_addr_flags = PS8811_I2C_ADDR_FLAGS2,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(usba_ps8811) == USBA_PORT_COUNT);
+
 void board_reset_pd_mcu(void)
 {
 	/* Using RT1716, no reset available for TCPC */
@@ -120,6 +147,88 @@ static void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_C2_TCPC_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
+
+struct ps8811_reg_val {
+	uint8_t reg;
+	uint16_t val;
+};
+
+const static struct ps8811_reg_val ps8811_usba2_table[] = {
+#ifdef PLATFORM_RPL
+	{ 0x05, 0x36 },
+	{ 0x06, 0x63 },
+	{ 0x66, 0x20 },
+	{ 0xa4, 0x01 },
+	{ 0xa5, 0x84 },
+	{ 0xa6, 0x13 },
+#endif
+#ifdef PLATFORM_ADL
+	{ 0x05, 0x36 },
+	{ 0x06, 0x63 },
+	{ 0x66, 0x20 },
+	{ 0xa4, 0x03 },
+	{ 0xa5, 0x82 },
+	{ 0xa6, 0x16 },
+#endif
+};
+#define NUM_PS8811_USBA2_ARRAY ARRAY_SIZE(ps8811_usba2_table)
+
+const static struct ps8811_reg_val ps8811_usba3_table[] = {
+#ifdef PLATFORM_RPL
+	{ 0x05, 0x36 },
+	{ 0x06, 0x63 },
+	{ 0x66, 0x20 },
+	{ 0xa4, 0x03 },
+	{ 0xa5, 0x82 },
+	{ 0xa6, 0x16 },
+#endif
+#ifdef PLATFORM_ADL
+	{ 0x05, 0x36 },
+	{ 0x06, 0x63 },
+	{ 0x66, 0x20 },
+	{ 0xa4, 0x03 },
+	{ 0xa5, 0x87 },
+	{ 0xa6, 0x17 },
+#endif
+};
+#define NUM_PS8811_USBA3_ARRAY ARRAY_SIZE(ps8811_usba3_table)
+
+static int usba_retimer_init(int port)
+{
+	int rv = 0;
+	int i;
+	const struct usb_mux *me = &usba_ps8811[port];
+
+	switch (port) {
+	case USBA_PORT_A2:
+
+		for (i = 0; i < NUM_PS8811_USBA2_ARRAY; i++){
+
+			rv |= ps8811_i2c_write(
+				me, PS8811_REG_PAGE1,
+				ps8811_usba2_table[i].reg,
+				ps8811_usba2_table[i].val);
+		}
+		break;
+	case USBA_PORT_A3:
+		for (i = 0; i < NUM_PS8811_USBA3_ARRAY; i++)
+			rv |= ps8811_i2c_write(
+				me, PS8811_REG_PAGE1,
+				ps8811_usba3_table[i].reg,
+				ps8811_usba3_table[i].val);
+		break;
+	default:
+		break;
+	}
+	return rv;
+}
+
+void board_retimer_init(void)
+{
+	usba_retimer_init(USBA_PORT_A2);
+	usba_retimer_init(USBA_PORT_A3);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_retimer_init, HOOK_PRIO_DEFAULT);
 
 uint16_t tcpc_get_alert_status(void)
 {

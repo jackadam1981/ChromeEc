@@ -12,4 +12,8 @@
 
 enum usbc_port { USBC_PORT_C0 = 0, USBC_PORT_COUNT };
 
+/* USB-A ports */
+enum usba_port { USBA_PORT_A0 = 0,USBA_PORT_A1,
+		USBA_PORT_A2, USBA_PORT_A3, USBA_PORT_COUNT };
+
 #endif /* __CROS_EC_USBC_CONFIG_H */
