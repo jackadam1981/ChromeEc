@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8953bb23_03f20668",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2023-07-06T07:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591fa4a9_8570b306",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "c6566f8b1da60966841c43ed56f0a38abefdc2e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6ac2abe_d58f16ca",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-06T04:35:08Z",
       "side": 1,
       "message": "As what we observed in b/289009634, we should select the correct power source (e.g. USB_C0 or USB_C1) based on the present of VBUS.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 63
+      },
+      "revId": "c6566f8b1da60966841c43ed56f0a38abefdc2e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2f813b7_514ce7ed",
+        "filename": "board/boxy/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2023-07-06T07:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6ac2abe_d58f16ca",
       "range": {
         "startLine": 325,
         "startChar": 0,
