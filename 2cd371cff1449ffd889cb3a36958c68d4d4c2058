@@ -22,6 +22,30 @@
       },
       "revId": "2cd371cff1449ffd889cb3a36958c68d4d4c2058",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87405145_0f6b879d",
+        "filename": "zephyr/program/nissa/joxer/src/usbc.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2023-07-06T00:02:33Z",
+      "side": 1,
+      "message": "Yeah, but it\u0027s own CL was merged, so I added it here.",
+      "parentUuid": "e07d429f_03befac5",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 72
+      },
+      "revId": "2cd371cff1449ffd889cb3a36958c68d4d4c2058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
