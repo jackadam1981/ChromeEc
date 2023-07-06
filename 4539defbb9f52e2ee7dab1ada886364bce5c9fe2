@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64fa5fed_1df1de1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-07-06T08:49:15Z",
+      "side": 1,
+      "message": "code should be clang-formatted: \n```\nERROR:root:/mnt/host/source/src/platform/ec/board/boxy/board.c:274:57: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:                                \"Change is only permitted while the system is off\");\nERROR:root:                                                                                    ^\nERROR:root:/mnt/host/source/src/platform/ec/board/boxy/board.c:327:54: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        port \u003d pd_snk_is_vbus_provided(CHARGE_PORT_TYPEC0) ?\nERROR:root:                                                            ^\nERROR:root:/mnt/host/source/src/platform/ec/board/boxy/board.c:328:23: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:                CHARGE_PORT_TYPEC0 : CHARGE_PORT_TYPEC1;\nERROR:root:                                    ^\nERROR:root:/mnt/host/source/src/platform/ec/board/boxy/board.c:329:45: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        CPRINTUSB(\"Power source is p%d (%s)\", port,\nERROR:root:                                                   ^\n```",
+      "revId": "4539defbb9f52e2ee7dab1ada886364bce5c9fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
