@@ -142,6 +142,7 @@ struct product_vdo {
 #define VDO_UFP1_ALT_MODE_TBT3 BIT(0)
 #define VDO_UFP1_ALT_MODE_RECONFIGURE BIT(1)
 #define VDO_UFP1_ALT_MODE_NO_RECONFIGURE BIT(2)
+#define VDO_UFP1_ALT_MODE_MASK (0x7 << 3)
 
 /* UFP VDO 1 Device Capability */
 #define VDO_UFP1_CAPABILITY_USB20 BIT(0)
@@ -608,7 +609,7 @@ enum vpd_cts_support {
  *           001b = PDUSB Hub
  *           010b = PDUSB Peripheral
  *           011b = PSD (PD 3.0)
- *           101b = Alternate Mode Adapter (AMA)
+ *           101b = Alternate Mode Adapter (AMA) - deprecated in PD r3.1
  *           110b = Vconn-Powered USB Device (VPD, PD 3.0)
  *           Product Type (Cable Plug):
  *           000b = Undefined
