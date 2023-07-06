@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b14d03_575a3229",
+        "filename": "include/panic_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-06T21:22:25Z",
+      "side": 1,
+      "message": "Please also create a v1 of this enum.  That way the register layout for both v1 and v2 is explicitly documented.\n\nCL:32051 appears to document the the v1 layout.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "f5e9acf21798128919cde9c71e0e96d30ec7c3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "339fe9d9_f036ae3f",
+        "filename": "include/panic_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-06T21:22:25Z",
+      "side": 1,
+      "message": "Change to \"V2 and above Cortex-Mx registers\"",
+      "range": {
+        "startLine": 123,
+        "startChar": 34,
+        "endLine": 123,
+        "endChar": 53
+      },
+      "revId": "f5e9acf21798128919cde9c71e0e96d30ec7c3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "502051a5_346ef40b",
+        "filename": "include/panic_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-06T21:22:25Z",
+      "side": 1,
+      "message": "Nit - specify `cm_v1` before `cm`.",
+      "revId": "f5e9acf21798128919cde9c71e0e96d30ec7c3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
