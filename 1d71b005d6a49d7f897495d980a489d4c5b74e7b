@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d0c63f_872e381e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-06T14:46:47Z",
+      "side": 1,
+      "message": "Any ideas on why we need 5,000,000 iterations? Calling `watchdog_reload` 5,000,000 times causes the helipilot builds to timeout and is likely the cause of test failures when using renode. This CL reduces it to 5 calls without issue on helipilot, bloonchipper, or dartmonkey (I need to update the commit message to reflect this).",
+      "revId": "1d71b005d6a49d7f897495d980a489d4c5b74e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
