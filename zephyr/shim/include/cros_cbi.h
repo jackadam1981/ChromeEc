@@ -116,4 +116,14 @@ bool cros_cbi_ssfc_check_match(enum cbi_ssfc_value_id value_id);
 int cros_cbi_get_fw_config(enum cbi_fw_config_field_id field_id,
 			   uint32_t *value);
 
+#if defined(CONFIG_PLATFORM_EC_CBI_FLASH_REPLICATE_EEPROM)
+/**
+ * @brief Replicate CBI data in EEPROM to CBI section in flash
+ *
+ * The function has to be called before performing any read
+ * or write operation on CBI.
+ */
+void cros_cbi_replicate_data_from_eeprom_to_flash(void);
+#endif
+
 #endif /* __CROS_EC_CROS_CBI_H */

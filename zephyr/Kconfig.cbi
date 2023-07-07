@@ -35,16 +35,11 @@ config PLATFORM_EC_CBI
 
 if PLATFORM_EC_CBI
 
-choice PLATFORM_EC_CBI_STORAGE_TYPE
-	prompt "CBI storage type"
-	default PLATFORM_EC_CBI_EEPROM if $(dt_nodelabel_enabled,cbi_eeprom)
-	default PLATFORM_EC_CBI_FLASH if $(dt_nodelabel_enabled,cbi_flash)
-	help
-	  Select the backing storage type for CBI data.
-
 config PLATFORM_EC_CBI_EEPROM
 	bool "CBI EEPROM support"
+	default y
 	depends on EEPROM
+	depends on $(dt_nodelabel_enabled,cbi_eeprom)
 	help
 	  Enables full Chromium OS Board Info (CBI) support, with CBI data
 	  stored in an on-board EEPROM.
@@ -58,10 +53,17 @@ config PLATFORM_EC_CBI_GPIO
 
 config PLATFORM_EC_CBI_FLASH
 	bool "CBI flash support"
+	default y
+	depends on $(dt_nodelabel_enabled,cbi_flash)
 	help
 	  Enables full Chromium OS Board Info (CBI) support, with CBI data
 	  stored in an on-board flash.
 
-endchoice
+config PLATFORM_EC_CBI_FLASH_REPLICATE_EEPROM
+	bool "Replicate CBI data in EEPROM into flash CBI section"
+	depends on PLATFORM_EC_CBI_EEPROM
+	depends on PLATFORM_EC_CBI_FLASH
+	help
+	  Replicate CBI data in flash CBI section if it's empty, from EEPROM.
 
 endif # PLATFORM_EC_CBI
