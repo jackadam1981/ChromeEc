@@ -7,14 +7,34 @@ load(
     "ec_binary",
 )
 load(
+    "@cros_firmware//platform/ec/bazel:legacy_ec.bzl",
+    "legacy_ec",
+)
+load(
     "@cros_firmware//platform/ec/bazel:flash_ec.bzl",
     "flash_ec",
 )
 
 def ec_target(
         name,
-        extra_modules = []):
-    ec_binary(name = name, extra_modules = extra_modules)
+        extra_modules = [],
+        zephyr=True,
+        real_board=None,
+        baseboard=None,
+        chip=None,
+        core=None,
+):
+    if zephyr:
+        ec_binary(name = name, extra_modules = extra_modules)
+    else:
+        board_srcs = legacy_ec.board_srcs(
+            board = name,
+            real_board = real_board,
+            baseboard = baseboard,
+            chip = chip,
+            core = core,
+        )
+        legacy_ec.rule(name = name, board_srcs = board_srcs)
     flash_ec(
         name = "flash_ec_{}".format(name),
         board = name,
