@@ -33,6 +33,29 @@
       "message": "Any idea what the deal is with the AUX bits in 2 and 3?  Do we need to care about them?",
       "revId": "8dcfbacbc0ee874397aafba86023d0d1836ad9eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a86e027e_87eae18e",
+        "filename": "zephyr/Kconfig.retimer",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-07T20:41:29Z",
+      "side": 1,
+      "message": "typo: retimer",
+      "range": {
+        "startLine": 106,
+        "startChar": 38,
+        "endLine": 106,
+        "endChar": 46
+      },
+      "revId": "8dcfbacbc0ee874397aafba86023d0d1836ad9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
