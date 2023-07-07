@@ -669,7 +669,7 @@ int crec_flash_is_erased(uint32_t offset, int size)
 	return 1;
 }
 
-#if defined(CONFIG_ZEPHYR) && defined(CONFIG_PLATFORM_EC_CBI_FLASH)
+#if defined(CONFIG_ZEPHYR) && defined(CONFIG_CBI_FLASH)
 /**
  * Check if the passed section overlaps with CBI section on EC flash.
  *
@@ -727,7 +727,7 @@ test_mockable int crec_flash_unprotected_read(int offset, int size, char *data)
 int crec_flash_read(int offset, int size, char *data)
 {
 	RETURN_ERROR(crec_flash_unprotected_read(offset, size, data));
-#if defined(CONFIG_ZEPHYR) && defined(CONFIG_PLATFORM_EC_CBI_FLASH)
+#if defined(CONFIG_ZEPHYR) && defined(CONFIG_CBI_FLASH)
 	protect_cbi_overlapped_section(offset, size, data);
 #endif
 	return EC_SUCCESS;
@@ -778,7 +778,7 @@ int crec_flash_write(int offset, int size, const char *data)
 
 	flash_abort_or_invalidate_hash(offset, size);
 
-#if defined(CONFIG_ZEPHYR) && defined(CONFIG_PLATFORM_EC_CBI_FLASH)
+#if defined(CONFIG_ZEPHYR) && defined(CONFIG_CBI_FLASH)
 	if (check_cbi_section_overlap(offset, size)) {
 		int cbi_end = CBI_FLASH_OFFSET + CBI_FLASH_SIZE;
 		int sec_end = offset + size;
@@ -807,7 +807,7 @@ int crec_flash_erase(int offset, int size)
 
 	flash_abort_or_invalidate_hash(offset, size);
 
-#if defined(CONFIG_ZEPHYR) && defined(CONFIG_PLATFORM_EC_CBI_FLASH)
+#if defined(CONFIG_ZEPHYR) && defined(CONFIG_CBI_FLASH)
 	if (check_cbi_section_overlap(offset, size)) {
 		int cbi_end = CBI_FLASH_OFFSET + CBI_FLASH_SIZE;
 		int sec_end = offset + size;
