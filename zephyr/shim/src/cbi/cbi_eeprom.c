@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "cbi_replicate.h"
 #include "console.h"
 #include "cros_board_info.h"
 #include "write_protect.h"
@@ -73,7 +74,11 @@ static const struct cbi_storage_driver eeprom_drv = {
 	.is_protected = eeprom_is_write_protected,
 };
 
-const struct cbi_storage_config_t cbi_config = {
+const struct cbi_storage_config_t eeprom_cbi_config = {
 	.storage_type = CBI_STORAGE_TYPE_EEPROM,
 	.drv = &eeprom_drv,
 };
+
+#if !defined(CONFIG_CBI_FLASH)
+const struct cbi_storage_config_t cbi_config = eeprom_cbi_config;
+#endif

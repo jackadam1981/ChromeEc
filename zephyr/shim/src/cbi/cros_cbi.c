@@ -9,6 +9,9 @@
 
 static void cros_cbi_ec_init(void)
 {
+#if defined(CONFIG_PLATFORM_EC_CBI_FLASH_REPLICATE_EEPROM)
+	cros_cbi_replicate_data_from_eeprom_to_flash();
+#endif
 	cros_cbi_ssfc_init();
 	cros_cbi_fw_config_init();
 }
