@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ca5333_1d0c70a2",
+        "filename": "test/unaligned_access.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-07T21:11:47Z",
+      "side": 1,
+      "message": "Question about adding benchmarks inside tests. When are those benchmarks executed?\nI assume they\u0027re increasing testing time and might affect CQ time (if included in CQ), or build time (if included in build), etc",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "e3edaf7688a0472c607d7fd59b140af0af118ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
