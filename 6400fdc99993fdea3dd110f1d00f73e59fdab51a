@@ -265,6 +265,24 @@
       "parentUuid": "e75bc179_f0670bba",
       "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48eea9c8_84417ac1",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "If these genuinely need to be part of the interface to the DP module, then they should start with `dp_`.",
+      "parentUuid": "e33a6f77_1f223336",
+      "revId": "6400fdc99993fdea3dd110f1d00f73e59fdab51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

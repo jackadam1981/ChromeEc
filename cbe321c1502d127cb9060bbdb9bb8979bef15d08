@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "10b7bcca_75527056",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 38
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "Can you be a bit more verbose here? The existing EC code already discovers the cable, so this is clearly doing a bit more than that.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0c6ced5f_9d52a55e",
@@ -31,6 +48,23 @@
       "writtenOn": "2023-06-16T22:34:00Z",
       "side": 1,
       "message": "BTW, I won\u0027t engage in a complete fly-by code review since I\u0027m not familiar with this code base, but in general please break your CL into more logically isolated chunks.\n\nI can see at least a couple of sections here which can be broken into their own CLs. Doing so makes the CLs a lot easier to review, and forces the function interfaces to be defined more cleanly.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "250934df_b9623202",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "I\u0027ve read some of the DP alt mode 2.1 spec, and I took a pass on the header file.\n\n1. Please address review comments from previous iterations.\n2. Please break this CL up into smaller, logical chunks. I\u0027m having a hard time keeping all the new stuff in this one CL in my head. It seems like some of the changes in here would be no-op refactors by themselves.",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +139,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45a15bb5_52b86366",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 5764,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "This refactor would be an example of something that could go in its own CL before this one.",
+      "parentUuid": "37a4c5ed_93e0dd34",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "573e927a_6fa20193",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 38
@@ -139,6 +191,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70636409_369be672",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "This refactor would be an example of something that could go in its own CL before this one.",
+      "parentUuid": "02a81108_4dbed13c",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "897a62a0_0646416a",
         "filename": "include/usb_pd.h",
         "patchSetId": 38
@@ -156,6 +226,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c311382_bd3f7814",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "Where a more specific data type would be more expressive, can you use that? For instance, UHBR13.5 could be a bool, and the pin assignments, active component, and DP version could be enums. (Looks like you already have some of these enums.)",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0141271_f273363e",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "Nit: For this field, I guess it makes sense to keep it as `unsigned int`, because it can take on values not in the enum for combinations of speeds. It might be helpful to comment the field to say that it will be combinations of bits from the enum.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "048454a3_0cf09dc1",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "Instead of defining a macro where you have to explain how all the arguments are treated, can you define a function that takes enums or other meaningful types as parameters and returns a union/struct for this VDO?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 14
+      },
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a61382b_554e31ae",
         "filename": "include/usb_pd_dp.h",
         "patchSetId": 38
@@ -167,6 +300,138 @@
       "writtenOn": "2023-06-14T18:52:35Z",
       "side": 1,
       "message": "1. Why is this in a DP-specific file? It should probably be in `usb_pd.h`. The PD spec says we should use VDM version 2.1 if we support PD r3.1 v1.6 or newer.\n2. This is an odd constant. We should be figuring out the whole version at the same time, in one place, not the minor version by itself.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c4ab769_73b5c905",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "A few more comments after reading the DP alt mode spec:\n* The PD spec and DP alt mode 2.1 spec seem to agree that VDM version 2.1 means PD r3.1 v1.6 or newer. They imply that all VDMs sent by a port should have the same VDM version. I think I\u0027m missing something here. Why have VDM versions if 1) they are not specific to types of VDMs and 2) they are redundant with the PD revision?\n* It seems like this is intended to be used to set our own VDM version going out. If that\u0027s the case, it seems like it should also consider the VDM version we got from the partner. PD r 3.1 v 1.8 ss 6.4.4.2.3: \"After discovering the Structure VDM Version, the Structured VDM Version field Shall match the agreed common Structured VDM Version.\"\n* Whatever this is for, it seems like it should have a much more specific name than it has now.",
+      "parentUuid": "1a61382b_554e31ae",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e2102d_64a5c106",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "What are these from? They don\u0027t match the values in the active component fields of the cable mode VDO and SOP Configure VDO, which are already represented in `enum dp21_cable_type`.\n\nIf this is effectively the return type for `get_pd_cable_type_flags`, comments should make that obvious, but see my other comments below.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 35
+      },
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af139748_e6669281",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "I\u0027m guessing these are meant to be used to figure out the lowest common VDM and DPAM versions among the partners and cable for use in transmitting future VDMs. If that\u0027s accurate, can you say it more explicitly? Also, can you refer to the sections in the DP alt mode and PD specs that specify how to choose a VDM and DPAM version?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 78
+      },
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5907531b_4430cc9c",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "Can you specify the high-level criteria for this decision here?",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b19ebac4_e1755054",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "This sounds like it duplicates `pd_get_mode_vdo_for_svid`. Can you use that?",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58855345_022fcab6",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "This seems an interface that will be easy to use correctly, since the caller has to remember the format of this bespoke bit field. I might be OK with a function with 3 `bool` output parameters, but that also seems a bit clunky. I\u0027d rather have 3 functions that each returned `bool`.\n\nI don\u0027t see the caller even using the retimer/redriver bit. Does that need to be there?\n\nI haven\u0027t grokked the implementation yet, but it seems like a lot to take in. To my mind, that would also argue for separate functions.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f13a32_59ebe48b",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-07T23:30:03Z",
+      "side": 1,
+      "message": "This should return a `bool`.",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
