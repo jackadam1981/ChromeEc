@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1e8f8a4_9ab16a54",
+        "filename": "driver/retimer/ps8833.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-07T20:47:30Z",
+      "side": 1,
+      "message": "It would be easier to debug in future if we print the register name in all the \"failed\" messages. Otherwise you could embed this CPRINTS in ps8833_read/write to reduce code size.",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 37
+      },
+      "revId": "3020cd9543a93a2b85e877ebe2a7250deb405d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abe5766a_882e3bc7",
         "filename": "driver/retimer/ps8833.c",
         "patchSetId": 2
@@ -20,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78bc5943_0883ca57",
+        "filename": "driver/retimer/ps8833.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-07T20:47:30Z",
+      "side": 1,
+      "message": "should we return here if rv is non-zero?",
+      "revId": "3020cd9543a93a2b85e877ebe2a7250deb405d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0eed0cd0_9baee4cb",
         "filename": "include/driver/retimer/ps8833.h",
         "patchSetId": 2
@@ -31,6 +71,29 @@
       "writtenOn": "2023-07-07T17:04:41Z",
       "side": 1,
       "message": "You\u0027ll want the HPD and the DP pin assignments set as well.  I actually can\u0027t think of any other driver that wants us to set pin mode E versus C/D, but we should have the data in the DP VDMs to set it right. (Oh, and while I\u0027m looking at this register we\u0027re always the DP source.  That one took me forever to understand as separate from power source, so I thought I\u0027d mention it here)",
+      "revId": "3020cd9543a93a2b85e877ebe2a7250deb405d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb8c981_7e5dba54",
+        "filename": "zephyr/Kconfig.retimer",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-07T20:47:30Z",
+      "side": 1,
+      "message": "retimer",
+      "range": {
+        "startLine": 114,
+        "startChar": 38,
+        "endLine": 114,
+        "endChar": 46
+      },
       "revId": "3020cd9543a93a2b85e877ebe2a7250deb405d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
