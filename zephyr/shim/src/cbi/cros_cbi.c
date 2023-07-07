@@ -3,14 +3,24 @@
  * found in the LICENSE file.
  */
 
+#include "cbi_transfer.h"
 #include "cros_board_info.h"
 #include "cros_cbi.h"
 #include "hooks.h"
 
 static void cros_cbi_ec_init(void)
 {
+#if defined(CONFIG_PLATFORM_EC_CBI_TRANSFER_EEPROM_FLASH)
+	cros_cbi_transfer_eeprom_to_flash();
+#endif
 	cros_cbi_ssfc_init();
 	cros_cbi_fw_config_init();
 }
 
 DECLARE_HOOK(HOOK_INIT, cros_cbi_ec_init, HOOK_PRIO_FIRST);
+
+#if defined(CONFIG_CBI_FLASH)
+const struct cbi_storage_config_t *cbi_config = &flash_cbi_config;
+#elif defined(CONFIG_CBI_EEPROM)
+const struct cbi_storage_config_t *cbi_config = &eeprom_cbi_config;
+#endif

@@ -4,6 +4,7 @@
  */
 
 #include "cbi_flash.h"
+#include "cbi_transfer.h"
 #include "console.h"
 #include "cros_board_info.h"
 #include "flash.h"
@@ -69,7 +70,7 @@ static const struct cbi_storage_driver flash_drv = {
 	.is_protected = flash_is_write_protected,
 };
 
-const struct cbi_storage_config_t cbi_config = {
+const struct cbi_storage_config_t flash_cbi_config = {
 	.storage_type = CBI_STORAGE_TYPE_FLASH,
 	.drv = &flash_drv,
 };
