@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ab5cf5_a9cb8729",
+        "filename": "driver/retimer/ps8828.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-07-07T16:58:12Z",
+      "side": 1,
+      "message": "I think we\u0027ll also need to update this when HPD changes.  You can look at something like `bb_retimer_hpd_update` to get a sense of what that might need to look like in terms of interfacing.  It\u0027s not something that\u0027s fully integrated into the usb_mux driver for various historical reasons",
+      "revId": "8dcfbacbc0ee874397aafba86023d0d1836ad9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ccba597_6a026ca5",
+        "filename": "include/driver/retimer/ps8828.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2023-07-07T16:58:12Z",
+      "side": 1,
+      "message": "Any idea what the deal is with the AUX bits in 2 and 3?  Do we need to care about them?",
+      "revId": "8dcfbacbc0ee874397aafba86023d0d1836ad9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
