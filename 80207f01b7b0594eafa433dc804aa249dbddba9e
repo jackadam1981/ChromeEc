@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a666b7_3eef5880",
+        "filename": "common/panic_output.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-07T22:18:26Z",
+      "side": 1,
+      "message": "I can potentially test this using `panic.c`. This is the experiment that I did:\n\n```\ntest_static void run_test_step1(void)\n{\n\tccprintf(\"Step 1: Panic\\n\");\n\tconst char *command \u003d \"unaligned\";\n\tccprintf(\"The value of crash is: %d\\n\",\n\t\t test_command_crash(2, \u0026command));\n\tsystem_set_scratchpad(TEST_STATE_MASK(TEST_STATE_STEP_2));\n\tRUN_TEST(test_exception_panic_registers);\n}\n```\nand the output was `DEBUG:The value of crash is: 11`, which is `EC_ERROR_PARAM1`. I just need to decide where to best add this test and why I cannot include `panic.h` in `unaligned_access.cc`",
+      "range": {
+        "startLine": 374,
+        "startChar": 2,
+        "endLine": 375,
+        "endChar": 46
+      },
+      "revId": "80207f01b7b0594eafa433dc804aa249dbddba9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
