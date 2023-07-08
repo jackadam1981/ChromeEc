@@ -372,6 +372,9 @@ static int command_crash(int argc, const char **argv)
 	} else if (!strcasecmp(argv[1], "stack")) {
 		stack_overflow_recurse(1);
 	} else if (!strcasecmp(argv[1], "unaligned")) {
+		if (IS_ENABLED(CONFIG_ALLOW_UNALIGNED_ACCESS)) {
+			return EC_ERROR_UNIMPLEMENTED;
+		}
 		volatile intptr_t unaligned_ptr = 0xcdef;
 		cflush();
 		ccprintf("%08x", *(volatile int *)unaligned_ptr);
