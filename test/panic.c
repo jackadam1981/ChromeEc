@@ -29,6 +29,17 @@ static const struct reg_vals EXPECTED[] = {
 	{ .index = CORTEX_PANIC_REGISTER_R11, .val = 0xecec000b },
 };
 
+test_static int test_crash_unaligned_disabled_if_unaligned_access_allowed(void)
+{
+	if (IS_ENABLED(CONFIG_ALLOW_UNALIGNED_ACCESS)) {
+		const char *crash_unaligned[2] = { "crash", "unaligned" };
+
+		TEST_EQ(test_command_crash(2, crash_unaligned),
+			EC_ERROR_UNIMPLEMENTED, "%d");
+	}
+	return EC_SUCCESS;
+}
+
 test_static int test_exception_panic_registers(void)
 {
 	if (IS_ENABLED(CORE_CORTEX_M)) {
@@ -116,6 +127,7 @@ int task_test(void *unused)
 
 void run_test(int argc, const char **argv)
 {
+	RUN_TEST(test_crash_unaligned_disabled_if_unaligned_access_allowed);
 	msleep(30); /* Wait for TASK_ID_TEST to initialize */
 	task_wake(TASK_ID_TEST);
 }
