@@ -46,6 +46,30 @@
       },
       "revId": "51babd0fdb2d9cad5db6cf0d2cd08fba334ffc86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "866cec59_a1a0fdb8",
+        "filename": "common/panic_output.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-08T02:48:05Z",
+      "side": 1,
+      "message": "I created a separate CL to disable ec command `crash unaligned` when CONFIG_ALLOW_UNALIGNED_ACCESS is enabled and added a unit test",
+      "parentUuid": "afe52d57_432cb64a",
+      "range": {
+        "startLine": 374,
+        "startChar": 2,
+        "endLine": 374,
+        "endChar": 59
+      },
+      "revId": "51babd0fdb2d9cad5db6cf0d2cd08fba334ffc86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

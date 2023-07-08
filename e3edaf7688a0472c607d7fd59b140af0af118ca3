@@ -22,6 +22,30 @@
       },
       "revId": "e3edaf7688a0472c607d7fd59b140af0af118ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d03f23_affde40b",
+        "filename": "test/unaligned_access.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-08T02:48:05Z",
+      "side": 1,
+      "message": "I have no problem removing these benchmarks. They were though requested as part of the bug description (https://b.corp.google.com/issues/239254184) and some comments in the bug (for example https://b.corp.google.com/issues/239254184#comment7). AFAIK this does not run in CQ but only build (https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8776292326459100017/+/u/test_firmware/stdout?format\u003draw)",
+      "parentUuid": "07ca5333_1d0c70a2",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "e3edaf7688a0472c607d7fd59b140af0af118ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
