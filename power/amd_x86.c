@@ -32,6 +32,11 @@
 
 static int forcing_shutdown; /* Forced shutdown in progress? */
 
+#ifdef CONFIG_EMULATED_SYSRQ
+static void sysrq_reboot_timeout(void);
+DECLARE_DEFERRED(sysrq_reboot_timeout);
+#endif /* defined(CONFIG_EMULATED_SYSRQ) */
+
 #ifdef CONFIG_POWERSEQ_FAKE_CONTROL
 /* Create fake power states through forcing the SoC SLP signal sequencing */
 void power_fake_s0(void)
@@ -260,6 +265,15 @@ static void lpc_s0ix_resume_restore_masks(void)
 	backup_sci_mask = backup_smi_mask = 0;
 }
 
+#ifdef CONFIG_EMULATED_SYSRQ
+static void sysrq_reboot_timeout(void)
+{
+	CPRINTS("Resetting AP after SysRq!");
+	hook_call_deferred(&sysrq_reboot_timeout_data, -1);
+	chipset_reset(CHIPSET_RESET_HANG_REBOOT);
+}
+#endif /* defined(CONFIG_EMULATED_SYSRQ) */
+
 __override void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 {
 	/*
@@ -280,7 +294,32 @@ __override void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 		amd_stb_dump_trigger();
 
 	CPRINTS("Warning: Detected sleep hang! Waking host up!");
-	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+	if (IS_ENABLED(CONFIG_EMULATED_SYSRQ)) {
+		/*
+		 * Send |SysRq| signal to generate a kernel panic. If the AP is
+		 * in the OS, this will generate stack traces for all of the
+		 * running CPUs and trigger a reboot. A single |SysRq| restarts
+		 * chrome, while two trigger a kernel panic.
+		 * Otherwise, if the AP is not in the kernel, this will do
+		 * nothing, so the device will continue to be hung until the
+		 * timer expires and sysrq_reboot_timeout() is called to
+		 * reboot the AP.
+		 */
+		CPRINTS("Sending SysRq to trigger AP kernel panic and reboot.");
+		host_send_sysrq('x');
+		usleep(MSEC);
+		host_send_sysrq('x');
+		/*
+		 * Start a timer to manually reset the AP in case the SysRq
+		 * wasn't received or the AP failed to reboot correctly while
+		 * handling the kernel panic.
+		 */
+		hook_call_deferred(&sysrq_reboot_timeout_data,
+				   (uint32_t)CONFIG_SYSRQ_REBOOT_TIMEOUT_MS *
+					   1000);
+	} else {
+		host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+	}
 }
 
 static void handle_chipset_reset(void)
@@ -289,6 +328,10 @@ static void handle_chipset_reset(void)
 		CPRINTS("chipset reset: exit s0ix");
 		power_reset_host_sleep_state();
 		task_wake(TASK_ID_CHIPSET);
+	}
+
+	if (IS_ENABLED(CONFIG_EMULATED_SYSRQ)) {
+		hook_call_deferred(&sysrq_reboot_timeout_data, -1);
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
@@ -299,6 +342,9 @@ void power_reset_host_sleep_state(void)
 	sleep_reset_tracking();
 	power_chipset_handle_host_sleep_event(HOST_SLEEP_EVENT_DEFAULT_RESET,
 					      NULL);
+	if (IS_ENABLED(CONFIG_EMULATED_SYSRQ)) {
+		hook_call_deferred(&sysrq_reboot_timeout_data, -1);
+	}
 }
 
 #endif /* CONFIG_POWER_S0IX */
