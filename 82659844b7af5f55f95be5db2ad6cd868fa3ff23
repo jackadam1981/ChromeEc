@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cca1465_b4ce07ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-07-10T23:12:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "825d970e_a869e932",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "82659844b7af5f55f95be5db2ad6cd868fa3ff23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eda8bbdb_d8252a82",
@@ -50,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d79bd056_b992319a",
+        "filename": "zephyr/program/herobrine/herobrine/led_policy.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-07-10T23:12:35Z",
+      "side": 1,
+      "message": "My plan was to separate the driver overhaul into 2 CLs to minimize CL complexity. One which focuses on reformatting the devicetree, and one focusing on the driver logic. An unfortunate side effect of that decision is that there are some artifact left behind due to legacy LED logic such as all color transitions have to have unique numbers until the next commit is pushed.\n\nIf you think it would be better to have everything as a big CL, I can keep working on the patch so that there is no interim artifacts between commits.",
+      "parentUuid": "eda8bbdb_d8252a82",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "82659844b7af5f55f95be5db2ad6cd868fa3ff23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f041bdad_dd7ee5b5",
         "filename": "zephyr/shim/src/led_driver/led.c",
         "patchSetId": 5
@@ -61,6 +109,30 @@
       "writtenOn": "2023-07-10T21:15:17Z",
       "side": 1,
       "message": "This macro, and `LED_COLOR_INIT` require that the children nodes are named \"led-0\" and \"led-1\".  This is fragile, as this naming isn\u0027t enforced by the devicetree.\n\nCan you use `DT_FOREACH_CHILD()` instead?\n\nThe original implementation appears to support 4 colors, but this now only support 2?",
+      "range": {
+        "startLine": 87,
+        "startChar": 45,
+        "endLine": 87,
+        "endChar": 50
+      },
+      "revId": "82659844b7af5f55f95be5db2ad6cd868fa3ff23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae8d8033_efa0a0f0",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-07-10T23:12:35Z",
+      "side": 1,
+      "message": "I can\u0027t use any `FOREACH` macros because this whole macro is called from a `FOREACH`: `static const struct node_prop_t node_array[] \u003d { DT_INST_FOREACH_CHILD(0, SET_LED_VALUES) };` and Zephyr does not support nested `FOREACH` macros.\n\nThe original implementation supports 4 colors shared between all leds, which for all intents and purposes means only 2 maximum leds are supported because for any one led 2 colors are needed to turn it on and off. The current implementation aims to keep the driver logic the same and only change the devicetree so it also only supports 2 leds with 4 colors shared between them. \n\nThe plan for the driver logic overhaul is to expand support to any number of leds and make it not dependent on any node names as each node will be uniquely defined by the `led-node` or `led-color` properties instead.",
+      "parentUuid": "f041bdad_dd7ee5b5",
       "range": {
         "startLine": 87,
         "startChar": 45,
