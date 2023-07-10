@@ -16,6 +16,24 @@
       "message": "Can you explain why is this needed? Unclear to me just by looking at the diff.",
       "revId": "e85c4eece526c2152dfaebf84df40188ed130a1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4153b7b8_3d06946d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-10T10:08:11Z",
+      "side": 1,
+      "message": "Also it\u0027s not really a refactoring, that would be more like moving chunks of code around. This is swapping a config macro for another one.",
+      "parentUuid": "7d8d2981_cbc3829f",
+      "revId": "e85c4eece526c2152dfaebf84df40188ed130a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
