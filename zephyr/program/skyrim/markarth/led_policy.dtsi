@@ -15,14 +15,15 @@
 		power-state-discharge-s0 {
 			charge-state = "PWR_STATE_DISCHARGE";
 			chipset-state = "POWER_S0";
-			/* Battery percent range (> Low, <= Full) */
-			batt-lvl = <(BATTERY_LEVEL_LOW + 1) BATTERY_LEVEL_FULL>;
+			/* Battery percent range (> Empty, <= Full) */
+			batt-lvl = <BATTERY_LEVEL_EMPTY BATTERY_LEVEL_FULL>;
 
 			color-0 {
 				led-color = <&color_blue>;
 			};
 		};
 
+<<<<<<< HEAD   (483b7c winterhold: enable the mask of RCP for nx20p3483)
 		power-state-discharge-s0-batt-low {
 			charge-state = "PWR_STATE_DISCHARGE";
 			chipset-state = "POWER_S0";
@@ -40,6 +41,8 @@
 			};
 		};
 
+=======
+>>>>>>> CHANGE (40b51f markarth: Remove LED low battery behavior)
 		power-state-discharge-s3 {
 			charge-state = "PWR_STATE_DISCHARGE";
 			chipset-state = "POWER_S3";
