@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c62a4d6d_cc9e6f73",
+        "filename": "zephyr/Kconfig.cbi",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-10T10:41:53Z",
+      "side": 1,
+      "message": "Should this have a pair of `depends on !...` so it stays mutually exclusive with the other two?",
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93305668_cc5238b5",
+        "filename": "zephyr/Kconfig.cbi",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-10T10:41:53Z",
+      "side": 1,
+      "message": "could use some rewording, maybe \"Copy CBI data from EEPROM to flash automatically if the the flash on is empty.\"",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 70
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc6833f_6efd55be",
+        "filename": "zephyr/shim/src/cbi/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-10T10:41:53Z",
+      "side": 1,
+      "message": "Wondering if it should not just live in `cbi_flash.c` since it\u0027s just a couple functions, what do you think?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 91
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a18cb7dc_fbe4ce63",
+        "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-10T10:41:53Z",
+      "side": 1,
+      "message": "That\u0027s a bit of a sad way of doing this cause you end up with two copies of the structure. I think a cleaner way would be to convert `cbi_config` to a pointer, and then statically initialize it to point at the right structure.\n\nAlternatively you could have this condition control the name of the struct above and unconditionally use only `cbi_config` in the flash one since that takes precedence.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 6
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f76918_17bcc61c",
+        "filename": "zephyr/shim/src/cbi/cbi_replicate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-10T10:41:53Z",
+      "side": 1,
+      "message": "transfer? replicate? copy? pick one :-)\n\nReplicate sounds weird btw, why not \"copy\"?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
