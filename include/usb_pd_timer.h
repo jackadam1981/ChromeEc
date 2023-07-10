@@ -66,6 +66,13 @@ enum pd_task_timer {
 	PE_TIMER_DISCOVER_IDENTITY,
 
 	/*
+	 * tEnterUSB is the time limit before which the DFP must send Enter_USB.
+	 * It resets upon Data Reset and upon Data Role Swap. See
+	 * PD r 3.1 v 1.8 ss 6.6.20.
+	 */
+	PE_TIMER_ENTER_USB,
+
+	/*
 	 * The NoResponseTimer is used by the Policy Engine in a Source
 	 * to determine that its Port Partner is not responding after a
 	 * Hard Reset.

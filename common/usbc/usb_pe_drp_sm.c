@@ -2602,6 +2602,9 @@ static void pe_src_send_capabilities_run(int port)
 
 		/* Reset the CapsCounter to zero */
 		pe[port].caps_counter = 0;
+
+		/* Start tEnterUSB following a PD connection. */
+		pd_timer_enable(port, PE_TIMER_ENTER_USB, PD_T_ENTER_USB);
 	}
 
 	/*
@@ -4739,6 +4742,9 @@ static void pe_drs_evaluate_swap_run(int port)
 		/* Accept Message sent. Transtion to PE_DRS_Change */
 		if (PE_CHK_FLAG(port, PE_FLAGS_ACCEPT)) {
 			PE_CLR_FLAG(port, PE_FLAGS_ACCEPT);
+			/* Start tEnterUSB after a DR Swap is completed. */
+			pd_timer_enable(port, PE_TIMER_ENTER_USB,
+					PD_T_ENTER_USB);
 			set_state_pe(port, PE_DRS_CHANGE);
 		} else {
 			/*
@@ -4831,6 +4837,11 @@ static void pe_drs_send_swap_run(int port)
 
 		if ((ext == 0) && (cnt == 0)) {
 			if (type == PD_CTRL_ACCEPT) {
+				/*
+				 * Start tEnterUSB after a DR Swap is completed.
+				 */
+				pd_timer_enable(port, PE_TIMER_ENTER_USB,
+						PD_T_ENTER_USB);
 				set_state_pe(port, PE_DRS_CHANGE);
 				return;
 			} else if ((type == PD_CTRL_REJECT) ||
@@ -6637,6 +6648,15 @@ static void pe_enter_usb_entry(int port)
 	memcpy(tx_emsg[port].buf, &usb4_payload, tx_emsg[port].len);
 	send_data_msg(port, pe[port].tx_type, PD_DATA_ENTER_USB);
 	pe_sender_response_msg_entry(port);
+
+	/* The PD spec is ambiguous about whether this timeout should stop
+	 * counting after sending the SOP (last) Enter_USB message or the first
+	 * (possibly SOP or SOP'). Stop it for the first one to avoid resetting
+	 * in the middle of a connection attempt. If the timeout expires during
+	 * cable USB4 entry, tUSB4Timeout on the UFP side that the TCPM should
+	 * just continue the sequence.
+	 */
+	pd_timer_disable(port, PE_TIMER_ENTER_USB);
 }
 
 static void pe_enter_usb_run(int port)
@@ -7934,6 +7954,9 @@ static void pe_ddr_perform_data_reset_run(int port)
 			set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
 		} else if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+			/* Start tEnterUSB after a Data Reset is completed. */
+			pd_timer_enable(port, PE_TIMER_ENTER_USB,
+					PD_T_ENTER_USB);
 			pe_set_ready_state(port);
 		}
 		return;

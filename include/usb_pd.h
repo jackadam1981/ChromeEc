@@ -213,6 +213,11 @@ enum pd_rx_errors {
 #define PD_T_SOURCE_ACTIVITY (45 * MSEC) /* between 40ms and 50ms */
 #define PD_T_ENTER_EPR (500 * MSEC) /* between 450ms and 550ms */
 /*
+ * Adjusted up to improve interop. The timeout enforced by the UFP,
+ * tUSB4Timeout, is 1000 ms, so USB4 UFPs should tolerate this.
+ */
+#define PD_T_ENTER_USB (800 * MSEC) /* Maximum 500ms */
+/*
  * Adjusting for TCPMv2 PD2 Compliance. In tests like TD.PD.SRC.E5 this
  * value is the duration before the Hard Reset can be sent. Setting the
  * timer value to the maximum will delay sending the HardReset until
