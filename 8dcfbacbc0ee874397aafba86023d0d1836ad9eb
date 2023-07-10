@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddc4ecb5_5f738736",
+        "filename": "driver/retimer/ps8828.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-07-10T23:17:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42ab5cf5_a9cb8729",
+      "revId": "8dcfbacbc0ee874397aafba86023d0d1836ad9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ccba597_6a026ca5",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19da30b3_1088c97f",
+        "filename": "include/driver/retimer/ps8828.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-07-10T23:17:21Z",
+      "side": 1,
+      "message": "They seem to allow flipping the SBU lines independently of everything else. They don\u0027t seem to be relevant. I found another Parade driver with similar bits that aren\u0027t used by the driver.",
+      "parentUuid": "5ccba597_6a026ca5",
+      "revId": "8dcfbacbc0ee874397aafba86023d0d1836ad9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a86e027e_87eae18e",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-07-07T20:41:29Z",
       "side": 1,
       "message": "typo: retimer",
+      "range": {
+        "startLine": 106,
+        "startChar": 38,
+        "endLine": 106,
+        "endChar": 46
+      },
+      "revId": "8dcfbacbc0ee874397aafba86023d0d1836ad9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e554f44f_44b9fc50",
+        "filename": "zephyr/Kconfig.retimer",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-07-10T23:17:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a86e027e_87eae18e",
       "range": {
         "startLine": 106,
         "startChar": 38,
