@@ -253,3 +253,40 @@ ZTEST_F(usbc_alt_mode_custom_discovery, test_peripheral_usb4_no_alt_mode)
 
 	verify_data_reset_msg(&fixture->partner, true);
 }
+
+ZTEST_F(usbc_alt_mode_custom_discovery, test_before_t_enter_usb)
+{
+	struct tcpci_partner_data *partner = &fixture->partner;
+
+	if (!IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_REQUIRE_AP_MODE_ENTRY)) {
+		ztest_test_skip();
+	}
+
+	/*
+	 * If the partner would normally merit a Data Reset, but the mode entry
+	 * request comes before tEnterUSB expires (nominally 500 ms), the TCPM
+	 * should not perform a Data Reset before entering USB4.
+	 */
+	partner->identity_vdm[VDO_INDEX_IDH] = VDO_IDH_REV30(
+		/* USB host */ false, /* USB device */ false, IDH_PTYPE_PERIPH,
+		/* modal operation */ true, /* DFP type */ 0,
+		/* connector type */ 3, USB_VID_GOOGLE);
+	partner->identity_vdm[VDO_INDEX_PTYPE_UFP1_VDO] = VDO_UFP1(
+		/* Capability */ VDO_UFP1_CAPABILITY_USB4,
+		/* connector type */ 0, /* alternate modes */ 0, /* speed */ 1);
+
+	set_ac_enabled(true);
+	zassert_ok(tcpci_partner_connect_to_tcpci(partner, fixture->tcpci_emul),
+		   NULL);
+	isl923x_emul_set_adc_vbus(fixture->charger_emul,
+				  PDO_FIXED_GET_VOLT(fixture->src_ext.pdo[0]));
+	/* Wait less time than usual for PD negotiation and current ramp. */
+	k_sleep(K_MSEC(400));
+
+	tcpci_partner_common_clear_logged_msgs(&fixture->partner);
+	tcpci_partner_common_enable_pd_logging(&fixture->partner, true);
+	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	k_sleep(K_SECONDS(1));
+
+	verify_data_reset_msg(&fixture->partner, false);
+}
