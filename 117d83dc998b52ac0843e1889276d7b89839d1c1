@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "720710cf_8d007189",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-07-10T04:49:08Z",
+      "side": 1,
+      "message": "Fixed the BUILD.py format issue. Also add register_ish_project to pylintrc to fix the lint error.",
+      "revId": "117d83dc998b52ac0843e1889276d7b89839d1c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
