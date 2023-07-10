@@ -34,6 +34,24 @@
       "parentUuid": "2ef470de_db4de17c",
       "revId": "5caa41eb79025d173ae44da7ec2cdc23773ca587",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f59196_b65efd81",
+        "filename": "zephyr/program/rex/CMakeLists.txt",
+        "patchSetId": 19
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-07-10T18:24:43Z",
+      "side": 1,
+      "message": "Can this be in https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/shim/include/config_chip.h instad?\n\n```c\n#undef CHIP_ISH\n#ifdef CONFIG_SOC_FAMILY_INTEL_ISH\n#define CHIP_ISH\n#endif\n```",
+      "parentUuid": "f3705a4d_7ebfdaf8",
+      "revId": "5caa41eb79025d173ae44da7ec2cdc23773ca587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
