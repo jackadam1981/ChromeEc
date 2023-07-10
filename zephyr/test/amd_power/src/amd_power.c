@@ -48,6 +48,7 @@ void set_initial_pwrbtn_state(void);
 #define PROCHOT_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(prochot_odl), gpios)
 #define LID_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(lid_open_ec), gpios)
 #define STB_OUT_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(ec_sfh_int_h), gpios)
+#define SYSRQ_OUT_PIN DT_GPIO_PIN(NAMED_GPIOS_GPIO_NODE(ap_ec_int_l), gpios)
 
 /*
  * Provide standard array of power signals for the module based on our DTS enum
@@ -536,14 +537,33 @@ ZTEST(amd_power, test_power_stb_dump_interrupt)
 
 	/* Send sleep event, but fail to actually transition the signal */
 	zassert_ok(host_command_process(&host_sleep_ev_args));
+	/* Sleep long enough to trigger the recovery process. */
 	k_sleep(K_MSEC(CONFIG_SLEEP_TIMEOUT_MS * 2));
 
-	zassert_equal(power_get_state(), POWER_S0);
-	/* Watch for our STB dump to trigger */
-	zassert_equal(gpio_emul_output_get(gpio_dev, STB_OUT_PIN), 1);
+	/* Sending a SysRq will trigger a kernel panic which results in the AP
+	 * rebooting itself as part of the recovery. The EC will monitor for the
+	 * AP reset and trigger one manually if it doesn't occur in time. That
+	 * means we shouldn't trigger another one manually here during testing.
+	 */
+	if (!IS_ENABLED(CONFIG_EMULATED_SYSRQ)) {
+		/* Verify the AP recovered and is back to life. */
+		zassert_equal(power_get_state(), POWER_S0);
+		/* Watch for our STB dump to trigger */
+		zassert_equal(gpio_emul_output_get(gpio_dev, STB_OUT_PIN), 1);
 
-	/* But a reset came in before we finished the STB dump */
-	chipset_reset(CHIPSET_RESET_HANG_REBOOT);
+		/* But a reset came in before we finished the STB dump */
+		chipset_reset(CHIPSET_RESET_HANG_REBOOT);
+	} else {
+		/* Verify the AP recovered and is back to life. */
+		zassert_equal(power_get_state(), POWER_S0);
+		/* Nothing else to validate.
+		 * Either the AP performed its own reset to recover from the
+		 * SysRq kernel panic or the EC forced an AP reset. Regardless,
+		 * the AP is back in S0 now. Unfortunately, this means we can't
+		 * validate the STB GPIO toggled, since it occurred while we
+		 * were sleeping to trigger the suspend hang for the test.
+		 */
+	}
 
 	/* Observe we're not longer asserting the OUT pin */
 	zassert_equal(gpio_emul_output_get(gpio_dev, STB_OUT_PIN), 0);
@@ -610,6 +630,8 @@ ZTEST(amd_power, test_power_chipset_reset_s0)
 	zassert_equal(2, interrupt_sys_reset_monitor_fake.call_count,
 		      "Interrupt pin asserted only %d times.",
 		      interrupt_sys_reset_monitor_fake.call_count);
+	/* Verify hook_notify calls that come from the AMD power file */
+	zassert_equal(hook_counts.reset_count, 1);
 }
 
 ZTEST(amd_power, test_power_chipset_reset_g3)
