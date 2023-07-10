@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "40f81db3_7884fd06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-10T21:15:17Z",
+      "side": 1,
+      "message": "Nit - line length",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 73
+      },
+      "revId": "c5595aa231bccdad6b16e8adb8093ab51508ac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "02a3ccbf_2832cdc0",
@@ -32,6 +55,29 @@
       "side": 1,
       "message": "I\u0027ll take a look next week.",
       "parentUuid": "02a3ccbf_2832cdc0",
+      "revId": "c5595aa231bccdad6b16e8adb8093ab51508ac52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "197486b7_e24e9ec5",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-10T21:15:17Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me why you\u0027re creating another level of nesting here.  Updated documentation might help.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 18
+      },
       "revId": "c5595aa231bccdad6b16e8adb8093ab51508ac52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

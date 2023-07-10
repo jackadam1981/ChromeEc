@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "825d970e_a869e932",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-10T21:15:17Z",
+      "side": 1,
+      "message": "\u003e \"Reformated\" is a possible misspelling of \"Reformatted\".\n\nPlease fix.",
+      "parentUuid": "71fe9e78_1a7b2264",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "82659844b7af5f55f95be5db2ad6cd868fa3ff23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda8bbdb_d8252a82",
+        "filename": "zephyr/program/herobrine/herobrine/led_policy.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-10T21:15:17Z",
+      "side": 1,
+      "message": "This pattern is strange to me. It appears you have an implicit dependency between the `led-0` and `led-1` nodes.  I would expect the `color-N` numbering to restart on each physical LED.",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "82659844b7af5f55f95be5db2ad6cd868fa3ff23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f041bdad_dd7ee5b5",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-10T21:15:17Z",
+      "side": 1,
+      "message": "This macro, and `LED_COLOR_INIT` require that the children nodes are named \"led-0\" and \"led-1\".  This is fragile, as this naming isn\u0027t enforced by the devicetree.\n\nCan you use `DT_FOREACH_CHILD()` instead?\n\nThe original implementation appears to support 4 colors, but this now only support 2?",
+      "range": {
+        "startLine": 87,
+        "startChar": 45,
+        "endLine": 87,
+        "endChar": 50
+      },
+      "revId": "82659844b7af5f55f95be5db2ad6cd868fa3ff23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
