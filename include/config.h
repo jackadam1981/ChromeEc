@@ -6877,6 +6877,14 @@
 #define CONFIG_SLEEP_TIMEOUT_MS 15000
 #endif
 
+/*
+ * Define the timeout in milliseconds between when the EC |SysRq| to the AP
+ * and when the AP is forcibly reset without it rebooting on its own.
+ */
+#ifndef CONFIG_SYSRQ_REBOOT_TIMEOUT_MS
+#define CONFIG_SYSRQ_REBOOT_TIMEOUT_MS 10000
+#endif
+
 #ifdef CONFIG_PWM_KBLIGHT
 #define CONFIG_KEYBOARD_BACKLIGHT
 #endif
