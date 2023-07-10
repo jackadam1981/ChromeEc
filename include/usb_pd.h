@@ -212,6 +212,7 @@ enum pd_rx_errors {
 #define PD_T_SINK_TRANSITION (35 * MSEC) /* between 20ms and 35ms */
 #define PD_T_SOURCE_ACTIVITY (45 * MSEC) /* between 40ms and 50ms */
 #define PD_T_ENTER_EPR (500 * MSEC) /* between 450ms and 550ms */
+#define PD_T_ENTER_USB (800 * MSEC) /* Maximum 500ms */
 /*
  * Adjusting for TCPMv2 PD2 Compliance. In tests like TD.PD.SRC.E5 this
  * value is the duration before the Hard Reset can be sent. Setting the

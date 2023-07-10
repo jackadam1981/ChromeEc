@@ -1212,8 +1212,17 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	    IS_ENABLED(CONFIG_USB_PD_DATA_RESET_MSG) &&
 	    DPM_CHK_FLAG(port, DPM_FLAG_ENTER_ANY) &&
 	    !DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_DONE)) {
-		set_state_dpm(port, DPM_DATA_RESET);
-		return true;
+		if (pd_timer_is_expired(port, PE_TIMER_ENTER_USB)) {
+			set_state_dpm(port, DPM_DATA_RESET);
+			return true;
+		} else {
+			/* Do not Data Reset before mode entry unless tEnterUSB
+			 * has expired.
+			 */
+			CPRINTS("C%d: Entering mode; tEnterUSB unexpired",
+				port);
+			DPM_SET_FLAG(port, DPM_FLAG_DATA_RESET_DONE);
+		}
 	}
 
 	/* Check if port, port partner and cable support USB4. */
