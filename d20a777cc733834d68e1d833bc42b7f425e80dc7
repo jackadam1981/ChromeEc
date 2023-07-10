@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0c82d4_ae162ebc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-07-10T03:36:05Z",
+      "side": 1,
+      "message": "This seems okay given the current structure, but as I noted on https://crrev.com/c/4650356/ I don\u0027t think the ap_power tests should really have anything that refers to any specific board like this. I\u0027m assuming that this board DT will be useful for writing the board-specific tests and won\u0027t remain in the ap_power directory for the long-term.",
+      "revId": "d20a777cc733834d68e1d833bc42b7f425e80dc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "59e25236_84be3f52",
