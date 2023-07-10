@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "871cfa62_797e9f3d",
+        "filename": "driver/retimer/ps8833.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-07-10T23:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1e8f8a4_9ab16a54",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 37
+      },
+      "revId": "3020cd9543a93a2b85e877ebe2a7250deb405d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abe5766a_882e3bc7",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-07-07T17:04:41Z",
       "side": 1,
       "message": "I would guess that connection will need to depend on one of the `pd_` APIs indicating that a thing is plugged in",
+      "revId": "3020cd9543a93a2b85e877ebe2a7250deb405d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45936614_f8dde725",
+        "filename": "driver/retimer/ps8833.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-07-10T23:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abe5766a_882e3bc7",
       "revId": "3020cd9543a93a2b85e877ebe2a7250deb405d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e5396d2_b0d048dc",
+        "filename": "driver/retimer/ps8833.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-07-10T23:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78bc5943_0883ca57",
+      "revId": "3020cd9543a93a2b85e877ebe2a7250deb405d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0eed0cd0_9baee4cb",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34dafdb9_29ae464f",
+        "filename": "include/driver/retimer/ps8833.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-07-10T23:18:19Z",
+      "side": 1,
+      "message": "I\u0027m still working on that aspect of the driver. Added a TODO to clarify that DP functionality is still being worked on.",
+      "parentUuid": "0eed0cd0_9baee4cb",
+      "revId": "3020cd9543a93a2b85e877ebe2a7250deb405d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcb8c981_7e5dba54",
@@ -88,6 +166,30 @@
       "writtenOn": "2023-07-07T20:47:30Z",
       "side": 1,
       "message": "retimer",
+      "range": {
+        "startLine": 114,
+        "startChar": 38,
+        "endLine": 114,
+        "endChar": 46
+      },
+      "revId": "3020cd9543a93a2b85e877ebe2a7250deb405d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a815a2b3_c8100125",
+        "filename": "zephyr/Kconfig.retimer",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-07-10T23:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcb8c981_7e5dba54",
       "range": {
         "startLine": 114,
         "startChar": 38,
