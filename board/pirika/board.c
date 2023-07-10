@@ -8,6 +8,7 @@
 #include "adc_chip.h"
 #include "button.h"
 #include "cbi_fw_config.h"
+#include "cbi_ssfc.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "charger.h"
@@ -786,4 +787,12 @@ __override void board_pulse_entering_rw(void)
 	usleep(MSEC);
 	gpio_set_level(GPIO_EC_ENTERING_RW, 0);
 	gpio_set_level(GPIO_EC_ENTERING_RW2, 0);
+}
+
+__override bool board_usb_charge_support(void)
+{
+	if (get_cbi_ssfc_bc_support() == SSFC_BC12_NONE)
+		return false;
+	else
+		return true;
 }

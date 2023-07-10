@@ -12,7 +12,7 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
 /* Cache SSFC on init since we don't expect it to change in runtime */
-static union dedede_cbi_ssfc cached_ssfc;
+static union pirika_cbi_ssfc cached_ssfc;
 BUILD_ASSERT(sizeof(cached_ssfc) == sizeof(uint32_t));
 
 static void cbi_ssfc_init(void)
@@ -33,4 +33,9 @@ enum ec_ssfc_base_sensor get_cbi_ssfc_base_sensor(void)
 enum ec_ssfc_lid_sensor get_cbi_ssfc_lid_sensor(void)
 {
 	return (enum ec_ssfc_lid_sensor)cached_ssfc.lid_sensor;
+}
+
+enum ec_ssfc_bc12_support get_cbi_ssfc_bc_support(void)
+{
+	return (enum ec_ssfc_bc12_support)cached_ssfc.bc12;
 }
