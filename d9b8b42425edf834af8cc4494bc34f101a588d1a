@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2aa2f05_817e85d3",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-07-10T03:25:22Z",
+      "side": 1,
+      "message": "I think this needs to be called inside the above `do..while` loop, because `tcpc_get_alert_status` returns the GPIO state so if another chip is asserting the IRQ then it seems like the loop only terminates after reaching the interrupt storm threshold and temporarily disabling the port. Moving the call inside `service_one_port` seems like it would be correct.\n\nI see that `pd_interrupt_handler_task` does the same thing, which is surprising because I don\u0027t recall ever seeing interrupt storm warnings which I\u0027d expect to see based on this reading of the code. Have you ever seen a message like that? Does moving the call to `board_process_pd_alert` as I\u0027ve suggested still work correctly?",
+      "revId": "d9b8b42425edf834af8cc4494bc34f101a588d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
