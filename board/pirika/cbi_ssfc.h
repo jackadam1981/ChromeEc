@@ -13,6 +13,20 @@
  */
 
 /*
+ * DB type (Bit 0-4)
+ */
+enum ec_ssfc_db_type {
+	SSFC_DB_NONE = 0,
+	SSFC_DB_2C = 1,
+	SSFC_DB_1C_LTE = 2,
+	SSFC_DB_1A_HDMI = 3,
+	SSFC_DB_1C_1A = 4,
+	SSFC_DB_LTE_HDMI = 5,
+	SSFC_DB_1C_1A_LTE = 6,
+	SSFC_DB_1C = 7
+};
+
+/*
  * Base Sensor (Bits 0-2)
  */
 enum ec_ssfc_base_sensor {
@@ -33,27 +47,19 @@ enum ec_ssfc_lid_sensor {
 	SSFC_SENSOR_LIS2DWL = 3
 };
 
-union dedede_cbi_ssfc {
+union pirika_cbi_ssfc {
 	struct {
-		uint32_t base_sensor : 3;
-		uint32_t lid_sensor : 3;
-		uint32_t reserved_2 : 26;
+		uint32_t db_type : 4;
+		uint32_t reserved_2 : 28;
 	};
 	uint32_t raw_value;
 };
 
 /**
- * Get the Base sensor type from SSFC_CONFIG.
+ * Get the DB type from SSFC_CONFIG.
  *
- * @return the Base sensor board type.
+ * @return the DB type.
  */
-enum ec_ssfc_base_sensor get_cbi_ssfc_base_sensor(void);
-
-/**
- * Get the Lid sensor type from SSFC_CONFIG.
- *
- * @return the Lid sensor board type.
- */
-enum ec_ssfc_lid_sensor get_cbi_ssfc_lid_sensor(void);
+enum ec_ssfc_db_type get_cbi_ssfc_db_type(void);
 
 #endif /* _DEDEDE_CBI_SSFC__H_ */
