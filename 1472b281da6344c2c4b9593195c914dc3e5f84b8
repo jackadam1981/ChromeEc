@@ -16,6 +16,24 @@
       "message": "This file is called generated.dtsi. This implies the change should be made upstream and this file should be regenerated. Is this not possible for some reason?",
       "revId": "1472b281da6344c2c4b9593195c914dc3e5f84b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3f33b2a_5c9cc9f4",
+        "filename": "zephyr/program/myst/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-07-11T23:29:43Z",
+      "side": 1,
+      "message": "Done. Moved this block to the manually maintained file in a follow-up CL.",
+      "parentUuid": "5c82048f_e5069680",
+      "revId": "1472b281da6344c2c4b9593195c914dc3e5f84b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
