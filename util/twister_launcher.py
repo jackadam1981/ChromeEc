@@ -91,12 +91,20 @@ import re
 import shlex
 import shutil
 from shutil import which
+import site
 import socket
 import subprocess
 import sys
 import tempfile
 import time
 from typing import List
+
+
+CHECKOUT_DIR = Path(__file__).resolve().parents[4]
+site.addsitedir(CHECKOUT_DIR)
+
+
+from chromite.lib import osutils  # pylint: disable=wrong-import-position
 
 
 # Paths under the EC base dir that contain tests. This is used to define
@@ -348,14 +356,31 @@ twister_test_binary(
     cwd = {str(cwd)!r},
 )"""
     run_hash = hashlib.md5(gen_starlark.encode("utf-8")).hexdigest()
-    twister_bzl_dir = (
-        Path(__file__).resolve().parent.parent / "build" / "twister-bzl"
-    )
+    build_dir = Path(__file__).resolve().parent.parent / "build"
+    twister_bzl_dir = build_dir / "twister-bzl"
     run_dir = twister_bzl_dir / run_hash
 
     if not run_dir.is_dir():
         run_dir.mkdir(parents=True)
         (run_dir / "BUILD.bazel").write_text(gen_starlark, encoding="utf-8")
+
+    # Twister users are used to seeing `twister-out`; symlink it to bazel twister-out
+    bazel_bin = Path(
+        subprocess.run(
+            ["bazel", "info", "bazel-bin"],
+            cwd=Path(__file__).resolve().parent,
+            check=True,
+            stdout=subprocess.PIPE,
+            encoding="utf-8",
+        ).stdout.strip()
+    )
+
+    ec_twister_out = Path("twister-out")
+    bazel_twister_out = (
+        bazel_bin / "platform/ec/build/twister-bzl" / run_hash / ec_twister_out
+    )
+
+    osutils.SafeSymlink(bazel_twister_out, ec_twister_out)
 
     bazel_cmd = ["bazel", "build", ":run_twister"]
     if sandbox_debug:
