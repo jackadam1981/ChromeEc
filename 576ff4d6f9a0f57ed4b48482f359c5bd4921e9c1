@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab21ee59_2e31c016",
+        "filename": "test/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-11T15:38:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we also have a test that does crash if it `CONFIG_ALLOW_UNALIGNED_ACCESS` is not enabled?",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 73
+      },
+      "revId": "576ff4d6f9a0f57ed4b48482f359c5bd4921e9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
