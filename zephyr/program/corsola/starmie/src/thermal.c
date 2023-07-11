@@ -73,6 +73,7 @@ int charger_profile_override(struct charge_state_data *curr)
 	 * charger_temp_ave is the calculated average of the previous
 	 * 4 times plus this time.
 	 */
+<<<<<<< HEAD   (0312a0 driver/touchpad_elan.c: update pattern setting)
 	if (thermal_cyc < 5) {
 		thermals[thermal_cyc] = charger_temp_c;
 		thermal_cyc++;
@@ -80,6 +81,10 @@ int charger_profile_override(struct charge_state_data *curr)
 		thermal_cyc = 0;
 		thermals[thermal_cyc] = charger_temp_c;
 	}
+=======
+	thermals[thermal_cyc] = charger_temp_c;
+	thermal_cyc = (thermal_cyc + 1) % 5;
+>>>>>>> BRANCH (b09a5f pujjo: Enable CONFIG_KEYBOARD_STRICT_DEBOUNCE)
 	for (int i = 0; i < 5; i++)
 		charger_temp_sum += thermals[i];
 
