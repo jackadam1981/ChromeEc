@@ -16,6 +16,24 @@
       "message": "I think this needs to be called inside the above `do..while` loop, because `tcpc_get_alert_status` returns the GPIO state so if another chip is asserting the IRQ then it seems like the loop only terminates after reaching the interrupt storm threshold and temporarily disabling the port. Moving the call inside `service_one_port` seems like it would be correct.\n\nI see that `pd_interrupt_handler_task` does the same thing, which is surprising because I don\u0027t recall ever seeing interrupt storm warnings which I\u0027d expect to see based on this reading of the code. Have you ever seen a message like that? Does moving the call to `board_process_pd_alert` as I\u0027ve suggested still work correctly?",
       "revId": "d9b8b42425edf834af8cc4494bc34f101a588d1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf74e91b_eede52be",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2023-07-11T03:14:27Z",
+      "side": 1,
+      "message": "Dear Peter:\n     Test as you suggested as below：\n\nfor (port \u003d 0; port \u003c CONFIG_USB_PD_PORT_MAX_COUNT;\n     ++port) {\n\tport_mask \u003d PD_STATUS_TCPC_ALERT_0 \u003c\u003c port;\n\tif ((have_alerts \u0026 port_mask) \u003d\u003d 0) {\n\t\t/* skip quiet port */\n\t\tcontinue;\n\t}\n\tif (!pd_is_port_enabled(port)) {\n\t\t/* filter out disabled port */\n\t\thave_alerts \u0026\u003d ~port_mask;\n\t\tcontinue;\n\t}\n\tservice_one_port(port);\n#if 0 // for test\n   /*test case 1*/\n\t//board_process_pd_alert(port);\n#endif\n#if 0 // for test\t\n   /*test case 2*/\t\n\tfor (alert_port \u003d 0; alert_port \u003c CONFIG_USB_PD_PORT_MAX_COUNT;\n\t      ++alert_port) {\n             board_process_pd_alert(alert_port);\n\t}\n#endif\n}\n#if 0 // for test\n/*test case 3*/\t\nfor (port \u003d 0; port \u003c CONFIG_USB_PD_PORT_MAX_COUNT;\n     ++port) {\n\tboard_process_pd_alert(port);\n}\n#endif\n\nIn the above for loop, test case 1 or test case 2 call board_process_pd_alert,\nthe state of the usb_c0_int_odl interrupt pin will become low,\nand no longer respond to interrupts, resulting in an abnormal state.\n\nAfter exiting the above for loop, test case 3 call board_process_pd_alert ,  test the function is normal.",
+      "parentUuid": "b2aa2f05_817e85d3",
+      "revId": "d9b8b42425edf834af8cc4494bc34f101a588d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
