@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cb96d9f_aebfcc7c",
+        "filename": "zephyr/shim/src/cbi/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-11T09:48:10Z",
+      "side": 1,
+      "message": "If we move methods to cros_cbi.c, we need to enclose them in ifdef CONFIG_PLATFORM_EC_CBI_FLASH_REPLICATE_EEPROM. Instead of that I moved them to .c file and including that file only if that config is defined. Is there be any memory or performance advantage by keeping the methods in same (i.e, cros_cbi.c) file",
+      "parentUuid": "1dc6833f_6efd55be",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 91
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a18cb7dc_fbe4ce63",
         "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
         "patchSetId": 2
@@ -100,6 +124,30 @@
       "writtenOn": "2023-07-10T10:41:53Z",
       "side": 1,
       "message": "transfer? replicate? copy? pick one :-)\n\nReplicate sounds weird btw, why not \"copy\"?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9cce633_b7e621fd",
+        "filename": "zephyr/shim/src/cbi/cbi_replicate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-11T09:48:10Z",
+      "side": 1,
+      "message": "sorry I forgot cleaning this up",
+      "parentUuid": "42f76918_17bcc61c",
       "range": {
         "startLine": 11,
         "startChar": 0,
