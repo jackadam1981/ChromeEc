@@ -85,6 +85,7 @@ config PLATFORM_EC_FW_RESET_VECTOR
 config PLATFORM_EC_SYSTEM_SAFE_MODE
 	bool "Enable System Safe Mode"
 	default n
+	select TASK_HOSTCMD_THREAD_DEDICATED
 	depends on (CPU_CORTEX_M || ARCH_POSIX)
 	help
 	  This enables system safe mode for retrieving system state after

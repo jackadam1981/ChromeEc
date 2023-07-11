@@ -13,6 +13,7 @@
 #include "host_command.h"
 #include "link_defs.h"
 #include "lpc.h"
+#include "panic.h"
 #include "power.h"
 #include "printf.h"
 #include "shared_mem.h"
@@ -445,6 +446,9 @@ void host_command_task(void *u)
 		/* Wait for the next command event */
 		int evt = task_wait_event(-1);
 		t0 = get_time();
+
+		if ((evt & TASK_EVENT_DEBUG_CRASH))
+			finish_command_crash();
 
 		/* Process it */
 		if ((evt & TASK_EVENT_CMD_PENDING) && pending_args) {

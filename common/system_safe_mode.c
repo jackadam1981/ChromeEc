@@ -23,6 +23,8 @@
 
 static bool in_safe_mode;
 
+static task_id_t restart_task = TASK_ID_INVALID;
+
 static const int safe_mode_allowed_hostcmds[] = {
 	EC_CMD_CONSOLE_READ,
 	EC_CMD_CONSOLE_SNAPSHOT,
@@ -63,6 +65,24 @@ bool is_task_safe_mode_critical(task_id_t task_id)
 bool is_current_task_safe_mode_critical(void)
 {
 	return is_task_safe_mode_critical(task_get_current());
+}
+
+bool is_task_safe_mode_restartable(task_id_t task_id)
+{
+	const task_id_t safe_mode_restartable_tasks[] = {
+#ifdef HAS_TASK_HOSTCMD
+		TASK_ID_HOSTCMD,
+#endif
+	};
+	for (int i = 0; i < ARRAY_SIZE(safe_mode_restartable_tasks); i++)
+		if (safe_mode_restartable_tasks[i] == task_id)
+			return true;
+	return false;
+}
+
+bool is_current_task_safe_mode_restartable(void)
+{
+	return is_task_safe_mode_restartable(task_get_current());
 }
 
 #ifndef CONFIG_ZEPHYR
@@ -133,6 +153,8 @@ bool command_is_allowed_in_safe_mode(int command)
 static void system_safe_mode_start(void)
 {
 	ccprintf("Post Panic SSM\n");
+	if (restart_task != TASK_ID_INVALID)
+		task_reset(restart_task, 0);
 	if (IS_ENABLED(CONFIG_SYSTEM_SAFE_MODE_PRINT_STACK))
 		print_panic_stack();
 	if (IS_ENABLED(CONFIG_HOSTCMD_EVENTS))
@@ -153,10 +175,12 @@ int start_system_safe_mode(void)
 	}
 
 	if (is_current_task_safe_mode_critical()) {
-		/* TODO: Restart critical tasks */
-		panic_printf(CANNOT_ENTER_SAFE_MODE_FMT,
-			     "Panic in critical task");
-		return EC_ERROR_INVAL;
+		if (!is_current_task_safe_mode_restartable()) {
+			panic_printf(CANNOT_ENTER_SAFE_MODE_FMT,
+				     "Panic in critical task");
+			return EC_ERROR_INVAL;
+		}
+		restart_task = task_get_current();
 	}
 
 	hook_call_deferred(&handle_system_safe_mode_timeout_data,

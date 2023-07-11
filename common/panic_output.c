@@ -352,10 +352,47 @@ ENABLE_GCC_WARNING("-Winfinite-recursion")
 
 /*****************************************************************************/
 /* Console commands */
+static int command_crash(int argc, const char **argv);
+
+#define MAX_ARGV_LEN 16
+static char finish_command_crash_argv[2][MAX_ARGV_LEN];
+void finish_command_crash(void)
+{
+	const char *argv[2];
+
+	argv[0] = finish_command_crash_argv[0];
+	argv[1] = finish_command_crash_argv[1];
+	command_crash(2, argv);
+}
+DECLARE_DEFERRED(finish_command_crash);
+
 static int command_crash(int argc, const char **argv)
 {
 	if (argc < 2)
 		return EC_ERROR_PARAM1;
+
+	if (argc > 2) {
+		strncpy(finish_command_crash_argv[0], argv[0], MAX_ARGV_LEN);
+		finish_command_crash_argv[0][MAX_ARGV_LEN - 1] = '\0';
+		strncpy(finish_command_crash_argv[1], argv[1], MAX_ARGV_LEN);
+		finish_command_crash_argv[1][MAX_ARGV_LEN - 1] = '\0';
+		if (!strcmp(argv[2], "shell") || !strcmp(argv[2], "console")) {
+			/* Already in shell/console task */
+			finish_command_crash();
+			return EC_SUCCESS;
+		}
+		if (!strcmp(argv[2], "hooks") || !strcmp(argv[2], "sysworkq")) {
+			hook_call_deferred(&finish_command_crash_data, 0);
+			return EC_SUCCESS;
+		}
+#ifdef HAS_TASK_HOSTCMD
+		if (!strcmp(argv[2], "hostcmd")) {
+			task_set_event(TASK_ID_HOSTCMD, TASK_EVENT_DEBUG_CRASH);
+			return EC_SUCCESS;
+		}
+#endif
+		return EC_ERROR_PARAM2;
+	}
 
 	if (!strcasecmp(argv[1], "assert")) {
 		ASSERT(0);
@@ -408,7 +445,8 @@ static int command_crash(int argc, const char **argv)
 
 DECLARE_CONSOLE_COMMAND(crash, command_crash,
 			"[assert | divzero | udivzero | stack"
-			" | unaligned | watchdog | hang | null]",
+			" | unaligned | watchdog | hang | null]"
+			" [hooks]",
 			"Crash the system (for testing)");
 
 #ifdef TEST_BUILD

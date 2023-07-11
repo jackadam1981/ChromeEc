@@ -447,3 +447,27 @@ inline bool in_deferred_context(void)
 	 */
 	return (k_current_get() == get_sysworkq_thread());
 }
+
+int task_reset(task_id_t task_id, int wait)
+{
+	struct _static_thread_data *thread_data;
+	k_tid_t tid = task_id_to_thread_id(task_id);
+
+	if (tid == NULL)
+		return EC_ERROR_INVAL;
+
+	if (tid->init_data == NULL)
+		return EC_ERROR_INVAL;
+
+	thread_data = (struct _static_thread_data *)tid->init_data;
+
+	k_thread_abort(tid);
+	k_thread_create(thread_data->init_thread, thread_data->init_stack,
+			thread_data->init_stack_size, thread_data->init_entry,
+			thread_data->init_p1, thread_data->init_p2,
+			thread_data->init_p3, thread_data->init_prio,
+			thread_data->init_options, K_NO_WAIT);
+	k_thread_start(tid);
+
+	return EC_SUCCESS;
+}

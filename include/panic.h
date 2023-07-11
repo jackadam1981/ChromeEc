@@ -29,6 +29,8 @@ BUILD_ASSERT(sizeof(struct panic_data) == CONFIG_RO_PANIC_DATA_SIZE);
 /* Use PANIC_DATA_PTR to refer to the persistent storage location */
 #define PANIC_DATA_PTR ((struct panic_data *)CONFIG_PANIC_DATA_BASE)
 
+void finish_command_crash(void);
+
 /**
  * Write a string to the panic reporting device
  *

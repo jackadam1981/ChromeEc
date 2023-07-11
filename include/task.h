@@ -29,6 +29,8 @@ extern "C" {
 /* Tasks may use the bits in TASK_EVENT_CUSTOM_BIT for their own events */
 #define TASK_EVENT_CUSTOM_BIT(x) BUILD_CHECK_INLINE(BIT(x), BIT(x) & 0x0ffff)
 
+#define TASK_EVENT_DEBUG_CRASH BIT(15)
+
 /* Used to signal that sysjump preparation has completed */
 #define TASK_EVENT_SYSJUMP_READY BIT(16)
 
