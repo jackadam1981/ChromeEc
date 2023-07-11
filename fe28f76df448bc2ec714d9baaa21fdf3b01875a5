@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc743abc_4eeee731",
+        "filename": "common/host_command.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-11T17:09:45Z",
+      "side": 1,
+      "message": "Looks like there is an incompatibility between `struct host_cmd_handler_args` (legacy) and `struct ec_host_cmd_handler_args` (Zephyr).\n\nThe Zephyr version doesn\u0027t have the `result` field - so any legacy host command handlers could corrupt data.\n\nYou should add some build asserts to validate structure compatibility.",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 23
+      },
+      "revId": "fe28f76df448bc2ec714d9baaa21fdf3b01875a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5473897a_b20d2afb",
+        "filename": "zephyr/shim/chip/it8xxx2/CMakeLists.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-11T17:09:45Z",
+      "side": 1,
+      "message": "I think this breaks projects that use ITE and eSPI.  You also need a check that SHI is enabled.",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 49
+      },
+      "revId": "fe28f76df448bc2ec714d9baaa21fdf3b01875a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d8ed2e7_73b1211a",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-11T17:09:45Z",
+      "side": 1,
+      "message": "Can you use SYS_INIT here instead?  Inside the zephyr shim, it\u0027s preferred to use Zephyr\u0027s APIs when possible.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "fe28f76df448bc2ec714d9baaa21fdf3b01875a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de3afdf3_8b4c74e5",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-11T17:09:45Z",
+      "side": 1,
+      "message": "Use `EC_HOST_CMD_HANDLER` directly.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 20
+      },
+      "revId": "fe28f76df448bc2ec714d9baaa21fdf3b01875a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e838827e_988a4fa7",
+        "filename": "zephyr/test/drivers/default/src/usb_mux.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-11T17:09:45Z",
+      "side": 1,
+      "message": "Can you document why this test needs to check for the test runner or host command task ID?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 61
+      },
+      "revId": "fe28f76df448bc2ec714d9baaa21fdf3b01875a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
