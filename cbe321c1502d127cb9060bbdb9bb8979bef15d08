@@ -69,6 +69,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99fcd6e3_084ab225",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-11T22:13:59Z",
+      "side": 1,
+      "message": "Partial pass on `dp_alt_mode.c`",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2378db8_123a0851",
@@ -82,6 +99,125 @@
       "writtenOn": "2023-06-14T18:52:35Z",
       "side": 1,
       "message": "I think we should probably record the VDM version from the partner and cable exactly as we received it and then make a decision to downgrade to our own highest supported version if necessary at transmit time. That will let us at least report the partner\u0027s real version up to the AP.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc6f33b7_0dc86b92",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-11T22:13:59Z",
+      "side": 1,
+      "message": "Why is this overridable?",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e81ba6c_50a82e27",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-11T22:13:59Z",
+      "side": 1,
+      "message": "Per the footnotes in tables 4-4 and 5-13, should this code also be checking the DPAM version and signaling fields to make sure this field shouldn\u0027t be ignored?",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd5bde33_97f19e89",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-11T22:13:59Z",
+      "side": 1,
+      "message": "Nit: Don\u0027t add this extra blank line.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42692a6b_576fae85",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-11T22:13:59Z",
+      "side": 1,
+      "message": "Instead of creating another macro for the DP 2.1 Config VDO, can you, in a separate CL preceding this one\n1. Create a function that takes appropriately typed parameters, including a DPAM value, and returns a DP Config VDO structure/union, and\n2. Converts existing usages of these macros to use that function?",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e59827c_64be9f14",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-11T22:13:59Z",
+      "side": 1,
+      "message": "Does DP 2.1 support _require_ TBT3 support?",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0f0dbd_d00415f3",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-11T22:13:59Z",
+      "side": 1,
+      "message": "These log lines seem superfluous. Can you remove them?",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe1bbee2_8ee64324",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-11T22:13:59Z",
+      "side": 1,
+      "message": "It seems like this would be the wrong data type for SOP.\n\nMore fundamentally, table 5-5 indicates that the appropriate DPAM version for outgoing DP VDMs depends on the DPAM version for the DFP, UFP, and cable; therefore, it seems weird to me that this function takes the message type as a parameter. AFAICT, the outgoing DPAM version should be the same for SOP, SOP\u0027, and SOP\u0027\u0027.",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
