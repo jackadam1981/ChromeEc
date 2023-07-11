@@ -38,6 +38,8 @@ def _impl(ctx):
         input_manifests = twister_bin_tool_input_mfs,
     )
 
+    print("Check twister output in {}".format(build_dir.path))
+
     return DefaultInfo(
         files = depset([build_dir]),
         runfiles = ctx.runfiles(files = [build_dir]),

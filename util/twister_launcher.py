@@ -355,11 +355,17 @@ twister_test_binary(
         run_dir.mkdir(parents=True)
         (run_dir / "BUILD.bazel").write_text(gen_starlark, encoding="utf-8")
 
+    # Symlink to the artifact
+    bazel_bin = subprocess.check_output(["bazel", "info", "bazel-bin"]).decode(sys.stdout.encoding).strip()
+    os.symlink(bazel_bin / pathlib.Path("platform/ec/build/twister-bzl") / run_hash / "twister-out", "twister-out")
+
     bazel_cmd = ["bazel", "build", ":run_twister"]
     if sandbox_debug:
         bazel_cmd.append("--sandbox_debug")
 
     result = subprocess.run(bazel_cmd, cwd=run_dir, check=False)
+
+
     sys.exit(result.returncode)
 
 
