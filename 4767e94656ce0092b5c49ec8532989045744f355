@@ -16,6 +16,24 @@
       "message": "Please refers to https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/chromeos-ec-firmware-test-requirements.md\nWe may bypass at this moment but consider to improve the test coverage.",
       "revId": "4767e94656ce0092b5c49ec8532989045744f355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb406a6a_96ce7f29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2023-07-11T02:23:59Z",
+      "side": 1,
+      "message": "Hi Ivan, \nWe added the LOW_COVERAGE_REASON tag to bypass the code coverage requirement.\nWould you please help to remove the code-coverage -1 from Zoss?",
+      "parentUuid": "244f3c22_e74dd397",
+      "revId": "4767e94656ce0092b5c49ec8532989045744f355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
