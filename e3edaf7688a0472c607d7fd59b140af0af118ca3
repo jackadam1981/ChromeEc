@@ -70,6 +70,30 @@
       },
       "revId": "e3edaf7688a0472c607d7fd59b140af0af118ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16db9bcd_7c7f0fe1",
+        "filename": "test/unaligned_access.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-11T15:41:02Z",
+      "side": 1,
+      "message": "\u003e AFAIK this does not run in CQ\n\nSearching for `benchmark` in the [failed CQ above](http://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8776292326459100017/+/u/test_firmware/stdout?format\u003draw) seems to imply that the benchmarks are being run on at least the `host` target (I thought they were also run on `bloonchipper`). \n\n\u003e What do you think about moving the benchmark to a different place outside of tests? (instead of removing completely..)\n\nI would prefer to keep the benchmarks in the same directory as the tests because they use the same infrastructure. Similarly I would prefer it if the benchmark tests build during CQ and when running unit tests to prevent them from getting stale. Having said that, the benchmarks are largely informational (i.e. few, if any, can actually \"fail\") so they don\u0027t add much value to actually *run* in CQs. There are two options that come to mind for me:\n\n**Option 1**\nMaybe we can get the best of both worlds by having a runtime check that inhibits benchmarks unless requested. A config option would allow us to use `if (IS_ENABLED(CONFIG_RUN_BENCHMARK_TESTS))` but I\u0027m not sure how to conditionally define the config in a clean way. We could pass a flag when building,such as `make RUN_BENCHMARK_TESTS\u003d1`, that adds a `-DRUN_BENCHMARK_TESTS` flag during complilation. The `board.h` file could then have a block that looks like this to support it:\n```\n#ifdef RUN_BENCHMARK_TESTS\n#define CONFIG_RUN_BENCHMARK_TESTS\n#else\n#undef CONFIG_RUN_BENCHMARK_TESTS\n#endif\n```\n\nThis would work but I\u0027m not a fan of variables passed into make like this as they are hard to find and/or remember without searching through cryptic makefiles. It could be included in the [Common Variables list](http://cs/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/Makefile.rules?l\u003d864) but I\u0027m not sure this qualifies as a \"common variable\".\n\n\n**Option 2**\nMost of the benchmarks are already in files named with an `_benchmark` suffix (i.e. `test/foo_benchmark.cc`), so we could standardize on this for all benchmarks. Then we add a `--include-benchmarks` flag to `run_device_tests.py` and add a field in the test configs to label the benchamrks. Now the default behavior is to not run the benchmark tests, but would this build the tests as part of the CQ? Do we already run `make tests` to build all the board specific tests? \n\nThoughts or other suggestions?",
+      "parentUuid": "b4103dc2_47f7a5e3",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "e3edaf7688a0472c607d7fd59b140af0af118ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

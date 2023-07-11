@@ -70,6 +70,30 @@
       },
       "revId": "51babd0fdb2d9cad5db6cf0d2cd08fba334ffc86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f695b4e_aa46b868",
+        "filename": "common/panic_output.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-11T15:41:02Z",
+      "side": 1,
+      "message": "Oh, I see now. The wording of the comment threw me off for some reason.",
+      "parentUuid": "866cec59_a1a0fdb8",
+      "range": {
+        "startLine": 374,
+        "startChar": 2,
+        "endLine": 374,
+        "endChar": 59
+      },
+      "revId": "51babd0fdb2d9cad5db6cf0d2cd08fba334ffc86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
