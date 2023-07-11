@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8411ff6_d92e818f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5803,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-11T21:32:35Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be in a separate patch for enabling CBI_FLASH\ninstead of `Replicate CBI data in EEPROM to flash`?",
+      "range": {
+        "startLine": 5803,
+        "startChar": 7,
+        "endLine": 5803,
+        "endChar": 23
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c62a4d6d_cc9e6f73",
         "filename": "zephyr/Kconfig.cbi",
         "patchSetId": 2
@@ -31,6 +54,30 @@
       "writtenOn": "2023-07-10T10:41:53Z",
       "side": 1,
       "message": "could use some rewording, maybe \"Copy CBI data from EEPROM to flash automatically if the the flash on is empty.\"",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 70
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac87ebb2_357ef387",
+        "filename": "zephyr/Kconfig.cbi",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-11T21:32:35Z",
+      "side": 1,
+      "message": "+1. replication is a different concept from what we need here.\n`migration` would be more suitable.",
+      "parentUuid": "93305668_cc5238b5",
       "range": {
         "startLine": 67,
         "startChar": 1,
@@ -153,6 +200,53 @@
         "startChar": 0,
         "endLine": 11,
         "endChar": 49
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4aa63b4_e67cc8bf",
+        "filename": "zephyr/shim/src/cbi/cbi_replicate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-11T21:32:35Z",
+      "side": 1,
+      "message": "how about migrate?",
+      "parentUuid": "c9cce633_b7e621fd",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb4ae19_47d518a5",
+        "filename": "zephyr/shim/src/cbi/cbi_replicate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-11T21:32:35Z",
+      "side": 1,
+      "message": "it\u0027ll make more sense to add a method to common/cbi.c\nto check if the CBI struct is valid. do_cbi_read() already\ndoes this so it may be sufficient to try to read a required\nfield like board ID... or check the header magic number, etc.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 22
       },
       "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
