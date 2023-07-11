@@ -357,6 +357,29 @@ twister_test_binary(
         run_dir.mkdir(parents=True)
         (run_dir / "BUILD.bazel").write_text(gen_starlark, encoding="utf-8")
 
+    # Twister users are used to seeing `twister-out`; symlink it to bazel twister-out
+    bazel_bin = subprocess.run(
+        ["bazel", "info", "bazel-bin"],
+        cwd=Path(__file__).parent,
+        check=True,
+        stdout=subprocess.PIPE,
+        encoding="utf-8",
+    ).stdout.strip()
+
+    ec_twister_out = Path("twister-out")
+    bazel_twister_out = (
+        bazel_bin
+        / pathlib.Path("platform/ec/build/twister-bzl")
+        / run_hash
+        / ec_twister_out
+    )
+    print(bazel_twister_out)
+    try:
+        os.remove(ec_twister_out)
+    except FileNotFoundError:
+        pass
+    ec_twister_out.symlink_to(bazel_twister_out)
+
     bazel_cmd = ["bazel", "build", ":run_twister"]
     if sandbox_debug:
         bazel_cmd.append("--sandbox_debug")
