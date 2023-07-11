@@ -16,6 +16,98 @@
       "message": "Hi Caveh, do we need anything else for this CL?\nThanks.",
       "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03b1c8af_3c1803b3",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-11T20:46:06Z",
+      "side": 1,
+      "message": "add `static`?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 6
+      },
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c56d85aa_6fcc5e82",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-11T20:46:06Z",
+      "side": 1,
+      "message": "this should only access the ps8811 for specific USB DB types.\nit should be a no-op for FW_USB_DB_NOT_CONNECTED and\nFW_USB_DB_USB4_ANX7452 (the original one that has the\ni2c addr conflict).",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 28
+      },
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4321e990_c64c1e3c",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-11T20:46:06Z",
+      "side": 1,
+      "message": "do you get this message with every AP power transition now?\nthat\u0027s probably too much.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec128949_9feea3b4",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-11T20:46:06Z",
+      "side": 1,
+      "message": "why deferred calls? are you waiting for the power to the\nps8811 to be enabled?",
+      "range": {
+        "startLine": 183,
+        "startChar": 7,
+        "endLine": 183,
+        "endChar": 12
+      },
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
