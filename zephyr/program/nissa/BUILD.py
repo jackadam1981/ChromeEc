@@ -117,3 +117,6 @@ gothrax = register_nissa_project(
     project_name="gothrax",
     chip="it81302bx",
 )
+craaskov = register_nivviks_project(
+    project_name="craaskov",
+)
