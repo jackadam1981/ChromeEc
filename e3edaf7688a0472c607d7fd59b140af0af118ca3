@@ -118,6 +118,30 @@
       },
       "revId": "e3edaf7688a0472c607d7fd59b140af0af118ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be78172_fb7ff721",
+        "filename": "test/unaligned_access.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-11T15:53:25Z",
+      "side": 1,
+      "message": "\u003e Are you suggesting splitting the test into unaligned_access and unaligned_access_benchmark? \n\nYes, that would be \"step 1\" of that option. If we\u0027re concerned about CQ or test time then \"step 2\" would be to modify `run_device_tests.py` to only run benchmark tests when requested, but this only really works well if we\u0027re sure that we\u0027re always building benchmarks to prevent them from getting stale.",
+      "parentUuid": "7b8a75db_4139ceef",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "e3edaf7688a0472c607d7fd59b140af0af118ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
