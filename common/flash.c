@@ -1615,7 +1615,7 @@ flash_command_protect_v2(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_protect_v2 *p = args->params;
 	struct ec_response_flash_protect *r = args->response;
-	int rc = EC_RES_SUCCESS;
+	int rc;
 
 	flash_protect_async_data.mask = p->mask;
 	flash_protect_async_data.flags = p->flags;
@@ -1631,9 +1631,8 @@ flash_command_protect_v2(struct host_cmd_handler_args *args)
 	case FLASH_PROTECT_ASYNC:
 		if (p->mask) {
 			rc = flash_protect_async_data.rc;
-			if (rc != EC_RES_SUCCESS) {
-				rc = EC_RES_BUSY;
-				break;
+			if (rc == EC_RES_BUSY) {
+				return rc;
 			}
 			hook_call_deferred(
 				&crec_flash_set_protect_deferred_data,
@@ -1654,7 +1653,13 @@ flash_command_protect_v2(struct host_cmd_handler_args *args)
 		 * the actual result.
 		 */
 		rc = flash_protect_async_data.rc;
-		if (rc == EC_RES_BUSY || rc == EC_RES_ERROR)
+		if (rc == EC_RES_ERROR) {
+			/* Ready for another command */
+			flash_protect_async_data.rc = EC_RES_SUCCESS;
+			break;
+		}
+
+		if (rc == EC_RES_BUSY)
 			break;
 
 		r->flags = crec_flash_get_protect();
@@ -1670,8 +1675,6 @@ flash_command_protect_v2(struct host_cmd_handler_args *args)
 
 		args->response_size = sizeof(*r);
 
-		/* Ready for another command */
-		flash_protect_async_data.rc = EC_RES_SUCCESS;
 		break;
 
 	default:
