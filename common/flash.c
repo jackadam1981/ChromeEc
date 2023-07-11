@@ -1629,12 +1629,17 @@ flash_command_protect_v2(struct host_cmd_handler_args *args)
 
 	switch (p->action) {
 	case FLASH_PROTECT_ASYNC:
+		/*
+		 * Check is status is busy. Break without sending another
+		 * deferred crec_flash_set_protect command.
+		 */
+		rc = flash_protect_async_data.rc;
+		if (rc == EC_RES_BUSY) {
+			break;
+		}
+		/* Reset status to success in case previous command failed. */
+		flash_protect_async_data.rc = EC_RES_SUCCESS;
 		if (p->mask) {
-			rc = flash_protect_async_data.rc;
-			if (rc != EC_RES_SUCCESS) {
-				rc = EC_RES_BUSY;
-				break;
-			}
 			hook_call_deferred(
 				&crec_flash_set_protect_deferred_data,
 				100 * MSEC);
