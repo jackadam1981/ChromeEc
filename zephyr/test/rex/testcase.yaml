@@ -28,3 +28,11 @@ tests:
       - boards/rex/rex.dtsi
     extra_configs:
       - CONFIG_TEST_BOARD_USB_MUX_CONFIG=y
+
+  rex.screebo.usb_config:
+    extra_dtc_overlay_files:
+      - boards/screebo/screebo.dtsi
+    extra_configs:
+      - CONFIG_TEST_SCREEBO_USB_CONFIG=y
+      - CONFIG_PLATFORM_EC_TCPC_INTERRUPT=y
+      - CONFIG_PLATFORM_EC_USB_PD_TCPC_RUNTIME_CONFIG=y
