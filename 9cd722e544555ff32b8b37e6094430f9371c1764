@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e195dd_cb4f5a1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-12T10:12:11Z",
+      "side": 1,
+      "message": "Is this code really specific to `rex` or should it (or part of it) be implemented somewhere else so they can be reused by other boards?",
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03b1c8af_3c1803b3",
@@ -31,6 +48,30 @@
       "writtenOn": "2023-07-11T20:46:06Z",
       "side": 1,
       "message": "add `static`?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 6
+      },
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e60f4ca_530d3508",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-12T10:12:11Z",
+      "side": 1,
+      "message": "`static const`?",
+      "parentUuid": "03b1c8af_3c1803b3",
       "range": {
         "startLine": 103,
         "startChar": 0,
