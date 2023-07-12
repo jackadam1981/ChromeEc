@@ -44,6 +44,11 @@ config PLATFORM_EC_IOEX_PCAL6408
 	help
 	  Enables support for NXP PCA(L)6408 IO expander
 
+config PLATFORM_EC_IOEX_PS8815
+	bool "Parade PS8815"
+	help
+	  Enables support for Parade PS8815 IO expander
+
 config PLATFORM_EC_IOEX_TCA64XXA
 	bool "TI TCA64xA"
 	help

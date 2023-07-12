@@ -41,6 +41,11 @@ __override uint8_t board_get_usb_pd_port_count(void)
 		return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
 
+void tcpc_interrupt(enum gpio_signal signal)
+{
+	schedule_deferred_pd_interrupt(USBC_PORT_C1);
+}
+
 void ppc_interrupt(enum gpio_signal signal)
 {
 	uint32_t io_db_type = get_io_db_type_from_cached_cbi();

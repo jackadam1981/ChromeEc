@@ -1,0 +1,27 @@
+# Copyright (c) 2021 Nuvoton Technology Corporation.
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+    Parade PS8815 integrated GPIO expander
+
+compatible: "parade,ps8815-gpio-port"
+
+include: [gpio-controller.yaml, base.yaml]
+
+properties:
+  reg:
+    required: true
+
+  pin_mask:
+    type: int
+    required: true
+    description: |
+      Not every GPIOs are usable for different PS8815 series. This property
+      indicates the usable GPIO mask.
+
+  "#gpio-cells":
+    const: 2
+
+gpio-cells:
+  - pin
+  - flags

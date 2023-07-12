@@ -6,6 +6,7 @@
 #ifdef __REQUIRE_ZEPHYR_GPIOS__
 #undef __REQUIRE_ZEPHYR_GPIOS__
 #endif
+
 #include "common.h"
 #include "config.h"
 /* Include drivers if enabled */
@@ -17,6 +18,9 @@
 #endif
 #ifdef CONFIG_PLATFORM_EC_IOEX_PCAL6408
 #include "driver/ioexpander/pcal6408.h"
+#endif
+#ifdef CONFIG_PLATFORM_EC_IOEX_PS8815
+#include "driver/ioexpander/ps8815_ioex.h"
 #endif
 #ifdef CONFIG_PLATFORM_EC_IOEX_TCA64XXA
 #include "driver/ioexpander/tca64xxa.h"

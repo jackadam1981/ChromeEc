@@ -34,6 +34,7 @@ properties:
       - "nct38xx_ioexpander_drv"
       - "pca9675_ioexpander_drv"
       - "pcal6408_ioexpander_drv"
+      - "ps8815_ioexpander_drv"
       - "tca64xxa_ioexpander_drv"
 
   int-gpios:

@@ -2911,6 +2911,9 @@
 /* Support NXP PCAL6408 I/O expander. */
 #undef CONFIG_IO_EXPANDER_PCAL6408
 
+/* Support Parade Ps8815 I/O expander. */
+#undef CONFIG_IO_EXPANDER_PS8815
+
 /* Support TI TCA64xxA I/O expander. */
 #undef CONFIG_IO_EXPANDER_TCA64XXA
 

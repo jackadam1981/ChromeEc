@@ -321,6 +321,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_IOEX_PCA9675
                                                 "${PLATFORM_EC}/driver/ioexpander/pca9675.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_IOEX_PCAL6408
                                                 "${PLATFORM_EC}/driver/ioexpander/pcal6408.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_IOEX_PS8815
+                                                "${PLATFORM_EC}/driver/ioexpander/ps8815_ioex.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_IOEX_TCA64XXA
                                                 "${PLATFORM_EC}/driver/ioexpander/tca64xxa.c")
 zephyr_library_sources_ifdef(CONFIG_HAS_TASK_KEYSCAN

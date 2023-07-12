@@ -47,6 +47,8 @@
 				compatible = "cros-ec,usbc-mux-tcpci";
 				hpd-update = "ps8xxx_tcpc_update_hpd_status";
 			};
+			tcpc = <&tcpc_ps8815_port1>;
+			ppc = <&ppc_ktu1125_port1>;
 		};
 	};
 };

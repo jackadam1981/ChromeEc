@@ -31,6 +31,10 @@
 	};
 
 	named-gpios {
+		gpio_usb_c1_ppc_rst: usb_c1_ppc_rst {
+			gpios = <&ioex_port1 1 GPIO_OUTPUT_HIGH>;
+		};
+
 		/* Unimplemented */
 		gpio_ec_entering_rw: ec_entering_rw {
 			enum-name = "GPIO_ENTERING_RW";
