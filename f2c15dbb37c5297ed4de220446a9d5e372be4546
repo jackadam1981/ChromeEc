@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bafd209_f69f1733",
+        "filename": "BUILD.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-07-12T16:26:10Z",
+      "side": 1,
+      "message": "Since we\u0027re brya is primarily Zephyr and we\u0027re primarily doing Zephyr let\u0027s remove the `_zephyr` suffix from above and add `_legacy` suffix here. So we\u0027d have `brya` and `brya_legacy`",
+      "revId": "f2c15dbb37c5297ed4de220446a9d5e372be4546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
