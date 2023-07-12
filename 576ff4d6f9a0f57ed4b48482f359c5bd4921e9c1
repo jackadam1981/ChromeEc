@@ -46,6 +46,30 @@
       },
       "revId": "576ff4d6f9a0f57ed4b48482f359c5bd4921e9c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0971b357_368c08ba",
+        "filename": "test/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-12T04:50:39Z",
+      "side": 1,
+      "message": "I moved this test to `unaligned_access.cc` such that it is contained for the `bloonchipper` and `dartmonkey` boards.",
+      "parentUuid": "b4d3b53d_6a6cd096",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 73
+      },
+      "revId": "576ff4d6f9a0f57ed4b48482f359c5bd4921e9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
