@@ -16,6 +16,24 @@
       "message": "Since we\u0027re brya is primarily Zephyr and we\u0027re primarily doing Zephyr let\u0027s remove the `_zephyr` suffix from above and add `_legacy` suffix here. So we\u0027d have `brya` and `brya_legacy`",
       "revId": "f2c15dbb37c5297ed4de220446a9d5e372be4546",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71b2a03_006cbbc6",
+        "filename": "BUILD.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-12T17:19:49Z",
+      "side": 1,
+      "message": "Nah, the brya board ships with Legacy EC.  It would be extremely confusing if `bazel build :brya` built a Zephyr EC despite that project being experimental for proof-of-concept only.\n\n(Ideally, we planned to delete these proof-of-concept builds once we had shipping non-PoC boards.  I don\u0027t know the current status of the deletion of these).",
+      "parentUuid": "4bafd209_f69f1733",
+      "revId": "f2c15dbb37c5297ed4de220446a9d5e372be4546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
