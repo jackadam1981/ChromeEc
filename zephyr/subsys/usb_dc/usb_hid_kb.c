@@ -117,35 +117,25 @@ DECLARE_HOOK(HOOK_INIT, hid_keyboard_feature_init, HOOK_PRIO_DEFAULT - 1);
 #endif
 #endif
 
-#define KEYBOARD_BASE_DESC                                                 \
-	0x05, 0x01, /* Usage Page (Generic Desktop) */                     \
-		0x09, 0x06, /* Usage (Keyboard) */                         \
-		0xA1, 0x01, /* Collection (Application) */                 \
-                                                                           \
-		/* Modifiers */                                            \
-		0x05, 0x07, /* Usage Page (Key Codes) */                   \
-		0x19, HID_KEYBOARD_MODIFIER_LOW, /* Usage Minimum */       \
-		0x29, HID_KEYBOARD_MODIFIER_HIGH, /* Usage Maximum */      \
-		0x15, 0x00, /* Logical Minimum (0) */                      \
-		0x25, 0x01, /* Logical Maximum (1) */                      \
-		0x75, 0x01, /* Report Size (1) */                          \
-		0x95, 0x08, /* Report Count (8) */                         \
-		0x81, 0x02, /* Input (Data, Variable, Absolute), ;Modifier \
-			       byte */                                     \
-                                                                           \
-		0x95, 0x01, /* Report Count (1) */                         \
-		0x75, 0x08, /* Report Size (8) */                          \
-		0x81, 0x01, /* Input (Constant), ;Reserved byte */         \
-                                                                           \
-		/* Normal keys */                                          \
-		0x95, 0x06, /* Report Count (6) */                         \
-		0x75, 0x08, /* Report Size (8) */                          \
-		0x15, 0x00, /* Logical Minimum (0) */                      \
-		0x25, 0xa4, /* Logical Maximum (164) */                    \
-		0x05, 0x07, /* Usage Page (Key Codes) */                   \
-		0x19, 0x00, /* Usage Minimum (0) */                        \
-		0x29, 0xa4, /* Usage Maximum (164) */                      \
-		0x81, 0x00, /* Input (Data, Array), ;Key arrays (6 bytes) */
+#define REPORT_ID_1 0x01
+
+#define KEYBOARD_BASE_DESC                                                    \
+	HID_USAGE_PAGE(HID_USAGE_GEN_DESKTOP),                                \
+		HID_USAGE(HID_USAGE_GEN_DESKTOP_KEYBOARD),                    \
+		HID_COLLECTION(HID_COLLECTION_APPLICATION),                   \
+		/* Report ID byte */                                          \
+		HID_REPORT_ID(REPORT_ID_1),                                   \
+		/* Modifier byte */                                           \
+		HID_USAGE_PAGE(HID_USAGE_GEN_DESKTOP_KEYPAD),                 \
+		HID_USAGE_MIN8(HID_KEYBOARD_MODIFIER_LOW),                    \
+		HID_USAGE_MAX8(HID_KEYBOARD_MODIFIER_HIGH),                   \
+		HID_LOGICAL_MIN8(0x00), HID_LOGICAL_MAX8(0x01),               \
+		HID_REPORT_SIZE(1), HID_REPORT_COUNT(8),                      \
+		HID_INPUT(0x02),                                              \
+		/* Six-keycode bytes */                                       \
+		HID_REPORT_COUNT(6), HID_REPORT_SIZE(8),                      \
+		HID_LOGICAL_MIN8(0x0), HID_LOGICAL_MAX8(0xa4),                \
+		HID_USAGE_MIN8(0x00), HID_USAGE_MAX8(0xa4), HID_INPUT(0x00),
 
 #define KEYBOARD_TOP_ROW_DESC                                                 \
 	/* Modifiers */                                                       \
@@ -271,7 +261,7 @@ static const uint8_t hid_report_desc[] = {
 #ifdef CONFIG_USB_HID_KEYBOARD_VIVALDI
 	KEYBOARD_TOP_ROW_DESC KEYBOARD_TOP_ROW_FEATURE_DESC
 #endif
-	0xC0 /* End Collection */
+	HID_END_COLLECTION
 };
 
 /* The standard Chrome OS keyboard matrix table. See HUT 1.12v2 Table 12 and
@@ -302,8 +292,8 @@ const uint8_t keycodes[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
  * Interface Descriptors").
  */
 struct usb_hid_keyboard_report {
+	uint8_t report_id;
 	uint8_t modifiers; /* bitmap of modifiers 224-231 */
-	uint8_t reserved; /* 0x0 */
 	uint8_t keys[6];
 	/* Non-boot protocol fields below */
 #ifdef HID_KEYBOARD_EXTRA_FIELD
@@ -314,6 +304,13 @@ struct usb_hid_keyboard_report {
 	uint32_t top_row; /* bitmap of top row action keys */
 #endif
 } __packed;
+
+#define HID_KEYBOARD_BOOT_SIZE 8
+#define HID_KEYBOARD_REPORT_SIZE sizeof(struct usb_hid_keyboard_report)
+
+static const struct hid_ops ops = {
+	.protocol_change = protocol_cb,
+};
 
 static struct queue const report_queue =
 	QUEUE_NULL(32, struct usb_hid_keyboard_report);
@@ -444,7 +441,6 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 		}
 		queue_add_unit(&report_queue, &report);
 		mutex_unlock(report_queue_mutex);
-
 		hook_call_deferred(&hid_kb_proc_queue_data, 0);
 	}
 }
@@ -453,6 +449,7 @@ static void hid_kb_proc_queue(void)
 {
 	struct usb_hid_keyboard_report kb_data;
 	int ret;
+	size_t size;
 
 	mutex_lock(report_queue_mutex);
 
@@ -463,8 +460,19 @@ static void hid_kb_proc_queue(void)
 
 	queue_peek_units(&report_queue, &kb_data, 0, 1);
 
-	ret = hid_int_ep_write(hid_dev, (uint8_t *)&kb_data,
-			       sizeof(struct usb_hid_keyboard_report), NULL);
+	/* If the boot protocol is set, the first byte is the modifier and
+	 * the second byte is filled with 00h(reserved). Else, the first two
+	 * bytes are the report id and the modifier respectively.
+	 */
+	if (boot_proto_is_set()) {
+		kb_data.report_id = kb_data.modifiers;
+		kb_data.modifiers = 0x0;
+		size = HID_KEYBOARD_BOOT_SIZE;
+	} else {
+		kb_data.report_id = REPORT_ID_1;
+		size = HID_KEYBOARD_REPORT_SIZE;
+	}
+	ret = hid_int_ep_write(hid_dev, (uint8_t *)&kb_data, size, NULL);
 	if (ret) {
 		LOG_INF("hid kb write error, %d", ret);
 	} else {
@@ -472,6 +480,7 @@ static void hid_kb_proc_queue(void)
 	}
 
 	mutex_unlock(report_queue_mutex);
+
 	hook_call_deferred(&hid_kb_proc_queue_data, 1 * MSEC);
 }
 
@@ -483,10 +492,12 @@ static int usb_hid_kb_init(void)
 		return 1;
 	}
 
-	usb_hid_register_device(hid_dev,
-				hid_report_desc, sizeof(hid_report_desc),
-				NULL);
+	usb_hid_register_device(hid_dev, hid_report_desc,
+				sizeof(hid_report_desc), &ops);
 
+	if (usb_hid_set_proto_code(hid_dev, HID_BOOT_IFACE_CODE_KEYBOARD)) {
+		LOG_WRN("failed to set interface protocol code");
+	}
 	usb_hid_init(hid_dev);
 
 	return 0;
