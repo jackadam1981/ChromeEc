@@ -33,6 +33,24 @@
       "message": "See comment in earlier CL about `legacy` vs `zephyr` suffix.",
       "revId": "0899cd831a55a738230a38147289f041c4bb4a4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22c41442_cefdf5ee",
+        "filename": "util/gen_bazel_targets.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-07-12T17:31:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "503ff34b_3bbe510f",
+      "revId": "0899cd831a55a738230a38147289f041c4bb4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
