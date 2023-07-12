@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "645df999_cdbc0ca5",
+        "filename": "zephyr/shim/src/led_driver/led.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-12T19:12:27Z",
+      "side": 1,
+      "message": "Please add some build asserts to validate that `EC_LED_COLOR_x \u003d\u003d LED_x - 1`\n\n```\nBUILD_ASSERT((LED_RED - 1) \u003d\u003d EC_LED_COLOR_RED);\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "aa9e09ea0d7e577ef77dee9e04919fc95c67557c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
