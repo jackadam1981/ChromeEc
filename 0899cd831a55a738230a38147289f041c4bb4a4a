@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1691ac5e_2d6d58f5",
+        "filename": "bazel/all_targets.bzl",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-07-12T16:28:18Z",
+      "side": 1,
+      "message": "Can we add a `generated` suffix to this file? Similar to what exists in other starlark/infra repos.",
+      "revId": "0899cd831a55a738230a38147289f041c4bb4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503ff34b_3bbe510f",
+        "filename": "util/gen_bazel_targets.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-07-12T16:28:18Z",
+      "side": 1,
+      "message": "See comment in earlier CL about `legacy` vs `zephyr` suffix.",
+      "revId": "0899cd831a55a738230a38147289f041c4bb4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
