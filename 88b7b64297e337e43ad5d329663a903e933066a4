@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c6c461e_1ec5db27",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-12T17:31:16Z",
+      "side": 1,
+      "message": "Don\u0027t use `check_output`, it\u0027s deprecated since Python 3.5 in favor of `subprocess.run`.\n\nInstead, you want:\n\n```\nbazel_bin \u003d subprocess.run(\n   ...,\n   check\u003dTrue,\n   stdout\u003dsubprocess.PIPE,\n   encoding\u003d\"utf-8\",\n)\n```\n\nI would also add `cwd\u003dPath(__file__).parent` in here just in case someone is running this cmd outside the bazel workspace.",
+      "revId": "88b7b64297e337e43ad5d329663a903e933066a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55d3e37_d2df2a42",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-12T17:31:16Z",
+      "side": 1,
+      "message": "Is this supposed to show up in `$PWD/twister-out`, or `platform/ec/twister-out`?  Let\u0027s think about the case that people run in a different cwd than `platform/ec` and making the behavior expected.",
+      "range": {
+        "startLine": 364,
+        "startChar": 20,
+        "endLine": 364,
+        "endChar": 40
+      },
+      "revId": "88b7b64297e337e43ad5d329663a903e933066a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49042454_5055f1ff",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-12T17:31:16Z",
+      "side": 1,
+      "message": "You can drop the `pathlib.Path` here.  A `Path / str` works.",
+      "range": {
+        "startLine": 367,
+        "startChar": 10,
+        "endLine": 367,
+        "endChar": 23
+      },
+      "revId": "88b7b64297e337e43ad5d329663a903e933066a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "947ec35d_02419ab7",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-12T17:31:16Z",
+      "side": 1,
+      "message": "This isn\u0027t atomic, and will fail if the symlink is created between `os.remove` and `symlink_to`.\n\nTo atomicly symlink, see `chromite.lib.osutils.SafeSymlink` as an example.",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 48
+      },
+      "revId": "88b7b64297e337e43ad5d329663a903e933066a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
