@@ -315,12 +315,16 @@ struct usb_hid_keyboard_report {
 #endif
 } __packed;
 
+#define HID_KEYBOARD_BOOT_SIZE 8
+#define HID_KEYBOARD_REPORT_SIZE sizeof(struct usb_hid_keyboard_report)
+
 static struct queue const report_queue =
 	QUEUE_NULL(32, struct usb_hid_keyboard_report);
 static struct k_mutex *report_queue_mutex;
 static struct usb_hid_keyboard_report report;
 
 static const struct device *hid_dev;
+static bool boot_protocol = false;
 
 static uint32_t maybe_convert_function_key(int keycode)
 {
@@ -453,6 +457,7 @@ static void hid_kb_proc_queue(void)
 {
 	struct usb_hid_keyboard_report kb_data;
 	int ret;
+	size_t size;
 
 	mutex_lock(report_queue_mutex);
 
@@ -463,8 +468,9 @@ static void hid_kb_proc_queue(void)
 
 	queue_peek_units(&report_queue, &kb_data, 0, 1);
 
-	ret = hid_int_ep_write(hid_dev, (uint8_t *)&kb_data,
-			       sizeof(struct usb_hid_keyboard_report), NULL);
+	size = boot_protocol ? HID_KEYBOARD_BOOT_SIZE :
+			       HID_KEYBOARD_REPORT_SIZE;
+	ret = hid_int_ep_write(hid_dev, (uint8_t *)&kb_data, size, NULL);
 	if (ret) {
 		LOG_INF("hid kb write error, %d", ret);
 	} else {
@@ -472,8 +478,19 @@ static void hid_kb_proc_queue(void)
 	}
 
 	mutex_unlock(report_queue_mutex);
+
 	hook_call_deferred(&hid_kb_proc_queue_data, 1 * MSEC);
 }
+
+static void protocol_cb(const struct device *dev, uint8_t protocol)
+{
+	boot_protocol = (protocol == HID_PROTOCOL_BOOT) ? true : false;
+	LOG_DBG("new protocol %s\n", boot_protocol ? "boot" : "report");
+}
+
+static const struct hid_ops ops = {
+	.protocol_change = protocol_cb,
+};
 
 static int usb_hid_kb_init(void)
 {
@@ -483,10 +500,12 @@ static int usb_hid_kb_init(void)
 		return 1;
 	}
 
-	usb_hid_register_device(hid_dev,
-				hid_report_desc, sizeof(hid_report_desc),
-				NULL);
+	usb_hid_register_device(hid_dev, hid_report_desc,
+				sizeof(hid_report_desc), &ops);
 
+	if (usb_hid_set_proto_code(hid_dev, HID_BOOT_IFACE_CODE_KEYBOARD)) {
+		LOG_WRN("failed to set interface protocol code");
+	}
 	usb_hid_init(hid_dev);
 
 	return 0;
