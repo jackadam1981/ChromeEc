@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46ab3634_3fcdf2a3",
+        "filename": "third_party/boringssl/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-07-12T15:20:10Z",
+      "side": 1,
+      "message": "To make a module, it\u0027s necessary to introduce module definition files in an external repository. BoringSSL is not going to accept definition files and we don\u0027t want to create a new repository with BoringSSL + module definition files and maintain it.",
+      "parentUuid": "c93b6d69_cd56be8a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "1b75272b2ee919ef5283e0c56d9f6b9ab1991381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "146a6c85_66e990de",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "I found this discussion and link, which looks like it is an example of building an existing cmake project for zephyr:\n\n* https://github.com/zephyrproject-rtos/zephyr/discussions/43650\n* https://github.com/yashi/module-sample\n\nThat thread also mentions a `tinydtls` example, which looks like is [here](https://github.com/eclipse/tinydtls/blob/main/zephyr/CMakeLists.txt).",
       "parentUuid": "146a6c85_66e990de",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 39
+      },
+      "revId": "1b75272b2ee919ef5283e0c56d9f6b9ab1991381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e8607c4_a52998f2",
+        "filename": "third_party/boringssl/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-07-12T15:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4016a165_7519e7df",
       "range": {
         "startLine": 24,
         "startChar": 0,
