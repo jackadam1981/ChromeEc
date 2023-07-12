@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "363c163c_d8430817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-12T10:34:39Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "95e195dd_cb4f5a1d",
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03b1c8af_3c1803b3",
         "filename": "zephyr/program/rex/rex/src/usbc_config.c",
         "patchSetId": 3
