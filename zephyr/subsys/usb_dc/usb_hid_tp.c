@@ -221,6 +221,15 @@ static void hid_tp_proc_queue(void)
 
 	mutex_lock(report_queue_mutex);
 
+	/* clear queue when the usb dc status is reset or disconected
+	 */
+	if (!check_usb_is_configured() && !check_usb_is_suspended()) {
+		queue_remove_units(&report_queue, NULL,
+				   queue_count(&report_queue));
+		mutex_unlock(report_queue_mutex);
+		return;
+	}
+
 	if (queue_is_empty(&report_queue)) {
 		mutex_unlock(report_queue_mutex);
 		return;
