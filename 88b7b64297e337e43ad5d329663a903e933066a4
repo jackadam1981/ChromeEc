@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7831bb1e_c5716f34",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-07-12T23:06:17Z",
+      "side": 1,
+      "message": "It\u0027s supposed to show up in `$PWD/twister-out`. This caused me a bit of a headache as you can see in the linked depended upon CL.",
+      "parentUuid": "b55d3e37_d2df2a42",
+      "range": {
+        "startLine": 364,
+        "startChar": 20,
+        "endLine": 364,
+        "endChar": 40
+      },
+      "revId": "88b7b64297e337e43ad5d329663a903e933066a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49042454_5055f1ff",
@@ -82,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ce3f3f_4ee25f76",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-07-12T23:06:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49042454_5055f1ff",
+      "range": {
+        "startLine": 367,
+        "startChar": 10,
+        "endLine": 367,
+        "endChar": 23
+      },
+      "revId": "88b7b64297e337e43ad5d329663a903e933066a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "947ec35d_02419ab7",
@@ -95,6 +143,30 @@
       "writtenOn": "2023-07-12T17:31:16Z",
       "side": 1,
       "message": "This isn\u0027t atomic, and will fail if the symlink is created between `os.remove` and `symlink_to`.\n\nTo atomicly symlink, see `chromite.lib.osutils.SafeSymlink` as an example.",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 48
+      },
+      "revId": "88b7b64297e337e43ad5d329663a903e933066a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d2f479_e80e2937",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-07-12T23:06:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "947ec35d_02419ab7",
       "range": {
         "startLine": 371,
         "startChar": 0,
