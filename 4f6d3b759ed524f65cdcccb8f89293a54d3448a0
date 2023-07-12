@@ -16,6 +16,24 @@
       "message": "Couldn\u0027t this removed from here and added as a dependency in the `ec_target()` macro?",
       "revId": "4f6d3b759ed524f65cdcccb8f89293a54d3448a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4d40ef5_b21f1b0a",
+        "filename": "BUILD.bazel",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-12T20:40:46Z",
+      "side": 1,
+      "message": "Bazel wants the target defined exactly once, and this seems like the most obvious way to do it.\n\nPutting it in `ec_target()` yields:\n\n```\n% bazel query \u0027:*\u0027\nStarting local Bazel server and connecting to it...\nERROR: Traceback (most recent call last):\n\tFile \"/usr/local/google/home/jrosenth/fwsdk/src/platform/ec/BUILD.bazel\", line 10, column 12, in \u003ctoplevel\u003e\n\t\tall_targets()\n\tFile \"/usr/local/google/home/jrosenth/fwsdk/src/platform/ec/bazel/all_targets.bzl\", line 29, column 14, in all_targets\n\t\tec_target(\n\tFile \"/usr/local/google/home/jrosenth/fwsdk/src/platform/ec/bazel/ec_target.bzl\", line 49, column 26, in ec_target\n\t\tlegacy_ec.ec_srcs()\n\tFile \"/usr/local/google/home/jrosenth/fwsdk/src/platform/ec/bazel/legacy_ec.bzl\", line 46, column 21, in _ec_srcs\n\t\tnative.filegroup(\nError in filegroup: filegroup rule \u0027legacy_ec_makefile\u0027 in package \u0027platform/ec\u0027 conflicts with existing filegroup rule, defined at /usr/local/google/home/jrosenth/fwsdk/src/platform/ec/BUILD.bazel:10:12\nERROR: package contains errors: platform/ec: Traceback (most recent call last):\n\tFile \"/usr/local/google/home/jrosenth/fwsdk/src/platform/ec/BUILD.bazel\", line 10, column 12, in \u003ctoplevel\u003e\n\t\tall_targets()\n\tFile \"/usr/local/google/home/jrosenth/fwsdk/src/platform/ec/bazel/all_targets.bzl\", line 29, column 14, in all_targets\n\t\tec_target(\n\tFile \"/usr/local/google/home/jrosenth/fwsdk/src/platform/ec/bazel/ec_target.bzl\", line 49, column 26, in ec_target\n\t\tlegacy_ec.ec_srcs()\n\tFile \"/usr/local/google/home/jrosenth/fwsdk/src/platform/ec/bazel/legacy_ec.bzl\", line 46, column 21, in _ec_srcs\n\t\tnative.filegroup(\nError in filegroup: filegroup rule \u0027legacy_ec_makefile\u0027 in package \u0027platform/ec\u0027 conflicts with existing filegroup rule, defined at /usr/local/google/home/jrosenth/fwsdk/src/platform/ec/BUILD.bazel:10:12\nERROR: Evaluation of query \":*\" failed\nLoading: 1 packages loaded\n```",
+      "parentUuid": "03b857ae_78309df2",
+      "revId": "4f6d3b759ed524f65cdcccb8f89293a54d3448a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
