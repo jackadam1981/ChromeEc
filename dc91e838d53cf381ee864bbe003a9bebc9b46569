@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f444a1d_a59b2e65",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1541852
+      },
+      "writtenOn": "2023-07-12T21:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "655fa8ac_735e4c13",
+      "range": {
+        "startLine": 1505,
+        "startChar": 2,
+        "endLine": 1505,
+        "endChar": 35
+      },
+      "revId": "dc91e838d53cf381ee864bbe003a9bebc9b46569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8337b8b2_78ce5c57",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Great idea, since the board may have been specified as a parameter and would be known.  Do we know this is always true?  Can you confirm BOARD is a required parameter to execute flash_ec?",
       "parentUuid": "8337b8b2_78ce5c57",
+      "range": {
+        "startLine": 1507,
+        "startChar": 29,
+        "endLine": 1507,
+        "endChar": 33
+      },
+      "revId": "dc91e838d53cf381ee864bbe003a9bebc9b46569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d9d744a_44f85f9d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1541852
+      },
+      "writtenOn": "2023-07-12T21:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1a0c955_adbe71a5",
       "range": {
         "startLine": 1507,
         "startChar": 29,
