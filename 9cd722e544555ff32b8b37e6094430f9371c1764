@@ -55,6 +55,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bda852a_ebee20c1",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-12T11:09:23Z",
+      "side": 1,
+      "message": "Why USBCHARGE",
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c841d5c_782ecdce",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-12T11:09:23Z",
+      "side": 1,
+      "message": "This file is specific to USBC config based on its name, is creating other file a better idea for USBA config.\n\nCan we start port count from 0, I mean like USBA_PORT_A0 similar to type C, if it\u0027s valid.",
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03b1c8af_3c1803b3",
         "filename": "zephyr/program/rex/rex/src/usbc_config.c",
         "patchSetId": 3
@@ -102,6 +136,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d6d6a48_ac7fd363",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-12T11:09:23Z",
+      "side": 1,
+      "message": "Can we get i2c_port from device tree and move this code to common driver",
+      "parentUuid": "0e60f4ca_530d3508",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 6
+      },
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c56d85aa_6fcc5e82",
         "filename": "zephyr/program/rex/rex/src/usbc_config.c",
         "patchSetId": 3
@@ -119,6 +177,23 @@
         "endLine": 124,
         "endChar": 28
       },
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f36b73_f3a77446",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-12T11:09:23Z",
+      "side": 1,
+      "message": "Shouldn\u0027t retimer init be in retimer driver and managed by usb_mux.c https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/usb_mux/usb_mux.c;l\u003d291",
       "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -165,6 +240,23 @@
         "endLine": 183,
         "endChar": 12
       },
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5e96fe4_a80dbe00",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-12T11:09:23Z",
+      "side": 1,
+      "message": "Does it makes sense to move this method and any other board AP power related methods to board_power.c",
       "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
