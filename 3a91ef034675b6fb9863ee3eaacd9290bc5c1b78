@@ -39,6 +39,30 @@
       },
       "revId": "3a91ef034675b6fb9863ee3eaacd9290bc5c1b78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd503572_0f8128bc",
+        "filename": "zephyr/program/rex/screebo/src/usb_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-07-13T09:38:56Z",
+      "side": 1,
+      "message": "Thanks, please CR+2 again.",
+      "parentUuid": "b715b30d_8ef97792",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 4
+      },
+      "revId": "3a91ef034675b6fb9863ee3eaacd9290bc5c1b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
