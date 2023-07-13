@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d78ab9_dea625f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-13T15:55:39Z",
+      "side": 1,
+      "message": "It might be worth adding a note in the commit message that `CONFIG_ALLOW_UNALIGNED_ACCESS` is already set in [board.h](http://cs/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/board/hatch_fp/board.h). I was initially confused because I expected that to be part of \"enabling\" the unaligned access.",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "a35daae5e2b380a096cfbfc393148e376cc5f65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1c8c862_2877e928",
+        "filename": "board/hatch_fp/build.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-13T15:55:39Z",
+      "side": 1,
+      "message": "Please add this to `board/helipilot` also",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "a35daae5e2b380a096cfbfc393148e376cc5f65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
