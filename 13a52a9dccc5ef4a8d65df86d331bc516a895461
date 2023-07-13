@@ -16,6 +16,24 @@
       "message": "nit: Add `Force-Relevant-Builds: all` here to make sure this change would not accidentally break the other CQ.",
       "revId": "13a52a9dccc5ef4a8d65df86d331bc516a895461",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae8020d9_9ddc0bc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-07-13T06:48:51Z",
+      "side": 1,
+      "message": "It won\u0027t break anything because this CL only introduces support for BoringSSL. The library is enabled in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4538581",
+      "parentUuid": "de9a99a6_e92d916a",
+      "revId": "13a52a9dccc5ef4a8d65df86d331bc516a895461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
