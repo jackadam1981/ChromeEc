@@ -458,6 +458,9 @@
 /* Support base32 text encoding */
 #undef CONFIG_BASE32
 
+/* Enable Proximity Sensor driver VCNL4200 */
+#undef CONFIG_PS_VCNL4200
+
 /*****************************************************************************/
 /* Battery config */
 
