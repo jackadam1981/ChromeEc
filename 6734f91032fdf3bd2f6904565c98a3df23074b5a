@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6102ba9a_68a27032",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-13T17:22:26Z",
+      "side": 1,
+      "message": "putting this on the same line you won\u0027t need the `enable` below",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 39
+      },
+      "revId": "6734f91032fdf3bd2f6904565c98a3df23074b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0485fc0_4b594155",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-13T17:22:26Z",
+      "side": 1,
+      "message": "Should this be `--outdir` instead of hard-coding `twister-out`?",
+      "range": {
+        "startLine": 381,
+        "startChar": 20,
+        "endLine": 381,
+        "endChar": 40
+      },
+      "revId": "6734f91032fdf3bd2f6904565c98a3df23074b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b494d6_3a31f519",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-13T17:22:26Z",
+      "side": 1,
+      "message": "You can remove `SafeUnlink`, it\u0027s not necessary.  `SafeSymlink` is designed to handle the case that the link exists.",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 38
+      },
+      "revId": "6734f91032fdf3bd2f6904565c98a3df23074b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
