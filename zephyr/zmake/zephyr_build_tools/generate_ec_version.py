@@ -93,6 +93,8 @@ def main():
         # list.
         args.module = args.module[0].split(";")
 
+    logging.info("Module list: %s", args.module)
+
     try:
         module_dict = convert_module_list_to_dict(
             map(pathlib.Path, args.module)
