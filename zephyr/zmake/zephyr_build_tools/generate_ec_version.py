@@ -93,6 +93,8 @@ def main():
         # list.
         args.module = args.module[0].split(";")
 
+    logging.info("Module list: %s", args.module)
+
     try:
         module_dict = convert_module_list_to_dict(
             map(pathlib.Path, args.module)
@@ -101,8 +103,6 @@ def main():
         logging.error("Cannot find module: %s", str(err))
         return 1
 
-    logging.info("Including modules: [%s]", ", ".join(args.module))
-
     # Generate the version string that gets inserted in to the header. Will get
     # commit IDs from Git
     ver = zmake.version.get_version_string(
@@ -110,7 +110,7 @@ def main():
     )
     logging.info("Version string: %s", ver)
 
-    # Now write the actual header file or put version string in stdout
+    # Now write the actual header file or put version string in stdo:qut
     if args.header_path == "-":
         print(ver)
     else:
