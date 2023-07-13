@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6caea867_09d8542f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-13T05:03:42Z",
+      "side": 1,
+      "message": "Unaligned access on bloonchipper is slower for both tests. Is this intended?\n\n```\n\u003e runtest\nRunning test_unaligned_access...\nPass: *test_array_ptr \u003d\u003d expected_results[i]\nPass: *test_array_ptr \u003d\u003d expected_results[i]\nPass: *test_array_ptr \u003d\u003d expected_results[i]\nPass: *test_array_ptr \u003d\u003d expected_results[i]\nPass: *test_array_ptr \u003d\u003d expected_results[i]\nPass: *test_array_ptr \u003d\u003d expected_results[i]\nPass: *test_array_ptr \u003d\u003d expected_results[i]\nPass: *test_array_ptr \u003d\u003d expected_results[i]\nPass: *test_array_ptr \u003d\u003d expected_results[i]\nPass: *test_array_ptr \u003d\u003d expected_results[i]\nPass: *test_array_ptr \u003d\u003d expected_results[i]\nPass: *test_array_ptr \u003d\u003d expected_results[i]\nOK\nRunning benchmark_unaligned_access_memcpy...\n (speed gain: 11053 -\u003e 3772 us) OK\nRunning benchmark_unaligned_access_array...\n (speed gain: 4514 -\u003e 4141 us) OK\nPass!\n```\n\nAlso, do note that we are still compiling with `-mno-unaligned-access`.",
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d60cfc6_bb1a734c",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-13T05:03:42Z",
+      "side": 1,
+      "message": "By default, `memcpy` is designed to never make unaligned accesses, even when you give it unaligned starting address. Most implementations will do byte-by-byte copies until it can switch to aligned faster word copies.\n\nThe implementation being used here (a mirror of it):\n* [Pretty mirror of newlib-4.1.0](https://github.com/bminor/newlib/blob/newlib-4.1.0/newlib/libc/machine/arm/memcpy-armv7m.S#L189)\n* [Non-pretty upstream newlib-4.1.0](https://sourceware.org/git/?p\u003dnewlib-cygwin.git;a\u003dblob;f\u003dnewlib/libc/machine/arm/memcpy-armv7m.S;h\u003dc8bff36f60cf6ed520172c85406f6a9529f41de3;hb\u003d415fdd4279b85eeec9d54775ce13c5c412451e08)\n\nThe C version we used to use in EC:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/builtin/stdlib.c;l\u003d302",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ccc807a_28f6724f",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-13T05:03:42Z",
+      "side": 1,
+      "message": "Maybe `aligned_source`?",
+      "range": {
+        "startLine": 55,
+        "startChar": 42,
+        "endLine": 55,
+        "endChar": 54
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86496fe5_25a9cfbf",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-13T05:03:42Z",
+      "side": 1,
+      "message": "Maybe `aligned_dest`?",
+      "range": {
+        "startLine": 56,
+        "startChar": 25,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0b5cfd_b7a86403",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-13T05:03:42Z",
+      "side": 1,
+      "message": "Same as comment for `test_array_4`",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 57,
+        "endChar": 47
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e2a2f0_78945179",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-13T05:03:42Z",
+      "side": 1,
+      "message": "Could you name and comment this a bit better.\n\nIt probably needs:\n* Expected data\n* Aligned uint32 view of an array of sequential int8s\n* test_array_1",
+      "range": {
+        "startLine": 63,
+        "startChar": 35,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363f6168_000534c2",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-13T05:03:42Z",
+      "side": 1,
+      "message": "This probably shouldn\u0027t be in the timing loop, since this aligned operations dominates the benchmark time.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 30
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
