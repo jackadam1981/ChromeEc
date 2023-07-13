@@ -2,6 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+load("//platform/ec/bazel:flash_ec.bzl", "gen_shell_wrapper")
+
 def _impl(ctx):
     args = ctx.attr._required_args + ctx.attr.args
 
@@ -26,12 +28,24 @@ def _impl(ctx):
     twister_bin_tool_inputs, twister_bin_tool_input_mfs = \
         ctx.resolve_tools(tools = [ctx.attr._twister_bin])
 
+    twister_run_out = ctx.actions.declare_file("twister_run_out")
+
+    md5_gen_twister_bzl_hash = twister_run_out.dirname.split("/")[-1]
+    twister_build = "platform/ec/build/twister-bzl/{}/twister-out".format(md5_gen_twister_bzl_hash)
+
+    twister_run_script = gen_shell_wrapper(["external/ec/twister"] + args + ["--test-only", "-O", twister_build], {})
+
+    ctx.actions.write(
+        output = twister_run_out,
+        content = twister_run_script,
+    )
+
     ctx.actions.run(
         outputs = [build_dir],
         inputs = deps,
         tools = twister_bin_tool_inputs,
         executable = ctx.executable._twister_bin,
-        arguments = args,
+        arguments = args + ["-b"],
         mnemonic = "twister",
         use_default_shell_env = False,
         env = env,
@@ -39,16 +53,16 @@ def _impl(ctx):
     )
 
     return DefaultInfo(
-        files = depset([build_dir]),
-        runfiles = ctx.runfiles(files = [build_dir]),
+        files = depset([build_dir, twister_run_out]),
+        runfiles = ctx.runfiles(files = [build_dir, twister_run_out] + deps),
+        executable = twister_run_out,
     )
 
 twister_test_binary = rule(
     implementation = _impl,
     doc = "Run a salty delicious pretzel. Also verify the EC code",
+    executable = True,
     attrs = {
-        "args": attr.string_list(default = [
-        ]),
         "cwd": attr.string(default = ""),
         "_ec": attr.label(default = "@ec//:src", allow_files = True),
         "_TOOLCHAIN_ROOT": attr.label(default = "@ec//:zephyr", allow_single_file = True),
