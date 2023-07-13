@@ -4,7 +4,8 @@
 
 load("@bazel_skylib//lib:shell.bzl", "shell")
 
-def _gen_shell_wrapper(argv, env):
+# TODO(268051194): Move this to shared utility bzl
+def gen_shell_wrapper(argv, env):
     script = "#!/bin/bash\n"
     for key, val in env.items():
         script += "export %s=%s\n" % (key, shell.quote(val))
@@ -36,7 +37,7 @@ def _flash_ec(ctx):
 
     argv.extend(["--image", image_path])
 
-    script_content = _gen_shell_wrapper(argv = argv, env = env)
+    script_content = gen_shell_wrapper(argv = argv, env = env)
     ctx.actions.write(script, script_content, is_executable = True)
 
     runfiles = ctx.runfiles(

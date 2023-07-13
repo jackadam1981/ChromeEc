@@ -338,6 +338,32 @@ def maybe_relaunch_in_bazel(
     if running_in_bazel():
         return False
 
+    # We want to parse args specially handled in fwsdk
+    parser = argparse.ArgumentParser(add_help=False)
+
+    # We intercept build-only/test-only since bazel handles whether it's build or not
+    parser.add_argument("--test-only", action="store_true")
+    parser.add_argument("-b", "--build-only", action="store_true")
+    # We intercept testsuite-root to resolve paths.
+    parser.add_argument("-T", "--testsuite-root", action="append")
+
+    known_args, unknown_args = parser.parse_known_args(args=argv)
+    args_from_fwsdk = []
+
+    if known_args.test_only:
+        print(
+            "--test-only is not compatible with Bazel twister_launcher, remove it.",
+            file=sys.stderr,
+        )
+        sys.exit(22)  # UNIX Invalid Argument error code
+
+    if known_args.testsuite_root:
+        for arg in known_args.testsuite_root:
+            args_from_fwsdk.extend(["-T", str(Path(arg).resolve())])
+
+    argv = args_from_fwsdk + unknown_args
+
+    # TODO(b/268051194) this needlessly rebuilds on a directory change
     gen_starlark = f"""
 load(
     "//platform/ec/bazel:twister.bzl",
@@ -385,11 +411,28 @@ twister_test_binary(
         # Clean up temporary symlink if rename failed
         tmp_twister_out.unlink(missing_ok=True)
 
-    bazel_cmd = ["bazel", "build", ":run_twister"]
+    bazel_build_cmd = ["bazel", "build", ":run_twister"]
     if sandbox_debug:
-        bazel_cmd.append("--sandbox_debug")
+        bazel_build_cmd.append("--sandbox_debug")
 
-    result = subprocess.run(bazel_cmd, cwd=run_dir, check=False)
+    result = subprocess.run(
+        bazel_build_cmd,
+        cwd=run_dir,
+        check=False,
+        # Unless -b or an error occurred, hide twister build output from user We
+        # do this because it is confusing to have "TEST SUCCESS" printed twice,
+        # once for building and another for test execution.
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        encoding="utf-8",
+    )
+    if known_args.build_only or result.returncode != 0:
+        print(result.stdout)
+        sys.exit(result.returncode)
+
+    result = subprocess.run(
+        ["bazel", "run", ":run_twister"], cwd=run_dir, check=False
+    )
     sys.exit(result.returncode)
 
 
