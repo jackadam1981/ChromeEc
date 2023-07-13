@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04fe3409_5bc62e1f",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-13T19:04:45Z",
+      "side": 1,
+      "message": "this benchmark was mainly copied from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/stdlib.c;l\u003d398-413;drc\u003da147fd5e333e940ff831cd09964ca855b3f78755",
+      "parentUuid": "8d60cfc6_bb1a734c",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ccc807a_28f6724f",
         "filename": "test/unaligned_access_benchmark.cc",
         "patchSetId": 4
@@ -72,6 +96,30 @@
       "writtenOn": "2023-07-13T05:03:42Z",
       "side": 1,
       "message": "Maybe `aligned_source`?",
+      "range": {
+        "startLine": 55,
+        "startChar": 42,
+        "endLine": 55,
+        "endChar": 54
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec1fe2e9_061519d0",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-13T19:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ccc807a_28f6724f",
       "range": {
         "startLine": 55,
         "startChar": 42,
@@ -105,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07eed1bb_144fb007",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-13T19:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86496fe5_25a9cfbf",
+      "range": {
+        "startLine": 56,
+        "startChar": 25,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b0b5cfd_b7a86403",
@@ -128,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc3242b_9c8e92bc",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-13T19:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b0b5cfd_b7a86403",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 57,
+        "endChar": 47
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6e2a2f0_78945179",
@@ -141,6 +237,30 @@
       "writtenOn": "2023-07-13T05:03:42Z",
       "side": 1,
       "message": "Could you name and comment this a bit better.\n\nIt probably needs:\n* Expected data\n* Aligned uint32 view of an array of sequential int8s\n* test_array_1",
+      "range": {
+        "startLine": 63,
+        "startChar": 35,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b8fd837_7f07f5b6",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-13T19:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6e2a2f0_78945179",
       "range": {
         "startLine": 63,
         "startChar": 35,
@@ -176,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f04f3ca_f1e7ad55",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-13T19:04:45Z",
+      "side": 1,
+      "message": "I need to have some sort of a check in the for loop; otherwise, the for loop will be optimized out.",
+      "parentUuid": "363f6168_000534c2",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 30
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b085fab_cc7b4b65",
         "filename": "test/unaligned_access_benchmark.cc",
         "patchSetId": 4
@@ -187,6 +331,30 @@
       "writtenOn": "2023-07-13T07:17:24Z",
       "side": 1,
       "message": "I think you need `\\n`.",
+      "range": {
+        "startLine": 96,
+        "startChar": 28,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "099e3737_73e61f33",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-13T19:04:45Z",
+      "side": 1,
+      "message": "```\nDEBUG:Running benchmark_unaligned_access_memcpy...\nDEBUG: (speed gain: 11063 -\u003e 3779 us) OK\nDEBUG:Running benchmark_unaligned_access_array...\nDEBUG: (speed gain: 4524 -\u003e 4366 us) OK\nDEBUG:Pass!\n```\nif I add `\\n`, should the OK be on a separate line?\n\nDone",
+      "parentUuid": "9b085fab_cc7b4b65",
       "range": {
         "startLine": 96,
         "startChar": 28,
