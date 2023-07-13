@@ -93,6 +93,8 @@ def main():
         # list.
         args.module = args.module[0].split(";")
 
+    logging.info("Module list: %s", args.module)
+
     try:
         module_dict = convert_module_list_to_dict(
             map(pathlib.Path, args.module)
@@ -100,8 +102,6 @@ def main():
     except FileNotFoundError as err:
         logging.error("Cannot find module: %s", str(err))
         return 1
-
-    logging.info("Including modules: [%s]", ", ".join(args.module))
 
     # Generate the version string that gets inserted in to the header. Will get
     # commit IDs from Git

@@ -188,6 +188,8 @@ class Zmake:
                 self.checkout
             )
 
+        self.logger.info("ZMAKE module paths = %s", self.module_paths)
+
         if projects_dir:
             self.projects_dir = projects_dir.resolve()
         else:
