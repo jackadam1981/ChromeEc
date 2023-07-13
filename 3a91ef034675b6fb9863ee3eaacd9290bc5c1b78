@@ -16,6 +16,29 @@
       "message": "Hi Caveh,\n\ncould you help to review the CL, thanks.",
       "revId": "3a91ef034675b6fb9863ee3eaacd9290bc5c1b78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b715b30d_8ef97792",
+        "filename": "zephyr/program/rex/screebo/src/usb_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-13T09:34:13Z",
+      "side": 1,
+      "message": "i think you can add `static` here.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 4
+      },
+      "revId": "3a91ef034675b6fb9863ee3eaacd9290bc5c1b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
