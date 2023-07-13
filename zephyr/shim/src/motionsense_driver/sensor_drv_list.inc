@@ -55,3 +55,6 @@
 #ifdef CONFIG_PLATFORM_EC_ACCELGYRO_LSM6DSM
 #include "lsm6dsm-drvinfo.inc"
 #endif
+#ifdef CONFIG_PLATFORM_EC_PS_VCNL4200
+#include "vcnl4200-drvinfo.inc"
+#endif
