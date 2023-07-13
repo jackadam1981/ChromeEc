@@ -16,6 +16,46 @@
       "message": "Hopefully, now I\u0027ll get enough coverage 😄",
       "revId": "dc0c9f106a96c6c6485a97f3b5ea745bb09456f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "911cf95a_4307df2b",
+        "filename": "third_party/CMakeLists.txt",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-13T21:20:39Z",
+      "side": 1,
+      "message": "Ack. Looks like there is a precedent for adding CMakeLists.txt throughout EC.",
+      "revId": "dc0c9f106a96c6c6485a97f3b5ea745bb09456f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2da1f3_7813e352",
+        "filename": "third_party/boringssl/common/sysrand_zephyr.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-13T21:20:39Z",
+      "side": 1,
+      "message": "Nice.",
+      "range": {
+        "startLine": 8,
+        "startChar": 10,
+        "endLine": 8,
+        "endChar": 34
+      },
+      "revId": "dc0c9f106a96c6c6485a97f3b5ea745bb09456f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
