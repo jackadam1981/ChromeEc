@@ -16,6 +16,98 @@
       "message": "```\nhelios-rev3 ~ # flash_fp_mcu /mnt/stateful_partition/ec.bin\n/usr/local/bin/flash_fp_mcu\nGetting platform name from /etc/lsb-release.\nPlatform name is hatch (hatch).\nUsing config for hatch.\n# Stopping biod\nbiod stop/waiting\n# Stopping timberslide\ntimberslide stop/waiting\n# Flashing \u0027/mnt/stateful_partition/ec.bin\u0027 over SPI\nFlashing SPI device ID: spi-PRP0001:02\n# stm32mon -p --retries 6 -s /dev/spidev1.1 -u -U -e -w /mnt/stateful_partition/ec.bin\nstm32mon version: v2.1.9999-163be23d  @fsammoura1.c.googlers.com\nWaiting for the monitor startup ...Done.\nChipID 0x450 : STM32H74x\nBootloader v1.1, commands : GETCMD GETVER GETID READMEM GO WRITEMEM EXTERASE WP WU RP RU GETCMD GETCMD \nUnprotecting flash read...\nTimeout\nTimeout\nFlash read unprotected.\nWaiting for the monitor startup ...Done.\nFlash write unprotected.\nWaiting for the monitor startup ...NACK\nChipID 0x450 : STM32H74x\nMonitor already started.\nErasing...\nTimeout\nTimeout\nTimeout\nFlash erased.\nWriting 2096568 bytes at 0x08000000\n   2096568 bytes written.\nDone.\nPower cycling the FPMCU.\nRO version:    dartmonkey_v2.0.21849+61ed7458e\nRO cros fwid:  dartmonkey_15534.0.23_07_11\nRW version:    dartmonkey_v2.0.21849+61ed7458e\nRW cros fwid:  dartmonkey_15534.0.23_07_11\nFirmware copy: RW\nBuild info:    dartmonkey_v2.0.21849+61ed7458e boringssl:v0.0.7276-e0d601a57 cryptoc:v1.9308_26_0.14-0dd6790 private:v0.0.132-8a640b8 fpc:v0.0.168-3f74522 dartmonkey_15534.0.23_07_11 2023-07-11 20:23:19 fsammoura@fsammoura1.c.googlers.com\nTool version:  v2.1.9999-163be23d  @fsammoura1.c.googlers.com\nEC uptime: 2.070 seconds\nAP resets since EC boot: 0\nMost recent AP reset causes:\nEC reset flags at last EC boot: reset-pin | power-on | sysjump\n# Restarting timberslide\ntimberslide (/sys/kernel/debug/cros_fp/console_log) start/running, process 14463\n# Restarting biod\nbiod start/running, process 14469\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect\n2023-07-11T20:25:17.044356Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\nFlash protect flags: 0x00000000\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000001 ro_at_boot\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect enable\n2023-07-11T20:25:22.408367Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\n2023-07-11T20:25:22.522944Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\n2023-07-11T20:25:22.635912Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\n2023-07-11T20:25:22.749244Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d16 for cmd\u003d21\nFlash protect flags: 0x00000001 ro_at_boot\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000001 ro_at_boot\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect disable\n2023-07-11T20:25:27.031821Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\nFlash protect flags: 0x00000001 ro_at_boot\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000001 ro_at_boot\nUnable to set requested flags (wanted mask 0x00000001 flags 0x00000000)\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect        \n2023-07-11T20:25:35.659374Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\nFlash protect flags: 0x00000009 wp_gpio_asserted ro_at_boot\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000005 ro_at_boot all_now\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect enable\n2023-07-11T20:25:38.477973Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\nFlash protect flags: 0x00000009 wp_gpio_asserted ro_at_boot\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000005 ro_at_boot all_now\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect disable\n2023-07-11T20:25:42.886181Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\nFlash protect flags: 0x00000009 wp_gpio_asserted ro_at_boot\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000005 ro_at_boot all_now\nUnable to set requested flags (wanted mask 0x00000001 flags 0x00000000)\nhelios-rev3 ~ # ectool --name\u003dcros_fp reboot_ec\nioctl -1, errno 110 (Connection timed out), EC result 255 (\u003cunknown\u003e)\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect       \n2023-07-11T20:25:58.535934Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\nFlash protect flags: 0x0000000f wp_gpio_asserted ro_at_boot ro_now all_now\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000000\n```\n```\nIn a separate window\nlocalhost ~ # dut-control -p9999 fw_wp_state:force_on\n```\n```\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect disable\n2023-07-11T20:26:03.660040Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\n2023-07-11T20:26:03.774097Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:03.887082Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:04.000037Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:04.114091Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:04.227596Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:04.341837Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:04.455942Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:04.568980Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:04.683422Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:04.797081Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:04.910094Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:05.023125Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:05.135984Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:05.249064Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:05.362983Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:05.475974Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:05.590083Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:05.704993Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:05.818103Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:05.931100Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:05.931167Z ERROR ectool: [ec_command_async.h(92)] Timed out polling for command 0x15\nFlash protect returned with errors: -1002\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect        \n2023-07-11T20:26:08.719279Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\nFlash protect flags: 0x0000000f wp_gpio_asserted ro_at_boot ro_now all_now\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000000\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect enable\n2023-07-11T20:26:11.835053Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\nFlash protect flags: 0x0000000f wp_gpio_asserted ro_at_boot ro_now all_now\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000000\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect disable\n2023-07-11T20:26:16.605153Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\n2023-07-11T20:26:16.719110Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:16.831958Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:16.945022Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:17.057937Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:17.170980Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:17.284015Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:17.396990Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:17.509945Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:17.623950Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:17.737025Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:17.851026Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:17.963979Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:18.076998Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:18.190973Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:18.303991Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:18.416989Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:18.529958Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:18.643889Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:18.756843Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:18.871069Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:18.871142Z ERROR ectool: [ec_command_async.h(92)] Timed out polling for command 0x15\nFlash protect returned with errors: -1002\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect enable \n2023-07-11T20:26:22.579130Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\nFlash protect flags: 0x0000000f wp_gpio_asserted ro_at_boot ro_now all_now\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000000\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect       \n2023-07-11T20:26:25.474159Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\nFlash protect flags: 0x0000000f wp_gpio_asserted ro_at_boot ro_now all_now\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000000\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect disable\n2023-07-11T20:26:28.648518Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\n2023-07-11T20:26:28.762994Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:28.876019Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:28.989033Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:29.102128Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:29.214983Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:29.328001Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:29.442959Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:29.556009Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:29.669899Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:29.783289Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:29.896020Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:30.009201Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:30.122057Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:30.235096Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:30.348681Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:30.463403Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:30.575975Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:30.689006Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:30.802964Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:30.915985Z WARNING ectool: [ec_command.h(193)] cros_ec returned error\u003d2 for cmd\u003d21\n2023-07-11T20:26:30.916060Z ERROR ectool: [ec_command_async.h(92)] Timed out polling for command 0x15\nFlash protect returned with errors: -1002\nhelios-rev3 ~ # ectool --name\u003dcros_fp flashprotect        \n2023-07-11T20:26:34.037969Z INFO ectool: [ectool.cc(1789)] The supported command version is: 2\nFlash protect flags: 0x0000000f wp_gpio_asserted ro_at_boot ro_now all_now\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000000\n\n```",
       "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bafaac94_fa159424",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-07-13T20:05:33Z",
+      "side": 1,
+      "message": "I think it\u0027s obvious that we don\u0027t want to schedule `crec_flash_set_protect_deferred()` if the current status is `EC_RES_BUSY`. We can remove this comment.",
+      "range": {
+        "startLine": 1632,
+        "startChar": 0,
+        "endLine": 1635,
+        "endChar": 5
+      },
+      "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28fc5487_960bdcda",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1639,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-07-13T20:05:33Z",
+      "side": 1,
+      "message": "Can we just return `EC_RES_BUSY` if rc is `EC_RES_BUSY`?\n```\n\t\trc \u003d flash_protect_async_data.rc;\n\t\tif (rc \u003d\u003d EC_RES_BUSY) {\n\t\t\treturn EC_RES_BUSY;\n\t\t}\n```",
+      "range": {
+        "startLine": 1636,
+        "startChar": 0,
+        "endLine": 1639,
+        "endChar": 3
+      },
+      "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d4b12d_e80a9ab2",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1641,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-07-13T20:05:33Z",
+      "side": 1,
+      "message": "We don\u0027t need it, if you follow my comment below.",
+      "range": {
+        "startLine": 1640,
+        "startChar": 0,
+        "endLine": 1641,
+        "endChar": 47
+      },
+      "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f490a66_5b9b526a",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1676,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-07-13T20:05:33Z",
+      "side": 1,
+      "message": "Can we make it, like this?\n```\n\tif (rc \u003d\u003d EC_RES_BUSY)\n\t\treturn EC_RES_BUSY;\n\n\tif (rc \u003d\u003d EC_RES_SUCCESS) {\n\t\tr-\u003eflags \u003d crec_flash_get_protect();\n\n\t\t/* Indicate which flags are valid on this platform */\n\t\tr-\u003evalid_flags \u003d EC_FLASH_PROTECT_GPIO_ASSERTED |\n\t\t\t\t EC_FLASH_PROTECT_ERROR_STUCK |\n\t\t\t\t EC_FLASH_PROTECT_ERROR_INCONSISTENT |\n\t\t\t\t EC_FLASH_PROTECT_ERROR_UNKNOWN |\n\t\t\t\t crec_flash_physical_get_valid_flags();\n\t\tr-\u003ewritable_flags \u003d\n\t\t\tcrec_flash_physical_get_writable_flags(r-\u003eflags);\n\n\t\targs-\u003eresponse_size \u003d sizeof(*r);\n        } else {\n\t        /* Clear error and wait for the next request. */\n\t        flash_protect_async_data.rc \u003d EC_RES_SUCCESS;\n        }\n\tbreak;\n```\n\nCurrently, `flash_protect_async_data.rc \u003d EC_RES_SUCCESS` doesn\u0027t make sense here because we reset return code to EC_RES_SUCCESS only when....rc is already EC_RES_SUCCESS.\n\nOne note here. If the caller sends `FLASH_PROTECT_GET_RESULT` without previous `FLASH_PROTECT_ASYNC` then it just returns the current status. For me, it\u0027s feature rather than a bug 😄",
+      "range": {
+        "startLine": 1662,
+        "startChar": 0,
+        "endLine": 1676,
+        "endChar": 35
+      },
+      "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
