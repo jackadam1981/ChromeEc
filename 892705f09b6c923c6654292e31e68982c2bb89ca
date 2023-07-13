@@ -16,6 +16,29 @@
       "message": "the code coverage should be fine because I tested for the change that I made.",
       "revId": "892705f09b6c923c6654292e31e68982c2bb89ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f14908_8b178488",
+        "filename": "common/panic_output.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-07-13T17:24:16Z",
+      "side": 1,
+      "message": "I would probably just undef the whole section instead.  At least it really should return EC_ERROR_PARAM1 instead of UNIMPLEMENTED.\n```suggestion\n#ifndef CONFIG_ALLOW_UNALIGNED_ACCESS\n\t} else if (!strcasecmp(argv[1], \"unaligned\")) {\n\t\tvolatile intptr_t unaligned_ptr \u003d 0xcdef;\n\t\tcflush();\n\t\tccprintf(\"%08x\", *(volatile int *)unaligned_ptr);\n#endif /* !CONFIG_ALLOW_UNALIGNED_ACCESS */\n\t} else if (!strcasecmp(argv[1], \"watchdog\")) {\n```",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 0
+      },
+      "revId": "892705f09b6c923c6654292e31e68982c2bb89ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
