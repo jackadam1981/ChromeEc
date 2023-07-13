@@ -345,6 +345,18 @@ def maybe_relaunch_in_bazel(
     if running_in_bazel():
         return False
 
+    if "--test-only" in argv:
+        print(
+            "--test-only is not compatible with Bazel twister_launcher, remove it.",
+            file=sys.stderr,
+        )
+        sys.exit(22)  # UNIX Invalid Argument error code
+
+    # Remove -b/--build-only from the argument to normalize bazel build/run.
+    filtered_argv = list(
+        filter(lambda x: (x not in ["-b", "--build-only"]), argv)
+    )
+
     gen_starlark = f"""
 load(
     "//platform/ec/bazel:twister.bzl",
@@ -352,7 +364,7 @@ load(
 )
 twister_test_binary(
     name = "run_twister",
-    args = {argv!r},
+    args = {filtered_argv!r},
     cwd = {str(cwd)!r},
 )"""
     run_hash = hashlib.md5(gen_starlark.encode("utf-8")).hexdigest()
@@ -382,11 +394,28 @@ twister_test_binary(
 
     osutils.SafeSymlink(bazel_twister_out, ec_twister_out)
 
-    bazel_cmd = ["bazel", "build", ":run_twister"]
+    bazel_build_cmd = ["bazel", "build", ":run_twister"]
     if sandbox_debug:
-        bazel_cmd.append("--sandbox_debug")
+        bazel_build_cmd.append("--sandbox_debug")
 
-    result = subprocess.run(bazel_cmd, cwd=run_dir, check=False)
+    result = subprocess.run(
+        bazel_build_cmd,
+        cwd=run_dir,
+        check=False,
+        # Unless -b or an error occurred, hide twister build output from user We
+        # do this because it is confusing to have "TEST SUCCESS" printed twice,
+        # once for building and another for test execution.
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        encoding="utf-8",
+    )
+    if "-b" in argv or result.returncode != 0:
+        print(result.stdout)
+        sys.exit(result.returncode)
+
+    result = subprocess.run(
+        ["bazel", "run", ":run_twister"], cwd=run_dir, check=False
+    )
     sys.exit(result.returncode)
 
 
