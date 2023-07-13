@@ -26,12 +26,24 @@ def _impl(ctx):
     twister_bin_tool_inputs, twister_bin_tool_input_mfs = \
         ctx.resolve_tools(tools = [ctx.attr._twister_bin])
 
+    twister_run_out = ctx.actions.declare_file("twister_run_out")
+
+    md5_hash = twister_run_out.dirname.split("/")[-1]
+
+    twister_run_script = "cd external/ec; ./twister {} --test-only -O \
+    ../../platform/ec/build/twister-bzl/{}/twister-out".format(" ".join(args), md5_hash)
+
+    ctx.actions.write(
+        output = twister_run_out,
+        content = twister_run_script,
+    )
+
     ctx.actions.run(
         outputs = [build_dir],
         inputs = deps,
         tools = twister_bin_tool_inputs,
         executable = ctx.executable._twister_bin,
-        arguments = args,
+        arguments = args + ["-b"],
         mnemonic = "twister",
         use_default_shell_env = False,
         env = env,
@@ -39,16 +51,16 @@ def _impl(ctx):
     )
 
     return DefaultInfo(
-        files = depset([build_dir]),
-        runfiles = ctx.runfiles(files = [build_dir]),
+        files = depset([build_dir, twister_run_out]),
+        runfiles = ctx.runfiles(files = [build_dir, twister_run_out] + deps),
+        executable = twister_run_out,
     )
 
 twister_test_binary = rule(
     implementation = _impl,
     doc = "Run a salty delicious pretzel. Also verify the EC code",
+    executable = True,
     attrs = {
-        "args": attr.string_list(default = [
-        ]),
         "cwd": attr.string(default = ""),
         "_ec": attr.label(default = "@ec//:src", allow_files = True),
         "_TOOLCHAIN_ROOT": attr.label(default = "@ec//:zephyr", allow_single_file = True),
