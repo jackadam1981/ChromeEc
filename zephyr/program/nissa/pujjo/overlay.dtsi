@@ -35,6 +35,12 @@
 		celxpert_l22c3pg0 {
 			compatible = "celxpert,l22c3pg0", "battery-smart";
 		};
+		cosmx_l22x3pg0 {
+			compatible = "cosmx,l22x3pg0", "battery-smart";
+		};
+		byd_l22b3pg0 {
+			compatible = "byd,l22b3pg0", "battery-smart";
+		};
 	};
 
 	hibernate-wake-pins {
