@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10c1eb47_ae41f2dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-13T19:59:20Z",
+      "side": 1,
+      "message": "we are mainly interested in the delta. Everything else is constant. So if you know the number of aligned accesses vs. unaligned accesses, you should be able to calculate the difference.",
+      "parentUuid": "56bd95b3_0ffc5223",
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d60cfc6_bb1a734c",
         "filename": "test/unaligned_access_benchmark.cc",
         "patchSetId": 4
