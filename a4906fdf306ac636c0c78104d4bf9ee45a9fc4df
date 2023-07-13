@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcd90203_c116b642",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-13T18:15:06Z",
+      "side": 1,
+      "message": "What branch is `firmware-skyrim-15369.B-main`?\n\nThe only branch I see used anywhere is `firmware-skyrim-15369.B` (without `-main`), and these are the only CLs in this `-main` branch.",
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
