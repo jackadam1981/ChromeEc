@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87d60188_146af33b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-13T20:43:05Z",
+      "side": 1,
+      "message": "if I run the original benchmark with 100,000 iterations:\n```\nDEBUG:Running benchmark_unaligned_access_array...\nDEBUG: (speed gain: 453134 -\u003e 410472 us)\nDEBUG:OK\nDEBUG:Pass!\n```\nwhich is equivalent to (453,134 - 410,471)/(20*100,000) \u003d 0.021331 usec \u003d 2.13 extra cycles for unaligned access vs. aligned access. This is in par with your measurement (677216-250115)/(20*1000000)\u003d 0.02134405 usec or 2.13 cycles for the 100MHz blonchipper.\n\nI can definitely use your approach if you believe if it better.",
+      "parentUuid": "56bd95b3_0ffc5223",
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d60cfc6_bb1a734c",
         "filename": "test/unaligned_access_benchmark.cc",
         "patchSetId": 4
