@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56bd95b3_0ffc5223",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-13T07:17:24Z",
+      "side": 1,
+      "message": "Also, I\u0027m not confident that either of your tests are actually able to measure the data access time difference, since a small data access itself is insignificant compared to the loop counter (update and check) overhead.\n\nSay for example an aligned access take 1 cycle, an unaligned access take 2 cycles, and the loop counter update and check takes 8 cycles. We run an unaligned access for 1,000 iterations and an aligned access 1,000 iterations.\n\nThat means we would only see 10,000 cycles for an unaligned access run and 9,000 cycles for an aligned access run. We can\u0027t say that unaligned accesses only incur an 11% time penalty, since we know it incurs a 100% time penalty.\n\nHere is a concrete example of how to amplify the signal. As we unroll the loop more, we start to see that the data access time becomes more dominant as compared to the loop monitoring code. So, we start to see that the time for an unaligned access grows from being almost equal to being more than double.\n\n\n```C++\n// __attribute__ ((optnone))\nint benchmark_unaligned_access()\n{\n\tint i;\n\ttimestamp_t t0, t1, t2, t3;\n\talignas(uint32_t) volatile int8_t dst[2*sizeof(uint32_t)];\n\tvolatile uint32_t *const unaligned \u003d (volatile uint32_t *)(dst + 1);\n\tvolatile uint32_t *const aligned \u003d (volatile uint32_t *)dst;\n\n\tccprintf(\"dst\u003d0x%p\\n\", dst);\n\tccprintf(\"unaligned\u003d0x%p and aligned\u003d0x%p\\n\", unaligned, aligned);\n\n\tconst int iteration \u003d 1000000;\n\tconst int unrollcount \u003d 20;\n\n\tfor (i \u003d 0; i \u003c sizeof(dst); ++i)\n\t\tdst[0] \u003d 0;\n\tt0 \u003d get_time();\n\tfor (i \u003d 0; i \u003c iteration; ++i) {\n\t\t/* unaligned */\n\t\t// Our little write operation is much less significant than\n\t\t// the loop variable updating, so we need to unroll the loop a\n\t\t// a bit to make each loop action more significant.\n\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t\t*unaligned \u003d 0xFEF8F387;\n\t}\n\tt1 \u003d get_time();\n\tuint64_t unaligned_time \u003d t1.val - t0.val;\n\tccprintf(\"Unaligned took %\" PRId64 \"us, which is %\" PRId64 \"ns per iteration.\\n\",\n\t\tunaligned_time, (1000*unaligned_time) / (iteration*unrollcount));\n\t\n\tfor (i \u003d 0; i \u003c sizeof(dst); ++i)\n\t\tdst[i] \u003d 0;\n\n\tt2 \u003d get_time();\n\tfor (i \u003d 0; i \u003c iteration; ++i) {\n\t\t/* aligned */\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t\t*aligned \u003d 0xFEF8F387;\n\t}\n\tt3 \u003d get_time();\n\tuint64_t aligned_time \u003d t3.val - t2.val;\n\tccprintf(\"Aligned took %\" PRId64 \"us, which is %\" PRId64 \"ns per iteration.\\n\",\n\t\taligned_time, (1000*aligned_time) / (iteration*unrollcount));\n\n\tccprintf(\"Unaligned write is %\" PRId64 \"%% slower that aligned.\\n\",\n\t\t(100*unaligned_time)/aligned_time - 100);\n\treturn EC_SUCCESS;\n}\n```\n\n\n```\nRunning benchmark_unaligned_access...\ndst\u003d0x200137e8\nunaligned\u003d0x200137e9 and aligned\u003d0x200137e8\nUnaligned took 677216us, which is 33ns per iteration.\nAligned took 250115us, which is 12ns per iteration.\nUnaligned write is 170% slower that aligned.\n```\n\nAt 100MHz, the cycle time would be about 10ns, so 12ns for an aligned access sounds close.\n\nI\u0027m sure I made errors in the above examples, since it\u0027s late and benchmarking is hard. My apologies in advance.",
+      "parentUuid": "6caea867_09d8542f",
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d60cfc6_bb1a734c",
         "filename": "test/unaligned_access_benchmark.cc",
         "patchSetId": 4
@@ -151,6 +169,29 @@
         "startChar": 2,
         "endLine": 81,
         "endChar": 30
+      },
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b085fab_cc7b4b65",
+        "filename": "test/unaligned_access_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-13T07:17:24Z",
+      "side": 1,
+      "message": "I think you need `\\n`.",
+      "range": {
+        "startLine": 96,
+        "startChar": 28,
+        "endLine": 96,
+        "endChar": 29
       },
       "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
