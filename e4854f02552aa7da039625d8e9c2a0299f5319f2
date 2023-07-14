@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e9d6747_84a03c7e",
+        "filename": "test/timer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-07-14T17:57:34Z",
+      "side": 1,
+      "message": "your math is correct, but you might consider re-writing as (1/32768.0) * 1000000.0 (first get the period, then multiply by 1000000 to get us). The result is the same, but it took me a minute to understand your logic.",
+      "revId": "e4854f02552aa7da039625d8e9c2a0299f5319f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6012902_331a2550",
+        "filename": "test/timer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-07-14T17:57:34Z",
+      "side": 1,
+      "message": "Do we need \"max error + 1 clock tick\" as opposed to \"max error\"? Not sure I follow why we need the extra tick...",
+      "revId": "e4854f02552aa7da039625d8e9c2a0299f5319f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
