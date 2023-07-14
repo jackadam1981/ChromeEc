@@ -18,3 +18,16 @@ enum battery_present battery_hw_present(void)
 	/* The GPIO is low when the battery is physically present */
 	return gpio_pin_get_dt(batt_pres) ? BP_NO : BP_YES;
 }
+
+enum battery_present battery_is_present(void)
+{
+	enum battery_present batt_pres;
+
+	if (battery_is_cut_off())
+		return BP_NO;
+
+	/* Get the physical hardware status */
+	batt_pres = battery_hw_present();
+
+	return batt_pres;
+}
