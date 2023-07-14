@@ -52,6 +52,24 @@
       "parentUuid": "6715249e_53a2deee",
       "revId": "e6b9dd5d426a2089468c45e3668369c1418b587c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0048e7da_6d8a940a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 281
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-14T04:38:52Z",
+      "side": 1,
+      "message": "Looks like the actual size of `fp_xfer_buffer` is 25,780 bytes on bloonchipper (\\~10% of total ram) and 238,080 bytes on dartmonkey (\\~45% of main ram).\n\nMessage from the end of EC build about RW RAM:\n* `151424 bytes in RAM still available on bloonchipper`\n* `263424 bytes in RAM still available on dartmonkey`",
+      "parentUuid": "8a00ffa8_c569cd6f",
+      "revId": "e6b9dd5d426a2089468c45e3668369c1418b587c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
