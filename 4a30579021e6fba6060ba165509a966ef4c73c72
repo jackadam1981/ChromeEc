@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcf27420_767f30ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 309
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-14T04:10:31Z",
+      "side": 1,
+      "message": "LGTM, with optional fixes.",
+      "revId": "4a30579021e6fba6060ba165509a966ef4c73c72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebab22bb_42890f92",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 309
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-14T04:10:31Z",
+      "side": 1,
+      "message": "Just removing extra space and adding to end.\n\n```suggestion\n\t/* Expected positive_match_secret same as in test/fpsensor_crypto.c */\n```",
+      "revId": "4a30579021e6fba6060ba165509a966ef4c73c72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56e7b21_3a773c74",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 309
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-14T04:10:31Z",
+      "side": 1,
+      "message": "No clue what the c++ equivalent would be for a 2D C array. If you know, please replace. Otherwise, leave it.",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 53
+      },
+      "revId": "4a30579021e6fba6060ba165509a966ef4c73c72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712e67db_4f391862",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 309
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-14T04:10:31Z",
+      "side": 1,
+      "message": "Looks like we are already committing to c++ in this test.\n\n```suggestion\n\tstd::fill(std::begin(user_id), std::end(user_id), 0);\n```",
+      "revId": "4a30579021e6fba6060ba165509a966ef4c73c72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
