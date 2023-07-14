@@ -163,6 +163,30 @@
       },
       "revId": "56ce2a185d5d66719866721f6006ff348b489ee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69df0a4_151bb3ad",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-14T12:41:22Z",
+      "side": 1,
+      "message": "The logic is different, so I just moved the logic for ite, common for the upstream and shim, to a separated file.",
+      "parentUuid": "e11f3ac8_4e5b7ded",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "56ce2a185d5d66719866721f6006ff348b489ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6bad1d3c_5adec947",
+        "filename": "common/host_command.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-14T12:41:22Z",
+      "side": 1,
+      "message": "Yes, this is important topic.\n\nThe `struct ec_host_cmd_handler_args` doesn\u0027t have `result`, which is the last member in the `struct host_cmd_handler_args` structure.\n\nI\u0027ve considered 3 options:\n1. Add `#ifdef` to the definition of the `struct host_cmd_handler_args` to drop the `result` field for the upstream. The structures would be the same.\n2. Add `reserved` field to the `struct ec_host_cmd_handler_args`, as it is done for the first member `send_response`. The structures would be the same.\n3. Leave the structures different and do not use `result` while upstream.\n\nI think you are right, that the structures should stay the same, so 3. isn\u0027t a good solution. \n\nIMO, 1. is the best option. It allows catching unwanted usage of the `result`. It was my first version, but I\u0027ve changed it, because of required tests changes and forgot to change it back.\n\nPlease let me know what you think.",
+      "parentUuid": "dc743abc_4eeee731",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 23
+      },
+      "revId": "fe28f76df448bc2ec714d9baaa21fdf3b01875a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5473897a_b20d2afb",
         "filename": "zephyr/shim/chip/it8xxx2/CMakeLists.txt",
         "patchSetId": 16
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-11T17:09:45Z",
       "side": 1,
       "message": "I think this breaks projects that use ITE and eSPI.  You also need a check that SHI is enabled.",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 49
+      },
+      "revId": "fe28f76df448bc2ec714d9baaa21fdf3b01875a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcbdba2f_169789df",
+        "filename": "zephyr/shim/chip/it8xxx2/CMakeLists.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-14T12:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5473897a_b20d2afb",
       "range": {
         "startLine": 13,
         "startChar": 31,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "542b7d6e_e58d29dc",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-14T12:41:22Z",
+      "side": 1,
+      "message": "I\u0027ve changed it only for `host_command_upstream_init`, because `host_command_init` has incompatible type and I don\u0027t want to change initialization order comparing to the shim/CrosEC.",
+      "parentUuid": "8d8ed2e7_73b1211a",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "fe28f76df448bc2ec714d9baaa21fdf3b01875a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de3afdf3_8b4c74e5",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c907d0f_87e379e5",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-14T12:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de3afdf3_8b4c74e5",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 20
+      },
+      "revId": "fe28f76df448bc2ec714d9baaa21fdf3b01875a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e838827e_988a4fa7",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-07-11T17:09:45Z",
       "side": 1,
       "message": "Can you document why this test needs to check for the test runner or host command task ID?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 61
+      },
+      "revId": "fe28f76df448bc2ec714d9baaa21fdf3b01875a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2139c596_6fcf42be",
+        "filename": "zephyr/test/drivers/default/src/usb_mux.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-14T12:41:22Z",
+      "side": 1,
+      "message": "Done. This changed should be in the following commit anyway.",
+      "parentUuid": "e838827e_988a4fa7",
       "range": {
         "startLine": 47,
         "startChar": 1,

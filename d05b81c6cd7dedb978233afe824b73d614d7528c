@@ -33,6 +33,24 @@
       "message": "I mark this CL as WIP, because it requires the upsteam Host Command [logging system](https://github.com/zephyrproject-rtos/zephyr/pull/58769) to be merged.",
       "revId": "d05b81c6cd7dedb978233afe824b73d614d7528c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72cee310_7e8ea557",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-14T12:41:22Z",
+      "side": 1,
+      "message": "All needed changes are merged.",
+      "parentUuid": "da589175_a8aabfe7",
+      "revId": "d05b81c6cd7dedb978233afe824b73d614d7528c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
