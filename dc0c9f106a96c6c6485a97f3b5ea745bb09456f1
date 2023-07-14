@@ -55,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cf709985_f0a446cc",
+        "filename": "third_party/CMakeLists.txt",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-14T00:37:46Z",
+      "side": 1,
+      "message": "Right.",
+      "parentUuid": "88bb2d26_a3d29bfb",
+      "revId": "dc0c9f106a96c6c6485a97f3b5ea745bb09456f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5a2da1f3_7813e352",
         "filename": "third_party/boringssl/common/sysrand_zephyr.c",
         "patchSetId": 25
