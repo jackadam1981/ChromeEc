@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f482a76e_48c0be5a",
+        "filename": "test/timer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-14T19:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e9d6747_84a03c7e",
+      "revId": "e4854f02552aa7da039625d8e9c2a0299f5319f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6012902_331a2550",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-07-14T17:57:34Z",
       "side": 1,
       "message": "Do we need \"max error + 1 clock tick\" as opposed to \"max error\"? Not sure I follow why we need the extra tick...",
+      "revId": "e4854f02552aa7da039625d8e9c2a0299f5319f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5eb613_37e73258",
+        "filename": "test/timer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-14T19:29:59Z",
+      "side": 1,
+      "message": "Truthfully I don\u0027t think we\u0027ll ever encounter a case where the +1 tick is needed but here\u0027s my logic:\n\nThe 2% max error is the error between what LFCLK reports and \"actual time\". The check here compares start and end times from the `ITIM32_6` timer, which has 1-second ticks and can serve as a rough approximation for \"actual time\".\n\nIn the worst case I assumed that the timer starts immediately at the beginning of a clock tick, expires after the full 12345 us + 2% max error (12591.9 us). That gives a worst case of `(12345 us * 1.02 error) / 30.5 us/tick`, or 412.85 clock ticks. Clock ticks are atomic so the clock won\u0027t expire until 413 ticks, giving us a worst case of `413 cnts * 30.5 us/cnt \u003d 12596.5 us` (actual time) which would put us over the 2% error alone by 4.6 us. Adding an extra clock tick (more than) makes up for this delta.",
+      "parentUuid": "e6012902_331a2550",
       "revId": "e4854f02552aa7da039625d8e9c2a0299f5319f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
