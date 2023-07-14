@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78be3c5e_d4dcac44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-14T00:20:51Z",
+      "side": 1,
+      "message": "maybe add b/285992808 as well.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "85d99adf174922ea57171878de5bb495d2e47a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60055829_9f2f237b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-14T00:20:51Z",
+      "side": 1,
+      "message": "i\u0027d be OK with +2 this change, but after reading comments\nin the bugs, etc. it sounds like we may want to get confirmation\nthat this change helps timing first?\n\nsince this change follows the intel RVP design, maybe there\u0027s\nno need to wait for confirmation?",
+      "revId": "85d99adf174922ea57171878de5bb495d2e47a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
