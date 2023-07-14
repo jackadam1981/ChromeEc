@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ce3e0d6_24357650",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1618,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-14T22:17:35Z",
+      "side": 1,
+      "message": "I just initialized it here",
+      "parentUuid": "24098d5c_4f063f57",
+      "range": {
+        "startLine": 1618,
+        "startChar": 10,
+        "endLine": 1618,
+        "endChar": 24
+      },
+      "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bafaac94_fa159424",
         "filename": "common/flash.c",
         "patchSetId": 6
@@ -77,6 +101,30 @@
       "writtenOn": "2023-07-13T20:05:33Z",
       "side": 1,
       "message": "I think it\u0027s obvious that we don\u0027t want to schedule `crec_flash_set_protect_deferred()` if the current status is `EC_RES_BUSY`. We can remove this comment.",
+      "range": {
+        "startLine": 1632,
+        "startChar": 0,
+        "endLine": 1635,
+        "endChar": 5
+      },
+      "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1739c9bf_072b06ee",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-14T22:17:35Z",
+      "side": 1,
+      "message": "let us just keep the comment for clarity",
+      "parentUuid": "bafaac94_fa159424",
       "range": {
         "startLine": 1632,
         "startChar": 0,
@@ -134,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f9cdbfb_8a122e05",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1639,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-14T22:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0d7edcc_b53c9790",
+      "range": {
+        "startLine": 1636,
+        "startChar": 0,
+        "endLine": 1639,
+        "endChar": 3
+      },
+      "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79d4b12d_e80a9ab2",
@@ -147,6 +219,30 @@
       "writtenOn": "2023-07-13T20:05:33Z",
       "side": 1,
       "message": "We don\u0027t need it, if you follow my comment below.",
+      "range": {
+        "startLine": 1640,
+        "startChar": 0,
+        "endLine": 1641,
+        "endChar": 47
+      },
+      "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5e329dc_dbd6ffd1",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1641,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-14T22:17:35Z",
+      "side": 1,
+      "message": "I think I modified per your feedback and Bobby\u0027s. I tested it and it works fine. There is one change that needs to be done:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/refs/heads/main:src/platform2/libec/ec_command_async.h;l\u003d86#:~:text\u003d85-,86,-87\n\nwe usually set `options_.validate_poll_result` for this command to be false. with that, it does not detect when a `EC_RES_ERROR` is returned. It keeps polling until the end. With the change that we are making, i.e. changing the res to `EC_RES_SUCCESS`, this causes the command to run one more time. I am making the change in libec. I will test. We need to think if there is any drawback to changing this.",
+      "parentUuid": "79d4b12d_e80a9ab2",
       "range": {
         "startLine": 1640,
         "startChar": 0,
@@ -194,6 +290,30 @@
       "side": 1,
       "message": "I like the concept but I think we could be more explicit here. We only have three options, `EC_RES_BUSY`, `EC_RES_SUCCESS`, or `EC_RES_ERROR`. Having blocks for each of those three (although I used a `!\u003d EC_RES_SUCCESS` for `EC_RES_BUSY` to handle weird error cases) will make it very obvious what\u0027s going on. \n\n```\nif (rc \u003d\u003d EC_RES_BUSY)\n    return EC_RES_BUSY;\nelse if (rc !\u003d EC_RES_SUCCESS) {\n   /* Assuming an error, clear it and wait for the next request. */\n   flash_protect_async_data.rc \u003d EC_RES_SUCCESS;\n   return EC_RES_ERROR;\n} else {\n   /* rc is EC_RES_SUCCESS */\n   r-\u003eflags \u003d crec_flash_get_protect();\n\n   /* Indicate which flags are valid on this platform */\n   r-\u003evalid_flags \u003d EC_FLASH_PROTECT_GPIO_ASSERTED |\n                 EC_FLASH_PROTECT_ERROR_STUCK |\n                 EC_FLASH_PROTECT_ERROR_INCONSISTENT |\n                 EC_FLASH_PROTECT_ERROR_UNKNOWN |\n                 crec_flash_physical_get_valid_flags();\n   r-\u003ewritable_flags \u003d\n                 crec_flash_physical_get_writable_flags(r-\u003eflags);\n\n   args-\u003eresponse_size \u003d sizeof(*r);\n   return EC_RES_SUCCESS;\n} \n```",
       "parentUuid": "5f490a66_5b9b526a",
+      "range": {
+        "startLine": 1662,
+        "startChar": 0,
+        "endLine": 1676,
+        "endChar": 35
+      },
+      "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce372caa_814379f4",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1676,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-14T22:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f42d1b38_aa723433",
       "range": {
         "startLine": 1662,
         "startChar": 0,
