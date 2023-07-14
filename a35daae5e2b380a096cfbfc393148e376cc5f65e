@@ -110,6 +110,30 @@
       },
       "revId": "a35daae5e2b380a096cfbfc393148e376cc5f65e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a39a2e7_fc69dc02",
+        "filename": "board/hatch_fp/build.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-14T18:15:36Z",
+      "side": 1,
+      "message": "Sounds good. Note that `CONFIG_ALLOW_UNALIGNED_ACCESS` was added in http://go/crvc/4684926.",
+      "parentUuid": "88fd3fb3_fc66a681",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "a35daae5e2b380a096cfbfc393148e376cc5f65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
