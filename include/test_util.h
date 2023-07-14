@@ -69,6 +69,19 @@ extern "C" {
 	ccprintf("\t\tEVAL: " fmt " " #op " " fmt "\n", _a, _b)
 #endif
 
+/* Tests that include large numbers of comparisons can potentially overflow UART
+ * buffers and/or cause in watchdog timeouts due to "PASS" messages. This option
+ * allows inhibiting PASS messages, only printing on failure. Note that using
+ * this flag might make diagnosing failures more complicated as the passes will
+ * not be displayed.
+ */
+#ifdef TEST_OPERATOR_INHIBIT_PRINT_ON_PASS
+#define TEST_OPERATOR_PRINT_PASS(op, _a, _b)
+#else
+#define TEST_OPERATOR_PRINT_PASS(op, _a, _b) \
+	ccprintf("PASS: %s " #op " %s\n", _a, _b)
+#endif
+
 #define TEST_OPERATOR(a, b, op, fmt)                                         \
 	do {                                                                 \
 		__auto_type _a = (a);                                        \
@@ -80,7 +93,7 @@ extern "C" {
 			task_dump_trace();                                   \
 			return EC_ERROR_UNKNOWN;                             \
 		} else {                                                     \
-			ccprintf("Pass: %s " #op " %s\n", #a, #b);           \
+			TEST_OPERATOR_PRINT_PASS(#op, #a, #b);               \
 		}                                                            \
 	} while (0)
 
