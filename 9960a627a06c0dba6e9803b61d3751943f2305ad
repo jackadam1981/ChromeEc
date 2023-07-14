@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "02c5c5ca_e8efd62e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-14T22:18:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8638890_fd25c659",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1804dec1_323b7ed5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "I just initialized it here",
       "parentUuid": "24098d5c_4f063f57",
+      "range": {
+        "startLine": 1618,
+        "startChar": 10,
+        "endLine": 1618,
+        "endChar": 24
+      },
+      "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e62705bd_789fb113",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1618,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-14T22:18:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ce3e0d6_24357650",
       "range": {
         "startLine": 1618,
         "startChar": 10,
