@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da24cc78_c3ed877a",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 283
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-14T02:15:29Z",
+      "side": 1,
+      "message": "The reason I ask is because I\u0027m sure this error will be changed at some point down the line to be add more detail to userspace logging. If there is a reason these need to be vague, then it should be documented.",
+      "parentUuid": "10d6e0e7_0ea2c36d",
+      "range": {
+        "startLine": 189,
+        "startChar": 9,
+        "endLine": 189,
+        "endChar": 27
+      },
+      "revId": "8aeb9ed728e648b27cdffb424055cfe750d78ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ea6eff1_69839813",
         "filename": "common/fpsensor/fpsensor_auth_commands.cc",
         "patchSetId": 283
