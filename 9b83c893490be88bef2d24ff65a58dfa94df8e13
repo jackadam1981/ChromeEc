@@ -22,6 +22,30 @@
       },
       "revId": "9b83c893490be88bef2d24ff65a58dfa94df8e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d570b5ef_afc29be8",
+        "filename": "chip/npcx/clock_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-14T15:46:47Z",
+      "side": 1,
+      "message": "Actually, looking at this again I\u0027m not sure if we want to tie `OSC_CLK` changes directly to `NPCX_UART_BAUDRATE_3M` For example, it should be possible to have `OSC_CLK` at 96 MHz without a 3 MHz UART (even if the inverse isn\u0027t possible). If were to call `clock_turbo()` in `board_init`, would that have any effect on the UART?\n\nOn a related note, I created b/291273378 to track the CPU frequency updates",
+      "parentUuid": "96c749c9_53a54970",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "9b83c893490be88bef2d24ff65a58dfa94df8e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
