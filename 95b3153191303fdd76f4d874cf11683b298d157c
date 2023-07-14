@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2baa60c9_e78b703f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-14T21:55:12Z",
+      "side": 1,
+      "message": "Without giving it much thought, I think you\u0027re right. As long as you run enough iterations for the small delta to be accurately measurable, I think it converges to the same conclusion.\n\nI think when it comes down any *issues* here, I think it is mainly a disagreement about findings presentation. It wasn\u0027t obvious from looking at the total `us` how much faster one was over the other. This could easily be fixes.\n\nAnother issue with my approach is that a good cache that saves unaligned accesses can make this since access non-existent. This might totally break down on dartmonkey. I\u0027m good with submitting, but we probably want a benchmark similar to yours in the future.",
+      "parentUuid": "fc7994c8_a8faabdf",
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d60cfc6_bb1a734c",
