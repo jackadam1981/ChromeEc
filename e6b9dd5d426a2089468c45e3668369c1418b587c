@@ -70,6 +70,24 @@
       "parentUuid": "8a00ffa8_c569cd6f",
       "revId": "e6b9dd5d426a2089468c45e3668369c1418b587c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15702c27_d9b9e1dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 281
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-14T04:49:12Z",
+      "side": 1,
+      "message": "These values for memory usage are pretty significant.\n\nThe issue with dynamically allocating this is that it is harder to test for memory capacity issues, since it is competing with the black-box matching library\u0027s heap usage. For example, we would need to try testing matching while issuing a preload command.\n\n\nI think we need a better solution (maybe merge the preload and original template upload), but for now we should probably keep this static and lower test buffer size (assuming that\u0027s possible).",
+      "parentUuid": "0048e7da_6d8a940a",
+      "revId": "e6b9dd5d426a2089468c45e3668369c1418b587c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
