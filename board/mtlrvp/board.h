@@ -69,11 +69,21 @@
 #define I2C_PORT_TYPEC_AIC1 NPCX_I2C_PORT0_0
 #define I2C_PORT_SMLINK 5 /* NPCX_I2C_PORT5_0 */
 
+/* Keyboard */
+#define CONFIG_KEYBOARD_DISCRETE
+#define CONFIG_KEYBOARD_PROTOCOL_8042
+#define CONFIG_KEYBOARD_COL2_INVERTED
+#define CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI2
+
 /* Note: Disable CONFIG_IO_EXPANDER when PD drives Keyboard IOEX */
-#define CONFIG_IO_EXPANDER
+/* #define CONFIG_IO_EXPANDER */
 
 #ifndef __ASSEMBLER__
 #include "gpio_signal.h"
+
+enum adc_channel {
+	DUMMY,
+};
 
 #ifdef CONFIG_IO_EXPANDER
 enum mtl_ioex_port {

@@ -194,11 +194,6 @@ __override int board_get_version(void)
 	return 1;
 }
 
-static void ioex_kbd_interrupt(enum gpio_signal signal)
-{
-	gpio_set_level(GPIO_KBD_INTR, gpio_get_level(signal));
-}
-
 static void fake_interrupt(enum gpio_signal signal)
 {
 }
@@ -207,12 +202,6 @@ __override uint8_t board_get_usb_pd_port_count(void)
 {
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
-
-static void enable_kbd_irq(void)
-{
-	gpio_enable_interrupt(GPIO_KBD_INTR);
-}
-DECLARE_HOOK(HOOK_INIT, enable_kbd_irq, HOOK_PRIO_POST_I2C);
 
 static void enable_pd_irq(void)
 {

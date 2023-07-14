@@ -10,9 +10,9 @@
 GPIO_INT(TP_GPIO95, PIN(9, 5), GPIO_INT_FALLING, mtl_pd_interrupt)
 
 /* KBD I/O Expander interrupt */
-GPIO_INT(IOEX_KBD_INTR_N, PIN(0, 0), GPIO_INT_BOTH, ioex_kbd_interrupt)
+GPIO(IOEX_KBD_INTR_N, PIN(0, 0), GPIO_INPUT)
 /* Notify PD about KBD interrupt */
-GPIO(KBD_INTR, PIN(4, 0), GPIO_ODR_HIGH)
+GPIO(KBD_INTR, PIN(4, 0), GPIO_INPUT)
 
 /* Power sequencing interrupts */
 GPIO_INT(ALL_SYS_PWRGD, PIN(7, 0), GPIO_INT_BOTH, power_signal_interrupt)

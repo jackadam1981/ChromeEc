@@ -378,3 +378,43 @@ const struct usb_mux_driver dummy_mtl_pd = {
 	.enter_low_power_mode = dummy_low_power_mode,
 	.is_retimer_fw_update_capable = dummy_fw_update_capable,
 };
+
+#ifdef CONFIG_KEYBOARD_DISCRETE
+#include "keyboard_raw.h"
+
+/* KSO mapping for discrete keyboard */
+__override const uint8_t it8801_kso_mapping[] = {
+	0, 1, 20, 3, 4, 5, 6, 11, 12, 13, 14, 15, 16,
+#ifdef CONFIG_KEYBOARD_KEYPAD
+	17, 18
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(it8801_kso_mapping) == KEYBOARD_COLS_MAX);
+
+test_mockable void keyboard_raw_drive_column(int col)
+{
+}
+
+test_mockable int keyboard_raw_read_rows(void)
+{
+	return 0;
+}
+
+void keyboard_raw_enable_interrupt(int enable)
+{
+}
+
+void keyboard_raw_init(void)
+{
+}
+
+void keyboard_raw_task_start(void)
+{
+	keyboard_raw_enable_interrupt(1);
+}
+
+void keyboard_event_handler(void)
+{
+	task_wake(TASK_ID_KEYSCAN);
+}
+#endif
