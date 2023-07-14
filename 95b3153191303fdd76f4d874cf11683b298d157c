@@ -108,6 +108,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44debad0_8c3422d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-14T21:56:50Z",
+      "side": 1,
+      "message": "\u003e your benchmark has the overhead of the for loop, which I assume will make the results not absolute. In any case, I modified the benchmark. Both benchmarks will lead to the same outcome.\n\nThat\u0027s true. We should probably add a delta calculation, too.",
+      "parentUuid": "2baa60c9_e78b703f",
+      "revId": "95b3153191303fdd76f4d874cf11683b298d157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d60cfc6_bb1a734c",
