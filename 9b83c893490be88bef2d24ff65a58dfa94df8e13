@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c749c9_53a54970",
+        "filename": "chip/npcx/clock_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-14T15:24:05Z",
+      "side": 1,
+      "message": "Could you separate out the OSC_CLK changes from the UART changes? It will make the reviews a lot easier and makes it easier to revert if we run into unanticipated issues down the line.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "9b83c893490be88bef2d24ff65a58dfa94df8e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
