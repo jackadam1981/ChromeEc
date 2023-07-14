@@ -49,6 +49,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f46c5af5_139d00dc",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-14T20:54:17Z",
+      "side": 1,
+      "message": "Agreed. I\u0027m not a big fan of this in general. There\u0027s nothing intrinsically wrong with two consecutive random values matching so this test will fail sometimes, although it should be relatively infrequently. It\u0027s also concerning that we\u0027re flushing the UART buffer after every iteration. That adds a significant overhead to the testing time and doesn\u0027t add any real value. \n\nI just created b/291323040 to rewrite this benchmark.",
+      "parentUuid": "c2ad547e_145a4b6e",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 46
+      },
+      "revId": "338010248ed5ad6389e8eb1c0e1a7e987d429880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cc0643ea_4c536ed4",
         "filename": "test/rng_benchmark.cc",
         "patchSetId": 4
