@@ -1539,8 +1539,8 @@ static int process_charge_state(int *need_staticp, int sleep_usec)
 	    !battery_seems_disconnected)
 		charge_manager_leave_safe_mode();
 
-	/* Keep the AP informed */
-	if (*need_staticp)
+	/* Keep the AP informed only when battery is present */
+	if (*need_staticp && battery_is_present() == BP_YES)
 		*need_staticp = update_static_battery_info();
 
 	/* Wait on the dynamic info until the static info is good. */
