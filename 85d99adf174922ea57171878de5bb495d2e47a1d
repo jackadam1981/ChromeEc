@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d1d97a72_9573a620",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-07-14T18:28:11Z",
+      "side": 1,
+      "message": "added.",
+      "parentUuid": "78be3c5e_d4dcac44",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "85d99adf174922ea57171878de5bb495d2e47a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "60055829_9f2f237b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2023-07-14T00:20:51Z",
       "side": 1,
       "message": "i\u0027d be OK with +2 this change, but after reading comments\nin the bugs, etc. it sounds like we may want to get confirmation\nthat this change helps timing first?\n\nsince this change follows the intel RVP design, maybe there\u0027s\nno need to wait for confirmation?",
+      "revId": "85d99adf174922ea57171878de5bb495d2e47a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4462f7b_010e41e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2023-07-14T18:28:11Z",
+      "side": 1,
+      "message": "Choose GPIO over VW is preferred. Moreover there is t22 timing issue with VW. Though it\u0027s not confirmed if GPIO could fix t22 issue or not. We won\u0027t go back to use VW. I think it\u0027s better to merge this; and people can use CPFE EC image with right config to continue timing measurement or debug. Thanks.",
+      "parentUuid": "60055829_9f2f237b",
       "revId": "85d99adf174922ea57171878de5bb495d2e47a1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
