@@ -704,9 +704,12 @@ static void mux_chipset_reset(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, mux_chipset_reset, HOOK_PRIO_DEFAULT);
 
-static void mux_chipset_suspend(void)
+static void mux_chipset_suspend_deferred(void)
 {
 	int port;
+
+	if (!chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
+		return;
 
 	for (port = 0; port < board_get_usb_pd_port_count(); ++port) {
 		if (flags[port] & USB_MUX_FLAG_IN_LPM)
@@ -716,7 +719,12 @@ static void mux_chipset_suspend(void)
 			      USB_MUX_CHIPSET_IDLE, NULL);
 	}
 }
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, mux_chipset_suspend, HOOK_PRIO_DEFAULT);
+DECLARE_DEFERRED(mux_chipset_suspend_deferred);
+
+static void mux_chipset_suspend(void)
+{
+	hook_call_deferred(&mux_chipset_suspend_deferred_data, 2 * SECOND);
+}
 
 static void mux_chipset_resume(void)
 {
@@ -730,7 +738,15 @@ static void mux_chipset_resume(void)
 			      USB_MUX_CHIPSET_ACTIVE, NULL);
 	}
 }
+
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND_COMPLETE, mux_chipset_suspend,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME_INIT, mux_chipset_resume, HOOK_PRIO_DEFAULT);
+#else
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, mux_chipset_suspend, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, mux_chipset_resume, HOOK_PRIO_DEFAULT);
+#endif
 
 /*
  * For muxes which have powered off in G3, clear any cached INIT and LPM flags
