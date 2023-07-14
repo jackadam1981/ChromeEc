@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e06d784d_aea24945",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-07-14T19:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6102ba9a_68a27032",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 39
+      },
+      "revId": "6734f91032fdf3bd2f6904565c98a3df23074b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0485fc0_4b594155",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b17895c_2348e0b2",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-07-14T19:08:44Z",
+      "side": 1,
+      "message": "I can make it `--outdir` in a followup CL since the Bazel code won\u0027t even let us use `--outdir`. So a follow-up CL would be allowing users to set `--outdir` and for it to actually work. I don\u0027t want to include that in this CL since it starts to become semantically different.",
+      "parentUuid": "b0485fc0_4b594155",
+      "range": {
+        "startLine": 381,
+        "startChar": 20,
+        "endLine": 381,
+        "endChar": 40
+      },
+      "revId": "6734f91032fdf3bd2f6904565c98a3df23074b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63b494d6_3a31f519",
         "filename": "util/twister_launcher.py",
         "patchSetId": 8
@@ -60,6 +108,30 @@
       "writtenOn": "2023-07-13T17:22:26Z",
       "side": 1,
       "message": "You can remove `SafeUnlink`, it\u0027s not necessary.  `SafeSymlink` is designed to handle the case that the link exists.",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 38
+      },
+      "revId": "6734f91032fdf3bd2f6904565c98a3df23074b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee55a71_306b1133",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-07-14T19:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63b494d6_3a31f519",
       "range": {
         "startLine": 386,
         "startChar": 4,
