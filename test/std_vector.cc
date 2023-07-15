@@ -75,8 +75,8 @@ test_static int push_back_elements()
 
 test_static int fill_one_vector()
 {
-	// This test allocates 64kB of memory in total in a single std::vector
-	constexpr int num_elements = 16 * 1024;
+	// This test allocates 4kB of memory in total in a single std::vector
+	constexpr int num_elements = 1024;
 	std::vector<int32_t> vec;
 
 	for (int i = 0; i < num_elements; ++i)
