@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be5128cb_d7f9a2c4",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 286
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-15T03:23:33Z",
+      "side": 1,
+      "message": "Not a blocker:\n\nHow often does this occur? Does this happen upon every auth request or just once before user logs in?\n\nThis function also reinitialize the matcher and sensor control library. When it gets reinitialized, calibration must occur, but the user finger cannot be on the sensor. We want to minimize the number of time we reinitialize the matching library.",
+      "range": {
+        "startLine": 365,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 27
+      },
+      "revId": "1ca1d03730d6ea82c6e920bc58c5ed5cabe8a659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
