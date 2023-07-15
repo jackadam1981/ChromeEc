@@ -68,6 +68,29 @@
       "message": "added testing results",
       "revId": "3548437d9e99637b4d1e5ac38b59d95d57340d9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45db2a5f_4d690f61",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-15T00:36:04Z",
+      "side": 1,
+      "message": "@patryk shall this be outside the if (p-\u003emask) statement?? Then any command (even the one that does not require setting the flags (`ectool --name\u003dcros_fp flashprotect`) will fail to run if there is another command running. In the current status, it can still poll after the first command is done.",
+      "range": {
+        "startLine": 1634,
+        "startChar": 3,
+        "endLine": 1635,
+        "endChar": 14
+      },
+      "revId": "3548437d9e99637b4d1e5ac38b59d95d57340d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
