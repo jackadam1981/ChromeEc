@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ed7261_5a838b9c",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 309
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-15T03:40:49Z",
+      "side": 1,
+      "message": "That work. Thanks for consideration.",
+      "parentUuid": "858d53b9_f781ebbd",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 53
+      },
+      "revId": "4a30579021e6fba6060ba165509a966ef4c73c72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "712e67db_4f391862",
