@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ba6b84_74795fa0",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 298
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-15T03:30:55Z",
+      "side": 1,
+      "message": "Was this supposed to be removed, since it is duplicated in `test_fp_command_nonce_context_limit_twice_2`?",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 41
+      },
+      "revId": "e12037f2cda0d20603a49ebb181761ceb825f4c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
