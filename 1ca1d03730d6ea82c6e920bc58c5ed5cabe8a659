@@ -22,6 +22,30 @@
       },
       "revId": "1ca1d03730d6ea82c6e920bc58c5ed5cabe8a659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bef3fe0_5b0cbd88",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 286
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-07-15T06:37:41Z",
+      "side": 1,
+      "message": "That is required before every auth request.\n\nMaybe we can use a more lightweight version that doesn\u0027t require reinitializing the matching library:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4477231",
+      "parentUuid": "be5128cb_d7f9a2c4",
+      "range": {
+        "startLine": 365,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 27
+      },
+      "revId": "1ca1d03730d6ea82c6e920bc58c5ed5cabe8a659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
