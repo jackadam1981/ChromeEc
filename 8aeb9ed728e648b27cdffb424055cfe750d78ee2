@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f521a101_7c5b5abb",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 283
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-07-15T00:31:38Z",
+      "side": 1,
+      "message": "Yeah this should be EC_RES_INVALID_PARAM.",
+      "parentUuid": "da24cc78_c3ed877a",
+      "range": {
+        "startLine": 189,
+        "startChar": 9,
+        "endLine": 189,
+        "endChar": 27
+      },
+      "revId": "8aeb9ed728e648b27cdffb424055cfe750d78ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ea6eff1_69839813",
@@ -61,6 +85,30 @@
       "writtenOn": "2023-07-14T02:09:00Z",
       "side": 1,
       "message": "What\u0027s the rationale behind this error instead of `EC_RES_ERROR` or something else?",
+      "range": {
+        "startLine": 204,
+        "startChar": 9,
+        "endLine": 204,
+        "endChar": 27
+      },
+      "revId": "8aeb9ed728e648b27cdffb424055cfe750d78ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad725e76_9898c89e",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 283
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-07-15T00:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ea6eff1_69839813",
       "range": {
         "startLine": 204,
         "startChar": 9,
