@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bed04c0_8d2bda86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 298
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-15T03:31:27Z",
+      "side": 1,
+      "message": "LGTM, but that one test might need revision.",
+      "revId": "e12037f2cda0d20603a49ebb181761ceb825f4c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8ba6b84_74795fa0",
         "filename": "test/fpsensor_auth_commands.cc",
         "patchSetId": 298
