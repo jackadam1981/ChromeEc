@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dba68dd_a5372320",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 286
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-07-15T15:24:35Z",
+      "side": 1,
+      "message": "Because there is no good way to trigger this line in the unit test, and it will fail the coverage detection, this print will be removed.\nNote: the only way to trigger fail in generate_gsc_session_key is the buffer length mismatch, but all parameters here is fixed size.",
+      "range": {
+        "startLine": 188,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 63
+      },
+      "revId": "1ca1d03730d6ea82c6e920bc58c5ed5cabe8a659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d830afc_c6d5a437",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 286
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-07-15T15:24:35Z",
+      "side": 1,
+      "message": "Because there is no good way to trigger this line in the unit test, and it will fail the coverage detection, this print will be removed.\nNote: the only way to trigger this is OOM, but there is no safe way to do that in unittest.",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 72
+      },
+      "revId": "1ca1d03730d6ea82c6e920bc58c5ed5cabe8a659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be5128cb_d7f9a2c4",
