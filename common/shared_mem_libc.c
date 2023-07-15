@@ -58,4 +58,5 @@ static int command_shmem(int argc, const char **argv)
 }
 DECLARE_SAFE_CONSOLE_COMMAND(shmem, command_shmem, NULL,
 			     "Print shared memory stats");
+
 #endif /* CONFIG_CMD_SHMEM */
