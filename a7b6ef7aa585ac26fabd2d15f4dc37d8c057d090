@@ -16,6 +16,24 @@
       "message": "This CL works but I wanted to get some feedback on whether we actually want it. Basically this was a response to some tests that include for loops that include calls to `TEST_EQ` (and similar), which presently print out `PASS` on each iteration. This CL will inhibit printing PASS on each iteration but will print on failure. \n\nAn alternative method would be to include a whole new suite of functions like `TEST_EQ_PRINTONFAIL` but I don\u0027t really love that solution.\n\nThoughts?",
       "revId": "a7b6ef7aa585ac26fabd2d15f4dc37d8c057d090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed72316f_64919302",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-17T16:01:50Z",
+      "side": 1,
+      "message": "I think this can potentially solve some problems that we have seen in the algo tests. Can you please share an example of where `TEST_OPERATOR_INHIBIT_PRINT_EVAL` shall be defined? I will give +1 for now to see if others have any feedback on this CL.",
+      "parentUuid": "7bd6f475_a6efac8c",
+      "revId": "a7b6ef7aa585ac26fabd2d15f4dc37d8c057d090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
