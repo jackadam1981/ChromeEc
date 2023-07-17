@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b42e7483_6d387d53",
+        "filename": "zephyr/test/accel_cal/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-17T13:31:48Z",
+      "side": 1,
+      "message": "These are so noisy. Could you update the PLATFORM_EC_CBI option to depend on any of the cbi nodelabels to be enabled so it turns off automatically? We should aim for that rather than adding configs everywhere.",
+      "revId": "f6fe6aa794b54225fa7df1e6b9f98a24a41a151a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fcc1806_b1fa4d05",
+        "filename": "zephyr/test/drivers/cbi_flash/src/cbi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-17T13:31:48Z",
+      "side": 1,
+      "message": "These belong to the first patch I think, no individual patch should break the build.",
+      "revId": "f6fe6aa794b54225fa7df1e6b9f98a24a41a151a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
