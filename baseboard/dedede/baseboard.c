@@ -87,8 +87,13 @@ const int pwrok_signal_deassert_count = ARRAY_SIZE(pwrok_signal_deassert_list);
  * the EC once one of the wake up events occurs.  These events are ACOK, lid
  * open, and a power button press.
  */
-const enum gpio_signal hibernate_wake_pins[] = {};
-const int hibernate_wake_pins_used;
+/* Wake-up pins for hibernate */
+const enum gpio_signal hibernate_wake_pins[] = {
+	GPIO_AC_PRESENT,
+	GPIO_LID_OPEN,
+	GPIO_POWER_BUTTON_L,
+};
+const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 __override void board_after_rsmrst(int rsmrst)
 {
@@ -260,6 +265,9 @@ void board_hibernate_late(void)
 #if CONFIG_USB_PD_PORT_MAX_COUNT > 1
 	gpio_set_flags(GPIO_USB_C1_INT_ODL, GPIO_INPUT);
 #endif
+
+	return;
+
 	/*
 	 * Turn on the Z state.  This will not return as it will cut power to
 	 * the EC.
