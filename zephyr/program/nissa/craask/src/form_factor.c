@@ -35,23 +35,47 @@ LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 #define BASE_GYRO SENSOR_ID(DT_NODELABEL(base_gyro))
 #define ALT_LID_S SENSOR_ID(DT_NODELABEL(alt_lid_accel))
 
-static bool use_alt_sensor;
-static bool use_alt_lid_accel;
+enum motion_base_id {
+	BASE_SENSOR_LSM6DSO = 0,
+	BASE_SENSOR_BMI323 = 1,
+	BASE_SENSOR_BMA422 = 2,
+};
+
+enum motion_lid_id {
+	LID_SENSOR_LIS2DW12 = 0,
+	LID_SENSOR_BMA422 = 1,
+};
+
+static bool base_sensor_id;
+static bool lid_sensor_id;
 
 void motion_interrupt(enum gpio_signal signal)
 {
-	if (use_alt_sensor)
+	switch (base_sensor_id) {
+	case BASE_SENSOR_BMI323:
 		bmi3xx_interrupt(signal);
-	else
+		break;
+	case BASE_SENSOR_BMA422:
+		bma4xx_interrupt(signal);
+		break;
+	case BASE_SENSOR_LSM6DSO:
+	default:
 		lsm6dso_interrupt(signal);
+		break;
+	}
 }
 
 void lid_accel_interrupt(enum gpio_signal signal)
 {
-	if (use_alt_lid_accel)
+	switch (lid_sensor_id) {
+	case LID_SENSOR_BMA422:
 		bma4xx_interrupt(signal);
-	else
+		break;
+	case LID_SENSOR_LIS2DW12:
+	default:
 		lis2dw12_interrupt(signal);
+		break;
+	}
 }
 
 static void form_factor_init(void)
@@ -107,11 +131,22 @@ static void form_factor_init(void)
 		motion_sensors_alt[ALT_LID_S].rot_standard_ref = &BMA_ALT_MAT;
 	}
 
+	/* Set default sensor id */
+	base_sensor_id = BASE_SENSOR_LSM6DSO;
+	lid_sensor_id = LID_SENSOR_LIS2DW12;
+
 	/* check which motion sensors are used */
-	use_alt_sensor = cros_cbi_ssfc_check_match(
-		CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_1)));
-	use_alt_lid_accel = cros_cbi_ssfc_check_match(
-		CBI_SSFC_VALUE_ID(DT_NODELABEL(lid_sensor_1)));
+	if (cros_cbi_ssfc_check_match(
+		    CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_1))))
+		base_sensor_id = BASE_SENSOR_BMI323;
+
+	if (cros_cbi_ssfc_check_match(
+		    CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_2))))
+		base_sensor_id = BASE_SENSOR_BMA422;
+
+	if (cros_cbi_ssfc_check_match(
+		    CBI_SSFC_VALUE_ID(DT_NODELABEL(lid_sensor_1))))
+		lid_sensor_id = LID_SENSOR_BMA422;
 
 	motion_sensors_check_ssfc();
 
@@ -127,7 +162,7 @@ static void form_factor_init(void)
 		gmr_tablet_switch_disable();
 		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_l),
-				      GPIO_DISCONNECTED);
+				      GPIO_INPUT | GPIO_PULL_UP);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, form_factor_init, HOOK_PRIO_POST_I2C);
