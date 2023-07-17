@@ -24,6 +24,12 @@ if("${ARCH}" STREQUAL "arm")
   endif()
 endif()
 
+if(DEFINED CROSS_COMPILE_TARGET)
+  set(CMAKE_C_COMPILER_TARGET   ${CROSS_COMPILE_TARGET})
+  set(CMAKE_ASM_COMPILER_TARGET ${CROSS_COMPILE_TARGET})
+  set(CMAKE_CXX_COMPILER_TARGET ${CROSS_COMPILE_TARGET})
+endif()
+
 set(CC clang)
 
 # TODO(b/286589977): Remove if() when hermetic host toolchain is added to fwsdk.
