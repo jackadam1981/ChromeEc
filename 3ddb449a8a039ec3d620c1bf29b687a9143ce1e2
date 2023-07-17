@@ -16,6 +16,24 @@
       "message": "nit: can we have another test case that represents our intended e2e usage? i.e.,\n1. Preload a finger\n2. Set context\n3. preload/load the preloaded finger using size\u003dCOMMIT\n\nBut given that fp_template command itself seems not tested, maybe this isn\u0027t required.",
       "revId": "3ddb449a8a039ec3d620c1bf29b687a9143ce1e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25401720_cf1b29c1",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-17T05:37:59Z",
+      "side": 1,
+      "message": "Yes, I agree. We need e2e testing on this.\n\nAdded for followup bug b/291499662.",
+      "parentUuid": "fe0edb92_d6701ce6",
+      "revId": "3ddb449a8a039ec3d620c1bf29b687a9143ce1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

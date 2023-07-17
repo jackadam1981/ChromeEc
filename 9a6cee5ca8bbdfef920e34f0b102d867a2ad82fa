@@ -189,6 +189,30 @@
       },
       "revId": "9a6cee5ca8bbdfef920e34f0b102d867a2ad82fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "509f91cf_a8ff325a",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 192
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-17T05:37:59Z",
+      "side": 1,
+      "message": "Added for followup bug b/291499662.",
+      "parentUuid": "30b35ce3_0f75dc72",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 0
+      },
+      "revId": "9a6cee5ca8bbdfef920e34f0b102d867a2ad82fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
