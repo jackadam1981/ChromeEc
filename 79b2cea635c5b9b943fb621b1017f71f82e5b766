@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d19f04e0_8fbb9e59",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5803,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-17T12:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8411ff6_d92e818f",
+      "range": {
+        "startLine": 5803,
+        "startChar": 7,
+        "endLine": 5803,
+        "endChar": 23
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c62a4d6d_cc9e6f73",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-07-10T10:41:53Z",
       "side": 1,
       "message": "Should this have a pair of `depends on !...` so it stays mutually exclusive with the other two?",
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82137c22_69c19f95",
+        "filename": "zephyr/Kconfig.cbi",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-17T12:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c62a4d6d_cc9e6f73",
       "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -78,6 +120,30 @@
       "side": 1,
       "message": "+1. replication is a different concept from what we need here.\n`migration` would be more suitable.",
       "parentUuid": "93305668_cc5238b5",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 70
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55cc73b_0cfb1bed",
+        "filename": "zephyr/Kconfig.cbi",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-17T12:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac87ebb2_357ef387",
       "range": {
         "startLine": 67,
         "startChar": 1,
@@ -148,6 +214,30 @@
       "writtenOn": "2023-07-10T10:41:53Z",
       "side": 1,
       "message": "That\u0027s a bit of a sad way of doing this cause you end up with two copies of the structure. I think a cleaner way would be to convert `cbi_config` to a pointer, and then statically initialize it to point at the right structure.\n\nAlternatively you could have this condition control the name of the struct above and unconditionally use only `cbi_config` in the flash one since that takes precedence.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 6
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "236798cd_e69c0c79",
+        "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-17T12:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a18cb7dc_fbe4ce63",
       "range": {
         "startLine": 82,
         "startChar": 0,
@@ -231,6 +321,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f74c3b34_52d857ac",
+        "filename": "zephyr/shim/src/cbi/cbi_replicate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-17T12:46:44Z",
+      "side": 1,
+      "message": "I updated the name in latest revision, let me know if there are any concerns",
+      "parentUuid": "f4aa63b4_e67cc8bf",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5eb4ae19_47d518a5",
         "filename": "zephyr/shim/src/cbi/cbi_replicate.c",
         "patchSetId": 2
@@ -242,6 +356,30 @@
       "writtenOn": "2023-07-11T21:32:35Z",
       "side": 1,
       "message": "it\u0027ll make more sense to add a method to common/cbi.c\nto check if the CBI struct is valid. do_cbi_read() already\ndoes this so it may be sufficient to try to read a required\nfield like board ID... or check the header magic number, etc.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69fa7c8c_9dac2dfb",
+        "filename": "zephyr/shim/src/cbi/cbi_replicate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-17T12:46:44Z",
+      "side": 1,
+      "message": "The code in cbi.c is dealing with global variables which will be used by EC and others. We also don\u0027t need some part of the method like loading from driver, hence I added a new local method to validate inspired by that one",
+      "parentUuid": "5eb4ae19_47d518a5",
       "range": {
         "startLine": 28,
         "startChar": 5,
