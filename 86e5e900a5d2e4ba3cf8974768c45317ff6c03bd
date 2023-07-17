@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc4a7c07_58f19df0",
+        "filename": "bazel/flash_ec.bzl",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-17T19:45:20Z",
+      "side": 1,
+      "message": "why not just do that now?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "86e5e900a5d2e4ba3cf8974768c45317ff6c03bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c89e93_7b691cf9",
+        "filename": "bazel/twister.bzl",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-17T19:45:20Z",
+      "side": 1,
+      "message": "I\u0027m still confused what\u0027s going on here.  how come we can\u0027t just use the declared file directly?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 99
+      },
+      "revId": "86e5e900a5d2e4ba3cf8974768c45317ff6c03bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ade2fb8f_9819110f",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-17T19:45:20Z",
+      "side": 1,
+      "message": "no need for the manual str conversion.  subprocess.run can take a mix of path/string",
+      "range": {
+        "startLine": 362,
+        "startChar": 42,
+        "endLine": 362,
+        "endChar": 66
+      },
+      "revId": "86e5e900a5d2e4ba3cf8974768c45317ff6c03bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d30b36f4_38be6975",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-17T19:45:20Z",
+      "side": 1,
+      "message": "This seems like we might end up having unindented consequences:\n\n- We\u0027ll run the test twice unless -b?\n- Could end up silencing some important build output\n\nCan we instead just decide to do a build/run based on the presence of -b instead of risking building/running twice?",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 59
+      },
+      "revId": "86e5e900a5d2e4ba3cf8974768c45317ff6c03bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
