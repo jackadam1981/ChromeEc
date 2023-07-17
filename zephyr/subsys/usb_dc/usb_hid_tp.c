@@ -26,9 +26,6 @@
 LOG_MODULE_DECLARE(usb_hid_tp, LOG_LEVEL_INF);
 
 #define REPORT_ID_TOUCHPAD 0x01
-#define REPORT_ID_MOUSE 0x02
-#define REPORT_ID_DEVICE_CAPS 0x0A
-#define REPORT_ID_DEVICE_CERT 0x0B
 
 #define MAX_FINGERS 5
 
@@ -171,24 +168,6 @@ static const uint8_t report_desc[] = {
 	0x95, 0x01, /*   Report Count (1) */
 	0x09, 0x56, /*   Usage (0x56, Relative Scan Time) */
 	0x81, 0x02, /*   Input (Data,Var,Abs) */
-
-	0x85, REPORT_ID_DEVICE_CAPS, /*   Report ID (Device Capabilities) */
-	0x09, 0x55, /*   Usage (Contact Count Maximum) */
-	0x09, 0x59, /*   Usage (Pad Type) */
-	0x25, 0x0F, /*   Logical Maximum (15) */
-	0x75, 0x08, /*   Report Size (8) */
-	0x95, 0x02, /*   Report Count (2) */
-	0xB1, 0x02, /*   Feature (Data,Var,Abs) */
-
-	/* Page 0xFF, usage 0xC5 is device certificate. */
-	0x06, 0x00, 0xFF, /*   Usage Page (Vendor Defined) */
-	0x85, REPORT_ID_DEVICE_CERT, /*   Report ID (Device Certification) */
-	0x09, 0xC5, /*   Usage (Vendor Usage 0xC5) */
-	0x15, 0x00, /*   Logical Minimum (0) */
-	0x26, 0xFF, 0x00, /*   Logical Maximum (255) */
-	0x75, 0x08, /*   Report Size (8) */
-	0x96, 0x00, 0x01, /*   Report Count (256) */
-	0xB1, 0x02, /*   Feature (Data,Var,Abs) */
 
 	0xC0, /* End Collection */
 };
