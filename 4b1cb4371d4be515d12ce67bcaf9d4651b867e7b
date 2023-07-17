@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "397bee1a_7ba23128",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2023-07-17T18:31:43Z",
+      "side": 1,
+      "message": "This is a workaround for the issue with the path to BoringSSL sources. I know that the best option would be to register BoringSSL as a module, but it doesn\u0027t have zephyr module definition files.",
+      "revId": "4b1cb4371d4be515d12ce67bcaf9d4651b867e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
