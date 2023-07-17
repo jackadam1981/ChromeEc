@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c57f04_2b1adaf0",
+        "filename": "zephyr/shim/src/cbi/cros_cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-17T13:27:39Z",
+      "side": 1,
+      "message": "Should there be an #else and #error? Just in case",
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
