@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff98ef6c_a012976d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2023-07-17T03:01:18Z",
+      "side": 1,
+      "message": "Patch3 zmake build craaskov success.",
+      "parentUuid": "ad1e70f5_83c30797",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "5ad62024c565799c3642866e31ce0607738758ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fe26673_7fa42543",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d764075_7be693a2",
+        "filename": "zephyr/program/nissa/craaskov/cbi.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2023-07-17T03:01:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fe26673_7fa42543",
+      "revId": "5ad62024c565799c3642866e31ce0607738758ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1cb8db9_f4ad08a0",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-07-17T01:25:52Z",
       "side": 1,
       "message": "Can you build craaskov success?\nI think you have to create this config in Kconfig and CMakeLists.txt.",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 21
+      },
+      "revId": "5ad62024c565799c3642866e31ce0607738758ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "007e2bfe_309aef50",
+        "filename": "zephyr/program/nissa/craaskov/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2023-07-17T03:01:18Z",
+      "side": 1,
+      "message": "Patch3 zmake build craaskov success.",
+      "parentUuid": "f1cb8db9_f4ad08a0",
       "range": {
         "startLine": 5,
         "startChar": 7,
