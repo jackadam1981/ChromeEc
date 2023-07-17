@@ -14,6 +14,9 @@
 
 #include <sys/utsname.h>
 
+// Represent 10MB, as an unreasonably large file size.
+static const int large_file_size = 10 * 1024 * 1024;
+
 int write_file(const char *filename, const char *buf, int size)
 {
 	FILE *f;
@@ -49,7 +52,7 @@ char *read_file(const char *filename, int *size)
 	fseek(f, 0, SEEK_END);
 	*size = ftell(f);
 	rewind(f);
-	if ((*size > 0x100000) || (*size < 0)) {
+	if ((*size > large_file_size) || (*size < 0)) {
 		if (*size < 0)
 			perror("ftell failed");
 		else
