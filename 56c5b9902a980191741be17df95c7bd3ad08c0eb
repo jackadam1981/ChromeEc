@@ -22,6 +22,30 @@
       },
       "revId": "56c5b9902a980191741be17df95c7bd3ad08c0eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e611c341_17294d65",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-17T19:47:55Z",
+      "side": 1,
+      "message": "I thought about that too, but `report_ap_reset()` doesn\u0027t actually mean \"report to everyone\", just \"report to reset log\". So, it felt like overloading the function with unrelated work:\n\n`include/chipset.h`\n```\n#ifdef CONFIG_CMD_AP_RESET_LOG\n\n/**\n * Report that the AP is being reset to the reset log.\n */\nvoid report_ap_reset(enum chipset_shutdown_reason reason);\n\n#else\n\nstatic inline void report_ap_reset(enum chipset_shutdown_reason reason)\n{\n}\n\n#endif /* !CONFIG_CMD_AP_RESET_LOG */\n```\n\nAlso, since `hook_notify(HOOK_CHIPSET_RESET)` is currently being called manually, we\u0027d need to make sure no one is calling it twice: both explicitly in whatever chipset reset function and implicitly by `report_ap_reset()`. We could check that somewhat with unit testing on zephyr boards, but I\u0027m not sure about the non-Zephyr boards, so that change is a bit more risky.\n\nAll that being said, I agree that this is the type of thing that should  be a lot more automatic for all boards/chipsets. It\u0027s surprising to see that we\u0027ve been missing this notification all along.",
+      "parentUuid": "f1553021_a055cb6e",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "56c5b9902a980191741be17df95c7bd3ad08c0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
