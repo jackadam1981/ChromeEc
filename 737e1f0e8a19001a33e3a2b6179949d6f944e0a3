@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fddda264_00bdb644",
+        "filename": "test/std_vector.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-17T04:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "508df584_f27f9948",
+      "range": {
+        "startLine": 76,
+        "startChar": 16,
+        "endLine": 76,
+        "endChar": 31
+      },
+      "revId": "737e1f0e8a19001a33e3a2b6179949d6f944e0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4dc3f7f_c4587193",
@@ -178,6 +202,30 @@
       "writtenOn": "2023-07-15T05:13:06Z",
       "side": 1,
       "message": "This one passes, since they use a static array of 8, and the inner dynamic vectors only scale up to 8kB. I believe vectors will preallocate extra storage exponentially, which makes other tests fail.\n\nOn bloonchipper, here are the mem stats while this function is still in scope:\n\n```                                                                                                                                                                                                            \nRunning fill_multiple_vectors...                                                                                                                                                                                   \nPass: static_cast\u003cint\u003e(vec.size()) \u003d\u003d num_elements                                                                                                                                                                 \nPass: static_cast\u003cint\u003e(vec.size()) \u003d\u003d num_elements                                                                                                                                                                 \nPass: static_cast\u003cint\u003e(vec.size()) \u003d\u003d num_elements                                                                                                                                                                 \nPass: static_cast\u003cint\u003e(vec.size()) \u003d\u003d num_elements                                                                                                                                                                 \nPass: static_cast\u003cint\u003e(vec.size()) \u003d\u003d num_elements                                                                                                                                                                 \nPass: static_cast\u003cint\u003e(vec.size()) \u003d\u003d num_elements                                                                                                                                                                 \nPass: static_cast\u003cint\u003e(vec.size()) \u003d\u003d num_elements                                                                                                                                                                 \nPass: static_cast\u003cint\u003e(vec.size()) \u003d\u003d num_elements                                                                                                                                                                 \nSystem Total:     151852                                                                                                                                                                                           \nMalloc Reserved:  86368                                                                                                                                                                                            \nMalloc Allocated: 66120                                                                                                                                                                                            \nMalloc Free:      20248\n```",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 37
+      },
+      "revId": "737e1f0e8a19001a33e3a2b6179949d6f944e0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42061539_eb71dda0",
+        "filename": "test/std_vector.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-17T04:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c99abc4f_30bd95c2",
       "range": {
         "startLine": 96,
         "startChar": 16,
