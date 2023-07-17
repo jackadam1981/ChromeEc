@@ -49,4 +49,11 @@ int board_cut_off_battery(void)
 	return sb_write(SB_SHIP_MODE_REG, SB_SHUTDOWN_DATA);
 }
 
-/* TODO(b:66575472): Do we need to define functions like battery_is_present? */
+enum battery_present battery_is_present(void)
+{
+#ifdef CONFIG_BATTERY_PRESENT_GPIO
+	return gpio_get_level(CONFIG_BATTERY_PRESENT_GPIO) ? BP_NO : BP_YES;
+#else
+	return BP_YES;
+#endif
+}
