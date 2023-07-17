@@ -52,6 +52,24 @@
       "parentUuid": "4153b7b8_3d06946d",
       "revId": "e85c4eece526c2152dfaebf84df40188ed130a1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c3a0a61_92e4d1a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-17T13:32:41Z",
+      "side": 1,
+      "message": "Still missing the \"why\". I\u0027d suggest getting in the habit of always adding at least a paragraph here, even on trivial patches.",
+      "parentUuid": "431e1144_e8d0fef9",
+      "revId": "e85c4eece526c2152dfaebf84df40188ed130a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
