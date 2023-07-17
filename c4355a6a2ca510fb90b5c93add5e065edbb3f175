@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faaee9f1_5cc1053c",
+        "filename": "zephyr/program/skyrim/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-07-17T22:55:34Z",
+      "side": 1,
+      "message": "Why not set CONFIG_PLATFORM_EC_USB_CHARGER in the test instead?",
+      "range": {
+        "startLine": 54,
+        "startChar": 44,
+        "endLine": 54,
+        "endChar": 68
+      },
+      "revId": "c4355a6a2ca510fb90b5c93add5e065edbb3f175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
