@@ -26,6 +26,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5335875b_349b3593",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-18T00:40:17Z",
+      "side": 1,
+      "message": "please split the `cbi_config` type change into one patch\nand the introduction of the `transfer` feature into another.",
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b62c8fce_1fed2301",
+        "filename": "zephyr/shim/include/cbi_transfer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-18T00:40:17Z",
+      "side": 1,
+      "message": "does it make sense for this function declaration to be conditional?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 3
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5627c3bd_9ca6a5b4",
         "filename": "zephyr/shim/include/cbi_transfer.h",
         "patchSetId": 3
@@ -72,6 +112,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d0fed1f_127a68e7",
+        "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-18T00:40:17Z",
+      "side": 1,
+      "message": "it\u0027s better to declare this in `cbi_eeprom.h` than in `cbi_transfer.h`.",
+      "range": {
+        "startLine": 77,
+        "startChar": 34,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e406ed60_2e7470f1",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-18T00:40:17Z",
+      "side": 1,
+      "message": "it\u0027s better to declare this in `cbi_flash.h` than in `cbi_transfer.h`.",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3e56462_742ff87f",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-18T00:40:17Z",
+      "side": 1,
+      "message": "this is probably better located under rex because the\ntransition from EEPROM to flash is such a special\ncase.",
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ff6a61b_a70ecf5a",
         "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
         "patchSetId": 3
@@ -88,6 +191,29 @@
         "startChar": 40,
         "endLine": 13,
         "endChar": 43
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb36e00_eb3e815d",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-18T00:40:17Z",
+      "side": 1,
+      "message": "doesn\u0027t is_valid_cbi() handle this case?",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 24
       },
       "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -118,6 +244,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e6dee82_c0a39051",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-18T00:40:17Z",
+      "side": 1,
+      "message": "don\u0027t cast away const.",
+      "range": {
+        "startLine": 25,
+        "startChar": 34,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "412d2687_390d0365",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-18T00:40:17Z",
+      "side": 1,
+      "message": "cbi_magic",
+      "range": {
+        "startLine": 28,
+        "startChar": 43,
+        "endLine": 28,
+        "endChar": 54
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ed9733f_6e9bedb7",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-18T00:40:17Z",
+      "side": 1,
+      "message": "do we care about the version number here?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab9f496_d17ca5bc",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-18T00:40:17Z",
+      "side": 1,
+      "message": "isn\u0027t `head-\u003edata \u003d\u003d cbi + sizeof(*head)`?",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 39
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "163f3d8b_e132533c",
         "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
         "patchSetId": 3
@@ -134,6 +352,29 @@
         "startChar": 1,
         "endLine": 49,
         "endChar": 0
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60add8eb_247490ac",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-18T00:40:17Z",
+      "side": 1,
+      "message": "which parser?",
+      "range": {
+        "startLine": 50,
+        "startChar": 56,
+        "endLine": 50,
+        "endChar": 62
       },
       "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -203,6 +444,29 @@
         "startChar": 33,
         "endLine": 77,
         "endChar": 41
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "700eaa7b_861657dc",
+        "filename": "zephyr/shim/src/cbi/cros_cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-18T00:40:17Z",
+      "side": 1,
+      "message": "use `IS_ENABLED(...)`",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
       },
       "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
