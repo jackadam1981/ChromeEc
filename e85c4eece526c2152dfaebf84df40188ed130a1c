@@ -88,6 +88,24 @@
       "parentUuid": "0c3a0a61_92e4d1a6",
       "revId": "e85c4eece526c2152dfaebf84df40188ed130a1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7665e5e_9e71e4fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-18T14:32:36Z",
+      "side": 1,
+      "message": "Hey, as discussed, I think that the intent was to say that non Zephyr specific code should not depend on Kconfig variables, but in this case since the change is in a `CONFIG_ZEPHYR` block so I think the current version is correct.",
+      "parentUuid": "9e1a1225_744e2669",
+      "revId": "e85c4eece526c2152dfaebf84df40188ed130a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
