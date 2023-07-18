@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b1e81ec_c94527ca",
+        "filename": "zephyr/program/skyrim/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-07-18T17:45:52Z",
+      "side": 1,
+      "message": "Done. For some reason I thought using the config required a lot more plumbing.",
+      "parentUuid": "faaee9f1_5cc1053c",
+      "range": {
+        "startLine": 54,
+        "startChar": 44,
+        "endLine": 54,
+        "endChar": 68
+      },
+      "revId": "c4355a6a2ca510fb90b5c93add5e065edbb3f175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9794ae00_c977935d",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-07-17T23:33:07Z",
       "side": 1,
       "message": "nit: should be tab",
+      "revId": "c4355a6a2ca510fb90b5c93add5e065edbb3f175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a2e0c7_378cfd0e",
+        "filename": "zephyr/test/skyrim/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-07-18T17:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9794ae00_c977935d",
       "revId": "c4355a6a2ca510fb90b5c93add5e065edbb3f175",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
