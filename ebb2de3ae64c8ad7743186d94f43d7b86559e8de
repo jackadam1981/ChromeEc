@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19a89a66_1ba259e9",
+        "filename": "zephyr/program/nissa/craaskov/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2023-07-18T06:34:38Z",
+      "side": 1,
+      "message": "I think because the crasskov subboard type only has HDMI+type A also not applicable to nissa common/sub_board.c\nAnd craaskov has disable CONFIG_NISSA_SUB_BOARD\u003dn.\nWe can add sub_board.c for craaskov and modify hdmi related code.",
+      "parentUuid": "8de3b3cc_eb93879b",
+      "range": {
+        "startLine": 131,
+        "startChar": 23,
+        "endLine": 131,
+        "endChar": 37
+      },
+      "revId": "ebb2de3ae64c8ad7743186d94f43d7b86559e8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eba71f98_46fd7505",
         "filename": "zephyr/program/nissa/craaskov/src/charger.c",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2023-07-18T05:16:29Z",
       "side": 1,
       "message": "What is this supposed to do? The GPIO name seems to suggest it indicates that VBUS sourcing is ready, but this code seems to be indicating whether any PD contract is active on the port (either source or sink) which I don\u0027t think is correct- at the least this wouldn\u0027t account for non-PD chargers.",
+      "revId": "ebb2de3ae64c8ad7743186d94f43d7b86559e8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0173a717_455d4a64",
+        "filename": "zephyr/program/nissa/craaskov/src/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2023-07-18T06:34:38Z",
+      "side": 1,
+      "message": "It follows the behavior of xivu.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/nissa/xivu/src/charger.c;l\u003d36\nDo we need to make any changes?",
+      "parentUuid": "eba71f98_46fd7505",
       "revId": "ebb2de3ae64c8ad7743186d94f43d7b86559e8de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
