@@ -3,3 +3,10 @@ description: USBC PPC
 compatible: "kinetic,ktu1125"
 
 include: ["i2c-device.yaml", "ppc-chip.yaml"]
+
+properties:
+  irq-gpios:
+    type: phandle-array
+    required: false
+    description: |
+      Interrupt from PPC using shim driver

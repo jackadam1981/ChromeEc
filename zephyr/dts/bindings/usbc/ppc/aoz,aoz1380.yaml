@@ -7,3 +7,10 @@ description: AOZ1380 USBC PPC binding
 compatible: "aoz,aoz1380"
 
 include: ppc-chip.yaml
+
+properties:
+  irq-gpios:
+    type: phandle-array
+    required: false
+    description: |
+      Interrupt from PPC using shim driver
