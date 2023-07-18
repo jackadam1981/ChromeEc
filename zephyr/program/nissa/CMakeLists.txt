@@ -140,4 +140,8 @@ if(DEFINED CONFIG_BOARD_CRAASKOV)
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "craaskov/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "craaskov/src/charger.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+	"craaskov/src/keyboard.c"
+	"craaskov/src/keyboard_customization.c"
+	)
 endif()
