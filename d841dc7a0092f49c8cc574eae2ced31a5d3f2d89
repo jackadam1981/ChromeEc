@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e43bf77_c86abbc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-07-18T03:22:56Z",
+      "side": 1,
+      "message": "From the previous CL, the build failed on building hammer variant \"wand\". It is a base with battery, and the compile fail message is saying missing implementation of this function.",
+      "parentUuid": "1348d6fd_78761534",
+      "revId": "d841dc7a0092f49c8cc574eae2ced31a5d3f2d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "720d6c4c_ad45733c",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "battery.c depends on `CONFIG_BATTERY_SMART \u003d\u003d 1`. so we can assume that the battery exists.\n\n(Also I think we can assume that both CONFIG_BATTERY_SMART and CONFIG_BATTERY_PRESENT_GPIO are enabled, no need to support other combinations)",
       "parentUuid": "720d6c4c_ad45733c",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "d841dc7a0092f49c8cc574eae2ced31a5d3f2d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c70ee04b_54d16a63",
+        "filename": "board/hammer/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-07-18T03:22:56Z",
+      "side": 1,
+      "message": "Only the \"wand\" has the battery, and only its config in variant.h specifies the config `CONFIG_BATTERY_SMART`, then \"battery.c\" is included for compiling. As a result, I think if the base is not sensing the battery via `CONFIG_BATTERY_PRESENT_GPIO`, probably we will always assume the battery is present.\n\nJust a heads-up, as using `battery_is_present` for fixing b/290553696 may not be a suitable approach, probably I will abandon these CL in the future.",
+      "parentUuid": "df1cf614_13929885",
       "range": {
         "startLine": 57,
         "startChar": 1,
