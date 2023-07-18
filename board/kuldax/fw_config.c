@@ -43,9 +43,26 @@ static const struct {
 			.voltage = 19000,
 			.current = 3420
 	},
-	[BJ_135W] = { /* 4 - 135W */
+	[BJ_135W] = { /* 3 - 135W */
 			.voltage = 19500,
 			.current = 6920
+	}
+};
+
+/*
+ * Barrel-jack extern power adapter ratings.
+ */
+static const struct {
+	int voltage;
+	int current;
+} bj_power_ext[] = {
+	[BJ_150W] = { /* 0 - 150W (also default)*/
+			.voltage = 20000,
+			.current = 7500
+	},
+	[BJ_90W] = { /* 1 - 90W */
+			.voltage = 19000,
+			.current = 4740
 	}
 };
 
@@ -63,13 +80,24 @@ void board_init_fw_config(void)
 void ec_bj_power(uint32_t *voltage, uint32_t *current)
 {
 	unsigned int bj;
+	unsigned int bj_ext;
 
 	bj = fw_config.bj_power;
+	bj_ext = fw_config.bj_power_ext;
+
 	/* Out of range value defaults to 0 */
-	if (bj >= ARRAY_SIZE(bj_power))
+	if (bj >= ARRAY_SIZE(bj_power) && bj_ext >= ARRAY_SIZE(bj_power_ext)) {
 		bj = 0;
-	*voltage = bj_power[bj].voltage;
-	*current = bj_power[bj].current;
+		bj_ext = 0;
+	}
+
+	if (bj_ext == 0) {
+		*voltage = bj_power[bj].voltage;
+		*current = bj_power[bj].current;
+	} else {
+		*voltage = bj_power_ext[bj_ext].voltage;
+		*current = bj_power_ext[bj_ext].current;
+	}
 }
 
 bool ec_cfg_has_peripheral_charger(void)
