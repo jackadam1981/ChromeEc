@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1348d6fd_78761534",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-18T03:00:19Z",
+      "side": 1,
+      "message": "why?",
+      "revId": "d841dc7a0092f49c8cc574eae2ced31a5d3f2d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "720d6c4c_ad45733c",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-07-17T17:36:50Z",
       "side": 1,
       "message": "Most detachable bases do not have a battery. Therefore, I believe that the default value for BP_NO would be more appropriate.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "d841dc7a0092f49c8cc574eae2ced31a5d3f2d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df1cf614_13929885",
+        "filename": "board/hammer/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-18T03:00:19Z",
+      "side": 1,
+      "message": "battery.c depends on `CONFIG_BATTERY_SMART \u003d\u003d 1`. so we can assume that the battery exists.\n\n(Also I think we can assume that both CONFIG_BATTERY_SMART and CONFIG_BATTERY_PRESENT_GPIO are enabled, no need to support other combinations)",
+      "parentUuid": "720d6c4c_ad45733c",
       "range": {
         "startLine": 57,
         "startChar": 1,
