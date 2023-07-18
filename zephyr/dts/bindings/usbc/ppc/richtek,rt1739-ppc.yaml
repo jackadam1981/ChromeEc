@@ -13,3 +13,8 @@ properties:
     type: phandle
     description: The GPIO that controls FRS enable on this device
     required: false
+  irq-gpios:
+    type: phandle-array
+    required: false
+    description: |
+      Interrupt from PPC using shim driver
