@@ -303,6 +303,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4671ecc8_413d4e34",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1641,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-18T16:27:29Z",
+      "side": 1,
+      "message": "we discussed this in our 1:1. Marking this as resolved.",
+      "parentUuid": "f5e329dc_dbd6ffd1",
+      "range": {
+        "startLine": 1640,
+        "startChar": 0,
+        "endLine": 1641,
+        "endChar": 47
+      },
+      "revId": "9960a627a06c0dba6e9803b61d3751943f2305ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f490a66_5b9b526a",
         "filename": "common/flash.c",
         "patchSetId": 6

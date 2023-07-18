@@ -91,6 +91,30 @@
       },
       "revId": "3548437d9e99637b4d1e5ac38b59d95d57340d9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd3e27f9_abb5a166",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-07-18T16:27:29Z",
+      "side": 1,
+      "message": "we discussed this in our 1:1. Marking this as resolved.",
+      "parentUuid": "45db2a5f_4d690f61",
+      "range": {
+        "startLine": 1634,
+        "startChar": 3,
+        "endLine": 1635,
+        "endChar": 14
+      },
+      "revId": "3548437d9e99637b4d1e5ac38b59d95d57340d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
