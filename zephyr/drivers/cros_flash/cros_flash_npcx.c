@@ -467,6 +467,7 @@ static int cros_flash_npcx_erase(const struct device *dev, int offset, int size)
 {
 	int ret = 0;
 	struct cros_flash_npcx_data *data = DRV_DATA(dev);
+	size_t erase_size = CONFIG_FLASH_ERASE_SIZE;
 
 	/* check protection */
 	if (all_protected)
@@ -482,14 +483,23 @@ static int cros_flash_npcx_erase(const struct device *dev, int offset, int size)
 	}
 
 	/* Erase size must be a non-zero multiple of sectors */
-	if ((size == 0) || (size % CONFIG_FLASH_ERASE_SIZE) != 0) {
+	if (size == 0) {
+		return -EINVAL;
+	}
+
+	if ((size % CONFIG_FLASH_ERASE_SIZE) &&
+	    (size % CONFIG_FLASH_SECONDARY_ERASE_SIZE)) {
 		return -EINVAL;
 	}
 
 	/* Lock physical flash operations */
 	crec_flash_lock_mapped_storage(1);
 
-	for (; size > 0; size -= CONFIG_FLASH_ERASE_SIZE) {
+	if (size < erase_size) {
+		erase_size = CONFIG_FLASH_SECONDARY_ERASE_SIZE;
+	}
+
+	for (; size > 0; size -= erase_size) {
 		/*
 		 * Reload the watchdog timer, so that erasing many flash pages
 		 * doesn't cause a watchdog reset
@@ -498,12 +508,11 @@ static int cros_flash_npcx_erase(const struct device *dev, int offset, int size)
 			watchdog_reload();
 
 		/* Start erase */
-		ret = flash_erase(data->flash_dev, offset,
-				  CONFIG_FLASH_ERASE_SIZE);
+		ret = flash_erase(data->flash_dev, offset, erase_size);
 		if (ret)
 			break;
 
-		offset += CONFIG_FLASH_ERASE_SIZE;
+		offset += erase_size;
 	}
 
 	/* Unlock physical flash operations */

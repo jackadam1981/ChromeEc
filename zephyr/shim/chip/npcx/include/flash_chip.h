@@ -11,6 +11,7 @@
 #define CONFIG_FLASH_WRITE_SIZE 0x1 /* minimum write size */
 #define CONFIG_FLASH_WRITE_IDEAL_SIZE 256 /* one page size for write */
 #define CONFIG_FLASH_ERASE_SIZE 0x10000
+#define CONFIG_FLASH_SECONDARY_ERASE_SIZE 0x1000
 /*
  * The smallest protection bank size is 1/8 of 512 KB or 1/16 of 1M flash,
  * i.e. 64KB.
