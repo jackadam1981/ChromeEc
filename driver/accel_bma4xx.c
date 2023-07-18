@@ -588,11 +588,9 @@ static uint32_t last_irq_timestamp;
 /* Handle IRQ from sensor: schedule read from task context */
 void bma4xx_interrupt(enum gpio_signal signal)
 {
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 1);
 	__atomic_store_n(&last_irq_timestamp, __hw_clock_source_read(),
 			 __ATOMIC_RELAXED);
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCEL_BMA4XX_INT_EVENT);
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 0);
 }
 
 /* Process FIFO data read from accel and push data to host */
@@ -638,10 +636,17 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	bool read_any_data = false;
 	int interrupt_status_reg, fifo_depth;
 
+	if (IT8XXX2_BRAM_DEBUG_0) {
+		ccprintf("?????\n");
+	}
+	IT8XXX2_BRAM_DEBUG_1 = 1;
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 1);
 	/* Read interrupt status, also clears pending IRQs */
 	RETURN_ERROR(bma4_read8(s, BMA4_INT_STATUS_1, &interrupt_status_reg));
 	if ((interrupt_status_reg &
 	     (BMA4_FFULL_INT | BMA4_FWM_INT | BMA4_ACC_DRDY_INT)) == 0) {
+		IT8XXX2_BRAM_DEBUG_1 = 0;
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 0);
 		return EC_ERROR_NOT_HANDLED;
 	}
 
@@ -657,8 +662,11 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 				     BMA4_FIFO_DATA_ADDR, fifo_data, fifo_read);
 		fifo_depth -= fifo_read;
 		mutex_unlock(s->mutex);
-		if (ret)
+		if (ret) {
+			IT8XXX2_BRAM_DEBUG_1 = 0;
+			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 0);
 			return ret;
+		}
 
 		process_fifo_data(s, fifo_data, fifo_read, irq_timestamp);
 		read_any_data = true;
@@ -668,6 +676,8 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 		motion_sense_fifo_commit_data();
 	}
 
+	IT8XXX2_BRAM_DEBUG_1 = 0;
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 0);
 	return EC_SUCCESS;
 }
 #endif /* BMA4XX_USE_INTERRUPTS */

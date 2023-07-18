@@ -107,11 +107,9 @@ static void irq_set_orientation(struct motion_sensor_t *s)
  */
 void bmi3xx_interrupt(enum gpio_signal signal)
 {
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 1);
 	last_interrupt_timestamp = __hw_clock_source_read();
 
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCELGYRO_BMI3XX_INT_EVENT);
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 0);
 }
 
 static int enable_fifo(const struct motion_sensor_t *s, int enable)
@@ -331,9 +329,18 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	uint16_t reg_data[2];
 	struct bmi3_fifo_frame fifo_frame;
 
+	if (IT8XXX2_BRAM_DEBUG_1) {
+		ccprintf("!!!!!\n");
+	}
+	IT8XXX2_BRAM_DEBUG_0 = 1;
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 1);
+
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
-	    (!(*event & CONFIG_ACCELGYRO_BMI3XX_INT_EVENT)))
+	    (!(*event & CONFIG_ACCELGYRO_BMI3XX_INT_EVENT))) {
+		IT8XXX2_BRAM_DEBUG_0 = 0;
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 0);
 		return EC_ERROR_NOT_HANDLED;
+	}
 
 	/* Get the interrupt status */
 	do {
@@ -381,6 +388,8 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO) && has_read_fifo)
 		motion_sense_fifo_commit_data();
 
+	IT8XXX2_BRAM_DEBUG_0 = 0;
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 0);
 	return EC_SUCCESS;
 }
 #endif /* ACCELGYRO_BMI3XX_INT_ENABLE */
