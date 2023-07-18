@@ -481,8 +481,11 @@ static int cros_flash_npcx_erase(const struct device *dev, int offset, int size)
 		return -EINVAL;
 	}
 
-	/* Erase size must be a non-zero multiple of sectors */
-	if ((size == 0) || (size % CONFIG_FLASH_ERASE_SIZE) != 0) {
+	/*
+	 * Erase size must be non-zero, it's alignment check is done in the
+	 * Zephyr flash driver
+	 */
+	if (size == 0) {
 		return -EINVAL;
 	}
 
@@ -499,7 +502,7 @@ static int cros_flash_npcx_erase(const struct device *dev, int offset, int size)
 
 		/* Start erase */
 		ret = flash_erase(data->flash_dev, offset,
-				  CONFIG_FLASH_ERASE_SIZE);
+				  MIN(CONFIG_FLASH_ERASE_SIZE, size));
 		if (ret)
 			break;
 
