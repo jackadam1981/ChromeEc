@@ -328,6 +328,7 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	uint16_t int_status[2];
 	uint16_t reg_data[2];
 	struct bmi3_fifo_frame fifo_frame;
+	int ret;
 
 	if (IT8XXX2_BRAM_DEBUG_1) {
 		ccprintf("!!!!!\n");
@@ -344,8 +345,13 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 
 	/* Get the interrupt status */
 	do {
-		RETURN_ERROR(bmi3_read_n(s, BMI3_REG_INT_STATUS_INT1,
-					 (uint8_t *)int_status, 4));
+		ret = bmi3_read_n(s, BMI3_REG_INT_STATUS_INT1,
+					 (uint8_t *)int_status, 4);
+		if (ret) {
+			IT8XXX2_BRAM_DEBUG_0 = 0;
+			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 0);
+			return ret;
+		}
 
 		if (IS_ENABLED(CONFIG_BMI_ORIENTATION_SENSOR) &&
 		    (BMI3_INT_STATUS_ORIENTATION & int_status[1]))
@@ -356,8 +362,13 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 			break;
 
 		/* Get the FIFO fill level in words */
-		RETURN_ERROR(bmi3_read_n(s, BMI3_REG_FIFO_FILL_LVL,
-					 (uint8_t *)reg_data, 4));
+		ret = bmi3_read_n(s, BMI3_REG_FIFO_FILL_LVL,
+					 (uint8_t *)reg_data, 4);
+		if (ret) {
+			IT8XXX2_BRAM_DEBUG_0 = 0;
+			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 0);
+			return ret;
+		}
 
 		reg_data[1] =
 			BMI3_GET_BIT_POS0(reg_data[1], BMI3_FIFO_FILL_LVL);
@@ -377,9 +388,14 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 			MIN(fifo_frame.available_fifo_len,
 			    ARRAY_SIZE(fifo_frame.data));
 		/* Read FIFO data */
-		RETURN_ERROR(bmi3_read_n(
+		ret = bmi3_read_n(
 			s, BMI3_REG_FIFO_DATA, (uint8_t *)fifo_frame.data,
-			fifo_frame.available_fifo_len * sizeof(uint16_t)));
+			fifo_frame.available_fifo_len * sizeof(uint16_t));
+		if (ret) {
+			IT8XXX2_BRAM_DEBUG_0 = 0;
+			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 0);
+			return ret;
+		}
 
 		bmi3_parse_fifo_data(s, &fifo_frame, last_interrupt_timestamp);
 		has_read_fifo = true;

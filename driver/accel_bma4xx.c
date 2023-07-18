@@ -635,6 +635,7 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 		__atomic_load_n(&last_irq_timestamp, __ATOMIC_RELAXED);
 	bool read_any_data = false;
 	int interrupt_status_reg, fifo_depth;
+	int ret;
 
 	if (IT8XXX2_BRAM_DEBUG_0) {
 		ccprintf("?????\n");
@@ -642,7 +643,13 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	IT8XXX2_BRAM_DEBUG_1 = 1;
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 1);
 	/* Read interrupt status, also clears pending IRQs */
-	RETURN_ERROR(bma4_read8(s, BMA4_INT_STATUS_1, &interrupt_status_reg));
+	ret = bma4_read8(s, BMA4_INT_STATUS_1, &interrupt_status_reg);
+	if (ret) {
+		IT8XXX2_BRAM_DEBUG_1 = 0;
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 0);
+		return ret;
+	}
+
 	if ((interrupt_status_reg &
 	     (BMA4_FFULL_INT | BMA4_FWM_INT | BMA4_ACC_DRDY_INT)) == 0) {
 		IT8XXX2_BRAM_DEBUG_1 = 0;
@@ -650,7 +657,13 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 		return EC_ERROR_NOT_HANDLED;
 	}
 
-	RETURN_ERROR(bma4_read16(s, BMA4_FIFO_LENGTH_0_ADDR, &fifo_depth));
+	ret = bma4_read16(s, BMA4_FIFO_LENGTH_0_ADDR, &fifo_depth);
+	if (ret) {
+		IT8XXX2_BRAM_DEBUG_1 = 0;
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 0);
+		return ret;
+	}
+
 	while (fifo_depth > 0) {
 		/* large enough buffer for 4 samples */
 		uint8_t fifo_data[24];
