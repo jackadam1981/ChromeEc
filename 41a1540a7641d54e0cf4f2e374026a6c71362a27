@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a56ba31_81b31601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-07-18T01:35:04Z",
+      "side": 1,
+      "message": "I meet the error message when upload this CL:\n\n```\n[FAILED] chromiumos/platform/ec: check_zephyr_project_config\n    Hook script \"util/check_zephyr_project_config.py -d ${PRESUBMIT_FILES}\" failed with code 127:\n      /mnt/host/depot_tools/vpython3: line 45: /mnt/host/depot_tools/.cipd_bin/vpython3: No such file or directory\n\n[FAILED] chromiumos/platform/ec: zephyr_check_compliance\n    Hook script \"util/zephyr_check_compliance.py ${PRESUBMIT_COMMIT}\" failed with code 127:\n      /mnt/host/depot_tools/vpython3: line 45: /mnt/host/depot_tools/.cipd_bin/vpython3: No such file or directory\n\n[FAILED] chromiumos/platform/ec: check_cprints\n    Hook script \"util/check_cprints.py --commit ${PRESUBMIT_COMMIT} ${PRESUBMIT_FILES}\" failed with code 127:\n      /mnt/host/depot_tools/vpython3: line 45: /mnt/host/depot_tools/.cipd_bin/vpython3: No such file or directory\n\n[FAILED] chromiumos/platform/ec: check_ztest\n    Hook script \"util/check_ztest.py --commit ${PRESUBMIT_COMMIT} ${PRESUBMIT_FILES}\" failed with code 127:\n      /mnt/host/depot_tools/vpython3: line 45: /mnt/host/depot_tools/.cipd_bin/vpython3: No such file or directory\n\n[FAILED] chromiumos/platform/ec: zephyr_check_testcase_yaml\n    Hook script \"./util/zephyr_check_testcase_yaml.py --commit ${PRESUBMIT_COMMIT} ${PRESUBMIT_FILES}\" failed with code 127:\n      /mnt/host/depot_tools/vpython3: line 45: /mnt/host/depot_tools/.cipd_bin/vpython3: No such file or directory\n\n[FAILED] chromiumos/platform/ec: twister_test_tags\n    Hook script \"util/twister_tags.py --validate-files ${PRESUBMIT_FILES}\" failed with code 127:\n      /mnt/host/depot_tools/vpython3: line 45: /mnt/host/depot_tools/.cipd_bin/vpython3: No such file or directory\n\n[FAILED] chromiumos/platform/ec: _check_clang_format\n    clang-format.py errors/warnings\n    \n    /mnt/host/depot_tools/vpython3: line 45: /mnt/host/depot_tools/.cipd_bin/vpython3: No such file or directory\n    git-clang-format exited 127, but did not report any files that needed reformatted.  Please report this bug to the clang team.\n\n```\n\nI upload that use ***repo upload . --cbr --no-verify***.\n\nHi Google, would you help to check this error message?",
+      "revId": "41a1540a7641d54e0cf4f2e374026a6c71362a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
