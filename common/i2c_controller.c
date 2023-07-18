@@ -796,12 +796,17 @@ int i2c_read_string(const int port, const uint16_t addr_flags, int offset,
 	return rv;
 }
 
+uint16_t bma4xx_addr1;
+uint8_t bma4xx_reg1;
+
 int i2c_read_block(const int port, const uint16_t addr_flags, int offset,
 		   uint8_t *data, int len)
 {
 	int rv;
 	uint8_t reg_address = offset;
 
+	bma4xx_addr1 = addr_flags;
+	bma4xx_reg1 = reg_address;
 	rv = i2c_xfer(port, addr_flags, &reg_address, 1, data, len);
 	return rv;
 }

@@ -41,9 +41,15 @@ void irq_set_orientation(struct motion_sensor_t *s);
 STATIC_IF(ACCELGYRO_BMI3XX_INT_ENABLE)
 volatile uint32_t last_interrupt_timestamp;
 
+uint16_t bmi3xx_addr;
+int bmi3xx_reg;
+
 static inline int bmi3_read_n(const struct motion_sensor_t *s, const int reg,
 			      uint8_t *data_ptr, const int len)
 {
+	bmi3xx_addr = s->i2c_spi_addr_flags;
+	bmi3xx_reg = reg;
+
 	return bmi_read_n(s->port, s->i2c_spi_addr_flags, reg, data_ptr, len);
 }
 
@@ -328,15 +334,26 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	uint16_t int_status[2];
 	uint16_t reg_data[2];
 	struct bmi3_fifo_frame fifo_frame;
+	int ret;
 
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 1);
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
-	    (!(*event & CONFIG_ACCELGYRO_BMI3XX_INT_EVENT)))
+	    (!(*event & CONFIG_ACCELGYRO_BMI3XX_INT_EVENT))) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 0);
 		return EC_ERROR_NOT_HANDLED;
+	}
 
 	/* Get the interrupt status */
 	do {
-		RETURN_ERROR(bmi3_read_n(s, BMI3_REG_INT_STATUS_INT1,
-					 (uint8_t *)int_status, 4));
+		ret = bmi3_read_n(s, BMI3_REG_INT_STATUS_INT1,
+					 (uint8_t *)int_status, 4);
+		if (ret) {
+			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 0);
+			ECREG(EC_REG_BASE_ADDR + 0x2220) = bmi3xx_addr;
+			ECREG(EC_REG_BASE_ADDR + 0x2221) = bmi3xx_reg;
+
+			return ret;
+		}
 
 		if (IS_ENABLED(CONFIG_BMI_ORIENTATION_SENSOR) &&
 		    (BMI3_INT_STATUS_ORIENTATION & int_status[1]))
@@ -347,8 +364,15 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 			break;
 
 		/* Get the FIFO fill level in words */
-		RETURN_ERROR(bmi3_read_n(s, BMI3_REG_FIFO_FILL_LVL,
-					 (uint8_t *)reg_data, 4));
+		ret = bmi3_read_n(s, BMI3_REG_FIFO_FILL_LVL,
+					 (uint8_t *)reg_data, 4);
+		if (ret) {
+			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 0);
+			ECREG(EC_REG_BASE_ADDR + 0x2220) = bmi3xx_addr;
+			ECREG(EC_REG_BASE_ADDR + 0x2221) = bmi3xx_reg;
+
+			return ret;
+		}
 
 		reg_data[1] =
 			BMI3_GET_BIT_POS0(reg_data[1], BMI3_FIFO_FILL_LVL);
@@ -368,9 +392,16 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 			MIN(fifo_frame.available_fifo_len,
 			    ARRAY_SIZE(fifo_frame.data));
 		/* Read FIFO data */
-		RETURN_ERROR(bmi3_read_n(
+		ret = bmi3_read_n(
 			s, BMI3_REG_FIFO_DATA, (uint8_t *)fifo_frame.data,
-			fifo_frame.available_fifo_len * sizeof(uint16_t)));
+			fifo_frame.available_fifo_len * sizeof(uint16_t));
+		if (ret) {
+			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 0);
+			ECREG(EC_REG_BASE_ADDR + 0x2220) = bmi3xx_addr;
+			ECREG(EC_REG_BASE_ADDR + 0x2221) = bmi3xx_reg;
+
+			return ret;
+		}
 
 		bmi3_parse_fifo_data(s, &fifo_frame, last_interrupt_timestamp);
 		has_read_fifo = true;
@@ -379,6 +410,7 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO) && has_read_fifo)
 		motion_sense_fifo_commit_data();
 
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_debug), 0);
 	return EC_SUCCESS;
 }
 #endif /* ACCELGYRO_BMI3XX_INT_ENABLE */

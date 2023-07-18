@@ -103,9 +103,7 @@
 
 	unused-pins {
 		compatible = "unused-gpios";
-		unused-gpios = <&gpioc 6 0>,
-			       <&gpiod 7 0>,
-			       <&gpioh 2 0>,
+		unused-gpios = <&gpioh 2 0>,
 			       <&gpioj 3 0>,
 			       <&gpiok 7 GPIO_OUTPUT>;
 	};

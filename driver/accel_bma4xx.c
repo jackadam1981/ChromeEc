@@ -39,15 +39,24 @@
 /**
  * Read 8bit register from accelerometer.
  */
+uint16_t bma4xx_addr;
+int bma4xx_reg;
+
 static inline int bma4_read8(const struct motion_sensor_t *s, const int reg,
 			     int *data_ptr)
 {
+	bma4xx_addr = s->i2c_spi_addr_flags;
+	bma4xx_reg = reg;
+
 	return i2c_read8(s->port, s->i2c_spi_addr_flags, reg, data_ptr);
 }
 
 __maybe_unused static inline int bma4_read16(const struct motion_sensor_t *s,
 					     const int reg, int *data_ptr)
 {
+	bma4xx_addr = s->i2c_spi_addr_flags;
+	bma4xx_reg = reg;
+
 	return i2c_read16(s->port, s->i2c_spi_addr_flags, reg, data_ptr);
 }
 
@@ -627,6 +636,9 @@ static void process_fifo_data(struct motion_sensor_t *s, uint8_t *data,
 	}
 }
 
+extern uint16_t bma4xx_addr1;
+extern uint8_t bma4xx_reg1;
+
 /* Handle interrupt in task context */
 static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 {
@@ -634,15 +646,33 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 		__atomic_load_n(&last_irq_timestamp, __ATOMIC_RELAXED);
 	bool read_any_data = false;
 	int interrupt_status_reg, fifo_depth;
+	int ret;
 
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 1);
 	/* Read interrupt status, also clears pending IRQs */
-	RETURN_ERROR(bma4_read8(s, BMA4_INT_STATUS_1, &interrupt_status_reg));
+	ret = bma4_read8(s, BMA4_INT_STATUS_1, &interrupt_status_reg);
+	if (ret) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 0);
+		ECREG(EC_REG_BASE_ADDR + 0x2200) = bma4xx_addr;
+		ECREG(EC_REG_BASE_ADDR + 0x2201) = bma4xx_reg;
+
+		return ret;
+	}
+
 	if ((interrupt_status_reg &
 	     (BMA4_FFULL_INT | BMA4_FWM_INT | BMA4_ACC_DRDY_INT)) == 0) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 0);
 		return EC_ERROR_NOT_HANDLED;
 	}
 
-	RETURN_ERROR(bma4_read16(s, BMA4_FIFO_LENGTH_0_ADDR, &fifo_depth));
+	ret = bma4_read16(s, BMA4_FIFO_LENGTH_0_ADDR, &fifo_depth);
+	if (ret) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 0);
+		ECREG(EC_REG_BASE_ADDR + 0x2200) = bma4xx_addr;
+		ECREG(EC_REG_BASE_ADDR + 0x2201) = bma4xx_reg;
+
+		return ret;
+	}
 	while (fifo_depth > 0) {
 		/* large enough buffer for 4 samples */
 		uint8_t fifo_data[24];
@@ -654,8 +684,13 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 				     BMA4_FIFO_DATA_ADDR, fifo_data, fifo_read);
 		fifo_depth -= fifo_read;
 		mutex_unlock(s->mutex);
-		if (ret)
+		if (ret) {
+			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 0);
+			ECREG(EC_REG_BASE_ADDR + 0x2200) = bma4xx_addr1;
+			ECREG(EC_REG_BASE_ADDR + 0x2201) = bma4xx_reg1;
+
 			return ret;
+		}
 
 		process_fifo_data(s, fifo_data, fifo_read, irq_timestamp);
 		read_any_data = true;
@@ -665,6 +700,7 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 		motion_sense_fifo_commit_data();
 	}
 
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_debug), 0);
 	return EC_SUCCESS;
 }
 #endif /* BMA4XX_USE_INTERRUPTS */
