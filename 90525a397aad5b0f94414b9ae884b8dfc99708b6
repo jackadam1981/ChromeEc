@@ -3,6 +3,213 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c32170f_88dd7286",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-18T00:40:10Z",
+      "side": 1,
+      "message": "suggestion:\ncbi: add capability to transfer CBI from EEPROM to EC flash",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 69
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5627c3bd_9ca6a5b4",
+        "filename": "zephyr/shim/include/cbi_transfer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-18T00:40:10Z",
+      "side": 1,
+      "message": "EC flash",
+      "range": {
+        "startLine": 21,
+        "startChar": 51,
+        "endLine": 21,
+        "endChar": 56
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e725e9e0_245cf353",
+        "filename": "zephyr/shim/include/cbi_transfer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-18T00:40:10Z",
+      "side": 1,
+      "message": "from",
+      "range": {
+        "startLine": 21,
+        "startChar": 23,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff6a61b_a70ecf5a",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-18T00:40:10Z",
+      "side": 1,
+      "message": "length should be always positive type, please use `size_t` or at least `unsigned int`",
+      "range": {
+        "startLine": 13,
+        "startChar": 40,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e3a0505_2e45e9f3",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-18T00:40:10Z",
+      "side": 1,
+      "message": "please #define this",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "163f3d8b_e132533c",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-18T00:40:10Z",
+      "side": 1,
+      "message": "why there is mem COPY in a function that checks if CBI is valid?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e50cd955_8c49b986",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-18T00:40:10Z",
+      "side": 1,
+      "message": "`rv`. How did that compile?...",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b6d537c_2124cf7d",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-18T00:40:10Z",
+      "side": 1,
+      "message": "Why is this check needed at all? i.e. empty CBI is a sub-case of CBI isn\u0027t valid",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8bbabc6_bd89dcee",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-18T00:40:10Z",
+      "side": 1,
+      "message": "to EC Flash",
+      "range": {
+        "startLine": 77,
+        "startChar": 33,
+        "endLine": 77,
+        "endChar": 41
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03c57f04_2b1adaf0",
         "filename": "zephyr/shim/src/cbi/cros_cbi.c",
         "patchSetId": 3
