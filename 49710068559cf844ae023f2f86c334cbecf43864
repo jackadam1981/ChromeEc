@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c71aa55_ac30a8d0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4048,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-07-18T15:38:21Z",
+      "side": 1,
+      "message": "Check the version to make sure it\u0027s supported.",
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3410ebf1_3c8c1e88",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-07-18T15:38:21Z",
+      "side": 1,
+      "message": "Do we need a chip_type bit to tell the difference between cr50 and ti50? We\u0027re probably going to add cr50_stats support.",
+      "range": {
+        "startLine": 354,
+        "startChar": 10,
+        "endLine": 354,
+        "endChar": 17
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
