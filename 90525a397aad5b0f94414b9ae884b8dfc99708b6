@@ -173,6 +173,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d136e0_29a402af",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-18T00:49:15Z",
+      "side": 1,
+      "message": "This is relevant for myst too, let\u0027s keep in common",
+      "parentUuid": "c3e56462_742ff87f",
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ff6a61b_a70ecf5a",
