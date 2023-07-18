@@ -20,3 +20,13 @@
 #include "i2c.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
+
+#include <cros/cbi_flash.dtsi>
+
+&cbi_flash {
+	/*
+	 * CBI size is 0x1000 bytes
+	 */
+	offset = < 0x50000 >;
+	size = < 0x1000 >;
+};
