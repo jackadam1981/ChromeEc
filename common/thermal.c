@@ -18,6 +18,7 @@
 #include "throttle_ap.h"
 #include "timer.h"
 #include "util.h"
+#include <zephyr/drivers/sensor.h>
 
 #ifdef CONFIG_ZEPHYR
 #include "temp_sensor/temp_sensor.h"
@@ -240,6 +241,47 @@ DECLARE_HOOK(HOOK_SECOND, thermal_control, HOOK_PRIO_TEMP_SENSOR_DONE);
 
 /*****************************************************************************/
 /* Console commands */
+
+static void display_sensor(const struct device *dev, const char *name)
+{
+	struct sensor_value val;
+	int res;
+
+	ccprintf("%s:\n", name);
+	if (!dev) {
+		ccprintf("dev not found\n");
+		return;
+	}
+	if (!device_is_ready(dev)) {
+		ccprintf("dev not ready\n");
+		return;
+	}
+	res = sensor_sample_fetch(dev);
+	if (res) {
+		ccprintf("sample_fetch: ret = %d\n", res);
+		return;
+	}
+	res = sensor_channel_get(dev, SENSOR_CHAN_AMBIENT_TEMP, &val);
+	if (res) {
+		ccprintf("channel_get: ret = %d\n", res);
+		return;
+	}
+	ccprintf("val1 = %d\n", val.val1);
+	ccprintf("val2 = %d\n", val.val2);
+}
+
+static int command_thermistor(int argc, const char **argv)
+{
+	const struct device *dev;
+
+	dev = DEVICE_DT_GET(DT_NODELABEL(new_charger_thermistor));
+	display_sensor(dev, "new-charger-thermistor");
+	dev = DEVICE_DT_GET(DT_NODELABEL(new_memory_thermistor));
+	display_sensor(dev, "new-memory-thermistor");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(thermistor, command_thermistor, NULL, "Thermistor debug");
 
 static int command_thermalget(int argc, const char **argv)
 {
