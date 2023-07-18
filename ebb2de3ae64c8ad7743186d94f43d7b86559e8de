@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8de3b3cc_eb93879b",
+        "filename": "zephyr/program/nissa/craaskov/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2023-07-18T06:00:39Z",
+      "side": 1,
+      "message": "As discussed in b/289962132.\nIIUC, Craaskov will have 1 HDMI port. \nhttps://drive.google.com/file/d/1b3BppD44qalh8PMhHSjQyHaD9TVM_S2p/view\n\nSo I think we still need gpio_hdmi_sel configs.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/nissa/src/sub_board.c;l\u003d117\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/nissa/include/nissa_hdmi.h;l\u003d14?q\u003dNISSA_BOARD_HAS_HDMI_SUPPORT\"",
+      "range": {
+        "startLine": 131,
+        "startChar": 23,
+        "endLine": 131,
+        "endChar": 37
+      },
+      "revId": "ebb2de3ae64c8ad7743186d94f43d7b86559e8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eba71f98_46fd7505",
         "filename": "zephyr/program/nissa/craaskov/src/charger.c",
         "patchSetId": 1
