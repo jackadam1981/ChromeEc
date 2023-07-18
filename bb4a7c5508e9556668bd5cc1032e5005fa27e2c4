@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b7e6d1d_c289a541",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2023-07-18T15:45:36Z",
+      "side": 1,
+      "message": "Please verify that the sensor is enumerated correctly with this change applied.\nYou can do that by running \"temps\" command from EC shell and checking that for \"cpu@4c\" entry, like:\n`cpu@4c                311 K (\u003d 38 C)            0% (341 K and 351 K)`\n\nOnce you do that update the \"TEST\u003d\" tag.",
+      "revId": "bb4a7c5508e9556668bd5cc1032e5005fa27e2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
