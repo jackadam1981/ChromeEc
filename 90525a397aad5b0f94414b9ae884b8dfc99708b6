@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d397e53_1010f1f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c32170f_88dd7286",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 69
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5335875b_349b3593",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f69cd926_0c1b20b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5335875b_349b3593",
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b62c8fce_1fed2301",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-07-18T00:40:17Z",
       "side": 1,
       "message": "does it make sense for this function declaration to be conditional?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 3
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "536c7d71_7ad571a2",
+        "filename": "zephyr/shim/include/cbi_transfer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b62c8fce_1fed2301",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -110,6 +176,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ca5b5c_e689288b",
+        "filename": "zephyr/shim/include/cbi_transfer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e725e9e0_245cf353",
+      "range": {
+        "startLine": 21,
+        "startChar": 23,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "012442da_8608d891",
+        "filename": "zephyr/shim/include/cbi_transfer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5627c3bd_9ca6a5b4",
+      "range": {
+        "startLine": 21,
+        "startChar": 51,
+        "endLine": 21,
+        "endChar": 56
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d0fed1f_127a68e7",
@@ -135,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0750f26_c0ba3168",
+        "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Importing cbi_flash.h in cros_cbi.c causing conflict with cros_cbi.h, as both of them has DT_DRV_COMPAT defined. Hence kept those variables in cbi_transfer.h",
+      "parentUuid": "7d0fed1f_127a68e7",
+      "range": {
+        "startLine": 77,
+        "startChar": 34,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e406ed60_2e7470f1",
         "filename": "zephyr/shim/src/cbi/cbi_flash.c",
         "patchSetId": 3
@@ -146,6 +284,30 @@
       "writtenOn": "2023-07-18T00:40:17Z",
       "side": 1,
       "message": "it\u0027s better to declare this in `cbi_flash.h` than in `cbi_transfer.h`.",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e265d9_76eed303",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Importing cbi_flash.h in cros_cbi.c causing conflict with cros_cbi.h, as both of them has DT_DRV_COMPAT defined. Hence kept those variables in cbi_transfer.h",
+      "parentUuid": "e406ed60_2e7470f1",
       "range": {
         "startLine": 73,
         "startChar": 34,
@@ -237,6 +399,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f6fd02_1f4e1c8a",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff6a61b_a70ecf5a",
+      "range": {
+        "startLine": 13,
+        "startChar": 40,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c5c0a2_f7c17096",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb36e00_eb3e815d",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e3a0505_2e45e9f3",
@@ -250,6 +460,30 @@
       "writtenOn": "2023-07-18T00:40:10Z",
       "side": 1,
       "message": "please #define this",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ef0e88_1db9ef1b",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e3a0505_2e45e9f3",
       "range": {
         "startLine": 16,
         "startChar": 17,
@@ -285,6 +519,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7eb98c31_54debf52",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "why is it not preferred to type cast a constant",
+      "parentUuid": "6e6dee82_c0a39051",
+      "range": {
+        "startLine": 25,
+        "startChar": 34,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "412d2687_390d0365",
         "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
         "patchSetId": 3
@@ -296,6 +554,30 @@
       "writtenOn": "2023-07-18T00:40:17Z",
       "side": 1,
       "message": "cbi_magic",
+      "range": {
+        "startLine": 28,
+        "startChar": 43,
+        "endLine": 28,
+        "endChar": 54
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "121aba8d_7240df47",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "It\u0027s defined in CBI header file",
+      "parentUuid": "412d2687_390d0365",
       "range": {
         "startLine": 28,
         "startChar": 43,
@@ -331,6 +613,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08e02cd3_d67baf64",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "It\u0027s one of the checks to validate CBI in CBI driver, hence added it here",
+      "parentUuid": "1ed9733f_6e9bedb7",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bab9f496_d17ca5bc",
         "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
         "patchSetId": 3
@@ -342,6 +648,30 @@
       "writtenOn": "2023-07-18T00:40:17Z",
       "side": 1,
       "message": "isn\u0027t `head-\u003edata \u003d\u003d cbi + sizeof(*head)`?",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 39
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f44884f_2326f5f5",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "yes, array head-\u003edata is not assigned with a length in struct definition",
+      "parentUuid": "bab9f496_d17ca5bc",
       "range": {
         "startLine": 47,
         "startChar": 8,
@@ -377,6 +707,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5c4e9c4_bf921b96",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "head-\u003edata length is undefined in struct, with memcpy we are properly defining the array",
+      "parentUuid": "163f3d8b_e132533c",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60add8eb_247490ac",
         "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
         "patchSetId": 3
@@ -388,6 +742,30 @@
       "writtenOn": "2023-07-18T00:40:17Z",
       "side": 1,
       "message": "which parser?",
+      "range": {
+        "startLine": 50,
+        "startChar": 56,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43811eec_170339e2",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60add8eb_247490ac",
       "range": {
         "startLine": 50,
         "startChar": 56,
@@ -421,6 +799,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "071e2ae1_7a22472d",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Oh so I added rv variable in the end, earlier load and store operations were in the if condition directly. Sorry for the typo, I generally build and flash things before uploading CL not sure how I missed it",
+      "parentUuid": "e50cd955_8c49b986",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b6d537c_2124cf7d",
@@ -434,6 +836,30 @@
       "writtenOn": "2023-07-18T00:40:10Z",
       "side": 1,
       "message": "Why is this check needed at all? i.e. empty CBI is a sub-case of CBI isn\u0027t valid",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c20070_e6ffb278",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "I thought of validating only non empty CBI image, but removed it in new revision, CRC will detect if the CBI is empty",
+      "parentUuid": "5b6d537c_2124cf7d",
       "range": {
         "startLine": 68,
         "startChar": 5,
@@ -467,6 +893,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80c32c57_2c49afb3",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8bbabc6_bd89dcee",
+      "range": {
+        "startLine": 77,
+        "startChar": 33,
+        "endLine": 77,
+        "endChar": 41
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "700eaa7b_861657dc",
@@ -490,6 +940,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02dc4984_85f488fe",
+        "filename": "zephyr/shim/src/cbi/cros_cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "700eaa7b_861657dc",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03c57f04_2b1adaf0",
@@ -503,6 +977,24 @@
       "writtenOn": "2023-07-17T13:27:39Z",
       "side": 1,
       "message": "Should there be an #else and #error? Just in case",
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0400a655_028f1d99",
+        "filename": "zephyr/shim/src/cbi/cros_cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "The build fails actually, because the pointer is left unassigned but being reffered in cbi.c",
+      "parentUuid": "03c57f04_2b1adaf0",
       "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

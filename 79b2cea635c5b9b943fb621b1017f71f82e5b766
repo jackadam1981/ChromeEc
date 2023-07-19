@@ -201,6 +201,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60cca080_84d3d16c",
+        "filename": "zephyr/shim/src/cbi/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cb96d9f_aebfcc7c",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 91
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a18cb7dc_fbe4ce63",
@@ -333,6 +357,30 @@
       "side": 1,
       "message": "I updated the name in latest revision, let me know if there are any concerns",
       "parentUuid": "f4aa63b4_e67cc8bf",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "79b2cea635c5b9b943fb621b1017f71f82e5b766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d16b55f9_ee8c3c79",
+        "filename": "zephyr/shim/src/cbi/cbi_replicate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f74c3b34_52d857ac",
       "range": {
         "startLine": 11,
         "startChar": 0,
