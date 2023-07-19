@@ -552,6 +552,9 @@ commit_data_end:
 		/* Get the sensor number and point to the timestamp entry. */
 		sensor_num = data->sensor_num;
 		data = peek_fifo_staged(i - 1);
+		if (!data) {
+			continue;
+		}
 
 		/* Verify we're pointing at a timestamp. */
 		if (!is_timestamp(data)) {
