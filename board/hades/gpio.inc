@@ -8,13 +8,13 @@
 #define MODULE_KB		MODULE_KEYBOARD_SCAN
 
 /* INTERRUPT GPIOs: */
+GPIO_INT(SEQ_EC_DSW_PWROK,               PIN(C, 7), GPIO_INT_BOTH, intel_x86_pwrok_signal_interrupt)
 GPIO_INT(ACOK_OD,                        PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH, extpower_interrupt)
 GPIO_INT(EC_PROCHOT_IN_L,                PIN(A, 0), GPIO_INT_BOTH, throttle_ap_prochot_input_interrupt)
 GPIO_INT(EC_WP_ODL,                      PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)
 GPIO_INT(GSC_EC_PWR_BTN_ODL,             PIN(0, 1), GPIO_INT_BOTH | GPIO_HIB_WAKE_LOW, power_button_interrupt)
 GPIO_INT(LID_OPEN,                       PIN(D, 2), GPIO_INT_BOTH | GPIO_PULL_UP | GPIO_HIB_WAKE_HIGH, lid_interrupt)
 GPIO_INT(SEQ_EC_ALL_SYS_PG,              PIN(F, 4), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(SEQ_EC_DSW_PWROK,               PIN(C, 7), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(SEQ_EC_RSMRST_ODL,              PIN(E, 2), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(SLP_S3_L,                       PIN(A, 5), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(SLP_SUS_L,                      PIN(F, 1), GPIO_INT_BOTH, power_signal_interrupt)
@@ -33,7 +33,7 @@ GPIO(CCD_MODE_ODL,                   PIN(E, 5), GPIO_INPUT)
 GPIO(CPU_C10_GATE_L,                 PIN(6, 7), GPIO_INPUT)
 GPIO(EC_BATT_PRES_ODL,               PIN(A, 3), GPIO_INPUT)
 GPIO(EC_ENTERING_RW,                 PIN(0, 3), GPIO_OUT_LOW)
-GPIO(EC_EN_EDP_BL,                   PIN(D, 3), GPIO_OUT_HIGH)
+GPIO(EC_EN_EDP_BL,                   PIN(D, 3), GPIO_ODR_HIGH)
 GPIO(EC_GSC_PACKET_MODE,             PIN(7, 5), GPIO_OUT_LOW)
 GPIO(EC_I2C_BAT_SCL,                 PIN(3, 3), GPIO_INPUT)
 GPIO(EC_I2C_BAT_SDA,                 PIN(3, 6), GPIO_INPUT)

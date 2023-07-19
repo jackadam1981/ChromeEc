@@ -355,15 +355,6 @@
 #undef CONFIG_ALS_TCS3400
 
 /*
- * Define to use atime tables in anti-saturation algos in the tcs3400 driver.
- * Defining this for a board makes the anti-saturation algorithm much more
- * efficient, but requires the board to have it's lens cover scale and k_channel
- * scales to be determined.  Define this for a board once it's added its
- * cover_scale and k_channel scale factors.
- */
-#undef CONFIG_TCS_USE_LUX_TABLE
-
-/*
  * Define the event to raise when a sensor interrupt triggers.
  * Must be within TASK_EVENT_MOTION_INTERRUPT_MASK.
  */
@@ -478,6 +469,11 @@
  * have or support a battery.
  */
 #undef CONFIG_BATTERY
+
+/**
+ * Enable Battery-config-in-CBI. It makes a board read battery info from CBI.
+ */
+#undef CONFIG_BATTERY_CONFIG_IN_CBI
 
 /*
  * Config to indicate the battery type that cannot be auto detected.
@@ -631,12 +627,6 @@
 #define CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT (30 * 60 * SECOND)
 
 /*
- * Specify the battery percentage at which the host is told it is full.
- * If this value is not specified the default is 97% set in battery.h.
- */
-#undef CONFIG_BATTERY_LEVEL_NEAR_FULL
-
-/*
  * Use memory mapped region to store battery information. It supports only
  * single battery systems. V2 should be used unless there is a reason not to.
  */
@@ -669,6 +659,12 @@
  * is in S5/G3. This should be defined to integer value in mV.
  */
 #undef CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV
+
+/*
+ * Check the specific battery status to judge whether the battery is
+ * initialized and stable when the battery wakes up from ship mode.
+ */
+#undef CONFIG_BATTERY_STBL_STAT
 
 /*
  * Some batteries don't update full capacity timely or don't update it at all.
@@ -886,6 +882,10 @@
 /*****************************************************************************/
 /* Support CEC */
 #undef CONFIG_CEC
+#undef CONFIG_CEC_DEBUG
+
+/* CEC drivers */
+#undef CONFIG_CEC_BITBANG
 
 /*****************************************************************************/
 
@@ -1620,6 +1620,7 @@
 #undef CONFIG_CMD_BATDEBUG
 #define CONFIG_CMD_BATTFAKE
 #undef CONFIG_CMD_BATT_MFG_ACCESS
+#undef CONFIG_CMD_BATTERY_CONFIG
 #undef CONFIG_CMD_BUTTON
 #define CONFIG_CMD_CBI
 #undef CONFIG_CMD_PD_SRCCAPS_REDUCED_SIZE
@@ -1716,7 +1717,6 @@
 #undef CONFIG_CMD_SPI_FLASH
 #undef CONFIG_CMD_SPI_NOR
 #undef CONFIG_CMD_SPI_XFER
-#undef CONFIG_CMD_STACKOVERFLOW
 #define CONFIG_CMD_SYSINFO
 #define CONFIG_CMD_SYSJUMP
 #define CONFIG_CMD_SYSLOCK
@@ -1807,6 +1807,9 @@
  * Add flag GPIO_POWER_DOWN and additional API's.
  */
 #undef CONFIG_GPIO_POWER_DOWN
+
+/* Allow unaligned access */
+#undef CONFIG_ALLOW_UNALIGNED_ACCESS
 
 /*
  * Provide common runtime layer code (tasks, hooks ...)
@@ -3204,6 +3207,10 @@
 #define CONFIG_LED_PWM_SOC_SUSPEND_COLOR EC_LED_COLOR_GREEN
 #define CONFIG_LED_PWM_LOW_BATT_COLOR EC_LED_COLOR_AMBER
 
+/* By default, 500 ms period, 50% duty cycle. */
+#define LED_CHARGER_ERROR_ON_TIME 1
+#define LED_CHARGER_ERROR_PERIOD 2
+
 /*
  * By default the PWM LED behaviour is reflected on both LEDs and includes the
  * chipset state, battery state, as well as the charging state.  Enable
@@ -3528,6 +3535,9 @@
 
 /* MKBP events are sent by using GPIO */
 #undef CONFIG_MKBP_USE_GPIO
+
+/* MKBP events GPIO is active high */
+#undef CONFIG_MKBP_USE_GPIO_ACTIVE_HIGH
 
 /*
  * MKBP events are notified by using both a GPIO and a host event.
@@ -3947,9 +3957,11 @@
  * override those defaults with these.
  */
 #undef CONFIG_RO_PUBKEY_ADDR
+#undef CONFIG_RO_PUBKEY_READ_ADDR
 #undef CONFIG_RO_PUBKEY_SIZE
 #undef CONFIG_RW_SIG_ADDR
 #undef CONFIG_RW_SIG_SIZE
+#undef CONFIG_RWSIG_READ_ADDR
 
 /* Size of the serial number if needed */
 #undef CONFIG_SERIALNO_LEN
@@ -4460,11 +4472,10 @@
 #undef CONFIG_UART_PAD_SWITCH
 
 /**
- * This will only be used for Kukui. Preserve EC reset logs and console
- * logs on SRAM/FLASH so that the logs will be preserved after EC shutting
- * down or sysjumped. It will keep the contents across EC resets, so we have
- * more information about system states. The contents on SRAM will be cleared
- * when checksum or validity check fails.
+ * Preserve EC reset logs and console logs on SRAM/FLASH so that the logs will
+ * be preserved after EC shutting down or sysjumped. It will keep the contents
+ * across EC resets, so we have more information about system states. The
+ * contents on SRAM will be cleared when checksum or validity check fails.
  */
 #undef CONFIG_PRESERVE_LOGS
 
@@ -4991,6 +5002,7 @@
 #undef CONFIG_USBC_RETIMER_ANX7452
 #undef CONFIG_USBC_RETIMER_INTEL_BB
 #undef CONFIG_USBC_RETIMER_KB800X
+#undef CONFIG_USBC_RETIMER_KB8010
 #undef CONFIG_USBC_RETIMER_NB7V904M
 #undef CONFIG_USBC_RETIMER_PI3DPX1207
 #undef CONFIG_USBC_RETIMER_PI3HDX1204
@@ -5317,6 +5329,7 @@
 #undef CONFIG_BC12_DETECT_MT6360
 #undef CONFIG_BC12_DETECT_PI3USB9201
 #undef CONFIG_BC12_DETECT_PI3USB9281
+#undef CONFIG_BC12_DETECT_RT1718S
 /* Number of Pericom PI3USB9281 chips present in system */
 #undef CONFIG_BC12_DETECT_PI3USB9281_CHIP_COUNT
 /* The delay in ms from power off to power on for MAX14637 */
@@ -6415,6 +6428,33 @@
 /* If battery_v2 isn't used, it's v1. */
 #if defined(CONFIG_BATTERY) && !defined(CONFIG_BATTERY_V2)
 #define CONFIG_BATTERY_V1
+#endif
+
+/*
+ * Check the specific battery status to judge whether the battery is
+ * initialized and stable when the battery wakes up from ship mode.
+ * Use two MASKs to provide logical AND and logical OR options for different
+ * status. For example:
+ *
+ * Logical OR -- just check one of TCA/TDA mask:
+ *   #define CONFIG_BATT_ALARM_MASK1 \
+ *       (STATUS_TERMINATE_CHARGE_ALARM | STATUS_TERMINATE_DISCHARGE_ALARM)
+ *   #define CONFIG_BATT_ALARM_MASK2 0xFFFF
+ *
+ * Logical AND -- check both TCA/TDA mask:
+ *   #define CONFIG_BATT_ALARM_MASK1 STATUS_TERMINATE_CHARGE_ALARM
+ *   #define CONFIG_BATT_ALARM_MASK2 STATUS_TERMINATE_DISCHARGE_ALARM
+ *
+ * The default configuration is logical OR.
+ */
+#ifdef CONFIG_BATTERY_STBL_STAT
+#ifndef CONFIG_BATT_ALARM_MASK1
+#define CONFIG_BATT_ALARM_MASK1 \
+	(STATUS_TERMINATE_CHARGE_ALARM | STATUS_TERMINATE_DISCHARGE_ALARM)
+#endif
+#ifndef CONFIG_BATT_ALARM_MASK2
+#define CONFIG_BATT_ALARM_MASK2 0xFFFF
+#endif
 #endif
 
 /*****************************************************************************/

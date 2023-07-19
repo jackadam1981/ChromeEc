@@ -61,7 +61,7 @@ DT_FOREACH_CHILD_STATUS_OKAY_VARGS(
 #define MAX_COLOR 4
 
 struct node_prop_t {
-	enum charge_state pwr_state;
+	enum led_pwr_state pwr_state;
 	enum power_state chipset_state;
 	int batt_state_mask;
 	int batt_state;
@@ -201,8 +201,8 @@ static void set_color(int node_idx, uint32_t ticks)
 static int match_node(int node_idx)
 {
 	/* Check if this node depends on power state */
-	if (node_array[node_idx].pwr_state != PWR_STATE_UNCHANGE) {
-		enum charge_state pwr_state = charge_get_state();
+	if (node_array[node_idx].pwr_state != LED_PWRS_UNCHANGE) {
+		enum led_pwr_state pwr_state = led_pwr_get_state();
 
 		if (node_array[node_idx].pwr_state != pwr_state)
 			return -1;

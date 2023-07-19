@@ -22,6 +22,7 @@
 
 #define RT1739_FLAGS_SOURCE_ENABLED BIT(0)
 #define RT1739_FLAGS_FRS_ENABLED BIT(1)
+static int rt1739_pd_connect_flag;
 static atomic_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
@@ -164,7 +165,7 @@ static int rt1739_get_device_id(int port, int *device_id)
 
 static int rt1739_workaround(int port)
 {
-	int device_id;
+	int device_id, vconn_ctrl4;
 
 	RETURN_ERROR(rt1739_get_device_id(port, &device_id));
 
@@ -179,6 +180,8 @@ static int rt1739_workaround(int port)
 					       RT1739_UVLO_DISVBUS_EN |
 					       RT1739_SCP_DISVBUS_EN |
 					       RT1739_OCPS_DISVBUS_EN));
+		RETURN_ERROR(update_reg(port, RT1739_REG_VCONN_CTRL3,
+					RT1739_VCONN_CLIMIT_EN, MASK_SET));
 		break;
 
 	case RT1739_DEVICE_ID_ES2:
@@ -210,12 +213,22 @@ static int rt1739_workaround(int port)
 		RETURN_ERROR(
 			write_reg(port, RT1739_REG_VBUS_CTRL1,
 				  RT1739_HVLV_SCP_EN | RT1739_HVLV_OCRC_EN));
+		RETURN_ERROR(update_reg(port, RT1739_REG_VCONN_CTRL3,
+					RT1739_VCONN_CLIMIT_EN, MASK_SET));
 		break;
 
 	case RT1739_DEVICE_ID_ES4:
 		CPRINTS("RT1739 ES4");
 		RETURN_ERROR(update_reg(port, RT1739_REG_LVHVSW_OV_CTRL,
 					RT1739_OT_SEL_LVL, MASK_CLR));
+		RETURN_ERROR(
+			read_reg(port, RT1739_REG_VCONN_CTRL4, &vconn_ctrl4));
+		vconn_ctrl4 &= ~RT1739_VCONN_OCP_SEL_MASK;
+		vconn_ctrl4 |= RT1739_VCONN_OCP_SEL_600MA;
+		RETURN_ERROR(
+			write_reg(port, RT1739_REG_VCONN_CTRL4, vconn_ctrl4));
+		RETURN_ERROR(update_reg(port, RT1739_REG_VCONN_CTRL3,
+					RT1739_VCONN_CLIMIT_EN, MASK_CLR));
 		break;
 
 	default:
@@ -273,7 +286,7 @@ static int rt1739_set_vbus_source_current_limit(int port, enum tcpc_rp_value rp)
 	return write_reg(port, RT1739_REG_VBUS_OC_SETTING, reg);
 }
 
-static int rt1739_init(int port)
+int rt1739_init(int port)
 {
 	int device_id, oc_setting, sys_ctrl, vbus_switch_ctrl;
 	bool batt_connected = false;
@@ -318,8 +331,6 @@ static int rt1739_init(int port)
 				RT1739_DM_SWEN | RT1739_DP_SWEN, MASK_SET));
 	RETURN_ERROR(update_reg(port, RT1739_REG_SBU_CTRL_01,
 				RT1739_SBUSW_MUX_SEL, MASK_CLR));
-	RETURN_ERROR(update_reg(port, RT1739_REG_VCONN_CTRL3,
-				RT1739_VCONN_CLIMIT_EN, MASK_SET));
 
 	/* VBUS OVP -> 23V */
 	RETURN_ERROR(write_reg(
@@ -328,7 +339,7 @@ static int rt1739_init(int port)
 			(RT1739_OVP_SEL_23_0V << RT1739_VIN_HV_OVP_SEL_SHIFT)));
 	/* VBUS OCP -> 3.3A (or 5.5A for ES2 HV Sink) */
 	RETURN_ERROR(rt1739_get_device_id(port, &device_id));
-	oc_setting = 0;
+	oc_setting = RT1739_OCP_TIMEOUT_SEL_16MS;
 	if (device_id == RT1739_DEVICE_ID_ES2)
 		oc_setting |= RT1739_HV_SINK_OCP_SEL_5_5A;
 	else
@@ -422,9 +433,16 @@ static void rt1739_usb_charger_task_event(const int port, uint32_t evt)
 
 	/* vbus change, start bc12 detection */
 	if (evt & USB_CHG_EVENT_VBUS) {
-		if (is_non_pd_sink)
+		if (is_non_pd_sink) {
+			if (!(rt1739_pd_connect_flag & BIT(port))) {
+				update_reg(port, RT1739_REG_SBU_CTRL_01,
+					   RT1739_DM_SWEN | RT1739_DP_SWEN |
+						   RT1739_SBU1_SWEN |
+						   RT1739_SBU2_SWEN,
+					   MASK_SET);
+			}
 			rt1739_enable_bc12_detection(port, true);
-		else
+		} else
 			rt1739_update_charge_manager(port,
 						     CHARGE_SUPPLIER_NONE);
 	}
@@ -488,11 +506,13 @@ void rt1739_interrupt(int port)
 void rt1739_pd_connect(void)
 {
 	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; ++i) {
-		if (ppc_chips[i].drv == &rt1739_ppc_drv && pd_is_connected(i))
+		if (ppc_chips[i].drv == &rt1739_ppc_drv && pd_is_connected(i)) {
 			update_reg(i, RT1739_REG_SBU_CTRL_01,
 				   RT1739_DM_SWEN | RT1739_DP_SWEN |
 					   RT1739_SBU1_SWEN | RT1739_SBU2_SWEN,
 				   MASK_SET);
+			rt1739_pd_connect_flag |= BIT(i);
+		}
 	}
 }
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, rt1739_pd_connect, HOOK_PRIO_DEFAULT);
@@ -501,11 +521,13 @@ void rt1739_pd_disconnect(void)
 {
 	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; ++i) {
 		if (ppc_chips[i].drv == &rt1739_ppc_drv &&
-		    pd_is_disconnected(i))
+		    pd_is_disconnected(i)) {
 			update_reg(i, RT1739_REG_SBU_CTRL_01,
 				   RT1739_DM_SWEN | RT1739_DP_SWEN |
 					   RT1739_SBU1_SWEN | RT1739_SBU2_SWEN,
 				   MASK_CLR);
+			rt1739_pd_connect_flag &= ~BIT(i);
+		}
 	}
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, rt1739_pd_disconnect, HOOK_PRIO_DEFAULT);

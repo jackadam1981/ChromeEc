@@ -342,7 +342,7 @@ struct jump_data *get_jump_data(void)
 }
 #endif
 
-int system_jumped_to_this_image(void)
+test_mockable int system_jumped_to_this_image(void)
 {
 	return jumped_to_image;
 }
@@ -1516,7 +1516,7 @@ static int command_sleepmask(int argc, const char **argv)
 		}
 	}
 #endif
-	ccprintf("sleep mask: %08x\n", (int)sleep_mask);
+	ccprintf("sleep mask: %08x\n", (unsigned int)sleep_mask);
 
 	return EC_SUCCESS;
 }
