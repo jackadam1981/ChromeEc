@@ -16,6 +16,12 @@ struct anx7483_tuning_set {
 	uint8_t value;
 };
 
+#define ANX7483_AUX_CFG_1 0x01
+#define ANX7483_AUX_CFG_1_REPLY 0
+
+#define ANX7483_AUX_CFG_0 0x7B
+#define ANX7483_AUX_CFG_0_REPLY 0x28
+
 /*
  * LFPS_TIMER register
  *
@@ -147,6 +153,8 @@ struct anx7483_tuning_set {
 #define ANX7483_CFG3_90Ohm_IN 0x7A
 #define ANX7483_CFG3_90Ohm_OUT 0x7E
 
+#define ANX7483_BA_CFG3_90Ohm_IN 0x3A
+#define ANX7483_BA_CFG3_90Ohm_OUT 0x5E
 /*
  * AUX_Snooping_CTRL register
  *
@@ -156,6 +164,8 @@ struct anx7483_tuning_set {
  */
 #define ANX7483_AUX_SNOOPING_CTRL_REG 0x13
 
+#define ANX7483_VID 0x14
+#define ANX7483_BA 0xBA
 /*
  * Default value: Enable snooping with 90mVppd
  * (register ignored outside DP mode and does not need to be cleared)
