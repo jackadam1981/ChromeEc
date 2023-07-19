@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e70e13b_ab7f15d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-19T21:09:04Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "5dba56923bde36d7adf9bf7527a9ea78cf6191c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d6d163_cfca715d",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-19T21:09:04Z",
+      "side": 1,
+      "message": "this check will only succeed on the CBI layout we\u0027ve chosen for\nthe 1MB part. it\u0027s going to fail on the layout for 512KB parts.\n`CONFIG_FLASH_ERASE_SIZE` isn\u0027t really a good check.\n\nalso, given the assumptions made in the erase loop below,\nwe need to check some additional limitations.",
+      "range": {
+        "startLine": 480,
+        "startChar": 15,
+        "endLine": 480,
+        "endChar": 38
+      },
+      "revId": "5dba56923bde36d7adf9bf7527a9ea78cf6191c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ffa261_752c2130",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-19T21:09:04Z",
+      "side": 1,
+      "message": "this should be `\u003c\u003d`",
+      "range": {
+        "startLine": 488,
+        "startChar": 10,
+        "endLine": 488,
+        "endChar": 12
+      },
+      "revId": "5dba56923bde36d7adf9bf7527a9ea78cf6191c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
