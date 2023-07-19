@@ -22,6 +22,30 @@
       },
       "revId": "350e5dd8138ad37ae2f021dbfb00d6d65caa615e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c227b7d9_7aadb276",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-19T19:27:49Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s related to this CL but the testing froze twice (once during `fpsensor_hw` and once during `polar_filter_ransac`). I filed b/291949919.\n\nAlso, I think the `fpsensor_hw` failure here is due to a hardware issue. I reran the test on TOT and had the same issue there.\n\n```\nTest \"production_app_test\": PASSED\nTest \"abort\": PASSED\nTest \"aes\": PASSED\nTest \"always_memset\": PASSED\nTest \"benchmark\": PASSED\nTest \"boringssl_crypto\": PASSED\nTest \"cortexm_fpu\": PASSED\nTest \"crc\": PASSED\nTest \"exception\": PASSED\nTest \"flash_physical\": PASSED\nTest \"flash_write_protect\": PASSED\nTest \"fpsensor_auth_crypto_stateless\": PASSED\nTest \"fpsensor_hw\": FAILED\nTest \"fpsensor_spi_ro\": PASSED\nTest \"fpsensor_spi_rw\": PASSED\nTest \"fpsensor_uart_ro\": PASSED\nTest \"fpsensor_uart_rw\": PASSED\nTest \"ftrapv\": PASSED\nTest \"libc_printf\": PASSED\nTest \"global_initialization\": PASSED\nTest \"libcxx\": PASSED\nTest \"malloc\": PASSED\nTest \"mpu_ro\": PASSED\nTest \"mpu_rw\": PASSED\nTest \"mutex\": PASSED\nTest \"panic\": PASSED\nTest \"pingpong\": PASSED\nTest \"printf\": PASSED\nTest \"queue\": PASSED\nTest \"rng_benchmark\": PASSED\nTest \"rollback_region0\": PASSED\nTest \"rollback_region1\": PASSED\nTest \"rollback_entropy\": PASSED\nTest \"rtc\": PASSED\nTest \"sbrk\": PASSED\nTest \"sha256\": PASSED\nTest \"sha256_unrolled\": PASSED\nTest \"static_if\": PASSED\nTest \"stdlib\": PASSED\nTest \"std_vector\": PASSED\nTest \"stm32f_rtc\": PASSED\nTest \"system_is_locked_wp_on\": PASSED\nTest \"system_is_locked_wp_off\": PASSED\nTest \"timer\": PASSED\nTest \"timer_dos\": PASSED\nTest \"tpm_seed_clear\": PASSED\nTest \"unaligned_access\": PASSED\nTest \"unaligned_access_benchmark\": PASSED\nTest \"utils\": PASSED\nTest \"utils_str\": PASSED\nTest \"unaligned_access_bloonchipper_v2.0.4277\": FAILED\nTest \"unaligned_access_bloonchipper_v2.0.5938\": FAILED\nTest \"panic_data_bloonchipper_v2.0.4277\": FAILED\nTest \"panic_data_bloonchipper_v2.0.5938\": FAILED\nTest \"eigen_convolution\": PASSED\nTest \"eigen_convolution_armv7\": PASSED\nTest \"filter_response\": PASSED\nTest \"filter_response_armv7\": PASSED\nTest \"filter_response_21_armv7\": PASSED\nTest \"hello_eigen\": PASSED\nTest \"hello_private_test\": PASSED\nTest \"imquality_benchmark\": PASSED\nTest \"matrix_operations\": PASSED\nTest \"max_xcorr_benchmark\": PASSED\nTest \"msac_benchmark\": PASSED\nTest \"polar_filter_ransac\": PASSED\nTest \"rick_benchmark\": PASSED\nTest \"rng\": PASSED\nTest \"simd_benchmark\": PASSED\nTest \"static_vector\": PASSED\nTest \"template_benchmark\": PASSED\nTest \"template_benchmark_armv7\": PASSED\nTest \"utils_test\": PASSED\n```\n\nI tracked the failures for `unaligned_access_bloonchipper_*` down to a weird issue with my cloudtop\u0027s gsutil authentication. I was able to run the test on my glinux machine directly and they all pass. Here are the results:\n\n```\nTest \"unaligned_access_bloonchipper_v2.0.4277\": PASSED\nTest \"unaligned_access_bloonchipper_v2.0.5938\": PASSED\nTest \"panic_data_bloonchipper_v2.0.4277\": PASSED\nTest \"panic_data_bloonchipper_v2.0.5938\": PASSED\n```\n\n\nI\u0027ll hold off on marking this as verified until someone can check the `fpsensor_hw` test but I think we\u0027re good to go.",
+      "parentUuid": "6ea03d84_7d1b2375",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 52
+      },
+      "revId": "350e5dd8138ad37ae2f021dbfb00d6d65caa615e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
