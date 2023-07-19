@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea03d84_7d1b2375",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-19T03:24:37Z",
+      "side": 1,
+      "message": "@bobbycasey@google.com, can you checkout this change, run the test line, and paste the test results here?\n\nHere is the copy/paste lines to make it less painful:\n\n```\n# We mainly need to ensure the other repos that come into play are updated, like the private repos.\n# The -d will detach the each repo from the active branch\nrepo sync -j$(nproc) -d\n\ncros_sdk\n# Make sure we are using the recent compiler and whatnot\n./update_chroot\n\ncd ../platform/ec\n\ngit fetch https://chromium.googlesource.com/chromiumos/platform/ec refs/changes/40/4698840/2\ngit checkout -B firmware-fpmcu-bloonchipper-release FETCH_HEAD\n# no rebase\n\nrm -rf build\nmake BOARD\u003dbloonchipper tests -j$(($(nproc) * 2))\n\n# Launch sudo servod --board\u003ddragonclaw and whatever other setup.\n./test/run_device_tests.py --board bloonchipper\n```",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 52
+      },
+      "revId": "350e5dd8138ad37ae2f021dbfb00d6d65caa615e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
