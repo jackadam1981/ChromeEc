@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60ae220a_0d530d8b",
+        "filename": "zephyr/test/accel_cal/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:12:06Z",
+      "side": 1,
+      "message": "For CBI in GPIO, there seem to be no way to put depends on, since it\u0027s not configured through device tree",
+      "parentUuid": "b42e7483_6d387d53",
+      "revId": "f6fe6aa794b54225fa7df1e6b9f98a24a41a151a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fcc1806_b1fa4d05",
         "filename": "zephyr/test/drivers/cbi_flash/src/cbi_flash.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2023-07-17T13:31:48Z",
       "side": 1,
       "message": "These belong to the first patch I think, no individual patch should break the build.",
+      "revId": "f6fe6aa794b54225fa7df1e6b9f98a24a41a151a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "848ab92c_dbcbb2c9",
+        "filename": "zephyr/test/drivers/cbi_flash/src/cbi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fcc1806_b1fa4d05",
       "revId": "f6fe6aa794b54225fa7df1e6b9f98a24a41a151a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
