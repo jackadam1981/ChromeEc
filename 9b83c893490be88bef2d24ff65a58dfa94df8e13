@@ -46,6 +46,30 @@
       },
       "revId": "9b83c893490be88bef2d24ff65a58dfa94df8e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d76ae7b_c5c9ebd9",
+        "filename": "chip/npcx/clock_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2023-07-19T08:42:26Z",
+      "side": 1,
+      "message": "\u003eCould you separate out the OSC_CLK changes from the UART changes? It will make the reviews a lot easier and makes it easier to revert if we run into unanticipated issues down the line.\n\nDone. Please to [CL 4699368](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4699368)\n\n\u003e Actually, looking at this again I\u0027m not sure if we want to tie `OSC_CLK` changes directly to `NPCX_UART_BAUDRATE_3M`. For example, it should be possible to have `OSC_CLK` at 96 MHz without a 3 MHz UART (even if the inverse isn\u0027t possible). \n\nPlease notice the main factor to select `OSC_CLK` is to minimize the deviation of UART\u0027s baud rate. (npcx\u0027s baud rate is calculated by: `BR \u003d APB4_CLK/(16 x DIV x P)`) For example, if the target baud rate is 115200 bps and chromebook usually asks ec\u0027s CPU operation frequency to be under 16MHz for power saving. \n\ncase 1: OSC_CLK is 96MHz and APB4 clock is 96/6 \u003d 16MHz. \n        The deviation of baud rate is 3.55%.\ncase 2: OSC_CLK is 90MHz and APB4 clock is 90/6 \u003d 15Mhz. \n        The deviation of baud rate is 1.73%. \n        \nUntil now, we haven\u0027t encountered any broken characters that cause FAFT to fail if APB4 is 15MHz. But we do see broken characters if APB4 clock is 16MHz. That\u0027s why we force OSC_CLK to 90MHz. It is the same situation if baud rate is 3MHz.  \n\n\n\u003e If were to call `clock_turbo()` in `board_init`, would that have any effect on the UART?\n\nNo. UART clock is decided by APB4DIV only. `clock_turbo()` only changes FPRED to 0 which boosts the CPU\u0027s clock equal to `OSC_CLK` temporarily.",
+      "parentUuid": "d570b5ef_afc29be8",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "9b83c893490be88bef2d24ff65a58dfa94df8e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
