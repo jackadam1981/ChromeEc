@@ -105,6 +105,24 @@
       "parentUuid": "eba71f98_46fd7505",
       "revId": "ebb2de3ae64c8ad7743186d94f43d7b86559e8de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b44afe6_9134e026",
+        "filename": "zephyr/program/nissa/craaskov/src/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-07-19T01:23:55Z",
+      "side": 1,
+      "message": "I don\u0027t understand what it\u0027s meant to do on xivu either, but that seems to indicate it\u0027s okay since it\u0027s not obviously problematic on an existing board.",
+      "parentUuid": "0173a717_455d4a64",
+      "revId": "ebb2de3ae64c8ad7743186d94f43d7b86559e8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
