@@ -473,6 +473,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ec50c5a_f7bb5b42",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-19T19:55:34Z",
+      "side": 1,
+      "message": "this is\n```\n\t/* GPP_E05 : [] \u003d\u003d\u003e USB_A0_RT_RST_ODL */\n\tPAD_CFG_GPO(GPP_E05, 1, DEEP),\n```\non the AP side. need to check if this is actually getting\nasserted somewhere. hopefully, on the way up from S5, the\nAP won\u0027t reset the chip. not sure what happens when\nlinux tries to reset USB to handle bad error cases.",
+      "parentUuid": "cb496f9d_bbeaf2c9",
+      "range": {
+        "startLine": 183,
+        "startChar": 7,
+        "endLine": 183,
+        "endChar": 12
+      },
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5e96fe4_a80dbe00",
         "filename": "zephyr/program/rex/rex/src/usbc_config.c",
         "patchSetId": 3
