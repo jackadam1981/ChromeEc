@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "005a6ab2_4413b0bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d46778c_f2b58ab5",
+      "range": {
+        "startLine": 11,
+        "startChar": 13,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "0821c95faaad9e0382e4741ac6d309d794e7d81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51392d2b_2102beaa",
@@ -38,6 +62,30 @@
       "writtenOn": "2023-07-19T12:01:00Z",
       "side": 1,
       "message": "Update the comment. And mention the alignment check will be done in the Zephyr driver.",
+      "range": {
+        "startLine": 486,
+        "startChar": 4,
+        "endLine": 486,
+        "endChar": 54
+      },
+      "revId": "0821c95faaad9e0382e4741ac6d309d794e7d81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d20262_57990c6f",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51392d2b_2102beaa",
       "range": {
         "startLine": 486,
         "startChar": 4,
@@ -71,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca1617b2_3cbc298b",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f512f0bf_55b9663e",
+      "range": {
+        "startLine": 494,
+        "startChar": 26,
+        "endLine": 494,
+        "endChar": 48
+      },
+      "revId": "0821c95faaad9e0382e4741ac6d309d794e7d81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0556e836_1724fe3c",
@@ -94,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8916d0b_23544b76",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0556e836_1724fe3c",
+      "range": {
+        "startLine": 504,
+        "startChar": 6,
+        "endLine": 504,
+        "endChar": 28
+      },
+      "revId": "0821c95faaad9e0382e4741ac6d309d794e7d81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bd5045b_426cdc68",
@@ -107,6 +203,30 @@
       "writtenOn": "2023-07-19T12:01:00Z",
       "side": 1,
       "message": "Don\u0027t need to get the MIN() too. The last iteration will escape the loop.",
+      "range": {
+        "startLine": 508,
+        "startChar": 12,
+        "endLine": 508,
+        "endChar": 34
+      },
+      "revId": "0821c95faaad9e0382e4741ac6d309d794e7d81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ba9868_9c025acc",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T18:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd5045b_426cdc68",
       "range": {
         "startLine": 508,
         "startChar": 12,
