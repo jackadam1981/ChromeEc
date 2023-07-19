@@ -46,6 +46,30 @@
       },
       "revId": "62ccb898ced690981ad617ef809ac929f277151d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d53b5a84_0d8a8d9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-19T23:11:58Z",
+      "side": 1,
+      "message": "I was able to get the `fpsensor_hw` test to pass after running `git revert 7d3827fcbda17978e15ee86c382d45f62f8bf5da` (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4379778), which makes fpsensor_hw run in gtest. It isn\u0027t clear if this is due to a change in gtest or some other resources that gtest needs, or something else entirely.",
+      "parentUuid": "9760b82d_0e34bfda",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 50
+      },
+      "revId": "62ccb898ced690981ad617ef809ac929f277151d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
