@@ -126,6 +126,7 @@ tests:
     extra_configs:
     - CONFIG_LINK_TEST_SUITE_COMMON_CBI_GPIO=y
     - CONFIG_PLATFORM_EC_CBI_GPIO=y
+    - CONFIG_PLATFORM_EC_CBI_EEPROM=n
   drivers.common_charger:
     extra_configs:
     - CONFIG_PLATFORM_EC_CHARGER_INPUT_CURRENT_DERATE_PCT=5
