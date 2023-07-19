@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79dec1aa_58d36bd3",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-19T23:23:29Z",
+      "side": 1,
+      "message": "Resolving for now. Please re-open if you think this is worth pursuing with a separate refactoring CL.",
+      "parentUuid": "e611c341_17294d65",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "56c5b9902a980191741be17df95c7bd3ad08c0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1008c7d_1ee268e8",
@@ -78,6 +102,30 @@
       "writtenOn": "2023-07-19T18:43:14Z",
       "side": 1,
       "message": "Does this need to be wrapped with CONFIG_CHIPSET_RESET_HOOK? It seems other uses are.",
+      "range": {
+        "startLine": 85,
+        "startChar": 13,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "56c5b9902a980191741be17df95c7bd3ad08c0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31dc2203_bb2f0338",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-19T23:23:29Z",
+      "side": 1,
+      "message": "Looks like a good idea. Done.",
+      "parentUuid": "e1008c7d_1ee268e8",
       "range": {
         "startLine": 85,
         "startChar": 13,
