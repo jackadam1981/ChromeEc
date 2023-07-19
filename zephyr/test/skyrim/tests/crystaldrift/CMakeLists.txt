@@ -4,3 +4,4 @@
 
 target_sources(app PRIVATE src/common.c)
 target_sources_ifdef(CONFIG_TEST_BOARD_PPC_CONFIG app PRIVATE src/ppc_config.c)
+target_sources_ifdef(CONFIG_TEST_BOARD_USB_MUX_CONFIG app PRIVATE src/usb_mux_config.c)

@@ -18,6 +18,7 @@ void clamshell_init(void);
 
 FAKE_VALUE_FUNC(int, cros_cbi_get_fw_config, enum cbi_fw_config_field_id,
 		uint32_t *);
+FAKE_VALUE_FUNC(int, cbi_get_board_version, uint32_t *);
 
 static bool clamshell_mode;
 static int interrupt_count;
