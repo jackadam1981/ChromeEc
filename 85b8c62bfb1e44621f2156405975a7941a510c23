@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71666b87_0c5b4ca4",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-07-19T03:26:16Z",
+      "side": 1,
+      "message": "I think the purpose of this change is to pass the alignment check.\n\nYou can simply remove this alignment check as it is duplicated. The Zephyr API `flash_erase()` does the alignment check, either 64KB or 4KB. So you don\u0027t need to duplicate somethings similar here. https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/refs/heads/main/drivers/flash/spi_nor.c#747\n\nWhat you need is to modify the below `for` loop, which reloads the watchdog timer. The last `flash_erase()` call is not the fixed `CONFIG_FLASH_ERASE_SIZE`.",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 493,
+        "endChar": 2
+      },
+      "revId": "85b8c62bfb1e44621f2156405975a7941a510c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a9a2bb9_88e1eb33",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-07-19T03:26:16Z",
+      "side": 1,
+      "message": "What is needed is to change this argument to `MIN(CONFIG_FLASH_ERASE_SIZE, size)`.",
+      "range": {
+        "startLine": 511,
+        "startChar": 45,
+        "endLine": 511,
+        "endChar": 55
+      },
+      "revId": "85b8c62bfb1e44621f2156405975a7941a510c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
