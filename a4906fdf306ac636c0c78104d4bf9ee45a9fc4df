@@ -16,6 +16,24 @@
       "message": "What branch is `firmware-skyrim-15369.B-main`?\n\nThe only branch I see used anywhere is `firmware-skyrim-15369.B` (without `-main`), and these are the only CLs in this `-main` branch.",
       "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d442d2_b7a8dcd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2023-07-19T23:28:23Z",
+      "side": 1,
+      "message": "This is a difference between firmware branches on coreboot and ec repos. I don\u0027t know the source or reasoning behind this difference. firmware-skyrim-15369.B branch simply does not exist in the EC repo.",
+      "parentUuid": "fcd90203_c116b642",
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
