@@ -449,6 +449,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb496f9d_bbeaf2c9",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-19T19:47:08Z",
+      "side": 1,
+      "message": "is this because USB_A0_RT_RST_ODL is controlled by the AP\nand we need to wait for the AP to take the chip out of reset?\n\nwaiting a few seconds doesn\u0027t seem very robust.\nare there better options?",
+      "parentUuid": "81026271_c6668209",
+      "range": {
+        "startLine": 183,
+        "startChar": 7,
+        "endLine": 183,
+        "endChar": 12
+      },
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5e96fe4_a80dbe00",
         "filename": "zephyr/program/rex/rex/src/usbc_config.c",
         "patchSetId": 3
