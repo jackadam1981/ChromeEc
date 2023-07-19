@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51392d2b_2102beaa",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-07-19T12:01:00Z",
+      "side": 1,
+      "message": "Update the comment. And mention the alignment check will be done in the Zephyr driver.",
+      "range": {
+        "startLine": 486,
+        "startChar": 4,
+        "endLine": 486,
+        "endChar": 54
+      },
+      "revId": "0821c95faaad9e0382e4741ac6d309d794e7d81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f512f0bf_55b9663e",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-07-19T12:01:00Z",
+      "side": 1,
+      "message": "The decrement doesn\u0027t need to get the MIN(). The last iteration can be a negative size and the escape.",
+      "range": {
+        "startLine": 494,
+        "startChar": 26,
+        "endLine": 494,
+        "endChar": 48
+      },
+      "revId": "0821c95faaad9e0382e4741ac6d309d794e7d81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0556e836_1724fe3c",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-07-19T12:01:00Z",
+      "side": 1,
+      "message": "Simple call the MIN() here.",
+      "range": {
+        "startLine": 504,
+        "startChar": 6,
+        "endLine": 504,
+        "endChar": 28
+      },
+      "revId": "0821c95faaad9e0382e4741ac6d309d794e7d81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd5045b_426cdc68",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-07-19T12:01:00Z",
+      "side": 1,
+      "message": "Don\u0027t need to get the MIN() too. The last iteration will escape the loop.",
+      "range": {
+        "startLine": 508,
+        "startChar": 12,
+        "endLine": 508,
+        "endChar": 34
+      },
+      "revId": "0821c95faaad9e0382e4741ac6d309d794e7d81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
