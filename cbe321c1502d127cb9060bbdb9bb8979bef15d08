@@ -86,6 +86,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a39f0f1_ae4761dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-19T23:32:25Z",
+      "side": 1,
+      "message": "Completed a first pass on this CL.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2378db8_123a0851",
@@ -99,6 +116,40 @@
       "writtenOn": "2023-06-14T18:52:35Z",
       "side": 1,
       "message": "I think we should probably record the VDM version from the partner and cable exactly as we received it and then make a decision to downgrade to our own highest supported version if necessary at transmit time. That will let us at least report the partner\u0027s real version up to the AP.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2516656c_d3245a3b",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-19T23:32:25Z",
+      "side": 1,
+      "message": "As a general comment for this file, I see a fair number of redundant checks, and I think the code would be easier to read if they were simplified. Here are some examples, although I\u0027ve probably missed some.\n1. Checking for the presence of the DP mode VDO in the same condition as checking `resolve_dpam_version`, which already checks the presence of the DP mode VDO.\n2. Reading `product_type` repeatedly instead of saving it in a variable.\n3. Repeatedly checking that the cable type is passive or active. IIUC, most of these checks only make sense if the cable type is passive or active. If the cable type is VPD or not a cable, the function should be able to return early.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e336fb78_cb228de5",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-19T23:32:25Z",
+      "side": 1,
+      "message": "It looks like this function returns `true` if DP alt mode \u003c\u003d 2.1 is supported, which it would have to for older partners to continue to work here. Therefore, the name of this function should not be specific to DP 2.1. (See also my other comments about consistent naming in the DP alt mode files.)",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +207,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64201eed_d002c8c2",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-19T23:32:25Z",
+      "side": 1,
+      "message": "I think I have a comment elsewhere specifically about `cable_flags`, but this function would be easier to follow if these variables had more specific types. As it is, it\u0027s pretty hard to understand what\u0027s going on without referring to the spec.",
+      "range": {
+        "startLine": 587,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 25
+      },
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42692a6b_576fae85",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 38
@@ -167,6 +241,40 @@
       "writtenOn": "2023-07-11T22:13:59Z",
       "side": 1,
       "message": "Instead of creating another macro for the DP 2.1 Config VDO, can you, in a separate CL preceding this one\n1. Create a function that takes appropriately typed parameters, including a DPAM value, and returns a DP Config VDO structure/union, and\n2. Converts existing usages of these macros to use that function?",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d14f426e_1923e8fb",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-19T23:32:25Z",
+      "side": 1,
+      "message": "Most of the comments in this macro call are unneeded. As written, the comments for DPAM version and UFP connected are needed, but they wouldn\u0027t be if the call passed in enum values specific to those fields.\n\nNit: If it were to stay, the comment, \"UFP connected,\" should be something like, \"DP Sink.\"",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ce7127_a7c3baa5",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-19T23:32:25Z",
+      "side": 1,
+      "message": "If you inverted this check and returned `true` first for DP 2.1 not enabled, the whole function could lose a level of indentation.",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -207,6 +315,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd9146b7_3b2aa729",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-19T23:32:25Z",
+      "side": 1,
+      "message": "This check seems like it would have applied even for previous versions of the alt mode. Are we already doing it anywhere else?\n\nAlso, if the cable is USB 2.0 only, does it matter whether it\u0027s passive or active.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe1bbee2_8ee64324",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 38
@@ -218,6 +343,91 @@
       "writtenOn": "2023-07-11T22:13:59Z",
       "side": 1,
       "message": "It seems like this would be the wrong data type for SOP.\n\nMore fundamentally, table 5-5 indicates that the appropriate DPAM version for outgoing DP VDMs depends on the DPAM version for the DFP, UFP, and cable; therefore, it seems weird to me that this function takes the message type as a parameter. AFAICT, the outgoing DPAM version should be the same for SOP, SOP\u0027, and SOP\u0027\u0027.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab178ddf_9e12e98b",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-19T23:32:25Z",
+      "side": 1,
+      "message": "This is a very deeply indented and parenthesized function. I would suggest making it easier to follow by\n1. Writing helper functions for translating the DP signaling field to DP speed.\n2. Referencing the spec table or flowchart that this logic derives from.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284f066d_57dfac23",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-19T23:32:25Z",
+      "side": 1,
+      "message": "Nit: `modal support` should be a `bool`. You don\u0027t need to compare to 0 and 1.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24162edb_7fc2b254",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-19T23:32:25Z",
+      "side": 1,
+      "message": "The call to this function is conditional on DP 2.1 support, and I think DP 2.1 support is conditional on PD 3.0 support. Therefore, you shouldn\u0027t need to check for PD 3.0 support here.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7adf6b71_a4dd95bb",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-19T23:32:25Z",
+      "side": 1,
+      "message": "Should this be `else`? It wouldn\u0027t change the result, but it would make this function easier to think about.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67dcd89b_a06d3952",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-19T23:32:25Z",
+      "side": 1,
+      "message": "This file shouldn\u0027t be compiled if alt modes are disabled in the config. I think this check is unnecessary.",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
