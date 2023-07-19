@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "271fc0e4_7e869aec",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T09:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71666b87_0c5b4ca4",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 493,
+        "endChar": 2
+      },
+      "revId": "85b8c62bfb1e44621f2156405975a7941a510c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a9a2bb9_88e1eb33",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-19T03:26:16Z",
       "side": 1,
       "message": "What is needed is to change this argument to `MIN(CONFIG_FLASH_ERASE_SIZE, size)`.",
+      "range": {
+        "startLine": 511,
+        "startChar": 45,
+        "endLine": 511,
+        "endChar": 55
+      },
+      "revId": "85b8c62bfb1e44621f2156405975a7941a510c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd2f4507_a893d3e7",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-19T09:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a9a2bb9_88e1eb33",
       "range": {
         "startLine": 511,
         "startChar": 45,
