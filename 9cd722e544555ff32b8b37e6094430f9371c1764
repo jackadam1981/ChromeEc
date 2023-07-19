@@ -497,6 +497,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a25094c4_d6a0e0b2",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-19T20:03:24Z",
+      "side": 1,
+      "message": "i didn\u0027t see anything in the coreboot device tree that would tell\nthe kernel about this reset pin. maybe it\u0027s always high, but not\nsure which power state(s) `DEEP` maps to.\nhopefully, this is not toggling for S3/S0ix.\nthe relevant pull-ups seem to be to S5 power rails already.",
+      "parentUuid": "1ec50c5a_f7bb5b42",
+      "range": {
+        "startLine": 183,
+        "startChar": 7,
+        "endLine": 183,
+        "endChar": 12
+      },
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5e96fe4_a80dbe00",
         "filename": "zephyr/program/rex/rex/src/usbc_config.c",
         "patchSetId": 3
