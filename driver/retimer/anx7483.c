@@ -50,7 +50,11 @@ const test_export_static struct anx7483_tuning_set anx7483_usb_enabled[] = {
 	{ ANX7483_URX2_PORT_CFG1_REG, ANX7483_CFG1_DEF },
 	{ ANX7483_DRX1_PORT_CFG1_REG, ANX7483_CFG1_DEF },
 	{ ANX7483_DRX2_PORT_CFG1_REG, ANX7483_CFG1_DEF },
+#ifdef CONFIG_USBC_RETIMER_ANX7483_AA1_CHIP
+};
 
+const test_export_static struct anx7483_tuning_set anx7483_AA_usb_term[] = {
+#endif /* CONFIG_USBC_RETIMER_ANX7483_AA1_CHIP */
 	{ ANX7483_URX1_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_OUT },
 	{ ANX7483_URX2_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_OUT },
 	{ ANX7483_DRX1_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_OUT },
@@ -88,7 +92,11 @@ const test_export_static struct anx7483_tuning_set anx7483_dp_enabled[] = {
 	{ ANX7483_URX2_PORT_CFG1_REG, ANX7483_CFG1_DEF },
 	{ ANX7483_UTX1_PORT_CFG1_REG, ANX7483_CFG1_DEF },
 	{ ANX7483_UTX2_PORT_CFG1_REG, ANX7483_CFG1_DEF },
+#ifdef CONFIG_USBC_RETIMER_ANX7483_AA1_CHIP
+};
 
+const test_export_static struct anx7483_tuning_set anx7483_AA_dp_term[] = {
+#endif /* CONFIG_USBC_RETIMER_ANX7483_AA1_CHIP */
 	{ ANX7483_URX1_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
 	{ ANX7483_URX2_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
 	{ ANX7483_UTX1_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
@@ -126,15 +134,20 @@ const test_export_static struct anx7483_tuning_set anx7483_dock_noflip[] = {
 	{ ANX7483_DRX1_PORT_CFG1_REG, ANX7483_CFG1_DEF },
 	{ ANX7483_URX2_PORT_CFG1_REG, ANX7483_CFG1_DEF },
 	{ ANX7483_UTX2_PORT_CFG1_REG, ANX7483_CFG1_DEF },
+#ifdef CONFIG_USBC_RETIMER_ANX7483_AA1_CHIP
+};
 
-	{ ANX7483_URX1_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_IN },
-	{ ANX7483_URX2_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
-	{ ANX7483_UTX1_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_IN },
-	{ ANX7483_UTX2_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
-	{ ANX7483_DRX1_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_IN },
-	{ ANX7483_DRX2_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
-	{ ANX7483_DTX1_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_IN },
-	{ ANX7483_DTX2_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
+const test_export_static struct anx7483_tuning_set
+	anx7483_AA_dock_noflip_term[] = {
+#endif /* CONFIG_USBC_RETIMER_ANX7483_AA1_CHIP */
+		{ ANX7483_URX1_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_IN },
+		{ ANX7483_URX2_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
+		{ ANX7483_UTX1_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_IN },
+		{ ANX7483_UTX2_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
+		{ ANX7483_DRX1_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_IN },
+		{ ANX7483_DRX2_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
+		{ ANX7483_DTX1_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_IN },
+		{ ANX7483_DTX2_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
 };
 
 const test_export_static struct anx7483_tuning_set anx7483_dock_flip[] = {
@@ -164,6 +177,12 @@ const test_export_static struct anx7483_tuning_set anx7483_dock_flip[] = {
 	{ ANX7483_UTX1_PORT_CFG1_REG, ANX7483_CFG1_DEF },
 	{ ANX7483_URX2_PORT_CFG1_REG, ANX7483_CFG1_DEF },
 	{ ANX7483_DRX2_PORT_CFG1_REG, ANX7483_CFG1_DEF },
+#ifdef CONFIG_USBC_RETIMER_ANX7483_AA1_CHIP
+};
+
+const test_export_static struct anx7483_tuning_set
+	anx7483_AA_dock_flip_term[] = {
+#endif /* CONFIG_USBC_RETIMER_ANX7483_AA1_CHIP */
 
 	{ ANX7483_URX1_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
 	{ ANX7483_URX2_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_IN },
@@ -174,6 +193,64 @@ const test_export_static struct anx7483_tuning_set anx7483_dock_flip[] = {
 	{ ANX7483_DTX1_PORT_CFG3_REG, ANX7483_CFG3_100Ohm_IN },
 	{ ANX7483_DTX2_PORT_CFG3_REG, ANX7483_CFG3_90Ohm_IN },
 };
+
+#ifdef CONFIG_USBC_RETIMER_ANX7483_AA1_CHIP
+const test_export_static struct anx7483_tuning_set anx7483_BA_usb_term[] = {
+	{ ANX7483_URX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+	{ ANX7483_URX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+	{ ANX7483_DRX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+	{ ANX7483_DRX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+
+	{ ANX7483_UTX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+	{ ANX7483_UTX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+	{ ANX7483_DTX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+	{ ANX7483_DTX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+};
+
+const test_export_static struct anx7483_tuning_set anx7483_BA_dp_term[] = {
+	{ ANX7483_URX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+	{ ANX7483_URX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+	{ ANX7483_UTX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+	{ ANX7483_UTX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+	{ ANX7483_DRX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+	{ ANX7483_DRX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+	{ ANX7483_DTX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+	{ ANX7483_DTX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+
+	{ ANX7483_AUX_CFG_1, ANX7483_AUX_CFG_1_REPLY },
+	{ ANX7483_AUX_CFG_0, ANX7483_AUX_CFG_0_REPLY },
+};
+
+const test_export_static struct anx7483_tuning_set
+	anx7483_BA_dock_noflip_term[] = {
+		{ ANX7483_URX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+		{ ANX7483_URX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+		{ ANX7483_UTX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+		{ ANX7483_DRX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+		{ ANX7483_UTX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+		{ ANX7483_DRX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+		{ ANX7483_DTX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+		{ ANX7483_DTX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+
+		{ ANX7483_AUX_CFG_1, ANX7483_AUX_CFG_1_REPLY },
+		{ ANX7483_AUX_CFG_0, ANX7483_AUX_CFG_0_REPLY },
+};
+
+const test_export_static struct anx7483_tuning_set
+	anx7483_BA_dock_flip_term[] = {
+	{ ANX7483_URX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+	{ ANX7483_URX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+	{ ANX7483_UTX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+	{ ANX7483_DRX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_OUT },
+	{ ANX7483_UTX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+	{ ANX7483_DRX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+	{ ANX7483_DTX1_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+	{ ANX7483_DTX2_PORT_CFG3_REG, ANX7483_BA_CFG3_90Ohm_IN },
+
+	{ ANX7483_AUX_CFG_1, ANX7483_AUX_CFG_1_REPLY },
+	{ ANX7483_AUX_CFG_0, ANX7483_AUX_CFG_0_REPLY },
+};
+#endif /* CONFIG_USBC_RETIMER_ANX7483_AA1_CHIP */
 
 const size_t anx7483_usb_enabled_count = ARRAY_SIZE(anx7483_usb_enabled);
 const size_t anx7483_dp_enabled_count = ARRAY_SIZE(anx7483_dp_enabled);
@@ -301,6 +378,77 @@ anx7483_apply_tuning(const struct usb_mux *me,
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_USBC_RETIMER_ANX7483_AA1_CHIP
+int anx7483_set_default_tuning(const struct usb_mux *me, mux_state_t mux_state)
+{
+	bool flipped = mux_state & USB_PD_MUX_POLARITY_INVERTED;
+	int pid;
+
+	RETURN_ERROR(anx7483_read(me, ANX7483_VID, &pid));
+
+	/* Remove flipped from the state for easier compraisons */
+	mux_state = mux_state & ~USB_PD_MUX_POLARITY_INVERTED;
+
+	/* Enable i2c configuration of tuning registers */
+	RETURN_ERROR(anx7483_write(me, ANX7483_ENABLE_EQ_FLAT_SWING_REG,
+				   ANX7483_ENABLE_EQ_FLAT_SWING_EN));
+
+	if (mux_state == USB_PD_MUX_USB_ENABLED) {
+		RETURN_ERROR(
+			anx7483_apply_tuning(me, anx7483_usb_enabled,
+					     ARRAY_SIZE(anx7483_usb_enabled)));
+
+		if (pid == ANX7483_BA)
+			return anx7483_apply_tuning(
+				me, anx7483_BA_usb_term,
+				ARRAY_SIZE(anx7483_BA_usb_term));
+		else
+			return anx7483_apply_tuning(
+				me, anx7483_AA_usb_term,
+				ARRAY_SIZE(anx7483_AA_usb_term));
+	} else if (mux_state == USB_PD_MUX_DP_ENABLED) {
+		RETURN_ERROR(
+			anx7483_apply_tuning(me, anx7483_dp_enabled,
+					     ARRAY_SIZE(anx7483_dp_enabled)));
+
+		if (pid == ANX7483_BA)
+			return anx7483_apply_tuning(
+				me, anx7483_BA_dp_term,
+				ARRAY_SIZE(anx7483_BA_dp_term));
+		else
+			return anx7483_apply_tuning(
+				me, anx7483_AA_dp_term,
+				ARRAY_SIZE(anx7483_AA_dp_term));
+	} else if (mux_state == USB_PD_MUX_DOCK && !flipped) {
+		RETURN_ERROR(
+			anx7483_apply_tuning(me, anx7483_dock_noflip,
+					     ARRAY_SIZE(anx7483_dock_noflip)));
+
+		if (pid == ANX7483_BA)
+			return anx7483_apply_tuning(
+				me, anx7483_BA_dock_noflip_term,
+				ARRAY_SIZE(anx7483_BA_dock_noflip_term));
+		else
+			return anx7483_apply_tuning(
+				me, anx7483_AA_dock_noflip_term,
+				ARRAY_SIZE(anx7483_AA_dock_noflip_term));
+	} else if (mux_state == USB_PD_MUX_DOCK && flipped) {
+		RETURN_ERROR(anx7483_apply_tuning(
+			me, anx7483_dock_flip, ARRAY_SIZE(anx7483_dock_flip)));
+
+		if (pid == ANX7483_BA)
+			return anx7483_apply_tuning(
+				me, anx7483_BA_dock_flip_term,
+				ARRAY_SIZE(anx7483_BA_dock_flip_term));
+		else
+			return anx7483_apply_tuning(
+				me, anx7483_AA_dock_flip_term,
+				ARRAY_SIZE(anx7483_AA_dock_flip_term));
+	}
+
+	return EC_SUCCESS;
+}
+#else
 int anx7483_set_default_tuning(const struct usb_mux *me, mux_state_t mux_state)
 {
 	bool flipped = mux_state & USB_PD_MUX_POLARITY_INVERTED;
@@ -328,6 +476,7 @@ int anx7483_set_default_tuning(const struct usb_mux *me, mux_state_t mux_state)
 
 	return EC_SUCCESS;
 }
+#endif /* CONFIG_USBC_RETIMER_ANX7483_AA1_CHIP */
 
 enum ec_error_list anx7483_set_eq(const struct usb_mux *me,
 				  enum anx7483_tune_pin pin,

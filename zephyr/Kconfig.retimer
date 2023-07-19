@@ -164,6 +164,14 @@ config PLATFORM_EC_USBC_RETIMER_ANX7483
 	  USB3.2 Gen 2 10Gbps signals to support type-C (USB-C) ports with
 	  DisplayPort Alternate Mode.
 
+config PLATFORM_EC_USBC_RETIMER_ANX7483_AA1_CHIP
+	bool "Support Analogix ANX7483 AA1 Chip"
+	default n
+	depends on PLATFORM_EC_USBC_RETIMER_ANX7483
+	help
+	  This setting is only required for versions above AA1.
+	  If none of this config the AA1 version will use the AA version setting.
+
 config PLATFORM_EC_USBC_RETIMER_PS8811
 	bool "Support Parade PS8811 Single Port USB 3.1 Gen 2 10G Retimer"
 	depends on PLATFORM_EC_USBC || TEST_DISABLE_PLATFORM_EC_USBC
