@@ -3,6 +3,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d46778c_f2b58ab5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-07-19T12:01:34Z",
+      "side": 1,
+      "message": "\u003e \"allignment\" is a possible misspelling of \"alignment\".\n\nPlease fix.",
+      "parentUuid": "4f802def_daba38b7",
+      "range": {
+        "startLine": 11,
+        "startChar": 13,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "0821c95faaad9e0382e4741ac6d309d794e7d81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51392d2b_2102beaa",
         "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
         "patchSetId": 2
