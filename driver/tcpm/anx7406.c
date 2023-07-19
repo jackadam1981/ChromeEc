@@ -65,17 +65,39 @@ static int anx7406_read8(const int port, const uint16_t addr_flags, int offset,
 
 enum ec_error_list anx7406_set_gpio(int port, uint8_t gpio, bool value)
 {
-	if (gpio != 0) {
-		CPRINTS("C%d: Setting GPIO%d not supported", port, gpio);
-		return EC_ERROR_INVAL;
-	}
+	int ret, data;
+
+	ret = EC_ERROR_INVAL;
 
 	CPRINTS("C%d: Setting GPIO%u %s", port, gpio, value ? "high" : "low");
 
-	return anx7406_write8(tcpc_config[port].i2c_info.port,
-			      i2c_peripheral[port].top_addr_flags,
-			      ANX7406_REG_GPIO0,
-			      value ? GPIO0_OUTPUT_HIGH : GPIO0_OUTPUT_LOW);
+	switch (gpio) {
+	case 0:
+		ret = anx7406_write8(tcpc_config[port].i2c_info.port,
+				     i2c_peripheral[port].top_addr_flags,
+				     ANX7406_REG_GPIO0,
+				     value ? GPIO0_OUTPUT_HIGH : GPIO0_OUTPUT_LOW);
+		break;
+	case 2:
+		ret = anx7406_read8(tcpc_config[port].i2c_info.port,
+				    i2c_peripheral[port].top_addr_flags,
+				    ANX7406_REG_GPIO1_2, &data);
+		if (ret)
+			return ret;
+
+		data &= ~GPIO2_MASK;
+		data |= value ? GPIO2_OUTPUT_HIGH : GPIO2_OUTPUT_LOW;
+		ret = anx7406_write8(tcpc_config[port].i2c_info.port,
+				     i2c_peripheral[port].top_addr_flags,
+				     ANX7406_REG_GPIO1_2,
+				     data);
+		break;
+	default:
+		CPRINTS("C%d: Setting GPIO%d not supported", port, gpio);
+		break;
+	}
+
+	return ret;
 }
 
 static int anx7406_set_hpd(int port, int hpd_lvl)
@@ -272,6 +294,25 @@ static int anx7406_set_polarity(int port, enum tcpc_cc_polarity polarity)
 	return tcpci_tcpm_set_polarity(port, polarity);
 }
 
+#ifdef CONFIG_USB_PD_FRS
+static int anx7406_tcpc_fast_role_swap_enable(int port, int enable)
+{
+	int rv;
+	int data;
+
+	if (enable)
+		data = ANX7406_FAST_ROLE_ENABLE;
+	else
+		data = 0;
+
+	rv = tcpc_write(port, ANX7406_FAST_ROLE_CTRL, data);
+	if (rv)
+		return rv;
+
+	return tcpci_tcpc_fast_role_swap_enable(port, enable);
+}
+#endif
+
 static int anx7406_m1_config(int port, int slave, int offset)
 {
 	int rv;
@@ -423,6 +464,9 @@ const struct tcpm_drv anx7406_tcpm_drv = {
 #endif
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode = &tcpci_enter_low_power_mode,
+#endif
+#ifdef CONFIG_USB_PD_FRS_TCPC
+	.set_frs_enable = &anx7406_tcpc_fast_role_swap_enable,
 #endif
 	.set_bist_test_mode = &tcpci_set_bist_test_mode,
 #ifdef CONFIG_CMD_TCPC_DUMP
