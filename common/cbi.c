@@ -5,6 +5,7 @@
  * Cros Board Info
  */
 
+#include "cbi_config.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -605,3 +606,11 @@ int cbi_set_ssfc(uint32_t ssfc)
 #endif
 
 #endif /* !HOST_TOOLS_BUILD */
+
+#if defined(CONFIG_CBI_FLASH)
+const struct cbi_storage_config_t *cbi_config = &flash_cbi_config;
+#elif defined(CONFIG_CBI_EEPROM)
+const struct cbi_storage_config_t *cbi_config = &eeprom_cbi_config;
+#elif defined(CONFIG_CBI_GPIO)
+const struct cbi_storage_config_t *cbi_config = &gpio_cbi_config;
+#endif
