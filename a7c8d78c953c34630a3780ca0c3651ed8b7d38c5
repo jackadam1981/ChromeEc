@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea0fe9b_97055fb2",
+        "filename": "zephyr/shim/include/cbi_transfer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-19T19:28:35Z",
+      "side": 1,
+      "message": "these exports should be in `cbi_flash.h`, etc.",
+      "range": {
+        "startLine": 12,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a25704_64abf81a",
+        "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-19T19:28:35Z",
+      "side": 1,
+      "message": "you end up with a circular dependency graph given:\n```\nconfig PLATFORM_EC_CBI_TRANSFER_EEPROM_FLASH\n\tbool \"Transfer CBI from EEPROM to flash CBI section\"\n\tdepends on PLATFORM_EC_CBI_EEPROM\n\tdepends on PLATFORM_EC_CBI_FLASH\n```\n\nshould not be needed here.",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e65c0b_9738952e",
+        "filename": "zephyr/test/accel_cal/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-19T19:28:35Z",
+      "side": 1,
+      "message": "do we really need to disable CBI for all the tests now?",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67fab84d_60509679",
+        "filename": "zephyr/test/skyrim/tests/crystaldrift/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-19T19:28:35Z",
+      "side": 1,
+      "message": "is this file from a different patch?",
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
