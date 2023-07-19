@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a20ead3_be41813e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-19T03:23:28Z",
+      "side": 1,
+      "message": "@bobbycasey@google.com, can you checkout this change, run the test line, and paste the test results here?\n\nHere is the copy/paste lines to make it less painful:\n\n```\n# We mainly need to ensure the other repos that come into play are updated, like the private repos.\n# The -d will detach the each repo from the active branch\nrepo sync -j$(nproc) -d\n\ncros_sdk\n# Make sure we are using the recent compiler and whatnot\n./update_chroot\n\ncd ../platform/ec\n\ngit fetch https://chromium.googlesource.com/chromiumos/platform/ec refs/changes/41/4698841/3\ngit checkout -B firmware-fpmcu-dartmonkey-release FETCH_HEAD\n# no rebase\n\nrm -rf build\nmake BOARD\u003ddartmonkey tests -j$(($(nproc) * 2))\n\n# Launch sudo servod --board\u003dicetower and whatever other setup.\n./test/run_device_tests.py --board dartmonkey\n```",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 50
+      },
+      "revId": "62ccb898ced690981ad617ef809ac929f277151d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
