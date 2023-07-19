@@ -376,7 +376,7 @@ host-srcs-cxx := $(foreach u,$(host-util-bin-cxx-y), \
 dirs=core/$(CORE) chip/$(CHIP) $(BASEDIR) $(BDIR) common fuzz power test \
 	cts/common cts/$(CTS_MODULE) $(out)/gen
 dirs+= private private-kandou $(PDIR) $(PBDIR)
-dirs+=$(shell find common -type d)
+dirs+=$(shell find common -type d | grep -Ev "/private$$|/private/")
 dirs+=$(shell find driver -type d)
 ifeq ($(USE_BUILTIN_STDLIB), 1)
 dirs+=builtin
