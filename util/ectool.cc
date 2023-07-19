@@ -956,6 +956,8 @@ static const char *const ec_feature_names[] = {
 	[EC_FEATURE_S4_RESIDENCY] = "S4 residency",
 	[EC_FEATURE_TYPEC_AP_MUX_SET] = "AP directed mux sets",
 	[EC_FEATURE_TYPEC_AP_VDM_SEND] = "AP directed VDM Request messages",
+	[EC_FEATURE_SYSTEM_SAFE_MODE] = "System Safe Mode support",
+	[EC_FEATURE_ASSERT_REBOOTS] = "Assert reboots",
 };
 
 int cmd_inventory(int argc, char *argv[])
@@ -1766,7 +1768,7 @@ int cmd_flash_protect(int argc, char *argv[])
 			mask |= ec::flash_protect::Flags::kRoAtBoot;
 	}
 
-	ec::FlashProtectCommand flash_protect_command(flags, mask);
+	ec::FlashProtectCommand_v1 flash_protect_command(flags, mask);
 	if (!flash_protect_command.Run(comm_get_fd())) {
 		int rv = -EECRESULT - flash_protect_command.Result();
 		fprintf(stderr, "Flash protect returned with errors: %d\n", rv);
@@ -7314,11 +7316,12 @@ int cmd_tabletmode(int argc, char *argv[])
 		return EC_ERROR_PARAM_COUNT;
 
 	memset(&p, 0, sizeof(p));
-	if (argv[1][0] == 'o' && argv[1][1] == 'n') {
+	/* |+1| to also make sure the strings the same length. */
+	if (strncmp(argv[1], "on", strlen("on") + 1) == 0) {
 		p.tablet_mode = TABLET_MODE_FORCE_TABLET;
-	} else if (argv[1][0] == 'o' && argv[1][1] == 'f') {
+	} else if (strncmp(argv[1], "off", strlen("off") + 1) == 0) {
 		p.tablet_mode = TABLET_MODE_FORCE_CLAMSHELL;
-	} else if (argv[1][0] == 'r') {
+	} else if (strncmp(argv[1], "reset", strlen("reset") + 1) == 0) {
 		// Match tablet mode to the current HW orientation.
 		p.tablet_mode = TABLET_MODE_DEFAULT;
 	} else {
@@ -8531,7 +8534,9 @@ static void cmd_cbi_help(char *cmd)
 
 static int cmd_cbi_is_string_field(enum cbi_data_tag tag)
 {
-	return tag == CBI_TAG_DRAM_PART_NUM || tag == CBI_TAG_OEM_NAME;
+	return tag == CBI_TAG_DRAM_PART_NUM || tag == CBI_TAG_OEM_NAME ||
+	       tag == CBI_TAG_FUEL_GAUGE_MANUF_NAME ||
+	       tag == CBI_TAG_FUEL_GAUGE_DEVICE_NAME;
 }
 
 /*

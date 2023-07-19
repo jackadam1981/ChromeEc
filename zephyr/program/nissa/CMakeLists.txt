@@ -71,6 +71,9 @@ if(DEFINED CONFIG_BOARD_JOXER)
 	zephyr_library_sources(
 			"joxer/src/led.c"
 			"joxer/src/keyboard.c"
+			"joxer/src/form_factor.c"
+			"joxer/src/board.c"
+			"joxer/src/thermal.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "joxer/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "joxer/src/charger.c")
@@ -116,9 +119,25 @@ if(DEFINED CONFIG_BOARD_ULDREN)
 	zephyr_library_sources(
 			"uldren/src/form_factor.c"
 			"uldren/src/kb_backlight.c"
-			"uldren/src/keyboard.c"
+			"uldren/src/sub_board.c"
 	)
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "uldren/src/fan.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "uldren/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "uldren/src/charger.c")
+endif()
+if(DEFINED CONFIG_BOARD_GOTHRAX)
+	project(gothrax)
+	zephyr_library_sources(
+			"gothrax/src/keyboard.c"
+			"gothrax/src/hdmi.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "gothrax/src/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "gothrax/src/charger.c")
+endif()
+if(DEFINED CONFIG_BOARD_CRAASKOV)
+	project(craaskov)
+	zephyr_library_sources(
+			"craaskov/src/keyboard.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "craaskov/src/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "craaskov/src/charger.c")
 endif()

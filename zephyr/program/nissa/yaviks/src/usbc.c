@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "charge_state_v2.h"
+#include "charge_state.h"
 #include "chipset.h"
 #include "driver/charger/sm5803.h"
 #include "driver/tcpm/it83xx_pd.h"
@@ -306,6 +306,28 @@ void usb_c1_interrupt(enum gpio_signal s)
 	/* Charger and BC1.2 are handled in board_process_pd_alert */
 	schedule_deferred_pd_interrupt(1);
 }
+
+/*
+ * Check state of IRQ lines at startup, ensuring an IRQ that happened before
+ * the EC started up won't get lost (leaving the IRQ line asserted and blocking
+ * any further interrupts on the port).
+ *
+ * Although the PD task will check for pending TCPC interrupts on startup,
+ * the charger sharing the IRQ will not be polled automatically.
+ */
+void board_handle_initial_typec_irq(void)
+{
+	check_c0_line();
+	/*
+	 * C1 port IRQ already handled by board_process_pd_alert(), we don't
+	 * need check IRQ here at initial.
+	 */
+}
+/*
+ * This must run after sub-board detection (which happens in EC main()),
+ * but isn't depended on by anything else either.
+ */
+DECLARE_HOOK(HOOK_INIT, board_handle_initial_typec_irq, HOOK_PRIO_LAST);
 
 /*
  * Handle charger interrupts in the PD task. Not doing so can lead to a priority

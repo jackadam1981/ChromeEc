@@ -77,6 +77,17 @@ config BOARD_ULDREN
 	  Build Google Uldren reference board. Uldren has Intel ADL-N SoC
 	  with NPCX993FA0BX EC.
 
+config BOARD_GOTHRAX
+	bool "Google Gothrax Board"
+	help
+	  Build Google Gothrax reference board. Gothrax has Intel ADL-N SoC
+	  with IT81302 EC.
+
+config BOARD_CRAASKOV
+	bool "Google Craaskov Board"
+	help
+	  Build Google Craaskov reference board. Craaskov has Intel ADL-N SoC
+	  with NPCX993FA0BX EC.
 
 module = NISSA
 module-str = Nissa board-specific code
