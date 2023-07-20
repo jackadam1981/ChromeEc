@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "089e1d4e_f6c3b6d1",
+        "filename": "zephyr/program/nissa/craaskov/src/usbc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-07-20T00:28:20Z",
+      "side": 1,
+      "message": "None of this polling is needed if there\u0027s only one chip on this IRQ line.\n\n```suggestion\n/*\n * LCOV_EXCL_START schedule_deferred_pd_interrupt() can\u0027t be verified in tests,\n * but type-C will be obviously broken if this function doesn\u0027t work.\n */\nvoid usb_interrupt(enum gpio_signal signal)\n{\n\tint port;\n\n\tif (signal \u003d\u003d GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c0_int_odl))) {\n\t\tport \u003d 0;\n\t} else {\n\t\tport \u003d 1;\n\t}\n\t/* Trigger polling of TCPC in USB-PD task */\n\tschedule_deferred_pd_interrupt(port);\n}\n/* LCOV_EXCL_STOP */\n```",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 20
+      },
+      "revId": "b6d414d1262e2843de09c385a54a8919df60d11e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
