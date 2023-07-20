@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6c7cf61_5d62ce52",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T22:55:22Z",
+      "side": 1,
+      "message": "Left this as unsigned int as the upload checks come back as do not use bool in a bitfield",
+      "revId": "81a9980b742ab7a1bbbb722eb66a247c0c8499ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

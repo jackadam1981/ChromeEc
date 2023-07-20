@@ -787,6 +787,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7af24a6_04255b62",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T22:55:22Z",
+      "side": 1,
+      "message": "I believe this was left for legacy code I will see if this macro is even still being used",
+      "parentUuid": "897a62a0_0646416a",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c311382_bd3f7814",
         "filename": "include/usb_pd_dp.h",
         "patchSetId": 38
@@ -966,6 +984,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e1ed137_5328c848",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T22:55:22Z",
+      "side": 1,
+      "message": "how high-level are you thinking? Looks like a lot of variables go into this decision but mainly cable speed and type",
+      "parentUuid": "5907531b_4430cc9c",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b19ebac4_e1755054",
         "filename": "include/usb_pd_dp.h",
         "patchSetId": 38
@@ -1000,6 +1036,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "909ae7da_c1b2934a",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T22:55:22Z",
+      "side": 1,
+      "message": "I looked into the implementation and to me it makes sense to keep it as a bitfield since it is polling both the dp and tbt vdo messages to create a response of the supported cable type. I prefer to not split this out as that means more calls to those vdo messages to get the same information that we could have just gotten all at once.\n\nIt does look like retimer/redriver bit is not used right now but that doesn\u0027t mean there won\u0027t be a reason it is needed later",
+      "parentUuid": "58855345_022fcab6",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3f13a32_59ebe48b",
         "filename": "include/usb_pd_dp.h",
         "patchSetId": 38
@@ -1011,6 +1065,24 @@
       "writtenOn": "2023-07-07T23:30:03Z",
       "side": 1,
       "message": "This should return a `bool`.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc63944e_e25573fa",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T22:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f13a32_59ebe48b",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
