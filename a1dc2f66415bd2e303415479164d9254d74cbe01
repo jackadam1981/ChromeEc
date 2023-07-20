@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e356fcf2_5d1be640",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001604
+      },
+      "writtenOn": "2023-07-20T05:49:13Z",
+      "side": 1,
+      "message": "Your project is neither Trusty nor nanolibc. Nanolibc is a particular embedded platform that is not CrOS. As discussed over email, you all need your own `#define` to be supported by BoringSSL. Please see go/boringssl-on-new-platform",
+      "revId": "a1dc2f66415bd2e303415479164d9254d74cbe01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
