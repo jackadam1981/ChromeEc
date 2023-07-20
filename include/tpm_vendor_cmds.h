@@ -205,6 +205,8 @@ enum vendor_cmd_cc {
 
 	VENDOR_CC_GET_BOOT_TRACE = 71,
 
+	VENDOR_CC_GET_CR50_METRICS = 72,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
@@ -339,6 +341,34 @@ struct vendor_cc_spi_hash_request {
 	uint32_t offset;	/* Offset in flash to hash/read */
 	uint32_t size;		/* Size in bytes to hash/read */
 } __packed;
+
+#define METRICSV_RDD_IS_DETECTED_SHIFT		0
+#define METRICSV_RDD_KEEPALIVE_EN_SHIFT		1
+#define METRICSV_CCD_MODE_L_SHIFT		2
+#define METRICSV_RDD_KEEPALIVE_EN_ATBOOT_SHIFT	3
+#define METRICSV_AMBIGUOUS_STRAP_SHIFT		4
+
+#define METRICSV_CR50_STATS_VERSION	1
+
+struct cr50_stats_response {
+	/* struct version number */
+	uint32_t version;
+	/* Source of last reset. */
+	uint32_t reset_src;
+	/* Board properties for current boot. */
+	uint32_t brdprop;
+	/* Misc status.
+	 * [31: 4] - unused
+	 * [ 3: 3] - ambiguous brdprop
+	 * [ 2: 2] - CCD_MODE_L
+	 * [ 1: 0] - rdd keep alive state
+	 */
+	uint32_t misc_status;
+	/* Time since last cr50 reset */
+	uint32_t reset_time_s;
+	/* Time since last cold reset */
+	uint32_t cold_reset_time_s;
+};
 
 /* Maximum size of a response = SHA-256 hash or 1-32 bytes of data */
 #define SPI_HASH_MAX_RESPONSE_BYTES 32
