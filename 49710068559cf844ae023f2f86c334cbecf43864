@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2871a82f_24f3aa83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-07-20T19:39:01Z",
+      "side": 1,
+      "message": "Trying to get this closed out, but gsctool moving to a different ebuild is currently breaking my chroot. Working on that.",
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dbea618_21d093e7",
@@ -41,6 +58,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da3ba351_15fc9341",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4048,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-07-20T19:39:01Z",
+      "side": 1,
+      "message": "Version was removed and now it\u0027s tracked by bits used. I had a bad merge.",
+      "parentUuid": "6c71aa55_ac30a8d0",
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "713569c2_db6d476b",
@@ -66,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "211bd894_1a1669ce",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4076,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-07-20T19:39:01Z",
+      "side": 1,
+      "message": "This maps to the DebugCableStatus enum and the values are KeepAlive\u003d0, Connected\u003d1, and Disconnected\u003d2. Since 0 is unfortunately KeepAlive, would it be better tot ranslate to a string?",
+      "parentUuid": "713569c2_db6d476b",
+      "range": {
+        "startLine": 4076,
+        "startChar": 24,
+        "endLine": 4076,
+        "endChar": 43
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d4f013c_150188aa",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 6
@@ -77,6 +136,30 @@
       "writtenOn": "2023-07-20T17:56:39Z",
       "side": 1,
       "message": "Is this the level of CCD_MODE_L? \n\nIf it\u0027s 0, then ccd is enabled?",
+      "range": {
+        "startLine": 4077,
+        "startChar": 35,
+        "endLine": 4077,
+        "endChar": 36
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbf15b70_2eff436f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4077,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-07-20T19:39:01Z",
+      "side": 1,
+      "message": "It\u0027s active true. The inversion is removed.",
+      "parentUuid": "5d4f013c_150188aa",
       "range": {
         "startLine": 4077,
         "startChar": 35,
