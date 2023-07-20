@@ -6,16 +6,25 @@
 /* Backlight control based on lid and optional request signal from AP */
 
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
 
 /**
+ * parameter for board to decide the timing of en/disable backlight.
+ * 0: default, update_backlight is called in HOOK_INIT
+ * 1: call enable_backlight in board level.
+ */
+int board_update_backlight;
+
+/**
  * Activate/Deactivate the backlight GPIO pin considering active high or low.
  */
 void enable_backlight(int enabled)
 {
+	ccprints("enable_backlight=%d", enabled);
 #ifdef CONFIG_BACKLIGHT_LID_ACTIVE_LOW
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, !enabled);
 #else
@@ -28,6 +37,9 @@ void enable_backlight(int enabled)
  */
 static void update_backlight(void)
 {
+	if (board_update_backlight)
+		return;
+
 #ifdef CONFIG_BACKLIGHT_REQ_GPIO
 	/* Enable the backlight if lid is open AND requested by AP */
 	enable_backlight(lid_is_open() &&
@@ -47,7 +59,8 @@ DECLARE_HOOK(HOOK_LID_CHANGE, update_backlight, HOOK_PRIO_DEFAULT);
  */
 static void backlight_init(void)
 {
-	update_backlight();
+	if (!board_update_backlight)
+		update_backlight();
 
 #ifdef CONFIG_BACKLIGHT_REQ_GPIO
 	gpio_enable_interrupt(CONFIG_BACKLIGHT_REQ_GPIO);

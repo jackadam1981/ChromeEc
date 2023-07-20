@@ -12,6 +12,13 @@
 #include "gpio.h"
 
 /**
+ * parameter for board to decide the timing of en/disable backlight.
+ * 0: default, update_backlight is called in HOOK_INIT
+ * 1: call enable_backlight in board level.
+ */
+extern int board_update_backlight;
+
+/**
  * Interrupt handler for backlight.
  *
  * @param signal	Signal which triggered the interrupt.
