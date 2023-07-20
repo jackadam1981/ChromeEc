@@ -186,6 +186,7 @@ class TestConfig:
     enable_hw_write_protect: bool = False
     ro_image: str = None
     build_board: str = None
+    filtersize: str = None
     config_name: str = None
     exclude_boards: List = field(default_factory=list)
     logs: List = field(init=False, default_factory=list)
@@ -612,7 +613,7 @@ def hw_write_protect(enable: bool) -> None:
 
 
 def build(
-    test_name: str, board_name: str, compiler: str, app_type: ApplicationType
+    test_name: str, board_name: str, filtersize: str, compiler: str, app_type: ApplicationType
 ) -> None:
     """Build specified test for specified board."""
     cmd = ["make"]
@@ -622,6 +623,7 @@ def build(
 
     cmd = cmd + [
         "BOARD=" + board_name,
+        "FILTERSIZE=" + filtersize,
         "-j",
     ]
 
@@ -824,9 +826,16 @@ def flash_and_run_test(
     if test.build_board is not None:
         build_board = test.build_board
 
+    filtersize = args.filtersize
+    # If test provides this information, build image for board specified
+    # by test.
+    if test.filtersize is not None:
+        filtersize = test.filtersize
+
+
     # attempt to build test binary, reporting a test failure on error
     try:
-        build(test.test_name, build_board, args.compiler, test.apptype_to_use)
+        build(test.test_name, build_board, filtersize, args.compiler, test.apptype_to_use)
     except Exception as exception:  # pylint: disable=broad-except
         logging.error("failed to build %s: %s", test.test_name, exception)
         return False
@@ -959,6 +968,14 @@ def main():
         "-b",
         help="Board (default: " + default_board + ")",
         default=default_board,
+    )
+
+    default_filtersize = "17"
+    parser.add_argument(
+        "--filtersize",
+        "-fs",
+        help="FILTERSIZE (default: " + default_filtersize + ")",
+        default=default_filtersize,
     )
 
     default_tests = "all"
