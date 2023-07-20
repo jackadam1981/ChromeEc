@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acf7254f_bdf9db8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-20T20:31:47Z",
+      "side": 1,
+      "message": "@mlchao@nuvoton.com thanks for preparing this in advance, had to reupload it to fix a clang-format issue and tweaks few things to the message but it\u0027s otherwise unmodified. Good stuff.",
+      "revId": "4d5b04b6051028959589e90129c289c733cbb8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
