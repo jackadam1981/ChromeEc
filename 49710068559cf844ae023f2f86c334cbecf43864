@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d4f013c_150188aa",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4077,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-07-20T17:56:39Z",
+      "side": 1,
+      "message": "Is this the level of CCD_MODE_L? \n\nIf it\u0027s 0, then ccd is enabled?",
+      "range": {
+        "startLine": 4077,
+        "startChar": 35,
+        "endLine": 4077,
+        "endChar": 36
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3410ebf1_3c8c1e88",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 6
