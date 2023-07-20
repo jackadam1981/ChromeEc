@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0dbea618_21d093e7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4037,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-07-20T17:41:48Z",
+      "side": 1,
+      "message": "Rename this to GSC_STATS.",
+      "range": {
+        "startLine": 4037,
+        "startChar": 44,
+        "endLine": 4037,
+        "endChar": 48
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c71aa55_ac30a8d0",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 6
