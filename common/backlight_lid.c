@@ -6,6 +6,7 @@
 /* Backlight control based on lid and optional request signal from AP */
 
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -16,6 +17,7 @@
  */
 void enable_backlight(int enabled)
 {
+	ccprints("enable_backlight=%d", enabled);
 #ifdef CONFIG_BACKLIGHT_LID_ACTIVE_LOW
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, !enabled);
 #else
@@ -28,6 +30,9 @@ void enable_backlight(int enabled)
  */
 static void update_backlight(void)
 {
+	return;
+
+	ccprints("update_backlight");
 #ifdef CONFIG_BACKLIGHT_REQ_GPIO
 	/* Enable the backlight if lid is open AND requested by AP */
 	enable_backlight(lid_is_open() &&
