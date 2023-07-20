@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbf43c91_4be371a7",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-07-20T17:29:30Z",
+      "side": 1,
+      "message": "(1 \u003c\u003c CCD_MODE_L_SHIFT)",
+      "range": {
+        "startLine": 365,
+        "startChar": 28,
+        "endLine": 365,
+        "endChar": 29
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0884ba36_33ab47c6",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 6
