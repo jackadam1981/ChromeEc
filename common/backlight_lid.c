@@ -28,6 +28,7 @@ void enable_backlight(int enabled)
  */
 static void update_backlight(void)
 {
+	return;
 #ifdef CONFIG_BACKLIGHT_REQ_GPIO
 	/* Enable the backlight if lid is open AND requested by AP */
 	enable_backlight(lid_is_open() &&
