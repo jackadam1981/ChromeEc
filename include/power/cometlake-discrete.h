@@ -59,6 +59,8 @@
  */
 #define IN_PGOOD_ALL_CORE CHIPSET_G3S5_POWERUP_SIGNAL
 
+#define CHIPSET_POWERFAIL_DETECT IN_PGOOD_ALL_CORE
+
 /*
  * intel_x86 power mask for S0 all-OK.
  *
