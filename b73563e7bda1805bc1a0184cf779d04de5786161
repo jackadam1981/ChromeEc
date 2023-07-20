@@ -46,6 +46,30 @@
       },
       "revId": "b73563e7bda1805bc1a0184cf779d04de5786161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db95ba9_72570dd4",
+        "filename": "zephyr/program/rex/src/battery_present.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-20T10:58:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8342e180_5a9fa3f6",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "b73563e7bda1805bc1a0184cf779d04de5786161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
