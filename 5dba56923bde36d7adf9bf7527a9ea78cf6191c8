@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09c1950f_eef65fe0",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-07-20T04:03:10Z",
+      "side": 1,
+      "message": "The upstream driver has the check. I think we can remove it too.\nhttps://chromium.googlesource.com/chromiumos/third_party/zephyr/+/refs/heads/main/drivers/flash/spi_nor.c#748\n\nThe difference is the upstream driver does the 4K (section erase) check but execute either the 4K erase or the 64K erase (block erase) commands depending on the size. On the other hand, the legacy EC implementation check and erase the same size defined in `CONFIG_FLASH_ERASE_SIZE`.\n\nIn this shim layer, the alignment checks seem meaningless. It tries to carry over the legacy EC concept to Zephyr.\n\nThe purpose of the below loop is for reloading the watchdog timer, i.e.  crrev.com/c/4118799. Erasing the entire flash like 512KB triggers the watchdog. Breaking it down to the `CONFIG_FLASH_ERASE_SIZE` fixes it. One iteration can be 64KB or even larger like 128KB.",
+      "parentUuid": "b1d6d163_cfca715d",
+      "range": {
+        "startLine": 480,
+        "startChar": 15,
+        "endLine": 480,
+        "endChar": 38
+      },
+      "revId": "5dba56923bde36d7adf9bf7527a9ea78cf6191c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2ffa261_752c2130",
         "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
         "patchSetId": 3
@@ -65,6 +89,29 @@
         "startChar": 10,
         "endLine": 488,
         "endChar": 12
+      },
+      "revId": "5dba56923bde36d7adf9bf7527a9ea78cf6191c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982de02e_b46c2a6e",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-07-20T04:03:10Z",
+      "side": 1,
+      "message": "To avoid confusion of this loop is to reload the watchdog timer, instead of breaking down the erase section, maybe add an extra variable, like\n\n```\n    reload_size \u003d CONFIG_FLASH_ERASE_SIZE;\n    for (; size \u003e 0; size -\u003d reload_size) {\n```",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 52
       },
       "revId": "5dba56923bde36d7adf9bf7527a9ea78cf6191c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
