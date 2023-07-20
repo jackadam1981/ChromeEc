@@ -4,6 +4,7 @@
  */
 
 #include "accelgyro.h"
+#include "backlight.h"
 #include "button.h"
 #include "cros_board_info.h"
 #include "cros_cbi.h"
@@ -13,10 +14,12 @@
 #include "driver/accelgyro_lsm6dso.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "lid_switch.h"
 #include "motion_sense.h"
 #include "motionsense_sensors.h"
 #include "nissa_sub_board.h"
 #include "tablet_mode.h"
+#include "timer.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/logging/log.h>
@@ -129,5 +132,38 @@ static void form_factor_init(void)
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_l),
 				      GPIO_DISCONNECTED);
 	}
+	board_update_backlight = 1;
 }
 DECLARE_HOOK(HOOK_INIT, form_factor_init, HOOK_PRIO_POST_I2C);
+
+static bool blight_delay_on;
+
+static void update_backlight(void)
+{
+	LOG_INF("board_update_backlight");
+	blight_delay_on = 0;
+	enable_backlight(lid_is_open());
+}
+DECLARE_DEFERRED(update_backlight);
+
+static void board_enable_backlight(void)
+{
+	blight_delay_on = 1;
+	LOG_INF("delay 21s to call en bl deferred");
+	hook_call_deferred(&update_backlight_data, 21 * SECOND);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_enable_backlight, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_enable_backlight, HOOK_PRIO_DEFAULT);
+
+static void board_disable_backlight(void)
+{
+	enable_backlight(0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_disable_backlight, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_disable_backlight, HOOK_PRIO_DEFAULT);
+
+static void lid_enable_backlight(void)
+{
+	enable_backlight(lid_is_open() && chipset_in_state(CHIPSET_STATE_ON));
+}
+DECLARE_HOOK(HOOK_LID_CHANGE, lid_enable_backlight, HOOK_PRIO_DEFAULT);
