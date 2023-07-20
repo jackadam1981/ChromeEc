@@ -215,15 +215,16 @@ static int nct38xx_emul_init(const struct emul *emul,
 	return 0;
 }
 
-#define NCT38XX_EMUL(n)                                                       \
-	static struct nct38xx_emul_data nct38xx_emul_data_##n;                \
-	TCPCI_EMUL_DEFINE(n, nct38xx_emul_init, NULL, &nct38xx_emul_data_##n, \
-			  &i2c_nct38xx_emul_api, NULL)
+#define NCT38XX_EMUL(n)                                        \
+	static struct nct38xx_emul_data nct38xx_emul_data_##n; \
+	NCT38XX_TCPC_EMUL_DEFINE(n, nct38xx_emul_init, NULL,   \
+				 &nct38xx_emul_data_##n,       \
+				 &i2c_nct38xx_emul_api, NULL)
 
 DT_INST_FOREACH_STATUS_OKAY(NCT38XX_EMUL);
 
 #define NCT38XX_EMUL_RESET_RULE_AFTER(n) \
-	nct38xx_emul_reset(EMUL_DT_GET(DT_DRV_INST(n)));
+	nct38xx_emul_reset(EMUL_DT_GET(DT_INST_PARENT(n)));
 
 static void nct38xx_emul_test_reset(const struct ztest_unit_test *test,
 				    void *data)

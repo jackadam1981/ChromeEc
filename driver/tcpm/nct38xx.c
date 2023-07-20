@@ -19,6 +19,7 @@
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio/gpio_nct38xx.h>
+#include <zephyr/drivers/mfd/nct38xx.h>
 #endif
 
 #if defined(CONFIG_ZEPHYR) && defined(CONFIG_IO_EXPANDER_NCT38XX)
@@ -51,6 +52,12 @@ int nct38xx_init(int port)
 {
 	int rv;
 	int reg;
+
+#ifdef CONFIG_MFD_NCT38XX
+	if (!device_is_ready(tcpc_config[port].mfd_parent)) {
+		return EC_ERROR_INVALID_CONFIG;
+	}
+#endif
 
 	/*
 	 * Detect dead battery boot by the default role control value of 0x0A
@@ -349,6 +356,24 @@ __maybe_unused test_export_static int nct38xx_set_frs_enable(int port,
 			    enable ? MASK_SET : MASK_CLR);
 }
 
+#if CONFIG_MFD_NCT38XX
+/*
+ * The NCT38xx TCPC and NCT38xx GPIO drivers must not access the NC38xx
+ * at the same time.  Use the lock provided by the upstream NCT38xx
+ * multi-funciton device.
+ */
+static void nct38xx_lock(int port, int lock)
+{
+	const struct device *mfd_parent = tcpc_config[port].mfd_parent;
+
+	if (lock) {
+		mfd_nct38xx_lock(mfd_parent, K_FOREVER);
+	} else {
+		mfd_nct38xx_unlock(mfd_parent);
+	}
+}
+#endif
+
 const struct tcpm_drv nct38xx_tcpm_drv = {
 	.init = &nct38xx_tcpm_init,
 	.release = &tcpci_tcpm_release,
@@ -394,4 +419,8 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 #endif
 	.handle_fault = &nct3807_handle_fault,
 	.hard_reset_reinit = &tcpci_hard_reset_reinit,
+
+#ifdef CONFIG_MFD_NCT38XX
+	.lock = &nct38xx_lock,
+#endif
 };
