@@ -16,6 +16,70 @@
       "message": "I don\u0027t think we should instrument the test tool to change this variable. We should probably have discrete tests with discrete filter sizes.",
       "revId": "fa64fc5c83583ce3faa5930c0daf948203d85e63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aabf8a51_c1cdd24a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-20T21:32:28Z",
+      "side": 1,
+      "message": "I agree. From a testability standpoint discrete tests are definitely preferable. I could see a test like this being a useful development tool but it adds complexity to the tests which increases the odds that the test is wrong.",
+      "parentUuid": "6c61a299_860a929c",
+      "revId": "fa64fc5c83583ce3faa5930c0daf948203d85e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827d5b7c_9e08851e",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-20T21:32:28Z",
+      "side": 1,
+      "message": "Rather than `filtersize` this could be a good general purpose tool if it were an array named `compilation_flags` or something. That could be use to pass any kind of test specific flags.",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 14
+      },
+      "revId": "fa64fc5c83583ce3faa5930c0daf948203d85e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "171a43a8_05ea559a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-20T21:32:28Z",
+      "side": 1,
+      "message": "Wouldn\u0027t you want this the other way? If arguments are specified to change the filtersize you should prioritize those over the default ones.",
+      "range": {
+        "startLine": 829,
+        "startChar": 0,
+        "endLine": 833,
+        "endChar": 36
+      },
+      "revId": "fa64fc5c83583ce3faa5930c0daf948203d85e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
