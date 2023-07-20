@@ -555,6 +555,13 @@ static enum ec_status fp_command_stats(struct host_cmd_handler_args *args)
 	r->template_matched = positive_match_secret_state.template_matched;
 
 	args->response_size = sizeof(*r);
+
+	if (IS_ENABLED(TEST_BUILD)) {
+		CPRINTS("RUNNING TEST\n");
+		void run_test(int argc, const char **argv);
+		run_test(0, NULL);
+	}
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_STATS, fp_command_stats, EC_VER_MASK(0));

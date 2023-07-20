@@ -96,6 +96,12 @@ static enum ec_status host_command_hello(struct host_cmd_handler_args *args)
 	r->out_data = d + 0x01020304;
 	args->response_size = sizeof(*r);
 
+	if (IS_ENABLED(TEST_BUILD)) {
+		CPRINTS("RUNNING TEST\n");
+		void run_test(int argc, const char **argv);
+		run_test(0, NULL);
+	}
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_HELLO, host_command_hello, EC_VER_MASK(0));
