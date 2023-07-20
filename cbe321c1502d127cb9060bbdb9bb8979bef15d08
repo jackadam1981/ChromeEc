@@ -121,6 +121,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8942e607_79432445",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "I think this code has already been refactored to a smaller footprint. Since this is the initial implementation of DP 2.1 most of this code is needed to even build. I\u0027ll try to cut it into smaller patches but the trickiest part will be getting each individual patch to build without breaking anything",
+      "parentUuid": "250934df_b9623202",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2afc1b7_db4d55db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "Added some initial comments. Will be pushing the SVDM_VER enum change today after I get it built on all the boards and will rebase the patchset on top of that. Also will be working on some more code refactoring to hopefully cut this patch into some smaller pieces. \n\nI want to avoid making an drastic changes to this patch as DP 2.1 functionality has been verified with this patch set already.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2378db8_123a0851",
@@ -134,6 +169,24 @@
       "writtenOn": "2023-06-14T18:52:35Z",
       "side": 1,
       "message": "I think we should probably record the VDM version from the partner and cable exactly as we received it and then make a decision to downgrade to our own highest supported version if necessary at transmit time. That will let us at least report the partner\u0027s real version up to the AP.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a93411_a12d8868",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "Is there any benefit to reporting this to AP? Since the EC is making the supported decision I don\u0027t think there is any reason to tell the AP \"here\u0027s what I have but you can\u0027t do anything with it\"",
+      "parentUuid": "f2378db8_123a0851",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -185,6 +238,24 @@
       "writtenOn": "2023-07-11T22:13:59Z",
       "side": 1,
       "message": "Why is this overridable?",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a3cc313_57a46a7c",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "it\u0027s possible that a board will have it\u0027s own requirements around uhbr13_5 support (Meteorlake doesn\u0027t support it at all) so this is overridable to allow for a board to have it\u0027s own return value",
+      "parentUuid": "fc6f33b7_0dc86b92",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -299,6 +370,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bae00db0_b5adfeb1",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "makes sense will update the function",
+      "parentUuid": "b2ce7127_a7c3baa5",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e59827c_64be9f14",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 38
@@ -310,6 +399,24 @@
       "writtenOn": "2023-07-11T22:13:59Z",
       "side": 1,
       "message": "Does DP 2.1 support _require_ TBT3 support?",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2c983a_2956ae8f",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "it does not but if TBT3 is supported it can use the TBT cable mode to determine DP 2.1 support",
+      "parentUuid": "1e59827c_64be9f14",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -344,6 +451,24 @@
       "writtenOn": "2023-07-19T23:32:25Z",
       "side": 1,
       "message": "This check seems like it would have applied even for previous versions of the alt mode. Are we already doing it anywhere else?\n\nAlso, if the cable is USB 2.0 only, does it matter whether it\u0027s passive or active.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ef19d87_34826f64",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "I\u0027ll double check this and make sure this isn\u0027t being checked somewhere else as well",
+      "parentUuid": "bd9146b7_3b2aa729",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -435,6 +560,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58d59770_a38e36eb",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "looking at this code this else if probably isn\u0027t even needed if you get through the whole statement the return is DP21_SPEED_HBR3 anyway",
+      "parentUuid": "7adf6b71_a4dd95bb",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67dcd89b_a06d3952",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 38
@@ -463,6 +606,24 @@
       "writtenOn": "2023-06-14T18:52:35Z",
       "side": 1,
       "message": "Although major and minor versions are separate fields in the VDM header, I think it makes sense to calculate the version as one unified value. The minor version doesn\u0027t mean anything without the major version. Can you integrate the minor version into the existing logic here?",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91152181_27bdc53d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "I think I commented this somewhere else too...This is done for backward compatibility to avoid having to validate the change on legacy code as well as the new code.",
+      "parentUuid": "9b66e579_0a6e0f17",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -538,6 +699,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ead159d3_9c6eb1f1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 6435,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "I assume this was done to stay in line with how it was cleared before. I will change this to a mask to clear the bits",
+      "parentUuid": "573e927a_6fa20193",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02a81108_4dbed13c",
         "filename": "include/usb_pd.h",
         "patchSetId": 38
@@ -567,6 +746,24 @@
       "side": 1,
       "message": "This refactor would be an example of something that could go in its own CL before this one.",
       "parentUuid": "02a81108_4dbed13c",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f50ff1e4_afb75dd9",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "Will be pushing this to its own patch",
+      "parentUuid": "70636409_369be672",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -682,6 +879,24 @@
       "side": 1,
       "message": "A few more comments after reading the DP alt mode spec:\n* The PD spec and DP alt mode 2.1 spec seem to agree that VDM version 2.1 means PD r3.1 v1.6 or newer. They imply that all VDMs sent by a port should have the same VDM version. I think I\u0027m missing something here. Why have VDM versions if 1) they are not specific to types of VDMs and 2) they are redundant with the PD revision?\n* It seems like this is intended to be used to set our own VDM version going out. If that\u0027s the case, it seems like it should also consider the VDM version we got from the partner. PD r 3.1 v 1.8 ss 6.4.4.2.3: \"After discovering the Structure VDM Version, the Structured VDM Version field Shall match the agreed common Structured VDM Version.\"\n* Whatever this is for, it seems like it should have a much more specific name than it has now.",
       "parentUuid": "1a61382b_554e31ae",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90c7c211_cd601d6c",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "finding the minor version separately was done to disrupt the least amount of legacy code. Having this be 1 version field would require extensive testing on legacy code to ensure that there were no negative effects",
+      "parentUuid": "8c4ab769_73b5c905",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

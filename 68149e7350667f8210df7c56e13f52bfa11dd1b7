@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b21cbd23_4553729b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T18:20:26Z",
+      "side": 1,
+      "message": "Will be combining this header with the usb_dp_alt_mode header",
+      "parentUuid": "80b9c47e_e81ea3b9",
+      "revId": "68149e7350667f8210df7c56e13f52bfa11dd1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9ed89cc_a81cea72",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 32
