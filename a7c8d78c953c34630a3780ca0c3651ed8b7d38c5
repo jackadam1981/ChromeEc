@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51713581_b645ff48",
+        "filename": "zephyr/shim/include/cbi_transfer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T05:56:45Z",
+      "side": 1,
+      "message": "Importing cbi_flash.h in cros_cbi.c causing conflict with cros_cbi.h, as both of them has DT_DRV_COMPAT defined. Hence kept those variables in cbi_transfer.h",
+      "parentUuid": "0ea0fe9b_97055fb2",
+      "range": {
+        "startLine": 12,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60a25704_64abf81a",
         "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-19T19:28:35Z",
       "side": 1,
       "message": "you end up with a circular dependency graph given:\n```\nconfig PLATFORM_EC_CBI_TRANSFER_EEPROM_FLASH\n\tbool \"Transfer CBI from EEPROM to flash CBI section\"\n\tdepends on PLATFORM_EC_CBI_EEPROM\n\tdepends on PLATFORM_EC_CBI_FLASH\n```\n\nshould not be needed here.",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ac9cd46_b08b94a2",
+        "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T05:56:45Z",
+      "side": 1,
+      "message": "It\u0027s header file right, it\u0027s availability is not dependent on Kconfig option",
+      "parentUuid": "60a25704_64abf81a",
       "range": {
         "startLine": 6,
         "startChar": 10,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d340b8e_77160d38",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T05:56:45Z",
+      "side": 1,
+      "message": "why is it not preferred to type cast a constant, what is the better way of doing it",
+      "parentUuid": "0f71fe57_057fd0ea",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 54
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2e65c0b_9738952e",
         "filename": "zephyr/test/accel_cal/prj.conf",
         "patchSetId": 1
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdc489aa_05ba1d26",
+        "filename": "zephyr/test/accel_cal/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T05:56:45Z",
+      "side": 1,
+      "message": "By default the Kconfig option is set to true from start, but earlier it was a normal uninitialized variable, now it\u0027s a uninitialized pointer which is breaking the build, hence disabling it",
+      "parentUuid": "b2e65c0b_9738952e",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67fab84d_60509679",
         "filename": "zephyr/test/skyrim/tests/crystaldrift/src/usb_mux_config.c",
         "patchSetId": 1
@@ -106,6 +202,24 @@
       "writtenOn": "2023-07-19T19:28:35Z",
       "side": 1,
       "message": "is this file from a different patch?",
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d974110a_5b6f00b7",
+        "filename": "zephyr/test/skyrim/tests/crystaldrift/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T05:56:45Z",
+      "side": 1,
+      "message": "No so this test is missing some CBI functions being mocked, I  can\u0027t add them at program level because it won\u0027t be common. Hence got to create a test at project level which includes that mock, to not break tests",
+      "parentUuid": "67fab84d_60509679",
       "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
