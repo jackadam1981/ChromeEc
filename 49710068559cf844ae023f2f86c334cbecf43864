@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "713569c2_db6d476b",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4076,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-07-20T17:35:44Z",
+      "side": 1,
+      "message": "There are 2 rddkeepalive bits? What do they mean?",
+      "range": {
+        "startLine": 4076,
+        "startChar": 24,
+        "endLine": 4076,
+        "endChar": 43
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3410ebf1_3c8c1e88",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 6
