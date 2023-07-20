@@ -66,15 +66,78 @@
 			sensor = <&temp_cpu>;
 		};
 	};
+
+	/* B = 4050, R0 = 30900 */
+	new_charger_thermistor: new-charger-thermistor {
+		compatible = "ntc-thermistor-generic";
+		io-channels = <&adc0 1>;
+		r25-ohm = <47000>;
+		pullup-uv = <3300000>;
+		pullup-ohm = <30900>;
+		pulldown-ohm = <0>;
+		zephyr,compensation-table =
+			<0 162942>,
+			<10 96520>,
+			<20 59254>,
+			<30 37566>,
+			<40 24519>,
+			<50 16432>,
+			<60 11280>,
+			<70 7915>,
+			<80 5666>,
+			<90 4132>,
+			<100 3064>;
+	};
+
+	/* B = 4050, R0 = 30900 */
+	new_memory_thermistor: new-memory-thermistor {
+		compatible = "ntc-thermistor-generic";
+		io-channels = <&adc0 2>;
+		r25-ohm = <47000>;
+		pullup-uv = <3300000>;
+		pullup-ohm = <30900>;
+		pulldown-ohm = <0>;
+		zephyr,compensation-table =
+			<0 162942>,
+			<10 96520>,
+			<20 59254>,
+			<30 37566>,
+			<40 24519>,
+			<50 16432>,
+			<60 11280>,
+			<70 7915>,
+			<80 5666>,
+			<90 4132>,
+			<100 3064>;
+	};
 };
 
 &adc0 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
 	status = "okay";
 	pinctrl-0 = <&adc0_chan1_gp44
 		     &adc0_chan2_gp43
 		     &adc0_chan3_gp42
 		     &adc0_chan4_gp41>;
 	pinctrl-names = "default";
+
+	channel@1 {
+		reg = <1>;
+		zephyr,gain = "ADC_GAIN_1";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <10>;
+	};
+
+	channel@2 {
+		reg = <2>;
+		zephyr,gain = "ADC_GAIN_1";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <10>;
+	};
 };
 
 &thermistor_3V3_30K9_47K_4050B {
