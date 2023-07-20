@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e4e3cf_908d0966",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-07-20T17:49:23Z",
+      "side": 1,
+      "message": "I\u0027ve added a comment.\n\nBasically, clearing the BBR USB3_Connection bit while the AP is awake will cause the AP to believe that devices on the USB3 bus through the BBR have been disconnected. This is the case if we just manually clear that bit from the EC console while a device is awake. But, when a device is suspended there is no issue clearing and setting the USB3 connection, it won\u0027t trip up the AP. So, the EC just needs to wait for the AP to suspend before updating the USB3_Connection.",
+      "parentUuid": "e9c9dfb6_65d41263",
+      "range": {
+        "startLine": 726,
+        "startChar": 1,
+        "endLine": 726,
+        "endChar": 19
+      },
+      "revId": "49dcbcaad0c705a98f0fe55edc387f0824470bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a86ce8_b8ab270c",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-07-20T17:49:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06da7998_deb68311",
+      "range": {
+        "startLine": 726,
+        "startChar": 56,
+        "endLine": 726,
+        "endChar": 66
+      },
+      "revId": "49dcbcaad0c705a98f0fe55edc387f0824470bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efac2027_1e16da73",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-07-20T01:22:52Z",
       "side": 1,
       "message": "do you need to cancel `mux_chipset_suspend_deferred`\njust in case it hasn\u0027t run yet?",
+      "range": {
+        "startLine": 729,
+        "startChar": 12,
+        "endLine": 729,
+        "endChar": 30
+      },
+      "revId": "49dcbcaad0c705a98f0fe55edc387f0824470bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04159c7f_5d388c89",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-07-20T17:49:23Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "efac2027_1e16da73",
       "range": {
         "startLine": 729,
         "startChar": 12,
