@@ -16,6 +16,24 @@
       "message": "its",
       "revId": "66ba0116691a6edb24a6b892af73fcdd851d8298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95acf3b_81b02ee6",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-20T17:26:45Z",
+      "side": 1,
+      "message": "so, just drop the \"non-zero\"?",
+      "parentUuid": "5b945dbf_167aa592",
+      "revId": "66ba0116691a6edb24a6b892af73fcdd851d8298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
