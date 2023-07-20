@@ -125,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "152a109f_df97fb90",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4076,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-07-20T20:18:03Z",
+      "side": 1,
+      "message": "I think we still want the rdd state even if keepalive is enabled. Also cr50 has a keepalive atboot option.\n\nCan we have a bit for the rdd state, a bit for the keepalive state, and a bit for keepalive atboot.",
+      "parentUuid": "211bd894_1a1669ce",
+      "range": {
+        "startLine": 4076,
+        "startChar": 24,
+        "endLine": 4076,
+        "endChar": 43
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d4f013c_150188aa",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 6
