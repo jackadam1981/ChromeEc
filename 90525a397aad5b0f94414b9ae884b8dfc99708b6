@@ -271,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b0a806f_0bad6842",
+        "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T06:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0750f26_c0ba3168",
+      "range": {
+        "startLine": 77,
+        "startChar": 34,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e406ed60_2e7470f1",
@@ -308,6 +332,30 @@
       "side": 1,
       "message": "Importing cbi_flash.h in cros_cbi.c causing conflict with cros_cbi.h, as both of them has DT_DRV_COMPAT defined. Hence kept those variables in cbi_transfer.h",
       "parentUuid": "e406ed60_2e7470f1",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6373ba97_6ccbc453",
+        "filename": "zephyr/shim/src/cbi/cbi_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T06:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86e265d9_76eed303",
       "range": {
         "startLine": 73,
         "startChar": 34,
@@ -541,6 +589,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a17e8434_269075f0",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T06:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eb98c31_54debf52",
+      "range": {
+        "startLine": 25,
+        "startChar": 34,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "412d2687_390d0365",
@@ -682,6 +754,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45956f7d_c4789ec9",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T06:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f44884f_2326f5f5",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 39
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "163f3d8b_e132533c",
@@ -719,6 +815,30 @@
       "side": 1,
       "message": "head-\u003edata length is undefined in struct, with memcpy we are properly defining the array",
       "parentUuid": "163f3d8b_e132533c",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd008249_7989e028",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T06:00:15Z",
+      "side": 1,
+      "message": "Ignore my comment above, that was incomplete and accidentally pushed as comment. Removed memcpy for now, Done",
+      "parentUuid": "e5c4e9c4_bf921b96",
       "range": {
         "startLine": 46,
         "startChar": 1,
