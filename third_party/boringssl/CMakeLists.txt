@@ -22,11 +22,7 @@ else()
 	set(CMAKE_BUILD_TYPE Release)
 endif()
 
-# TODO(b/273639386): Remove these workarounds when the upstream supports
-# better way to disable the filesystem, threads and locks usages.
-set(CMAKE_SYSTEM_NAME Linux)
-set(ANDROID TRUE)
-add_definitions(-D__TRUSTY__)
+add_definitions(-DCROS_ZEPHYR)
 
 # Zephyr defines _XOPEN_SOURCE=600 when compiling 'posix' architecture,
 # but BoringSSL defines _XOPEN_SOURCE=700. Since redefining is not allowed
