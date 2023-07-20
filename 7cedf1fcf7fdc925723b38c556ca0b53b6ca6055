@@ -16,6 +16,24 @@
       "message": "What will the host do with this feature flag?",
       "revId": "7cedf1fcf7fdc925723b38c556ca0b53b6ca6055",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9facdaf_ee62f5d3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-20T17:17:42Z",
+      "side": 1,
+      "message": "This flag is for the Kernel driver to decide if DP 2.1 needs to be supported",
+      "parentUuid": "d226d27b_c0fc0a17",
+      "revId": "7cedf1fcf7fdc925723b38c556ca0b53b6ca6055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
