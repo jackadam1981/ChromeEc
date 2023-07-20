@@ -39,6 +39,29 @@
       },
       "revId": "49710068559cf844ae023f2f86c334cbecf43864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0884ba36_33ab47c6",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-07-20T17:25:15Z",
+      "side": 1,
+      "message": "Add a common metrics prefix to all of these.\n\nMETRICSV_ or VENDOR_METRICS_",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 29
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
