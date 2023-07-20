@@ -63,6 +63,30 @@
       },
       "revId": "abc31a19178081ebc5c02445fabd00306be50ce3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "357d0558_fc5546de",
+        "filename": "zephyr/program/myst/myst/cbi.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T07:17:13Z",
+      "side": 1,
+      "message": "Tracking ticket:  b:292035684",
+      "parentUuid": "b6d40ce8_2b753c67",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "abc31a19178081ebc5c02445fabd00306be50ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
