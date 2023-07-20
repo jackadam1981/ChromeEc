@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c61a299_860a929c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-20T21:22:08Z",
+      "side": 1,
+      "message": "I don\u0027t think we should instrument the test tool to change this variable. We should probably have discrete tests with discrete filter sizes.",
+      "revId": "fa64fc5c83583ce3faa5930c0daf948203d85e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
