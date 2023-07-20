@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3efb4f7_c7f10499",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "typo: overridable",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 43
+      },
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c50f70f_335d3cbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "Will this workaround ever be able to be removed?\n\nGoing further, why should teams invest in support this feature with arch-specific implementations of `get_panic_stack_pointer()`, if coredumps are coming and will make all of that work unnecessary? How far away is coredump support, and why isn\u0027t that being pursued now instead?",
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fcd90203_c116b642",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -32,6 +72,286 @@
       "side": 1,
       "message": "This is a difference between firmware branches on coreboot and ec repos. I don\u0027t know the source or reasoning behind this difference. firmware-skyrim-15369.B branch simply does not exist in the EC repo.",
       "parentUuid": "fcd90203_c116b642",
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df9d710_74d8442e",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "This forces 32bit architecture support.\n\nIt should likely be a `void*` instead, so the pointer size can be architecture-independent.",
+      "range": {
+        "startLine": 205,
+        "startChar": 14,
+        "endLine": 205,
+        "endChar": 22
+      },
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b92b0efb_f659112a",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "I think it\u0027s worth printing a message here to indicate the team should implement `get_panic_stack_pointer()`, so they can have the extra debugging capabilities. Otherwise, they may not even know this exists.",
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adab6233_838a0eb8",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "Why was 32 chosen, and what\u0027s the limitation of increasing this value in the future?",
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf14a5f0_84d40ae8",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "This can be moved outside of the loop, to make it clear all of this should be skipped if there is no architecture support for it. Additionally, it prevents checking a case every iteration that can only happen during the first.",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 13
+      },
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76736c38_fa59a2d5",
+        "filename": "common/system_safe_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "A stack frame is \u003e4 bytes, so I wouldn\u0027t expect this to be able to walk the stack for each of the stack pointers.\n\nIs there something the specifies that `get_panic_stack_pointer()` returns a list of stack pointers? From the function name, it just returns a single stack pointer, without any relation to the full stack itself.",
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b09f69_f4719017",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "`size_t`",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbff0f8c_4977c9e0",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "`size_t`",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a38d380e_76735745",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "https://developer.arm.com/documentation/ddi0419/c/System-Level-Architecture/System-Level-Programmers--Model/ARMv6-M-exception-model/Stack-alignment-on-exception-entry?lang\u003den\n\n\u003e Note\n\u003e A function that conforms to the AAPCS must preserve the natural alignment of primitive data of size 1, 2, 4, or 8 bytes. Conforming code can rely on this alignment. Normally, to support unqualified reliance the stack pointer must be 8-byte aligned on entry to a conforming function. If a function is entered directly from an underlying execution environment, that environment must accept the stack alignment requirement to guarantee unconditionally that conforming code executes correctly in all circumstances.\n\nI\u0027m not entirely familiar with the details of the ARM stack implementation.\n\nWhy is it guaranteed that the function generating the exception had a 4-byte aligned stack? Shouldn\u0027t this take any of the 1/2/4 byte alignment possibilities into account?",
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d9f9af_b34fee8f",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "It would be nice to have these named.\n\nhttps://developer.arm.com/documentation/100701/0200/The-EXC-RETURN-register\n\n\u003e [4] Ftype",
+      "range": {
+        "startLine": 105,
+        "startChar": 50,
+        "endLine": 105,
+        "endChar": 56
+      },
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa6f4fa_f157d924",
+        "filename": "core/nds32/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "What is this magic number?",
+      "range": {
+        "startLine": 141,
+        "startChar": 27,
+        "endLine": 141,
+        "endChar": 29
+      },
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4bd530c_e1f9dbd7",
+        "filename": "zephyr/test/system_safe_mode/src/system_safe_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "From \"Google C++ Style Guide\", this may not be used:\n\ngo/cstyle#Other_Features\n\n\u003e The regular expression facilities defined in \u003cregex\u003e because they duplicate existing google3 functionality (RE2).\n\nWe\u0027re supposed to use https://github.com/google/re2 instead.\n\nThere is a link to a C wrapper available at: https://github.com/marcomaggi/cre2/\n\n----\n\nI have other reasons below about why regular expressions are a bad idea in test code, so I think it should be removed for those reasons anyway.",
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b86d85_665c7445",
+        "filename": "zephyr/test/system_safe_mode/src/system_safe_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "What are these values, and why can they change each run (timestamps presumably)?",
+      "range": {
+        "startLine": 181,
+        "startChar": 6,
+        "endLine": 181,
+        "endChar": 17
+      },
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4aafa65_20420305",
+        "filename": "zephyr/test/system_safe_mode/src/system_safe_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "How was the value 405 calculated? Why is verifying it\u0027s that large useful/necessary?",
+      "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7533d6_0edfccb5",
+        "filename": "zephyr/test/system_safe_mode/src/system_safe_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-20T18:22:11Z",
+      "side": 1,
+      "message": "This will be difficult for developers to maintain, since it doesn\u0027t indicate what the expected value is or why it failed.\n\nRather than using a large regular expression, this should be more explicit about what\u0027s being checked and why the test failed. Specifically, check each line individually, skip the parts that are uninteresting (like the variable string values at the beginning), and output expected versus actual when there is a failure.",
       "revId": "a4906fdf306ac636c0c78104d4bf9ee45a9fc4df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
