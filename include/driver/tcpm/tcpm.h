@@ -166,7 +166,11 @@ static inline int tcpc_read16(int port, int reg, int *val)
 
 static inline void tcpc_lock(int port, int lock)
 {
-	i2c_lock(tcpc_config[port].i2c_info.port, lock);
+	if (tcpc_config[port].drv->lock) {
+		tcpc_config[port].drv->lock(port, lock);
+	} else {
+		i2c_lock(tcpc_config[port].i2c_info.port, lock);
+	}
 }
 
 /* TCPM driver wrapper function */
