@@ -118,6 +118,30 @@ struct tcpc_emul_data {
 	EMUL_DT_INST_DEFINE(n, init, &tcpc_emul_data_##n, cfg_ptr, bus_api,  \
 			    backend_api)
 
+#define NCT38XX_TCPC_EMUL_DEFINE(n, init, cfg_ptr, chip_data_ptr, bus_api,    \
+				 backend_api)                                 \
+	static uint8_t tcpci_emul_tx_buf_##n[128];                            \
+	static struct tcpci_emul_msg tcpci_emul_tx_msg_##n = {                \
+		.buf = tcpci_emul_tx_buf_##n,                                 \
+	};                                                                    \
+	static struct tcpci_ctx tcpci_ctx##n = {                              \
+		.tx_msg = &tcpci_emul_tx_msg_##n,                             \
+		.error_on_ro_write = true,                                    \
+		.error_on_rsvd_write = true,                                  \
+		.irq_gpio = GPIO_DT_SPEC_INST_GET_OR(n, irq_gpios, {}),       \
+	};                                                                    \
+	static struct tcpc_emul_data tcpc_emul_data_##n = {                \
+		.tcpci_ctx = &tcpci_ctx##n,                                \
+		.chip_data = chip_data_ptr,                                \
+		.i2c_cfg = {                                               \
+			.dev_label = DT_NODE_FULL_NAME(DT_DRV_INST(n)),    \
+			.data = &tcpci_ctx##n.common,                      \
+			.addr = DT_REG_ADDR(DT_INST_PARENT(n)),            \
+		},                                                         \
+	};  \
+	EMUL_DT_DEFINE(DT_INST_PARENT(n), init, &tcpc_emul_data_##n, cfg_ptr, \
+		       bus_api, backend_api)
+
 /** Response from TCPCI specific device operations */
 enum tcpci_emul_ops_resp {
 	TCPCI_EMUL_CONTINUE = 0,

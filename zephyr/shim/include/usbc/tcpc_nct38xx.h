@@ -17,11 +17,13 @@
 	{                                                                      \
 		.bus_type = EC_BUS_TYPE_I2C,                                   \
 		.i2c_info = {                                                  \
-			.port = I2C_PORT_BY_DEV(id),                           \
-			.addr_flags = DT_REG_ADDR(id),                         \
+			.port = I2C_PORT_BY_DEV(DT_PARENT(id)),                \
+			.addr_flags = DT_REG_ADDR(DT_PARENT(id)),              \
 		},                                                             \
 		.drv = &nct38xx_tcpm_drv,                                      \
 		.flags = DT_PROP(id, tcpc_flags),                              \
+		.mfd_parent = COND_CODE_1(CONFIG_MFD_NCT38XX,                  \
+					  (DEVICE_DT_GET(DT_PARENT(id))), {}), \
 		COND_CODE_1(CONFIG_PLATFORM_EC_TCPC_INTERRUPT,                 \
 			(.irq_gpio = GPIO_DT_SPEC_GET_OR(id, irq_gpios, {}),   \
 			 .rst_gpio = GPIO_DT_SPEC_GET_OR(id, rst_gpios, {})),  \
