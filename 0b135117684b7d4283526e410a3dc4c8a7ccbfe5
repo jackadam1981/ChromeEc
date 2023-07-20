@@ -34,6 +34,24 @@
       "parentUuid": "a1c66308_daeb71c0",
       "revId": "0b135117684b7d4283526e410a3dc4c8a7ccbfe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f388d3e4_c0cfa906",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-20T18:23:36Z",
+      "side": 1,
+      "message": "i\u0027m trying to understand why the EC can\u0027t access the ps8811 over i2c until\n\"a few seconds\" after the AP is up. since the AP controls reset to the ps8811\ni thought maybe that\u0027s because the AP is holding the ps8811 in reset while\nthe EC tries to configure it.\n\nas far as i can tell, we have pullups and the GPP_E05 is set to 1, so there\nshould be nothing holding the ps8811 in reset once the S5 rails are up or\nresetting it later.\n\nif that sequence is true, the EC should only need to wait for S5 power reails\nto configure the ps8811. essentially, initialize it every time we power up.\nhowever, this patch configures the ps8811 on more events and introduces\na 4 second delay before accessing the ps8811.\n\nwe need a better understanding of system behavior.",
+      "parentUuid": "2bf842b9_5a570033",
+      "revId": "0b135117684b7d4283526e410a3dc4c8a7ccbfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
