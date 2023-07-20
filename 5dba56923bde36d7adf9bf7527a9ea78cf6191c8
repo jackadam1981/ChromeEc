@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3080522_315e6ebc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T07:15:10Z",
+      "side": 1,
+      "message": "Created a bug for this and updated the commit",
+      "parentUuid": "8e70e13b_ab7f15d2",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "5dba56923bde36d7adf9bf7527a9ea78cf6191c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1d6d163_cfca715d",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d9c7660_8c983adc",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T07:15:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09c1950f_eef65fe0",
+      "range": {
+        "startLine": 480,
+        "startChar": 15,
+        "endLine": 480,
+        "endChar": 38
+      },
+      "revId": "5dba56923bde36d7adf9bf7527a9ea78cf6191c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2ffa261_752c2130",
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "240ae776_e463802b",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T07:15:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ffa261_752c2130",
+      "range": {
+        "startLine": 488,
+        "startChar": 10,
+        "endLine": 488,
+        "endChar": 12
+      },
+      "revId": "5dba56923bde36d7adf9bf7527a9ea78cf6191c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "982de02e_b46c2a6e",
@@ -107,6 +179,30 @@
       "writtenOn": "2023-07-20T04:03:10Z",
       "side": 1,
       "message": "To avoid confusion of this loop is to reload the watchdog timer, instead of breaking down the erase section, maybe add an extra variable, like\n\n```\n    reload_size \u003d CONFIG_FLASH_ERASE_SIZE;\n    for (; size \u003e 0; size -\u003d reload_size) {\n```",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 52
+      },
+      "revId": "5dba56923bde36d7adf9bf7527a9ea78cf6191c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4948b58d_546b408b",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-20T07:15:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "982de02e_b46c2a6e",
       "range": {
         "startLine": 495,
         "startChar": 0,
