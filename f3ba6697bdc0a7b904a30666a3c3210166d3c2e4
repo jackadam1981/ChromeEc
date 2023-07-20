@@ -16,6 +16,24 @@
       "message": "It seems like this test validates the behavior of the config where `HOOK_CHIPSET_RESUME_INIT` is not available, but the case where it is available could do the same thing, i.e. configure the mux during `HOOK_CHIPSET_RESUME`, and this test wouldn\u0027t know the difference.\n\nShould the test try to make sure that `HOOK_CHIPSET_RESUME_INIT` is used if it is available?",
       "revId": "f3ba6697bdc0a7b904a30666a3c3210166d3c2e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4522a271_02088566",
+        "filename": "zephyr/test/drivers/default/src/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-07-20T23:20:34Z",
+      "side": 1,
+      "message": "Done. I\u0027ve updated the test so that the checks depend on whether or not `CONFIG_CHIPSET_RESUME_INIT_HOOK` is enabled",
+      "parentUuid": "fd0e3914_22ea76c7",
+      "revId": "f3ba6697bdc0a7b904a30666a3c3210166d3c2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
