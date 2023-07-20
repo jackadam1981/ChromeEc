@@ -16,6 +16,75 @@
       "message": "Hi Abe and Caveh,\ncan you take a look at this update to the usb_mux driver idle mode? We are seeing some USB 3.2 devices disconnect on suspend/resume. More information about that on the bug. But, it\u0027s due to clearing the BBR USB3_Connection bit on suspend, then setting it on resume. \n\nThis CL delays setting idle mode on suspend by changing the suspend hook that calls it and deferring the mux update. It also moves up setting that bit by changing the resume hook which has the mux exit idle mode. The hook changes will only apply to boards with CONFIG_CHIPSET_RESUME_INIT_HOOK defined. Testing locally, this resolves the USB 3.2 device disconnection issues we were seeing on suspend/resume. Let me know if you have any questions.\n\nThanks,\nJameson",
       "revId": "49dcbcaad0c705a98f0fe55edc387f0824470bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06da7998_deb68311",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-20T01:22:52Z",
+      "side": 1,
+      "message": "maybe define a const for this - if nothing else but to give it a name.",
+      "range": {
+        "startLine": 726,
+        "startChar": 56,
+        "endLine": 726,
+        "endChar": 66
+      },
+      "revId": "49dcbcaad0c705a98f0fe55edc387f0824470bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9c9dfb6_65d41263",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-20T01:22:52Z",
+      "side": 1,
+      "message": "could you add a comment as to why/how this prevents devices from\nresetting their connection? does it give the device more time\nto process the idle transition when the AP leaves S0?",
+      "range": {
+        "startLine": 726,
+        "startChar": 1,
+        "endLine": 726,
+        "endChar": 19
+      },
+      "revId": "49dcbcaad0c705a98f0fe55edc387f0824470bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efac2027_1e16da73",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-20T01:22:52Z",
+      "side": 1,
+      "message": "do you need to cancel `mux_chipset_suspend_deferred`\njust in case it hasn\u0027t run yet?",
+      "range": {
+        "startLine": 729,
+        "startChar": 12,
+        "endLine": 729,
+        "endChar": 30
+      },
+      "revId": "49dcbcaad0c705a98f0fe55edc387f0824470bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
