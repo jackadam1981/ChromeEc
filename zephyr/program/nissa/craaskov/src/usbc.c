@@ -112,18 +112,6 @@ uint16_t tcpc_get_alert_status(void)
 		}
 	}
 
-	if (board_get_usb_pd_port_count() == 2 &&
-	    !gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl))) {
-		if (!tcpc_read16(1, TCPC_REG_ALERT, &regval)) {
-			/* TCPCI spec Rev 1.0 says to ignore bits 14:12. */
-			if (!(tcpc_config[1].flags & TCPC_FLAGS_TCPCI_REV2_0))
-				regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
-
-			if (regval)
-				status |= PD_STATUS_TCPC_ALERT_1;
-		}
-	}
-
 	return status;
 }
 
@@ -184,50 +172,15 @@ void board_reset_pd_mcu(void)
 }
 
 /*
- * Because the TCPCs and BC1.2 chips share interrupt lines, it's possible
- * for an interrupt to be lost if one asserts the IRQ, the other does the same
- * then the first releases it: there will only be one falling edge to trigger
- * the interrupt, and the line will be held low. We handle this by polling the
- * IRQ GPIO on the USB-PD task after processing TCPC interrupts, synchronously
- * running the BC1.2 interrupt handler to ensure we continue processing
- * interrupts as long as either source is asserting the IRQ.
- */
-void board_process_pd_alert(int port)
-{
-	const struct gpio_dt_spec *gpio;
-
-	if (port == 0) {
-		gpio = GPIO_DT_FROM_NODELABEL(gpio_usb_c0_int_odl);
-	} else {
-		gpio = GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl);
-	}
-
-	if (!gpio_pin_get_dt(gpio)) {
-		usb_charger_task_set_event_sync(port, USB_CHG_EVENT_BC12);
-	}
-
-	/*
-	 * Immediately schedule another TCPC interrupt if it seems we haven't
-	 * cleared all pending interrupts.
-	 */
-	if (!gpio_pin_get_dt(gpio))
-		schedule_deferred_pd_interrupt(port);
-}
-
-/*
  * LCOV_EXCL_START schedule_deferred_pd_interrupt() can't be verified in tests,
  * but type-C will be obviously broken if this function doesn't work.
  */
 void usb_interrupt(enum gpio_signal signal)
 {
-	int port;
+	if (signal != GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c0_int_odl)))
+		return;
 
-	if (signal == GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c0_int_odl))) {
-		port = 0;
-	} else {
-		port = 1;
-	}
-	/* Trigger polling of TCPC and BC1.2 in USB-PD task */
-	schedule_deferred_pd_interrupt(port);
+	/* Trigger polling of TCPC in USB-PD task */
+	schedule_deferred_pd_interrupt(0);
 }
 /* LCOV_EXCL_STOP */
