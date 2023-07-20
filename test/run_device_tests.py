@@ -40,6 +40,7 @@ Run the script on the remote machine:
 # TODO(b/267800058): refactor into multiple modules
 # pylint: disable=too-many-lines
 
+from abc import abstractmethod
 import argparse
 import concurrent
 from concurrent.futures.thread import ThreadPoolExecutor
@@ -50,10 +51,14 @@ import io
 import logging
 import os
 from pathlib import Path
+import pathlib
 import re
+import shutil
+import signal
 import socket
 import subprocess
 import sys
+import tempfile
 import time
 from typing import BinaryIO, Callable, Dict, List, Optional, Tuple
 
@@ -68,6 +73,9 @@ import fmap
 EC_DIR = Path(os.path.dirname(os.path.realpath(__file__))).parent
 JTRACE_FLASH_SCRIPT = os.path.join(EC_DIR, "util/flash_jlink.py")
 SERVO_MICRO_FLASH_SCRIPT = os.path.join(EC_DIR, "util/flash_ec")
+FLASH_FP_MCU_FLASH_SCRIPT = os.path.join(
+    EC_DIR, "util/flash_ssh_flash_fp_mcu.py"
+)
 
 ALL_TESTS_PASSED_REGEX = re.compile(r"Pass!\r\n")
 ALL_TESTS_FAILED_REGEX = re.compile(r"Fail! \(\d+ tests\)\r\n")
@@ -112,6 +120,7 @@ HELIPILOT = "helipilot"
 
 JTRACE = "jtrace"
 SERVO_MICRO = "servo_micro"
+FLASH_FP_MCU = "flash_fp_mcu"
 
 GCC = "gcc"
 CLANG = "clang"
@@ -182,7 +191,7 @@ class TestConfig:
     toggle_power: bool = False
     test_args: List[str] = field(default_factory=list)
     num_flash_attempts: int = 2
-    timeout_secs: int = 10
+    timeout_secs: int = 30
     enable_hw_write_protect: bool = False
     ro_image: str = None
     build_board: str = None
@@ -269,6 +278,7 @@ class AllTests:
                 imagetype_to_use=ImageType.RO,
                 toggle_power=True,
                 enable_hw_write_protect=True,
+                timeout_secs=40,
             ),
             # TODO(b/274162810): Re-enable test on bloonchipper when LTO is re-enabled.
             TestConfig(
@@ -366,7 +376,7 @@ class AllTests:
             TestConfig(test_name="tpm_seed_clear"),
             TestConfig(test_name="unaligned_access"),
             TestConfig(test_name="unaligned_access_benchmark"),
-            TestConfig(test_name="utils", timeout_secs=20),
+            TestConfig(test_name="utils", timeout_secs=10),
             TestConfig(test_name="utils_str"),
         ]
 
@@ -573,19 +583,313 @@ def get_console(board_config: BoardConfig) -> Optional[str]:
     return None
 
 
+class TestHarnes:
+    @abstractmethod
+    def flash(self, image: pathlib.Path) -> None:
+        pass
+
+    @abstractmethod
+    def console(self) -> io.IOBase:
+        pass
+
+    @abstractmethod
+    def start_test(self, args: List[str] = []) -> None:
+        pass
+
+    @abstractmethod
+    def reboot_ro(self) -> None:
+        pass
+
+    @abstractmethod
+    def power(self, power_on: bool) -> None:
+        pass
+
+    @abstractmethod
+    def hw_write_protect(self, enable: bool) -> None:
+        pass
+
+
+class TestServo(TestHarnes):
+    def flash(self, image: pathlib.Path) -> None:
+        pass
+
+    def console(self) -> io.IOBase:
+        # pylint: disable-next=consider-using-with
+        # console_file = open(get_console(board_config), "wb+", buffering=0)
+        # return console
+        pass
+
+    def start_test(self, args: List[str] = []) -> None:
+        pass
+
+    def reboot_ro(self) -> None:
+        pass
+
+    def power(self, power_on: bool) -> None:
+        pass
+
+    def hw_write_protect(self, enable: bool) -> None:
+        pass
+
+
+class TestOnDut(TestHarnes):
+    _SSH_TESTING_RSA_KEY = (
+        pathlib.Path.home() / "chromiumos/chromite/ssh_keys/testing_rsa"
+    )
+    _REMOTE_TEST_BIN = pathlib.Path("/tmp/test.bin")
+
+    def __init__(self, dut_host: str, dut_port: int) -> None:
+        self._dut_host = dut_host
+        self._dut_port = dut_port
+        self._ssh_identity = tempfile.NamedTemporaryFile()
+
+        self._console_server: Optional[subprocess.Popen] = None
+        self._console_sock: Optional[socket.socket] = None
+        self._console_sock_file: Optional[socket.SocketIO] = None
+
+        # Copy testing_rsa to a place where we can change permission.
+        # with self._SSH_TESTING_RSA_KEY.open('rb') as f:
+        # self._ssh_identity.write(f.read())
+        self._ssh_identity.write(self._SSH_TESTING_RSA_KEY.read_bytes())
+        self._ssh_identity.flush()
+        # self._ssh_identity.close() # will delete
+
+        self._ssh_opts = [
+            "-i",
+            self._ssh_identity.name,
+            "-oUserKnownHostsFile=/dev/null",
+            "-oStrictHostKeyChecking=no",
+            "-oNumberOfPasswordPrompts=0",
+        ]
+
+        # rsa_key_copy = pathlib.Path('/tmp/testing_rsa')
+        # shutil.copy(SSH_TESTING_RSA_KEY, rsa_key_copy)
+        # os.system(f'chmod 600 {self._ssh_identity.name}')
+        os.system(f"ls -alh {self._SSH_TESTING_RSA_KEY}")
+        os.system(f"ls -alh {self._ssh_identity.name}")
+        # print('##################')
+        # os.system(f'cat {self._ssh_identity.name}')
+        # print('##################')
+
+        # https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:chromite/lib/remote_access.py;l=226
+        # ssh_opts = f'-i {rsa_key_copy} -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no -oNumberOfPasswordPrompts=0'
+        # remote_test_bin = '/tmp/test.bin'
+
+    def _start_cmd(self, cmd: List[str]) -> subprocess.Popen:
+        """Start a long running command and return open context."""
+        print(f'# Start {" ".join(cmd)}.')
+        process = subprocess.Popen(cmd)
+        return process
+
+    def _run_cmd(self, cmd: List[str]) -> int:
+        """Run a single command to completion."""
+        print(f'# Run {" ".join(cmd)}.')
+        sys.stdout.flush()
+        p = subprocess.run(cmd)  # pylint: disable=subprocess-run-check
+        return p.returncode
+
+    def _prepare_ssh_cmd(
+        self, remote_cmd: List[str], extra_ssh_opts: List[str] = []
+    ) -> List[str]:
+        cmd = ["ssh"]
+        cmd += self._ssh_opts
+        cmd += extra_ssh_opts
+        cmd += ["-p", str(self._dut_port), self._dut_host]
+        cmd += ["--"]
+        cmd += remote_cmd
+        return cmd
+
+    def _run_ssh_cmd(
+        self, remote_cmd: List[str], extra_ssh_opts: List[str] = []
+    ) -> int:
+        cmd = self._prepare_ssh_cmd(remote_cmd, extra_ssh_opts)
+        return self._run_cmd(cmd)
+
+    def _transfer_image(self, image: pathlib.Path) -> int:
+        cmd = ["scp"]
+        cmd += self._ssh_opts
+        cmd += ["-P", str(self._dut_port)]
+        cmd += [str(image), f"{self._dut_host}:{self._REMOTE_TEST_BIN}"]
+        return self._run_cmd(cmd)
+
+    def _console_server_start(self):
+        # Stop timberslide on DUT.
+        remote_cmd = [
+            "stop",
+            "timberslide",
+            "LOG_PATH=/sys/kernel/debug/cros_fp/console_log",
+        ]
+        self._run_ssh_cmd(remote_cmd)
+
+        self._run_ssh_cmd(["killall", "socat"])
+
+        # Start socat on DUT.
+        print(f"# Starting console server {self._dut_host}:{self._dut_port}")
+        extra_ssh_opts = ["-L10000:localhost:10000"]
+        remote_cmd = [
+            "socat",
+            "/sys/kernel/debug/cros_fp/console_log",
+            "tcp4-listen:10000,reuseaddr",
+        ]
+        cmd = self._prepare_ssh_cmd(remote_cmd, extra_ssh_opts)
+        self._console_server = self._start_cmd(cmd)
+        # We are leaving knowing that the server may not be up and ready to
+        # receive connections.
+
+    def _console_server_stop(self):
+        print(f"# Stopping console server")
+        if self._console_server:
+            print("# Sending signal")
+            self._console_server.send_signal(signal.SIGINT)
+            self._console_server.terminate()
+            time.sleep(1)
+            print("# Launching killall")
+            self._run_ssh_cmd(["killall", "socat"])
+            self._console_server = None
+
+    def _console_connect(self):
+        print(f"# Connecting to console {self._dut_host}:{10000}")
+
+        # The server may not have started yet. We could either wait 2 seconds
+        # in the server start routine or poll until it is up.
+        attempts = 5
+        while attempts:
+            print(f"# Attempts remaining {attempts}.")
+            try:
+                self._console_sock = socket.socket(
+                    socket.AF_INET, socket.SOCK_STREAM
+                )
+                self._console_sock.connect((self._dut_host, 10000))
+                break
+            except ConnectionRefusedError:
+                self._console_sock = None
+                attempts -= 1
+                time.sleep(1)
+
+        if not self._console_sock:
+            raise Exception("Connection refused too many times.")
+        print(f"# Connection successfull")
+        self._console_sock_file = self._console_sock.makefile(
+            mode="rwb", buffering=0
+        )
+
+    def _console_disconnect(self):
+        print(f"# Disconnecing console socket")
+        if self._console_sock_file:
+            self._console_sock_file.close()
+            self._console_sock_file = None
+        if self._console_sock:
+            self._console_sock.close()
+            self._console_sock = None
+
+    def __del__(self):
+        self._console_disconnect()
+        self._console_server_stop()
+
+    def flash(self, image: pathlib.Path) -> None:
+        print(f"# Flashing {image}")
+        self._console_disconnect()
+        self._console_server_stop()
+        self.hw_write_protect(False)
+        ret = self._transfer_image(image)
+        if ret != 0:
+            raise Exception(
+                f"Error transfering image to DUT. Return code {ret}."
+            )
+        ret = self._run_ssh_cmd(["flash_fp_mcu", str(self._REMOTE_TEST_BIN)])
+        if ret != 0:
+            raise Exception(f"Error flashing image to DUT. Return code {ret}.")
+        time.sleep(2)
+
+    def console(self) -> io.IOBase:
+        print("# Console")
+        if not self._console_server:
+            self._console_server_start()
+        if not self._console_sock_file:
+            self._console_connect()
+        return self._console_sock_file
+
+    def start_test(self, args: List[str] = []) -> None:
+        print(f"# Starting test.")
+        # The FPMCU might still be between RO and RW stages when we ask to
+        # start the test, so we retry.
+        attempts = 5
+        while attempts:
+            print(f"# Attempts remaining {attempts}.")
+            # self._run_ssh_cmd(["ectool", "--name=cros_fp", "fpstats"])
+            if self._run_ssh_cmd(["ectool", "--name=cros_fp", "hello"]) == 0:
+                break
+            attempts -= 1
+            time.sleep(1)
+        if attempts == 0:
+            raise Exception('We tries too many times.')
+        print("# Started test sucessfully.")
+
+
+
+    def reboot_ro(self) -> None:
+        print("# Reboot to RO")
+        self._run_ssh_cmd(["ectool", "--name=cros_fp", "reboot_ec"])
+        self._run_ssh_cmd(
+            ["ectool", "--name=cros_fp", "rwsig", "action", "abort"]
+        )
+        self._run_ssh_cmd(
+            ["ectool", "--name=cros_fp", "rwsig", "action", "abort"]
+        )
+        self._run_ssh_cmd(
+            ["ectool", "--name=cros_fp", "rwsig", "action", "abort"]
+        )
+        time.sleep(1)
+        self._run_ssh_cmd(
+            ["ectool", "--name=cros_fp", "version"]
+        )
+        time.sleep(1)
+
+    def power(self, power_on: bool) -> None:
+        print(f"# Power {power_on}")
+
+        # Brya
+        GPIO_CHIP = "gpiochip664"
+        PWN_EN_NUM = 826 - 0
+
+        EXPORT_CMD = "/sys/class/gpio/export"
+        DIRECTION_CMD = f"/sys/class/gpio/gpio{PWN_EN_NUM}/direction"
+        VALUE_CMD = f"/sys/class/gpio/gpio{PWN_EN_NUM}/value"
+
+        # Export
+        self._run_ssh_cmd(["echo", str(PWN_EN_NUM), f">{EXPORT_CMD}"])
+        self._run_ssh_cmd(["echo", "out", f">{DIRECTION_CMD}"])
+        self._run_ssh_cmd(["echo", str(1 if power_on else 0), f">{VALUE_CMD}"])
+        pass
+
+    def hw_write_protect(self, enable: bool) -> None:
+        print(f"# HW WP {enable}")
+        state = "force_on" if enable else "force_off"
+        self._run_cmd(
+            [
+                "dut-control",
+                f"fw_wp_state:{state}",
+            ]
+        )
+
+
+harness = TestOnDut("localhost", 2222)
+
+
 def power(board_config: BoardConfig, power_on: bool) -> None:
     """Turn power to board on/off."""
-    if power_on:
-        state = "pp3300"
-    else:
-        state = "off"
+    # if power_on:
+    #     state = "pp3300"
+    # else:
+    #     state = "off"
 
-    cmd = [
-        "dut-control",
-        board_config.servo_power_enable + ":" + state,
-    ]
-    logging.debug('Running command: "%s"', " ".join(cmd))
-    subprocess.run(cmd, check=False).check_returncode()
+    # cmd = [
+    #     "dut-control",
+    #     board_config.servo_power_enable + ":" + state,
+    # ]
+    # logging.debug('Running command: "%s"', " ".join(cmd))
+    # subprocess.run(cmd, check=False).check_returncode()
+    harness.power(power_on)
 
 
 def power_cycle(board_config: BoardConfig) -> None:
@@ -598,17 +902,18 @@ def power_cycle(board_config: BoardConfig) -> None:
 
 def hw_write_protect(enable: bool) -> None:
     """Enable/disable hardware write protect."""
-    if enable:
-        state = "force_on"
-    else:
-        state = "force_off"
+    # if enable:
+    #     state = "force_on"
+    # else:
+    #     state = "force_off"
 
-    cmd = [
-        "dut-control",
-        "fw_wp_state:" + state,
-    ]
-    logging.debug('Running command: "%s"', " ".join(cmd))
-    subprocess.run(cmd, check=False).check_returncode()
+    # cmd = [
+    #     "dut-control",
+    #     "fw_wp_state:" + state,
+    # ]
+    # logging.debug('Running command: "%s"', " ".join(cmd))
+    # subprocess.run(cmd, check=False).check_returncode()
+    harness.hw_write_protect(enable)
 
 
 def build(
@@ -648,6 +953,9 @@ def flash(
             cmd.extend(["--remote", remote_ip + ":" + str(remote_port)])
     elif flasher == SERVO_MICRO:
         cmd.append(SERVO_MICRO_FLASH_SCRIPT)
+    elif flasher == FLASH_FP_MCU:
+        print("# Using flash_fp_mcu over ssh")
+        cmd.append(FLASH_FP_MCU_FLASH_SCRIPT)
     else:
         logging.error('Unknown flasher: "%s"', flasher)
         return False
@@ -659,9 +967,11 @@ def flash(
             image_path,
         ]
     )
-    logging.debug('Running command: "%s"', " ".join(cmd))
-    completed_process = subprocess.run(cmd, check=False)
-    return completed_process.returncode == 0
+    # logging.debug('Running command: "%s"', " ".join(cmd))
+    # completed_process = subprocess.run(cmd, check=False)
+    # return completed_process.returncode == 0
+    harness.flash(pathlib.Path(image_path))
+    return True
 
 
 def patch_image(test: TestConfig, image_path: str):
@@ -731,15 +1041,17 @@ def run_test(
 
     # Wait for boot to finish
     time.sleep(reboot_timeout)
-    console.write("\n".encode())
+    # console.write("\n".encode())
     if test.imagetype_to_use == ImageType.RO:
-        console.write("reboot ro\n".encode())
+        # console.write("reboot ro\n".encode())
+        harness.reboot_ro()
         time.sleep(reboot_timeout)
 
     # Skip runtest if using standard app type
     if test.apptype_to_use != ApplicationType.PRODUCTION:
-        test_cmd = "runtest " + " ".join(test.test_args) + "\n"
-        console.write(test_cmd.encode())
+        # test_cmd = "runtest " + " ".join(test.test_args) + "\n"
+        # console.write(test_cmd.encode())
+        harness.start_test(test.test_args)
 
     logging.debug("Calling pre-test callback")
     if not test.pre_test_callback(build_board):
@@ -747,7 +1059,7 @@ def run_test(
         return False
 
     while True:
-        console.flush()
+        # console.flush()
         line = readline(executor, console, 1)
         if not line:
             now = time.time()
@@ -880,16 +1192,17 @@ def flash_and_run_test(
     logging.info('Running test: "%s"', test.config_name)
 
     with ExitStack() as stack:
-        if args.remote and args.console_port:
-            console_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            console_socket.connect((args.remote, args.console_port))
-            console = stack.enter_context(
-                console_socket.makefile(mode="rwb", buffering=0)
-            )
-        else:
-            # pylint: disable-next=consider-using-with
-            console_file = open(get_console(board_config), "wb+", buffering=0)
-            console = stack.enter_context(console_file)
+        # if args.remote and args.console_port:
+        #     console_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        #     console_socket.connect((args.remote, args.console_port))
+        #     console = stack.enter_context(
+        #         console_socket.makefile(mode="rwb", buffering=0)
+        #     )
+        # else:
+        #     # pylint: disable-next=consider-using-with
+        #     console_file = open(get_console(board_config), "wb+", buffering=0)
+        #     console = stack.enter_context(console_file)
+        console = stack.enter_context(harness.console())
 
         return run_test(
             test,
@@ -970,6 +1283,12 @@ def main():
         default=default_tests,
     )
 
+    parser.add_argument(
+        "--print_tests",
+        action="store_true",
+        help="Print selected tests and exit",
+    )
+
     log_level_choices = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
     parser.add_argument(
         "--log_level", "-l", choices=log_level_choices, default="DEBUG"
@@ -1020,6 +1339,9 @@ def main():
 
     board_config = BOARD_CONFIGS[args.board]
     test_list = get_test_list(board_config, args.tests, args.with_private)
+    if args.print_tests:
+        print(" ".join(test.config_name for test in test_list))
+        return 0
     logging.debug("Running tests: %s", [test.config_name for test in test_list])
 
     with ThreadPoolExecutor(max_workers=1) as executor:
