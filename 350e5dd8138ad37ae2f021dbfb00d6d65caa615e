@@ -46,6 +46,30 @@
       },
       "revId": "350e5dd8138ad37ae2f021dbfb00d6d65caa615e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7ade11e_16a16fb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-21T00:17:18Z",
+      "side": 1,
+      "message": "Yes, `fpsensor_hw` passes for bloonchipper every time, when I test on a ChromeOS DUT using crrev.com/c/4702979.\n\n```\nDEBUG:[5.825132 RUNNING TEST\nDEBUG:]\nDEBUG:[\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] Running 1 test from 1 test suite.\nDEBUG:[----------] Global test environment set-up.\nDEBUG:[----------] 1 test from FpSensor\nDEBUG:[ RUN      ] FpSensor.CheckHardwareID\nDEBUG:[       OK ] FpSensor.CheckHardwareID (0 ms)\nDEBUG:[----------] 1 test from FpSensor (0 ms total)\nDEBUG:\nDEBUG:[----------] Global test environment tear-down\nDEBUG:[\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] 1 test from 1 test suite ran. (1 ms total)\nDEBUG:[  PASSED  ] 1 test.\nDEBUG:Pass!\nDEBUG:[]\nDEBUG:Calling post-test callback\nTest \"fpsensor_hw\": PASSED\n```",
+      "parentUuid": "c227b7d9_7aadb276",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 52
+      },
+      "revId": "350e5dd8138ad37ae2f021dbfb00d6d65caa615e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
