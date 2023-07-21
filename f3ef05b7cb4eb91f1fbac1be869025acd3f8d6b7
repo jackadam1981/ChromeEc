@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb291e5_1b868dd6",
+        "filename": "zephyr/test/ap_power/src/ap_pwrseq.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-07-21T19:26:42Z",
+      "side": 1,
+      "message": "Some of these testcases only applied to ADL, there should be a better way to do this, maybe something similar to `src/signals.c` that was moved to `src/nissa_signals.c`.",
+      "range": {
+        "startLine": 214,
+        "startChar": 12,
+        "endLine": 214,
+        "endChar": 35
+      },
+      "revId": "f3ef05b7cb4eb91f1fbac1be869025acd3f8d6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

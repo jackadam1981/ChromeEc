@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "58bcb71b_84cb208c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-07-21T19:26:42Z",
+      "side": 1,
+      "message": "I see, then we are targeting to exercise Architecture and chipset code only for every SOC and leave board specific code to corresponding board test project.\nIn that case we would need to make AP Power sequence driver CL:3645011 mockable to prevent including all its framework code in board test.",
+      "parentUuid": "fc0c82d4_ae162ebc",
+      "revId": "d20a777cc733834d68e1d833bc42b7f425e80dc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "59e25236_84be3f52",
