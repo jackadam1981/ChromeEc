@@ -16,6 +16,24 @@
       "message": "@mlchao@nuvoton.com thanks for preparing this in advance, had to reupload it to fix a clang-format issue and tweaks few things to the message but it\u0027s otherwise unmodified. Good stuff.",
       "revId": "4d5b04b6051028959589e90129c289c733cbb8f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4b80ca_eafbc818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2023-07-21T07:01:29Z",
+      "side": 1,
+      "message": "Hi @fabiobaltieri@google.com, thanks for uploading these patch sets to fix submitting issues. Regarding `LOW_COVERAGE_REASON` and issue b/292126499, we do run test suites developed by ourselves like [test_write](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/test/drivers/cros_flash/src/main.c#600), [test_erase](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/test/drivers/cros_flash/src/main.c#617) and so on in cros_flash test suite. Nuvoton will study how to link and execute the cros-flash driver tests on our evb or chromebook to cover this and further CLs.",
+      "parentUuid": "acf7254f_bdf9db8e",
+      "revId": "4d5b04b6051028959589e90129c289c733cbb8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
