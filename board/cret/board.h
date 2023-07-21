@@ -14,6 +14,8 @@
 /* Save some flash space */
 #define CONFIG_CHIP_INIT_ROM_REGION
 #define CONFIG_DEBUG_ASSERT_BRIEF
+#undef CONFIG_POWER_SLEEP_FAILURE_DETECTION
+#undef CONFIG_CHIPSET_RESUME_INIT_HOOK
 
 /* EC console commands */
 #define CONFIG_CMD_TCPC_DUMP
