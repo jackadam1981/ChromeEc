@@ -1,6 +1,12 @@
 common:
   platform_allow: native_posix
 tests:
+  ec.ro:
+    extra_args:
+      - EXTRA_CFLAGS=-DSECTION_IS_RO
+  ec.rw:
+    extra_args:
+      - EXTRA_CFLAGS=-DSECTION_IS_RW
   amd_power.default:
     extra_dtc_overlay_files:
-    - boards/native_posix.overlay
+      - boards/native_posix.overlay
