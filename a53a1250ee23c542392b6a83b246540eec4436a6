@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a9b6fa_fe31e3ae",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-07-21T20:12:29Z",
+      "side": 1,
+      "message": "A lot of the ti50 stats don\u0027t apply to cr50. These are some things that help for debugging cr50 issues. Do you think it\u0027s ok to use a different vendor command for cr50?",
+      "revId": "a53a1250ee23c542392b6a83b246540eec4436a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
