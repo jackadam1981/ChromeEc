@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3baecd62_6c253eee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-07-21T19:11:03Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "cc0b207e_ea2eeeae",
+      "revId": "4681ee47352e36faed2764c443ecfc9d4a66ffc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7efce463_af27dcdf",
         "filename": "zephyr/program/nissa/src/board_power.c",
         "patchSetId": 1
