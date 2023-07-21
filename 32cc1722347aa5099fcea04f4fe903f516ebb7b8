@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "783ef9b0_d2b80f8e",
+        "filename": "zephyr/test/rex/boards/native_posix.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-21T14:13:13Z",
+      "side": 1,
+      "message": "Actually similar to what we have in Rex program, the common DT config goes into native posix overlay, I will soon create a CL with proper segregation of tests in respective project folders. \n\nThen we can have a separate DT config file for each project and include it in testcase YAML, then we don\u0027t need to worry about GPIO pin conflict. What are your thoughts Caveh",
+      "revId": "32cc1722347aa5099fcea04f4fe903f516ebb7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
