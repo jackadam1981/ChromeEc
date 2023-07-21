@@ -34,6 +34,24 @@
       "parentUuid": "d226d27b_c0fc0a17",
       "revId": "7cedf1fcf7fdc925723b38c556ca0b53b6ca6055",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "808a3553_eccdc755",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-21T00:07:15Z",
+      "side": 1,
+      "message": "I\u0027m basically onboard with this, but I\u0027m still wondering how it works.\n\nIf the EC supports DP 2.1, and the kernel tells it to enter DP mode, it would only be appropriate for the EC to enter DP 2.1 if the kernel supported DP 2.1. If the kernel doesn\u0027t support DP 2.1, it wouldn\u0027t be able to handle the DP 2.1 connection the EC created.\n\nIf the kernel supports DP 2.1, and the EC doesn\u0027t, wouldn\u0027t the kernel just ask the EC to enter DP mode and use what it got?\n\nDoes the kernel need a way to tell which DP version the EC actually entered? If so, this doesn\u0027t seem sufficient.",
+      "parentUuid": "e9facdaf_ee62f5d3",
+      "revId": "7cedf1fcf7fdc925723b38c556ca0b53b6ca6055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
