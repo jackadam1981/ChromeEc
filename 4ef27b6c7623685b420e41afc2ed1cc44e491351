@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32952eec_118f162e",
+        "filename": "zephyr/program/skyrim/adc.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1568322
+      },
+      "writtenOn": "2023-07-21T08:32:14Z",
+      "side": 1,
+      "message": "As we discussed in person.\nPlease convert this to a macro defined in include/cros/thermistor/thermistor.dtsi",
+      "revId": "4ef27b6c7623685b420e41afc2ed1cc44e491351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
