@@ -70,6 +70,30 @@
       },
       "revId": "62ccb898ced690981ad617ef809ac929f277151d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a38c71_ed550625",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-07-21T18:36:56Z",
+      "side": 1,
+      "message": "Hmmm. Using a new icetower board and remapping the reset line as the power control, we see the following results:\n\n```\nTest \"production_app_test\": PASSED\nTest \"abort\": PASSED\nTest \"aes\": PASSED\nTest \"always_memset\": PASSED\nTest \"benchmark\": PASSED\nTest \"boringssl_crypto\": PASSED\nTest \"cortexm_fpu\": PASSED\nTest \"crc\": PASSED\nTest \"exception\": FAILED\nTest \"flash_physical\": PASSED\nTest \"flash_write_protect\": PASSED\nTest \"fpsensor_auth_crypto_stateful\": PASSED\nTest \"fpsensor_auth_crypto_stateless\": PASSED\nTest \"fpsensor_hw\": FAILED\nTest \"fpsensor_spi_ro\": PASSED\nTest \"fpsensor_spi_rw\": PASSED\nTest \"fpsensor_uart_ro\": PASSED\nTest \"fpsensor_uart_rw\": PASSED\nTest \"ftrapv\": PASSED\nTest \"libc_printf\": PASSED\nTest \"global_initialization\": PASSED\nTest \"libcxx\": PASSED\nTest \"malloc\": PASSED\nTest \"mpu_ro\": PASSED\nTest \"mpu_rw\": PASSED\nTest \"mutex\": PASSED\nTest \"panic\": PASSED\nTest \"pingpong\": PASSED\nTest \"printf\": PASSED\nTest \"queue\": PASSED\nTest \"rng_benchmark\": PASSED\nTest \"rollback_region0\": PASSED\nTest \"rollback_region1\": PASSED\nTest \"rollback_entropy\": PASSED\nTest \"rtc\": PASSED\nTest \"sbrk\": PASSED\nTest \"sha256\": PASSED\nTest \"sha256_unrolled\": PASSED\nTest \"static_if\": PASSED\nTest \"stdlib\": PASSED\nTest \"std_vector\": PASSED\nTest \"system_is_locked_wp_on\": PASSED\nTest \"system_is_locked_wp_off\": PASSED\nTest \"timer\": PASSED\nTest \"timer_dos\": PASSED\nTest \"tpm_seed_clear\": PASSED\nTest \"unaligned_access\": PASSED\nTest \"unaligned_access_benchmark\": PASSED\nTest \"utils\": PASSED\nTest \"utils_str\": PASSED\nTest \"unaligned_access_dartmonkey_v2.0.2887\": PASSED\nTest \"unaligned_access_nocturne_fp_v2.2.64\": PASSED\nTest \"unaligned_access_nami_fp_v2.2.144\": PASSED\nTest \"panic_data_dartmonkey_v2.0.2887\": PASSED\nTest \"panic_data_nocturne_fp_v2.2.64\": PASSED\nTest \"panic_data_nami_fp_v2.2.144\": PASSED\n```\nNote: I don\u0027t have a sensor plugged in.",
+      "parentUuid": "d53b5a84_0d8a8d9b",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 50
+      },
+      "revId": "62ccb898ced690981ad617ef809ac929f277151d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
