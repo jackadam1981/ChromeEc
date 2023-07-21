@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4c69143_b6ece785",
+        "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-21T13:59:12Z",
+      "side": 1,
+      "message": "We are using following variable `eeprom_cbi_config` from `cbi_transfer.h`",
+      "parentUuid": "d44131f4_9ff0c9f1",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f71fe57_057fd0ea",
         "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
         "patchSetId": 1
@@ -191,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd27f046_43945f77",
+        "filename": "zephyr/shim/src/cbi/cros_cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-21T13:59:12Z",
+      "side": 1,
+      "message": "It\u0027s present in non-zephyr EC right, there is EEPROM and GPIO CBI drivers there, I think we need to port it to zephyr first",
+      "parentUuid": "e8804ef0_d368454c",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2e65c0b_9738952e",
         "filename": "zephyr/test/accel_cal/prj.conf",
         "patchSetId": 1
@@ -249,6 +297,30 @@
       "writtenOn": "2023-07-20T09:13:44Z",
       "side": 1,
       "message": "Unrelated change?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 87
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f8be4a9_143a19b4",
+        "filename": "zephyr/test/skyrim/tests/crystaldrift/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-21T13:59:12Z",
+      "side": 1,
+      "message": "No I added a new test file to include a CBI related function mock specific to project to make that breaking unit test run successfully",
+      "parentUuid": "22c120cd_077d7c5e",
       "range": {
         "startLine": 7,
         "startChar": 0,
