@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfebf1cf_8b16cf1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-07-21T13:20:25Z",
+      "side": 1,
+      "message": "Is it ever been tested ?\nIt seems kind of follow intel platform arch, the arm platform might need to have different setup and change in dts files.",
+      "revId": "36a3a349f44372d8b0e13fc93dc41c9e09d6d707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2003de_40e9e5ef",
+        "filename": "zephyr/program/corsola/ponyta/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-07-21T13:20:25Z",
+      "side": 1,
+      "message": "Remove the empty line here.",
+      "revId": "36a3a349f44372d8b0e13fc93dc41c9e09d6d707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
