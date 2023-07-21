@@ -687,3 +687,18 @@ if (NOT DEFINED CONFIG_BOARD_NATIVE_POSIX)
       --delete
   )
 endif()
+
+if (DEFINED CONFIG_PLATFORM_EC_TOUCHPAD_HASH_FW)
+  add_custom_target(
+    touchpad_fw_hash
+    COMMAND
+      "${PYTHON_EXECUTABLE}"
+      "${PLATFORM_EC}/zephyr/scripts/gen_touchpad_hash.py"
+      "-t" "${CONFIG_PLATFORM_EC_TOUCHPAD_VIRTUAL_SIZE}"
+      "-u" "${CONFIG_PLATFORM_EC_UPDATE_PDU_SIZE}"
+      "-f" "${TOUCHPAD_FW}"
+      "-o" "${CMAKE_CURRENT_BINARY_DIR}/include/touchpad_fw_hash.h"
+    VERBATIM
+  )
+  add_dependencies(app touchpad_fw_hash)
+endif()
