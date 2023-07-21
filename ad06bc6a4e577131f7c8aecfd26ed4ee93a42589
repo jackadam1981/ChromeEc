@@ -34,6 +34,24 @@
       "parentUuid": "4cfdc9d4_1bfe6d31",
       "revId": "ad06bc6a4e577131f7c8aecfd26ed4ee93a42589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6708e5c_168ffb3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2023-07-21T07:26:42Z",
+      "side": 1,
+      "message": "From tracker\u0027s proposal, only led behavior when power on to boot to OS screen need to be customize. There\u0027s no change when enter/resume S0ix. I update a led behavior video to issue tracker, please take a look.",
+      "parentUuid": "cb5c5083_f9ff19e6",
+      "revId": "ad06bc6a4e577131f7c8aecfd26ed4ee93a42589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
