@@ -4157,7 +4157,6 @@ static int process_get_metrics(struct transfer_descriptor *td,
 		stats.expanded_aprov_status =
 			be32toh(stats.expanded_aprov_status);
 		stats.misc_status = be32toh(stats.misc_status);
-		uint32_t bits_used = stats.misc_status >> BITS_USED_SHIFT;
 
 		printf("fs_init_time:          %d\n",
 				stats.fs_init_time);
@@ -4168,12 +4167,12 @@ static int process_get_metrics(struct transfer_descriptor *td,
 		printf("expanded_aprov_status: %X\n",
 				stats.expanded_aprov_status);
 
-		if (bits_used >= 3) {
+		if (stats.misc_status & RDD_KEEP_ALIVE_MASK) {
 			printf("rdd_keepalive:         %d\n",
 				stats.misc_status & RDD_KEEP_ALIVE_MASK);
 			printf("ccd_mode:              %d\n",
-				(stats.misc_status & CCD_MODE_MASK)
-				>> CCD_MODE_SHIFT);
+				(stats.misc_status & CCD_MODE_L_MASK)
+				>> CCD_MODE_L_SHIFT);
 		}
 	}
 	return 0;
