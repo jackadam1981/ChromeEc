@@ -5,6 +5,12 @@
 common:
   platform_allow: native_posix
 tests:
+  ec.ro:
+    extra_args:
+      - EXTRA_CFLAGS=-DSECTION_IS_RO
+  ec.rw:
+    extra_args:
+      - EXTRA_CFLAGS=-DSECTION_IS_RW
   amd.power:
     extra_configs:
       - CONFIG_TEST_AMD_POWER=y
