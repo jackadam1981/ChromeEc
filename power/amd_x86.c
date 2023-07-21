@@ -30,6 +30,8 @@
 
 #define IN_S5_PGOOD POWER_SIGNAL_MASK(X86_S5_PGOOD)
 
+#define SYSRQ_WAIT_MSEC 50
+
 static int forcing_shutdown; /* Forced shutdown in progress? */
 
 #ifdef CONFIG_POWERSEQ_FAKE_CONTROL
@@ -356,8 +358,30 @@ void power_sleep_hang_recovery(enum sleep_hang_type hang_type)
 	hook_call_deferred(&board_handle_hard_sleep_hang_data,
 			   CONFIG_HARD_SLEEP_HANG_TIMEOUT * MSEC);
 
-	CPRINTS("Warning: Detected sleep hang! Waking host up!");
-	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+	if (IS_ENABLED(CONFIG_EMULATED_SYSRQ)) {
+		/*
+		 * Send |SysRq| signal to generate a kernel panic. If the AP is
+		 * in the OS, this will generate stack traces for all of the
+		 * running CPUs and trigger a reboot. A single |SysRq| restarts
+		 * chrome, while two trigger a kernel panic.
+		 * Otherwise, if the AP is not in the kernel, this will do
+		 * nothing, so the device will continue to be hung until the
+		 * timer expires and sysrq_reboot_timeout() is called to
+		 * reboot the AP.
+		 */
+		CPRINTS("Warning: Detected sleep hang! Sending SysRq to trigger"
+			" AP kernel panic and reboot!");
+		host_send_sysrq('x');
+		/*
+		 * Wait a bit so the AP can treat them as separate SysRq
+		 * signals.
+		 */
+		usleep(SYSRQ_WAIT_MSEC * MSEC);
+		host_send_sysrq('x');
+	} else {
+		CPRINTS("Warning: Detected sleep hang! Waking host up!");
+		host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+	}
 }
 
 /**
