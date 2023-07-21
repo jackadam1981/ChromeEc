@@ -26,6 +26,12 @@
 
 #include "baseboard.h"
 
+/* Free up flash space. */
+#ifdef BOARD_KRANE
+#undef CONFIG_POWER_SLEEP_FAILURE_DETECTION
+#undef CONFIG_CHIPSET_RESUME_INIT_HOOK
+#endif /* BOARD_KRANE */
+
 #define CONFIG_USB_MUX_IT5205
 #define CONFIG_USB_MUX_VIRTUAL
 #define CONFIG_VOLUME_BUTTONS
