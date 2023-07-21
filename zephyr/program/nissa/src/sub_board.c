@@ -105,7 +105,7 @@ test_export_static void board_usb_pd_count_init(void)
  */
 DECLARE_HOOK(HOOK_INIT, board_usb_pd_count_init, HOOK_PRIO_INIT_I2C);
 
-#if NISSA_BOARD_HAS_HDMI_SUPPORT
+#if CONFIG_NISSA_BOARD_HAS_HDMI_SUPPORT
 static void hdmi_power_handler(struct ap_power_ev_callback *cb,
 			       struct ap_power_ev_data data)
 {
@@ -113,14 +113,22 @@ static void hdmi_power_handler(struct ap_power_ev_callback *cb,
 	const struct gpio_dt_spec *s3_rail =
 		GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl);
 	/* Connect AP's DDC to sub-board (default is USB-C aux) */
+#if DT_NODE_EXISTS(GPIO_DT_FROM_NODELABEL(gpio_hdmi_sel))
 	const struct gpio_dt_spec *ddc_select =
 		GPIO_DT_FROM_NODELABEL(gpio_hdmi_sel);
+#endif
 
 	switch (data.event) {
+#if DT_NODE_EXISTS(GPIO_DT_FROM_NODELABEL(gpio_hdmi_sel))
 	case AP_POWER_PRE_INIT:
 		LOG_DBG("Connecting HDMI DDC to sub-board");
 		gpio_pin_set_dt(ddc_select, 1);
 		break;
+	case AP_POWER_HARD_OFF:
+		LOG_DBG("Disconnecting HDMI sub-board DDC");
+		gpio_pin_set_dt(ddc_select, 0);
+		break;
+#endif
 	case AP_POWER_STARTUP:
 		LOG_DBG("Enabling HDMI VCC");
 		gpio_pin_set_dt(s3_rail, 1);
@@ -128,10 +136,6 @@ static void hdmi_power_handler(struct ap_power_ev_callback *cb,
 	case AP_POWER_SHUTDOWN:
 		LOG_DBG("Disabling HDMI VCC");
 		gpio_pin_set_dt(s3_rail, 0);
-		break;
-	case AP_POWER_HARD_OFF:
-		LOG_DBG("Disconnecting HDMI sub-board DDC");
-		gpio_pin_set_dt(ddc_select, 0);
 		break;
 	default:
 		LOG_ERR("Unhandled HDMI power event %d", data.event);
@@ -194,8 +198,9 @@ static void soc_it8xxx2_disable_i2c4_alt(void)
 }
 #endif /* DT_NODE_EXISTS(I2C4_NODE) */
 #endif /* CONFIG_SOC_IT8XXX2 */
-#endif /* NISSA_BOARD_HAS_HDMI_SUPPORT */
+#endif /* CONFIG_NISSA_BOARD_HAS_HDMI_SUPPORT */
 
+#if DT_NODE_EXISTS(GPIO_DT_FROM_ALIAS(gpio_en_sub_s5_rails))
 static void lte_power_handler(struct ap_power_ev_callback *cb,
 			      struct ap_power_ev_data data)
 {
@@ -216,6 +221,7 @@ static void lte_power_handler(struct ap_power_ev_callback *cb,
 		break;
 	}
 }
+#endif
 
 /**
  * Configure GPIOs (and other pin functions) that vary with present sub-board.
@@ -227,7 +233,6 @@ static void lte_power_handler(struct ap_power_ev_callback *cb,
 static void nereid_subboard_config(void)
 {
 	enum nissa_sub_board_type sb = nissa_get_sb_type();
-	static struct ap_power_ev_callback power_cb;
 
 #if USB_PORT_ENABLE_COUNT > 1
 	BUILD_ASSERT(USB_PORT_ENABLE_COUNT == 2,
@@ -250,9 +255,12 @@ static void nereid_subboard_config(void)
 				      GPIO_OUTPUT);
 	} else {
 		/* Turn off unused pins */
+#if DT_NODE_EXISTS(GPIO_DT_FROM_NODELABEL(gpio_sub_usb_a1_ilimit_sdp))
 		gpio_pin_configure_dt(
 			GPIO_DT_FROM_NODELABEL(gpio_sub_usb_a1_ilimit_sdp),
 			GPIO_DISCONNECTED);
+#endif
+
 		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_usb_a1_vbus),
 				      GPIO_DISCONNECTED);
 		/* Disable second USB-A port enable GPIO */
@@ -275,7 +283,7 @@ static void nereid_subboard_config(void)
 #endif
 
 	switch (sb) {
-#if NISSA_BOARD_HAS_HDMI_SUPPORT
+#if CONFIG_NISSA_BOARD_HAS_HDMI_SUPPORT
 	case NISSA_SB_HDMI_A: {
 		/*
 		 * HDMI: two outputs control power which must be configured to
@@ -284,6 +292,7 @@ static void nereid_subboard_config(void)
 		 */
 		const struct gpio_dt_spec *hpd_gpio =
 			GPIO_DT_FROM_ALIAS(gpio_hpd_odl);
+		static struct ap_power_ev_callback power_cb;
 		static struct gpio_callback hdmi_hpd_cb;
 		int rv, irq_key;
 
@@ -336,6 +345,9 @@ static void nereid_subboard_config(void)
 		 * LTE: Set up callbacks for enabling/disabling
 		 * sub-board power on S5 state.
 		 */
+#if DT_NODE_EXISTS(GPIO_DT_FROM_ALIAS(gpio_en_sub_s5_rails))
+		static struct ap_power_ev_callback power_cb;
+
 		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_sub_s5_rails),
 				      GPIO_OUTPUT_INACTIVE);
 		/* Control LTE power when CPU entering or
@@ -345,6 +357,7 @@ static void nereid_subboard_config(void)
 					  AP_POWER_HARD_OFF |
 						  AP_POWER_PRE_INIT);
 		ap_power_ev_add_callback(&power_cb);
+#endif
 		break;
 
 	default:
