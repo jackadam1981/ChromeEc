@@ -264,6 +264,128 @@ static void lpc_s0ix_resume_restore_masks(void)
 	backup_sci_mask = backup_smi_mask = 0;
 }
 
+#if defined(SECTION_IS_RW) && defined(CONFIG_POWER_SLEEP_FAILURE_DETECTION)
+
+/**
+ * S0ix Hang Recovery Fallback Routines.
+ *
+ * Only runs in RW to de-risk an unrecoverable boot loop in RO.
+ * power_board_s0ix_hang_detected is triggered by the common host_sleep S0ix
+ * hang detection.
+ */
+
+/* These counters are reset whenever there's a successful resume */
+static int soft_sleep_hang_count;
+static int hard_sleep_hang_count;
+
+/* Shutdown or reset on hard hang */
+static int shutdown_on_hard_hang;
+
+static void board_handle_hard_sleep_hang(void);
+DECLARE_DEFERRED(board_handle_hard_sleep_hang);
+
+/**
+ * Hard hang detection timers are stopped on any suspend, resume, reset or
+ * shutdown event.
+ */
+static void stop_hard_hang_timer(void)
+{
+	hook_call_deferred(&board_handle_hard_sleep_hang_data, -1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, stop_hard_hang_timer, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, stop_hard_hang_timer, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESET, stop_hard_hang_timer, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, stop_hard_hang_timer, HOOK_PRIO_DEFAULT);
+
+/**
+ * Reboot or shutdown when hard sleep hang detected.
+ * This timer is stopped on suspend, resume, reset or shutdown events.
+ */
+static void board_handle_hard_sleep_hang(void)
+{
+	hard_sleep_hang_count += 1;
+	/* Avoid race condition */
+	stop_hard_hang_timer();
+
+	if (shutdown_on_hard_hang) {
+		ccprints("Very hard S0ix sleep hang detected!!! "
+			 "Shutting down AP now!");
+		chipset_force_shutdown(CHIPSET_SHUTDOWN_BOARD_CUSTOM);
+	} else {
+		ccprints("Hard S0ix sleep hang detected!! Resetting AP now!");
+		/* If AP reset does not break hang, force a shutdown */
+		shutdown_on_hard_hang = true;
+		ccprints("AP will be shutdown in %dms if hang persists",
+			 CONFIG_HARD_SLEEP_HANG_TIMEOUT);
+		hook_call_deferred(&board_handle_hard_sleep_hang_data,
+				   CONFIG_HARD_SLEEP_HANG_TIMEOUT * MSEC);
+		chipset_reset(CHIPSET_RESET_HANG_REBOOT);
+	}
+}
+
+void power_sleep_hang_recovery(enum sleep_hang_type hang_type)
+{
+	soft_sleep_hang_count += 1;
+
+	/* Avoid race condition */
+	stop_hard_hang_timer();
+
+	if (hang_type == SLEEP_HANG_S0IX_SUSPEND)
+		ccprints("S0ix suspend sleep hang detected!");
+	else if (hang_type == SLEEP_HANG_S0IX_RESUME)
+		ccprints("S0ix resume sleep hang detected!");
+
+	ccprints("Consecutive sleep hang count: soft=%d hard=%d",
+		 soft_sleep_hang_count, hard_sleep_hang_count);
+
+	if (hard_sleep_hang_count == 0) {
+		/* Try an AP reset first */
+		shutdown_on_hard_hang = false;
+		ccprints("AP will be force reset in %dms if hang persists",
+			 CONFIG_HARD_SLEEP_HANG_TIMEOUT);
+	} else {
+		/* Avoid reboot loop that drains battery and just shutdown */
+		shutdown_on_hard_hang = true;
+		ccprints("Consecutive(%d) hard sleep hangs detected!",
+			 hard_sleep_hang_count);
+		ccprints("AP will be force shutdown in %dms if hang persists",
+			 CONFIG_HARD_SLEEP_HANG_TIMEOUT);
+	}
+
+	/*
+	 * Start a timer to manually reset the AP, in case it's just slow.
+	 */
+	hook_call_deferred(&board_handle_hard_sleep_hang_data,
+			   CONFIG_HARD_SLEEP_HANG_TIMEOUT * MSEC);
+
+	CPRINTS("Warning: Detected sleep hang! Waking host up!");
+	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+}
+
+/**
+ * Reset hang counters whenever a resume is successful
+ */
+static void reset_hang_counters(void)
+{
+	if (hard_sleep_hang_count || soft_sleep_hang_count)
+		ccprints("Successful S0ix resume after consecutive hangs: "
+			 "soft=%d hard=%d",
+			 soft_sleep_hang_count, hard_sleep_hang_count);
+	hard_sleep_hang_count = 0;
+	soft_sleep_hang_count = 0;
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, reset_hang_counters, HOOK_PRIO_DEFAULT);
+
+#else /* SECTION_IS_RW && CONFIG_POWER_SLEEP_FAILURE_DETECTION */
+
+void power_sleep_hang_recovery(enum sleep_hang_type hang_type)
+{
+	CPRINTS("Warning: Detected sleep hang! Waking host up!");
+	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+}
+
+#endif /* SECTION_IS_RW && CONFIG_POWER_SLEEP_FAILURE_DETECTION */
+
 __override void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 {
 	/*
@@ -283,8 +405,7 @@ __override void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_AMD_STB_DUMP))
 		amd_stb_dump_trigger();
 
-	CPRINTS("Warning: Detected sleep hang! Waking host up!");
-	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+	power_sleep_hang_recovery(hang_type);
 }
 
 static void handle_chipset_reset(void)
