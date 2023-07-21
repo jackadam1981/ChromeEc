@@ -34,6 +34,24 @@
       "parentUuid": "acf7254f_bdf9db8e",
       "revId": "4d5b04b6051028959589e90129c289c733cbb8f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e51b0f3_ee8e39c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-21T09:31:06Z",
+      "side": 1,
+      "message": "Oh thanks for clarifying, those bugs are mainly there to follow up on it, the system checks for code coverage and blocks in cases like this. If it\u0027s tested out of band somehow it may make sense to exclude it somehow.",
+      "parentUuid": "ee4b80ca_eafbc818",
+      "revId": "4d5b04b6051028959589e90129c289c733cbb8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
