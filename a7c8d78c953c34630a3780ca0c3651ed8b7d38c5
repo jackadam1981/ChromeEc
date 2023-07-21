@@ -286,6 +286,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13682765_b482ba13",
+        "filename": "zephyr/test/amd_power/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-21T15:38:39Z",
+      "side": 1,
+      "message": "These should be automatic based on devicetree if possible.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22c120cd_077d7c5e",
         "filename": "zephyr/test/skyrim/tests/crystaldrift/CMakeLists.txt",
         "patchSetId": 1
