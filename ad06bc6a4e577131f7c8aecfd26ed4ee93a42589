@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cfdc9d4_1bfe6d31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2023-07-21T07:10:59Z",
+      "side": 1,
+      "message": "Do you need to implement `board_led_auto_control ` like below?\n\n```\nvoid board_led_auto_control(void)\n{\n        if (chipset_in_state(CHIPSET_STATE_ON))\n                led_resume();\n        else if (chipset_in_state(CHIPSET_STATE_SUSPEND))\n                led_suspend_hook();\n        else if (chipset_in_state(CHIPSET_STATE_ANY_OFF))\n                led_shutdown_hook();\n}\n```",
+      "revId": "ad06bc6a4e577131f7c8aecfd26ed4ee93a42589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
