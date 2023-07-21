@@ -125,6 +125,12 @@ int battery_is_present(void)
 	return 1;
 }
 
+static enum ec_image __running_copy;
+enum ec_image system_get_image_copy(void)
+{
+	return __running_copy;
+}
+
 /**
  * @brief FFF fakes that will be registered as a callback to monitor SYS reset
  * and watch the power button output
@@ -205,6 +211,8 @@ void amd_power_before(void *fixture)
 	system_jumped_to_this_image_fake.return_val = 0;
 	RESET_FAKE(interrupt_sys_reset_monitor);
 	RESET_FAKE(interrupt_pwr_btn_monitor);
+	/* Mock we're running in RO */
+	__running_copy = EC_IMAGE_RO;
 
 	memset(&hook_counts, 0, sizeof(hook_counts));
 
@@ -547,6 +555,86 @@ ZTEST(amd_power, test_power_stb_dump_interrupt)
 
 	/* Observe we're not longer asserting the OUT pin */
 	zassert_equal(gpio_emul_output_get(gpio_dev, STB_OUT_PIN), 0);
+}
+
+ZTEST(amd_power, test_power_handle_suspend_hang)
+{
+	struct ec_params_host_sleep_event_v1 host_sleep_ev_p = {
+		.sleep_event = HOST_SLEEP_EVENT_S0IX_SUSPEND,
+		.suspend_params = { EC_HOST_SLEEP_TIMEOUT_DEFAULT },
+	};
+	struct ec_response_host_sleep_event_v1 host_sleep_ev_r;
+	struct host_cmd_handler_args host_sleep_ev_args = BUILD_HOST_COMMAND(
+		EC_CMD_HOST_SLEEP_EVENT, 1, host_sleep_ev_r, host_sleep_ev_p);
+
+	amd_power_s0_on();
+	zassert_equal(hook_counts.reset_count, 0);
+
+	/*
+	 * We only handle sleep hangs in RW to prevent the AP getting stuck in
+	 * RO
+	 */
+	__running_copy = EC_IMAGE_RW;
+
+	/* Send suspend event, but fail to actually transition the signal */
+	zassert_ok(host_command_process(&host_sleep_ev_args));
+	k_sleep(K_MSEC(CONFIG_SLEEP_TIMEOUT_MS + 1));
+
+	/* The AP has not been recovered yet */
+	zassert_equal(hook_counts.reset_count, 0);
+
+	/* Wait for a hard sleep hang */
+	k_sleep(K_MSEC(CONFIG_HARD_SLEEP_HANG_TIMEOUT + 1));
+
+	/* Verify the SOC was reset to recover the hard sleep hang */
+	zassert_equal(power_get_state(), POWER_S0);
+	zassert_equal(hook_counts.reset_count, 1);
+}
+
+ZTEST(amd_power, test_power_handle_resume_hang)
+{
+	static const struct device *gpio_dev = GPIO_DEVICE;
+	struct ec_params_host_sleep_event_v1 host_sleep_ev_p = {
+		.sleep_event = HOST_SLEEP_EVENT_S0IX_SUSPEND,
+		.suspend_params = { EC_HOST_SLEEP_TIMEOUT_DEFAULT },
+	};
+	struct ec_response_host_sleep_event_v1 host_sleep_ev_r;
+	struct host_cmd_handler_args host_sleep_ev_args = BUILD_HOST_COMMAND(
+		EC_CMD_HOST_SLEEP_EVENT, 1, host_sleep_ev_r, host_sleep_ev_p);
+
+	amd_power_s0_on();
+	zassert_equal(hook_counts.reset_count, 0);
+
+	/*
+	 * We only handle sleep hangs in RW to prevent the AP getting stuck in
+	 * RO
+	 */
+	__running_copy = EC_IMAGE_RW;
+
+	/* Send sleep event */
+	zassert_ok(host_command_process(&host_sleep_ev_args));
+	zassert_ok(gpio_emul_input_set(gpio_dev, SLP_S3_PIN, 0));
+	k_sleep(K_MSEC(CONFIG_SLEEP_TIMEOUT_MS + 1));
+
+	/* The AP suspended... */
+	zassert_equal(hook_counts.suspend_count, 1);
+	/* ...so no recovery required */
+	zassert_equal(hook_counts.reset_count, 0);
+
+	/* Toggle resume signal, but fail to send the event */
+	hook_counts.resume_count = 0;
+	zassert_ok(gpio_emul_input_set(gpio_dev, SLP_S3_PIN, 1));
+	k_sleep(K_MSEC(CONFIG_SLEEP_TIMEOUT_MS + 1));
+
+	/* The AP has not been recovered yet */
+	zassert_equal(hook_counts.reset_count, 0);
+
+	/* Wait for a hard sleep hang */
+	k_sleep(K_MSEC(CONFIG_HARD_SLEEP_HANG_TIMEOUT + 1));
+
+	/* Verify the SOC was reset to recover the hard sleep hang */
+	zassert_equal(hook_counts.reset_count, 1);
+	zassert_equal(power_get_state(), POWER_S0);
 }
 
 ZTEST(amd_power, test_power_forced_shutdown)
