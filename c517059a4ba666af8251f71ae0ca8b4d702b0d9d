@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65d7fd27_33aa02d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-07-21T23:14:52Z",
+      "side": 1,
+      "message": "not sure why code coverage says 77%. Gerrit is not highlighting for me which lines are covered and which ones are uncovered so I\u0027m not sure how to fix it.",
+      "revId": "c517059a4ba666af8251f71ae0ca8b4d702b0d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fdccce3_57133f35",
+        "filename": "zephyr/test/rex/boards/screebo/screebo.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-07-21T23:14:52Z",
+      "side": 1,
+      "message": "The original file marked this as `ACTIVE_HIGH`, but `interupts.dtsi` from rex clearly marks `flags \u003d \u003cGPIO_INT_EDGE_FALLING\u003e;`. I\u0027ve changed this to `ACTIVE_LOW`.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 41
+      },
+      "revId": "c517059a4ba666af8251f71ae0ca8b4d702b0d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c0728d5_1023e50e",
+        "filename": "zephyr/test/rex/src/screebo_usb_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-07-21T23:14:52Z",
+      "side": 1,
+      "message": "There seems to be an error in `cros_cbi_get_fw_config_fake` where setting `mb_usb4` does not correctly change the driver to the non-alt version, even though setting `mb_usb3` correctly changes the driver to is-alt.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 33
+      },
+      "revId": "c517059a4ba666af8251f71ae0ca8b4d702b0d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
