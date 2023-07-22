@@ -52,6 +52,24 @@
       "parentUuid": "2bf842b9_5a570033",
       "revId": "0b135117684b7d4283526e410a3dc4c8a7ccbfe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "371cdf4d_85130812",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-07-22T02:46:30Z",
+      "side": 1,
+      "message": "Based on issue comment #36 waveform, USB_A0_RT_RST_ODL cause EC can\u0027t access PS8811.\nAnd we also found even if we can write to PS8811, data will be reset by this pin.\nCurrently we can delay the tuning timing to 10s.\nAnd I think EC need get USB_A0_RT_RST_ODL status for this tuning function.",
+      "parentUuid": "f388d3e4_c0cfa906",
+      "revId": "0b135117684b7d4283526e410a3dc4c8a7ccbfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

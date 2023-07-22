@@ -534,6 +534,24 @@
       "message": "Does it makes sense to move this method and any other board AP power related methods to board_power.c",
       "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44920117_138354b9",
+        "filename": "zephyr/program/rex/rex/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-07-22T02:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5e96fe4_a80dbe00",
+      "revId": "9cd722e544555ff32b8b37e6094430f9371c1764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
