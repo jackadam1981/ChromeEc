@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29dc1ded_3a2e0329",
+        "filename": "board/helipilot/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-07-22T01:08:57Z",
+      "side": 1,
+      "message": "This might be a nit, but I don\u0027t love the placement, could we move these below console defines like so please:\n\ndiff --git a/board/helipilot/board.h b/board/helipilot/board.h\nindex c2f14dbb0d..dbbe144b60 100644\n--- a/board/helipilot/board.h\n+++ b/board/helipilot/board.h\n@@ -142,6 +142,16 @@\n #undef CONSOLE_TASK_STACK_SIZE\n #define CONSOLE_TASK_STACK_SIZE 4096\n \n+/*-------------------------------------------------------------------------*\n+ * UART Host Command Interface Defines\n+ *-------------------------------------------------------------------------*\n+ */\n+#undef CONFIG_UART_HOST_COMMAND_HW\n+#define CONFIG_UART_HOST_COMMAND_HW 1\n+/* Enable UART host commands */\n+#define CONFIG_USART_HOST_COMMAND\n+\n+\n /*-------------------------------------------------------------------------*\n  * Disable Features\n  *-------------------------------------------------------------------------*",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "46ddb43b91924472f790b51ee83df4a9ff07e529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
