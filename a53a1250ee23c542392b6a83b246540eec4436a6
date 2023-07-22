@@ -16,6 +16,24 @@
       "message": "A lot of the ti50 stats don\u0027t apply to cr50. These are some things that help for debugging cr50 issues. Do you think it\u0027s ok to use a different vendor command for cr50?",
       "revId": "a53a1250ee23c542392b6a83b246540eec4436a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36ca853_bc770974",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-07-22T00:08:44Z",
+      "side": 1,
+      "message": "It makes sense to me. That way decoding can be based on the command rather than having to have another check for which gsc it is.",
+      "parentUuid": "a1a9b6fa_fe31e3ae",
+      "revId": "a53a1250ee23c542392b6a83b246540eec4436a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
