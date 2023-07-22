@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aebc034_d4ab948f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-07-22T09:06:21Z",
+      "side": 1,
+      "message": "already tested.\n\nBecause the functions of these two combined keys are directly completed by the EC, it will judge the row and column values of the combined keys in the EC. \n\nOur volume plus buttons are different from the default row and column values in the \"keyboard_config.h\", so we need to customize one in the \"keyboard_customization.h\".",
+      "parentUuid": "bfebf1cf_8b16cf1b",
+      "revId": "36a3a349f44372d8b0e13fc93dc41c9e09d6d707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d2003de_40e9e5ef",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-07-21T13:20:25Z",
       "side": 1,
       "message": "Remove the empty line here.",
+      "revId": "36a3a349f44372d8b0e13fc93dc41c9e09d6d707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "918be76a_d5626f50",
+        "filename": "zephyr/program/corsola/ponyta/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-07-22T09:06:21Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "9d2003de_40e9e5ef",
       "revId": "36a3a349f44372d8b0e13fc93dc41c9e09d6d707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
