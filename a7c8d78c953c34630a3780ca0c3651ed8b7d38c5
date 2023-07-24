@@ -405,6 +405,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4183fd71_9aa27234",
+        "filename": "zephyr/test/amd_power/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-24T10:07:43Z",
+      "side": 1,
+      "message": "Would it make sense to use `default y if !ZTEST`?",
+      "parentUuid": "ac145d1c_9b4e3d6a",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22c120cd_077d7c5e",
         "filename": "zephyr/test/skyrim/tests/crystaldrift/CMakeLists.txt",
         "patchSetId": 1
