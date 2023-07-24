@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "144fd2f9_0687273f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-07-24T21:10:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65d7fd27_33aa02d0",
+      "revId": "c517059a4ba666af8251f71ae0ca8b4d702b0d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fdccce3_57133f35",
@@ -65,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c81b9227_19a1bc81",
+        "filename": "zephyr/test/rex/boards/screebo/screebo.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-07-24T21:10:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa995ab_ca939bad",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 41
+      },
+      "revId": "c517059a4ba666af8251f71ae0ca8b4d702b0d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c0728d5_1023e50e",
@@ -102,6 +144,30 @@
       "side": 1,
       "message": "`mb_usb4` should be the default configuration, so the screebo board code only installs alternate drivers for USB3.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/rex/screebo/src/usb_config.c;l\u003d140\n\nHowever, I think I found the problem. The screebo board test sets the default driver to `ppc0_emul`, but this should be `ppc1_emul`.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/rex/boards/screebo/screebo.dtsi;l\u003d47",
       "parentUuid": "8c0728d5_1023e50e",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 33
+      },
+      "revId": "c517059a4ba666af8251f71ae0ca8b4d702b0d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b12e3e1_616ff423",
+        "filename": "zephyr/test/rex/src/screebo_usb_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2023-07-24T21:10:02Z",
+      "side": 1,
+      "message": "Fixing `ppc1_emul` did not pass the test.\n\nI think the root cause of the problem is that `ppc_chips` is a compile time property, but each test suite does not recompile the code before running the next test. It only does a \"runtime reset\", which does not reset `ppc_chips`:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/rex/src/screebo_usb_config.c;l\u003d86\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/src/bb_retimer_usb_mux.c\n\nSo after the first time alt overwrites the original ppc_chips, it never gets reset for any subsequent tests.\n\nessentially the ppc driver expects the SKU to not be hotswapped while the DUT is running but the emulated tests do exactly that.\n\nI\u0027ve put the driver reset into the reset function this time. Since I think it belongs there.",
+      "parentUuid": "bacaa345_eabedbb0",
       "range": {
         "startLine": 159,
         "startChar": 0,
