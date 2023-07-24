@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d874f932_b21d9afe",
+        "filename": "zephyr/shim/include/cbi_transfer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-24T09:40:51Z",
+      "side": 1,
+      "message": "`cros_board_info.h` is used by board specific code, if I put flash and eeprom cbi config variables there, they become public, but the usecase for them is private for CBI internal logic. That is why I avoided keeping it in `cbi_flash.h` and `cros_board_info.h`",
+      "parentUuid": "15744eef_690c4961",
+      "range": {
+        "startLine": 12,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60a25704_64abf81a",
         "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
         "patchSetId": 1
@@ -345,6 +369,30 @@
       "writtenOn": "2023-07-21T15:38:39Z",
       "side": 1,
       "message": "These should be automatic based on devicetree if possible.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac145d1c_9b4e3d6a",
+        "filename": "zephyr/test/amd_power/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-24T09:40:51Z",
+      "side": 1,
+      "message": "For GPIO CBI, seems like it\u0027s not possible to put depends on, since it\u0027s not configured through device tree but just through a Kconfig option `PLATFORM_EC_CBI_GPIO`",
+      "parentUuid": "13682765_b482ba13",
       "range": {
         "startLine": 59,
         "startChar": 0,
