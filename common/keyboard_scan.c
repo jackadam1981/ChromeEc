@@ -429,6 +429,12 @@ void set_vol_up_key(uint8_t row, uint8_t col)
 	}
 }
 
+void get_vol_up_key(uint8_t *row, uint8_t *col)
+{
+	*row = key_vol_up_row;
+	*col = key_vol_up_col;
+}
+
 /**
  * Check special runtime key combinations.
  *
