@@ -13,6 +13,7 @@
 #include <zephyr/ztest_assert.h>
 #include <zephyr/ztest_test_new.h>
 
+/* LCOV_EXCL_START */
 void pm_state_set(enum pm_state state, uint8_t substate_id)
 {
 	ARG_UNUSED(substate_id);
@@ -24,6 +25,15 @@ void pm_state_exit_post_ops(enum pm_state state, uint8_t substate_id)
 	ARG_UNUSED(state);
 	ARG_UNUSED(substate_id);
 	irq_unlock(0);
+}
+/* LCOV_EXCL_STOP */
+
+/* For line coverage of the pm handler functions. */
+ZTEST(ec_app_tests, test_pm_handlers)
+{
+	pm_state_set(0, 0);
+	irq_lock();
+	pm_state_exit_post_ops(0, 0);
 }
 
 #ifdef CONFIG_CMD_AP_RESET_LOG
