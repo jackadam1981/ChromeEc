@@ -39,6 +39,30 @@
       },
       "revId": "13fed2e6e57a9f3c219822ca5ea8a904215cc6b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdaadec6_3c7a6c23",
+        "filename": "zephyr/program/corsola/ponyta/project.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-07-24T12:22:50Z",
+      "side": 1,
+      "message": "We only need to modify the matrix values, so neel this macro.\nBut I think KNOX\u0027s opinion is better, so I raised another CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4707397\nCan you provide some advice on these two CLs?\nThanks!",
+      "parentUuid": "91c59a4d_1a46bf8e",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "13fed2e6e57a9f3c219822ca5ea8a904215cc6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
