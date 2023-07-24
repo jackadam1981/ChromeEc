@@ -123,6 +123,9 @@ static inline void keyboard_scan_enable(int enable,
 #endif
 
 #ifdef CONFIG_KEYBOARD_RUNTIME_KEYS
+extern uint8_t key_vol_up_row;
+extern uint8_t key_vol_up_col;
+
 void set_vol_up_key(uint8_t row, uint8_t col);
 #else
 static inline void set_vol_up_key(uint8_t row, uint8_t col)
