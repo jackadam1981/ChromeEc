@@ -309,6 +309,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "083a2854_2001c6d4",
+        "filename": "zephyr/shim/src/cbi/cros_cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-24T16:06:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62851b15_528a1548",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2e65c0b_9738952e",
@@ -417,6 +441,30 @@
       "side": 1,
       "message": "Would it make sense to use `default y if !ZTEST`?",
       "parentUuid": "ac145d1c_9b4e3d6a",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3faba4f_7ed39f98",
+        "filename": "zephyr/test/amd_power/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-24T16:06:05Z",
+      "side": 1,
+      "message": "yes it does makes sense 😃",
+      "parentUuid": "4183fd71_9aa27234",
       "range": {
         "startLine": 59,
         "startChar": 0,
