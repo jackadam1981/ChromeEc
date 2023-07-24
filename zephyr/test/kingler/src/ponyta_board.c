@@ -27,6 +27,8 @@ static int interrupt_id;
 #define SSFC_MAIM_SENSORS (SSFC_LID_MAIN_SENSOR | SSFC_BASE_MAIN_SENSOR)
 #define SSFC_ALT_SENSORS (SSFC_LID_ALT_SENSOR | SSFC_BASE_ALT_SENSOR)
 
+FAKE_VALUE_FUNC(int, clock_get_freq);
+FAKE_VOID_FUNC(lpc_keyboard_resume_irq);
 FAKE_VALUE_FUNC(int, cros_cbi_get_fw_config, enum cbi_fw_config_field_id,
 		uint32_t *);
 

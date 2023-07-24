@@ -1,0 +1,22 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <board-overlays/native_posix.dts>
+#include <cros/binman.dtsi>
+#include <cros/thermistor/thermistor.dtsi>
+#include <dt-bindings/gpio_defines.h>
+#include <dt-bindings/pwm/pwm.h>
+#include <dt-bindings/wake_mask_event_defines.h>
+#include <freq.h>
+
+/ {
+	chosen {
+		cros-ec,raw-kb = &cros_kb_raw;
+	};
+
+	cros_kb_raw: kb-raw-emul {
+		compatible = "cros-ec,kb-raw-emul";
+	};
+};
