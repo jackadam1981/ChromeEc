@@ -7,6 +7,7 @@
 
 #include "cec.h"
 #include "test_util.h"
+#include "timer.h"
 
 #include <string.h>
 
@@ -122,5 +123,6 @@ void run_test(int argc, const char **argv)
 
 	RUN_TEST(test_queue_overflow);
 
+	sleep(2);
 	test_print_result();
 }
