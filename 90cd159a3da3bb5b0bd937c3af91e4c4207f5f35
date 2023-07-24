@@ -1,0 +1,366 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07fb3311_6a353783",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "Please use long options for readability.",
+      "range": {
+        "startLine": 697,
+        "startChar": 6,
+        "endLine": 697,
+        "endChar": 10
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63449ca3_9c5fd386",
+        "filename": "zephyr/Kconfig.usb_update",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "Adding cmake definitons in the command line is for developer quick-hacks only, and shouldn\u0027t be suggested as the interface to do this.  You might consider adding an appropriate flag to zmake to do what you\u0027re looking for.",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 67
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f2af26_614ba188",
+        "filename": "zephyr/Kconfig.usb_update",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "This smells like it should be devicetree instead of kconfig.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c0760b_0b3f2dfa",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "Larger picture here: it seems like this should end up in a flashmap-specified region instead of generating a C file.  This enables the hash to be changed later without needing to re-build firmware.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f47d8a2_dc44643d",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "Please add `description\u003d__doc__`",
+      "range": {
+        "startLine": 65,
+        "startChar": 35,
+        "endLine": 65,
+        "endChar": 38
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cf16d73_d55fa13b",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "See https://chromium.googlesource.com/chromiumos/chromite/+/HEAD/docs/cli-guidelines.md#Long-Option-Separators",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b16ea831_183e3a10",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "You should probably add a corresponding long option.",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b5610b2_526e1973",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "`type\u003dstr` is the default, however, you should probably consider `type\u003dPath`. (as in `pathlib.Path`)",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c633a605_da93c743",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 12
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d3aa1a9_5a55fcd1",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 89,
+        "startChar": 13,
+        "endLine": 89,
+        "endChar": 16
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d86bfea8_ad1cb6ac",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "You want `from pathlib import Path` above (so this just becomes `Path`):\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#imports",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d4f129_82babfb5",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "Any particular reason?  `utf-8` is typical.",
+      "range": {
+        "startLine": 99,
+        "startChar": 46,
+        "endLine": 99,
+        "endChar": 53
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f7c0bc1_cf8582c0",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "use `logging.error` instead of `print` for logging",
+      "range": {
+        "startLine": 106,
+        "startChar": 20,
+        "endLine": 106,
+        "endChar": 36
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da7d95af_bb2d063c",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "`None` is not of type `BinaryIO` as you declare above.  You can run `mypy` on this script for automatic advice.",
+      "range": {
+        "startLine": 118,
+        "startChar": 16,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe6d771_63fb9276",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "See https://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 20
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b19dfe02_2a0c392b",
+        "filename": "zephyr/scripts/gen_touchpad_hash.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-24T19:17:36Z",
+      "side": 1,
+      "message": "Please add tests.  At a minimum, something that just generates the file contents and compares to an expected file.",
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
