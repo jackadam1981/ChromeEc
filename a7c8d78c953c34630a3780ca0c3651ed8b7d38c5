@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15744eef_690c4961",
+        "filename": "zephyr/shim/include/cbi_transfer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-07-24T08:26:42Z",
+      "side": 1,
+      "message": "Declare it in `cros_board_info.h`? Because the `gpio_cbi_config` hasn\u0027t been ported to Zephyr.",
+      "parentUuid": "51713581_b645ff48",
+      "range": {
+        "startLine": 12,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60a25704_64abf81a",
         "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
         "patchSetId": 1
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "It\u0027s present in non-zephyr EC right, there is EEPROM and GPIO CBI drivers there, I think we need to port it to zephyr first",
       "parentUuid": "e8804ef0_d368454c",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62851b15_528a1548",
+        "filename": "zephyr/shim/src/cbi/cros_cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-07-24T08:26:42Z",
+      "side": 1,
+      "message": "Right, the `cbi_gpio` hasn\u0027t been ported to Zephyr while the `cbi_eeporom` did.\n\nThe assignment seems not consistent, between Zephyr and non-Zephyr. For consistency, how about move this assignment to `common/cbi.c`?",
+      "parentUuid": "cd27f046_43945f77",
       "range": {
         "startLine": 26,
         "startChar": 0,
