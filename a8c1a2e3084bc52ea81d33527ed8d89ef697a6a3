@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e181320c_19d8bdcc",
+        "filename": "zephyr/program/nissa/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-07-24T04:11:38Z",
+      "side": 1,
+      "message": "Enable CONFIG_NISSA_SUB_BOARD instead of making a copy; I don\u0027t see anything that needs a board-specific copy.",
+      "revId": "a8c1a2e3084bc52ea81d33527ed8d89ef697a6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
