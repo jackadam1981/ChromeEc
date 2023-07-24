@@ -590,7 +590,7 @@ static void sm5803_init(int chgnum)
 
 		if (is_platform_id_3s(platform_id)) {
 			/* 3S Battery inits */
-			/* set 13.3V VBAT_SNSP TH GPADC THRESHOLD*/
+			/* set 13.4V VBAT_SNSP TH GPADC THRESHOLD*/
 			rv |= meas_write8(chgnum, 0x26,
 					  SM5803_VBAT_SNSP_MAXTH_3S_LEVEL);
 			/* OV_VBAT HW second level (14.1V) */
@@ -1267,7 +1267,7 @@ void sm5803_handle_interrupt(int chgnum)
 					  SM5803_VBAT_SNSP_MAXTH_2S_LEVEL);
 		}
 		if (is_platform_id_3s(platform_id)) {
-			/* 3S battery: set VBAT_SENSP TH 13.3V */
+			/* 3S battery: set VBAT_SENSP TH 13.4V */
 			rv |= meas_write8(CHARGER_PRIMARY,
 					  SM5803_REG_VBATSNSP_MAX_TH,
 					  SM5803_VBAT_SNSP_MAXTH_3S_LEVEL);

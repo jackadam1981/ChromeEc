@@ -184,9 +184,9 @@ enum sm5803_gpio0_modes {
 /*
  * Set thresholds for VBATSNSP_MAX_TH GPADC interrupt generation
  * 2S battery 9v
- * 3S battery 13.3V
+ * 3S battery 13.4V
  */
-#define SM5803_VBAT_SNSP_MAXTH_3S_LEVEL 0xD8
+#define SM5803_VBAT_SNSP_MAXTH_3S_LEVEL 0xDA
 #define SM5803_VBAT_SNSP_MAXTH_2S_LEVEL 0xDC
 
 /* IBAT levels - The IBAT levels increment in 7.32mA */
