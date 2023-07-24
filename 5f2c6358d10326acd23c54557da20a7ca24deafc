@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e698243d_43aa108a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-24T21:45:49Z",
+      "side": 1,
+      "message": "The NCT38xx emulator tests are not working with this change.  But this should run on a rex board.\n\nAlso requires cherry-picking the CL stack at CL:4713446 into the third_party/zephyr/main repo.",
+      "revId": "5f2c6358d10326acd23c54557da20a7ca24deafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
