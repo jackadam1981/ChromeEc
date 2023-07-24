@@ -16,6 +16,121 @@
       "message": "Friendly ping 😊",
       "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e0e26e2_b44a435a",
+        "filename": "include/host_command.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-24T15:58:42Z",
+      "side": 1,
+      "message": "Please add some build asserts to verify compatibility of `struct host_cmd_handler_args` and `struct ec_host_cmd_handler_args`.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb81b200_956c6b4a",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 23
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-24T15:58:42Z",
+      "side": 1,
+      "message": "I believe this is redundant.  The choice picks the first config symbol defined if no `default` statements match.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af34be4_3f4ffc46",
+        "filename": "zephyr/shim/chip/npcx/CMakeLists.txt",
+        "patchSetId": 23
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-24T15:58:42Z",
+      "side": 1,
+      "message": "Nit - use `if CONFIG... OR CONFIG...` to match the ITE driver.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efbe27d5_ee045f03",
+        "filename": "zephyr/shim/include/shimmed_tasks.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-24T15:58:42Z",
+      "side": 1,
+      "message": "What happens when building the host command tests with the upstream support?  Won\u0027t both `CONFIG_TASK_HOSTCMD_THREAD_DEDICATED` and `CONFIG_EC_HOST_CMD` be set?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6858885c_13ff24c5",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-24T15:58:42Z",
+      "side": 1,
+      "message": "\"Host command thread setting mismatch between ChromeOS EC and upstream.\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 17,
+        "endLine": 29,
+        "endChar": 70
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
