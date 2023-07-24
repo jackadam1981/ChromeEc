@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aaa995ab_ca939bad",
+        "filename": "zephyr/test/rex/boards/screebo/screebo.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-24T18:54:54Z",
+      "side": 1,
+      "message": "Ack - since the test passes, LGTM.",
+      "parentUuid": "0fdccce3_57133f35",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 41
+      },
+      "revId": "c517059a4ba666af8251f71ae0ca8b4d702b0d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c0728d5_1023e50e",
         "filename": "zephyr/test/rex/src/screebo_usb_config.c",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2023-07-21T23:14:52Z",
       "side": 1,
       "message": "There seems to be an error in `cros_cbi_get_fw_config_fake` where setting `mb_usb4` does not correctly change the driver to the non-alt version, even though setting `mb_usb3` correctly changes the driver to is-alt.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 33
+      },
+      "revId": "c517059a4ba666af8251f71ae0ca8b4d702b0d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bacaa345_eabedbb0",
+        "filename": "zephyr/test/rex/src/screebo_usb_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-24T18:54:54Z",
+      "side": 1,
+      "message": "`mb_usb4` should be the default configuration, so the screebo board code only installs alternate drivers for USB3.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/rex/screebo/src/usb_config.c;l\u003d140\n\nHowever, I think I found the problem. The screebo board test sets the default driver to `ppc0_emul`, but this should be `ppc1_emul`.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/rex/boards/screebo/screebo.dtsi;l\u003d47",
+      "parentUuid": "8c0728d5_1023e50e",
       "range": {
         "startLine": 159,
         "startChar": 0,

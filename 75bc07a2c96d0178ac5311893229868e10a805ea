@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae8c25d_ac9f468e",
+        "filename": "zephyr/program/myst/src/usbc_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-24T18:54:54Z",
+      "side": 0,
+      "message": "I believe this line needs to remain and shouldn\u0027t be deleted.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 67
+      },
+      "revId": "75bc07a2c96d0178ac5311893229868e10a805ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
