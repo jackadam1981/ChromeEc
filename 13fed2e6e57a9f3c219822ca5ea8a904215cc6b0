@@ -16,6 +16,29 @@
       "message": "Is search key also moved ?",
       "revId": "13fed2e6e57a9f3c219822ca5ea8a904215cc6b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c59a4d_1a46bf8e",
+        "filename": "zephyr/program/corsola/ponyta/project.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2023-07-24T07:29:56Z",
+      "side": 1,
+      "message": "Do we really need this?\nOr we can only override board_vivaldi_keybd_config()?\n\nFrom https://source.corp.google.com/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig.keyboard;l\u003d121?q\u003dzephyr%2FKconfig.keyboard.\n\n```\n\t  Note that if your board has the standard chromeos keyboard layout other\n\t  than the top row, and you are looking only for top row customization,\n\t  then you should be looking at overriding board_vivaldi_keybd_config() instead.\n```",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "13fed2e6e57a9f3c219822ca5ea8a904215cc6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
