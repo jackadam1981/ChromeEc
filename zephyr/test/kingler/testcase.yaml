@@ -66,5 +66,7 @@ tests:
   kingler.ponyta:
     extra_configs:
     - CONFIG_TEST_PONYTA=y
+    - CONFIG_PLATFORM_EC_KEYBOARD_VIVALDI=n
     extra_dtc_overlay_files:
     - kingler.ponyta.overlay
+    - boards/ponyta.dtsi
