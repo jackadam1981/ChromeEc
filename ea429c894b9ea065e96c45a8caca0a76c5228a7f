@@ -16,6 +16,23 @@
       "message": "Excellent, thank you.",
       "revId": "ea429c894b9ea065e96c45a8caca0a76c5228a7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ba1c548_c87d95ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-24T23:43:37Z",
+      "side": 1,
+      "message": "To deal with the coverage error, add a line like\n```\nLOW_COVERAGE_REASON\u003dThis is a no-op name change; see b/266823500\n```\nin the commit message after the `TEST` line.\n\nNote that for the functional changes that come after this, you will have to actually add tests.",
+      "revId": "ea429c894b9ea065e96c45a8caca0a76c5228a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
