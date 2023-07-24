@@ -33,6 +33,7 @@ if(DEFINED CONFIG_BOARD_NEREID OR DEFINED CONFIG_BOARD_NEREID_CX)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "nereid/src/charger.c")
 endif()
 if(DEFINED CONFIG_BOARD_CRAASK)
+	zephyr_include_directories("craask/include")
 	zephyr_library_sources(
 			"craask/src/fan.c"
 			"craask/src/form_factor.c"
