@@ -10572,7 +10572,7 @@ int cmd_typec_control(int argc, char *argv[])
 	long conversion_result;
 	char *endptr;
 	int rv;
-
+	fprintf(stdout,"in cmd typec control \n");
 	if (argc < 3) {
 		fprintf(stderr,
 			"Usage: %s <port> <command> [args]\n"
@@ -10728,10 +10728,15 @@ int cmd_typec_control(int argc, char *argv[])
 		p.vdm_req_params.vdm_data_objects = vdm_index;
 	}
 
-	rv = ec_command(EC_CMD_TYPEC_CONTROL, 0, &p, sizeof(p), ec_inbuf,
+	fprintf(stdout, "%x ectypec command\n", EC_TYPEC_CMD);
+	rv = ec_command(EC_TYPEC_CMD, 0, &p, sizeof(p), ec_inbuf,
 			ec_max_insize);
-	if (rv < 0)
+	if (rv < 0) {
+		fprintf(stdout, "ec returned -1 for the command\n");
 		return -1;
+	}
+	struct typec_ctrl_resp *resp = (struct typec_ctrl_resp *) ec_inbuf;
+	fprintf(stdout, "Mode: %u\n operation%s\n", resp->mode, resp->operation);
 
 	return 0;
 }

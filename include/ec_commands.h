@@ -289,6 +289,8 @@ extern "C" {
 /* Host command interface supports version 3 protocol */
 #define EC_HOST_CMD_FLAG_VERSION_3 0x02
 
+#define EC_TYPEC_CMD 0x0605
+
 /* Wireless switch flags */
 #define EC_WIRELESS_SWITCH_ALL ~0x00 /* All flags */
 #define EC_WIRELESS_SWITCH_WLAN 0x01 /* WLAN radio */
@@ -6913,6 +6915,18 @@ enum typec_mode {
 enum typec_tbt_ufp_reply {
 	TYPEC_TBT_UFP_REPLY_NAK,
 	TYPEC_TBT_UFP_REPLY_ACK,
+};
+
+
+#define max_op_char 15
+
+enum typec_mode_abs {
+	TYPEC_MODE_AUTO,
+	TYPEC_MODE_USBORDP,
+};
+struct typec_ctrl_resp {
+	uint8_t mode;
+	char operation[max_op_char];
 };
 
 #define TYPEC_USB_MUX_SET_ALL_CHIPS 0xFF

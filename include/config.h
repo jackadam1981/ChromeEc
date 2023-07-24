@@ -35,6 +35,10 @@
 #include "env_config.h"
 #endif
 
+#ifdef CONFIG_PLATFORM_EC_TYPEC_CMD
+#define CONFIG_EC_TYPEC_CMD
+#endif
+
 /*
  * All config options are listed alphabetically and described here.
  *

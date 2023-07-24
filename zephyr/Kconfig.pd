@@ -29,6 +29,10 @@ config PLATFORM_EC_USB_PD_HOST_CMD
 	  devices which support firmware update, this is provided as well,
 	  with the firmware being sent from the AP.
 
+config PLATFORM_EC_TYPEC_CMD
+	bool "host command for typec control weak"
+	default y
+
 config PLATFORM_EC_CONSOLE_CMD_MFALLOW
 	bool "Console command: mfallow"
 	default y
