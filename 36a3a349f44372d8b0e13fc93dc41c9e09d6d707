@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd8bbd75_b4d8d7b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-07-24T00:44:10Z",
+      "side": 1,
+      "message": "What I\u0027m confused about is this seems more likely a x86 customization method based on keyboard_scan.c.\nIn arm platform, I\u0027m expect is this supposed to be implement something like : \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3548636\nAnd we also need a kernel dts change for `function-row-physmap` and `linux,keymap`.\nBut please feel free to correct me if I\u0027m wrong, we may have more discuss about this.",
+      "parentUuid": "9aebc034_d4ab948f",
+      "revId": "36a3a349f44372d8b0e13fc93dc41c9e09d6d707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d2003de_40e9e5ef",
         "filename": "zephyr/program/corsola/ponyta/CMakeLists.txt",
         "patchSetId": 5
