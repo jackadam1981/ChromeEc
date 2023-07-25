@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82c4f83e_d59b4ca2",
+        "filename": "zephyr/Kconfig.usb_update",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-25T15:45:33Z",
+      "side": 1,
+      "message": "just realized that we might want to build multiple keyboard ECs with touchpad firmwares in parallel, putting these in zmake command line is not a good choice, it\u0027s hard to pair the board name and fw path. I\u0027m planning to move this to kconfig, what do you think?",
+      "parentUuid": "63449ca3_9c5fd386",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 67
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72f2af26_614ba188",
         "filename": "zephyr/Kconfig.usb_update",
         "patchSetId": 7
