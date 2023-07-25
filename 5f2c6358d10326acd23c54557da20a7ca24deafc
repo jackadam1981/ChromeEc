@@ -16,6 +16,23 @@
       "message": "The NCT38xx emulator tests are not working with this change.  But this should run on a rex board.\n\nAlso requires cherry-picking the CL stack at CL:4713446 into the third_party/zephyr/main repo.",
       "revId": "5f2c6358d10326acd23c54557da20a7ca24deafc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d91c623d_bc33644c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-25T23:30:12Z",
+      "side": 1,
+      "message": "LGTM, adding Scott for Rex boards",
+      "revId": "5f2c6358d10326acd23c54557da20a7ca24deafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
