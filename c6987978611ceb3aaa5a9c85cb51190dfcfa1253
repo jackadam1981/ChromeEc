@@ -184,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f40b736_3765e877",
+        "filename": "zephyr/shim/include/shimmed_tasks.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-25T15:04:32Z",
+      "side": 1,
+      "message": "I\u0027ve gotten mixed up with downstream using a choice symbol, while upstream has a single Kconfig symbol.\n\nBecause `CONFIG_TASK_HOSTCMD_THREAD_MODE` only has 2 settings, it can be converted to a single Kconfig bool, just like upstream.\n\nThe new downstream bool can then get guarded with `EC_HOST_CMD`, leaving the dependency managed by Kconfig instead of an #ifdef here.\n\nIf this makes sense, you could refactor `CONFIG_TASK_HOSTCMD_THREAD_MODE` as a separate CL.",
+      "parentUuid": "a3f46b56_13894731",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6858885c_13ff24c5",
         "filename": "zephyr/shim/src/host_command.c",
         "patchSetId": 23
