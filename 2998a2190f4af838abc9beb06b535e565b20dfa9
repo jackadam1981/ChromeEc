@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92bb1c93_89a24b83",
+        "filename": "zephyr/shim/chip/npcx/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-25T19:40:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09d22561_7d7d61de",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 61
+      },
+      "revId": "2998a2190f4af838abc9beb06b535e565b20dfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fb9b0bd_eb0f2bb0",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-25T06:59:07Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 25
+      },
+      "revId": "2998a2190f4af838abc9beb06b535e565b20dfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8526bd82_f54d822a",
+        "filename": "zephyr/shim/chip/npcx/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-25T19:40:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fb9b0bd_eb0f2bb0",
       "range": {
         "startLine": 96,
         "startChar": 3,
