@@ -245,6 +245,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "086dc1ed_11893573",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T20:14:48Z",
+      "side": 1,
+      "message": "thinking about it some more this call could be made only if DP21 support and move the IF_ENABLED call blocking this call",
+      "parentUuid": "ea089dca_cf71b77d",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc6f33b7_0dc86b92",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 38
