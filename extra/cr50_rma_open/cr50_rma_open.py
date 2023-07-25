@@ -450,6 +450,7 @@ class RMAOpen(object):
     def check_version(self):
         """Make sure cr50 is running a version that supports RMA Open"""
         output = self.send_cmd_get_output('version')
+        self.is_prepvt = False
         if not output.strip():
             logging.warning(DEBUG_DEVICE, self.device)
             raise ValueError('Could not communicate with %s' % self.device)
@@ -591,6 +592,12 @@ class RMAOpen(object):
                          'should enable testlab mode.')
             logging.info('Run cr50_rma_open.py -t to enable testlab mode')
 
+    def invoke_ccd_reset(self):
+        print(self.send_cmd_get_output('ccd reset'))
+
+    def invoke_ccd_lock(self):
+        print(self.send_cmd_get_output('ccd lock'))
+
 
 def parse_args(argv):
     """Get cr50_rma_open args."""
@@ -618,6 +625,10 @@ def parse_args(argv):
                         help='the servo port')
     parser.add_argument('-I', '--ip', type=str, default='',
                         help='The DUT IP. Necessary to do ccd open')
+    parser.add_argument('--ccd_reset', action='store_true',
+                        help='Invoke ccd reset to reset capabilities')
+    parser.add_argument('--ccd_lock', action='store_true',
+                        help='Invoke ccd lock to disable access')
     return parser.parse_args(argv)
 
 
@@ -669,6 +680,13 @@ def main(argv):
             raise ValueError("Can't enable testlab mode unless ccd is open."
                              "Run through the rma open process first")
         cr50_rma_open.enable_testlab()
+
+    if opts.ccd_reset:
+        if cr50_rma_open.check(CCD_IS_UNRESTRICTED):
+            cr50_rma_open.invoke_ccd_reset()
+
+    if opts.ccd_lock:
+        cr50_rma_open.invoke_ccd_lock()
 
     cr50_rma_open.print_dut_state()
 
