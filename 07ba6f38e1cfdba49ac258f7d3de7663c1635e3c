@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "665840a8_81fd447d",
+        "filename": "zephyr/program/skyrim/program.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-25T18:59:12Z",
+      "side": 1,
+      "message": "nit: project-specific change should be in a separate CL, so it would be easier to cherry-pick/revert them separately if needed",
+      "revId": "07ba6f38e1cfdba49ac258f7d3de7663c1635e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
