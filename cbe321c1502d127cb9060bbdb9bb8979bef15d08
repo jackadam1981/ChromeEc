@@ -296,6 +296,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "436eb00a_5e851cbc",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T22:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a3cc313_57a46a7c",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e81ba6c_50a82e27",
@@ -313,6 +331,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e240b39_63a0cc06",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T22:01:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1e81ba6c_50a82e27",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd5bde33_97f19e89",
@@ -326,6 +362,24 @@
       "writtenOn": "2023-07-11T22:13:59Z",
       "side": 1,
       "message": "Nit: Don\u0027t add this extra blank line.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "820ba749_2443e36f",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T22:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd5bde33_97f19e89",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -528,6 +582,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94dec8b_36e491f3",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T22:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed0f0dbd_d00415f3",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd9146b7_3b2aa729",
@@ -580,6 +652,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e075396_aaab8a1d",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T22:01:58Z",
+      "side": 1,
+      "message": "This is leveraging the existing pd_get_am_discovery to resolve this so I assume that is why type is needed. Since the DFP/UFP version will be constant (depending on if DP21 is supported) the only thing that actually needs to be checked is the cable\u0027s version",
+      "parentUuid": "fe1bbee2_8ee64324",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab178ddf_9e12e98b",
@@ -593,6 +683,24 @@
       "writtenOn": "2023-07-19T23:32:25Z",
       "side": 1,
       "message": "This is a very deeply indented and parenthesized function. I would suggest making it easier to follow by\n1. Writing helper functions for translating the DP signaling field to DP speed.\n2. Referencing the spec table or flowchart that this logic derives from.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ddb106b_14dca156",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T22:01:58Z",
+      "side": 1,
+      "message": "Added helper function for signaling to speed. Added comment at beginning of logic with reference from DP 2.1 spec where this logic derives from.",
+      "parentUuid": "ab178ddf_9e12e98b",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -614,6 +722,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "761cc2af_67430e9e",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T22:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "284f066d_57dfac23",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24162edb_7fc2b254",
@@ -627,6 +753,24 @@
       "writtenOn": "2023-07-19T23:32:25Z",
       "side": 1,
       "message": "The call to this function is conditional on DP 2.1 support, and I think DP 2.1 support is conditional on PD 3.0 support. Therefore, you shouldn\u0027t need to check for PD 3.0 support here.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "895931c8_da624714",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T22:01:58Z",
+      "side": 1,
+      "message": "Since this is a separate standard I\u0027m really not sure PD3.0 is required. I don\u0027t see anything in the DP2.1 spec that says this or else I would gladly change this.\n\nAlso referencing Section 5.1 \nAll DisplayPort Alt Mode products shall support USB PD 3.1.\nNote: This implies that all products shall also support USB PD 2.0\n\nThis does not say USB PD 3.1 is required",
+      "parentUuid": "24162edb_7fc2b254",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
