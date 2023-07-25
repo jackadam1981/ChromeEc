@@ -16,6 +16,24 @@
       "message": "does it make sense to add this config option to cros-ec\ngiven that the implementation only exists in the zephyr\nshim?",
       "revId": "c07349fd85aeab0b498fa77fbacfc20e60eb77b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e9936a_0b181752",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-25T13:51:45Z",
+      "side": 1,
+      "message": "I would add it in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4702204/2 next to the struct definition, seems like a good #else case.",
+      "parentUuid": "956674f6_9ae787b0",
+      "revId": "c07349fd85aeab0b498fa77fbacfc20e60eb77b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
