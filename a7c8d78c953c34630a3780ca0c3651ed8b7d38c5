@@ -264,6 +264,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b92cf6ae_d388ad87",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-25T13:42:23Z",
+      "side": 1,
+      "message": "because that data should live in an area where you can\u0027t write it and trying to write on it would fire an exception and crash the MCU, why are you casting it?",
+      "parentUuid": "8d340b8e_77160d38",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 54
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8804ef0_d368454c",
         "filename": "zephyr/shim/src/cbi/cros_cbi.c",
         "patchSetId": 1
