@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10bbdacc_188d9972",
+        "filename": "common/host_command.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-25T08:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0006381d_7bb47ef1",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 23
+      },
+      "revId": "fe28f76df448bc2ec714d9baaa21fdf3b01875a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5473897a_b20d2afb",

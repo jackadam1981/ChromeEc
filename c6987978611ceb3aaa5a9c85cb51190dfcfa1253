@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "380184eb_3f81553b",
+        "filename": "include/host_command.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-25T08:22:47Z",
+      "side": 1,
+      "message": "Done in the shim.",
+      "parentUuid": "9e0e26e2_b44a435a",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb81b200_956c6b4a",
@@ -87,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5daaa130_1f615502",
+        "filename": "zephyr/shim/chip/npcx/CMakeLists.txt",
+        "patchSetId": 23
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-25T08:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af34be4_3f4ffc46",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efbe27d5_ee045f03",
@@ -112,6 +160,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3f46b56_13894731",
+        "filename": "zephyr/shim/include/shimmed_tasks.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-25T08:22:47Z",
+      "side": 1,
+      "message": "True, `HAS_TASK_HOSTCMD_DEDICATED` is never defined with the upstream. This define is used to create a shimmed task, which is not desired with the upstream. When a  dedicated thread is needed(tests), the upstream creates a new dedicated thread `CONFIG_EC_HOST_CMD_DEDICATED_THREAD`.",
+      "parentUuid": "efbe27d5_ee045f03",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6858885c_13ff24c5",
         "filename": "zephyr/shim/src/host_command.c",
         "patchSetId": 23
@@ -123,6 +195,30 @@
       "writtenOn": "2023-07-24T15:58:42Z",
       "side": 1,
       "message": "\"Host command thread setting mismatch between ChromeOS EC and upstream.\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 17,
+        "endLine": 29,
+        "endChar": 70
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf56918_58d0f15b",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-25T08:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6858885c_13ff24c5",
       "range": {
         "startLine": 29,
         "startChar": 17,
