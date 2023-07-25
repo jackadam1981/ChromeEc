@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac842fa_c4ea3617",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2023-07-25T01:47:14Z",
+      "side": 1,
+      "message": "`is_prepvt` will never be set, which is checked by other functions.",
+      "range": {
+        "startLine": 467,
+        "startChar": 13,
+        "endLine": 467,
+        "endChar": 22
+      },
+      "revId": "852eaf4a63a6d2dca094f923da1a1b685278043c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
