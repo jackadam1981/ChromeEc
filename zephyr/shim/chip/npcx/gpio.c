@@ -81,26 +81,33 @@ struct npcx_io_info {
 	bool enable;
 };
 
-#define NAMED_GPIO_INFO(node)                                      \
-	{                                                          \
-		.dev = DEVICE_DT_GET(DT_GPIO_CTLR(node, gpios)),   \
-		.port = DT_PROP(DT_GPIO_CTLR(node, gpios), index), \
-		.pin = DT_GPIO_PIN(node, gpios),                   \
-		.name = DT_NODE_FULL_NAME(node),                   \
-		.enable = true,                                    \
+#define NAMED_GPIO_INFO(node)                                             \
+	{                                                                 \
+		.dev = DEVICE_DT_GET(DT_GPIO_CTLR(node, gpios)),          \
+		.port = DT_PROP_OR(DT_GPIO_CTLR(node, gpios), index, -1), \
+		.pin = DT_GPIO_PIN(node, gpios),                          \
+		.name = DT_NODE_FULL_NAME(node),                          \
+		.enable = true,                                           \
 	},
 
-#define UNUSED_GPIO_INFO(node, prop, idx)                                     \
-	{                                                                     \
-		.dev = DEVICE_DT_GET(DT_GPIO_CTLR_BY_IDX(node, prop, idx)),   \
-		.port = DT_PROP(DT_GPIO_CTLR_BY_IDX(node, prop, idx), index), \
-		.pin = DT_GPIO_PIN_BY_IDX(node, prop, idx),                   \
-		.name = "unused pin",                                         \
-		.enable = true,                                               \
+#define UNUSED_GPIO_INFO(node, prop, idx)                                   \
+	{                                                                   \
+		.dev = DEVICE_DT_GET(DT_GPIO_CTLR_BY_IDX(node, prop, idx)), \
+		.port = DT_PROP_OR(DT_GPIO_CTLR_BY_IDX(node, prop, idx),    \
+				   index, -1),                              \
+		.pin = DT_GPIO_PIN_BY_IDX(node, prop, idx),                 \
+		.name = "unused pin",                                       \
+		.enable = true,                                             \
 	},
 
-#define NAMED_GPIO_INIT(node) \
-	COND_CODE_1(DT_NODE_HAS_PROP(node, gpios), (NAMED_GPIO_INFO(node)), ())
+#define NAMED_GPIO_IS_ON_CHIP_GPIO(node)                          \
+	COND_CODE_1(DT_NODE_HAS_COMPAT(DT_GPIO_CTLR(node, gpios), \
+				       nuvoton_npcx_gpio),        \
+		    (NAMED_GPIO_INFO(node)), ())
+
+#define NAMED_GPIO_INIT(node)                      \
+	COND_CODE_1(DT_NODE_HAS_PROP(node, gpios), \
+		    (NAMED_GPIO_IS_ON_CHIP_GPIO(node)), ())
 
 static struct npcx_io_info gpio_info[] = {
 #if DT_NODE_EXISTS(NAMED_GPIOS_NODE)
