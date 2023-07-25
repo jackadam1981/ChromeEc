@@ -916,6 +916,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d81b49d1_7b7be284",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T22:06:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "91152181_27bdc53d",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc09e5df_99040171",
@@ -1087,6 +1105,24 @@
       "side": 1,
       "message": "I believe this was left for legacy code I will see if this macro is even still being used",
       "parentUuid": "897a62a0_0646416a",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac9b08c4_ff3153e6",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T22:06:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e7af24a6_04255b62",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
