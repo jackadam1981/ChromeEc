@@ -450,6 +450,7 @@ class RMAOpen(object):
     def check_version(self):
         """Make sure cr50 is running a version that supports RMA Open"""
         output = self.send_cmd_get_output('version')
+        self.is_prepvt = False
         if not output.strip():
             logging.warning(DEBUG_DEVICE, self.device)
             raise ValueError('Could not communicate with %s' % self.device)
