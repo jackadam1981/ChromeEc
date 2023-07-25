@@ -386,6 +386,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71bfd26_7556fe10",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T19:07:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae00db0_b5adfeb1",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e59827c_64be9f14",
@@ -576,6 +594,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee1a80e7_6fd9bd02",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T19:07:28Z",
+      "side": 1,
+      "message": "decided to just remove this else if completely since it waterfalls down to HBR3 anyway",
+      "parentUuid": "58d59770_a38e36eb",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67dcd89b_a06d3952",
@@ -589,6 +625,24 @@
       "writtenOn": "2023-07-19T23:32:25Z",
       "side": 1,
       "message": "This file shouldn\u0027t be compiled if alt modes are disabled in the config. I think this check is unnecessary.",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b1a230a_e059ad6f",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T19:07:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67dcd89b_a06d3952",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
