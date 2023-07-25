@@ -16,6 +16,24 @@
       "message": "This is ok. It would also be fine to just mark those unused stubs with LCOV_EXCL comments.",
       "revId": "4485632682e57763d39f5390c3864c6324367b8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35da6b91_d874e4b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-25T10:55:36Z",
+      "side": 1,
+      "message": "I see, actually I think it makes more sense to have the LCOV_EXCL blocks, less boilerplate, I reworked the CL for doing that instead.",
+      "parentUuid": "3adeac2a_f81519d9",
+      "revId": "4485632682e57763d39f5390c3864c6324367b8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
