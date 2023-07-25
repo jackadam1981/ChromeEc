@@ -70,6 +70,8 @@ static timestamp_t vconn_oc_timer[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
+	int VBAT_OVP;
+
 	static int
 	syv682x_vbus_sink_enable(int port, int enable);
 
@@ -386,11 +388,28 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 	 * recoverable.
 	 */
 	if (regval & SYV682X_CONTROL_4_VBAT_OVP) {
+		VBAT_OVP++;
 		ppc_prints("VBAT or CC OVP!", port);
-		syv682x_init(port);
-		pd_handle_cc_overvoltage(port);
-		return EC_ERROR_UNKNOWN;
 	}
+
+	/*
+	 * vendor suggestion: When receiving ovp event, check it again through
+	 * the software, wait 10ms, if the ovp still exist, then do pd reset
+	 */
+
+	if (VBAT_OVP) {
+		msleep(10);
+		read_reg(port, SYV682X_CONTROL_4_REG, &regval);
+
+		if (regval & SYV682X_CONTROL_4_VBAT_OVP) {
+			ppc_prints("Still VBAT or CC OVP!", port);
+			syv682x_init(port);
+			pd_handle_cc_overvoltage(port);
+			VBAT_OVP = 0;
+			return EC_ERROR_UNKNOWN;
+		}
+	}
+
 	return EC_SUCCESS;
 }
 
@@ -831,6 +850,8 @@ static int syv682x_init(int port)
 	rv = write_reg(port, SYV682X_CONTROL_4_REG, regval);
 	if (rv)
 		return rv;
+
+	VBAT_OVP = 0;
 
 	return EC_SUCCESS;
 }
