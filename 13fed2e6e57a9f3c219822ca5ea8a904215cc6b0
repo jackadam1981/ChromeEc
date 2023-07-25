@@ -111,6 +111,30 @@
       },
       "revId": "13fed2e6e57a9f3c219822ca5ea8a904215cc6b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606bc4b7_6e479b96",
+        "filename": "zephyr/program/corsola/ponyta/project.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-07-25T06:33:59Z",
+      "side": 1,
+      "message": "I tried your advice,\nfound that overriding and calling `board_vivaldi_keybd_config()` requires defining this macro ：`CONFIG_PLATFORM_EC_KEYBOARD_VIVALDI`. \n```\nzephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_VIVALDI\n                                                \"${PLATFORM_EC}/common/keyboard_vivaldi.c\")\n\n``` \n\nand the `CONFIG_PLATFORM_EC_KEYBOARD_VIVALDI` depends on `CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_8042`.\n\n```\nconfig PLATFORM_EC_KEYBOARD_VIVALDI\n\tbool \"Vivaldi keyboard support\"\n\tdepends on PLATFORM_EC_KEYBOARD_PROTOCOL_8042\n\tdefault y\n```\n\nIsn\u0027t the 8042 protocol only available on x86?\n\n```\nconfig PLATFORM_EC_KEYBOARD_PROTOCOL_8042\n\tbool \"i8042\"\n\tselect HAS_TASK_KEYPROTO\n\thelp\n\t  Use the i8042 protocol to communicate with the AP. This dates from the\n\t  Intel 8042 keyboard controller chip released in 1976. It uses two-way\n\t  communication via a few 8-bit registers, allowing key codes to be\n\t  sent to the AP when keys are pressed and released.\n\n\t  See here for docs: https://wiki.osdev.org/%228042%22_PS/2_Controller\n```\n\nI don\u0027t quite know how the `magikarp` project uses `board_vivaldi_keybd_config()`. I tried to build magikarp\u0027s ec and found that this `keyboard_vivaldi.c` was no included, and the `CONFIG_PLATFORM_EC_KEYBOARD_VIVALDI` and `CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_8042` were not defined.\n\nExcept for `keyboard_vivaldi.c`, I didn\u0027t find other places to call `board_vivaldi_keybd_config()`.",
+      "parentUuid": "60371d36_3f0f77e2",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "13fed2e6e57a9f3c219822ca5ea8a904215cc6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
