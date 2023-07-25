@@ -371,6 +371,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4093af95_c14f786d",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T19:22:04Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is really worth the effort as looking through the code almost all the VDO unions are only taking a small subset of the parameters meaning some places the function call would be needlessly long for no reason. I\u0027m open to doing this but I just don\u0027t see the benefit since almost every VDO has different parameter requirements",
+      "parentUuid": "42692a6b_576fae85",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3b8e876_87bd3bcc",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T19:22:04Z",
+      "side": 1,
+      "message": "I can change these to enums that makes sense to me but would just make this inconsistent with the rest of the VDO message macros",
+      "parentUuid": "d14f426e_1923e8fb",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2ce7127_a7c3baa5",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 38
