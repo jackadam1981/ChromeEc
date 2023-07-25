@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79564e38_cdf8525c",
+        "filename": "include/host_command.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-25T15:43:58Z",
+      "side": 1,
+      "message": "This should be part of the parent CL.",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 0
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac1f164_e23c2516",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-25T15:43:58Z",
+      "side": 1,
+      "message": "What\u0027s in the response buffer at this point?  Isn\u0027t the response buffer zeroed out before the handler is called?",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23923357_7f23064e",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/hcdebug.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-25T15:43:58Z",
+      "side": 1,
+      "message": "This should be handled in the CMake file.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b021eef2_bec9f9bd",
+        "filename": "zephyr/test/drivers/default/src/i2c_passthru.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-25T15:43:58Z",
+      "side": 1,
+      "message": "Please create a macro for this check.  This will retain the correct line number reported by zassert() when `CONFIG_EC_HOST_CMD\u003dn`",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d77c37_750af6f4",
+        "filename": "zephyr/test/drivers/default/src/usb_mux.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-25T15:43:58Z",
+      "side": 1,
+      "message": "Nit, rename to `task_is_host_command()`.",
+      "range": {
+        "startLine": 50,
+        "startChar": 12,
+        "endLine": 50,
+        "endChar": 22
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85902cf6_9a594431",
+        "filename": "zephyr/test/drivers/default/src/usb_mux.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-25T15:43:58Z",
+      "side": 1,
+      "message": "Is this equivalent?\n\n```\n#if (defined CONFIG_EC_HOST_CMD \u0026\u0026 defined CONFIG_EC_HOST_CMD_DEDICATED_THREAD)\n    return TASK_ID_HOSTCMD;\n#else\n    return TASK_ID_TEST_RUNNER\n#endif",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
