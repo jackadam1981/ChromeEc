@@ -16,6 +16,24 @@
       "message": "nit: project-specific change should be in a separate CL, so it would be easier to cherry-pick/revert them separately if needed",
       "revId": "07ba6f38e1cfdba49ac258f7d3de7663c1635e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb9b9a28_c35c4b18",
+        "filename": "zephyr/program/skyrim/program.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-25T22:38:14Z",
+      "side": 1,
+      "message": "Good idea. Done: https://crrev.com/c/4718226",
+      "parentUuid": "665840a8_81fd447d",
+      "revId": "07ba6f38e1cfdba49ac258f7d3de7663c1635e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
