@@ -176,6 +176,30 @@
       },
       "revId": "c517059a4ba666af8251f71ae0ca8b4d702b0d9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "205e2ead_d18fb7e6",
+        "filename": "zephyr/test/rex/src/screebo_usb_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-25T14:45:15Z",
+      "side": 1,
+      "message": "You should save/restore the ppc_chips[] array as part of `before/after` actions.\n\nExample here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/drivers/usbc_tcpc/src/tcpc_shim.c;l\u003d15",
+      "parentUuid": "4b12e3e1_616ff423",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 33
+      },
+      "revId": "c517059a4ba666af8251f71ae0ca8b4d702b0d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
