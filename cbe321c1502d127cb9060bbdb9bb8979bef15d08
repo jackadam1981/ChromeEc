@@ -227,6 +227,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea089dca_cf71b77d",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-07-25T19:09:54Z",
+      "side": 1,
+      "message": "I think this function just needs a new name...I think there was a comment on an earlier patchset which is why it was changed to DP21 (since this function just returns true for DPAM \u003c 2.1)",
+      "parentUuid": "e336fb78_cb228de5",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc6f33b7_0dc86b92",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 38
