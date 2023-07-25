@@ -52,6 +52,24 @@
       "parentUuid": "9c4ef440_bf5f8eab",
       "revId": "a8c1a2e3084bc52ea81d33527ed8d89ef697a6a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc0e180_de144062",
+        "filename": "zephyr/program/nissa/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2023-07-25T10:01:44Z",
+      "side": 1,
+      "message": "Hi Peter,\nI split it into two CLs, one enabling kconfig for craaskov and the other modifying common nissa sub_board.c.\nSince craaskov does not need to control gpio-en-rails-odl and gpio-en-sub-s5-rails, remove them.\nAlso, since there is no bc12, gpio_sub_usb_a1_ilimit_sdp does not exist.\nSo I added several #if DT_NODE_EXISTS to make the build successful.\nIs it possible to modify it like this or do you have a better suggestion?",
+      "parentUuid": "248d14ee_d3e4f50e",
+      "revId": "a8c1a2e3084bc52ea81d33527ed8d89ef697a6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
