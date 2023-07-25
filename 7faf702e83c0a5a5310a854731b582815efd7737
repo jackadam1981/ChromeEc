@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4e1aef9_f7f19589",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2023-07-25T23:22:44Z",
+      "side": 1,
+      "message": "Hi Caveh,\ncan you take a look at this update. I am seeing USB 3.X devices disconnect on suspend/resume for Banshee as well. This defines CONFIG_CHIPSET_RESUME_INIT_HOOK to delay the idle mode hook on suspend and move up the idle mode hook on resume. Testing locally, it resolved USB 3.X device disconnection on suspend/resume for Banshee.",
+      "revId": "7faf702e83c0a5a5310a854731b582815efd7737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
