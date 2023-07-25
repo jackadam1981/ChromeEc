@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3e7597_e5ea80af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-25T23:22:53Z",
+      "side": 1,
+      "message": "Really helpful CL!!",
+      "revId": "1e378f8f9d31fe248845d3ad74ed3c79b5c18d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d8ffaa_29454e63",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-25T23:22:53Z",
+      "side": 1,
+      "message": "What is the default value of `shutdown_on_hard_hang`? I think it would be better to set it explicitly in case power_sleep_hang_recovery() wasn\u0027t called before this function",
+      "revId": "1e378f8f9d31fe248845d3ad74ed3c79b5c18d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2703b78_42029747",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-25T23:22:53Z",
+      "side": 1,
+      "message": "Misleading print: this might happen as part of shutdown or reset too\n\nsame for line 313",
+      "range": {
+        "startLine": 309,
+        "startChar": 22,
+        "endLine": 309,
+        "endChar": 32
+      },
+      "revId": "1e378f8f9d31fe248845d3ad74ed3c79b5c18d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

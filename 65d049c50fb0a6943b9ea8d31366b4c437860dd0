@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a3e00cc_0eaaaa5d",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-25T23:22:53Z",
+      "side": 1,
+      "message": "Same as line 400-401. I think this is safe to remove and make lines 400-401 unconditional",
+      "range": {
+        "startLine": 359,
+        "startChar": 1,
+        "endLine": 360,
+        "endChar": 50
+      },
+      "revId": "65d049c50fb0a6943b9ea8d31366b4c437860dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
