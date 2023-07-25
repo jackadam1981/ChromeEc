@@ -87,6 +87,30 @@
       },
       "revId": "13fed2e6e57a9f3c219822ca5ea8a904215cc6b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60371d36_3f0f77e2",
+        "filename": "zephyr/program/corsola/ponyta/project.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2023-07-25T01:23:59Z",
+      "side": 1,
+      "message": "Yes, just like the Kconfig description above, if you are looking only for TOP ROW customization, overriding board_vivaldi_keybd_config() is designed for that. It seems to be more clear than calling set_vol_up_key() in the board init function. We don\u0027t have to worry about the sequence between all the functions calling set_vol_up_key().",
+      "parentUuid": "29e6e3e8_70a1f883",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "13fed2e6e57a9f3c219822ca5ea8a904215cc6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
