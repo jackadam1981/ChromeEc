@@ -38,6 +38,91 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b383256d_7519bb01",
+        "filename": "zephyr/emul/retimer/emul_anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "```suggestion\n\t},\n\t{\n\t        .reg \u003d ANX7483_AUX_CFG_0,\n\t\t.def \u003d ANX7483_AUX_CFG_0_DEFAULT,\n\t},\n```",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce723537_2596ecce",
+        "filename": "zephyr/emul/retimer/emul_anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "```suggestion\n\t},\n\t{\n\t        .reg \u003d ANX7483_AUX_CFG_1,\n\t\t.def \u003d ANX7483_AUX_CFG_1_DEFAULT,\n\t},\n```",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "075c2cc4_81913468",
+        "filename": "zephyr/include/emul/retimer/emul_anx7483.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "```suggestion\n#define ANX7483_AUX_CFG_0_DEFAULT          ANX7483_CFG0_DEF\n```",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6766a2e_19e0070f",
+        "filename": "zephyr/include/emul/retimer/emul_anx7483.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "```suggestion\n#define ANX7483_AUX_CFG_1_DEFAULT          ANX7483_CFG1_DEF\n```",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3304f8a_05a87e96",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "nits: additional blank",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9bb0cf09_ae276c5b",
         "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
         "patchSetId": 7
@@ -49,6 +134,41 @@
       "writtenOn": "2023-07-26T06:54:03Z",
       "side": 1,
       "message": "Do we know the exact ANX7483_VID value of 0xAA ?",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "350578d6_e405cc31",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "Maybe change the 0x00 to the exact value of chip AA ?",
+      "parentUuid": "9bb0cf09_ae276c5b",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e76b17_6b04fc55",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "Change to \"rv \u003d anx7483_emul_test_set_reg(ANX7483_VID, ANX7483_BA);\" ?",
       "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -70,6 +190,58 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a7980d_cc335436",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "Already there. No need to change.",
+      "parentUuid": "88429270_d8671d85",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d0d9a6f_5c5c8062",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "Looks ANX7483_AUX_CFG_1 and ANX7483_AUX_CFG_0 are not defined in zephyr/emul/retimer/emul_anx7483.c",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b18c3cc_e801ca66",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "rv \u003d anx7483_emul_test_set_reg(ANX7483_VID, ANX7483_BA);",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bacbf93_539a2e15",
@@ -87,6 +259,58 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aabd3529_1bd71bbc",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "Already there. No need to change.",
+      "parentUuid": "7bacbf93_539a2e15",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a93f7d_544e0c52",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "Need to initialize ANX7483_VID reg.",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c910153f_68c8d822",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "Need to initialize ANX7483_VID",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2304bcf_2ab312ea",
@@ -100,6 +324,58 @@
       "writtenOn": "2023-07-26T06:54:03Z",
       "side": 1,
       "message": "Suppose need anx7483_AA_dock_flip appended here.",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd9a8e8_7bee21c6",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1364,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "Already there. No need to change.",
+      "parentUuid": "c2304bcf_2ab312ea",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3d0576_a97e576d",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1367,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "Need to initialize ANX7483_VID",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e9df244_1458db99",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T11:09:31Z",
+      "side": 1,
+      "message": "Need to initialize ANX7483_VID",
       "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
