@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4583559e_d0c97bd6",
+        "filename": "zephyr/program/nissa/src/sub_board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-07-26T01:16:14Z",
+      "side": 1,
+      "message": "Omit this function entirely if it would do nothing. You\u0027ll also need to extend the case for `NISSA_SB_C_LTE` to avoid referring to the function when it\u0027s not defined.\n\n```suggestion\n#if DT_NODE_EXISTS(GPIO_DT_FROM_ALIAS(gpio_en_sub_s5_rails))\nstatic void lte_power_handler(struct ap_power_ev_callback *cb,\n\t\t\t      struct ap_power_ev_data data)\n{\n\t/* Enable rails for S5 */\n\tconst struct gpio_dt_spec *s5_rail \u003d\n\t\tGPIO_DT_FROM_ALIAS(gpio_en_sub_s5_rails);\n\tswitch (data.event) {\n\tcase AP_POWER_PRE_INIT:\n\t\tLOG_DBG(\"Enabling LTE sub-board power rails\");\n\t\tgpio_pin_set_dt(s5_rail, 1);\n\t\tbreak;\n\tcase AP_POWER_HARD_OFF:\n\t\tLOG_DBG(\"Disabling LTE sub-board power rails\");\n\t\tgpio_pin_set_dt(s5_rail, 0);\n\t\tbreak;\n\tdefault:\n\t\tLOG_ERR(\"Unhandled LTE power event %d\", data.event);\n\t\tbreak;\n\t}\n}\n#endif\n```",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 1
+      },
+      "revId": "67e3cebde63a66d54e14cb6f3f031a013e26202c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
