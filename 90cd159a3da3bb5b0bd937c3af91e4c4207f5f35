@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f79cfc9_1edcfb1b",
+        "filename": "zephyr/Kconfig.usb_update",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-26T08:26:59Z",
+      "side": 1,
+      "message": "Putting touchpad hash outside of ec binary means ec need to understand fmap.\nSeems like we don\u0027t have existing library for this?\nI will try to do some experiment.",
+      "parentUuid": "ce9dffab_6c00f5ad",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 67
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72f2af26_614ba188",
         "filename": "zephyr/Kconfig.usb_update",
         "patchSetId": 7
