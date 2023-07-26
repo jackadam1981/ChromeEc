@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0769d5c_1dc152fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2023-07-26T17:59:03Z",
+      "side": 1,
+      "message": "I\u0027m getting a build error:\n/mnt/host/source/src/platform/ec/zephyr/program/brya/prj.conf:168: warning: attempt to assign the value \u0027y\u0027 to the undefined symbol USBC_TCPC_PS8XXX\n/mnt/host/source/src/platform/ec/zephyr/program/brya/prj.conf:183: warning: attempt to assign the value \u0027y\u0027 to the undefined symbol USBC_VBUS_TCPCI\n/mnt/host/source/src/platform/ec/zephyr/program/brya/prj.conf:187: warning: attempt to assign the value \u0027y\u0027 to the undefined symbol USBC_TCPC_TCPCI_SHELL\nerror: Aborting due to Kconfig warnings",
+      "revId": "b6931707b7ffad4e0cc197bd520351a579487d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
