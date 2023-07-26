@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2eeda628_024df835",
+        "filename": "driver/retimer/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2023-07-26T07:35:42Z",
+      "side": 1,
+      "message": "It is better call it chip id, Hi Matt, please help to change \"ANX7483_VID\" to \"ANX7483_CHIP_ID\" in both anx7483.c and anx7483.h, and change \"pid\" to \"chip_id\", thanks!",
+      "parentUuid": "be24f063_47839093",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9bb0cf09_ae276c5b",
         "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
         "patchSetId": 7
