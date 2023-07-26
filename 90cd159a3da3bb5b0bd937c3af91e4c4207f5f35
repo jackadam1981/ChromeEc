@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce9dffab_6c00f5ad",
+        "filename": "zephyr/Kconfig.usb_update",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-07-26T02:50:59Z",
+      "side": 1,
+      "message": "kconfig sounds fine, but I think a new flashmap region for the hash is even better. it would allow setting the hash outside the build",
+      "parentUuid": "82c4f83e_d59b4ca2",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 67
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72f2af26_614ba188",
         "filename": "zephyr/Kconfig.usb_update",
         "patchSetId": 7
