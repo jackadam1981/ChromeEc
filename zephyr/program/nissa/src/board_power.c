@@ -144,6 +144,32 @@ bool board_ap_power_check_power_rails_enabled(void)
 }
 #else
 
+/* Signals must be enabled while AP is not on S0 and S0IX states */
+static void board_ap_power_cb(const struct device *dev,
+			      const enum ap_pwrseq_state entry,
+			      const enum ap_pwrseq_state exit)
+{
+	if (entry != AP_POWER_STATE_S0 && entry != AP_POWER_STATE_S0IX) {
+		power_signal_enable(PWR_DSW_PWROK);
+		power_signal_enable(PWR_PG_PP1P05);
+	}
+}
+
+static int board_ap_power_init(void)
+{
+	const struct device *ap_pwrseq_dev = ap_pwrseq_get_instance();
+	static struct ap_pwrseq_state_callback exit_cb = {
+		.cb = board_ap_power_cb,
+		.states_bit_mask =
+			(BIT(AP_POWER_STATE_S0) | BIT(AP_POWER_STATE_S0IX)),
+	};
+
+	ap_pwrseq_register_state_exit_callback(ap_pwrseq_dev, &exit_cb);
+
+	return 0;
+}
+SYS_INIT(board_ap_power_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
+
 void board_ap_power_force_shutdown(void)
 {
 	int timeout_ms = X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS;
