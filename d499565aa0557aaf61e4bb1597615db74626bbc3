@@ -16,6 +16,24 @@
       "message": "Just an FYI, the code in this file is used by all Rex program projects like Rex, Screebo etc...\n\nIf this change is specific to Rex project only, create a file in following folder and move the code to there \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/rex/rex/src/",
       "revId": "d499565aa0557aaf61e4bb1597615db74626bbc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73545137_3615456a",
+        "filename": "zephyr/program/rex/src/board_power.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2023-07-26T09:02:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dc30937_0cfcac76",
+      "revId": "d499565aa0557aaf61e4bb1597615db74626bbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
