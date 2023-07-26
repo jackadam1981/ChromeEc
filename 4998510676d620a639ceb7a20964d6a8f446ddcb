@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11fb581a_c4d2f344",
+        "filename": "include/chipset.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-07-26T20:54:22Z",
+      "side": 1,
+      "message": "please split this rename into its own patch.\nalso, does the config need to be repeated in the\nboard directories? seems like a common shim layer thing.",
+      "range": {
+        "startLine": 131,
+        "startChar": 12,
+        "endLine": 131,
+        "endChar": 55
+      },
+      "revId": "4998510676d620a639ceb7a20964d6a8f446ddcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
