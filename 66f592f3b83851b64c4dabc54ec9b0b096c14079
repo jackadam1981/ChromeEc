@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9a9211_a787fed7",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-07-26T01:32:15Z",
+      "side": 1,
+      "message": "If I\u0027m reading this correctly, we only enable them when exiting S0? If that\u0027s correct, I think this comment should be clearer.",
+      "range": {
+        "startLine": 147,
+        "startChar": 39,
+        "endLine": 147,
+        "endChar": 64
+      },
+      "revId": "66f592f3b83851b64c4dabc54ec9b0b096c14079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
