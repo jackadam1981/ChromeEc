@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1bb9fe0_2ecfbbbe",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4134,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2023-07-26T14:19:55Z",
+      "side": 1,
+      "message": "can you rename this back to TI50_STATS since we have a separate vendor command for cr50.",
+      "range": {
+        "startLine": 4134,
+        "startChar": 44,
+        "endLine": 4134,
+        "endChar": 47
+      },
+      "revId": "e65b1f24bf812db4fedbae563f0bee2043af5976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
