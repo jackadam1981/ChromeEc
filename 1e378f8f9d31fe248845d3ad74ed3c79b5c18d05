@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef8a91f_1d782325",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-26T17:03:35Z",
+      "side": 1,
+      "message": "\u003e What is the default value of shutdown_on_hard_hang?\n\nIt\u0027s a static variable, so it\u0027s initialized to `0` (false).",
+      "parentUuid": "e3d8ffaa_29454e63",
+      "revId": "1e378f8f9d31fe248845d3ad74ed3c79b5c18d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2703b78_42029747",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-07-25T23:22:53Z",
       "side": 1,
       "message": "Misleading print: this might happen as part of shutdown or reset too\n\nsame for line 313",
+      "range": {
+        "startLine": 309,
+        "startChar": 22,
+        "endLine": 309,
+        "endChar": 32
+      },
+      "revId": "1e378f8f9d31fe248845d3ad74ed3c79b5c18d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48f71d52_db24ab42",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-26T17:03:35Z",
+      "side": 1,
+      "message": "\u003e might happen as part of shutdown or reset too\n\nI\u0027m not seeing a path where that\u0027s true, but I may be missing it. Can you point out the sequence that would trigger this during a shutdown/reset?\n\nTo clarify, \"sleep\" here refers to the full suspend/resume path.\n\nThis function is only called if an AP hang is detected anywhere within the suspend/resume path. The timer that calls it is reset (stopped) once the AP has successfully suspended/resumed or shutdown/reset.",
+      "parentUuid": "e2703b78_42029747",
       "range": {
         "startLine": 309,
         "startChar": 22,
