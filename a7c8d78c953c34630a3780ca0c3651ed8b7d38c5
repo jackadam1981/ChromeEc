@@ -215,6 +215,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29ae177f_f9356de4",
+        "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-26T06:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4c69143_b6ece785",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f71fe57_057fd0ea",
@@ -300,6 +324,30 @@
       "side": 1,
       "message": "Should keep the data const because the argument `cbi` is declared as a pointer to const data, e.g.\n```\nconst struct cbi_header *const head \u003d (struct cbi_header *)cbi;\n```\n\nIf the caller passes a pointer of const data (1) and this function tries to modify the data (2), the exception Fabio mentioned will happen. Even though the conditions (1) and (2) are not true in our current case.",
       "parentUuid": "b92cf6ae_d388ad87",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 54
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8533a492_229f18c1",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-26T06:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d340b8e_77160d38",
       "range": {
         "startLine": 15,
         "startChar": 33,
@@ -452,6 +500,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "281b17ce_bc84c4ac",
+        "filename": "zephyr/test/accel_cal/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-26T06:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdc489aa_05ba1d26",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13682765_b482ba13",
@@ -594,6 +666,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d969bef_14df0072",
+        "filename": "zephyr/test/skyrim/tests/crystaldrift/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-26T06:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f8be4a9_143a19b4",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 87
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67fab84d_60509679",
@@ -625,6 +721,24 @@
       "side": 1,
       "message": "No so this test is missing some CBI functions being mocked, I  can\u0027t add them at program level because it won\u0027t be common. Hence got to create a test at project level which includes that mock, to not break tests",
       "parentUuid": "67fab84d_60509679",
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7ff2c7_b0b56062",
+        "filename": "zephyr/test/skyrim/tests/crystaldrift/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-26T06:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d974110a_5b6f00b7",
       "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
