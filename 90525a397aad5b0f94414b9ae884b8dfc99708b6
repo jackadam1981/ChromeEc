@@ -707,6 +707,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a97646c_2b52597d",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-26T06:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08e02cd3_d67baf64",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bab9f496_d17ca5bc",
@@ -1115,6 +1139,24 @@
       "side": 1,
       "message": "The build fails actually, because the pointer is left unassigned but being reffered in cbi.c",
       "parentUuid": "03c57f04_2b1adaf0",
+      "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e9a47f5_3ed1210f",
+        "filename": "zephyr/shim/src/cbi/cros_cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-26T06:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0400a655_028f1d99",
       "revId": "90525a397aad5b0f94414b9ae884b8dfc99708b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
