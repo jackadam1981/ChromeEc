@@ -288,6 +288,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b989ecb_69657cd5",
+        "filename": "zephyr/shim/src/cbi/cbi_transfer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-07-26T02:01:28Z",
+      "side": 1,
+      "message": "Should keep the data const because the argument `cbi` is declared as a pointer to const data, e.g.\n```\nconst struct cbi_header *const head \u003d (struct cbi_header *)cbi;\n```\n\nIf the caller passes a pointer of const data (1) and this function tries to modify the data (2), the exception Fabio mentioned will happen. Even though the conditions (1) and (2) are not true in our current case.",
+      "parentUuid": "b92cf6ae_d388ad87",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 54
+      },
+      "revId": "a7c8d78c953c34630a3780ca0c3651ed8b7d38c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8804ef0_d368454c",
         "filename": "zephyr/shim/src/cbi/cros_cbi.c",
         "patchSetId": 1
