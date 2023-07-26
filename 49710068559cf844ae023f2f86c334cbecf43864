@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca46ae61_ed9b400a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4037,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-07-26T00:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dbea618_21d093e7",
+      "range": {
+        "startLine": 4037,
+        "startChar": 44,
+        "endLine": 4037,
+        "endChar": 48
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c71aa55_ac30a8d0",
@@ -147,6 +171,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30a6c20a_d8330429",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4076,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-07-26T00:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "152a109f_df97fb90",
+      "range": {
+        "startLine": 4076,
+        "startChar": 24,
+        "endLine": 4076,
+        "endChar": 43
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d4f013c_150188aa",
@@ -194,6 +242,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee78cb7c_5ba521cf",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4077,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-07-26T00:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbf15b70_2eff436f",
+      "range": {
+        "startLine": 4077,
+        "startChar": 35,
+        "endLine": 4077,
+        "endChar": 36
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3410ebf1_3c8c1e88",
@@ -207,6 +279,30 @@
       "writtenOn": "2023-07-18T15:38:21Z",
       "side": 1,
       "message": "Do we need a chip_type bit to tell the difference between cr50 and ti50? We\u0027re probably going to add cr50_stats support.",
+      "range": {
+        "startLine": 354,
+        "startChar": 10,
+        "endLine": 354,
+        "endChar": 17
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa41af6_c78f0cf7",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-07-26T00:34:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3410ebf1_3c8c1e88",
       "range": {
         "startLine": 354,
         "startChar": 10,
@@ -240,6 +336,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9181e1a_45a93435",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-07-26T00:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf43c91_4be371a7",
+      "range": {
+        "startLine": 365,
+        "startChar": 28,
+        "endLine": 365,
+        "endChar": 29
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0884ba36_33ab47c6",
@@ -253,6 +373,30 @@
       "writtenOn": "2023-07-20T17:25:15Z",
       "side": 1,
       "message": "Add a common metrics prefix to all of these.\n\nMETRICSV_ or VENDOR_METRICS_",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 29
+      },
+      "revId": "49710068559cf844ae023f2f86c334cbecf43864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "298af232_0703da76",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2023-07-26T00:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0884ba36_33ab47c6",
       "range": {
         "startLine": 363,
         "startChar": 0,
