@@ -22,6 +22,30 @@
       },
       "revId": "67e3cebde63a66d54e14cb6f3f031a013e26202c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d8d02c_5e26f735",
+        "filename": "zephyr/program/nissa/src/sub_board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2023-07-26T01:48:56Z",
+      "side": 1,
+      "message": "Can I avoid referencing the function by keeping only craaskov/cbi.dtsi sub-board-3 and removing sub-board-1,sub-board-2?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/nissa/craaskov/cbi.dtsi;l\u003d17-30",
+      "parentUuid": "4583559e_d0c97bd6",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 1
+      },
+      "revId": "67e3cebde63a66d54e14cb6f3f031a013e26202c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
