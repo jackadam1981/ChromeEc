@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be24f063_47839093",
+        "filename": "driver/retimer/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T06:54:03Z",
+      "side": 1,
+      "message": "Is the original naming PID or VID ?",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb0cf09_ae276c5b",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T06:54:03Z",
+      "side": 1,
+      "message": "Do we know the exact ANX7483_VID value of 0xAA ?",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88429270_d8671d85",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T06:54:03Z",
+      "side": 1,
+      "message": "Suppose need anx7483_AA_dp_term appended here",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bacbf93_539a2e15",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T06:54:03Z",
+      "side": 1,
+      "message": "Suppose need anx7483_AA_dock_noflip_term appended here.",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2304bcf_2ab312ea",
+        "filename": "zephyr/test/drivers/usbc_retimer/src/anx7483.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1364,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-26T06:54:03Z",
+      "side": 1,
+      "message": "Suppose need anx7483_AA_dock_flip appended here.",
+      "revId": "ffa27668e3cd24ae3175c4485c5976d9c59d72fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
