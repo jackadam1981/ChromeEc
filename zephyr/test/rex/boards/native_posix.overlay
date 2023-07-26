@@ -34,7 +34,7 @@
 
 	/*
 	 * This is a 2nd GPIO bank to be used by variants to
-	 * avoid conflicts with common GPIO assignments.
+	 * avoid conflicts with program GPIO assignments.
 	 */
 	gpio1: gpio@101 {
 		status = "okay";
