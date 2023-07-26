@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "297e7eab_c375bd24",
+        "filename": "zephyr/Kconfig.usb_update",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-26T08:50:22Z",
+      "side": 1,
+      "message": "...or using a fixed offset.\n\nRW signing process also need some modification.",
+      "parentUuid": "5f79cfc9_1edcfb1b",
+      "range": {
+        "startLine": 12,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 67
+      },
+      "revId": "90cd159a3da3bb5b0bd937c3af91e4c4207f5f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72f2af26_614ba188",
         "filename": "zephyr/Kconfig.usb_update",
         "patchSetId": 7
