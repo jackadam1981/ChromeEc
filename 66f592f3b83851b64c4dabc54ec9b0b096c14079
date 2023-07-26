@@ -22,6 +22,30 @@
       },
       "revId": "66f592f3b83851b64c4dabc54ec9b0b096c14079",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "694ee3a4_f8c82679",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-07-26T22:06:37Z",
+      "side": 1,
+      "message": "Yes, we need to enable when exiting S0 but also avoid enabling them when entering into S0ix. We do not want to enable these signals (ADC) while AP goes into S0ix.\nI will add more details into comment.",
+      "parentUuid": "2d9a9211_a787fed7",
+      "range": {
+        "startLine": 147,
+        "startChar": 39,
+        "endLine": 147,
+        "endChar": 64
+      },
+      "revId": "66f592f3b83851b64c4dabc54ec9b0b096c14079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
