@@ -29,6 +29,12 @@
 		reg = <0x000C0000 0x40000>;
 	};
 
+	/* Tune Data Sram as 0x12000 from 0x10000 */
+	sram0: memory@118000 {
+		compatible = "mmio-sram";
+		reg = <0x00116000 0x12000>;
+	};
+
 	named-pwms {
 		compatible = "named-pwms";
 	};
