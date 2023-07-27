@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d5b3c9_75f518f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "I took another pass. High-level points re: testing:\n* Eventually, before submitting this CL, you\u0027ll need to write Zephyr tests to cover the new logic. I\u0027m fine with you holding off on that until we\u0027ve fully figured out what the logic should be, but you might find it personally helpful to write tests first and code against them.\n* The good news is that \"legacy\" DP mode entry is already substantially covered by existing tests like the one at https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c#255. If you can still pass `twister -s drivers/drivers.usbc_alt_mode` and the other alt mode tests, you shouldn\u0027t have to worry too much about breaking existing code during refactoring.\n* You can see what the coverage is right now by marking this CL V+1 CR+1. After it runs, it should show the covered lines in the diff view.\n\n(Note to self:  Still need to consider the merits of changing the DP VDO macro.)",
+      "revId": "6925af6e950e3c03e449c8fbf997039cdb83dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81d9a343_351144ac",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "Nit: This matches what the macro comments say, but looking at the DPAM 2.1 spec, 1 corresponds to \"UHBR3 or earlier,\" and according to the DPAM 1.0 spec, it corresponds to \"DP.\" 0 would be \"USB\" in the old spec but is seemingly reserved in the new spec. I\u0027m not sure how to square that, since AFAIK, the USB pin config is still supported in 2.1.\n\nHow does that line up with your understanding?",
+      "range": {
+        "startLine": 611,
+        "startChar": 8,
+        "endLine": 611,
+        "endChar": 22
+      },
+      "revId": "6925af6e950e3c03e449c8fbf997039cdb83dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb481f68_69bbe5ed",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "Do these variables get used?",
+      "range": {
+        "startLine": 744,
+        "startChar": 0,
+        "endLine": 745,
+        "endChar": 61
+      },
+      "revId": "6925af6e950e3c03e449c8fbf997039cdb83dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48e41a5c_0fa6873c",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 41
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "Nit: These values would be clearer as `BIT(0)`, `BIT(1)`, etc.",
+      "revId": "6925af6e950e3c03e449c8fbf997039cdb83dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

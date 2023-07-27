@@ -211,6 +211,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14286231_dfef574f",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "We actually have a feature on the AP that will alert the user when their cable is holding back their USB connection. I don\u0027t think it specifically supports DPAM 2.1 yet, but it could. \"Here\u0027s what I have but you can\u0027t do anything with it,\" is more or less what the the popup says.\n\nMore generally, I\u0027m inclined to maintain and transmit to the AP as accurate of a picture of the world as we can. If we\u0027re debugging something with DP later, especially if we don\u0027t have access to the peripherals in question, I\u0027d like to be able to easily distinguish between the scenario where the EC records the discovery incorrectly and where the EC chooses the wrong mode despite recording discovery correctly. The way this works now seems to blur that distinction.\n\nPrashant, what do you think from an AP perspective?",
+      "parentUuid": "23a93411_a12d8868",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2516656c_d3245a3b",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 38
@@ -281,6 +299,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d44427e7_110b0112",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "I\u0027d probably be OK with that change in interface for this function.\n\nLooking at it more closely, it might be more consistent with existing usage to call this function around https://chromium.googlesource.com/chromiumos/platform/ec/+/main/common/usbc/usb_pd_dpm.c#1252, where the DPM makes the choice of whether to enter DP mode at all. If you look above that line at the checks for USB4 and TBT, you can see that it calls `enter_usb_*` functions to check whether USB4 is supported and `board_is_tbt_usb4_port` to check whether TBT is supported. This function kind of reminds me of those functions.\n\nIn our existing code, when `*_setup_next_vdm` fails, it\u0027s usually due to some internal or protocol error that fundamentally prevents us from constructing the next message, not that we never should have tried this mode in the first place.\n\nIf there was something in the DP clause like\n```\n... \u0026\u0026 dp_partner_is_capable(port) \u0026\u0026 dp_cable_is_capable(port)\n```\nI think that would fit in OK.",
+      "parentUuid": "086dc1ed_11893573",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc6f33b7_0dc86b92",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 38
@@ -334,6 +370,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fec1163_c0ed71e7",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "If there needs to be board-specific logic, it should be in the form of an `__overridable` function named `board_*`, and this function should call that function. (The default would just return true.) As much as possible, I don\u0027t want to conflate logic about the cable with logic about the board, and I don\u0027t want to copy cable logic around board files when they need to override.",
+      "parentUuid": "436eb00a_5e851cbc",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e81ba6c_50a82e27",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 38
@@ -363,6 +417,24 @@
       "side": 1,
       "message": "Acknowledged",
       "parentUuid": "1e81ba6c_50a82e27",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a48811_3e180570",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "It looks like, at least in the call site in `svdm_dp_config`, the code has already checked that the DPAM version is \u003e\u003d 2.1. I don\u0027t see a bit rate check, although it might be buried in one of the preceding function calls. At first glance, it seems like it would be possible to generate a Config VDO that has UHBR13.5 set, even though UHBR20 is not set, and that would be wrong.\n\nSince the DPAM version and bit rate are already at hand when the code calls this function, it seems easy enough to pass those in as parameters here. That would involve minimal additional code/work and make this function more obviously correct according to the spec.",
+      "parentUuid": "7e240b39_63a0cc06",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -708,6 +780,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06d3d4cd_56a897c2",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "I may not have fully grokked the code yet, but here goes:\n* As I\u0027ve noted elsewhere, I would prefer it if the recorded DPAM version in the discovery was what actually came in from the partner or cable, even if one of them is too high for the other to support. In addition to allowing more accurate reporting, this might also matter for the first of the two use cases I mention below.\n* The first use case I see for this function is to decide how to interpret the fields of the mode VDO from the cable. My understanding of the spec so far is that the right way to do this would be to interpret the fields based on 2.1 if the cable says 2.1, even if the partner says 2.0. I think this argues for accurately preserving the DPAM version in the stored VDO.\n* The other use case I see is for deciding what to set DPAM version to in the outgoing Configure VDOs (SOP and SOP\u0027). Based on table 5-5, it seems like this should be based on both the SOP and SOP\u0027 incoming versions.\n* Other than in constructing the SOP Configure, the only SOP usage I see is in `dp21_mode_entry_allowed`, and I don\u0027t think that result is actually used right now.\n\nSo it seems like there should basically be two versions of this function:\n* One that only looks at the incoming value for SOP or SOP\u0027 as a parameter (or maybe only SOP\u0027 and no parameter): `enum dpam_version get_dpam_version(int port, enum tcpci_msg_type type)`\n* One that looks at all incoming versions and figures out the outgoing version based on them: `enum dpam_version resolve_dpam_version(int port)`\nThose names are just placeholders to suggest the API. I\u0027m open to different ones.\n\nDoes that seem reasonable to you?\n\n\u003e Since the DFP/UFP version will be constant (depending on if DP21 is supported) the only thing that actually needs to be checked is the cable\u0027s version\n\nDon\u0027t we need to get the UFP version from the UFP discovery?",
+      "parentUuid": "8e075396_aaab8a1d",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab178ddf_9e12e98b",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 38
@@ -737,6 +827,24 @@
       "side": 1,
       "message": "Added helper function for signaling to speed. Added comment at beginning of logic with reference from DP 2.1 spec where this logic derives from.",
       "parentUuid": "ab178ddf_9e12e98b",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba18b55d_1ac98480",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "Thanks. Looks good and easier to follow.",
+      "parentUuid": "5ddb106b_14dca156",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -807,6 +915,24 @@
       "side": 1,
       "message": "Since this is a separate standard I\u0027m really not sure PD3.0 is required. I don\u0027t see anything in the DP2.1 spec that says this or else I would gladly change this.\n\nAlso referencing Section 5.1 \nAll DisplayPort Alt Mode products shall support USB PD 3.1.\nNote: This implies that all products shall also support USB PD 2.0\n\nThis does not say USB PD 3.1 is required",
       "parentUuid": "24162edb_7fc2b254",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3690d009_1ff6d58a",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "I see what you\u0027re saying. We might support DP 2.1, and to do that, we need to support PD 3.1, but the cable might only support PD 2.0.\n\nI think the right answer here is just to call `pd_get_rev` and check the incoming discovery on that basis. If the cable only supports PD 2.0, then we\u0027ll make the right decision here. If we only support PD 2.0, we won\u0027t even be here, but if we somehow got here, `pd_get_rev` will still return 2.0 because of how the PD version resolution works during discovery. See `prl_set_default_pd_revision`.",
+      "parentUuid": "895931c8_da624714",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -948,6 +1074,24 @@
       "side": 1,
       "message": "Acknowledged",
       "parentUuid": "91152181_27bdc53d",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acbede9e_1886f7bd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "What do you consider to be legacy code? We will presumably need to keep using our pre-2.1 DP implementation for some time. I wouldn\u0027t want to introduce tech debt just to avoid testing it.",
+      "parentUuid": "d81b49d1_7b7be284",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1147,6 +1291,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93478abb_531e5c92",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "If the macro is being used elsewhere, then please update those usages to the new name.",
+      "parentUuid": "ac9b08c4_ff3153e6",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c311382_bd3f7814",
         "filename": "include/usb_pd_dp.h",
         "patchSetId": 38
@@ -1263,6 +1425,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb0d9053_99fc4c44",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "As noted in the previous CL, the new logic introduced in this chain will require automated tests to cover at least 90% of the lines changed, regardless of the structure of the code. Please structure the code with an eye towards long-term maintainability of the overall codebase and write tests as needed.",
+      "parentUuid": "90c7c211_cd601d6c",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1e2102d_64a5c106",
         "filename": "include/usb_pd_dp.h",
         "patchSetId": 38
@@ -1344,6 +1524,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6afe835a_0a5eb8ae",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "I\u0027ll comment on the function as it exists in Patchset 41. Obviously, if the logic changes, the comment might need to change.\n\nIt looks like the main points are\n1. If DP 2.1 is disabled or the cable is not emarked, entry is allowed (pre-2.1).\n2. If the cable is emarked and supports alt modes including DP or certain configs of TBT, entry is allowed.\n3. If the cable is emarked but doesn\u0027t support those alt modes, entry is not allowed.\n\n(The USB 2.0 part seems like an implementation detail to me. If a cable only supports USB 2.0, by definition, it wouldn\u0027t be able to support alt modes that require the SuperSpeed lanes.)",
+      "parentUuid": "1e1ed137_5328c848",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b19ebac4_e1755054",
         "filename": "include/usb_pd_dp.h",
         "patchSetId": 38
@@ -1390,6 +1588,24 @@
       "side": 1,
       "message": "I looked into the implementation and to me it makes sense to keep it as a bitfield since it is polling both the dp and tbt vdo messages to create a response of the supported cable type. I prefer to not split this out as that means more calls to those vdo messages to get the same information that we could have just gotten all at once.\n\nIt does look like retimer/redriver bit is not used right now but that doesn\u0027t mean there won\u0027t be a reason it is needed later",
       "parentUuid": "58855345_022fcab6",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05203089_a7bd5277",
+        "filename": "include/usb_pd_dp.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "I\u0027ll take another look at the usages. I still wonder whether the code could be structured in a way that would avoid the need for this.\n\nSupposing that we keep the basic structure, how would you feel about defining a structure for the return type with named members? That way, the prototype and call sites would be more self-documenting than they are now.",
+      "parentUuid": "909ae7da_c1b2934a",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

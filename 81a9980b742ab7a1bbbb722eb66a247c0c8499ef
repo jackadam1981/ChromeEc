@@ -16,6 +16,24 @@
       "message": "Left this as unsigned int as the upload checks come back as do not use bool in a bitfield",
       "revId": "81a9980b742ab7a1bbbb722eb66a247c0c8499ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60bce5c7_34bb68e7",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-07-27T22:20:00Z",
+      "side": 1,
+      "message": "Ack. Interestingly, this check has been rolled back upstream. Nevertheless, I\u0027m OK with `unsigned int` here.",
+      "parentUuid": "d6c7cf61_5d62ce52",
+      "revId": "81a9980b742ab7a1bbbb722eb66a247c0c8499ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
