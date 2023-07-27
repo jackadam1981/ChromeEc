@@ -373,6 +373,7 @@ static void pwr_led_tick(void)
 	uint32_t next = 0;
 	uint32_t start = get_time().le.lo;
 
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_pwr_led_debug), 1);
 	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED)) {
 		led_set_color_power(pwr_led_pulse.color, pwr_led_pulse.duty);
 		if (pwr_led_pulse.duty + pwr_led_pulse.duty_inc > 100) {
@@ -389,6 +390,7 @@ static void pwr_led_tick(void)
 	elapsed = get_time().le.lo - start;
 	next = next > elapsed ? next - elapsed : 0;
 	hook_call_deferred(&pwr_led_tick_data, next);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_pwr_led_debug), 0);
 }
 
 static void pwr_led_suspend(void)
