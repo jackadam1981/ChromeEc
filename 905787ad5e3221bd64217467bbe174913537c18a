@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1063e78_4ca43982",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-07-27T09:53:56Z",
+      "side": 0,
+      "message": "My bad, we still need this.",
+      "parentUuid": "6442c541_b042adb0",
+      "revId": "905787ad5e3221bd64217467bbe174913537c18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6390ad3e_6a6242b4",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-07-27T09:15:16Z",
       "side": 0,
       "message": "This can be removed, too. Removing this function will break the build due to the `usb_c0_ppc_bc12` setting, so please update `usb_c0_ppc_bc12` as well.",
+      "revId": "905787ad5e3221bd64217467bbe174913537c18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3273c3ba_13dd0a42",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-07-27T09:53:56Z",
+      "side": 0,
+      "message": "Oops, my bad, we still need this.",
+      "parentUuid": "6390ad3e_6a6242b4",
       "revId": "905787ad5e3221bd64217467bbe174913537c18a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
