@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9407512e_a68f074e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-07-27T06:47:49Z",
+      "side": 1,
+      "message": "Add a space before first heading.\n```\nponyta: Adjust the matrix position of key\n```",
+      "revId": "9efa3d089eb00772fd1e837dfa7e040918b619ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "145c6fbf_1e7ca24f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-07-27T06:47:49Z",
+      "side": 1,
+      "message": "Test should be alt+vol-up+r ...etc",
+      "revId": "9efa3d089eb00772fd1e837dfa7e040918b619ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee138b3a_1598077e",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-07-27T06:47:49Z",
+      "side": 1,
+      "message": "I\u0027m curious whether we shall plus another func for test usage.\nIf we add it, isn\u0027t it supposed to be test in `keyboard_scan.c` either ?\n\nTing, WDYT ?",
+      "revId": "9efa3d089eb00772fd1e837dfa7e040918b619ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c16707_a082dd1a",
+        "filename": "zephyr/test/kingler/testcase.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-07-27T06:47:49Z",
+      "side": 1,
+      "message": "Is this disable part kind of must item for this test ?",
+      "revId": "9efa3d089eb00772fd1e837dfa7e040918b619ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
