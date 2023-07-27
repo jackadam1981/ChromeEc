@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccfc33af_10816c71",
+        "filename": "board/redrix/vif_override.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-27T22:53:36Z",
+      "side": 1,
+      "message": "FYI - This differs from port 0.",
+      "range": {
+        "startLine": 78,
+        "startChar": 38,
+        "endLine": 78,
+        "endChar": 46
+      },
+      "revId": "c1b30484b7b416133c8a8b1ca009e75d8e451fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d3fd75_a9ea00d0",
+        "filename": "board/redrix/vif_override.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-27T22:53:36Z",
+      "side": 1,
+      "message": "Same here, port 0 has a different setting.",
+      "range": {
+        "startLine": 101,
+        "startChar": 36,
+        "endLine": 101,
+        "endChar": 43
+      },
+      "revId": "c1b30484b7b416133c8a8b1ca009e75d8e451fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
