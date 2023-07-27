@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e9a95c_64c65c44",
+        "filename": "zephyr/program/nissa/craask/cbi.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-07-27T02:07:49Z",
+      "side": 1,
+      "message": "If it\u0027s not controlled by EC, should we just add some comments here rather than allocating ssfc bits?",
+      "revId": "49188fcab7b7fbace6318ef408ddfbc3434c7745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
