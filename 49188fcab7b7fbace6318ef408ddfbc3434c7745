@@ -16,6 +16,24 @@
       "message": "If it\u0027s not controlled by EC, should we just add some comments here rather than allocating ssfc bits?",
       "revId": "49188fcab7b7fbace6318ef408ddfbc3434c7745",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3243fa28_d0c05231",
+        "filename": "zephyr/program/nissa/craask/cbi.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-07-27T04:10:08Z",
+      "side": 1,
+      "message": "But cros-ec,cbi-ssfc doesn\u0027t have start property, it can\u0027t skip the unused bits like cros-ec,cbi-fw-config.",
+      "parentUuid": "e4e9a95c_64c65c44",
+      "revId": "49188fcab7b7fbace6318ef408ddfbc3434c7745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
