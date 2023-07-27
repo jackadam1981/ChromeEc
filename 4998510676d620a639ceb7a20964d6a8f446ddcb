@@ -22,6 +22,30 @@
       },
       "revId": "4998510676d620a639ceb7a20964d6a8f446ddcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5648a69_24cd2da1",
+        "filename": "include/chipset.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-27T13:22:44Z",
+      "side": 1,
+      "message": "Splited the CL to two now\n\nThe purpose of this kconfig option is testing/mocking only, test related Kconfig options definitions are present in test folders, hence kept there, when a program requires this then they will define it in their Kconfig. There is no common Kconfig file for all program tests in test folder",
+      "parentUuid": "11fb581a_c4d2f344",
+      "range": {
+        "startLine": 131,
+        "startChar": 12,
+        "endLine": 131,
+        "endChar": 55
+      },
+      "revId": "4998510676d620a639ceb7a20964d6a8f446ddcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
