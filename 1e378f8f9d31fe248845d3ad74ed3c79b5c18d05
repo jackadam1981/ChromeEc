@@ -98,6 +98,30 @@
       },
       "revId": "1e378f8f9d31fe248845d3ad74ed3c79b5c18d05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569bedfd_9b655999",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-27T16:55:39Z",
+      "side": 1,
+      "message": "This function is called from `stop_hard_hang_timer` which is called from reset/shutdown hooks on lines 293~296",
+      "parentUuid": "48f71d52_db24ab42",
+      "range": {
+        "startLine": 309,
+        "startChar": 22,
+        "endLine": 309,
+        "endChar": 32
+      },
+      "revId": "1e378f8f9d31fe248845d3ad74ed3c79b5c18d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
