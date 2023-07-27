@@ -3,21 +3,6 @@
  * found in the LICENSE file.
  */
 
-/ {
-	fans {
-		compatible = "cros-ec,fans";
-
-		fan0: fan_0 {
-			pwms = <&pwm0 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
-			rpm_min = <3100>;
-			rpm_start = <3100>;
-			rpm_max = <8000>;
-			tach = <&tach1>;
-			pgood_gpio = <&gpio_s0_pgood>;
-		};
-	};
-};
-
 /* Tachemeter for fan speed measurement */
 &tach1 {
 	status = "okay";

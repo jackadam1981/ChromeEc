@@ -19,6 +19,43 @@
 
 /* Winterhold overrides follow... */
 / {
+	fan0: fan_0 {
+		compatible = "zephyr,fan-pid";
+		status = "okay";
+		pwms = <&pwm0 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+		tach = <&tach1>;
+		kp = <13000>;
+		ki = <30>;
+		kd = <700000>;
+	};
+
+	thermal_profile: thermal-profile {
+		compatible = "zephyr,gov-step";
+		status = "okay";
+		sensors = <&temp_cpu_zephyr &soc_pct2075_zephyr &amb_pct2075_zephyr>;
+		fans = <&fan0>;
+		level_0 {
+			temp_on = <1 1 1>;
+			temp_off = <(-1) (-1) (-1)>;
+			fan_speed = <0>;
+		};
+		level_1 {
+			temp_on = <70 55 40>;
+			temp_off = <65 50 35>;
+			fan_speed = <2200>;
+		};
+		level_2 {
+			temp_on = <80 65 45>;
+			temp_off = <75 60 40>;
+			fan_speed = <3600>;
+		};
+		level_3 {
+			temp_on = <90 70 50>;
+			temp_off = <85 65 45>;
+			fan_speed = <4800>;
+		};
+	};
+
 	/* battery overrides */
 	batteries {
 		default_battery: lgc_xphx8 {
@@ -191,15 +228,6 @@
 	/delete-node/ usb-mux-chain-1-ps;
 };
 
-/* fan overrides */
-&fan0 {
-	pwms = <&pwm0 0 PWM_KHZ(2) PWM_POLARITY_NORMAL>;
-	rpm_min = <2100>;
-	rpm_start = <2800>;
-	rpm_max = <4800>;
-	rpm_deviation = <3>;
-};
-
 /* temperature sensor overrides */
 &temp_sensor_charger {
 	temp_host_high = <97>;
@@ -213,15 +241,6 @@
 	temp_host_halt = <96>;
 	temp_host_release_high = <81>;
 	temp_host_release_halt = <86>;
-};
-
-&temp_sensor_cpu {
-	temp_host_high = <110>;
-	temp_host_halt = <112>;
-	temp_host_release_high = <96>;
-	temp_host_release_halt = <96>;
-	temp_fan_off = <76>;
-	temp_fan_max = <82>;
 };
 
 /* handler overrides */
