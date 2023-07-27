@@ -16,6 +16,24 @@
       "message": "I\u0027m getting a build error:\n/mnt/host/source/src/platform/ec/zephyr/program/brya/prj.conf:168: warning: attempt to assign the value \u0027y\u0027 to the undefined symbol USBC_TCPC_PS8XXX\n/mnt/host/source/src/platform/ec/zephyr/program/brya/prj.conf:183: warning: attempt to assign the value \u0027y\u0027 to the undefined symbol USBC_VBUS_TCPCI\n/mnt/host/source/src/platform/ec/zephyr/program/brya/prj.conf:187: warning: attempt to assign the value \u0027y\u0027 to the undefined symbol USBC_TCPC_TCPCI_SHELL\nerror: Aborting due to Kconfig warnings",
       "revId": "b6931707b7ffad4e0cc197bd520351a579487d1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4c9dcf_28da077d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2023-07-27T10:54:10Z",
+      "side": 1,
+      "message": "It looks like you are building from the main branch of zephyr, have you checked out the zephyr sources to my branch from github, or do you have a cloned repo somewhere else? If the second, you have to point this repo with --zephyr-base flag in zmake",
+      "parentUuid": "e0769d5c_1dc152fc",
+      "revId": "b6931707b7ffad4e0cc197bd520351a579487d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
