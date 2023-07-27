@@ -6,6 +6,7 @@
  */
 
 #include "console.h"
+#include "charge_state.h"
 #include "ec_commands.h"
 #include "host_command.h"
 #include "usb_mux.h"
@@ -170,6 +171,10 @@ static enum ec_status hc_typec_control(struct host_cmd_handler_args *args)
 		return pd_request_vdm(p->port, data,
 				      p->vdm_req_params.vdm_data_objects,
 				      tx_type);
+
+	case TYPEC_CONTROL_COMMAND_SET_ADAPTIVE_MODE:
+		return charge_set_adaptive_mode(p->port, p->adaptive_mode);
+
 	default:
 		return EC_RES_INVALID_PARAM;
 	}

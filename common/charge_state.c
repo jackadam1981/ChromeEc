@@ -33,6 +33,7 @@
 #include "printf.h"
 #include "system.h"
 #include "task.h"
+#include "temp_sensor.h"
 #include "throttle_ap.h"
 #include "timer.h"
 #include "usb_common.h"
@@ -992,6 +993,46 @@ int charge_get_adaptive_charger(int chgnum, int *mv, int *ma)
 	}
 	return 0;
 }
+
+static enum ec_status charger_adaptive_hostcmd(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_typec_adaptive_info *p = args->params ;
+	struct ec_response_typec_adaptive_info *resp = args->response;
+	uint32_t port = p->port;
+	int value;
+
+	if (port > 2) {
+		return EC_RES_INVALID_PARAM;
+	}
+	resp->cur_mode = charge_get_adaptive_mode(port);
+
+	charger_get_vbus_voltage(port, &value);
+	resp->vbus = (uint16_t)value;
+
+	charger_get_input_current(port, &value);
+	resp->in_current = (uint16_t)value;
+
+	sb_read(SB_TEMPERATURE, &value);
+	resp->batt_temp = (uint16_t)value;
+
+	sb_read(SB_VOLTAGE, &value);
+	resp->batt_voltage = (uint16_t)value;
+
+	sb_read(SB_CURRENT, &value);
+	resp->batt_current = (int16_t)value;
+
+	if (resp->cur_mode == CHARGE_ADAPTIVE_LEGACY ||
+	    resp->cur_mode == CHARGE_ADAPTIVE_PPS) {
+		int req_v, req_c;
+		charge_get_adaptive_request(port, &req_v, &req_c);
+		resp->req_voltage = (uint16_t)req_v;
+		resp->req_current = (uint16_t)req_c;
+	}
+	args->response_size = sizeof(struct ec_response_typec_adaptive_info);
+	return 0;
+}
+DECLARE_HOST_COMMAND(EC_CMD_TYPEC_ADAPTIVE_INFO, charger_adaptive_hostcmd,
+		     EC_VER_MASK(0));
 
 void chgstate_set_manual_current(int curr_ma)
 {
