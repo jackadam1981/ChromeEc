@@ -331,9 +331,19 @@
 		compatible = "nxp,pct2075";
 		reg = <0x48>;
 	};
+	soc_pct2075_zephyr: soc-pct2075-zephyr@48 {
+		compatible = "lm75";
+		#sensor-cells = <1>;
+		reg = <0x48>;
+	};
 
 	amb_pct2075: amb-pct2075@4f {
 		compatible = "nxp,pct2075";
+		reg = <0x4f>;
+	};
+	amb_pct2075_zephyr: amb-pct2075-zephyr@4f {
+		compatible = "lm75";
+		#sensor-cells = <1>;
 		reg = <0x4f>;
 	};
 };
@@ -351,6 +361,11 @@
 
 	temp_cpu: cpu@4c {
 		compatible = "cros-ec,temp-sensor-sb-tsi";
+		reg = <0x4c>;
+	};
+	temp_cpu_zephyr: cpu-zephyr@4c {
+		compatible = "amd,sb-tsi";
+		#sensor-cells = <1>;
 		reg = <0x4c>;
 	};
 };

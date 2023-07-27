@@ -3,6 +3,9 @@
  * found in the LICENSE file.
  */
 
+#include <zephyr/dt-bindings/fan/fan.h>
+#include <zephyr/dt-bindings/sensor/sensor.h>
+
 /* Skyrim program common DTS includes */
 #include "../adc.dtsi"
 #include "../fan.dtsi"
@@ -19,6 +22,45 @@
 
 /* Winterhold overrides follow... */
 / {
+	fan0: fan_0 {
+		compatible = "zephyr,fan-pid";
+		status = "okay";
+		pwms = <&pwm0 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+		tach = <&tach1>;
+		kp = <30000>;
+		ki = <30>;
+		kd = <150000>;
+		#fan-cells = <1>;
+	};
+
+	thermal_profile: thermal-profile {
+		compatible = "zephyr,tgov-step";
+		sensors = <&temp_cpu_zephyr DT_SENSOR_CHAN_DIE_TEMP>,
+		  <&soc_pct2075_zephyr DT_SENSOR_CHAN_AMBIENT_TEMP>,
+		  <&amb_pct2075_zephyr DT_SENSOR_CHAN_AMBIENT_TEMP>;
+		fans = <&fan0 DT_FAN_MODE_RPM>;
+		level_0 {
+			temperature = <1 1 1>;
+			hysteresis = <(-1) (-1) (-1)>;
+			target = <0>;
+		};
+		level_1 {
+			temperature = <70 55 40>;
+			hysteresis =  <15  5  5>;
+			target = <2200>;
+		};
+		level_2 {
+			temperature = <80 60 45>;
+			hysteresis =  <15  5  5>;
+			target = <3600>;
+		};
+		level_3 {
+			temperature = <87 75 50>;
+			hysteresis =  <15  5  5>;
+			target = <4800>;
+		};
+	 };
+
 	/* battery overrides */
 	batteries {
 		default_battery: lgc_xphx8 {
@@ -191,15 +233,6 @@
 	/delete-node/ usb-mux-chain-1-ps;
 };
 
-/* fan overrides */
-&fan0 {
-	pwms = <&pwm0 0 PWM_KHZ(2) PWM_POLARITY_NORMAL>;
-	rpm_min = <2100>;
-	rpm_start = <2800>;
-	rpm_max = <4800>;
-	rpm_deviation = <3>;
-};
-
 /* temperature sensor overrides */
 &temp_sensor_charger {
 	temp_host_high = <97>;
@@ -213,15 +246,6 @@
 	temp_host_halt = <96>;
 	temp_host_release_high = <81>;
 	temp_host_release_halt = <86>;
-};
-
-&temp_sensor_cpu {
-	temp_host_high = <110>;
-	temp_host_halt = <112>;
-	temp_host_release_high = <96>;
-	temp_host_release_halt = <96>;
-	temp_fan_off = <76>;
-	temp_fan_max = <82>;
 };
 
 /* handler overrides */

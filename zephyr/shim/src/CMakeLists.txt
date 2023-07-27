@@ -33,7 +33,10 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER     charger.c)
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ               chipset_api.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI
                                                             espi.c)
+if (NOT DEFINED CONFIG_FAN)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN         fan.c)
+endif()
+zephyr_library_sources_ifdef(CONFIG_FAN		         fan_zephyr.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FLASH_CROS  flash.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_GPIO_ID
 							    gpio_id.c)
