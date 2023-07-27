@@ -6857,6 +6857,7 @@ enum typec_control_command {
 	TYPEC_CONTROL_COMMAND_USB_MUX_SET,
 	TYPEC_CONTROL_COMMAND_BIST_SHARE_MODE,
 	TYPEC_CONTROL_COMMAND_SEND_VDM_REQ,
+	TYPEC_CONTROL_COMMAND_SET_ADAPTIVE_MODE,
 };
 
 /* Modes (USB or alternate) that a type-C port may enter. */
@@ -6914,7 +6915,9 @@ struct ec_params_typec_control {
 		uint8_t bist_share_mode;
 		/* Used for VMD_REQ */
 		struct typec_vdm_req vdm_req_params;
-		uint8_t placeholder[128];
+		/* Used for SET_ADAPTIVE_MODE */
+		uint8_t adaptive_mode;
+		uint8_t placeholder[127];
 	};
 } __ec_align1;
 
@@ -7517,6 +7520,24 @@ struct ec_response_typec_vdm_response {
 	uint16_t reserved1;
 	/* VDM:Attention contents */
 	uint32_t vdm_attention[2];
+} __ec_align1;
+
+#define EC_CMD_TYPEC_ADAPTIVE_INFO 0x013D
+
+struct ec_params_typec_adaptive_info {
+	uint8_t port;
+} __ec_align1;
+
+struct ec_response_typec_adaptive_info {
+	/* Number of 32-bit fields filled in */
+	uint8_t cur_mode;
+	uint16_t vbus;
+	int16_t in_current;
+	uint16_t batt_temp;
+	uint16_t batt_voltage;
+	int16_t batt_current;
+	uint16_t req_voltage;
+	uint16_t req_current;
 } __ec_align1;
 
 /*****************************************************************************/
