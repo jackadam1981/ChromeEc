@@ -89,6 +89,12 @@ int pd_snk_is_vbus_provided(int port)
 
 /* ----------------- Vendor Defined Messages ------------------ */
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
+__override uint8_t get_dp_pin_mode(int port)
+{
+	/* Only support pin assignment D as 2 lanes are reserved to USB SS. */
+	return MODE_DP_PIN_D;
+}
+
 __override int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
