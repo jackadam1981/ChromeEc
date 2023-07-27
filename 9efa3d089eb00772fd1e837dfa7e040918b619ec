@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ef4009_92c77faa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-07-27T07:33:37Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "9407512e_a68f074e",
+      "revId": "9efa3d089eb00772fd1e837dfa7e040918b619ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "145c6fbf_1e7ca24f",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-07-27T06:47:49Z",
       "side": 1,
       "message": "Test should be alt+vol-up+r ...etc",
+      "revId": "9efa3d089eb00772fd1e837dfa7e040918b619ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9936a7a4_8b48eba9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-07-27T07:33:37Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "145c6fbf_1e7ca24f",
       "revId": "9efa3d089eb00772fd1e837dfa7e040918b619ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20f51d62_a5861aac",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-07-27T07:33:37Z",
+      "side": 1,
+      "message": "If we don\u0027t add it,we will can\u0027t get `key_vol_up_row` and `key_vol_up_col` in `ponyta_board.c` to test.\nIf have any better advice or these is something wrong,please feel free to correct me",
+      "parentUuid": "ee138b3a_1598077e",
+      "revId": "9efa3d089eb00772fd1e837dfa7e040918b619ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42c16707_a082dd1a",
         "filename": "zephyr/test/kingler/testcase.yaml",
         "patchSetId": 5
@@ -65,6 +119,24 @@
       "writtenOn": "2023-07-27T06:47:49Z",
       "side": 1,
       "message": "Is this disable part kind of must item for this test ?",
+      "revId": "9efa3d089eb00772fd1e837dfa7e040918b619ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2344cf65_0a511d2e",
+        "filename": "zephyr/test/kingler/testcase.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-07-27T07:33:37Z",
+      "side": 1,
+      "message": "Yes,\notherwise it will call `set_vol_up_key()` in `keyboard_vivaldi.c` causing the test to fail,this is not what we want.\nWe did not define `CONFIG_PLATFORM_EC_KEYBOARD_VIVALDI` in our project.",
+      "parentUuid": "42c16707_a082dd1a",
       "revId": "9efa3d089eb00772fd1e837dfa7e040918b619ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
