@@ -122,6 +122,30 @@
       },
       "revId": "1e378f8f9d31fe248845d3ad74ed3c79b5c18d05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7cc18e2_70b7230a",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-27T23:20:58Z",
+      "side": 1,
+      "message": "```\nstatic void stop_hard_hang_timer(void)\n{\n\thook_call_deferred(\u0026board_handle_hard_sleep_hang_data, -1);\n}\n```\n\nThe call to `hook_call_deferred()` doesn\u0027t result in directly calling `board_handle_hard_sleep_hang()`, but is instead disabling the timer (by passing `-1`), which prevents this from being called again. We do that for each of those hooks, because they indicate the AP power state is being changed in some other (presumably more healthy/correct) way and we don\u0027t want to reset the AP in addition to those other state changes.",
+      "parentUuid": "569bedfd_9b655999",
+      "range": {
+        "startLine": 309,
+        "startChar": 22,
+        "endLine": 309,
+        "endChar": 32
+      },
+      "revId": "1e378f8f9d31fe248845d3ad74ed3c79b5c18d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

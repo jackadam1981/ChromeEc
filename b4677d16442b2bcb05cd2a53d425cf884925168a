@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8231c4ff_5bbe80b2",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6887,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-27T23:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d816ae83_6369f8d0",
+      "range": {
+        "startLine": 6887,
+        "startChar": 70,
+        "endLine": 6887,
+        "endChar": 75
+      },
+      "revId": "b4677d16442b2bcb05cd2a53d425cf884925168a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62578ccd_493c96b9",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42cbd908_9788e162",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6901,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-27T23:20:58Z",
+      "side": 1,
+      "message": "Good question. I reduced it to match Guybrush (`baseboard/guybrush/baseboard.h`).\n\nWaiting 15 seconds feels like an overly cautious amount of time, since the CrOS spec states all boards are supposed to be done in at most 1 second. It\u0027s possible the user impact gets to be too high waiting that long.\n\nI\u0027m fine with reverting back to 15 seconds if people think this is too risky and will lead to false positives, though.\n\nAlternatively, we do some work to support board/chipset specific values, if that doesn\u0027t exist today already.\n\nThoughts?",
+      "parentUuid": "62578ccd_493c96b9",
+      "range": {
+        "startLine": 6901,
+        "startChar": 32,
+        "endLine": 6901,
+        "endChar": 37
+      },
+      "revId": "b4677d16442b2bcb05cd2a53d425cf884925168a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f63b8bc5_a6c410c3",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2023-07-27T18:11:02Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 6905,
+        "startChar": 59,
+        "endLine": 6905,
+        "endChar": 64
+      },
+      "revId": "b4677d16442b2bcb05cd2a53d425cf884925168a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a34f72a2_dce2ea73",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6905,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-27T23:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f63b8bc5_a6c410c3",
       "range": {
         "startLine": 6905,
         "startChar": 59,
