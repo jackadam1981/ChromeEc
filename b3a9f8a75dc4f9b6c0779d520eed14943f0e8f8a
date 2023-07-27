@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc57ea6_425b3a6d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-27T10:51:20Z",
+      "side": 1,
+      "message": "you can use `test_export_static uint8_t key_vol_up_col \u003d ...` at line 422 instead.",
+      "revId": "b3a9f8a75dc4f9b6c0779d520eed14943f0e8f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
