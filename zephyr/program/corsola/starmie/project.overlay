@@ -49,6 +49,14 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "base_detect_interrupt";
 		};
+
+		usb_c0_ppc_bc12 {
+			handler = "ppc_interrupt";
+		};
+
+		usb_c1_bc12_charger {
+			handler = "ppc_interrupt";
+		};
 		/delete-node/ lid_imu;
 	};
 
@@ -435,6 +443,9 @@
 	ps8743_mux_1: ps8743-mux-1@10 {
 		compatible = "parade,ps8743";
 		reg = <0x10>;
+	};
+	rt1739@70{
+		compatible = "richtek,rt1739-ppc";
 	};
 };
 
