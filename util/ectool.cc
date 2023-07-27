@@ -362,6 +362,8 @@ const char help_str[] =
 	"[toggle|toggle-off|sink|source] [none|usb|dp|dock] "
 	"[dr_swap|pr_swap|vconn_swap]>\n"
 	"      Control USB PD/type-C [deprecated]\n"
+	"  usbpdadapinfo\n"
+	"      Display adaptive feature info\n"
 	"  usbpddps [enable | disable]\n"
 	"      Enable or disable dynamic pdo selection\n"
 	"  usbpdmuxinfo [tsv]\n"
@@ -6593,6 +6595,31 @@ int cmd_usb_pd(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_usb_pd_adap_info(int argc, char *argv[])
+{
+	struct ec_response_typec_adaptive_info *r =
+		(struct ec_response_typec_adaptive_info *)ec_inbuf;
+	int rv;
+	struct ec_params_typec_adaptive_info p;
+
+	p.port = 0;
+	rv = ec_command(EC_CMD_TYPEC_ADAPTIVE_INFO, 0, &p, sizeof(p), ec_inbuf,
+			ec_max_insize);
+	if (rv < 0)
+		return rv;
+
+	const char *mode = r->cur_mode == 1 ? "LEGACY" :
+			r->cur_mode == 2 ? "PPS" : "DISABLED";
+	printf("MODE         = %s(%d)\n", mode, r->cur_mode);
+	printf("VBUS         = %.2f V\n", (double)r->vbus / 1000);
+	printf("In Current   = %d mA\n", r->in_current);
+	printf("Battery Temp = %.2f °C\n", (double)(r->batt_temp - 2731) / 10);
+	printf("Battery Volt = %.2f V\n", (double)r->batt_voltage / 1000);
+	printf("Battery Cur  = %d mA\n", r->batt_current);
+
+	return 0;
+}
+
 int cmd_usb_pd_dps(int argc, char *argv[])
 {
 	struct ec_params_usb_pd_dps_control p;
@@ -10593,7 +10620,9 @@ int cmd_typec_control(int argc, char *argv[])
 			"        args: <0: DISABLE, 1: ENABLE>\n"
 			"    6: Send VDM REQ\n"
 			"        args: <tx_type vdm_hdr [vdo...]>\n"
-			"        <tx_type> is 0 - SOP, 1 - SOP', 2 - SOP''\n",
+			"        <tx_type> is 0 - SOP, 1 - SOP', 2 - SOP''\n"
+			"    7: Set adaptive mode\n"
+			"        args: <0: DISABLE, 1: LEGACY, 2: PPS>\n",
 			argv[0]);
 		return -1;
 	}
@@ -10726,6 +10755,19 @@ int cmd_typec_control(int argc, char *argv[])
 			p.vdm_req_params.vdm_data[vdm_index] = vdm_entry;
 		}
 		p.vdm_req_params.vdm_data_objects = vdm_index;
+		break;
+	case TYPEC_CONTROL_COMMAND_SET_ADAPTIVE_MODE:
+		if (argc < 4) {
+			fprintf(stderr, "Missing mode\n");
+			return -1;
+		}
+		conversion_result = strtol(argv[3], &endptr, 0);
+		if ((endptr && *endptr) || conversion_result > UINT8_MAX ||
+		    conversion_result < 0) {
+			fprintf(stderr, "Bad mode\n");
+			return -1;
+		}
+		p.adaptive_mode = conversion_result;
 	}
 
 	rv = ec_command(EC_CMD_TYPEC_CONTROL, 0, &p, sizeof(p), ec_inbuf,
@@ -11580,6 +11622,7 @@ const struct command commands[] = {
 	{ "usbchargemode", cmd_usb_charge_set_mode },
 	{ "usbmux", cmd_usb_mux },
 	{ "usbpd", cmd_usb_pd },
+	{ "usbpdadapinfo", cmd_usb_pd_adap_info },
 	{ "usbpddps", cmd_usb_pd_dps },
 	{ "usbpdmuxinfo", cmd_usb_pd_mux_info },
 	{ "usbpdpower", cmd_usb_pd_power },
