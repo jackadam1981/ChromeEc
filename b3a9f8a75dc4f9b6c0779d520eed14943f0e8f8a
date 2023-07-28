@@ -16,6 +16,24 @@
       "message": "you can use `test_export_static uint8_t key_vol_up_col \u003d ...` at line 422 instead.",
       "revId": "b3a9f8a75dc4f9b6c0779d520eed14943f0e8f8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0612f1_fade1b84",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2023-07-28T06:31:33Z",
+      "side": 1,
+      "message": "hi Ting Shen,\nAfter using the `test_export_static` to define `key_vol_up_row`,i tried to use `extern` to define `key_vol_up_row` again in the `ponyta_board.c` file to share a variable.\nBut it failed when submitting CL.\n```\nWARNING：externs should be avoided in .c files\n```\nIf want to delete `get_vol_up_key()`,can only remove the `static` and move it to `keyboard_scan.h`.I don\u0027t know if there is a better way.",
+      "parentUuid": "fdc57ea6_425b3a6d",
+      "revId": "b3a9f8a75dc4f9b6c0779d520eed14943f0e8f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
