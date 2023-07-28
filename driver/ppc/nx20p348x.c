@@ -13,6 +13,7 @@
 #include "nx20p348x.h"
 #include "system.h"
 #include "tcpm/tcpm.h"
+#include "timer.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -213,6 +214,25 @@ __maybe_unused static int nx20p3483_vbus_sink_enable(int port, int enable)
 
 	if (enable) {
 		/*
+		 * SM5360A Software workaround solution.
+		 * Applied before Main Switch sink mode
+		 */
+		rv = write_reg(port, NX20P348X_SWITCH_CONTROL_REG, 0x80);
+		return rv;
+		msleep(1);
+		rv = tcpm_set_src_ctrl(port, 1);
+		return rv;
+		msleep(2);
+		rv = write_reg(port, 0x80, 0xEA);
+		return rv;
+		msleep(1);
+		rv = write_reg(port, 0x80, 0xAF);
+		return rv;
+		msleep(1);
+		rv = write_reg(port, 0x88, 0x98);
+		return rv;
+
+		/*
 		 * VBUS Discharge must be off in sink mode.
 		 */
 		rv = nx20p348x_discharge_vbus(port, 0);
@@ -229,6 +249,23 @@ __maybe_unused static int nx20p3483_vbus_sink_enable(int port, int enable)
 	if (rv)
 		return rv;
 
+	/*
+	 * SM5360A Software workaround solution.
+	 * Restore after Main Switch sink mode off.
+	 */
+	if (!enable) {
+		rv = tcpm_set_src_ctrl(port, 0);
+		return rv;
+		msleep(1);
+		rv = write_reg(port, NX20P348X_SWITCH_CONTROL_REG, 0x00);
+		return rv;
+		msleep(1);
+		rv = write_reg(port, 0x88, 0x00);
+		return rv;
+		msleep(1);
+		rv = write_reg(port, 0x80, 0x00);
+		return rv;
+	}
 	for (int i = 0; i < NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC; ++i) {
 		int ds;
 		bool is_sink;
