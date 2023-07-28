@@ -448,4 +448,7 @@ void charge_wakeup(void);
  */
 int charge_request(bool use_curr, bool is_full);
 
+int get_software_workarond_value(void);
+void set_software_workarond_value(int value);
+
 #endif /* __CROS_EC_CHARGER_H */
