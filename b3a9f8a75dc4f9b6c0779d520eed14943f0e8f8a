@@ -34,6 +34,24 @@
       "parentUuid": "fdc57ea6_425b3a6d",
       "revId": "b3a9f8a75dc4f9b6c0779d520eed14943f0e8f8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3fabf3f_965b48f6",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-28T06:44:53Z",
+      "side": 1,
+      "message": "how about:\n\nuse `test_export_static` in keyboard.scan.c, and \n```\n#ifdef CONFIG_ZTEST\nextern uint8_t key_vol_up_row; \nextern uint8_t key_vol_up_col;\n#endif\n```\nin keyboard_scan.h.\n\nSo the variable will be public only if we are running tests.",
+      "parentUuid": "8c0612f1_fade1b84",
+      "revId": "b3a9f8a75dc4f9b6c0779d520eed14943f0e8f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
