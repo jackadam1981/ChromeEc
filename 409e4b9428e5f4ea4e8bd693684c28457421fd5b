@@ -22,6 +22,30 @@
       },
       "revId": "409e4b9428e5f4ea4e8bd693684c28457421fd5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f44be78_b045042e",
+        "filename": "driver/retimer/ps8833.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-07-28T22:41:45Z",
+      "side": 1,
+      "message": "nevermind, i see this is removed in the following CL",
+      "parentUuid": "13c80b36_2e851906",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 67
+      },
+      "revId": "409e4b9428e5f4ea4e8bd693684c28457421fd5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
