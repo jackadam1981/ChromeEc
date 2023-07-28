@@ -147,11 +147,6 @@ static void display_ready(void)
 static void handle_ac_change(void)
 {
 	if (extpower_is_present() && !power_on_for_chargesplash) {
-		if (!lid_is_open()) {
-			CPRINTS("Ignore AC connect as lid is closed");
-			return;
-		}
-
 		if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 			request_chargesplash();
 		}
