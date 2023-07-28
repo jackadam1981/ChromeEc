@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c6c8fc_15cc71e4",
+        "filename": "zephyr/program/nissa/src/sub_board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2023-07-28T04:10:08Z",
+      "side": 1,
+      "message": "This will be a unused-variable on some projects like xivu. \n```\n/mnt/host/source/src/platform/ec/zephyr/program/nissa/src/sub_board.c:236:44: error: unused variable \u0027power_cb\u0027 [-Werror\u003dunused-variable]\n  236 |         static struct ap_power_ev_callback power_cb;\n      |                                            ^~~~~~~~\nAt top level:\n/mnt/host/source/src/platform/ec/zephyr/program/nissa/src/sub_board.c:236:44: error: \u0027power_cb\u0027 defined but not used [-Werror\u003dunused-variable]\ncc1: all warnings being treated as errors\n```",
+      "range": {
+        "startLine": 236,
+        "startChar": 36,
+        "endLine": 236,
+        "endChar": 44
+      },
+      "revId": "30e8449e09a3c421421ba9cb43abdc65bfd2aa6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
