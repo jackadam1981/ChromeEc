@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9a3c56_3a6d1a8d",
+        "filename": "include/host_command.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-28T08:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79564e38_cdf8525c",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 0
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ac1f164_e23c2516",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-25T15:43:58Z",
       "side": 1,
       "message": "What\u0027s in the response buffer at this point?  Isn\u0027t the response buffer zeroed out before the handler is called?",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e83d5bab_12104bd3",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-28T08:07:55Z",
+      "side": 1,
+      "message": "This whole complexity is introduced, because tests call the `host_command_process` function directly. The response buffer is passed to `host_command_process` via `args`. On the other hand, the upstream uses internal buffers, which are passed to the command handlers.\n\nSome tests check the exact pointer of the used response buffer - if it matches the buffer passed via `host_command_process`, so the response buffer passed to the command handler is replaced here - `host_command_get_response_buf` to get it.\n\nTo reflect the real system as much as possible, content of the response buffer passed by the upstream (internal buffer) is copied to the buffer used by the command handler (the one passed via `host_command_process`). As you said, the buffer passed by the upstream should be zeroed at this point and `memcpy` is added to catch if it\u0027s not.",
+      "parentUuid": "6ac1f164_e23c2516",
       "range": {
         "startLine": 71,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa3d0bb_e44db977",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/hcdebug.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-28T08:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23923357_7f23064e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b021eef2_bec9f9bd",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-07-25T15:43:58Z",
       "side": 1,
       "message": "Please create a macro for this check.  This will retain the correct line number reported by zassert() when `CONFIG_EC_HOST_CMD\u003dn`",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0cc680a_28bab256",
+        "filename": "zephyr/test/drivers/default/src/i2c_passthru.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-28T08:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b021eef2_bec9f9bd",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f7fa92f_018fed32",
+        "filename": "zephyr/test/drivers/default/src/usb_mux.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-28T08:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0d77c37_750af6f4",
+      "range": {
+        "startLine": 50,
+        "startChar": 12,
+        "endLine": 50,
+        "endChar": 22
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85902cf6_9a594431",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-07-25T15:43:58Z",
       "side": 1,
       "message": "Is this equivalent?\n\n```\n#if (defined CONFIG_EC_HOST_CMD \u0026\u0026 defined CONFIG_EC_HOST_CMD_DEDICATED_THREAD)\n    return TASK_ID_HOSTCMD;\n#else\n    return TASK_ID_TEST_RUNNER\n#endif",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8cffe82_7817f3df",
+        "filename": "zephyr/test/drivers/default/src/usb_mux.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-28T08:07:55Z",
+      "side": 1,
+      "message": "No, the id is checked from the host command and the test contexts, so both ids have to be verified. The shim host commands are run in the test context, so only `TASK_ID_TEST_RUNNER` is checked.\n\n`TASK_ID_HOSTCMD` id enum is correct for the dedicated thread and reusing main, additional check is not needed.",
+      "parentUuid": "85902cf6_9a594431",
       "range": {
         "startLine": 54,
         "startChar": 0,
