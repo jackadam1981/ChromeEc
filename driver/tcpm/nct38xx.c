@@ -231,7 +231,6 @@ test_export_static int nct38xx_tcpm_set_snk_ctrl(int port, int enable)
 		if (rv)
 			return rv;
 	}
-
 	return tcpci_tcpm_set_snk_ctrl(port, enable);
 }
 
