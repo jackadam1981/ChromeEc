@@ -20,7 +20,8 @@
 test_mockable void trng_rand_bytes(void *buffer, size_t len)
 {
 	while (len) {
-		uint32_t number = trng_rand();
+		/* TODO(b/293651381): REVERT THIS CHANGE!! */
+		uint32_t number = 7; /* trng_rand(); */
 		size_t cnt = 4;
 		/* deal with the lack of alignment guarantee in the API */
 		uintptr_t align = (uintptr_t)buffer & 3;
