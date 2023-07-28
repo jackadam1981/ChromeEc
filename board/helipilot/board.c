@@ -16,6 +16,7 @@
 #include "switch.h"
 #include "system.h"
 #include "task.h"
+#include "trng.h"
 #include "uart.h"
 #include "uartn.h"
 
@@ -128,6 +129,15 @@ static void board_init(void)
 	if (IS_ENABLED(SECTION_IS_RW)) {
 		board_init_rw();
 	}
+
+	/* TODO(b/293651381): Calling trng_init here is a workaround for the
+	 * slow trng_init process. For now, helipilot builds only execute the
+	 * initialization process once. This was moved to boot time to speed up
+	 * host command operations.
+	 */
+	trng_init();
+	/* Dummy call to trng_rand to get things running */
+	trng_rand();
 
 	/*
 	 * Enable the SPI slave interface if the PCH is up.
