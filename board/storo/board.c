@@ -57,6 +57,10 @@
 static void check_c0_line(void);
 DECLARE_DEFERRED(check_c0_line);
 
+void usb_charger_task_set_event(int port, uint8_t event)
+{
+}
+
 static void notify_c0_chips(void)
 {
 	schedule_deferred_pd_interrupt(0);
