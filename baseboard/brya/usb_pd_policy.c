@@ -33,7 +33,7 @@ int pd_check_vconn_swap(int port)
 	return gpio_get_level(GPIO_SEQ_EC_DSW_PWROK);
 }
 
-void pd_power_supply_reset(int port)
+__overridable void pd_power_supply_reset(int port)
 {
 	int prev_en;
 
@@ -50,7 +50,7 @@ void pd_power_supply_reset(int port)
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 
-int pd_set_power_supply_ready(int port)
+__overridable int pd_set_power_supply_ready(int port)
 {
 	int rv;
 
