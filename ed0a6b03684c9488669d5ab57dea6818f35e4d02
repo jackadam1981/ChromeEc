@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d75a79af_de9a73cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2023-07-28T01:42:51Z",
+      "side": 1,
+      "message": "I\u0027ve tried building the firmware and flashing it, however after suspending the device and plugging in AC, the system just boots normally. Perhaps this is expected, but I felt I should see a different UI?",
+      "revId": "ed0a6b03684c9488669d5ab57dea6818f35e4d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
