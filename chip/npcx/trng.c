@@ -115,7 +115,7 @@ struct ncl_drbg {
 struct npcx_trng_state {
 	enum ncl_status trng_init;
 };
-struct npcx_trng_state trng_state;
+struct npcx_trng_state trng_state = { .trng_init = 0 };
 struct npcx_trng_state *state_p = &trng_state;
 
 test_mockable void trng_init(void)
@@ -124,70 +124,99 @@ test_mockable void trng_init(void)
 #error "Please add support for CONFIG_RNG on this chip family."
 #endif
 
-	uint32_t context_size = 0;
+	timestamp_t t0 = get_time();
 
-	state_p->trng_init = NCL_STATUS_FAIL;
+	ccprintf("ti: state_p->trng_init:0x%08X\n", state_p->trng_init);
 
-	context_size = NCL_DRBG->get_context_size();
-	if (context_size != DRBG_CONTEXT_SIZE)
-		ccprintf("ERROR! Unexpected NCL DRBG context_size = %d\n",
-			 context_size);
+	/* TODO(b/293651381): Helipilot takes too long to reinitialize trng each
+	 * time. As a short term workaround, only initialize once. */
+	if (!IS_ENABLED(BOARD_HELIPILOT) ||
+	    (state_p->trng_init != NCL_STATUS_OK)) {
+		uint32_t context_size = 0;
 
-	state_p->trng_init = NCL_DRBG->power(ctx_p, true);
-	if (state_p->trng_init != NCL_STATUS_OK) {
-		ccprintf("ERROR! DRBG power returned %x\n", state_p->trng_init);
-		return;
+		state_p->trng_init = NCL_STATUS_FAIL;
+
+		context_size = NCL_DRBG->get_context_size();
+		if (context_size != DRBG_CONTEXT_SIZE)
+			ccprintf(
+				"ERROR! Unexpected NCL DRBG context_size = %d\n",
+				context_size);
+		ccprintf("ti(0): %d\n", time_since32(t0));
+
+		state_p->trng_init = NCL_DRBG->power(ctx_p, true);
+		if (state_p->trng_init != NCL_STATUS_OK) {
+			ccprintf("ERROR! DRBG power returned %x\n",
+				 state_p->trng_init);
+			return;
+		}
+		ccprintf("ti(1): %d\n", time_since32(t0));
+
+		state_p->trng_init = NCL_SHA->power(ctx_p, true);
+		if (state_p->trng_init != NCL_STATUS_OK) {
+			ccprintf("ERROR! SHA power returned %x\n",
+				 state_p->trng_init);
+			return;
+		}
+		ccprintf("ti(2): %d\n", time_since32(t0));
+
+		state_p->trng_init = NCL_DRBG->init_context(ctx_p);
+		if (state_p->trng_init != NCL_STATUS_OK) {
+			ccprintf("ERROR! DRBG init_context returned %x\r",
+				 state_p->trng_init);
+			return;
+		}
+		ccprintf("ti(3): %d\n", time_since32(t0));
+
+		state_p->trng_init = NCL_DRBG->init(ctx_p, 0);
+		if (state_p->trng_init != NCL_STATUS_OK) {
+			ccprintf("ERROR! DRBG init returned %x\r",
+				 state_p->trng_init);
+			return;
+		}
+		ccprintf("ti(4): %d\n", time_since32(t0));
+
+		state_p->trng_init = NCL_DRBG->config(ctx_p, 100, false);
+		if (state_p->trng_init != NCL_STATUS_OK) {
+			ccprintf("ERROR! DRBG config returned %x\r",
+				 state_p->trng_init);
+			return;
+		}
+		ccprintf("ti(5): %d\n", time_since32(t0));
+
+		state_p->trng_init = NCL_DRBG->instantiate(
+			ctx_p, NCL_DRBG_SECURITY_STRENGTH_128b, NULL, 0);
+		if (state_p->trng_init != NCL_STATUS_OK) {
+			ccprintf("ERROR! DRBG instantiate returned %x\r",
+				 state_p->trng_init);
+			return;
+		}
+		ccprintf("ti(6): %d\n", time_since32(t0));
 	}
 
-	state_p->trng_init = NCL_SHA->power(ctx_p, true);
-	if (state_p->trng_init != NCL_STATUS_OK) {
-		ccprintf("ERROR! SHA power returned %x\n", state_p->trng_init);
-		return;
-	}
+	/* TODO(b/293651381): Continuing from the TODO above, do not power off
+	 * Helipilot after initialization. */
+	if (!IS_ENABLED(BOARD_HELIPILOT)) {
+		state_p->trng_init = NCL_DRBG->power(ctx_p, false);
+		if (state_p->trng_init != NCL_STATUS_OK) {
+			ccprintf("ERROR! DRBG power returned %x\n",
+				 state_p->trng_init);
+			return;
+		}
 
-	state_p->trng_init = NCL_DRBG->init_context(ctx_p);
-	if (state_p->trng_init != NCL_STATUS_OK) {
-		ccprintf("ERROR! DRBG init_context returned %x\r",
-			 state_p->trng_init);
-		return;
+		state_p->trng_init = NCL_SHA->power(ctx_p, false);
+		if (state_p->trng_init != NCL_STATUS_OK) {
+			ccprintf("ERROR! SHA power returned %x\n",
+				 state_p->trng_init);
+			return;
+		}
 	}
-
-	state_p->trng_init = NCL_DRBG->init(ctx_p, 0);
-	if (state_p->trng_init != NCL_STATUS_OK) {
-		ccprintf("ERROR! DRBG init returned %x\r", state_p->trng_init);
-		return;
-	}
-
-	state_p->trng_init = NCL_DRBG->config(ctx_p, 100, false);
-	if (state_p->trng_init != NCL_STATUS_OK) {
-		ccprintf("ERROR! DRBG config returned %x\r",
-			 state_p->trng_init);
-		return;
-	}
-
-	state_p->trng_init = NCL_DRBG->instantiate(
-		ctx_p, NCL_DRBG_SECURITY_STRENGTH_128b, NULL, 0);
-	if (state_p->trng_init != NCL_STATUS_OK) {
-		ccprintf("ERROR! DRBG instantiate returned %x\r",
-			 state_p->trng_init);
-		return;
-	}
-
-	state_p->trng_init = NCL_DRBG->power(ctx_p, false);
-	if (state_p->trng_init != NCL_STATUS_OK) {
-		ccprintf("ERROR! DRBG power returned %x\n", state_p->trng_init);
-		return;
-	}
-
-	state_p->trng_init = NCL_SHA->power(ctx_p, false);
-	if (state_p->trng_init != NCL_STATUS_OK) {
-		ccprintf("ERROR! SHA power returned %x\n", state_p->trng_init);
-		return;
-	}
+	ccprintf("ti(7): %d\n", time_since32(t0));
 }
 
 uint32_t trng_rand(void)
 {
+	timestamp_t t0 = get_time();
+
 	uint32_t return_value;
 	enum ncl_status status = NCL_STATUS_FAIL;
 
@@ -195,36 +224,45 @@ uint32_t trng_rand(void)
 	if (state_p->trng_init != NCL_STATUS_OK)
 		software_panic(PANIC_SW_BAD_RNG, task_get_current());
 
+	ccprintf("trng(0): %d\n", time_since32(t0));
+
 	status = NCL_DRBG->power(ctx_p, true);
 	if (status != NCL_STATUS_OK) {
 		ccprintf("ERROR! DRBG power returned %x\n", status);
 		software_panic(PANIC_SW_BAD_RNG, task_get_current());
 	}
+	ccprintf("trng(1): %d\n", time_since32(t0));
 
 	status = NCL_SHA->power(ctx_p, true);
 	if (status != NCL_STATUS_OK) {
 		ccprintf("ERROR! SHA power returned %x\n", status);
 		software_panic(PANIC_SW_BAD_RNG, task_get_current());
 	}
+	ccprintf("trng(2): %d\n", time_since32(t0));
 
 	status = NCL_DRBG->generate(NULL, NULL, 0, (uint8_t *)&return_value, 4);
 	if (status != NCL_STATUS_OK) {
 		ccprintf("ERROR! DRBG generate returned %x\r", status);
 		software_panic(PANIC_SW_BAD_RNG, task_get_current());
 	}
+	ccprintf("trng(3): %d\n", time_since32(t0));
 
-	/*
-	 * Failing to turn off the blocks has power implications but wouldn't
-	 * result in feeding the caller a bad result, hence no panics enabled
-	 * for failing to turn off the hardware
-	 */
-	status = NCL_DRBG->power(ctx_p, false);
-	if (status != NCL_STATUS_OK)
-		ccprintf("ERROR! DRBG power returned %x\n", status);
+	if (!IS_ENABLED(CONFIG_HELIPILOT)) {
+		/*
+		 * Failing to turn off the blocks has power implications but
+		 * wouldn't result in feeding the caller a bad result, hence no
+		 * panics enabled for failing to turn off the hardware
+		 */
+		status = NCL_DRBG->power(ctx_p, false);
+		if (status != NCL_STATUS_OK)
+			ccprintf("ERROR! DRBG power returned %x\n", status);
+		ccprintf("trng(4): %d\n", time_since32(t0));
 
-	status = NCL_SHA->power(ctx_p, false);
-	if (status != NCL_STATUS_OK)
-		ccprintf("ERROR! SHA power returned %x\n", status);
+		status = NCL_SHA->power(ctx_p, false);
+		if (status != NCL_STATUS_OK)
+			ccprintf("ERROR! SHA power returned %x\n", status);
+		ccprintf("trng(5): %d\n", time_since32(t0));
+	}
 
 	return return_value;
 }
@@ -233,19 +271,24 @@ test_mockable void trng_exit(void)
 {
 	enum ncl_status status = NCL_STATUS_FAIL;
 
-	status = NCL_DRBG->clear(ctx_p);
-	if (status != NCL_STATUS_OK)
-		ccprintf("ERROR! DRBG clear returned %x\r", status);
+	/* TODO(b/293651381): As a workaround for the slow trng_init time,
+	 * helipilot does not really exit */
+	if (!IS_ENABLED(CONFIG_HELIPILOT)) {
+		status = NCL_DRBG->clear(ctx_p);
+		if (status != NCL_STATUS_OK)
+			ccprintf("ERROR! DRBG clear returned %x\r", status);
 
-	status = NCL_DRBG->uninstantiate(ctx_p);
-	if (status != NCL_STATUS_OK)
-		ccprintf("ERROR! DRBG uninstantiate returned %x\r", status);
+		status = NCL_DRBG->uninstantiate(ctx_p);
+		if (status != NCL_STATUS_OK)
+			ccprintf("ERROR! DRBG uninstantiate returned %x\r",
+				 status);
 
-	status = NCL_DRBG->power(ctx_p, false);
-	if (status != NCL_STATUS_OK)
-		ccprintf("ERROR! DRBG power returned %x\n", status);
+		status = NCL_DRBG->power(ctx_p, false);
+		if (status != NCL_STATUS_OK)
+			ccprintf("ERROR! DRBG power returned %x\n", status);
 
-	status = NCL_SHA->power(ctx_p, false);
-	if (status != NCL_STATUS_OK)
-		ccprintf("ERROR! SHA power returned %x\n", status);
+		status = NCL_SHA->power(ctx_p, false);
+		if (status != NCL_STATUS_OK)
+			ccprintf("ERROR! SHA power returned %x\n", status);
+	}
 }
