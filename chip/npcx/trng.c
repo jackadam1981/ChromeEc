@@ -115,10 +115,10 @@ struct ncl_drbg {
 struct npcx_trng_state {
 	enum ncl_status trng_init;
 };
-struct npcx_trng_state trng_state;
+struct npcx_trng_state trng_state = { .trng_init = 0 };
 struct npcx_trng_state *state_p = &trng_state;
 
-test_mockable void trng_init(void)
+void npcx_trng_hw_init(void)
 {
 #ifndef CHIP_VARIANT_NPCX9M8S
 #error "Please add support for CONFIG_RNG on this chip family."
@@ -158,6 +158,9 @@ test_mockable void trng_init(void)
 		return;
 	}
 
+	/* Configure trng to generate new 128 byte random seed every N (second
+	 * parameter) calls to NCL_DRBG->generate()
+	 */
 	state_p->trng_init = NCL_DRBG->config(ctx_p, 100, false);
 	if (state_p->trng_init != NCL_STATUS_OK) {
 		ccprintf("ERROR! DRBG config returned %x\r",
@@ -172,7 +175,20 @@ test_mockable void trng_init(void)
 			 state_p->trng_init);
 		return;
 	}
+}
 
+/* All initialization is handled at startup by npcx_trng_hw_init. trng_init is
+ * provided for compatibility with existing RNG solutions.
+ */
+test_mockable void trng_init(void)
+{
+}
+
+/* The NCPX TRNG driver takes over 250 ms to reinitialize so we presently do not
+ * turn it off during normal operation. This function can be utilized if needed.
+ */
+void npcx_trng_power_off(void)
+{
 	state_p->trng_init = NCL_DRBG->power(ctx_p, false);
 	if (state_p->trng_init != NCL_STATUS_OK) {
 		ccprintf("ERROR! DRBG power returned %x\n", state_p->trng_init);
@@ -213,23 +229,20 @@ uint32_t trng_rand(void)
 		software_panic(PANIC_SW_BAD_RNG, task_get_current());
 	}
 
-	/*
-	 * Failing to turn off the blocks has power implications but wouldn't
-	 * result in feeding the caller a bad result, hence no panics enabled
-	 * for failing to turn off the hardware
-	 */
-	status = NCL_DRBG->power(ctx_p, false);
-	if (status != NCL_STATUS_OK)
-		ccprintf("ERROR! DRBG power returned %x\n", status);
-
-	status = NCL_SHA->power(ctx_p, false);
-	if (status != NCL_STATUS_OK)
-		ccprintf("ERROR! SHA power returned %x\n", status);
-
 	return return_value;
 }
 
+/* The TRNG peripheral takes a long time to initialize so this is presently a
+ * no-op. It is included for compatibility with existing RNG implementations.
+ */
 test_mockable void trng_exit(void)
+{
+}
+
+/* Shutting down and reinitializing TRNG is time consuming so don't call
+ * this unless it is necessary
+ */
+test_mockable void npcx_trng_hw_off(void)
 {
 	enum ncl_status status = NCL_STATUS_FAIL;
 
