@@ -10,9 +10,12 @@
 #include "console.h"
 #include "hooks.h"
 #include "nct38xx.h"
+#include "nx20p348x.h"
 #include "task.h"
 #include "tcpm/tcpci.h"
+#include "timer.h"
 #include "usb_common.h"
+#include "usbc_ppc.h"
 
 #ifdef CONFIG_ZEPHYR
 #include "usbc/tcpc_nct38xx.h"
@@ -231,7 +234,6 @@ test_export_static int nct38xx_tcpm_set_snk_ctrl(int port, int enable)
 		if (rv)
 			return rv;
 	}
-
 	return tcpci_tcpm_set_snk_ctrl(port, enable);
 }
 
