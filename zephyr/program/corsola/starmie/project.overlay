@@ -50,6 +50,12 @@
 			handler = "base_detect_interrupt";
 		};
 		/delete-node/ lid_imu;
+		/*
+		 * We only delete the interrupt here, and keep the gpio node in
+		 * named-gpios for tablet compatibility with implementation in
+		 * common/tablet_mode.c.
+		 */
+		/delete-node/ tablet_mode;
 	};
 
 	named-gpios {
