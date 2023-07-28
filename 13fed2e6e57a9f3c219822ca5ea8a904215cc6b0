@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d34301_e771fb52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-07-28T04:26:28Z",
+      "side": 1,
+      "message": "L",
+      "revId": "13fed2e6e57a9f3c219822ca5ea8a904215cc6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9ee8e15_e07dd24f",
@@ -14,6 +31,24 @@
       "writtenOn": "2023-07-24T06:56:54Z",
       "side": 1,
       "message": "Is search key also moved ?",
+      "revId": "13fed2e6e57a9f3c219822ca5ea8a904215cc6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4c93752_c2a272bc",
+        "filename": "zephyr/program/corsola/ponyta/include/keyboard_customization.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2023-07-28T04:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9ee8e15_e07dd24f",
       "revId": "13fed2e6e57a9f3c219822ca5ea8a904215cc6b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
