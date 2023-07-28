@@ -124,6 +124,8 @@ def main(argv):
             "--no-case-output",
             "-m",
             "YAMLLint",
+            "-m",
+            "DevicetreeBindings",
             "-c",
             commit_range,
         ]
