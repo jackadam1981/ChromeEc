@@ -149,3 +149,8 @@ void base_force_state(enum ec_set_base_state_cmd state)
 	}
 	k_mutex_unlock(&modify_base_detection_mutex);
 }
+
+__override int board_is_lid_angle_tablet_mode(void)
+{
+	return 0;
+}
