@@ -12,7 +12,9 @@ zephyr_library_sources("src/power_signals.c")
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
 	"src/usb_pd_policy.c"
-	"src/usbc_config.c")
+	"src/usbc_config.c"
+	"src/mp2825_tuning.c"
+	)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON "src/led.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_AMD_STT "src/stt.c")
 

@@ -44,7 +44,8 @@
 
 		i2c_charger: charger {
 			i2c-port = <&i2c4_1>;
-			enum-names = "I2C_PORT_CHARGER";
+			enum-names = "I2C_PORT_CHARGER",
+						 "I2C_PORT_MP2825";
 		};
 
 		eeprom {
@@ -225,6 +226,11 @@
 		compatible = "intersil,isl9241";
 		status = "okay";
 		reg = <0x9>;
+	};
+	pmic_mp2825: pmic_mp2825@20 {
+		compatible = "mps,mp2825";
+		reg = <0x20>;
+		label = "I2C_ADDR_MP2825_FLAGS";
 	};
 };
 
