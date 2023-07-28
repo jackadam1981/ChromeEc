@@ -88,6 +88,24 @@
       "parentUuid": "1e2c8501_62f33998",
       "revId": "ed0a6b03684c9488669d5ab57dea6818f35e4d02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c55b5aeb_44a3d76a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-07-28T15:46:07Z",
+      "side": 1,
+      "message": "\u003e after suspending the device and plugging in AC, the system just boots normally\n\nThat\u0027s expected, even without any changes here (or for chargesplash), because connecting A/C is a wake event.\n\nInstead, you\u0027ll need to power off the DUT and then plug in the A/C. You should see a behavior change when the feature is enabled in the EC (via Kconfig):\n* Device remains powered off with feature disabled in EC\n* Device powers on with feature enabled\n\nOnce you\u0027ve verified that, then you can work on the dark resume validation that Derek has asked for:\n\n\u003e Separately, I think we need to make sure dark boot works correctly in userspace before merging this code. This means making sure the display doesn\u0027t turn on, then shutting down at powerd\u0027s convenience.\n\n----\n\n\u003e I think we\u0027ll want an end-to-end test for this.\n\nI have an attempt at this for the charge splash screen here: https://crrev.com/c/4728751\n\nNote that the test will fail everywhere, since no devices have `CONFIG_PLATFORM_EC_CHARGESPLASH` enabled in their EC builds. The test should be updated to check for that functionality before running.\n\nAdditionally, after chatting with dbehr@, there is no good way to validate that a specific splash screen was shown or not. Instead, all I can do with tast is validate the expected boot paths.",
+      "parentUuid": "af8d9595_35282bb7",
+      "revId": "ed0a6b03684c9488669d5ab57dea6818f35e4d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
