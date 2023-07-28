@@ -208,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70f825ad_06e741e4",
+        "filename": "zephyr/shim/include/shimmed_tasks.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-07-28T07:44:15Z",
+      "side": 1,
+      "message": "I think it would be better to leave it as it is and just drop the `CONFIG_TASK_HOSTCMD_THREAD_MODE` config once we switch to the upstream.",
+      "parentUuid": "0f40b736_3765e877",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6858885c_13ff24c5",
         "filename": "zephyr/shim/src/host_command.c",
         "patchSetId": 23
