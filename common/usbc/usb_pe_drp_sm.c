@@ -2088,6 +2088,14 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 		    PE_CHK_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP))) {
 		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 		PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
+
+		/*
+		 * Role swap for DP mode is not currently done through DPM, this
+		 * can cause DP mode entry to fail if a reset happens. Set the
+		 * current  DPM request to allow the port to enter the correct
+		 * role if a reset happens.
+		 */
+		pe_set_dpm_curr_request(port, DPM_REQUEST_DR_SWAP);
 		set_state_pe(port, PE_DRS_SEND_SWAP);
 		return true;
 	}
