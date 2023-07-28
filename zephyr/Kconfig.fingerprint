@@ -1,0 +1,33 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config PLATFORM_EC_FINGERPRINT_RW
+	bool "Enable support for fingerprint authentication subsystem in RW only"
+	select PLATFORM_EC_FINGERPRINT if CROS_EC_RW
+
+config PLATFORM_EC_FINGERPRINT
+	bool "Support for fingerprint authentication subsystem"
+	depends on BORINGSSL_CRYPTO
+	select HAS_TASK_FPSENSOR
+	help
+	  This option enables fingerprint authentication subsystem which
+	  is complete Match On Chip solution. Operations (e.g. enroll,
+	  match) are exposed to AP using Host Command interface.
+
+if PLATFORM_EC_FINGERPRINT
+
+config FINGERPRINT_SHELL
+	bool "Enable fingerprint debugging console commands"
+	help
+	  This option adds fingerprint console commands that can be used to
+	  verify fingerpint functionality.
+
+config FP_MAX_FINGER_COUNT
+	int "Maximal number of loaded finger templates"
+	default 5
+	help
+	  Max number of templates stored / matched against. This limit comes
+	  from memory constraints and matching time.
+
+endif # PLATFORM_EC_FINGERPRINT
