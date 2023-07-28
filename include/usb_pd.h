@@ -3599,6 +3599,13 @@ int typec_update_cc(int port);
 __override_proto enum pd_sdb_power_indicator
 board_get_pd_sdb_power_indicator(enum pd_sdb_power_state power_state);
 
+/**
+ * Move to board layer control pd & ppc.
+ */
+__override_proto void pd_power_supply_reset(int port);
+
+__override_proto int pd_set_power_supply_ready(int port);
+
 /****************************************************************************/
 
 #endif /* __CROS_EC_USB_PD_H */
