@@ -125,25 +125,30 @@ void npcx_trng_hw_init(void)
 #endif
 
 	uint32_t context_size = 0;
+	timestamp_t t0 = get_time();
 
+	ccprintf("ti: state_p->trng_init:0x%08X\n", state_p->trng_init);
 	state_p->trng_init = NCL_STATUS_FAIL;
 
 	context_size = NCL_DRBG->get_context_size();
 	if (context_size != DRBG_CONTEXT_SIZE)
 		ccprintf("ERROR! Unexpected NCL DRBG context_size = %d\n",
 			 context_size);
+	ccprintf("ti(0): %d\n", time_since32(t0));
 
 	state_p->trng_init = NCL_DRBG->power(ctx_p, true);
 	if (state_p->trng_init != NCL_STATUS_OK) {
 		ccprintf("ERROR! DRBG power returned %x\n", state_p->trng_init);
 		return;
 	}
+	ccprintf("ti(1): %d\n", time_since32(t0));
 
 	state_p->trng_init = NCL_SHA->power(ctx_p, true);
 	if (state_p->trng_init != NCL_STATUS_OK) {
 		ccprintf("ERROR! SHA power returned %x\n", state_p->trng_init);
 		return;
 	}
+	ccprintf("ti(2): %d\n", time_since32(t0));
 
 	state_p->trng_init = NCL_DRBG->init_context(ctx_p);
 	if (state_p->trng_init != NCL_STATUS_OK) {
@@ -151,12 +156,14 @@ void npcx_trng_hw_init(void)
 			 state_p->trng_init);
 		return;
 	}
+	ccprintf("ti(3): %d\n", time_since32(t0));
 
 	state_p->trng_init = NCL_DRBG->init(ctx_p, 0);
 	if (state_p->trng_init != NCL_STATUS_OK) {
 		ccprintf("ERROR! DRBG init returned %x\r", state_p->trng_init);
 		return;
 	}
+	ccprintf("ti(4): %d\n", time_since32(t0));
 
 	/* Configure trng to generate new 128 byte random seed every N (second
 	 * parameter) calls to NCL_DRBG->generate()
@@ -167,6 +174,7 @@ void npcx_trng_hw_init(void)
 			 state_p->trng_init);
 		return;
 	}
+	ccprintf("ti(5): %d\n", time_since32(t0));
 
 	state_p->trng_init = NCL_DRBG->instantiate(
 		ctx_p, NCL_DRBG_SECURITY_STRENGTH_128b, NULL, 0);
@@ -175,6 +183,7 @@ void npcx_trng_hw_init(void)
 			 state_p->trng_init);
 		return;
 	}
+	ccprintf("ti(6): %d\n", time_since32(t0));
 }
 
 /* All initialization is handled at startup by npcx_trng_hw_init. trng_init is
@@ -204,6 +213,8 @@ void npcx_trng_power_off(void)
 
 uint32_t trng_rand(void)
 {
+	timestamp_t t0 = get_time();
+
 	uint32_t return_value;
 	enum ncl_status status = NCL_STATUS_FAIL;
 
@@ -211,17 +222,22 @@ uint32_t trng_rand(void)
 	if (state_p->trng_init != NCL_STATUS_OK)
 		software_panic(PANIC_SW_BAD_RNG, task_get_current());
 
+	unsigned int t1 = time_since32(t0);
+
 	status = NCL_DRBG->power(ctx_p, true);
 	if (status != NCL_STATUS_OK) {
 		ccprintf("ERROR! DRBG power returned %x\n", status);
 		software_panic(PANIC_SW_BAD_RNG, task_get_current());
 	}
 
+	unsigned int t2 = time_since32(t0);
+
 	status = NCL_SHA->power(ctx_p, true);
 	if (status != NCL_STATUS_OK) {
 		ccprintf("ERROR! SHA power returned %x\n", status);
 		software_panic(PANIC_SW_BAD_RNG, task_get_current());
 	}
+	unsigned int t3 = time_since32(t0);
 
 	status =
 		NCL_DRBG->generate(ctx_p, NULL, 0, (uint8_t *)&return_value, 4);
@@ -229,6 +245,9 @@ uint32_t trng_rand(void)
 		ccprintf("ERROR! DRBG generate returned %x\r", status);
 		software_panic(PANIC_SW_BAD_RNG, task_get_current());
 	}
+	unsigned int t4 = time_since32(t0);
+
+	ccprintf("trng\t%d\t%d\t%d\t%d\n", t1, t2, t3, t4);
 
 	return return_value;
 }

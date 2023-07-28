@@ -414,6 +414,8 @@ enum ec_error_list validate_fp_buffer_offset(const uint32_t buffer_size,
 
 static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 {
+	timestamp_t t0 = get_time();
+
 	const auto *params =
 		static_cast<const struct ec_params_fp_frame *>(args->params);
 	void *out = args->response;
@@ -445,6 +447,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		return EC_RES_SUCCESS;
 	}
 
+	CPRINTS("fp_frame time(a): %d", time_since32(t0));
+
 	/* The host requested a template. */
 
 	/* Templates are numbered from 1 in this host request. */
@@ -457,6 +461,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 	ret = validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset, size);
 	if (ret != EC_SUCCESS)
 		return EC_RES_INVALID_PARAM;
+
+	CPRINTS("fp_frame time(b): %d", time_since32(t0));
 
 	if (!offset) {
 		ScopedFastCpu fast_cpu;
@@ -476,7 +482,10 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 			return EC_RES_BUSY;
 		encryption_deadline.val = now.val + (1 * SECOND);
 
+		CPRINTS("fp_frame time(b1): %d", time_since32(t0));
 		memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
+		CPRINTS("fp_frame time(b2): %d", time_since32(t0));
+
 		/*
 		 * The beginning of the buffer contains nonce, encryption_salt
 		 * and tag.
@@ -491,6 +500,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 				FP_CONTEXT_ENCRYPTION_SALT_BYTES);
 		trng_exit();
 
+		CPRINTS("fp_frame time(b3): %d", time_since32(t0));
+
 		if (fgr == template_newly_enrolled) {
 			/*
 			 * Newly enrolled templates need new positive match
@@ -503,6 +514,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 					FP_POSITIVE_MATCH_SALT_BYTES);
 			trng_exit();
 		}
+
+		CPRINTS("fp_frame time(c): %d", time_since32(t0));
 
 		ret = derive_encryption_key(key, enc_info->encryption_salt);
 		if (ret != EC_SUCCESS) {
@@ -530,9 +543,14 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 			return EC_RES_UNAVAILABLE;
 		}
 		templ_dirty &= ~BIT(fgr);
+
+		CPRINTS("fp_frame time(d): %d", time_since32(t0));
 	}
 	memcpy(out, fp_enc_buffer + offset, size);
 	args->response_size = size;
+
+	trng_exit();
+	CPRINTS("fp_frame time: %d", time_since32(t0));
 
 	return EC_RES_SUCCESS;
 }
