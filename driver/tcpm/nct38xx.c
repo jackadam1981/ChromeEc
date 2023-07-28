@@ -10,9 +10,12 @@
 #include "console.h"
 #include "hooks.h"
 #include "nct38xx.h"
+#include "nx20p348x.h"
 #include "task.h"
 #include "tcpm/tcpci.h"
+#include "timer.h"
 #include "usb_common.h"
+#include "usbc_ppc.h"
 
 #ifdef CONFIG_ZEPHYR
 #include "usbc/tcpc_nct38xx.h"
@@ -35,6 +38,12 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 static enum nct38xx_boot_type boot_type[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+static int write_reg(uint8_t port, int reg, int regval)
+{
+	return i2c_write8(ppc_chips[port].i2c_port,
+			  ppc_chips[port].i2c_addr_flags, reg, regval);
+}
 
 test_mockable enum nct38xx_boot_type nct38xx_get_boot_type(int port)
 {
@@ -226,12 +235,42 @@ test_export_static int nct38xx_tcpm_set_snk_ctrl(int port, int enable)
 	 * USB_Cx_TCPC_VBSNK_EN_L will be driven high.
 	 */
 	if (!enable) {
+		rv = tcpm_set_src_ctrl(1, 0);
+		return rv;
+		msleep(1);
+		rv = write_reg(1, NX20P348X_SWITCH_CONTROL_REG, 0x00);
+		return rv;
+		msleep(1);
+		rv = write_reg(1, 0x88, 0x00);
+		return rv;
+		msleep(1);
+		rv = write_reg(1, 0x80, 0x00);
+		return rv;
+
 		rv = tcpc_update8(port, NCT38XX_REG_CTRL_OUT_EN,
 				  NCT38XX_REG_CTRL_OUT_EN_SNKEN, MASK_SET);
 		if (rv)
 			return rv;
+	} else {
+		/*
+		 * SM5360A Software workaround solution.
+		 * Applied before Main Switch sink mode
+		 */
+		rv = write_reg(1, NX20P348X_SWITCH_CONTROL_REG, 0x80);
+		return rv;
+		msleep(1);
+		rv = tcpm_set_src_ctrl(1, 1);
+		return rv;
+		msleep(2);
+		rv = write_reg(1, 0x80, 0xEA);
+		return rv;
+		msleep(1);
+		rv = write_reg(1, 0x80, 0xAF);
+		return rv;
+		msleep(1);
+		rv = write_reg(1, 0x88, 0x98);
+		return rv;
 	}
-
 	return tcpci_tcpm_set_snk_ctrl(port, enable);
 }
 
