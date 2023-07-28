@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5268a49_3a8349a8",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-28T17:49:29Z",
+      "side": 1,
+      "message": "Are `PLATFORM_EC_KEYBOARD_CROS_EC_RAW_KB` and `CROS_EC_KEYBOARD_INPUT` mutually exclusive?",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "c7a9481f0fc242d4cf6462fc3430e0f1e65fdd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "973b7161_3ad24a54",
+        "filename": "zephyr/shim/src/keyboard_input.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-07-28T17:49:29Z",
+      "side": 1,
+      "message": "Should this be `key_state_changed`?",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "c7a9481f0fc242d4cf6462fc3430e0f1e65fdd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
