@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a2b017e_7366a8a0",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-07-29T01:07:08Z",
+      "side": 1,
+      "message": "The combined logic above this point is roughly 1.1 seconds, with about half of that time coming between b2/b3 and half between b3/c.\n\nMost of the time in both of these blocks is spent in calls to `trng_init` and `trng_rand`\n\n```\n2023-07-29T00:11:22.468000Z [34.871652 HC 0x0404]\n2023-07-29T00:11:22.468000Z [34.871965 fp_frame time(a): 3\n2023-07-29T00:11:22.468000Z ]\n2023-07-29T00:11:22.468000Z [34.872019 fp_frame time(b): 57\n2023-07-29T00:11:22.468000Z ]\n2023-07-29T00:11:22.468000Z [34.872074 fp_frame time(b1): 112\n2023-07-29T00:11:22.468000Z ]\n2023-07-29T00:11:22.468000Z [34.872174 fp_frame time(b2): 212\n2023-07-29T00:11:22.468000Z ]\n2023-07-29T00:11:23.019000Z [35.423362 fp_frame time(b3): 551401\n2023-07-29T00:11:23.019000Z ]\n2023-07-29T00:11:23.569000Z [35.972659 fp_frame time(c): 1100697\n2023-07-29T00:11:23.569000Z ]\n2023-07-29T00:11:23.569000Z [35.972771 Seed hasn\u0027t been set.]\n2023-07-29T00:11:23.569000Z [35.972819 Failed to get IKM: 7]\n2023-07-29T00:11:23.569000Z [35.972901 fgr0: Failed to derive key]\n2023-07-29T00:11:23.569000Z [35.972962 HC 0x0404 err 9]\n```\n\nAccording to the datasheet we should be able to pull about 2500 random bytes per second. From what I can see here we\u0027re calculating 12 (`FP_CONTEXT_NONCE_BYTES`) + 16 (`FP_CONTEXT_ENCRYPTION_SALT_BYTES`) in the b2-b3 block and 16 (`FP_POSITIVE_MATCH_SALT_BYTES`) in the b3-c block. Are we not providing enough entropy? Is there a better API for that?",
+      "range": {
+        "startLine": 519,
+        "startChar": 2,
+        "endLine": 519,
+        "endChar": 54
+      },
+      "revId": "1fa4ff0102a9008dde1d9be85e0040e45cbb6465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
