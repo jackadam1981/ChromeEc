@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daa65a01_8bb1d56c",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-07-29T04:25:17Z",
+      "side": 1,
+      "message": "This makes it so we always see `MODE_DP_PIN_D`. Isn\u0027t it better to call `pd_dfp_dp_get_pin_mode()` and then force `MODE_DP_PIN_C` to `MODE_DP_PIN_D`? If I do that then when I have a charger connected it doesn\u0027t says DP mode is D in the `ectool typecstatus`. If I just use this CL it shows the DP mode there. I think we should return 0 from here when DP mode is not in use.\n\n```\ndiff --git a/baseboard/trogdor/usb_pd_policy.c b/baseboard/trogdor/usb_pd_policy.c\nindex 3b072ed8ba51..e4d15ebe630e 100644\n--- a/baseboard/trogdor/usb_pd_policy.c\n+++ b/baseboard/trogdor/usb_pd_policy.c\n@@ -9,6 +9,7 @@\n #include \"gpio.h\"\n #include \"system.h\"\n #include \"usb_mux.h\"\n+#include \"usb_pd.h\"\n #include \"usbc_ppc.h\"\n #include \"util.h\"\n \n@@ -91,8 +92,13 @@ int pd_snk_is_vbus_provided(int port)\n #ifdef CONFIG_USB_PD_ALT_MODE_DFP\n __override uint8_t get_dp_pin_mode(int port)\n {\n+       int mode \u003d pd_dfp_dp_get_pin_mode(port, dp_status[port]);\n+\n        /* Only support pin assignment D as 2 lanes are reserved to USB SS. */\n-       return MODE_DP_PIN_D;\n+       if (mode \u003d\u003d MODE_DP_PIN_C)\n+               return MODE_DP_PIN_D;\n+\n+       return mode;\n }\n \n __override int svdm_dp_config(int port, uint32_t *payload)\n```",
+      "revId": "976136e0f5b28e243cddf9d381c0c2910fd9b06a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af06d18d_4b8e67f2",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2023-07-29T04:25:17Z",
+      "side": 1,
+      "message": "Even here",
+      "range": {
+        "startLine": 101,
+        "startChar": 20,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "976136e0f5b28e243cddf9d381c0c2910fd9b06a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
