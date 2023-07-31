@@ -15,6 +15,8 @@ def register_variant(project_name):
             here / "program.conf",
             here / project_name / "project.conf",
         ],
+        signer=signers.RwsigSigner, # pylint: disable=undefined-variable
+        signer_args={"key": here / "dev_key.pem"},
     )
 
 
