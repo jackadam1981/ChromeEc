@@ -33,6 +33,9 @@ void board_ap_power_force_shutdown(void)
 	/* Turn off PRIM load switch. */
 	power_signal_set(PWR_EN_PP3300_A, 0);
 
+#ifdef CONFIG_PLATFORM_G3_FLASH_SHARING
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_spi_oe_mecc), 0);
+#endif
 	/* Wait RSMRST to be off. */
 	while (power_signal_get(PWR_RSMRST) && (timeout_ms > 0)) {
 		k_msleep(1);
