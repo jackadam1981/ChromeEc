@@ -748,6 +748,10 @@ class Zmake:
                     dirs,
                     version_string=version_string,
                 ):
+                    if output_name == "ec.bin":
+                        output_file = project.signer.sign(
+                            output_file, packer_work_dir, self.jobserver
+                        )
                     shutil.copy2(output_file, output_dir / output_name)
                     self.logger.debug("Output file '%s' created.", output_file)
 

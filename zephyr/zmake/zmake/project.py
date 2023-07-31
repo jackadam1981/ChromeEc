@@ -13,6 +13,7 @@ import zmake.build_config as build_config
 import zmake.configlib as configlib
 import zmake.modules
 import zmake.output_packers
+import zmake.signers as signers
 import zmake.toolchains as toolchains
 
 
@@ -55,6 +56,10 @@ class ProjectConfig:
     inherited_from: typing.Iterable[str] = dataclasses.field(
         default_factory=list
     )
+    signer: type = signers.NullSigner
+    signer_args: typing.Mapping[str, typing.Any] = dataclasses.field(
+        default_factory=dict
+    )
 
     @property
     def full_name(self) -> str:
@@ -75,6 +80,9 @@ class Project:
         self.config = config
         self.packer: zmake.output_packers.BasePacker = (
             self.config.output_packer(self)
+        )
+        self.signer: signers.BaseSigner = self.config.signer(
+            self, **self.config.signer_args
         )
 
     def iter_builds(self):

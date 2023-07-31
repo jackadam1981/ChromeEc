@@ -1,0 +1,30 @@
+/dts-v1/;
+
+/ {
+	binman {
+		filename = "ec.bin";
+		ec-ro {
+			type = "section";
+			size = <2048>;
+			fmap {
+			};
+			key-ro {
+				type = "section";
+				size = <1024>;
+			};
+		};
+		ec-rw {
+			type = "section";
+			size = <2048>;
+			zephyr-rw {
+				type = "section";
+				size = <1024>;
+				pad-byte = <0x87>;
+			};
+			sig-rw {
+				type = "section";
+				size = <1024>;
+			};
+		};
+	};
+};
