@@ -16,6 +16,23 @@
       "message": "Ping...",
       "revId": "c75614b6485ae9594976d5aa5a8a05b858cd2d54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f16e9f5_ac7bfd00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2023-07-31T21:54:00Z",
+      "side": 1,
+      "message": "Hello reviewers,\nCould we move forward with these changes?\nPreventing double events generation is required to fully add testing for [AP_PWRSEQ](https://chromium-review.googlesource.com/q/topic:%22ap-pwrseq-drv%22) remaining changes.",
+      "revId": "c75614b6485ae9594976d5aa5a8a05b858cd2d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
