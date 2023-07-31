@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87494353_a3c3fe10",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-31T17:36:00Z",
+      "side": 1,
+      "message": "Yeah they are in a `choice`, I refactored that previously, discrete and raw_kb use the keyscan task and all the other stuff in `common/keyboard_scan.c` but this ones does not as it uses the thread that is part of the upstream driver.",
+      "parentUuid": "b5268a49_3a8349a8",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "c7a9481f0fc242d4cf6462fc3430e0f1e65fdd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "973b7161_3ad24a54",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-28T17:49:29Z",
       "side": 1,
       "message": "Should this be `key_state_changed`?",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "c7a9481f0fc242d4cf6462fc3430e0f1e65fdd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdcc50b1_8524680e",
+        "filename": "zephyr/shim/src/keyboard_input.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-07-31T17:36:00Z",
+      "side": 1,
+      "message": "Yeah good point, it should not because that\u0027s part of the legacy task that this is not using, but then the feature is being silently excluded by not having the task, which it should not.\n\nI\u0027ve implemented it now by adding a `keyboard_scan_enable` using a Zephyr atomic and updated the tests. That should do for now, may change it to stop the thread down the road.\n\nThanks for spotting this, did not realize I was missing the lid detection entirely.",
+      "parentUuid": "973b7161_3ad24a54",
       "range": {
         "startLine": 39,
         "startChar": 2,
