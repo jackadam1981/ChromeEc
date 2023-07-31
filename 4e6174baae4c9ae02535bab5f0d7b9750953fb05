@@ -33,6 +33,23 @@
       "message": "Could compal validate it and add Validated+1?",
       "revId": "4e6174baae4c9ae02535bab5f0d7b9750953fb05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b30da6b_06a9245d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-31T08:12:06Z",
+      "side": 1,
+      "message": "Hi Eric, could you review the CL and advise any additional tests to be covered other than faft_ec/pd ?",
+      "revId": "4e6174baae4c9ae02535bab5f0d7b9750953fb05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
