@@ -34,6 +34,46 @@
       "parentUuid": "372cc058_a7cc81a4",
       "revId": "1cf133c7c90c144fd8baa3acac8f73fed11adfa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f206f05_82a2fd0e",
+        "filename": "zephyr/program/nissa/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-07-31T04:12:47Z",
+      "side": 1,
+      "message": "This symbol doesn\u0027t get defined for tests, but needs to be (otherwise HDMI support isn\u0027t enabled for the test). Add a version of this option to `zephyr/test/nissa/Kconfig`.",
+      "revId": "1cf133c7c90c144fd8baa3acac8f73fed11adfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363cb62a_50c6c43a",
+        "filename": "zephyr/program/nissa/src/sub_board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-07-31T04:12:47Z",
+      "side": 1,
+      "message": "`GPIO_DT_` is wrong for these, since it resolves to a `struct gpio_dt_spec*`. All of the existence checks should use `DT_NODELABEL` or `DT_ALIAS` instead of `GPIO_DT_*`.",
+      "range": {
+        "startLine": 116,
+        "startChar": 19,
+        "endLine": 116,
+        "endChar": 41
+      },
+      "revId": "1cf133c7c90c144fd8baa3acac8f73fed11adfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
