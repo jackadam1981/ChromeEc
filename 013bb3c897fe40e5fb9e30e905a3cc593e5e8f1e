@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19f492a7_9274ea64",
+        "filename": "zephyr/test/rex/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-31T15:49:55Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "3515d7ef_9695a846",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 6
+      },
+      "revId": "013bb3c897fe40e5fb9e30e905a3cc593e5e8f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dba4faa_829c74ea",
         "filename": "zephyr/test/rex/Kconfig",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2023-07-27T19:36:23Z",
       "side": 1,
       "message": "skyrim uses `TEST_BOARD_...`. let\u0027s make sure all the\nboards/projects use the same naming convention.",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "013bb3c897fe40e5fb9e30e905a3cc593e5e8f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ea336c2_dcb58cc1",
+        "filename": "zephyr/test/rex/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-07-31T15:49:55Z",
+      "side": 1,
+      "message": "Actually with new guidelines on refactoring zephyr based reference platforms, we are using terms program and project inplace of baseboard and board, hence I am using program and project here",
+      "parentUuid": "7dba4faa_829c74ea",
       "range": {
         "startLine": 10,
         "startChar": 8,
