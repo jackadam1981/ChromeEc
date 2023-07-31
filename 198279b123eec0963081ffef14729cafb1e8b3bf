@@ -22,6 +22,30 @@
       },
       "revId": "198279b123eec0963081ffef14729cafb1e8b3bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f60d25b_ddce133b",
+        "filename": "driver/usb_mux/amd_fp8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-07-31T16:17:35Z",
+      "side": 1,
+      "message": "At least for the SoC mux, no. It has separate, dedicated modes for TBT3 and USB4. Though I am anticipating that there will be further changes to this driver as I get more familiar in the area.",
+      "parentUuid": "696cf301_7b86b231",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 6
+      },
+      "revId": "198279b123eec0963081ffef14729cafb1e8b3bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
