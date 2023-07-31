@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "079484f9_b2ec4c9f",
+        "filename": "zephyr/test/nissa/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2023-07-31T23:40:28Z",
+      "side": 1,
+      "message": "This is in the wrong place (needs to be outside the choice block) and must have the same name as the real symbol (`NISSA_BOARD_HAS_HDMI_SUPPORT`; no `TEST_` prefix) otherwise it does nothing.\n\nYou should run the tests yourself to verify: `./twister -ci -T zephyr/test/nissa`",
+      "revId": "905551e5f76c22387f8022f4dbee342ee6879563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
