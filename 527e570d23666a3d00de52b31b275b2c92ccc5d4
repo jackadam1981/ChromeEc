@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "548d4627_a6e997cc",
+        "filename": "zephyr/test/kingler/src/ponyta_board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-31T06:59:44Z",
+      "side": 1,
+      "message": "Why adding these.\nI think we don\u0027t need to link any lpc related thing?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "527e570d23666a3d00de52b31b275b2c92ccc5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
