@@ -435,7 +435,9 @@ static void enter_state(int port, enum cec_state new_state)
 		 * Changing the level of the output gpio triggers an unwanted
 		 * interrupt on the input gpio.
 		 */
+#ifndef CONFIG_ZEPHYR
 		gpio_clear_pending_interrupt(drv_config->gpio_in);
+#endif
 	}
 	if (timeout >= 0) {
 		cec_tmr_cap_start(port, cap_edge, timeout);
