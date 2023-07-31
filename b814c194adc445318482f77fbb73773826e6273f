@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df62504_186dd4b9",
+        "filename": "zephyr/subsys/usb_dc/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-07-31T07:27:14Z",
+      "side": 1,
+      "message": "Please make this configuration behind the USB_DEVICE_STACK configuration.",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 26
+      },
+      "revId": "b814c194adc445318482f77fbb73773826e6273f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d771af92_f4dc60e9",
+        "filename": "zephyr/subsys/usb_dc/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-07-31T07:27:14Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "b814c194adc445318482f77fbb73773826e6273f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ad20a0d_675f7a33",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_kb.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-07-31T07:27:14Z",
+      "side": 1,
+      "message": "Can this macro be named REPORT_ID_KEYBOARD for better understanding?",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "b814c194adc445318482f77fbb73773826e6273f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9ff597_d6b84960",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-07-31T07:27:14Z",
+      "side": 1,
+      "message": "Please remove debug code.",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 2
+      },
+      "revId": "b814c194adc445318482f77fbb73773826e6273f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
