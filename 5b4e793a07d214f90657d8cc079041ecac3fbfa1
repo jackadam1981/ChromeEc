@@ -16,6 +16,23 @@
       "message": "This only changes the clamshell thermal configuration.\nShouldn\u0027t the tabled mode one be adjusted too?",
       "revId": "5b4e793a07d214f90657d8cc079041ecac3fbfa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6e70426_45b3bc90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2023-07-31T11:46:21Z",
+      "side": 1,
+      "message": "The changes does not use two sensors as suggested.\nThe downside of this change it CPU throttling since temperature propagation does not reach sensor fast enough.\nPlease use two sensor approach as proposed in the bug comments.",
+      "revId": "5b4e793a07d214f90657d8cc079041ecac3fbfa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
