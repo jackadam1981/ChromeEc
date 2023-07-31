@@ -404,6 +404,14 @@ const char *crec_flash_read_pstate_mac_addr(void);
  */
 int crec_flash_write_pstate_mac_addr(const char *mac_addr);
 
+#ifdef CONFIG_PLATFORM_EC_USE_ZEPHYR_FLASH_RESET_REGISTERS
+/**
+ * Flash device register's reset.
+ *
+ */
+void crec_flash_register_reset(void);
+#endif
+
 /**
  * Lock or unlock HW necessary for mapped storage read.
  *
