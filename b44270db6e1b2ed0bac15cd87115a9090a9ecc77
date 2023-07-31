@@ -46,6 +46,30 @@
       },
       "revId": "b44270db6e1b2ed0bac15cd87115a9090a9ecc77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96c827e6_c296f7c0",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-07-31T21:19:59Z",
+      "side": 1,
+      "message": "No, this is the dry run to get the list of tests.",
+      "parentUuid": "8fd00beb_b36979b1",
+      "range": {
+        "startLine": 388,
+        "startChar": 4,
+        "endLine": 388,
+        "endChar": 72
+      },
+      "revId": "b44270db6e1b2ed0bac15cd87115a9090a9ecc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
