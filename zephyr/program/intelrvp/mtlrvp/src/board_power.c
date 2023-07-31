@@ -33,6 +33,10 @@ void board_ap_power_force_shutdown(void)
 	/* Turn off PRIM load switch. */
 	power_signal_set(PWR_EN_PP3300_A, 0);
 
+#ifdef CONFIG_PLATFORM_G3_FLASH_SHARING
+	/* EC to access SPI in G3 state */
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_spi_oe_mecc), 0);
+#endif
 	/* Wait RSMRST to be off. */
 	while (power_signal_get(PWR_RSMRST) && (timeout_ms > 0)) {
 		k_msleep(1);
@@ -45,6 +49,11 @@ void board_ap_power_force_shutdown(void)
 
 void board_ap_power_action_g3_s5(void)
 {
+#ifdef CONFIG_PLATFORM_G3_FLASH_SHARING
+	/* SOC to access SPI */
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_spi_oe_mecc), 1);
+	k_msleep(20);
+#endif
 	/* Turn on the PP3300_PRIM rail. */
 	power_signal_set(PWR_EN_PP3300_A, 1);
 

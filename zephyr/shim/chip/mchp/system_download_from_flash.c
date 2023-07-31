@@ -102,6 +102,11 @@ void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 	/* wait time before acessing spi lines */
 	k_msleep(10);
 
+#ifdef CONFIG_PLATFORM_EC_USE_ZEPHYR_FLASH_RESET_REGISTERS
+	/* TODO: check if this can be avoided
+	 * flash registers reset before starting DMA.*/
+	crec_flash_register_reset();
+#endif
 #endif
 	/* Configure QMSPI controller */
 	qspi->MODE = MCHP_QMSPI_M_SRST;

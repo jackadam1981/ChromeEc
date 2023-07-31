@@ -136,4 +136,12 @@ config PLATFORM_G3_FLASH_SHARING
 	  When enabled, EC will access the external shared SPI flash
 	  to download the EC RO and RW images.
 
+config PLATFORM_EC_USE_ZEPHYR_FLASH_RESET_REGISTERS
+	bool "Use Zephyr flash page layout API to get sector information"
+	default y if BOARD_MEC1727
+	select FLASH_RESET_REGISTERS
+	help
+	  When enabled, EC will use flash reset registers API to reset the flash
+	  registers.
+
 endif # PLATFORM_EC_FLASH_CROS
