@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5497118c_0ec3cfaa",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-07-31T04:50:02Z",
+      "side": 1,
+      "message": "\"Do we actually need to call it each time we generate random numbers?\"\nProbably not, the calls to trng_init are in fpsensor.cc. We can likely create a trng_pre_init() function called in board_init which calls this:\n{\n\tcontext_size \u003d NCL_DRBG-\u003eget_context_size();\n\tif (context_size !\u003d DRBG_CONTEXT_SIZE)\n\t\tccprintf(\"ERROR! Unexpected NCL DRBG context_size \u003d %d\\n\",\n\t\t\t context_size);\n\n\tstate_p-\u003etrng_init \u003d NCL_DRBG-\u003epower(ctx_p, true);\n\tif (state_p-\u003etrng_init !\u003d NCL_STATUS_OK) {\n\t\tccprintf(\"ERROR! DRBG power returned %x\\n\", state_p-\u003etrng_init);\n\t\treturn;\n\t}\n\n\tstate_p-\u003etrng_init \u003d NCL_SHA-\u003epower(ctx_p, true);\n\tif (state_p-\u003etrng_init !\u003d NCL_STATUS_OK) {\n\t\tccprintf(\"ERROR! SHA power returned %x\\n\", state_p-\u003etrng_init);\n\t\treturn;\n\t}\n\n\tstate_p-\u003etrng_init \u003d NCL_DRBG-\u003einit_context(ctx_p);\n\tif (state_p-\u003etrng_init !\u003d NCL_STATUS_OK) {\n\t\tccprintf(\"ERROR! DRBG init_context returned %x\\r\",\n\t\t\t state_p-\u003etrng_init);\n\t\treturn;\n\t}\n\n\tstate_p-\u003etrng_init \u003d NCL_DRBG-\u003einit(ctx_p, 0);\n\tif (state_p-\u003etrng_init !\u003d NCL_STATUS_OK) {\n\t\tccprintf(\"ERROR! DRBG init returned %x\\r\", state_p-\u003etrng_init);\n\t\treturn;\n\t}\n\n\tstate_p-\u003etrng_init \u003d NCL_DRBG-\u003econfig(ctx_p, 100, false);\n\tif (state_p-\u003etrng_init !\u003d NCL_STATUS_OK) {\n\t\tccprintf(\"ERROR! DRBG config returned %x\\r\",\n\t\t\t state_p-\u003etrng_init);\n\t\treturn;\n\t}\n\n\tstate_p-\u003etrng_init \u003d NCL_DRBG-\u003einstantiate(\n\t\tctx_p, NCL_DRBG_SECURITY_STRENGTH_128b, NULL, 0);\n\tif (state_p-\u003etrng_init !\u003d NCL_STATUS_OK) {\n\t\tccprintf(\"ERROR! DRBG instantiate returned %x\\r\",\n\t\t\t state_p-\u003etrng_init);\n\t\treturn;\n\t}\n}\n\nthen we could define trng_init() as\n{\n\tstate_p-\u003etrng_init \u003d NCL_DRBG-\u003epower(ctx_p, true);\n\tif (state_p-\u003etrng_init !\u003d NCL_STATUS_OK) {\n\t\tccprintf(\"ERROR! DRBG power returned %x\\n\", state_p-\u003etrng_init);\n\t\treturn;\n\t}\n\n\tstate_p-\u003etrng_init \u003d NCL_SHA-\u003epower(ctx_p, true);\n\tif (state_p-\u003etrng_init !\u003d NCL_STATUS_OK) {\n\t\tccprintf(\"ERROR! SHA power returned %x\\n\", state_p-\u003etrng_init);\n\t\treturn;\n\t}\n}\n\nand trng_exit() as:\n{\n\tstate_p-\u003etrng_init \u003d NCL_DRBG-\u003epower(ctx_p, false);\n\tif (state_p-\u003etrng_init !\u003d NCL_STATUS_OK) {\n\t\tccprintf(\"ERROR! DRBG power returned %x\\n\", state_p-\u003etrng_init);\n\t\treturn;\n\t}\n\n\tstate_p-\u003etrng_init \u003d NCL_SHA-\u003epower(ctx_p, false);\n\tif (state_p-\u003etrng_init !\u003d NCL_STATUS_OK) {\n\t\tccprintf(\"ERROR! SHA power returned %x\\n\", state_p-\u003etrng_init);\n\t\treturn;\n\t}\n}\n\nEssentially, removing the clear and uninstantiate functions. I\u0027m happy to submit this as a CL if you\u0027d like?",
+      "parentUuid": "59aa8c26_ba5130a1",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 3
+      },
+      "revId": "983e3227df89d9b394f98813d3e81530186222f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b7a82bd_c8aaa9e9",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 1
