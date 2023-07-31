@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39ce8114_3f39b005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-07-31T09:57:54Z",
+      "side": 1,
+      "message": "overwrite coverage-1 because the only untested line is the mock func definition",
+      "revId": "244dfb94ad3de788af664f8fdcbb660854296e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
