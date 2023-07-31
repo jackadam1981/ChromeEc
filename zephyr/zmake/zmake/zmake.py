@@ -746,6 +746,7 @@ class Zmake:
                     packer_work_dir,
                     self.jobserver,
                     dirs,
+                    self.module_paths["ec"],
                     version_string=version_string,
                 ):
                     shutil.copy2(output_file, output_dir / output_name)

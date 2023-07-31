@@ -13,6 +13,7 @@ from typing import Dict, Optional
 import zmake.build_config as build_config
 import zmake.jobserver
 import zmake.multiproc
+import zmake.rwsig as rwsig
 import zmake.util as util
 
 
@@ -36,6 +37,7 @@ class BasePacker:
         work_dir,
         jobclient: zmake.jobserver.JobClient,
         dir_map: Dict[str, Path],
+        ec_dir: Path,
         version_string="",
     ):
         """Pack a firmware image.
@@ -49,6 +51,7 @@ class BasePacker:
             into.
             jobclient: A JobClient object to use.
             dir_map: A dict of build dirs such as {'ro': path_to_ro_dir}.
+            ec_dir: Path to the EC module.
             version_string: The version string, which may end up in
                certain parts of the outputs.
 
@@ -100,7 +103,8 @@ class BasePacker:
 class ElfPacker(BasePacker):
     """Raw proxy for ELF output of a single build."""
 
-    def pack_firmware(self, work_dir, jobclient, dir_map, version_string=""):
+    def pack_firmware(self, work_dir, jobclient, dir_map, ec_dir,
+                      version_string=""):
         del version_string
         yield dir_map["singleimage"] / "zephyr" / "zephyr.elf", "zephyr.elf"
 
@@ -108,7 +112,8 @@ class ElfPacker(BasePacker):
 class RawBinPacker(BasePacker):
     """Raw proxy for zephyr.bin output of a single build."""
 
-    def pack_firmware(self, work_dir, jobclient, dir_map, version_string=""):
+    def pack_firmware(self, work_dir, jobclient, dir_map, ec_dir,
+                      version_string=""):
         del version_string
         yield dir_map["singleimage"] / "zephyr" / "zephyr.bin", "ec.bin"
 
@@ -116,7 +121,8 @@ class RawBinPacker(BasePacker):
 class IshBinPacker(BasePacker):
     """Raw proxy for ish_fw.bin output of a single build."""
 
-    def pack_firmware(self, work_dir, jobclient, dir_map, version_string=""):
+    def pack_firmware(self, work_dir, jobclient, dir_map, ec_dir,
+                      version_string=""):
         del version_string
         yield dir_map["singleimage"] / "zephyr" / "ish_fw.bin", "ish_fw.bin"
 
@@ -144,6 +150,7 @@ class BinmanPacker(BasePacker):
         work_dir,
         jobclient: zmake.jobserver.JobClient,
         dir_map,
+        ec_dir,
         version_string="",
     ):
         """Pack RO and RW sections using Binman.
@@ -155,6 +162,7 @@ class BinmanPacker(BasePacker):
             work_dir: The directory used for packing.
             jobclient: The client used to run subprocesses.
             dir_map: A dict of build dirs such as {'ro': path_to_ro_dir}.
+            ec_dir: Path to the EC module.
             version_string: The version string to use in FRID/FWID.
 
         Yields:
@@ -165,6 +173,7 @@ class BinmanPacker(BasePacker):
         ro_dir = dir_map["ro"]
         rw_dir = dir_map["rw"]
         dts_file_path = ro_dir / "zephyr" / "zephyr.dts"
+        ro_kconfig_dir = dir_map["ro"] / "zephyr" / "include" / "generated"
 
         # Copy the inputs into the work directory so that Binman can
         # find them under a hard-coded name.
@@ -209,8 +218,19 @@ class BinmanPacker(BasePacker):
         )
         if proc.wait(timeout=60):
             raise OSError("Failed to run binman")
-
-        yield work_dir / "ec.bin", "ec.bin"
+        if util.read_kconfig_autoconf_value(ro_kconfig_dir, "CONFIG_PLATFORM_EC_RWSIG"):
+            signed_fw, sig_blob = rwsig.rwsig_sign(
+                    work_dir / "ec.bin",
+                    work_dir,
+                    jobclient,
+                    self.logger,
+                    dir_map,
+                    ec_dir,
+            )
+            yield signed_fw, "ec.bin"
+            yield sig_blob, "ec.sig"
+        else:
+            yield work_dir / "ec.bin", "ec.bin"
         yield ro_dir / "zephyr" / "zephyr.elf", "zephyr.ro.elf"
         yield rw_dir / "zephyr" / "zephyr.elf", "zephyr.rw.elf"
 
