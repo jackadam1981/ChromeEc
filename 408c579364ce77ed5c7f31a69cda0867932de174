@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94f4cff9_cde11a45",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-31T01:22:36Z",
+      "side": 1,
+      "message": "```suggestion\n\t\trv \u003d tcpm_set_src_ctrl(port, enable);\n```",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34f47c8_e2cb08d8",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-31T01:22:36Z",
+      "side": 1,
+      "message": "```suggestion\n\t\trv \u003d write_reg(port, NX20P348X_SWITCH_CONTROL_REG, 0x00);\n```",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6d4dd6_27377487",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-31T01:22:36Z",
+      "side": 1,
+      "message": "```suggestion\n\t\trv \u003d write_reg(port, 0x88, 0x00);\n```\nDo we have 0x88 reg name ?",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7226c31_7560fc01",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-31T01:22:36Z",
+      "side": 1,
+      "message": "```suggestion\n\t\trv \u003d write_reg(port, 0x80, 0x00);\n```\nDo we have 0x80 reg name ?",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d7c3bea_2d313b3b",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-31T01:22:36Z",
+      "side": 1,
+      "message": "```suggestion\n\t\trv \u003d write_reg(port, NX20P348X_SWITCH_CONTROL_REG, 0x80);\n```",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ccba80e_139f877a",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-31T01:22:36Z",
+      "side": 1,
+      "message": "```suggestion\n\t\trv \u003d tcpm_set_src_ctrl(port, enable);\n```",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd39e511_32033dd6",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-31T01:22:36Z",
+      "side": 1,
+      "message": "why it needs 2ms here as 1ms is mentioned in WA ?",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b92a9a4_dcd2c8bf",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-31T01:22:36Z",
+      "side": 1,
+      "message": "```suggestion\n\t\trv \u003d write_reg(port, 0x80, 0xEA);\n```",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "144861e3_a007710e",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-31T01:22:36Z",
+      "side": 1,
+      "message": "```suggestion\n\t\trv \u003d write_reg(port, 0x80, 0xAF);\n```",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "946d70b3_9012a5f5",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-07-31T01:22:36Z",
+      "side": 1,
+      "message": "```suggestion\n\t\trv \u003d write_reg(port, 0x88, 0x98);\n```",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
