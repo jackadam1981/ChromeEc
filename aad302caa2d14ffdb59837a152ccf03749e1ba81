@@ -16,6 +16,24 @@
       "message": "when doing sysjump need to change the SPI access to EC\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/program/intelrvp/src/intelrvp.c#10",
       "revId": "aad302caa2d14ffdb59837a152ccf03749e1ba81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e268e692_0c8ba1f1",
+        "filename": "zephyr/boards/arm/mec1727/mec1727.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2023-07-31T16:30:25Z",
+      "side": 1,
+      "message": "yes this is considered in system_download_from_flash()",
+      "parentUuid": "0281c6ca_9e29949c",
+      "revId": "aad302caa2d14ffdb59837a152ccf03749e1ba81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
