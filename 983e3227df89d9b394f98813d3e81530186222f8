@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d80d3fe5_c3cb7a53",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-07-31T04:53:34Z",
+      "side": 1,
+      "message": "Read the comments before the code, your patch also works for this purpose:)",
+      "parentUuid": "5497118c_0ec3cfaa",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 3
+      },
+      "revId": "983e3227df89d9b394f98813d3e81530186222f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b7a82bd_c8aaa9e9",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 1
