@@ -151,6 +151,30 @@
 		};
 	};
 
+	cbi-ssfc {
+		compatible = "cros-ec,cbi-ssfc";
+
+		/*
+		 * SSFC field to identify keyboard.
+		 */
+		keyboard {
+			enum-name = "KEYBOARD";
+			size = <2>;
+
+			keyboard_default: keyboard-default {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <0>;
+				default;
+			};
+			keyboard_ansi: keyboard-ansi {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <1>;
+			};
+		};
+	};
+
 	/* Rotation matrices for motion sensors. */
 	motionsense-rotation-ref {
 		compatible = "cros-ec,motionsense-rotation-ref";
