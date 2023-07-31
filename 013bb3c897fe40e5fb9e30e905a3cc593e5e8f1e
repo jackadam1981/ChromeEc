@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e817e1_3ee16299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-07-31T19:59:09Z",
+      "side": 1,
+      "message": "Could you run twister with coverage before and after the change and confirm the % stays the same? Otherwise LGTM. Thanks!",
+      "revId": "013bb3c897fe40e5fb9e30e905a3cc593e5e8f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3515d7ef_9695a846",
