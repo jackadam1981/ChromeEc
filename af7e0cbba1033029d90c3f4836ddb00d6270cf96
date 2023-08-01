@@ -16,6 +16,24 @@
       "message": "FYI, without the ability to dynamically switch chip selects, you\u0027ll need to have bootstrapped the flash with one firmware before loading another and swapping in TPM capability.\n\nHowever, although it\u0027s a bit cumbersome, it ought to work ;)",
       "revId": "af7e0cbba1033029d90c3f4836ddb00d6270cf96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "038774eb_7b211924",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-08-01T16:48:34Z",
+      "side": 1,
+      "message": "Yes, that is a good point.  I did not think about that.\n\nThere is another dirtier workaround, of creating two entries in the spi_devices[] array, both referring to the QSPI controller, but with different name and different chip select.  I was not quite sure how that would behave with respect to speed setting (opentitantool seeing the two \"ports\" as completely separate just as SPI2 and QSPI, each with separate speed setting.)\n\nAlternative:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4739794\nWith the above, as far as I can tell, if opentitantool sets speed of either QSPI or the new QSPI_CN7_4, then the speed setting applies to both \"ports\", even though HyperDebug reports two separate speed settings when listing the available ports.  This could cause confusion if e.g. a json configuration file contains default speed setting for QSPI, while the user is using the other one for TPM communication.  It is probably safest to always specify --speed on the opentitantool command line.",
+      "parentUuid": "1e26c929_b47a4957",
+      "revId": "af7e0cbba1033029d90c3f4836ddb00d6270cf96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
