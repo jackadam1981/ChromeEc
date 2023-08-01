@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6b5b8f_fcd2de7d",
+        "filename": "zephyr/emul/retimer/emul_anx7483.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-08-01T01:07:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84272cfd_6b8f4fbf",
+      "revId": "3321c3c05ecdf11ff1b7822c180266d3ad0edf66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8133a83_596baf90",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-07-28T02:26:11Z",
       "side": 1,
       "message": "Let\u0027s set ANX7483_AUX_CFG_1_DEFAULT to ensure it would be configured.",
+      "revId": "3321c3c05ecdf11ff1b7822c180266d3ad0edf66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d09eb07_d9270ce0",
+        "filename": "zephyr/emul/retimer/emul_anx7483.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2023-08-01T01:07:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8133a83_596baf90",
       "revId": "3321c3c05ecdf11ff1b7822c180266d3ad0edf66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
