@@ -743,7 +743,7 @@ __override void lid_angle_peripheral_enable(int enable)
 		enable = 0;
 
 	if (enable) {
-		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
+		keyboard_scan_enable(true, KB_SCAN_DISABLE_LID_ANGLE);
 	} else {
 		/*
 		 * Ensure that the chipset is off before disabling the keyboard.
@@ -751,7 +751,7 @@ __override void lid_angle_peripheral_enable(int enable)
 		 * the AP decides whether to ignore input devices or not.
 		 */
 		if (!chipset_in_s0)
-			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+			keyboard_scan_enable(false, KB_SCAN_DISABLE_LID_ANGLE);
 	}
 }
 

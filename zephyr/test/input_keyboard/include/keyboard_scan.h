@@ -3,9 +3,11 @@
  * found in the LICENSE file.
  */
 
+#include <stdbool.h>
+
 enum kb_scan_disable_masks {
 	KB_SCAN_DISABLE_A = 1 << 0,
 	KB_SCAN_DISABLE_B = 1 << 1,
 };
 
-void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask);
+void keyboard_scan_enable(bool enable, enum kb_scan_disable_masks mask);

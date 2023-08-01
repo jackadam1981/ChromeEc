@@ -180,9 +180,9 @@ DECLARE_HOST_COMMAND(EC_CMD_FORCE_LID_OPEN, hc_force_lid_open, EC_VER_MASK(0));
 static void keyboard_lid_change(void)
 {
 	if (lid_is_open()) {
-		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_CLOSED);
+		keyboard_scan_enable(true, KB_SCAN_DISABLE_LID_CLOSED);
 	} else {
-		keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_CLOSED);
+		keyboard_scan_enable(false, KB_SCAN_DISABLE_LID_CLOSED);
 	}
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, keyboard_lid_change, HOOK_PRIO_DEFAULT);

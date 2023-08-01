@@ -55,28 +55,28 @@ ZTEST(keyboard_input, test_keyboard_input_enable_disable)
 	zassert_equal(keyboard_state_changed_fake.call_count, 1);
 
 	/* disable A */
-	keyboard_scan_enable(0, KB_SCAN_DISABLE_A);
+	keyboard_scan_enable(false, KB_SCAN_DISABLE_A);
 
 	input_report_key(fake_dev, INPUT_BTN_TOUCH, 1, true, K_FOREVER);
 
 	zassert_equal(keyboard_state_changed_fake.call_count, 1);
 
 	/* disable B */
-	keyboard_scan_enable(0, KB_SCAN_DISABLE_B);
+	keyboard_scan_enable(false, KB_SCAN_DISABLE_B);
 
 	input_report_key(fake_dev, INPUT_BTN_TOUCH, 1, true, K_FOREVER);
 
 	zassert_equal(keyboard_state_changed_fake.call_count, 1);
 
 	/* enable A */
-	keyboard_scan_enable(1, KB_SCAN_DISABLE_A);
+	keyboard_scan_enable(true, KB_SCAN_DISABLE_A);
 
 	input_report_key(fake_dev, INPUT_BTN_TOUCH, 1, true, K_FOREVER);
 
 	zassert_equal(keyboard_state_changed_fake.call_count, 1);
 
 	/* enable B */
-	keyboard_scan_enable(1, KB_SCAN_DISABLE_B);
+	keyboard_scan_enable(true, KB_SCAN_DISABLE_B);
 
 	input_report_key(fake_dev, INPUT_BTN_TOUCH, 1, true, K_FOREVER);
 
