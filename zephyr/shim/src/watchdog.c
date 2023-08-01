@@ -10,6 +10,8 @@
 
 #include "config.h"
 #include "hooks.h"
+#include "panic.h"
+#include "task.h"
 #include "watchdog.h"
 
 LOG_MODULE_REGISTER(watchdog_shim, LOG_LEVEL_ERR);
@@ -73,3 +75,38 @@ void watchdog_reload(void)
 	wdt_feed(wdt, 0);
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
+<<<<<<< HEAD   (e703f1 chip/mt_scp: remove gpio configuration)
+=======
+
+__maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
+					       int channel_id)
+{
+	const char *thread_name = k_thread_name_get(k_current_get());
+
+#ifdef CONFIG_RISCV
+	printk("WDT pre-warning MEPC:%p THREAD_NAME:%s\n",
+	       (void *)csr_read(mepc), thread_name);
+#else
+	/* TODO(b/176523207): watchdog warning message */
+	printk("Watchdog deadline is close! THREAD_NAME:%s\n", thread_name);
+#endif
+#ifdef TEST_BUILD
+	wdt_warning_triggered = true;
+#endif
+#ifdef CONFIG_SOC_SERIES_MEC172X
+	extern void cros_chip_wdt_handler(const struct device *wdt_dev,
+					  int channel_id);
+	cros_chip_wdt_handler(wdt_dev, channel_id);
+#endif
+
+	/* Save the current task id in panic info.
+	 * The PANIC_SW_WATCHDOG_WARN reason will be changed to a regular
+	 * PANIC_SW_WATCHDOG in system_common_pre_init if a watchdog reset
+	 * occurs.
+	 */
+	panic_set_reason(PANIC_SW_WATCHDOG_WARN, 0, task_get_current());
+
+	/* Watchdog is disabled after calling handler. Re-enable it now. */
+	watchdog_enable(wdt_dev);
+}
+>>>>>>> CHANGE (a58ecc watchdog: Add watchdog warning panic reason)

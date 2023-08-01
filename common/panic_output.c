@@ -35,6 +35,7 @@ static struct panic_data zephyr_panic_data;
 static struct panic_data * const pdata_ptr = PANIC_DATA_PTR;
 
 /* Common SW Panic reasons strings */
+<<<<<<< HEAD   (e703f1 chip/mt_scp: remove gpio configuration)
 const char * const panic_sw_reasons[] = {
 #ifdef CONFIG_SOFTWARE_PANIC
 	"PANIC_SW_DIV_ZERO",
@@ -45,6 +46,14 @@ const char * const panic_sw_reasons[] = {
 	"PANIC_SW_RNG",
 	"PANIC_SW_PMIC_FAULT",
 #endif
+=======
+const char *const panic_sw_reasons[] = {
+	"PANIC_SW_DIV_ZERO",	 "PANIC_SW_STACK_OVERFLOW",
+	"PANIC_SW_PD_CRASH",	 "PANIC_SW_ASSERT",
+	"PANIC_SW_WATCHDOG",	 "PANIC_SW_RNG",
+	"PANIC_SW_PMIC_FAULT",	 "PANIC_SW_EXIT",
+	"PANIC_SW_WATCHDOG_WARN"
+>>>>>>> CHANGE (a58ecc watchdog: Add watchdog warning panic reason)
 };
 
 /**
