@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e691469d_1e76af23",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5126,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-01T21:35:42Z",
+      "side": 1,
+      "message": "This isn\u0027t consistent with other macros (e.g. EC_MKBP_EVENT_CEC_PACK, EC_CEC_CMD_PORT_PACK), which shift \u0026 mask by 4 bits. Is it not 16?",
+      "range": {
+        "startLine": 5126,
+        "startChar": 25,
+        "endLine": 5126,
+        "endChar": 26
+      },
+      "revId": "ce0eae1c3b663c0dd2bd42d9b2084d447b35abad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
