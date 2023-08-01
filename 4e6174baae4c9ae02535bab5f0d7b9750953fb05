@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "04347483_290e05e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-08-01T22:21:07Z",
+      "side": 1,
+      "message": "workaround",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "4e6174baae4c9ae02535bab5f0d7b9750953fb05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "12b1f0d4_d4ebf9ed",
@@ -48,6 +71,23 @@
       "writtenOn": "2023-07-31T08:12:06Z",
       "side": 1,
       "message": "Hi Eric, could you review the CL and advise any additional tests to be covered other than faft_ec/pd ?",
+      "revId": "4e6174baae4c9ae02535bab5f0d7b9750953fb05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97fad0b5_b0fbf476",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2023-08-01T22:21:07Z",
+      "side": 1,
+      "message": "This approach violates ChromeOS requirements. I suggest reduce ALL ports to 15V to keep the same. This can be reverted in future, once the proper fix is implemented.",
       "revId": "4e6174baae4c9ae02535bab5f0d7b9750953fb05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
