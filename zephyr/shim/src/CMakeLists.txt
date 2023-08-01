@@ -98,16 +98,17 @@ zephyr_library_sources_ifdef(CONFIG_HECI
                                                             host_command_heci.c)
 endif()
 
-if(CONFIG_ZEPHYR_PIGWEED_MODULE)
+if(CONFIG_PIGWEED_LOG_TOKENIZED_LIB)
   pw_add_library(platform_ec_log.tokenized_handler STATIC
     HEADERS
-      ../include/zephyr_console_shim.h
+      ${PLATFORM_EC}/zephyr/shim/include/zephyr_console_shim.h
     SOURCES
       pw_log_zephyr_tokenized.cc
     PUBLIC_INCLUDES
       ${PLATFORM_EC}/zephyr/shim/include
     PUBLIC_DEPS
       pw_log_zephyr.tokenized_lib
+      #pw_minimal_cpp_stdlib
   )
 
   pw_zephyrize_libraries_ifdef(CONFIG_PIGWEED_LOG_TOKENIZED_LIB
@@ -116,6 +117,7 @@ if(CONFIG_ZEPHYR_PIGWEED_MODULE)
 
   zephyr_library_sources_ifdef(CONFIG_PIGWEED_LOG_TOKENIZED_LIB console_buffer.c)
 
+  message("SETTING pw_log_tokenized.handler backend")
   include("${ZEPHYR_PIGWEED_MODULE_DIR}/pw_log_tokenized/backend.cmake")
   pw_set_backend(pw_log_tokenized.handler platform_ec_log.tokenized_handler)
 

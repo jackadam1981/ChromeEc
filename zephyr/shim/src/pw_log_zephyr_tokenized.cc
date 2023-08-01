@@ -8,7 +8,7 @@
 #include <pw_log_tokenized/config.h>
 #include <pw_log_tokenized/handler.h>
 #include <pw_log_tokenized/metadata.h>
-#include <pw_span/span.h>
+// #include <pw_span/span.h>
 #include <pw_sync/interrupt_spin_lock.h>
 #include <pw_tokenizer/base64.h>
 
@@ -37,9 +37,11 @@ extern "C" void pw_log_tokenized_HandleLog(uint32_t metadata,
 	pw::log_tokenized::Metadata meta(metadata);
 
 	// Encode the tokenized message as Base64.
-	InlineBasicString base64_string = tokenizer::PrefixedBase64Encode<
-		log_tokenized::kEncodingBufferSizeBytes>(
-		span(log_buffer, size_bytes));
+	// InlineBasicString base64_string = tokenizer::PrefixedBase64Encode<
+	// 	log_tokenized::kEncodingBufferSizeBytes>(
+	// 	span(log_buffer, size_bytes));
+    InlineBasicString base64_string =
+      log_tokenized::PrefixedBase64Encode(log_buffer, size_bytes);
 
 	if (base64_string.empty()) {
 		return;
