@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9d6fd99_ea00be96",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 23
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-01T20:49:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb81b200_956c6b4a",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1af34be4_3f4ffc46",
@@ -220,6 +244,30 @@
       "side": 1,
       "message": "I think it would be better to leave it as it is and just drop the `CONFIG_TASK_HOSTCMD_THREAD_MODE` config once we switch to the upstream.",
       "parentUuid": "0f40b736_3765e877",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "c6987978611ceb3aaa5a9c85cb51190dfcfa1253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c82f6945_e9f61304",
+        "filename": "zephyr/shim/include/shimmed_tasks.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-01T20:49:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "70f825ad_06e741e4",
       "range": {
         "startLine": 54,
         "startChar": 0,

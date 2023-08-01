@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "237ae865_8f803db2",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-01T20:49:47Z",
+      "side": 1,
+      "message": "Nit - this check is currently guarded with `CONFIG_EC_HOST_CMD` so it\u0027s not actually getting checked because no boards have yet set `CONFIG_EC_HOST_CMD`.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "868c05609a58fecdf13638aede9d67e97b7cb115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
