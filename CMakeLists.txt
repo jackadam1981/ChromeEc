@@ -8,6 +8,9 @@
 #
 # Googlers can find the design doc at go/zephyr-shim.
 
+message("Hello World!
+CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
+
 if(NOT DEFINED ZEPHYR_CURRENT_MODULE_DIR)
   message(FATAL_ERROR "This Cmake system implements only a Zephyr module, and
           should not be invoked directly.  Please continue to use the Makefile

@@ -2,6 +2,16 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+message( "zephyr/CMakelists.txt - User-configuration:
+ZEPHYR_TOOLCHAIN_VARIANT: ${ZEPHYR_TOOLCHAIN_VARIANT}
+Internal variables:
+CROSS_COMPILE: ${CROSS_COMPILE}
+TOOLCHAIN_HOME: ${TOOLCHAIN_HOME}
+CMAKE_C_COMPILER: ${CMAKE_C_COMPILER}
+CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}
+C++: ${C++}
+")
+
 if(DEFINED CONFIG_PLATFORM_EC AND EXISTS "${EDT_PICKLE}")
   message(STATUS "Performing EC specific devicetree checks")
 
