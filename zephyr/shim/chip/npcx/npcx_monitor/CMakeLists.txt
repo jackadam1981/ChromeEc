@@ -19,6 +19,9 @@ get_property(
   )
 
 add_executable(npcx_monitor npcx_monitor.c)
+if (DEFINED CONFIG_PICOLIBC_USE_MODULE)
+  target_compile_options(npcx_monitor PRIVATE -isystem ${CMAKE_BINARY_DIR}/modules/picolibc/picolibc/include)
+endif()
 target_include_directories(npcx_monitor PRIVATE
   "${PLATFORM_EC}/zephyr/shim/include"
   "${PLATFORM_EC}/zephyr/shim/chip/npcx/include"
