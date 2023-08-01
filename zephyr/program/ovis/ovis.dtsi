@@ -84,10 +84,10 @@
 		irq-gpios = <&gpioe 0 GPIO_ACTIVE_LOW>;
 	};
 
-	ppc_port0_syv: ppc_syv@40 {
+	ppc_port0_syv: ppc_syv@42 {
 		compatible = "silergy,syv682x";
 		status = "okay";
-		reg = <0x40>;
+		reg = <0x42>;
 		frs_en_gpio = <&gpio_usb_c0_frs_en>;
 	};
 
@@ -119,10 +119,10 @@
 		irq-gpios = <&gpio3 4 GPIO_ACTIVE_LOW>;
 	};
 
-	ppc_port1_syv: ppc_syv@40 {
+	ppc_port1_syv: ppc_syv@42 {
 		compatible = "silergy,syv682x";
 		status = "okay";
-		reg = <0x40>;
+		reg = <0x42>;
 		frs_en_gpio = <&gpio_usb_c1_frs_en>;
 	};
 
@@ -154,10 +154,10 @@
 		irq-gpios = <&gpiod 4 GPIO_ACTIVE_LOW>;
 	};
 
-	ppc_port2_syv: ppc_syv@40 {
+	ppc_port2_syv: ppc_syv@42 {
 		compatible = "silergy,syv682x";
 		status = "okay";
-		reg = <0x40>;
+		reg = <0x42>;
 		frs_en_gpio = <&gpio_usb_c2_frs_en>;
 	};
 
