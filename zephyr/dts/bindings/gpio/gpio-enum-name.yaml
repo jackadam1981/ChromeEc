@@ -121,6 +121,7 @@ properties:
       - GPIO_USB_C2_BC12_INT_ODL
       - GPIO_USB_C2_DISCHARGE
       - GPIO_USB_C2_PPC_INT_ODL
+      - GPIO_USB_PD_INT_ODL
       - GPIO_USB1_CTL1
       - GPIO_USB1_CTL2
       - GPIO_USB1_CTL3

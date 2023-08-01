@@ -530,6 +530,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_DUAL_ROLE
                                                 "${PLATFORM_EC}/common/usb_pd_dual_role.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_CONSOLE_CMD
                                                 "${PLATFORM_EC}/common/usb_pd_console_cmd.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_INTEL
+                                                "${PLATFORM_EC}/common/pd/intel_pd_task.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_HOST_CMD
                                                 "${PLATFORM_EC}/common/usb_pd_host_cmd.c"
                                                 "${PLATFORM_EC}/common/usbc/usb_pd_host.c")
