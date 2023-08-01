@@ -595,6 +595,13 @@ class Zmake:
                         },
                     )
 
+                if "picolibc" in module_paths.keys():
+                    base_config |= zmake.build_config.BuildConfig(
+                        cmake_defs={
+                            "TOOLCHAIN_HAS_PICOLIBC": "y",
+                        },
+                    )
+
                 if not build_dir.exists():
                     build_dir.mkdir()
                 if not generated_include_dir.exists():
