@@ -106,6 +106,24 @@
       "parentUuid": "af8d9595_35282bb7",
       "revId": "ed0a6b03684c9488669d5ab57dea6818f35e4d02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4405fd_1844b949",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2023-08-01T04:58:28Z",
+      "side": 1,
+      "message": "Ok, so I\u0027ve been able to get the EC flash correctly and can verify that the system will boot with the lid closed.\n\nThe issue is that it then thinks the lid is open, but then shuts down:\n\n```\n23-08-01 14:50:50.759 [123.044400 chargesplash: Power on for charge display]\n...\n23-08-01 14:50:51.017 [123.291200 PB task 5 \u003d lid-open]\n...\n23-08-01 14:50:55.260 [127.414100 PD:S3-\u003eS5]\n23-08-01 14:50:55.261 [127.426600 C0: Unattached.SNK]\n23-08-01 14:50:55.271 [127.429100 VB hook_shutdown]\n```\n\nAnd I\u0027m pretty sure I see the screen flash on.\n\nSo while this change is good enough to get the device to boot, we need to handle the state of being \"on\" while the lid is closed, which I don\u0027t think is currently a valid situation.",
+      "parentUuid": "c55b5aeb_44a3d76a",
+      "revId": "ed0a6b03684c9488669d5ab57dea6818f35e4d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
