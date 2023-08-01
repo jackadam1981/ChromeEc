@@ -28,7 +28,7 @@ struct spi_device_t spi_devices[] = {
 	{ .name = "QSPI",
 	  .port = -1 /* OCTOSPI */,
 	  .div = 255,
-	  .gpio_cs = GPIO_CN10_6,
+	  .gpio_cs = GPIO_CN7_4,
 	  .usb_flags = USB_SPI_ENABLED | USB_SPI_CUSTOM_SPI_DEVICE |
 		       USB_SPI_FLASH_DUAL_SUPPORT | USB_SPI_FLASH_QUAD_SUPPORT |
 		       USB_SPI_FLASH_DTR_SUPPORT },
