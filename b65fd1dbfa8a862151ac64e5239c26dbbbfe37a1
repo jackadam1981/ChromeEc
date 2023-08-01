@@ -16,6 +16,24 @@
       "message": "Please run `./util/gen_bazel_targets.py`, this will generate as follows.\n```\n--- a/bazel/all_targets.generated.bzl\n+++ b/bazel/all_targets.generated.bzl\n@@ -1670,6 +1670,10 @@ def all_targets():\n         core \u003d \"nds32\",\n         zephyr \u003d False,\n     )\n+    ec_target(\n+        name \u003d \"pirrha\",\n+        board \u003d \"pirrha\",\n+    )\n     ec_target(\n\n```\n\n\n\nThis is new in ec, I will fix the the new_variant script.",
       "revId": "b65fd1dbfa8a862151ac64e5239c26dbbbfe37a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a48b4737_4ff8c09a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-08-01T07:55:01Z",
+      "side": 1,
+      "message": "mark as unresolved",
+      "parentUuid": "b2141233_66d85874",
+      "revId": "b65fd1dbfa8a862151ac64e5239c26dbbbfe37a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
