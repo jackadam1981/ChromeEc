@@ -14,10 +14,12 @@
 
 #include "tcpm/tcpm.h"
 #include "usb_pd_dpm_sm.h"
+#include "usb_pd_vdo.h"
 
 #include <stdint.h>
 
 #ifdef CONFIG_USB_PD_DP_MODE
+
 /*
  * Initialize DP state for the specified port.
  *
