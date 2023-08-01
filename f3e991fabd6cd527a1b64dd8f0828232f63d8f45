@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53d890e3_503d3ebf",
+        "filename": "third_party/boringssl/common/sysrand.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1560412
+      },
+      "writtenOn": "2023-08-01T03:17:54Z",
+      "side": 1,
+      "message": "Of note this is not a correct implementation of getentropy, you are supposed to fail and return -1 if the user requests more than 256 bytes.",
+      "revId": "f3e991fabd6cd527a1b64dd8f0828232f63d8f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b256599e_649798db",
+        "filename": "third_party/boringssl/common/sysrand_zephyr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1560412
+      },
+      "writtenOn": "2023-08-01T03:17:54Z",
+      "side": 1,
+      "message": "So this is not a correct implementation of getentropy()\n\nSee https://man.openbsd.org/getentropy.2\n\nor the linux man page. \n\nYou are supposed to return -1 on failure, and you are supposed to fail if the user requests more than 256 bytes of entropy",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "f3e991fabd6cd527a1b64dd8f0828232f63d8f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
