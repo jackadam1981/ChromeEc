@@ -1,0 +1,13 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if PLATFORM_EC_USBC
+
+config PLATFORM_EC_USB_PD_INTEL_ALTMODE
+	bool "PD task to configure USB-C Alternate modes on Intel SoC"
+	help
+	  Enable this to support configuring the USB-C alternate modes on
+	  Intel SoC when using PD chips in PD mode.
+
+endif #  PLATFORM_EC_USBC
