@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e692c26_28d24168",
+        "filename": "zephyr/subsys/usb_dc/hid_vivaldi.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-01T07:54:00Z",
+      "side": 1,
+      "message": "align these comments lines",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea82e634_7a2dcd67",
+        "filename": "zephyr/subsys/usb_dc/hid_vivaldi.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-01T07:54:00Z",
+      "side": 1,
+      "message": "move this to a .c file.",
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88293222_f5c92656",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_kb.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-01T07:54:00Z",
+      "side": 1,
+      "message": "Move protocol_cb to this file.\n\nIf I read the spec correct, `set_protocol` request is local to this device, `usb_dc_status.boot_protocol` should not share among devices under the same controller.",
+      "range": {
+        "startLine": 212,
+        "startChar": 20,
+        "endLine": 212,
+        "endChar": 31
+      },
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffcff787_2012488c",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-01T07:54:00Z",
+      "side": 1,
+      "message": "Is it possible to include usb_hid_touchpad.h?",
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f71fdc7c_6f114147",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-01T07:54:00Z",
+      "side": 1,
+      "message": "These dimensions need to be defined per-project. Either statically defined in device tree, or probe at runtime.\n\n(Historically we implement `report_desc` as a compile time constant because memory is very limited on Hammer. I think it\u0027s ok to put this on stack now?)",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
