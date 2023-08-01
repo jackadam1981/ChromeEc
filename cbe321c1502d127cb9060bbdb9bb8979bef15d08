@@ -227,6 +227,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9055e878_89c2b1a8",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-01T20:06:44Z",
+      "side": 1,
+      "message": "Sounds good to me I\u0027ll remove the IS_ENABLED here and just send the version supported regardless. Will need to do some testing around this to make sure it doesn\u0027t break support of legacy devices",
+      "parentUuid": "14286231_dfef574f",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2516656c_d3245a3b",
@@ -315,6 +333,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cbf02b_d38478df",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-01T20:06:44Z",
+      "side": 1,
+      "message": "makes sense to call this before ever entering this code. Will move the call to outside of this near the USB4/TBT checks",
+      "parentUuid": "d44427e7_110b0112",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc6f33b7_0dc86b92",
@@ -386,6 +422,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24891211_f5ca2925",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-01T20:06:44Z",
+      "side": 1,
+      "message": "Makes sense I think the best approach here will be to add a board_* function that is just board_is_uhbr13_5_allowed and return if not",
+      "parentUuid": "5fec1163_c0ed71e7",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e81ba6c_50a82e27",
@@ -435,6 +489,24 @@
       "side": 1,
       "message": "It looks like, at least in the call site in `svdm_dp_config`, the code has already checked that the DPAM version is \u003e\u003d 2.1. I don\u0027t see a bit rate check, although it might be buried in one of the preceding function calls. At first glance, it seems like it would be possible to generate a Config VDO that has UHBR13.5 set, even though UHBR20 is not set, and that would be wrong.\n\nSince the DPAM version and bit rate are already at hand when the code calls this function, it seems easy enough to pass those in as parameters here. That would involve minimal additional code/work and make this function more obviously correct according to the spec.",
       "parentUuid": "7e240b39_63a0cc06",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08a2a735_ffde4163",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-01T20:06:44Z",
+      "side": 1,
+      "message": "This is just setting the bit in the VDO Config which shouldn\u0027t matter if UHBR20 is set right? In other places we want to send all relevant information to AP even if it doesn\u0027t matter shouldn\u0027t we also do the same here?",
+      "parentUuid": "d9a48811_3e180570",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -937,6 +1009,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee49f62c_8fc6c948",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-01T20:06:44Z",
+      "side": 1,
+      "message": "fair these seem like redundant checks so will remove the IS_ENABLED check as I don\u0027t think it is needed.",
+      "parentUuid": "3690d009_1ff6d58a",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7adf6b71_a4dd95bb",
@@ -1303,6 +1393,24 @@
       "side": 1,
       "message": "If the macro is being used elsewhere, then please update those usages to the new name.",
       "parentUuid": "ac9b08c4_ff3153e6",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee39082d_d7c21046",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-01T20:06:44Z",
+      "side": 1,
+      "message": "Updating macro to VDO_SVDM_VERS_MAJOR",
+      "parentUuid": "93478abb_531e5c92",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

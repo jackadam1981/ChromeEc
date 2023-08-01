@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abfa5447_23c11f67",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-01T20:06:44Z",
+      "side": 1,
+      "message": "sure doesn\u0027t look like it removing them",
+      "parentUuid": "fb481f68_69bbe5ed",
+      "range": {
+        "startLine": 744,
+        "startChar": 0,
+        "endLine": 745,
+        "endChar": 61
+      },
+      "revId": "6925af6e950e3c03e449c8fbf997039cdb83dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48e41a5c_0fa6873c",
@@ -95,6 +119,24 @@
       "writtenOn": "2023-07-27T22:20:00Z",
       "side": 1,
       "message": "Nit: These values would be clearer as `BIT(0)`, `BIT(1)`, etc.",
+      "revId": "6925af6e950e3c03e449c8fbf997039cdb83dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f201bacc_bd3a810d",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 41
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-01T20:06:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48e41a5c_0fa6873c",
       "revId": "6925af6e950e3c03e449c8fbf997039cdb83dd2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
