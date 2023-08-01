@@ -20,7 +20,7 @@ LOG_MODULE_REGISTER(kbd_input, CONFIG_INPUT_LOG_LEVEL);
 
 static atomic_t disable_scan_mask;
 
-void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask)
+void keyboard_scan_enable(bool enable, enum kb_scan_disable_masks mask)
 {
 	if (enable) {
 		atomic_and(&disable_scan_mask, ~mask);
