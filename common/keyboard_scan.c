@@ -142,7 +142,7 @@ test_export_static int keyboard_scan_is_enabled(void)
 	return !disable_scanning_mask;
 }
 
-void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask)
+void keyboard_scan_enable(bool enable, enum kb_scan_disable_masks mask)
 {
 	atomic_val_t old;
 	/* Access atomically */
@@ -984,9 +984,9 @@ static void keyboard_usb_pm_change(void)
 	 * wakeup, we can turn off the key scanning.
 	 */
 	if (usb_is_suspended() && !usb_is_remote_wakeup_enabled())
-		keyboard_scan_enable(0, KB_SCAN_DISABLE_USB_SUSPENDED);
+		keyboard_scan_enable(false, KB_SCAN_DISABLE_USB_SUSPENDED);
 	else
-		keyboard_scan_enable(1, KB_SCAN_DISABLE_USB_SUSPENDED);
+		keyboard_scan_enable(true, KB_SCAN_DISABLE_USB_SUSPENDED);
 }
 DECLARE_HOOK(HOOK_USB_PM_CHANGE, keyboard_usb_pm_change, HOOK_PRIO_DEFAULT);
 #endif
@@ -1023,7 +1023,7 @@ int keyboard_factory_test_scan(void)
 	int port, id;
 
 	/* Disable keyboard scan while testing */
-	keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_CLOSED);
+	keyboard_scan_enable(false, KB_SCAN_DISABLE_LID_CLOSED);
 	flags = gpio_get_default_flags(GPIO_KBD_KSO2);
 
 	if (IS_ENABLED(CONFIG_ZEPHYR))
@@ -1078,7 +1078,7 @@ done:
 	else
 		gpio_config_module(MODULE_KEYBOARD_SCAN, 1);
 	gpio_set_flags(GPIO_KBD_KSO2, flags);
-	keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_CLOSED);
+	keyboard_scan_enable(true, KB_SCAN_DISABLE_LID_CLOSED);
 
 	return shorted;
 }
@@ -1113,7 +1113,7 @@ static int command_ksstate(int argc, const char **argv)
 	if (argc > 1) {
 		if (!strcasecmp(argv[1], "force")) {
 			print_state_changes = 1;
-			keyboard_scan_enable(1, -1);
+			keyboard_scan_enable(true, -1);
 		} else if (!parse_bool(argv[1], &print_state_changes)) {
 			return EC_ERROR_PARAM1;
 		}

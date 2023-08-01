@@ -111,17 +111,17 @@ enum kb_scan_disable_masks {
  * Enable/disable keyboard scanning. Scanning will be disabled if any disable
  * reason bit is set. Scanning is enabled only if no disable reasons are set.
  *
- * @param enable Clear(=1) or set(=0) disable-bits from the mask.
+ * @param enable Clear(=true) or set(=false) disable-bits from the mask.
  * @param mask Disable reasons from kb_scan_disable_masks
  */
-void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask);
+void keyboard_scan_enable(bool enable, enum kb_scan_disable_masks mask);
 
 /**
  * Clears typematic key
  */
 void clear_typematic_key(void);
 #else
-static inline void keyboard_scan_enable(int enable,
+static inline void keyboard_scan_enable(bool enable,
 					enum kb_scan_disable_masks mask)
 {
 }

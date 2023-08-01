@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include <stdbool.h>
+
 #include <zephyr/sys/util.h>
 
 enum kb_scan_disable_masks {
@@ -10,4 +12,4 @@ enum kb_scan_disable_masks {
 	KB_SCAN_DISABLE_B = BIT(1),
 };
 
-void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask);
+void keyboard_scan_enable(bool enable, enum kb_scan_disable_masks mask);

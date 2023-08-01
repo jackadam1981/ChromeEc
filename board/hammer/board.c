@@ -272,9 +272,9 @@ static void board_tablet_mode_change(void)
 	 * Turn off key scanning in tablet mode.
 	 */
 	if (tablet_get_mode())
-		keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+		keyboard_scan_enable(false, KB_SCAN_DISABLE_LID_ANGLE);
 	else
-		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
+		keyboard_scan_enable(true, KB_SCAN_DISABLE_LID_ANGLE);
 }
 DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, board_tablet_mode_change,
 	     HOOK_PRIO_DEFAULT);
