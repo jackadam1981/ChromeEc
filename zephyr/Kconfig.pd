@@ -87,6 +87,12 @@ config PLATFORM_EC_USB_PD_INITIAL_DEBUG_LEVEL
 	  through to 3 will increase the level of debug logging.
 	  If this config is not set, the default level will be set to 1.
 
+config PLATFORM_EC_USB_PD_INTEL_ALTMODE
+	bool "PD task to configure USB-C Alternate modes on Intel SoC"
+	help
+	  Enable this to support configuring the USB-C alternate modes on
+	  Intel SoC when using PD chips in PD mode.
+
 config PLATFORM_EC_USB_PD_FLAGS
 	bool "Whether to build USB PD flag support"
 	default 1
