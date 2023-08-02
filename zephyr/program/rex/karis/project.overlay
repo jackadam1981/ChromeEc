@@ -6,9 +6,7 @@
 /* Rex program common DTSI includes */
 #include "../fan.dtsi"
 #include "../generated.dtsi"
-#include "../interrupts.dtsi"
 #include "../keyboard.dtsi"
-#include "../motionsense.dtsi"
 #include "../power_signals.dtsi"
 #include "../rex.dtsi"
 #include "../temp_sensors.dtsi"
@@ -18,5 +16,7 @@
 #include "battery.dtsi"
 #include "cbi.dtsi"
 #include "i2c.dtsi"
+#include "interrupts.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
+#include "motionsense.dtsi"
