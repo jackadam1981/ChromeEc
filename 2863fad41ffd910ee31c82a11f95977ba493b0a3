@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e7e105f_a3621bd9",
+        "filename": "chip/it83xx/cec_bitbang.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-02T02:58:32Z",
+      "side": 1,
+      "message": "I think we need this once we have other driver types? (e.g. it83xx_cec_drv in the following CLs)",
+      "parentUuid": "7df10f16_59d4b9ef",
+      "range": {
+        "startLine": 55,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "2863fad41ffd910ee31c82a11f95977ba493b0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2840b21a_e47e477b",
         "filename": "chip/it83xx/cec_bitbang.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-01T20:58:47Z",
       "side": 1,
       "message": "nit: We probably don\u0027t want this here for overhead (either in cec_gpio_interrupt). port_from_gpio_in can return 0 if there is no match. \n\ncec_init_timer can disable an interrupt if port \u003e\u003d CEC_PORT_COUNT.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "2863fad41ffd910ee31c82a11f95977ba493b0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3586b4a5_c1f2f11a",
+        "filename": "chip/it83xx/cec_bitbang.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-02T02:58:32Z",
+      "side": 1,
+      "message": "Just to confirm, you mean port_from_timer() and port_from_gpio_in() should both return 0 if theres\u0027s no match?\n\nFWIW one extra comparison seems negligible to me considering we\u0027re running the whole bitbang state machine in interrupt context. What do you think?\n\n\u003e cec_init_timer can disable an interrupt if port \u003e\u003d CEC_PORT_COUNT.\n\nSorry I don\u0027t understand this part, could you explain? If port \u003e\u003d CEC_PORT_COUNT in cec_init_timer then cec_config[port] is invalid anyway. Also see my comment on CL:4663559 about validating the port.",
+      "parentUuid": "2840b21a_e47e477b",
       "range": {
         "startLine": 139,
         "startChar": 0,
