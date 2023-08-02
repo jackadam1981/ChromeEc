@@ -93,6 +93,30 @@
       },
       "revId": "2863fad41ffd910ee31c82a11f95977ba493b0a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da196be_ce9340f1",
+        "filename": "chip/it83xx/cec_bitbang.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-02T18:31:00Z",
+      "side": 1,
+      "message": "Mapping between a driver and a CEC port never changes after a port and its driver are initialized, right? So, it\u0027s redundant to check the mapping on every interrupt.\n\nAlso, we can move cec_gpio_interrupt to common/cec.c.\n\n\u003e you mean port_from_timer() and port_from_gpio_in() should both return 0 if theres\u0027s no match?\n\nYes.",
+      "parentUuid": "3586b4a5_c1f2f11a",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "2863fad41ffd910ee31c82a11f95977ba493b0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
