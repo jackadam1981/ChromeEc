@@ -34,6 +34,24 @@
       "parentUuid": "1e26c929_b47a4957",
       "revId": "af7e0cbba1033029d90c3f4836ddb00d6270cf96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ab94fc6_6730cd72",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1517924
+      },
+      "writtenOn": "2023-08-02T13:26:10Z",
+      "side": 1,
+      "message": "Switching SPI device (choosing CS pad) should be performed by opentitan TPM command. Opentitan tool communication protocol should allow to switch alternate CS signal when other SPI device is needed.",
+      "parentUuid": "038774eb_7b211924",
+      "revId": "af7e0cbba1033029d90c3f4836ddb00d6270cf96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
