@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8392bbe9_879f537d",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 22
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-02T22:16:08Z",
+      "side": 1,
+      "message": "Tristan - is there a cleaner way to be able to run all the tests in file with an extra conf file, instead of copy-pasting every single testcase?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "7af01924f9a24ccf2657a0c4f6fc774cff68b2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
