@@ -16,6 +16,24 @@
       "message": "I\u0027d prefer that this function just set the DPM request here (not the cached DPM request) and return false. That will avoid the need to explain what we\u0027re doing here and take a step towards converging the implementation on all of our policy decisions being made via DPM request.\n\nThis will involve a slight change in timing, which should be inconsequential, as the PE will not react to the DPM request until the next cycle.",
       "revId": "e9006fdbd3ab705827c1fbae11c69ac15aef5bf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02ca8f50_07282798",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2098,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-08-02T21:14:46Z",
+      "side": 1,
+      "message": "Done. Also successfully ran `firmware_PDDataSwap` for verification.",
+      "parentUuid": "25771476_3a361fcc",
+      "revId": "e9006fdbd3ab705827c1fbae11c69ac15aef5bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
