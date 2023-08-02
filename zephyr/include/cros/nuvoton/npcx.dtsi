@@ -105,3 +105,9 @@
 &shi0 {
 	shi-cs-wui =<&wui_io53>;
 };
+
+&qspi_fiu0 {
+	int_flash: w25q80@0 {
+		min-erase-size = <0x1000>;
+	};
+};
