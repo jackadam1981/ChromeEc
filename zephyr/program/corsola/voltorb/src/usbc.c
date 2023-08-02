@@ -19,6 +19,8 @@
 	(PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP | PDO_FIXED_COMM_CAP)
 
 static bool current_limited;
+/* Indicate which port is limited */
+static int src_port_mask;
 
 static const uint32_t pd_src_pdo_1A5[] = {
 	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
@@ -49,30 +51,32 @@ static void update_src_pdo_deferred(void)
 
 	if (chipset_in_state(CHIPSET_STATE_SUSPEND) &&
 	    (charge_get_percent() < BATT_LVL_CURRENT_LIMITED)) {
-		/* In S3, battery < 30%, set src pdo to 1A5 */
-		current_limited = true;
-
+		/* In S3, battery < 30%, set SRC port pdo to 1A5 */
 		for (i = 0; i < board_get_usb_pd_port_count(); i++) {
 			if (tc_is_attached_src(i)) {
+				current_limited = true;
+				src_port_mask |= BIT(i);
 				CPRINTS("Set C%d src pdo 1A5", i);
 				pd_update_contract(i);
 			}
 		}
 
+		CPRINTS("SRC port mask = %d", src_port_mask);
 		hook_call_deferred(&update_src_pdo_deferred_data, -1);
 	} else if (chipset_in_state(CHIPSET_STATE_SUSPEND) &&
 		   (charge_get_percent() >= BATT_LVL_CURRENT_LIMITED)) {
 		/* In S3, battery >= 30%, check the battery every 60s */
 		hook_call_deferred(&update_src_pdo_deferred_data, 60 * SECOND);
 	} else if (chipset_in_state(CHIPSET_STATE_ON)) {
-		/* Resume src pdo to 3A */
-		current_limited = false;
-
+		/* Resume SRC port pdo to 3A */
 		for (i = 0; i < board_get_usb_pd_port_count(); i++) {
-			if (tc_is_attached_src(i))
+			if (tc_is_attached_src(i) && (src_port_mask & BIT(i))) {
+				CPRINTS("Resume C%d src pdo 3A", i);
 				pd_update_contract(i);
+			}
 		}
 
+		src_port_mask = 0;
 		hook_call_deferred(&update_src_pdo_deferred_data, -1);
 	} else if (check_cnt < 3) {
 		/* Check 3 times for stable power state */
@@ -80,10 +84,33 @@ static void update_src_pdo_deferred(void)
 		hook_call_deferred(&update_src_pdo_deferred_data, 10 * SECOND);
 	} else {
 		check_cnt = 0;
+		src_port_mask = 0;
 		current_limited = false;
 		hook_call_deferred(&update_src_pdo_deferred_data, -1);
 	}
 }
+
+static void update_mask_deferred(void)
+{
+	int i;
+
+	/* Clear the port mask which SRC state is changed in S3 */
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		if (!tc_is_attached_src(i) && (src_port_mask & BIT(i))) {
+			src_port_mask &= (~BIT(i));
+		}
+	}
+}
+DECLARE_DEFERRED(update_mask_deferred);
+
+static void check_pd_in_s3(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		/* Deferred 50ms to wait for pd state transition */
+		hook_call_deferred(&update_mask_deferred_data, 50 * MSEC);
+	}
+}
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, check_pd_in_s3, HOOK_PRIO_LAST);
 
 static void check_src_port(void)
 {
@@ -102,6 +129,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, check_src_port, HOOK_PRIO_DEFAULT);
 
 static void resume_src_port(void)
 {
+	current_limited = false;
 	/* Deferred 2s to avoid pd state conflict */
 	hook_call_deferred(&update_src_pdo_deferred_data, 2 * SECOND);
 }

@@ -26,6 +26,8 @@ FAKE_VOID_FUNC(check_src_port);
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, check_src_port, HOOK_PRIO_DEFAULT);
 FAKE_VOID_FUNC(resume_src_port);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, resume_src_port, HOOK_PRIO_DEFAULT);
+FAKE_VOID_FUNC(check_pd_in_s3);
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, check_pd_in_s3, HOOK_PRIO_LAST);
 
 enum chipset_state_mask fake_chipset_state;
 
@@ -45,7 +47,7 @@ uint8_t board_get_usb_pd_port_count(void)
 	return 2;
 }
 
-ZTEST(current_limit, test_check_src_port)
+ZTEST(current_limit, test_1_check_src_port)
 {
 	const int fake_port = 0;
 	const uint32_t *fake_pdo;
@@ -80,14 +82,36 @@ ZTEST(current_limit, test_check_src_port)
 	zassert_equal(4, check_src_port_fake.call_count);
 }
 
-ZTEST(current_limit, test_resume_src_port)
+ZTEST(current_limit, test_2_resume_src_port)
 {
 	tc_is_attached_src_fake.custom_fake = tc_is_attached_src_mock;
 	chipset_in_state_fake.custom_fake = chipset_in_state_mock;
+	charge_get_percent_fake.return_val = 20;
+
+	fake_chipset_state = CHIPSET_STATE_SUSPEND;
+	hook_notify(HOOK_CHIPSET_SUSPEND);
+	k_sleep(K_SECONDS(3));
+
 	fake_chipset_state = CHIPSET_STATE_ON;
 	hook_notify(HOOK_CHIPSET_RESUME);
 	k_sleep(K_SECONDS(3));
 	zassert_equal(1, resume_src_port_fake.call_count);
+}
+
+ZTEST(current_limit, test_3_check_pd_in_s3)
+{
+	tc_is_attached_src_fake.custom_fake = tc_is_attached_src_mock;
+	chipset_in_state_fake.custom_fake = chipset_in_state_mock;
+	charge_get_percent_fake.return_val = 20;
+	fake_chipset_state = CHIPSET_STATE_SUSPEND;
+	hook_notify(HOOK_CHIPSET_SUSPEND);
+	k_sleep(K_SECONDS(3));
+
+	tc_is_attached_src_fake.custom_fake = NULL;
+	tc_is_attached_src_fake.return_val = 0;
+	hook_notify(HOOK_USB_PD_DISCONNECT);
+	k_sleep(K_SECONDS(3));
+	zassert_equal(1, check_pd_in_s3_fake.call_count);
 }
 
 ZTEST_SUITE(current_limit, NULL, NULL, NULL, NULL, NULL);
