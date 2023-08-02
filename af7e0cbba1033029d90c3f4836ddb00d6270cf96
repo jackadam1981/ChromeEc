@@ -52,6 +52,24 @@
       "parentUuid": "038774eb_7b211924",
       "revId": "af7e0cbba1033029d90c3f4836ddb00d6270cf96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644dd0ba_35a99c1c",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2023-08-02T15:38:54Z",
+      "side": 1,
+      "message": "I agree.  The document linked in the CL description has some discussion on how that could be achieved.  This CL is a workaround, until we have the final feature.",
+      "parentUuid": "9ab94fc6_6730cd72",
+      "revId": "af7e0cbba1033029d90c3f4836ddb00d6270cf96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
