@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37726e10_97c9c287",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-02T18:36:48Z",
+      "side": 1,
+      "message": "nit: Can you please use IS_ENABLED()?",
+      "range": {
+        "startLine": 100,
+        "startChar": 7,
+        "endLine": 100,
+        "endChar": 36
+      },
+      "revId": "3aed51d70a32028e231b94fee6cb8f75ef61833d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
