@@ -571,6 +571,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "789791ff_e1a3ea07",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-02T20:58:46Z",
+      "side": 1,
+      "message": "I\u0027ll investigate this and come up with a plan to change these to an easier to understand value. After a quick look I assume bit_rate and cable_type can be enums while cable_flags will probably have to be a bitfield",
+      "parentUuid": "64201eed_d002c8c2",
+      "range": {
+        "startLine": 587,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 25
+      },
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42692a6b_576fae85",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 38
@@ -815,6 +839,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ade1dda_480c4a5f",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-02T20:58:46Z",
+      "side": 1,
+      "message": "I believe the intent of this function was to follow figure 5-3 from the spec hence why this check is here. I also can\u0027t seem to find anywhere else where this will break DP alt mode entry as the USB_R20_SS_U2_ONLY seems to default to HBR3 in all checks. This code is checking for that value and Passive cable to return false.",
+      "parentUuid": "6ef19d87_34826f64",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe1bbee2_8ee64324",
@@ -864,6 +906,24 @@
       "side": 1,
       "message": "I may not have fully grokked the code yet, but here goes:\n* As I\u0027ve noted elsewhere, I would prefer it if the recorded DPAM version in the discovery was what actually came in from the partner or cable, even if one of them is too high for the other to support. In addition to allowing more accurate reporting, this might also matter for the first of the two use cases I mention below.\n* The first use case I see for this function is to decide how to interpret the fields of the mode VDO from the cable. My understanding of the spec so far is that the right way to do this would be to interpret the fields based on 2.1 if the cable says 2.1, even if the partner says 2.0. I think this argues for accurately preserving the DPAM version in the stored VDO.\n* The other use case I see is for deciding what to set DPAM version to in the outgoing Configure VDOs (SOP and SOP\u0027). Based on table 5-5, it seems like this should be based on both the SOP and SOP\u0027 incoming versions.\n* Other than in constructing the SOP Configure, the only SOP usage I see is in `dp21_mode_entry_allowed`, and I don\u0027t think that result is actually used right now.\n\nSo it seems like there should basically be two versions of this function:\n* One that only looks at the incoming value for SOP or SOP\u0027 as a parameter (or maybe only SOP\u0027 and no parameter): `enum dpam_version get_dpam_version(int port, enum tcpci_msg_type type)`\n* One that looks at all incoming versions and figures out the outgoing version based on them: `enum dpam_version resolve_dpam_version(int port)`\nThose names are just placeholders to suggest the API. I\u0027m open to different ones.\n\nDoes that seem reasonable to you?\n\n\u003e Since the DFP/UFP version will be constant (depending on if DP21 is supported) the only thing that actually needs to be checked is the cable\u0027s version\n\nDon\u0027t we need to get the UFP version from the UFP discovery?",
       "parentUuid": "8e075396_aaab8a1d",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68af8ff0_df5bee7a",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-02T20:58:46Z",
+      "side": 1,
+      "message": "seems reasonable to me will update this function to get_dpam_version and just return the exact version from the SOP messages and create another function for determining what version is supported that takes in the value returned from that function. I\u0027ll have to look if there is anywhere else even using this as that might be why it was clobbered into one function in the first place",
+      "parentUuid": "06d3d4cd_56a897c2",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
