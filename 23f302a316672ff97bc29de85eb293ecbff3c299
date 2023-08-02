@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cfb0de3_fc7c2a43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-02T03:23:31Z",
+      "side": 1,
+      "message": "Is it reasonable to override code-coverage for this since power/intel_x86.c has no tests yet?",
+      "revId": "23f302a316672ff97bc29de85eb293ecbff3c299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
