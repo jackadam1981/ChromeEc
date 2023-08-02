@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa3a4437_e32dd76b",
+        "filename": "common/panic_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-02T18:02:39Z",
+      "side": 1,
+      "message": "Since you\u0027re here, use declared initializers:\n```\n[PANIC_SW_DIV_ZERO] \u003d \"PANIC_SW_DIV_ZERO\",\n/* etc */\n```",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "3f5f4c05a4c8f0fed0bef597c8638f69195164ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "143301b3_c6ac82b2",
         "filename": "include/software_panic.h",
         "patchSetId": 2
