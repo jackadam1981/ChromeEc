@@ -16,6 +16,29 @@
       "message": "Updated, one new test.",
       "revId": "b608d66c78276d1b34a04dc8e8c39a57fc8658bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b3f178_1bb7a033",
+        "filename": "zephyr/test/input_keyboard/include/keyboard_scan.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2023-08-02T15:00:53Z",
+      "side": 1,
+      "message": "Nit: Can we use the `BIT` macro here?\nhttp://cs/h/chromium/chromiumos/codesearch/+/main:src/third_party/zephyr/main/include/zephyr/sys/util_macro.h?l\u003d38",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 28
+      },
+      "revId": "b608d66c78276d1b34a04dc8e8c39a57fc8658bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
