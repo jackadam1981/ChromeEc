@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0843bf49_03603493",
+        "filename": "third_party/boringssl/common/sysrand.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-08-02T04:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9381133_5b146fa6",
+      "revId": "e60b2f944918e591525ad56bcc51a34297eef76d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f244fa8_4e9e7130",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c1f8ef_c3b51fb6",
+        "filename": "third_party/boringssl/common/sysrand_zephyr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-08-02T04:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f244fa8_4e9e7130",
+      "revId": "e60b2f944918e591525ad56bcc51a34297eef76d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bce82b5_51a82437",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-08-01T16:38:43Z",
       "side": 1,
       "message": "the length check here is pointless with the length check above, and getentropy is allowed to return 1 and set error to EIO on these types of failures. (the device not being ready or entropy not working, etc.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "e60b2f944918e591525ad56bcc51a34297eef76d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e6ed47e_17043984",
+        "filename": "third_party/boringssl/common/sysrand_zephyr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-08-02T04:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bce82b5_51a82437",
       "range": {
         "startLine": 39,
         "startChar": 1,
