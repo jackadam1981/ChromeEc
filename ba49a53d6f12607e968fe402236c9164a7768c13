@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac2a8a57_4bd161ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-02T22:16:18Z",
+      "side": 1,
+      "message": "nit: make",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "ba49a53d6f12607e968fe402236c9164a7768c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2a5fe8_00606820",
+        "filename": "board/omnigul/keyboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-02T22:16:18Z",
+      "side": 1,
+      "message": "Can you add a comment describing what these will change?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "ba49a53d6f12607e968fe402236c9164a7768c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b105961f_e935ac91",
+        "filename": "board/omnigul/keyboard_customization.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-02T22:16:18Z",
+      "side": 1,
+      "message": "These are declared in keyboard_8042_sharedlib.h.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "ba49a53d6f12607e968fe402236c9164a7768c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
