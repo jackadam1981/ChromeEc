@@ -22,6 +22,30 @@
       },
       "revId": "ce0eae1c3b663c0dd2bd42d9b2084d447b35abad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa051cb_5671f1cb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5126,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-02T03:14:49Z",
+      "side": 1,
+      "message": "I just chose this because it seemed like a reasonable max. E.g. it\u0027s the same as EC_USB_PD_MAX_PORTS and EC_PCHG_MAX_PORTS. And even 8 is probably way more than we\u0027ll ever need.\n\nAnd I chose 4 bits for the other macros because it seemed tidier. Does it matter if the field is larger than needed?\n\nI\u0027m happy to change it to 16 though. What do you think?",
+      "parentUuid": "e691469d_1e76af23",
+      "range": {
+        "startLine": 5126,
+        "startChar": 25,
+        "endLine": 5126,
+        "endChar": 26
+      },
+      "revId": "ce0eae1c3b663c0dd2bd42d9b2084d447b35abad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
