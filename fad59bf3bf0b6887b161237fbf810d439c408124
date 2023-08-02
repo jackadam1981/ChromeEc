@@ -16,6 +16,24 @@
       "message": "Can you comment what this pattern is intended to match?\n\nDid you mean two `$$`? I think this is being expanded into the PID of the shell.\n\nThe second `/` near `/private` is not escaped, which I believe is an error.",
       "revId": "fad59bf3bf0b6887b161237fbf810d439c408124",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b444b6c_22cf58c8",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-02T00:24:07Z",
+      "side": 1,
+      "message": "Please use single quotes.",
+      "parentUuid": "83068b3e_e8033961",
+      "revId": "fad59bf3bf0b6887b161237fbf810d439c408124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
