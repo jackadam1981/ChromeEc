@@ -89,7 +89,7 @@ struct ccd_config {
 };
 
 /* Nvmem variable name for CCD config */
-static const uint8_t k_ccd_config = NVMEM_VAR_CCD_CONFIG;
+// static const uint8_t k_ccd_config = NVMEM_VAR_CCD_CONFIG;
 
 /* Flags which can be set via ccd_set_flag() */
 static const uint32_t k_public_flags =
@@ -365,12 +365,16 @@ static void ccd_set_state(enum ccd_state state)
  */
 static void ccd_load_config(void)
 {
-	const struct tuple *t;
+	// const struct tuple *t;
 
 	/* Don't reload if we're already loaded */
 	if (ccd_config_loaded)
 		return;
 
+	CPRINTS("CCD using factory config");
+	ccd_reset_config(CCD_RESET_FACTORY);
+
+#if 0
 	/* Load config data from nvmem */
 	t = getvar(&k_ccd_config, sizeof(k_ccd_config));
 
@@ -406,6 +410,7 @@ static void ccd_load_config(void)
 	freevar(t);
 
 ccd_is_loaded:
+#endif
 	ccd_config_loaded = 1;
 
 	/* Notify CCD users of configuration change */
@@ -419,6 +424,8 @@ ccd_is_loaded:
  */
 static int ccd_save_config(void)
 {
+	return EC_SUCCESS;
+#if 0
 	int rv;
 
 	rv = setvar(&k_ccd_config, sizeof(k_ccd_config),
@@ -436,6 +443,7 @@ static int ccd_save_config(void)
 		hook_notify(HOOK_CCD_CHANGE);
 
 	return rv;
+#endif
 }
 
 /**

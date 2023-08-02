@@ -13,7 +13,7 @@
 #define CPRINTS(format, args...) cprints(CC_CCD, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_CCD, format, ## args)
 
-
+#if 0
 static int inactive_image_is_guc_image(void)
 {
 	enum system_image_copy_t inactive_copy;
@@ -40,6 +40,7 @@ static int inactive_image_is_guc_image(void)
 	}
 	return 0;
 }
+#endif
 
 /**
  * Return non-zero if this is the first boot of a board in the factory.
@@ -55,8 +56,9 @@ static int inactive_image_is_guc_image(void)
  */
 int board_is_first_factory_boot(void)
 {
-	return (!(system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE) &&
-		inactive_image_is_guc_image() && board_id_is_erased());
+	return 1;
+	// return (!(system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE) &&
+	// 	inactive_image_is_guc_image() && board_id_is_erased());
 }
 
 /*

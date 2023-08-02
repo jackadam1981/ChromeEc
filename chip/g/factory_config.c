@@ -81,11 +81,11 @@ static int write_factory_config(uint64_t *new_fc)
 	uint64_t fc;
 	uint32_t rv;
 #ifndef CR50_DEV
-	struct board_id id;
+	// struct board_id id;
 
-	/* Fail if Board ID Type is already programmed */
-	if (read_board_id(&id) || !board_id_type_is_blank(&id))
-		return EC_ERROR_ACCESS_DENIED;
+	// /* Fail if Board ID Type is already programmed */
+	// if (read_board_id(&id) || !board_id_type_is_blank(&id))
+	// 	return EC_ERROR_ACCESS_DENIED;
 #endif
 
 	rv = read_factory_config(&fc);
