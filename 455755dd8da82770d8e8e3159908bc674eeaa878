@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae8068d4_f7b5cc54",
+        "filename": "zephyr/test/drivers/default/prj.conf",
+        "patchSetId": 18
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-02T22:03:30Z",
+      "side": 0,
+      "message": "Why not add `CONFIG_TASK_HOSTCMD_THREAD_MAIN\u003dn` to the ec_host_cmd.conf as part of the next CL?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "455755dd8da82770d8e8e3159908bc674eeaa878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
