@@ -190,7 +190,7 @@
 		espi-alert0-n-r {
 			gpios = <&gpio5 7 GPIO_INPUT>;
 		};
-		tp-gpio95 {
+		pd_intr: tp-gpio95 {
 			gpios = <&gpio9 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 		cpu-c10-gate {
