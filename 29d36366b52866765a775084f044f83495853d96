@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de60f01c_211ca2d3",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-02T01:21:54Z",
+      "side": 1,
+      "message": "Nit - add a comment explaining this macro.  e.g. \"The upstream struct ec_host_cmd_handler_args omits the result field, so skip checks of the result when using the upstream host commands\".",
+      "range": {
+        "startLine": 678,
+        "startChar": 8,
+        "endLine": 678,
+        "endChar": 25
+      },
+      "revId": "29d36366b52866765a775084f044f83495853d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

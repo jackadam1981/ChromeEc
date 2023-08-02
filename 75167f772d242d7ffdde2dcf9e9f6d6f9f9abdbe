@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "201fb69b_4f4f1094",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-02T01:21:54Z",
+      "side": 1,
+      "message": "Can you point to an example test that fails without this special wrapper?\n\nIt seems like those tests should be corrected to not rely on a specific response buffer address.\n\nThis wrapper seems like it\u0027s just masking a bad test.",
+      "parentUuid": "e83d5bab_12104bd3",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23923357_7f23064e",
         "filename": "zephyr/test/drivers/default/src/console_cmd/hcdebug.c",
         "patchSetId": 16
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "No, the id is checked from the host command and the test contexts, so both ids have to be verified. The shim host commands are run in the test context, so only `TASK_ID_TEST_RUNNER` is checked.\n\n`TASK_ID_HOSTCMD` id enum is correct for the dedicated thread and reusing main, additional check is not needed.",
       "parentUuid": "85902cf6_9a594431",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "75167f772d242d7ffdde2dcf9e9f6d6f9f9abdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea679ba8_af04960e",
+        "filename": "zephyr/test/drivers/default/src/usb_mux.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2023-08-02T01:21:54Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e8cffe82_7817f3df",
       "range": {
         "startLine": 54,
         "startChar": 0,
