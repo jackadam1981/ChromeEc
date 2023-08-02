@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa478e42_5e0f8aa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-08-02T01:20:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the issue is with `private` it\u0027s a very common pattern for include path directories.",
+      "parentUuid": "068a53d5_ee4b1776",
+      "revId": "fad59bf3bf0b6887b161237fbf810d439c408124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83068b3e_e8033961",
         "filename": "Makefile",
         "patchSetId": 1
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Please use single quotes.",
       "parentUuid": "83068b3e_e8033961",
+      "revId": "fad59bf3bf0b6887b161237fbf810d439c408124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a481d6_d57e1ce6",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2023-08-02T01:20:42Z",
+      "side": 1,
+      "message": "Used single quote and added the comment. The `/` is correct and does not need escaping (the comment should clarify).",
+      "parentUuid": "4b444b6c_22cf58c8",
       "revId": "fad59bf3bf0b6887b161237fbf810d439c408124",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
