@@ -22,6 +22,30 @@
       },
       "revId": "868c05609a58fecdf13638aede9d67e97b7cb115",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82385cb8_a0c5c64c",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-08-02T05:17:56Z",
+      "side": 1,
+      "message": "True, but the following CLs enable tests with the upstream. I hope the CLs will be merged soon.",
+      "parentUuid": "237ae865_8f803db2",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "868c05609a58fecdf13638aede9d67e97b7cb115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
