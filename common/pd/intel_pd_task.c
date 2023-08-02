@@ -39,7 +39,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, disable_pd_irq, HOOK_PRIO_DEFAULT);
 
 void intel_pd_interrupt(enum gpio_signal signal)
 {
-	task_wake(TASK_ID_INTEL_PD_TASK);
+	/* task_wake(TASK_ID_INTEL_PD_TASK); */
 }
 
 void intel_pd_task(void *u)

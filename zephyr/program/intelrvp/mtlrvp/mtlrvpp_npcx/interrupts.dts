@@ -51,5 +51,10 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "board_dc_jack_interrupt";
 		};
+		int_pd_intr: intel_pd_intr {
+			irq-pin = <&pd_intr>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "intel_pd_interrupt";
+		};
 	};
 };

@@ -181,8 +181,9 @@
 			gpios = <&gpio8 7 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 		/* Unused 1.8V pins */
-		i3c-1-sda-r {
+		pd_intr: i3c-1-sda-r {
 			gpios = <&gpio5 0 GPIO_INPUT>;
+			enum-name = "GPIO_USB_PD_INT_ODL";
 		};
 		i3c-1-scl-r {
 			gpios = <&gpio5 6 GPIO_INPUT>;
