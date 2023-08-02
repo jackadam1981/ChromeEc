@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25a3b0bb_182c36b6",
+        "filename": "zephyr/program/skyrim/markarth/include/keyboard_customization.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-02T22:17:39Z",
+      "side": 1,
+      "message": "These are declared in keyboard_8042_sharedlib.h.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 63
+      },
+      "revId": "ee1a8b6f648e79c31001845588aae21e07a5e3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "111c4b78_3eacf6f1",
         "filename": "zephyr/program/skyrim/markarth/src/keyboard.c",
         "patchSetId": 5
@@ -14,6 +37,24 @@
       "writtenOn": "2023-08-02T16:16:36Z",
       "side": 1,
       "message": "Outside the context of the CL I don\u0027t think it\u0027s clear what these lines are doing. Could we either #define these values or add a comment explaining how this is changing the keyboard layout?",
+      "revId": "ee1a8b6f648e79c31001845588aae21e07a5e3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88cddd98_1cade215",
+        "filename": "zephyr/program/skyrim/markarth/src/keyboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-02T22:17:39Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "111c4b78_3eacf6f1",
       "revId": "ee1a8b6f648e79c31001845588aae21e07a5e3f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
