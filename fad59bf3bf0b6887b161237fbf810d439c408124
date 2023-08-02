@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "068a53d5_ee4b1776",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-02T00:28:55Z",
+      "side": 1,
+      "message": "This is still \"out of place\" for EC. We use the word `private` throughout ChromeOS to represent not-public, but still core, code. In EC we must include private code. Yes, this isn\u0027t what other open source projects use.\n\nIf you need to have mock code close to the driver, maybe rename the dir something like `mock`, which is used throughout EC?",
+      "revId": "fad59bf3bf0b6887b161237fbf810d439c408124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83068b3e_e8033961",
         "filename": "Makefile",
         "patchSetId": 1
