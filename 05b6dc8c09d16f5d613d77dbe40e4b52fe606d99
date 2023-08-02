@@ -16,6 +16,23 @@
       "message": "Keith - Please let me know if you have any concerns with this approach of integrating Pigweed with EC3PO which is then pulled into servod.",
       "revId": "05b6dc8c09d16f5d613d77dbe40e4b52fe606d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab6d848c_49051b74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119399
+      },
+      "writtenOn": "2023-08-02T22:11:12Z",
+      "side": 1,
+      "message": "I think this will break everyone who build platform/ec outside of the chroot ?\n\nI can probably fix up the docker build but not sure if there are any other use cases.",
+      "revId": "05b6dc8c09d16f5d613d77dbe40e4b52fe606d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
