@@ -22,6 +22,30 @@
       },
       "revId": "29d36366b52866765a775084f044f83495853d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72cf6e4d_5a29d17b",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-08-02T10:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de60f01c_211ca2d3",
+      "range": {
+        "startLine": 678,
+        "startChar": 8,
+        "endLine": 678,
+        "endChar": 25
+      },
+      "revId": "29d36366b52866765a775084f044f83495853d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
