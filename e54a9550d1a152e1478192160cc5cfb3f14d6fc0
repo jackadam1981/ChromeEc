@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b99ed67d_236c33f5",
+        "filename": "board/kuldax/fw_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-02T22:29:42Z",
+      "side": 1,
+      "message": "What does \u0027extern\u0027 mean? What\u0027s the difference between bj_power_ext and bj_power?",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "e54a9550d1a152e1478192160cc5cfb3f14d6fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbccb5e_a6eddd2d",
+        "filename": "board/kuldax/fw_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-02T22:29:42Z",
+      "side": 1,
+      "message": "Do you want to print an error message?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 13
+      },
+      "revId": "e54a9550d1a152e1478192160cc5cfb3f14d6fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
