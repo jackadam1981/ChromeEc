@@ -23,4 +23,3 @@ if(NOT EXISTS "${PLATFORM_EC}/zephyr/module.yml")
 endif()
 
 add_subdirectory(zephyr)
-add_subdirectory(common)
