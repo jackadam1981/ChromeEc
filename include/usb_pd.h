@@ -477,6 +477,8 @@ struct pd_discovery {
 	union disc_ident_ack identity;
 	/* Identity VDO count */
 	int identity_cnt;
+	/* svdm version */
+	enum usb_pd_svdm_ver svdm_vers;
 	/* Supported SVIDs and corresponding mode VDOs */
 	struct svid_mode_data svids[SVID_DISCOVERY_MAX];
 	/* index of SVID currently being operated on */
