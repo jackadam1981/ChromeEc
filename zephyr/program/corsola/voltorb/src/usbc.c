@@ -103,6 +103,6 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, check_src_port, HOOK_PRIO_DEFAULT);
 static void resume_src_port(void)
 {
 	/* Deferred 2s to avoid pd state conflict */
-	hook_call_deferred(&update_src_pdo_deferred_data, 2 * SECOND);
+	hook_call_deferred(&update_src_pdo_deferred_data, 5 * SECOND);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, resume_src_port, HOOK_PRIO_DEFAULT);
