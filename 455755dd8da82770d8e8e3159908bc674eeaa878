@@ -22,6 +22,30 @@
       },
       "revId": "455755dd8da82770d8e8e3159908bc674eeaa878",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "191fcfed_b05230a6",
+        "filename": "zephyr/test/drivers/default/prj.conf",
+        "patchSetId": 18
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-08-03T05:57:50Z",
+      "side": 0,
+      "message": "I wanted to keep the same configs for upstream and shim, but since it works differently anyway (test thread context vs dedicated upstream thread) I think you are right.",
+      "parentUuid": "ae8068d4_f7b5cc54",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "455755dd8da82770d8e8e3159908bc674eeaa878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
