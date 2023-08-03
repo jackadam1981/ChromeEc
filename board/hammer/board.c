@@ -401,3 +401,9 @@ board_vivaldi_keybd_config(void)
 
 	return NULL;
 }
+
+#if defined(BOARD_JEWEL)
+int board_sensor_at_360(void) {
+	return 0;
+}
+#endif

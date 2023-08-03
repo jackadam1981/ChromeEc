@@ -208,8 +208,12 @@
 /* GMR sensor for tablet mode detection */
 #if defined(BOARD_DON) || defined(BOARD_MASTERBALL) ||        \
 	defined(BOARD_MOONBALL) || defined(BOARD_WHISKERS) || \
-	defined(BOARD_EEL)
+	defined(BOARD_EEL) || defined(BOARD_JEWEL)
 #define CONFIG_GMR_TABLET_MODE
+#endif
+
+#if defined(BOARD_JEWEL)
+#define CONFIG_GMR_TABLET_MODE_CUSTOM
 #endif
 
 #endif /* SECTION_IS_RW */
