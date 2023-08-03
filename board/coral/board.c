@@ -594,17 +594,17 @@ static void enable_input_devices(void)
 	 * 360 position. Instead, we let motion_sense_task enable it once it
 	 * reaches laptop zone (180 or less). */
 	if (tablet_get_mode())
-		lid_angle_peripheral_enable(0);
+		lid_angle_peripheral_enable(false);
 }
 
 /* Enable or disable input devices, based on chipset state and tablet mode */
-__override void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(bool enable)
 {
 	/* If the lid is in 360 position, ignore the lid angle,
 	 * which might be faulty. Disable keyboard.
 	 */
 	if (tablet_get_mode() || chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		enable = 0;
+		enable = false;
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 

@@ -202,7 +202,7 @@ int board_allow_i2c_passthru(const struct i2c_cmd_desc_t *cmd_desc)
 
 /* Enable or disable input devices, based on chipset state and tablet mode */
 #ifdef VARIANT_KUKUI_JACUZZI
-__override void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(bool enable)
 {
 	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
 

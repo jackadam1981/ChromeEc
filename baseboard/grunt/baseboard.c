@@ -627,7 +627,7 @@ unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 #endif /* HAS_TASK_MOTIONSENSE */
 
-__override void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(bool enable)
 {
 	if (board_is_convertible())
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);

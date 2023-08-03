@@ -224,7 +224,7 @@ static void gmr_tablet_switch_interrupt_debounce(void)
 	}
 
 	if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE) && gmr_sensor_at_360)
-		lid_angle_peripheral_enable(0);
+		lid_angle_peripheral_enable(false);
 }
 DECLARE_DEFERRED(gmr_tablet_switch_interrupt_debounce);
 
@@ -263,7 +263,7 @@ static __maybe_unused void tablet_mode_lid_event(void)
 		gmr_sensor_at_0 = true;
 		tablet_set_mode(0, TABLET_TRIGGER_LID);
 		if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE))
-			lid_angle_peripheral_enable(1);
+			lid_angle_peripheral_enable(true);
 	} else {
 		gmr_sensor_at_0 = false;
 	}
