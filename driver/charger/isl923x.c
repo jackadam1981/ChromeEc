@@ -1572,6 +1572,28 @@ static enum ec_error_list raa489000_is_pps_enabled(int chgnum, bool *enabled)
 
 	return EC_SUCCESS;
 }
+
+static enum ec_error_list raa489000_enable_ptm(int chgnum, bool enable)
+{
+	enum mask_update_action action = enable ? MASK_SET : MASK_CLR;
+
+	return raw_update16(chgnum, ISL923X_REG_CONTROL0,
+			    RAA489000_C0_PTM_ENABLE, action);
+}
+
+static enum ec_error_list raa489000_is_ptm_enabled(int chgnum, bool *enabled)
+{
+	int rv;
+	int reg;
+
+	rv = raw_read16(chgnum, ISL923X_REG_INFO, &reg);
+	if (rv)
+		return rv;
+
+	*enabled = !!(reg & RAA489000_INFO_PTM_ACTIVE);
+
+	return EC_SUCCESS;
+}
 #endif
 
 const struct charger_drv isl923x_drv = {
@@ -1620,6 +1642,8 @@ const struct charger_drv isl923x_drv = {
 #if defined(CONFIG_CHARGER_RAA489000)
 	.enable_pps = &raa489000_enable_pps,
 	.is_pps_enabled = &raa489000_is_pps_enabled,
+	.enable_ptm = &raa489000_enable_ptm,
+	.is_ptm_enabled = &raa489000_is_ptm_enabled,
 #endif
 #ifdef CONFIG_CMD_CHARGER_DUMP
 	.dump_registers = &command_isl923x_dump,
