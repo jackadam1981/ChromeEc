@@ -70,6 +70,30 @@
       },
       "revId": "ce0eae1c3b663c0dd2bd42d9b2084d447b35abad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f509f5b_f1015f7f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5126,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-03T01:24:23Z",
+      "side": 1,
+      "message": "Ok, I can change the masks.\n\nDo you have an opinion on 8 vs 16? I don\u0027t mind either way.",
+      "parentUuid": "f6e8198e_634f063a",
+      "range": {
+        "startLine": 5126,
+        "startChar": 25,
+        "endLine": 5126,
+        "endChar": 26
+      },
+      "revId": "ce0eae1c3b663c0dd2bd42d9b2084d447b35abad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
