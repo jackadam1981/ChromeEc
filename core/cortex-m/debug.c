@@ -4,6 +4,7 @@
  */
 
 #include "debug.h"
+#include "debug_regs.h"
 #include "stdbool.h"
 
 bool debugger_is_connected(void)
