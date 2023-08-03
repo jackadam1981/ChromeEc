@@ -575,6 +575,7 @@ def get_console(board_config: BoardConfig) -> Optional[str]:
 
 def power(board_config: BoardConfig, power_on: bool) -> None:
     """Turn power to board on/off."""
+    raise Exception("This function does not work on some devboard.")
     if power_on:
         state = "pp3300"
     else:
@@ -591,9 +592,11 @@ def power(board_config: BoardConfig, power_on: bool) -> None:
 def power_cycle(board_config: BoardConfig) -> None:
     """power_cycle the boards."""
     logging.debug("power_cycling board")
-    power(board_config, power_on=False)
-    time.sleep(board_config.reboot_timeout)
-    power(board_config, power_on=True)
+    logging.debug("Please unplug and replug the dev board from servo-micro")
+    input('Press enter when you have completed this power cycle')
+    # power(board_config, power_on=False)
+    # time.sleep(board_config.reboot_timeout)
+    # power(board_config, power_on=True)
 
 
 def hw_write_protect(enable: bool) -> None:
