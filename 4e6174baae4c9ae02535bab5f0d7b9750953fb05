@@ -94,6 +94,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "971fe935_a401d673",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-03T00:15:16Z",
+      "side": 1,
+      "message": "See https://crrev.com/c/3778901 for a change as Forest describes for a similar issue affecting the SM5803.",
+      "parentUuid": "97fad0b5_b0fbf476",
+      "revId": "4e6174baae4c9ae02535bab5f0d7b9750953fb05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "548acfc2_8fce3ed1",
         "filename": "common/usb_pd_dual_role.c",
         "patchSetId": 4
@@ -105,6 +123,30 @@
       "writtenOn": "2023-08-01T20:15:34Z",
       "side": 1,
       "message": "i\u0027m not sure if we have a formal way to limit the charging\nvoltage per port. there may be a way to do this by overriding\nsome of the USB PD policy functions for this board.",
+      "range": {
+        "startLine": 276,
+        "startChar": 7,
+        "endLine": 276,
+        "endChar": 30
+      },
+      "revId": "4e6174baae4c9ae02535bab5f0d7b9750953fb05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f2484a_74711461",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-03T00:15:16Z",
+      "side": 1,
+      "message": "Hypothetically, a change to do this consistently would probably involve changing every usage of `PD_MAX_VOLTAGE_MV`. It looks like there are about 16 usages, not counting board or test code.\n\nThat being said, as Forest notes, having a different max voltage on each port would violate requirements.",
+      "parentUuid": "548acfc2_8fce3ed1",
       "range": {
         "startLine": 276,
         "startChar": 7,
