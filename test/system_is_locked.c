@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "debug.h"
 #include "flash.h"
 #include "string.h"
 #include "system.h"
@@ -58,6 +59,20 @@ void test_run_step(uint32_t state)
 			test_reboot_to_next_step(TEST_STATE_FAILED);
 		else if (write_protect_enabled) {
 			ccprintf("Request RO protection at boot\n");
+			/* You can't have the debugger connected or even have
+			 * had it previously connected when setting RDP.
+			 * This test must be started after the debugger
+			 * has been disconnected and after a power cycle,
+			 * in order to reset any prior debugger indication.
+			 */
+			if (debugger_is_connected() ||
+			    debugger_was_connected()) {
+				ccprintf("ERROR - The chip will detect a "
+					 "debugger, which will hang the MCU."
+					 "\n");
+				ccprintf("A reboot was required prior to "
+					 "running this test.\n");
+			}
 			cflush();
 			crec_flash_set_protect(EC_FLASH_PROTECT_RO_AT_BOOT,
 					       EC_FLASH_PROTECT_RO_AT_BOOT);
