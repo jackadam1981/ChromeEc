@@ -265,7 +265,7 @@ void board_touchpad_reset(void)
 }
 #endif /* !HAS_NO_TOUCHPAD */
 
-#ifdef CONFIG_KEYBOARD_TABLET_MODE_SWITCH
+#ifdef CONFIG_GMR_TABLET_MODE
 static void board_tablet_mode_change(void)
 {
 	/*
