@@ -270,7 +270,7 @@ void board_hibernate_late(void)
 }
 
 /* This callback disables keyboard when convertibles are fully open */
-__override void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(bool enable)
 {
 	/*
 	 * If the lid is in tablet position via other sensors,
@@ -278,7 +278,7 @@ __override void lid_angle_peripheral_enable(int enable)
 	 * disable keyboard.
 	 */
 	if (tablet_get_mode())
-		enable = 0;
+		enable = false;
 
 	if (board_is_convertible())
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);

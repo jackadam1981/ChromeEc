@@ -19,7 +19,7 @@ const enum gpio_signal hibernate_wake_pins[] = {
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 /* This callback disables keyboard when convertibles are fully open */
-__override void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(bool enable)
 {
 	/*
 	 * If the lid is in tablet position via other sensors,

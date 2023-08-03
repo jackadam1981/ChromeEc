@@ -234,7 +234,7 @@ int ppc_get_alert_status(int port)
 /* Lid */
 #ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
-void lid_angle_peripheral_enable(int enable)
+void lid_angle_peripheral_enable(bool enable)
 {
 	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
 
