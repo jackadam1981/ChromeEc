@@ -151,9 +151,9 @@ void lid_angle_update(int lid_ang)
 
 	/* Enable or disable peripherals as necessary. */
 	if (accept)
-		lid_angle_peripheral_enable(1);
+		lid_angle_peripheral_enable(true);
 	else if (ignore && !accept)
-		lid_angle_peripheral_enable(0);
+		lid_angle_peripheral_enable(false);
 }
 
 static void enable_peripherals(void)
@@ -161,7 +161,7 @@ static void enable_peripherals(void)
 	/*
 	 * Make sure lid angle is not disabling peripherals when AP is running.
 	 */
-	lid_angle_peripheral_enable(1);
+	lid_angle_peripheral_enable(true);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, enable_peripherals, HOOK_PRIO_DEFAULT);
 
@@ -172,17 +172,17 @@ static void suspend_peripherals(void)
 	 * Make sure peripherals are disabled in S3 in tablet mode.
 	 */
 	if (tablet_get_mode())
-		lid_angle_peripheral_enable(0);
+		lid_angle_peripheral_enable(false);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, suspend_peripherals, HOOK_PRIO_DEFAULT);
 #endif /* CONFIG_TABLET_MODE */
 
 #ifdef TEST_BUILD
-__overridable void lid_angle_peripheral_enable(int enable)
+__overridable void lid_angle_peripheral_enable(bool enable)
 {
 }
 #else
-__overridable void lid_angle_peripheral_enable(int enable)
+__overridable void lid_angle_peripheral_enable(bool enable)
 {
 	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
 

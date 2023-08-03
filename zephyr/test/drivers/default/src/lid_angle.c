@@ -54,7 +54,7 @@ ZTEST(lid_angle, test_no_wake_min_large_angle)
 	lid_angle_update(45);
 
 	zassert_equal(1, lid_angle_peripheral_enable_fake.call_count, NULL);
-	zassert_equal(0, lid_angle_peripheral_enable_fake.arg0_val, NULL);
+	zassert_equal(false, lid_angle_peripheral_enable_fake.arg0_val, NULL);
 }
 
 ZTEST(lid_angle, test_wake_max_large_angle)
@@ -66,5 +66,5 @@ ZTEST(lid_angle, test_wake_max_large_angle)
 	lid_angle_update(45);
 
 	zassert_equal(1, lid_angle_peripheral_enable_fake.call_count, NULL);
-	zassert_equal(1, lid_angle_peripheral_enable_fake.arg0_val, NULL);
+	zassert_equal(true, lid_angle_peripheral_enable_fake.arg0_val, NULL);
 }
