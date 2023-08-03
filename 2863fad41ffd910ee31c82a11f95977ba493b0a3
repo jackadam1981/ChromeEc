@@ -117,6 +117,30 @@
       },
       "revId": "2863fad41ffd910ee31c82a11f95977ba493b0a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d5809f_8c324da7",
+        "filename": "chip/it83xx/cec_bitbang.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-03T01:21:04Z",
+      "side": 1,
+      "message": "\u003e Also, we can move cec_gpio_interrupt to common/cec.c.\n\nWhy? It\u0027s only used for the bitbang driver, and only on ite, so isn\u0027t chip/it83xx/cec_bitbang.c the right place?\n\n\u003e Mapping between a driver and a CEC port never changes after a port and its driver are initialized, right?\n\nYes, the only way for the gpio or timer to be invalid is a configuration error. e.g. someone maps an incorrect pin to cec_gpio_interruput in gpio.inc. And you\u0027re saying we usually assume configuration is correct to improve performance. I understand.\n\nSo to confirm, the only code change you\u0027re suggesting is return 0 from port_from_timer/port_from_gpio_in and remove the checks? I didn\u0027t understand this part:\n\n\u003e cec_init_timer can disable an interrupt if port \u003e\u003d CEC_PORT_COUNT.",
+      "parentUuid": "8da196be_ce9340f1",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "2863fad41ffd910ee31c82a11f95977ba493b0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
