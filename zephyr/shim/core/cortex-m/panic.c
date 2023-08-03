@@ -5,6 +5,8 @@
 
 #include "panic.h"
 
+#include <zephyr/kernel.h>
+
 #define BASE_EXCEPTION_FRAME_SIZE_BYTES (8 * sizeof(uint32_t))
 #define FPU_EXCEPTION_FRAME_SIZE_BYTES (18 * sizeof(uint32_t))
 
@@ -64,4 +66,18 @@ uint32_t get_panic_stack_pointer(const struct panic_data *pdata)
 		psp += get_exception_frame_size(pdata);
 
 	return psp;
+}
+
+void software_panic(uint32_t reason, uint32_t info)
+{
+	/* clang-format off */
+	__asm__("mov " STRINGIFY(SOFTWARE_PANIC_INFO_REG) ", %0\n"
+		"mov " STRINGIFY(SOFTWARE_PANIC_REASON_REG) ", %1\n"
+		"mov r0, %2\n" /* arg0 = K_ERR_KERNEL_OOPS */
+		"mov r1, #0\n" /* arg1 = NULL */
+		"b z_fatal_error\n"
+		:
+		: "r"(info), "r"(reason), "i"(K_ERR_KERNEL_OOPS));
+	/* clang-format on */
+	__builtin_unreachable();
 }

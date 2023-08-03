@@ -5,6 +5,9 @@
 
 #include "config.h"
 #include "hooks.h"
+#include "panic.h"
+#include "software_panic.h"
+#include "task.h"
 #include "watchdog.h"
 
 #include <zephyr/device.h>
@@ -168,6 +171,8 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 					  int channel_id);
 	cros_chip_wdt_handler(wdt_dev, channel_id);
 #endif
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_PANIC_ON_WATCHDOG_WARNING))
+		software_panic(PANIC_SW_WATCHDOG, task_get_current());
 }
 
 __maybe_unused static void
