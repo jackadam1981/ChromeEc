@@ -12,6 +12,7 @@ _common_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 common-y=util.o
 common-y+=version.o printf.o queue.o queue_policies.o irq_locking.o
 common-y+=gettimeofday.o
+common-y+=mkbp_fifo.o
 
 common-$(CONFIG_ACCELGYRO_BMI160)+=math_util.o
 common-$(CONFIG_ACCELGYRO_BMI220)+=math_util.o
@@ -91,6 +92,7 @@ common-$(CONFIG_DEVICE_STATE)+=device_state.o
 common-$(CONFIG_DPTF)+=dptf.o
 common-$(CONFIG_EC_EC_COMM_CLIENT)+=ec_ec_comm_client.o
 common-$(CONFIG_EC_EC_COMM_SERVER)+=ec_ec_comm_server.o
+common-$(CONFIG_PLATFORM_EC_EMULATED_SYSRQ)+=mkbp_fifo.o
 common-$(CONFIG_HOST_INTERFACE_ESPI)+=espi.o
 common-$(CONFIG_EXTPOWER_GPIO)+=extpower_gpio.o
 common-$(CONFIG_EXTPOWER)+=extpower_common.o

@@ -237,3 +237,12 @@ int mkbp_fifo_get_next_event(uint8_t *out, enum ec_mkbp_event evt)
 	else
 		return -EC_ERROR_UNKNOWN;
 }
+
+#ifdef CONFIG_EMULATED_SYSRQ
+void host_send_sysrq(uint8_t key)
+{
+	uint32_t value = key;
+
+	mkbp_fifo_add(EC_MKBP_EVENT_SYSRQ, (const uint8_t *)&value);
+}
+#endif
