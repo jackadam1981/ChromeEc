@@ -15,6 +15,7 @@
 
 /* Optional features */
 #define CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT
+#define CONFIG_EMULATED_SYSRQ
 #define CONFIG_LTO /* Link-Time Optimizations to reduce code size */
 
 #undef CONFIG_UART_TX_BUF_SIZE
