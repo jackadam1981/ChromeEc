@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62d44a1_6b8ecef3",
+        "filename": "test/system_is_locked.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-03T04:47:13Z",
+      "side": 1,
+      "message": "not sure I understand the purpose of this change. `cres_flash_set_protect` can take more than 300msec to finish and this can cause it to time out. we created a deferred version of this call here (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/flash.c;l\u003d1609?q\u003dcrec_flash_set_protect\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d1608-,1609,-1610). \nIs the `cflush` to ensure something is being printed out about timeout or has a different purpose? What will happen if the invocation of `crec_flash_set_protect` times out without this change and with this change??",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "250a4d7a154e3531ebbc3cf762b99b61c368e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
