@@ -75,14 +75,14 @@ static int ec_command_dev(int command, int version, const void *outdata,
 	s_cmd.insize = insize;
 	s_cmd.indata = (uint8_t *)(indata);
 
-	r = ioctl(fd, CROS_EC_DEV_IOCXCMD, &s_cmd);
+	r = ioctl(fd, CROS_EC_DEV_IOCXCMD, &s_cmd, sizeof(s_cmd));
 	if (r < 0) {
 		fprintf(stderr, "ioctl %d, errno %d (%s), EC result %d (%s)\n",
 			r, errno, strerror(errno), s_cmd.result,
 			strresult(s_cmd.result));
 		if (errno == EAGAIN && s_cmd.result == EC_RES_IN_PROGRESS) {
 			s_cmd.command = EC_CMD_RESEND_RESPONSE;
-			r = ioctl(fd, CROS_EC_DEV_IOCXCMD, &s_cmd);
+			r = ioctl(fd, CROS_EC_DEV_IOCXCMD, &s_cmd, sizeof(s_cmd));
 			if (r < 0) {
 				fprintf(stderr,
 					"ioctl %d, errno %d (%s), EC result %d (%s)\n",
@@ -111,7 +111,7 @@ static int ec_readmem_dev(int offset, int bytes, void *dest)
 		s_mem.offset = offset;
 		s_mem.bytes = bytes;
 		s_mem.buffer = (char *)(dest);
-		r = ioctl(fd, CROS_EC_DEV_IOCRDMEM, &s_mem);
+		r = ioctl(fd, CROS_EC_DEV_IOCRDMEM, &s_mem, sizeof(s_mem));
 		if (r < 0 && errno == ENOTTY)
 			fake_it = 1;
 		else
@@ -147,14 +147,14 @@ static int ec_command_dev_v2(int command, int version, const void *outdata,
 	s_cmd->insize = insize;
 	memcpy(s_cmd->data, outdata, outsize);
 
-	r = ioctl(fd, CROS_EC_DEV_IOCXCMD_V2, s_cmd);
+	r = ioctl(fd, CROS_EC_DEV_IOCXCMD_V2, s_cmd, sizeof(s_cmd));
 	if (r < 0) {
 		fprintf(stderr, "ioctl %d, errno %d (%s), EC result %d (%s)\n",
 			r, errno, strerror(errno), s_cmd->result,
 			strresult(s_cmd->result));
 		if (errno == EAGAIN && s_cmd->result == EC_RES_IN_PROGRESS) {
 			s_cmd->command = EC_CMD_RESEND_RESPONSE;
-			r = ioctl(fd, CROS_EC_DEV_IOCXCMD_V2, s_cmd);
+			r = ioctl(fd, CROS_EC_DEV_IOCXCMD_V2, s_cmd, sizeof(s_cmd));
 			if (r < 0) {
 				fprintf(stderr,
 					"ioctl %d, errno %d (%s), EC result %d (%s)\n",
@@ -187,7 +187,7 @@ static int ec_readmem_dev_v2(int offset, int bytes, void *dest)
 	if (!fake_it) {
 		s_mem.offset = offset;
 		s_mem.bytes = bytes;
-		r = ioctl(fd, CROS_EC_DEV_IOCRDMEM_V2, &s_mem);
+		r = ioctl(fd, CROS_EC_DEV_IOCRDMEM_V2, &s_mem, sizeof(s_mem));
 		if (r < 0 && errno == ENOTTY) {
 			fake_it = 1;
 		} else {
@@ -220,7 +220,7 @@ static int ec_dev_is_v2(void)
 	s_cmd.insize = sizeof(h_resp);
 	s_cmd.indata = (uint8_t *)&h_resp;
 
-	r = ioctl(fd, CROS_EC_DEV_IOCXCMD, &s_cmd);
+	r = ioctl(fd, CROS_EC_DEV_IOCXCMD, &s_cmd, sizeof(s_cmd));
 	if (r < 0 && errno == ENOTTY)
 		return 1;
 
@@ -233,7 +233,7 @@ static int ec_pollevent_dev(unsigned long mask, void *buffer, size_t buf_size,
 	int rv;
 	struct pollfd pf = { .fd = fd, .events = POLLIN };
 
-	ioctl(fd, CROS_EC_DEV_IOCEVENTMASK_V2, mask);
+	ioctl(fd, CROS_EC_DEV_IOCEVENTMASK_V2, mask, sizeof(s_cmd));
 
 	rv = poll(&pf, 1, timeout);
 	if (rv != 1)
