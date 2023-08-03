@@ -517,6 +517,12 @@ ZTEST(amd_power, test_power_suspend_hang)
 	const char *buffer;
 	size_t buffer_size;
 
+	/*
+	 * We only handle sleep hangs in RW to prevent the AP getting stuck in
+	 * RO
+	 */
+	__running_copy = EC_IMAGE_RW;
+
 	amd_power_s0_on();
 
 	/* Send sleep event, but fail to actually transition the signal */
