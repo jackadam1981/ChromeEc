@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97122a39_0d31fc9c",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6901,
+      "author": {
+        "id": 1536410
+      },
+      "writtenOn": "2023-08-03T23:59:30Z",
+      "side": 1,
+      "message": "10 second timeout is too small for Intel x86 devices. Our SLA to resume is 0.5 seconds. However from crosbolt test data we know that there are outlier cases where the device takes longer to suspend/resume due to which the dpm_watchdog in kernel has a timeout of 60 seconds. Can we have this timeout at 75 seconds? The risk of having 10 seconds timeout is that in a lot of cases, user may see the device reset instead of resume.",
+      "revId": "f4c20b574add3f8f241421914f2b0426f3c488c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
