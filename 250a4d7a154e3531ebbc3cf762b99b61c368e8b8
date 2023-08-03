@@ -22,6 +22,30 @@
       },
       "revId": "250a4d7a154e3531ebbc3cf762b99b61c368e8b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26916b5d_1878cd5a",
+        "filename": "test/system_is_locked.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-03T05:19:10Z",
+      "side": 1,
+      "message": "Right. This function call isn\u0027t being done in the context of a host command where the response time is important. This is being done in the context of a test console command, where it is actually more important to wait and not confuse the console output.\n\nThe cflush is indeed just to force console to write out the previous message before making the call to `crec_flash_set_protect`. Without it, we are hitting the bug I referenced and there is no real console indication about what happened. You only see the `Pass: ` part printed to console.\n\n\u003e What will happen if the invocation of crec_flash_set_protect times out without this change and with this change??\n\nThis doesn\u0027t really have a timeout, but we do have watchdog, which MAY timeout and the python test handler will timeout. In that case, the test is failed.\n\nWe don\u0027t want timeouts or async here, other than to fail the test is it never returns. Don\u0027t forget we are dealing with *seconds* as the expected runtime here.",
+      "parentUuid": "f62d44a1_6b8ecef3",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "250a4d7a154e3531ebbc3cf762b99b61c368e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
