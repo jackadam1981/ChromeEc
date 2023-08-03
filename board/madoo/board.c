@@ -584,7 +584,7 @@ uint16_t tcpc_get_alert_status(void)
 }
 
 /* This callback disables keyboard when convertibles are fully open */
-__override void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(bool enable)
 {
 	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
 
@@ -594,7 +594,7 @@ __override void lid_angle_peripheral_enable(int enable)
 	 * disable keyboard.
 	 */
 	if (tablet_get_mode())
-		enable = 0;
+		enable = false;
 
 	if (enable) {
 		keyboard_scan_enable(true, KB_SCAN_DISABLE_LID_ANGLE);

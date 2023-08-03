@@ -116,7 +116,7 @@ DECLARE_FAKE_VOID_FUNC(software_panic, uint32_t, uint32_t);
 DECLARE_FAKE_VOID_FUNC(assert_post_action, const char *, unsigned int);
 
 /* Mocks for common/lid_angle.c */
-DECLARE_FAKE_VOID_FUNC(lid_angle_peripheral_enable, int);
+DECLARE_FAKE_VOID_FUNC(lid_angle_peripheral_enable, bool);
 
 /* Mocks for gpio.h */
 DECLARE_FAKE_VALUE_FUNC(int, gpio_config_unused_pins);

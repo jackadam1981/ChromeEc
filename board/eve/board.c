@@ -705,11 +705,11 @@ static void enable_input_devices(void)
 	 * reaches laptop zone (180 or less).
 	 */
 	if (tablet_get_mode())
-		lid_angle_peripheral_enable(0);
+		lid_angle_peripheral_enable(false);
 }
 
 /* Enable or disable input devices, based on chipset state and tablet mode */
-__override void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(bool enable)
 {
 	/*
 	 * If suspended and the lid is in 360 position, ignore the lid angle,
@@ -717,12 +717,12 @@ __override void lid_angle_peripheral_enable(int enable)
 	 */
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF) ||
 	    (tablet_get_mode() && chipset_in_state(CHIPSET_STATE_SUSPEND)))
-		enable = 0;
+		enable = false;
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 
 	/* Also disable trackpad wake if not in suspend */
 	if (!chipset_in_state(CHIPSET_STATE_SUSPEND))
-		enable = 0;
+		enable = false;
 	trackpad_wake_enable(enable);
 }
 
