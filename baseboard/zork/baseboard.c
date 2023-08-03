@@ -147,7 +147,7 @@ const struct thermistor_info thermistor_info = {
 	.data = thermistor_data,
 };
 
-__override void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(bool enable)
 {
 	if (ec_config_has_lid_angle_tablet_mode()) {
 		int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
