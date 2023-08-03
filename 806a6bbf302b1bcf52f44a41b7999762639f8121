@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21d7add1_be34ad6a",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-03T23:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ab865c_50c0789d",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 12
+      },
+      "revId": "806a6bbf302b1bcf52f44a41b7999762639f8121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbc4b7f0_a53489a1",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-08-03T20:52:07Z",
       "side": 1,
       "message": "This feels more like an `${EXIT_CONFIG}`",
+      "range": {
+        "startLine": 358,
+        "startChar": 14,
+        "endLine": 358,
+        "endChar": 31
+      },
+      "revId": "806a6bbf302b1bcf52f44a41b7999762639f8121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49c6f1a6_a6bd01ec",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-03T23:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbc4b7f0_a53489a1",
       "range": {
         "startLine": 358,
         "startChar": 14,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfbec04a_0d282855",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-03T23:40:23Z",
+      "side": 1,
+      "message": "Agreed, what do we need to do to make that happen? Include it with the helipilot release build by default?",
+      "parentUuid": "7b87b8eb_ec1fea95",
+      "range": {
+        "startLine": 446,
+        "startChar": 35,
+        "endLine": 446,
+        "endChar": 70
+      },
+      "revId": "806a6bbf302b1bcf52f44a41b7999762639f8121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "737e6430_9a15bdc4",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 3
@@ -100,6 +172,30 @@
       "writtenOn": "2023-08-03T20:52:07Z",
       "side": 1,
       "message": "Can we remove this or at least update the comment?",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 15
+      },
+      "revId": "806a6bbf302b1bcf52f44a41b7999762639f8121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea6278dd_e11d1265",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-03T23:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "737e6430_9a15bdc4",
       "range": {
         "startLine": 455,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31bd20d3_108f19f7",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-03T23:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b1baf16_daef0343",
+      "range": {
+        "startLine": 1015,
+        "startChar": 4,
+        "endLine": 1015,
+        "endChar": 57
+      },
+      "revId": "806a6bbf302b1bcf52f44a41b7999762639f8121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f625686_ab716ca6",
@@ -146,6 +266,30 @@
       "writtenOn": "2023-08-03T20:52:07Z",
       "side": 1,
       "message": "It would be a bit cleaner if this block, along with the definitions of the board strings, went into a function called `get_chip` and that function called `get_board`. This would look something like this:\n\n\n```\nget_board()\n{\n  local board\n  board\u003d\"$(cros_config /fingerprint board)\"\n\n  echo \"${board}\"\n}\n\nget_chip()\n{\n  if ! board\u003d\"$(get_board)\"; then\n    echo \"Failed to get board\" \u003e\u00262\n    exit \"${EXIT_CONFIG}\"\n  fi\n\n  if [[ \"${board}\" \u003d\u003d \"${HELIPILOT_STR}\" ]]; then\n    chip_type\u003d\"NPCX\"\n  elif [[ \"${board}\" \u003d\u003d \"${BLOONCHIPPER_STR}\" ]]; then\n    chip_type\u003d\"STM32\"\n  elif [[ \"${board}\" \u003d\u003d \"${DARTMONKEY_STR}\" ]]; then\n    chip_type\u003d\"STM32\"\n  else\n    echo \"ERROR: Unknown board type found: ${board}.\" \u003e\u00262\n    exit \"${EXIT_CONFIG}\"\n    \n  echo \"${chip_type}\"\n}\n\n...\n\n  board\u003d\"$(get_chip)\"\n\n  local ret\n  flash_fp_mcu \\\n    \"${TRANSPORT}\"   \\\n    \"${DEVICE}\"      \\\n    \"${GPIO_NRST}\"   \\\n    \"${GPIO_BOOT0}\"  \\\n    \"${GPIO_PWREN}\"  \\\n    \"${filename}\"    \\\n    \"${chip_type}\"\n  ret\u003d$?\n\n```",
+      "range": {
+        "startLine": 1008,
+        "startChar": 0,
+        "endLine": 1017,
+        "endChar": 0
+      },
+      "revId": "806a6bbf302b1bcf52f44a41b7999762639f8121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "966faf3a_038bfc11",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-03T23:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f625686_ab716ca6",
       "range": {
         "startLine": 1008,
         "startChar": 0,
