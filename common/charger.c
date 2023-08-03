@@ -859,3 +859,25 @@ enum ec_error_list charger_is_pps_enabled(int chgnum, bool *enabled)
 
 	return chg_chips[chgnum].drv->is_pps_enabled(chgnum, enabled);
 }
+
+enum ec_error_list charger_enable_ptm(int chgnum, bool enable)
+{
+	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count()))
+		return EC_ERROR_INVAL;
+
+	if (!chg_chips[chgnum].drv->enable_ptm)
+		return EC_ERROR_UNIMPLEMENTED;
+
+	return chg_chips[chgnum].drv->enable_ptm(chgnum, enable);
+}
+
+enum ec_error_list charger_is_ptm_enabled(int chgnum, bool *enabled)
+{
+	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count()))
+		return EC_ERROR_INVAL;
+
+	if (!chg_chips[chgnum].drv->is_ptm_enabled)
+		return EC_ERROR_UNIMPLEMENTED;
+
+	return chg_chips[chgnum].drv->is_ptm_enabled(chgnum, enabled);
+}

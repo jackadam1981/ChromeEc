@@ -163,6 +163,12 @@ struct charger_drv {
 	/* Check if PPS has been enabled */
 	enum ec_error_list (*is_pps_enabled)(int chgnum, bool *enabled);
 
+	/* Enable or disable PPS if supported */
+	enum ec_error_list (*enable_ptm)(int chgnum, bool enable);
+
+	/* Check if PPS has been enabled */
+	enum ec_error_list (*is_ptm_enabled)(int chgnum, bool *enabled);
+
 	/* Dumps charger registers */
 	void (*dump_registers)(int chgnum);
 
@@ -447,6 +453,9 @@ enum ec_error_list charger_enable_pps(int chgnum, bool enable);
  */
 enum ec_error_list charger_is_pps_enabled(int chgnum, bool *enabled);
 
+enum ec_error_list charger_enable_ptm(int chgnum, bool enable);
+
+enum ec_error_list charger_is_ptm_enabled(int chgnum, bool *enabled);
 /*
  * Print all charger info for debugging purposes
  * @param chgnum: charger IC index.
