@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ba1770_004f1de1",
+        "filename": "common/pd_typec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-03T20:59:17Z",
+      "side": 1,
+      "message": "try add new command here\ncommon/usbc/usb_pd_host.c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "303ce88797a7db7a88728111e553851447eeabb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0edaf476_faf086c0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6925,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-03T20:59:17Z",
+      "side": 1,
+      "message": "how about\nTYPEC_MODE_AP?",
+      "range": {
+        "startLine": 6925,
+        "startChar": 1,
+        "endLine": 6925,
+        "endChar": 19
+      },
+      "revId": "303ce88797a7db7a88728111e553851447eeabb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36117d65_13417cad",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6929,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-03T20:59:17Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 6929,
+        "startChar": 1,
+        "endLine": 6929,
+        "endChar": 29
+      },
+      "revId": "303ce88797a7db7a88728111e553851447eeabb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398bbc29_e8e54b17",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 10569,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-03T20:59:17Z",
+      "side": 1,
+      "message": "define a new command for this\n\nmay be:\ncmd_typec_altmode()",
+      "range": {
+        "startLine": 10569,
+        "startChar": 4,
+        "endLine": 10569,
+        "endChar": 21
+      },
+      "revId": "303ce88797a7db7a88728111e553851447eeabb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
