@@ -7,10 +7,22 @@
 #include "../rex/project.overlay"
 
 &i2c0_0 {
-	status = "disabled";
+	status = "okay";
+	// clock-frequency = <I2C_BITRATE_FAST>;
+	
+	mtl_ish: mtl-ish@86 {
+		// /home/hershjos/Repos/chromiumos/src/platform/ec/zephyr/dts/bindings/i2c_device/intel,mtl-ish.yaml
+		compatible = "intel,mtl-ish";
+		reg = <0x86>;
+		label = "meteorlake_cpu_ish";
+		// do I need to indicate a pin
+		// port = <& idk >;
+		// pinctrl-0 = <& idk >;
+		// pinctrl-names = "default";
+	};
 };
 &i2c_ec_i2c_sensor_scl_r {
-	status = "disabled";
+	status = "okay";
 };
 &int_imu {
 	status = "disabled";

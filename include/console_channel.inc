@@ -115,3 +115,5 @@ CONSOLE_CHANNEL(CC_HOOK,         "hook")
 #ifdef HAS_GPU_DRIVER
 CONSOLE_CHANNEL(CC_GPU,          "gpu")
 #endif
+CONSOLE_CHANNEL(CC_HERSH_I2C_EC, "hersh_i2c_ec")
+CONSOLE_CHANNEL(CC_HERSH_I2C_ISH, "hersh_i2c_ISH")
