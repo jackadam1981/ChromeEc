@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "848705f6_b5d84017",
+        "filename": "util/ectool.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 11555,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-04T18:05:01Z",
+      "side": 1,
+      "message": "Can we just do \u0027argc - 1\u0027 and \u0027argv + 1\u0027 or \u0027argc--\u0027 and \u0027argv++\u0027 after line 11552?",
+      "range": {
+        "startLine": 11555,
+        "startChar": 29,
+        "endLine": 11555,
+        "endChar": 39
+      },
+      "revId": "fd87a2df7a956df89c2236add8c3e5f7069d8821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
