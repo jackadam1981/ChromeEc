@@ -592,6 +592,15 @@ void bma4xx_interrupt(enum gpio_signal signal)
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCEL_BMA4XX_INT_EVENT);
 }
 
+#ifdef CONFIG_ACCEL_BMA4XX_2ND_INT_EVENT
+void bma4xx_2nd_interrupt(enum gpio_signal signal)
+{
+	__atomic_store_n(&last_irq_timestamp, __hw_clock_source_read(),
+			 __ATOMIC_RELAXED);
+	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCEL_BMA4XX_2ND_INT_EVENT);
+}
+#endif
+
 /* Process FIFO data read from accel and push data to host */
 static void process_fifo_data(struct motion_sensor_t *s, uint8_t *data,
 			      size_t data_bytes, uint32_t timestamp)
