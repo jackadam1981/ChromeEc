@@ -38,6 +38,10 @@
 #define CONFIG_BASE32
 #endif
 
+#ifdef TEST_BATTERY_CONFIG
+#define CONFIG_BATTERY_CONFIG_IN_CBI
+#endif
+
 #ifdef TEST_BKLIGHT_LID
 #define CONFIG_BACKLIGHT_LID
 #endif
@@ -108,10 +112,17 @@
 #endif
 
 #if defined(TEST_FPSENSOR) || defined(TEST_FPSENSOR_STATE) || \
-	defined(TEST_FPSENSOR_CRYPTO)
+	defined(TEST_FPSENSOR_CRYPTO) ||                      \
+	defined(TEST_FPSENSOR_AUTH_CRYPTO_STATELESS) ||       \
+	defined(TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL) ||        \
+	defined(TEST_FPSENSOR_AUTH_COMMANDS)
 #define CONFIG_BORINGSSL_CRYPTO
 #define CONFIG_ROLLBACK_SECRET_SIZE 32
 #define CONFIG_SHA256
+#endif
+
+#if defined(TEST_BORINGSSL_CRYPTO)
+#define CONFIG_BORINGSSL_CRYPTO
 #endif
 
 #ifdef TEST_ROLLBACK_SECRET
@@ -236,6 +247,10 @@ enum sensor_id {
 #define CONFIG_GMR_TABLET_MODE
 #endif
 
+#ifdef TEST_TABLET_BROKEN_SENSOR
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
+#endif
+
 #if defined(TEST_BODY_DETECTION)
 #define CONFIG_BODY_DETECTION
 #define CONFIG_BODY_DETECTION_SENSOR BASE
@@ -302,7 +317,7 @@ enum sensor_id {
 #define CONFIG_MALLOC
 #endif
 
-#ifdef TEST_SBS_CHARGING_V2
+#ifdef TEST_SBS_CHARGING
 #define CONFIG_BATTERY
 #define CONFIG_BATTERY_V2
 #define CONFIG_BATTERY_COUNT 1
@@ -361,6 +376,8 @@ int ncp15wb_calculate_temp(uint16_t adc);
 
 #ifdef TEST_CEC
 #define CONFIG_CEC
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
 #endif
 
 #ifdef TEST_LIGHTBAR

@@ -17,11 +17,23 @@
 #include <zephyr/shell/shell.h>
 #include <zephyr/ztest.h>
 
+static int16_t mock_offset[3];
+
 FAKE_VALUE_FUNC(int, mock_set_range, struct motion_sensor_t *, int, int);
 FAKE_VALUE_FUNC(int, mock_set_offset, const struct motion_sensor_t *,
 		const int16_t *, int16_t);
 FAKE_VALUE_FUNC(int, mock_get_offset, const struct motion_sensor_t *, int16_t *,
 		int16_t *);
+static int mock_get_offset_custom(const struct motion_sensor_t *s,
+				  int16_t *offset, int16_t *temp)
+{
+	for (int i = 0; i < 3; i++) {
+		offset[i] = mock_offset[i];
+	}
+
+	return mock_get_offset_fake.return_val;
+}
+
 FAKE_VALUE_FUNC(int, mock_set_scale, const struct motion_sensor_t *,
 		const uint16_t *, int16_t);
 FAKE_VALUE_FUNC(int, mock_get_scale, const struct motion_sensor_t *, uint16_t *,
@@ -72,6 +84,9 @@ static void host_cmd_motion_sense_before(void *fixture)
 	RESET_FAKE(mock_perform_calib);
 	FFF_RESET_HISTORY();
 
+	/* Setup proxy functions */
+	mock_get_offset_fake.custom_fake = mock_get_offset_custom;
+
 	zassert_ok(shell_execute_cmd(get_ec_shell(), "accelinit 0"));
 
 	atomic_clear(&motion_sensors[0].flush_pending);
@@ -117,7 +132,8 @@ ZTEST_USER(host_cmd_motion_sense, test_dump)
 		~(EC_MEMMAP_ACC_STATUS_PRESENCE_BIT);
 
 	/* Dump all the sensors info */
-	host_cmd_motion_sense_dump(ALL_MOTION_SENSORS, result);
+	host_cmd_motion_sense_dump(ALL_MOTION_SENSORS, result,
+				   sizeof(response_buffer));
 
 	zassert_equal(result->dump.module_flags, 0);
 	zassert_equal(result->dump.sensor_count, ALL_MOTION_SENSORS);
@@ -153,7 +169,8 @@ ZTEST_USER(host_cmd_motion_sense, test_dump)
 		EC_MEMMAP_ACC_STATUS_PRESENCE_BIT;
 
 	/* Dump all the sensors info */
-	host_cmd_motion_sense_dump(ALL_MOTION_SENSORS, result);
+	host_cmd_motion_sense_dump(ALL_MOTION_SENSORS, result,
+				   sizeof(response_buffer));
 
 	zassert_equal(result->dump.module_flags, MOTIONSENSE_MODULE_FLAG_ACTIVE,
 		      NULL);
@@ -166,7 +183,8 @@ ZTEST_USER(host_cmd_motion_sense, test_dump__large_max_sensor_count)
 	struct ec_response_motion_sense *result =
 		(struct ec_response_motion_sense *)response_buffer;
 
-	host_cmd_motion_sense_dump(ALL_MOTION_SENSORS + 1, result);
+	host_cmd_motion_sense_dump(ALL_MOTION_SENSORS + 1, result,
+				   sizeof(response_buffer));
 
 	zassert_equal(result->dump.sensor_count, ALL_MOTION_SENSORS);
 }
@@ -499,13 +517,15 @@ ZTEST_USER_F(host_cmd_motion_sense, test_offset_fail_to_get)
 		      NULL);
 	zassert_equal(1, mock_set_offset_fake.call_count);
 	zassert_equal(1, mock_get_offset_fake.call_count);
-	zassert_equal((int16_t *)&response.sensor_offset.offset,
-		      mock_get_offset_fake.arg1_history[0], NULL);
 }
 
 ZTEST_USER_F(host_cmd_motion_sense, test_get_offset)
 {
 	struct ec_response_motion_sense response;
+
+	mock_offset[0] = 0xaa;
+	mock_offset[1] = 0xbb;
+	mock_offset[2] = 0xcc;
 
 	motion_sensors[0].drv = &fixture->mock_drv;
 	mock_get_offset_fake.return_val = EC_RES_SUCCESS;
@@ -519,8 +539,10 @@ ZTEST_USER_F(host_cmd_motion_sense, test_get_offset)
 		   NULL);
 	zassert_equal(1, mock_set_offset_fake.call_count);
 	zassert_equal(1, mock_get_offset_fake.call_count);
-	zassert_equal((int16_t *)&response.sensor_offset.offset,
-		      mock_get_offset_fake.arg1_history[0], NULL);
+	for (int i = 0; i < ARRAY_SIZE(response.sensor_offset.offset); i++) {
+		zassert_equal(response.sensor_offset.offset[i], mock_offset[i],
+			      NULL);
+	}
 	zassert_equal(1, mock_set_offset_fake.arg2_history[0]);
 }
 
@@ -699,7 +721,8 @@ ZTEST(host_cmd_motion_sense, test_fifo_flush__invalid_sensor_num)
 	int rv;
 	struct ec_response_motion_sense response;
 
-	rv = host_cmd_motion_sense_fifo_flush(/*sensor_num=*/0xff, &response);
+	rv = host_cmd_motion_sense_fifo_flush(/*sensor_num=*/0xff, &response,
+					      sizeof(response));
 	zassert_equal(rv, EC_RES_INVALID_PARAM);
 }
 
@@ -709,7 +732,8 @@ ZTEST(host_cmd_motion_sense, test_fifo_flush)
 	struct ec_response_motion_sense *response =
 		(struct ec_response_motion_sense *)response_buffer;
 
-	zassert_ok(host_cmd_motion_sense_fifo_flush(/*sensor_num=*/0, response),
+	zassert_ok(host_cmd_motion_sense_fifo_flush(/*sensor_num=*/0, response,
+						    sizeof(response_buffer)),
 		   NULL);
 	zassert_equal(1, motion_sensors[0].flush_pending);
 }
@@ -720,7 +744,8 @@ ZTEST(host_cmd_motion_sense, test_fifo_info)
 	struct ec_response_motion_sense *response =
 		(struct ec_response_motion_sense *)response_buffer;
 
-	zassert_ok(host_cmd_motion_sense_fifo_info(response));
+	zassert_ok(host_cmd_motion_sense_fifo_info(response,
+						   sizeof(response_buffer)));
 }
 
 ZTEST(host_cmd_motion_sense, test_fifo_read)

@@ -72,32 +72,15 @@ enum usbc_port {
 };
 BUILD_ASSERT(USBC_PORT_COUNT == CONFIG_USB_PD_PORT_MAX_COUNT);
 
-/* USB-C PPC configuration */
-struct ppc_config_t ppc_chips[] = {
-	[USBC_PORT_C0] = {
-		.i2c_port = I2C_PORT_TYPEC_AIC_1,
-		.i2c_addr_flags = I2C_ADDR_SN5S330_P0,
-		.drv = &sn5s330_drv,
-	},
-	[USBC_PORT_C1] = {
-		.i2c_port = I2C_PORT_TYPEC_AIC_1,
-		.i2c_addr_flags = I2C_ADDR_SN5S330_P1,
-		.drv = &sn5s330_drv,
-	},
-};
-unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
-
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 	[USBC_PORT_C0] = {
 		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p0)),
 		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p0)),
-		.ppc_intr_handler = sn5s330_interrupt,
 	},
 	[USBC_PORT_C1] = {
 		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p0)),
 		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p1)),
-		.ppc_intr_handler = sn5s330_interrupt,
 	},
 #if defined(HAS_TASK_PD_C2)
 	[USBC_PORT_C2] = {
@@ -274,10 +257,6 @@ __override int board_get_version(void)
 
 static void board_int_init(void)
 {
-	/* Enable PPC interrupts. */
-	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_ppc));
-	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1_ppc));
-
 	/* Enable TCPC interrupts. */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_c1_tcpc));
 #if defined(HAS_TASK_PD_C2)
