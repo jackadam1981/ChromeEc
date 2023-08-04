@@ -52,6 +52,24 @@
       "parentUuid": "26bcf5dd_3c0054d8",
       "revId": "1d8d46c8cd9496fdcae3804f856663668fc7ddd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "881a5086_96f10723",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1529382
+      },
+      "writtenOn": "2023-08-04T13:54:55Z",
+      "side": 1,
+      "message": "I agree with Keith. There is preference to add the tables to the C code (see https://github.com/zephyrproject-rtos/zephyr/pull/57368#issuecomment-1531677855). After some searching, the thermistor in our case is a MURATA NCP15WB473, which already has a compatible in the linux driver. As there is preference to align with the linux bindings, I added it to the zephyr driver together with a compensation table available from the vendor\u0027s website. I made it a part of the existing upstream PR:\nhttps://github.com/zephyrproject-rtos/zephyr/pull/60682",
+      "parentUuid": "8f3f5196_4fa4cf12",
+      "revId": "1d8d46c8cd9496fdcae3804f856663668fc7ddd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
