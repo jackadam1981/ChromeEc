@@ -12,6 +12,7 @@
 #ifndef __CROS_EC_PD_TASK_INTEL_ALTMODE_H
 #define __CROS_EC_PD_TASK_INTEL_ALTMODE_H
 
+#include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/kernel.h>
 
@@ -35,7 +36,7 @@ struct pd_config_t {
 	 * code for single port / dual port PD solutions offered by different
 	 * PD vendors.
 	 */
-	struct gpio_dt_spec irq_gpio;
+	struct gpio_dt_spec int_gpio;
 };
 
 struct intel_altmode_data {

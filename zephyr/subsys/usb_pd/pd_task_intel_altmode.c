@@ -9,10 +9,45 @@
  * Delivery Controller Interface for SoC and Retimer" document.
  */
 
-#include "gpio.h"
+#include "i2c.h"
+#include "i2c/i2c.h"
 #include "pd_task_intel_altmode.h"
+#include "usbc/utils.h"
 
 #include <zephyr/logging/log.h>
+
+#define INTEL_ALTMODE_COMPAT_PD intel_pd_altmode
+
+#define INTEL_ALTMODE_PD_CONFIG(id)                               \
+	{                                                         \
+		.i2c = {                                        \
+			.bus = I2C_PORT_BY_DEV(id),             \
+			.addr = DT_REG_ADDR(id),               \
+		},                                              \
+		.int_gpio = GPIO_DT_SPEC_GET(id, irq_gpios), \
+	}
+
+#define PD_CHIP_ENTRY(usbc_id, pd_id, config_fn) \
+	[USBC_PORT_NEW(usbc_id)] = config_fn(pd_id),
+
+#define CHECK_COMPAT(compat, usbc_id, pd_id, config_fn) \
+	COND_CODE_1(DT_NODE_HAS_COMPAT(pd_id, compat),  \
+		    (PD_CHIP_ENTRY(usbc_id, pd_id, config_fn)), ())
+
+#define PD_CHIP_FIND(usbc_id, pd_id)                          \
+	CHECK_COMPAT(INTEL_ALTMODE_COMPAT_PD, usbc_id, pd_id, \
+		     INTEL_ALTMODE_PD_CONFIG)
+
+#define PD_CHIP(usbc_id)                                                      \
+	COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, pd_altmode),                    \
+		    (PD_CHIP_FIND(usbc_id, DT_PHANDLE(usbc_id, pd_altmode))), \
+		    (none))
+
+/* Generate PD structure */
+const struct pd_config_t pd_config_array[] = { DT_FOREACH_STATUS_OKAY(
+	named_usbc_port, PD_CHIP) };
+
+BUILD_ASSERT(ARRAY_SIZE(pd_config_array) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
 LOG_MODULE_DECLARE(usbpd_altmode, CONFIG_USB_PD_ALTMODE_LOG_LEVEL);
 
@@ -42,7 +77,7 @@ static void intel_altmode_suspend_handler(struct ap_power_ev_callback *cb,
 		/* Enable interrupt when AP is on */
 		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
 			gpio_pin_interrupt_configure_dt(
-				&pd_config[i].irq_gpio,
+				&pd_config[i].int_gpio,
 				GPIO_INT_EDGE_TO_INACTIVE);
 
 		/* Set event to forcefully get new PD data */
@@ -53,7 +88,7 @@ static void intel_altmode_suspend_handler(struct ap_power_ev_callback *cb,
 		 * wake of AP
 		 */
 		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
-			gpio_pin_interrupt_configure_dt(&pd_config[i].irq_gpio,
+			gpio_pin_interrupt_configure_dt(&pd_config[i].int_gpio,
 							GPIO_INT_DISABLE);
 	} else {
 		LOG_ERR("Invalid suspend event");
@@ -73,11 +108,13 @@ static uint32_t intel_altmode_wait_event(const struct device *dev)
 	return events & INTEL_ALTMODE_EVENT_COUNT;
 }
 
+#if 0
 void intel_altmode_interrupt(enum gpio_signal signal)
 {
 	/* PD interrupt event */
 	intel_altmode_set_event(INTEL_ALTMODE_EVENT_INTERRUPT);
 }
+#endif
 
 static void process_altmode_pd_data(int port)
 {
@@ -106,7 +143,7 @@ static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
 		if (events & INTEL_ALTMODE_EVENT_INTERRUPT) {
 			for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 				/* Process data of interrupted port */
-				if (!gpio_pin_get_dt(&pd_config[i].irq_gpio))
+				if (!gpio_pin_get_dt(&pd_config[i].int_gpio))
 					process_altmode_pd_data(i);
 			}
 		} else if (events & INTEL_ALTMODE_EVENT_FORCE) {
@@ -119,6 +156,7 @@ static void intel_altmode_thread(void *arg, void *unused1, void *unused2)
 
 static int intel_altmode_driver_init(const struct device *dev)
 {
+	/* intel_altmode_task_data.pd_conf = &pd_config_array[0]; */
 	return 0;
 }
 
