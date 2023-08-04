@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc4caac_1be39105",
+        "filename": "board/kuldax/fw_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-08-04T01:29:44Z",
+      "side": 1,
+      "message": "adjust extern , and not diff, Just out of bit3-4 for bj power map for new 90w setting.",
+      "parentUuid": "b99ed67d_236c33f5",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "e54a9550d1a152e1478192160cc5cfb3f14d6fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cbccb5e_a6eddd2d",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-02T22:29:42Z",
       "side": 1,
       "message": "Do you want to print an error message?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 13
+      },
+      "revId": "e54a9550d1a152e1478192160cc5cfb3f14d6fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c144ef6_8d1a91f8",
+        "filename": "board/kuldax/fw_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-08-04T01:29:44Z",
+      "side": 1,
+      "message": "update.",
+      "parentUuid": "4cbccb5e_a6eddd2d",
       "range": {
         "startLine": 90,
         "startChar": 0,
