@@ -16,6 +16,98 @@
       "message": "I set accel force mode to lid_accel. The interrupt int_accel is disabled here. Should I use the crrev/c/4751081 to define 2 different function for in int_imu and int_accel? Therefore, both 2 interrupts work and can set different motionsense tast event.",
       "revId": "e3799f28c44733281da4d6a0770d78af8e36386c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19214368_fb5461d8",
+        "filename": "zephyr/program/rex/karis/interrupts.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-04T19:52:28Z",
+      "side": 1,
+      "message": "2023... repo upload checks should catch this?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "e3799f28c44733281da4d6a0770d78af8e36386c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c779eb_6d74554d",
+        "filename": "zephyr/program/rex/karis/interrupts.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-04T19:52:28Z",
+      "side": 1,
+      "message": "these (and buttons below) are not related to the sensors.\ncould you separate these into another patch?",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 4
+      },
+      "revId": "e3799f28c44733281da4d6a0770d78af8e36386c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e8b8133_8602391d",
+        "filename": "zephyr/program/rex/karis/interrupts.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-04T19:52:28Z",
+      "side": 1,
+      "message": "need to check with scollyer@ - i have no idea what this sentence means 😊",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 63
+      },
+      "revId": "e3799f28c44733281da4d6a0770d78af8e36386c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "308b46c2_d2e8b374",
+        "filename": "zephyr/program/rex/karis/interrupts.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-04T19:52:28Z",
+      "side": 1,
+      "message": "another item to split into another patch?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 49
+      },
+      "revId": "e3799f28c44733281da4d6a0770d78af8e36386c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
