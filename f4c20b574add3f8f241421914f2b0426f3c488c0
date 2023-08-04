@@ -34,6 +34,24 @@
       "parentUuid": "97122a39_0d31fc9c",
       "revId": "f4c20b574add3f8f241421914f2b0426f3c488c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76899c23_99266540",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6901,
+      "author": {
+        "id": 1536410
+      },
+      "writtenOn": "2023-08-04T15:46:54Z",
+      "side": 1,
+      "message": "I checked crosbolt again for all chromebook devices and the highest outlier I see is around 6 seconds. So 10 seconds is okay. We will also reduce the dpm_watchdog timer to 8 seconds. Thanks.",
+      "parentUuid": "9901bfaf_b4f2c48a",
+      "revId": "f4c20b574add3f8f241421914f2b0426f3c488c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
