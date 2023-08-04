@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e22f4c_f3d37be9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5235,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-04T18:15:49Z",
+      "side": 1,
+      "message": "Why not C1? If you think C0 ~ C7 are reserved for PSE, we probably need to state so somewhere. The command ID map is getting too fragmented without explanation.",
+      "range": {
+        "startLine": 5235,
+        "startChar": 34,
+        "endLine": 5235,
+        "endChar": 36
+      },
+      "revId": "49916b3f497518aebfc4e103289e812371fa8011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
