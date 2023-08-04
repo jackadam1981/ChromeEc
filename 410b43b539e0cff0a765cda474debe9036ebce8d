@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5162c8b_00162958",
+        "filename": "util/comm-dev.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-08-04T06:21:50Z",
+      "side": 1,
+      "message": "As far as I can tell, CROS_EC_DEV_IOCXCMD is defined using the `_IOWR` macro, so the struct size is encoded in the request parameter so the extra size parameter shouldn\u0027t be necessary.",
+      "revId": "410b43b539e0cff0a765cda474debe9036ebce8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
