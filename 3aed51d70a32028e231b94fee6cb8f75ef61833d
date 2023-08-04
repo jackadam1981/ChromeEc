@@ -69,6 +69,30 @@
       },
       "revId": "3aed51d70a32028e231b94fee6cb8f75ef61833d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59566349_feb522b1",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2023-08-04T02:10:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37726e10_97c9c287",
+      "range": {
+        "startLine": 100,
+        "startChar": 7,
+        "endLine": 100,
+        "endChar": 36
+      },
+      "revId": "3aed51d70a32028e231b94fee6cb8f75ef61833d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
