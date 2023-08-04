@@ -93,6 +93,30 @@
       },
       "revId": "8354d330bbbe67479725e60837365eebabb94748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78e800a7_d2ecc95f",
+        "filename": "zephyr/program/rex/rex/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-08-04T14:46:12Z",
+      "side": 1,
+      "message": "no wait I misread, thought it was the erase size",
+      "parentUuid": "7037826d_ce2e32bb",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "8354d330bbbe67479725e60837365eebabb94748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
