@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c297391_c78da48f",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-04T22:14:22Z",
+      "side": 1,
+      "message": "This won\u0027t exit the script, since we are called in a subshell.",
+      "range": {
+        "startLine": 267,
+        "startChar": 4,
+        "endLine": 267,
+        "endChar": 25
+      },
+      "revId": "15035ed3fdd7741df085fc23f73aa6d6e8893e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
