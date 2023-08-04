@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18bf3dbf_40a075cf",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-04T19:50:26Z",
+      "side": 1,
+      "message": "Can you please add a comment saying this field is contiguous to bj_power?\n\nAlso, I believe bj_power_ext (or _extended) is probably easier to understand and more common.",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "6a0fa21f9c4d19b108a97b3ddf8b1be4fb9b3ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
