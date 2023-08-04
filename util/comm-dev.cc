@@ -6,6 +6,7 @@
 #include "comm-host.h"
 #include "cros_ec_dev.h"
 #include "ec_commands.h"
+#include "ec_command_names.h"
 #include "misc_util.h"
 
 #include <assert.h>
@@ -76,6 +77,8 @@ static int ec_command_dev(int command, int version, const void *outdata,
 	s_cmd.indata = (uint8_t *)(indata);
 
 	r = ioctl(fd, CROS_EC_DEV_IOCXCMD, &s_cmd, sizeof(s_cmd));
+	fprintf(stderr, "%s: send a command 0x%X(%s) get %d\n", __func__,
+		command, get_ec_command_name(command), r);
 	if (r < 0) {
 		fprintf(stderr, "ioctl %d, errno %d (%s), EC result %d (%s)\n",
 			r, errno, strerror(errno), s_cmd.result,
@@ -148,6 +151,8 @@ static int ec_command_dev_v2(int command, int version, const void *outdata,
 	memcpy(s_cmd->data, outdata, outsize);
 
 	r = ioctl(fd, CROS_EC_DEV_IOCXCMD_V2, s_cmd, sizeof(s_cmd));
+	fprintf(stderr, "%s: send a command 0x%X(%s) get %d\n", __func__,
+		command, get_ec_command_name(command), r);
 	if (r < 0) {
 		fprintf(stderr, "ioctl %d, errno %d (%s), EC result %d (%s)\n",
 			r, errno, strerror(errno), s_cmd->result,

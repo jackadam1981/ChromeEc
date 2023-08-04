@@ -1228,6 +1228,9 @@ exit:
 	return rv;
 }
 
+/* Forward declare */
+static int rwsig_action(const char *command);
+
 int cmd_reboot_ec(int argc, char *argv[])
 {
 	struct ec_params_reboot_ec p;
@@ -1283,6 +1286,13 @@ int cmd_reboot_ec(int argc, char *argv[])
 	}
 
 	rv = ec_command(EC_CMD_REBOOT_EC, 0, &p, sizeof(p), NULL, 0);
+
+	/* Force rwsig abort */
+	usleep(800000);
+	fprintf(stderr, "Sleep for 0.8s then force rwsig_abort\n");
+	const char *command_abort = "abort";
+	rwsig_action(command_abort);
+
 	return (rv < 0 ? rv : 0);
 }
 
