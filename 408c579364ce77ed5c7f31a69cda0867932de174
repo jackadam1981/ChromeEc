@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3794e3e3_fad6b1a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-04T12:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd923770_e1674894",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "650c7de4_cd5fc3a7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5b33e9e_ca976e34",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-04T12:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94f4cff9_cde11a45",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c34f47c8_e2cb08d8",
@@ -65,6 +101,24 @@
       "writtenOn": "2023-07-31T01:22:36Z",
       "side": 1,
       "message": "```suggestion\n\t\trv \u003d write_reg(port, NX20P348X_SWITCH_CONTROL_REG, 0x00);\n```",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49d2605f_669973c7",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-04T12:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c34f47c8_e2cb08d8",
       "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4075b8_93155ca9",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-04T12:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d6d4dd6_27377487",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7226c31_7560fc01",
@@ -99,6 +171,24 @@
       "writtenOn": "2023-07-31T01:22:36Z",
       "side": 1,
       "message": "```suggestion\n\t\trv \u003d write_reg(port, 0x80, 0x00);\n```\nDo we have 0x80 reg name ?",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd9cc03_494016bb",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-04T12:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7226c31_7560fc01",
       "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef6b33e_112a8499",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-04T12:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d7c3bea_2d313b3b",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ccba80e_139f877a",
@@ -133,6 +241,24 @@
       "writtenOn": "2023-07-31T01:22:36Z",
       "side": 1,
       "message": "```suggestion\n\t\trv \u003d tcpm_set_src_ctrl(port, enable);\n```",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead18e53_c11feec6",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-04T12:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ccba80e_139f877a",
       "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +280,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f21e178_7d2a670f",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-04T12:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd39e511_32033dd6",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b92a9a4_dcd2c8bf",
@@ -167,6 +311,24 @@
       "writtenOn": "2023-07-31T01:22:36Z",
       "side": 1,
       "message": "```suggestion\n\t\trv \u003d write_reg(port, 0x80, 0xEA);\n```",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63792a99_aac6062f",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-04T12:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b92a9a4_dcd2c8bf",
       "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -188,6 +350,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb05c23e_2268e10a",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-04T12:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "144861e3_a007710e",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "946d70b3_9012a5f5",
@@ -201,6 +381,24 @@
       "writtenOn": "2023-07-31T01:22:36Z",
       "side": 1,
       "message": "```suggestion\n\t\trv \u003d write_reg(port, 0x88, 0x98);\n```",
+      "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6068aa3d_7b5f5e72",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-04T12:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "946d70b3_9012a5f5",
       "revId": "408c579364ce77ed5c7f31a69cda0867932de174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
