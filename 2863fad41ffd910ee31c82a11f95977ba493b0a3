@@ -141,6 +141,30 @@
       },
       "revId": "2863fad41ffd910ee31c82a11f95977ba493b0a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c477f1b_f0abaf98",
+        "filename": "chip/it83xx/cec_bitbang.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-04T16:27:08Z",
+      "side": 1,
+      "message": "cec_gpio_interrupt looks generic. It works for any cec driver which needs to translate a gpio pin to a cec port index, doesn\u0027t it?\n\n\u003e So to confirm, the only code change you\u0027re suggesting is return 0 from port_from_timer/port_from_gpio_in and remove the checks?\n\nReturn 0 from port_from_timer and port_from_gpio_in.\n\n\u003e I didn\u0027t understand this part:\n\u003e\u003e cec_init_timer can disable an interrupt if port \u003e\u003d CEC_PORT_COUNT.\n\nIf a port index passed to cec_init_timer, can we disable its interrupt to gracefully disable the port?",
+      "parentUuid": "a9d5809f_8c324da7",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "2863fad41ffd910ee31c82a11f95977ba493b0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
