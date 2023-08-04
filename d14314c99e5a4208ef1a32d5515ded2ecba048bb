@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b5ba1b_0158dd69",
+        "filename": "board/omnigul/charger.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-08-04T13:21:47Z",
+      "side": 1,
+      "message": "Since C1 is already set as SRC mode to enable the WA when C0 port is inserted, it may still need to go ahead enabling C1 sink.",
+      "revId": "d14314c99e5a4208ef1a32d5515ded2ecba048bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
