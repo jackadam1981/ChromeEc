@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8691ffb6_cb38ed36",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-04T22:24:53Z",
+      "side": 1,
+      "message": "```suggestion\n\nget_chip()\n{\n  local board\n\n  board\u003d\"$(cros_config /fingerprint board)\"\n\n  case \"${board}\" in\n    bloonchipper|dartmonkey|nocturne_fp|nami_fp)\n      echo \"STM32\"\n      ;;\n    helipilot)\n      echo \"NPCX\"\n      ;;\n    *)\n      echo \"Error - Unknown board \u0027${board}\u0027.\" \u003e\u00262\n      return 1\n      ;;\n  esac\n}\n```",
+      "parentUuid": "2cebf726_b1f9daa8",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 1
+      },
+      "revId": "15035ed3fdd7741df085fc23f73aa6d6e8893e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9076ca6e_b41005bc",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 4
