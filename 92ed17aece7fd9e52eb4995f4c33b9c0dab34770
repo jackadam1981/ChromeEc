@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32270d57_a3a60c89",
+        "filename": "common/cec.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-04T17:10:36Z",
+      "side": 1,
+      "message": "nit: can you move them to their scopes starting line 244 and line 249, respectively?",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 63
+      },
+      "revId": "92ed17aece7fd9e52eb4995f4c33b9c0dab34770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b749def_399c708d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5158,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-04T17:10:36Z",
+      "side": 1,
+      "message": "I see this is inherited from v0 but this can be a variable data field (i.e. msg[]) so that we avoid sending redundant bytes. It doesn\u0027t matter much because MAX_CEC_MSG_LEN is only 16.",
+      "range": {
+        "startLine": 5158,
+        "startChar": 1,
+        "endLine": 5158,
+        "endChar": 30
+      },
+      "revId": "92ed17aece7fd9e52eb4995f4c33b9c0dab34770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
