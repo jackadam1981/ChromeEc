@@ -16,6 +16,24 @@
       "message": "10 second timeout is too small for Intel x86 devices. Our SLA to resume is 0.5 seconds. However from crosbolt test data we know that there are outlier cases where the device takes longer to suspend/resume due to which the dpm_watchdog in kernel has a timeout of 60 seconds. Can we have this timeout at 75 seconds? The risk of having 10 seconds timeout is that in a lot of cases, user may see the device reset instead of resume.",
       "revId": "f4c20b574add3f8f241421914f2b0426f3c488c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9901bfaf_b4f2c48a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6901,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-08-04T15:19:43Z",
+      "side": 1,
+      "message": "These are the ChromeOS requirements:\n\n\u003e [boot-perf-0005-v01] : The Chrome device MUST take no longer than 1 second to transition from Active (ACPI S0) to Suspend (ACPI S3).\n\u003e\n\u003e [boot-perf-0008-v01] : The Chrome device MUST take no longer than 500 milliseconds to transition from Active (ACPI S0) to Suspend (ACPI S0ix).\n\nThe intent of this feature is to automatically recover the device in the event an suspend/resume failure has occurred, so the user can continue using their device. A blank screen for the user will already feel exceedingly long at 10 seconds, resulting in at least some forcing their own recovery (long power button press). A device that requires \u003e60 seconds to start recovery will be considered broken, effectively making this feature useless from their perspective.\n\n\u003e Can we have this timeout at 75 seconds? \n\nBased on the above, the answer is no, we will not increase the timeout to something that large. Any devices taking \u003e10sec to resume are hitting serious high impact user facing bugs, and those need to be fixed rather than ignored. In the meantime, the feature can be disabled for those devices failing to meet the requirements by disabling `CONFIG_POWER_SLEEP_FAILURE_DETECTION`.",
+      "parentUuid": "97122a39_0d31fc9c",
+      "revId": "f4c20b574add3f8f241421914f2b0426f3c488c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
