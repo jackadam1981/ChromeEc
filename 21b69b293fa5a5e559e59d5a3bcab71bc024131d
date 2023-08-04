@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dfb130a_1d72d384",
+        "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+        "patchSetId": 86
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-04T07:55:09Z",
+      "side": 1,
+      "message": "This is cool. Is this a Zephyr feature or part of EC shim?",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "21b69b293fa5a5e559e59d5a3bcab71bc024131d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c40b0d32_8ade8cdf",
+        "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+        "patchSetId": 86
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-04T07:55:09Z",
+      "side": 1,
+      "message": "I\u0027m guessing this section gets pulled into the linker script at some point? Is this part of Zephyr or part of EC shim?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 7
+      },
+      "revId": "21b69b293fa5a5e559e59d5a3bcab71bc024131d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
