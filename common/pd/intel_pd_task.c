@@ -21,7 +21,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 /* Store current data of the DATA STATUS register */
-static union data_status_reg data_status[CONFIG_USB_PD_PORT_MAX_COUNT];
+//static union data_status_reg data_status[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static void intel_pd_process_data(int port)
 {

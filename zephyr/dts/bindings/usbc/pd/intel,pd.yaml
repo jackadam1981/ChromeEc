@@ -1,0 +1,14 @@
+# Copyright 2023 Google LLC
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Intel SoC Compatible PD
+
+compatible: "intel,pd"
+
+include: ["i2c-device.yaml"]
+
+properties:
+  int-pin:
+    type: phandle
+    required: true

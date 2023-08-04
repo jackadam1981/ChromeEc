@@ -9,6 +9,8 @@
  * Delivery Controller Interface for SoC and Retimer" document.
  */
 
+#include "i2c.h"
+
 #ifndef __CROS_EC_INTEL_PD_TASK_H
 #define __CROS_EC_INTEL_PD_TASK_H
 
@@ -200,6 +202,13 @@ union data_control_reg {
 	};
 	uint8_t raw_value[DATA_CONTROL_REG_LEN];
 };
+
+struct pd_config_t {
+	struct i2c_info_t i2c_info;
+	enum gpio_signal alert_signal;
+};
+
+//extern const struct pd_config_t pd_config[];
 
 /**
  * PD interrupt to wake the task
