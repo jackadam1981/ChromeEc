@@ -41,6 +41,7 @@ enum {
 	EC_TASK_KEYPROTO_PRIO,
 	EC_TASK_POWERBTN_PRIO,
 	EC_TASK_KEYSCAN_PRIO,
+	EC_TASK_PD_INTEL_ALTMODE_PRIO,
 	EC_TASK_PD_C0_PRIO,
 	EC_TASK_PD_C1_PRIO,
 	EC_TASK_PD_C2_PRIO,
@@ -116,6 +117,12 @@ enum {
 		    (CROS_EC_TASK(KEYSCAN, keyboard_scan_task, 0,          \
 				  CONFIG_TASK_KEYSCAN_STACK_SIZE,          \
 				  EC_TASK_KEYSCAN_PRIO)),                  \
+		    ())                                                    \
+	COND_CODE_1(HAS_TASK_PD_TASK_INTEL_ALTMODE,                        \
+		    (CROS_EC_TASK(PD_TASK_INTEL_ALTMODE,                   \
+				  pd_task_intel_altmode, 0,                \
+				  CONFIG_TASK_PD_STACK_SIZE,               \
+				  EC_TASK_PD_INTEL_ALTMODE_PRIO)),         \
 		    ())                                                    \
 	COND_CODE_1(HAS_TASK_PD_C0,                                        \
 		    (CROS_EC_TASK(PD_C0, pd_task, 0,                       \
