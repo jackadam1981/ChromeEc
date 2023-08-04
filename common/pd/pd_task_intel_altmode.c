@@ -13,6 +13,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "pd_task_intel_altmode.h"
 #include "task.h"
 #include "usb_pd.h"
 
@@ -45,7 +46,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, disable_pd_irq, HOOK_PRIO_DEFAULT);
 
 void pd_altmode_interrupt(enum gpio_signal signal)
 {
-	task_wake(TASK_ID_PD_TASK_INTEL_ALTMODE);
+	// task_wake(TASK_ID_PD_TASK_INTEL_ALTMODE);
 }
 
 void pd_task_intel_altmode(void *u)

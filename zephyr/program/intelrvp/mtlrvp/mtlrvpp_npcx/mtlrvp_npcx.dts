@@ -299,6 +299,26 @@
 		reset-pin = <&usb_c3_hb_retimer_rst>;
 		ls-en-pin = <&usb_c3_hb_retimer_ls_en>;
 	};
+	pd_port0: ccg@50 {
+		comapible = "intel,pd-altmode";
+		reg = <0x50>;
+		int-pin = <&pd_intr>;
+	};
+	pd_port1: ccg@51 {
+		comapible = "intel,pd-altmode";
+		reg = <0x51>;
+		int-pin = <&pd_intr>;
+	};
+	pd_port2: ccg@52 {
+		comapible = "intel,pd-altmode";
+		reg = <0x52>;
+		int-pin = <&pd_intr>;
+	};
+	pd_port3: ccg@53 {
+		comapible = "intel,pd-altmode";
+		reg = <0x53>;
+		int-pin = <&pd_intr>;
+	};
 };
 
 &i2c_ctrl1 {
