@@ -139,6 +139,32 @@ static int get_flash_write_size(void)
 	return write_size;
 }
 
+static int ec_flash_jump(int slot)
+{
+	struct ec_params_reboot_ec p = {0};
+	p.cmd = slot;
+
+	int rv = ec_command(EC_CMD_REBOOT_EC, 0, &p, sizeof(p), NULL, 0);
+	return (rv < 0 ? rv : 0);
+}
+
+static int ec_flash_subtype_jmp(bool ec_subtype)
+{
+	if (ec_flash_check_features(EC_FEATURE_RWSIG) > 0) {
+		printf("EC has RWSIG enabled.\n");
+	}
+	if (ec_flash_check_features(EC_FEATURE_EXEC_IN_RAM) <= 0) {
+		/* Warning: before update, we jump the EC to RO copy. */
+		printf("EXEC_IN_RAM unsupported..");
+		if (ec_subtype) { /* true := TP, FP etc.. */
+			printf(" legacy component, unconditional jump to RO.\n");
+			return ec_flash_jump(EC_REBOOT_JUMP_RO);
+		}
+		msg_pwarn("EXEC_IN_RAM supported - skip jumping to RO\n");
+	}
+	return 0;
+}
+
 int ec_flash_write(const uint8_t *buf, int offset, int size)
 {
 	struct ec_params_flash_write *p =
@@ -148,6 +174,11 @@ int ec_flash_write(const uint8_t *buf, int offset, int size)
 	int step;
 	int rv;
 	int i;
+
+
+	const int ret = ec_flash_subtype_jmp(true /* hack for TP*/);
+	if (ret < 0)
+		return ret;
 
 	/*
 	 * Determine whether we can use version 1 of the EC_CMD_FLASH_WRITE
@@ -199,6 +230,10 @@ int ec_flash_erase(int offset, int size)
 
 	p.offset = offset;
 	p.size = size;
+
+	const int ret = ec_flash_subtype_jmp(true /* hack for TP*/);
+	if (ret < 0)
+		return ret;
 
 	return ec_command(EC_CMD_FLASH_ERASE, 0, &p, sizeof(p), NULL, 0);
 }
