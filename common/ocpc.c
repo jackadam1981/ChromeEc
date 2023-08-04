@@ -8,7 +8,7 @@
 #include "battery.h"
 #include "battery_fuel_gauge.h"
 #include "charge_manager.h"
-#include "charge_state_v2.h"
+#include "charge_state.h"
 #include "charger.h"
 #include "common.h"
 #include "console.h"
@@ -609,9 +609,9 @@ set_vsys:
 		CPRINT_VIZ("[");
 		for (i = -10; i <= 10; i++) {
 			if (i == 0)
-				CPRINT_VIZ(loc == 0 ? "#" : "|");
+				CPRINT_VIZ("%c", loc == 0 ? '#' : '|');
 			else
-				CPRINT_VIZ(i == loc ? "o" : "-");
+				CPRINT_VIZ("%c", i == loc ? 'o' : '-');
 		}
 		CPRINT_VIZ("] (actual)%dmA (desired)%dmA\n", batt.current,
 			   i_ma);

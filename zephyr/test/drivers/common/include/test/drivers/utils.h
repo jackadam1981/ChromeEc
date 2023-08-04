@@ -255,9 +255,11 @@ enum ec_status host_cmd_host_event(enum ec_host_event_action action,
  * @param max_sensor_count The maximum number of sensor data objects to populate
  *        in the response object.
  * @param response Pointer to the response object to fill.
+ * @param response_size Size of the response buffer.
  */
 void host_cmd_motion_sense_dump(int max_sensor_count,
-				struct ec_response_motion_sense *response);
+				struct ec_response_motion_sense *response,
+				size_t response_size);
 
 /**
  * @brief Call the host command MOTION_SENSE with the data sub-command
@@ -388,18 +390,22 @@ int host_cmd_motion_sense_calib(uint8_t sensor_num, bool enable,
  *
  * @param sensor_num The sensor index in the motion_sensors array to query
  * @param response Pointer to the response data structure to fill on success
+ * @param response_size Size of the response buffer.
  * @return The result code from the host command
  */
 int host_cmd_motion_sense_fifo_flush(uint8_t sensor_num,
-				     struct ec_response_motion_sense *response);
+				     struct ec_response_motion_sense *response,
+				     size_t response_size);
 
 /**
  * @brief Get the current fifo info
  *
  * @param response Pointer to the response data structure to fill on success
+ * @param response_size Size of the response buffer.
  * @return The result code from the host command
  */
-int host_cmd_motion_sense_fifo_info(struct ec_response_motion_sense *response);
+int host_cmd_motion_sense_fifo_info(struct ec_response_motion_sense *response,
+				    size_t response_size);
 
 /**
  * @brief Get the current fifo data
@@ -668,4 +674,10 @@ void test_set_chipset_to_g3_then_transition_to_s5(void);
 			  __LINE__)
 void check_console_cmd(const char *cmd, const char *expected_output,
 		       const int expected_rv, const char *file, const int line);
+
+/* The upstream struct ec_host_cmd_handler_args omits the result field, so skip
+ * checks of the result when using the upstream host commands.
+ */
+#define CHECK_ARGS_RESULT(args) \
+	COND_CODE_0(CONFIG_EC_HOST_CMD, (zassert_ok(args.result, NULL);), ())
 #endif /* ZEPHYR_TEST_DRIVERS_INCLUDE_UTILS_H_ */

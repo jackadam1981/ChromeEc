@@ -318,7 +318,7 @@ static void panic_init(void)
 DECLARE_HOOK(HOOK_INIT, panic_init, HOOK_PRIO_LAST);
 DECLARE_HOOK(HOOK_CHIPSET_RESET, panic_init, HOOK_PRIO_LAST);
 
-#ifdef CONFIG_CMD_STACKOVERFLOW
+#ifdef CONFIG_CMD_CRASH
 /*
  * Disable infinite recursion warning, since we're intentionally doing that
  * here.
@@ -329,7 +329,7 @@ DISABLE_GCC_WARNING("-Winfinite-recursion")
 #endif
 static void stack_overflow_recurse(int n)
 {
-	ccprintf("+%d", n);
+	panic_printf("+%d", n);
 
 	/*
 	 * Force task context switch, since that's where we do stack overflow
@@ -343,17 +343,15 @@ static void stack_overflow_recurse(int n)
 	 * Do work after the recursion, or else the compiler uses tail-chaining
 	 * and we don't actually consume additional stack.
 	 */
-	ccprintf("-%d", n);
+	panic_printf("-%d", n);
 }
 ENABLE_CLANG_WARNING("-Winfinite-recursion")
 #if __GNUC__ >= 12
 ENABLE_GCC_WARNING("-Winfinite-recursion")
 #endif
-#endif /* CONFIG_CMD_STACKOVERFLOW */
 
 /*****************************************************************************/
 /* Console commands */
-#ifdef CONFIG_CMD_CRASH
 static int command_crash(int argc, const char **argv)
 {
 	if (argc < 2)
@@ -371,14 +369,14 @@ static int command_crash(int argc, const char **argv)
 
 		cflush();
 		ccprintf("%08x", 1U / zero);
-#ifdef CONFIG_CMD_STACKOVERFLOW
 	} else if (!strcasecmp(argv[1], "stack")) {
 		stack_overflow_recurse(1);
-#endif
+#ifndef CONFIG_ALLOW_UNALIGNED_ACCESS
 	} else if (!strcasecmp(argv[1], "unaligned")) {
 		volatile intptr_t unaligned_ptr = 0xcdef;
 		cflush();
 		ccprintf("%08x", *(volatile int *)unaligned_ptr);
+#endif /* !CONFIG_ALLOW_UNALIGNED_ACCESS */
 	} else if (!strcasecmp(argv[1], "watchdog")) {
 		while (1) {
 /* Yield on native posix to avoid locking up the simulated sys clock */
@@ -398,6 +396,10 @@ static int command_crash(int argc, const char **argv)
 
 		/* Unreachable, but included for consistency */
 		irq_unlock(lock_key);
+	} else if (!strcasecmp(argv[1], "null")) {
+		volatile uintptr_t null_ptr = 0x0;
+		cflush();
+		ccprintf("%08x\n", *(volatile unsigned int *)null_ptr);
 	} else {
 		return EC_ERROR_PARAM1;
 	}
@@ -407,11 +409,8 @@ static int command_crash(int argc, const char **argv)
 }
 
 DECLARE_CONSOLE_COMMAND(crash, command_crash,
-			"[assert | divzero | udivzero"
-#ifdef CONFIG_CMD_STACKOVERFLOW
-			" | stack"
-#endif
-			" | unaligned | watchdog | hang]",
+			"[assert | divzero | udivzero | stack"
+			" | unaligned | watchdog | hang | null]",
 			"Crash the system (for testing)");
 
 #ifdef TEST_BUILD
@@ -425,6 +424,18 @@ int test_command_crash(int argc, const char **argv)
 static int command_panicinfo(int argc, const char **argv)
 {
 	struct panic_data *const pdata_ptr = panic_get_data();
+
+	if (argc == 2) {
+		if (!strcasecmp(argv[1], "clear")) {
+			memset(get_panic_data_write(), 0,
+			       CONFIG_PANIC_DATA_SIZE);
+			ccprintf("Panic info cleared\n");
+			return EC_SUCCESS;
+		} else {
+			return EC_ERROR_PARAM1;
+		}
+	} else if (argc != 1)
+		return EC_ERROR_PARAM_COUNT;
 
 	if (pdata_ptr) {
 		ccprintf("Saved panic data: 0x%02X %s\n", pdata_ptr->flags,
@@ -442,7 +453,7 @@ static int command_panicinfo(int argc, const char **argv)
 	}
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo, NULL,
+DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo, "[clear]",
 			"Print info from a previous panic");
 
 /*****************************************************************************/

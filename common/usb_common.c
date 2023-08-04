@@ -531,6 +531,16 @@ __overridable int pd_check_data_swap(int port, enum pd_data_role data_role)
 
 __overridable int pd_check_power_swap(int port)
 {
+#ifdef CONFIG_CHARGE_MANAGER
+	/*
+	 * If the Type-C port is our active charge port and we don't have a
+	 * battery, don't allow power role swap (to source).
+	 */
+	if (!IS_ENABLED(CONFIG_BATTERY) &&
+	    port == charge_manager_get_active_charge_port())
+		return 0;
+#endif
+
 	/*
 	 * Allow power swap if we are acting as a dual role device.  If we are
 	 * not acting as dual role (ex. suspended), then only allow power swap
@@ -735,19 +745,26 @@ int pd_set_frs_enable(int port, int enable)
 void tcpc_dump_registers(int port, const struct tcpc_reg_dump_map *reg,
 			 int count)
 {
-	int i, val;
+	for (int i = 0; i < count; i++, reg++) {
+		int val;
+		int rv;
 
-	for (i = 0; i < count; i++, reg++) {
 		switch (reg->size) {
 		case 1:
-			tcpc_read(port, reg->addr, &val);
-			ccprintf("  %-30s(0x%02x) =   0x%02x\n", reg->name,
-				 reg->addr, (uint8_t)val);
+			rv = tcpc_read(port, reg->addr, &val);
+			ccprintf("  %-30s(0x%02x) = ", reg->name, reg->addr);
+			if (rv)
+				ccprintf("ERR(%d)\n", rv);
+			else
+				ccprintf("  0x%02x\n", (uint8_t)val);
 			break;
 		case 2:
-			tcpc_read16(port, reg->addr, &val);
-			ccprintf("  %-30s(0x%02x) = 0x%04x\n", reg->name,
-				 reg->addr, (uint16_t)val);
+			rv = tcpc_read16(port, reg->addr, &val);
+			ccprintf("  %-30s(0x%02x) = ", reg->name, reg->addr);
+			if (rv)
+				ccprintf("ERR(%d)\n", rv);
+			else
+				ccprintf("0x%04x\n", (uint16_t)val);
 			break;
 		}
 		cflush();

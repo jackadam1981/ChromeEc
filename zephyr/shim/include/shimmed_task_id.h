@@ -26,6 +26,7 @@ typedef uint8_t task_id_t;
 enum {
 	EC_TASK_PRIO_LOWEST = 0,
 	EC_SYSWORKQ_PRIO = EC_TASK_PRIO_LOWEST,
+	EC_TASK_RWSIG_PRIO,
 	EC_TASK_TOUCHPAD_PRIO,
 	EC_TASK_CHG_RAMP_PRIO,
 	EC_TASK_USB_CHG_PRIO,
@@ -95,7 +96,7 @@ enum {
 		   (CROS_EC_TASK(USB_MUX, usb_mux_task, 0,                 \
 				 CONFIG_TASK_USB_MUX_STACK_SIZE,           \
 				 EC_TASK_USB_MUX_PRIO)))                   \
-	COND_CODE_1(CONFIG_TASK_HOSTCMD_THREAD_DEDICATED,                  \
+	COND_CODE_1(HAS_TASK_HOSTCMD_DEDICATED,                            \
 		    (CROS_EC_TASK(HOSTCMD, host_command_task, 0,           \
 				  CONFIG_TASK_HOSTCMD_STACK_SIZE,          \
 				  EC_TASK_HOSTCMD_PRIO)),                  \
@@ -164,6 +165,11 @@ enum {
 		    (CROS_EC_TASK(TOUCHPAD, touchpad_task, 0,              \
 				  CONFIG_TASK_TOUCHPAD_STACK_SIZE,         \
 				  EC_TASK_TOUCHPAD_PRIO)),                 \
+		    ())                                                    \
+	COND_CODE_1(HAS_TASK_RWSIG,                                        \
+		    (CROS_EC_TASK(RWSIG, rwsig_task, 0,                    \
+				  CONFIG_TASK_RWSIG_STACK_SIZE,            \
+				  EC_TASK_RWSIG_PRIO)),                    \
 		    ())
 #elif defined(CONFIG_HAS_TEST_TASKS)
 #include "shimmed_test_tasks.h"
@@ -241,6 +247,8 @@ enum {
 #define CROS_EC_EXTRA_TASKS(fn)                                         \
 	COND_CODE_1(CONFIG_TASK_HOSTCMD_THREAD_MAIN, (fn(HOSTCMD)),     \
 		(fn(MAIN)))                                             \
+	COND_CODE_1(CONFIG_TASK_HOSTCMD_THREAD_DEDICATED,               \
+		(IF_ENABLED(CONFIG_EC_HOST_CMD, (fn(HOSTCMD)))), ())    \
 	COND_CODE_1(CONFIG_SHELL_BACKEND_SERIAL, (fn(SHELL)),           \
 		(COND_CODE_1(CONFIG_SHELL_BACKEND_DUMMY, (fn(SHELL)),   \
 		())))							\
