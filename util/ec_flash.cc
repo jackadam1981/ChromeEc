@@ -236,3 +236,18 @@ int ec_flash_erase_async(int offset, int size)
 	}
 	return rv;
 }
+
+int ec_flash_check_feature(int feature)
+{
+	struct ec_response_get_features r = {0};
+
+	if (feature < 0 || feature >= (int)sizeof(r.flags) * 8)
+		return -1;
+
+	int rv = ec_command(EC_CMD_GET_FEATURES, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	/* r.flags[BIT(feature] & BIT(feature) */
+	return !!(r.flags[feature / 32] & (1 << (feature % 32)));
+}
