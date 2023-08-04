@@ -206,7 +206,17 @@ extern const struct accelgyro_drv bma4_accel_drv;
 
 #include "gpio_signal.h"
 void bma4xx_interrupt(enum gpio_signal signal);
-#endif /* DT_NODE_EXISTS */
+
+#if DT_NODE_EXISTS(DT_ALIAS(bma4xx_2nd_int))
+/*
+ * When both Lid and Base motion sensors are BMA4xx sensor, 2 interrupt
+ * function is needed.
+ */
+#define CONFIG_ACCEL_BMA4XX_2ND_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(SENSOR_ID(DT_ALIAS(bma4xx_2nd_int)))
+void bma4xx_2nd_interrupt(enum gpio_signal signal);
+#endif /* bma4xx_2nd_int DT_NODE_EXISTS */
+#endif /* bma4xx_int DT_NODE_EXISTS */
 #endif /* CONFIG_ZEPHYR */
 
 #endif /* __CROS_EC_ACCEL_BMA4XX_H */
