@@ -46,6 +46,30 @@
       },
       "revId": "534de92529b42bcbea31208358dbc5b775330690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ede221e_a5e0c0be",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-04T16:14:54Z",
+      "side": 1,
+      "message": "cec_init_timer will be called only once per reset and from an internal, caller, right? That\u0027s why I thought we could print an error message for a quick static config check.",
+      "parentUuid": "2771da7f_14830d21",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 17
+      },
+      "revId": "534de92529b42bcbea31208358dbc5b775330690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
