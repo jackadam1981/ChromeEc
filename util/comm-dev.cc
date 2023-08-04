@@ -59,71 +59,6 @@ static const char *strresult(int i)
 	return meanings[i];
 }
 
-/* Old ioctl format, used by Chrome OS 3.18 and older */
-
-static int ec_command_dev(int command, int version, const void *outdata,
-			  int outsize, void *indata, int insize)
-{
-	struct cros_ec_command s_cmd;
-	int r;
-
-	s_cmd.command = command;
-	s_cmd.version = version;
-	s_cmd.result = 0xff;
-	s_cmd.outsize = outsize;
-	s_cmd.outdata = (uint8_t *)outdata;
-	s_cmd.insize = insize;
-	s_cmd.indata = (uint8_t *)(indata);
-
-	r = ioctl(fd, CROS_EC_DEV_IOCXCMD, &s_cmd, sizeof(s_cmd));
-	if (r < 0) {
-		fprintf(stderr, "ioctl %d, errno %d (%s), EC result %d (%s)\n",
-			r, errno, strerror(errno), s_cmd.result,
-			strresult(s_cmd.result));
-		if (errno == EAGAIN && s_cmd.result == EC_RES_IN_PROGRESS) {
-			s_cmd.command = EC_CMD_RESEND_RESPONSE;
-			r = ioctl(fd, CROS_EC_DEV_IOCXCMD, &s_cmd, sizeof(s_cmd));
-			if (r < 0) {
-				fprintf(stderr,
-					"ioctl %d, errno %d (%s), EC result %d (%s)\n",
-					r, errno, strerror(errno), s_cmd.result,
-					strresult(s_cmd.result));
-			}
-		}
-	}
-	if (r >= 0 && s_cmd.result != EC_RES_SUCCESS) {
-		fprintf(stderr, "EC result %d (%s)\n", s_cmd.result,
-			strresult(s_cmd.result));
-		return -EECRESULT - s_cmd.result;
-	}
-
-	return r;
-}
-
-static int ec_readmem_dev(int offset, int bytes, void *dest)
-{
-	struct cros_ec_readmem s_mem;
-	struct ec_params_read_memmap r_mem;
-	int r;
-	static int fake_it;
-
-	if (!fake_it) {
-		s_mem.offset = offset;
-		s_mem.bytes = bytes;
-		s_mem.buffer = (char *)(dest);
-		r = ioctl(fd, CROS_EC_DEV_IOCRDMEM, &s_mem, sizeof(s_mem));
-		if (r < 0 && errno == ENOTTY)
-			fake_it = 1;
-		else
-			return r;
-	}
-
-	r_mem.offset = offset;
-	r_mem.size = bytes;
-	return ec_command_dev(EC_CMD_READ_MEMMAP, 0, &r_mem, sizeof(r_mem),
-			      dest, bytes);
-}
-
 /* New ioctl format, used by Chrome OS 4.4 and later as well as upstream 4.0+ */
 
 static int ec_command_dev_v2(int command, int version, const void *outdata,
@@ -272,13 +207,13 @@ int comm_init_dev(const char *device_name)
 		return 3;
 	}
 
-	if (ec_dev_is_v2()) {
-		ec_command_proto = ec_command_dev_v2;
-		ec_cmd_readmem = ec_readmem_dev_v2;
-	} else {
-		ec_command_proto = ec_command_dev;
-		ec_cmd_readmem = ec_readmem_dev;
+	if (!ec_dev_is_v2()) {
+		fprintf(stderr, "%s: Chrome OS 3.18 and older unsupported!\n, __func__);
+		close(fd);
+		return 4;
 	}
+	ec_command_proto = ec_command_dev_v2;
+	ec_cmd_readmem = ec_readmem_dev_v2;
 
 	if (ec_cmd_readmem(EC_MEMMAP_ID, 2, version) == 2 &&
 	    version[0] == 'E' && version[1] == 'C')
