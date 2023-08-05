@@ -21,7 +21,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 /* Store current data of the DATA STATUS register */
-static union data_status_reg data_status[CONFIG_USB_PD_PORT_MAX_COUNT];
+//static union data_status_reg data_status[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static void process_altmode_pd_data(int port)
 {
@@ -49,7 +49,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, disable_pd_irq, HOOK_PRIO_DEFAULT);
 
 void pd_altmode_interrupt(enum gpio_signal signal)
 {
-	// task_wake(TASK_ID_PD_TASK_INTEL_ALTMODE);
+	task_wake(TASK_ID_PD_TASK_INTEL_ALTMODE);
 }
 
 void pd_task_intel_altmode(void *u)
