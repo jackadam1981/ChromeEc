@@ -1605,6 +1605,12 @@ void tc_state_init(int port)
 		first_state = TC_UNATTACHED_SNK;
 	}
 
+	if (system_get_reset_flags() &
+	    (EC_RESET_FLAG_AP_OFF | EC_RESET_FLAG_STAY_IN_RO)){
+		CPRINTS("Start TC state machine from TC_ATTACHED_SNK");
+		first_state = TC_ATTACHED_SNK;
+	}
+
 	/*
 	 * If this is non-EFS2 device, battery is not present or at some minimum
 	 * voltage and EC RO doesn't keep power-on reset flag after reset caused
