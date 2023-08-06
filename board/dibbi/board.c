@@ -238,6 +238,11 @@ enum bj_adapter {
 	BJ_NONE,
 	BJ_65W_19V,
 };
+/* List of USBC adapters */
+enum usbc_adapter {
+	USBC_NONE,
+	USBC_45W_15V,
+};
 
 /* Barrel-jack power adapter ratings. */
 static const struct charge_port_info bj_adapters[] = {
@@ -246,6 +251,13 @@ static const struct charge_port_info bj_adapters[] = {
 };
 #define BJ_ADP_RATING_DEFAULT BJ_65W_19V /* BJ power ratings default */
 #define ADP_DEBOUNCE_MS 1000 /* Debounce time for BJ plug/unplug */
+
+/* USB-C power adapter ratings. */
+static const struct charge_port_info usbc_adapters[] = {
+	[USBC_NONE] = { .current = 0, .voltage = 0 },
+	[USBC_45W_15V] = { .current = 3000, .voltage = 15000 },
+};
+#define USBC_ADP_RATING_DEFAULT USBC_45W_15V /* BJ power ratings default */
 
 /* Debounced connection state of the barrel jack */
 static int8_t bj_adp_connected = -1;
@@ -381,6 +393,21 @@ void ppc_interrupt(enum gpio_signal signal)
 	if (signal == GPIO_USB_C0_FAULT_L)
 		syv682x_interrupt(USBC_PORT_C0);
 }
+
+static int command_usbc_45w_adp(int argc, const char *argv[])
+{
+	const struct charge_port_info *pi;
+	pi = &usbc_adapters[USBC_ADP_RATING_DEFAULT];
+
+	/* This will result in a call to board_set_active_charge_port */
+	charge_manager_update_charge(CHARGE_SUPPLIER_PD,
+				     CHARGE_PORT_TYPEC0, pi);
+	CPRINTUSB("USB-C 45W power source");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(usbc_45w_adp, command_usbc_45w_adp, "",
+			"enable USBC 45W charging port");
 
 /* I2C Ports */
 const struct i2c_port_t i2c_ports[] = {
