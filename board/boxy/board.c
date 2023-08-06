@@ -111,6 +111,19 @@ BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
 
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+/* List of USBC adapters */
+enum usbc_adapter {
+	USBC_NONE,
+	USBC_45W_15V,
+};
+
+/* USB-C power adapter ratings. */
+static const struct charge_port_info usbc_adapters[] = {
+	[USBC_NONE] = { .current = 0, .voltage = 0 },
+	[USBC_45W_15V] = { .current = 3000, .voltage = 15000 },
+};
+#define USBC_ADP_RATING_DEFAULT USBC_45W_15V /* BJ power ratings default */
+
 /* USB Muxes */
 const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
@@ -347,6 +360,24 @@ void ppc_interrupt(enum gpio_signal signal)
 	if (signal == GPIO_USB_C1_FAULT_L)
 		syv682x_interrupt(USBC_PORT_C1);
 }
+
+static int command_usbc_45w_adp(int argc, const char *argv[])
+{
+	const struct charge_port_info *pi;
+	int port;
+
+	pi = &usbc_adapters[USBC_ADP_RATING_DEFAULT];
+	port = pd_snk_is_vbus_provided(CHARGE_PORT_TYPEC0) ?
+		       CHARGE_PORT_TYPEC0 :
+		       CHARGE_PORT_TYPEC1;
+	/* This will result in a call to board_set_active_charge_port */
+	charge_manager_update_charge(CHARGE_SUPPLIER_PD, port, pi);
+	CPRINTUSB("USB-C 45W power source");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(usbc_45w_adp, command_usbc_45w_adp, "",
+			"enable USBC 45W charging port");
 
 /* I2C Ports */
 const struct i2c_port_t i2c_ports[] = {
