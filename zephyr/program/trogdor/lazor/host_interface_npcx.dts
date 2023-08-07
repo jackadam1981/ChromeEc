@@ -4,6 +4,13 @@
  */
 
 /* host interface */
+
+/ {
+	chosen {
+		zephyr,host-cmd-shi-backend = &shi0;
+	};
+};
+
 &shi0 {
 	status = "okay";
 	pinctrl-0 = <&shi_gp46_47_53_55>;
