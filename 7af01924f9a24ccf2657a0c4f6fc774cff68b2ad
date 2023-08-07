@@ -46,6 +46,30 @@
       },
       "revId": "7af01924f9a24ccf2657a0c4f6fc774cff68b2ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "accd7727_68536df7",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 22
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-08-07T20:41:20Z",
+      "side": 1,
+      "message": "Unfortunately I\u0027m not aware of a way to get Twister to do a matrix of tests where it can repeat tests under different conditions. Is it necessary to repeat every driver test with this change, though?",
+      "parentUuid": "45a18b64_2fc54d14",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "7af01924f9a24ccf2657a0c4f6fc774cff68b2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
