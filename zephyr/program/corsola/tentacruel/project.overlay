@@ -32,6 +32,10 @@
 		bma4xx-int = &lid_accel;
 	};
 
+	chosen {
+		zephyr,host-cmd-shi-backend = &shi0;
+	};
+
 	named-gpios {
 		/delete-node/ usb_c0_ppc_bc12_int_odl;
 
