@@ -46,6 +46,30 @@
       },
       "revId": "fd87a2df7a956df89c2236add8c3e5f7069d8821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f60f8d05_7f8720e2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 11555,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-07T17:04:48Z",
+      "side": 1,
+      "message": "Hmm... I think we should just remove *cmd from cmd_cec_help... It\u0027s not used by multiple commands (as aliases). That is, cmd always points to \u0027cec\u0027. I see this type of help functions which similarly take a redundant \u0027cmd\u0027 parameter.",
+      "parentUuid": "d479c83c_68e34a93",
+      "range": {
+        "startLine": 11555,
+        "startChar": 29,
+        "endLine": 11555,
+        "endChar": 39
+      },
+      "revId": "fd87a2df7a956df89c2236add8c3e5f7069d8821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
