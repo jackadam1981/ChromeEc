@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dea6f2bf_429e2c9f",
+        "filename": "common/cec.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-07T16:57:39Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t think that works because CEC_PORT_COUNT is not a preprocessor constant:\n\nRight. My bad.\n\nWe should probably return -1 at line 413, then?",
+      "parentUuid": "c9b05edc_a3c50201",
+      "range": {
+        "startLine": 403,
+        "startChar": 11,
+        "endLine": 403,
+        "endChar": 27
+      },
+      "revId": "1c3babe65663e293d1996750168e2f44f980a46e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c0b8af9_fb26f6fe",
         "filename": "common/cec.c",
         "patchSetId": 12

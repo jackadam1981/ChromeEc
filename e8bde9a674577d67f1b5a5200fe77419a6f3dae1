@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "875f1242_56338246",
+        "filename": "common/cec.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-07T16:57:39Z",
+      "side": 1,
+      "message": "Not your code but this looks dangerous. It\u0027s interpreted as a data size by mkbp_get_next_event.",
+      "range": {
+        "startLine": 418,
+        "startChar": 9,
+        "endLine": 418,
+        "endChar": 27
+      },
+      "revId": "e8bde9a674577d67f1b5a5200fe77419a6f3dae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
