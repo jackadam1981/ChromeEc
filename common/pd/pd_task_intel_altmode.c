@@ -75,10 +75,14 @@ static void process_altmode_pd_data(int port)
 	pd_write(port, &control);
 
 	/* Nothing to do if the data in the status register has not changed */
-	if (pd_read(port, &status) ||
-	    memcmp(&status.raw_value[0], &data_status[port].raw_value[0],
-		   sizeof(union data_status_reg)))
+	if (pd_read(port, &status)) {
 		return;
+	}
+
+	if (!memcmp(&status.raw_value[0], &data_status[port].raw_value[0],
+		    sizeof(union data_status_reg))) {
+		return;
+	}
 
 	/* Store previous HPD tatus */
 	prv_hpd_lvl = data_status[port].hpd_lvl;
@@ -154,4 +158,151 @@ void pd_task_intel_altmode(void *u)
 				process_altmode_pd_data(i);
 		}
 	}
+}
+
+static int console_command_intel_altmode(int argc, const char **argv)
+{
+	int port, rv, i;
+	char rw, *e;
+	uint16_t val1;
+	uint32_t val2 = 0;
+	union data_status_reg data;
+	union data_control_reg control;
+
+	/* Get PD port number */
+	port = strtoi(argv[1], &e, 0);
+	if (*e || port > board_get_usb_pd_port_count())
+		return EC_ERROR_PARAM1;
+
+	/* Validate r/w selection */
+	rw = argv[2][0];
+	if (rw != 'w' && rw != 'r')
+		return EC_ERROR_PARAM2;
+
+	if (rw == 'r') {
+		rv = pd_read(port, &data);
+		ccprintf("RAW_VAL[LB->HB]: ");
+		for (i = 0; i < DATA_STATUS_REG_LEN; i++)
+			ccprintf("[%d<-%d]0x%x ", 7 + 8 * i, 8 * i,
+				 data.raw_value[i]);
+		ccprintf("\n");
+	} else {
+		val1 = strtoull(argv[3], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM3;
+
+		if (argc > 4) {
+			val2 = strtoull(argv[4], &e, 0);
+			if (*e)
+				return EC_ERROR_PARAM4;
+		}
+
+		memcpy(&control.raw_value[0], &val1, 2);
+		memcpy(&control.raw_value[2], &val2, 4);
+
+		rv = pd_write(port, &control);
+		ccprintf("RAW_VAL[LB->HB]: ");
+		for (i = 0; i < DATA_CONTROL_REG_LEN; i++)
+			ccprintf("[%d<-%d]0x%x ", 7 + 8 * i, 8 * i,
+				 control.raw_value[i]);
+		ccprintf("\n");
+	}
+
+	return rv;
+}
+DECLARE_CONSOLE_COMMAND(pd, console_command_intel_altmode,
+			"<port> r\n"
+			"<port> w <val1> | <val2>",
+			"Read or write to PD reg");
+
+/****************************************************************************/
+enum tcpc_cc_polarity pd_get_polarity(int port)
+{
+	return data_status[port].conn_ori;
+}
+
+enum pd_data_role pd_get_data_role(int port)
+{
+	return !data_status[port].data_role;
+}
+
+int pd_is_connected(int port)
+{
+	return data_status[port].data_conn;
+}
+
+__override uint8_t get_dp_pin_mode(int port)
+{
+	return data_status[port].dp_pin << 2;
+}
+
+enum tbt_compat_cable_speed get_tbt_cable_speed(int port)
+{
+	return data_status[port].cable_speed;
+}
+
+/* TODO start: Get from PD spec */
+void pd_request_data_swap(int port)
+{
+}
+
+enum pd_power_role pd_get_power_role(int port)
+{
+	return !data_status[port].dp_src_snk;
+}
+
+uint8_t pd_get_task_state(int port)
+{
+	return 0;
+}
+
+int pd_comm_is_enabled(int port)
+{
+	return 1;
+}
+
+bool pd_get_vconn_state(int port)
+{
+	return true;
+}
+
+bool pd_get_partner_dual_role_power(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_data_swap_capable(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_usb_comm_capable(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_unconstr_power(int port)
+{
+	return false;
+}
+
+const char *pd_get_task_state_name(int port)
+{
+	return "";
+}
+
+enum pd_cc_states pd_get_task_cc_state(int port)
+{
+	return PD_CC_UFP_ATTACHED;
+}
+
+enum tbt_compat_rounded_support get_tbt_rounded_support(int port)
+{
+	return TBT_GEN3_NON_ROUNDED;
+}
+/* TODO end */
+
+bool pd_capable(int port)
+{
+	return true;
 }

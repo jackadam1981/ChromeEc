@@ -13,6 +13,7 @@
 #define __CROS_EC_PD_TASK_INTEL_ALTMODE_H
 
 #include "i2c.h"
+#include "usb_mux.h"
 
 /*
  * References:

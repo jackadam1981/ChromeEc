@@ -221,6 +221,10 @@ common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 common-$(CONFIG_SYSTEM_SAFE_MODE)+=system_safe_mode.o
 
+ifneq ($(HAS_TASK_PD_TASK_INTEL_ALTMODE),)
+common-$(CONFIG_USB_PD_HOST_CMD)+=usb_pd_host_cmd.o
+endif
+
 ifneq ($(HAVE_PRIVATE_AUDIO_CODEC_WOV_LIBS),y)
 common-$(CONFIG_AUDIO_CODEC_WOV)+=hotword_dsp_api.o
 endif
@@ -333,6 +337,7 @@ $(out)/rma_key_from_blob.h: board/$(BOARD)/$(BLOB_FILE) util/bin2h.sh
 endif
 
 include $(_common_dir)fpsensor/build.mk
+include $(_common_dir)pd/build.mk
 include $(_common_dir)usbc/build.mk
 include $(_common_dir)spi/build.mk
 
