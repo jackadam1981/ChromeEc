@@ -70,6 +70,30 @@
       },
       "revId": "534de92529b42bcbea31208358dbc5b775330690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ce9657_d0e5affc",
+        "filename": "chip/npcx/cec_bitbang.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-07T12:10:50Z",
+      "side": 1,
+      "message": "Yes, it should only be called from the init hook. That makes sense, done.",
+      "parentUuid": "1ede221e_a5e0c0be",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 17
+      },
+      "revId": "534de92529b42bcbea31208358dbc5b775330690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
