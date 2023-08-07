@@ -13,6 +13,7 @@
 #define __CROS_EC_PD_TASK_INTEL_ALTMODE_H
 
 #include "i2c.h"
+#include "usb_mux.h"
 
 /*
  * References:
@@ -220,5 +221,10 @@ extern const struct pd_config_t pd_config[];
  * @param signal Signal that generates the interrupt
  */
 void pd_altmode_interrupt(enum gpio_signal signal);
+
+void dummy_hpd_update(const struct usb_mux *me, mux_state_t hpd_state,
+		      bool *ack_required);
+
+extern const struct usb_mux_driver dummy_mtl_pd;
 
 #endif /* __CROS_EC_PD_TASK_INTEL_ALTMODE_H */
