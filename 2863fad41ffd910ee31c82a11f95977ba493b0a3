@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c660b1e_93d60158",
+        "filename": "chip/it83xx/cec_bitbang.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-07T12:14:33Z",
+      "side": 1,
+      "message": "Marking resolved, please reopen if I\u0027m missing something.",
+      "parentUuid": "8e7e105f_a3621bd9",
+      "range": {
+        "startLine": 55,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "2863fad41ffd910ee31c82a11f95977ba493b0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2840b21a_e47e477b",
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "cec_gpio_interrupt looks generic. It works for any cec driver which needs to translate a gpio pin to a cec port index, doesn\u0027t it?\n\n\u003e So to confirm, the only code change you\u0027re suggesting is return 0 from port_from_timer/port_from_gpio_in and remove the checks?\n\nReturn 0 from port_from_timer and port_from_gpio_in.\n\n\u003e I didn\u0027t understand this part:\n\u003e\u003e cec_init_timer can disable an interrupt if port \u003e\u003d CEC_PORT_COUNT.\n\nIf a port index passed to cec_init_timer, can we disable its interrupt to gracefully disable the port?",
       "parentUuid": "a9d5809f_8c324da7",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "2863fad41ffd910ee31c82a11f95977ba493b0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "252d85dd_52bedb4b",
+        "filename": "chip/it83xx/cec_bitbang.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-07T12:14:33Z",
+      "side": 1,
+      "message": "\u003e cec_gpio_interrupt looks generic. It works for any cec driver which needs to translate a gpio pin to a cec port index, doesn\u0027t it?\n\nport_from_gpio_in() is not generic because it gets the gpio from bitbang_cec_config. cec_update_interrupt_time() and cec_event_cap() are also specific to the bitbang driver. If we move it to common it won\u0027t even build because it\u0027s missing these functions/structs. Am I missing something?\n\n\u003e Return 0 from port_from_timer and port_from_gpio_in.\n\nDone.\n\n\u003e If a port index passed to cec_init_timer, can we disable its interrupt to gracefully disable the port?\n\nSorry I still don\u0027t understand, could you share a code snippet? If port is invalid, then cec_config[port].drv_config.timer is an out-of-bounds access. So how would we get the timer to disable?\n\nAlso just to be clear, the port in cec_init_timer() comes from the for loop in https://crrev.com/c/4659322. So the only way for it to be invalid is a bug in that common code (not e.g. incorrect configuration in board code).",
+      "parentUuid": "9c477f1b_f0abaf98",
       "range": {
         "startLine": 139,
         "startChar": 0,
