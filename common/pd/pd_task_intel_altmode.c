@@ -34,14 +34,19 @@ static int pd_read(int port, union data_status_reg *data)
 	 * Read sequence
 	 * DEV_ADDR - REG_ID - DEV_ADDR - READ_LEN - DATA0 .. DATAn
 	 */
+	ccprintf("i2c=%d add=0x%x, rg=0x%x\n", pd_config[port].i2c_info.port,
+		 pd_config[port].i2c_info.addr_flags, reg);
 	rv = i2c_xfer(pd_config[port].i2c_info.port,
 		      pd_config[port].i2c_info.addr_flags, &reg, 1, buf,
 		      DATA_STATUS_REG_LEN + 1);
+	ccprintf("p%d @%d rv=%d******\n", port, __LINE__, rv);
 	if (rv)
 		return rv;
+	ccprintf("p%d @%d ******\n", port, __LINE__);
 	if (buf[0] != DATA_STATUS_REG_LEN)
 		return EC_ERROR_UNKNOWN;
 
+	ccprintf("p%d @%d ******\n", port, __LINE__);
 	memcpy(data, &buf[1], DATA_STATUS_REG_LEN);
 	return EC_SUCCESS;
 }
@@ -74,12 +79,20 @@ static void process_altmode_pd_data(int port)
 	control.i2c_int_ack = 1;
 	pd_write(port, &control);
 
+	ccprintf("p%d @%d ******\n", port, __LINE__);
 	/* Nothing to do if the data in the status register has not changed */
-	if (pd_read(port, &status) ||
-	    memcmp(&status.raw_value[0], &data_status[port].raw_value[0],
-		   sizeof(union data_status_reg)))
+	if (pd_read(port, &status)) {
+		ccprintf("p%d @%d ******\n", port, __LINE__);
 		return;
+	}
 
+	if (!memcmp(&status.raw_value[0], &data_status[port].raw_value[0],
+		    sizeof(union data_status_reg))) {
+		ccprintf("p%d @%d ******\n", port, __LINE__);
+		return;
+	}
+
+	ccprintf("p%d @%d ******\n", port, __LINE__);
 	/* Store previous HPD tatus */
 	prv_hpd_lvl = data_status[port].hpd_lvl;
 
@@ -147,11 +160,58 @@ void pd_task_intel_altmode(void *u)
 
 	while (1) {
 		task_wait_event(-1);
-
-		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		ccprintf("wake event ******\n");
+		for (i = 2; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 			/* Process data of interrupted port */
 			if (!gpio_get_level(pd_config[i].alert_signal))
 				process_altmode_pd_data(i);
 		}
 	}
 }
+
+/****************************************************************************/
+enum tcpc_cc_polarity pd_get_polarity(int port)
+{
+	return POLARITY_CC1;
+}
+
+static int dummy_init(const struct usb_mux *me)
+{
+	return EC_SUCCESS;
+}
+
+static int dummy_set_state(const struct usb_mux *me, mux_state_t mux_state,
+			   bool *ack_required)
+{
+	*ack_required = false;
+	return EC_SUCCESS;
+}
+
+static int dummy_idle_mode(const struct usb_mux *me, bool idle)
+{
+	return EC_SUCCESS;
+}
+
+static int dummy_low_power_mode(const struct usb_mux *me)
+{
+	return EC_SUCCESS;
+}
+
+static bool dummy_fw_update_capable(void)
+{
+	return false;
+}
+
+void dummy_hpd_update(const struct usb_mux *me, mux_state_t hpd_state,
+		      bool *ack_required)
+{
+	*ack_required = false;
+}
+
+const struct usb_mux_driver dummy_mtl_pd = {
+	.init = dummy_init,
+	.set = dummy_set_state,
+	.set_idle_mode = dummy_idle_mode,
+	.enter_low_power_mode = dummy_low_power_mode,
+	.is_retimer_fw_update_capable = dummy_fw_update_capable,
+};
