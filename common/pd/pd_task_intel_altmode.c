@@ -155,3 +155,50 @@ void pd_task_intel_altmode(void *u)
 		}
 	}
 }
+
+/****************************************************************************/
+enum tcpc_cc_polarity pd_get_polarity(int port)
+{
+	return POLARITY_CC1;
+}
+
+static int dummy_init(const struct usb_mux *me)
+{
+	return EC_SUCCESS;
+}
+
+static int dummy_set_state(const struct usb_mux *me, mux_state_t mux_state,
+			   bool *ack_required)
+{
+	*ack_required = false;
+	return EC_SUCCESS;
+}
+
+static int dummy_idle_mode(const struct usb_mux *me, bool idle)
+{
+	return EC_SUCCESS;
+}
+
+static int dummy_low_power_mode(const struct usb_mux *me)
+{
+	return EC_SUCCESS;
+}
+
+static bool dummy_fw_update_capable(void)
+{
+	return false;
+}
+
+void dummy_hpd_update(const struct usb_mux *me, mux_state_t hpd_state,
+		      bool *ack_required)
+{
+	*ack_required = false;
+}
+
+const struct usb_mux_driver dummy_mtl_pd = {
+	.init = dummy_init,
+	.set = dummy_set_state,
+	.set_idle_mode = dummy_idle_mode,
+	.enter_low_power_mode = dummy_low_power_mode,
+	.is_retimer_fw_update_capable = dummy_fw_update_capable,
+};

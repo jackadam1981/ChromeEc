@@ -333,6 +333,7 @@ $(out)/rma_key_from_blob.h: board/$(BOARD)/$(BLOB_FILE) util/bin2h.sh
 endif
 
 include $(_common_dir)fpsensor/build.mk
+include $(_common_dir)pd/build.mk
 include $(_common_dir)usbc/build.mk
 include $(_common_dir)spi/build.mk
 
