@@ -68,6 +68,7 @@ static void process_altmode_pd_data(int port)
 	union data_status_reg status;
 	union data_control_reg control = { 0 };
 	mux_state_t mux = USB_PD_MUX_NONE;
+	mux_state_t prv_hpd_lvl;
 
 	/* Clear the interrupt */
 	control.i2c_int_ack = 1;
@@ -78,6 +79,9 @@ static void process_altmode_pd_data(int port)
 	    memcmp(&status.raw_value[0], &data_status[port].raw_value[0],
 		   sizeof(union data_status_reg)))
 		return;
+
+	/* Store previous HPD tatus */
+	prv_hpd_lvl = data_status[port].hpd_lvl;
 
 	/* Update the new data */
 	memcpy(&data_status[port], &status, sizeof(union data_status_reg));
@@ -92,10 +96,24 @@ static void process_altmode_pd_data(int port)
 	if (status.usb2 || status.usb3_2)
 		mux |= USB_PD_MUX_USB_ENABLED;
 
+	/* DP status */
+	if (status.dp)
+		mux |= USB_PD_MUX_DP_ENABLED;
+
+	if (status.hpd_lvl)
+		mux |= USB_PD_MUX_HPD_LVL;
+
+	if (status.dp_irq)
+		mux |= USB_PD_MUX_HPD_IRQ;
+
 	usb_mux_set(port, mux,
 		    mux == USB_PD_MUX_NONE ? USB_SWITCH_DISCONNECT :
 					     USB_SWITCH_CONNECT,
 		    polarity_rm_dts(status.conn_ori));
+
+	/* Update the change in HPD level */
+	if (prv_hpd_lvl != status.hpd_lvl)
+		usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL);
 }
 
 /* Enable interrupt when AP is on */
