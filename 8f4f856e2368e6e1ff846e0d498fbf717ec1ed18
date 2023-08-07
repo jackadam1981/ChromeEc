@@ -39,6 +39,30 @@
       },
       "revId": "8f4f856e2368e6e1ff846e0d498fbf717ec1ed18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10eacc0_e350e42f",
+        "filename": "zephyr/program/corsola/voltorb/src/usbc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-08-07T08:16:38Z",
+      "side": 1,
+      "message": "As you said, the issue hub didn\u0027t redo the VDM negotiation process. I put the detail information to issue tracker. Increasing deferred time can avoid that case, but I\u0027m not sure whether it is a good way.",
+      "parentUuid": "19e994c5_e17580a6",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 59
+      },
+      "revId": "8f4f856e2368e6e1ff846e0d498fbf717ec1ed18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
