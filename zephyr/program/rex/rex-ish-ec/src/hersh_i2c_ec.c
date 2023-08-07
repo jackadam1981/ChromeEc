@@ -43,6 +43,9 @@ Relevant Files
 
 * Other
 	/home/hershjos/Repos/chromiumos/src/platform/ec/zephyr/program/rex/rex-ish/i2c.dtsi
+* Files I've added:
+	/home/hershjos/Repos/chromiumos/src/platform/ec/zephyr/dts/bindings/i2c_device/intel,mtl-ish.yaml
+	
 
 Interrupt Logic
 ---------------
@@ -70,11 +73,29 @@ Resources
 
 TODO
 ----
-*	I only need to edit stuff in ec/zephyr/program/rex/ and ec/zephyr/program/rex/rex/,
-	maybe ec/zephyr/program/rex/rex-ish as well but ask Brandon about that
-1. Figure out how to setup devicetree files to add an i2c setup/device
-I added this: 
-/home/hershjos/Repos/chromiumos/src/platform/ec/zephyr/dts/bindings/i2c_device/intel,mtl-ish.yaml
+* add a callback function to a function in chromiumos/src/third_party/zephyr/drivers/i2c_npcx_controller.h
+	* one of the structs passed to some function can have a function tied to it that is called when it detects an i2c_read or i2c_write being made to the EC
+	* definition of struct i2c_target_config chromiumos/src/third_party/zephyr/main/include/zephyr/drivers/i2c.h: 443
+		struct i2c_target_config { 
+ 			sys_snode_t node; 
+ 			uint8_t flags; 
+ 			uint16_t address; 
+ 			// Callback functions 
+			const struct i2c_target_callbacks *callbacks; 
+		};
+	* callback definition from line 420
+		struct i2c_target_callbacks {
+			i2c_target_write_requested_cb_t write_requested;
+			i2c_target_read_requested_cb_t read_requested;
+			i2c_target_write_received_cb_t write_received;
+			i2c_target_read_processed_cb_t read_processed;
+		#ifdef CONFIG_I2C_TARGET_BUFFER_MODE
+			i2c_target_buf_write_received_cb_t buf_write_received;
+			i2c_target_buf_read_requested_cb_t buf_read_requested;
+		#endif
+			i2c_target_stop_cb_t stop;
+		};
+i	* chromiumos/src/third_party/zephyr/main/drivers/i2c/target/eeprom_target.c has examples of using this
 */
 
 #include "common.h"
@@ -90,19 +111,25 @@ I added this:
 
 #define CPRINTF(format, args...) cprintf(CC_HERSH_I2C_EC, format, ##args)
 
-
 #define EC_CONTROL_REG  0x52
 
+static const struct device *const gpio_interrupt_pin = DEVICE_DT_GET(SOC_ISH_ACCEL_INT_L or SOC_ISH_ACCEL_INT_L);
 
+
+/**
+ * See if I can use this https://docs.zephyrproject.org/latest/doxygen/html/group__gpio__interface.html#details
+ */
 void trigger_interrupt(void)
 {
-	// if the tablet or lid mode status registers are set
+ 	// bottom 2 bits correspond to if tablet or lid state is enabled
 	if(REG16(EC_CONTROL_REG) & 0b11) {
+
 		// trigger interrupt
+// // 		// gpio_set_level();
 	}
 }
-DECLARE_HOOK(HOOK_LID_CHANGE, read_tablet_lid_state, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, read_tablet_lid_state, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_LID_CHANGE, trigger_interrupt, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, trigger_interrupt, HOOK_PRIO_DEFAULT);
 
 
 /*
@@ -111,7 +138,8 @@ Test/debugging/learning coe
 void read_tablet_lid_state(void)
 {
 	int lid_state = lid_is_open();
-	int tablet_state = tablet_get_mode();
+	// int tablet_state = tablet_get_mode();
+	int tablet_state = 0;
 	CPRINTF("\nL%d T%d\n", lid_state, tablet_state);
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, read_tablet_lid_state, HOOK_PRIO_DEFAULT);

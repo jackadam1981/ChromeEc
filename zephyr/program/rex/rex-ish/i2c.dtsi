@@ -25,6 +25,7 @@
 		compatible = "nuvoton,npcx99";
 		reg = <0x86>;
 		label = "nuvoton_npcx99_ec";
+		// label = "i2c-device";
 		// do I need to indicate a pin
 		// port = <& idk >;
 		// pinctrl-0 = <& idk >;

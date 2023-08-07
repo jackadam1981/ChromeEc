@@ -10,8 +10,9 @@ zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/board_power.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BATTERY "src/battery_present.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usbc_config.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usb_pd_policy.c")
-zephyr_library_sources("rex-ish/src/hersh_i2c_ish.c")
-zephyr_library_sources("rex-ish-ec/src/hersh_i2c_ec.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/eeprom_target.c")
+#zephyr_library_sources("rex-ish/src/hersh_i2c_ish.c")
+#zephyr_library_sources("rex-ish-ec/src/hersh_i2c_ec.c")
 
 
 if(DEFINED CONFIG_BOARD_REX)

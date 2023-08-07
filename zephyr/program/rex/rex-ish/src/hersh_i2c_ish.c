@@ -13,58 +13,55 @@
 
 #define CPRINTF(format, args...) cprintf(CC_HERSH_I2C_ISH, format, ##args)
 
+#define REG_LEN_BYTES 2
 #define EC_CONTROL_REG  0x52
-uint16_t ec_control_reg_val;
-
+uint8_t ec_control_reg_val[REG_LEN_BYTES]; // register is 2 bytes long
 
 #define I2C_DEV_NODE	DT_ALIAS(i2c_0)
 static uint32_t i2c_cfg = I2C_SPEED_SET(I2C_SPEED_STANDARD) | I2C_MODE_CONTROLLER;
 // static const struct device *const i2c_ec;
-struct device *i2c_ec;
+const struct device *const i2c_ec = DEVICE_DT_GET(I2C_DEV_NODE);
 
 
-/**
- * @return 0 - success, 1 - failure
- */
-int ec_init(void)
+void ec_init(void)
 {
-	i2c_ec = DEVICE_DT_GET(I2C_DEV_NODE);
 	uint32_t i2c_cfg_tmp;
 	
     if (!device_is_ready(i2c_ec)) {
 		CPRINTF("I2C device is not ready\n");
-		return 1;
+		return;
 	}
 
 	/* 1. Verify i2c_configure() */
 	if (i2c_configure(i2c_ec, i2c_cfg)) {
 		CPRINTF("I2C config failed\n");
-		return 1;
+		return;
 	}
 
 	/* 2. Verify i2c_get_config() */
 	if (i2c_get_config(i2c_ec, &i2c_cfg_tmp)) {
 		CPRINTF("I2C get_config failed\n");
-		return 1;
+		return;
 	}
 	if (i2c_cfg != i2c_cfg_tmp) {
 		CPRINTF("I2C get_config returned invalid config\n");
-		return 1;
+		return;
 	}
 
     // initialized ec control register to 0
-    ec_control_reg_val = 0x0000;    
-	if(i2c_write(i2c_ec, &ec_control_reg_val, sizeof(ec_control_reg_val), EC_CONTROL_REG)) {
+    ec_control_reg_val[0] = 0x00;
+	ec_control_reg_val[1] = 0x00;
+	if(i2c_write(i2c_ec, ec_control_reg_val, REG_LEN_BYTES, EC_CONTROL_REG)) {
         CPRINTF("Failed to set control register to 0 via I2C");
-        return 1;
+        return;
     }
-    return 0;
+    return;
 }
 DECLARE_HOOK(HOOK_INIT, ec_init, HOOK_PRIO_DEFAULT);
 
 
 void ec_enable_lid_interrupt(void)
 {
-    ec_control_reg_val |= 0b01;
-    i2c_write(i2c_ec, &ec_control_reg_val, sizeof(ec_control_reg_val), EC_CONTROL_REG);
+    ec_control_reg_val[0] |= 0b01;
+    i2c_write(i2c_ec, ec_control_reg_val, REG_LEN_BYTES, EC_CONTROL_REG);
 }
