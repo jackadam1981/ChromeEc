@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d10b7bd9_87cea0e9",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-07T19:26:44Z",
+      "side": 1,
+      "message": "\u003e\u003e Do we actually need to call it each time we generate random numbers?\n\u003e No. If TRNG initialization takes a long time, you can enable it once and keep it enabled. On STM32 we disable TRNG to save power.\n\nThanks for the feedback Patryk. That was my understanding based on the comments but I wanted to be sure. \n\n\u003e The NCL_DRBG-\u003einit function should be run only one time per boot. This function uses the HW to generate the initial 128 byte random seed and indeed it can take about ~250ms (around ~2ms per byte).\n\nThanks, I\u0027ll update the logic to reflect this.\n\n\u003e Note that you are calling NCL_DRBG-\u003econfig(ctx_p, 100, false) this configure the NCL to generate a new 128 byte random seed every 100 calls to NCL_DRBG-\u003egenerate()\n\u003e \n\u003e NCL_DRBG-\u003egenerate() can decide to generate the a new 128 byte random seed in two cases: 1. Due to the configuration (as explained above) or 2. If it was never created (since NCL_DRBG-\u003einit was not called)\n\nPer my [comment in crrev.com/c/4727820/2](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4727820/comment/9a2b017e_7366a8a0/) we only need 28 bytes here so a 100 byte buffer should be sufficient. I might have missed a case where we\u0027re unnecessarily reinitializing. I\u0027ll break this down into smaller CLs to allow us to compare. \n\n\u003e The information about the seed and if it needs to be recreated (or not) is kept in DRBG context, so if the call to NCL_DRBG-\u003egenerate() takes above 250ms it might mean that NCL_DRBG-\u003einit was not called yet, or maybe this is the 100 call to NCL_DRBG-\u003egenerate(), or maybe the context was somehow corrupted.\n\nIs there a way to check the status and/or make this non-blocking? Ideally we would be able to generate some random numbers, use what we need, then regenerate in the background when we won\u0027t need more data for a bit. For example maybe we only generate random numbers from the idle task and only when there are less than 64 random numbers left.",
+      "parentUuid": "494a22fc_6fb260a2",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 3
+      },
+      "revId": "983e3227df89d9b394f98813d3e81530186222f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b7a82bd_c8aaa9e9",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 1
