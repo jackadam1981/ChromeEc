@@ -19,7 +19,7 @@
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 
 /* Base detection debouncing */
-#define BASE_DETECT_EN_DEBOUNCE_US (350 * MSEC)
+#define BASE_DETECT_EN_DEBOUNCE_US (200 * MSEC)
 #define BASE_DETECT_DIS_DEBOUNCE_US (20 * MSEC)
 
 K_MUTEX_DEFINE(modify_base_detection_mutex);
