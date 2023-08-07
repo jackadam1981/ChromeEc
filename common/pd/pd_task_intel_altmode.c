@@ -69,6 +69,7 @@ static void process_altmode_pd_data(int port)
 	union data_status_reg status;
 	union data_control_reg control = { .i2c_int_ack = 1 };
 	mux_state_t mux = USB_PD_MUX_NONE;
+	mux_state_t prv_hpd_lvl;
 
 	/* Clear the interrupt */
 	rv = pd_write(port, &control);
@@ -89,6 +90,9 @@ static void process_altmode_pd_data(int port)
 		    sizeof(union data_status_reg)))
 		return;
 
+	/* Store previous HPD tatus */
+	prv_hpd_lvl = data_status[port].hpd_lvl;
+
 	/* Update the new data */
 	memcpy(&data_status[port], &status, sizeof(union data_status_reg));
 
@@ -104,10 +108,24 @@ static void process_altmode_pd_data(int port)
 
 	CPRINTS("Set P%d mux=0x%x", port, mux);
 
+	/* DP status */
+	if (status.dp)
+		mux |= USB_PD_MUX_DP_ENABLED;
+
+	if (status.hpd_lvl)
+		mux |= USB_PD_MUX_HPD_LVL;
+
+	if (status.dp_irq)
+		mux |= USB_PD_MUX_HPD_IRQ;
+
 	usb_mux_set(port, mux,
 		    mux == USB_PD_MUX_NONE ? USB_SWITCH_DISCONNECT :
 					     USB_SWITCH_CONNECT,
 		    polarity_rm_dts(status.conn_ori));
+
+	/* Update the change in HPD level */
+	if (prv_hpd_lvl != status.hpd_lvl)
+		usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL);
 }
 
 /* Enable interrupt when AP is on */
@@ -227,6 +245,11 @@ enum pd_data_role pd_get_data_role(int port)
 int pd_is_connected(int port)
 {
 	return data_status[port].data_conn;
+}
+
+__override uint8_t get_dp_pin_mode(int port)
+{
+	return data_status[port].dp_pin << 2;
 }
 
 /*
