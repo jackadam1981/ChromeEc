@@ -1246,6 +1246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d80f8a7_2a71a4a2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-07T18:43:06Z",
+      "side": 1,
+      "message": "looking at this closer since VDM_VERS_MINOR is already masked by DP21 enabled will just modify this to return SVDM_VER_2_0 | VDM_VERS_MINOR if rev is PD_REV30 instead of just SVDM_VER_2_0",
+      "parentUuid": "acbede9e_1886f7bd",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc09e5df_99040171",
@@ -1294,6 +1312,24 @@
       "side": 1,
       "message": "This refactor would be an example of something that could go in its own CL before this one.",
       "parentUuid": "37a4c5ed_93e0dd34",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f28c90fc_d7ed6255",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 5764,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-07T18:43:06Z",
+      "side": 1,
+      "message": "Will edit this to be exported but will hold off on the refactor until after DP 2.1 code is landed",
+      "parentUuid": "45a15bb5_52b86366",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
