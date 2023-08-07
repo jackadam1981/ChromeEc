@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f1996c8_db8c1e7d",
+        "filename": "zephyr/program/rex/karis/interrupts.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-08-07T07:19:32Z",
+      "side": 1,
+      "message": "I moved interrupts definition changes in project.overlay",
+      "parentUuid": "19214368_fb5461d8",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "e3799f28c44733281da4d6a0770d78af8e36386c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4c779eb_6d74554d",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d12c5763_a1545d71",
+        "filename": "zephyr/program/rex/karis/interrupts.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-08-07T07:19:32Z",
+      "side": 1,
+      "message": "I moved the change to project.overlay.",
+      "parentUuid": "a4c779eb_6d74554d",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 4
+      },
+      "revId": "e3799f28c44733281da4d6a0770d78af8e36386c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e8b8133_8602391d",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-08-04T19:52:28Z",
       "side": 1,
       "message": "need to check with scollyer@ - i have no idea what this sentence means 😊",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 63
+      },
+      "revId": "e3799f28c44733281da4d6a0770d78af8e36386c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e04c190_09f5704f",
+        "filename": "zephyr/program/rex/karis/interrupts.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2023-08-07T07:19:32Z",
+      "side": 1,
+      "message": "I copied the interrupts.dtsi in program/rex folder to program/rex/karis directly. I remove the increased interrupts.dtsi in Karis now.",
+      "parentUuid": "3e8b8133_8602391d",
       "range": {
         "startLine": 63,
         "startChar": 3,
