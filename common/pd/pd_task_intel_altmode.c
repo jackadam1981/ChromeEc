@@ -68,6 +68,7 @@ static void process_altmode_pd_data(int port)
 	int rv;
 	union data_status_reg status;
 	union data_control_reg control = { 0 };
+	mux_state_t mux = USB_PD_MUX_NONE;
 
 	/* Clear the interrupt */
 	control.i2c_int_ack = 1;
@@ -93,6 +94,19 @@ static void process_altmode_pd_data(int port)
 	memcpy(&data_status[port], &status, sizeof(union data_status_reg));
 
 	/* Process MUX events */
+
+	/* Orientation */
+	if (status.conn_ori)
+		mux |= USB_PD_MUX_POLARITY_INVERTED;
+
+	/* USB status */
+	if (status.usb2 || status.usb3_2)
+		mux |= USB_PD_MUX_USB_ENABLED;
+
+	usb_mux_set(port, mux,
+		    mux == USB_PD_MUX_NONE ? USB_SWITCH_DISCONNECT :
+					     USB_SWITCH_CONNECT,
+		    polarity_rm_dts(status.conn_ori));
 }
 
 /* Enable interrupt when AP is on */
