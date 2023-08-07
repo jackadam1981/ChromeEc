@@ -13,6 +13,7 @@
 #define __CROS_EC_PD_TASK_INTEL_ALTMODE_H
 
 #include "i2c.h"
+#include "usb_pd_tbt.h"
 #include "usb_pd_vdo.h"
 
 /*
@@ -151,7 +152,7 @@ union data_status_reg {
 		/* Bits 24 to 32 */
 		uint8_t pow_mis : 1;
 		enum usb_rev30_ss cable_speed : 3;
-		uint8_t cable_gen : 2;
+		enum tbt_compat_rounded_support cable_gen : 2;
 		uint8_t res1 : 1;
 		uint8_t res2 : 1;
 

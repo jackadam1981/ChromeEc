@@ -50,7 +50,7 @@ chip-$(CONFIG_PS2)+=ps2.o
 # Only npcx9 or later chip family can support LCT module
 ifneq ($(CHIP_FAMILY),$(filter $(CHIP_FAMILY),npcx5 npcx7))
 chip-y+=lct.o
-chip-y+=uartn_dma.o
+# chip-y+=uartn_dma.o
 endif
 
 chip-$(CONFIG_SHA256_HW_ACCELERATE)+=sha256_chip.o
