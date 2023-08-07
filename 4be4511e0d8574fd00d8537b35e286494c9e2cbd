@@ -16,6 +16,167 @@
       "message": "+Patryk: FYI This breaks your bloonchipper CL:4030381. I will do the migration after your code merged.",
       "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68bf8d07_df630d2d",
+        "filename": "zephyr/zmake/tests/test_rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-08-07T22:16:57Z",
+      "side": 1,
+      "message": "Use the `temp_path` pytest fixture instead.\n\nhttps://docs.pytest.org/en/7.1.x/how-to/tmp_path.html",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 55
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a00bf3_807c144c",
+        "filename": "zephyr/zmake/tests/test_rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-08-07T22:16:57Z",
+      "side": 1,
+      "message": "right now we can\u0027t use external tools in the zmake unit tests as we also run these outside the SDK... you\u0027ll need to mock and make things work with fake values instead of calling the real tools.",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc3c8911_b05648c2",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-08-07T22:16:57Z",
+      "side": 1,
+      "message": "Don\u0027t use kconfig values from Zmake.  I know some of that appeared before but we really shouldn\u0027t...\n\nInstead, can you add project configuration (as in, `zmake/project.py`) for what you require?",
+      "range": {
+        "startLine": 230,
+        "startChar": 17,
+        "endLine": 230,
+        "endChar": 50
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a2d5eab_fdc0f177",
+        "filename": "zephyr/zmake/zmake/rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-08-07T22:16:57Z",
+      "side": 1,
+      "message": "This could use an explanation as to what that is.",
+      "range": {
+        "startLine": 5,
+        "startChar": 17,
+        "endLine": 5,
+        "endChar": 22
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "967f6870_f4e83bfc",
+        "filename": "zephyr/zmake/zmake/rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-08-07T22:16:57Z",
+      "side": 1,
+      "message": "I believe binman can already handle extracting fmap sections... I beleive we\u0027d prefer that to futility as we already use binman for all our other fmap operations.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2a9c808_5eb27892",
+        "filename": "zephyr/zmake/zmake/rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-08-07T22:16:57Z",
+      "side": 1,
+      "message": "how complex are these operations?  can we handle them in python?  I think it\u0027s ideal to avoid dependency on futility.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 5
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf0b5f95_6b3dc2b1",
+        "filename": "zephyr/zmake/zmake/rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-08-07T22:16:57Z",
+      "side": 1,
+      "message": "same remark here, lets keep to binman for our fmap operations",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 5
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
