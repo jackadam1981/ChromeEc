@@ -6,10 +6,44 @@
 /* Starmie PPC/BC12 (RT1739) configuration */
 
 #include "baseboard_usbc_config.h"
+#include "cros_board_info.h"
 #include "driver/ppc/rt1739.h"
+#include "driver/ppc/syv682x.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "system.h"
+#include "usb_mux.h"
+#include "usbc/ppc.h"
+
+#define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
+
+LOG_MODULE_REGISTER(alt_dev_replacement);
+#define BOARD_VERSION_UNKNOWN 0xffffffff
+
+static bool board_has_syv_ppc(void)
+{
+	static uint32_t board_version = BOARD_VERSION_UNKNOWN;
+
+	if (board_version == BOARD_VERSION_UNKNOWN || IS_ENABLED(CONFIG_TEST)) {
+		if (cbi_get_board_version(&board_version) != EC_SUCCESS) {
+			LOG_ERR("Failed to get board version.");
+			board_version = 0;
+		}
+	}
+
+	return (board_version >= 3);
+}
+
+static void check_alternate_devices(void)
+{
+	/* Configure the PPC driver */
+	if (board_has_syv_ppc())
+		/* Arg is the USB port number */
+		PPC_ENABLE_ALTERNATE(0);
+}
+DECLARE_HOOK(HOOK_INIT, check_alternate_devices, HOOK_PRIO_DEFAULT);
 
 static void board_usbc_init(void)
 {
