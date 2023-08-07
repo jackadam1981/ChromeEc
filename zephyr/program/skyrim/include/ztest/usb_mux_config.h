@@ -14,6 +14,8 @@ DECLARE_FAKE_VOID_FUNC(usb_mux_enable_alternative);
 #undef USB_MUX_ENABLE_ALTERNATIVE
 #define USB_MUX_ENABLE_ALTERNATIVE(x) usb_mux_enable_alternative()
 
+#define WINTERHOLD_CHARGE_CURRENT_MAX 1152
+
 #endif /* CONFIG_ZTEST */
 
 #endif /* __SKYRIM_TEST_USB_MUX_CONFIG */
