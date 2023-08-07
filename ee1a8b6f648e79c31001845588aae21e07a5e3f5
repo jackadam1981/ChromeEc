@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8aba0892_b04859a1",
+        "filename": "zephyr/program/skyrim/markarth/include/keyboard_customization.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-07T23:48:29Z",
+      "side": 1,
+      "message": "It doesn\u0027t compile if you remove these and make keyboard_customization.c include keyboard_8042_sharedlib.h?",
+      "parentUuid": "77b2de14_e30ec096",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 63
+      },
+      "revId": "ee1a8b6f648e79c31001845588aae21e07a5e3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "111c4b78_3eacf6f1",
         "filename": "zephyr/program/skyrim/markarth/src/keyboard.c",
         "patchSetId": 5
