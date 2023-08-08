@@ -99,6 +99,9 @@ import time
 from typing import List
 import uuid
 
+print("Printing debug help")
+print(sys.argv)
+
 
 # Paths under the EC base dir that contain tests. This is used to define
 # Twister's search scope.
@@ -338,12 +341,44 @@ def maybe_relaunch_in_bazel(
     if running_in_bazel():
         return False
 
+    if sandbox_debug:
+        # We don't want twister to actually use sandbox debug
+        argv.remove("--sandbox-debug")
+
+    # We want to parse args specially handled in fwsdk
+    parser = argparse.ArgumentParser(add_help=False)
+
+    # We intercept build-only/test-only since bazel handles whether it's build or not
+    parser.add_argument("--test-only", action="store_true")
+    parser.add_argument("-b", "--build-only", action="store_true")
+    parser.add_argument("--prep-artifacts-for-testing", action="store_true")
+    # We intercept testsuite-root to resolve paths.
+    parser.add_argument("-T", "--testsuite-root", action="append")
+
+    known_args, unknown_args = parser.parse_known_args(args=argv)
+    args_from_fwsdk = []
+
+    if known_args.test_only:
+        print(
+            "--test-only is not compatible with Bazel twister_launcher, remove it.",
+            file=sys.stderr,
+        )
+        sys.exit(22)  # UNIX Invalid Argument error code
+
+    if known_args.testsuite_root:
+        for arg in known_args.testsuite_root:
+            args_from_fwsdk.extend(["-T", str(Path(arg).resolve())])
+
+    build_only = known_args.build_only or known_args.prep_artifacts_for_testing
+
+    argv = args_from_fwsdk + unknown_args
+
     gen_starlark = f"""
 load(
     "//platform/ec/bazel:twister.bzl",
-    "twister_test_binary",
+    "twister_test",
 )
-twister_test_binary(
+twister_test(
     name = "run_twister",
     args = {argv!r},
     cwd = {str(cwd)!r},
@@ -385,11 +420,15 @@ twister_test_binary(
         # Clean up temporary symlink if rename failed
         tmp_twister_out.unlink(missing_ok=True)
 
-    bazel_cmd = ["/usr/bin/bazel", "build", ":run_twister"]
-    if sandbox_debug:
-        bazel_cmd.append("--sandbox_debug")
+    bazel_verb = "build" if known_args.build_only else "test"
+    # Bazel likes to cache test executions, we're not interested in this behavior.
+    cmd = ["/usr/bin/bazel", bazel_verb, ":run_twister", "--cache_test_results=no", "--test_output=all"]
 
-    result = subprocess.run(bazel_cmd, cwd=run_dir, check=False)
+    if sandbox_debug:
+        cmd.append("--sandbox_debug")
+
+    result = subprocess.run(cmd, cwd=run_dir, check=False)
+
     sys.exit(result.returncode)
 
 
@@ -575,6 +614,8 @@ def main():
             sys.stdout.flush()
 
         # Invoke Twister and wait for it to exit.
+        print("printing cwd before calling blister")
+        print(os.getcwd())
         result = subprocess.run(
             twister_cli,
             env=twister_env,
@@ -590,7 +631,7 @@ def main():
         else:
             print("TEST EXECUTION FAILED")
 
-        if is_tool("rdb") and intercepted_args.upload_cros_rdb:
+        if is_tool("rdb") and intercepted_args.upload_cros_rdb and False:
             upload_results(ec_base, intercepted_args.outdir)
 
         sys.exit(result.returncode)

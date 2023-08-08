@@ -19,5 +19,5 @@ def gen_shell_wrapper(argv, env):
     script = "#!/bin/bash\n"
     for key, val in env.items():
         script += "export %s=%s\n" % (key, shell.quote(val))
-    script += '%s "$@"\n' % " ".join([shell.quote(x) for x in argv])
+    script += '%s "$@"\n' % " ".join(argv)
     return script
