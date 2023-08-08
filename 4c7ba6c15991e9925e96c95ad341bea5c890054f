@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b79f653_9b834d84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-08-08T08:58:19Z",
+      "side": 1,
+      "message": "We can describe more about test condition in TEST field, like test both fw_configs and boards with and without BC1.2 boards.",
+      "revId": "4c7ba6c15991e9925e96c95ad341bea5c890054f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2a449da_d22a23ad",
         "filename": "board/pirika/board.c",
         "patchSetId": 1
