@@ -110,6 +110,24 @@
       "parentUuid": "76856fc4_86e3dedc",
       "revId": "932ee0f1022faf05c89de6c12461e68ccff52c0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a307374b_047a0e0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-08-08T02:54:10Z",
+      "side": 1,
+      "message": "The CBI data won\u0027t be visible during normal flash read because it\u0027s considered as protected data by design: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/flash.c;l\u003d731?q\u003d_CBI_FLASH\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2F",
+      "parentUuid": "5c0af8f8_6519811d",
+      "revId": "932ee0f1022faf05c89de6c12461e68ccff52c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
