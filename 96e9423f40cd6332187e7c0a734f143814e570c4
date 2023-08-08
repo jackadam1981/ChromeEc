@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a2950c_a5044f1f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 11255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-08T01:04:20Z",
+      "side": 1,
+      "message": "nit: const long",
+      "range": {
+        "startLine": 11255,
+        "startChar": 1,
+        "endLine": 11255,
+        "endChar": 5
+      },
+      "revId": "96e9423f40cd6332187e7c0a734f143814e570c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deab740c_7e36e614",
+        "filename": "util/ectool.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 11329,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-08T01:04:20Z",
+      "side": 1,
+      "message": "Does it matter whether we check SEND_FAILED before SEND_OK or not?",
+      "range": {
+        "startLine": 11326,
+        "startChar": 0,
+        "endLine": 11329,
+        "endChar": 3
+      },
+      "revId": "96e9423f40cd6332187e7c0a734f143814e570c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
