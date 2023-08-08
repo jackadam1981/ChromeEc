@@ -206,6 +206,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2ada986_60434c96",
+        "filename": "zephyr/zmake/zmake/rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-08-08T18:26:40Z",
+      "side": 1,
+      "message": "ack, will wait for an update here! thanks!",
+      "parentUuid": "2464c0b0_c2ee5d8c",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 5
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf0b5f95_6b3dc2b1",
         "filename": "zephyr/zmake/zmake/rwsig.py",
         "patchSetId": 4
