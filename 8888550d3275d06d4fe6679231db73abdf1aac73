@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0434649_4f3ace5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2023-08-08T17:35:15Z",
+      "side": 1,
+      "message": "Looks like some unused emul functions are messing with the coverage. I\u0027m OK with LCOV-excluding these if we need them there.",
+      "revId": "8888550d3275d06d4fe6679231db73abdf1aac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
