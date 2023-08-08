@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb5ee18_a34a5b1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119399
+      },
+      "writtenOn": "2023-08-08T17:36:14Z",
+      "side": 1,
+      "message": "Diffing between patchset 1 and 2 will show just the fixes to the original CL.  \n\nCaveh I have validated the fix for your steps to reproduce ( thanks for that ) but I never use flash_ec - can you patch in this CL and validate it fixes your use case completely",
+      "revId": "0ba18dc89b53405c66398bfe81967b9d253b9da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
