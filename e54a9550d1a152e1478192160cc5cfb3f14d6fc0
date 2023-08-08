@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ecafacc_c7d90cef",
+        "filename": "board/kuldax/fw_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2023-08-08T04:17:14Z",
+      "side": 1,
+      "message": "yes, combination bit 8:9 is easier. update it done",
+      "parentUuid": "a77761cc_2186a182",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "e54a9550d1a152e1478192160cc5cfb3f14d6fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cbccb5e_a6eddd2d",
