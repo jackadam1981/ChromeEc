@@ -74,6 +74,24 @@
       "parentUuid": "cc1672e2_a4ee32a3",
       "revId": "932ee0f1022faf05c89de6c12461e68ccff52c0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76856fc4_86e3dedc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-08T02:34:35Z",
+      "side": 1,
+      "message": "are you still getting\n`23-08-08 09:48:29.149 E: Failed to write CBI in EC Flash`\nor was that only the case before the upstream erase block size patch?",
+      "parentUuid": "a5a75d87_024303ac",
+      "revId": "932ee0f1022faf05c89de6c12461e68ccff52c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
