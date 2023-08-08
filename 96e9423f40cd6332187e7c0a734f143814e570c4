@@ -93,6 +93,30 @@
       },
       "revId": "96e9423f40cd6332187e7c0a734f143814e570c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207ae2cd_b5551fbc",
+        "filename": "util/ectool.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 11329,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-08T16:41:05Z",
+      "side": 1,
+      "message": "\u003e  The EC only sends one or the other,\n\nIt\u0027s not clear to me how that\u0027s guaranteed. Maybe you can explain how back-to-back events coming from external sources are processed. Nobody except the host seems to be clearing cec_events in common/cec.c.",
+      "parentUuid": "28c1a26e_cec2a52d",
+      "range": {
+        "startLine": 11326,
+        "startChar": 0,
+        "endLine": 11329,
+        "endChar": 3
+      },
+      "revId": "96e9423f40cd6332187e7c0a734f143814e570c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
