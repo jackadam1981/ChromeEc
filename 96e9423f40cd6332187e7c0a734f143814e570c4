@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86949535_458c11cc",
+        "filename": "util/ectool.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 11255,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-08T01:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5a2950c_a5044f1f",
+      "range": {
+        "startLine": 11255,
+        "startChar": 1,
+        "endLine": 11255,
+        "endChar": 5
+      },
+      "revId": "96e9423f40cd6332187e7c0a734f143814e570c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "deab740c_7e36e614",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-08T01:04:20Z",
       "side": 1,
       "message": "Does it matter whether we check SEND_FAILED before SEND_OK or not?",
+      "range": {
+        "startLine": 11326,
+        "startChar": 0,
+        "endLine": 11329,
+        "endChar": 3
+      },
+      "revId": "96e9423f40cd6332187e7c0a734f143814e570c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c1a26e_cec2a52d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 11329,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-08T01:37:41Z",
+      "side": 1,
+      "message": "I don\u0027t think so? The EC only sends one or the other, so the order shouldn\u0027t matter.",
+      "parentUuid": "deab740c_7e36e614",
       "range": {
         "startLine": 11326,
         "startChar": 0,
