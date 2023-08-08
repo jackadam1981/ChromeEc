@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a726eb10_7ea9b6c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-08T16:24:21Z",
+      "side": 1,
+      "message": "My initial implementation in b/293458644 had flash_fp_mcu_stm32 and flash_fp_mcu_npcx and resulted in a lot of duplicated code. The conditionals added were for setting cmd_flags and the cmd variable and I don\u0027t think these add a lot of complexity to the core function. However, I could pull these conditionals out to get_cmd_flags() and prepare_cmd() functions if you think this would be helpful?",
+      "parentUuid": "a112e200_4fd9c553",
+      "revId": "ca6eca271741db695ca45c41693bdd64bc888ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1d7e515_8bf07b38",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 5
@@ -31,6 +49,30 @@
       "writtenOn": "2023-08-08T06:14:19Z",
       "side": 1,
       "message": "Need `|nocturne_fp|nami_fp` also.\n\n```suggestion\n    bloonchipper|dartmonkey|nocturne_fp|nami_fp)\n```",
+      "range": {
+        "startLine": 254,
+        "startChar": 17,
+        "endLine": 254,
+        "endChar": 27
+      },
+      "revId": "ca6eca271741db695ca45c41693bdd64bc888ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "659d13d9_73852c2c",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-08T16:24:21Z",
+      "side": 1,
+      "message": "This part of the code came from your previous review. You had included nocturne and nami in the first suggestion and then taken them out from the second (updated) one. I can add these back in, will do after I get the response to your other review comment",
+      "parentUuid": "f1d7e515_8bf07b38",
       "range": {
         "startLine": 254,
         "startChar": 17,
