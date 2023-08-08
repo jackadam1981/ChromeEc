@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63915d4e_9c308c7f",
+        "filename": "zephyr/zmake/tests/test_rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-08T10:47:40Z",
+      "side": 1,
+      "message": "will replace these with the signing implementation.",
+      "parentUuid": "06a00bf3_807c144c",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc3c8911_b05648c2",
         "filename": "zephyr/zmake/zmake/output_packers.py",
         "patchSetId": 4
@@ -146,6 +170,30 @@
       "writtenOn": "2023-08-07T22:16:57Z",
       "side": 1,
       "message": "how complex are these operations?  can we handle them in python?  I think it\u0027s ideal to avoid dependency on futility.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 5
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2464c0b0_c2ee5d8c",
+        "filename": "zephyr/zmake/zmake/rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-08T10:47:40Z",
+      "side": 1,
+      "message": "It\u0027s RSA plus some metadata \n(https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/master/host/lib21/host_signature.c#70), \n\nI think it\u0027s not hard to have a python implementation.",
+      "parentUuid": "e2a9c808_5eb27892",
       "range": {
         "startLine": 51,
         "startChar": 0,
