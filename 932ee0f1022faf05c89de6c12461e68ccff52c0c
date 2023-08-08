@@ -163,6 +163,24 @@
       "message": "autotest `firmware_ECCbiEeprom` passed with this change.\n```\n11:18:11 INFO | autoserv| after_hook completed\n11:18:11 INFO | autoserv| \tGOOD\tfirmware_ECCbiEeprom\tfirmware_ECCbiEeprom\ttimestamp\u003d1691464691\tlocaltime\u003dAug 08 11:18:11\tcompleted successfully\n11:18:11 INFO | autoserv| END GOOD\tfirmware_ECCbiEeprom\tfirmware_ECCbiEeprom\ttimestamp\u003d1691464691\tlocaltime\u003dAug 08 11:18:11\n11:18:11 INFO | autoserv| Finished processing control file\n11:18:11 INFO | autoserv| No client dir to retrieve.\n11:18:11 INFO | autoserv| Skipping crash dump/info collection as requested.\n11:18:11 INFO | autoserv| Servohost is down, will skip servod log collecting.\nPerforming autotest_lib import\n---------------------------------------------------------------------------------------------------\n/tmp/test_that_results_rex_i41taz5s/results-1-firmware_ECCbiEeprom                      [  PASSED  ]\n/tmp/test_that_results_rex_i41taz5s/results-1-firmware_ECCbiEeprom/firmware_ECCbiEeprom [  PASSED  ]\n---------------------------------------------------------------------------------------------------\nTotal PASS: 2/2 (100%)\n```",
       "revId": "932ee0f1022faf05c89de6c12461e68ccff52c0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6435ec_4324d801",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-08-08T04:10:17Z",
+      "side": 1,
+      "message": "At present the \u0027cbi\u0027 command is the only to see CBI data, but it doesn\u0027t tell whether it\u0027s coming from EEPROM or EC flash. \n\nIf device don\u0027t have EEPROM, then it won\u0027t be required cause EC flash is the only option enabled\n\nBut there are some hacks to see CBI data in EC flash, feel free to ping me offline to discuss on this",
+      "parentUuid": "d6ce30ce_33592d66",
+      "revId": "932ee0f1022faf05c89de6c12461e68ccff52c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
