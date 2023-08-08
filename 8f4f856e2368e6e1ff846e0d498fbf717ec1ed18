@@ -63,6 +63,30 @@
       },
       "revId": "8f4f856e2368e6e1ff846e0d498fbf717ec1ed18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ef1c972_dde5c916",
+        "filename": "zephyr/program/corsola/voltorb/src/usbc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2023-08-08T02:59:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c10eacc0_e350e42f",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 59
+      },
+      "revId": "8f4f856e2368e6e1ff846e0d498fbf717ec1ed18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
