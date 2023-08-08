@@ -129,7 +129,7 @@
 
 	console {
 		compatible = "ec-console";
-		disabled = "DPTF", "PWM";
+		disabled = "DPTF", "PWM", "motionsense";
 		/* disabled = "PWM"; */
 	};
 };
