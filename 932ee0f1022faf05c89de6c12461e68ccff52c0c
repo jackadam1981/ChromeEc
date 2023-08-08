@@ -146,6 +146,23 @@
       "parentUuid": "a307374b_047a0e0b",
       "revId": "932ee0f1022faf05c89de6c12461e68ccff52c0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58073fc2_ef050651",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-08-08T03:24:14Z",
+      "side": 1,
+      "message": "autotest `firmware_ECCbiEeprom` passed with this change.\n```\n11:18:11 INFO | autoserv| after_hook completed\n11:18:11 INFO | autoserv| \tGOOD\tfirmware_ECCbiEeprom\tfirmware_ECCbiEeprom\ttimestamp\u003d1691464691\tlocaltime\u003dAug 08 11:18:11\tcompleted successfully\n11:18:11 INFO | autoserv| END GOOD\tfirmware_ECCbiEeprom\tfirmware_ECCbiEeprom\ttimestamp\u003d1691464691\tlocaltime\u003dAug 08 11:18:11\n11:18:11 INFO | autoserv| Finished processing control file\n11:18:11 INFO | autoserv| No client dir to retrieve.\n11:18:11 INFO | autoserv| Skipping crash dump/info collection as requested.\n11:18:11 INFO | autoserv| Servohost is down, will skip servod log collecting.\nPerforming autotest_lib import\n---------------------------------------------------------------------------------------------------\n/tmp/test_that_results_rex_i41taz5s/results-1-firmware_ECCbiEeprom                      [  PASSED  ]\n/tmp/test_that_results_rex_i41taz5s/results-1-firmware_ECCbiEeprom/firmware_ECCbiEeprom [  PASSED  ]\n---------------------------------------------------------------------------------------------------\nTotal PASS: 2/2 (100%)\n```",
+      "revId": "932ee0f1022faf05c89de6c12461e68ccff52c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
