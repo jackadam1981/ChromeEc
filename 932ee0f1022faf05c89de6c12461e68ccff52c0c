@@ -92,6 +92,24 @@
       "parentUuid": "a5a75d87_024303ac",
       "revId": "932ee0f1022faf05c89de6c12461e68ccff52c0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c0af8f8_6519811d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-08-08T02:50:28Z",
+      "side": 1,
+      "message": "that is only the case before apply the upstream erase block size patch.\n\nI add log in `is_valid_cbi` before `return true` and EC prints it\n```\n23-08-08 10:42:47.815 E: CBI is valid\n\n23-08-08 10:42:47.826 [0.548400 CBI Reading board info]\n```",
+      "parentUuid": "76856fc4_86e3dedc",
+      "revId": "932ee0f1022faf05c89de6c12461e68ccff52c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
