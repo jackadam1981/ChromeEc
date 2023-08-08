@@ -284,7 +284,7 @@ const char help_str[] =
 	"  rand <num_bytes>\n"
 	"      generate <num_bytes> of random numbers\n"
 	"  reboot_ec <RO|RW|cold|hibernate|hibernate-clear-ap-off|disable-jump|cold-ap-off>"
-	" [at-shutdown|switch-slot|clear-ap-idle]\n"
+	" [at-shutdown|switch-slot|clear-ap-idle|tp-abort-rwsig]\n"
 	"      Reboot EC to RO or RW\n"
 	"  reboot_ap_on_g3 [<delay>]\n"
 	"      Requests that the EC will automatically reboot the AP after a\n"
@@ -1228,10 +1228,43 @@ exit:
 	return rv;
 }
 
+/* Forward declare */
+static int rwsig_action(const char *command);
+
+static bool tp_abort_rwsig_check(void) {
+	struct ec_response_get_features r;
+	int rv;
+
+	rv = ec_command(EC_CMD_GET_FEATURES, 0, NULL, 0, &r, sizeof(r));
+
+	if (rv < 0) {
+		fprintf(stderr,
+			"%s: EC does not support getting features, ignored\n",
+			__func__);
+		return false;
+	}
+	if (!(r.flags[0] & BIT(EC_FEATURE_TOUCHPAD))) {
+		fprintf(stderr, "%s: EC is not a touchpad, ignored\n",
+			__func__);
+		return false;
+	}
+	if (!(r.flags[0] & BIT(EC_FEATURE_RWSIG))) {
+		fprintf(stderr, "%s: EC does not support RWSIG, ignored\n",
+			__func__);
+		return false;
+	}
+
+	fprintf(stderr,
+		"%s: Force abort RWSIG after rebooting for touchpad EC.\n",
+		__func__);
+	return true;
+}
+
 int cmd_reboot_ec(int argc, char *argv[])
 {
 	struct ec_params_reboot_ec p;
 	int rv, i;
+	bool tp_abort_rwsig = false;
 
 	if (argc < 2) {
 		/*
@@ -1276,6 +1309,8 @@ int cmd_reboot_ec(int argc, char *argv[])
 			p.flags |= EC_REBOOT_FLAG_SWITCH_RW_SLOT;
 		} else if (!strcmp(argv[i], "clear-ap-idle")) {
 			p.flags |= EC_REBOOT_FLAG_CLEAR_AP_IDLE;
+		} else if (!strcmp(argv[i], "tp-abort-rwsig")) {
+			tp_abort_rwsig = tp_abort_rwsig_check();
 		} else {
 			fprintf(stderr, "Unknown flag: %s\n", argv[i]);
 			return -1;
@@ -1283,7 +1318,20 @@ int cmd_reboot_ec(int argc, char *argv[])
 	}
 
 	rv = ec_command(EC_CMD_REBOOT_EC, 0, &p, sizeof(p), NULL, 0);
-	return (rv < 0 ? rv : 0);
+
+	if (rv < 0)
+		return rv;
+
+	/* Force rwsig abort */
+	if (tp_abort_rwsig) {
+		fprintf(stderr, "Sleep for 800ms then force abort RWSIG\n");
+		usleep(800000);
+		rv = rwsig_action("abort");
+		if (rv < 0)
+			return rv;
+	}
+
+	return 0;
 }
 
 int cmd_reboot_ap_on_g3(int argc, char *argv[])
