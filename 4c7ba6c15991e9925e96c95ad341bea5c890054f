@@ -34,6 +34,24 @@
       "parentUuid": "e2a449da_d22a23ad",
       "revId": "4c7ba6c15991e9925e96c95ad341bea5c890054f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262919cd_87014302",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2023-08-08T08:31:35Z",
+      "side": 1,
+      "message": "I mean in usb_charger.c you use `__overridable bool board_usb_charge\"r\"_support(void)` but here you override with `board_usb_charge_support`.  Just would like to know if you local test with both setting on real devices?",
+      "parentUuid": "6e6c1171_4bd068c7",
+      "revId": "4c7ba6c15991e9925e96c95ad341bea5c890054f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
