@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89508ab4_318775ef",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-08T05:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c297391_c78da48f",
+      "range": {
+        "startLine": 267,
+        "startChar": 4,
+        "endLine": 267,
+        "endChar": 25
+      },
+      "revId": "15035ed3fdd7741df085fc23f73aa6d6e8893e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cebf726_b1f9daa8",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2b2a20c_c0ff4702",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-08T05:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8691ffb6_cb38ed36",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 1
+      },
+      "revId": "15035ed3fdd7741df085fc23f73aa6d6e8893e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9076ca6e_b41005bc",
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "890cf2f5_1dab7f0b",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-08T05:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9076ca6e_b41005bc",
+      "range": {
+        "startLine": 913,
+        "startChar": 0,
+        "endLine": 916,
+        "endChar": 36
+      },
+      "revId": "15035ed3fdd7741df085fc23f73aa6d6e8893e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bf96ad9_e62c959e",
@@ -107,6 +179,30 @@
       "writtenOn": "2023-08-04T22:23:29Z",
       "side": 1,
       "message": "More in line with convention here:\n\n```suggestion\n  if ! chip_type\u003d\"$(get_chip)\"; then\n    echo \"Failed to get chip type.\" \u003e\u00262\n    exit \"${EXIT_CONFIG}\"\n  fi\n  echo \"Detected chip ${chip_type}.\"\n```",
+      "range": {
+        "startLine": 1016,
+        "startChar": 0,
+        "endLine": 1020,
+        "endChar": 4
+      },
+      "revId": "15035ed3fdd7741df085fc23f73aa6d6e8893e02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b1c1d85_3a88da6c",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-08T05:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bf96ad9_e62c959e",
       "range": {
         "startLine": 1016,
         "startChar": 0,
