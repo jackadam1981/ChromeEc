@@ -338,15 +338,44 @@ def maybe_relaunch_in_bazel(
     if running_in_bazel():
         return False
 
+    # We want to parse args specially handled in fwsdk
+    parser = argparse.ArgumentParser(add_help=False)
+
+    # We intercept build-only/test-only since bazel handles whether it's build or not
+    parser.add_argument("--test-only", action="store_true")
+    parser.add_argument("-b", "--build-only", action="store_true")
+    parser.add_argument("--prep-artifacts-for-testing", action="store_true")
+    # We intercept testsuite-root to resolve paths.
+    parser.add_argument("-T", "--testsuite-root", action="append")
+
+    known_args, unknown_args = parser.parse_known_args(args=argv)
+    args_from_fwsdk = []
+
+    if known_args.test_only:
+        print(
+            "--test-only is not compatible with Bazel twister_launcher, remove it.",
+            file=sys.stderr,
+        )
+        sys.exit(22)  # UNIX Invalid Argument error code
+
+    if known_args.testsuite_root:
+        for arg in known_args.testsuite_root:
+            args_from_fwsdk.extend(["-T", str(Path(arg).resolve())])
+
+    build_only = known_args.build_only or known_args.prep_artifacts_for_testing
+
+    argv = args_from_fwsdk + unknown_args
+
     gen_starlark = f"""
 load(
     "//platform/ec/bazel:twister.bzl",
-    "twister_test_binary",
+    "twister_test",
 )
-twister_test_binary(
+twister_test(
     name = "run_twister",
     args = {argv!r},
     cwd = {str(cwd)!r},
+    size = "small",
 )"""
     run_hash = hashlib.md5(gen_starlark.encode("utf-8")).hexdigest()
     build_dir = Path(__file__).resolve().parent.parent / "build"
@@ -370,7 +399,7 @@ twister_test_binary(
 
     ec_twister_out = Path("twister-out")
     bazel_twister_out = (
-        bazel_bin / "platform/ec/build/twister-bzl" / run_hash / ec_twister_out
+        bazel_bin / "platform/ec/build/twister-bzl" / run_hash / "twister-out_build"
     )
 
     # Atomically symlink to twister out/build directory
@@ -385,7 +414,17 @@ twister_test_binary(
         # Clean up temporary symlink if rename failed
         tmp_twister_out.unlink(missing_ok=True)
 
-    bazel_cmd = ["bazel", "build", ":run_twister"]
+    bazel_verb = "build" if known_args.build_only else "test"
+    # Bazel likes to cache test executions, we're not interested in this behavior.
+    bazel_cmd = ["bazel", "test", ":run_twister"]
+
+    bazel_cmd.append("--test_output=all")
+    # Bazel likes to cache test results in addition to builds.
+    bazel_cmd.append("--nocache_test_results")
+    # By default be as verbose as twister is.
+    bazel_cmd.append("--test_output=streamed")
+    # Here we brokenly export test results for now...
+    bazel_cmd.append("--test_tmpdir=twister_tmp_build")
     if sandbox_debug:
         bazel_cmd.append("--sandbox_debug")
 
@@ -590,6 +629,7 @@ def main():
         else:
             print("TEST EXECUTION FAILED")
 
+        # TODO(b/295197371): Add rdb support for test builds in fwsdk
         if is_tool("rdb") and intercepted_args.upload_cros_rdb:
             upload_results(ec_base, intercepted_args.outdir)
 
