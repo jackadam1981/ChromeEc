@@ -117,6 +117,30 @@
       },
       "revId": "96e9423f40cd6332187e7c0a734f143814e570c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0218ac21_86e34aea",
+        "filename": "util/ectool.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 11329,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-08T23:53:51Z",
+      "side": 1,
+      "message": "Yes, I was assuming that ectool and kernel are well behaved and wait for the send result before starting the next transmission (which is the case in practice). So there will only be one SEND_OK/SEND_FAILED event on a given port at a time.\n\nAre you saying the EC should handle the case where the host doesn\u0027t read events? E.g. send_mkbp_event() with SEND_OK/SEND_FAILED should clear SEND_OK/SEND_FAILED on that port first? I think that makes sense.",
+      "parentUuid": "207ae2cd_b5551fbc",
+      "range": {
+        "startLine": 11326,
+        "startChar": 0,
+        "endLine": 11329,
+        "endChar": 3
+      },
+      "revId": "96e9423f40cd6332187e7c0a734f143814e570c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
