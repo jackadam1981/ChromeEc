@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a845ccc_61083780",
+        "filename": "zephyr/program/skyrim/markarth/include/keyboard_customization.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-08T17:34:21Z",
+      "side": 1,
+      "message": "This compiles for me:\n\n```\n--- a/zephyr/program/skyrim/markarth/src/keyboard.c\n+++ b/zephyr/program/skyrim/markarth/src/keyboard.c\n@@ -6,6 +6,7 @@\n #include \"cros_cbi.h\"\n #include \"ec_commands.h\"\n #include \"hooks.h\"\n+#include \"keyboard_8042_sharedlib.h\"\n #include \"keyboard_customization.h\"\n\n--- a/zephyr/program/skyrim/markarth/src/keyboard_customization.c\n+++ b/zephyr/program/skyrim/markarth/src/keyboard_customization.c\n@@ -5,10 +5,12 @@\n \n #include \"common.h\"\n #include \"gpio.h\"\n+#include \"keyboard_8042_sharedlib.h\"\n #include \"keyboard_customization.h\"\n```\n\n\u003e The matrix scancode_set2 in keyboard_8042_sharedlib.c is different with the matrix scancode_set2 in keyboard_customization.c.\n\nYes, that\u0027s ok. You just need to get a declaration of set_scancodode_set2 from a proper include file, which is keyboard_8042_sharedlib.h. Your definition will stay in keyboard_customization.c.",
+      "parentUuid": "de21aecf_213c61ce",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 63
+      },
+      "revId": "ee1a8b6f648e79c31001845588aae21e07a5e3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "111c4b78_3eacf6f1",
         "filename": "zephyr/program/skyrim/markarth/src/keyboard.c",
         "patchSetId": 5
