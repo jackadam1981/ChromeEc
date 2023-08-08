@@ -16,6 +16,23 @@
       "message": "this is an example code, need to use correct GPIOs and Ports.",
       "revId": "8a252afcb3cdab7ee57a14581531f142b6df73b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d59f1982_d32ff587",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-08T19:02:43Z",
+      "side": 1,
+      "message": "are there 4 PD ports on this card? If it\u0027s unused I\u0027m not sure it should be declared here",
+      "revId": "8a252afcb3cdab7ee57a14581531f142b6df73b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
