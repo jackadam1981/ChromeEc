@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb93030_6b81b55f",
+        "filename": "zephyr/test/skyrim/tests/crystaldrift/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-08-08T16:54:48Z",
+      "side": 1,
+      "message": "Done. Submitted CL:4761186 to cover that.",
+      "parentUuid": "af7987a8_117e1250",
+      "revId": "4b3b36641c81f8203c8156f014f645747c5420af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70bb42a8_7cf85d2e",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-08-07T22:20:29Z",
       "side": 1,
       "message": "drop blank line?",
+      "revId": "4b3b36641c81f8203c8156f014f645747c5420af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb21df07_b9d963af",
+        "filename": "zephyr/test/skyrim/tests/crystaldrift/src/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-08-08T16:54:48Z",
+      "side": 1,
+      "message": "The pre-submit checks call it out as a code style requirement.",
+      "parentUuid": "70bb42a8_7cf85d2e",
       "revId": "4b3b36641c81f8203c8156f014f645747c5420af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
