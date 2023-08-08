@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a112e200_4fd9c553",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-08T06:14:19Z",
+      "side": 1,
+      "message": "The core of this is pretty complicated with all of these conditionals. There are just too many ways this core section can be executed.\n\nCan you functionalize and split the core into helper function part of this?\n\nMaybe keep the `flash_fp_mcu_stm32`, pull out the common logic (gpio toggling and driver setup) into helpers that are called by the parent function, and introduce `flash_fp_mcu_npcx`?",
+      "revId": "ca6eca271741db695ca45c41693bdd64bc888ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1d7e515_8bf07b38",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-08T06:14:19Z",
+      "side": 1,
+      "message": "Need `|nocturne_fp|nami_fp` also.\n\n```suggestion\n    bloonchipper|dartmonkey|nocturne_fp|nami_fp)\n```",
+      "range": {
+        "startLine": 254,
+        "startChar": 17,
+        "endLine": 254,
+        "endChar": 27
+      },
+      "revId": "ca6eca271741db695ca45c41693bdd64bc888ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
