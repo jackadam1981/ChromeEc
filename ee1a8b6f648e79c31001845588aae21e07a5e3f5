@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de21aecf_213c61ce",
+        "filename": "zephyr/program/skyrim/markarth/include/keyboard_customization.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2023-08-08T10:47:08Z",
+      "side": 1,
+      "message": "[keyboard_8042_sharedlib.c #20](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/common/keyboard_8042_sharedlib.c#20)\n\n[keyboard_customization.c #14](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/program/skyrim/markarth/src/keyboard_customization.c#14)\n\nThe matrix scancode_set2 in keyboard_8042_sharedlib.c is different with the matrix scancode_set2 in keyboard_customization.c.\n\nIf I remove function from keyboard_customization.c it will cause Markarth build fail.\n\nError message:\n```\nFAILED: CMakeFiles/app.dir/markarth/src/keyboard_customization.c.obj \n/mnt/host/source/src/platform/ec/zephyr/program/skyrim/markarth/src/keyboard_customization.c:14:17: error: \u0027scancode_set2\u0027 defined but not used [-Werror\u003dunused-variable]\n   14 | static uint16_t scancode_set2[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] \u003d {\n      |                 ^~~~~~~~~~~~~\n```",
+      "parentUuid": "8aba0892_b04859a1",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 63
+      },
+      "revId": "ee1a8b6f648e79c31001845588aae21e07a5e3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "111c4b78_3eacf6f1",
         "filename": "zephyr/program/skyrim/markarth/src/keyboard.c",
         "patchSetId": 5
