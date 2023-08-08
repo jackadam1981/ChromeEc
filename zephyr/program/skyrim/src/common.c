@@ -3,6 +3,14 @@
  * found in the LICENSE file.
  */
 
+#include "i2c.h"
+
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(skyrim, CONFIG_SKYRIM_LOG_LEVEL);
+
+int board_allow_i2c_passthru(const struct i2c_cmd_desc_t *cmd_desc)
+{
+	/* Passthrough isn't used on Skyrim. */
+	return 0;
+}
