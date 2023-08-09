@@ -787,11 +787,8 @@ static void charge_manager_refresh(void)
 			return;
 
 		/*
-		 * If the port or supplier changed, make an attempt to switch to
-		 * the port. We will re-set the active port on a supplier change
-		 * to give the board-level function another chance to reject
-		 * the port, for example, if the port has become a charge
-		 * source.
+		 * If the port and the supplier are the same, don't switch to
+		 * the port unless active charge port hasn't been set.
 		 */
 		if (active_charge_port_initialized && new_port == charge_port &&
 		    new_supplier == charge_supplier)
@@ -806,6 +803,10 @@ static void charge_manager_refresh(void)
 			trigger_ocpc_reset();
 		}
 
+		/*
+		 * A different port or a supplier was selected. Make an attempt
+		 * to switch to the port.
+		 */
 		if (board_set_active_charge_port(new_port) == EC_SUCCESS) {
 			if (IS_ENABLED(CONFIG_EXTPOWER))
 				board_check_extpower();
@@ -816,8 +817,9 @@ static void charge_manager_refresh(void)
 		ASSERT(new_port != CHARGE_PORT_NONE);
 
 		/*
-		 * Zero the available charge on the rejected port so that
-		 * it is no longer chosen.
+		 * The board rejected the offered port & supplier. Clear the
+		 * available charge on the rejected port so that it is no longer
+		 * chosen.
 		 */
 		for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
 			available_charge[i][new_port].current = 0;
