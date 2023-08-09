@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b6181a9_080bd823",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-09T20:51:58Z",
+      "side": 1,
+      "message": "Only high-level comments. I\u0027ll leave considerations of the actual PPC operations here to people more familiar with this part.",
+      "revId": "28dcd4d62c6c3073f4c84a2b1a9aa18ac4d3b864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f06803_b8812c03",
+        "filename": "board/omnigul/charger.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-09T20:51:58Z",
+      "side": 1,
+      "message": "These overrides are nearly identical to the implementations in `baseboard/brya`. It would be cleaner to just edit those functions to call something like `board_power_supply_reset` and `board_set_power_supply_ready` (made up function names). That way, you wouldn\u0027t need to duplicate code, and you wouldn\u0027t have to make the `pd_` functions overridable in a common header file.\n\nIf this bug potentially affects other brya boards besides omnigul, you\u0027ll need to do something like that anyway.",
+      "revId": "28dcd4d62c6c3073f4c84a2b1a9aa18ac4d3b864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "053e8331_98415b8d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 3605,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-09T20:51:58Z",
+      "side": 1,
+      "message": "These functions are already declared earlier in this file. The existing declarations should just be updated.",
+      "revId": "28dcd4d62c6c3073f4c84a2b1a9aa18ac4d3b864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
