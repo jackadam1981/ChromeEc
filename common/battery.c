@@ -36,6 +36,10 @@ const static int batt_host_shutdown_pct = CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE;
 #define CONFIG_BATTERY_CUTOFF_DELAY_US (1 * SECOND)
 #endif
 
+#ifndef CONFIG_BATTERY_CUTOFF_TIMEOUT_SEC
+#define CONFIG_BATTERY_CUTOFF_TIMEOUT_SEC 8
+#endif
+
 static enum battery_cutoff_states battery_cutoff_state =
 	BATTERY_CUTOFF_STATE_NORMAL;
 
@@ -320,16 +324,35 @@ int battery_cutoff_in_progress(void)
 	return (battery_cutoff_state == BATTERY_CUTOFF_STATE_IN_PROGRESS);
 }
 
+const struct deferred_data __keep pending_cutoff_deferred_data;
 static void pending_cutoff_deferred(void)
 {
+	static int count;
 	int rv;
 
+	if (battery_cutoff_state == BATTERY_CUTOFF_STATE_CUT_OFF) {
+		/* We came back. Repeat until power loss or timeout. */
+		if (--count == 0) {
+			CPRINTS("Cutoff failed");
+			battery_cutoff_state = BATTERY_CUTOFF_STATE_NORMAL;
+			return;
+		}
+
+		CPRINTS("Waiting for power loss (%d/%d)", count,
+			CONFIG_BATTERY_CUTOFF_TIMEOUT_SEC);
+		cflush();
+		hook_call_deferred(&pending_cutoff_deferred_data, 1 * SECOND);
+		return;
+	}
+
 	battery_cutoff_state = BATTERY_CUTOFF_STATE_IN_PROGRESS;
+	count = CONFIG_BATTERY_CUTOFF_TIMEOUT_SEC;
 	rv = board_cut_off_battery();
 
 	if (rv == EC_RES_SUCCESS) {
 		CUTOFFPRINTS("succeeded.");
 		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
+		hook_call_deferred(&pending_cutoff_deferred_data, 1 * SECOND);
 	} else {
 		CUTOFFPRINTS("failed!");
 		battery_cutoff_state = BATTERY_CUTOFF_STATE_NORMAL;
