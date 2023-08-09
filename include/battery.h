@@ -71,14 +71,16 @@ FORWARD_DECLARE_ENUM(battery_present){
 
 /*
  * BATTERY_CUTOFF_STATE_IN_PROGRESS: Battery cutoff has begun but not completed.
- * BATTERY_CUTOFF_STATE_PENDING: Battery cutoff is requested by the
- * AP but hasn't started.
+ * BATTERY_CUTOFF_STATE_CUT_OFF: Battery cutoff has been completed. EC doesn't
+ * see this state unless AC is plugged.
+ * BATTERY_CUTOFF_STATE_SCHEDULED: Battery cutoff is requested by the AP but
+ * hasn't started.
  */
 enum battery_cutoff_states {
 	BATTERY_CUTOFF_STATE_NORMAL = 0,
 	BATTERY_CUTOFF_STATE_IN_PROGRESS,
 	BATTERY_CUTOFF_STATE_CUT_OFF,
-	BATTERY_CUTOFF_STATE_PENDING,
+	BATTERY_CUTOFF_STATE_SCHEDULED,
 };
 
 enum battery_disconnect_state {
