@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3adb1656_f04aece4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-09T17:10:19Z",
+      "side": 1,
+      "message": "This is intermediate commit for removing typec ports for mtlrvpp_pd variant. It does not compile for mtlrvpp_pd. Upstreamed for review purpose only.",
+      "revId": "de0edc4cd10347beb0385d169150f5c5b1b44d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
