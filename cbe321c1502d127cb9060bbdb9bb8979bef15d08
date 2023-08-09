@@ -629,6 +629,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97722d9c_842477d2",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-09T17:36:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "789791ff_e1a3ea07",
+      "range": {
+        "startLine": 587,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 25
+      },
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42692a6b_576fae85",
@@ -695,6 +719,24 @@
       "side": 1,
       "message": "I can change these to enums that makes sense to me but would just make this inconsistent with the rest of the VDO message macros",
       "parentUuid": "d14f426e_1923e8fb",
+      "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d119ff82_54a8def5",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-09T17:36:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3b8e876_87bd3bcc",
       "revId": "cbe321c1502d127cb9060bbdb9bb8979bef15d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
