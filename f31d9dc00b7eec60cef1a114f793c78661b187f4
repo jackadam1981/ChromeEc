@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab5f973_de08ee4b",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2023-08-09T00:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "817ac71d_e92fdd3f",
+      "revId": "f31d9dc00b7eec60cef1a114f793c78661b187f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da5867e6_a0029010",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-08-08T11:47:09Z",
       "side": 1,
       "message": "Maybe simply use\n```\n\treturn get_cbi_fw_config_bc_support() \u003d\u003d BC12_SUPPORT\n```",
+      "revId": "f31d9dc00b7eec60cef1a114f793c78661b187f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00dfa881_edc75b27",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2023-08-09T00:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da5867e6_a0029010",
       "revId": "f31d9dc00b7eec60cef1a114f793c78661b187f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
