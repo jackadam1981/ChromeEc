@@ -16,6 +16,24 @@
       "message": "TODO: look into returning a struct or other more descriptive data type",
       "revId": "45ca1034917b19ab87f53084bd93ac0521f0ba0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f5c20d3_7a603fdb",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-09T18:16:27Z",
+      "side": 1,
+      "message": "Added union type for this return",
+      "parentUuid": "be568ac7_acec1358",
+      "revId": "45ca1034917b19ab87f53084bd93ac0521f0ba0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
