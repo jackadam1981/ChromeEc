@@ -238,7 +238,7 @@ test_static int test_charge_state(void)
 	sb_write(SB_CURRENT, -1000);
 	state = wait_charging_state();
 	TEST_ASSERT(state == LED_PWRS_DISCHARGE);
-	flags = charge_get_flags();
+	flags = charge_get_led_flags();
 	TEST_ASSERT(!(flags & CHARGE_FLAG_EXTERNAL_POWER));
 	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
 
@@ -274,13 +274,13 @@ test_static int test_charge_state(void)
 	sb_write(SB_CURRENT, 1000);
 	state = wait_charging_state();
 	TEST_ASSERT(state == LED_PWRS_CHARGE);
-	flags = charge_get_flags();
+	flags = charge_get_led_flags();
 	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
 	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
 	charge_control(CHARGE_CONTROL_IDLE);
 	state = wait_charging_state();
 	TEST_ASSERT(state == LED_PWRS_FORCED_IDLE);
-	flags = charge_get_flags();
+	flags = charge_get_led_flags();
 	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
 	TEST_ASSERT(flags & CHARGE_FLAG_FORCE_IDLE);
 	charge_control(CHARGE_CONTROL_NORMAL);
@@ -454,7 +454,7 @@ test_static int test_external_funcs(void)
 	/* Connect the AC */
 	test_setup(1);
 
-	flags = charge_get_flags();
+	flags = charge_get_led_flags();
 	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
 	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
 
@@ -462,28 +462,28 @@ test_static int test_external_funcs(void)
 	UART_INJECT("chg\n");
 	state = wait_charging_state();
 	TEST_ASSERT(state == LED_PWRS_CHARGE);
-	flags = charge_get_flags();
+	flags = charge_get_led_flags();
 	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
 	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
 
 	UART_INJECT("chg blahblah\n");
 	state = wait_charging_state();
 	TEST_ASSERT(state == LED_PWRS_CHARGE);
-	flags = charge_get_flags();
+	flags = charge_get_led_flags();
 	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
 	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
 
 	UART_INJECT("chg idle\n");
 	state = wait_charging_state();
 	TEST_ASSERT(state == LED_PWRS_CHARGE);
-	flags = charge_get_flags();
+	flags = charge_get_led_flags();
 	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
 	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
 
 	UART_INJECT("chg idle blargh\n");
 	state = wait_charging_state();
 	TEST_ASSERT(state == LED_PWRS_CHARGE);
-	flags = charge_get_flags();
+	flags = charge_get_led_flags();
 	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
 	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
 
@@ -491,7 +491,7 @@ test_static int test_external_funcs(void)
 	UART_INJECT("chg idle on\n");
 	state = wait_charging_state();
 	TEST_ASSERT(state == LED_PWRS_FORCED_IDLE);
-	flags = charge_get_flags();
+	flags = charge_get_led_flags();
 	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
 	TEST_ASSERT(flags & CHARGE_FLAG_FORCE_IDLE);
 
@@ -499,7 +499,7 @@ test_static int test_external_funcs(void)
 	wait_charging_state();
 	state = wait_charging_state();
 	TEST_ASSERT(state == LED_PWRS_CHARGE);
-	flags = charge_get_flags();
+	flags = charge_get_led_flags();
 	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
 	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
 
