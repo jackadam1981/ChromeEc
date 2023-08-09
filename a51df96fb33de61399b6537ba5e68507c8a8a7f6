@@ -16,6 +16,24 @@
       "message": "I\u0027m in favor of including what we use. If these .c files are using names defined in `devicetree.h`, then they should directly include `devicetree.h`. But if they are also using names defined in, e.g. `devicetree/gpio.h`, then I think they should also directly include `devicetree/gpio.h`.\n\nTo my mind, the only exception would be if `devicetree.h` somehow publicly promises to transitively include `devicetree/*.h`, and including `devicetree.h` is the way you\u0027re supposed to do it upstream.",
       "revId": "a51df96fb33de61399b6537ba5e68507c8a8a7f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b01fa7_7452f71a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2023-08-09T21:41:31Z",
+      "side": 1,
+      "message": "\u003e\u003e the only exception would be if devicetree.h somehow publicly promises to transitively include devicetree/*.h, and including devicetree.h is the way you\u0027re supposed to do it upstream.\n\nThat is my understanding: https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/devicetree.h#L4276-L4289, the leaf files use macro defined in `devicetree.h` but they don\u0027t include it, so it\u0027s the opposite as how you would treat this normally.",
+      "parentUuid": "062ecd31_7c231189",
+      "revId": "a51df96fb33de61399b6537ba5e68507c8a8a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
