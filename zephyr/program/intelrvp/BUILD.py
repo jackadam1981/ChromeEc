@@ -135,6 +135,6 @@ register_intelrvp_project(
     ],
     extra_kconfig_files=[
         here / "zephyr_ap_pwrseq.conf",
-        here / "mtlrvp/mtlrvpp_npcx/prj.conf",
+        here / "mtlrvp/mtlrvpp_pd/prj.conf",
     ],
 )
