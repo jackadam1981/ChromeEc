@@ -22,6 +22,30 @@
       },
       "revId": "011785452d226ed9dd6624e56279bd152bb0ced9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a672ac38_6882d982",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1331,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-08-09T09:28:31Z",
+      "side": 1,
+      "message": "I realized that calling:\n```\nectool --name\u003dcros_tp reboot_ec RO\nectool --name\u003dcros_tp rwsig action abort\n```\n\nIn a sequence should be able to fulfill my request (prevent jump to RW)\nAnd the rwsig action abort will block itself until we get the response from touchpad EC (I didn\u0027t trace the code, but it performed a significantly pause when I typed the abort action)\n\nSo this CL might be not necessary.",
+      "parentUuid": "4d2eddcd_0e637eb7",
+      "range": {
+        "startLine": 1327,
+        "startChar": 2,
+        "endLine": 1331,
+        "endChar": 13
+      },
+      "revId": "011785452d226ed9dd6624e56279bd152bb0ced9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
