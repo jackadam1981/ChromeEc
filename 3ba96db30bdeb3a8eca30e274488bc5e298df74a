@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ae866c3_10a2b564",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-08-09T06:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "876623f3_2573f12a",
+      "revId": "3ba96db30bdeb3a8eca30e274488bc5e298df74a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "291cf416_0cb772ef",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-08-02T23:21:27Z",
       "side": 1,
       "message": "WARNING: Block comments use a trailing */ on a separate line\n    #867: FILE: chip/npcx/uartn.h:67:\n    + * Otherwise, return false */",
+      "revId": "3ba96db30bdeb3a8eca30e274488bc5e298df74a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaedc3f7_06b3cb2d",
+        "filename": "chip/npcx/uartn.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-08-09T06:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "291cf416_0cb772ef",
       "revId": "3ba96db30bdeb3a8eca30e274488bc5e298df74a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
