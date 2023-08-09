@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f3740f3_ac874d3d",
+        "filename": "board/omnigul/charger.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-09T21:59:46Z",
+      "side": 1,
+      "message": "i didn\u0027t mean to dismiss your original suggestion.\nif there are opportunities to reuse code from baseboard/brya,\nwe should 😊",
+      "parentUuid": "e9f0b744_1b07a700",
+      "revId": "28dcd4d62c6c3073f4c84a2b1a9aa18ac4d3b864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "053e8331_98415b8d",
         "filename": "include/usb_pd.h",
         "patchSetId": 21
