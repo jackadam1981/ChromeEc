@@ -82,33 +82,33 @@ static struct als_drv_data_t g_tcs3400_data = {
  */
 static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
 	.calibration.rgb_cal[X] = {
-		.offset = 66, /* 66.47729532 */
-		.coeff[TCS_RED_COEFF_IDX] = FLOAT_TO_FP(0.00222243),
-		.coeff[TCS_GREEN_COEFF_IDX] = FLOAT_TO_FP(0.51877192),
-		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(-0.28664117),
-		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(0.0586877),
+		.offset = 66, /* 66.35219967 */
+		.coeff[TCS_RED_COEFF_IDX] = FLOAT_TO_FP(1.9092209),
+		.coeff[TCS_GREEN_COEFF_IDX] = FLOAT_TO_FP(1.35329329),
+		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(0.56339471),
+		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(-1.2165441),
 		.scale = {
 			.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kr */
 			.cover_scale = ALS_CHANNEL_SCALE(0.61)
 		}
 	},
 	.calibration.rgb_cal[Y] = {
-		.offset = 41, /* 40.95355984 */
-		.coeff[TCS_RED_COEFF_IDX] = FLOAT_TO_FP(-0.15384715),
-		.coeff[TCS_GREEN_COEFF_IDX] = FLOAT_TO_FP(0.40454969),
-		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(-0.237452),
-		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(0.13102168),
+		.offset = 41, /* 40.86278158 */
+		.coeff[TCS_RED_COEFF_IDX] = FLOAT_TO_FP(-1.16442674),
+		.coeff[TCS_GREEN_COEFF_IDX] = FLOAT_TO_FP(3.20779004),
+		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(0.07310824),
+		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(-1.33154316),
 		.scale = {
 			.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kg */
 			.cover_scale = ALS_CHANNEL_SCALE(1.0)
 		},
 	},
 	.calibration.rgb_cal[Z] = {
-		.offset = 5, /* 5.08596128 */
-		.coeff[TCS_RED_COEFF_IDX] = FLOAT_TO_FP(-0.79005309),
-		.coeff[TCS_GREEN_COEFF_IDX] = FLOAT_TO_FP(-0.35553576),
-		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(0.13997097),
-		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(0.40223911),
+		.offset = 5, /* 5.07145996 */
+		.coeff[TCS_RED_COEFF_IDX] = FLOAT_TO_FP(-0.88388482),
+		.coeff[TCS_GREEN_COEFF_IDX] = FLOAT_TO_FP(1.68015881),
+		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(0.63820202),
+		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(-0.96718703),
 		.scale = {
 			.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kb */
 			.cover_scale = ALS_CHANNEL_SCALE(1.6)
