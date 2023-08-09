@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31c4b88e_5e8747ec",
+        "filename": "zephyr/program/skyrim/markarth/include/keyboard_customization.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2023-08-09T02:49:59Z",
+      "side": 1,
+      "message": "Markrth need use matrix scancode_set2 from /markarth/src/keyboard_customization.c, instead of use it from keyboard_8042_sharedlib.c\n\nIf I include \"keyboard_8042_sharedlib.h\" as your said that, ***get_scancode_set2*** and ***set_scancode_set2*** will call matrix scancode_set2 from keyboard_customization.c instead of /markarth/src/keyboard_customization.c.",
+      "parentUuid": "0a845ccc_61083780",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 63
+      },
+      "revId": "ee1a8b6f648e79c31001845588aae21e07a5e3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "111c4b78_3eacf6f1",
         "filename": "zephyr/program/skyrim/markarth/src/keyboard.c",
         "patchSetId": 5
