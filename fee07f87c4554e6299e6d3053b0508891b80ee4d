@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c8db1e_42038759",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-09T10:24:55Z",
+      "side": 1,
+      "message": "Simply disable all tablet mode related things (CONFIG_GMR_TABLET_MODE/CONFIG_GMR_TABLET_MODE/CONFIG_KEYBOARD_TABLET_MODE_SWITCH).\n\nPowerd should be able to correctly block the input event in tablet mode.",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 6
+      },
+      "revId": "fee07f87c4554e6299e6d3053b0508891b80ee4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
