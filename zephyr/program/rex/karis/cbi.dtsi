@@ -12,7 +12,7 @@
 		 */
 		usb-db {
 			enum-name = "FW_USB_DB";
-			start = <12>;
+			start = <0>;
 			size = <3>;
 
 			io-db-unknown {
