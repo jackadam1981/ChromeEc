@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa092d8_dd25765d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-09T19:00:11Z",
+      "side": 1,
+      "message": "Nit: The comment extends past the character limit",
+      "range": {
+        "startLine": 11,
+        "startChar": 68,
+        "endLine": 11,
+        "endChar": 75
+      },
+      "revId": "c6dd7c98918d5d89d862965bcfdc305c8fd4f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3ed1856_46596af1",
+        "filename": "include/debug.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-09T19:00:11Z",
+      "side": 1,
+      "message": "This function is specific to stm32 so maybe the prototype should go in `chip/stm32/debug.h`? That will mean that `test/debug.c` will need to include `chip/stm32/debug.h` too, which will make it very obvious that it is specific to that chip. Maybe its worth being even more explicit and renaming `test/debug.c` to `test/stm32_debug.c`.\n\nAlternatively, we could add a weak ref in `debug.c` that just always returns false with a comment saying it\u0027s not supported? That would prevent a linker error when trying to build this test but may be confusing if `debugger_connected_previously` should return true.",
+      "revId": "c6dd7c98918d5d89d862965bcfdc305c8fd4f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c5fa92_122cc3ee",
+        "filename": "test/debug.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-09T19:00:11Z",
+      "side": 1,
+      "message": "nit: remove commented out code",
+      "range": {
+        "startLine": 12,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "c6dd7c98918d5d89d862965bcfdc305c8fd4f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b67818a8_a010cae6",
+        "filename": "test/debug.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-09T19:00:11Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we explicitly set `debugger_connected_previously` to false here like we do for `debugger_connected`? Technically it shouldn\u0027t be required but I prefer being explicit and, in the very least, we should be consistent.",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "c6dd7c98918d5d89d862965bcfdc305c8fd4f15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
