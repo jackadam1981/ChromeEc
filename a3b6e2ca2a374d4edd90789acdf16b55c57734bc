@@ -56,6 +56,29 @@
       "message": "Kindly ping.\n\nLooks like the shutdown-hook-related tests should be removed too, e.g.\nthe `test_shutdown_hook_in_rw` and `test_shutdown_hook_in_ro` in the test/vboot_efs2/src/main.c.",
       "revId": "a3b6e2ca2a374d4edd90789acdf16b55c57734bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cac5b3a_f2b4e47e",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-09T00:03:19Z",
+      "side": 1,
+      "message": "this leaves the AP in G3... probably not what we want.",
+      "range": {
+        "startLine": 1135,
+        "startChar": 35,
+        "endLine": 1135,
+        "endChar": 60
+      },
+      "revId": "a3b6e2ca2a374d4edd90789acdf16b55c57734bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
