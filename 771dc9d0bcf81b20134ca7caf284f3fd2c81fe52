@@ -22,6 +22,30 @@
       },
       "revId": "771dc9d0bcf81b20134ca7caf284f3fd2c81fe52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a445e787_f1492feb",
+        "filename": "common/cec.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-09T22:43:22Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not sure what you mean. The assumption is \"the host should read the send result before starting the next transmission\", which is stated above.",
+      "parentUuid": "ba2407b9_9623a152",
+      "range": {
+        "startLine": 239,
+        "startChar": 27,
+        "endLine": 239,
+        "endChar": 38
+      },
+      "revId": "771dc9d0bcf81b20134ca7caf284f3fd2c81fe52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

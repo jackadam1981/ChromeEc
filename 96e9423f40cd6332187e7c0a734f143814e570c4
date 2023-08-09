@@ -189,6 +189,30 @@
       },
       "revId": "96e9423f40cd6332187e7c0a734f143814e570c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "721c690e_ee74068b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 11329,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-09T22:43:22Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t think that\u0027s possible because the EC will return EC_RES_BUSY if it already has a transmission in progress, right?",
+      "parentUuid": "3abf6872_d9ad3e91",
+      "range": {
+        "startLine": 11326,
+        "startChar": 0,
+        "endLine": 11329,
+        "endChar": 3
+      },
+      "revId": "96e9423f40cd6332187e7c0a734f143814e570c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
