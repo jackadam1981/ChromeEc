@@ -17,6 +17,8 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "keyboard_scan.h"
+#include "led_common.h"
+#include "led_onoff_states.h"
 #include "math_util.h"
 #include "timer.h"
 #include "usb_pd.h"
@@ -43,6 +45,14 @@ const static int batt_host_shutdown_pct = CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE;
 
 #ifndef CONFIG_BATTERY_CUTOFF_POLL_MSEC
 #define CONFIG_BATTERY_CUTOFF_POLL_MSEC 250
+#endif
+
+#ifndef CONFIG_BATTERY_CUTOFF_LED_COLOR_ON
+#define CONFIG_BATTERY_CUTOFF_LED_COLOR_ON EC_LED_COLOR_AMBER
+#endif
+
+#ifndef CONFIG_BATTERY_CUTOFF_LED_COLOR_OFF
+#define CONFIG_BATTERY_CUTOFF_LED_COLOR_OFF EC_LED_COLOR_INVALID
 #endif
 
 static enum battery_cutoff_states battery_cutoff_state =
@@ -330,6 +340,8 @@ int battery_cutoff_in_progress(void)
 }
 
 const struct deferred_data __keep pending_cutoff_deferred_data;
+const struct deferred_data __keep battery_cutoff_ready_data;
+static int led_auto;
 
 static void battery_cutoff_clear(void)
 {
@@ -344,10 +356,13 @@ static int battery_cutoff_start(void)
 	/* Reset previous attempt */
 	battery_cutoff_clear();
 
+	led_auto = led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED);
+
 	/* Send a request to the battery. */
 	rv = board_cut_off_battery();
 	if (rv == EC_RES_SUCCESS) {
 		CUTOFFPRINTS("started");
+		hook_call_deferred(&battery_cutoff_ready_data, -1);
 		/* Start monitor loop */
 		hook_call_deferred(&pending_cutoff_deferred_data, 0);
 	} else {
@@ -355,6 +370,30 @@ static int battery_cutoff_start(void)
 	}
 
 	return rv;
+}
+
+static void battery_cutoff_end(void)
+{
+	if (led_auto)
+		led_auto_control(EC_LED_ID_BATTERY_LED, 1);
+}
+
+static void battery_cutoff_led(int count)
+{
+	if (!IS_ENABLED(CONFIG_LED_ONOFF_STATES))
+		return;
+
+	/* Disable auto-control */
+	led_auto_control(EC_LED_ID_BATTERY_LED, 0);
+
+	/*
+	 * TODO: Provide default colors (EC_LED_COLOR_CUTOFF_ON/OFF) and let
+	 * boards override it.
+	 */
+	if (count % 2)
+		led_set_color_battery(CONFIG_BATTERY_CUTOFF_LED_COLOR_ON);
+	else
+		led_set_color_battery(CONFIG_BATTERY_CUTOFF_LED_COLOR_OFF);
 }
 
 /*
@@ -379,6 +418,7 @@ static void pending_cutoff_deferred(void)
 			battery_cutoff_state = BATTERY_CUTOFF_STATE_NORMAL;
 			CPRINTS("Cutoff failed");
 			cflush();
+			battery_cutoff_end();
 			return;
 		}
 
@@ -394,6 +434,7 @@ static void pending_cutoff_deferred(void)
 			battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
 			CPRINTS("Battery cutoff complete");
 			cflush();
+			battery_cutoff_end();
 			return;
 		}
 
@@ -411,6 +452,7 @@ static void pending_cutoff_deferred(void)
 
 	CPRINTS("Waiting for cutoff completion (%d/%d)", count, count_start);
 	cflush();
+	battery_cutoff_led(count);
 	hook_call_deferred(&pending_cutoff_deferred_data, poll_msec);
 }
 DECLARE_DEFERRED(pending_cutoff_deferred);
@@ -431,6 +473,22 @@ static void battery_on_ac_change(void)
 	}
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, battery_on_ac_change, HOOK_PRIO_DEFAULT);
+
+static void battery_cutoff_ready(void)
+{
+	static uint8_t count;
+
+	battery_cutoff_led(count++);
+	hook_call_deferred(&battery_cutoff_ready_data, 1 * SECOND);
+}
+DECLARE_DEFERRED(battery_cutoff_ready);
+
+static void battery_cutoff_init(void)
+{
+	if (keyboard_scan_get_boot_keys() & BOOT_KEY_LEFT_ALT)
+		battery_cutoff_ready();
+}
+DECLARE_HOOK(HOOK_INIT, battery_cutoff_init, HOOK_PRIO_DEFAULT);
 
 static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
 {
