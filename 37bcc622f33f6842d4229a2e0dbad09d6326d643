@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b384ca0_685eba21",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-09T23:02:05Z",
+      "side": 1,
+      "message": "Because `host` is already a string.\n\nUltimately, we need a list of strings, not a single string of the entire command and args.",
+      "parentUuid": "c54dd56b_fcafbb83",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ed36569_133af50f",
         "filename": "util/fptool.py",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c326203d_92e6bee8",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-09T23:02:05Z",
+      "side": 1,
+      "message": "We could, but `f\"{image}\"` is simply obscuring the underlying operation, which is `str(image)`. The var `image` is a Path object, so we need to invoke the __str__ function, somehow, either `str()` or f-string.",
+      "parentUuid": "6545145d_15cce44b",
+      "range": {
+        "startLine": 75,
+        "startChar": 39,
+        "endLine": 75,
+        "endChar": 49
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a771679_ad67e86f",
         "filename": "util/fptool.py",
         "patchSetId": 2
@@ -95,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8844dccc_a7875964",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-09T23:02:05Z",
+      "side": 1,
+      "message": "It is an optional argument. You could just not provide an image file. In this case it will flash the rootfs default firmware.",
+      "parentUuid": "1a771679_ad67e86f",
+      "range": {
+        "startLine": 102,
+        "startChar": 17,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1d064eb_65b52477",
         "filename": "util/fptool.py",
         "patchSetId": 2
@@ -106,6 +178,30 @@
       "writtenOn": "2023-08-09T17:41:46Z",
       "side": 1,
       "message": "why is this with `--`?",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 15
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "823ea5af_12723391",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-09T23:02:05Z",
+      "side": 1,
+      "message": "Because it is an argument that has a reasonable default and is less likely to be overridden. Using `--` args for lots of required parameters is unbecoming of a good easily usable CLI (in my opinion).",
+      "parentUuid": "b1d064eb_65b52477",
       "range": {
         "startLine": 112,
         "startChar": 9,
