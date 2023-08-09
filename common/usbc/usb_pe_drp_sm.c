@@ -3,6 +3,12 @@
  * found in the LICENSE file.
  */
 
+/*
+ * TODO(b/272518464): Work around coreboot GCC preprocessor bug.
+ * #line marks the *next* line, so it is off by one.
+ */
+#line 11
+
 #include "atomic.h"
 #include "battery.h"
 #include "battery_smart.h"
@@ -680,14 +686,14 @@ test_export_static void set_state_pe(const int port,
 static void pe_set_dpm_curr_request(const int port, const int request);
 /*
  * The spec. revision is used to index into this array.
- *  PD 1.0 (VDO 1.0) - return VDM_VER10
- *  PD 2.0 (VDO 1.0) - return VDM_VER10
- *  PD 3.0 (VDO 2.0) - return VDM_VER20
+ *  PD 1.0 (VDO 1.0) - return SVDM_VER_1_0
+ *  PD 2.0 (VDO 1.0) - return SVDM_VER_1_0
+ *  PD 3.0 (VDO 2.0) - return SVDM_VER_1_0
  */
 static const uint8_t vdo_ver[] = {
-	[PD_REV10] = VDM_VER10,
-	[PD_REV20] = VDM_VER10,
-	[PD_REV30] = VDM_VER20,
+	[PD_REV10] = SVDM_VER_1_0,
+	[PD_REV20] = SVDM_VER_1_0,
+	[PD_REV30] = SVDM_VER_2_0,
 };
 
 int pd_get_rev(int port, enum tcpci_msg_type type)
@@ -702,7 +708,7 @@ int pd_get_vdo_ver(int port, enum tcpci_msg_type type)
 	if (rev < PD_REV30)
 		return vdo_ver[rev];
 	else
-		return VDM_VER20;
+		return SVDM_VER_2_0;
 }
 
 static void pe_set_ready_state(int port)
@@ -2082,8 +2088,9 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 		    PE_CHK_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP))) {
 		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 		PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
-		set_state_pe(port, PE_DRS_SEND_SWAP);
-		return true;
+
+		pd_dpm_request(port, DPM_REQUEST_DR_SWAP);
+		return false;
 	}
 
 	/*
