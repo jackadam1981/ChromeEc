@@ -910,30 +910,70 @@ static void sustain_battery_soc(void)
 	soc = charge_get_display_charge() / 10;
 
 	/*
-	 * When lower < upper, the sustainer discharges using DISCHARGE. When
-	 * lower == upper, the sustainer discharges using IDLE. The following
-	 * switch statement handle both cases but in reality either DISCHARGE
-	 * or IDLE is used but not both.
+	 * The sustain range is defined by 'lower' and 'upper' where the equal
+	 * values are inclusive:
+	 *
+	 * |------------NORMAL------------+--IDLE--+---DISCHARGE---|
+	 * 0%                             ^        ^              100%
+	 *                              lower    upper
+	 *
+	 * The switch statement below allows the sustainer to start with any soc
+	 * (0% ~ 100%) and any previous lower & upper limits. It sets mode to
+	 * NORMAL to charge till the soc hits the upper limit or sets mode to
+	 * DISCHARGE to discharge till the soc hits the upper limit.
+	 *
+	 * Once the soc enters in the sustain range, it'll switch to IDLE. In
+	 * IDLE mode, the system power is supplied from the AC. Thus, the soc
+	 * normally should stay in the sustain range unless there is high load
+	 * on the system or the charger is too weak.
 	 */
 	switch (mode) {
 	case CHARGE_CONTROL_NORMAL:
-		/* Going up. Always DISCHARGE if the soc is above upper. */
-		if (sustain_soc.lower == soc && soc == sustain_soc.upper) {
+		/* Currently charging */
+		if (sustain_soc.upper == soc) {
+			/*
+			 * We've been charging and finally reached the upper.
+			 * Let's switch to IDLE to stay.
+			 */
 			mode = CHARGE_CONTROL_IDLE;
 		} else if (sustain_soc.upper < soc) {
+			/*
+			 * We come here only if the soc is already above the
+			 * upper limit at the time the sustainer started.
+			 */
 			mode = CHARGE_CONTROL_DISCHARGE;
 		}
 		break;
 	case CHARGE_CONTROL_IDLE:
 		/* Discharging naturally */
 		if (soc < sustain_soc.lower)
+			/*
+			 * Presumably, we stayed in the sustain range for a
+			 * while but finally fell off the range. Let's charge to
+			 * the upper.
+			 */
 			mode = CHARGE_CONTROL_NORMAL;
+		else if (sustain_soc.upper < soc)
+			/*
+			 * This can happen only if sustainer is restarted with
+			 * decreased upper limit. Let's discharge to the upper.
+			 */
+			mode = CHARGE_CONTROL_DISCHARGE;
 		break;
 	case CHARGE_CONTROL_DISCHARGE:
 		/* Discharging actively. */
-		if (sustain_soc.lower == soc && soc == sustain_soc.upper) {
+		if (soc <= sustain_soc.upper) {
+			/*
+			 * Normal case. We've been discharging and finally
+			 * reached the upper. Let's switch to IDLE to stay.
+			 */
 			mode = CHARGE_CONTROL_IDLE;
 		} else if (soc < sustain_soc.lower) {
+			/*
+			 * This can happen only if sustainer is restarted with
+			 * increase lower limit. Let's charge to the upper (then
+			 * switch to IDLE).
+			 */
 			mode = CHARGE_CONTROL_NORMAL;
 		}
 		break;
