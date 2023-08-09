@@ -828,29 +828,109 @@ test_static int test_low_battery_hostevents(void)
 	return EC_SUCCESS;
 }
 
-test_static int test_battery_sustainer(void)
+test_static int battery_sustainer_set(int version, int8_t lower, int8_t upper,
+				      enum ec_charge_control_flag flags)
 {
 	struct ec_params_charge_control p;
+
+	p.cmd = EC_CHARGE_CONTROL_CMD_SET;
+	p.mode = CHARGE_CONTROL_NORMAL;
+	p.sustain_soc.lower = lower;
+	p.sustain_soc.upper = upper;
+	p.flags = flags;
+	return test_send_host_command(EC_CMD_CHARGE_CONTROL, version, &p,
+				      sizeof(p), NULL, 0);
+}
+
+test_static int battery_sustainer_get(int version,
+				      struct ec_response_charge_control *r)
+{
+	struct ec_params_charge_control p;
+
+	p.cmd = EC_CHARGE_CONTROL_CMD_GET;
+	return test_send_host_command(EC_CMD_CHARGE_CONTROL, version, &p,
+				      sizeof(p), r, sizeof(*r));
+}
+
+test_static int test_hc_charge_control_v2(void)
+{
 	struct ec_response_charge_control r;
 	int rv;
 
 	test_setup(1);
 
-	/* Enable sustainer */
-	p.cmd = EC_CHARGE_CONTROL_CMD_SET;
-	p.mode = CHARGE_CONTROL_NORMAL;
-	p.sustain_soc.lower = 79;
-	p.sustain_soc.upper = 80;
-	rv = test_send_host_command(EC_CMD_CHARGE_CONTROL, 2, &p, sizeof(p),
-				    NULL, 0);
+	ccprintf("Test v2 command\n");
+	rv = battery_sustainer_set(2, 79, 80, 0);
 	TEST_ASSERT(rv == EC_RES_SUCCESS);
-
-	p.cmd = EC_CHARGE_CONTROL_CMD_GET;
-	rv = test_send_host_command(EC_CMD_CHARGE_CONTROL, 2, &p, sizeof(p), &r,
-				    sizeof(r));
-	TEST_ASSERT(rv == EC_RES_SUCCESS);
+	rv = battery_sustainer_get(2, &r);
 	TEST_ASSERT(r.sustain_soc.lower == 79);
 	TEST_ASSERT(r.sustain_soc.upper == 80);
+	TEST_ASSERT(r.flags == 0);
+
+	ccprintf("Test v2 lower > upper\n");
+	rv = battery_sustainer_set(2, 80, 79, 0);
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+
+	ccprintf("Test v2 lower < 0\n");
+	rv = battery_sustainer_set(2, -100, 80, 0);
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+
+	ccprintf("Test v2 100 < upper\n");
+	rv = battery_sustainer_set(2, -100, 80, 0);
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+
+	return EC_SUCCESS;
+}
+
+test_static int test_hc_charge_control_v3(void)
+{
+	struct ec_response_charge_control r;
+	int rv;
+
+	test_setup(1);
+
+	ccprintf("Test v3 command\n");
+	rv = battery_sustainer_set(3, 79, 80, 0);
+	TEST_ASSERT(rv == EC_RES_SUCCESS);
+	rv = battery_sustainer_get(3, &r);
+	TEST_ASSERT(r.sustain_soc.lower == 79);
+	TEST_ASSERT(r.sustain_soc.upper == 80);
+	TEST_ASSERT(r.flags == 0);
+
+	ccprintf("Test v3 command with flags\n");
+	rv = battery_sustainer_set(3, 79, 80, EC_CHARGE_CONTROL_FLAG_NO_IDLE);
+	TEST_ASSERT(rv == EC_RES_SUCCESS);
+	rv = battery_sustainer_get(3, &r);
+	TEST_ASSERT(r.sustain_soc.lower == 79);
+	TEST_ASSERT(r.sustain_soc.upper == 80);
+	TEST_ASSERT(r.flags == EC_CHARGE_CONTROL_FLAG_NO_IDLE);
+
+	ccprintf("Test v3 lower > upper\n");
+	rv = battery_sustainer_set(3, 80, 79, 0);
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+
+	ccprintf("Test v3 lower < 0\n");
+	rv = battery_sustainer_set(3, -100, 80, 0);
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+
+	ccprintf("Test v3 100 < upper\n");
+	rv = battery_sustainer_set(3, 79, 101, 0);
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+
+	return EC_SUCCESS;
+}
+
+test_static int run_battery_sustainer_no_idle(int version)
+{
+	const enum ec_charge_control_flag flags =
+		version > 2 ? EC_CHARGE_CONTROL_FLAG_NO_IDLE : 0;
+	int rv;
+
+	test_setup(1);
+
+	/* Enable sustainer */
+	rv = battery_sustainer_set(version, 79, 80, flags);
+	TEST_ASSERT(rv == EC_RES_SUCCESS);
 
 	/* Check mode transition as the SoC changes. */
 
@@ -902,12 +982,7 @@ test_static int test_battery_sustainer(void)
 	is_full = 1;
 	wait_charging_state();
 	/* Enable sustainer. */
-	p.cmd = EC_CHARGE_CONTROL_CMD_SET;
-	p.mode = CHARGE_CONTROL_NORMAL;
-	p.sustain_soc.lower = 79;
-	p.sustain_soc.upper = 80;
-	rv = test_send_host_command(EC_CMD_CHARGE_CONTROL, 2, &p, sizeof(p),
-				    NULL, 0);
+	rv = battery_sustainer_set(version, 79, 80, flags);
 	TEST_ASSERT(rv == EC_RES_SUCCESS);
 	wait_charging_state();
 	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_DISCHARGE);
@@ -924,12 +999,7 @@ test_static int test_battery_sustainer(void)
 	gpio_set_level(GPIO_AC_PRESENT, 1);
 	wait_charging_state();
 	/* Enable sustainer. */
-	p.cmd = EC_CHARGE_CONTROL_CMD_SET;
-	p.mode = CHARGE_CONTROL_NORMAL;
-	p.sustain_soc.lower = 79;
-	p.sustain_soc.upper = 80;
-	rv = test_send_host_command(EC_CMD_CHARGE_CONTROL, 2, &p, sizeof(p),
-				    NULL, 0);
+	rv = battery_sustainer_set(version, 79, 80, flags);
 	TEST_ASSERT(rv == EC_RES_SUCCESS);
 	wait_charging_state();
 	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_DISCHARGE);
@@ -938,20 +1008,29 @@ test_static int test_battery_sustainer(void)
 	return EC_SUCCESS;
 }
 
-test_static int test_battery_sustainer_discharge_idle(void)
+test_static int test_battery_sustainer_without_idle(void)
 {
-	struct ec_params_charge_control p;
+	ccprintf("Test v2 lower < upper\n");
+	run_battery_sustainer_no_idle(2);
+
+	ccprintf("Test v3 lower < upper\n");
+	run_battery_sustainer_no_idle(3);
+
+	return EC_SUCCESS;
+}
+
+test_static int run_battery_sustainer_with_idle(int version)
+{
 	int rv;
 
 	test_setup(1);
 
 	/* Enable sustainer */
-	p.cmd = EC_CHARGE_CONTROL_CMD_SET;
-	p.mode = CHARGE_CONTROL_NORMAL;
-	p.sustain_soc.lower = 80;
-	p.sustain_soc.upper = 80;
-	rv = test_send_host_command(EC_CMD_CHARGE_CONTROL, 2, &p, sizeof(p),
-				    NULL, 0);
+	if (version > 2)
+		rv = battery_sustainer_set(version, 79, 80, 0);
+	else
+		/* V2 needs lower == upper to enable IDLE. */
+		rv = battery_sustainer_set(version, 80, 80, 0);
 	TEST_ASSERT(rv == EC_RES_SUCCESS);
 
 	/* Check mode transition as the SoC changes. */
@@ -987,18 +1066,24 @@ test_static int test_battery_sustainer_discharge_idle(void)
 	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL);
 
 	/* Disable sustainer */
-	p.cmd = EC_CHARGE_CONTROL_CMD_SET;
-	p.mode = CHARGE_CONTROL_NORMAL;
-	p.sustain_soc.lower = -1;
-	p.sustain_soc.upper = -1;
-	rv = test_send_host_command(EC_CMD_CHARGE_CONTROL, 2, &p, sizeof(p),
-				    NULL, 0);
+	rv = battery_sustainer_set(version, -1, -1, 0);
 	TEST_ASSERT(rv == EC_RES_SUCCESS);
 
 	/* This time, mode will stay in NORMAL even when upper < SoC. */
 	display_soc = 810;
 	wait_charging_state();
 	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL);
+
+	return EC_SUCCESS;
+}
+
+test_static int test_battery_sustainer_with_idle(void)
+{
+	ccprintf("Test v2 lower == upper\n");
+	run_battery_sustainer_with_idle(2);
+
+	ccprintf("Test v3 lower == upper\n");
+	run_battery_sustainer_with_idle(3);
 
 	return EC_SUCCESS;
 }
@@ -1014,9 +1099,11 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_hc_charge_state);
 	RUN_TEST(test_hc_current_limit);
 	RUN_TEST(test_hc_current_limit_v1);
+	RUN_TEST(test_hc_charge_control_v2);
+	RUN_TEST(test_hc_charge_control_v3);
 	RUN_TEST(test_low_battery_hostevents);
-	RUN_TEST(test_battery_sustainer);
-	RUN_TEST(test_battery_sustainer_discharge_idle);
+	RUN_TEST(test_battery_sustainer_without_idle);
+	RUN_TEST(test_battery_sustainer_with_idle);
 	RUN_TEST(test_deep_charge_battery);
 
 	test_print_result();
