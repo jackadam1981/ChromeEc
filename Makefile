@@ -275,10 +275,10 @@ include chip/$(CHIP)/build.mk
 include core/build.mk
 include core/$(CORE)/build.mk
 include common/build.mk
+-include private/build.mk
 include driver/build.mk
 include fuzz/build.mk
 include power/build.mk
--include private/build.mk
 -include private-kandou/build.mk
 ifneq ($(PDIR),)
 include $(PDIR)/build.mk
