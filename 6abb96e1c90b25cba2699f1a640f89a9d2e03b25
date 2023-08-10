@@ -33,6 +33,24 @@
       "message": "@michaelsplaw@google.com",
       "revId": "6abb96e1c90b25cba2699f1a640f89a9d2e03b25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "633a76eb_689755ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2023-08-10T15:20:03Z",
+      "side": 1,
+      "message": "The -1 code coverage vote needs to be manually deleted. CL should pass now.",
+      "parentUuid": "91d6ceab_78733331",
+      "revId": "6abb96e1c90b25cba2699f1a640f89a9d2e03b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
