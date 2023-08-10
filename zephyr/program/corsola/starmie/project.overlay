@@ -312,7 +312,7 @@
 		compatible = "cros-ec,led-policy";
 
 		/* STARMIE LED bat charge */
-		bat-power-state-charge-1v1-1 {
+		bat-power-state-charge {
 			charge-state = "LED_PWRS_CHARGE";
 			/* Battery percent range (>= Empty, <= 94%) */
 			batt-lvl = <BATTERY_LEVEL_EMPTY 94>;
@@ -321,7 +321,7 @@
 			};
 		};
 
-		bat-power-state-charge-1v1-2 {
+		bat-power-state-charge-1v1-1 {
 			charge-state = "LED_PWRS_CHARGE";
 			/* Battery percent range (>= 95) */
 			batt-lvl = <95 100>;
