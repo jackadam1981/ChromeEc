@@ -130,6 +130,7 @@
 	console {
 		compatible = "ec-console";
 		disabled = "DPTF", "PWM", "motionsense",
+			   "port80",
 			   "keyboard", "keyscan";
 		/* disabled = "PWM"; */
 	};
