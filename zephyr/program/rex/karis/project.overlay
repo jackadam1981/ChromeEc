@@ -27,6 +27,8 @@
 		/delete-node/ ec_spare_gpioc7;
 		/delete-node/ usb_c1_rst_odl;
 		/delete-node/ usb_c0_rt_rst_ls_l;
+		/delete-node/ led_3_l;
+		/delete-node/ led_4_l;
 
 		gpio_usb_c0_frs_en: usb_c0_frs_en {
 			gpios = <&gpio4 2 GPIO_OUTPUT_LOW>;
