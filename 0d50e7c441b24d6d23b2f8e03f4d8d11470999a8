@@ -16,6 +16,23 @@
       "message": "Once we resolve this last comment I\u0027m going to reupload this change to change owner to myself so I can work on the code-coverage portion",
       "revId": "0d50e7c441b24d6d23b2f8e03f4d8d11470999a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73dde75_20ab04a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 50
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-10T16:45:09Z",
+      "side": 1,
+      "message": "The build error from the failed CQ run:\n```\ncommon/usbc/dp_alt_mode.c:602:14: error: variable \u0027cable_type\u0027 is used uninitialized whenever \u0027if\u0027 condition is false [-Werror,-Wsometimes-uninitialized]\n                } else if (cable_flags.active) {\n                           ^~~~~~~~~~~~~~~~~~\ncommon/usbc/dp_alt_mode.c:610:47: note: uninitialized use occurs here\n                payload[1] \u003d VDO_DP2_1_CFG(DPAM_VERSION_21, cable_type,\n                                                            ^~~~~~~~~~\ninclude/usb_dp_alt_mode.h:106:34: note: expanded from macro \u0027VDO_DP2_1_CFG\u0027\n        (((dpam_version)\u00260x3) \u003c\u003c 30 | ((cable)\u00260x3) \u003c\u003c 28 |              \\\n                                        ^~~~~\ncommon/usbc/dp_alt_mode.c:602:10: note: remove the \u0027if\u0027 if its condition is always true\n                } else if (cable_flags.active) {\n                       ^~~~~~~~~~~~~~~~~~~~~~~~\ncommon/usbc/dp_alt_mode.c:596:3: note: variable \u0027cable_type\u0027 is declared here\n                enum dp21_cable_type cable_type;\n                ^\n1 error generated.\nmake[2]: *** [Makefile.rules:629: build/host/usb_tcpm_v2_rev20_fuzz/RO/common/usbc/dp_alt_mode.o] Error 1\nmake[2]: *** Waiting for unfinished jobs....\n```",
+      "revId": "0d50e7c441b24d6d23b2f8e03f4d8d11470999a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
