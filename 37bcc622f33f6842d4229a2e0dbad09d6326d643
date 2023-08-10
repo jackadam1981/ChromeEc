@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70145ac4_7df1a53e",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-10T22:10:53Z",
+      "side": 1,
+      "message": "I have seen this being used on strings as well (https://www.geeksforgeeks.org/formatted-string-literals-f-strings-python/). My understanding is this might apply to readability as well.",
+      "parentUuid": "c54dd56b_fcafbb83",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ed36569_133af50f",
         "filename": "util/fptool.py",
         "patchSetId": 2
@@ -144,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdf7bae7_6d7e82f8",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-10T22:10:53Z",
+      "side": 1,
+      "message": "I thought since your are using f-format, it is better to be consistent",
+      "parentUuid": "c326203d_92e6bee8",
+      "range": {
+        "startLine": 75,
+        "startChar": 39,
+        "endLine": 75,
+        "endChar": 49
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a771679_ad67e86f",
         "filename": "util/fptool.py",
         "patchSetId": 2
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "It is an optional argument. You could just not provide an image file. In this case it will flash the rootfs default firmware.",
       "parentUuid": "1a771679_ad67e86f",
+      "range": {
+        "startLine": 102,
+        "startChar": 17,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a55f1c54_a006740e",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-10T22:10:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8844dccc_a7875964",
       "range": {
         "startLine": 102,
         "startChar": 17,
@@ -226,6 +298,30 @@
       "side": 1,
       "message": "Because it is an argument that has a reasonable default and is less likely to be overridden. Using `--` args for lots of required parameters is unbecoming of a good easily usable CLI (in my opinion).",
       "parentUuid": "b1d064eb_65b52477",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 15
+      },
+      "revId": "37bcc622f33f6842d4229a2e0dbad09d6326d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bf24027_1c4fa0c6",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-10T22:10:53Z",
+      "side": 1,
+      "message": "just to understand, if someone wants to invoke the `port` argument, is this the proper way:\n`./util/fptool.py remote dut1 flash port 22`\nor\n`./util/fptool.py remote dut1 flash --port 22`",
+      "parentUuid": "823ea5af_12723391",
       "range": {
         "startLine": 112,
         "startChar": 9,
