@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd989533_1d2d1d96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 52
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-10T22:58:39Z",
+      "side": 1,
+      "message": "firmware-ec-cq is now failing with the same message that firmware-zephyr-cq was already failing. My guess is that this is orthogonal to anything you did, and hopefully `repo sync` and rebasing would fix it. I\u0027ll ask someone in infra.",
+      "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
