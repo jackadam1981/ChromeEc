@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9429b1aa_96d99113",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 51
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-10T21:56:21Z",
+      "side": 1,
+      "message": "firmware-ec-cq failure:\n```\nld.lld: error: undefined symbol: get_tbt_cable_speed\n\u003e\u003e\u003e referenced by dp_alt_mode.c:949 (/mnt/host/source/src/platform/ec/common/usbc/dp_alt_mode.c:949)\n\u003e\u003e\u003e               libec.a.2.o:(dp_get_cable_bit_rate) in archive build/host/usb_tcpm_v2_rev20_fuzz/libec.a\nclang++: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[2]: *** [Makefile.rules:617: build/host/usb_tcpm_v2_rev20_fuzz/usb_tcpm_v2_rev20_fuzz.exe] Error 1\nmake[1]: *** [Makefile.rules:400: host-usb_tcpm_v2_rev20_fuzz] Error 2\n```\n\nfirmware-zephyr-cq failure:\n```\nap-firmware-config-0.0.1-r1135: 14:37:39.116 \u003e\u003e\u003e Compiling source in /var/tmp/portage/sys-firmware/ap-firmware-config-0.0.1-r1135/work/ap-firmware-config-0.0.1 ...\nap-firmware-config-0.0.1-r1135: usage: cros ap [-h]\nap-firmware-config-0.0.1-r1135:                [--log-level {fatal,critical,error,warning,notice,info,debug}]\nap-firmware-config-0.0.1-r1135:                [--log-format LOG_FORMAT] [-v] [--debug] [--color] [--no-color]\nap-firmware-config-0.0.1-r1135:                {build,read,flash,clean} ...\nap-firmware-config-0.0.1-r1135: cros ap: error: argument ap_command: invalid choice: \u0027dump-config\u0027 (choose from \u0027build\u0027, \u0027read\u0027, \u0027flash\u0027, \u0027clean\u0027)\nap-firmware-config-0.0.1-r1135:  * ERROR: sys-firmware/ap-firmware-config-0.0.1-r1135::chromiumos failed (compile phase):\nap-firmware-config-0.0.1-r1135:  *   cros ap dump-config failed\nap-firmware-config-0.0.1-r1135:  * \nap-firmware-config-0.0.1-r1135:  * Call stack:\nap-firmware-config-0.0.1-r1135:  *               ebuild.sh, line  125:  Called src_compile\nap-firmware-config-0.0.1-r1135:  *             environment, line 4356:  Called die\nap-firmware-config-0.0.1-r1135:  * The specific snippet of code:\nap-firmware-config-0.0.1-r1135:  *       \"${S}/chromite/bin/cros\" ap dump-config -o \"${T}/fw-config.json\" || die \"cros ap dump-config failed\"\n```\n\nI\u0027m not sure what would have caused the second one. I\u0027d suggest trying to fix the first one and hope the second one goes away on its own.",
+      "revId": "b13035cbba4d2c9d212ec134ad0e672891cb2ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
