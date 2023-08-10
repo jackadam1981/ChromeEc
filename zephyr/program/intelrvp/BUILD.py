@@ -95,6 +95,7 @@ register_intelrvp_project(
     extra_kconfig_files=[
         here / "zephyr_ap_pwrseq.conf",
         here / "mtlrvp/mtlrvpp_mchp/prj.conf",
+        here / "mtlrvp/typec.conf",
     ],
 )
 
@@ -105,10 +106,12 @@ register_intelrvp_project(
     extra_dts_overlays=[
         here / "mtlrvp/mtlrvpp_npcx/fan.dts",
         here / "mtlrvp/mtlrvpp_npcx/gpio.dts",
+        here / "mtlrvp/mtlrvpp_npcx/typec_gpio.dts",
         here / "mtlrvp/mtlrvpp_npcx/keyboard.dts",
         here / "mtlrvp/mtlrvpp_npcx/interrupts.dts",
         here / "mtlrvp/ioex.dts",
         here / "mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        here / "mtlrvp/mtlrvpp_npcx/typec.dts",
         here / "mtlrvp/mtlrvpp_npcx/mtlrvp_npcx_power_signals.dts",
         here / "adlrvp/adlrvp_npcx/temp_sensor.dts",
         here / "mtlrvp/usbc.dts",
@@ -116,5 +119,6 @@ register_intelrvp_project(
     extra_kconfig_files=[
         here / "zephyr_ap_pwrseq.conf",
         here / "mtlrvp/mtlrvpp_npcx/prj.conf",
+        here / "mtlrvp/typec.conf",
     ],
 )
