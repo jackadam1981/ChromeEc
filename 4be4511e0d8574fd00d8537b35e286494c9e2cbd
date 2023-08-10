@@ -207,6 +207,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad642726_83b30017",
+        "filename": "zephyr/zmake/zmake/rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-08-10T20:59:19Z",
+      "side": 1,
+      "message": "Got it.  Is it possible to do the operation prior to packing then?  We might need to do the padding first.\n\nAlternatively, part of the point of doing it in fmap was that it can be handled outside the build system.  It would be ideal if signing was not part of zmake at all and was handled after the build.\n\nHow does this integrate with the typical image signing pipeline?  Is it done on the signers?  Would be nice to have a doc on it.",
+      "parentUuid": "da3c7c0f_9269740d",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2a9c808_5eb27892",
         "filename": "zephyr/zmake/zmake/rwsig.py",
         "patchSetId": 4
