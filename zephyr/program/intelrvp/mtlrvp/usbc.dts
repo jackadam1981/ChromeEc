@@ -11,8 +11,6 @@
 		usbc_port0: port0@0 {
 			compatible = "named-usbc-port";
 			reg = <0>;
-			tcpc = <&tcpc_port0>;
-			ppc = <&ppc_port0>;
 			chg = <&charger>;
 			usb_mux_chain_0: usb-mux-chain-0 {
 				compatible = "cros-ec,usb-mux-chain";
@@ -34,8 +32,6 @@
 		usbc_port1: port1@1 {
 			compatible = "named-usbc-port";
 			reg = <1>;
-			tcpc = <&tcpc_port1>;
-			ppc = <&ppc_port1>;
 			usb_mux_chain_1: usb-mux-chain-1 {
 				compatible = "cros-ec,usb-mux-chain";
 				usb-muxes = <&usb_c1_hb_retimer
@@ -61,7 +57,6 @@
 		usbc_port2: port2@2 {
 			compatible = "named-usbc-port";
 			reg = <2>;
-			tcpc = <&tcpc_port2>;
 			usb_mux_chain_2: usb-mux-chain-2 {
 				compatible = "cros-ec,usb-mux-chain";
 				usb-muxes = <&usb_c2_hb_retimer
@@ -83,7 +78,6 @@
 		usbc_port3: port3@3 {
 			compatible = "named-usbc-port";
 			reg = <3>;
-			tcpc = <&tcpc_port3>;
 			usb_mux_chain_3: usb-mux-chain-3 {
 				compatible = "cros-ec,usb-mux-chain";
 				usb-muxes = <&usb_c3_hb_retimer

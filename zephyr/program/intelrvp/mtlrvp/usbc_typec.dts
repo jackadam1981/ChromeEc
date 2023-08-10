@@ -1,0 +1,19 @@
+/* Copyright 2022 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+&usbc_port0 {
+	tcpc = <&tcpc_port0>;
+	ppc = <&ppc_port0>;
+};
+&usbc_port1 {
+	tcpc = <&tcpc_port1>;
+	ppc = <&ppc_port1>;
+};
+&usbc_port2 {
+	tcpc = <&tcpc_port2>;
+};
+&usbc_port3 {
+	tcpc = <&tcpc_port3>;
+};
