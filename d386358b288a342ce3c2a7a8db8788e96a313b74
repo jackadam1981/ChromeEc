@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e63a575e_9a4b7cf0",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-10T22:17:40Z",
+      "side": 1,
+      "message": "maybe you change the name to `updater_control` or something else. It is confusing (at least to me) since you are using this function to generate `cmd_updater_enable` and `cmd_updater_disable`\n\nIs this function used standalone from the user interface or this is mainly an internal function?",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 19
+      },
+      "revId": "d386358b288a342ce3c2a7a8db8788e96a313b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82acd699_66221fc7",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-10T22:17:40Z",
+      "side": 1,
+      "message": "here you are using the f-format consistently, which makes it easier to read.",
+      "range": {
+        "startLine": 73,
+        "startChar": 13,
+        "endLine": 73,
+        "endChar": 58
+      },
+      "revId": "d386358b288a342ce3c2a7a8db8788e96a313b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14929856_295b0067",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-10T22:17:40Z",
+      "side": 1,
+      "message": "out of curiosity, why do we need to run the `sync` command? What is the sync command for?",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 23
+      },
+      "revId": "d386358b288a342ce3c2a7a8db8788e96a313b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce9c9625_c890384e",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2023-08-10T22:17:40Z",
+      "side": 1,
+      "message": "same comment as above. does it make sense to use something like `control`?? maybe with an input string \"Enable\" or \"Disable\" and switch/case??",
+      "range": {
+        "startLine": 89,
+        "startChar": 16,
+        "endLine": 89,
+        "endChar": 23
+      },
+      "revId": "d386358b288a342ce3c2a7a8db8788e96a313b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
