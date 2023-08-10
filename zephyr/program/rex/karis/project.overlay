@@ -27,6 +27,8 @@
 		/delete-node/ ec_spare_gpioc7;
 		/delete-node/ usb_c1_rst_odl;
 		/delete-node/ usb_c0_rt_rst_ls_l;
+		/delete-node/ led_3_l;
+		/delete-node/ led_4_l;
 
 		gpio_usb_c0_frs_en: usb_c0_frs_en {
 			gpios = <&gpio4 2 GPIO_OUTPUT_LOW>;
@@ -41,6 +43,13 @@
 		gpio_usb_c1_rst_odl: usb_c1_rt_3p3_sx_en {
 			gpios = <&gpioc 7 GPIO_ODR_LOW>;
 		};
+	};
+
+	unused-pins {
+		compatible = "unused-gpios";
+		unused-gpios =
+			<&gpioc 2 0>, /* led_3_l */
+			<&gpio6 0 0>; /* led_4_l */
 	};
 
 	gpio-interrupts {
