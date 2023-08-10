@@ -308,11 +308,12 @@
 		};
 	};
 
-	led-colors {
+	/delete-node/ led-colors;
+	led-colors-starmie {
 		compatible = "cros-ec,led-policy";
 
 		/* STARMIE LED bat charge */
-		bat-power-state-charge-1v1-1 {
+		bat-power-state-charge-lvl-1 {
 			charge-state = "LED_PWRS_CHARGE";
 			/* Battery percent range (>= Empty, <= 94%) */
 			batt-lvl = <BATTERY_LEVEL_EMPTY 94>;
@@ -321,7 +322,7 @@
 			};
 		};
 
-		bat-power-state-charge-1v1-2 {
+		bat-power-state-charge-lvl-2 {
 			charge-state = "LED_PWRS_CHARGE";
 			/* Battery percent range (>= 95) */
 			batt-lvl = <95 100>;
