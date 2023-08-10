@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37317a05_1243d28e",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-10T00:10:46Z",
+      "side": 1,
+      "message": "All of these functions should be static, like `static int`.",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 3
+      },
+      "revId": "d648fe3bee18e93b5cf03b72d39bc28f3ef73715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2cdc601_7164ef48",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-10T00:10:46Z",
+      "side": 1,
+      "message": "Probably should be `static const struct fp_sensor_interface`",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 26
+      },
+      "revId": "d648fe3bee18e93b5cf03b72d39bc28f3ef73715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14961603_3a59bbf8",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-10T00:10:46Z",
+      "side": 1,
+      "message": "`const struct`",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 6
+      },
+      "revId": "d648fe3bee18e93b5cf03b72d39bc28f3ef73715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4055384_845390ce",
         "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
         "patchSetId": 14
@@ -65,6 +134,29 @@
         "startChar": 0,
         "endLine": 24,
         "endChar": 5
+      },
+      "revId": "d648fe3bee18e93b5cf03b72d39bc28f3ef73715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "351e59f6_890910b2",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-10T00:10:46Z",
+      "side": 1,
+      "message": "Probably should be const like `int (*const sensor_init)(void)`.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 25
       },
       "revId": "d648fe3bee18e93b5cf03b72d39bc28f3ef73715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
