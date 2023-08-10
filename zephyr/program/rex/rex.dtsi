@@ -131,6 +131,7 @@
 	console {
 		compatible = "ec-console";
 		disabled = "DPTF",
+			   "port80",
 			   "motionsense",
 			   "host_event",
 			   "events",
