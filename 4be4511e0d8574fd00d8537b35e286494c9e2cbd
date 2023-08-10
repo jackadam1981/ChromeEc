@@ -111,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86030b5_3c10dbc1",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-10T11:19:51Z",
+      "side": 1,
+      "message": "(Addressed this one first) Added a signer class similar to the packers.",
+      "parentUuid": "dc3c8911_b05648c2",
+      "range": {
+        "startLine": 230,
+        "startChar": 17,
+        "endLine": 230,
+        "endChar": 50
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a2d5eab_fdc0f177",
@@ -147,6 +171,30 @@
       "writtenOn": "2023-08-07T22:16:57Z",
       "side": 1,
       "message": "I believe binman can already handle extracting fmap sections... I beleive we\u0027d prefer that to futility as we already use binman for all our other fmap operations.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da3c7c0f_9269740d",
+        "filename": "zephyr/zmake/zmake/rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-10T11:19:51Z",
+      "side": 1,
+      "message": "Bad news: binman actually needs a fdtmap header (?) for extract / replace operations. We can\u0027t get rid of futility unless we implement a fmap parser like https://chromium.googlesource.com/chromiumos/platform/factory/+/refs/heads/main/py/utils/fmap.py",
+      "parentUuid": "967f6870_f4e83bfc",
       "range": {
         "startLine": 43,
         "startChar": 0,
