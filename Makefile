@@ -39,6 +39,12 @@ ifeq (,$(BDIR))
 BDIR:=$(PBDIR)
 endif
 
+# Check if private driver repository is present
+ifneq ($(wildcard private/build.mk),)
+HAVE_PRIVATE:=y
+CPPFLAGS+=-DHAVE_PRIVATE
+endif
+
 PROJECT?=ec
 
 # An empty string.
