@@ -154,6 +154,14 @@ class ApplicationType(Enum):
     PRODUCTION = 2
 
 
+class FPSensorType(Enum):
+    """Fingerprint sensor types."""
+
+    ELAN = 0
+    FPC = 1
+    UNKNOWN = -1
+
+
 @dataclass
 # pylint: disable-next=too-many-instance-attributes
 class BoardConfig:
@@ -276,7 +284,7 @@ class AllTests:
                 exclude_boards=[BLOONCHIPPER],
             ),
             TestConfig(test_name="fpsensor_auth_crypto_stateless"),
-            TestConfig(test_name="fpsensor_hw"),
+            TestConfig(test_name="fpsensor_hw", pre_test_callback=fpsensor_sel),
             TestConfig(
                 config_name="fpsensor_spi_ro",
                 test_name="fpsensor",
@@ -595,6 +603,24 @@ def power_cycle(board_config: BoardConfig) -> None:
     time.sleep(board_config.reboot_timeout)
     power(board_config, power_on=True)
     time.sleep(board_config.reboot_timeout)
+
+
+def fpsensor_sel(
+    board_config: BoardConfig, sensor_type: FPSensorType = FPSensorType.FPC
+) -> None:
+    """Turn power to board on/off."""
+
+    cmd = [
+        "dut-control",
+        "fp_sensor_sel" + ":" + str(sensor_type.value),
+    ]
+
+    logging.debug('Running command: "%s"', " ".join(cmd))
+    subprocess.run(cmd, check=False).check_returncode()
+
+    # power cycle after setting sensor type to ensure detection
+    power_cycle(board_config)
+    return True
 
 
 def hw_write_protect(enable: bool) -> None:
