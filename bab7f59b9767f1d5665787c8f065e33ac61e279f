@@ -86,6 +86,30 @@
       },
       "revId": "bab7f59b9767f1d5665787c8f065e33ac61e279f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001fa619_4f5e3b58",
+        "filename": "driver/fingerprint/fpc/libfp/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-11T19:27:56Z",
+      "side": 1,
+      "message": "Oops. You need to rename `drivers-rw` to `driver-rw`.\n\nSee https://crsrc.org/o/src/platform/ec/Makefile;l\u003d325",
+      "parentUuid": "b0880638_2dd29221",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 5
+      },
+      "revId": "bab7f59b9767f1d5665787c8f065e33ac61e279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
