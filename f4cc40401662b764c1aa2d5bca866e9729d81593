@@ -34,6 +34,24 @@
       "message": "Hades is currently the only board which supports generic features such as TCPM/EPR, bypass charging, and semi-generic feature such as D-Notify. I think we need it back to let buildall cover these features.",
       "revId": "f4cc40401662b764c1aa2d5bca866e9729d81593",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa9debab_35a9fe49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2023-08-11T20:54:28Z",
+      "side": 1,
+      "message": "Do these features have tests instead?  That would be the better way to ensure they keep working.",
+      "parentUuid": "788d9c39_6fc6836e",
+      "revId": "f4cc40401662b764c1aa2d5bca866e9729d81593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
