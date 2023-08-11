@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11bcf392_f00935fe",
+        "filename": "zephyr/test/drivers/bmi3xx/sensor.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-08-11T20:27:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d57aea3_064082d2",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 7
+      },
+      "revId": "d8aff2e43b2d4d7c13f461555ef0d8581dc96d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d05fb1f5_5ad6404a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f8b08f_21ca7cb7",
+        "filename": "zephyr/test/drivers/bmi3xx/src/bmi3xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-08-11T20:27:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d05fb1f5_5ad6404a",
+      "range": {
+        "startLine": 593,
+        "startChar": 1,
+        "endLine": 595,
+        "endChar": 53
+      },
+      "revId": "d8aff2e43b2d4d7c13f461555ef0d8581dc96d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ba57c4a_9e35cd81",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-08-11T08:09:53Z",
       "side": 1,
       "message": "only need 1 frame here",
+      "range": {
+        "startLine": 671,
+        "startChar": 25,
+        "endLine": 671,
+        "endChar": 26
+      },
+      "revId": "d8aff2e43b2d4d7c13f461555ef0d8581dc96d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc7020be_b1351da4",
+        "filename": "zephyr/test/drivers/bmi3xx/src/bmi3xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2023-08-11T20:27:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ba57c4a_9e35cd81",
       "range": {
         "startLine": 671,
         "startChar": 25,
