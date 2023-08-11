@@ -231,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "717a2b67_9e89976f",
+        "filename": "zephyr/zmake/zmake/rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-11T10:21:46Z",
+      "side": 1,
+      "message": "\u003e Got it. Is it possible to do the operation prior to packing then? We might need to do the padding first.\n\nNo, we need to calculate the signature of EC_RW.\nIf you mean the padding bytes in the rw region, it will be included in the signature. Not ideal, but we can\u0027t avoid this..\n\n\u003e Alternatively, part of the point of doing it in fmap was that it can be handled outside the build system. It would be ideal if signing was not part of zmake at all and was handled after the build.\n\nI prefer integrate this into build system so `zmake build` can produce a functional firmware (keyboard ec requires a correct signature to boot). I think it\u0027s why legacy ec also implements this in Makefile instead of ebuild.\n\n\u003e How does this integrate with the typical image signing pipeline? \n\nSigning pipeline is much simpler: it accepts a dev signed fw and re-sign it using MP key. It have its own script.",
+      "parentUuid": "ad642726_83b30017",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2a9c808_5eb27892",
         "filename": "zephyr/zmake/zmake/rwsig.py",
         "patchSetId": 4
