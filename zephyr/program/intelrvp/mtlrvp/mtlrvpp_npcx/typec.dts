@@ -105,10 +105,6 @@
 	};
 };
 
-&i2c_ctrl0 {
-	status = "okay";
-};
-
 /* typec_aic2 */
 &i2c1_0 {
 	tcpc_port2: ccgxxf@b {
@@ -150,10 +146,6 @@
 		reset-pin = <&usb_c3_hb_retimer_rst>;
 		ls-en-pin = <&usb_c3_hb_retimer_ls_en>;
 	};
-};
-
-&i2c_ctrl1 {
-	status = "okay";
 };
 
 

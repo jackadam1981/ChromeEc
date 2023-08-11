@@ -301,45 +301,7 @@
 			gpios = <&ioex_it8801_port1 2 GPIO_INPUT>;
 		};
 
-		/* USB C IOEX configuration */
-		usb_c0_hb_retimer_ls_en: usb-c0-hbr-ls-en {
-			gpios = <&ioex_c0 2 GPIO_OUTPUT_LOW>;
-			enum-name = "IOEX_USB_C0_HBR_LS_EN";
-			no-auto-init;
-		};
-		usb_c0_hb_retimer_rst: usb-c0-hbr-rst {
-			gpios = <&ioex_c0 3 GPIO_OUTPUT_LOW>;
-			enum-name = "IOEX_USB_C0_HBR_RST";
-			no-auto-init;
-		};
-		usb_c1_hb_retimer_ls_en: usb-c1-hbr-ls-en {
-			gpios = <&ioex_c1 2 GPIO_OUTPUT_LOW>;
-			enum-name = "IOEX_USB_C1_HBR_LS_EN";
-			no-auto-init;
-		};
-		usb_c1_hb_retimer_rst: usb-c1-hbr-rst {
-			gpios = <&ioex_c1 3 GPIO_OUTPUT_LOW>;
-			enum-name = "IOEX_USB_C1_HBR_RST";
-			no-auto-init;
-		};
-		usb-c0-mux-oe-n {
-			gpios = <&ioex_c0 4 GPIO_OUTPUT_LOW>;
-			no-auto-init;
-		};
-		usb-c0-mux-sbu-sel-0 {
-			gpios = <&ioex_c0 6 GPIO_OUTPUT_HIGH>;
-			enum-name = "IOEX_USB_C0_MUX_SBU_SEL_0";
-			no-auto-init;
-		};
-		usb-c0-mux-sbu-sel-1 {
-			gpios = <&ioex_c1 4 GPIO_OUTPUT_LOW>;
-			enum-name = "IOEX_USB_C0_MUX_SBU_SEL_1";
-			no-auto-init;
-		};
-		usb-c0-c1-prochot-n {
-			gpios = <&ioex_c1 6 GPIO_INPUT>;
-			no-auto-init;
-		};
+		/* USB C IOEX Configuration */
 		dg-bssb-sbu-sel {
 			gpios = <&ioex_c2_port1 4 GPIO_INPUT>;
 			no-auto-init;
@@ -372,6 +334,7 @@
 			gpios = <&ioex_c2_port0 0 GPIO_INPUT>;
 			no-auto-init;
 		};
+
 		/* unimplemented GPIOs */
 		en-pp5000 {
 			enum-name = "GPIO_EN_PP5000";
