@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a63d379a_0469a21e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-11T23:49:19Z",
+      "side": 1,
+      "message": "Does this actually change the behavior? If so, there might be something bad happening, or we are doing something that is forcing immediate eval.\n\nGNU/Make variables are delayed evaluation, unless a `:\u003d` is used.",
+      "revId": "b4982d373b0868dd3773a529e282c3619337b68f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
