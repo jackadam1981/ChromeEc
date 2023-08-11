@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "794de984_ff4bfe2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2023-08-11T00:58:03Z",
+      "side": 1,
+      "message": "If, for whatever reason, this accidentally gets left on, what happens? Will the EC hibernate after we shutdown for low battery, or will the presence of a charger prevent EC hibernate, even if we\u0027re forcing the system to not charge from it?",
+      "revId": "7b9b24da5cd7c99e5caee7ad94c70e467eee046c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
