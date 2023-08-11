@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "507fb87b_85fb3ce1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 53
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-11T21:46:03Z",
+      "side": 1,
+      "message": "This looks reasonable, although I\u0027m wondering if there are changes that are orthogonal to DP 2.1 that should be in a separate CL.",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1549c4c8_f966f5b3",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-11T21:46:03Z",
+      "side": 1,
+      "message": "This macro is now unused. Can it be removed?",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "203e55ba_afc77056",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-11T21:46:03Z",
+      "side": 1,
+      "message": "Nit: This macro is only used in `retimer_set_state_dfp`. It might be easier to follow if it was defined as an int constant inside the function.",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2aafbec_bdea575c",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-11T21:46:03Z",
+      "side": 1,
+      "message": "Nit: This function is getting kind of long. Could it be split up into USB, TBT, and DP helpers?",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1159acb1_edbf737a",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-11T21:46:03Z",
+      "side": 1,
+      "message": "This change and the one above in the USB mode block seem like they slightly change the behavior. For USB 3.0 mode, this will now _not_ set the active/passive bit based on the TBT mode VDO active cable bit. That sounds correct, but it also seems unrelated to DP alt mode. If it\u0027s a bug fix, it should probably be its own CL. Is that what you intend to do here?",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a4ffe0_1825012b",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-11T21:46:03Z",
+      "side": 1,
+      "message": "Nit: I think this section might be easier to follow if it were broken up first by resolved DPAM version and then by retimer config bit, rather than the other way around, i.e.,\n```\nif (dpam_ver \u003d\u003d DPAM_VERSION_20) {\n    // retimer/redriver\n    // active/passive\n    // speed\n} else {\n    // retimer/redriver\n    // cable type\n    // active/passive\n    // speed\n}\n```",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b62a994_c260dc36",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-11T21:46:03Z",
+      "side": 1,
+      "message": "Nit: DP 2.0 or earlier",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45690620_839d70ec",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2023-08-11T21:46:03Z",
+      "side": 1,
+      "message": "This also looks new for DP \u003c 2.1. Is this intentional?",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
