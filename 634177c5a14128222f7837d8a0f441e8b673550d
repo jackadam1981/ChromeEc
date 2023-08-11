@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb1277d2_04b5e6bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-11T23:35:55Z",
+      "side": 1,
+      "message": "tt",
+      "revId": "634177c5a14128222f7837d8a0f441e8b673550d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ab5752f_7ec9f13d",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-11T23:35:55Z",
+      "side": 1,
+      "message": "I still believe that keeping the tests close to the library doesn\u0027t fit the rest of EC, although I certainly understand the benefit and am a fan of this, in general. I think the path of least resistance is to simply put the files back into a normal EC file structure, where mock headers are in `include/mock`.\n\nIf this is something we want to do, then it needs to be done all the way. It has been 10 months since you introduced this new pattern. The [comment on the original CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3935025/comment/ac325e94_1cbd5220/) shows the confusion for the code structure and you promised something in a number of weeks. Please try not to use the EC codebase as a staging ground for Zephyr things. Fingerprint still needs EC to work correctly (until we can join in the Zephyr fun).\n\n---\n\nIf you honestly want to support this or **ANY** pattern, then maybe refactor EC to not include all dirs.\n\n```suggestion\ndirs-y +\u003d $(shell find common -type d)\ndirs-y +\u003d $(shell find driver -type d)\n```\n\nThen, maybe add the following to `common/build.mk` to support existing users that only use one layer of directories in driver and common:\n\n```\nincludes-y +\u003d $(shell find common -maxdepth 1 -type d)\n```\n\nAnd for `driver/build.mk`:\n\n```\nincludes-y +\u003d $(shell find driver -maxdepth 1 -type d)\n```\n\nAnd for your own `spi/flash_reg/build.mk`:\n\n```\nincludes-y +\u003d common/spi/flash_reg/public\n```",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 34
+      },
+      "revId": "634177c5a14128222f7837d8a0f441e8b673550d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51d002ba_50db716d",
+        "filename": "common/spi/flash_reg/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-11T23:35:55Z",
+      "side": 1,
+      "message": "This collides with the `SELF_DIR` from the parent `build.mk`.\n\n```suggestion\ncommon-spi-flash_reg-dir :\u003d $(dir $(lastword $(MAKEFILE_LIST)))\n```",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "634177c5a14128222f7837d8a0f441e8b673550d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f4d495_ea927cf6",
+        "filename": "common/spi/flash_reg/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-11T23:35:55Z",
+      "side": 1,
+      "message": "This still doesn\u0027t create the correct path. This yields `spi/flash_reg/public` which is invalid from the root of EC.\n\n---\n\nThis should be simply deleted, since all directories in `common` are include paths already. I\u0027m not saying this is great behavior, but it is the current behavior and pattern.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "634177c5a14128222f7837d8a0f441e8b673550d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
