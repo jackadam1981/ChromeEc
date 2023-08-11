@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f35020ef_2d736c02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-11T21:45:57Z",
+      "side": 1,
+      "message": "As of patchset 4 this CL allows enrollment and unlocking via FP. \n\nThere is still an issue where the FPMCU reboots due to a watchdog timeout but I think that is a different issue. I have created b/295572132 to track it.",
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
