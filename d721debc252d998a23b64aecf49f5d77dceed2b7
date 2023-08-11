@@ -16,6 +16,29 @@
       "message": "As of patchset 4 this CL allows enrollment and unlocking via FP. \n\nThere is still an issue where the FPMCU reboots due to a watchdog timeout but I think that is a different issue. I have created b/295572132 to track it.",
       "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb09c76_5e45f177",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-11T22:27:25Z",
+      "side": 1,
+      "message": "Given the fpsensor code, it might make sense for trng_init two power on DRBG and SHA and trng_exit to power off the two blocks",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 3
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
