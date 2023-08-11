@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db58ac91_ceeb3d60",
+        "filename": "driver/fingerprint/fpc/libfp/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-11T02:59:35Z",
+      "side": 1,
+      "message": "Craig, do you have a better way to do this other than repeating `libfp_cur_dir` everywhere?",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "bab7f59b9767f1d5665787c8f065e33ac61e279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
