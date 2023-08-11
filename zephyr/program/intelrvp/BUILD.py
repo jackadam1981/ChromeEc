@@ -106,6 +106,7 @@ register_intelrvp_project(
     extra_dts_overlays=[
         here / "mtlrvp/mtlrvpp_npcx/fan.dts",
         here / "mtlrvp/mtlrvpp_npcx/gpio.dts",
+        here / "mtlrvp/mtlrvpp_npcx/typec_gpio.dts",
         here / "mtlrvp/mtlrvpp_npcx/keyboard.dts",
         here / "mtlrvp/mtlrvpp_npcx/interrupts.dts",
         here / "mtlrvp/ioex.dts",
