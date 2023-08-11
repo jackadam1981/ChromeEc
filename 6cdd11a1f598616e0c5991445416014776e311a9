@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58ca02d2_a45aff25",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-11T02:35:57Z",
+      "side": 1,
+      "message": "As it stands the driver build files are processed before the private build files so that won\u0027t work.\n\nHere\u0027s the relevant output from `make -d BOARD\u003ddartmonkey -j`:\n```\nReading makefile \u0027driver/build.mk\u0027 (search path) (no ~ expansion)...\nReading makefile \u0027driver/fingerprint/build.mk\u0027 (search path) (no ~ expansion)...\nReading makefile \u0027driver/fingerprint/elan/build.mk\u0027 (search path) (no ~ expansion)...\nReading makefile \u0027driver/fingerprint/fpc/build.mk\u0027 (search path) (no ~ expansion)...\nReading makefile \u0027driver/fingerprint/fpc/libfp/build.mk\u0027 (search path) (no ~ expansion)...\nReading makefile \u0027fuzz/build.mk\u0027 (search path) (no ~ expansion)...\nReading makefile \u0027power/build.mk\u0027 (search path) (no ~ expansion)...\nReading makefile \u0027private/build.mk\u0027 (search path) (don\u0027t care) (no ~ expansion)...\n```\n\nI resolved this in https://crrev.com/c/4772026/1 by moving the processing of `private/build.mk` to before `driver/build.mk`.",
+      "parentUuid": "5beba950_a3f34845",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "6cdd11a1f598616e0c5991445416014776e311a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d98c95e0_d9d53883",
