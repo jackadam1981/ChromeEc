@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0dfa5039_41b628a8",
+        "filename": "driver/fingerprint/fpc/libfp/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-11T19:23:41Z",
+      "side": 1,
+      "message": "```suggestion\ndirs-y +\u003d $(libfp_cur_dir)\n```",
+      "revId": "bab7f59b9767f1d5665787c8f065e33ac61e279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db58ac91_ceeb3d60",
         "filename": "driver/fingerprint/fpc/libfp/build.mk",
         "patchSetId": 7
@@ -19,6 +36,53 @@
         "startChar": 13,
         "endLine": 18,
         "endChar": 28
+      },
+      "revId": "bab7f59b9767f1d5665787c8f065e33ac61e279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eea78fe_d140eba8",
+        "filename": "driver/fingerprint/fpc/libfp/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-11T19:23:41Z",
+      "side": 1,
+      "message": "Yes, but it doesn\u0027t need to block this CL.",
+      "parentUuid": "db58ac91_ceeb3d60",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "bab7f59b9767f1d5665787c8f065e33ac61e279f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0880638_2dd29221",
+        "filename": "driver/fingerprint/fpc/libfp/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-11T19:23:41Z",
+      "side": 1,
+      "message": "I didn\u0027t test this, but it could be written something like:\n\n```suggestion\n# Note that this variable includes the trailing \"/\"\ndriver-libfp-dir :\u003d $(dir $(lastword $(MAKEFILE_LIST)))\n\n# Only build for these objects for the RW image\ndriver-libfp-rw +\u003d fpc_sensor_pal.o\n\n# If there is no private repo, utilize stub functions to allow testing.\n# TODO: This ../fpc_stubs.o should really be handled in a higher build.mk.\ndriver-libfp-$(if $(HAVE_PRIVATE),rw,) +\u003d fpc_private.o\ndriver-libfp-$(if $(HAVE_PRIVATE),,rw) +\u003d ../fpc_stubs.o\n# OR\ndriver-libfp-rw +\u003d $(if $(HAVE_PRIVATE),fpc_private.o,../fpc_stubs.o)\n\n# Make sure output directory is created (in build directory)\n# TODO: I don\u0027t think we need this dirs-y line for a drivers dir, only private dirs.\ndirs-y +\u003d $(driver-libfp-dir)\ndrivers-rw +\u003d $(call objs_from_dir_p,fingerprint/fpc/libfp,driver-libfp,rw)\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 5
       },
       "revId": "bab7f59b9767f1d5665787c8f065e33ac61e279f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
