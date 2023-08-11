@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0fd79b5_adf56f5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-11T17:58:31Z",
+      "side": 1,
+      "message": "After rebase, [patchset 15](https://crrev.com/c/4283703/15) is passing all unit tests except for `fpsensor_hw`, which seems to be due to b/295540228. I still want to review the changes line by line before I\u0027d be comfortable merging but it\u0027s looking pretty good!",
+      "revId": "bc2a52e5bad942f0dce22919b678ddadda73169d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
