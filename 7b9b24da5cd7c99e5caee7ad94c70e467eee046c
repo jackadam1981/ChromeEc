@@ -16,6 +16,24 @@
       "message": "If, for whatever reason, this accidentally gets left on, what happens? Will the EC hibernate after we shutdown for low battery, or will the presence of a charger prevent EC hibernate, even if we\u0027re forcing the system to not charge from it?",
       "revId": "7b9b24da5cd7c99e5caee7ad94c70e467eee046c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab28f74a_b1e820fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-12T00:02:28Z",
+      "side": 1,
+      "message": "doncharge will stay until EC hibernates or the system performs a hard reset. EC doesn\u0027t hibernate as long as AC is plugged.",
+      "parentUuid": "794de984_ff4bfe2c",
+      "revId": "7b9b24da5cd7c99e5caee7ad94c70e467eee046c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
