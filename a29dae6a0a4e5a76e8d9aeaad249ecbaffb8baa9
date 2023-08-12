@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1cacf618_88f87384",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-12T01:11:44Z",
+      "side": 1,
+      "message": "Can you define CONFIG_CMD_KEYBOARD_KBLOG_LEN by default (e.g. 512)? I think it\u0027s covenient because most developers probably don\u0027t need to choose a specific size.",
+      "parentUuid": "da5afe9f_80d795d1",
+      "range": {
+        "startLine": 176,
+        "startChar": 7,
+        "endLine": 176,
+        "endChar": 32
+      },
+      "revId": "a29dae6a0a4e5a76e8d9aeaad249ecbaffb8baa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "649ef8ba_8839e8a7",
         "filename": "common/keyboard_8042.c",
         "patchSetId": 3

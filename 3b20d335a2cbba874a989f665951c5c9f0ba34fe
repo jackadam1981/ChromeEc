@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8ae4221_c74e78c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-12T01:11:44Z",
+      "side": 1,
+      "message": "Sorry for leaving it for long. I hope you\u0027re still active on it.",
+      "revId": "3b20d335a2cbba874a989f665951c5c9f0ba34fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62206226_dc5900d7",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-12T01:11:44Z",
+      "side": 1,
+      "message": "Can you wrap the section by if (IS_ENABLED())?",
+      "range": {
+        "startLine": 313,
+        "startChar": 7,
+        "endLine": 313,
+        "endChar": 32
+      },
+      "revId": "3b20d335a2cbba874a989f665951c5c9f0ba34fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1bad13_7d3c7434",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-12T01:11:44Z",
+      "side": 1,
+      "message": "Isn\u0027t this redundant? I think \n\n    (head + i) % array_size\n\nwill do. Can you remove it?",
+      "range": {
+        "startLine": 1218,
+        "startChar": 31,
+        "endLine": 1219,
+        "endChar": 30
+      },
+      "revId": "3b20d335a2cbba874a989f665951c5c9f0ba34fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
