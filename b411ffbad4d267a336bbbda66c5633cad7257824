@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9c994a_38264584",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-08-14T02:28:47Z",
+      "side": 1,
+      "message": "Just a heads up, this means for the machine equipped rt1739 must fail and retry for 30 times (3 for the loop * 10 for the i2c nak retry setting).\n\nI suggest we do this:\n\n```\nstatic int test_ppc_idx_boards_connected_to(void)\n{\n\tint rv;\n\tint val \u003d 0;\n        \n\tfor (int i \u003d 0; i \u003c 3; i++) {\n\t\trv \u003d i2c_read8(ppc_chips[0].i2c_port,\n\t\t\t       ppc_chips[0].i2c_addr_flags, 0x00, \u0026val);\n\t\tif (!rv) {\n\t\t\treturn 0;\n\t\t}\n\t        \n\t\trv \u003d i2c_read8(ppc_chips[1].i2c_port,\n\t\t\t       ppc_chips[1].i2c_addr_flags, 0x00, \u0026val);\n\t\tif (!rv) {\n\t\t\treturn 1;\n\t\t}\t\n        }\n        \n        return -1;\n}\n```\n\nthen we would have better responsiveness on both ppc chips.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "b411ffbad4d267a336bbbda66c5633cad7257824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d1a3d2a_d15763a0",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2023-08-14T02:28:47Z",
+      "side": 1,
+      "message": "As we will only allow dual ppc in DVT phase, I suggest we determine whether to test i2c based on the phase of CBI, and with the following pseudocode:\n\n```\nif get CBI failed:\n    run i2c detect to determine which ppc to use\nelse:\n    if phase is DVT:\n        run i2c detect to determine which ppc to use\n    else:\n        select the corresponding ppc to use in that phase\n```",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "b411ffbad4d267a336bbbda66c5633cad7257824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
