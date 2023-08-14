@@ -234,6 +234,30 @@
       },
       "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "166730fc_a506b116",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-14T09:32:49Z",
+      "side": 1,
+      "message": "Hi Ting,\n\nCould you please share the i2c touchpad datasheet with us?\nWe would like to check if the whole report descriptor of touchpad can be read from device through I2C. If it\u0027s passible, the hardcode about report descriptor can be removed.\nThank you!\n\nRen",
+      "parentUuid": "3d6b1a8a_f01cbe24",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
