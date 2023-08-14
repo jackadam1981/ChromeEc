@@ -6,6 +6,9 @@ if PLATFORM_EC_USBC
 
 config PLATFORM_EC_USB_PD_INTEL_ALTMODE
 	bool "PD task to configure USB-C Alternate modes on Intel SoC"
+	select PLATFORM_EC_USBC_SS_MUX
+	select PLATFORM_EC_USB_MUX_VIRTUAL
+	select PLATFORM_EC_USB_PD_HOST_CMD
 	help
 	  Enable this to support configuring the USB-C alternate modes on
 	  Intel SoC when using PD chips in PD mode.

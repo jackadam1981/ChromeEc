@@ -20,15 +20,6 @@ menuconfig PLATFORM_EC_USB_POWER_DELIVERY
 
 if PLATFORM_EC_USB_POWER_DELIVERY
 
-config PLATFORM_EC_USB_PD_HOST_CMD
-	bool "Host commands related to USB Power Delivery"
-	default y
-	help
-	  This enables host commands which allow finding out the capabilities
-	  of USB PD, checking is status and controlling how it operates. For
-	  devices which support firmware update, this is provided as well,
-	  with the firmware being sent from the AP.
-
 config PLATFORM_EC_CONSOLE_CMD_MFALLOW
 	bool "Console command: mfallow"
 	default y
@@ -496,5 +487,14 @@ config PLATFORM_EC_USB_PD_EPR
 rsource "Kconfig.svdm_rsp"
 
 endif  # PLATFORM_EC_USB_POWER_DELIVERY
+
+config PLATFORM_EC_USB_PD_HOST_CMD
+	bool "Host commands related to USB Power Delivery / Alternate mode info"
+	default y
+	help
+	  This enables host commands which allow finding out the capabilities
+	  of USB PD, checking is status and controlling how it operates. For
+	  devices which support firmware update, this is provided as well,
+	  with the firmware being sent from the AP.
 
 endif # PLATFORM_EC_USBC

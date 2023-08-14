@@ -15,6 +15,7 @@
 #include "hooks.h"
 #include "pd_task_intel_altmode.h"
 #include "task.h"
+#include "usb_mux.h"
 #include "usb_pd.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
@@ -194,3 +195,87 @@ DECLARE_CONSOLE_COMMAND(altmode, console_command_intel_altmode,
 			"<port> w <val1> | <val2>",
 			"Read or write to PD reg");
 #endif /* CONFIG_PLATFORM_EC_CONSOLE_CMD_INTEL_ALTMODE */
+
+/*
+ * Add functions for which the data can be obtained from PD to AP interface.
+ */
+enum tcpc_cc_polarity pd_get_polarity(int port)
+{
+	return data_status[port].conn_ori;
+}
+
+enum pd_data_role pd_get_data_role(int port)
+{
+	return !data_status[port].data_role;
+}
+
+int pd_is_connected(int port)
+{
+	return data_status[port].data_conn;
+}
+
+/*
+ * Add functions for which the data can be obtained from PD to EC interface.
+ *
+ * TODO: Need to enable PD to EC interface
+ * To suppress the compilation error, these functions are added with tested
+ * data.
+ */
+void pd_request_data_swap(int port)
+{
+}
+
+enum pd_power_role pd_get_power_role(int port)
+{
+	return !data_status[port].dp_src_snk;
+}
+
+uint8_t pd_get_task_state(int port)
+{
+	return 0;
+}
+
+int pd_comm_is_enabled(int port)
+{
+	return 1;
+}
+
+bool pd_get_vconn_state(int port)
+{
+	return true;
+}
+
+bool pd_get_partner_dual_role_power(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_data_swap_capable(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_usb_comm_capable(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_unconstr_power(int port)
+{
+	return false;
+}
+
+const char *pd_get_task_state_name(int port)
+{
+	return "";
+}
+
+enum pd_cc_states pd_get_task_cc_state(int port)
+{
+	return PD_CC_UFP_ATTACHED;
+}
+
+bool pd_capable(int port)
+{
+	return true;
+}
