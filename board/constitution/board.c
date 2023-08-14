@@ -6,6 +6,7 @@
 #include "builtin/assert.h"
 #include "button.h"
 #include "cec.h"
+#include "cec_bitbang_chip.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
@@ -65,6 +66,7 @@ static const struct bitbang_cec_config bitbang_cec_config = {
 	.gpio_out = GPIO_HDMIB_CEC_OUT,
 	.gpio_in = GPIO_HDMIB_CEC_IN,
 	.gpio_pull_up = GPIO_HDMIB_CEC_PULL_UP,
+	.timer = NPCX_CEC_BITBANG_TIMER_A,
 };
 
 const struct cec_config_t cec_config[] = {
