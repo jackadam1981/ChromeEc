@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b422246_d8032aeb",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-08-14T09:31:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f9c994a_38264584",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "b411ffbad4d267a336bbbda66c5633cad7257824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d1a3d2a_d15763a0",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-14T02:28:47Z",
       "side": 1,
       "message": "As we will only allow dual ppc in DVT phase, I suggest we determine whether to test i2c based on the phase of CBI, and with the following pseudocode:\n\n```\nif get CBI failed:\n    run i2c detect to determine which ppc to use\nelse:\n    if phase is DVT:\n        run i2c detect to determine which ppc to use\n    else:\n        select the corresponding ppc to use in that phase\n```",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "b411ffbad4d267a336bbbda66c5633cad7257824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba464f2_4554fb5a",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-08-14T09:31:18Z",
+      "side": 1,
+      "message": "We expect to join in the next phase, and the next phase of testing shall prevail.",
+      "parentUuid": "7d1a3d2a_d15763a0",
       "range": {
         "startLine": 43,
         "startChar": 0,
