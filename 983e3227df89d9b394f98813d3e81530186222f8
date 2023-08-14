@@ -217,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c10fb74_3d63efba",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-14T22:27:30Z",
+      "side": 1,
+      "message": "This is the order that we\u0027re doing initialization in, along with the time it takes to complete the call (note that these are inflated by the print time):\n\n`NCL_DRBG-\u003epower(ctx_p, true);` -- 48 us\n`NCL_SHA-\u003epower(ctx_p, true);` -- 18 us\n`NCL_DRBG-\u003einit_context(ctx_p);` -- 18 us\n`NCL_DRBG-\u003einit(ctx_p, 0);` -- 257811 us\n`NCL_DRBG-\u003econfig(ctx_p, 100, false);` -- 38 us \n`NCL_DRBG-\u003einstantiate(ctx_p, NCL_DRBG_SECURITY_STRENGTH_128b, NULL, 0); -- 491 us\n\nAfter this the first call to `generate` always takes about 257054 us. Does this order look correct? I can reorder the function calls but no matter what I do I seem to get a total of about 500,000us to initialize this module. Is this expected?",
+      "parentUuid": "e276849c_b17eebf0",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 3
+      },
+      "revId": "983e3227df89d9b394f98813d3e81530186222f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b7a82bd_c8aaa9e9",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 1
