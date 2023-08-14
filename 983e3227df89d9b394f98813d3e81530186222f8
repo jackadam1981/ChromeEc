@@ -193,6 +193,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e276849c_b17eebf0",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-14T21:13:42Z",
+      "side": 1,
+      "message": "Is there some documentation on this? I\u0027m still seeing weird behavior where the first call to `generate` takes about 250 ms, but only sometimes. Other times I\u0027m seeing the first call take no longer than other calls.\n\nI suspect this is because the present configuration configures the TRNG in both RO and RW. Should I expect any weird behavior if the TRNG is configured in both? Is there some check or explicit reset that we should be doing?\n\nWithout any documentation I feel like I\u0027m flying blind here.",
+      "parentUuid": "23cb83a9_033e2826",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 3
+      },
+      "revId": "983e3227df89d9b394f98813d3e81530186222f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b7a82bd_c8aaa9e9",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 1
@@ -204,6 +228,24 @@
       "writtenOn": "2023-07-29T01:07:49Z",
       "side": 1,
       "message": "The total time to run `EC_CMD_FP_FRAME` here was 279 ms. This is substantially better than the 1101 ms from http://crrev.com/c/4727820/1 but still long enough to prevent enrollment and result in a timeout. \n\n```\n2023-07-29T00:23:02.259000Z [27.654348 HC 0x0404]\n2023-07-29T00:23:02.259000Z [27.654664 fp_frame time(a): 7\n2023-07-29T00:23:02.259000Z ]\n2023-07-29T00:23:02.259000Z [27.654975 fp_frame time(b): 318\n2023-07-29T00:23:02.259000Z ]\n2023-07-29T00:23:02.260000Z [27.655291 fp_frame time(b1): 640\n2023-07-29T00:23:02.260000Z ]\n2023-07-29T00:23:02.260000Z [27.655391 fp_frame time(b2): 740\n2023-07-29T00:23:02.260000Z ]\n2023-07-29T00:23:02.260000Z ti: state_p-\u003etrng_init:0x0000A5A5\n2023-07-29T00:23:02.260000Z ti(7): 38\n2023-07-29T00:23:02.260000Z trng(0): 1\n2023-07-29T00:23:02.260000Z trng(1): 20\n2023-07-29T00:23:02.260000Z trng(2): 40\n2023-07-29T00:23:02.260000Z trng(3): 235\n2023-07-29T00:23:02.260000Z trng(4): 259\n2023-07-29T00:23:02.260000Z trng(5): 281\n2023-07-29T00:23:02.260000Z trng(0): 1\n2023-07-29T00:23:02.260000Z trng(1): 19\n2023-07-29T00:23:02.260000Z trng(2): 41\n2023-07-29T00:23:02.260000Z trng(3): 235\n2023-07-29T00:23:02.260000Z trng(4): 258\n2023-07-29T00:23:02.260000Z trng(5): 281\n2023-07-29T00:23:02.260000Z trng(0): 1\n2023-07-29T00:23:02.260000Z trng(1): 19\n2023-07-29T00:23:02.260000Z trng(2): 40\n2023-07-29T00:23:02.260000Z trng(3): 234\n2023-07-29T00:23:02.260000Z trng(4): 258\n2023-07-29T00:23:02.260000Z trng(5): 280\n2023-07-29T00:23:02.260000Z trng(0): 2\n2023-07-29T00:23:02.260000Z trng(1): 21\n2023-07-29T00:23:02.260000Z trng(2): 41\n2023-07-29T00:23:02.260000Z trng(3): 236\n2023-07-29T00:23:02.260000Z trng(4): 259\n2023-07-29T00:23:02.260000Z trng(5): 284\n2023-07-29T00:23:02.260000Z trng(0): 2\n2023-07-29T00:23:02.260000Z trng(1): 20\n2023-07-29T00:23:02.260000Z trng(2): 41\n2023-07-29T00:23:02.260000Z trng(3): 236\n2023-07-29T00:23:02.260000Z trng(4): 259\n2023-07-29T00:23:02.260000Z trng(5): 281\n2023-07-29T00:23:02.260000Z trng(0): 1\n2023-07-29T00:23:02.260000Z trng(1): 20\n2023-07-29T00:23:02.260000Z trng(2): 41\n2023-07-29T00:23:02.260000Z trng(3): 235\n2023-07-29T00:23:02.260000Z trng(4): 259\n2023-07-29T00:23:02.260000Z trng(5): 282\n2023-07-29T00:23:02.260000Z trng(0): 1\n2023-07-29T00:23:02.260000Z trng(1): 19\n2023-07-29T00:23:02.260000Z trng(2): 40\n2023-07-29T00:23:02.260000Z trng(3): 237\n2023-07-29T00:23:02.260000Z trng(4): 260\n2023-07-29T00:23:02.260000Z trng(5): 282\n2023-07-29T00:23:02.262000Z [27.657634 fp_frame time(b3): 2982\n2023-07-29T00:23:02.262000Z ]\n2023-07-29T00:23:02.262000Z ti: state_p-\u003etrng_init:0x0000A5A5\n2023-07-29T00:23:02.262000Z ti(7): 38\n2023-07-29T00:23:02.262000Z trng(0): 1\n2023-07-29T00:23:02.262000Z trng(1): 19\n2023-07-29T00:23:02.262000Z trng(2): 40\n2023-07-29T00:23:02.262000Z trng(3): 274217\n2023-07-29T00:23:02.262000Z trng(4): 274259\n2023-07-29T00:23:02.262000Z trng(5): 274318\n2023-07-29T00:23:02.262000Z trng(0): 1\n2023-07-29T00:23:02.262000Z trng(1): 21\n2023-07-29T00:23:02.262000Z trng(2): 41\n2023-07-29T00:23:02.262000Z trng(3): 329\n2023-07-29T00:23:02.262000Z trng(4): 353\n2023-07-29T00:23:02.262000Z trng(5): 376\n2023-07-29T00:23:02.262000Z trng(0): 1\n2023-07-29T00:23:02.262000Z trng(1): 51\n2023-07-29T00:23:02.262000Z trng(2): 72\n2023-07-29T00:23:02.262000Z trng(3): 329\n2023-07-29T00:23:02.262000Z trng(4): 353\n2023-07-29T00:23:02.262000Z trng(5): 375\n2023-07-29T00:23:02.262000Z trng(0): 2\n2023-07-29T00:23:02.262000Z trng(1): 20\n2023-07-29T00:23:02.262000Z trng(2): 42\n2023-07-29T00:23:02.262000Z trng(3): 299\n2023-07-29T00:23:02.262000Z trng(4): 323\n2023-07-29T00:23:02.262000Z trng(5): 377\n2023-07-29T00:23:02.538000Z [27.933325 fp_frame time(c): 278673\n```\n\n\nNote that the majority of this time is spent calling `NCL_DRBG-\u003egenerate(NULL, NULL, 0, (uint8_t *)\u0026return_value, 4);` on a single call, which took 274 ms. Note that most other `trng(3)` lines were a delta time of only 190 ms. I suspect this is due to the trng peripheral waiting for entropy. Is that possible?",
+      "revId": "983e3227df89d9b394f98813d3e81530186222f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89b5d140_65659a98",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-14T21:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b7a82bd_c8aaa9e9",
       "revId": "983e3227df89d9b394f98813d3e81530186222f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -39,6 +39,53 @@
       },
       "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e5d4394_1bd147b1",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-14T21:13:42Z",
+      "side": 1,
+      "message": "I think that should be okay but without much documentation to go on I\u0027m not sure. I\u0027ll test it out this afternoon.",
+      "parentUuid": "6bb09c76_5e45f177",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 3
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d159191_bee85670",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-14T21:13:42Z",
+      "side": 1,
+      "message": "As noted above, this first call to `generate` is taking 250ms. If I move the first call into the init function I can work around this but I think that\u0027s the wrong solution.",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 73
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
