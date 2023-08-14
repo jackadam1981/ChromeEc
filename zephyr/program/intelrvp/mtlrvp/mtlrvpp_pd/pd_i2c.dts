@@ -1,0 +1,47 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-i2c-ports {
+		typec_aic2: typec-aic2{
+			i2c-port = <&i2c1_0>;
+			enum-names = "I2C_PORT_TYPEC_AIC_2";
+		};
+	};
+};
+/* typec_aic2 */
+&i2c1_0 {
+	label = "I2C_USB_C2_C3_TCPC";
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	pinctrl-0 = <&i2c1_0_sda_scl_gp87_90>;
+	pinctrl-names = "default";
+
+	pd_port0: ccg@50 {
+		comapible = "intel,pd-altmode";
+		reg = <0x50>;
+		int-pin = <&pd_intr>;
+	};
+	pd_port1: ccg@51 {
+		comapible = "intel,pd-altmode";
+		reg = <0x51>;
+		int-pin = <&pd_intr>;
+	};
+	pd_port2: ccg@52 {
+		comapible = "intel,pd-altmode";
+		reg = <0x52>;
+		int-pin = <&pd_intr>;
+	};
+	pd_port3: ccg@53 {
+		comapible = "intel,pd-altmode";
+		reg = <0x53>;
+		int-pin = <&pd_intr>;
+	};
+};
+
+
+&i2c_ctrl1 {
+	status = "okay";
+};

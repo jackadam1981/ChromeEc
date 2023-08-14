@@ -1,0 +1,17 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+/ {
+	gpio-interrupts {
+		int_pd_intr: intel_pd_intr {
+			irq-pin = <&pd_intr>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "pd_altmode_interrupt";
+		};
+	};
+};
+
+&pd_intr {
+	no-auto-init;
+};
