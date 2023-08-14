@@ -51,6 +51,24 @@
       "parentUuid": "85e174bc_af854aab",
       "revId": "aae789abe6e459d620db74db52214f47c1df0976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a2ef13d_df68420a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-14T23:31:28Z",
+      "side": 1,
+      "message": "Like the following comment?\n\n```c\n/* Please update EC_STATUS_TEXT. */\n```",
+      "parentUuid": "3c90f2e0_0f04b41f",
+      "revId": "aae789abe6e459d620db74db52214f47c1df0976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
