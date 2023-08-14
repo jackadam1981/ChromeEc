@@ -39,6 +39,30 @@
       },
       "revId": "df87f4a469c8a1ea3575abe229873eefe36eaaa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "807ba8f7_d1b5e314",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-14T19:57:27Z",
+      "side": 1,
+      "message": "I broke out flash_fpmcu_stm32 and flash_fpmcu_npcx as suggested. Breaking it down further would result in the same for loop being implemented 3 times rather than 2 and doesn\u0027t add much to readability.",
+      "parentUuid": "0f30522a_2ef80bb6",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 4
+      },
+      "revId": "df87f4a469c8a1ea3575abe229873eefe36eaaa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
