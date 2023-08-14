@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d94c0804_5bff8ea5",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-14T17:02:11Z",
+      "side": 1,
+      "message": "Do we need to check received_message_available \u003d\u003d 0 or it\u0027s guaranteed we get here only if received_message_available \u003d\u003d 0?",
+      "range": {
+        "startLine": 379,
+        "startChar": 4,
+        "endLine": 379,
+        "endChar": 10
+      },
+      "revId": "3d615644a214fca2e7c271eef2da0678dd994995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b97631_896974fe",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-14T17:02:11Z",
+      "side": 1,
+      "message": "Is this a right error?",
+      "range": {
+        "startLine": 766,
+        "startChar": 9,
+        "endLine": 766,
+        "endChar": 22
+      },
+      "revId": "3d615644a214fca2e7c271eef2da0678dd994995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
