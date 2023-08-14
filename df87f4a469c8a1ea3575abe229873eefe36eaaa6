@@ -16,6 +16,29 @@
       "message": "made the minor change now since I need to modify my branch",
       "revId": "df87f4a469c8a1ea3575abe229873eefe36eaaa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f30522a_2ef80bb6",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-14T16:39:59Z",
+      "side": 1,
+      "message": "This whole block is about setting up `cmd_flags` which is only used in a small block below. If we created two functions `flash_fpmcu_stm32` and `flash_fpmcu_npcx`  then we could move the two halves of this block into their respective flashing functions. The logic below would then become:\n\n\n```\n  if [[ \"${chip_type}\" \u003d\u003d \"STM32\" ]]; then\n    flash_fpmcu_stm32\n  elif [[ \"${chip_type}\" \u003d\u003d \"NPCX\" ]]; then\n    flash_fpmcu_npcx\n  fi\n```\n\nGoing a step further, we it would be good to have `flash_fpmcu_npcx` look something like this:\n\n```\n  if [[ \"${transport}\" \u003d\u003d \"SPI\" ]]; then\n    flash_fpmcu_npcx_spi\n  elif [[ \"${transport}\" \u003d\u003d \"UART\" ]]; then\n    flash_fpmcu_npcx_uart\n  fi\n```\n\nI don\u0027t think it would result in much duplication but would make this file much easier to read.",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 4
+      },
+      "revId": "df87f4a469c8a1ea3575abe229873eefe36eaaa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
