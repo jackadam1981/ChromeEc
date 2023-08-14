@@ -93,6 +93,30 @@
       },
       "revId": "3d615644a214fca2e7c271eef2da0678dd994995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd3a428_34d4689c",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-14T23:50:26Z",
+      "side": 1,
+      "message": "Ack. We can add EC_ERROR_UNAVAILABLE if you need. Maybe we can also check cec_state !\u003d IDLE and return BUSY (or TRY_AGAIN).",
+      "parentUuid": "6d3684f3_6b237e68",
+      "range": {
+        "startLine": 766,
+        "startChar": 9,
+        "endLine": 766,
+        "endChar": 22
+      },
+      "revId": "3d615644a214fca2e7c271eef2da0678dd994995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
