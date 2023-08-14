@@ -31,5 +31,20 @@ ZTEST(upstream_fuel_gauge, test_battery_get_params__success)
 	zassert_equal(ret_params.current, 3000);
 }
 
+ZTEST(upstream_fuel_gauge, test_battery_get_params__again)
+{
+	const struct emul *sbs_gauge = BATT_EMUL;
+
+	emul_fuel_gauge_set_battery_charging(sbs_gauge, 5000 * 1000,
+					     3000 * 1000);
+
+	struct batt_params ret_params = { 0 };
+
+	battery_get_params(&ret_params);
+
+	zassert_equal(ret_params.voltage, 5000);
+	zassert_equal(ret_params.current, 3000);
+}
+
 ZTEST_SUITE(upstream_fuel_gauge, drivers_predicate_post_main, NULL, NULL, NULL,
 	    NULL);
