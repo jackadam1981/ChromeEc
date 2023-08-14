@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "063d229c_16bfa2ae",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-14T23:12:44Z",
+      "side": 1,
+      "message": "Not guaranteed, but I think we can just keep the most recent message. Added a comment and a warning.",
+      "parentUuid": "d94c0804_5bff8ea5",
+      "range": {
+        "startLine": 379,
+        "startChar": 4,
+        "endLine": 379,
+        "endChar": 10
+      },
+      "revId": "3d615644a214fca2e7c271eef2da0678dd994995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93b97631_896974fe",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-14T17:02:11Z",
       "side": 1,
       "message": "Is this a right error?",
+      "range": {
+        "startLine": 766,
+        "startChar": 9,
+        "endLine": 766,
+        "endChar": 22
+      },
+      "revId": "3d615644a214fca2e7c271eef2da0678dd994995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d3684f3_6b237e68",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-14T23:12:44Z",
+      "side": 1,
+      "message": "There\u0027s no EC_ERROR_UNAVAILABLE so this was the closest I could see. The description is \"Already in use, or not ready yet\", and the \"not ready yet\" part fits. Do you have a better suggestion?",
+      "parentUuid": "93b97631_896974fe",
       "range": {
         "startLine": 766,
         "startChar": 9,
