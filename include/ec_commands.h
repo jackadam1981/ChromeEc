@@ -737,6 +737,33 @@ BUILD_ASSERT((uint16_t)EC_RES_MAX == (uint16_t)EC_HOST_CMD_MAX);
 
 #endif
 
+/* clang-format off */
+#define EC_STATUS_TEXT                                                         \
+	{                                                                      \
+		[EC_RES_SUCCESS] = "SUCCESS",                                  \
+		[EC_RES_INVALID_COMMAND] = "INVALID_COMMAND",                  \
+		[EC_RES_ERROR] = "ERROR",                                      \
+		[EC_RES_INVALID_PARAM] = "INVALID_PARAM",                      \
+		[EC_RES_ACCESS_DENIED] = "ACCESS_DENIED",                      \
+		[EC_RES_INVALID_RESPONSE] = "INVALID_RESPONSE",                \
+		[EC_RES_INVALID_VERSION] = "INVALID_VERSION",                  \
+		[EC_RES_INVALID_CHECKSUM] = "INVALID_CHECKSUM",                \
+		[EC_RES_IN_PROGRESS] = "IN_PROGRESS",                          \
+		[EC_RES_UNAVAILABLE] = "UNAVAILABLE",                          \
+		[EC_RES_TIMEOUT] = "TIMEOUT",                                  \
+		[EC_RES_OVERFLOW] = "OVERFLOW",                                \
+		[EC_RES_INVALID_HEADER] = "INVALID_HEADER",                    \
+		[EC_RES_REQUEST_TRUNCATED] = "REQUEST_TRUNCATED",              \
+		[EC_RES_RESPONSE_TOO_BIG] = "RESPONSE_TOO_BIG",                \
+		[EC_RES_BUS_ERROR] = "BUS_ERROR",                              \
+		[EC_RES_BUSY] = "BUSY",                                        \
+		[EC_RES_INVALID_HEADER_VERSION] = "INVALID_HEADER_VERSION",    \
+		[EC_RES_INVALID_HEADER_CRC] = "INVALID_HEADER_CRC",            \
+		[EC_RES_INVALID_DATA_CRC] = "INVALID_DATA_CRC",                \
+		[EC_RES_DUP_UNAVAILABLE] = "DUP_UNAVAILABLE",                  \
+	}
+/* clang-format on */
+
 /*
  * Host event codes. ACPI query EC command uses code 0 to mean "no event
  * pending".  We explicitly specify each value in the enum listing so they won't
