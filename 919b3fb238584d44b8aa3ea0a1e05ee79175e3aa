@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af811a5c_e9a6f4ff",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-14T23:39:18Z",
+      "side": 1,
+      "message": "I\u0027ll have to figure out why this was done this way as I\u0027m honestly not sure.",
+      "parentUuid": "287718a0_273d01ef",
+      "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "789acecb_b53955dd",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 52
@@ -82,6 +100,24 @@
       "writtenOn": "2023-08-11T19:51:54Z",
       "side": 1,
       "message": "Nit: You might want to just store a `cable_dpam_version` variable here and reuse it on line 945.",
+      "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2f4a2a8_7c0d9d84",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-14T23:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "789acecb_b53955dd",
       "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +135,24 @@
       "writtenOn": "2023-08-11T19:51:54Z",
       "side": 1,
       "message": "It seems like the return type should now be `union dp_cable_type_flags`, and the bit operations below should just be assignments to the fields. The usage up in `svdm_dp_config` wouldn\u0027t need to assign directly to `raw_value`, so this type can probably just a struct and not a union. It seems like you should also be able to delete the flag macros and just use true/false.\n\nThis part is a nit: `dp_cable_type_flags` could be simpler as\n```\nstruct dp_cable_type_flags {\n    bool optical;\n    bool active;\n    bool retimer;\n};\n```\nIt would still fit in a register and this code isn\u0027t very performance sensitive anyway, so it doesn\u0027t seem to me like there\u0027s much value in using bit fields to make it smaller than the 3 bytes it would naively occupy.",
+      "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a26b04a_19e328c7",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-14T23:39:18Z",
+      "side": 1,
+      "message": "I like this refactored to use a struct instead of the union",
+      "parentUuid": "a5776a36_2cd5501f",
       "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +191,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3120878e_b681193f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 5782,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-14T23:39:18Z",
+      "side": 1,
+      "message": "I\u0027m not going to add the mask for now but renamed adding req and reverted the return to OR with MINOR again",
+      "parentUuid": "a9499986_09a5ca76",
+      "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2c22d4e_fd8a7889",
@@ -150,6 +222,30 @@
       "writtenOn": "2023-08-11T19:51:54Z",
       "side": 1,
       "message": "These should be named `dp_something`.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9771331_3a668392",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 52
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-14T23:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2c22d4e_fd8a7889",
       "range": {
         "startLine": 128,
         "startChar": 0,
@@ -177,6 +273,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f99507e5_acf045ff",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 52
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-14T23:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9d9cddb_71c152ac",
+      "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "485cf0c9_563ea81e",
@@ -190,6 +304,24 @@
       "writtenOn": "2023-08-11T19:51:54Z",
       "side": 1,
       "message": "This should be named `dp_something`.",
+      "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c746a43c_0d0bbe5c",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 52
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-14T23:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "485cf0c9_563ea81e",
       "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -217,6 +349,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "942bbbeb_b3decaed",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 52
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-14T23:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76ab68ab_885ae978",
+      "range": {
+        "startLine": 179,
+        "startChar": 19,
+        "endLine": 179,
+        "endChar": 24
+      },
+      "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44e40ff5_b829dfdc",
@@ -230,6 +386,24 @@
       "writtenOn": "2023-08-11T19:51:54Z",
       "side": 1,
       "message": "This won\u0027t make a difference in the value, but this should more descriptively be `(VDO_SVDM_VERS_MAJOR(0x3) | VDO_SVDM_VERS_MINOR(0x3))`.",
+      "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e774af9a_87c3d8d3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 52
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-14T23:39:18Z",
+      "side": 1,
+      "message": "I did it this way for line length but will change it to be the accurate value",
+      "parentUuid": "44e40ff5_b829dfdc",
       "revId": "919b3fb238584d44b8aa3ea0a1e05ee79175e3aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
