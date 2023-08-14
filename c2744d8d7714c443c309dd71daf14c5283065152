@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ecf3375_9837fcfb",
+        "filename": "zephyr/subsys/usb_dc/hid_vivaldi.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-14T08:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e692c26_28d24168",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea82e634_7a2dcd67",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-08-01T07:54:00Z",
       "side": 1,
       "message": "move this to a .c file.",
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98dc667f_c6ce3924",
+        "filename": "zephyr/subsys/usb_dc/hid_vivaldi.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-14T08:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea82e634_7a2dcd67",
       "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0851d13a_655175e8",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_kb.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-14T08:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88293222_f5c92656",
+      "range": {
+        "startLine": 212,
+        "startChar": 20,
+        "endLine": 212,
+        "endChar": 31
+      },
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffcff787_2012488c",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-08-01T07:54:00Z",
       "side": 1,
       "message": "Is it possible to include usb_hid_touchpad.h?",
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "415b1bc1_c87fbefc",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-14T08:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffcff787_2012488c",
       "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +202,30 @@
       "side": 1,
       "message": "Maybe we can read TP\u0027s report descriptor in usb_hid_tp_init() (TP\u0027s datasheet is required) and register hid device with that descriptor. So we don\u0027t need to hardcode these macros anymore?",
       "parentUuid": "f71fdc7c_6f114147",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "c2744d8d7714c443c309dd71daf14c5283065152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6b1a8a_f01cbe24",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2023-08-14T08:42:14Z",
+      "side": 1,
+      "message": "The logical_max_x/y and physical_max_x/y have already read from device through I2C in driver. So, these four parameters do not need to be defined in device tree.\nThe code is revised that the hid tp device is registered after touchpad driver initializes.\nBesides, the max pressure value is defined in dts. It can be defined per project.\nPlease help review it again, thanks!",
+      "parentUuid": "84b0bfc9_5a12ac53",
       "range": {
         "startLine": 45,
         "startChar": 1,
