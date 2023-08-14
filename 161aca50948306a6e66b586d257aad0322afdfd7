@@ -318,6 +318,24 @@
       "parentUuid": "6a5721b2_020f25f5",
       "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb257c1_7f0ac313",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-08-14T16:44:14Z",
+      "side": 1,
+      "message": "fixed, using this approach, and tested manually by adjusting the battery to battery2 such that mfg_reg is not 0x0 default (pass), then note a failure when forcing PEC register to 0 (fail). See that it works when default value is 0 as well. (pass)",
+      "parentUuid": "0ed3b5fe_4854b97e",
+      "revId": "161aca50948306a6e66b586d257aad0322afdfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

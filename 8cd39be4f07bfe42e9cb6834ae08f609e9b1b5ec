@@ -182,6 +182,30 @@
       },
       "revId": "8cd39be4f07bfe42e9cb6834ae08f609e9b1b5ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae2ceb84_2586b73f",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2023-08-14T16:44:14Z",
+      "side": 1,
+      "message": "I think this is resolved by explanation, but if not, feel free to reopen. Most of this test should go away with emulator changes.",
+      "parentUuid": "deadf3ee_2635a47b",
+      "range": {
+        "startLine": 255,
+        "startChar": 31,
+        "endLine": 255,
+        "endChar": 35
+      },
+      "revId": "8cd39be4f07bfe42e9cb6834ae08f609e9b1b5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
