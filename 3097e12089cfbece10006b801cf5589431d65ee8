@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d323c082_1c478cc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 54
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-14T23:47:23Z",
+      "side": 1,
+      "message": "I need to look at this file and figure out what is going on...for some of the changes that aren\u0027t DP2.1 specific I think they were done to match the DP2.1 state machine but might not be needed at all (the active/passive bits for DP2.0 or earlier don\u0027t matter for instance)\n\nI seem to remember some mention of all of the active/passive detection code being optional and not actually required in general so let me figure out what is actually needed here",
+      "revId": "3097e12089cfbece10006b801cf5589431d65ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
