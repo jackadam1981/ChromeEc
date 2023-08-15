@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68595e7b_8de568a8",
+        "filename": "board/helipilot/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-15T19:31:41Z",
+      "side": 1,
+      "message": "The RO image doesn\u0027t really need it TRNG so I attempted to call `npcx_trng_hw_init` from `board_init_rw` rather than `board_init` but it resulted in a reboot loop. Any ideas why? \n\nThis issue shouldn\u0027t block this CL so I created b/296097116 to track but I figured I\u0027d mention it here to solicit feedback.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "d96c2ccabbbcd5a5f042b73948a505788b1cd008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

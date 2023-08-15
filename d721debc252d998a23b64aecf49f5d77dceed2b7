@@ -156,6 +156,30 @@
       },
       "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffbf46e8_cbc4bcb0",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-15T19:31:41Z",
+      "side": 1,
+      "message": "Thanks CH, I think this was the core issue here. I uploaded the patch to http://crrev.com/c/4780147",
+      "parentUuid": "908b4854_02c176ba",
+      "range": {
+        "startLine": 226,
+        "startChar": 29,
+        "endLine": 226,
+        "endChar": 34
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
