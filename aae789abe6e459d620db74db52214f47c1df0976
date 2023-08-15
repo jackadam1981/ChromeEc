@@ -105,6 +105,24 @@
       "parentUuid": "036882ef_a0fb836b",
       "revId": "aae789abe6e459d620db74db52214f47c1df0976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f37685_1a27bce7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-15T17:26:28Z",
+      "side": 1,
+      "message": "I definitely considered it, but I really didn\u0027t want to limit the usage of such a core enum to c++ only. I assumed these strings would be used in the host command code, too.",
+      "parentUuid": "7c9ecd5b_1ddc88ce",
+      "revId": "aae789abe6e459d620db74db52214f47c1df0976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -22,6 +22,30 @@
       },
       "revId": "b6afae42c8735e47bd7fe98fc4e7501cf6fbfd97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ebe795_968c825c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-15T17:26:28Z",
+      "side": 1,
+      "message": "This would be a nice interface. but I\u0027d rather not force the usage of this to be c++, only. Plus, this follows the existing pattern in this file for string names.",
+      "parentUuid": "c1005687_98e8aead",
+      "range": {
+        "startLine": 743,
+        "startChar": 0,
+        "endLine": 743,
+        "endChar": 80
+      },
+      "revId": "b6afae42c8735e47bd7fe98fc4e7501cf6fbfd97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
