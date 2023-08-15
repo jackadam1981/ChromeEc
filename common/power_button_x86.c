@@ -247,6 +247,10 @@ test_export_static void set_initial_pwrbtn_state(void)
 		pwrbtn_state = PWRBTN_STATE_IDLE;
 		CPRINTS("PB idle");
 		return;
+	} else if (IS_ENABLED(CONFIG_LID_SWITCH) && !lid_is_open()) {
+		pwrbtn_state = PWRBTN_STATE_IDLE;
+		CPRINTS("PB init idle for closed lid");
+		return;
 	}
 
 #ifdef CONFIG_BRINGUP
