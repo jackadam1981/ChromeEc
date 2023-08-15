@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3662ee08_9661866d",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:49:05Z",
+      "side": 1,
+      "message": "this is GPIO95, I used a dummy code to test\n\n\n                pd_p0p1_intr: tp-gpio95 {\n                        gpios \u003d \u003c\u0026gpio9 5 GPIO_INPUT\u003e;\n                };",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 3
+      },
+      "revId": "b363ace2ecf015e35622b876c3c5bde786681085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13b21371_64ee4cfd",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/pd_i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:49:05Z",
+      "side": 1,
+      "message": "ec_pd_power: typec-aic1-power {\n\t\t\ti2c-port \u003d \u003c\u0026i2c0_0\u003e;\n\t\t\tenum-names \u003d \"I2C_PORT_TYPEC_AIC_1\";\n\t\t};\n\n\t\tec_pd_data: typec-aic-data {\n\t\t\ti2c-port \u003d \u003c\u0026i2c???\u003e; //this is gpio3 3 \u0026 gpio3 6\n\t\t\tenum-names \u003d \"I2C_PORT_TYPEC_DATA\";\n\t\t};",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "b363ace2ecf015e35622b876c3c5bde786681085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f42a26b_d176fa5f",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/pd_i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:49:05Z",
+      "side": 1,
+      "message": "for the ec_pd_power: address is 0x8",
+      "revId": "b363ace2ecf015e35622b876c3c5bde786681085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d8716da_0e0b1cdd",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/pd_i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:49:05Z",
+      "side": 1,
+      "message": "gpio3 3\ngpio3 6\n\nfind out which controller",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "b363ace2ecf015e35622b876c3c5bde786681085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ed20c9_b0476484",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/pd_i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:49:05Z",
+      "side": 1,
+      "message": "lets use only 2 ports",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "b363ace2ecf015e35622b876c3c5bde786681085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6e6f24_0ecaaa91",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:49:05Z",
+      "side": 1,
+      "message": "should this be in common prj.conf?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "b363ace2ecf015e35622b876c3c5bde786681085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
