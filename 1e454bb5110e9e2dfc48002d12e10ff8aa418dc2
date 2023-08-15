@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e500e420_0d929cfe",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-08-15T16:12:16Z",
+      "side": 1,
+      "message": "Can we just use `DT_PROP()`? That way we know we\u0027re always using the devicetree property and all our of fuel gauges have an explicit default `ship_mode_reg_addr` property.\n\nThis is totally on me for not spotting this earlier. My bad.",
+      "range": {
+        "startLine": 290,
+        "startChar": 20,
+        "endLine": 290,
+        "endChar": 30
+      },
+      "revId": "1e454bb5110e9e2dfc48002d12e10ff8aa418dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
