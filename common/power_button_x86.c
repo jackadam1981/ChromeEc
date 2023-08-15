@@ -104,6 +104,11 @@ static const char *const state_names[] = {
 static uint64_t tnext_state;
 
 /*
+ * Last power button press timestamp
+ */
+static uint64_t tlast_press;
+
+/*
  * Record the time when power button task starts. It can be used by any code
  * path that needs to compare the current time with power button task start time
  * to identify any timeouts e.g. PB state machine checks current time to
@@ -187,6 +192,12 @@ static void power_button_pressed(uint64_t tnow)
 	CPRINTS("PB pressed");
 	pwrbtn_state = PWRBTN_STATE_PRESSED;
 	tnext_state = tnow;
+	tlast_press = tnow;
+}
+
+uint64_t power_button_last_press(void)
+{
+	return tlast_press;
 }
 
 /**
@@ -246,6 +257,10 @@ test_export_static void set_initial_pwrbtn_state(void)
 		system_clear_reset_flags(EC_RESET_FLAG_AP_IDLE);
 		pwrbtn_state = PWRBTN_STATE_IDLE;
 		CPRINTS("PB idle");
+		return;
+	} else if (IS_ENABLED(CONFIG_LID_SWITCH) && !lid_is_open()) {
+		pwrbtn_state = PWRBTN_STATE_IDLE;
+		CPRINTS("PB init idle for closed lid");
 		return;
 	}
 
