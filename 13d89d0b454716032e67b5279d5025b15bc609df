@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f92b6138_6ecdf778",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-15T17:15:39Z",
+      "side": 1,
+      "message": "Consolidate with CEC_STATE_IDLE? You can still have separate comments.",
+      "range": {
+        "startLine": 355,
+        "startChar": 6,
+        "endLine": 355,
+        "endChar": 28
+      },
+      "revId": "13d89d0b454716032e67b5279d5025b15bc609df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f78f9f63_4a248204",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-15T17:15:39Z",
+      "side": 1,
+      "message": "Shall we log error(s) here?",
+      "range": {
+        "startLine": 398,
+        "startChar": 6,
+        "endLine": 398,
+        "endChar": 67
+      },
+      "revId": "13d89d0b454716032e67b5279d5025b15bc609df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e43e295_7b0e5cff",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-15T17:15:39Z",
+      "side": 1,
+      "message": "CEC%d ... port?",
+      "range": {
+        "startLine": 480,
+        "startChar": 11,
+        "endLine": 480,
+        "endChar": 14
+      },
+      "revId": "13d89d0b454716032e67b5279d5025b15bc609df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81f8421_7d1e841a",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-15T17:15:39Z",
+      "side": 1,
+      "message": "It\u0027s nice to print port# (e.g. CEC%d).",
+      "range": {
+        "startLine": 523,
+        "startChar": 10,
+        "endLine": 523,
+        "endChar": 13
+      },
+      "revId": "13d89d0b454716032e67b5279d5025b15bc609df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d02401ae_def6b43d",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-15T17:15:39Z",
+      "side": 1,
+      "message": "Why not using snprintf_hex_buffer?",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 29
+      },
+      "revId": "13d89d0b454716032e67b5279d5025b15bc609df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c59528a_47622d6d",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-15T17:15:39Z",
+      "side": 1,
+      "message": "unavailable",
+      "range": {
+        "startLine": 555,
+        "startChar": 18,
+        "endLine": 555,
+        "endChar": 22
+      },
+      "revId": "13d89d0b454716032e67b5279d5025b15bc609df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
