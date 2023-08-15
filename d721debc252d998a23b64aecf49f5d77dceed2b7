@@ -67,6 +67,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "caf734d4_bf049fbb",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-08-15T05:39:32Z",
+      "side": 1,
+      "message": "These two calls to enable the power should be no need now.",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d159191_bee85670",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 4
@@ -83,6 +106,29 @@
         "startChar": 1,
         "endLine": 226,
         "endChar": 73
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "908b4854_02c176ba",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2023-08-15T05:39:32Z",
+      "side": 1,
+      "message": "Passing 1st parameter with **NULL** is not correct.\nYou should pass it with **ctx_p**.\nAfter the change, the 1st calling to trng_rand should no longer takes 250 ms.",
+      "range": {
+        "startLine": 226,
+        "startChar": 29,
+        "endLine": 226,
+        "endChar": 34
       },
       "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
