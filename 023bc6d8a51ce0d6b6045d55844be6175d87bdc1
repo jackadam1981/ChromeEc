@@ -70,6 +70,30 @@
       },
       "revId": "023bc6d8a51ce0d6b6045d55844be6175d87bdc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774cfa07_f9fba602",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-15T21:35:51Z",
+      "side": 0,
+      "message": "See patchset 3. I define `HAVE_PRIVATE` in `Makefile` now if the private repo is present. I still have to remove the symbol definition from `private/build.mk` but it shouldn\u0027t hurt anything either way.",
+      "parentUuid": "3ae05db6_2e891bdd",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 32
+      },
+      "revId": "023bc6d8a51ce0d6b6045d55844be6175d87bdc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

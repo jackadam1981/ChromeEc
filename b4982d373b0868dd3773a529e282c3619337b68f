@@ -34,6 +34,24 @@
       "parentUuid": "a63d379a_0469a21e",
       "revId": "b4982d373b0868dd3773a529e282c3619337b68f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e979d26_dd5fad29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-15T21:35:51Z",
+      "side": 1,
+      "message": "There are changes in https://crrev.com/c/4558584/7 that assume HAVE_PRIVATE is defined as a makefile symbol but that won\u0027t be defined until `private/build.mk` is evaluated. This was intended to resolve that but, per other comments, it\u0027s probably not the best approach.",
+      "parentUuid": "b80e40c3_d9582e67",
+      "revId": "b4982d373b0868dd3773a529e282c3619337b68f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
