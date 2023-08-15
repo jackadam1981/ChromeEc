@@ -26,6 +26,7 @@ struct tcpc_aic_gpio_config_t {
 };
 extern const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[];
 
+int board_dc_jack_present(void);
 void board_charging_enable(int port, int enable);
 void board_vbus_enable(int port, int enable);
 void board_set_vbus_source_current_limit(int port, enum tcpc_rp_value rp);
