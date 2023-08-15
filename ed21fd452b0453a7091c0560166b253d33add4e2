@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19db3a93_2e9e51a4",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-08-15T11:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5b85d51_e70b4e1a",
+      "revId": "ed21fd452b0453a7091c0560166b253d33add4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a60e7b4c_09b74abb",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "795663c9_8eb7fe39",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-08-15T11:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a60e7b4c_09b74abb",
+      "revId": "ed21fd452b0453a7091c0560166b253d33add4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e5fd3bf_17c9f2a4",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-08-15T06:15:52Z",
       "side": 1,
       "message": "Please return true here.",
+      "revId": "ed21fd452b0453a7091c0560166b253d33add4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "858353b8_48e7a7ee",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-08-15T11:43:00Z",
+      "side": 1,
+      "message": "I changed it to false.",
+      "parentUuid": "8e5fd3bf_17c9f2a4",
       "revId": "ed21fd452b0453a7091c0560166b253d33add4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cff7a046_bea12cce",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-08-15T11:43:00Z",
+      "side": 1,
+      "message": "ppc_chips_alt",
+      "parentUuid": "523dd18f_6aaa805d",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 51
+      },
+      "revId": "ed21fd452b0453a7091c0560166b253d33add4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5bea198_bf1c1e9a",
@@ -88,6 +166,24 @@
       "writtenOn": "2023-08-15T06:15:52Z",
       "side": 1,
       "message": "Please return false here.",
+      "revId": "ed21fd452b0453a7091c0560166b253d33add4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32cbd0b4_b310392a",
+        "filename": "zephyr/program/corsola/starmie/src/ppc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2023-08-15T11:43:00Z",
+      "side": 1,
+      "message": "I changed it to true.",
+      "parentUuid": "b5bea198_bf1c1e9a",
       "revId": "ed21fd452b0453a7091c0560166b253d33add4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
