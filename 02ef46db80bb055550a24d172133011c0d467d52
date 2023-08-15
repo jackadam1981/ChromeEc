@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f9fa931_60f3b4fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-15T17:30:18Z",
+      "side": 1,
+      "message": "Noice",
+      "revId": "02ef46db80bb055550a24d172133011c0d467d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2af8f0b_2a91a5fd",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-08-15T15:37:51Z",
       "side": 1,
       "message": "Per [this comment](http://b/249820857#comment19), this only works on Dragonclaw boards. This could be confusing because someone might assume they don\u0027t need to adjust their switches. Consider adding a comment or somehow making this a Dragonclaw specific option.",
+      "range": {
+        "startLine": 287,
+        "startChar": 48,
+        "endLine": 287,
+        "endChar": 80
+      },
+      "revId": "02ef46db80bb055550a24d172133011c0d467d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b18ef4b_532e69cf",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-15T17:30:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d2af8f0b_2a91a5fd",
       "range": {
         "startLine": 287,
         "startChar": 48,
