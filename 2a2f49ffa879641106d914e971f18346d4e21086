@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7512dd7f_08eee46a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:26:36Z",
+      "side": 1,
+      "message": "Separate TCPC related files",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21c53c95_22ff4ab7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:26:36Z",
+      "side": 1,
+      "message": "change commit more meaningful\n\nadd \nBUG\u003d\nTEST\u003d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c896718c_f18e5720",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/typec.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:26:36Z",
+      "side": 1,
+      "message": "change file name to tcpc_i2c.dts",
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b0f6ed_296f502f",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/typec_gpio.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:26:36Z",
+      "side": 1,
+      "message": "change file name to tcpc_gpio.dts",
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b410b9d_2e86a98c",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/typec_interrupts.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:26:36Z",
+      "side": 1,
+      "message": "2023",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cfacee4_84c5643d",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/typec_interrupts.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:26:36Z",
+      "side": 1,
+      "message": "change file name to tcpc_interrupts.dts",
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e282f4d_50de1cf6",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/typec_interrupts.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:26:36Z",
+      "side": 1,
+      "message": "nit: add a newline",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "394ac51c_9fb06a25",
+        "filename": "zephyr/program/intelrvp/mtlrvp/typec.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:26:36Z",
+      "side": 1,
+      "message": "change file name to tcpc.conf",
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
