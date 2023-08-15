@@ -46,6 +46,30 @@
       },
       "revId": "b6afae42c8735e47bd7fe98fc4e7501cf6fbfd97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9dcc583_8b5b526c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-15T20:25:02Z",
+      "side": 1,
+      "message": "Maybe we can provide a seed which is mutable to map, c-array, or else:\n\n    #define EC_STATUS_TEXT                \\\n    {                                     \\\n        MAP_ITEM(EC_RES_SUCCESS, SUCCESS) \\\n        ...                               \\\n    }                                     \\\n\nThen consumers can choose formats:\n\n    #define MAP_ITEM(long, short) [long] \u003d #short,\n    const char *ec_status_text \u003d EC_STATUS_TEXT;\n    #define MAP_ITEM\n\nor\n\n    #define MAP_ITEM(long, short) {long, #long},\n    static std::map\u003cint, std::string\u003e ec_status_text \u003d EC_STATUS_TEXT;\n    #undef MAP_ITEM\n\nThis is similar to what we do for GPIO.",
+      "parentUuid": "73ebe795_968c825c",
+      "range": {
+        "startLine": 743,
+        "startChar": 0,
+        "endLine": 743,
+        "endChar": 80
+      },
+      "revId": "b6afae42c8735e47bd7fe98fc4e7501cf6fbfd97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
