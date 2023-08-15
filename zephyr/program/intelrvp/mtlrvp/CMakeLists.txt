@@ -3,5 +3,8 @@
 # found in the LICENSE file.
 
 zephyr_library_sources("src/mtlrvp.c")
-zephyr_library_sources("src/typec_pd.c")
 zephyr_library_sources("src/board_power.c")
+
+if((DEFINED CONFIG_BOARD_MTLRVP_MCHP) OR (DEFINED CONFIG_BOARD_MTLRVP_NPCX))
+zephyr_library_sources("src/typec_pd.c")
+endif()
