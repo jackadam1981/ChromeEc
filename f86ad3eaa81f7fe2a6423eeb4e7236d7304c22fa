@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb27c44_142cc845",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T20:47:09Z",
+      "side": 1,
+      "message": "remove full stop",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a65a88c_56436479",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T20:47:09Z",
+      "side": 1,
+      "message": "interrupts",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6b8769d_f85f895a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T20:47:09Z",
+      "side": 1,
+      "message": "to enable MTLRVP with PD solution project.",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0313eafb_747c203e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T20:47:09Z",
+      "side": 1,
+      "message": ":",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "560aa726_208ef5a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T20:47:09Z",
+      "side": 1,
+      "message": "zmake build \u003cMTL variants\u003e\n\nmake sure build works",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8040cd67_08e5bef9",
+        "filename": "zephyr/program/intelrvp/mtlrvp/tcpc.conf",
+        "patchSetId": 14
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T20:47:09Z",
+      "side": 1,
+      "message": "rename file to tcpc.conf",
+      "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
