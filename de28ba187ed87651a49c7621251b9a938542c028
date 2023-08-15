@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c85df76_c004b50a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-15T17:47:53Z",
+      "side": 1,
+      "message": "Possible Improvement:\n\n```suggestion\n    pre_test_callback: Callable[[BoardConfig],bool] \u003d field(init\u003dTrue, default\u003dlambda config: True)\n    post_test_callback: Callable[[BoardConfig],bool] \u003d field(init\u003dTrue, default\u003dlambda config: True)\n```\n\nhttps://peps.python.org/pep-0484/#callable\n\n\n---\n\n\nThis doesn\u0027t need to be done in this CL.",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 79
+      },
+      "revId": "de28ba187ed87651a49c7621251b9a938542c028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
