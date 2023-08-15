@@ -16,6 +16,47 @@
       "message": "Do we have tests that want RO?",
       "revId": "c7cf2b1d73c78227af8898bb6ba2f8722dc663c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2afb2164_0e45ed88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-15T17:52:36Z",
+      "side": 1,
+      "message": "I see. We use other reboot logic to stick the landing into RO.",
+      "parentUuid": "3949b449_f2421279",
+      "revId": "c7cf2b1d73c78227af8898bb6ba2f8722dc663c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1f3939d_c855eaec",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2023-08-15T17:52:36Z",
+      "side": 1,
+      "message": "Ohhh, I see. We don\u0027t use that reboot function to reboot to RO.",
+      "range": {
+        "startLine": 742,
+        "startChar": 0,
+        "endLine": 744,
+        "endChar": 34
+      },
+      "revId": "c7cf2b1d73c78227af8898bb6ba2f8722dc663c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
