@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e88eeb4_7b42edfc",
+        "filename": "chip/npcx/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2023-08-15T18:07:49Z",
+      "side": 1,
+      "message": "Can you explain why, CH? We\u0027d like to save power when the DRBG/SHA blocks are not being used. Is power management now handled internally by the ROM APIs? If not, shouldn\u0027t we turn the blocks on when calling trng_init and turn them off on trng_exit?",
+      "parentUuid": "caf734d4_bf049fbb",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "d721debc252d998a23b64aecf49f5d77dceed2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d159191_bee85670",
         "filename": "chip/npcx/trng.c",
         "patchSetId": 4
