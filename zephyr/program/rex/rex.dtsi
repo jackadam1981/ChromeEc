@@ -47,7 +47,8 @@
 
 		/* Overrides for generated.dtsi */
 		ec_edp_bl_en {
-			gpios = <&gpiod 3 GPIO_OUTPUT_LOW>;
+			/*gpios = <&gpiod 3 GPIO_OUTPUT_LOW>;*/
+			gpios = <&gpiod 3 GPIO_INPUT_PULL_UP>;
 		};
 		en_pp5000_fan {
 			gpios = <&gpio6 1 GPIO_OUTPUT_LOW>;
