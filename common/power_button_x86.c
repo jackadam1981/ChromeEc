@@ -187,6 +187,7 @@ static void power_button_pressed(uint64_t tnow)
 	CPRINTS("PB pressed");
 	pwrbtn_state = PWRBTN_STATE_PRESSED;
 	tnext_state = tnow;
+	tlast_press = tnow;
 }
 
 /**
@@ -246,6 +247,10 @@ test_export_static void set_initial_pwrbtn_state(void)
 		system_clear_reset_flags(EC_RESET_FLAG_AP_IDLE);
 		pwrbtn_state = PWRBTN_STATE_IDLE;
 		CPRINTS("PB idle");
+		return;
+	} else if (IS_ENABLED(CONFIG_LID_SWITCH) && !lid_is_open()) {
+		pwrbtn_state = PWRBTN_STATE_IDLE;
+		CPRINTS("PB init idle for closed lid");
 		return;
 	}
 
