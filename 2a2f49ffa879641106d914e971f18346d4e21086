@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da33f41b_3080c7dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T20:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7512dd7f_08eee46a",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21c53c95_22ff4ab7",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-15T18:26:36Z",
       "side": 1,
       "message": "change commit more meaningful\n\nadd \nBUG\u003d\nTEST\u003d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b226d832_213d6e53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T20:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21c53c95_22ff4ab7",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2393e2e_e27d90a0",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/typec.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T20:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c896718c_f18e5720",
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15b0f6ed_296f502f",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-08-15T18:26:36Z",
       "side": 1,
       "message": "change file name to tcpc_gpio.dts",
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e8ec87_01ba594f",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/typec_gpio.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T20:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15b0f6ed_296f502f",
       "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6e89cf_66eff758",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/typec_interrupts.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T20:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b410b9d_2e86a98c",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cfacee4_84c5643d",
@@ -117,6 +225,24 @@
       "writtenOn": "2023-08-15T18:26:36Z",
       "side": 1,
       "message": "change file name to tcpc_interrupts.dts",
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b175f1_79bfdd9b",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/typec_interrupts.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T20:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cfacee4_84c5643d",
       "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fecd9c30_2d15181e",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/typec_interrupts.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T20:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e282f4d_50de1cf6",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "394ac51c_9fb06a25",
@@ -157,6 +307,24 @@
       "writtenOn": "2023-08-15T18:26:36Z",
       "side": 1,
       "message": "change file name to tcpc.conf",
+      "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f594dc_1e83bd60",
+        "filename": "zephyr/program/intelrvp/mtlrvp/typec.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T20:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "394ac51c_9fb06a25",
       "revId": "2a2f49ffa879641106d914e971f18346d4e21086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
