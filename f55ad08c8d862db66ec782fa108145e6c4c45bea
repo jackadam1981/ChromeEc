@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a378da4_72b2f104",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T18:42:30Z",
+      "side": 0,
+      "message": "retain these here , its just input , you will be enabling them in i2c.dts",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 4
+      },
+      "revId": "f55ad08c8d862db66ec782fa108145e6c4c45bea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
