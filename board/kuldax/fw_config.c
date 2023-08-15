@@ -81,3 +81,8 @@ bool ec_cfg_has_peripheral_charger(void)
 {
 	return (fw_config.peripheral_charger == PERIPHERAL_CHARGER_ENABLE);
 }
+
+enum ec_cfg_usb_mb_type ec_cfg_usb_mb_type(void)
+{
+	return fw_config.mb_usbc;
+}
