@@ -39,6 +39,52 @@
       },
       "revId": "3c89e20a6fdc37ea45dfc00310c9e9f809813edb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9852cd2c_e03e1243",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_kb.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-15T08:12:26Z",
+      "side": 1,
+      "message": "we can omit the report id since there\u0027s only one report on this device.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 35
+      },
+      "revId": "3c89e20a6fdc37ea45dfc00310c9e9f809813edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9209b98b_093c2804",
+        "filename": "zephyr/subsys/usb_dc/usb_hid_tp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-15T08:12:26Z",
+      "side": 1,
+      "message": "Please make this name configurable in device tree.",
+      "range": {
+        "startLine": 537,
+        "startChar": 30,
+        "endLine": 537,
+        "endChar": 37
+      },
+      "revId": "3c89e20a6fdc37ea45dfc00310c9e9f809813edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
