@@ -87,6 +87,24 @@
       "parentUuid": "1a2ef13d_df68420a",
       "revId": "aae789abe6e459d620db74db52214f47c1df0976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c9ecd5b_1ddc88ce",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-15T15:47:56Z",
+      "side": 1,
+      "message": "Any reason to not use a `std::map` instead? That would keep the \"lookup by enum\" feature but you don\u0027t have to worry about someone adding a new response code `EC_RES_SOMETHING_STUPID_HAPPENED\u003d9999` and blowing up the memory footprint.",
+      "parentUuid": "036882ef_a0fb836b",
+      "revId": "aae789abe6e459d620db74db52214f47c1df0976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

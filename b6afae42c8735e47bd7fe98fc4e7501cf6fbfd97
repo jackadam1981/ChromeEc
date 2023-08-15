@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1005687_98e8aead",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2023-08-15T15:47:56Z",
+      "side": 1,
+      "message": "Also, if you use a std::map then you could do something like this:\n\n```C++\n#define MAP_ITEM(N)  {N, #N},\nstatic std::map\u003cint, std::string\u003e my_map \u003d {\nMAP_ITEM(EC_RES_SUCCESS)\nMAP_ITEM(EC_RES_INVALID_COMMAND)\nMAP_ITEM(EC_RES_ERROR)\nMAP_ITEM(EC_RES_INVALID_PARAM)\nMAP_ITEM(EC_RES_ACCESS_DENIED)\nMAP_ITEM(EC_RES_INVALID_RESPONSE)\nMAP_ITEM(EC_RES_INVALID_VERSION)\nMAP_ITEM(EC_RES_INVALID_CHECKSUM)\nMAP_ITEM(EC_RES_IN_PROGRESS)\nMAP_ITEM(EC_RES_UNAVAILABLE)\nMAP_ITEM(EC_RES_TIMEOUT)\nMAP_ITEM(EC_RES_OVERFLOW)\nMAP_ITEM(EC_RES_INVALID_HEADER)\nMAP_ITEM(EC_RES_REQUEST_TRUNCATED)\nMAP_ITEM(EC_RES_RESPONSE_TOO_BIG)\nMAP_ITEM(EC_RES_BUS_ERROR)\nMAP_ITEM(EC_RES_BUSY)\nMAP_ITEM(EC_RES_INVALID_HEADER_VERSION)\nMAP_ITEM(EC_RES_INVALID_HEADER_CRC)\nMAP_ITEM(EC_RES_INVALID_DATA_CRC)\nMAP_ITEM(EC_RES_DUP_UNAVAILABLE)\n};\n```\n\nThe preprocessor would turn this into:\n```\nstatic std::map\u003cint, std::string\u003e my_map2 \u003d {\n\t{EC_RES_SUCCESS, \"EC_RES_SUCCESS\"},\n\t{EC_RES_INVALID_COMMAND, \"EC_RES_INVALID_COMMAND\"},\n\t{EC_RES_ERROR, \"EC_RES_ERROR\"},\n\t{EC_RES_INVALID_PARAM, \"EC_RES_INVALID_PARAM\"},\n\t{EC_RES_ACCESS_DENIED, \"EC_RES_ACCESS_DENIED\"},\n\t{EC_RES_INVALID_RESPONSE, \"EC_RES_INVALID_RESPONSE\"},\n\t{EC_RES_INVALID_VERSION, \"EC_RES_INVALID_VERSION\"},\n\t{EC_RES_INVALID_CHECKSUM, \"EC_RES_INVALID_CHECKSUM\"},\n\t{EC_RES_IN_PROGRESS, \"EC_RES_IN_PROGRESS\"},\n\t{EC_RES_UNAVAILABLE, \"EC_RES_UNAVAILABLE\"},\n\t{EC_RES_TIMEOUT, \"EC_RES_TIMEOUT\"},\n\t{EC_RES_OVERFLOW, \"EC_RES_OVERFLOW\"},\n\t{EC_RES_INVALID_HEADER, \"EC_RES_INVALID_HEADER\"},\n\t{EC_RES_REQUEST_TRUNCATED, \"EC_RES_REQUEST_TRUNCATED\"},\n\t{EC_RES_RESPONSE_TOO_BIG, \"EC_RES_RESPONSE_TOO_BIG\"},\n\t{EC_RES_BUS_ERROR, \"EC_RES_BUS_ERROR\"},\n\t{EC_RES_BUSY, \"EC_RES_BUSY\"},\n\t{EC_RES_INVALID_HEADER_VERSION, \"EC_RES_INVALID_HEADER_VERSION\"},\n\t{EC_RES_INVALID_HEADER_CRC, \"EC_RES_INVALID_HEADER_CRC\"},\n\t{EC_RES_INVALID_DATA_CRC, \"EC_RES_INVALID_DATA_CRC\"},\n\t{EC_RES_DUP_UNAVAILABLE, \"EC_RES_DUP_UNAVAILABLE\"},\n};\n```\n\nThe printed result in a bit more verbose (it includes the `EC_RES` prefix) but it limits the potential for typos, etc.",
+      "range": {
+        "startLine": 743,
+        "startChar": 0,
+        "endLine": 743,
+        "endChar": 80
+      },
+      "revId": "b6afae42c8735e47bd7fe98fc4e7501cf6fbfd97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
