@@ -1,0 +1,9 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: AMD side-band remote management interface
+
+compatible: "amd,sb-rmi"
+
+include: base.yaml

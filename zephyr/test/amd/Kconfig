@@ -2,6 +2,9 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+config TEST_AMD_SB_RMI
+	bool "Enable SB-RMI tests"
+
 config TEST_AMD_STB_DUMP
 	bool "Enable STB dump test"
 	select PLATFORM_EC_AMD_STB_DUMP

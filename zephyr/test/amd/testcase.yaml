@@ -5,6 +5,12 @@
 common:
   platform_allow: native_posix
 tests:
+  amd.sb_rmi:
+    extra_configs:
+      - CONFIG_TEST_AMD_SB_RMI=y
+      - CONFIG_EMUL_AMD_SB_RMI=y
+      - CONFIG_PLATFORM_EC_AMD_SB_RMI=y
+
   amd.stb_dump:
     extra_configs:
       - CONFIG_TEST_AMD_STB_DUMP=y

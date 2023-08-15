@@ -25,7 +25,7 @@
 /**
  * Write an SB-RMI register
  */
-static int sb_rmi_write(const int reg, int data)
+test_export_static int sb_rmi_write(const int reg, int data)
 {
 	return i2c_write8(I2C_PORT_THERMAL_AP, SB_RMI_I2C_ADDR_FLAGS0, reg,
 			  data);
@@ -34,7 +34,7 @@ static int sb_rmi_write(const int reg, int data)
 /**
  * Read an SB-RMI register
  */
-static int sb_rmi_read(const int reg, int *data)
+test_export_static int sb_rmi_read(const int reg, int *data)
 {
 	return i2c_read8(I2C_PORT_THERMAL_AP, SB_RMI_I2C_ADDR_FLAGS0, reg,
 			 data);
@@ -43,7 +43,7 @@ static int sb_rmi_read(const int reg, int *data)
 /**
  * Set SB-RMI software interrupt
  */
-static int sb_rmi_assert_interrupt(bool assert)
+test_export_static int sb_rmi_assert_interrupt(bool assert)
 {
 	return sb_rmi_write(SB_RMI_SW_INTR_REG, assert ? 0x1 : 0x0);
 }

@@ -8,4 +8,5 @@ project(amd)
 
 add_subdirectory(${PLATFORM_EC}/zephyr/test/test_utils test_utils)
 
+target_sources_ifdef(CONFIG_TEST_AMD_SB_RMI app PRIVATE src/sb_rmi.c)
 target_sources_ifdef(CONFIG_TEST_AMD_STB_DUMP app PRIVATE src/stb_dump.c)

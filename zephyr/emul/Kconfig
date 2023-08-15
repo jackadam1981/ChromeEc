@@ -20,6 +20,14 @@ config EMUL_SMART_BATTERY
 	help
 	  Enable the Smart Battery emulator. This driver use emulated I2C bus.
 
+config EMUL_AMD_SB_RMI
+	bool "AMD SB-RMI emulator"
+	default y
+	depends on DT_HAS_AMD_SB_RMI_ENABLED
+	select EMUL_COMMON_I2C
+	help
+	  Enable emulator for AMD's side-band remote management interface.
+
 config EMUL_BMA255
 	bool "BMA255 emulator"
 	default y
