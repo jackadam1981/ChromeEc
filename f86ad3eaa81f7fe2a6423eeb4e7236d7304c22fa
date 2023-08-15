@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa384f1d_48029668",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T21:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bb27c44_142cc845",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a65a88c_56436479",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-15T20:47:09Z",
       "side": 1,
       "message": "interrupts",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60da2afa_cdf28059",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T21:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a65a88c_56436479",
       "range": {
         "startLine": 9,
         "startChar": 28,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05190fcc_1a689bb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T21:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6b8769d_f85f895a",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0313eafb_747c203e",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-08-15T20:47:09Z",
       "side": 1,
       "message": ":",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31501252_f4cde1dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T21:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0313eafb_747c203e",
       "range": {
         "startLine": 12,
         "startChar": 5,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a87ab8_f89832f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T21:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "560aa726_208ef5a8",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8040cd67_08e5bef9",
@@ -129,6 +249,24 @@
       "writtenOn": "2023-08-15T20:47:09Z",
       "side": 1,
       "message": "rename file to tcpc.conf",
+      "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5146ef3_24d6466e",
+        "filename": "zephyr/program/intelrvp/mtlrvp/tcpc.conf",
+        "patchSetId": 14
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T21:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8040cd67_08e5bef9",
       "revId": "f86ad3eaa81f7fe2a6423eeb4e7236d7304c22fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
