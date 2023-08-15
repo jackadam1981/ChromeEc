@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd213c2_a1dfd778",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-15T07:42:14Z",
+      "side": 1,
+      "message": "(Haven\u0027t finished review this patchset yet, just answer your questoin first)",
+      "revId": "3c89e20a6fdc37ea45dfc00310c9e9f809813edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c0a5571_cd336977",
+        "filename": "include/touchpad.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-15T07:42:14Z",
+      "side": 1,
+      "message": "move this to usb_dc.h",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "3c89e20a6fdc37ea45dfc00310c9e9f809813edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
