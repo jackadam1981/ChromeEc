@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a9c891_3e90c81c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-15T11:02:46Z",
+      "side": 1,
+      "message": "Update:\n\n- Decided to keep using futility because I think it\u0027s not worth porting vboot and fmap libs to zmake.\n\n\n- Added a small unittest for signer.\n\n\nThis CL is ready for review.",
+      "revId": "471f4e74fec8a1e994162888aa791fee46267c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a033aa7_9744a915",
+        "filename": "zephyr/zmake/tests/test_rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-15T11:02:46Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "68bf8d07_df630d2d",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 55
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06a00bf3_807c144c",
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "will replace these with the signing implementation.",
       "parentUuid": "06a00bf3_807c144c",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c3b8ab_b6bf7872",
+        "filename": "zephyr/zmake/tests/test_rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-15T11:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63915d4e_9c308c7f",
       "range": {
         "startLine": 34,
         "startChar": 14,
@@ -148,6 +196,30 @@
       "writtenOn": "2023-08-07T22:16:57Z",
       "side": 1,
       "message": "This could use an explanation as to what that is.",
+      "range": {
+        "startLine": 5,
+        "startChar": 17,
+        "endLine": 5,
+        "endChar": 22
+      },
+      "revId": "4be4511e0d8574fd00d8537b35e286494c9e2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9facc7e_2bd4291f",
+        "filename": "zephyr/zmake/zmake/rwsig.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2023-08-15T11:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a2d5eab_fdc0f177",
       "range": {
         "startLine": 5,
         "startChar": 17,
