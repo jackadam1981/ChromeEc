@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "815ec95e_d5e61be3",
+        "filename": "zephyr/program/intelrvp/BUILD.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-15T21:39:33Z",
+      "side": 1,
+      "message": "add separate file to define \n\nCONFIG_BOARD_MTLRVP_PD\u003dy\n\nmake needed changes in\nzephyr/program/intelrvp/CMakeLists.txt",
+      "range": {
+        "startLine": 145,
+        "startChar": 8,
+        "endLine": 145,
+        "endChar": 46
+      },
+      "revId": "59d882c9f92bfaf1265200a2e549e1584ba8fcb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e5fe65b_fccdd61a",
         "filename": "zephyr/program/intelrvp/BUILD.py",
         "patchSetId": 5
