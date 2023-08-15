@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be8a0217_34f17932",
+        "filename": "zephyr/program/intelrvp/mtlrvp/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T23:34:44Z",
+      "side": 1,
+      "message": "dont see it required in this commit. Can we use that once MTLRVP PD variant introduced?",
+      "parentUuid": "bb6838a9_828e2a65",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 36
+      },
+      "revId": "7f8e295084d26c8f44c9a4a6de9ad62bf6121987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45d61237_17e7474f",
         "filename": "zephyr/program/intelrvp/mtlrvp/src/tcpc.c",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-15T21:26:53Z",
       "side": 1,
       "message": "nit: not related to your change: may be few of these are not needed, try remove",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "7f8e295084d26c8f44c9a4a6de9ad62bf6121987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa63c83f_9027c23e",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T23:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45d61237_17e7474f",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc86a342_3a2b6626",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T23:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c4f51a7_5253885b",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "7f8e295084d26c8f44c9a4a6de9ad62bf6121987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de6c9218_d9cc00bc",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-08-15T21:26:53Z",
       "side": 1,
       "message": "needed?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 55
+      },
+      "revId": "7f8e295084d26c8f44c9a4a6de9ad62bf6121987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb46e73_000e5ab8",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2023-08-15T23:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de6c9218_d9cc00bc",
       "range": {
         "startLine": 37,
         "startChar": 0,
