@@ -106,6 +106,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1617010_b52c942c",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-15T19:25:23Z",
+      "side": 1,
+      "message": "Looks like this patch should really only have the DP2.1 block and the rest is fixes that I will move to their own patch. The Active/Passive bit and the cable type were being incorrectly set before it seemingly had no adverse effect but it wasn\u0027t correct it was just clubbed into this patch cause all of it was explicitly laid out in the DP 2.1 spec",
+      "parentUuid": "1159acb1_edbf737a",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1a4ffe0_1825012b",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 53
