@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e20de10_8b2850fd",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-16T04:15:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f92b6138_6ecdf778",
+      "range": {
+        "startLine": 355,
+        "startChar": 6,
+        "endLine": 355,
+        "endChar": 28
+      },
+      "revId": "13d89d0b454716032e67b5279d5025b15bc609df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f78f9f63_4a248204",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-15T17:15:39Z",
       "side": 1,
       "message": "Shall we log error(s) here?",
+      "range": {
+        "startLine": 398,
+        "startChar": 6,
+        "endLine": 398,
+        "endChar": 67
+      },
+      "revId": "13d89d0b454716032e67b5279d5025b15bc609df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "627319e1_7644fb43",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-16T04:15:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f78f9f63_4a248204",
       "range": {
         "startLine": 398,
         "startChar": 6,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7f06da_6752edb6",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-16T04:15:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e43e295_7b0e5cff",
+      "range": {
+        "startLine": 480,
+        "startChar": 11,
+        "endLine": 480,
+        "endChar": 14
+      },
+      "revId": "13d89d0b454716032e67b5279d5025b15bc609df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d81f8421_7d1e841a",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-08-15T17:15:39Z",
       "side": 1,
       "message": "It\u0027s nice to print port# (e.g. CEC%d).",
+      "range": {
+        "startLine": 523,
+        "startChar": 10,
+        "endLine": 523,
+        "endChar": 13
+      },
+      "revId": "13d89d0b454716032e67b5279d5025b15bc609df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8164690d_1df61bf7",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-16T04:15:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d81f8421_7d1e841a",
       "range": {
         "startLine": 523,
         "startChar": 10,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eaed29b_3cad0e24",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-16T04:15:48Z",
+      "side": 1,
+      "message": "No reason, I just copied it from the bitbang driver. I\u0027ve changed them both to be consistent.",
+      "parentUuid": "d02401ae_def6b43d",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 29
+      },
+      "revId": "13d89d0b454716032e67b5279d5025b15bc609df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c59528a_47622d6d",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-08-15T17:15:39Z",
       "side": 1,
       "message": "unavailable",
+      "range": {
+        "startLine": 555,
+        "startChar": 18,
+        "endLine": 555,
+        "endChar": 22
+      },
+      "revId": "13d89d0b454716032e67b5279d5025b15bc609df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "503bcde7_309aa14c",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-08-16T04:15:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c59528a_47622d6d",
       "range": {
         "startLine": 555,
         "startChar": 18,
