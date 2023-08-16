@@ -70,6 +70,30 @@
       },
       "revId": "7af01924f9a24ccf2657a0c4f6fc774cff68b2ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9b8c745_a001dbfb",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 22
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2023-08-16T06:57:16Z",
+      "side": 1,
+      "message": "The upstream is the ultimate solution, so I think as many tests as possible should be run with it.",
+      "parentUuid": "accd7727_68536df7",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "7af01924f9a24ccf2657a0c4f6fc774cff68b2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
