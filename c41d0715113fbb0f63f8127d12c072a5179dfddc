@@ -22,6 +22,30 @@
       },
       "revId": "c41d0715113fbb0f63f8127d12c072a5179dfddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b2fe20_702b920a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2023-08-16T01:40:34Z",
+      "side": 1,
+      "message": "Done\nPS. b/275436433 change ec_buzzer to GPA0 from GPA7(no pull down) for next stage.It won\u0027t happen on current boxy system but may happen on next stage system if no add this CL. Thanks.",
+      "parentUuid": "8bca0116_e7efaa4f",
+      "range": {
+        "startLine": 10,
+        "startChar": 25,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "c41d0715113fbb0f63f8127d12c072a5179dfddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
