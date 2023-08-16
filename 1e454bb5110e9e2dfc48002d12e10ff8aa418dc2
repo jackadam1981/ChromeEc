@@ -3,6 +3,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1d941ce_456fbbde",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-08-16T20:07:14Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tif (IS_ENABLED(CONFIG_SMBUS_PEC) \u0026\u0026 DT_NODE_HAS_PROP(DT_NODELABEL(battery), fet_reg_addr)) {\n {\n```\n\nEssentially we\u0027re just saying (hey don\u0027t run this test if you can\u0027t actually run it).",
+      "revId": "1e454bb5110e9e2dfc48002d12e10ff8aa418dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb8d6049_b3323267",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-08-16T20:07:14Z",
+      "side": 1,
+      "message": "Remove after above suggested change to the branch.",
+      "range": {
+        "startLine": 212,
+        "startChar": 10,
+        "endLine": 212,
+        "endChar": 13
+      },
+      "revId": "1e454bb5110e9e2dfc48002d12e10ff8aa418dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33ac8879_b97eed28",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-08-16T20:07:14Z",
+      "side": 1,
+      "message": "```suggestion\n\tif (IS_ENABLED(CONFIG_SMBUS_PEC) \u0026\u0026 DT_NODE_HAS_PROP(DT_NODELABEL(battery), ship_mode_reg_addr)) {\n```",
+      "range": {
+        "startLine": 281,
+        "startChar": 5,
+        "endLine": 281,
+        "endChar": 33
+      },
+      "revId": "1e454bb5110e9e2dfc48002d12e10ff8aa418dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e500e420_0d929cfe",
         "filename": "zephyr/test/drivers/default/src/battery.c",
         "patchSetId": 7
@@ -14,6 +77,30 @@
       "writtenOn": "2023-08-15T16:12:16Z",
       "side": 1,
       "message": "Can we just use `DT_PROP()`? That way we know we\u0027re always using the devicetree property and all our of fuel gauges have an explicit default `ship_mode_reg_addr` property.\n\nThis is totally on me for not spotting this earlier. My bad.",
+      "range": {
+        "startLine": 290,
+        "startChar": 20,
+        "endLine": 290,
+        "endChar": 30
+      },
+      "revId": "1e454bb5110e9e2dfc48002d12e10ff8aa418dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f093873b_cd015804",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2023-08-16T20:07:14Z",
+      "side": 1,
+      "message": "Ahh so it looks like we do actually run this test against boards without shipping mode or fet register properties.\n\nSince that\u0027s the case, let\u0027s add the above suggestions do we can replace instances of `DT_PROP_OR()` with `DT_PROP()`\n\nIn case you\u0027re concerned that this will may silently reduce coverage, it will only reduce coverage for boards that don\u0027t actually use this functionality and if at any point it reduces absolutely coverage, the CL will be blocked.",
+      "parentUuid": "e500e420_0d929cfe",
       "range": {
         "startLine": 290,
         "startChar": 20,
