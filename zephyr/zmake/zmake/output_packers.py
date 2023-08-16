@@ -133,10 +133,12 @@ class BinmanPacker(BasePacker):
 
     def configs(self):
         yield "ro", build_config.BuildConfig(
-            kconfig_defs={"CONFIG_CROS_EC_RO": "y"}
+            kconfig_defs={"CONFIG_CROS_EC_RO": "y"},
+            cmake_defs={"SECTION_IS_RO": "1"},
         )
         yield "rw", build_config.BuildConfig(
-            kconfig_defs={"CONFIG_CROS_EC_RW": "y"}
+            kconfig_defs={"CONFIG_CROS_EC_RW": "y"},
+            cmake_defs={"SECTION_IS_RW": "1"},
         )
 
     def pack_firmware(
