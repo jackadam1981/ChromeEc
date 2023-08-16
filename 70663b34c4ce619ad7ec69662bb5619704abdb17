@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a2eafb6_8ead74ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-16T20:24:15Z",
+      "side": 1,
+      "message": "for the code coverage issue, please update the unit tests\nor at a minimum open a bug to improve coverage for karis,\nthen add a `LOW_COVERAGE_REASON\u003d...` here.\n\nwe do something similar for rex, but karis board specific\nsupport will most likely not get covered by rex coverage.",
+      "revId": "70663b34c4ce619ad7ec69662bb5619704abdb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc284550_766b800c",
+        "filename": "zephyr/program/rex/karis/cbi.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2023-08-16T20:24:15Z",
+      "side": 1,
+      "message": "oops, i just noticed this doesn\u0027t match\n`src/project/rex/karis/config.star`\n\n```\n# Variant specific FW_CONFIG fields\n_FW_MASKS \u003d struct(\n...\n    DB_USB \u003d 0x00000300,\n...\n)\n```\nthey need to be consistent... do you have another change in flight?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "70663b34c4ce619ad7ec69662bb5619704abdb17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
