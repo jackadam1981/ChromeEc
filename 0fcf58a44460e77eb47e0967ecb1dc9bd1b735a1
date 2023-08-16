@@ -22,6 +22,30 @@
       },
       "revId": "0fcf58a44460e77eb47e0967ecb1dc9bd1b735a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55299eee_39a621c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-08-16T17:20:41Z",
+      "side": 1,
+      "message": "I added the test, but this script re-signs existing binaries, which presumably already include the proper FIPS hash, it does not depend on the SignedHeader signature.",
+      "parentUuid": "98b2202f_e4fdd1dc",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "0fcf58a44460e77eb47e0967ecb1dc9bd1b735a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
