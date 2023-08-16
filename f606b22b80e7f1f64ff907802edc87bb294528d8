@@ -122,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79824307_3df0bcf3",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-16T16:59:06Z",
+      "side": 1,
+      "message": "Uploaded https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4784927/1 with the changes not specific to DP 2.1",
+      "parentUuid": "a1617010_b52c942c",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1a4ffe0_1825012b",
@@ -169,6 +187,24 @@
       "writtenOn": "2023-08-11T21:46:03Z",
       "side": 1,
       "message": "This also looks new for DP \u003c 2.1. Is this intentional?",
+      "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21269212_9bccbe6e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2023-08-16T16:59:06Z",
+      "side": 1,
+      "message": "patch uploaded https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4784927/1",
+      "parentUuid": "45690620_839d70ec",
       "revId": "f606b22b80e7f1f64ff907802edc87bb294528d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
