@@ -50,6 +50,24 @@
       "message": "Should this reference b/254148652 in the comment text?",
       "revId": "8db022b15a1f548dd38a75153aa89dd16d711df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9de4a021_7122b7fd",
+        "filename": "zephyr/program/rex/rex.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2023-08-16T08:38:57Z",
+      "side": 1,
+      "message": "I can\u0027t access the b/254148652, this comment was just copied from the previous code,\nshould I add the TODO:b/254148652 in the comment?",
+      "parentUuid": "60f411d2_34c0f749",
+      "revId": "8db022b15a1f548dd38a75153aa89dd16d711df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
