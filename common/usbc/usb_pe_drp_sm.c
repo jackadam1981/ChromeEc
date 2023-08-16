@@ -4035,6 +4035,16 @@ static void pe_snk_hard_reset_entry(int port)
 		return;
 	}
 
+	if (!IS_ENABLED(CONFIG_BATTERY) && IS_ENABLED(CONFIG_CHARGE_MANAGER) &&
+	    port == charge_manager_get_active_charge_port() &&
+	    (system_get_reset_flags() & EC_RESET_FLAG_STAY_IN_RO)) {
+		CPRINTS("C%d: Preserve ap-off and stay-in-ro across PD reset",
+			port);
+		chip_save_reset_flags(chip_read_reset_flags() |
+				      EC_RESET_FLAG_AP_OFF |
+				      EC_RESET_FLAG_STAY_IN_RO);
+	}
+
 #ifdef CONFIG_USB_PD_RESET_MIN_BATT_SOC
 	/*
 	 * If the battery has not met a configured safe level for hard
