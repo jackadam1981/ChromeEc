@@ -293,6 +293,30 @@
       },
       "revId": "b363ace2ecf015e35622b876c3c5bde786681085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa2aaa6a_570ef888",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_pd/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2023-08-16T21:54:06Z",
+      "side": 1,
+      "message": "I would rather define board name config here and then separate out the common things in mtlrvpp_npcx prj.conf",
+      "parentUuid": "031c9351_f80a00a1",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "b363ace2ecf015e35622b876c3c5bde786681085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
