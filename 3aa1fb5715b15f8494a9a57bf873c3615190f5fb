@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "177863b5_6fac3767",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-16T17:27:01Z",
+      "side": 1,
+      "message": "It seems two changes are mixed.",
+      "revId": "3aa1fb5715b15f8494a9a57bf873c3615190f5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f510e5d8_8b42bec2",
+        "filename": "common/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-16T17:27:01Z",
+      "side": 1,
+      "message": "BTW, this is undef by default. Do you not need it to be on in your launch?",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "3aa1fb5715b15f8494a9a57bf873c3615190f5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "823b16de_600f6469",
+        "filename": "common/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2023-08-16T17:27:01Z",
+      "side": 1,
+      "message": "I think most developers will be confused about this. IIUC, multi-port CEC supersedes single-port CEC. Can you please file a bug with a list of changes needed to deprecate single-port CEC?",
+      "range": {
+        "startLine": 426,
+        "startChar": 1,
+        "endLine": 426,
+        "endChar": 60
+      },
+      "revId": "3aa1fb5715b15f8494a9a57bf873c3615190f5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
